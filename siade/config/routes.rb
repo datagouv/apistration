@@ -63,4 +63,10 @@ Rails.application.routes.draw do
 
     get 'eori_douanes/:siret_or_eori'                       => '/api/v2/eori_douanes#show'
   end
+
+  namespace :v3 do
+    namespace :rnm do
+      get 'entreprises/:siren' => '/api/v3/rnm/entreprises_artisanales#show'
+    end
+  end
 end
