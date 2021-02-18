@@ -41,6 +41,7 @@ gem 'fog-openstack', '1.0.11'
 gem 'retryable'
 
 gem 'interactor'
+gem 'jsonapi-serializer'
 
 # Authorization
 gem 'pundit', '1.0.0'
