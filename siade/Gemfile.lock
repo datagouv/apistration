@@ -129,6 +129,7 @@ GEM
       domain_name (~> 0.5)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
+    interactor (3.1.2)
     ipaddress (0.8.3)
     json (2.5.1)
     json-schema (2.8.1)
@@ -349,6 +350,7 @@ DEPENDENCIES
   fog-openstack (= 1.0.11)
   guard
   guard-rspec
+  interactor
   json-schema
   jwt (~> 2.2)
   logstasher

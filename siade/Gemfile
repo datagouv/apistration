@@ -40,6 +40,8 @@ gem 'fog-openstack', '1.0.11'
 # allow to retry a block n times if exception occurs https://github.com/nfedyashev/retryable
 gem 'retryable'
 
+gem 'interactor'
+
 # Authorization
 gem 'pundit', '1.0.0'
 gem 'jwt', '~> 2.2'
