@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe RNM::EntreprisesArtisanales::BuildResource, type: :build_resource do
-  describe '.call' do
+  describe '.call', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
     subject { described_class.call(response: response) }
 
     let(:valid_payload) do
       {
+        id: '301123626',
         siren: '301123626',
         etablissement_origine_id: '3',
 
@@ -79,13 +80,20 @@ RSpec.describe RNM::EntreprisesArtisanales::BuildResource, type: :build_resource
     end
 
     let(:response) do
-      double('response', body: body)
+      instance_double('Net::HTTPOK', body: body)
     end
+
     let(:body) do
-      YAML.load_file('spec/fixtures/cassettes/rnm_cma/valid_siren_json.yml')['http_interactions'][0]['response']['body']['string']
+      RNM::EntreprisesArtisanales::MakeRequest.call(params: params).response.body
+    end
+
+    let(:params) do
+      {
+        siren: valid_siren(:rnm_cma),
+      }
     end
 
     it { is_expected.to be_a_success }
-    its(:resource) { is_expected.to eq(valid_payload) }
+    its(:resource) { is_expected.to eq(Hashie::Mash.new(valid_payload)) }
   end
 end
