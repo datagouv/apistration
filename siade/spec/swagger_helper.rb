@@ -91,6 +91,39 @@ RSpec.configure do |config|
         },
       ],
       components: {
+        schemas: {
+          NotFound: {
+            type: :object,
+            properties: {
+              errors: {
+                type: :array,
+                items: {
+                  type: :object,
+                  properties: {
+                    status: {
+                      type: :string,
+                      example: '404',
+                      enum: [
+                        '404',
+                      ],
+                    },
+                    title: {
+                      type: :string,
+                      example: 'Resource not found',
+                    }
+                  },
+                  required: %w[
+                    status
+                    title
+                  ],
+                },
+              },
+            },
+            required: %w[
+              errors
+            ],
+          },
+        },
         securitySchemes: {
           jwt_bearer_token: {
             type: :http,

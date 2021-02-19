@@ -9,8 +9,16 @@ class API::V3::RNM::EntreprisesArtisanalesController < API::AuthenticateEntityCo
              status: organizer.status
     else
       # NOTE: NOT YET TESTED
-      render json: ErrorsSerializer.new(organizer.errors).serializable_hash,
-             status: organizer.status
+      # render json: ErrorsSerializer.new(organizer.errors).serializable_hash,
+      #        status: organizer.status
+      render json: {
+        errors: [
+          {
+            status: '404',
+            title: 'Entitée non trouvée'
+          }
+        ]
+      }, status: 404
     end
   end
 
