@@ -1,5 +1,7 @@
 class RNM::EntrepriseArtisanaleSerializer < JSONAPISerializer
   set_type :entreprise
 
-  attributes :siren
+  attributes :siren,
+             :modalite_exercice,
+             :non_sedentaire
 end
