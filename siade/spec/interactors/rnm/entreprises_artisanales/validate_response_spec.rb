@@ -4,14 +4,20 @@ RSpec.describe RNM::EntreprisesArtisanales::ValidateResponse, type: :validate_re
   describe '.call' do
     subject { described_class.call(response: response) }
 
-    let(:response) do
-      double('response', code: code, body: body)
+    let(:params) do
+      {
+        siren: valid_siren(:rnm_cma),
+      }
     end
 
-    context 'with valid response' do
+    let(:response) do
+      instance_double('Net::HTTPOK', code: code, body: body)
+    end
+
+    context 'with valid response', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
       let(:code) { '200' }
       let(:body) do
-        YAML.load_file('spec/fixtures/cassettes/rnm_cma/valid_siren_json.yml')['http_interactions'][0]['response']['body']['string']
+        RNM::EntreprisesArtisanales::MakeRequest.call(params: params).response.body
       end
 
       it { is_expected.to be_a_success }
@@ -28,10 +34,10 @@ RSpec.describe RNM::EntreprisesArtisanales::ValidateResponse, type: :validate_re
       it { is_expected.to be_a_failure }
     end
 
-    context 'with an invalid status code' do
+    context 'with an invalid status code', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
       let(:code) { '418' }
       let(:body) do
-        YAML.load_file('spec/fixtures/cassettes/rnm_cma/valid_siren_json.yml')['http_interactions'][0]['response']['body']['string']
+        RNM::EntreprisesArtisanales::MakeRequest.call(params: params).response.body
       end
 
       it { is_expected.to be_a_failure }
