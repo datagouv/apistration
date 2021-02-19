@@ -1,5 +1,5 @@
-class RNM::EntreprisesArtisanales::MakeRequest < MakeRequest
-  private
+class RNM::EntreprisesArtisanales::MakeRequest < MakeRequest::Get
+  protected
 
   def request_uri
     URI("https://rnm_domain.gouv.fr/v2/entreprises/#{siren}")
@@ -18,9 +18,7 @@ class RNM::EntreprisesArtisanales::MakeRequest < MakeRequest
     }
   end
 
-  def request_verb
-    :get
-  end
+  private
 
   def siren
     context.params[:siren]
