@@ -57,16 +57,24 @@ class RNM::EntreprisesArtisanales::BuildResource < BuildResource
 
   def adresse_payload
     {
-      adresse_numero_voie:            value_or_placeholder('ent_adr_numero_voie'),
-      adresse_indice_repetition_voie: value_or_placeholder('ent_adr_indice_repetition'),
-      adresse_type_voie:              value_or_placeholder('ent_adr_type_voie'),
-      adresse_libelle_voie:           value_or_placeholder('ent_adr_adresse'),
-      adresse_complement:             value_or_placeholder('ent_adr_adresse_complement'),
-      adresse_code_postal:            value_or_placeholder('ent_adr_code_postal'),
-      adresse_commune:                value_or_placeholder('ent_adr_commune'),
-      adresse_commune_cog:            value_or_placeholder('ent_adr_commune_cog'),
-      adresse_departement:            value_or_placeholder('gest_dept'),
-      adresse_region:                 value_or_placeholder('gest_reg'),
+      # FIXME JSONAPI use this field to retrieve the relationship
+      adresse_id: value_or_placeholder('ent_id_siren'),
+      # NOTE this payload won't be send to end-user because relationship data includes only type and id
+      adresse: Hashie::Mash.new(
+        # FIXME
+        # Jsonapi::MandatoryField: id is a mandatory field in the jsonapi spec
+        id:                     value_or_placeholder('ent_id_siren'),
+        numero_voie:            value_or_placeholder('ent_adr_numero_voie'),
+        indice_repetition_voie: value_or_placeholder('ent_adr_indice_repetition'),
+        type_voie:              value_or_placeholder('ent_adr_type_voie'),
+        libelle_voie:           value_or_placeholder('ent_adr_adresse'),
+        complement:             value_or_placeholder('ent_adr_adresse_complement'),
+        code_postal:            value_or_placeholder('ent_adr_code_postal'),
+        commune:                value_or_placeholder('ent_adr_commune'),
+        commune_cog:            value_or_placeholder('ent_adr_commune_cog'),
+        departement:            value_or_placeholder('gest_dept'),
+        region:                 value_or_placeholder('gest_reg'),
+      )
     }
   end
 

@@ -82,6 +82,39 @@ RSpec.describe 'RNM: Entreprises artisanales', type: :request do
                       non_sedentaire
                     ],
                   },
+                  relationships: {
+                    type: :object,
+                    properties: {
+                      adresse: {
+                        type: :object,
+                        properties: {
+                          data: {
+                            type: :object,
+                            properties: {
+                              id: {
+                                type: :string,
+                                example: "301123626",
+                              },
+                              type: {
+                                type: :string,
+                                enum: ['adresse'],
+                                example: 'adresse',
+                              },
+                            }
+                          },
+                          links: {
+                            type: :object,
+                            properties: {
+                              related: {
+                                type: :string,
+                                example: "https://entreprises.api.gouv.fr/api/v3/insee/adresse/301123626",
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                  }
                 },
                 required: %w[
                   id
@@ -92,7 +125,10 @@ RSpec.describe 'RNM: Entreprises artisanales', type: :request do
               :data,
             ]
 
-          run_test!
+          run_test! do |response|
+            data = JSON.parse(response.body)
+            p data
+          end
         end
 
         response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'rnm_cma/not_found_siren' } do

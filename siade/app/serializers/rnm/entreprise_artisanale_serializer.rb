@@ -4,4 +4,10 @@ class RNM::EntrepriseArtisanaleSerializer < JSONAPISerializer
   attributes :siren,
              :modalite_exercice,
              :non_sedentaire
+
+  belongs_to :adresse, serializer: AdresseSerializer, links: {
+    related: ->(object) {
+      "https://entreprises.api.gouv.fr/api/v3/insee/adresse/#{object.id}"
+    }
+  }
 end
