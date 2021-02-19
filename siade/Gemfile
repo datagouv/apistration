@@ -50,7 +50,11 @@ gem 'jwt', '~> 2.2'
 gem 'sentry-ruby'
 gem 'sentry-rails'
 
+gem 'rswag-api'
+gem 'rswag-ui'
+
 group :test do
+  gem 'rswag-specs'
   gem 'json-schema'
   gem 'timecop'
   gem 'mock_redis'

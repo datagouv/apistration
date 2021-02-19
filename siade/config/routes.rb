@@ -68,5 +68,8 @@ Rails.application.routes.draw do
     namespace :rnm do
       get 'entreprises/:siren' => '/api/v3/rnm/entreprises_artisanales#show'
     end
+
+    mount Rswag::Ui::Engine   => '/developers'
+    mount Rswag::Api::Engine  => '/api-docs'
   end
 end
