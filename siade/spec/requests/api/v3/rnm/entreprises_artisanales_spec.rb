@@ -5,51 +5,55 @@ RSpec.describe 'RNM: Entreprises artisanales', type: :request do
     get 'Récupération des informations d\'une entreprise artisanale' do
       tags 'Informations générales'
 
-      produces 'application/json'
+      common_action_attributes
 
       parameter name: :siren, in: :path, type: :string
 
-      parameter name: :context, in: :query, type: :string
-      parameter name: :recipient, in: :query, type: :string
-      parameter name: :object, in: :query, type: :string
+      unauthorized_request do
+        let(:siren) { valid_siren(:rnm_cma) }
+      end
 
-      security [jwt_bearer_token: []]
+      forbidden_request do
+        let(:siren) { valid_siren(:rnm_cma) }
+      end
 
-      response '200', 'Entreprise found', vcr: { cassette_name: 'rnm_cma/valid_siren_json' }  do
-        let(:siren) { valid_siren(:rnm_cma)}
+      describe 'with valid mandatory params', valid: true do
+        response '200', 'Entreprise found', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
+          let(:siren) { valid_siren(:rnm_cma) }
 
-        schema type: :object,
-          properties: {
-            data: {
-              type: :object,
-              properties: {
-                id: {
-                  type: :string,
-                  example: valid_siren(:rnm_cma),
-                },
-                attributes: {
-                  type: :object,
-                  properties: {
-                    siren: {
-                      type: :siren,
-                      example: valid_siren(:rnm_cma),
-                    },
+          schema type: :object,
+            properties: {
+              data: {
+                type: :object,
+                properties: {
+                  id: {
+                    type: :string,
+                    example: valid_siren(:rnm_cma),
                   },
-                  required: %w[
-                    siren
-                  ],
+                  attributes: {
+                    type: :object,
+                    properties: {
+                      siren: {
+                        type: :siren,
+                        example: valid_siren(:rnm_cma),
+                      },
+                    },
+                    required: %w[
+                      siren
+                    ],
+                  },
                 },
+                required: %w[
+                  id
+                ],
               },
-              required: %w[
-                id
-              ],
             },
-          },
-          required: [
-            :data,
-          ]
+            required: [
+              :data,
+            ]
 
-        run_test!
+          run_test!
+        end
       end
     end
   end

@@ -10,11 +10,6 @@ paths:
       tags:
       - Informations générales
       parameters:
-      - name: siren
-        in: path
-        required: true
-        schema:
-          type: string
       - name: context
         in: query
         schema:
@@ -27,11 +22,19 @@ paths:
         in: query
         schema:
           type: string
+      - name: siren
+        in: path
+        required: true
+        schema:
+          type: string
       security:
       - jwt_bearer_token: []
+      description: Le jeton ne possède pas les droits nécessaires
       responses:
+        '403':
+          description: Accès interdit
         '200':
-          description: Contact found
+          description: Entreprise found
           content:
             application/json:
               schema:

@@ -1,13 +1,63 @@
 require 'rails_helper'
 
-RSpec.shared_context 'API authentication' do
-  let(:token) { yes_jwt }
-
-  let(:Authorization) { "Bearer #{token}" }
-
+RSpec.shared_context 'Mandatory params' do
   let(:context) { 'Dev' }
   let(:recipient) { "API Entreprise" }
   let(:object) { "Tests" }
+end
+
+RSpec.shared_context 'Valid params (mandatory and token)' do
+  include_context 'Mandatory params'
+
+  let(:Authorization) { "Bearer #{yes_jwt}" }
+end
+
+RSpec.shared_context 'Valid mandatory params and no token' do
+  include_context 'Mandatory params'
+
+  let(:Authorization) { nil }
+end
+
+RSpec.shared_context 'Valid mandatory params and unauthorized token' do
+  include_context 'Mandatory params'
+
+  let(:Authorization) { "Bearer #{nope_jwt}" }
+end
+
+module RSWagCommonsResponses
+  def common_action_attributes
+    produces 'application/json'
+
+    parameter name: :context, in: :query, type: :string
+    parameter name: :recipient, in: :query, type: :string
+    parameter name: :object, in: :query, type: :string
+
+    security [jwt_bearer_token: []]
+  end
+
+  def unauthorized_request(&block)
+    include_context 'Valid mandatory params and no token'
+
+    response '403', 'Non autorisé' do
+      description "Le jeton est absent"
+
+      block.call if block_given?
+
+      run_test!
+    end
+  end
+
+  def forbidden_request(&block)
+    include_context 'Valid mandatory params and unauthorized token'
+
+    response '403', 'Accès interdit' do
+      description "Le jeton ne possède pas les droits nécessaires"
+
+      block.call if block_given?
+
+      run_test!
+    end
+  end
 end
 
 RSpec.configure do |config|
@@ -59,5 +109,8 @@ RSpec.configure do |config|
   # Defaults to json. Accepts ':json' and ':yaml'.
   config.swagger_format = :yaml
 
-  config.include_context 'API authentication', type: :request
+  config.include_context 'Valid params (mandatory and token)', valid: true
+  config.include_context 'Valid mandatory params and no token', authenticate: false
+
+  config.extend RSWagCommonsResponses
 end
