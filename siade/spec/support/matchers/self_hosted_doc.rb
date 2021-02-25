@@ -25,6 +25,13 @@ module SelfHostedDoc
     end
   end
 
+  def be_a_valid_self_hosted_document_url(filename)
+    split_filename = filename.split('.')
+    extension = split_filename.pop
+    filename_without_ext = split_filename.join('.')
+    ValidUrl.new(filename_without_ext, ".#{extension}")
+  end
+
   def be_a_valid_self_hosted_pdf_url(expected)
     ValidUrl.new(expected, '.pdf')
   end
