@@ -50,7 +50,7 @@ end
 
 def eligible_siret(sample_type)
   samples = {
-    probtp: '43841606700017'
+    probtp: '34909797200021'
   }
   samples[sample_type]
 end

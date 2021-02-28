@@ -1,0 +1,38 @@
+class PROBTP::AttestationsCotisationsRetraite::MakeRequest < MakeRequest::Post
+  protected
+
+  def request_uri
+    URI('https://probtp_domain.gouv.fr/ws_ext/rest/certauth/mpsservices/getAttestationCotisation')
+  end
+
+  def request_params
+    {
+      corps: siret,
+    }
+  end
+
+  def http_options
+    {
+      use_ssl: true,
+      verify_mode: OpenSSL::SSL::VERIFY_PEER,
+      cert: cert,
+      key: key,
+    }
+  end
+
+  private
+
+  def key
+    raw_key = File.read(Rails.application.config_for(:ssl_vars)['path_wild_certif_key'])
+    OpenSSL::PKey::RSA.new(raw_key)
+  end
+
+  def cert
+    raw_cert = File.read(Rails.application.config_for(:ssl_vars)['path_wild_certif_cert'])
+    OpenSSL::X509::Certificate.new(raw_cert)
+  end
+
+  def siret
+    context.params[:siret]
+  end
+end

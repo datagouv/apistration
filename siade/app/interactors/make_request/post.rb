@@ -8,8 +8,14 @@ class MakeRequest::Post < MakeRequest
   def api_call
     context.response = http_wrapper do
       request = Net::HTTP::Post.new(request_uri)
-      request.body = post_request_body
+      request.body = build_request_body
       request
     end
+  end
+
+  private
+
+  def build_request_body
+    request_params.to_json
   end
 end
