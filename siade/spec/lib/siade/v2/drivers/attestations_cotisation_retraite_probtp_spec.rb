@@ -22,7 +22,7 @@ RSpec.describe SIADE::V2::Drivers::AttestationsCotisationRetraitePROBTP, :self_h
       let(:siret) { eligible_siret(:probtp) }
 
       # TODO PROBTP find a siret
-      its(:http_code, pending: 'Ask for an eligible_siret siret') { is_expected.to eq(200) }
+      its(:http_code) { is_expected.to eq(200) }
       its(:is_pdf?, pending: 'Ask for an eligible_siret siret') { is_expected.to be true }
     end
   end
