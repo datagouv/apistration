@@ -20,7 +20,7 @@ class Documents::Upload < ApplicationInteractor
   end
 
   def filename
-    context.filename
+    "#{context.filename}.#{context.file_type}"
   end
 
   def document_public_url
