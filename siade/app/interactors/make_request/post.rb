@@ -5,10 +5,6 @@ class MakeRequest::Post < MakeRequest
     fail 'should be implemented in inherited class'
   end
 
-  def http_options
-    {}
-  end
-
   def api_call
     context.response = http_wrapper do
       request = Net::HTTP::Post.new(request_uri)

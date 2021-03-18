@@ -19,6 +19,13 @@ class MakeRequest < ApplicationInteractor
     fail 'should be implemented in inherited class'
   end
 
+  def http_options
+    {
+      use_ssl: true,
+      verify_mode: OpenSSL::SSL::VERIFY_PEER,
+    }
+  end
+
   private
 
   def http_wrapper(&block)

@@ -5,10 +5,6 @@ class MakeRequest::Get < MakeRequest
     fail 'should be implemented in inherited class'
   end
 
-  def http_options
-    {}
-  end
-
   def request_params
     fail 'should be implemented in inherited class'
   end

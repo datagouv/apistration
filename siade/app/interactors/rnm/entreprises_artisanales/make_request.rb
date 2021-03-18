@@ -11,13 +11,6 @@ class RNM::EntreprisesArtisanales::MakeRequest < MakeRequest::Get
     }
   end
 
-  def http_options
-    {
-      use_ssl: true,
-      verify_mode: OpenSSL::SSL::VERIFY_PEER,
-    }
-  end
-
   private
 
   def siren
