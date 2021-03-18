@@ -1,3 +1,3 @@
 #!/bin/bash
 
-RAILS_ENV=test rails rswag
+RAILS_ENV=test bundle exec rails rswag

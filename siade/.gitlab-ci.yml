@@ -23,7 +23,7 @@ test:
     - bundle install --full-index --path=vendor
     - bundle exec rake dev:init
   script:
-    - bundle exec rspec
+    - ./bin/generate_and_test_swagger.sh && bundle exec rspec spec/
   artifacts:
     reports:
       cobertura: coverage/coverage.xml
