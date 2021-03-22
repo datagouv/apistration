@@ -85,3 +85,5 @@ builds/
 
 !/config/credentials/development.key
 !/config/credentials/test.key
+
+swagger/v3/open-api.yaml
