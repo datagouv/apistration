@@ -1,7 +1,9 @@
 class PROBTP::AttestationsCotisationsRetraite::ValidateResponse < ValidateResponse
   def call
-    if server_error?
-    elsif attestation_not_found?
+    if provider_error?
+      context.fail!
+    elsif etablissement_not_found?
+      context.fail!
     else
       return
     end
@@ -9,13 +11,35 @@ class PROBTP::AttestationsCotisationsRetraite::ValidateResponse < ValidateRespon
 
   private
 
-  def server_error?
-    #FIXME
-    false
+  def provider_error?
+    http_error_status? || invalid_json? || custom_error?
   end
 
-  def attestation_not_found?
-    #FIXME
+  def http_error_status?
+    http_code == 500
+  end
+
+  def invalid_json?
+    json_body
+
     false
+  rescue JSON::ParserError
+    true
+  end
+
+  def custom_error?
+    provider_response_code == '4'
+  end
+
+  def entete
+    json_body['entete']
+  end
+
+  def provider_response_code
+    entete['code']
+  end
+
+  def etablissement_not_found?
+    provider_response_code == '8'
   end
 end
