@@ -16,4 +16,16 @@ class ValidateResponse < ApplicationInteractor
     context.status = 502
     context.fail!
   end
+
+  def resource_not_found_response!(message = not_found_message)
+    context.errors << message
+    context.status = 404
+    context.fail!
+  end
+
+  private
+
+  def not_found_message
+    'Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel'
+  end
 end

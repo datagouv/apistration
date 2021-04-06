@@ -1,9 +1,9 @@
 class PROBTP::AttestationsCotisationsRetraite::ValidateResponse < ValidateResponse
   def call
     if provider_error?
-      context.fail!
+      invalid_provider_response!
     elsif etablissement_not_found?
-      context.fail!
+      resource_not_found_response!
     else
       return
     end
