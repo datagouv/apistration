@@ -25,18 +25,6 @@ RSpec.describe API::V3::PROBTP::AttestationsCotisationRetraiteController, type: 
         end
       end
 
-      context 'with unknown siret', vcr: { cassette_name: 'probtp/attestation/with_not_found_siret' } do
-        let(:siret) { not_found_siret(:probtp) }
-
-        its(:status) { is_expected.to eq(404) }
-
-        it 'returns an error message' do
-          expect(response_json).to include({
-            errors: ['Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel']
-          })
-        end
-      end
-
       context 'with eligible siret', vcr: { cassette_name: 'probtp/attestation/with_eligible_siret' } do
         let(:siret) { eligible_siret(:probtp) }
 

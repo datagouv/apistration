@@ -8,7 +8,18 @@ class API::V3::PROBTP::AttestationsCotisationRetraiteController < API::Authentic
       render json: ::PROBTP::AttestationCotisationRetraiteSerializer.new(organizer.resource).serializable_hash,
              status: organizer.status
     else
-      render json: { errors: organizer.errors }, status: organizer.status
+      # FIXME title: organizer.errors.first
+      # kinda ugly, it's to be compliant with RSwag 404 component
+      # It's gonna be refactor later with errors management
+      render json: {
+        errors: [
+          {
+            status: organizer.status.to_s,
+            title: organizer.errors.first,
+          }
+        ],
+      },
+      status: organizer.status
     end
   end
 
