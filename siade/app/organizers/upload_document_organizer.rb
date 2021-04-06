@@ -1,4 +1,4 @@
-class Documents::PrepareStorage < ApplicationInteractor
+class UploadDocumentOrganizer < ApplicationOrganizer
   include ResourceHelpers
 
   def self.inherited(klass)

@@ -1,4 +1,6 @@
-class PROBTP::AttestationsCotisationsRetraite::PrepareDocumentStorage < Documents::PrepareStorage
+class PROBTP::UploadAttestationsCotisationRetraite < UploadDocumentOrganizer
+  organize Documents::StoreFromBase64
+
   def source_file_content
     json_body['data']
   end
