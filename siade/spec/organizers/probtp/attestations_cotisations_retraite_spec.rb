@@ -15,6 +15,12 @@ describe PROBTP::AttestationsCotisationsRetraite, :self_hosted_doc do
 
       it { is_expected.to be_success }
 
+      it 'sets the resource id' do
+        id = subject.resource.id
+
+        expect(id).to eq(siret)
+      end
+
       it 'uploads the attestation on the self hosted storage' do
         document_url = subject.resource.document_url
 

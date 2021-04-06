@@ -7,6 +7,7 @@ class PROBTP::AttestationsCotisationsRetraite::BuildResource < BuildResource
 
   def build_resource
     {
+      id: context.params[:siret],
       document_url: context.url,
     }
   end
