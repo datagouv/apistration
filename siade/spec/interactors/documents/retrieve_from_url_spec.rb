@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Documents::RetrieveFromUrl do
+RSpec.describe Documents::RetrieveFromUrl do
   subject { described_class.call(retrieve_params) }
 
   let(:retrieve_params) do

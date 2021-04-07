@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Documents::DecryptPDF do
+RSpec.describe Documents::DecryptPDF do
   subject { described_class.call(decrypt_params) }
 
   let(:encrypted_content) { open_payload_file('pdf/encrypted.pdf').read }

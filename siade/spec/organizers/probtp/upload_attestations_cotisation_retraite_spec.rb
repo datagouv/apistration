@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe PROBTP::UploadAttestationsCotisationRetraite, :self_hosted_doc do
+RSpec.describe PROBTP::UploadAttestationsCotisationRetraite, :self_hosted_doc do
   describe '.call' do
     subject { described_class.call(response: response) }
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Documents::ValidateFormat do
+RSpec.describe Documents::ValidateFormat do
   subject { described_class.call(validation_params) }
 
   let(:validation_params) do

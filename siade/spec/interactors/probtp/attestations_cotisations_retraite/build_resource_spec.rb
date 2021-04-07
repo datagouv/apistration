@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe PROBTP::AttestationsCotisationsRetraite::BuildResource do
+RSpec.describe PROBTP::AttestationsCotisationsRetraite::BuildResource do
   describe '.call' do
     subject { described_class.call(url: 'not.a.real/file/upload', params: params) }
 

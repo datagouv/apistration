@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Documents::Base64Decode do
+RSpec.describe Documents::Base64Decode do
   subject { described_class.call(decode_params) }
 
   context 'when the content is a valid base64 encoded string' do
