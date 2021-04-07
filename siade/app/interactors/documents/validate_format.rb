@@ -11,11 +11,11 @@ class Documents::ValidateFormat < ApplicationInteractor
   end
 
   def valid_format?
-    !mime.nil? && mime.child_of?("application/#{context.file_type}")
+    mime.eql?("application/#{context.file_type}")
   end
 
   def mime
-    @mime ||= MimeMagic.by_magic(context.content)
+    @mime ||= Marcel::MimeType.for(context.content)
   end
 
   def errors
