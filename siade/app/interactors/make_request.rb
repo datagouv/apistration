@@ -48,6 +48,10 @@ class MakeRequest < ApplicationInteractor
     }
   end
 
+  def set_headers(request)
+    request['Content-Type'] = 'application/json'
+  end
+
   private
 
   def http_wrapper(&block)
@@ -59,10 +63,6 @@ class MakeRequest < ApplicationInteractor
       http.open_timeout = 10
       http.request(request)
     end
-  end
-
-  def set_headers(request)
-    request['Content-Type'] = 'application/json'
   end
 
   def fail_to_request_provider!(provider_klass_error)

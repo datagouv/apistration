@@ -5,6 +5,12 @@ class MakeRequest::Post < MakeRequest
     fail 'should be implemented in inherited class'
   end
 
+  def request_params
+    fail 'should be implemented in inherited class'
+  end
+
+  private
+
   def api_call
     context.response = http_wrapper do
       request = Net::HTTP::Post.new(request_uri)
@@ -12,8 +18,6 @@ class MakeRequest::Post < MakeRequest
       request
     end
   end
-
-  private
 
   def build_request_body
     request_params.to_json
