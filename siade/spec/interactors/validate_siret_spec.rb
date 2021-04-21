@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ValidateSiret, type: :interctor do
+RSpec.describe ValidateSiret, type: :validate_param_interactor do
   describe '#call' do
     subject { described_class.call(params: params) }
 

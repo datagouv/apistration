@@ -1,23 +1,13 @@
-
-class ValidateSiret < ApplicationInteractor
-  before do
-    context.errors ||= []
-  end
-
+class ValidateSiret < ValidateParamInteractor
   def call
     return if siret.valid?
 
-    context.errors << UnprocessableEntityError.new(:siret)
-    context.fail!
+    invalid_param!(:siret)
   end
 
   private
 
   def siret
-    @siret ||= Siret.new(params[:siret])
-  end
-
-  def params
-    context.params
+    @siret ||= Siret.new(param(:siret))
   end
 end
