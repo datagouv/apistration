@@ -1,22 +1,13 @@
-class ValidateSiren < ApplicationInteractor
-  before do
-    context.errors ||= []
-  end
-
+class ValidateSiren < ValidateParamInteractor
   def call
     return if siren.valid?
 
-    context.errors << UnprocessableEntityError.new(:siren)
-    context.fail!
+    invalid_param!(:siren)
   end
 
   private
 
   def siren
-    @siren ||= Siren.new(params[:siren])
-  end
-
-  def params
-    context.params
+    @siren ||= Siren.new(param(:siren))
   end
 end
