@@ -22,6 +22,20 @@ RSpec.describe MakeRequest, type: :interactor do
   let(:uri) { DummyMakeRequest.new.send(:request_uri) }
   let(:provider_name) { 'INSEE' }
 
+  describe 'response presence on context' do
+    context 'when response is not present on context' do
+      before do
+        allow_any_instance_of(DummyMakeRequest).to receive(:api_call)
+      end
+
+      it 'raises a ResponseNotDefined error' do
+        expect {
+          subject
+        }.to raise_error(MakeRequest::ResponseNotDefined)
+      end
+    end
+  end
+
   describe 'when request succeed' do
     before do
       stub_request(:get, uri.to_s).to_return(
