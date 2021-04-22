@@ -1,7 +1,9 @@
 class PROBTP::AttestationsCotisationsRetraite::ValidateResponse < ValidateResponse
   def call
-    if provider_error?
-      invalid_provider_response!
+    if internal_error? || invalid_json?
+      internal_error!
+    elsif custom_error?
+      internal_error!("Erreur fournisseur: #{entete['message']}")
     elsif etablissement_not_found?
       resource_not_found!
     else
@@ -11,11 +13,7 @@ class PROBTP::AttestationsCotisationsRetraite::ValidateResponse < ValidateRespon
 
   private
 
-  def provider_error?
-    http_error_status? || invalid_json? || custom_error?
-  end
-
-  def http_error_status?
+  def internal_error?
     http_code == 500
   end
 

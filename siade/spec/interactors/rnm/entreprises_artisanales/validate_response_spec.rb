@@ -21,6 +21,9 @@ RSpec.describe RNM::EntreprisesArtisanales::ValidateResponse, type: :validate_re
       end
 
       it { is_expected.to be_a_success }
+
+      its(:status) { is_expected.to eq(200) }
+      its(:errors) { is_expected.to be_blank }
     end
 
     context 'with an invalid body' do
@@ -32,6 +35,9 @@ RSpec.describe RNM::EntreprisesArtisanales::ValidateResponse, type: :validate_re
       end
 
       it { is_expected.to be_a_failure }
+
+      its(:status) { is_expected.to eq(502) }
+      its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
     end
 
     context 'with an invalid status code', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
@@ -41,6 +47,9 @@ RSpec.describe RNM::EntreprisesArtisanales::ValidateResponse, type: :validate_re
       end
 
       it { is_expected.to be_a_failure }
+
+      its(:status) { is_expected.to eq(502) }
+      its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
     end
   end
 end
