@@ -1,5 +1,5 @@
 class PROBTP::AttestationsCotisationsRetraite < ApplicationOrganizer
-  organize ValidateSiren,
+  organize ValidateSiret,
            PROBTP::AttestationsCotisationsRetraite::MakeRequest,
            PROBTP::AttestationsCotisationsRetraite::ValidateResponse,
            PROBTP::UploadAttestationsCotisationRetraite,
