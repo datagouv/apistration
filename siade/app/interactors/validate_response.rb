@@ -17,7 +17,7 @@ class ValidateResponse < ApplicationInteractor
     context.fail!
   end
 
-  def resource_not_found_response!(message = not_found_message)
+  def resource_not_found!(message = not_found_message)
     context.errors << message
     context.status = 404
     context.fail!
