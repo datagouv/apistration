@@ -1,4 +1,4 @@
-class PROBTP::AttestationsCotisationsRetraite < ApplicationOrganizer
+class PROBTP::AttestationsCotisationsRetraite < RetrieverOrganizer
   organize ValidateSiret,
            PROBTP::AttestationsCotisationsRetraite::MakeRequest,
            PROBTP::AttestationsCotisationsRetraite::ValidateResponse,

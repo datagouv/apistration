@@ -5,7 +5,7 @@ class PROBTP::AttestationsCotisationsRetraite::ValidateResponse < ValidateRespon
     elsif etablissement_not_found?
       resource_not_found!
     else
-      return
+      ok!
     end
   end
 
