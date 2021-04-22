@@ -1,4 +1,4 @@
-class API::V3::RNM::EntreprisesArtisanalesController < API::AuthenticateEntityController
+class API::V3::RNM::EntreprisesArtisanalesController < API::V3::BaseController
   def show
     authorize :entreprise_artisanale
 
@@ -8,17 +8,7 @@ class API::V3::RNM::EntreprisesArtisanalesController < API::AuthenticateEntityCo
       render json: ::RNM::EntrepriseArtisanaleSerializer.new(organizer.resource).serializable_hash,
              status: organizer.status
     else
-      # NOTE: NOT YET TESTED
-      # render json: ErrorsSerializer.new(organizer.errors).serializable_hash,
-      #        status: organizer.status
-      render json: {
-        errors: [
-          {
-            status: '404',
-            title: 'Entitée non trouvée'
-          }
-        ]
-      }, status: 404
+      render_errors(organizer)
     end
   end
 
