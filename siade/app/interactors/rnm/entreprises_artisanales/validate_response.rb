@@ -1,7 +1,7 @@
 class RNM::EntreprisesArtisanales::ValidateResponse < ValidateResponse
   def call
     if http_ok? && payload_present?
-      context.status = 200
+      ok!
     else
       invalid_provider_response!
     end
