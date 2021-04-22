@@ -1,5 +1,5 @@
 class RetrieverOrganizer < ApplicationOrganizer
-  class StatusNotDefined < Exception; end
+  class StatusNotDefined < StandardError; end
 
   def self.inherited(klass)
     klass.class_eval do
