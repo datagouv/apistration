@@ -9,7 +9,15 @@ class ValidateResponse < ApplicationInteractor
     end
   end
 
+  def call
+    fail 'should be implemented in inherited class'
+  end
+
   protected
+
+  def ok!
+    context.status = 200
+  end
 
   def invalid_provider_response!(message = 'Invalid provider response')
     context.errors << message
