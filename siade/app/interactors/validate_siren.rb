@@ -6,7 +6,7 @@ class ValidateSiren < ApplicationInteractor
   def call
     return if siren.valid?
 
-    context.errors.concat(siren.errors.full_messages)
+    context.errors << UnprocessableEntityError.new(:siren)
     context.status = 422
     context.fail!
   end
