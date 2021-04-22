@@ -25,14 +25,18 @@ class ValidateResponse < ApplicationInteractor
     context.status = 200
   end
 
-  def invalid_provider_response!(message = 'Invalid provider response')
-    context.errors << message
+  def internal_error!(message = nil)
+    context.errors << ::ProviderInternalServerError.new(context.provider_name, message)
     context.status = 502
     context.fail!
   end
 
+  def invalid_provider_response!(message = nil)
+    internal_error!(message)
+  end
+
   def resource_not_found!(message = not_found_message)
-    context.errors << message
+    context.errors << ::NotFoundError.new(context.provider_name, message)
     context.status = 404
     context.fail!
   end
