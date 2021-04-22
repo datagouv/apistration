@@ -6,6 +6,12 @@ class ValidateResponse < ApplicationInteractor
       before do
         context.errors ||= []
       end
+
+      after do
+        if context.status.nil?
+          status_not_defined!
+        end
+      end
     end
   end
 
@@ -35,5 +41,9 @@ class ValidateResponse < ApplicationInteractor
 
   def not_found_message
     'Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel'
+  end
+
+  def status_not_defined!
+    raise RetrieverOrganizer::StatusNotDefined
   end
 end
