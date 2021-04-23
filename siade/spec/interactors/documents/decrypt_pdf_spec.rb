@@ -22,4 +22,25 @@ RSpec.describe Documents::DecryptPDF do
       expect(encrypted_content).to include('Encrypt')
     end
   end
+
+  context 'when qpdf system command returns an error' do
+    before do
+      allow_any_instance_of(described_class).to receive(:command).and_return(
+        'qpdf lol oki',
+      )
+    end
+
+    it 'tracks error' do
+      expect(MonitoringService.instance).to receive(:track).with(
+        'error',
+        "PDF Decrypt fail to execute 'qpdf lol oki'",
+        {
+          exit_status: 2,
+          stderr: 'open lol: No such file or directory',
+        },
+      )
+
+      subject
+    end
+  end
 end
