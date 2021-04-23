@@ -33,7 +33,7 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite, :self_hosted_doc do
 
       it { is_expected.to be_a_failure }
 
-      its(:errors) { is_expected.to include('Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel') }
+      its(:errors) { is_expected.to have_error('Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel') }
 
       its(:status) { is_expected.to eq(404) }
     end
@@ -56,7 +56,7 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite, :self_hosted_doc do
 
         it { is_expected.to be_a_failure }
 
-        its(:errors) { is_expected.to include('Erreur lors du décodage : invalide Base64 format') }
+        its(:errors) { is_expected.to have_error('Erreur lors du décodage : invalide Base64 format') }
 
         its(:status) { is_expected.to eq(502) }
       end
@@ -66,7 +66,7 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite, :self_hosted_doc do
 
         it { is_expected.to be_a_failure }
 
-        its(:errors) { is_expected.to include('Invalid provider response') }
+        its(:errors) { is_expected.to have_error('Erreur fournisseur: Une erreur est survenue, merci de bien vouloir renouveler votre demande ultérieurement') }
 
         its(:status) { is_expected.to eq(502) }
       end
@@ -76,7 +76,7 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite, :self_hosted_doc do
 
         it { is_expected.to be_a_failure }
 
-        its(:errors) { is_expected.to include('Invalid provider response') }
+        its(:errors) { is_expected.to have_error('Mauvaise réponse envoyée par le fournisseur de données') }
 
         its(:status) { is_expected.to eq(502) }
       end
