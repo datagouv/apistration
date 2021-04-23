@@ -14,13 +14,39 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
       organize DummyRetrieverInteractor
 
       def provider_name
-        'INSEE'
+        context.provider_name
+      end
+    end
+  end
+
+  subject { DummyRetrieverOrganizer.call(params.merge(provider_name: provider_name)).status }
+
+  describe 'provider_name method' do
+    let(:params) { { set_status: 418 } }
+
+    context 'when it is not a valid provider name' do
+      let(:provider_name) { 'Invalid' }
+
+      it 'raises an error' do
+        expect {
+          subject
+        }.to raise_error(RetrieverOrganizer::InvalidProviderName)
+      end
+    end
+
+    context 'when it is a valid provider name' do
+      let(:provider_name) { 'INSEE' }
+
+      it 'does not raise an error' do
+        expect {
+          subject
+        }.not_to raise_error
       end
     end
   end
 
   describe 'status context' do
-    subject { DummyRetrieverOrganizer.call(params).status }
+    let(:provider_name) { 'INSEE' }
 
     context 'when there is no status defined' do
       let(:params) { {} }
