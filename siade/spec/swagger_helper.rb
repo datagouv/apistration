@@ -100,21 +100,18 @@ RSpec.configure do |config|
                 items: {
                   type: :object,
                   properties: {
-                    status: {
-                      type: :string,
-                      example: '404',
-                      enum: [
-                        '404',
-                      ],
-                    },
                     title: {
                       type: :string,
                       example: 'Resource not found',
-                    }
+                    },
+                    detail: {
+                      type: :string,
+                      example: 'Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel',
+                    },
                   },
                   required: %w[
-                    status
                     title
+                    detail
                   ],
                 },
               },
