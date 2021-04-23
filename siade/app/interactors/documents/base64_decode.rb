@@ -6,7 +6,7 @@ class Documents::Base64Decode < ApplicationInteractor
   def call
     context.content = Base64.strict_decode64(encoded_content)
   rescue ArgumentError
-    errors << 'Erreur lors du décodage : invalide Base64 format'
+    errors << invalid_base64_error
     context.status = 502
     context.fail!
   end
@@ -15,6 +15,14 @@ class Documents::Base64Decode < ApplicationInteractor
 
   def encoded_content
     context.content
+  end
+
+  def invalid_base64_error
+    BadFileFromProviderError.new(
+      context.provider_name,
+      :invalid_base64,
+      'Erreur lors du décodage : invalide Base64 format',
+    )
   end
 
   def errors

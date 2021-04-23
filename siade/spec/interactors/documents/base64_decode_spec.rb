@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Documents::Base64Decode do
-  subject { described_class.call(decode_params) }
+  subject { described_class.call(decode_params.merge(provider_name: provider_name)) }
+
+  let(:provider_name) { 'INSEE' }
 
   context 'when the content is a valid base64 encoded string' do
     let(:decode_params) do
@@ -23,6 +25,6 @@ RSpec.describe Documents::Base64Decode do
 
     it { is_expected.to be_failure }
 
-    its(:errors) { is_expected.to include('Erreur lors du décodage : invalide Base64 format') }
+    its(:errors) { is_expected.to have_error('Erreur lors du décodage : invalide Base64 format') }
   end
 end
