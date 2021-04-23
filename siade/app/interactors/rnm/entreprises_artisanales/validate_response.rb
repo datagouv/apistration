@@ -2,6 +2,8 @@ class RNM::EntreprisesArtisanales::ValidateResponse < ValidateResponse
   def call
     if http_ok? && payload_present?
       ok!
+    elsif http_not_found?
+      resource_not_found!
     else
       invalid_provider_response!
     end
@@ -11,6 +13,10 @@ class RNM::EntreprisesArtisanales::ValidateResponse < ValidateResponse
 
   def http_ok?
     http_code == 200
+  end
+
+  def http_not_found?
+    http_code == 404
   end
 
   def payload_present?

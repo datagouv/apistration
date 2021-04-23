@@ -2,54 +2,68 @@ require 'rails_helper'
 
 RSpec.describe RNM::EntreprisesArtisanales::ValidateResponse, type: :validate_response do
   describe '.call' do
-    subject { described_class.call(response: response) }
+    subject { described_class.call(response: response, provider_name: 'CMA France') }
 
-    let(:params) do
-      {
-        siren: valid_siren(:rnm_cma),
-      }
-    end
+    describe 'with real response' do
+      let(:response) { RNM::EntreprisesArtisanales::MakeRequest.call(params: params).response }
 
-    let(:response) do
-      instance_double('Net::HTTPOK', code: code, body: body)
-    end
-
-    context 'with valid response', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
-      let(:code) { '200' }
-      let(:body) do
-        RNM::EntreprisesArtisanales::MakeRequest.call(params: params).response.body
-      end
-
-      it { is_expected.to be_a_success }
-
-      its(:status) { is_expected.to eq(200) }
-      its(:errors) { is_expected.to be_blank }
-    end
-
-    context 'with an invalid body' do
-      let(:code) { '200' }
-      let(:body) do
+      let(:params) do
         {
-          lol: 'oki',
-        }.to_json
+          siren: siren,
+        }
       end
 
-      it { is_expected.to be_a_failure }
+      context 'with a valid siren', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
+        let(:siren) { valid_siren(:rnm_cma) }
 
-      its(:status) { is_expected.to eq(502) }
-      its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+        it { is_expected.to be_a_success }
+
+        its(:status) { is_expected.to eq(200) }
+        its(:errors) { is_expected.to be_blank }
+      end
+
+      context 'with a 404', vcr: { cassette_name: 'rnm_cma/not_found_siren' } do
+        let(:siren) { not_found_siren(:rnm_cma) }
+
+        it { is_expected.to be_a_failure }
+
+        its(:status) { is_expected.to eq(404) }
+        its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+      end
     end
 
-    context 'with an invalid status code', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
-      let(:code) { '418' }
-      let(:body) do
-        RNM::EntreprisesArtisanales::MakeRequest.call(params: params).response.body
+    context 'with stubbed response' do
+      let(:response) do
+        instance_double('Net::HTTPOK', code: code, body: body)
       end
 
-      it { is_expected.to be_a_failure }
+      context 'with a valid code and an invalid body' do
+        let(:code) { '200' }
+        let(:body) do
+          {
+            lol: 'oki',
+          }.to_json
+        end
 
-      its(:status) { is_expected.to eq(502) }
-      its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+        it { is_expected.to be_a_failure }
+
+        its(:status) { is_expected.to eq(502) }
+        its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+      end
+
+      context 'with an invalid status code' do
+        let(:code) { '418' }
+        let(:body) do
+          {
+            id: '123456789',
+          }
+        end
+
+        it { is_expected.to be_a_failure }
+
+        its(:status) { is_expected.to eq(502) }
+        its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+      end
     end
   end
 end
