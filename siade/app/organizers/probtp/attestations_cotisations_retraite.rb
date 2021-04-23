@@ -4,4 +4,8 @@ class PROBTP::AttestationsCotisationsRetraite < RetrieverOrganizer
            PROBTP::AttestationsCotisationsRetraite::ValidateResponse,
            PROBTP::UploadAttestationsCotisationRetraite,
            PROBTP::AttestationsCotisationsRetraite::BuildResource
+
+  def provider_name
+    'ProBTP'
+  end
 end

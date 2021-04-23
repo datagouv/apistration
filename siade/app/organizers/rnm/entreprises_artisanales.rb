@@ -3,4 +3,8 @@ class RNM::EntreprisesArtisanales < RetrieverOrganizer
            RNM::EntreprisesArtisanales::MakeRequest,
            RNM::EntreprisesArtisanales::ValidateResponse,
            RNM::EntreprisesArtisanales::BuildResource
+
+  def provider_name
+    'CMA France'
+  end
 end

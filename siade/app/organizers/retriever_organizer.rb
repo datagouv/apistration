@@ -4,6 +4,7 @@ class RetrieverOrganizer < ApplicationOrganizer
   def self.inherited(klass)
     klass.class_eval do
       before do
+        context.provider_name = provider_name
         context.resource = nil
         context.status   = nil
         context.errors   = []
@@ -15,6 +16,10 @@ class RetrieverOrganizer < ApplicationOrganizer
         end
       end
     end
+  end
+
+  def provider_name
+    fail 'should be implemented in inherited class'
   end
 
   def status_not_defined!

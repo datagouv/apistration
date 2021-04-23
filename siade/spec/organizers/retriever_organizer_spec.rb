@@ -12,6 +12,10 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
 
     class DummyRetrieverOrganizer < RetrieverOrganizer
       organize DummyRetrieverInteractor
+
+      def provider_name
+        'INSEE'
+      end
     end
   end
 
