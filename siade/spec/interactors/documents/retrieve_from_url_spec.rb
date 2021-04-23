@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Documents::RetrieveFromUrl do
-  subject { described_class.call(retrieve_params) }
+  subject { described_class.call(retrieve_params.merge(provider_name: provider_name)) }
+
+  let(:provider_name) { 'INSEE' }
 
   let(:retrieve_params) do
     { url: source_doc_url }
@@ -35,7 +37,7 @@ RSpec.describe Documents::RetrieveFromUrl do
 
       it { is_expected.to be_failure }
 
-      its(:errors) { is_expected.to include('Erreur lors de la récupération du document : status 404 with body \'Not Found\'') }
+      its(:errors) { is_expected.to have_error('Erreur lors de la récupération du document : status 404 with body \'Not Found\'') }
     end
 
     context 'when a timeout occurs downloading the document' do
@@ -43,7 +45,7 @@ RSpec.describe Documents::RetrieveFromUrl do
 
       it { is_expected.to be_failure }
 
-      its(:errors) { is_expected.to include('Temps d\'attente de téléchargement du document écoulé') }
+      its(:errors) { is_expected.to have_error('Temps d\'attente de téléchargement du document écoulé') }
     end
 
     context 'when the source URL is invalid' do
@@ -51,7 +53,7 @@ RSpec.describe Documents::RetrieveFromUrl do
 
       it { is_expected.to be_failure }
 
-      its(:errors) { is_expected.to include('L\'URL source du document chez le fournisseur de données est invalide : bad URI(is not URI?): "not an URL".') }
+      its(:errors) { is_expected.to have_error('L\'URL source du document chez le fournisseur de données est invalide : bad URI(is not URI?): "not an URL".') }
     end
   end
 end
