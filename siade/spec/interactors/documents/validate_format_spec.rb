@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Documents::ValidateFormat do
-  subject { described_class.call(validation_params) }
+  subject { described_class.call(validation_params.merge(provider_name: provider_name)) }
+
+  let(:provider_name) { 'INSEE' }
 
   let(:validation_params) do
     {
@@ -22,7 +24,7 @@ RSpec.describe Documents::ValidateFormat do
 
       it { is_expected.to be_failure }
 
-      its(:errors) { is_expected.to include('File content is not in the expected `pdf` format.') }
+      its(:errors) { is_expected.to have_error('File content is not in the expected `pdf` format.') }
     end
   end
 end
