@@ -125,10 +125,7 @@ RSpec.describe 'RNM: Entreprises artisanales', type: :request do
               :data,
             ]
 
-          run_test! do |response|
-            data = JSON.parse(response.body)
-            p data
-          end
+          run_test!
         end
 
         response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'rnm_cma/not_found_siren' } do
