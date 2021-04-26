@@ -19,7 +19,7 @@ RSpec.describe RNM::EntreprisesArtisanales::ValidateResponse, type: :validate_re
         it { is_expected.to be_a_success }
 
         its(:status) { is_expected.to eq(200) }
-        its(:errors) { is_expected.to be_blank }
+        its(:errors) { is_expected.to be_empty }
       end
 
       context 'with a 404', vcr: { cassette_name: 'rnm_cma/not_found_siren' } do

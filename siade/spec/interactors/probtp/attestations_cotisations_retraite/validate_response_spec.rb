@@ -18,7 +18,7 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite::ValidateResponse do
       it { is_expected.to be_a_success }
 
       its(:status) { is_expected.to eq(200) }
-      its(:errors) { is_expected.to be_blank }
+      its(:errors) { is_expected.to be_empty }
     end
 
     context 'when the attestation is not found', vcr: { cassette_name: 'probtp/attestation/with_not_found_siret' } do

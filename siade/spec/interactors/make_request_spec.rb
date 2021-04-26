@@ -50,7 +50,7 @@ RSpec.describe MakeRequest, type: :interactor do
 
     its(:response) { is_expected.to be_present }
 
-    its(:errors) { is_expected.to be_blank }
+    its(:errors) { is_expected.to be_empty }
     its(:status) { is_expected.to be_nil }
   end
 
