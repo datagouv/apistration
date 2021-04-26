@@ -46,7 +46,7 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite::ValidateResponse do
       its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
 
       it 'adds error message do ProviderInternalServerError' do
-        expect(subject.errors.first.detail).to match(/Une erreur est survenue/)
+        expect(subject.errors).to have_error('Erreur fournisseur: Une erreur est survenue, merci de bien vouloir renouveler votre demande ultérieurement')
       end
     end
 
