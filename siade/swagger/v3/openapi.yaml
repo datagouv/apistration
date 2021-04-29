@@ -4,6 +4,71 @@ info:
   title: API Entreprise
   version: v3
 paths:
+  "/v3/acoss/attestations_sociales/{siren}":
+    get:
+      summary: Récupération de l'attestation sociale d'une entreprise
+      tags:
+      - Attestations sociales et fiscales
+      parameters:
+      - name: context
+        in: query
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        schema:
+          type: string
+      - name: object
+        in: query
+        schema:
+          type: string
+      - name: siren
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - jwt_bearer_token: []
+      description: Le jeton ne possède pas les droits nécessaires
+      responses:
+        '403':
+          description: Accès interdit
+        '200':
+          description: Entreprise found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '511101651'
+                      type:
+                        type: string
+                        example: document
+                        enum:
+                        - document
+                      attributes:
+                        type: object
+                        properties:
+                          document_url:
+                            example: https://storage.entreprise.api.gouv.fr/siade_dev/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf
+                            description: Lien vers l'attestation
+                        required:
+                        - document_url
+                    required:
+                    - id
+                required:
+                - data
+        '404':
+          description: Entreprise non trouvée
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/NotFound"
   "/v3/probtp/attestations_cotisation_retraite/{siret}":
     get:
       summary: Récupération d'une attestation

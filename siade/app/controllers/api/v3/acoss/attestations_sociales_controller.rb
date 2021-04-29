@@ -1,0 +1,24 @@
+class API::V3::ACOSS::AttestationsSocialesController < API::V3::BaseController
+  def show
+    authorize :attestations_sociales
+
+    organizer = ::ACOSS::AttestationsSociales.call(params: organizer_params)
+
+    if organizer.success?
+      render json: ::ACOSS::AttestationSocialeSerializer::V3.new(organizer.resource).serializable_hash,
+             status: extract_http_code(organizer)
+    else
+      render_errors(organizer)
+    end
+  end
+
+  private
+
+  def organizer_params
+    {
+      siren: params.require(:siren),
+      user_id: pundit_user.logstash_id,
+      recipient: params[:recipient]
+    }
+  end
+end

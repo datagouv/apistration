@@ -73,6 +73,10 @@ Rails.application.routes.draw do
       get 'attestations_cotisation_retraite/:siret' => '/api/v3/probtp/attestations_cotisation_retraite#show'
     end
 
+    namespace :acoss do
+      get 'attestations_sociales/:siren' => '/api/v3/acoss/attestations_sociales#show'
+    end
+
     mount Rswag::Ui::Engine   => '/developers'
     mount Rswag::Api::Engine  => '/api-docs'
   end
