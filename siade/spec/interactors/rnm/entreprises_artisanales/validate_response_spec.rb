@@ -18,7 +18,6 @@ RSpec.describe RNM::EntreprisesArtisanales::ValidateResponse, type: :validate_re
 
       it { is_expected.to be_a_success }
 
-      its(:status) { is_expected.to eq(200) }
       its(:errors) { is_expected.to be_empty }
     end
 
@@ -28,7 +27,6 @@ RSpec.describe RNM::EntreprisesArtisanales::ValidateResponse, type: :validate_re
 
       it { is_expected.to be_a_failure }
 
-      its(:status) { is_expected.to eq(404) }
       its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
     end
 
@@ -42,7 +40,6 @@ RSpec.describe RNM::EntreprisesArtisanales::ValidateResponse, type: :validate_re
 
       it { is_expected.to be_a_failure }
 
-      its(:status) { is_expected.to eq(502) }
       its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
     end
 
@@ -52,7 +49,6 @@ RSpec.describe RNM::EntreprisesArtisanales::ValidateResponse, type: :validate_re
 
       it { is_expected.to be_a_failure }
 
-      its(:status) { is_expected.to eq(502) }
       its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
     end
 
@@ -66,7 +62,6 @@ RSpec.describe RNM::EntreprisesArtisanales::ValidateResponse, type: :validate_re
 
       it { is_expected.to be_a_failure }
 
-      its(:status) { is_expected.to eq(502) }
       its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
     end
   end

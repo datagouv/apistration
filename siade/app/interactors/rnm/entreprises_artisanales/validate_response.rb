@@ -1,8 +1,8 @@
 class RNM::EntreprisesArtisanales::ValidateResponse < ValidateResponse
   def call
-    if http_ok? && payload_present?
-      ok!
-    elsif http_not_found?
+    return if http_ok? && payload_present?
+
+    if http_not_found?
       resource_not_found!
     else
       invalid_provider_response!

@@ -17,7 +17,6 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite::ValidateResponse do
 
       it { is_expected.to be_a_success }
 
-      its(:status) { is_expected.to eq(200) }
       its(:errors) { is_expected.to be_empty }
     end
 
@@ -32,7 +31,6 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite::ValidateResponse do
 
       it { is_expected.to be_a_failure }
 
-      its(:status) { is_expected.to eq(404) }
       its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
     end
 
@@ -42,7 +40,6 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite::ValidateResponse do
 
       it { is_expected.to be_a_failure }
 
-      its(:status) { is_expected.to eq(502) }
       its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
 
       it 'adds error message do ProviderInternalServerError' do
@@ -56,7 +53,6 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite::ValidateResponse do
 
       it { is_expected.to be_a_failure }
 
-      its(:status) { is_expected.to eq(502) }
       its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
     end
   end

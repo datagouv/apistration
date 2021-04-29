@@ -6,8 +6,6 @@ class PROBTP::AttestationsCotisationsRetraite::ValidateResponse < ValidateRespon
       invalid_provider_response!("Erreur fournisseur: #{entete['message']}")
     elsif etablissement_not_found?
       resource_not_found!
-    else
-      ok!
     end
   end
 
