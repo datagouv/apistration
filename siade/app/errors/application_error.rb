@@ -29,6 +29,10 @@ class ApplicationError
     }
   end
 
+  def kind
+    fail 'has to be implemented in inherited classes'
+  end
+
   protected
 
   def error_entry

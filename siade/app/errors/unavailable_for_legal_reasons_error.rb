@@ -5,6 +5,10 @@ class UnavailableForLegalReasonsError < AbstractGenericProviderError
     '005'
   end
 
+  def kind
+    :unavailable_for_legal_reason
+  end
+
   def detail
     @message
   end

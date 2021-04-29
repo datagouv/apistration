@@ -23,6 +23,10 @@ class AbstractSpecificProviderError < ApplicationError
     }
   end
 
+  def kind
+    :provider_error
+  end
+
   protected
 
   def subcode_config

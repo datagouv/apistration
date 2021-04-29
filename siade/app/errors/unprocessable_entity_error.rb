@@ -25,4 +25,8 @@ class UnprocessableEntityError < ApplicationError
       raise KeyError, "#{field} is not a valid field name"
     end
   end
+
+  def kind
+    :wrong_parameter
+  end
 end

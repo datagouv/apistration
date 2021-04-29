@@ -18,4 +18,8 @@ class BadRequestError < ApplicationError
   def code
     '00401'
   end
+
+  def kind
+    :bad_request
+  end
 end

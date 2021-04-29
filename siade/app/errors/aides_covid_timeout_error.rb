@@ -17,4 +17,8 @@ class AidesCovidTimeoutError < ApplicationError
       provider: errors_backend.provider_from_code(code),
     }
   end
+
+  def kind
+    :provider_error
+  end
 end

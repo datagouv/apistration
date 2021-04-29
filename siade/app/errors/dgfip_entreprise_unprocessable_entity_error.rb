@@ -14,4 +14,8 @@ class DGFIPEntrepriseUnprocessableEntityError < ApplicationError
   def detail
     @message
   end
+
+  def kind
+    :provider_error
+  end
 end

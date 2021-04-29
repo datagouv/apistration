@@ -8,4 +8,8 @@ class DGFIPPotentialNotFoundError < ApplicationError
       provider: 'DGFIP',
     }
   end
+
+  def kind
+    :provider_error
+  end
 end

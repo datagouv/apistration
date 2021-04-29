@@ -24,6 +24,7 @@ RSpec.shared_examples 'a valid error' do
       title
       code
       detail
+      kind
     ].each do |method|
       expect(subject.public_send(method)).to be_present
     end

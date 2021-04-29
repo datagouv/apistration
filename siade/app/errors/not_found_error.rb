@@ -14,6 +14,10 @@ class NotFoundError < AbstractGenericProviderError
     'Entité non trouvée'
   end
 
+  def kind
+    :not_found
+  end
+
   def detail
     @message || 'Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel'
   end

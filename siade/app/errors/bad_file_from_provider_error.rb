@@ -17,6 +17,10 @@ class BadFileFromProviderError < ApplicationError
     @message
   end
 
+  def kind
+    :provider_error
+  end
+
   protected
 
   def subcode

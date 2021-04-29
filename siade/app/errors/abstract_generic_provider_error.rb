@@ -26,6 +26,10 @@ class AbstractGenericProviderError < ApplicationError
     @message || super
   end
 
+  def kind
+    :provider_error
+  end
+
   def error_entry
     errors_backend.get(subcode) || {}
   end
