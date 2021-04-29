@@ -20,6 +20,12 @@ class ValidateResponse < ApplicationInteractor
     context.fail!
   end
 
+  def unknown_provider_response!(message = nil)
+    context.errors << ::ProviderUnknownError.new(context.provider_name, message)
+    context.status = 502
+    context.fail!
+  end
+
   def resource_not_found!(message = not_found_message)
     context.errors << ::NotFoundError.new(context.provider_name, message)
     context.fail!
