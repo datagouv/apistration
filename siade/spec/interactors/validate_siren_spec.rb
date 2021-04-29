@@ -22,7 +22,6 @@ RSpec.describe ValidateSiren, type: :interctor do
       it { is_expected.to be_a_failure }
 
       its(:errors) { is_expected.to be_present }
-      its(:status) { is_expected.to eq(422) }
     end
   end
 end

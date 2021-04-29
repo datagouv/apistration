@@ -20,18 +20,15 @@ class MakeRequest < ApplicationInteractor
   rescue Net::OpenTimeout, Net::ReadTimeout, EOFError
     fail_to_request_provider!(
       ProviderTimeoutError,
-      504,
     )
   rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EHOSTUNREACH
     fail_to_request_provider!(
       ProviderUnavailable,
-      502,
     )
   rescue SocketError => exception
     if dns_lookup_error?(exception)
       fail_to_request_provider!(
         DnsResolutionError,
-        502,
       )
     else
       raise
@@ -68,9 +65,8 @@ class MakeRequest < ApplicationInteractor
     request['Content-Type'] = 'application/json'
   end
 
-  def fail_to_request_provider!(provider_klass_error, status)
+  def fail_to_request_provider!(provider_klass_error)
     context.errors << provider_klass_error.new(context.provider_name)
-    context.status = status
     context.fail!
   end
 

@@ -49,9 +49,7 @@ RSpec.describe MakeRequest, type: :interactor do
     it { is_expected.to be_a_success }
 
     its(:response) { is_expected.to be_present }
-
     its(:errors) { is_expected.to be_empty }
-    its(:status) { is_expected.to be_nil }
   end
 
   context 'when request failed' do
@@ -61,7 +59,6 @@ RSpec.describe MakeRequest, type: :interactor do
       end
 
       it { is_expected.to be_a_failure }
-      its(:status) { is_expected.to eq(504) }
 
       it 'adds ProviderTimeoutError to errors' do
         expect(subject.errors).to include(instance_of(ProviderTimeoutError))
@@ -80,7 +77,6 @@ RSpec.describe MakeRequest, type: :interactor do
       end
 
       it { is_expected.to be_a_failure }
-      its(:status) { is_expected.to eq(502) }
 
       it 'adds ProviderUnavailable to errors' do
         expect(subject.errors).to include(instance_of(ProviderUnavailable))
@@ -98,7 +94,6 @@ RSpec.describe MakeRequest, type: :interactor do
         let(:socket_error_message) { 'Failed to open TCP connection to api.entreprise.gouv.fr:443 getaddrinfo: No address associated with hostname)' }
 
         it { is_expected.to be_a_failure }
-        its(:status) { is_expected.to eq 502 }
 
         it 'adds DnsResolutionError to errors' do
           expect(subject.errors).to include(instance_of(DnsResolutionError))
@@ -110,7 +105,6 @@ RSpec.describe MakeRequest, type: :interactor do
 
 
         it { is_expected.to be_a_failure }
-        its(:status) { is_expected.to eq 502 }
 
         it 'adds DnsResolutionError to errors' do
           expect(subject.errors).to include(instance_of(DnsResolutionError))

@@ -7,7 +7,6 @@ class ValidateSiren < ApplicationInteractor
     return if siren.valid?
 
     context.errors << UnprocessableEntityError.new(:siren)
-    context.status = 422
     context.fail!
   end
 

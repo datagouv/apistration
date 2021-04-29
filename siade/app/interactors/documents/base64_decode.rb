@@ -7,7 +7,6 @@ class Documents::Base64Decode < ApplicationInteractor
     context.content = Base64.strict_decode64(encoded_content)
   rescue ArgumentError
     errors << invalid_base64_error
-    context.status = 502
     context.fail!
   end
 

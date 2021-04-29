@@ -8,7 +8,6 @@ class ValidateSiret < ApplicationInteractor
     return if siret.valid?
 
     context.errors << UnprocessableEntityError.new(:siret)
-    context.status = 422
     context.fail!
   end
 
