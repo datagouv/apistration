@@ -28,4 +28,4 @@ task :deploy do
   end
 end
 
-task default: %i[spec]
+task default: %i[swagger:generate spec]
