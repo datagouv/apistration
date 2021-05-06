@@ -66,11 +66,11 @@ Rails.application.routes.draw do
 
   namespace :v3 do
     namespace :rnm do
-      get 'entreprises/:siren' => '/api/v3/rnm/entreprises_artisanales#show'
+      get 'entreprises/:siren' => '/api/v3_and_more/rnm/entreprises_artisanales#show'
     end
 
     namespace :probtp do
-      get 'attestations_cotisation_retraite/:siret' => '/api/v3/probtp/attestations_cotisation_retraite#show'
+      get 'attestations_cotisation_retraite/:siret' => '/api/v3_and_more/probtp/attestations_cotisation_retraite#show'
     end
 
     namespace :acoss do

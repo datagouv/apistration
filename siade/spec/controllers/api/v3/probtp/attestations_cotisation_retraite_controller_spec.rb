@@ -1,4 +1,4 @@
-RSpec.describe API::V3::PROBTP::AttestationsCotisationRetraiteController, type: :controller do
+RSpec.describe API::V3AndMore::PROBTP::AttestationsCotisationRetraiteController, type: :controller do
   it_behaves_like 'unauthorized'
   it_behaves_like 'forbidden'
   it_behaves_like 'ask_for_mandatory_parameters'

@@ -1,4 +1,4 @@
-class API::V3::RNM::EntreprisesArtisanalesController < API::V3::BaseController
+class API::V3AndMore::RNM::EntreprisesArtisanalesController < API::V3AndMore::BaseController
   def show
     authorize :entreprise_artisanale
 

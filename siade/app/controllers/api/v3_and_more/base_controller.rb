@@ -1,4 +1,4 @@
-class API::V3::BaseController < API::AuthenticateEntityController
+class API::V3AndMore::BaseController < API::AuthenticateEntityController
   before_action :set_content_type_header!
 
   protected
