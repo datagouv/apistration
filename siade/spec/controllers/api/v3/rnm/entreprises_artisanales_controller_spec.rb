@@ -41,7 +41,6 @@ RSpec.describe API::V3::RNM::EntreprisesArtisanalesController, type: :controller
         let(:siren) { valid_siren(:rnm_cma) }
 
         it 'returns HTTP code 200'  do
-          p response.body
           expect(response).to have_http_status(200)
         end
       end
