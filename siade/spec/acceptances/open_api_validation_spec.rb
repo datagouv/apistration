@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 RSpec.describe "OpenAPI file", type: :acceptance do
   DEFINITION_PATHS = [
-    Rails.root.join('public', 'v2', 'open-api.yml').to_s
+    'public/v2/open-api.yml',
+    *Dir.glob('swagger/**/*.yaml')
   ].freeze
 
   DEFINITION_PATHS.each do |definition_path|
