@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe "OpenAPI v3 file", type: :acceptance do
-  let(:open_api_file) { Rails.root.join("swagger/v3/open-api.yaml") }
+  let(:open_api_file) { Rails.root.join("swagger/v3/openapi.yaml") }
 
   it "is a valid YAML" do
     expect {

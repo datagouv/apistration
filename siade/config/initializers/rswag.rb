@@ -19,7 +19,7 @@ Rswag::Ui.configure do |c|
   # NOTE: If you're using rspec-api to expose Swagger files (under swagger_root) as JSON or YAML endpoints,
   # then the list below should correspond to the relative paths for those endpoints
 
-  c.swagger_endpoint '/v3/api-docs/v3/open-api.yaml', 'API V3 Docs'
+  c.swagger_endpoint '/v3/api-docs/v3/openapi.yaml', 'API V3 Docs'
 
   # Add Basic Auth in case your API is private
   # c.basic_auth_enabled = true
