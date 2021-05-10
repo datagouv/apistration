@@ -5,7 +5,7 @@ class API::V3::RNM::EntreprisesArtisanalesController < API::V3::BaseController
     organizer = ::RNM::EntreprisesArtisanales.call(params: organizer_params)
 
     if organizer.success?
-      render json: ::RNM::EntrepriseArtisanaleSerializer.new(organizer.resource).serializable_hash,
+      render json: ::RNM::EntrepriseArtisanaleSerializer::V3.new(organizer.resource).serializable_hash,
              status: organizer.status
     else
       render_errors(organizer)
