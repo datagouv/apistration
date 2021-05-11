@@ -6,7 +6,7 @@ class API::V3::PROBTP::AttestationsCotisationRetraiteController < API::V3::BaseC
 
     if organizer.success?
       render json: ::PROBTP::AttestationCotisationRetraiteSerializer::V3.new(organizer.resource).serializable_hash,
-             status: organizer.status
+             status: extract_http_code(organizer)
     else
       render_errors(organizer)
     end
