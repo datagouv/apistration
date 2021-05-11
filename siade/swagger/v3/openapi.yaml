@@ -1,0 +1,215 @@
+---
+openapi: 3.0.1
+info:
+  title: API Entreprise
+  version: v3
+paths:
+  "/v3/probtp/attestations_cotisation_retraite/{siret}":
+    get:
+      summary: Récupération d'une attestation
+      tags:
+      - Attestations sociales et fiscales
+      parameters:
+      - name: context
+        in: query
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        schema:
+          type: string
+      - name: object
+        in: query
+        schema:
+          type: string
+      - name: siret
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - jwt_bearer_token: []
+      description: Le jeton ne possède pas les droits nécessaires
+      responses:
+        '403':
+          description: Accès interdit
+        '200':
+          description: Attestation found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '34909797200021'
+                      attributes:
+                        type: object
+                        properties:
+                          document_url:
+                            type: string
+                            example: https://storage.entreprise.api.gouv.fr/siade_dev/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf
+                            description: Lien vers l'attestation
+                        required:
+                        - document_url
+                    required:
+                    - id
+                required:
+                - data
+        '404':
+          description: Attestation non trouvée
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/NotFound"
+  "/v3/rnm/entreprises/{siren}":
+    get:
+      summary: Récupération des informations d'une entreprise artisanale
+      tags:
+      - Informations générales
+      parameters:
+      - name: context
+        in: query
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        schema:
+          type: string
+      - name: object
+        in: query
+        schema:
+          type: string
+      - name: siren
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - jwt_bearer_token: []
+      description: Le jeton ne possède pas les droits nécessaires
+      responses:
+        '403':
+          description: Accès interdit
+        '200':
+          description: Entreprise found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '301123626'
+                      attributes:
+                        type: object
+                        properties:
+                          siren:
+                            type: string
+                            example: '301123626'
+                            description: Siren de l'entreprise
+                          modalite_exercice:
+                            type: string
+                            example: P
+                            description: "Détermine si l'entreprise a une activité
+                              permanente ou saisonnière.\n                      \n\n
+                              \                     L'activité est dite saisonnière
+                              si chaque année, l'entreprise cesse totalement ses activités
+                              pendant plus de 3 mois consécutifs.\n                      \n\n
+                              \                     \n\n                      Les
+                              valeurs possibles sont:\n                      \n\n
+                              \                     - P => Permanent\n                      \n\n
+                              \                     - S => Saisonnière\n                      \n\n
+                              \                     - NR => Non renseignée"
+                            enum:
+                            - P
+                            - S
+                            - NR
+                          non_sedentaire:
+                            type: string
+                            example: '0'
+                            description: "Indique si l'entreprise a une activité ambulante.\n
+                              \                       \n\n                        \n\n
+                              \                       Les valeurs possibles sont:\n
+                              \                       \n\n                        -
+                              0 => sédentaire\n                        \n\n                        -
+                              1 => non-sédentaire"
+                            enum:
+                            - '0'
+                            - '1'
+                        required:
+                        - siren
+                        - modalite_exercice
+                        - non_sedentaire
+                      relationships:
+                        type: object
+                        properties:
+                          adresse:
+                            type: object
+                            properties:
+                              data:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    example: '301123626'
+                                  type:
+                                    type: string
+                                    enum:
+                                    - adresse
+                                    example: adresse
+                              links:
+                                type: object
+                                properties:
+                                  related:
+                                    type: string
+                                    example: https://entreprises.api.gouv.fr/api/v3/insee/adresse/301123626
+                    required:
+                    - id
+                required:
+                - data
+        '404':
+          description: Entreprise non trouvée
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/NotFound"
+servers:
+- url: https://entreprise.api.gouv.fr
+  description: Environnement de productoin
+- url: https://staging.entreprise.api.gouv.fr
+  description: Environnement de staging
+components:
+  schemas:
+    NotFound:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+                example: Resource not found
+              detail:
+                type: string
+                example: Le siret ou siren indiqué n'existe pas, n'est pas connu ou
+                  ne comporte aucune information pour cet appel
+            required:
+            - title
+            - detail
+      required:
+      - errors
+  securitySchemes:
+    jwt_bearer_token:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT Token
