@@ -15,7 +15,7 @@ class APIController < ActionController::API
   def process_action(*args)
     super
   rescue ActionDispatch::Http::MimeNegotiation::InvalidType => e
-    request.headers['Content-Type'] = 'application/json'
+    request.headers['Content-Type'] = content_type_header
 
     error = BadRequestError.new(e.message)
 
@@ -28,6 +28,10 @@ class APIController < ActionController::API
   end
 
   protected
+
+  def content_type_header
+    'application/json'
+  end
 
   def render_errors(retriever, extra_payload={})
     render json:    ErrorsSerializer.new(retriever.errors, format: error_format).as_json.merge(extra_payload || {}),

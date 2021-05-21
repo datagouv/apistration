@@ -1,7 +1,12 @@
 class API::V3::BaseController < API::AuthenticateEntityController
+  before_action :set_content_type_header!
+
+  protected
+
   def render_errors(organizer)
-    render json:    ::ErrorsSerializer.new(organizer.errors, format: error_format).as_json,
-           status:  extract_http_code(organizer)
+    render content_type:  content_type_header,
+           json:          ::ErrorsSerializer.new(organizer.errors, format: error_format).as_json,
+           status:        extract_http_code(organizer)
   end
 
   def extract_http_code(retriever)
@@ -28,5 +33,13 @@ class API::V3::BaseController < API::AuthenticateEntityController
     retriever.errors.any? do |error|
       error.kind == kind
     end
+  end
+
+  def content_type_header
+    'application/vnd.api+json'
+  end
+
+  def set_content_type_header!
+    response.headers['Content-Type'] = content_type_header
   end
 end

@@ -34,6 +34,7 @@ RSpec.describe APIController, type: :controller do
       end
 
       after do
+        expect(response.content_type).to start_with('application/json')
         ENV['JSON_API_FORMAT_ERROR'] = 'true'
       end
 

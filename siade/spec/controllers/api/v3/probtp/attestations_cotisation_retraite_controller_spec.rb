@@ -10,6 +10,10 @@ RSpec.describe API::V3::PROBTP::AttestationsCotisationRetraiteController, type: 
       get :show, params: { siret: siret, token: token }.merge(mandatory_params)
     end
 
+    after do
+      expect(response.content_type).to start_with('application/vnd.api+json')
+    end
+
     context 'when user authenticate with valid token', vcr: { cassette_name: 'probtp/attestation/with_eligible_siret' } do
       let(:token) { yes_jwt }
 

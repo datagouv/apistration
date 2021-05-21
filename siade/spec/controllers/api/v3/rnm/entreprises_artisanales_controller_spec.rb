@@ -10,6 +10,10 @@ RSpec.describe API::V3::RNM::EntreprisesArtisanalesController, type: :controller
       get :show, params: { siren: siren, token: token }.merge(mandatory_params)
     end
 
+    after do
+      expect(response.content_type).to start_with('application/vnd.api+json')
+    end
+
     context 'when user authenticate with valid token' do
       let(:token) { yes_jwt }
 
