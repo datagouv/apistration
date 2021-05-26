@@ -30,7 +30,7 @@ class SIADE::V2::Responses::UnexpectedRedirection
   private
 
   def track_wrong_redirect
-    MonitoringService.instance.track_provider_error(
+    MonitoringService.instance.track_provider_error_from_response(
       self,
       {
         redirect_location: redirect_location,

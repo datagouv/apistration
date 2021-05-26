@@ -16,14 +16,14 @@ RSpec.describe SIADE::V2::Responses::AbstractProviderError, type: :provider_resp
   let(:provider_name) { 'Dummy provider' }
 
   before do
-    allow(MonitoringService.instance).to receive(:track_provider_error).and_call_original
+    allow(MonitoringService.instance).to receive(:track_provider_error_from_response).and_call_original
   end
 
   context 'without exception' do
     let(:exception) { nil }
 
     it 'tracks provider error' do
-      expect(MonitoringService.instance).to receive(:track_provider_error).with(
+      expect(MonitoringService.instance).to receive(:track_provider_error_from_response).with(
         instance_of(SIADE::V2::Responses::DummyProviderError),
         nil,
       )
@@ -42,7 +42,7 @@ RSpec.describe SIADE::V2::Responses::AbstractProviderError, type: :provider_resp
     end
 
     it 'adds exception inspect and backtrace in monitoring context' do
-      expect(MonitoringService.instance).to receive(:track_provider_error).with(
+      expect(MonitoringService.instance).to receive(:track_provider_error_from_response).with(
         instance_of(SIADE::V2::Responses::DummyProviderError),
         {
           exception_inspect:   exception.inspect,

@@ -12,14 +12,14 @@ RSpec.describe SIADE::V2::Responses::UnexpectedRedirection, type: :provider_resp
   let(:new_location) { 'https://www.umadcorp.com' }
 
   before do
-    allow(MonitoringService.instance).to receive(:track_provider_error).and_call_original
+    allow(MonitoringService.instance).to receive(:track_provider_error_from_response).and_call_original
   end
 
   its(:http_code) { is_expected.to eq(502) }
   its(:errors) { is_expected.to have_error('Erreur serveur inattendue du fournisseur de données') }
 
   it 'adds redirect response location in monitoring context' do
-    expect(MonitoringService.instance).to receive(:track_provider_error).with(
+    expect(MonitoringService.instance).to receive(:track_provider_error_from_response).with(
       instance_of(SIADE::V2::Responses::UnexpectedRedirection),
       {
         redirect_location: new_location,

@@ -49,7 +49,7 @@ RSpec.describe SIADE::V2::Drivers::EligibilitesCotisationRetraitePROBTP, type: :
 
     it 'logs provider error with context' do
       expect(MonitoringService.instance)
-        .to receive(:track_provider_error)
+        .to receive(:track_provider_error_from_response)
         .with(
           instance_of(described_class),
           {

@@ -66,7 +66,7 @@ class SIADE::V2::Drivers::EligibilitesCotisationRetraitePROBTP < SIADE::V2::Driv
   def log_provider_error
     @provider_error_custom_code = internal_code
 
-    MonitoringService.instance.track_provider_error(
+    MonitoringService.instance.track_provider_error_from_response(
       self,
       {
         internal_code: internal_code,

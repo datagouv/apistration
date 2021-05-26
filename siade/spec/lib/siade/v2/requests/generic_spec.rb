@@ -80,7 +80,7 @@ RSpec.describe SIADE::V2::Requests::Generic do
         its(:response) { is_expected.to be_a SIADE::V2::Responses::InternalServerError }
 
         it 'tracks provider error in monitoring service' do
-          expect(MonitoringService.instance).to receive(:track_provider_error).with(
+          expect(MonitoringService.instance).to receive(:track_provider_error_from_response).with(
             an_instance_of(SIADE::V2::Responses::InternalServerError),
             anything,
           )
@@ -98,7 +98,7 @@ RSpec.describe SIADE::V2::Requests::Generic do
         its(:response) { is_expected.to be_a SIADE::V2::Responses::UnexpectedError }
 
         it 'tracks provider error in monitoring service' do
-          expect(MonitoringService.instance).to receive(:track_provider_error).with(
+          expect(MonitoringService.instance).to receive(:track_provider_error_from_response).with(
             an_instance_of(SIADE::V2::Responses::UnexpectedError),
             anything,
           )
@@ -146,7 +146,7 @@ RSpec.describe SIADE::V2::Requests::Generic do
         its(:response) { is_expected.to be_a SIADE::V2::Responses::UnexpectedBadRequest }
 
         it 'logs as error this unexpected behaviour' do
-          expect_any_instance_of(MonitoringService).to receive(:track_provider_error).with(
+          expect_any_instance_of(MonitoringService).to receive(:track_provider_error_from_response).with(
             instance_of(SIADE::V2::Responses::UnexpectedBadRequest),
             anything,
           )
@@ -166,7 +166,7 @@ RSpec.describe SIADE::V2::Requests::Generic do
         end
 
         it 'logs as error this unexpected behaviour' do
-          expect_any_instance_of(MonitoringService).to receive(:track_provider_error).with(
+          expect_any_instance_of(MonitoringService).to receive(:track_provider_error_from_response).with(
             instance_of(SIADE::V2::Responses::UnexpectedRedirection),
             anything,
           )
@@ -186,7 +186,7 @@ RSpec.describe SIADE::V2::Requests::Generic do
         end
 
         it 'logs as error this unexpected behaviour' do
-          expect_any_instance_of(MonitoringService).to receive(:track_provider_error).with(
+          expect_any_instance_of(MonitoringService).to receive(:track_provider_error_from_response).with(
             instance_of(SIADE::V2::Responses::UnexpectedError),
             anything,
           )
@@ -215,7 +215,7 @@ RSpec.describe SIADE::V2::Requests::Generic do
             let(:socker_error_message) { "Failed to open TCP connection to www.google.com:443 (#{dns_error_message})" }
 
             it 'logs as error the dns lookup fail' do
-              expect_any_instance_of(MonitoringService).to receive(:track_provider_error).with(
+              expect_any_instance_of(MonitoringService).to receive(:track_provider_error_from_response).with(
                 instance_of(SIADE::V2::Responses::DnsResolutionError),
                 anything,
               )
@@ -247,7 +247,7 @@ RSpec.describe SIADE::V2::Requests::Generic do
         end
 
         it 'logs as error this host down' do
-          expect_any_instance_of(MonitoringService).to receive(:track_provider_error).with(
+          expect_any_instance_of(MonitoringService).to receive(:track_provider_error_from_response).with(
             an_instance_of(SIADE::V2::Responses::ServiceUnavailable),
             anything,
           )
@@ -267,7 +267,7 @@ RSpec.describe SIADE::V2::Requests::Generic do
         end
 
         it 'logs as error' do
-          expect_any_instance_of(MonitoringService).to receive(:track_provider_error).with(
+          expect_any_instance_of(MonitoringService).to receive(:track_provider_error_from_response).with(
             instance_of(SIADE::V2::Responses::TimeoutError),
             anything,
           )

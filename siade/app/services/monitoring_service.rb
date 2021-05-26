@@ -12,7 +12,7 @@ class MonitoringService
     :set_user,
     :set_tags
 
-  def track_provider_error(response, context={})
+  def track_provider_error_from_response(response, context={})
     set_extras(
       (context || {}).merge(
         errors: response.errors.map(&:inspect),

@@ -27,7 +27,7 @@ RSpec.describe SIADE::V2::Responses::Generic do
     let(:code) { 200 }
 
     it 'does not track error' do
-      expect(MonitoringService.instance).not_to receive(:track_provider_error)
+      expect(MonitoringService.instance).not_to receive(:track_provider_error_from_response)
 
       subject
     end
@@ -37,7 +37,7 @@ RSpec.describe SIADE::V2::Responses::Generic do
     let(:code) { 502 }
 
     it 'tracks error' do
-      expect(MonitoringService.instance).to receive(:track_provider_error).with(
+      expect(MonitoringService.instance).to receive(:track_provider_error_from_response).with(
         instance_of(SIADE::V2::Responses::DummyResponse),
         {},
       )
@@ -54,7 +54,7 @@ RSpec.describe SIADE::V2::Responses::Generic do
       end
 
       it 'adds this context to tracking' do
-        expect(MonitoringService.instance).to receive(:track_provider_error).with(
+        expect(MonitoringService.instance).to receive(:track_provider_error_from_response).with(
           instance_of(SIADE::V2::Responses::DummyResponse),
           extra_context,
         )

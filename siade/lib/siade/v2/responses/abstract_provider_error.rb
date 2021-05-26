@@ -6,7 +6,7 @@ class SIADE::V2::Responses::AbstractProviderError
     @provider_name = provider_name
     @exception = exception
 
-    track_provider_error
+    track_provider_error_from_response
   end
 
   def body
@@ -31,8 +31,8 @@ class SIADE::V2::Responses::AbstractProviderError
 
   private
 
-  def track_provider_error
-    MonitoringService.instance.track_provider_error(
+  def track_provider_error_from_response
+    MonitoringService.instance.track_provider_error_from_response(
       self,
       exception_context,
     )

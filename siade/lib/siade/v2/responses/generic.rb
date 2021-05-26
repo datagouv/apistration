@@ -11,7 +11,7 @@ class SIADE::V2::Responses::Generic
     @body = raw_response.body
     @http_code = adapt_raw_response_code
 
-    track_provider_error if provider_error?
+    track_provider_error_from_response if provider_error?
   end
 
   def provider_error_custom_code
@@ -59,8 +59,8 @@ class SIADE::V2::Responses::Generic
     errors << ProviderInternalServerError.new(provider_name)
   end
 
-  def track_provider_error
-    MonitoringService.instance.track_provider_error(
+  def track_provider_error_from_response
+    MonitoringService.instance.track_provider_error_from_response(
       self,
       provider_error_context,
     )

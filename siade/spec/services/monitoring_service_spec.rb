@@ -11,7 +11,7 @@ RSpec.describe MonitoringService, type: :service do
       Sentry.get_current_scope.clear
     end
 
-    describe '#track_provider_error' do
+    describe '#track_provider_error_from_response' do
       before(:all) do
         class SIADE::V2::Responses::DummyTrackProviderErrorResponse < SIADE::V2::Responses::Generic
           def adapt_raw_response_code
@@ -24,7 +24,7 @@ RSpec.describe MonitoringService, type: :service do
         end
       end
 
-      subject { instance.track_provider_error(response, extra_context) }
+      subject { instance.track_provider_error_from_response(response, extra_context) }
 
       let(:raw_response) do
         OpenStruct.new(

@@ -86,7 +86,7 @@ RSpec.describe SIADE::V2::Responses::AttestationsSocialesACOSS, type: :provider_
         include_examples 'provider\'s response error'
 
         it 'logs this specific error for future investigation (not documented)' do
-          allow(MonitoringService.instance).to receive(:track_provider_error)
+          allow(MonitoringService.instance).to receive(:track_provider_error_from_response)
 
           expect(Sentry).to receive(:set_extras).with({
             body: body,
