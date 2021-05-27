@@ -22,7 +22,6 @@ class ValidateResponse < ApplicationInteractor
 
   def unknown_provider_response!(message = nil)
     context.errors << ::ProviderUnknownError.new(context.provider_name, message)
-    context.status = 502
     context.fail!
   end
 
