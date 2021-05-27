@@ -131,6 +131,9 @@
   source:
     parameter: 'siren_tva'
 
+- code: '00402'
+  title: Version d'API non prise en charge
+
 ## Providers
 ### RNA
 

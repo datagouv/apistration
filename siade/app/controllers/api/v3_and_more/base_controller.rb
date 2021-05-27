@@ -1,12 +1,56 @@
 class API::V3AndMore::BaseController < API::AuthenticateEntityController
+  class UnsupportedVersionError < ::ActionController::RoutingError; end
+
+  before_action :verify_api_version!
   before_action :set_content_type_header!
 
+  rescue_from UnsupportedVersionError, with: :unsupported_version_response
+
   protected
+
+  def verify_api_version!
+    raise_unsupported_version_error! unless supported_version?
+  end
+
+  def api_version
+    params.fetch('api_version').to_i
+  end
+
+  def serializer_module
+    raise ::NotImplementedError
+  end
+
+  def serializer_class
+    serializer_module.const_get("V#{api_version}")
+  end
+
+  def supported_version?
+    serializer_class
+    true
+  rescue ::NameError => _e
+    false
+  end
+
+  def raise_unsupported_version_error!
+    raise UnsupportedVersionError, "v#{api_version}"
+  end
+
+  def unsupported_version_response(e)
+    error = UnsupportedApiVersionError.new(e.message)
+
+    render content_type:  content_type_header,
+           json:          ::ErrorsSerializer.new([error], format: error_format).as_json,
+           status:        error.kind
+  end
 
   def render_errors(organizer)
     render content_type:  content_type_header,
            json:          ::ErrorsSerializer.new(organizer.errors, format: error_format).as_json,
            status:        extract_http_code(organizer)
+  end
+
+  def error_format
+    :json_api
   end
 
   def extract_http_code(retriever)

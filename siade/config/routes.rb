@@ -64,7 +64,7 @@ Rails.application.routes.draw do
     get 'eori_douanes/:siret_or_eori'                       => '/api/v2/eori_douanes#show'
   end
 
-  namespace :v3 do
+  scope path: 'v:api_version', constraints: { api_version: /\d+/ } do
     namespace :rnm do
       get 'entreprises/:siren' => '/api/v3_and_more/rnm/entreprises_artisanales#show'
     end
