@@ -46,7 +46,7 @@ RSpec.describe MonitoringService, type: :service do
       it 'sets extra context with errors inspected (which returns json api error with all available informations)' do
         expect(Sentry).to receive(:set_extras).with(
           hash_including(
-            errors: response.errors.map(&:inspect),
+            errors: response.errors.map(&:to_h),
           )
         )
 

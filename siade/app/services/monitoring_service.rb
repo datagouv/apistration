@@ -15,7 +15,7 @@ class MonitoringService
   def track_provider_error_from_response(response, context={})
     set_extras(
       (context || {}).merge(
-        errors: response.errors.map(&:inspect),
+        errors: response.errors.map(&:to_h),
       ).compact,
     )
 

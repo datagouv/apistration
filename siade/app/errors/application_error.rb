@@ -19,7 +19,7 @@ class ApplicationError
     nil
   end
 
-  def inspect
+  def to_h
     {
       code:   code,
       title:  title,
