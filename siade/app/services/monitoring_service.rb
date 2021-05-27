@@ -12,6 +12,17 @@ class MonitoringService
     :set_user,
     :set_tags
 
+  def track_provider_error(error)
+    set_extras(
+      error.to_h,
+    )
+
+    track(
+      'warning',
+      "[#{current_provider}] Error: #{error.detail}",
+    )
+  end
+
   def track_provider_error_from_response(response, context={})
     set_extras(
       (context || {}).merge(

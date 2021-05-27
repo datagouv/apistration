@@ -11,6 +11,33 @@ RSpec.describe MonitoringService, type: :service do
       Sentry.get_current_scope.clear
     end
 
+    describe '#track_provider_error' do
+      subject { instance.track_provider_error(error) }
+
+      let(:error) { ProviderInternalServerError.new('INSEE', 'PANIK') }
+
+      it 'sets extra context with error payload, which returns json api error with all available informations' do
+        expect(Sentry).to receive(:set_extras).with(
+          hash_including(
+            error.to_h,
+          )
+        )
+
+        subject
+      end
+
+      it 'tracks event as warning, with provider name and error kind' do
+        expect(Sentry).to receive(:capture_message).with(
+          /#{provider}.*#{error.detail}/,
+          hash_including(
+            level: 'warning',
+          )
+        ).at_least(1)
+
+        subject
+      end
+    end
+
     describe '#track_provider_error_from_response' do
       before(:all) do
         class SIADE::V2::Responses::DummyTrackProviderErrorResponse < SIADE::V2::Responses::Generic
