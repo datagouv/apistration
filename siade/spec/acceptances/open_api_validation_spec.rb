@@ -15,7 +15,7 @@ RSpec.describe 'OpenAPI file', type: :acceptance do
   end
 
   context 'API v3 (and more) definition' do
-    let(:definition_path) { 'swagger/v3/openapi.yaml' }
+    let(:definition_path) { 'swagger/openapi.yaml' }
 
     it 'is a valid YAML' do
       expect(YAML.load_file(definition_path)).to be_truthy
