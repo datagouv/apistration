@@ -1,4 +1,4 @@
-class API::V2::CertificatsCNETPController < API::AuthenticateEntityController
+class API::V2::CertificatsCNETPController < API::V2::BaseController
   def show
     authorize :certificat_cnetp
 

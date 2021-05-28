@@ -1,4 +1,4 @@
-class API::V2::AssociationsController < API::AuthenticateEntityController
+class API::V2::AssociationsController < API::V2::BaseController
   def show
     authorize :associations
 

@@ -1,4 +1,4 @@
-class API::V2::EtablissementsRestoredController < API::AuthenticateEntityController
+class API::V2::EtablissementsRestoredController < API::V2::BaseController
   def show
     authorize :etablissements
 

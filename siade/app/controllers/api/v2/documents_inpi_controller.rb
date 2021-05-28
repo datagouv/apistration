@@ -1,4 +1,4 @@
-class API::V2::DocumentsINPIController < API::AuthenticateEntityController
+class API::V2::DocumentsINPIController < API::V2::BaseController
   def actes
     authorize :actes_inpi
 

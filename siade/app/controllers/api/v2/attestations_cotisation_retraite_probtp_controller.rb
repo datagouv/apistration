@@ -1,4 +1,4 @@
-class API::V2::AttestationsCotisationRetraitePROBTPController < API::AuthenticateEntityController
+class API::V2::AttestationsCotisationRetraitePROBTPController < API::V2::BaseController
   def show
     authorize :probtp
 

@@ -1,4 +1,4 @@
-class API::V2::Etablissements::PredecesseurController < API::AuthenticateEntityController
+class API::V2::Etablissements::PredecesseurController < API::V2::BaseController
   include INSEEDeprecation
 
   def show

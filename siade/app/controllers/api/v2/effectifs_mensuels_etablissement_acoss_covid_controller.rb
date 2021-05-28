@@ -1,6 +1,6 @@
 require 'net/http'
 
-class API::V2::EffectifsMensuelsEtablissementACOSSCovidController < API::AuthenticateEntityController
+class API::V2::EffectifsMensuelsEtablissementACOSSCovidController < API::V2::BaseController
   include AidesCovidRequestsHelper
 
   def show

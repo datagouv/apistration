@@ -1,4 +1,4 @@
-class API::V2::AbstractDGFIPController < API::AuthenticateEntityController
+class API::V2::AbstractDGFIPController < API::V2::BaseController
   before_action :authenticate_dgfip_service
 
   def authenticate_dgfip_service

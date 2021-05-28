@@ -1,4 +1,4 @@
-class API::V2::CartesProfessionnellesFNTPController < API::AuthenticateEntityController
+class API::V2::CartesProfessionnellesFNTPController < API::V2::BaseController
   def show
     authorize :fntp_carte_pro
 

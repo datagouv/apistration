@@ -1,4 +1,4 @@
-class API::V2::UptimeController < API::AuthenticateEntityController
+class API::V2::UptimeController < API::V2::BaseController
   skip_before_action :context_is_filled!
 
   def show

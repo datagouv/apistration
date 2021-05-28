@@ -1,4 +1,4 @@
-class API::V2::CotisationsMSAController < API::AuthenticateEntityController
+class API::V2::CotisationsMSAController < API::V2::BaseController
   def show
     authorize :msa_cotisations
 

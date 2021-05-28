@@ -1,4 +1,4 @@
-class API::V2::PrivilegesController < API::AuthenticateEntityController
+class API::V2::PrivilegesController < API::V2::BaseController
 
   skip_before_action :context_is_filled!
 

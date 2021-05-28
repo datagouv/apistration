@@ -1,4 +1,4 @@
-class API::V2::EORIDouanesController < API::AuthenticateEntityController
+class API::V2::EORIDouanesController < API::V2::BaseController
   def show
     authorize :eori_douanes
 

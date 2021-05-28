@@ -1,6 +1,6 @@
 require 'open-uri'
 
-class API::V2::DocumentsAssociationsController < API::AuthenticateEntityController
+class API::V2::DocumentsAssociationsController < API::V2::BaseController
   def show
     authorize :documents_association
 

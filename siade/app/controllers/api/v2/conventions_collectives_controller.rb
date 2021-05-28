@@ -1,4 +1,4 @@
-class API::V2::ConventionsCollectivesController < API::AuthenticateEntityController
+class API::V2::ConventionsCollectivesController < API::V2::BaseController
   def show
     authorize :conventions_collectives
 

@@ -1,4 +1,4 @@
-class API::V2::BilansEntreprisesBDFController < API::AuthenticateEntityController
+class API::V2::BilansEntreprisesBDFController < API::V2::BaseController
   def show
     authorize :bilans_entreprise_bdf
 

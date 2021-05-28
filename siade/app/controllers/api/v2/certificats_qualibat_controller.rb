@@ -1,6 +1,6 @@
 require 'open-uri'
 
-class API::V2::CertificatsQUALIBATController < API::AuthenticateEntityController
+class API::V2::CertificatsQUALIBATController < API::V2::BaseController
   def show
     authorize :qualibat
 

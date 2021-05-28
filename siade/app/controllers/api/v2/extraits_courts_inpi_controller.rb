@@ -1,4 +1,4 @@
-class API::V2::ExtraitsCourtsINPIController < API::AuthenticateEntityController
+class API::V2::ExtraitsCourtsINPIController < API::V2::BaseController
   def show
     authorize :extrait_court_inpi
 

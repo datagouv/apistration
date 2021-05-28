@@ -1,4 +1,4 @@
-class API::V2::AttestationsSocialesACOSSController < API::AuthenticateEntityController
+class API::V2::AttestationsSocialesACOSSController < API::V2::BaseController
   def show
     authorize :attestations_sociales
 

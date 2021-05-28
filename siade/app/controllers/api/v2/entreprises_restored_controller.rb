@@ -1,4 +1,4 @@
-class API::V2::EntreprisesRestoredController < API::AuthenticateEntityController
+class API::V2::EntreprisesRestoredController < API::V2::BaseController
   def show
     authorize :entreprises
 

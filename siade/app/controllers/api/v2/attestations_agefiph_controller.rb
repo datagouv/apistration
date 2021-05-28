@@ -1,4 +1,4 @@
-class API::V2::AttestationsAGEFIPHController < API::AuthenticateEntityController
+class API::V2::AttestationsAGEFIPHController < API::V2::BaseController
   def show
     authorize :attestations_agefiph
 

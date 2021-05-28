@@ -1,4 +1,4 @@
-class API::V2::CertificatsAgenceBIOController < API::AuthenticateEntityController
+class API::V2::CertificatsAgenceBIOController < API::V2::BaseController
   def show
     authorize :certificat_agence_bio
 

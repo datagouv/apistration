@@ -1,4 +1,4 @@
-class API::V2::CertificatsRGEAdemeController < API::AuthenticateEntityController
+class API::V2::CertificatsRGEAdemeController < API::V2::BaseController
   def show
     authorize :certificat_rge_ademe
 
