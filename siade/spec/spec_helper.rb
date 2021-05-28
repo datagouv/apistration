@@ -107,8 +107,6 @@ RSpec.configure do |config|
   # Defer garbage collection to prevent it from running randomly as usual and slowing testing
   config.before(:all) do
     DeferredGarbageCollection.start
-
-    ENV['JSON_API_FORMAT_ERROR'] = 'true'
   end
 
   config.after(:all) do

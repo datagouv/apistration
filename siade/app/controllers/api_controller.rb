@@ -79,7 +79,6 @@ class APIController < ActionController::API
   end
 
   def json_api_format_error_activated?
-    ENV['JSON_API_FORMAT_ERROR'] == 'true' ||
-      params[:error_format] == 'json_api'
+    params[:error_format] == 'json_api'
   end
 end

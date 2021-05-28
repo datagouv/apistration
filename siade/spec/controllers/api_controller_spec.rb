@@ -29,13 +29,8 @@ RSpec.describe APIController, type: :controller do
     context 'when error_format is nil' do
       let(:error_format) { nil }
 
-      before do
-        ENV['JSON_API_FORMAT_ERROR'] = nil
-      end
-
       after do
         expect(response.content_type).to start_with('application/json')
-        ENV['JSON_API_FORMAT_ERROR'] = 'true'
       end
 
       it 'renders flatten errors' do
@@ -49,14 +44,6 @@ RSpec.describe APIController, type: :controller do
 
     context 'when error_format is flat' do
       let(:error_format) { 'flat' }
-
-      before do
-        ENV['JSON_API_FORMAT_ERROR'] = nil
-      end
-
-      after do
-        ENV['JSON_API_FORMAT_ERROR'] = 'true'
-      end
 
       it 'renders flatten errors' do
         subject

@@ -60,7 +60,7 @@ class Rack::Attack
 
 
   self.blocklisted_callback = lambda do |req|
-    error_format = req.params[:error_format] || (ENV['JSON_API_FORMAT_ERROR'] ? :json_api : :flat)
+    error_format = req.params[:error_format] || :flat
     [
       401,
       { 'Content-Type' => 'application/json' },
@@ -79,7 +79,7 @@ class Rack::Attack
     )
 
     query_params = Rack::Utils.parse_nested_query(env['QUERY_STRING'])
-    error_format = query_params['error_format'] || (ENV['JSON_API_FORMAT_ERROR'] ? :json_api : :flat)
+    error_format = query_params['error_format'] || :flat
 
     [
       429,
