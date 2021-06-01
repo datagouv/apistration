@@ -10,4 +10,8 @@ class TooManyRequestsError < ApplicationError
   def code
     '00429'
   end
+
+  def kind
+    :too_many_requests
+  end
 end
