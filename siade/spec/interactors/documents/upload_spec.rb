@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe Documents::Upload, :self_hosted_doc do
   describe '.call' do
     subject { described_class.call(doc_params) }

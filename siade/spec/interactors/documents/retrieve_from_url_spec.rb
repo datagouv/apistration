@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe Documents::RetrieveFromUrl do
   subject { described_class.call(retrieve_params.merge(provider_name: provider_name)) }
 

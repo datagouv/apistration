@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe RNM::EntreprisesArtisanales::ValidateResponse, type: :validate_response do
   describe '.call' do
     subject { described_class.call(response: response, provider_name: 'CMA France') }

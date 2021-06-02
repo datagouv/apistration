@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe Documents::ValidateFormat do
   subject { described_class.call(validation_params.merge(provider_name: provider_name)) }
 

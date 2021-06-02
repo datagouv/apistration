@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe MakeRequest, type: :interactor do
   before(:all) do
     class DummyMakeRequest < MakeRequest

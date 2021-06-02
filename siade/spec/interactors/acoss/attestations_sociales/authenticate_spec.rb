@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe ACOSS::AttestationsSociales::Authenticate, type: :interactor do
   subject { described_class.call }
 

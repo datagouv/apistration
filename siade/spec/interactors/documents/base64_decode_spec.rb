@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe Documents::Base64Decode do
   subject { described_class.call(decode_params.merge(provider_name: provider_name)) }
 

@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe PROBTP::AttestationsCotisationsRetraite::MakeRequest do
   describe '.call' do
     subject { described_class.call(params: params) }

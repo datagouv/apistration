@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe RNM::EntreprisesArtisanales, type: :retriever_organizer do
   describe '.call' do
     subject { described_class.call(params: params) }

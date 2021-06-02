@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.shared_context 'Mandatory params' do
   let(:context) { 'Dev' }
   let(:recipient) { "API Entreprise" }

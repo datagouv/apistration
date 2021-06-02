@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe Documents::DecryptPDF do
   subject { described_class.call(decrypt_params) }
 

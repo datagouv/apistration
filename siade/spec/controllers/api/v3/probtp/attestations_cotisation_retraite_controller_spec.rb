@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe API::V3::PROBTP::AttestationsCotisationRetraiteController, type: :controller do
   it_behaves_like 'unauthorized'
   it_behaves_like 'forbidden'

@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe ValidateAttributePresence, type: :validate_param_interactor do
   before(:all) do
     class DummyValidateAttributePresence < ValidateAttributePresence

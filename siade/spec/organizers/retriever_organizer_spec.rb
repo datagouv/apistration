@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe RetrieverOrganizer, type: :organizer do
   before(:all) do
     class DummyRetrieverOrganizer < RetrieverOrganizer

@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe RNM::EntreprisesArtisanales::MakeRequest, type: :make_request do
   describe '.call' do
     subject { described_class.call(params: params) }

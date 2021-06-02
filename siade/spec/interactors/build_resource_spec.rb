@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe BuildResource, type: :interactor do
   before(:all) do
     class DummyBuildResource < BuildResource
