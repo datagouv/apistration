@@ -74,7 +74,7 @@ Rails.application.routes.draw do
     end
 
     namespace :acoss do
-      get 'attestations_sociales/:siren' => '/api/v3/acoss/attestations_sociales#show'
+      get 'attestations_sociales/:siren' => '/api/v3_and_more/acoss/attestations_sociales#show'
     end
 
     mount Rswag::Ui::Engine   => '/developers'

@@ -1,4 +1,4 @@
-class API::V3::ACOSS::AttestationsSocialesController < API::V3::BaseController
+class API::V3AndMore::ACOSS::AttestationsSocialesController < API::V3AndMore::BaseController
   def show
     authorize :attestations_sociales
 
@@ -20,5 +20,9 @@ class API::V3::ACOSS::AttestationsSocialesController < API::V3::BaseController
       user_id: pundit_user.logstash_id,
       recipient: params[:recipient]
     }
+  end
+
+  def serializer_module
+    ::ACOSS::AttestationSocialeSerializer
   end
 end
