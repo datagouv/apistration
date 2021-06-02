@@ -1,10 +1,7 @@
 class RNM::EntreprisesArtisanales::BuildResource < BuildResource
-  def call
-    # Has to be an object which respond to method for JSON API
-    context.resource = Hashie::Mash.new(build_resource)
-  end
+  protected
 
-  def build_resource
+  def resource_attributes
     {
       # Jsonapi::MandatoryField: d is a mandatory field in the jsonapi spec
       id: value_or_placeholder('ent_id_siren'),

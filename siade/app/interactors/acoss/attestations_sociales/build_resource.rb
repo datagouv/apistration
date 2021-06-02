@@ -1,11 +1,7 @@
 class ACOSS::AttestationsSociales::BuildResource < BuildResource
-  def call
-    context.resource = Hashie::Mash.new(build_resource)
-  end
+  protected
 
-  private
-
-  def build_resource
+  def resource_attributes
     {
       id: context.params[:siren],
       document_url: context.url,
