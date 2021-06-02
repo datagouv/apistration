@@ -18,7 +18,9 @@
 
 ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'OAuth'
+  inflect.acronym 'JSONAPI'
   inflect.acronym 'API'
+
   inflect.acronym 'DGFIP'
   inflect.acronym 'SIADE'
   inflect.acronym 'OLD'
