@@ -140,5 +140,9 @@ RSpec.configure do |config|
   config.include_context 'Valid params (mandatory and token)', valid: true
   config.include_context 'Valid mandatory params and no token', authenticate: false
 
+  config.after(:each) do
+    Rack::Attack.reset!
+  end
+
   config.extend RSWagCommonsResponses
 end
