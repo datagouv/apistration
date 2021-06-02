@@ -3,7 +3,6 @@ class RNM::EntreprisesArtisanales::BuildResource < BuildResource
 
   def resource_attributes
     {
-      # Jsonapi::MandatoryField: d is a mandatory field in the jsonapi spec
       id: value_or_placeholder('ent_id_siren'),
       siren: value_or_placeholder('ent_id_siren'),
       etablissement_origine_id: value_or_placeholder('ent_id_origine'),
