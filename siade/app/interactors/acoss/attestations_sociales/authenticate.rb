@@ -26,18 +26,14 @@ class ACOSS::AttestationsSociales::Authenticate < GetOAuth2Token
   end
 
   def domain
-    Rails.application.config_for(:url_secrets).fetch(:acoss)
+    Siade.credentials[:acoss_domain]
   end
 
   def client_id
-    acoss_client_config.fetch(:client_id)
+    Siade.credentials[:acoss_client_id]
   end
 
   def client_secret
-    acoss_client_config.fetch(:client_secret)
-  end
-
-  def acoss_client_config
-    Rails.application.config_for(:api_secrets).fetch(:acoss)
+    Siade.credentials[:acoss_client_secret]
   end
 end

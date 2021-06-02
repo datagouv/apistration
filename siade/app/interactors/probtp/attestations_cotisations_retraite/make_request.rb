@@ -23,12 +23,12 @@ class PROBTP::AttestationsCotisationsRetraite::MakeRequest < MakeRequest::Post
   private
 
   def key
-    raw_key = File.read(Rails.application.config_for(:ssl_vars)['path_wild_certif_key'])
+    raw_key = File.read(Siade.credentials[:ssl_wildcard_certif_key_path])
     OpenSSL::PKey::RSA.new(raw_key)
   end
 
   def cert
-    raw_cert = File.read(Rails.application.config_for(:ssl_vars)['path_wild_certif_cert'])
+    raw_cert = File.read(Siade.credentials[:ssl_wildcard_certif_crt_path])
     OpenSSL::X509::Certificate.new(raw_cert)
   end
 

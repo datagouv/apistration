@@ -26,7 +26,7 @@ class ACOSS::AttestationsSociales::MakeRequest < MakeRequest::Post
   end
 
   def acoss_domain
-    Rails.application.config_for(:url_secrets).acoss!
+    Siade.credentials[:acoss_domain]
   end
 
   def acoss_path

@@ -24,7 +24,10 @@ class Documents::Upload < ApplicationInteractor
   end
 
   def document_public_url
-    document_url.sub(%r{https.*/AUTH_[[:alnum:]]*\/},PUBLIC_STORAGE_URL)
+    document_url.sub(
+      %r{https.*/AUTH_[[:alnum:]]*\/},
+      public_storage_url,
+    )
   end
 
   def document_url
@@ -45,6 +48,10 @@ class Documents::Upload < ApplicationInteractor
 
   def secure_token
     @secure_token ||= SecureRandom.hex(20)
+  end
+
+  def public_storage_url
+    Siade.credentials[:public_storage_url]
   end
 
   def storage
