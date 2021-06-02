@@ -111,6 +111,11 @@ paths:
                       id:
                         type: string
                         example: '34909797200021'
+                      type:
+                        type: string
+                        example: document
+                        enum:
+                        - document
                       attributes:
                         type: object
                         properties:

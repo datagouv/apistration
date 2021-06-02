@@ -30,6 +30,11 @@ RSpec.describe 'PROBTP : Attestations cotisations retraite', type: %i[request sw
                   type: :string,
                   example: eligible_siret(:probtp),
                 },
+                type: {
+                  type: :string,
+                  example: :document,
+                  enum: %w[document],
+                },
                 attributes: {
                   type: :object,
                   properties: {
