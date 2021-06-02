@@ -30,7 +30,7 @@ class APIController < ActionController::API
   protected
 
   def content_type_header
-    'application/json'
+    raise ::NotImplementedError
   end
 
   def render_errors(retriever, extra_payload={})

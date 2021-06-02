@@ -14,6 +14,10 @@ RSpec.describe APIController, type: :controller do
 
     protected
 
+    def content_type_header
+      'application/csv'
+    end
+
     def siret
       params.require(:siret)
     end
