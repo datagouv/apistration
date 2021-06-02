@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'RNM: Entreprises artisanales', type: :request do
+RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
   path '/v3/rnm/entreprises/{siren}' do
     get 'Récupération des informations d\'une entreprise artisanale' do
       tags 'Informations générales'

@@ -140,7 +140,7 @@ RSpec.configure do |config|
   config.include_context 'Valid params (mandatory and token)', valid: true
   config.include_context 'Valid mandatory params and no token', authenticate: false
 
-  config.after(:each) do
+  config.after(:each, type: :swagger) do
     Rack::Attack.reset!
   end
 

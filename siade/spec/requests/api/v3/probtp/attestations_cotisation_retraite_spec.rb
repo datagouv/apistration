@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'PROBTP : Attestations cotisations retraite', type: :request do
+RSpec.describe 'PROBTP : Attestations cotisations retraite', type: %i[request swagger] do
   path '/v3/probtp/attestations_cotisation_retraite/{siret}' do
     get 'Récupération d\'une attestation' do
       tags 'Attestations sociales et fiscales'

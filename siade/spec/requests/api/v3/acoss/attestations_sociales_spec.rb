@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'ACOSS: Attestations sociales', type: :request do
+RSpec.describe 'ACOSS: Attestations sociales', type: %i[request swagger] do
   path '/v3/acoss/attestations_sociales/{siren}' do
     get 'Récupération de l\'attestation sociale d\'une entreprise' do
       tags 'Attestations sociales et fiscales'
