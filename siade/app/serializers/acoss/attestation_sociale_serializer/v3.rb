@@ -1,5 +1,2 @@
-class ACOSS::AttestationSocialeSerializer::V3 < JSONAPISerializer
-  set_type :document
-
-  attributes :document_url
+class ACOSS::AttestationSocialeSerializer::V3 < JSONAPI::DocumentSerializer
 end

@@ -1,4 +1,4 @@
-class RNM::EntrepriseArtisanaleSerializer::V3 < JSONAPISerializer
+class RNM::EntrepriseArtisanaleSerializer::V3 < JSONAPI::BaseSerializer
   set_type :entreprise
 
   attributes :siren,

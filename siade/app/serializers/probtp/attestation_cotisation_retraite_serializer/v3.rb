@@ -1,5 +1,2 @@
-class PROBTP::AttestationCotisationRetraiteSerializer::V3 < JSONAPISerializer
-  set_type :attestation
-
-  attributes :document_url
+class PROBTP::AttestationCotisationRetraiteSerializer::V3 < JSONAPI::DocumentSerializer
 end

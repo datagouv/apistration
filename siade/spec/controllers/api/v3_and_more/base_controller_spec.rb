@@ -1,7 +1,7 @@
 RSpec.describe API::V3AndMore::BaseController, type: :controller do
   before(:all) do
     module DummyResourceSerializer
-      class V42 < JSONAPISerializer; end
+      class V42 < JSONAPI::BaseSerializer; end
     end
   end
 
