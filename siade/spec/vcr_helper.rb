@@ -46,4 +46,12 @@ VCR.configure do |c|
   c.filter_sensitive_data('<URL_DGFIP_LIASSE_DICO>'       ) { "#{Siade.credentials[:dgfip_liasse_fiscale_dictionnaire_url]}" }
 
   c.filter_sensitive_data('<URL_QUALIBAT>') { "#{Siade.credentials[:qualibat_url]}" }
+
+  c.register_request_matcher :headers_sanitized do |request_1, request_2|
+    headers_to_ignore = %w[
+      User-Agent
+    ]
+
+    request_1.headers.except(*headers_to_ignore) == request_2.headers.except(*headers_to_ignore)
+  end
 end
