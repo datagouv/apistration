@@ -11,7 +11,7 @@ class ACOSS::AttestationsSociales::MakeRequest < MakeRequest::Post
       siren: context.params[:siren],
       idClient: context.params[:user_id],
       beneficiaire: context.params[:recipient],
-    }.to_json
+    }
   end
 
   def set_headers(request)
