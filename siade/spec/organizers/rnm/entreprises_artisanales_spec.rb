@@ -8,7 +8,7 @@ RSpec.describe RNM::EntreprisesArtisanales, type: :retriever_organizer do
       }
     end
 
-    context 'with valid siren', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
+    context 'with valid siren', vcr: { cassette_name: 'rnm_cma/valid_siren_json', match_requests_on: strict_match_vcr_requests_on_attributes } do
       let(:siren) { valid_siren(:rnm_cma) }
 
       it { is_expected.to be_a_success }

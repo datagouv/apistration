@@ -21,7 +21,7 @@ RSpec.describe 'ACOSS: Attestations sociales', type: %i[request swagger] do
       end
 
       describe 'with valid mandatory params', valid: true do
-        response '200', 'Entreprise found', vcr: { cassette_name: 'acoss/with_valid_siren' } do
+        response '200', 'Entreprise found', vcr: { cassette_name: 'acoss/with_valid_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body) } do
           let(:siren) { valid_siren(:acoss) }
 
           schema type: :object,
@@ -57,7 +57,7 @@ RSpec.describe 'ACOSS: Attestations sociales', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'acoss/with_non_existent_siren' } do
+        response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'acoss/with_non_existent_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body) } do
           let(:siren) { not_found_siren }
 
           schema '$ref' => '#/components/schemas/NotFound'

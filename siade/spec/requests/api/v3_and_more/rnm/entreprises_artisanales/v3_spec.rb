@@ -18,7 +18,7 @@ RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
       end
 
       describe 'with valid mandatory params', valid: true do
-        response '200', 'Entreprise found', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
+        response '200', 'Entreprise found', vcr: { cassette_name: 'rnm_cma/valid_siren_json', match_requests_on: strict_match_vcr_requests_on_attributes } do
           let(:siren) { valid_siren(:rnm_cma) }
 
           schema type: :object,
@@ -128,7 +128,7 @@ RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'rnm_cma/not_found_siren' } do
+        response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'rnm_cma/not_found_siren', match_requests_on: strict_match_vcr_requests_on_attributes } do
           let(:siren) { not_found_siren(:rnm_cma) }
 
           schema '$ref' => '#/components/schemas/NotFound'
