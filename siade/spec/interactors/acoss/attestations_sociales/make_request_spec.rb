@@ -9,7 +9,7 @@ RSpec.describe ACOSS::AttestationsSociales::MakeRequest, type: :make_request do
     }
   end
 
-  describe 'happy path', vcr: { cassette_name: 'acoss/with_valid_siren', match_requests_on: strict_match_vcr_requests_on_attributes } do
+  describe 'happy path', vcr: { cassette_name: 'acoss/with_valid_siren' } do
     let(:siren) { valid_siren(:acoss) }
     let(:user_id) { '1' }
     let(:recipient) { '1' }

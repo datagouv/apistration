@@ -4,7 +4,7 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite::ValidateResponse do
 
     let(:response) { instance_double(Net::HTTPOK, code: code, body: body) }
 
-    context 'when the attestation is found', vcr: { cassette_name: 'probtp/attestation/with_eligible_siret', match_requests_on: strict_match_vcr_requests_on_attributes } do
+    context 'when the attestation is found', vcr: { cassette_name: 'probtp/attestation/with_eligible_siret' } do
       let(:code) { 200 }
       let(:body) do
         PROBTP::AttestationsCotisationsRetraite::MakeRequest
@@ -18,7 +18,7 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite::ValidateResponse do
       its(:errors) { is_expected.to be_empty }
     end
 
-    context 'when the attestation is not found', vcr: { cassette_name: 'probtp/attestation/with_not_found_siret', match_requests_on: strict_match_vcr_requests_on_attributes } do
+    context 'when the attestation is not found', vcr: { cassette_name: 'probtp/attestation/with_not_found_siret' } do
       let(:code) { 200 }
       let(:body) do
         PROBTP::AttestationsCotisationsRetraite::MakeRequest

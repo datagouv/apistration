@@ -1,11 +1,3 @@
-def strict_match_vcr_requests_on_attributes
-  %i[
-    method
-    uri
-    body
-    headers_sanitized
-  ].freeze
-end
 
 VCR.configure do |c|
   c.allow_http_connections_when_no_cassette = false

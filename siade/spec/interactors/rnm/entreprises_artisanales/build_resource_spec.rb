@@ -1,5 +1,5 @@
 RSpec.describe RNM::EntreprisesArtisanales::BuildResource, type: :build_resource do
-  describe '.call', vcr: { cassette_name: 'rnm_cma/valid_siren_json', match_requests_on: strict_match_vcr_requests_on_attributes } do
+  describe '.call', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
     subject { described_class.call(response: response) }
 
     let(:valid_payload) do

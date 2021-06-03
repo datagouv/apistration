@@ -125,6 +125,14 @@ RSpec.configure do |config|
     end
   end
 
+  config.include ActivateStrictVcrRequestMatchingForV3
+  config.extend ActivateStrictVcrRequestMatchingForV3
+
+  config.around(:each) do |example|
+    example = add_strict_matching_on_vcr_requests_for_v3(example)
+    example.run
+  end
+
   config.include_context 'has a provider_name', type: :provider_request
   config.include_context 'has a provider_name', type: :provider_response
   config.include_context 'has a provider_name', type: :provider_driver

@@ -10,7 +10,7 @@ RSpec.describe ACOSS::AttestationsSociales, type: :retriever_organizer do
       }
     end
 
-    context 'with valid siren', vcr: { cassette_name: 'acoss/with_valid_siren', match_requests_on: strict_match_vcr_requests_on_attributes } do
+    context 'with valid siren', vcr: { cassette_name: 'acoss/with_valid_siren' } do
       let(:siren) { valid_siren(:acoss) }
 
       it { is_expected.to be_a_success }
@@ -23,7 +23,7 @@ RSpec.describe ACOSS::AttestationsSociales, type: :retriever_organizer do
       end
     end
 
-    context 'with invalid siren', vcr: { cassette_name: 'acoss/with_non_existent_siren', match_requests_on: strict_match_vcr_requests_on_attributes } do
+    context 'with invalid siren', vcr: { cassette_name: 'acoss/with_non_existent_siren' } do
       let(:siren) { not_found_siren }
 
       it { is_expected.to be_a_failure }
