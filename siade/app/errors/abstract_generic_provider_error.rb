@@ -8,6 +8,11 @@ class AbstractGenericProviderError < ApplicationError
     @message = message
   end
 
+  def add_meta(meta)
+    extra_meta.merge!(meta)
+    self
+  end
+
   def code
     "#{provider_code}#{subcode}"
   end
@@ -19,11 +24,15 @@ class AbstractGenericProviderError < ApplicationError
   def meta
     {
       provider: provider_name,
-    }
+    }.merge(extra_meta)
   end
 
   def detail
     @message || super
+  end
+
+  def extra_meta
+    @extra_meta ||= {}
   end
 
   def kind
