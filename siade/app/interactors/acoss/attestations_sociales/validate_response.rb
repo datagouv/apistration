@@ -13,11 +13,11 @@ class ACOSS::AttestationsSociales::ValidateResponse < ValidateResponse
 
   def handle_errors
     if internal_error?
-      invalid_provider_response!
+      build_and_fail!(ProviderInternalServerError)
     elsif not_found?
-      resource_not_found!
+      build_and_fail!(NotFoundError)
     else
-      unknown_provider_response!
+      build_and_fail!(ProviderUnknownError)
     end
   end
 
@@ -40,6 +40,20 @@ class ACOSS::AttestationsSociales::ValidateResponse < ValidateResponse
       body: body,
     )
     fail_with_error!(error)
+  end
+
+  def build_and_fail!(error_klass)
+    fail_with_error!(
+      build_error_with_provider_errors(
+        error_klass,
+      )
+    )
+  end
+
+  def build_error_with_provider_errors(error_klass)
+    build_error(error_klass).add_meta(
+      provider_errors: json_errors,
+    )
   end
 
   def not_found?

@@ -50,6 +50,16 @@ RSpec.describe ACOSS::AttestationsSociales::ValidateResponse, type: :validate_re
         it { is_expected.to be_a_failure }
 
         its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+
+        it 'adds meta with json errors' do
+          subject
+
+          error = subject.errors.first
+
+          expect(error.meta[:provider_errors]).to eq(
+            json_errors,
+          )
+        end
       end
 
       context 'when it is a hash instead of an array' do
