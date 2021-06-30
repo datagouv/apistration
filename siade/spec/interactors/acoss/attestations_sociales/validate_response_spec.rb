@@ -61,7 +61,17 @@ RSpec.describe ACOSS::AttestationsSociales::ValidateResponse, type: :validate_re
 
         it { is_expected.to be_a_failure }
 
-        its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+        its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+
+        it 'adds private context with json body to error' do
+          subject
+
+          error = subject.errors.first
+
+          expect(error.private_context).to eq(
+            body: json_errors.to_json,
+          )
+        end
       end
     end
   end

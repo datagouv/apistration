@@ -6,7 +6,7 @@ class ACOSS::AttestationsSociales::ValidateResponse < ValidateResponse
       handle_errors
     end
   rescue TypeError
-    invalid_provider_response!('Invalid json error payload')
+    handle_json_error_body_not_an_array
   end
 
   private
@@ -32,6 +32,14 @@ class ACOSS::AttestationsSociales::ValidateResponse < ValidateResponse
     )
   rescue JSON::ParserError
     []
+  end
+
+  def handle_json_error_body_not_an_array
+    error = build_error(ProviderUnknownError, 'Invalid json error payload')
+    error.add_private_context(
+      body: body,
+    )
+    fail_with_error!(error)
   end
 
   def not_found?
