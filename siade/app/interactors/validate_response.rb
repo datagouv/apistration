@@ -15,19 +15,25 @@ class ValidateResponse < ApplicationInteractor
 
   protected
 
-  def invalid_provider_response!(message = nil)
-    context.errors << ::ProviderInternalServerError.new(context.provider_name, message)
+  def build_error(error_klass, message=nil)
+    error_klass.new(context.provider_name, message)
+  end
+
+  def fail_with_error!(error)
+    context.errors << error
     context.fail!
+  end
+
+  def invalid_provider_response!(message = nil)
+    fail_with_error!(build_error(::ProviderInternalServerError, message))
   end
 
   def unknown_provider_response!(message = nil)
-    context.errors << ::ProviderUnknownError.new(context.provider_name, message)
-    context.fail!
+    fail_with_error!(build_error(::ProviderUnknownError, message))
   end
 
   def resource_not_found!(message = not_found_message)
-    context.errors << ::NotFoundError.new(context.provider_name, message)
-    context.fail!
+    fail_with_error!(build_error(::NotFoundError, message))
   end
 
   private
