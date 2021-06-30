@@ -15,11 +15,30 @@ RSpec.describe MonitoringService, type: :service do
       subject { instance.track_provider_error(error) }
 
       let(:error) { ProviderInternalServerError.new('INSEE', 'PANIK') }
+      let(:private_context) do
+        {
+          oauth_token: 'very_secret',
+        }
+      end
+
+      before do
+        error.add_private_context(private_context)
+      end
 
       it 'sets extra context with error payload, which returns json api error with all available informations' do
         expect(Sentry).to receive(:set_extras).with(
           hash_including(
             error.to_h,
+          )
+        )
+
+        subject
+      end
+
+      it 'sets extra context with private context, which is not returned to users' do
+        expect(Sentry).to receive(:set_extras).with(
+          hash_including(
+            private_context,
           )
         )
 

@@ -29,6 +29,15 @@ class ApplicationError
     }
   end
 
+  def private_context
+    @private_context ||= {}
+    @private_context
+  end
+
+  def add_private_context(context)
+    private_context.merge!(context)
+  end
+
   def kind
     fail 'has to be implemented in inherited classes'
   end
