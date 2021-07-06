@@ -30,12 +30,14 @@ class RetrieverOrganizer < ApplicationOrganizer
   private
 
   def track_providers_errors
-    if context.errors.any?
-      context.errors.select do |error|
-        error.kind == :provider_error
-      end.each do |provider_error|
-        MonitoringService.instance.track_provider_error(provider_error)
-      end
+    provider_errors.each do |provider_error|
+      MonitoringService.instance.track_provider_error(provider_error)
+    end
+  end
+
+  def provider_errors
+    context.errors.select do |error|
+      error.kind == :provider_error
     end
   end
 
