@@ -29,13 +29,13 @@ class ApplicationError
     }
   end
 
-  def private_context
-    @private_context ||= {}
-    @private_context
+  def monitoring_private_context
+    @monitoring_private_context ||= {}
+    @monitoring_private_context
   end
 
-  def add_private_context(context)
-    private_context.merge!(context)
+  def add_to_monitoring_private_context(context)
+    monitoring_private_context.merge!(context)
   end
 
   def kind

@@ -15,7 +15,7 @@ class MonitoringService
   def track_provider_error(error)
     set_extras(
       error.to_h.merge(
-        error.private_context,
+        error.monitoring_private_context,
       ),
     )
 
