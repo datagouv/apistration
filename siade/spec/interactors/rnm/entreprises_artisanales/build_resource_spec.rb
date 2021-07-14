@@ -96,6 +96,11 @@ RSpec.describe RNM::EntreprisesArtisanales::BuildResource, type: :build_resource
     end
 
     it { is_expected.to be_a_success }
-    its(:resource) { is_expected.to eq(Resource.new(valid_payload)) }
+
+    it 'builds valid resource' do
+      expect(subject.resource).to be_a(Resource)
+
+      expect(subject.resource.to_h).to eq(valid_payload)
+    end
   end
 end

@@ -10,8 +10,10 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite::BuildResource do
 
     it { is_expected.to be_success }
 
-    its(:resource) do
-      is_expected.to include(
+    it 'builds valid resource' do
+      expect(subject.resource).to be_a(Resource)
+
+      expect(subject.resource.to_h).to include(
         id: eligible_siret(:probtp),
         document_url: 'not.a.real/file/upload',
       )

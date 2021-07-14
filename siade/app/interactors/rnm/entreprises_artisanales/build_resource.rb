@@ -56,7 +56,7 @@ class RNM::EntreprisesArtisanales::BuildResource < BuildResource
       # FIXME JSONAPI use this field to retrieve the relationship
       adresse_id: value_or_placeholder('ent_id_siren'),
       # NOTE this payload won't be send to end-user because relationship data includes only type and id
-      adresse: Hashie::Mash.new(
+      adresse: {
         # FIXME
         # Jsonapi::MandatoryField: id is a mandatory field in the jsonapi spec
         id:                     value_or_placeholder('ent_id_siren'),
@@ -70,7 +70,7 @@ class RNM::EntreprisesArtisanales::BuildResource < BuildResource
         commune_cog:            value_or_placeholder('ent_adr_commune_cog'),
         departement:            value_or_placeholder('gest_dept'),
         region:                 value_or_placeholder('gest_reg'),
-      )
+      }
     }
   end
 
