@@ -13,4 +13,8 @@ class PartialContentError < AbstractGenericProviderError
   def detail
     "Le champ '#{key}' est absent de la réponse du fournisseur de données"
   end
+
+  def kind
+    :partial_content
+  end
 end
