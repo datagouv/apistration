@@ -8,6 +8,6 @@ class ValidateAttributePresence < ValidateParamInteractor
   protected
 
   def attribute
-    fail 'should be implemented in inherited class'
+    fail NotImplementedError
   end
 end

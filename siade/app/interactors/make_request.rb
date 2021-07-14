@@ -38,7 +38,7 @@ class MakeRequest < ApplicationInteractor
   protected
 
   def api_call
-    fail 'should be implemented in inherited class'
+    fail NotImplementedError
   end
 
   def http_options

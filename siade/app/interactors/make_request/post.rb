@@ -2,11 +2,11 @@ class MakeRequest::Post < MakeRequest
   protected
 
   def request_uri
-    fail 'should be implemented in inherited class'
+    fail NotImplementedError
   end
 
   def request_params
-    fail 'should be implemented in inherited class'
+    fail NotImplementedError
   end
 
   private

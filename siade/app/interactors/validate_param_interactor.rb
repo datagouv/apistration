@@ -8,7 +8,7 @@ class ValidateParamInteractor < ApplicationInteractor
   end
 
   def call
-    fail 'should be implemented in inherited class'
+    fail NotImplementedError
   end
 
   protected

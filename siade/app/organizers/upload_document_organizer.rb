@@ -14,14 +14,14 @@ class UploadDocumentOrganizer < ApplicationOrganizer
   protected
 
   def source_file_content
-    fail 'should be implemented in inherited class'
+    fail NotImplementedError
   end
 
   def file_type
-    fail 'should be implemented in inherited class'
+    fail NotImplementedError
   end
 
   def filename
-    fail 'should be implemented in inherited class'
+    fail NotImplementedError
   end
 end

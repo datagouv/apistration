@@ -24,7 +24,7 @@ class RetrieverOrganizer < ApplicationOrganizer
   protected
 
   def provider_name
-    fail 'should be implemented in inherited class'
+    fail NotImplementedError
   end
 
   private

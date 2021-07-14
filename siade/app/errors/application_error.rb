@@ -39,7 +39,7 @@ class ApplicationError
   end
 
   def kind
-    fail 'has to be implemented in inherited classes'
+    fail NotImplementedError
   end
 
   protected
