@@ -54,7 +54,9 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
   end
 
   def extract_http_code(retriever)
-    if at_least_one_error_kind_of?(:wrong_parameter, retriever)
+    if retriever.errors.blank?
+      :ok
+    elsif at_least_one_error_kind_of?(:wrong_parameter, retriever)
       :unprocessable_entity
     elsif at_least_one_error_kind_of?(:network_error, retriever)
       :gateway_timeout
@@ -66,8 +68,6 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
       :not_found
     elsif at_least_one_error_kind_of?(:provider_error, retriever)
       :bad_gateway
-    elsif retriever.errors.blank?
-      :ok
     else
       raise 'No valid HTTP status'
     end
