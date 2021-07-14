@@ -1,10 +1,5 @@
-class ACOSS::AttestationsSociales::BuildResource < BuildResource
-  protected
-
-  def resource_attributes
-    {
-      id: context.params[:siren],
-      document_url: context.url,
-    }
+class ACOSS::AttestationsSociales::BuildResource < BuildResource::Document
+  def id
+    context.params[:siren]
   end
 end

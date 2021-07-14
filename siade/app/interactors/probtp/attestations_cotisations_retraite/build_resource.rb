@@ -1,10 +1,5 @@
-class PROBTP::AttestationsCotisationsRetraite::BuildResource < BuildResource
-  protected
-
-  def resource_attributes
-    {
-      id: context.params[:siret],
-      document_url: context.url,
-    }
+class PROBTP::AttestationsCotisationsRetraite::BuildResource < BuildResource::Document
+  def id
+    context.params[:siret]
   end
 end
