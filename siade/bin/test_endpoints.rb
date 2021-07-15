@@ -79,7 +79,7 @@ endpoints = <<STR
   http_path: '/v2/attestations_fiscales_dgfip/532010576'
 
 - name: Attestations sociales
-  http_path: '/v2/attestations_sociales_acoss/799238639'
+  http_path: '/v2/attestations_sociales_acoss/418166096'
 
 - name: Effectifs annuels
   http_path: '/v2/effectifs_annuels_acoss_covid/829423052'
