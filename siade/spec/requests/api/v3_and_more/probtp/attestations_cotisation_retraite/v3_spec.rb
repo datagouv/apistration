@@ -19,42 +19,13 @@ RSpec.describe 'PROBTP : Attestations cotisations retraite', type: %i[request sw
 
       describe 'with valid mandatory params', valid: true do
         response 200, 'Attestation found', vcr: { cassette_name: 'probtp/attestation/with_eligible_siret' } do
-          let(:siret) { eligible_siret(:probtp) }
-
-          schema type: :object,
-            properties: {
-            data: {
-              type: :object,
-              properties: {
-                id: {
-                  type: :string,
-                  example: eligible_siret(:probtp),
-                },
-                type: {
-                  type: :string,
-                  example: :document,
-                  enum: %w[document],
-                },
-                attributes: {
-                  type: :object,
-                  properties: {
-                    document_url: {
-                      type: :string,
-                      example: 'https://storage.entreprise.api.gouv.fr/siade_dev/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf',
-                      description: 'Lien vers l\'attestation',
-                    },
-                  },
-                  required: %w[document_url],
-                },
-              },
-              required: %w[
-                id
-                type
-                attributes
-              ],
-            },
-          },
-          required: %w[data]
+          schema build_rswag_document_properties_response(
+            siret: eligible_siret(:probtp),
+            document_url_extra_properties: {
+              example: 'https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf',
+              description: 'Lien vers l\'attestation ProBtp.',
+            }
+          )
 
           run_test!
         end

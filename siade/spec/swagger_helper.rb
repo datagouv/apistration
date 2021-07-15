@@ -1,3 +1,5 @@
+Dir[Rails.root.join("spec/support/rswag_*.rb")].each { |f| require f }
+
 RSpec.shared_context 'Mandatory params' do
   let(:context) { 'Dev' }
   let(:recipient) { "API Entreprise" }
@@ -20,42 +22,6 @@ RSpec.shared_context 'Valid mandatory params and unauthorized token' do
   include_context 'Mandatory params'
 
   let(:Authorization) { "Bearer #{nope_jwt}" }
-end
-
-module RSWagCommonsResponses
-  def common_action_attributes
-    produces 'application/json'
-
-    parameter name: :context, in: :query, type: :string
-    parameter name: :recipient, in: :query, type: :string
-    parameter name: :object, in: :query, type: :string
-
-    security [jwt_bearer_token: []]
-  end
-
-  def unauthorized_request(&block)
-    include_context 'Valid mandatory params and no token'
-
-    response '403', 'Non autorisé' do
-      description "Le jeton est absent"
-
-      block.call if block_given?
-
-      run_test!
-    end
-  end
-
-  def forbidden_request(&block)
-    include_context 'Valid mandatory params and unauthorized token'
-
-    response '403', 'Accès interdit' do
-      description "Le jeton ne possède pas les droits nécessaires"
-
-      block.call if block_given?
-
-      run_test!
-    end
-  end
 end
 
 RSpec.configure do |config|
@@ -145,4 +111,5 @@ RSpec.configure do |config|
   end
 
   config.extend RSWagCommonsResponses
+  config.extend RSWagResourcesPayloads
 end

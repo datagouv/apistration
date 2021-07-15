@@ -24,39 +24,13 @@ RSpec.describe 'ACOSS: Attestations sociales', type: %i[request swagger] do
         response '200', 'Entreprise found', vcr: { cassette_name: 'acoss/with_valid_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body) } do
           let(:siren) { valid_siren(:acoss) }
 
-          schema type: :object,
-            properties: {
-              data: {
-                type: :object,
-                properties: {
-                  id: {
-                    type: :string,
-                    example: valid_siren(:acoss),
-                  },
-                  type: {
-                    type: :string,
-                    example: :document,
-                    enum: %w[document],
-                  },
-                  attributes: {
-                    type: :object,
-                    properties: {
-                      document_url: {
-                        example: 'https://storage.entreprise.api.gouv.fr/siade_dev/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf',
-                        description: 'Lien vers l\'attestation',
-                      },
-                    },
-                    required: %w[document_url],
-                  },
-                },
-                required: %w[
-                  id
-                  type
-                  attributes
-                ],
-              },
+          schema build_rswag_document_properties_response(
+            siret: valid_siren(:acoss),
+            document_url_extra_properties: {
+              example: 'https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_vigilance_acoss.pdf',
+              description: 'Lien vers l\'attestation de vigilance ACOSS.',
             },
-            required: %w[data]
+          )
 
           run_test!
         end
