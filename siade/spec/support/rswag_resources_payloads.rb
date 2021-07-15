@@ -8,7 +8,7 @@ module RSWagResourcesPayloads
           properties: {
             id: {
               type: :string,
-              example: eligible_siret(:probtp),
+              example: siret,
             },
             type: {
               type: :string,
