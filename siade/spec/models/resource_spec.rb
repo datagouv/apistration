@@ -24,4 +24,42 @@ RSpec.describe Resource, type: :model do
       it { is_expected.to be_nil }
     end
   end
+
+  describe '#to_h' do
+    subject { instance.to_h }
+
+    let(:params) do
+      {
+        id: 'id',
+        payload: Resource.new(
+          {
+            key: 'value',
+          }
+        ),
+        array: [
+          'item',
+          Resource.new(
+            key: 'value',
+          )
+        ]
+      }
+    end
+
+    it 'deeps transform to hash' do
+      expect(subject).to eq(
+        {
+          id: 'id',
+          payload: {
+            key: 'value',
+          },
+          array: [
+            'item',
+            {
+              key: 'value',
+            }
+          ]
+        }
+      )
+    end
+  end
 end
