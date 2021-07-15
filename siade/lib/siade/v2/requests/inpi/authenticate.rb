@@ -18,7 +18,7 @@ class SIADE::V2::Requests::INPI::Authenticate
     Net::HTTP.start(uri.hostname, uri.port, request_options) do |http|
       http.request request
     end
-  rescue Net::OpenTimeout, Net::ReadTimeout, Errno::ECONNREFUSED, Errno::ECONNRESET
+  rescue Net::OpenTimeout, Net::ReadTimeout, Errno::ECONNREFUSED, Errno::ECONNRESET, SocketError
     nil
   end
 
