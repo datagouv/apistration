@@ -12,7 +12,14 @@ class Documents::Upload < ApplicationInteractor
   end
 
   def store!
-    storage.put_object(container_name, document_path, file_content)
+    storage.put_object(
+      container_name,
+      document_path,
+      file_content,
+      {
+        'X-Delete-After' => file_expired_in,
+      }
+    )
   end
 
   def file_content
@@ -48,6 +55,10 @@ class Documents::Upload < ApplicationInteractor
 
   def secure_token
     @secure_token ||= SecureRandom.hex(20)
+  end
+
+  def file_expired_in
+    3.months.to_i
   end
 
   def public_storage_url
