@@ -167,6 +167,7 @@ def test_endpoint(endpoint, index)
   end
 
   print "[#{index}] Endpoint '#{name}' ( #{route} ): #{status}\n"
+  print "Payload: #{response.body}\n\n" if ENV['DEBUG']
 end
 
 print "## Test endpoints on #{@host}\n\n"
