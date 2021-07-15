@@ -49,7 +49,11 @@ RSpec.describe 'ACOSS: Attestations sociales', type: %i[request swagger] do
                     required: %w[document_url],
                   },
                 },
-                required: %w[id],
+                required: %w[
+                  id
+                  type
+                  attributes
+                ],
               },
             },
             required: %w[data]

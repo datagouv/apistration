@@ -47,7 +47,11 @@ RSpec.describe 'PROBTP : Attestations cotisations retraite', type: %i[request sw
                   required: %w[document_url],
                 },
               },
-              required: %w[id],
+              required: %w[
+                id
+                type
+                attributes
+              ],
             },
           },
           required: %w[data]
