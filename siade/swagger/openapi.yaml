@@ -55,12 +55,17 @@ paths:
                         type: object
                         properties:
                           document_url:
-                            example: https://storage.entreprise.api.gouv.fr/siade_dev/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf
-                            description: Lien vers l'attestation
+                            type: string
+                            example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_vigilance_acoss.pdf
+                            description: Lien vers l'attestation de vigilance ACOSS.
+                              Ce document est automatiquement supprimé au bout de
+                              3 mois.
                         required:
                         - document_url
                     required:
                     - id
+                    - type
+                    - attributes
                 required:
                 - data
         '404':
@@ -121,12 +126,15 @@ paths:
                         properties:
                           document_url:
                             type: string
-                            example: https://storage.entreprise.api.gouv.fr/siade_dev/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf
-                            description: Lien vers l'attestation
+                            example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf
+                            description: Lien vers l'attestation ProBtp. Ce document
+                              est automatiquement supprimé au bout de 3 mois.
                         required:
                         - document_url
                     required:
                     - id
+                    - type
+                    - attributes
                 required:
                 - data
         '404':
