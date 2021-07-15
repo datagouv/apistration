@@ -17,14 +17,19 @@
 #
 
 ActiveSupport::Inflector.inflections(:en) do |inflect|
-  inflect.acronym 'OAuth'
-  inflect.acronym 'JSONAPI'
-  inflect.acronym 'API'
-
-  inflect.acronym 'DGFIP'
   inflect.acronym 'SIADE'
-  inflect.acronym 'OLD'
+
+  inflect.acronym 'API'
+  inflect.acronym 'JSONAPI'
+  inflect.acronym 'OAuth2'
+  inflect.acronym 'ELK'
   inflect.acronym 'PDF'
+  inflect.acronym 'ZIP'
+  inflect.acronym 'HTTP'
+
+  inflect.acronym 'INSEE'
+  inflect.acronym 'ACOSS'
+  inflect.acronym 'DGFIP'
   inflect.acronym 'RNA'
   inflect.acronym 'FNTP'
   inflect.acronym 'CNETP'
@@ -32,11 +37,9 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'QUALIBAT'
   inflect.acronym 'MSA'
   inflect.acronym 'PROBTP'
-  inflect.acronym 'BDNU'
   inflect.acronym 'AGEFIPH'
   inflect.acronym 'PROBTP'
   inflect.acronym 'RCS'
-  inflect.acronym 'ACOSS'
   inflect.acronym 'INPI'
   inflect.acronym 'BDF'
   inflect.acronym 'RGE'

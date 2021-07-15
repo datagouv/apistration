@@ -1,4 +1,4 @@
-class UnsupportedApiVersionError < ApplicationError
+class UnsupportedAPIVersionError < ApplicationError
   def initialize(invalid_value)
     @invalid_value = invalid_value
   end

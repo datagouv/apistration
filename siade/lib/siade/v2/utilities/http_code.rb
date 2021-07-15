@@ -1,4 +1,4 @@
-class SIADE::V2::Utilities::HTTP_code
+class SIADE::V2::Utilities::HTTPCode
   def self.generate_best_http_code(http_codes)
     best_code = 500
     http_codes.sort!

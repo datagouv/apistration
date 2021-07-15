@@ -16,7 +16,7 @@ class SIADE::V2::Retrievers::ExtraitCourtINPI < SIADE::V2::Retrievers::GenericIn
   end
 
   def http_code
-    SIADE::V2::Utilities::HTTP_code
+    SIADE::V2::Utilities::HTTPCode
       .generate_best_http_code([driver_brevets.http_code, driver_modeles.http_code, driver_marques.http_code])
   end
 

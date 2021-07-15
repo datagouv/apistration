@@ -1,4 +1,4 @@
-module SIADE::V3::Oauth2::AbstractTokenProvider
+module SIADE::V3::OAuth2::AbstractTokenProvider
   class Error < ::StandardError; end
   extend Forwardable
   def_delegators :oauth_token, :expires_at, :expires_in, :token, :refresh_token

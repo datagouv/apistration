@@ -57,7 +57,7 @@ class API::V2::EntreprisesRestoredController < API::V2::BaseController
   end
 
   def best_http_code
-    SIADE::V2::Utilities::HTTP_code.generate_best_http_code(
+    SIADE::V2::Utilities::HTTPCode.generate_best_http_code(
       [
         retriever_entreprise.http_code,
         retriever_etablissement.http_code

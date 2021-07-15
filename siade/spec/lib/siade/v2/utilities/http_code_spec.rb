@@ -1,4 +1,4 @@
-RSpec.describe SIADE::V2::Utilities::HTTP_code do
+RSpec.describe SIADE::V2::Utilities::HTTPCode do
   subject { described_class }
 
   it 'should return 200' do

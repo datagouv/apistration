@@ -1,9 +1,9 @@
-RSpec.describe SIADE::V3::Oauth2::AbstractTokenProvider do
+RSpec.describe SIADE::V3::OAuth2::AbstractTokenProvider do
   subject { DummyTokenProvider.new }
 
   before(:all) do
     DummyTokenProvider = Class.new do
-      include SIADE::V3::Oauth2::AbstractTokenProvider
+      include SIADE::V3::OAuth2::AbstractTokenProvider
       def client_get_token_params; { params: :params }; end
       def client_options; {}; end
       def access_token_options; {}; end
@@ -144,7 +144,7 @@ RSpec.describe SIADE::V3::Oauth2::AbstractTokenProvider do
     end
 
     it 'raises an error when retrieving the token' do
-      expect { subject.token }.to raise_error(SIADE::V3::Oauth2::AbstractTokenProvider::Error)
+      expect { subject.token }.to raise_error(SIADE::V3::OAuth2::AbstractTokenProvider::Error)
     end
 
     it 'sends a message to Sentry' do
@@ -153,7 +153,7 @@ RSpec.describe SIADE::V3::Oauth2::AbstractTokenProvider do
         .with("Error while retrieving DummyTokenProvider OAuth2 JSON token from provider (OAuth2::Error #{response_body_from_sentry.to_json}))", level: 'warning')
       begin
         subject.token
-      rescue SIADE::V3::Oauth2::AbstractTokenProvider::Error
+      rescue SIADE::V3::OAuth2::AbstractTokenProvider::Error
       end
     end
   end
