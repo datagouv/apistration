@@ -84,7 +84,6 @@ task :deploy do
     invoke :'deploy:link_shared_paths'
     set :bundle_options, fetch(:bundle_options) + ' --clean'
     invoke :'bundle:install'
-    invoke :generate_swagger_file
 
     on :launch do
       invoke :'passenger'
@@ -102,8 +101,4 @@ task :passenger do
       echo 'Skipping: no passenger app found (will be automatically loaded)'
     fi
   }
-end
-
-task :generate_swagger_file do
-  command %{./bin/generate_swagger.sh}
 end
