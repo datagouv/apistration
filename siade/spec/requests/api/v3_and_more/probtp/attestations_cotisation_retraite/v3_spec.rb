@@ -23,7 +23,7 @@ RSpec.describe 'PROBTP : Attestations cotisations retraite', type: %i[request sw
             siret: eligible_siret(:probtp),
             document_url_extra_properties: {
               example: 'https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf',
-              description: 'Lien vers l\'attestation ProBtp.',
+              description: 'Lien vers l\'attestation ProBtp. Ce document est automatiquement supprimé au bout de 3 mois.',
             }
           )
 

@@ -28,7 +28,7 @@ RSpec.describe 'ACOSS: Attestations sociales', type: %i[request swagger] do
             siret: valid_siren(:acoss),
             document_url_extra_properties: {
               example: 'https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_vigilance_acoss.pdf',
-              description: 'Lien vers l\'attestation de vigilance ACOSS.',
+              description: 'Lien vers l\'attestation de vigilance ACOSS. Ce document est automatiquement supprimé au bout de 3 mois.',
             },
           )
 
