@@ -1,4 +1,4 @@
-class PROBTP::UploadAttestationsCotisationRetraite < UploadDocumentOrganizer
+class PROBTP::AttestationsCotisationsRetraite::UploadDocument < UploadDocumentOrganizer
   organize Documents::StoreFromBase64
 
   def source_file_content
