@@ -1,6 +1,20 @@
-class Resource < OpenStruct
+class Resource
+  def initialize(params={})
+    @data = params
+
+    params.each_key do |key|
+      self.class.define_method(key) do
+        @data[key]
+      end
+
+      self.class.define_method("#{key}=") do |new_value|
+        @data[key] = new_value
+      end
+    end
+  end
+
   def to_h
-    super.to_h.transform_values do |value|
+    @data.to_h.transform_values do |value|
       if value.is_a?(Resource)
         value.to_h
       elsif value.is_a?(Array)
