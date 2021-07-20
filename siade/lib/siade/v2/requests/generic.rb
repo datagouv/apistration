@@ -118,15 +118,30 @@ class SIADE::V2::Requests::Generic
   end
 
   def net_http_get_call
-    @raw_response = Net::HTTP.start(request_uri.host, request_uri.port, net_http_options) do |http|
-      request = Net::HTTP::Get.new(build_request)
-      set_headers(request)
-      http.read_timeout = 10
-      http.open_timeout = 10
-      http.request(request)
-    end
+    transaction = Sentry&.get_current_scope&.get_transaction
+    if transaction
+      span = transaction.with_child_span(op: :net_http_all, description: "whole get call + TLS stuff") do
+        @raw_response = Net::HTTP.start(request_uri.host, request_uri.port, net_http_options) do |http|
+          request = Net::HTTP::Get.new(build_request)
+          set_headers(request)
+          http.read_timeout = 10
+          http.open_timeout = 10
+          http.request(request)
+        end
 
-    @response = build_response
+        @response = build_response
+      end
+    else
+      @raw_response = Net::HTTP.start(request_uri.host, request_uri.port, net_http_options) do |http|
+        request = Net::HTTP::Get.new(build_request)
+        set_headers(request)
+        http.read_timeout = 10
+        http.open_timeout = 10
+        http.request(request)
+      end
+
+      @response = build_response
+    end
   end
 
   def net_http_post_call
