@@ -1,1 +1,1 @@
-PerformanceMonitoringService.instance.enable = false
+PerformanceMonitoringService.instance.enable = true
