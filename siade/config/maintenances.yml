@@ -1,0 +1,7 @@
+---
+production: &shared
+  dgfip:
+    from_hour: '01:00'
+    to_hour: '02:00'
+development: *shared
+test: *shared
