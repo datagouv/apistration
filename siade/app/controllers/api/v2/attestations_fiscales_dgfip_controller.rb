@@ -1,7 +1,5 @@
 class API::V2::AttestationsFiscalesDGFIPController < API::V2::AbstractDGFIPController
   def show
-    authorize :attestations_fiscales
-
     retrieve_attestation = SIADE::V2::Retrievers::AttestationsFiscalesDGFIP.new(retriever_params(dgfip_service))
     retrieve_attestation.retrieve
 
@@ -13,6 +11,10 @@ class API::V2::AttestationsFiscalesDGFIPController < API::V2::AbstractDGFIPContr
   end
 
   private
+
+  def resource_scope
+    :attestations_fiscales
+  end
 
   def retriever_params(dgfip_service)
     retriever_params = params.permit(:siren, :siren_is, :siren_tva)

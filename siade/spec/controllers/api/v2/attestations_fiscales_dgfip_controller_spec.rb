@@ -1,4 +1,9 @@
 RSpec.describe API::V2::AttestationsFiscalesDGFIPController, type: :controller do
+  before do
+    allow_any_instance_of(MaintenanceService).to receive(:on?).and_return(maintenance)
+  end
+
+  let(:maintenance) { false }
 
   describe 'when DGFiP authentication fails' do
     let(:siren) { invalid_siren }
@@ -186,6 +191,26 @@ RSpec.describe API::V2::AttestationsFiscalesDGFIPController, type: :controller d
       let(:siren_tva) { '492041066' }
 
       it_behaves_like 'all_params_are_valid'
+    end
+  end
+
+  describe 'when endpoint is in maintenance' do
+    let(:maintenance) { true }
+
+    let(:siren) { valid_siren(:dgfip) }
+    let(:token) { yes_jwt }
+
+    before do
+      get :show, params: { siren: siren, token: token, error_format: 'json_api' }.merge(mandatory_params)
+    end
+
+    it 'returns 502 with maintenance message and retry_in in meta' do
+      expect(response.code.to_i).to eq 502
+
+      json_errors = JSON.parse(response.body)['errors']
+
+      expect(json_errors[0]['title']).to eq('Maintenance du fournisseur de données')
+      expect(json_errors[0]['meta']).to have_key('retry_in')
     end
   end
 end

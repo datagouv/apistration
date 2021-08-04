@@ -8,6 +8,7 @@ production: &shared
     to_hour:  '08:00'
 development: *shared
 test:
+  <<: *shared
   'normal':
     from_hour: '01:00'
     to_hour: '02:00'

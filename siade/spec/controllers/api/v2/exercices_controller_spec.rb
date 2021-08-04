@@ -5,7 +5,10 @@ RSpec.describe API::V2::ExercicesController, type: :controller do
     allow_any_instance_of(AuthenticateDGFIPService).to receive(:cookie).and_return('valid_cookie')
     # Imperative to have a persistant user_id in VCR cassettes
     allow(UserIdDGFIPService).to receive(:call).and_return(valid_dgfip_user_id)
+    allow_any_instance_of(MaintenanceService).to receive(:on?).and_return(maintenance)
   end
+
+  let(:maintenance) { false }
 
   it_behaves_like 'unauthorized'
   it_behaves_like 'forbidden'
@@ -65,6 +68,26 @@ RSpec.describe API::V2::ExercicesController, type: :controller do
           end
         end
       end
+    end
+  end
+
+  describe 'when endpoint is in maintenance' do
+    let(:maintenance) { true }
+
+    let(:siret) { valid_siret(:exercice) }
+    let(:token) { yes_jwt }
+
+    before do
+      get :show, params: { siret: siret, token: token, user_id: valid_dgfip_user_id, error_format: 'json_api' }.merge(mandatory_params)
+    end
+
+    it 'returns 502 with maintenance message and retry_in in meta' do
+      expect(response.code.to_i).to eq 502
+
+      json_errors = JSON.parse(response.body)['errors']
+
+      expect(json_errors[0]['title']).to eq('Maintenance du fournisseur de données')
+      expect(json_errors[0]['meta']).to have_key('retry_in')
     end
   end
 end

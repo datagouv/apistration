@@ -1,4 +1,9 @@
 RSpec.describe API::V2::LiassesFiscalesDGFIPController, type: :controller do
+  before do
+    allow_any_instance_of(MaintenanceService).to receive(:on?).and_return(maintenance)
+  end
+
+  let(:maintenance) { false }
   let(:token)   { yes_jwt }
 
   describe 'happy path', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_valid_siren' } do
@@ -131,6 +136,42 @@ RSpec.describe API::V2::LiassesFiscalesDGFIPController, type: :controller do
       before { get :dictionnaire, params: { token: token, siren: siren, annee: 2017 }.merge(mandatory_params) }
 
       it_behaves_like 'DGFiP authentication failed'
+    end
+  end
+
+  describe 'when endpoint is in maintenance' do
+    let(:maintenance) { true }
+
+    let(:siren) { valid_siren(:dgfip) }
+    let(:token) { yes_jwt }
+
+    shared_examples 'liasse fiscale maintenance' do
+      it 'returns 502 with maintenance message and retry_in in meta' do
+        expect(response.code.to_i).to eq 502
+
+        json_errors = JSON.parse(response.body)['errors']
+
+        expect(json_errors[0]['title']).to eq('Maintenance du fournisseur de données')
+        expect(json_errors[0]['meta']).to have_key('retry_in')
+      end
+    end
+
+    describe 'liasse complete' do
+      before { get :show, params: { token: token, siren: siren, annee: 2017, error_format: 'json_api' }.merge(mandatory_params) }
+
+      it_behaves_like 'liasse fiscale maintenance'
+    end
+
+    describe 'liasse declaration' do
+      before { get :declaration, params: { token: token, siren: siren, annee: 2017, error_format: 'json_api' }.merge(mandatory_params) }
+
+      it_behaves_like 'liasse fiscale maintenance'
+    end
+
+    describe 'liasse dictionnaire' do
+      before { get :dictionnaire, params: { token: token, siren: siren, annee: 2017, error_format: 'json_api' }.merge(mandatory_params) }
+
+      it_behaves_like 'liasse fiscale maintenance'
     end
   end
 end

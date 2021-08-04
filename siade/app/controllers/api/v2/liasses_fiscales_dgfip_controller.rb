@@ -1,6 +1,4 @@
 class API::V2::LiassesFiscalesDGFIPController < API::V2::AbstractDGFIPController
-  before_action :authorize?
-
   def show
     dgfip_action(request_type: :both)
   end
@@ -26,8 +24,8 @@ class API::V2::LiassesFiscalesDGFIPController < API::V2::AbstractDGFIPController
     end
   end
 
-  def authorize?
-    authorize :liasse_fiscale
+  def resource_scope
+    :liasse_fiscale
   end
 
   def retriever_params

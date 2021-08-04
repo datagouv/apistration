@@ -1,7 +1,5 @@
 class API::V2::ExercicesController < API::V2::AbstractDGFIPController
   def show
-    authorize :exercices
-
     retrieve_exercice = SIADE::V2::Retrievers::Exercices.new(params[:siret], retriever_params(dgfip_service))
     retrieve_exercice.retrieve
 
@@ -13,6 +11,10 @@ class API::V2::ExercicesController < API::V2::AbstractDGFIPController
   end
 
   private
+
+  def resource_scope
+    :exercices
+  end
 
   def retriever_params(dgfip_service)
     retriever_params = params.permit(:siret)
