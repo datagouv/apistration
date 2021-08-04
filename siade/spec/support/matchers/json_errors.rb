@@ -4,7 +4,6 @@ RSpec::Matchers.define :have_error do |expected|
   match do |actual|
     actual.each do |object|
       expect(object).to be_a(ApplicationError)
-
     end
 
     expect(actual.map(&:detail)).to include(expected)
