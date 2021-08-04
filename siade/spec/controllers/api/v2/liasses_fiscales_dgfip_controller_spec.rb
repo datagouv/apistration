@@ -3,7 +3,7 @@ RSpec.describe API::V2::LiassesFiscalesDGFIPController, type: :controller do
 
   describe 'happy path', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_valid_siren' } do
     before do
-     allow(UserIdDGFIPService).to receive(:call).and_return(valid_dgfip_user_id)
+      allow(UserIdDGFIPService).to receive(:call).and_return(valid_dgfip_user_id)
     end
 
     describe 'happy path: liasse complete' do
