@@ -14,3 +14,6 @@ test:
   'from_after_to':
     from_hour: '23:00'
     to_hour:  '08:00'
+  'INSEE':
+    from_hour: '02:00'
+    to_hour: '05:00'
