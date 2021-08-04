@@ -7,13 +7,34 @@ class MaintenanceService
 
   def on?
     provider_config.present? &&
-      maintenance_window.cover?(now)
+      maintenance_windows.any? { |maintenance_window| maintenance_window.cover?(now) }
   end
 
   private
 
-  def maintenance_window
-    (Time.zone.parse(provider_config[:from_hour])..Time.zone.parse(provider_config[:to_hour]))
+  def maintenance_windows
+    if from_hour > to_hour
+      [
+        (from_hour..now.end_of_day),
+        (now.beginning_of_day..to_hour),
+      ]
+    else
+      [
+        (from_hour..to_hour),
+      ]
+    end
+  end
+
+  def from_hour
+    parse_hour(provider_config[:from_hour])
+  end
+
+  def to_hour
+    parse_hour(provider_config[:to_hour])
+  end
+
+  def parse_hour(hour)
+    Time.zone.parse(hour)
   end
 
   def now
@@ -21,7 +42,7 @@ class MaintenanceService
   end
 
   def provider_config
-    @provider_config ||= config[provider.to_sym]
+    @provider_config ||= config[provider]
   end
 
   def config

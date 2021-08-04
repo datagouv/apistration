@@ -1,7 +1,16 @@
 ---
 production: &shared
-  dgfip:
+  'DGFIP':
     from_hour: '01:00'
     to_hour: '02:00'
+  'Banque de France':
+    from_hour: '23:00'
+    to_hour:  '08:00'
 development: *shared
-test: *shared
+test:
+  'normal':
+    from_hour: '01:00'
+    to_hour: '02:00'
+  'from_after_to':
+    from_hour: '23:00'
+    to_hour:  '08:00'
