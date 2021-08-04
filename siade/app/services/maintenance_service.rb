@@ -10,6 +10,24 @@ class MaintenanceService
       maintenance_windows.any? { |maintenance_window| maintenance_window.cover?(now) }
   end
 
+  def from_hour
+    parse_hour(provider_config[:from_hour])
+  end
+
+  def to_hour
+    parse_hour(provider_config[:to_hour])
+  end
+
+  def end_in
+    return unless on?
+
+    if from_hour > to_hour && now > from_hour
+      (to_hour + 1.day - now).to_i
+    else
+      (to_hour - now).to_i
+    end
+  end
+
   private
 
   def maintenance_windows
@@ -23,14 +41,6 @@ class MaintenanceService
         (from_hour..to_hour),
       ]
     end
-  end
-
-  def from_hour
-    parse_hour(provider_config[:from_hour])
-  end
-
-  def to_hour
-    parse_hour(provider_config[:to_hour])
   end
 
   def parse_hour(hour)
