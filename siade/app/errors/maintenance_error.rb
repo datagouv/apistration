@@ -9,7 +9,7 @@ class MaintenanceError < AbstractGenericProviderError
 
   def extra_meta
     {
-      retry_in: maintenance_service.end_in,
+      retry_in: maintenance_service.remaining_seconds,
     }
   end
 

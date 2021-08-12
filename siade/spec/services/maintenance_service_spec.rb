@@ -74,8 +74,8 @@ RSpec.describe MaintenanceService, type: :service do
     end
   end
 
-  describe '#end_in' do
-    subject { instance.end_in }
+  describe '#remaining_seconds' do
+    subject { instance.remaining_seconds }
 
     context 'with valid provider which has a from hour before to hour' do
       let(:provider) { 'normal' }

@@ -18,7 +18,7 @@ class MaintenanceService
     parse_hour(provider_config[:to_hour])
   end
 
-  def end_in
+  def remaining_seconds
     return unless on?
 
     if from_hour > to_hour && now > from_hour
