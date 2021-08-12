@@ -13,8 +13,8 @@ RSpec.describe MaintenanceService, type: :service do
       it { is_expected.to eq false }
     end
 
-    context 'with valid provider which has a from hour before to hour' do
-      let(:provider) { 'normal' }
+    context 'with valid provider which has a maintenance window within the same day' do
+      let(:provider) { 'window_within_same_day' }
 
       after do
         Timecop.return
@@ -37,8 +37,8 @@ RSpec.describe MaintenanceService, type: :service do
       end
     end
 
-    context 'with valid provider which has a from hour after to hour' do
-      let(:provider) { 'from_after_to' }
+    context 'with valid provider which has a maintenance across two day (start hour before end hour)' do
+      let(:provider) { 'window_across_two_day' }
 
       let(:beginning_of_day) { Time.zone.now.beginning_of_day }
 
@@ -77,8 +77,8 @@ RSpec.describe MaintenanceService, type: :service do
   describe '#remaining_seconds' do
     subject { instance.remaining_seconds }
 
-    context 'with valid provider which has a from hour before to hour' do
-      let(:provider) { 'normal' }
+    context 'with valid provider which has a maintenance window within the same day' do
+      let(:provider) { 'window_within_same_day' }
 
       after do
         Timecop.return
@@ -101,8 +101,8 @@ RSpec.describe MaintenanceService, type: :service do
       end
     end
 
-    context 'with valid provider which has a from hour after to hour' do
-      let(:provider) { 'from_after_to' }
+    context 'with valid provider which has a maintenance across two day (start hour before end hour)' do
+      let(:provider) { 'window_across_two_day' }
 
       let(:beginning_of_day) { Time.zone.now.beginning_of_day }
 

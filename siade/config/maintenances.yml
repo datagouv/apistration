@@ -9,10 +9,10 @@ production: &shared
 development: *shared
 test:
   <<: *shared
-  'normal':
+  'window_within_same_day':
     from_hour: '01:00'
     to_hour: '02:00'
-  'from_after_to':
+  'window_across_two_day':
     from_hour: '23:00'
     to_hour:  '08:00'
   'INSEE':
