@@ -61,6 +61,7 @@ group :test do
   gem 'vcr'
   gem 'webmock', '~> 3.14'
 
+  gem 'ammeter'
   gem 'rspec-rails'
   gem 'rspec-its'
   gem 'rspec-json_expectations'
