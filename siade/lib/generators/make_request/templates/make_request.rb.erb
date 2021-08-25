@@ -1,0 +1,11 @@
+class <%= name %>::MakeRequest < MakeRequest::<%= get_request? ? 'Get' : 'Post' %>
+  protected
+
+  def request_uri
+    fail NotImplementedError
+  end
+
+  def request_params
+    fail NotImplementedError
+  end
+end
