@@ -1,0 +1,25 @@
+Description:
+    Create a new siade v3 API
+
+Example:
+    bin/rails generate scaffold_resource MDS::Effectifs
+    bin/rails generate scaffold_resource [provider]::[resource_name] [options]
+
+    This will create:
+        app/controllers/api/v3_and_more/mds/effectifs_controller.rb
+        app/serializers/mds/effectifs_serializer/v3.rb
+        app/policies/effectifs_policy.rb
+        app/organizers/mds/effectifs.rb
+        app/organizers/mds/effectifs/validate_params.rb
+        app/organizers/mds/effectifs/upload_document.rb
+        app/interactors/mds/effectifs/make_request.rb
+        app/interactors/mds/effectifs/validate_response.rb
+        app/interactors/mds/effectifs/build_resource.rb
+        spec/controllers/api/v3_and_more/mds/effectifs_controller_spec.rb
+        spec/policies/effectifs_policy_spec.rb
+        spec/organizers/mds/effectifs_spec.rb
+        spec/organizers/mds/effectifs/validate_params_spec.rb
+        spec/organizers/mds/effectifs/upload_document_spec.rb
+        spec/interactors/mds/effectifs/make_request_spec.rb
+        spec/interactors/mds/effectifs/validate_response_spec.rb
+        spec/interactors/mds/effectifs/build_resource_spec.rb
