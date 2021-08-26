@@ -1,0 +1,5 @@
+class <%= name %>Policy < APIPolicy
+  def jwt_role_tag
+    '<%= resource_class %>'
+  end
+end
