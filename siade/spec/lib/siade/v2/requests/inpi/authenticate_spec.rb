@@ -38,4 +38,14 @@ RSpec.describe SIADE::V2::Requests::INPI::Authenticate, type: :provider_request 
 
     its(:cookie) { is_expected.to be_nil }
   end
+
+  context 'when authentication failed (end of file reached)' do
+    before do
+      inpi_url = Siade.credentials[:inpi_url]
+      url_pattern = /#{inpi_url}/
+      stub_request(:post, url_pattern).to_raise(EOFError)
+    end
+
+    its(:cookie) { is_expected.to be_nil }
+  end
 end
