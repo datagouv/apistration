@@ -1,0 +1,11 @@
+class <%= name %> < RetrieverOrganizer
+  organize <%= validation_class %>,
+           <%= name %>::MakeRequest,
+           <%= name %>::ValidateResponse,<% if document_resource? %>
+           <%= name %>::UploadDocument,<% end %>
+           <%= name %>::BuildResource,
+
+  def provider_name
+    '<%= provider_namespace %>'
+  end
+end
