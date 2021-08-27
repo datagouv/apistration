@@ -1,6 +1,4 @@
 RSpec.describe ControllerGenerator, type: :generator do
-  include_context 'with generator'
-
   before { run_generator [resource_name] }
 
   let(:resource_name) { 'MODULE::ResourceName' }

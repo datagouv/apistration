@@ -1,6 +1,4 @@
 RSpec.describe SerializerGenerator, type: :generator do
-  include_context 'with generator'
-
   let(:resource_name) { 'MODULE::ResourceName' }
 
   describe 'Serializer class file' do

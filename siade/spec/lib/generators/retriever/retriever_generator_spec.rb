@@ -1,6 +1,4 @@
 RSpec.describe RetrieverGenerator, type: :generator do
-  include_context 'with generator'
-
   let(:resource_name) { 'MODULE::ResourceName' }
 
   describe 'RetrieverOrganizer class file' do

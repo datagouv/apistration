@@ -1,6 +1,4 @@
 RSpec.describe BuildResourceGenerator, type: :generator do
-  include_context 'with generator'
-
   let(:resource_name) { 'MODULE::ResourceName' }
 
   describe 'ValidateParam class file' do

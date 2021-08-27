@@ -1,6 +1,4 @@
 RSpec.describe UploadDocumentGenerator, type: :generator do
-  include_context 'with generator'
-
   let(:resource_name) { 'MODULE::ResourceName' }
 
   before { run_generator [resource_name] }

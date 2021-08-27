@@ -186,6 +186,13 @@ Avec:
 *   `id1,id2`, optionnel, index du endpoint à faire tourner. Ceci permet de
     juste faire tourner un certain nombre de endpoints. Exemple: 3,14
 
+## Création d'une nouvelle API
+
+Afin de faciliter la création d'une nouvelle API dans la philosophie 'v3'
+il existe un générateur qui créer l'ensemble des fichiers nécessaires.
+Pour les options et fichiers générés, voir :
+
+`bundle exec rails generate scaffold_resource --help`
 
 ## Documentation
 

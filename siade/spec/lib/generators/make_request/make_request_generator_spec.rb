@@ -1,6 +1,4 @@
 RSpec.describe MakeRequestGenerator, type: :generator do
-  include_context 'with generator'
-
   let(:request_name) { 'MODULE::ResourceName' }
 
   describe 'MakeRequest class file' do
