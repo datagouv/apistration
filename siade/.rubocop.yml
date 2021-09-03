@@ -34,6 +34,14 @@ Style/HashTransformKeys:
 Style/HashTransformValues:
   Enabled: true
 
+# Necessary to use NotImplementedError
+Lint/InheritException:
+  Enabled: false
+
 Layout/HashAlignment:
   EnforcedHashRocketStyle: table
   EnforcedColonStyle: table
+
+# No line between definitions is OK for oneliners
+Layout/EmptyLineBetweenDefs:
+  AllowAdjacentOneLineDefs: true
