@@ -47,7 +47,7 @@ RSpec.configure do |config|
       servers: [
         {
           url: 'https://entreprise.api.gouv.fr',
-          description: 'Environnement de productoin',
+          description: 'Environnement de production',
         },
         {
           url: 'https://staging.entreprise.api.gouv.fr',
