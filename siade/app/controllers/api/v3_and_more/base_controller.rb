@@ -38,15 +38,15 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
   def unsupported_version_response(e)
     error = UnsupportedAPIVersionError.new(e.message)
 
-    render content_type:  content_type_header,
-           json:          ::ErrorsSerializer.new([error], format: error_format).as_json,
-           status:        error.kind
+    render content_type: content_type_header,
+           json:         ::ErrorsSerializer.new([error], format: error_format).as_json,
+           status:       error.kind
   end
 
   def render_errors(organizer)
-    render content_type:  content_type_header,
-           json:          ::ErrorsSerializer.new(organizer.errors, format: error_format).as_json,
-           status:        extract_http_code(organizer)
+    render content_type: content_type_header,
+           json:         ::ErrorsSerializer.new(organizer.errors, format: error_format).as_json,
+           status:       extract_http_code(organizer)
   end
 
   def error_format

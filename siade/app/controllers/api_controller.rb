@@ -51,7 +51,7 @@ class APIController < ActionController::API
     end
   end
 
-  def user_no_longer_authorized(exception)
+  def user_no_longer_authorized(_exception)
     ::UserAccessSpy.log_expired_token(user: pundit_user)
 
     render_generic_errors_serializer(ExpiredTokenError, status: 401)

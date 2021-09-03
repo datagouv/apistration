@@ -7,7 +7,7 @@ class BuildResource::Document < BuildResource
 
   def resource_attributes
     {
-      id: id,
+      id:           id,
       document_url: context.url,
     }
   end

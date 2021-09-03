@@ -1,4 +1,3 @@
-
 VCR.configure do |c|
   c.allow_http_connections_when_no_cassette = false
   c.ignore_localhost = true

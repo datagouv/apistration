@@ -25,8 +25,8 @@ class MakeRequest < ApplicationInteractor
     fail_to_request_provider!(
       ProviderUnavailable,
     )
-  rescue SocketError => exception
-    if dns_lookup_error?(exception)
+  rescue SocketError => e
+    if dns_lookup_error?(e)
       fail_to_request_provider!(
         DnsResolutionError,
       )
@@ -43,7 +43,7 @@ class MakeRequest < ApplicationInteractor
 
   def http_options
     {
-      use_ssl: true,
+      use_ssl:     true,
       verify_mode: OpenSSL::SSL::VERIFY_PEER,
     }
   end
