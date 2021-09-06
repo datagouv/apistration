@@ -84,6 +84,16 @@ Les 3 valeurs possibles pour le domain:
 
 La première représente la machine frontale (qui est soit la 2e soit la 3e).
 
+## Fresh deployment
+
+Pour `production1.entreprise.api.gouv.fr`
+
+```sh
+domain=production1.entreprise.api.gouv.fr
+bundle exec mina setup domain=$domain
+bundle exec mina deploy domain=$domain
+```
+
 ## Debugging du Gitlab CI en local
 
 Si vous rencontrez des difficultés à faire fonctionner le CI (pour X ou Y
