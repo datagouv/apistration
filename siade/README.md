@@ -9,7 +9,7 @@ La documentation est séparée et se trouve sur doc.entreprise.api.gouv.fr
 Il est nécessaire d'avoir Redis d'installé pour l'environnement de dévelopment
 (pas nécessaire pour les tests)
 
-Le package *QPDF* doit par ailleurs être installé.  Exemple sur Ubuntu :
+Le package _QPDF_ doit par ailleurs être installé. Exemple sur Ubuntu :
 
 ```sh
 sudo apt-get install qpdf
@@ -24,29 +24,32 @@ sudo apt-get install libmagic-dev
 ## Utilisation et edition des credentials
 
 ### Une vue rapide d'ensemble
+
 Par defaut 2 fichiers : un fichier encrypte, ainsi qu'une cle ne devant pas etre
 versionnee. En ce qui nous concerne, la clef est disponible dans le repertoire
 `very_ansible`, sous dossiers 'secrets'. Il faut disposer du mot de passe ansible
 pour dechiffrer le fichier a l'aide de `ansible-vault`
 
 Cela donne :
-* fichier de credentials par defaut `config/credentials.yml.enc' accompagne de
-  sa clef `config/master.key`
-* pour un `ENV` donne, respectivement `config/credentials/ENV.yml.enc' et
-  `config/credentials/ENV.key`
-* Possibilite de faire des liens symboliques pour eviter la duplication dans
+
+- fichier de credentials par defaut `config/credentials.yml.enc' accompagne de sa clef `config/master.key`
+- pour un `ENV` donne, respectivement `config/credentials/ENV.yml.enc' et `config/credentials/ENV.key`
+- Possibilite de faire des liens symboliques pour eviter la duplication dans
   certains cas
 
 Situation non "evidente" nous concernant :
-* Credentials prod like regroupes dans les credentials par defaut, avec une
+
+- Credentials prod like regroupes dans les credentials par defaut, avec une
   master key commune aux 3 envs pour minimiser les erreurs de recopie d'un
   fichier a l'autre qui serait necessaire dans le cas d'un fichier par env.
-* Credentials dev / test par env. Cela permet d'avoir une master key ne pouvant
+- Credentials dev / test par env. Cela permet d'avoir une master key ne pouvant
   dechiffrer les credentials de prod pour notre env de CI. Nous pouvons
   egalement versionner la master key de dev / test sans risques.
 
 ### Editer, installer en savoir plus
+
 L'edition se passe comme suit :
+
 ```sh
 bin/rails credentials:edit # par defaut
 bin/rails credentials:edit --environment ENV # pour l'environnement ENV
@@ -75,10 +78,9 @@ application. L'exemple ci-dessus pointe sur la machine frontale.
 
 Les 3 valeurs possibles pour le domain:
 
-*   production.entreprise.api.gouv.fr
-*   production1.entreprise.api.gouv.fr
-*   production2.entreprise.api.gouv.fr
-
+- production.entreprise.api.gouv.fr
+- production1.entreprise.api.gouv.fr
+- production2.entreprise.api.gouv.fr
 
 La première représente la machine frontale (qui est soit la 2e soit la 3e).
 
@@ -134,11 +136,11 @@ Lorsque vous avez fini vos modifications, vous devez:
 2.  Mettre à jour, dans la méthode `values_for_valid_jwt` du fichier
     `jwt_helper.rb`, les valeurs que vous avez modifié
 
-
 ## Création d'un rôle d'accès à un nouvel endpoint
 
 Lors de l'ajout d'une nouvelle API il faut (quasiment à chque fois) ajouter un
 nouveau rôle d'accès à ladie ressource.
+
 1.  Dans SIADE, créer une nouvelle policy Pundit avec le tag associé ; le tag
     est passé à la méthode `authorize` dans le controller `authorize :new_role` ;
 2.  Créer le nouveau rôle dans les API Admin : se connecter au
@@ -148,19 +150,19 @@ nouveau rôle d'accès à ladie ressource.
 3.  Communiquer le code/tag à DataPass afin qu'ils mettent le formulaire de
     demande d'accès à jour
 
-
 ## Ajouter un nouvel endpoint au monitoring Uptime Robot
 
 Il y a deux étapes pour ajouter un endpoint au monitoring Uptime Robot :
+
 1. se connecter à l'interface et ajouter le nouvel endpoint sur le modèle des
    endpoints existant :
-   * URL `https://entreprise.api.gouv.fr/v2/uptime`
-   * avec un *query parameter* `route` contenant le path d'accès à la donnée
+   - URL `https://entreprise.api.gouv.fr/v2/uptime`
+   - avec un _query parameter_ `route` contenant le path d'accès à la donnée
      (ex : route=/v2/ressource/siren)
-   * et un *query parameter* `token` contenant le **token de monitoring**
+   - et un _query parameter_ `token` contenant le **token de monitoring**
      (disponible dans l'interface depuis les endpoints déjà monitoré ou dans le
      dashboard).
-2. mettre à jour le jeton de ping *réel* utilisé pour réaliser les appels aux
+2. mettre à jour le jeton de ping _réel_ utilisé pour réaliser les appels aux
    différents endpoints en background depuis le serveur (voir
    `app/controller/api/v2/uptime_controller.rb` pour la logique de monitoring
    sous jacente). Ce jeton est renseigné dans le fichier credentials.
@@ -168,7 +170,6 @@ Il y a deux étapes pour ajouter un endpoint au monitoring Uptime Robot :
 /!\ Attention à ne renseigner qu'un JWT contenant le droit d'accès `uptime`
 **uniquement**. Ce jeton est de fait public et ne doit en aucun cas avoir le
 moindre droit d'accès aux données servies par API Entreprise !
-
 
 ## Test des endpoints
 
@@ -181,10 +182,10 @@ bundle exec ruby bin/test_endpoints.rb [host] [id1,id2]
 
 Avec:
 
-*   `host`, optionnel, host du backend à tester. Exemple:
-    `https://production2.entreprise.api.gouv.fr`
-*   `id1,id2`, optionnel, index du endpoint à faire tourner. Ceci permet de
-    juste faire tourner un certain nombre de endpoints. Exemple: 3,14
+- `host`, optionnel, host du backend à tester. Exemple:
+  `https://production2.entreprise.api.gouv.fr`
+- `id1,id2`, optionnel, index du endpoint à faire tourner. Ceci permet de
+  juste faire tourner un certain nombre de endpoints. Exemple: 3,14
 
 ## Création d'une nouvelle API
 
