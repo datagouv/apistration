@@ -6,6 +6,10 @@
 
 #### Etapes de tests manuels ?
 
+### Est-ce un ajout d'endpoint ?
+
+## Si oui, bin/test_endpoints.rb et Swagger sont-ils à jour ?
+
 ---
 
 #### Database changes
