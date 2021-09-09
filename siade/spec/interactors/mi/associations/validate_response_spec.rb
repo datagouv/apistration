@@ -1,17 +1,15 @@
 RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
   describe '.call' do
-    subject { described_class.call(response: response) }
+    subject { described_class.call(response: response, provider_name: 'MI') }
 
     let(:response) do
       instance_double('Net::HTTPOK', code: code, body: body)
     end
 
-    context 'with a valid code and a valid json' do
+    context 'with a valid code and a valid xml' do
       let(:code) { '200' }
       let(:body) do
-        {
-          id: '1234567890',
-        }.to_json
+        "<asso>hello</asso>"
       end
 
       it { is_expected.to be_a_success }
@@ -28,12 +26,10 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
       its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
     end
 
-    context 'with a valid code and an invalid json' do
+    context 'with a valid code and an invalid xml' do
       let(:code) { '200' }
       let(:body) do
-        {
-          lol: 'oki',
-        }.to_json
+        "<truc></nimp>"
       end
 
       it { is_expected.to be_a_failure }
@@ -53,9 +49,7 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
     context 'with an invalid status code' do
       let(:code) { '418' }
       let(:body) do
-        {
-          id: '123456789',
-        }
+        "<asso>hello</asso>"
       end
 
       it { is_expected.to be_a_failure }

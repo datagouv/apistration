@@ -2,12 +2,8 @@ class MI::Associations::BuildResource < BuildResource
   protected
 
   def resource_attributes
-    @siret = id if Siret.new(context.id).valid?
-    @id = id if RNAId.new(context.id).valid?
-
     @asso_hash = xml_body_as_hash[:asso]
-
-    @id ||= @asso_hash[:identite][:id_rna]
+    @id = @asso_hash[:identite][:id_rna]
 
     {
       id:          @id,

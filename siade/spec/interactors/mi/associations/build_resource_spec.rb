@@ -1,5 +1,5 @@
 RSpec.describe MI::Associations::BuildResource, type: :build_resource do
-  describe '.call', vcr: { cassette_name: 'mi/valid_siren_json' } do
+  describe '.call', vcr: { cassette_name: 'mi/interactors/valid_siret_json' } do
     subject { described_class.call(response: response) }
 
     let(:valid_payload) do
@@ -49,7 +49,7 @@ RSpec.describe MI::Associations::BuildResource, type: :build_resource do
 
     let(:params) do
       {
-        id: valid_rna_id,
+        association_id: valid_rna_id,
       }
     end
 

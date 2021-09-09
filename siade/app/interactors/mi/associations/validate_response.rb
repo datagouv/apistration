@@ -20,8 +20,8 @@ class MI::Associations::ValidateResponse < ValidateResponse
   end
 
   def payload_present?
-    json_body['id'].present?
-  rescue JSON::ParserError
+    xml_body_as_hash[:asso].present?
+  rescue Ox::ParseError
     false
   end
 end
