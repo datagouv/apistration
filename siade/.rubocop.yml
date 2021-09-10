@@ -1,47 +1,100 @@
+#inherit_from: .rubocop_todo.yml
+
 require:
   - rubocop-rspec
   - rubocop-rails
 
-inherit_from: .rubocop_todo.yml
-
 AllCops:
   NewCops: enable
   Exclude:
-    - db/**/*
-    - vendor/**/*
+    - 'Gemfile'
+    - 'Guardfile'
+    - 'Rakefile'
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'vendor/**/*'
 
-Layout/LineLength:
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: space
+
+Lint/UnreachableCode:
+  Exclude:
+    - 'app/concepts/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/spec_helper.rb'
+    - 'spec/support/shared_examples/*'
+    - 'spec/factories/**/*'
+  IgnoredMethods:
+    - 'describe'
+    - 'context'
+    - 'namespace'
+
+Metrics/LineLength:
   Enabled: false
 
-# Ruby 3.0 feature related stuff, will see later
+Metrics/MethodLength:
+  Max: 15
+
+Naming/MethodParameterName:
+  AllowedNames:
+    - '_'
+    - 'nb'
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/spec_helper.rb'
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+  Exclude:
+    - 'app/channels/**/*'
+    - 'app/concepts/**/*'
+
+Style/Documentation:
+  Enabled: false
+
 Style/FrozenStringLiteralComment:
-  EnforcedStyle: never
+  Enabled: false
+
+Style/MethodCalledOnDoEndBlock:
+  Enabled: false
 
 # Do not force use of fail or raise only both have their use
 Style/SignalException:
   Enabled: false
 
-# Do not force documentation at the top of classes
-Style/Documentation:
-  Enabled: false
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
 
-Style/HashEachMethods:
-  Enabled: true
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: single_quotes
 
-Style/HashTransformKeys:
-  Enabled: true
-
-Style/HashTransformValues:
-  Enabled: true
+# No line between definitions is OK for oneliners
+Layout/EmptyLineBetweenDefs:
+  AllowAdjacentOneLineDefs: true
 
 # Necessary to use NotImplementedError
 Lint/InheritException:
   Enabled: false
 
-Layout/HashAlignment:
-  EnforcedHashRocketStyle: table
-  EnforcedColonStyle: table
-
-# No line between definitions is OK for oneliners
-Layout/EmptyLineBetweenDefs:
-  AllowAdjacentOneLineDefs: true
+# Can't agree on this rule so we disable
+Style/MethodCallWithArgsParentheses:
+  Enabled: false
