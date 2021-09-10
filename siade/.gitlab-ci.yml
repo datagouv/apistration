@@ -6,7 +6,24 @@ variables:
   MOCK_CALL_SYSTEM_FOR_MEMORY_ERROR: "true"
 
 stages:
+  - lint
   - test
+
+lint:
+  stage: lint
+  image: ruby:2.7.2
+  cache:
+    key: "siade"
+    paths:
+      - vendor/ruby
+    policy: pull
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq qpdf libmagic-dev
+    - gem update --system
+    - gem install bundler -v $BUNDLER_VERSION --no-document
+    - bundle install --full-index --path=vendor
+  script:
+    - bundle exec rubocop
 
 test:
   stage: test
