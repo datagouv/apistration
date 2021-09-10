@@ -13,7 +13,7 @@ module RSWagCommonsResponses
     include_context 'Valid mandatory params and no token'
 
     response '403', 'Non autorisé' do
-      description "Le jeton est absent"
+      description 'Le jeton est absent'
 
       block.call if block_given?
 
@@ -25,7 +25,7 @@ module RSWagCommonsResponses
     include_context 'Valid mandatory params and unauthorized token'
 
     response '403', 'Accès interdit' do
-      description "Le jeton ne possède pas les droits nécessaires"
+      description 'Le jeton ne possède pas les droits nécessaires'
 
       block.call if block_given?
 
@@ -33,4 +33,3 @@ module RSWagCommonsResponses
     end
   end
 end
-

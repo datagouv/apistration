@@ -1,7 +1,7 @@
 require 'rspec/expectations'
 
-RSpec::Matchers.define :be_delegated_to do |expected,method_name|
-  match do |actual|
+RSpec::Matchers.define :be_delegated_to do |expected, method_name|
+  match do |_actual|
     expect_any_instance_of(expected).to receive(method_name).and_return('stubbed response')
 
     subject.send(method_name) == 'stubbed response'

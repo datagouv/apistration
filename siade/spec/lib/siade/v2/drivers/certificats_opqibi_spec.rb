@@ -1,5 +1,5 @@
 RSpec.describe SIADE::V2::Drivers::CertificatsOPQIBI, type: :provider_driver do
-  subject { described_class.new({siren: siren}).perform_request }
+  subject { described_class.new({ siren: siren }).perform_request }
 
   context 'when siren unknonw by OPQIBI', vcr: { cassette_name: 'opqibi_with_not_found_siren' } do
     let(:siren) { not_found_siren(:opqibi) }
@@ -16,11 +16,11 @@ RSpec.describe SIADE::V2::Drivers::CertificatsOPQIBI, type: :provider_driver do
     its(:assurance)                                       { is_expected.to eq('ALLIANZ - AXA') }
     its(:url)                                             { is_expected.to eq('http://opqibi.com/fiche.php?id=719') }
 
-    context '#qualifications (non probatoire)' do
+    describe '#qualifications (non probatoire)' do
       its(:qualifications)                      { is_expected.to be_a(Array) }
       its(:date_de_validite_des_qualifications) { is_expected.to eq('01/04/2022') }
 
-      it 'should have first qualification like' do
+      it 'has first qualification like' do
         expect(subject.qualifications.first[:code_qualification]).to eq('0103')
         expect(subject.qualifications.first[:nom]).to eq('AMO en technique')
         expect(subject.qualifications.first[:definition]).not_to be_nil
@@ -28,11 +28,11 @@ RSpec.describe SIADE::V2::Drivers::CertificatsOPQIBI, type: :provider_driver do
       end
     end
 
-    context '#qualifications probatoires' do
+    describe '#qualifications probatoires' do
       its(:qualifications_probatoires)                      { is_expected.to be_a(Array) }
       its(:date_de_validite_des_qualifications_probatoires) { is_expected.to eq('01/04/2021') }
 
-      it 'should have first qualification probatoire like' do
+      it 'has first qualification probatoire like' do
         expect(subject.qualifications_probatoires.first[:code_qualification]).to eq('1301')
         expect(subject.qualifications_probatoires.first[:nom]).to eq('Étude de réseaux courants de distribution d\'eau')
         expect(subject.qualifications_probatoires.first[:definition]).not_to be_nil

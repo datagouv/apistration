@@ -11,7 +11,7 @@ class API::V2::EligibilitesCotisationRetraitePROBTPController < API::V2::BaseCon
         eligible: eligibility_cotisation_status_retriever.eligible?,
         message: eligibility_cotisation_status_retriever.message
       },
-       status: eligibility_cotisation_status_retriever.http_code
+        status: eligibility_cotisation_status_retriever.http_code
     else
       render_errors(eligibility_cotisation_status_retriever)
     end

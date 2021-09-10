@@ -15,55 +15,55 @@ class MonitoringService
   def track_provider_error(error)
     set_extras(
       error.to_h.merge(
-        error.monitoring_private_context,
-      ),
+        error.monitoring_private_context
+      )
     )
 
     track(
       'warning',
-      "[#{current_provider}] Error: #{error.detail}",
+      "[#{current_provider}] Error: #{error.detail}"
     )
   end
 
-  def track_provider_error_from_response(response, context={})
+  def track_provider_error_from_response(response, context = {})
     set_extras(
       (context || {}).merge(
-        errors: response.errors.map(&:to_h),
-      ).compact,
+        errors: response.errors.map(&:to_h)
+      ).compact
     )
 
     set_tags(
-      provider_error_code: response.provider_error_custom_code,
+      provider_error_code: response.provider_error_custom_code
     )
 
     track(
       'warning',
-      "[#{current_provider}] Error: #{humanized_response_for_tracking(response)}",
+      "[#{current_provider}] Error: #{humanized_response_for_tracking(response)}"
     )
   end
 
   def track_missing_data(field, exception)
     set_extras(
       exception: exception.message,
-      backtrace: exception.backtrace,
+      backtrace: exception.backtrace
     )
 
     track(
       'info',
-      "[#{current_provider}] Missing following field: #{field}",
+      "[#{current_provider}] Missing following field: #{field}"
     )
   end
 
   def track_deprecated_data(field, deprecated_data)
     track(
       'info',
-      "[#{current_provider}] Deprecated data for field '#{field}'. Value: #{deprecated_data}",
+      "[#{current_provider}] Deprecated data for field '#{field}'. Value: #{deprecated_data}"
     )
   end
 
   def set_user_context(context)
     set_user(
-      context,
+      context
     )
   end
 
@@ -71,24 +71,24 @@ class MonitoringService
     params.stringify_keys!
 
     set_extras(
-      params: params.except('token'),
+      params: params.except('token')
     )
     set_tags(
-      endpoint: "#{params['controller']}##{params['action']}",
+      endpoint: "#{params['controller']}##{params['action']}"
     )
   end
 
   def set_provider(provider_name)
     set_tags(
-      provider: provider_name,
+      provider: provider_name
     )
   end
 
-  def track(level, message, extra_context={})
+  def track(level, message, extra_context = {})
     set_extras(extra_context) if extra_context.present?
 
     capture_message(message, {
-      level: level,
+      level: level
     })
     Rails.logger.public_send(extract_logger_level(level), message)
   end

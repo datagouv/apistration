@@ -31,15 +31,15 @@ class SIADE::V2::Drivers::INPI::Bilans < SIADE::V2::Drivers::GenericDriver
   def build_documents_response
     json_documents.map do |document|
       {
-        id_fichier:           document[:idFichier],
-        siren:                document[:siren].to_s,
+        id_fichier: document[:idFichier],
+        siren: document[:siren].to_s,
         denomination_sociale: document[:denomonationSociale],
-        code_greffe:          document[:codeGreffe],
-        date_depot:           document[:dateDepot],
-        nature_archive:       document[:natureArchive],
-        confidentiel:         document[:confidentiel],
-        date_cloture:         document[:dateCloture],
-        numero_gestion:       document[:numGestion]
+        code_greffe: document[:codeGreffe],
+        date_depot: document[:dateDepot],
+        nature_archive: document[:natureArchive],
+        confidentiel: document[:confidentiel],
+        date_cloture: document[:dateCloture],
+        numero_gestion: document[:numGestion]
       }
     end
   end

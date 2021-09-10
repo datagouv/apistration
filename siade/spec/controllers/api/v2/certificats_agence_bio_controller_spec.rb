@@ -13,13 +13,13 @@ RSpec.describe API::V2::CertificatsAgenceBIOController do
       end
 
       context 'with siret having active certifications', vcr: { cassette_name: 'agence_bio/with_valid_siret' } do
+        subject { response_json }
+
         let(:siret) { valid_siret(:agence_bio) }
 
         before do
           get :show, params: { siret: siret, token: token }.merge(mandatory_params)
         end
-
-        subject { response_json }
 
         context 'when Agence BIO responds with error' do
           before do
@@ -27,14 +27,14 @@ RSpec.describe API::V2::CertificatsAgenceBIOController do
             stub_request(:get, /#{url}/)
               .to_return(
                 status: 500,
-                body:   'whatever',
-            )
+                body: 'whatever'
+              )
 
             get :show, params: { siret: siret, token: token }.merge(mandatory_params)
           end
 
           it 'returns HTTP code 502' do
-            expect(response).to have_http_status(502)
+            expect(response).to have_http_status(:bad_gateway)
           end
 
           it { is_expected.to have_json_error(detail: 'Mauvaise réponse envoyée par le fournisseur de données') }
@@ -42,46 +42,46 @@ RSpec.describe API::V2::CertificatsAgenceBIOController do
 
         context 'when Agence BIO webserver is UP' do
           it 'returns HTTP code 200' do
-            expect(response).to have_http_status(206)
+            expect(response).to have_http_status(:partial_content)
           end
 
           it do
-            is_expected.to all(include(
-              raison_sociale:            String,
-              denomination_courante:     String,
-              siret:                     String,
-              numero_bio:                Integer,
+            expect(subject).to all(include(
+              raison_sociale: String,
+              denomination_courante: String,
+              siret: String,
+              numero_bio: Integer,
               date_derniere_mise_a_jour: String,
-              numero_pacage:             nil,
-              reseau:                    String,
-              categories:                a_collection_including(String),
-              activites:                 a_collection_including(String),
-              productions:               a_collection_including(
+              numero_pacage: nil,
+              reseau: String,
+              categories: a_collection_including(String),
+              activites: a_collection_including(String),
+              productions: a_collection_including(
                 a_hash_including(
-                  nom:  String,
-                  code: String,
+                  nom: String,
+                  code: String
                 )
               ),
-              adresses_operateurs:       a_collection_including(
+              adresses_operateurs: a_collection_including(
                 a_hash_including(
-                  lieu:        String,
+                  lieu: String,
                   code_postal: String,
-                  ville:       String,
-                  lat:         Float,
-                  long:        Float,
-                  type:        a_collection_including(String),
+                  ville: String,
+                  lat: Float,
+                  long: Float,
+                  type: a_collection_including(String)
                 )
               ),
-              certificats:               a_collection_including(
+              certificats: a_collection_including(
                 a_hash_including(
-                  organisme:          String,
-                  date_engagement:    String,
-                  url:                String,
+                  organisme: String,
+                  date_engagement: String,
+                  url: String,
                   etat_certification: String,
-                  date_arret:         nil,
-                  date_suspension:    nil,
+                  date_arret: nil,
+                  date_suspension: nil
                 )
-              ),
+              )
             ))
           end
         end

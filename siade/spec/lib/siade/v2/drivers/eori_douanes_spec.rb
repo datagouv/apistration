@@ -4,7 +4,6 @@ RSpec.describe SIADE::V2::Drivers::EORIDouanes, type: :provider_driver do
   context 'when EORI is not found', vcr: { cassette_name: 'eori/non_existing_eori' } do
     let(:eori) { non_existing_eori }
 
-
     its(:http_code) { is_expected.to eq 404 }
   end
 

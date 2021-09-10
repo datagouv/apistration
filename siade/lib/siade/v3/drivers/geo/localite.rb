@@ -19,14 +19,14 @@ class SIADE::V3::Drivers::Geo::Localite < SIADE::V2::Drivers::GenericDriver
 
   def commune_raw
     @commune_raw ||= {
-      code:  code_commune,
+      code: code_commune,
       value: libelle_commune
     }
   end
 
   def region_raw
     @region_raw ||= {
-      code:  code_region,
+      code: code_region,
       value: libelle_region
     }
   end

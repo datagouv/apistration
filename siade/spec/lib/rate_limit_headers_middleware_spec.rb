@@ -9,7 +9,7 @@ RSpec.describe RateLimitHeadersMiddleware, type: :middleware do
       count: 1,
       limit: 2,
       period: 60,
-      epoch_time: Time.now.to_i,
+      epoch_time: Time.now.to_i
     }
   end
   let(:rate_limit_subkeys) do
@@ -28,7 +28,7 @@ RSpec.describe RateLimitHeadersMiddleware, type: :middleware do
     let(:env) do
       {
         'rack.attack.throttle_data' => {
-          'high_latency_documents' => throttle_data,
+          'high_latency_documents' => throttle_data
         }
       }
     end
@@ -52,8 +52,8 @@ RSpec.describe RateLimitHeadersMiddleware, type: :middleware do
     let(:env) do
       {
         'rack.attack.throttle_data' => {
-          'low_latency_docs'       => throttle_data,
-          'high_latency_documents' => throttle_data,
+          'low_latency_docs' => throttle_data,
+          'high_latency_documents' => throttle_data
         }
       }
     end
@@ -72,7 +72,7 @@ RSpec.describe RateLimitHeadersMiddleware, type: :middleware do
       expect(MonitoringService.instance).to have_received(:track).with(
         'warning',
         'Multiple throttle data detected (Rack::Attack misconfiguration)',
-        env['rack.attack.throttle_data'],
+        env['rack.attack.throttle_data']
       )
     end
   end

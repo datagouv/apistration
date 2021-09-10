@@ -14,9 +14,9 @@ RSpec.describe SIADE::V2::Responses::AttestationsCotisationRetraitePROBTP, type:
 
     its(:http_code) { is_expected.to eq(404) }
 
-    it 'should have code 8 and message inconnu' do
-      json = JSON.parse(subject.body, :symbolize_names=>true)
-      expect(json[:entete][:code]).to include("8")
+    it 'has code 8 and message inconnu' do
+      json = JSON.parse(subject.body, symbolize_names: true)
+      expect(json[:entete][:code]).to include('8')
       expect(json[:entete][:message]).to include("SIRET #{siret} inconnu de nos services")
     end
   end
@@ -26,10 +26,10 @@ RSpec.describe SIADE::V2::Responses::AttestationsCotisationRetraitePROBTP, type:
       stub_request(:post, url).to_return(stub_response)
     end
 
-    let(:stub_response) { { status: 200, body: "{\"entete\":{\"code\":\"4\",\"message\":\"Une erreur est survenue, merci de bien vouloir renouveler votre demande ultérieurement\"}}" } }
+    let(:stub_response) { { status: 200, body: '{"entete":{"code":"4","message":"Une erreur est survenue, merci de bien vouloir renouveler votre demande ultérieurement"}}' } }
 
     its(:http_code) { is_expected.to eq(502) }
-    its(:errors) { is_expected.to have_error("Erreur fournisseur: Une erreur est survenue, merci de bien vouloir renouveler votre demande ultérieurement") }
+    its(:errors) { is_expected.to have_error('Erreur fournisseur: Une erreur est survenue, merci de bien vouloir renouveler votre demande ultérieurement') }
 
     include_examples 'provider\'s response error'
   end
@@ -39,10 +39,10 @@ RSpec.describe SIADE::V2::Responses::AttestationsCotisationRetraitePROBTP, type:
       stub_request(:post, url).to_return(stub_response)
     end
 
-    let(:stub_response) { { status: 200, body: "<H1>SRVE0255E: A WebGroup/Virtual Host to handle /ws_ext/rest/certauth/mpsservices/getAttestationCotisation has not been defined.</H1><BR>H3><SRVE0255E: A WebGroup/Virtual Host to handle partenaires.webservices.probtp.com:443 has not been defined./H3><BR>" } }
+    let(:stub_response) { { status: 200, body: '<H1>SRVE0255E: A WebGroup/Virtual Host to handle /ws_ext/rest/certauth/mpsservices/getAttestationCotisation has not been defined.</H1><BR>H3><SRVE0255E: A WebGroup/Virtual Host to handle partenaires.webservices.probtp.com:443 has not been defined./H3><BR>' } }
 
     its(:http_code) { is_expected.to eq(502) }
-    its(:errors) { is_expected.to have_error("Mauvaise réponse envoyée par le fournisseur de données") }
+    its(:errors) { is_expected.to have_error('Mauvaise réponse envoyée par le fournisseur de données') }
 
     include_examples 'provider\'s response error'
   end

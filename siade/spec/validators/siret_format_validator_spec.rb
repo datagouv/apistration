@@ -1,13 +1,14 @@
 class SiretFormatValidatable
   include ActiveModel::Validations
-  attr_accessor  :siret
+  attr_accessor :siret
+
   validates :siret, siret_format: true
 end
 
 RSpec.describe SiretFormatValidator do
-  let(:la_poste_siret) { '35600000000048' }
+  subject { SiretFormatValidatable.new }
 
-  subject{ SiretFormatValidatable.new }
+  let(:la_poste_siret) { '35600000000048' }
 
   it 'validates la poste siret' do
     subject.siret = la_poste_siret

@@ -19,7 +19,7 @@ class SIADE::V2::Adapters::LiassesFiscalesDGFIP
   def to_hash
     retour = {
       userId: user_id,
-      annee:  annee
+      annee: annee
     }
 
     retour = retour.merge(siren: siren) unless siren.empty?

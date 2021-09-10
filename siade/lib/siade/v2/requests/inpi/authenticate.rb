@@ -24,18 +24,18 @@ class SIADE::V2::Requests::INPI::Authenticate
 
   def request
     request = Net::HTTP::Post.new uri
-    request["login"] = inpi_login
-    request["password"] = inpi_password
+    request['login'] = inpi_login
+    request['password'] = inpi_password
     request
   end
 
   def uri
-    URI inpi_uri + "/login"
+    URI inpi_uri + '/login'
   end
 
   def request_options
     {
-      use_ssl:     true,
+      use_ssl: true,
       verify_mode: OpenSSL::SSL::VERIFY_NONE
     }
   end

@@ -9,9 +9,7 @@ class ValidateParamsOrganizer < ApplicationOrganizer
 
     klass.class_eval do
       after do
-        if context.errors.any?
-          context.fail!
-        end
+        context.fail! if context.errors.any?
       end
     end
   end

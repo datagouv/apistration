@@ -1,5 +1,5 @@
 RSpec.describe SIADE::V2::Requests::Generic do
-  subject { described_class.new() }
+  subject { described_class.new }
 
   let(:provider_name) { 'INSEE' }
 
@@ -44,7 +44,7 @@ RSpec.describe SIADE::V2::Requests::Generic do
 
     it 'sets provider name' do
       expect(MonitoringService.instance).to receive(:set_provider).with(
-        provider_name,
+        provider_name
       )
 
       subject.perform
@@ -82,7 +82,7 @@ RSpec.describe SIADE::V2::Requests::Generic do
         it 'tracks provider error in monitoring service' do
           expect(MonitoringService.instance).to receive(:track_provider_error_from_response).with(
             an_instance_of(SIADE::V2::Responses::InternalServerError),
-            anything,
+            anything
           )
 
           subject
@@ -100,7 +100,7 @@ RSpec.describe SIADE::V2::Requests::Generic do
         it 'tracks provider error in monitoring service' do
           expect(MonitoringService.instance).to receive(:track_provider_error_from_response).with(
             an_instance_of(SIADE::V2::Responses::UnexpectedError),
-            anything,
+            anything
           )
 
           subject
@@ -138,7 +138,7 @@ RSpec.describe SIADE::V2::Requests::Generic do
       context 'for Net::HTTPBadRequest (400)' do
         before do
           stub_request(:get, valid_uri.to_s).to_return(
-            status: 400,
+            status: 400
           )
         end
 
@@ -148,7 +148,7 @@ RSpec.describe SIADE::V2::Requests::Generic do
         it 'logs as error this unexpected behaviour' do
           expect_any_instance_of(MonitoringService).to receive(:track_provider_error_from_response).with(
             instance_of(SIADE::V2::Responses::UnexpectedBadRequest),
-            anything,
+            anything
           )
 
           subject
@@ -161,14 +161,14 @@ RSpec.describe SIADE::V2::Requests::Generic do
       context 'for Net::HTTPMovedPermanently (301)' do
         before do
           stub_request(:get, valid_uri.to_s).to_return(
-            status: 301,
+            status: 301
           )
         end
 
         it 'logs as error this unexpected behaviour' do
           expect_any_instance_of(MonitoringService).to receive(:track_provider_error_from_response).with(
             instance_of(SIADE::V2::Responses::UnexpectedRedirection),
-            anything,
+            anything
           )
 
           subject
@@ -181,14 +181,14 @@ RSpec.describe SIADE::V2::Requests::Generic do
       context 'for an unexpected http error code' do
         before do
           stub_request(:get, valid_uri.to_s).to_return(
-            status: 506,
+            status: 506
           )
         end
 
         it 'logs as error this unexpected behaviour' do
           expect_any_instance_of(MonitoringService).to receive(:track_provider_error_from_response).with(
             instance_of(SIADE::V2::Responses::UnexpectedError),
-            anything,
+            anything
           )
 
           subject
@@ -209,7 +209,7 @@ RSpec.describe SIADE::V2::Requests::Generic do
           'getaddrinfo: nodename nor servname provided, or not known',
           'getaddrinfo: No address associated with hostname',
           'getaddrinfo: Name or service not known',
-          'getaddrinfo: Temporary failure in name resolution',
+          'getaddrinfo: Temporary failure in name resolution'
         ].each do |dns_error_message|
           context 'for a DNS resolution fail (no address associated)' do
             let(:socker_error_message) { "Failed to open TCP connection to www.google.com:443 (#{dns_error_message})" }
@@ -217,7 +217,7 @@ RSpec.describe SIADE::V2::Requests::Generic do
             it 'logs as error the dns lookup fail' do
               expect_any_instance_of(MonitoringService).to receive(:track_provider_error_from_response).with(
                 instance_of(SIADE::V2::Responses::DnsResolutionError),
-                anything,
+                anything
               )
 
               subject
@@ -232,9 +232,9 @@ RSpec.describe SIADE::V2::Requests::Generic do
           let(:socker_error_message) { 'whatever' }
 
           it 'raises this error' do
-            expect {
+            expect do
               subject
-            }.to raise_error(SocketError)
+            end.to raise_error(SocketError)
           end
         end
       end
@@ -242,14 +242,14 @@ RSpec.describe SIADE::V2::Requests::Generic do
       context 'for a Errno::EHOSTUNREACH no route to host' do
         before do
           stub_request(:get, valid_uri.to_s).to_raise(
-            Errno::EHOSTUNREACH,
+            Errno::EHOSTUNREACH
           )
         end
 
         it 'logs as error this host down' do
           expect_any_instance_of(MonitoringService).to receive(:track_provider_error_from_response).with(
             an_instance_of(SIADE::V2::Responses::ServiceUnavailable),
-            anything,
+            anything
           )
 
           subject
@@ -262,14 +262,14 @@ RSpec.describe SIADE::V2::Requests::Generic do
       context 'for an EOFError, which is generaly a timeout' do
         before do
           stub_request(:get, valid_uri.to_s).to_raise(
-            EOFError,
+            EOFError
           )
         end
 
         it 'logs as error' do
           expect_any_instance_of(MonitoringService).to receive(:track_provider_error_from_response).with(
             instance_of(SIADE::V2::Responses::TimeoutError),
-            anything,
+            anything
           )
 
           subject
@@ -296,7 +296,7 @@ RSpec.describe SIADE::V2::Requests::Generic do
         opt = req.send(:all_rest_client_options)
 
         expect(opt).to eq({
-          very_option:  'wow',
+          very_option: 'wow',
           open_timeout: 10,
           read_timeout: 10
         })

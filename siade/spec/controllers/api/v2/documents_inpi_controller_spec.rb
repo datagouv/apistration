@@ -78,9 +78,9 @@ RSpec.describe API::V2::DocumentsINPIController, type: :controller do
         expected_json = {
           url_documents: a_string_starting_with(Siade.credentials[:public_storage_url]).and(a_string_ending_with('-all_documents.zip')),
           actes: [
-            {id_fichier: 212007233, siren: "393463187", denomination_sociale: nil, code_greffe: 3801, date_depot: "20050112", nature_archive: "A"},
-            {id_fichier: 215591165, siren: "393463187", denomination_sociale: nil, code_greffe: 3801, date_depot: "19940103", nature_archive: "A"},
-            {id_fichier: 221222958, siren: "393463187", denomination_sociale: nil, code_greffe: 3801, date_depot: "20010723", nature_archive: "A"}
+            { id_fichier: 212_007_233, siren: '393463187', denomination_sociale: nil, code_greffe: 3801, date_depot: '20050112', nature_archive: 'A' },
+            { id_fichier: 215_591_165, siren: '393463187', denomination_sociale: nil, code_greffe: 3801, date_depot: '19940103', nature_archive: 'A' },
+            { id_fichier: 221_222_958, siren: '393463187', denomination_sociale: nil, code_greffe: 3801, date_depot: '20010723', nature_archive: 'A' }
           ]
         }
         expect(response_json).to include expected_json
@@ -126,10 +126,10 @@ RSpec.describe API::V2::DocumentsINPIController, type: :controller do
         expected_json = {
           url_documents: a_string_starting_with(Siade.credentials[:public_storage_url]).and(a_string_ending_with('-all_documents.zip')),
           bilans: [
-            { id_fichier: 12294537, siren: "393463187", denomination_sociale: nil, code_greffe: 3801, date_depot: "20180731",
-              nature_archive: "B-S", confidentiel: 0, date_cloture: "2017-12-31T00:00:00.000Z", numero_gestion: "1994B00001" },
-            { id_fichier: 1810468, siren: "393463187", denomination_sociale: nil, code_greffe: 3801, date_depot: "20170728",
-              nature_archive: "B-S", confidentiel: 0, date_cloture: "2016-12-31T00:00:00.000Z", numero_gestion: "1994B00001" }
+            { id_fichier: 12_294_537, siren: '393463187', denomination_sociale: nil, code_greffe: 3801, date_depot: '20180731',
+              nature_archive: 'B-S', confidentiel: 0, date_cloture: '2017-12-31T00:00:00.000Z', numero_gestion: '1994B00001' },
+            { id_fichier: 1_810_468, siren: '393463187', denomination_sociale: nil, code_greffe: 3801, date_depot: '20170728',
+              nature_archive: 'B-S', confidentiel: 0, date_cloture: '2016-12-31T00:00:00.000Z', numero_gestion: '1994B00001' }
           ]
         }
         expect(response_json).to include expected_json

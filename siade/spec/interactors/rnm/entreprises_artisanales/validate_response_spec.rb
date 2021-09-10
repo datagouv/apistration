@@ -10,7 +10,7 @@ RSpec.describe RNM::EntreprisesArtisanales::ValidateResponse, type: :validate_re
       let(:code) { '200' }
       let(:body) do
         {
-          id: '1234567890',
+          id: '1234567890'
         }.to_json
       end
 
@@ -32,7 +32,7 @@ RSpec.describe RNM::EntreprisesArtisanales::ValidateResponse, type: :validate_re
       let(:code) { '200' }
       let(:body) do
         {
-          lol: 'oki',
+          lol: 'oki'
         }.to_json
       end
 
@@ -54,7 +54,7 @@ RSpec.describe RNM::EntreprisesArtisanales::ValidateResponse, type: :validate_re
       let(:code) { '418' }
       let(:body) do
         {
-          id: '123456789',
+          id: '123456789'
         }
       end
 

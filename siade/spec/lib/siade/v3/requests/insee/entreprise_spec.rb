@@ -1,9 +1,9 @@
 RSpec.describe SIADE::V3::Requests::INSEE::Entreprise, type: :provider_request do
-  before { allow_any_instance_of(RenewINSEETokenService).to receive(:current_token_expired?).and_return(false) }
-
   subject { described_class.new(siren).tap(&:perform) }
 
-  it 'try to renew INSEE token', vcr: { cassette_name: 'api_insee_fr/siren/active_GE' }  do
+  before { allow_any_instance_of(RenewINSEETokenService).to receive(:current_token_expired?).and_return(false) }
+
+  it 'try to renew INSEE token', vcr: { cassette_name: 'api_insee_fr/siren/active_GE' } do
     expect_any_instance_of(RenewINSEETokenService).to receive(:call).once
     described_class.new(sirens_insee_v3[:active_GE]).tap(&:perform)
   end
@@ -33,11 +33,11 @@ RSpec.describe SIADE::V3::Requests::INSEE::Entreprise, type: :provider_request d
       its(:errors) { is_expected.to have_error('Le siren ou siret demandé est une entité pour laquelle aucun organisme ne peut avoir accès.') }
     end
 
-    describe 'entrepreneur individuel ceased', vcr: { cassette_name: 'api_insee_fr/siren/non_diffusable_ceased'} do
+    describe 'entrepreneur individuel ceased', vcr: { cassette_name: 'api_insee_fr/siren/non_diffusable_ceased' } do
       it_behaves_like 'confidential siren returns 451', :non_diffusable_ceased
     end
 
-    describe 'gendarmerie Limousin', vcr: { cassette_name: 'api_insee_fr/siren/gendarmerie_limousin'} do
+    describe 'gendarmerie Limousin', vcr: { cassette_name: 'api_insee_fr/siren/gendarmerie_limousin' } do
       it_behaves_like 'confidential siren returns 451', :gendarmerie_limousin
     end
   end
@@ -56,7 +56,7 @@ RSpec.describe SIADE::V3::Requests::INSEE::Entreprise, type: :provider_request d
     end
   end
 
-#  context 'debug', vcr: { cassette_name: 'api_insee_fr/siren/active_AE' } do
-#    it_behaves_like 'valid request INSEE', sirens_insee_v3[:ceased_AE]
-#  end
+  #  context 'debug', vcr: { cassette_name: 'api_insee_fr/siren/active_AE' } do
+  #    it_behaves_like 'valid request INSEE', sirens_insee_v3[:ceased_AE]
+  #  end
 end

@@ -5,7 +5,7 @@ class DGFIPPotentialNotFoundError < ApplicationError
 
   def meta
     {
-      provider: 'DGFIP',
+      provider: 'DGFIP'
     }
   end
 

@@ -9,7 +9,7 @@ RSpec.describe SIADE::V2::Drivers::AttestationsAGEFIPH, type: :provider_driver d
       stub_request(:get, agefiph_microservice_get_url).to_return(
         {
           status: agefiph_microservice_get_status,
-          body:   agefiph_microservice_get_body,
+          body: agefiph_microservice_get_body
         }
       )
     end
@@ -23,7 +23,7 @@ RSpec.describe SIADE::V2::Drivers::AttestationsAGEFIPH, type: :provider_driver d
       let(:agefiph_microservice_get_body) do
         {
           derniere_annee_de_conformite_connue: derniere_annee_de_conformite_connue,
-          dump_date:                           dump_date_timestamp,
+          dump_date: dump_date_timestamp
         }.to_json
       end
       let(:derniere_annee_de_conformite_connue) { '2016' }
@@ -52,15 +52,15 @@ RSpec.describe SIADE::V2::Drivers::AttestationsAGEFIPH, type: :provider_driver d
       let(:agefiph_microservice_get_body) { {}.to_json }
 
       its(:success?)  { is_expected.to eq(false) }
-      its(:http_code) { is_expected.to eq(404)  }
+      its(:http_code) { is_expected.to eq(404) }
     end
 
-    context "when agefiph microservice returns a non-valid json" do
+    context 'when agefiph microservice returns a non-valid json' do
       let(:agefiph_microservice_get_status) { 200 }
       let(:agefiph_microservice_get_body) { 'PANIC' }
 
       its(:success?)  { is_expected.to eq(false) }
-      its(:http_code) { is_expected.to eq(502)  }
+      its(:http_code) { is_expected.to eq(502) }
     end
   end
 end

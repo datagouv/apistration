@@ -1,9 +1,10 @@
 class SIADE::V2::Retrievers::DocumentsAssociations < SIADE::V2::Retrievers::GenericInformationRetriever
   attr_reader :association_id
+
   register_driver :association, class_name: SIADE::V2::Drivers::Associations, init_with: :association_id
 
   fetch_attributes_through_driver :association,
-                                  :nombre_documents, :documents
+    :nombre_documents, :documents
 
   def initialize(association_id)
     @association_id = association_id

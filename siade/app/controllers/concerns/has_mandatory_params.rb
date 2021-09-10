@@ -1,7 +1,7 @@
 module HasMandatoryParams
   extend ActiveSupport::Concern
 
-  class NotAcceptable < StandardError;
+  class NotAcceptable < StandardError
   end
 
   included do
@@ -11,7 +11,7 @@ module HasMandatoryParams
 
   def not_acceptable
     render json:   ErrorsSerializer.new(errors, format: error_format).as_json,
-           status: 422
+      status: :unprocessable_entity
   end
 
   private
@@ -32,10 +32,10 @@ module HasMandatoryParams
   end
 
   def mandatory_field_list
-    [
-      :context,
-      :recipient,
-      :object,
+    %i[
+      context
+      recipient
+      object
     ]
   end
 

@@ -2,10 +2,10 @@ RSpec.describe SIADE::V2::Requests::AttestationsSocialesACOSS, type: :provider_r
   subject do
     described_class.new(
       {
-        siren:            siren,
+        siren: siren,
         type_attestation: type_attestation,
-        user_id:          user_id,
-        recipient:        recipient
+        user_id: user_id,
+        recipient: recipient
       }
     ).perform
   end
@@ -48,7 +48,7 @@ RSpec.describe SIADE::V2::Requests::AttestationsSocialesACOSS, type: :provider_r
       let(:siren) { '662042449' } # BNP Paribas
       let(:type_attestation) { valid_type_attestation }
 
-      it 'should have a timeout response' do
+      it 'has a timeout response' do
         expect(subject.response.class).to eq(SIADE::V2::Responses::TimeoutError)
       end
     end
@@ -79,14 +79,14 @@ RSpec.describe SIADE::V2::Requests::AttestationsSocialesACOSS, type: :provider_r
       it 'contains the user_id and recipient in the payload' do
         payload = JSON.parse(subject.send(:post_request_body))
         expect(payload).to include_json(
-          idClient:     user_id,
+          idClient: user_id,
           beneficiaire: recipient
         )
       end
     end
 
     context 'when type attestation, user_id and recipient are nil' do
-      subject { described_class.new({siren: valid_siren(:acoss)}).perform }
+      subject { described_class.new({ siren: valid_siren(:acoss) }).perform }
 
       its(:http_code) { is_expected.to eq(200) }
       its(:errors) { is_expected.to be_empty }
@@ -94,7 +94,7 @@ RSpec.describe SIADE::V2::Requests::AttestationsSocialesACOSS, type: :provider_r
       it 'contains the default user_id and recipient in the payload' do
         payload = JSON.parse(subject.send(:post_request_body))
         expect(payload).to include_json(
-          idClient:     '1',
+          idClient: '1',
           beneficiaire: '1'
         )
       end

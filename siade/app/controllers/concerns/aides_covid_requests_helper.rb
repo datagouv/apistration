@@ -4,7 +4,7 @@ module AidesCovidRequestsHelper
       localhost_response = make_aides_covid_call(endpoint_uri)
 
       render json:   localhost_response.body,
-             status: localhost_response.code
+        status: localhost_response.code
     end
   end
 
@@ -32,7 +32,7 @@ module AidesCovidRequestsHelper
 
   def render_errors
     render json:   ErrorsSerializer.new(@errors, format: error_format).as_json,
-           status: 422
+      status: :unprocessable_entity
   end
 
   def success?

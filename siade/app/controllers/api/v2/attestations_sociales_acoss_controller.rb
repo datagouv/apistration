@@ -6,7 +6,7 @@ class API::V2::AttestationsSocialesACOSSController < API::V2::BaseController
     retrieve_attestation.retrieve
 
     if retrieve_attestation.success?
-      render json: { url: retrieve_attestation.document_url },  status: retrieve_attestation.http_code
+      render json: { url: retrieve_attestation.document_url }, status: retrieve_attestation.http_code
     else
       render_errors(retrieve_attestation)
     end
@@ -16,10 +16,10 @@ class API::V2::AttestationsSocialesACOSSController < API::V2::BaseController
 
   def params_requests
     {
-      siren:            params[:siren],
+      siren: params[:siren],
       type_attestation: params[:type_attestation],
-      user_id:          pundit_user.logstash_id,
-      recipient:        params[:recipient]
+      user_id: pundit_user.logstash_id,
+      recipient: params[:recipient]
     }
   end
 end

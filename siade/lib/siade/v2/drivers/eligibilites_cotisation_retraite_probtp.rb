@@ -71,7 +71,7 @@ class SIADE::V2::Drivers::EligibilitesCotisationRetraitePROBTP < SIADE::V2::Driv
       {
         internal_code: internal_code,
         error_message: error_message,
-        corps:         corps,
+        corps: corps
       }
     )
   end

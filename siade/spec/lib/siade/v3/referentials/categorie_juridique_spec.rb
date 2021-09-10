@@ -14,7 +14,7 @@ RSpec.describe SIADE::V3::Referentials::CategorieJuridique do
     it 'logs a deprecated data through MonitoringService' do
       expect(MonitoringService.instance).to receive(:track_deprecated_data).with(
         'Categorie Juridique',
-        code,
+        code
       )
 
       subject.libelle
@@ -34,7 +34,7 @@ RSpec.describe SIADE::V3::Referentials::CategorieJuridique do
     it 'logs a deprecated data through MonitoringService' do
       expect(MonitoringService.instance).to receive(:track_deprecated_data).with(
         'Categorie Juridique',
-        code,
+        code
       )
 
       subject.libelle

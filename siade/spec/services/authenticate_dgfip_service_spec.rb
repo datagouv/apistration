@@ -13,7 +13,6 @@ RSpec.describe AuthenticateDGFIPService do
   end
 
   describe 'authentication succeeds', vcr: { cassette_name: 'authenticate_dgfip_service_with_valid_secret' } do
-
     its(:http_code) { is_expected.to eq(200) }
     its(:success?)  { is_expected.to be_truthy }
     its(:errors)    { is_expected.to be_empty }

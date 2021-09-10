@@ -22,8 +22,8 @@ RSpec.describe SIADE::V2::Responses::UnexpectedRedirection, type: :provider_resp
     expect(MonitoringService.instance).to receive(:track_provider_error_from_response).with(
       instance_of(SIADE::V2::Responses::UnexpectedRedirection),
       {
-        redirect_location: new_location,
-      },
+        redirect_location: new_location
+      }
     )
 
     subject

@@ -1,16 +1,16 @@
 RSpec.describe SIADE::V2::Responses::AttestationsSocialesACOSS, type: :provider_response do
+  subject { request.perform.response }
+
   let(:request) do
     SIADE::V2::Requests::AttestationsSocialesACOSS.new(
       {
-        siren:            siren,
+        siren: siren,
         type_attestation: 'AVG_UR',
-        user_id:          'user id',
-        recipient:        'SIRET of someone'
+        user_id: 'user id',
+        recipient: 'SIRET of someone'
       }
     )
   end
-
-  subject { request.perform.response }
 
   describe 'invalid response' do
     context 'when non-existent siren raise 404', vcr: { cassette_name: 'acoss/with_non_existent_siren' } do
@@ -25,7 +25,7 @@ RSpec.describe SIADE::V2::Responses::AttestationsSocialesACOSS, type: :provider_
       let(:stub_response) do
         {
           status: 200,
-          body:   body&.to_json
+          body: body&.to_json
         }
       end
 
@@ -76,7 +76,7 @@ RSpec.describe SIADE::V2::Responses::AttestationsSocialesACOSS, type: :provider_
       context 'when ACOSS returns an error hash instead of an array (which produces a TypeError)' do
         let(:body) do
           {
-            oki: 'wtf?',
+            oki: 'wtf?'
           }
         end
 
@@ -89,7 +89,7 @@ RSpec.describe SIADE::V2::Responses::AttestationsSocialesACOSS, type: :provider_
           allow(MonitoringService.instance).to receive(:track_provider_error_from_response)
 
           expect(Sentry).to receive(:set_extras).with({
-            body: body,
+            body: body
           })
           expect(Sentry).to receive(:capture_message).with(
             'Wrong payload from ACOSS (originaly reported in 1895733)'

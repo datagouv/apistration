@@ -7,7 +7,7 @@ class API::V2::AttestationsCotisationRetraitePROBTPController < API::V2::BaseCon
     retrieve_attestation.retrieve
 
     if retrieve_attestation.success?
-      render json: { url: retrieve_attestation.document_url },  status: retrieve_attestation.http_code
+      render json: { url: retrieve_attestation.document_url }, status: retrieve_attestation.http_code
     else
       render_errors(retrieve_attestation)
     end

@@ -42,12 +42,12 @@ class API::V2::DocumentsINPIController < API::V2::BaseController
   end
 
   def process_through_authentication
-    unless cookie.nil?
-      yield
-    else
+    if cookie.nil?
       error = ProviderAuthenticationError.new('INPI')
 
       render error_json(error, status: 502)
+    else
+      yield
     end
   end
 end

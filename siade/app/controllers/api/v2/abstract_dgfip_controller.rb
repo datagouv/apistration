@@ -37,7 +37,7 @@ class API::V2::AbstractDGFIPController < API::V2::BaseController
 
   def render_dgfip_authentication_failed
     render json:   authenticate_errors,
-           status: 502
+      status: :bad_gateway
   end
 
   def dgfip_service
@@ -47,9 +47,9 @@ class API::V2::AbstractDGFIPController < API::V2::BaseController
   def authenticate_errors
     ErrorsSerializer.new(
       [
-        ProviderAuthenticationError.new('DGFIP'),
+        ProviderAuthenticationError.new('DGFIP')
       ],
-      format: error_format,
+      format: error_format
     ).as_json
   end
 

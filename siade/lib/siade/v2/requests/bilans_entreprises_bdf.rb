@@ -21,7 +21,7 @@ class SIADE::V2::Requests::BilansEntreprisesBDF < SIADE::V2::Requests::Generic
   end
 
   def request_uri
-    URI("https://ws-dlnuf.banque-france.fr/ws/BILAN_APIEntreprise_1_0_0_PRD/bilans/json")
+    URI('https://ws-dlnuf.banque-france.fr/ws/BILAN_APIEntreprise_1_0_0_PRD/bilans/json')
   end
 
   def request_lib
@@ -41,15 +41,15 @@ class SIADE::V2::Requests::BilansEntreprisesBDF < SIADE::V2::Requests::Generic
   end
 
   def rest_client_options
-    # TODO Ask certs of banque de france
+    # TODO: Ask certs of banque de france
     # when done use ssl_ca_file: ca_file
     # and verify_ssl: OpenSSL::SSL::VERIFY_PEER
     { ssl_client_cert: cert, ssl_client_key: key, verify_ssl: OpenSSL::SSL::VERIFY_NONE }
   end
 
-  # TODO Ask certs
-  #def ca_file
-  #end
+  # TODO: Ask certs
+  # def ca_file
+  # end
 
   def key
     raw_key = File.read(Siade.credentials[:ssl_wildcard_certif_key_path])

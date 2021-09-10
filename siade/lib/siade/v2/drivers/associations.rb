@@ -2,17 +2,17 @@ class SIADE::V2::Drivers::Associations < SIADE::V2::Drivers::GenericDriver
   attr_reader :siret
 
   default_to_nil_raw_fetching_methods :id, :titre, :objet, :siren, :siret_siege_social,
-                                      :date_creation, :date_declaration, :date_publication, :date_dissolution,
-                                      :adresse_siege_complement_1, :adresse_siege_complement_2, :adresse_siege_complement_3,
-                                      :adresse_siege_numero_voie, :adresse_siege_type_voie,
-                                      :adresse_siege_libelle_voie, :adresse_siege_distribution, :adresse_siege_code_insee,
-                                      :adresse_siege_code_postal, :adresse_siege_commune,
-                                      :code_civilite_dirigeant, :civilite_dirigeant,
-                                      :code_etat, :etat,
-                                      :code_groupement, :groupement,
-                                      :mise_a_jour,
-                                      :nombre_documents, :documents,
-                                      :error
+    :date_creation, :date_declaration, :date_publication, :date_dissolution,
+    :adresse_siege_complement_1, :adresse_siege_complement_2, :adresse_siege_complement_3,
+    :adresse_siege_numero_voie, :adresse_siege_type_voie,
+    :adresse_siege_libelle_voie, :adresse_siege_distribution, :adresse_siege_code_insee,
+    :adresse_siege_code_postal, :adresse_siege_commune,
+    :code_civilite_dirigeant, :civilite_dirigeant,
+    :code_etat, :etat,
+    :code_groupement, :groupement,
+    :mise_a_jour,
+    :nombre_documents, :documents,
+    :error
 
   def initialize(hash)
     association_id = hash[:association_id]
@@ -134,7 +134,7 @@ class SIADE::V2::Drivers::Associations < SIADE::V2::Drivers::GenericDriver
 
   def documents_raw
     documents = nombre_documents_raw.zero? ? [] : Array[association_information['asso']['documents']['document_rna']].flatten
-    documents.map{ |doc| rework_document_structure(doc) }
+    documents.map { |doc| rework_document_structure(doc) }
   end
 
   def error_raw
@@ -147,7 +147,7 @@ class SIADE::V2::Drivers::Associations < SIADE::V2::Drivers::GenericDriver
     @association_information ||=
       begin
         Hash.from_xml(response.body)
-      rescue
+      rescue StandardError
         Rails.logger.error
         set_error_message_for(502)
       end
@@ -158,14 +158,14 @@ class SIADE::V2::Drivers::Associations < SIADE::V2::Drivers::GenericDriver
   end
 
   def rework_document_structure(doc)
-    delete_hash_fields(doc, %w(sous_type annee even id))
+    delete_hash_fields(doc, %w[sous_type annee even id])
     doc['type'] = doc.delete('lib_sous_type')
     doc['timestamp'] = doc.delete('time')
     doc
   end
 
   def delete_hash_fields(hash, fields)
-    fields.each{ |field| hash.delete(field) }
+    fields.each { |field| hash.delete(field) }
     hash
   end
 end

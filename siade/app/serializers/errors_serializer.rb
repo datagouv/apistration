@@ -3,7 +3,7 @@ class ErrorsSerializer < ActiveModel::Serializer
 
   def errors
     object.map do |error_handler|
-      self.public_send(format, error_handler)
+      public_send(format, error_handler)
     end
   end
 
@@ -13,11 +13,11 @@ class ErrorsSerializer < ActiveModel::Serializer
 
   def json_api(error_handler)
     {
-      code:   error_handler.code,
-      title:  error_handler.title,
+      code: error_handler.code,
+      title: error_handler.title,
       detail: error_handler.detail,
       source: error_handler.source,
-      meta:   error_handler.meta,
+      meta: error_handler.meta
     }.compact
   end
 

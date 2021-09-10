@@ -5,15 +5,11 @@ class SiretFormatValidator < ActiveModel::EachValidator
   end
 
   def validate_length_and_digits_only(record, attribute, value)
-    unless value =~ /\A\d{14}\z/
-      record.errors.add(attribute, :format, message: '14 digits only')
-    end
+    record.errors.add(attribute, :format, message: '14 digits only') unless value =~ /\A\d{14}\z/
   end
 
   def validate_structure(record, attribute, value)
-    unless value!= nil && valid_checksum(value)
-      record.errors.add(attribute, :checksum, message: 'must have luhn_checksum ok or be a la poste siret')
-    end
+    record.errors.add(attribute, :checksum, message: 'must have luhn_checksum ok or be a la poste siret') unless !value.nil? && valid_checksum(value)
   end
 
   private
@@ -30,7 +26,7 @@ class SiretFormatValidator < ActiveModel::EachValidator
     accum = 0
     value.reverse.each_char.map(&:to_i).each_with_index do |digit, index|
       t = index.even? ? digit : digit * 2
-      t = t - 9 if t >= 10
+      t -= 9 if t >= 10
       accum += t
     end
     accum

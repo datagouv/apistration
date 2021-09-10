@@ -1,5 +1,4 @@
 RSpec.describe SIADE::V2::Adapters::AttestationsFiscalesDGFIP do
-
   let(:user_id)           { valid_dgfip_user_id }
   let(:siren)             { valid_siren(:dgfip) }
   let(:siren_is)          { danone_siren }
@@ -16,43 +15,42 @@ RSpec.describe SIADE::V2::Adapters::AttestationsFiscalesDGFIP do
 
   describe 'is not valid' do
     describe 'when siren IS is provided', vcr: { cassette_name: 'attestations_fiscales_dgfip_adapter' } do
+      subject do
+        described_class.new(
+          {
+            siren: siren,
+            entreprise_is: entreprise_is,
+            etablissement_is: etablissement_is,
+            user_id: user_id
+          }
+        )
+      end
 
-        subject do
-          described_class.new(
-            {
-              siren:            siren,
-              entreprise_is:    entreprise_is,
-              etablissement_is: etablissement_is,
-              user_id:          user_id
-            }
-          )
-        end
-
-        it 'should not be valid' do
-          subject.groupe_is = "NOPE"
-          expect(subject).not_to be_valid
-          expect(subject.errors).not_to be_empty
-        end
+      it 'is not valid' do
+        subject.groupe_is = 'NOPE'
+        expect(subject).not_to be_valid
+        expect(subject.errors).not_to be_empty
+      end
     end
   end
 
   describe 'happy path' do
     describe 'when siren IS or TVA is provided', vcr: { cassette_name: 'attestations_fiscales_dgfip_adapter' } do
       context 'when IS is provided' do
-
         subject do
           described_class.new(
             {
-              siren:            siren,
-              entreprise_is:    entreprise_is,
+              siren: siren,
+              entreprise_is: entreprise_is,
               etablissement_is: etablissement_is,
-              user_id:          user_id
+              user_id: user_id
             }
           )
         end
 
         it { is_expected.to be_valid }
-        it 'should have all the keys' do
+
+        it 'has all the keys' do
           hash = subject.to_hash
 
           expect(hash[:userId]).to eq(user_id)
@@ -78,20 +76,20 @@ RSpec.describe SIADE::V2::Adapters::AttestationsFiscalesDGFIP do
       end
 
       context 'when TVA is provided' do
-
         subject do
           described_class.new(
             {
-              siren:             siren,
-              entreprise_tva:    entreprise_tva,
+              siren: siren,
+              entreprise_tva: entreprise_tva,
               etablissement_tva: etablissement_tva,
-              user_id:           user_id
+              user_id: user_id
             }
           )
         end
 
         it { is_expected.to be_valid }
-        it 'should have all the keys' do
+
+        it 'has all the keys' do
           hash = subject.to_hash
 
           expect(hash[:userId]).to eq(user_id)

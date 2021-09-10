@@ -55,7 +55,7 @@ class SIADE::V2::Requests::Exercices < SIADE::V2::Requests::Generic
   def request_params
     {
       userId: user_id,
-      siret:  siret
+      siret: siret
     }
   end
 
@@ -69,7 +69,7 @@ class SIADE::V2::Requests::Exercices < SIADE::V2::Requests::Generic
 
   def extract_uri_from_location(new_location)
     new_location_uri = URI(new_location)
-    encoded_target_uri = CGI::parse(new_location_uri.query)['url'].first
+    encoded_target_uri = CGI.parse(new_location_uri.query)['url'].first
     Base64.decode64(encoded_target_uri)
   end
 

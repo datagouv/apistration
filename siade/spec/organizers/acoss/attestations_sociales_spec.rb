@@ -6,7 +6,7 @@ RSpec.describe ACOSS::AttestationsSociales, type: :retriever_organizer do
       {
         siren: siren,
         user_id: '1',
-        recipient: '1',
+        recipient: '1'
       }
     end
 

@@ -97,7 +97,7 @@ class SIADE::V2::Requests::LiassesFiscalesDGFIP < SIADE::V2::Requests::Generic
   end
 
   def cookie_valid?
-    if @cookie =~ %r{^lemondgfip=.+_.+; domain=\.dgfip\.finances\.gouv\.fr; path=\/$}
+    if @cookie =~ %r{^lemondgfip=.+_.+; domain=\.dgfip\.finances\.gouv\.fr; path=/$}
       true
     else
       (@errors ||= []) << cookie_error
@@ -121,7 +121,7 @@ class SIADE::V2::Requests::LiassesFiscalesDGFIP < SIADE::V2::Requests::Generic
   end
 
   def request_name_valid?
-    if [:declaration, :dictionary].include?(@request_name)
+    if %i[declaration dictionary].include?(@request_name)
       true
     else
       (@errors ||= []) << UnprocessableEntityError.new(:request_name)

@@ -1,5 +1,4 @@
 class SIADE::V2::Retrievers::AttestationsFiscalesDGFIP < SIADE::V2::Retrievers::GenericInformationRetriever
-
   # Keep lowercase for IS and TVA to be compliant with the controller
   attr_accessor :siren, :siren_is, :siren_tva, :user_id, :cookie
 
@@ -54,11 +53,11 @@ class SIADE::V2::Retrievers::AttestationsFiscalesDGFIP < SIADE::V2::Retrievers::
 
   def params_for_adapter
     {
-      user_id:           user_id,
-      siren:             siren,
-      entreprise_is:     entreprise_is,
-      etablissement_is:  etablissement_is,
-      entreprise_tva:    entreprise_tva,
+      user_id: user_id,
+      siren: siren,
+      entreprise_is: entreprise_is,
+      etablissement_is: etablissement_is,
+      entreprise_tva: entreprise_tva,
       etablissement_tva: etablissement_tva
     }
   end
@@ -73,18 +72,16 @@ class SIADE::V2::Retrievers::AttestationsFiscalesDGFIP < SIADE::V2::Retrievers::
 
   def entreprise_is
     return @entreprise_is unless @entreprise_is.nil?
-    unless siren_is.nil?
-      @entreprise_is = entreprise_insee siren_is
-    end
+
+    @entreprise_is = entreprise_insee siren_is unless siren_is.nil?
 
     @entreprise_is
   end
 
   def entreprise_tva
     return @entreprise_tva unless @entreprise_tva.nil?
-    unless siren_tva.nil?
-      @entreprise_tva = entreprise_insee siren_tva
-    end
+
+    @entreprise_tva = entreprise_insee siren_tva unless siren_tva.nil?
 
     @entreprise_tva
   end
@@ -95,18 +92,16 @@ class SIADE::V2::Retrievers::AttestationsFiscalesDGFIP < SIADE::V2::Retrievers::
 
   def etablissement_is
     return @etablissement_is unless @etablissement_is.nil?
-    unless siren_is.nil?
-      @etablissement_is = etablissement_insee entreprise_is.siret_siege_social
-    end
+
+    @etablissement_is = etablissement_insee entreprise_is.siret_siege_social unless siren_is.nil?
 
     @etablissement_is
   end
 
   def etablissement_tva
     return @etablissement_tva unless @etablissement_tva.nil?
-    unless siren_tva.nil?
-      @etablissement_tva = etablissement_insee entreprise_tva.siret_siege_social
-    end
+
+    @etablissement_tva = etablissement_insee entreprise_tva.siret_siege_social unless siren_tva.nil?
 
     @etablissement_tva
   end

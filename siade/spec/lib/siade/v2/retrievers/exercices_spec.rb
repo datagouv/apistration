@@ -1,5 +1,6 @@
 RSpec.describe SIADE::V2::Retrievers::Exercices do
   subject { described_class.new(valid_siret(:entreprise), options) }
+
   let(:options) {}
   let(:driver) { SIADE::V2::Drivers::Exercices }
 

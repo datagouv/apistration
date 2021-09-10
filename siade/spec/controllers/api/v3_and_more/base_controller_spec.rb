@@ -7,7 +7,7 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
 
   controller(described_class) do
     def index
-      render json: { data: true }, status: 200
+      render json: { data: true }, status: :ok
     end
 
     def serializer_module

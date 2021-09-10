@@ -14,6 +14,7 @@ class APIPolicy
   end
 
   private
+
   def log_user_access
     if user_authorized?
       UserAccessSpy.log_authorized(user: user)

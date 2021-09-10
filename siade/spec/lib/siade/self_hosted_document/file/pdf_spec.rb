@@ -18,7 +18,7 @@ RSpec.describe SIADE::SelfHostedDocument::File::PDF, :self_hosted_doc do
   context 'when the content is not a valid PDF' do
     let(:pdf_io) { 'not a PDF UMAD' }
 
-    it { is_expected.to_not be_success }
+    it { is_expected.not_to be_success }
     its(:errors) { is_expected.to include([:invalid_extension, 'Le fichier n\'est pas au format `pdf` attendu.']) }
   end
 

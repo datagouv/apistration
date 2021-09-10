@@ -9,14 +9,14 @@ class MaintenanceError < AbstractGenericProviderError
 
   def extra_meta
     {
-      retry_in: maintenance_service.remaining_seconds,
+      retry_in: maintenance_service.remaining_seconds
     }
   end
 
   private
 
   def format_hour(time)
-    time.strftime("%H:%M")
+    time.strftime('%H:%M')
   end
 
   def maintenance_service

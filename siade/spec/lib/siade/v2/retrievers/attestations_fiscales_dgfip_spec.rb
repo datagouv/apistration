@@ -1,5 +1,4 @@
 RSpec.describe SIADE::V2::Retrievers::AttestationsFiscalesDGFIP do
-
   let(:user_id) { valid_dgfip_user_id }
   let(:cookie)  { 'valid_cookie' }
 
@@ -13,31 +12,35 @@ RSpec.describe SIADE::V2::Retrievers::AttestationsFiscalesDGFIP do
   end
 
   describe 'should retrieve dgfip informations', vcr: { cassette_name: 'attestations_fiscales_dgfip_retriever' } do
-    subject { described_class.new(
-      siren:     valid_siren(:dgfip),
-      siren_is:  danone_siren,
-      siren_tva: danone_siren,
-      user_id:   user_id,
-      cookie:    cookie
-    ) }
+    subject do
+      described_class.new(
+        siren: valid_siren(:dgfip),
+        siren_is: danone_siren,
+        siren_tva: danone_siren,
+        user_id: user_id,
+        cookie: cookie
+      )
+    end
 
-    it 'should return a correct hash' do
+    it 'returns a correct hash' do
       adapter = subject.send(:retrieve_dgfip_informations)
       expect(adapter).to be_valid
     end
   end
 
   context 'INSEE fallback usage' do
-    subject { described_class.new(
-      siren:     valid_siren(:dgfip),
-      siren_is:  danone_siren,
-      siren_tva: danone_siren,
-      user_id:   user_id,
-      cookie:    cookie
-    ) }
+    subject do
+      described_class.new(
+        siren: valid_siren(:dgfip),
+        siren_is: danone_siren,
+        siren_tva: danone_siren,
+        user_id: user_id,
+        cookie: cookie
+      )
+    end
 
     context 'when INSEE is UP', vcr: { cassette_name: 'attestations_fiscales_dgfip_retriever' } do
-      it 'should return a correct hash' do
+      it 'returns a correct hash' do
         adapter = subject.send(:retrieve_dgfip_informations)
         expect(adapter).to be_valid
       end

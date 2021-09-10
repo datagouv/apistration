@@ -9,8 +9,8 @@ class API::V2::CotisationsMSAController < API::V2::BaseController
     if cotisation.success?
       render json: {
         analyse_en_cours: cotisation.analyse_en_cours?,
-        a_jour:           cotisation.a_jour?
-      },  status: cotisation.http_code
+        a_jour: cotisation.a_jour?
+      }, status: cotisation.http_code
     else
       render_errors(cotisation)
     end

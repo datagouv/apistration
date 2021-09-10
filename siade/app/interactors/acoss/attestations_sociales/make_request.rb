@@ -8,9 +8,9 @@ class ACOSS::AttestationsSociales::MakeRequest < MakeRequest::Post
   def request_params
     {
       typeAttestation: 'AVG_UR',
-      siren:           context.params[:siren],
-      idClient:        context.params[:user_id],
-      beneficiaire:    context.params[:recipient],
+      siren: context.params[:siren],
+      idClient: context.params[:user_id],
+      beneficiaire: context.params[:recipient]
     }
   end
 

@@ -1,5 +1,4 @@
 RSpec.describe API::V2::ExtraitsCourtsINPIController, type: :controller do
-
   it_behaves_like 'unauthorized'
   it_behaves_like 'forbidden'
   it_behaves_like 'unprocessable_entity'
@@ -7,7 +6,7 @@ RSpec.describe API::V2::ExtraitsCourtsINPIController, type: :controller do
 
   # We are doing a search, we may return no results at all. 404 and no results are no good here. Maybe we should
   # make a check on existing siren
-  #it_behaves_like 'not_found'
+  # it_behaves_like 'not_found'
 
   describe 'happy path' do
     before do
@@ -34,7 +33,7 @@ RSpec.describe API::V2::ExtraitsCourtsINPIController, type: :controller do
           context 'brevets' do
             subject { super()['brevets'] }
 
-            its(['count']) { is_expected.to eq(13161) }
+            its(['count']) { is_expected.to eq(13_161) }
 
             it 'latests_brevets' do
               latests_brevets = subject['latests_brevets']
@@ -46,10 +45,10 @@ RSpec.describe API::V2::ExtraitsCourtsINPIController, type: :controller do
             context 'latests_brevets sample' do
               subject { super()['latests_brevets'][0] }
 
-              its(['date_publication'])    { is_expected.to eq("20170616") }
-              its(['date_depot'])          { is_expected.to eq("20151214") }
-              its(['numero_publication'])  { is_expected.to eq("<country>FR</country><doc-number>3045218</doc-number><kind>A1</kind>") }
-              its(['titre'])               { is_expected.to eq("DETERMINATION DE PARAMETRES D&apos;UN MODELE DYNAMIQUE POUR UNE CELLULE ELECTROCHIMIQUE DE BATTERIE") }
+              its(['date_publication'])    { is_expected.to eq('20170616') }
+              its(['date_depot'])          { is_expected.to eq('20151214') }
+              its(['numero_publication'])  { is_expected.to eq('<country>FR</country><doc-number>3045218</doc-number><kind>A1</kind>') }
+              its(['titre'])               { is_expected.to eq('DETERMINATION DE PARAMETRES D&apos;UN MODELE DYNAMIQUE POUR UNE CELLULE ELECTROCHIMIQUE DE BATTERIE') }
             end
           end
 
@@ -68,10 +67,10 @@ RSpec.describe API::V2::ExtraitsCourtsINPIController, type: :controller do
             context 'latests_modeles sample' do
               subject { super()['latests_modeles'][0] }
 
-              its(['date_publication'])    { is_expected.to eq("20170602") }
-              its(['date_depot'])          { is_expected.to eq("20140527") }
-              its(['numero_identification'])  { is_expected.to eq("20142275") }
-              its(['titre'])               { is_expected.to eq("Véhicule automobile, vues de détails") }
+              its(['date_publication'])    { is_expected.to eq('20170602') }
+              its(['date_depot'])          { is_expected.to eq('20140527') }
+              its(['numero_identification']) { is_expected.to eq('20142275') }
+              its(['titre']) { is_expected.to eq('Véhicule automobile, vues de détails') }
             end
           end
 
@@ -90,11 +89,11 @@ RSpec.describe API::V2::ExtraitsCourtsINPIController, type: :controller do
             context 'latests_marques sample' do
               subject { super()['latests_marques'][0] }
 
-              its(['numero_identification']) { is_expected.to eq("4313413") }
+              its(['numero_identification']) { is_expected.to eq('4313413') }
               its(['marque'])                { is_expected.to be nil }
-              its(['marque_status'])         { is_expected.to eq("Marque enregistrée") }
-              its(['depositaire'])           { is_expected.to eq("PEUGEOT CITROËN AUTOMOBILES SA, Société anonyme") }
-              its(['cle'])                   { is_expected.to eq("FMARK|4313413") }
+              its(['marque_status'])         { is_expected.to eq('Marque enregistrée') }
+              its(['depositaire'])           { is_expected.to eq('PEUGEOT CITROËN AUTOMOBILES SA, Société anonyme') }
+              its(['cle'])                   { is_expected.to eq('FMARK|4313413') }
             end
           end
         end

@@ -21,7 +21,7 @@ RSpec.describe API::V2::EntreprisesArtisanalesController, type: :controller do
 
         it 'returns an error message' do
           expect(response_json).to have_json_error(
-            detail: 'Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel',
+            detail: 'Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel'
           )
         end
       end
@@ -30,8 +30,8 @@ RSpec.describe API::V2::EntreprisesArtisanalesController, type: :controller do
         let(:siren) { valid_siren(:rnm_cma) }
 
         context 'without format', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
-          it 'returns HTTP code 200'  do
-            expect(response).to have_http_status(200)
+          it 'returns HTTP code 200' do
+            expect(response).to have_http_status(:ok)
           end
         end
       end

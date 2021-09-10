@@ -1,16 +1,16 @@
 RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
+  let(:token) { yes_jwt }
+
   it_behaves_like 'unauthorized', :show, id: valid_rna_id
   it_behaves_like 'forbidden', :show, id: valid_rna_id
   it_behaves_like 'ask_for_mandatory_parameters', :show, id: valid_rna_id
 
-  let(:token) { yes_jwt }
-
   describe 'invalid rna association' do
-    let(:id) { '11111111111111' }
-
     subject do
       get :show, params: { id: id, token: token }.merge(mandatory_params)
     end
+
+    let(:id) { '11111111111111' }
 
     its(:status) { is_expected.to eq(422) }
 
@@ -23,7 +23,7 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
   shared_examples 'logs_http_code' do |http_code|
     it 'logs provider HTTP Code' do
       expect(ProviderResponseSpy).to receive(:log_http_code).with(provider_name: 'RNA', http_code: http_code)
-      get :show, params:  { token: token, id: id }.merge(mandatory_params)
+      get :show, params: { token: token, id: id }.merge(mandatory_params)
     end
   end
 
@@ -73,13 +73,15 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
     # 77571979202585
 
     # TODO: regenerate cassette when data is back !
-    context 'when using a siret', vcr: { cassette_name: 'rna_association/77571979202585' }  do
+    context 'when using a siret', vcr: { cassette_name: 'rna_association/77571979202585' } do
       context 'when siret is correct' do
         context 'when siret is found' do
-          let(:id)    { '77571979202585' }
+          subject { @documents_associations_with_valid_siret }
+
+          let(:id) { '77571979202585' }
 
           before do
-            stub_request(:get,/jeunesse-sports\.gouv\.fr\/cxf\/api\/documents\/PJ/).to_return(body: open_payload_file('pdf/dummy.pdf'))
+            stub_request(:get, %r{jeunesse-sports\.gouv\.fr/cxf/api/documents/PJ}).to_return(body: open_payload_file('pdf/dummy.pdf'))
 
             remember_through_each_test_of_current_scope('documents_associations_with_valid_siret') do
               get :show, params: { id: id, token: token }.merge(mandatory_params)
@@ -87,10 +89,8 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
             end
           end
 
-          subject{ @documents_associations_with_valid_siret }
-
           it 'returns 200' do
-            expect(response).to have_http_status(200)
+            expect(response).to have_http_status(:ok)
           end
 
           its(['nombre_documents'])            { is_expected.to eq(3) }
@@ -109,11 +109,11 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
         end
 
         context 'when id is not found', vcr: { cassette_name: 'rna_association/W000000000' } do
-          let(:id)    { 'W000000000' }
-
           subject do
             get :show, params: { id: id, token: token }.merge(mandatory_params)
           end
+
+          let(:id) { 'W000000000' }
 
           it_behaves_like 'logs_http_code', '404'
 
@@ -122,7 +122,6 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
       end
 
       context 'when siret is not valid', vcr: { cassette_name: 'rna_association/11111111111111' } do
-
         let(:id)    { '11111111111111' }
 
         it { expect(subject.status).to eq(422) }
@@ -132,7 +131,7 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
 
   describe 'unhappy paths' do
     context 'some document_rna urls are 404', vcr: { cassette_name: 'non_regenerable/rna_association/W262001597_missing_documents' } do
-      let(:id)  { 'W262001597' }
+      let(:id) { 'W262001597' }
       let(:response_payload) { JSON.parse(response.body) }
       let(:response) { get :show, params: { id: id, token: token }.merge(mandatory_params) }
 
@@ -145,8 +144,8 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
       end
 
       it 'receives 5 documents but returns only the 2 non 404 pdfs' do
-        expect(API::V2::DocumentsAssociationsController::DocumentRNA).
-          to receive(:new).exactly(5).times.and_call_original
+        expect(API::V2::DocumentsAssociationsController::DocumentRNA)
+          .to receive(:new).exactly(5).times.and_call_original
         expect(Rails.logger).to receive(:error).once.with(/3 documents sont déficients pour l'association W262001597/)
 
         expect(response_payload['nombre_documents']).to eq(2)
@@ -161,7 +160,7 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
   # see https://gitlab.com/etalab/api-entreprise/siade/-/issues/50
   describe 'Incidents', :skip do
     context 'Incident january 2018: some documents are not pdf', vcr: { cassette_name: 'non_regenerable/incidents/rna_association/W262001597_not_a_pdf' } do
-      let(:id)  { 'W262001597' }
+      let(:id) { 'W262001597' }
       let(:response_payload) { JSON.parse(response.body) }
       let(:response) { get :show, params: { id: id, token: token }.merge(mandatory_params) }
 
@@ -170,8 +169,8 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
       end
 
       it 'receives documents url but its not pdf' do
-        expect(API::V2::DocumentsAssociationsController::DocumentRNA).
-          to receive(:new).exactly(5).times.and_call_original
+        expect(API::V2::DocumentsAssociationsController::DocumentRNA)
+          .to receive(:new).exactly(5).times.and_call_original
         expect(Rails.logger).to receive(:error).once.with(/5 documents sont déficients pour l'association W262001597/)
 
         expect(response_payload['nombre_documents']).to eq(0)

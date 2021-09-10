@@ -1,7 +1,7 @@
 class NotFoundError < AbstractGenericProviderError
   attr_reader :provider_name
 
-  def initialize(provider_name, message=nil)
+  def initialize(provider_name, message = nil)
     @provider_name = provider_name
     @message = message
   end

@@ -27,7 +27,7 @@ class SIADE::SelfHostedDocument::Uploader
       file_url,
       pdf_string,
       {
-        'X-Delete-After' => file_expired_in,
+        'X-Delete-After' => file_expired_in
       }
     )
   end
@@ -43,7 +43,7 @@ class SIADE::SelfHostedDocument::Uploader
   private
 
   def customized_domain_url
-    storage_domain_url.sub(%r{https.*/AUTH_[[:alnum:]]*\/},Siade.credentials[:public_storage_url])
+    storage_domain_url.sub(%r{https.*/AUTH_[[:alnum:]]*/}, Siade.credentials[:public_storage_url])
   end
 
   def storage_domain_url

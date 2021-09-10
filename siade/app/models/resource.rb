@@ -1,5 +1,5 @@
 class Resource
-  def initialize(params={})
+  def initialize(params = {})
     @data = params
 
     params.each_key do |key|

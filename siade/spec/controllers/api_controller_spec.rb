@@ -9,7 +9,7 @@ RSpec.describe APIController, type: :controller do
     end
 
     def show
-      render json: { siret: siret }, status: 200
+      render json: { siret: siret }, status: :ok
     end
 
     protected

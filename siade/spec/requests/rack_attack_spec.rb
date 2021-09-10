@@ -10,19 +10,19 @@ RSpec.describe Rack::Attack, type: :request do
       {
         controller: 'api/v2/certificats_opqibi',
         action: 'show',
-        siren: 123,
+        siren: 123
       }
     end
     let(:url) { extract_without_context_url_for(**random_endpoint, only_path: true) }
 
     it 'returns 401' do
-      get url, headers_params
+      get url, params: headers_params
 
       expect(response.status).to eq(401)
     end
 
     it 'returns an error message' do
-      get url, headers_params
+      get url, params: headers_params
 
       expect(response_json).to have_json_error(detail: 'Votre token n\'est pas valide ou n\'est pas renseigné')
     end
@@ -43,7 +43,7 @@ RSpec.describe Rack::Attack, type: :request do
       limit.times do
         call!(token_sample_1)
 
-        expect(response.status).to_not eq(429)
+        expect(response.status).not_to eq(429)
       end
     end
 
@@ -60,14 +60,14 @@ RSpec.describe Rack::Attack, type: :request do
         Timecop.freeze(60.seconds.from_now) do
           call!(token_sample_1)
 
-          expect(response.status).to_not eq(429)
+          expect(response.status).not_to eq(429)
         end
       end
 
       it 'limits requests on a per token basis' do
         call!(token_sample_2)
 
-        expect(response.status).to_not eq(429)
+        expect(response.status).not_to eq(429)
       end
 
       it 'responds with the Retry-After header when off limit' do
@@ -84,7 +84,7 @@ RSpec.describe Rack::Attack, type: :request do
         limit.times { call!(token) }
         call!(token)
 
-        expect(response.status).to_not eq(429)
+        expect(response.status).not_to eq(429)
       end
     end
 
@@ -125,7 +125,7 @@ RSpec.describe Rack::Attack, type: :request do
 
     context 'when the token is a valid JWT' do
       def limit_value_for_production(endpoints_list)
-        config = YAML::load(File.open("#{Rails.root}/config/throttle.yml"))
+        config = YAML.load(File.open("#{Rails.root}/config/throttle.yml"))
         config.dig('production', endpoints_list, 'limit')
       end
 
@@ -154,7 +154,7 @@ RSpec.describe Rack::Attack, type: :request do
               [{
                 controller: 'api/v2/attestations_fiscales_dgfip',
                 action: 'show',
-                siren: 123,
+                siren: 123
               }]
             end
           end
@@ -164,7 +164,7 @@ RSpec.describe Rack::Attack, type: :request do
               [{
                 controller: 'api/v2/documents_inpi',
                 action: 'actes',
-                siren: 123,
+                siren: 123
               }]
             end
           end
@@ -174,7 +174,7 @@ RSpec.describe Rack::Attack, type: :request do
               [{
                 controller: 'api/v2/documents_inpi',
                 action: 'bilans',
-                siren: 123,
+                siren: 123
               }]
             end
           end
@@ -188,7 +188,7 @@ RSpec.describe Rack::Attack, type: :request do
               [{
                 controller: 'api/v2/effectifs_annuels_entreprise_acoss_covid',
                 action: 'show',
-                siren: 123,
+                siren: 123
               }]
             end
           end
@@ -200,7 +200,7 @@ RSpec.describe Rack::Attack, type: :request do
                 action: 'show',
                 siret: 123,
                 annee: 2020,
-                mois: 01,
+                mois: 0o1
               }]
             end
           end
@@ -212,7 +212,7 @@ RSpec.describe Rack::Attack, type: :request do
                 action: 'show',
                 siren: 123,
                 annee: 2020,
-                mois: 01,
+                mois: 0o1
               }]
             end
           end
@@ -222,7 +222,7 @@ RSpec.describe Rack::Attack, type: :request do
               [{
                 controller: 'api/v2/attestations_agefiph',
                 action: 'show',
-                siret: 123,
+                siret: 123
               }]
             end
           end
@@ -318,13 +318,13 @@ RSpec.describe Rack::Attack, type: :request do
   describe 'all throttled endpoints' do
     let(:all_routes) do
       Rails.application.routes.routes.each_with_object([]) do |route, res|
-        unless route.defaults == {}
-          route_conf = {
-            controller: route.defaults[:controller],
-            action: route.defaults[:action],
-          }
-          res.push(route_conf) unless non_throttled_endpoints.include?(route_conf)
-        end
+        next if route.defaults == {}
+
+        route_conf = {
+          controller: route.defaults[:controller],
+          action: route.defaults[:action]
+        }
+        res.push(route_conf) unless non_throttled_endpoints.include?(route_conf)
       end
     end
 
@@ -332,12 +332,12 @@ RSpec.describe Rack::Attack, type: :request do
       [
         {
           controller: 'api/v2/uptime',
-          action: 'show',
+          action: 'show'
         },
         {
           controller: 'api/v2/privileges',
-          action: 'show',
-        },
+          action: 'show'
+        }
       ]
     end
 

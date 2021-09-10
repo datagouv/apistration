@@ -26,7 +26,7 @@ class SIADE::V2::Requests::EntreprisesArtisanales < SIADE::V2::Requests::Generic
 
   def request_params
     {
-      format: format,
+      format: format
     }
   end
 

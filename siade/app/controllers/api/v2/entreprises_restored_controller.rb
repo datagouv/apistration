@@ -18,7 +18,7 @@ class API::V2::EntreprisesRestoredController < API::V2::BaseController
         end
       else
         render json:   ErrorsSerializer.new(retriever_etablissement.errors, format: error_format).as_json.merge(gateway_error: true),
-               status: best_http_code
+          status: best_http_code
       end
     else
       render_errors(retriever_entreprise, gateway_error: true)
@@ -29,13 +29,13 @@ class API::V2::EntreprisesRestoredController < API::V2::BaseController
 
   def redirect_to_new_siren
     redirect_to action:          :show,
-                siren:           retriever_entreprise.redirected_siren,
-                context:         params[:context],
-                recipient:       params[:recipient],
-                object:          params[:object],
-                non_diffusables: params[:non_diffusables],
-                token:           params[:token],
-                status:          :moved_permanently
+      siren:           retriever_entreprise.redirected_siren,
+      context:         params[:context],
+      recipient:       params[:recipient],
+      object:          params[:object],
+      non_diffusables: params[:non_diffusables],
+      token:           params[:token],
+      status:          :moved_permanently
 
     response.body = body_details
   end
@@ -67,9 +67,9 @@ class API::V2::EntreprisesRestoredController < API::V2::BaseController
 
   def valid_response
     {
-      entreprise:          entreprise.as_json,
+      entreprise: entreprise.as_json,
       etablissement_siege: etablissement_siege.as_json,
-      gateway_error:       false
+      gateway_error: false
     }
   end
 
@@ -101,9 +101,7 @@ class API::V2::EntreprisesRestoredController < API::V2::BaseController
   end
 
   def check_numero_tva
-    if foreign_siege_social?
-      retriever_entreprise.numero_tva_intracommunautaire = nil
-    end
+    retriever_entreprise.numero_tva_intracommunautaire = nil if foreign_siege_social?
   end
 
   def foreign_siege_social?

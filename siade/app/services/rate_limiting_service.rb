@@ -4,9 +4,7 @@ class RateLimitingService
   def discriminate_by_jwt_for_endpoints(req, endpoints_list)
     jwt = extract_token_from_header(req)
     url_list = build_url_from_endpoints(endpoints_list)
-    if jwt && path_from?(url_list, req.path)
-      Digest::SHA256.hexdigest(jwt)
-    end
+    Digest::SHA256.hexdigest(jwt) if jwt && path_from?(url_list, req.path)
   end
 
   def whitelisted_access?(req)
@@ -21,9 +19,9 @@ class RateLimitingService
 
   def build_rate_limit_headers(data)
     {
-      'RateLimit-Limit'     => data[:limit].to_s,
+      'RateLimit-Limit' => data[:limit].to_s,
       'RateLimit-Remaining' => compute_remaining(data),
-      'RateLimit-Reset'     => compute_reset(data),
+      'RateLimit-Reset' => compute_reset(data)
     }
   end
 

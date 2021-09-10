@@ -56,15 +56,16 @@ RSpec.describe API::V2::ExercicesController, type: :controller do
 
         context 'global response' do
           subject { response_body }
+
           its(['exercices']) { is_expected.to be_a_kind_of Array }
 
-          context '#exercices.first' do
+          describe '#exercices.first' do
             subject { response_body['exercices'].first }
 
             it { is_expected.to be_a_kind_of Hash }
             its(['ca']) { is_expected.to eq '648374448' }
             its(['date_fin_exercice']) { is_expected.to eq '2016-12-31T00:00:00+01:00' }
-            its(['date_fin_exercice_timestamp']) { is_expected.to eq 1483138800 }
+            its(['date_fin_exercice_timestamp']) { is_expected.to eq 1_483_138_800 }
           end
         end
       end

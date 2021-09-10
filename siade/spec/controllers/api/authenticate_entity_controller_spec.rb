@@ -1,19 +1,18 @@
 RSpec.describe API::AuthenticateEntityController do
-
   controller(API::AuthenticateEntityController) do
     def index
-      render json: {}, status: 200
+      render json: {}, status: :ok
     end
   end
 
-  context "malformatted requests" do
-    it "returns 401 when token is missing" do
+  context 'malformatted requests' do
+    it 'returns 401 when token is missing' do
       get :index
       assert_response 401
     end
 
     it 'returns 401 with bad header naming' do
-      request.headers['Authorization'] = "FuBearer #{ yes_jwt }"
+      request.headers['Authorization'] = "FuBearer #{yes_jwt}"
       get :index
       assert_response 401
     end
@@ -68,7 +67,7 @@ RSpec.describe API::AuthenticateEntityController do
         let(:token) { forged_jwt }
 
         it 'logs unauthorized' do
-          expect(UserAccessSpy).to receive(:log_unauthorized).with(user_info: token,)
+          expect(UserAccessSpy).to receive(:log_unauthorized).with(user_info: token)
 
           get :index
           assert_response 401
@@ -114,7 +113,7 @@ RSpec.describe API::AuthenticateEntityController do
         let(:token) { forged_jwt }
 
         it 'logs unauthorized' do
-          expect(UserAccessSpy).to receive(:log_unauthorized).with(user_info: token,)
+          expect(UserAccessSpy).to receive(:log_unauthorized).with(user_info: token)
           get :index, params: { token: token }
           assert_response 401
         end
@@ -138,11 +137,11 @@ RSpec.describe API::AuthenticateEntityController do
 
     it 'sets user context with pundit user' do
       expect(MonitoringService.instance).to receive(:set_user_context).with({
-        id:    a_string_matching(uuid_regex),
+        id: a_string_matching(uuid_regex),
         roles: an_instance_of(Array),
-        jti:   a_string_matching(uuid_regex),
-        iat:   a_string_matching(date_regex),
-        exp:   nil
+        jti: a_string_matching(uuid_regex),
+        iat: a_string_matching(date_regex),
+        exp: nil
       })
 
       get :index, params: { token: yes_jwt }
@@ -150,12 +149,12 @@ RSpec.describe API::AuthenticateEntityController do
 
     it 'sets expected params in context' do
       expect(MonitoringService.instance).to receive(:set_controller_params).with({
-        context:    "API Entreprise TESTS",
-        object:     "Testing things",
-        recipient:  "SIADE Localhost",
-        controller: "api/authenticate_entity",
-        action:     "index",
-        token:      yes_jwt,
+        context: 'API Entreprise TESTS',
+        object: 'Testing things',
+        recipient: 'SIADE Localhost',
+        controller: 'api/authenticate_entity',
+        action: 'index',
+        token: yes_jwt
       })
 
       get :index, params: { token: yes_jwt }.merge(mandatory_params)

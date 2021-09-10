@@ -1,5 +1,4 @@
 class SIADE::V2::Requests::AuthenticateDGFIP < SIADE::V2::Requests::Generic
-
   def cookie
     @response.cookie
   end

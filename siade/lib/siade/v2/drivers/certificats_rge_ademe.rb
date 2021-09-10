@@ -4,7 +4,7 @@ class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDrive
   attr_reader :siret
 
   default_to_nil_raw_fetching_methods :domaines,
-                                      :qualifications
+    :qualifications
 
   def initialize(hash)
     @siret = hash[:siret]
@@ -30,31 +30,29 @@ class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDrive
   end
 
   def remove_bom_from_json_response
-    begin
-      @certification_entities ||=
-        JSON.parse(body_without_bom).deep_transform_keys{ |key| key.parameterize(separator: '_') }
-    rescue
-      set_parsing_response_error
-    end
+    @certification_entities ||=
+      JSON.parse(body_without_bom).deep_transform_keys { |key| key.parameterize(separator: '_') }
+  rescue StandardError
+    set_parsing_response_error
   end
 
   def errors?
-    !request.errors.blank?
+    request.errors.present?
   end
 
   def certification_entities
     # Ensure with ADEME API specifications that when requested with a siret
     # only one result (the one for the corresponding etablissement) is returned
-    @certification_entities.try(:[],"company")
+    @certification_entities.try(:[], 'company')
   end
 
   def body_without_bom
-    response.body.force_encoding("UTF-8").sub(/^\xEF\xBB\xBF/, '')
+    response.body.force_encoding('UTF-8').sub(/^\xEF\xBB\xBF/, '')
   end
 
   def qualifications_raw
     certification_entities.each do |entity|
-      entity_raw_qualifications = entity.try(:[], "qualifications")
+      entity_raw_qualifications = entity.try(:[], 'qualifications')
       format_raw_qualifications(entity_raw_qualifications)
     end
     aggregated_qualifications
@@ -64,8 +62,8 @@ class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDrive
     raw_qualifs.reduce(aggregated_qualifications) do |result, (_, qualif_obj)|
       result.push(
         {
-          nom:            qualif_obj["name"],
-          nom_certificat: qualif_obj["name_certif"]
+          nom: qualif_obj['name'],
+          nom_certificat: qualif_obj['name_certif']
         }.merge(url_certificat_payload(qualif_obj))
       )
     end
@@ -77,7 +75,7 @@ class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDrive
 
   def domaines_raw
     certification_entities.each do |entity|
-      entity_raw_domaines = entity.try(:[], "domaines")
+      entity_raw_domaines = entity.try(:[], 'domaines')
       format_raw_domaines(entity_raw_domaines)
     end
     aggregated_domaines
@@ -85,7 +83,7 @@ class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDrive
 
   def format_raw_domaines(raw_domaines)
     raw_domaines.reduce(aggregated_domaines) do |result, (_, domaine_obj)|
-      result.push(domaine_obj["nom"])
+      result.push(domaine_obj['nom'])
     end
   end
 
@@ -94,10 +92,10 @@ class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDrive
   end
 
   def url_certificat_payload(qualif_obj)
-    unless skip_pdf?
-      { url_certificat: self_hosted_pdf(qualif_obj["url"]) }
-    else
+    if skip_pdf?
       { url_certificat: nil }
+    else
+      { url_certificat: self_hosted_pdf(qualif_obj['url']) }
     end
   end
 

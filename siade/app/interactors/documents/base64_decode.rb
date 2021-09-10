@@ -20,7 +20,7 @@ class Documents::Base64Decode < ApplicationInteractor
     BadFileFromProviderError.new(
       context.provider_name,
       :invalid_base64,
-      'Erreur lors du décodage : invalide Base64 format',
+      'Erreur lors du décodage : invalide Base64 format'
     )
   end
 

@@ -2,10 +2,10 @@ class SIADE::V2::Drivers::CertificatsOPQIBI < SIADE::V2::Drivers::GenericDriver
   attr_accessor :siren
 
   default_to_nil_raw_fetching_methods :numero_certificat, :date_de_delivrance_du_certificat, :duree_de_validite_du_certificat, :assurance, :url,
-                                      :qualifications,
-                                      :date_de_validite_des_qualifications,
-                                      :qualifications_probatoires,
-                                      :date_de_validite_des_qualifications_probatoires
+    :qualifications,
+    :date_de_validite_des_qualifications,
+    :qualifications_probatoires,
+    :date_de_validite_des_qualifications_probatoires
 
   def initialize(hash)
     @siren = hash[:siren]
@@ -70,9 +70,9 @@ class SIADE::V2::Drivers::CertificatsOPQIBI < SIADE::V2::Drivers::GenericDriver
     qualifications.map do |qualification|
       {
         code_qualification: qualification[:CodeQualification],
-        nom:                qualification[:Nom],
-        definition:         qualification[:Definition],
-        rge:                qualification[:rge]
+        nom: qualification[:Nom],
+        definition: qualification[:Definition],
+        rge: qualification[:rge]
       }
     end
   end

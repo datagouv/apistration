@@ -9,6 +9,8 @@ RSpec.describe API::V2::CertificatsOPQIBIController, type: :controller do
   end
 
   describe 'happy path' do
+    subject { @opqibi_valid_siren }
+
     let(:token) { yes_jwt }
 
     before do
@@ -18,13 +20,11 @@ RSpec.describe API::V2::CertificatsOPQIBIController, type: :controller do
       end
     end
 
-    subject { @opqibi_valid_siren }
-
     context 'when siren is known by OPQIBI', vcr: { cassette_name: 'opqibi_with_valid_siren' } do
       let(:siren) { valid_siren(:opqibi) }
 
-      it 'returns 200'do
-        expect(response).to have_http_status(200)
+      it 'returns 200' do
+        expect(response).to have_http_status(:ok)
       end
 
       its(['siren'])                                           { is_expected.to eq(valid_siren(:opqibi)) }
@@ -34,13 +34,13 @@ RSpec.describe API::V2::CertificatsOPQIBIController, type: :controller do
       its(['assurance'])                                       { is_expected.to eq('ALLIANZ - AXA') }
       its(['url'])                                             { is_expected.to eq('http://opqibi.com/fiche.php?id=719') }
 
-      context '#qualifications (non probatoire)' do
+      describe '#qualifications (non probatoire)' do
         let(:definition_qualification) { "Mission d'assistance technique en phase de conception ou réalisation d'une opération dans les domaines de la construction (bâtiment ou infrastructure), de l'environnement, de l'énergie ou des process industriels.<br /><br />Elle comprend au minimum :<br />- l'analyse des spécificités techniques d'une opération et des documents élaborés par le Maître d'ouvrage (programme,...) et/ou les autres intervenants (Maîtres d'œuvre, Entreprises,....)<br />- les conseils et propositions au Maître d'ouvrage qui en résultent <br /><br />Nota : comme toutes les missions d'AMO, cette mission ne correspond pas à une mission de maîtrise d'œuvre et ne peut donc être justifiée par des références de maîtrise d'œuvre.<br />" }
 
         its(['qualifications'])                      { is_expected.to be_a(Array) }
         its(['date_de_validite_des_qualifications']) { is_expected.to eq('01/04/2022') }
 
-        it 'should have first qualification like' do
+        it 'has first qualification like' do
           expect(subject['qualifications'].first['code_qualification']).to eq('0103')
           expect(subject['qualifications'].first['nom']).to                eq('AMO en technique')
           expect(subject['qualifications'].first['definition']).to         eq(definition_qualification)
@@ -48,13 +48,13 @@ RSpec.describe API::V2::CertificatsOPQIBIController, type: :controller do
         end
       end
 
-      context '#qualifications probatoires' do
+      describe '#qualifications probatoires' do
         let(:definition_qualification_probatoire) { "Réseaux de distribution d'eau potable ou industrielle de zones à aménager de faible importance, se raccordant à des installations existantes, avec ou sans renforcement." }
 
         its(['qualifications_probatoires'])                      { is_expected.to be_a(Array) }
         its(['date_de_validite_des_qualifications_probatoires']) { is_expected.to eq('01/04/2021') }
 
-        it 'should have first qualification probatoire like' do
+        it 'has first qualification probatoire like' do
           expect(subject['qualifications_probatoires'].first['code_qualification']).to eq('1301')
           expect(subject['qualifications_probatoires'].first['nom']).to                eq('Étude de réseaux courants de distribution d\'eau')
           expect(subject['qualifications_probatoires'].first['definition']).to         eq(definition_qualification_probatoire)

@@ -16,14 +16,14 @@ RSpec.describe AbstractGenericProviderError, type: :error do
 
     let(:extra_meta) do
       {
-        oki: 'lol',
+        oki: 'lol'
       }
     end
 
     it 'adds this meta to final payload' do
       expect(subject[:meta]).to eq(
         {
-          provider: 'INSEE',
+          provider: 'INSEE'
         }.merge(extra_meta)
       )
     end

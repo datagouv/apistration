@@ -1,11 +1,12 @@
 RSpec.describe SIADE::V2::Responses::Exercices, type: :provider_response do
+  subject { SIADE::V2::Requests::Exercices.new(siret, options).perform.response }
+
   let(:options) do
     {
-      cookie:  cookie,
+      cookie: cookie,
       user_id: valid_dgfip_user_id
     }
   end
-  subject { SIADE::V2::Requests::Exercices.new(siret, options).perform.response }
 
   context 'when siret is not found', vcr: { cassette_name: 'exercice_with_not_found_siret' } do
     let(:siret) { non_existent_siret }

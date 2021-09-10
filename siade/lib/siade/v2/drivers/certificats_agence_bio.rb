@@ -13,32 +13,31 @@ class SIADE::V2::Drivers::CertificatsAgenceBIO < SIADE::V2::Drivers::GenericDriv
     @request ||= SIADE::V2::Requests::CertificatsAgenceBIO.new(siret)
   end
 
-  def check_response
-  end
+  def check_response; end
 
   def raw_organic_certifications
     @raw_organic_certifications ||= body[:items]
   end
 
   def body
-    @body ||= JSON.parse(response.body).deep_transform_keys{ |key| key.to_s.underscore }.deep_symbolize_keys
+    @body ||= JSON.parse(response.body).deep_transform_keys { |key| key.to_s.underscore }.deep_symbolize_keys
   end
 
   def filtered_certifications_data
     raw_organic_certifications.map do |cert_data|
       {
-        raison_sociale:            value_or_placeholder(:raison_social, cert_data),
-        denomination_courante:     value_or_placeholder(:denomination_courante, cert_data),
-        siret:                     value_or_placeholder(:siret, cert_data),
-        numero_bio:                value_or_placeholder(:numero_bio, cert_data),
+        raison_sociale: value_or_placeholder(:raison_social, cert_data),
+        denomination_courante: value_or_placeholder(:denomination_courante, cert_data),
+        siret: value_or_placeholder(:siret, cert_data),
+        numero_bio: value_or_placeholder(:numero_bio, cert_data),
         date_derniere_mise_a_jour: value_or_placeholder(:date_maj, cert_data),
-        numero_pacage:             nil,
-        reseau:                    value_or_placeholder(:reseau, cert_data),
-        categories:                format_categories(cert_data),
-        activites:                 format_activites(cert_data),
-        adresses_operateurs:       format_addresses(cert_data),
-        productions:               format_productions(cert_data),
-        certificats:               format_certificats(cert_data),
+        numero_pacage: nil,
+        reseau: value_or_placeholder(:reseau, cert_data),
+        categories: format_categories(cert_data),
+        activites: format_activites(cert_data),
+        adresses_operateurs: format_addresses(cert_data),
+        productions: format_productions(cert_data),
+        certificats: format_certificats(cert_data)
       }
     end
   end
@@ -49,12 +48,12 @@ class SIADE::V2::Drivers::CertificatsAgenceBIO < SIADE::V2::Drivers::GenericDriv
 
     raw_certifs.each_with_object([]) do |cert, res|
       formatted_certif = {
-        organisme:          value_or_placeholder(:organisme, cert),
-        date_engagement:    value_or_placeholder(:date_engagement, cert),
-        date_arret:         value_or_placeholder(:date_arret, cert),
-        date_suspension:    value_or_placeholder(:date_suspension, cert),
-        url:                value_or_placeholder(:url, cert),
-        etat_certification: value_or_placeholder(:etat_certification, cert),
+        organisme: value_or_placeholder(:organisme, cert),
+        date_engagement: value_or_placeholder(:date_engagement, cert),
+        date_arret: value_or_placeholder(:date_arret, cert),
+        date_suspension: value_or_placeholder(:date_suspension, cert),
+        url: value_or_placeholder(:url, cert),
+        etat_certification: value_or_placeholder(:etat_certification, cert)
       }
       res << formatted_certif
     end
@@ -66,8 +65,8 @@ class SIADE::V2::Drivers::CertificatsAgenceBIO < SIADE::V2::Drivers::GenericDriv
 
     raw_products.each_with_object([]) do |product, res|
       formatted_product = {
-        nom:  value_or_placeholder(:nom, product),
-        code: value_or_placeholder(:code, product),
+        nom: value_or_placeholder(:nom, product),
+        code: value_or_placeholder(:code, product)
       }
       res << formatted_product
     end
@@ -86,12 +85,12 @@ class SIADE::V2::Drivers::CertificatsAgenceBIO < SIADE::V2::Drivers::GenericDriv
 
     raw_addr_operateurs.each_with_object([]) do |addr, res|
       formatted_addr = {
-        lieu:        value_or_placeholder(:lieu, addr),
+        lieu: value_or_placeholder(:lieu, addr),
         code_postal: value_or_placeholder(:code_postal, addr),
-        ville:       value_or_placeholder(:ville, addr),
-        lat:         value_or_placeholder(:lat, addr),
-        long:        value_or_placeholder(:long, addr),
-        type:        value_or_placeholder(:type_adresse_operateurs, addr),
+        ville: value_or_placeholder(:ville, addr),
+        lat: value_or_placeholder(:lat, addr),
+        long: value_or_placeholder(:long, addr),
+        type: value_or_placeholder(:type_adresse_operateurs, addr)
       }
       res << formatted_addr
     end
@@ -101,6 +100,6 @@ class SIADE::V2::Drivers::CertificatsAgenceBIO < SIADE::V2::Drivers::GenericDriv
     raw_categories = raw_data.try(:[], :categories)
     return [] unless raw_categories
 
-    raw_categories.each_with_object([]) { |cat, res| res << cat.try(:[],:nom) }
+    raw_categories.each_with_object([]) { |cat, res| res << cat.try(:[], :nom) }
   end
 end

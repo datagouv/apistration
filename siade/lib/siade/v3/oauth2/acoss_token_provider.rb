@@ -8,13 +8,13 @@ class SIADE::V3::OAuth2::ACOSSTokenProvider
   def client_get_token_params
     {
       grant_type: :client_credentials,
-      scope:      SCOPE_API_ENTREPRISE
+      scope: SCOPE_API_ENTREPRISE
     }
   end
 
   def client_options
     {
-      site:      domain,
+      site: domain,
       token_url: access_token_path
     }
   end

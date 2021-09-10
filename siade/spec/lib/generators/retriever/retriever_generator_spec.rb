@@ -5,7 +5,6 @@ RSpec.describe RetrieverGenerator, type: :generator do
     subject { file('app/organizers/module/resource_name.rb') }
 
     shared_examples 'a valid RetrieverOrganizer' do
-
       it { is_expected.to exist }
       it { is_expected.to have_correct_syntax }
       it { is_expected.to contain(/class #{resource_name} < RetrieverOrganizer/) }

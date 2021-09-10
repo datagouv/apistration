@@ -1,4 +1,6 @@
 RSpec.describe MakeRequest, type: :interactor do
+  subject { DummyMakeRequest.call(provider_name: provider_name) }
+
   before(:all) do
     class DummyMakeRequest < MakeRequest
       protected
@@ -15,8 +17,6 @@ RSpec.describe MakeRequest, type: :interactor do
     end
   end
 
-  subject { DummyMakeRequest.call(provider_name: provider_name) }
-
   let(:uri) { DummyMakeRequest.new.send(:request_uri) }
   let(:provider_name) { 'INSEE' }
 
@@ -27,9 +27,9 @@ RSpec.describe MakeRequest, type: :interactor do
       end
 
       it 'raises a ResponseNotDefined error' do
-        expect {
+        expect do
           subject
-        }.to raise_error(MakeRequest::ResponseNotDefined)
+        end.to raise_error(MakeRequest::ResponseNotDefined)
       end
     end
   end
@@ -39,7 +39,7 @@ RSpec.describe MakeRequest, type: :interactor do
       stub_request(:get, uri.to_s).to_return(
         status: 200,
         body: {
-          success: true,
+          success: true
         }.to_json
       )
     end
@@ -69,7 +69,7 @@ RSpec.describe MakeRequest, type: :interactor do
           [
             Errno::ECONNREFUSED,
             Errno::ECONNRESET,
-            Errno::EHOSTUNREACH,
+            Errno::EHOSTUNREACH
           ].sample
         )
       end
@@ -101,7 +101,6 @@ RSpec.describe MakeRequest, type: :interactor do
       context 'for a DNS resolution fail (nodename nor servname associated)' do
         let(:socket_error_message) { 'Failed to open TCP connection to api.entreprise.gouv.fr:443 (getaddrinfo: nodename nor servname provided, or not known)' }
 
-
         it { is_expected.to be_a_failure }
 
         it 'adds DnsResolutionError to errors' do
@@ -113,9 +112,9 @@ RSpec.describe MakeRequest, type: :interactor do
         let(:socket_error_message) { 'whatever' }
 
         it 'raises this error' do
-          expect {
+          expect do
             subject
-          }.to raise_error(SocketError)
+          end.to raise_error(SocketError)
         end
       end
     end

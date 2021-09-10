@@ -2,15 +2,15 @@ class SIADE::V2::Drivers::Infogreffe < SIADE::V2::Drivers::GenericDriver
   attr_reader :siren
 
   default_to_nil_raw_fetching_methods :liste_observations,
-                                      :mandataires_sociaux,
-                                      :date_immatriculation,
-                                      :date_immatriculation_timestamp,
-                                      :forme_juridique,
-                                      :date_radiation,
-                                      :capital_social,
-                                      :forme_juridique_code,
-                                      :nom_commercial,
-                                      :date_extrait
+    :mandataires_sociaux,
+    :date_immatriculation,
+    :date_immatriculation_timestamp,
+    :forme_juridique,
+    :date_radiation,
+    :capital_social,
+    :forme_juridique_code,
+    :nom_commercial,
+    :date_extrait
 
   def initialize(hash)
     @siren = hash[:siren]
@@ -52,15 +52,15 @@ class SIADE::V2::Drivers::Infogreffe < SIADE::V2::Drivers::GenericDriver
     siren = xml.css('pm num_ident').text.strip
     type = xml.attribute('type').value
     {
-      nom:                      nom,
-      prenom:                   prenom,
-      fonction:                 xml.css('qualite').text.strip,
-      date_naissance:           date_naissance,
+      nom: nom,
+      prenom: prenom,
+      fonction: xml.css('qualite').text.strip,
+      date_naissance: date_naissance,
       date_naissance_timestamp: date_naissance_timestamp,
-      dirigeant:                true,
-      raison_sociale:           raison_sociale,
-      identifiant:              siren,
-      type:                     type
+      dirigeant: true,
+      raison_sociale: raison_sociale,
+      identifiant: siren,
+      type: type
     }
   end
 
@@ -69,7 +69,7 @@ class SIADE::V2::Drivers::Infogreffe < SIADE::V2::Drivers::GenericDriver
   end
 
   def nom_commercial_siege_social
-    entreprise_information.try(:css, 'etablissement')&.find{ |e| e.attribute('type').value == '1'}.try(:css, 'nom_commercial').try(:text)
+    entreprise_information.try(:css, 'etablissement')&.find { |e| e.attribute('type').value == '1' }.try(:css, 'nom_commercial').try(:text)
   end
 
   def nom_commercial_default
@@ -82,7 +82,7 @@ class SIADE::V2::Drivers::Infogreffe < SIADE::V2::Drivers::GenericDriver
 
   def date_radiation_raw
     Date.parse(retrieve_date_radiation).in_time_zone.to_i
-  rescue
+  rescue StandardError
     nil
   end
 
@@ -110,10 +110,10 @@ class SIADE::V2::Drivers::Infogreffe < SIADE::V2::Drivers::GenericDriver
     date = xml.try(:attribute, 'dateISO').try(:value)
     date_timestamp = convert_date_to_timestamp date
     {
-      date:           date,
+      date: date,
       date_timestamp: date_timestamp,
-      numero:         xml.try(:attribute, 'numero').try(:value),
-      libelle:        xml.try(:css, :libelle).try(:text)
+      numero: xml.try(:attribute, 'numero').try(:value),
+      libelle: xml.try(:css, :libelle).try(:text)
     }
   end
 

@@ -63,14 +63,14 @@ class SIADE::V3::Retrievers::EtablissementsRestored < SIADE::V2::Retrievers::Gen
 
   def region_implantation
     {
-      code:  region[:code],
+      code: region[:code],
       value: region[:value]
     }
   end
 
   def commune_implantation
     {
-      code:  commune[:code],
+      code: commune[:code],
       value: commune[:value] || adresse[:libelle_commune_etranger]
     }
   end
@@ -78,12 +78,12 @@ class SIADE::V3::Retrievers::EtablissementsRestored < SIADE::V2::Retrievers::Gen
   def pays_implantation
     if adresse_francaise?
       {
-        code:  'FR',
+        code: 'FR',
         value: 'FRANCE'
       }
     else
       {
-        code:  adresse[:code_pays_etranger],
+        code: adresse[:code_pays_etranger],
         value: adresse[:libelle_pays_etranger]
       }
     end
@@ -213,7 +213,7 @@ class SIADE::V3::Retrievers::EtablissementsRestored < SIADE::V2::Retrievers::Gen
 
   def join_or_nil_if_empty(elements)
     elements = elements.compact
-                       .delete_if(&:empty?)
+      .delete_if(&:empty?)
 
     elements.empty? ? nil : elements.join(' ')
   end

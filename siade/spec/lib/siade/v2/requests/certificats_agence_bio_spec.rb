@@ -25,14 +25,14 @@ RSpec.describe SIADE::V2::Requests::CertificatsAgenceBIO, type: :provider_reques
   context 'when Agence Bio responds with an error' do
     let(:siret) { valid_siret(:agence_bio) }
 
-      before do
-        url = 'https://back.agencebio.org/api/gouv/operateurs'
-        stub_request(:get, /#{url}/)
-          .to_return(
+    before do
+      url = 'https://back.agencebio.org/api/gouv/operateurs'
+      stub_request(:get, /#{url}/)
+        .to_return(
           status: 500,
-          body:   'whatever',
+          body: 'whatever'
         )
-      end
+    end
 
     its(:http_code) { is_expected.to eq(502) }
     its(:errors) { is_expected.to have_error('Mauvaise réponse envoyée par le fournisseur de données') }

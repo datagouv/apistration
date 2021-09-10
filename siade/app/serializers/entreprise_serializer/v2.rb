@@ -9,7 +9,7 @@ class EntrepriseSerializer::V2 < ActiveModel::Serializer
     :mandataires_sociaux, :etat_administratif
   attribute :diffusable_commercialement?, key: :diffusable_commercialement, if: :with_non_diffusable?
 
-  def initialize(object, options={})
+  def initialize(object, options = {})
     @options = options
     super(object, options)
   end

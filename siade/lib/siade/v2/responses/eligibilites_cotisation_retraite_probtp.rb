@@ -1,5 +1,4 @@
 class SIADE::V2::Responses::EligibilitesCotisationRetraitePROBTP < SIADE::V2::Responses::Generic
-
   protected
 
   def provider_name
@@ -12,7 +11,7 @@ class SIADE::V2::Responses::EligibilitesCotisationRetraitePROBTP < SIADE::V2::Re
     elsif unhandled_error?
       set_error_message_for(502)
     else
-      # TODO the NET::HTTPResponse.code method returns a string
+      # TODO: the NET::HTTPResponse.code method returns a string
       @raw_response.code.to_i
     end
   end
@@ -41,8 +40,8 @@ class SIADE::V2::Responses::EligibilitesCotisationRetraitePROBTP < SIADE::V2::Re
 
   def set_error_message_502
     add_context_to_provider_error_tracking(
-      internal_code:    internal_code,
-      internal_message: internal_message,
+      internal_code: internal_code,
+      internal_message: internal_message
     )
     @provider_error_custom_code = internal_code
 
@@ -52,7 +51,7 @@ class SIADE::V2::Responses::EligibilitesCotisationRetraitePROBTP < SIADE::V2::Re
   def http_error_message
     ProviderInternalServerError.new(
       provider_name,
-      "Erreur interne du fournisseur de données (code: #{internal_code}, message: #{internal_message})",
+      "Erreur interne du fournisseur de données (code: #{internal_code}, message: #{internal_message})"
     )
   end
 end

@@ -29,7 +29,7 @@ RSpec.describe SIADE::V2::Retrievers::GenericInformationRetriever do
         'fake'
       end
 
-      def driver_options;end
+      def driver_options; end
     end
 
     FakeRetriever
@@ -42,7 +42,8 @@ RSpec.describe SIADE::V2::Retrievers::GenericInformationRetriever do
 
   context 'when driver fails with placeholder' do
     subject { fake_retriever.new }
-    it 'should return the placeholder' do
+
+    it 'returns the placeholder' do
       allow(subject).to receive(:driver_options).and_return({})
       expect(subject.info_fail_placeholder).to eq(SIADE::V2::Drivers::GenericDriver.new.send(:placeholder))
     end
@@ -50,8 +51,9 @@ RSpec.describe SIADE::V2::Retrievers::GenericInformationRetriever do
 
   context 'when driver fails with no placeholder' do
     subject { fake_retriever.new }
-    it 'should return nil instead of placeholder' do
-      allow(subject).to receive(:driver_options).and_return({ :placeholder_to_nil => true })
+
+    it 'returns nil instead of placeholder' do
+      allow(subject).to receive(:driver_options).and_return({ placeholder_to_nil: true })
       expect(subject.info_fail_placeholder).to be_nil
     end
   end

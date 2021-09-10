@@ -1,5 +1,4 @@
 RSpec.describe SIADE::V2::Retrievers::Associations do
-
   subject { described_class.new(valid_siren) }
 
   let(:driver) { SIADE::V2::Drivers::Associations }
@@ -32,14 +31,15 @@ RSpec.describe SIADE::V2::Retrievers::Associations do
   it { is_expected.to be_delegated_to(driver, :code_groupement) }
   it { is_expected.to be_delegated_to(driver, :groupement) }
   it { is_expected.to be_delegated_to(driver, :mise_a_jour) }
-  it 'should have an adresse_siege wrapper' do
+
+  it 'has an adresse_siege wrapper' do
     subject.retrieve
-    expect(subject.adresse_siege[:numero_voie]  ).to eq(subject.adresse_siege_numero_voie)
-    expect(subject.adresse_siege[:type_voie]    ).to eq(subject.adresse_siege_type_voie)
-    expect(subject.adresse_siege[:libelle_voie] ).to eq(subject.adresse_siege_libelle_voie)
-    expect(subject.adresse_siege[:distribution] ).to eq(subject.adresse_siege_distribution)
-    expect(subject.adresse_siege[:code_insee]   ).to eq(subject.adresse_siege_code_insee)
-    expect(subject.adresse_siege[:code_postal]  ).to eq(subject.adresse_siege_code_postal)
-    expect(subject.adresse_siege[:commune]      ).to eq(subject.adresse_siege_commune)
+    expect(subject.adresse_siege[:numero_voie]).to eq(subject.adresse_siege_numero_voie)
+    expect(subject.adresse_siege[:type_voie]).to eq(subject.adresse_siege_type_voie)
+    expect(subject.adresse_siege[:libelle_voie]).to eq(subject.adresse_siege_libelle_voie)
+    expect(subject.adresse_siege[:distribution]).to eq(subject.adresse_siege_distribution)
+    expect(subject.adresse_siege[:code_insee]).to eq(subject.adresse_siege_code_insee)
+    expect(subject.adresse_siege[:code_postal]).to eq(subject.adresse_siege_code_postal)
+    expect(subject.adresse_siege[:commune]).to eq(subject.adresse_siege_commune)
   end
 end

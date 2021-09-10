@@ -7,7 +7,7 @@ class RNM::EntreprisesArtisanales::MakeRequest < MakeRequest::Get
 
   def request_params
     {
-      format: :json,
+      format: :json
     }
   end
 

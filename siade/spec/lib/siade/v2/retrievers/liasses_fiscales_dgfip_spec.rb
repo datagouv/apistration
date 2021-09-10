@@ -5,10 +5,10 @@ RSpec.describe SIADE::V2::Retrievers::LiassesFiscalesDGFIP do
 
   let(:params) do
     {
-      siren:        siren,
-      annee:        2017,
-      cookie:       cookie_from_dgfip,
-      user_id:      valid_dgfip_user_id,
+      siren: siren,
+      annee: 2017,
+      cookie: cookie_from_dgfip,
+      user_id: valid_dgfip_user_id,
       request_type: request_type
     }
   end
@@ -60,9 +60,9 @@ RSpec.describe SIADE::V2::Retrievers::LiassesFiscalesDGFIP do
   describe 'when asking only for the dictionary without siren', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_valid_siren' } do
     let(:params) do
       {
-        annee:        2017,
-        cookie:       cookie_from_dgfip,
-        user_id:      valid_dgfip_user_id,
+        annee: 2017,
+        cookie: cookie_from_dgfip,
+        user_id: valid_dgfip_user_id,
         request_type: request_type
       }
     end

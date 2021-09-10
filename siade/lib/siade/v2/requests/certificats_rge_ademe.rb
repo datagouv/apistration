@@ -49,7 +49,7 @@ class SIADE::V2::Requests::CertificatsRGEAdeme < SIADE::V2::Requests::Generic
   end
 
   def ademe_secret_token
-    "#{Siade.credentials[:ademe_rge_token]}"
+    Siade.credentials[:ademe_rge_token].to_s
   end
 
   def set_error_message_422

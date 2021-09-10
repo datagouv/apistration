@@ -1,6 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../../config/environment", __FILE__)
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'spec_helper'
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -26,9 +26,9 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
 
     # Choose one or more libraries:
-    #with.library :active_record
-    #with.library :active_model
-    #with.library :action_controller
+    # with.library :active_record
+    # with.library :active_model
+    # with.library :action_controller
     # Or, choose the following (which implies all of the above):
     with.library :action_controller
     with.library :active_model

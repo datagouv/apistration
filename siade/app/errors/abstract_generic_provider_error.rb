@@ -3,7 +3,7 @@ class AbstractGenericProviderError < ApplicationError
 
   attr_reader :provider_name
 
-  def initialize(provider_name, message=nil)
+  def initialize(provider_name, message = nil)
     @provider_name = provider_name
     @message = message
   end
@@ -23,7 +23,7 @@ class AbstractGenericProviderError < ApplicationError
 
   def meta
     {
-      provider: provider_name,
+      provider: provider_name
     }.merge(extra_meta)
   end
 

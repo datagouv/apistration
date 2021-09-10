@@ -60,9 +60,9 @@ class SIADE::V2::Requests::AttestationsSocialesACOSS < SIADE::V2::Requests::Gene
   def post_request_body
     {
       typeAttestation: @type_attestation,
-      siren:           @siren,
-      idClient:        @user_id,
-      beneficiaire:    @recipient
+      siren: @siren,
+      idClient: @user_id,
+      beneficiaire: @recipient
     }.to_json
   end
 
@@ -103,7 +103,7 @@ class SIADE::V2::Requests::AttestationsSocialesACOSS < SIADE::V2::Requests::Gene
   def set_error_message_502
     (@errors ||= []) << ProviderInternalServerError.new(
       provider_name,
-      "L'ACOSS ne peut répondre à votre requête, réessayez ultérieurement (erreur: #{@error_message})",
+      "L'ACOSS ne peut répondre à votre requête, réessayez ultérieurement (erreur: #{@error_message})"
     )
   end
 

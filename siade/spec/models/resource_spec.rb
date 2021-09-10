@@ -7,7 +7,7 @@ RSpec.describe Resource, type: :model do
     context 'when params has an id key' do
       let(:params) do
         {
-          id: valid_siren,
+          id: valid_siren
         }
       end
 
@@ -17,7 +17,7 @@ RSpec.describe Resource, type: :model do
     context 'when params has an no id key' do
       let(:params) do
         {
-          id: nil,
+          id: nil
         }
       end
 
@@ -33,13 +33,13 @@ RSpec.describe Resource, type: :model do
         id: 'id',
         payload: Resource.new(
           {
-            key: 'value',
+            key: 'value'
           }
         ),
         array: [
           'item',
           Resource.new(
-            key: 'value',
+            key: 'value'
           )
         ]
       }
@@ -50,12 +50,12 @@ RSpec.describe Resource, type: :model do
         {
           id: 'id',
           payload: {
-            key: 'value',
+            key: 'value'
           },
           array: [
             'item',
             {
-              key: 'value',
+              key: 'value'
             }
           ]
         }

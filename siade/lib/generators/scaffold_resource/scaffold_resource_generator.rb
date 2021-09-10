@@ -2,9 +2,9 @@ class ScaffoldResourceGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('templates', __dir__)
 
   class_option :document,
-    type:    :boolean,
+    type: :boolean,
     default: false,
-    desc:    'Add support of documents uploader'
+    desc: 'Add support of documents uploader'
 
   class_option :validation_type,
     type: :string,
@@ -36,7 +36,7 @@ class ScaffoldResourceGenerator < Rails::Generators::NamedBase
   private
 
   def string_options
-    options.map { |k,v| "--#{k}=#{v}" }.join(' ')
+    options.map { |k, v| "--#{k}=#{v}" }.join(' ')
   end
 
   def document_resource?

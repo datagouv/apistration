@@ -41,9 +41,9 @@ class SIADE::V3::Referentials::ActivitePrincipale
 
   def as_json
     {
-      code:         code,
+      code: code,
       nomenclature: nomenclature,
-      libelle:      libelle
+      libelle: libelle
     }
   end
 
@@ -59,6 +59,7 @@ class SIADE::V3::Referentials::ActivitePrincipale
 
   def result
     return unless valid?
+
     @result ||= find_in_csv || find_in_exceptions
   end
 

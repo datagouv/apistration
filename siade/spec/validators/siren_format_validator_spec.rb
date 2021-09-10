@@ -1,12 +1,12 @@
 class SirenFormatValidatable
   include ActiveModel::Validations
-  attr_accessor  :siren
+  attr_accessor :siren
+
   validates :siren, siren_format: true
 end
 
 RSpec.describe SirenFormatValidator do
-
-  subject{ SirenFormatValidatable.new }
+  subject { SirenFormatValidatable.new }
 
   it 'validates siren that has 9 digits' do
     subject.siren = valid_siren

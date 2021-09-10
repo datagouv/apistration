@@ -7,10 +7,10 @@ class SIADE::V2::Utilities::HTTPCode
       case code
 
       when 404
-        best_code = self.best_code_404(best_code)
+        best_code = best_code_404(best_code)
 
       when 400..599
-        best_code = self.best_code_400_500(best_code, code)
+        best_code = best_code_400_500(best_code, code)
 
       when 200..206
         best_code = code
@@ -23,8 +23,6 @@ class SIADE::V2::Utilities::HTTPCode
 
     best_code
   end
-
-  private
 
   def self.best_code_404(best_code)
     case best_code

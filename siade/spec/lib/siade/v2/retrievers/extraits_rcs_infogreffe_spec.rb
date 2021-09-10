@@ -1,5 +1,6 @@
 RSpec.describe SIADE::V2::Retrievers::ExtraitsRCSInfogreffe do
   subject { described_class.new(valid_siren(:extrait_rcs)) }
+
   let(:driver) { SIADE::V2::Drivers::Infogreffe }
 
   it { is_expected.to be_delegated_to(driver, :http_code) }

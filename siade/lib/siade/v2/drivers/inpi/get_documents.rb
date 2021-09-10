@@ -37,7 +37,7 @@ class SIADE::V2::Drivers::INPI::GetDocuments < SIADE::V2::Drivers::GenericDriver
   end
 
   def ids_fichiers
-    json_documents.map { |doc| doc[:idFichier] }.join(',')
+    json_documents.pluck(:idFichier).join(',')
   end
 
   def inpi_url

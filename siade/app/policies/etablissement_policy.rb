@@ -5,5 +5,3 @@ class EtablissementPolicy < APIPolicy
     'etablissements'
   end
 end
-
-

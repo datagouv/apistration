@@ -15,8 +15,8 @@ if ENV['CODE_COVERAGE']
 end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../../config/environment", __FILE__)
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'rspec/json_expectations'
 require 'webmock/rspec'
@@ -25,15 +25,15 @@ require 'vcr_helper'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
-Dir[Rails.root.join("spec/factories/**/*.rb")].each { |f| require f }
-Dir[Rails.root.join("lib/generators/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/factories/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('lib/generators/**/*.rb')].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 # ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
-#WebMock.disable_net_connect!(:allow_localhost => true, :allow => /insee/)
+# WebMock.disable_net_connect!(:allow_localhost => true, :allow => /insee/)
 
 RSpec.configure do |config|
   # ## Mock Framework
@@ -47,25 +47,25 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
   config.mock_with :rspec do |c|
-    c.syntax = [:should, :expect]
+    c.syntax = %i[should expect]
   end
 
   config.include(SelfHostedDoc, :self_hosted_doc)
   config.default_formatter = config.files_to_run.one? ? 'doc' : 'progress'
 
-  # TODO move this conf somewhere else
+  # TODO: move this conf somewhere else
   config.before do
     unless ENV['regenerate_cassettes']
-      allow_any_instance_of(PROBTP::AttestationsCotisationsRetraite::MakeRequest).to receive(:http_options){{use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil}}
-      allow_any_instance_of(SIADE::V2::Drivers::EligibilitesCotisationRetraitePROBTP).to receive(:net_http_options){{use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil}}
-      allow_any_instance_of(SIADE::V2::Drivers::AttestationsCotisationRetraitePROBTP).to receive(:net_http_options){{use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil}}
-      allow_any_instance_of(SIADE::V2::Requests::EligibilitesCotisationRetraitePROBTP).to receive(:net_http_options){{use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil}}
-      allow_any_instance_of(SIADE::V2::Requests::AttestationsCotisationRetraitePROBTP).to receive(:net_http_options){{use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil}}
-      allow_any_instance_of(SIADE::V2::Requests::BilansEntreprisesBDF).to receive(:rest_client_options){{ ssl_client_cert: nil, ssl_client_key: nil, verify_ssl: OpenSSL::SSL::VERIFY_NONE }}
+      allow_any_instance_of(PROBTP::AttestationsCotisationsRetraite::MakeRequest).to receive(:http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
+      allow_any_instance_of(SIADE::V2::Drivers::EligibilitesCotisationRetraitePROBTP).to receive(:net_http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
+      allow_any_instance_of(SIADE::V2::Drivers::AttestationsCotisationRetraitePROBTP).to receive(:net_http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
+      allow_any_instance_of(SIADE::V2::Requests::EligibilitesCotisationRetraitePROBTP).to receive(:net_http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
+      allow_any_instance_of(SIADE::V2::Requests::AttestationsCotisationRetraitePROBTP).to receive(:net_http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
+      allow_any_instance_of(SIADE::V2::Requests::BilansEntreprisesBDF).to receive(:rest_client_options).and_return({ ssl_client_cert: nil, ssl_client_key: nil, verify_ssl: OpenSSL::SSL::VERIFY_NONE })
     end
   end
 
-  config.before(:each) do
+  config.before do
     # let's use a new instance of MockedRedis (in memory) for each specs
     allow(Redis).to receive(:current).and_return(MockRedis.new)
   end
@@ -121,7 +121,7 @@ RSpec.configure do |config|
   if ENV['MOCK_CALL_SYSTEM_FOR_MEMORY_ERROR']
     config.include MockCallSystemForCi
 
-    config.before(:each) do
+    config.before do
       make_qpdf_call_safe_on_memory_error!
     end
   end
@@ -129,7 +129,7 @@ RSpec.configure do |config|
   config.include ActivateStrictVcrRequestMatchingForV3
   config.extend ActivateStrictVcrRequestMatchingForV3
 
-  config.around(:each) do |example|
+  config.around do |example|
     example = add_strict_matching_on_vcr_requests_for_v3(example)
     example.run
   end

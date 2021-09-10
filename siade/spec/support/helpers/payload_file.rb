@@ -1,4 +1,4 @@
-def open_payload_file(filename, read_option=nil)
+def open_payload_file(filename, read_option = nil)
   if read_option
     File.open(File.join(Rails.root, 'spec/support/payload_files/', filename), read_option)
   else

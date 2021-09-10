@@ -1,15 +1,14 @@
 RSpec.describe SIADE::V2::Requests::AttestationsFiscalesDGFIP, type: :provider_request do
-
   let(:valid_user_id) { valid_dgfip_user_id }
 
-  describe "when is not valid" do
+  describe 'when is not valid' do
     subject do
       described_class.new(
         {
-          siren:        siren,
-          siren_is:     siren_is,
-          siren_tva:    siren_tva,
-          cookie:       cookie,
+          siren: siren,
+          siren_is: siren_is,
+          siren_tva: siren_tva,
+          cookie: cookie,
           informations: informations
         }
       ).perform
@@ -19,10 +18,10 @@ RSpec.describe SIADE::V2::Requests::AttestationsFiscalesDGFIP, type: :provider_r
     let(:informations) do
       SIADE::V2::Retrievers::AttestationsFiscalesDGFIP.new(
         {
-          siren:     siren,
-          siren_is:  siren_is,
+          siren: siren,
+          siren_is: siren_is,
           siren_tva: siren_tva,
-          user_id:   user_id
+          user_id: user_id
         }
       ).send(:retrieve_dgfip_informations)
     end
@@ -34,7 +33,7 @@ RSpec.describe SIADE::V2::Requests::AttestationsFiscalesDGFIP, type: :provider_r
       let(:cookie) { valid_cookie }
       let(:user_id) { valid_user_id }
 
-      its(:http_code){ is_expected.to eq(422) }
+      its(:http_code) { is_expected.to eq(422) }
       its(:errors) { is_expected.to have_error(invalid_siren_error_message) }
     end
 
@@ -45,7 +44,7 @@ RSpec.describe SIADE::V2::Requests::AttestationsFiscalesDGFIP, type: :provider_r
       let(:cookie) { valid_cookie }
       let(:user_id) { valid_user_id }
 
-      its(:http_code){ is_expected.to eq(422) }
+      its(:http_code) { is_expected.to eq(422) }
       its(:errors) { is_expected.to have_error("Le siren_is n'est pas correctement formatté") }
     end
 
@@ -83,7 +82,7 @@ RSpec.describe SIADE::V2::Requests::AttestationsFiscalesDGFIP, type: :provider_r
       end
 
       its(:http_code) { is_expected.to eq(422) }
-      its(:errors) { is_expected.to have_error("Groupe IS doit valoir OUI ou NON") }
+      its(:errors) { is_expected.to have_error('Groupe IS doit valoir OUI ou NON') }
     end
 
     context 'should fail with invalid cookie' do
@@ -98,15 +97,14 @@ RSpec.describe SIADE::V2::Requests::AttestationsFiscalesDGFIP, type: :provider_r
     end
   end
 
-  describe "when is valid" do
-
+  describe 'when is valid' do
     subject do
       described_class.new(
         {
-          siren:        siren,
-          siren_is:     siren_is,
-          siren_tva:    siren_tva,
-          cookie:       AuthenticateDGFIPService.new.authenticate!.cookie,
+          siren: siren,
+          siren_is: siren_is,
+          siren_tva: siren_tva,
+          cookie: AuthenticateDGFIPService.new.authenticate!.cookie,
           informations: informations
         }
       ).perform
@@ -115,10 +113,10 @@ RSpec.describe SIADE::V2::Requests::AttestationsFiscalesDGFIP, type: :provider_r
     let(:informations) do
       SIADE::V2::Retrievers::AttestationsFiscalesDGFIP.new(
         {
-          siren:     siren,
-          siren_is:  siren_is,
+          siren: siren,
+          siren_is: siren_is,
           siren_tva: siren_tva,
-          user_id:   valid_user_id
+          user_id: valid_user_id
         }
       ).send(:retrieve_dgfip_informations)
     end
@@ -142,7 +140,6 @@ RSpec.describe SIADE::V2::Requests::AttestationsFiscalesDGFIP, type: :provider_r
     end
 
     describe 'happy path', vcr: { cassette_name: 'attestations_fiscales_dgfip_request_valid_request' } do
-
       shared_examples 'valid_dgfip_response' do
         its(:http_code) { is_expected.to eq(200) }
         its(:errors) { is_expected.to be_empty }

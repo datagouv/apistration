@@ -40,7 +40,7 @@ class SIADE::V3::Requests::INSEE::Token
 
   def request_options
     {
-      use_ssl:     true,
+      use_ssl: true,
       verify_mode: OpenSSL::SSL::VERIFY_NONE
     }
   end

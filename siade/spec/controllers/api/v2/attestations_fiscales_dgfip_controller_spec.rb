@@ -6,6 +6,8 @@ RSpec.describe API::V2::AttestationsFiscalesDGFIPController, type: :controller d
   let(:maintenance) { false }
 
   describe 'when DGFiP authentication fails' do
+    subject { response }
+
     let(:siren) { invalid_siren }
     let(:token) { yes_jwt }
     let(:user_id) { valid_dgfip_user_id }
@@ -15,8 +17,6 @@ RSpec.describe API::V2::AttestationsFiscalesDGFIPController, type: :controller d
       allow_any_instance_of(AuthenticateDGFIPService).to receive(:success?).and_return(false)
       get :show, params: { token: token, siren: siren }.merge(mandatory_params)
     end
-
-    subject { response }
 
     its(:status) { is_expected.to eq(502) }
 
@@ -28,6 +28,8 @@ RSpec.describe API::V2::AttestationsFiscalesDGFIPController, type: :controller d
   end
 
   describe 'non-regression test: authentication returns a service unavailable' do
+    subject { response }
+
     let(:siren) { invalid_siren }
     let(:token) { yes_jwt }
     let(:user_id) { valid_dgfip_user_id }
@@ -37,8 +39,6 @@ RSpec.describe API::V2::AttestationsFiscalesDGFIPController, type: :controller d
 
       get :show, params: { token: token, siren: siren }.merge(mandatory_params)
     end
-
-    subject { response }
 
     its(:status) { is_expected.to eq(502) }
 
@@ -62,15 +62,15 @@ RSpec.describe API::V2::AttestationsFiscalesDGFIPController, type: :controller d
     it_behaves_like 'forbidden'
     it_behaves_like 'ask_for_mandatory_parameters'
 
-    describe "unprocessable entity siren" do
+    describe 'unprocessable entity siren' do
+      subject { response }
+
       let(:siren) { invalid_siren }
       let(:token) { yes_jwt }
 
       before do
         get :show, params: { token: token, siren: siren }.merge(mandatory_params)
       end
-
-      subject { response }
 
       its(:status) { is_expected.to eq(422).or eq(502) } # 502 because no informations are sent here
 
@@ -82,11 +82,11 @@ RSpec.describe API::V2::AttestationsFiscalesDGFIPController, type: :controller d
     end
 
     describe 'with invalid params', vcr: { cassette_name: 'attestations_fiscales_dgfip_controller_invalid' } do
+      subject { response }
+
       before do
         get :show, params: { token: token, siren: siren, siren_is: siren_is, siren_tva: siren_tva }.merge(mandatory_params)
       end
-
-      subject { response }
 
       let(:siren) { valid_siren }
       let(:token) { yes_jwt }
@@ -108,6 +108,7 @@ RSpec.describe API::V2::AttestationsFiscalesDGFIPController, type: :controller d
         let(:siren_is)  { valid_siren }
 
         its(:status) { is_expected.to eq(422) }
+
         it 'returns 422 with error message' do
           json = JSON.parse(response.body)
           expect(json).to have_json_error(detail: invalid_siren_error_message)
@@ -116,7 +117,9 @@ RSpec.describe API::V2::AttestationsFiscalesDGFIPController, type: :controller d
     end
   end
 
-  describe "not found siren", vcr: { cassette_name: 'attestations_fiscales_dgfip_controller_with_ceased_siren' } do
+  describe 'not found siren', vcr: { cassette_name: 'attestations_fiscales_dgfip_controller_with_ceased_siren' } do
+    subject { response }
+
     before do
       # Imperative to have a persistant user_id in VCR cassettes
       allow(UserIdDGFIPService).to receive(:call).and_return(valid_dgfip_user_id)
@@ -125,8 +128,6 @@ RSpec.describe API::V2::AttestationsFiscalesDGFIPController, type: :controller d
 
     let(:siren) { ceased_siren }
     let(:token) { yes_jwt }
-
-    subject { response }
 
     its(:status) { is_expected.to eq(404) }
 
@@ -138,7 +139,6 @@ RSpec.describe API::V2::AttestationsFiscalesDGFIPController, type: :controller d
   end
 
   describe 'happy path' do
-
     shared_examples 'all_params_are_valid' do
       its(:status) { is_expected.to eq(200) }
       its(:body) { is_expected.to match(/attestation_fiscale_dgfip.pdf/) }

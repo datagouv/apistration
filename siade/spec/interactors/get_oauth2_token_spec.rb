@@ -3,11 +3,25 @@ RSpec.describe GetOAuth2Token, type: :interactor do
 
   before(:all) do
     class DummyTokenAuthentication < GetOAuth2Token
-      def client_get_token_params; { params: :params }; end
-      def client_options; {}; end
-      def access_token_options; {}; end
-      def client_id; :client_id; end
-      def client_secret; :client_secret; end
+      def client_get_token_params
+        { params: :params }
+      end
+
+      def client_options
+        {}
+      end
+
+      def access_token_options
+        {}
+      end
+
+      def client_id
+        :client_id
+      end
+
+      def client_secret
+        :client_secret
+      end
     end
   end
 
@@ -101,7 +115,7 @@ RSpec.describe GetOAuth2Token, type: :interactor do
   end
 
   context 'when parsing stored token fails' do
-    before { Redis.current.set(:dummy_token_authentication, "not a valid JSON") }
+    before { Redis.current.set(:dummy_token_authentication, 'not a valid JSON') }
 
     it { is_expected.to be_a_success }
     its(:errors) { is_expected.to be_empty }
@@ -127,17 +141,26 @@ RSpec.describe GetOAuth2Token, type: :interactor do
     let(:response_body_from_sentry) do
       {
         reasons: [{
-          language: "fr",
-          message: "Erreur technique"
+          language: 'fr',
+          message: 'Erreur technique'
         }],
         details: {
-          msgId: "Id-8b87ee5fc10471b6cacf9ad1"
+          msgId: 'Id-8b87ee5fc10471b6cacf9ad1'
         }
       }
     end
-
-    it { is_expected.to be_a_failure }
-    its(:errors) { is_expected.to include(instance_of(ProviderAuthenticationError))}
+    # rescue needs to match a TypeError instance that doubles are not
+    # so we need a 'real' error and this one is quite anoying to create
+    let(:oauth2_error) do
+      OAuth2::Error.new(
+        OAuth2::Response.new(
+          Faraday::Response.new(
+            response_headers: {},
+            body: response_body_from_sentry.to_json
+          )
+        )
+      )
+    end
 
     # rescue needs to match a TypeError instance that doubles are not
     # so we need a 'real' error and this one is quite anoying to create
@@ -156,6 +179,9 @@ RSpec.describe GetOAuth2Token, type: :interactor do
       allow(OAuth2::Client).to receive(:new).and_return(dummy_client)
       allow(dummy_client).to receive(:get_token).and_raise(oauth2_error)
     end
+
+    it { is_expected.to be_a_failure }
+    its(:errors) { is_expected.to include(instance_of(ProviderAuthenticationError)) }
 
     it 'sends a message to Sentry' do
       expect(MonitoringService.instance)

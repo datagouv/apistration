@@ -3,7 +3,7 @@ class SIADE::V2::Requests::Generic
   include ActiveModel::Model
   include SIADE::V2::Utilities::UnprocessableEntityHelpers
 
-  attr_reader :raw_response
+  attr_reader :raw_response, :response
 
   def valid?
     fail 'should implement valid?, it s checked in generic driver'
@@ -19,10 +19,6 @@ class SIADE::V2::Requests::Generic
 
   def body
     @response.body
-  end
-
-  def response
-    @response
   end
 
   def perform
@@ -97,19 +93,18 @@ class SIADE::V2::Requests::Generic
   end
 
   def call_api
-    # TODO refactor, mutualise with RestClient errors ?
-    begin
-      try_call_api
-    rescue Net::OpenTimeout, Net::ReadTimeout, EOFError => e
-      @response = SIADE::V2::Responses::TimeoutError.new(provider_name, e)
-    rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EHOSTUNREACH => e
-      @response = SIADE::V2::Responses::ServiceUnavailable.new(provider_name, e)
-    rescue SocketError => e
-      if dns_lookup_errors_string.any? { |error_message| e.message.include?(error_message) }
-        @response = SIADE::V2::Responses::DnsResolutionError.new(provider_name)
-      else
-        raise
-      end
+    # TODO: refactor, mutualise with RestClient errors ?
+
+    try_call_api
+  rescue Net::OpenTimeout, Net::ReadTimeout, EOFError => e
+    @response = SIADE::V2::Responses::TimeoutError.new(provider_name, e)
+  rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EHOSTUNREACH => e
+    @response = SIADE::V2::Responses::ServiceUnavailable.new(provider_name, e)
+  rescue SocketError => e
+    if dns_lookup_errors_string.any? { |error_message| e.message.include?(error_message) }
+      @response = SIADE::V2::Responses::DnsResolutionError.new(provider_name)
+    else
+      raise
     end
   end
 
@@ -118,7 +113,7 @@ class SIADE::V2::Requests::Generic
   end
 
   def net_http_get_call
-    PerformanceMonitoringService.instance.track(op: :net_http_all, description: "whole get call + TLS stuff") do
+    PerformanceMonitoringService.instance.track(op: :net_http_all, description: 'whole get call + TLS stuff') do
       @raw_response = Net::HTTP.start(request_uri.host, request_uri.port, net_http_options) do |http|
         request = Net::HTTP::Get.new(build_request)
         set_headers(request)
@@ -156,8 +151,8 @@ class SIADE::V2::Requests::Generic
 
   def rest_client_get_call
     rest_call_with_rescue_routine do
-      @raw_response = RestClient::Resource.new(request_uri.to_s, all_rest_client_options).
-        get(params: request_params)
+      @raw_response = RestClient::Resource.new(request_uri.to_s, all_rest_client_options)
+        .get(params: request_params)
 
       @response = response_wrapper.new(raw_response)
     end
@@ -165,31 +160,29 @@ class SIADE::V2::Requests::Generic
 
   def rest_client_post_call
     rest_call_with_rescue_routine do
-      @raw_response = RestClient::Resource.new(request_uri.to_s, all_rest_client_options).
-        post(request_params)
+      @raw_response = RestClient::Resource.new(request_uri.to_s, all_rest_client_options)
+        .post(request_params)
 
       @response = response_wrapper.new(raw_response)
     end
   end
 
   def rest_call_with_rescue_routine
-    begin
-      yield
-    rescue RestClient::ResourceNotFound
-      @response = SIADE::V2::Responses::ResourceNotFound.new(provider_name)
-    rescue RestClient::InternalServerError => e
-      @response = SIADE::V2::Responses::InternalServerError.new(provider_name, e)
-    rescue RestClient::RequestTimeout => e
-      @response = SIADE::V2::Responses::TimeoutError.new(provider_name, e)
-    rescue RestClient::ServiceUnavailable
-      @response = SIADE::V2::Responses::ServiceUnavailable.new(provider_name, e)
-    rescue RestClient::Forbidden, RestClient::Exception => e
-      @response = SIADE::V2::Responses::UnexpectedError.new(provider_name, e)
-    end
+    yield
+  rescue RestClient::ResourceNotFound
+    @response = SIADE::V2::Responses::ResourceNotFound.new(provider_name)
+  rescue RestClient::InternalServerError => e
+    @response = SIADE::V2::Responses::InternalServerError.new(provider_name, e)
+  rescue RestClient::RequestTimeout => e
+    @response = SIADE::V2::Responses::TimeoutError.new(provider_name, e)
+  rescue RestClient::ServiceUnavailable
+    @response = SIADE::V2::Responses::ServiceUnavailable.new(provider_name, e)
+  rescue RestClient::Forbidden, RestClient::Exception => e
+    @response = SIADE::V2::Responses::UnexpectedError.new(provider_name, e)
   end
 
   def set_error_message_for(status)
-    self.send("set_error_message_#{status}")
+    send("set_error_message_#{status}")
     @http_code = status
   end
 
@@ -225,7 +218,7 @@ class SIADE::V2::Requests::Generic
       'getaddrinfo: nodename nor servname provided, or not known',
       'getaddrinfo: No address associated with hostname',
       'getaddrinfo: Name or service not known',
-      'getaddrinfo: Temporary failure in name resolution',
+      'getaddrinfo: Temporary failure in name resolution'
     ]
   end
 end

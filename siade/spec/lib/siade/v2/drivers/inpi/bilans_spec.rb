@@ -21,15 +21,15 @@ RSpec.describe SIADE::V2::Drivers::INPI::Bilans, type: :provider_driver do
 
       it 'has a valid payload' do
         expect(subject).to include(
-          id_fichier:           Integer,
-          siren:                String,
+          id_fichier: Integer,
+          siren: String,
           denomination_sociale: nil,
-          code_greffe:          Integer,
-          date_depot:           String,
-          nature_archive:       a_string_matching(/(B-C|B-S|B-CO|B-BA)/),
-          confidentiel:         be_between(0, 2),
-          date_cloture:         String,
-          numero_gestion:       String
+          code_greffe: Integer,
+          date_depot: String,
+          nature_archive: a_string_matching(/(B-C|B-S|B-CO|B-BA)/),
+          confidentiel: be_between(0, 2),
+          date_cloture: String,
+          numero_gestion: String
         )
       end
     end
@@ -39,15 +39,15 @@ RSpec.describe SIADE::V2::Drivers::INPI::Bilans, type: :provider_driver do
 
       it 'has expected payload' do
         expect(subject).to include(
-          id_fichier:           12413137,
-          siren:                '542065479',
+          id_fichier: 12_413_137,
+          siren: '542065479',
           denomination_sociale: nil,
-          code_greffe:          7803,
-          date_depot:           '20180816',
-          nature_archive:       'B-S',
-          confidentiel:         0,
-          date_cloture:         '2017-12-31T00:00:00.000Z',
-          numero_gestion:       '1999B00360'
+          code_greffe: 7803,
+          date_depot: '20180816',
+          nature_archive: 'B-S',
+          confidentiel: 0,
+          date_cloture: '2017-12-31T00:00:00.000Z',
+          numero_gestion: '1999B00360'
         )
       end
     end

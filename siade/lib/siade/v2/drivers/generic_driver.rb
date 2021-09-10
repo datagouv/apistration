@@ -55,13 +55,13 @@ class SIADE::V2::Drivers::GenericDriver
   protected
 
   def placeholder
-   'Donnée indisponible'
+    'Donnée indisponible'
   end
 
   def default_to_nil(method = nil)
     yield
-  rescue => error
-    track_missing_data(method, error)
+  rescue StandardError => e
+    track_missing_data(method, e)
     set_partial_content_error!(method) if success?
     placeholder_to_nil ? nil : placeholder
   end
@@ -92,7 +92,7 @@ class SIADE::V2::Drivers::GenericDriver
   end
 
   def set_error_message_for(status)
-    self.send("set_error_message_#{status}")
+    send("set_error_message_#{status}")
     @http_code = status
   end
 

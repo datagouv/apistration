@@ -4,11 +4,25 @@ RSpec.describe SIADE::V3::OAuth2::AbstractTokenProvider do
   before(:all) do
     DummyTokenProvider = Class.new do
       include SIADE::V3::OAuth2::AbstractTokenProvider
-      def client_get_token_params; { params: :params }; end
-      def client_options; {}; end
-      def access_token_options; {}; end
-      def client_id; :client_id; end
-      def client_secret; :client_secret; end
+      def client_get_token_params
+        { params: :params }
+      end
+
+      def client_options
+        {}
+      end
+
+      def access_token_options
+        {}
+      end
+
+      def client_id
+        :client_id
+      end
+
+      def client_secret
+        :client_secret
+      end
     end
   end
 
@@ -16,10 +30,10 @@ RSpec.describe SIADE::V3::OAuth2::AbstractTokenProvider do
   let(:dummy_token) { OAuth2::AccessToken.from_hash(dummy_client, token_hash) }
   let(:token_hash) do
     {
-      grant_type:   'client_credentials',
+      grant_type: 'client_credentials',
       access_token: 'This is a dummy token from client',
-      expires_at:   10.seconds.since.to_i,
-      token_type:   'Bearer'
+      expires_at: 10.seconds.since.to_i,
+      token_type: 'Bearer'
     }
   end
 
@@ -47,8 +61,8 @@ RSpec.describe SIADE::V3::OAuth2::AbstractTokenProvider do
   context 'when the token is stored in Redis' do
     let(:token_redis) do
       {
-        expires_at:   expires_at,
-        token_type:   'Bearer',
+        expires_at: expires_at,
+        token_type: 'Bearer',
         access_token: 'This is an access token from Redis'
       }
     end
@@ -93,7 +107,7 @@ RSpec.describe SIADE::V3::OAuth2::AbstractTokenProvider do
   end
 
   context 'when parsing stored token fails' do
-    before { Redis.current.set(:dummy, "not a valid JSON") }
+    before { Redis.current.set(:dummy, 'not a valid JSON') }
 
     its(:token) { is_expected.to eq 'This is a dummy token from client' }
 
@@ -116,11 +130,11 @@ RSpec.describe SIADE::V3::OAuth2::AbstractTokenProvider do
     let(:response_body_from_sentry) do
       {
         reasons: [{
-          language: "fr",
-          message:  "Erreur technique"
+          language: 'fr',
+          message: 'Erreur technique'
         }],
         details: {
-          msgId: "Id-8b87ee5fc10471b6cacf9ad1"
+          msgId: 'Id-8b87ee5fc10471b6cacf9ad1'
         }
       }
     end
@@ -132,7 +146,7 @@ RSpec.describe SIADE::V3::OAuth2::AbstractTokenProvider do
         OAuth2::Response.new(
           Faraday::Response.new(
             response_headers: {},
-            body:             response_body_from_sentry.to_json
+            body: response_body_from_sentry.to_json
           )
         )
       )

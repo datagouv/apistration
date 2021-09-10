@@ -7,7 +7,7 @@ class API::V2::CertificatsAgenceBIOController < API::V2::BaseController
 
     if retrieve_certificats_bio.success?
       response_data = retrieve_certificats_bio.filtered_certifications_data
-      render json: response_data,  status: retrieve_certificats_bio.http_code
+      render json: response_data, status: retrieve_certificats_bio.http_code
     else
       render_errors(retrieve_certificats_bio)
     end

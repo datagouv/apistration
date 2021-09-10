@@ -47,11 +47,11 @@ RSpec.describe SIADE::V2::Drivers::GenericDriver do
   describe 'Placeholder' do
     subject { fake_driver_no_placeholder.new }
 
-    it 'should return the correct value when driver works correctly and no placeholder is expected' do
+    it 'returns the correct value when driver works correctly and no placeholder is expected' do
       expect(subject.info_success).to eq('correct_value')
     end
 
-    it 'should not return a placeholder (null is OK) when driver fails' do
+    it 'does not return a placeholder (null is OK) when driver fails' do
       expect(subject.info_fail_no_placeholder).to be_nil
     end
 
@@ -59,7 +59,7 @@ RSpec.describe SIADE::V2::Drivers::GenericDriver do
       it 'tracks missing data' do
         expect(MonitoringService.instance).to receive(:track_missing_data).with(
           :info_fail_no_placeholder,
-          instance_of(NameError),
+          instance_of(NameError)
         )
 
         subject.info_fail_no_placeholder
@@ -69,7 +69,8 @@ RSpec.describe SIADE::V2::Drivers::GenericDriver do
 
   context 'when a placeholder is expected' do
     subject { fake_driver_placeholder.new }
-    it 'should return the placeholder' do
+
+    it 'returns the placeholder' do
       expect(subject.info_fail_placeholder).to eq(SIADE::V2::Drivers::GenericDriver.new.send(:placeholder))
     end
   end

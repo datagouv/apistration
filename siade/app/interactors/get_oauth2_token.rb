@@ -75,7 +75,7 @@ class GetOAuth2Token < ApplicationInteractor
 
   def token_from_provider
     client.get_token(client_get_token_params, access_token_options)
-          .tap(&method(:save_to_redis))
+      .tap(&method(:save_to_redis))
   rescue OAuth2::Error => e
     message = "Error while retrieving #{self.class.name} OAuth2 JSON token from provider (#{e.class} #{e.message}))"
 

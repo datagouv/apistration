@@ -1,4 +1,16 @@
 RSpec.describe SIADE::V2::Requests::LiassesFiscalesDGFIP, type: :provider_request do
+  subject do
+    described_class.new(
+      {
+        siren: siren,
+        annee: year,
+        cookie: cookie,
+        user_id: user_id,
+        request_name: request_name
+      }
+    ).perform
+  end
+
   let(:siren)   { valid_siren(:liasse_fiscale) }
   let(:year)    { 2017 }
   let(:cookie)  { valid_dgfip_cookie }
@@ -6,19 +18,7 @@ RSpec.describe SIADE::V2::Requests::LiassesFiscalesDGFIP, type: :provider_reques
 
   let(:request_name) { :declaration }
 
-  subject do
-    described_class.new(
-      {
-        siren:        siren,
-        annee:        year,
-        cookie:       cookie,
-        user_id:      user_id,
-        request_name: request_name
-      }).perform
-  end
-
   describe 'params are well formatted' do
-
     context 'with a non existent siren', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_non_existent_siren' } do
       let(:siren) { non_existent_siren }
 
@@ -39,6 +39,7 @@ RSpec.describe SIADE::V2::Requests::LiassesFiscalesDGFIP, type: :provider_reques
       its(:http_code) { is_expected.to eq(200) }
       its(:errors) { is_expected.to be_empty }
       its(:response) { is_expected.to be_a_kind_of(SIADE::V2::Responses::LiassesFiscalesDGFIP) }
+
       it 'has a correct response body' do
         expect(JSON.parse(subject.response.body)).to match_json_schema('liasse_fiscale_declaration')
       end
@@ -50,6 +51,7 @@ RSpec.describe SIADE::V2::Requests::LiassesFiscalesDGFIP, type: :provider_reques
       its(:http_code) { is_expected.to eq(200) }
       its(:errors) { is_expected.to be_empty }
       its(:response) { is_expected.to be_a_kind_of(SIADE::V2::Responses::LiassesFiscalesDGFIP) }
+
       it 'has a correct response body' do
         expect(JSON.parse(subject.response.body)).to match_json_schema('liasse_fiscale_dictionary')
       end
@@ -59,11 +61,12 @@ RSpec.describe SIADE::V2::Requests::LiassesFiscalesDGFIP, type: :provider_reques
       subject do
         described_class.new(
           {
-            annee:        year,
-            cookie:       cookie,
-            user_id:      user_id,
+            annee: year,
+            cookie: cookie,
+            user_id: user_id,
             request_name: request_name
-          }).perform
+          }
+        ).perform
       end
 
       let(:request_name) { :dictionary }
@@ -71,11 +74,11 @@ RSpec.describe SIADE::V2::Requests::LiassesFiscalesDGFIP, type: :provider_reques
       its(:http_code) { is_expected.to eq(200) }
       its(:errors) { is_expected.to be_empty }
       its(:response) { is_expected.to be_a_kind_of(SIADE::V2::Responses::LiassesFiscalesDGFIP) }
+
       it 'has a correct response body' do
         expect(JSON.parse(subject.response.body)).to match_json_schema('liasse_fiscale_dictionary')
       end
     end
-
   end
 
   describe 'one param is not well formatted' do

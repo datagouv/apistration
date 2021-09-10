@@ -18,7 +18,5 @@ class Documents::ValidateFormat < ApplicationInteractor
     @mime ||= Marcel::MimeType.for(context.content)
   end
 
-  def errors
-    context.errors
-  end
+  delegate :errors, to: :context
 end

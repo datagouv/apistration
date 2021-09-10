@@ -18,7 +18,7 @@ RSpec.describe SIADE::V2::Requests::CotisationsMSA, type: :provider_request do
   describe 'unprocessable entity', vcr: { cassette_name: 'cotisations_msa_unprocessable_entity' } do
     let(:siret) { '81104725700019' }
 
-    its(:http_code) { should eq(502) }
+    its(:http_code) { is_expected.to eq(502) }
     its(:errors) { is_expected.not_to be_empty }
   end
 end

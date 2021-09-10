@@ -1,7 +1,7 @@
 class BadRequestError < ApplicationError
   attr_reader :message
 
-  def initialize(message=nil)
+  def initialize(message = nil)
     @message = message
   end
 

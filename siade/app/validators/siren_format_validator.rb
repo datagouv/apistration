@@ -5,15 +5,11 @@ class SirenFormatValidator < ActiveModel::EachValidator
   end
 
   def validate_length_and_digits_only(record, attribute, value)
-    unless value =~ /\A\d{9}\z/
-      record.errors.add(attribute, :format, message: '9 digits only')
-    end
+    record.errors.add(attribute, :format, message: '9 digits only') unless value =~ /\A\d{9}\z/
   end
 
   def validate_structure(record, attribute, value)
-    unless value!= nil && valid_checksum(value)
-      record.errors.add(attribute, :checksum, message: 'must have luhn_checksum ok')
-    end
+    record.errors.add(attribute, :checksum, message: 'must have luhn_checksum ok') unless !value.nil? && valid_checksum(value)
   end
 
   private
@@ -26,7 +22,7 @@ class SirenFormatValidator < ActiveModel::EachValidator
     accum = 0
     value.reverse.each_char.map(&:to_i).each_with_index do |digit, index|
       t = index.even? ? digit : digit * 2
-      t = t - 9 if t >= 10
+      t -= 9 if t >= 10
       accum += t
     end
     accum

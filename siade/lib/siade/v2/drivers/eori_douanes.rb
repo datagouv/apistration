@@ -16,7 +16,7 @@ class SIADE::V2::Drivers::EORIDouanes < SIADE::V2::Drivers::GenericDriver
     @request ||= SIADE::V2::Requests::EORIDouanes.new(eori: eori)
   end
 
-  def check_response; end;
+  def check_response; end
 
   private
 

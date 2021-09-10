@@ -5,9 +5,7 @@ RSpec.describe SIADE::SelfHostedDocument::PDFDecrypt do
     subject { described_class.new(encrypted_content).call }
 
     it 'decrypts the PDF' do
-      if ENV['MOCK_CALL_SYSTEM_FOR_MEMORY_ERROR']
-        unmake_qpdf_call_safe_on_memory_error!
-      end
+      unmake_qpdf_call_safe_on_memory_error! if ENV['MOCK_CALL_SYSTEM_FOR_MEMORY_ERROR']
 
       begin
         expect(subject).not_to include('Encrypt')
@@ -28,12 +26,10 @@ RSpec.describe SIADE::SelfHostedDocument::PDFDecrypt do
       let(:monitoring_service) { double('MonitoringService', track: nil) }
 
       before do
-        if ENV['MOCK_CALL_SYSTEM_FOR_MEMORY_ERROR']
-          unmake_qpdf_call_safe_on_memory_error!
-        end
+        unmake_qpdf_call_safe_on_memory_error! if ENV['MOCK_CALL_SYSTEM_FOR_MEMORY_ERROR']
 
         allow_any_instance_of(described_class).to receive(:command).and_return(
-          'qpdf lol_ oki_',
+          'qpdf lol_ oki_'
         )
         allow(MonitoringService).to receive(:instance).and_return(monitoring_service)
       end
@@ -46,8 +42,8 @@ RSpec.describe SIADE::SelfHostedDocument::PDFDecrypt do
           "PDF Decrypt fail to execute 'qpdf lol_ oki_'",
           {
             exit_status: 2,
-            stderr: 'open lol_: No such file or directory',
-          },
+            stderr: 'open lol_: No such file or directory'
+          }
         )
       rescue Errno::ENOMEM
         print "Memory error, skipping test\n"

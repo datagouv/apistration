@@ -20,6 +20,6 @@ class SIADE::V2::Responses::ConventionsCollectives < SIADE::V2::Responses::Gener
   end
 
   def error_404?
-    response_json["conventions"].empty?
+    response_json['conventions'].empty?
   end
 end

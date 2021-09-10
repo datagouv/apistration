@@ -30,7 +30,7 @@ RSpec.describe SIADE::V3::Referentials::ActivitePrincipale do
     it 'logs a deprecated data through MonitoringService' do
       expect(MonitoringService.instance).to receive(:track_deprecated_data).with(
         nomenclature,
-        code,
+        code
       )
 
       subject.libelle
@@ -52,7 +52,7 @@ RSpec.describe SIADE::V3::Referentials::ActivitePrincipale do
     it 'logs a deprecated data through MonitoringService' do
       expect(MonitoringService.instance).to receive(:track_deprecated_data).with(
         nomenclature,
-        code,
+        code
       )
 
       subject.libelle

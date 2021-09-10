@@ -1,8 +1,6 @@
 class ValidateAttributePresence < ValidateParamInteractor
   def call
-    if param(attribute.to_sym).blank?
-      invalid_param!(attribute)
-    end
+    invalid_param!(attribute) if param(attribute.to_sym).blank?
   end
 
   protected

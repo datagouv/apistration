@@ -4,7 +4,7 @@ module SIADE::V3::Referentials::DeprecatedDataTrackable
   def track_deprecated_data(field, deprecated_data)
     MonitoringService.instance.track_deprecated_data(
       field,
-      deprecated_data,
+      deprecated_data
     )
   end
 end

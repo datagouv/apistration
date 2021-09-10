@@ -12,8 +12,8 @@ class API::V2::DocumentsAssociationsController < API::V2::BaseController
       @documents.clean_and_rehost!
 
       render json: {
-        documents:                   @documents.payload_collection,
-        nombre_documents:            @documents.payload_collection.size,
+        documents: @documents.payload_collection,
+        nombre_documents: @documents.payload_collection.size,
         nombre_documents_deficients: @documents.nombre_documents_deficients
       }, status: extract_best_http_status(@documents, retrieve_documents_asso.http_code)
     else

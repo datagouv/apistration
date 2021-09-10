@@ -1,9 +1,9 @@
 RSpec.describe SIADE::V3::Requests::INSEE::Etablissement, type: :provider_request do
-  before { allow_any_instance_of(RenewINSEETokenService).to receive(:current_token_expired?).and_return(false) }
-
   subject { described_class.new(siret).tap(&:perform) }
 
-  it 'try to renew INSEE token', vcr: { cassette_name: 'api_insee_fr/siret/active_GE' }  do
+  before { allow_any_instance_of(RenewINSEETokenService).to receive(:current_token_expired?).and_return(false) }
+
+  it 'try to renew INSEE token', vcr: { cassette_name: 'api_insee_fr/siret/active_GE' } do
     expect_any_instance_of(RenewINSEETokenService).to receive(:call).once
     described_class.new(sirets_insee_v3[:active_GE]).tap(&:perform)
   end
@@ -33,11 +33,11 @@ RSpec.describe SIADE::V3::Requests::INSEE::Etablissement, type: :provider_reques
       its(:errors) { is_expected.to have_error('Le siren ou siret demandé est une entité pour laquelle aucun organisme ne peut avoir accès.') }
     end
 
-    describe 'entrepreneur individuel ceased', vcr: { cassette_name: 'api_insee_fr/siret/non_diffusable_ceased'} do
+    describe 'entrepreneur individuel ceased', vcr: { cassette_name: 'api_insee_fr/siret/non_diffusable_ceased' } do
       it_behaves_like 'confidential siret returns 451', :non_diffusable_ceased
     end
 
-    describe 'gendarmerie Limousin', vcr: { cassette_name: 'api_insee_fr/siret/gendarmerie_limousin'} do
+    describe 'gendarmerie Limousin', vcr: { cassette_name: 'api_insee_fr/siret/gendarmerie_limousin' } do
       it_behaves_like 'confidential siret returns 451', :gendarmerie_limousin
     end
   end

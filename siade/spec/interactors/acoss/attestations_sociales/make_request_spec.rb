@@ -5,7 +5,7 @@ RSpec.describe ACOSS::AttestationsSociales::MakeRequest, type: :make_request do
     {
       siren: siren,
       user_id: user_id,
-      recipient: recipient,
+      recipient: recipient
     }
   end
 

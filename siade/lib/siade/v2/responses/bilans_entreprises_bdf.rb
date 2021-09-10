@@ -1,5 +1,4 @@
 class SIADE::V2::Responses::BilansEntreprisesBDF < SIADE::V2::Responses::Generic
-
   def body
     @decrypted_body ||= Zlib::GzipReader.new(StringIO.new(@body)).read
   rescue Zlib::GzipFile::Error
@@ -35,7 +34,7 @@ class SIADE::V2::Responses::BilansEntreprisesBDF < SIADE::V2::Responses::Generic
     if body
       JSON.parse(body)
     else
-      { }
+      {}
     end
   end
 

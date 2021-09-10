@@ -65,7 +65,7 @@ class SIADE::V2::Requests::AttestationsFiscalesDGFIP < SIADE::V2::Requests::Gene
   end
 
   def valid_siren_is?
-    is_valid_siren_is = siren_is.nil?  || Siren.new(siren_is).valid?
+    is_valid_siren_is = siren_is.nil? || Siren.new(siren_is).valid?
     set_error_message_siren_is unless is_valid_siren_is
     is_valid_siren_is
   end
@@ -77,17 +77,16 @@ class SIADE::V2::Requests::AttestationsFiscalesDGFIP < SIADE::V2::Requests::Gene
   end
 
   def valid_information?
-    is_valid_information = (not informations.nil?) && informations.valid?
+    is_valid_information = !informations.nil? && informations.valid?
     set_error_message_interne unless is_valid_information
     is_valid_information
   end
 
   def valid_cookie?
-    is_valid_cookie = cookie.nil? || !!(cookie =~ /^lemondgfip=.{65}; domain=.dgfip.finances.gouv.fr; path=\//)
+    is_valid_cookie = cookie.nil? || !!(cookie =~ %r{^lemondgfip=.{65}; domain=.dgfip.finances.gouv.fr; path=/})
     set_error_message_cookie unless is_valid_cookie
     is_valid_cookie
   end
-
 
   def set_error_message_siren
     (@errors ||= []) << UnprocessableEntityError.new(:siren)

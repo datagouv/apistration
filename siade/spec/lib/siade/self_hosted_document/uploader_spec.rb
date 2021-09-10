@@ -1,7 +1,6 @@
 RSpec.describe SIADE::SelfHostedDocument::Uploader do
-
   let(:pdf_content) { open_payload_file('pdf/dummy.pdf') }
-  let(:pdf_filename)   { 'random.lol' }
+  let(:pdf_filename) { 'random.lol' }
 
   describe '#url' do
     subject do

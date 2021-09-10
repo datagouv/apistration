@@ -21,9 +21,9 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
     let(:hosted_doc) { ExampleFileType::PNG.new(file_label) }
 
     describe '#store_from_binary' do
-      let(:bin) { 'very binary' }
-
       subject(:store!) { hosted_doc.store_from_binary(bin) }
+
+      let(:bin) { 'very binary' }
 
       it 'calls the uploader component with the binary content' do
         expect(SIADE::SelfHostedDocument::Uploader)
@@ -66,7 +66,7 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
         subject(:store!) { hosted_doc.store_from_base64('THIS IS F@KE!') }
 
         it 'does not upload the content' do
-          expect(SIADE::SelfHostedDocument::Uploader).to_not receive(:call)
+          expect(SIADE::SelfHostedDocument::Uploader).not_to receive(:call)
 
           store!
         end
@@ -102,7 +102,7 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
         end
 
         it 'does not upload the content' do
-          expect(SIADE::SelfHostedDocument::Uploader).to_not receive(:call)
+          expect(SIADE::SelfHostedDocument::Uploader).not_to receive(:call)
 
           store!
         end
@@ -118,7 +118,7 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
         end
 
         it 'does not upload the content' do
-          expect(SIADE::SelfHostedDocument::Uploader).to_not receive(:call)
+          expect(SIADE::SelfHostedDocument::Uploader).not_to receive(:call)
 
           store!
         end
@@ -130,6 +130,10 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
   end
 
   context 'when the document has an invalid file type' do
+    # Testing with binary source as there are no extra steps like
+    # decoding or downloading the content
+    subject(:store!) { hosted_doc.store_from_binary('WRONG') }
+
     before do
       allow_any_instance_of(SIADE::SelfHostedDocument::FormatValidator)
         .to receive(:valid?).and_return(false)
@@ -137,12 +141,8 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
 
     let(:hosted_doc) { ExampleFileType::PNG.new('label') }
 
-    # Testing with binary source as there are no extra steps like
-    # decoding or downloading the content
-    subject(:store!) { hosted_doc.store_from_binary('WRONG') }
-
     it 'does not upload the content' do
-      expect(SIADE::SelfHostedDocument::Uploader).to_not receive(:call)
+      expect(SIADE::SelfHostedDocument::Uploader).not_to receive(:call)
 
       store!
     end

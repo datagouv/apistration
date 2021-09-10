@@ -16,12 +16,9 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
     class DummyRetrieverOrganizer < RetrieverOrganizer
       organize DummyRetrieverInteractor
 
-      def provider_name
-        context.provider_name
-      end
+      delegate :provider_name, to: :context
     end
   end
-
 
   describe 'provider_name method' do
     subject { DummyRetrieverOrganizer.call(provider_name: provider_name) }
@@ -30,9 +27,9 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
       let(:provider_name) { 'Invalid' }
 
       it 'raises an error' do
-        expect {
+        expect do
           subject
-        }.to raise_error(RetrieverOrganizer::InvalidProviderName)
+        end.to raise_error(RetrieverOrganizer::InvalidProviderName)
       end
     end
 
@@ -42,9 +39,9 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
       it { is_expected.to be_a_success }
 
       it 'does not raise an error' do
-        expect {
+        expect do
           subject
-        }.not_to raise_error
+        end.not_to raise_error
       end
     end
   end

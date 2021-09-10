@@ -10,28 +10,28 @@ class SIADE::V2::Adapters::AttestationsFiscalesDGFIP
 
   validates_format_of :user_id, with: /\A([^@\s]+_at_(?:[-a-z0-9]+.)+[a-z]{2,}.\w+)|(\A[a-f0-9_]+)\z/i, message: "Le user_id n'est pas correctement formatté"
 
-  validates_format_of :membre_is  , with: /MERE|FILLE/ , if: :groupe_is?
-  validates_format_of :membre_tva , with: /MERE|FILLE/ , if: :groupe_tva?
+  validates_format_of :membre_is, with: /MERE|FILLE/, if: :groupe_is?
+  validates_format_of :membre_tva, with: /MERE|FILLE/, if: :groupe_tva?
 
-  validates_format_of :groupe_tva , with: /OUI|NON/
-  validates_format_of :groupe_is  , with: /OUI|NON/, message: "Groupe IS doit valoir OUI ou NON"
+  validates_format_of :groupe_tva, with: /OUI|NON/
+  validates_format_of :groupe_is, with: /OUI|NON/, message: 'Groupe IS doit valoir OUI ou NON'
 
-  validates :user_id    , presence: true
+  validates :user_id, presence: true
 
-  validates :groupe_is  , presence: true
-  validates :groupe_tva , presence: true
+  validates :groupe_is, presence: true
+  validates :groupe_tva, presence: true
 
-  validates_length_of :code_postal_is    , maximum: 5
-  validates_length_of :ville_is          , maximum: 27
-  validates_length_of :complement_is     , maximum: 27
-  validates_length_of :raison_sociale_is , maximum: 54
-  validates_length_of :adresse_is        , maximum: 54
+  validates_length_of :code_postal_is, maximum: 5
+  validates_length_of :ville_is, maximum: 27
+  validates_length_of :complement_is, maximum: 27
+  validates_length_of :raison_sociale_is, maximum: 54
+  validates_length_of :adresse_is, maximum: 54
 
-  validates_length_of :code_postal_tva    , maximum: 5
-  validates_length_of :ville_tva          , maximum: 27
-  validates_length_of :complement_tva     , maximum: 27
-  validates_length_of :raison_sociale_tva , maximum: 54
-  validates_length_of :adresse_tva        , maximum: 54
+  validates_length_of :code_postal_tva, maximum: 5
+  validates_length_of :ville_tva, maximum: 27
+  validates_length_of :complement_tva, maximum: 27
+  validates_length_of :raison_sociale_tva, maximum: 54
+  validates_length_of :adresse_tva, maximum: 54
 
   validate :no_successor_attributes_set_for_groupe_tva_if_false
   validate :no_successor_attributes_set_for_groupe_is_if_false
@@ -67,22 +67,22 @@ class SIADE::V2::Adapters::AttestationsFiscalesDGFIP
 
   def to_raw_hash
     {
-      userId:            user_id,
-      groupeIS:          groupe_is,
-      membreIS:          membre_is,
-      code_postalIS:     code_postal_is,
-      raison_socialeIS:  raison_sociale_is,
-      adresseIS:         adresse_is,
-      villeIS:           ville_is,
-      complementIS:      complement_is,
-      groupeTVA:         groupe_tva,
-      membreTVA:         membre_tva,
-      code_postalTVA:    code_postal_tva,
+      userId: user_id,
+      groupeIS: groupe_is,
+      membreIS: membre_is,
+      code_postalIS: code_postal_is,
+      raison_socialeIS: raison_sociale_is,
+      adresseIS: adresse_is,
+      villeIS: ville_is,
+      complementIS: complement_is,
+      groupeTVA: groupe_tva,
+      membreTVA: membre_tva,
+      code_postalTVA: code_postal_tva,
       raison_socialeTVA: raison_sociale_tva,
-      adresseTVA:        adresse_tva,
-      villeTVA:          ville_tva,
-      complementTVA:     complement_tva,
-      siren:             siren
+      adresseTVA: adresse_tva,
+      villeTVA: ville_tva,
+      complementTVA: complement_tva,
+      siren: siren
     }
   end
 
@@ -95,38 +95,38 @@ class SIADE::V2::Adapters::AttestationsFiscalesDGFIP
   end
 
   def set_groupe_is
-    if not entreprise_is.nil?
-      self.groupe_is = (!!entreprise_is.siren && Siren.new(entreprise_is.siren).valid?) ? 'OUI' : 'NON'
-    else
-      self.groupe_is = 'NON'
-    end
+    self.groupe_is = if entreprise_is.nil?
+                       'NON'
+                     else
+                       !!entreprise_is.siren && Siren.new(entreprise_is.siren).valid? ? 'OUI' : 'NON'
+                     end
   end
 
   def set_groupe_tva
-    if not entreprise_tva.nil?
-      self.groupe_tva = (!!entreprise_tva.siren && Siren.new(entreprise_tva.siren).valid?) ? 'OUI' : 'NON'
-    else
-      self.groupe_tva = 'NON'
-    end
+    self.groupe_tva = if entreprise_tva.nil?
+                        'NON'
+                      else
+                        !!entreprise_tva.siren && Siren.new(entreprise_tva.siren).valid? ? 'OUI' : 'NON'
+                      end
   end
 
   def set_membre_is
     if groupe_is == 'OUI'
-      if entreprise_is.siren == siren
-        self.membre_is = 'MERE'
-      else
-        self.membre_is = 'FILLE'
-      end
+      self.membre_is = if entreprise_is.siren == siren
+                         'MERE'
+                       else
+                         'FILLE'
+                       end
     end
   end
 
   def set_membre_tva
     if groupe_tva == 'OUI'
-      if entreprise_tva.siren == siren
-        self.membre_tva = 'MERE'
-      else
-        self.membre_tva = 'FILLE'
-      end
+      self.membre_tva = if entreprise_tva.siren == siren
+                          'MERE'
+                        else
+                          'FILLE'
+                        end
     end
   end
 
@@ -181,15 +181,11 @@ class SIADE::V2::Adapters::AttestationsFiscalesDGFIP
   end
 
   def no_successor_attributes_set_for_groupe_is_if_false
-    if !groupe_is? && membre_is
-      errors.add(:membre_is, 'incoherent value since groupe_is is false')
-    end
+    errors.add(:membre_is, 'incoherent value since groupe_is is false') if !groupe_is? && membre_is
   end
 
   def no_successor_attributes_set_for_groupe_tva_if_false
-    if !groupe_tva? && membre_tva
-      errors.add(:membre_tva, 'incoherent value since groupe_tva is false')
-    end
+    errors.add(:membre_tva, 'incoherent value since groupe_tva is false') if !groupe_tva? && membre_tva
   end
 
   def no_successor_attributes_set_for_membre_is_if_mere

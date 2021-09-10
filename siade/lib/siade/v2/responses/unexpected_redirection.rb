@@ -1,6 +1,6 @@
 class SIADE::V2::Responses::UnexpectedRedirection
   attr_reader :provider_name,
-              :redirect_response
+    :redirect_response
 
   def initialize(provider_name, redirect_response)
     @provider_name = provider_name
@@ -19,7 +19,7 @@ class SIADE::V2::Responses::UnexpectedRedirection
 
   def errors
     [
-      UnexpectedRedirectionError.new(provider_name, redirect_location),
+      UnexpectedRedirectionError.new(provider_name, redirect_location)
     ]
   end
 
@@ -33,7 +33,7 @@ class SIADE::V2::Responses::UnexpectedRedirection
     MonitoringService.instance.track_provider_error_from_response(
       self,
       {
-        redirect_location: redirect_location,
+        redirect_location: redirect_location
       }
     )
   end

@@ -25,11 +25,11 @@ class BadFileFromProviderError < ApplicationError
 
   def subcode
     {
-      invalid_base64:    '051',
-      timeout_error:     '052',
-      http_error:        '053',
-      invalid_url:       '054',
-      invalid_extension: '055',
+      invalid_base64: '051',
+      timeout_error: '052',
+      http_error: '053',
+      invalid_url: '054',
+      invalid_extension: '055'
     }.fetch(@kind) do
       raise KeyError, "#{@kind} is not a valid kind name"
     end

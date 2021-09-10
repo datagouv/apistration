@@ -1,7 +1,7 @@
 RSpec.describe SIADE::V2::Responses::EORIDouanes, type: :provider_response do
-  let(:request) { SIADE::V2::Requests::EORIDouanes.new(eori: eori) }
-
   subject { request.perform.response }
+
+  let(:request) { SIADE::V2::Requests::EORIDouanes.new(eori: eori) }
 
   describe 'success', vcr: { cassette_name: 'eori/valid_eori' } do
     let(:eori) { valid_eori }
@@ -34,15 +34,15 @@ RSpec.describe SIADE::V2::Responses::EORIDouanes, type: :provider_response do
       let(:stub_response) do
         {
           status: 500,
-          body:   eori_expected_body.to_json
+          body: eori_expected_body.to_json
         }
       end
       let(:eori_expected_body) do
         {
           erreur: {
-            status:  '500',
+            status: '500',
             message: 'Internal Server Error',
-            code:    'TECH001',
+            code: 'TECH001',
             libelle: 'Erreur technique interne'
           }
         }
@@ -53,7 +53,7 @@ RSpec.describe SIADE::V2::Responses::EORIDouanes, type: :provider_response do
       end
 
       its(:http_code) { are_expected.to eq 502 }
-      its(:errors) { is_expected.to have_error("Mauvaise réponse envoyée par le fournisseur de données") }
+      its(:errors) { is_expected.to have_error('Mauvaise réponse envoyée par le fournisseur de données') }
     end
 
     context 'when it is not a valid EORI format', vcr: { cassette_name: 'eori/invalid_eori_format' } do

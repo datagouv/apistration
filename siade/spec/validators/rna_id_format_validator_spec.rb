@@ -1,12 +1,12 @@
 class RNAIdFormatValidatable
   include ActiveModel::Validations
-  attr_accessor  :rna_id
+  attr_accessor :rna_id
+
   validates :rna_id, rna_id_format: true
 end
 
 RSpec.describe RNAIdFormatValidator do
-
-  subject{ RNAIdFormatValidatable.new }
+  subject { RNAIdFormatValidatable.new }
 
   it 'validates rna_id that has a W and 9 digits' do
     subject.rna_id = 'W123456789'
@@ -20,7 +20,7 @@ RSpec.describe RNAIdFormatValidator do
   end
 
   it 'validates boring rna id...' do
-    rna_ids = ["0714000529", "0802008849", "0792002235", "0092001582", "0071001750"]
+    rna_ids = %w[0714000529 0802008849 0792002235 0092001582 0071001750]
     rna_ids.each do |id|
       subject.rna_id = id
       expect(subject).to be_valid
@@ -33,5 +33,4 @@ RSpec.describe RNAIdFormatValidator do
     expect(subject).not_to be_valid
     expect(subject.errors.messages[:rna_id]).to include('W followed by 9 digits only')
   end
-
 end

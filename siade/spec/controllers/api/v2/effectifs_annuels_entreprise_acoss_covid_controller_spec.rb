@@ -1,10 +1,9 @@
 RSpec.describe API::V2::EffectifsAnnuelsEntrepriseACOSSCovidController, type: :controller do
-  it_behaves_like 'unauthorized', :show
-  it_behaves_like 'ask_for_mandatory_parameters', :show
-
+  let(:token) { yes_jwt }
   let(:siren) { valid_siren }
 
-  let(:token) { yes_jwt }
+  it_behaves_like 'unauthorized', :show
+  it_behaves_like 'ask_for_mandatory_parameters', :show
 
   describe 'show' do
     subject { get :show, params: { siren: siren, token: token }.merge(mandatory_params) }
@@ -12,16 +11,16 @@ RSpec.describe API::V2::EffectifsAnnuelsEntrepriseACOSSCovidController, type: :c
     describe 'happy path' do
       let(:valid_response) do
         {
-          siren:              valid_siren,
-          annee:              '2019',
-          effectifs_mensuels: '1.00',
+          siren: valid_siren,
+          annee: '2019',
+          effectifs_mensuels: '1.00'
         }
       end
 
       before do
         stub_request(:get, "http://127.0.0.1/effectifs_annuels_entreprise/#{siren}").and_return(
           status: 200,
-          body:   valid_response.to_json,
+          body: valid_response.to_json
         )
       end
 
@@ -38,7 +37,7 @@ RSpec.describe API::V2::EffectifsAnnuelsEntrepriseACOSSCovidController, type: :c
       let(:timeout_error) do
         [
           Net::OpenTimeout,
-          Net::ReadTimeout,
+          Net::ReadTimeout
         ].sample
       end
 
@@ -52,7 +51,7 @@ RSpec.describe API::V2::EffectifsAnnuelsEntrepriseACOSSCovidController, type: :c
 
       it 'has an error body' do
         expect(JSON.parse(subject.body)).to have_json_error(
-          detail: 'Le service intermédiaire n\'a pas répondu',
+          detail: 'Le service intermédiaire n\'a pas répondu'
         )
       end
     end

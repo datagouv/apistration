@@ -20,7 +20,7 @@ RSpec::Matchers.define :have_error do |expected|
       errors = actual.map(&:as_json)
       message +
         "Errors messages: #{errors.map(&:inspect).join(', ')}"
-    rescue => e
+    rescue StandardError => e
       "#{actual.inspect} is not an array. (exception: #{e.inspect})"
     end
   end

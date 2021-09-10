@@ -3,7 +3,7 @@ RSpec.describe HasMandatoryParams do
     include HasMandatoryParams
 
     def index
-      render json: {}, status: 200
+      render json: {}, status: :ok
     end
   end
 
@@ -13,13 +13,12 @@ RSpec.describe HasMandatoryParams do
       assert_response 422
     end
 
-
     it 'returns 422 when empty param' do
       get :index, params: { context: 'MPS', recipient: '', object: 'MPS_ID_2' }
       assert_response 422
     end
 
-    it 'should log' do
+    it 'logs' do
       expect(UserAccessSpy).to receive(:log_not_acceptable)
       get :index, params: { context: 'MPS', recipient: '78951073200017', object: '' }
     end

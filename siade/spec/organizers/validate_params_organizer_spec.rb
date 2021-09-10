@@ -16,7 +16,7 @@ RSpec.describe ValidateParamsOrganizer, type: :organizer do
       end
 
       organize ValidateSiren,
-               DummyValidateAttributePresence
+        DummyValidateAttributePresence
     end
   end
 
@@ -26,7 +26,7 @@ RSpec.describe ValidateParamsOrganizer, type: :organizer do
     let(:params) do
       {
         siren: siren,
-        month: dummy,
+        month: dummy
       }.compact
     end
 

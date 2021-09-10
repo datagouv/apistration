@@ -4,7 +4,7 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite, :self_hosted_doc do
 
     let(:params) do
       {
-        siret: siret,
+        siret: siret
       }
     end
 
@@ -43,7 +43,8 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite, :self_hosted_doc do
         stub_request(:post, url)
           .with(
             body: { corps: siret }.to_json,
-            headers: { 'Content-Type' => 'application/json' })
+            headers: { 'Content-Type' => 'application/json' }
+          )
           .to_return(stubbed_response)
       end
 
@@ -56,7 +57,7 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite, :self_hosted_doc do
       end
 
       context 'when there is an internal error from PROBTP (expected JSON error)' do
-        let(:mocked_body) { "{\"entete\":{\"code\":\"4\",\"message\":\"Une erreur est survenue, merci de bien vouloir renouveler votre demande ultérieurement\"}}" }
+        let(:mocked_body) { '{"entete":{"code":"4","message":"Une erreur est survenue, merci de bien vouloir renouveler votre demande ultérieurement"}}' }
 
         it { is_expected.to be_a_failure }
 
@@ -64,7 +65,7 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite, :self_hosted_doc do
       end
 
       context 'NON-REGRESSION - when there is an internal error from PROBTP (unexpected error body)' do
-        let(:mocked_body) { "<H1>SRVE0255E: A WebGroup/Virtual Host to handle /ws_ext/rest/certauth/mpsservices/getAttestationCotisation has not been defined.</H1><BR>H3><SRVE0255E: A WebGroup/Virtual Host to handle partenaires.webservices.probtp.com:443 has not been defined./H3><BR>" }
+        let(:mocked_body) { '<H1>SRVE0255E: A WebGroup/Virtual Host to handle /ws_ext/rest/certauth/mpsservices/getAttestationCotisation has not been defined.</H1><BR>H3><SRVE0255E: A WebGroup/Virtual Host to handle partenaires.webservices.probtp.com:443 has not been defined./H3><BR>' }
 
         it { is_expected.to be_a_failure }
 

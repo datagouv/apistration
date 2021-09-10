@@ -9,7 +9,7 @@ class SIADE::V2::Drivers::Exercices < SIADE::V2::Drivers::GenericDriver
   end
 
   def provider_name
-    "DGFIP"
+    'DGFIP'
   end
 
   def request
@@ -23,10 +23,10 @@ class SIADE::V2::Drivers::Exercices < SIADE::V2::Drivers::GenericDriver
   end
 
   def liste_ca_raw
-    if exercice_information["liste_ca"].is_a? Array
-      add_timestamp exercice_information["liste_ca"]
+    if exercice_information['liste_ca'].is_a? Array
+      add_timestamp exercice_information['liste_ca']
     else
-      add_timestamp ([] << exercice_information["liste_ca"])
+      add_timestamp([] << exercice_information['liste_ca'])
     end
   end
 
@@ -34,7 +34,7 @@ class SIADE::V2::Drivers::Exercices < SIADE::V2::Drivers::GenericDriver
 
   def add_timestamp(ca_liste)
     ca_liste.each do |e|
-      e["date_fin_exercice_timestamp"] = date_to_timestamp(e["date_fin_exercice"])
+      e['date_fin_exercice_timestamp'] = date_to_timestamp(e['date_fin_exercice'])
     end
   end
 

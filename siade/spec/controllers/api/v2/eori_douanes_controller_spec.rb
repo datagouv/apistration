@@ -4,11 +4,11 @@ RSpec.describe API::V2::EORIDouanesController, type: :controller do
   it_behaves_like 'ask_for_mandatory_parameters', :show, siret_or_eori: valid_siret
 
   describe 'valid mandatory_params & tokens' do
-    let(:token) { yes_jwt }
-
     subject do
       get :show, params: { siret_or_eori: siret_or_eori, token: token }.merge(mandatory_params)
     end
+
+    let(:token) { yes_jwt }
 
     context 'with an invalid EORI' do
       let(:siret_or_eori) { invalid_eori }
@@ -25,7 +25,7 @@ RSpec.describe API::V2::EORIDouanesController, type: :controller do
     end
 
     context 'with a non existing EORI', vcr: { cassette_name: 'eori/non_existing_eori' } do
-      let(:siret_or_eori)  { non_existing_eori }
+      let(:siret_or_eori) { non_existing_eori }
 
       its(:status) { is_expected.to eq(404) }
 
@@ -33,28 +33,28 @@ RSpec.describe API::V2::EORIDouanesController, type: :controller do
         subject
         expect(response_json)
           .to have_json_error(
-            detail: 'Le numéro EORI indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel',
+            detail: 'Le numéro EORI indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel'
           )
       end
     end
 
     describe 'happy path', vcr: { cassette_name: 'eori/valid_eori' } do
       context 'with a valid EORI' do
-        let(:siret_or_eori)  { valid_eori }
+        let(:siret_or_eori) { valid_eori }
 
         its(:status) { is_expected.to eq(200) }
 
         it 'returns a valid payload' do
           subject
           expect(response_json).to include(
-            numero_eori:    'FR16002307300010',
-            actif:          true,
+            numero_eori: 'FR16002307300010',
+            actif: true,
             raison_sociale: 'CENTRE INFORMATIQUE DOUANIER',
-            rue:            '27 R DES BEAUX SOLEILS',
-            code_postal:    '95520',
-            ville:          'OSNY',
-            pays:           'FRANCE',
-            code_pays:      'FR'
+            rue: '27 R DES BEAUX SOLEILS',
+            code_postal: '95520',
+            ville: 'OSNY',
+            pays: 'FRANCE',
+            code_pays: 'FR'
           )
         end
       end
@@ -75,7 +75,7 @@ RSpec.describe API::V2::EORIDouanesController, type: :controller do
         it 'returns a valid payload' do
           subject
           expect(response_json).to include(
-            numero_eori: 'FR16002307300010',
+            numero_eori: 'FR16002307300010'
           )
         end
       end

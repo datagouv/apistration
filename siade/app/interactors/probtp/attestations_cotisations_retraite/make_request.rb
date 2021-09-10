@@ -7,7 +7,7 @@ class PROBTP::AttestationsCotisationsRetraite::MakeRequest < MakeRequest::Post
 
   def request_params
     {
-      corps: siret,
+      corps: siret
     }
   end
 
@@ -16,7 +16,7 @@ class PROBTP::AttestationsCotisationsRetraite::MakeRequest < MakeRequest::Post
       use_ssl: true,
       verify_mode: OpenSSL::SSL::VERIFY_PEER,
       cert: cert,
-      key: key,
+      key: key
     }
   end
 

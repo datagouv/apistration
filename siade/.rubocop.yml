@@ -41,7 +41,7 @@ Metrics/BlockLength:
     - 'context'
     - 'namespace'
 
-Metrics/LineLength:
+Layout/LineLength:
   Enabled: false
 
 Metrics/MethodLength:

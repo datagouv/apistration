@@ -1,11 +1,12 @@
 RSpec.describe SIADE::V2::Requests::Exercices, type: :provider_request do
+  subject { described_class.new(siret, options).perform }
+
   let(:options) do
     {
-      cookie:  'lemondgfip=337804d37291c5ab43a5419f67a542af_047e83a53cca805e6a773d6be8ae4dbb; domain=.dgfip.finances.gouv.fr; path=/',
+      cookie: 'lemondgfip=337804d37291c5ab43a5419f67a542af_047e83a53cca805e6a773d6be8ae4dbb; domain=.dgfip.finances.gouv.fr; path=/',
       user_id: valid_dgfip_user_id
     }
   end
-  subject { described_class.new(siret, options).perform }
 
   context 'bad formated request' do
     let(:siret) { invalid_siret }
@@ -36,10 +37,9 @@ RSpec.describe SIADE::V2::Requests::Exercices, type: :provider_request do
         mocked_new_location_url = "#{Siade.credentials[:dgfip_authenticate_url]}?op=c&url=#{Base64.urlsafe_encode64("#{Siade.credentials[:dgfip_chiffres_affaires_url]}?userId=tech_at_apientreprise.fr.dev_user_id&siret=50278496000042")}"
 
         url = Siade.credentials[:dgfip_chiffres_affaires_url]
-        stub_request(:get, /#{url}/).with(headers: { 'Cookie' => options[:cookie] }
-        ).to_return(
-          status:  302,
-          body:    'whatever',
+        stub_request(:get, /#{url}/).with(headers: { 'Cookie' => options[:cookie] }).to_return(
+          status: 302,
+          body: 'whatever',
           headers: {
             'Location' => mocked_new_location_url
           }

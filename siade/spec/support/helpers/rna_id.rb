@@ -6,7 +6,6 @@ def invalid_rna_id
   'W12345678'
 end
 
-
 def non_existing_rna_id
   'W432543654'
 end

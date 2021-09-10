@@ -7,7 +7,7 @@ class API::V2::CartesProfessionnellesFNTPController < API::V2::BaseController
     retrieve_carte_pro_fntp.retrieve
 
     if retrieve_carte_pro_fntp.success?
-      render json: { url: retrieve_carte_pro_fntp.document_url },  status: retrieve_carte_pro_fntp.http_code
+      render json: { url: retrieve_carte_pro_fntp.document_url }, status: retrieve_carte_pro_fntp.http_code
     else
       render_errors(retrieve_carte_pro_fntp)
     end

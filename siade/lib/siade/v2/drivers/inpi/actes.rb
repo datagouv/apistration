@@ -31,12 +31,12 @@ class SIADE::V2::Drivers::INPI::Actes < SIADE::V2::Drivers::GenericDriver
   def build_documents_response
     json_documents.map do |document|
       {
-        id_fichier:           document[:idFichier],
-        siren:                document[:siren].to_s,
+        id_fichier: document[:idFichier],
+        siren: document[:siren].to_s,
         denomination_sociale: document[:denomonationSociale],
-        code_greffe:          document[:codeGreffe],
-        date_depot:           document[:dateDepot],
-        nature_archive:       document[:natureArchive]
+        code_greffe: document[:codeGreffe],
+        date_depot: document[:dateDepot],
+        nature_archive: document[:natureArchive]
       }
     end
   end

@@ -6,7 +6,7 @@ class API::V2::AssociationsController < API::V2::BaseController
     retrieve_association.retrieve
 
     if retrieve_association.success?
-      render json: { association: AssociationRNASerializer::V2.new(retrieve_association).as_json},  status: retrieve_association.http_code
+      render json: { association: AssociationRNASerializer::V2.new(retrieve_association).as_json }, status: retrieve_association.http_code
     else
       render_errors(retrieve_association)
     end

@@ -34,8 +34,8 @@ class SIADE::V2::Requests::CertificatsOPQIBI < SIADE::V2::Requests::Generic
 
   def net_http_options
     {
-      use_ssl:     true,
-      verify_mode: OpenSSL::SSL::VERIFY_NONE,
+      use_ssl: true,
+      verify_mode: OpenSSL::SSL::VERIFY_NONE
     }
   end
 

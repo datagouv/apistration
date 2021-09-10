@@ -1,5 +1,4 @@
 class API::V2::PrivilegesController < API::V2::BaseController
-
   skip_before_action :context_is_filled!
 
   def show
@@ -7,7 +6,7 @@ class API::V2::PrivilegesController < API::V2::BaseController
 
     render json: {
       privileges: privileges
-    }, status: 200
+    }, status: :ok
   end
 
   def privileges

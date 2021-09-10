@@ -35,9 +35,9 @@ class API::V2::UptimeController < API::V2::BaseController
 
   def query_params
     {
-      context:   'Ping',
+      context: 'Ping',
       recipient: 'DINUM',
-      object:    'Uptime'
+      object: 'Uptime'
     }
   end
 
@@ -52,7 +52,7 @@ class API::V2::UptimeController < API::V2::BaseController
 
   def request_options
     {
-      use_ssl:     true,
+      use_ssl: true,
       verify_mode: OpenSSL::SSL::VERIFY_PEER
     }
   end

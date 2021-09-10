@@ -1,4 +1,6 @@
 RSpec.describe SIADE::V2::Responses::AbstractProviderError, type: :provider_response do
+  subject { SIADE::V2::Responses::DummyProviderError.new(provider_name, exception) }
+
   before(:all) do
     class SIADE::V2::Responses::DummyProviderError < SIADE::V2::Responses::AbstractProviderError
       def error
@@ -10,8 +12,6 @@ RSpec.describe SIADE::V2::Responses::AbstractProviderError, type: :provider_resp
       end
     end
   end
-
-  subject { SIADE::V2::Responses::DummyProviderError.new(provider_name, exception) }
 
   let(:provider_name) { 'Dummy provider' }
 
@@ -25,7 +25,7 @@ RSpec.describe SIADE::V2::Responses::AbstractProviderError, type: :provider_resp
     it 'tracks provider error' do
       expect(MonitoringService.instance).to receive(:track_provider_error_from_response).with(
         instance_of(SIADE::V2::Responses::DummyProviderError),
-        nil,
+        nil
       )
 
       subject
@@ -34,20 +34,18 @@ RSpec.describe SIADE::V2::Responses::AbstractProviderError, type: :provider_resp
 
   context 'with exception' do
     let(:exception) do
-      begin
-        1/0
-      rescue => e
-        e
-      end
+      1 / 0
+    rescue StandardError => e
+      e
     end
 
     it 'adds exception inspect and backtrace in monitoring context' do
       expect(MonitoringService.instance).to receive(:track_provider_error_from_response).with(
         instance_of(SIADE::V2::Responses::DummyProviderError),
         {
-          exception_inspect:   exception.inspect,
-          exception_backtrace: exception.backtrace,
-        },
+          exception_inspect: exception.inspect,
+          exception_backtrace: exception.backtrace
+        }
       )
 
       subject

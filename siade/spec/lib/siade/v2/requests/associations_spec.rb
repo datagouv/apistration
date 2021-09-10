@@ -1,5 +1,4 @@
 RSpec.describe SIADE::V2::Requests::Associations, type: :provider_request do
-
   context 'bad formated request' do
     context 'invalid siret' do
       subject { described_class.new(invalid_siret).perform }

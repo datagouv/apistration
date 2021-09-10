@@ -37,7 +37,7 @@ class SIADE::V2::Responses::Generic
   end
 
   def set_error_message_for(status)
-    self.send("set_error_message_#{status}")
+    send("set_error_message_#{status}")
     @http_code = status
   end
 
@@ -62,7 +62,7 @@ class SIADE::V2::Responses::Generic
   def track_provider_error_from_response
     MonitoringService.instance.track_provider_error_from_response(
       self,
-      provider_error_context,
+      provider_error_context
     )
   end
 end

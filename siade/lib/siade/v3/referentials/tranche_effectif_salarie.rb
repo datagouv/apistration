@@ -12,6 +12,7 @@ class SIADE::V3::Referentials::TrancheEffectifSalarie
 
   def valid?
     return false if @code.nil?
+
     valid = @code.is_a?(String) && @code.length == 2
     track_deprecated_data('Tranche effectif salarie', code) unless valid
     valid
@@ -28,6 +29,7 @@ class SIADE::V3::Referentials::TrancheEffectifSalarie
   def de
     if found?
       return nil if result[:de] == 'null'
+
       result[:de].to_i
     end
   end
@@ -35,6 +37,7 @@ class SIADE::V3::Referentials::TrancheEffectifSalarie
   def a
     if found?
       return nil if result[:a] == 'null'
+
       result[:a].to_i
     end
   end
@@ -49,11 +52,11 @@ class SIADE::V3::Referentials::TrancheEffectifSalarie
 
   def as_json
     {
-      de:             de,
-      a:              a,
-      code:           code,
+      de: de,
+      a: a,
+      code: code,
       date_reference: date_reference,
-      intitule:       intitule
+      intitule: intitule
     }
   end
 

@@ -19,7 +19,7 @@ class SIADE::V2::Drivers::BrevetsINPI < SIADE::V2::Drivers::GenericDriver
     if request.errors.blank?
       begin
         parse_brevets_information
-      rescue
+      rescue StandardError
         Rails.logger.error
         set_error_message_for(502)
       end
@@ -47,15 +47,15 @@ class SIADE::V2::Drivers::BrevetsINPI < SIADE::V2::Drivers::GenericDriver
   end
 
   def brevet_fields_raw_into_hash(fields)
-    fields.map { |f| [f['name'], (f['value'] || f['values'])]  }.to_h
+    fields.map { |f| [f['name'], (f['value'] || f['values'])] }.to_h
   end
 
   def brevet_raw_hash_interesting_keys_with_readable_names
     [
-      ["TIT"  , "titre"],
-      ["PUBD" , "date_publication"],
-      ["DEPD" , "date_depot"],
-      ["PUBN" , "numero_publication"]
+      %w[TIT titre],
+      %w[PUBD date_publication],
+      %w[DEPD date_depot],
+      %w[PUBN numero_publication]
     ]
   end
 

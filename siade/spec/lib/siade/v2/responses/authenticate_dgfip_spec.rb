@@ -12,7 +12,7 @@ RSpec.describe SIADE::V2::Responses::AuthenticateDGFIP, type: :provider_response
       allow_any_instance_of(SIADE::V2::Requests::AuthenticateDGFIP).to receive(:secret).and_return('wrong_secret')
     end
 
-    its(:cookie)    { is_expected.to include("_test_client") }
+    its(:cookie)    { is_expected.to include('_test_client') }
     its(:errors)    { is_expected.to have_error("L'authentification auprès du fournisseur de données 'DGFIP' a échoué") }
     its(:http_code) { is_expected.to eq(502) }
   end

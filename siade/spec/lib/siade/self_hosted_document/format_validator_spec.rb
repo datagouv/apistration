@@ -1,7 +1,7 @@
 RSpec.describe SIADE::SelfHostedDocument::FormatValidator do
-  let(:validator) { described_class.new(file_type) }
-
   subject { validator.valid?(file_io) }
+
+  let(:validator) { described_class.new(file_type) }
 
   describe 'PDF validation' do
     let(:file_type) { :pdf }

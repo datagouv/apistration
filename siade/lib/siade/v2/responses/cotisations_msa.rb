@@ -1,5 +1,4 @@
 class SIADE::V2::Responses::CotisationsMSA < SIADE::V2::Responses::Generic
-
   protected
 
   def provider_name
@@ -17,7 +16,7 @@ class SIADE::V2::Responses::CotisationsMSA < SIADE::V2::Responses::Generic
   private
 
   def etablissement_not_found?
-    parsed_body = JSON::parse(@body)
-    parsed_body["TopRMPResponse"]["topRegMarchePublic"] == "S"
+    parsed_body = JSON.parse(@body)
+    parsed_body['TopRMPResponse']['topRegMarchePublic'] == 'S'
   end
 end

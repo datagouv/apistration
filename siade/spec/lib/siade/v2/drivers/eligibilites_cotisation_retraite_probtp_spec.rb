@@ -6,7 +6,7 @@ RSpec.describe SIADE::V2::Drivers::EligibilitesCotisationRetraitePROBTP, type: :
 
     its(:http_code) { is_expected.to eq(200) }
     its(:eligible?) { is_expected.to be true }
-    its(:message) { is_expected.to eq("00 Compte éligible pour attestation de cotisation") }
+    its(:message) { is_expected.to eq('00 Compte éligible pour attestation de cotisation') }
   end
 
   context 'with siret non eligible PROBTP', vcr: { cassette_name: 'probtp/eligibilite/with_non_eligible_siret' } do
@@ -14,7 +14,7 @@ RSpec.describe SIADE::V2::Drivers::EligibilitesCotisationRetraitePROBTP, type: :
 
     its(:http_code) { is_expected.to eq(200) }
     its(:eligible?) { is_expected.to be false }
-    its(:message) { is_expected.to eq("01 Compte non éligible pour attestation de cotisation") }
+    its(:message) { is_expected.to eq('01 Compte non éligible pour attestation de cotisation') }
   end
 
   context 'with siret inconnu chez PROBTP', vcr: { cassette_name: 'probtp/eligibilite/with_not_found_siret' } do
@@ -31,10 +31,10 @@ RSpec.describe SIADE::V2::Drivers::EligibilitesCotisationRetraitePROBTP, type: :
     let(:dummy_response) do
       {
         entete: {
-          code:    '0',
+          code: '0',
           message: 'ERROR MESSAGE'
         },
-        corps:  'UNHANDLED CORPS'
+        corps: 'UNHANDLED CORPS'
       }
     end
 
@@ -55,7 +55,7 @@ RSpec.describe SIADE::V2::Drivers::EligibilitesCotisationRetraitePROBTP, type: :
           {
             internal_code: '0',
             error_message: 'ERROR MESSAGE',
-            corps:         'UNHANDLED CORPS',
+            corps: 'UNHANDLED CORPS'
           }
         )
 

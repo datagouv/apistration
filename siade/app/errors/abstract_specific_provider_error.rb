@@ -19,7 +19,7 @@ class AbstractSpecificProviderError < ApplicationError
 
   def meta
     {
-      provider: provider_name,
+      provider: provider_name
     }
   end
 

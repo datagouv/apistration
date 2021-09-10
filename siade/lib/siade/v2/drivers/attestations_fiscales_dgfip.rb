@@ -19,10 +19,10 @@ class SIADE::V2::Drivers::AttestationsFiscalesDGFIP < SIADE::V2::Drivers::Generi
 
   def request
     @request ||= SIADE::V2::Requests::AttestationsFiscalesDGFIP.new({
-      siren:        siren,
-      siren_is:     siren_is,
-      siren_tva:    siren_tva,
-      cookie:       cookie,
+      siren: siren,
+      siren_is: siren_is,
+      siren_tva: siren_tva,
+      cookie: cookie,
       informations: informations
     })
   end

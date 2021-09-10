@@ -1,16 +1,16 @@
 RSpec.describe SIADE::V2::Drivers::CertificatsAgenceBIO, type: :provider_driver do
   context 'when there is no active certifications for the given siret', vcr: { cassette_name: 'agence_bio/with_not_found_siret' } do
-    let(:siret) { not_found_siret(:agence_bio) }
-
     subject { described_class.new(siret: siret).perform_request }
+
+    let(:siret) { not_found_siret(:agence_bio) }
 
     its(:http_code) { is_expected.to eq(404) }
   end
 
   context 'when Agence Bio returns more than one result for a given siret', vcr: { cassette_name: 'agence_bio/with_duplicate_siret' } do
-    let(:siret) { agence_bio_duplicated_siret }
-
     subject { described_class.new(siret: siret).perform_request }
+
+    let(:siret) { agence_bio_duplicated_siret }
 
     its(:http_code) { is_expected.to eq(200) }
 
@@ -29,43 +29,43 @@ RSpec.describe SIADE::V2::Drivers::CertificatsAgenceBIO, type: :provider_driver 
         :activites,
         :productions,
         :adresses_operateurs,
-        :certificats,
+        :certificats
       ))
     end
   end
 
   context 'when there are active certifications for the given siret', vcr: { cassette_name: 'agence_bio/with_valid_siret' } do
-    let(:siret) { valid_siret(:agence_bio) }
-
     subject do
       driver = described_class.new(siret: siret).perform_request
       driver.filtered_certifications_data
     end
 
+    let(:siret) { valid_siret(:agence_bio) }
+
     it 'contains organic operator data' do
-      is_expected.to contain_exactly(a_hash_including({
-        raison_sociale:            'La bio pep\'s',
-        denomination_courante:     'Donnée indisponible',
-        siret:                     '48311105000025',
-        numero_bio:                18344,
+      expect(subject).to contain_exactly(a_hash_including({
+        raison_sociale: 'La bio pep\'s',
+        denomination_courante: 'Donnée indisponible',
+        siret: '48311105000025',
+        numero_bio: 18_344,
         date_derniere_mise_a_jour: '2020-10-27',
-        numero_pacage:             nil,
-        reseau:                    '',
+        numero_pacage: nil,
+        reseau: ''
       }))
     end
 
     it 'contains categories data' do
-      is_expected.to contain_exactly(a_hash_including({
+      expect(subject).to contain_exactly(a_hash_including({
         categories: a_collection_including('Vente aux consommateurs')
       }))
     end
 
     it 'contains activities data' do
-      is_expected.to contain_exactly(a_hash_including({
+      expect(subject).to contain_exactly(a_hash_including({
         activites: a_collection_containing_exactly(
           'Production',
           'Distribution',
-          'Stockage',
+          'Stockage'
         )
       }))
     end
@@ -87,22 +87,22 @@ RSpec.describe SIADE::V2::Drivers::CertificatsAgenceBIO, type: :provider_driver 
       prods = subject.first[:productions]
 
       expect(prods).to all(include(
-        nom:  String,
-        code: String,
+        nom: String,
+        code: String
       ))
     end
 
     it 'contains the certificats data' do
-      is_expected.to contain_exactly(
+      expect(subject).to contain_exactly(
         a_hash_including(
           certificats: a_hash_including(
-            organisme:          'Certipaq',
-            date_engagement:    '2020-09-29',
-            url:                'https://www.certipaq.solutions/bio/certificats/fiche/56530/barbot-fabrice/',
+            organisme: 'Certipaq',
+            date_engagement: '2020-09-29',
+            url: 'https://www.certipaq.solutions/bio/certificats/fiche/56530/barbot-fabrice/',
             etat_certification: 'ENGAGEE',
-            date_arret:         nil,
-            date_suspension:    nil,
-          ),
+            date_arret: nil,
+            date_suspension: nil
+          )
         )
       )
     end

@@ -1,12 +1,11 @@
 RSpec.describe SIADE::V2::Drivers::AttestationsFiscalesDGFIP, :self_hosted_doc, type: :provider_driver do
-
   subject do
     described_class.new(
       {
-        siren:        siren,
+        siren: siren,
         other_params: {
-          cookie:       cookie,
-          user_id:      user_id,
+          cookie: cookie,
+          user_id: user_id,
           informations: informations
         }
       }
@@ -18,8 +17,8 @@ RSpec.describe SIADE::V2::Drivers::AttestationsFiscalesDGFIP, :self_hosted_doc, 
   let(:informations) do
     SIADE::V2::Retrievers::AttestationsFiscalesDGFIP.new(
       {
-        siren:   siren,
-        cookie:  cookie,
+        siren: siren,
+        cookie: cookie,
         user_id: user_id
       }
     ).send(:retrieve_dgfip_informations)

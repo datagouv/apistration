@@ -1,5 +1,4 @@
 class SIADE::V2::Responses::AttestationsCotisationRetraitePROBTP < SIADE::V2::Responses::Generic
-
   protected
 
   def provider_name
@@ -32,13 +31,13 @@ class SIADE::V2::Responses::AttestationsCotisationRetraitePROBTP < SIADE::V2::Re
   end
 
   def etablissement_not_found?
-    raw_response_code == "8"
+    raw_response_code == '8'
   end
 
   def error_message
     ProviderInternalServerError.new(
       provider_name,
-      "Erreur fournisseur: #{entete[:message]}",
+      "Erreur fournisseur: #{entete[:message]}"
     )
   end
 
@@ -54,7 +53,7 @@ class SIADE::V2::Responses::AttestationsCotisationRetraitePROBTP < SIADE::V2::Re
     add_context_to_provider_error_tracking(
       {
         exception_message: e.message,
-        body:              @body,
+        body: @body
       }
     )
 

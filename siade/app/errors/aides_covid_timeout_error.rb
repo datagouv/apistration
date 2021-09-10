@@ -14,7 +14,7 @@ class AidesCovidTimeoutError < ApplicationError
   def meta
     {
       retry_in: 1000,
-      provider: errors_backend.provider_from_code(code),
+      provider: errors_backend.provider_from_code(code)
     }
   end
 

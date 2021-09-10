@@ -1,4 +1,6 @@
 RSpec.describe ValidateAttributePresence, type: :validate_param_interactor do
+  subject { DummyValidateAttributePresence.call(params: { dummy: dummy }) }
+
   before(:all) do
     class DummyValidateAttributePresence < ValidateAttributePresence
       protected
@@ -8,8 +10,6 @@ RSpec.describe ValidateAttributePresence, type: :validate_param_interactor do
       end
     end
   end
-
-  subject { DummyValidateAttributePresence.call(params: { dummy: dummy }) }
 
   context 'when attribute is defined and not empty' do
     let(:dummy) { 'dummy' }

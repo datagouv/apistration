@@ -34,10 +34,10 @@ RSpec.describe SIADE::V2::Drivers::CertificatsQUALIBAT, :self_hosted_doc, type: 
     let(:siret) { '47882868400017' }
 
     before do
-      url_pattern = /mps.qualibat.eu\/MPS\/CERTIFICAT\/\?SIRET=#{siret}/
+      url_pattern = %r{mps.qualibat.eu/MPS/CERTIFICAT/\?SIRET=#{siret}}
       stub_request(:get, url_pattern).to_return({
         status: 200,
-        body:   ''
+        body: ''
       })
     end
 

@@ -4,7 +4,7 @@ RSpec.describe ValidateSiren, type: :validate_param_interactor do
 
     let(:params) do
       {
-        siren: siren,
+        siren: siren
       }
     end
 

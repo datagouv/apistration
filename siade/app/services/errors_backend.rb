@@ -22,13 +22,13 @@ class ErrorsBackend
 
   def errors
     @errors ||= YAML.load_file(
-      errors_file_path,
+      errors_file_path
     )
   end
 
   def errors_file_path
     Rails.root.join(
-      'config/errors.yml',
+      'config/errors.yml'
     )
   end
 
@@ -54,7 +54,7 @@ class ErrorsBackend
       '17' => 'Banque de France',
       '18' => 'Agence BIO',
       '19' => 'Ademe',
-      '20' => 'API Geo',
+      '20' => 'API Geo'
     }
   end
 end

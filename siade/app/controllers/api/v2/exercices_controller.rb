@@ -4,7 +4,7 @@ class API::V2::ExercicesController < API::V2::AbstractDGFIPController
     retrieve_exercice.retrieve
 
     if retrieve_exercice.success?
-      render json: ExerciceSerializer::V2.new(retrieve_exercice).as_json,  status: retrieve_exercice.http_code
+      render json: ExerciceSerializer::V2.new(retrieve_exercice).as_json, status: retrieve_exercice.http_code
     else
       render_errors(retrieve_exercice)
     end

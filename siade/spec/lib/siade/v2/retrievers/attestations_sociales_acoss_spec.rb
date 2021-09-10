@@ -4,7 +4,7 @@ RSpec.describe SIADE::V2::Retrievers::AttestationsSocialesACOSS do
   let(:driver) { SIADE::V2::Drivers::AttestationsSocialesACOSS }
 
   it { is_expected.to be_delegated_to(driver, :http_code) }
-  it { is_expected.to be_delegated_to(driver, :document_url ) }
+  it { is_expected.to be_delegated_to(driver, :document_url) }
 
   describe 'forwarding the params to the driver' do
     subject { described_class.new siren: valid_siren, user_id: user_id, recipient: recipient }
@@ -20,8 +20,7 @@ RSpec.describe SIADE::V2::Retrievers::AttestationsSocialesACOSS do
             user_id: user_id,
             recipient: recipient,
             type_attestation: nil
-          }
-       )
+          })
       subject.driver_sociale
     end
   end

@@ -1,10 +1,12 @@
 RSpec.describe SIADE::V2::Drivers::Exercices, type: :provider_driver do
+  subject { driver }
+
   let(:driver) { described_class.new(siret: siret, driver_options: options).perform_request }
   let(:options) { { user_id: valid_dgfip_user_id, cookie: 'lemondgfip=bf91ce99ea967a4e24fffc2ad76d9145_519c42a2f4f4d80a5a5ff060246caf12; domain=.dgfip.finances.gouv.fr; path=/' } }
-  subject { driver }
 
   context 'when siret is not found', vcr: { cassette_name: 'exercice_with_not_found_siret' } do
     let(:siret) { non_existent_siret }
+
     its(:http_code) { is_expected.to eq 404 }
   end
 
@@ -14,12 +16,12 @@ RSpec.describe SIADE::V2::Drivers::Exercices, type: :provider_driver do
     its(:http_code) { is_expected.to eq 200 }
     its(:liste_ca) { is_expected.to be_a_kind_of Array }
 
-    context '#liste_ca item' do
+    describe '#liste_ca item' do
       subject { driver.liste_ca.first }
 
       its(['ca']) { is_expected.to eq '648374448' }
       its(['date_fin_exercice']) { is_expected.to eq '2016-12-31T00:00:00+01:00' }
-      its(['date_fin_exercice_timestamp']) { is_expected.to eq 1483138800 }
+      its(['date_fin_exercice_timestamp']) { is_expected.to eq 1_483_138_800 }
     end
   end
 

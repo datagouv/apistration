@@ -22,8 +22,9 @@ RSpec.describe SIADE::V2::Drivers::AttestationsSocialesACOSS, :self_hosted_doc, 
         url = Siade.credentials[:acoss_domain]
         stub_request(:post, /#{url}/)
           .with(
-            headers: { 'Content-Type' => 'application/json' })
-          .to_return({ status: 200, body: "no pdf here" })
+            headers: { 'Content-Type' => 'application/json' }
+          )
+          .to_return({ status: 200, body: 'no pdf here' })
       end
 
       its(:http_code) { is_expected.to eq(502) }
@@ -32,7 +33,7 @@ RSpec.describe SIADE::V2::Drivers::AttestationsSocialesACOSS, :self_hosted_doc, 
   end
 
   describe 'forwarding params to ACOSS', vcr: { cassette_name: 'acoss/with_valid_siren' } do
-    subject { described_class.new(siren: siren, other_params: { user_id: user_id, recipient: recipient}) }
+    subject { described_class.new(siren: siren, other_params: { user_id: user_id, recipient: recipient }) }
 
     let(:siren) { valid_siren :acoss }
     let(:user_id) { 'user id' }

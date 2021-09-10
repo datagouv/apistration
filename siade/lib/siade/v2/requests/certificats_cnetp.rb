@@ -38,9 +38,9 @@ class SIADE::V2::Requests::CertificatsCNETP < SIADE::V2::Requests::Generic
 
   def request_params
     {
-      id:    client_number,
+      id: client_number,
       jeton: token,
-      siren: siren,
+      siren: siren
     }
   end
 

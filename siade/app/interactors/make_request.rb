@@ -8,9 +8,7 @@ class MakeRequest < ApplicationInteractor
       end
 
       after do
-        if context.response.nil?
-          response_not_defined!
-        end
+        response_not_defined! if context.response.nil?
       end
     end
   end
@@ -19,16 +17,16 @@ class MakeRequest < ApplicationInteractor
     api_call
   rescue Net::OpenTimeout, Net::ReadTimeout, EOFError
     fail_to_request_provider!(
-      ProviderTimeoutError,
+      ProviderTimeoutError
     )
   rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EHOSTUNREACH
     fail_to_request_provider!(
-      ProviderUnavailable,
+      ProviderUnavailable
     )
   rescue SocketError => e
     if dns_lookup_error?(e)
       fail_to_request_provider!(
-        DnsResolutionError,
+        DnsResolutionError
       )
     else
       raise
@@ -43,8 +41,8 @@ class MakeRequest < ApplicationInteractor
 
   def http_options
     {
-      use_ssl:     true,
-      verify_mode: OpenSSL::SSL::VERIFY_PEER,
+      use_ssl: true,
+      verify_mode: OpenSSL::SSL::VERIFY_PEER
     }
   end
 

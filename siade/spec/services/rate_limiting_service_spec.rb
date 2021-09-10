@@ -9,13 +9,13 @@ RSpec.describe RateLimitingService do
         {
           controller: 'api/v2/entreprises_restored',
           action: 'show',
-          siren: 123,
+          siren: 123
         },
         {
           controller: 'api/v2/etablissements_restored',
           action: 'show',
-          siret: 123,
-        },
+          siret: 123
+        }
       ]
     end
 

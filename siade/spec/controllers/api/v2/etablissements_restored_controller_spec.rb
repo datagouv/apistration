@@ -11,7 +11,6 @@ RSpec.describe API::V2::EtablissementsRestoredController, type: :controller do
   end
 
   context 'without param `with_non_diffusable` it returns 403', vcr: { cassette_name: 'api_insee_fr/siret/non_diffusable' } do
-
     subject { get :show, params: { siret: non_diffusable_siret, token: token }.merge(mandatory_params) }
 
     let(:token) { yes_jwt }
@@ -20,7 +19,7 @@ RSpec.describe API::V2::EtablissementsRestoredController, type: :controller do
 
     it 'returns 403 with error message' do
       expect(JSON.parse(subject.body)).to have_json_error(
-        detail: 'Le SIRET est non diffusable, pour y accéder référez-vous à notre documentation.',
+        detail: 'Le SIRET est non diffusable, pour y accéder référez-vous à notre documentation.'
       )
     end
   end
@@ -43,7 +42,7 @@ RSpec.describe API::V2::EtablissementsRestoredController, type: :controller do
   end
 
   context 'gateway error still present in error' do
-    subject { get :show, params: { siret: siret, token: token}.merge(mandatory_params) }
+    subject { get :show, params: { siret: siret, token: token }.merge(mandatory_params) }
 
     let(:token) { yes_jwt }
     let(:siret) { sirets_insee_v3[:active_GE] }
@@ -70,7 +69,7 @@ RSpec.describe API::V2::EtablissementsRestoredController, type: :controller do
 
     its(:status) { is_expected.to eq 301 }
     its(:location) { is_expected.to include "/v2/etablissements/77887067500015?#{mandatory_params.to_param}&token=#{token}" }
-    its(:body) { is_expected.to match(/Vous êtes.+redirigé.+Le siren\/siret demandé est un doublon et ne doit plus être utilisé.+Référez-vous à notre.+documentation.+pour plus de détails/m) }
+    its(:body) { is_expected.to match(%r{Vous êtes.+redirigé.+Le siren/siret demandé est un doublon et ne doit plus être utilisé.+Référez-vous à notre.+documentation.+pour plus de détails}m) }
   end
 
   shared_examples 'happy path' do |siret|
@@ -142,13 +141,13 @@ RSpec.describe API::V2::EtablissementsRestoredController, type: :controller do
     end
   end
 
-#    context 'DEBUG', vcr: { cassette_name: 'api_insee_fr/siret/closed' } do
-#      it_behaves_like 'happy path', sirets_insee_v3[:closed]
-#    end
+  #    context 'DEBUG', vcr: { cassette_name: 'api_insee_fr/siret/closed' } do
+  #      it_behaves_like 'happy path', sirets_insee_v3[:closed]
+  #    end
 
   shared_examples 'ENFORCED SPECS' do |siret, expected_json|
     subject do
-      get :show, params: { siret: siret, token: token}.merge(mandatory_params)
+      get :show, params: { siret: siret, token: token }.merge(mandatory_params)
       JSON.parse(response.body)
     end
 
@@ -157,7 +156,7 @@ RSpec.describe API::V2::EtablissementsRestoredController, type: :controller do
     let(:expected_json) { expected_json }
 
     it 'includes expected values' do
-      is_expected.to include_json(expected_json)
+      expect(subject).to include_json(expected_json)
     end
   end
 
@@ -175,13 +174,13 @@ RSpec.describe API::V2::EtablissementsRestoredController, type: :controller do
   end
 
   describe 'checks json of closed siret', vcr: { cassette_name: 'api_insee_fr/siret/closed' } do
-    it_behaves_like 'ENFORCED SPECS', closed_siret, { etablissement: { etat_administratif: { value: 'F', date_fermeture: 1315173600 } } }
+    it_behaves_like 'ENFORCED SPECS', closed_siret, { etablissement: { etat_administratif: { value: 'F', date_fermeture: 1_315_173_600 } } }
   end
 
   context 'adresses re-mapping' do
     shared_examples 'expected adresse' do |siret_sym, l1, l2, l3, l4, l5, l6, l7|
       subject(:json) do
-        get :show, params: { siret: siret, token: token}.merge(mandatory_params)
+        get :show, params: { siret: siret, token: token }.merge(mandatory_params)
         JSON.parse(response.body).deep_symbolize_keys[:etablissement][:adresse]
       end
 

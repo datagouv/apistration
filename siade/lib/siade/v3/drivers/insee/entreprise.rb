@@ -1,33 +1,33 @@
 class SIADE::V3::Drivers::INSEE::Entreprise < SIADE::V2::Drivers::GenericDriver
   default_to_nil_raw_fetching_methods :siren,
-                                      :nic_siege_social,
-                                      :siret_siege_social,
-                                      :date_creation,
-                                      :date_dernier_traitement,
-                                      :raison_sociale,
-                                      :diffusable_commercialement,
-                                      :sigle,
-                                      :etat_administratif,
-                                      :date_cessation,
-                                      :economie_sociale_et_solidaire,
-                                      :id_rna,
-                                      :sexe,
-                                      :nom,
-                                      :nom_usage,
-                                      :prenom_1,
-                                      :prenom_2,
-                                      :prenom_3,
-                                      :prenom_4,
-                                      :prenom_usuel,
-                                      :pseudonyme,
-                                      :categorie_juridique,
-                                      :activite_principale,
-                                      :tranche_effectif_salarie,
-                                      :categorie_entreprise,
-                                      :annee_categorie_entreprise,
-                                      :caractere_employeur,
-                                      :nombre_periodes,
-                                      :periodes
+    :nic_siege_social,
+    :siret_siege_social,
+    :date_creation,
+    :date_dernier_traitement,
+    :raison_sociale,
+    :diffusable_commercialement,
+    :sigle,
+    :etat_administratif,
+    :date_cessation,
+    :economie_sociale_et_solidaire,
+    :id_rna,
+    :sexe,
+    :nom,
+    :nom_usage,
+    :prenom_1,
+    :prenom_2,
+    :prenom_3,
+    :prenom_4,
+    :prenom_usuel,
+    :pseudonyme,
+    :categorie_juridique,
+    :activite_principale,
+    :tranche_effectif_salarie,
+    :categorie_entreprise,
+    :annee_categorie_entreprise,
+    :caractere_employeur,
+    :nombre_periodes,
+    :periodes
 
   def initialize(siren:)
     @siren = siren
@@ -129,14 +129,14 @@ class SIADE::V3::Drivers::INSEE::Entreprise < SIADE::V2::Drivers::GenericDriver
 
   def activite_principale_raw
     @activite_principale ||= SIADE::V3::Referentials::ActivitePrincipale.new(
-      code:         info_entreprise_actuel[:activitePrincipaleUniteLegale],
+      code: info_entreprise_actuel[:activitePrincipaleUniteLegale],
       nomenclature: info_entreprise_actuel[:nomenclatureActivitePrincipaleUniteLegale]
     )
   end
 
   def tranche_effectif_salarie_raw
     SIADE::V3::Referentials::TrancheEffectifSalarie.new(
-      code:           info_entreprise[:trancheEffectifsUniteLegale],
+      code: info_entreprise[:trancheEffectifsUniteLegale],
       date_reference: info_entreprise[:anneeEffectifsUniteLegale]
     )
   end
@@ -179,31 +179,31 @@ class SIADE::V3::Drivers::INSEE::Entreprise < SIADE::V2::Drivers::GenericDriver
       date_fin = nullable_date_to_timestamp periode[:dateFin]
 
       {
-        date_fin:                                  date_fin,
-        date_debut:                                date_debut,
-        nom:                                       periode[:nomUniteLegale],
-        changement_nom?:                           periode[:changementNomUniteLegale],
-        nom_usage:                                 periode[:nomUsageUniteLegale],
-        changement_nom_usage?:                     periode[:changementNomUsageUniteLegale],
-        raison_sociale:                            periode[:denominationUniteLegale],
-        changement_raison_sociale?:                periode[:changementDenominationUniteLegale],
-        raison_sociale_usuelle_1:                  periode[:denominationUsuelle1UniteLegale],
-        raison_sociale_usuelle_2:                  periode[:denominationUsuelle2UniteLegale],
-        raison_sociale_usuelle_3:                  periode[:denominationUsuelle3UniteLegale],
-        changement_raison_sociale_usuelle?:        periode[:changementDenominationUsuelleUniteLegale],
-        etat_administratif:                        periode[:etatAdministratifUniteLegale],
-        changement_etat_administratif?:            periode[:changementEtatAdministratifUniteLegale],
-        economie_sociale_et_solidaire:             periode[:economieSocialeSolidaireUniteLegale],
+        date_fin: date_fin,
+        date_debut: date_debut,
+        nom: periode[:nomUniteLegale],
+        changement_nom?: periode[:changementNomUniteLegale],
+        nom_usage: periode[:nomUsageUniteLegale],
+        changement_nom_usage?: periode[:changementNomUsageUniteLegale],
+        raison_sociale: periode[:denominationUniteLegale],
+        changement_raison_sociale?: periode[:changementDenominationUniteLegale],
+        raison_sociale_usuelle_1: periode[:denominationUsuelle1UniteLegale],
+        raison_sociale_usuelle_2: periode[:denominationUsuelle2UniteLegale],
+        raison_sociale_usuelle_3: periode[:denominationUsuelle3UniteLegale],
+        changement_raison_sociale_usuelle?: periode[:changementDenominationUsuelleUniteLegale],
+        etat_administratif: periode[:etatAdministratifUniteLegale],
+        changement_etat_administratif?: periode[:changementEtatAdministratifUniteLegale],
+        economie_sociale_et_solidaire: periode[:economieSocialeSolidaireUniteLegale],
         changement_economie_sociale_et_solidaire?: periode[:changementEconomieSocialeSolidaireUniteLegale],
-        nic_siege_social:                          periode[:nicSiegeUniteLegale],
-        changement_nic_siege_social?:              periode[:changementNicSiegeUniteLegale],
-        code_forme_juridique:                      periode[:categorieJuridiqueUniteLegale],
-        changement_forme_juridique?:               periode[:changementCategorieJuridiqueUniteLegale],
-        caractere_employeur:                       periode[:caractereEmployeurUniteLegale],
-        changement_caractere_employeur?:           periode[:changementCaractereEmployeurUniteLegale],
-        code_naf:                                  periode[:activitePrincipaleUniteLegale],
-        nomenclature_naf:                          periode[:nomenclatureActivitePrincipaleUniteLegale],
-        changement_naf?:                           periode[:changementActivitePrincipaleUniteLegale]
+        nic_siege_social: periode[:nicSiegeUniteLegale],
+        changement_nic_siege_social?: periode[:changementNicSiegeUniteLegale],
+        code_forme_juridique: periode[:categorieJuridiqueUniteLegale],
+        changement_forme_juridique?: periode[:changementCategorieJuridiqueUniteLegale],
+        caractere_employeur: periode[:caractereEmployeurUniteLegale],
+        changement_caractere_employeur?: periode[:changementCaractereEmployeurUniteLegale],
+        code_naf: periode[:activitePrincipaleUniteLegale],
+        nomenclature_naf: periode[:nomenclatureActivitePrincipaleUniteLegale],
+        changement_naf?: periode[:changementActivitePrincipaleUniteLegale]
       }
     end
   end

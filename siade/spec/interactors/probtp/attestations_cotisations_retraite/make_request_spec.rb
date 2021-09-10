@@ -4,7 +4,7 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite::MakeRequest do
 
     let(:params) do
       {
-        siret: siret,
+        siret: siret
       }
     end
 

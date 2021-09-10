@@ -1,10 +1,10 @@
 RSpec.describe JwtUser do
   let(:jwt_payload) do
     {
-      uid:   'db398baf-80c1-4d70-a2ce-87f5a097d636',
-      jti:   '96b35b36-38f3-436a-99a7-20dc6a88ab4d',
-      roles: ['rol1', 'rol2'],
-      iat:   1615460348,
+      uid: 'db398baf-80c1-4d70-a2ce-87f5a097d636',
+      jti: '96b35b36-38f3-436a-99a7-20dc6a88ab4d',
+      roles: %w[rol1 rol2],
+      iat: 1_615_460_348
     }
   end
 
@@ -54,7 +54,7 @@ RSpec.describe JwtUser do
     let(:jwt_user) { described_class.new(jwt_payload) }
 
     it 'returns its roles' do
-      expect(jwt_user.roles).to eq(['rol1', 'rol2'])
+      expect(jwt_user.roles).to eq(%w[rol1 rol2])
     end
   end
 

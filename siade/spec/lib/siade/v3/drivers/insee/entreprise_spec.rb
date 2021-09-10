@@ -32,8 +32,8 @@ RSpec.describe SIADE::V3::Drivers::INSEE::Entreprise, type: :provider_driver do
     its(:siren) { is_expected.to eq '306138900' }
     its(:nic_siege_social) { is_expected.to eq '01294' }
     its(:siret_siege_social) { is_expected.to eq '30613890001294' }
-    its(:date_creation) { is_expected.to eq 220921200 }
-    its(:date_dernier_traitement) { is_expected.to eq 1518476400 }
+    its(:date_creation) { is_expected.to eq 220_921_200 }
+    its(:date_dernier_traitement) { is_expected.to eq 1_518_476_400 }
     its(:raison_sociale) { is_expected.to eq 'DECATHLON' }
     its(:diffusable_commercialement) { is_expected.to be true }
     its(:sigle) { is_expected.to be_nil }
@@ -87,8 +87,9 @@ RSpec.describe SIADE::V3::Drivers::INSEE::Entreprise, type: :provider_driver do
     describe 'periode' do
       subject { @entreprise_active_GE.periodes.second }
 
-      its([:date_fin]) { is_expected.to eq 1403128800 }
-      its([:date_debut]) { is_expected.to eq 1403128800 }
+      its([:date_fin]) { is_expected.to eq 1_403_128_800 }
+      its([:date_debut]) { is_expected.to eq 1_403_128_800 }
+
       it 'have date in correct order' do
         expect(subject[:date_fin]).to be >= subject[:date_debut]
       end
@@ -179,6 +180,6 @@ RSpec.describe SIADE::V3::Drivers::INSEE::Entreprise, type: :provider_driver do
     let(:siren) { ceased_siren }
 
     its(:etat_administratif) { is_expected.to eq 'C' }
-    its(:date_cessation) { is_expected.to eq 1315173600 }
+    its(:date_cessation) { is_expected.to eq 1_315_173_600 }
   end
 end

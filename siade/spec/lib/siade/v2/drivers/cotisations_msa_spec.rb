@@ -1,5 +1,6 @@
 RSpec.describe SIADE::V2::Drivers::CotisationsMSA, type: :provider_driver do
   context 'Recovering data from MSA API with valid siret', vcr: { cassette_name: 'non_regenerable/msa_web_service_cotisation_valid_siret' } do
+    subject { @lib_driver_cotisation_msa_spec__init_with_valid_siret }
 
     let(:siret) { valid_siret(:msa) }
 
@@ -9,13 +10,13 @@ RSpec.describe SIADE::V2::Drivers::CotisationsMSA, type: :provider_driver do
       end
     end
 
-    subject { @lib_driver_cotisation_msa_spec__init_with_valid_siret }
-
     its(:analyse_en_cours?) { is_expected.to be false }
     its(:a_jour?)           { is_expected.to be true }
   end
 
   context 'Recovering data from MSA API with pending siret', vcr: { cassette_name: 'non_regenerable/msa_web_service_cotisation_pending_siret' } do
+    subject { @lib_driver_cotisation_msa_spec__init_with_pending_siret }
+
     let(:siret) { valid_siret(:msa_pending) }
 
     before do
@@ -23,8 +24,6 @@ RSpec.describe SIADE::V2::Drivers::CotisationsMSA, type: :provider_driver do
         described_class.new(siret: siret).perform_request
       end
     end
-
-    subject { @lib_driver_cotisation_msa_spec__init_with_pending_siret }
 
     its(:analyse_en_cours?) { is_expected.to be true }
     its(:a_jour?)           { is_expected.to be nil }

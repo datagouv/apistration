@@ -4,7 +4,7 @@ RSpec.describe ACOSS::AttestationsSociales::BuildResource, type: :build_resource
 
     let(:params) do
       {
-        siren: valid_siren(:acoss),
+        siren: valid_siren(:acoss)
       }
     end
     let(:url) { "not.a.real/file#{rand(999)}/upload" }
@@ -16,7 +16,7 @@ RSpec.describe ACOSS::AttestationsSociales::BuildResource, type: :build_resource
 
       expect(subject.resource.to_h).to include(
         id: valid_siren(:acoss),
-        document_url: url,
+        document_url: url
       )
     end
   end

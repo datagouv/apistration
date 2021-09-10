@@ -4,7 +4,7 @@ RSpec.describe ValidateSiret, type: :validate_param_interactor do
 
     let(:params) do
       {
-        siret: siret,
+        siret: siret
       }
     end
 

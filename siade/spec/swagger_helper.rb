@@ -1,9 +1,9 @@
-Dir[Rails.root.join("spec/support/rswag_*.rb")].each { |f| require f }
+Dir[Rails.root.join('spec/support/rswag_*.rb')].each { |f| require f }
 
 RSpec.shared_context 'Mandatory params' do
   let(:context) { 'Dev' }
-  let(:recipient) { "API Entreprise" }
-  let(:object) { "Tests" }
+  let(:recipient) { 'API Entreprise' }
+  let(:object) { 'Tests' }
 end
 
 RSpec.shared_context 'Valid params (mandatory and token)' do
@@ -47,12 +47,12 @@ RSpec.configure do |config|
       servers: [
         {
           url: 'https://entreprise.api.gouv.fr',
-          description: 'Environnement de production',
+          description: 'Environnement de production'
         },
         {
           url: 'https://staging.entreprise.api.gouv.fr',
-          description: 'Environnement de staging',
-        },
+          description: 'Environnement de staging'
+        }
       ],
       components: {
         schemas: {
@@ -66,34 +66,34 @@ RSpec.configure do |config|
                   properties: {
                     title: {
                       type: :string,
-                      example: 'Resource not found',
+                      example: 'Resource not found'
                     },
                     detail: {
                       type: :string,
-                      example: 'Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel',
-                    },
+                      example: 'Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel'
+                    }
                   },
                   required: %w[
                     title
                     detail
-                  ],
-                },
-              },
+                  ]
+                }
+              }
             },
             required: %w[
               errors
-            ],
-          },
+            ]
+          }
         },
         securitySchemes: {
           jwt_bearer_token: {
             type: :http,
             scheme: :bearer,
             bearerFormat: 'JWT',
-            description: 'JWT Token',
-          },
-        },
-      },
+            description: 'JWT Token'
+          }
+        }
+      }
     }
   }
 

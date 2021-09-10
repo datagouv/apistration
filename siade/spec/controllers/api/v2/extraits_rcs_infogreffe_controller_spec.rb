@@ -1,5 +1,4 @@
 RSpec.describe API::V2::ExtraitsRCSInfogreffeController, type: :controller do
-
   it_behaves_like 'unauthorized'
   it_behaves_like 'forbidden'
   it_behaves_like 'unprocessable_entity'
@@ -9,6 +8,7 @@ RSpec.describe API::V2::ExtraitsRCSInfogreffeController, type: :controller do
     before do
       get :show, params: { siren: siren, token: token }.merge(mandatory_params)
     end
+
     let(:response_body) do
       json = JSON.parse(response.body, symbolize_names: true)
     end
@@ -33,17 +33,17 @@ RSpec.describe API::V2::ExtraitsRCSInfogreffeController, type: :controller do
 
         its([:siren]) { is_expected.to eq(valid_siren(:extrait_rcs)) }
         its([:date_immatriculation]) { is_expected.to eq('1998-03-27') }
-        its([:date_immatriculation_timestamp]) { is_expected.to eq(890953200) }
-        its([:date_extrait]) { is_expected.to match(/^[0-9]{2}[ ][A-Z]+[ ][0-9]{4}/) }
+        its([:date_immatriculation_timestamp]) { is_expected.to eq(890_953_200) }
+        its([:date_extrait]) { is_expected.to match(/^[0-9]{2} [A-Z]+ [0-9]{4}/) }
         its([:observations]) { is_expected.to be_an(Array) }
 
-        context '#observations' do
+        describe '#observations' do
           subject { response_body[:observations].first }
 
           it { is_expected.to be_a(Hash) }
           its([:date]) { is_expected.to eq('2000-02-23') }
-          its([:date_timestamp]) { is_expected.to eq(951260400) }
-          its([:numero]) { is_expected.to eq("12197") }
+          its([:date_timestamp]) { is_expected.to eq(951_260_400) }
+          its([:numero]) { is_expected.to eq('12197') }
           its([:libelle]) { is_expected.to eq(' LA SOCIETE NE CONSERVE AUCUNE ACTIVITE A SON ANCIEN SIEGE ') }
         end
       end

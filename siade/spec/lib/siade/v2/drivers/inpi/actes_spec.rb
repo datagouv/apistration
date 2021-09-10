@@ -21,12 +21,12 @@ RSpec.describe SIADE::V2::Drivers::INPI::Actes, type: :provider_driver do
 
       it 'has a valid payload' do
         expect(subject).to include(
-          id_fichier:           Integer,
-          siren:                String,
+          id_fichier: Integer,
+          siren: String,
           denomination_sociale: nil,
-          code_greffe:          Integer,
-          date_depot:           String,
-          nature_archive:       a_string_matching(/(A|R|P)/)
+          code_greffe: Integer,
+          date_depot: String,
+          nature_archive: a_string_matching(/(A|R|P)/)
         )
       end
     end
@@ -36,12 +36,13 @@ RSpec.describe SIADE::V2::Drivers::INPI::Actes, type: :provider_driver do
 
       it 'has expected payload' do
         expect(subject).to include(
-          id_fichier:           212007233,
-          siren:                '393463187',
+          id_fichier: 212_007_233,
+          siren: '393463187',
           denomination_sociale: nil,
-          code_greffe:          3801 ,
-          date_depot:           '20050112',
-          nature_archive:       'A')
+          code_greffe: 3801,
+          date_depot: '20050112',
+          nature_archive: 'A'
+        )
       end
     end
   end

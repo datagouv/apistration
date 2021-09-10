@@ -5,7 +5,7 @@ RSpec.describe Documents::Upload, :self_hosted_doc do
     let(:doc_params) do
       {
         filename: 'test.lol',
-        content: 'much content',
+        content: 'much content'
       }
     end
 

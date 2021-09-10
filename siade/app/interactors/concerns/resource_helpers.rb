@@ -1,15 +1,11 @@
 module ResourceHelpers
-  def response
-    context.response
-  end
+  delegate :response, to: :context
 
   def http_code
     response.code.to_i
   end
 
-  def body
-    response.body
-  end
+  delegate :body, to: :response
 
   def json_body
     context.json_body ||= JSON.parse(body)

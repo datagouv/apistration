@@ -17,9 +17,7 @@ class SIADE::V2::Retrievers::ActesINPI < SIADE::V2::Retrievers::GenericInformati
   def retrieve
     driver_actes.perform_request
 
-    if driver_actes.success?
-      driver_get_documents.perform_request
-    end
+    driver_get_documents.perform_request if driver_actes.success?
   end
 
   def http_code
@@ -33,6 +31,6 @@ class SIADE::V2::Retrievers::ActesINPI < SIADE::V2::Retrievers::GenericInformati
   private
 
   def ids_fichiers
-    @ids_fichiers ||= driver_actes.actes.map{ |acte| acte[:id_fichier] }
+    @ids_fichiers ||= driver_actes.actes.pluck(:id_fichier)
   end
 end

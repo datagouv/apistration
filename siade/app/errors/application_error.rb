@@ -21,11 +21,11 @@ class ApplicationError
 
   def to_h
     {
-      code:   code,
-      title:  title,
+      code: code,
+      title: title,
       detail: detail,
       source: source,
-      meta:   meta,
+      meta: meta
     }
   end
 

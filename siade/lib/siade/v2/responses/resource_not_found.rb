@@ -7,12 +7,10 @@ class SIADE::V2::Responses::ResourceNotFound
     @errors = [
       ::NotFoundError.new(
         provider_name,
-        'Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel',
+        'Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel'
       )
     ]
   end
 
-  def errors
-    @errors
-  end
+  attr_reader :errors
 end

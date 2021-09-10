@@ -4,7 +4,7 @@ RSpec.describe RNM::EntreprisesArtisanales, type: :retriever_organizer do
 
     let(:params) do
       {
-        siren: siren,
+        siren: siren
       }
     end
 

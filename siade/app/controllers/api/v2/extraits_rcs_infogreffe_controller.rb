@@ -6,7 +6,7 @@ class API::V2::ExtraitsRCSInfogreffeController < API::V2::BaseController
     retrieve_extrait_rcs.retrieve
 
     if retrieve_extrait_rcs.success?
-      render json: ExtraitRCSInfogreffeSerializer::V2.new(retrieve_extrait_rcs).as_json,  status: retrieve_extrait_rcs.http_code
+      render json: ExtraitRCSInfogreffeSerializer::V2.new(retrieve_extrait_rcs).as_json, status: retrieve_extrait_rcs.http_code
     else
       render_errors(retrieve_extrait_rcs)
     end

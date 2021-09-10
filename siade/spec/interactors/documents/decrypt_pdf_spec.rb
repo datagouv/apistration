@@ -7,10 +7,8 @@ RSpec.describe Documents::DecryptPDF do
   end
 
   context 'when we call the interactor' do
-    it "is a success" do
-      if ENV['MOCK_CALL_SYSTEM_FOR_MEMORY_ERROR']
-        unmake_qpdf_call_safe_on_memory_error!
-      end
+    it 'is a success' do
+      unmake_qpdf_call_safe_on_memory_error! if ENV['MOCK_CALL_SYSTEM_FOR_MEMORY_ERROR']
 
       begin
         expect(subject).to be_a_success
@@ -21,9 +19,7 @@ RSpec.describe Documents::DecryptPDF do
     end
 
     it 'decrypts the PDF' do
-      if ENV['MOCK_CALL_SYSTEM_FOR_MEMORY_ERROR']
-        unmake_qpdf_call_safe_on_memory_error!
-      end
+      unmake_qpdf_call_safe_on_memory_error! if ENV['MOCK_CALL_SYSTEM_FOR_MEMORY_ERROR']
 
       begin
         expect(subject.content).not_to include('Encrypt')
@@ -45,32 +41,28 @@ RSpec.describe Documents::DecryptPDF do
     let(:monitoring_service) { double('MonitoringService', track: nil) }
 
     before do
-      if ENV['MOCK_CALL_SYSTEM_FOR_MEMORY_ERROR']
-        unmake_qpdf_call_safe_on_memory_error!
-      end
+      unmake_qpdf_call_safe_on_memory_error! if ENV['MOCK_CALL_SYSTEM_FOR_MEMORY_ERROR']
 
       allow_any_instance_of(described_class).to receive(:command).and_return(
-        'qpdf lol oki',
+        'qpdf lol oki'
       )
       allow(MonitoringService).to receive(:instance).and_return(monitoring_service)
     end
 
     it 'tracks error' do
-      begin
-        subject
+      subject
 
-        expect(monitoring_service).to have_received(:track).with(
-          'error',
-          "PDF Decrypt fail to execute 'qpdf lol oki'",
-          {
-            exit_status: 2,
-            stderr: 'open lol: No such file or directory',
-          },
-        )
-      rescue Errno::ENOMEM
-        print "Memory error, skipping test\n"
-        expect(1).to eq(1)
-      end
+      expect(monitoring_service).to have_received(:track).with(
+        'error',
+        "PDF Decrypt fail to execute 'qpdf lol oki'",
+        {
+          exit_status: 2,
+          stderr: 'open lol: No such file or directory'
+        }
+      )
+    rescue Errno::ENOMEM
+      print "Memory error, skipping test\n"
+      expect(1).to eq(1)
     end
   end
 end

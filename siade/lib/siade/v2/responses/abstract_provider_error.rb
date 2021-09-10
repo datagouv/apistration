@@ -1,8 +1,8 @@
 class SIADE::V2::Responses::AbstractProviderError
   attr_reader :provider_name,
-              :exception
+    :exception
 
-  def initialize(provider_name, exception=nil)
+  def initialize(provider_name, exception = nil)
     @provider_name = provider_name
     @exception = exception
 
@@ -34,15 +34,15 @@ class SIADE::V2::Responses::AbstractProviderError
   def track_provider_error_from_response
     MonitoringService.instance.track_provider_error_from_response(
       self,
-      exception_context,
+      exception_context
     )
   end
 
   def exception_context
     if exception
       {
-        exception_inspect:   exception.inspect,
-        exception_backtrace: exception.backtrace,
+        exception_inspect: exception.inspect,
+        exception_backtrace: exception.backtrace
       }
     end
   end

@@ -22,13 +22,11 @@ class SIADE::SelfHostedDocument::PDFDecrypt
   private
 
   def qpdf_path
-    @qpdf_path ||= begin
-      if ENV['CI']
-        '/usr/bin/qpdf'
-      else
-        `which qpdf`.chop
-      end
-    end
+    @qpdf_path ||= if ENV['CI']
+                     '/usr/bin/qpdf'
+                   else
+                     `which qpdf`.chop
+                   end
   end
 
   def encrypted_file
@@ -67,7 +65,7 @@ class SIADE::SelfHostedDocument::PDFDecrypt
       unless thread.value.success?
         track_qpdf_error(
           thread.value.exitstatus,
-          stderr,
+          stderr
         )
       end
     end
@@ -78,7 +76,7 @@ class SIADE::SelfHostedDocument::PDFDecrypt
       qpdf_path,
       '--decrypt',
       encrypted_file.path,
-      decrypted_file.path,
+      decrypted_file.path
     ].join(' ')
   end
 
@@ -88,7 +86,7 @@ class SIADE::SelfHostedDocument::PDFDecrypt
       "PDF Decrypt fail to execute '#{command}'",
       {
         exit_status: exit_status,
-        stderr:      stderr.read.chomp,
+        stderr: stderr.read.chomp
       }
     )
   end

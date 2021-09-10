@@ -1,5 +1,6 @@
 RSpec.describe SIADE::V2::Retrievers::BilansEntreprisesBDF do
   subject { described_class.new(valid_siren(:bilans_entreprises_bdf)) }
+
   let(:driver) { SIADE::V2::Retrievers::BilansEntreprisesBDF }
 
   before do

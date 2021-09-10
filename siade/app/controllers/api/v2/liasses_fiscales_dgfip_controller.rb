@@ -18,7 +18,7 @@ class API::V2::LiassesFiscalesDGFIPController < API::V2::AbstractDGFIPController
     retriever_liasse_fiscale.retrieve
 
     if retriever_liasse_fiscale.success?
-      render json: retriever_liasse_fiscale.response, status: 200
+      render json: retriever_liasse_fiscale.response, status: :ok
     else
       render_errors(retriever_liasse_fiscale)
     end

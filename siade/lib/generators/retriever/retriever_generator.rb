@@ -2,9 +2,9 @@ class RetrieverGenerator < BaseGenerator
   source_root File.expand_path('templates', __dir__)
 
   class_option :document,
-    type:    :boolean,
+    type: :boolean,
     default: false,
-    desc:    'Add support of documents uploader'
+    desc: 'Add support of documents uploader'
 
   class_option :validation_type,
     type: :string,

@@ -6,7 +6,7 @@ class API::V2::CertificatsCNETPController < API::V2::BaseController
     retrieve_certificate.retrieve
 
     if retrieve_certificate.success?
-      render json: { url: retrieve_certificate.document_url },  status: retrieve_certificate.http_code
+      render json: { url: retrieve_certificate.document_url }, status: retrieve_certificate.http_code
     else
       render_errors(retrieve_certificate)
     end

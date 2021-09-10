@@ -55,7 +55,7 @@ class Documents::DecryptPDF < ApplicationInteractor
       unless thread.value.success?
         track_qpdf_error(
           thread.value.exitstatus,
-          stderr,
+          stderr
         )
       end
     end
@@ -66,7 +66,7 @@ class Documents::DecryptPDF < ApplicationInteractor
       qpdf_path,
       '--decrypt',
       encrypted_file.path,
-      decrypted_file.path,
+      decrypted_file.path
     ].join(' ')
   end
 
@@ -76,7 +76,7 @@ class Documents::DecryptPDF < ApplicationInteractor
       "PDF Decrypt fail to execute '#{command}'",
       {
         exit_status: exit_status,
-        stderr: stderr.read.chomp,
+        stderr: stderr.read.chomp
       }
     )
   end

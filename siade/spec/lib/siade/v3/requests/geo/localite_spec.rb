@@ -12,7 +12,7 @@ RSpec.describe SIADE::V3::Requests::Geo::Localite, type: :provider_request do
   # only check size == 5 (reminder Ajaccio: 2A004)
   it_behaves_like 'bad formatted code commune', 'nope'
   it_behaves_like 'bad formatted code commune', '123'
-  it_behaves_like 'bad formatted code commune', 75056
+  it_behaves_like 'bad formatted code commune', 75_056
   it_behaves_like 'bad formatted code commune', '123456'
 
   context 'non existent code commune', vcr: { cassette_name: 'geo/commune/non_existent' } do

@@ -1,6 +1,6 @@
 RSpec.describe 'routes for v2', type: :routing do
-  let!(:prefix_route) { "v2/" }
-  let!(:prefix_controller) { "api/v2/" }
+  let!(:prefix_route) { 'v2/' }
+  let!(:prefix_controller) { 'api/v2/' }
 
   describe 'INPI' do
     it 'route to actes' do
@@ -17,12 +17,12 @@ RSpec.describe 'routes for v2', type: :routing do
   describe 'INSEE v3' do
     it 'route to etablissements' do
       expect(get("#{prefix_route}etablissements/#{valid_siret}"))
-        .to route_to(controller: "api/v2/etablissements_restored", action: 'show', siret: valid_siret)
+        .to route_to(controller: 'api/v2/etablissements_restored', action: 'show', siret: valid_siret)
     end
 
     it 'route to entreprises' do
       expect(get("#{prefix_route}entreprises/#{valid_siren}"))
-        .to route_to(controller: "api/v2/entreprises_restored", action: 'show', siren: valid_siren)
+        .to route_to(controller: 'api/v2/entreprises_restored', action: 'show', siren: valid_siren)
     end
   end
 
@@ -102,15 +102,15 @@ RSpec.describe 'routes for v2', type: :routing do
   end
 
   it 'route to privileges' do
-    expect(get("#{prefix_route}privileges")).to route_to(controller: "#{prefix_controller}privileges", action: 'show',)
+    expect(get("#{prefix_route}privileges")).to route_to(controller: "#{prefix_controller}privileges", action: 'show')
   end
 
   it 'route to uptime#robot' do
     expect(get: '/v2/uptime?route=some/value')
       .to route_to(
         controller: 'api/v2/uptime',
-        action:     'show',
-        route:      'some/value'
-    )
+        action: 'show',
+        route: 'some/value'
+      )
   end
 end

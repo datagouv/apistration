@@ -28,7 +28,7 @@ RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
                 properties: {
                   id: {
                     type: :string,
-                    example: valid_siren(:rnm_cma),
+                    example: valid_siren(:rnm_cma)
                   },
                   attributes: {
                     type: :object,
@@ -36,7 +36,7 @@ RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
                       siren: {
                         type: :string,
                         example: valid_siren(:rnm_cma),
-                        description: 'Siren de l\'entreprise',
+                        description: 'Siren de l\'entreprise'
                       },
                       modalite_exercice: {
                         type: :string,
@@ -57,7 +57,7 @@ RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
                           P
                           S
                           NR
-                        ],
+                        ]
                       },
                       non_sedentaire: {
                         type: 'string',
@@ -80,7 +80,7 @@ RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
                       siren
                       modalite_exercice
                       non_sedentaire
-                    ],
+                    ]
                   },
                   relationships: {
                     type: :object,
@@ -93,13 +93,13 @@ RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
                             properties: {
                               id: {
                                 type: :string,
-                                example: "301123626",
+                                example: '301123626'
                               },
                               type: {
                                 type: :string,
                                 enum: ['adresse'],
-                                example: 'adresse',
-                              },
+                                example: 'adresse'
+                              }
                             }
                           },
                           links: {
@@ -107,22 +107,22 @@ RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
                             properties: {
                               related: {
                                 type: :string,
-                                example: "https://entreprises.api.gouv.fr/api/v3/insee/adresse/301123626",
+                                example: 'https://entreprises.api.gouv.fr/api/v3/insee/adresse/301123626'
                               }
                             }
                           }
                         }
                       }
-                    },
+                    }
                   }
                 },
                 required: %w[
                   id
-                ],
-              },
+                ]
+              }
             },
             required: [
-              :data,
+              :data
             ]
 
           run_test!

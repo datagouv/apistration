@@ -38,10 +38,10 @@ class SIADE::V2::Requests::EligibilitesCotisationRetraitePROBTP < SIADE::V2::Req
 
   def net_http_options
     {
-      use_ssl:     true,
+      use_ssl: true,
       verify_mode: OpenSSL::SSL::VERIFY_PEER,
-      cert:        cert,
-      key:         key
+      cert: cert,
+      key: key
     }
   end
 

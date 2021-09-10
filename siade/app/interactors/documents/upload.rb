@@ -17,7 +17,7 @@ class Documents::Upload < ApplicationInteractor
       document_path,
       file_content,
       {
-        'X-Delete-After' => file_expired_in,
+        'X-Delete-After' => file_expired_in
       }
     )
   end
@@ -32,8 +32,8 @@ class Documents::Upload < ApplicationInteractor
 
   def document_public_url
     document_url.sub(
-      %r{https.*/AUTH_[[:alnum:]]*\/},
-      public_storage_url,
+      %r{https.*/AUTH_[[:alnum:]]*/},
+      public_storage_url
     )
   end
 

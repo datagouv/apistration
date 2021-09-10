@@ -1,5 +1,6 @@
 class SIADE::V2::Retrievers::ExtraitCourtINPI < SIADE::V2::Retrievers::GenericInformationRetriever
   attr_reader :siren
+
   register_driver :brevets, class_name: SIADE::V2::Drivers::BrevetsINPI, init_with: :siren
   register_driver :modeles, class_name: SIADE::V2::Drivers::ModelesINPI, init_with: :siren
   register_driver :marques, class_name: SIADE::V2::Drivers::MarquesINPI, init_with: :siren
@@ -24,23 +25,17 @@ class SIADE::V2::Retrievers::ExtraitCourtINPI < SIADE::V2::Retrievers::GenericIn
     driver_brevets.count
   end
 
-  def latests_brevets
-    driver_brevets.latests_brevets
-  end
+  delegate :latests_brevets, to: :driver_brevets
 
   def count_modeles
     driver_modeles.count
   end
 
-  def latests_modeles
-    driver_modeles.latests_modeles
-  end
+  delegate :latests_modeles, to: :driver_modeles
 
   def count_marques
     driver_marques.count
   end
 
-  def latests_marques
-    driver_marques.latests_marques
-  end
+  delegate :latests_marques, to: :driver_marques
 end

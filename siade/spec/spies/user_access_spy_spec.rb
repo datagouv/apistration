@@ -1,5 +1,5 @@
 RSpec.describe UserAccessSpy do
-  let(:user) { JwtUser.new(uid: 'user unique identifier', roles: ['role 1', 'role 2'], jti: 'jwt token unique identifier', iat: 1615460348) }
+  let(:user) { JwtUser.new(uid: 'user unique identifier', roles: ['role 1', 'role 2'], jti: 'jwt token unique identifier', iat: 1_615_460_348) }
 
   it 'logs authorized' do
     expect(ActiveSupport::Notifications).to receive(:instrument).with('user_access', user: user.logstash_id, jti: user.token_id, iat: Time.zone.at(user.iat), access: 'allow')

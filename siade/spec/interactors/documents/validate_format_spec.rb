@@ -6,7 +6,7 @@ RSpec.describe Documents::ValidateFormat do
   let(:validation_params) do
     {
       file_type: 'pdf',
-      content: file_content,
+      content: file_content
     }
   end
 

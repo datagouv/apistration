@@ -19,10 +19,10 @@ class SIADE::V2::Drivers::AttestationsSocialesACOSS < SIADE::V2::Drivers::Generi
   def request
     @request ||= SIADE::V2::Requests::AttestationsSocialesACOSS.new(
       {
-        siren:            siren,
+        siren: siren,
         type_attestation: type_attestation,
-        user_id:          user_id,
-        recipient:        recipient
+        user_id: user_id,
+        recipient: recipient
       }
     )
   end

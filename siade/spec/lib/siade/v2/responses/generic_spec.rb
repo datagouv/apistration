@@ -1,23 +1,21 @@
 RSpec.describe SIADE::V2::Responses::Generic do
+  subject { SIADE::V2::Responses::DummyResponse.new(raw_response) }
+
   before(:all) do
     class SIADE::V2::Responses::DummyResponse < SIADE::V2::Responses::Generic
       def adapt_raw_response_code
-        if raw_response.extra_context
-          add_context_to_provider_error_tracking(raw_response.extra_context)
-        end
+        add_context_to_provider_error_tracking(raw_response.extra_context) if raw_response.extra_context
 
         raw_response.code
       end
     end
   end
 
-  subject { SIADE::V2::Responses::DummyResponse.new(raw_response) }
-
   let(:raw_response) do
     OpenStruct.new(
-      body:          '',
-      code:          code,
-      extra_context: extra_context,
+      body: '',
+      code: code,
+      extra_context: extra_context
     )
   end
 
@@ -39,7 +37,7 @@ RSpec.describe SIADE::V2::Responses::Generic do
     it 'tracks error' do
       expect(MonitoringService.instance).to receive(:track_provider_error_from_response).with(
         instance_of(SIADE::V2::Responses::DummyResponse),
-        {},
+        {}
       )
 
       subject
@@ -48,15 +46,15 @@ RSpec.describe SIADE::V2::Responses::Generic do
     context 'when there is extra context to track' do
       let(:extra_context) do
         {
-          custom_code:    '042',
-          custom_message: 'PANIK',
+          custom_code: '042',
+          custom_message: 'PANIK'
         }
       end
 
       it 'adds this context to tracking' do
         expect(MonitoringService.instance).to receive(:track_provider_error_from_response).with(
           instance_of(SIADE::V2::Responses::DummyResponse),
-          extra_context,
+          extra_context
         )
 
         subject

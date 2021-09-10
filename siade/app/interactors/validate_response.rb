@@ -15,7 +15,7 @@ class ValidateResponse < ApplicationInteractor
 
   protected
 
-  def build_error(error_klass, message=nil)
+  def build_error(error_klass, message = nil)
     error_klass.new(context.provider_name, message)
   end
 

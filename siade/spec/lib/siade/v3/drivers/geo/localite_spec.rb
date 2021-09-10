@@ -33,7 +33,6 @@ RSpec.describe SIADE::V3::Drivers::Geo::Localite, type: :provider_driver do
     its(:success?) { is_expected.to be_falsey }
     its(:errors) { is_expected.to have_error('Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel') }
 
-
     context 'commune nesting' do
       subject { super().commune }
 

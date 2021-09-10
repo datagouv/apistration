@@ -29,13 +29,13 @@ class API::V2::EtablissementsRestoredController < API::V2::BaseController
 
   def redirect_to_new_siret
     redirect_to action:          :show,
-                siret:           retriever.redirected_siret,
-                context:         params[:context],
-                recipient:       params[:recipient],
-                object:          params[:object],
-                non_diffusables: params[:non_diffusables],
-                token:           params[:token],
-                status:          :moved_permanently
+      siret:           retriever.redirected_siret,
+      context:         params[:context],
+      recipient:       params[:recipient],
+      object:          params[:object],
+      non_diffusables: params[:non_diffusables],
+      token:           params[:token],
+      status:          :moved_permanently
 
     response.body = body_details
   end

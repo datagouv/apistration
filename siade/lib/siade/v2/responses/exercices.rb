@@ -1,5 +1,4 @@
 class SIADE::V2::Responses::Exercices < SIADE::V2::Responses::Generic
-
   protected
 
   def provider_name
@@ -7,7 +6,7 @@ class SIADE::V2::Responses::Exercices < SIADE::V2::Responses::Generic
   end
 
   def adapt_raw_response_code
-    if @raw_response.body == "null"
+    if @raw_response.body == 'null'
       set_error_message_for(404)
       404
     elsif @raw_response.code.to_i == 302

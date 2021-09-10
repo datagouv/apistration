@@ -37,7 +37,7 @@ RSpec.describe SIADE::V3::Referentials::TrancheEffectifSalarie do
     it 'logs a deprecated data through MonitoringService' do
       expect(MonitoringService.instance).to receive(:track_deprecated_data).with(
         'Tranche effectif salarie',
-        code,
+        code
       )
 
       subject.intitule
@@ -61,7 +61,7 @@ RSpec.describe SIADE::V3::Referentials::TrancheEffectifSalarie do
     it 'logs a deprecated data through MonitoringService' do
       expect(MonitoringService.instance).to receive(:track_deprecated_data).with(
         'Tranche effectif salarie',
-        code,
+        code
       )
 
       subject.intitule

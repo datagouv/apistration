@@ -17,7 +17,7 @@ RSpec.describe MonitoringService, type: :service do
       let(:error) { ProviderInternalServerError.new('INSEE', 'PANIK') }
       let(:monitoring_private_context) do
         {
-          oauth_token: 'very_secret',
+          oauth_token: 'very_secret'
         }
       end
 
@@ -28,7 +28,7 @@ RSpec.describe MonitoringService, type: :service do
       it 'sets extra context with error payload, which returns json api error with all available informations' do
         expect(Sentry).to receive(:set_extras).with(
           hash_including(
-            error.to_h,
+            error.to_h
           )
         )
 
@@ -38,7 +38,7 @@ RSpec.describe MonitoringService, type: :service do
       it 'sets extra context with monitoring private context, which is not returned to users' do
         expect(Sentry).to receive(:set_extras).with(
           hash_including(
-            monitoring_private_context,
+            monitoring_private_context
           )
         )
 
@@ -49,7 +49,7 @@ RSpec.describe MonitoringService, type: :service do
         expect(Sentry).to receive(:capture_message).with(
           /#{provider}.*#{error.detail}/,
           hash_including(
-            level: 'warning',
+            level: 'warning'
           )
         ).at_least(1)
 
@@ -58,6 +58,8 @@ RSpec.describe MonitoringService, type: :service do
     end
 
     describe '#track_provider_error_from_response' do
+      subject { instance.track_provider_error_from_response(response, extra_context) }
+
       before(:all) do
         class SIADE::V2::Responses::DummyTrackProviderErrorResponse < SIADE::V2::Responses::Generic
           def adapt_raw_response_code
@@ -70,18 +72,16 @@ RSpec.describe MonitoringService, type: :service do
         end
       end
 
-      subject { instance.track_provider_error_from_response(response, extra_context) }
-
       let(:raw_response) do
         OpenStruct.new(
           body: '',
           code: code,
-          provider_error_custom_code: provider_error_custom_code,
+          provider_error_custom_code: provider_error_custom_code
         )
       end
       let(:extra_context) do
         {
-          custom_message: 'PANIK',
+          custom_message: 'PANIK'
         }
       end
 
@@ -92,7 +92,7 @@ RSpec.describe MonitoringService, type: :service do
       it 'sets extra context with errors inspected (which returns json api error with all available informations)' do
         expect(Sentry).to receive(:set_extras).with(
           hash_including(
-            errors: response.errors.map(&:to_h),
+            errors: response.errors.map(&:to_h)
           )
         )
 
@@ -102,7 +102,7 @@ RSpec.describe MonitoringService, type: :service do
       it 'sets extra context with extra_context param' do
         expect(Sentry).to receive(:set_extras).with(
           hash_including(
-            extra_context,
+            extra_context
           )
         )
 
@@ -111,7 +111,7 @@ RSpec.describe MonitoringService, type: :service do
 
       it 'sets tag provider_error_code with response#provider_error_custom_code' do
         expect(Sentry).to receive(:set_tags).with(
-          provider_error_code: provider_error_custom_code,
+          provider_error_code: provider_error_custom_code
         )
 
         subject
@@ -123,7 +123,7 @@ RSpec.describe MonitoringService, type: :service do
 
           it 'takes http code for tagging' do
             expect(Sentry).to receive(:set_tags).with(
-              provider_error_code: code,
+              provider_error_code: code
             )
 
             subject
@@ -135,7 +135,7 @@ RSpec.describe MonitoringService, type: :service do
         expect(Sentry).to receive(:capture_message).with(
           /#{provider}.*DummyTrackProviderErrorResponse/,
           hash_including(
-            level: 'warning',
+            level: 'warning'
           )
         ).at_least(1)
 
@@ -148,18 +148,16 @@ RSpec.describe MonitoringService, type: :service do
 
       let(:field) { 'adresse' }
       let(:exception) do
-        begin
-          nil.lol?
-        rescue => e
-          e
-        end
+        nil.lol?
+      rescue StandardError => e
+        e
       end
 
       it 'tracks event as info, with provider name and field missing' do
         expect(Sentry).to receive(:capture_message).with(
           /#{provider}.*#{field}/,
           hash_including(
-            level: 'info',
+            level: 'info'
           )
         )
 
@@ -169,7 +167,7 @@ RSpec.describe MonitoringService, type: :service do
       it 'sets context with exception' do
         expect(Sentry).to receive(:set_extras).with(
           exception: exception.message,
-          backtrace: exception.backtrace,
+          backtrace: exception.backtrace
         )
 
         subject
@@ -186,7 +184,7 @@ RSpec.describe MonitoringService, type: :service do
         expect(Sentry).to receive(:capture_message).with(
           /#{provider}.*#{field}.*#{deprecated_data}/,
           hash_including(
-            level: 'info',
+            level: 'info'
           )
         )
 
@@ -194,7 +192,7 @@ RSpec.describe MonitoringService, type: :service do
       end
     end
 
-    describe "#track" do
+    describe '#track' do
       subject { instance.track(level, message, extra_context) }
 
       let(:level) { 'warning' }
@@ -205,7 +203,7 @@ RSpec.describe MonitoringService, type: :service do
         expect(Sentry).to receive(:capture_message).with(
           message,
           {
-            level: level,
+            level: level
           }
         )
 
@@ -221,7 +219,7 @@ RSpec.describe MonitoringService, type: :service do
       context 'with extra_context set' do
         let(:extra_context) do
           {
-            lol: 'oki',
+            lol: 'oki'
           }
         end
 
@@ -230,7 +228,7 @@ RSpec.describe MonitoringService, type: :service do
           expect(Sentry).to receive(:capture_message).with(
             message,
             {
-              level: level,
+              level: level
             }
           )
 
@@ -250,14 +248,14 @@ RSpec.describe MonitoringService, type: :service do
       let(:user_context) do
         {
           id: user_uuid,
-          roles: ['role1', 'role2'],
-          jti: jti_uuid,
+          roles: %w[role1 role2],
+          jti: jti_uuid
         }
       end
 
       it 'sets user context for Sentry' do
         expect(Sentry).to receive(:set_user).with(
-          user_context,
+          user_context
         )
 
         subject
@@ -271,7 +269,7 @@ RSpec.describe MonitoringService, type: :service do
 
       it 'calls Sentry.set_tags with correct attributes' do
         expect(Sentry).to receive(:set_tags).with(
-          provider: provider,
+          provider: provider
         )
 
         subject
@@ -283,16 +281,16 @@ RSpec.describe MonitoringService, type: :service do
 
       let(:params) do
         {
-          'action'      => 'show',
-          'controller'  => 'api/v2/dummy_controller',
-          'siren'       => valid_siren,
-          'token'       => 'secret',
+          'action' => 'show',
+          'controller' => 'api/v2/dummy_controller',
+          'siren' => valid_siren,
+          'token' => 'secret'
         }
       end
 
       it 'calls Sentry.set_extras without token' do
         expect(Sentry).to receive(:set_extras).with(
-          params: params.except('token'),
+          params: params.except('token')
         )
 
         subject
@@ -300,7 +298,7 @@ RSpec.describe MonitoringService, type: :service do
 
       it 'tags context with controller and action' do
         expect(instance).to receive(:set_tags).with(
-          endpoint: "#{params['controller']}##{params['action']}",
+          endpoint: "#{params['controller']}##{params['action']}"
         )
 
         subject

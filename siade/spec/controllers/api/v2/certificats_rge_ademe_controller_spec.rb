@@ -6,6 +6,7 @@ RSpec.describe API::V2::CertificatsRGEAdemeController do
 
   context 'siret inconnu chez ADEME', vcr: { cassette_name: 'ademe/rge/with_not_found_siret' } do
     let(:token) { yes_jwt }
+
     it_behaves_like 'not_found', siret: not_found_siret(:rge_ademe)
   end
 
@@ -22,19 +23,19 @@ RSpec.describe API::V2::CertificatsRGEAdemeController do
       let(:token) { yes_jwt }
 
       context 'siret connu de l\'ADEME', vcr: { cassette_name: 'ademe/rge/with_valid_siret' } do
-        let(:siret) { valid_siret(:rge_ademe) }
-
         subject { response_body }
 
-        it 'returns HTTP code 200'  do
-          expect(response).to have_http_status(200)
+        let(:siret) { valid_siret(:rge_ademe) }
+
+        it 'returns HTTP code 200' do
+          expect(response).to have_http_status(:ok)
         end
 
         its([:qualifications]) do
           is_expected.to include(a_hash_including({
             nom: 'Qualisol - Pose de chauffe-eau solaire individuel (eau chaude solaire)',
             url_certificat: a_string_starting_with(Siade.credentials[:public_storage_url]).and(a_string_ending_with('-certificat_rge_ademe.pdf')),
-            nom_certificat: 'Qualisol CESI',
+            nom_certificat: 'Qualisol CESI'
           }))
         end
 
@@ -47,9 +48,9 @@ RSpec.describe API::V2::CertificatsRGEAdemeController do
 
           its([:qualifications]) do
             is_expected.to include(a_hash_including({
-              nom:            'Qualisol - Pose de chauffe-eau solaire individuel (eau chaude solaire)',
+              nom: 'Qualisol - Pose de chauffe-eau solaire individuel (eau chaude solaire)',
               url_certificat: nil,
-              nom_certificat: 'Qualisol CESI',
+              nom_certificat: 'Qualisol CESI'
             }))
           end
         end

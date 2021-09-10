@@ -1,13 +1,13 @@
 RSpec.describe 'Errors config file', type: :acceptance do
-  let(:errors_config_file) { Rails.root.join("config/errors.yml") }
+  let(:errors_config_file) { Rails.root.join('config/errors.yml') }
 
-  it "is a valid YAML" do
-    expect {
+  it 'is a valid YAML' do
+    expect do
       YAML.load_file(errors_config_file)
-    }.not_to raise_error
+    end.not_to raise_error
   end
 
-  it "is has at least a code or subcode properly formated" do
+  it 'is has at least a code or subcode properly formated' do
     YAML.load_file(errors_config_file).each do |error_entry|
       expect(error_entry).to have_key('code').or have_key('subcode')
 

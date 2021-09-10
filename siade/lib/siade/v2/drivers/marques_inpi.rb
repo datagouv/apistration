@@ -19,7 +19,7 @@ class SIADE::V2::Drivers::MarquesINPI < SIADE::V2::Drivers::GenericDriver
     if request.errors.blank?
       begin
         parse_marques_information
-      rescue
+      rescue StandardError
         Rails.logger.error
         set_error_message_for 502
       end
@@ -47,16 +47,16 @@ class SIADE::V2::Drivers::MarquesINPI < SIADE::V2::Drivers::GenericDriver
   end
 
   def marque_fields_raw_into_hash(fields)
-    fields.map { |f| [f['name'], (f['value'] || f['values'])]  }.to_h
+    fields.map { |f| [f['name'], (f['value'] || f['values'])] }.to_h
   end
 
   def marque_raw_hash_interesting_keys_with_readable_names
     [
-      ["ApplicationNumber"          , "numero_identification"],
-      ["Mark"                       , "marque"],
-      ["MarkCurrentStatusCode"      , "marque_status"],
-      ["DEPOSANT"                   , "depositaire"],
-      ["ukey"                       , "cle"]
+      %w[ApplicationNumber numero_identification],
+      %w[Mark marque],
+      %w[MarkCurrentStatusCode marque_status],
+      %w[DEPOSANT depositaire],
+      %w[ukey cle]
     ]
   end
 

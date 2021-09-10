@@ -1,5 +1,4 @@
 class SIADE::V2::Responses::CertificatsCNETP < SIADE::V2::Responses::Generic
-
   protected
 
   def provider_name

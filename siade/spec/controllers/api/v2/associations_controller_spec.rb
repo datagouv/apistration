@@ -5,20 +5,20 @@ RSpec.describe API::V2::AssociationsController, type: :controller do
   it_behaves_like 'ask_for_mandatory_parameters', :show, id: valid_rna_id
 
   describe 'invalid rna association' do
-    let(:id) { '11111111111111' }
-    let(:token) { yes_jwt }
-
     subject do
       get :show, params: { id: id, token: token }.merge(mandatory_params)
     end
 
+    let(:id) { '11111111111111' }
+    let(:token) { yes_jwt }
+
     its(:status) { is_expected.to eq(422) }
 
     it 'returns 422 with error message' do
-      json = JSON::parse(subject.body)
+      json = JSON.parse(subject.body)
 
       expect(json).to have_json_error(
-        detail: 'Le numéro de siret ou le numéro d\'association indiqué n\'est pas correctement formatté',
+        detail: 'Le numéro de siret ou le numéro d\'association indiqué n\'est pas correctement formatté'
       )
     end
   end
@@ -28,7 +28,6 @@ RSpec.describe API::V2::AssociationsController, type: :controller do
 
     context 'when using a RNA' do
       context 'when RNA id exists', vcr: { cassette_name: 'rna_association/W952002436' } do
-
         let(:id)    { 'W952002436' }
         let(:token) { yes_jwt }
         let(:json)  { JSON.parse(subject.body, symbolize_names: true) }
@@ -42,14 +41,14 @@ RSpec.describe API::V2::AssociationsController, type: :controller do
         end
 
         context 'field association' do
+          subject { @associations_controller_json_association }
+
           before do
             remember_through_each_test_of_current_scope('associations_controller_json_association') do
               get :show, params: { id: id, token: yes_jwt }.merge(mandatory_params)
               json = JSON.parse(response.body, symbolize_names: true)[:association]
             end
           end
-
-          subject { @associations_controller_json_association }
 
           its([:id])                      { is_expected.to eq(id) }
           its([:titre])                   { is_expected.to eq('GROSLAY SPORT PETANQUE') }
@@ -62,10 +61,10 @@ RSpec.describe API::V2::AssociationsController, type: :controller do
           its([:code_civilite_dirigeant]) { is_expected.to eq(nil) }
           its([:civilite_dirigeant])      { is_expected.to eq(nil) }
           its([:code_etat])               { is_expected.to eq(nil) }
-          its([:etat])                    { is_expected.to eq("false") }
+          its([:etat])                    { is_expected.to eq('false') }
           its([:code_groupement])         { is_expected.to eq(nil) }
           its([:groupement])              { is_expected.to eq('Simple') }
-          its([:mise_a_jour])             { is_expected.to eq("2011-12-09") }
+          its([:mise_a_jour])             { is_expected.to eq('2011-12-09') }
 
           context 'adresse_siege' do
             subject { super()[:adresse_siege] }
@@ -83,7 +82,6 @@ RSpec.describe API::V2::AssociationsController, type: :controller do
       end # end valid RNA id
 
       context 'when id does not exist', vcr: { cassette_name: 'rna_association/non_existing_rna_id' } do
-
         let(:id)    { non_existing_rna_id }
         let(:token) { yes_jwt }
 
@@ -91,13 +89,11 @@ RSpec.describe API::V2::AssociationsController, type: :controller do
           expect(subject.status).to eq(404)
         end
       end
-
     end # end using RNA
 
     context 'when using a siret', vcr: { cassette_name: 'rna_association/42135938100025' } do
       context 'when siret is correct' do
         context 'when siret is found' do
-
           let(:id)    { '42135938100025' }
           let(:token) { yes_jwt }
 
@@ -106,14 +102,13 @@ RSpec.describe API::V2::AssociationsController, type: :controller do
           context 'association retrieved' do
             subject { JSON.parse(super().body) }
 
-            it { expect(subject['association']['id']).to                 eq ("W751135389") }
-            it { expect(subject['association']['siret_siege_social']).to eq ("42135938100033") }
-            it { expect(subject['association']['siret']).to              eq ('42135938100025') }
+            it { expect(subject['association']['id']).to                 eq('W751135389') }
+            it { expect(subject['association']['siret_siege_social']).to eq('42135938100033') }
+            it { expect(subject['association']['siret']).to              eq('42135938100025') }
           end
         end
 
         context 'when siret is not found', vcr: { cassette_name: 'rna_association/W000000000' } do
-
           let(:id)    { 'W000000000' }
           let(:token) { yes_jwt }
 
@@ -122,7 +117,6 @@ RSpec.describe API::V2::AssociationsController, type: :controller do
       end
 
       context 'when siret is not valid', vcr: { cassette_name: 'rna_association/11111111111111' } do
-
         let(:id)    { '11111111111111' }
         let(:token) { yes_jwt }
 

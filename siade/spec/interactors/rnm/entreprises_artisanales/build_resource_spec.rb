@@ -21,7 +21,7 @@ RSpec.describe RNM::EntreprisesArtisanales::BuildResource, type: :build_resource
         libelle_epci: 'Métropole du Grand Paris',
         code_norme_activite_entreprises: nil,
 
-        rnm_id: 19139,
+        rnm_id: 19_139,
         rnm_numero_gestion: '179456475',
         rnm_date_import: '2019-11-02T09:09:25Z',
         rnm_date_mise_a_jour: '2021-01-14T02:00:14Z',
@@ -38,7 +38,7 @@ RSpec.describe RNM::EntreprisesArtisanales::BuildResource, type: :build_resource
           commune: 'PARIS',
           commune_cog: '75119',
           departement: 'PARIS',
-          region: 'ILE-DE-FRANCE',
+          region: 'ILE-DE-FRANCE'
         },
 
         dirigeant_qualification: 'MAITRE ARTISAN',
@@ -77,7 +77,7 @@ RSpec.describe RNM::EntreprisesArtisanales::BuildResource, type: :build_resource
         eirl_id_registre: nil,
         eirl_denomination: nil,
         eirl_objet_activite: nil,
-        eirl_date_depot: nil,
+        eirl_date_depot: nil
       }
     end
 
@@ -91,7 +91,7 @@ RSpec.describe RNM::EntreprisesArtisanales::BuildResource, type: :build_resource
 
     let(:params) do
       {
-        siren: valid_siren(:rnm_cma),
+        siren: valid_siren(:rnm_cma)
       }
     end
 

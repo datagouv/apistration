@@ -6,11 +6,11 @@ class APIController < ActionController::API
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   rescue_from ::JWT::ExpiredSignature, with: :user_no_longer_authorized
 
-  # FIXME need test
+  # FIXME: need test
   # rescue_from ActionDispatch::ParamsParser::ParseError, with: :bad_request
   rescue_from ActionController::ParameterMissing, with: :bad_request
 
-  after_action :verify_authorized, :except => :index
+  after_action :verify_authorized, except: :index
 
   def process_action(*args)
     super
@@ -33,9 +33,9 @@ class APIController < ActionController::API
     raise ::NotImplementedError
   end
 
-  def render_errors(retriever, extra_payload={})
+  def render_errors(retriever, extra_payload = {})
     render json:    ErrorsSerializer.new(retriever.errors, format: error_format).as_json.merge(extra_payload || {}),
-           status:  retriever.http_code
+      status:  retriever.http_code
   end
 
   private

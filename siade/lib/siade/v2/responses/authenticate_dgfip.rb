@@ -22,7 +22,7 @@ class SIADE::V2::Responses::AuthenticateDGFIP < SIADE::V2::Responses::Generic
   def authentication_failed
     is_error = false
     is_error ||= @body.include?('Identifiant ou mot de passe erron') unless @body.nil?
-    is_error ||= !(cookie =~ /^lemondgfip=.{65}; domain=.dgfip.finances.gouv.fr; path=\//)
+    is_error ||= !(cookie =~ %r{^lemondgfip=.{65}; domain=.dgfip.finances.gouv.fr; path=/})
   end
 
   def set_error_message_502

@@ -1,5 +1,5 @@
 RSpec.describe SIADE::V2::Requests::EORIDouanes, type: :provider_request do
-  subject { described_class.new({eori: eori}).perform }
+  subject { described_class.new({ eori: eori }).perform }
 
   let(:payload) { JSON.parse(subject.response.body, symbolize_names: true) }
 
@@ -11,21 +11,25 @@ RSpec.describe SIADE::V2::Requests::EORIDouanes, type: :provider_request do
 
     context 'when EORI does not respect the UE format (does not start with letters)' do
       let(:eori) { "__#{valid_siret}" }
+
       it_behaves_like 'invalid EORI'
     end
 
     context 'when foreign EORI contains whitespaces' do
       let(:eori) { "\t\r\n#{valid_spanish_eori}" }
+
       it_behaves_like 'invalid EORI'
     end
 
     context 'when EORI contains whitespaces' do
       let(:eori) { "\t\r\n#{valid_eori}" }
+
       it_behaves_like 'invalid EORI'
     end
 
     context 'when EORI suffix is not a SIRET' do
       let(:eori) { invalid_eori }
+
       it_behaves_like 'invalid EORI'
     end
   end

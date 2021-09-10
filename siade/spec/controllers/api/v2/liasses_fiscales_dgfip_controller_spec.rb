@@ -4,7 +4,7 @@ RSpec.describe API::V2::LiassesFiscalesDGFIPController, type: :controller do
   end
 
   let(:maintenance) { false }
-  let(:token)   { yes_jwt }
+  let(:token) { yes_jwt }
 
   describe 'happy path', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_valid_siren' } do
     before do
@@ -12,9 +12,9 @@ RSpec.describe API::V2::LiassesFiscalesDGFIPController, type: :controller do
     end
 
     describe 'happy path: liasse complete' do
-      before { get :show, params: { token: token, siren: valid_siren(:liasse_fiscale), annee: 2017 }.merge(mandatory_params) }
-
       subject { response }
+
+      before { get :show, params: { token: token, siren: valid_siren(:liasse_fiscale), annee: 2017 }.merge(mandatory_params) }
 
       its(:status) { is_expected.to eq(200) }
 
@@ -25,11 +25,11 @@ RSpec.describe API::V2::LiassesFiscalesDGFIPController, type: :controller do
     end
 
     describe 'happy path: liasse dictionnaire' do
+      subject { response }
+
       let(:siren) { valid_siren(:liasse_fiscale) }
 
       before { get :dictionnaire, params: { token: token, siren: siren, annee: 2017 }.merge(mandatory_params) }
-
-      subject { response }
 
       its(:status) { is_expected.to eq(200) }
 
@@ -40,9 +40,9 @@ RSpec.describe API::V2::LiassesFiscalesDGFIPController, type: :controller do
     end
 
     describe 'happy path: liasse dictionnaire without siren' do
-      before { get :dictionnaire, params: { token: token, annee: 2017 }.merge(mandatory_params) }
-
       subject { response }
+
+      before { get :dictionnaire, params: { token: token, annee: 2017 }.merge(mandatory_params) }
 
       its(:status) { is_expected.to eq(200) }
 
@@ -53,9 +53,9 @@ RSpec.describe API::V2::LiassesFiscalesDGFIPController, type: :controller do
     end
 
     describe 'happy path: liasse declaration' do
-      before{ get :declaration, params: { token: token, siren: valid_siren(:liasse_fiscale), annee: 2017 }.merge(mandatory_params) }
-
       subject { response }
+
+      before { get :declaration, params: { token: token, siren: valid_siren(:liasse_fiscale), annee: 2017 }.merge(mandatory_params) }
 
       its(:status) { is_expected.to eq(200) }
 
@@ -68,7 +68,7 @@ RSpec.describe API::V2::LiassesFiscalesDGFIPController, type: :controller do
 
   describe 'with a valid DGFiP authentication', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_non_existent_siren' } do
     before do
-     allow(UserIdDGFIPService).to receive(:call).and_return(valid_dgfip_user_id)
+      allow(UserIdDGFIPService).to receive(:call).and_return(valid_dgfip_user_id)
     end
 
     it_behaves_like 'unauthorized', :show, annee: 2017
@@ -88,11 +88,11 @@ RSpec.describe API::V2::LiassesFiscalesDGFIPController, type: :controller do
     it_behaves_like 'unprocessable_entity', :declaration, :siren, annee: 2017
 
     describe 'wrong year format' do
+      subject { response }
+
       before do
         get :show, params: { token: yes_jwt, siren: valid_siren(:liasse_fiscale), annee: 'not a year' }.merge(mandatory_params)
       end
-
-      subject { response }
 
       its(:status) { is_expected.to eq(422) }
       it { expect(JSON.parse(subject.body)).to have_json_error(detail: 'L\'année n\'est pas correctement formatée') }
@@ -100,6 +100,8 @@ RSpec.describe API::V2::LiassesFiscalesDGFIPController, type: :controller do
   end
 
   describe 'when DGFiP authentication fails' do
+    subject { response }
+
     let(:siren) { invalid_siren }
     let(:token) { yes_jwt }
 
@@ -107,8 +109,6 @@ RSpec.describe API::V2::LiassesFiscalesDGFIPController, type: :controller do
       allow_any_instance_of(AuthenticateDGFIPService).to receive(:authenticate!)
       allow_any_instance_of(AuthenticateDGFIPService).to receive(:success?).and_return(false)
     end
-
-    subject { response }
 
     shared_examples 'DGFiP authentication failed' do
       its(:status) { is_expected.to eq(502) }

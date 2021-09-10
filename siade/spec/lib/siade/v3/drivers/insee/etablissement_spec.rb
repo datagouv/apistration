@@ -45,9 +45,9 @@ RSpec.describe SIADE::V3::Drivers::INSEE::Etablissement, type: :provider_driver 
     its(:raison_sociale) { is_expected.to be_nil }
     its(:etat_administratif) { is_expected.to eq 'A' }
     its(:date_fermeture) { is_expected.to be_nil }
-    its(:date_dernier_traitement) { is_expected.to eq 1271541600 }
+    its(:date_dernier_traitement) { is_expected.to eq 1_271_541_600 }
     its(:diffusable_commercialement) { is_expected.to be true }
-    its(:date_creation) { is_expected.to eq 1085522400 }
+    its(:date_creation) { is_expected.to eq 1_085_522_400 }
     its(:enseigne_1) { is_expected.to be_nil }
     its(:activite_princiaple_registre_metiers) { is_expected.to be_nil }
     its(:caractere_employeur) { is_expected.to eq 'O' }
@@ -75,8 +75,9 @@ RSpec.describe SIADE::V3::Drivers::INSEE::Etablissement, type: :provider_driver 
     describe 'periodes_etablissment' do
       subject { @etab_active_GE.periodes_etablissement.second }
 
-      its([:date_fin]) { is_expected.to eq 1199055600 }
-      its([:date_debut]) { is_expected.to eq 1103929200 }
+      its([:date_fin]) { is_expected.to eq 1_199_055_600 }
+      its([:date_debut]) { is_expected.to eq 1_103_929_200 }
+
       it 'have date in correct order' do
         expect(subject[:date_fin]).to be > subject[:date_debut]
       end
@@ -125,8 +126,8 @@ RSpec.describe SIADE::V3::Drivers::INSEE::Etablissement, type: :provider_driver 
       its([:sigle]) { is_expected.to be_nil }
       its([:etat_administratif]) { is_expected.to eq 'A' }
       its([:diffusable_commercialement?]) { is_expected.to be true }
-      its([:date_creation]) { is_expected.to eq 220921200 }
-      its([:date_dernier_traitement]) { is_expected.to eq 1518476400 }
+      its([:date_creation]) { is_expected.to eq 220_921_200 }
+      its([:date_dernier_traitement]) { is_expected.to eq 1_518_476_400 }
 
       its([:sexe]) { is_expected.to be_nil }
       its([:nom]) { is_expected.to be_nil }
@@ -193,7 +194,6 @@ RSpec.describe SIADE::V3::Drivers::INSEE::Etablissement, type: :provider_driver 
       its([:economie_sociale_et_solidaire]) { is_expected.to eq 'N' }
     end
   end
-
 
   context 'with an active AE (Auto-entrepreneur)', vcr: { cassette_name: 'api_insee_fr/siret/active_AE' } do
     subject { @etab_active_AE }
@@ -264,7 +264,7 @@ RSpec.describe SIADE::V3::Drivers::INSEE::Etablissement, type: :provider_driver 
     let(:siret) { closed_siret }
 
     its(:etat_administratif) { is_expected.to eq 'F' }
-    its(:date_fermeture) { is_expected.to eq 1315173600 }
+    its(:date_fermeture) { is_expected.to eq 1_315_173_600 }
   end
 
   describe 'siret redirected to another siret', vcr: { cassette_name: 'api_insee_fr/siret/redirected' } do

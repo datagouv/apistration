@@ -4,8 +4,8 @@ class SIADE::V2::Retrievers::LiassesFiscalesDGFIP
   attr_accessor :siren, :annee, :cookie, :user_id, :request_type
 
   def retrieve
-    declaration_request.perform  if [:declaration, :both].include?(request_type)
-    dictionary_request.perform if [:dictionary, :both].include?(request_type)
+    declaration_request.perform if %i[declaration both].include?(request_type)
+    dictionary_request.perform if %i[dictionary both].include?(request_type)
     self
   end
 

@@ -17,9 +17,7 @@ class SIADE::V2::Retrievers::BilansINPI < SIADE::V2::Retrievers::GenericInformat
   def retrieve
     driver_bilans.perform_request
 
-    if driver_bilans.success?
-      driver_get_documents.perform_request
-    end
+    driver_get_documents.perform_request if driver_bilans.success?
   end
 
   def http_code
@@ -33,6 +31,6 @@ class SIADE::V2::Retrievers::BilansINPI < SIADE::V2::Retrievers::GenericInformat
   private
 
   def ids_fichiers
-    @ids_fichiers ||= driver_bilans.bilans.map{ |bilan| bilan[:id_fichier] }
+    @ids_fichiers ||= driver_bilans.bilans.pluck(:id_fichier)
   end
 end

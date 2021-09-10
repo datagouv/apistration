@@ -51,7 +51,7 @@ class SIADE::V2::Responses::AttestationsSocialesACOSS < SIADE::V2::Responses::Ge
       @raw_response.body,
       symbolize_names: true
     )
-  rescue
+  rescue StandardError
     []
   end
 
@@ -64,7 +64,7 @@ class SIADE::V2::Responses::AttestationsSocialesACOSS < SIADE::V2::Responses::Ge
   end
 
   def errors_codes
-    @errors_codes ||= json_errors.map { |e| e[:code] }
+    @errors_codes ||= json_errors.pluck(:code)
   end
 
   def set_standard_errors
@@ -87,9 +87,9 @@ class SIADE::V2::Responses::AttestationsSocialesACOSS < SIADE::V2::Responses::Ge
     error_codes_acoss_concatenate.strip!
 
     add_context_to_provider_error_tracking(
-      acoss_error:       error_codes_acoss_concatenate,
-      acoss_messages:    error_messages_acoss,
-      accos_description: error_descriptions_acoss,
+      acoss_error: error_codes_acoss_concatenate,
+      acoss_messages: error_messages_acoss,
+      accos_description: error_descriptions_acoss
     )
 
     @provider_error_custom_code = error_codes_acoss_concatenate
@@ -98,14 +98,14 @@ class SIADE::V2::Responses::AttestationsSocialesACOSS < SIADE::V2::Responses::Ge
   def set_error_for_empty_body
     @error_code_acoss = 'NO CODE EMPTY BODY'
     @error_message_acoss = 'Empty body'
-    @error_description_acoss = "ACOSS request failed due to empty body"
+    @error_description_acoss = 'ACOSS request failed due to empty body'
 
     set_error_message_for(502)
 
     add_context_to_provider_error_tracking(
-      acoss_error:       @error_code_acoss,
-      acoss_message:     @error_message_acoss,
-      accos_description: @error_description_acoss,
+      acoss_error: @error_code_acoss,
+      acoss_message: @error_message_acoss,
+      accos_description: @error_description_acoss
     )
 
     @provider_error_custom_code = @error_code_acoss
@@ -113,35 +113,35 @@ class SIADE::V2::Responses::AttestationsSocialesACOSS < SIADE::V2::Responses::Ge
 
   def handle_json_error_body_not_an_array
     Sentry.set_extras(
-      body: json_errors,
+      body: json_errors
     )
     Sentry.capture_message(
-      'Wrong payload from ACOSS (originaly reported in 1895733)',
+      'Wrong payload from ACOSS (originaly reported in 1895733)'
     )
     (@errors ||= []) << ProviderUnknownError.new(
       provider_name,
-      "L'ACOSS a répondu avec une erreur non supportée (erreur: ACOSS request failed due to unexpected body)",
+      "L'ACOSS a répondu avec une erreur non supportée (erreur: ACOSS request failed due to unexpected body)"
     )
 
     502
   end
 
   def set_error_message
-   if error_code_acoss_for_503.include?(@error_code_acoss)
-     set_error_message_for(503)
-   elsif error_code_acoss_for_404.include?(@error_code_acoss)
-     set_error_message_for(404)
-   else
-     set_error_message_for(502)
-   end
+    if error_code_acoss_for_503.include?(@error_code_acoss)
+      set_error_message_for(503)
+    elsif error_code_acoss_for_404.include?(@error_code_acoss)
+      set_error_message_for(404)
+    else
+      set_error_message_for(502)
+    end
   end
 
   def error_code_acoss_for_503
-    %w(FUNC502 FUNC503 FUNC504 FUNC510 FUNC511 FUNC512 FUNC513 FUNC514 FUNC515 FUNC516 FUNC429)
+    %w[FUNC502 FUNC503 FUNC504 FUNC510 FUNC511 FUNC512 FUNC513 FUNC514 FUNC515 FUNC516 FUNC429]
   end
 
   def error_code_acoss_for_404
-    %w(FUNC501 FUNC517)
+    %w[FUNC501 FUNC517]
   end
 
   def set_standard_error_message
@@ -157,21 +157,21 @@ class SIADE::V2::Responses::AttestationsSocialesACOSS < SIADE::V2::Responses::Ge
   def set_error_message_404
     (@errors ||= []) << NotFoundError.new(
       provider_name,
-      "Siren invalide, l'ACOSS ne peut délivrer d'attestation (erreur: #{@error_description_acoss} Code d'erreur ACOSS : #{@error_code_acoss})",
+      "Siren invalide, l'ACOSS ne peut délivrer d'attestation (erreur: #{@error_description_acoss} Code d'erreur ACOSS : #{@error_code_acoss})"
     )
   end
 
   def set_error_message_503
     (@errors ||= []) << ProviderTimeoutError.new(
       provider_name,
-      "L'ACOSS ne peut répondre à votre requête, réessayez ultérieurement (erreur: #{@error_description_acoss})",
+      "L'ACOSS ne peut répondre à votre requête, réessayez ultérieurement (erreur: #{@error_description_acoss})"
     )
   end
 
   def set_error_message_502
     (@errors ||= []) << ProviderUnknownError.new(
       provider_name,
-      "L'ACOSS a répondu avec une erreur non supportée (erreur: #{@error_description_acoss})",
+      "L'ACOSS a répondu avec une erreur non supportée (erreur: #{@error_description_acoss})"
     )
   end
 end

@@ -34,11 +34,11 @@ class MaintenanceService
     if from_hour > to_hour
       [
         (from_hour..now.end_of_day),
-        (now.beginning_of_day..to_hour),
+        (now.beginning_of_day..to_hour)
       ]
     else
       [
-        (from_hour..to_hour),
+        (from_hour..to_hour)
       ]
     end
   end

@@ -5,7 +5,7 @@ class RNAError < AbstractSpecificProviderError
 
   def subcode_config
     {
-      incorrect_xml: '501',
+      incorrect_xml: '501'
     }
   end
 end

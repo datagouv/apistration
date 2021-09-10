@@ -7,6 +7,7 @@ class API::AuthenticateEntityController < APIController
   include HasMandatoryParams
 
   private
+
   def authenticate_entity!
     @token = retrieve_token
     raise not_valid_token_error unless @token
@@ -32,8 +33,7 @@ class API::AuthenticateEntityController < APIController
   end
 
   def retrieve_token
-    token = token_from_query_params || token_from_headers
-    token
+    token_from_query_params || token_from_headers
   end
 
   def token_from_query_params
@@ -62,11 +62,11 @@ class API::AuthenticateEntityController < APIController
 
   def set_monitoring_context
     monitoring_service.set_user_context(
-      pundit_user.as_json.symbolize_keys!,
+      pundit_user.as_json.symbolize_keys!
     )
 
     monitoring_service.set_controller_params(
-      params.to_unsafe_h,
+      params.to_unsafe_h
     )
   end
 

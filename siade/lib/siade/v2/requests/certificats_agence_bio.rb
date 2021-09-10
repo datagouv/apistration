@@ -38,12 +38,12 @@ class SIADE::V2::Requests::CertificatsAgenceBIO < SIADE::V2::Requests::Generic
 
   def request_params
     {
-      q: siret,
+      q: siret
     }.merge(filter_active_certifications_only)
   end
 
   def filter_active_certifications_only
-    { filtrerEngages: 1, }
+    { filtrerEngages: 1 }
   end
 
   def response_wrapper

@@ -10,8 +10,8 @@ RSpec.describe SIADE::V2::Requests::INPI::Authenticate, type: :provider_request 
       inpi_url = Siade.credentials[:inpi_url]
       url_pattern = /#{inpi_url}/
       stub_request(:post, url_pattern).to_return({
-        status:  200,
-        body:    'response without cookie in header',
+        status: 200,
+        body: 'response without cookie in header',
         headers: {}
       })
     end

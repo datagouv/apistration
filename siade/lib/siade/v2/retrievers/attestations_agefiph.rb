@@ -1,5 +1,6 @@
 class SIADE::V2::Retrievers::AttestationsAGEFIPH < SIADE::V2::Retrievers::GenericInformationRetriever
   attr_reader :siret
+
   register_driver :attestation_agefiph, class_name: SIADE::V2::Drivers::AttestationsAGEFIPH, init_with: :siret
 
   fetch_attributes_through_driver :attestation_agefiph,
@@ -7,7 +8,6 @@ class SIADE::V2::Retrievers::AttestationsAGEFIPH < SIADE::V2::Retrievers::Generi
     :dump_date,
     :success?,
     :http_code
-
 
   def initialize(siret)
     @siret = siret

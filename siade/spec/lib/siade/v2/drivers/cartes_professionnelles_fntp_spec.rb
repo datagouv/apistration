@@ -19,7 +19,7 @@ RSpec.describe SIADE::V2::Drivers::CartesProfessionnellesFNTP, :self_hosted_doc,
       before do
         url = 'http://rip.fntp.fr/rip/sgmap/'
         stub_request(:get, /#{url}/)
-          .to_return({ status: 200, body: "no pdf here" })
+          .to_return({ status: 200, body: 'no pdf here' })
       end
 
       its(:http_code) { is_expected.to eq(502) }

@@ -32,9 +32,9 @@ class RenewINSEETokenService
 
   def secrets
     {
-      token:           token_request.token,
+      token: token_request.token,
       expiration_date: token_request.expiration_date,
-      expires_in:      token_request.expires_in
+      expires_in: token_request.expires_in
     }
   end
 

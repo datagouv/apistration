@@ -57,7 +57,7 @@ RSpec.describe ACOSS::AttestationsSociales::ValidateResponse, type: :validate_re
           error = subject.errors.first
 
           expect(error.meta[:provider_errors]).to eq(
-            json_errors,
+            json_errors
           )
         end
       end
@@ -65,7 +65,7 @@ RSpec.describe ACOSS::AttestationsSociales::ValidateResponse, type: :validate_re
       context 'when it is a hash instead of an array' do
         let(:json_errors) do
           {
-            oki: 'wtf??',
+            oki: 'wtf??'
           }
         end
 
@@ -79,7 +79,7 @@ RSpec.describe ACOSS::AttestationsSociales::ValidateResponse, type: :validate_re
           error = subject.errors.first
 
           expect(error.monitoring_private_context).to eq(
-            body: json_errors.to_json,
+            body: json_errors.to_json
           )
         end
       end

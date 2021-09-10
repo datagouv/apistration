@@ -6,7 +6,7 @@ class API::V2::EORIDouanesController < API::V2::BaseController
     retrieve_eori_douanes.retrieve
 
     if retrieve_eori_douanes.success?
-      render json: EORIDouanesSerializer.new(retrieve_eori_douanes).as_json,  status: retrieve_eori_douanes.http_code
+      render json: EORIDouanesSerializer.new(retrieve_eori_douanes).as_json, status: retrieve_eori_douanes.http_code
     else
       render_errors(retrieve_eori_douanes)
     end

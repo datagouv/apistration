@@ -4,7 +4,7 @@ RSpec.describe RNM::EntreprisesArtisanales::MakeRequest, type: :make_request do
 
     let(:params) do
       {
-        siren: siren,
+        siren: siren
       }
     end
 

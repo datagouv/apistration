@@ -1,11 +1,8 @@
 RSpec.describe SIADE::V2::Responses::BilansEntreprisesBDF, type: :provider_response do
-
   subject { SIADE::V2::Requests::BilansEntreprisesBDF.new(siren).perform.response }
 
   context 'BDF app returns 200 and embeds true http code into json field' do
-
-    context 'we return 404 when siren does not exist', vcr: { cassette_name:  'bilan_entreprise_bdf_non_existent_siren' } do
-
+    context 'we return 404 when siren does not exist', vcr: { cassette_name: 'bilan_entreprise_bdf_non_existent_siren' } do
       let(:siren) { non_existent_siren }
 
       its(:'raw_response.code')       { is_expected.to eq(200) }
@@ -15,7 +12,6 @@ RSpec.describe SIADE::V2::Responses::BilansEntreprisesBDF, type: :provider_respo
     end
 
     context 'we return 404 when siren exists but has no data', vcr: { cassette_name: 'bilan_entreprise_bdf_no_data_siren' } do
-
       let(:siren) { '828277871' } # Saturne consulting
 
       its(:'raw_response.code')       { is_expected.to eq(200) }
@@ -23,7 +19,6 @@ RSpec.describe SIADE::V2::Responses::BilansEntreprisesBDF, type: :provider_respo
       its(:raw_functionnal_http_code) { is_expected.to eq(204) }
       its(:errors)                    { is_expected.to have_error("Le siret ou siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel") }
     end
-
 
     context 'we return 503 when their database is out' do
       let(:siren) { valid_siren }
@@ -37,7 +32,7 @@ RSpec.describe SIADE::V2::Responses::BilansEntreprisesBDF, type: :provider_respo
       its(:'raw_response.code')       { is_expected.to eq(200) }
       its(:http_code)                 { is_expected.to eq(503) }
       its(:raw_functionnal_http_code) { is_expected.to eq(501) }
-      its(:errors)                    { is_expected.to have_error("Les serveurs de la Banque de France rencontrent une erreur de base de données") }
+      its(:errors)                    { is_expected.to have_error('Les serveurs de la Banque de France rencontrent une erreur de base de données') }
 
       include_examples 'provider\'s response error'
     end
@@ -54,7 +49,7 @@ RSpec.describe SIADE::V2::Responses::BilansEntreprisesBDF, type: :provider_respo
       its(:'raw_response.code')       { is_expected.to eq(200) }
       its(:http_code)                 { is_expected.to eq(503) }
       its(:raw_functionnal_http_code) { is_expected.to eq(500) }
-      its(:errors)                    { is_expected.to have_error("Les serveurs de la Banque de France rencontrent une erreur interne") }
+      its(:errors)                    { is_expected.to have_error('Les serveurs de la Banque de France rencontrent une erreur interne') }
 
       include_examples 'provider\'s response error'
     end

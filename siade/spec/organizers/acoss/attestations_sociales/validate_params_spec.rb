@@ -5,7 +5,7 @@ RSpec.describe ACOSS::AttestationsSociales::ValidateParams, type: :validate_para
     {
       siren: siren,
       user_id: user_id,
-      recipient: recipient,
+      recipient: recipient
     }
   end
 

@@ -33,7 +33,7 @@ class SIADE::V3::Referentials::CategorieJuridique
 
   def as_json
     {
-      code:    code,
+      code: code,
       libelle: libelle
     }
   end
@@ -42,6 +42,7 @@ class SIADE::V3::Referentials::CategorieJuridique
 
   def result
     return unless valid?
+
     @result ||= CSV.foreach(file_name, headers: true) do |row|
       hash = row.to_hash.symbolize_keys
       return hash if hash[:Code] == @code

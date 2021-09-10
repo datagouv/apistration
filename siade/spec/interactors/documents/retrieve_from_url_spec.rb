@@ -16,7 +16,7 @@ RSpec.describe Documents::RetrieveFromUrl do
           .to_return(
             status: 200,
             body: 'much doc content'
-        )
+          )
       end
 
       it { is_expected.to be_success }
@@ -30,7 +30,7 @@ RSpec.describe Documents::RetrieveFromUrl do
           .to_return(
             status: 404,
             body: 'Not Found'
-        )
+          )
       end
 
       it { is_expected.to be_failure }
