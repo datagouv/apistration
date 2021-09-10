@@ -1,7 +1,5 @@
 inherit_from: .rubocop_todo.yml
 
-#inherit_from: .rubocop_todo.yml
-
 require:
   - rubocop-rspec
   - rubocop-rails
@@ -42,6 +40,11 @@ Metrics/BlockLength:
     - 'describe'
     - 'context'
     - 'namespace'
+    - 'shared_examples'
+    - 'let'
+    - 'path'
+    - 'get'
+    - 'response'
 
 Layout/LineLength:
   Enabled: false
@@ -100,3 +103,8 @@ Lint/InheritException:
 # Can't agree on this rule so we disable
 Style/MethodCallWithArgsParentheses:
   Enabled: false
+
+# Allowing uppercase in some method names
+Naming/MethodName:
+  IgnoredPatterns:
+    - starts_with_FR?

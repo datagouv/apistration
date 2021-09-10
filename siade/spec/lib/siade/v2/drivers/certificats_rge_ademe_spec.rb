@@ -26,6 +26,7 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEAdeme, type: :provider_driver d
           end
         end
 
+        # rubocop:disable Metrics/BlockLength
         it do
           expect(subject).to contain_exactly(
             a_hash_including({
@@ -55,6 +56,7 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEAdeme, type: :provider_driver d
             })
           )
         end
+        # rubocop:enable Metrics/BlockLength
       end
 
       context 'without the option not to upload the PDF' do
@@ -66,6 +68,7 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEAdeme, type: :provider_driver d
           end
         end
 
+        # rubocop:disable Metrics/BlockLength
         it do
           expect(subject).to contain_exactly(
             a_hash_including({
@@ -95,6 +98,7 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEAdeme, type: :provider_driver d
             })
           )
         end
+        # rubocop:enable Metrics/BlockLength
       end
 
       context 'when an error occurs with at least one document' do

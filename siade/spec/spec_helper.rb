@@ -105,6 +105,7 @@ RSpec.configure do |config|
   #     end
   config.infer_spec_type_from_file_location!
 
+  # rubocop:disable RSpec/BeforeAfterAll
   # Defer garbage collection to prevent it from running randomly as usual and slowing testing
   config.before(:all) do
     DeferredGarbageCollection.start
@@ -113,6 +114,7 @@ RSpec.configure do |config|
   config.after(:all) do
     DeferredGarbageCollection.reconsider
   end
+  # rubocop:enable RSpec/BeforeAfterAll
 
   config.include ResponsesHelper, type: :controller
   config.include ResponsesHelper, type: :request

@@ -173,6 +173,7 @@ class SIADE::V3::Drivers::INSEE::Entreprise < SIADE::V2::Drivers::GenericDriver
     info_entreprise_actuel[:etatAdministratifUniteLegale]
   end
 
+  # rubocop:disable Metrics/BlockLength
   def periodes_raw
     @periodes_raw ||= info_entreprise[:periodesUniteLegale].map do |periode|
       date_debut = nullable_date_to_timestamp periode[:dateDebut]
@@ -207,6 +208,7 @@ class SIADE::V3::Drivers::INSEE::Entreprise < SIADE::V2::Drivers::GenericDriver
       }
     end
   end
+  # rubocop:enable Metrics/BlockLength
 
   def nullable_date_to_timestamp(date)
     Time.zone.parse(date).to_i unless date.nil?

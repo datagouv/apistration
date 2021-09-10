@@ -1,8 +1,10 @@
 RSpec.describe API::V3AndMore::BaseController, type: :controller do
   before(:all) do
+    # rubocop:disable Style/ClassAndModuleChildren
     module DummyResourceSerializer
       class V42 < JSONAPI::BaseSerializer; end
     end
+    # rubocop:enable Style/ClassAndModuleChildren
   end
 
   controller(described_class) do

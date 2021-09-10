@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 VCR.configure do |c|
   c.allow_http_connections_when_no_cassette = false
   c.ignore_localhost = true
@@ -55,3 +56,4 @@ VCR.configure do |c|
     request_1.headers.except(*headers_to_ignore) == request_2.headers.except(*headers_to_ignore)
   end
 end
+# rubocop:enable Metrics/BlockLength

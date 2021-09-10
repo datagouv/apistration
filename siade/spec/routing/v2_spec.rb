@@ -106,7 +106,7 @@ RSpec.describe 'routes for v2', type: :routing do
   end
 
   it 'route to uptime#robot' do
-    expect(get: '/v2/uptime?route=some/value')
+    expect(get('/v2/uptime?route=some/value'))
       .to route_to(
         controller: 'api/v2/uptime',
         action: 'show',

@@ -6,6 +6,7 @@ RSpec.shared_context 'Mandatory params' do
   let(:object) { 'Tests' }
 end
 
+# rubocop:disable RSpec/VariableName
 RSpec.shared_context 'Valid params (mandatory and token)' do
   include_context 'Mandatory params'
 
@@ -23,7 +24,9 @@ RSpec.shared_context 'Valid mandatory params and unauthorized token' do
 
   let(:Authorization) { "Bearer #{nope_jwt}" }
 end
+# rubocop:enable RSpec/VariableName
 
+# rubocop:disable Metrics/BlockLength
 RSpec.configure do |config|
   # Specify a root folder where Swagger JSON files are generated
   # NOTE: If you're using the rswag-api to serve API descriptions, you'll need
@@ -113,3 +116,4 @@ RSpec.configure do |config|
   config.extend RSWagCommonsResponses
   config.extend RSWagResourcesPayloads
 end
+# rubocop:enable Metrics/BlockLength
