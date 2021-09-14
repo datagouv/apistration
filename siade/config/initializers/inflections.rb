@@ -47,6 +47,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'EORI'
   inflect.acronym 'BIO'
   inflect.acronym 'RNM'
+  inflect.acronym 'MI'
 
   inflect.irregular 'appel_offre', 'appels_offres'
   inflect.irregular 'attestation_sociale', 'attestations_sociales'
