@@ -14,6 +14,6 @@ class MI::Associations::MakeRequest < MakeRequest::Get
   private
 
   def id
-    context.params[:association_id]
+    context.params[:id]
   end
 end

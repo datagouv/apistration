@@ -45,7 +45,7 @@ shared:
       - { controller: 'api/v2/etablissements/successeur', action: 'show', siret: 123 }
 
       - { controller: 'api/v3_and_more/rnm/entreprises_artisanales', action: 'show', api_version: 3, siren: 123 }
-      - { controller: 'api/v3_and_more/mi/associations', action: 'show', api_version: 3, id_association: 123 }
+      - { controller: 'api/v3_and_more/mi/associations', action: 'show', api_version: 3, id: 123 }
     limit: 250
     period: 60
   very_low_latency_json_resources:

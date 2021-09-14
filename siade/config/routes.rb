@@ -66,7 +66,7 @@ Rails.application.routes.draw do
 
   scope path: 'v:api_version', constraints: { api_version: /\d+/ } do
     namespace :mi do
-      get 'associations/:id_association' => '/api/v3_and_more/mi/associations#show'
+      get 'associations/:id' => '/api/v3_and_more/mi/associations#show'
     end
 
     namespace :rnm do

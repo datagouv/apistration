@@ -49,7 +49,7 @@ RSpec.describe MI::Associations::BuildResource, type: :build_resource do
 
     let(:params) do
       {
-        association_id: valid_rna_id,
+        id: valid_rna_id,
       }
     end
 

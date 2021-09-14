@@ -4,7 +4,7 @@ RSpec.describe MI::Associations, type: :retriever_organizer do
 
     let(:params) do
       {
-        association_id: id
+        id: id
       }
     end
 
