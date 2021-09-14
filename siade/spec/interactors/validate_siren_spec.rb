@@ -1,5 +1,5 @@
 RSpec.describe ValidateSiren, type: :validate_param_interactor do
-  describe '#call' do
+  describe '.call' do
     subject { described_class.call(params: params) }
 
     let(:params) do
