@@ -7,13 +7,13 @@ require:
 AllCops:
   NewCops: enable
   Exclude:
-    - 'Gemfile'
-    - 'Guardfile'
-    - 'Rakefile'
-    - 'bin/**/*'
-    - 'db/**/*'
-    - 'config/**/*'
-    - 'vendor/**/*'
+    - "Gemfile"
+    - "Guardfile"
+    - "Rakefile"
+    - "bin/**/*"
+    - "db/**/*"
+    - "config/**/*"
+    - "vendor/**/*"
 
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
@@ -29,22 +29,22 @@ Layout/SpaceInsideHashLiteralBraces:
 
 Lint/UnreachableCode:
   Exclude:
-    - 'app/concepts/**/*'
+    - "app/concepts/**/*"
 
 Metrics/BlockLength:
   Exclude:
-    - 'spec/spec_helper.rb'
-    - 'spec/support/shared_examples/*'
-    - 'spec/factories/**/*'
+    - "spec/spec_helper.rb"
+    - "spec/support/shared_examples/*"
+    - "spec/factories/**/*"
   IgnoredMethods:
-    - 'describe'
-    - 'context'
-    - 'namespace'
-    - 'shared_examples'
-    - 'let'
-    - 'path'
-    - 'get'
-    - 'response'
+    - "describe"
+    - "context"
+    - "namespace"
+    - "shared_examples"
+    - "let"
+    - "path"
+    - "get"
+    - "response"
 
 Layout/LineLength:
   Enabled: false
@@ -54,8 +54,8 @@ Metrics/MethodLength:
 
 Naming/MethodParameterName:
   AllowedNames:
-    - '_'
-    - 'nb'
+    - "_"
+    - "nb"
 
 Naming/VariableNumber:
   EnforcedStyle: snake_case
@@ -65,13 +65,13 @@ Style/AsciiComments:
 
 Style/BlockComments:
   Exclude:
-    - 'spec/spec_helper.rb'
+    - "spec/spec_helper.rb"
 
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
   Exclude:
-    - 'app/channels/**/*'
-    - 'app/concepts/**/*'
+    - "app/channels/**/*"
+    - "app/concepts/**/*"
 
 Style/Documentation:
   Enabled: false
