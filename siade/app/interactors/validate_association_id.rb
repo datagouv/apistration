@@ -1,21 +1,21 @@
 class ValidateAssociationId < ValidateParamInteractor
   def call
-    return if rna_id_is_valid || siret_is_valid
+    return if rna_id.valid? || siret.valid?
 
-    invalid_param!(:association_id)
+    invalid_param!(:id)
   end
 
   private
 
-  def rna_id_is_valid
-    ::ValidateRNAId.call(params: { rna_id: id }).success?
+  def rna_id
+    @rna_id ||= RNAId.new(param(:id))
   end
 
-  def siret_is_valid
-    ::ValidateSiret.call(params: { siret: id }).success?
+  def siret
+    @siret ||= Siret.new(param(:id))
   end
 
   def id
-    context.params[:association_id]
+    context.params[:id]
   end
 end
