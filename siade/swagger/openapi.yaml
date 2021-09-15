@@ -74,6 +74,146 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+  "/v3/mi/associations/{id}":
+    get:
+      summary: Récupération d'une association
+      tags:
+      - Informations générales
+      parameters:
+      - name: context
+        in: query
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        schema:
+          type: string
+      - name: object
+        in: query
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - jwt_bearer_token: []
+      description: Le jeton ne possède pas les droits nécessaires
+      responses:
+        '403':
+          description: Accès interdit
+        '200':
+          description: Association found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: W751227325
+                        description: Débutant par W et composé de 9 chiffres, il s'agit
+                          du numéro RNA, identifiant national de l'association. Ce
+                          numéro est attribué automatiquement lors de la déclaration
+                          de création d’une association. Une association ne disposant
+                          pas d’un numéro RNA s’en voit attribuer un à chaque modification
+                          effectuée auprès des services de l’État (modification de
+                          statuts ou des dirigeants de l’associations). Le numéro
+                          figure alors sur le récépissé délivré par la préfecture.ID
+                          RNA ou Siret demandé
+                      attributes:
+                        type: object
+                        properties:
+                          titre:
+                            type: string
+                            example: LA PRÉVENTION ROUTIERE
+                          objet:
+                            type: string
+                            example: Accroitre la sécurité des usagers en encourageant
+                              toutes mesures ou initiatives propres à réduire les
+                              accidents
+                            description: Il s'agit d'une description courte mais exhaustive
+                              des activités de l'organisme.
+                          siret:
+                            type: string
+                            nullable: true
+                            example:
+                          siret_siege_social:
+                            type: string
+                            example: '77571979202650'
+                          date_creation:
+                            type: string
+                            example: '1955-01-01'
+                            description: Il s'agit du jour de dépôt du dossier de
+                              création de l'association à la Préfecture.
+                          date_declaration:
+                            type: string
+                            example: '1955-01-01'
+                            description: Jour de la dernière déclaration faîte par
+                              l'association.
+                          date_publication:
+                            type: string
+                            nullable: true
+                            example:
+                            description: Jour de la publication au journal officiel
+                              de l'avis de création de l'association. Toutes les assoiations
+                              ne sont pas forcément 'déclarées'. La publication au
+                              Journal Officiel permet à l'association de devenir une
+                              personne morale, a contrario des 'associations de fait',
+                              non déclarées au JO.
+                          date_dissolution:
+                            type: string
+                            nullable: true
+                            example:
+                            description: Si l'association est dissolue, ce champ indique
+                              la date de dissolution, autrement, il est indiqué 'null'.
+                          adresse_siege:
+                            type: object
+                            properties:
+                              complement:
+                                type: string
+                                example: "  "
+                              numero_voie:
+                                type: string
+                                example: '33'
+                              type_voie:
+                                type: string
+                                example: rue
+                              libelle_voie:
+                                type: string
+                                example: de Modagor
+                              distribution:
+                                type: string
+                                nullable: true
+                                example:
+                              code_insee:
+                                type: string
+                                example: '75108'
+                              code_postal:
+                                type: string
+                                example: '75009'
+                              commune:
+                                type: string
+                                example: Paris
+                          etat:
+                            type: string
+                            example: 'true'
+                          groupement:
+                            type: string
+                            nullable: true
+                            example:
+                            description: 'Trois modalités possibles : si l''association
+                              n''est pas un groupement, il est indiqué ''Simple''
+                              ; si l''association est un groupement, la valeur est
+                              ''Union'' ou ''Fédération''. La valeur peut aussi être
+                              manquante (nil).'
+                          mise_a_jour:
+                            type: string
+                            example: '1955-01-01'
   "/v3/probtp/attestations_cotisation_retraite/{siret}":
     get:
       summary: Récupération d'une attestation
