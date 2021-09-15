@@ -1,8 +1,7 @@
-class MI::AssociationsSerializer::V3 < JSONAPI::BaseSerializer
+class MI::AssociationSerializer::V3 < JSONAPI::BaseSerializer
   set_type :association
 
-  attributes :id,
-             :titre,
+  attributes :titre,
              :objet,
              :siret,
              :siret_siege_social,

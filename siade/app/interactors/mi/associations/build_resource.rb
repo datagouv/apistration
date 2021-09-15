@@ -3,19 +3,9 @@ class MI::Associations::BuildResource < BuildResource
 
   def resource_attributes
     @asso_hash = xml_body_as_hash[:asso]
-    @id = @asso_hash[:identite][:id_rna]
 
     {
-      id:          @id,
-      association: association
-    }
-  end
-
-  private
-
-  def association
-    {
-      id:                      @id,
+      id:                      @asso_hash[:identite][:id_rna],
       titre:                   @asso_hash[:identite][:nom],
       objet:                   @asso_hash[:activites][:objet],
       siret:                   @siret,
@@ -30,6 +20,8 @@ class MI::Associations::BuildResource < BuildResource
       mise_a_jour:             @asso_hash[:identite][:date_modif_rna]
     }
   end
+
+  private
 
   def adresse_siege
     adresse_siege_complement_1 = @asso_hash[:coordonnees][:adresse_siege][:cplt_1]
