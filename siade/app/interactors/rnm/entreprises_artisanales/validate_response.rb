@@ -11,14 +11,6 @@ class RNM::EntreprisesArtisanales::ValidateResponse < ValidateResponse
 
   private
 
-  def http_ok?
-    http_code == 200
-  end
-
-  def http_not_found?
-    http_code == 404
-  end
-
   def payload_present?
     json_body['id'].present?
   rescue JSON::ParserError

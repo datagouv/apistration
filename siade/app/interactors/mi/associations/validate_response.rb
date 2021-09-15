@@ -11,14 +11,6 @@ class MI::Associations::ValidateResponse < ValidateResponse
 
   private
 
-  def http_ok?
-    http_code == 200
-  end
-
-  def http_not_found?
-    http_code == 404
-  end
-
   def payload_present?
     xml_body_as_hash[:asso].present?
   rescue Ox::ParseError

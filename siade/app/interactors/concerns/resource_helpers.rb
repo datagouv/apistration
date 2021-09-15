@@ -5,6 +5,14 @@ module ResourceHelpers
     response.code.to_i
   end
 
+  def http_ok?
+    http_code == 200
+  end
+
+  def http_not_found?
+    http_code == 404
+  end
+
   delegate :body, to: :response
 
   def json_body
