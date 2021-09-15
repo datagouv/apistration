@@ -54,7 +54,8 @@ class ErrorsBackend
       '17' => 'Banque de France',
       '18' => 'Agence BIO',
       '19' => 'Ademe',
-      '20' => 'API Geo'
+      '20' => 'API Geo',
+      '21' => 'MI'
     }
   end
 end
