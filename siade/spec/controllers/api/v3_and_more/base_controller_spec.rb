@@ -44,7 +44,7 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
       let(:error) { response_json.dig(:errors, 0) }
 
       it { expect(error&.dig(:code)).to eq('00402') }
-      it { expect(error&.dig(:detail)).to eq('La version v4 n\'est pas supportée pour ce endpoint.') }
+      it { expect(error&.dig(:detail)).to eq('La version v4 n\'est pas supportée pour cet endpoint.') }
       it { expect(error&.dig(:title)).to eq('Version d\'API non prise en charge') }
     end
   end

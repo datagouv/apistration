@@ -4,7 +4,7 @@ class UnsupportedAPIVersionError < ApplicationError
   end
 
   def detail
-    "La version #{@invalid_value} n'est pas supportée pour ce endpoint."
+    "La version #{@invalid_value} n'est pas supportée pour cet endpoint."
   end
 
   def code
