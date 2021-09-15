@@ -25,11 +25,7 @@ class MI::Associations::BuildResource < BuildResource
       date_publication:        @asso_hash[:identite][:date_pub_jo],
       date_dissolution:        @asso_hash[:identite][:date_dissolution],
       adresse_siege:           adresse_siege,
-      code_civilite_dirigeant: nil,
-      civilite_dirigeant:      nil,
-      code_etat:               nil,
       etat:                    @asso_hash[:identite][:active],
-      code_groupement:         nil,
       groupement:              @asso_hash[:identite][:groupement],
       mise_a_jour:             @asso_hash[:identite][:date_modif_rna]
     }

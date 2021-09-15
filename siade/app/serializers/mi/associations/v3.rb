@@ -11,11 +11,7 @@ class MI::AssociationsSerializer::V3 < JSONAPI::BaseSerializer
              :date_publication,
              :date_dissolution,
              :adresse_siege,
-             :code_civilite_dirigeant,
-             :civilite_dirigeant,
-             :code_etat,
              :etat,
-             :code_groupement,
              :groupement,
              :mise_a_jour
 end
