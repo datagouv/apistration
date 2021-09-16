@@ -132,7 +132,7 @@ class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDrive
   def download_file_with_dh_cipher_disabled(pdf_url)
     pdf_uri = URI(pdf_url)
 
-    response = Net::HTTP.start(pdf_uri.host, 443, { use_ssl: true, ciphers: ['DEFAULT:!DH'] }) do |http|
+    response = Net::HTTP.start(pdf_uri.host, 443, { use_ssl: true, ciphers: ['DEFAULT@SECLEVEL=1'] }) do |http|
       request = Net::HTTP::Get.new(pdf_uri)
 
       http.request(request)
