@@ -1,3 +1,5 @@
+require 'rails/generators'
+
 class BaseGenerator < Rails::Generators::NamedBase
   private
 
