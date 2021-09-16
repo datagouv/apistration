@@ -94,7 +94,7 @@ endpoints = <<STR
   http_path: '/v2/conventions_collectives/82161143100015'
 
 - name: Certificats Qualibat
-  http_path: '/v2/certificats_qualibat/48787244200024'
+  http_path: '/v2/certificats_qualibat/78824266700020'
 
 - name: Entreprises artisanales CMA France
   http_path: '/v2/entreprises_artisanales_cma/301123626'
