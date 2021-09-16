@@ -1,5 +1,6 @@
 require 'open-uri'
 
+# rubocop:disable Metrics/ClassLength
 class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDriver
   attr_reader :siret
 
@@ -140,3 +141,4 @@ class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDrive
     response.body
   end
 end
+# rubocop:enable Metrics/ClassLength
