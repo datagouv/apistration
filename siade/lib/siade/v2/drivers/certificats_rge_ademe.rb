@@ -101,7 +101,14 @@ class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDrive
 
   def self_hosted_pdf(pdf_url)
     store_pdf = SIADE::SelfHostedDocument::File::PDF.new('certificat_rge_ademe')
-    store_pdf.store_from_url(pdf_url)
+
+    if pdf_from_calypso?(pdf_url)
+      store_pdf.store_from_binary(
+        download_file_with_dh_cipher_disabled(pdf_url)
+      )
+    else
+      store_pdf.store_from_url(pdf_url)
+    end
 
     if store_pdf.success?
       store_pdf.url
@@ -115,5 +122,21 @@ class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDrive
     store_pdf.errors.map do |raw_error|
       BadFileFromProviderError.new(provider_name, raw_error[0], raw_error[1])
     end
+  end
+
+  def pdf_from_calypso?(url)
+    url.include?('www.qualypso.fr')
+  end
+
+  def download_file_with_dh_cipher_disabled(pdf_url)
+    pdf_uri = URI(pdf_url)
+
+    response = Net::HTTP.start(pdf_uri.host, 443, { use_ssl: true, ciphers: ['DEFAULT:!DH'] }) do |http|
+      request = Net::HTTP::Get.new(pdf_uri)
+
+      http.request(request)
+    end
+
+    response.body
   end
 end
