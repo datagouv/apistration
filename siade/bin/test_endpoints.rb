@@ -120,6 +120,9 @@ endpoints = <<STR
 - name: Certificats RGE ADEME
   http_path: '/v2/certificats_rge_ademe/50044188600016'
 
+- name: Certificats Agence BIO
+  http_path: '/v2/certificats_agence_bio/48311105000025'
+
 - name: Actes INPI
   http_path: '/v2/actes_inpi/788242667'
 
