@@ -140,4 +140,20 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEAdeme, type: :provider_driver d
       end
     end
   end
+
+  context 'when data is found but there is an unexpected error', vcr: { cassette_name: 'ademe/rge/with_valid_siret' } do
+    subject { described_class.new(siret: siret).perform_request }
+
+    let(:siret) { valid_siret(:rge_ademe) }
+
+    before do
+      allow_any_instance_of(described_class).to receive(:url_certificat_payload).and_raise(StandardError)
+    end
+
+    it 'raises an error' do
+      expect do
+        subject.qualifications
+      end.to raise_error(StandardError)
+    end
+  end
 end

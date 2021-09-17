@@ -1,11 +1,8 @@
 require 'open-uri'
 
-# rubocop:disable Metrics/ClassLength
 class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDriver
-  attr_reader :siret
-
-  default_to_nil_raw_fetching_methods :domaines,
-    :qualifications
+  attr_reader :siret,
+    :certification_entities
 
   def initialize(hash)
     @siret = hash[:siret]
@@ -21,7 +18,27 @@ class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDrive
   end
 
   def check_response
-    remove_bom_from_json_response unless errors?
+    return if errors?
+
+    @certification_entities = JSON.parse(body_without_bom).deep_transform_keys { |key| key.parameterize(separator: '_') }.try(:[], 'company')
+  end
+
+  def qualifications
+    certification_entities.each do |entity|
+      entity_qualifications = entity.try(:[], 'qualifications')
+      format_qualifications(entity_qualifications)
+    end
+
+    aggregated_qualifications
+  end
+
+  def domaines
+    certification_entities.each do |entity|
+      entity_domaines = entity.try(:[], 'domaines')
+      format_domaines(entity_domaines)
+    end
+
+    aggregated_domaines
   end
 
   private
@@ -30,37 +47,16 @@ class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDrive
     @skip_pdf
   end
 
-  def remove_bom_from_json_response
-    @certification_entities ||=
-      JSON.parse(body_without_bom).deep_transform_keys { |key| key.parameterize(separator: '_') }
-  rescue StandardError
-    set_parsing_response_error
-  end
-
   def errors?
     request.errors.present?
   end
 
-  def certification_entities
-    # Ensure with ADEME API specifications that when requested with a siret
-    # only one result (the one for the corresponding etablissement) is returned
-    @certification_entities.try(:[], 'company')
-  end
-
   def body_without_bom
-    response.body.force_encoding('UTF-8').sub(/^\xEF\xBB\xBF/, '')
+    response.body_without_bom
   end
 
-  def qualifications_raw
-    certification_entities.each do |entity|
-      entity_raw_qualifications = entity.try(:[], 'qualifications')
-      format_raw_qualifications(entity_raw_qualifications)
-    end
-    aggregated_qualifications
-  end
-
-  def format_raw_qualifications(raw_qualifs)
-    raw_qualifs.reduce(aggregated_qualifications) do |result, (_, qualif_obj)|
+  def format_qualifications(qualifs)
+    qualifs.reduce(aggregated_qualifications) do |result, (_, qualif_obj)|
       result.push(
         {
           nom: qualif_obj['name'],
@@ -74,16 +70,8 @@ class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDrive
     @aggregated_qualifications ||= []
   end
 
-  def domaines_raw
-    certification_entities.each do |entity|
-      entity_raw_domaines = entity.try(:[], 'domaines')
-      format_raw_domaines(entity_raw_domaines)
-    end
-    aggregated_domaines
-  end
-
-  def format_raw_domaines(raw_domaines)
-    raw_domaines.reduce(aggregated_domaines) do |result, (_, domaine_obj)|
+  def format_domaines(domaines)
+    domaines.reduce(aggregated_domaines) do |result, (_, domaine_obj)|
       result.push(domaine_obj['nom'])
     end
   end
@@ -120,8 +108,8 @@ class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDrive
   end
 
   def build_store_pdf_errors(store_pdf)
-    store_pdf.errors.map do |raw_error|
-      BadFileFromProviderError.new(provider_name, raw_error[0], raw_error[1])
+    store_pdf.errors.map do |error|
+      BadFileFromProviderError.new(provider_name, error[0], error[1])
     end
   end
 
@@ -141,4 +129,3 @@ class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDrive
     response.body
   end
 end
-# rubocop:enable Metrics/ClassLength
