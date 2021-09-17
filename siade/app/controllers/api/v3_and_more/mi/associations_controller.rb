@@ -16,7 +16,7 @@ class API::V3AndMore::MI::AssociationsController < API::V3AndMore::BaseControlle
 
   def organizer_params
     {
-      id: params.require(:id),
+      siret_or_rna: params.require(:siret_or_rna),
     }
   end
 

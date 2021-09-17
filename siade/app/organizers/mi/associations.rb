@@ -1,5 +1,5 @@
 class MI::Associations < RetrieverOrganizer
-  organize ValidateAssociationId,
+  organize ValidateSiretOrRNA,
            MI::Associations::MakeRequest,
            MI::Associations::ValidateResponse,
            MI::Associations::BuildResource

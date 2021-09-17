@@ -3,7 +3,7 @@ RSpec.describe MI::Associations::MakeRequest, type: :make_request do
 
   let(:params) do
     {
-      id: rna_id,
+      siret_or_rna: rna_id,
     }
   end
 

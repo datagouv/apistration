@@ -2,7 +2,7 @@ class MI::Associations::MakeRequest < MakeRequest::Get
   protected
 
   def request_uri
-    URI("https://siva.jeunesse-sports.gouv.fr/api-asso/api/structure/#{id}")
+    URI("https://siva.jeunesse-sports.gouv.fr/api-asso/api/structure/#{siret_or_rna}")
   end
 
   def request_params
@@ -13,7 +13,7 @@ class MI::Associations::MakeRequest < MakeRequest::Get
 
   private
 
-  def id
-    context.params[:id]
+  def siret_or_rna
+    context.params[:siret_or_rna]
   end
 end

@@ -40,7 +40,7 @@ RSpec.describe MI::Associations::BuildResource, type: :build_resource do
 
     let(:params) do
       {
-        id: valid_rna_id,
+        siret_or_rna: valid_rna_id,
       }
     end
 
