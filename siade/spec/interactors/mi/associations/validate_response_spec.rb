@@ -6,10 +6,25 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
       instance_double('Net::HTTPOK', code: code, body: body)
     end
 
+    describe 'with an invalid code' do
+      let(:code) { '418' }
+      let(:body) { 'A body' }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+    end
+
     context 'with a valid code and a valid xml' do
       let(:code) { '200' }
       let(:body) do
-        "<asso>hello</asso>"
+        '<asso>' \
+          '<identite>' \
+          '<nom>' \
+          'A Name' \
+          '</nom>' \
+          '</identite>' \
+          '</asso>'
       end
 
       it { is_expected.to be_a_success }
@@ -17,44 +32,30 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
       its(:errors) { is_expected.to be_empty }
     end
 
-    context 'with a 404 code and whatever body' do
-      let(:code) { '404' }
-      let(:body) { 'whatever' }
+    context 'with a valid code and a body containing NotFound message' do
+      let(:code) { '200' }
+      let(:body) do
+        '<asso>' \
+          '<erreur>' \
+          '<proxy_correspondance>' \
+          'org.apache.camel.http.common.HttpOperationFailedException: HTTP operation failed invoking http://localhost:8181/services/proxy_db_asso/correspondance/idsByRna/W111111111 with statusCode: 404' \
+          '</proxy_correspondance>' \
+          '</erreur>' \
+          '</asso>'
+      end
 
       it { is_expected.to be_a_failure }
 
       its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
     end
 
-    context 'with a valid code and an invalid xml' do
-      let(:code) { '200' }
-      let(:body) do
-        "<truc></nimp>"
-      end
-
-      it { is_expected.to be_a_failure }
-
-      its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
-    end
-
-    context 'with a valid code and an invalid body' do
-      let(:code) { '200' }
-      let(:body) { 'whatever' }
-
-      it { is_expected.to be_a_failure }
-
-      its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
-    end
-
-    context 'with an invalid status code' do
+    context 'with a valid code and a body containing nonsense' do
       let(:code) { '418' }
-      let(:body) do
-        "<asso>hello</asso>"
-      end
+      let(:body) { 'Nonsense' }
 
       it { is_expected.to be_a_failure }
 
-      its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+      its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
     end
   end
 end
