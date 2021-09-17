@@ -74,7 +74,7 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
-  "/v3/mi/associations/{id}":
+  "/v3/mi/associations/{siret_or_rna}":
     get:
       summary: Récupération d'une association
       tags:
@@ -92,7 +92,7 @@ paths:
         in: query
         schema:
           type: string
-      - name: id
+      - name: siret_or_rna
         in: path
         required: true
         schema:
@@ -214,6 +214,18 @@ paths:
                           mise_a_jour:
                             type: string
                             example: '1955-01-01'
+        '404':
+          description: Association not found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/NotFound"
+        '422':
+          description: Unprocessable entity
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/UnprocessableEntity"
   "/v3/probtp/attestations_cotisation_retraite/{siret}":
     get:
       summary: Récupération d'une attestation
@@ -420,6 +432,25 @@ components:
                 type: string
                 example: Le siret ou siren indiqué n'existe pas, n'est pas connu ou
                   ne comporte aucune information pour cet appel
+            required:
+            - title
+            - detail
+      required:
+      - errors
+    UnprocessableEntity:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+                example: Unprocessable entity
+              detail:
+                type: string
+                example: Le siret ou siren indiqué n'est pas correctement formaté.
             required:
             - title
             - detail

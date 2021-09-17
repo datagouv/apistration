@@ -86,6 +86,34 @@ RSpec.configure do |config|
             required: %w[
               errors
             ]
+          },
+          UnprocessableEntity: {
+            type: :object,
+            properties: {
+              errors: {
+                type: :array,
+                items: {
+                  type: :object,
+                  properties: {
+                    title: {
+                      type: :string,
+                      example: 'Unprocessable entity'
+                    },
+                    detail: {
+                      type: :string,
+                      example: 'Le siret ou siren indiqué n\'est pas correctement formaté.'
+                    }
+                  },
+                  required: %w[
+                    title
+                    detail
+                  ]
+                }
+              }
+            },
+            required: %w[
+              errors
+            ]
           }
         },
         securitySchemes: {
