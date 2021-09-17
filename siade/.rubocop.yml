@@ -113,3 +113,14 @@ Style/MethodCallWithArgsParentheses:
 Naming/MethodName:
   IgnoredPatterns:
     - starts_with_FR?
+
+# False positive with RSwag
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - "spec/requests/**/*"
+
+# Not relevant for RSwag
+RSpec/DescribeClass:
+  Exclude:
+    - "spec/requests/**/*"
+    - "spec/acceptances/**/*"

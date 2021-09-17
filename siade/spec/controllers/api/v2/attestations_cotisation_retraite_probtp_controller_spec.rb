@@ -31,7 +31,7 @@ RSpec.describe API::V2::AttestationsCotisationRetraitePROBTPController, type: :c
       end
 
       context 'siret non eligible PROBTP' do
-        # TODO: need a non eligible siret
+        pending 'TODO: need a non eligible siret'
       end
 
       context 'siret eligible PROBTP' do

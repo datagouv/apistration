@@ -7,7 +7,7 @@ class MI::Associations::MakeRequest < MakeRequest::Get
 
   def request_params
     {
-      proxy_only: true,
+      proxy_only: true
     }
   end
 

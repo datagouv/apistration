@@ -6,7 +6,7 @@ class API::V3AndMore::MI::AssociationsController < API::V3AndMore::BaseControlle
 
     if organizer.success?
       render json:   serializer_class.new(organizer.resource).serializable_hash,
-             status: extract_http_code(organizer)
+        status: extract_http_code(organizer)
     else
       render_errors(organizer)
     end
@@ -16,7 +16,7 @@ class API::V3AndMore::MI::AssociationsController < API::V3AndMore::BaseControlle
 
   def organizer_params
     {
-      siret_or_rna: params.require(:siret_or_rna),
+      siret_or_rna: params.require(:siret_or_rna)
     }
   end
 
