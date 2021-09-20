@@ -30,7 +30,7 @@ class RateLimitingService
   def compute_reset(data)
     now = data[:epoch_time]
 
-    (now + (data[:period] - now % data[:period])).to_s
+    (now + (data[:period] - (now % data[:period]))).to_s
   end
 
   def compute_remaining(data)
