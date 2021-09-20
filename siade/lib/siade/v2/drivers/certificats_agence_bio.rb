@@ -26,12 +26,9 @@ class SIADE::V2::Drivers::CertificatsAgenceBIO < SIADE::V2::Drivers::GenericDriv
   def filtered_certifications_data
     raw_organic_certifications.map do |cert_data|
       {
-        raison_sociale: value_or_placeholder(:raison_social, cert_data),
-        denomination_courante: value_or_placeholder(:denomination_courante, cert_data),
         siret: value_or_placeholder(:siret, cert_data),
         numero_bio: value_or_placeholder(:numero_bio, cert_data),
         date_derniere_mise_a_jour: value_or_placeholder(:date_maj, cert_data),
-        numero_pacage: nil,
         reseau: value_or_placeholder(:reseau, cert_data),
         categories: format_categories(cert_data),
         activites: format_activites(cert_data),

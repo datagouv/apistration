@@ -18,12 +18,9 @@ RSpec.describe SIADE::V2::Drivers::CertificatsAgenceBIO, type: :provider_driver 
 
     its(:filtered_certifications_data) do
       is_expected.to all(include(
-        :raison_sociale,
-        :denomination_courante,
         :siret,
         :numero_bio,
         :date_derniere_mise_a_jour,
-        :numero_pacage,
         :reseau,
         :categories,
         :activites,
@@ -44,12 +41,9 @@ RSpec.describe SIADE::V2::Drivers::CertificatsAgenceBIO, type: :provider_driver 
 
     it 'contains organic operator data' do
       expect(subject).to contain_exactly(a_hash_including({
-        raison_sociale: 'La bio pep\'s',
-        denomination_courante: 'Donnée indisponible',
         siret: '48311105000025',
         numero_bio: 18_344,
         date_derniere_mise_a_jour: '2020-10-27',
-        numero_pacage: nil,
         reseau: ''
       }))
     end
