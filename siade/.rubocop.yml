@@ -15,6 +15,7 @@ AllCops:
     - "config/**/*"
     - "vendor/**/*"
     - "app/controllers/api/v2/**/*"
+    - "spec/controllers/api/v2/**/*"
     - "lib/siade/v2/**/*"
     - "spec/lib/siade/v2/**/*"
     - "lib/siade/v3/**/*"
