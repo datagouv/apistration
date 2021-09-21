@@ -23,14 +23,25 @@ AllCops:
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 
+# No line between definitions is OK for oneliners
+Layout/EmptyLineBetweenDefs:
+  AllowAdjacentOneLineDefs: true
+
 Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
+
+Layout/LineLength:
+  Enabled: false
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: space
+
+# Necessary to use NotImplementedError
+Lint/InheritException:
+  Enabled: false
 
 Lint/UnreachableCode:
   Exclude:
@@ -51,11 +62,13 @@ Metrics/BlockLength:
     - "get"
     - "response"
 
-Layout/LineLength:
-  Enabled: false
-
 Metrics/MethodLength:
   Max: 15
+
+# Allowing uppercase in some method names
+Naming/MethodName:
+  IgnoredPatterns:
+    - starts_with_FR?
 
 Naming/MethodParameterName:
   AllowedNames:
@@ -72,6 +85,10 @@ Style/BlockComments:
   Exclude:
     - "spec/spec_helper.rb"
 
+# Authorizing expect{}.to
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
+
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
   Exclude:
@@ -87,6 +104,10 @@ Style/FrozenStringLiteralComment:
 Style/MethodCalledOnDoEndBlock:
   Enabled: false
 
+# Can't agree on this rule so we disable
+Style/MethodCallWithArgsParentheses:
+  Enabled: false
+
 # Do not force use of fail or raise only both have their use
 Style/SignalException:
   Enabled: false
@@ -97,34 +118,13 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: single_quotes
 
-# No line between definitions is OK for oneliners
-Layout/EmptyLineBetweenDefs:
-  AllowAdjacentOneLineDefs: true
-
-# Necessary to use NotImplementedError
-Lint/InheritException:
-  Enabled: false
-
-# Can't agree on this rule so we disable
-Style/MethodCallWithArgsParentheses:
-  Enabled: false
-
-# Allowing uppercase in some method names
-Naming/MethodName:
-  IgnoredPatterns:
-    - starts_with_FR?
-
-# False positive with RSwag
-RSpec/EmptyExampleGroup:
-  Exclude:
-    - "spec/requests/**/*"
-
 # Not relevant for RSwag
 RSpec/DescribeClass:
   Exclude:
     - "spec/requests/**/*"
     - "spec/acceptances/**/*"
 
-# Authorizing expect{}.to
-Style/BlockDelimiters:
-  EnforcedStyle: braces_for_chaining
+# False positive with RSwag
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - "spec/requests/**/*"
