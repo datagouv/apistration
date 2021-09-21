@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe ErrorsBackend, type: :service do
-  let(:instance) { ErrorsBackend.instance }
+  let(:instance) { described_class.instance }
 
   describe '#get' do
     subject { instance.get(code) }

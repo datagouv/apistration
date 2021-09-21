@@ -1,5 +1,5 @@
 RSpec.describe Rack::Attack, type: :request do
-  after { Rack::Attack.reset! }
+  after { described_class.reset! }
 
   def extract_without_context_url_for(options)
     url_for(options.merge(_recall: {}))
@@ -125,7 +125,7 @@ RSpec.describe Rack::Attack, type: :request do
 
     context 'when the token is a valid JWT' do
       def limit_value_for_production(endpoints_list)
-        config = YAML.load(File.open("#{Rails.root}/config/throttle.yml"))
+        config = YAML.safe_load(File.open("#{Rails.root}/config/throttle.yml"))
         config.dig('production', endpoints_list, 'limit')
       end
 
@@ -276,11 +276,11 @@ RSpec.describe Rack::Attack, type: :request do
         end
 
         it 'has a valid Reset value, which starts at the first call on this throttle' do
-          Timecop.freeze(Time.new(2021, 5, 3, 2))
+          Timecop.freeze(Time.zone.local(2021, 5, 3, 2))
 
           subject
 
-          Timecop.travel(Time.now + 20.seconds)
+          Timecop.travel(Time.zone.now + 20.seconds)
           Timecop.freeze
 
           expect(headers['RateLimit-Reset']).to eq((Time.now.to_i + (throttle_config[:period] - 20)).to_s)

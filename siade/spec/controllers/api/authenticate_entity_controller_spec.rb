@@ -1,5 +1,5 @@
 RSpec.describe API::AuthenticateEntityController do
-  controller(API::AuthenticateEntityController) do
+  controller(described_class) do
     def index
       render json: {}, status: :ok
     end

@@ -42,11 +42,12 @@ class APIController < ActionController::API
 
   # XXX Clean this, after no more old tokens
   def user_not_authorized(exception)
-    if exception.message =~ /must have valid token/
+    case exception.message
+    when /must have valid token/
       render_generic_errors_serializer(InvalidTokenError, status: 401)
-    elsif exception.message =~ /must be activated/
+    when /must be activated/
       render_generic_errors_serializer(OldTokenError, status: 401)
-    elsif exception.message =~ /not allowed to/
+    when /not allowed to/
       render_generic_errors_serializer(InsufficientPrivilegesError, status: 403)
     end
   end

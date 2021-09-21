@@ -126,7 +126,7 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
 
         it { expect(subject.status).to eq(422) }
       end
-    end # end using siret
+    end
   end
 
   describe 'unhappy paths' do

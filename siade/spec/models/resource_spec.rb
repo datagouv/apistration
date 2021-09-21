@@ -31,14 +31,14 @@ RSpec.describe Resource, type: :model do
     let(:params) do
       {
         id: 'id',
-        payload: Resource.new(
+        payload: described_class.new(
           {
             key: 'value'
           }
         ),
         array: [
           'item',
-          Resource.new(
+          described_class.new(
             key: 'value'
           )
         ]

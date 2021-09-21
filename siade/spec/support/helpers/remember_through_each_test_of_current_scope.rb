@@ -1,3 +1,4 @@
+# rubocop:disable Style/MutableConstant
 RSPEC_GLOBAL = {}
 
 def remember_through_each_test_of_current_scope(variable_name)
@@ -6,3 +7,4 @@ def remember_through_each_test_of_current_scope(variable_name)
   end)
   RSPEC_GLOBAL[variable_name] ||= instance_variable_get("@#{variable_name}")
 end
+# rubocop:enable Style/MutableConstant

@@ -19,9 +19,9 @@ RSpec.describe BuildResource, type: :interactor do
     end
 
     it 'does not raise an error' do
-      expect do
+      expect {
         subject
-      end.not_to raise_error
+      }.not_to raise_error
     end
   end
 
@@ -33,9 +33,9 @@ RSpec.describe BuildResource, type: :interactor do
     end
 
     it 'raises an error' do
-      expect do
+      expect {
         subject
-      end.to raise_error(BuildResource::ResourceIdNotDefined)
+      }.to raise_error(BuildResource::ResourceIdNotDefined)
     end
   end
 end

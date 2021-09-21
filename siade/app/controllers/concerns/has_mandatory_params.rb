@@ -22,7 +22,7 @@ module HasMandatoryParams
 
   def context_is_filled?
     mandatory_field_list.each do |field|
-      if params[field].nil? || params[field].empty?
+      if params[field].blank?
         UserAccessSpy.log_not_acceptable
         errors << MissingMandatoryParamError.new(field)
       end

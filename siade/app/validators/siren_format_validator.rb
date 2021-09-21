@@ -15,7 +15,7 @@ class SirenFormatValidator < ActiveModel::EachValidator
   private
 
   def valid_checksum(value)
-    (luhn_checksum(value) % 10) == 0
+    (luhn_checksum(value) % 10).zero?
   end
 
   def luhn_checksum(value)

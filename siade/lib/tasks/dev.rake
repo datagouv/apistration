@@ -2,13 +2,13 @@ require 'fileutils'
 
 namespace :dev do
   desc 'initialize a bunch of dev env setup tasks'
-  task :init do
+  task init: :environment do
     puts 'start initialisation'
     Rake::Task['dev:generate_insee_secrets_file'].invoke
     puts 'end initialisation'
   end
 
-  task :generate_insee_secrets_file do
+  task generate_insee_secrets_file: :environment do
     puts 'creating insee_secrets.yml file'
     file = File.new('config/insee_secrets.yml', 'w+')
     file.write(insee_secrets.unindent)

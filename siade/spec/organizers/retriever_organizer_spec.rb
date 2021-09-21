@@ -27,9 +27,9 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
       let(:provider_name) { 'Invalid' }
 
       it 'raises an error' do
-        expect do
+        expect {
           subject
-        end.to raise_error(RetrieverOrganizer::InvalidProviderName)
+        }.to raise_error(RetrieverOrganizer::InvalidProviderName)
       end
     end
 
@@ -39,9 +39,9 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
       it { is_expected.to be_a_success }
 
       it 'does not raise an error' do
-        expect do
+        expect {
           subject
-        end.not_to raise_error
+        }.not_to raise_error
       end
     end
   end

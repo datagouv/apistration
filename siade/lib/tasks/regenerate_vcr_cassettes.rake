@@ -1,7 +1,7 @@
 namespace :vcr do
   desc 'Regenerate VCR cassettes in Sanbox environment'
 
-  task :regen_all do
+  task regen_all: :environment do
     clean_cassettes(all: true)
 
     run_rspec
@@ -9,7 +9,7 @@ namespace :vcr do
     end_message
   end
 
-  task :regen do
+  task regen: :environment do
     clean_cassettes
 
     run_rspec

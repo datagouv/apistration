@@ -18,7 +18,7 @@ class SiretFormatValidator < ActiveModel::EachValidator
     if value =~ /356000000/
       true # SCUMBAG LA POSTE SIRETS
     else
-      (luhn_checksum(value) % 10) == 0
+      (luhn_checksum(value) % 10).zero?
     end
   end
 

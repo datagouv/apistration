@@ -62,19 +62,19 @@ RSpec.describe JwtUser do
     let(:jwt_user) { described_class.new(jwt_payload) }
 
     it 'responds to logstash_id' do
-      expect(jwt_user.respond_to?(:logstash_id)).to be_truthy
+      expect(jwt_user).to respond_to(:logstash_id)
     end
 
     it 'responds to token_id' do
-      expect(jwt_user.respond_to?(:token_id)).to be_truthy
+      expect(jwt_user).to respond_to(:token_id)
     end
 
     it 'responds to jti' do
-      expect(jwt_user.respond_to?(:jti)).to be_truthy
+      expect(jwt_user).to respond_to(:jti)
     end
 
     it 'responds to roles' do
-      expect(jwt_user.respond_to?(:roles)).to be_truthy
+      expect(jwt_user).to respond_to(:roles)
     end
   end
 end

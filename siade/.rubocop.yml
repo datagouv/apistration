@@ -124,6 +124,10 @@ RSpec/DescribeClass:
     - "spec/requests/**/*"
     - "spec/acceptances/**/*"
 
+# Necessary to avoid 'Include described_class' which bugs
+RSpec/DescribedClass:
+  SkipBlocks: true
+
 # False positive with RSwag
 RSpec/EmptyExampleGroup:
   Exclude:

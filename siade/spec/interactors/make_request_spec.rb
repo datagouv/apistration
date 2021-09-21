@@ -27,9 +27,9 @@ RSpec.describe MakeRequest, type: :interactor do
       end
 
       it 'raises a ResponseNotDefined error' do
-        expect do
+        expect {
           subject
-        end.to raise_error(MakeRequest::ResponseNotDefined)
+        }.to raise_error(MakeRequest::ResponseNotDefined)
       end
     end
   end
@@ -112,9 +112,9 @@ RSpec.describe MakeRequest, type: :interactor do
         let(:socket_error_message) { 'whatever' }
 
         it 'raises this error' do
-          expect do
+          expect {
             subject
-          end.to raise_error(SocketError)
+          }.to raise_error(SocketError)
         end
       end
     end

@@ -1,5 +1,5 @@
 RSpec.describe MonitoringService, type: :service do
-  let(:instance) { MonitoringService.instance }
+  let(:instance) { described_class.instance }
   let(:provider) { 'dummy' }
 
   describe 'tracking methods' do

@@ -79,7 +79,7 @@ RSpec.describe API::V2::AssociationsController, type: :controller do
             its([:commune])      { is_expected.to eq('Groslay') }
           end
         end
-      end # end valid RNA id
+      end
 
       context 'when id does not exist', vcr: { cassette_name: 'rna_association/non_existing_rna_id' } do
         let(:id)    { non_existing_rna_id }
@@ -89,7 +89,7 @@ RSpec.describe API::V2::AssociationsController, type: :controller do
           expect(subject.status).to eq(404)
         end
       end
-    end # end using RNA
+    end
 
     context 'when using a siret', vcr: { cassette_name: 'rna_association/42135938100025' } do
       context 'when siret is correct' do
@@ -122,6 +122,6 @@ RSpec.describe API::V2::AssociationsController, type: :controller do
 
         it { expect(subject.status).to eq(422) }
       end
-    end # end using siret
+    end
   end
 end

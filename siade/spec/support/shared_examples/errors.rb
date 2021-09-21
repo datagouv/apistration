@@ -13,9 +13,9 @@ RSpec.shared_examples 'a valid error' do
     meta
   ].each do |method|
     it "implements ##{method}" do
-      expect do
+      expect {
         subject.public_send(method)
-      end.not_to raise_error
+      }.not_to raise_error
     end
   end
 

@@ -26,19 +26,6 @@ Lint/ConstantDefinitionInBlock:
 Lint/MissingSuper:
   Enabled: false
 
-# Offense count: 4
-# Cop supports --auto-correct.
-Lint/NonDeterministicRequireOrder:
-  Exclude:
-    - 'spec/spec_helper.rb'
-    - 'spec/swagger_helper.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Lint/RedundantCopDisableDirective:
-  Exclude:
-    - 'spec/spec_helper.rb'
-
 # Offense count: 9
 Lint/UselessAssignment:
   Exclude:
@@ -216,24 +203,6 @@ RSpec/DescribeClass:
     - 'spec/requests/api/v3_and_more/probtp/attestations_cotisation_retraite/v3_spec.rb'
     - 'spec/requests/api/v3_and_more/rnm/entreprises_artisanales/v3_spec.rb'
 
-# Offense count: 15
-# Cop supports --auto-correct.
-# Configuration parameters: SkipBlocks, EnforcedStyle.
-# SupportedStyles: described_class, explicit
-RSpec/DescribedClass:
-  Exclude:
-    - 'spec/controllers/api/authenticate_entity_controller_spec.rb'
-    - 'spec/controllers/api/has_mandatory_params_controller_spec.rb'
-    - 'spec/controllers/api_controller_spec.rb'
-    - 'spec/models/resource_spec.rb'
-    - 'spec/models/siren_spec.rb'
-    - 'spec/models/siret_spec.rb'
-    - 'spec/requests/rack_attack_spec.rb'
-    - 'spec/services/code_to_forme_juridique_service_spec.rb'
-    - 'spec/services/code_to_libelle_naf_service_spec.rb'
-    - 'spec/services/errors_backend_spec.rb'
-    - 'spec/services/monitoring_service_spec.rb'
-
 # Offense count: 5
 RSpec/EmptyExampleGroup:
   Exclude:
@@ -247,13 +216,6 @@ RSpec/EmptyExampleGroup:
 # Configuration parameters: CountAsOne.
 RSpec/ExampleLength:
   Max: 14
-
-# Offense count: 5
-# Cop supports --auto-correct.
-RSpec/ExpectActual:
-  Exclude:
-    - 'spec/interactors/documents/decrypt_pdf_spec.rb'
-    - 'spec/lib/siade/self_hosted_document/pdf_decrypt_spec.rb'
 
 # Offense count: 1
 RSpec/ExpectInHook:
@@ -342,14 +304,6 @@ RSpec/OverwritingSetup:
     - 'spec/interactors/get_oauth2_token_spec.rb'
 
 # Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: Strict, EnforcedStyle, AllowedExplicitMatchers.
-# SupportedStyles: inflected, explicit
-RSpec/PredicateMatcher:
-  Exclude:
-    - 'spec/lib/jwt_user_spec.rb'
-
-# Offense count: 4
 RSpec/RepeatedDescription:
   Exclude:
     - 'spec/controllers/api/v2/documents_associations_controller_spec.rb'
@@ -369,13 +323,6 @@ RSpec/VerifiedDoubles:
     - 'spec/lib/siade/self_hosted_document/pdf_decrypt_spec.rb'
     - 'spec/organizers/retriever_organizer_spec.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: NilOrEmpty, NotPresent, UnlessPresent.
-Rails/Blank:
-  Exclude:
-    - 'app/controllers/concerns/has_mandatory_params.rb'
-
 # Offense count: 7
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: slashes, arguments
@@ -394,54 +341,16 @@ Rails/LexicallyScopedActionFilter:
   Exclude:
     - 'app/controllers/api_controller.rb'
 
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: Include.
-# Include: **/Rakefile, **/*.rake
-Rails/RakeEnvironment:
-  Exclude:
-    - 'lib/tasks/dev.rake'
-    - 'lib/tasks/regenerate_vcr_cassettes.rake'
-
-# Offense count: 5
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: strict, flexible
-Rails/TimeZone:
-  Exclude:
-    - 'spec/requests/rack_attack_spec.rb'
-    - 'spec/support/deferred_garbage_collection.rb'
-
 # Offense count: 2
 Security/Open:
   Exclude:
     - 'app/interactors/documents/retrieve_from_url.rb'
     - 'lib/siade/self_hosted_document/file/generic.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Security/YAMLLoad:
-  Exclude:
-    - 'spec/requests/rack_attack_spec.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/CaseLikeIf:
-  Exclude:
-    - 'app/controllers/api_controller.rb'
-    - 'app/models/resource.rb'
-
 # Offense count: 2
 Style/ClassVars:
   Exclude:
     - 'spec/support/deferred_garbage_collection.rb'
-
-# Offense count: 4
-# Cop supports --auto-correct.
-Style/CommentedKeyword:
-  Exclude:
-    - 'spec/controllers/api/v2/associations_controller_spec.rb'
-    - 'spec/controllers/api/v2/documents_associations_controller_spec.rb'
 
 # Offense count: 6
 # Configuration parameters: MinBodyLength.
@@ -453,20 +362,3 @@ Style/GuardClause:
     - 'app/services/rate_limiting_service.rb'
     - 'app/services/renew_insee_token_service.rb'
     - 'spec/support/deferred_garbage_collection.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: literals, strict
-Style/MutableConstant:
-  Exclude:
-    - 'spec/support/helpers/remember_through_each_test_of_current_scope.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, IgnoredMethods.
-# SupportedStyles: predicate, comparison
-Style/NumericPredicate:
-  Exclude:
-    - 'app/validators/siren_format_validator.rb'
-    - 'app/validators/siret_format_validator.rb'
