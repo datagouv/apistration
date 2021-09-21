@@ -1,5 +1,6 @@
 module JwtHelper
   class << self
+    # rubocop:disable Metrics/MethodLength
     def jwt(type = :valid)
       samples = {
         valid: 'eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJmNWQ1Y2IwMi0xODVhLTQyNmYtYjNmNC05OWEyNWNlNmNkZjQiLCJqdGkiOiIzZDQ3MDZjNC03ZjVlLTQ0NDItYTczNC0wMGQ2YzY3NWYzYzkiLCJyb2xlcyI6WyJhdHRlc3RhdGlvbnNfYWdlZmlwaCIsImF0dGVzdGF0aW9uc19maXNjYWxlcyIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImNlcnRpZmljYXRfY25ldHAiLCJhc3NvY2lhdGlvbnMiLCJjZXJ0aWZpY2F0X29wcWliaSIsImRvY3VtZW50c19hc3NvY2lhdGlvbiIsImV0YWJsaXNzZW1lbnRzIiwiZW50cmVwcmlzZXMiLCJlbnRyZXByaXNlc19hcnRpc2FuYWxlcyIsImV4dHJhaXRfY291cnRfaW5waSIsImV4dHJhaXRzX3JjcyIsImV4ZXJjaWNlcyIsImxpYXNzZV9maXNjYWxlIiwiZm50cF9jYXJ0ZV9wcm8iLCJxdWFsaWJhdCIsInByb2J0cCIsIm1zYV9jb3Rpc2F0aW9ucyIsImJpbGFuc19lbnRyZXByaXNlX2JkZiIsImNlcnRpZmljYXRfcmdlX2FkZW1lIiwiY2VydGlmaWNhdF9hZ2VuY2VfYmlvIiwiYWN0ZXNfaW5waSIsImJpbGFuc19pbnBpIiwiY29udmVudGlvbnNfY29sbGVjdGl2ZXMiLCJlb3JpX2RvdWFuZXMiXSwic3ViIjoidGVzdCBzaWFkZSIsImlhdCI6MTU5Njc5MTY1OSwidmVyc2lvbiI6IjEuMCJ9.F8iEMbQ5niCGqAU4UZu7JGLDtbAoGVtVmH9m45UCSAM',
@@ -50,6 +51,7 @@ module JwtHelper
         ]
       }
     end
+    # rubocop:enable Metrics/MethodLength
 
     def user_for_valid_jwt
       JwtTokenService.new(jwt: jwt(:valid)).jwt_user

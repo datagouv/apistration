@@ -9,6 +9,7 @@ class EtablissementSerializer::V2 < ActiveModel::Serializer
   attribute :adresse
   attribute :etat_administratif
 
+  # rubocop:disable Metrics/MethodLength
   def adresse
     {
       l1: object.l1,
@@ -28,6 +29,7 @@ class EtablissementSerializer::V2 < ActiveModel::Serializer
       cedex: object.cedex
     }
   end
+  # rubocop:enable Metrics/MethodLength
 
   def etat_administratif
     {

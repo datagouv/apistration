@@ -16,18 +16,12 @@ class MakeRequest < ApplicationInteractor
   def call
     api_call
   rescue Net::OpenTimeout, Net::ReadTimeout, EOFError
-    fail_to_request_provider!(
-      ProviderTimeoutError
-    )
+    fail_to_request_provider!(ProviderTimeoutError)
   rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EHOSTUNREACH
-    fail_to_request_provider!(
-      ProviderUnavailable
-    )
+    fail_to_request_provider!(ProviderUnavailable)
   rescue SocketError => e
     if dns_lookup_error?(e)
-      fail_to_request_provider!(
-        DnsResolutionError
-      )
+      fail_to_request_provider!(DnsResolutionError)
     else
       raise
     end

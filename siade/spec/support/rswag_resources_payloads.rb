@@ -1,4 +1,5 @@
 module RSWagResourcesPayloads
+  # rubocop:disable Metrics/MethodLength
   def build_rswag_document_properties_response(siret:, document_url_extra_properties: {})
     {
       type: :object,
@@ -37,4 +38,5 @@ module RSWagResourcesPayloads
       required: %w[data]
     }
   end
+  # rubocop:enable Metrics/MethodLength
 end

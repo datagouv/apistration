@@ -1,6 +1,7 @@
 class RNM::EntreprisesArtisanales::BuildResource < BuildResource
   protected
 
+  # rubocop:disable Metrics/MethodLength
   def resource_attributes
     {
       id: json_body['ent_id_siren'],
@@ -39,6 +40,7 @@ class RNM::EntreprisesArtisanales::BuildResource < BuildResource
       eirl_payload
     )
   end
+  # rubocop:enable Metrics/MethodLength
 
   private
 
@@ -51,6 +53,7 @@ class RNM::EntreprisesArtisanales::BuildResource < BuildResource
     }
   end
 
+  # rubocop:disable Metrics/MethodLength
   def adresse_payload
     {
       # FIXME: JSONAPI use this field to retrieve the relationship
@@ -73,6 +76,7 @@ class RNM::EntreprisesArtisanales::BuildResource < BuildResource
       )
     }
   end
+  # rubocop:enable Metrics/MethodLength
 
   def dirigeant_payload
     {

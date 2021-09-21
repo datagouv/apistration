@@ -5,6 +5,7 @@ class UnprocessableEntityError < ApplicationError
     @field = field.to_sym
   end
 
+  # rubocop:disable Metrics/MethodLength
   def code
     {
       siren: '00301',
@@ -25,6 +26,7 @@ class UnprocessableEntityError < ApplicationError
       raise KeyError, "#{field} is not a valid field name"
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def kind
     :wrong_parameter

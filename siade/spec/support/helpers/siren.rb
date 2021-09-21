@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/MethodLength
 def valid_siren(sample_type = :default)
   samples = {
     default: valid_siret.first(9),
@@ -20,6 +21,7 @@ def valid_siren(sample_type = :default)
 
   samples[sample_type]
 end
+# rubocop:enable Metrics/MethodLength
 
 def sirens_insee_v3
   {

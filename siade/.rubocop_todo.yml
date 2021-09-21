@@ -63,23 +63,6 @@ Metrics/CyclomaticComplexity:
   Exclude:
     - 'app/controllers/api/v3_and_more/base_controller.rb'
 
-# Offense count: 15
-# Configuration parameters: CountComments, Max, CountAsOne, ExcludedMethods, IgnoredMethods.
-Metrics/MethodLength:
-  Exclude:
-    - 'app/controllers/api/v3_and_more/base_controller.rb'
-    - 'app/errors/unprocessable_entity_error.rb'
-    - 'app/interactors/make_request.rb'
-    - 'app/interactors/rnm/entreprises_artisanales/build_resource.rb'
-    - 'app/serializers/etablissement_serializer/v2.rb'
-    - 'app/services/code_to_forme_juridique_service.rb'
-    - 'app/services/code_to_libelle_naf_service.rb'
-    - 'app/services/errors_backend.rb'
-    - 'spec/support/helpers/jwt_helper.rb'
-    - 'spec/support/helpers/siren.rb'
-    - 'spec/support/helpers/siret.rb'
-    - 'spec/support/rswag_resources_payloads.rb'
-
 # Offense count: 2
 # Configuration parameters: Max, CountKeywordArgs, MaxOptionalParameters.
 Metrics/ParameterLists:

@@ -10,7 +10,7 @@ class APIController < ActionController::API
   # rescue_from ActionDispatch::ParamsParser::ParseError, with: :bad_request
   rescue_from ActionController::ParameterMissing, with: :bad_request
 
-  after_action :verify_authorized, except: :index
+  after_action :verify_authorized
 
   def process_action(*args)
     super

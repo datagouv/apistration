@@ -53,6 +53,7 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
     :json_api
   end
 
+  # rubocop:disable Metrics/MethodLength
   def extract_http_code(retriever)
     if retriever.errors.blank?
       :ok
@@ -72,6 +73,7 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
       raise 'No valid HTTP status'
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def at_least_one_error_kind_of?(kind, retriever)
     retriever.errors.any? do |error|

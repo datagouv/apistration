@@ -15,19 +15,26 @@ class Resource
 
   def to_h
     @data.to_h.transform_values do |value|
-      if value.is_a?(Resource)
+      case value
+      when Resource
         value.to_h
-      elsif value.is_a?(Array)
+      when Array
         value.map do |item|
-          if item.is_a?(String)
-            item
-          else
-            item.to_h
-          end
+          handle_array_item(item)
         end
       else
         value
       end
+    end
+  end
+
+  private
+
+  def handle_array_item(item)
+    if item.is_a?(String)
+      item
+    else
+      item.to_h
     end
   end
 end

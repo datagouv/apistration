@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/MethodLength
 def valid_siret(sample_type = nil)
   sample_type ||= :default
 
@@ -44,6 +45,32 @@ def sirets_insee_v3
   }
 end
 
+def not_found_siret(sample_type = nil)
+  sample_type ||= :default
+
+  samples = {
+    default: non_existent_siret,
+    qualibat: danone_siret,
+    probtp: '41816609600069',
+    rge_ademe: '82525962500028',
+    msa: '43409355500010',
+    opqibi: '77568501900587',
+    insee_etablissement: '41816609600051',
+    insee_entreprise: '17830254300000',
+    insee_etablissement_legacy: '41816609600077', # Valid format built from siren octo and compatible yet inexistent nic
+    insee_etablissement_predecesseur: '35058078300024',
+    insee_etablissement_successeur: '63201210001085',
+    extrait_rcs: '43226899300032',
+    conventions_collectives: '82525962500028',
+    inpi: '43226899300032',
+    rnm_cma: '87786242500015',
+    agence_bio: '82525962500028'
+  }
+
+  samples[sample_type]
+end
+# rubocop:enable Metrics/MethodLength
+
 def redirected_siret
   '53222169400013'
 end
@@ -59,31 +86,6 @@ def non_eligible_siret(sample_type)
   samples = {
     probtp: '55204599900828'
   }
-  samples[sample_type]
-end
-
-def not_found_siret(sample_type = nil)
-  sample_type ||= :default
-
-  samples = {
-    default: non_existent_siret,
-    qualibat: danone_siret,
-    probtp: '41816609600069',
-    rge_ademe: '82525962500028',
-    msa: '43409355500010',
-    opqibi: '77568501900587',
-    insee_etablissement: '41816609600051',
-    insee_entreprise: '17830254300000',
-    insee_etablissement_legacy: '41816609600077',          # Valid format built from siren octo and compatible yet inexistent nic
-    insee_etablissement_predecesseur: '35058078300024',
-    insee_etablissement_successeur: '63201210001085',
-    extrait_rcs: '43226899300032',
-    conventions_collectives: '82525962500028',
-    inpi: '43226899300032',
-    rnm_cma: '87786242500015',
-    agence_bio: '82525962500028'
-  }
-
   samples[sample_type]
 end
 
