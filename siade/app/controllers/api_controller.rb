@@ -12,6 +12,8 @@ class APIController < ActionController::API
 
   after_action :verify_authorized
 
+  def index; end
+
   def process_action(*args)
     super
   rescue ActionDispatch::Http::MimeNegotiation::InvalidType => e

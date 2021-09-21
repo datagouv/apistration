@@ -317,13 +317,6 @@ Rails/FilePath:
     - 'spec/support/helpers/payload_file.rb'
     - 'spec/vcr_helper.rb'
 
-# Offense count: 1
-# Configuration parameters: Include.
-# Include: app/controllers/**/*.rb
-Rails/LexicallyScopedActionFilter:
-  Exclude:
-    - 'app/controllers/api_controller.rb'
-
 # Offense count: 2
 Security/Open:
   Exclude:
