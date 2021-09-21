@@ -292,11 +292,6 @@ RSpec/RepeatedDescription:
     - 'spec/controllers/api/v2/documents_associations_controller_spec.rb'
     - 'spec/services/authenticate_dgfip_service_spec.rb'
 
-# Offense count: 1
-RSpec/StubbedMock:
-  Exclude:
-    - 'spec/support/matchers/be_delegated_to.rb'
-
 # Offense count: 4
 # Configuration parameters: IgnoreNameless, IgnoreSymbolicNames.
 RSpec/VerifiedDoubles:
