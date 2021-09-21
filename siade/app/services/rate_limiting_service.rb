@@ -56,10 +56,10 @@ class RateLimitingService
 
   def extract_token_from_header(request)
     auth_header = request.get_header('HTTP_AUTHORIZATION')
-    if auth_header
-      matchs = auth_header.match(/\ABearer (.+)\z/)
-      matchs[1] if matchs
-    end
+    return unless auth_header
+
+    matchs = auth_header.match(/\ABearer (.+)\z/)
+    matchs[1] if matchs
   end
 
   def whitelist

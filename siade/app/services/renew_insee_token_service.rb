@@ -18,10 +18,10 @@ class RenewINSEETokenService
   private
 
   def renew_insee_token
-    if @force || current_token_expired?
-      write_token
-      Rails.logger.info 'INSEE token renewed'
-    end
+    return unless @force || current_token_expired?
+
+    write_token
+    Rails.logger.info 'INSEE token renewed'
   end
 
   def write_token

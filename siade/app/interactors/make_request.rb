@@ -20,11 +20,9 @@ class MakeRequest < ApplicationInteractor
   rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EHOSTUNREACH
     fail_to_request_provider!(ProviderUnavailable)
   rescue SocketError => e
-    if dns_lookup_error?(e)
-      fail_to_request_provider!(DnsResolutionError)
-    else
-      raise
-    end
+    raise unless dns_lookup_error?(e)
+
+    fail_to_request_provider!(DnsResolutionError)
   end
 
   protected

@@ -4,10 +4,10 @@ class Documents::ValidateFormat < ApplicationInteractor
   end
 
   def call
-    unless valid_format?
-      errors << BadFileFromProviderError.new(context.provider_name, :invalid_extention, "File content is not in the expected `#{context.file_type}` format.")
-      context.fail!
-    end
+    return if valid_format?
+
+    errors << BadFileFromProviderError.new(context.provider_name, :invalid_extention, "File content is not in the expected `#{context.file_type}` format.")
+    context.fail!
   end
 
   def valid_format?

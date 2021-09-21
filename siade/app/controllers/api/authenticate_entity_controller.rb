@@ -42,10 +42,11 @@ class API::AuthenticateEntityController < APIController
 
   def token_from_headers
     auth = request.headers['Authorization']
-    if auth
-      matchs = auth.match(/\ABearer (.+)\z/)
-      matchs[1] if matchs
-    end
+
+    return unless auth
+
+    matchs = auth.match(/\ABearer (.+)\z/)
+    matchs[1] if matchs
   end
 
   def jwt?

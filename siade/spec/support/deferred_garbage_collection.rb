@@ -8,11 +8,11 @@ class DeferredGarbageCollection
   end
 
   def self.reconsider
-    if DEFERRED_GC_THRESHOLD.positive? && Time.zone.now - @@last_gc_run >= DEFERRED_GC_THRESHOLD
-      GC.enable
-      GC.start
-      GC.disable
-      @@last_gc_run = Time.zone.now
-    end
+    return unless DEFERRED_GC_THRESHOLD.positive? && Time.zone.now - @@last_gc_run >= DEFERRED_GC_THRESHOLD
+
+    GC.enable
+    GC.start
+    GC.disable
+    @@last_gc_run = Time.zone.now
   end
 end
