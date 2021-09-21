@@ -18,7 +18,7 @@ RSpec.describe 'MI : Associations', type: %i[request swagger] do
       end
 
       describe 'with valid mandatory params', valid: true do
-        response 200, 'Association found', vcr: { cassette_name: 'mi/associations/with_valid_rna_id' } do
+        response 200, 'Association found', vcr: { cassette_name: 'mi/associations/with_valid_rna' } do
           schema type: :object,
             properties: {
               data: {
@@ -128,7 +128,7 @@ RSpec.describe 'MI : Associations', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Association not found', vcr: { cassette_name: 'mi/associations/with_rna_id_not_found' } do
+        response '404', 'Association not found', vcr: { cassette_name: 'mi/associations/with_rna_not_found' } do
           let(:siret_or_rna) { non_existing_rna_id }
 
           schema '$ref' => '#/components/schemas/NotFound'

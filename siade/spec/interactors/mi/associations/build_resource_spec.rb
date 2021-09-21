@@ -1,5 +1,5 @@
 RSpec.describe MI::Associations::BuildResource, type: :build_resource do
-  describe '.call', vcr: { cassette_name: 'mi/associations/valid_siret_json' } do
+  describe '.call', vcr: { cassette_name: 'mi/associations/with_valid_siret' } do
     subject { described_class.call(response: response) }
 
     let(:valid_payload) do
