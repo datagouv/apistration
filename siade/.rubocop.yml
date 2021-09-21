@@ -124,3 +124,7 @@ RSpec/DescribeClass:
   Exclude:
     - "spec/requests/**/*"
     - "spec/acceptances/**/*"
+
+# Authorizing expect{}.to
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
