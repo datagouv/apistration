@@ -64,6 +64,7 @@ group :test do
 
   gem 'ammeter'
   gem 'rspec-rails'
+  gem 'rspec-retry'
   gem 'rspec-its'
   gem 'rspec-json_expectations'
   gem 'rspec-collection_matchers'
