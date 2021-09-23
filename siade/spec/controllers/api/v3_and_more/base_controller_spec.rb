@@ -8,6 +8,8 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
   end
 
   controller(described_class) do
+    skip_after_action :verify_authorized
+
     def index
       render json: { data: true }, status: :ok
     end

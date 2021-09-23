@@ -1,6 +1,7 @@
 RSpec.describe HasMandatoryParams do
   controller(APIController) do
     include HasMandatoryParams
+    skip_after_action :verify_authorized
 
     def index
       render json: {}, status: :ok

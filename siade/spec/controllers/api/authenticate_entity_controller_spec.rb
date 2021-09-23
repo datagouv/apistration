@@ -1,5 +1,7 @@
 RSpec.describe API::AuthenticateEntityController do
   controller(described_class) do
+    skip_after_action :verify_authorized
+
     def index
       render json: {}, status: :ok
     end
