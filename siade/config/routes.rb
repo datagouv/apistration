@@ -113,6 +113,10 @@ Rails.application.routes.draw do
       get 'sirene/etablissements/diffusibles/:siret/adresse' => '/api/v3_and_more/insee/adresses_etablissements_diffusables#show'
     end
 
+    namespace :infogreffe do
+      get 'mandataires_sociaux/:siren' => '/api/v3_and_more/infogreffe/mandataires_sociaux#show'
+    end
+
     namespace :mi do
       get 'associations/:siret_or_rna' => '/api/v3_and_more/mi/associations#show'
     end
