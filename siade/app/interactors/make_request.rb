@@ -60,7 +60,7 @@ class MakeRequest < ApplicationInteractor
     Net::HTTP.start(request_uri.host, request_uri.port, http_options) do |http|
       request = block.call
 
-      set_headers(request)
+      headers(request)
       http.read_timeout = 10
       http.open_timeout = 10
       http.request(request)

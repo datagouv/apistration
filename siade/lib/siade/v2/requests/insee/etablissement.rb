@@ -54,7 +54,7 @@ class SIADE::V2::Requests::INSEE::Etablissement < SIADE::V2::Requests::Generic
     {}
   end
 
-  def set_headers(req)
+  def headers(req)
     req['Authorization'] = 'Bearer ' + insee_token
   end
 

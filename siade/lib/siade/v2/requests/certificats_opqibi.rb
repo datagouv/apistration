@@ -39,7 +39,7 @@ class SIADE::V2::Requests::CertificatsOPQIBI < SIADE::V2::Requests::Generic
     }
   end
 
-  def set_headers(request)
+  def headers(request)
     request['Content-Type'] = 'application/json'
   end
 

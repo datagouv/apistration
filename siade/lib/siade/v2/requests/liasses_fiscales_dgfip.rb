@@ -47,7 +47,7 @@ class SIADE::V2::Requests::LiassesFiscalesDGFIP < SIADE::V2::Requests::Generic
     { use_ssl: true, verify_mode: OpenSSL::SSL::VERIFY_NONE }
   end
 
-  def set_headers(request)
+  def headers(request)
     request['Cookie'] = @cookie
   end
 

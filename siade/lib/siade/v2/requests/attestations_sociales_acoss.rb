@@ -52,7 +52,7 @@ class SIADE::V2::Requests::AttestationsSocialesACOSS < SIADE::V2::Requests::Gene
     { use_ssl: true, verify_mode: OpenSSL::SSL::VERIFY_NONE }
   end
 
-  def set_headers(request)
+  def headers(request)
     request['Content-Type'] = 'application/json'
     request['authorization'] = "Bearer #{token}"
   end

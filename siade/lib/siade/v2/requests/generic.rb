@@ -84,7 +84,7 @@ class SIADE::V2::Requests::Generic
     rest_client_options.merge(default_rest_client_options)
   end
 
-  def set_headers(request)
+  def headers(request)
     request['Content-Type'] = 'application/json'
   end
 
@@ -124,7 +124,7 @@ class SIADE::V2::Requests::Generic
     PerformanceMonitoringService.instance.track(op: :net_http_all, description: 'whole get call + TLS stuff') do
       @raw_response = Net::HTTP.start(request_uri.host, request_uri.port, net_http_options) do |http|
         request = Net::HTTP::Get.new(build_request)
-        set_headers(request)
+        headers(request)
         http.read_timeout = 10
         http.open_timeout = 10
         http.request(request)
@@ -137,7 +137,7 @@ class SIADE::V2::Requests::Generic
   def net_http_post_call
     @raw_response = Net::HTTP.start(request_uri.host, request_uri.port, net_http_options) do |http|
       request = Net::HTTP::Post.new(request_uri)
-      set_headers(request)
+      headers(request)
       request.body = post_request_body
       http.read_timeout = 10
       http.open_timeout = 10
