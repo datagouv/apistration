@@ -32,13 +32,25 @@ class ValidateResponse < ApplicationInteractor
     fail_with_error!(build_error(::ProviderUnknownError, message))
   end
 
-  def resource_not_found!(message = not_found_message)
+  def resource_not_found!(resource = nil)
+    message = not_found_message(resource)
     fail_with_error!(build_error(::NotFoundError, message))
   end
 
-  private
+  def not_found_message(resource)
+    identifiant = case resource
+                  when :siret
+                    'Le siret'
+                  when :siren
+                    'Le siren'
+                  when :siret_or_rna
+                    "Le siret ou l'identifiant RNA"
+                  when :siret_or_siren
+                    'Le siret ou le siren'
+                  else
+                    "L'identifiant"
+                  end
 
-  def not_found_message
-    'Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel'
+    "#{identifiant} indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel."
   end
 end

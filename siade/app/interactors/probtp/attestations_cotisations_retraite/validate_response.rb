@@ -9,6 +9,12 @@ class PROBTP::AttestationsCotisationsRetraite::ValidateResponse < ValidateRespon
     end
   end
 
+  protected
+
+  def not_found_message(_resource)
+    "Le siret ou siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel."
+  end
+
   private
 
   def internal_error?
