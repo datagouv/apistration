@@ -23,47 +23,54 @@ sudo apt-get install libmagic-dev
 
 ## Utilisation et edition des credentials
 
-### Une vue rapide d'ensemble
+Avant toute chose, lisez la partie sur la gestion des credentials chiffré dans
+la [doc officielle de
+Rails](https://edgeguides.rubyonrails.org/security.html#environmental-security)
 
-Par defaut 2 fichiers : un fichier encrypte, ainsi qu'une cle ne devant pas etre
-versionnee. En ce qui nous concerne, la clef est disponible dans le repertoire
-`very_ansible`, sous dossiers 'secrets'. Il faut disposer du mot de passe ansible
-pour dechiffrer le fichier a l'aide de `ansible-vault`
+Les credentials sont séparés en 3 fichiers:
 
-Cela donne :
+1. Pour les machines de production, qui regroupent les environnements
+   `production`, `staging` et `sandbox`
+2. Un fichier pour le développement
+3. Un fichier pour les tests
 
-- fichier de credentials par defaut `config/credentials.yml.enc' accompagne de sa clef `config/master.key`
-- pour un `ENV` donne, respectivement `config/credentials/ENV.yml.enc' et `config/credentials/ENV.key`
-- Possibilite de faire des liens symboliques pour eviter la duplication dans
-  certains cas
+Le format des fichiers sont les suivants:
 
-Situation non "evidente" nous concernant :
-
-- Credentials prod like regroupes dans les credentials par defaut, avec une
-  master key commune aux 3 envs pour minimiser les erreurs de recopie d'un
-  fichier a l'autre qui serait necessaire dans le cas d'un fichier par env.
-- Credentials dev / test par env. Cela permet d'avoir une master key ne pouvant
-  dechiffrer les credentials de prod pour notre env de CI. Nous pouvons
-  egalement versionner la master key de dev / test sans risques.
-
-### Editer, installer en savoir plus
-
-L'edition se passe comme suit :
-
-```sh
-bin/rails credentials:edit # par defaut
-bin/rails credentials:edit --environment ENV # pour l'environnement ENV
+```yaml
+# environment == production, sandbox, development ...
+environment:
+  key: value
 ```
 
-L'edition se fait a la ansible-vault, il faut un EDITOR connu par le shell. Pour
-vim, `echo 'export EDITOR="vim"' >> ~/.bashrc; source ~/.bashrc` fera l'affaire si vous utilisez
-le shell bash.
+En effet étant donné que les apps partagent pas mal de credentials en commun,
+c'est une manière simple de partager les données entre des environments
+similaire.
 
-Plus d'infos en ligne de commande ici :
+Nous avons donc pour les machines de production le fichier
+`config/credentials.yml.enc`, dont la master key (à placer dans
+`config/master.key`) est chiffré dans le dépôt very_ansible
+
+Vous pouvez utiliser le script `./bin/retrieve_master_key.sh` pour importer
+automatiquement la clé.
+
+Pour éditer les credentials des machines de production:
 
 ```sh
-bin/rails credentials:help
+rails credentials:edit
 ```
+
+Pour test et development, il y a en réalité 1 seul fichier et un lien symbolique
+de development vers test. A noter que la master key est ici versionnée (car les
+données sont non sensibles)
+
+Pour éditer les credentials de dev/test:
+
+```sh
+rails credentials:edit --environment development
+```
+
+**Il ne faut absolument pas mettre de véritable credentials dans ce fichier,
+uniquement dans ceux de productions**
 
 ## Déploiement sur les serveurs
 
