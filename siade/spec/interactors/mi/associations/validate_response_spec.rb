@@ -50,7 +50,7 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
     end
 
     context 'with a valid code and a body containing nonsense' do
-      let(:code) { '418' }
+      let(:code) { '200' }
       let(:body) { 'Nonsense' }
 
       it { is_expected.to be_a_failure }

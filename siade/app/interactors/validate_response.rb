@@ -34,6 +34,7 @@ class ValidateResponse < ApplicationInteractor
 
   def resource_not_found!(resource = nil)
     message = not_found_message(resource)
+
     fail_with_error!(build_error(::NotFoundError, message))
   end
 
