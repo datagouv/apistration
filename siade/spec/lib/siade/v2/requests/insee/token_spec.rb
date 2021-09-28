@@ -1,4 +1,4 @@
-RSpec.describe SIADE::V2::Requests::INSEE::Token, type: :provider_request, vcr: { cassette_name: 'renew_insee_token' } do
+RSpec.describe SIADE::V2::Requests::INSEE::Token, type: :provider_request, vcr: { cassette_name: 'insee/token' } do
   subject { described_class.new }
 
   # it doesn't catch any error, none occured yet

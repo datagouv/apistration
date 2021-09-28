@@ -53,7 +53,7 @@ RSpec.describe RenewINSEETokenService do
     end
   end
 
-  describe 'when renewing the token', vcr: { cassette_name: 'renew_insee_token' } do
+  describe 'when renewing the token', vcr: { cassette_name: 'insee/token' } do
     context 'token file does not exists' do
       before do
         allow(service).to receive(:filename).and_return(missing_file)
