@@ -15,11 +15,16 @@ class SiretFormatValidator < ActiveModel::EachValidator
   private
 
   def valid_checksum(value)
-    if value =~ /356000000/
-      true # SCUMBAG LA POSTE SIRETS
-    else
-      (luhn_checksum(value) % 10).zero?
-    end
+    la_poste_siret?(value) ||
+      valid_luhn_checksum?(value)
+  end
+
+  def la_poste_siret?(value)
+    value =~ /^356000000\d{5}/
+  end
+
+  def valid_luhn_checksum?(value)
+    (luhn_checksum(value) % 10).zero?
   end
 
   def luhn_checksum(value)

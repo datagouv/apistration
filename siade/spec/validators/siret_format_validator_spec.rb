@@ -51,4 +51,13 @@ RSpec.describe SiretFormatValidator do
     expect(subject).not_to be_valid
     expect(subject.errors.messages[:siret]).to include('14 digits only')
   end
+
+  it 'rejects siret which have no good checksum but match la poste siren' do
+    subject.siret = '12345356000000'
+
+    expect(subject).not_to be_valid
+    expect(subject.errors.messages[:siret]).to include(
+      'must have luhn_checksum ok or be a la poste siret'
+    )
+  end
 end
