@@ -1,4 +1,4 @@
-RSpec.describe SIADE::V3::Referentials::TrancheEffectifSalarie do
+RSpec.describe SIADE::V2::Referentials::TrancheEffectifSalarie do
   subject { described_class.new(code: code, date_reference: date_reference) }
 
   context 'with nil code' do

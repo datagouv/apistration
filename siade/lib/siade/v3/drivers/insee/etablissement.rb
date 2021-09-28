@@ -85,7 +85,7 @@ class SIADE::V3::Drivers::INSEE::Etablissement < SIADE::V2::Drivers::GenericDriv
   end
 
   def tranche_effectif_salarie_raw
-    SIADE::V3::Referentials::TrancheEffectifSalarie.new(
+    SIADE::V2::Referentials::TrancheEffectifSalarie.new(
       code: info_etab[:trancheEffectifsEtablissement],
       date_reference: info_etab[:anneeEffectifsEtablissement]
     )
@@ -96,7 +96,7 @@ class SIADE::V3::Drivers::INSEE::Etablissement < SIADE::V2::Drivers::GenericDriv
   end
 
   def activite_principale_raw
-    @activite_principale ||= SIADE::V3::Referentials::ActivitePrincipale.new(
+    @activite_principale ||= SIADE::V2::Referentials::ActivitePrincipale.new(
       code: info_etab_actuel[:activitePrincipaleEtablissement],
       nomenclature: info_etab_actuel[:nomenclatureActivitePrincipaleEtablissement]
     )

@@ -1,4 +1,4 @@
-RSpec.describe SIADE::V3::Referentials::ActivitePrincipale do
+RSpec.describe SIADE::V2::Referentials::ActivitePrincipale do
   subject { described_class.new(code: code, nomenclature: nomenclature) }
 
   describe 'nomenclature not found' do

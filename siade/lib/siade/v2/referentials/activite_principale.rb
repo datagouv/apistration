@@ -1,7 +1,7 @@
 require 'csv'
 
-class SIADE::V3::Referentials::ActivitePrincipale
-  include SIADE::V3::Referentials::DeprecatedDataTrackable
+class SIADE::V2::Referentials::ActivitePrincipale
+  include SIADE::V2::Referentials::DeprecatedDataTrackable
 
   attr_reader :code, :nomenclature
 
@@ -75,6 +75,6 @@ class SIADE::V3::Referentials::ActivitePrincipale
   end
 
   def file_name
-    Rails.root.join('lib', 'siade', 'v3', 'referentials', 'files', 'NAFRev2.csv')
+    Rails.root.join('lib', 'siade', 'v2', 'referentials', 'files', 'NAFRev2.csv')
   end
 end

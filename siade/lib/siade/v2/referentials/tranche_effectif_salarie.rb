@@ -1,7 +1,7 @@
 require 'csv'
 
-class SIADE::V3::Referentials::TrancheEffectifSalarie
-  include SIADE::V3::Referentials::DeprecatedDataTrackable
+class SIADE::V2::Referentials::TrancheEffectifSalarie
+  include SIADE::V2::Referentials::DeprecatedDataTrackable
 
   attr_reader :code, :date_reference
 
@@ -72,6 +72,6 @@ class SIADE::V3::Referentials::TrancheEffectifSalarie
   end
 
   def file_name
-    Rails.root.join('lib', 'siade', 'v3', 'referentials', 'files', 'tranche_effectif_salarie.csv')
+    Rails.root.join('lib', 'siade', 'v2', 'referentials', 'files', 'tranche_effectif_salarie.csv')
   end
 end

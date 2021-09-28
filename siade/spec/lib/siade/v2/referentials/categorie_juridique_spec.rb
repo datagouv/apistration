@@ -1,4 +1,4 @@
-RSpec.describe SIADE::V3::Referentials::CategorieJuridique do
+RSpec.describe SIADE::V2::Referentials::CategorieJuridique do
   subject { described_class.new(code: code) }
 
   context 'with not found code' do

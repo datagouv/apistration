@@ -122,20 +122,20 @@ class SIADE::V3::Drivers::INSEE::Entreprise < SIADE::V2::Drivers::GenericDriver
   end
 
   def categorie_juridique_raw
-    SIADE::V3::Referentials::CategorieJuridique.new(
+    SIADE::V2::Referentials::CategorieJuridique.new(
       code: info_entreprise_actuel[:categorieJuridiqueUniteLegale]
     )
   end
 
   def activite_principale_raw
-    @activite_principale ||= SIADE::V3::Referentials::ActivitePrincipale.new(
+    @activite_principale ||= SIADE::V2::Referentials::ActivitePrincipale.new(
       code: info_entreprise_actuel[:activitePrincipaleUniteLegale],
       nomenclature: info_entreprise_actuel[:nomenclatureActivitePrincipaleUniteLegale]
     )
   end
 
   def tranche_effectif_salarie_raw
-    SIADE::V3::Referentials::TrancheEffectifSalarie.new(
+    SIADE::V2::Referentials::TrancheEffectifSalarie.new(
       code: info_entreprise[:trancheEffectifsUniteLegale],
       date_reference: info_entreprise[:anneeEffectifsUniteLegale]
     )

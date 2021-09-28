@@ -1,7 +1,7 @@
 require 'csv'
 
-class SIADE::V3::Referentials::CategorieJuridique
-  include SIADE::V3::Referentials::DeprecatedDataTrackable
+class SIADE::V2::Referentials::CategorieJuridique
+  include SIADE::V2::Referentials::DeprecatedDataTrackable
 
   attr_reader :code
 
@@ -50,6 +50,6 @@ class SIADE::V3::Referentials::CategorieJuridique
   end
 
   def file_name
-    Rails.root.join('lib', 'siade', 'v3', 'referentials', 'files', 'categorie_juridique.csv')
+    Rails.root.join('lib', 'siade', 'v2', 'referentials', 'files', 'categorie_juridique.csv')
   end
 end
