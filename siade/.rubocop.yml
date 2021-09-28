@@ -209,6 +209,7 @@ RSpec/FilePath:
 RSpec/MessageSpies:
   Enabled: false
 
+# We like multiple expectations
 RSpec/MultipleExpectations:
   Enabled: false
 
