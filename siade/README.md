@@ -35,6 +35,13 @@ Avec le coverage:
 CODE_COVERAGE=true rspec
 ```
 
+Si vous rencontrez des problèmes de matching sur les cassettes VCR, vous pouvez
+obtenir plus de logs de la manière suivante:
+
+```sh
+DEBUG_VCR=true rspec
+```
+
 ## Utilisation et edition des credentials
 
 Avant toute chose, lisez la partie sur la gestion des credentials chiffré dans

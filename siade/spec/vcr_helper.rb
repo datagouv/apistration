@@ -48,12 +48,31 @@ VCR.configure do |c|
 
   c.filter_sensitive_data('<URL_QUALIBAT>') { Siade.credentials[:qualibat_url].to_s }
 
-  c.register_request_matcher :headers_sanitized do |request_1, request_2|
+  c.register_request_matcher :headers_sanitized do |request, registered_request|
     headers_to_ignore = %w[
       User-Agent
     ]
 
-    request_1.headers.except(*headers_to_ignore) == request_2.headers.except(*headers_to_ignore)
+    bool = request.headers.except(*headers_to_ignore) == registered_request.headers.except(*headers_to_ignore)
+
+    if ENV['DEBUG_VCR'] && !bool
+      print "Diff on headers:\n"
+      mismatching_keys = (request.headers.except(*headers_to_ignore).to_a - registered_request.headers.except(*headers_to_ignore).to_a).map { |header| header[0] }
+      mismatching_keys += (registered_request.headers.except(*headers_to_ignore).to_a - request.headers.except(*headers_to_ignore).to_a).map { |header| header[0] }
+      mismatching_keys.uniq!
+
+      mismatching_keys.each do |key|
+        print "* '#{key}'\n"
+        print "  Current:    #{request.headers[key] || 'EMPTY VALUE'}\n"
+        print "  Registered: #{registered_request.headers[key] || 'EMPTY VALUE'}\n"
+      end
+
+      print "================\n"
+    end
+
+    bool
   end
+
+  c.debug_logger = $stdout if ENV['DEBUG_VCR']
 end
 # rubocop:enable Metrics/BlockLength
