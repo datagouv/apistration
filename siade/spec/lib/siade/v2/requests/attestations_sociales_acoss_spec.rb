@@ -41,7 +41,7 @@ RSpec.describe SIADE::V2::Requests::AttestationsSocialesACOSS, type: :provider_r
 
     context 'when siren raise a timeout' do
       before do
-        allow_any_instance_of(SIADE::V3::OAuth2::ACOSSTokenProvider).to receive(:token).and_return('dummy token')
+        allow_any_instance_of(SIADE::V2::OAuth2::ACOSSTokenProvider).to receive(:token).and_return('dummy token')
         allow_any_instance_of(SIADE::V2::Requests::Generic).to receive(:net_http_post_call).and_raise(Net::ReadTimeout)
       end
 
@@ -59,9 +59,9 @@ RSpec.describe SIADE::V2::Requests::AttestationsSocialesACOSS, type: :provider_r
     let(:type_attestation) { valid_type_attestation }
 
     before do
-      allow_any_instance_of(SIADE::V3::OAuth2::ACOSSTokenProvider)
+      allow_any_instance_of(SIADE::V2::OAuth2::ACOSSTokenProvider)
         .to receive(:token)
-        .and_raise(SIADE::V3::OAuth2::AbstractTokenProvider::Error, 'dummy error')
+        .and_raise(SIADE::V2::OAuth2::AbstractTokenProvider::Error, 'dummy error')
     end
 
     its(:http_code) { is_expected.to eq(502) }

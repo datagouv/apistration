@@ -1,4 +1,4 @@
-RSpec.describe SIADE::V3::OAuth2::ACOSSTokenProvider, vcr: { cassette_name: 'acoss/oauth2', match_requests_on: %i[method uri body] } do
+RSpec.describe SIADE::V2::OAuth2::ACOSSTokenProvider, vcr: { cassette_name: 'acoss/oauth2', match_requests_on: %i[method uri body] } do
   subject { described_class.new }
 
   let(:access_token_from_vcr_acoss) { 'jJIHl8_MiMJ0fjF_-rGolr6mLRrG_WXy1RoIRGYHiGg' }

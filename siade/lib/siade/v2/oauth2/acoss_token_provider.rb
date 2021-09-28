@@ -1,5 +1,5 @@
-class SIADE::V3::OAuth2::ACOSSTokenProvider
-  include SIADE::V3::OAuth2::AbstractTokenProvider
+class SIADE::V2::OAuth2::ACOSSTokenProvider
+  include SIADE::V2::OAuth2::AbstractTokenProvider
 
   SCOPE_API_ENTREPRISE = 'attn.api_entreprise'
 

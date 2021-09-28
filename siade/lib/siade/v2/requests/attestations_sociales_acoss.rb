@@ -73,8 +73,8 @@ class SIADE::V2::Requests::AttestationsSocialesACOSS < SIADE::V2::Requests::Gene
   end
 
   def token
-    @token ||= SIADE::V3::OAuth2::ACOSSTokenProvider.new.token
-  rescue SIADE::V3::OAuth2::ACOSSTokenProvider::Error => e
+    @token ||= SIADE::V2::OAuth2::ACOSSTokenProvider.new.token
+  rescue SIADE::V2::OAuth2::ACOSSTokenProvider::Error => e
     @error_message = e.message
     set_error_message_for(502)
     false
