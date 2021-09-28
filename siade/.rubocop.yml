@@ -216,6 +216,7 @@ RSpec/MultipleExpectations:
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
 
+# We also like unnamed subject
 RSpec/NamedSubject:
   Enabled: false
 
