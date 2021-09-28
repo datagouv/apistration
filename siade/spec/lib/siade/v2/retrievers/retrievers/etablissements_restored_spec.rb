@@ -1,4 +1,4 @@
-RSpec.describe SIADE::V3::Retrievers::EtablissementsRestored do
+RSpec.describe SIADE::V2::Retrievers::EtablissementsRestored do
   subject(:retriever) { described_class.new(siret).tap(&:retrieve) }
 
   before { allow_any_instance_of(RenewINSEETokenService).to receive(:current_token_expired?).and_return(false) }
@@ -21,7 +21,7 @@ RSpec.describe SIADE::V3::Retrievers::EtablissementsRestored do
 
   describe 'valid siret GE', vcr: { cassette_name: 'api_insee_fr/siret/active_GE' } do
     let(:siret) { sirets_insee_v3[:active_GE] }
-    let(:driver_v3_etab) { SIADE::V3::Drivers::INSEE::Etablissement }
+    let(:driver_v3_etab) { SIADE::V2::Drivers::INSEE::Etablissement }
 
     its(:success?) { is_expected.to be_truthy }
 

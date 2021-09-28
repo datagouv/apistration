@@ -48,10 +48,10 @@ RSpec.describe API::V2::EtablissementsRestoredController, type: :controller do
     let(:siret) { sirets_insee_v3[:active_GE] }
 
     before do
-      allow_any_instance_of(SIADE::V3::Retrievers::EtablissementsRestored).to receive(:retrieve).and_return nil
-      allow_any_instance_of(SIADE::V3::Retrievers::EtablissementsRestored).to receive(:success?).and_return false
-      allow_any_instance_of(SIADE::V3::Retrievers::EtablissementsRestored).to receive(:http_code).and_return 503
-      allow_any_instance_of(SIADE::V3::Retrievers::EtablissementsRestored).to receive(:errors).and_return [ProviderUnknownError.new('INSEE', 'artificial error')]
+      allow_any_instance_of(SIADE::V2::Retrievers::EtablissementsRestored).to receive(:retrieve).and_return nil
+      allow_any_instance_of(SIADE::V2::Retrievers::EtablissementsRestored).to receive(:success?).and_return false
+      allow_any_instance_of(SIADE::V2::Retrievers::EtablissementsRestored).to receive(:http_code).and_return 503
+      allow_any_instance_of(SIADE::V2::Retrievers::EtablissementsRestored).to receive(:errors).and_return [ProviderUnknownError.new('INSEE', 'artificial error')]
     end
 
     its(:status) { is_expected.to eq 503 }

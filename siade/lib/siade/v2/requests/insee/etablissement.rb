@@ -1,10 +1,10 @@
-class SIADE::V3::Requests::INSEE::Entreprise < SIADE::V2::Requests::Generic
-  def initialize(siren)
-    @siren = siren
+class SIADE::V2::Requests::INSEE::Etablissement < SIADE::V2::Requests::Generic
+  def initialize(siret)
+    @siret = siret
   end
 
   def valid?
-    if siren_valid?
+    if siret_valid?
       RenewINSEETokenService.new.call
       true
     else
@@ -19,12 +19,12 @@ class SIADE::V3::Requests::INSEE::Entreprise < SIADE::V2::Requests::Generic
     'INSEE'
   end
 
-  def siren_valid?
-    Siren.new(@siren).valid?
+  def siret_valid?
+    Siret.new(@siret).valid?
   end
 
   def request_uri
-    URI([base_uri, 'entreprises', 'sirene', 'V3', 'siren', @siren].join('/'))
+    URI([base_uri, 'entreprises', 'sirene', 'V3', 'siret', @siret].join('/'))
   end
 
   def request_lib
@@ -33,6 +33,10 @@ class SIADE::V3::Requests::INSEE::Entreprise < SIADE::V2::Requests::Generic
 
   def request_verb
     :get
+  end
+
+  def net_http_options
+    { use_ssl: true, verify_mode: OpenSSL::SSL::VERIFY_NONE }
   end
 
   def build_response
@@ -44,7 +48,7 @@ class SIADE::V3::Requests::INSEE::Entreprise < SIADE::V2::Requests::Generic
   end
 
   def response_wrapper
-    SIADE::V3::Responses::INSEE::Generic
+    SIADE::V2::Responses::INSEE::Generic
   end
 
   def request_params
@@ -52,28 +56,27 @@ class SIADE::V3::Requests::INSEE::Entreprise < SIADE::V2::Requests::Generic
   end
 
   def set_headers(req)
-    req['Content-Type'] = 'application/json'
-    req['Authorization'] = "Bearer #{insee_token}"
-  end
-
-  def net_http_options
-    { use_ssl: true, verify_mode: OpenSSL::SSL::VERIFY_NONE }
+    req['Authorization'] = 'Bearer ' + insee_token
   end
 
   def follow_redirect(moved_response)
-    extract_new_siren_from_location(moved_response['location'])
+    extract_new_siret_from_location(moved_response['location'])
 
-    if siren_valid?
-      recall_api_with_new_siren
+    if siret_valid?
+      recall_api_with_new_siret
     else
       super(moved_response)
     end
+
+    uri = URI(moved_response['location'])
+    @raw_response = Net::HTTP.get_response(uri)
+    @response = build_response
   end
 
   private
 
   def set_error_message_422
-    set_error_for_bad_siren
+    set_error_for_bad_siret
   end
 
   def base_uri
@@ -88,11 +91,11 @@ class SIADE::V3::Requests::INSEE::Entreprise < SIADE::V2::Requests::Generic
     Rails.root.join('config', 'insee_secrets.yml')
   end
 
-  def recall_api_with_new_siren
+  def recall_api_with_new_siret
     call_api
   end
 
-  def extract_new_siren_from_location(location)
-    @siren = location.match(/(\d{9})$/).to_s
+  def extract_new_siret_from_location(location)
+    @siret = location.match(/(\d{14})$/).to_s
   end
 end

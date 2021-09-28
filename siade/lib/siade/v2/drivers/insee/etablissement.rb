@@ -1,4 +1,4 @@
-class SIADE::V3::Drivers::INSEE::Etablissement < SIADE::V2::Drivers::GenericDriver
+class SIADE::V2::Drivers::INSEE::Etablissement < SIADE::V2::Drivers::GenericDriver
   default_to_nil_raw_fetching_methods :siret,
     :siege_social,
     :siren,
@@ -31,7 +31,7 @@ class SIADE::V3::Drivers::INSEE::Etablissement < SIADE::V2::Drivers::GenericDriv
   end
 
   def request
-    @request ||= SIADE::V3::Requests::INSEE::Etablissement.new(@siret)
+    @request ||= SIADE::V2::Requests::INSEE::Etablissement.new(@siret)
   end
 
   def check_response; end

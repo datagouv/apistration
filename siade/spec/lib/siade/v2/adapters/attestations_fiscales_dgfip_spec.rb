@@ -3,8 +3,8 @@ RSpec.describe SIADE::V2::Adapters::AttestationsFiscalesDGFIP do
   let(:siren)             { valid_siren(:dgfip) }
   let(:siren_is)          { danone_siren }
   let(:siren_tva)         { danone_siren }
-  let(:entreprise_is)     { SIADE::V3::Drivers::INSEE::Entreprise.new(siren: siren_is) }
-  let(:etablissement_is)  { SIADE::V3::Drivers::INSEE::Etablissement.new(siret: entreprise_is.siret_siege_social) }
+  let(:entreprise_is)     { SIADE::V2::Drivers::INSEE::Entreprise.new(siren: siren_is) }
+  let(:etablissement_is)  { SIADE::V2::Drivers::INSEE::Etablissement.new(siret: entreprise_is.siret_siege_social) }
   let(:entreprise_tva)    { entreprise_is }
   let(:etablissement_tva) { etablissement_is }
 

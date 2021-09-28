@@ -1,4 +1,4 @@
-RSpec.describe SIADE::V3::Requests::INSEE::Etablissement, type: :provider_request do
+RSpec.describe SIADE::V2::Requests::INSEE::Etablissement, type: :provider_request do
   subject { described_class.new(siret).tap(&:perform) }
 
   before { allow_any_instance_of(RenewINSEETokenService).to receive(:current_token_expired?).and_return(false) }

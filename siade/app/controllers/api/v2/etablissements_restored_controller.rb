@@ -57,7 +57,7 @@ class API::V2::EtablissementsRestoredController < API::V2::BaseController
   end
 
   def retriever
-    @retriever ||= SIADE::V3::Retrievers::EtablissementsRestored.new(siret).tap(&:retrieve)
+    @retriever ||= SIADE::V2::Retrievers::EtablissementsRestored.new(siret).tap(&:retrieve)
   end
 
   def siret

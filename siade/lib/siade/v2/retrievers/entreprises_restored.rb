@@ -1,8 +1,8 @@
-class SIADE::V3::Retrievers::EntreprisesRestored < SIADE::V2::Retrievers::GenericInformationRetriever
+class SIADE::V2::Retrievers::EntreprisesRestored < SIADE::V2::Retrievers::GenericInformationRetriever
   attr_reader :siren
   attr_accessor :numero_tva_intracommunautaire
 
-  register_driver :v3_entreprise, class_name: SIADE::V3::Drivers::INSEE::Entreprise, init_with: :siren
+  register_driver :v3_entreprise, class_name: SIADE::V2::Drivers::INSEE::Entreprise, init_with: :siren
   register_driver :infogreffe, class_name: SIADE::V2::Drivers::Infogreffe, init_with: :siren, init_options: :driver_infogreffe_options
 
   fetch_attributes_through_driver :infogreffe,

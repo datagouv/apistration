@@ -39,7 +39,7 @@ class RenewINSEETokenService
   end
 
   def token_request
-    @request ||= SIADE::V3::Requests::INSEE::Token.new
+    @request ||= SIADE::V2::Requests::INSEE::Token.new
   end
 
   def file_exist?

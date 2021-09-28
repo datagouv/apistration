@@ -1,4 +1,4 @@
-class SIADE::V3::Responses::INSEE::Generic < SIADE::V2::Responses::Generic
+class SIADE::V2::Responses::INSEE::Generic < SIADE::V2::Responses::Generic
   protected
 
   def provider_name

@@ -87,7 +87,7 @@ class SIADE::V2::Retrievers::AttestationsFiscalesDGFIP < SIADE::V2::Retrievers::
   end
 
   def entreprise_insee(siren)
-    SIADE::V3::Drivers::INSEE::Entreprise.new(siren: siren).perform_request
+    SIADE::V2::Drivers::INSEE::Entreprise.new(siren: siren).perform_request
   end
 
   def etablissement_is
@@ -107,6 +107,6 @@ class SIADE::V2::Retrievers::AttestationsFiscalesDGFIP < SIADE::V2::Retrievers::
   end
 
   def etablissement_insee(siret)
-    SIADE::V3::Drivers::INSEE::Etablissement.new(siret: siret).perform_request
+    SIADE::V2::Drivers::INSEE::Etablissement.new(siret: siret).perform_request
   end
 end

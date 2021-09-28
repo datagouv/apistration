@@ -1,4 +1,4 @@
-RSpec.describe SIADE::V3::Drivers::INSEE::Etablissement, type: :provider_driver do
+RSpec.describe SIADE::V2::Drivers::INSEE::Etablissement, type: :provider_driver do
   before { allow_any_instance_of(RenewINSEETokenService).to receive(:current_token_expired?).and_return(false) }
 
   context 'when siret is not found', vcr: { cassette_name: 'api_insee_fr/siret/non_existent' } do

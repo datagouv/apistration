@@ -2,7 +2,7 @@ require 'net/http'
 require 'uri'
 require 'openssl'
 
-class SIADE::V3::Requests::INSEE::Token
+class SIADE::V2::Requests::INSEE::Token
   def token
     response_body['access_token']
   end

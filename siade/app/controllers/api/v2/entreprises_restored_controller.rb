@@ -85,11 +85,11 @@ class API::V2::EntreprisesRestoredController < API::V2::BaseController
   end
 
   def retriever_entreprise
-    @retriever_entreprise ||= SIADE::V3::Retrievers::EntreprisesRestored.new(siren).tap(&:retrieve)
+    @retriever_entreprise ||= SIADE::V2::Retrievers::EntreprisesRestored.new(siren).tap(&:retrieve)
   end
 
   def retriever_etablissement
-    @retriever_etablissement ||= SIADE::V3::Retrievers::EtablissementsRestored.new(siret).tap(&:retrieve)
+    @retriever_etablissement ||= SIADE::V2::Retrievers::EtablissementsRestored.new(siret).tap(&:retrieve)
   end
 
   def siret

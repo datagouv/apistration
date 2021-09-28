@@ -1,7 +1,7 @@
-class SIADE::V3::Retrievers::EtablissementsRestored < SIADE::V2::Retrievers::GenericInformationRetriever
+class SIADE::V2::Retrievers::EtablissementsRestored < SIADE::V2::Retrievers::GenericInformationRetriever
   attr_reader :siret
 
-  register_driver :v3_etab, class_name: SIADE::V3::Drivers::INSEE::Etablissement, init_with: :siret
+  register_driver :v3_etab, class_name: SIADE::V2::Drivers::INSEE::Etablissement, init_with: :siret
   register_driver :geo_localite, class_name: SIADE::V2::Drivers::Geo::Localite, init_with: :code_commune
 
   fetch_attributes_through_driver :v3_etab,
