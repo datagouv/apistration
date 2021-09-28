@@ -3,7 +3,7 @@ class <%= name %> < RetrieverOrganizer
            <%= name %>::MakeRequest,
            <%= name %>::ValidateResponse,<% if document_resource? %>
            <%= name %>::UploadDocument,<% end %>
-           <%= name %>::BuildResource,
+           <%= name %>::BuildResource
 
   def provider_name
     '<%= provider_namespace %>'
