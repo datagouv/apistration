@@ -21,6 +21,20 @@ De même pour `libmagic-dev`:
 sudo apt-get install libmagic-dev
 ```
 
+## Tests
+
+Par défaut:
+
+```sh
+rspec
+```
+
+Avec le coverage:
+
+```sh
+CODE_COVERAGE=true rspec
+```
+
 ## Utilisation et edition des credentials
 
 Avant toute chose, lisez la partie sur la gestion des credentials chiffré dans
