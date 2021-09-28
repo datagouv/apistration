@@ -1,0 +1,70 @@
+require 'swagger_helper'
+
+RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type: %i[request swagger] do
+  path '/v3/<%= provider_namespace.underscore %>/<%= resource_class.underscore.pluralize %>/{<%= id_path_param %>}' do
+    get 'FEEDME' do
+      tags 'Informations générales'
+
+      common_action_attributes
+
+      parameter name: :<%= id_path_param %>, in: :path, type: :string
+
+      unauthorized_request do
+        let(:<%= id_path_param %>) { valid_<%= id_path_param %>(:<%= provider_namespace.underscore %>) }
+      end
+
+      forbidden_request do
+        let(:<%= id_path_param %>) { valid_<%= id_path_param %>(:<%= provider_namespace.underscore %>) }
+      end
+
+      describe 'with valid mandatory params', valid: true do
+        response '200', 'Entreprise found', vcr: { cassette_name: '<%= provider_namespace.underscore %>/valid_<%= id_path_param %>_json' } do
+          let(:<%= id_path_param %>) { valid_<%= id_path_param %>(:<%= provider_namespace.underscore %>) }
+
+          schema type: :object,
+            properties: {
+              data: {
+                type: :object,
+                properties: {
+                  id: {
+                    type: :string,
+                    example: valid_<%= id_path_param %>(:<%= provider_namespace.underscore %>)
+                  },
+                  attributes: {
+                    type: :object,
+                    properties: {
+                      <%= id_path_param %>: {
+                        type: :string,
+                        example: valid_<%= id_path_param %>(:<%= provider_namespace.underscore %>),
+                        description: 'Siren de l\'entreprise'
+                      },
+                    },
+                    required: %w[
+                      <%= id_path_param %>
+                    ]
+                  }
+                },
+                required: %w[
+                  id
+                ]
+              }
+            },
+            required: [
+              :data
+            ]
+
+          run_test!
+        end
+
+        response '404', 'Non trouvée', vcr: { cassette_name: '<%= provider_namespace.underscore %>/not_found_<%= id_path_param %>' } do
+          let(:<%= id_path_param %>) { not_found_<%= id_path_param %>(:<%= provider_namespace.underscore %>) }
+
+          schema '$ref' => '#/components/schemas/NotFound'
+
+          run_test!
+        end
+      end
+    end
+  end
+end
+
