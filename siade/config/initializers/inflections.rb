@@ -64,5 +64,6 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'eligibilite_cotisation_retraite', 'eligibilites_cotisation_retraite'
   inflect.irregular 'extrait_court_inpi', 'extraits_courts_inpi'
   inflect.irregular 'extrait_rcs', 'extraits_rcs'
+  inflect.irregular 'mandataire_social', 'mandataires_sociaux'
   inflect.irregular 'ninja', 'ninja'
 end
