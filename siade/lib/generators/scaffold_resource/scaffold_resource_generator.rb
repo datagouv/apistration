@@ -31,6 +31,7 @@ class ScaffoldResourceGenerator < Rails::Generators::NamedBase
     generate 'make_request', name, string_options
     generate 'validate_response', name, string_options
     generate 'build_resource', name, string_options
+    generate 'request_spec', name, string_options
   end
 
   private
