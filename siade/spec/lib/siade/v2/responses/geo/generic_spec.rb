@@ -1,5 +1,5 @@
-RSpec.describe SIADE::V3::Responses::Geo::Generic, type: :provider_response do
-  subject { SIADE::V3::Requests::Geo::Localite.new(code).tap(&:perform).response }
+RSpec.describe SIADE::V2::Responses::Geo::Generic, type: :provider_response do
+  subject { SIADE::V2::Requests::Geo::Localite.new(code).tap(&:perform).response }
 
   context 'when code is not found', vcr: { cassette_name: 'geo/commune/non_existent' } do
     let(:code) { GeoHelper.non_existent(:commune) }

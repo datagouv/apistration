@@ -1,4 +1,4 @@
-class SIADE::V3::Drivers::Geo::Localite < SIADE::V2::Drivers::GenericDriver
+class SIADE::V2::Drivers::Geo::Localite < SIADE::V2::Drivers::GenericDriver
   default_to_nil_raw_fetching_methods :commune, :region
 
   def initialize(code_commune:)
@@ -10,7 +10,7 @@ class SIADE::V3::Drivers::Geo::Localite < SIADE::V2::Drivers::GenericDriver
   end
 
   def request
-    @request ||= SIADE::V3::Requests::Geo::Localite.new(@code_commune)
+    @request ||= SIADE::V2::Requests::Geo::Localite.new(@code_commune)
   end
 
   def check_response; end

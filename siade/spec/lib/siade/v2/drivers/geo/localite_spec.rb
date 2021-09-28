@@ -1,4 +1,4 @@
-RSpec.describe SIADE::V3::Drivers::Geo::Localite, type: :provider_driver do
+RSpec.describe SIADE::V2::Drivers::Geo::Localite, type: :provider_driver do
   subject { described_class.new(code_commune: code).perform_request }
 
   shared_examples 'bad code commune' do |code|

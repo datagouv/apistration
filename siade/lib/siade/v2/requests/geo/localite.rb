@@ -1,4 +1,4 @@
-class SIADE::V3::Requests::Geo::Localite < SIADE::V2::Requests::Generic
+class SIADE::V2::Requests::Geo::Localite < SIADE::V2::Requests::Generic
   def initialize(code)
     @code = code
   end
@@ -31,7 +31,7 @@ class SIADE::V3::Requests::Geo::Localite < SIADE::V2::Requests::Generic
   end
 
   def response_wrapper
-    SIADE::V3::Responses::Geo::Generic
+    SIADE::V2::Responses::Geo::Generic
   end
 
   def request_params

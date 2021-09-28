@@ -1,4 +1,4 @@
-RSpec.describe SIADE::V3::Requests::Geo::Localite, type: :provider_request do
+RSpec.describe SIADE::V2::Requests::Geo::Localite, type: :provider_request do
   subject { described_class.new(code).tap(&:perform) }
 
   shared_examples 'bad formatted code commune' do |code|
