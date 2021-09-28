@@ -18,8 +18,6 @@ AllCops:
     - "spec/controllers/api/v2/**/*"
     - "lib/siade/v2/**/*"
     - "spec/lib/siade/v2/**/*"
-    - "lib/siade/v3/**/*"
-    - "spec/lib/siade/v3/**/*"
 
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
