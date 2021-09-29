@@ -102,23 +102,20 @@ RSpec.describe MakeRequest, type: :interactor do
         stub_request(:get, uri.to_s).to_raise(socket_error)
       end
 
-      context 'for a DNS resolution fail (no address associated)' do
-        let(:socket_error_message) { 'Failed to open TCP connection to api.entreprise.gouv.fr:443 getaddrinfo: No address associated with hostname)' }
+      [
+        'getaddrinfo: nodename nor servname provided, or not known',
+        'getaddrinfo: No address associated with hostname',
+        'getaddrinfo: Name or service not known',
+        'getaddrinfo: Temporary failure in name resolution'
+      ].each do |dns_error_message|
+        context 'for a DNS resolution fail (no address associated)' do
+          let(:socket_error_message) { "Failed to open TCP connection to www.google.com:443 (#{dns_error_message})" }
 
-        it { is_expected.to be_a_failure }
+          it { is_expected.to be_a_failure }
 
-        it 'adds DnsResolutionError to errors' do
-          expect(subject.errors).to include(instance_of(DnsResolutionError))
-        end
-      end
-
-      context 'for a DNS resolution fail (nodename nor servname associated)' do
-        let(:socket_error_message) { 'Failed to open TCP connection to api.entreprise.gouv.fr:443 (getaddrinfo: nodename nor servname provided, or not known)' }
-
-        it { is_expected.to be_a_failure }
-
-        it 'adds DnsResolutionError to errors' do
-          expect(subject.errors).to include(instance_of(DnsResolutionError))
+          it 'adds DnsResolutionError to errors' do
+            expect(subject.errors).to include(instance_of(DnsResolutionError))
+          end
         end
       end
 
