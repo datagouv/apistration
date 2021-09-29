@@ -24,7 +24,7 @@ VCR.configure do |c|
   c.filter_sensitive_data('<CNETP_TOKEN>') { Siade.credentials[:cnetp_token].to_s }
   c.filter_sensitive_data('<LOGIN_DGFIP>') { Siade.credentials[:dgfip_login].to_s }
   c.filter_sensitive_data('<SECRET_DGFIP>') { Siade.credentials[:dgfip_secret].to_s }
-  c.filter_sensitive_data('<INSEE_TOKEN>') { (YAML.load_file(Rails.root.join('config', 'insee_secrets.yml'))[:token]).to_s }
+  c.filter_sensitive_data('<INSEE_TOKEN>') { 'token' }
   c.filter_sensitive_data('<INSEE_CREDENTIALIS>') { Siade.credentials[:insee_credentials].to_s }
   c.filter_sensitive_data('<INPI_LOGIN>') { Siade.credentials[:inpi_login].to_s }
   c.filter_sensitive_data('<INPI_PASSWORD>') { Siade.credentials[:inpi_password].to_s }
