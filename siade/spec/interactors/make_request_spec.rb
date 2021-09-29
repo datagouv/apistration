@@ -135,7 +135,7 @@ RSpec.describe MakeRequest, type: :interactor do
         stub_request(:get, uri.to_s).to_return(
           status: 301,
           headers: {
-            'Location' => "#{uri.to_s}/redirection",
+            'Location' => "#{uri}/redirection"
           }
         )
       end
