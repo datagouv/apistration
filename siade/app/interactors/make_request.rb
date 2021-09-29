@@ -15,6 +15,8 @@ class MakeRequest < ApplicationInteractor
 
   def call
     api_call
+
+    handle_redirect if response_is_a_redirection?
   rescue Net::OpenTimeout, Net::ReadTimeout, EOFError
     fail_to_request_provider!(ProviderTimeoutError)
   rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EHOSTUNREACH
@@ -43,6 +45,11 @@ class MakeRequest < ApplicationInteractor
 
   def set_headers(request)
     request['Content-Type'] = 'application/json'
+  end
+
+  def handle_redirect
+    context.errors << UnexpectedRedirectionError.new(context.provider_name, context.response)
+    context.fail!
   end
 
   private
@@ -74,6 +81,17 @@ class MakeRequest < ApplicationInteractor
       'getaddrinfo: nodename nor servname provided, or not known',
       'getaddrinfo: No address associated with hostname'
     ]
+  end
+
+  def response_is_a_redirection?
+    context.response.present? &&
+      %w[
+        301
+        302
+        303
+        307
+        308
+      ].include?(context.response.code)
   end
 
   def response_not_defined!

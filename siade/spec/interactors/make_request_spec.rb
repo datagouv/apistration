@@ -132,5 +132,22 @@ RSpec.describe MakeRequest, type: :interactor do
         end
       end
     end
+
+    context 'when it is a redirection' do
+      before do
+        stub_request(:get, uri.to_s).to_return(
+          status: 301,
+          headers: {
+            'Location' => "#{uri.to_s}/redirection",
+          }
+        )
+      end
+
+      it { is_expected.to be_a_failure }
+
+      it 'adds DnsResolutionError to errors' do
+        expect(subject.errors).to include(instance_of(UnexpectedRedirectionError))
+      end
+    end
   end
 end
