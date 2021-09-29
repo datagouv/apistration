@@ -13,6 +13,10 @@ module ResourceHelpers
     http_code == 404
   end
 
+  def http_forbidden?
+    http_code == 403
+  end
+
   delegate :body, to: :response
 
   def json_body
