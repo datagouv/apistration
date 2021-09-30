@@ -80,6 +80,10 @@ Rails.application.routes.draw do
     namespace :acoss do
       get 'attestations_sociales/:siren' => '/api/v3_and_more/acoss/attestations_sociales#show'
     end
+
+    namespace :insee do
+      get 'entreprises/:siren' => '/api/v3_and_more/insee/entreprises#show'
+    end
   end
 
   mount Rswag::Ui::Engine   => '/developers'
