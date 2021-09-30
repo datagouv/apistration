@@ -2,7 +2,7 @@ RSpec.describe SerializerGenerator, type: :generator do
   let(:resource_name) { 'MODULE::ResourceName' }
 
   describe 'Serializer class file' do
-    subject { file('app/serializers/module/resource_name/v3.rb') }
+    subject { file('app/serializers/module/resource_name_serializer/v3.rb') }
 
     context 'with option: --document true' do
       before { run_generator [resource_name, '--document', 'true'] }
