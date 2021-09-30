@@ -5,7 +5,7 @@ class API::V3AndMore::<%= name %>Controller < API::V3AndMore::BaseController
     organizer = ::<%= name %>.call(params: organizer_params)
 
     if organizer.success?
-      render json: ::<%= name %>::V3.new(organizer.resource).serializable_hash,
+      render json: serializer_class.new(organizer.resource).serializable_hash,
              status: extract_http_code(organizer)
     else
       render_errors(organizer)
@@ -16,5 +16,9 @@ class API::V3AndMore::<%= name %>Controller < API::V3AndMore::BaseController
 
   def organizer_params
     fail NotImplementedError
+  end
+
+  def serializer_module
+    ::<%= provider_namespace %>::<%= resource_class %>Serializer
   end
 end
