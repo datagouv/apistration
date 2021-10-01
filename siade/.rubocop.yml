@@ -59,6 +59,11 @@ Lint/UnreachableCode:
   Exclude:
     - "app/concepts/**/*"
 
+# Sometimes useful in specs
+Lint/ConstantDefinitionInBlock:
+  Exclude:
+    - "spec/**/*"
+
 Metrics/AbcSize:
   IgnoredMethods:
     - resource_attributes
@@ -181,6 +186,10 @@ Rails/UnknownEnv:
     - development
     - test
 
+# This is okay when use_transactional_fixtures is disabled
+RSpec/BeforeAfterAll:
+  Enabled: False
+
 # Not relevant for RSwag
 RSpec/DescribeClass:
   Exclude:
@@ -205,6 +214,10 @@ RSpec/FilePath:
     - "spec/policies/certificat_rge_ademe_policy_spec.rb"
     - "spec/requests/rack_attack_spec.rb"
     - "spec/interactors/get_oauth2_token_spec.rb"
+
+# Sometimes useful in tests
+RSpec/LeakyConstantDeclaration:
+  Enabled: False
 
 RSpec/MessageSpies:
   Enabled: false
