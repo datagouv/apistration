@@ -146,6 +146,10 @@ Pour générer un code coverage en local:
 Vous pouvez tester votre fichier Swagger à l'aide de l'éditeur disponible en
 ligne à l'adresse suivante: [Swagger Editor](https://editor.swagger.io/)
 
+Le fichier OpenAPI peut être régénéré avec la commande:
+
+    $ RAILS_ENV=test rails rswag
+
 ## Génération d'un nouveau JWT token
 
 Dans le cas où vous êtes amené à régénérer un token JWT, vous pouvez utiliser la
