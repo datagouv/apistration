@@ -148,8 +148,11 @@ endpoints = <<STR
 - name: '[V3] DGDDI EORI'
   http_path: '/v3/dgddi/eoris/FR16002307300010'
 
+- name: '[V3] Infogreffe Mandataires Sociaux'
+  http_path: '/v3/infogreffe/mandataires_sociaux/418166096'
+
 - name: '[V3] INPI Actes'
-  http_path: '/v3/inpi/actes/542065479'
+    http_path: '/v3/inpi/actes/542065479'
 
 - name: '[V3] INPI Brevets'
   http_path: '/v3/inpi/brevets/542065479'
