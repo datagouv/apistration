@@ -46,7 +46,7 @@ gem 'jsonapi-serializer'
 
 # Authorization
 gem 'pundit', '1.0.0'
-gem 'jwt', '~> 2.2'
+gem 'jwt', '~> 2.3'
 
 gem 'sentry-ruby'
 gem 'sentry-rails'
