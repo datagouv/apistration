@@ -14,18 +14,28 @@ RSpec.describe API::V2::CertificatsAgenceBIOController, type: :controller do
     end
 
     context 'when siret is valid', vcr: { cassette_name: 'agence_bio/with_valid_siret' } do
+      let(:json_body) { JSON.parse(response.body) }
+      let(:infos_entreprise) { json_body.first }
+
       it 'returns HTTP code 200' do
         subject
 
         expect(response).to have_http_status(:ok)
       end
 
-      it 'returns valid body' do
+      it 'return body with valid format' do
         subject
 
-        json_body = JSON.parse(response.body)
-
         expect(json_body).to be_an(Array)
+      end
+
+      it 'return body with valid information' do
+
+        subject
+
+        expect(infos_entreprise['siret']).to eq(valid_siret(:agence_bio))
+        expect(infos_entreprise['activites']).to eq(['Production', 'Distribution', 'Stockage'])
+        expect(infos_entreprise['numero_bio']).to eq(18344)
       end
     end
   end
