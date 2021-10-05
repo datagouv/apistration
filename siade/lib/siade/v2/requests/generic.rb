@@ -108,6 +108,12 @@ class SIADE::V2::Requests::Generic
     else
       raise
     end
+  rescue OpenSSL::SSL::SSLError => e
+    if e.message.include?('SSLv3/TLS write client hello')
+      @response = SIADE::V2::Responses::UnexpectedError.new(provider_name, e)
+    else
+      raise
+    end
   end
 
   def try_call_api

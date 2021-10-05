@@ -198,6 +198,40 @@ RSpec.describe SIADE::V2::Requests::Generic do
         its(:response) { is_expected.to be_a SIADE::V2::Responses::UnexpectedError }
       end
 
+      context 'for an OpenSSL error' do
+        let(:openssl_error) { OpenSSL::SSL::SSLError.new(ssl_error_message) }
+
+        before do
+          stub_request(:get, valid_uri.to_s).to_raise(openssl_error)
+        end
+
+        context 'when it is a "SSLv3/TLS write client hello" error' do
+          let(:ssl_error_message) { 'SSL_connect SYSCALL returned=5 errno=0 SSLv3/TLS write client hello' }
+
+          it 'logs as error' do
+            expect_any_instance_of(MonitoringService).to receive(:track_provider_error_from_response).with(
+              instance_of(SIADE::V2::Responses::UnexpectedError),
+              anything
+            )
+
+            subject
+          end
+
+          its(:http_code) { is_expected.to eq 502 }
+          its(:response) { is_expected.to be_a SIADE::V2::Responses::UnexpectedError }
+        end
+
+        context 'when it is an another error' do
+          let(:ssl_error_message) { 'whatever' }
+
+          it 'raises this error' do
+            expect do
+              subject
+            end.to raise_error(OpenSSL::SSL::SSLError)
+          end
+        end
+      end
+
       context 'for a SocketError' do
         let(:socket_error) { SocketError.new(socker_error_message) }
 
