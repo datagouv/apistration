@@ -22,8 +22,11 @@ class AuthenticateDGFIPService
     retriever_authenticate.perform
 
     @errors += retriever_authenticate.errors
-    @cookie = retriever_authenticate.cookie
     @response = retriever_authenticate.response
     @http_code = retriever_authenticate.response.http_code
+
+    return unless success?
+
+    @cookie = retriever_authenticate.cookie
   end
 end

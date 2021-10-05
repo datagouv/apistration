@@ -49,6 +49,28 @@ RSpec.describe API::V2::AttestationsFiscalesDGFIPController, type: :controller d
     end
   end
 
+  describe 'non-regression test: authentication returns a timeout' do
+    subject { response }
+
+    let(:siren) { invalid_siren }
+    let(:token) { yes_jwt }
+    let(:user_id) { valid_dgfip_user_id }
+
+    before do
+      stub_request(:post, /#{Siade.credentials[:dgfip_authenticate_url]}.*/).to_timeout
+
+      get :show, params: { token: token, siren: siren }.merge(mandatory_params)
+    end
+
+    its(:status) { is_expected.to eq(502) }
+
+    it 'returns 502 with error message' do
+      json = JSON.parse(response.body)
+
+      expect(json).to have_json_error(detail: "L'authentification auprès du fournisseur de données 'DGFIP' a échoué")
+    end
+  end
+
   describe 'with valid DGFIP Authentication' do
     before do
       allow_any_instance_of(AuthenticateDGFIPService).to receive(:authenticate!)
