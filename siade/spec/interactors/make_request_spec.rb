@@ -81,6 +81,20 @@ RSpec.describe MakeRequest, type: :interactor do
       end
     end
 
+    context 'for a network unreachable error' do
+      before do
+        stub_request(:get, uri.to_s).to_raise(
+          Errno::ENETUNREACH
+        )
+      end
+
+      it { is_expected.to be_a_failure }
+
+      it 'adds NetworkError to errors' do
+        expect(subject.errors).to include(instance_of(NetworkError))
+      end
+    end
+
     context 'for a socket error' do
       let(:socket_error) { SocketError.new(socket_error_message) }
 
