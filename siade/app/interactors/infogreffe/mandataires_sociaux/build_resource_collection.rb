@@ -18,7 +18,7 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
   end
 
   def infos
-    Nokogiri.XML(body)
+    @infos ||= Nokogiri.XML(body)
   end
 
   def mandataire_social(dirigeant)
