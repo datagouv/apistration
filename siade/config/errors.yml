@@ -137,6 +137,10 @@
 - code: '00402'
   title: Version d'API non prise en charge
 
+- code: '00501'
+  title: 'Erreur réseau'
+  detail: "Problème de connexion au serveur distant. L'erreur peut venir soit du fournisseur, soit de API Entreprise"
+
 ## Providers
 ### RNA
 
