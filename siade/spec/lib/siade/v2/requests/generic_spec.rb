@@ -259,6 +259,26 @@ RSpec.describe SIADE::V2::Requests::Generic do
         its(:response) { is_expected.to be_a SIADE::V2::Responses::ServiceUnavailable }
       end
 
+      context 'for a Errno::ENETUNREACH network is unreachable' do
+        before do
+          stub_request(:get, valid_uri.to_s).to_raise(
+            Errno::ENETUNREACH
+          )
+        end
+
+        it 'logs as error' do
+          expect_any_instance_of(MonitoringService).to receive(:track_provider_error_from_response).with(
+            an_instance_of(SIADE::V2::Responses::NetworkError),
+            anything
+          )
+
+          subject
+        end
+
+        its(:http_code) { is_expected.to eq 502 }
+        its(:response) { is_expected.to be_a SIADE::V2::Responses::NetworkError }
+      end
+
       context 'for an EOFError, which is generaly a timeout' do
         before do
           stub_request(:get, valid_uri.to_s).to_raise(

@@ -100,6 +100,8 @@ class SIADE::V2::Requests::Generic
     @response = SIADE::V2::Responses::TimeoutError.new(provider_name, e)
   rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EHOSTUNREACH => e
     @response = SIADE::V2::Responses::ServiceUnavailable.new(provider_name, e)
+  rescue Errno::ENETUNREACH => e
+    @response = SIADE::V2::Responses::NetworkError.new(provider_name, e)
   rescue SocketError => e
     if dns_lookup_errors_string.any? { |error_message| e.message.include?(error_message) }
       @response = SIADE::V2::Responses::DnsResolutionError.new(provider_name)
