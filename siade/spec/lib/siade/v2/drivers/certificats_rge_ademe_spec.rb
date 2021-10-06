@@ -156,4 +156,16 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEAdeme, type: :provider_driver d
       end.to raise_error(StandardError)
     end
   end
+
+  describe 'non regression test: when domaines is a flat array', vcr: { cassette_name: 'ademe/rge/non_regression_domaines_flat' } do
+    let(:siret) { '83401500000021' }
+
+    subject { described_class.new(siret: siret).perform_request }
+
+    it 'works' do
+      expect(subject.domaines).to eq([
+        "Travaux d'installation électrique dans tous locaux"
+      ])
+    end
+  end
 end

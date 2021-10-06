@@ -71,8 +71,12 @@ class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDrive
   end
 
   def format_domaines(domaines)
-    domaines.reduce(aggregated_domaines) do |result, (_, domaine_obj)|
-      result.push(domaine_obj['nom'])
+    if domaines.first.is_a?(String)
+      aggregated_domaines.concat(domaines)
+    else
+      domaines.reduce(aggregated_domaines) do |result, (_, domaine_obj)|
+        result.push(domaine_obj['nom'])
+      end
     end
   end
 
