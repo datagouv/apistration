@@ -131,3 +131,9 @@ RSpec/DescribedClass:
 RSpec/EmptyExampleGroup:
   Exclude:
     - "spec/requests/**/*"
+
+RSpec/FilePath:
+  Exclude:
+    - "spec/policies/certificat_rge_ademe_policy_spec.rb"
+    - "spec/requests/rack_attack_spec.rb"
+    - "spec/interactors/get_oauth2_token_spec.rb"
