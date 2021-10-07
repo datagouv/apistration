@@ -28,6 +28,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'ZIP'
 
   inflect.acronym 'ACOSS'
+  inflect.acronym 'ADEME'
   inflect.acronym 'AGEFIPH'
   inflect.acronym 'BDF'
   inflect.acronym 'BIO'
@@ -56,6 +57,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'attestation_sociale', 'attestations_sociales'
   inflect.irregular 'certificat_cnetp', 'certificats_cnetp'
   inflect.irregular 'certificat_rge_ademe', 'certificats_rge_ademe'
+  inflect.irregular 'certificat_rge', 'certificats_rge'
   inflect.irregular 'cotisation_msa', 'cotisations_msa'
   inflect.irregular 'eligibilite_cotisation_retraite', 'eligibilites_cotisation_retraite'
   inflect.irregular 'extrait_court_inpi', 'extraits_courts_inpi'
