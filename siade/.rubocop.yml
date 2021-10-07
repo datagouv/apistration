@@ -109,6 +109,10 @@ Naming/AccessorMethodName:
     - "lib/generators/scaffold_resource/scaffold_resource_generator.rb"
     - "app/interactors/inpi/authenticate.rb"
 
+# In some cases we like this
+Naming/AccessorMethodName:
+  Enabled: false
+
 # Allowing uppercase in some method names
 Naming/MethodName:
   IgnoredPatterns:
