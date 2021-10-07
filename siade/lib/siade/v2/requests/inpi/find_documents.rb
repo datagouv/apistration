@@ -33,7 +33,7 @@ class SIADE::V2::Requests::INPI::FindDocuments < SIADE::V2::Requests::Generic
     :get
   end
 
-  def headers(request)
+  def set_headers(request)
     request['Cookie'] = @cookie
   end
 

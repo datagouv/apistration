@@ -48,7 +48,7 @@ class SIADE::V2::Requests::Exercices < SIADE::V2::Requests::Generic
     end
   end
 
-  def headers(request)
+  def set_headers(request)
     request['Cookie'] = cookie
   end
 

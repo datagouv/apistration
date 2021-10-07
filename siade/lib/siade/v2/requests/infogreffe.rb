@@ -40,7 +40,7 @@ class SIADE::V2::Requests::Infogreffe < SIADE::V2::Requests::Generic
     { use_ssl: true, verify_mode: OpenSSL::SSL::VERIFY_NONE }
   end
 
-  def headers(request)
+  def set_headers(request)
     request['Content-Type'] = 'text/xml'
     request['charset'] = 'utf-8'
     request['SOAPAction'] = 'getProduitsWebServicesXML'

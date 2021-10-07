@@ -50,7 +50,7 @@ class SIADE::V2::Requests::INSEE::Entreprise < SIADE::V2::Requests::Generic
     {}
   end
 
-  def headers(req)
+  def set_headers(req)
     req['Content-Type'] = 'application/json'
     req['Authorization'] = "Bearer #{insee_token}"
   end

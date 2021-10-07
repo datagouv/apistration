@@ -41,7 +41,7 @@ class SIADE::V2::Requests::AttestationsFiscalesDGFIP < SIADE::V2::Requests::Gene
     informations.to_hash
   end
 
-  def headers(request)
+  def set_headers(request)
     request['Accept'] = 'application/pdf'
     request['Cookie'] = cookie
   end

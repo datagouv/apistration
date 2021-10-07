@@ -36,7 +36,7 @@ class SIADE::V2::Requests::CertificatsRGEADEME < SIADE::V2::Requests::Generic
     URI('https://bo-ris.ademe.fr/api/search/company')
   end
 
-  def headers(request)
+  def set_headers(request)
     request['Content-Type'] = 'application/x-www-form-urlencoded'
   end
 
