@@ -5,7 +5,7 @@ class API::V3AndMore::Infogreffe::MandatairesSociauxController < API::V3AndMore:
     organizer = ::Infogreffe::MandatairesSociaux.call(params: organizer_params)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.resource_collection).serializable_hash,
+      render json: serializer_class.new(organizer.resource).serializable_hash,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)
@@ -21,6 +21,6 @@ class API::V3AndMore::Infogreffe::MandatairesSociauxController < API::V3AndMore:
   end
 
   def serializer_module
-    ::Infogreffe::MandataireSocialSerializer
+    ::Infogreffe::MandatairesSociauxSerializer
   end
 end

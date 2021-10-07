@@ -1,49 +1,51 @@
-class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCollection
+class Infogreffe::MandatairesSociaux::BuildResource < BuildResource
   protected
 
-  def resource_collection
-    initialize_id_information
+  def resource_attributes
+    liste_pp = []
+    liste_pm = []
 
-    infos.try(:css, 'liste_dirigeant dirigeant').try(:reduce, []) do |liste_mandataires, xml_dirigeant|
-      @numero_mandataire += 1
-      liste_mandataires << mandataire_social(xml_dirigeant)
+    infos.try(:css, 'liste_dirigeant dirigeant')&.each do |dirigeant|
+      liste_pp << mandataire_social_pp(dirigeant) if type(dirigeant) == 'PP'
+      liste_pm << mandataire_social_pm(dirigeant) if type(dirigeant) == 'PM'
     end
+
+    {
+      id: infos.at_css('num_ident').attributes['siren'].value,
+      pp: liste_pp,
+      pm: liste_pm
+    }
   end
 
   private
-
-  def initialize_id_information
-    @siren = infos.at_css('num_ident').attributes['siren'].value
-    @numero_mandataire = -1
-  end
 
   def infos
     @infos ||= Nokogiri.XML(body)
   end
 
-  def mandataire_social(dirigeant)
+  def mandataire_social_pp(dirigeant)
     {
-      id: "#{@siren}-#{@numero_mandataire}",
       nom: nom(dirigeant),
       prenom: prenom(dirigeant),
       fonction: fonction(dirigeant),
       date_naissance: date_naissance(dirigeant),
-      date_naissance_timestamp: date_naissance_timestamp(dirigeant),
+      date_naissance_timestamp: date_naissance_timestamp(dirigeant)
+    }
+  end
+
+  def mandataire_social_pm(dirigeant)
+    {
+      fonction: fonction(dirigeant),
       raison_sociale: raison_sociale(dirigeant),
-      identifiant: identifiant(dirigeant),
-      type: type(dirigeant)
+      identifiant: identifiant(dirigeant)
     }
   end
 
   def nom(dirigeant)
-    return unless type(dirigeant) == 'PP'
-
     dirigeant.css('nom').text.strip
   end
 
   def prenom(dirigeant)
-    return unless type(dirigeant) == 'PP'
-
     dirigeant.css('prenom').text.strip
   end
 
@@ -52,7 +54,7 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
   end
 
   def date_naissance(dirigeant)
-    return unless type(dirigeant) == 'PP' && dirigeant.css('naissance date').present?
+    return if dirigeant.css('naissance date').blank?
 
     dirigeant.css('naissance date').attribute('dateISO').value
   end
@@ -62,14 +64,10 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
   end
 
   def raison_sociale(dirigeant)
-    return unless type(dirigeant) == 'PM'
-
     dirigeant.css('denomination').text.strip
   end
 
   def identifiant(dirigeant)
-    return unless type(dirigeant) == 'PM'
-
     dirigeant.css('pm num_ident').text.strip
   end
 

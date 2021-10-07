@@ -13,7 +13,7 @@ RSpec.describe Infogreffe::MandatairesSociaux, type: :retriever_organizer do
 
       it { is_expected.to be_a_success }
 
-      its(:resource_collection) { is_expected.to be_present }
+      its(:resource) { is_expected.to be_present }
     end
 
     context 'with invalid siren', vcr: { cassette_name: 'infogreffe/mandataires_sociaux/with_siren_not_found' } do
