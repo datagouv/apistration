@@ -24,28 +24,25 @@ RSpec.describe 'Infogreffe: Mandataires sociaux', type: %i[request swagger] do
           schema type: :object,
             properties: {
               data: {
-                type: :array,
-                items: {
-                  type: :object,
-                  properties: {
-                    id: {
-                      type: :string,
-                      example: "#{valid_siren(:extrait_rcs)}-0",
-                      description: "Siren demandé suivi d'un tiret et du placement du mandataire social dans la collection (en partant de zéro). Example: il y a 12 mandataires sociaux, la première ID sera #{valid_siren(:extrait_rcs)}-0 et la dernière #{valid_siren(:extrait_rcs)}-11"
-                    },
-                    attributes: {
+                type: :object,
+                properties: {
+                  id: {
+                    type: :string,
+                    example: valid_siren(:extrait_rcs)
+                  },
+                  pp: {
+                    type: :array,
+                    description: 'Personnes physiques',
+                    items: {
                       type: :object,
-                      description: 'Il y a deux types de mandataires sociaux, les personnes physiques et les personnes morales.',
                       properties: {
                         nom: {
                           type: :string, nullable: true,
-                          example: 'Henri',
-                          description: 'Ne concerne que les personnes physiques'
+                          example: 'Henri'
                         },
                         prenom: {
                           type: :string, nullable: true,
-                          example: 'Martin',
-                          description: 'Ne concerne que les personnes physiques'
+                          example: 'Martin'
                         },
                         fonction: {
                           type: :string,
@@ -53,28 +50,33 @@ RSpec.describe 'Infogreffe: Mandataires sociaux', type: %i[request swagger] do
                         },
                         date_naissance: {
                           type: :string, nullable: true,
-                          example: '1965-01-27',
-                          description: 'Ne concerne que les personnes physiques'
+                          example: '1965-01-27'
                         },
                         date_naissance_timestamp: {
                           type: :number, nullable: true,
-                          example: -155_523_600,
-                          description: 'Ne concerne que les personnes physiques'
+                          example: -155_523_600
+                        }
+                      }
+                    }
+                  },
+                  pm: {
+                    type: :array,
+                    description: 'Personnes morales',
+                    items: {
+                      type: :object,
+                      properties: {
+                        fonction: {
+                          type: :string,
+                          example: 'COMMISSAIRE AUX COMPTES SUPPLEANT'
                         },
                         raison_sociale: {
                           type: :string, nullable: true,
-                          example: 'BCRH & ASSOCIES - SOCIETE A RESPONSABILITE LIMITEE A ASSOCIE UNIQUE',
-                          description: 'Ne concerne que les personnes morales.'
+                          example: 'BCRH & ASSOCIES - SOCIETE A RESPONSABILITE LIMITEE A ASSOCIE UNIQUE'
                         },
                         identifiant: {
                           type: :string, nullable: true,
                           example: '490092574',
-                          description: 'Ne concerne que les personnes morales. Cet element est facultatif, composé de 7 à 9 chiffres, et peut être vide.'
-                        },
-                        type: {
-                          type: :string,
-                          example: 'PP',
-                          description: "Signifie qu'il s'agit d'une personne physique (PP) ou morale (PM)"
+                          description: 'Cet element est facultatif, composé de 7 à 9 chiffres, et peut être vide.'
                         }
                       }
                     }
