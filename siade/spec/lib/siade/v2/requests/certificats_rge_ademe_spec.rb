@@ -1,4 +1,4 @@
-RSpec.describe SIADE::V2::Requests::CertificatsRGEAdeme, type: :provider_request do
+RSpec.describe SIADE::V2::Requests::CertificatsRGEADEME, type: :provider_request do
   subject { described_class.new(siret).perform }
 
   context 'with a bad formated request' do
@@ -22,7 +22,7 @@ RSpec.describe SIADE::V2::Requests::CertificatsRGEAdeme, type: :provider_request
     its(:errors) { is_expected.to have_error('Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel') }
   end
 
-  describe 'non-regression test: when Ademe timeout' do
+  describe 'non-regression test: when ADEME timeout' do
     let(:siret) { valid_siret(:rge_ademe) }
 
     before do

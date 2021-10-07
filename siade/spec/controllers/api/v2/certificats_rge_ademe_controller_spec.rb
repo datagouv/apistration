@@ -1,4 +1,4 @@
-RSpec.describe API::V2::CertificatsRGEAdemeController do
+RSpec.describe API::V2::CertificatsRGEADEMEController do
   it_behaves_like 'unauthorized'
   it_behaves_like 'unprocessable_entity', :show, :siret
   it_behaves_like 'forbidden'

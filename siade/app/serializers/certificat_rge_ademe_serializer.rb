@@ -1,4 +1,4 @@
-class CertificatRGEAdemeSerializer < ActiveModel::Serializer
+class CertificatRGEADEMESerializer < ActiveModel::Serializer
   attributes :domaines,
     :qualifications
 end

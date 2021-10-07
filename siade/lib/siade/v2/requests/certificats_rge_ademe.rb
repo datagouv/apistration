@@ -1,4 +1,4 @@
-class SIADE::V2::Requests::CertificatsRGEAdeme < SIADE::V2::Requests::Generic
+class SIADE::V2::Requests::CertificatsRGEADEME < SIADE::V2::Requests::Generic
   attr_accessor :siret
 
   def initialize(siret)
@@ -17,7 +17,7 @@ class SIADE::V2::Requests::CertificatsRGEAdeme < SIADE::V2::Requests::Generic
   protected
 
   def provider_name
-    'Ademe'
+    'ADEME'
   end
 
   def request_lib
@@ -45,7 +45,7 @@ class SIADE::V2::Requests::CertificatsRGEAdeme < SIADE::V2::Requests::Generic
   end
 
   def response_wrapper
-    SIADE::V2::Responses::CertificatsRGEAdeme
+    SIADE::V2::Responses::CertificatsRGEADEME
   end
 
   def ademe_secret_token

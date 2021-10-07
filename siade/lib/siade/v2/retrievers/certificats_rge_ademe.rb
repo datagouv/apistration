@@ -1,7 +1,7 @@
-class SIADE::V2::Retrievers::CertificatsRGEAdeme < SIADE::V2::Retrievers::GenericInformationRetriever
+class SIADE::V2::Retrievers::CertificatsRGEADEME < SIADE::V2::Retrievers::GenericInformationRetriever
   attr_reader :siret
 
-  register_driver :certificats_rge_ademe, class_name: SIADE::V2::Drivers::CertificatsRGEAdeme, init_with: :siret, init_options: :user_params
+  register_driver :certificats_rge_ademe, class_name: SIADE::V2::Drivers::CertificatsRGEADEME, init_with: :siret, init_options: :user_params
 
   fetch_attributes_through_driver :certificats_rge_ademe,
     :qualifications, :domaines, :http_code, :errors

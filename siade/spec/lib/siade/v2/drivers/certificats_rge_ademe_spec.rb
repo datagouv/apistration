@@ -1,4 +1,4 @@
-RSpec.describe SIADE::V2::Drivers::CertificatsRGEAdeme, type: :provider_driver do
+RSpec.describe SIADE::V2::Drivers::CertificatsRGEADEME, type: :provider_driver do
   context 'when data is not found', vcr: { cassette_name: 'ademe/rge/with_not_found_siret' } do
     subject { @lib_driver_certificats_rge_ademe_spec__init_with_not_found_siret }
 

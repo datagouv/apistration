@@ -44,7 +44,7 @@ Tiré de JSON API:
 - `16` = Douanes
 - `17` = Banque de France
 - `18` = Agence BIO
-- `19` = Ademe
+- `19` = ADEME
 - `20` = API Geo
 
 La valeur `00` correspond aux erreurs relative à l'API Entreprise et n'implique

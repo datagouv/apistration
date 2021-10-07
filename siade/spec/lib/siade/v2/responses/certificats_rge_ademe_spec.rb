@@ -1,5 +1,5 @@
-RSpec.describe SIADE::V2::Responses::CertificatsRGEAdeme, type: :provider_response do
-  subject { SIADE::V2::Requests::CertificatsRGEAdeme.new(siret).perform.response }
+RSpec.describe SIADE::V2::Responses::CertificatsRGEADEME, type: :provider_response do
+  subject { SIADE::V2::Requests::CertificatsRGEADEME.new(siret).perform.response }
 
   context 'when data exists for the given siret', vcr: { cassette_name: 'ademe/rge/with_valid_siret' } do
     let(:siret) { valid_siret(:rge_ademe) }

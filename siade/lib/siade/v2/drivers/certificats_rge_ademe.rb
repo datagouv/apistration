@@ -1,6 +1,6 @@
 require 'open-uri'
 
-class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDriver
+class SIADE::V2::Drivers::CertificatsRGEADEME < SIADE::V2::Drivers::GenericDriver
   attr_reader :siret,
     :certification_entities
 
@@ -10,11 +10,11 @@ class SIADE::V2::Drivers::CertificatsRGEAdeme < SIADE::V2::Drivers::GenericDrive
   end
 
   def provider_name
-    'Ademe'
+    'ADEME'
   end
 
   def request
-    @request ||= SIADE::V2::Requests::CertificatsRGEAdeme.new(@siret)
+    @request ||= SIADE::V2::Requests::CertificatsRGEADEME.new(@siret)
   end
 
   def check_response
