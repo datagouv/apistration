@@ -19,6 +19,6 @@ class Infogreffe::MandatairesSociaux::ValidateResponse < ValidateResponse
   end
 
   def xml
-    Nokogiri.XML(body)
+    @xml ||= Nokogiri.XML(body)
   end
 end
