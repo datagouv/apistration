@@ -12,7 +12,7 @@ class Infogreffe::MandatairesSociaux::MakeRequest < MakeRequest::Post
     ERB.new(erb_template_for_entreprise_request).result(binding)
   end
 
-  def headers(request)
+  def set_headers(request)
     request['Content-Type'] = 'text/xml'
     request['charset'] = 'utf-8'
     request['SOAPAction'] = 'getProduitsWebServicesXML'
