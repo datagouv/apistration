@@ -74,6 +74,9 @@ Naming/MethodParameterName:
     - "_"
     - "nb"
 
+RSpec/NestedGroups:
+  Max: 5
+
 Naming/VariableNumber:
   EnforcedStyle: snake_case
 

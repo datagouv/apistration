@@ -312,22 +312,6 @@ RSpec/NamedSubject:
     - 'spec/validators/siren_format_validator_spec.rb'
     - 'spec/validators/siret_format_validator_spec.rb'
 
-# Offense count: 60
-# Configuration parameters: Max.
-RSpec/NestedGroups:
-  Exclude:
-    - 'spec/controllers/api/authenticate_entity_controller_spec.rb'
-    - 'spec/interactors/acoss/attestations_sociales/validate_response_spec.rb'
-    - 'spec/interactors/make_request_spec.rb'
-    - 'spec/interactors/probtp/attestations_cotisations_retraite/make_request_spec.rb'
-    - 'spec/lib/siade/self_hosted_document/file/generic_spec.rb'
-    - 'spec/organizers/probtp/attestations_cotisations_retraite_spec.rb'
-    - 'spec/organizers/retriever_organizer_spec.rb'
-    - 'spec/requests/rack_attack_spec.rb'
-    - 'spec/services/maintenance_service_spec.rb'
-    - 'spec/services/monitoring_service_spec.rb'
-    - 'spec/services/rate_limiting_service_spec.rb'
-
 # Offense count: 1
 RSpec/OverwritingSetup:
   Exclude:
