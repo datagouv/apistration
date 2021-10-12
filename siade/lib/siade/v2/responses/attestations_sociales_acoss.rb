@@ -112,18 +112,27 @@ class SIADE::V2::Responses::AttestationsSocialesACOSS < SIADE::V2::Responses::Ge
   end
 
   def handle_json_error_body_not_an_array
-    Sentry.set_extras(
-      body: json_errors
-    )
-    Sentry.capture_message(
-      'Wrong payload from ACOSS (originaly reported in 1895733)'
-    )
+    unless internal_error_message?
+      Sentry.set_extras(
+        body: json_errors
+      )
+      Sentry.capture_message(
+        'Wrong payload from ACOSS (originaly reported in 1895733)'
+      )
+    end
+
     (@errors ||= []) << ProviderUnknownError.new(
       provider_name,
       "L'ACOSS a répondu avec une erreur non supportée (erreur: ACOSS request failed due to unexpected body)"
     )
 
     502
+  end
+
+  def internal_error_message?
+    json_errors[:detail].try(:[], :msgId).present?
+  rescue JSON::ParseError
+    false
   end
 
   def set_error_message

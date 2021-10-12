@@ -80,22 +80,44 @@ RSpec.describe SIADE::V2::Responses::AttestationsSocialesACOSS, type: :provider_
           }
         end
 
+        before do
+          allow(MonitoringService.instance).to receive(:track_provider_error_from_response)
+        end
+
         its(:http_code) { is_expected.to eq 502 }
         its(:errors) { is_expected.to have_error("L'ACOSS a répondu avec une erreur non supportée (erreur: ACOSS request failed due to unexpected body)") }
 
         include_examples 'provider\'s response error'
 
-        it 'logs this specific error for future investigation (not documented)' do
-          allow(MonitoringService.instance).to receive(:track_provider_error_from_response)
+        context 'when it is an internal payload with detail->msgId' do
+          let(:body) do
+            {
+              detail: {
+                msgId: "Id-a89e5f6104153603807d93ba",
+              }
+            }
+          end
 
-          expect(Sentry).to receive(:set_extras).with({
-            body: body
-          })
-          expect(Sentry).to receive(:capture_message).with(
-            'Wrong payload from ACOSS (originaly reported in 1895733)'
-          )
+          it 'does not log this error' do
+            expect(Sentry).not_to receive(:capture_message).with(
+              'Wrong payload from ACOSS (originaly reported in 1895733)'
+            )
 
-          subject
+            subject
+          end
+        end
+
+        context 'when it is another random error' do
+          it 'logs this specific error for future investigation (not documented)' do
+            expect(Sentry).to receive(:set_extras).with({
+              body: body
+            })
+            expect(Sentry).to receive(:capture_message).with(
+              'Wrong payload from ACOSS (originaly reported in 1895733)'
+            )
+
+            subject
+          end
         end
       end
     end
