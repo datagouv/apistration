@@ -27,27 +27,45 @@ RSpec.describe SIADE::SelfHostedDocument::PDFDecrypt do
 
       before do
         unmake_qpdf_call_safe_on_memory_error! if ENV['MOCK_CALL_SYSTEM_FOR_MEMORY_ERROR']
-
-        allow_any_instance_of(described_class).to receive(:command).and_return(
-          'qpdf lol_ oki_'
-        )
         allow(MonitoringService).to receive(:instance).and_return(monitoring_service)
       end
 
-      it 'tracks error' do
-        subject
+      context 'when it is not a provider error' do
+        before do
+          allow_any_instance_of(described_class).to receive(:command).and_return(
+            'qpdf lol_ oki_'
+          )
+        end
 
-        expect(monitoring_service).to have_received(:track).with(
-          'error',
-          "PDF Decrypt fail to execute 'qpdf lol_ oki_'",
-          {
-            exit_status: 2,
-            stderr: 'open lol_: No such file or directory'
-          }
-        )
-      rescue Errno::ENOMEM
-        print "Memory error, skipping test\n"
-        expect(0 + 1).to eq(1)
+        it 'tracks error' do
+          subject
+
+          expect(monitoring_service).to have_received(:track).with(
+            'error',
+            "PDF Decrypt fail to execute 'qpdf lol_ oki_'",
+            {
+              exit_status: 2,
+              stderr: 'open lol_: No such file or directory'
+            }
+          )
+        rescue Errno::ENOMEM
+          print "Memory error, skipping test\n"
+          expect(0 + 1).to eq(1)
+        end
+      end
+
+      context 'when it is a provider error (damaged pdf)' do
+        before do
+          allow_any_instance_of(described_class).to receive(:command).and_return(
+            "qpdf #{Rails.root.join('spec/fixtures/dummy.doc')} #{Rails.root.join('tmp/whatever.pdf')}"
+          )
+        end
+
+        it 'does not track error' do
+          subject
+
+          expect(monitoring_service).not_to have_received(:track)
+        end
       end
     end
   end

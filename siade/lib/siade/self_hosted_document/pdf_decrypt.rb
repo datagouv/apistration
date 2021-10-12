@@ -62,10 +62,12 @@ class SIADE::SelfHostedDocument::PDFDecrypt
 
   def decrypt_file!
     Open3.popen3(command) do |_stdin, _stdout, stderr, thread|
-      unless thread.value.success?
+      stderr_string = stderr.read.chomp
+
+      if !thread.value.success? && !provider_error?(stderr_string)
         track_qpdf_error(
           thread.value.exitstatus,
-          stderr
+          stderr_string
         )
       end
     end
@@ -80,14 +82,22 @@ class SIADE::SelfHostedDocument::PDFDecrypt
     ].join(' ')
   end
 
-  def track_qpdf_error(exit_status, stderr)
+  def track_qpdf_error(exit_status, stderr_string)
     MonitoringService.instance.track(
       'error',
       "PDF Decrypt fail to execute '#{command}'",
       {
         exit_status: exit_status,
-        stderr: stderr.read.chomp
+        stderr: stderr_string
       }
     )
+  end
+
+  def provider_error?(stderr)
+    [
+      'unable to find trailer dictionary while recovering damaged file'
+    ].any? do |error_message|
+      stderr.include?(error_message)
+    end
   end
 end
