@@ -71,7 +71,7 @@ RSpec.describe SIADE::V2::Drivers::INSEE::Entreprise, type: :provider_driver do
       its(:code) { is_expected.to eq '46.49Z' }
       its(:code_dotless) { is_expected.to eq '4649Z' }
       its(:nomenclature) { is_expected.to eq 'NAFRev2' }
-      its(:libelle) { is_expected.to eq "Commerce de gros (commerce interentreprises) d'autres biens domestiques " }
+      its(:libelle) { is_expected.to eq "Commerce de gros (commerce interentreprises) d'autres biens domestiques" }
     end
 
     describe 'tranche_effectif_salarie' do

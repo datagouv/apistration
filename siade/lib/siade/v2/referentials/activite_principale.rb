@@ -29,7 +29,7 @@ class SIADE::V2::Referentials::ActivitePrincipale
 
   def libelle
     if found?
-      result
+      result.strip
     else
       latest_nomenclature? ? 'non référencé' : "ancienne révision NAF (#{@nomenclature}) non supportée"
     end
