@@ -21,6 +21,10 @@ module SIADE::V2::Drivers::SelfHostedDocumentDriver
       @errors ||= []
       @errors.push(*store_document_errors)
     end
+  rescue SIADE::SelfHostedDocument::Uploader::HostingServiceException
+    @http_code = 502
+    @errors ||= []
+    @errors << HostingServiceError.new
   end
 
   def store_document

@@ -4,6 +4,8 @@ require 'fog/openstack'
 class SIADE::SelfHostedDocument::Uploader
   attr_reader :filename
 
+  class HostingServiceException < StandardError; end
+
   class << self
     def storage_shared_connexion
       # Fog credentials are set in an initializer
@@ -14,6 +16,17 @@ class SIADE::SelfHostedDocument::Uploader
       uploader = new(filename)
       uploader.store!(content)
       uploader
+    rescue *uploader_hosting_errors
+      raise HostingServiceException
+    end
+
+    def uploader_hosting_errors
+      [
+        Excon::Error::InternalServerError,
+        Excon::Error::Socket,
+        Excon::Error::ServiceUnavailable,
+        Excon::Error::Timeout
+      ]
     end
   end
 
