@@ -141,6 +141,10 @@
   title: 'Erreur réseau'
   detail: "Problème de connexion au serveur distant. L'erreur peut venir soit du fournisseur, soit de API Entreprise"
 
+- code: '00502'
+  title: "Erreur réseau du service d'hébergement de données"
+  detail: "Problème de connexion au serveur d'hébergement de données. L'erreur peut venir soit du fournisseur, soit de API Entreprise"
+
 ## Providers
 ### RNA
 
