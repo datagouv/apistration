@@ -1,4 +1,8 @@
 class Documents::Upload < ApplicationInteractor
+  before do
+    context.errors ||= []
+  end
+
   class << self
     def storage_shared_connexion
       # Fog credentials are set in an initializer
@@ -9,6 +13,9 @@ class Documents::Upload < ApplicationInteractor
   def call
     store!
     context.url = document_public_url
+  rescue *uploader_hosting_errors
+    context.errors << HostingServiceError.new
+    context.fail!
   end
 
   def store!
@@ -67,5 +74,14 @@ class Documents::Upload < ApplicationInteractor
 
   def storage
     self.class.storage_shared_connexion
+  end
+
+  def uploader_hosting_errors
+    [
+      Excon::Error::InternalServerError,
+      Excon::Error::Socket,
+      Excon::Error::ServiceUnavailable,
+      Excon::Error::Timeout
+    ]
   end
 end
