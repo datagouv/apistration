@@ -62,4 +62,18 @@ RSpec.describe API::V2::UptimeController, type: :controller do
 
     it { expect(response).to have_http_status :bad_gateway }
   end
+
+  context 'when there is a socket error' do
+    before do
+      stub_request(:get, /entreprise.api.gouv.fr/).to_raise(SocketError)
+
+      request.headers[:Authorization] = "Bearer #{token}"
+      get :show, params: { route: route }
+    end
+
+    let(:route) { "v2/associations/#{siren}" }
+    let(:siren) { valid_siren }
+
+    it { expect(response).to have_http_status :bad_gateway }
+  end
 end

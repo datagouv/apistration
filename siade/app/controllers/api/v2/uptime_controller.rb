@@ -21,7 +21,7 @@ class API::V2::UptimeController < API::V2::BaseController
 
   def http_code
     internal_response.is_a?(Net::HTTPOK) ? :ok : :bad_gateway
-  rescue Net::ReadTimeout, Net::OpenTimeout
+  rescue Net::ReadTimeout, Net::OpenTimeout, SocketError
     :bad_gateway
   end
 
