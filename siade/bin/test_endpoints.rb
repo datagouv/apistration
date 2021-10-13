@@ -167,6 +167,10 @@ def test_endpoint(endpoint, index)
   response = Net::HTTP.start(uri.hostname, uri.port, @request_options) do |http|
     request = Net::HTTP::Get.new(uri)
     request['Authorization'] = "Bearer #{@jwt}".gsub("\n", '')
+
+    http.read_timeout = 30
+    http.open_timeout = 30
+
     http.request request
   end
 
@@ -178,7 +182,9 @@ def test_endpoint(endpoint, index)
   else
     status = "NOK ( #{response.code} )".red
   end
-
+rescue Net::ReadTimeout
+  status = "NOK ( timeout from client )".red
+ensure
   print "[#{index}] Endpoint '#{name}' ( #{route} ): #{status}\n"
   print "Payload: #{response.body}\n\n" if ENV['DEBUG']
 end
