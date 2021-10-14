@@ -110,6 +110,11 @@ Style/MethodCalledOnDoEndBlock:
 Style/MethodCallWithArgsParentheses:
   Enabled: false
 
+Style/NumericLiterals:
+  Exclude:
+    # Ignore mostly timestamp
+    - "spec/requests/api/**/*_spec.rb"
+
 # Do not force use of fail or raise only both have their use
 Style/SignalException:
   Enabled: false
