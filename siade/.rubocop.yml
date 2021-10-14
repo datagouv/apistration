@@ -46,6 +46,10 @@ Lint/UnreachableCode:
   Exclude:
     - "app/concepts/**/*"
 
+Metrics/AbcSize:
+  IgnoredMethods:
+    - resource_attributes
+
 Metrics/BlockLength:
   Exclude:
     - "spec/spec_helper.rb"
@@ -63,6 +67,8 @@ Metrics/BlockLength:
 
 Metrics/MethodLength:
   Max: 15
+  IgnoredMethods:
+    - resource_attributes
 
 # Allowing uppercase in some method names
 Naming/MethodName:

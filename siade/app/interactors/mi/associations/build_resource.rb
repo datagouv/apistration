@@ -1,8 +1,6 @@
 class MI::Associations::BuildResource < BuildResource
   protected
 
-  # rubocop:disable Metrics/AbcSize
-  # rubocop:disable Metrics/MethodLength
   def resource_attributes
     @asso_hash = xml_body_as_hash[:asso]
 
@@ -25,6 +23,7 @@ class MI::Associations::BuildResource < BuildResource
 
   private
 
+  # rubocop:disable Metrics/AbcSize
   def adresse_siege
     adresse_siege_complement_1 = @asso_hash[:coordonnees][:adresse_siege][:cplt_1]
     adresse_siege_complement_2 = @asso_hash[:coordonnees][:adresse_siege][:cplt_2]
@@ -42,5 +41,4 @@ class MI::Associations::BuildResource < BuildResource
     }
   end
   # rubocop:enable Metrics/AbcSize
-  # rubocop:enable Metrics/MethodLength
 end

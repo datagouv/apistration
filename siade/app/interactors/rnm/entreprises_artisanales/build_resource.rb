@@ -1,7 +1,6 @@
 class RNM::EntreprisesArtisanales::BuildResource < BuildResource
   protected
 
-  # rubocop:disable Metrics/MethodLength
   def resource_attributes
     {
       id: json_body['ent_id_siren'],
@@ -40,7 +39,6 @@ class RNM::EntreprisesArtisanales::BuildResource < BuildResource
       eirl_payload
     )
   end
-  # rubocop:enable Metrics/MethodLength
 
   private
 
