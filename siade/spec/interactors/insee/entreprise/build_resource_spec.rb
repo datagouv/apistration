@@ -35,7 +35,7 @@ RSpec.describe INSEE::Entreprise::BuildResource, type: :build_resource do
 
       its(:personne_morale_attributs) do
         is_expected.to eq({
-          raison_sociale: 'DECATHLON',
+          raison_sociale: 'DECATHLON'
         })
       end
 
@@ -101,7 +101,7 @@ RSpec.describe INSEE::Entreprise::BuildResource, type: :build_resource do
 
       its(:personne_morale_attributs) do
         is_expected.to eq({
-          raison_sociale: nil,
+          raison_sociale: nil
         })
       end
 

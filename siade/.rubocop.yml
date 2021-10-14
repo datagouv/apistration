@@ -116,6 +116,9 @@ Style/SignalException:
 
 Style/StringLiterals:
   EnforcedStyle: single_quotes
+  Exclude:
+    # More convenient to write RSwag documentation in french
+    - "spec/requests/api/**/*_spec.rb"
 
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: single_quotes

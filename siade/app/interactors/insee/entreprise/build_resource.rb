@@ -65,7 +65,7 @@ class INSEE::Entreprise::BuildResource < BuildResource
   end
 
   def compute_numero_tva_intracommunautaire
-    cle_tva = ((12 + 3 * (siren.to_i % 97)) % 97).to_s
+    cle_tva = ((12 + (3 * (siren.to_i % 97))) % 97).to_s
     padded_cle_tva = cle_tva.rjust(2, '0')
     "FR#{padded_cle_tva}#{siren}"
   end
