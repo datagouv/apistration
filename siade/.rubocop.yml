@@ -135,6 +135,10 @@ RSpec/EmptyExampleGroup:
   Exclude:
     - "spec/requests/**/*"
 
+# This is not relevant for huge payloads, just ignored it
+RSpec/ExampleLength:
+  Enabled: false
+
 RSpec/FilePath:
   Exclude:
     - "spec/policies/certificat_rge_ademe_policy_spec.rb"
