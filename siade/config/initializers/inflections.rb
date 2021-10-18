@@ -26,6 +26,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'OAuth2'
   inflect.acronym 'PDF'
   inflect.acronym 'ZIP'
+  inflect.acronym 'TVA'
 
   inflect.acronym 'ACOSS'
   inflect.acronym 'ADEME'
