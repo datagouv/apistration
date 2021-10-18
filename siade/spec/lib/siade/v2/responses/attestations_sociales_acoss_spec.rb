@@ -92,7 +92,7 @@ RSpec.describe SIADE::V2::Responses::AttestationsSocialesACOSS, type: :provider_
         context 'when it is an internal payload with detail->msgId' do
           let(:body) do
             {
-              detail: {
+              details: {
                 msgId: "Id-a89e5f6104153603807d93ba",
               }
             }

@@ -130,7 +130,7 @@ class SIADE::V2::Responses::AttestationsSocialesACOSS < SIADE::V2::Responses::Ge
   end
 
   def internal_error_message?
-    json_errors[:detail].try(:[], :msgId).present?
+    json_errors[:details].try(:[], :msgId).present?
   rescue JSON::ParseError
     false
   end
