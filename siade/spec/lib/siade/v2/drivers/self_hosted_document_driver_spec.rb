@@ -51,4 +51,13 @@ RSpec.describe SIADE::V2::Drivers::SelfHostedDocumentDriver, type: :driver do
       its(:errors) { is_expected.to include(instance_of(HostingServiceError)) }
     end
   end
+
+  describe 'when there is an unknown error' do
+    before do
+      allow(SIADE::SelfHostedDocument::Uploader).to receive(:storage_shared_connexion).and_raise('PANIK')
+    end
+
+    its(:http_code) { is_expected.to eq(500) }
+    its(:errors) { is_expected.to include(instance_of(UnknownError)) }
+  end
 end

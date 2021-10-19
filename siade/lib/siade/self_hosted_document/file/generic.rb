@@ -19,6 +19,7 @@ class SIADE::SelfHostedDocument::File::Generic
     error_message(:invalid_base64, 'Erreur lors du décodage : invalide Base64 format')
   end
 
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def store_from_url(url)
     @binary = URI.open(URI.parse(url)).binmode.read
     perform
@@ -30,7 +31,16 @@ class SIADE::SelfHostedDocument::File::Generic
     error_message(:timeout_error, 'Temps d\'attente de téléchargement du document écoulé')
   rescue URI::InvalidURIError => e
     error_message(:invalid_url, 'L\'URL vers le document renvoyée par le fournisseur de données est invalide')
+  rescue OpenSSL::SSL::SSLError => e
+    log_warning('SelfHostedDocument: OpenSSL Error while opening URI', e, url)
+
+    @binary = URI.open(URI.parse(url), { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).binmode.read
+    perform
+  rescue StandardError => e
+    log_error('SelfHostedDocument: PDF upload/read unknown error', e, url)
+    raise e
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
   def success?
     @errors.empty?
@@ -70,5 +80,36 @@ class SIADE::SelfHostedDocument::File::Generic
   def error_message(kind, msg)
     @errors << [kind, msg]
     self
+  end
+
+  def log_error(message, exception, url)
+    log_event(
+      'error',
+      message,
+      {
+        exception: exception.message,
+        url: url,
+        host: URI(url).host
+      }
+    )
+  end
+
+  def log_warning(message, exception, url)
+    log_event(
+      'warning',
+      message,
+      {
+        exception: exception.message,
+        url: url
+      }
+    )
+  end
+
+  def log_event(level, message, context)
+    MonitoringService.instance.track(
+      level,
+      message,
+      context
+    )
   end
 end

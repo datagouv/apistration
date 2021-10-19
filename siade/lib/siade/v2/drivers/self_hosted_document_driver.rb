@@ -25,6 +25,10 @@ module SIADE::V2::Drivers::SelfHostedDocumentDriver
     @http_code = 502
     @errors ||= []
     @errors << HostingServiceError.new
+  rescue StandardError
+    @http_code = 500
+    @errors ||= []
+    @errors << UnknownError.new
   end
 
   def store_document

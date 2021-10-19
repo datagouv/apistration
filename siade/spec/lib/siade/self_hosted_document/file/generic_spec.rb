@@ -126,6 +126,56 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
         its(:success?) { is_expected.to eq(false) }
         its(:errors) { is_expected.to include([:timeout_error, 'Temps d\'attente de téléchargement du document écoulé']) }
       end
+
+      context 'when there is an OpenSSL error, but it works with no security check' do
+        subject(:store!) do
+          stub_request(:get, doc_url)
+            .to_raise(OpenSSL::SSL::SSLError)
+            .times(1)
+            .then
+            .to_return(status: 200, body: 'very content')
+
+          hosted_doc.store_from_url(doc_url)
+        end
+
+        it 'logs warning' do
+          expect(MonitoringService.instance).to receive(:track).with(
+            'warning',
+            anything,
+            anything
+          )
+
+          store!
+        end
+
+        its(:success?) { is_expected.to eq(true) }
+      end
+
+      context 'when there is an unknown error' do
+        subject(:store!) do
+          stub_request(:get, doc_url)
+            .to_raise('PANIK')
+
+          hosted_doc.store_from_url(doc_url)
+        end
+
+        it 'logs error' do
+          expect(MonitoringService.instance).to receive(:track).with(
+            'error',
+            anything,
+            anything
+          )
+
+          store!
+        rescue StandardError
+        end
+
+        it 'raises an error' do
+          expect {
+            store!
+          }.to raise_error(StandardError)
+        end
+      end
     end
   end
 
