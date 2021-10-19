@@ -26,6 +26,9 @@ class SIADE::V2::Drivers::CertificatsRGEADEME < SIADE::V2::Drivers::GenericDrive
   def qualifications
     certification_entities.each do |entity|
       entity_qualifications = entity.try(:[], 'qualifications')
+
+      break if entity_qualifications.empty?
+
       format_qualifications(entity_qualifications)
     end
 

@@ -168,4 +168,21 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEADEME, type: :provider_driver d
       ])
     end
   end
+
+  describe 'non regression test: when qualifications is an empty string', vcr: { cassette_name: 'ademe/rge/non_regression_qualifications_empty_string', record: :new_episodes } do
+    let(:siret) { '79228853200015' }
+
+    subject { instance.qualifications }
+
+    let(:instance) { described_class.new(siret: siret) }
+
+    before do
+      instance.perform_request
+      instance.check_response
+    end
+
+    it 'works and renders an empty array' do
+      expect(subject).to eq([])
+    end
+  end
 end
