@@ -137,6 +137,10 @@
 - code: '00402'
   title: Version d'API non prise en charge
 
+- code: '00500'
+  title: "Erreur interne"
+  detail: "Une erreur interne a été détectée, l'équipe d'API Entreprise a été notifié de l'erreur."
+
 - code: '00501'
   title: 'Erreur réseau'
   detail: "Problème de connexion au serveur distant. L'erreur peut venir soit du fournisseur, soit de API Entreprise"
