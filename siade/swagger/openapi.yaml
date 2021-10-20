@@ -116,6 +116,11 @@ paths:
                       id:
                         type: string
                         example: '130025265'
+                      type:
+                        type: string
+                        example: entreprise
+                        enum:
+                        - entreprise
                       attributes:
                         type: object
                         properties:
@@ -218,6 +223,7 @@ paths:
                             - prenom_4
                             - nom_usage
                             - nom_naissance
+                            - sexe
                           categorie_entreprise:
                             type: string
                             example: GE
@@ -228,18 +234,15 @@ paths:
                             -
                             description: "Catégorie de l'entreprise. Il s'agit d'une
                               variable statistique calculée par l'INSEE. Elle ne peut
-                              prendre que 3 valeurs:\n                        \n\n
-                              \                       - GE: Grande Entreprise\n                        \n\n
-                              \                       - ETI: Entreprise de Taille
-                              Intermédiaire\n                        \n\n                        -
-                              PME: Petite ou Moyenne Entreprise\n                        \n\n
-                              \                       Celle-ci peut-être nulle dans
-                              certains cas : il s’agit soit d’une unité légale nouvellement
-                              créée, soit d’une unité légale cessée, soit d’une unité
-                              légale hors champ du calcul de la catégorie (unité légale
-                              agricole ou ne faisant pas partie du système productif)\n
-                              \                       \n\n                        La
-                              définition peut-être trouvée sur le lien suivant : https://www.insee.fr/fr/metadonnees/definition/c1057"
+                              prendre que 3 valeurs: \n \n - GE: Grande Entreprise\n
+                              - ETI: Entreprise de Taille Intermédiaire\n - PME: Petite
+                              ou Moyenne Entreprise\n \n \n Celle-ci peut-être nulle
+                              dans certains cas : il s’agit soit d’une unité légale
+                              nouvellement créée, soit d’une unité légale cessée,
+                              soit d’une unité légale hors champ du calcul de la catégorie
+                              (unité légale agricole ou ne faisant pas partie du système
+                              productif) \n \n La définition peut-être trouvée sur
+                              le lien suivant : https://www.insee.fr/fr/metadonnees/definition/c1057"
                           numero_tva_intracommunautaire:
                             type: string
                             example: FR07130025265
@@ -261,15 +264,15 @@ paths:
                               code:
                                 type: string
                                 example: '7120'
-                                description: 'Code de la forme juridique de l''entreprise.
+                                description: "Code de la forme juridique de l'entreprise.
                                   Cette variable est à 1000 pour les personnes physiques.
-                                  La liste complète se trouve ici: https://www.insee.fr/fr/information/2028129'
+                                  \n \n La liste complète se trouve ici: https://www.insee.fr/fr/information/2028129"
                               libelle:
                                 type: string
-                                example: Service central d'un ministère
-                                description: Libellé associé au code de la forme juridique
-                                  de l'entreprise. Si le code ne correspond à aucun
-                                  libellé la valeur 'non référencé' est utilisée.
+                                example: 'Service central d''un ministère description:
+                                  Libellé associé au code de la forme juridique de
+                                  l''entreprise. Si le code ne correspond à aucun
+                                  libellé la valeur ''non référencé'' est utilisée.'
                             required:
                             - code
                             - libelle
@@ -293,10 +296,8 @@ paths:
                                   (nomenclature en vigueur), le libellé n'est pas
                                   renseigné ici. Si le code ne correspond à aucun
                                   libellé au sein de la nomenclature 'Naf Rév2', la
-                                  valeur 'non référencé' est utilisée.\n                            \n\n
-                                  \                           \n\n                            Le
-                                  lien vers la nomenclature 'Naf Rév2' : https://www.insee.fr/fr/information/2406147\n
-                                  \                           "
+                                  valeur 'non référencé' est utilisée. \n \n Le lien
+                                  vers la nomenclature 'Naf Rév2' : https://www.insee.fr/fr/information/2406147"
                               nomenclature:
                                 type: string
                                 example: NAFRev2
@@ -349,12 +350,12 @@ paths:
                             example: 1634103818
                         required:
                         - siret_siege_social
-                        - categorie_entreprise
-                        - numero_tva_intracommunautaire
-                        - diffusable_commercialement
                         - type
                         - personne_morale_attributs
                         - personne_physique_attributs
+                        - categorie_entreprise
+                        - numero_tva_intracommunautaire
+                        - diffusable_commercialement
                         - forme_juridique
                         - activite_principale
                         - tranche_effectif_salarie
@@ -390,8 +391,8 @@ paths:
                     - id
                     - type
                     - attributes
-                    - links
                     - meta
+                    - links
                 required:
                 - data
         '404':
