@@ -12,7 +12,7 @@ class Documents::RetrieveFromUrl < ApplicationInteractor
   rescue Net::OpenTimeout, Net::ReadTimeout
     fail_with_error(:timeout_error, 'Temps d\'attente de téléchargement du document écoulé')
   rescue URI::InvalidURIError => e
-    msg = "L\'URL source du document chez le fournisseur de données est invalide : #{e.message}."
+    msg = "L'URL source du document chez le fournisseur de données est invalide : #{e.message}."
     fail_with_error(:invalid_url, msg)
   end
 
