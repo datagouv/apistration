@@ -148,31 +148,29 @@ Pour générer un code coverage en local:
 Vous pouvez tester votre fichier Swagger à l'aide de l'éditeur disponible en
 ligne à l'adresse suivante: [Swagger Editor](https://editor.swagger.io/)
 
-## Génération d'un nouveau JWT token pour les tests
+## Génération d'un nouveau JWT token
 
-Dans le cas où vous êtes amené à régénérer un token JWT pour les tests (et
-uniquement pour les tests, question de sécurité), vous pouvez passer par
-[jwt.io](https://jwt.io/).
+Dans le cas où vous êtes amené à régénérer un token JWT, vous pouvez utiliser la
+commande suivante:
 
-Récupérez la valeur du token valid (dans la méthode `jwt`) présent dans le
-[jwt_helper.rb](spec/support/helpers/jwt_helper.rb), et copiez là dans
-l'encard "Encoded" de jwt.io.
+```sh
+ruby bin/generate_jwt_token.rb environment
+```
 
-Dans l'encart "Verify Signature" de "Encoded", vous devez mettre la valeur du
-jwt secret, celle-ci se trouve dans le fichier credentials sous la clé `jwt_hash_secret`
+Avec `environment` un environnement valide.
 
-En théorie dans la partie "Decoded" vous retrouverez les informations
-associées à ce token.
+### Cas de l'environnement de test
 
-Vous pouvez maintenant modifier les informations de votre JWT dans l'encart
-"Payload" de "Decoded".
+Dans le cadre des tests (lors de l'ajout d'un nouveau rôle), le script récupère
+automagiquement les rôles depuis les controllers, vous pouvez modifier le
+script pour ajouter le rôle à la main dans la variable `extra_roles`.
 
-Lorsque vous avez fini vos modifications, vous devez:
+Il vous suffit à la fin de prendre la valeur générée et remplacer dans le
+fichier [jwt_helper.rb](spec/support/helpers/jwt_helper.rb) dans la méthode
+`jwt` à la clé `valid` avec la bonne valeur.
 
-1.  Remplacer la valeur précédemment récupérée dans la clé `valid` par la
-    nouvelle valeur dans l'encart "Encoded"
-2.  Mettre à jour, dans la méthode `values_for_valid_jwt` du fichier
-    `jwt_helper.rb`, les valeurs que vous avez modifié
+N'oubliez pas non plus d'ajouter le nouveau rôle dans la méthode
+`values_for_valid_jwt`
 
 ## Création d'un rôle d'accès à un nouvel endpoint
 
@@ -224,6 +222,9 @@ Avec:
   `https://production2.entreprise.api.gouv.fr`
 - `id1,id2`, optionnel, index du endpoint à faire tourner. Ceci permet de
   juste faire tourner un certain nombre de endpoints. Exemple: 3,14
+
+Si vous obtenez une erreur de jeton invalide, vous pouvez en régénérer un avec
+le script `bin/generate_jwt_token.rb` (documenté plus haut)
 
 ## Création d'une nouvelle API
 
