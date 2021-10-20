@@ -1,10 +1,17 @@
 RSpec.describe Documents::RetrieveFromUrl do
-  subject { described_class.call(retrieve_params.merge(provider_name: provider_name)) }
+  subject(:make_call!) { described_class.call(retrieve_params.merge(provider_name: provider_name)) }
 
   let(:provider_name) { 'INSEE' }
 
   let(:retrieve_params) do
     { url: source_doc_url }
+  end
+
+  let(:mock_monitoring) { instance_double('MonitoringService') }
+
+  before do
+    allow(mock_monitoring).to receive(:track)
+    allow(MonitoringService).to receive(:instance).and_return(mock_monitoring)
   end
 
   describe '.call' do
@@ -52,6 +59,48 @@ RSpec.describe Documents::RetrieveFromUrl do
       it { is_expected.to be_failure }
 
       its(:errors) { is_expected.to have_error('L\'URL source du document chez le fournisseur de données est invalide : bad URI(is not URI?): "not an URL".') }
+    end
+
+    context 'when there is an OpenSSL error, but it works with no security check' do
+      before do
+        stub_request(:get, source_doc_url)
+          .to_raise(OpenSSL::SSL::SSLError)
+          .times(1)
+          .then
+          .to_return(status: 200, body: 'very content')
+      end
+
+      it { is_expected.to be_success }
+
+      it 'logs warning' do
+        make_call!
+
+        expect(mock_monitoring).to have_received(:track).with(
+          'warning',
+          anything,
+          anything
+        )
+      end
+    end
+
+    context 'when there is an unknown error' do
+      before do
+        stub_request(:get, source_doc_url)
+          .to_raise('PANIK')
+      end
+
+      it { is_expected.to be_failure }
+      its(:errors) { is_expected.to include(instance_of(UnknownError)) }
+
+      it 'logs error' do
+        make_call!
+
+        expect(mock_monitoring).to have_received(:track).with(
+          'error',
+          anything,
+          anything
+        )
+      end
     end
   end
 end
