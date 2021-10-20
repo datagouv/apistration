@@ -1,7 +1,7 @@
 ---
 insee:
   entreprise:
-    attributes:
+    attributes: &insee_entreprise_attributes
       siret_siege_social:
         type: 'string'
         example: '13002526500013'
@@ -222,3 +222,16 @@ insee:
         type: 'integer'
         example: 1618396818
         description: "Date de la dernière mise à jour à l'INSEE"
+
+  entreprise_diffusable:
+    attributes:
+      <<: *insee_entreprise_attributes
+      diffusable_commercialement:
+        type: 'boolean'
+        example: true
+        enum:
+          - true
+        description: "Détermine si l'entreprise est une entreprise
+          non-diffusible. Cette valeur est toujours à true. Si vous voulez pouvoir récupérer des entreprises
+          non-diffusible, référez-vous à la documentation du endpoint /insee/entreprise/:siren"
+
