@@ -42,6 +42,10 @@ Layout/SpaceInsideHashLiteralBraces:
 Lint/InheritException:
   Enabled: false
 
+Lint/SuppressedException:
+  Exclude:
+    - "spec/**/*_spec.rb"
+
 Lint/UnreachableCode:
   Exclude:
     - "app/concepts/**/*"
