@@ -20,6 +20,6 @@ class SwaggerInformation
   end
 
   def yaml_backend_path
-    Rails.root.join('config/swagger_informations.yml')
+    Rails.root.join('config/swagger_information.yml')
   end
 end
