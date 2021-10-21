@@ -22,7 +22,7 @@ RSpec.describe 'INSEE: Entreprises', type: %i[request swagger] do
           let(:siren) { sirens_insee_v3[:active_GE] }
 
           schema build_rswag_response(
-            id: '130025265',
+            id: sirens_insee_v3[:active_GE],
             type: 'entreprise',
             attributes: SwaggerInformation.get('insee.entreprise.attributes'),
             links: SwaggerInformation.get('insee.entreprise.links'),
