@@ -285,6 +285,94 @@ rnm:
           - '0'
           - '1'
 
+mi:
+  association:
+    attributes:
+      titre:
+        type: 'string'
+        example: 'LA PRÉVENTION ROUTIERE'
+      objet:
+        type: 'string'
+        example: "Accroitre la sécurité des usagers en encourageant toutes mesures ou initiatives propres à réduire les accidents"
+        description: "Il s'agit d'une description courte mais exhaustive des activités de l'organisme."
+      siret:
+        type: 'string'
+        nullable: true
+        example:
+      siret_siege_social:
+        type: 'string'
+        example: '77571979202650'
+      date_creation:
+        type: 'string'
+        example: '1955-01-01'
+        description: "Il s'agit du jour de dépôt du dossier de
+          création de l'association à la Préfecture."
+      date_declaration:
+        type: 'string'
+        example: '1955-01-01'
+        description: "Jour de la dernière déclaration faîte par
+          l'association."
+      date_publication:
+        type: "string"
+        nullable: true
+        example:
+        description: "Jour de la publication au journal officiel
+          de l'avis de création de l'association. Toutes les assoiations
+          ne sont pas forcément 'déclarées'. La publication au
+          Journal Officiel permet à l'association de devenir une
+          personne morale, a contrario des 'associations de fait',
+          non déclarées au JO."
+      date_dissolution:
+        type: 'string'
+        nullable: true
+        example:
+        description: "Si l'association est dissolue, ce champ indique
+          la date de dissolution, autrement, il est indiqué 'null'."
+      adresse_siege:
+        type: 'object'
+        properties:
+          complement:
+            type: 'string'
+            example: "  "
+          numero_voie:
+            type: 'string'
+            example: '33'
+          type_voie:
+            type: 'string'
+            example: "rue"
+          libelle_voie:
+            type: 'string'
+            example: "de Modagor"
+          distribution:
+            type: 'string'
+            nullable: true
+            example:
+          code_insee:
+            type: 'string'
+            example: '75108'
+          code_postal:
+            type: 'string'
+            example: '75009'
+          commune:
+            type: 'string'
+            example: 'Paris'
+      etat:
+        type: 'string'
+        example: 'true'
+      groupement:
+        type: 'string'
+        nullable: true
+        example:
+        description: "Trois modalités possibles : si l'association
+          n'est pas un groupement, il est indiqué 'Simple'
+          ; si l'association est un groupement, la valeur est
+          'Union' ou 'Fédération'. La valeur peut aussi être
+          manquante (null)"
+      mise_a_jour:
+        type: 'string'
+        example: '1955-01-01'
+
+
 acoss:
   attestation_sociale:
     document_url_properties:

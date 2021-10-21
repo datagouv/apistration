@@ -829,15 +829,11 @@ paths:
                       id:
                         type: string
                         example: W751227325
-                        description: Débutant par W et composé de 9 chiffres, il s'agit
-                          du numéro RNA, identifiant national de l'association. Ce
-                          numéro est attribué automatiquement lors de la déclaration
-                          de création d’une association. Une association ne disposant
-                          pas d’un numéro RNA s’en voit attribuer un à chaque modification
-                          effectuée auprès des services de l’État (modification de
-                          statuts ou des dirigeants de l’associations). Le numéro
-                          figure alors sur le récépissé délivré par la préfecture.ID
-                          RNA ou Siret demandé
+                      type:
+                        type: string
+                        example: association
+                        enum:
+                        - association
                       attributes:
                         type: object
                         properties:
@@ -912,6 +908,15 @@ paths:
                               commune:
                                 type: string
                                 example: Paris
+                            required:
+                            - complement
+                            - numero_voie
+                            - type_voie
+                            - libelle_voie
+                            - distribution
+                            - code_insee
+                            - code_postal
+                            - commune
                           etat:
                             type: string
                             example: 'true'
@@ -923,10 +928,29 @@ paths:
                               n''est pas un groupement, il est indiqué ''Simple''
                               ; si l''association est un groupement, la valeur est
                               ''Union'' ou ''Fédération''. La valeur peut aussi être
-                              manquante (nil).'
+                              manquante (null)'
                           mise_a_jour:
                             type: string
                             example: '1955-01-01'
+                        required:
+                        - titre
+                        - objet
+                        - siret
+                        - siret_siege_social
+                        - date_creation
+                        - date_declaration
+                        - date_publication
+                        - date_dissolution
+                        - adresse_siege
+                        - etat
+                        - groupement
+                        - mise_a_jour
+                    required:
+                    - id
+                    - type
+                    - attributes
+                required:
+                - data
         '404':
           description: Association not found
           content:
