@@ -73,12 +73,14 @@ Metrics/MethodLength:
   Max: 15
   Exclude:
     - "spec/support/rswag_resources_payloads.rb"
+    - "spec/support/rswag_commons_responses.rb"
   IgnoredMethods:
     - resource_attributes
 
 Metrics/ModuleLength:
   Exclude:
     - "spec/support/rswag_resources_payloads.rb"
+    - "spec/support/rswag_commons_responses.rb"
 
 # Allowing uppercase in some method names
 Naming/MethodName:
