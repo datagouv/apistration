@@ -1078,26 +1078,23 @@ paths:
                       id:
                         type: string
                         example: '301123626'
+                      type:
+                        type: string
+                        example: entreprise
+                        enum:
+                        - entreprise
                       attributes:
                         type: object
                         properties:
-                          siren:
-                            type: string
-                            example: '301123626'
-                            description: Siren de l'entreprise
                           modalite_exercice:
                             type: string
                             example: P
                             description: "Détermine si l'entreprise a une activité
-                              permanente ou saisonnière.\n                      \n\n
-                              \                     L'activité est dite saisonnière
+                              permanente ou saisonnière. \n L'activité est dite saisonnière
                               si chaque année, l'entreprise cesse totalement ses activités
-                              pendant plus de 3 mois consécutifs.\n                      \n\n
-                              \                     \n\n                      Les
-                              valeurs possibles sont:\n                      \n\n
-                              \                     - P => Permanent\n                      \n\n
-                              \                     - S => Saisonnière\n                      \n\n
-                              \                     - NR => Non renseignée"
+                              pendant plus de 3 mois consécutifs. \n \n Les valeurs
+                              possibles sont: \n - P => Permanent \n - S => Saisonnière
+                              \n - NR => Non renseignée"
                             enum:
                             - P
                             - S
@@ -1105,44 +1102,19 @@ paths:
                           non_sedentaire:
                             type: string
                             example: '0'
-                            description: "Indique si l'entreprise a une activité ambulante.\n
-                              \                       \n\n                        \n\n
-                              \                       Les valeurs possibles sont:\n
-                              \                       \n\n                        -
-                              0 => sédentaire\n                        \n\n                        -
-                              1 => non-sédentaire"
+                            description: "Indique si l'entreprise a une activité ambulante.
+                              \n \n Les valeurs possibles sont: \n - 0 => sédentaire
+                              \n - 1 => non-sédentaire"
                             enum:
                             - '0'
                             - '1'
                         required:
-                        - siren
                         - modalite_exercice
                         - non_sedentaire
-                      relationships:
-                        type: object
-                        properties:
-                          adresse:
-                            type: object
-                            properties:
-                              data:
-                                type: object
-                                properties:
-                                  id:
-                                    type: string
-                                    example: '301123626'
-                                  type:
-                                    type: string
-                                    enum:
-                                    - adresse
-                                    example: adresse
-                              links:
-                                type: object
-                                properties:
-                                  related:
-                                    type: string
-                                    example: https://entreprises.api.gouv.fr/api/v3/insee/adresse/301123626
                     required:
                     - id
+                    - type
+                    - attributes
                 required:
                 - data
         '404':
