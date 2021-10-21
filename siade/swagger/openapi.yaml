@@ -12,14 +12,29 @@ paths:
       parameters:
       - name: context
         in: query
+        description: |-
+          **Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application.
+        required: true
         schema:
           type: string
       - name: recipient
         in: query
+        description: |-
+          **Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données.
+        required: true
         schema:
           type: string
       - name: object
         in: query
+        description: |-
+          **La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte <( 50 caractères.)
+        required: true
         schema:
           type: string
       - name: siren
@@ -82,14 +97,29 @@ paths:
       parameters:
       - name: context
         in: query
+        description: |-
+          **Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application.
+        required: true
         schema:
           type: string
       - name: recipient
         in: query
+        description: |-
+          **Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données.
+        required: true
         schema:
           type: string
       - name: object
         in: query
+        description: |-
+          **La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte <( 50 caractères.)
+        required: true
         schema:
           type: string
       - name: siren
@@ -410,14 +440,29 @@ paths:
       parameters:
       - name: context
         in: query
+        description: |-
+          **Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application.
+        required: true
         schema:
           type: string
       - name: recipient
         in: query
+        description: |-
+          **Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données.
+        required: true
         schema:
           type: string
       - name: object
         in: query
+        description: |-
+          **La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte <( 50 caractères.)
+        required: true
         schema:
           type: string
       - name: siren
@@ -739,14 +784,29 @@ paths:
       parameters:
       - name: context
         in: query
+        description: |-
+          **Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application.
+        required: true
         schema:
           type: string
       - name: recipient
         in: query
+        description: |-
+          **Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données.
+        required: true
         schema:
           type: string
       - name: object
         in: query
+        description: |-
+          **La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte <( 50 caractères.)
+        required: true
         schema:
           type: string
       - name: siret_or_rna
@@ -891,14 +951,29 @@ paths:
       parameters:
       - name: context
         in: query
+        description: |-
+          **Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application.
+        required: true
         schema:
           type: string
       - name: recipient
         in: query
+        description: |-
+          **Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données.
+        required: true
         schema:
           type: string
       - name: object
         in: query
+        description: |-
+          **La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte <( 50 caractères.)
+        required: true
         schema:
           type: string
       - name: siret
@@ -960,14 +1035,29 @@ paths:
       parameters:
       - name: context
         in: query
+        description: |-
+          **Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application.
+        required: true
         schema:
           type: string
       - name: recipient
         in: query
+        description: |-
+          **Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données.
+        required: true
         schema:
           type: string
       - name: object
         in: query
+        description: |-
+          **La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte <( 50 caractères.)
+        required: true
         schema:
           type: string
       - name: siren

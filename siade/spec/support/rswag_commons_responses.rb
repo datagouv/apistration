@@ -2,9 +2,23 @@ module RSWagCommonsResponses
   def common_action_attributes
     produces 'application/json'
 
-    parameter name: :context, in: :query, type: :string
-    parameter name: :recipient, in: :query, type: :string
-    parameter name: :object, in: :query, type: :string
+    parameter name: :context,
+      in: :query,
+      type: :string,
+      description: SwaggerInformation.get('mandatory_params.context'),
+      required: true
+
+    parameter name: :recipient,
+      in: :query,
+      type: :string,
+      description: SwaggerInformation.get('mandatory_params.recipient'),
+      required: true
+
+    parameter name: :object,
+      in: :query,
+      type: :string,
+      description: SwaggerInformation.get('mandatory_params.object'),
+      required: true
 
     security [jwt_bearer_token: []]
   end
