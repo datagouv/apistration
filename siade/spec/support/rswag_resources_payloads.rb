@@ -32,9 +32,8 @@ module RSWagResourcesPayloads
       required: %w[data]
     }
   end
-  # rubocop:enable Naming/MethodParameterName
 
-  def build_rswag_document_properties_response(siret:, document_url_extra_properties: {})
+  def build_rswag_document_response(id:, document_url_properties: {})
     {
       type: :object,
       properties: {
@@ -43,7 +42,7 @@ module RSWagResourcesPayloads
           properties: {
             id: {
               type: :string,
-              example: siret
+              example: id
             },
             type: {
               type: :string,
@@ -54,10 +53,8 @@ module RSWagResourcesPayloads
               type: :object,
               properties: {
                 document_url: {
-                  type: :string,
-                  example: 'https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-document.pdf',
-                  description: 'Lien vers le document. Ce document est automatiquement supprimé au bout de 3 mois.'
-                }.merge(document_url_extra_properties)
+                  type: :string
+                }.merge(document_url_properties)
               },
               required: %w[document_url]
             }
@@ -72,6 +69,7 @@ module RSWagResourcesPayloads
       required: %w[data]
     }
   end
+  # rubocop:enable Naming/MethodParameterName
 
   def build_rswag_meta(meta)
     return {} if meta.blank?

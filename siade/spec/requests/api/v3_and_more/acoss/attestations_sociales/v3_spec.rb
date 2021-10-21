@@ -21,14 +21,9 @@ RSpec.describe 'ACOSS: Attestations sociales', type: %i[request swagger] do
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Entreprise found', vcr: { cassette_name: 'acoss/with_valid_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body) } do
-          let(:siren) { valid_siren(:acoss) }
-
-          schema build_rswag_document_properties_response(
-            siret: valid_siren(:acoss),
-            document_url_extra_properties: {
-              example: 'https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_vigilance_acoss.pdf',
-              description: 'Lien vers l\'attestation de vigilance ACOSS. Ce document est automatiquement supprimé au bout de 3 mois.'
-            }
+          schema build_rswag_document_response(
+            id: valid_siren(:acoss),
+            document_url_properties: SwaggerInformation.get('acoss.attestation_sociale.document_url_properties')
           )
 
           run_test!

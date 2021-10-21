@@ -248,3 +248,15 @@ insee:
           non-diffusible. Cette valeur est toujours à true. Si vous voulez pouvoir récupérer des entreprises
           non-diffusible, référez-vous à la documentation du endpoint /insee/entreprise/:siren"
 
+acoss:
+  attestation_sociale:
+    document_url_properties:
+      description: "Lien vers l'attestation de vigilance ACOSS. Ce document est automatiquement supprimé au bout de 3 mois."
+      example: 'https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_vigilance_acoss.pdf'
+
+probtp:
+  attestation_cotisation_retraite:
+    document_url_properties:
+      description: "Lien vers l'attestation ProBtp. Ce document est automatiquement supprimé au bout de 3 mois."
+      example: 'https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf'
+

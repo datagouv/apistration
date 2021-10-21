@@ -19,12 +19,9 @@ RSpec.describe 'PROBTP : Attestations cotisations retraite', type: %i[request sw
 
       describe 'with valid mandatory params', valid: true do
         response 200, 'Attestation found', vcr: { cassette_name: 'probtp/attestation/with_eligible_siret' } do
-          schema build_rswag_document_properties_response(
-            siret: eligible_siret(:probtp),
-            document_url_extra_properties: {
-              example: 'https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf',
-              description: 'Lien vers l\'attestation ProBtp. Ce document est automatiquement supprimé au bout de 3 mois.'
-            }
+          schema build_rswag_document_response(
+            id: eligible_siret(:probtp),
+            document_url_properties: SwaggerInformation.get('probtp.attestation_cotisation_retraite.document_url_properties')
           )
 
           run_test!
