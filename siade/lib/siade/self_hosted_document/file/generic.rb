@@ -27,7 +27,7 @@ class SIADE::SelfHostedDocument::File::Generic
     response = e.io
     msg = "Erreur lors de la récupération du document : status #{response.status[0]} with body '#{response.string}'"
     error_message(:http_error, msg)
-  rescue Net::OpenTimeout, Net::ReadTimeout
+  rescue Net::OpenTimeout, Net::ReadTimeout, EOFError
     error_message(:timeout_error, 'Temps d\'attente de téléchargement du document écoulé')
   rescue URI::InvalidURIError => e
     error_message(:invalid_url, 'L\'URL vers le document renvoyée par le fournisseur de données est invalide')

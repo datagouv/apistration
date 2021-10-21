@@ -10,7 +10,7 @@ class Documents::RetrieveFromUrl < ApplicationInteractor
     response = e.io
     msg = "Erreur lors de la récupération du document : status #{response.status[0]} with body '#{response.string}'"
     fail_with_error(:http_error, msg)
-  rescue Net::OpenTimeout, Net::ReadTimeout
+  rescue Net::OpenTimeout, Net::ReadTimeout, EOFError
     fail_with_error(:timeout_error, 'Temps d\'attente de téléchargement du document écoulé')
   rescue URI::InvalidURIError => e
     msg = "L'URL source du document chez le fournisseur de données est invalide : #{e.message}."
