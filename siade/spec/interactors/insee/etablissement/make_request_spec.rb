@@ -1,0 +1,62 @@
+RSpec.describe INSEE::Etablissement::MakeRequest, type: :make_request do
+  subject(:make_request) { described_class.call(params: params, token: token) }
+
+  let(:params) do
+    {
+      siret: siret
+    }
+  end
+
+  let(:token) { 'token' }
+
+  context 'with a valid siret', vcr: { cassette_name: 'api_insee_fr/siret/active_GE' } do
+    let(:siret) { sirets_insee_v3[:active_GE] }
+
+    it { is_expected.to be_a_success }
+
+    its(:response) { is_expected.to be_a(Net::HTTPOK) }
+  end
+
+  context 'with a non-existent siret', vcr: { cassette_name: 'api_insee_fr/siret/non_existent' } do
+    let(:siret) { non_existent_siret }
+
+    it { is_expected.to be_a_success }
+
+    its(:response) { is_expected.to be_a(Net::HTTPNotFound) }
+  end
+
+  context 'with an entrepreneur individuel non diffusable ceased', vcr: { cassette_name: 'api_insee_fr/siret/non_diffusable_ceased' } do
+    let(:siret) { confidential_siret(:non_diffusable_ceased) }
+
+    it { is_expected.to be_a_success }
+
+    its(:response) { is_expected.to be_a(Net::HTTPForbidden) }
+  end
+
+  context 'with an entrepreneur individuel non diffusable', vcr: { cassette_name: 'api_insee_fr/siret/non_diffusable' } do
+    let(:siret) { non_diffusable_siret }
+
+    it { is_expected.to be_a_success }
+
+    its(:response) { is_expected.to be_a(Net::HTTPOK) }
+  end
+
+  context 'with a gendarmerie', vcr: { cassette_name: 'api_insee_fr/siret/gendarmerie_limousin' } do
+    let(:siret) { confidential_siret(:gendarmerie_limousin) }
+
+    it { is_expected.to be_a_success }
+
+    its(:response) { is_expected.to be_a(Net::HTTPForbidden) }
+  end
+
+  context 'with a siret which redirects to another location', vcr: { cassette_name: 'api_insee_fr/siret/redirected' } do
+    let(:siret) { '53222169400013' }
+    let(:redirected_siret) { '77887067500015' }
+
+    before do
+      pending 'Need specs'
+    end
+
+    it { is_expected.to be_a_success }
+  end
+end
