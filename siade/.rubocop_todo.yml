@@ -84,12 +84,6 @@ Metrics/PerceivedComplexity:
   Exclude:
     - 'app/controllers/api/v3_and_more/base_controller.rb'
 
-# Offense count: 7
-Naming/AccessorMethodName:
-  Exclude:
-    - 'app/services/monitoring_service.rb'
-    - 'lib/generators/scaffold_resource/scaffold_resource_generator.rb'
-
 # Offense count: 2
 # Configuration parameters: ForbiddenDelimiters.
 # ForbiddenDelimiters: (?-mix:(^|\s)(EO[A-Z]{1}|END)(\s|$))
