@@ -19,8 +19,6 @@ RSpec.describe 'INSEE: Entreprises', type: %i[request swagger] do
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: 'api_insee_fr/siren/active_GE_with_token' } do
-          let(:siren) { sirens_insee_v3[:active_GE] }
-
           description SwaggerInformation.get('insee.entreprise.description')
 
           schema build_rswag_response(
