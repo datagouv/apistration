@@ -819,6 +819,197 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+  "/v3/insee/etablissements/{siret}":
+    get:
+      summary: Données de référence d'un établissement
+      tags:
+      - Informations générales
+      parameters:
+      - name: context
+        in: query
+        description: "**Cadre de la requête** \n \n Par exemple : aides publiques,
+          marchés publics ou gestion d’un référentiel tiers utilisé pour tel type
+          d’application."
+        required: true
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: "**Bénéficiaire de l’appel** \n \n SIRET de l’administration
+          destinatrice des données."
+        required: true
+        schema:
+          type: string
+      - name: object
+        in: query
+        description: "**La raison de l’appel ou l’identifiant de la procédure.** \n
+          \n L’identifiant peut être interne à votre organisation ou bien un numéro
+          de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous
+          permette de tracer et de retrouver les informations relatives à l’appel.
+          En effet, vous devez pouvoir justifier de la raison d’un appel auprès du
+          fournisseur de données. Description courte ( < 50 caractères )."
+        required: true
+        schema:
+          type: string
+      - name: siret
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - jwt_bearer_token: []
+      description: Obtenir des informations générales concernant un établissement
+        du répertoire Sirene.
+      responses:
+        '403':
+          description: Accès interdit
+        '200':
+          description: Etablissement trouvé
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '30613890002979'
+                      type:
+                        type: string
+                        example: etablissement
+                        enum:
+                        - etablissement
+                      attributes:
+                        type: object
+                        properties:
+                          siege_social:
+                            type: boolean
+                            example: true
+                            enum:
+                            - true
+                            - false
+                            description: Indique si l'établissement est le siège social
+                              de l'entreprise
+                          etat_administratif:
+                            type: string
+                            enum:
+                            - A
+                            - F
+                            example: A
+                            description: "État administratif de l'établissement. \n
+                              \n - A = Actif \n - F = Fermé"
+                          activite_principale:
+                            type: object
+                            properties:
+                              code:
+                                type: string
+                                example: 8411Z
+                                description: Code de l'activité principale (APE) de
+                                  l'établissement. Ce code est extrait de la nomenclature
+                                  NAF. A noter qu'un établissement n'ayant pas encore
+                                  de code APE peut se voir affecter la valeur 00.00Z
+                                  de manière provisoire.
+                              libelle:
+                                type: string
+                                nullable: true
+                                example: Administration publique générale
+                                description: "Libellé associé au code APE. Si le code
+                                  n'est pas renseigné dans la nomenclature 'Naf Rév2'
+                                  (nomenclature en vigueur), le libellé n'est pas
+                                  renseigné ici. Si le code ne correspond à aucun
+                                  libellé au sein de la nomenclature 'Naf Rév2', la
+                                  valeur 'non référencé' est utilisée. \n \n Le lien
+                                  vers la nomenclature 'Naf Rév2' : https://www.insee.fr/fr/information/2406147"
+                              nomenclature:
+                                type: string
+                                example: NAFRev2
+                                description: Nomenclature associée au code
+                            required:
+                            - code
+                            - libelle
+                            - nomenclature
+                          tranche_effectif_salarie:
+                            type: object
+                            properties:
+                              code:
+                                type: string
+                                nullable: true
+                                example: '51'
+                              intitule:
+                                type: string
+                                nullable: true
+                                example: 2 000 à 4 999 salariés
+                              date_reference:
+                                type: string
+                                nullable: true
+                                example: '2016'
+                              de:
+                                type: integer
+                                example: 2000
+                                nullable: true
+                              a:
+                                type: integer
+                                example: 4999
+                                nullable: true
+                            required:
+                            - code
+                            - intitule
+                            - date_reference
+                            - de
+                            - a
+                          diffusable_commercialement:
+                            type: boolean
+                            example: true
+                            enum:
+                            - true
+                            - false
+                            description: Détermine si l'établissemenr est un établissement
+                              diffusible commercialement.
+                          date_creation:
+                            type: integer
+                            example: 1634103818
+                        required:
+                        - siege_social
+                        - etat_administratif
+                        - activite_principale
+                        - tranche_effectif_salarie
+                        - diffusable_commercialement
+                        - date_creation
+                      links:
+                        type: object
+                        properties:
+                          entreprise:
+                            type: string
+                            example: https://entreprises.api.gouv.fr/api/v3/insee/entreprises/306138900
+                            description: Lien vers la ressource entreprise correspondant
+                              à cet établissement
+                        required:
+                        - entreprise
+                      meta:
+                        type: object
+                        properties:
+                          date_derniere_mise_a_jour:
+                            type: integer
+                            example: 1618396818
+                            description: Date de la dernière mise à jour à l'INSEE
+                        required:
+                        - date_derniere_mise_a_jour
+                    required:
+                    - id
+                    - type
+                    - attributes
+                    - meta
+                    - links
+                required:
+                - data
+        '404':
+          description: Non trouvé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/NotFound"
   "/v3/mi/associations/{siret_or_rna}":
     get:
       summary: Informations déclaratives d'une association
