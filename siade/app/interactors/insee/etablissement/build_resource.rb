@@ -4,6 +4,7 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
   def resource_attributes
     {
       id: etablissement['siret'],
+      siren: etablissement['siren'],
       siege_social: etablissement['etablissementSiege'],
       etat_administratif: latest_info_on_etablissement['etatAdministratifEtablissement'],
 
