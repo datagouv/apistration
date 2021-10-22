@@ -87,11 +87,7 @@ Metrics/PerceivedComplexity:
 # Offense count: 7
 Naming/AccessorMethodName:
   Exclude:
-    - 'app/interactors/acoss/attestations_sociales/make_request.rb'
-    - 'app/interactors/insee/entreprise/make_request.rb'
-    - 'app/interactors/make_request.rb'
     - 'app/services/monitoring_service.rb'
-    - 'lib/generators/make_request/make_request_generator.rb'
     - 'lib/generators/scaffold_resource/scaffold_resource_generator.rb'
 
 # Offense count: 2

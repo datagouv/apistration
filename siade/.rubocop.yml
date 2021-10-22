@@ -82,6 +82,12 @@ Metrics/ModuleLength:
     - "spec/support/rswag_resources_payloads.rb"
     - "spec/support/rswag_commons_responses.rb"
 
+Naming/AccessorMethodName:
+  Exclude:
+    - 'app/interactors/**/**/make_request.rb'
+    - 'app/interactors/make_request.rb'
+    - 'lib/generators/make_request/make_request_generator.rb'
+
 # Allowing uppercase in some method names
 Naming/MethodName:
   IgnoredPatterns:
