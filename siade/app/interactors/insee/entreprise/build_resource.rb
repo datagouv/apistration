@@ -59,7 +59,7 @@ class INSEE::Entreprise::BuildResource < BuildResource
   end
 
   def latest_info_on_unite_legale
-    unite_legale['periodesUniteLegale'].find do |periode_unite_legale|
+    @latest_info_on_unite_legale ||= unite_legale['periodesUniteLegale'].find do |periode_unite_legale|
       periode_unite_legale['dateFin'].nil?
     end
   end
