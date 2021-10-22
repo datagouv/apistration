@@ -1,0 +1,43 @@
+class INSEE::Etablissement::BuildResource < INSEE::BuildResource
+  protected
+
+  def resource_attributes
+    {
+      id: etablissement['siret'],
+      siege_social: etablissement['etablissementSiege'],
+      etat_administratif: latest_info_on_etablissement['etatAdministratifEtablissement'],
+
+      activite_principale: referential(
+        'activite_principale',
+        code: latest_info_on_etablissement['activitePrincipaleEtablissement'],
+        nomenclature: latest_info_on_etablissement['nomenclatureActivitePrincipaleEtablissement']
+      ),
+
+      tranche_effectif_salarie: referential(
+        'tranche_effectif_salarie',
+        code: etablissement['trancheEffectifsEtablissement'],
+        date_reference: etablissement['anneeEffectifsEtablissement']
+      ),
+
+      diffusable_commercialement: yes_no_to_boolean(etablissement['statutDiffusionEtablissement']),
+      date_creation: date_to_timestamp(etablissement['dateCreationEtablissement']),
+      date_derniere_mise_a_jour: date_to_timestamp(etablissement['dateDernierTraitementEtablissement'])
+    }
+  end
+
+  private
+
+  def etablissement
+    @etablissement ||= json_body['etablissement']
+  end
+
+  def etablissement_address
+    @etablissement_address ||= etablissement['adresseEtablissement']
+  end
+
+  def latest_info_on_etablissement
+    @latest_info_on_etablissement ||= etablissement['periodesEtablissement'].find do |periode_etablissement|
+      periode_etablissement['dateFin'].nil?
+    end
+  end
+end

@@ -1,4 +1,4 @@
-class INSEE::Entreprise::BuildResource < BuildResource
+class INSEE::Entreprise::BuildResource < INSEE::BuildResource
   protected
 
   def resource_attributes
@@ -102,19 +102,5 @@ class INSEE::Entreprise::BuildResource < BuildResource
 
   def siren
     unite_legale['siren']
-  end
-
-  def referential(name, params)
-    SIADE::V2::Referentials.const_get(name.classify).new(params).as_json
-  end
-
-  def yes_no_to_boolean(value)
-    value && value == 'O'
-  end
-
-  def date_to_timestamp(value)
-    return if value.nil?
-
-    Date.parse(value).to_time.to_i
   end
 end
