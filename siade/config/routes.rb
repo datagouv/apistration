@@ -84,6 +84,8 @@ Rails.application.routes.draw do
     namespace :insee do
       get 'entreprises/:siren' => '/api/v3_and_more/insee/entreprises#show'
       get 'entreprises/diffusables/:siren' => '/api/v3_and_more/insee/entreprises_diffusables#show'
+
+      get 'etablissements/:siret' => '/api/v3_and_more/insee/etablissements#show'
     end
   end
 

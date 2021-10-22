@@ -259,7 +259,7 @@ insee:
         example: "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/30613890001294/adresse"
         description: "Lien vers la ressource adresse de l'établissement correspondant au siège social"
     meta:
-      date_derniere_mise_a_jour:
+      date_derniere_mise_a_jour: &insee_date_derniere_mise_a_jour
         type: 'integer'
         example: 1618396818
         description: "Date de la dernière mise à jour à l'INSEE"
@@ -280,6 +280,94 @@ insee:
         description: "Détermine si l'entreprise est une entreprise
           non-diffusible. Cette valeur est toujours à true. Si vous voulez pouvoir récupérer des entreprises
           non-diffusible, référez-vous à la documentation du endpoint /insee/entreprise/:siren"
+
+  etablissement:
+    title: "Données de référence d'un établissement"
+    description: "Obtenir des informations générales concernant un établissement du répertoire Sirene."
+    tags:
+      - "Informations générales"
+    attributes:
+      siege_social:
+        type: 'boolean'
+        example: true
+        enum:
+          - true
+          - false
+        description: "Indique si l'établissement est le siège social de l'entreprise"
+      etat_administratif:
+        type: 'string'
+        enum:
+          - 'A'
+          - 'F'
+        example: 'A'
+        description: "État administratif de l'établissement.
+          \n
+          \n
+          - A = Actif
+          \n
+          - F = Fermé"
+      activite_principale:
+        type: 'object'
+        properties:
+          code:
+            type: 'string'
+            example: '8411Z'
+            description: "Code de l'activité principale (APE) de l'établissement. Ce code est extrait de la nomenclature NAF. A noter qu'un établissement n'ayant pas encore de code APE peut se voir affecter la valeur 00.00Z de manière provisoire."
+          libelle:
+            type: 'string'
+            nullable: true
+            example: "Administration publique générale"
+            description: "Libellé associé au code APE. Si le code n'est pas renseigné dans la nomenclature 'Naf Rév2' (nomenclature en vigueur), le libellé n'est pas renseigné ici. Si le code ne correspond à aucun libellé au sein de la nomenclature 'Naf Rév2', la valeur 'non référencé' est utilisée.
+              \n
+              \n
+              Le lien vers la nomenclature 'Naf Rév2' : https://www.insee.fr/fr/information/2406147"
+          nomenclature:
+            type: 'string'
+            example: 'NAFRev2'
+            description: 'Nomenclature associée au code'
+      tranche_effectif_salarie:
+        type: 'object'
+        properties:
+          code:
+            type: 'string'
+            nullable: true
+            example: '51'
+          intitule:
+            type: 'string'
+            nullable: true
+            example: "2 000 à 4 999 salariés"
+          date_reference:
+            type: 'string'
+            nullable: true
+            example: '2016'
+          de:
+            type: 'integer'
+            example: 2000
+            nullable: true
+          a:
+            type: "integer"
+            example: 4999
+            nullable: true
+      diffusable_commercialement:
+        type: 'boolean'
+        example: true
+        enum:
+          - true
+          - false
+        description: "Détermine si l'établissemenr est un établissement diffusible commercialement."
+      date_creation:
+        type: 'integer'
+        example: 1634103818
+
+    links:
+      entreprise:
+        type: 'string'
+        example: 'https://entreprises.api.gouv.fr/api/v3/insee/entreprises/306138900'
+        description: "Lien vers la ressource entreprise correspondant à cet établissement"
+
+    meta:
+      date_derniere_mise_a_jour: *insee_date_derniere_mise_a_jour
+
 
 rnm:
   entreprise_artisanale:
