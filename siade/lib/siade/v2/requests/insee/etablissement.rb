@@ -60,16 +60,16 @@ class SIADE::V2::Requests::INSEE::Etablissement < SIADE::V2::Requests::Generic
   end
 
   def follow_redirect(moved_response)
-    extract_new_siret_from_location(moved_response['location'])
+    uri = URI(moved_response['location'])
 
-    if siret_valid?
-      recall_api_with_new_siret
-    else
-      super(moved_response)
+    @raw_response = Net::HTTP.start(uri.host, uri.port, net_http_options) do |http|
+      request = Net::HTTP::Get.new(uri)
+      set_headers(request)
+      http.read_timeout = 10
+      http.open_timeout = 10
+      http.request(request)
     end
 
-    uri = URI(moved_response['location'])
-    @raw_response = Net::HTTP.get_response(uri)
     @response = build_response
   end
 
@@ -89,13 +89,5 @@ class SIADE::V2::Requests::INSEE::Etablissement < SIADE::V2::Requests::Generic
 
   def filename
     Rails.root.join('config', 'insee_secrets.yml')
-  end
-
-  def recall_api_with_new_siret
-    call_api
-  end
-
-  def extract_new_siret_from_location(location)
-    @siret = location.match(/(\d{14})$/).to_s
   end
 end
