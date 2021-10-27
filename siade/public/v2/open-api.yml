@@ -48,7 +48,7 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
-      responses: &default_responses
+      responses:
         '200':
           description: 'OK'
           content:
@@ -99,7 +99,73 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
-      responses: *default_responses
+      responses: 
+          '200':
+            description: 'OK'
+            content:
+              application/json:
+                schema:
+                  properties:
+                    siren:
+                      type: 'string'
+                      description: "Siren de l'entreprise"
+                      example: '301123626'
+                    date_immatriculation:
+                      type: "string"
+                      format: "date"
+                      example: '1974-10-07'
+                      description: "Il s'agit du jour d'immatriculation de l'entreprise au RCS. À compter de cette date, les sociétés jouissent de la personnalité morale. Cette date d'immatriculation n'est pas la même que celle délivrée par l'INSEE. Elle ne correspond pas non plus à la date du début d'activité."
+                    date_immatriculation_timestamp:
+                      type: "integer"
+                      example: '150332400'
+                      description: "Date d'immatriculation au format timestamp UNIX"
+                    date_extrait:
+                      type: "string"
+                      example: "26 OCTOBRE 2021"
+                      description: "Date de mise à jour de l'extrait RCS"
+                    observations:
+                      type: array
+                      description: "Ce champ délivre tous les messages laissés par le greffier inscrits dans les observations."
+                      items:
+                        type: object
+                        properties:
+                          date:
+                            type: "string"
+                            format: "date"
+                            example: "1991-01-11"
+                            description: "Date de l'observation"
+                          date_timestamp:
+                            type: "integer"
+                            example: '663548400'
+                            description: "Date de l'observation au format timestamp UNIX"
+                          numero:
+                            type: "string"
+                            example: "2000"
+                            description: "Numéro de l'observation"
+                          libelle:
+                          type: "string"
+                          example: "CONTENU DE L'OBSERVATION NUMÉRO 2000"
+                          description: "Contenu de l'obersation"
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/entreprises_artisanales_cma/{siren}:
     get:
@@ -588,7 +654,6 @@ paths:
         '504':
           $ref: '#/components/responses/ProviderTimeout'
 
-
   /v2/associations/{association_id}:
     get:
       tags:
@@ -961,7 +1026,11 @@ paths:
         - *tag_api_complementaires
       summary: "[API Entreprise] Connaître les droits liés à un token"
       description: "<a href='https://entreprise.api.gouv.fr/doc/#api-privileges'>Documentation générale</a>"
-      responses: *default_responses
+      responses: &default_responses
+        '200':
+          description: OK
+          content:
+            application/json: {}
 
   /watchdoge/dashboard/current_status/:
     get:
