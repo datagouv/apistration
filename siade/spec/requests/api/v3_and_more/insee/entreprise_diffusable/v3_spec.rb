@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'INSEE: Entreprises diffusables', type: %i[request swagger] do
   path '/v3/insee/entreprises/diffusables/{siren}' do
-    get 'Récupération des informations d\'une entreprise qui peut être diffusée commercialement' do
-      tags 'Informations générales'
+    get SwaggerInformation.get('insee.entreprise_diffusable.title') do
+      tags(*SwaggerInformation.get('insee.entreprise_diffusable.tags'))
 
       common_action_attributes
 
@@ -20,6 +20,8 @@ RSpec.describe 'INSEE: Entreprises diffusables', type: %i[request swagger] do
       describe 'with valid mandatory params', valid: true do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: 'api_insee_fr/siren/active_GE_with_token' } do
           let(:siren) { sirens_insee_v3[:active_GE] }
+
+          description SwaggerInformation.get('insee.entreprise_diffusable.description')
 
           schema build_rswag_response(
             id: '130025265',

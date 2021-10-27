@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'PROBTP : Attestations cotisations retraite', type: %i[request swagger] do
   path '/v3/probtp/attestations_cotisation_retraite/{siret}' do
-    get 'Récupération d\'une attestation' do
-      tags 'Attestations sociales et fiscales'
+    get SwaggerInformation.get('probtp.attestation_cotisation_retraite.title') do
+      tags(*SwaggerInformation.get('probtp.attestation_cotisation_retraite.tags'))
 
       common_action_attributes
 
@@ -19,6 +19,8 @@ RSpec.describe 'PROBTP : Attestations cotisations retraite', type: %i[request sw
 
       describe 'with valid mandatory params', valid: true do
         response 200, 'Attestation found', vcr: { cassette_name: 'probtp/attestation/with_eligible_siret' } do
+          description SwaggerInformation.get('probtp.attestation_cotisation_retraite.description')
+
           schema build_rswag_document_response(
             id: eligible_siret(:probtp),
             document_url_properties: SwaggerInformation.get('probtp.attestation_cotisation_retraite.document_url_properties')

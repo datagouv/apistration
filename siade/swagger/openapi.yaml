@@ -6,7 +6,7 @@ info:
 paths:
   "/v3/acoss/attestations_sociales/{siren}":
     get:
-      summary: Récupération de l'attestation sociale d'une entreprise
+      summary: Attestation de vigilance
       tags:
       - Attestations sociales et fiscales
       parameters:
@@ -43,7 +43,9 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Le jeton ne possède pas les droits nécessaires
+      description: Obtenir l'attestation validant que l'entreprise s'acquitte de ses
+        obligations déclaratives et du paiement des cotisations et contributions sociales
+        auprès de l'URSSAF Caisse nationale (anciennement ACOSS).
       responses:
         '403':
           description: Accès interdit
@@ -90,7 +92,7 @@ paths:
                 "$ref": "#/components/schemas/NotFound"
   "/v3/insee/entreprises/{siren}":
     get:
-      summary: Récupération des informations d'une entreprise
+      summary: Données de références d'une entité
       tags:
       - Informations générales
       parameters:
@@ -127,7 +129,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Le jeton ne possède pas les droits nécessaires
+      description: Obtenir les informations de référence d'une entreprise, d'une administration
+        ou d'une association présente dans le répertoire Sirene.
       responses:
         '403':
           description: Accès interdit
@@ -431,8 +434,7 @@ paths:
                 "$ref": "#/components/schemas/NotFound"
   "/v3/insee/entreprises/diffusables/{siren}":
     get:
-      summary: Récupération des informations d'une entreprise qui peut être diffusée
-        commercialement
+      summary: Données de références d'une entité diffusable commercialement
       tags:
       - Informations générales
       parameters:
@@ -469,7 +471,9 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Le jeton ne possède pas les droits nécessaires
+      description: Obtenir les informations de référence d'une entreprise, d'une administration
+        ou d'une association présente dans le répertoire Sirene. Ce endpoint ne renvoi
+        que des entités diffusable commercialement.
       responses:
         '403':
           description: Accès interdit
@@ -775,7 +779,7 @@ paths:
                 "$ref": "#/components/schemas/NotFound"
   "/v3/mi/associations/{siret_or_rna}":
     get:
-      summary: Récupération d'une association
+      summary: Informations déclaratives d'une association
       tags:
       - Informations générales
       parameters:
@@ -812,7 +816,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Le jeton ne possède pas les droits nécessaires
+      description: Obtenir les informations déclarées par une association à la préfecture
+        et issues du Répertoire National des Associations (RNA).
       responses:
         '403':
           description: Accès interdit
@@ -965,7 +970,7 @@ paths:
                 "$ref": "#/components/schemas/UnprocessableEntity"
   "/v3/probtp/attestations_cotisation_retraite/{siret}":
     get:
-      summary: Récupération d'une attestation
+      summary: Cotisations retraite bâtiment
       tags:
       - Attestations sociales et fiscales
       parameters:
@@ -1002,7 +1007,9 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Le jeton ne possède pas les droits nécessaires
+      description: Savoir si une entreprise est à jour de ses cotisations retraite
+        à la Protection Sociale du Bâtiment et des Travaux publics (PROBTP) et obtenir
+        l’attestation de l’entreprise si celle-ci est éligible.
       responses:
         '403':
           description: Accès interdit
@@ -1048,7 +1055,7 @@ paths:
                 "$ref": "#/components/schemas/NotFound"
   "/v3/rnm/entreprises/{siren}":
     get:
-      summary: Récupération des informations d'une entreprise artisanale
+      summary: Données de référence d'une entreprise artisanale
       tags:
       - Informations générales
       parameters:
@@ -1085,7 +1092,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Le jeton ne possède pas les droits nécessaires
+      description: Obtenir les informations concernant une entité enregistrée au Répertoire
+        National des Métiers (RNM)
       responses:
         '403':
           description: Accès interdit

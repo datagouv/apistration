@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'MI : Associations', type: %i[request swagger] do
   path '/v3/mi/associations/{siret_or_rna}' do
-    get 'Récupération d\'une association' do
-      tags 'Informations générales'
+    get SwaggerInformation.get('mi.association.title') do
+      tags(*SwaggerInformation.get('mi.association.tags'))
 
       common_action_attributes
 
@@ -19,6 +19,8 @@ RSpec.describe 'MI : Associations', type: %i[request swagger] do
 
       describe 'with valid mandatory params', valid: true do
         response 200, 'Association found', vcr: { cassette_name: 'mi/associations/with_valid_rna' } do
+          description SwaggerInformation.get('mi.association.description')
+
           schema build_rswag_response(
             id: valid_rna_id,
             type: 'association',

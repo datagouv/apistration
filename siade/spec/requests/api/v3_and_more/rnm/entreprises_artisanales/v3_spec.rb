@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
   path '/v3/rnm/entreprises/{siren}' do
-    get 'Récupération des informations d\'une entreprise artisanale' do
-      tags 'Informations générales'
+    get SwaggerInformation.get('rnm.entreprise_artisanale.title') do
+      tags(*SwaggerInformation.get('rnm.entreprise_artisanale.tags'))
 
       common_action_attributes
 
@@ -19,6 +19,8 @@ RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Entreprise found', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
+          description SwaggerInformation.get('rnm.entreprise_artisanale.description')
+
           schema build_rswag_response(
             id: valid_siren(:rnm_cma),
             type: 'entreprise',
