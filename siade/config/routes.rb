@@ -87,6 +87,6 @@ Rails.application.routes.draw do
     end
   end
 
-  mount Rswag::Ui::Engine   => '/developers'
-  mount Rswag::Api::Engine  => '/'
+  mount Rswag::Ui::Engine   => '/v3/developers'
+  mount Rswag::Api::Engine  => '/v3'
 end
