@@ -72,9 +72,9 @@ paths:
                         properties:
                           document_url:
                             type: string
-                            description: Lien vers l'attestation de vigilance ACOSS.
-                              Ce document est automatiquement supprimé au bout de
-                              3 mois.
+                            title: Lien vers l'attestation de vigilance ACOSS
+                            description: Ce document est automatiquement supprimé
+                              au bout de 3 mois.
                             example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_vigilance_acoss.pdf
                         required:
                         - document_url
@@ -156,10 +156,11 @@ paths:
                         type: object
                         properties:
                           siret_siege_social:
+                            title: Siret du siège social
                             type: string
                             example: '13002526500013'
-                            description: Numéro de SIRET du siège social
                           type:
+                            title: Type de personne
                             type: string
                             enum:
                             - personne_physique
@@ -171,23 +172,26 @@ paths:
                               personne physique.'
                           personne_morale_attributs:
                             type: object
+                            title: Attributs de la personne morale
                             description: Attributs associé à la personne morale. L'ensemble
                               des valeurs sont à null pour les personnes physiques.
                             properties:
                               raison_sociale:
+                                title: Raison sociale de l'entreprise
                                 type: string
                                 example: DINUM
                                 nullable: true
-                                description: Raison sociale de l'entreprise
                             required:
                             - raison_sociale
                           personne_physique_attributs:
                             type: object
+                            title: Attributs de la personne physique
                             description: Attributs associé à la personne physique.
                               L'ensemble des valeurs sont à null pour les personnes
                               morales.
                             properties:
                               pseudonyme:
+                                title: Pseudonyme
                                 type: string
                                 example: DJ Falcon
                                 nullable: true
@@ -195,6 +199,7 @@ paths:
                                   personne utilise pour se désigner dans l'exercice
                                   de son activité, généralement littéraire ou artistique.
                               prenom_usuel:
+                                title: Prénom usuel
                                 type: string
                                 example: Jean
                                 nullable: true
@@ -204,37 +209,39 @@ paths:
                                   été donnés à sa naissance et qui sont inscrits à
                                   l'état civil.
                               prenom_1:
+                                title: Prénom numéro 1 déclaré
                                 type: string
                                 example: Jean
                                 nullable: true
-                                description: Prénom numéro 1 déclaré
                               prenom_2:
+                                title: Prénom numéro 2 déclaré
                                 type: string
                                 example: Jacques
                                 nullable: true
-                                description: Prénom numéro 2 déclaré
                               prenom_3:
+                                title: Prénom numéro 3 déclaré
                                 type: string
                                 example: Pierre
                                 nullable: true
-                                description: Prénom numéro 3 déclaré
                               prenom_4:
+                                title: Prénom numéro 4 déclaré
                                 type: string
                                 example: Paul
                                 nullable: true
-                                description: Prénom numéro 4 déclaré
                               nom_usage:
+                                title: Nom d'usage
                                 type: string
                                 example: Dupont
                                 nullable: true
                                 description: Nom que la personne physique a choisi
                                   d'utiliser
                               nom_naissance:
+                                title: Nom de naissance
                                 type: string
                                 example: Dubois
                                 nullable: true
-                                description: Nom de naissance
                               sexe:
+                                title: Genre
                                 type: string
                                 example: M
                                 enum:
@@ -256,6 +263,7 @@ paths:
                             - nom_naissance
                             - sexe
                           categorie_entreprise:
+                            title: Catégorie de l'entreprise
                             type: string
                             example: GE
                             enum:
@@ -263,26 +271,27 @@ paths:
                             - ETI
                             - PME
                             -
-                            description: "Catégorie de l'entreprise. Il s'agit d'une
-                              variable statistique calculée par l'INSEE. Elle ne peut
-                              prendre que 3 valeurs: \n \n - GE: Grande Entreprise\n
-                              - ETI: Entreprise de Taille Intermédiaire\n - PME: Petite
-                              ou Moyenne Entreprise\n \n \n Celle-ci peut-être nulle
-                              dans certains cas : il s’agit soit d’une unité légale
-                              nouvellement créée, soit d’une unité légale cessée,
-                              soit d’une unité légale hors champ du calcul de la catégorie
-                              (unité légale agricole ou ne faisant pas partie du système
-                              productif) \n \n La définition peut-être trouvée sur
-                              le lien suivant : https://www.insee.fr/fr/metadonnees/definition/c1057"
+                            description: "Il s'agit d'une variable statistique calculée
+                              par l'INSEE. Elle ne peut prendre que 3 valeurs: \n
+                              \n - GE: Grande Entreprise \n - ETI: Entreprise de Taille
+                              Intermédiaire \n - PME: Petite ou Moyenne Entreprise
+                              \n \n Celle-ci peut-être nulle dans certains cas : il
+                              s’agit soit d’une unité légale nouvellement créée, soit
+                              d’une unité légale cessée, soit d’une unité légale hors
+                              champ du calcul de la catégorie (unité légale agricole
+                              ou ne faisant pas partie du système productif) \n \n
+                              La définition peut-être trouvée sur le lien suivant
+                              : https://www.insee.fr/fr/metadonnees/definition/c1057"
                           numero_tva_intracommunautaire:
+                            title: Numéro de TVA intracommunautaire
                             type: string
                             example: FR07130025265
-                            description: 'Numéro de TVA intracommunautaire. Cette
-                              valeur est calculée à l''aide du numéro de siren, cette
-                              donnée est donc théorique: une entreprise dont le siège
-                              social se trouve à l''étranger n''a probablement pas
-                              de numéro de TVA français.'
+                            description: 'Cette valeur est calculée à l''aide du numéro
+                              de siren, cette donnée est donc théorique: une entreprise
+                              dont le siège social se trouve à l''étranger n''a probablement
+                              pas de numéro de TVA français.'
                           diffusable_commercialement:
+                            title: Diffusable commercialement
                             type: boolean
                             example: true
                             description: Détermine si l'entreprise est une entreprise
@@ -291,54 +300,60 @@ paths:
                               au grand public.
                           forme_juridique:
                             type: object
+                            title: Attributs de la forme juridique
                             properties:
                               code:
+                                title: Code de la forme juridique de l'entreprise.
                                 type: string
                                 example: '7120'
-                                description: "Code de la forme juridique de l'entreprise.
-                                  Cette variable est à 1000 pour les personnes physiques.
-                                  \n \n La liste complète se trouve ici: https://www.insee.fr/fr/information/2028129"
+                                description: "Cette variable est à 1000 pour les personnes
+                                  physiques. \n \n La liste complète se trouve ici:
+                                  https://www.insee.fr/fr/information/2028129"
                               libelle:
+                                title: Libellé associé au code de la forme juridique
+                                  de l'entreprise.
                                 type: string
-                                example: 'Service central d''un ministère description:
-                                  Libellé associé au code de la forme juridique de
-                                  l''entreprise. Si le code ne correspond à aucun
-                                  libellé la valeur ''non référencé'' est utilisée.'
+                                example: Service central d'un ministère
+                                description: Si le code ne correspond à aucun libellé
+                                  la valeur 'non référencé' est utilisée.
                             required:
                             - code
                             - libelle
                           activite_principale:
+                            title: Attributs de l'activité principale
                             type: object
                             properties:
                               code:
+                                title: Code de l'activité principale (APE) de l'entreprise
                                 type: string
                                 example: 8411Z
-                                description: Code de l'activité principale (APE) de
-                                  l'entreprise. Ce code est extrait de la nomenclature
+                                description: Ce code est extrait de la nomenclature
                                   NAF. A noter qu'une entreprise n'ayant pas encore
                                   de code APE peut se voir affecter la valeur 00.00Z
                                   de manière provisoire.
                               libelle:
+                                title: Libellé associé au code APE
                                 type: string
                                 nullable: true
                                 example: Administration publique générale
-                                description: "Libellé associé au code APE. Si le code
-                                  n'est pas renseigné dans la nomenclature 'Naf Rév2'
-                                  (nomenclature en vigueur), le libellé n'est pas
-                                  renseigné ici. Si le code ne correspond à aucun
-                                  libellé au sein de la nomenclature 'Naf Rév2', la
-                                  valeur 'non référencé' est utilisée. \n \n Le lien
-                                  vers la nomenclature 'Naf Rév2' : https://www.insee.fr/fr/information/2406147"
+                                description: "Si le code n'est pas renseigné dans
+                                  la nomenclature 'Naf Rév2' (nomenclature en vigueur),
+                                  le libellé n'est pas renseigné ici. Si le code ne
+                                  correspond à aucun libellé au sein de la nomenclature
+                                  'Naf Rév2', la valeur 'non référencé' est utilisée.
+                                  \n \n Le lien vers la nomenclature 'Naf Rév2' :
+                                  https://www.insee.fr/fr/information/2406147"
                               nomenclature:
+                                title: Nomenclature associée au code
                                 type: string
                                 example: NAFRev2
-                                description: Nomenclature associée au code
                             required:
                             - code
                             - libelle
                             - nomenclature
                           tranche_effectif_salarie:
                             type: object
+                            title: Attributs de la tranche d'effectif salarié
                             properties:
                               code:
                                 type: string
@@ -367,18 +382,24 @@ paths:
                             - de
                             - a
                           etat_administratif:
+                            title: État administratif de l'entreprise
                             type: string
                             enum:
                             - A
                             - C
                             example: A
+                            description: " - A = Active \n - C = Cessée "
                           date_cessation:
+                            title: Date de cessation de l'entreprise
                             type: integer
                             nullable: true
                             example: 1634133818
+                            description: Cette valeur est renvoyée sous format timestamp
                           date_creation:
+                            title: Date de cessation de l'entreprise
                             type: integer
                             example: 1634103818
+                            description: Cette valeur est renvoyée sous format timestamp
                         required:
                         - siret_siege_social
                         - type
@@ -499,10 +520,11 @@ paths:
                         type: object
                         properties:
                           siret_siege_social:
+                            title: Siret du siège social
                             type: string
                             example: '13002526500013'
-                            description: Numéro de SIRET du siège social
                           type:
+                            title: Type de personne
                             type: string
                             enum:
                             - personne_physique
@@ -514,23 +536,26 @@ paths:
                               personne physique.'
                           personne_morale_attributs:
                             type: object
+                            title: Attributs de la personne morale
                             description: Attributs associé à la personne morale. L'ensemble
                               des valeurs sont à null pour les personnes physiques.
                             properties:
                               raison_sociale:
+                                title: Raison sociale de l'entreprise
                                 type: string
                                 example: DINUM
                                 nullable: true
-                                description: Raison sociale de l'entreprise
                             required:
                             - raison_sociale
                           personne_physique_attributs:
                             type: object
+                            title: Attributs de la personne physique
                             description: Attributs associé à la personne physique.
                               L'ensemble des valeurs sont à null pour les personnes
                               morales.
                             properties:
                               pseudonyme:
+                                title: Pseudonyme
                                 type: string
                                 example: DJ Falcon
                                 nullable: true
@@ -538,6 +563,7 @@ paths:
                                   personne utilise pour se désigner dans l'exercice
                                   de son activité, généralement littéraire ou artistique.
                               prenom_usuel:
+                                title: Prénom usuel
                                 type: string
                                 example: Jean
                                 nullable: true
@@ -547,37 +573,39 @@ paths:
                                   été donnés à sa naissance et qui sont inscrits à
                                   l'état civil.
                               prenom_1:
+                                title: Prénom numéro 1 déclaré
                                 type: string
                                 example: Jean
                                 nullable: true
-                                description: Prénom numéro 1 déclaré
                               prenom_2:
+                                title: Prénom numéro 2 déclaré
                                 type: string
                                 example: Jacques
                                 nullable: true
-                                description: Prénom numéro 2 déclaré
                               prenom_3:
+                                title: Prénom numéro 3 déclaré
                                 type: string
                                 example: Pierre
                                 nullable: true
-                                description: Prénom numéro 3 déclaré
                               prenom_4:
+                                title: Prénom numéro 4 déclaré
                                 type: string
                                 example: Paul
                                 nullable: true
-                                description: Prénom numéro 4 déclaré
                               nom_usage:
+                                title: Nom d'usage
                                 type: string
                                 example: Dupont
                                 nullable: true
                                 description: Nom que la personne physique a choisi
                                   d'utiliser
                               nom_naissance:
+                                title: Nom de naissance
                                 type: string
                                 example: Dubois
                                 nullable: true
-                                description: Nom de naissance
                               sexe:
+                                title: Genre
                                 type: string
                                 example: M
                                 enum:
@@ -599,6 +627,7 @@ paths:
                             - nom_naissance
                             - sexe
                           categorie_entreprise:
+                            title: Catégorie de l'entreprise
                             type: string
                             example: GE
                             enum:
@@ -606,26 +635,27 @@ paths:
                             - ETI
                             - PME
                             -
-                            description: "Catégorie de l'entreprise. Il s'agit d'une
-                              variable statistique calculée par l'INSEE. Elle ne peut
-                              prendre que 3 valeurs: \n \n - GE: Grande Entreprise\n
-                              - ETI: Entreprise de Taille Intermédiaire\n - PME: Petite
-                              ou Moyenne Entreprise\n \n \n Celle-ci peut-être nulle
-                              dans certains cas : il s’agit soit d’une unité légale
-                              nouvellement créée, soit d’une unité légale cessée,
-                              soit d’une unité légale hors champ du calcul de la catégorie
-                              (unité légale agricole ou ne faisant pas partie du système
-                              productif) \n \n La définition peut-être trouvée sur
-                              le lien suivant : https://www.insee.fr/fr/metadonnees/definition/c1057"
+                            description: "Il s'agit d'une variable statistique calculée
+                              par l'INSEE. Elle ne peut prendre que 3 valeurs: \n
+                              \n - GE: Grande Entreprise \n - ETI: Entreprise de Taille
+                              Intermédiaire \n - PME: Petite ou Moyenne Entreprise
+                              \n \n Celle-ci peut-être nulle dans certains cas : il
+                              s’agit soit d’une unité légale nouvellement créée, soit
+                              d’une unité légale cessée, soit d’une unité légale hors
+                              champ du calcul de la catégorie (unité légale agricole
+                              ou ne faisant pas partie du système productif) \n \n
+                              La définition peut-être trouvée sur le lien suivant
+                              : https://www.insee.fr/fr/metadonnees/definition/c1057"
                           numero_tva_intracommunautaire:
+                            title: Numéro de TVA intracommunautaire
                             type: string
                             example: FR07130025265
-                            description: 'Numéro de TVA intracommunautaire. Cette
-                              valeur est calculée à l''aide du numéro de siren, cette
-                              donnée est donc théorique: une entreprise dont le siège
-                              social se trouve à l''étranger n''a probablement pas
-                              de numéro de TVA français.'
+                            description: 'Cette valeur est calculée à l''aide du numéro
+                              de siren, cette donnée est donc théorique: une entreprise
+                              dont le siège social se trouve à l''étranger n''a probablement
+                              pas de numéro de TVA français.'
                           diffusable_commercialement:
+                            title: Diffusable commercialement
                             type: boolean
                             example: true
                             enum:
@@ -636,54 +666,60 @@ paths:
                               référez-vous à la documentation du endpoint /insee/entreprise/:siren
                           forme_juridique:
                             type: object
+                            title: Attributs de la forme juridique
                             properties:
                               code:
+                                title: Code de la forme juridique de l'entreprise.
                                 type: string
                                 example: '7120'
-                                description: "Code de la forme juridique de l'entreprise.
-                                  Cette variable est à 1000 pour les personnes physiques.
-                                  \n \n La liste complète se trouve ici: https://www.insee.fr/fr/information/2028129"
+                                description: "Cette variable est à 1000 pour les personnes
+                                  physiques. \n \n La liste complète se trouve ici:
+                                  https://www.insee.fr/fr/information/2028129"
                               libelle:
+                                title: Libellé associé au code de la forme juridique
+                                  de l'entreprise.
                                 type: string
-                                example: 'Service central d''un ministère description:
-                                  Libellé associé au code de la forme juridique de
-                                  l''entreprise. Si le code ne correspond à aucun
-                                  libellé la valeur ''non référencé'' est utilisée.'
+                                example: Service central d'un ministère
+                                description: Si le code ne correspond à aucun libellé
+                                  la valeur 'non référencé' est utilisée.
                             required:
                             - code
                             - libelle
                           activite_principale:
+                            title: Attributs de l'activité principale
                             type: object
                             properties:
                               code:
+                                title: Code de l'activité principale (APE) de l'entreprise
                                 type: string
                                 example: 8411Z
-                                description: Code de l'activité principale (APE) de
-                                  l'entreprise. Ce code est extrait de la nomenclature
+                                description: Ce code est extrait de la nomenclature
                                   NAF. A noter qu'une entreprise n'ayant pas encore
                                   de code APE peut se voir affecter la valeur 00.00Z
                                   de manière provisoire.
                               libelle:
+                                title: Libellé associé au code APE
                                 type: string
                                 nullable: true
                                 example: Administration publique générale
-                                description: "Libellé associé au code APE. Si le code
-                                  n'est pas renseigné dans la nomenclature 'Naf Rév2'
-                                  (nomenclature en vigueur), le libellé n'est pas
-                                  renseigné ici. Si le code ne correspond à aucun
-                                  libellé au sein de la nomenclature 'Naf Rév2', la
-                                  valeur 'non référencé' est utilisée. \n \n Le lien
-                                  vers la nomenclature 'Naf Rév2' : https://www.insee.fr/fr/information/2406147"
+                                description: "Si le code n'est pas renseigné dans
+                                  la nomenclature 'Naf Rév2' (nomenclature en vigueur),
+                                  le libellé n'est pas renseigné ici. Si le code ne
+                                  correspond à aucun libellé au sein de la nomenclature
+                                  'Naf Rév2', la valeur 'non référencé' est utilisée.
+                                  \n \n Le lien vers la nomenclature 'Naf Rév2' :
+                                  https://www.insee.fr/fr/information/2406147"
                               nomenclature:
+                                title: Nomenclature associée au code
                                 type: string
                                 example: NAFRev2
-                                description: Nomenclature associée au code
                             required:
                             - code
                             - libelle
                             - nomenclature
                           tranche_effectif_salarie:
                             type: object
+                            title: Attributs de la tranche d'effectif salarié
                             properties:
                               code:
                                 type: string
@@ -712,18 +748,24 @@ paths:
                             - de
                             - a
                           etat_administratif:
+                            title: État administratif de l'entreprise
                             type: string
                             enum:
                             - A
                             - C
                             example: A
+                            description: " - A = Active \n - C = Cessée "
                           date_cessation:
+                            title: Date de cessation de l'entreprise
                             type: integer
                             nullable: true
                             example: 1634133818
+                            description: Cette valeur est renvoyée sous format timestamp
                           date_creation:
+                            title: Date de cessation de l'entreprise
                             type: integer
                             example: 1634103818
+                            description: Cette valeur est renvoyée sous format timestamp
                         required:
                         - siret_siege_social
                         - type
@@ -1036,8 +1078,10 @@ paths:
                         properties:
                           document_url:
                             type: string
-                            description: Lien vers l'attestation ProBtp. Ce document
-                              est automatiquement supprimé au bout de 3 mois.
+                            title: Lien vers l'attestation de cotisation retraite
+                              ProBTP
+                            description: Ce document est automatiquement supprimé
+                              au bout de 3 mois.
                             example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf
                         required:
                         - document_url
