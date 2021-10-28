@@ -1636,6 +1636,16 @@ components:
       schema:
         type: string
         pattern: '^\d{9}$'
+      examples:
+        siren_octo_technology:
+          value: "418166096"
+          summary: SIREN Octo Technology
+        siren_non_diffusible:
+          value: "005572466"
+          summary: SIREN entreprise non diffusible
+        siren_artisant:
+          value: "301123626"
+          summary: SIREN entreprise artisanale
 
     Siret:
       in: path
@@ -1645,6 +1655,13 @@ components:
       schema:
         type: string
         pattern: '^\d{14}$'
+      examples:
+        siret_octo_technology:
+          value: "41816609600069"
+          summary: SIRET Octo Technology
+        siret_non_diffusible:
+          value: "00557246600026"
+          summary: SIRET établissement non diffusible
 
     AssociationId:
       in: path
@@ -1653,6 +1670,13 @@ components:
       required: true
       schema:
         type: string
+      examples:
+        openstreetmap_france:
+          value: W751212517
+          summary: ID RNA Openstreetmap France
+        croix_rouge:
+          value: "77567227221138"
+          summary: SIRET de la Croix-Rouge France
 
     SiretOrEORI:
       in: path
