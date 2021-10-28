@@ -52,7 +52,311 @@ paths:
         '200':
           description: 'OK'
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entreprise:
+                    type: "object"
+                    description: "Données générales"
+                    properties:
+                      capital_social:
+                        type: "integer"
+                        description: "Capital sociale de l'entreprise - source Infogreffe"
+                        example: 10000
+                      categorie_entreprise:
+                        type: 'string'
+                        description: "Trois modalités possibles : 'PME', petite ou moyenne entreprise, dont les micros entreprises ; 'ETI' entreprise de taille intermédiaire ; ou 'GE', grande entreprise. Cette variable est calculée par l'INSEE, selon la méthode explicitée à l'adresse https://www.insee.fr/fr/information/1730869"
+                        example: "PME"
+                      code_effectif_entreprise:
+                        type: "string"
+                        description: "Le code effectif correspond à une fourchette de nombre de salariés, celle-ci est indiquée un peu plus loin au champ 'tranche_effectif_salarie_entreprise'. Ce code respecte la nomenclature de l'INSEE disponible à cette adresse : http://www.sirene.fr/sirene/public/variable/tefen"
+                        example: "31"
+                      date_creation:
+                        type: "integer"
+                        description: "Date au format timestamp UNIX."
+                        example: 1558303200
+                      date_radiation:
+                        type: "integer"
+                        description: "Indique null si l’entreprise n’est pas radiée du registre. Dans le cas contraire, la date est fournie au format timestamp UNIX 000000000"
+                        example: "null"
+                      enseigne:
+                        description: "Enseigne de l'entreprise - source Infogreffe"
+                        example: "JK AC"
+                        type: "string"
+                      etat_administratif:
+                        type: "object"
+                        description: "L’état administratif est l’état juridique de l’entreprise (source INSEE)"
+                        properties:
+                          date_cessation:
+                            type: "integer"
+                            description: "Indique 'null' quand l'entreprise est jurdiquement active. Quand 'value = C', un timestamp (un entier) est renvoyé"
+                            example: "null"
+                          value:
+                            type: "string"
+                            description: "Indique si l'entreprise est juridiquement active, par 'A'. Ou si elle est jurdiquement cessée, par 'C'. Dans certains cas exceptionnels, l'état peut être 'null'. Par exemple, lorsqu'une entité vient de créer son SIREN, mais qu'elle n'a pas encore débuté son activité"
+                            example: "A"
+                      forme_juridique:
+                        description: "Issus de la nomenclature des catégories juridiques de l’INSEE"
+                        example: "Société à responsabilité limitée (sans autre indication)"
+                        type: "string"
+                      forme_juridique_code:
+                        description: "Issus de la nomenclature des catégories juridiques de l’INSEE. Pour les personnes physique, cette variable est à 1000."
+                        example: "5499"
+                        type: "string"
+                      libelle_naf_entreprise:
+                        description: "Issu de la nomenclature d’activités française de l’INSEE."
+                        example: "Conseil pour les affaires et autres conseils de gestion"
+                        type: "string"
+                      mandataires_sociaux:
+                        type: "array"
+                        description: "Il y a deux types de mandataires sociaux, les personnes physiques et les personnes morales"
+                        items:
+                          type: object
+                          properties:
+                            date_naissance:
+                              description: "ce champ concerne les personnes physiques"
+                              example: '1958-03-25'
+                              type: "string"
+                              format: "date"
+                            date_naissance_timestamp:
+                              description: "ce champ concerne les personnes physiques (au format UNIX)"
+                              example: 371523600
+                              type: "integer"
+                            dirigeant:
+                              description: "Toujours 'true'"
+                              example: true
+                              type: boolean
+                            fonction:
+                              description: "Fonction du dirigeant"
+                              example: "GERANT"
+                              type: "string"
+                            identifiant:
+                              description: "Cet élément de 7 à 9 chiffres est facultatif et peut être vide"
+                              example: "490092574"
+                              type: "string"
+                            nom:
+                              description: "ce champ concerne les personnes physiques"
+                              example: JAKUBOWSKI
+                              type: "string"
+                            prenom:
+                              description: "ce champ concerne les personnes physiques"
+                              example: BRIGITTE, MYRIAM
+                              type: "string"
+                            raison_sociale:
+                              description: "ce champ concerne les personnes morales"
+                              example: null
+                              type: "string"
+                            type:
+                              description: "PM pour les personnes morales et PP pour les personnes physiques"
+                              example: PP
+                              type: "string"
+                      naf_entreprise:
+                        description: "Issu de la nomenclature d’activités française de l’INSEE"
+                        example: 7022Z
+                        type: "string"
+                      nom:
+                        description: "Ce champ concerne les personnes physiques"
+                        example: null
+                        type: "string"
+                      nom_commercial:
+                        description: "Ce champ concerne les personnes morales (source Infogreffe)"
+                        example: ""
+                        type: "string"
+                      numero_tva_intracommunautaire:
+                        description: "Également appelé numéro d’identification fiscale NIF. Ce numéro est calculé par API Entreprise selon la règle officielle, cette donnée est donc théorique. Dans le cas où l’établissement siège est à l’étranger, la valeur renvoit 'null'. En effet, dans ce cas le numéro de TVA est problablement calculé par le pays où se situe l'établissement siège et non par la France. La seule source fiable est alors l'entreprise elle-même"
+                        example: FR89851265074
+                        type: "string"
+                      prenom:
+                        description: "Ce champ concerne les personnes physiques"
+                        example: null
+                        type: "string"
+                      procedure_collective:
+                        description: "Toujours indiqué comme 'false', et à ignorer. Ce champ sera bientôt supprimé"
+                        example: false
+                        type: boolean
+                      raison_sociale:
+                        description: "raison sociale de l'entreprise"
+                        example: JK ASSOCIATES CONSULTING
+                        type: "string"
+                      siren:
+                        description: "siren de l'entreprise"
+                        example: '851265074'
+                        type: "string"
+                      siret_siege_social:
+                        description: "siret du siège sociale de l'entreprise"
+                        example: '85126507400019'
+                        type: "string"
+                      tranche_effectif_salarie_entreprise:
+                        description: "Les champs suivants indiquent en détail l'effectif de salariés de l'entreprise"
+                        properties:
+                          a:
+                            example: "249"
+                            type: "string"
+                          code:
+                            example: "31"
+                            type: "string"
+                          date_reference:
+                            example: "2014"
+                            type: "string"
+                          de:
+                            example: "200"
+                            type: "string"
+                          intitule:
+                            example: "200 à 249 salariés"
+                            type: "string"
+                  etablissement_siege:
+                    type: object
+                    properties:
+                      adresse:
+                        description: "Depuis 2018, l'INSEE ne fournit plus d'adresse au format RNVP, nous opérons donc une reconstruction de l'adresse à partir des champs disponibles dans leur nouvelle API ; cette reconstruction n'est en aucun cas un traitement RNVP : Des différences minimes résultant de l'arrêt du RNVP peuvent être constatées"
+                        properties:
+                          cedex:
+                            example: null
+                            type: "string"
+                          code_insee_localite:
+                            example: "75108"
+                            type: "string"
+                          code_postal:
+                            example: "75008"
+                            type: "string"
+                          complement_adresse:
+                            example: null
+                            type: "string"
+                          l1:
+                            description: "Raison sociale, ou civilité + prénom + nom"
+                            example: JK ASSOCIATES CONSULTING
+                            type: "string"
+                          l2:
+                            description: "Raisons sociales usuelles"
+                            example: null
+                            type: "string"
+                          l3:
+                            description: "Complément d'adresse"
+                            example: null
+                            type: "string"
+                          l4:
+                            description: "Numéro de voie +  indice de répétition + type de voie + libellé voie"
+                            example: "57 RUE D'AMSTERDAM"
+                            type: "string"
+                          l5:
+                            description: "Distribution spéciale"
+                            example: null
+                            type: "string"
+                          l6:
+                            description: "Code cedex + code cedex ou code postal + libellé commune ou libellé commune à l'étranger."
+                            example: "75008 PARIS 8"
+                            type: "string"
+                          l7:
+                            description: "Pays"
+                            example: FRANCE
+                            type: "string"
+                          localite:
+                            example: "PARIS 8"
+                            type: "string"
+                          nom_voie:
+                            example: "D'AMSTERDAM"
+                            type: "string"
+                          numero_voie:
+                            example: "57"
+                            type: "string"
+                          type_voie:
+                            example: RUE
+                            type: "string"
+                        type: object
+                      commune_implantation:
+                        type: object
+                        properties:
+                          code:
+                            example: '75108'
+                            type: "string"
+                          value:
+                            example: "Paris 8e Arrondissement"
+                            type: "string"
+                      date_creation_etablissement:
+                        description: "Format timestamp UNIX"
+                        example: 1558303200
+                        type: integer
+                      date_mise_a_jour:
+                        description: "Format timestamp UNIX"
+                        example: 1560929613
+                        type: integer
+                      diffusable_commercialement:
+                        description: "true si l'entreprise a demandé à être non diffusable (autoentrepreneur)"
+                        example: true
+                        type: boolean
+                      enseigne:
+                        description: "Enseigne commerciale (source Infogreffe)"
+                        example: null
+                        type: "string"
+                      etat_administratif:
+                        type: object
+                        description: Lors de son inscription au répertoire, un établissement est, sauf exception, à l’état ouvert. Le passage à l’état fermé découle de la prise en compte d’une déclaration de fermeture.
+                        properties:
+                          date_fermeture:
+                            description:  Indique "null" quand le champ précédent est "A" (actif), et renvoit un entier au format timestamp si le champ précédent est "F"
+                            example: 1315173600
+                            type: 'integer'
+                          value:
+                            description: Lorsqu'un établissement est ouvert, la valeur indiquée est "A" (actif). S'il est fermé, l'endpoint renverra "F"(fermé)
+                            example: F
+                            type: "string"
+                      libelle_naf:
+                        description: Issu de la nomenclature d’activités française de l’INSEE
+                        example: Conseil pour les affaires et autres conseils de gestion
+                        type: "string"
+                      naf:
+                        description: Issu de la nomenclature d’activités française de l’INSEE
+                        example: 7022Z
+                        type: "string"
+                      pays_implantation:
+                        type: object
+                        properties:
+                          code:
+                            example: FR
+                            type: "string"
+                          value:
+                            example: FRANCE
+                            type: "string"
+                      region_implantation:
+                        type: object
+                        properties:
+                          code:
+                            example: '11'
+                            type: "string"
+                          value:
+                            example: Île-de-France
+                            type: "string"
+                      siege_social:
+                        description: Indique si l'établissement est le siège social (toujours à true par définition)
+                        example: true
+                        type: boolean
+                      siret:
+                        example: '85126507400019'
+                        type: "string"
+                      tranche_effectif_salarie_etablissement:
+                        description: "Les champs suivants indiquent en détail l'effectif de salariés de l'entreprise"
+                        properties:
+                          a:
+                            example: "249"
+                            type: "string"
+                          code:
+                            example: "31"
+                            type: "string"
+                          date_reference:
+                            example: "2014"
+                            type: "string"
+                          de:
+                            example: "200"
+                            type: "string"
+                          intitule:
+                            example: "200 à 249 salariés"
+                            type: "string"
+                        type: object
+                  gateway_error:
+                    description: "Indique si un des deux fournisseurs de données n'a pas fonctionné : INSEE ou Infogreffe."
+                    example: false
+                    type: boolean
         '206':
           $ref: '#/components/responses/Incomplete'
         '400':
@@ -99,7 +403,7 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
-      responses: 
+      responses:
           '200':
             description: 'OK'
             content:
