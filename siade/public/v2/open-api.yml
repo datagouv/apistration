@@ -390,7 +390,187 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
-      responses: *default_responses
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                properties:
+                  etablissement:
+                    type: object
+                    properties:
+                      adresse:
+                        description: "Depuis 2018, l'INSEE ne fournit plus d'adresse au format RNVP, nous opérons donc une reconstruction de l'adresse à partir des champs disponibles dans leur nouvelle API ; cette reconstruction n'est en aucun cas un traitement RNVP : Des différences minimes résultant de l'arrêt du RNVP peuvent être constatées"
+                        properties:
+                          cedex:
+                            example: null
+                            type: "string"
+                          code_insee_localite:
+                            example: "75108"
+                            type: "string"
+                          code_postal:
+                            example: "75008"
+                            type: "string"
+                          complement_adresse:
+                            example: null
+                            type: "string"
+                          l1:
+                            description: "Raison sociale, ou civilité + prénom + nom"
+                            example: JK ASSOCIATES CONSULTING
+                            type: "string"
+                          l2:
+                            description: "Raisons sociales usuelles"
+                            example: null
+                            type: "string"
+                          l3:
+                            description: "Complément d'adresse"
+                            example: null
+                            type: "string"
+                          l4:
+                            description: "Numéro de voie +  indice de répétition + type de voie + libellé voie"
+                            example: "57 RUE D'AMSTERDAM"
+                            type: "string"
+                          l5:
+                            description: "Distribution spéciale"
+                            example: null
+                            type: "string"
+                          l6:
+                            description: "Code cedex + code cedex ou code postal + libellé commune ou libellé commune à l'étranger."
+                            example: "75008 PARIS 8"
+                            type: "string"
+                          l7:
+                            description: "Pays"
+                            example: FRANCE
+                            type: "string"
+                          localite:
+                            example: "PARIS 8"
+                            type: "string"
+                          nom_voie:
+                            example: "D'AMSTERDAM"
+                            type: "string"
+                          numero_voie:
+                            example: "57"
+                            type: "string"
+                          type_voie:
+                            example: RUE
+                            type: "string"
+                        type: object
+                      commune_implantation:
+                        type: object
+                        properties:
+                          code:
+                            example: '75108'
+                            type: "string"
+                          value:
+                            example: "Paris 8e Arrondissement"
+                            type: "string"
+                      date_creation_etablissement:
+                        description: "Format timestamp UNIX"
+                        example: 1558303200
+                        type: integer
+                      date_mise_a_jour:
+                        description: "Format timestamp UNIX"
+                        example: 1560929613
+                        type: integer
+                      diffusable_commercialement:
+                        description: "true si l'entreprise a demandé à être non diffusable (autoentrepreneur)"
+                        example: true
+                        type: boolean
+                      enseigne:
+                        description: "Enseigne commerciale (source Infogreffe)"
+                        example: null
+                        type: "string"
+                      etat_administratif:
+                        type: object
+                        description: Lors de son inscription au répertoire, un établissement est, sauf exception, à l’état ouvert. Le passage à l’état fermé découle de la prise en compte d’une déclaration de fermeture.
+                        properties:
+                          date_fermeture:
+                            description:  Indique "null" quand le champ précédent est "A" (actif), et renvoit un entier au format timestamp si le champ précédent est "F"
+                            example: 1315173600
+                            type: 'integer'
+                          value:
+                            description: Lorsqu'un établissement est ouvert, la valeur indiquée est "A" (actif). S'il est fermé, l'endpoint renverra "F"(fermé)
+                            example: F
+                            type: "string"
+                      libelle_naf:
+                        description: Issu de la nomenclature d’activités française de l’INSEE
+                        example: Conseil pour les affaires et autres conseils de gestion
+                        type: "string"
+                      naf:
+                        description: Issu de la nomenclature d’activités française de l’INSEE
+                        example: 7022Z
+                        type: "string"
+                      pays_implantation:
+                        type: object
+                        properties:
+                          code:
+                            example: FR
+                            type: "string"
+                          value:
+                            example: FRANCE
+                            type: "string"
+                      region_implantation:
+                        type: object
+                        properties:
+                          code:
+                            example: '11'
+                            type: "string"
+                          value:
+                            example: Île-de-France
+                            type: "string"
+                      siege_social:
+                        description: Indique si l'établissement est le siège social (toujours à true par définition)
+                        example: true
+                        type: boolean
+                      siret:
+                        example: '85126507400019'
+                        type: "string"
+                      tranche_effectif_salarie_etablissement:
+                        description: "Les champs suivants indiquent en détail l'effectif de salariés de l'entreprise"
+                        properties:
+                          a:
+                            example: "249"
+                            type: "string"
+                          code:
+                            example: "31"
+                            type: "string"
+                          date_reference:
+                            example: "2014"
+                            type: "string"
+                          de:
+                            example: "200"
+                            type: "string"
+                          intitule:
+                            example: "200 à 249 salariés"
+                            type: "string"
+                        type: object
+                  gateway_error:
+                    description: An explanation about the purpose of this instance.
+                    examples:
+                      - false
+                    type: boolean
+                type: object
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/extraits_rcs_infogreffe/{siren}:
     get:
