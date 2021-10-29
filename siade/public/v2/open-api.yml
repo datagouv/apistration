@@ -1418,7 +1418,7 @@ paths:
         - *tag_general
       summary: "[Fabrique numérique des ministères sociaux] Conventions collectives d'une entreprise"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-conventions_collectives'>Documentation métier</a>"
-      parameters:
+      parameters: &only_siret_parameters
         - $ref: '#/components/parameters/Siret'
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
@@ -1649,12 +1649,54 @@ paths:
         - *tag_financier
       summary: "[DGFIP] Chiffres d'affaires"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-exercices'>Documentation métier</a>"
-      parameters: &only_siret_parameters
-        - $ref: '#/components/parameters/Siret'
-        - $ref: '#/components/parameters/Context'
-        - $ref: '#/components/parameters/Recipient'
-        - $ref: '#/components/parameters/Object'
-      responses: *default_responses
+      parameters: *only_siret_parameters
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  exercices:
+                    type: array
+                    description: Les exercices renvoyés par la DGFIP sont listés les uns après les autres, le premier étant le plus récent. Le nombre d’exercices renvoyés varie de 1 à 3. Pour chaque exercice, deux informations sont transmises
+                    items:
+                      type: object
+                      properties:
+                        ca:
+                          description: Chiffre d'affaires en euros.
+                          example: '648374448'
+                          type: string
+                        date_fin_exercice:
+                          description: Date de fin de l'exercice
+                          example: '2016-12-31T00:00:00+01:00'
+                          type: string
+                          format: date-time
+                        date_fin_exercice_timestamp:
+                          description: Date de fin de l'exercice au format timestamp UNIX
+                          example: 1483138800
+                          type: integer
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/bilans_inpi/{siren}:
     get:
