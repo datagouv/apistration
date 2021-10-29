@@ -1705,7 +1705,77 @@ paths:
       summary: "[INPI] Bilan annuels"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-bilans_inpi'>Documentation métier</a>"
       parameters: *only_siren_parameters
-      responses: *default_responses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bilans:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code_greffe:
+                          description: "Code du greffe en charge du dossier, la liste des codes greffes est disponible ici : https://www.data.gouv.fr/fr/datasets/liste-des-greffes/"
+                          example: 7402
+                          type: integer
+                        confidentiel:
+                          description: Peut prendre les valeurs 0, 1 et 2 qui signifie respectivement non confidentiel, confidentiel et partiellement confidentiel. Référez-vous à la documentation de cette API pour plus de détails sur les traitements applicables à ces différents types de documents
+                          example: 0
+                          type: integer
+                        date_cloture:
+                          description: Date de clôture du bilan
+                          example: '2016-12-31T00:00:00.000Z'
+                          type: string
+                          format: date-time
+                        date_depot:
+                          description: Date du dépot du bilan au format YYYYMMDD
+                          example: '20180116'
+                          type: string
+                        denomination_sociale:
+                          example: null
+                          type: string
+                        id_fichier:
+                          description: cet identifiant permet de retrouver le document dans l'archive ZIP, à l'aide du fichier "Response.json" permettant de faire lien entre cet ID et le nom du PDF.
+                          example: 11439992
+                          type: integer
+                        nature_archive:
+                          description: Nature de l'archive, semble principalement renvoyer B-S (pour bilan simplifié)
+                          example: B-S
+                          type: string
+                        numero_gestion:
+                          description: Numéro interne aux greffiers pour identifier un dossier. Un dossier correspond à une entreprise dans un greffe donné. Il devrait donc être le même pour tous les documents.
+                          example: 1973B00101
+                          type: string
+                        siren:
+                          example: '788242667'
+                          type: string
+                  url_documents:
+                    example: https://storage.entreprise.api.gouv.fr/siade_dev/1565607027-91ac7ac7e80b866055d23b9203e41fa0de487bc0-all_documents.zip
+                    type: string
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/bilans_entreprises_bdf/{siren}:
     get:
