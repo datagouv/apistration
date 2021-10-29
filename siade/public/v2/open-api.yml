@@ -2276,7 +2276,37 @@ paths:
       summary: "[ACOSS] Attestation de vigilance"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-attestations_sociales_acoss'>Documentation métier</a>"
       parameters: *only_siren_parameters
-      responses: *default_responses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    example: https://storage.entreprise.api.gouv.fr/siade/1569156881-f749d75e2bfd443316e2e02d59015f-attestation_vigilance_acoss.pdf
+                    type: string
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/attestations_agefiph/{siret}:
     get:
