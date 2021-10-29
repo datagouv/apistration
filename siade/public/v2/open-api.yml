@@ -2402,7 +2402,42 @@ paths:
       summary: "[PROBTP] Cotisations retraite bâtiment : savoir si un établissement est à jour dans ses cotisations"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-attestations_cotisation_retraite_probtp'>Documentation métier</a>"
       parameters: *only_siret_parameters
-      responses: *default_responses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  eligible:
+                    description: Indique si l'entreprise est à jour de ses cotisations
+                    example: true
+                    type: boolean
+                  message:
+                    description: Message contenant les détails du statut de l'entreprise
+                    example: 00 Compte éligible pour attestation de cotisation
+                    type: string
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/attestations_cotisation_retraite_probtp/{siret}:
     get:
@@ -2411,7 +2446,37 @@ paths:
       summary: "[PROBTP] Cotisations retraite bâtiment : attestation d'un établissement"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-attestations_cotisation_retraite_probtp'>Documentation métier</a>"
       parameters: *only_siret_parameters
-      responses: *default_responses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    example: https://storage.entreprise.api.gouv.fr/siade/1635516288-8e9c23ab59b318ea6f24e09576d63d8ff1ce1e60-attestation_cotisation_retraite_probtp.pdf
+                    type: string
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/cartes_professionnelles_fntp/{siren}:
     get:
