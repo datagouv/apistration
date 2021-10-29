@@ -2315,7 +2315,41 @@ paths:
       summary: "[AGEFIPH] Conformité emploi des travailleurs handicapés"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-attestations_agefiph'>Documentation métier</a>"
       parameters: *only_siret_parameters
-      responses: *default_responses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  derniere_annee_de_conformite_connue:
+                    example: '2019'
+                    type: string
+                  dump_date:
+                    description: Date du fichier importé au format timestamp UNIX
+                    example: 1635490707
+                    type: integer
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/cotisations_msa/{siret}:
     get:
@@ -2587,6 +2621,9 @@ components:
         siret_non_diffusible:
           value: "00557246600026"
           summary: SIRET établissement non diffusible
+        siret_agefiph:
+          value: "39332832300059"
+          summary: SIRET pour AGEFIPH
 
     AssociationId:
       in: path
