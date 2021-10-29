@@ -2788,7 +2788,37 @@ paths:
       summary: "[QUALIBAT] Certificat de qualification bâtiment"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-certificats_qualibat'>Documentation métier</a>"
       parameters: *only_siret_parameters
-      responses: *default_responses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    example: https://storage.entreprise.api.gouv.fr/siade/1635521735-1a675fc210d09e04604aabe5e93b452fb56865f5-certificat_qualibat.pdf
+                    type: string
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/certificats_opqibi/{siren}:
     get:
@@ -2988,6 +3018,9 @@ components:
         siret_agence_bio:
           value: "48311105000025"
           summary: SIRET pour l'Agence Bio
+        siret_qualibat:
+          value: "78824266700020"
+          summary: SIRET pour Qualibat
 
     AssociationId:
       in: path
