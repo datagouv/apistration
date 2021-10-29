@@ -1784,7 +1784,191 @@ paths:
       summary: "[BDF] 3 derniers bilans annuels"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-bilans_inpi'>Documentation métier</a>"
       parameters: *only_siren_parameters
-      responses: *default_responses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bilans:
+                    type: array
+                    description: "Les trois bilans de la Banque de France sont listés les uns après les autres, le premier étant le plus récent. La Banque de France renvoit également des données d'évolution par rapport à l'année précédente. Les calculs d'évolution sont calculés en comparant l'année N par rapport à l'année N-1. Ces montants ne sont fournis que si les liasses fiscales N et N-1 ont la même durée d'exercice. Les champs sont calculés par la Banque de France sur le mode suivant : (valeur à date N - valeur à date N-1) * 100 / valeur absolue (valeur à date N-1)."
+                    items:
+                      type: object
+                      properties:
+                        autres_fonds_propres:
+                          description: Correspond à la case 'DO' de la liasse fiscale 2051.
+                          example: '0'
+                          type: string
+                        besoin_en_fonds_de_roulement:
+                          example: '-1656625'
+                          type: string
+                        capacite_autofinancement:
+                          example: '3530749'
+                          type: string
+                        capital_social_inclus_dans_capitaux_propres_et_assimiles:
+                          description: Correspond au capital social ou individuel de la case 'DA' de la liasse fiscale 2051, ce montant est inclu dans la somme précédente 'capitaux_propres_et_assimilés'.
+                          example: '151427'
+                          type: string
+                        capitaux_propres_et_assimiles:
+                          description: Correspond à la case 'DL' de la liasse fiscale 2051, soit le total des capitaux propres inscrits dans le passif.
+                          example: '17394637'
+                          type: string
+                        chiffre_affaires_ht:
+                          description: Correspond au chiffre d'affaire net total, France et exportations & livraisons intercommunautaires (case 'FL' de la liasse fiscale 2052).
+                          example: '350741'
+                          type: string
+                        date_arret_exercice:
+                          description: Date de la fin de l'exercice au format YYYYMM
+                          example: '202012'
+                          type: string
+                        dettes1_emprunts_obligataires_et_convertibles:
+                          description: Correspond à la case 'DS' de la liasse fiscale 2051.
+                          example: '0'
+                          type: string
+                        dettes2_autres_emprunts_obligataires:
+                          description: Correspond à la case 'DT' de la liasse fiscale 2051.
+                          example: '14968965'
+                          type: string
+                        dettes3_emprunts_et_dettes_aupres_des_etablissements_de_credit:
+                          description: Correspond à la case 'DU' de la liasse fiscale 2051.
+                          example: '1301'
+                          type: string
+                        dettes4_maturite_a_un_an_au_plus:
+                          description: Correspond à la somme des cases 'VG2' et 'VH2', soit les emprunts et dettes auprès des établissements de crédit à un an au plus par rapport à l'exercice.
+                          example: '1301'
+                          type: string
+                        disponibilites:
+                          example: '41160'
+                          type: string
+                        duree_exercice:
+                          description: Durée de l'exercice (en mois) habituellement 12, mais peut-être différent notamment la première année de création de l'entreprise
+                          example: '12'
+                          type: string
+                        emprunts_et_dettes_financieres_divers:
+                          description: Correspond à la case 'DV' de la liasse fiscale 2051.
+                          example: '6327539'
+                          type: string
+                        evolution_autres_fonds_propres:
+                          example: ''
+                          type: string
+                        evolution_besoin_en_fonds_de_roulement:
+                          example: ''
+                          type: string
+                        evolution_capacite_autofinancement:
+                          example: ''
+                          type: string
+                        evolution_capital_social_inclus_dans_capitaux_propres_et_assimiles:
+                          example: ''
+                          type: string
+                        evolution_capitaux_propres_et_assimiles:
+                          example: ''
+                          type: string
+                        evolution_chiffre_affaires_ht:
+                          example: ''
+                          type: string
+                        evolution_dettes1_emprunts_obligataires_et_convertibles:
+                          example: ''
+                          type: string
+                        evolution_dettes2_autres_emprunts_obligataires:
+                          example: ''
+                          type: string
+                        evolution_dettes3_emprunts_et_dettes_aupres_des_etablissements_de_credit:
+                          example: ''
+                          type: string
+                        evolution_dettes4_maturite_a_un_an_au_plus:
+                          example: ''
+                          type: string
+                        evolution_disponibilites:
+                          example: ''
+                          type: string
+                        evolution_emprunts_et_dettes_financieres_divers:
+                          example: ''
+                          type: string
+                        evolution_excedent_brut_exploitation:
+                          example: ''
+                          type: string
+                        evolution_fonds_roulement_net_global:
+                          example: ''
+                          type: string
+                        evolution_groupes_et_associes:
+                          example: ''
+                          type: string
+                        evolution_ratio_fonds_roulement_net_global_sur_besoin_en_fonds_de_roulement:
+                          example: ''
+                          type: string
+                        evolution_resultat_exercice:
+                          example: ''
+                          type: string
+                        evolution_total_dettes_stables:
+                          example: ''
+                          type: string
+                        evolution_total_passif:
+                          example: ''
+                          type: string
+                        evolution_total_provisions_pour_risques_et_charges:
+                          example: ''
+                          type: string
+                        evolution_valeur_ajoutee_bdf:
+                          example: ''
+                          type: string
+                        excedent_brut_exploitation:
+                          example: '-282148'
+                          type: string
+                        fonds_roulement_net_global:
+                          example: '-1357111'
+                          type: string
+                        groupes_et_associes:
+                          description: Correspond à l'état des dettes du groupe et des associés, case 'VI' de la liasse fiscale 2057.
+                          example: '1540015'
+                          type: string
+                        ratio_fonds_roulement_net_global_sur_besoin_en_fonds_de_roulement:
+                          example: '-'
+                          type: string
+                        resultat_exercice:
+                          description: Correspond au "bénéfice ou perte" de l'entreprise, total des produits - total des charges (case 'HN' de la liasse fiscale 2053).
+                          example: '3212682'
+                          type: string
+                        total_dettes_stables:
+                          description: "Cette valeur est calculée par la Banque de France comme suit : 'dettes1_emprunts_obligataires_et_convertibles' + 'dettes2_autres_emprunts_obligataires' + 'dettes3_emprunts_et_dettes_aupres_des_etablissements_de_credit' - 'dettes4_maturite_a_un_an_au_plus'. Dans le cas ou un des termes du calcul ne serait pas renseigné, il est considéré comme ayant une valeur nulle pour le calcul."
+                          example: '14968965'
+                          type: string
+                        total_passif:
+                          description: Correspond à la somme totale du passif de l'entreprise, soit ses capitaux propres, ses fonds propres, ses provisions pour risques et ses charges, ainsi que ses dettes (case 'EE' de la liasse fiscale 2051).
+                          example: '41692490'
+                          type: string
+                        total_provisions_pour_risques_et_charges:
+                          description: Correspond à la case 'DR' de la liasse fiscale 2051.
+                          example: '755947'
+                          type: string
+                        valeur_ajoutee_bdf:
+                          example: '-118729'
+                          type: string
+                  monnaie:
+                    example: kEuros
+                    type: string
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/liasses_fiscales_dgfip/{annee}/declarations/{siren}:
     get:
