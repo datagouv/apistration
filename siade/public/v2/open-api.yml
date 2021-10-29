@@ -1487,7 +1487,45 @@ paths:
       summary: "Effectifs mensuel moyen d'une entreprise sur l'année précédente"
       description: "Renvoie l'effectif moyen de l'entreprise sur l'année précédente"
       parameters: *only_siren_parameters
-      responses: *default_responses
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  annee:
+                    description: Année concernée
+                    example: '2019'
+                    type: string
+                  effectifs_annuels:
+                    description: Effectifs mensuel moyen de l'entreprise
+                    example: '171.11'
+                    type: string
+                  siren:
+                    example: '999990286'
+                    type: string
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/effectifs_mensuels_acoss_covid/{annee}/{mois}/entreprise/{siren}:
     get:
@@ -1502,7 +1540,49 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
-      responses: *default_responses
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  annee:
+                    description: Année concernée
+                    example: '2021'
+                    type: string
+                  effectifs_mensuels:
+                    description: Effectifs mensuel déclarés
+                    example: '6.00'
+                    type: string
+                  mois:
+                    description: Mois concerné
+                    example: '05'
+                    type: string
+                  siren:
+                    example: '852751437'
+                    type: string
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/effectifs_mensuels_acoss_covid/{annee}/{mois}/etablissement/{siret}:
     get:
@@ -1517,7 +1597,49 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
-      responses: *default_responses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  annee:
+                    description: Année concernée
+                    example: '2021'
+                    type: string
+                  effectifs_mensuels:
+                    description: Effectifs mensuel déclarés
+                    example: '118.31'
+                    type: string
+                  mois:
+                    description: Mois concerné
+                    example: '05'
+                    type: string
+                  siret:
+                    example: '99999028600018'
+                    type: string
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
 ## &tag_financier
 
