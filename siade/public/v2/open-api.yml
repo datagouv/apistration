@@ -547,8 +547,7 @@ paths:
                         type: object
                   gateway_error:
                     description: An explanation about the purpose of this instance.
-                    examples:
-                      - false
+                    example: false
                     type: boolean
                 type: object
         '206':
@@ -1149,7 +1148,139 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
-      responses: *default_responses
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  association:
+                    type: object
+                    properties:
+                      adresse_siege:
+                        properties:
+                          code_insee:
+                            description: Code INSEE de la commune
+                            example: '98804'
+                            type: string
+                          code_postal:
+                            example: '98813'
+                            type: string
+                          commune:
+                            description: Nom de la commune
+                            example: Canala
+                            type: string
+                          complement:
+                            description: complément d'adresse
+                            example: null
+                            type: string
+                          distribution:
+                            description: Distribution spéciale
+                            example: null
+                            type: string
+                          libelle_voie:
+                            example: '1, rue Albaret lotissement FSH'
+                            type: string
+                          numero_voie:
+                            description: Le numéro de rue est parfois dans le libellé
+                            example: null
+                            type: string
+                          type_voie:
+                            description: Le type de voie est parfois dans le libellé
+                            example: null
+                            type: string
+                        type: object
+                      civilite_dirigeant:
+                        description: Jamais renseigné
+                        example: null
+                        type: string
+                      code_civilite_dirigeant:
+                        description: Jamais renseigné
+                        example: null
+                        type: string
+                      code_etat:
+                        description: Jamais renseigné
+                        example: null
+                        type: string
+                      code_groupement:
+                        description: Jamais renseigné
+                        example: null
+                        type: string
+                      date_creation:
+                        description: Il s'agit du jour de dépôt du dossier de création de l'association à la Préfecture
+                        example: '2012-04-23'
+                        type: string
+                        format: date
+                      date_declaration:
+                        description: Jour de la dernière déclaration faîte par l'association.
+                        example: '2012-04-23'
+                        type: string
+                        format: date
+                      date_dissolution:
+                        description: Si l'association est dissolue, ce champ indique la date de dissolution, autrement, il est indiqué 'null'.
+                        example: null
+                        type: string
+                        format: date
+                      date_publication:
+                        description: Jour de la publication au journal officiel de l'avis de création de l'association. Toutes les assoiations ne sont pas forcément "déclarées". La publication au Journal Officiel permet à l'association de devenir une personne morale, a contrario des "associations de fait", non déclarées au JO. Ce champ peut donc être 'null'
+                        example: null
+                        type: string
+                        format: date
+                      etat:
+                        description: État administratif de l'association, 'true' si elle est active 'false' sinon
+                        example: 'true'
+                        type: string
+                      groupement:
+                        description: "Trois modalités possibles : si l'association n'est pas un groupement, il est indiqué 'Simple' ; si l'association est un groupeement, la valeur est 'Union' ou 'Fédération'."
+                        example: Simple
+                        type: string
+                      id:
+                        description: Débutant par W et composé de 9 chiffres, il s'agit du numéro RNA, identifiant national de l'association. Ce numéro est attribué automatiquement lors de la déclaration de création d’une association. Une association ne disposant pas d’un numéro RNA s’en voit attribuer un à chaque modification effectuée auprès des services de l’État (modification de statuts ou des dirigeants de l’associations). Le numéro figure alors sur le récépissé délivré par la préfecture.
+                        example: W9N3001202
+                        type: string
+                      mise_a_jour:
+                        description: Date de la dernière mise à jour dans le RNA
+                        example: '2012-04-23'
+                        type: string
+                        format: date
+                      objet:
+                        description: Il s'agit d'une description courte mais exhaustive des activités de l'organisme.
+                        example: Réaliser des projets.
+                        type: string
+                      siret:
+                        description: SIRET de l'association si elle en possède un. Même si elle possède un SIRET il peut ne pas être renseigné.
+                        example: null
+                        type: string
+                      siret_siege_social:
+                        description: SIRET du siège sociale de l'association. Il faut pour cela que l'association ait un SIRET et qu'il soit renseigné.
+                        example: null
+                        type: string
+                      titre:
+                        description: C'est le nom de l'association
+                        example: WIYA
+                        type: string
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/documents_associations/{association_id}:
     get:
