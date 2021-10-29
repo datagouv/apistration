@@ -2358,7 +2358,42 @@ paths:
       summary: "[MSA] Cotisations de sécurité sociale agricole"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-cotisations_msa'>Documentation métier</a>"
       parameters: *only_siret_parameters
-      responses: *default_responses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  a_jour:
+                    description: Si l'entreprise est à jour de ses cotisations patronales à la MSA, la réponse seral "true", à l'inverse, si l'entreprise n'est pas à jour, la réponse sera "false". Dans certains cas, le statut de l'entreprise est inconnu, une analyse est à effectuer, alors ce champ indiquera "null".
+                    example: true
+                    type: boolean
+                  analyse_en_cours:
+                    description: Indique "false" quand le statut de l'entreprise est connu, autrement, indique "true" si justement, une analyse manuelle par un agent est en cours.
+                    example: false
+                    type: boolean
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/eligibilites_cotisation_retraite_probtp/{siret}:
     get:
@@ -2624,6 +2659,12 @@ components:
         siret_agefiph:
           value: "39332832300059"
           summary: SIRET pour AGEFIPH
+        siret_msa:
+          value: "81104725700019"
+          summary: SIRET pour MSA
+        siret_probtp:
+          value: "43841606700017"
+          summary: SIRET pour ProBTP
 
     AssociationId:
       in: path
