@@ -2565,7 +2565,17 @@ paths:
       summary: "[ADEME] Certification RGE"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-certificats_rge_ademe'>Documentation métier</a>"
       parameters:
-        - $ref: '#/components/parameters/Siret'
+        - in: path
+          name: siret
+          description: "Siret de l'établissement"
+          required: true
+          schema:
+            type: string
+            pattern: '^\d{14}$'
+          examples:
+            siret_ademe:
+              value: "40357391800048"
+              summary: SIRET pour l'ADEME
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
@@ -2576,8 +2586,54 @@ paths:
           schema:
             type: boolean
           example: true
-
-      responses: *default_responses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  domaines:
+                    type: array
+                    items:
+                      example: Poêle ou insert bois
+                      type: string
+                  qualifications:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        nom:
+                          example: Efficacité énergétique - "Les pros de la performance énergétique®" - Énergie renouvelables
+                          type: string
+                        nom_certificat:
+                          example: QUALIBAT-RGE
+                          type: string
+                        url_certificat:
+                          description: Peut être null si `skip_pdf` est mis à `true`
+                          example: "https://storage.entreprise.api.gouv.fr/siade/1635517972-3004d2e9fc009075af829cdb2f03f0f1ed9d39ef-certificat_rge_ademe.pdf"
+                          type: string
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/certificats_agence_bio/{siret}:
     get:
