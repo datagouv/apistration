@@ -16,6 +16,8 @@ class MakeRequest < ApplicationInteractor
   def call
     api_call
 
+    handle_potential_soft_errors
+
     handle_redirect if response_is_a_redirection?
   rescue Net::OpenTimeout, Net::ReadTimeout, EOFError
     fail_to_request_provider!(ProviderTimeoutError)
@@ -83,6 +85,20 @@ class MakeRequest < ApplicationInteractor
       'getaddrinfo: Name or service not known',
       'getaddrinfo: Temporary failure in name resolution'
     ]
+  end
+
+  def handle_potential_soft_errors
+    error = net_http_response_class_to_error[context.response.class]
+
+    return if error.blank?
+
+    fail_to_request_provider!(error)
+  end
+
+  def net_http_response_class_to_error
+    {
+      Net::HTTPServiceUnavailable => ProviderUnavailable
+    }
   end
 
   def response_is_a_redirection?

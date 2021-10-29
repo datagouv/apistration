@@ -130,6 +130,20 @@ RSpec.describe MakeRequest, type: :interactor do
       end
     end
 
+    context 'for a service unavailable' do
+      before do
+        stub_request(:get, uri.to_s).to_return(
+          status: 503
+        )
+      end
+
+      it { is_expected.to be_a_failure }
+
+      it 'adds ProviderUnavailable to errors' do
+        expect(subject.errors).to include(instance_of(ProviderUnavailable))
+      end
+    end
+
     context 'when it is a redirection' do
       before do
         stub_request(:get, uri.to_s).to_return(
