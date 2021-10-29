@@ -9,7 +9,7 @@ RSpec.describe INSEE::Entreprise::MakeRequest, type: :make_request do
 
   let(:token) { 'token' }
 
-  context 'with a valid siren', vcr: { cassette_name: 'api_insee_fr/siren/active_GE' } do
+  context 'with a valid siren', vcr: { cassette_name: 'insee/siren/active_GE' } do
     let(:siren) { sirens_insee_v3[:active_GE] }
 
     it { is_expected.to be_a_success }
@@ -17,7 +17,7 @@ RSpec.describe INSEE::Entreprise::MakeRequest, type: :make_request do
     its(:response) { is_expected.to be_a(Net::HTTPOK) }
   end
 
-  context 'with a non-existent siren', vcr: { cassette_name: 'api_insee_fr/siren/non_existent' } do
+  context 'with a non-existent siren', vcr: { cassette_name: 'insee/siren/non_existent' } do
     let(:siren) { non_existent_siren }
 
     it { is_expected.to be_a_success }
@@ -25,7 +25,7 @@ RSpec.describe INSEE::Entreprise::MakeRequest, type: :make_request do
     its(:response) { is_expected.to be_a(Net::HTTPNotFound) }
   end
 
-  context 'with an entrepreneur individuel non diffusable ceased', vcr: { cassette_name: 'api_insee_fr/siren/non_diffusable_ceased' } do
+  context 'with an entrepreneur individuel non diffusable ceased', vcr: { cassette_name: 'insee/siren/non_diffusable_ceased' } do
     let(:siren) { confidential_siren(:non_diffusable_ceased) }
 
     it { is_expected.to be_a_success }
@@ -33,7 +33,7 @@ RSpec.describe INSEE::Entreprise::MakeRequest, type: :make_request do
     its(:response) { is_expected.to be_a(Net::HTTPForbidden) }
   end
 
-  context 'with an entrepreneur individuel non diffusable', vcr: { cassette_name: 'api_insee_fr/siren/non_diffusable' } do
+  context 'with an entrepreneur individuel non diffusable', vcr: { cassette_name: 'insee/siren/non_diffusable' } do
     let(:siren) { non_diffusable_siren }
 
     it { is_expected.to be_a_success }
@@ -41,7 +41,7 @@ RSpec.describe INSEE::Entreprise::MakeRequest, type: :make_request do
     its(:response) { is_expected.to be_a(Net::HTTPOK) }
   end
 
-  context 'with a gendarmerie', vcr: { cassette_name: 'api_insee_fr/siren/gendarmerie_limousin' } do
+  context 'with a gendarmerie', vcr: { cassette_name: 'insee/siren/gendarmerie_limousin' } do
     let(:siren) { confidential_siren(:gendarmerie_limousin) }
 
     it { is_expected.to be_a_success }
@@ -49,7 +49,7 @@ RSpec.describe INSEE::Entreprise::MakeRequest, type: :make_request do
     its(:response) { is_expected.to be_a(Net::HTTPForbidden) }
   end
 
-  context 'with a siren which redirects to another location', vcr: { cassette_name: 'api_insee_fr/siren/redirected' } do
+  context 'with a siren which redirects to another location', vcr: { cassette_name: 'insee/siren/redirected' } do
     let(:siren) { '532221694' }
     let(:redirected_siren) { '778870675' }
 

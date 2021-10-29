@@ -11,7 +11,7 @@ RSpec.describe SIADE::V2::Retrievers::EntreprisesRestored do
     its(:errors) { is_expected.to have_error(invalid_siren_error_message) }
   end
 
-  describe 'non existent siren', vcr: { cassette_name: 'api_insee_fr/siren/non_existent' } do
+  describe 'non existent siren', vcr: { cassette_name: 'insee/siren/non_existent' } do
     let(:siren) { non_existent_siren }
 
     its(:success?) { is_expected.to be_falsey }
@@ -19,7 +19,7 @@ RSpec.describe SIADE::V2::Retrievers::EntreprisesRestored do
     its(:errors) { is_expected.to have_error('Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel') }
   end
 
-  describe 'valid siren GE', vcr: { cassette_name: 'api_insee_fr/siren/active_GE' } do
+  describe 'valid siren GE', vcr: { cassette_name: 'insee/siren/active_GE' } do
     let(:siren) { sirens_insee_v3[:active_GE] }
     let(:driver_v3_ent) { SIADE::V2::Drivers::INSEE::Entreprise }
     let(:driver_infogreffe) { SIADE::V2::Drivers::Infogreffe }

@@ -18,7 +18,7 @@ RSpec.describe 'INSEE: Entreprises diffusables', type: %i[request swagger] do
       end
 
       describe 'with valid mandatory params', valid: true do
-        response '200', 'Entreprise trouvée', vcr: { cassette_name: 'api_insee_fr/siren/active_GE_with_token' } do
+        response '200', 'Entreprise trouvée', vcr: { cassette_name: 'insee/siren/active_GE_with_token' } do
           let(:siren) { sirens_insee_v3[:active_GE] }
 
           description SwaggerInformation.get('insee.entreprise_diffusable.description')
@@ -34,7 +34,7 @@ RSpec.describe 'INSEE: Entreprises diffusables', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Non trouvée', vcr: { cassette_name: 'api_insee_fr/siren/non_diffusable_with_token' } do
+        response '404', 'Non trouvée', vcr: { cassette_name: 'insee/siren/non_diffusable_with_token' } do
           let(:siren) { non_diffusable_siren }
 
           schema '$ref' => '#/components/schemas/NotFound'

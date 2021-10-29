@@ -1,7 +1,7 @@
 RSpec.describe SIADE::V2::Drivers::INSEE::Etablissement, type: :provider_driver do
   before { allow_any_instance_of(RenewINSEETokenService).to receive(:current_token_expired?).and_return(false) }
 
-  context 'when siret is not found', vcr: { cassette_name: 'api_insee_fr/siret/non_existent' } do
+  context 'when siret is not found', vcr: { cassette_name: 'insee/siret/non_existent' } do
     subject { described_class.new(siret: siret).tap(&:perform_request) }
 
     let(:siret) { non_existent_siret }
@@ -26,7 +26,7 @@ RSpec.describe SIADE::V2::Drivers::INSEE::Etablissement, type: :provider_driver 
   # its(:distribution_speciale) { is_expected.to be_nil }
   # its(:raison_sociale) { is_expected.to eq '' }
 
-  context 'with an active GE (Grande Entreprise)', vcr: { cassette_name: 'api_insee_fr/siret/active_GE' } do
+  context 'with an active GE (Grande Entreprise)', vcr: { cassette_name: 'insee/siret/active_GE' } do
     subject { @etab_active_GE }
 
     let(:siret) { sirets_insee_v3[:active_GE] }
@@ -158,7 +158,7 @@ RSpec.describe SIADE::V2::Drivers::INSEE::Etablissement, type: :provider_driver 
     end
   end
 
-  context 'with an active GE: Siege social', vcr: { cassette_name: 'api_insee_fr/siret/active_GE_ss' } do
+  context 'with an active GE: Siege social', vcr: { cassette_name: 'insee/siret/active_GE_ss' } do
     subject { @etab_active_GE_ss }
 
     let(:siret) { sirets_insee_v3[:active_GE_ss] }
@@ -195,7 +195,7 @@ RSpec.describe SIADE::V2::Drivers::INSEE::Etablissement, type: :provider_driver 
     end
   end
 
-  context 'with an active AE (Auto-entrepreneur)', vcr: { cassette_name: 'api_insee_fr/siret/active_AE' } do
+  context 'with an active AE (Auto-entrepreneur)', vcr: { cassette_name: 'insee/siret/active_AE' } do
     subject { @etab_active_AE }
 
     let(:siret) { sirets_insee_v3[:active_AE] }
@@ -221,7 +221,7 @@ RSpec.describe SIADE::V2::Drivers::INSEE::Etablissement, type: :provider_driver 
     end
   end
 
-  describe 'with siret etranger', vcr: { cassette_name: 'api_insee_fr/siret/etranger_1' } do
+  describe 'with siret etranger', vcr: { cassette_name: 'insee/siret/etranger_1' } do
     subject { described_class.new(siret: siret).tap(&:perform_request).adresse }
 
     let(:siret) { sirets_insee_v3[:etranger_1] }
@@ -234,7 +234,7 @@ RSpec.describe SIADE::V2::Drivers::INSEE::Etablissement, type: :provider_driver 
     its([:libelle_pays_etranger]) { is_expected.to eq 'ROYAUME-UNI' }
   end
 
-  describe 'with Association', vcr: { cassette_name: 'api_insee_fr/siret/active_association' } do
+  describe 'with Association', vcr: { cassette_name: 'insee/siret/active_association' } do
     subject { described_class.new(siret: siret).tap(&:perform_request).entreprise }
 
     let(:siret) { sirets_insee_v3[:active_association] }
@@ -242,7 +242,7 @@ RSpec.describe SIADE::V2::Drivers::INSEE::Etablissement, type: :provider_driver 
     its([:id_rna]) { is_expected.to eq 'W912007752' }
   end
 
-  describe 'with an artisan', vcr: { cassette_name: 'api_insee_fr/siret/artisan' } do
+  describe 'with an artisan', vcr: { cassette_name: 'insee/siret/artisan' } do
     subject { described_class.new(siret: siret).tap(&:perform_request) }
 
     let(:siret) { sirets_insee_v3[:artisan] }
@@ -250,7 +250,7 @@ RSpec.describe SIADE::V2::Drivers::INSEE::Etablissement, type: :provider_driver 
     its(:activite_princiaple_registre_metiers) { is_expected.to eq '4332AA' }
   end
 
-  describe 'with enseigne', vcr: { cassette_name: 'api_insee_fr/siret/with_enseigne_siret' } do
+  describe 'with enseigne', vcr: { cassette_name: 'insee/siret/with_enseigne_siret' } do
     subject { described_class.new(siret: siret).tap(&:perform_request) }
 
     let(:siret) { sirets_insee_v3[:with_enseigne_siret] }
@@ -258,7 +258,7 @@ RSpec.describe SIADE::V2::Drivers::INSEE::Etablissement, type: :provider_driver 
     its(:enseignes) { is_expected.to eq 'DOMAINE DAVID BIENFAIT' }
   end
 
-  describe 'which is closed', vcr: { cassette_name: 'api_insee_fr/siret/closed' } do
+  describe 'which is closed', vcr: { cassette_name: 'insee/siret/closed' } do
     subject { described_class.new(siret: siret).tap(&:perform_request) }
 
     let(:siret) { closed_siret }
@@ -267,7 +267,7 @@ RSpec.describe SIADE::V2::Drivers::INSEE::Etablissement, type: :provider_driver 
     its(:date_fermeture) { is_expected.to eq 1_315_173_600 }
   end
 
-  describe 'siret redirected to another siret', vcr: { cassette_name: 'api_insee_fr/siret/redirected' } do
+  describe 'siret redirected to another siret', vcr: { cassette_name: 'insee/siret/redirected' } do
     subject { described_class.new(siret: siret).tap(&:perform_request) }
 
     let(:siret) { redirected_siret }

@@ -14,7 +14,7 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
     }
   end
 
-  context 'with an active GE, which is a personne morale', vcr: { cassette_name: 'api_insee_fr/siret/active_GE' } do
+  context 'with an active GE, which is a personne morale', vcr: { cassette_name: 'insee/siret/active_GE' } do
     let(:siret) { sirets_insee_v3[:active_GE] }
 
     it { is_expected.to be_a_success }

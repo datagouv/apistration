@@ -8,11 +8,11 @@ RSpec.describe API::V2::EntreprisesRestoredController, type: :controller do
   it_behaves_like 'unprocessable_entity'
   it_behaves_like 'ask_for_mandatory_parameters'
 
-  context 'when siren is not found', vcr: { cassette_name: 'api_insee_fr/siren/non_existent' } do
+  context 'when siren is not found', vcr: { cassette_name: 'insee/siren/non_existent' } do
     it_behaves_like 'not_found'
   end
 
-  context 'without param `with_non_diffusable` it returns 403', vcr: { cassette_name: 'api_insee_fr/siren/non_diffusable' } do
+  context 'without param `with_non_diffusable` it returns 403', vcr: { cassette_name: 'insee/siren/non_diffusable' } do
     subject { get :show, params: { siren: non_diffusable_siren, token: token }.merge(mandatory_params) }
 
     its(:status) { is_expected.to eq 451 }
@@ -24,7 +24,7 @@ RSpec.describe API::V2::EntreprisesRestoredController, type: :controller do
     end
   end
 
-  context 'with param `non_diffusables` it returns 200', vcr: { cassette_name: 'api_insee_fr/siren/non_diffusable' } do
+  context 'with param `non_diffusables` it returns 200', vcr: { cassette_name: 'insee/siren/non_diffusable' } do
     subject { get :show, params: { siren: non_diffusable_siren, token: token, non_diffusables: true }.merge(mandatory_params) }
 
     let(:json) { JSON.parse(subject.body).deep_symbolize_keys }
@@ -40,7 +40,7 @@ RSpec.describe API::V2::EntreprisesRestoredController, type: :controller do
     end
   end
 
-  describe 'retrievers failure', vcr: { cassette_name: 'api_insee_fr/siren/active_GE' } do
+  describe 'retrievers failure', vcr: { cassette_name: 'insee/siren/active_GE' } do
     subject { get :show, params: { siren: siren, token: token }.merge(mandatory_params) }
 
     let(:siren) { sirens_insee_v3[:active_GE] }
@@ -76,7 +76,7 @@ RSpec.describe API::V2::EntreprisesRestoredController, type: :controller do
     end
   end
 
-  describe 'siren redirected to another siren', vcr: { cassette_name: 'api_insee_fr/siren/redirected' } do
+  describe 'siren redirected to another siren', vcr: { cassette_name: 'insee/siren/redirected' } do
     subject { get :show, params: { siren: siren, token: token }.merge(mandatory_params) }
 
     let(:siren) { redirected_siren }
@@ -101,12 +101,12 @@ RSpec.describe API::V2::EntreprisesRestoredController, type: :controller do
   end
 
   sirens_insee_v3.each do |label, siren|
-    context "well formated #{label}: #{siren}", vcr: { cassette_name: "api_insee_fr/siren/#{label}" } do
+    context "well formated #{label}: #{siren}", vcr: { cassette_name: "insee/siren/#{label}" } do
       it_behaves_like 'happy path', siren
     end
   end
 
-  #  context 'DEBUG', vcr: { cassette_name: 'api_insee_fr/siren/active_GE_bis' } do
+  #  context 'DEBUG', vcr: { cassette_name: 'insee/siren/active_GE_bis' } do
   #    it_behaves_like 'happy path', sirens_insee_v3[:active_GE_bis]
   #  end
 
@@ -125,24 +125,24 @@ RSpec.describe API::V2::EntreprisesRestoredController, type: :controller do
     end
   end
 
-  describe 'checks json of active_GE', vcr: { cassette_name: 'api_insee_fr/siren/active_GE' } do
+  describe 'checks json of active_GE', vcr: { cassette_name: 'insee/siren/active_GE' } do
     it_behaves_like 'ENFORCED SPECS', sirens_insee_v3[:active_GE], JSON.parse(File.read('spec/support/payload_files/json/entreprise_restored_active_GE.json'))
   end
 
-  describe 'checks json of active_AE', vcr: { cassette_name: 'api_insee_fr/siren/active_AE' } do
+  describe 'checks json of active_AE', vcr: { cassette_name: 'insee/siren/active_AE' } do
     # if AE: raison sociale = raison sociale | nomS+prenomS
     it_behaves_like 'ENFORCED SPECS', sirens_insee_v3[:active_AE], JSON.parse(File.read('spec/support/payload_files/json/entreprise_restored_active_AE.json'))
   end
 
-  describe 'checks json of etranger', vcr: { cassette_name: 'api_insee_fr/siren/etranger' } do
+  describe 'checks json of etranger', vcr: { cassette_name: 'insee/siren/etranger' } do
     it_behaves_like 'ENFORCED SPECS', sirens_insee_v3[:etranger], { entreprise: { numero_tva_intracommunautaire: nil } }
   end
 
-  describe 'checks json with enseigne', vcr: { cassette_name: 'api_insee_fr/siren/with_enseigne_siren' } do
+  describe 'checks json with enseigne', vcr: { cassette_name: 'insee/siren/with_enseigne_siren' } do
     it_behaves_like 'ENFORCED SPECS', sirens_insee_v3[:with_enseigne_siren], { entreprise: { enseigne: 'GCSPA' } }
   end
 
-  describe 'checks json when ceased', vcr: { cassette_name: 'api_insee_fr/siren/ceased' } do
+  describe 'checks json when ceased', vcr: { cassette_name: 'insee/siren/ceased' } do
     it_behaves_like 'ENFORCED SPECS', ceased_siren, { entreprise: { etat_administratif: { value: 'C', date_cessation: 1_315_173_600 } } }
     it_behaves_like 'ENFORCED SPECS', ceased_siren, { etablissement_siege: { etat_administratif: { value: 'F', date_fermeture: 1_315_173_600 } } }
   end

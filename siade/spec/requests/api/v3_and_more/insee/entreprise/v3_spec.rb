@@ -18,7 +18,7 @@ RSpec.describe 'INSEE: Entreprises', type: %i[request swagger] do
       end
 
       describe 'with valid mandatory params', valid: true do
-        response '200', 'Entreprise trouvée', vcr: { cassette_name: 'api_insee_fr/siren/active_GE_with_token' } do
+        response '200', 'Entreprise trouvée', vcr: { cassette_name: 'insee/siren/active_GE_with_token' } do
           description SwaggerInformation.get('insee.entreprise.description')
 
           schema build_rswag_response(
@@ -32,7 +32,7 @@ RSpec.describe 'INSEE: Entreprises', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Non trouvée', vcr: { cassette_name: 'api_insee_fr/siren/non_existent_with_token' } do
+        response '404', 'Non trouvée', vcr: { cassette_name: 'insee/siren/non_existent_with_token' } do
           let(:siren) { non_existent_siren }
 
           schema '$ref' => '#/components/schemas/NotFound'

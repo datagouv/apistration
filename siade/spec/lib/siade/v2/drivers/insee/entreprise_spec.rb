@@ -1,7 +1,7 @@
 RSpec.describe SIADE::V2::Drivers::INSEE::Entreprise, type: :provider_driver do
   before { allow_any_instance_of(RenewINSEETokenService).to receive(:current_token_expired?).and_return(false) }
 
-  context 'when siren is not found', vcr: { cassette_name: 'api_insee_fr/siren/non_existent' } do
+  context 'when siren is not found', vcr: { cassette_name: 'insee/siren/non_existent' } do
     subject { described_class.new(siren: siren).tap(&:perform_request) }
 
     let(:siren) { non_existent_siren }
@@ -18,7 +18,7 @@ RSpec.describe SIADE::V2::Drivers::INSEE::Entreprise, type: :provider_driver do
   # its(:prenom_4) { is_expected.to be_nil }
   # its(:pseudonyme) { is_expected.to be_nil }
 
-  context 'with an active GE (Grande Entreprise)', vcr: { cassette_name: 'api_insee_fr/siren/active_GE' } do
+  context 'with an active GE (Grande Entreprise)', vcr: { cassette_name: 'insee/siren/active_GE' } do
     subject { @entreprise_active_GE }
 
     let(:siren) { sirens_insee_v3[:active_GE] }
@@ -129,7 +129,7 @@ RSpec.describe SIADE::V2::Drivers::INSEE::Entreprise, type: :provider_driver do
     end
   end
 
-  context 'with an active AE (Auto-entrepreneur)', vcr: { cassette_name: 'api_insee_fr/siren/active_AE' } do
+  context 'with an active AE (Auto-entrepreneur)', vcr: { cassette_name: 'insee/siren/active_AE' } do
     subject { @entreprise_active_AE }
 
     let(:siren) { sirens_insee_v3[:active_AE] }
@@ -158,7 +158,7 @@ RSpec.describe SIADE::V2::Drivers::INSEE::Entreprise, type: :provider_driver do
     end
   end
 
-  context 'with another active GE', vcr: { cassette_name: 'api_insee_fr/siren/active_GE_bis' } do
+  context 'with another active GE', vcr: { cassette_name: 'insee/siren/active_GE_bis' } do
     subject { described_class.new(siren: siren).tap(&:perform_request).periodes.first }
 
     let(:siren) { sirens_insee_v3[:active_GE_bis] }
@@ -166,7 +166,7 @@ RSpec.describe SIADE::V2::Drivers::INSEE::Entreprise, type: :provider_driver do
     its([:economie_sociale_et_solidaire]) { is_expected.to eq 'N' }
   end
 
-  context 'with an enseigne not null', vcr: { cassette_name: 'api_insee_fr/siren/with_enseigne_siren' } do
+  context 'with an enseigne not null', vcr: { cassette_name: 'insee/siren/with_enseigne_siren' } do
     subject { described_class.new(siren: siren).tap(&:perform_request) }
 
     let(:siren) { sirens_insee_v3[:with_enseigne_siren] }
@@ -174,7 +174,7 @@ RSpec.describe SIADE::V2::Drivers::INSEE::Entreprise, type: :provider_driver do
     its(:sigle) { is_expected.to eq 'GCSPA' }
   end
 
-  context 'which is ceased', vcr: { cassette_name: 'api_insee_fr/siren/ceased' } do
+  context 'which is ceased', vcr: { cassette_name: 'insee/siren/ceased' } do
     subject { described_class.new(siren: siren).tap(&:perform_request) }
 
     let(:siren) { ceased_siren }

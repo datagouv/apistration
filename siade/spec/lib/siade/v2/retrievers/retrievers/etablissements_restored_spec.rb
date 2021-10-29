@@ -11,7 +11,7 @@ RSpec.describe SIADE::V2::Retrievers::EtablissementsRestored do
     its(:errors) { is_expected.to have_error(invalid_siret_error_message) }
   end
 
-  describe 'non existent siret', vcr: { cassette_name: 'api_insee_fr/siret/non_existent' } do
+  describe 'non existent siret', vcr: { cassette_name: 'insee/siret/non_existent' } do
     let(:siret) { non_existent_siret }
 
     its(:success?) { is_expected.to be_falsey }
@@ -19,7 +19,7 @@ RSpec.describe SIADE::V2::Retrievers::EtablissementsRestored do
     its(:errors) { is_expected.to have_error('Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel') }
   end
 
-  describe 'valid siret GE', vcr: { cassette_name: 'api_insee_fr/siret/active_GE' } do
+  describe 'valid siret GE', vcr: { cassette_name: 'insee/siret/active_GE' } do
     let(:siret) { sirets_insee_v3[:active_GE] }
     let(:driver_v3_etab) { SIADE::V2::Drivers::INSEE::Etablissement }
 
@@ -66,7 +66,7 @@ RSpec.describe SIADE::V2::Retrievers::EtablissementsRestored do
     end
   end
 
-  describe 'siret redirected to another siret', vcr: { cassette_name: 'api_insee_fr/siret/redirected' } do
+  describe 'siret redirected to another siret', vcr: { cassette_name: 'insee/siret/redirected' } do
     let(:siret) { redirected_siret }
 
     its(:success?) { is_expected.to be_truthy }

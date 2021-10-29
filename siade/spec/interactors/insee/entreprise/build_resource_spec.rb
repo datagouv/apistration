@@ -14,7 +14,7 @@ RSpec.describe INSEE::Entreprise::BuildResource, type: :build_resource do
     }
   end
 
-  context 'with an active GE, which is a personne morale', vcr: { cassette_name: 'api_insee_fr/siren/active_GE' } do
+  context 'with an active GE, which is a personne morale', vcr: { cassette_name: 'insee/siren/active_GE' } do
     let(:siren) { sirens_insee_v3[:active_GE] }
 
     it { is_expected.to be_a_success }
@@ -87,7 +87,7 @@ RSpec.describe INSEE::Entreprise::BuildResource, type: :build_resource do
     end
   end
 
-  context 'with an active AE, which is a personne physique', vcr: { cassette_name: 'api_insee_fr/siren/active_AE' } do
+  context 'with an active AE, which is a personne physique', vcr: { cassette_name: 'insee/siren/active_AE' } do
     let(:siren) { sirens_insee_v3[:active_AE] }
 
     it { is_expected.to be_a_success }
@@ -121,7 +121,7 @@ RSpec.describe INSEE::Entreprise::BuildResource, type: :build_resource do
     end
   end
 
-  context 'with a ceased company', vcr: { cassette_name: 'api_insee_fr/siren/ceased' } do
+  context 'with a ceased company', vcr: { cassette_name: 'insee/siren/ceased' } do
     let(:siren) { sirens_insee_v3[:ceased] }
 
     it { is_expected.to be_a_success }

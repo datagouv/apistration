@@ -3,7 +3,7 @@ RSpec.describe SIADE::V2::Requests::INSEE::Entreprise, type: :provider_request d
 
   before { allow_any_instance_of(RenewINSEETokenService).to receive(:current_token_expired?).and_return(false) }
 
-  it 'try to renew INSEE token', vcr: { cassette_name: 'api_insee_fr/siren/active_GE' } do
+  it 'try to renew INSEE token', vcr: { cassette_name: 'insee/siren/active_GE' } do
     expect_any_instance_of(RenewINSEETokenService).to receive(:call).once
     described_class.new(sirens_insee_v3[:active_GE]).tap(&:perform)
   end
@@ -16,7 +16,7 @@ RSpec.describe SIADE::V2::Requests::INSEE::Entreprise, type: :provider_request d
     its(:errors) { is_expected.to have_error(invalid_siren_error_message) }
   end
 
-  context 'non-existent siren', vcr: { cassette_name: 'api_insee_fr/siren/non_existent' } do
+  context 'non-existent siren', vcr: { cassette_name: 'insee/siren/non_existent' } do
     let(:siren) { non_existent_siren }
 
     its(:valid?) { is_expected.to be_truthy }
@@ -33,11 +33,11 @@ RSpec.describe SIADE::V2::Requests::INSEE::Entreprise, type: :provider_request d
       its(:errors) { is_expected.to have_error('Le siren ou siret demandé est une entité pour laquelle aucun organisme ne peut avoir accès.') }
     end
 
-    describe 'entrepreneur individuel ceased', vcr: { cassette_name: 'api_insee_fr/siren/non_diffusable_ceased' } do
+    describe 'entrepreneur individuel ceased', vcr: { cassette_name: 'insee/siren/non_diffusable_ceased' } do
       it_behaves_like 'confidential siren returns 451', :non_diffusable_ceased
     end
 
-    describe 'gendarmerie Limousin', vcr: { cassette_name: 'api_insee_fr/siren/gendarmerie_limousin' } do
+    describe 'gendarmerie Limousin', vcr: { cassette_name: 'insee/siren/gendarmerie_limousin' } do
       it_behaves_like 'confidential siren returns 451', :gendarmerie_limousin
     end
   end
@@ -51,12 +51,12 @@ RSpec.describe SIADE::V2::Requests::INSEE::Entreprise, type: :provider_request d
   end
 
   sirens_insee_v3.each do |label, siren|
-    context "well formated #{label}: #{siren}", vcr: { cassette_name: "api_insee_fr/siren/#{label}" } do
+    context "well formated #{label}: #{siren}", vcr: { cassette_name: "insee/siren/#{label}" } do
       it_behaves_like 'valid request INSEE', siren
     end
   end
 
-  #  context 'debug', vcr: { cassette_name: 'api_insee_fr/siren/active_AE' } do
+  #  context 'debug', vcr: { cassette_name: 'insee/siren/active_AE' } do
   #    it_behaves_like 'valid request INSEE', sirens_insee_v3[:ceased_AE]
   #  end
 end

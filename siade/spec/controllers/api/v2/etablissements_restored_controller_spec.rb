@@ -6,11 +6,11 @@ RSpec.describe API::V2::EtablissementsRestoredController, type: :controller do
   it_behaves_like 'unprocessable_entity', :show, :siret
   it_behaves_like 'ask_for_mandatory_parameters'
 
-  context 'when siret is not found', vcr: { cassette_name: 'api_insee_fr/siret/non_existent' } do
+  context 'when siret is not found', vcr: { cassette_name: 'insee/siret/non_existent' } do
     it_behaves_like 'not_found'
   end
 
-  context 'without param `with_non_diffusable` it returns 403', vcr: { cassette_name: 'api_insee_fr/siret/non_diffusable' } do
+  context 'without param `with_non_diffusable` it returns 403', vcr: { cassette_name: 'insee/siret/non_diffusable' } do
     subject { get :show, params: { siret: non_diffusable_siret, token: token }.merge(mandatory_params) }
 
     let(:token) { yes_jwt }
@@ -24,7 +24,7 @@ RSpec.describe API::V2::EtablissementsRestoredController, type: :controller do
     end
   end
 
-  context 'with param `non_diffusables` it returns 200', vcr: { cassette_name: 'api_insee_fr/siret/non_diffusable' } do
+  context 'with param `non_diffusables` it returns 200', vcr: { cassette_name: 'insee/siret/non_diffusable' } do
     subject { get :show, params: { siret: non_diffusable_siret, token: token, non_diffusables: true }.merge(mandatory_params) }
 
     let(:token) { yes_jwt }
@@ -61,7 +61,7 @@ RSpec.describe API::V2::EtablissementsRestoredController, type: :controller do
     end
   end
 
-  describe 'siret redirected to another siret', vcr: { cassette_name: 'api_insee_fr/siret/redirected' } do
+  describe 'siret redirected to another siret', vcr: { cassette_name: 'insee/siret/redirected' } do
     subject { get :show, params: { siret: siret, token: token }.merge(mandatory_params) }
 
     let(:token) { yes_jwt }
@@ -136,12 +136,12 @@ RSpec.describe API::V2::EtablissementsRestoredController, type: :controller do
   end
 
   sirets_insee_v3.each do |label, siret|
-    context "well formated #{label}: #{siret}", vcr: { cassette_name: "api_insee_fr/siret/#{label}" } do
+    context "well formated #{label}: #{siret}", vcr: { cassette_name: "insee/siret/#{label}" } do
       it_behaves_like 'happy path', siret
     end
   end
 
-  #    context 'DEBUG', vcr: { cassette_name: 'api_insee_fr/siret/closed' } do
+  #    context 'DEBUG', vcr: { cassette_name: 'insee/siret/closed' } do
   #      it_behaves_like 'happy path', sirets_insee_v3[:closed]
   #    end
 
@@ -160,20 +160,20 @@ RSpec.describe API::V2::EtablissementsRestoredController, type: :controller do
     end
   end
 
-  describe 'checks json of active_GE', vcr: { cassette_name: 'api_insee_fr/siret/active_GE' } do
+  describe 'checks json of active_GE', vcr: { cassette_name: 'insee/siret/active_GE' } do
     it_behaves_like 'ENFORCED SPECS', sirets_insee_v3[:active_GE], JSON.parse(File.read('spec/support/payload_files/json/etablissement_restored_active_GE.json'))
   end
 
-  describe 'checks json of with_enseigne_siret', vcr: { cassette_name: 'api_insee_fr/siret/with_enseigne_siret' } do
+  describe 'checks json of with_enseigne_siret', vcr: { cassette_name: 'insee/siret/with_enseigne_siret' } do
     it_behaves_like 'ENFORCED SPECS', sirets_insee_v3[:with_enseigne_siret], { etablissement: { enseigne: 'DOMAINE DAVID BIENFAIT' } }
   end
 
-  describe 'checks json of etranger_1', vcr: { cassette_name: 'api_insee_fr/siret/etranger_1' } do
+  describe 'checks json of etranger_1', vcr: { cassette_name: 'insee/siret/etranger_1' } do
     it_behaves_like 'ENFORCED SPECS', sirets_insee_v3[:etranger_1], { etablissement: { adresse: { localite: 'LONDRES' } } }
     it_behaves_like 'ENFORCED SPECS', sirets_insee_v3[:etranger_1], { etablissement: { commune_implantation: { value: 'LONDRES' } } }
   end
 
-  describe 'checks json of closed siret', vcr: { cassette_name: 'api_insee_fr/siret/closed' } do
+  describe 'checks json of closed siret', vcr: { cassette_name: 'insee/siret/closed' } do
     it_behaves_like 'ENFORCED SPECS', closed_siret, { etablissement: { etat_administratif: { value: 'F', date_fermeture: 1_315_173_600 } } }
   end
 
@@ -187,7 +187,7 @@ RSpec.describe API::V2::EtablissementsRestoredController, type: :controller do
       let(:siret) { sirets_insee_v3[siret_sym] }
       let(:token) { yes_jwt }
 
-      describe "RNVP adresse #{siret_sym}: #{sirets_insee_v3[siret_sym]}", vcr: { cassette_name: "api_insee_fr/siret/#{siret_sym}" } do
+      describe "RNVP adresse #{siret_sym}: #{sirets_insee_v3[siret_sym]}", vcr: { cassette_name: "insee/siret/#{siret_sym}" } do
         its([:l1]) { is_expected.to eq l1 }
         its([:l2]) { is_expected.to eq l2 }
         its([:l3]) { is_expected.to eq l3 }
