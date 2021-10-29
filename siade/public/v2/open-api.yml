@@ -2641,12 +2641,145 @@ paths:
         - *tag_certificats_professionelles
       summary: "[API BIO] Certification Biologique"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-certificats_agence_bio'>Documentation métier</a>"
-      parameters:
-        - $ref: '#/components/parameters/Siret'
-        - $ref: '#/components/parameters/Context'
-        - $ref: '#/components/parameters/Recipient'
-        - $ref: '#/components/parameters/Object'
-      responses: *default_responses
+      parameters: *only_siret_parameters
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    activites:
+                      type: array
+                      description: "Ce champ liste les activités certifiées de l'opérateur économique parmi : 'Production', 'Preparation', 'Distribution', 'Stockage', 'Importation' et/ou 'Restauration'."
+                      items:
+                        example:
+                          - Production
+                          - Distribution
+                          - Stockage
+                        type: string
+                    adresses_operateurs:
+                      type: array
+                      description: Quand l'entreprise se notifie auprès de l'Agence BIO, une adresse postale récupérée auprès de l'INSEE est automatiquement proposée. L'opérateur économique peut décider d'ajouter d'autres adresses. Ce qui est le cas dans l'exemple ci-dessous avec le lieu de vente, le lieu d'activité et le siège social. Dans la grande majortié des cas, les opérateurs ne déclarent qu'une seule adresse.
+                      items:
+                        properties:
+                          code_postal:
+                            example: '49800'
+                            type: string
+                          lat:
+                            description: latitude
+                            example: 47.450877
+                            type: number
+                          lieu:
+                            example: 26 RUE ELISEE RECLUS
+                            type: string
+                          long:
+                            description: longitude
+                            example: -0.4932483
+                            type: number
+                          type:
+                            type: array
+                            items:
+                              type: string
+                              example: Lieux de vente
+                          ville:
+                            example: TRELAZE
+                            type: string
+                        type: object
+                    categories:
+                      description: "Ce champs, déclaratif, permet aux utilisateurs de l'annuaire de l'Agence BIO (https://www.agencebio.org/vos-outils/annuaire/) de filtrer les opérateurs économiques avec six catégories : Artisans/commerçants ; Grandes surfaces généralistes ; Grossistes ; Magasins spécialisés ; Restaurants ; Vente aux consommateurs."
+                      items:
+                        example:
+                          - Vente aux consommateurs
+                          - Artisans/commerçants
+                        type: string
+                      type: array
+                    certificats:
+                      description: Cette clé délivre la liste des certifications en BIO de l'opérateur. Un opérateur peut avoir plusieurs certificats s'il a plusieurs organismes certificateurs.
+                      items:
+                        properties:
+                          date_arret:
+                            description: Il s'agit de la date d'arrêt d'une certification. Ce cas est assez rare.
+                            example: null
+                            type: string
+                            format: date
+                          date_engagement:
+                            description:  Il s'agit de la date à laquelle l'opérateur économique s'engage à respecter le cahier des charges BIO. Cette donnée est fournie par l'organisme certificateur et fait référence. Cette date ne correspond pas forcément au démarrage concrêt de l'activité.
+                            example: '2020-09-29'
+                            type: string
+                            format: date
+                          date_suspension:
+                            description: Dans certains cas, la certifcation en BIO d'un opérateur peut être "SUSPENDUE" (voir ci-dessous), cette date correspond à cette suspension.
+                            example: null
+                            type: string
+                            format: date
+                          etat_certification:
+                            description: C'est l'état de la certifiction en BIO de l'opérateur. Lorsque la certification est active, la certification est dite "ENGAGEE". Lorsque la certification est arrêtée temporairement par l'organisme de certification, généralement parce qu'un écart a été observé avec le règlement, la certification est "SUSPENDUE". Cette suspension est temporaire. Si la suspension dure un an, l'état indique "RETIREE". Si la suspension est définitive, l'état indique "ARRETEE".
+                            example: ENGAGEE
+                            type: string
+                          organisme:
+                            description: Nom de l'organisme certificateur.
+                            example: Certipaq Bio
+                            type: string
+                          url:
+                            description: Pour 90% des certifications, une URL est donnée, permettant de se rendre sur le site de l'organisme certificateur donnant accès au certificat au format PDF. Pour en savoir plus, consulter le bloc question/réponse de cette documentation.
+                            example: https://www.certipaq.solutions/bio/certificats/fiche/56530/barbot-fabrice/
+                            type: string
+                        type: object
+                      type: array
+                    date_derniere_mise_a_jour:
+                      description: Il s'agit de la dernière mise à jour faite par l'opérateur économique. Celle-ci n'implique donc pas une mise à jour de toutes les données.
+                      example: '2020-10-27'
+                      type: string
+                      format: date
+                    numero_bio:
+                      description: C'est le numéro qui accompagne l'opérateur économique (entreprise ou association certifiées en BIO) tout au long de sa vie, même en cas de changement d'activité, ou d'organisme de certification. Seul le changement de numéro de SIRET implique un changement du numéro BIO.
+                      example: 18344
+                      type: integer
+                    productions:
+                      description: Cette clé délivre la liste des produits certifiés de l'opérateur économique. Cette liste n'est disponible que si l'opérateur a déclaré une activité de "Production".
+                      items:
+                        properties:
+                          code:
+                            description: "Ce code renvoit à la Nomenclature des produits français de l'INSEE, disponible par en suivant ce lien : https://www.insee.fr/fr/metadonnees/cpfr21?champRecherche=true"
+                            example: "01.13.13"
+                            type: string
+                          nom:
+                            description: Libellé officiel de la nomenclature
+                            example: Choux-fleurs et brocolis
+                            type: string
+                        type: object
+                      type: array
+                    reseau:
+                      description: Ce champ est complété lorsque l'entité concernée est rattachée à un réseau. C'est souvent le cas pour les distributeurs. Cette donnée est déclarative.
+                      example: ''
+                      type: string
+                    siret:
+                      example: '48311105000025'
+                      type: string
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/certificats_qualibat/{siret}:
     get:
@@ -2852,6 +2985,9 @@ components:
         siret_probtp:
           value: "43841606700017"
           summary: SIRET pour ProBTP
+        siret_agence_bio:
+          value: "48311105000025"
+          summary: SIRET pour l'Agence Bio
 
     AssociationId:
       in: path
