@@ -583,49 +583,49 @@ paths:
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
       responses:
-          '200':
-            description: 'OK'
-            content:
-              application/json:
-                schema:
-                  properties:
-                    siren:
-                      type: 'string'
-                      description: "Siren de l'entreprise"
-                      example: '301123626'
-                    date_immatriculation:
-                      type: "string"
-                      format: "date"
-                      example: '1974-10-07'
-                      description: "Il s'agit du jour d'immatriculation de l'entreprise au RCS. À compter de cette date, les sociétés jouissent de la personnalité morale. Cette date d'immatriculation n'est pas la même que celle délivrée par l'INSEE. Elle ne correspond pas non plus à la date du début d'activité."
-                    date_immatriculation_timestamp:
-                      type: "integer"
-                      example: '150332400'
-                      description: "Date d'immatriculation au format timestamp UNIX"
-                    date_extrait:
-                      type: "string"
-                      example: "26 OCTOBRE 2021"
-                      description: "Date de mise à jour de l'extrait RCS"
-                    observations:
-                      type: array
-                      description: "Ce champ délivre tous les messages laissés par le greffier inscrits dans les observations."
-                      items:
-                        type: object
-                        properties:
-                          date:
-                            type: "string"
-                            format: "date"
-                            example: "1991-01-11"
-                            description: "Date de l'observation"
-                          date_timestamp:
-                            type: "integer"
-                            example: '663548400'
-                            description: "Date de l'observation au format timestamp UNIX"
-                          numero:
-                            type: "string"
-                            example: "2000"
-                            description: "Numéro de l'observation"
-                          libelle:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                properties:
+                  siren:
+                    type: 'string'
+                    description: "Siren de l'entreprise"
+                    example: '301123626'
+                  date_immatriculation:
+                    type: "string"
+                    format: "date"
+                    example: '1974-10-07'
+                    description: "Il s'agit du jour d'immatriculation de l'entreprise au RCS. À compter de cette date, les sociétés jouissent de la personnalité morale. Cette date d'immatriculation n'est pas la même que celle délivrée par l'INSEE. Elle ne correspond pas non plus à la date du début d'activité."
+                  date_immatriculation_timestamp:
+                    type: "integer"
+                    example: '150332400'
+                    description: "Date d'immatriculation au format timestamp UNIX"
+                  date_extrait:
+                    type: "string"
+                    example: "26 OCTOBRE 2021"
+                    description: "Date de mise à jour de l'extrait RCS"
+                  observations:
+                    type: array
+                    description: "Ce champ délivre tous les messages laissés par le greffier inscrits dans les observations."
+                    items:
+                      type: object
+                      properties:
+                        date:
+                          type: "string"
+                          format: "date"
+                          example: "1991-01-11"
+                          description: "Date de l'observation"
+                        date_timestamp:
+                          type: "integer"
+                          example: '663548400'
+                          description: "Date de l'observation au format timestamp UNIX"
+                        numero:
+                          type: "string"
+                          example: "2000"
+                          description: "Numéro de l'observation"
+                        libelle:
                           type: "string"
                           example: "CONTENU DE L'OBSERVATION NUMÉRO 2000"
                           description: "Contenu de l'obersation"
@@ -1350,7 +1350,67 @@ paths:
       summary: "[INPI] Actes"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-actes_inpi'>Documentation métier</a>"
       parameters: *only_siren_parameters
-      responses: *default_responses
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actes:
+                    type: array
+                    description: Liste des actes disponibles
+                    items:
+                      type: object
+                      properties:
+                        code_greffe:
+                          description: "Code du greffe en charge du dossier, la liste des codes greffes est disponible ici : https://www.data.gouv.fr/fr/datasets/liste-des-greffes/"
+                          example: 7402
+                          type: integer
+                        date_depot:
+                          description: Date dépot au format YYYYMMDD
+                          example: '20170925'
+                          type: string
+                        denomination_sociale:
+                          description: peut être null
+                          example: null
+                          type: string
+                        id_fichier:
+                          description: cet identifiant permet de retrouver le document dans l'archive ZIP, à l'aide du fichier "Response.json" permettant de faire lien entre cet ID et le nom du PDF.
+                          example: 24924080
+                          type: integer
+                        nature_archive:
+                          description: indique la nature de l'archive, "A" pour un acte, "R" pour une ordonnance et "P" pour une personne physique.
+                          example: A
+                          type: string
+                        siren:
+                          example: '788242667'
+                          type: string
+                  url_documents:
+                    description: URL du fichier ZIP contenant tous les documents.
+                    example: https://storage.entreprise.api.gouv.fr/siade_dev/1565606929-1a01ac932854e5632c7534ff4c18e18ec2845ec0-all_documents.zip
+                    type: string
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/conventions_collectives/{siret}:
     get:
