@@ -2827,7 +2827,99 @@ paths:
       summary: "[OPQIBI] Certification de qualification d'ingénierie"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-certificats_opqibi'>Documentation métier</a>"
       parameters: *only_siren_parameters
-      responses: *default_responses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  assurance:
+                    example: AXA FRANCE IARD
+                    type: string
+                  date_de_delivrance_du_certificat:
+                    example: 01/12/2020
+                    type: string
+                  date_de_validite_des_qualifications:
+                    description: La date de validité des qualifications est toujours précisée en fin de liste.
+                    example: 01/12/2023
+                    type: string
+                  date_de_validite_des_qualifications_probatoires:
+                    example: 01/12/2021
+                    type: string
+                  duree_de_validite_du_certificat:
+                    example: valable un an
+                    type: string
+                  numero_certificat:
+                    example: "20 12 4102"
+                    type: string
+                  qualifications:
+                    type: array
+                    description: La liste suivante énumère les qualifications de l'entreprise.
+                    items:
+                      type: object
+                      properties:
+                        code_qualification:
+                          description: Chaque qualification est identifiée par un code à 4 chiffres.
+                          example: '1911'
+                          type: string
+                        definition:
+                          example: "Réalisation d'un audit énergétique [...]"
+                          type: string
+                        nom:
+                          example: Audit énergétique "maisons individuelles"
+                          type: string
+                        rge:
+                          description: Ce champ indique si la qualification est RGE, c'est à dire “Reconnu Garant de l’Environnement”.
+                          example: '1'
+                          type: string
+                  qualifications_probatoires:
+                    description:  Cette liste se compose de la même façon mais énumère les qualifications probatoires de l'entreprise.
+                    items:
+                      properties:
+                        code_qualification:
+                          description: Chaque qualification est identifiée par un code à 4 chiffres.
+                          example: '1911'
+                          type: string
+                        definition:
+                          example: "Réalisation d'un audit énergétique [...]"
+                          type: string
+                        nom:
+                          example: Audit énergétique "maisons individuelles"
+                          type: string
+                        rge:
+                          description: Ce champ indique si la qualification est RGE, c'est à dire “Reconnu Garant de l’Environnement”.
+                          example: '1'
+                          type: string
+                      type: object
+                    type: array
+                  siren:
+                    example: '515228211'
+                    type: string
+                  url:
+                    example: 'https://www.opqibi.com/fiche/4387'
+                    type: string
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
 # &tag_propriete_intellectuelle
 
@@ -2990,6 +3082,9 @@ components:
         siren_cnetp:
           value: "542036207"
           summary: SIREN pour CNETP
+        siren_opqibi:
+          value: "515228211"
+          summary: SIREN pour OPQIBI
 
     Siret:
       in: path
