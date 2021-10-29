@@ -1289,7 +1289,59 @@ paths:
       summary: "[RNA] Divers documents d'une association"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-documents_associations'>Documentation métier</a>"
       parameters: *association_parameters
-      responses: *default_responses
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  documents:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        timestamp:
+                          example: '1631182730'
+                          description: Date du dépot du document au format timestamp UNIX
+                          type: string
+                        type:
+                          example: Récépissé de modification
+                          description: "Ce sont les différents types de documents, et de fait, pour chaque URL, celui-ci est indiqué. Voici une liste non-exhaustive des options possibles : 'Liste des dirigeants', 'Statuts', 'Procès verbal', 'Récépissé de dissolution', 'Récépissé de modification'..."
+                          type: string
+                        url:
+                          example: https://storage.entreprise.api.gouv.fr/siade/1635505765-5cd08405e4163c9f7713447829aeef7284c3283d-document_asso.pdf
+                          description: l'URL du fichier
+                          type: string
+                  nombre_documents:
+                    example: 1
+                    description: Le nombre total de documents disponibles
+                    type: integer
+                  nombre_documents_deficients:
+                    example: 0
+                    description: Le nombre de documents ignorés car déficients (indisponibles, PDF invalide etc...)
+                    type: integer
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/actes_inpi/{siren}:
     get:
