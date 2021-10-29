@@ -1983,7 +1983,117 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
-      responses: *default_responses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  declarations: &declarations_liasse_fiscale
+                    items:
+                      properties:
+                        code_regime:
+                          example: NE
+                          type: string
+                        date_declaration:
+                          example: '2014-04-25'
+                          type: string
+                          format: date-time
+                        duree_exercice:
+                          example: 365 jours
+                          type: string
+                        fin_exercice:
+                          example: '2013-12-31'
+                          type: string
+                          format: date-time
+                        imprime:
+                          properties:
+                            donnees:
+                              properties:
+                                code_nref:
+                                  description: Ce code vous permet de chercher la signification de la valeur qui suit dans le dictionnaire.
+                                  example: '300282'
+                                  type: string
+                                valeur:
+                                  example: '157955912'
+                                  type: string
+                              type: object
+                          type: object
+                        millesime:
+                          description: au format YYYYMM
+                          example: '201401'
+                          type: string
+                        numero_imprime:
+                          example: '2050'
+                          type: string
+                      type: object
+                    type: array
+                  entreprise: &entreprise_liasse_fiscale
+                    type: object
+                    properties:
+                      denomination:
+                        example: Ma Societe
+                        type: string
+                      itip:
+                        example: '100000105873'
+                        type: string
+                      setOcfis:
+                        properties:
+                          ROF:
+                            example: IS1
+                            type: string
+                          codeNace:
+                            example: 4669B
+                            type: string
+                          codeObf:
+                            example: IS
+                            type: string
+                          dateDebut:
+                            example: '1991-04-15T00:00:00+02:00'
+                            type: string
+                            format: date-time
+                          dateDebutPourAttestationRegularite:
+                            example: '1991-04-15T00:00:00+02:00'
+                            type: string
+                            format: date-time
+                          nbRof:
+                            example: '0'
+                            type: string
+                          numOcfi:
+                            example: '100210572749'
+                            type: string
+                          regime:
+                            example: RSI
+                            type: string
+                          texteExploitation:
+                            example: ACHAT VTE MACHINES OUTILS
+                            type: string
+                        type: object
+                      siren:
+                        example: XXXXXXXXX
+                        type: string
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/liasses_fiscales_dgfip/{annee}/dictionnaire:
     get:
@@ -1997,7 +2107,71 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
-      responses: *default_responses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dictionnaire: &dictionnaire_liasse_fiscale
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        millesimes:
+                          properties:
+                            declaration:
+                              items:
+                                properties:
+                                  code:
+                                    example: PG
+                                    type: string
+                                  code_EDI:
+                                    example: 'PG:C889:7111:1:TBX'
+                                    type: string
+                                  code_absolu:
+                                    example: '2006747'
+                                    type: string
+                                  code_nref:
+                                    example: '3305687'
+                                    type: string
+                                  intitule:
+                                    example: Mention déclaration néante
+                                    type: string
+                                type: object
+                              type: array
+                            millesime:
+                              example: '201501'
+                              type: string
+                            statut_version:
+                              example: V
+                              type: string
+                          type: object
+                        numero_imprime:
+                          example: '2053'
+                          type: string
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/liasses_fiscales_dgfip/{annee}/complete/{siren}:
     get:
@@ -2006,7 +2180,37 @@ paths:
       summary: "[DGFIP] Déclarations de résultat : liasses fiscales d'une entreprise et dictionnaire pour une année donnée"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-liasses_fiscales_dgfip'>Documentation métier</a>"
       parameters: *siren_year_and_email_parameters
-      responses: *default_responses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dictionnaire: *dictionnaire_liasse_fiscale
+                  declarations: *declarations_liasse_fiscale
+                  entreprise: *entreprise_liasse_fiscale
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
 ## &tag_attestations
 
