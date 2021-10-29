@@ -2485,7 +2485,37 @@ paths:
       summary: "[FNTP] Carte professionnelle travaux publics"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-cartes_professionnelles_fntp'>Documentation métier</a>"
       parameters: *only_siren_parameters
-      responses: *default_responses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    example: https://storage.entreprise.api.gouv.fr/siade/1635516790-75bdb1fa7bed7d5203a439687297b4bc4dbed20c-carte_professionnelle_fntp.pdf
+                    type: string
+        '206':
+          $ref: '#/components/responses/Incomplete'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/NotFound'
+        '451':
+          $ref: '#/components/responses/LegalyUnavailable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnvailable'
+        '504':
+          $ref: '#/components/responses/ProviderTimeout'
 
   /v2/certificats_cnetp/{siren}:
     get:
@@ -2705,6 +2735,9 @@ components:
         siren_artisant:
           value: "301123626"
           summary: SIREN entreprise artisanale
+        siren_fntp:
+          value: "339379984"
+          summary: SIREN pour FNTP
 
     Siret:
       in: path
