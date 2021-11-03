@@ -600,7 +600,7 @@ paths:
                     description: "Il s'agit du jour d'immatriculation de l'entreprise au RCS. À compter de cette date, les sociétés jouissent de la personnalité morale. Cette date d'immatriculation n'est pas la même que celle délivrée par l'INSEE. Elle ne correspond pas non plus à la date du début d'activité."
                   date_immatriculation_timestamp:
                     type: "integer"
-                    example: '150332400'
+                    example: 150332400
                     description: "Date d'immatriculation au format timestamp UNIX"
                   date_extrait:
                     type: "string"
@@ -619,7 +619,7 @@ paths:
                           description: "Date de l'observation"
                         date_timestamp:
                           type: "integer"
-                          example: '663548400'
+                          example: 663548400
                           description: "Date de l'observation au format timestamp UNIX"
                         numero:
                           type: "string"
