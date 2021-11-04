@@ -154,6 +154,14 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: single_quotes
 
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - staging
+    - sandbox
+    - development
+    - test
+
 # Not relevant for RSwag
 RSpec/DescribeClass:
   Exclude:
