@@ -48,6 +48,7 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
+      operationId: 'entreprises_restored_show'
       responses:
         '200':
           description: 'OK'
@@ -390,6 +391,7 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
+      operationId: 'etablissements_restored_show'
       responses:
         '200':
           description: 'OK'
@@ -582,6 +584,7 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
+      operationId: 'extraits_rcs_infogreffe_show'
       responses:
         '200':
           description: 'OK'
@@ -1150,6 +1153,7 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
+      operationId: 'associations_show'
       responses:
         '200':
           description: 'OK'
@@ -1291,6 +1295,7 @@ paths:
       summary: "[RNA] Divers documents d'une association"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-documents_associations'>Documentation métier</a>"
       parameters: *association_parameters
+      operationId: 'documents_associations_show'
       responses:
         '200':
           description: 'OK'
@@ -1352,6 +1357,7 @@ paths:
       summary: "[INPI] Actes"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-actes_inpi'>Documentation métier</a>"
       parameters: *only_siren_parameters
+      operationId: 'documents_inpi_actes'
       responses:
         '200':
           description: 'OK'
@@ -1425,6 +1431,7 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
+      operationId: 'conventions_collectives_show'
       responses:
         '200':
           description: 'OK'
@@ -1489,6 +1496,7 @@ paths:
       summary: "Effectifs mensuel moyen d'une entreprise sur l'année précédente"
       description: "Renvoie l'effectif moyen de l'entreprise sur l'année précédente"
       parameters: *only_siren_parameters
+      operationId: 'effectifs_annuels_entreprise_acoss_covid_show'
       responses:
         '200':
           description: 'OK'
@@ -1542,6 +1550,7 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
+      operationId: 'effectifs_mensuels_entreprise_acoss_covid_show'
       responses:
         '200':
           description: 'OK'
@@ -1599,6 +1608,7 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
+      operationId: 'effectifs_mensuels_etablissement_acoss_covid_show'
       responses:
         '200':
           description: OK
@@ -1652,6 +1662,7 @@ paths:
       summary: "[DGFIP] Chiffres d'affaires"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-exercices'>Documentation métier</a>"
       parameters: *only_siret_parameters
+      operationId: 'exercices_show'
       responses:
         '200':
           description: OK
@@ -1707,6 +1718,7 @@ paths:
       summary: "[INPI] Bilan annuels"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-bilans_inpi'>Documentation métier</a>"
       parameters: *only_siren_parameters
+      operationId: 'documents_inpi_bilans'
       responses:
         '200':
           description: OK
@@ -1786,6 +1798,7 @@ paths:
       summary: "[BDF] 3 derniers bilans annuels"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-bilans_inpi'>Documentation métier</a>"
       parameters: *only_siren_parameters
+      operationId: 'bilans_entreprises_bdf_show'
       responses:
         '200':
           description: OK
@@ -1985,6 +1998,7 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
+      operationId: 'liasses_fiscales_dgfip_declaration'
       responses:
         '200':
           description: OK
@@ -2109,6 +2123,7 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
+      operationId: 'liasses_fiscales_dgfip_dictionnaire'
       responses:
         '200':
           description: OK
@@ -2182,6 +2197,7 @@ paths:
       summary: "[DGFIP] Déclarations de résultat : liasses fiscales d'une entreprise et dictionnaire pour une année donnée"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-liasses_fiscales_dgfip'>Documentation métier</a>"
       parameters: *siren_year_and_email_parameters
+      operationId: 'liasses_fiscales_dgfip_complete'
       responses:
         '200':
           description: OK
@@ -2239,6 +2255,7 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
+      operationId: 'attestation_fiscale_dgfip_show'
       responses:
         '200':
           description: OK
@@ -2278,6 +2295,7 @@ paths:
       summary: "[ACOSS] Attestation de vigilance"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-attestations_sociales_acoss'>Documentation métier</a>"
       parameters: *only_siren_parameters
+      operationId: 'attestations_sociales_acoss_show'
       responses:
         '200':
           description: OK
@@ -2317,6 +2335,7 @@ paths:
       summary: "[AGEFIPH] Conformité emploi des travailleurs handicapés"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-attestations_agefiph'>Documentation métier</a>"
       parameters: *only_siret_parameters
+      operationId: 'attestations_agefiph_show'
       responses:
         '200':
           description: OK
@@ -2360,6 +2379,7 @@ paths:
       summary: "[MSA] Cotisations de sécurité sociale agricole"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-cotisations_msa'>Documentation métier</a>"
       parameters: *only_siret_parameters
+      operationId: 'cotisations_msa_show'
       responses:
         '200':
           description: OK
@@ -2404,6 +2424,7 @@ paths:
       summary: "[PROBTP] Cotisations retraite bâtiment : savoir si un établissement est à jour dans ses cotisations"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-attestations_cotisation_retraite_probtp'>Documentation métier</a>"
       parameters: *only_siret_parameters
+      operationId: 'eligibilites_cotisation_retraite_probtp_show'
       responses:
         '200':
           description: OK
@@ -2448,6 +2469,7 @@ paths:
       summary: "[PROBTP] Cotisations retraite bâtiment : attestation d'un établissement"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-attestations_cotisation_retraite_probtp'>Documentation métier</a>"
       parameters: *only_siret_parameters
+      operationId: 'attestations_cotisation_retraite_probtp_show'
       responses:
         '200':
           description: OK
@@ -2487,6 +2509,7 @@ paths:
       summary: "[FNTP] Carte professionnelle travaux publics"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-cartes_professionnelles_fntp'>Documentation métier</a>"
       parameters: *only_siren_parameters
+      operationId: 'cartes_professionnelles_fntp_show'
       responses:
         '200':
           description: OK
@@ -2526,6 +2549,7 @@ paths:
       summary: "[CNETP] Cotisations congés payés & chômage intempéries"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-certificats_cnetp'>Documentation métier</a>"
       parameters: *only_siren_parameters
+      operationId: 'certificats_cnetp_show'
       responses:
         '200':
           description: OK
@@ -2588,6 +2612,7 @@ paths:
           schema:
             type: boolean
           example: true
+      operationId: 'certificats_rge_ademe_show'
       responses:
         '200':
           description: OK
@@ -2644,6 +2669,7 @@ paths:
       summary: "[API BIO] Certification Biologique"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-certificats_agence_bio'>Documentation métier</a>"
       parameters: *only_siret_parameters
+      operationId: 'certificats_agence_bio_show'
       responses:
         '200':
           description: OK
@@ -2790,6 +2816,7 @@ paths:
       summary: "[QUALIBAT] Certificat de qualification bâtiment"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-certificats_qualibat'>Documentation métier</a>"
       parameters: *only_siret_parameters
+      operationId: 'certificats_qualibat_show'
       responses:
         '200':
           description: OK
@@ -2829,6 +2856,7 @@ paths:
       summary: "[OPQIBI] Certification de qualification d'ingénierie"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-certificats_opqibi'>Documentation métier</a>"
       parameters: *only_siren_parameters
+      operationId: 'certificats_opqibi_show'
       responses:
         '200':
           description: OK
@@ -2932,6 +2960,7 @@ paths:
       summary: "[INPI] Brevets, modèles et marques déposés"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-extraits_courts_inpi'>Documentation métier</a>"
       parameters: *only_siren_parameters
+      operationId: 'extraits_courts_inpi_show'
       responses:
         '200':
           description: OK
@@ -3096,6 +3125,7 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
+      operationId: 'eori_douanes_show'
       responses:
        '200':
           description: 'OK'
