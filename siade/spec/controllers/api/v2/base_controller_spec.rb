@@ -41,7 +41,7 @@ RSpec.describe API::V2::BaseController, type: :controller do
         paths: {
           '/any/path/will/work': {
             get: {
-              controller_action: 'dummy_name_index',
+              operationId: 'dummy_name_index',
               responses: {
                 '200': {
                   content: {

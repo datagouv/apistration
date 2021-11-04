@@ -657,7 +657,7 @@ paths:
       summary: "[RNM CMA] Données de référence d'une entreprise enregistrée au registre des artisans"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-entreprises_artisanales'>Documentation métier</a>"
       parameters: *only_siren_parameters
-      controller_action: 'entreprises_artisanales_show'
+      operationId: 'entreprises_artisanales_show'
       responses:
         '200':
           description: 'OK'

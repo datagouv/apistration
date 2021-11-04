@@ -24,7 +24,7 @@ class API::V2::BaseController < ::API::AuthenticateEntityController
 
   def valid_schema
     open_api_schema['paths'].find do |_, schema|
-      schema['get']['controller_action'] == "#{controller_name}_#{action_name}"
+      schema['get']['operationId'] == "#{controller_name}_#{action_name}"
     end
   end
 
