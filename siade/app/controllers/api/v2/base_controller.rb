@@ -17,10 +17,22 @@ class API::V2::BaseController < ::API::AuthenticateEntityController
   end
 
   def extract_valid_open_api_path_schema
-    valid_schema = YAML.load_file(Rails.root.join('public/v2/open-api.yml'))['paths'].find do |_, schema|
+    valid_schema[1]['get']['responses']['200']['content']['application/json']['schema']
+  end
+
+  private
+
+  def valid_schema
+    open_api_schema['paths'].find do |_, schema|
       schema['get']['controller_action'] == "#{controller_name}_#{action_name}"
     end
+  end
 
-    valid_schema[1]['get']['responses']['200']['content']['application/json']['schema']
+  def open_api_schema
+    YAML.load_file(schema_path)
+  end
+
+  def schema_path
+    Rails.root.join('public/v2/open-api.yml')
   end
 end
