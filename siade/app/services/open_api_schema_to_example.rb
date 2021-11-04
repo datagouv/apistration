@@ -8,13 +8,9 @@ class OpenAPISchemaToExample
   def perform
     case schema['type']
     when 'array'
-      [
-        self.class.new(schema['items']).perform
-      ].flatten
+      extract_array_value(schema['items'])
     when 'object'
-      schema['properties'].to_h.transform_values do |value|
-        self.class.new(value).perform
-      end
+      extract_object_value(schema['properties'])
     when 'string'
       extract_value(schema, 'dummy')
     when 'integer'
@@ -27,6 +23,22 @@ class OpenAPISchemaToExample
   end
 
   private
+
+  def extract_array_value(value)
+    [
+      perform_recursively(value)
+    ].flatten
+  end
+
+  def extract_object_value(properties)
+    properties.to_h.transform_values do |value|
+      perform_recursively(value)
+    end
+  end
+
+  def perform_recursively(value)
+    self.class.new(value).perform
+  end
 
   def extract_value(sub_schema, default)
     sub_schema['example'] ||
