@@ -101,7 +101,6 @@ group :development do
   gem 'derailed_benchmarks'
 
   gem 'mina'
-  gem 'rails_best_practices'
 
   # ruby syntax analyze
   gem 'rubocop', require: false
