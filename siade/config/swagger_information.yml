@@ -24,6 +24,55 @@ acoss:
       description: "Ce document est automatiquement supprimé au bout de 3 mois."
       example: 'https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_vigilance_acoss.pdf'
 
+douanes:
+  eori:
+    title: 'Immatriculation EORI'
+    description: |
+      Accéder au statut de l’immatriculation des entreprises de la base des douanes. L'appel se fait par numéro EORI ou SIRET :
+      - Appel par numéro EORI: fonctionne pour toutes les entreprises
+      - Appel par SIRET: fonctionne uniquement pour les entreprises ayant fait leur immatriculation EORI en France. Une entreprise immatriculée dans un autre pays européen renverra toujours un négatif.
+    tags:
+      - "Informations générales"
+    attributes:
+      id:
+        title: 'Identifiant EORI'
+        description: "Numéro EORI de l'entité"
+        type: 'string'
+        example: 'FR16002307300010'
+      actif:
+        title: 'Actif'
+        type: 'Boolean'
+        description: ' indique si ce numéro est encore actif (true) ou non (false)'
+        example: true
+      code_pays:
+        title: 'Code Pays'
+        type: 'string'
+        example: 'FR'
+      code_postal:
+        title: 'Code Postal'
+        type: 'string'
+        example: '95520'
+      raison_sociale:
+        title: 'Raison Sociale'
+        type: 'string'
+        description: 'Raison sociale telle que connue par les douanes'
+        example: 'CENTRE INFORMATIQUE DOUANIER'
+      pays:
+        title: 'Pays'
+        type: 'string'
+        description: "Adresse de l'entreprise (pays) telle que connue par les douanes"
+        example: 'FRANCE'
+      rue:
+        title: 'Rue'
+        type: 'string'
+        description: "Adresse de l'entreprise (rue) telle que connue par les douanes"
+        example: '27 R DES BEAUX SOLEILS'
+      ville:
+        title: 'Ville'
+        type: 'string'
+        description: "Adresse de l'entreprise (ville) telle que connue par les douanes"
+        example: 'OSNY'
+
 insee:
   entreprise:
     title: "Données de références d'une entité"
