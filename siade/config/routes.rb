@@ -69,6 +69,10 @@ Rails.application.routes.draw do
       get 'attestations_sociales/:siren' => '/api/v3_and_more/acoss/attestations_sociales#show'
     end
 
+    namespace :douanes do
+      get 'eoris/:siret_or_eori' => '/api/v3_and_more/douanes/eori#show'
+    end
+
     namespace :insee do
       get 'entreprises/:siren' => '/api/v3_and_more/insee/entreprises#show'
       get 'entreprises/diffusables/:siren' => '/api/v3_and_more/insee/entreprises_diffusables#show'
