@@ -65,18 +65,6 @@ Rails.application.routes.draw do
   end
 
   scope path: 'v:api_version', constraints: { api_version: /\d+/ } do
-    namespace :mi do
-      get 'associations/:siret_or_rna' => '/api/v3_and_more/mi/associations#show'
-    end
-
-    namespace :rnm do
-      get 'entreprises/:siren' => '/api/v3_and_more/rnm/entreprises_artisanales#show'
-    end
-
-    namespace :probtp do
-      get 'attestations_cotisation_retraite/:siret' => '/api/v3_and_more/probtp/attestations_cotisation_retraite#show'
-    end
-
     namespace :acoss do
       get 'attestations_sociales/:siren' => '/api/v3_and_more/acoss/attestations_sociales#show'
     end
@@ -86,6 +74,18 @@ Rails.application.routes.draw do
       get 'entreprises/diffusables/:siren' => '/api/v3_and_more/insee/entreprises_diffusables#show'
 
       get 'etablissements/:siret' => '/api/v3_and_more/insee/etablissements#show'
+    end
+
+    namespace :mi do
+      get 'associations/:siret_or_rna' => '/api/v3_and_more/mi/associations#show'
+    end
+
+    namespace :probtp do
+      get 'attestations_cotisation_retraite/:siret' => '/api/v3_and_more/probtp/attestations_cotisation_retraite#show'
+    end
+
+    namespace :rnm do
+      get 'entreprises/:siren' => '/api/v3_and_more/rnm/entreprises_artisanales#show'
     end
   end
 
