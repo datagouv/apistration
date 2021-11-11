@@ -12,6 +12,18 @@ mandatory_params:
     \n
     \n
     L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+
+acoss:
+  attestation_sociale:
+    title: "Attestation de vigilance"
+    description: "Obtenir l'attestation validant que l'entreprise s'acquitte de ses obligations déclaratives et du paiement des cotisations et contributions sociales auprès de l'URSSAF Caisse nationale (anciennement ACOSS)."
+    tags:
+      - "Attestations sociales et fiscales"
+    document_url_properties:
+      title: "Lien vers l'attestation de vigilance ACOSS"
+      description: "Ce document est automatiquement supprimé au bout de 3 mois."
+      example: 'https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_vigilance_acoss.pdf'
+
 insee:
   entreprise:
     title: "Données de références d'une entité"
@@ -368,48 +380,6 @@ insee:
     meta:
       date_derniere_mise_a_jour: *insee_date_derniere_mise_a_jour
 
-
-rnm:
-  entreprise_artisanale:
-    title: "Données de référence d'une entreprise artisanale"
-    description: "Obtenir les informations concernant une entité enregistrée au Répertoire National des Métiers (RNM)"
-    tags:
-      - "Informations générales"
-    attributes:
-      modalite_exercice:
-        type: 'string'
-        example: 'P'
-        description: "Détermine si l'entreprise a une activité permanente ou saisonnière.
-        \n
-        L'activité est dite saisonnière si chaque année, l'entreprise cesse totalement ses activités pendant plus de 3 mois consécutifs.
-        \n
-        \n
-        Les valeurs possibles sont:
-        \n
-        - P => Permanent
-        \n
-        - S => Saisonnière
-        \n
-        - NR => Non renseignée"
-        enum:
-          - 'P'
-          - 'S'
-          - 'NR'
-      non_sedentaire:
-        type: 'string'
-        example: '0'
-        description: "Indique si l'entreprise a une activité ambulante.
-        \n
-        \n
-        Les valeurs possibles sont:
-        \n
-        - 0 => sédentaire
-        \n
-        - 1 => non-sédentaire"
-        enum:
-          - '0'
-          - '1'
-
 mi:
   association:
     title: "Informations déclaratives d'une association"
@@ -501,18 +471,6 @@ mi:
         type: 'string'
         example: '1955-01-01'
 
-
-acoss:
-  attestation_sociale:
-    title: "Attestation de vigilance"
-    description: "Obtenir l'attestation validant que l'entreprise s'acquitte de ses obligations déclaratives et du paiement des cotisations et contributions sociales auprès de l'URSSAF Caisse nationale (anciennement ACOSS)."
-    tags:
-      - "Attestations sociales et fiscales"
-    document_url_properties:
-      title: "Lien vers l'attestation de vigilance ACOSS"
-      description: "Ce document est automatiquement supprimé au bout de 3 mois."
-      example: 'https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_vigilance_acoss.pdf'
-
 probtp:
   attestation_cotisation_retraite:
     title: "Cotisations retraite bâtiment"
@@ -524,3 +482,43 @@ probtp:
       description: "Ce document est automatiquement supprimé au bout de 3 mois."
       example: 'https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf'
 
+rnm:
+  entreprise_artisanale:
+    title: "Données de référence d'une entreprise artisanale"
+    description: "Obtenir les informations concernant une entité enregistrée au Répertoire National des Métiers (RNM)"
+    tags:
+      - "Informations générales"
+    attributes:
+      modalite_exercice:
+        type: 'string'
+        example: 'P'
+        description: "Détermine si l'entreprise a une activité permanente ou saisonnière.
+        \n
+        L'activité est dite saisonnière si chaque année, l'entreprise cesse totalement ses activités pendant plus de 3 mois consécutifs.
+        \n
+        \n
+        Les valeurs possibles sont:
+        \n
+        - P => Permanent
+        \n
+        - S => Saisonnière
+        \n
+        - NR => Non renseignée"
+        enum:
+          - 'P'
+          - 'S'
+          - 'NR'
+      non_sedentaire:
+        type: 'string'
+        example: '0'
+        description: "Indique si l'entreprise a une activité ambulante.
+        \n
+        \n
+        Les valeurs possibles sont:
+        \n
+        - 0 => sédentaire
+        \n
+        - 1 => non-sédentaire"
+        enum:
+          - '0'
+          - '1'
