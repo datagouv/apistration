@@ -41,4 +41,3 @@ class ValidateSiretOrEORI < ValidateParamInteractor
     context.params[:siret_or_eori]
   end
 end
-

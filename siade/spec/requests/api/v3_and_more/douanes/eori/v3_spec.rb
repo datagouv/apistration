@@ -41,4 +41,3 @@ RSpec.describe 'Douanes: EORI', type: %i[request swagger] do
     end
   end
 end
-

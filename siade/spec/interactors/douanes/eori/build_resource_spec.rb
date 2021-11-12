@@ -1,6 +1,6 @@
 RSpec.describe Douanes::EORI::BuildResource, type: :build_resource do
   describe '.call', vcr: { cassette_name: 'douanes/eori/valid_eori' } do
-    subject { described_class.call(response: response) }
+    subject(:call) { described_class.call(response: response) }
 
     let(:valid_payload) do
       {
@@ -32,9 +32,11 @@ RSpec.describe Douanes::EORI::BuildResource, type: :build_resource do
     it { is_expected.to be_a_success }
 
     it 'builds valid resource' do
-      expect(subject.resource).to be_a(Resource)
+      expect(call.resource).to be_a(Resource)
+    end
 
-      expect(subject.resource.to_h).to eq(valid_payload)
+    it 'has valid payload' do
+      expect(call.resource.to_h).to eq(valid_payload)
     end
   end
 end

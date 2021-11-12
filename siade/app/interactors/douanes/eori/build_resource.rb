@@ -1,5 +1,4 @@
 class Douanes::EORI::BuildResource < BuildResource
-
   protected
 
   def resource_attributes
