@@ -1,0 +1,40 @@
+RSpec.describe Douanes::EORI::BuildResource, type: :build_resource do
+  describe '.call', vcr: { cassette_name: 'douanes/eori/valid_eori' } do
+    subject { described_class.call(response: response) }
+
+    let(:valid_payload) do
+      {
+        id: 'FR16002307300010',
+        actif: true,
+        code_pays: 'FR',
+        code_postal: '95520',
+        raison_sociale: 'CENTRE INFORMATIQUE DOUANIER',
+        pays: 'FRANCE',
+        rue: '27 R DES BEAUX SOLEILS',
+        ville: 'OSNY'
+      }
+    end
+
+    let(:response) do
+      instance_double('Net::HTTPOK', body: body)
+    end
+
+    let(:body) do
+      Douanes::EORI::MakeRequest.call(params: params).response.body
+    end
+
+    let(:params) do
+      {
+        siret_or_eori: valid_eori
+      }
+    end
+
+    it { is_expected.to be_a_success }
+
+    it 'builds valid resource' do
+      expect(subject.resource).to be_a(Resource)
+
+      expect(subject.resource.to_h).to eq(valid_payload)
+    end
+  end
+end
