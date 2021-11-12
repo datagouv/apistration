@@ -148,6 +148,9 @@ endpoints = <<STR
 - name: '[V3] ACOSS Attestations sociales'
   http_path: '/v3/acoss/attestations_sociales/418166096'
 
+- name: '[V3] Douanes EORI'
+  http_path: '/v3/douanes/eori/FR16002307300010'
+
 STR
 
 def test_endpoint(endpoint, index)
