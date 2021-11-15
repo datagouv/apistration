@@ -7,7 +7,7 @@ class Douanes::EORI::BuildResource < BuildResource
       actif: infos_eori['actif'],
       code_pays: infos_eori['codePays'],
       code_postal: infos_eori['codePostal'],
-      raison_sociale: infos_eori['libelle'],
+      libelle: infos_eori['libelle'],
       pays: infos_eori['pays'],
       rue: infos_eori['rue'],
       ville: infos_eori['ville']

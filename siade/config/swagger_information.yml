@@ -52,10 +52,10 @@ douanes:
         title: 'Code Postal'
         type: 'string'
         example: '95520'
-      raison_sociale:
-        title: 'Raison Sociale'
+      libelle:
+        title: "Libellé de l'entité"
         type: 'string'
-        description: "Raison sociale de l'entreprise telle que connue par les douanes"
+        description: "Libellé de l'entreprise tel que connu par les douanes, équivalent à la Raison Sociale pour une entreprise Française."
         example: 'CENTRE INFORMATIQUE DOUANIER'
       pays:
         title: 'Pays'

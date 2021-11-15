@@ -8,7 +8,7 @@ RSpec.describe Douanes::EORI::BuildResource, type: :build_resource do
         actif: true,
         code_pays: 'FR',
         code_postal: '95520',
-        raison_sociale: 'CENTRE INFORMATIQUE DOUANIER',
+        libelle: 'CENTRE INFORMATIQUE DOUANIER',
         pays: 'FRANCE',
         rue: '27 R DES BEAUX SOLEILS',
         ville: 'OSNY'

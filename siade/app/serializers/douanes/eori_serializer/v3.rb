@@ -5,7 +5,7 @@ class Douanes::EORISerializer::V3 < JSONAPI::BaseSerializer
     :actif,
     :code_pays,
     :code_postal,
-    :raison_sociale,
+    :libelle,
     :pays,
     :rue,
     :ville
