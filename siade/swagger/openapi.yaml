@@ -134,7 +134,7 @@ paths:
         '403':
           description: Accès interdit
         '200':
-          description: Entreprise trouvée
+          description: Entité trouvée
           content:
             application/json:
               schema:
@@ -156,14 +156,17 @@ paths:
                         properties:
                           id:
                             title: Identifiant EORI
-                            description: Numéro EORI de l'entité
+                            description: 'Numéro EORI (Economic Operator Registration
+                              and Identification) de l''entité: un numéro unique communautaire
+                              permettant d’identifier chaque opérateur économique
+                              dans ses relations avec les autorités douanières.'
                             type: string
                             example: FR16002307300010
                           actif:
                             title: Actif
-                            type: Boolean
-                            description: " indique si ce numéro est encore actif (true)
-                              ou non (false)"
+                            type: boolean
+                            description: Indique si ce numéro est encore actif (true)
+                              ou non (false)
                             example: true
                           code_pays:
                             title: Code Pays
@@ -173,35 +176,37 @@ paths:
                             title: Code Postal
                             type: string
                             example: '95520'
-                          raison_sociale:
-                            title: Raison Sociale
+                          libelle:
+                            title: Libellé de l'entité
                             type: string
-                            description: Raison sociale telle que connue par les douanes
+                            description: Libellé de l'entreprise tel que connu par
+                              les douanes, équivalent à la Raison Sociale pour une
+                              entreprise Française.
                             example: CENTRE INFORMATIQUE DOUANIER
                           pays:
                             title: Pays
                             type: string
-                            description: Adresse de l'entreprise (pays) telle que
-                              connue par les douanes
+                            description: Pays de résidence de l'établissement telle
+                              que connue par les douanes
                             example: FRANCE
                           rue:
                             title: Rue
                             type: string
-                            description: Adresse de l'entreprise (rue) telle que connue
-                              par les douanes
+                            description: Rue de l'établissement telle que connue par
+                              les douanes
                             example: 27 R DES BEAUX SOLEILS
                           ville:
                             title: Ville
                             type: string
-                            description: Adresse de l'entreprise (ville) telle que
-                              connue par les douanes
+                            description: Ville de l'établissement telle que connue
+                              par les douanes
                             example: OSNY
                         required:
                         - id
                         - actif
                         - code_pays
                         - code_postal
-                        - raison_sociale
+                        - libelle
                         - pays
                         - rue
                         - ville
