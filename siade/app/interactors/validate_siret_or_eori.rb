@@ -1,20 +1,14 @@
 class ValidateSiretOrEORI < ValidateParamInteractor
   def call
-    return if eori_valid? || siret.valid?
+    return if siret_valid? || eori_valid?
 
     invalid_param!(:siret_or_eori)
   end
 
   private
 
-  def eori
-    @eori ||= siret_or_eori
-  end
-
-  def siret
-    extracted_siret = siret_or_eori&.slice(/\d+/)
-
-    @siret ||= Siret.new(extracted_siret)
+  def siret_valid?
+    Siret.new(siret_or_eori).valid?
   end
 
   def eori_valid?
@@ -22,7 +16,11 @@ class ValidateSiretOrEORI < ValidateParamInteractor
   end
 
   def french_eori?
-    starts_with_FR? && siret.valid?
+    starts_with_FR? && siret_from_french_eori_valid?
+  end
+
+  def siret_from_french_eori_valid?
+    Siret.new(siret_or_eori.delete_prefix('FR')).valid?
   end
 
   def european_eori?
@@ -30,11 +28,11 @@ class ValidateSiretOrEORI < ValidateParamInteractor
   end
 
   def starts_with_FR?
-    eori =~ /\AFR/
+    siret_or_eori =~ /\AFR/
   end
 
   def starts_with_2_letters?
-    eori =~ /\A[A-Z]{2}/
+    siret_or_eori =~ /\A[A-Z]{2}/
   end
 
   def siret_or_eori
