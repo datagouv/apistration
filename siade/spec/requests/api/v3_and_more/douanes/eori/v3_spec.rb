@@ -20,7 +20,7 @@ RSpec.describe 'Douanes: EORI', type: %i[request swagger] do
       end
 
       describe 'with valid mandatory params', valid: true do
-        response '200', 'Entreprise trouvée', vcr: { cassette_name: 'douanes/eori/valid_eori' } do
+        response '200', 'Entité trouvée', vcr: { cassette_name: 'douanes/eori/valid_eori' } do
           schema build_rswag_response(
             id: valid_eori,
             type: 'entreprise',
