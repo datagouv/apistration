@@ -36,7 +36,7 @@ douanes:
     attributes:
       id:
         title: 'Identifiant EORI'
-        description: "Numéro EORI de l'entité"
+        description: "Numéro EORI (Economic Operator Registration and Identification) de l'entité: un numéro unique communautaire permettant d’identifier chaque opérateur économique dans ses relations avec les autorités douanières."
         type: 'string'
         example: 'FR16002307300010'
       actif:
