@@ -149,7 +149,7 @@ endpoints = <<STR
   http_path: '/v3/acoss/attestations_sociales/418166096'
 
 - name: '[V3] DGDDI EORI'
-  http_path: '/v3/dgddi/eori/FR16002307300010'
+  http_path: '/v3/dgddi/eoris/FR16002307300010'
 
 STR
 
