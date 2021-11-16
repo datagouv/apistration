@@ -1,8 +1,8 @@
-class API::V3AndMore::Douanes::EORIController < API::V3AndMore::BaseController
+class API::V3AndMore::DGDDI::EORIController < API::V3AndMore::BaseController
   def show
     authorize :eori_douanes
 
-    organizer = ::Douanes::EORI.call(params: organizer_params)
+    organizer = ::DGDDI::EORI.call(params: organizer_params)
 
     if organizer.success?
       render json: serializer_class.new(organizer.resource).serializable_hash,
@@ -21,6 +21,6 @@ class API::V3AndMore::Douanes::EORIController < API::V3AndMore::BaseController
   end
 
   def serializer_module
-    ::Douanes::EORISerializer
+    ::DGDDI::EORISerializer
   end
 end

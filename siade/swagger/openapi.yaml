@@ -90,7 +90,7 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
-  "/v3/douanes/eoris/{siret_or_eori}":
+  "/v3/dgddi/eoris/{siret_or_eori}":
     get:
       summary: Immatriculation EORI
       tags:

@@ -24,7 +24,7 @@ acoss:
       description: "Ce document est automatiquement supprimé au bout de 3 mois."
       example: 'https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_vigilance_acoss.pdf'
 
-douanes:
+dgddi:
   eori:
     title: 'Immatriculation EORI'
     description: |

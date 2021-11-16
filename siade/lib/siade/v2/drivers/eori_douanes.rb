@@ -9,7 +9,7 @@ class SIADE::V2::Drivers::EORIDouanes < SIADE::V2::Drivers::GenericDriver
   end
 
   def provider_name
-    'Douanes'
+    'DGDDI'
   end
 
   def request

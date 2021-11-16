@@ -24,7 +24,7 @@ RSpec.describe API::V2::EORIDouanesController, type: :controller do
       end
     end
 
-    context 'with a non existing EORI', vcr: { cassette_name: 'douanes/eori/non_existing_eori' } do
+    context 'with a non existing EORI', vcr: { cassette_name: 'dgddi/eori/non_existing_eori' } do
       let(:siret_or_eori) { non_existing_eori }
 
       its(:status) { is_expected.to eq(404) }
@@ -38,7 +38,7 @@ RSpec.describe API::V2::EORIDouanesController, type: :controller do
       end
     end
 
-    describe 'happy path', vcr: { cassette_name: 'douanes/eori/valid_eori' } do
+    describe 'happy path', vcr: { cassette_name: 'dgddi/eori/valid_eori' } do
       context 'with a valid EORI' do
         let(:siret_or_eori) { valid_eori }
 

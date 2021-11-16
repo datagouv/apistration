@@ -1,4 +1,4 @@
-class Douanes::EORI::BuildResource < BuildResource
+class DGDDI::EORI::BuildResource < BuildResource
   protected
 
   def resource_attributes

@@ -3,7 +3,7 @@ RSpec.describe SIADE::V2::Responses::EORIDouanes, type: :provider_response do
 
   let(:request) { SIADE::V2::Requests::EORIDouanes.new(eori: eori) }
 
-  describe 'success', vcr: { cassette_name: 'douanes/eori/valid_eori' } do
+  describe 'success', vcr: { cassette_name: 'dgddi/eori/valid_eori' } do
     let(:eori) { valid_eori }
 
     its(:http_code) { is_expected.to eq 200 }
@@ -11,14 +11,14 @@ RSpec.describe SIADE::V2::Responses::EORIDouanes, type: :provider_response do
   end
 
   describe 'failure' do
-    context 'with not found EORI', vcr: { cassette_name: 'douanes/eori/non_existing_eori' } do
+    context 'with not found EORI', vcr: { cassette_name: 'dgddi/eori/non_existing_eori' } do
       let(:eori) { non_existing_eori }
 
       its(:http_code) { are_expected.to eq 404 }
       its(:errors) { is_expected.to have_error('Le numéro EORI indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel') }
     end
 
-    context 'when unauthorized by server', vcr: { cassette_name: 'douanes/eori/forbidden' } do
+    context 'when unauthorized by server', vcr: { cassette_name: 'dgddi/eori/forbidden' } do
       let(:eori) { valid_eori }
 
       before do
@@ -26,7 +26,7 @@ RSpec.describe SIADE::V2::Responses::EORIDouanes, type: :provider_response do
       end
 
       its(:http_code) { are_expected.to eq 502 }
-      its(:errors) { is_expected.to have_error("L'authentification auprès du fournisseur de données 'Douanes' a échoué") }
+      its(:errors) { is_expected.to have_error("L'authentification auprès du fournisseur de données 'DGDDI' a échoué") }
     end
 
     context 'when server returns an internal server error' do
@@ -56,7 +56,7 @@ RSpec.describe SIADE::V2::Responses::EORIDouanes, type: :provider_response do
       its(:errors) { is_expected.to have_error('Mauvaise réponse envoyée par le fournisseur de données') }
     end
 
-    context 'when it is not a valid EORI format', vcr: { cassette_name: 'douanes/eori/invalid_eori_format' } do
+    context 'when it is not a valid EORI format', vcr: { cassette_name: 'dgddi/eori/invalid_eori_format' } do
       let(:eori) { 'Z' }
 
       before do

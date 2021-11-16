@@ -1,4 +1,4 @@
-class Douanes::EORI::ValidateResponse < ValidateResponse
+class DGDDI::EORI::ValidateResponse < ValidateResponse
   def call
     return if http_ok?
 

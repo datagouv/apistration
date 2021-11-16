@@ -1,4 +1,4 @@
-RSpec.describe Douanes::EORI::MakeRequest, type: :make_request do
+RSpec.describe DGDDI::EORI::MakeRequest, type: :make_request do
   subject { described_class.call(params: params) }
 
   let(:params) do
@@ -7,7 +7,7 @@ RSpec.describe Douanes::EORI::MakeRequest, type: :make_request do
     }
   end
 
-  describe 'happy path', vcr: { cassette_name: 'douanes/eori/valid_eori' } do
+  describe 'happy path', vcr: { cassette_name: 'dgddi/eori/valid_eori' } do
     let(:eori) { valid_eori }
 
     it { is_expected.to be_a_success }

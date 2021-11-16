@@ -1,5 +1,5 @@
-RSpec.describe Douanes::EORI::BuildResource, type: :build_resource do
-  describe '.call', vcr: { cassette_name: 'douanes/eori/valid_eori' } do
+RSpec.describe DGDDI::EORI::BuildResource, type: :build_resource do
+  describe '.call', vcr: { cassette_name: 'dgddi/eori/valid_eori' } do
     subject(:call) { described_class.call(response: response) }
 
     let(:valid_payload) do
@@ -20,7 +20,7 @@ RSpec.describe Douanes::EORI::BuildResource, type: :build_resource do
     end
 
     let(:body) do
-      Douanes::EORI::MakeRequest.call(params: params).response.body
+      DGDDI::EORI::MakeRequest.call(params: params).response.body
     end
 
     let(:params) do

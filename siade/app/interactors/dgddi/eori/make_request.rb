@@ -1,4 +1,4 @@
-class Douanes::EORI::MakeRequest < MakeRequest::Get
+class DGDDI::EORI::MakeRequest < MakeRequest::Get
   protected
 
   def request_uri

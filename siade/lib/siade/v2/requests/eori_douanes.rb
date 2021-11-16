@@ -28,7 +28,7 @@ class SIADE::V2::Requests::EORIDouanes < SIADE::V2::Requests::Generic
   protected
 
   def provider_name
-    'Douanes'
+    'DGDDI'
   end
 
   def request_lib

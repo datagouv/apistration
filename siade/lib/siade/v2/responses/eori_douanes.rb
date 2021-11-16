@@ -2,7 +2,7 @@ class SIADE::V2::Responses::EORIDouanes < SIADE::V2::Responses::Generic
   protected
 
   def provider_name
-    'Douanes'
+    'DGDDI'
   end
 
   def adapt_raw_response_code

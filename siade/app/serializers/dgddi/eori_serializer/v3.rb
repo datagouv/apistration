@@ -1,4 +1,4 @@
-class Douanes::EORISerializer::V3 < JSONAPI::BaseSerializer
+class DGDDI::EORISerializer::V3 < JSONAPI::BaseSerializer
   set_type :entreprise
 
   attributes :id,

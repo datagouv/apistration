@@ -36,7 +36,7 @@ RSpec.describe SIADE::V2::Requests::EORIDouanes, type: :provider_request do
 
   describe 'success' do
     # TODO: test "operateur tiers ?!"
-    context 'with french EORI', vcr: { cassette_name: 'douanes/eori/valid_eori' } do
+    context 'with french EORI', vcr: { cassette_name: 'dgddi/eori/valid_eori' } do
       let(:eori) { valid_eori }
 
       its(:http_code) { is_expected.to eq 200 }
@@ -44,7 +44,7 @@ RSpec.describe SIADE::V2::Requests::EORIDouanes, type: :provider_request do
       it { expect(payload).to have_key(:EORI) }
     end
 
-    context 'with spanish EORI', vcr: { cassette_name: 'douanes/eori/valid_spanish_eori' } do
+    context 'with spanish EORI', vcr: { cassette_name: 'dgddi/eori/valid_spanish_eori' } do
       let(:eori) { valid_spanish_eori }
 
       its(:http_code) { is_expected.to eq 200 }
