@@ -5,8 +5,6 @@ RSpec.describe 'DGDDI: EORI', type: %i[request swagger] do
     get SwaggerInformation.get('dgddi.eori.title') do
       tags(*SwaggerInformation.get('dgddi.eori.tags'))
 
-      tags 'Informations générales'
-
       common_action_attributes
 
       parameter name: :siret_or_eori, in: :path, type: :string
