@@ -185,4 +185,30 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEADEME, type: :provider_driver d
       expect(subject).to eq([])
     end
   end
+
+  describe 'non regression test: when there is a pdf from qualypso and there is an error', vcr: { cassette_name: 'ademe/rge/with_valid_siret' } do
+    subject { instance }
+
+    let(:instance) { described_class.new(siret: siret) }
+    let(:siret) { valid_siret(:rge_ademe) }
+    let(:qualypso_document_url) { 'https://www.qualypso.fr/download_file.php?id=fd03fdfe-ba4c-448e-8e05-cfd30a6d2ebb' }
+    let(:sample_error) do
+      [
+        SocketError,
+        OpenSSL::SSL::SSLError,
+        OpenURI::HTTPError.new('whatever', 'whatever')
+      ].sample
+    end
+
+    before do
+      stub_request(:get, qualypso_document_url).to_raise(sample_error)
+
+      instance.perform_request
+      instance.check_response
+      instance.qualifications
+    end
+
+    its(:http_code) { is_expected.to eq(502) }
+    its(:errors) { is_expected.to have_error('Something\'s wrong with some files from Qualypso, retry later') }
+  end
 end

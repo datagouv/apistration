@@ -33,6 +33,10 @@ class SIADE::V2::Drivers::CertificatsRGEADEME < SIADE::V2::Drivers::GenericDrive
     end
 
     aggregated_qualifications
+  rescue SocketError, OpenSSL::SSL::SSLError, OpenURI::HTTPError
+    handle_calypso_error
+
+    []
   end
 
   def domaines
@@ -134,5 +138,10 @@ class SIADE::V2::Drivers::CertificatsRGEADEME < SIADE::V2::Drivers::GenericDrive
     end
 
     response.body
+  end
+
+  def handle_calypso_error
+    @http_code = 502
+    (@errors ||= []) << ProviderInternalServerError.new(provider_name, 'Something\'s wrong with some files from Qualypso, retry later')
   end
 end
