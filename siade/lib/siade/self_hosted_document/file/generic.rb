@@ -37,7 +37,6 @@ class SIADE::SelfHostedDocument::File::Generic
     @binary = URI.open(URI.parse(url), { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).binmode.read
     perform
   rescue StandardError => e
-    log_error('SelfHostedDocument: PDF upload/read unknown error', e, url)
     raise e
   end
   # rubocop:enable Metrics/AbcSize, Metrics/MethodLength

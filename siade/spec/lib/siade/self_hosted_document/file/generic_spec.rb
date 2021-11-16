@@ -159,17 +159,6 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
           hosted_doc.store_from_url(doc_url)
         end
 
-        it 'logs error' do
-          expect(MonitoringService.instance).to receive(:track).with(
-            'error',
-            anything,
-            anything
-          )
-
-          store!
-        rescue StandardError
-        end
-
         it 'raises an error' do
           expect {
             store!
