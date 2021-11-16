@@ -64,7 +64,7 @@ class SIADE::SelfHostedDocument::PDFDecrypt
     Open3.popen3(command) do |_stdin, _stdout, stderr, thread|
       stderr_string = stderr.read.chomp
 
-      if !thread.value.success? && !provider_error?(stderr_string)
+      if qpdf_failed?(thread.value) && !provider_error?(stderr_string)
         track_qpdf_error(
           thread.value.exitstatus,
           stderr_string
@@ -80,6 +80,15 @@ class SIADE::SelfHostedDocument::PDFDecrypt
       encrypted_file.path,
       decrypted_file.path
     ].join(' ')
+  end
+
+  def qpdf_failed?(process_status)
+    [
+      0,
+      3
+    ].exclude?(
+      process_status.exitstatus
+    )
   end
 
   def track_qpdf_error(exit_status, stderr_string)

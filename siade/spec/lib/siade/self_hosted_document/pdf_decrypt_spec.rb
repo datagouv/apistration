@@ -54,6 +54,20 @@ RSpec.describe SIADE::SelfHostedDocument::PDFDecrypt do
         end
       end
 
+      context 'when pdf is damaged but only triggers warning' do
+        before do
+          allow_any_instance_of(described_class).to receive(:command).and_return(
+            "qpdf #{Rails.root.join('spec/fixtures/dummy-with-warnings-for-qpdf.pdf')} #{Rails.root.join('tmp/whatever.pdf')}"
+          )
+        end
+
+        it 'does not track error' do
+          subject
+
+          expect(monitoring_service).not_to have_received(:track)
+        end
+      end
+
       context 'when it is a provider error (damaged pdf)' do
         before do
           allow_any_instance_of(described_class).to receive(:command).and_return(
