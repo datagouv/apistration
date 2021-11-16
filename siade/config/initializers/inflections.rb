@@ -34,6 +34,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'BDF'
   inflect.acronym 'BIO'
   inflect.acronym 'CNETP'
+  inflect.acronym 'DGDDI'
   inflect.acronym 'DGFIP'
   inflect.acronym 'EORI'
   inflect.acronym 'FNTP'
