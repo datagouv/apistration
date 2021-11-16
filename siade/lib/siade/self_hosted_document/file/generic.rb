@@ -31,6 +31,8 @@ class SIADE::SelfHostedDocument::File::Generic
     error_message(:timeout_error, 'Temps d\'attente de téléchargement du document écoulé')
   rescue URI::InvalidURIError => e
     error_message(:invalid_url, 'L\'URL vers le document renvoyée par le fournisseur de données est invalide')
+  rescue Errno::ECONNRESET
+    error_message(:http_error, 'Erreur de connexion sur le server distant')
   rescue OpenSSL::SSL::SSLError => e
     log_warning('SelfHostedDocument: OpenSSL Error while opening URI', e, url)
 
