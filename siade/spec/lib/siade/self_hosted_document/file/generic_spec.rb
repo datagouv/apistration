@@ -127,6 +127,24 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
         its(:errors) { is_expected.to include([:timeout_error, 'Temps d\'attente de téléchargement du document écoulé']) }
       end
 
+      context 'when there is an IO error' do
+        subject(:store!) do
+          stub_request(:get, doc_url)
+            .to_raise(IOError)
+
+          hosted_doc.store_from_url(doc_url)
+        end
+
+        it 'does not upload the content' do
+          expect(SIADE::SelfHostedDocument::Uploader).not_to receive(:call)
+
+          store!
+        end
+
+        its(:success?) { is_expected.to eq(false) }
+        its(:errors) { is_expected.to include([:http_error, 'Erreur de lecture sur le server distant']) }
+      end
+
       context 'when there is a connection reset by peer' do
         subject(:store!) do
           stub_request(:get, doc_url)
