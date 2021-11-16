@@ -50,6 +50,7 @@ shared:
       - { controller: 'api/v3_and_more/insee/entreprises', action: 'show', api_version: 3, siren: 123 }
       - { controller: 'api/v3_and_more/insee/entreprises_diffusables', action: 'show', api_version: 3, siren: 123 }
       - { controller: 'api/v3_and_more/insee/etablissements', action: 'show', api_version: 3, siret: 123 }
+      - { controller: 'api/v3_and_more/insee/adresses_etablissements', action: 'show', api_version: 3, siret: 123 }
     limit: 250
     period: 60
   very_low_latency_json_resources:

@@ -74,6 +74,123 @@ dgddi:
         example: 'OSNY'
 
 insee:
+  adresse_etablissement:
+    title: "Adresse de l'établissement"
+    description: "Adresse de l'établissement présente dans le répertoire Sirene."
+    tags:
+      - "Informations générales"
+    attributes:
+      numero_voie:
+        title: "Numéro dans la voie"
+        type: "string"
+        example: "22"
+      indice_repetition_voie:
+        title: "Indice de répétition du numero dans la voie"
+        description: "Plus d'infos ici: https://www.sirene.fr/sirene/public/variable/indrep"
+        type: "string"
+        nullable: true
+        enum:
+          - 'bis'
+          - 'ter'
+          - 'quarter'
+          - 'quinquies'
+          -
+      type_voie:
+        title: "Type de la voie de localisation"
+        example: "RUE"
+        description: "Cette information n'est pas toujours renseignée ou il n'en existe pas toujours dans les petites communes.
+          \n
+          Celle-ci est en majuscule.
+          \n
+          Plus d'infos: https://www.sirene.fr/sirene/public/variable/typvoie"
+        type: 'string'
+        nullable: true
+        enum: <%= YAML.load_file(Rails.root.join('config/data/insee/types_de_voie.yml')).values.map(&:upcase).concat([nil]).to_json %>
+      libelle_voie:
+        title: "Libellé de la voie"
+        example: "DE LA PAIX"
+      complement_adresse:
+        title: "Complément d'adresse"
+        type: 'string'
+        description: "Le complément d'adresse correspond à des éléments situés à l'extérieur du bâtiment qui permettent de compléter l'adresse (résidence, bâtiment, entrée, etc..)"
+        example: "ZAE SAINT GUENAULT"
+        nullable: true
+      code_commune:
+        title: "Code commune"
+        description: "Le code commune est défini dans le COG disponible ici: https://www.insee.fr/fr/information/2028028
+          \n
+          \n
+          Cette valeur est à nulle pour les entreprises à l'étranger"
+        type: 'string'
+        example: "75112"
+        nullable: true
+      code_postal:
+        title: "Code postal"
+        example: "75016"
+        type: 'string'
+      distribution_speciale:
+        title: "Distribution spéciale"
+        description: "La distribution spéciale reprend les éléments particuliers qui accompagnent une adresse de distribution spéciale. C'est un élément constitutif de l'adresse.
+          \n
+          \n
+        Plus d'infos:
+          \n
+          * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
+          \n
+          * https://www.sirene.fr/sirene/public/variable/l5-disp"
+        example: "CS 72809"
+      code_cedex:
+        title: "Code cedex"
+        nullable: true
+        description: "Plus d'infos: https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle"
+        example: "75590"
+      libelle_cedex:
+        title: "Libellé du code cedex"
+        type: 'string'
+        nullable: true
+        example: "PARIS CEDEX 12"
+        description: "Cette variable indique le libellé correspondant au code cedex de l'établissement si celui-ci est non null. Ce libellé est le libellé utilisé dans la ligne 6 d'adresse pour l'acheminement postal."
+      libelle_commune:
+        title: "Libellé de la commune pour une adresse en France"
+        description: "Cette valeur est à nulle pour les établissements à l'étranger"
+        type: 'string'
+        example: "PARIS 12"
+        nullable: true
+      libelle_commune_etranger:
+        title: "Libellé complémentaire pour une adresse à l'étranger"
+        description: "Cette valeur est à nulle pour les établissements en France"
+        type: 'string'
+        nullable: true
+
+      code_pays_etranger:
+        title: "Code pays pour les établissements situés à l'étranger"
+        description: "La nomenclature se trouve ici: https://www.insee.fr/fr/information/2028273"
+        type: 'string'
+        example: "99132"
+        nullable: true
+      libelle_pays_etranger:
+        title: "Libellé du pays pour les établissements situés à l'étranger"
+        type: 'string'
+        nullable: true
+        example: "ROYAUME-UNI"
+
+    meta:
+      date_derniere_mise_a_jour: &insee_date_derniere_mise_a_jour
+        type: 'integer'
+        example: 1618396818
+        description: "Date de la dernière mise à jour à l'INSEE"
+
+    links:
+      entreprise:
+        type: 'string'
+        example: 'https://entreprises.api.gouv.fr/api/v3/insee/entreprises/130025265/'
+        description: "Lien vers la ressource entreprise correspondant à cette adresse d'établissement"
+      etablissement:
+        type: 'string'
+        example: 'https://entreprises.api.gouv.fr/api/v3/insee/etablissements/13002526500013'
+        description: "Lien vers la ressource établissement correspondant à cette adresse d'établissement"
+
+
   entreprise:
     title: "Données de références d'une entité"
     description: "Obtenir les informations de référence d'une entreprise, d'une administration ou d'une association présente dans le répertoire Sirene."
@@ -320,10 +437,7 @@ insee:
         example: "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/30613890001294/adresse"
         description: "Lien vers la ressource adresse de l'établissement correspondant au siège social"
     meta:
-      date_derniere_mise_a_jour: &insee_date_derniere_mise_a_jour
-        type: 'integer'
-        example: 1618396818
-        description: "Date de la dernière mise à jour à l'INSEE"
+      date_derniere_mise_a_jour: *insee_date_derniere_mise_a_jour
 
   entreprise_diffusable:
     title: "Données de références d'une entité diffusable commercialement"

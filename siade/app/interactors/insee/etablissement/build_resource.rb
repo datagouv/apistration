@@ -26,15 +26,11 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
     }
   end
 
-  private
-
   def etablissement
     @etablissement ||= json_body['etablissement']
   end
 
-  def etablissement_address
-    @etablissement_address ||= etablissement['adresseEtablissement']
-  end
+  private
 
   def latest_info_on_etablissement
     @latest_info_on_etablissement ||= etablissement['periodesEtablissement'].find do |periode_etablissement|
