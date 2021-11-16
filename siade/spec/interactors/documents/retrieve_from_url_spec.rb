@@ -69,6 +69,14 @@ RSpec.describe Documents::RetrieveFromUrl do
       its(:errors) { is_expected.to have_error('Erreur de connexion sur le server distant') }
     end
 
+    context 'when there is an IO error' do
+      before { stub_request(:get, source_doc_url).to_raise(IOError) }
+
+      it { is_expected.to be_failure }
+
+      its(:errors) { is_expected.to have_error('Erreur de lecture sur le server distant') }
+    end
+
     context 'when there is an OpenSSL error, but it works with no security check' do
       before do
         stub_request(:get, source_doc_url)

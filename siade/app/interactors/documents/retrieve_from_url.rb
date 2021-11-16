@@ -15,6 +15,8 @@ class Documents::RetrieveFromUrl < ApplicationInteractor
   rescue URI::InvalidURIError => e
     msg = "L'URL source du document chez le fournisseur de données est invalide : #{e.message}."
     fail_with_error(:invalid_url, msg)
+  rescue IOError
+    fail_with_error(:http_error, 'Erreur de lecture sur le server distant')
   rescue Errno::ECONNRESET
     fail_with_error(:http_error, 'Erreur de connexion sur le server distant')
   rescue OpenSSL::SSL::SSLError => e
