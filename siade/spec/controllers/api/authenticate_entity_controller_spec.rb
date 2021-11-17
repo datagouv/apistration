@@ -162,4 +162,26 @@ RSpec.describe API::AuthenticateEntityController do
       get :index, params: { token: yes_jwt }.merge(mandatory_params)
     end
   end
+
+  context 'when in staging environement' do
+    before do
+      allow(Rails.env).to receive(:staging?).and_return(true)
+
+      # rubocop:disable RSpec/AnyInstance
+      allow_any_instance_of(MockableInStaging)
+        .to receive(:json)
+        .and_return(dummy: 'example value')
+      # rubocop:enable RSpec/AnyInstance
+    end
+
+    it 'checks mandatory params before trying to mock response' do
+      get :index, params: { token: yes_jwt }
+      assert_response 422
+    end
+
+    it 'renders an example instead of normal payload' do
+      get :index, params: { token: yes_jwt }.merge(mandatory_params)
+      expect(response_json).to eq(dummy: 'example value')
+    end
+  end
 end

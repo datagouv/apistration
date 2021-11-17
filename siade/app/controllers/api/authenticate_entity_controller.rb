@@ -5,6 +5,7 @@ class API::AuthenticateEntityController < APIController
   rescue_from APIPolicy::AccessForbiddenError, with: :access_forbidden
 
   include HasMandatoryParams
+  include MockableInStaging
 
   private
 
