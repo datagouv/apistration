@@ -212,7 +212,7 @@ RSpec/LeakyConstantDeclaration:
 RSpec/MessageSpies:
   Exclude:
     - 'spec/controllers/api/authenticate_entity_controller_spec.rb'
-    - 'spec/controllers/api/has_mandatory_params_controller_spec.rb'
+    - 'spec/controllers/concerns/has_mandatory_params_spec.rb'
     - 'spec/interactors/get_oauth2_token_spec.rb'
     - 'spec/lib/siade/self_hosted_document/file/generic_spec.rb'
     - 'spec/lib/siade/self_hosted_document/file/pdf_spec.rb'
