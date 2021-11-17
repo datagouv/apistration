@@ -1,3 +1,5 @@
+require 'erb'
+
 class SwaggerInformation
   include Singleton
 
@@ -16,7 +18,11 @@ class SwaggerInformation
   end
 
   def yaml_backend
-    @yaml_backend ||= YAML.load_file(yaml_backend_path)
+    @yaml_backend ||= YAML.safe_load(yaml_backend_interpolated, [], [], true)
+  end
+
+  def yaml_backend_interpolated
+    ERB.new(File.read(yaml_backend_path)).result
   end
 
   def yaml_backend_path
