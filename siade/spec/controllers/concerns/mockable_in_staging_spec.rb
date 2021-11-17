@@ -1,5 +1,6 @@
-RSpec.describe API::V2::BaseController, type: :controller do
-  controller described_class do
+RSpec.describe MockableInStaging do
+  controller(API::AuthenticateEntityController) do
+    include MockableInStaging
     skip_after_action :verify_authorized
 
     def controller_name
@@ -12,13 +13,12 @@ RSpec.describe API::V2::BaseController, type: :controller do
   end
 
   before do
-    routes.draw { get 'index', to: 'api/v2/base#index' }
+    routes.draw { get 'index', to: 'api/authenticate_entity#index' }
   end
 
   context 'when requesting any env but staging' do
     it 'renders default paylad' do
       get :index, params: { token: yes_jwt }.merge(mandatory_params)
-
       expect(response_json).to eq({ dummy: 'response' })
     end
   end
@@ -67,7 +67,6 @@ RSpec.describe API::V2::BaseController, type: :controller do
 
     it 'renders an example instead of normal payload' do
       get :index, params: { token: yes_jwt }.merge(mandatory_params)
-
       expect(response_json).to eq({ dummy: example_value })
     end
   end
