@@ -3444,6 +3444,16 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
-      description: "Token d'authentification JWT"
+      description: |
+        Token d'authentification JWT.
+
+        Si vous n'avez pas encore de jeton vous pouvez faire des tests sur le serveur **https://staging.entreprise.api.gouv.fr** avec ce JWT.
+
+        Les retours des API contiendront des données fictives.
+
+        ---
+
+        *eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJhcGktZW50cmVwcmlzZS1zdGFnaW5nIiwianRpIjoiYXBpLWVudHJlcHJpc2Utc3RhZ2luZyIsInJvbGVzIjpbImNlcnRpZmljYXRfY25ldHAiLCJwcm9idHAiLCJldGFibGlzc2VtZW50cyIsInByaXZpbGVnZXMiLCJ1cHRpbWUiLCJhdHRlc3RhdGlvbnNfYWdlZmlwaCIsImFjdGVzX2lucGkiLCJiaWxhbnNfaW5waSIsImFpZGVzX2NvdmlkX2VmZmVjdGlmcyIsImNlcnRpZmljYXRfcmdlX2FkZW1lIiwiYXR0ZXN0YXRpb25zX3NvY2lhbGVzIiwiZW50cmVwcmlzZV9hcnRpc2FuYWxlIiwiZm50cF9jYXJ0ZV9wcm8iLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsImV4dHJhaXRzX3JjcyIsImV4dHJhaXRfY291cnRfaW5waSIsImNlcnRpZmljYXRfYWdlbmNlX2JpbyIsIm1zYV9jb3Rpc2F0aW9ucyIsImRvY3VtZW50c19hc3NvY2lhdGlvbiIsImVvcmlfZG91YW5lcyIsImFzc29jaWF0aW9ucyIsImJpbGFuc19lbnRyZXByaXNlX2JkZiIsImVudHJlcHJpc2VzIiwicXVhbGliYXQiLCJjZXJ0aWZpY2F0X29wcWliaSIsImVudHJlcHJpc2UiXSwic3ViIjoic3RhZ2luZyBkZXZlbG9wbWVudCIsImlhdCI6MTYzNzA3MTE4OCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MTYzOTY2MzE4OH0.JTHH3y0ego5I9yNafhd7Go0rw8uc8btD_pnJnxNxwLQ*
+
 security:
   - jwt_bearer_token: []
