@@ -190,6 +190,7 @@ paths:
                         type: "string"
                       tranche_effectif_salarie_entreprise:
                         description: "Les champs suivants indiquent en détail l'effectif de salariés de l'entreprise"
+                        type: 'object'
                         properties:
                           a:
                             example: "249"
@@ -591,6 +592,7 @@ paths:
           content:
             application/json:
               schema:
+                type: 'object'
                 properties:
                   siren:
                     type: 'string'
@@ -2197,7 +2199,7 @@ paths:
       summary: "[DGFIP] Déclarations de résultat : liasses fiscales d'une entreprise et dictionnaire pour une année donnée"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-liasses_fiscales_dgfip'>Documentation métier</a>"
       parameters: *siren_year_and_email_parameters
-      operationId: 'liasses_fiscales_dgfip_complete'
+      operationId: 'liasses_fiscales_dgfip_show'
       responses:
         '200':
           description: OK
@@ -2255,7 +2257,7 @@ paths:
         - $ref: '#/components/parameters/Context'
         - $ref: '#/components/parameters/Recipient'
         - $ref: '#/components/parameters/Object'
-      operationId: 'attestation_fiscale_dgfip_show'
+      operationId: 'attestations_fiscales_dgfip_show'
       responses:
         '200':
           description: OK
