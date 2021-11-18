@@ -1,4 +1,4 @@
-class INSEE::Entreprise::ValidateResponse < ValidateResponse
+class INSEE::UniteLegale::ValidateResponse < ValidateResponse
   def call
     return if http_ok?
 

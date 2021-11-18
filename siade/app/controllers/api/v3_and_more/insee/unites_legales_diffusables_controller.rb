@@ -1,8 +1,8 @@
-class API::V3AndMore::INSEE::EntreprisesController < API::V3AndMore::BaseController
+class API::V3AndMore::INSEE::UnitesLegalesDiffusablesController < API::V3AndMore::BaseController
   def show
     authorize :entreprise
 
-    organizer = ::INSEE::Entreprise.call(params: organizer_params)
+    organizer = ::INSEE::UniteLegaleDiffusable.call(params: organizer_params)
 
     if organizer.success?
       render json: serializer_class.new(organizer.resource).serializable_hash,
@@ -21,6 +21,6 @@ class API::V3AndMore::INSEE::EntreprisesController < API::V3AndMore::BaseControl
   end
 
   def serializer_module
-    ::INSEE::EntrepriseSerializer
+    ::INSEE::UniteLegaleSerializer
   end
 end

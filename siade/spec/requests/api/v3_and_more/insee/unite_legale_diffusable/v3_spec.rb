@@ -1,9 +1,9 @@
 require 'swagger_helper'
 
-RSpec.describe 'INSEE: Entreprises diffusables', type: %i[request swagger] do
-  path '/v3/insee/entreprises/diffusables/{siren}' do
-    get SwaggerInformation.get('insee.entreprise_diffusable.title') do
-      tags(*SwaggerInformation.get('insee.entreprise_diffusable.tags'))
+RSpec.describe 'INSEE: Unités légales diffusables', type: %i[request swagger] do
+  path '/v3/insee/unites_legales/diffusables/{siren}' do
+    get SwaggerInformation.get('insee.unite_legale_diffusable.title') do
+      tags(*SwaggerInformation.get('insee.unite_legale_diffusable.tags'))
 
       common_action_attributes
 
@@ -18,17 +18,17 @@ RSpec.describe 'INSEE: Entreprises diffusables', type: %i[request swagger] do
       end
 
       describe 'with valid mandatory params', valid: true do
-        response '200', 'Entreprise trouvée', vcr: { cassette_name: 'insee/siren/active_GE_with_token' } do
+        response '200', 'Unité légale trouvée', vcr: { cassette_name: 'insee/siren/active_GE_with_token' } do
           let(:siren) { sirens_insee_v3[:active_GE] }
 
-          description SwaggerInformation.get('insee.entreprise_diffusable.description')
+          description SwaggerInformation.get('insee.unite_legale_diffusable.description')
 
           schema build_rswag_response(
             id: '130025265',
             type: 'entreprise',
-            attributes: SwaggerInformation.get('insee.entreprise_diffusable.attributes'),
-            links: SwaggerInformation.get('insee.entreprise.links'),
-            meta: SwaggerInformation.get('insee.entreprise.meta')
+            attributes: SwaggerInformation.get('insee.unite_legale_diffusable.attributes'),
+            links: SwaggerInformation.get('insee.unite_legale.links'),
+            meta: SwaggerInformation.get('insee.unite_legale.meta')
           )
 
           rate_limit_headers

@@ -191,12 +191,12 @@ insee:
         description: "Lien vers la ressource établissement correspondant à cette adresse d'établissement"
 
 
-  entreprise:
-    title: "Données de références d'une entité"
-    description: "Obtenir les informations de référence d'une entreprise, d'une administration ou d'une association présente dans le répertoire Sirene."
+  unite_legale:
+    title: "Données de références d'une unité légale"
+    description: "Obtenir les informations de référence d'une unité légale, qui est soit entreprise, soit administration, soit une association présente dans le répertoire Sirene."
     tags:
       - "Informations générales"
-    attributes: &insee_entreprise_attributes
+    attributes: &insee_unite_legale_attributes
       siret_siege_social:
         title: "Siret du siège social"
         type: 'string'
@@ -208,7 +208,7 @@ insee:
         - 'personne_physique'
         - 'personne_morale'
         example: 'personne_morale'
-        description: "Détermine si l'entreprise est une personne morale ou une personne physique.
+        description: "Détermine si l'unité légale est une personne morale ou une personne physique.
           Cette valeur est déterminée à l'aide du code juridique : 1000 correspond à une personne physique."
       personne_morale_attributs:
         type: 'object'
@@ -217,7 +217,7 @@ insee:
           null pour les personnes physiques."
         properties:
           raison_sociale:
-            title: "Raison sociale de l'entreprise"
+            title: "Raison sociale de l'unité légale"
             type: 'string'
             example: 'DINUM'
             nullable: true
@@ -289,7 +289,7 @@ insee:
               physique. Cette valeur peut ne pas être renseignée
               pour une personne physique."
       categorie_entreprise:
-        title: "Catégorie de l'entreprise"
+        title: "Catégorie de l'unité légale"
         type: 'string'
         example: 'GE'
         enum:
@@ -330,7 +330,7 @@ insee:
         title: "Diffusable commercialement"
         type: 'boolean'
         example: true
-        description: "Détermine si l'entreprise est une entreprise
+        description: "Détermine si l'unité légale est une unité légale
           non-diffusible. Si celle-ci est non-diffusible, ses
           informations ne doivent en aucun cas être accessibles
           au grand public."
@@ -339,7 +339,7 @@ insee:
         title: "Attributs de la forme juridique"
         properties:
           code:
-            title: "Code de la forme juridique de l'entreprise."
+            title: "Code de la forme juridique de l'unité légale."
             type: "string"
             example: '7120'
             description: "Cette variable est à 1000 pour les personnes physiques.
@@ -347,7 +347,7 @@ insee:
               \n
               La liste complète se trouve ici: https://www.insee.fr/fr/information/2028129"
           libelle:
-            title: "Libellé associé au code de la forme juridique de l'entreprise."
+            title: "Libellé associé au code de la forme juridique de l'unité légale."
             type: 'string'
             example: "Service central d'un ministère"
             description: "Si le code ne correspond à aucun libellé la valeur 'non référencé' est utilisée."
@@ -356,7 +356,7 @@ insee:
         type: 'object'
         properties:
           code:
-            title: "Code de l'activité principale (APE) de l'entreprise"
+            title: "Code de l'activité principale (APE) de l'unité légale"
             type: 'string'
             example: '8411Z'
             description: "Ce code est extrait de la nomenclature
@@ -405,7 +405,7 @@ insee:
             example: 4999
             nullable: true
       etat_administratif:
-        title: "État administratif de l'entreprise"
+        title: "État administratif de l'unité légale"
         type: 'string'
         enum:
           - 'A'
@@ -417,13 +417,13 @@ insee:
           - C = Cessée
           "
       date_cessation:
-        title: "Date de cessation de l'entreprise"
+        title: "Date de cessation de l'unité légale"
         type: 'integer'
         nullable: true
         example: 1634133818
         description: "Cette valeur est renvoyée sous format timestamp"
       date_creation:
-        title: "Date de cessation de l'entreprise"
+        title: "Date de cessation de l'unité légale"
         type: 'integer'
         example: 1634103818
         description: "Cette valeur est renvoyée sous format timestamp"
@@ -439,22 +439,22 @@ insee:
     meta:
       date_derniere_mise_a_jour: *insee_date_derniere_mise_a_jour
 
-  entreprise_diffusable:
-    title: "Données de références d'une entité diffusable commercialement"
-    description: "Obtenir les informations de référence d'une entreprise, d'une administration ou d'une association présente dans le répertoire Sirene. Ce endpoint ne renvoi que des entités diffusable commercialement."
+  unite_legale_diffusable:
+    title: "Données de références d'une entité légale diffusable commercialement"
+    description: "Obtenir les informations de référence d'une unité légale, qui est soit uneentreprise, soit une administration, soit une association, présente dans le répertoire Sirene. Ce endpoint ne renvoi que des entités diffusable commercialement."
     tags:
       - "Informations générales"
     attributes:
-      <<: *insee_entreprise_attributes
+      <<: *insee_unite_legale_attributes
       diffusable_commercialement:
         title: "Diffusable commercialement"
         type: 'boolean'
         example: true
         enum:
           - true
-        description: "Détermine si l'entreprise est une entreprise
-          non-diffusible. Cette valeur est toujours à true. Si vous voulez pouvoir récupérer des entreprises
-          non-diffusible, référez-vous à la documentation du endpoint /insee/entreprise/:siren"
+        description: "Détermine si l'unité légale est une entreprise
+          non-diffusible. Cette valeur est toujours à true. Si vous voulez pouvoir récupérer des unités légales
+          non-diffusible, référez-vous à la documentation du endpoint /insee/unites_legales/:siren"
 
   etablissement:
     title: "Données de référence d'un établissement"

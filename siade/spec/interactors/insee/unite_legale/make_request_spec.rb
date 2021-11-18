@@ -1,4 +1,4 @@
-RSpec.describe INSEE::Entreprise::MakeRequest, type: :make_request do
+RSpec.describe INSEE::UniteLegale::MakeRequest, type: :make_request do
   subject(:make_request) { described_class.call(params: params, token: token) }
 
   let(:params) do

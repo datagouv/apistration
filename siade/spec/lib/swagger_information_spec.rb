@@ -3,7 +3,7 @@ RSpec.describe SwaggerInformation do
     subject(:get_key) { described_class.get(key) }
 
     context 'with valid key' do
-      let(:key) { 'insee.entreprise' }
+      let(:key) { 'insee.unite_legale' }
 
       it { is_expected.to be_an_instance_of(Hash) }
     end

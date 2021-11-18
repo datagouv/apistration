@@ -1,4 +1,4 @@
-RSpec.describe INSEE::EntrepriseDiffusable::ValidateResponse, type: :validate_response do
+RSpec.describe INSEE::UniteLegaleDiffusable::ValidateResponse, type: :validate_response do
   subject { described_class.call(response: response, provider_name: 'INSEE') }
 
   context 'with a http ok' do

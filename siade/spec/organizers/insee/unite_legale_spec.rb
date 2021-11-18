@@ -1,4 +1,4 @@
-RSpec.describe INSEE::EntrepriseDiffusable, type: :retriever_organizer do
+RSpec.describe INSEE::UniteLegale, type: :retriever_organizer do
   subject { described_class.call(params: params) }
 
   let(:params) do
@@ -18,9 +18,8 @@ RSpec.describe INSEE::EntrepriseDiffusable, type: :retriever_organizer do
   context 'with an entrepreneur individuel non diffusable', vcr: { cassette_name: 'insee/siren/non_diffusable_with_token' } do
     let(:siren) { non_diffusable_siren }
 
-    it { is_expected.to be_a_failure }
+    it { is_expected.to be_a_success }
 
-    its(:errors) { is_expected.to include(NotFoundError) }
-    its(:resource) { is_expected.to be_nil }
+    its(:resource) { is_expected.to be_present }
   end
 end

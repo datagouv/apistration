@@ -1,4 +1,4 @@
-class INSEE::Entreprise::MakeRequest < MakeRequest::Get
+class INSEE::UniteLegale::MakeRequest < MakeRequest::Get
   protected
 
   def request_uri

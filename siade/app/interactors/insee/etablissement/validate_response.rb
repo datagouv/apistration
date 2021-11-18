@@ -1,2 +1,2 @@
-class INSEE::Etablissement::ValidateResponse < INSEE::Entreprise::ValidateResponse
+class INSEE::Etablissement::ValidateResponse < INSEE::UniteLegale::ValidateResponse
 end

@@ -1,4 +1,4 @@
-class INSEE::EntrepriseDiffusable::ValidateResponse < INSEE::Entreprise::ValidateResponse
+class INSEE::UniteLegaleDiffusable::ValidateResponse < INSEE::UniteLegale::ValidateResponse
   def call
     resource_not_found! if http_ok? && non_diffusable?
 

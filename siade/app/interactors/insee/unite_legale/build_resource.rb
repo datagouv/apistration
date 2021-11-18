@@ -1,4 +1,4 @@
-class INSEE::Entreprise::BuildResource < INSEE::BuildResource
+class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
   protected
 
   def resource_attributes
