@@ -41,7 +41,7 @@ RSpec.describe MockableInStaging do
         paths: {
           '/any/path/will/work': {
             get: {
-              operationId: 'dummy_name_index',
+              operationId: operation_id,
               responses: {
                 '200': {
                   content: {
@@ -67,6 +67,7 @@ RSpec.describe MockableInStaging do
 
     context 'with valid schema' do
       let(:type) { 'string' }
+      let(:operation_id) { 'dummy_name_index' }
 
       it 'renders an example instead of normal payload' do
         get :index, params: { token: yes_jwt }.merge(mandatory_params)
@@ -76,6 +77,7 @@ RSpec.describe MockableInStaging do
 
     context 'with invalid schema' do
       let(:type) { 'unknown' }
+      let(:operation_id) { 'dummy_name_index' }
 
       it 'renders an error' do
         get :index, params: { token: yes_jwt }.merge(mandatory_params)
@@ -90,7 +92,28 @@ RSpec.describe MockableInStaging do
 
         expect(MonitoringService.instance)
           .to have_received(:capture_message)
-          .with('Unknown type: unknown', level: 'warning')
+          .with('Unknown type: {"type"=>"unknown", "example"=>"the expected example value"}', level: 'warning')
+      end
+    end
+
+    context 'when operationId is not found in OpenAPI file' do
+      let(:type) { 'string' }
+      let(:operation_id) { 'wrong_id' }
+
+      it 'renders an error' do
+        get :index, params: { token: yes_jwt }.merge(mandatory_params)
+
+        assert_response 500
+        expect(response_json).to include(errors: ["Une erreur dans la configration de notre environnement de staging ne permet pas la génération de l'exemple de test. Une alerte a été remontée."])
+      end
+
+      it 'tracks OpenAPI error in monitoring service' do
+        allow(MonitoringService.instance).to receive(:capture_message)
+        get :index, params: { token: yes_jwt }.merge(mandatory_params)
+
+        expect(MonitoringService.instance)
+          .to have_received(:capture_message)
+          .with('operationId not found: dummy_name_index', level: 'warning')
       end
     end
   end

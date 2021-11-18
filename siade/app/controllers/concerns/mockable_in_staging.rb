@@ -4,6 +4,7 @@ module MockableInStaging
   included do
     before_action :mock_response, if: :staging?
     rescue_from OpenAPISchemaToExample::InvalidOpenAPIType, with: :invalid_open_api_type
+    rescue_from NoMethodError, with: :operation_id_not_found
   end
 
   def mock_response
@@ -19,17 +20,29 @@ module MockableInStaging
   end
 
   def invalid_open_api_type
-    errors << OpenAPIExampleError.new
+    track_open_api_errors("Unknown type: #{$ERROR_INFO.message}")
+    render_open_api_errors
+  end
 
-    MonitoringService
-      .instance
-      .capture_message("Unknown type: #{$ERROR_INFO.message}", level: 'warning')
+  def operation_id_not_found
+    track_open_api_errors("operationId not found: #{operation_id}")
+    render_open_api_errors
+  end
+
+  private
+
+  def render_open_api_errors
+    errors << OpenAPIExampleError.new
 
     render json: ErrorsSerializer.new(errors, format: error_format).as_json,
       status: :internal_server_error
   end
 
-  private
+  def track_open_api_errors(message)
+    MonitoringService
+      .instance
+      .capture_message(message, level: 'warning')
+  end
 
   def json
     OpenAPISchemaToExample.new(extract_valid_open_api_path_schema).perform
@@ -37,8 +50,12 @@ module MockableInStaging
 
   def valid_schema
     open_api_schema['paths'].find do |_, schema|
-      schema['get']['operationId'] == "#{controller_name}_#{action_name}"
+      schema['get']['operationId'] == operation_id
     end
+  end
+
+  def operation_id
+    "#{controller_name}_#{action_name}"
   end
 
   def open_api_schema
