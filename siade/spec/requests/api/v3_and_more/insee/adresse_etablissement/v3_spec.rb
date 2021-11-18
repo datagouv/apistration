@@ -19,6 +19,8 @@ RSpec.describe 'INSEE: Adresse Etablissement', type: %i[request swagger] do
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Etablissement trouvé', vcr: { cassette_name: 'insee/siret/active_GE_with_token' } do
+          description SwaggerInformation.get('insee.adresse_etablissement.description')
+
           schema build_rswag_response(
             id: sirets_insee_v3[:active_GE],
             type: 'adresse',

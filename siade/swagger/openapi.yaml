@@ -264,7 +264,7 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Le jeton ne possède pas les droits nécessaires
+      description: Adresse de l'établissement présente dans le répertoire Sirene.
       responses:
         '403':
           description: Accès interdit
