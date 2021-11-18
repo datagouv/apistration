@@ -63,7 +63,15 @@ module MockableInStaging
   end
 
   def schema_path
-    Rails.root.join('public/v2/open-api.yml')
+    if current_module_name == 'V3AndMore'
+      Rails.root.joint('swagger/openapi.yaml')
+    else
+      Rails.root.join('public/v2/open-api.yml')
+    end
+  end
+
+  def current_module_name
+    controller_path.classify.split('::')[1]
   end
 
   def errors
