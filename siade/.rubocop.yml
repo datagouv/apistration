@@ -84,11 +84,11 @@ Metrics/ModuleLength:
 
 Naming/AccessorMethodName:
   Exclude:
-    - 'app/interactors/**/**/make_request.rb'
-    - 'app/interactors/make_request.rb'
-    - 'lib/generators/make_request/make_request_generator.rb'
-    - 'app/services/monitoring_service.rb'
-    - 'lib/generators/scaffold_resource/scaffold_resource_generator.rb'
+    - "app/interactors/**/**/make_request.rb"
+    - "app/interactors/make_request.rb"
+    - "lib/generators/make_request/make_request_generator.rb"
+    - "app/services/monitoring_service.rb"
+    - "lib/generators/scaffold_resource/scaffold_resource_generator.rb"
 
 # Allowing uppercase in some method names
 Naming/MethodName:
@@ -140,6 +140,7 @@ Style/NumericLiterals:
   Exclude:
     # Ignore mostly timestamp
     - "spec/requests/api/**/*_spec.rb"
+    - "spec/support/rswag_*.rb"
 
 # Do not force use of fail or raise only both have their use
 Style/SignalException:
