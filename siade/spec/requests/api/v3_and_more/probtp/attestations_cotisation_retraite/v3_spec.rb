@@ -26,6 +26,8 @@ RSpec.describe 'PROBTP : Attestations cotisations retraite', type: %i[request sw
             document_url_properties: SwaggerInformation.get('probtp.attestation_cotisation_retraite.document_url_properties')
           )
 
+          rate_limit_headers
+
           run_test!
         end
 

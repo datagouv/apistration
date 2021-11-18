@@ -27,6 +27,8 @@ RSpec.describe 'DGDDI: EORI', type: %i[request swagger] do
             attributes: SwaggerInformation.get('dgddi.eori.attributes')
           )
 
+          rate_limit_headers
+
           run_test!
         end
 

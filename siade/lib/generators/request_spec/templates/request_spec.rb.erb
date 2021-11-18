@@ -21,6 +21,8 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: '<%= provider_namespace.underscore %>/valid_<%= id_path_param %>_json' } do
+          rate_limit_headers
+
           schema build_rswag_response(
             id: valid_<%= id_path_param %>(:<%= provider_namespace.underscore %>),
             type: 'entreprise',

@@ -31,6 +31,8 @@ RSpec.describe 'INSEE: Entreprises diffusables', type: %i[request swagger] do
             meta: SwaggerInformation.get('insee.entreprise.meta')
           )
 
+          rate_limit_headers
+
           run_test!
         end
 

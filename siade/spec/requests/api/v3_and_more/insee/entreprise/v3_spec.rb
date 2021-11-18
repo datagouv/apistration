@@ -29,6 +29,8 @@ RSpec.describe 'INSEE: Entreprises', type: %i[request swagger] do
             meta: SwaggerInformation.get('insee.entreprise.meta')
           )
 
+          rate_limit_headers
+
           run_test!
         end
 

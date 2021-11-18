@@ -23,6 +23,29 @@ module RSWagCommonsResponses
     security [jwt_bearer_token: []]
   end
 
+  def rate_limit_headers
+    header 'RateLimit-Limit',
+      schema: {
+        type: :integer
+      },
+      description: 'La limite concernant l’endpoint appelé, soit le nombre de requête/minute.',
+      example: 50
+
+    header 'RateLimit-Remaining',
+      schema: {
+        type: :integer
+      },
+      description: 'Le nombre d’appels restants durant la période courante d’une minute.',
+      example: 47
+
+    header 'RateLimit-Reset',
+      schema: {
+        type: :integer
+      },
+      description: 'La fin de la période courante (en format timestamp)',
+      example: 1637223155
+  end
+
   def unauthorized_request(&block)
     include_context 'Valid mandatory params and no token'
 

@@ -27,6 +27,8 @@ RSpec.describe 'MI : Associations', type: %i[request swagger] do
             attributes: SwaggerInformation.get('mi.association.attributes')
           )
 
+          rate_limit_headers
+
           run_test!
         end
 

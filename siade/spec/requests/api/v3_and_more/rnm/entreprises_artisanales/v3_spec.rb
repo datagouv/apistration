@@ -27,6 +27,8 @@ RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
             attributes: SwaggerInformation.get('rnm.entreprise_artisanale.attributes')
           )
 
+          rate_limit_headers
+
           run_test!
         end
 

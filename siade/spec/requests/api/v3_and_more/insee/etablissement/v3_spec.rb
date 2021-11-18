@@ -29,6 +29,8 @@ RSpec.describe 'INSEE: Etablissement', type: %i[request swagger] do
             meta: SwaggerInformation.get('insee.etablissement.meta')
           )
 
+          rate_limit_headers
+
           run_test!
         end
 
