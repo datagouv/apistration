@@ -1,5 +1,5 @@
 RSpec.describe OpenAPISchemaToExample do
-  subject { described_class.new(schema.deep_stringify_keys).perform }
+  subject(:stubbed_json) { described_class.new(schema.deep_stringify_keys).perform }
 
   describe 'array item' do
     let(:schema) do
@@ -72,6 +72,8 @@ RSpec.describe OpenAPISchemaToExample do
       }
     end
 
-    it { is_expected.to eq('FIXME') }
+    it 'raise an error when invalid type found' do
+      expect { stubbed_json }.to raise_error(OpenAPISchemaToExample::InvalidOpenAPIType, '{"type"=>"unknown", "example"=>"useless"}')
+    end
   end
 end

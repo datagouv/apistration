@@ -1,10 +1,13 @@
 class OpenAPISchemaToExample
   attr_reader :schema
 
+  class InvalidOpenAPIType < StandardError; end
+
   def initialize(schema)
     @schema = schema
   end
 
+  # rubocop:disable Metrics/AbcSize
   def perform
     case schema['type']
     when 'array'
@@ -18,11 +21,16 @@ class OpenAPISchemaToExample
     when 'boolean'
       extract_value(schema, true)
     else
-      'FIXME'
+      unknown_type(schema)
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   private
+
+  def unknown_type(open_api_schema)
+    raise InvalidOpenAPIType, open_api_schema.to_s
+  end
 
   def extract_array_value(value)
     [

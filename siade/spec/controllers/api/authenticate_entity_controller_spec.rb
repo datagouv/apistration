@@ -174,14 +174,9 @@ RSpec.describe API::AuthenticateEntityController do
       # rubocop:enable RSpec/AnyInstance
     end
 
-    it 'checks mandatory params before trying to mock response' do
+    it 'runs mandatory params before trying to mock response' do
       get :index, params: { token: yes_jwt }
       assert_response 422
-    end
-
-    it 'renders an example instead of normal payload' do
-      get :index, params: { token: yes_jwt }.merge(mandatory_params)
-      expect(response_json).to eq(dummy: 'example value')
     end
   end
 end
