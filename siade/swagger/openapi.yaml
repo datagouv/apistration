@@ -261,7 +261,7 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
-  "/v3/insee/etablissements/{siret}/adresse":
+  "/v3/insee/sirene/etablissements/{siret}/adresse":
     get:
       summary: Adresse de l'établissement
       tags:
@@ -517,7 +517,7 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
-  "/v3/insee/etablissements/{siret}":
+  "/v3/insee/sirene/etablissements/{siret}":
     get:
       summary: Données de référence d'un établissement
       tags:
@@ -726,7 +726,7 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
-  "/v3/insee/unites_legales/{siren}":
+  "/v3/insee/sirene/unites_legales/{siren}":
     get:
       summary: Données de références d'une unité légale
       tags:
@@ -1109,7 +1109,7 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
-  "/v3/insee/entreprises/diffusables/{siren}":
+  "/v3/insee/sirene/unites_legales/diffusibles/{siren}":
     get:
       summary: Données de références d'une entité légale diffusable commercialement
       tags:

@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'INSEE: Adresse Etablissement', type: %i[request swagger] do
-  path '/v3/insee/etablissements/{siret}/adresse' do
+  path '/v3/insee/sirene/etablissements/{siret}/adresse' do
     get SwaggerInformation.get('insee.adresse_etablissement.title') do
       tags(*SwaggerInformation.get('insee.adresse_etablissement.tags'))
 

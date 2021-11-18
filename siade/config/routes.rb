@@ -74,11 +74,11 @@ Rails.application.routes.draw do
     end
 
     namespace :insee do
-      get 'unites_legales/:siren' => '/api/v3_and_more/insee/unites_legales#show'
-      get 'unites_legales/diffusables/:siren' => '/api/v3_and_more/insee/unites_legales_diffusables#show'
+      get 'sirene/unites_legales/:siren' => '/api/v3_and_more/insee/unites_legales#show'
+      get 'sirene/unites_legales/diffusibles/:siren' => '/api/v3_and_more/insee/unites_legales_diffusables#show'
 
-      get 'etablissements/:siret' => '/api/v3_and_more/insee/etablissements#show'
-      get 'etablissements/:siret/adresse' => '/api/v3_and_more/insee/adresses_etablissements#show'
+      get 'sirene/etablissements/:siret' => '/api/v3_and_more/insee/etablissements#show'
+      get 'sirene/etablissements/:siret/adresse' => '/api/v3_and_more/insee/adresses_etablissements#show'
     end
 
     namespace :mi do

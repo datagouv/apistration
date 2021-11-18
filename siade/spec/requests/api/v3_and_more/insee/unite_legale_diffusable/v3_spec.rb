@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
-RSpec.describe 'INSEE: Unités légales diffusables', type: %i[request swagger] do
-  path '/v3/insee/unites_legales/diffusables/{siren}' do
+RSpec.describe 'INSEE: Unités légales diffusibles', type: %i[request swagger] do
+  path '/v3/insee/sirene/unites_legales/diffusibles/{siren}' do
     get SwaggerInformation.get('insee.unite_legale_diffusable.title') do
       tags(*SwaggerInformation.get('insee.unite_legale_diffusable.tags'))
 
