@@ -54,6 +54,10 @@
   detail: "Votre token est expiré. Vous devez refaire une demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token."
   source: *source_token
 
+- code: '00104'
+  title: "Mauvaise configuration de l'environnement de staging"
+  detail: "Une erreur dans la configration de notre environnement de staging ne permet pas la génération de l'exemple de test. Une alerte a été remontée."
+
 - code: '00201'
   title: 'Entité non traitable'
   detail: "Le paramètre context est obligatoire"
