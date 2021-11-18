@@ -19,6 +19,8 @@ RSpec.describe 'DGDDI: EORI', type: %i[request swagger] do
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Entité trouvée', vcr: { cassette_name: 'dgddi/eori/valid_eori' } do
+          description SwaggerInformation.get('dgddi.eori.description')
+
           schema build_rswag_response(
             id: valid_eori,
             type: 'entreprise',

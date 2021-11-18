@@ -129,7 +129,10 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Le jeton ne possède pas les droits nécessaires
+      description: |
+        Accéder au statut de l’immatriculation des entreprises de la base des douanes. L'appel se fait par numéro EORI ou SIRET :
+        - Appel par numéro EORI: fonctionne pour toutes les entreprises
+        - Appel par SIRET: fonctionne uniquement pour les entreprises ayant fait leur immatriculation EORI en France. Une entreprise immatriculée dans un autre pays européen renverra toujours un négatif.
       responses:
         '403':
           description: Accès interdit
