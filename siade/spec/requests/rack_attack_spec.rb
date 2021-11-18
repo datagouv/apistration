@@ -341,7 +341,7 @@ RSpec.describe Rack::Attack, type: :request do
       ]
     end
 
-    let(:throttle_config) { Rails.configuration.throttle }
+    let(:throttle_config) { Rails.application.config_for(:throttle) }
 
     let(:throttled_endpoints) do
       config = throttle_config.dig(:low_latency_documents, :endpoints)
