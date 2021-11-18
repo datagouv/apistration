@@ -543,6 +543,12 @@ insee:
     meta:
       date_derniere_mise_a_jour: *insee_date_derniere_mise_a_jour
 
+  siege_unite_legale:
+    title: "Données de références du siège d'une unité légale"
+    description: "Obtenir des informations générales concernant le siège d'une unité légale du répertoire Sirene."
+    tags:
+      - "Informations générales"
+
 mi:
   association:
     title: "Informations déclaratives d'une association"
