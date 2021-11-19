@@ -158,6 +158,12 @@
   detail: 'Fonctionnalité non implémentée pour le moment'
 
 ## Providers
+### INSEE
+
+- code: '01501'
+  title: 'Mauvaise réponse du fournisseur de données'
+  detail: "L'INSEE a répondu avec une réponse comportant plusieurs établissements"
+
 ### RNA
 
 - code: '07501'
