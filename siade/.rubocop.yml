@@ -187,3 +187,6 @@ RSpec/FilePath:
     - "spec/policies/certificat_rge_ademe_policy_spec.rb"
     - "spec/requests/rack_attack_spec.rb"
     - "spec/interactors/get_oauth2_token_spec.rb"
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false

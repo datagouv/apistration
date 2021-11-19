@@ -246,13 +246,6 @@ RSpec/MultipleExpectations:
     - 'spec/validators/siren_format_validator_spec.rb'
     - 'spec/validators/siret_format_validator_spec.rb'
 
-# Offense count: 6
-# Configuration parameters: AllowSubject, Max.
-RSpec/MultipleMemoizedHelpers:
-  Exclude:
-    - 'spec/services/monitoring_service_spec.rb'
-    - 'spec/support/shared_examples/http.rb'
-
 # Offense count: 126
 # Configuration parameters: IgnoreSharedExamples.
 RSpec/NamedSubject:
