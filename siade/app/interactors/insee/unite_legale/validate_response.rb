@@ -16,4 +16,8 @@ class INSEE::UniteLegale::ValidateResponse < ValidateResponse
   def unavailable_for_legal_reason_message
     'Le siren demandé est une entité pour laquelle aucun organisme ne peut avoir accès.'
   end
+
+  def not_found_message
+    'Le siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel'
+  end
 end
