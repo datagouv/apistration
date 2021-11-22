@@ -1,0 +1,61 @@
+infogreffe:
+  mandataires_sociaux:
+    title: "Mandataires sociaux"
+    description: "Liste des mandataires sociaux d'une société"
+    tags:
+      - "Informations générales"
+    attributes:
+      id:
+        title: 'Siren'
+        type: 'string'
+        description: "Siren de l'entreprise"
+        example: '418166096'
+      pp:
+        title: 'Personnes physiques'
+        type: 'array'
+        items:
+          properties:
+            nom:
+              title: 'Nom'
+              type: 'string'
+              example: 'Henri'
+              nullable: true
+            prenom:
+              title: 'Prénom'
+              type: 'string'
+              example: 'Martin'
+              nullable: true
+            fonction:
+              title: 'Fonction'
+              type: 'string'
+              example: 'COMMISSAIRE AUX COMPTES SUPPLEANT'
+            date_naissance:
+              title: 'Date de naissance'
+              type: 'string'
+              example: '1965-01-27'
+              nullable: true
+            date_naissance_timestamp:
+              title: 'Date de naissance (timestamp)'
+              type: 'number'
+              example: -155_523_600
+              nullable: true
+      pm:
+        title: 'Personnes morales'
+        type: 'array'
+        items:
+          properties:
+            fonction:
+              title: 'Fonction'
+              type: 'string'
+              example: 'COMMISSAIRE AUX COMPTES SUPPLEANT'
+            raison_sociale:
+              title: 'Raison sociale'
+              type: 'string'
+              example: 'BCRH & ASSOCIES - SOCIETE A RESPONSABILITE LIMITEE A ASSOCIE UNIQUE'
+              nullable: true
+            identifiant:
+              title: 'Identifiant'
+              description: 'Cet element est facultatif, composé de 7 à 9 chiffres, et peut être vide.'
+              type: 'string'
+              example: '490092574'
+              nullable: true

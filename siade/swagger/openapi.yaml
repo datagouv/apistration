@@ -300,12 +300,30 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Le jeton ne possède pas les droits nécessaires
+      description: Liste des mandataires sociaux d'une société
       responses:
         '403':
           description: Accès interdit
         '200':
-          description: Entreprise found
+          description: Entité trouvée
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
           content:
             application/json:
               schema:
@@ -317,51 +335,78 @@ paths:
                       id:
                         type: string
                         example: '418166096'
-                      pp:
-                        type: array
-                        description: Personnes physiques
-                        items:
-                          type: object
-                          properties:
-                            nom:
-                              type: string
-                              nullable: true
-                              example: Henri
-                            prenom:
-                              type: string
-                              nullable: true
-                              example: Martin
-                            fonction:
-                              type: string
-                              example: COMMISSAIRE AUX COMPTES SUPPLEANT
-                            date_naissance:
-                              type: string
-                              nullable: true
-                              example: '1965-01-27'
-                            date_naissance_timestamp:
-                              type: number
-                              nullable: true
-                              example: -155523600
-                      pm:
-                        type: array
-                        description: Personnes morales
-                        items:
-                          type: object
-                          properties:
-                            fonction:
-                              type: string
-                              example: COMMISSAIRE AUX COMPTES SUPPLEANT
-                            raison_sociale:
-                              type: string
-                              nullable: true
-                              example: BCRH & ASSOCIES - SOCIETE A RESPONSABILITE
-                                LIMITEE A ASSOCIE UNIQUE
-                            identifiant:
-                              type: string
-                              nullable: true
-                              example: '490092574'
-                              description: Cet element est facultatif, composé de
-                                7 à 9 chiffres, et peut être vide.
+                      type:
+                        type: string
+                        example: mandataires_sociaux
+                        enum:
+                        - mandataires_sociaux
+                      attributes:
+                        type: object
+                        properties:
+                          id:
+                            title: Siren
+                            type: string
+                            description: Siren de l'entreprise
+                            example: '418166096'
+                          pp:
+                            title: Personnes physiques
+                            type: array
+                            items:
+                              properties:
+                                nom:
+                                  title: Nom
+                                  type: string
+                                  example: Henri
+                                  nullable: true
+                                prenom:
+                                  title: Prénom
+                                  type: string
+                                  example: Martin
+                                  nullable: true
+                                fonction:
+                                  title: Fonction
+                                  type: string
+                                  example: COMMISSAIRE AUX COMPTES SUPPLEANT
+                                date_naissance:
+                                  title: Date de naissance
+                                  type: string
+                                  example: '1965-01-27'
+                                  nullable: true
+                                date_naissance_timestamp:
+                                  title: Date de naissance (timestamp)
+                                  type: number
+                                  example: -155523600
+                                  nullable: true
+                          pm:
+                            title: Personnes morales
+                            type: array
+                            items:
+                              properties:
+                                fonction:
+                                  title: Fonction
+                                  type: string
+                                  example: COMMISSAIRE AUX COMPTES SUPPLEANT
+                                raison_sociale:
+                                  title: Raison sociale
+                                  type: string
+                                  example: BCRH & ASSOCIES - SOCIETE A RESPONSABILITE
+                                    LIMITEE A ASSOCIE UNIQUE
+                                  nullable: true
+                                identifiant:
+                                  title: Identifiant
+                                  description: Cet element est facultatif, composé
+                                    de 7 à 9 chiffres, et peut être vide.
+                                  type: string
+                                  example: '490092574'
+                                  nullable: true
+                        required:
+                        - id
+                        - pp
+                        - pm
+                    required:
+                    - id
+                    - type
+                    - attributes
                 required:
                 - data
         '404':
