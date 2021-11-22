@@ -139,6 +139,9 @@ endpoints = <<STR
   extra_http_query:
     with_insee_v3: true
 
+- name: EORI DGDDI (Douane)
+  http_path: '/v2/eori_douanes/FR16002307300010'
+
 - name: '[V3] RNM Entreprises'
   http_path: '/v3/rnm/entreprises/301123626'
 
