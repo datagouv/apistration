@@ -83,7 +83,7 @@ RSpec.describe MockableInStaging do
         get :index, params: { token: yes_jwt }.merge(mandatory_params)
 
         assert_response 500
-        expect(response_json).to include(errors: ["Une erreur dans la configration de notre environnement de staging ne permet pas la génération de l'exemple de test. Une alerte a été remontée."])
+        expect(response_json).to include(errors: ["Une erreur dans la configuration de notre environnement de staging ne permet pas la génération de l'exemple de test. Une alerte a été remontée."])
       end
 
       it 'tracks OpenAPI error in monitoring service' do
@@ -104,7 +104,7 @@ RSpec.describe MockableInStaging do
         get :index, params: { token: yes_jwt }.merge(mandatory_params)
 
         assert_response 500
-        expect(response_json).to include(errors: ["Une erreur dans la configration de notre environnement de staging ne permet pas la génération de l'exemple de test. Une alerte a été remontée."])
+        expect(response_json).to include(errors: ["Une erreur dans la configuration de notre environnement de staging ne permet pas la génération de l'exemple de test. Une alerte a été remontée."])
       end
 
       it 'tracks OpenAPI error in monitoring service' do
