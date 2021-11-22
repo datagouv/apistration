@@ -275,3 +275,12 @@ aller ouvrir le fichier de config pour comprendre l'erreur).
 
 L'explication de la nomenclature des codes erreurs se trouve dans le fichier
 [Nomenclature codes erreurs API Entreprise](./nomenclature-errors.md)
+
+### Cas de l'environnement de staging
+
+L'environnement de staging renvoie des données générées à partir des fichiers
+d'OpenAPI v2 et v3 ; à partir de l'exemple fournit ou à défaut du type définit.
+
+**Solution actuelle temporaire** ; un concern dédié intercepte les appels en
+staging et génère une réponse pour les APIs en v2. La v3 n'est actuellement pas
+gérée.
