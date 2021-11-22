@@ -8,7 +8,11 @@ module MockableInStaging
   end
 
   def mock_response
-    render json: json, status: :ok
+    if v3_and_more?
+      render json: ErrorsSerializer.new([NotImplementedYetError.new], format: error_format).as_json, status: :not_implemented
+    else
+      render json: json, status: :ok
+    end
   end
 
   def staging?
@@ -30,6 +34,14 @@ module MockableInStaging
   end
 
   private
+
+  def current_module_name
+    controller_path.classify.split('::')[1]
+  end
+
+  def v3_and_more?
+    current_module_name == 'V3AndMore'
+  end
 
   def render_open_api_errors
     errors << OpenAPIExampleError.new
@@ -63,15 +75,7 @@ module MockableInStaging
   end
 
   def schema_path
-    if current_module_name == 'V3AndMore'
-      Rails.root.joint('swagger/openapi.yaml')
-    else
-      Rails.root.join('public/v2/open-api.yml')
-    end
-  end
-
-  def current_module_name
-    controller_path.classify.split('::')[1]
+    Rails.root.join('public/v2/open-api.yml')
   end
 
   def errors

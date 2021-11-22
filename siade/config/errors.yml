@@ -153,6 +153,10 @@
   title: "Erreur réseau du service d'hébergement de données"
   detail: "Problème de connexion au serveur d'hébergement de données. L'erreur peut venir soit du fournisseur, soit de API Entreprise"
 
+- code: '00503'
+  title: 'Fonctionnalité non implémentée'
+  detail: 'Fonctionnalité non implémentée pour le moment'
+
 ## Providers
 ### RNA
 
