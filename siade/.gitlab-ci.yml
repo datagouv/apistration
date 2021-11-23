@@ -50,8 +50,8 @@ push_to_master:
   stage: push_to_master
   script:
     - git remote show origin
-    - git remote set-url --push origin git@gitlab:$CI_PROJECT_PATH
-    - git remote show origin
+    - git fetch origin
+    - git checkout -b develop origin/develop
     - git push --force origin develop:master
   only:
     - develop
