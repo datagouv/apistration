@@ -95,7 +95,7 @@ uniquement dans ceux de productions**
 
 ## Déploiement sur les serveurs
 
-    $ rake deploy to=<sandbox|staging|production>
+    $ ./bin/deploy
 
 Dans le cas d'un test sur sandbox avec la branche `features/whatever`
 
