@@ -73,6 +73,68 @@ dgddi:
         description: "Ville de l'établissement telle que connue par les douanes"
         example: 'OSNY'
 
+inpi:
+  brevets:
+    title: 'Brevets'
+    description: |
+      Brevets déposés par l'entreprise:
+      Cet endpoint appelle les informations à partir d’un SIREN. Le SIREN étant une information facultative lors du dépôt de dossier à l’INPI, le taux de sirénage est donc incomplet.
+
+      Taux de sirénage des déposants (sur personnes morales FR) :
+
+      *Brevets France et brevets Europe délivrés : environ 80% sur les demandes de brevets publiées ces 20 dernières années ;
+    tags:
+      - 'Propriété intellectuelle'
+    type: 'array'
+    items:
+      properties:
+        id:
+          title: 'Numéro de publication'
+          description: 'Numéro de publication du brevet, constitué du Code zone + Numéro du brevet + Catégorie de publication'
+          type: 'string'
+          example: 'FR3110115A1'
+        titre:
+          title: 'Titre'
+          description: "Titre du brevet"
+          type: 'string'
+          example: 'DETERMINATION DE PARAMETRES D&apos;UN MODELE DYNAMIQUE POUR UNE CELLULE ELECTROCHIMIQUE DE BATTERIE'
+        date_publication:
+          title: 'Date de publication'
+          description: 'Date de publication du brevet'
+          type: 'string'
+          example: '20170616'
+        date_depot:
+          title: 'Date de dépot'
+          description: 'Date de dépot du brevet'
+          type: 'string'
+          example: '20151214'
+        code_zone:
+          description: |
+            Code de 2 lettres représentent la zone géographique où le brevet a été déposé, en fonction
+            de l'organisation qui a enregistré le brevet. Quelques examples:
+              - FR: France
+              - EP (European Patent): demandes de brevet déposées auprès de l’OEB (Office Européen des Brevets)
+              - WO (World): demandes de brevet PCT déposées auprès de l’OMPI (Organisation Mondiale de la Propriété Intellectuelle)
+          type: 'string'
+          example: 'FR'
+        numero_brevet:
+          title: 'Numéro du brevet'
+          description: |
+            Numéro du brevet dans l'organisation ou il a été déposé (déterminée par le code de zone)
+          type: 'string'
+          example: '3110115'
+        categorie_publication:
+          title: 'Catégorie'
+          description: 'Code représentant la catégorie du brevet (ex: A1 pour une demande de brevet,'
+          type: 'string'
+          example: 'A1'
+    meta:
+      count:
+        title: 'Nombre de brevets'
+        description: "Nombre total des dépots de brevets effectués par l'entreprise."
+        type: 'number'
+        example: 13161
+
 insee:
   adresse_etablissement:
     title: "Adresse de l'établissement"
@@ -130,13 +192,11 @@ insee:
         type: 'string'
       distribution_speciale:
         title: "Distribution spéciale"
-        description: "La distribution spéciale reprend les éléments particuliers qui accompagnent une adresse de distribution spéciale. C'est un élément constitutif de l'adresse.
-          \n
-          \n
-        Plus d'infos:
-          \n
+        description: |
+          La distribution spéciale reprend les éléments particuliers qui accompagnent une adresse de distribution spéciale. C'est un élément constitutif de l'adresse.
+
+          Plus d'infos:
           * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
-          \n
           * https://www.sirene.fr/sirene/public/variable/l5-disp"
         example: "CS 72809"
       code_cedex:
