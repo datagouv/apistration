@@ -42,7 +42,7 @@ test:
   script:
     - ./bin/test_swagger.sh && bundle exec rspec spec/
     - |
-      if [ `git branch --show-current` = "develop" ] ; then
+      if [ `git rev-parse --abbrev-ref HEAD` = "develop" ] ; then
         git reset --hard && \
           git push --force origin develop:master && \
           git fetch && \
