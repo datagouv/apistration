@@ -8,6 +8,7 @@ variables:
 stages:
   - lint
   - test
+  - push_to_master
 
 lint:
   stage: lint
@@ -41,18 +42,19 @@ test:
     - bundle exec rake dev:init
   script:
     - ./bin/test_swagger.sh && bundle exec rspec spec/
-    - |
-      if [ `git rev-parse --abbrev-ref HEAD` = "develop" ] ; then
-        git reset --hard && \
-          git push --force origin develop:master && \
-          git fetch && \
-          [[ ! -s \"$(git rev-parse --git-dir)/shallow\" ]] || git fetch --unshallow
-
-        exit 0
-      fi
   artifacts:
     reports:
       cobertura: coverage/coverage.xml
+
+push_to_master:
+  stage: push_to_master
+  script:
+    - git remote show origin
+    - git remote set-url --push origin git@gitlab:$CI_PROJECT_PATH
+    - git remote show origin
+    - git push --force origin develop:master
+  only:
+    - develop
 
 include:
   - template: Security/SAST.gitlab-ci.yml
