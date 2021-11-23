@@ -48,10 +48,19 @@ test:
 
 push_to_master:
   stage: push_to_master
+  before_script:
+    - "which ssh-agent || ( apt-get update -qy && apt-get install openssh-client -qqy )"
+    - eval `ssh-agent -s`
+    - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$SSH_PUBLIC_KEY" >> ~/.ssh/id_rsa.pub
   script:
-    - git remote show origin
+    - git config --global user.email "${CI_EMAIL}"
+    - git config --global user.name "${CI_USERNAME}"
     - git fetch origin
     - git checkout -b develop origin/develop
+    - git remote rm origin && git remote add origin git@gitlab.com:$CI_PROJECT_PATH.git
     - git push --force origin develop:master
   only:
     - develop
