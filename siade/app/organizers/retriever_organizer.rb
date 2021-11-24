@@ -8,6 +8,7 @@ class RetrieverOrganizer < ApplicationOrganizer
         invalid_provider_name! unless provider_name_valid?
         context.resource = nil
         context.errors   = []
+        provider_in_maintenance! if in_maintenance?
       end
     end
   end
@@ -51,5 +52,14 @@ class RetrieverOrganizer < ApplicationOrganizer
 
   def mark_organizer_as_called_to_run_rollback_on_fail!
     context.called!(self)
+  end
+
+  def provider_in_maintenance!
+    context.errors << MaintenanceError.new(context.provider_name)
+    context.fail!
+  end
+
+  def in_maintenance?
+    MaintenanceService.new(context.provider_name).on?
   end
 end

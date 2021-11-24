@@ -97,4 +97,41 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
       end
     end
   end
+
+  describe 'maintenance' do
+    subject(:call_organizer) { DummyRetrieverOrganizer.call(provider_name: provider_name) }
+
+    let(:provider_name) { 'INSEE' }
+    let(:maintenance_on) { false }
+
+    let(:maintenance_service) { instance_double('MaintenanceService', 'on?' => maintenance_on) }
+
+    before do
+      allow(MaintenanceService).to receive(:new).and_return(maintenance_service)
+    end
+
+    it 'instanciates MaintenanceService with provider name' do
+      call_organizer
+
+      expect(MaintenanceService).to have_received(:new).with(provider_name)
+    end
+
+    it 'checks if maintenance is on' do
+      call_organizer
+
+      expect(maintenance_service).to have_received(:on?)
+    end
+
+    context 'when maintenance is off' do
+      it { is_expected.to be_a_success }
+    end
+
+    context 'when maintenance is on' do
+      let(:maintenance_on) { true }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(MaintenanceError)) }
+    end
+  end
 end
