@@ -40,7 +40,7 @@ class SIADE::V2::Requests::AuthenticateDGFIP < SIADE::V2::Requests::Generic
   def net_http_post_call
     @raw_response = Net::HTTP.start(request_uri.host, request_uri.port, net_http_options) do |http|
       request = Net::HTTP::Post.new(request_uri)
-      request.set_form_data(secret: secret, identifiant: identifiant_email, mdp: '')
+      request.set_form_data(secret: secret, identifiant: identifiant_email, mdp: mdp)
       http.request(request)
     end
 
@@ -55,5 +55,9 @@ class SIADE::V2::Requests::AuthenticateDGFIP < SIADE::V2::Requests::Generic
 
   def secret
     Siade.credentials[:dgfip_secret]
+  end
+
+  def mdp
+    Siade.credentials[:dgfip_mdp]
   end
 end
