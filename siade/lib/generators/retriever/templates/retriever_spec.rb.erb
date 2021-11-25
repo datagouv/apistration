@@ -1,3 +1,8 @@
 RSpec.describe <%= name %>, type: :retriever_organizer do
-  it { is_expected.to raise 'implement specs here' }
+  subject { described_class.call(params: params) }
+
+  let(:params) do
+    {
+    }
+  end
 end
