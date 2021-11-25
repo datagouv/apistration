@@ -6,7 +6,7 @@ class MakeRequest::Post < MakeRequest
   end
 
   def request_params
-    fail NotImplementedError
+    {}
   end
 
   private
