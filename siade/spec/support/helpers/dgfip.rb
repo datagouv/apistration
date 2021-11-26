@@ -1,5 +1,5 @@
 def valid_dgfip_user_id
-  'tech_at_apientreprise.fr.dev_user_id'
+  '0fed8e68-8499-454b-8953-1904f9b3d121'
 end
 
 def valid_dgfip_cookie

@@ -25,6 +25,7 @@ VCR.configure do |c|
   c.filter_sensitive_data('<LOGIN_DGFIP>') { CGI.escape(Siade.credentials[:dgfip_login].to_s) }
   c.filter_sensitive_data('<SECRET_DGFIP>') { Siade.credentials[:dgfip_secret].to_s }
   c.filter_sensitive_data('<MDP_DGFIP>') { Siade.credentials[:dgfip_mdp].to_s }
+  c.filter_sensitive_data('<USER_ID_DGFIP>') { valid_dgfip_user_id }
   c.filter_sensitive_data('<INSEE_TOKEN>') { 'token' }
   c.filter_sensitive_data('<INSEE_CREDENTIALIS>') { Siade.credentials[:insee_credentials].to_s }
   c.filter_sensitive_data('<INPI_LOGIN>') { Siade.credentials[:inpi_login].to_s }
