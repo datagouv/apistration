@@ -4,7 +4,7 @@ class INPI::Brevets::ValidateResponse < ValidateResponse
 
     return if http_ok? && payload_has_results?
 
-    resource_not_found! if !payload_has_results?
+    resource_not_found! unless payload_has_results?
 
     invalid_provider_response!
   end

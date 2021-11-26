@@ -24,4 +24,3 @@ RSpec.describe INPI::Authenticate, type: :organizer do
     its(:cookie) { is_expected.to be_nil }
   end
 end
-

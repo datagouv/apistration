@@ -1,8 +1,8 @@
 RSpec.describe BuildResourceCollection, type: :interactor do
-  subject { DummyBuildResourceCollection.call(extra_attributes: extra_attributes) }
+  subject(:call) { dummy_build_resource_collection_class.call(extra_attributes: extra_attributes) }
 
-  before(:all) do
-    class DummyBuildResourceCollection < BuildResourceCollection
+  let(:dummy_build_resource_collection_class) do
+    Class.new(BuildResourceCollection) do
       def resource_collection
         [
           {
@@ -24,7 +24,7 @@ RSpec.describe BuildResourceCollection, type: :interactor do
     end
 
     it 'does not raise an error' do
-      expect { subject }.not_to raise_error
+      expect { call }.not_to raise_error
     end
   end
 
@@ -36,7 +36,7 @@ RSpec.describe BuildResourceCollection, type: :interactor do
     end
 
     it 'raises an error' do
-      expect { subject }.to raise_error(BuildResourceCollection::ResourceIdNotDefined)
+      expect { call }.to raise_error(BuildResourceCollection::ResourceIdNotDefined)
     end
   end
 end

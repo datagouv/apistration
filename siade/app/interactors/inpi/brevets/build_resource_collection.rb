@@ -26,7 +26,7 @@ class INPI::Brevets::BuildResourceCollection < BuildResourceCollection
   end
 
   def find_field_from_key(key)
-    @fields.find {|f| f['name'] == key }
+    @fields.find { |f| f['name'] == key }
   end
 
   def numero_publication

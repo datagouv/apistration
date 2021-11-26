@@ -15,7 +15,7 @@ class INPI::Authenticate < MakeRequest::Post
   protected
 
   def request_uri
-    URI inpi_url + '/login'
+    URI "#{inpi_url}/login"
   end
 
   def set_headers(request)

@@ -42,4 +42,3 @@ RSpec.describe 'INPI: Brevets', type: %i[request swagger] do
     end
   end
 end
-

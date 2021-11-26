@@ -7,7 +7,7 @@ class INPI::Brevets::MakeRequest < MakeRequest::Get
 
   def request_params
     {
-      collections: %w[FR, EP, WO, CCP],
+      collections: %w[FR EP WO CCP],
       query: "[TISI=#{siren}]"
     }
   end
