@@ -1,4 +1,5 @@
 class DGFIP::LiassesFiscales::ValidateParams < ValidateParamsOrganizer
   organize ValidateSiren,
-    ValidateYear
+    ValidateYear,
+    DGFIP::ValidateUserId
 end
