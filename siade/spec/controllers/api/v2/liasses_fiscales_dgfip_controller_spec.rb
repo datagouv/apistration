@@ -6,7 +6,7 @@ RSpec.describe API::V2::LiassesFiscalesDGFIPController, type: :controller do
   let(:maintenance) { false }
   let(:token) { yes_jwt }
 
-  describe 'happy path', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_valid_siren' } do
+  describe 'happy path', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
     before do
       allow(UserIdDGFIPService).to receive(:call).and_return(valid_dgfip_user_id)
     end

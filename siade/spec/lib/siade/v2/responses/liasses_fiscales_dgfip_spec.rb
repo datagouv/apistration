@@ -13,7 +13,7 @@ RSpec.describe SIADE::V2::Responses::LiassesFiscalesDGFIP, type: :provider_respo
 
   let(:cookie) { AuthenticateDGFIPService.new.authenticate!.cookie }
 
-  context 'with dictionary', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_valid_siren' } do
+  context 'with dictionary', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
     let(:request_name) { :dictionary }
     let(:siren) { valid_siren(:liasse_fiscale) }
 
@@ -21,7 +21,7 @@ RSpec.describe SIADE::V2::Responses::LiassesFiscalesDGFIP, type: :provider_respo
     its(:errors)    { is_expected.to be_empty }
   end
 
-  context 'when siren is found', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_valid_siren' } do
+  context 'when siren is found', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
     let(:request_name) { :declaration }
     let(:siren) { valid_siren(:liasse_fiscale) }
 
@@ -45,7 +45,7 @@ RSpec.describe SIADE::V2::Responses::LiassesFiscalesDGFIP, type: :provider_respo
     its(:errors)    { is_expected.to have_error("Le siret ou siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel") }
   end
 
-  context 'with dictionary and without siren', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_valid_siren' } do
+  context 'with dictionary and without siren', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
     subject do
       SIADE::V2::Requests::LiassesFiscalesDGFIP.new(
         {

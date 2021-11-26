@@ -33,7 +33,7 @@ RSpec.describe SIADE::V2::Requests::LiassesFiscalesDGFIP, type: :provider_reques
       its(:errors) { is_expected.to have_error('Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel') }
     end
 
-    context 'with a valid siren liasse fiscale', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_valid_siren' } do
+    context 'with a valid siren liasse fiscale', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
       let(:request_name) { :declaration }
 
       its(:http_code) { is_expected.to eq(200) }
@@ -45,7 +45,7 @@ RSpec.describe SIADE::V2::Requests::LiassesFiscalesDGFIP, type: :provider_reques
       end
     end
 
-    context 'with a valid siren dictionary', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_valid_siren' } do
+    context 'with a valid siren dictionary', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
       let(:request_name) { :dictionary }
 
       its(:http_code) { is_expected.to eq(200) }
@@ -57,7 +57,7 @@ RSpec.describe SIADE::V2::Requests::LiassesFiscalesDGFIP, type: :provider_reques
       end
     end
 
-    context 'without siren dictionary', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_valid_siren' } do
+    context 'without siren dictionary', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
       subject do
         described_class.new(
           {

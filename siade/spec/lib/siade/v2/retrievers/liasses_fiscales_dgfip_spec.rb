@@ -13,7 +13,7 @@ RSpec.describe SIADE::V2::Retrievers::LiassesFiscalesDGFIP do
     }
   end
 
-  describe 'when asking only for the declaration', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_valid_siren' } do
+  describe 'when asking only for the declaration', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
     let(:siren) { valid_siren(:liasse_fiscale) }
     let(:request_type) { :declaration }
 
@@ -22,7 +22,7 @@ RSpec.describe SIADE::V2::Retrievers::LiassesFiscalesDGFIP do
     its(:errors) { is_expected.to be_empty }
   end
 
-  describe 'when asking only for the dictionary', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_valid_siren' } do
+  describe 'when asking only for the dictionary', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
     let(:siren) { valid_siren(:liasse_fiscale) }
     let(:request_type) { :dictionary }
 
@@ -31,7 +31,7 @@ RSpec.describe SIADE::V2::Retrievers::LiassesFiscalesDGFIP do
     its(:errors) { is_expected.to be_empty }
   end
 
-  describe 'when asking for the declaration & the dictionary', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_valid_siren' } do
+  describe 'when asking for the declaration & the dictionary', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
     let(:siren) { valid_siren(:liasse_fiscale) }
     let(:request_type) { :both }
 
@@ -57,7 +57,7 @@ RSpec.describe SIADE::V2::Retrievers::LiassesFiscalesDGFIP do
     its(:errors) { is_expected.to be_empty }
   end
 
-  describe 'when asking only for the dictionary without siren', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_valid_siren' } do
+  describe 'when asking only for the dictionary without siren', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
     let(:params) do
       {
         annee: 2017,
