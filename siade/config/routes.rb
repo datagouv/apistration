@@ -73,6 +73,10 @@ Rails.application.routes.draw do
       get 'eoris/:siret_or_eori' => '/api/v3_and_more/dgddi/eori#show'
     end
 
+    namespace :inpi do
+      get 'brevets/:siren' => '/api/v3_and_more/inpi/brevets#show'
+    end
+
     namespace :insee do
       get 'sirene/unites_legales/:siren' => '/api/v3_and_more/insee/unites_legales#show'
       get 'sirene/unites_legales/diffusibles/:siren' => '/api/v3_and_more/insee/unites_legales_diffusables#show'
