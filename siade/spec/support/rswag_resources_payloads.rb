@@ -33,6 +33,26 @@ module RSWagResourcesPayloads
     }
   end
 
+  def build_rswag_response_collection(type:, properties: nil, links: nil, meta: nil)
+    {
+      type: :object,
+      properties: {
+        data: {
+          type: :array,
+          items: {
+            type: type,
+            properties: add_required_keys_to_all_type_object(properties)
+          }
+        }.merge(
+          build_rswag_links(links)
+        ).merge(
+          build_rswag_meta(meta)
+        )
+      },
+      required: %w[data]
+    }
+  end
+
   def build_rswag_document_response(id:, document_url_properties: {})
     {
       type: :object,
