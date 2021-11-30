@@ -33,7 +33,7 @@ class SIADE::V2::Drivers::CertificatsRGEADEME < SIADE::V2::Drivers::GenericDrive
     end
 
     aggregated_qualifications
-  rescue SocketError, OpenSSL::SSL::SSLError, OpenURI::HTTPError
+  rescue SocketError, OpenSSL::SSL::SSLError, OpenURI::HTTPError, Net::OpenTimeout
     handle_calypso_error
 
     []
