@@ -66,7 +66,7 @@ RSpec.describe API::V2::LiassesFiscalesDGFIPController, type: :controller do
     end
   end
 
-  describe 'with a valid DGFiP authentication', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_non_existent_siren' } do
+  describe 'with a valid DGFiP authentication', vcr: { cassette_name: 'dgfip/liasses_fiscales/with_non_existent_siren' } do
     before do
       allow(UserIdDGFIPService).to receive(:call).and_return(valid_dgfip_user_id)
     end

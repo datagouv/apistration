@@ -19,7 +19,7 @@ RSpec.describe SIADE::V2::Requests::LiassesFiscalesDGFIP, type: :provider_reques
   let(:request_name) { :declaration }
 
   describe 'params are well formatted' do
-    context 'with a non existent siren', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_non_existent_siren' } do
+    context 'with a non existent siren', vcr: { cassette_name: 'dgfip/liasses_fiscales/with_non_existent_siren' } do
       let(:siren) { non_existent_siren }
 
       its(:http_code) { is_expected.to eq(404) }

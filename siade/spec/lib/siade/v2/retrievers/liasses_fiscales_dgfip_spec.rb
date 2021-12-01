@@ -40,7 +40,7 @@ RSpec.describe SIADE::V2::Retrievers::LiassesFiscalesDGFIP do
     its(:errors) { is_expected.to be_empty }
   end
 
-  describe 'when asking declaration with a non existent siren', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_non_existent_siren' } do
+  describe 'when asking declaration with a non existent siren', vcr: { cassette_name: 'dgfip/liasses_fiscales/with_non_existent_siren' } do
     let(:siren) { non_existent_siren }
     let(:request_type) { :declaration }
 
@@ -48,7 +48,7 @@ RSpec.describe SIADE::V2::Retrievers::LiassesFiscalesDGFIP do
     its(:errors) { is_expected.to have_error('Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel') }
   end
 
-  describe 'when asking dictionary with a non existent siren', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_non_existent_siren' } do
+  describe 'when asking dictionary with a non existent siren', vcr: { cassette_name: 'dgfip/liasses_fiscales/with_non_existent_siren' } do
     let(:siren) { non_existent_siren }
     let(:request_type) { :dictionary }
 

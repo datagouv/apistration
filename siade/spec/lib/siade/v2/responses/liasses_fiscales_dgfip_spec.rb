@@ -37,7 +37,7 @@ RSpec.describe SIADE::V2::Responses::LiassesFiscalesDGFIP, type: :provider_respo
     its(:errors)    { is_expected.to have_error("Le siret ou siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel") }
   end
 
-  context 'when siren is not found but raise 503', vcr: { cassette_name: 'liasses_fiscales_dgfip_with_non_existent_siren' } do
+  context 'when siren is not found but raise 503', vcr: { cassette_name: 'dgfip/liasses_fiscales/with_non_existent_siren' } do
     let(:request_name) { :declaration }
     let(:siren) { non_existent_siren }
 
