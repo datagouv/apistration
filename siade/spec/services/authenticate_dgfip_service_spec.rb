@@ -8,7 +8,6 @@ RSpec.describe AuthenticateDGFIPService do
 
     its(:http_code) { is_expected.to eq(502) }
     its(:success?) { is_expected.to be_falsey }
-    its(:errors) { is_expected.not_to be_empty }
     its(:errors) { is_expected.to have_error("L'authentification auprès du fournisseur de données 'DGFIP' a échoué") }
   end
 

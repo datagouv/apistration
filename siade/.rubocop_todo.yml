@@ -206,11 +206,6 @@ RSpec/LeakyConstantDeclaration:
     - 'spec/organizers/validate_params_organizer_spec.rb'
     - 'spec/services/monitoring_service_spec.rb'
 
-# Offense count: 2
-RSpec/RepeatedDescription:
-  Exclude:
-    - 'spec/services/authenticate_dgfip_service_spec.rb'
-
 # Offense count: 4
 # Configuration parameters: IgnoreNameless, IgnoreSymbolicNames.
 RSpec/VerifiedDoubles:
