@@ -188,5 +188,14 @@ RSpec/FilePath:
     - "spec/requests/rack_attack_spec.rb"
     - "spec/interactors/get_oauth2_token_spec.rb"
 
+RSpec/MessageSpies:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
 RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NamedSubject:
   Enabled: false
