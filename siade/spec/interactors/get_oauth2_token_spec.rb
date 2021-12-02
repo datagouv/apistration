@@ -162,19 +162,6 @@ RSpec.describe GetOAuth2Token, type: :interactor do
       )
     end
 
-    # rescue needs to match a TypeError instance that doubles are not
-    # so we need a 'real' error and this one is quite anoying to create
-    let(:oauth2_error) do
-      OAuth2::Error.new(
-        OAuth2::Response.new(
-          Faraday::Response.new(
-            response_headers: {},
-            body: response_body_from_sentry.to_json
-          )
-        )
-      )
-    end
-
     before do
       allow(OAuth2::Client).to receive(:new).and_return(dummy_client)
       allow(dummy_client).to receive(:get_token).and_raise(oauth2_error)
