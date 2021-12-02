@@ -5,7 +5,7 @@ RSpec.describe DGFIP::ValidateYear, type: :validate_param_interactor do
     let(:params) do
       {
         year: year
-      }
+      }.compact
     end
 
     shared_examples 'year not valid' do
@@ -20,6 +20,18 @@ RSpec.describe DGFIP::ValidateYear, type: :validate_param_interactor do
       it { is_expected.to be_a_success }
     end
 
+    context 'when year is a valid integer' do
+      let(:year) { 2020 }
+
+      it { is_expected.to be_a_success }
+    end
+
+    context 'when it is nil' do
+      include_examples 'year not valid' do
+        let(:year) { nil }
+      end
+    end
+
     context 'when it is not an integer' do
       include_examples 'year not valid' do
         let(:year) { 'lol' }
@@ -32,7 +44,7 @@ RSpec.describe DGFIP::ValidateYear, type: :validate_param_interactor do
       end
     end
 
-    context 'when it is too far in the pas' do
+    context 'when it is too far in the past' do
       include_examples 'year not valid' do
         let(:year) { '1969' }
       end

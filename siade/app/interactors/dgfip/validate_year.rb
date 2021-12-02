@@ -8,7 +8,8 @@ class DGFIP::ValidateYear < ValidateParamInteractor
   private
 
   def valid?
-    param(:year) =~ /\A\d{4}\z/ &&
+    param(:year).present? &&
+      param(:year).to_s =~ /\A\d{4}\z/ &&
       valid_year_range.include?(param(:year).to_i)
   end
 
