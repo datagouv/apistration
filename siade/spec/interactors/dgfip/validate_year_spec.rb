@@ -1,4 +1,4 @@
-RSpec.describe ValidateYear, type: :validate_param_interactor do
+RSpec.describe DGFIP::ValidateYear, type: :validate_param_interactor do
   describe '#call' do
     subject { described_class.call(params: params) }
 

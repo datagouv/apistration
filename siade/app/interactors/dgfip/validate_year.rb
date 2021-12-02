@@ -1,4 +1,4 @@
-class ValidateYear < ValidateParamInteractor
+class DGFIP::ValidateYear < ValidateParamInteractor
   def call
     return if valid?
 
@@ -17,7 +17,7 @@ class ValidateYear < ValidateParamInteractor
   end
 
   def start_year
-    2018
+    2006
   end
 
   def current_year
