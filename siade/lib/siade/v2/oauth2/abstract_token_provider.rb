@@ -40,9 +40,9 @@ module SIADE::V2::OAuth2::AbstractTokenProvider
   def token_from_provider
     client.get_token(client_get_token_params, access_token_options)
       .tap(&method(:save_to_redis))
-  rescue OAuth2::Error => e
-    message = "Error while retrieving #{self.class.name} OAuth2 JSON token from provider (#{e.class} #{e.message}))"
-    MonitoringService.instance.capture_message(message, level: 'warning')
+  rescue OAuth2::Error, Errno::ECONNRESET => e
+    track_error_from_provider(e)
+
     raise Error, e.message
   end
 
@@ -61,6 +61,19 @@ module SIADE::V2::OAuth2::AbstractTokenProvider
 
   def client
     @client ||= OAuth2::Client.new(client_id, client_secret, client_options)
+  end
+
+  def track_error_from_provider(exception)
+    MonitoringService.instance.track(
+      :warn,
+      "Error while retrieving #{self.class.name} OAuth2 JSON token from provider",
+      {
+        exception: {
+          class: exception.class.to_s,
+          message: exception.message
+        }
+      }
+    )
   end
 
   def client_get_token_params

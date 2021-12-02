@@ -127,47 +127,83 @@ RSpec.describe SIADE::V2::OAuth2::AbstractTokenProvider do
   end
 
   context 'when provider returns an error' do
-    let(:response_body_from_sentry) do
-      {
-        reasons: [{
-          language: 'fr',
-          message: 'Erreur technique'
-        }],
-        details: {
-          msgId: 'Id-8b87ee5fc10471b6cacf9ad1'
-        }
-      }
-    end
-
-    # rescue needs to match a TypeError instance that doubles are not
-    # so we need a 'real' error and this one is quite anoying to create
-    let(:oauth2_error) do
-      OAuth2::Error.new(
-        OAuth2::Response.new(
-          Faraday::Response.new(
-            response_headers: {},
-            body: response_body_from_sentry.to_json
-          )
-        )
-      )
-    end
-
     before do
       allow(OAuth2::Client).to receive(:new).and_return(dummy_client)
-      allow(dummy_client).to receive(:get_token).and_raise(oauth2_error)
+      allow(dummy_client).to receive(:get_token).and_raise(error)
     end
 
-    it 'raises an error when retrieving the token' do
-      expect { subject.token }.to raise_error(SIADE::V2::OAuth2::AbstractTokenProvider::Error)
+    context 'when it is an oauth2 error' do
+      let(:response_body_from_sentry) do
+        {
+          reasons: [{
+            language: 'fr',
+            message: 'Erreur technique'
+          }],
+          details: {
+            msgId: 'Id-8b87ee5fc10471b6cacf9ad1'
+          }
+        }
+      end
+
+      let(:error) do
+        OAuth2::Error.new(
+          OAuth2::Response.new(
+            Faraday::Response.new(
+              response_headers: {},
+              body: response_body_from_sentry.to_json
+            )
+          )
+        )
+      end
+
+      it 'raises an error when retrieving the token' do
+        expect { subject.token }.to raise_error(SIADE::V2::OAuth2::AbstractTokenProvider::Error)
+      end
+
+      it 'tracks error' do
+        expect(MonitoringService.instance)
+          .to receive(:track)
+          .with(
+            :warn,
+            'Error while retrieving DummyTokenProvider OAuth2 JSON token from provider',
+            {
+              exception: {
+                class: 'OAuth2::Error',
+                message: response_body_from_sentry.to_json,
+              }
+            }
+          )
+        begin
+          subject.token
+        rescue SIADE::V2::OAuth2::AbstractTokenProvider::Error
+        end
+      end
     end
 
-    it 'sends a message to Sentry' do
-      expect(MonitoringService.instance)
-        .to receive(:capture_message)
-        .with("Error while retrieving DummyTokenProvider OAuth2 JSON token from provider (OAuth2::Error #{response_body_from_sentry.to_json}))", level: 'warning')
-      begin
-        subject.token
-      rescue SIADE::V2::OAuth2::AbstractTokenProvider::Error
+    context 'when it is a connection reset by peer error' do
+      let(:error) { Errno::ECONNRESET }
+
+      it 'raises an error when retrieving the token' do
+        expect { subject.token }.to raise_error(SIADE::V2::OAuth2::AbstractTokenProvider::Error)
+      end
+
+      it 'tracks error' do
+        expect(MonitoringService.instance)
+          .to receive(:track)
+          .with(
+            :warn,
+            'Error while retrieving DummyTokenProvider OAuth2 JSON token from provider',
+            {
+              exception: {
+                class: 'Errno::ECONNRESET',
+                message: 'Connection reset by peer'
+              }
+            }
+          )
+        begin
+          subject.token
+        rescue SIADE::V2::OAuth2::AbstractTokenProvider::Error
+        end
       end
     end
   end
