@@ -5,9 +5,9 @@ RSpec.describe 'DGDDI: EORI', type: %i[request swagger] do
     get SwaggerInformation.get('dgddi.eori.title') do
       tags(*SwaggerInformation.get('dgddi.eori.tags'))
 
-      common_action_attributes
+      parameter_siret_or_eori
 
-      parameter name: :siret_or_eori, in: :path, type: :string
+      common_action_attributes
 
       unauthorized_request do
         let(:siret_or_eori) { valid_eori }

@@ -5,9 +5,9 @@ RSpec.describe 'MI : Associations', type: %i[request swagger] do
     get SwaggerInformation.get('mi.association.title') do
       tags(*SwaggerInformation.get('mi.association.tags'))
 
-      common_action_attributes
+      parameter_siret_or_rna
 
-      parameter name: :siret_or_rna, in: :path, type: :string
+      common_action_attributes
 
       unauthorized_request do
         let(:siret_or_rna) { valid_rna_id }

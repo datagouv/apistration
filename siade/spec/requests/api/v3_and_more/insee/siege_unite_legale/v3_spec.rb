@@ -7,9 +7,9 @@ RSpec.describe 'INSEE: Siège Unité Légale', type: %i[request swagger] do
 
       tags 'Informations générales'
 
-      common_action_attributes
+      parameter_siren
 
-      parameter name: :siren, in: :path, type: :string
+      common_action_attributes
 
       unauthorized_request do
         let(:siren) { sirens_insee_v3[:active_GE] }

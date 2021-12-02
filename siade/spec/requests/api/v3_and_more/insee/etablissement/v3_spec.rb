@@ -5,9 +5,9 @@ RSpec.describe 'INSEE: Etablissement', type: %i[request swagger] do
     get SwaggerInformation.get('insee.etablissement.title') do
       tags(*SwaggerInformation.get('insee.etablissement.tags'))
 
-      common_action_attributes
+      parameter_siret
 
-      parameter name: :siret, in: :path, type: :string
+      common_action_attributes
 
       unauthorized_request do
         let(:siret) { sirets_insee_v3[:active_GE] }

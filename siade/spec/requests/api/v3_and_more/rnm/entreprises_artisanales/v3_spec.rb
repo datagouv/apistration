@@ -5,9 +5,9 @@ RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
     get SwaggerInformation.get('rnm.entreprise_artisanale.title') do
       tags(*SwaggerInformation.get('rnm.entreprise_artisanale.tags'))
 
-      common_action_attributes
+      parameter_siren
 
-      parameter name: :siren, in: :path, type: :string
+      common_action_attributes
 
       unauthorized_request do
         let(:siren) { valid_siren(:rnm_cma) }

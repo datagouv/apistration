@@ -10,34 +10,58 @@ paths:
       tags:
       - Attestations sociales et fiscales
       parameters:
+      - name: siren
+        in: path
+        description: Siren de l'entreprise
+        examples:
+          siren_octo_technology:
+            value: '418166096'
+            summary: SIREN Octo Technology
+          siren_non_diffusible:
+            value: '005572466'
+            summary: SIREN entreprise non diffusible
+          siren_artisant:
+            value: '301123626'
+            summary: SIREN entreprise artisanale
+          siren_fntp:
+            value: '339379984'
+            summary: SIREN pour FNTP
+          siren_cnetp:
+            value: '542036207'
+            summary: SIREN pour CNETP
+          siren_opqibi:
+            value: '515228211'
+            summary: SIREN pour OPQIBI
+        required: true
+        schema:
+          type: string
       - name: context
         in: query
-        description: "**Cadre de la requête** \n \n Par exemple : aides publiques,
-          marchés publics ou gestion d’un référentiel tiers utilisé pour tel type
-          d’application."
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
         required: true
         schema:
           type: string
       - name: recipient
         in: query
-        description: "**Bénéficiaire de l’appel** \n \n SIRET de l’administration
-          destinatrice des données."
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '123456789'
         required: true
         schema:
           type: string
       - name: object
         in: query
-        description: "**La raison de l’appel ou l’identifiant de la procédure.** \n
-          \n L’identifiant peut être interne à votre organisation ou bien un numéro
-          de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous
-          permette de tracer et de retrouver les informations relatives à l’appel.
-          En effet, vous devez pouvoir justifier de la raison d’un appel auprès du
-          fournisseur de données. Description courte ( < 50 caractères )."
-        required: true
-        schema:
-          type: string
-      - name: siren
-        in: path
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
         required: true
         schema:
           type: string
@@ -114,34 +138,49 @@ paths:
       tags:
       - Informations générales
       parameters:
+      - name: siret_or_eori
+        in: path
+        description: Siret ou numéro EORI de l'entreprise
+        examples:
+          french_siret:
+            value: '16002307300010'
+            summary: Siret français
+          french_eori:
+            value: FR16002307300010
+            summary: Numéro EORI français
+          spanish_eori:
+            value: ESA08536583
+            summary: Numéro EORI espagnol
+        required: true
+        schema:
+          type: string
       - name: context
         in: query
-        description: "**Cadre de la requête** \n \n Par exemple : aides publiques,
-          marchés publics ou gestion d’un référentiel tiers utilisé pour tel type
-          d’application."
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
         required: true
         schema:
           type: string
       - name: recipient
         in: query
-        description: "**Bénéficiaire de l’appel** \n \n SIRET de l’administration
-          destinatrice des données."
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '123456789'
         required: true
         schema:
           type: string
       - name: object
         in: query
-        description: "**La raison de l’appel ou l’identifiant de la procédure.** \n
-          \n L’identifiant peut être interne à votre organisation ou bien un numéro
-          de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous
-          permette de tracer et de retrouver les informations relatives à l’appel.
-          En effet, vous devez pouvoir justifier de la raison d’un appel auprès du
-          fournisseur de données. Description courte ( < 50 caractères )."
-        required: true
-        schema:
-          type: string
-      - name: siret_or_eori
-        in: path
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
         required: true
         schema:
           type: string
@@ -496,34 +535,61 @@ paths:
       tags:
       - Informations générales
       parameters:
+      - name: siret
+        in: path
+        description: Siret de l'établissement
+        examples:
+          siret_octo_technology:
+            value: '41816609600069'
+            summary: SIRET Octo Technology
+          siret_non_diffusible:
+            value: '00557246600026'
+            summary: SIRET établissement non diffusible
+          siret_agefiph:
+            value: '39332832300059'
+            summary: SIRET pour AGEFIPH
+          siret_msa:
+            value: '81104725700019'
+            summary: SIRET pour MSA
+          siret_probtp:
+            value: '43841606700017'
+            summary: SIRET pour ProBTP
+          siret_agence_bio:
+            value: '48311105000025'
+            summary: SIRET pour l'Agence Bio
+          siret_qualibat:
+            value: '78824266700020'
+            summary: SIRET pour Qualibat
+        required: true
+        schema:
+          type: string
       - name: context
         in: query
-        description: "**Cadre de la requête** \n \n Par exemple : aides publiques,
-          marchés publics ou gestion d’un référentiel tiers utilisé pour tel type
-          d’application."
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
         required: true
         schema:
           type: string
       - name: recipient
         in: query
-        description: "**Bénéficiaire de l’appel** \n \n SIRET de l’administration
-          destinatrice des données."
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '123456789'
         required: true
         schema:
           type: string
       - name: object
         in: query
-        description: "**La raison de l’appel ou l’identifiant de la procédure.** \n
-          \n L’identifiant peut être interne à votre organisation ou bien un numéro
-          de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous
-          permette de tracer et de retrouver les informations relatives à l’appel.
-          En effet, vous devez pouvoir justifier de la raison d’un appel auprès du
-          fournisseur de données. Description courte ( < 50 caractères )."
-        required: true
-        schema:
-          type: string
-      - name: siret
-        in: path
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
         required: true
         schema:
           type: string
@@ -753,34 +819,61 @@ paths:
       tags:
       - Informations générales
       parameters:
+      - name: siret
+        in: path
+        description: Siret de l'établissement
+        examples:
+          siret_octo_technology:
+            value: '41816609600069'
+            summary: SIRET Octo Technology
+          siret_non_diffusible:
+            value: '00557246600026'
+            summary: SIRET établissement non diffusible
+          siret_agefiph:
+            value: '39332832300059'
+            summary: SIRET pour AGEFIPH
+          siret_msa:
+            value: '81104725700019'
+            summary: SIRET pour MSA
+          siret_probtp:
+            value: '43841606700017'
+            summary: SIRET pour ProBTP
+          siret_agence_bio:
+            value: '48311105000025'
+            summary: SIRET pour l'Agence Bio
+          siret_qualibat:
+            value: '78824266700020'
+            summary: SIRET pour Qualibat
+        required: true
+        schema:
+          type: string
       - name: context
         in: query
-        description: "**Cadre de la requête** \n \n Par exemple : aides publiques,
-          marchés publics ou gestion d’un référentiel tiers utilisé pour tel type
-          d’application."
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
         required: true
         schema:
           type: string
       - name: recipient
         in: query
-        description: "**Bénéficiaire de l’appel** \n \n SIRET de l’administration
-          destinatrice des données."
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '123456789'
         required: true
         schema:
           type: string
       - name: object
         in: query
-        description: "**La raison de l’appel ou l’identifiant de la procédure.** \n
-          \n L’identifiant peut être interne à votre organisation ou bien un numéro
-          de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous
-          permette de tracer et de retrouver les informations relatives à l’appel.
-          En effet, vous devez pouvoir justifier de la raison d’un appel auprès du
-          fournisseur de données. Description courte ( < 50 caractères )."
-        required: true
-        schema:
-          type: string
-      - name: siret
-        in: path
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
         required: true
         schema:
           type: string
@@ -962,34 +1055,58 @@ paths:
       tags:
       - Informations générales
       parameters:
+      - name: siren
+        in: path
+        description: Siren de l'entreprise
+        examples:
+          siren_octo_technology:
+            value: '418166096'
+            summary: SIREN Octo Technology
+          siren_non_diffusible:
+            value: '005572466'
+            summary: SIREN entreprise non diffusible
+          siren_artisant:
+            value: '301123626'
+            summary: SIREN entreprise artisanale
+          siren_fntp:
+            value: '339379984'
+            summary: SIREN pour FNTP
+          siren_cnetp:
+            value: '542036207'
+            summary: SIREN pour CNETP
+          siren_opqibi:
+            value: '515228211'
+            summary: SIREN pour OPQIBI
+        required: true
+        schema:
+          type: string
       - name: context
         in: query
-        description: "**Cadre de la requête** \n \n Par exemple : aides publiques,
-          marchés publics ou gestion d’un référentiel tiers utilisé pour tel type
-          d’application."
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
         required: true
         schema:
           type: string
       - name: recipient
         in: query
-        description: "**Bénéficiaire de l’appel** \n \n SIRET de l’administration
-          destinatrice des données."
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '123456789'
         required: true
         schema:
           type: string
       - name: object
         in: query
-        description: "**La raison de l’appel ou l’identifiant de la procédure.** \n
-          \n L’identifiant peut être interne à votre organisation ou bien un numéro
-          de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous
-          permette de tracer et de retrouver les informations relatives à l’appel.
-          En effet, vous devez pouvoir justifier de la raison d’un appel auprès du
-          fournisseur de données. Description courte ( < 50 caractères )."
-        required: true
-        schema:
-          type: string
-      - name: siren
-        in: path
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
         required: true
         schema:
           type: string
@@ -1171,34 +1288,58 @@ paths:
       tags:
       - Informations générales
       parameters:
+      - name: siren
+        in: path
+        description: Siren de l'entreprise
+        examples:
+          siren_octo_technology:
+            value: '418166096'
+            summary: SIREN Octo Technology
+          siren_non_diffusible:
+            value: '005572466'
+            summary: SIREN entreprise non diffusible
+          siren_artisant:
+            value: '301123626'
+            summary: SIREN entreprise artisanale
+          siren_fntp:
+            value: '339379984'
+            summary: SIREN pour FNTP
+          siren_cnetp:
+            value: '542036207'
+            summary: SIREN pour CNETP
+          siren_opqibi:
+            value: '515228211'
+            summary: SIREN pour OPQIBI
+        required: true
+        schema:
+          type: string
       - name: context
         in: query
-        description: "**Cadre de la requête** \n \n Par exemple : aides publiques,
-          marchés publics ou gestion d’un référentiel tiers utilisé pour tel type
-          d’application."
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
         required: true
         schema:
           type: string
       - name: recipient
         in: query
-        description: "**Bénéficiaire de l’appel** \n \n SIRET de l’administration
-          destinatrice des données."
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '123456789'
         required: true
         schema:
           type: string
       - name: object
         in: query
-        description: "**La raison de l’appel ou l’identifiant de la procédure.** \n
-          \n L’identifiant peut être interne à votre organisation ou bien un numéro
-          de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous
-          permette de tracer et de retrouver les informations relatives à l’appel.
-          En effet, vous devez pouvoir justifier de la raison d’un appel auprès du
-          fournisseur de données. Description courte ( < 50 caractères )."
-        required: true
-        schema:
-          type: string
-      - name: siren
-        in: path
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
         required: true
         schema:
           type: string
@@ -1554,34 +1695,58 @@ paths:
       tags:
       - Informations générales
       parameters:
+      - name: siren
+        in: path
+        description: Siren de l'entreprise
+        examples:
+          siren_octo_technology:
+            value: '418166096'
+            summary: SIREN Octo Technology
+          siren_non_diffusible:
+            value: '005572466'
+            summary: SIREN entreprise non diffusible
+          siren_artisant:
+            value: '301123626'
+            summary: SIREN entreprise artisanale
+          siren_fntp:
+            value: '339379984'
+            summary: SIREN pour FNTP
+          siren_cnetp:
+            value: '542036207'
+            summary: SIREN pour CNETP
+          siren_opqibi:
+            value: '515228211'
+            summary: SIREN pour OPQIBI
+        required: true
+        schema:
+          type: string
       - name: context
         in: query
-        description: "**Cadre de la requête** \n \n Par exemple : aides publiques,
-          marchés publics ou gestion d’un référentiel tiers utilisé pour tel type
-          d’application."
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
         required: true
         schema:
           type: string
       - name: recipient
         in: query
-        description: "**Bénéficiaire de l’appel** \n \n SIRET de l’administration
-          destinatrice des données."
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '123456789'
         required: true
         schema:
           type: string
       - name: object
         in: query
-        description: "**La raison de l’appel ou l’identifiant de la procédure.** \n
-          \n L’identifiant peut être interne à votre organisation ou bien un numéro
-          de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous
-          permette de tracer et de retrouver les informations relatives à l’appel.
-          En effet, vous devez pouvoir justifier de la raison d’un appel auprès du
-          fournisseur de données. Description courte ( < 50 caractères )."
-        required: true
-        schema:
-          type: string
-      - name: siren
-        in: path
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
         required: true
         schema:
           type: string
@@ -1940,34 +2105,46 @@ paths:
       tags:
       - Informations générales
       parameters:
+      - name: siret_or_rna
+        in: path
+        description: Siret de l'association ou le numéro RNA
+        examples:
+          openstreetmap_france:
+            value: W751212517
+            summary: ID RNA Openstreetmap France
+          croix_rouge:
+            value: '77567227221138'
+            summary: SIRET de la Croix-Rouge France
+        required: true
+        schema:
+          type: string
       - name: context
         in: query
-        description: "**Cadre de la requête** \n \n Par exemple : aides publiques,
-          marchés publics ou gestion d’un référentiel tiers utilisé pour tel type
-          d’application."
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
         required: true
         schema:
           type: string
       - name: recipient
         in: query
-        description: "**Bénéficiaire de l’appel** \n \n SIRET de l’administration
-          destinatrice des données."
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '123456789'
         required: true
         schema:
           type: string
       - name: object
         in: query
-        description: "**La raison de l’appel ou l’identifiant de la procédure.** \n
-          \n L’identifiant peut être interne à votre organisation ou bien un numéro
-          de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous
-          permette de tracer et de retrouver les informations relatives à l’appel.
-          En effet, vous devez pouvoir justifier de la raison d’un appel auprès du
-          fournisseur de données. Description courte ( < 50 caractères )."
-        required: true
-        schema:
-          type: string
-      - name: siret_or_rna
-        in: path
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
         required: true
         schema:
           type: string
@@ -2149,34 +2326,61 @@ paths:
       tags:
       - Attestations sociales et fiscales
       parameters:
+      - name: siret
+        in: path
+        description: Siret de l'établissement
+        examples:
+          siret_octo_technology:
+            value: '41816609600069'
+            summary: SIRET Octo Technology
+          siret_non_diffusible:
+            value: '00557246600026'
+            summary: SIRET établissement non diffusible
+          siret_agefiph:
+            value: '39332832300059'
+            summary: SIRET pour AGEFIPH
+          siret_msa:
+            value: '81104725700019'
+            summary: SIRET pour MSA
+          siret_probtp:
+            value: '43841606700017'
+            summary: SIRET pour ProBTP
+          siret_agence_bio:
+            value: '48311105000025'
+            summary: SIRET pour l'Agence Bio
+          siret_qualibat:
+            value: '78824266700020'
+            summary: SIRET pour Qualibat
+        required: true
+        schema:
+          type: string
       - name: context
         in: query
-        description: "**Cadre de la requête** \n \n Par exemple : aides publiques,
-          marchés publics ou gestion d’un référentiel tiers utilisé pour tel type
-          d’application."
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
         required: true
         schema:
           type: string
       - name: recipient
         in: query
-        description: "**Bénéficiaire de l’appel** \n \n SIRET de l’administration
-          destinatrice des données."
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '123456789'
         required: true
         schema:
           type: string
       - name: object
         in: query
-        description: "**La raison de l’appel ou l’identifiant de la procédure.** \n
-          \n L’identifiant peut être interne à votre organisation ou bien un numéro
-          de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous
-          permette de tracer et de retrouver les informations relatives à l’appel.
-          En effet, vous devez pouvoir justifier de la raison d’un appel auprès du
-          fournisseur de données. Description courte ( < 50 caractères )."
-        required: true
-        schema:
-          type: string
-      - name: siret
-        in: path
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
         required: true
         schema:
           type: string
@@ -2254,34 +2458,58 @@ paths:
       tags:
       - Informations générales
       parameters:
+      - name: siren
+        in: path
+        description: Siren de l'entreprise
+        examples:
+          siren_octo_technology:
+            value: '418166096'
+            summary: SIREN Octo Technology
+          siren_non_diffusible:
+            value: '005572466'
+            summary: SIREN entreprise non diffusible
+          siren_artisant:
+            value: '301123626'
+            summary: SIREN entreprise artisanale
+          siren_fntp:
+            value: '339379984'
+            summary: SIREN pour FNTP
+          siren_cnetp:
+            value: '542036207'
+            summary: SIREN pour CNETP
+          siren_opqibi:
+            value: '515228211'
+            summary: SIREN pour OPQIBI
+        required: true
+        schema:
+          type: string
       - name: context
         in: query
-        description: "**Cadre de la requête** \n \n Par exemple : aides publiques,
-          marchés publics ou gestion d’un référentiel tiers utilisé pour tel type
-          d’application."
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
         required: true
         schema:
           type: string
       - name: recipient
         in: query
-        description: "**Bénéficiaire de l’appel** \n \n SIRET de l’administration
-          destinatrice des données."
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '123456789'
         required: true
         schema:
           type: string
       - name: object
         in: query
-        description: "**La raison de l’appel ou l’identifiant de la procédure.** \n
-          \n L’identifiant peut être interne à votre organisation ou bien un numéro
-          de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous
-          permette de tracer et de retrouver les informations relatives à l’appel.
-          En effet, vous devez pouvoir justifier de la raison d’un appel auprès du
-          fournisseur de données. Description courte ( < 50 caractères )."
-        required: true
-        schema:
-          type: string
-      - name: siren
-        in: path
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
         required: true
         schema:
           type: string

@@ -5,9 +5,9 @@ RSpec.describe 'PROBTP : Attestations cotisations retraite', type: %i[request sw
     get SwaggerInformation.get('probtp.attestation_cotisation_retraite.title') do
       tags(*SwaggerInformation.get('probtp.attestation_cotisation_retraite.tags'))
 
-      common_action_attributes
+      parameter_siret
 
-      parameter name: :siret, in: :path, type: :string
+      common_action_attributes
 
       unauthorized_request do
         let(:siret) { eligible_siret(:probtp) }

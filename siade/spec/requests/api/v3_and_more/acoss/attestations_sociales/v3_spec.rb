@@ -5,11 +5,9 @@ RSpec.describe 'ACOSS: Attestations sociales', type: %i[request swagger] do
     get SwaggerInformation.get('acoss.attestation_sociale.title') do
       tags(*SwaggerInformation.get('acoss.attestation_sociale.tags'))
 
-      common_action_attributes
+      parameter_siren
 
-      parameter name: :siren,
-        in: :path,
-        type: :string
+      common_action_attributes
 
       unauthorized_request do
         let(:siren) { valid_siren(:acoss) }

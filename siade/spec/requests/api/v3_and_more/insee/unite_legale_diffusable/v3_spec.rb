@@ -5,9 +5,9 @@ RSpec.describe 'INSEE: Unités légales diffusibles', type: %i[request swagger] 
     get SwaggerInformation.get('insee.unite_legale_diffusable.title') do
       tags(*SwaggerInformation.get('insee.unite_legale_diffusable.tags'))
 
-      common_action_attributes
+      parameter_siren
 
-      parameter name: :siren, in: :path, type: :string
+      common_action_attributes
 
       unauthorized_request do
         let(:siren) { sirens_insee_v3[:active_GE] }
