@@ -142,17 +142,17 @@ endpoints = <<STR
 - name: EORI DGDDI (Douane)
   http_path: '/v2/eori_douanes/FR16002307300010'
 
-- name: '[V3] RNM Entreprises'
-  http_path: '/v3/rnm/entreprises/301123626'
-
-- name: '[V3] ProBTP Attestations cotisations retraite'
-  http_path: '/v3/probtp/attestations_cotisation_retraite/43841606700017'
-
 - name: '[V3] ACOSS Attestations sociales'
   http_path: '/v3/acoss/attestations_sociales/418166096'
 
 - name: '[V3] DGDDI EORI'
   http_path: '/v3/dgddi/eoris/FR16002307300010'
+
+- name: '[V3] ProBTP Attestations cotisations retraite'
+  http_path: '/v3/probtp/attestations_cotisation_retraite/43841606700017'
+
+- name: '[V3] RNM Entreprises'
+  http_path: '/v3/rnm/entreprises/301123626'
 
 STR
 
