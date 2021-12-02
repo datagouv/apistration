@@ -6,28 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 18
-Lint/MissingSuper:
-  Exclude:
-    - 'app/errors/abstract_generic_provider_error.rb'
-    - 'app/errors/abstract_specific_provider_error.rb'
-    - 'app/errors/bad_file_from_provider_error.rb'
-    - 'app/errors/bad_request_error.rb'
-    - 'app/errors/dgfip_entreprise_unprocessable_entity_error.rb'
-    - 'app/errors/missing_mandatory_param_error.rb'
-    - 'app/errors/not_found_error.rb'
-    - 'app/errors/unprocessable_entity_error.rb'
-    - 'app/errors/unsupported_api_version_error.rb'
-    - 'app/interactors/build_resource.rb'
-    - 'app/interactors/get_oauth2_token.rb'
-    - 'app/interactors/make_request.rb'
-    - 'app/interactors/validate_param_interactor.rb'
-    - 'app/interactors/validate_response.rb'
-    - 'app/organizers/retriever_organizer.rb'
-    - 'app/organizers/upload_document_organizer.rb'
-    - 'app/organizers/validate_params_organizer.rb'
-    - 'app/serializers/jsonapi/document_serializer.rb'
-
 # Offense count: 2
 Lint/UselessAssignment:
   Exclude:

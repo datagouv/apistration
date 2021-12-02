@@ -27,6 +27,10 @@ Lint/ConstantDefinitionInBlock:
   Exclude:
     - "spec/**/*_spec.rb"
 
+# Forcing 'super' is verbose
+Lint/MissingSuper:
+  Enabled: false
+
 # No line between definitions is OK for oneliners
 Layout/EmptyLineBetweenDefs:
   AllowAdjacentOneLineDefs: true
