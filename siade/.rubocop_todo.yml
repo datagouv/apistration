@@ -6,22 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 12
-# Configuration parameters: AllowedMethods.
-# AllowedMethods: enums
-Lint/ConstantDefinitionInBlock:
-  Exclude:
-    - 'spec/controllers/api/v3_and_more/base_controller_spec.rb'
-    - 'spec/errors/abstract_generic_provider_error_spec.rb'
-    - 'spec/interactors/build_resource_spec.rb'
-    - 'spec/interactors/get_oauth2_token_spec.rb'
-    - 'spec/interactors/make_request_spec.rb'
-    - 'spec/interactors/validate_attribute_presence_spec.rb'
-    - 'spec/lib/siade/self_hosted_document/file/generic_spec.rb'
-    - 'spec/organizers/retriever_organizer_spec.rb'
-    - 'spec/organizers/validate_params_organizer_spec.rb'
-    - 'spec/services/monitoring_service_spec.rb'
-
 # Offense count: 18
 Lint/MissingSuper:
   Exclude:
@@ -59,12 +43,6 @@ Metrics/AbcSize:
     - 'app/serializers/etablissement_serializer/v2.rb'
     - 'lib/generators/scaffold_resource/scaffold_resource_generator.rb'
     - 'spec/organizers/retriever_organizer_spec.rb'
-
-# Offense count: 1
-# Configuration parameters: CountComments, Max, CountAsOne.
-Metrics/ClassLength:
-  Exclude:
-    - 'app/interactors/rnm/entreprises_artisanales/build_resource.rb'
 
 # Offense count: 1
 # Configuration parameters: IgnoredMethods, Max.

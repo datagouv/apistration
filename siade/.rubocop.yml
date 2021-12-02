@@ -22,6 +22,11 @@ AllCops:
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 
+# Useful in specs
+Lint/ConstantDefinitionInBlock:
+  Exclude:
+    - "spec/**/*_spec.rb"
+
 # No line between definitions is OK for oneliners
 Layout/EmptyLineBetweenDefs:
   AllowAdjacentOneLineDefs: true
@@ -68,6 +73,10 @@ Metrics/BlockLength:
     - "path"
     - "get"
     - "response"
+
+Metrics/ClassLength:
+  Exclude:
+    - "app/interactors/**/build_resource.rb"
 
 Metrics/MethodLength:
   Max: 15
