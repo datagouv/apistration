@@ -5,7 +5,7 @@ class Documents::RetrieveFromUrl < ApplicationInteractor
 
   # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def call
-    context.content = URI.open(source_url).binmode.read
+    context.content = source_url.open.binmode.read
   rescue OpenURI::HTTPError => e
     response = e.io
     msg = "Erreur lors de la récupération du document : status #{response.status[0]} with body '#{response.string}'"
@@ -22,7 +22,9 @@ class Documents::RetrieveFromUrl < ApplicationInteractor
   rescue OpenSSL::SSL::SSLError => e
     log_warning('Documents::RetrieveFromUrl: OpenSSL Error while opening URI', e)
 
+    # rubocop:disable Security/Open
     context.content = URI.open(source_url, { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).binmode.read
+    # rubocop:enable Security/Open
   rescue StandardError => e
     log_error('Documents::RetrieveFromUrl: PDF upload/read unknown error', e)
 

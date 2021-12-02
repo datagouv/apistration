@@ -21,7 +21,7 @@ class SIADE::SelfHostedDocument::File::Generic
 
   # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def store_from_url(url)
-    @binary = URI.open(URI.parse(url)).binmode.read
+    @binary = URI.parse(url).open.binmode.read
     perform
   rescue OpenURI::HTTPError => e
     response = e.io
@@ -38,7 +38,9 @@ class SIADE::SelfHostedDocument::File::Generic
   rescue OpenSSL::SSL::SSLError => e
     log_warning('SelfHostedDocument: OpenSSL Error while opening URI', e, url)
 
+    # rubocop:disable Security/Open
     @binary = URI.open(URI.parse(url), { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).binmode.read
+    # rubocop:enable Security/Open
     perform
   rescue StandardError => e
     raise e
