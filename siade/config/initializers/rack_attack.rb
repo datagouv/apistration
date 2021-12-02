@@ -68,8 +68,6 @@ class Rack::Attack
     ]
   end
 
-  # self.throttled_response_retry_after_header = true
-
   self.throttled_response = lambda do |env|
     headers = rate_limiting_service.build_rate_limit_headers(env['rack.attack.match_data'])
 
