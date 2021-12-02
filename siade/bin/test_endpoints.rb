@@ -148,6 +148,24 @@ endpoints = <<STR
 - name: '[V3] DGDDI EORI'
   http_path: '/v3/dgddi/eoris/FR16002307300010'
 
+- name: '[V3] INSEE Etablissements'
+  http_path: 'v3/insee/sirene/etablissements/30613890002979'
+
+- name: '[V3] INSEE Etablissements Adresse'
+  http_path: 'v3/insee/sirene/etablissements/30613890002979/adresse'
+
+- name: '[V3] INSEE Unites Legales'
+  http_path: 'v3/insee/sirene/unites_legales/306138900'
+
+- name: '[V3] INSEE Unites Legales Diffusibles'
+  http_path: 'v3/insee/sirene/unites_legales/diffusibles/306138900'
+
+- name: '[V3] INSEE Unites Legales Siege'
+  http_path: 'v3/insee/sirene/unites_legales/306138900/siege'
+
+- name: '[V3] MI Associations'
+  http_path: '/v3/mi/associations/77571979202650'
+
 - name: '[V3] ProBTP Attestations cotisations retraite'
   http_path: '/v3/probtp/attestations_cotisation_retraite/43841606700017'
 
