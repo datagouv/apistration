@@ -14,6 +14,12 @@ RSpec.describe INPI::Brevets::BuildResourceCollection, type: :build_resource do
       }
     end
 
+    let(:valid_meta) do
+      {
+        count: 17_859
+      }
+    end
+
     let(:response) do
       instance_double('Net::HTTPOK', body: body)
     end
@@ -34,7 +40,15 @@ RSpec.describe INPI::Brevets::BuildResourceCollection, type: :build_resource do
       expect(call.resource_collection).to all be_a(Resource)
     end
 
-    it 'has valid payload' do
+    it 'Have limit amount of resources' do
+      expect(call.resource_collection.count).to eq(3)
+    end
+
+    it 'has meta' do
+      expect(call.meta).to eq(valid_meta)
+    end
+
+    it 'has valid resource_collection' do
       expect(call.resource_collection.first.to_h).to eq(valid_collection_sample)
     end
   end

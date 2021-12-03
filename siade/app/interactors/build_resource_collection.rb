@@ -8,7 +8,10 @@ class BuildResourceCollection < ApplicationInteractor
     super
 
     klass.class_eval do
-      after { resource_not_defined! if context.resource_collection.nil? }
+      after do
+        resource_not_defined! if context.resource_collection.nil?
+        context.meta = meta if meta.present?
+      end
     end
   end
 
@@ -28,6 +31,10 @@ class BuildResourceCollection < ApplicationInteractor
 
   def resource_attributes
     raise NotImplementedError
+  end
+
+  def meta
+    {}
   end
 
   def resource_klass

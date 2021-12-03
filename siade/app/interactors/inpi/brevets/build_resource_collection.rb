@@ -5,6 +5,12 @@ class INPI::Brevets::BuildResourceCollection < BuildResourceCollection
     latest_brevets.map { |b| brevet_attributes(b) }
   end
 
+  def meta
+    {
+      count: json_body['metadata']['count']
+    }
+  end
+
   private
 
   def brevet_attributes(brevet)
