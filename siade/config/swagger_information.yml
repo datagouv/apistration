@@ -163,6 +163,15 @@ dgddi:
         description: "Ville de l'établissement telle que connue par les douanes"
         example: 'OSNY'
 
+dgfip:
+  liasses_fiscales:
+    declarations:
+      title: "Déclarations des liasses fiscales"
+      description: "FEEDME"
+      tags:
+        - "Informations financières"
+      attributes: {}
+
 fntp:
   carte_professionnelle_travaux_publics:
     title: "Carte professionnelle de travaux publics"
