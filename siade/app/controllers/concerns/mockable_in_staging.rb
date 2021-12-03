@@ -1,10 +1,12 @@
 module MockableInStaging
   extend ActiveSupport::Concern
 
+  class NoOperationId < StandardError; end
+
   included do
     before_action :mock_response, if: :staging?
     rescue_from OpenAPISchemaToExample::InvalidOpenAPIType, with: :invalid_open_api_type
-    rescue_from NoMethodError, with: :operation_id_not_found
+    rescue_from NoOperationId, with: :operation_id_not_found
   end
 
   def mock_response
@@ -21,6 +23,8 @@ module MockableInStaging
 
   def extract_valid_open_api_path_schema
     valid_schema[1]['get']['responses']['200']['content']['application/json']['schema']
+  rescue NoMethodError
+    raise NoOperationId
   end
 
   def invalid_open_api_type

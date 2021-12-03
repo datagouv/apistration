@@ -5,6 +5,12 @@ RSpec.describe API::AuthenticateEntityController do
     def index
       render json: {}, status: :ok
     end
+
+    def show
+      1.lol
+
+      render json: {}, status: :ok
+    end
   end
 
   context 'malformatted requests' do
@@ -177,6 +183,22 @@ RSpec.describe API::AuthenticateEntityController do
     it 'runs mandatory params before trying to mock response' do
       get :index, params: { token: yes_jwt }
       assert_response 422
+    end
+  end
+
+  describe 'non-regression test: when there is a no method error' do
+    subject(:make_request) do
+      routes.draw { get 'show' => 'api/authenticate_entity#show' }
+
+      get :show, params: mandatory_params
+    end
+
+    before { request.headers['Authorization'] = "Bearer #{yes_jwt}" }
+
+    it 'raises this error' do
+      expect {
+        make_request
+      }.to raise_error(NoMethodError)
     end
   end
 end
