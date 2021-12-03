@@ -34,7 +34,7 @@ RSpec.describe SIADE::V2::Requests::Exercices, type: :provider_request do
     context 'when the new URI is different' do
       before do
         # Manually built an expected new location with a different siret
-        mocked_new_location_url = "#{Siade.credentials[:dgfip_authenticate_url]}?op=c&url=#{Base64.urlsafe_encode64("#{Siade.credentials[:dgfip_chiffres_affaires_url]}?userId=tech_at_apientreprise.fr.dev_user_id&siret=50278496000042")}"
+        mocked_new_location_url = "#{Siade.credentials[:dgfip_authenticate_url]}?op=c&url=#{Base64.urlsafe_encode64("#{Siade.credentials[:dgfip_chiffres_affaires_url]}?userId=#{valid_dgfip_user_id}&siret=50278496000042")}"
 
         url = Siade.credentials[:dgfip_chiffres_affaires_url]
         stub_request(:get, /#{url}/).with(headers: { 'Cookie' => options[:cookie] }).to_return(
