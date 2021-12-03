@@ -74,10 +74,10 @@ dgddi:
         example: 'OSNY'
 
 inpi:
-  brevets:
-    title: 'Brevets'
+  latest_brevets:
+    title: 'Derniers brevets'
     description: |
-      Brevets déposés par l'entreprise:
+      Derniers brevets déposés par l'entreprise et nombre total de brevets.
       Cet endpoint appelle les informations à partir d’un SIREN. Le SIREN étant une information facultative lors du dépôt de dossier à l’INPI, le taux de sirénage est donc incomplet.
 
       Taux de sirénage des déposants (sur personnes morales FR) :

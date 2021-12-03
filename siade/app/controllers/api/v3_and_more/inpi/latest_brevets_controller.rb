@@ -1,4 +1,4 @@
-class API::V3AndMore::INPI::BrevetsController < API::V3AndMore::BaseController
+class API::V3AndMore::INPI::LatestBrevetsController < API::V3AndMore::BaseController
   attr_reader :organizer
 
   def show

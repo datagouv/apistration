@@ -74,7 +74,7 @@ Rails.application.routes.draw do
     end
 
     namespace :inpi do
-      get 'brevets/:siren' => '/api/v3_and_more/inpi/brevets#show'
+      get 'latest_brevets/:siren' => '/api/v3_and_more/inpi/latest_brevets#show'
     end
 
     namespace :insee do

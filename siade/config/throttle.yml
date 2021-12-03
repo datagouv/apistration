@@ -47,7 +47,7 @@ shared:
       - { controller: 'api/v3_and_more/rnm/entreprises_artisanales', action: 'show', api_version: 3, siren: 123 }
       - { controller: 'api/v3_and_more/mi/associations', action: 'show', api_version: 3, siret_or_rna: 123 }
       - { controller: 'api/v3_and_more/dgddi/eori', action: 'show', api_version: 3, siret_or_eori: 123 }
-      - { controller: 'api/v3_and_more/inpi/brevets', action: 'show', api_version: 3, siren: 123 }
+      - { controller: 'api/v3_and_more/inpi/latest_brevets', action: 'show', api_version: 3, siren: 123 }
       - { controller: 'api/v3_and_more/insee/unites_legales', action: 'show', api_version: 3, siren: 123 }
       - { controller: 'api/v3_and_more/insee/unites_legales_diffusables', action: 'show', api_version: 3, siren: 123 }
       - { controller: 'api/v3_and_more/insee/etablissements', action: 'show', api_version: 3, siret: 123 }
