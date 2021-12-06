@@ -15,14 +15,6 @@ class PROBTP::AttestationsCotisationsRetraite::ValidateResponse < ValidateRespon
     http_code == 500
   end
 
-  def invalid_json?
-    json_body
-
-    false
-  rescue JSON::ParserError
-    true
-  end
-
   def custom_error?
     provider_response_code == '4'
   end

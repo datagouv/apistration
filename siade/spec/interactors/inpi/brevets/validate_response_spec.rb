@@ -5,51 +5,59 @@ RSpec.describe INPI::Brevets::ValidateResponse, type: :validate_response do
     instance_double('Net::HTTPOK', code: code, body: body)
   end
 
-  describe 'with an invalid code' do
-    let(:code) { '500' }
+  describe 'with a valid body' do
     let(:body) do
       {
-        results: ['Some result']
+        results: [{
+          fields: [
+            {
+              name: "PUBN",
+              value: "<country>FR</country><doc-number>3110115</doc-number><kind>A1</kind>"
+            }
+          ]
+        }]
       }.to_json
     end
 
-    it { is_expected.to be_a_failure }
+    context 'with an invalid code' do
+      let(:code) { '500' }
 
-    its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
-  end
+      it { is_expected.to be_a_failure }
 
-  context 'with a valid code and a body with results' do
-    let(:code) { '200' }
-    let(:body) do
-      {
-        results: ['Some result']
-      }.to_json
+      its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
     end
 
-    it { is_expected.to be_a_success }
+    context 'with a valid code' do
+      let(:code) { '200' }
 
-    its(:errors) { is_expected.to be_empty }
+      it { is_expected.to be_a_success }
+
+      its(:errors) { is_expected.to be_empty }
+    end
   end
 
-  context 'with a valid code and a body with no results' do
+  describe 'with a valid code' do
     let(:code) { '200' }
-    let(:body) do
-      {
-        results: []
-      }.to_json
+
+    context 'with a body with no results' do
+      let(:body) do
+        {
+          results: []
+        }.to_json
+      end
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
     end
 
-    it { is_expected.to be_a_failure }
+    context 'with a body containing nonsense' do
+      let(:code) { '200' }
+      let(:body) { 'Nonsense' }
 
-    its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
-  end
+      it { is_expected.to be_a_failure }
 
-  context 'with a valid code and a body containing nonsense' do
-    let(:code) { '200' }
-    let(:body) { 'Nonsense' }
-
-    it { is_expected.to be_a_failure }
-
-    its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+      its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+    end
   end
 end

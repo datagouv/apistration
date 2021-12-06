@@ -1,12 +1,12 @@
 class INPI::Brevets::ValidateResponse < ValidateResponse
   def call
-    check_body_integrity!
-
-    return if http_ok? && payload_has_results?
+    invalid_provider_response! if invalid_json?
 
     resource_not_found! unless payload_has_results?
 
-    invalid_provider_response!
+    return if http_ok? && payload_has_valid_results?
+
+    unknown_provider_response!
   end
 
   private
@@ -15,9 +15,7 @@ class INPI::Brevets::ValidateResponse < ValidateResponse
     json_body['results'].any?
   end
 
-  def check_body_integrity!
-    json_body
-  rescue JSON::ParserError
-    unknown_provider_response!
+  def payload_has_valid_results?
+    payload_has_results? && json_body['results'].first['fields'].any?
   end
 end
