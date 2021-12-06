@@ -1,8 +1,7 @@
 class INPI::BrevetsSerializer::V3 < JSONAPI::BaseSerializer
   set_type :brevet
 
-  attributes :id,
-    :titre,
+  attributes :titre,
     :date_publication,
     :date_depot,
     :code_zone,

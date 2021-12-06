@@ -1,7 +1,12 @@
 RSpec.describe INPI::Brevets, type: :retriever_organizer do
   subject { described_class.call(params: params) }
 
-  let(:params) { { siren: siren } }
+  let(:params) do
+    {
+      siren: siren,
+      limit: 3
+   }
+  end
 
   context 'with valid siren', vcr: { cassette_name: 'inpi/brevets/with_valid_siren' } do
     let(:siren) { valid_siren(:inpi) }

@@ -3,7 +3,7 @@ RSpec.describe BuildResourceCollection, type: :interactor do
 
   let(:dummy_build_class) do
     Class.new(BuildResourceCollection) do
-      def resource_collection
+      def items
         [
           {
             whatever: 'first item'
@@ -12,6 +12,12 @@ RSpec.describe BuildResourceCollection, type: :interactor do
             whatever: 'second item'
           }.merge(context.extra_attributes || {})
         ]
+      end
+
+      def resource_attributes(item)
+        {
+          whatever: item[:whatever]
+        }.merge(context.extra_attributes || {})
       end
     end
   end
@@ -26,6 +32,10 @@ RSpec.describe BuildResourceCollection, type: :interactor do
     it 'does not raise an error' do
       expect { call }.not_to raise_error
     end
+
+    its(:resource_collection) { is_expected.to be_present }
+    its(:resource_collection) { is_expected.to be_a_kind_of Array}
+    its(:resource_collection) { is_expected.to all be_a_kind_of Resource}
   end
 
   context 'when there is no id defined on the resources' do

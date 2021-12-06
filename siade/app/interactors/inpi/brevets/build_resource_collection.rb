@@ -1,20 +1,18 @@
 class INPI::Brevets::BuildResourceCollection < BuildResourceCollection
   protected
 
-  def resource_collection
-    latest_brevets.map { |b| brevet_attributes(b) }
+  def items
+    latest_brevets.map { |b| resource_attributes(b) }
   end
 
-  def meta
+  def items_meta
     {
       count: json_body['metadata']['count']
     }
   end
 
-  private
-
-  def brevet_attributes(brevet)
-    @fields = brevet['fields']
+  def resource_attributes(item)
+    @item = item
 
     {
       id: numero_publication,
@@ -27,33 +25,45 @@ class INPI::Brevets::BuildResourceCollection < BuildResourceCollection
     }
   end
 
+  private
+
   def latest_brevets
-    json_body['results'].first(5)
+    json_body['results'].first(limit)
+  end
+
+  def fields
+    @fields ||= @item['fields']
   end
 
   def find_field_from_key(key)
-    @fields.find { |f| f['name'] == key }
+    fields.find { |f| f['name'] == key }
+  end
+
+  def numero_publication_hash
+    @numero_publication_hash ||= Ox.load(numero_publication_as_xml, mode: :hash)
+  end
+
+  def numero_publication_as_xml
+    @numero_publication_as_xml ||= find_field_from_key('PUBN')['value']
+  end
+
+  def code_zone
+    numero_publication_hash[:country]
+  end
+
+  def numero_brevet
+    numero_publication_hash[:'doc-number']
+  end
+
+  def categorie_publication
+    numero_publication_hash[:kind]
   end
 
   def numero_publication
     code_zone + numero_brevet + categorie_publication
   end
 
-  def numero_publication_from_xml
-    xml = find_field_from_key('PUBN')['value']
-
-    @numero_publication_from_xml ||= Ox.load(xml, mode: :hash)
-  end
-
-  def code_zone
-    numero_publication_from_xml[:country]
-  end
-
-  def numero_brevet
-    numero_publication_from_xml[:'doc-number']
-  end
-
-  def categorie_publication
-    numero_publication_from_xml[:kind]
+  def limit
+    context.params[:limit]
   end
 end

@@ -30,7 +30,8 @@ RSpec.describe INPI::Brevets::BuildResourceCollection, type: :build_resource do
 
     let(:params) do
       {
-        siren: valid_siren(:inpi)
+        siren: valid_siren(:inpi),
+        limit: 3
       }
     end
 

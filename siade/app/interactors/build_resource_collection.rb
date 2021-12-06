@@ -9,31 +9,30 @@ class BuildResourceCollection < ApplicationInteractor
 
     klass.class_eval do
       after do
-        resource_not_defined! if context.resource_collection.nil?
-        context.meta = meta if meta.present?
+        resource_not_defined! unless valid?(context.resource_collection)
+        resource_id_not_defined! if context.resource_collection.any? { |resource| resource.id.nil? }
+        context.meta = items_meta
       end
     end
   end
 
   def call
-    resources = []
-
-    resource_collection.each do |resource_attributes|
-      resource_id_not_defined! if resource_attributes[:id].blank?
-
-      resources << resource_klass.new(resource_attributes)
+    context.resource_collection = items.map do |item|
+      resource_klass.new(resource_attributes(item))
     end
-
-    context.resource_collection = resources
   end
 
   protected
+
+  def items
+    raise NotImplementedError
+  end
 
   def resource_attributes
     raise NotImplementedError
   end
 
-  def meta
+  def items_meta
     {}
   end
 
@@ -42,6 +41,10 @@ class BuildResourceCollection < ApplicationInteractor
   end
 
   private
+
+  def valid?(collection)
+    collection.present? && collection.is_a?(Array)
+  end
 
   def resource_not_defined!
     raise ResourceNotDefined

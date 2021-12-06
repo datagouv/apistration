@@ -18,7 +18,8 @@ class API::V3AndMore::INPI::LatestBrevetsController < API::V3AndMore::BaseContro
 
   def organizer_params
     {
-      siren: params.require(:siren)
+      siren: params.require(:siren),
+      limit: 5
     }
   end
 

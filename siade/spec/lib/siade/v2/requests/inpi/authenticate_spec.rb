@@ -2,7 +2,7 @@ RSpec.describe SIADE::V2::Requests::INPI::Authenticate, type: :provider_request 
   subject { described_class.new }
 
   context 'when authentication is successful', vcr: { cassette_name: 'inpi_cookie' } do
-    its(:cookie) { is_expected.to eq 'JSESSIONID=D63E8862B36FABAAC2B07C706A4EF2E3' }
+    its(:cookie) { is_expected.to be_present }
   end
 
   context 'when authentication is failure' do
