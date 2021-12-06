@@ -111,12 +111,10 @@ inpi:
         code_zone:
           description: |
             Code de 2 lettres représentent la zone géographique où le brevet a été déposé, en fonction
-            de l'organisation qui a enregistré le brevet. Quelques examples:
-              - FR: France
-              - EP (European Patent): demandes de brevet déposées auprès de l’OEB (Office Européen des Brevets)
-              - WO (World): demandes de brevet PCT déposées auprès de l’OMPI (Organisation Mondiale de la Propriété Intellectuelle)
+            de l'organisation qui a enregistré le brevet.
           type: 'string'
           example: 'FR'
+          enum: <%= YAML.load_file(Rails.root.join('config/data/inpi/codes_zones.yml')).values.map(&:upcase).concat([nil]).to_json %>
         numero_brevet:
           title: 'Numéro du brevet'
           description: |
