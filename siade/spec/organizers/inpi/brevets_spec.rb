@@ -5,7 +5,7 @@ RSpec.describe INPI::Brevets, type: :retriever_organizer do
     {
       siren: siren,
       limit: 3
-   }
+    }
   end
 
   context 'with valid siren', vcr: { cassette_name: 'inpi/brevets/with_valid_siren' } do

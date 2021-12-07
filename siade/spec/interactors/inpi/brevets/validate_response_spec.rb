@@ -11,8 +11,8 @@ RSpec.describe INPI::Brevets::ValidateResponse, type: :validate_response do
         results: [{
           fields: [
             {
-              name: "PUBN",
-              value: "<country>FR</country><doc-number>3110115</doc-number><kind>A1</kind>"
+              name: 'PUBN',
+              value: '<country>FR</country><doc-number>3110115</doc-number><kind>A1</kind>'
             }
           ]
         }]

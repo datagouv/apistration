@@ -1,17 +1,4 @@
-class INPI::Authenticate < MakeRequest::Post
-  def api_call
-    super
-
-    cookie = context.response['set-cookie']
-      &.match(/(JSESSIONID=.+); Path=.+/)
-      &.captures
-      &.first
-
-    context.fail! unless cookie
-
-    context.cookie = cookie
-  end
-
+class INPI::Authenticate::MakeRequest < MakeRequest::Post
   protected
 
   def request_uri
@@ -22,7 +9,6 @@ class INPI::Authenticate < MakeRequest::Post
     request['login'] = inpi_login
     request['password'] = inpi_password
     request['Content-Type'] = 'application/json'
-    super(request)
   end
 
   private

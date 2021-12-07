@@ -34,8 +34,8 @@ RSpec.describe BuildResourceCollection, type: :interactor do
     end
 
     its(:resource_collection) { is_expected.to be_present }
-    its(:resource_collection) { is_expected.to be_a_kind_of Array}
-    its(:resource_collection) { is_expected.to all be_a_kind_of Resource}
+    its(:resource_collection) { is_expected.to be_a_kind_of Array }
+    its(:resource_collection) { is_expected.to all be_a_kind_of Resource }
   end
 
   context 'when there is no id defined on the resources' do
