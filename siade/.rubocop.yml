@@ -213,3 +213,7 @@ RSpec/MultipleMemoizedHelpers:
 
 RSpec/NamedSubject:
   Enabled: false
+
+# Bug with 'its'
+RSpec/RepeatedDescription:
+  Enabled: false
