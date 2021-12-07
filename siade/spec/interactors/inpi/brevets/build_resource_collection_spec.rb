@@ -6,8 +6,8 @@ RSpec.describe INPI::Brevets::BuildResourceCollection, type: :build_resource do
       {
         id: 'FR3110115A1',
         titre: 'RENFORT LATÉRAL DE PLANCHER DE VÉHICULE AUTOMOBILE ÉQUIPÉ DE BATTERIES DE TRACTION',
-        date_publication: '20211119',
-        date_depot: '20200512',
+        date_publication: '2021-11-19',
+        date_depot: '2020-05-12',
         code_zone: 'FR',
         numero_brevet: '3110115',
         categorie_publication: 'A1'

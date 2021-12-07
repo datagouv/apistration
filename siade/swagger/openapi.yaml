@@ -356,12 +356,14 @@ paths:
                           title: Date de publication
                           description: Date de publication du brevet
                           type: string
-                          example: '20170616'
+                          format: date
+                          example: '2017-06-16'
                         date_depot:
                           title: Date de dépot
                           description: Date de dépot du brevet
                           type: string
-                          example: '20151214'
+                          format: date
+                          example: '2015-12-14'
                         code_zone:
                           description: |
                             Code de 2 lettres représentent la zone géographique où le brevet a été déposé, en fonction
@@ -369,7 +371,6 @@ paths:
                           type: string
                           example: FR
                           enum:
-                          - NOM
                           - ALBANIE
                           - ORGANISATION RÉGIONALE AFRICAINE DE LA PROPRIÉTÉ INDUSTRIELLE
                           - ARGENTINE

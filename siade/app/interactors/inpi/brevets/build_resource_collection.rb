@@ -17,8 +17,8 @@ class INPI::Brevets::BuildResourceCollection < BuildResourceCollection
     {
       id: numero_publication,
       titre: find_field_from_key('TIT')['value'],
-      date_publication: find_field_from_key('PUBD')['value'],
-      date_depot: find_field_from_key('DEPD')['value'],
+      date_publication: date_publication,
+      date_depot: date_depot,
       code_zone: code_zone,
       numero_brevet: numero_brevet,
       categorie_publication: categorie_publication
@@ -61,6 +61,22 @@ class INPI::Brevets::BuildResourceCollection < BuildResourceCollection
 
   def numero_publication
     code_zone + numero_brevet + categorie_publication
+  end
+
+  def date_publication
+    date = find_field_from_key('PUBD')['value']
+
+    normalized_date(date)
+  end
+
+  def date_depot
+    date = find_field_from_key('DEPD')['value']
+
+    normalized_date(date)
+  end
+
+  def normalized_date(date)
+    date.to_time.strftime('%Y-%m-%d')
   end
 
   def limit
