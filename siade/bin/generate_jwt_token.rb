@@ -31,7 +31,7 @@ end.map do |role_symbol|
 end.concat(extra_roles).uniq
 
 token_payload = {
-  uid: "api-entreprise-#{env}",
+  uid: SecureRandom.uuid,
   jti: "api-entreprise-#{env}",
   roles: roles,
   sub: "#{env} development",
