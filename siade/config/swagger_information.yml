@@ -74,7 +74,7 @@ dgddi:
         example: 'OSNY'
 
 inpi:
-  latest_brevets:
+  brevets:
     title: 'Derniers brevets'
     description: |
       Derniers brevets déposés par l'entreprise et nombre total de brevets.

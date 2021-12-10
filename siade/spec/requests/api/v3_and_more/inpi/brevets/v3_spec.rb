@@ -1,9 +1,9 @@
 require 'swagger_helper'
 
 RSpec.describe 'INPI: Latest Brevets', type: %i[request swagger] do
-  path '/v3/inpi/latest_brevets/{siren}' do
-    get SwaggerInformation.get('inpi.latest_brevets.title') do
-      tags(*SwaggerInformation.get('inpi.latest_brevets.tags'))
+  path '/v3/inpi/brevets/{siren}' do
+    get SwaggerInformation.get('inpi.brevets.title') do
+      tags(*SwaggerInformation.get('inpi.brevets.tags'))
 
       common_action_attributes
 
@@ -19,13 +19,13 @@ RSpec.describe 'INPI: Latest Brevets', type: %i[request swagger] do
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Brevets trouvés', vcr: { cassette_name: 'inpi/brevets/with_valid_siren' } do
-          description SwaggerInformation.get('inpi.latest_brevets.description')
+          description SwaggerInformation.get('inpi.brevets.description')
 
           rate_limit_headers
 
           schema build_rswag_response_collection(
             type: 'object',
-            properties: SwaggerInformation.get('inpi.latest_brevets.items.properties')
+            properties: SwaggerInformation.get('inpi.brevets.items.properties')
           )
 
           run_test!

@@ -16,6 +16,9 @@ class INPI::Brevets::ValidateResponse < ValidateResponse
   end
 
   def payload_has_valid_results?
-    payload_has_results? && json_body['results'].first['fields'].any?
+    payload_has_results? &&
+      json_body['results'].first.present? &&
+      json_body['results'].first['fields'].present? &&
+      json_body['results'].first['fields'].any?
   end
 end

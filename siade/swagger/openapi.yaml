@@ -261,7 +261,7 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
-  "/v3/inpi/latest_brevets/{siren}":
+  "/v3/inpi/brevets/{siren}":
     get:
       summary: Derniers brevets
       tags:

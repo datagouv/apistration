@@ -2,7 +2,7 @@ class INPI::Brevets::BuildResourceCollection < BuildResourceCollection
   protected
 
   def items
-    latest_brevets.map { |b| resource_attributes(b) }
+    latest_brevets
   end
 
   def items_meta
