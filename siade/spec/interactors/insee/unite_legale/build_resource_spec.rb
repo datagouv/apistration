@@ -6,7 +6,7 @@ RSpec.describe INSEE::UniteLegale::BuildResource, type: :build_resource do
     let(:response) { instance_double(Net::HTTPOK, body:) }
 
     let(:body) do
-      INSEE::UniteLegale::MakeRequest.call(params:, token: 'token').response.body
+      INSEE::UniteLegale::MakeRequest.call(params:, token: 'valid insee token').response.body
     end
 
     let(:params) do
@@ -141,7 +141,7 @@ RSpec.describe INSEE::UniteLegale::BuildResource, type: :build_resource do
   describe 'with an unite legale payload from an etablissement response', vcr: { cassette_name: 'insee/siret/active_GE' } do
     let(:organizer) { described_class.call(response:, unite_legale:) }
 
-    let(:response) { INSEE::Etablissement::MakeRequest.call(params:, token: 'token').response }
+    let(:response) { INSEE::Etablissement::MakeRequest.call(params:, token: 'valid insee token').response }
     let(:unite_legale) do
       JSON.parse(response.body)['etablissement']['uniteLegale']
     end

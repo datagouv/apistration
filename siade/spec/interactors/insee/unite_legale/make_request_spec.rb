@@ -7,7 +7,7 @@ RSpec.describe INSEE::UniteLegale::MakeRequest, type: :make_request do
     }
   end
 
-  let(:token) { 'token' }
+  let(:token) { 'valid insee token' }
 
   context 'with a valid siren', vcr: { cassette_name: 'insee/siren/active_GE' } do
     let(:siren) { sirens_insee_v3[:active_GE] }

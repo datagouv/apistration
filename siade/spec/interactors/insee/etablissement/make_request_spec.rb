@@ -7,7 +7,7 @@ RSpec.describe INSEE::Etablissement::MakeRequest, type: :make_request do
     }
   end
 
-  let(:token) { 'token' }
+  let(:token) { 'valid insee token' }
 
   context 'with a valid siret', vcr: { cassette_name: 'insee/siret/active_GE' } do
     let(:siret) { sirets_insee_v3[:active_GE] }

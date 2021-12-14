@@ -5,7 +5,7 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
   let(:response) { instance_double(Net::HTTPOK, body:) }
 
   let(:body) do
-    INSEE::Etablissement::MakeRequest.call(params:, token: 'token').response.body
+    INSEE::Etablissement::MakeRequest.call(params:, token: 'valid insee token').response.body
   end
 
   let(:params) do
