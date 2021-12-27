@@ -161,7 +161,7 @@ GEM
       rake
     mini_histogram (0.3.1)
     mini_portile2 (2.6.1)
-    minitest (5.14.4)
+    minitest (5.15.0)
     mock_redis (0.29.0)
       ruby2_keywords
     multi_json (1.15.0)
@@ -310,7 +310,7 @@ GEM
       concurrent-ruby
       faraday
     shellany (0.0.1)
-    shoulda-matchers (5.0.0)
+    shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
     simplecov (0.21.2)
       docile (~> 1.1)
