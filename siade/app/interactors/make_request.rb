@@ -46,7 +46,7 @@ class MakeRequest < ApplicationInteractor
   end
 
   def set_headers(request)
-    request['Content-Type'] = 'application/json'
+    request['Content-Type'] = 'application/json' if request['Content-Type'].nil?
   end
 
   def handle_redirect
