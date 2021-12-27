@@ -8,7 +8,7 @@ RSpec.describe SIADE::V2::Requests::CartesProfessionnellesFNTP, type: :provider_
     its(:errors) { is_expected.to have_error(invalid_siren_error_message) }
   end
 
-  context 'good request', vcr: { cassette_name: 'fntp_with_valid_siren' } do
+  context 'good request', vcr: { cassette_name: 'fntp/carte_professionnelle_travaux_publics/valid_siren' } do
     let(:siren) { valid_siren(:fntp) }
 
     its(:http_code) { is_expected.to eq(200) }
