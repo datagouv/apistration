@@ -33,7 +33,7 @@ class SIADE::V2::Requests::CartesProfessionnellesFNTP < SIADE::V2::Requests::Gen
   end
 
   def request_uri
-    "http://rip.fntp.fr/rip/sgmap/#{@siren}/cartepro"
+    "https://fntp_domain.gouv.fr/rip/sgmap/#{@siren}/cartepro"
   end
 
   def request_params

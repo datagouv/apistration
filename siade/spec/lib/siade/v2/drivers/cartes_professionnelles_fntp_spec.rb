@@ -17,7 +17,8 @@ RSpec.describe SIADE::V2::Drivers::CartesProfessionnellesFNTP, :self_hosted_doc,
 
     context 'with a invalid PDF content' do
       before do
-        url = 'http://rip.fntp.fr/rip/sgmap/'
+        url = 'https://fntp_domain.gouv.fr/rip/sgmap/'
+
         stub_request(:get, /#{url}/)
           .to_return({ status: 200, body: 'no pdf here' })
       end
