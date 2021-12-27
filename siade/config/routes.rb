@@ -69,6 +69,10 @@ Rails.application.routes.draw do
       get 'attestations_sociales/:siren' => '/api/v3_and_more/acoss/attestations_sociales#show'
     end
 
+    namespace :cnetp do
+      get 'attestations_cotisations_conges_payes_chomage_intemperies/:siren' => '/api/v3_and_more/cnetp/attestation_cotisations_conges_payes_chomage_intemperies#show'
+    end
+
     namespace :dgddi do
       get 'eoris/:siret_or_eori' => '/api/v3_and_more/dgddi/eori#show'
     end
