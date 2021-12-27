@@ -8,7 +8,7 @@ RSpec.describe SIADE::V2::Requests::CertificatsCNETP, type: :provider_request do
     its(:errors) { is_expected.to have_error(invalid_siren_error_message) }
   end
 
-  context 'well formated request', vcr: { cassette_name: 'cnetp_with_valid_siren' } do
+  context 'well formated request', vcr: { cassette_name: 'cnetp/attestation_cotisations_conges_payes_chomage_intemperies/valid_siren' } do
     let(:siren) { valid_siren(:cnetp) }
 
     its(:http_code) { is_expected.to eq(200) }

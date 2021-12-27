@@ -1,13 +1,13 @@
 RSpec.describe SIADE::V2::Drivers::CertificatsCNETP, :self_hosted_doc, type: :provider_driver do
   subject { described_class.new(siren: siren).perform_request }
 
-  context 'siren inconnu chez CNETP', vcr: { cassette_name: 'cnetp_with_not_found_siren' } do
+  context 'siren inconnu chez CNETP', vcr: { cassette_name: 'cnetp/attestation_cotisations_conges_payes_chomage_intemperies/not_found_siren' } do
     let(:siren) { non_existent_siren }
 
     its(:http_code) { is_expected.to eq(404) }
   end
 
-  context 'siren eligible au certificat CNETP', vcr: { cassette_name: 'cnetp_with_valid_siren' } do
+  context 'siren eligible au certificat CNETP', vcr: { cassette_name: 'cnetp/attestation_cotisations_conges_payes_chomage_intemperies/valid_siren' } do
     context 'with a valid PDF content' do
       let(:siren) { valid_siren(:cnetp) }
 
