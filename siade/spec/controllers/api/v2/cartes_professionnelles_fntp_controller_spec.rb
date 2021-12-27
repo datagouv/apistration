@@ -8,7 +8,7 @@ RSpec.describe API::V2::CartesProfessionnellesFNTPController, type: :controller 
     it_behaves_like 'not_found'
   end
 
-  context 'when request returns status 200', vcr: { cassette_name: 'fntp_controller_siren_valid' } do
+  context 'when request returns status 200', vcr: { cassette_name: 'fntp_with_valid_siren' } do
     it_behaves_like 'happy_pdf_endpoint_siren', valid_siren(:fntp), 'carte_professionnelle_fntp'
   end
 end
