@@ -280,7 +280,7 @@ RSpec.describe Rack::Attack, type: :request do
 
           subject
 
-          Timecop.travel(Time.zone.now + 20.seconds)
+          Timecop.travel(20.seconds.from_now)
           Timecop.freeze
 
           expect(headers['RateLimit-Reset']).to eq((Time.now.to_i + (throttle_config[:period] - 20)).to_s)
