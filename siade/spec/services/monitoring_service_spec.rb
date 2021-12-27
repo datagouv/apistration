@@ -73,7 +73,8 @@ RSpec.describe MonitoringService, type: :service do
       end
 
       let(:raw_response) do
-        OpenStruct.new(
+        double(
+          'raw_response',
           body: '',
           code: code,
           provider_error_custom_code: provider_error_custom_code
