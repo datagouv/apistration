@@ -73,6 +73,10 @@ Rails.application.routes.draw do
       get 'eoris/:siret_or_eori' => '/api/v3_and_more/dgddi/eori#show'
     end
 
+    namespace :fntp do
+      get 'cartes_professionnelle_travaux_publics/:siren' => '/api/v3_and_more/fntp/carte_professionnelle_travaux_publics#show'
+    end
+
     namespace :inpi do
       get 'brevets/:siren' => '/api/v3_and_more/inpi/latest_brevets#show'
     end

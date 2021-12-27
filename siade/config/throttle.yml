@@ -12,6 +12,7 @@ shared:
 
       - { controller: 'api/v3_and_more/probtp/attestations_cotisation_retraite', action: 'show', api_version: 3, siret: 123 }
       - { controller: 'api/v3_and_more/acoss/attestations_sociales', action: 'show', api_version: 3, siren: 123 }
+      - { controller: 'api/v3_and_more/fntp/carte_professionnelle_travaux_publics', action: 'show', api_version: 3, siren: 123 }
     limit: 50
     period: 60
   high_latency_documents:
