@@ -73,7 +73,7 @@ RSpec.describe MonitoringService, type: :service do
       end
 
       let(:raw_response) do
-        double(
+        instance_double(
           'raw_response',
           body: '',
           code: code,
