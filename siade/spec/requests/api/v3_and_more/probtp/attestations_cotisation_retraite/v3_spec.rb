@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'PROBTP : Attestations cotisations retraite', type: %i[request swagger] do
-  path '/v3/probtp/attestations_cotisation_retraite/{siret}' do
+  path '/v3/probtp/attestations_cotisations_retraite/{siret}' do
     get SwaggerInformation.get('probtp.attestation_cotisation_retraite.title') do
       tags(*SwaggerInformation.get('probtp.attestation_cotisation_retraite.tags'))
 

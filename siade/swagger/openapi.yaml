@@ -2432,7 +2432,7 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/UnprocessableEntity"
-  "/v3/probtp/attestations_cotisation_retraite/{siret}":
+  "/v3/probtp/attestations_cotisations_retraite/{siret}":
     get:
       summary: Cotisations retraite bâtiment
       tags:
