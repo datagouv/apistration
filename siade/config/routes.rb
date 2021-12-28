@@ -97,6 +97,7 @@ Rails.application.routes.draw do
 
     namespace :probtp do
       get 'attestations_cotisation_retraite/:siret' => '/api/v3_and_more/probtp/attestations_cotisation_retraite#show'
+      get 'conformites_cotisations_retraite/:siret' => '/api/v3_and_more/probtp/conformites_cotisations_retraite#show'
     end
 
     namespace :rnm do

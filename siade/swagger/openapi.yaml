@@ -2498,9 +2498,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Savoir si une entreprise est à jour de ses cotisations retraite
-        à la Protection Sociale du Bâtiment et des Travaux publics (PROBTP) et obtenir
-        l’attestation de l’entreprise si celle-ci est éligible.
+      description: Obtenir l’attestation de l’entreprise (si celle-ci est éligible)
+        auprès de la Protection Sociale du Bâtiment et des Travaux publics (PROBTP)
       responses:
         '403':
           description: Accès interdit
@@ -2560,6 +2559,115 @@ paths:
                 - data
         '404':
           description: Attestation non trouvée
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/NotFound"
+  "/v3/probtp/conformites_cotisations_retraite/{siret}":
+    get:
+      summary: Conformités vis-à-vis des cotisations retraites
+      tags:
+      - Attestations sociales et fiscales
+      parameters:
+      - name: context
+        in: query
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
+        required: true
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '123456789'
+        required: true
+        schema:
+          type: string
+      - name: object
+        in: query
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
+        required: true
+        schema:
+          type: string
+      - name: siret
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - jwt_bearer_token: []
+      description: Savoir si une entreprise est à jour de ses cotisations retraite
+        à la Protection Sociale du Bâtiment et des Travaux publics (PROBTP)
+      responses:
+        '403':
+          description: Accès interdit
+        '200':
+          description: Entreprise trouvée
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '34909797200021'
+                      type:
+                        type: string
+                        example: entreprise
+                        enum:
+                        - entreprise
+                      attributes:
+                        type: object
+                        properties:
+                          eligible:
+                            type: boolean
+                            example: true
+                            enum:
+                            - true
+                            - false
+                            description: Détermine si une entreprise est éligible
+                              ou non aux cotisations retraites de ProBTP.
+                        required:
+                        - eligible
+                    required:
+                    - id
+                    - type
+                    - attributes
+                required:
+                - data
+        '404':
+          description: Non trouvée
           content:
             application/json:
               schema:
