@@ -47,7 +47,7 @@ class RateLimitingService
   end
 
   def path_without_parameter(url)
-    url.split('/')[0..2].join('/')
+    url.split('/')[0..-2].join('/')
   end
 
   def path_from?(endpoints_group, path)
