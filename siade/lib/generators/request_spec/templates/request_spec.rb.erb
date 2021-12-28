@@ -5,8 +5,6 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
     get SwaggerInformation.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.title') do
       tags(*SwaggerInformation.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.tags'))
 
-      tags 'Informations générales'
-
       common_action_attributes
 
       parameter name: :<%= id_path_param %>, in: :path, type: :string
