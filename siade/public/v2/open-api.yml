@@ -3,10 +3,10 @@ info:
   title: "API Entreprise"
   version: "v2"
   description: |
-    Bienvenue sur le swagger du hub API Entreprise.
+    Bienvenue sur le Swagger du hub API Entreprise.
 
     ## À quoi sert cette page ?
-       Cette page est un environnement de production documenté, propulsé par Open API (Swagger), mettant à disposition la spécification technique de tous les endpoints disponibles sur API Entreprise. Ce swagger permet d'effectuer directement depuis votre navigateur des tests de l'API.
+       Cette page est un environnement de production et de staging (test) documenté, propulsé par Open API (Swagger), mettant à disposition la spécification technique de toutes les API disponibles sur API Entreprise. Ce swagger permet d'effectuer directement depuis votre navigateur des tests de l'API.
        Pour une documentation complète incluant également des informations métiers, veuillez vous référez au [catalogue des données d'API Entreprise] (https://entreprise.api.gouv.fr/catalogue/)
 
 
@@ -15,6 +15,16 @@ info:
 
       L&apos;API Entreprise étant accessible uniquement sous habilitation, l&apos;interaction avec l'environnement de production n&apos;est possible que si vous êtes **en possession d&apos;une clé d&apos;accès (token).**
 
+
+    ### Comment tester l'API ?
+
+      Il est cependant possible de tester les API via notre environnement de **staging** (https://staging.entreprise.api.gouv.fr) qui vous retournera systématiquement des données fictives.
+
+      Il est nécessaire d'utiliser le jeton de staging indiqué ci-dessous.
+
+      ---
+
+      *eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiI2NjRkZWEyMS02YWFlLTQwZmYtYWM0Mi1kZmQ3ZGE4YjQ3NmUiLCJqdGkiOiJhcGktZW50cmVwcmlzZS1zdGFnaW5nIiwicm9sZXMiOlsiY2VydGlmaWNhdF9jbmV0cCIsInByb2J0cCIsImV0YWJsaXNzZW1lbnRzIiwicHJpdmlsZWdlcyIsInVwdGltZSIsImF0dGVzdGF0aW9uc19hZ2VmaXBoIiwiYWN0ZXNfaW5waSIsImJpbGFuc19pbnBpIiwiYWlkZXNfY292aWRfZWZmZWN0aWZzIiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJhdHRlc3RhdGlvbnNfc29jaWFsZXMiLCJlbnRyZXByaXNlX2FydGlzYW5hbGUiLCJmbnRwX2NhcnRlX3BybyIsImNvbnZlbnRpb25zX2NvbGxlY3RpdmVzIiwiZXh0cmFpdHNfcmNzIiwiZXh0cmFpdF9jb3VydF9pbnBpIiwiY2VydGlmaWNhdF9hZ2VuY2VfYmlvIiwibXNhX2NvdGlzYXRpb25zIiwiZG9jdW1lbnRzX2Fzc29jaWF0aW9uIiwiZW9yaV9kb3VhbmVzIiwiYXNzb2NpYXRpb25zIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiZW50cmVwcmlzZXMiLCJxdWFsaWJhdCIsImNlcnRpZmljYXRfb3BxaWJpIiwiZW50cmVwcmlzZSIsImV0YWJsaXNzZW1lbnQiXSwic3ViIjoic3RhZ2luZyBkZXZlbG9wbWVudCIsImlhdCI6MTY0MTMwNDcxNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MTY4ODQ3NTUxNH0.xID66pIlMnBR5_6nG-GidFBzK4Tuuy5ZsWfkMEVB_Ek*
 
 servers:
   - url: "https://entreprise.api.gouv.fr"
@@ -3455,7 +3465,7 @@ components:
 
         ---
 
-        *eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJhcGktZW50cmVwcmlzZS1zdGFnaW5nIiwianRpIjoiYXBpLWVudHJlcHJpc2Utc3RhZ2luZyIsInJvbGVzIjpbImNlcnRpZmljYXRfY25ldHAiLCJwcm9idHAiLCJldGFibGlzc2VtZW50cyIsInByaXZpbGVnZXMiLCJ1cHRpbWUiLCJhdHRlc3RhdGlvbnNfYWdlZmlwaCIsImFjdGVzX2lucGkiLCJiaWxhbnNfaW5waSIsImFpZGVzX2NvdmlkX2VmZmVjdGlmcyIsImNlcnRpZmljYXRfcmdlX2FkZW1lIiwiYXR0ZXN0YXRpb25zX3NvY2lhbGVzIiwiZW50cmVwcmlzZV9hcnRpc2FuYWxlIiwiZm50cF9jYXJ0ZV9wcm8iLCJjb252ZW50aW9uc19jb2xsZWN0aXZlcyIsImV4dHJhaXRzX3JjcyIsImV4dHJhaXRfY291cnRfaW5waSIsImNlcnRpZmljYXRfYWdlbmNlX2JpbyIsIm1zYV9jb3Rpc2F0aW9ucyIsImRvY3VtZW50c19hc3NvY2lhdGlvbiIsImVvcmlfZG91YW5lcyIsImFzc29jaWF0aW9ucyIsImJpbGFuc19lbnRyZXByaXNlX2JkZiIsImVudHJlcHJpc2VzIiwicXVhbGliYXQiLCJjZXJ0aWZpY2F0X29wcWliaSIsImVudHJlcHJpc2UiXSwic3ViIjoic3RhZ2luZyBkZXZlbG9wbWVudCIsImlhdCI6MTYzNzA3MTE4OCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MTYzOTY2MzE4OH0.JTHH3y0ego5I9yNafhd7Go0rw8uc8btD_pnJnxNxwLQ*
+        *eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiI2NjRkZWEyMS02YWFlLTQwZmYtYWM0Mi1kZmQ3ZGE4YjQ3NmUiLCJqdGkiOiJhcGktZW50cmVwcmlzZS1zdGFnaW5nIiwicm9sZXMiOlsiY2VydGlmaWNhdF9jbmV0cCIsInByb2J0cCIsImV0YWJsaXNzZW1lbnRzIiwicHJpdmlsZWdlcyIsInVwdGltZSIsImF0dGVzdGF0aW9uc19hZ2VmaXBoIiwiYWN0ZXNfaW5waSIsImJpbGFuc19pbnBpIiwiYWlkZXNfY292aWRfZWZmZWN0aWZzIiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJhdHRlc3RhdGlvbnNfc29jaWFsZXMiLCJlbnRyZXByaXNlX2FydGlzYW5hbGUiLCJmbnRwX2NhcnRlX3BybyIsImNvbnZlbnRpb25zX2NvbGxlY3RpdmVzIiwiZXh0cmFpdHNfcmNzIiwiZXh0cmFpdF9jb3VydF9pbnBpIiwiY2VydGlmaWNhdF9hZ2VuY2VfYmlvIiwibXNhX2NvdGlzYXRpb25zIiwiZG9jdW1lbnRzX2Fzc29jaWF0aW9uIiwiZW9yaV9kb3VhbmVzIiwiYXNzb2NpYXRpb25zIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiZW50cmVwcmlzZXMiLCJxdWFsaWJhdCIsImNlcnRpZmljYXRfb3BxaWJpIiwiZW50cmVwcmlzZSIsImV0YWJsaXNzZW1lbnQiXSwic3ViIjoic3RhZ2luZyBkZXZlbG9wbWVudCIsImlhdCI6MTY0MTMwNDcxNCwidmVyc2lvbiI6IjEuMCIsImV4cCI6MTY4ODQ3NTUxNH0.xID66pIlMnBR5_6nG-GidFBzK4Tuuy5ZsWfkMEVB_Ek*
 
 security:
   - jwt_bearer_token: []
