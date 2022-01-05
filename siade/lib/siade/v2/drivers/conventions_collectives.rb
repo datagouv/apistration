@@ -3,7 +3,7 @@ class SIADE::V2::Drivers::ConventionsCollectives < SIADE::V2::Drivers::GenericDr
 
   default_to_nil_raw_fetching_methods :conventions
 
-  def initialize(siret:, **)
+  def initialize(siret:)
     @siret = siret
   end
 

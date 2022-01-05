@@ -12,34 +12,34 @@ RSpec.describe JwtUser do
     it 'requires a uid keyword' do
       jwt_payload.delete(:uid)
 
-      expect { described_class.new(jwt_payload) }
+      expect { described_class.new(**jwt_payload) }
         .to raise_error ArgumentError
     end
 
     it 'requires a roles keyword' do
       jwt_payload.delete(:roles)
 
-      expect { described_class.new(jwt_payload) }
+      expect { described_class.new(**jwt_payload) }
         .to raise_error ArgumentError
     end
 
     it 'requires a jti keyword' do
       jwt_payload.delete(:jti)
 
-      expect { described_class.new(jwt_payload) }
+      expect { described_class.new(**jwt_payload) }
         .to raise_error ArgumentError
     end
 
     it 'requires an iat (issued at)' do
       jwt_payload.delete(:iat)
 
-      expect { described_class.new(jwt_payload) }
+      expect { described_class.new(**jwt_payload) }
         .to raise_error ArgumentError
     end
   end
 
   describe '#has_access?' do
-    let(:jwt_user) { described_class.new(jwt_payload) }
+    let(:jwt_user) { described_class.new(**jwt_payload) }
 
     it 'returns true when given role is in the list' do
       expect(jwt_user.has_access?('rol1')).to eq true
@@ -51,7 +51,7 @@ RSpec.describe JwtUser do
   end
 
   describe '#roles' do
-    let(:jwt_user) { described_class.new(jwt_payload) }
+    let(:jwt_user) { described_class.new(**jwt_payload) }
 
     it 'returns its roles' do
       expect(jwt_user.roles).to eq(%w[rol1 rol2])
@@ -59,7 +59,7 @@ RSpec.describe JwtUser do
   end
 
   describe 'respond to ?' do
-    let(:jwt_user) { described_class.new(jwt_payload) }
+    let(:jwt_user) { described_class.new(**jwt_payload) }
 
     it 'responds to logstash_id' do
       expect(jwt_user).to respond_to(:logstash_id)

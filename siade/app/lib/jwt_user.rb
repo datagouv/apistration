@@ -1,7 +1,7 @@
 class JwtUser
   attr_reader :id, :jti, :roles, :iat
 
-  def initialize(uid:, roles:, jti:, iat:, exp: nil, **)
+  def initialize(uid:, roles:, jti:, iat:, exp: nil)
     @id = uid
     @roles = roles
     @jti = jti

@@ -87,9 +87,9 @@ class MonitoringService
   def track(level, message, extra_context = {})
     set_extras(extra_context) if extra_context.present?
 
-    capture_message(message, {
+    capture_message(message,
       level: level
-    })
+    )
     Rails.logger.public_send(extract_logger_level(level), message)
   end
 

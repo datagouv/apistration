@@ -12,6 +12,6 @@ class INSEE::BuildResource < BuildResource
   end
 
   def referential(name, params)
-    SIADE::V2::Referentials.const_get(name.classify).new(params).as_json
+    SIADE::V2::Referentials.const_get(name.classify).new(**params).as_json
   end
 end

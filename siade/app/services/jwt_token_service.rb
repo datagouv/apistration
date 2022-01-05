@@ -14,7 +14,7 @@ class JwtTokenService
   def decode_jwt
     return nil if invalid?
 
-    JwtUser.new(decoded_token)
+    JwtUser.new(**decoded_token.slice(:uid, :roles, :jti, :iat, :exp))
   rescue JWT::DecodeError
     nil
   end

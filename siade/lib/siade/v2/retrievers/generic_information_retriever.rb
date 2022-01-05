@@ -39,7 +39,7 @@ class SIADE::V2::Retrievers::GenericInformationRetriever
     define_method("driver_#{driver_name}") do
       driver_init_arg = { driver_init_attr => send(driver_init_attr) }
       driver_init_arg[driver_init_opts] = send(driver_init_opts) unless driver_init_opts.nil?
-      drivers[driver_name] ||= driver_class.new(driver_init_arg)
+      drivers[driver_name] ||= driver_class.new(**driver_init_arg)
     end
   end
 

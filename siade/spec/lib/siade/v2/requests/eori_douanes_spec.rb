@@ -1,5 +1,5 @@
 RSpec.describe SIADE::V2::Requests::EORIDouanes, type: :provider_request do
-  subject { described_class.new({ eori: eori }).perform }
+  subject { described_class.new(eori: eori).perform }
 
   let(:payload) { JSON.parse(subject.response.body, symbolize_names: true) }
 

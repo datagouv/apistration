@@ -1,7 +1,7 @@
 RSpec.shared_examples 'jwt policy' do |role, action = :show?|
   subject { described_class }
 
-  let(:jwt_user) { JwtUser.new(payload) }
+  let(:jwt_user) { JwtUser.new(**payload) }
   let(:payload) do
     {
       uid: 'db398baf-80c1-4d70-a2ce-87f5a097d636',
