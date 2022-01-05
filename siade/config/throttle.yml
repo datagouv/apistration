@@ -50,6 +50,7 @@ shared:
       - { controller: 'api/v3_and_more/mi/associations', action: 'show' }
       - { controller: 'api/v3_and_more/dgddi/eori', action: 'show' }
       - { controller: 'api/v3_and_more/inpi/latest_brevets', action: 'show' }
+      - { controller: 'api/v3_and_more/inpi/latest_marques', action: 'show' }
       - { controller: 'api/v3_and_more/insee/unites_legales', action: 'show' }
       - { controller: 'api/v3_and_more/insee/unites_legales_diffusables', action: 'show' }
       - { controller: 'api/v3_and_more/insee/etablissements', action: 'show' }
