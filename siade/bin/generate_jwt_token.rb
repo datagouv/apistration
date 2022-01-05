@@ -1,4 +1,8 @@
 extra_roles = [
+  'exercices',
+  'attestations_fiscales',
+  'liasse_fiscale',
+  'entreprises_artisanales',
 ]
 
 if ARGV.count.zero?
