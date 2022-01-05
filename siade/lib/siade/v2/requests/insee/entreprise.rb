@@ -57,7 +57,7 @@ class SIADE::V2::Requests::INSEE::Entreprise < SIADE::V2::Requests::Generic
   end
 
   def net_http_options
-    { use_ssl: true, verify_mode: OpenSSL::SSL::VERIFY_NONE }
+    { use_ssl: true, verify_mode: OpenSSL::SSL::VERIFY_PEER }
   end
 
   def follow_redirect(moved_response)

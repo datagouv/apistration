@@ -41,7 +41,7 @@ class SIADE::V2::Requests::INSEE::Token
   def request_options
     {
       use_ssl: true,
-      verify_mode: OpenSSL::SSL::VERIFY_NONE
+      verify_mode: OpenSSL::SSL::VERIFY_PEER
     }
   end
 

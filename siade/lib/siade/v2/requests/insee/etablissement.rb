@@ -36,7 +36,7 @@ class SIADE::V2::Requests::INSEE::Etablissement < SIADE::V2::Requests::Generic
   end
 
   def net_http_options
-    { use_ssl: true, verify_mode: OpenSSL::SSL::VERIFY_NONE }
+    { use_ssl: true, verify_mode: OpenSSL::SSL::VERIFY_PEER }
   end
 
   def build_response
