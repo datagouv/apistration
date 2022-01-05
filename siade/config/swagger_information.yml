@@ -244,6 +244,50 @@ inpi:
         description: "Nombre total des dépots de brevets effectués par l'entreprise."
         type: 'number'
         example: 13161
+  marques:
+    title: 'Marques'
+    description: |
+      Marques déposées par l'entreprise:
+      Cet endpoint appelle les informations à partir d’un SIREN. Le SIREN étant une information facultative lors du dépôt de dossier à l’INPI, le taux de sirénage est donc incomplet.
+
+      Taux de sirénage des déposants (sur personnes morales FR) :
+
+      *Marques France : 60% ;
+      *Marques européennes : 0 % (marques déposées à l’EUIPO) ;
+      *Marques internationales : 0% (marques déposées à l’OMPI) ;
+    tags:
+      - 'Propriété intellectuelle'
+    type: 'array'
+    items:
+      properties:
+        id:
+          title: "Numéro d'identification"
+          type: 'string'
+          example: '4313464'
+        marque:
+          title: 'Marque'
+          type: 'string'
+          example: 'DISTRIGO PARTS DISTRIBUTION'
+          nullable: true
+        marque_status:
+          title: 'Statut'
+          type: 'string'
+          example: 'Marque enregistrée'
+        depositaire:
+          title: 'Dépositaire'
+          type: 'string'
+          example: 'PEUGEOT CITROËN AUTOMOBILES SA, Société anonyme'
+        cle:
+          title: 'Clef'
+          type: 'string'
+          example: 'FMARK|4313464'
+    meta:
+      count:
+        title: 'Nombre de marques'
+        description: "Nombre total des dépots de marques effectués par l'entreprise."
+        type: 'number'
+        example: 13161
+
 
 insee:
   adresse_etablissement:
