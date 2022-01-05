@@ -37,7 +37,7 @@ class SIADE::V2::Requests::Infogreffe < SIADE::V2::Requests::Generic
   end
 
   def net_http_options
-    { use_ssl: true, verify_mode: false }
+    { use_ssl: true, verify_mode: OpenSSL::SSL::VERIFY_NONE }
   end
 
   def set_headers(request)
