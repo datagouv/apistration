@@ -169,7 +169,7 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEADEME, type: :provider_driver d
     end
   end
 
-  describe 'non regression test: when provider is found and there is an extra payload which describes the response', vcr: { cassette_name: 'ademe/rge/with_valid_siret_and_extra_payload_which_describe_the_payload' } do
+  context 'non-regression test: when provider is found, with "new" payload format', vcr: { cassette_name: 'ademe/rge/with_valid_siret_temporary_new_format' } do
     let(:siret) { valid_siret(:rge_ademe) }
 
     subject { described_class.new(siret: siret).perform_request }
@@ -182,7 +182,7 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEADEME, type: :provider_driver d
     end
   end
 
-  describe 'non regression test: when provider is not found and there is an extra payload which describes the response', vcr: { cassette_name: 'ademe/rge/with_not_found_siret_and_extra_payload_which_describe_the_payload' } do
+  context 'non-regression test: when provider is not found, with "new" payload format', vcr: { cassette_name: 'ademe/rge/with_not_found_siret_temporary_new_format' } do
     let(:siret) { not_found_siret(:rge_ademe) }
 
     subject { described_class.new(siret: siret).perform_request }

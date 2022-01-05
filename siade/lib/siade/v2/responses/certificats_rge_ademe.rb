@@ -1,9 +1,6 @@
 class SIADE::V2::Responses::CertificatsRGEADEME < SIADE::V2::Responses::Generic
   def json_body
     JSON.parse(body_without_bom)
-  rescue JSON::ParserError
-    @payload_with_description = true
-    JSON.parse(body_without_bom.split("\n")[-1])
   end
 
   protected
@@ -27,16 +24,26 @@ class SIADE::V2::Responses::CertificatsRGEADEME < SIADE::V2::Responses::Generic
   private
 
   def empty_body?
-    json_body
-
-    if @payload_with_description
-      payload_with_description_has_an_empty_company?
+    if new_temporary_format?
+      new_temporary_format_404?
     else
       json_body == []
     end
   end
 
-  def payload_with_description_has_an_empty_company?
-    json_body['Company'].is_a?(Array) && json_body['Company'][0]['id'].nil?
+  def new_temporary_format?
+    return false if json_body == []
+
+    new_temporary_format_200? ||
+      new_temporary_format_404?
+  end
+
+  def new_temporary_format_200?
+    json_body['Company'].is_a?(Hash)
+  end
+
+  def new_temporary_format_404?
+    json_body['Company'].is_a?(Array) &&
+      json_body['Company'][0]['id'].nil?
   end
 end
