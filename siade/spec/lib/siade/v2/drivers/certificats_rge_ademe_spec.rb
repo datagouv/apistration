@@ -169,7 +169,28 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEADEME, type: :provider_driver d
     end
   end
 
-  describe 'non regression test: when qualifications is an empty string', vcr: { cassette_name: 'ademe/rge/non_regression_qualifications_empty_string', record: :new_episodes } do
+  describe 'non regression test: when provider is found and there is an extra payload which describes the response', vcr: { cassette_name: 'ademe/rge/with_valid_siret_and_extra_payload_which_describe_the_payload' } do
+    let(:siret) { valid_siret(:rge_ademe) }
+
+    subject { described_class.new(siret: siret).perform_request }
+
+    it 'works' do
+      expect(subject.domaines.count).to be >= 2
+      expect(subject.domaines).to include(
+        'Pompe à chaleur : chauffage'
+      )
+    end
+  end
+
+  describe 'non regression test: when provider is not found and there is an extra payload which describes the response', vcr: { cassette_name: 'ademe/rge/with_not_found_siret_and_extra_payload_which_describe_the_payload' } do
+    let(:siret) { not_found_siret(:rge_ademe) }
+
+    subject { described_class.new(siret: siret).perform_request }
+
+    its(:http_code) { is_expected.to eq(404) }
+  end
+
+  describe 'non regression test: when qualifications is an empty string', vcr: { cassette_name: 'ademe/rge/non_regression_qualifications_empty_string' } do
     let(:siret) { '79228853200015' }
 
     subject { instance.qualifications }

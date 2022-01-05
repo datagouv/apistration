@@ -20,7 +20,8 @@ class SIADE::V2::Drivers::CertificatsRGEADEME < SIADE::V2::Drivers::GenericDrive
   def check_response
     return if errors?
 
-    @certification_entities = JSON.parse(body_without_bom).deep_transform_keys { |key| key.parameterize(separator: '_') }.try(:[], 'company')
+    @certification_entities = json_body.deep_transform_keys { |key| key.parameterize(separator: '_') }.try(:[], 'company')
+    @certification_entities = @certification_entities.values unless @certification_entities.is_a?(Array)
   end
 
   def qualifications
@@ -58,8 +59,8 @@ class SIADE::V2::Drivers::CertificatsRGEADEME < SIADE::V2::Drivers::GenericDrive
     request.errors.present?
   end
 
-  def body_without_bom
-    response.body_without_bom
+  def json_body
+    response.json_body
   end
 
   def format_qualifications(qualifs)
