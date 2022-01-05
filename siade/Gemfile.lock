@@ -381,6 +381,7 @@ DEPENDENCIES
   redis
   rest-client
   retryable
+  rexml
   rspec-collection_matchers
   rspec-its
   rspec-json_expectations
@@ -407,4 +408,4 @@ DEPENDENCIES
   webmock (~> 3.14)
 
 BUNDLED WITH
-   2.2.26
+   2.2.32

@@ -35,6 +35,7 @@ gem 'rack-cors'
 gem 'utf8-cleaner'
 gem 'rack-attack', git: 'https://github.com/rack/rack-attack', ref: '2257f00'
 gem 'marcel'
+gem 'rexml'
 
 gem 'fog-openstack', '1.0.11'
 
