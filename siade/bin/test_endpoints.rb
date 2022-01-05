@@ -152,19 +152,19 @@ endpoints = <<STR
   http_path: '/v3/inpi/brevets/542065479'
 
 - name: '[V3] INSEE Etablissements'
-  http_path: 'v3/insee/sirene/etablissements/30613890002979'
+  http_path: '/v3/insee/sirene/etablissements/30613890002979'
 
 - name: '[V3] INSEE Etablissements Adresse'
-  http_path: 'v3/insee/sirene/etablissements/30613890002979/adresse'
+  http_path: '/v3/insee/sirene/etablissements/30613890002979/adresse'
 
 - name: '[V3] INSEE Unites Legales'
-  http_path: 'v3/insee/sirene/unites_legales/306138900'
+  http_path: '/v3/insee/sirene/unites_legales/306138900'
 
 - name: '[V3] INSEE Unites Legales Diffusibles'
-  http_path: 'v3/insee/sirene/unites_legales/diffusibles/306138900'
+  http_path: '/v3/insee/sirene/unites_legales/diffusibles/306138900'
 
 - name: '[V3] INSEE Unites Legales Siege'
-  http_path: 'v3/insee/sirene/unites_legales/306138900/siege'
+  http_path: '/v3/insee/sirene/unites_legales/306138900/siege'
 
 - name: '[V3] MI Associations'
   http_path: '/v3/mi/associations/77571979202650'
