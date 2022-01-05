@@ -1,4 +1,4 @@
-class INPI::Brevets::ValidateResponse < ValidateResponse
+class INPI::ValidateResponse < ValidateResponse
   def call
     invalid_provider_response! if invalid_json?
 

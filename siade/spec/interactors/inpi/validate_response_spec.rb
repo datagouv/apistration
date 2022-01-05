@@ -1,4 +1,4 @@
-RSpec.describe INPI::Brevets::ValidateResponse, type: :validate_response do
+RSpec.describe INPI::ValidateResponse, type: :validate_response do
   subject { described_class.call(response: response, provider_name: 'INPI') }
 
   let(:response) do
@@ -11,8 +11,8 @@ RSpec.describe INPI::Brevets::ValidateResponse, type: :validate_response do
         results: [{
           fields: [
             {
-              name: 'PUBN',
-              value: '<country>FR</country><doc-number>3110115</doc-number><kind>A1</kind>'
+              name: 'field name',
+              value: 'field value'
             }
           ]
         }]

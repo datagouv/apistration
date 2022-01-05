@@ -2,7 +2,7 @@ class INPI::Brevets < RetrieverOrganizer
   organize ValidateSiren,
     INPI::ValidateLimit,
     INPI::Brevets::MakeRequest,
-    INPI::Brevets::ValidateResponse,
+    INPI::ValidateResponse,
     INPI::Brevets::BuildResourceCollection
 
   def provider_name
