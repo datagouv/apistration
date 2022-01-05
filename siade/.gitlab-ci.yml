@@ -12,7 +12,7 @@ stages:
 
 lint:
   stage: lint
-  image: ruby:2.7.2
+  image: ruby:3.0.3
   cache:
     key: "siade"
     paths:
@@ -28,7 +28,7 @@ lint:
 
 test:
   stage: test
-  image: ruby:2.7.2
+  image: ruby:3.0.3
   cache:
     key: "siade"
     paths:
