@@ -1,4 +1,4 @@
-RSpec.describe INPI::Brevets::ValidateLimit, type: :validate_param_interactor do
+RSpec.describe INPI::ValidateLimit, type: :validate_param_interactor do
   subject { described_class.call(params: params) }
 
   let(:params) do

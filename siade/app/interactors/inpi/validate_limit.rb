@@ -1,4 +1,4 @@
-class INPI::Brevets::ValidateLimit < ValidateParamInteractor
+class INPI::ValidateLimit < ValidateParamInteractor
   def call
     return if limit.between?(1, 20)
 
