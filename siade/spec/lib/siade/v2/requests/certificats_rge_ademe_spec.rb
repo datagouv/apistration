@@ -8,25 +8,11 @@ RSpec.describe SIADE::V2::Requests::CertificatsRGEADEME, type: :provider_request
     its(:errors) { is_expected.to have_error(invalid_siret_error_message) }
   end
 
-  context 'with a know siret for the provider', vcr: { cassette_name: 'ademe/rge/with_valid_siret' } do
+  context 'with a known siret for the provider', vcr: { cassette_name: 'ademe/rge/with_valid_siret' } do
     let(:siret) { valid_siret(:rge_ademe) }
 
     its(:http_code) { is_expected.to eq(200) }
     its(:errors) { is_expected.to be_empty }
-  end
-
-  context 'non-regression test: when provider is found, with "new" payload format', vcr: { cassette_name: 'ademe/rge/with_valid_siret_temporary_new_format' } do
-    let(:siret) { valid_siret(:rge_ademe) }
-
-    its(:http_code) { is_expected.to eq(200) }
-    its(:errors) { is_expected.to be_empty }
-  end
-
-  context 'non-regression test: when provider is not found, with "new" payload format', vcr: { cassette_name: 'ademe/rge/with_not_found_siret_temporary_new_format' } do
-    let(:siret) { not_found_siret(:rge_ademe) }
-
-    its(:http_code) { is_expected.to eq(404) }
-    its(:errors) { is_expected.to have_error('Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel') }
   end
 
   context 'with an unknown siret for the provider', vcr: { cassette_name: 'ademe/rge/with_not_found_siret' } do

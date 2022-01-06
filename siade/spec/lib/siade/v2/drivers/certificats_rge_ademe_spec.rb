@@ -30,30 +30,30 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEADEME, type: :provider_driver d
         it do
           expect(subject).to contain_exactly(
             a_hash_including({
+              nom: 'Efficacité énergétique - "ECO Artisan®" - Chauffagiste',
+              nom_certificat: 'QUALIBAT-RGE',
+              url_certificat: nil
+            }),
+            a_hash_including({
               nom: 'Qualisol - Pose de chauffe-eau solaire individuel (eau chaude solaire)',
               nom_certificat: 'Qualisol CESI',
               url_certificat: nil
             }),
             a_hash_including({
-              nom: 'Qualibois module Eau - Pose d\'appareil de chauffage au bois hydraulique (chaudière bois et poêle)',
+              nom: 'Qualibois module Air - Pose d\'appareil de chauffage au bois indépendant (poêle et insert)',
+              nom_certificat: 'Qualibois module Air',
+              url_certificat: nil
+            }),
+            a_hash_including({
+              nom: 'Qualibois module Eau - Pose d\'appareil de chauffage au bois indépendant (poêle et insert)',
               nom_certificat: 'Qualibois module Eau',
               url_certificat: nil
             }),
             a_hash_including({
-              nom: 'QualiPAC Chauffage - Pose de pompe à chaleur (PAC aérothermique ou géothermique et chauffe-eau thermodynamique)',
+              nom: 'QualiPAC Chauffage - Pose de chauffe-eau thermodynamique',
               nom_certificat: 'QualiPAC Chauffage',
               url_certificat: nil
             }),
-            a_hash_including({
-              nom: 'Efficacité énergétique - "ECO Artisan®" - Chauffagiste',
-              nom_certificat: 'QUALIBAT-RGE',
-              url_certificat: nil
-            }),
-            a_hash_including({
-              nom: 'Efficacité énergétique - "ECO Artisan®" - Chauffagiste',
-              nom_certificat: 'QUALIBAT-RGE',
-              url_certificat: nil
-            })
           )
         end
         # rubocop:enable Metrics/BlockLength
@@ -72,30 +72,30 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEADEME, type: :provider_driver d
         it do
           expect(subject).to contain_exactly(
             a_hash_including({
+              nom: 'Efficacité énergétique - "ECO Artisan®" - Chauffagiste',
+              nom_certificat: 'QUALIBAT-RGE',
+              url_certificat: a_string_starting_with(Siade.credentials[:public_storage_url]).and(a_string_ending_with('-certificat_rge_ademe.pdf')),
+            }),
+            a_hash_including({
               nom: 'Qualisol - Pose de chauffe-eau solaire individuel (eau chaude solaire)',
               nom_certificat: 'Qualisol CESI',
               url_certificat: a_string_starting_with(Siade.credentials[:public_storage_url]).and(a_string_ending_with('-certificat_rge_ademe.pdf'))
             }),
             a_hash_including({
-              nom: 'Qualibois module Eau - Pose d\'appareil de chauffage au bois hydraulique (chaudière bois et poêle)',
-              nom_certificat: 'Qualibois module Eau',
+              nom: 'Qualibois module Air - Pose d\'appareil de chauffage au bois indépendant (poêle et insert)',
+              nom_certificat: 'Qualibois module Air',
               url_certificat: a_string_starting_with(Siade.credentials[:public_storage_url]).and(a_string_ending_with('-certificat_rge_ademe.pdf'))
             }),
             a_hash_including({
-              nom: 'QualiPAC Chauffage - Pose de pompe à chaleur (PAC aérothermique ou géothermique et chauffe-eau thermodynamique)',
+              nom: 'Qualibois module Eau - Pose d\'appareil de chauffage au bois indépendant (poêle et insert)',
+              nom_certificat: 'Qualibois module Eau',
+              url_certificat: a_string_starting_with(Siade.credentials[:public_storage_url]).and(a_string_ending_with('-certificat_rge_ademe.pdf')),
+            }),
+            a_hash_including({
+              nom: 'QualiPAC Chauffage - Pose de chauffe-eau thermodynamique',
               nom_certificat: 'QualiPAC Chauffage',
               url_certificat: a_string_starting_with(Siade.credentials[:public_storage_url]).and(a_string_ending_with('-certificat_rge_ademe.pdf'))
             }),
-            a_hash_including({
-              nom: 'Efficacité énergétique - "ECO Artisan®" - Chauffagiste',
-              nom_certificat: 'QUALIBAT-RGE',
-              url_certificat: a_string_starting_with(Siade.credentials[:public_storage_url]).and(a_string_ending_with('-certificat_rge_ademe.pdf'))
-            }),
-            a_hash_including({
-              nom: 'Efficacité énergétique - "ECO Artisan®" - Chauffagiste',
-              nom_certificat: 'QUALIBAT-RGE',
-              url_certificat: a_string_starting_with(Siade.credentials[:public_storage_url]).and(a_string_ending_with('-certificat_rge_ademe.pdf'))
-            })
           )
         end
         # rubocop:enable Metrics/BlockLength
@@ -130,80 +130,13 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEADEME, type: :provider_driver d
 
       it do
         expect(subject).to contain_exactly(
-          'Chaudière condensation ou micro-cogénération gaz ou fioul',
-          'Radiateurs électriques, dont régulation.',
-          'Chauffage et/ou eau chaude solaire',
-          'Poêle ou insert bois',
-          'Chaudière bois',
-          'Pompe à chaleur : chauffage'
+          "Chauffage et/ou eau chaude solaire",
+          "Poêle ou insert bois",
+          "Chaudière bois",
+          "Pompe à chaleur : chauffage",
+          "Chauffe-Eau Thermodynamique",
         )
       end
-    end
-  end
-
-  context 'when data is found but there is an unexpected error', vcr: { cassette_name: 'ademe/rge/with_valid_siret' } do
-    subject { described_class.new(siret: siret).perform_request }
-
-    let(:siret) { valid_siret(:rge_ademe) }
-
-    before do
-      allow_any_instance_of(described_class).to receive(:url_certificat_payload).and_raise(StandardError)
-    end
-
-    it 'raises an error' do
-      expect do
-        subject.qualifications
-      end.to raise_error(StandardError)
-    end
-  end
-
-  describe 'non regression test: when domaines is a flat array', vcr: { cassette_name: 'ademe/rge/non_regression_domaines_flat' } do
-    let(:siret) { '83401500000021' }
-
-    subject { described_class.new(siret: siret).perform_request }
-
-    it 'works' do
-      expect(subject.domaines).to eq([
-        "Travaux d'installation électrique dans tous locaux"
-      ])
-    end
-  end
-
-  context 'non-regression test: when provider is found, with "new" payload format', vcr: { cassette_name: 'ademe/rge/with_valid_siret_temporary_new_format' } do
-    let(:siret) { valid_siret(:rge_ademe) }
-
-    subject { described_class.new(siret: siret).perform_request }
-
-    it 'works' do
-      expect(subject.domaines.count).to be >= 2
-      expect(subject.domaines).to include(
-        'Pompe à chaleur : chauffage'
-      )
-    end
-  end
-
-  context 'non-regression test: when provider is not found, with "new" payload format', vcr: { cassette_name: 'ademe/rge/with_not_found_siret_temporary_new_format' } do
-    let(:siret) { not_found_siret(:rge_ademe) }
-
-    subject { described_class.new(siret: siret).perform_request }
-
-    its(:http_code) { is_expected.to eq(404) }
-  end
-
-  describe 'non regression test: when qualifications is an empty string', vcr: { cassette_name: 'ademe/rge/non_regression_qualifications_empty_string' } do
-    let(:siret) { '79228853200015' }
-
-    subject { instance.qualifications }
-
-    let(:instance) { described_class.new(siret: siret) }
-
-    before do
-      instance.perform_request
-      instance.check_response
-    end
-
-    it 'works and renders an empty array' do
-      expect(subject).to eq([])
     end
   end
 
