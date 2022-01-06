@@ -21,7 +21,7 @@ RSpec.describe Rack::Attack, type: :request do
       expect(response.status).to eq(401)
     end
 
-    it 'returns an error message', retry: 3 do
+    it 'returns an error message' do
       get url, params: headers_params
 
       expect(response_json).to have_json_error(detail: 'Votre token n\'est pas valide ou n\'est pas renseigné')
