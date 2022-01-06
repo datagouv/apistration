@@ -32,6 +32,15 @@ RSpec::Matchers.define :have_json_error do |expected|
 
     expect(json['errors']).to be_present
     expect(json['errors']).to be_an(Array)
-    expect(json['errors']).to include(expected.stringify_keys['detail'])
+
+    fail 'errors key is empty' if json['errors'].blank?
+
+    flat_error_format = json['errors'][0].is_a?(String)
+
+    if flat_error_format
+      expect(json['errors']).to include(expected.stringify_keys['detail'])
+    else
+      expect(json['errors'].map { |error| error.stringify_keys['detail'] }).to include(expected.stringify_keys['detail'])
+    end
   end
 end
