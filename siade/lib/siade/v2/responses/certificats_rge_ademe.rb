@@ -14,10 +14,12 @@ class SIADE::V2::Responses::CertificatsRGEADEME < SIADE::V2::Responses::Generic
   end
 
   def adapt_raw_response_code
-    if empty_body?
+    http_status = @raw_response.code.to_i
+
+    if http_status == 404 || empty_body?
       set_error_message_for(404)
     else
-      @raw_response.code.to_i
+      http_status
     end
   end
 
