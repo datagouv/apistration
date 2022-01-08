@@ -8,13 +8,15 @@ RSpec.describe RateLimitingService do
       [
         {
           controller: 'api/v2/entreprises_restored',
-          action: 'show',
-          siren: 123
+          action: 'show'
         },
         {
           controller: 'api/v2/etablissements_restored',
-          action: 'show',
-          siret: 123
+          action: 'show'
+        },
+        {
+          controller: 'api/v3_and_more/dgfip/liasses_fiscales/declarations',
+          action: 'show'
         }
       ]
     end
@@ -41,6 +43,12 @@ RSpec.describe RateLimitingService do
 
         context 'when the request path matches one of the endpoint\'s URL in the list' do
           before { allow(req).to receive(:path).and_return('/v2/etablissements/yoparam') }
+
+          it { is_expected.to eq(Digest::SHA256.hexdigest(token_value)) }
+        end
+
+        describe 'non-regression test: when the request path matches dgfip v3 attestations_fiscales' do
+          before { allow(req).to receive(:path).and_return('/v3/dgfip/liasses_fiscales/declarations/2017/301028346') }
 
           it { is_expected.to eq(Digest::SHA256.hexdigest(token_value)) }
         end

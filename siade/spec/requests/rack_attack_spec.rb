@@ -134,14 +134,27 @@ RSpec.describe Rack::Attack, type: :request do
       describe 'low latency document resources throttling' do
         it_behaves_like 'throttling group of endpoints' do
           let(:limit) { throttle_config.dig(:low_latency_documents, :limit) }
-          let(:endpoints) { throttle_config.dig(:low_latency_documents, :endpoints) }
+
+          let(:endpoints) do
+            [{
+              controller: 'api/v2/entreprises_legacy',
+              action: 'show',
+              siren: '123'
+            }]
+          end
         end
       end
 
       describe 'JSON resources throttling' do
         it_behaves_like 'throttling group of endpoints' do
           let(:limit) { throttle_config.dig(:json_resources, :limit) }
-          let(:endpoints) { throttle_config.dig(:json_resources, :endpoints) }
+          let(:endpoints) do
+            [{
+              controller: 'api/v2/cartes_professionnelles_fntp',
+              action: 'show',
+              siren: '123'
+            }]
+          end
         end
       end
 
