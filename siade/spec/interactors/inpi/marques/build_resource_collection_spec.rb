@@ -6,15 +6,15 @@ RSpec.describe INPI::Marques::BuildResourceCollection, type: :build_resource do
       [
         {
           id: '4746787',
-          marque: 'H',
-          marque_status: 'Marque enregistrée',
+          nom: 'H',
+          status: 'Marque enregistrée',
           depositaire: 'PSA AUTOMOBILES SA',
           clef: 'FMARK|4746787'
         },
         {
           id: '4553017',
-          marque: 'PSA GROUPE',
-          marque_status: 'Marque enregistrée',
+          nom: 'PSA GROUPE',
+          status: 'Marque enregistrée',
           depositaire: 'PSA AUTOMOBILES SA',
           clef: 'FMARK|4553017'
         }

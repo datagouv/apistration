@@ -264,20 +264,34 @@ inpi:
           title: "Numéro d'identification"
           type: 'string'
           example: '4313464'
-        marque:
-          title: 'Marque'
+        nom:
+          title: 'Nom'
           type: 'string'
           example: 'DISTRIGO PARTS DISTRIBUTION'
           nullable: true
-        marque_status:
+        status:
           title: 'Statut'
           type: 'string'
           example: 'Marque enregistrée'
+          enum:
+            - 'Demande déposée'
+            - 'Demande publiée'
+            - 'Demande non publiée'
+            - 'Demande irrecevable après publication'
+            - 'Marque enregistrée'
+            - 'Renouvellement demandé'
+            - 'Marque renouvelée'
+            - 'Demande totalement rejetée'
+            - "Marque ayant fait l'objet d'une renonciation totale"
+            - "Marque ayant fait l'objet d'un retrait total"
+            - 'Marque annulée'
+            - 'Marque expirée'
         depositaire:
           title: 'Dépositaire'
+          description: 'Nom de déposant ou titulaire'
           type: 'string'
           example: 'PEUGEOT CITROËN AUTOMOBILES SA, Société anonyme'
-        cle:
+        clef:
           title: 'Clef'
           type: 'string'
           example: 'FMARK|4313464'

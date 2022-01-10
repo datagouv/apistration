@@ -1,8 +1,8 @@
 class INPI::MarquesSerializer::V3 < JSONAPI::BaseSerializer
   set_type :marque
 
-  attributes :marque,
-    :marque_status,
+  attributes :nom,
+    :status,
     :depositaire,
     :clef
 end

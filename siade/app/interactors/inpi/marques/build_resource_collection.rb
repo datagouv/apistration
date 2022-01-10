@@ -14,8 +14,8 @@ class INPI::Marques::BuildResourceCollection < BuildResourceCollection
   def resource_attributes(item)
     {
       id: id_number(item),
-      marque: marque(item),
-      marque_status: marque_status(item),
+      nom: nom(item),
+      status: status(item),
       depositaire: depositaire(item),
       clef: clef(item)
     }
@@ -31,11 +31,11 @@ class INPI::Marques::BuildResourceCollection < BuildResourceCollection
     find_field_from_key(item, 'ApplicationNumber')['value']
   end
 
-  def marque(item)
+  def nom(item)
     find_field_from_key(item, 'Mark')['value']
   end
 
-  def marque_status(item)
+  def status(item)
     find_field_from_key(item, 'MarkCurrentStatusCode')['value']
   end
 
