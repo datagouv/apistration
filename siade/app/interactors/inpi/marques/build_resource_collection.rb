@@ -12,14 +12,12 @@ class INPI::Marques::BuildResourceCollection < BuildResourceCollection
   end
 
   def resource_attributes(item)
-    @item = item
-
     {
-      id: id_number,
-      marque: marque,
-      marque_status: marque_status,
-      depositaire: depositaire,
-      clef: clef
+      id: id_number(item),
+      marque: marque(item),
+      marque_status: marque_status(item),
+      depositaire: depositaire(item),
+      clef: clef(item)
     }
   end
 
@@ -29,32 +27,28 @@ class INPI::Marques::BuildResourceCollection < BuildResourceCollection
     json_body['results'].first(limit)
   end
 
-  def fields
-    @fields ||= @item['fields']
+  def id_number(item)
+    find_field_from_key(item, 'ApplicationNumber')['value']
   end
 
-  def id_number
-    find_field_from_key('ApplicationNumber')['value']
+  def marque(item)
+    find_field_from_key(item, 'Mark')['value']
   end
 
-  def marque
-    find_field_from_key('Mark')['value']
+  def marque_status(item)
+    find_field_from_key(item, 'MarkCurrentStatusCode')['value']
   end
 
-  def marque_status
-    find_field_from_key('MarkCurrentStatusCode')['value']
+  def depositaire(item)
+    find_field_from_key(item, 'DEPOSANT')['value']
   end
 
-  def depositaire
-    find_field_from_key('DEPOSANT')['value']
+  def clef(item)
+    find_field_from_key(item, 'ukey')['value']
   end
 
-  def clef
-    find_field_from_key('ukey')['value']
-  end
-
-  def find_field_from_key(key)
-    fields.find { |f| f['name'] == key }
+  def find_field_from_key(item, key)
+    item['fields'].find { |f| f['name'] == key }
   end
 
   def limit
