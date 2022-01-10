@@ -3,13 +3,22 @@ RSpec.describe INPI::Marques::BuildResourceCollection, type: :build_resource do
     subject(:call) { described_class.call(response: response, params: params) }
 
     let(:valid_collection_sample) do
-      {
-        id: '4746787',
-        marque: 'H',
-        marque_status: 'Marque enregistrée',
-        depositaire: 'PSA AUTOMOBILES SA',
-        clef: 'FMARK|4746787'
-      }
+      [
+        {
+          id: '4746787',
+          marque: 'H',
+          marque_status: 'Marque enregistrée',
+          depositaire: 'PSA AUTOMOBILES SA',
+          clef: 'FMARK|4746787'
+        },
+        {
+          id: '4553017',
+          marque: 'PSA GROUPE',
+          marque_status: 'Marque enregistrée',
+          depositaire: 'PSA AUTOMOBILES SA',
+          clef: 'FMARK|4553017'
+        }
+      ]
     end
 
     let(:valid_meta) do
@@ -29,7 +38,7 @@ RSpec.describe INPI::Marques::BuildResourceCollection, type: :build_resource do
     let(:params) do
       {
         siren: valid_siren(:inpi),
-        limit: 3
+        limit: 2
       }
     end
 
@@ -40,7 +49,7 @@ RSpec.describe INPI::Marques::BuildResourceCollection, type: :build_resource do
     end
 
     it 'Have limit amount of resources' do
-      expect(call.resource_collection.count).to eq(3)
+      expect(call.resource_collection.count).to eq(2)
     end
 
     it 'has meta' do
@@ -48,7 +57,7 @@ RSpec.describe INPI::Marques::BuildResourceCollection, type: :build_resource do
     end
 
     it 'has valid resource_collection' do
-      expect(call.resource_collection.first.to_h).to eq(valid_collection_sample)
+      expect(call.resource_collection.map(&:to_h)).to eq(valid_collection_sample)
     end
   end
 end
