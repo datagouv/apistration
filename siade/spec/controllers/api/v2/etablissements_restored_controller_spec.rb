@@ -1,5 +1,8 @@
 RSpec.describe API::V2::EtablissementsRestoredController, type: :controller do
-  before { allow_any_instance_of(RenewINSEETokenService).to receive(:current_token_expired?).and_return(false) }
+  before do
+    allow_any_instance_of(SIADE::V2::Requests::INSEE::Etablissement).to receive(:insee_token).and_return('not a valid token')
+    allow_any_instance_of(SIADE::V2::Requests::INSEE::Entreprise).to receive(:insee_token).and_return('not a valid token')
+  end
 
   it_behaves_like 'unauthorized'
   it_behaves_like 'forbidden'

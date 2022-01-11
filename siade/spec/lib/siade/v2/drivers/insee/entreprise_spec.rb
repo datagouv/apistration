@@ -1,5 +1,5 @@
 RSpec.describe SIADE::V2::Drivers::INSEE::Entreprise, type: :provider_driver do
-  before { allow_any_instance_of(RenewINSEETokenService).to receive(:current_token_expired?).and_return(false) }
+  before { allow_any_instance_of(SIADE::V2::Requests::INSEE::Entreprise).to receive(:insee_token).and_return('not a valid token') }
 
   context 'when siren is not found', vcr: { cassette_name: 'insee/siren/non_existent' } do
     subject { described_class.new(siren: siren).tap(&:perform_request) }

@@ -1,6 +1,9 @@
 RSpec.describe API::V2::AttestationsFiscalesDGFIPController, type: :controller do
   before do
     allow_any_instance_of(MaintenanceService).to receive(:on?).and_return(maintenance)
+
+    allow_any_instance_of(SIADE::V2::Requests::INSEE::Etablissement).to receive(:insee_token).and_return('not a valid token')
+    allow_any_instance_of(SIADE::V2::Requests::INSEE::Entreprise).to receive(:insee_token).and_return('not a valid token')
   end
 
   let(:maintenance) { false }

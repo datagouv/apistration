@@ -1,5 +1,5 @@
 RSpec.describe SIADE::V2::Drivers::INSEE::Etablissement, type: :provider_driver do
-  before { allow_any_instance_of(RenewINSEETokenService).to receive(:current_token_expired?).and_return(false) }
+  before { allow_any_instance_of(SIADE::V2::Requests::INSEE::Etablissement).to receive(:insee_token).and_return('not a valid token') }
 
   context 'when siret is not found', vcr: { cassette_name: 'insee/siret/non_existent' } do
     subject { described_class.new(siret: siret).tap(&:perform_request) }

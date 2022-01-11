@@ -1,6 +1,11 @@
 RSpec.describe SIADE::V2::Requests::AttestationsFiscalesDGFIP, type: :provider_request do
   let(:valid_user_id) { valid_dgfip_user_id }
 
+  before do
+    allow_any_instance_of(SIADE::V2::Requests::INSEE::Etablissement).to receive(:insee_token).and_return('not a valid token')
+    allow_any_instance_of(SIADE::V2::Requests::INSEE::Entreprise).to receive(:insee_token).and_return('not a valid token')
+  end
+
   describe 'when is not valid' do
     subject do
       described_class.new(

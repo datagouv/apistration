@@ -5,7 +5,6 @@ class SIADE::V2::Requests::INSEE::Entreprise < SIADE::V2::Requests::Generic
 
   def valid?
     if siren_valid?
-      RenewINSEETokenService.new.call
       true
     else
       set_error_message_for(422)
@@ -81,11 +80,7 @@ class SIADE::V2::Requests::INSEE::Entreprise < SIADE::V2::Requests::Generic
   end
 
   def insee_token
-    YAML.load_file(filename)['token']
-  end
-
-  def filename
-    Rails.root.join('config', 'insee_secrets.yml')
+    INSEE::Authenticate.call.token
   end
 
   def recall_api_with_new_siren

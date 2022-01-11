@@ -2,6 +2,11 @@ RSpec.describe SIADE::V2::Retrievers::AttestationsFiscalesDGFIP do
   let(:user_id) { valid_dgfip_user_id }
   let(:cookie)  { 'valid_cookie' }
 
+  before do
+    allow_any_instance_of(SIADE::V2::Requests::INSEE::Etablissement).to receive(:insee_token).and_return('not a valid token')
+    allow_any_instance_of(SIADE::V2::Requests::INSEE::Entreprise).to receive(:insee_token).and_return('not a valid token')
+  end
+
   describe 'Driver correctly delegate methods' do
     subject { described_class.new(siren: valid_siren(:dgfip), user_id: user_id, cookie: cookie) }
 

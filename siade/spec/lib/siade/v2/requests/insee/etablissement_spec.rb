@@ -1,12 +1,7 @@
 RSpec.describe SIADE::V2::Requests::INSEE::Etablissement, type: :provider_request do
   subject { described_class.new(siret).tap(&:perform) }
 
-  before { allow_any_instance_of(RenewINSEETokenService).to receive(:current_token_expired?).and_return(false) }
-
-  it 'try to renew INSEE token', vcr: { cassette_name: 'insee/siret/active_GE' } do
-    expect_any_instance_of(RenewINSEETokenService).to receive(:call).once
-    described_class.new(sirets_insee_v3[:active_GE]).tap(&:perform)
-  end
+  before { allow_any_instance_of(SIADE::V2::Requests::INSEE::Etablissement).to receive(:insee_token).and_return('not a valid token') }
 
   context 'bad formated siret' do
     let(:siret) { invalid_siret }
@@ -27,8 +22,7 @@ RSpec.describe SIADE::V2::Requests::INSEE::Etablissement, type: :provider_reques
   describe 'non-regression test: when siret redirected to another siret' do
     let(:siret) { redirected_siret }
     let(:insee_token) do
-      filename = Rails.root.join('config', 'insee_secrets.yml')
-      YAML.load_file(filename)['token']
+      'not a valid token'
     end
 
     let(:redirected_request_uri) { "#{Siade.credentials[:insee_v3_domain]}/entreprises/sirene/siret?q=etablissementSiege=true&siren=778870675" }

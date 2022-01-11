@@ -1,12 +1,7 @@
 RSpec.describe SIADE::V2::Requests::INSEE::Entreprise, type: :provider_request do
   subject { described_class.new(siren).tap(&:perform) }
 
-  before { allow_any_instance_of(RenewINSEETokenService).to receive(:current_token_expired?).and_return(false) }
-
-  it 'try to renew INSEE token', vcr: { cassette_name: 'insee/siren/active_GE' } do
-    expect_any_instance_of(RenewINSEETokenService).to receive(:call).once
-    described_class.new(sirens_insee_v3[:active_GE]).tap(&:perform)
-  end
+  before { allow_any_instance_of(SIADE::V2::Requests::INSEE::Entreprise).to receive(:insee_token).and_return('not a valid token') }
 
   context 'bad formated siren' do
     let(:siren) { invalid_siren }

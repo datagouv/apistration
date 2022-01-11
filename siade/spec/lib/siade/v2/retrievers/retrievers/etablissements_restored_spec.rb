@@ -1,7 +1,7 @@
 RSpec.describe SIADE::V2::Retrievers::EtablissementsRestored do
   subject(:retriever) { described_class.new(siret).tap(&:retrieve) }
 
-  before { allow_any_instance_of(RenewINSEETokenService).to receive(:current_token_expired?).and_return(false) }
+  before { allow_any_instance_of(SIADE::V2::Requests::INSEE::Etablissement).to receive(:insee_token).and_return('not a valid token') }
 
   describe 'bad siret' do
     let(:siret) { invalid_siret }
