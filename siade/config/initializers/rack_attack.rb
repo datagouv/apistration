@@ -1,5 +1,8 @@
 require 'rack/utils'
 
+require 'rate_limiting_service'
+require 'rate_limit_headers_middleware'
+
 class Rack::Attack
   class << self
     def throttle_zone(zone_name:, limit:, endpoints:, period:)
