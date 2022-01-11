@@ -6,35 +6,54 @@ GIT
     rack-attack (6.5.0)
       rack (>= 1.0, < 3)
 
+GIT
+  remote: https://github.com/rails-api/active_model_serializers.git
+  revision: fae99ee08ab3292086b3d15c99d297a3ba384b0f
+  branch: 0-10-stable
+  specs:
+    active_model_serializers (0.10.12)
+      actionpack (>= 4.1, < 7.1)
+      activemodel (>= 4.1, < 7.1)
+      case_transform (>= 0.2)
+      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
+
+GIT
+  remote: https://github.com/rswag/rswag.git
+  revision: a813b63bcc64e9ea49f6416ab4fe023b7f090ad8
+  specs:
+    rswag-api (0.0.0)
+      railties (>= 3.1, < 7.1)
+    rswag-specs (0.0.0)
+      activesupport (>= 3.1, < 7.1)
+      json-schema (~> 2.2)
+      railties (>= 3.1, < 7.1)
+    rswag-ui (0.0.0)
+      actionpack (>= 3.1, < 7.1)
+      railties (>= 3.1, < 7.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    actionpack (6.1.3.2)
-      actionview (= 6.1.3.2)
-      activesupport (= 6.1.3.2)
-      rack (~> 2.0, >= 2.0.9)
+    actionpack (7.0.1)
+      actionview (= 7.0.1)
+      activesupport (= 7.0.1)
+      rack (~> 2.0, >= 2.2.0)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.2.0)
-    actionview (6.1.3.2)
-      activesupport (= 6.1.3.2)
+    actionview (7.0.1)
+      activesupport (= 7.0.1)
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_model_serializers (0.10.12)
-      actionpack (>= 4.1, < 6.2)
-      activemodel (>= 4.1, < 6.2)
-      case_transform (>= 0.2)
-      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
-    activemodel (6.1.3.2)
-      activesupport (= 6.1.3.2)
-    activesupport (6.1.3.2)
+    activemodel (7.0.1)
+      activesupport (= 7.0.1)
+    activesupport (7.0.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-      zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     ammeter (1.1.5)
@@ -217,12 +236,13 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
-    railties (6.1.3.2)
-      actionpack (= 6.1.3.2)
-      activesupport (= 6.1.3.2)
+    railties (7.0.1)
+      actionpack (= 7.0.1)
+      activesupport (= 7.0.1)
       method_source
-      rake (>= 0.8.7)
+      rake (>= 12.2)
       thor (~> 1.0)
+      zeitwerk (~> 2.5)
     rainbow (3.0.0)
     rake (13.0.6)
     rb-fsevent (0.11.0)
@@ -269,15 +289,6 @@ GEM
     rspec-retry (0.6.2)
       rspec-core (> 3.3)
     rspec-support (3.10.2)
-    rswag-api (2.4.0)
-      railties (>= 3.1, < 7.0)
-    rswag-specs (2.4.0)
-      activesupport (>= 3.1, < 7.0)
-      json-schema (~> 2.2)
-      railties (>= 3.1, < 7.0)
-    rswag-ui (2.4.0)
-      actionpack (>= 3.1, < 7.0)
-      railties (>= 3.1, < 7.0)
     rubocop (1.24.1)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
@@ -347,10 +358,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actionpack (~> 6.1.0)
-  active_model_serializers (~> 0.10.0)
-  activemodel (~> 6.1.0)
-  activesupport (~> 6.1.0)
+  actionpack (~> 7.0)
+  active_model_serializers (~> 0.10.0)!
+  activemodel (~> 7.0)
+  activesupport (~> 7.0)
   ammeter
   brakeman
   colorize
@@ -376,7 +387,7 @@ DEPENDENCIES
   rack-attack!
   rack-cors
   rails-controller-testing
-  railties (~> 6.1.0)
+  railties (~> 7.0)
   rb-readline
   redis
   rest-client
@@ -387,9 +398,9 @@ DEPENDENCIES
   rspec-json_expectations
   rspec-rails
   rspec-retry
-  rswag-api
-  rswag-specs
-  rswag-ui
+  rswag-api!
+  rswag-specs!
+  rswag-ui!
   rubocop
   rubocop-checkstyle_formatter
   rubocop-rails

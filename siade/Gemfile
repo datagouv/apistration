@@ -1,9 +1,7 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-#gem 'rails', '~> 6.1.0'
-
-version = '~> 6.1.0'
+version = '~> 7.0'
+# version = '~> 6.1'
 [
 'activesupport',
 'actionpack',
@@ -21,10 +19,9 @@ version = '~> 6.1.0'
   gem rails_subgem, version
 end
 
-
 gem 'rest-client'
 
-gem 'active_model_serializers', '~> 0.10.0'
+gem 'active_model_serializers', '~> 0.10.0', github: 'rails-api/active_model_serializers', branch: '0-10-stable'
 gem 'logstasher'
 gem 'nokogiri'
 gem 'oauth2'
@@ -52,11 +49,12 @@ gem 'jwt', '~> 2.3'
 gem 'sentry-ruby'
 gem 'sentry-rails'
 
-gem 'rswag-api'
-gem 'rswag-ui'
+gem 'rswag-api', github: 'rswag/rswag'
+gem 'rswag-ui', github: 'rswag/rswag'
 
 group :test do
-  gem 'rswag-specs'
+  gem 'rswag-specs', github: 'rswag/rswag'
+
   gem 'json-schema'
   gem 'timecop'
   gem 'mock_redis'
