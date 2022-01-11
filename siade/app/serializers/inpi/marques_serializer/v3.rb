@@ -1,7 +1,7 @@
 class INPI::MarquesSerializer::V3 < JSONAPI::BaseSerializer
   set_type :marque
 
-  link :notice
+  link :notice, :notice_url
 
   attributes :nom,
     :status,

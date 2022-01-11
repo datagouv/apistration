@@ -18,7 +18,7 @@ class INPI::Marques::BuildResourceCollection < BuildResourceCollection
       status: status(item),
       depositaire: depositaire(item),
       clef: clef(item),
-      notice: notice(item)
+      notice_url: notice_url(item)
     }
   end
 
@@ -52,7 +52,7 @@ class INPI::Marques::BuildResourceCollection < BuildResourceCollection
     item['fields'].find { |f| f['name'] == key }
   end
 
-  def notice(item)
+  def notice_url(item)
     item['xml']['href']
   end
 

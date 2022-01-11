@@ -10,7 +10,7 @@ RSpec.describe INPI::Marques::BuildResourceCollection, type: :build_resource do
           status: 'Marque enregistrée',
           depositaire: 'PSA AUTOMOBILES SA',
           clef: 'FMARK|4746787',
-          notice: 'https://opendata-pi.inpi.fr/inpi/marques/notice/FR4746787'
+          notice_url: 'https://opendata-pi.inpi.fr/inpi/marques/notice/FR4746787'
         },
         {
           id: '4553017',
@@ -18,7 +18,7 @@ RSpec.describe INPI::Marques::BuildResourceCollection, type: :build_resource do
           status: 'Marque enregistrée',
           depositaire: 'PSA AUTOMOBILES SA',
           clef: 'FMARK|4553017',
-          notice: 'https://opendata-pi.inpi.fr/inpi/marques/notice/FR4553017'
+          notice_url: 'https://opendata-pi.inpi.fr/inpi/marques/notice/FR4553017'
         }
       ]
     end
@@ -50,7 +50,7 @@ RSpec.describe INPI::Marques::BuildResourceCollection, type: :build_resource do
       expect(call.resource_collection).to all be_a(Resource)
     end
 
-    it 'Have limit amount of resources' do
+    it 'Has limit amount of resources' do
       expect(call.resource_collection.count).to eq(2)
     end
 
