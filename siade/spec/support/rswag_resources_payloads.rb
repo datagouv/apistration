@@ -44,10 +44,10 @@ module RSWagResourcesPayloads
             properties: add_required_keys_to_all_type_object(properties)
           }
         }.merge(
-          build_rswag_links(links)
-        ).merge(
-          build_rswag_meta(meta)
-        )
+            build_rswag_meta(meta)
+          ).merge(
+            build_rswag_links(links)
+          )
       },
       required: %w[data]
     }

@@ -295,6 +295,11 @@ inpi:
           title: 'Clef'
           type: 'string'
           example: 'FMARK|4313464'
+      links:
+        notice:
+          type: 'string'
+          example: 'https://opendata-pi.inpi.fr/inpi/marques/notice/FR4313464'
+          description: 'Lien vers la notice concernant ce dépôt de marque, au format XML'
     meta:
       count:
         title: 'Nombre de marques'

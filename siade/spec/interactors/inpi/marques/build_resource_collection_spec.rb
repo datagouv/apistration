@@ -9,14 +9,16 @@ RSpec.describe INPI::Marques::BuildResourceCollection, type: :build_resource do
           nom: 'H',
           status: 'Marque enregistrée',
           depositaire: 'PSA AUTOMOBILES SA',
-          clef: 'FMARK|4746787'
+          clef: 'FMARK|4746787',
+          notice: 'https://opendata-pi.inpi.fr/inpi/marques/notice/FR4746787'
         },
         {
           id: '4553017',
           nom: 'PSA GROUPE',
           status: 'Marque enregistrée',
           depositaire: 'PSA AUTOMOBILES SA',
-          clef: 'FMARK|4553017'
+          clef: 'FMARK|4553017',
+          notice: 'https://opendata-pi.inpi.fr/inpi/marques/notice/FR4553017'
         }
       ]
     end

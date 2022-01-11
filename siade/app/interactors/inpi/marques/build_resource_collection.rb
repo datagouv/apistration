@@ -17,7 +17,8 @@ class INPI::Marques::BuildResourceCollection < BuildResourceCollection
       nom: nom(item),
       status: status(item),
       depositaire: depositaire(item),
-      clef: clef(item)
+      clef: clef(item),
+      notice: notice(item)
     }
   end
 
@@ -49,6 +50,10 @@ class INPI::Marques::BuildResourceCollection < BuildResourceCollection
 
   def find_field_from_key(item, key)
     item['fields'].find { |f| f['name'] == key }
+  end
+
+  def notice(item)
+    item['xml']['href']
   end
 
   def limit
