@@ -66,7 +66,6 @@ TODO
 test.sh
 secret_token.rb
 api_secrets.yml
-insee_secrets.yml
 url_secrets.yml
 vcr_credentials.yml
 DUMP_MSA

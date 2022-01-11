@@ -39,7 +39,6 @@ test:
     - gem update --system
     - gem install bundler -v $BUNDLER_VERSION --no-document
     - bundle install --full-index --path=vendor
-    - bundle exec rake dev:init
   script:
     - ./bin/test_swagger.sh && bundle exec rspec spec/
   artifacts:

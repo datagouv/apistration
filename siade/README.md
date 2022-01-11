@@ -4,8 +4,6 @@ La documentation est séparée et se trouve sur doc.entreprise.api.gouv.fr
 
 ## Setup Dev environment
 
-    $ rake dev:init
-
 Il est nécessaire d'avoir Redis d'installé pour l'environnement de dévelopment
 (pas nécessaire pour les tests)
 
