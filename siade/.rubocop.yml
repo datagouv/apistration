@@ -117,6 +117,10 @@ Naming/MethodParameterName:
 RSpec/NestedGroups:
   Max: 5
 
+RSpec/ScatteredSetup:
+  Exclude:
+    - "spec/requests/api/v3_and_more/**/*_spec.rb"
+
 Naming/VariableNumber:
   EnforcedStyle: snake_case
 
