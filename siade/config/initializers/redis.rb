@@ -1,1 +1,1 @@
-Redis.current = Redis.new(url: Rails.configuration.redis_database)
+Redis.current = Redis.new(url: ENV['REDIS_DATABASE_URL'] || 'redis://localhost:6379/0')

@@ -56,6 +56,7 @@ set :shared_files, fetch(:shared_files, []).push(*%w[
   config/jwt_blacklist.yml
   config/jwt_whitelist.yml
   config/master.key
+  config/initializers/redis.rb
 ])
 
 # This task is the environment that is loaded for all remote run commands, such as

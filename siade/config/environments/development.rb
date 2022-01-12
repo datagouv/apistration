@@ -53,7 +53,4 @@ Rails.application.configure do
   config.logstasher.enabled = true
   config.logstasher.suppress_app_log = false
   config.logstasher.job_enabled = false
-
-  # Redis
-  config.redis_database = ENV['REDIS_DATABASE_URL'] || 'redis://localhost:6379/0'
 end
