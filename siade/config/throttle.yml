@@ -62,6 +62,7 @@ shared:
       - { controller: 'api/v3_and_more/insee/sieges_diffusables_unites_legales', action: 'show' }
       - { controller: 'api/v3_and_more/probtp/conformites_cotisations_retraite', action: 'show' }
       - { controller: 'api/v3_and_more/dgfip/liasses_fiscales/declarations', action: 'show' }
+      - { controller: 'api/v3_and_more/msa/conformites_cotisations', action: 'show' }
     limit: 250
     period: 60
   very_low_latency_json_resources:

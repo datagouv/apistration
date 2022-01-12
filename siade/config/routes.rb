@@ -109,6 +109,10 @@ Rails.application.routes.draw do
       get 'associations/:siret_or_rna' => '/api/v3_and_more/mi/associations#show'
     end
 
+    namespace :msa do
+      get 'conformites_cotisations/:siret' => '/api/v3_and_more/msa/conformites_cotisations#show'
+    end
+
     namespace :probtp do
       get 'attestations_cotisations_retraite/:siret' => '/api/v3_and_more/probtp/attestations_cotisation_retraite#show'
       get 'conformites_cotisations_retraite/:siret' => '/api/v3_and_more/probtp/conformites_cotisations_retraite#show'

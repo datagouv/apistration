@@ -3697,6 +3697,143 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/UnprocessableEntity"
+  "/v3/msa/conformites_cotisations/{siret}":
+    get:
+      summary: Status des cotisations de sécurité sociale agricole
+      tags:
+      - Attestations sociales et fiscales
+      parameters:
+      - name: siret
+        in: path
+        description: Siret de l'établissement
+        examples:
+          siret_octo_technology:
+            value: '41816609600069'
+            summary: SIRET Octo Technology
+          siret_non_diffusible:
+            value: '00557246600026'
+            summary: SIRET établissement non diffusible
+          siret_agefiph:
+            value: '39332832300059'
+            summary: SIRET pour AGEFIPH
+          siret_msa:
+            value: '81104725700019'
+            summary: SIRET pour MSA
+          siret_probtp:
+            value: '43841606700017'
+            summary: SIRET pour ProBTP
+          siret_agence_bio:
+            value: '48311105000025'
+            summary: SIRET pour l'Agence Bio
+          siret_qualibat:
+            value: '78824266700020'
+            summary: SIRET pour Qualibat
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
+        required: true
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '123456789'
+        required: true
+        schema:
+          type: string
+      - name: object
+        in: query
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
+        required: true
+        schema:
+          type: string
+      security:
+      - jwt_bearer_token: []
+      description: Savoir si une entreprise est à jour de ses cotisations sociales
+        auprès de la sécurité sociale agricole (MSA).
+      responses:
+        '403':
+          description: Accès interdit
+        '200':
+          description: Entreprise trouvée
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '38069910800011'
+                      type:
+                        type: string
+                        example: conformite
+                        enum:
+                        - conformite
+                      attributes:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            title: Status
+                            description: "Détermine le status des cotisations, les
+                              valeurs possibles: \n \n * up_to_date : l'entreprise
+                              est à jour de ses cotisations \n * outdated : l'entreprise
+                              n'est pas à jour de ses cotisations \n * under_investigation
+                              : l'entreprise est en cours d'analyse par un agent de
+                              la MSA"
+                            enum:
+                            - up_to_date
+                            - outdated
+                            - under_investigation
+                        required:
+                        - status
+                    required:
+                    - id
+                    - type
+                    - attributes
+                required:
+                - data
+        '404':
+          description: Non trouvée
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/NotFound"
   "/v3/probtp/attestations_cotisations_retraite/{siret}":
     get:
       summary: Cotisations retraite bâtiment

@@ -1,0 +1,52 @@
+require 'swagger_helper'
+
+RSpec.describe 'MSA: Conformitescotisations', type: %i[request swagger] do
+  path '/v3/msa/conformites_cotisations/{siret}' do
+    get SwaggerInformation.get('msa.conformites_cotisations.title') do
+      tags(*SwaggerInformation.get('msa.conformites_cotisations.tags'))
+
+      parameter_siret
+      common_action_attributes
+
+      unauthorized_request do
+        let(:siret) { valid_siret(:msa) }
+      end
+
+      forbidden_request do
+        let(:siret) { valid_siret(:msa) }
+      end
+
+      describe 'with valid mandatory params', valid: true do
+        response '200', 'Entreprise trouvée' do
+          before do
+            mock_msa_cotisations(siret, :up_to_date)
+          end
+
+          description SwaggerInformation.get('msa.conformites_cotisations.description')
+
+          rate_limit_headers
+
+          schema build_rswag_response(
+            id: valid_siret(:msa),
+            type: 'conformite',
+            attributes: SwaggerInformation.get('msa.conformites_cotisations.attributes')
+          )
+
+          run_test!
+        end
+
+        response '404', 'Non trouvée' do
+          before do
+            mock_msa_cotisations(siret, :unknown)
+          end
+
+          let(:siret) { not_found_siret(:msa) }
+
+          schema '$ref' => '#/components/schemas/NotFound'
+
+          run_test!
+        end
+      end
+    end
+  end
+end

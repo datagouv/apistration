@@ -979,6 +979,29 @@ mi:
         type: "string"
         example: "1955-01-01"
 
+msa:
+  conformites_cotisations:
+    title: "Status des cotisations de sécurité sociale agricole"
+    description: "Savoir si une entreprise est à jour de ses cotisations sociales auprès de la sécurité sociale agricole (MSA)."
+    tags:
+      - "Attestations sociales et fiscales"
+    attributes:
+      status:
+        type: "string"
+        title: "Status"
+        description: "Détermine le status des cotisations, les valeurs possibles:
+          \n
+          \n
+          * up_to_date : l'entreprise est à jour de ses cotisations
+          \n
+          * outdated : l'entreprise n'est pas à jour de ses cotisations
+          \n
+          * under_investigation : l'entreprise est en cours d'analyse par un agent de la MSA"
+        enum:
+          - up_to_date
+          - outdated
+          - under_investigation
+
 probtp:
   attestation_cotisation_retraite:
     title: "Cotisations retraite bâtiment"
