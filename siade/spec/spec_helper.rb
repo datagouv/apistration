@@ -122,6 +122,8 @@ RSpec.configure do |config|
   config.include ResponsesHelper, type: :request
   config.include CommonErrorsMessagesHelpers
 
+  config.include ProviderStubs::MSACotisations
+
   if ENV['MOCK_CALL_SYSTEM_FOR_MEMORY_ERROR']
     config.include MockCallSystemForCi
 
