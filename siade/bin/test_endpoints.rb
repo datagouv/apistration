@@ -170,7 +170,7 @@ endpoints = <<STR
   http_path: '/v3/mi/associations/77571979202650'
 
 - name: '[V3] ProBTP Attestations cotisations retraite'
-  http_path: '/v3/probtp/attestations_cotisation_retraite/43841606700017'
+  http_path: '/v3/probtp/attestations_cotisations_retraite/43841606700017'
 
 - name: '[V3] RNM Entreprises'
   http_path: '/v3/rnm/entreprises/301123626'
