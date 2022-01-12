@@ -14,4 +14,11 @@ RSpec.describe SIADE::V2::Responses::CertificatsRGEADEME, type: :provider_respon
     its(:errors)    { is_expected.to have_error('Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel') }
     its(:http_code) { is_expected.to eq(404) }
   end
+
+  context 'when there is data but no domaines nor certifications', vcr: { cassette_name: 'ademe/rge/with_invalid_siret' } do
+    let(:siret) { '79228853200015' }
+
+    its(:errors)    { is_expected.to have_error('Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel') }
+    its(:http_code) { is_expected.to eq(404) }
+  end
 end
