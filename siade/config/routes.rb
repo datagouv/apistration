@@ -101,6 +101,7 @@ Rails.application.routes.draw do
       get 'sirene/etablissements/diffusibles/:siret' => '/api/v3_and_more/insee/etablissements_diffusables#show'
 
       get 'sirene/etablissements/:siret/adresse' => '/api/v3_and_more/insee/adresses_etablissements#show'
+      get 'sirene/etablissements/diffusibles/:siret/adresse' => '/api/v3_and_more/insee/adresses_etablissements_diffusables#show'
     end
 
     namespace :mi do

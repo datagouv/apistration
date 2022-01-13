@@ -314,7 +314,7 @@ insee:
     description: "Adresse de l'établissement présente dans le répertoire Sirene."
     tags:
       - "Informations générales"
-    attributes:
+    attributes: &insee_adresse_etablissement_attributes
       numero_voie:
         title: "Numéro dans la voie"
         type: "string"
@@ -423,6 +423,12 @@ insee:
         example: 'https://entreprises.api.gouv.fr/api/v3/insee/etablissements/13002526500013'
         description: "Lien vers la ressource établissement correspondant à cette adresse d'établissement"
 
+  adresse_etablissement_diffusable:
+    title: "Adresse d'un établissement diffusible"
+    description: "Adresse de l'établissement diffusible présente dans le répertoire Sirene."
+    tags:
+      - "Informations générales"
+    attributes: *insee_adresse_etablissement_attributes
 
   unite_legale:
     title: "Données de références d'une unité légale"
