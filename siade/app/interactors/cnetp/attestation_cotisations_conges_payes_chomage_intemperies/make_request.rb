@@ -2,7 +2,7 @@ class CNETP::AttestationCotisationsCongesPayesChomageIntemperies::MakeRequest < 
   protected
 
   def request_uri
-    URI('https://cnetp_domain.gouv.fr/webservice/doc/attestations/entreprises')
+    URI("#{cnetp_domain}/webservice/doc/attestations/entreprises")
   end
 
   def request_params
@@ -19,6 +19,10 @@ class CNETP::AttestationCotisationsCongesPayesChomageIntemperies::MakeRequest < 
   end
 
   private
+
+  def cnetp_domain
+    Siade.credentials[:cnetp_domain]
+  end
 
   def siren
     context.params[:siren]

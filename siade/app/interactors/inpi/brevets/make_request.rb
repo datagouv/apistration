@@ -15,7 +15,7 @@ class INPI::Brevets::MakeRequest < MakeRequest::Get
   private
 
   def inpi_domain_opendata
-    'https://opendata-pi.inpi.fr'
+    Siade.credentials[:inpi_domain_opendata]
   end
 
   def siren

@@ -2,7 +2,7 @@ class FNTP::CarteProfessionnelleTravauxPublics::MakeRequest < MakeRequest::Get
   protected
 
   def request_uri
-    URI.parse("https://fntp_domain.gouv.fr/rip/sgmap/#{siren}/cartepro")
+    URI.parse("#{fntp_domain}/rip/sgmap/#{siren}/cartepro")
   end
 
   def set_headers(request)
@@ -17,6 +17,10 @@ class FNTP::CarteProfessionnelleTravauxPublics::MakeRequest < MakeRequest::Get
   end
 
   private
+
+  def fntp_domain
+    Siade.credentials[:fntp_domain]
+  end
 
   def siren
     context.params[:siren]

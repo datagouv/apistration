@@ -16,6 +16,10 @@ class PROBTP::MakeRequest < MakeRequest::Post
     }
   end
 
+  def probtp_domain
+    Siade.credentials[:probtp_domain]
+  end
+
   private
 
   def key
