@@ -57,6 +57,7 @@ shared:
       - { controller: 'api/v3_and_more/insee/etablissements_diffusables', action: 'show' }
       - { controller: 'api/v3_and_more/insee/adresses_etablissements', action: 'show' }
       - { controller: 'api/v3_and_more/insee/sieges_unites_legales', action: 'show' }
+      - { controller: 'api/v3_and_more/insee/sieges_diffusables_unites_legales', action: 'show' }
       - { controller: 'api/v3_and_more/probtp/conformites_cotisations_retraite', action: 'show' }
       - { controller: 'api/v3_and_more/dgfip/liasses_fiscales/declarations', action: 'show' }
     limit: 250

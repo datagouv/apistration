@@ -95,6 +95,7 @@ Rails.application.routes.draw do
       get 'sirene/unites_legales/diffusibles/:siren' => '/api/v3_and_more/insee/unites_legales_diffusables#show'
 
       get 'sirene/unites_legales/:siren/siege' => '/api/v3_and_more/insee/sieges_unites_legales#show'
+      get 'sirene/unites_legales/diffusibles/:siren/siege' => '/api/v3_and_more/insee/sieges_diffusables_unites_legales#show'
 
       get 'sirene/etablissements/:siret' => '/api/v3_and_more/insee/etablissements#show'
       get 'sirene/etablissements/diffusibles/:siret' => '/api/v3_and_more/insee/etablissements_diffusables#show'

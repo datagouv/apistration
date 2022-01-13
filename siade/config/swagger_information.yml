@@ -799,6 +799,12 @@ insee:
     tags:
       - "Informations générales"
 
+  siege_diffusable_unite_legale:
+    title: "Données de références du siège d'une unité légale diffusible"
+    description: "Obtenir des informations générales concernant le siège d'une unité légale diffusable du répertoire Sirene."
+    tags:
+      - "Informations générales"
+
 mi:
   association:
     title: "Informations déclaratives d'une association"
