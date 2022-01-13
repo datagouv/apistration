@@ -12,16 +12,14 @@ class INPI::Brevets::BuildResourceCollection < BuildResourceCollection
   end
 
   def resource_attributes(item)
-    @item = item
-
     {
-      id: numero_publication,
-      titre: find_field_from_key('TIT')['value'],
-      date_publication: date_publication,
-      date_depot: date_depot,
-      code_zone: code_zone,
-      numero_brevet: numero_brevet,
-      categorie_publication: categorie_publication
+      id: numero_publication(item),
+      titre: titre(item),
+      date_publication: date_publication(item),
+      date_depot: date_depot(item),
+      code_zone: code_zone(item),
+      numero_brevet: numero_brevet(item),
+      categorie_publication: categorie_publication(item)
     }
   end
 
@@ -31,46 +29,48 @@ class INPI::Brevets::BuildResourceCollection < BuildResourceCollection
     json_body['results'].first(limit)
   end
 
-  def fields
-    @fields ||= @item['fields']
-  end
+  def find_field_from_key(item, key)
+    fields = item['fields']
 
-  def find_field_from_key(key)
     fields.find { |f| f['name'] == key }
   end
 
-  def numero_publication_hash
-    @numero_publication_hash ||= Ox.load(numero_publication_as_xml, mode: :hash)
+  def numero_publication_hash(item)
+    Ox.load(numero_publication_as_xml(item), mode: :hash)
   end
 
-  def numero_publication_as_xml
-    @numero_publication_as_xml ||= find_field_from_key('PUBN')['value']
+  def numero_publication_as_xml(item)
+    find_field_from_key(item, 'PUBN')['value']
   end
 
-  def code_zone
-    numero_publication_hash[:country]
+  def code_zone(item)
+    numero_publication_hash(item)[:country]
   end
 
-  def numero_brevet
-    numero_publication_hash[:'doc-number']
+  def numero_brevet(item)
+    numero_publication_hash(item)[:'doc-number']
   end
 
-  def categorie_publication
-    numero_publication_hash[:kind]
+  def categorie_publication(item)
+    numero_publication_hash(item)[:kind]
   end
 
-  def numero_publication
-    code_zone + numero_brevet + categorie_publication
+  def numero_publication(item)
+    code_zone(item) + numero_brevet(item) + categorie_publication(item)
   end
 
-  def date_publication
-    date = find_field_from_key('PUBD')['value']
+  def titre(item)
+    find_field_from_key(item, 'TIT')['value']
+  end
+
+  def date_publication(item)
+    date = find_field_from_key(item, 'PUBD')['value']
 
     normalized_date(date)
   end
 
-  def date_depot
-    date = find_field_from_key('DEPD')['value']
+  def date_depot(item)
+    date = find_field_from_key(item, 'DEPD')['value']
 
     normalized_date(date)
   end
