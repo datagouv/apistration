@@ -694,7 +694,7 @@ insee:
     description: "Obtenir des informations générales concernant un établissement du répertoire Sirene."
     tags:
       - "Informations générales"
-    attributes:
+    attributes: &insee_etablissement_attributes
       siege_social:
         type: 'boolean'
         example: true
@@ -775,6 +775,23 @@ insee:
 
     meta:
       date_derniere_mise_a_jour: *insee_date_derniere_mise_a_jour
+
+  etablissement_diffusable:
+    title: "Données de référence d'un établissement diffusible"
+    description: "Obtenir des informations générales concernant un établissement diffusible du répertoire Sirene."
+    tags:
+      - "Informations générales"
+    attributes:
+      <<: *insee_etablissement_attributes
+      diffusable_commercialement:
+        title: "Diffusable commercialement"
+        type: 'boolean'
+        example: true
+        enum:
+          - true
+        description: "Détermine si l'établissement est un établissement
+          non-diffusible. Cette valeur est toujours à true. Si vous voulez pouvoir récupérer des établissements
+          non-diffusible, référez-vous à la documentation du endpoint INSEE établissement"
 
   siege_unite_legale:
     title: "Données de références du siège d'une unité légale"

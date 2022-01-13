@@ -1,0 +1,47 @@
+require 'swagger_helper'
+
+RSpec.describe 'INSEE: Etablissement diffusibbles', type: %i[request swagger] do
+  path '/v3/insee/sirene/etablissements/diffusibles/{siret}' do
+    get SwaggerInformation.get('insee.etablissement_diffusable.title') do
+      tags(*SwaggerInformation.get('insee.etablissement_diffusable.tags'))
+
+      parameter_siret
+
+      common_action_attributes
+
+      unauthorized_request do
+        let(:siret) { sirets_insee_v3[:active_GE] }
+      end
+
+      forbidden_request do
+        let(:siret) { sirets_insee_v3[:active_GE] }
+      end
+
+      describe 'with valid mandatory params', valid: true do
+        response '200', 'Etablissement trouvé', vcr: { cassette_name: 'insee/siret/active_GE_with_token' } do
+          description SwaggerInformation.get('insee.etablissement_diffusable.description')
+
+          schema build_rswag_response(
+            id: sirets_insee_v3[:active_GE],
+            type: 'etablissement',
+            attributes: SwaggerInformation.get('insee.etablissement_diffusable.attributes'),
+            links: SwaggerInformation.get('insee.etablissement.links'),
+            meta: SwaggerInformation.get('insee.etablissement.meta')
+          )
+
+          rate_limit_headers
+
+          run_test!
+        end
+
+        response '404', 'Non trouvé', vcr: { cassette_name: 'insee/siret/non_existent_with_token' } do
+          let(:siret) { non_existent_siret }
+
+          schema '$ref' => '#/components/schemas/NotFound'
+
+          run_test!
+        end
+      end
+    end
+  end
+end
