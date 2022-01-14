@@ -992,6 +992,158 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+  "/v3/inpi/modeles/{siren}":
+    get:
+      summary: Modeles
+      tags:
+      - Propriété intellectuelle
+      parameters:
+      - name: context
+        in: query
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
+        required: true
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '123456789'
+        required: true
+        schema:
+          type: string
+      - name: object
+        in: query
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
+        required: true
+        schema:
+          type: string
+      - name: siren
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - jwt_bearer_token: []
+      description: |
+        Modèles déposés par l'entreprise:
+        Cet endpoint appelle les informations à partir d’un SIREN. Le SIREN étant une information facultative lors du dépôt de dossier à l’INPI, le taux de sirénage est donc incomplet.
+
+        Taux de sirénage des déposants (sur personnes morales FR) :
+
+        *Dessins & Modèles France : 50% ;
+        *Dessins & Modèles internationaux : 0% (dessins & modèles déposés à l’OMPI).
+      responses:
+        '403':
+          description: Accès interdit
+        '200':
+          description: Modeles trouvés
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          title: Identifiant
+                          description: 'Identifiant du modèle dans la base de l''INPI,
+                            constitué du code de l''office de dépôt (ex: FR), du numéro
+                            national de dépôt (ex: 20203928) et du numéro de référence
+                            (ex: 001) '
+                          type: string
+                          example: FR20203928-001
+                        numero_depot:
+                          title: Numéro national de dépôt
+                          description: Numéro national sous lequel le modèle est enregistré
+                          type: string
+                          example: '20203928'
+                        titre:
+                          title: Titre
+                          description: Titre du modèle
+                          type: string
+                          example: Véhicule automobile, vues de détails
+                        total_representations:
+                          title: Représentations totales
+                          description: Nombre de représentations (vues) du modèle
+                          type: string
+                          example: '7'
+                        deposant:
+                          title: Déposant
+                          description: Nom de l'entité ayant déposé le modèle
+                          type: string
+                          example: PSA AUTOMOBILES, SA
+                        date_depot:
+                          title: Date de dépôt
+                          description: Date à laquelle le modèle a été déposé
+                          type: string
+                          example: '2015-12-14'
+                        date_publication:
+                          title: Date de publication
+                          description: Date de publication du modèle
+                          type: string
+                          example: '2015-12-14'
+                        classe:
+                          title: Code de classification
+                          description: Code de classification du modèle, sur 4 chiffres
+                          type: string
+                          example: '2606'
+                        reference:
+                          title: Numéro de réference
+                          description: Numéro de référence du modèle par entité, sur
+                            trois chiffres. Le premier modèle d'une entité est numéroté
+                            001, le second 002, etc.
+                          type: string
+                          example: '001'
+                  links:
+                    type: object
+                    properties:
+                      notice:
+                        type: string
+                        example: https://opendata-pi.inpi.fr/inpi/modeles/notice/FR20203928?ref=006
+                        description: Lien vers la notice concernant ce dépôt de modèle,
+                          au format XML
+                    required:
+                    - notice
+                required:
+                - data
+        '404':
+          description: Modèles non trouvés
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/NotFound"
   "/v3/insee/sirene/etablissements/{siret}/adresse":
     get:
       summary: Adresse de l'établissement
