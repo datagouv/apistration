@@ -7,7 +7,7 @@ RSpec.describe MaintenanceError, type: :error do
     subject { described_class.new('INSEE').detail }
 
     it 'has start and end time' do
-      expect(subject).to match(/02:00.*05:00/)
+      expect(subject).to match(/03:00.*04:00/)
     end
   end
 
@@ -25,7 +25,7 @@ RSpec.describe MaintenanceError, type: :error do
     end
 
     it 'has a retry_in key, which specifies in seconds when maintenance is off' do
-      expect(subject[:retry_in]).to eq(2.hours.to_i)
+      expect(subject[:retry_in]).to eq(1.hour.to_i)
     end
   end
 end
