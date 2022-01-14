@@ -39,12 +39,11 @@ RSpec.describe SIADE::V2::Drivers::GenericDriver do
     FakeDriverNoPlaceholder
   end
 
-  # Needed so the default_to_nil rescued call  does not look for a request attribute into fake_driver*
   before do
     allow_any_instance_of(SIADE::V2::Drivers::GenericDriver).to receive(:success?).and_return(true)
   end
 
-  describe 'Placeholder' do
+  describe 'when a placeholder is not expected' do
     subject { fake_driver_no_placeholder.new }
 
     it 'returns the correct value when driver works correctly and no placeholder is expected' do
