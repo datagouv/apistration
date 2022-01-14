@@ -1,6 +1,6 @@
 RSpec.describe SIADE::V2::Retrievers::GenericInformationRetriever do
   let!(:fake_retriever) do
-    class FakeDriver < SIADE::V2::Drivers::GenericDriver
+    class FakeDriverForGenericInformationRetriever < SIADE::V2::Drivers::GenericDriver
       default_to_nil_raw_fetching_methods :info_fail_placeholder
 
       def initialize(hash)
@@ -17,7 +17,7 @@ RSpec.describe SIADE::V2::Retrievers::GenericInformationRetriever do
     end
 
     class FakeRetriever < SIADE::V2::Retrievers::GenericInformationRetriever
-      register_driver :fake_driver, class_name: FakeDriver, init_with: :fake, init_options: :driver_options
+      register_driver :fake_driver, class_name: FakeDriverForGenericInformationRetriever, init_with: :fake, init_options: :driver_options
 
       fetch_attributes_through_driver :fake_driver, :info_fail_placeholder
 
