@@ -154,6 +154,9 @@ endpoints = <<STR
 - name: '[V3] INPI Marques'
   http_path: '/v3/inpi/marques/542065479'
 
+- name: '[V3] INPI Modeles'
+  http_path: '/v3/inpi/modeles/542065479'
+
 - name: '[V3] INSEE Etablissements'
   http_path: '/v3/insee/sirene/etablissements/30613890002979'
 
