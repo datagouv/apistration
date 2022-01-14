@@ -1,6 +1,4 @@
 class API::V2::BilansEntreprisesBDFController < API::V2::BaseController
-  before_action :check_maintenance
-
   def show
     authorize :bilans_entreprise_bdf
 
@@ -16,14 +14,6 @@ class API::V2::BilansEntreprisesBDFController < API::V2::BaseController
   end
 
   private
-
-  def check_maintenance
-    maintenance_service = MaintenanceService.new('Banque de France')
-
-    return unless maintenance_service.on?
-
-    render error_json(MaintenanceError.new('Banque de France'), status: 502)
-  end
 
   def siren
     params.require(:siren)

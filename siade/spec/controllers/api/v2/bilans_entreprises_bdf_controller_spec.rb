@@ -1,10 +1,4 @@
 RSpec.describe API::V2::BilansEntreprisesBDFController, type: :controller do
-  before do
-    allow_any_instance_of(MaintenanceService).to receive(:on?).and_return(maintenance)
-  end
-
-  let(:maintenance) { false }
-
   it_behaves_like 'unauthorized'
   it_behaves_like 'forbidden'
   it_behaves_like 'unprocessable_entity'
@@ -95,26 +89,6 @@ RSpec.describe API::V2::BilansEntreprisesBDFController, type: :controller do
           end
         end
       end
-    end
-  end
-
-  describe 'when endpoint is in maintenance' do
-    let(:maintenance) { true }
-
-    let(:siren) { valid_siren(:bilan_entreprise_bdf) }
-    let(:token) { yes_jwt }
-
-    before do
-      get :show, params: { siren: siren, token: token, error_format: 'json_api' }.merge(mandatory_params)
-    end
-
-    it 'returns 502 with maintenance message and retry_in in meta' do
-      expect(response.code.to_i).to eq 502
-
-      json_errors = JSON.parse(response.body)['errors']
-
-      expect(json_errors[0]['title']).to eq('Maintenance du fournisseur de données')
-      expect(json_errors[0]['meta']).to have_key('retry_in')
     end
   end
 end

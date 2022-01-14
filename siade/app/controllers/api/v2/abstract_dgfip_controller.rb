@@ -1,6 +1,5 @@
 class API::V2::AbstractDGFIPController < API::V2::BaseController
   before_action :authorize_resource
-  before_action :check_maintenance
   before_action :authenticate_dgfip_service
 
   def authorize_resource
@@ -9,14 +8,6 @@ class API::V2::AbstractDGFIPController < API::V2::BaseController
 
   def resource_scope
     fail NotImplementedError
-  end
-
-  def check_maintenance
-    maintenance_service = MaintenanceService.new('DGFIP')
-
-    return unless maintenance_service.on?
-
-    render error_json(MaintenanceError.new('DGFIP'), status: 502)
   end
 
   def authenticate_dgfip_service
