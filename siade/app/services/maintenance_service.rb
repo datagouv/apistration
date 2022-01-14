@@ -7,6 +7,7 @@ class MaintenanceService
 
   def on?
     provider_config.present? &&
+      valid_day? &&
       maintenance_windows.any? { |maintenance_window| maintenance_window.cover?(now) }
   end
 
@@ -29,6 +30,29 @@ class MaintenanceService
   end
 
   private
+
+  def valid_day?
+    everyday? ||
+      days.any? { |day| day == today }
+  end
+
+  def everyday?
+    no_days_entry?
+  end
+
+  def no_days_entry?
+    provider_config[:days].blank?
+  end
+
+  def days
+    provider_config[:days].map do |day|
+      Date.parse(day)
+    end
+  end
+
+  def today
+    @today ||= Time.zone.today
+  end
 
   def maintenance_windows
     if from_hour > to_hour

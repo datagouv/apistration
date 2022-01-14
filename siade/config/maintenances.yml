@@ -17,6 +17,12 @@ test:
   'window_across_two_day':
     from_hour: '23:00'
     to_hour:  '08:00'
+  'days':
+    from_hour: '08:00'
+    to_hour:  '19:00'
+    days:
+      - '2021-01-14'
+      - '2021-01-15'
   'INSEE':
     from_hour: '02:00'
     to_hour: '05:00'

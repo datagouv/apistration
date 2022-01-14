@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe MaintenanceService, type: :service do
   let(:instance) { described_class.new(provider) }
   let(:beginning_of_day) { Time.zone.now.beginning_of_day }
@@ -69,6 +67,42 @@ RSpec.describe MaintenanceService, type: :service do
           end
 
           it { is_expected.to eq true }
+        end
+      end
+    end
+
+    context 'with a valid provider which has a days key' do
+      let(:provider) { 'days' }
+
+      context 'when it is not a valid day' do
+        let(:day) { Date.parse('2021-02-14') }
+
+        context 'when it is a maintenance window' do
+          before do
+            Timecop.freeze(day + 12.hours)
+          end
+
+          it { is_expected.to eq false }
+        end
+      end
+
+      context 'when it is a valid day' do
+        let(:day) { Date.parse('2021-01-14') }
+
+        context 'when it is a maintenance window' do
+          before do
+            Timecop.freeze(day + 12.hours)
+          end
+
+          it { is_expected.to eq true }
+        end
+
+        context 'when it is not a maintenance window' do
+          before do
+            Timecop.freeze(day + 1.hour)
+          end
+
+          it { is_expected.to eq false }
         end
       end
     end
