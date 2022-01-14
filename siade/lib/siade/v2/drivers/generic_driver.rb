@@ -2,6 +2,14 @@ class SIADE::V2::Drivers::GenericDriver
   extend Forwardable
   include SIADE::V2::Utilities::UnprocessableEntityHelpers
 
+  class ::ProviderInMaintenance < StandardError
+    attr_reader :provider_name
+
+    def initialize(provider_name)
+      @provider_name = provider_name
+    end
+  end
+
   attr_accessor :placeholder_to_nil
 
   def provider_name
@@ -17,6 +25,7 @@ class SIADE::V2::Drivers::GenericDriver
   end
 
   def perform_request
+    handle_maintenance
     request.perform
     check_response
     self
@@ -97,6 +106,16 @@ class SIADE::V2::Drivers::GenericDriver
   end
 
   private
+
+  def handle_maintenance
+    if in_maintenance?
+      raise ::ProviderInMaintenance.new(provider_name)
+    end
+  end
+
+  def in_maintenance?
+    MaintenanceService.new(provider_name).on?
+  end
 
   def set_error_message_404
     (@errors ||= []) << NotFoundError.new(provider_name)

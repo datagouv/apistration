@@ -1,4 +1,20 @@
 RSpec.describe SIADE::V2::Drivers::GenericDriver do
+  let(:fake_driver) do
+    class FakeDriver < SIADE::V2::Drivers::GenericDriver
+      def provider_name
+        'Dummy provider'
+      end
+
+      def check_response; end
+
+      def request
+        OpenStruct.new(perform: true)
+      end
+    end
+
+    FakeDriver
+  end
+
   let(:fake_driver_placeholder) do
     class FakeDriverPlaceholder < SIADE::V2::Drivers::GenericDriver
       default_to_nil_raw_fetching_methods :info_fail_placeholder
@@ -41,6 +57,34 @@ RSpec.describe SIADE::V2::Drivers::GenericDriver do
 
   before do
     allow_any_instance_of(SIADE::V2::Drivers::GenericDriver).to receive(:success?).and_return(true)
+  end
+
+  describe 'monitoring' do
+    subject { fake_driver.new.perform_request }
+
+    before do
+      allow_any_instance_of(MaintenanceService).to receive(:on?).and_return(maintenance)
+    end
+
+    context 'when it is off' do
+      let(:maintenance) { false }
+
+      it 'does not raise error' do
+        expect {
+          subject
+        }.not_to raise_error
+      end
+    end
+
+    context 'when it is on' do
+      let(:maintenance) { true }
+
+      it 'raises a ProviderInMaintenance error' do
+        expect {
+          subject
+        }.to raise_error(ProviderInMaintenance)
+      end
+    end
   end
 
   describe 'when a placeholder is not expected' do
