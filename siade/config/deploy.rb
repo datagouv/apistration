@@ -7,6 +7,7 @@ require 'colorize'
 ENV['domain'] || raise('no domain provided'.red)
 
 ENV['to'] ||= "sandbox"
+
 unless %w[development sandbox staging production].include?(ENV['to'])
   raise("target environment (#{ENV['to']}) not in the list")
 end
@@ -30,7 +31,7 @@ branch = ENV['branch'] || begin
                             when 'production'
                               'master'
                             when 'staging'
-                              'staging'
+                              'master'
                             when 'development', 'sandbox'
                               'develop'
                             end
@@ -39,10 +40,8 @@ branch = ENV['branch'] || begin
 set :branch, branch
 ensure!(:branch)
 
-print "Deploy to #{ENV['to']} environment\n".green
-print "Deploying branch #{branch} environment\n".yellow
+print "Deploying branch #{branch} to #{ENV['to']} environment\n".green
 
-# shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
 set :shared_dirs, fetch(:shared_dirs, []).push(*%w[
   log
   bin
@@ -78,7 +77,6 @@ end
 desc 'Deploys the current version to the server.'
 task :deploy do
   deploy do
-    comment %{DEPLOYING ON NEW INFRA}.yellow
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
     invoke :'git:clone'
