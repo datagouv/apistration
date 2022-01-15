@@ -3,6 +3,7 @@ require 'mina/rails'
 require 'mina/git'
 require 'mina/rbenv'
 require 'colorize'
+require 'securerandom'
 
 ENV['domain'] || raise('no domain provided'.red)
 
@@ -40,6 +41,15 @@ branch = ENV['branch'] || begin
 set :branch, branch
 ensure!(:branch)
 
+def samhain_db_update
+  samhain_listfile = "/tmp/listfile-#{SecureRandom.hex(48)}"
+
+  comment %{Updating Samhain signature database}
+  command %{find "/var/www/siade_#{ENV['to']}" >#{samhain_listfile}}
+  command %{sudo /usr/local/sbin/update-samhain-db.sh #{samhain_listfile}}
+  command %{rm -f #{samhain_listfile}}
+end
+
 print "Deploying branch #{branch} to #{ENV['to']} environment\n".green
 
 set :shared_dirs, fetch(:shared_dirs, []).push(*%w[
@@ -71,6 +81,7 @@ end
 # Put any custom commands you need to run at setup
 # All paths in `shared_dirs` and `shared_paths` will be created on their own.
 task :setup do
+  samhain_db_update
   # Production database has to be setup !
 end
 
@@ -88,6 +99,7 @@ task :deploy do
       invoke :'passenger'
     end
   end
+  samhain_db_update
 end
 
 task :passenger do
