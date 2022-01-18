@@ -58,7 +58,7 @@ RSpec.describe INPI::Modeles::BuildResourceCollection, type: :build_resource do
       expect(call.resource_collection).to all be_a(Resource)
     end
 
-    it 'Has limit amount of resources' do
+    it 'has limit amount of resources' do
       expect(call.resource_collection.count).to eq(2)
     end
 

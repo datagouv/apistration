@@ -18,7 +18,7 @@ RSpec.describe 'INPI: Modeles', type: %i[request swagger] do
       end
 
       describe 'with valid mandatory params', valid: true do
-        response '200', 'Modeles trouvés', vcr: { cassette_name: 'inpi/modeles/with_valid_siren' } do
+        response '200', 'Modèles trouvés', vcr: { cassette_name: 'inpi/modeles/with_valid_siren' } do
           description SwaggerInformation.get('inpi.modeles.description')
 
           rate_limit_headers
