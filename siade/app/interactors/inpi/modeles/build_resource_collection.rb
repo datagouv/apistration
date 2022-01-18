@@ -1,4 +1,6 @@
 class INPI::Modeles::BuildResourceCollection < BuildResourceCollection
+  include INPI::ResourceHelpers
+
   protected
 
   def items
@@ -76,17 +78,5 @@ class INPI::Modeles::BuildResourceCollection < BuildResourceCollection
 
   def reference(item)
     find_field_from_key(item, 'DesignReference')['value']
-  end
-
-  def find_field_from_key(item, key)
-    item['fields'].find { |f| f['name'] == key }
-  end
-
-  def normalized_date(date)
-    date.to_time.strftime('%Y-%m-%d')
-  end
-
-  def limit
-    context.params[:limit]
   end
 end

@@ -1,4 +1,6 @@
 class INPI::Brevets::BuildResourceCollection < BuildResourceCollection
+  include INPI::ResourceHelpers
+
   protected
 
   def items
@@ -73,13 +75,5 @@ class INPI::Brevets::BuildResourceCollection < BuildResourceCollection
     date = find_field_from_key(item, 'DEPD')['value']
 
     normalized_date(date)
-  end
-
-  def normalized_date(date)
-    date.to_time.strftime('%Y-%m-%d')
-  end
-
-  def limit
-    context.params[:limit]
   end
 end

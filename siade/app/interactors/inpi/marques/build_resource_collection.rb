@@ -1,4 +1,6 @@
 class INPI::Marques::BuildResourceCollection < BuildResourceCollection
+  include INPI::ResourceHelpers
+
   protected
 
   def items
@@ -48,15 +50,7 @@ class INPI::Marques::BuildResourceCollection < BuildResourceCollection
     find_field_from_key(item, 'ukey')['value']
   end
 
-  def find_field_from_key(item, key)
-    item['fields'].find { |f| f['name'] == key }
-  end
-
   def notice_url(item)
     item['xml']['href']
-  end
-
-  def limit
-    context.params[:limit]
   end
 end
