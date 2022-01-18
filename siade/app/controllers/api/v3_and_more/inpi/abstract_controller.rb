@@ -1,4 +1,4 @@
-class API::V3AndMore::INPI::LatestOpenDataController < API::V3AndMore::BaseController
+class API::V3AndMore::INPI::AbstractController < API::V3AndMore::BaseController
   attr_reader :organizer
 
   def call(organizer_klass)

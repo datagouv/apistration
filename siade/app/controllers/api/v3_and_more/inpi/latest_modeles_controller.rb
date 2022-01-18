@@ -1,4 +1,4 @@
-class API::V3AndMore::INPI::LatestModelesController < API::V3AndMore::INPI::LatestOpenDataController
+class API::V3AndMore::INPI::LatestModelesController < API::V3AndMore::INPI::AbstractController
   def show
     organizer_klass = ::INPI::Modeles
 
