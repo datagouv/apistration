@@ -1047,7 +1047,7 @@ paths:
         '403':
           description: Accès interdit
         '200':
-          description: Modeles trouvés
+          description: Modèles trouvés
           headers:
             RateLimit-Limit:
               schema:
@@ -1097,8 +1097,8 @@ paths:
                         total_representations:
                           title: Représentations totales
                           description: Nombre de représentations (vues) du modèle
-                          type: string
-                          example: '7'
+                          type: number
+                          example: 7
                         deposant:
                           title: Déposant
                           description: Nom de l'entité ayant déposé le modèle

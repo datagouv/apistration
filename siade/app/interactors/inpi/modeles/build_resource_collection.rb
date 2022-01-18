@@ -49,7 +49,9 @@ class INPI::Modeles::BuildResourceCollection < BuildResourceCollection
   end
 
   def total_representations(item)
-    find_field_from_key(item, 'TotalRepresentationSheet')['value']
+    total = find_field_from_key(item, 'TotalRepresentationSheet')['value']
+
+    total.to_i
   end
 
   def deposant(item)

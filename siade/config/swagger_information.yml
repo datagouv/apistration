@@ -340,8 +340,8 @@ inpi:
         total_representations:
           title: "Représentations totales"
           description: "Nombre de représentations (vues) du modèle"
-          type: "string"
-          example: "7"
+          type: "number"
+          example: 7
         deposant:
           title: "Déposant"
           description: "Nom de l'entité ayant déposé le modèle"
