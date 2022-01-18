@@ -848,6 +848,7 @@ paths:
                           example: A1
                 required:
                 - data
+                - meta
         '404':
           description: Brevets non trouvés
           content:
@@ -986,6 +987,7 @@ paths:
                     - notice
                 required:
                 - data
+                - meta
         '404':
           description: Marques non trouvées
           content:
@@ -1139,6 +1141,7 @@ paths:
                     - notice
                 required:
                 - data
+                - meta
         '404':
           description: Modèles non trouvés
           content:

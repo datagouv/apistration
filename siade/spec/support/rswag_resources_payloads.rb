@@ -49,7 +49,7 @@ module RSWagResourcesPayloads
       }.merge(
         build_rswag_links(links)
       ),
-      required: %w[data]
+      required: %w[data meta]
     }
   end
 
