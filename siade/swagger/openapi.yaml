@@ -1106,7 +1106,8 @@ paths:
                           example: PSA AUTOMOBILES, SA
                         date_depot:
                           title: Date de dépôt
-                          description: Date à laquelle le modèle a été déposé
+                          description: Date à laquelle le modèle a été déposé pour
+                            publication
                           type: string
                           example: '2015-12-14'
                         date_publication:
