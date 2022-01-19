@@ -15,14 +15,6 @@ class ValidateResponse < ApplicationInteractor
 
   protected
 
-  def invalid_json?
-    json_body
-
-    false
-  rescue JSON::ParserError
-    true
-  end
-
   def build_error(error_klass, message = nil)
     error_klass.new(context.provider_name, message)
   end
