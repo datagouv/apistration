@@ -28,7 +28,7 @@ class BuildResourceCollection < ApplicationInteractor
     raise NotImplementedError
   end
 
-  def resource_attributes
+  def resource_attributes(item)
     raise NotImplementedError
   end
 
