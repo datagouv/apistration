@@ -15,14 +15,14 @@ RSpec.describe SIADE::V2::Requests::Exercices, type: :provider_request do
     its(:errors) { is_expected.to have_error(invalid_siret_error_message) }
   end
 
-  context 'well formated request', vcr: { cassette_name: 'exercice_with_valid_siret' } do
+  context 'well formated request', vcr: { cassette_name: 'dgfip/chiffres_affaires/valid' } do
     let(:siret) { valid_siret(:exercice) }
 
     its(:http_code) { is_expected.to eq 200 }
     its(:errors) { is_expected.to be_empty }
   end
 
-  context 'when DGFIP respond with a 302 Found', vcr: { cassette_name: 'exercice_with_redirect_siret' } do
+  context 'when DGFIP respond with a 302 Found', vcr: { cassette_name: 'dgfip/chiffres_affaires/redirect' } do
     let(:siret) { out_of_scope_dgfip }
 
     context 'when the new URI is identical' do

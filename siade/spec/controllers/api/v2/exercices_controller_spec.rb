@@ -23,11 +23,11 @@ RSpec.describe API::V2::ExercicesController, type: :controller do
     context 'when user authenticates with valid token' do
       let(:token) { yes_jwt }
 
-      context 'when siret is not found', vcr: { cassette_name: 'exercice_with_not_found_siret' } do
+      context 'when siret is not found', vcr: { cassette_name: 'dgfip/chiffres_affaires/not_found' } do
         it_behaves_like 'not_found'
       end
 
-      context 'when siret triggers a 302 error from DGFIP (non-regression test)', vcr: { cassette_name: 'exercice_with_redirect_siret' } do
+      context 'when siret triggers a 302 error from DGFIP (non-regression test)', vcr: { cassette_name: 'dgfip/chiffres_affaires/redirect' } do
         let(:siret) { out_of_scope_dgfip }
 
         before do
@@ -43,7 +43,7 @@ RSpec.describe API::V2::ExercicesController, type: :controller do
         end
       end
 
-      context 'when siret is found', vcr: { cassette_name: 'exercice_with_valid_siret' } do
+      context 'when siret is found', vcr: { cassette_name: 'dgfip/chiffres_affaires/valid' } do
         before do
           get :show, params: { siret: siret, token: token, user_id: valid_dgfip_user_id }.merge(mandatory_params)
         end

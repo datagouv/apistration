@@ -4,13 +4,13 @@ RSpec.describe SIADE::V2::Drivers::Exercices, type: :provider_driver do
   let(:driver) { described_class.new(siret: siret, driver_options: options).perform_request }
   let(:options) { { user_id: valid_dgfip_user_id, cookie: 'lemondgfip=bf91ce99ea967a4e24fffc2ad76d9145_519c42a2f4f4d80a5a5ff060246caf12; domain=.dgfip.finances.gouv.fr; path=/' } }
 
-  context 'when siret is not found', vcr: { cassette_name: 'exercice_with_not_found_siret' } do
+  context 'when siret is not found', vcr: { cassette_name: 'dgfip/chiffres_affaires/not_found' } do
     let(:siret) { non_existent_siret }
 
     its(:http_code) { is_expected.to eq 404 }
   end
 
-  context 'when siret is valid', vcr: { cassette_name: 'exercice_with_valid_siret' } do
+  context 'when siret is valid', vcr: { cassette_name: 'dgfip/chiffres_affaires/valid' } do
     let(:siret) { valid_siret(:exercice) }
 
     its(:http_code) { is_expected.to eq 200 }
@@ -25,7 +25,7 @@ RSpec.describe SIADE::V2::Drivers::Exercices, type: :provider_driver do
     end
   end
 
-  context 'when the siret seems out of scope', vcr: { cassette_name: 'exercice_with_redirect_siret' } do
+  context 'when the siret seems out of scope', vcr: { cassette_name: 'dgfip/chiffres_affaires/redirect' } do
     let(:siret) { out_of_scope_dgfip }
 
     its(:http_code) { is_expected.to eq(502) }
