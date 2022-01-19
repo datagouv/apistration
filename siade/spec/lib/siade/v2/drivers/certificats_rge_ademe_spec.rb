@@ -13,7 +13,7 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEADEME, type: :provider_driver d
     its(:http_code) { is_expected.to eq(404) }
   end
 
-  context 'when data is found', vcr: { cassette_name: 'ademe/rge/with_valid_siret' } do
+  context 'when data is found (old payload)', vcr: { cassette_name: 'ademe/rge/with_valid_siret' } do
     let(:siret) { valid_siret(:rge_ademe) }
 
     describe '#qualifications' do
@@ -137,6 +137,67 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEADEME, type: :provider_driver d
           "Chauffe-Eau Thermodynamique",
         )
       end
+    end
+  end
+
+  context 'when data is found (new payload)', vcr: { cassette_name: 'ademe/rge/with_valid_siret_new_version' } do
+    let(:siret) { valid_siret(:rge_ademe) }
+    let(:instance) { described_class.new(siret: siret, user_params: { skip_pdf: true }) }
+
+    before do
+      instance.perform_request
+    end
+
+    describe '#domaines' do
+      subject { instance.domaines }
+
+      it do
+        expect(subject).to contain_exactly(
+          "Chauffage et/ou eau chaude solaire",
+          "Poêle ou insert bois",
+          "Chaudière bois",
+          "Pompe à chaleur : chauffage",
+          "Chauffe-Eau Thermodynamique",
+          "Chaudière condensation ou micro-cogénération gaz ou fioul",
+          "Radiateurs électriques, dont régulation."
+        )
+      end
+    end
+
+    describe '#qualifications' do
+      subject { instance.qualifications }
+
+      # rubocop:disable Metrics/BlockLength
+      it do
+        expect(subject).to contain_exactly(
+          a_hash_including({
+            nom: 'Efficacité énergétique - "ECO Artisan®" - Chauffagiste',
+            nom_certificat: 'QUALIBAT-RGE',
+            url_certificat: nil,
+          }),
+          a_hash_including({
+            nom: 'Efficacité énergétique - "ECO Artisan®" - Chauffagiste',
+            nom_certificat: 'QUALIBAT-RGE',
+            url_certificat: nil,
+          }),
+          a_hash_including({
+            nom: 'Qualisol - Pose de chauffe-eau solaire individuel (eau chaude solaire)',
+            nom_certificat: 'Qualisol CESI',
+            url_certificat: nil,
+          }),
+          a_hash_including({
+            nom: 'Qualibois module Eau - Pose d\'appareil de chauffage au bois indépendant (poêle et insert)',
+            nom_certificat: 'Qualibois module Eau',
+            url_certificat: nil,
+          }),
+          a_hash_including({
+            nom: 'QualiPAC Chauffage - Pose de chauffe-eau thermodynamique',
+            nom_certificat: 'QualiPAC Chauffage',
+            url_certificat: nil,
+          }),
+        )
+      end
+      # rubocop:enable Metrics/BlockLength
     end
   end
 

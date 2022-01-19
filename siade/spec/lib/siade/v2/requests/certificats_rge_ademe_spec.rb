@@ -15,6 +15,13 @@ RSpec.describe SIADE::V2::Requests::CertificatsRGEADEME, type: :provider_request
     its(:errors) { is_expected.to be_empty }
   end
 
+  context 'with a known siret for the provider (new version)', vcr: { cassette_name: 'ademe/rge/with_valid_siret_new_version' } do
+    let(:siret) { valid_siret(:rge_ademe) }
+
+    its(:http_code) { is_expected.to eq(200) }
+    its(:errors) { is_expected.to be_empty }
+  end
+
   context 'with an unknown siret for the provider', vcr: { cassette_name: 'ademe/rge/with_not_found_siret' } do
     let(:siret) { not_found_siret(:rge_ademe) }
 

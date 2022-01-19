@@ -20,7 +20,8 @@ class SIADE::V2::Drivers::CertificatsRGEADEME < SIADE::V2::Drivers::GenericDrive
   def check_response
     return if errors?
 
-    @certification_entities = json_body.deep_transform_keys { |key| key.parameterize(separator: '_') }.try(:[], 'company').values
+    @certification_entities = json_body.deep_transform_keys { |key| key.parameterize(separator: '_') }.try(:[], 'company')
+    @certification_entities = @certification_entities.values if @certification_entities.is_a?(Hash)
   end
 
   def qualifications
