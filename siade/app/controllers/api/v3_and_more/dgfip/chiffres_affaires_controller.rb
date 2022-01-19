@@ -1,0 +1,34 @@
+class API::V3AndMore::DGFIP::ChiffresAffairesController < API::V3AndMore::BaseController
+  def show
+    authorize :exercices
+
+    organizer = ::DGFIP::ChiffresAffaires.call(params: organizer_params)
+
+    if organizer.success?
+      render json: serializer_class.new(organizer.resource_collection, options(organizer)).serializable_hash,
+        status: extract_http_code(organizer)
+    else
+      render_errors(organizer)
+    end
+  end
+
+  private
+
+  def organizer_params
+    {
+      siret: params[:siret],
+      user_id: @authenticated_user.id
+    }
+  end
+
+  def options(organizer)
+    {
+      is_collection: true,
+      meta: organizer.meta
+    }
+  end
+
+  def serializer_module
+    ::DGFIP::ChiffresAffairesSerializer
+  end
+end
