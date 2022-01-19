@@ -1062,6 +1062,134 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+  "/v3/inpi/actes/{siren}":
+    get:
+      summary: Actes
+      tags:
+      - Informations générales
+      parameters:
+      - name: context
+        in: query
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
+        required: true
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '123456789'
+        required: true
+        schema:
+          type: string
+      - name: object
+        in: query
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
+        required: true
+        schema:
+          type: string
+      - name: siren
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - jwt_bearer_token: []
+      description: |
+        Obtenir les métadonnées sur les actes d’une entreprise tels que connus par les greffes et archivés à l’Institut National de Propriété Industrielle (INPI).
+        Ces actes comportent des informations générales, des informations sur le capital social et sa répartition, ou encore des informations sur les associés et tout ce qui est relatif à l’administration de la société.
+
+        Cet endpoint renvoie uniquement des métadonnées sur les actes, dont l’identifiant d’accès au fichier de téléchargement de l’Acte et du fichier de métadonnées associé. Pour récupérer les actes eux-mêmes, il faut utiliser l'endpoint /inpi/actes/{siren}/documents.
+      responses:
+        '403':
+          description: Accès interdit
+        '200':
+          description: Actes trouvés
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          title: ID Fichier
+                          description: Cet identifiant permet de retrouver le document
+                            dans l'archive ZIP, à l'aide du fichier "Response.json"
+                            permettant de faire lien entre cet ID et le nom du PDF
+                          type: string
+                          example: '24924080'
+                        siren:
+                          title: Numéro Siren
+                          description: Numéro SIREN de l'entreprise concernée par
+                            l'acte
+                          type: string
+                          example: '788242667'
+                        denomination_sociale:
+                          title: Dénomination sociale
+                          description: Dénomination sociale de l'entreprise concernée
+                            par l'acte
+                          type: string
+                          example: HERA CONSULTING
+                          nullable: true
+                        code_greffe:
+                          title: Code greffe
+                          description: Code identifiant le greffe ayant traité l'acte
+                          type: number
+                          example: 7454
+                        date_depot:
+                          title: Date dépot
+                          description: Date à laquelle a été déposé l'acte
+                          type: string
+                          example: '2017-06-16'
+                        nature_archive:
+                          title: Nature de l'archive de l'acte
+                          description: 'Chaine de caractères contenant une ou plusieurs
+                            lettres séparées par un tiret, explicitant de quel ou
+                            quelles catégories d''archives l''acte provient: A (actes
+                            de sociétés) R (ordonnances) et P (actes de personnes
+                            physiques)'
+                          type: string
+                          example: A-R
+                required:
+                - data
+        '404':
+          description: Actes non trouvés
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/NotFound"
   "/v3/inpi/brevets/{siren}":
     get:
       summary: Derniers brevets
@@ -1289,7 +1417,6 @@ paths:
                           example: A1
                 required:
                 - data
-                - meta
         '404':
           description: Brevets non trouvés
           content:
@@ -1428,7 +1555,6 @@ paths:
                     - notice
                 required:
                 - data
-                - meta
         '404':
           description: Marques non trouvées
           content:
@@ -1582,7 +1708,6 @@ paths:
                     - notice
                 required:
                 - data
-                - meta
         '404':
           description: Modèles non trouvés
           content:
