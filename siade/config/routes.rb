@@ -92,6 +92,8 @@ Rails.application.routes.draw do
     end
 
     namespace :inpi do
+      get 'actes/:siren' => '/api/v3_and_more/inpi/actes#show'
+
       get 'brevets/:siren' => '/api/v3_and_more/inpi/latest_brevets#show'
       get 'marques/:siren' => '/api/v3_and_more/inpi/latest_marques#show'
       get 'modeles/:siren' => '/api/v3_and_more/inpi/latest_modeles#show'
