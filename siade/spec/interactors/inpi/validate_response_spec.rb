@@ -52,7 +52,6 @@ RSpec.describe INPI::ValidateResponse, type: :validate_response do
     end
 
     context 'with a body containing nonsense' do
-      let(:code) { '200' }
       let(:body) { 'Nonsense' }
 
       it { is_expected.to be_a_failure }
