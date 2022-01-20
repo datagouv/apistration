@@ -23,7 +23,7 @@ RSpec.describe INPI::Marques, type: :retriever_organizer do
     it { is_expected.to be_a_failure }
   end
 
-  context 'with invalid siren', vcr: { cassette_name: 'inpi/marques/with_invalid_siren' } do
+  context 'with invalid siren' do
     let(:siren) { 'invalid siren' }
 
     it { is_expected.to be_a_failure }
