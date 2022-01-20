@@ -49,7 +49,7 @@ module RSWagResourcesPayloads
       }.merge(
         build_rswag_links(links)
       ),
-      required: %w[data meta]
+      required: build_rswag_collection_required_keys(meta)
     }
   end
 
@@ -129,6 +129,16 @@ module RSWagResourcesPayloads
 
     required << 'meta' if meta.present?
     required << 'links' if links.present?
+
+    required
+  end
+
+  def build_rswag_collection_required_keys(meta)
+    required = %w[
+      data
+    ]
+
+    required << 'meta' if meta.present?
 
     required
   end
