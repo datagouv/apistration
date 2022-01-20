@@ -20,7 +20,7 @@ test:
   'days':
     from_hour: '08:00'
     to_hour:  '19:00'
-    days:
+    dates:
       - '2021-01-14'
       - '2021-01-15'
   'INSEE':

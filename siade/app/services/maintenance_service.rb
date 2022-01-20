@@ -7,7 +7,7 @@ class MaintenanceService
 
   def on?
     provider_config.present? &&
-      valid_day? &&
+      valid_date? &&
       maintenance_windows.any? { |maintenance_window| maintenance_window.cover?(now) }
   end
 
@@ -31,22 +31,22 @@ class MaintenanceService
 
   private
 
-  def valid_day?
+  def valid_date?
     everyday? ||
-      days.any? { |day| day == today }
+      dates.any? { |date| date == today }
   end
 
   def everyday?
-    no_days_entry?
+    no_dates_entry?
   end
 
-  def no_days_entry?
-    provider_config[:days].blank?
+  def no_dates_entry?
+    provider_config[:dates].blank?
   end
 
-  def days
-    provider_config[:days].map do |day|
-      Date.parse(day)
+  def dates
+    provider_config[:dates].map do |date|
+      Date.parse(date)
     end
   end
 
