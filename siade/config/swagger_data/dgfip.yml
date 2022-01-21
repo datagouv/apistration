@@ -1,4 +1,14 @@
 dgfip:
+  attestations_fiscales:
+    title: "Attestation fiscale"
+    description: "Obtenir l’attestation fiscale, délivrée par la Direction générale des finances publiques, indiquant que l’entreprise est à jour de ses obligations fiscales."
+    tags:
+      - "Attestations sociales et fiscales"
+    document_url_properties:
+      title: "Lien vers l'attestation fiscale"
+      description: "Ce document est automatiquement supprimé au bout de 3 mois."
+      example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_fiscale_dgfip.pdf"
+
   liasses_fiscales:
     declarations:
       title: "Déclarations des liasses fiscales"

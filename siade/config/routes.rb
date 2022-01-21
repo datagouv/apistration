@@ -80,6 +80,7 @@ Rails.application.routes.draw do
     namespace :dgfip do
       get 'liasses_fiscales/declarations/:year/:siren' => '/api/v3_and_more/dgfip/liasses_fiscales/declarations#show'
       get 'chiffres_affaires/:siret' => '/api/v3_and_more/dgfip/chiffres_affaires#show'
+      get 'attestations_fiscales/:siren' => '/api/v3_and_more/dgfip/attestations_fiscales#show'
     end
 
     namespace :fabrique_numerique_ministeres_sociaux do
