@@ -16,7 +16,7 @@ class SIADE::V2::Responses::CertificatsRGEADEME < SIADE::V2::Responses::Generic
   def adapt_raw_response_code
     http_status = @raw_response.code.to_i
 
-    if http_status == 404 || empty_body? || body_without_valid_qualifications_nor_domaines?
+    if http_status == 404 || entity_without_id? || entity_without_valid_qualifications_or_domaines?
       set_error_message_for(404)
     else
       http_status
@@ -25,16 +25,20 @@ class SIADE::V2::Responses::CertificatsRGEADEME < SIADE::V2::Responses::Generic
 
   private
 
-  def empty_body?
-    json_body['Company'].is_a?(Array) &&
-      json_body['Company'][0]['id'].nil?
+  def payload
+    json_body['Company']
   end
 
-  def body_without_valid_qualifications_nor_domaines?
-    json_body['Company'].is_a?(Array) &&
-      !(
-        json_body['Company'][0]['domaines'].is_a?(Hash) &&
-          json_body['Company'][0]['qualifications'].is_a?(Hash)
-      )
+  def entity
+    payload[0]
+  end
+
+  def entity_without_id?
+    entity['id'].nil?
+  end
+
+  def entity_without_valid_qualifications_or_domaines?
+    entity['domaines'].empty? ||
+      entity['qualifications'].empty?
   end
 end

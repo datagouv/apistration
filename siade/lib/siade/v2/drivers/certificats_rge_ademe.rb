@@ -21,19 +21,12 @@ class SIADE::V2::Drivers::CertificatsRGEADEME < SIADE::V2::Drivers::GenericDrive
     return if errors?
 
     @certification_entities = json_body.deep_transform_keys { |key| key.parameterize(separator: '_') }.try(:[], 'company')
-    @certification_entities = @certification_entities.values if @certification_entities.is_a?(Hash)
   end
 
   def qualifications
-    certification_entities.each do |entity|
-      entity_qualifications = entity.try(:[], 'qualifications')
-
-      break if entity_qualifications.empty?
-
-      format_qualifications(entity_qualifications)
+    unique_qualifications.map do |qualification|
+      format_qualification(qualification)
     end
-
-    aggregated_qualifications
   rescue SocketError, OpenSSL::SSL::SSLError, OpenURI::HTTPError, Net::OpenTimeout
     handle_calypso_error
 
@@ -41,15 +34,26 @@ class SIADE::V2::Drivers::CertificatsRGEADEME < SIADE::V2::Drivers::GenericDrive
   end
 
   def domaines
-    certification_entities.each do |entity|
-      entity_domaines = entity.try(:[], 'domaines')
-      format_domaines(entity_domaines)
+    @domaines ||= unique_domaines.map do |domaine|
+      format_domaine(domaine)
     end
-
-    aggregated_domaines
   end
 
   private
+
+  def unique_qualifications
+    unique_entities('qualifications')
+  end
+
+  def unique_domaines
+    unique_entities('domaines')
+  end
+
+  def unique_entities(kind)
+    certification_entities.map do |entity|
+      entity[kind].values
+    end.flatten.uniq
+  end
 
   def skip_pdf?
     @skip_pdf
@@ -63,33 +67,15 @@ class SIADE::V2::Drivers::CertificatsRGEADEME < SIADE::V2::Drivers::GenericDrive
     response.json_body
   end
 
-  def format_qualifications(qualifs)
-    qualifs.reduce(aggregated_qualifications) do |result, (_, qualif_obj)|
-      result.push(
-        {
-          nom: qualif_obj['name'],
-          nom_certificat: qualif_obj['name_certif']
-        }.merge(url_certificat_payload(qualif_obj))
-      )
-    end
+  def format_qualification(qualification)
+    {
+      nom: qualification['name'],
+      nom_certificat: qualification['name_certif']
+    }.merge(url_certificat_payload(qualification))
   end
 
-  def aggregated_qualifications
-    @aggregated_qualifications ||= []
-  end
-
-  def format_domaines(domaines)
-    if domaines.first.is_a?(String)
-      aggregated_domaines.concat(domaines)
-    else
-      domaines.reduce(aggregated_domaines) do |result, (_, domaine_obj)|
-        result.push(domaine_obj['nom'])
-      end
-    end
-  end
-
-  def aggregated_domaines
-    @aggregated_domaines ||= []
+  def format_domaine(domaine)
+    domaine['nom']
   end
 
   def url_certificat_payload(qualif_obj)

@@ -13,7 +13,7 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEADEME, type: :provider_driver d
     its(:http_code) { is_expected.to eq(404) }
   end
 
-  context 'when data is found (old payload)', vcr: { cassette_name: 'ademe/rge/with_valid_siret' } do
+  context 'when data is found', vcr: { cassette_name: 'ademe/rge/with_valid_siret' } do
     let(:siret) { valid_siret(:rge_ademe) }
 
     describe '#qualifications' do
@@ -37,11 +37,6 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEADEME, type: :provider_driver d
             a_hash_including({
               nom: 'Qualisol - Pose de chauffe-eau solaire individuel (eau chaude solaire)',
               nom_certificat: 'Qualisol CESI',
-              url_certificat: nil
-            }),
-            a_hash_including({
-              nom: 'Qualibois module Air - Pose d\'appareil de chauffage au bois indépendant (poêle et insert)',
-              nom_certificat: 'Qualibois module Air',
               url_certificat: nil
             }),
             a_hash_including({
@@ -79,11 +74,6 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEADEME, type: :provider_driver d
             a_hash_including({
               nom: 'Qualisol - Pose de chauffe-eau solaire individuel (eau chaude solaire)',
               nom_certificat: 'Qualisol CESI',
-              url_certificat: a_string_starting_with(Siade.credentials[:public_storage_url]).and(a_string_ending_with('-certificat_rge_ademe.pdf'))
-            }),
-            a_hash_including({
-              nom: 'Qualibois module Air - Pose d\'appareil de chauffage au bois indépendant (poêle et insert)',
-              nom_certificat: 'Qualibois module Air',
               url_certificat: a_string_starting_with(Siade.credentials[:public_storage_url]).and(a_string_ending_with('-certificat_rge_ademe.pdf'))
             }),
             a_hash_including({
@@ -135,6 +125,9 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEADEME, type: :provider_driver d
           "Chaudière bois",
           "Pompe à chaleur : chauffage",
           "Chauffe-Eau Thermodynamique",
+          "Chaudière condensation ou micro-cogénération gaz ou fioul",
+          "Radiateurs électriques, dont régulation.",
+          "Ventilation mécanique"
         )
       end
     end
@@ -145,6 +138,7 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEADEME, type: :provider_driver d
     let(:instance) { described_class.new(siret: siret, user_params: { skip_pdf: true }) }
 
     before do
+      skip
       instance.perform_request
     end
 
@@ -206,7 +200,7 @@ RSpec.describe SIADE::V2::Drivers::CertificatsRGEADEME, type: :provider_driver d
 
     let(:instance) { described_class.new(siret: siret) }
     let(:siret) { valid_siret(:rge_ademe) }
-    let(:qualypso_document_url) { 'https://www.qualypso.fr/download_file.php?id=fd03fdfe-ba4c-448e-8e05-cfd30a6d2ebb' }
+    let(:qualypso_document_url) { 'https://www.qualypso.fr/download_file.php?id=0d90e7c0-7fdd-48e1-9b70-9699696603f5' }
     let(:sample_error) do
       [
         SocketError,
