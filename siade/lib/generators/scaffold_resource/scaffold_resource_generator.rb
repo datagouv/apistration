@@ -21,6 +21,11 @@ class ScaffoldResourceGenerator < Rails::Generators::NamedBase
     default: false,
     desc: 'Does it have to generate a policy ?'
 
+  class_option :is_collection,
+    type: :boolean,
+    default: false,
+    desc: 'Is the payload a collection or a single resource?'
+
   def create_scaffold_resource
     generate 'controller', name, string_options
     generate 'serializer', name, string_options
