@@ -1,0 +1,15 @@
+class <%= name %>::BuildResourceCollection < BuildResourceCollection<% if document_resource? %>::Document<% end %>
+  protected
+
+  def items
+    fail NotImplementedError
+  end
+
+  def items_meta
+    {}
+  end
+
+  def resource_attributes(item)
+    fail NotImplementedError
+  end
+end

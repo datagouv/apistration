@@ -4,7 +4,7 @@ RSpec.describe <%= name %>::BuildResource, type: :build_resource do
   let(:response) { instance_double('Net::HTTPOK', body: body) }
 
   let(:body) do
-    <%= name %>::MakeRequest.call(params: params).response.body
+    <%= name %>::MakeRequest.call<% if id_name %>(params: params)<% end %>.response.body
   end<% if id_name %>
 
   let(:params) do
@@ -12,5 +12,6 @@ RSpec.describe <%= name %>::BuildResource, type: :build_resource do
       <%= id_name %>: <%= id_name %>
     }
   end
+
   let(:<%= id_name %>) { valid_<%= id_name %>(:<%= provider_namespace.underscore %>) }<% end %>
 end

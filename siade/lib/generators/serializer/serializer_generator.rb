@@ -7,7 +7,7 @@ class SerializerGenerator < BaseGenerator
     desc: 'Add support of documents uploader'
 
   desc 'See `bin/rails generate scaffold_resource --help` instead'
-  def create_serialiazer
+  def create_serializer
     template 'serializer.rb.erb', File.join('app/serializers', provider_namespace.underscore, "#{resource_class.underscore}_serializer", 'v3.rb')
   end
 
