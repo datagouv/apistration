@@ -8,7 +8,7 @@ RSpec.describe SIADE::V2::Requests::ConventionsCollectives, type: :provider_requ
     end
   end
 
-  context 'well formated request', vcr: { cassette_name: 'conventions_collectives_with_valid_siret' } do
+  context 'well formated request', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/valid_siret' } do
     subject { described_class.new(valid_siret(:conventions_collectives)).perform }
 
     its(:http_code) { is_expected.to eq(200) }

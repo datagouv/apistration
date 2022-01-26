@@ -1,5 +1,5 @@
 RSpec.describe SIADE::V2::Drivers::ConventionsCollectives, type: :provider_driver do
-  context 'when siret is not found', vcr: { cassette_name: 'conventions_collectives_with_not_found_siret' } do
+  context 'when siret is not found', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/not_found_siret' } do
     subject { described_class.new(siret: siret).perform_request }
 
     let(:siret) { not_found_siret(:conventions_collectives) }
@@ -7,7 +7,7 @@ RSpec.describe SIADE::V2::Drivers::ConventionsCollectives, type: :provider_drive
     its(:http_code) { is_expected.to eq(404) }
   end
 
-  context 'when siret is found', vcr: { cassette_name: 'conventions_collectives_with_valid_siret' } do
+  context 'when siret is found', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/valid_siret' } do
     subject { @conventions_collectives.perform_request }
 
     before do
