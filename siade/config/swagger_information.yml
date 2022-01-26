@@ -200,6 +200,58 @@ dgfip:
           example: "2015-12-01"
           description: "Date de fin de l'exercice"
 
+fabrique_numerique_ministeres_sociaux:
+  conventions_collectives:
+    title: "Conventions collectives"
+    description: "Connaître les conventions collectives d’un établissement et obtenir des informations telles que l’identifiant de la convention et le lien vers le texte en vigueur."
+    tags:
+      - "Informations générales"
+    items:
+      properties:
+        id:
+          type: 'string'
+          description: "Identifiant interne (DILA) de la convention"
+          example: 'KALICONT000005635173'
+        titre:
+          type: 'string'
+          description: "Titre historique de la convention collective"
+          example: "Convention collective nationale des bureaux d'études techniques, des cabinets d'ingénieurs-conseils et des sociétés de conseils du 15 décembre 1987."
+        titre_court:
+          type: 'string'
+          description: "Titre abrégé / d'usage"
+          example: "Bureaux d'études techniques, cabinets d'ingénieurs-conseils et sociétés de conseils"
+        numero_idcc:
+          type: 'numeric'
+          description: "Numéro IDCC"
+          example: 1486
+        active:
+          type: 'boolean'
+          description: "Détermine si la convention est toujours active"
+          example: true
+        etat:
+          type: 'string'
+          enum:
+            - 'vigueur'
+            - 'vigueur_etendue'
+          description: "État de la convention. Si celle-ci est en vigueur elle est seulement obligatoire pour les signataires. Si celle-ci est en vigueur étendue, elle est obligatoire pour tous les employeurs de la branche."
+          example: 'vigueur_etendue'
+        synonymes:
+          type: 'array'
+          description: "Liste de synonymes connus de la convention"
+          items:
+            type: 'string'
+          example:
+            - 'syntec'
+        url:
+          type: 'string'
+          description: "Lien vers le texte en vigueur de la convention collective sur Legifrance"
+          example: 'https://www.legifrance.gouv.fr/affichIDCC.do?idConvention=KALICONT000005635173'
+        date_publication:
+          type: 'string'
+          description: 'Date de la dernière mise à jour de la convention'
+          example: '1988-01-01'
+
+
 fntp:
   carte_professionnelle_travaux_publics:
     title: "Carte professionnelle de travaux publics"

@@ -82,6 +82,10 @@ Rails.application.routes.draw do
       get 'chiffres_affaires/:siret' => '/api/v3_and_more/dgfip/chiffres_affaires#show'
     end
 
+    namespace :fabrique_numerique_ministeres_sociaux do
+      get 'conventions_collectives/:siret' => '/api/v3_and_more/fabrique_numerique_ministeres_sociaux/conventions_collectives#show'
+    end
+
     namespace :fntp do
       get 'cartes_professionnelle_travaux_publics/:siren' => '/api/v3_and_more/fntp/carte_professionnelle_travaux_publics#show'
     end
