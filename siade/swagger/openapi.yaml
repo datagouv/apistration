@@ -676,7 +676,6 @@ paths:
                           description: Date de fin de l'exercice
                 required:
                 - data
-                - meta
         '404':
           description: Non trouvée
           content:
