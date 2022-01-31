@@ -42,8 +42,9 @@ RSpec.describe SIADE::V2::Drivers::AttestationsSocialesACOSS, :self_hosted_doc, 
     it 'forwards the params to the request' do
       expect(SIADE::V2::Requests::AttestationsSocialesACOSS)
         .to receive(:new)
-        .with(user_id: user_id, recipient: recipient, siren: siren, type_attestation: nil)
+        .with({ user_id: user_id, recipient: recipient, siren: siren, type_attestation: nil })
         .and_call_original
+
       subject.perform_request
     end
   end
