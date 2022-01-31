@@ -118,8 +118,15 @@ paths:
                             description: Ce document est automatiquement supprimé
                               au bout de 3 mois.
                             example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_vigilance_acoss.pdf
+                          expires_in:
+                            type: integer
+                            example: 7889238
+                            description: 'Nombre de secondes avant l''expiration de
+                              l''url associée à l''attribut document_url : cette durée
+                              correspond généralement à 3 mois.'
                         required:
                         - document_url
+                        - expires_in
                     required:
                     - id
                     - type
@@ -227,8 +234,15 @@ paths:
                             description: Ce document est automatiquement supprimé
                               au bout de 3 mois.
                             example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf
+                          expires_in:
+                            type: integer
+                            example: 7889238
+                            description: 'Nombre de secondes avant l''expiration de
+                              l''url associée à l''attribut document_url : cette durée
+                              correspond généralement à 3 mois.'
                         required:
                         - document_url
+                        - expires_in
                     required:
                     - id
                     - type
@@ -892,8 +906,15 @@ paths:
                             description: Ce document est automatiquement supprimé
                               au bout de 3 mois.
                             example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-carte_professionnelle_fntp.pdf
+                          expires_in:
+                            type: integer
+                            example: 7889238
+                            description: 'Nombre de secondes avant l''expiration de
+                              l''url associée à l''attribut document_url : cette durée
+                              correspond généralement à 3 mois.'
                         required:
                         - document_url
+                        - expires_in
                     required:
                     - id
                     - type
@@ -4236,8 +4257,15 @@ paths:
                             description: Ce document est automatiquement supprimé
                               au bout de 3 mois.
                             example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf
+                          expires_in:
+                            type: integer
+                            example: 7889238
+                            description: 'Nombre de secondes avant l''expiration de
+                              l''url associée à l''attribut document_url : cette durée
+                              correspond généralement à 3 mois.'
                         required:
                         - document_url
+                        - expires_in
                     required:
                     - id
                     - type

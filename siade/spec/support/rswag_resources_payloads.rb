@@ -74,9 +74,14 @@ module RSWagResourcesPayloads
               properties: {
                 document_url: {
                   type: :string
-                }.merge(document_url_properties)
+                }.merge(document_url_properties),
+                expires_in: {
+                  type: :integer,
+                  example: 7889238,
+                  description: "Nombre de secondes avant l'expiration de l'url associée à l'attribut document_url : cette durée correspond généralement à 3 mois."
+                }
               },
-              required: %w[document_url]
+              required: %w[document_url expires_in]
             }
           },
           required: %w[

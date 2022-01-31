@@ -8,7 +8,8 @@ class BuildResource::Document < BuildResource
   def resource_attributes
     {
       id: id,
-      document_url: context.url
+      document_url: context.url,
+      expires_in: Documents::Upload::EXPIRES_IN
     }
   end
 end

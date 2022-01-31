@@ -1,4 +1,6 @@
 class Documents::Upload < ApplicationInteractor
+  EXPIRES_IN = 3.months.to_i
+
   before do
     context.errors ||= []
   end
@@ -65,7 +67,7 @@ class Documents::Upload < ApplicationInteractor
   end
 
   def file_expired_in
-    3.months.to_i
+    EXPIRES_IN
   end
 
   def public_storage_url
