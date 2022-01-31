@@ -13,12 +13,6 @@ RSpec.describe SIADE::V2::Drivers::BrevetsINPI, type: :provider_driver do
     its(:errors)    { is_expected.to have_error('Echec lors du parsing de la réponse JSON des brevets INPI') }
   end
 
-  context 'not found siren' do
-    # We are doing a search, we may return no results at all. 404 and no results are no good here. Maybe we should
-    # make a check on existing siren
-    it 'has 404 http code'
-  end
-
   context 'valid siren', vcr: { cassette_name: 'brevets_inpi_with_valid_siren' } do
     subject { described_class.new(siren: siren).perform_request }
 

@@ -30,10 +30,6 @@ RSpec.describe API::V2::AttestationsCotisationRetraitePROBTPController, type: :c
         it_behaves_like 'not_found'
       end
 
-      context 'siret non eligible PROBTP' do
-        pending 'TODO: need a non eligible siret'
-      end
-
       context 'siret eligible PROBTP' do
         let(:siret) { valid_siret(:probtp) }
 

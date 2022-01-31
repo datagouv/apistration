@@ -155,31 +155,6 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
     end
   end
 
-  # Cannot modify the cassette manually since it contains encoded PDF...
-  # TODO Find another way than VCR to maintain suck edge cases
-  # see https://gitlab.com/etalab/api-entreprise/siade/-/issues/50
-  describe 'Incidents', :skip do
-    context 'Incident january 2018: some documents are not pdf', vcr: { cassette_name: 'non_regenerable/incidents/rna_association/W262001597_not_a_pdf' } do
-      let(:id) { 'W262001597' }
-      let(:response_payload) { JSON.parse(response.body) }
-      let(:response) { get :show, params: { id: id, token: token }.merge(mandatory_params) }
-
-      it 'still works, but returns partial content' do
-        expect(response.status).to eq(206)
-      end
-
-      it 'receives documents url but its not pdf' do
-        expect(API::V2::DocumentsAssociationsController::DocumentRNA)
-          .to receive(:new).exactly(5).times.and_call_original
-        expect(Rails.logger).to receive(:error).once.with(/5 documents sont déficients pour l'association W262001597/)
-
-        expect(response_payload['nombre_documents']).to eq(0)
-        expect(response_payload['nombre_documents_deficients']).to eq(5)
-        expect(response_payload['documents'].size).to eq(0)
-      end
-    end
-  end
-
   describe 'Non regression test' do
     subject do
       get :show, params: { id: id, token: token }.merge(mandatory_params)
