@@ -76,7 +76,7 @@ RSpec.describe Documents::DecryptPDF do
         )
       end
 
-      it 'does not track error' do
+      it 'does not track error', retry: 5 do
         subject
 
         expect(monitoring_service).not_to have_received(:track)
@@ -90,7 +90,7 @@ RSpec.describe Documents::DecryptPDF do
         )
       end
 
-      it 'does not track error' do
+      it 'does not track error', retry: 5 do
         subject
 
         expect(monitoring_service).not_to have_received(:track)
