@@ -156,14 +156,13 @@ RSpec.describe API::AuthenticateEntityController do
     end
 
     it 'sets expected params in context' do
-      expect(MonitoringService.instance).to receive(:set_controller_params).with({
-        context: 'API Entreprise TESTS',
-        object: 'Testing things',
-        recipient: 'SIADE Localhost',
-        controller: 'api/authenticate_entity',
-        action: 'index',
-        token: yes_jwt
-      })
+      expect(MonitoringService.instance).to receive(:set_controller_params).with(
+        mandatory_params.merge(
+          controller: 'api/authenticate_entity',
+          action: 'index',
+          token: yes_jwt
+        )
+      )
 
       get :index, params: { token: yes_jwt }.merge(mandatory_params)
     end

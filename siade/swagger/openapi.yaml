@@ -51,7 +51,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -161,7 +161,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -293,7 +293,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -445,7 +445,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -570,7 +570,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -674,7 +674,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -834,7 +834,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -949,7 +949,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -1183,7 +1183,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -1322,7 +1322,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -1504,7 +1504,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -1788,7 +1788,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -2073,7 +2073,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -2309,7 +2309,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -2544,7 +2544,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -2779,7 +2779,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -3012,7 +3012,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -3419,7 +3419,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -3817,7 +3817,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -4053,7 +4053,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -4190,7 +4190,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -4300,7 +4300,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string
@@ -4434,7 +4434,7 @@ paths:
           "**Bénéficiaire de l’appel**
 
           SIRET de l’administration destinatrice des données."
-        example: '123456789'
+        example: '13002526500013'
         required: true
         schema:
           type: string

@@ -2,6 +2,7 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
   class UnsupportedVersionError < ::ActionController::RoutingError; end
 
   before_action :verify_api_version!
+  before_action :verify_recipient_is_a_siret!
   before_action :set_content_type_header!
 
   rescue_from UnsupportedVersionError, with: :unsupported_version_response
@@ -10,6 +11,17 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
 
   def verify_api_version!
     raise_unsupported_version_error! unless supported_version?
+  end
+
+  def verify_recipient_is_a_siret!
+    return if recipient_is_a_siret?
+
+    render json: ErrorsSerializer.new([InvalidRecipientError.new], format: error_format).as_json,
+      status: :unprocessable_entity
+  end
+
+  def recipient_is_a_siret?
+    ValidateSiret.call(params: { siret: params[:recipient] }).success?
   end
 
   def api_version

@@ -29,7 +29,7 @@ end
 
 @default_query_params = {
   context:   'Test',
-  recipient: 'DINUM - API Entreprise',
+  recipient: '13002526500013',
   object:    'Pré mise en production',
 }
 @request_options = {

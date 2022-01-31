@@ -83,7 +83,7 @@ parameters:
 
 
       SIRET de l’administration destinatrice des données."
-    example: "123456789"
+    example: "13002526500013"
   object:
     description: >-
       "**La raison de l’appel ou l’identifiant de la procédure.**
