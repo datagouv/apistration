@@ -178,6 +178,9 @@ endpoints = <<STR
 - name: '[V3] ProBTP Attestations cotisations retraite'
   http_path: '/v3/probtp/attestations_cotisations_retraite/43841606700017'
 
+- name: '[V3] FNMS Conventions collectives'
+  http_path: '/v3/fabrique_numerique_ministeres_sociaux/conventions_collectives/82161143100015'
+
 - name: '[V3] RNM Entreprises'
   http_path: '/v3/rnm/entreprises/301123626'
 
