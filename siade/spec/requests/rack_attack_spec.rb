@@ -259,6 +259,22 @@ RSpec.describe Rack::Attack, type: :request do
       ]
     end
 
+    context 'with token in query params, with an endpoint which has a throttle config (non-regression test)' do
+      subject(:headers) do
+        get endpoint, params: { 'token' => token }
+        response.headers
+      end
+
+      let(:endpoint) { '/v2/certificats_opqibi/siren' }
+      let(:throttle_config) { Rails.configuration.throttle[:low_latency_documents] }
+
+      it 'has rate limit headers defined' do
+        rate_limit_subkeys.each do |subkey|
+          expect(headers).to have_key("RateLimit-#{subkey}")
+        end
+      end
+    end
+
     context 'with and endpoint which has no throttle config' do
       let(:endpoint) { '/v2/uptime' }
 

@@ -1,6 +1,10 @@
 RSpec.describe RateLimitingService do
   let(:req) { instance_double(Rack::Request) }
 
+  before do
+    allow(req).to receive(:params).and_return({})
+  end
+
   describe '#discriminate_by_jwt_for_endpoints' do
     subject { described_class.new.discriminate_by_jwt_for_endpoints(req, endpoints) }
 
@@ -21,7 +25,9 @@ RSpec.describe RateLimitingService do
       ]
     end
 
-    before { allow(req).to receive(:path).and_return('/random/path') }
+    before do
+      allow(req).to receive(:path).and_return('/random/path')
+    end
 
     context 'when authorization header is not set' do
       before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return(nil) }

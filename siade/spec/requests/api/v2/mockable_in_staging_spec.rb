@@ -1,6 +1,7 @@
 RSpec.describe 'OpenAPI inegrity check for v2 APIs', type: :request do
   before do
     allow(Rails.env).to receive(:staging?).and_return(true)
+    Rack::Attack.reset!
   end
 
   it 'renders not implemented error' do
