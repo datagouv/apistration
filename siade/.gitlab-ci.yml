@@ -40,7 +40,9 @@ test:
     - gem install bundler -v $BUNDLER_VERSION --no-document
     - bundle install --full-index --path=vendor
   script:
-    - ./bin/test_swagger.sh && bundle exec rspec spec/
+    - ./bin/test_swagger.sh
+    - bundle exec rspec spec/
+    - bundle exec rails runner "print 'Test that production is loading for Zeitwerk'" -e production
   artifacts:
     reports:
       cobertura: coverage/coverage.xml
