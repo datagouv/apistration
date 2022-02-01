@@ -84,7 +84,7 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
           expect(errors).to include({
             code: '00210',
             title: 'Entité non traitable',
-            detail: 'Le paramètre recipient n\'est pas un siret valid',
+            detail: 'Le paramètre recipient n\'est pas un siret valide',
             source: {
               parameter: 'recipient'
             }
