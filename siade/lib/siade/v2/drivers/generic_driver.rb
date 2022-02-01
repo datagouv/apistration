@@ -2,14 +2,6 @@ class SIADE::V2::Drivers::GenericDriver
   extend Forwardable
   include SIADE::V2::Utilities::UnprocessableEntityHelpers
 
-  class ::ProviderInMaintenance < StandardError
-    attr_reader :provider_name
-
-    def initialize(provider_name)
-      @provider_name = provider_name
-    end
-  end
-
   attr_accessor :placeholder_to_nil
 
   def provider_name
