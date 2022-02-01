@@ -16,13 +16,13 @@ staging: *shared
 development: *shared
 test:
   <<: *shared
-  'window_within_same_day':
+  'provider_which_has_a_window_within_same_day':
     from_hour: '01:00'
     to_hour: '02:00'
-  'window_across_two_day':
+  'provider_which_has_a_window_across_two_day':
     from_hour: '23:00'
     to_hour:  '08:00'
-  'days':
+  'provider_which_has_specific_dates':
     from_hour: '08:00'
     to_hour:  '19:00'
     dates:

@@ -12,7 +12,7 @@ RSpec.describe MaintenanceService, type: :service do
     end
 
     context 'with valid provider which has a maintenance window within the same day' do
-      let(:provider) { 'window_within_same_day' }
+      let(:provider) { 'provider_which_has_a_window_within_same_day' }
 
       after do
         Timecop.return
@@ -36,7 +36,7 @@ RSpec.describe MaintenanceService, type: :service do
     end
 
     context 'with valid provider which has a maintenance across two day (start hour before end hour)' do
-      let(:provider) { 'window_across_two_day' }
+      let(:provider) { 'provider_which_has_a_window_across_two_day' }
 
       let(:beginning_of_day) { Time.zone.now.beginning_of_day }
 
@@ -71,22 +71,20 @@ RSpec.describe MaintenanceService, type: :service do
       end
     end
 
-    context 'with a valid provider which has a days key' do
-      let(:provider) { 'days' }
+    context 'with a valid provider which has specific dates, with maintenance window between 8am and 7pm' do
+      let(:provider) { 'provider_which_has_specific_dates' }
 
-      context 'when it is not a valid day' do
+      context 'when it is not a valid date' do
         let(:day) { Date.parse('2021-02-14') }
 
-        context 'when it is a maintenance window' do
-          before do
-            Timecop.freeze(day + 12.hours)
-          end
-
-          it { is_expected.to eq false }
+        before do
+          Timecop.freeze(day + 12.hours)
         end
+
+        it { is_expected.to eq false }
       end
 
-      context 'when it is a valid day' do
+      context 'when it is a valid date' do
         let(:day) { Date.parse('2021-01-14') }
 
         context 'when it is a maintenance window' do
@@ -111,8 +109,8 @@ RSpec.describe MaintenanceService, type: :service do
   describe '#remaining_seconds' do
     subject { instance.remaining_seconds }
 
-    context 'with valid provider which has a maintenance window within the same day' do
-      let(:provider) { 'window_within_same_day' }
+    context 'with valid provider which has a maintenance window within the same day (between 1 am and 2 am)' do
+      let(:provider) { 'provider_which_has_a_window_within_same_day' }
 
       after do
         Timecop.return
@@ -135,8 +133,8 @@ RSpec.describe MaintenanceService, type: :service do
       end
     end
 
-    context 'with valid provider which has a maintenance across two day (start hour before end hour)' do
-      let(:provider) { 'window_across_two_day' }
+    context 'with valid provider which has a maintenance across two day (start hour before end hour) : from 11pm to 8am' do
+      let(:provider) { 'provider_which_has_a_window_across_two_day' }
 
       let(:beginning_of_day) { Time.zone.now.beginning_of_day }
 
