@@ -1,0 +1,23 @@
+probtp:
+  attestation_cotisation_retraite:
+    title: "Cotisations retraite bâtiment"
+    description: "Obtenir l’attestation de l’entreprise (si celle-ci est éligible) auprès de la Protection Sociale du Bâtiment et des Travaux publics (PROBTP)"
+    tags:
+      - "Attestations sociales et fiscales"
+    document_url_properties:
+      title: "Lien vers l'attestation de cotisation retraite ProBTP"
+      description: "Ce document est automatiquement supprimé au bout de 3 mois."
+      example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf"
+  conformites_cotisations_retraite:
+    title: "Conformités vis-à-vis des cotisations retraites"
+    description: "Savoir si une entreprise est à jour de ses cotisations retraite à la Protection Sociale du Bâtiment et des Travaux publics (PROBTP)"
+    tags:
+      - "Attestations sociales et fiscales"
+    attributes:
+      eligible:
+        type: "boolean"
+        example: true
+        enum:
+          - true
+          - false
+        description: "Détermine si une entreprise est éligible ou non aux cotisations retraites de ProBTP."
