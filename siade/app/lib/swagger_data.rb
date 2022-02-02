@@ -22,10 +22,12 @@ class SwaggerData
   end
 
   def yaml_backend_interpolated
-    ERB.new(File.read(yaml_backend_path)).result
+    ERB.new(yaml_backend_raw).result
   end
 
-  def yaml_backend_path
-    Rails.root.join('config/swagger_data.yml')
+  def yaml_backend_raw
+    yaml_files = Dir.glob('config/swagger_data/**/*')
+
+    yaml_files.map { |file_path| File.read(file_path) }.reduce(:+)
   end
 end
