@@ -48,15 +48,4 @@ RSpec.describe INSEE::Etablissement::MakeRequest, type: :make_request do
 
     its(:response) { is_expected.to be_a(Net::HTTPForbidden) }
   end
-
-  context 'with a siret which redirects to another location', vcr: { cassette_name: 'insee/siret/redirected' } do
-    let(:siret) { '53222169400013' }
-    let(:redirected_siret) { '77887067500015' }
-
-    before do
-      pending 'Need specs'
-    end
-
-    it { is_expected.to be_a_success }
-  end
 end
