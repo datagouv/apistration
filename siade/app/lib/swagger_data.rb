@@ -1,6 +1,6 @@
 require 'erb'
 
-class SwaggerInformation
+class SwaggerData
   include Singleton
 
   def self.get(key)
@@ -26,6 +26,6 @@ class SwaggerInformation
   end
 
   def yaml_backend_path
-    Rails.root.join('config/swagger_information.yml')
+    Rails.root.join('config/swagger_data.yml')
   end
 end

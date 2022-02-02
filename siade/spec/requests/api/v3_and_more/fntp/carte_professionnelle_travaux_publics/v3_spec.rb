@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'FNTP: Carte professionnelle Travaux Publics', type: %i[request swagger] do
   path '/v3/fntp/cartes_professionnelle_travaux_publics/{siren}' do
-    get SwaggerInformation.get('fntp.carte_professionnelle_travaux_publics.title') do
-      tags(*SwaggerInformation.get('fntp.carte_professionnelle_travaux_publics.tags'))
+    get SwaggerData.get('fntp.carte_professionnelle_travaux_publics.title') do
+      tags(*SwaggerData.get('fntp.carte_professionnelle_travaux_publics.tags'))
 
       common_action_attributes
 
@@ -19,13 +19,13 @@ RSpec.describe 'FNTP: Carte professionnelle Travaux Publics', type: %i[request s
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Carte professionnelle trouvée', vcr: { cassette_name: 'fntp/carte_professionnelle_travaux_publics/valid_siren' } do
-          description SwaggerInformation.get('fntp.carte_professionnelle_travaux_publics.description')
+          description SwaggerData.get('fntp.carte_professionnelle_travaux_publics.description')
 
           rate_limit_headers
 
           schema build_rswag_document_response(
             id: valid_siren(:fntp),
-            document_url_properties: SwaggerInformation.get('fntp.carte_professionnelle_travaux_publics.document_url_properties')
+            document_url_properties: SwaggerData.get('fntp.carte_professionnelle_travaux_publics.document_url_properties')
           )
 
           run_test!

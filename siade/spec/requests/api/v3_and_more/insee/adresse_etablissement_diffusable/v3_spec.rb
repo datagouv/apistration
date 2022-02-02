@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'INSEE: Adresse Etablissement diffusible', type: %i[request swagger] do
   path '/v3/insee/sirene/etablissements/diffusibles/{siret}/adresse' do
-    get SwaggerInformation.get('insee.adresse_etablissement_diffusable.title') do
-      tags(*SwaggerInformation.get('insee.adresse_etablissement_diffusable.tags'))
+    get SwaggerData.get('insee.adresse_etablissement_diffusable.title') do
+      tags(*SwaggerData.get('insee.adresse_etablissement_diffusable.tags'))
 
       parameter_siret
 
@@ -19,14 +19,14 @@ RSpec.describe 'INSEE: Adresse Etablissement diffusible', type: %i[request swagg
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Etablissement trouvé', vcr: { cassette_name: 'insee/siret/active_GE_with_token' } do
-          description SwaggerInformation.get('insee.adresse_etablissement_diffusable.description')
+          description SwaggerData.get('insee.adresse_etablissement_diffusable.description')
 
           schema build_rswag_response(
             id: sirets_insee_v3[:active_GE],
             type: 'adresse',
-            attributes: SwaggerInformation.get('insee.adresse_etablissement_diffusable.attributes'),
-            links: SwaggerInformation.get('insee.adresse_etablissement.links'),
-            meta: SwaggerInformation.get('insee.adresse_etablissement.meta')
+            attributes: SwaggerData.get('insee.adresse_etablissement_diffusable.attributes'),
+            links: SwaggerData.get('insee.adresse_etablissement.links'),
+            meta: SwaggerData.get('insee.adresse_etablissement.meta')
           )
 
           run_test!

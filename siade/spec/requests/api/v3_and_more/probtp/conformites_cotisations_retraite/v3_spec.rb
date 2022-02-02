@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'PROBTP: Conformites Cotisations Retraite', type: %i[request swagger] do
   path '/v3/probtp/conformites_cotisations_retraite/{siret}' do
-    get SwaggerInformation.get('probtp.conformites_cotisations_retraite.title') do
-      tags(*SwaggerInformation.get('probtp.conformites_cotisations_retraite.tags'))
+    get SwaggerData.get('probtp.conformites_cotisations_retraite.title') do
+      tags(*SwaggerData.get('probtp.conformites_cotisations_retraite.tags'))
 
       common_action_attributes
 
@@ -19,14 +19,14 @@ RSpec.describe 'PROBTP: Conformites Cotisations Retraite', type: %i[request swag
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_eligible_siret' } do
-          description SwaggerInformation.get('probtp.conformites_cotisations_retraite.description')
+          description SwaggerData.get('probtp.conformites_cotisations_retraite.description')
 
           rate_limit_headers
 
           schema build_rswag_response(
             id: eligible_siret(:probtp),
             type: 'entreprise',
-            attributes: SwaggerInformation.get('probtp.conformites_cotisations_retraite.attributes')
+            attributes: SwaggerData.get('probtp.conformites_cotisations_retraite.attributes')
           )
 
           run_test!

@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'MSA: Conformitescotisations', type: %i[request swagger] do
   path '/v3/msa/conformites_cotisations/{siret}' do
-    get SwaggerInformation.get('msa.conformites_cotisations.title') do
-      tags(*SwaggerInformation.get('msa.conformites_cotisations.tags'))
+    get SwaggerData.get('msa.conformites_cotisations.title') do
+      tags(*SwaggerData.get('msa.conformites_cotisations.tags'))
 
       parameter_siret
       common_action_attributes
@@ -22,14 +22,14 @@ RSpec.describe 'MSA: Conformitescotisations', type: %i[request swagger] do
             mock_msa_cotisations(siret, :up_to_date)
           end
 
-          description SwaggerInformation.get('msa.conformites_cotisations.description')
+          description SwaggerData.get('msa.conformites_cotisations.description')
 
           rate_limit_headers
 
           schema build_rswag_response(
             id: valid_siret(:msa),
             type: 'conformite',
-            attributes: SwaggerInformation.get('msa.conformites_cotisations.attributes')
+            attributes: SwaggerData.get('msa.conformites_cotisations.attributes')
           )
 
           run_test!

@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'MI : Associations', type: %i[request swagger] do
   path '/v3/mi/associations/{siret_or_rna}' do
-    get SwaggerInformation.get('mi.association.title') do
-      tags(*SwaggerInformation.get('mi.association.tags'))
+    get SwaggerData.get('mi.association.title') do
+      tags(*SwaggerData.get('mi.association.tags'))
 
       parameter_siret_or_rna
 
@@ -19,12 +19,12 @@ RSpec.describe 'MI : Associations', type: %i[request swagger] do
 
       describe 'with valid mandatory params', valid: true do
         response 200, 'Association found', vcr: { cassette_name: 'mi/associations/with_valid_rna' } do
-          description SwaggerInformation.get('mi.association.description')
+          description SwaggerData.get('mi.association.description')
 
           schema build_rswag_response(
             id: valid_rna_id,
             type: 'association',
-            attributes: SwaggerInformation.get('mi.association.attributes')
+            attributes: SwaggerData.get('mi.association.attributes')
           )
 
           rate_limit_headers

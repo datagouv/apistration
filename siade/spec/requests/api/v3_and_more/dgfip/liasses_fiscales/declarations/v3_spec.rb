@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', type: %i[request swagger] do
   path '/v3/dgfip/liasses_fiscales/declarations/{year}/{siren}' do
-    get SwaggerInformation.get('dgfip.liasses_fiscales.declarations.title') do
-      tags(*SwaggerInformation.get('dgfip.liasses_fiscales.declarations.tags'))
+    get SwaggerData.get('dgfip.liasses_fiscales.declarations.title') do
+      tags(*SwaggerData.get('dgfip.liasses_fiscales.declarations.tags'))
 
       common_action_attributes
 
@@ -22,14 +22,14 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', type: %i[request swa
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
-          description SwaggerInformation.get('dgfip.liasses_fiscales.declarations.description')
+          description SwaggerData.get('dgfip.liasses_fiscales.declarations.description')
 
           rate_limit_headers
 
           schema build_rswag_response(
             id: valid_siren(:liasse_fiscale),
             type: 'entreprise',
-            attributes: SwaggerInformation.get('dgfip.liasses_fiscales.declarations.attributes')
+            attributes: SwaggerData.get('dgfip.liasses_fiscales.declarations.attributes')
           )
 
           run_test!

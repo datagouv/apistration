@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'FabriqueNumeriqueMinisteresSociaux: Conventionscollectives', type: %i[request swagger] do
   path '/v3/fabrique_numerique_ministeres_sociaux/conventions_collectives/{siret}' do
-    get SwaggerInformation.get('fabrique_numerique_ministeres_sociaux.conventions_collectives.title') do
-      tags(*SwaggerInformation.get('fabrique_numerique_ministeres_sociaux.conventions_collectives.tags'))
+    get SwaggerData.get('fabrique_numerique_ministeres_sociaux.conventions_collectives.title') do
+      tags(*SwaggerData.get('fabrique_numerique_ministeres_sociaux.conventions_collectives.tags'))
 
       common_action_attributes
 
@@ -19,13 +19,13 @@ RSpec.describe 'FabriqueNumeriqueMinisteresSociaux: Conventionscollectives', typ
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/valid_siret' } do
-          description SwaggerInformation.get('fabrique_numerique_ministeres_sociaux.conventions_collectives.description')
+          description SwaggerData.get('fabrique_numerique_ministeres_sociaux.conventions_collectives.description')
 
           rate_limit_headers
 
           schema build_rswag_response_collection(
             type: 'convention_collective',
-            properties: SwaggerInformation.get('fabrique_numerique_ministeres_sociaux.conventions_collectives.items.properties')
+            properties: SwaggerData.get('fabrique_numerique_ministeres_sociaux.conventions_collectives.items.properties')
           )
 
           run_test!

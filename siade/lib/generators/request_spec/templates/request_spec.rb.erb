@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type: %i[request swagger] do
   path '/v3/<%= provider_namespace.underscore %>/<%= resource_class.underscore.pluralize %>/{<%= id_path_param %>}' do
-    get SwaggerInformation.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.title') do
-      tags(*SwaggerInformation.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.tags'))
+    get SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.title') do
+      tags(*SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.tags'))
 
       common_action_attributes
 
@@ -19,14 +19,14 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: '<%= provider_namespace.underscore %>/valid_<%= id_path_param %>_json' } do
-          description SwaggerInformation.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.description')
+          description SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.description')
 
           rate_limit_headers
 
           schema build_rswag_response(
             id: valid_<%= id_path_param %>(:<%= provider_namespace.underscore %>),
             type: 'entreprise',
-            attributes: SwaggerInformation.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.attributes')
+            attributes: SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.attributes')
           )
 
           run_test!

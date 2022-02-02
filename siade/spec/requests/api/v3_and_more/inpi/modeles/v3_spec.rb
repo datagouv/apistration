@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'INPI: Modeles', type: %i[request swagger] do
   path '/v3/inpi/modeles/{siren}' do
-    get SwaggerInformation.get('inpi.modeles.title') do
-      tags(*SwaggerInformation.get('inpi.modeles.tags'))
+    get SwaggerData.get('inpi.modeles.title') do
+      tags(*SwaggerData.get('inpi.modeles.tags'))
 
       common_action_attributes
 
@@ -19,14 +19,14 @@ RSpec.describe 'INPI: Modeles', type: %i[request swagger] do
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Modèles trouvés', vcr: { cassette_name: 'inpi/modeles/with_valid_siren' } do
-          description SwaggerInformation.get('inpi.modeles.description')
+          description SwaggerData.get('inpi.modeles.description')
 
           rate_limit_headers
 
           schema build_rswag_response_collection(
             type: 'object',
-            properties: SwaggerInformation.get('inpi.modeles.items.properties'),
-            links: SwaggerInformation.get('inpi.modeles.items.links')
+            properties: SwaggerData.get('inpi.modeles.items.properties'),
+            links: SwaggerData.get('inpi.modeles.items.links')
           )
 
           run_test!

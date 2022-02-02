@@ -1,4 +1,4 @@
-RSpec.describe SwaggerInformation do
+RSpec.describe SwaggerData do
   describe '.get' do
     subject(:get_key) { described_class.get(key) }
 

@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'INSEE: Unités légales', type: %i[request swagger] do
   path '/v3/insee/sirene/unites_legales/{siren}' do
-    get SwaggerInformation.get('insee.unite_legale.title') do
-      tags(*SwaggerInformation.get('insee.unite_legale.tags'))
+    get SwaggerData.get('insee.unite_legale.title') do
+      tags(*SwaggerData.get('insee.unite_legale.tags'))
 
       parameter_siren
 
@@ -19,14 +19,14 @@ RSpec.describe 'INSEE: Unités légales', type: %i[request swagger] do
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Unité légale trouvée', vcr: { cassette_name: 'insee/siren/active_GE_with_token' } do
-          description SwaggerInformation.get('insee.unite_legale.description')
+          description SwaggerData.get('insee.unite_legale.description')
 
           schema build_rswag_response(
             id: sirens_insee_v3[:active_GE],
             type: 'entreprise',
-            attributes: SwaggerInformation.get('insee.unite_legale.attributes'),
-            links: SwaggerInformation.get('insee.unite_legale.links'),
-            meta: SwaggerInformation.get('insee.unite_legale.meta')
+            attributes: SwaggerData.get('insee.unite_legale.attributes'),
+            links: SwaggerData.get('insee.unite_legale.links'),
+            meta: SwaggerData.get('insee.unite_legale.meta')
           )
 
           rate_limit_headers

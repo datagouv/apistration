@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'DGFIP: chiffres d\'affaires', type: %i[request swagger] do
   path '/v3/dgfip/chiffres_affaires/{siret}' do
-    get SwaggerInformation.get('dgfip.chiffres_affaires.title') do
-      tags(*SwaggerInformation.get('dgfip.chiffres_affaires.tags'))
+    get SwaggerData.get('dgfip.chiffres_affaires.title') do
+      tags(*SwaggerData.get('dgfip.chiffres_affaires.tags'))
 
       common_action_attributes
 
@@ -19,13 +19,13 @@ RSpec.describe 'DGFIP: chiffres d\'affaires', type: %i[request swagger] do
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Exercices trouvés', vcr: { cassette_name: 'dgfip/chiffres_affaires/valid' } do
-          description SwaggerInformation.get('dgfip.chiffres_affaires.description')
+          description SwaggerData.get('dgfip.chiffres_affaires.description')
 
           rate_limit_headers
 
           schema build_rswag_response_collection(
             type: 'exercice',
-            properties: SwaggerInformation.get('dgfip.chiffres_affaires.items.properties')
+            properties: SwaggerData.get('dgfip.chiffres_affaires.items.properties')
           )
 
           run_test!

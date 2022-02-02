@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'INSEE: Siège diffusible Unité Légale', type: %i[request swagger] do
   path '/v3/insee/sirene/unites_legales/diffusibles/{siren}/siege' do
-    get SwaggerInformation.get('insee.siege_diffusable_unite_legale.title') do
-      tags(*SwaggerInformation.get('insee.siege_diffusable_unite_legale.tags'))
+    get SwaggerData.get('insee.siege_diffusable_unite_legale.title') do
+      tags(*SwaggerData.get('insee.siege_diffusable_unite_legale.tags'))
 
       tags 'Informations générales'
 
@@ -21,16 +21,16 @@ RSpec.describe 'INSEE: Siège diffusible Unité Légale', type: %i[request swagg
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Établissement trouvé', vcr: { cassette_name: 'insee/siege/active_GE_with_token' } do
-          description SwaggerInformation.get('insee.siege_diffusable_unite_legale.description')
+          description SwaggerData.get('insee.siege_diffusable_unite_legale.description')
 
           rate_limit_headers
 
           schema build_rswag_response(
             id: sirens_insee_v3[:active_GE],
             type: 'etablissement',
-            attributes: SwaggerInformation.get('insee.etablissement_diffusable.attributes'),
-            links: SwaggerInformation.get('insee.etablissement.links'),
-            meta: SwaggerInformation.get('insee.etablissement.meta')
+            attributes: SwaggerData.get('insee.etablissement_diffusable.attributes'),
+            links: SwaggerData.get('insee.etablissement.links'),
+            meta: SwaggerData.get('insee.etablissement.meta')
           )
 
           run_test!
