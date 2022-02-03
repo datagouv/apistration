@@ -278,7 +278,7 @@ inpi:
       properties:
         id:
           title: "ID Fichier"
-          description: "Cet identifiant permet de retrouver le document dans l'archive ZIP, à l'aide du fichier \"Response.json\" permettant de faire lien entre cet ID et le nom du PDF"
+          description: "Cet identifiant permet de retrouver le document dans l'archive ZIP renvoyée par le endpoint `/inpi/actes/{siren}/documents`, à l'aide du fichier \"Response.json\" permettant de faire lien entre cet ID et le nom du PDF"
           type: "string"
           example: "24924080"
         siren:
