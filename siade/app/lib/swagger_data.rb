@@ -28,6 +28,6 @@ class SwaggerData
   def yaml_backend_raw
     yaml_files = Dir.glob('config/swagger_data/**/*')
 
-    yaml_files.map { |file_path| File.read(file_path) }.reduce(:+)
+    yaml_files.map { |file_path| "#{File.read(file_path)}\n" }.reduce(:+)
   end
 end
