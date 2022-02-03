@@ -1,4 +1,53 @@
 inpi:
+  actes:
+    title: "Actes"
+    description: |
+      Obtenir les métadonnées sur les actes d’une entreprise tels que connus par les greffes et archivés à l’Institut National de Propriété Industrielle (INPI).
+      Ces actes comportent des informations générales, des informations sur le capital social et sa répartition, ou encore des informations sur les associés et tout ce qui est relatif à l’administration de la société.
+
+      Cet endpoint renvoie uniquement des métadonnées sur les actes, dont l’identifiant d’accès au fichier de téléchargement de l’Acte et du fichier de métadonnées associé. Pour récupérer les actes eux-mêmes, il faut utiliser l'endpoint /inpi/actes/{siren}/documents.
+    tags:
+      - "Informations générales"
+    type: "array"
+    items:
+      properties:
+        id:
+          title: "ID Fichier"
+          description: "Cet identifiant permet de retrouver le document dans l'archive ZIP renvoyée par le endpoint `/inpi/actes/{siren}/documents`, à l'aide du fichier \"Response.json\" permettant de faire lien entre cet ID et le nom du PDF"
+          type: "string"
+          example: "24924080"
+        siren:
+          title: "Numéro Siren"
+          description: "Numéro SIREN de l'entreprise concernée par l'acte"
+          type: "string"
+          example: "788242667"
+        denomination_sociale:
+          title: "Dénomination sociale"
+          description: "Dénomination sociale de l'entreprise concernée par l'acte"
+          type: "string"
+          example: "HERA CONSULTING"
+          nullable: true
+        code_greffe:
+          title: "Code greffe"
+          description: "Code identifiant du greffe ayant traité l'acte"
+          type: "number"
+          example: 5752
+        date_depot:
+          title: "Date dépot"
+          description: "Date à laquelle a été déposé l'acte"
+          type: "string"
+          example: "2017-06-16"
+        nature_archive:
+          title: "Nature de l'archive de l'acte"
+          description: "Chaîne de caractères contenant une ou plusieurs lettres séparées par un tiret, explicitant de quelle(s) catégories d'archives l'acte provient: A (actes de sociétés) R (ordonnances) et P (actes de personnes physiques)"
+          type: "string"
+          example: "A-R"
+      links:
+        greffe:
+          type: "string"
+          example: "https://opendata.datainfogreffe.fr/api/records/1.0/search/?dataset=liste-des-greffes&q=code_greffe%3D5752&facet=greffe&rows=1"
+          description: "Données sur le bureau des greffes ayant traité l'acte"
+
   brevets:
     title: "Derniers brevets"
     description: |

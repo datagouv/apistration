@@ -9,14 +9,16 @@ RSpec.describe INPI::Actes::BuildResourceCollection, type: :build_resource do
           siren: 542_065_479,
           code_greffe: 1234,
           date_depot: '2017-01-13',
-          nature_archive: 'A'
+          nature_archive: 'A',
+          greffe_url: 'https://opendata.datainfogreffe.fr/api/records/1.0/search/?dataset=liste-des-greffes&q=code_greffe%3D1234&facet=greffe&rows=1'
         },
         {
           id: 1_231_419,
           siren: 542_065_479,
           code_greffe: 1234,
           date_depot: '2015-01-13',
-          nature_archive: 'P'
+          nature_archive: 'P',
+          greffe_url: 'https://opendata.datainfogreffe.fr/api/records/1.0/search/?dataset=liste-des-greffes&q=code_greffe%3D1234&facet=greffe&rows=1'
         }
       ]
     end
