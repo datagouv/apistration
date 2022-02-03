@@ -7,7 +7,6 @@ RSpec.describe INPI::Actes::BuildResourceCollection, type: :build_resource do
         {
           id: 12_350_131,
           siren: 542_065_479,
-          denomination_sociale: 'PSA Automobiles SA',
           code_greffe: 1234,
           date_depot: '2017-01-13',
           nature_archive: 'A'
@@ -15,7 +14,6 @@ RSpec.describe INPI::Actes::BuildResourceCollection, type: :build_resource do
         {
           id: 1_231_419,
           siren: 542_065_479,
-          denomination_sociale: 'PEUGEOT CITROEN AUTOMOBILES SA',
           code_greffe: 1234,
           date_depot: '2015-01-13',
           nature_archive: 'P'
