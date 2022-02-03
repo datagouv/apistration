@@ -2499,7 +2499,7 @@ paths:
                 "$ref": "#/components/schemas/NotFound"
   "/v3/insee/sirene/unites_legales/diffusibles/{siren}/siege":
     get:
-      summary: Données de références du siège d'une unité légale diffusible
+      summary: Données de référence du siège d'une unité légale diffusible
       tags:
       - Informations générales
       parameters:
@@ -2734,7 +2734,7 @@ paths:
                 "$ref": "#/components/schemas/NotFound"
   "/v3/insee/sirene/unites_legales/{siren}/siege":
     get:
-      summary: Données de références du siège d'une unité légale
+      summary: Données de référence du siège d'une unité légale
       tags:
       - Informations générales
       parameters:
@@ -2967,7 +2967,7 @@ paths:
                 "$ref": "#/components/schemas/NotFound"
   "/v3/insee/sirene/unites_legales/{siren}":
     get:
-      summary: Données de références d'une unité légale
+      summary: Données de référence d'une unité légale
       tags:
       - Informations générales
       parameters:
@@ -3374,7 +3374,7 @@ paths:
                 "$ref": "#/components/schemas/NotFound"
   "/v3/insee/sirene/unites_legales/diffusibles/{siren}":
     get:
-      summary: Données de références d'une entité légale diffusable commercialement
+      summary: Données de référence d'une entité légale diffusable commercialement
       tags:
       - Informations générales
       parameters:

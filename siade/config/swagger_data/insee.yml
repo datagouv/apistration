@@ -123,7 +123,7 @@ insee:
     attributes: *insee_adresse_etablissement_attributes
 
   unite_legale:
-    title: "Données de références d'une unité légale"
+    title: "Données de référence d'une unité légale"
     description: "Obtenir les informations de référence d'une unité légale, qui est soit entreprise, soit administration, soit une association présente dans le répertoire Sirene."
     tags:
       - "Informations générales"
@@ -374,7 +374,7 @@ insee:
       date_derniere_mise_a_jour: *insee_date_derniere_mise_a_jour
 
   unite_legale_diffusable:
-    title: "Données de références d'une entité légale diffusable commercialement"
+    title: "Données de référence d'une entité légale diffusable commercialement"
     description: "Obtenir les informations de référence d'une unité légale, qui est soit uneentreprise, soit une administration, soit une association, présente dans le répertoire Sirene. Ce endpoint ne renvoi que des entités diffusable commercialement."
     tags:
       - "Informations générales"
@@ -496,13 +496,13 @@ insee:
           non-diffusible, référez-vous à la documentation du endpoint INSEE établissement"
 
   siege_unite_legale:
-    title: "Données de références du siège d'une unité légale"
+    title: "Données de référence du siège d'une unité légale"
     description: "Obtenir des informations générales concernant le siège d'une unité légale du répertoire Sirene."
     tags:
       - "Informations générales"
 
   siege_diffusable_unite_legale:
-    title: "Données de références du siège d'une unité légale diffusible"
+    title: "Données de référence du siège d'une unité légale diffusible"
     description: "Obtenir des informations générales concernant le siège d'une unité légale diffusable du répertoire Sirene."
     tags:
       - "Informations générales"
