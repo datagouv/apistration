@@ -44,7 +44,7 @@ RSpec.configure do |config|
       openapi: '3.0.1',
       info: {
         title: 'API Entreprise',
-        version: 'v3'
+        version: '3.0.0'
       },
       tags: [
         {
