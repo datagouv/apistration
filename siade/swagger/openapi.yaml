@@ -145,6 +145,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/acoss/attestations_sociales/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/cnetp/attestations_cotisations_conges_payes_chomage_intemperies/{siren}":
     get:
       summary: Attestation de cotisations congés payés & chômage-intempéries
@@ -261,6 +268,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/cnetp/attestations_cotisations_conges_payes_chomage_intemperies/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/dgddi/eoris/{siret_or_eori}":
     get:
       summary: Immatriculation EORI
@@ -429,6 +443,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/dgddi/eoris/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/dgfip/attestations_fiscales/{siren}":
     get:
       summary: Attestation fiscale
@@ -564,6 +585,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/dgfip/attestations_fiscales/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/dgfip/chiffres_affaires/{siret}":
     get:
       summary: Chiffres d'affaires
@@ -688,6 +716,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/dgfip/chiffres_affaires/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/dgfip/liasses_fiscales/declarations/{year}/{siren}":
     get:
       summary: Déclarations des liasses fiscales
@@ -792,6 +827,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/dgfip/liasses_fiscales/declarations/2019/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/fabrique_numerique_ministeres_sociaux/conventions_collectives/{siret}":
     get:
       summary: Conventions collectives
@@ -951,6 +993,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/fabrique_numerique_ministeres_sociaux/conventions_collectives/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/fntp/cartes_professionnelle_travaux_publics/{siren}":
     get:
       summary: Carte professionnelle de travaux publics
@@ -1066,6 +1115,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/fntp/cartes_professionnelle_travaux_publics/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/inpi/actes/{siren}":
     get:
       summary: Actes
@@ -1194,6 +1250,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/inpi/actes/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/inpi/brevets/{siren}":
     get:
       summary: Derniers brevets
@@ -1427,6 +1490,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/inpi/brevets/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/inpi/marques/{siren}":
     get:
       summary: Marques
@@ -1565,6 +1635,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/inpi/marques/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/inpi/modeles/{siren}":
     get:
       summary: Modeles
@@ -1718,6 +1795,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/inpi/modeles/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/etablissements/{siret}/adresse":
     get:
       summary: Adresse de l'établissement
@@ -2002,6 +2086,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/13002526500013/adresse?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/etablissements/diffusibles/{siret}/adresse":
     get:
       summary: Adresse d'un établissement diffusible
@@ -2287,6 +2378,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/diffusibles/13002526500013/adresse?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/etablissements/{siret}":
     get:
       summary: Données de référence d'un établissement
@@ -2523,6 +2621,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/etablissements/diffusibles/{siret}":
     get:
       summary: Données de référence d'un établissement diffusible
@@ -2761,6 +2866,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/diffusibles/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/unites_legales/diffusibles/{siren}/siege":
     get:
       summary: Données de référence du siège d'une unité légale diffusible
@@ -2996,6 +3108,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/diffusibles/130025265/siege?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/unites_legales/{siren}/siege":
     get:
       summary: Données de référence du siège d'une unité légale
@@ -3229,6 +3348,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/130025265/siege?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/unites_legales/{siren}":
     get:
       summary: Données de référence d'une unité légale
@@ -3636,6 +3762,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/unites_legales/diffusibles/{siren}":
     get:
       summary: Données de référence d'une entité légale diffusable commercialement
@@ -4046,6 +4179,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/diffusibles/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/mi/associations/{siret_or_rna}":
     get:
       summary: Informations déclaratives d'une association
@@ -4267,6 +4407,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/UnprocessableEntity"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/mi/associations/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/msa/conformites_cotisations/{siret}":
     get:
       summary: Status des cotisations de sécurité sociale agricole
@@ -4404,6 +4551,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/msa/conformites_cotisations/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/probtp/attestations_cotisations_retraite/{siret}":
     get:
       summary: Cotisations retraite bâtiment
@@ -4542,6 +4696,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/probtp/attestations_cotisations_retraite/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/probtp/conformites_cotisations_retraite/{siret}":
     get:
       summary: Conformités vis-à-vis des cotisations retraites
@@ -4651,6 +4812,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/probtp/conformites_cotisations_retraite/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/rnm/entreprises/{siren}":
     get:
       summary: Données de référence d'une entreprise artisanale
@@ -4795,6 +4963,13 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/rnm/entreprises/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
 servers:
 - url: https://entreprise.api.gouv.fr
   description: Environnement de production
