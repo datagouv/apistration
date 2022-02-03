@@ -3,6 +3,7 @@ class INSEE::EtablissementSerializer::V3 < JSONAPI::BaseSerializer
 
   attributes :siege_social,
     :etat_administratif,
+    :date_fermeture,
     :activite_principale,
     :tranche_effectif_salarie,
     :diffusable_commercialement,

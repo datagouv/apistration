@@ -415,6 +415,12 @@ insee:
           - A = Actif
           \n
           - F = Fermé"
+      date_fermeture:
+        title: "Date de fermeture de l'établissement"
+        type: "integer"
+        nullable: true
+        example: 1634133818
+        description: "Cette valeur est renvoyée sous format timestamp"
       activite_principale:
         type: "object"
         properties:

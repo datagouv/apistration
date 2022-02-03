@@ -6,7 +6,8 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
       id: etablissement['siret'],
       siren: etablissement['siren'],
       siege_social: etablissement['etablissementSiege'],
-      etat_administratif: latest_info_on_etablissement['etatAdministratifEtablissement'],
+      etat_administratif: etat_administratif,
+      date_fermeture: date_fermeture,
 
       activite_principale: referential(
         'activite_principale',
@@ -35,6 +36,26 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
   def latest_info_on_etablissement
     @latest_info_on_etablissement ||= etablissement['periodesEtablissement'].find do |periode_etablissement|
       periode_etablissement['dateFin'].nil?
+    end
+  end
+
+  def date_fermeture
+    return if etablissement_active?
+
+    date_to_timestamp(periode_with_fermeture_status['dateDebut'])
+  end
+
+  def etablissement_active?
+    etat_administratif == 'A'
+  end
+
+  def etat_administratif
+    latest_info_on_etablissement['etatAdministratifEtablissement']
+  end
+
+  def periode_with_fermeture_status
+    etablissement['periodesEtablissement'].find do |periode|
+      periode['changementEtatAdministratifEtablissement']
     end
   end
 end

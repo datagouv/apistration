@@ -27,6 +27,7 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
       its(:id) { is_expected.to eq(siret) }
       its(:siege_social) { is_expected.to eq(false) }
       its(:etat_administratif) { is_expected.to eq('A') }
+      its(:date_fermeture) { is_expected.to be_nil }
 
       its(:activite_principale) do
         is_expected.to eq({
@@ -52,6 +53,21 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
       its(:date_creation) { is_expected.to eq(Date.parse('2004-05-26').to_time.to_i) }
 
       its(:date_derniere_mise_a_jour) { is_expected.to eq(Date.parse('2010-04-18').to_time.to_i) }
+    end
+  end
+
+  context 'with a closed siret', vcr: { cassette_name: 'insee/siret/closed' } do
+    let(:siret) { sirets_insee_v3[:closed] }
+
+    it { is_expected.to be_a_success }
+
+    describe 'resource' do
+      subject { organizer.resource }
+
+      it { is_expected.to be_a(Resource) }
+
+      its(:etat_administratif) { is_expected.to eq('F') }
+      its(:date_fermeture) { is_expected.to eq(Date.parse('2011-09-05').to_time.to_i) }
     end
   end
 end
