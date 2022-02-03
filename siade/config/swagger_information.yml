@@ -304,7 +304,7 @@ inpi:
           example: "2017-06-16"
         nature_archive:
           title: "Nature de l'archive de l'acte"
-          description: "Chaine de caractères contenant une ou plusieurs lettres séparées par un tiret, explicitant de quel ou quelles catégories d'archives l'acte provient: A (actes de sociétés) R (ordonnances) et P (actes de personnes physiques)"
+          description: "Chaîne de caractères contenant une ou plusieurs lettres séparées par un tiret, explicitant de quelle(s) catégories d'archives l'acte provient: A (actes de sociétés) R (ordonnances) et P (actes de personnes physiques)"
           type: "string"
           example: "A-R"
 
