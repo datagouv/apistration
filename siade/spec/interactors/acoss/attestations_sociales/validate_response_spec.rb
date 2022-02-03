@@ -62,6 +62,18 @@ RSpec.describe ACOSS::AttestationsSociales::ValidateResponse, type: :validate_re
         end
       end
 
+      context 'when company situation requires manual operation by the provider' do
+        let(:json_errors) do
+          [
+            { code: 'FUNC503', message: 'manual operation needed', description: 'do something' }
+          ]
+        end
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(ACOSSError)) }
+      end
+
       context 'when it is a hash instead of an array' do
         let(:json_errors) do
           {

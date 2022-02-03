@@ -12,7 +12,9 @@ class ACOSS::AttestationsSociales::ValidateResponse < ValidateResponse
   private
 
   def handle_errors
-    if internal_error?
+    if ongoing_manual_verification?
+      fail_with_error!(ACOSSError.new(:ongoing_manual_verification))
+    elsif internal_error?
       build_and_fail!(ProviderInternalServerError)
     elsif not_found?
       build_and_fail!(NotFoundError)
@@ -64,12 +66,20 @@ class ACOSS::AttestationsSociales::ValidateResponse < ValidateResponse
     (error_code_acoss_for_503 & errors_codes).any?
   end
 
+  def ongoing_manual_verification?
+    (error_code_acoss_for_502 & errors_codes).any?
+  end
+
   def errors_codes
     @errors_codes ||= json_errors.pluck(:code)
   end
 
+  def error_code_acoss_for_502
+    %w[FUNC503]
+  end
+
   def error_code_acoss_for_503
-    %w[FUNC502 FUNC503 FUNC504 FUNC510 FUNC511 FUNC512 FUNC513 FUNC514 FUNC515 FUNC516 FUNC429]
+    %w[FUNC502 FUNC504 FUNC510 FUNC511 FUNC512 FUNC513 FUNC514 FUNC515 FUNC516 FUNC429]
   end
 
   def error_code_acoss_for_404

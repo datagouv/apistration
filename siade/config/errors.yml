@@ -217,3 +217,7 @@
 
 - code: '04102'
   title: 'Code erreur non supporté'
+
+- code: '04501'
+  title: 'Analyse de la situation du compte en cours'
+  detail: "La situation de l'entreprise requiert une analyse manuelle d'un agent de l'URSSAF. Une demande d'analyse vient d'être envoyée, cela prend au maximum 2 jours."
