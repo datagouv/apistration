@@ -3,6 +3,12 @@ openapi: 3.0.1
 info:
   title: API Entreprise
   version: v3
+tags:
+- name: Informations générales
+- name: Informations financières
+- name: Attestations sociales et fiscales
+- name: Certifications professionnelles
+- name: Propriété intellectuelle
 paths:
   "/v3/acoss/attestations_sociales/{siren}":
     get:

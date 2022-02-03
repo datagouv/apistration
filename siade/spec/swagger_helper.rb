@@ -46,6 +46,23 @@ RSpec.configure do |config|
         title: 'API Entreprise',
         version: 'v3'
       },
+      tags: [
+        {
+          name: 'Informations générales'
+        },
+        {
+          name: 'Informations financières'
+        },
+        {
+          name: 'Attestations sociales et fiscales'
+        },
+        {
+          name: 'Certifications professionnelles'
+        },
+        {
+          name: 'Propriété intellectuelle'
+        }
+      ],
       paths: {},
       servers: [
         {
