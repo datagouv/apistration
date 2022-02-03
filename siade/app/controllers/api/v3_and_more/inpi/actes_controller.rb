@@ -21,7 +21,7 @@ class API::V3AndMore::INPI::ActesController < API::V3AndMore::BaseController
   end
 
   def serializer_module
-    ::INPI::ActesSerializer
+    ::INPI::ActeSerializer
   end
 
   def options

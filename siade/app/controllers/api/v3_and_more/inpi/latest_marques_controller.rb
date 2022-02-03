@@ -8,6 +8,6 @@ class API::V3AndMore::INPI::LatestMarquesController < API::V3AndMore::INPI::Abst
   private
 
   def serializer_module
-    ::INPI::MarquesSerializer
+    ::INPI::MarqueSerializer
   end
 end

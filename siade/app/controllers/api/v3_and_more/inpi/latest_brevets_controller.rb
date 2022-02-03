@@ -8,6 +8,6 @@ class API::V3AndMore::INPI::LatestBrevetsController < API::V3AndMore::INPI::Abst
   private
 
   def serializer_module
-    ::INPI::BrevetsSerializer
+    ::INPI::BrevetSerializer
   end
 end

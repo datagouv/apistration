@@ -1,4 +1,4 @@
-class INPI::BrevetsSerializer::V3 < JSONAPI::BaseSerializer
+class INPI::BrevetSerializer::V3 < JSONAPI::BaseSerializer
   set_type :brevet
 
   attributes :titre,

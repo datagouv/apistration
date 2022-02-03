@@ -8,6 +8,6 @@ class API::V3AndMore::INPI::LatestModelesController < API::V3AndMore::INPI::Abst
   private
 
   def serializer_module
-    ::INPI::ModelesSerializer
+    ::INPI::ModeleSerializer
   end
 end

@@ -1,4 +1,4 @@
-class INPI::ModelesSerializer::V3 < JSONAPI::BaseSerializer
+class INPI::ModeleSerializer::V3 < JSONAPI::BaseSerializer
   set_type :modele
 
   link :notice, :notice_url

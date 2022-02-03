@@ -1,4 +1,4 @@
-class INPI::ActesSerializer::V3 < JSONAPI::BaseSerializer
+class INPI::ActeSerializer::V3 < JSONAPI::BaseSerializer
   set_type :actes
 
   attributes :siren,
