@@ -10,7 +10,7 @@ insee:
         type: "string"
         example: "22"
       indice_repetition_voie:
-        title: "Indice de répétition du numero dans la voie"
+        title: "Indice de répétition du numéro dans la voie"
         description: "Plus d'infos ici: https://www.sirene.fr/sirene/public/variable/indrep"
         type: "string"
         nullable: true
