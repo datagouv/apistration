@@ -11,7 +11,7 @@ insee:
         example: "22"
       indice_repetition_voie:
         title: "Indice de répétition du numéro dans la voie"
-        description: "Plus d'infos ici: https://www.sirene.fr/sirene/public/variable/indrep"
+        description: "Plus d'infos : https://www.sirene.fr/sirene/public/variable/indrep"
         type: "string"
         nullable: true
         enum:
@@ -24,11 +24,11 @@ insee:
         title: "Type de la voie de localisation"
         example: "RUE"
         description:
-          "Cette information n'est pas toujours renseignée ou il n'en existe pas toujours dans les petites communes.
+          "Cette information est indiquée en abrégé et en majuscules.
           \n
-          Celle-ci est en majuscule.
+          L'information n'est pas toujours renseignée. Pour certaines petites communes, l'information n'existe pas.
           \n
-          Plus d'infos: https://www.sirene.fr/sirene/public/variable/typvoie"
+          Plus d'infos : https://www.sirene.fr/sirene/public/variable/typvoie"
         type: "string"
         nullable: true
         enum: <%= YAML.load_file(Rails.root.join('config/data/insee/types_de_voie.yml')).values.map(&:upcase).concat([nil]).to_json %>
@@ -44,10 +44,11 @@ insee:
       code_commune:
         title: "Code commune"
         description:
-          "Le code commune est défini dans le COG disponible ici: https://www.insee.fr/fr/information/2028028
+          "Le code commune désigne le code de la commune de localisation de l'établissement. Le code renvoyé correspond à la date de l'appel, ce qui implique qu'une modification du code commune est repercutée sur tous les établissements, y compris ceux qui sont fermés. 
           \n
-          \n
-          Cette valeur est à nulle pour les entreprises à l'étranger"
+          Cette valeur est à nulle pour les entreprises à l'étranger
+          /n
+          Les codes sont listés dans la table d'appartenance géographique fournie par l'INSEE et disponible ici: https://www.insee.fr/fr/information/2028028"
         type: "string"
         example: "75112"
         nullable: true
