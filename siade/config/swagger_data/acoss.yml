@@ -5,6 +5,6 @@ acoss:
     tags:
       - "Attestations sociales et fiscales"
     document_url_properties:
-      title: "Lien vers l'attestation de vigilance ACOSS"
-      description: "Ce document est automatiquement supprimé au bout de 3 mois."
+      title: "Lien vers l'attestation de vigilance URSSAF"
+      description: "Ce document est automatiquement supprimé au bout de trois mois."
       example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_vigilance_acoss.pdf"
