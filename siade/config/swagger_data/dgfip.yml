@@ -6,25 +6,25 @@ dgfip:
       - "Attestations sociales et fiscales"
     document_url_properties:
       title: "Lien vers l'attestation fiscale"
-      description: "Ce document est automatiquement supprimé au bout de 3 mois."
+      description: "Ce document est automatiquement supprimé au bout de trois mois."
       example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_fiscale_dgfip.pdf"
 
   liasses_fiscales:
     declarations:
-      title: "Déclarations des liasses fiscales"
-      description: "FEEDME"
+      title: "Liasses fiscales"
+      description: "Obtenir les informations renseignées dans les liasses fiscales, issues des déclarations de résultat d’une entreprise auprès de la Direction générale des finances publiques (DGFIP)."
       tags:
         - "Informations financières"
       attributes: {}
 
   chiffres_affaires:
     title: "Chiffres d'affaires"
-    description: "Obtenir les déclarations de chiffre d’affaire faites auprès de la DGFIP, et portées sur la liasse fiscale.
+    description: "Obtenir les déclarations de chiffre d’affaire faites auprès de la Direction générale des finances publiques (DGFIP), et renseignées dans la liasse fiscale.
       \n
       \n
       Sont disponibles uniquement les chiffres d’affaire des entreprises qui vérifient les deux conditions suivantes :
       \n
-      * être soumises à l’impôt sur les sociétés selon les règles des régimes d’imposition réels, normal ou simplifié ;
+      * être soumises à l’impôt sur les sociétés selon les règles des régimes d’imposition réel, normal ou simplifié ;
       \n
       * avoir transmis ses comptes annuels aux greffes.
       \n
