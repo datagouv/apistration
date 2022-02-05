@@ -2,10 +2,10 @@ inpi:
   actes:
     title: "Actes"
     description: |
-      Obtenir les métadonnées sur les actes d’une entreprise tels que connus par les greffes et archivés à l’Institut National de Propriété Industrielle (INPI).
+      Obtenir les métadonnées associées aux actes d’une entreprise issus des greffes et archivés à l’Institut national de propriété industrielle (INPI).
       Ces actes comportent des informations générales, des informations sur le capital social et sa répartition, ou encore des informations sur les associés et tout ce qui est relatif à l’administration de la société.
 
-      Cet endpoint renvoie uniquement des métadonnées sur les actes, dont l’identifiant d’accès au fichier de téléchargement de l’Acte et du fichier de métadonnées associé. Pour récupérer les actes eux-mêmes, il faut utiliser l'endpoint /inpi/actes/{siren}/documents.
+      Cet API renvoie uniquement des métadonnées sur les actes, dont l’identifiant d’accès au fichier de téléchargement de l’Acte et du fichier de métadonnées associé. Pour récupérer les actes eux-mêmes, il faut utiliser l'API /inpi/actes/{siren}/documents.
     tags:
       - "Informations générales"
     type: "array"
@@ -54,9 +54,10 @@ inpi:
       Derniers brevets déposés par l'entreprise et nombre total de brevets.
       Cet endpoint appelle les informations à partir d’un SIREN. Le SIREN étant une information facultative lors du dépôt de dossier à l’INPI, le taux de sirénage est donc incomplet.
 
-      Taux de sirénage des déposants (sur personnes morales FR) :
-
-      *Brevets France et brevets Europe délivrés : environ 80% sur les demandes de brevets publiées ces 20 dernières années ;
+      Taux de sirénage des déposants (sur personnes morales FR) pour les brevets France et brevets Europe est d'environ 80% sur les demandes de brevets publiées ces 20 dernières années ;
+      \n
+      ℹ️ Pour information, seule la raison sociale compte lors du dépôt pour une personne morale.
+      \n
     tags:
       - "Propriété intellectuelle"
     type: "array"
@@ -64,7 +65,7 @@ inpi:
       properties:
         id:
           title: "Numéro de publication"
-          description: "Numéro de publication du brevet, constitué du Code zone + Numéro du brevet + Catégorie de publication"
+          description: "Numéro de publication du brevet, constitué du code zone + numéro du brevet + catégorie de publication"
           type: "string"
           example: "FR3110115A1"
         titre:
@@ -86,7 +87,7 @@ inpi:
           example: "2015-12-14"
         code_zone:
           description: |
-            Code de 2 lettres représentent la zone géographique où le brevet a été déposé, en fonction
+            Code de deux lettres représentant la zone géographique où le brevet a été déposé, en fonction
             de l'organisation qui a enregistré le brevet.
           type: "string"
           example: "FR"
@@ -163,7 +164,7 @@ inpi:
         notice:
           type: "string"
           example: "https://opendata-pi.inpi.fr/inpi/marques/notice/FR4313464"
-          description: "Lien vers la notice concernant ce dépôt de marque, au format XML"
+          description: "Lien vers la notice concernant ce dépôt de marque, au format XML."
     meta:
       count:
         title: "Nombre de marques"
@@ -178,8 +179,8 @@ inpi:
 
       Taux de sirénage des déposants (sur personnes morales FR) :
 
-      *Dessins & Modèles France : 50% ;
-      *Dessins & Modèles internationaux : 0% (dessins & modèles déposés à l’OMPI).
+      * Dessins & Modèles France : 50% ;
+      * Dessins & Modèles internationaux : 0% (dessins & modèles déposés à l’OMPI).
     tags:
       - "Propriété intellectuelle"
     type: "array"
@@ -192,12 +193,12 @@ inpi:
           example: 'FR20203928-001'
         numero_depot:
           title: "Numéro national de dépôt"
-          description: "Numéro national sous lequel le modèle est enregistré"
+          description: "Numéro national sous lequel le modèle est enregistré."
           type: "string"
           example: "20203928"
         titre:
           title: "Titre"
-          description: "Titre du modèle"
+          description: "Titre du modèle."
           type: "string"
           example: "Véhicule automobile, vues de détails"
         total_representations:
@@ -207,7 +208,7 @@ inpi:
           example: 7
         deposant:
           title: "Déposant"
-          description: "Nom de l'entité ayant déposé le modèle"
+          description: "Nom de l'entité ayant déposé le modèle."
           type: "string"
           example: "PSA AUTOMOBILES, SA"
         date_depot:
