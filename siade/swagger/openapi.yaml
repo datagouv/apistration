@@ -2511,6 +2511,12 @@ paths:
                             example: A
                             description: "État administratif de l'établissement. \n
                               \n - A = Actif \n - F = Fermé"
+                          date_fermeture:
+                            title: Date de fermeture de l'établissement
+                            type: integer
+                            nullable: true
+                            example: 1634133818
+                            description: Cette valeur est renvoyée sous format timestamp
                           activite_principale:
                             type: object
                             properties:
@@ -2584,6 +2590,7 @@ paths:
                         required:
                         - siege_social
                         - etat_administratif
+                        - date_fermeture
                         - activite_principale
                         - tranche_effectif_salarie
                         - diffusable_commercialement
@@ -2754,6 +2761,12 @@ paths:
                             example: A
                             description: "État administratif de l'établissement. \n
                               \n - A = Actif \n - F = Fermé"
+                          date_fermeture:
+                            title: Date de fermeture de l'établissement
+                            type: integer
+                            nullable: true
+                            example: 1634133818
+                            description: Cette valeur est renvoyée sous format timestamp
                           activite_principale:
                             type: object
                             properties:
@@ -2829,6 +2842,7 @@ paths:
                         required:
                         - siege_social
                         - etat_administratif
+                        - date_fermeture
                         - activite_principale
                         - tranche_effectif_salarie
                         - diffusable_commercialement
@@ -2996,6 +3010,12 @@ paths:
                             example: A
                             description: "État administratif de l'établissement. \n
                               \n - A = Actif \n - F = Fermé"
+                          date_fermeture:
+                            title: Date de fermeture de l'établissement
+                            type: integer
+                            nullable: true
+                            example: 1634133818
+                            description: Cette valeur est renvoyée sous format timestamp
                           activite_principale:
                             type: object
                             properties:
@@ -3071,6 +3091,7 @@ paths:
                         required:
                         - siege_social
                         - etat_administratif
+                        - date_fermeture
                         - activite_principale
                         - tranche_effectif_salarie
                         - diffusable_commercialement
@@ -3238,6 +3259,12 @@ paths:
                             example: A
                             description: "État administratif de l'établissement. \n
                               \n - A = Actif \n - F = Fermé"
+                          date_fermeture:
+                            title: Date de fermeture de l'établissement
+                            type: integer
+                            nullable: true
+                            example: 1634133818
+                            description: Cette valeur est renvoyée sous format timestamp
                           activite_principale:
                             type: object
                             properties:
@@ -3311,6 +3338,7 @@ paths:
                         required:
                         - siege_social
                         - etat_administratif
+                        - date_fermeture
                         - activite_principale
                         - tranche_effectif_salarie
                         - diffusable_commercialement
