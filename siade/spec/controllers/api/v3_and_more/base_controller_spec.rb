@@ -50,7 +50,7 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
           expect(errors).to include({
             code: '00402',
             title: 'Version d\'API non prise en charge',
-            detail: 'La version v4 n\'est pas supportée pour cet endpoint.'
+            detail: 'La version v4 n\'est pas supportée pour cet endpoint'
           })
         end
       end
