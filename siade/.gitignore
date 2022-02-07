@@ -86,3 +86,4 @@ builds/
 !/config/credentials/test.key
 
 swagger/v3/openapi.yaml
+swagger/openapi-versionned.yaml
