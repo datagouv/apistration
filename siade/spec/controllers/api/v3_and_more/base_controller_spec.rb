@@ -58,12 +58,42 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
   end
 
   describe 'recipient param' do
+    let(:siret) { valid_siret }
+
     before do
-      get :index, params: { api_version: 42, token: yes_jwt }.merge(**mandatory_params).merge(recipient: recipient)
+      get :index, params: { api_version: 42, token: yes_jwt }
+        .merge(**mandatory_params)
+        .merge(recipient: recipient, siret: siret)
+    end
+
+    context 'with a recipient same as siret param' do
+      let(:recipient) { valid_siret(:recipient) }
+      let(:siret) { valid_siret(:recipient) }
+
+      its(:status) { is_expected.to be(422) }
+
+      it 'serializes an error' do
+        expect(response_json).to have_key(:errors)
+      end
+
+      describe '#body' do
+        let(:errors) { response_json[:errors] }
+
+        it do
+          expect(errors).to include({
+            code: '00211',
+            title: 'Entité non traitable',
+            detail: 'Le paramètre recipient est identique au siret de la demande',
+            source: {
+              parameter: 'recipient'
+            }
+          })
+        end
+      end
     end
 
     context 'with valid siret as recipient' do
-      let(:recipient) { valid_siret }
+      let(:recipient) { valid_siret(:recipient) }
 
       its(:status) { is_expected.to be(200) }
     end

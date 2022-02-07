@@ -3,6 +3,7 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
 
   before_action :verify_api_version!
   before_action :verify_recipient_is_a_siret!
+  before_action :verify_recipient_is_not_param!
   before_action :set_content_type_header!
 
   rescue_from UnsupportedVersionError, with: :unsupported_version_response
@@ -17,6 +18,13 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
     return if recipient_is_a_siret?
 
     render json: ErrorsSerializer.new([InvalidRecipientError.new], format: error_format).as_json,
+      status: :unprocessable_entity
+  end
+
+  def verify_recipient_is_not_param!
+    return unless params[:recipient] == params[:siret]
+
+    render json: ErrorsSerializer.new([RecipientAndResourceIdIdenticalError.new], format: error_format).as_json,
       status: :unprocessable_entity
   end
 

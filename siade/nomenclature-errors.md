@@ -111,6 +111,7 @@ Ces erreurs sont comprises entre `000` et `049`.
 - `00202` = Object manquant
 - `00203` = Recipient manquant
 - `00210` = Recipient n'est pas un siret valide
+- `00211` = Recipient identique au paramètre d'appel
 
 ##### 0003Z Erreurs associés aux entrées non traitables
 

@@ -70,15 +70,21 @@
   source:
     parameter: 'object'
 
+- code: '00203'
+  title: 'Entité non traitable'
+  detail: "Le paramètre recipient est obligatoire"
+  source:
+    parameter: 'recipient'
+
 - code: '00210'
   title: 'Entité non traitable'
   detail: "Le paramètre recipient n'est pas un siret valide"
   source:
     parameter: 'recipient'
 
-- code: '00203'
+- code: '00211'
   title: 'Entité non traitable'
-  detail: "Le paramètre recipient est obligatoire"
+  detail: "Le paramètre recipient est identique au siret de la demande"
   source:
     parameter: 'recipient'
 
