@@ -4,6 +4,8 @@ class ACOSSError < AbstractSpecificProviderError
   end
 
   def extra_meta
+    return {} unless @kind == :ongoing_manual_verification
+
     {
       retry_in: 2.days.to_i
     }
