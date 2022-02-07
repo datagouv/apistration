@@ -4,7 +4,7 @@ RSpec.describe <%= name %>::BuildResourceCollection, type: :build_resource do
   let(:response) { instance_double('Net::HTTPOK', body: body) }
 
   let(:body) do
-    <%= name %>::MakeRequest.call<% if id_name %>(params: params)<% end %>.response.body
+    <%= name %>::MakeRequest.call(params: params).response.body
   end<% if id_name %>
 
   let(:params) do
