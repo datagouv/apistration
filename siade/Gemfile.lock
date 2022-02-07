@@ -1,12 +1,4 @@
 GIT
-  remote: https://github.com/rack/rack-attack
-  revision: 2257f008763b405f6a1515b460f80ed5d0f06c2c
-  ref: 2257f00
-  specs:
-    rack-attack (6.5.0)
-      rack (>= 1.0, < 3)
-
-GIT
   remote: https://github.com/rails-api/active_model_serializers.git
   revision: 524aeeff1c92f105d13dd9581e4dd684c1487da2
   branch: 0-10-stable
@@ -223,6 +215,8 @@ GEM
       activesupport (>= 3.0.0)
     racc (1.6.0)
     rack (2.2.3)
+    rack-attack (6.6.0)
+      rack (>= 1.0, < 3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
     rack-test (1.1.0)
@@ -382,7 +376,7 @@ DEPENDENCIES
   pry
   pry-byebug
   pundit (= 1.0.0)
-  rack-attack!
+  rack-attack
   rack-cors
   rails-controller-testing
   railties (~> 7.0)

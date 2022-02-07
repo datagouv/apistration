@@ -62,7 +62,7 @@ class Rack::Attack
   throttle_exceptions(zone_name_prefix: 'very_low_latency_json_resources', **very_low_latency_json_resources_config)
 
 
-  self.blocklisted_callback = lambda do |req|
+  self.blocklisted_response = lambda do |req|
     error_format = req.params[:error_format] || :flat
     [
       401,

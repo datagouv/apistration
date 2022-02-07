@@ -30,7 +30,7 @@ gem 'redis'
 gem 'unindent'
 gem 'rack-cors'
 gem 'utf8-cleaner'
-gem 'rack-attack', git: 'https://github.com/rack/rack-attack', ref: '2257f00'
+gem 'rack-attack'
 gem 'marcel'
 gem 'rexml'
 
