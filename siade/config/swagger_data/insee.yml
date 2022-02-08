@@ -623,9 +623,11 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
               \n
               Nomemclature d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2406147"
           nomenclature:
+            title: "Nomenclature associée au code"
             type: "string"
             example: "NAFRev2"
-            description: "Nomenclature associée au code"
+            description:
+              "Ce champ indique le nom de la nomenclature associée au code APE."
       tranche_effectif_salarie:
         type: "object"
         properties:
