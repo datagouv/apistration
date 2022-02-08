@@ -472,19 +472,22 @@ insee:
             - "52"
             - "53"
           intitule:
+            title: "Intitulé associé au code effectif"
             type: "string"
             nullable: true
             example: "2 000 à 4 999 salariés"
-            description: "Intitulé associé au code effectif"
           date_reference:
+            title: "Date de référence de l'effectif"
             type: "string"
             nullable: true
             example: "2016"
           de:
+            title: "Seuil inférieur de la tranche effectif"
             type: "integer"
             example: 2000
             nullable: true
           a:
+            title: "Seuil supérieur de la tranche effectif"
             type: "integer"
             example: 4999
             nullable: true
