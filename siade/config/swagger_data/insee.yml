@@ -122,7 +122,7 @@ insee:
         type: "string"
         nullable: true
         example: "PARIS CEDEX 12"
-        description: "Cette variable indique le libellé correspondant au code cedex de l'établissement si celui-ci est non 'null'. Ce libellé est le libellé utilisé dans la ligne 6 d'adresse pour l'acheminement postal."
+        description: "Ce champ indique le libellé correspondant au code cedex de l'établissement. Si le code cedex est à 'null', ce champ est également à 'null'."
       libelle_commune:
         title: "Nom de la commune pour une adresse en France"
         description: "Cette valeur est à 'null' pour les établissements à l'étranger."
