@@ -488,18 +488,27 @@ insee:
         enum:
           - "A"
           - "C"
-        example: "A"
-        description: "
-          - A = Active
+        examples:
+          active:
+            value: A 
+            summary: Active
+          cessee: 
+            value: C
+            summary: Cessée
+        description: 
+          "Cette valeur décrit l'état administratif de l'unité légale, qui peut être :
+          - cessée. Le passage à l'état « Cessée » découle de la prise en compte d'une déclaration de cessation administrative. Pour les personnes morales, cela correspond au dépôt de la déclaration de disparition de la personne morale. Pour les personnes physiques, cela correspond soit à la prise en compte de la déclaration de cessation d'activité déposée par l'exploitant soit au décès de l'exploitant conformément à la réglementation. 
           \n
-          - C = Cessée
-          "
+          - active. En dehors des cas explicités ci-dessus, l'unité légale est toujours à l'état administratif « Active ».
+          \n
+          \n
+          Documentation de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
       date_cessation:
         title: "Date de cessation de l'unité légale"
         type: "integer"
         nullable: true
         example: 1634133818
-        description: "Cette valeur est renvoyée sous format timestamp"
+        description: "Cette valeur est renvoyée sous format timestamp. Si l'entreprise est juridique active, cette valeur est à 'null'."
       date_creation:
         title: "Date de cessation de l'unité légale"
         type: "integer"
