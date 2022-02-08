@@ -61,9 +61,39 @@ insee:
         title: "Distribution spéciale"
         description: |
           La distribution spéciale reprend les éléments particuliers qui accompagnent une adresse de distribution spéciale. C'est un élément constitutif de l'adresse.
+          Voici la liste non-exhaustive des modalités renvoyées :  
           \n
           \n
-          Plus d'informations :
+          - BP : Boîte postale
+          \n
+          - TSA : Tri par service à l'arrivée
+          \n
+          - LP : Local postal
+          \n
+          - RP : Référence postale
+          \n
+          - SP : Secteur postal
+          \n
+          - CP : Case postale
+          \n
+          - CE : Case entreprise
+          \n
+          - CS : Course spéciale
+          \n
+          - POSTE RESTANTE
+          \n
+          - CEDEX : Courrier d'entreprise à distribution exceptionnelle
+          \n
+          - CIDEX : Courrier individuel à distribution exceptionnelle
+          \n
+          - CASE, NIVEAU : Mots utilisés pour la distribution interne du courrier à LA DEFENSE
+          \n
+          - CASIER : Utilisé pour le centre commercial des Quatre Temps
+          \n
+          - SILIC, SENIA, MAREE, FLEURS : Utilisés sur le site de Rungis
+          \n
+          \n
+          Plus d'informations sur les modalités :
           * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
           * https://www.sirene.fr/sirene/public/variable/l5-disp"
         example: "CS 72809"
