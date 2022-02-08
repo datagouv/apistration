@@ -762,13 +762,13 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
           - true
         description: "Détermine si l'établissement est non-diffusible. Cette API n'appelant pas les non-diffusible, cette valeur est toujours à 'true'. Pour récupérer des établissements non-diffusibles, référez-vous à la documentation de l'API /insee/etablissements/:siren"
   siege_unite_legale:
-    title: "Données de référence du siège d'une unité légale"
-    description: "Obtenir des informations générales concernant le siège d'une unité légale du répertoire Sirene."
+    title: "Siège social d'une unité légale"
+    description: "Obtenir des informations générales concernant le siège social d'une unité légale du répertoire Sirene. Tous les établissements sont appelables, y compris les non-diffusibles."
     tags:
       - "Informations générales"
 
   siege_diffusable_unite_legale:
-    title: "Données de référence du siège d'une unité légale diffusible"
-    description: "Obtenir des informations générales concernant le siège d'une unité légale diffusable du répertoire Sirene."
+    title: "Siège social d'une unité légale diffusible"
+    description: "Obtenir des informations générales concernant le siège d'une unité légale diffusable du répertoire Sirene. Pour appeler un établissement non-diffusible, se référer à l'API 'Siège social d'une unité légale'."
     tags:
       - "Informations générales"
