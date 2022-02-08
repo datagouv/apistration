@@ -141,7 +141,7 @@ insee:
       - "Informations générales"
     attributes: &insee_unite_legale_attributes
       siret_siege_social:
-        title: "Siret du siège social"
+        title: "SIRET du siège social"
         type: "string"
         example: "13002526500013"
       type:
@@ -152,13 +152,13 @@ insee:
           - "personne_morale"
         example: "personne_morale"
         description:
-          "Détermine si l'unité légale est une personne morale ou une personne physique.
-          Cette valeur est déterminée à l'aide du code juridique : 1000 correspond à une personne physique."
+          "Indique si l'unité légale est une personne morale ou une personne physique.
+          Cette valeur est déterminée à l'aide du code juridique : '1000' correspondant à une personne physique."
       personne_morale_attributs:
         type: "object"
         title: "Attributs de la personne morale"
         description:
-          "Attributs associé à la personne morale. L'ensemble des valeurs sont à
+          "Attributs associés à la personne morale. Les valeurs sont à
           'null' pour les personnes physiques."
         properties:
           raison_sociale:
@@ -169,7 +169,7 @@ insee:
       personne_physique_attributs:
         type: "object"
         title: "Attributs de la personne physique"
-        description: "Attributs associé à la personne physique. L'ensemble des
+        description: "Attributs associés à la personne physique. Les
           valeurs sont à 'null' pour les personnes morales."
         properties:
           pseudonyme:
@@ -187,7 +187,7 @@ insee:
             nullable: true
             description: "Le prénom usuel est le prénom par lequel
               une personne choisit de se faire appeler dans la
-              vie courante, parmi l'ensemble de ceux qui lui ont
+              vie courante. Ce prénom fait partie de ceux qui lui ont
               été donnés à sa naissance et qui sont inscrits à
               l'état civil."
           prenom_1:
@@ -215,7 +215,7 @@ insee:
             type: "string"
             example: "Dupont"
             nullable: true
-            description: "Nom que la personne physique a choisi d'utiliser"
+            description: "Nom que la personne physique a choisi d'utiliser."
           nom_naissance:
             title: "Nom de naissance"
             type: "string"
@@ -255,13 +255,13 @@ insee:
           \n
           \n
           Celle-ci peut-être 'null' dans
-          certains cas : il s’agit soit d’une unité légale nouvellement
-          créée, soit d’une unité légale cessée, soit d’une unité
+          certains cas : quand il s’agit d’une unité légale nouvellement
+          créée, ou bien d’une unité légale cessée, ou encore d’une unité
           légale hors champ du calcul de la catégorie (unité légale
-          agricole ou ne faisant pas partie du système productif)
+          agricole ou ne faisant pas partie du système productif).
           \n
           \n
-          La définition peut-être trouvée sur le lien suivant : https://www.insee.fr/fr/metadonnees/definition/c1057"
+          Définition de 'catégorie d'entreprise' par l'INSEE : https://www.insee.fr/fr/metadonnees/definition/c1057"
       numero_tva_intracommunautaire:
         title: "Numéro de TVA intracommunautaire"
         type: "string"
