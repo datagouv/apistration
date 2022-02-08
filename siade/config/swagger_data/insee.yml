@@ -411,7 +411,7 @@ insee:
             nullable: true
             example: "51"
             description: 
-              "Le code effectif correspond à une fourchette du nombre de salariés : 
+              "Le code effectif correspond à la tranche d'effectif salarié de l'entreprise. Le nombre de salarié est déterminé en fonction de l'effectif de l'entreprise et de chacun de ses établissements : 
               \n
               \n
               - NN : Unités non employeuses (pas de salarié au cours de l'année de référence et pas d'effectif au 31/12). Cette tranche peut contenir quelques effectifs inconnus
@@ -469,6 +469,7 @@ insee:
             type: "string"
             nullable: true
             example: "2 000 à 4 999 salariés"
+            description: "Intitulé associé au code effectif"
           date_reference:
             type: "string"
             nullable: true
