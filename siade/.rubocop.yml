@@ -22,11 +22,6 @@ AllCops:
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 
-# Useful in specs
-Lint/ConstantDefinitionInBlock:
-  Exclude:
-    - "spec/**/*_spec.rb"
-
 # Forcing 'super' is verbose
 Lint/MissingSuper:
   Enabled: false
@@ -108,10 +103,6 @@ Naming/AccessorMethodName:
     - "app/services/monitoring_service.rb"
     - "lib/generators/scaffold_resource/scaffold_resource_generator.rb"
     - "app/interactors/inpi/authenticate.rb"
-
-# In some cases we like this
-Naming/AccessorMethodName:
-  Enabled: false
 
 # Allowing uppercase in some method names
 Naming/MethodName:
