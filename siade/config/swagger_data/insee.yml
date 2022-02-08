@@ -57,11 +57,25 @@ insee:
         title: "Distribution spéciale"
         description: |
           La distribution spéciale reprend les éléments particuliers qui accompagnent une adresse de distribution spéciale. C'est un élément constitutif de l'adresse.
-
-          Plus d'infos:
+          Plus d'informations :
           * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
           * https://www.sirene.fr/sirene/public/variable/l5-disp"
         example: "CS 72809"
+        enum:
+          - "BP"
+          - "TSA"
+          - "LP"
+          - "RP"
+          - "SP"
+          - "CP"
+          - "CE"
+          - "CS"
+          - "POSTE RESTANTE"
+          - "CEDEX"
+          - "CIDEX"
+          - "CASE, NIVEAU"
+          - "CASIER"
+          - "SILIC, SENIA, MAREE, FLEURS"
       code_cedex:
         title: "Code cedex"
         nullable: true
