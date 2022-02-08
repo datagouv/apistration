@@ -374,10 +374,14 @@ insee:
             title: "Code de l'activité principale (APE) de l'unité légale"
             type: "string"
             example: "8411Z"
-            description: "Ce code est extrait de la nomenclature
-              NAF. A noter qu'une entreprise n'ayant pas encore
-              de code APE peut se voir affecter la valeur 00.00Z
-              de manière provisoire."
+            description: "Le code APE (activité principale exercée) permet d'identifier la branche d'activité principale. Il est attribué par l'Insee lors de l'immatriculation ou la déclaration d'activité de l'entreprise. Ce code de 4 chiffres + 1 lettre est extrait de la nomenclature d'activité française (NAF) de l'INSEE. 
+            \n
+            \n
+            À noter qu'une entreprise n'ayant pas encore de code APE peut se voir affecter la valeur '00.00Z' de manière provisoire.
+            \n
+            \n
+            Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
+            Nomemclature d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2120875"
           libelle:
             title: "Libellé associé au code APE"
             type: "string"
