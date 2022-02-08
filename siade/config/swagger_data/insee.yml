@@ -302,10 +302,13 @@ insee:
         title: "Numéro de TVA intracommunautaire"
         type: "string"
         example: "FR07130025265"
-        description: "Le numéro de TVA intracommunautaire est calculé à l'aide du numéro de SIREN, cette
-          donnée est donc théorique : une entreprise dont le siège
-          social se trouve à l'étranger n'a probablement pas
-          de numéro de TVA français."
+        description: "Le numéro de TVA intracommunautaire est un numéro d’identification individuel attribué aux entreprises assujetties à la TVA et domiciliées au sein de l’Union européenne. Le numéro renvoyé par l'API est calculé par API Entreprise à l'aide du numéro de SIREN, cette donnée est donc théorique. 
+          \n
+          \n
+          Dans le cas où l’établissement siège est à l’étranger la valeur est systématiquement 'null'
+          \n
+          \n
+          Plus d'informations sur la méthode de calcul : LIEN TODO"
       diffusable_commercialement:
         title: "Diffusable commercialement"
         type: "boolean"
@@ -320,7 +323,7 @@ insee:
           au grand public.
           \n
           \n
-          Plus d'informations sur les conditions de diffusion : LIEN À VENIR VERS LA DOC MÉTIER "
+          Plus d'informations sur les conditions de diffusion : LIEN TODO"
       forme_juridique:
         type: "object"
         title: "Attributs de la forme juridique"
