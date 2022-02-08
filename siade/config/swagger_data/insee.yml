@@ -553,7 +553,7 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
         example: true
         enum:
           - true
-        description: "Détermine si l'unité légale est une entité non-diffusible. Cette valeur est toujours à true. Pour récupérer des unités légales non-diffusible, référez-vous à la documentation de l'API /insee/unites_legales/:siren"
+        description: "Détermine si l'unité légale est une entité non-diffusible. Cette API n'appelant pas les non-diffusible, cette valeur est toujours à 'true'. Pour récupérer des unités légales non-diffusible, référez-vous à la documentation de l'API /insee/unites_legales/:siren"
 
   etablissement:
     title: "Données Sirene d'un établissement"
@@ -652,12 +652,23 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
             example: 4999
             nullable: true
       diffusable_commercialement:
+        title: "Diffusable commercialement"
         type: "boolean"
         example: true
         enum:
           - true
           - false
-        description: "Détermine si l'établissemenr est un établissement diffusible commercialement."
+        description: "Indique si l'établissement est : 
+          \n
+          \n
+          - diffusible : 'true'
+          \n
+          - non-diffusible : 'false'. Dans ce cas, les
+          informations obtenues ne doivent en aucun cas être accessibles
+          au grand public.
+          \n
+          \n
+          Plus d'informations sur les conditions de diffusion : LIEN TODO"
       date_creation:
         type: "integer"
         example: 1634103818
@@ -684,10 +695,7 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
         example: true
         enum:
           - true
-        description: "Détermine si l'établissement est un établissement
-          non-diffusible. Cette valeur est toujours à true. Si vous voulez pouvoir récupérer des établissements
-          non-diffusible, référez-vous à la documentation de l'API Insee établissement"
-
+        description: "Détermine si l'établissement est non-diffusible. Cette API n'appelant pas les non-diffusible, cette valeur est toujours à 'true'. Pour récupérer des établissements non-diffusibles, référez-vous à la documentation de l'API /insee/etablissements/:siren"
   siege_unite_legale:
     title: "Données de référence du siège d'une unité légale"
     description: "Obtenir des informations générales concernant le siège d'une unité légale du répertoire Sirene."
