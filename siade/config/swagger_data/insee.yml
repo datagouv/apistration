@@ -358,7 +358,11 @@ insee:
             title: "Libellé associé au code de la forme juridique de l'unité légale."
             type: "string"
             example: "Service central d'un ministère"
-            description: "Si le code ne correspond à aucun libellé la valeur 'non référencé' est utilisée."
+            description: "indique le libellé correspondant au code juridique.
+            Si le code ne correspond à aucun libellé la valeur 'non référencé' est utilisée.
+            \n
+            \n
+            Nomenclature exhaustive fournie par l'INSEE : https://www.insee.fr/fr/information/2028129"
       activite_principale:
         title: "Attributs de l'activité principale"
         type: "object"
