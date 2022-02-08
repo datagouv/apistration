@@ -49,7 +49,7 @@ insee:
           Cette valeur est à 'null' pour les entreprises à l'étranger.
           \n
           \n
-          Les codes sont listés dans la table d'appartenance géographique fournie par l'INSEE et disponible ici: https://www.insee.fr/fr/information/2028028"
+          Les codes sont listés dans la table d'appartenance géographique fournie par l'Insee et disponible ici: https://www.insee.fr/fr/information/2028028"
         type: "string"
         example: "75112"
         nullable: true
@@ -151,7 +151,7 @@ insee:
       date_derniere_mise_a_jour: &insee_date_derniere_mise_a_jour
         type: "integer"
         example: 1618396818
-        description: "Date de la dernière mise à jour à l'INSEE."
+        description: "Date de la dernière mise à jour à l'Insee."
 
     links:
       entreprise:
@@ -279,7 +279,7 @@ insee:
           - "PME"
           - null
         description: "Il s'agit d'une
-          variable statistique calculée par l'INSEE. Elle ne peut
+          variable statistique calculée par l'Insee. Elle ne peut
           prendre que 3 valeurs:
           \n
           \n
@@ -297,7 +297,7 @@ insee:
           agricole ou ne faisant pas partie du système productif).
           \n
           \n
-          Définition de 'catégorie d'entreprise' par l'INSEE : https://www.insee.fr/fr/metadonnees/definition/c1057"
+          Définition de 'catégorie d'entreprise' par l'Insee : https://www.insee.fr/fr/metadonnees/definition/c1057"
       numero_tva_intracommunautaire:
         title: "Numéro de TVA intracommunautaire"
         type: "string"
@@ -356,7 +356,7 @@ insee:
               - 9 : Groupement de droit privé
               \n
               \n
-              Nomenclature exhaustive des codes fournie par l'INSEE : https://www.insee.fr/fr/information/2028129"
+              Nomenclature exhaustive des codes fournie par l'Insee : https://www.insee.fr/fr/information/2028129"
           libelle:
             title: "Libellé associé au code de la forme juridique de l'unité légale."
             type: "string"
@@ -365,7 +365,7 @@ insee:
             Si le code ne correspond à aucun libellé la valeur 'non référencé' est utilisée.
             \n
             \n
-            Nomenclature exhaustive fournie par l'INSEE : https://www.insee.fr/fr/information/2028129"
+            Nomenclature exhaustive fournie par l'Insee : https://www.insee.fr/fr/information/2028129"
       activite_principale:
         title: "Attributs de l'activité principale"
         type: "object"
@@ -374,7 +374,7 @@ insee:
             title: "Code de l'activité principale (APE) de l'unité légale"
             type: "string"
             example: "8411Z"
-            description: "Le code APE (activité principale exercée) permet d'identifier la branche d'activité principale. Il est attribué par l'Insee lors de l'immatriculation ou la déclaration d'activité de l'entreprise. Ce code de 4 chiffres + 1 lettre est extrait de la nomenclature d'activité française (NAF) de l'INSEE. 
+            description: "Le code APE (activité principale exercée) permet d'identifier la branche d'activité principale. Il est attribué par l'Insee lors de l'immatriculation ou la déclaration d'activité de l'entreprise. Ce code de 4 chiffres + 1 lettre est extrait de la nomenclature d'activité française (NAF) de l'Insee. 
             \n
             \n
             À noter qu'une entreprise n'ayant pas encore de code APE peut se voir affecter la valeur '00.00Z' de manière provisoire.
@@ -395,7 +395,7 @@ insee:
               valeur 'non référencé' est utilisée.
               \n
               \n
-              Nomenclature 'Naf Rév2' de l'INSEE : https://www.insee.fr/fr/information/2406147"
+              Nomemclature d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2406147"
           nomenclature:
             title: "Nomenclature associée au code"
             type: "string"
@@ -522,7 +522,7 @@ insee:
               "Libellé associé au code APE. Si le code n'est pas renseigné dans la nomenclature 'Naf Rév2' (nomenclature en vigueur), le libellé n'est pas renseigné ici. Si le code ne correspond à aucun libellé au sein de la nomenclature 'Naf Rév2', la valeur 'non référencé' est utilisée.
               \n
               \n
-              Nomenclature 'Naf Rév2' de l'INSEE : https://www.insee.fr/fr/information/2406147"
+              Nomemclature d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2406147"
           nomenclature:
             type: "string"
             example: "NAFRev2"
@@ -585,7 +585,7 @@ insee:
           - true
         description: "Détermine si l'établissement est un établissement
           non-diffusible. Cette valeur est toujours à true. Si vous voulez pouvoir récupérer des établissements
-          non-diffusible, référez-vous à la documentation du endpoint INSEE établissement"
+          non-diffusible, référez-vous à la documentation de l'API Insee établissement"
 
   siege_unite_legale:
     title: "Données de référence du siège d'une unité légale"
