@@ -329,10 +329,31 @@ insee:
             title: "Code de la forme juridique de l'unité légale."
             type: "string"
             example: "7120"
-            description: "Cette variable est à 1000 pour les personnes physiques.
+            description: "Il existe plus de 300 catégories juridiques, identifiables par un code spécifique à quatre chiffres. Leur nomenclature comporte 3 niveaux. Le premier niveau de classement contient 9 grandes catégories identifiables avec le premier chiffre du code : 
               \n
               \n
-              La liste complète se trouve ici: https://www.insee.fr/fr/information/2028129"
+              - 0 : Organisme de placement collectif en valeurs mobilières sans personnalité morale
+              \n
+              - 1 : Entrepreneur individuel. La catégorie juridique des personnes physiques est '1000'.
+              \n
+              - 2 : Groupement de droit privé non doté de la personnalité morale
+              \n
+              - 3 : Personne morale de droit étranger
+              \n
+              - 4 : Personne morale de droit public soumise au droit commercial
+              \n
+              - 5 : Société commerciale
+              \n
+              - 6 : Autre personne morale immatriculée au RCS
+              \n
+              - 7 : Personne morale et organisme soumis au droit administratif
+              \n
+              - 8 : Organisme privé spécialisé
+              \n
+              - 9 : Groupement de droit privé
+              \n
+              \n
+              Nomenclature exhaustive des codes fournie par l'INSEE : https://www.insee.fr/fr/information/2028129"
           libelle:
             title: "Libellé associé au code de la forme juridique de l'unité légale."
             type: "string"
