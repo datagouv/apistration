@@ -11,7 +11,7 @@ insee:
         example: "22"
       indice_repetition_voie:
         title: "Indice de répétition du numéro dans la voie"
-        description: "Plus d'informations : https://www.sirene.fr/sirene/public/variable/indrep"
+        description: "Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/indrep"
         type: "string"
         nullable: true
         enum:
@@ -28,7 +28,7 @@ insee:
           l'information n'existe pas. 
           \n
           \n
-          Plus d'informations : https://www.sirene.fr/sirene/public/variable/typvoie"
+          Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie"
         type: "string"
         nullable: true
         enum: <%= YAML.load_file(Rails.root.join('config/data/insee/types_de_voie.yml')).values.map(&:upcase).concat([nil]).to_json %>
@@ -62,7 +62,7 @@ insee:
           "La distribution spéciale reprend les éléments particuliers qui accompagnent une adresse de distribution spéciale, la modalité la plus connue étant les adresses en 'CEDEX'.
           \n
           \n
-          Plus d'informations sur les modalités :
+          Plus d'informations dans la documentation Insee de l'API Sirene :
           * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
           * https://www.sirene.fr/sirene/public/variable/l5-disp"
         examples:
@@ -122,7 +122,7 @@ insee:
       code_cedex:
         title: "Code cedex"
         nullable: true
-        description: "Plus d'informations: https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle"
+        description: "Plus d'informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle"
         example: "75590"
       libelle_cedex:
         title: "Libellé du code cedex"
@@ -169,7 +169,6 @@ insee:
         type: "string"
         example: "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/13002526500013"
         description: "Lien vers la ressource 'Donnée Sirene d'un établissement' correspondant à cette adresse d'établissement pour obtenir les données de référence de l'établissement."
-
   adresse_etablissement_diffusable:
     title: "Adresse d'un établissement diffusible"
     description: "Adresse de l'établissement diffusible présente dans le répertoire Sirene. Pour appeler un établissement non-diffusible, se référer à l'API 'Adresse d'un établissement'."
@@ -454,7 +453,7 @@ insee:
               - 53 : 10 000 salariés et plus 
               \n
               \n
-              Desciption des modalités donnée par l'Insee : https://www.sirene.fr/sirene/public/variable/tefen"
+              Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen"
             enum:
             - "NN"
             - "00"
@@ -504,12 +503,14 @@ insee:
             summary: Cessée
         description: 
           "Cette valeur décrit l'état administratif de l'unité légale, qui peut être :
+          \n
+          \n
           - cessée. Le passage à l'état « Cessée » découle de la prise en compte d'une déclaration de cessation administrative. Pour les personnes morales, cela correspond au dépôt de la déclaration de disparition de la personne morale. Pour les personnes physiques, cela correspond soit à la prise en compte de la déclaration de cessation d'activité déposée par l'exploitant soit au décès de l'exploitant conformément à la réglementation. 
           \n
           - active. En dehors des cas explicités ci-dessus, l'unité légale est toujours à l'état administratif « Active ».
           \n
           \n
-          Documentation de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+          Plus d'information dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
       date_cessation:
         title: "Date de cessation de l'unité légale"
         type: "integer"
@@ -517,10 +518,16 @@ insee:
         example: 1634133818
         description: "Cette valeur est renvoyée sous format timestamp. Si l'entreprise est juridique active, cette valeur est à 'null'."
       date_creation:
-        title: "Date de cessation de l'unité légale"
+        title: "Date de création de l'unité légale"
         type: "integer"
         example: 1634103818
-        description: "Cette valeur est renvoyée sous format timestamp"
+        description: "La date de création correspond à la date qui figure dans les statuts de l'entreprise qui sont déposés au centre de formalité des entreprises (CFE) compétent. Cette valeur est renvoyée sous format timestamp.
+          \n
+          \n
+Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si elle est non renseignée, elle sera au 01/01/1900.
+          \n
+          \n
+          Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
     links:
       siege_social:
         type: "string"
