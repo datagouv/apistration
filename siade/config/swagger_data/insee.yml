@@ -115,28 +115,28 @@ insee:
       date_derniere_mise_a_jour: &insee_date_derniere_mise_a_jour
         type: "integer"
         example: 1618396818
-        description: "Date de la dernière mise à jour à l'INSEE"
+        description: "Date de la dernière mise à jour à l'INSEE."
 
     links:
       entreprise:
         type: "string"
         example: "https://entreprises.api.gouv.fr/api/v3/insee/entreprises/130025265/"
-        description: "Lien vers la ressource entreprise correspondant à cette adresse d'établissement"
+        description: "Lien vers la ressource 'Donnée Sirene d'une unité légale' correspondant à cette adresse d'établissement pour obtenir les données de référence de l'unité légale."
       etablissement:
         type: "string"
         example: "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/13002526500013"
-        description: "Lien vers la ressource établissement correspondant à cette adresse d'établissement"
+        description: "Lien vers la ressource 'Donnée Sirene d'un établissement' correspondant à cette adresse d'établissement pour obtenir les données de référence de l'établissement."
 
   adresse_etablissement_diffusable:
     title: "Adresse d'un établissement diffusible"
-    description: "Adresse de l'établissement diffusible présente dans le répertoire Sirene."
+    description: "Adresse de l'établissement diffusible présente dans le répertoire Sirene. Pour appeler un établissement non-diffusible, se référer à l'API 'Adresse d'un établissement'."
     tags:
       - "Informations générales"
     attributes: *insee_adresse_etablissement_attributes
 
   unite_legale:
-    title: "Données de référence d'une unité légale"
-    description: "Obtenir les informations de référence d'une unité légale, qui est soit entreprise, soit administration, soit une association présente dans le répertoire Sirene."
+    title: "Données Sirene d'une unité légale"
+    description: "Obtenir les informations de référence d'une unité légale (entreprises, associations et administrations) telles que le type d'entreprise, son activité et son état administratif."
     tags:
       - "Informations générales"
     attributes: &insee_unite_legale_attributes
