@@ -18,7 +18,7 @@ class INSEE::SiegeUniteLegale::ValidateResponse < ValidateResponse
     json_body['etablissements'].count > 1
   end
 
-  def not_found_message
+  def not_found_message(_resource)
     'Le siren indiqué n\'existe pas, n\'est pas connu, est possiblement une entité pour laquelle aucun organisme ne peut avoir accès, ou ne comporte aucune information pour cet appel'
   end
 end

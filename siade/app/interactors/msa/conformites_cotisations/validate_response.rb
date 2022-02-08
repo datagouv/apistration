@@ -5,7 +5,7 @@ class MSA::ConformitesCotisations::ValidateResponse < ValidateResponse
     if !http_ok?
       unknown_provider_response!
     elsif status == :unknown
-      resource_not_found!
+      resource_not_found!(:siret)
     end
   rescue InvalidStatus
     unknown_provider_response!
@@ -26,9 +26,5 @@ class MSA::ConformitesCotisations::ValidateResponse < ValidateResponse
     else
       raise InvalidStatus
     end
-  end
-
-  def not_found_message
-    'Le siret indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel'
   end
 end

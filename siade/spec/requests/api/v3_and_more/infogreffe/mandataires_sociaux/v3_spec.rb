@@ -3,7 +3,7 @@ require 'swagger_helper'
 RSpec.describe 'Infogreffe: Mandataires sociaux', type: %i[request swagger] do
   path '/v3/infogreffe/mandataires_sociaux/{siren}' do
     get "Récupération des mandataires sociaux d'une entreprise" do
-      tags(*SwaggerInformation.get('infogreffe.mandataires_sociaux.tags'))
+      tags(*SwaggerData.get('infogreffe.mandataires_sociaux.tags'))
 
       common_action_attributes
 
@@ -19,12 +19,12 @@ RSpec.describe 'Infogreffe: Mandataires sociaux', type: %i[request swagger] do
 
       describe 'with valid mandatory params', valid: true do
         response '200', 'Entité trouvée', vcr: { cassette_name: 'infogreffe/mandataires_sociaux/with_valid_siren' } do
-          description SwaggerInformation.get('infogreffe.mandataires_sociaux.description')
+          description SwaggerData.get('infogreffe.mandataires_sociaux.description')
 
           schema build_rswag_response(
             id: valid_siren(:extrait_rcs),
             type: 'mandataires_sociaux',
-            attributes: SwaggerInformation.get('infogreffe.mandataires_sociaux.attributes')
+            attributes: SwaggerData.get('infogreffe.mandataires_sociaux.attributes')
           )
 
           rate_limit_headers
