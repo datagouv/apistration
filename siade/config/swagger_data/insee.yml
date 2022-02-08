@@ -1,7 +1,7 @@
 insee:
   adresse_etablissement:
     title: "Adresse de l'établissement"
-    description: "Adresse de l'établissement présente dans le répertoire Sirene."
+    description: "Adresse d'un établissement présent dans le répertoire Sirene. Tous les établissements sont appelables, y compris les non-diffusibles."
     tags:
       - "Informations générales"
     attributes: &insee_adresse_etablissement_attributes
@@ -11,7 +11,7 @@ insee:
         example: "22"
       indice_repetition_voie:
         title: "Indice de répétition du numéro dans la voie"
-        description: "Plus d'infos : https://www.sirene.fr/sirene/public/variable/indrep"
+        description: "Plus d'informations : https://www.sirene.fr/sirene/public/variable/indrep"
         type: "string"
         nullable: true
         enum:
@@ -24,11 +24,10 @@ insee:
         title: "Type de la voie de localisation"
         example: "RUE"
         description:
-          "Cette information est indiquée en abrégé et en majuscules.
-          \n
-          L'information n'est pas toujours renseignée. Pour certaines petites communes, l'information n'existe pas.
-          \n
-          Plus d'infos : https://www.sirene.fr/sirene/public/variable/typvoie"
+          "Le type de la voie de localisation est indiquée en abrégé et en majuscules.
+          L'information n'est pas toujours renseignée. Pour certaines petites communes, 
+          l'information n'existe pas. 
+          Plus d'informations : https://www.sirene.fr/sirene/public/variable/typvoie"
         type: "string"
         nullable: true
         enum: <%= YAML.load_file(Rails.root.join('config/data/insee/types_de_voie.yml')).values.map(&:upcase).concat([nil]).to_json %>
@@ -44,10 +43,8 @@ insee:
       code_commune:
         title: "Code commune"
         description:
-          "Le code commune désigne le code de la commune de localisation de l'établissement. Le code renvoyé correspond à la date de l'appel, ce qui implique qu'une modification du code commune est repercutée sur tous les établissements, y compris ceux qui sont fermés. 
-          \n
-          Cette valeur est à nulle pour les entreprises à l'étranger
-          /n
+          "Le code commune désigne le code de la commune de localisation de l'établissement. Le code renvoyé correspond à la date de l'appel, ce qui implique que toute modification du code commune est repercutée sur l'ensemble des établissements concernés, y compris ceux qui sont fermés. 
+          Cette valeur est à 'null' pour les entreprises à l'étranger.
           Les codes sont listés dans la table d'appartenance géographique fournie par l'INSEE et disponible ici: https://www.insee.fr/fr/information/2028028"
         type: "string"
         example: "75112"
@@ -78,13 +75,13 @@ insee:
         description: "Cette variable indique le libellé correspondant au code cedex de l'établissement si celui-ci est non null. Ce libellé est le libellé utilisé dans la ligne 6 d'adresse pour l'acheminement postal."
       libelle_commune:
         title: "Libellé de la commune pour une adresse en France"
-        description: "Cette valeur est à nulle pour les établissements à l'étranger"
+        description: "Cette valeur est à 'null' pour les établissements à l'étranger"
         type: "string"
         example: "PARIS 12"
         nullable: true
       libelle_commune_etranger:
         title: "Libellé complémentaire pour une adresse à l'étranger"
-        description: "Cette valeur est à nulle pour les établissements en France"
+        description: "Cette valeur est à 'null' pour les établissements en France"
         type: "string"
         nullable: true
 
@@ -148,7 +145,7 @@ insee:
         title: "Attributs de la personne morale"
         description:
           "Attributs associé à la personne morale. L'ensemble des valeurs sont à
-          null pour les personnes physiques."
+          'null' pour les personnes physiques."
         properties:
           raison_sociale:
             title: "Raison sociale de l'unité légale"
@@ -159,7 +156,7 @@ insee:
         type: "object"
         title: "Attributs de la personne physique"
         description: "Attributs associé à la personne physique. L'ensemble des
-          valeurs sont à null pour les personnes morales."
+          valeurs sont à 'null' pour les personnes morales."
         properties:
           pseudonyme:
             title: "Pseudonyme"
@@ -243,7 +240,7 @@ insee:
           - PME: Petite ou Moyenne Entreprise
           \n
           \n
-          Celle-ci peut-être nulle dans
+          Celle-ci peut-être 'null' dans
           certains cas : il s’agit soit d’une unité légale nouvellement
           créée, soit d’une unité légale cessée, soit d’une unité
           légale hors champ du calcul de la catégorie (unité légale
