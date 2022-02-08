@@ -27,6 +27,8 @@ insee:
           "Le type de la voie de localisation est indiquée en abrégé et en majuscules.
           L'information n'est pas toujours renseignée. Pour certaines petites communes, 
           l'information n'existe pas. 
+          \n
+          \n
           Plus d'informations : https://www.sirene.fr/sirene/public/variable/typvoie"
         type: "string"
         nullable: true
@@ -45,6 +47,8 @@ insee:
         description:
           "Le code commune désigne le code de la commune de localisation de l'établissement. Le code renvoyé correspond à la date de l'appel, ce qui implique que toute modification du code commune est repercutée sur l'ensemble des établissements concernés, y compris ceux qui sont fermés. 
           Cette valeur est à 'null' pour les entreprises à l'étranger.
+          \n
+          \n
           Les codes sont listés dans la table d'appartenance géographique fournie par l'INSEE et disponible ici: https://www.insee.fr/fr/information/2028028"
         type: "string"
         example: "75112"
@@ -57,6 +61,8 @@ insee:
         title: "Distribution spéciale"
         description: |
           La distribution spéciale reprend les éléments particuliers qui accompagnent une adresse de distribution spéciale. C'est un élément constitutif de l'adresse.
+          \n
+          \n
           Plus d'informations :
           * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
           * https://www.sirene.fr/sirene/public/variable/l5-disp"
@@ -321,7 +327,7 @@ insee:
               valeur 'non référencé' est utilisée.
               \n
               \n
-              Le lien vers la nomenclature 'Naf Rév2' : https://www.insee.fr/fr/information/2406147"
+              Nomenclature 'Naf Rév2' de l'INSEE : https://www.insee.fr/fr/information/2406147"
           nomenclature:
             title: "Nomenclature associée au code"
             type: "string"
@@ -448,7 +454,7 @@ insee:
               "Libellé associé au code APE. Si le code n'est pas renseigné dans la nomenclature 'Naf Rév2' (nomenclature en vigueur), le libellé n'est pas renseigné ici. Si le code ne correspond à aucun libellé au sein de la nomenclature 'Naf Rév2', la valeur 'non référencé' est utilisée.
               \n
               \n
-              Le lien vers la nomenclature 'Naf Rév2' : https://www.insee.fr/fr/information/2406147"
+              Nomenclature 'Naf Rév2' de l'INSEE : https://www.insee.fr/fr/information/2406147"
           nomenclature:
             type: "string"
             example: "NAFRev2"
