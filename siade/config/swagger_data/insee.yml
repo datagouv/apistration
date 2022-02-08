@@ -79,34 +79,34 @@ insee:
       code_cedex:
         title: "Code cedex"
         nullable: true
-        description: "Plus d'infos: https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle"
+        description: "Plus d'informations: https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle"
         example: "75590"
       libelle_cedex:
         title: "Libellé du code cedex"
         type: "string"
         nullable: true
         example: "PARIS CEDEX 12"
-        description: "Cette variable indique le libellé correspondant au code cedex de l'établissement si celui-ci est non null. Ce libellé est le libellé utilisé dans la ligne 6 d'adresse pour l'acheminement postal."
+        description: "Cette variable indique le libellé correspondant au code cedex de l'établissement si celui-ci est non 'null'. Ce libellé est le libellé utilisé dans la ligne 6 d'adresse pour l'acheminement postal."
       libelle_commune:
-        title: "Libellé de la commune pour une adresse en France"
-        description: "Cette valeur est à 'null' pour les établissements à l'étranger"
+        title: "Nom de la commune pour une adresse en France"
+        description: "Cette valeur est à 'null' pour les établissements à l'étranger."
         type: "string"
         example: "PARIS 12"
         nullable: true
       libelle_commune_etranger:
-        title: "Libellé complémentaire pour une adresse à l'étranger"
-        description: "Cette valeur est à 'null' pour les établissements en France"
+        title: "Nom de la commune pour une adresse à l'étranger."
+        description: "Cette valeur est à 'null' pour les établissements en France."
         type: "string"
         nullable: true
 
       code_pays_etranger:
-        title: "Code pays pour les établissements situés à l'étranger"
-        description: "La nomenclature se trouve ici: https://www.insee.fr/fr/information/2028273"
+        title: "Code du pays pour les établissements situés à l'étranger"
+        description: "La nomenclature des codes pays se trouve ici: https://www.insee.fr/fr/information/2028273"
         type: "string"
         example: "99132"
         nullable: true
       libelle_pays_etranger:
-        title: "Libellé du pays pour les établissements situés à l'étranger"
+        title: "Nom du pays pour les établissements situés à l'étranger"
         type: "string"
         nullable: true
         example: "ROYAUME-UNI"
