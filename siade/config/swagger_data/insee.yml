@@ -302,19 +302,25 @@ insee:
         title: "Numéro de TVA intracommunautaire"
         type: "string"
         example: "FR07130025265"
-        description: "Cette
-          valeur est calculée à l'aide du numéro de siren, cette
-          donnée est donc théorique: une entreprise dont le siège
+        description: "Le numéro de TVA intracommunautaire est calculé à l'aide du numéro de SIREN, cette
+          donnée est donc théorique : une entreprise dont le siège
           social se trouve à l'étranger n'a probablement pas
           de numéro de TVA français."
       diffusable_commercialement:
         title: "Diffusable commercialement"
         type: "boolean"
         example: true
-        description: "Détermine si l'unité légale est une unité légale
-          non-diffusible. Si celle-ci est non-diffusible, ses
-          informations ne doivent en aucun cas être accessibles
-          au grand public."
+        description: "Indique si l'unité légale est : 
+          \n
+          \n
+          - une unité légale diffusible : 'true'
+          \n
+          - une unité légale non-diffusible : 'false'. Dans ce cas, les
+          informations obtenues ne doivent en aucun cas être accessibles
+          au grand public.
+          \n
+          \n
+          Plus d'informations sur les conditions de diffusion : LIEN À VENIR VERS LA DOC MÉTIER "
       forme_juridique:
         type: "object"
         title: "Attributs de la forme juridique"
