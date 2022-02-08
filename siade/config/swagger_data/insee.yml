@@ -19,7 +19,6 @@ insee:
           - "ter"
           - "quarter"
           - "quinquies"
-          -
       type_voie:
         title: "Type de la voie de localisation"
         example: "RUE"
@@ -59,59 +58,67 @@ insee:
         type: "string"
       distribution_speciale:
         title: "Distribution spéciale"
-        description: |
-          La distribution spéciale reprend les éléments particuliers qui accompagnent une adresse de distribution spéciale. C'est un élément constitutif de l'adresse.
-          Voici la liste non-exhaustive des modalités renvoyées :  
-          \n
-          \n
-          - BP : Boîte postale
-          \n
-          - TSA : Tri par service à l'arrivée
-          \n
-          - LP : Local postal
-          \n
-          - RP : Référence postale
-          \n
-          - SP : Secteur postal
-          \n
-          - CP : Case postale
-          \n
-          - CE : Case entreprise
-          \n
-          - CS : Course spéciale
-          \n
-          - POSTE RESTANTE
-          \n
-          - CEDEX : Courrier d'entreprise à distribution exceptionnelle
-          \n
-          - CIDEX : Courrier individuel à distribution exceptionnelle
-          \n
-          - CASE, NIVEAU : Mots utilisés pour la distribution interne du courrier à LA DEFENSE
-          \n
-          - CASIER : Utilisé pour le centre commercial des Quatre Temps
-          \n
-          - SILIC, SENIA, MAREE, FLEURS : Utilisés sur le site de Rungis
+        description:
+          "La distribution spéciale reprend les éléments particuliers qui accompagnent une adresse de distribution spéciale, la modalité la plus connue étant les adresses en 'CEDEX'.
           \n
           \n
           Plus d'informations sur les modalités :
           * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
           * https://www.sirene.fr/sirene/public/variable/l5-disp"
-        example: "CS 72809"
-        enum:
-          - "BP"
-          - "TSA"
-          - "LP"
-          - "RP"
-          - "SP"
-          - "CP"
-          - "CE"
-          - "CS"
-          - "POSTE RESTANTE"
-          - "CEDEX"
-          - "CIDEX"
-          - "CASE, NIVEAU"
-          - "CASIER"
-          - "SILIC, SENIA, MAREE, FLEURS"
+        examples:
+          BP: 
+            value: "BP"
+            summury: "Boîte postale"
+          TSA: 
+            value: "TSA"
+            summury: "Tri par service à l'arrivée"
+          LP: 
+            value: "LP"
+            summury: "Local postal"
+          RP: 
+            value: "RP"
+            summury: "Référence postale"
+          SP: 
+            value: "SP"
+            summury: "Secteur postal"
+          CP: 
+            value: "CP"
+            summury: "Case postale"
+          CE: 
+            value: "CE"
+            summury: "Case entreprise"
+          CS: 
+            value: "CS"
+            summury: "Course spéciale"
+          POSTE RESTANTE: 
+            value: "POSTE RESTANTE"
+          CEDEX: 
+            value: "CEDEX"
+            summury: "Courrier d'entreprise à distribution exceptionnelle"
+          CIDEX: 
+            value: "CIDEX"
+            summury: "Courrier individuel à distribution exceptionnelle"
+          CASE: 
+            value: "CASE"
+            summury: "Distribution interne du courrier à LA DEFENSE"
+          NIVEAU: 
+            value: "NIVEAU"
+            summury: "Distribution interne du courrier à LA DEFENSE"
+          CASIER: 
+            value: "CASIER"
+            summury: "Utilisé pour le centre commercial des Quatre Temps"
+          SILIC: 
+            value: "SILIC"
+            summury: "Utilisé sur le site de Rungis"
+          SENIA: 
+            value: "SENIA"
+            summury: "Utilisé sur le site de Rungis"
+          MAREE: 
+            value: "MAREE"
+            summury: "Utilisé sur le site de Rungis"
+          FLEURS: 
+            value: "FLEURS"
+            summury: "Utilisé sur le site de Rungis"
       code_cedex:
         title: "Code cedex"
         nullable: true
