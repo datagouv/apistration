@@ -24,8 +24,8 @@ insee:
         example: "RUE"
         description:
           "Le type de la voie de localisation est indiquée en abrégé et en majuscules.
-          L'information n'est pas toujours renseignée. Pour certaines petites communes, 
-          l'information n'existe pas. 
+          L'information n'est pas toujours renseignée. Pour certaines petites communes,
+          l'information n'existe pas.
           \n
           \n
           Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie"
@@ -44,7 +44,7 @@ insee:
       code_commune:
         title: "Code commune"
         description:
-          "Le code commune désigne le code de la commune de localisation de l'établissement. Le code renvoyé correspond à la date de l'appel, ce qui implique que toute modification du code commune est repercutée sur l'ensemble des établissements concernés, y compris ceux qui sont fermés. 
+          "Le code commune désigne le code de la commune de localisation de l'établissement. Le code renvoyé correspond à la date de l'appel, ce qui implique que toute modification du code commune est repercutée sur l'ensemble des établissements concernés, y compris ceux qui sont fermés.
           Cette valeur est à 'null' pour les entreprises à l'étranger.
           \n
           \n
@@ -66,57 +66,57 @@ insee:
           * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
           * https://www.sirene.fr/sirene/public/variable/l5-disp"
         examples:
-          BP: 
+          BP:
             value: "BP"
             summury: "Boîte postale"
-          TSA: 
+          TSA:
             value: "TSA"
             summury: "Tri par service à l'arrivée"
-          LP: 
+          LP:
             value: "LP"
             summury: "Local postal"
-          RP: 
+          RP:
             value: "RP"
             summury: "Référence postale"
-          SP: 
+          SP:
             value: "SP"
             summury: "Secteur postal"
-          CP: 
+          CP:
             value: "CP"
             summury: "Case postale"
-          CE: 
+          CE:
             value: "CE"
             summury: "Case entreprise"
-          CS: 
+          CS:
             value: "CS"
             summury: "Course spéciale"
-          POSTE RESTANTE: 
+          POSTE RESTANTE:
             value: "POSTE RESTANTE"
-          CEDEX: 
+          CEDEX:
             value: "CEDEX"
             summury: "Courrier d'entreprise à distribution exceptionnelle"
-          CIDEX: 
+          CIDEX:
             value: "CIDEX"
             summury: "Courrier individuel à distribution exceptionnelle"
-          CASE: 
+          CASE:
             value: "CASE"
             summury: "Distribution interne du courrier à LA DEFENSE"
-          NIVEAU: 
+          NIVEAU:
             value: "NIVEAU"
             summury: "Distribution interne du courrier à LA DEFENSE"
-          CASIER: 
+          CASIER:
             value: "CASIER"
             summury: "Utilisé pour le centre commercial des Quatre Temps"
-          SILIC: 
+          SILIC:
             value: "SILIC"
             summury: "Utilisé sur le site de Rungis"
-          SENIA: 
+          SENIA:
             value: "SENIA"
             summury: "Utilisé sur le site de Rungis"
-          MAREE: 
+          MAREE:
             value: "MAREE"
             summury: "Utilisé sur le site de Rungis"
-          FLEURS: 
+          FLEURS:
             value: "FLEURS"
             summury: "Utilisé sur le site de Rungis"
       code_cedex:
@@ -178,7 +178,7 @@ insee:
 
   unite_legale:
     title: "Données Sirene d'une unité légale"
-    description: "Obtenir les informations de référence d'une unité légale (entreprises, associations et administrations) telles que le type d'entreprise, son activité et son état administratif."
+    description: "Obtenir les informations de référence d'une unité légale (entreprises, associations et administrations) telles que le type d'entreprise, son activité et son état administratif. Toutes les unités légales sont appelables, y compris les non-diffusibles."
     tags:
       - "Informations générales"
     attributes: &insee_unite_legale_attributes
@@ -308,7 +308,7 @@ insee:
         title: "Numéro de TVA intracommunautaire"
         type: "string"
         example: "FR07130025265"
-        description: "Le numéro de TVA intracommunautaire est un numéro d’identification individuel attribué aux entreprises assujetties à la TVA et domiciliées au sein de l’Union européenne. Le numéro renvoyé par l'API est calculé par API Entreprise à l'aide du numéro de SIREN, cette donnée est donc théorique. 
+        description: "Le numéro de TVA intracommunautaire est un numéro d’identification individuel attribué aux entreprises assujetties à la TVA et domiciliées au sein de l’Union européenne. Le numéro renvoyé par l'API est calculé par API Entreprise à l'aide du numéro de SIREN, cette donnée est donc théorique.
           \n
           \n
           Dans le cas où l’établissement siège est à l’étranger la valeur est systématiquement 'null'
@@ -319,7 +319,7 @@ insee:
         title: "Diffusable commercialement"
         type: "boolean"
         example: true
-        description: "Indique si l'unité légale est : 
+        description: "Indique si l'unité légale est :
           \n
           \n
           - une unité légale diffusible : 'true'
@@ -338,7 +338,7 @@ insee:
             title: "Code de la forme juridique de l'unité légale."
             type: "string"
             example: "7120"
-            description: "Il existe plus de 300 catégories juridiques, identifiables par un code spécifique à quatre chiffres. Leur nomenclature comporte 3 niveaux. Le premier niveau de classement contient 9 grandes catégories identifiables avec le premier chiffre du code : 
+            description: "Il existe plus de 300 catégories juridiques, identifiables par un code spécifique à quatre chiffres. Leur nomenclature comporte 3 niveaux. Le premier niveau de classement contient 9 grandes catégories identifiables avec le premier chiffre du code :
               \n
               \n
               - 0 : Organisme de placement collectif en valeurs mobilières sans personnalité morale
@@ -380,7 +380,7 @@ insee:
             title: "Code de l'activité principale (APE) de l'unité légale"
             type: "string"
             example: "8411Z"
-            description: "Le code APE (activité principale exercée) permet d'identifier la branche d'activité principale. Il est attribué par l'Insee lors de l'immatriculation ou la déclaration d'activité de l'entreprise. Ce code de 4 chiffres + 1 lettre est extrait de la nomenclature d'activité française (NAF) de l'Insee. 
+            description: "Le code APE (activité principale exercée) permet d'identifier la branche d'activité principale. Il est attribué par l'Insee lors de l'immatriculation ou la déclaration d'activité de l'entreprise. Ce code de 4 chiffres + 1 lettre est extrait de la nomenclature d'activité française (NAF) de l'Insee.
             \n
             \n
             À noter qu'une entreprise n'ayant pas encore de code APE peut se voir affecter la valeur '00.00Z' de manière provisoire.
@@ -416,8 +416,8 @@ insee:
             type: "string"
             nullable: true
             example: "51"
-            description: 
-              "Le code effectif correspond à la tranche d'effectif salarié de l'entreprise. Le nombre de salarié est déterminé en fonction de l'effectif de l'entreprise et de chacun de ses établissements : 
+            description:
+              "Le code effectif correspond à la tranche d'effectif salarié de l'entreprise. Le nombre de salarié est déterminé en fonction de l'effectif de l'entreprise et de chacun de ses établissements :
               \n
               \n
               - NN : Unités non employeuses (pas de salarié au cours de l'année de référence et pas d'effectif au 31/12). Cette tranche peut contenir quelques effectifs inconnus
@@ -450,7 +450,7 @@ insee:
               \n
               - 52 : 5 000 à 9 999 salariés
               \n
-              - 53 : 10 000 salariés et plus 
+              - 53 : 10 000 salariés et plus
               \n
               \n
               Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen"
@@ -496,21 +496,21 @@ insee:
           - "C"
         examples:
           active:
-            value: A 
+            value: A
             summary: Active
-          cessee: 
+          cessee:
             value: C
             summary: Cessée
-        description: 
+        description:
           "Cette valeur décrit l'état administratif de l'unité légale, qui peut être :
           \n
           \n
-          - cessée. Le passage à l'état « Cessée » découle de la prise en compte d'une déclaration de cessation administrative. Pour les personnes morales, cela correspond au dépôt de la déclaration de disparition de la personne morale. Pour les personnes physiques, cela correspond soit à la prise en compte de la déclaration de cessation d'activité déposée par l'exploitant soit au décès de l'exploitant conformément à la réglementation. 
+          - cessée. Le passage à l'état « Cessée » découle de la prise en compte d'une déclaration de cessation administrative. Pour les personnes morales, cela correspond au dépôt de la déclaration de disparition de la personne morale. Pour les personnes physiques, cela correspond soit à la prise en compte de la déclaration de cessation d'activité déposée par l'exploitant soit au décès de l'exploitant conformément à la réglementation.
           \n
           - active. En dehors des cas explicités ci-dessus, l'unité légale est toujours à l'état administratif « Active ».
           \n
           \n
-          Plus d'information dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+          Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
       date_cessation:
         title: "Date de cessation de l'unité légale"
         type: "integer"
@@ -532,34 +532,32 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
       siege_social:
         type: "string"
         example: "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/30613890001294"
-        description: "Lien vers la ressource établissement correspondant au siège social"
+        description: "Lien vers la ressource 'Données Sirene d'un établissement' correspondant au siège social de cette unité légale."
       siege_social_adresse:
         type: "string"
         example: "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/30613890001294/adresse"
-        description: "Lien vers la ressource adresse de l'établissement correspondant au siège social"
+        description: "Lien vers la ressource 'Adresse d'un établissement' correspondant au siège social de cette unité légale."
     meta:
       date_derniere_mise_a_jour: *insee_date_derniere_mise_a_jour
 
   unite_legale_diffusable:
-    title: "Données de référence d'une entité légale diffusable commercialement"
-    description: "Obtenir les informations de référence d'une unité légale, qui est soit uneentreprise, soit une administration, soit une association, présente dans le répertoire Sirene. Ce endpoint ne renvoi que des entités diffusable commercialement."
+    title: "Données Sirene d'une unité légale diffusible"
+    description: "Obtenir les informations de référence d'une unité légale (entreprises, associations et administrations) telles que le type d'entreprise, son activité et son état administratif. Pour appeler une unité légale non-diffusible, se référer à l'API 'Données Sirene d'une unité légale'."
     tags:
       - "Informations générales"
     attributes:
       <<: *insee_unite_legale_attributes
       diffusable_commercialement:
-        title: "Diffusable commercialement"
+        title: "Diffusible commercialement"
         type: "boolean"
         example: true
         enum:
           - true
-        description: "Détermine si l'unité légale est une entreprise
-          non-diffusible. Cette valeur est toujours à true. Si vous voulez pouvoir récupérer des unités légales
-          non-diffusible, référez-vous à la documentation du endpoint /insee/unites_legales/:siren"
+        description: "Détermine si l'unité légale est une entité non-diffusible. Cette valeur est toujours à true. Pour récupérer des unités légales non-diffusible, référez-vous à la documentation de l'API /insee/unites_legales/:siren"
 
   etablissement:
-    title: "Données de référence d'un établissement"
-    description: "Obtenir des informations générales concernant un établissement du répertoire Sirene."
+    title: "Données Sirene d'un établissement"
+    description: "Obtenir des informations générales concernant un établissement du répertoire Sirene. Tous les établissements sont appelables, y compris les non-diffusibles."
     tags:
       - "Informations générales"
     attributes: &insee_etablissement_attributes
@@ -569,19 +567,31 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
         enum:
           - true
           - false
-        description: "Indique si l'établissement est le siège social de l'entreprise"
+        description: "Indique si l'établissement est le siège social de l'entreprise."
       etat_administratif:
+        title: "État administratif de l'établissement"
         type: "string"
         enum:
           - "A"
           - "F"
-        example: "A"
-        description: "État administratif de l'établissement.
+        examples:
+          active:
+            value: A
+            summary: Actif
+          cessee:
+            value: F
+            summary: Fermé
+        description:
+          "Cette valeur décrit l'état administratif de l'établissement, qui peut être :
           \n
           \n
-          - A = Actif
+          - actif. Sauf exception, lors de son inscription au répertoire, tout établissement est à l'état 'actif'
+
           \n
-          - F = Fermé"
+          - fermé. Cet état découle de la prise en compte d'une déclaration de fermeture. Un établissement fermé peut être rouvert.
+          \n
+          \n
+          Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifEtablissement"
       date_fermeture:
         title: "Date de fermeture de l'établissement"
         type: "integer"
