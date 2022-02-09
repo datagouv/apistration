@@ -31,10 +31,10 @@ dgfip:
     items:
       properties:
         chiffre_affaires:
+          title: "Chiffre d'affaires en euros"
           type: "number"
           example: 900_001
-          description: "Chiffre d'affaires en euros de l'établissement sur la période"
         date_fin_exercice:
+          title: "Date de fin de l'exercice"
           type: "string"
           example: "2015-12-01"
-          description: "Date de fin de l'exercice"
