@@ -6,5 +6,8 @@ acoss:
       - "Attestations sociales et fiscales"
     document_url_properties:
       title: "URL de téléchargement de l'attestation de vigilance"
-      description: "Ce document est automatiquement supprimé au bout de trois mois."
+      description: "Ce lien délivre l'attestation de vigilance de l'entreprise au format PDF. La date du document dépend de la situation de chaque entreprise, et de la dernière déclaration enregistrée dans le système. Elle est donc variable d'une entreprise à l'autre.
+      \n
+      \n
+      Plus d'informations sur le site de l'URSSAF : https://www.urssaf.fr/portail/home/employeur/declarer-et-payer/obtenir-une-attestation/attestation-de-vigilance.html"
       example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_vigilance_acoss.pdf"
