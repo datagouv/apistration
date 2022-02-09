@@ -38,6 +38,9 @@ paths:
           siren_opqibi:
             value: '515228211'
             summary: SIREN pour OPQIBI
+          siren_entrepreneur_individuel:
+            value: '389839937'
+            summary: SIREN d'un entrepeneur individuel (cessé)
         required: true
         schema:
           type: string
@@ -478,6 +481,9 @@ paths:
           siren_opqibi:
             value: '515228211'
             summary: SIREN pour OPQIBI
+          siren_entrepreneur_individuel:
+            value: '389839937'
+            summary: SIREN d'un entrepeneur individuel (cessé)
         required: true
         schema:
           type: string
@@ -653,6 +659,9 @@ paths:
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
+          siret_entrepreneur_individuel:
+            value: '38983993700015'
+            summary: SIRET d'un entrepreneur individuel (fermé)
         required: true
         schema:
           type: string
@@ -895,6 +904,9 @@ paths:
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
+          siret_entrepreneur_individuel:
+            value: '38983993700015'
+            summary: SIRET d'un entrepreneur individuel (fermé)
         required: true
         schema:
           type: string
@@ -2004,6 +2016,9 @@ paths:
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
+          siret_entrepreneur_individuel:
+            value: '38983993700015'
+            summary: SIRET d'un entrepreneur individuel (fermé)
         required: true
         schema:
           type: string
@@ -2295,6 +2310,9 @@ paths:
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
+          siret_entrepreneur_individuel:
+            value: '38983993700015'
+            summary: SIRET d'un entrepreneur individuel (fermé)
         required: true
         schema:
           type: string
@@ -2587,6 +2605,9 @@ paths:
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
+          siret_entrepreneur_individuel:
+            value: '38983993700015'
+            summary: SIRET d'un entrepreneur individuel (fermé)
         required: true
         schema:
           type: string
@@ -2837,6 +2858,9 @@ paths:
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
+          siret_entrepreneur_individuel:
+            value: '38983993700015'
+            summary: SIRET d'un entrepreneur individuel (fermé)
         required: true
         schema:
           type: string
@@ -3086,6 +3110,9 @@ paths:
           siren_opqibi:
             value: '515228211'
             summary: SIREN pour OPQIBI
+          siren_entrepreneur_individuel:
+            value: '389839937'
+            summary: SIREN d'un entrepeneur individuel (cessé)
         required: true
         schema:
           type: string
@@ -3335,6 +3362,9 @@ paths:
           siren_opqibi:
             value: '515228211'
             summary: SIREN pour OPQIBI
+          siren_entrepreneur_individuel:
+            value: '389839937'
+            summary: SIREN d'un entrepeneur individuel (cessé)
         required: true
         schema:
           type: string
@@ -3582,6 +3612,9 @@ paths:
           siren_opqibi:
             value: '515228211'
             summary: SIREN pour OPQIBI
+          siren_entrepreneur_individuel:
+            value: '389839937'
+            summary: SIREN d'un entrepeneur individuel (cessé)
         required: true
         schema:
           type: string
@@ -3996,6 +4029,9 @@ paths:
           siren_opqibi:
             value: '515228211'
             summary: SIREN pour OPQIBI
+          siren_entrepreneur_individuel:
+            value: '389839937'
+            summary: SIREN d'un entrepeneur individuel (cessé)
         required: true
         schema:
           type: string
@@ -4644,6 +4680,9 @@ paths:
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
+          siret_entrepreneur_individuel:
+            value: '38983993700015'
+            summary: SIRET d'un entrepreneur individuel (fermé)
         required: true
         schema:
           type: string
@@ -4788,6 +4827,9 @@ paths:
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
+          siret_entrepreneur_individuel:
+            value: '38983993700015'
+            summary: SIRET d'un entrepreneur individuel (fermé)
         required: true
         schema:
           type: string
@@ -5046,6 +5088,9 @@ paths:
           siren_opqibi:
             value: '515228211'
             summary: SIREN pour OPQIBI
+          siren_entrepreneur_individuel:
+            value: '389839937'
+            summary: SIREN d'un entrepeneur individuel (cessé)
         required: true
         schema:
           type: string
