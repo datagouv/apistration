@@ -2360,6 +2360,62 @@ paths:
                             type: string
                             nullable: true
                             example: ROYAUME-UNI
+                          acheminement_postal:
+                            type: object
+                            title: Éléments constitutifs de l'adresse postale pour
+                              son acheminement.
+                            description: Il ne s'agit pas d'un traitement RNVP mais
+                              simplement d'une réorganisation des éléments renvoyé
+                              par l'Insee pour faciliter l'affichage des adresses
+                              postales
+                            properties:
+                              l1:
+                                title: Ligne 1
+                                description: 'Si l''établissement correspond à une
+                                  personne morale: la dénomination sociale de la personne
+                                  morale. Le cas contraire: cette variable est vide.'
+                                example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
+                              l2:
+                                title: Ligne 2
+                                description: 'Si l''établissement correspond à une
+                                  personne physique: concaténation du nom et prénom'
+                                example: JEAN MARIE DURAND
+                              l3:
+                                title: Ligne 3
+                                description: Complément d'adresse comme décrit dans
+                                  la clé `complement_adresse`
+                                example: ZAE SAINT GUENAULT
+                              l4:
+                                title: Ligne 4
+                                description: Concaténation du numéro de voie, d'indice
+                                  de répétition, du type de voie et du libellé de
+                                  la voie
+                                example: 51 BIS RUE DE LA PAIX
+                              l5:
+                                title: Ligne 5
+                                description: Distribution spéciale comme décrit dans
+                                  la clé `distribution_speciale`
+                                example: CS 72809
+                              l6:
+                                title: Ligne 6
+                                description: 'Si le code cedex est existant: code
+                                  cedex accompagné de son libellé ; sinon, si le pays
+                                  est en France: code postal accompagné de son libellé,
+                                  sinon : libellé de la commune de l''établissement
+                                  situé à l''étranger'
+                                example: 75256 PARIX CEDEX 12
+                              l7:
+                                title: Ligne 7
+                                description: Pays de l'établissement
+                                example: FRANCE
+                            required:
+                            - l1
+                            - l2
+                            - l3
+                            - l4
+                            - l5
+                            - l6
+                            - l7
                         required:
                         - numero_voie
                         - indice_repetition_voie
@@ -2375,6 +2431,7 @@ paths:
                         - libelle_commune_etranger
                         - code_pays_etranger
                         - libelle_pays_etranger
+                        - acheminement_postal
                       links:
                         type: object
                         properties:
@@ -2663,6 +2720,62 @@ paths:
                             type: string
                             nullable: true
                             example: ROYAUME-UNI
+                          acheminement_postal:
+                            type: object
+                            title: Éléments constitutifs de l'adresse postale pour
+                              son acheminement.
+                            description: Il ne s'agit pas d'un traitement RNVP mais
+                              simplement d'une réorganisation des éléments renvoyé
+                              par l'Insee pour faciliter l'affichage des adresses
+                              postales
+                            properties:
+                              l1:
+                                title: Ligne 1
+                                description: 'Si l''établissement correspond à une
+                                  personne morale: la dénomination sociale de la personne
+                                  morale. Le cas contraire: cette variable est vide.'
+                                example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
+                              l2:
+                                title: Ligne 2
+                                description: 'Si l''établissement correspond à une
+                                  personne physique: concaténation du nom et prénom'
+                                example: JEAN MARIE DURAND
+                              l3:
+                                title: Ligne 3
+                                description: Complément d'adresse comme décrit dans
+                                  la clé `complement_adresse`
+                                example: ZAE SAINT GUENAULT
+                              l4:
+                                title: Ligne 4
+                                description: Concaténation du numéro de voie, d'indice
+                                  de répétition, du type de voie et du libellé de
+                                  la voie
+                                example: 51 BIS RUE DE LA PAIX
+                              l5:
+                                title: Ligne 5
+                                description: Distribution spéciale comme décrit dans
+                                  la clé `distribution_speciale`
+                                example: CS 72809
+                              l6:
+                                title: Ligne 6
+                                description: 'Si le code cedex est existant: code
+                                  cedex accompagné de son libellé ; sinon, si le pays
+                                  est en France: code postal accompagné de son libellé,
+                                  sinon : libellé de la commune de l''établissement
+                                  situé à l''étranger'
+                                example: 75256 PARIX CEDEX 12
+                              l7:
+                                title: Ligne 7
+                                description: Pays de l'établissement
+                                example: FRANCE
+                            required:
+                            - l1
+                            - l2
+                            - l3
+                            - l4
+                            - l5
+                            - l6
+                            - l7
                         required:
                         - numero_voie
                         - indice_repetition_voie
@@ -2678,6 +2791,7 @@ paths:
                         - libelle_commune_etranger
                         - code_pays_etranger
                         - libelle_pays_etranger
+                        - acheminement_postal
                       links:
                         type: object
                         properties:

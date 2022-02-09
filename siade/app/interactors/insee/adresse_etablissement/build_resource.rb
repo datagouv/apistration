@@ -19,14 +19,66 @@ class INSEE::AdresseEtablissement::BuildResource < INSEE::Etablissement::BuildRe
       libelle_cedex: etablissement_address['libelleCedexEtablissement'],
       code_pays_etranger: etablissement_address['codePaysEtrangerEtablissement'],
       libelle_pays_etranger: etablissement_address['libellePaysEtrangerEtablissement'],
+
+      acheminement_postal: acheminement_postal,
+
       date_derniere_mise_a_jour: date_to_timestamp(etablissement['dateDernierTraitementEtablissement'])
     }
   end
 
   private
 
+  # rubocop:disable Naming/VariableNumber
+  def acheminement_postal
+    {
+      l1: acheminement_postal_denomination_personne_morale,
+      l2: acheminement_postal_denomination_personne_physique,
+      l3: etablissement_address['complementAdresseEtablissement'] || '',
+      l4: acheminement_postal_voie,
+      l5: etablissement_address['distributionSpecialeEtablissement'] || '',
+      l6: acheminement_postal_cedex_or_postale,
+      l7: etablissement_address['libellePaysEtrangerEtablissement'] || 'FRANCE'
+    }
+  end
+  # rubocop:enable Naming/VariableNumber
+
+  def acheminement_postal_denomination_personne_morale
+    return '' unless type_of_person == :personne_morale
+
+    [unite_legale['denominationUniteLegale'], unite_legale['denominationUsuelle1UniteLegale']].uniq.join(' ').squish
+  end
+
+  def acheminement_postal_denomination_personne_physique
+    return '' unless type_of_person == :personne_physique
+
+    [unite_legale['nomUniteLegale'], unite_legale['denominationUsuelle1UniteLegale']].join(' ').squish
+  end
+
+  def acheminement_postal_voie
+    [
+      etablissement_address['numeroVoieEtablissement'],
+      indices_repetition_de_voie[etablissement_address['indiceRepetitionEtablissement']],
+      types_de_voie[etablissement_address['typeVoieEtablissement']],
+      etablissement_address['libelleVoieEtablissement']
+    ].compact.join(' ').upcase
+  end
+
+  def acheminement_postal_cedex_or_postale
+    if etablissement_address['codeCedexEtablissement']
+      [etablissement_address['codeCedexEtablissement'], etablissement_address['libelleCedexEtablissement']].join(' ')
+    elsif etablissement_address['codePaysEtrangerEtablissement']
+      etablissement_address['libelleCommuneEtrangerEtablissement']
+    else
+      [etablissement_address['codeCommuneEtablissement'], etablissement_address['libelleCommuneEtablissement']].join(' ')
+    end
+  end
+
   def etablissement_address
     @etablissement_address ||= etablissement['adresseEtablissement']
+  end
+
+  def unite_legale
+    @unite_legale ||= etablissement['uniteLegale']
   end
 
   def types_de_voie
@@ -35,5 +87,17 @@ class INSEE::AdresseEtablissement::BuildResource < INSEE::Etablissement::BuildRe
 
   def indices_repetition_de_voie
     @indices_repetition_de_voie ||= YAML.load_file(Rails.root.join('config/data/insee/indices_repetition_de_voie.yml'))
+  end
+
+  def type_of_person
+    if categorie_juridique == '1000'
+      :personne_physique
+    else
+      :personne_morale
+    end
+  end
+
+  def categorie_juridique
+    unite_legale['categorieJuridiqueUniteLegale']
   end
 end

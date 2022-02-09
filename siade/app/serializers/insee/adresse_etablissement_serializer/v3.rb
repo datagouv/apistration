@@ -12,6 +12,7 @@ class INSEE::AdresseEtablissementSerializer::V3 < JSONAPI::BaseSerializer
     :distribution_speciale,
     :code_cedex,
     :libelle_cedex,
+    :acheminement_postal,
     :libelle_commune_etranger,
     :code_pays_etranger,
     :libelle_pays_etranger
