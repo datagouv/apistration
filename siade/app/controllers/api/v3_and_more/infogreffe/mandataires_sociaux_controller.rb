@@ -1,6 +1,6 @@
 class API::V3AndMore::Infogreffe::MandatairesSociauxController < API::V3AndMore::BaseController
   def show
-    authorize :mandataires_sociaux
+    authorize :entreprise
 
     organizer = ::Infogreffe::MandatairesSociaux.call(params: organizer_params)
 
