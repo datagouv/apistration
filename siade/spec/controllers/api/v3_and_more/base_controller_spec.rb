@@ -66,6 +66,37 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
         .merge(recipient: recipient, siret: siret)
     end
 
+    context 'with valid siret as recipient' do
+      let(:recipient) { valid_siret(:recipient) }
+
+      its(:status) { is_expected.to be(200) }
+    end
+
+    context 'with invalid value as recipient' do
+      let(:recipient) { 'invalid' }
+
+      its(:status) { is_expected.to be(422) }
+
+      it 'serializes an error' do
+        expect(response_json).to have_key(:errors)
+      end
+
+      describe '#body' do
+        let(:errors) { response_json[:errors] }
+
+        it do
+          expect(errors).to include({
+            code: '00210',
+            title: 'Entité non traitable',
+            detail: 'Le paramètre recipient n\'est pas un siret valide',
+            source: {
+              parameter: 'recipient'
+            }
+          })
+        end
+      end
+    end
+
     context 'with a recipient same as siret param' do
       let(:recipient) { valid_siret(:recipient) }
       let(:siret) { valid_siret(:recipient) }
@@ -91,15 +122,18 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
         end
       end
     end
+  end
 
-    context 'with valid siret as recipient' do
-      let(:recipient) { valid_siret(:recipient) }
-
-      its(:status) { is_expected.to be(200) }
+  describe 'recipient param with a siren resource ID' do
+    before do
+      get :index, params: { api_version: 42, token: yes_jwt }
+        .merge(**mandatory_params)
+        .merge(recipient: recipient, siren: siren)
     end
 
-    context 'with invalid value as recipient' do
-      let(:recipient) { 'invalid' }
+    context 'when identical' do
+      let(:recipient) { valid_siret(:recipient) }
+      let(:siren) { valid_siren(:recipient) }
 
       its(:status) { is_expected.to be(422) }
 
@@ -112,9 +146,9 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
 
         it do
           expect(errors).to include({
-            code: '00210',
+            code: '00211',
             title: 'Entité non traitable',
-            detail: 'Le paramètre recipient n\'est pas un siret valide',
+            detail: 'Le paramètre recipient est identique au siret de la demande',
             source: {
               parameter: 'recipient'
             }

@@ -22,7 +22,7 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
   end
 
   def verify_recipient_is_not_resource_id!
-    return unless recipient_is_resource_id?
+    return unless recipient_is_resource_siren_or_siret?
 
     render json: ErrorsSerializer.new([RecipientAndResourceIdIdenticalError.new], format: error_format).as_json,
       status: :unprocessable_entity
@@ -32,15 +32,19 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
     ValidateSiret.call(params: { siret: params[:recipient] }).success?
   end
 
-  def recipient_is_resource_id?
+  def recipient_is_resource_siren_or_siret?
     recipient_is_resource_siren? || recipient_is_resource_siret?
   end
 
   def recipient_is_resource_siren?
-    params[:recipient].strip == params[:siret].strip.first(9)
+    return unless params[:siren]
+
+    params[:recipient].strip.first(9) == params[:siren].strip
   end
 
   def recipient_is_resource_siret?
+    return unless params[:siret]
+
     params[:recipient].strip == params[:siret].strip
   end
 

@@ -16,7 +16,8 @@ def valid_siren(sample_type = :default)
     inpi_pdf: '393463187',
     insee_entreprise_legacy: valid_siret(:octo).first(9),
     bilan_entreprise_bdf: la_poste_siren,
-    rnm_cma: '301123626'
+    rnm_cma: '301123626',
+    recipient: valid_siret(:recipient).first(9)
   }
 
   samples[sample_type]
