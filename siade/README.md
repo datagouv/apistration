@@ -148,7 +148,7 @@ ligne à l'adresse suivante: [Swagger Editor](https://editor.swagger.io/)
 
 Le fichier OpenAPI peut être régénéré avec la commande:
 
-    $ RAILS_ENV=test rails rswag
+    bin/generate_swagger.sh
 
 ## Génération d'un nouveau JWT token
 
