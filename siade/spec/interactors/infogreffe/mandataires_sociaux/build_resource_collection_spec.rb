@@ -42,7 +42,7 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
     end
 
     let(:body) do
-      Infogreffe::MandatairesSociaux::MakeRequest.call(params:).response.body
+      Infogreffe::MakeRequest.call(params:).response.body
     end
 
     let(:params) do

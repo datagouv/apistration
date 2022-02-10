@@ -1,4 +1,4 @@
-class Infogreffe::MandatairesSociaux::MakeRequest < MakeRequest::Post
+class Infogreffe::MakeRequest < MakeRequest::Post
   protected
 
   def request_uri

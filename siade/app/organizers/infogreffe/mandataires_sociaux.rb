@@ -1,6 +1,6 @@
 class Infogreffe::MandatairesSociaux < RetrieverOrganizer
   organize ValidateSiren,
-    Infogreffe::MandatairesSociaux::MakeRequest,
+    Infogreffe::MakeRequest,
     Infogreffe::MandatairesSociaux::ValidateResponse,
     Infogreffe::MandatairesSociaux::BuildResourceCollection
 

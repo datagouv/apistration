@@ -1,4 +1,4 @@
-RSpec.describe Infogreffe::MandatairesSociaux::MakeRequest, type: :make_request do
+RSpec.describe Infogreffe::MakeRequest, type: :make_request do
   subject { described_class.call(params:) }
 
   let(:params) do
