@@ -13,12 +13,13 @@ insee:
         title: "Indice de répétition du numéro dans la voie"
         description: "Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/indrep"
         type: "string"
+        nullable: true
         enum:
           - "bis"
           - "ter"
           - "quarter"
           - "quinquies"
-          - ''
+          -
       type_voie:
         title: "Type de la voie de localisation"
         example: "RUE"
@@ -68,57 +69,57 @@ insee:
         examples:
           BP:
             value: "BP"
-            summury: "Boîte postale"
+            summary: "Boîte postale"
           TSA:
             value: "TSA"
-            summury: "Tri par service à l'arrivée"
+            summary: "Tri par service à l'arrivée"
           LP:
             value: "LP"
-            summury: "Local postal"
+            summary: "Local postal"
           RP:
             value: "RP"
-            summury: "Référence postale"
+            summary: "Référence postale"
           SP:
             value: "SP"
-            summury: "Secteur postal"
+            summary: "Secteur postal"
           CP:
             value: "CP"
-            summury: "Case postale"
+            summary: "Case postale"
           CE:
             value: "CE"
-            summury: "Case entreprise"
+            summary: "Case entreprise"
           CS:
             value: "CS"
-            summury: "Course spéciale"
+            summary: "Course spéciale"
           POSTE RESTANTE:
             value: "POSTE RESTANTE"
           CEDEX:
             value: "CEDEX"
-            summury: "Courrier d'entreprise à distribution exceptionnelle"
+            summary: "Courrier d'entreprise à distribution exceptionnelle"
           CIDEX:
             value: "CIDEX"
-            summury: "Courrier individuel à distribution exceptionnelle"
+            summary: "Courrier individuel à distribution exceptionnelle"
           CASE:
             value: "CASE"
-            summury: "Distribution interne du courrier à LA DEFENSE"
+            summary: "Distribution interne du courrier à LA DEFENSE"
           NIVEAU:
             value: "NIVEAU"
-            summury: "Distribution interne du courrier à LA DEFENSE"
+            summary: "Distribution interne du courrier à LA DEFENSE"
           CASIER:
             value: "CASIER"
-            summury: "Utilisé pour le centre commercial des Quatre Temps"
+            summary: "Utilisé pour le centre commercial des Quatre Temps"
           SILIC:
             value: "SILIC"
-            summury: "Utilisé sur le site de Rungis"
+            summary: "Utilisé sur le site de Rungis"
           SENIA:
             value: "SENIA"
-            summury: "Utilisé sur le site de Rungis"
+            summary: "Utilisé sur le site de Rungis"
           MAREE:
             value: "MAREE"
-            summury: "Utilisé sur le site de Rungis"
+            summary: "Utilisé sur le site de Rungis"
           FLEURS:
             value: "FLEURS"
-            summury: "Utilisé sur le site de Rungis"
+            summary: "Utilisé sur le site de Rungis"
       code_cedex:
         title: "Code cedex"
         nullable: true
@@ -497,13 +498,6 @@ insee:
         enum:
           - "A"
           - "C"
-        examples:
-          active:
-            value: A
-            summary: Active
-          cessee:
-            value: C
-            summary: Cessée
         description:
           "Cette valeur décrit l'état administratif de l'unité légale, qui peut être :
           \n
@@ -644,52 +638,52 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
             examples:
               NN:
                 value: "NN"
-                summury: "Unités non employeuses (pas de salarié au cours de l'année de référence et pas d'effectif au 31/12). Cette tranche peut contenir quelques effectifs inconnus"
+                summary: "Unités non employeuses (pas de salarié au cours de l'année de référence et pas d'effectif au 31/12). Cette tranche peut contenir quelques effectifs inconnus"
               00:
                 value: "00"
-                summury: "0 salarié (n'ayant pas d'effectif au 31/12 mais ayant employé des salariés au cours de l'année de référence)"
+                summary: "0 salarié (n'ayant pas d'effectif au 31/12 mais ayant employé des salariés au cours de l'année de référence)"
               01:
                 value: "01"
-                summury: "1 ou 2 salariés"
+                summary: "1 ou 2 salariés"
               02:
                 value: "02"
-                summury: "3 à 5 salariés"
+                summary: "3 à 5 salariés"
               03:
                 value: "03"
-                summury: "6 à 9 salariés"
+                summary: "6 à 9 salariés"
               11:
                 value: "11"
-                summury: "10 à 19 salariés"
+                summary: "10 à 19 salariés"
               12:
                 value: "12"
-                summury: "20 à 49 salariés"
+                summary: "20 à 49 salariés"
               21:
                 value: "21"
-                summury: "50 à 99 salariés"
+                summary: "50 à 99 salariés"
               22:
                 value: "22"
-                summury: "100 à 199 salariés"
+                summary: "100 à 199 salariés"
               31:
                 value: "31"
-                summury: "200 à 249 salariés"
+                summary: "200 à 249 salariés"
               32:
                 value: "32"
-                summury: "250 à 499 salariés"
+                summary: "250 à 499 salariés"
               41:
                 value: "41"
-                summury: "500 à 999 salariés"
+                summary: "500 à 999 salariés"
               42:
                 value: "42"
-                summury: "1 000 à 1 999 salariés"
+                summary: "1 000 à 1 999 salariés"
               51:
                 value: "51"
-                summury: "2 000 à 4 999 salariés"
+                summary: "2 000 à 4 999 salariés"
               52:
                 value: "52"
-                summury: "5 000 à 9 999 salariés"
+                summary: "5 000 à 9 999 salariés"
               53:
                 value: "53"
-                summury: "10 000 salariés et plus"
+                summary: "10 000 salariés et plus"
             description: "Le code effectif correspond à la tranche d'effectif salarié de l'établissement.
               \n
               \n
