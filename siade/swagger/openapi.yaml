@@ -2105,6 +2105,7 @@ paths:
                             - ter
                             - quarter
                             - quinquies
+                            -
                           type_voie:
                             title: Type de la voie de localisation
                             example: RUE
@@ -2197,61 +2198,6 @@ paths:
                               en 'CEDEX'. \n \n Plus d'informations dans la documentation
                               Insee de l'API Sirene : * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
                               * https://www.sirene.fr/sirene/public/variable/l5-disp"
-                            examples:
-                              BP:
-                                value: BP
-                                summury: Boîte postale
-                              TSA:
-                                value: TSA
-                                summury: Tri par service à l'arrivée
-                              LP:
-                                value: LP
-                                summury: Local postal
-                              RP:
-                                value: RP
-                                summury: Référence postale
-                              SP:
-                                value: SP
-                                summury: Secteur postal
-                              CP:
-                                value: CP
-                                summury: Case postale
-                              CE:
-                                value: CE
-                                summury: Case entreprise
-                              CS:
-                                value: CS
-                                summury: Course spéciale
-                              POSTE RESTANTE:
-                                value: POSTE RESTANTE
-                              CEDEX:
-                                value: CEDEX
-                                summury: Courrier d'entreprise à distribution exceptionnelle
-                              CIDEX:
-                                value: CIDEX
-                                summury: Courrier individuel à distribution exceptionnelle
-                              CASE:
-                                value: CASE
-                                summury: Distribution interne du courrier à LA DEFENSE
-                              NIVEAU:
-                                value: NIVEAU
-                                summury: Distribution interne du courrier à LA DEFENSE
-                              CASIER:
-                                value: CASIER
-                                summury: Utilisé pour le centre commercial des Quatre
-                                  Temps
-                              SILIC:
-                                value: SILIC
-                                summury: Utilisé sur le site de Rungis
-                              SENIA:
-                                value: SENIA
-                                summury: Utilisé sur le site de Rungis
-                              MAREE:
-                                value: MAREE
-                                summury: Utilisé sur le site de Rungis
-                              FLEURS:
-                                value: FLEURS
-                                summury: Utilisé sur le site de Rungis
                           code_cedex:
                             title: Code cedex
                             nullable: true
@@ -2464,6 +2410,7 @@ paths:
                             - ter
                             - quarter
                             - quinquies
+                            -
                           type_voie:
                             title: Type de la voie de localisation
                             example: RUE
@@ -2556,61 +2503,6 @@ paths:
                               en 'CEDEX'. \n \n Plus d'informations dans la documentation
                               Insee de l'API Sirene : * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
                               * https://www.sirene.fr/sirene/public/variable/l5-disp"
-                            examples:
-                              BP:
-                                value: BP
-                                summury: Boîte postale
-                              TSA:
-                                value: TSA
-                                summury: Tri par service à l'arrivée
-                              LP:
-                                value: LP
-                                summury: Local postal
-                              RP:
-                                value: RP
-                                summury: Référence postale
-                              SP:
-                                value: SP
-                                summury: Secteur postal
-                              CP:
-                                value: CP
-                                summury: Case postale
-                              CE:
-                                value: CE
-                                summury: Case entreprise
-                              CS:
-                                value: CS
-                                summury: Course spéciale
-                              POSTE RESTANTE:
-                                value: POSTE RESTANTE
-                              CEDEX:
-                                value: CEDEX
-                                summury: Courrier d'entreprise à distribution exceptionnelle
-                              CIDEX:
-                                value: CIDEX
-                                summury: Courrier individuel à distribution exceptionnelle
-                              CASE:
-                                value: CASE
-                                summury: Distribution interne du courrier à LA DEFENSE
-                              NIVEAU:
-                                value: NIVEAU
-                                summury: Distribution interne du courrier à LA DEFENSE
-                              CASIER:
-                                value: CASIER
-                                summury: Utilisé pour le centre commercial des Quatre
-                                  Temps
-                              SILIC:
-                                value: SILIC
-                                summury: Utilisé sur le site de Rungis
-                              SENIA:
-                                value: SENIA
-                                summury: Utilisé sur le site de Rungis
-                              MAREE:
-                                value: MAREE
-                                summury: Utilisé sur le site de Rungis
-                              FLEURS:
-                                value: FLEURS
-                                summury: Utilisé sur le site de Rungis
                           code_cedex:
                             title: Code cedex
                             nullable: true
@@ -2840,13 +2732,6 @@ paths:
                             enum:
                             - A
                             - F
-                            examples:
-                              active:
-                                value: A
-                                summary: Actif
-                              cessee:
-                                value: F
-                                summary: Fermé
                             description: "Cette valeur décrit l'état administratif
                               de l'établissement, qui peut être : \n \n - actif. Sauf
                               exception, lors de son inscription au répertoire, tout
@@ -2911,64 +2796,24 @@ paths:
                                 title: Code effectif
                                 type: string
                                 nullable: true
-                                examples:
-                                  NN:
-                                    value: NN
-                                    summury: Unités non employeuses (pas de salarié
-                                      au cours de l'année de référence et pas d'effectif
-                                      au 31/12). Cette tranche peut contenir quelques
-                                      effectifs inconnus
-                                  '0':
-                                    value: '00'
-                                    summury: 0 salarié (n'ayant pas d'effectif au
-                                      31/12 mais ayant employé des salariés au cours
-                                      de l'année de référence)
-                                  '1':
-                                    value: '01'
-                                    summury: 1 ou 2 salariés
-                                  '2':
-                                    value: '02'
-                                    summury: 3 à 5 salariés
-                                  '3':
-                                    value: '03'
-                                    summury: 6 à 9 salariés
-                                  '11':
-                                    value: '11'
-                                    summury: 10 à 19 salariés
-                                  '12':
-                                    value: '12'
-                                    summury: 20 à 49 salariés
-                                  '21':
-                                    value: '21'
-                                    summury: 50 à 99 salariés
-                                  '22':
-                                    value: '22'
-                                    summury: 100 à 199 salariés
-                                  '31':
-                                    value: '31'
-                                    summury: 200 à 249 salariés
-                                  '32':
-                                    value: '32'
-                                    summury: 250 à 499 salariés
-                                  '41':
-                                    value: '41'
-                                    summury: 500 à 999 salariés
-                                  '42':
-                                    value: '42'
-                                    summury: 1 000 à 1 999 salariés
-                                  '51':
-                                    value: '51'
-                                    summury: 2 000 à 4 999 salariés
-                                  '52':
-                                    value: '52'
-                                    summury: 5 000 à 9 999 salariés
-                                  '53':
-                                    value: '53'
-                                    summury: 10 000 salariés et plus
+                                example: '51'
                                 description: "Le code effectif correspond à la tranche
-                                  d'effectif salarié de l'établissement. \n \n Plus
-                                  d'informations dans la documentation Insee de l'API
-                                  Sirene : https://www.sirene.fr/sirene/public/variable/tefen"
+                                  d'effectif salarié de l'établissement : \n \n -
+                                  NN : Unités non employeuses (pas de salarié au cours
+                                  de l'année de référence et pas d'effectif au 31/12).
+                                  Cette tranche peut contenir quelques effectifs inconnus
+                                  \n - 00 : 0 salarié (n'ayant pas d'effectif au 31/12
+                                  mais ayant employé des salariés au cours de l'année
+                                  de référence) \n - 01 : 1 ou 2 salariés \n - 02
+                                  : 3 à 5 salariés \n - 03 : 6 à 9 salariés \n - 11
+                                  : 10 à 19 salariés \n - 12 : 20 à 49 salariés \n
+                                  - 21 : 50 à 99 salariés \n - 22 : 100 à 199 salariés
+                                  \n - 31 : 200 à 249 salariés \n - 32 : 250 à 499
+                                  salariés \n - 41 : 500 à 999 salariés \n - 42 :
+                                  1 000 à 1 999 salariés \n - 51 : 2 000 à 4 999 salariés
+                                  \n - 52 : 5 000 à 9 999 salariés \n - 53 : 10 000
+                                  salariés et plus \n \n Plus d'informations dans
+                                  la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen"
                                 enum:
                                 - NN
                                 - '00'
@@ -3202,13 +3047,6 @@ paths:
                             enum:
                             - A
                             - F
-                            examples:
-                              active:
-                                value: A
-                                summary: Actif
-                              cessee:
-                                value: F
-                                summary: Fermé
                             description: "Cette valeur décrit l'état administratif
                               de l'établissement, qui peut être : \n \n - actif. Sauf
                               exception, lors de son inscription au répertoire, tout
@@ -3273,64 +3111,24 @@ paths:
                                 title: Code effectif
                                 type: string
                                 nullable: true
-                                examples:
-                                  NN:
-                                    value: NN
-                                    summury: Unités non employeuses (pas de salarié
-                                      au cours de l'année de référence et pas d'effectif
-                                      au 31/12). Cette tranche peut contenir quelques
-                                      effectifs inconnus
-                                  '0':
-                                    value: '00'
-                                    summury: 0 salarié (n'ayant pas d'effectif au
-                                      31/12 mais ayant employé des salariés au cours
-                                      de l'année de référence)
-                                  '1':
-                                    value: '01'
-                                    summury: 1 ou 2 salariés
-                                  '2':
-                                    value: '02'
-                                    summury: 3 à 5 salariés
-                                  '3':
-                                    value: '03'
-                                    summury: 6 à 9 salariés
-                                  '11':
-                                    value: '11'
-                                    summury: 10 à 19 salariés
-                                  '12':
-                                    value: '12'
-                                    summury: 20 à 49 salariés
-                                  '21':
-                                    value: '21'
-                                    summury: 50 à 99 salariés
-                                  '22':
-                                    value: '22'
-                                    summury: 100 à 199 salariés
-                                  '31':
-                                    value: '31'
-                                    summury: 200 à 249 salariés
-                                  '32':
-                                    value: '32'
-                                    summury: 250 à 499 salariés
-                                  '41':
-                                    value: '41'
-                                    summury: 500 à 999 salariés
-                                  '42':
-                                    value: '42'
-                                    summury: 1 000 à 1 999 salariés
-                                  '51':
-                                    value: '51'
-                                    summury: 2 000 à 4 999 salariés
-                                  '52':
-                                    value: '52'
-                                    summury: 5 000 à 9 999 salariés
-                                  '53':
-                                    value: '53'
-                                    summury: 10 000 salariés et plus
+                                example: '51'
                                 description: "Le code effectif correspond à la tranche
-                                  d'effectif salarié de l'établissement. \n \n Plus
-                                  d'informations dans la documentation Insee de l'API
-                                  Sirene : https://www.sirene.fr/sirene/public/variable/tefen"
+                                  d'effectif salarié de l'établissement : \n \n -
+                                  NN : Unités non employeuses (pas de salarié au cours
+                                  de l'année de référence et pas d'effectif au 31/12).
+                                  Cette tranche peut contenir quelques effectifs inconnus
+                                  \n - 00 : 0 salarié (n'ayant pas d'effectif au 31/12
+                                  mais ayant employé des salariés au cours de l'année
+                                  de référence) \n - 01 : 1 ou 2 salariés \n - 02
+                                  : 3 à 5 salariés \n - 03 : 6 à 9 salariés \n - 11
+                                  : 10 à 19 salariés \n - 12 : 20 à 49 salariés \n
+                                  - 21 : 50 à 99 salariés \n - 22 : 100 à 199 salariés
+                                  \n - 31 : 200 à 249 salariés \n - 32 : 250 à 499
+                                  salariés \n - 41 : 500 à 999 salariés \n - 42 :
+                                  1 000 à 1 999 salariés \n - 51 : 2 000 à 4 999 salariés
+                                  \n - 52 : 5 000 à 9 999 salariés \n - 53 : 10 000
+                                  salariés et plus \n \n Plus d'informations dans
+                                  la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen"
                                 enum:
                                 - NN
                                 - '00'
@@ -3561,13 +3359,6 @@ paths:
                             enum:
                             - A
                             - F
-                            examples:
-                              active:
-                                value: A
-                                summary: Actif
-                              cessee:
-                                value: F
-                                summary: Fermé
                             description: "Cette valeur décrit l'état administratif
                               de l'établissement, qui peut être : \n \n - actif. Sauf
                               exception, lors de son inscription au répertoire, tout
@@ -3632,64 +3423,24 @@ paths:
                                 title: Code effectif
                                 type: string
                                 nullable: true
-                                examples:
-                                  NN:
-                                    value: NN
-                                    summury: Unités non employeuses (pas de salarié
-                                      au cours de l'année de référence et pas d'effectif
-                                      au 31/12). Cette tranche peut contenir quelques
-                                      effectifs inconnus
-                                  '0':
-                                    value: '00'
-                                    summury: 0 salarié (n'ayant pas d'effectif au
-                                      31/12 mais ayant employé des salariés au cours
-                                      de l'année de référence)
-                                  '1':
-                                    value: '01'
-                                    summury: 1 ou 2 salariés
-                                  '2':
-                                    value: '02'
-                                    summury: 3 à 5 salariés
-                                  '3':
-                                    value: '03'
-                                    summury: 6 à 9 salariés
-                                  '11':
-                                    value: '11'
-                                    summury: 10 à 19 salariés
-                                  '12':
-                                    value: '12'
-                                    summury: 20 à 49 salariés
-                                  '21':
-                                    value: '21'
-                                    summury: 50 à 99 salariés
-                                  '22':
-                                    value: '22'
-                                    summury: 100 à 199 salariés
-                                  '31':
-                                    value: '31'
-                                    summury: 200 à 249 salariés
-                                  '32':
-                                    value: '32'
-                                    summury: 250 à 499 salariés
-                                  '41':
-                                    value: '41'
-                                    summury: 500 à 999 salariés
-                                  '42':
-                                    value: '42'
-                                    summury: 1 000 à 1 999 salariés
-                                  '51':
-                                    value: '51'
-                                    summury: 2 000 à 4 999 salariés
-                                  '52':
-                                    value: '52'
-                                    summury: 5 000 à 9 999 salariés
-                                  '53':
-                                    value: '53'
-                                    summury: 10 000 salariés et plus
+                                example: '51'
                                 description: "Le code effectif correspond à la tranche
-                                  d'effectif salarié de l'établissement. \n \n Plus
-                                  d'informations dans la documentation Insee de l'API
-                                  Sirene : https://www.sirene.fr/sirene/public/variable/tefen"
+                                  d'effectif salarié de l'établissement : \n \n -
+                                  NN : Unités non employeuses (pas de salarié au cours
+                                  de l'année de référence et pas d'effectif au 31/12).
+                                  Cette tranche peut contenir quelques effectifs inconnus
+                                  \n - 00 : 0 salarié (n'ayant pas d'effectif au 31/12
+                                  mais ayant employé des salariés au cours de l'année
+                                  de référence) \n - 01 : 1 ou 2 salariés \n - 02
+                                  : 3 à 5 salariés \n - 03 : 6 à 9 salariés \n - 11
+                                  : 10 à 19 salariés \n - 12 : 20 à 49 salariés \n
+                                  - 21 : 50 à 99 salariés \n - 22 : 100 à 199 salariés
+                                  \n - 31 : 200 à 249 salariés \n - 32 : 250 à 499
+                                  salariés \n - 41 : 500 à 999 salariés \n - 42 :
+                                  1 000 à 1 999 salariés \n - 51 : 2 000 à 4 999 salariés
+                                  \n - 52 : 5 000 à 9 999 salariés \n - 53 : 10 000
+                                  salariés et plus \n \n Plus d'informations dans
+                                  la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen"
                                 enum:
                                 - NN
                                 - '00'
@@ -3920,13 +3671,6 @@ paths:
                             enum:
                             - A
                             - F
-                            examples:
-                              active:
-                                value: A
-                                summary: Actif
-                              cessee:
-                                value: F
-                                summary: Fermé
                             description: "Cette valeur décrit l'état administratif
                               de l'établissement, qui peut être : \n \n - actif. Sauf
                               exception, lors de son inscription au répertoire, tout
@@ -3991,64 +3735,24 @@ paths:
                                 title: Code effectif
                                 type: string
                                 nullable: true
-                                examples:
-                                  NN:
-                                    value: NN
-                                    summury: Unités non employeuses (pas de salarié
-                                      au cours de l'année de référence et pas d'effectif
-                                      au 31/12). Cette tranche peut contenir quelques
-                                      effectifs inconnus
-                                  '0':
-                                    value: '00'
-                                    summury: 0 salarié (n'ayant pas d'effectif au
-                                      31/12 mais ayant employé des salariés au cours
-                                      de l'année de référence)
-                                  '1':
-                                    value: '01'
-                                    summury: 1 ou 2 salariés
-                                  '2':
-                                    value: '02'
-                                    summury: 3 à 5 salariés
-                                  '3':
-                                    value: '03'
-                                    summury: 6 à 9 salariés
-                                  '11':
-                                    value: '11'
-                                    summury: 10 à 19 salariés
-                                  '12':
-                                    value: '12'
-                                    summury: 20 à 49 salariés
-                                  '21':
-                                    value: '21'
-                                    summury: 50 à 99 salariés
-                                  '22':
-                                    value: '22'
-                                    summury: 100 à 199 salariés
-                                  '31':
-                                    value: '31'
-                                    summury: 200 à 249 salariés
-                                  '32':
-                                    value: '32'
-                                    summury: 250 à 499 salariés
-                                  '41':
-                                    value: '41'
-                                    summury: 500 à 999 salariés
-                                  '42':
-                                    value: '42'
-                                    summury: 1 000 à 1 999 salariés
-                                  '51':
-                                    value: '51'
-                                    summury: 2 000 à 4 999 salariés
-                                  '52':
-                                    value: '52'
-                                    summury: 5 000 à 9 999 salariés
-                                  '53':
-                                    value: '53'
-                                    summury: 10 000 salariés et plus
+                                example: '51'
                                 description: "Le code effectif correspond à la tranche
-                                  d'effectif salarié de l'établissement. \n \n Plus
-                                  d'informations dans la documentation Insee de l'API
-                                  Sirene : https://www.sirene.fr/sirene/public/variable/tefen"
+                                  d'effectif salarié de l'établissement : \n \n -
+                                  NN : Unités non employeuses (pas de salarié au cours
+                                  de l'année de référence et pas d'effectif au 31/12).
+                                  Cette tranche peut contenir quelques effectifs inconnus
+                                  \n - 00 : 0 salarié (n'ayant pas d'effectif au 31/12
+                                  mais ayant employé des salariés au cours de l'année
+                                  de référence) \n - 01 : 1 ou 2 salariés \n - 02
+                                  : 3 à 5 salariés \n - 03 : 6 à 9 salariés \n - 11
+                                  : 10 à 19 salariés \n - 12 : 20 à 49 salariés \n
+                                  - 21 : 50 à 99 salariés \n - 22 : 100 à 199 salariés
+                                  \n - 31 : 200 à 249 salariés \n - 32 : 250 à 499
+                                  salariés \n - 41 : 500 à 999 salariés \n - 42 :
+                                  1 000 à 1 999 salariés \n - 51 : 2 000 à 4 999 salariés
+                                  \n - 52 : 5 000 à 9 999 salariés \n - 53 : 10 000
+                                  salariés et plus \n \n Plus d'informations dans
+                                  la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen"
                                 enum:
                                 - NN
                                 - '00'
@@ -4575,13 +4279,6 @@ paths:
                             enum:
                             - A
                             - C
-                            examples:
-                              active:
-                                value: A
-                                summary: Active
-                              cessee:
-                                value: C
-                                summary: Cessée
                             description: "Cette valeur décrit l'état administratif
                               de l'unité légale, qui peut être : \n \n - cessée. Le
                               passage à l'état « Cessée » découle de la prise en compte
@@ -5098,13 +4795,6 @@ paths:
                             enum:
                             - A
                             - C
-                            examples:
-                              active:
-                                value: A
-                                summary: Active
-                              cessee:
-                                value: C
-                                summary: Cessée
                             description: "Cette valeur décrit l'état administratif
                               de l'unité légale, qui peut être : \n \n - cessée. Le
                               passage à l'état « Cessée » découle de la prise en compte

@@ -66,60 +66,6 @@ insee:
           Plus d'informations dans la documentation Insee de l'API Sirene :
           * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
           * https://www.sirene.fr/sirene/public/variable/l5-disp"
-        examples:
-          BP:
-            value: "BP"
-            summary: "Boîte postale"
-          TSA:
-            value: "TSA"
-            summary: "Tri par service à l'arrivée"
-          LP:
-            value: "LP"
-            summary: "Local postal"
-          RP:
-            value: "RP"
-            summary: "Référence postale"
-          SP:
-            value: "SP"
-            summary: "Secteur postal"
-          CP:
-            value: "CP"
-            summary: "Case postale"
-          CE:
-            value: "CE"
-            summary: "Case entreprise"
-          CS:
-            value: "CS"
-            summary: "Course spéciale"
-          POSTE RESTANTE:
-            value: "POSTE RESTANTE"
-          CEDEX:
-            value: "CEDEX"
-            summary: "Courrier d'entreprise à distribution exceptionnelle"
-          CIDEX:
-            value: "CIDEX"
-            summary: "Courrier individuel à distribution exceptionnelle"
-          CASE:
-            value: "CASE"
-            summary: "Distribution interne du courrier à LA DEFENSE"
-          NIVEAU:
-            value: "NIVEAU"
-            summary: "Distribution interne du courrier à LA DEFENSE"
-          CASIER:
-            value: "CASIER"
-            summary: "Utilisé pour le centre commercial des Quatre Temps"
-          SILIC:
-            value: "SILIC"
-            summary: "Utilisé sur le site de Rungis"
-          SENIA:
-            value: "SENIA"
-            summary: "Utilisé sur le site de Rungis"
-          MAREE:
-            value: "MAREE"
-            summary: "Utilisé sur le site de Rungis"
-          FLEURS:
-            value: "FLEURS"
-            summary: "Utilisé sur le site de Rungis"
       code_cedex:
         title: "Code cedex"
         nullable: true
@@ -571,13 +517,6 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
         enum:
           - "A"
           - "F"
-        examples:
-          active:
-            value: A
-            summary: Actif
-          cessee:
-            value: F
-            summary: Fermé
         description:
           "Cette valeur décrit l'état administratif de l'établissement, qui peut être :
           \n
@@ -635,56 +574,41 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
             title: "Code effectif"
             type: "string"
             nullable: true
-            examples:
-              NN:
-                value: "NN"
-                summary: "Unités non employeuses (pas de salarié au cours de l'année de référence et pas d'effectif au 31/12). Cette tranche peut contenir quelques effectifs inconnus"
-              00:
-                value: "00"
-                summary: "0 salarié (n'ayant pas d'effectif au 31/12 mais ayant employé des salariés au cours de l'année de référence)"
-              01:
-                value: "01"
-                summary: "1 ou 2 salariés"
-              02:
-                value: "02"
-                summary: "3 à 5 salariés"
-              03:
-                value: "03"
-                summary: "6 à 9 salariés"
-              11:
-                value: "11"
-                summary: "10 à 19 salariés"
-              12:
-                value: "12"
-                summary: "20 à 49 salariés"
-              21:
-                value: "21"
-                summary: "50 à 99 salariés"
-              22:
-                value: "22"
-                summary: "100 à 199 salariés"
-              31:
-                value: "31"
-                summary: "200 à 249 salariés"
-              32:
-                value: "32"
-                summary: "250 à 499 salariés"
-              41:
-                value: "41"
-                summary: "500 à 999 salariés"
-              42:
-                value: "42"
-                summary: "1 000 à 1 999 salariés"
-              51:
-                value: "51"
-                summary: "2 000 à 4 999 salariés"
-              52:
-                value: "52"
-                summary: "5 000 à 9 999 salariés"
-              53:
-                value: "53"
-                summary: "10 000 salariés et plus"
-            description: "Le code effectif correspond à la tranche d'effectif salarié de l'établissement.
+            example: "51"
+            description: "Le code effectif correspond à la tranche d'effectif salarié de l'établissement :
+              \n
+              \n
+              - NN : Unités non employeuses (pas de salarié au cours de l'année de référence et pas d'effectif au 31/12). Cette tranche peut contenir quelques effectifs inconnus
+              \n
+              - 00 : 0 salarié (n'ayant pas d'effectif au 31/12 mais ayant employé des salariés au cours de l'année de référence)
+              \n
+              - 01 : 1 ou 2 salariés
+              \n
+              - 02 : 3 à 5 salariés
+              \n
+              - 03 : 6 à 9 salariés
+              \n
+              - 11 : 10 à 19 salariés
+              \n
+              - 12 : 20 à 49 salariés
+              \n
+              - 21 : 50 à 99 salariés
+              \n
+              - 22 : 100 à 199 salariés
+              \n
+              - 31 : 200 à 249 salariés
+              \n
+              - 32 : 250 à 499 salariés
+              \n
+              - 41 : 500 à 999 salariés
+              \n
+              - 42 : 1 000 à 1 999 salariés
+              \n
+              - 51 : 2 000 à 4 999 salariés
+              \n
+              - 52 : 5 000 à 9 999 salariés
+              \n
+              - 53 : 10 000 salariés et plus
               \n
               \n
               Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen"
