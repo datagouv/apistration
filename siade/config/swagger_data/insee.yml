@@ -118,14 +118,14 @@ insee:
         description: "Lien vers la ressource 'Donnée Sirene d'un établissement' correspondant à cette adresse d'établissement pour obtenir les données de référence de l'établissement."
   adresse_etablissement_diffusable:
     title: "Adresse d'un établissement diffusible"
-    description: "Adresse d'un établissement diffusible inscrit au répertoire Sirene."
+    description: Adresse d'un établissement diffusible inscrit au répertoire Sirene."
     tags:
       - "Informations générales"
     attributes: *insee_adresse_etablissement_attributes
 
   unite_legale:
     title: "Données de référence d'une unité légale"
-    description: "Obtenir les informations de référence d'une unité légale (entreprise, association ou administration) inscrite au répertoire Sirene. Toutes les unités légales sont appelables, y compris les non-diffusibles."
+    description: "Informations de référence d'une unité légale (entreprise, association ou administration) inscrite au répertoire Sirene. Toutes les unités légales sont appelables, y compris les non-diffusibles."
     tags:
       - "Informations générales"
     attributes: &insee_unite_legale_attributes
@@ -486,7 +486,7 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
 
   unite_legale_diffusable:
     title: "Données de référence d'une unité légale diffusible"
-    description: "Obtenir les informations de référence d'une unité légale (entreprise, association ou administration) diffusible, inscrite au répertoire Sirene."
+    description: "Informations de référence d'une unité légale (entreprise, association ou administration) diffusible, inscrite au répertoire Sirene."
     tags:
       - "Informations générales"
     attributes:
@@ -501,7 +501,7 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
 
   etablissement:
     title: "Données de référence d'un établissement"
-    description: "Obtenir des informations générales concernant un établissement inscrit au répertoire Sirene. Tous les établissements sont appelables, y compris les non-diffusibles."
+    description: "Informations générales concernant un établissement inscrit au répertoire Sirene. Tous les établissements sont appelables, y compris les non-diffusibles."
     tags:
       - "Informations générales"
     attributes: &insee_etablissement_attributes
@@ -684,7 +684,7 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
 
   etablissement_diffusable:
     title: "Données de référence d'un établissement diffusible"
-    description: "Obtenir des informations générales concernant un établissement diffusible inscrit au répertoire Sirene."
+    description: "Informations générales concernant un établissement diffusible inscrit au répertoire Sirene."
     tags:
       - "Informations générales"
     attributes:
@@ -698,12 +698,12 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
         description: "Détermine si l'établissement est non-diffusible. Cette API n'appelant pas les non-diffusible, cette valeur est toujours à 'true'. Pour récupérer des établissements non-diffusibles, référez-vous à la documentation de l'API /insee/etablissements/:siren"
   siege_unite_legale:
     title: "Données d'un siège social"
-    description: "Obtenir des informations générales concernant le siège social d'une unité légale inscrite au répertoire Sirene. Tous les sièges sociaux sont appelables, y compris les non-diffusibles."
+    description: "Informations générales concernant le siège social d'une unité légale inscrite au répertoire Sirene. Tous les sièges sociaux sont appelables, y compris les non-diffusibles."
     tags:
       - "Informations générales"
 
   siege_diffusable_unite_legale:
     title: "Données d'un siège social diffusible"
-    description: "Obtenir des informations générales concernant le siège d'une unité légale diffusible inscrite au répertoire Sirene."
+    description: "Informations générales concernant le siège d'une unité légale diffusible inscrite au répertoire Sirene."
     tags:
       - "Informations générales"

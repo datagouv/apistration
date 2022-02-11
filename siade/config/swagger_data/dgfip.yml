@@ -1,7 +1,7 @@
 dgfip:
   attestations_fiscales:
     title: "Attestation fiscale"
-    description: "Obtenir l’attestation fiscale, délivrée par la Direction générale des finances publiques, indiquant que l’entreprise est à jour de ses obligations fiscales."
+    description: "Attestation fiscale délivrée par la Direction générale des finances publiques, indiquant que l’entreprise est à jour de ses obligations fiscales."
     tags:
       - "Attestations sociales et fiscales"
     document_url_properties:
@@ -18,14 +18,14 @@ dgfip:
   liasses_fiscales:
     declarations:
       title: "Liasses fiscales"
-      description: "Obtenir les informations renseignées dans les liasses fiscales, issues des déclarations de résultat d’une entreprise auprès de la Direction générale des finances publiques (DGFIP)."
+      description: "Informations renseignées dans les liasses fiscales, issues des déclarations de résultat d’une entreprise auprès de la Direction générale des finances publiques (DGFIP)."
       tags:
         - "Informations financières"
       attributes: {}
 
   chiffres_affaires:
     title: "Chiffre d'affaires"
-    description: "Obtenir les déclarations de chiffre d’affaires faites auprès de la Direction générale des finances publiques (DGFIP), et renseignées dans la liasse fiscale."
+    description: "Déclarations de chiffre d’affaires faites auprès de la Direction générale des finances publiques (DGFIP)."
     tags:
       - "Informations financières"
     items:
