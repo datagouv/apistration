@@ -514,6 +514,7 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
       etat_administratif:
         title: "État administratif de l'établissement"
         type: "string"
+        example: 'A'
         enum:
           - "A"
           - "F"
