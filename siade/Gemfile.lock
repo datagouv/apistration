@@ -323,6 +323,8 @@ GEM
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
+    xml-simple (1.1.9)
+      rexml
     zeitwerk (2.5.4)
 
 PLATFORMS
@@ -389,6 +391,7 @@ DEPENDENCIES
   utf8-cleaner
   vcr
   webmock (~> 3.14)
+  xml-simple
 
 BUNDLED WITH
    2.3.10

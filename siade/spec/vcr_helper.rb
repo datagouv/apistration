@@ -1,3 +1,5 @@
+require 'xmlsimple'
+
 # rubocop:disable Metrics/BlockLength
 VCR.configure do |c|
   c.allow_http_connections_when_no_cassette = false
@@ -8,7 +10,7 @@ VCR.configure do |c|
 
   c.default_cassette_options = if ENV['regenerate_cassettes']
                                  # when regenerating cassettes it allows to add episodes with remote_storage at 'true' and THEN at 'false'
-                                 { record: :new_episodes, allow_playback_repeats: true, match_requests_on: %i[method uri body headers] }
+                                 { record: :new_episodes, allow_playback_repeats: true, match_requests_on: %i[method uri body_sanitized headers] }
                                else
                                  # due to legacy we can't match on headers & body. But new ones will be ok
                                  { record: :none, allow_playback_repeats: true, match_requests_on: %i[method uri] }
@@ -49,6 +51,17 @@ VCR.configure do |c|
   c.filter_sensitive_data('<URL_DGFIP_LIASSE_DICO>') { Siade.credentials[:dgfip_liasse_fiscale_dictionnaire_url].to_s }
 
   c.filter_sensitive_data('<URL_QUALIBAT>') { Siade.credentials[:qualibat_url].to_s }
+
+  c.register_request_matcher :body_sanitized do |r_1, r_2|
+    body_1 = r_1.body || ''
+    body_2 = r_2.body || ''
+
+    (body_1 == body_2) ||
+      (body_1.squeeze(' ') == body_2.squeeze(' ')) ||
+      (XmlSimple.xml_in(body_1) == XmlSimple.xml_in(body_2))
+  rescue ArgumentError
+    false
+  end
 
   c.register_request_matcher :headers_sanitized do |request, registered_request|
     headers_to_ignore = %w[

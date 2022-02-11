@@ -11,7 +11,7 @@ module ActivateStrictVcrRequestMatchingForV3
     %i[
       method
       uri
-      body
+      body_sanitized
       headers_sanitized
     ].freeze
   end
