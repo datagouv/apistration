@@ -29,6 +29,7 @@ class Infogreffe::MandatairesSociaux::BuildResource < BuildResource
       prenom: prenom(dirigeant),
       fonction: fonction(dirigeant),
       date_naissance: date_naissance(dirigeant),
+      lieu_naissance: lieu_naissance(dirigeant),
       date_naissance_timestamp: date_naissance_timestamp(dirigeant)
     }
   end
@@ -57,6 +58,10 @@ class Infogreffe::MandatairesSociaux::BuildResource < BuildResource
     return if dirigeant.css('naissance date').blank?
 
     dirigeant.css('naissance date').attribute('dateISO').value
+  end
+
+  def lieu_naissance(dirigeant)
+    dirigeant.css('naissance lieu').text.strip
   end
 
   def date_naissance_timestamp(dirigeant)

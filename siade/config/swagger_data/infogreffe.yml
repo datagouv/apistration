@@ -34,6 +34,11 @@ infogreffe:
               type: 'string'
               example: '1965-01-27'
               nullable: true
+            lieu_naissance:
+              title: 'Lieu de naissance'
+              type: 'string'
+              example: 'ROUBAIX'
+              nullable: true
             date_naissance_timestamp:
               title: 'Date de naissance (timestamp)'
               type: 'number'

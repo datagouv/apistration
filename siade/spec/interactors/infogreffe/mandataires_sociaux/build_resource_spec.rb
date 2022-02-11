@@ -8,6 +8,7 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResource, type: :build_resou
         prenom: 'FRANCOIS',
         fonction: 'PRESIDENT DU DIRECTOIRE',
         date_naissance: '1965-01-27',
+        lieu_naissance: 'ROUBAIX',
         date_naissance_timestamp: -155_523_600
       }
     end
