@@ -2729,6 +2729,7 @@ paths:
                           etat_administratif:
                             title: État administratif de l'établissement
                             type: string
+                            example: A
                             enum:
                             - A
                             - F
@@ -3044,6 +3045,7 @@ paths:
                           etat_administratif:
                             title: État administratif de l'établissement
                             type: string
+                            example: A
                             enum:
                             - A
                             - F
@@ -3356,6 +3358,7 @@ paths:
                           etat_administratif:
                             title: État administratif de l'établissement
                             type: string
+                            example: A
                             enum:
                             - A
                             - F
@@ -3668,6 +3671,7 @@ paths:
                           etat_administratif:
                             title: État administratif de l'établissement
                             type: string
+                            example: A
                             enum:
                             - A
                             - F
