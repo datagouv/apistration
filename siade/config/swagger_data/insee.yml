@@ -13,12 +13,12 @@ insee:
         title: "Indice de répétition du numéro dans la voie"
         description: "Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/indrep"
         type: "string"
-        nullable: true
         enum:
           - "bis"
           - "ter"
           - "quarter"
           - "quinquies"
+          - ''
       type_voie:
         title: "Type de la voie de localisation"
         example: "RUE"
