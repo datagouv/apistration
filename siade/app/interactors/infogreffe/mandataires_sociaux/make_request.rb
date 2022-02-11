@@ -2,7 +2,7 @@ class Infogreffe::MandatairesSociaux::MakeRequest < MakeRequest::Post
   protected
 
   def request_uri
-    URI('https://infogreffe_url_extrait_rcs.gouv.fr')
+    URI(infogreffe_url_extrait_rcs)
   end
 
   def build_request_body
@@ -19,6 +19,10 @@ class Infogreffe::MandatairesSociaux::MakeRequest < MakeRequest::Post
   end
 
   private
+
+  def infogreffe_url_extrait_rcs
+    Siade.credentials[:infogreffe_url_extrait_rcs]
+  end
 
   def siren
     context.params[:siren]
