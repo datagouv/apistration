@@ -1,4 +1,4 @@
-class Infogreffe::MandatairesSociaux::ValidateResponse < ValidateResponse
+class Infogreffe::ValidateResponse < ValidateResponse
   def call
     return if http_ok? && payload_has_siren?
 

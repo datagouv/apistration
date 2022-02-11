@@ -1,4 +1,4 @@
-RSpec.describe Infogreffe::MandatairesSociaux::ValidateResponse, type: :validate_response do
+RSpec.describe Infogreffe::ValidateResponse, type: :validate_response do
   describe '.call' do
     subject { described_class.call(response:, provider_name: 'Infogreffe') }
 
