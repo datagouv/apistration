@@ -125,7 +125,7 @@ insee:
 
   unite_legale:
     title: "Données de référence d'une unité légale"
-    description: "Obtenir les informations de référence d'une unité légale (entreprises, associations et administrations) inscrite au répertoire Sirene, telles que le type d'entreprise, son activité et son état administratif. Toutes les unités légales sont appelables, y compris les non-diffusibles."
+    description: "Obtenir les informations de référence d'une unité légale (entreprise, association ou administration) inscrite au répertoire Sirene. Toutes les unités légales sont appelables, y compris celles n'ayant pas donné l'accord de diffusion de leurs informations."
     tags:
       - "Informations générales"
     attributes: &insee_unite_legale_attributes
@@ -486,7 +486,7 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
 
   unite_legale_diffusable:
     title: "Données de référence d'une unité légale diffusible"
-    description: "Obtenir les informations de référence d'une unité légale (entreprises, associations et administrations), inscrite au répertoire Sirene, telles que le type d'entreprise, son activité et son état administratif. Pour appeler une unité légale non-diffusible, se référer à l'API 'Données de référence d'une unité légale'."
+    description: "Obtenir les informations de référence d'une unité légale (entreprise, association ou administration), inscrite au répertoire Sirene et ayant accepté la diffusion de ses informations."
     tags:
       - "Informations générales"
     attributes:
