@@ -1,7 +1,7 @@
 dgfip:
   attestations_fiscales:
     title: "Attestation fiscale"
-    description: "Attestation fiscale délivrée par la Direction générale des finances publiques, indiquant que l’entreprise est à jour de ses obligations fiscales."
+    description: "Attestation fiscale délivrée par la Direction générale des finances publiques (DGFIP), indiquant que l’entreprise est à jour de ses obligations fiscales."
     tags:
       - "Attestations sociales et fiscales"
     document_url_properties:
@@ -25,7 +25,7 @@ dgfip:
 
   chiffres_affaires:
     title: "Chiffre d'affaires"
-    description: "Déclarations de chiffre d’affaires faites auprès de la Direction générale des finances publiques (DGFIP)."
+    description: "Déclarations de chiffre d’affaires, des trois derniers exercices, faites auprès de la Direction générale des finances publiques (DGFIP)."
     tags:
       - "Informations financières"
     items:
