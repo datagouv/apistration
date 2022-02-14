@@ -92,8 +92,8 @@ task :deploy do
     # instance of your project.
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
-    set :bundle_options, fetch(:bundle_options) + ' --clean'
     invoke :'bundle:install'
+    invoke :'bundle:clean'
 
     on :launch do
       invoke :'passenger'
