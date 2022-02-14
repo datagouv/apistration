@@ -152,7 +152,7 @@ endpoints = <<STR
   http_path: '/v3/infogreffe/mandataires_sociaux/418166096'
 
 - name: '[V3] INPI Actes'
-    http_path: '/v3/inpi/actes/542065479'
+  http_path: '/v3/inpi/actes/542065479'
 
 - name: '[V3] INPI Brevets'
   http_path: '/v3/inpi/brevets/542065479'
