@@ -68,6 +68,17 @@ set :shared_files, fetch(:shared_files, []).push(*%w[
   config/initializers/redis.rb
 ])
 
+namespace :bundle do
+  desc 'Sets the Bundler config options.'
+  task :config do
+    comment %{Setting the Bundler config options (and cleaning default options)}
+    set :bundle_options, -> { '' }
+    command %{#{fetch(:bundle_bin)} config set --local deployment 'true'}
+    command %{#{fetch(:bundle_bin)} config set --local path '#{fetch(:bundle_path)}'}
+    command %{#{fetch(:bundle_bin)} config set --local without '#{fetch(:bundle_withouts)}'}
+  end
+end
+
 # This task is the environment that is loaded for all remote run commands, such as
 # `mina deploy` or `mina rake`.
 task :remote_environment do
@@ -92,6 +103,7 @@ task :deploy do
     # instance of your project.
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
+    invoke :'bundle:config'
     invoke :'bundle:install'
     invoke :'bundle:clean'
 
