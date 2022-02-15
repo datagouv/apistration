@@ -23,6 +23,9 @@ parameters:
       siren_entrepreneur_individuel:
         value: "389839937"
         summary: SIREN d'un entrepeneur individuel (cessé)
+      siren_marques_brevets_modeles:
+        value: "542065479"
+        summary: SIREN d'une entreprise ayant des marques, brevets et modèles (INPI)
 
   siret:
     description: "Siret de l'établissement"
