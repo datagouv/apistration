@@ -1,20 +1,33 @@
-class Infogreffe::MandatairesSociaux::BuildResource < BuildResource
+class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCollection
+  def initialize(params)
+    super(params)
+
+    @count_pp = 0
+    @count_pm = 0
+  end
+
   protected
 
-  def resource_attributes
-    liste_pp = []
-    liste_pm = []
+  def items
+    infos.try(:css, 'liste_dirigeant dirigeant')
+  end
 
-    infos.try(:css, 'liste_dirigeant dirigeant')&.each do |dirigeant|
-      liste_pp << mandataire_social_pp(dirigeant) if type(dirigeant) == 'PP'
-      liste_pm << mandataire_social_pm(dirigeant) if type(dirigeant) == 'PM'
-    end
-
+  def items_meta
     {
-      id: infos.at_css('num_ident').attributes['siren'].value,
-      pp: liste_pp,
-      pm: liste_pm
+      count_pp: @count_pp,
+      count_pm: @count_pm,
+      count: @count_pm + @count_pp
     }
+  end
+
+  def resource_attributes(dirigeant)
+    if type(dirigeant) == 'PP'
+      @count_pp += 1
+      mandataire_social_pp(dirigeant)
+    else
+      @count_pm += 1
+      mandataire_social_pm(dirigeant)
+    end
   end
 
   private
@@ -25,21 +38,25 @@ class Infogreffe::MandatairesSociaux::BuildResource < BuildResource
 
   def mandataire_social_pp(dirigeant)
     {
+      id: [nom(dirigeant), prenom(dirigeant), date_naissance(dirigeant)].join('-'),
+      type: 'pp',
       nom: nom(dirigeant),
       prenom: prenom(dirigeant),
       fonction: fonction(dirigeant),
       date_naissance: date_naissance(dirigeant),
+      date_naissance_timestamp: date_naissance_timestamp(dirigeant),
       lieu_naissance: lieu_naissance(dirigeant),
       pays_naissance: pays_naissance(dirigeant),
       code_pays_naissance: code_pays_naissance(dirigeant),
       nationalite: nationalite(dirigeant),
-      code_nationalite: code_nationalite(dirigeant),
-      date_naissance_timestamp: date_naissance_timestamp(dirigeant)
+      code_nationalite: code_nationalite(dirigeant)
     }
   end
 
   def mandataire_social_pm(dirigeant)
     {
+      id: identifiant(dirigeant),
+      type: 'pm',
       fonction: fonction(dirigeant),
       raison_sociale: raison_sociale(dirigeant),
       code_greffe: code_greffe(dirigeant),
