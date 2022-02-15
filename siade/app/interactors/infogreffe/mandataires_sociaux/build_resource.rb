@@ -30,6 +30,10 @@ class Infogreffe::MandatairesSociaux::BuildResource < BuildResource
       fonction: fonction(dirigeant),
       date_naissance: date_naissance(dirigeant),
       lieu_naissance: lieu_naissance(dirigeant),
+      pays_naissance: pays_naissance(dirigeant),
+      code_pays_naissance: code_pays_naissance(dirigeant),
+      nationalite: nationalite(dirigeant),
+      code_nationalite: code_nationalite(dirigeant),
       date_naissance_timestamp: date_naissance_timestamp(dirigeant)
     }
   end
@@ -38,6 +42,8 @@ class Infogreffe::MandatairesSociaux::BuildResource < BuildResource
     {
       fonction: fonction(dirigeant),
       raison_sociale: raison_sociale(dirigeant),
+      code_greffe: code_greffe(dirigeant),
+      libelle_greffe: libelle_greffe(dirigeant),
       identifiant: identifiant(dirigeant)
     }
   end
@@ -64,12 +70,36 @@ class Infogreffe::MandatairesSociaux::BuildResource < BuildResource
     dirigeant.css('naissance lieu').text.strip
   end
 
+  def pays_naissance(dirigeant)
+    dirigeant.css('naissance').attribute('pays').value
+  end
+
+  def code_pays_naissance(dirigeant)
+    dirigeant.css('naissance').attribute('codePays').value
+  end
+
+  def nationalite(dirigeant)
+    dirigeant.css('pp').attribute('nationalite').value
+  end
+
+  def code_nationalite(dirigeant)
+    dirigeant.css('pp').attribute('codeNationalite').value
+  end
+
   def date_naissance_timestamp(dirigeant)
     date_naissance(dirigeant).in_time_zone.to_i if date_naissance(dirigeant)
   end
 
   def raison_sociale(dirigeant)
     dirigeant.css('denomination').text.strip
+  end
+
+  def code_greffe(dirigeant)
+    dirigeant.css('greffe').attribute('code').value
+  end
+
+  def libelle_greffe(dirigeant)
+    dirigeant.css('greffe').text.strip
   end
 
   def identifiant(dirigeant)

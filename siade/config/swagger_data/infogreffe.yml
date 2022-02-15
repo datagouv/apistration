@@ -1,7 +1,7 @@
 infogreffe:
   mandataires_sociaux:
     title: "Mandataires sociaux"
-    description: "Liste des mandataires sociaux d'une société"
+    description: "Liste des mandataires sociaux d'une société inscrits au RCS. Sont inclus les personnes morales et les personnes physiques."
     tags:
       - "Informations générales"
     attributes:
@@ -12,6 +12,10 @@ infogreffe:
         example: '418166096'
       pp:
         title: 'Personnes physiques'
+        description: "Liste des personnes physiques inscrites en tant que mandataires sociaux de l'entreprise.
+        \n
+        \n
+        Chaque élément de la liste contient les champs suivants : `nom`, `prenom`, `fonction`, `date_naissance`, `lieu_naissance`, `date_naissance_timestamp`."
         type: 'array'
         items:
           properties:
@@ -39,6 +43,26 @@ infogreffe:
               type: 'string'
               example: 'ROUBAIX'
               nullable: true
+            pays_naissance:
+              title: 'Pays de naissance'
+              type: 'string'
+              example: 'FRANCE'
+              nullable: true
+            code_pays_naissance:
+              title: "Code pays ISO 3166 Alpha 2"
+              type: "string"
+              example: "FR"
+              nullable: true
+            nationalite:
+              title: 'Nationalité de la personne physique'
+              type: 'string'
+              example: 'FRANCAISE'
+              nullable: true
+            code_nationalite:
+              title: "Code pays ISO 3166 Alpha 2"
+              type: "string"
+              example: "FR"
+              nullable: true
             date_naissance_timestamp:
               title: 'Date de naissance (timestamp)'
               type: 'number'
@@ -46,6 +70,10 @@ infogreffe:
               nullable: true
       pm:
         title: 'Personnes morales'
+        description: "Liste des personnes physiques inscrites en tant que mandataires sociaux de l'entreprise.
+        \n
+        \n
+        Chaque élément de la liste contient les champs suivants : `fonction`, `raison_sociale`, `identifiant`"
         type: 'array'
         items:
           properties:
@@ -57,6 +85,16 @@ infogreffe:
               title: 'Raison sociale'
               type: 'string'
               example: 'BCRH & ASSOCIES - SOCIETE A RESPONSABILITE LIMITEE A ASSOCIE UNIQUE'
+              nullable: true
+            code_greffe:
+              title: "Code du greffe de l'entreprise"
+              description: "Tous les code greffe sont disponibles ici : https://opendata.datainfogreffe.fr/explore/dataset/liste-des-greffes/table/"
+              example: "9201"
+              nullable: true
+            libelle_greffe:
+              title: "Libellé du greffe de l'entreprise"
+              description: "Tous les libellés sont disponibles ici : https://opendata.datainfogreffe.fr/explore/dataset/liste-des-greffes/table/"
+              example: "NANTERRE"
               nullable: true
             identifiant:
               title: 'Identifiant'

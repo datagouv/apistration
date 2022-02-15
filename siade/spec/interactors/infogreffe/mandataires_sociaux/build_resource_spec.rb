@@ -9,6 +9,10 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResource, type: :build_resou
         fonction: 'PRESIDENT DU DIRECTOIRE',
         date_naissance: '1965-01-27',
         lieu_naissance: 'ROUBAIX',
+        pays_naissance: 'FRANCE',
+        code_pays_naissance: 'FR',
+        nationalite: 'FRANCAISE',
+        code_nationalite: 'FR',
         date_naissance_timestamp: -155_523_600
       }
     end
@@ -16,6 +20,8 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResource, type: :build_resou
       {
         fonction: 'COMMISSAIRE AUX COMPTES TITULAIRE',
         raison_sociale: 'MAZARS - SOCIETE ANONYME',
+        code_greffe: '9201',
+        libelle_greffe: 'NANTERRE',
         identifiant: '784824153'
       }
     end
