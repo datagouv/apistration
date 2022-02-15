@@ -1,11 +1,13 @@
 class API::V3AndMore::Infogreffe::MandatairesSociauxController < API::V3AndMore::BaseController
+  attr_reader :organizer
+
   def show
     authorize :entreprise
 
-    organizer = ::Infogreffe::MandatairesSociaux.call(params: organizer_params)
+    @organizer = ::Infogreffe::MandatairesSociaux.call(params: organizer_params)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.resource).serializable_hash,
+      render json: serializer_class.new(organizer.resource_collection, options).serializable_hash,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)
@@ -22,5 +24,12 @@ class API::V3AndMore::Infogreffe::MandatairesSociauxController < API::V3AndMore:
 
   def serializer_module
     ::Infogreffe::MandatairesSociauxSerializer
+  end
+
+  def options
+    {
+      is_collection: true,
+      meta: organizer.meta
+    }
   end
 end

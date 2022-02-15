@@ -2,7 +2,7 @@ class Infogreffe::MandatairesSociaux < RetrieverOrganizer
   organize ValidateSiren,
     Infogreffe::MandatairesSociaux::MakeRequest,
     Infogreffe::MandatairesSociaux::ValidateResponse,
-    Infogreffe::MandatairesSociaux::BuildResource
+    Infogreffe::MandatairesSociaux::BuildResourceCollection
 
   def provider_name
     'Infogreffe'

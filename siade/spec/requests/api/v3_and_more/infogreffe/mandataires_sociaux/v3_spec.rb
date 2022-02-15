@@ -21,10 +21,9 @@ RSpec.describe 'Infogreffe: Mandataires sociaux', type: %i[request swagger] do
         response '200', 'Entité trouvée', vcr: { cassette_name: 'infogreffe/mandataires_sociaux/with_valid_siren' } do
           description SwaggerData.get('infogreffe.mandataires_sociaux.description')
 
-          schema build_rswag_response(
-            id: valid_siren(:extrait_rcs),
-            type: 'mandataires_sociaux',
-            attributes: SwaggerData.get('infogreffe.mandataires_sociaux.attributes')
+          schema build_rswag_response_collection(
+            type: 'object',
+            properties: SwaggerData.get('infogreffe.mandataires_sociaux.items.properties')
           )
 
           rate_limit_headers
