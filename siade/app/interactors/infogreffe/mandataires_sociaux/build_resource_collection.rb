@@ -2,14 +2,15 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
   def initialize(params)
     super(params)
 
-    @count_pp = 0
-    @count_pm = 0
+    @count_pp = @count_pm = 0
   end
 
   protected
 
   def items
-    infos.try(:css, 'liste_dirigeant dirigeant')
+    Nokogiri
+      .XML(body)
+      .try(:css, 'liste_dirigeant dirigeant')
   end
 
   def items_meta
@@ -31,10 +32,6 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
   end
 
   private
-
-  def infos
-    @infos ||= Nokogiri.XML(body)
-  end
 
   def mandataire_social_pp(dirigeant)
     {
