@@ -172,7 +172,7 @@ module RSWagResourcesPayloads
     attributes.each do |key, schema|
       next unless schema['type'] == 'object'
 
-      attributes[key]['required'] = schema['properties'].keys
+      attributes[key]['required'] = schema['required'] || schema['properties'].keys
       attributes[key]['properties'] = add_required_keys_to_all_type_object(attributes[key]['properties'])
     end
 
