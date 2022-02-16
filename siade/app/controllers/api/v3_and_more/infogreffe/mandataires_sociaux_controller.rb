@@ -32,7 +32,7 @@ class API::V3AndMore::Infogreffe::MandatairesSociauxController < API::V3AndMore:
     resources.map do |resource|
       dynamic_serializer_class(resource.type)
         .new(resource)
-        .serializable_hash
+        .serializable_hash[:data]
     end
   end
 
