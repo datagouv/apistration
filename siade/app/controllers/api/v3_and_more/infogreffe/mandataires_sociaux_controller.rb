@@ -7,8 +7,7 @@ class API::V3AndMore::Infogreffe::MandatairesSociauxController < API::V3AndMore:
     @organizer = ::Infogreffe::MandatairesSociaux.call(params: organizer_params)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.resource_collection, options).serializable_hash,
-        status: extract_http_code(organizer)
+      render json: serialize_payload, status: extract_http_code(organizer)
     else
       render_errors(organizer)
     end
@@ -22,14 +21,39 @@ class API::V3AndMore::Infogreffe::MandatairesSociauxController < API::V3AndMore:
     }
   end
 
-  def serializer_module
-    ::Infogreffe::MandatairesSociauxSerializer
-  end
-
-  def options
+  def serialize_payload
     {
-      is_collection: true,
+      data: serialize_collection(organizer.resource_collection),
       meta: organizer.meta
     }
+  end
+
+  def serialize_collection(resources)
+    resources.map do |resource|
+      dynamic_serializer_class(resource.type)
+        .new(resource)
+        .serializable_hash
+    end
+  end
+
+  def dynamic_serializer_class(resource_type)
+    dynamic_serializer_module(resource_type)
+      .const_get("V#{api_version}")
+  end
+
+  def dynamic_serializer_module(resource_type)
+    if resource_type == 'pp'
+      ::Infogreffe::PersonnesPhysiquesSerializer
+    else
+      ::Infogreffe::PersonnesMoralesSerializer
+    end
+  end
+
+  def supported_version?
+    dynamic_serializer_class('pp')
+    dynamic_serializer_class('pm')
+    true
+  rescue ::NameError => _e
+    false
   end
 end
