@@ -1195,6 +1195,34 @@ paths:
       tags:
       - Informations générales
       parameters:
+      - name: siren
+        in: path
+        description: Siren de l'entreprise
+        examples:
+          siren_octo_technology:
+            value: '418166096'
+            summary: SIREN Octo Technology
+          siren_non_diffusible:
+            value: '005572466'
+            summary: SIREN entreprise non diffusible
+          siren_artisant:
+            value: '301123626'
+            summary: SIREN entreprise artisanale
+          siren_fntp:
+            value: '339379984'
+            summary: SIREN pour FNTP
+          siren_cnetp:
+            value: '542036207'
+            summary: SIREN pour CNETP
+          siren_opqibi:
+            value: '515228211'
+            summary: SIREN pour OPQIBI
+          siren_entrepreneur_individuel:
+            value: '389839937'
+            summary: SIREN d'un entrepeneur individuel (cessé)
+        required: true
+        schema:
+          type: string
       - name: context
         in: query
         description: |-
@@ -1222,11 +1250,6 @@ paths:
 
           L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
         example: marché numéro 127
-        required: true
-        schema:
-          type: string
-      - name: siren
-        in: path
         required: true
         schema:
           type: string
@@ -1271,79 +1294,100 @@ paths:
                           title: Numéro d'identification
                           type: string
                           example: HENRI-MARTIN-1965-01-27
-                        nom:
-                          title: Nom
+                        type:
+                          title: Type de mandataire social
                           type: string
-                          example: Henri
-                          nullable: true
-                        prenom:
-                          title: Prénom
-                          type: string
-                          example: Martin
-                          nullable: true
-                        fonction:
-                          title: Fonction
-                          type: string
-                          example: COMMISSAIRE AUX COMPTES SUPPLEANT
-                        date_naissance:
-                          title: Date de naissance
-                          type: string
-                          example: '1965-01-27'
-                          nullable: true
-                        lieu_naissance:
-                          title: Lieu de naissance
-                          type: string
-                          example: ROUBAIX
-                          nullable: true
-                        pays_naissance:
-                          title: Pays de naissance
-                          type: string
-                          example: FRANCE
-                          nullable: true
-                        code_pays_naissance:
-                          title: Code pays ISO 3166 Alpha 2
-                          type: string
-                          example: FR
-                          nullable: true
-                        nationalite:
-                          title: Nationalité de la personne physique
-                          type: string
-                          example: FRANCAISE
-                          nullable: true
-                        code_nationalite:
-                          title: Code pays ISO 3166 Alpha 2
-                          type: string
-                          example: FR
-                          nullable: true
-                        date_naissance_timestamp:
-                          title: Date de naissance (timestamp)
-                          type: number
-                          example: -155523600
-                          nullable: true
-                        raison_sociale:
-                          title: Raison sociale
-                          type: string
-                          example: BCRH & ASSOCIES - SOCIETE A RESPONSABILITE LIMITEE
-                            A ASSOCIE UNIQUE
-                          nullable: true
-                        code_greffe:
-                          title: Code du greffe de l'entreprise
-                          description: 'Tous les code greffe sont disponibles ici
-                            : https://opendata.datainfogreffe.fr/explore/dataset/liste-des-greffes/table/'
-                          example: '9201'
-                          nullable: true
-                        libelle_greffe:
-                          title: Libellé du greffe de l'entreprise
-                          description: 'Tous les libellés sont disponibles ici : https://opendata.datainfogreffe.fr/explore/dataset/liste-des-greffes/table/'
-                          example: NANTERRE
-                          nullable: true
-                        identifiant:
-                          title: Identifiant
-                          description: Cet element est facultatif, composé de 7 à
-                            9 chiffres, et peut être vide.
-                          type: string
-                          example: '490092574'
-                          nullable: true
+                          example: personne_morale
+                          enum:
+                          - personne_morale
+                          - personne_physique
+                        attributes:
+                          type: object
+                          required:
+                          - fonction
+                          additionalProperties: false
+                          properties:
+                            fonction:
+                              title: Fonction (disponible pour les personnes morales
+                                et physiques)
+                              type: string
+                              example: COMMISSAIRE AUX COMPTES SUPPLEANT
+                            nom:
+                              title: Nom (uniquement personnes physiques)
+                              type: string
+                              example: Henri
+                              nullable: true
+                            prenom:
+                              title: Prénom (uniquement personnes physiques)
+                              type: string
+                              example: Martin
+                              nullable: true
+                            date_naissance:
+                              title: Date de naissance (uniquement personnes physiques)
+                              type: string
+                              example: '1965-01-27'
+                              nullable: true
+                            lieu_naissance:
+                              title: Lieu de naissance (uniquement personnes physiques)
+                              type: string
+                              example: ROUBAIX
+                              nullable: true
+                            pays_naissance:
+                              title: Pays de naissance (uniquement personnes physiques)
+                              type: string
+                              example: FRANCE
+                              nullable: true
+                            code_pays_naissance:
+                              title: Code pays ISO 3166 Alpha 2 (uniquement personnes
+                                physiques)
+                              type: string
+                              example: FR
+                              nullable: true
+                            nationalite:
+                              title: Nationalité de la personne physique (uniquement
+                                personnes physiques)
+                              type: string
+                              example: FRANCAISE
+                              nullable: true
+                            code_nationalite:
+                              title: Code pays ISO 3166 Alpha 2 (uniquement personnes
+                                physiques)
+                              type: string
+                              example: FR
+                              nullable: true
+                            date_naissance_timestamp:
+                              title: Date de naissance (timestamp) (uniquement personnes
+                                physiques)
+                              type: number
+                              example: -155523600
+                              nullable: true
+                            raison_sociale:
+                              title: Raison sociale (uniquement personne morales)
+                              type: string
+                              example: BCRH & ASSOCIES - SOCIETE A RESPONSABILITE
+                                LIMITEE A ASSOCIE UNIQUE
+                              nullable: true
+                            code_greffe:
+                              title: Code du greffe de l'entreprise (uniquement personne
+                                morales)
+                              description: 'Tous les code greffe sont disponibles
+                                ici : https://opendata.datainfogreffe.fr/explore/dataset/liste-des-greffes/table/'
+                              example: '9201'
+                              nullable: true
+                            libelle_greffe:
+                              title: Libellé du greffe de l'entreprise (uniquement
+                                personne morales)
+                              description: 'Tous les libellés sont disponibles ici
+                                : https://opendata.datainfogreffe.fr/explore/dataset/liste-des-greffes/table/'
+                              example: NANTERRE
+                              nullable: true
+                            identifiant:
+                              title: Identifiant (uniquement personne morales)
+                              description: Cet element est facultatif, composé de
+                                7 à 9 chiffres, et peut être vide.
+                              type: string
+                              example: '490092574'
+                              nullable: true
                 required:
                 - data
         '404':

@@ -1,8 +1,7 @@
 class Infogreffe::PersonnesPhysiquesSerializer::V3 < JSONAPI::BaseSerializer
   set_type :personne_physique
 
-  attributes :id,
-    :fonction,
+  attributes :fonction,
     :nom,
     :prenom,
     :date_naissance,

@@ -5,9 +5,9 @@ RSpec.describe 'Infogreffe: Mandataires sociaux', type: %i[request swagger] do
     get "Récupération des mandataires sociaux d'une entreprise" do
       tags(*SwaggerData.get('infogreffe.mandataires_sociaux.tags'))
 
-      common_action_attributes
+      parameter_siren
 
-      parameter name: :siren, in: :path, type: :string
+      common_action_attributes
 
       unauthorized_request do
         let(:siren) { valid_siren(:extrait_rcs) }
