@@ -1232,7 +1232,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Liste des mandataires sociaux d'une société
+      description: Liste des mandataires sociaux d'une société inscrits au RCS. Sont
+        inclus les personnes morales et les personnes physiques.
       responses:
         '403':
           description: Accès interdit
@@ -1262,88 +1263,87 @@ paths:
                 type: object
                 properties:
                   data:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        example: '418166096'
-                      type:
-                        type: string
-                        example: mandataires_sociaux
-                        enum:
-                        - mandataires_sociaux
-                      attributes:
-                        type: object
-                        properties:
-                          id:
-                            title: Siren
-                            type: string
-                            description: Siren de l'entreprise
-                            example: '418166096'
-                          pp:
-                            title: Personnes physiques
-                            type: array
-                            items:
-                              properties:
-                                nom:
-                                  title: Nom
-                                  type: string
-                                  example: Henri
-                                  nullable: true
-                                prenom:
-                                  title: Prénom
-                                  type: string
-                                  example: Martin
-                                  nullable: true
-                                fonction:
-                                  title: Fonction
-                                  type: string
-                                  example: COMMISSAIRE AUX COMPTES SUPPLEANT
-                                date_naissance:
-                                  title: Date de naissance
-                                  type: string
-                                  example: '1965-01-27'
-                                  nullable: true
-                                lieu_naissance:
-                                  title: Lieu de naissance
-                                  type: string
-                                  example: ROUBAIX
-                                  nullable: true
-                                date_naissance_timestamp:
-                                  title: Date de naissance (timestamp)
-                                  type: number
-                                  example: -155523600
-                                  nullable: true
-                          pm:
-                            title: Personnes morales
-                            type: array
-                            items:
-                              properties:
-                                fonction:
-                                  title: Fonction
-                                  type: string
-                                  example: COMMISSAIRE AUX COMPTES SUPPLEANT
-                                raison_sociale:
-                                  title: Raison sociale
-                                  type: string
-                                  example: BCRH & ASSOCIES - SOCIETE A RESPONSABILITE
-                                    LIMITEE A ASSOCIE UNIQUE
-                                  nullable: true
-                                identifiant:
-                                  title: Identifiant
-                                  description: Cet element est facultatif, composé
-                                    de 7 à 9 chiffres, et peut être vide.
-                                  type: string
-                                  example: '490092574'
-                                  nullable: true
-                        required:
-                        - id
-                        - pp
-                        - pm
-                    required:
-                    - id
-                    - type
-                    - attributes
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          title: Numéro d'identification
+                          type: string
+                          example: HENRI-MARTIN-1965-01-27
+                        nom:
+                          title: Nom
+                          type: string
+                          example: Henri
+                          nullable: true
+                        prenom:
+                          title: Prénom
+                          type: string
+                          example: Martin
+                          nullable: true
+                        fonction:
+                          title: Fonction
+                          type: string
+                          example: COMMISSAIRE AUX COMPTES SUPPLEANT
+                        date_naissance:
+                          title: Date de naissance
+                          type: string
+                          example: '1965-01-27'
+                          nullable: true
+                        lieu_naissance:
+                          title: Lieu de naissance
+                          type: string
+                          example: ROUBAIX
+                          nullable: true
+                        pays_naissance:
+                          title: Pays de naissance
+                          type: string
+                          example: FRANCE
+                          nullable: true
+                        code_pays_naissance:
+                          title: Code pays ISO 3166 Alpha 2
+                          type: string
+                          example: FR
+                          nullable: true
+                        nationalite:
+                          title: Nationalité de la personne physique
+                          type: string
+                          example: FRANCAISE
+                          nullable: true
+                        code_nationalite:
+                          title: Code pays ISO 3166 Alpha 2
+                          type: string
+                          example: FR
+                          nullable: true
+                        date_naissance_timestamp:
+                          title: Date de naissance (timestamp)
+                          type: number
+                          example: -155523600
+                          nullable: true
+                        raison_sociale:
+                          title: Raison sociale
+                          type: string
+                          example: BCRH & ASSOCIES - SOCIETE A RESPONSABILITE LIMITEE
+                            A ASSOCIE UNIQUE
+                          nullable: true
+                        code_greffe:
+                          title: Code du greffe de l'entreprise
+                          description: 'Tous les code greffe sont disponibles ici
+                            : https://opendata.datainfogreffe.fr/explore/dataset/liste-des-greffes/table/'
+                          example: '9201'
+                          nullable: true
+                        libelle_greffe:
+                          title: Libellé du greffe de l'entreprise
+                          description: 'Tous les libellés sont disponibles ici : https://opendata.datainfogreffe.fr/explore/dataset/liste-des-greffes/table/'
+                          example: NANTERRE
+                          nullable: true
+                        identifiant:
+                          title: Identifiant
+                          description: Cet element est facultatif, composé de 7 à
+                            9 chiffres, et peut être vide.
+                          type: string
+                          example: '490092574'
+                          nullable: true
                 required:
                 - data
         '404':
