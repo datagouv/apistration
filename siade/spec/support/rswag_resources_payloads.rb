@@ -33,7 +33,7 @@ module RSWagResourcesPayloads
     }
   end
 
-  def build_rswag_response_collection(type:, properties: nil, links: nil, meta: nil)
+  def build_rswag_response_collection(type:, properties: nil, links: nil, meta: nil, example: nil)
     {
       type: :object,
       properties: {
@@ -63,7 +63,7 @@ module RSWagResourcesPayloads
         )
       },
       required: build_rswag_collection_required_keys(meta)
-    }
+    }.merge(build_custom_example(example))
   end
 
   def build_rswag_document_response(id:, document_url_properties: {})
@@ -177,5 +177,13 @@ module RSWagResourcesPayloads
     end
 
     attributes
+  end
+
+  def build_custom_example(example)
+    return {} if example.blank?
+
+    {
+      example: example
+    }
   end
 end
