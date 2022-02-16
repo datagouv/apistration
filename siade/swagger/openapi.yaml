@@ -1388,38 +1388,33 @@ paths:
                               type: string
                               example: '490092574'
                               nullable: true
+                  meta:
+                    type: object
+                    properties:
+                      count_pp:
+                        title: Nombre de personnes physiques
+                        description: Nombre de personnes physiques parmis les mandataires
+                          sociaux
+                        type: number
+                        example: 10
+                      count_pm:
+                        title: Nombre de personnes morales
+                        description: Nombre de personnes morales parmis les mandataires
+                          sociaux
+                        type: number
+                        example: 2
+                      count:
+                        title: Nombre de mandataires sociaux
+                        description: Somme des personnes morales et physiques
+                        type: number
+                        example: 12
+                    required:
+                    - count_pp
+                    - count_pm
+                    - count
                 required:
                 - data
-                example:
-                  data:
-                  - id: GAUQUELIN-ARNAUD-1969-08-24
-                    type: personne_physique
-                    attributes:
-                      id: GAUQUELIN-ARNAUD-1969-08-24
-                      fonction: PRESIDENT
-                      nom: GAUQUELIN
-                      prenom: ARNAUD
-                      date_naissance: '1969-08-24'
-                      date_naissance_timestamp: -11235600
-                      lieu_naissance: FLERS
-                      pays_naissance: FRANCE
-                      code_pays_naissance: FR
-                      nationalite: FRANCAISE
-                      code_nationalite: FR
-                  - id: '784824153'
-                    type: personne_morale
-                    attributes:
-                      id: '784824153'
-                      fonction: COMMISSAIRE AUX COMPTES TITULAIRE
-                      raison_sociale: MAZARS - SOCIETE ANONYME A DIRECTOIRE ET CONSEIL
-                        DE SURVEILLANCE
-                      code_greffe: '9201'
-                      libelle_greffe: NANTERRE
-                      identifiant: '784824153'
-                  meta:
-                    count_pp: 3
-                    count_pm: 2
-                    count: 5
+                - meta
         '404':
           description: Entreprise non trouvée
           content:
