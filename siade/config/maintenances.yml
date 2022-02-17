@@ -10,7 +10,6 @@ sandbox: *shared
 staging: *shared
 development: *shared
 test:
-  <<: *shared
   'provider_which_has_a_window_within_same_day':
     from_hour: '01:00'
     to_hour: '02:00'
