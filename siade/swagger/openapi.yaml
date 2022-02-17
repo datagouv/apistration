@@ -1385,23 +1385,16 @@ paths:
                                 : https://opendata.datainfogreffe.fr/explore/dataset/liste-des-greffes/table/'
                               example: NANTERRE
                               nullable: true
-                            identifiant:
-                              title: Identifiant (uniquement personne morales)
-                              description: Cet element est facultatif, composé de
-                                7 à 9 chiffres, et peut être vide.
-                              type: string
-                              example: '490092574'
-                              nullable: true
                   meta:
                     type: object
                     properties:
-                      count_pp:
+                      personnes_physiques_count:
                         title: Nombre de personnes physiques
                         description: Nombre de personnes physiques parmis les mandataires
                           sociaux
                         type: number
                         example: 10
-                      count_pm:
+                      personnes_morales_count:
                         title: Nombre de personnes morales
                         description: Nombre de personnes morales parmis les mandataires
                           sociaux
@@ -1413,8 +1406,8 @@ paths:
                         type: number
                         example: 12
                     required:
-                    - count_pp
-                    - count_pm
+                    - personnes_physiques_count
+                    - personnes_morales_count
                     - count
                 required:
                 - data
@@ -1444,10 +1437,9 @@ paths:
                         DE SURVEILLANCE
                       code_greffe: '9201'
                       libelle_greffe: NANTERRE
-                      identifiant: '784824153'
                   meta:
-                    count_pp: 3
-                    count_pm: 2
+                    personnes_physiques_count: 3
+                    personnes_morales_count: 2
                     count: 5
         '404':
           description: Entreprise non trouvée

@@ -2,7 +2,7 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
   def initialize(params)
     super(params)
 
-    @count_pp = @count_pm = 0
+    @personnes_physiques_count = @personnes_morales_count = 0
   end
 
   protected
@@ -15,18 +15,18 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
 
   def items_meta
     {
-      count_pp: @count_pp,
-      count_pm: @count_pm,
-      count: @count_pm + @count_pp
+      personnes_physiques_count: @personnes_physiques_count,
+      personnes_morales_count: @personnes_morales_count,
+      count: @personnes_morales_count + @personnes_physiques_count
     }
   end
 
   def resource_attributes(dirigeant)
     if type(dirigeant) == 'PP'
-      @count_pp += 1
+      @personnes_physiques_count += 1
       mandataire_social_pp(dirigeant)
     else
-      @count_pm += 1
+      @personnes_morales_count += 1
       mandataire_social_pm(dirigeant)
     end
   end
@@ -36,7 +36,7 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
   def mandataire_social_pp(dirigeant)
     {
       id: [nom(dirigeant), prenom(dirigeant), date_naissance(dirigeant)].join('-'),
-      type: 'pp',
+      type: 'personne_physique',
       nom: nom(dirigeant),
       prenom: prenom(dirigeant),
       fonction: fonction(dirigeant),
@@ -53,12 +53,11 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
   def mandataire_social_pm(dirigeant)
     {
       id: identifiant(dirigeant),
-      type: 'pm',
+      type: 'personne_morale',
       fonction: fonction(dirigeant),
       raison_sociale: raison_sociale(dirigeant),
       code_greffe: code_greffe(dirigeant),
-      libelle_greffe: libelle_greffe(dirigeant),
-      identifiant: identifiant(dirigeant)
+      libelle_greffe: libelle_greffe(dirigeant)
     }
   end
 

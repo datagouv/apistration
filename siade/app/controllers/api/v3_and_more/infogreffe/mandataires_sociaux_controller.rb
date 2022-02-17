@@ -42,16 +42,12 @@ class API::V3AndMore::Infogreffe::MandatairesSociauxController < API::V3AndMore:
   end
 
   def dynamic_serializer_module(resource_type)
-    if resource_type == 'pp'
-      ::Infogreffe::PersonnesPhysiquesSerializer
-    else
-      ::Infogreffe::PersonnesMoralesSerializer
-    end
+    ::Infogreffe.const_get("#{resource_type}_serializer".classify)
   end
 
   def supported_version?
-    dynamic_serializer_class('pp')
-    dynamic_serializer_class('pm')
+    dynamic_serializer_class('personne_physique')
+    dynamic_serializer_class('personne_morale')
     true
   rescue ::NameError => _e
     false

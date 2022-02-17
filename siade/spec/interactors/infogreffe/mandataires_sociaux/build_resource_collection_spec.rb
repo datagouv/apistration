@@ -5,7 +5,7 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
     let(:valid_pp) do
       {
         id: 'HISQUIN-FRANCOIS-1965-01-27',
-        type: 'pp',
+        type: 'personne_physique',
         nom: 'HISQUIN',
         prenom: 'FRANCOIS',
         fonction: 'PRESIDENT DU DIRECTOIRE',
@@ -22,19 +22,18 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
     let(:valid_pm) do
       {
         id: '784824153',
-        type: 'pm',
+        type: 'personne_morale',
         fonction: 'COMMISSAIRE AUX COMPTES TITULAIRE',
         raison_sociale: 'MAZARS - SOCIETE ANONYME',
         code_greffe: '9201',
-        libelle_greffe: 'NANTERRE',
-        identifiant: '784824153'
+        libelle_greffe: 'NANTERRE'
       }
     end
 
     let(:valid_meta) do
       {
-        count_pp: 10,
-        count_pm: 2,
+        personnes_physiques_count: 10,
+        personnes_morales_count: 2,
         count: 12
       }
     end
