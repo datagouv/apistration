@@ -137,3 +137,41 @@ infogreffe:
         description: "Somme des personnes morales et physiques."
         type: "integer"
         example: 12
+  extraits_rcs:
+    title: "Extrait RCS"
+    description: "Obtenir un extrait des données présentes dans le RCS, registre du commerce et des sociétés ; dont les observations qui permettent de savoir si une entreprise est en redressement judiciaire."
+    tags:
+      - "Informations générales"
+    attributes:
+      date_extrait:
+        type: 'string'
+        title: "Date d'extrait"
+        example: '1999-06-11'
+      date_immatriculation:
+        type: 'string'
+        title: "Date d'immatriculation au RCS"
+        description: "À compter de cette date, les sociétés jouissent de la personnalité morale. Cette date d'immatriculation n'est pas la même que celle délivrée par l'INSEE. Elle ne correspond pas non plus à la date du début d'activité."
+        example: '1998-07-12'
+      observations:
+        type: array
+        title: "Ensemble des observations du greffier"
+        items:
+          type: object
+          required:
+            - numero
+            - libelle
+            - date
+          properties:
+            numero:
+              type: 'string'
+              title: "Numéro de l'observation"
+              example: '123456'
+            libelle:
+              type: 'string'
+              title: "Libellé de l'observation"
+              example: "LA SOCIETE NE CONSERVE AUCUNE ACTIVITE A SON ANCIEN SIEGE"
+            date:
+              type: 'string'
+              title: "Date de l'observation"
+              example: "2000-01-01"
+
