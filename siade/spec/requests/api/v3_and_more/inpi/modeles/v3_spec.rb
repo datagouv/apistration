@@ -24,7 +24,7 @@ RSpec.describe 'INPI: Modeles', type: %i[request swagger] do
           rate_limit_headers
 
           schema build_rswag_response_collection(
-            type: 'object',
+            type: 'modele',
             properties: SwaggerData.get('inpi.modeles.attributes'),
             links: SwaggerData.get('inpi.modeles.links')
           )

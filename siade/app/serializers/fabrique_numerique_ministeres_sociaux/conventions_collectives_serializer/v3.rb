@@ -1,5 +1,5 @@
 class FabriqueNumeriqueMinisteresSociaux::ConventionsCollectivesSerializer::V3 < JSONAPI::BaseSerializer
-  set_type :collection
+  set_type :convention_collective
 
   attributes :numero_idcc,
     :titre,

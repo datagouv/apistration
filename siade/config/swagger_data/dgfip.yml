@@ -29,6 +29,9 @@ dgfip:
     tags:
       - "Informations financières"
     attributes:
+      id:
+        title: "FIXME"
+        type: "string"
       chiffre_affaires:
         title: "Chiffre d'affaires en euros"
         type: "number"

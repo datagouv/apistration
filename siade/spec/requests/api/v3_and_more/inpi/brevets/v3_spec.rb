@@ -24,7 +24,7 @@ RSpec.describe 'INPI: Latest Brevets', type: %i[request swagger] do
           rate_limit_headers
 
           schema build_rswag_response_collection(
-            type: 'object',
+            type: 'brevet',
             properties: SwaggerData.get('inpi.brevets.attributes')
           )
 

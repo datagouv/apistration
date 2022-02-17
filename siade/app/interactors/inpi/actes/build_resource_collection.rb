@@ -10,7 +10,7 @@ class INPI::Actes::BuildResourceCollection < BuildResourceCollection
   def resource_attributes(item)
     {
       id: item['idFichier'],
-      siren: item['siren'],
+      siren: item['siren'].to_s,
       code_greffe: code_greffe(item),
       date_depot: normalized_date(item['dateDepot']),
       nature_archive: item['natureArchive'],

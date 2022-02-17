@@ -19,12 +19,6 @@ inpi:
         description: "Numéro SIREN de l'entreprise concernée par l'acte"
         type: "string"
         example: "788242667"
-      denomination_sociale:
-        title: "Dénomination sociale"
-        description: "Dénomination sociale de l'entreprise concernée par l'acte"
-        type: "string"
-        example: "HERA CONSULTING"
-        nullable: true
       code_greffe:
         title: "Code greffe"
         description: "Code identifiant du greffe ayant traité l'acte"
@@ -87,7 +81,7 @@ inpi:
           de l'organisation qui a enregistré le brevet.
         type: "string"
         example: "FR"
-        enum: <%= YAML.load_file(Rails.root.join('config/data/inpi/codes_zones.yml')).values.map(&:upcase).concat([nil]).to_json %>
+        enum: <%= YAML.load_file(Rails.root.join('config/data/inpi/codes_zones.yml')).keys.concat([nil]).to_json %>
       numero_brevet:
         title: "Numéro du brevet"
         description: |
