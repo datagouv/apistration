@@ -25,7 +25,7 @@ RSpec.describe 'DGFIP: chiffres d\'affaires', type: %i[request swagger] do
 
           schema build_rswag_response_collection(
             type: 'exercice',
-            properties: SwaggerData.get('dgfip.chiffres_affaires.items.properties')
+            properties: SwaggerData.get('dgfip.chiffres_affaires.attributes')
           )
 
           run_test!

@@ -25,7 +25,7 @@ RSpec.describe 'INPI: Latest Brevets', type: %i[request swagger] do
 
           schema build_rswag_response_collection(
             type: 'object',
-            properties: SwaggerData.get('inpi.brevets.items.properties')
+            properties: SwaggerData.get('inpi.brevets.attributes')
           )
 
           run_test!

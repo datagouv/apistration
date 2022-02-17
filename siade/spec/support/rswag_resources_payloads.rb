@@ -40,15 +40,28 @@ module RSWagResourcesPayloads
         data: {
           type: :array,
           items: {
-            type: type,
-            properties: add_required_keys_to_all_type_object(properties)
-          }.merge(
-            build_rswag_meta(meta)
-          )
-        }
-      }.merge(
-        build_rswag_links(links)
-      ),
+            type: :object,
+            properties: {
+              id: properties['id'],
+              type: {
+                type: :string,
+                example: type,
+                enum: [type]
+              },
+              attributes: {
+                type: :object,
+                properties: add_required_keys_to_all_type_object(properties.except('id')),
+                required: properties.keys - ['id']
+              }
+            }.merge(
+              build_rswag_links(links)
+            ),
+            required: build_rswag_collection_item_required_keys(links)
+          }
+        }.merge(
+          build_rswag_meta(meta)
+        )
+      },
       required: build_rswag_collection_required_keys(meta)
     }
   end
@@ -128,6 +141,18 @@ module RSWagResourcesPayloads
     ]
 
     required << 'meta' if meta.present?
+    required << 'links' if links.present?
+
+    required
+  end
+
+  def build_rswag_collection_item_required_keys(links)
+    required = %w[
+      id
+      type
+      attributes
+    ]
+
     required << 'links' if links.present?
 
     required
