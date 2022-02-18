@@ -136,6 +136,6 @@ infogreffe:
         example: 2
       count:
         title: "Nombre total de mandataires sociaux"
-        description: "Somme des personnes morales et physiques"
+        description: "Somme des personnes morales et physiques."
         type: "integer"
         example: 12
