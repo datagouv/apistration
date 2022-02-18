@@ -136,9 +136,17 @@ RSpec.configure do |config|
         securitySchemes: {
           jwt_bearer_token: {
             type: :http,
+            description: "Votre jeton d'authentification doit être placé dans le header 'Authorization: Bearer VOTRE_JWT', sa validité est de 18 mois.
+
+Exemple cURL :
+
+    curl -X GET \\
+    -H \"Authorization: Bearer $token\" \\
+    --url \"https://entreprise.api.gouv.fr/v3/...\"",
+            name: 'Authorization',
+            in: :header,
             scheme: :bearer,
-            bearerFormat: 'JWT',
-            description: 'JWT Token'
+            bearerFormat: 'JWT'
           }
         }
       }
