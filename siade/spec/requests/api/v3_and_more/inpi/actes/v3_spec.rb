@@ -24,7 +24,6 @@ RSpec.describe 'INPI: Actes', type: %i[request swagger] do
           rate_limit_headers
 
           schema build_rswag_response_collection(
-            type: 'acte',
             properties: SwaggerData.get('inpi.actes.attributes')
           )
 

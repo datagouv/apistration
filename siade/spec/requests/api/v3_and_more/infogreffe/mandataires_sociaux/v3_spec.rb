@@ -22,8 +22,8 @@ RSpec.describe 'Infogreffe: Mandataires sociaux', type: %i[request swagger] do
           description SwaggerData.get('infogreffe.mandataires_sociaux.description')
 
           schema build_rswag_response_collection(
-            type: 'object',
             example: SwaggerData.get('infogreffe.mandataires_sociaux.example'),
+            required: SwaggerData.get('infogreffe.mandataires_sociaux.items.required'),
             properties: SwaggerData.get('infogreffe.mandataires_sociaux.items.properties'),
             meta: SwaggerData.get('infogreffe.mandataires_sociaux.meta')
           )

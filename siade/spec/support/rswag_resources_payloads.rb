@@ -33,7 +33,7 @@ module RSWagResourcesPayloads
     }
   end
 
-  def build_rswag_response_collection(type:, properties: nil, links: nil, meta: nil, example: nil)
+  def build_rswag_response_collection(properties: nil, links: nil, meta: nil, example: nil, required: nil)
     {
       type: :object,
       properties: {
@@ -43,25 +43,21 @@ module RSWagResourcesPayloads
             type: :object,
             properties: {
               id: properties['id'],
-              type: {
-                type: :string,
-                example: type,
-                enum: [type]
-              },
+              type: properties['type'],
               attributes: {
                 type: :object,
-                properties: add_required_keys_to_all_type_object(properties.except('id')),
-                required: properties.keys - ['id']
+                properties: add_required_keys_to_all_type_object(properties.except('id', 'type')),
+                required: required || properties.keys - ['id', 'type']
               }
             }.merge(
               build_rswag_links(links)
             ),
             required: build_rswag_collection_item_required_keys(links)
           }
-        }.merge(
+        }
+      }.merge(
           build_rswag_meta(meta)
-        )
-      },
+        ),
       required: build_rswag_collection_required_keys(meta)
     }.merge(build_custom_example(example))
   end

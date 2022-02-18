@@ -14,6 +14,10 @@ inpi:
         description: "Cet identifiant permet de retrouver le document dans l'archive ZIP renvoyée par le endpoint `/inpi/actes/{siren}/documents`, à l'aide du fichier \"Response.json\" permettant de faire lien entre cet ID et le nom du PDF"
         type: "string"
         example: "24924080"
+      type:
+        title: "Acte"
+        type: "string"
+        example: "acte"
       siren:
         title: "Numéro Siren"
         description: "Numéro SIREN de l'entreprise concernée par l'acte"
@@ -58,6 +62,10 @@ inpi:
         description: "Numéro de publication du brevet, constitué du code zone + numéro du brevet + catégorie de publication"
         type: "string"
         example: "FR3110115A1"
+      type:
+        title: "Brevet"
+        type: "string"
+        example: "brevet"
       titre:
         title: "Titre"
         description: "Titre du brevet"
@@ -117,6 +125,10 @@ inpi:
         title: "Numéro d'identification"
         type: "string"
         example: "4313464"
+      type:
+        title: "Marque"
+        type: "string"
+        example: "marque"
       nom:
         title: "Nom"
         type: "string"
@@ -177,6 +189,10 @@ inpi:
         description: "Identifiant du modèle dans la base de l'INPI, constitué du code de l'office de dépôt (ex: FR), du numéro national de dépôt (ex: 20203928) et du numéro de référence (ex: 001) "
         type: 'string'
         example: 'FR20203928-001'
+      type:
+        title: "Modèle"
+        type: "string"
+        example: "modele"
       numero_depot:
         title: "Numéro national de dépôt"
         description: "Numéro national sous lequel le modèle est enregistré."

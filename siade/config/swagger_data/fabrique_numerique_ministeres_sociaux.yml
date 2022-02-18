@@ -9,6 +9,10 @@ fabrique_numerique_ministeres_sociaux:
         type: 'string'
         description: "Identifiant interne (DILA) de la convention"
         example: 'KALICONT000005635173'
+      type:
+        title: 'Convention collective'
+        type: 'string'
+        example: 'convention_collective'
       titre:
         type: 'string'
         description: "Titre historique de la convention collective"
