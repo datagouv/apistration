@@ -44,7 +44,15 @@ RSpec.configure do |config|
       openapi: '3.0.1',
       info: {
         title: 'API Entreprise',
-        version: '3.0.0'
+        version: '3.0.0',
+        description: "Cette page contient la documentation technique pour accéder à API Entreprise. Les API étant accessible uniquement sous habilitation, l'interaction avec l'environnement de production n'est possible que si vous êtes **en possession d'une clé d'accès (jeton).",
+        termsOfService: 'https://entreprise.api.gouv.fr/cgu/',
+        contact:
+        {
+          name: 'Support API Entreprise',
+          email: 'support@entreprise.api.gouv.fr',
+          url: 'https://entreprise.api.gouv.fr/'
+        }
       },
       tags: [
         {
