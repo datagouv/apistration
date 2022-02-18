@@ -1,7 +1,7 @@
 infogreffe:
   mandataires_sociaux:
     title: "Mandataires sociaux"
-    description: "Liste des mandataires sociaux d'une société inscrites au RCS."
+    description: "Liste des mandataires sociaux d'une société inscrite au RCS, délivrée par Infogreffe."
     tags:
       - "Informations générales"
     type: "array"
@@ -28,9 +28,9 @@ infogreffe:
             code_greffe: '9201'
             libelle_greffe: NANTERRE
       meta:
-        personnes_physiques_count: 3
-        personnes_morales_count: 2
-        count: 5
+        personnes_physiques_count: 1
+        personnes_morales_count: 1
+        count: 2
     items:
       required: ["fonction"]
       properties:
@@ -118,7 +118,7 @@ infogreffe:
           example: "9201"
           nullable: true
         libelle_greffe:
-          title: "Libellé du greffe de l'entreprise (uniquement personne morales)"
+          title: "Libellé du greffe de l'entreprise"
           description: 'Information disponible uniquement pour une personne morale. Tous les libellés sont disponibles ici : https://opendata.datainfogreffe.fr/explore/dataset/liste-des-greffes/table/'
           type: "string"
           example: "NANTERRE"
