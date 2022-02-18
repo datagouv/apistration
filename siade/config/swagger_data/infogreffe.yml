@@ -10,7 +10,6 @@ infogreffe:
         - id: GAUQUELIN-ARNAUD-1969-08-24
           type: personne_physique
           attributes:
-            id: GAUQUELIN-ARNAUD-1969-08-24
             fonction: PRESIDENT
             nom: GAUQUELIN
             prenom: ARNAUD
@@ -24,7 +23,6 @@ infogreffe:
         - id: '784824153'
           type: personne_morale
           attributes:
-            id: '784824153'
             fonction: COMMISSAIRE AUX COMPTES TITULAIRE
             raison_sociale: MAZARS - SOCIETE ANONYME A DIRECTOIRE ET CONSEIL DE SURVEILLANCE
             code_greffe: '9201'
