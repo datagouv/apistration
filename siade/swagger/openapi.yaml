@@ -726,10 +726,9 @@ paths:
                           title: FIXME
                           type: string
                         type:
+                          title: Exercice annuel
                           type: string
                           example: exercice
-                          enum:
-                          - exercice
                         attributes:
                           type: object
                           properties:
@@ -986,10 +985,9 @@ paths:
                           description: Identifiant interne (DILA) de la convention
                           example: KALICONT000005635173
                         type:
+                          title: Convention collective
                           type: string
                           example: convention_collective
-                          enum:
-                          - convention_collective
                         attributes:
                           type: object
                           properties:
@@ -1308,9 +1306,6 @@ paths:
                           - personne_physique
                         attributes:
                           type: object
-                          required:
-                          - fonction
-                          additionalProperties: false
                           properties:
                             fonction:
                               title: Fonction au sein de l'entreprise
@@ -1406,6 +1401,12 @@ paths:
                               type: string
                               example: NANTERRE
                               nullable: true
+                          required:
+                          - fonction
+                      required:
+                      - id
+                      - type
+                      - attributes
                   meta:
                     type: object
                     properties:
@@ -1438,7 +1439,6 @@ paths:
                   - id: GAUQUELIN-ARNAUD-1969-08-24
                     type: personne_physique
                     attributes:
-                      id: GAUQUELIN-ARNAUD-1969-08-24
                       fonction: PRESIDENT
                       nom: GAUQUELIN
                       prenom: ARNAUD
@@ -1452,7 +1452,6 @@ paths:
                   - id: '784824153'
                     type: personne_morale
                     attributes:
-                      id: '784824153'
                       fonction: COMMISSAIRE AUX COMPTES TITULAIRE
                       raison_sociale: MAZARS - SOCIETE ANONYME A DIRECTOIRE ET CONSEIL
                         DE SURVEILLANCE
@@ -1571,10 +1570,9 @@ paths:
                           type: string
                           example: '24924080'
                         type:
+                          title: Acte
                           type: string
                           example: acte
-                          enum:
-                          - acte
                         attributes:
                           type: object
                           properties:
@@ -1719,10 +1717,9 @@ paths:
                           type: string
                           example: FR3110115A1
                         type:
+                          title: Brevet
                           type: string
                           example: brevet
-                          enum:
-                          - brevet
                         attributes:
                           type: object
                           properties:
@@ -1978,10 +1975,9 @@ paths:
                           type: string
                           example: '4313464'
                         type:
+                          title: Marque
                           type: string
                           example: marque
-                          enum:
-                          - marque
                         attributes:
                           type: object
                           properties:
@@ -2144,10 +2140,9 @@ paths:
                           type: string
                           example: FR20203928-001
                         type:
+                          title: Modèle
                           type: string
                           example: modele
-                          enum:
-                          - modele
                         attributes:
                           type: object
                           properties:
