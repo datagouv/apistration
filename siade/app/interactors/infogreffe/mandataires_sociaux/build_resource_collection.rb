@@ -108,7 +108,7 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
   end
 
   def code_greffe(dirigeant)
-    dirigeant.css('greffe').attribute('code').value
+    dirigeant.css('greffe').attribute('code')&.value
   end
 
   def libelle_greffe(dirigeant)
