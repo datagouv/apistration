@@ -1308,7 +1308,7 @@ paths:
                         type:
                           title: Type de mandataire social
                           description: Ce champ permet de faire la distinction entre
-                            les personnes physiques et morales
+                            les personnes physiques et morales.
                           type: string
                           example: personne_morale
                           enum:
@@ -1319,94 +1319,106 @@ paths:
                           properties:
                             fonction:
                               title: Fonction au sein de l'entreprise
-                              description: Information disponible pour les personnes
-                                morales et physiques
+                              description: Ce champ décrit la fonction du mandataire
+                                social au sein de l'entreprise. Cette information
+                                est disponible pour les personnes morales et physiques.
                               type: string
                               example: COMMISSAIRE AUX COMPTES SUPPLEANT
                             nom:
                               title: Nom
-                              description: Information disponible uniquement pour
-                                une personne physique
+                              description: Nom du mandataire social. Ce champ est
+                                disponible uniquement pour une personne physique.
                               type: string
                               example: Henri
                               nullable: true
                             prenom:
                               title: Prénom
-                              description: Information disponible uniquement pour
-                                une personne physique
+                              description: Prénom du mandataire social. Ce champ est
+                                disponible uniquement pour une personne physique.
                               type: string
                               example: Martin
                               nullable: true
                             date_naissance:
                               title: Date de naissance
-                              description: Information disponible uniquement pour
-                                une personne physique
+                              description: Date de naissance du mandataire social.
+                                Ce champ est disponible uniquement pour une personne
+                                physique.
                               type: string
                               example: '1965-01-27'
                               nullable: true
                             date_naissance_timestamp:
                               title: Date de naissance (timestamp)
-                              description: Information disponible uniquement pour
-                                une personne physique
+                              description: Date de naissance délivrée au format timestamp.
+                                Ce champ est disponible uniquement pour une personne
+                                physique.
                               type: integer
                               example: -155523600
                               nullable: true
                             lieu_naissance:
                               title: Lieu de naissance
-                              description: Information disponible uniquement pour
-                                une personne physique
+                              description: Lieu de naissance du mandataire social.
+                                Ce champ est disponible uniquement pour une personne
+                                physique.
                               type: string
                               example: ROUBAIX
                               nullable: true
                             pays_naissance:
                               title: Pays de naissance
-                              description: Information disponible uniquement pour
-                                une personne physique
+                              description: Pays de naissance du mandataire social.
+                                Ce champ est disponible uniquement pour une personne
+                                physique.
                               type: string
                               example: FRANCE
                               nullable: true
                             code_pays_naissance:
-                              title: Code pays ISO 3166 Alpha 2
-                              description: Information disponible uniquement pour
-                                une personne physique
+                              title: Code pays ISO 3166 Alpha 2 du pays de naissance
+                              description: Code à deux lettres indiquant le pays de
+                                naissance du mandataire social, suivant la norme ISO
+                                3166 Alpha 2. Ce champ est disponible uniquement pour
+                                une personne physique.
                               type: string
                               example: FR
                               nullable: true
                             nationalite:
                               title: Nationalité de la personne physique
-                              description: Information disponible uniquement pour
-                                une personne physique
+                              description: Nationalité du mandataire social. Ce champ
+                                est disponible uniquement pour une personne physique.
                               type: string
                               example: FRANCAISE
                               nullable: true
                             code_nationalite:
                               title: Code pays ISO 3166 Alpha 2
-                              description: Information disponible uniquement pour
-                                une personne physique
+                              description: Code à deux lettres indiquant le pays de
+                                nationalité du mandataire social, suivant la norme
+                                ISO 3166 Alpha 2. Ce champ est disponible uniquement
+                                pour une personne physique.
                               type: string
                               example: FR
                               nullable: true
                             raison_sociale:
                               title: Raison sociale
-                              description: Information disponible uniquement pour
-                                une personne morale
+                              description: Raison sociale de la personne morale mandataire
+                                social. Ce champ est disponible uniquement pour une
+                                personne morale.
                               type: string
                               example: BCRH & ASSOCIES - SOCIETE A RESPONSABILITE
                                 LIMITEE A ASSOCIE UNIQUE
                               nullable: true
                             code_greffe:
                               title: Code du greffe de l'entreprise
-                              description: 'Information disponible uniquement pour
-                                une personne morale. Tous les code greffe sont disponibles
-                                ici : https://opendata.datainfogreffe.fr/explore/dataset/liste-des-greffes/table/'
+                              description: 'Code du greffe auquel la personne morale
+                                mandataire social est rattachée. Ce champ est disponible
+                                uniquement pour une personne morale. Tous les codes
+                                greffe sont disponibles ici : https://opendata.datainfogreffe.fr/explore/dataset/liste-des-greffes/table/'
                               type: string
                               example: '9201'
                               nullable: true
                             libelle_greffe:
                               title: Libellé du greffe de l'entreprise
-                              description: 'Information disponible uniquement pour
-                                une personne morale. Tous les libellés sont disponibles
-                                ici : https://opendata.datainfogreffe.fr/explore/dataset/liste-des-greffes/table/'
+                              description: 'Nom du greffe auquel la personne morale
+                                mandataire social est rattachée. Ce champ est disponible
+                                uniquement pour une personne morale. Tous les libellés
+                                sont disponibles ici : https://opendata.datainfogreffe.fr/explore/dataset/liste-des-greffes/table/'
                               type: string
                               example: NANTERRE
                               nullable: true
@@ -1421,19 +1433,19 @@ paths:
                     properties:
                       personnes_physiques_count:
                         title: Nombre de personnes physiques
-                        description: Nombre de personnes physiques parmis les mandataires
-                          sociaux
+                        description: Nombre de personnes physiques parmi les mandataires
+                          sociaux.
                         type: integer
                         example: 10
                       personnes_morales_count:
                         title: Nombre de personnes morales
-                        description: Nombre de personnes morales parmis les mandataires
-                          sociaux
+                        description: Nombre de personnes morales parmi les mandataires
+                          sociaux.
                         type: integer
                         example: 2
                       count:
-                        title: Nombre de mandataires sociaux
-                        description: Somme des personnes morales et physiques
+                        title: Nombre total de mandataires sociaux
+                        description: Somme des personnes morales et physiques.
                         type: integer
                         example: 12
                     required:
