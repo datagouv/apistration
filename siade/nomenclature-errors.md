@@ -88,6 +88,16 @@ Ces erreurs sont comprises entre `000` et `049`.
   Cette erreur intervient généralement quand le fournisseur de données est
   indisponible pour des raisons inconnues.
 
+- `XX007` = Entité disparue
+
+  Cette erreur indique que la ressource n'est plus disponible : il s'agit du
+  code HTTP utilisé lorsqu'un fournisseur de données ne renvoie plus cette
+  donnée, et que le endpoint ne sera plus jamais en capacité de renvoyer des
+  données.
+
+  Cette erreur intervient généralement quand le fournisseur de données est
+  indisponible pour des raisons inconnues.
+
 ##### XX05Z Erreurs associés aux fichiers renvoyés par les fournisseurs de données
 
 - `XX051` = Le fichier en base64 renvoyé est invalide

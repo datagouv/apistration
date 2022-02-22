@@ -26,6 +26,9 @@
 - subcode: '006'
   title: "Erreur d'authentification auprès du fournisseur de données"
 
+- subcode: '007'
+  title: "Entité disparue"
+
 - subcode: '010'
   title: 'Contenu partiel'
   detail: "Des données n'ont pas pu être récupérées auprès d'un ou plusieurs fournisseurs."
