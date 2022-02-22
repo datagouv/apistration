@@ -11,8 +11,8 @@ RSpec.describe API::V2::Etablissements::PredecesseurController, type: :controlle
       get :show, params: { siret: siret, token: token }.merge(mandatory_params)
     end
 
-    it 'returns 404' do
-      expect(response.code).to eq('404')
+    it 'returns 410' do
+      expect(response.code).to eq('410')
     end
 
     it 'returns a deprecation message' do

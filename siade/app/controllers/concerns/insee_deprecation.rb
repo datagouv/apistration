@@ -1,6 +1,6 @@
 module INSEEDeprecation
   def deprecation_error(kind)
-    error_json(NotFoundError.new('INSEE', deprecation_error_message(kind)), status: 404)
+    error_json(GoneError.new('INSEE', deprecation_error_message(kind)), status: 410)
   end
 
   def deprecation_error_message(kind)
