@@ -1,6 +1,6 @@
 require_relative '../provider_stubs'
 
-module ProviderStubs::DGFIPAttestationsFiscales
+module ProviderStubs::DGFIP
   def mock_dgfip_authenticate
     stub_request(:post, Siade.credentials[:dgfip_authenticate_url]).and_return(
       status: 200,

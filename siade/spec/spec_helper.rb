@@ -121,7 +121,7 @@ RSpec.configure do |config|
   config.include CommonErrorsMessagesHelpers
 
   config.include ProviderStubs::MSACotisations
-  config.include ProviderStubs::DGFIPAttestationsFiscales
+  config.include ProviderStubs::DGFIP
 
   if ENV['MOCK_CALL_SYSTEM_FOR_MEMORY_ERROR']
     config.include MockCallSystemForCi
