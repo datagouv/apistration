@@ -12,7 +12,7 @@ module ProviderStubs::DGFIP
   end
 
   def mock_valid_dgfip_attestation_fiscale(siren, user_id, cookie = valid_dgfip_cookie, siren_is = nil, siren_tva = nil)
-    @dgfip_request_stubbed = stub_request(:get, Siade.credentials[:dgfip_attestations_fiscales_url]).with(
+    stub_request(:get, Siade.credentials[:dgfip_attestations_fiscales_url]).with(
       headers: {
         'Cookie' => cookie,
         'Accept' => 'application/pdf'
@@ -25,13 +25,9 @@ module ProviderStubs::DGFIP
   end
 
   def mock_invalid_dgfip_attestation_fiscale(status)
-    @dgfip_request_stubbed = stub_request(:get, /^#{Siade.credentials[:dgfip_attestations_fiscales_url]}/).and_return(
+    stub_request(:get, /^#{Siade.credentials[:dgfip_attestations_fiscales_url]}/).and_return(
       status: status
     )
-  end
-
-  def verify_dgfip_stubbed_request_call!
-    expect(@dgfip_request_stubbed).to have_been_requested
   end
 
   private
