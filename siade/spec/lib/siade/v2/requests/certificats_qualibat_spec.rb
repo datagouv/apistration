@@ -8,7 +8,7 @@ RSpec.describe SIADE::V2::Requests::CertificatsQUALIBAT, type: :provider_request
     its(:errors) { is_expected.to have_error(invalid_siret_error_message) }
   end
 
-  context 'well formated request', vcr: { cassette_name: 'qualibat_with_valid_siret' } do
+  context 'well formated request', vcr: { cassette_name: 'qualibat/certifications_batiment/valid_siret' } do
     let(:siret) { valid_siret(:qualibat) }
 
     its(:http_code) { is_expected.to eq(200) }

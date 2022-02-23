@@ -1,13 +1,13 @@
 RSpec.describe SIADE::V2::Drivers::CertificatsQUALIBAT, :self_hosted_doc, type: :provider_driver do
   subject { described_class.new(siret: siret).perform_request }
 
-  context 'siret inconnu chez QUALIBAT', vcr: { cassette_name: 'qualibat_with_not_found_siret' } do
+  context 'siret inconnu chez QUALIBAT', vcr: { cassette_name: 'qualibat/certifications_batiment/not_found_siret' } do
     let(:siret) { not_found_siret(:qualibat) }
 
     its(:http_code) { is_expected.to eq(404) }
   end
 
-  context 'siret eligible au certificat QUALIBAT', vcr: { cassette_name: 'qualibat_with_valid_siret' } do
+  context 'siret eligible au certificat QUALIBAT', vcr: { cassette_name: 'qualibat/certifications_batiment/valid_siret' } do
     let(:siret) { valid_siret(:qualibat) }
 
     its(:http_code) { is_expected.to eq(200) }
