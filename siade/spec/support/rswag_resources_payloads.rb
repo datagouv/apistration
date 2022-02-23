@@ -26,7 +26,7 @@ module RSWagResourcesPayloads
           ).merge(
             build_rswag_meta(meta)
           ),
-          required: build_rswag_data_required_keys(links, meta)
+          required: build_rswag_data_required_keys(meta, links)
         }
       },
       required: %w[data]

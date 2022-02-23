@@ -1,25 +1,82 @@
 RSpec.describe DGFIP::LiassesFiscales::Declarations::BuildResource, type: :build_resource do
-  describe '.call', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
+  describe '.call' do
     subject(:builder) { described_class.call(response: response) }
 
     let(:response) do
       instance_double('Net::HTTPOK', body: body)
     end
 
-    let(:body) { DGFIP::LiassesFiscales::Declarations::MakeRequest.call(cookie: cookie, params: params).response.body }
-    let(:cookie) { DGFIP::Authenticate.call.cookie }
-    let(:params) do
-      {
-        siren: valid_siren(:liasse_fiscale),
-        user_id: valid_dgfip_user_id,
-        year: 2017
-      }
+    describe 'real payload', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
+      let(:body) { DGFIP::LiassesFiscales::Declarations::MakeRequest.call(cookie: cookie, params: params).response.body }
+      let(:cookie) { DGFIP::Authenticate.call.cookie }
+      let(:params) do
+        {
+          siren: valid_siren(:liasse_fiscale),
+          user_id: valid_dgfip_user_id,
+          year: 2017
+        }
+      end
+
+      it { expect(builder.resource).to be_a(Resource) }
+
+      it { expect(builder.resource.to_h).to match(a_hash_including(:id, :declarations, :obligations_fiscales)) }
+
+      it 'has no-nil values and at least one value in each entries' do
+        builder.resource.declarations.each do |declaration|
+          declaration[:donnees].each do |data|
+            expect(data[:valeurs]).not_to include(nil)
+            expect(data[:valeurs]).not_to be_empty
+          end
+        end
+      end
+
+      it 'one obligations fiscales entries' do
+        expect(builder.resource.obligations_fiscales.count).to eq(1)
+      end
     end
 
-    it { expect(builder.resource).to be_a(Resource) }
+    describe 'with a payload which has repeated entries' do
+      let(:payload_name) { 'dgfip_liasses_fiscales_one_obligation_fiscale' }
 
-    it { expect(builder.resource.to_h).to match(a_hash_including(:id, :declarations)) }
+      let(:body) { extract_dgfip_liasses_fiscales_payload(payload_name).to_json }
 
-    it { expect(builder.resource.declarations[0].keys).to eq(%i[date_declaration date_fin_exercice]) }
+      describe 'non repeated entries' do
+        it 'creates an array for values with the value' do
+          example_data_with_repeated_entries = builder.resource.declarations.find do |declaration|
+            declaration[:numero_imprime] == '2033A'
+          end
+
+          data = example_data_with_repeated_entries[:donnees].find do |datum|
+            datum[:code_nref] == '304330'
+          end
+
+          expect(data[:valeurs]).to eq(['11111'])
+        end
+      end
+
+      describe 'repeated entries' do
+        it 'creates an array for values with all values ordered' do
+          example_data_with_repeated_entries = builder.resource.declarations.find do |declaration|
+            declaration[:numero_imprime] == '2033F'
+          end
+
+          data = example_data_with_repeated_entries[:donnees].find do |datum|
+            datum[:code_nref] == '304816'
+          end
+
+          expect(data[:valeurs]).to eq(%w[75001 75002])
+        end
+      end
+    end
+
+    describe 'with a payload which has repeated obligations fiscales' do
+      let(:payload_name) { 'dgfip_liasses_fiscales_two_obligations_fiscales' }
+
+      let(:body) { extract_dgfip_liasses_fiscales_payload(payload_name).to_json }
+
+      it 'has multiple obligations fiscales entries' do
+        expect(builder.resource.obligations_fiscales.count).to eq(2)
+      end
+    end
   end
 end

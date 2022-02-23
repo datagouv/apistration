@@ -30,6 +30,16 @@ module ProviderStubs::DGFIP
     )
   end
 
+  def extract_dgfip_liasses_fiscales_payload(name)
+    JSON.parse(
+      File.read(
+        Rails.root.join(
+          "spec/fixtures/payloads/#{name}.json"
+        )
+      )
+    )
+  end
+
   private
 
   def extract_valid_dgfip_attestation_fiscale_pdf(siren_is, siren_tva)

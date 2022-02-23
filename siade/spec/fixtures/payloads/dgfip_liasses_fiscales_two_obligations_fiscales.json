@@ -1,0 +1,739 @@
+{
+  "declarations": [
+    {
+      "code_regime": "RS",
+      "date_declaration": "2017-07-10",
+      "fin_exercice": "2017-03-31",
+      "duree_exercice": "365 jours",
+      "millesime": "201701",
+      "numero_imprime": "2033A",
+      "imprime": {
+        "donnees": [
+          {
+            "code_nref": "304330",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304331",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304332",
+            "valeur": "111111"
+          },
+          {
+            "code_nref": "304333",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304334",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304336",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304337",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304338",
+            "valeur": "111"
+          },
+          {
+            "code_nref": "304339",
+            "valeur": "111111"
+          },
+          {
+            "code_nref": "304340",
+            "valeur": "111111"
+          },
+          {
+            "code_nref": "304341",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304342",
+            "valeur": "111111"
+          },
+          {
+            "code_nref": "304345",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304347",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304349",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304356",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304357",
+            "valeur": "111111"
+          },
+          {
+            "code_nref": "304360",
+            "valeur": "111"
+          },
+          {
+            "code_nref": "304361",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304362",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304363",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304364",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304366",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304367",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304368",
+            "valeur": "111"
+          },
+          {
+            "code_nref": "304369",
+            "valeur": "111111"
+          },
+          {
+            "code_nref": "304370",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304371",
+            "valeur": "111111"
+          },
+          {
+            "code_nref": "304372",
+            "valeur": "111111"
+          },
+          {
+            "code_nref": "304390",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304391",
+            "valeur": "10000"
+          },
+          {
+            "code_nref": "304393",
+            "valeur": "1000"
+          },
+          {
+            "code_nref": "304396",
+            "valeur": "111111"
+          },
+          {
+            "code_nref": "304397",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304399",
+            "valeur": "111111"
+          },
+          {
+            "code_nref": "304403",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304404",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304406",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304407",
+            "valeur": "111111"
+          }
+        ]
+      }
+    },
+    {
+      "code_regime": "RS",
+      "date_declaration": "2017-07-10",
+      "fin_exercice": "2017-03-31",
+      "duree_exercice": "365 jours",
+      "millesime": "201701",
+      "numero_imprime": "2033B",
+      "imprime": {
+        "donnees": [
+          {
+            "code_nref": "304431",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304432",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304433",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304449",
+            "valeur": "111111"
+          },
+          {
+            "code_nref": "304450",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304451",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304452",
+            "valeur": "-1111"
+          },
+          {
+            "code_nref": "304455",
+            "valeur": "1"
+          },
+          {
+            "code_nref": "304456",
+            "valeur": "111111"
+          },
+          {
+            "code_nref": "304457",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304458",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304459",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304460",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304461",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304462",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304463",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304464",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304465",
+            "valeur": "111"
+          },
+          {
+            "code_nref": "304467",
+            "valeur": "1"
+          },
+          {
+            "code_nref": "304468",
+            "valeur": "111111"
+          },
+          {
+            "code_nref": "304469",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304470",
+            "valeur": "1"
+          },
+          {
+            "code_nref": "304471",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304472",
+            "valeur": "111"
+          },
+          {
+            "code_nref": "304473",
+            "valeur": "11"
+          },
+          {
+            "code_nref": "304474",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304475",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304476",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304480",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304481",
+            "valeur": "11"
+          },
+          {
+            "code_nref": "304511",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304513",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304516",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304519",
+            "valeur": "1"
+          },
+          {
+            "code_nref": "306469",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "AMENDES"
+            }
+          },
+          {
+            "code_nref": "306470",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "CICE ANNEE 2016 DU 01/2016 AU 12/2016"
+            }
+          },
+          {
+            "code_nref": "306471",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "10"
+            }
+          },
+          {
+            "code_nref": "306472",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "1111"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "code_regime": "RS",
+      "date_declaration": "2017-07-10",
+      "fin_exercice": "2017-03-31",
+      "duree_exercice": "365 jours",
+      "millesime": "201701",
+      "numero_imprime": "2033C",
+      "imprime": {
+        "donnees": [
+          {
+            "code_nref": "304527",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304528",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304529",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304530",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304531",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304532",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304533",
+            "valeur": "111111"
+          },
+          {
+            "code_nref": "304557",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304558",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304559",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304560",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304561",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304562",
+            "valeur": "111111"
+          },
+          {
+            "code_nref": "304566",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304567",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304568",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304569",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304570",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304571",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304572",
+            "valeur": "111111"
+          },
+          {
+            "code_nref": "304575",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304576",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304577",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304578",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304579",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304580",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304587",
+            "valeur": "111"
+          },
+          {
+            "code_nref": "304588",
+            "valeur": "111"
+          },
+          {
+            "code_nref": "304599",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304600",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304601",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304602",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304603",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304604",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "304802",
+            "valeur": "11111"
+          }
+        ]
+      }
+    },
+    {
+      "code_regime": "RS",
+      "date_declaration": "2017-07-10",
+      "fin_exercice": "2017-03-31",
+      "duree_exercice": "365 jours",
+      "millesime": "201701",
+      "numero_imprime": "2033D",
+      "imprime": {
+        "donnees": [
+          {
+            "code_nref": "304627",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304630",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304651",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304654",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "907430",
+            "valeur": "11111"
+          },
+          {
+            "code_nref": "907431",
+            "valeur": "11111"
+          }
+        ]
+      }
+    },
+    {
+      "code_regime": "RS",
+      "date_declaration": "2017-07-10",
+      "fin_exercice": "2017-03-31",
+      "duree_exercice": "365 jours",
+      "millesime": "201701",
+      "numero_imprime": "2033F",
+      "imprime": {
+        "donnees": [
+          {
+            "code_nref": "304814",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "JEAN DUPONT"
+            }
+          },
+          {
+            "code_nref": "304814",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "JACQUES DUPOND"
+            }
+          },
+          {
+            "code_nref": "304816",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "75001"
+            }
+          },
+          {
+            "code_nref": "304816",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "75002"
+            }
+          },
+          {
+            "code_nref": "304817",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "5001"
+            }
+          },
+          {
+            "code_nref": "304817",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "5002"
+            }
+          },
+          {
+            "code_nref": "304818",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "0011 RUE DE LA PAIX"
+            }
+          },
+          {
+            "code_nref": "304818",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "0012 RUE DE LA PAIX"
+            }
+          },
+          {
+            "code_nref": "304821",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "75001"
+            }
+          },
+          {
+            "code_nref": "304821",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "75002"
+            }
+          },
+          {
+            "code_nref": "304822",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "PARIS 1"
+            }
+          },
+          {
+            "code_nref": "304822",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "PARIS 2"
+            }
+          },
+          {
+            "code_nref": "304824",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "19900101"
+            }
+          },
+          {
+            "code_nref": "304824",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "19900101"
+            }
+          },
+          {
+            "code_nref": "306852",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "MME"
+            }
+          },
+          {
+            "code_nref": "306852",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "MR"
+            }
+          },
+          {
+            "code_nref": "309336",
+            "valeur": "111"
+          },
+          {
+            "code_nref": "309337",
+            "valeur": "111111"
+          },
+          {
+            "code_nref": "905894",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "PARIS 1"
+            }
+          },
+          {
+            "code_nref": "905894",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "PARIS 2"
+            }
+          },
+          {
+            "code_nref": "905895",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "71"
+            }
+          },
+          {
+            "code_nref": "905895",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "72"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "code_regime": "RS",
+      "date_declaration": "2017-07-10",
+      "fin_exercice": "2017-03-31",
+      "duree_exercice": "365 jours",
+      "millesime": "201701",
+      "numero_imprime": "2033G",
+      "imprime": {
+        "donnees": {
+          "code_nref": "305683",
+          "valeur": "X"
+        }
+      }
+    }
+  ],
+  "entreprise": {
+    "denomination": "SARL UMADCORP",
+    "itip": "100000101111",
+    "setOcfis": [
+      {
+        "codeNace": "7010Z",
+        "codeObf": "ISGROUPE",
+        "dateDebut": "1993-01-01T00:00:00+01:00",
+        "dateDebutPourAttestationRegularite": "1993-01-01T00:00:00+01:00",
+        "libelleObf": "Impôt sur les sociétés dû par le groupe",
+        "nbRof": "0",
+        "numOcfi": "101011111111",
+        "ROF": "ISGROUPE1",
+        "regime": "RNGROUPE"
+      },
+      {
+        "codeNace": "7010Z",
+        "codeObf": "IS",
+        "dateDebut": "1989-03-01T00:00:00+01:00",
+        "dateDebutPourAttestationRegularite": "1989-03-01T00:00:00+01:00",
+        "libelleObf": "Impôt sur les sociétés",
+        "nbRof": "0",
+        "numOcfi": "100101111112",
+        "ROF": "IS1",
+        "regime": "RNMEMBRE"
+      }
+    ],
+    "siren": "130025265"
+  }
+}

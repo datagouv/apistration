@@ -858,17 +858,220 @@ paths:
                         example: '301028346'
                       type:
                         type: string
-                        example: entreprise
+                        example: liasses_fiscales
                         enum:
-                        - entreprise
+                        - liasses_fiscales
                       attributes:
                         type: object
-                        properties: {}
-                        required: []
+                        properties:
+                          obligations_fiscales:
+                            type: array
+                            title: Règles d’imposition applicables au résultat de
+                              l'unité légale (nommé obf en interne)
+                            description: Une entité légale peut posséder plusieurs
+                              règles d'impositions, notamment si celle-ci fait partie
+                              d'un groupe.
+                            items:
+                              type: object
+                              required:
+                              - id
+                              - code
+                              - libelle
+                              - reference
+                              - regime
+                              properties:
+                                id:
+                                  title: Identifiant interne dénommé OCFI de la DGFIP
+                                  description: 'Identifiant technique interne de la
+                                    DGFIP OCFI: Numéro d’OCcurrences FIscales, déterminé
+                                    par le siren et par les obligations fiscales'
+                                  type: string
+                                  example: '100209489259'
+                                code:
+                                  type: string
+                                  title: Code des règles d'imposition applicables
+                                    au siren
+                                  description: "Les valeurs possibles sont les suivantes:
+                                    \n \n - IS: Impôt sur les sociétés \n - BIC: Bénéfices
+                                    industriels et commerciaux \n - IS GROUPE: Impôt
+                                    sur les sociétés dû par le groupe \n - BA: Bénéfices
+                                    agricoles \n - BNC: Bénéfices non commerciaux"
+                                  example: IS
+                                  enum:
+                                  - IS
+                                  - BIC
+                                  - IS GROUPE
+                                  - BA
+                                  - BNC
+                                libelle:
+                                  type: string
+                                  title: Libellé des règles d'impositions applicables
+                                    à l'unité légale.
+                                  description: La liste exhaustive se trouve dans
+                                    la description du code.
+                                  example: Impôt sur les sociétés
+                                reference:
+                                  title: Référence d'Obligation Fiscale (ROF)
+                                  type: string
+                                  description: Il s'agit du code d'Obligation Fiscale
+                                    (OBF) suivi d'un numéro d'identifiant qui définit
+                                    et individualise les obligations fiscales de l'unité
+                                    légale en fonction de ses activités
+                                  enum:
+                                  - IS1
+                                  - IS2
+                                  - IS3
+                                  - ISGROUPE1
+                                  - ISGROUPE2
+                                  - ISGROUPE3
+                                  - BA1
+                                  - BA2
+                                  - BA3
+                                  - BNC1
+                                  - BNC2
+                                  - BNC3
+                                  - BIC1
+                                  - BIC2
+                                  - BIC3
+                                regime:
+                                  title: Régime d'imposition
+                                  type: string
+                                  description: Désigne les règles d’imposition du
+                                    résultat fiscal de l’entreprise obtenu du référentiel
+                                    des occurrences fiscales (R-OCFI)
+                          declarations:
+                            type: array
+                            items:
+                              type: object
+                              required:
+                              - numero_imprime
+                              - regime
+                              - date_declaration
+                              - date_fin_exercice
+                              - duree_exercice
+                              - millesime
+                              - donnees
+                              properties:
+                                numero_imprime:
+                                  title: Numéro d'imprimé
+                                  type: string
+                                  description: Numéro du formulaire de la liasse fiscale
+                                    souscrit par l’unité légale.
+                                  example: 2033A
+                                regime:
+                                  title: Régime d’imposition applicable au résultat
+                                    fiscal de l'unité légale
+                                  type: object
+                                  required:
+                                  - code
+                                  - libelle
+                                  properties:
+                                    code:
+                                      title: Code du régime d’imposition applicable
+                                        au résultat fiscal de l'unité légale
+                                      description: "Les valeurs possibles sont les
+                                        suivantes: \n \n - RN: Réel normal \n - RSI
+                                        ou RS: Réel simplifié FIXME: A CONFIRMER le
+                                        RS \n - RNMEMBRE: Réel normal groupe (groupe)
+                                        \n - RNGROUPE: Réel normal groupe (tête) FIXME:
+                                        Quel est la différence tête/groupe \n - DECC:
+                                        Déclaration contrôlée"
+                                      enum:
+                                      - RN
+                                      - RS
+                                      - RSI
+                                      - RNMEMBRE
+                                      - RNGROUPE
+                                      - DECC
+                                    libelle:
+                                      title: Libellé du régime d’imposition applicable
+                                        au résultat fiscal de l'unité légale.
+                                      description: La liste exhaustive se trouve dans
+                                        la description du code
+                                      type: string
+                                      example: Réel simplifié
+                                date_declaration:
+                                  title: Date de dépôt de la déclaration
+                                  type: string
+                                  description: " - Si télédéclaration : date de saisie
+                                    \n - Si dépôt papier : date de réception par les
+                                    Services des Impôts des Entreprises"
+                                  example: '2012-12-26'
+                                date_fin_exercice:
+                                  title: Date de fin d’exercice fiscal de l'unité
+                                    légale
+                                  type: string
+                                  description: Équivalent à la date de fin de la période
+                                    d'imposition
+                                  example: '2012-12-31'
+                                duree_exercice:
+                                  title: Durée de l'exercice en jours
+                                  type: number
+                                  description: "Durée de l’exercice fiscal calculée
+                                    à partir des dates de début et de fin de la période
+                                    d’imposition déclarées sur la déclaration souscrite
+                                    par l'unité légale. \n \n Généralement cette valeur
+                                    est de 365 jours, mais parfois 180 jours. Il y
+                                    a une obligation fiscale déclarative au 31/12
+                                    de chaque année même s’il s’agit d’un dépôt provisoire."
+                                  example: 365
+                                millesime:
+                                  title: Millesime
+                                  description: "Code composé de 6 caractères: \n -
+                                    4 caractères correspondant à l'année de création
+                                    ou modification du formulaire. Les valeurs possibles
+                                    vont de 2006 à l'année courante dès avril, l'année
+                                    précédente sinon. \n - 2 caractères correspondant
+                                    au numéro de version du formulaire, commençant
+                                    à 01"
+                                  example: '201701'
+                                donnees:
+                                  title: Données de l'imprimé
+                                  type: array
+                                  description: Chaque entrée du tableau correspondant
+                                    à couple code / valeur, spécifique au numéro d'imprimé
+                                    référencé à la clé `numero_imprime`
+                                  items:
+                                    type: object
+                                    required:
+                                    - code_nref
+                                    - valeurs
+                                    properties:
+                                      code_nref:
+                                        title: Code N-REF absolu permettant de faire
+                                          le lien avec le dictionnaire
+                                        type: string
+                                        example: '304651'
+                                      valeurs:
+                                        title: 'Valeurs associés à l''entrée '
+                                        description: Si une entrée de l'imprimé est
+                                          répétable, le tableau contient plusieurs
+                                          entrées et sont ordonnées en fonction de
+                                          l'indice de répétition.
+                                        type: array
+                                        minItems: 1
+                                        items:
+                                          type: string
+                                        example:
+                                        - '4245'
+                        required:
+                        - obligations_fiscales
+                        - declarations
+                      meta:
+                        type: object
+                        properties:
+                          internal_id_itip:
+                            title: Identifiant interne dénommé ITIP de la DGFIP
+                            description: 'Identifiant technique interne de la DGFIP
+                              ITIP: Identifiant Transversal Informatique de la Personne'
+                            example: '100004763104'
+                        required:
+                        - internal_id_itip
                     required:
                     - id
                     - type
                     - attributes
+                    - meta
                 required:
                 - data
         '502':

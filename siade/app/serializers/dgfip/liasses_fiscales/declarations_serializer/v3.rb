@@ -1,5 +1,12 @@
 class DGFIP::LiassesFiscales::DeclarationsSerializer::V3 < JSONAPI::BaseSerializer
-  set_type :entreprise
+  set_type :liasses_fiscales
 
-  attributes :declarations
+  attributes :obligations_fiscales,
+    :declarations
+
+  meta do |object|
+    {
+      internal_id_itip: object.internal_id_itip
+    }
+  end
 end
