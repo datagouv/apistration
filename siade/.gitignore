@@ -82,6 +82,8 @@ builds/
 
 /config/master.key
 
+# production.key in this repo is a symlink to master.key
+!/config/credentials/production.key
 !/config/credentials/development.key
 !/config/credentials/test.key
 
