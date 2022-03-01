@@ -46,7 +46,7 @@ class SIADE::SelfHostedDocument::Uploader
   end
 
   def file_expired_in
-    3.months.to_i
+    1.day.to_i
   end
 
   def url

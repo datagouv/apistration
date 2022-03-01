@@ -1,5 +1,5 @@
 class Documents::Upload < ApplicationInteractor
-  EXPIRES_IN = 3.months.to_i
+  EXPIRES_IN = 1.day.to_i
 
   before do
     context.errors ||= []
