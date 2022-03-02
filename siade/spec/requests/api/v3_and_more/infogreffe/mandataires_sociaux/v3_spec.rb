@@ -2,7 +2,7 @@ require 'swagger_helper'
 
 RSpec.describe 'Infogreffe: Mandataires sociaux', type: %i[request swagger] do
   path '/v3/infogreffe/mandataires_sociaux/{siren}' do
-    get "Récupération des mandataires sociaux d'une entreprise" do
+    get SwaggerData.get('infogreffe.mandataires_sociaux.title') do
       tags(*SwaggerData.get('infogreffe.mandataires_sociaux.tags'))
 
       parameter_siren

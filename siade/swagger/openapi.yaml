@@ -1198,7 +1198,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/fntp/cartes_professionnelle_travaux_publics/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/infogreffe/mandataires_sociaux/{siren}":
     get:
-      summary: Récupération des mandataires sociaux d'une entreprise
+      summary: Mandataires sociaux
       tags:
       - Informations générales
       parameters:
