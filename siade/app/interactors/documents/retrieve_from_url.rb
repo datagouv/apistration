@@ -43,7 +43,7 @@ class Documents::RetrieveFromUrl < ApplicationInteractor
   end
 
   def source_url
-    URI.parse(context.url)
+    URI.parse(context.content)
   end
 
   def log_error(message, exception)

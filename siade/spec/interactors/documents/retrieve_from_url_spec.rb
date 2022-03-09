@@ -4,7 +4,7 @@ RSpec.describe Documents::RetrieveFromUrl do
   let(:provider_name) { 'INSEE' }
 
   let(:retrieve_params) do
-    { url: source_doc_url }
+    { content: source_doc_url }
   end
 
   let(:mock_monitoring) { instance_double('MonitoringService') }
