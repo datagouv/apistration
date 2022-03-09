@@ -130,6 +130,10 @@ Rails.application.routes.draw do
       get 'conformites_cotisations_retraite/:siret' => '/api/v3_and_more/probtp/conformites_cotisations_retraite#show'
     end
 
+    namespace :qualibat do
+      get 'certifications_batiment/:siret' => '/api/v3_and_more/qualibat/certifications_batiment#show'
+    end
+
     namespace :rnm do
       get 'entreprises/:siren' => '/api/v3_and_more/rnm/entreprises_artisanales#show'
     end

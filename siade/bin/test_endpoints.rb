@@ -190,6 +190,9 @@ endpoints = <<STR
 - name: '[V3] RNM Entreprises'
   http_path: '/v3/rnm/entreprises/301123626'
 
+- name: '[V3] QUALIBAT Certifications batiment'
+  http_path: '/v3/qualibat/certifications_batiment/78824266700020'
+
 STR
 
 def test_endpoint(endpoint, index)

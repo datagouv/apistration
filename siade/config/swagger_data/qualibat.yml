@@ -1,0 +1,11 @@
+qualibat:
+  certifications_batiment:
+    title: "Certificat de qualification bâtiment"
+    description: "Obtenir le certificat Qualibat, apportant l’avis de l’association sur la **qualification d’une entreprise dans le bâtiment**. Si vous cherchez d'autres certificats de qualification, l'[endpoint certification RGE](#certificats_rge_ademe) regroupe tous les certificats, dont les Qualibats."
+    tags:
+      - "Certifications professionnelles"
+    document_url_properties:
+      title: "Lien vers la certification batiment Qualibat"
+      description: "Ce document est automatiquement supprimé au bout de 3 mois."
+      example: "https://storage.entreprise.api.gouv.fr/siade/1635521735-1a675fc210d09e04604aabe5e93b452fb56865f5-certificat_qualibat.pdf"
+
