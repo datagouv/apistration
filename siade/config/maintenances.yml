@@ -8,7 +8,7 @@ production: &shared
     to_hour:  '08:00'
   'INSEE':
     from_hour: '08:00'
-    to_hour:  '23:59'
+    to_hour:  '12:00'
     dates:
       - '2022-03-14'
 sandbox: *shared
