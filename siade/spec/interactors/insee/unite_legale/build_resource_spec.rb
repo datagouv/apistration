@@ -29,7 +29,7 @@ RSpec.describe INSEE::UniteLegale::BuildResource, type: :build_resource do
 
       its(:categorie_entreprise) { is_expected.to eq('GE') }
       its(:numero_tva_intracommunautaire) { is_expected.to eq('FR51306138900') }
-      its(:diffusable_commercialement) { is_expected.to eq(true) }
+      its(:diffusable_commercialement) { is_expected.to be(true) }
 
       its(:type) { is_expected.to eq(:personne_morale) }
 
@@ -81,7 +81,7 @@ RSpec.describe INSEE::UniteLegale::BuildResource, type: :build_resource do
       its(:date_creation) { is_expected.to eq(Date.parse('1977-01-01').to_time.to_i) }
 
       its(:etat_administratif) { is_expected.to eq('A') }
-      its(:date_cessation) { is_expected.to eq(nil) }
+      its(:date_cessation) { is_expected.to be_nil }
 
       its(:date_derniere_mise_a_jour) { is_expected.to eq(Date.parse('2018-02-13').to_time.to_i) }
     end

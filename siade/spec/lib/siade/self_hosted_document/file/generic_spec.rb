@@ -40,7 +40,7 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
         hosted_doc.url
       end
 
-      its(:success?) { is_expected.to eq(true) }
+      its(:success?) { is_expected.to be(true) }
     end
 
     describe '#store_from_base64' do
@@ -59,7 +59,7 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
           store!
         end
 
-        its(:success?) { is_expected.to eq(true) }
+        its(:success?) { is_expected.to be(true) }
       end
 
       context 'when data is not a valid base64 encoded string' do
@@ -71,7 +71,7 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
           store!
         end
 
-        its(:success?) { is_expected.to eq(false) }
+        its(:success?) { is_expected.to be(false) }
         its(:errors) { is_expected.to include([:invalid_base64, 'Erreur lors du décodage : invalide Base64 format']) }
       end
     end
@@ -92,7 +92,7 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
           store!
         end
 
-        its(:success?) { is_expected.to eq(true) }
+        its(:success?) { is_expected.to be(true) }
       end
 
       context 'when a HTTP error occurs downloading the document' do
@@ -107,7 +107,7 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
           store!
         end
 
-        its(:success?) { is_expected.to eq(false) }
+        its(:success?) { is_expected.to be(false) }
         its(:errors) { is_expected.to include([:http_error, 'Erreur lors de la récupération du document : status 404 with body \'Not found\'']) }
       end
 
@@ -123,7 +123,7 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
           store!
         end
 
-        its(:success?) { is_expected.to eq(false) }
+        its(:success?) { is_expected.to be(false) }
         its(:errors) { is_expected.to include([:timeout_error, 'Temps d\'attente de téléchargement du document écoulé']) }
       end
 
@@ -141,7 +141,7 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
           store!
         end
 
-        its(:success?) { is_expected.to eq(false) }
+        its(:success?) { is_expected.to be(false) }
         its(:errors) { is_expected.to include([:http_error, 'Erreur de lecture sur le server distant']) }
       end
 
@@ -159,7 +159,7 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
           store!
         end
 
-        its(:success?) { is_expected.to eq(false) }
+        its(:success?) { is_expected.to be(false) }
         its(:errors) { is_expected.to include([:http_error, 'Erreur de connexion sur le server distant']) }
       end
 
@@ -184,7 +184,7 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
           store!
         end
 
-        its(:success?) { is_expected.to eq(true) }
+        its(:success?) { is_expected.to be(true) }
       end
 
       context 'when there is an unknown error' do
@@ -222,7 +222,7 @@ RSpec.describe SIADE::SelfHostedDocument::File::Generic do
       store!
     end
 
-    its(:success?) { is_expected.to eq(false) }
+    its(:success?) { is_expected.to be(false) }
     its(:errors) { is_expected.to include([:invalid_extension, 'Le fichier n\'est pas au format `png` attendu.']) }
   end
 end

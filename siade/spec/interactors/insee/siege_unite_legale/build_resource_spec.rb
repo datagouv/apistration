@@ -26,7 +26,7 @@ RSpec.describe INSEE::SiegeUniteLegale::BuildResource, type: :build_resource do
       it { is_expected.to be_a(Resource) }
 
       its(:id) { is_expected.to eq("#{siren}01294") }
-      its(:siege_social) { is_expected.to eq(true) }
+      its(:siege_social) { is_expected.to be(true) }
     end
   end
 end

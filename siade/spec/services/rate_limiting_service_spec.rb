@@ -74,14 +74,14 @@ RSpec.describe RateLimitingService do
     context 'when authorization header is not set' do
       before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return(nil) }
 
-      it { is_expected.to eq(false) }
+      it { is_expected.to be(false) }
     end
 
     context 'when authorization header is set' do
       context 'when the Bearer format is not respected' do
         before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return('Beer hour') }
 
-        it { is_expected.to eq(false) }
+        it { is_expected.to be(false) }
       end
 
       context 'when the Bearer is well formed' do
@@ -90,13 +90,13 @@ RSpec.describe RateLimitingService do
         context 'when the token is whitelisted' do
           let(:token) { Rails.configuration.jwt_whitelist.sample }
 
-          it { is_expected.to eq(true) }
+          it { is_expected.to be(true) }
         end
 
         context 'when the token is not whitelisted' do
           let(:token) { 'random token' }
 
-          it { is_expected.to eq(false) }
+          it { is_expected.to be(false) }
         end
       end
     end
@@ -108,14 +108,14 @@ RSpec.describe RateLimitingService do
     context 'when authorization header is not set' do
       before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return(nil) }
 
-      it { is_expected.to eq(false) }
+      it { is_expected.to be(false) }
     end
 
     context 'when authorization header is set' do
       context 'when the Bearer format is not respected' do
         before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return('Beer hour') }
 
-        it { is_expected.to eq(false) }
+        it { is_expected.to be(false) }
       end
 
       context 'when the Bearer is well formed' do
@@ -124,13 +124,13 @@ RSpec.describe RateLimitingService do
         context 'when the token is blacklisted' do
           let(:token) { Rails.configuration.jwt_blacklist.sample }
 
-          it { is_expected.to eq(true) }
+          it { is_expected.to be(true) }
         end
 
         context 'when the token is not blacklisted' do
           let(:token) { 'random token' }
 
-          it { is_expected.to eq(false) }
+          it { is_expected.to be(false) }
         end
       end
     end

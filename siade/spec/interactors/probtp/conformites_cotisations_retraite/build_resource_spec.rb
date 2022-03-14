@@ -25,7 +25,7 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite::BuildResource, type: :bui
       its(:resource) { is_expected.to be_a(Resource) }
 
       it 'sets eligible as true' do
-        expect(subject.resource.eligible).to eq(true)
+        expect(subject.resource.eligible).to be(true)
       end
     end
 
@@ -45,7 +45,7 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite::BuildResource, type: :bui
       its(:resource) { is_expected.to be_a(Resource) }
 
       it 'sets eligible as false' do
-        expect(subject.resource.eligible).to eq(false)
+        expect(subject.resource.eligible).to be(false)
       end
     end
   end

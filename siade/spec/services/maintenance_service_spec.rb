@@ -8,7 +8,7 @@ RSpec.describe MaintenanceService, type: :service do
     context 'with invalid provider' do
       let(:provider) { 'whaveter' }
 
-      it { is_expected.to eq false }
+      it { is_expected.to be false }
     end
 
     context 'with valid provider which has a maintenance window within the same day' do
@@ -23,7 +23,7 @@ RSpec.describe MaintenanceService, type: :service do
           Timecop.freeze(beginning_of_day + 12.hours)
         end
 
-        it { is_expected.to eq false }
+        it { is_expected.to be false }
       end
 
       context 'when it is a maintenance window' do
@@ -31,7 +31,7 @@ RSpec.describe MaintenanceService, type: :service do
           Timecop.freeze(beginning_of_day + 1.hour + 10.minutes)
         end
 
-        it { is_expected.to eq true }
+        it { is_expected.to be true }
       end
     end
 
@@ -49,7 +49,7 @@ RSpec.describe MaintenanceService, type: :service do
           Timecop.freeze(beginning_of_day + 12.hours)
         end
 
-        it { is_expected.to eq false }
+        it { is_expected.to be false }
       end
 
       context 'when it is a maintenance window' do
@@ -58,7 +58,7 @@ RSpec.describe MaintenanceService, type: :service do
             Timecop.freeze(beginning_of_day + 23.hours + 10.minutes)
           end
 
-          it { is_expected.to eq true }
+          it { is_expected.to be true }
         end
 
         context 'at 3am' do
@@ -66,7 +66,7 @@ RSpec.describe MaintenanceService, type: :service do
             Timecop.freeze(beginning_of_day + 3.hours)
           end
 
-          it { is_expected.to eq true }
+          it { is_expected.to be true }
         end
       end
     end
@@ -81,7 +81,7 @@ RSpec.describe MaintenanceService, type: :service do
           Timecop.freeze(day + 12.hours)
         end
 
-        it { is_expected.to eq false }
+        it { is_expected.to be false }
       end
 
       context 'when it is a valid date' do
@@ -92,7 +92,7 @@ RSpec.describe MaintenanceService, type: :service do
             Timecop.freeze(day + 12.hours)
           end
 
-          it { is_expected.to eq true }
+          it { is_expected.to be true }
         end
 
         context 'when it is not a maintenance window' do
@@ -100,7 +100,7 @@ RSpec.describe MaintenanceService, type: :service do
             Timecop.freeze(day + 1.hour)
           end
 
-          it { is_expected.to eq false }
+          it { is_expected.to be false }
         end
       end
     end

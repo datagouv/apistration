@@ -9,13 +9,13 @@ RSpec.describe SIADE::SelfHostedDocument::FormatValidator do
     context 'with a valid PDF' do
       let(:file_io) { read_payload_file('pdf/dummy.pdf') }
 
-      it { is_expected.to eq(true) }
+      it { is_expected.to be(true) }
     end
 
     context 'with a wrong formatted PDF' do
       let(:file_io) { 'not a pdf' }
 
-      it { is_expected.to eq(false) }
+      it { is_expected.to be(false) }
     end
   end
 
@@ -25,13 +25,13 @@ RSpec.describe SIADE::SelfHostedDocument::FormatValidator do
     context 'with a valid ZIP' do
       let(:file_io) { read_payload_file('zip/dummy.zip') }
 
-      it { is_expected.to eq(true) }
+      it { is_expected.to be(true) }
     end
 
     context 'with a wrong formatted ZIP' do
       let(:file_io) { 'not a zip' }
 
-      it { is_expected.to eq(false) }
+      it { is_expected.to be(false) }
     end
   end
 end

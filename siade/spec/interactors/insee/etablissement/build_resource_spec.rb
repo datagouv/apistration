@@ -25,7 +25,7 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
       it { is_expected.to be_a(Resource) }
 
       its(:id) { is_expected.to eq(siret) }
-      its(:siege_social) { is_expected.to eq(false) }
+      its(:siege_social) { is_expected.to be(false) }
       its(:etat_administratif) { is_expected.to eq('A') }
       its(:date_fermeture) { is_expected.to be_nil }
 
@@ -48,7 +48,7 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
         })
       end
 
-      its(:diffusable_commercialement) { is_expected.to eq(true) }
+      its(:diffusable_commercialement) { is_expected.to be(true) }
 
       its(:date_creation) { is_expected.to eq(Date.parse('2004-05-26').to_time.to_i) }
 
