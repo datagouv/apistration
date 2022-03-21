@@ -73,5 +73,12 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
     it 'contain valid pm' do
       expect(call.resource_collection.map(&:to_h)).to include(valid_pm)
     end
+
+    context 'when no greffe code in mandataires sociaux payload',
+      vcr: { cassette_name: 'infogreffe/mandataires_sociaux/with_valid_siren_no_greffe_code' } do
+      it 'does not raise' do
+        expect { call }.not_to raise_error
+      end
+    end
   end
 end
