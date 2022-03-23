@@ -7,10 +7,10 @@ production: &shared
     from_hour: '23:00'
     to_hour:  '08:00'
   'INSEE':
-    from_hour: '08:00'
-    to_hour:  '23:59'
     dates:
-      - '2022-03-24'
+      - day: '2022-03-24'
+        from_hour: '08:00'
+        to_hour:  '23:59'
 sandbox: *shared
 staging: *shared
 development: *shared
@@ -22,11 +22,13 @@ test:
     from_hour: '23:00'
     to_hour:  '08:00'
   'provider_which_has_specific_dates':
-    from_hour: '08:00'
-    to_hour:  '19:00'
     dates:
-      - '2021-01-14'
-      - '2021-01-15'
+      - day: '2021-01-14'
+        from_hour: '08:00'
+        to_hour:  '19:00'
+      - day: '2021-01-15'
+        from_hour: '13:00'
+        to_hour:  '16:00'
   'INSEE':
     from_hour: '03:00'
     to_hour: '04:00'

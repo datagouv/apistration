@@ -84,7 +84,7 @@ RSpec.describe MaintenanceService, type: :service do
         it { is_expected.to be false }
       end
 
-      context 'when it is a valid date' do
+      context 'when it is a valid date (first entry)' do
         let(:day) { Date.parse('2021-01-14') }
 
         context 'when it is a maintenance window' do
@@ -98,6 +98,26 @@ RSpec.describe MaintenanceService, type: :service do
         context 'when it is not a maintenance window' do
           before do
             Timecop.freeze(day + 1.hour)
+          end
+
+          it { is_expected.to be false }
+        end
+      end
+
+      context 'when it is a valid date (second entry)' do
+        let(:day) { Date.parse('2021-01-15') }
+
+        context 'when it is a maintenance window' do
+          before do
+            Timecop.freeze(day + 15.hours)
+          end
+
+          it { is_expected.to be true }
+        end
+
+        context 'when it is not a maintenance window' do
+          before do
+            Timecop.freeze(day + 12.hours)
           end
 
           it { is_expected.to be false }

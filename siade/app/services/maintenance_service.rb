@@ -12,11 +12,19 @@ class MaintenanceService
   end
 
   def from_hour
-    parse_hour(provider_config[:from_hour])
+    if specific_dates? && today_timeframe
+      parse_hour(today_timeframe[:from_hour])
+    else
+      parse_hour(provider_config[:from_hour])
+    end
   end
 
   def to_hour
-    parse_hour(provider_config[:to_hour])
+    if specific_dates? && today_timeframe
+      parse_hour(today_timeframe[:to_hour])
+    else
+      parse_hour(provider_config[:to_hour])
+    end
   end
 
   def remaining_seconds
@@ -37,21 +45,27 @@ class MaintenanceService
   end
 
   def everyday?
-    no_dates_entry?
+    !specific_dates?
   end
 
-  def no_dates_entry?
-    provider_config[:dates].blank?
+  def specific_dates?
+    provider_config[:dates].present?
   end
 
   def dates
-    provider_config[:dates].map do |date|
-      Date.parse(date)
+    (provider_config[:dates] || []).map do |date|
+      Date.parse(date[:day])
     end
   end
 
   def today
     @today ||= Time.zone.today
+  end
+
+  def today_timeframe
+    provider_config[:dates].find do |date|
+      date[:day] == today.to_s
+    end
   end
 
   def maintenance_windows
