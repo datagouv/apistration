@@ -3,6 +3,19 @@ production: &shared
   'DGFIP':
     from_hour: '01:00'
     to_hour: '02:00'
+    dates:
+      - day: '2022-03-25'
+        from_hour: '18:30'
+        to_hour:  '23:59'
+      - day: '2022-03-26'
+        from_hour: '00:01'
+        to_hour:  '23:59'
+      - day: '2022-03-27'
+        from_hour: '00:01'
+        to_hour:  '23:59'
+      - day: '2022-03-28'
+        from_hour: '00:01'
+        to_hour:  '07:30'
   'Banque de France':
     from_hour: '23:00'
     to_hour:  '08:00'
