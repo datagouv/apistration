@@ -1,5 +1,5 @@
 RSpec.describe INSEE::EtablissementDiffusable::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response: response, provider_name: 'INSEE') }
+  subject { described_class.call(response:, provider_name: 'INSEE') }
 
   context 'with a http ok' do
     let(:response) { instance_double('Net::HTTPOK', code: '200', body: payload.to_json) }

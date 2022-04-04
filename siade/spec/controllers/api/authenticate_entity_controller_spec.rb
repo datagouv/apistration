@@ -101,7 +101,7 @@ RSpec.describe API::AuthenticateEntityController do
         it 'does not logs unauthorized' do
           expect(UserAccessSpy).not_to receive(:log_unauthorized)
 
-          get :index, params: { token: token }.merge(mandatory_params)
+          get :index, params: { token: }.merge(mandatory_params)
           assert_response 200
         end
       end
@@ -112,7 +112,7 @@ RSpec.describe API::AuthenticateEntityController do
         it 'logs unauthorized' do
           expect(UserAccessSpy).to receive(:log_unauthorized).with(user_info: token)
 
-          get :index, params: { token: token }
+          get :index, params: { token: }
           assert_response 401
         end
       end
@@ -122,7 +122,7 @@ RSpec.describe API::AuthenticateEntityController do
 
         it 'logs unauthorized' do
           expect(UserAccessSpy).to receive(:log_unauthorized).with(user_info: token)
-          get :index, params: { token: token }
+          get :index, params: { token: }
           assert_response 401
         end
       end
@@ -132,7 +132,7 @@ RSpec.describe API::AuthenticateEntityController do
 
         it 'logs unauthorized' do
           expect(UserAccessSpy).to receive(:log_unauthorized).with(user_info: token)
-          get :index, params: { token: token }
+          get :index, params: { token: }
           assert_response 401
         end
       end

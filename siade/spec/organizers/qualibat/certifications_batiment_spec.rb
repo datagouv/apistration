@@ -1,9 +1,9 @@
 RSpec.describe QUALIBAT::CertificationsBatiment, :self_hosted_doc do
-  subject { described_class.call(params: params) }
+  subject { described_class.call(params:) }
 
   let(:params) do
     {
-      siret: siret
+      siret:
     }
   end
 

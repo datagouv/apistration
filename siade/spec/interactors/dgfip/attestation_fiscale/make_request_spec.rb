@@ -1,12 +1,12 @@
 RSpec.describe DGFIP::AttestationFiscale::MakeRequest, type: :make_request do
-  subject(:make_request) { described_class.call(cookie: cookie, params: params) }
+  subject(:make_request) { described_class.call(cookie:, params:) }
 
   let(:cookie) { 'cookie' }
 
   let(:params) do
     {
-      siren: siren,
-      user_id: user_id
+      siren:,
+      user_id:
     }
   end
   let(:siren) { valid_siren }
@@ -21,7 +21,7 @@ RSpec.describe DGFIP::AttestationFiscale::MakeRequest, type: :make_request do
         'Accept' => 'application/pdf'
       },
       query: {
-        siren: siren,
+        siren:,
         userId: sanitized_user_id,
         groupeIS: 'NON',
         groupeTVA: 'NON'

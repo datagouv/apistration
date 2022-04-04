@@ -1,10 +1,10 @@
 RSpec.describe MSA::ConformitesCotisations::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response: response) }
+  subject { described_class.call(response:) }
 
   let(:siret) { valid_siret(:msa) }
 
   context 'when it is a HTTP ok response' do
-    let(:response) { instance_double(Net::HTTPOK, code: '200', body: body) }
+    let(:response) { instance_double(Net::HTTPOK, code: '200', body:) }
 
     context 'when body contains a status which is not unknown' do
       let(:body) { msa_cotisations_payload(siret, :up_to_date).to_json }

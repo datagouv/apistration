@@ -1,9 +1,9 @@
 RSpec.describe Infogreffe::MandatairesSociaux::ValidateResponse, type: :validate_response do
   describe '.call' do
-    subject { described_class.call(response: response, provider_name: 'Infogreffe') }
+    subject { described_class.call(response:, provider_name: 'Infogreffe') }
 
     let(:response) do
-      instance_double('Net::HTTPOK', code: code, body: body)
+      instance_double('Net::HTTPOK', code:, body:)
     end
 
     describe 'with an invalid code' do

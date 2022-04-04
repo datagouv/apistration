@@ -1,6 +1,6 @@
 RSpec.describe RNM::EntreprisesArtisanales::BuildResource, type: :build_resource do
   describe '.call', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
-    subject { described_class.call(response: response) }
+    subject { described_class.call(response:) }
 
     let(:valid_payload) do
       {
@@ -82,11 +82,11 @@ RSpec.describe RNM::EntreprisesArtisanales::BuildResource, type: :build_resource
     end
 
     let(:response) do
-      instance_double('Net::HTTPOK', body: body)
+      instance_double('Net::HTTPOK', body:)
     end
 
     let(:body) do
-      RNM::EntreprisesArtisanales::MakeRequest.call(params: params).response.body
+      RNM::EntreprisesArtisanales::MakeRequest.call(params:).response.body
     end
 
     let(:params) do

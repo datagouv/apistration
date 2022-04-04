@@ -1,5 +1,5 @@
 RSpec.describe BuildResource, type: :interactor do
-  subject { DummyBuildResource.call(extra_attributes: extra_attributes) }
+  subject { DummyBuildResource.call(extra_attributes:) }
 
   before(:all) do
     class DummyBuildResource < BuildResource

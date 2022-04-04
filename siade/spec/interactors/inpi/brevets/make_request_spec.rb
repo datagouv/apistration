@@ -1,8 +1,8 @@
 RSpec.describe INPI::Brevets::MakeRequest, type: :make_request do
-  subject { described_class.call(params: params) }
+  subject { described_class.call(params:) }
 
   let(:params) do
-    { siren: siren }
+    { siren: }
   end
 
   describe 'happy path', vcr: { cassette_name: 'inpi/brevets/with_valid_siren' } do

@@ -1,13 +1,13 @@
 RSpec.describe DGFIP::LiassesFiscales::Declarations::BuildResource, type: :build_resource do
   describe '.call' do
-    subject(:builder) { described_class.call(response: response) }
+    subject(:builder) { described_class.call(response:) }
 
     let(:response) do
-      instance_double('Net::HTTPOK', body: body)
+      instance_double('Net::HTTPOK', body:)
     end
 
     describe 'real payload', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
-      let(:body) { DGFIP::LiassesFiscales::Declarations::MakeRequest.call(cookie: cookie, params: params).response.body }
+      let(:body) { DGFIP::LiassesFiscales::Declarations::MakeRequest.call(cookie:, params:).response.body }
       let(:cookie) { DGFIP::Authenticate.call.cookie }
       let(:params) do
         {

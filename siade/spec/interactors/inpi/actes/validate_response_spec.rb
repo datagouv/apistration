@@ -1,8 +1,8 @@
 RSpec.describe INPI::Actes::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response: response, provider_name: 'INPI') }
+  subject { described_class.call(response:, provider_name: 'INPI') }
 
   let(:response) do
-    instance_double('Net::MockResponse', code: code, body: body)
+    instance_double('Net::MockResponse', code:, body:)
   end
 
   describe 'with a valid body' do

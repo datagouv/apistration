@@ -61,13 +61,13 @@ class APIController < ActionController::API
   def render_generic_errors_serializer(klass, status:)
     error = klass.new
 
-    render error_json(error, status: status)
+    render error_json(error, status:)
   end
 
   def error_json(error, status:)
     {
       json: ErrorsSerializer.new([error], format: error_format).as_json,
-      status: status
+      status:
     }
   end
 

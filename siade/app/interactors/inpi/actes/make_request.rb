@@ -7,7 +7,7 @@ class INPI::Actes::MakeRequest < MakeRequest::Get
 
   def request_params
     {
-      siren: siren
+      siren:
     }
   end
 

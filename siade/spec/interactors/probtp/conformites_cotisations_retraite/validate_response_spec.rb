@@ -1,8 +1,8 @@
 RSpec.describe PROBTP::ConformitesCotisationsRetraite::ValidateResponse, type: :validate_response do
   describe '.call' do
-    subject { described_class.call(response: response) }
+    subject { described_class.call(response:) }
 
-    let(:response) { instance_double(Net::HTTPOK, code: code, body: body) }
+    let(:response) { instance_double(Net::HTTPOK, code:, body:) }
 
     context 'when it is ok and conforme', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_eligible_siret' } do
       let(:code) { 200 }

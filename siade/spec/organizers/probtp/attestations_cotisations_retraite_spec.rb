@@ -1,10 +1,10 @@
 RSpec.describe PROBTP::AttestationsCotisationsRetraite, :self_hosted_doc do
   describe '.call' do
-    subject { described_class.call(params: params) }
+    subject { described_class.call(params:) }
 
     let(:params) do
       {
-        siret: siret
+        siret:
       }
     end
 

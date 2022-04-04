@@ -21,7 +21,7 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
   end
 
   describe 'provider_name method' do
-    subject { DummyRetrieverOrganizer.call(provider_name: provider_name) }
+    subject { DummyRetrieverOrganizer.call(provider_name:) }
 
     context 'when it is not a valid provider name' do
       let(:provider_name) { 'Invalid' }
@@ -47,7 +47,7 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
   end
 
   describe 'errors tracking' do
-    subject { DummyRetrieverOrganizer.call(provider_name: provider_name, error_kind: error_kind) }
+    subject { DummyRetrieverOrganizer.call(provider_name:, error_kind:) }
 
     let(:provider_name) { 'INSEE' }
     let(:monitoring_service) { double('monitoring_service') }
@@ -99,7 +99,7 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
   end
 
   describe 'maintenance' do
-    subject(:call_organizer) { DummyRetrieverOrganizer.call(provider_name: provider_name) }
+    subject(:call_organizer) { DummyRetrieverOrganizer.call(provider_name:) }
 
     let(:provider_name) { 'INSEE' }
     let(:maintenance_on) { false }

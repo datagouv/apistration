@@ -179,7 +179,7 @@ module RSWagResourcesPayloads
     return {} if example.blank?
 
     {
-      example: example
+      example:
     }
   end
 end

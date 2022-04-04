@@ -9,9 +9,9 @@ class DGFIP::Authenticate::MakeRequest < MakeRequest::Post
 
   def form_data
     {
-      secret: secret,
+      secret:,
       identifiant: login,
-      mdp: mdp
+      mdp:
     }
   end
 

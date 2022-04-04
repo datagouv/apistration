@@ -1,10 +1,10 @@
 RSpec.describe DGFIP::AttestationFiscale::ValidateParams, type: :validate_params do
-  subject { described_class.call(params: params) }
+  subject { described_class.call(params:) }
 
   let(:params) do
     {
-      siren: siren,
-      user_id: user_id
+      siren:,
+      user_id:
     }
   end
 

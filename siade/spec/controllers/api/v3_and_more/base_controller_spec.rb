@@ -21,7 +21,7 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
 
   describe 'version management' do
     before do
-      get :index, params: { api_version: api_version, token: yes_jwt }.merge(**mandatory_params)
+      get :index, params: { api_version:, token: yes_jwt }.merge(**mandatory_params)
     end
 
     context 'with valid version' do
@@ -63,7 +63,7 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
     before do
       get :index, params: { api_version: 42, token: yes_jwt }
         .merge(**mandatory_params)
-        .merge(recipient: recipient, siret: siret)
+        .merge(recipient:, siret:)
     end
 
     context 'with valid siret as recipient' do
@@ -128,7 +128,7 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
     before do
       get :index, params: { api_version: 42, token: yes_jwt }
         .merge(**mandatory_params)
-        .merge(recipient: recipient, siren: siren)
+        .merge(recipient:, siren:)
     end
 
     context 'when identical' do

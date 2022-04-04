@@ -4,7 +4,7 @@ class PROBTP::ConformitesCotisationsRetraite::BuildResource < BuildResource
   def resource_attributes
     {
       id: context.params[:siret],
-      eligible: eligible
+      eligible:
     }
   end
 

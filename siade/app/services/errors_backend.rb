@@ -23,7 +23,7 @@ class ErrorsBackend
   def errors
     @errors ||= YAML.load_file(
       errors_file_path,
-      aliases: true,
+      aliases: true
     )
   end
 

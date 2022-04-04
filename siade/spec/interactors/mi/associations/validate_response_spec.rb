@@ -1,9 +1,9 @@
 RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
   describe '.call' do
-    subject { described_class.call(response: response, provider_name: 'MI') }
+    subject { described_class.call(response:, provider_name: 'MI') }
 
     let(:response) do
-      instance_double('Net::HTTPOK', code: code, body: body)
+      instance_double('Net::HTTPOK', code:, body:)
     end
 
     describe 'with an invalid code' do

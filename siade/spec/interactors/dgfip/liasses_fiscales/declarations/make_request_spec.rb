@@ -1,11 +1,11 @@
 RSpec.describe DGFIP::LiassesFiscales::Declarations::MakeRequest, type: :make_request do
-  subject { described_class.call(cookie: cookie, params: params) }
+  subject { described_class.call(cookie:, params:) }
 
   let(:params) do
     {
-      siren: siren,
-      user_id: user_id,
-      year: year
+      siren:,
+      user_id:,
+      year:
     }
   end
   let(:cookie) { DGFIP::Authenticate.call.cookie }

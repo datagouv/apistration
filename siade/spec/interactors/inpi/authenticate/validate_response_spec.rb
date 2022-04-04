@@ -1,5 +1,5 @@
 RSpec.describe INPI::Authenticate::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response: response, provider_name: 'INPI') }
+  subject { described_class.call(response:, provider_name: 'INPI') }
 
   let(:response) { instance_double('Net::HTTPOK') }
 

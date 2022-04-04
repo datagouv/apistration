@@ -1,8 +1,8 @@
 RSpec.describe DGFIP::ChiffresAffaires::BuildResource, type: :build_resource do
-  subject(:call) { described_class.call(params: { siret: siret }, response: response) }
+  subject(:call) { described_class.call(params: { siret: }, response:) }
 
   let(:siret) { valid_siret }
-  let(:response) { instance_double('Net::HTTPOK', body: body) }
+  let(:response) { instance_double('Net::HTTPOK', body:) }
   let(:body) do
     {
       'liste_ca' => [

@@ -1,11 +1,11 @@
 RSpec.describe DGFIP::LiassesFiscales::Declarations, type: :retriever_organizer do
-  subject { described_class.call(params: params) }
+  subject { described_class.call(params:) }
 
   let(:params) do
     {
-      siren: siren,
+      siren:,
       year: annee,
-      user_id: user_id
+      user_id:
     }
   end
 

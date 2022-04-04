@@ -1,8 +1,8 @@
 RSpec.describe DGFIP::AttestationFiscale::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response: response, provider_name: 'DGFIP') }
+  subject { described_class.call(response:, provider_name: 'DGFIP') }
 
   context 'with a http ok' do
-    let(:response) { instance_double('Net::HTTPOK', code: '200', body: body) }
+    let(:response) { instance_double('Net::HTTPOK', code: '200', body:) }
 
     context 'when body is a valid pdf' do
       let(:body) { File.read(Rails.root.join('spec/support/dgfip_attestations_fiscales/basic.pdf')) }

@@ -1,10 +1,10 @@
 RSpec.describe DGFIP::ChiffresAffaires::MakeRequest, type: :make_request do
-  subject { described_class.call(cookie: cookie, params: params) }
+  subject { described_class.call(cookie:, params:) }
 
   let(:params) do
     {
-      siret: siret,
-      user_id: user_id
+      siret:,
+      user_id:
     }
   end
   let(:cookie) { DGFIP::Authenticate.call.cookie }

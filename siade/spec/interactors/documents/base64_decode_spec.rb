@@ -1,5 +1,5 @@
 RSpec.describe Documents::Base64Decode do
-  subject { described_class.call(decode_params.merge(provider_name: provider_name)) }
+  subject { described_class.call(decode_params.merge(provider_name:)) }
 
   let(:provider_name) { 'INSEE' }
 

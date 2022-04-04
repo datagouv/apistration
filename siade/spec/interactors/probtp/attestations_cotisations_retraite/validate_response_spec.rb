@@ -1,8 +1,8 @@
 RSpec.describe PROBTP::AttestationsCotisationsRetraite::ValidateResponse do
   describe '.call' do
-    subject { described_class.call(response: response) }
+    subject { described_class.call(response:) }
 
-    let(:response) { instance_double(Net::HTTPOK, code: code, body: body) }
+    let(:response) { instance_double(Net::HTTPOK, code:, body:) }
 
     context 'when the attestation is found', vcr: { cassette_name: 'probtp/attestation/with_eligible_siret' } do
       let(:code) { 200 }

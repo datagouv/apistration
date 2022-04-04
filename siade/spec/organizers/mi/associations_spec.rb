@@ -1,10 +1,10 @@
 RSpec.describe MI::Associations, type: :retriever_organizer do
   describe '.call' do
-    subject { described_class.call(params: params) }
+    subject { described_class.call(params:) }
 
     let(:params) do
       {
-        siret_or_rna: siret_or_rna
+        siret_or_rna:
       }
     end
 

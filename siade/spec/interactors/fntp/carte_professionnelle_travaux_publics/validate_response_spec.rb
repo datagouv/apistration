@@ -1,5 +1,5 @@
 RSpec.describe FNTP::CarteProfessionnelleTravauxPublics::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response: response) }
+  subject { described_class.call(response:) }
 
   context 'when it is a HTTP ok' do
     let(:response) { instance_double(Net::HTTPOK, code: '200') }

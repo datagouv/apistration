@@ -17,9 +17,9 @@ class APIPolicy
 
   def log_user_access
     if user_authorized?
-      UserAccessSpy.log_authorized(user: user)
+      UserAccessSpy.log_authorized(user:)
     else
-      UserAccessSpy.log_forbidden_jwt_token(user: user)
+      UserAccessSpy.log_forbidden_jwt_token(user:)
     end
   end
 

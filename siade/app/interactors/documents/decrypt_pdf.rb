@@ -86,7 +86,7 @@ class Documents::DecryptPDF < ApplicationInteractor
       'error',
       "PDF Decrypt fail to execute '#{command}'",
       {
-        exit_status: exit_status,
+        exit_status:,
         stderr: stderr_message
       }
     )

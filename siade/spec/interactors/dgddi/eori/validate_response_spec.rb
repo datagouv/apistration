@@ -1,5 +1,5 @@
 RSpec.describe DGDDI::EORI::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response: response, provider_name: 'DGDDI') }
+  subject { described_class.call(response:, provider_name: 'DGDDI') }
 
   context 'with a http ok' do
     let(:response) { instance_double('Net::HTTPOK', code: '200') }

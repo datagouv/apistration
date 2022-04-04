@@ -20,7 +20,7 @@ class INSEE::AdresseEtablissement::BuildResource < INSEE::Etablissement::BuildRe
       code_pays_etranger: etablissement_address['codePaysEtrangerEtablissement'],
       libelle_pays_etranger: etablissement_address['libellePaysEtrangerEtablissement'],
 
-      acheminement_postal: acheminement_postal,
+      acheminement_postal:,
 
       date_derniere_mise_a_jour: date_to_timestamp(etablissement['dateDernierTraitementEtablissement'])
     }

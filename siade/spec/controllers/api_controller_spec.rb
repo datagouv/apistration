@@ -9,7 +9,7 @@ RSpec.describe APIController, type: :controller do
     end
 
     def show
-      render json: { siret: siret }, status: :ok
+      render json: { siret: }, status: :ok
     end
 
     protected
@@ -27,7 +27,7 @@ RSpec.describe APIController, type: :controller do
     subject do
       routes.draw { get 'show/:siret' => 'api#show' }
 
-      get :show, params: { siret: ' ', error_format: error_format, token: yes_jwt }.merge(mandatory_params)
+      get :show, params: { siret: ' ', error_format:, token: yes_jwt }.merge(mandatory_params)
     end
 
     context 'when error_format is nil' do
@@ -86,7 +86,7 @@ RSpec.describe APIController, type: :controller do
     it 'renders a 400 error' do
       routes.draw { get 'show/:siret' => 'api#show' }
 
-      get :show, params: { siret: siret }
+      get :show, params: { siret: }
 
       assert_response 400
     end

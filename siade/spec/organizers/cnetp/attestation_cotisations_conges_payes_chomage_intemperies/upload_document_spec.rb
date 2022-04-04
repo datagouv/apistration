@@ -1,7 +1,7 @@
 RSpec.describe CNETP::AttestationCotisationsCongesPayesChomageIntemperies::UploadDocument, :self_hosted_doc do
-  subject { described_class.call(response: response) }
+  subject { described_class.call(response:) }
 
-  let(:response) { instance_double(Net::HTTPOK, code: code, body: body) }
+  let(:response) { instance_double(Net::HTTPOK, code:, body:) }
   let(:code) { 200 }
   let(:body) { read_payload_file('pdf/dummy.pdf') }
 

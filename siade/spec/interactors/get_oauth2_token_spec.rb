@@ -63,7 +63,7 @@ RSpec.describe GetOAuth2Token, type: :interactor do
   context 'when the token is stored in Redis' do
     let(:token_redis) do
       {
-        expires_at: expires_at,
+        expires_at:,
         token_type: 'Bearer',
         access_token: 'This is an access token from Redis'
       }

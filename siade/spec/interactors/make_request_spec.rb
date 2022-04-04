@@ -1,5 +1,5 @@
 RSpec.describe MakeRequest, type: :interactor do
-  subject { DummyMakeRequest.call(provider_name: provider_name) }
+  subject { DummyMakeRequest.call(provider_name:) }
 
   before(:all) do
     class DummyMakeRequest < MakeRequest

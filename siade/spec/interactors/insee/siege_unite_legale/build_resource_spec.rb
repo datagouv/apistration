@@ -1,17 +1,17 @@
 RSpec.describe INSEE::SiegeUniteLegale::BuildResource, type: :build_resource do
   subject { organizer }
 
-  let(:organizer) { described_class.call(response: response) }
-  let(:response) { instance_double('Net::HTTPOK', body: body) }
+  let(:organizer) { described_class.call(response:) }
+  let(:response) { instance_double('Net::HTTPOK', body:) }
 
   let(:body) do
-    INSEE::SiegeUniteLegale::MakeRequest.call(params: params, token: token).response.body
+    INSEE::SiegeUniteLegale::MakeRequest.call(params:, token:).response.body
   end
 
   let(:token) { INSEE::Authenticate.call.token }
   let(:params) do
     {
-      siren: siren
+      siren:
     }
   end
 

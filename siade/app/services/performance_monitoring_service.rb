@@ -11,7 +11,7 @@ class PerformanceMonitoringService
     if transaction && enable?
       result = nil
 
-      transaction.with_child_span(op: op, description: description) do
+      transaction.with_child_span(op:, description:) do
         result = yield
       end
 

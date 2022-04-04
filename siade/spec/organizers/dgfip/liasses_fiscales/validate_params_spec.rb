@@ -1,11 +1,11 @@
 RSpec.describe DGFIP::LiassesFiscales::ValidateParams, type: :validate_params do
-  subject { described_class.call(params: params) }
+  subject { described_class.call(params:) }
 
   let(:params) do
     {
-      siren: siren,
-      year: year,
-      user_id: user_id
+      siren:,
+      year:,
+      user_id:
     }
   end
 

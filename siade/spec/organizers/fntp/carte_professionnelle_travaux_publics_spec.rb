@@ -1,9 +1,9 @@
 RSpec.describe FNTP::CarteProfessionnelleTravauxPublics, :self_hosted_doc, type: :retriever_organizer do
-  subject { described_class.call(params: params) }
+  subject { described_class.call(params:) }
 
   let(:params) do
     {
-      siren: siren
+      siren:
     }
   end
 

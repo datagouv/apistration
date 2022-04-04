@@ -1,5 +1,5 @@
 RSpec.describe BuildResourceCollection, type: :interactor do
-  subject(:call) { dummy_build_class.call(extra_attributes: extra_attributes) }
+  subject(:call) { dummy_build_class.call(extra_attributes:) }
 
   let(:dummy_build_class) do
     Class.new(BuildResourceCollection) do

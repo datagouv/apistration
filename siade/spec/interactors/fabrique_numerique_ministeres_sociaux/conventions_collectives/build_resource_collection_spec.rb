@@ -1,15 +1,15 @@
 RSpec.describe FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::BuildResourceCollection, type: :build_resource do
-  subject(:call) { described_class.call(response: response) }
+  subject(:call) { described_class.call(response:) }
 
-  let(:response) { instance_double('Net::HTTPOK', body: body) }
+  let(:response) { instance_double('Net::HTTPOK', body:) }
 
   let(:body) do
-    FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::MakeRequest.call(params: params).response.body
+    FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::MakeRequest.call(params:).response.body
   end
 
   let(:params) do
     {
-      siret: siret
+      siret:
     }
   end
 

@@ -1,9 +1,9 @@
 RSpec.describe ACOSS::AttestationsSociales::ValidateResponse, type: :validate_response do
   describe '.call' do
-    subject { described_class.call(response: response, provider_name: 'ACOSS') }
+    subject { described_class.call(response:, provider_name: 'ACOSS') }
 
     let(:response) do
-      instance_double('Net::HTTPOK', code: code, body: body)
+      instance_double('Net::HTTPOK', code:, body:)
     end
     let(:code) { 200 }
 

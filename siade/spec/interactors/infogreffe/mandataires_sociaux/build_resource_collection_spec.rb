@@ -1,6 +1,6 @@
 RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :build_resource do
   describe '.call', vcr: { cassette_name: 'infogreffe/mandataires_sociaux/with_valid_siren' } do
-    subject(:call) { described_class.call(response: response) }
+    subject(:call) { described_class.call(response:) }
 
     let(:valid_pp) do
       {
@@ -39,11 +39,11 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
     end
 
     let(:response) do
-      instance_double('Net::HTTPOK', body: body)
+      instance_double('Net::HTTPOK', body:)
     end
 
     let(:body) do
-      Infogreffe::MandatairesSociaux::MakeRequest.call(params: params).response.body
+      Infogreffe::MandatairesSociaux::MakeRequest.call(params:).response.body
     end
 
     let(:params) do

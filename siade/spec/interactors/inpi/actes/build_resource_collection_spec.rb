@@ -1,6 +1,6 @@
 RSpec.describe INPI::Actes::BuildResourceCollection, type: :build_resource do
   describe '.call', vcr: { cassette_name: 'inpi/actes/with_valid_siren' } do
-    subject(:call) { described_class.call(response: response, params: params) }
+    subject(:call) { described_class.call(response:, params:) }
 
     let(:valid_collection) do
       [
@@ -24,11 +24,11 @@ RSpec.describe INPI::Actes::BuildResourceCollection, type: :build_resource do
     end
 
     let(:response) do
-      instance_double('Net::HTTPOK', body: body)
+      instance_double('Net::HTTPOK', body:)
     end
 
     let(:body) do
-      INPI::Actes::MakeRequest.call(params: params, cookie: valid_cookie_inpi).response.body
+      INPI::Actes::MakeRequest.call(params:, cookie: valid_cookie_inpi).response.body
     end
 
     let(:params) do

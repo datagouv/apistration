@@ -1,6 +1,6 @@
 RSpec.describe MI::Associations::BuildResource, type: :build_resource do
   describe '.call', vcr: { cassette_name: 'mi/associations/with_valid_siret' } do
-    subject { described_class.call(response: response) }
+    subject { described_class.call(response:) }
 
     let(:valid_payload) do
       {
@@ -31,11 +31,11 @@ RSpec.describe MI::Associations::BuildResource, type: :build_resource do
     end
 
     let(:response) do
-      instance_double('Net::HTTPOK', body: body)
+      instance_double('Net::HTTPOK', body:)
     end
 
     let(:body) do
-      MI::Associations::MakeRequest.call(params: params).response.body
+      MI::Associations::MakeRequest.call(params:).response.body
     end
 
     let(:params) do

@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe QUALIBAT::CertificationsBatiment::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response: response) }
+  subject { described_class.call(response:) }
 
-  let(:response) { QUALIBAT::CertificationsBatiment::MakeRequest.call(params: params).response }
+  let(:response) { QUALIBAT::CertificationsBatiment::MakeRequest.call(params:).response }
 
   let(:params) do
     {
-      siret: siret
+      siret:
     }
   end
 

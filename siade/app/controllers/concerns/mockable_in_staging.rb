@@ -13,7 +13,7 @@ module MockableInStaging
     if v3_and_more?
       render json: ErrorsSerializer.new([NotImplementedYetError.new], format: error_format).as_json, status: :not_implemented
     else
-      render json: json, status: :ok
+      render json:, status: :ok
     end
   end
 

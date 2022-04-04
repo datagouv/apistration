@@ -1,8 +1,8 @@
 RSpec.describe INPI::ValidateLimit, type: :validate_param_interactor do
-  subject { described_class.call(params: params) }
+  subject { described_class.call(params:) }
 
   let(:params) do
-    { limit: limit }
+    { limit: }
   end
 
   context 'when over 20' do

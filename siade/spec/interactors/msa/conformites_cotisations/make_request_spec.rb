@@ -1,10 +1,10 @@
 RSpec.describe MSA::ConformitesCotisations::MakeRequest, type: :make_request do
-  subject { described_class.call(params: params) }
+  subject { described_class.call(params:) }
 
   let(:siret) { valid_siret(:msa) }
   let(:params) do
     {
-      siret: siret
+      siret:
     }
   end
 

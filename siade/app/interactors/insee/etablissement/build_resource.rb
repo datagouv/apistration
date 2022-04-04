@@ -6,8 +6,8 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
       id: etablissement['siret'],
       siren: etablissement['siren'],
       siege_social: etablissement['etablissementSiege'],
-      etat_administratif: etat_administratif,
-      date_fermeture: date_fermeture,
+      etat_administratif:,
+      date_fermeture:,
 
       activite_principale: referential(
         'activite_principale',

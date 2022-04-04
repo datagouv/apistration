@@ -12,7 +12,7 @@ class FNTP::CarteProfessionnelleTravauxPublics::MakeRequest < MakeRequest::Get
 
   def request_params
     {
-      token: token
+      token:
     }
   end
 

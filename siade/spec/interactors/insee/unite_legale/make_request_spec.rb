@@ -1,9 +1,9 @@
 RSpec.describe INSEE::UniteLegale::MakeRequest, type: :make_request do
-  subject(:make_request) { described_class.call(params: params, token: token) }
+  subject(:make_request) { described_class.call(params:, token:) }
 
   let(:params) do
     {
-      siren: siren
+      siren:
     }
   end
 

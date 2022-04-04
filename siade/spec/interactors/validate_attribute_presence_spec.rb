@@ -1,5 +1,5 @@
 RSpec.describe ValidateAttributePresence, type: :validate_param_interactor do
-  subject { DummyValidateAttributePresence.call(params: { dummy: dummy }) }
+  subject { DummyValidateAttributePresence.call(params: { dummy: }) }
 
   before(:all) do
     class DummyValidateAttributePresence < ValidateAttributePresence

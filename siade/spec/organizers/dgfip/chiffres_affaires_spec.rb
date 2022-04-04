@@ -1,10 +1,10 @@
 RSpec.describe DGFIP::ChiffresAffaires, type: :retriever_organizer do
-  subject { described_class.call(params: params) }
+  subject { described_class.call(params:) }
 
   let(:params) do
     {
-      siret: siret,
-      user_id: user_id
+      siret:,
+      user_id:
     }
   end
 

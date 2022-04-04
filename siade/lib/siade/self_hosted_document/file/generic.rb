@@ -91,7 +91,7 @@ class SIADE::SelfHostedDocument::File::Generic
       message,
       {
         exception: exception.message,
-        url: url,
+        url:,
         host: URI(url).host
       }
     )
@@ -103,7 +103,7 @@ class SIADE::SelfHostedDocument::File::Generic
       message,
       {
         exception: exception.message,
-        url: url
+        url:
       }
     )
   end

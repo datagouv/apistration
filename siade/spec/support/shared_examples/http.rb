@@ -3,7 +3,7 @@ RSpec.shared_examples 'unauthorized' do |action = :show, extra_get_params = {}|
 
   before do
     params = { token: 'bad_token', siren: valid_siren, siret: valid_siret }.merge(mandatory_params).merge(extra_get_params)
-    get action, params: params
+    get action, params:
   end
 
   its(:status) { is_expected.to eq(401) }
@@ -23,8 +23,8 @@ RSpec.shared_examples 'forbidden' do |action = :show, extra_get_params = {}|
   let(:siren) { valid_siren }
 
   before do
-    params = { token: token, siret: siret, siren: siren }.merge(mandatory_params).merge(extra_get_params)
-    get action, params: params
+    params = { token:, siret:, siren: }.merge(mandatory_params).merge(extra_get_params)
+    get action, params:
   end
 
   its(:status) { is_expected.to eq(403) }
@@ -39,7 +39,7 @@ RSpec.shared_examples 'not_found' do |siret: nil, siren: nil, action: :show, **e
   let(:valid_siren) { siren || non_existent_siren }
 
   before do
-    get action, params: { token: token, siret: valid_siret, siren: valid_siren }.merge(mandatory_params).merge(extra_get_params)
+    get action, params: { token:, siret: valid_siret, siren: valid_siren }.merge(mandatory_params).merge(extra_get_params)
   end
 
   its(:status) { is_expected.to eq(404) }
@@ -59,7 +59,7 @@ RSpec.shared_examples 'unprocessable_entity' do |action = :show, kind = :siren, 
   let(:siren) { invalid_siren }
 
   before do
-    get action, params: { token: token, siret: siret, siren: siren }.merge(mandatory_params).merge(extra_get_params)
+    get action, params: { token:, siret:, siren: }.merge(mandatory_params).merge(extra_get_params)
   end
 
   its(:status) { is_expected.to eq(422) }
@@ -83,7 +83,7 @@ RSpec.shared_examples 'happy_pdf_endpoint_siren' do |arg_siren, pdf_suffix|
   let(:siren) { arg_siren }
 
   before do
-    get :show, params: { token: token, siren: siren }.merge(mandatory_params)
+    get :show, params: { token:, siren: }.merge(mandatory_params)
   end
 
   it 'response has 200 status' do
@@ -106,7 +106,7 @@ RSpec.shared_examples 'happy_pdf_endpoint_siret' do |arg_siret, pdf_suffix|
   let(:siret) { arg_siret }
 
   before do
-    get :show, params: { token: token, siret: siret }.merge(mandatory_params)
+    get :show, params: { token:, siret: }.merge(mandatory_params)
   end
 
   it 'response has 200 status' do
@@ -130,7 +130,7 @@ RSpec.shared_examples 'ask_for_mandatory_parameters' do |action = :show, extra_g
   let(:token) { yes_jwt }
   let(:request_params) do
     {
-      token: token,
+      token:,
       siret: valid_siret(:octo),
       siren: valid_siren(:octo)
     }.merge(extra_get_params)
@@ -144,7 +144,7 @@ RSpec.shared_examples 'ask_for_mandatory_parameters' do |action = :show, extra_g
   end
 
   context 'when object param is absent' do
-    let(:test_params) { { context: context_param, recipient: recipient } }
+    let(:test_params) { { context: context_param, recipient: } }
 
     it 'returns 422 with error message' do
       expect(response.status).to eq 422
@@ -153,7 +153,7 @@ RSpec.shared_examples 'ask_for_mandatory_parameters' do |action = :show, extra_g
   end
 
   context 'when context param is absent' do
-    let(:test_params) { { object: object, recipient: recipient } }
+    let(:test_params) { { object:, recipient: } }
 
     it 'returns 422 with error message' do
       expect(response.status).to eq 422
@@ -162,7 +162,7 @@ RSpec.shared_examples 'ask_for_mandatory_parameters' do |action = :show, extra_g
   end
 
   context 'when recipient param is absent' do
-    let(:test_params) { { object: object, context: context_param } }
+    let(:test_params) { { object:, context: context_param } }
 
     it 'returns 422 with error message' do
       expect(response.status).to eq 422

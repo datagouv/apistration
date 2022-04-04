@@ -9,7 +9,7 @@ class CNETP::AttestationCotisationsCongesPayesChomageIntemperies::MakeRequest < 
     {
       id: client_number,
       jeton: token,
-      siren: siren
+      siren:
     }
   end
 

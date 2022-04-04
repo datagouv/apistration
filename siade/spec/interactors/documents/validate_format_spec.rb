@@ -1,5 +1,5 @@
 RSpec.describe Documents::ValidateFormat do
-  subject { described_class.call(validation_params.merge(provider_name: provider_name)) }
+  subject { described_class.call(validation_params.merge(provider_name:)) }
 
   let(:provider_name) { 'INSEE' }
 

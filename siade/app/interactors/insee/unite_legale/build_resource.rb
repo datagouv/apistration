@@ -45,8 +45,8 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
 
       date_creation: date_to_timestamp(unite_legale['dateCreationUniteLegale']),
 
-      etat_administratif: etat_administratif,
-      date_cessation: date_cessation,
+      etat_administratif:,
+      date_cessation:,
 
       date_derniere_mise_a_jour: date_to_timestamp(unite_legale['dateDernierTraitementUniteLegale'])
     }

@@ -14,7 +14,7 @@ class MI::Associations::BuildResource < BuildResource
       date_declaration: @asso_hash[:identite][:date_modif_rna],
       date_publication: @asso_hash[:identite][:date_pub_jo],
       date_dissolution: @asso_hash[:identite][:date_dissolution],
-      adresse_siege: adresse_siege,
+      adresse_siege:,
       etat: @asso_hash[:identite][:active],
       groupement: @asso_hash[:identite][:groupement],
       mise_a_jour: @asso_hash[:identite][:date_modif_rna]

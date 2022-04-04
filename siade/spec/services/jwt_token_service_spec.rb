@@ -1,5 +1,5 @@
 RSpec.describe JwtTokenService do
-  subject(:helper) { described_class.new(jwt: jwt) }
+  subject(:helper) { described_class.new(jwt:) }
 
   context 'when created with a valid jwt' do
     let(:jwt) { yes_jwt }

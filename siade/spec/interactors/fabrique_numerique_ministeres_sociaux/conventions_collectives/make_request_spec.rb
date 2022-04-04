@@ -1,9 +1,9 @@
 RSpec.describe FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::MakeRequest, type: :make_request do
-  subject { described_class.call(params: params) }
+  subject { described_class.call(params:) }
 
   let(:params) do
     {
-      siret: siret
+      siret:
     }
   end
 

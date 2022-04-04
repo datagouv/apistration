@@ -1,14 +1,14 @@
 RSpec.describe MSA::ConformitesCotisations::BuildResource, type: :build_resource do
-  subject { described_class.call(params: params, response: response) }
+  subject { described_class.call(params:, response:) }
 
   let(:siret) { valid_siret(:msa) }
   let(:params) do
     {
-      siret: siret
+      siret:
     }
   end
   let(:response) do
-    instance_double('Net::HTTPOK', body: body)
+    instance_double('Net::HTTPOK', body:)
   end
 
   context 'when it is up to date' do

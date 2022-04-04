@@ -7,7 +7,7 @@ class QUALIBAT::CertificationsBatiment::MakeRequest < MakeRequest::Get
 
   def request_params
     {
-      token: token,
+      token:,
       SIRET: siret
     }
   end

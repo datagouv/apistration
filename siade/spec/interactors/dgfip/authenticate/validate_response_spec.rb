@@ -1,5 +1,5 @@
 RSpec.describe DGFIP::Authenticate::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response: response) }
+  subject { described_class.call(response:) }
 
   context 'with valid response', vcr: { cassette_name: 'dgfip/authenticate/valid' } do
     let(:response) { DGFIP::Authenticate::MakeRequest.call.response }

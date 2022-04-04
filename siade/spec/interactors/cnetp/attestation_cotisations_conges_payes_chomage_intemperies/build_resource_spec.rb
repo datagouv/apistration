@@ -1,5 +1,5 @@
 RSpec.describe CNETP::AttestationCotisationsCongesPayesChomageIntemperies::BuildResource, type: :build_resource do
-  subject { described_class.call(url: 'not.a.real/file/upload', params: params) }
+  subject { described_class.call(url: 'not.a.real/file/upload', params:) }
 
   let(:params) do
     {

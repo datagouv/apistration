@@ -1,6 +1,6 @@
 RSpec.describe ACOSS::AttestationsSociales::BuildResource, type: :build_resource do
   describe '.call' do
-    subject { described_class.call(url: url, params: params) }
+    subject { described_class.call(url:, params:) }
 
     let(:params) do
       {

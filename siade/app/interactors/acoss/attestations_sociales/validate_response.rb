@@ -39,7 +39,7 @@ class ACOSS::AttestationsSociales::ValidateResponse < ValidateResponse
   def handle_json_error_body_not_an_array
     error = build_error(ProviderUnknownError, 'Invalid json error payload')
     error.add_to_monitoring_private_context(
-      body: body
+      body:
     )
     fail_with_error!(error)
   end

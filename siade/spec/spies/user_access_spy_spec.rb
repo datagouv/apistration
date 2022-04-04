@@ -3,12 +3,12 @@ RSpec.describe UserAccessSpy do
 
   it 'logs authorized' do
     expect(ActiveSupport::Notifications).to receive(:instrument).with('user_access', user: user.logstash_id, jti: user.token_id, iat: Time.zone.at(user.iat), access: 'allow')
-    described_class.log_authorized(user: user)
+    described_class.log_authorized(user:)
   end
 
   it 'logs forbidden jwt token' do
     expect(ActiveSupport::Notifications).to receive(:instrument).with('user_access', user: user.logstash_id, jti: user.token_id, access: 'deny')
-    described_class.log_forbidden_jwt_token(user: user)
+    described_class.log_forbidden_jwt_token(user:)
   end
 
   it 'logs unauthorized' do

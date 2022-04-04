@@ -1,11 +1,11 @@
 RSpec.describe PROBTP::ConformitesCotisationsRetraite::BuildResource, type: :build_resource do
   describe '.call' do
-    subject { described_class.call(params: params, response: response) }
+    subject { described_class.call(params:, response:) }
 
-    let(:response) { instance_double(Net::HTTPOK, code: code, body: body) }
+    let(:response) { instance_double(Net::HTTPOK, code:, body:) }
     let(:params) do
       {
-        siret: siret
+        siret:
       }
     end
 
@@ -15,7 +15,7 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite::BuildResource, type: :bui
       let(:code) { 200 }
       let(:body) do
         PROBTP::ConformitesCotisationsRetraite::MakeRequest
-          .call(params: params)
+          .call(params:)
           .response
           .body
       end

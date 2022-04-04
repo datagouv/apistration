@@ -1,8 +1,8 @@
 RSpec.describe DGFIP::ChiffresAffaires::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response: response, provider_name: 'DGFIP') }
+  subject { described_class.call(response:, provider_name: 'DGFIP') }
 
   context 'with a http ok' do
-    let(:response) { instance_double('Net::HTTPOK', code: '200', body: body) }
+    let(:response) { instance_double('Net::HTTPOK', code: '200', body:) }
 
     context 'with a json as body' do
       let(:body) { data.to_json }

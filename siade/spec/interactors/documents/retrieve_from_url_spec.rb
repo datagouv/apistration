@@ -1,5 +1,5 @@
 RSpec.describe Documents::RetrieveFromUrl do
-  subject(:make_call!) { described_class.call(retrieve_params.merge(provider_name: provider_name)) }
+  subject(:make_call!) { described_class.call(retrieve_params.merge(provider_name:)) }
 
   let(:provider_name) { 'INSEE' }
 

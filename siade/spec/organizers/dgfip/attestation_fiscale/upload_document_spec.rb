@@ -1,8 +1,8 @@
 RSpec.describe DGFIP::AttestationFiscale::UploadDocument, :self_hosted_doc do
   describe '.call' do
-    subject { described_class.call(response: response) }
+    subject { described_class.call(response:) }
 
-    let(:response) { instance_double(Net::HTTPOK, code: code, body: body) }
+    let(:response) { instance_double(Net::HTTPOK, code:, body:) }
     let(:code) { 200 }
     let(:body) { File.read(Rails.root.join('spec/support/dgfip_attestations_fiscales/basic.pdf')) }
 

@@ -1,10 +1,10 @@
 RSpec.describe DGFIP::AttestationFiscale, :self_hosted_doc, type: :retriever_organizer do
-  subject { described_class.call(params: params) }
+  subject { described_class.call(params:) }
 
   let(:params) do
     {
-      siren: siren,
-      user_id: user_id
+      siren:,
+      user_id:
     }
   end
 

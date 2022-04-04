@@ -50,7 +50,7 @@ RSpec.describe MockableInStaging do
                         type: 'object',
                         properties: {
                           dummy: {
-                            type: type,
+                            type:,
                             example: example_value
                           }
                         }

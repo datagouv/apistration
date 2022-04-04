@@ -1,10 +1,10 @@
 RSpec.describe RNM::EntreprisesArtisanales, type: :retriever_organizer do
   describe '.call' do
-    subject { described_class.call(params: params) }
+    subject { described_class.call(params:) }
 
     let(:params) do
       {
-        siren: siren
+        siren:
       }
     end
 

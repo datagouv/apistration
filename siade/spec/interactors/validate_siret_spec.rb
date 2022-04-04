@@ -1,10 +1,10 @@
 RSpec.describe ValidateSiret, type: :validate_param_interactor do
   describe '.call' do
-    subject { described_class.call(params: params) }
+    subject { described_class.call(params:) }
 
     let(:params) do
       {
-        siret: siret
+        siret:
       }
     end
 

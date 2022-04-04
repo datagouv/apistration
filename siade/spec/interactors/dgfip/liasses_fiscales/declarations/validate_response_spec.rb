@@ -1,8 +1,8 @@
 RSpec.describe DGFIP::LiassesFiscales::Declarations::ValidateResponse, type: :validate_response do
   describe '.call' do
-    subject { described_class.call(response: response) }
+    subject { described_class.call(response:) }
 
-    let(:response) { instance_double(Net::HTTPOK, code: code, body: body) }
+    let(:response) { instance_double(Net::HTTPOK, code:, body:) }
 
     context 'when status is 200' do
       let(:code) { 200 }

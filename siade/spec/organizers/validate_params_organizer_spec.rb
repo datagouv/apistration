@@ -21,11 +21,11 @@ RSpec.describe ValidateParamsOrganizer, type: :organizer do
   end
 
   describe '.call' do
-    subject { DummyValidateParamsOrganizer.call(params: params) }
+    subject { DummyValidateParamsOrganizer.call(params:) }
 
     let(:params) do
       {
-        siren: siren,
+        siren:,
         month: dummy
       }.compact
     end

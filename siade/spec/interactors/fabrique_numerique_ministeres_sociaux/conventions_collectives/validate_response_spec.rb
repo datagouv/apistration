@@ -1,12 +1,12 @@
 RSpec.describe FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response: response, provider_name: 'Fabrique numérique des Ministères Sociaux') }
+  subject { described_class.call(response:, provider_name: 'Fabrique numérique des Ministères Sociaux') }
 
   context 'with a http ok' do
     context 'when it is a json' do
-      let(:response) { FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::MakeRequest.call(params: params).response }
+      let(:response) { FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::MakeRequest.call(params:).response }
       let(:params) do
         {
-          siret: siret
+          siret:
         }
       end
 

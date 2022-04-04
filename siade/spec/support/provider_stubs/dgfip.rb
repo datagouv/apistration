@@ -26,7 +26,7 @@ module ProviderStubs::DGFIP
 
   def mock_invalid_dgfip_attestation_fiscale(status)
     stub_request(:get, /^#{Siade.credentials[:dgfip_attestations_fiscales_url]}/).and_return(
-      status: status
+      status:
     )
   end
 
@@ -53,7 +53,7 @@ module ProviderStubs::DGFIP
 
   def build_dgfip_attestation_fiscale_query_params(siren, user_id)
     {
-      siren: siren,
+      siren:,
       groupeIS: 'NON',
       groupeTVA: 'NON',
       userId: user_id

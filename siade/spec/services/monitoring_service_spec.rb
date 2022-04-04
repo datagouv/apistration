@@ -76,8 +76,8 @@ RSpec.describe MonitoringService, type: :service do
         instance_double(
           'raw_response',
           body: '',
-          code: code,
-          provider_error_custom_code: provider_error_custom_code
+          code:,
+          provider_error_custom_code:
         )
       end
       let(:extra_context) do
@@ -204,7 +204,7 @@ RSpec.describe MonitoringService, type: :service do
         expect(Sentry).to receive(:capture_message).with(
           message,
           {
-            level: level
+            level:
           }
         )
 
@@ -229,7 +229,7 @@ RSpec.describe MonitoringService, type: :service do
           expect(Sentry).to receive(:capture_message).with(
             message,
             {
-              level: level
+              level:
             }
           )
 
@@ -270,7 +270,7 @@ RSpec.describe MonitoringService, type: :service do
 
       it 'calls Sentry.set_tags with correct attributes' do
         expect(Sentry).to receive(:set_tags).with(
-          provider: provider
+          provider:
         )
 
         subject

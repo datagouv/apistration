@@ -1,6 +1,6 @@
 RSpec.describe PROBTP::AttestationsCotisationsRetraite::BuildResource do
   describe '.call' do
-    subject { described_class.call(url: 'not.a.real/file/upload', params: params) }
+    subject { described_class.call(url: 'not.a.real/file/upload', params:) }
 
     let(:params) do
       {

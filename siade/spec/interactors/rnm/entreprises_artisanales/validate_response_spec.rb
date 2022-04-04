@@ -1,9 +1,9 @@
 RSpec.describe RNM::EntreprisesArtisanales::ValidateResponse, type: :validate_response do
   describe '.call' do
-    subject { described_class.call(response: response, provider_name: 'CMA France') }
+    subject { described_class.call(response:, provider_name: 'CMA France') }
 
     let(:response) do
-      instance_double('Net::HTTPOK', code: code, body: body)
+      instance_double('Net::HTTPOK', code:, body:)
     end
 
     context 'with a valid code and a valid json' do

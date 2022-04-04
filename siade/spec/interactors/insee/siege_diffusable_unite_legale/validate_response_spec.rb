@@ -1,13 +1,13 @@
 RSpec.describe INSEE::SiegeDiffusableUniteLegale::ValidateResponse, type: :validate_response do
-  subject(:validator) { described_class.call(response: response, provider_name: 'INSEE') }
+  subject(:validator) { described_class.call(response:, provider_name: 'INSEE') }
 
   context 'with a http ok' do
-    let(:response) { instance_double('Net::HTTPOK', code: '200', body: body) }
+    let(:response) { instance_double('Net::HTTPOK', code: '200', body:) }
 
     let(:body) do
       {
         headers: {
-          total: total
+          total:
         },
         etablissements: [
           {

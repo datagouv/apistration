@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe QUALIBAT::CertificationsBatiment::BuildResource do
   describe '.call' do
-    subject { described_class.call(url: 'uploaded/file/url', params: params) }
+    subject { described_class.call(url: 'uploaded/file/url', params:) }
 
     let(:params) do
       {

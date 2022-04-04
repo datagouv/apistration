@@ -1,8 +1,8 @@
 RSpec.describe ACOSS::AttestationsSociales::UploadDocument, :self_hosted_doc do
   describe '.call' do
-    subject { described_class.call(response: response) }
+    subject { described_class.call(response:) }
 
-    let(:response) { instance_double(Net::HTTPOK, code: code, body: body) }
+    let(:response) { instance_double(Net::HTTPOK, code:, body:) }
     let(:code) { 200 }
     let(:encoded_file_content) { encode64_payload_file('pdf/dummy.pdf') }
     let(:decoded_file_content) { Base64.strict_decode64(encoded_file_content) }

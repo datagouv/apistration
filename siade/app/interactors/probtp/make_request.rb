@@ -11,8 +11,8 @@ class PROBTP::MakeRequest < MakeRequest::Post
     {
       use_ssl: true,
       verify_mode: OpenSSL::SSL::VERIFY_PEER,
-      cert: cert,
-      key: key
+      cert:,
+      key:
     }
   end
 

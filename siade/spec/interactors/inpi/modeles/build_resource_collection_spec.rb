@@ -1,6 +1,6 @@
 RSpec.describe INPI::Modeles::BuildResourceCollection, type: :build_resource do
   describe '.call', vcr: { cassette_name: 'inpi/modeles/with_valid_siren' } do
-    subject(:call) { described_class.call(response: response, params: params) }
+    subject(:call) { described_class.call(response:, params:) }
 
     let(:valid_collection_sample) do
       [
@@ -38,11 +38,11 @@ RSpec.describe INPI::Modeles::BuildResourceCollection, type: :build_resource do
     end
 
     let(:response) do
-      instance_double('Net::HTTPOK', body: body)
+      instance_double('Net::HTTPOK', body:)
     end
 
     let(:body) do
-      INPI::Modeles::MakeRequest.call(params: params).response.body
+      INPI::Modeles::MakeRequest.call(params:).response.body
     end
 
     let(:params) do

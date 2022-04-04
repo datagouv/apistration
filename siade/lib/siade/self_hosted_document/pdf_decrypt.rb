@@ -96,7 +96,7 @@ class SIADE::SelfHostedDocument::PDFDecrypt
       'error',
       "PDF Decrypt fail to execute '#{command}'",
       {
-        exit_status: exit_status,
+        exit_status:,
         stderr: stderr_string
       }
     )

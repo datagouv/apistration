@@ -1,7 +1,7 @@
 RSpec.describe DGFIP::ValidateUserId, type: :validate_param do
-  subject { described_class.call(params: params) }
+  subject { described_class.call(params:) }
 
-  let(:params) { { user_id: user_id } }
+  let(:params) { { user_id: } }
 
   context 'with a user_id which is a uuid' do
     let(:user_id) { SecureRandom.uuid }
