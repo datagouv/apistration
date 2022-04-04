@@ -75,7 +75,7 @@ module MockableInStaging
   end
 
   def open_api_schema
-    YAML.load_file(schema_path)
+    YAML.load_file(schema_path, aliases: true)
   end
 
   def schema_path

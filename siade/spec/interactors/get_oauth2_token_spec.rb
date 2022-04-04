@@ -132,7 +132,7 @@ RSpec.describe GetOAuth2Token, type: :interactor do
     it 'sends a message to Sentry' do
       expect(MonitoringService.instance)
         .to receive(:capture_message)
-        .with("Error while parsing DummyTokenAuthentication OAuth2 JSON token from Redis (JSON::ParserError 809: unexpected token at 'not a valid JSON')", level: 'warning')
+        .with("Error while parsing DummyTokenAuthentication OAuth2 JSON token from Redis (JSON::ParserError 859: unexpected token at 'not a valid JSON')", level: 'warning')
       subject.token
     end
   end

@@ -3,12 +3,12 @@ RSpec.describe 'Errors config file', type: :acceptance do
 
   it 'is a valid YAML' do
     expect {
-      YAML.load_file(errors_config_file)
+      YAML.load_file(errors_config_file, aliases: true)
     }.not_to raise_error
   end
 
   it 'is has at least a code or subcode properly formated' do
-    YAML.load_file(errors_config_file).each do |error_entry|
+    YAML.load_file(errors_config_file, aliases: true).each do |error_entry|
       expect(error_entry).to have_key('code').or have_key('subcode')
 
       if error_entry['code']
@@ -20,7 +20,7 @@ RSpec.describe 'Errors config file', type: :acceptance do
   end
 
   it 'has no duplicate code or subcode' do
-    error_entries = YAML.load_file(errors_config_file)
+    error_entries = YAML.load_file(errors_config_file, aliases: true)
 
     code_or_subcodes = error_entries.map do |error_entry|
       error_entry['code'] ||

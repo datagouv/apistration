@@ -5,7 +5,7 @@ RSpec.describe 'OpenAPI file', type: :acceptance do
     let(:definition_path) { 'public/v2/open-api.yml' }
 
     it 'is a valid YAML' do
-      expect(YAML.load_file(definition_path)).to be_truthy
+      expect(YAML.load_file(definition_path, aliases: true)).to be_truthy
     end
 
     it 'is a valid configuration' do

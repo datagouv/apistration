@@ -18,7 +18,7 @@ class SwaggerData
   end
 
   def yaml_backend
-    @yaml_backend ||= YAML.safe_load(yaml_backend_interpolated, [], [], true)
+    @yaml_backend ||= YAML.safe_load(yaml_backend_interpolated, aliases: true)
   end
 
   def yaml_backend_interpolated
