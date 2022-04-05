@@ -710,6 +710,11 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
           \n
           \n
           Plus d'informations sur les conditions de diffusion : LIEN TODO"
+      adresse:
+        type: "object"
+        title: "Adresse de l'établissement"
+        properties: *insee_adresse_etablissement_attributes
+
       date_creation:
         type: "integer"
         example: 1634103818

@@ -37,6 +37,8 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
         })
       end
 
+      its(:adresse) { is_expected.to be_present }
+
       # FIXME: d'après la doc ici NN n'est pas forcément non employeuse, à creuser
       its(:tranche_effectif_salarie) do
         is_expected.to eq({

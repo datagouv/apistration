@@ -3447,6 +3447,235 @@ paths:
                               ce cas, les informations obtenues ne doivent en aucun
                               cas être accessibles au grand public. \n \n Plus d'informations
                               sur les conditions de diffusion : LIEN TODO"
+                          adresse:
+                            type: object
+                            title: Adresse de l'établissement
+                            properties:
+                              numero_voie:
+                                title: Numéro dans la voie
+                                type: string
+                                example: '22'
+                              indice_repetition_voie:
+                                title: Indice de répétition du numéro dans la voie
+                                description: 'Plus d''informations dans la documentation
+                                  Insee de l''API Sirene : https://www.sirene.fr/sirene/public/variable/indrep'
+                                type: string
+                                nullable: true
+                                enum:
+                                - bis
+                                - ter
+                                - quarter
+                                - quinquies
+                                -
+                              type_voie:
+                                title: Type de la voie de localisation
+                                example: RUE
+                                description: "Le type de la voie de localisation est
+                                  indiquée en abrégé et en majuscules. L'information
+                                  n'est pas toujours renseignée. Pour certaines petites
+                                  communes, l'information n'existe pas. \n \n Plus
+                                  d'informations dans la documentation Insee de l'API
+                                  Sirene : https://www.sirene.fr/sirene/public/variable/typvoie"
+                                type: string
+                                nullable: true
+                                enum:
+                                - ALLÉE
+                                - AVENUE
+                                - BOULEVARD
+                                - CARREFOUR
+                                - CHEMIN
+                                - CHAUSSÉE
+                                - CITÉ
+                                - CORNICHE
+                                - COURS
+                                - DOMAINE
+                                - DESCENTE
+                                - ECART
+                                - ESPLANADE
+                                - FAUBOURG
+                                - GRANDE RUE
+                                - HAMEAU
+                                - HALLE
+                                - IMPASSE
+                                - LIEU-DIT
+                                - LOTISSEMENT
+                                - MARCHÉ
+                                - MONTÉE
+                                - PASSAGE
+                                - PLACE
+                                - PLAINE
+                                - PLATEAU
+                                - PROMENADE
+                                - PARVIS
+                                - QUARTIER
+                                - QUAI
+                                - RÉSIDENCE
+                                - RUELLE
+                                - ROCADE
+                                - ROND-POINT
+                                - ROUTE
+                                - RUE
+                                - SENTIER
+                                - SQUARE
+                                - TERRE-PLEIN
+                                - TRAVERSE
+                                - VILLA
+                                - VILLAGE
+                                -
+                              libelle_voie:
+                                title: Libellé de la voie
+                                example: DE LA PAIX
+                              complement_adresse:
+                                title: Complément d'adresse
+                                type: string
+                                description: Le complément d'adresse correspond à
+                                  des éléments situés à l'extérieur du bâtiment qui
+                                  permettent de compléter l'adresse (résidence, bâtiment,
+                                  entrée, etc..)
+                                example: ZAE SAINT GUENAULT
+                                nullable: true
+                              code_commune:
+                                title: Code commune
+                                description: "Le code commune désigne le code de la
+                                  commune de localisation de l'établissement. Le code
+                                  renvoyé correspond à la date de l'appel, ce qui
+                                  implique que toute modification du code commune
+                                  est repercutée sur l'ensemble des établissements
+                                  concernés, y compris ceux qui sont fermés. Cette
+                                  valeur est à 'null' pour les entreprises à l'étranger.
+                                  \n \n Les codes sont listés dans la table d'appartenance
+                                  géographique fournie par l'Insee et disponible ici:
+                                  https://www.insee.fr/fr/information/2028028"
+                                type: string
+                                example: '75112'
+                                nullable: true
+                              code_postal:
+                                title: Code postal
+                                example: '75016'
+                                type: string
+                              distribution_speciale:
+                                title: Distribution spéciale
+                                description: "La distribution spéciale reprend les
+                                  éléments particuliers qui accompagnent une adresse
+                                  de distribution spéciale, la modalité la plus connue
+                                  étant les adresses en 'CEDEX'. \n \n Plus d'informations
+                                  dans la documentation Insee de l'API Sirene : *
+                                  https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
+                                  * https://www.sirene.fr/sirene/public/variable/l5-disp"
+                              code_cedex:
+                                title: Code cedex
+                                nullable: true
+                                description: 'Plus d''informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle'
+                                example: '75590'
+                              libelle_cedex:
+                                title: Libellé du code cedex
+                                type: string
+                                nullable: true
+                                example: PARIS CEDEX 12
+                                description: Ce champ indique le libellé correspondant
+                                  au code cedex de l'établissement. Si le code cedex
+                                  est à 'null', ce champ est également à 'null'.
+                              libelle_commune:
+                                title: Nom de la commune pour une adresse en France
+                                description: Cette valeur est à 'null' pour les établissements
+                                  à l'étranger.
+                                type: string
+                                example: PARIS 12
+                                nullable: true
+                              libelle_commune_etranger:
+                                title: Nom de la commune pour une adresse à l'étranger.
+                                description: Cette valeur est à 'null' pour les établissements
+                                  en France.
+                                type: string
+                                nullable: true
+                              code_pays_etranger:
+                                title: Code du pays pour les établissements situés
+                                  à l'étranger
+                                description: 'La nomenclature des codes pays se trouve
+                                  ici: https://www.insee.fr/fr/information/2028273'
+                                type: string
+                                example: '99132'
+                                nullable: true
+                              libelle_pays_etranger:
+                                title: Nom du pays pour les établissements situés
+                                  à l'étranger
+                                type: string
+                                nullable: true
+                                example: ROYAUME-UNI
+                              acheminement_postal:
+                                type: object
+                                title: Éléments constitutifs de l'adresse postale
+                                  pour son acheminement.
+                                description: Il ne s'agit pas d'un traitement RNVP
+                                  mais simplement d'une réorganisation des éléments
+                                  renvoyé par l'Insee pour faciliter l'affichage des
+                                  adresses postales
+                                properties:
+                                  l1:
+                                    title: Ligne 1
+                                    description: 'Si l''établissement correspond à
+                                      une personne morale: la dénomination sociale
+                                      de la personne morale. Le cas contraire: cette
+                                      variable est vide.'
+                                    example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
+                                  l2:
+                                    title: Ligne 2
+                                    description: 'Si l''établissement correspond à
+                                      une personne physique: concaténation du nom
+                                      et prénom'
+                                    example: JEAN MARIE DURAND
+                                  l3:
+                                    title: Ligne 3
+                                    description: Complément d'adresse comme décrit
+                                      dans la clé `complement_adresse`
+                                    example: ZAE SAINT GUENAULT
+                                  l4:
+                                    title: Ligne 4
+                                    description: Concaténation du numéro de voie,
+                                      d'indice de répétition, du type de voie et du
+                                      libellé de la voie
+                                    example: 51 BIS RUE DE LA PAIX
+                                  l5:
+                                    title: Ligne 5
+                                    description: Distribution spéciale comme décrit
+                                      dans la clé `distribution_speciale`
+                                    example: CS 72809
+                                  l6:
+                                    title: Ligne 6
+                                    description: 'Si le code cedex est existant: code
+                                      cedex accompagné de son libellé ; sinon, si
+                                      le pays est en France: code postal accompagné
+                                      de son libellé, sinon : libellé de la commune
+                                      de l''établissement situé à l''étranger'
+                                    example: 75256 PARIX CEDEX 12
+                                  l7:
+                                    title: Ligne 7
+                                    description: Pays de l'établissement
+                                    example: FRANCE
+                                required:
+                                - l1
+                                - l2
+                                - l3
+                                - l4
+                                - l5
+                                - l6
+                                - l7
+                            required:
+                            - numero_voie
+                            - indice_repetition_voie
+                            - type_voie
+                            - libelle_voie
+                            - complement_adresse
+                            - code_commune
+                            - code_postal
+                            - distribution_speciale
+                            - code_cedex
+                            - libelle_cedex
+                            - libelle_commune
+                            - libelle_commune_etranger
+                            - code_pays_etranger
+                            - libelle_pays_etranger
+                            - acheminement_postal
                           date_creation:
                             type: integer
                             example: 1634103818
@@ -3457,6 +3686,7 @@ paths:
                         - activite_principale
                         - tranche_effectif_salarie
                         - diffusable_commercialement
+                        - adresse
                         - date_creation
                       links:
                         type: object
@@ -3769,6 +3999,235 @@ paths:
                               est toujours à 'true'. Pour récupérer des établissements
                               non-diffusibles, référez-vous à la documentation de
                               l'API /insee/etablissements/:siren
+                          adresse:
+                            type: object
+                            title: Adresse de l'établissement
+                            properties:
+                              numero_voie:
+                                title: Numéro dans la voie
+                                type: string
+                                example: '22'
+                              indice_repetition_voie:
+                                title: Indice de répétition du numéro dans la voie
+                                description: 'Plus d''informations dans la documentation
+                                  Insee de l''API Sirene : https://www.sirene.fr/sirene/public/variable/indrep'
+                                type: string
+                                nullable: true
+                                enum:
+                                - bis
+                                - ter
+                                - quarter
+                                - quinquies
+                                -
+                              type_voie:
+                                title: Type de la voie de localisation
+                                example: RUE
+                                description: "Le type de la voie de localisation est
+                                  indiquée en abrégé et en majuscules. L'information
+                                  n'est pas toujours renseignée. Pour certaines petites
+                                  communes, l'information n'existe pas. \n \n Plus
+                                  d'informations dans la documentation Insee de l'API
+                                  Sirene : https://www.sirene.fr/sirene/public/variable/typvoie"
+                                type: string
+                                nullable: true
+                                enum:
+                                - ALLÉE
+                                - AVENUE
+                                - BOULEVARD
+                                - CARREFOUR
+                                - CHEMIN
+                                - CHAUSSÉE
+                                - CITÉ
+                                - CORNICHE
+                                - COURS
+                                - DOMAINE
+                                - DESCENTE
+                                - ECART
+                                - ESPLANADE
+                                - FAUBOURG
+                                - GRANDE RUE
+                                - HAMEAU
+                                - HALLE
+                                - IMPASSE
+                                - LIEU-DIT
+                                - LOTISSEMENT
+                                - MARCHÉ
+                                - MONTÉE
+                                - PASSAGE
+                                - PLACE
+                                - PLAINE
+                                - PLATEAU
+                                - PROMENADE
+                                - PARVIS
+                                - QUARTIER
+                                - QUAI
+                                - RÉSIDENCE
+                                - RUELLE
+                                - ROCADE
+                                - ROND-POINT
+                                - ROUTE
+                                - RUE
+                                - SENTIER
+                                - SQUARE
+                                - TERRE-PLEIN
+                                - TRAVERSE
+                                - VILLA
+                                - VILLAGE
+                                -
+                              libelle_voie:
+                                title: Libellé de la voie
+                                example: DE LA PAIX
+                              complement_adresse:
+                                title: Complément d'adresse
+                                type: string
+                                description: Le complément d'adresse correspond à
+                                  des éléments situés à l'extérieur du bâtiment qui
+                                  permettent de compléter l'adresse (résidence, bâtiment,
+                                  entrée, etc..)
+                                example: ZAE SAINT GUENAULT
+                                nullable: true
+                              code_commune:
+                                title: Code commune
+                                description: "Le code commune désigne le code de la
+                                  commune de localisation de l'établissement. Le code
+                                  renvoyé correspond à la date de l'appel, ce qui
+                                  implique que toute modification du code commune
+                                  est repercutée sur l'ensemble des établissements
+                                  concernés, y compris ceux qui sont fermés. Cette
+                                  valeur est à 'null' pour les entreprises à l'étranger.
+                                  \n \n Les codes sont listés dans la table d'appartenance
+                                  géographique fournie par l'Insee et disponible ici:
+                                  https://www.insee.fr/fr/information/2028028"
+                                type: string
+                                example: '75112'
+                                nullable: true
+                              code_postal:
+                                title: Code postal
+                                example: '75016'
+                                type: string
+                              distribution_speciale:
+                                title: Distribution spéciale
+                                description: "La distribution spéciale reprend les
+                                  éléments particuliers qui accompagnent une adresse
+                                  de distribution spéciale, la modalité la plus connue
+                                  étant les adresses en 'CEDEX'. \n \n Plus d'informations
+                                  dans la documentation Insee de l'API Sirene : *
+                                  https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
+                                  * https://www.sirene.fr/sirene/public/variable/l5-disp"
+                              code_cedex:
+                                title: Code cedex
+                                nullable: true
+                                description: 'Plus d''informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle'
+                                example: '75590'
+                              libelle_cedex:
+                                title: Libellé du code cedex
+                                type: string
+                                nullable: true
+                                example: PARIS CEDEX 12
+                                description: Ce champ indique le libellé correspondant
+                                  au code cedex de l'établissement. Si le code cedex
+                                  est à 'null', ce champ est également à 'null'.
+                              libelle_commune:
+                                title: Nom de la commune pour une adresse en France
+                                description: Cette valeur est à 'null' pour les établissements
+                                  à l'étranger.
+                                type: string
+                                example: PARIS 12
+                                nullable: true
+                              libelle_commune_etranger:
+                                title: Nom de la commune pour une adresse à l'étranger.
+                                description: Cette valeur est à 'null' pour les établissements
+                                  en France.
+                                type: string
+                                nullable: true
+                              code_pays_etranger:
+                                title: Code du pays pour les établissements situés
+                                  à l'étranger
+                                description: 'La nomenclature des codes pays se trouve
+                                  ici: https://www.insee.fr/fr/information/2028273'
+                                type: string
+                                example: '99132'
+                                nullable: true
+                              libelle_pays_etranger:
+                                title: Nom du pays pour les établissements situés
+                                  à l'étranger
+                                type: string
+                                nullable: true
+                                example: ROYAUME-UNI
+                              acheminement_postal:
+                                type: object
+                                title: Éléments constitutifs de l'adresse postale
+                                  pour son acheminement.
+                                description: Il ne s'agit pas d'un traitement RNVP
+                                  mais simplement d'une réorganisation des éléments
+                                  renvoyé par l'Insee pour faciliter l'affichage des
+                                  adresses postales
+                                properties:
+                                  l1:
+                                    title: Ligne 1
+                                    description: 'Si l''établissement correspond à
+                                      une personne morale: la dénomination sociale
+                                      de la personne morale. Le cas contraire: cette
+                                      variable est vide.'
+                                    example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
+                                  l2:
+                                    title: Ligne 2
+                                    description: 'Si l''établissement correspond à
+                                      une personne physique: concaténation du nom
+                                      et prénom'
+                                    example: JEAN MARIE DURAND
+                                  l3:
+                                    title: Ligne 3
+                                    description: Complément d'adresse comme décrit
+                                      dans la clé `complement_adresse`
+                                    example: ZAE SAINT GUENAULT
+                                  l4:
+                                    title: Ligne 4
+                                    description: Concaténation du numéro de voie,
+                                      d'indice de répétition, du type de voie et du
+                                      libellé de la voie
+                                    example: 51 BIS RUE DE LA PAIX
+                                  l5:
+                                    title: Ligne 5
+                                    description: Distribution spéciale comme décrit
+                                      dans la clé `distribution_speciale`
+                                    example: CS 72809
+                                  l6:
+                                    title: Ligne 6
+                                    description: 'Si le code cedex est existant: code
+                                      cedex accompagné de son libellé ; sinon, si
+                                      le pays est en France: code postal accompagné
+                                      de son libellé, sinon : libellé de la commune
+                                      de l''établissement situé à l''étranger'
+                                    example: 75256 PARIX CEDEX 12
+                                  l7:
+                                    title: Ligne 7
+                                    description: Pays de l'établissement
+                                    example: FRANCE
+                                required:
+                                - l1
+                                - l2
+                                - l3
+                                - l4
+                                - l5
+                                - l6
+                                - l7
+                            required:
+                            - numero_voie
+                            - indice_repetition_voie
+                            - type_voie
+                            - libelle_voie
+                            - complement_adresse
+                            - code_commune
+                            - code_postal
+                            - distribution_speciale
+                            - code_cedex
+                            - libelle_cedex
+                            - libelle_commune
+                            - libelle_commune_etranger
+                            - code_pays_etranger
+                            - libelle_pays_etranger
+                            - acheminement_postal
                           date_creation:
                             type: integer
                             example: 1634103818
@@ -3779,6 +4238,7 @@ paths:
                         - activite_principale
                         - tranche_effectif_salarie
                         - diffusable_commercialement
+                        - adresse
                         - date_creation
                       links:
                         type: object
@@ -4092,6 +4552,235 @@ paths:
                               est toujours à 'true'. Pour récupérer des établissements
                               non-diffusibles, référez-vous à la documentation de
                               l'API /insee/etablissements/:siren
+                          adresse:
+                            type: object
+                            title: Adresse de l'établissement
+                            properties:
+                              numero_voie:
+                                title: Numéro dans la voie
+                                type: string
+                                example: '22'
+                              indice_repetition_voie:
+                                title: Indice de répétition du numéro dans la voie
+                                description: 'Plus d''informations dans la documentation
+                                  Insee de l''API Sirene : https://www.sirene.fr/sirene/public/variable/indrep'
+                                type: string
+                                nullable: true
+                                enum:
+                                - bis
+                                - ter
+                                - quarter
+                                - quinquies
+                                -
+                              type_voie:
+                                title: Type de la voie de localisation
+                                example: RUE
+                                description: "Le type de la voie de localisation est
+                                  indiquée en abrégé et en majuscules. L'information
+                                  n'est pas toujours renseignée. Pour certaines petites
+                                  communes, l'information n'existe pas. \n \n Plus
+                                  d'informations dans la documentation Insee de l'API
+                                  Sirene : https://www.sirene.fr/sirene/public/variable/typvoie"
+                                type: string
+                                nullable: true
+                                enum:
+                                - ALLÉE
+                                - AVENUE
+                                - BOULEVARD
+                                - CARREFOUR
+                                - CHEMIN
+                                - CHAUSSÉE
+                                - CITÉ
+                                - CORNICHE
+                                - COURS
+                                - DOMAINE
+                                - DESCENTE
+                                - ECART
+                                - ESPLANADE
+                                - FAUBOURG
+                                - GRANDE RUE
+                                - HAMEAU
+                                - HALLE
+                                - IMPASSE
+                                - LIEU-DIT
+                                - LOTISSEMENT
+                                - MARCHÉ
+                                - MONTÉE
+                                - PASSAGE
+                                - PLACE
+                                - PLAINE
+                                - PLATEAU
+                                - PROMENADE
+                                - PARVIS
+                                - QUARTIER
+                                - QUAI
+                                - RÉSIDENCE
+                                - RUELLE
+                                - ROCADE
+                                - ROND-POINT
+                                - ROUTE
+                                - RUE
+                                - SENTIER
+                                - SQUARE
+                                - TERRE-PLEIN
+                                - TRAVERSE
+                                - VILLA
+                                - VILLAGE
+                                -
+                              libelle_voie:
+                                title: Libellé de la voie
+                                example: DE LA PAIX
+                              complement_adresse:
+                                title: Complément d'adresse
+                                type: string
+                                description: Le complément d'adresse correspond à
+                                  des éléments situés à l'extérieur du bâtiment qui
+                                  permettent de compléter l'adresse (résidence, bâtiment,
+                                  entrée, etc..)
+                                example: ZAE SAINT GUENAULT
+                                nullable: true
+                              code_commune:
+                                title: Code commune
+                                description: "Le code commune désigne le code de la
+                                  commune de localisation de l'établissement. Le code
+                                  renvoyé correspond à la date de l'appel, ce qui
+                                  implique que toute modification du code commune
+                                  est repercutée sur l'ensemble des établissements
+                                  concernés, y compris ceux qui sont fermés. Cette
+                                  valeur est à 'null' pour les entreprises à l'étranger.
+                                  \n \n Les codes sont listés dans la table d'appartenance
+                                  géographique fournie par l'Insee et disponible ici:
+                                  https://www.insee.fr/fr/information/2028028"
+                                type: string
+                                example: '75112'
+                                nullable: true
+                              code_postal:
+                                title: Code postal
+                                example: '75016'
+                                type: string
+                              distribution_speciale:
+                                title: Distribution spéciale
+                                description: "La distribution spéciale reprend les
+                                  éléments particuliers qui accompagnent une adresse
+                                  de distribution spéciale, la modalité la plus connue
+                                  étant les adresses en 'CEDEX'. \n \n Plus d'informations
+                                  dans la documentation Insee de l'API Sirene : *
+                                  https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
+                                  * https://www.sirene.fr/sirene/public/variable/l5-disp"
+                              code_cedex:
+                                title: Code cedex
+                                nullable: true
+                                description: 'Plus d''informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle'
+                                example: '75590'
+                              libelle_cedex:
+                                title: Libellé du code cedex
+                                type: string
+                                nullable: true
+                                example: PARIS CEDEX 12
+                                description: Ce champ indique le libellé correspondant
+                                  au code cedex de l'établissement. Si le code cedex
+                                  est à 'null', ce champ est également à 'null'.
+                              libelle_commune:
+                                title: Nom de la commune pour une adresse en France
+                                description: Cette valeur est à 'null' pour les établissements
+                                  à l'étranger.
+                                type: string
+                                example: PARIS 12
+                                nullable: true
+                              libelle_commune_etranger:
+                                title: Nom de la commune pour une adresse à l'étranger.
+                                description: Cette valeur est à 'null' pour les établissements
+                                  en France.
+                                type: string
+                                nullable: true
+                              code_pays_etranger:
+                                title: Code du pays pour les établissements situés
+                                  à l'étranger
+                                description: 'La nomenclature des codes pays se trouve
+                                  ici: https://www.insee.fr/fr/information/2028273'
+                                type: string
+                                example: '99132'
+                                nullable: true
+                              libelle_pays_etranger:
+                                title: Nom du pays pour les établissements situés
+                                  à l'étranger
+                                type: string
+                                nullable: true
+                                example: ROYAUME-UNI
+                              acheminement_postal:
+                                type: object
+                                title: Éléments constitutifs de l'adresse postale
+                                  pour son acheminement.
+                                description: Il ne s'agit pas d'un traitement RNVP
+                                  mais simplement d'une réorganisation des éléments
+                                  renvoyé par l'Insee pour faciliter l'affichage des
+                                  adresses postales
+                                properties:
+                                  l1:
+                                    title: Ligne 1
+                                    description: 'Si l''établissement correspond à
+                                      une personne morale: la dénomination sociale
+                                      de la personne morale. Le cas contraire: cette
+                                      variable est vide.'
+                                    example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
+                                  l2:
+                                    title: Ligne 2
+                                    description: 'Si l''établissement correspond à
+                                      une personne physique: concaténation du nom
+                                      et prénom'
+                                    example: JEAN MARIE DURAND
+                                  l3:
+                                    title: Ligne 3
+                                    description: Complément d'adresse comme décrit
+                                      dans la clé `complement_adresse`
+                                    example: ZAE SAINT GUENAULT
+                                  l4:
+                                    title: Ligne 4
+                                    description: Concaténation du numéro de voie,
+                                      d'indice de répétition, du type de voie et du
+                                      libellé de la voie
+                                    example: 51 BIS RUE DE LA PAIX
+                                  l5:
+                                    title: Ligne 5
+                                    description: Distribution spéciale comme décrit
+                                      dans la clé `distribution_speciale`
+                                    example: CS 72809
+                                  l6:
+                                    title: Ligne 6
+                                    description: 'Si le code cedex est existant: code
+                                      cedex accompagné de son libellé ; sinon, si
+                                      le pays est en France: code postal accompagné
+                                      de son libellé, sinon : libellé de la commune
+                                      de l''établissement situé à l''étranger'
+                                    example: 75256 PARIX CEDEX 12
+                                  l7:
+                                    title: Ligne 7
+                                    description: Pays de l'établissement
+                                    example: FRANCE
+                                required:
+                                - l1
+                                - l2
+                                - l3
+                                - l4
+                                - l5
+                                - l6
+                                - l7
+                            required:
+                            - numero_voie
+                            - indice_repetition_voie
+                            - type_voie
+                            - libelle_voie
+                            - complement_adresse
+                            - code_commune
+                            - code_postal
+                            - distribution_speciale
+                            - code_cedex
+                            - libelle_cedex
+                            - libelle_commune
+                            - libelle_commune_etranger
+                            - code_pays_etranger
+                            - libelle_pays_etranger
+                            - acheminement_postal
                           date_creation:
                             type: integer
                             example: 1634103818
@@ -4102,6 +4791,7 @@ paths:
                         - activite_principale
                         - tranche_effectif_salarie
                         - diffusable_commercialement
+                        - adresse
                         - date_creation
                       links:
                         type: object
@@ -4417,6 +5107,235 @@ paths:
                               ce cas, les informations obtenues ne doivent en aucun
                               cas être accessibles au grand public. \n \n Plus d'informations
                               sur les conditions de diffusion : LIEN TODO"
+                          adresse:
+                            type: object
+                            title: Adresse de l'établissement
+                            properties:
+                              numero_voie:
+                                title: Numéro dans la voie
+                                type: string
+                                example: '22'
+                              indice_repetition_voie:
+                                title: Indice de répétition du numéro dans la voie
+                                description: 'Plus d''informations dans la documentation
+                                  Insee de l''API Sirene : https://www.sirene.fr/sirene/public/variable/indrep'
+                                type: string
+                                nullable: true
+                                enum:
+                                - bis
+                                - ter
+                                - quarter
+                                - quinquies
+                                -
+                              type_voie:
+                                title: Type de la voie de localisation
+                                example: RUE
+                                description: "Le type de la voie de localisation est
+                                  indiquée en abrégé et en majuscules. L'information
+                                  n'est pas toujours renseignée. Pour certaines petites
+                                  communes, l'information n'existe pas. \n \n Plus
+                                  d'informations dans la documentation Insee de l'API
+                                  Sirene : https://www.sirene.fr/sirene/public/variable/typvoie"
+                                type: string
+                                nullable: true
+                                enum:
+                                - ALLÉE
+                                - AVENUE
+                                - BOULEVARD
+                                - CARREFOUR
+                                - CHEMIN
+                                - CHAUSSÉE
+                                - CITÉ
+                                - CORNICHE
+                                - COURS
+                                - DOMAINE
+                                - DESCENTE
+                                - ECART
+                                - ESPLANADE
+                                - FAUBOURG
+                                - GRANDE RUE
+                                - HAMEAU
+                                - HALLE
+                                - IMPASSE
+                                - LIEU-DIT
+                                - LOTISSEMENT
+                                - MARCHÉ
+                                - MONTÉE
+                                - PASSAGE
+                                - PLACE
+                                - PLAINE
+                                - PLATEAU
+                                - PROMENADE
+                                - PARVIS
+                                - QUARTIER
+                                - QUAI
+                                - RÉSIDENCE
+                                - RUELLE
+                                - ROCADE
+                                - ROND-POINT
+                                - ROUTE
+                                - RUE
+                                - SENTIER
+                                - SQUARE
+                                - TERRE-PLEIN
+                                - TRAVERSE
+                                - VILLA
+                                - VILLAGE
+                                -
+                              libelle_voie:
+                                title: Libellé de la voie
+                                example: DE LA PAIX
+                              complement_adresse:
+                                title: Complément d'adresse
+                                type: string
+                                description: Le complément d'adresse correspond à
+                                  des éléments situés à l'extérieur du bâtiment qui
+                                  permettent de compléter l'adresse (résidence, bâtiment,
+                                  entrée, etc..)
+                                example: ZAE SAINT GUENAULT
+                                nullable: true
+                              code_commune:
+                                title: Code commune
+                                description: "Le code commune désigne le code de la
+                                  commune de localisation de l'établissement. Le code
+                                  renvoyé correspond à la date de l'appel, ce qui
+                                  implique que toute modification du code commune
+                                  est repercutée sur l'ensemble des établissements
+                                  concernés, y compris ceux qui sont fermés. Cette
+                                  valeur est à 'null' pour les entreprises à l'étranger.
+                                  \n \n Les codes sont listés dans la table d'appartenance
+                                  géographique fournie par l'Insee et disponible ici:
+                                  https://www.insee.fr/fr/information/2028028"
+                                type: string
+                                example: '75112'
+                                nullable: true
+                              code_postal:
+                                title: Code postal
+                                example: '75016'
+                                type: string
+                              distribution_speciale:
+                                title: Distribution spéciale
+                                description: "La distribution spéciale reprend les
+                                  éléments particuliers qui accompagnent une adresse
+                                  de distribution spéciale, la modalité la plus connue
+                                  étant les adresses en 'CEDEX'. \n \n Plus d'informations
+                                  dans la documentation Insee de l'API Sirene : *
+                                  https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
+                                  * https://www.sirene.fr/sirene/public/variable/l5-disp"
+                              code_cedex:
+                                title: Code cedex
+                                nullable: true
+                                description: 'Plus d''informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle'
+                                example: '75590'
+                              libelle_cedex:
+                                title: Libellé du code cedex
+                                type: string
+                                nullable: true
+                                example: PARIS CEDEX 12
+                                description: Ce champ indique le libellé correspondant
+                                  au code cedex de l'établissement. Si le code cedex
+                                  est à 'null', ce champ est également à 'null'.
+                              libelle_commune:
+                                title: Nom de la commune pour une adresse en France
+                                description: Cette valeur est à 'null' pour les établissements
+                                  à l'étranger.
+                                type: string
+                                example: PARIS 12
+                                nullable: true
+                              libelle_commune_etranger:
+                                title: Nom de la commune pour une adresse à l'étranger.
+                                description: Cette valeur est à 'null' pour les établissements
+                                  en France.
+                                type: string
+                                nullable: true
+                              code_pays_etranger:
+                                title: Code du pays pour les établissements situés
+                                  à l'étranger
+                                description: 'La nomenclature des codes pays se trouve
+                                  ici: https://www.insee.fr/fr/information/2028273'
+                                type: string
+                                example: '99132'
+                                nullable: true
+                              libelle_pays_etranger:
+                                title: Nom du pays pour les établissements situés
+                                  à l'étranger
+                                type: string
+                                nullable: true
+                                example: ROYAUME-UNI
+                              acheminement_postal:
+                                type: object
+                                title: Éléments constitutifs de l'adresse postale
+                                  pour son acheminement.
+                                description: Il ne s'agit pas d'un traitement RNVP
+                                  mais simplement d'une réorganisation des éléments
+                                  renvoyé par l'Insee pour faciliter l'affichage des
+                                  adresses postales
+                                properties:
+                                  l1:
+                                    title: Ligne 1
+                                    description: 'Si l''établissement correspond à
+                                      une personne morale: la dénomination sociale
+                                      de la personne morale. Le cas contraire: cette
+                                      variable est vide.'
+                                    example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
+                                  l2:
+                                    title: Ligne 2
+                                    description: 'Si l''établissement correspond à
+                                      une personne physique: concaténation du nom
+                                      et prénom'
+                                    example: JEAN MARIE DURAND
+                                  l3:
+                                    title: Ligne 3
+                                    description: Complément d'adresse comme décrit
+                                      dans la clé `complement_adresse`
+                                    example: ZAE SAINT GUENAULT
+                                  l4:
+                                    title: Ligne 4
+                                    description: Concaténation du numéro de voie,
+                                      d'indice de répétition, du type de voie et du
+                                      libellé de la voie
+                                    example: 51 BIS RUE DE LA PAIX
+                                  l5:
+                                    title: Ligne 5
+                                    description: Distribution spéciale comme décrit
+                                      dans la clé `distribution_speciale`
+                                    example: CS 72809
+                                  l6:
+                                    title: Ligne 6
+                                    description: 'Si le code cedex est existant: code
+                                      cedex accompagné de son libellé ; sinon, si
+                                      le pays est en France: code postal accompagné
+                                      de son libellé, sinon : libellé de la commune
+                                      de l''établissement situé à l''étranger'
+                                    example: 75256 PARIX CEDEX 12
+                                  l7:
+                                    title: Ligne 7
+                                    description: Pays de l'établissement
+                                    example: FRANCE
+                                required:
+                                - l1
+                                - l2
+                                - l3
+                                - l4
+                                - l5
+                                - l6
+                                - l7
+                            required:
+                            - numero_voie
+                            - indice_repetition_voie
+                            - type_voie
+                            - libelle_voie
+                            - complement_adresse
+                            - code_commune
+                            - code_postal
+                            - distribution_speciale
+                            - code_cedex
+                            - libelle_cedex
+                            - libelle_commune
+                            - libelle_commune_etranger
+                            - code_pays_etranger
+                            - libelle_pays_etranger
+                            - acheminement_postal
                           date_creation:
                             type: integer
                             example: 1634103818
@@ -4427,6 +5346,7 @@ paths:
                         - activite_principale
                         - tranche_effectif_salarie
                         - diffusable_commercialement
+                        - adresse
                         - date_creation
                       links:
                         type: object

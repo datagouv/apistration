@@ -21,6 +21,8 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
         date_reference: etablissement['anneeEffectifsEtablissement']
       ),
 
+      adresse: INSEE::AdresseEtablissement::BuildResource.call(response: context.response, etablissement:).resource,
+
       diffusable_commercialement: yes_no_to_boolean(etablissement['statutDiffusionEtablissement']),
       date_creation: date_to_timestamp(etablissement['dateCreationEtablissement']),
       date_derniere_mise_a_jour: date_to_timestamp(etablissement['dateDernierTraitementEtablissement'])
