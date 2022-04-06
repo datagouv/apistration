@@ -710,6 +710,12 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
           \n
           \n
           Plus d'informations sur les conditions de diffusion : LIEN TODO"
+
+      unite_legale:
+        type: "object"
+        title: "Unité légale de l'établissement"
+        properties: *insee_unite_legale_attributes
+
       adresse:
         type: "object"
         title: "Adresse de l'établissement"

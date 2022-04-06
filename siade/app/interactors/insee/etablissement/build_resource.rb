@@ -5,6 +5,9 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
     {
       id: etablissement['siret'],
       siren: etablissement['siren'],
+
+      unite_legale: INSEE::UniteLegale::BuildResource.call(response: context.response, unite_legale: etablissement['uniteLegale']).resource,
+
       siege_social: etablissement['etablissementSiege'],
       etat_administratif:,
       date_fermeture:,

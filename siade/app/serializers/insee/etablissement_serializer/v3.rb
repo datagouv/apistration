@@ -9,6 +9,12 @@ class INSEE::EtablissementSerializer::V3 < JSONAPI::BaseSerializer
     :diffusable_commercialement,
     :date_creation
 
+  attribute :unite_legale do |object|
+    object.unite_legale.to_h.except(
+      :id
+    )
+  end
+
   attribute :adresse do |object|
     object.adresse.to_h.except(
       :id,

@@ -4,12 +4,12 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
   def resource_attributes
     {
       id: siren,
-      siret_siege_social: "#{unite_legale['siren']}#{latest_info_on_unite_legale['nicSiegeUniteLegale']}",
+      siret_siege_social:,
 
       type: type_of_person,
 
       personne_morale_attributs: {
-        raison_sociale: latest_info_on_unite_legale['denominationUniteLegale']
+        raison_sociale: unite_legale['denominationUniteLegale']
       },
 
       personne_physique_attributs: {
@@ -19,8 +19,8 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
         prenom_2: unite_legale['prenom2UniteLegale'],
         prenom_3: unite_legale['prenom3UniteLegale'],
         prenom_4: unite_legale['prenom4UniteLegale'],
-        nom_usage: latest_info_on_unite_legale['nomUsageUniteLegale'],
-        nom_naissance: latest_info_on_unite_legale['nomUniteLegale'],
+        nom_usage: unite_legale['nomUsageUniteLegale'],
+        nom_naissance: unite_legale['nomUniteLegale'],
         sexe: unite_legale['sexeUniteLegale']
       },
 
@@ -34,8 +34,8 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
       ),
       activite_principale: referential(
         'activite_principale',
-        code: latest_info_on_unite_legale['activitePrincipaleUniteLegale'],
-        nomenclature: latest_info_on_unite_legale['nomenclatureActivitePrincipaleUniteLegale']
+        code: unite_legale['activitePrincipaleUniteLegale'],
+        nomenclature: unite_legale['nomenclatureActivitePrincipaleUniteLegale']
       ),
       tranche_effectif_salarie: referential(
         'tranche_effectif_salarie',
@@ -55,13 +55,17 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
   private
 
   def unite_legale
-    @unite_legale ||= json_body['uniteLegale']
+    @unite_legale ||= (context.unite_legale || build_unite_legale_info_with_latest_info_from_periodes)
+  end
+
+  def build_unite_legale_info_with_latest_info_from_periodes
+    json_body['uniteLegale'].merge(latest_info_on_unite_legale)
   end
 
   def latest_info_on_unite_legale
-    @latest_info_on_unite_legale ||= unite_legale['periodesUniteLegale'].find do |periode_unite_legale|
+    @latest_info_on_unite_legale ||= (json_body['uniteLegale']['periodesUniteLegale'] || []).find do |periode_unite_legale|
       periode_unite_legale['dateFin'].nil?
-    end
+    end || {}
   end
 
   def compute_numero_tva_intracommunautaire
@@ -70,12 +74,13 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
 
   def date_cessation
     return if entreprise_active?
+    return if periode_with_cessation_status.blank?
 
     date_to_timestamp(periode_with_cessation_status['dateDebut'])
   end
 
   def periode_with_cessation_status
-    unite_legale['periodesUniteLegale'].find do |periode_unite_legale|
+    (unite_legale['periodesUniteLegale'] || []).find do |periode_unite_legale|
       periode_unite_legale['changementEtatAdministratifUniteLegale']
     end
   end
@@ -85,22 +90,30 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
   end
 
   def etat_administratif
-    latest_info_on_unite_legale['etatAdministratifUniteLegale']
+    unite_legale['etatAdministratifUniteLegale']
   end
 
   def type_of_person
     if categorie_juridique == '1000'
       :personne_physique
-    else
+    elsif categorie_juridique.present?
       :personne_morale
     end
   end
 
   def categorie_juridique
-    latest_info_on_unite_legale['categorieJuridiqueUniteLegale']
+    unite_legale['categorieJuridiqueUniteLegale']
   end
 
   def siren
-    unite_legale['siren']
+    unite_legale['siren'] || etablissement['siret'].first(9)
+  end
+
+  def siret_siege_social
+    "#{siren}#{unite_legale['nicSiegeUniteLegale']}"
+  end
+
+  def etablissement
+    json_body['etablissement'] || json_body['etablissements'][0]
   end
 end
