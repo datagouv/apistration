@@ -3689,34 +3689,41 @@ paths:
                                 - nomenclature
                               tranche_effectif_salarie:
                                 type: object
-                                title: Attributs de la tranche d'effectif salarié
+                                title: Tranche d'effectif salarié de l'unité légale
                                 properties:
                                   code:
                                     type: string
                                     nullable: true
                                     example: '51'
-                                    description: "Le code effectif correspond à la
-                                      tranche d'effectif salarié de l'entreprise.
-                                      Le nombre de salarié est déterminé en fonction
-                                      de l'effectif de l'entreprise et de chacun de
-                                      ses établissements : \n \n - NN : Unités non
-                                      employeuses (pas de salarié au cours de l'année
-                                      de référence et pas d'effectif au 31/12). Cette
-                                      tranche peut contenir quelques effectifs inconnus
-                                      \n - 00 : 0 salarié (n'ayant pas d'effectif
-                                      au 31/12 mais ayant employé des salariés au
-                                      cours de l'année de référence) \n - 01 : 1 ou
-                                      2 salariés \n - 02 : 3 à 5 salariés \n - 03
-                                      : 6 à 9 salariés \n - 11 : 10 à 19 salariés
-                                      \n - 12 : 20 à 49 salariés \n - 21 : 50 à 99
-                                      salariés \n - 22 : 100 à 199 salariés \n - 31
-                                      : 200 à 249 salariés \n - 32 : 250 à 499 salariés
-                                      \n - 41 : 500 à 999 salariés \n - 42 : 1 000
-                                      à 1 999 salariés \n - 51 : 2 000 à 4 999 salariés
-                                      \n - 52 : 5 000 à 9 999 salariés \n - 53 : 10
-                                      000 salariés et plus \n \n Plus d'informations
-                                      dans la documentation Insee de l'API Sirene
-                                      : https://www.sirene.fr/sirene/public/variable/tefen"
+                                    description: "Le code effectif indique la tranche
+                                      d'effectif salarié de l'unité légale. Le nombre
+                                      de salarié est déterminé en fonction de l'effectif
+                                      de chacun des établissements de l'unité légale
+                                      : \n \n - NN : Unités non employeuses (pas de
+                                      salarié au cours de l'année de référence et
+                                      pas d'effectif au 31/12). Cette tranche peut
+                                      contenir quelques effectifs inconnus \n - 00
+                                      : 0 salarié (n'ayant pas d'effectif au 31/12
+                                      mais ayant employé des salariés au cours de
+                                      l'année de référence) \n - 01 : 1 ou 2 salariés
+                                      \n - 02 : 3 à 5 salariés \n - 03 : 6 à 9 salariés
+                                      \n - 11 : 10 à 19 salariés \n - 12 : 20 à 49
+                                      salariés \n - 21 : 50 à 99 salariés \n - 22
+                                      : 100 à 199 salariés \n - 31 : 200 à 249 salariés
+                                      \n - 32 : 250 à 499 salariés \n - 41 : 500 à
+                                      999 salariés \n - 42 : 1 000 à 1 999 salariés
+                                      \n - 51 : 2 000 à 4 999 salariés \n - 52 : 5
+                                      000 à 9 999 salariés \n - 53 : 10 000 salariés
+                                      et plus \n \n Plus d'informations dans la documentation
+                                      Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                                      \n \n L'effectif exact de l'entreprise, mensuel
+                                      et annuel, est disponible au travers de l'[API
+                                      Effectifs - URSSAF Caisse nationale](TODO).
+                                      Si votre jeton contient ce droit d'accès, nous
+                                      vous recommandons d'utiliser cette API. Ces
+                                      données étant protégées, leur cadre d'utilisation
+                                      est différent de la tranche effectif fournie
+                                      par l'Insee, qui elle est une donnée publique."
                                     enum:
                                     - NN
                                     - '00'
@@ -4611,34 +4618,41 @@ paths:
                                 - nomenclature
                               tranche_effectif_salarie:
                                 type: object
-                                title: Attributs de la tranche d'effectif salarié
+                                title: Tranche d'effectif salarié de l'unité légale
                                 properties:
                                   code:
                                     type: string
                                     nullable: true
                                     example: '51'
-                                    description: "Le code effectif correspond à la
-                                      tranche d'effectif salarié de l'entreprise.
-                                      Le nombre de salarié est déterminé en fonction
-                                      de l'effectif de l'entreprise et de chacun de
-                                      ses établissements : \n \n - NN : Unités non
-                                      employeuses (pas de salarié au cours de l'année
-                                      de référence et pas d'effectif au 31/12). Cette
-                                      tranche peut contenir quelques effectifs inconnus
-                                      \n - 00 : 0 salarié (n'ayant pas d'effectif
-                                      au 31/12 mais ayant employé des salariés au
-                                      cours de l'année de référence) \n - 01 : 1 ou
-                                      2 salariés \n - 02 : 3 à 5 salariés \n - 03
-                                      : 6 à 9 salariés \n - 11 : 10 à 19 salariés
-                                      \n - 12 : 20 à 49 salariés \n - 21 : 50 à 99
-                                      salariés \n - 22 : 100 à 199 salariés \n - 31
-                                      : 200 à 249 salariés \n - 32 : 250 à 499 salariés
-                                      \n - 41 : 500 à 999 salariés \n - 42 : 1 000
-                                      à 1 999 salariés \n - 51 : 2 000 à 4 999 salariés
-                                      \n - 52 : 5 000 à 9 999 salariés \n - 53 : 10
-                                      000 salariés et plus \n \n Plus d'informations
-                                      dans la documentation Insee de l'API Sirene
-                                      : https://www.sirene.fr/sirene/public/variable/tefen"
+                                    description: "Le code effectif indique la tranche
+                                      d'effectif salarié de l'unité légale. Le nombre
+                                      de salarié est déterminé en fonction de l'effectif
+                                      de chacun des établissements de l'unité légale
+                                      : \n \n - NN : Unités non employeuses (pas de
+                                      salarié au cours de l'année de référence et
+                                      pas d'effectif au 31/12). Cette tranche peut
+                                      contenir quelques effectifs inconnus \n - 00
+                                      : 0 salarié (n'ayant pas d'effectif au 31/12
+                                      mais ayant employé des salariés au cours de
+                                      l'année de référence) \n - 01 : 1 ou 2 salariés
+                                      \n - 02 : 3 à 5 salariés \n - 03 : 6 à 9 salariés
+                                      \n - 11 : 10 à 19 salariés \n - 12 : 20 à 49
+                                      salariés \n - 21 : 50 à 99 salariés \n - 22
+                                      : 100 à 199 salariés \n - 31 : 200 à 249 salariés
+                                      \n - 32 : 250 à 499 salariés \n - 41 : 500 à
+                                      999 salariés \n - 42 : 1 000 à 1 999 salariés
+                                      \n - 51 : 2 000 à 4 999 salariés \n - 52 : 5
+                                      000 à 9 999 salariés \n - 53 : 10 000 salariés
+                                      et plus \n \n Plus d'informations dans la documentation
+                                      Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                                      \n \n L'effectif exact de l'entreprise, mensuel
+                                      et annuel, est disponible au travers de l'[API
+                                      Effectifs - URSSAF Caisse nationale](TODO).
+                                      Si votre jeton contient ce droit d'accès, nous
+                                      vous recommandons d'utiliser cette API. Ces
+                                      données étant protégées, leur cadre d'utilisation
+                                      est différent de la tranche effectif fournie
+                                      par l'Insee, qui elle est une donnée publique."
                                     enum:
                                     - NN
                                     - '00'
@@ -5534,34 +5548,41 @@ paths:
                                 - nomenclature
                               tranche_effectif_salarie:
                                 type: object
-                                title: Attributs de la tranche d'effectif salarié
+                                title: Tranche d'effectif salarié de l'unité légale
                                 properties:
                                   code:
                                     type: string
                                     nullable: true
                                     example: '51'
-                                    description: "Le code effectif correspond à la
-                                      tranche d'effectif salarié de l'entreprise.
-                                      Le nombre de salarié est déterminé en fonction
-                                      de l'effectif de l'entreprise et de chacun de
-                                      ses établissements : \n \n - NN : Unités non
-                                      employeuses (pas de salarié au cours de l'année
-                                      de référence et pas d'effectif au 31/12). Cette
-                                      tranche peut contenir quelques effectifs inconnus
-                                      \n - 00 : 0 salarié (n'ayant pas d'effectif
-                                      au 31/12 mais ayant employé des salariés au
-                                      cours de l'année de référence) \n - 01 : 1 ou
-                                      2 salariés \n - 02 : 3 à 5 salariés \n - 03
-                                      : 6 à 9 salariés \n - 11 : 10 à 19 salariés
-                                      \n - 12 : 20 à 49 salariés \n - 21 : 50 à 99
-                                      salariés \n - 22 : 100 à 199 salariés \n - 31
-                                      : 200 à 249 salariés \n - 32 : 250 à 499 salariés
-                                      \n - 41 : 500 à 999 salariés \n - 42 : 1 000
-                                      à 1 999 salariés \n - 51 : 2 000 à 4 999 salariés
-                                      \n - 52 : 5 000 à 9 999 salariés \n - 53 : 10
-                                      000 salariés et plus \n \n Plus d'informations
-                                      dans la documentation Insee de l'API Sirene
-                                      : https://www.sirene.fr/sirene/public/variable/tefen"
+                                    description: "Le code effectif indique la tranche
+                                      d'effectif salarié de l'unité légale. Le nombre
+                                      de salarié est déterminé en fonction de l'effectif
+                                      de chacun des établissements de l'unité légale
+                                      : \n \n - NN : Unités non employeuses (pas de
+                                      salarié au cours de l'année de référence et
+                                      pas d'effectif au 31/12). Cette tranche peut
+                                      contenir quelques effectifs inconnus \n - 00
+                                      : 0 salarié (n'ayant pas d'effectif au 31/12
+                                      mais ayant employé des salariés au cours de
+                                      l'année de référence) \n - 01 : 1 ou 2 salariés
+                                      \n - 02 : 3 à 5 salariés \n - 03 : 6 à 9 salariés
+                                      \n - 11 : 10 à 19 salariés \n - 12 : 20 à 49
+                                      salariés \n - 21 : 50 à 99 salariés \n - 22
+                                      : 100 à 199 salariés \n - 31 : 200 à 249 salariés
+                                      \n - 32 : 250 à 499 salariés \n - 41 : 500 à
+                                      999 salariés \n - 42 : 1 000 à 1 999 salariés
+                                      \n - 51 : 2 000 à 4 999 salariés \n - 52 : 5
+                                      000 à 9 999 salariés \n - 53 : 10 000 salariés
+                                      et plus \n \n Plus d'informations dans la documentation
+                                      Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                                      \n \n L'effectif exact de l'entreprise, mensuel
+                                      et annuel, est disponible au travers de l'[API
+                                      Effectifs - URSSAF Caisse nationale](TODO).
+                                      Si votre jeton contient ce droit d'accès, nous
+                                      vous recommandons d'utiliser cette API. Ces
+                                      données étant protégées, leur cadre d'utilisation
+                                      est différent de la tranche effectif fournie
+                                      par l'Insee, qui elle est une donnée publique."
                                     enum:
                                     - NN
                                     - '00'
@@ -6459,34 +6480,41 @@ paths:
                                 - nomenclature
                               tranche_effectif_salarie:
                                 type: object
-                                title: Attributs de la tranche d'effectif salarié
+                                title: Tranche d'effectif salarié de l'unité légale
                                 properties:
                                   code:
                                     type: string
                                     nullable: true
                                     example: '51'
-                                    description: "Le code effectif correspond à la
-                                      tranche d'effectif salarié de l'entreprise.
-                                      Le nombre de salarié est déterminé en fonction
-                                      de l'effectif de l'entreprise et de chacun de
-                                      ses établissements : \n \n - NN : Unités non
-                                      employeuses (pas de salarié au cours de l'année
-                                      de référence et pas d'effectif au 31/12). Cette
-                                      tranche peut contenir quelques effectifs inconnus
-                                      \n - 00 : 0 salarié (n'ayant pas d'effectif
-                                      au 31/12 mais ayant employé des salariés au
-                                      cours de l'année de référence) \n - 01 : 1 ou
-                                      2 salariés \n - 02 : 3 à 5 salariés \n - 03
-                                      : 6 à 9 salariés \n - 11 : 10 à 19 salariés
-                                      \n - 12 : 20 à 49 salariés \n - 21 : 50 à 99
-                                      salariés \n - 22 : 100 à 199 salariés \n - 31
-                                      : 200 à 249 salariés \n - 32 : 250 à 499 salariés
-                                      \n - 41 : 500 à 999 salariés \n - 42 : 1 000
-                                      à 1 999 salariés \n - 51 : 2 000 à 4 999 salariés
-                                      \n - 52 : 5 000 à 9 999 salariés \n - 53 : 10
-                                      000 salariés et plus \n \n Plus d'informations
-                                      dans la documentation Insee de l'API Sirene
-                                      : https://www.sirene.fr/sirene/public/variable/tefen"
+                                    description: "Le code effectif indique la tranche
+                                      d'effectif salarié de l'unité légale. Le nombre
+                                      de salarié est déterminé en fonction de l'effectif
+                                      de chacun des établissements de l'unité légale
+                                      : \n \n - NN : Unités non employeuses (pas de
+                                      salarié au cours de l'année de référence et
+                                      pas d'effectif au 31/12). Cette tranche peut
+                                      contenir quelques effectifs inconnus \n - 00
+                                      : 0 salarié (n'ayant pas d'effectif au 31/12
+                                      mais ayant employé des salariés au cours de
+                                      l'année de référence) \n - 01 : 1 ou 2 salariés
+                                      \n - 02 : 3 à 5 salariés \n - 03 : 6 à 9 salariés
+                                      \n - 11 : 10 à 19 salariés \n - 12 : 20 à 49
+                                      salariés \n - 21 : 50 à 99 salariés \n - 22
+                                      : 100 à 199 salariés \n - 31 : 200 à 249 salariés
+                                      \n - 32 : 250 à 499 salariés \n - 41 : 500 à
+                                      999 salariés \n - 42 : 1 000 à 1 999 salariés
+                                      \n - 51 : 2 000 à 4 999 salariés \n - 52 : 5
+                                      000 à 9 999 salariés \n - 53 : 10 000 salariés
+                                      et plus \n \n Plus d'informations dans la documentation
+                                      Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                                      \n \n L'effectif exact de l'entreprise, mensuel
+                                      et annuel, est disponible au travers de l'[API
+                                      Effectifs - URSSAF Caisse nationale](TODO).
+                                      Si votre jeton contient ce droit d'accès, nous
+                                      vous recommandons d'utiliser cette API. Ces
+                                      données étant protégées, leur cadre d'utilisation
+                                      est différent de la tranche effectif fournie
+                                      par l'Insee, qui elle est une donnée publique."
                                     enum:
                                     - NN
                                     - '00'
