@@ -1,6 +1,4 @@
-# Documentation
-
-La documentation est séparée et se trouve sur doc.entreprise.api.gouv.fr
+# SIADE : Système d'Information des API de l'État [![CI](https://github.com/etalab/siade/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/etalab/siade/actions/workflows/ci.yml)
 
 ## Setup Dev environment
 
