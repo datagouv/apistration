@@ -1,0 +1,45 @@
+require 'swagger_helper'
+
+RSpec.describe 'OPQIBI: Certificationsingenierie', type: %i[request swagger] do
+  path '/v3/opqibi/certifications_ingenierie/{siren}' do
+    get SwaggerData.get('opqibi.certifications_ingenierie.title') do
+      tags(*SwaggerData.get('opqibi.certifications_ingenierie.tags'))
+
+      common_action_attributes
+
+      parameter name: :siren, in: :path, type: :string
+
+      unauthorized_request do
+        let(:siren) { valid_siren(:opqibi_with_probatoire) }
+      end
+
+      forbidden_request do
+        let(:siren) { valid_siren(:opqibi_with_probatoire) }
+      end
+
+      describe 'with valid mandatory params', valid: true do
+        response '200', 'Entreprise trouvée', vcr: { cassette_name: 'opqibi/certifications_ingenierie/valid_siren' } do
+          description SwaggerData.get('opqibi.certifications_ingenierie.description')
+
+          rate_limit_headers
+
+          schema build_rswag_response(
+            id: valid_siren(:opqibi_with_probatoire),
+            type: 'certificat_ingenierie',
+            attributes: SwaggerData.get('opqibi.certifications_ingenierie.attributes')
+          )
+
+          run_test!
+        end
+
+        response '404', 'Non trouvée', vcr: { cassette_name: 'opqibi/certifications_ingenierie/not_found_siren' } do
+          let(:siren) { not_found_siren }
+
+          schema '$ref' => '#/components/schemas/NotFound'
+
+          run_test!
+        end
+      end
+    end
+  end
+end
