@@ -125,6 +125,10 @@ Rails.application.routes.draw do
       get 'conformites_cotisations/:siret' => '/api/v3_and_more/msa/conformites_cotisations#show'
     end
 
+    namespace :opqibi do
+      get 'certifications_ingenierie/:siren' => '/api/v3_and_more/opqibi/certifications_ingenierie#show'
+    end
+
     namespace :probtp do
       get 'attestations_cotisations_retraite/:siret' => '/api/v3_and_more/probtp/attestations_cotisation_retraite#show'
       get 'conformites_cotisations_retraite/:siret' => '/api/v3_and_more/probtp/conformites_cotisations_retraite#show'
