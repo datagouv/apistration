@@ -34,4 +34,8 @@ module ResourceHelpers
   def xml_body_as_hash
     context.xml_body_as_hash ||= Ox.load(body.force_encoding('UTF-8'), mode: :hash)
   end
+
+  def normalized_date(date)
+    date.to_time.strftime('%Y-%m-%d')
+  end
 end
