@@ -73,7 +73,7 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
     # 77571979202585
 
     # TODO: regenerate cassette when data is back !
-    context 'when using a siret', vcr: { cassette_name: 'rna_association/77571979202585' } do
+    context 'when using a siret', vcr: { cassette_name: 'mi/associations/documents/with_documents' } do
       context 'when siret is correct' do
         context 'when siret is found' do
           subject { @documents_associations_with_valid_siret }
@@ -160,7 +160,7 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
       get :show, params: { id: id, token: token }.merge(mandatory_params)
     end
 
-    context 'when association retrievers returns a hash instead of an array for asso->documents->document_rna ', vcr: { cassette_name: 'rna_association/no_documents_key_41763950700017' } do
+    context 'when association retrievers returns a hash instead of an array for asso->documents->document_rna ', vcr: { cassette_name: 'mi/associations/documents/no_documents_key' } do
       let(:id) { '41763950700017' }
 
       its(:status) { is_expected.to eq(200) }

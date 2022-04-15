@@ -8,7 +8,7 @@ RSpec.describe MI::Associations::Documents, type: :retrieve_organizer do
       }
     end
 
-    context 'happy path', vcr: { cassette_name: 'rna_association/77571979202585' } do
+    context 'happy path', vcr: { cassette_name: 'mi/associations/documents/with_documents' } do
       let(:siret_or_rna) { '77571979202585' }
 
       before do

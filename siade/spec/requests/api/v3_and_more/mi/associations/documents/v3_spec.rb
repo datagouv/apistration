@@ -18,7 +18,7 @@ RSpec.describe 'MI: Documents Associations', type: %i[request swagger] do
       end
 
       describe 'with valid mandatory params', valid: true do
-        response 200, 'Document Association found', vcr: { cassette_name: 'rna_association/77571979202585' } do
+        response 200, 'Document Association found', vcr: { cassette_name: 'mi/associations/documents/with_documents' } do
           let(:siret_or_rna) { '77571979202585' }
 
           description SwaggerData.get('mi.document_association.description')

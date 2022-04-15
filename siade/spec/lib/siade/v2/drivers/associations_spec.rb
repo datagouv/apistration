@@ -24,7 +24,7 @@ RSpec.describe SIADE::V2::Drivers::Associations, type: :provider_driver do
     its(:documents) { is_expected.to eq [] }
   end
 
-  context '[siret_association_utilite_publique] Rna et Sirene', vcr: { cassette_name: 'rna_association/77571979202585' } do
+  context '[siret_association_utilite_publique] Rna et Sirene', vcr: { cassette_name: 'mi/associations/documents/with_documents' } do
     # Test speed up by a x10 factor
     subject { @association_utilite_publique }
 
