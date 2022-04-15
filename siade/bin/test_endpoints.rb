@@ -185,6 +185,9 @@ endpoints = <<STR
 - name: '[V3] OPQIBI Certifications Ingénierie'
   http_path: '/v3/opqibi/certifications_ingenierie/309103877'
 
+- name: '[V3] MI Documents Associations'
+  http_path: '/v3/mi/associations/77571979202650/documents'
+
 - name: '[V3] ProBTP Attestations cotisations retraite'
   http_path: '/v3/probtp/attestations_cotisations_retraite/43841606700017'
 

@@ -91,3 +91,36 @@ mi:
       mise_a_jour:
         type: "string"
         example: "1955-01-01"
+
+  document_association:
+    title: "Divers documents d'une association"
+    description: "Obtenir divers documents, différents selon l’association ; tels que les statuts, la liste des personnes habilitées à représenter l’association ou encore les délibérations pour modification ou dissolution de l’association."
+    tags:
+      - "Informations générales"
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+        timestamp:
+          example: "1631182730"
+          description: "Date du dépot du document au format timestamp UNIX"
+          type: "string"
+        type:
+          example: "Statuts"
+          description: "Ce sont les différents types de documents, et de fait, pour chaque URL, celui-ci est indiqué. Voici une liste non-exhaustive des options possibles : 'Liste des dirigeants', 'Statuts', 'Procès verbal', 'Récépissé de dissolution', 'Récépissé de modification'..."
+          type: "string"
+        url:
+          example: "https://storage.entreprise.api.gouv.fr/siade/1635505765-5cd08405e4163c9f7713447829aeef7284c3283d-document_asso.pdf"
+          description: "L'URL du fichier"
+          type: "string"
+    meta:
+      nombre_documents:
+        example: 1
+        description: "Le nombre total de documents disponibles"
+        type: "integer"
+      nombre_documents_deficients:
+        example: 0
+        description: "Le nombre de documents ignorés car déficients (indisponibles, PDF invalide etc...)"
+        type: "integer"

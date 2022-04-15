@@ -119,6 +119,7 @@ Rails.application.routes.draw do
 
     namespace :mi do
       get 'associations/:siret_or_rna' => '/api/v3_and_more/mi/associations#show'
+      get 'associations/:siret_or_rna/documents' => '/api/v3_and_more/mi/documents_associations#show'
     end
 
     namespace :msa do

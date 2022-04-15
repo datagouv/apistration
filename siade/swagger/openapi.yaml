@@ -7544,6 +7544,159 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/diffusibles/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/mi/associations/{siret_or_rna}/documents":
+    get:
+      summary: Divers documents d'une association
+      tags:
+      - Informations générales
+      parameters:
+      - name: siret_or_rna
+        in: path
+        description: Siret de l'association ou le numéro RNA
+        examples:
+          openstreetmap_france:
+            value: W751212517
+            summary: ID RNA Openstreetmap France
+          croix_rouge:
+            value: '77567227221138'
+            summary: SIRET de la Croix-Rouge France
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
+        required: true
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: true
+        schema:
+          type: string
+      - name: object
+        in: query
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
+        required: true
+        schema:
+          type: string
+      security:
+      - jwt_bearer_token: []
+      description: Obtenir divers documents, différents selon l’association ; tels
+        que les statuts, la liste des personnes habilitées à représenter l’association
+        ou encore les délibérations pour modification ou dissolution de l’association.
+      responses:
+        '403':
+          description: Accès interdit
+        '200':
+          description: Document Association found
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        type:
+                          example: Statuts
+                          description: 'Ce sont les différents types de documents,
+                            et de fait, pour chaque URL, celui-ci est indiqué. Voici
+                            une liste non-exhaustive des options possibles : ''Liste
+                            des dirigeants'', ''Statuts'', ''Procès verbal'', ''Récépissé
+                            de dissolution'', ''Récépissé de modification''...'
+                          type: string
+                        attributes:
+                          type: object
+                          properties:
+                            timestamp:
+                              example: '1631182730'
+                              description: Date du dépot du document au format timestamp
+                                UNIX
+                              type: string
+                            url:
+                              example: https://storage.entreprise.api.gouv.fr/siade/1635505765-5cd08405e4163c9f7713447829aeef7284c3283d-document_asso.pdf
+                              description: L'URL du fichier
+                              type: string
+                          required:
+                          - timestamp
+                          - url
+                      required:
+                      - id
+                      - type
+                      - attributes
+                  meta:
+                    type: object
+                    properties:
+                      nombre_documents:
+                        example: 1
+                        description: Le nombre total de documents disponibles
+                        type: integer
+                      nombre_documents_deficients:
+                        example: 0
+                        description: Le nombre de documents ignorés car déficients
+                          (indisponibles, PDF invalide etc...)
+                        type: integer
+                    required:
+                    - nombre_documents
+                    - nombre_documents_deficients
+                required:
+                - data
+                - meta
+        '404':
+          description: Association not found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/NotFound"
+        '422':
+          description: Unprocessable entity
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/UnprocessableEntity"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/mi/associations/13002526500013/documents?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/mi/associations/{siret_or_rna}":
     get:
       summary: Données du RNA d'une association
