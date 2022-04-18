@@ -69,6 +69,10 @@ Rails.application.routes.draw do
       get 'attestations_sociales/:siren' => '/api/v3_and_more/acoss/attestations_sociales#show'
     end
 
+    namespace :ademe do
+      get 'certificats_rge/:siret' => '/api/v3_and_more/ademe/certificats_rge#show'
+    end
+
     namespace :cnetp do
       get 'attestations_cotisations_conges_payes_chomage_intemperies/:siren' => '/api/v3_and_more/cnetp/attestation_cotisations_conges_payes_chomage_intemperies#show'
     end

@@ -146,6 +146,9 @@ endpoints = <<STR
 - name: '[V3] ACOSS Attestations sociales'
   http_path: '/v3/acoss/attestations_sociales/418166096'
 
+- name: '[V3] ADEME Certificats RGE'
+  http_path: '/v3/ademe/certificats_rge/50530961700023'
+
 - name: '[V3] DGDDI EORI'
   http_path: '/v3/dgddi/eoris/FR16002307300010'
 

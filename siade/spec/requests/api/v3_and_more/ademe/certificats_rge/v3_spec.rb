@@ -10,11 +10,11 @@ RSpec.describe 'ADEME: Certificatsrge', type: %i[request swagger] do
       parameter name: :siret, in: :path, type: :string
 
       unauthorized_request do
-        let(:siret) { valid_siret(:ademe) }
+        let(:siret) { valid_siret(:rge_ademe) }
       end
 
       forbidden_request do
-        let(:siret) { valid_siret(:ademe) }
+        let(:siret) { valid_siret(:rge_ademe) }
       end
 
       describe 'with valid mandatory params', valid: true do
