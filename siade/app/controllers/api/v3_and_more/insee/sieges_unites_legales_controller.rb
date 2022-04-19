@@ -21,6 +21,6 @@ class API::V3AndMore::INSEE::SiegesUnitesLegalesController < API::V3AndMore::Bas
   end
 
   def serializer_module
-    ::INSEE::SiegeUniteLegaleSerializer
+    ::INSEE::EtablissementSerializer
   end
 end
