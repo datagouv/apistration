@@ -1,6 +1,4 @@
 class INSEE::EtablissementSerializer::V3 < V3AndMore::BaseSerializer
-  set_type :etablissement
-
   attributes :siege_social,
     :etat_administratif,
     :date_fermeture,

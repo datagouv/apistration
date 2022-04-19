@@ -1,6 +1,4 @@
 class MI::AssociationSerializer::V3 < V3AndMore::BaseSerializer
-  set_type :association
-
   attributes :titre,
     :objet,
     :siret,

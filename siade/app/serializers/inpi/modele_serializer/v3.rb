@@ -1,7 +1,5 @@
 class INPI::ModeleSerializer::V3 < V3AndMore::BaseSerializer
-  set_type :modele
-
-  link :notice, :notice_url
+  link :notice, &:notice_url
 
   attributes :numero_depot,
     :titre,
