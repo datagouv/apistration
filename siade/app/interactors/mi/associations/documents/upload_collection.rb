@@ -23,6 +23,13 @@ class MI::Associations::Documents::UploadCollection < ApplicationInteractor
   private
 
   def raw_items
-    xml_body_as_hash[:asso][:documents][:document_rna].flatten
+    items = xml_body_as_hash[:asso][:documents][:document_rna]
+
+    case items
+    in Hash
+      [items]
+    in Array
+      items.flatten
+    end
   end
 end
