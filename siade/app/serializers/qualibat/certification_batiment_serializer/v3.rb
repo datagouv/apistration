@@ -1,2 +1,2 @@
-class QUALIBAT::CertificationBatimentSerializer::V3 < JSONAPI::DocumentSerializer
+class QUALIBAT::CertificationBatimentSerializer::V3 < V3AndMore::DocumentSerializer
 end

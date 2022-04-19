@@ -1,4 +1,4 @@
-class DGFIP::LiassesFiscales::DeclarationsSerializer::V3 < JSONAPI::BaseSerializer
+class DGFIP::LiassesFiscales::DeclarationsSerializer::V3 < V3AndMore::BaseSerializer
   set_type :liasses_fiscales
 
   attributes :obligations_fiscales,

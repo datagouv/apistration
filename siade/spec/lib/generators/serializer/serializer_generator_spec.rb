@@ -9,7 +9,7 @@ RSpec.describe SerializerGenerator, type: :generator do
 
       it { is_expected.to exist }
       it { is_expected.to have_correct_syntax }
-      it { is_expected.to contain(/class #{resource_name}Serializer::V3 < JSONAPI::DocumentSerializer/) }
+      it { is_expected.to contain(/class #{resource_name}Serializer::V3 < V3AndMore::DocumentSerializer/) }
     end
 
     context 'with option: --document false' do
@@ -17,7 +17,7 @@ RSpec.describe SerializerGenerator, type: :generator do
 
       it { is_expected.to exist }
       it { is_expected.to have_correct_syntax }
-      it { is_expected.to contain(/class #{resource_name}Serializer::V3 < JSONAPI::BaseSerializer/) }
+      it { is_expected.to contain(/class #{resource_name}Serializer::V3 < V3AndMore::BaseSerializer/) }
     end
   end
 end

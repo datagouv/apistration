@@ -1,4 +1,4 @@
-class Infogreffe::PersonneMoraleSerializer::V3 < JSONAPI::BaseSerializer
+class Infogreffe::PersonneMoraleSerializer::V3 < V3AndMore::BaseSerializer
   set_type :personne_morale
 
   attributes :fonction,

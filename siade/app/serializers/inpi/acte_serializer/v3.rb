@@ -1,4 +1,4 @@
-class INPI::ActeSerializer::V3 < JSONAPI::BaseSerializer
+class INPI::ActeSerializer::V3 < V3AndMore::BaseSerializer
   set_type :acte
 
   link :greffe, :greffe_url

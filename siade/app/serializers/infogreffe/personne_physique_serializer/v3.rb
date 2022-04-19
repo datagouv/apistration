@@ -1,4 +1,4 @@
-class Infogreffe::PersonnePhysiqueSerializer::V3 < JSONAPI::BaseSerializer
+class Infogreffe::PersonnePhysiqueSerializer::V3 < V3AndMore::BaseSerializer
   set_type :personne_physique
 
   attributes :fonction,

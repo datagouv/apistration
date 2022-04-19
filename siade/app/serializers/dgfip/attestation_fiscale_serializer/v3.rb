@@ -1,2 +1,2 @@
-class DGFIP::AttestationFiscaleSerializer::V3 < JSONAPI::DocumentSerializer
+class DGFIP::AttestationFiscaleSerializer::V3 < V3AndMore::DocumentSerializer
 end

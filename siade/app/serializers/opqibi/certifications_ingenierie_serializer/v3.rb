@@ -1,4 +1,4 @@
-class OPQIBI::CertificationsIngenierieSerializer::V3 < JSONAPI::BaseSerializer
+class OPQIBI::CertificationsIngenierieSerializer::V3 < V3AndMore::BaseSerializer
   set_type :certificat_ingenierie
 
   attributes :siren,

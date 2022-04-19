@@ -1,4 +1,4 @@
-class INPI::MarqueSerializer::V3 < JSONAPI::BaseSerializer
+class INPI::MarqueSerializer::V3 < V3AndMore::BaseSerializer
   set_type :marque
 
   link :notice, :notice_url

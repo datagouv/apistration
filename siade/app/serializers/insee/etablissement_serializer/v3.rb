@@ -1,4 +1,4 @@
-class INSEE::EtablissementSerializer::V3 < JSONAPI::BaseSerializer
+class INSEE::EtablissementSerializer::V3 < V3AndMore::BaseSerializer
   set_type :etablissement
 
   attributes :siege_social,

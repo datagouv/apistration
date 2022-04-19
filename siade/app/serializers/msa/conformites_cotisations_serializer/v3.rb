@@ -1,4 +1,4 @@
-class MSA::ConformitesCotisationsSerializer::V3 < JSONAPI::BaseSerializer
+class MSA::ConformitesCotisationsSerializer::V3 < V3AndMore::BaseSerializer
   set_type :conformite
 
   attributes :status

@@ -1,2 +1,2 @@
-class PROBTP::AttestationCotisationRetraiteSerializer::V3 < JSONAPI::DocumentSerializer
+class PROBTP::AttestationCotisationRetraiteSerializer::V3 < V3AndMore::DocumentSerializer
 end

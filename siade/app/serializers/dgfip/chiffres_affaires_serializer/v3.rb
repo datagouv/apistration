@@ -1,4 +1,4 @@
-class DGFIP::ChiffresAffairesSerializer::V3 < JSONAPI::BaseSerializer
+class DGFIP::ChiffresAffairesSerializer::V3 < V3AndMore::BaseSerializer
   set_type :exercice
 
   attributes :chiffre_affaires,

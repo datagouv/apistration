@@ -1,4 +1,4 @@
-class AdresseSerializer < JSONAPI::BaseSerializer
+class AdresseSerializer < V3AndMore::BaseSerializer
   set_type :adresse
 
   attributes :numero_voie,
