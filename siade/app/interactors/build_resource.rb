@@ -2,16 +2,12 @@ class BuildResource < ApplicationInteractor
   include ResourceHelpers
 
   class ResourceNotDefined < NotImplementedError; end
-  class ResourceIdNotDefined < NotImplementedError; end
 
   def self.inherited(klass)
     klass.class_eval do
       after do
-        if context.resource.nil?
+        context.resource.nil? &&
           resource_not_defined!
-        elsif context.resource.id.blank?
-          resource_id_not_defined!
-        end
       end
     end
   end
@@ -34,9 +30,5 @@ class BuildResource < ApplicationInteractor
 
   def resource_not_defined!
     raise ResourceNotDefined
-  end
-
-  def resource_id_not_defined!
-    raise ResourceIdNotDefined
   end
 end

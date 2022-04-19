@@ -2,7 +2,6 @@ class BuildResourceCollection < ApplicationInteractor
   include ResourceHelpers
 
   class ResourceNotDefined < NotImplementedError; end
-  class ResourceIdNotDefined < NotImplementedError; end
 
   def self.inherited(klass)
     super
@@ -10,7 +9,6 @@ class BuildResourceCollection < ApplicationInteractor
     klass.class_eval do
       after do
         resource_not_defined! unless valid?(context.resource_collection)
-        resource_id_not_defined! if context.resource_collection.any? { |resource| resource.id.nil? }
         context.meta = items_meta
       end
     end
@@ -48,9 +46,5 @@ class BuildResourceCollection < ApplicationInteractor
 
   def resource_not_defined!
     raise ResourceNotDefined
-  end
-
-  def resource_id_not_defined!
-    raise ResourceIdNotDefined
   end
 end
