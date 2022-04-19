@@ -1,4 +1,5 @@
 require 'yaml'
+require 'json'
 require 'net/http'
 require 'openssl'
 require 'colorize'
@@ -234,7 +235,11 @@ rescue Net::ReadTimeout
   status = "NOK ( timeout from client )".red
 ensure
   print "[#{index}] Endpoint '#{name}' ( #{route} ): #{status}\n"
-  print "Payload: #{response.body}\n\n" if ENV['DEBUG']
+
+  if ENV['DEBUG']
+    print "Payload:\n"
+    print JSON.pretty_generate(JSON.parse(response.body))
+  end
 end
 
 print "## Test endpoints on #{@host}\n\n"
