@@ -29,7 +29,7 @@ RSpec.describe MI::Associations::Documents::BuildResourceCollection, type: :buil
             url: 'https://another.url/great',
             lib_sous_type: 'Statuts',
             hosted_url: 'second_url'
-          },
+          }
         ]
       }
     end
@@ -46,14 +46,14 @@ RSpec.describe MI::Associations::Documents::BuildResourceCollection, type: :buil
           id: 'very_id_1',
           timestamp: '1418807656',
           url: 'first_url',
-          type: 'Décret',
+          type: 'Décret'
         },
         {
           id: 'much_id_2',
           timestamp: '1418807674',
           url: 'second_url',
-          type: 'Statuts',
-        },
+          type: 'Statuts'
+        }
       ])
     end
 

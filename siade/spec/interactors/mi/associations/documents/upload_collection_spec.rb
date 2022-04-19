@@ -1,8 +1,8 @@
 RSpec.describe MI::Associations::Documents::UploadCollection do
   describe '.call' do
-    subject { described_class.call(response: response) }
+    subject { described_class.call(response:) }
 
-    let(:response) { instance_double('Net::HTTPOK', body: body) }
+    let(:response) { instance_double(Net::HTTPOK, body:) }
     let(:body) do
       '<asso>' \
         '<documents>' \
@@ -38,6 +38,8 @@ RSpec.describe MI::Associations::Documents::UploadCollection do
         .and_return(first_uploader, second_uploader)
     end
 
+    # rubocop:disable RSpec/VerifiedDoubles
+
     context 'when upload is valid for all documents' do
       let(:first_uploader) { double('uploader', success?: true, url: 'first_url') }
       let(:second_uploader) { double('uploader', success?: true, url: 'second_url') }
@@ -67,7 +69,7 @@ RSpec.describe MI::Associations::Documents::UploadCollection do
             url: 'https://another.url/great',
             lib_sous_type: 'Statuts',
             hosted_url: 'second_url'
-          },
+          }
         )
       end
 
@@ -111,5 +113,7 @@ RSpec.describe MI::Associations::Documents::UploadCollection do
       its(:total_documents) { is_expected.to eq(2) }
       its(:upload_errors) { is_expected.to eq(2) }
     end
+
+    # rubocop:enable RSpec/VerifiedDoubles
   end
 end
