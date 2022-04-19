@@ -1,7 +1,7 @@
 mi:
   association:
-    title: "Informations déclaratives d'une association"
-    description: "Obtenir les informations déclarées par une association à la préfecture et issues du Répertoire National des Associations (RNA)."
+    title: "Données du RNA d'une association"
+    description: "Informations issues du répertoire national des associations (RNA), telles que la date de création, l’adresse du siège et les dirigeants."
     tags:
       - "Informations générales"
     attributes:
