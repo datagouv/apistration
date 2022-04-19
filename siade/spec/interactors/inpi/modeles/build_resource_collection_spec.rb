@@ -38,7 +38,7 @@ RSpec.describe INPI::Modeles::BuildResourceCollection, type: :build_resource do
     end
 
     let(:response) do
-      instance_double('Net::HTTPOK', body:)
+      instance_double(Net::HTTPOK, body:)
     end
 
     let(:body) do

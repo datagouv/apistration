@@ -104,7 +104,7 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
     let(:provider_name) { 'INSEE' }
     let(:maintenance_on) { false }
 
-    let(:maintenance_service) { instance_double('MaintenanceService', 'on?' => maintenance_on) }
+    let(:maintenance_service) { instance_double(MaintenanceService, 'on?' => maintenance_on) }
 
     before do
       allow(MaintenanceService).to receive(:new).and_return(maintenance_service)

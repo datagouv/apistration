@@ -2,7 +2,7 @@ RSpec.describe INSEE::SiegeUniteLegale::BuildResource, type: :build_resource do
   subject { organizer }
 
   let(:organizer) { described_class.call(response:) }
-  let(:response) { instance_double('Net::HTTPOK', body:) }
+  let(:response) { instance_double(Net::HTTPOK, body:) }
 
   let(:body) do
     INSEE::SiegeUniteLegale::MakeRequest.call(params:, token:).response.body

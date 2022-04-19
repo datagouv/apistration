@@ -1,7 +1,7 @@
 RSpec.describe FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::BuildResourceCollection, type: :build_resource do
   subject(:call) { described_class.call(response:) }
 
-  let(:response) { instance_double('Net::HTTPOK', body:) }
+  let(:response) { instance_double(Net::HTTPOK, body:) }
 
   let(:body) do
     FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::MakeRequest.call(params:).response.body

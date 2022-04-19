@@ -8,7 +8,7 @@ RSpec.describe MSA::ConformitesCotisations::BuildResource, type: :build_resource
     }
   end
   let(:response) do
-    instance_double('Net::HTTPOK', body:)
+    instance_double(Net::HTTPOK, body:)
   end
 
   context 'when it is up to date' do

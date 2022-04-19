@@ -7,7 +7,7 @@ RSpec.describe Documents::RetrieveFromUrl do
     { content: source_doc_url }
   end
 
-  let(:mock_monitoring) { instance_double('MonitoringService') }
+  let(:mock_monitoring) { instance_double(MonitoringService) }
 
   before do
     allow(mock_monitoring).to receive(:track)

@@ -2,7 +2,7 @@ RSpec.describe INPI::ValidateResponse, type: :validate_response do
   subject { described_class.call(response:, provider_name: 'INPI') }
 
   let(:response) do
-    instance_double('Net::HTTPOK', code:, body:)
+    instance_double(Net::HTTPOK, code:, body:)
   end
 
   describe 'with a valid body' do

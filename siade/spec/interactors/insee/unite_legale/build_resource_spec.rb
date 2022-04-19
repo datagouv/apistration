@@ -3,7 +3,7 @@ RSpec.describe INSEE::UniteLegale::BuildResource, type: :build_resource do
 
   describe 'with an unite legale response' do
     let(:organizer) { described_class.call(response:) }
-    let(:response) { instance_double('Net::HTTPOK', body:) }
+    let(:response) { instance_double(Net::HTTPOK, body:) }
 
     let(:body) do
       INSEE::UniteLegale::MakeRequest.call(params:, token: 'token').response.body

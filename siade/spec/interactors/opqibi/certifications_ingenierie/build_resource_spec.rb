@@ -1,7 +1,7 @@
 RSpec.describe OPQIBI::CertificationsIngenierie::BuildResource, type: :build_resource do
   subject { described_class.call(response:) }
 
-  let(:response) { instance_double('Net::HTTPOK', body:) }
+  let(:response) { instance_double(Net::HTTPOK, body:) }
 
   let(:body) do
     OPQIBI::CertificationsIngenierie::MakeRequest.call(params:).response.body

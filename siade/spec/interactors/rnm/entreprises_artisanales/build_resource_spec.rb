@@ -82,7 +82,7 @@ RSpec.describe RNM::EntreprisesArtisanales::BuildResource, type: :build_resource
     end
 
     let(:response) do
-      instance_double('Net::HTTPOK', body:)
+      instance_double(Net::HTTPOK, body:)
     end
 
     let(:body) do

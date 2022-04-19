@@ -3,7 +3,7 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
     subject { described_class.call(response:, provider_name: 'MI') }
 
     let(:response) do
-      instance_double('Net::HTTPOK', code:, body:)
+      instance_double(Net::HTTPOK, code:, body:)
     end
 
     describe 'with an invalid code' do

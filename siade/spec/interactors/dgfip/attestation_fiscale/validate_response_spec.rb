@@ -2,7 +2,7 @@ RSpec.describe DGFIP::AttestationFiscale::ValidateResponse, type: :validate_resp
   subject { described_class.call(response:, provider_name: 'DGFIP') }
 
   context 'with a http ok' do
-    let(:response) { instance_double('Net::HTTPOK', code: '200', body:) }
+    let(:response) { instance_double(Net::HTTPOK, code: '200', body:) }
 
     context 'when body is a valid pdf' do
       let(:body) { File.read(Rails.root.join('spec/support/dgfip_attestations_fiscales/basic.pdf')) }
@@ -22,7 +22,7 @@ RSpec.describe DGFIP::AttestationFiscale::ValidateResponse, type: :validate_resp
   end
 
   context 'with a not found response' do
-    let(:response) { instance_double('Net::HTTPNotFound', code: '404') }
+    let(:response) { instance_double(Net::HTTPNotFound, code: '404') }
 
     it { is_expected.to be_a_failure }
 
@@ -30,7 +30,7 @@ RSpec.describe DGFIP::AttestationFiscale::ValidateResponse, type: :validate_resp
   end
 
   context 'with an unknown error' do
-    let(:response) { instance_double('Net::HTTPBadRequest', code: '400') }
+    let(:response) { instance_double(Net::HTTPBadRequest, code: '400') }
 
     it { is_expected.to be_a_failure }
 

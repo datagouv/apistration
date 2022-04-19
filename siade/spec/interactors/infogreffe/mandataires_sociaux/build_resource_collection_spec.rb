@@ -39,7 +39,7 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
     end
 
     let(:response) do
-      instance_double('Net::HTTPOK', body:)
+      instance_double(Net::HTTPOK, body:)
     end
 
     let(:body) do

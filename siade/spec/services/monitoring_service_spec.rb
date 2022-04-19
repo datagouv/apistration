@@ -67,16 +67,16 @@ RSpec.describe MonitoringService, type: :service do
 
             @provider_error_custom_code = raw_response.provider_error_custom_code
 
-            raw_response.code
+            raw_response.http_code
           end
         end
       end
 
       let(:raw_response) do
         instance_double(
-          'raw_response',
+          SIADE::V2::Responses::AbstractProviderError,
           body: '',
-          code:,
+          http_code:,
           provider_error_custom_code:
         )
       end
@@ -87,7 +87,7 @@ RSpec.describe MonitoringService, type: :service do
       end
 
       let(:provider_error_custom_code) { '9001' }
-      let(:code) { 367 }
+      let(:http_code) { 367 }
       let(:response) { SIADE::V2::Responses::DummyTrackProviderErrorResponse.new(raw_response) }
 
       it 'sets extra context with errors inspected (which returns json api error with all available informations)' do
@@ -124,7 +124,7 @@ RSpec.describe MonitoringService, type: :service do
 
           it 'takes http code for tagging' do
             expect(Sentry).to receive(:set_tags).with(
-              provider_error_code: code
+              provider_error_code: http_code
             )
 
             subject

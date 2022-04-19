@@ -1,7 +1,7 @@
 RSpec.describe INPI::Authenticate::ValidateResponse, type: :validate_response do
   subject { described_class.call(response:, provider_name: 'INPI') }
 
-  let(:response) { instance_double('Net::HTTPOK') }
+  let(:response) { instance_double(Net::HTTPOK) }
 
   context 'with a response containing a cookie' do
     before do

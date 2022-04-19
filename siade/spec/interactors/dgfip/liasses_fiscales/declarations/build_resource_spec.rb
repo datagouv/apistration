@@ -3,7 +3,7 @@ RSpec.describe DGFIP::LiassesFiscales::Declarations::BuildResource, type: :build
     subject(:builder) { described_class.call(response:) }
 
     let(:response) do
-      instance_double('Net::HTTPOK', body:)
+      instance_double(Net::HTTPOK, body:)
     end
 
     describe 'real payload', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
