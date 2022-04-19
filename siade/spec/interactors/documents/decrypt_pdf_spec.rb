@@ -60,7 +60,7 @@ RSpec.describe Documents::DecryptPDF do
           "PDF Decrypt fail to execute 'qpdf lol_ oki_'",
           {
             exit_status: 2,
-            stderr: 'open lol_: No such file or directory'
+            stderr: /open lol_: No such file or directory/
           }
         )
       rescue Errno::ENOMEM
