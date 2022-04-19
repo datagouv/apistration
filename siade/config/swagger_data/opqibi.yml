@@ -20,11 +20,9 @@ opqibi:
     tags:
       - "Certifications professionnelles"
     attributes:
-      siren:
-        title: "Siren"
-        description: "Siren de l'entreprise concernée par le certificat"
+      numero_certificat:
+        title: "Numéro de certificat"
         type: "string"
-        example: "309103877"
       url:
         title: "URL Certificat"
         description: "URL pour consulter ce certificat sur le site de l'OPQIBI"

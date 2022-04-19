@@ -7,26 +7,23 @@ infogreffe:
     type: "array"
     example:
       data:
-        - id: GAUQUELIN-ARNAUD-1969-08-24
-          type: personne_physique
-          attributes:
-            fonction: PRESIDENT
-            nom: GAUQUELIN
-            prenom: ARNAUD
-            date_naissance: '1969-08-24'
-            date_naissance_timestamp: -11235600
-            lieu_naissance: FLERS
-            pays_naissance: FRANCE
-            code_pays_naissance: FR
-            nationalite: FRANCAISE
-            code_nationalite: FR
-        - id: '784824153'
+        - type: personne_physique
+          fonction: PRESIDENT
+          nom: GAUQUELIN
+          prenom: ARNAUD
+          date_naissance: '1969-08-24'
+          date_naissance_timestamp: -11235600
+          lieu_naissance: FLERS
+          pays_naissance: FRANCE
+          code_pays_naissance: FR
+          nationalite: FRANCAISE
+          code_nationalite: FR
+        - numero_identification: '784824153'
           type: personne_morale
-          attributes:
-            fonction: COMMISSAIRE AUX COMPTES TITULAIRE
-            raison_sociale: MAZARS - SOCIETE ANONYME A DIRECTOIRE ET CONSEIL DE SURVEILLANCE
-            code_greffe: '9201'
-            libelle_greffe: NANTERRE
+          fonction: COMMISSAIRE AUX COMPTES TITULAIRE
+          raison_sociale: MAZARS - SOCIETE ANONYME A DIRECTOIRE ET CONSEIL DE SURVEILLANCE
+          code_greffe: '9201'
+          libelle_greffe: NANTERRE
       meta:
         personnes_physiques_count: 1
         personnes_morales_count: 1
@@ -34,10 +31,11 @@ infogreffe:
     items:
       required: ["fonction"]
       properties:
-        id:
+        numero_identification:
           title: "Numéro d'identification"
+          description: "Ce champ est uniquement disponible pour une personne morale."
           type: "string"
-          example: "HENRI-MARTIN-1965-01-27"
+          example: "784824153"
         type:
           title: "Type de mandataire social"
           description: "Ce champ permet de faire la distinction entre les personnes physiques et morales."

@@ -14,7 +14,6 @@ RSpec.describe DGFIP::AttestationFiscale::BuildResource, type: :build_resource d
       expect(subject.resource).to be_a(Resource)
 
       expect(subject.resource.to_h).to include(
-        id: valid_siren,
         document_url: 'not.a.real/file/upload'
       )
     end

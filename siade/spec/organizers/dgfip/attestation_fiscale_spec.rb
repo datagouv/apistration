@@ -20,12 +20,6 @@ RSpec.describe DGFIP::AttestationFiscale, :self_hosted_doc, type: :retriever_org
 
       it { is_expected.to be_a_success }
 
-      it 'sets the resource id' do
-        id = subject.resource.id
-
-        expect(id).to eq(siren)
-      end
-
       it 'uploads the attestation on the self hosted storage' do
         document_url = subject.resource.document_url
 

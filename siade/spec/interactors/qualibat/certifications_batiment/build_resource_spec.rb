@@ -16,7 +16,6 @@ RSpec.describe QUALIBAT::CertificationsBatiment::BuildResource do
       expect(subject.resource).to be_a(Resource)
 
       expect(subject.resource.to_h).to include(
-        id: valid_siret(:qualibat),
         document_url: 'uploaded/file/url'
       )
     end

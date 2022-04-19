@@ -3,7 +3,6 @@ class DGFIP::LiassesFiscales::Declarations::BuildResource < BuildResource
 
   def resource_attributes
     {
-      id: entreprise_attributes['siren'],
       obligations_fiscales: build_obligations_fiscales,
       declarations: declarations_attributes.map { |declaration_attributes| build_declaration(declaration_attributes) },
       internal_id_itip: entreprise_attributes['itip']

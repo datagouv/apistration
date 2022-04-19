@@ -3,7 +3,7 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
 
   def resource_attributes
     {
-      id: etablissement['siret'],
+      siret: etablissement['siret'],
       siren: etablissement['siren'],
 
       unite_legale: INSEE::UniteLegale::BuildResource.call(response: context.response, unite_legale: etablissement['uniteLegale']).resource,

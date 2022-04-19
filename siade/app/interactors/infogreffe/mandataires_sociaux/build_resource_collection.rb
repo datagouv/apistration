@@ -35,7 +35,6 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
 
   def mandataire_social_pp(dirigeant)
     {
-      id: [nom(dirigeant), prenom(dirigeant), date_naissance(dirigeant)].join('-'),
       type: 'personne_physique',
       nom: nom(dirigeant),
       prenom: prenom(dirigeant),
@@ -52,8 +51,8 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
 
   def mandataire_social_pm(dirigeant)
     {
-      id: identifiant(dirigeant),
       type: 'personne_morale',
+      numero_identification: identifiant(dirigeant),
       fonction: fonction(dirigeant),
       raison_sociale: raison_sociale(dirigeant),
       code_greffe: code_greffe(dirigeant),

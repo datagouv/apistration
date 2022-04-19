@@ -9,11 +9,6 @@ inpi:
     tags:
       - "Informations générales"
     attributes:
-      id:
-        title: "ID Fichier"
-        description: "Cet identifiant permet de retrouver le document dans l'archive ZIP renvoyée par le endpoint `/inpi/actes/{siren}/documents`, à l'aide du fichier \"Response.json\" permettant de faire lien entre cet ID et le nom du PDF"
-        type: "string"
-        example: "24924080"
       type:
         title: "Acte"
         type: "string"
@@ -57,7 +52,7 @@ inpi:
     tags:
       - "Propriété intellectuelle"
     attributes:
-      id:
+      numero_publication:
         title: "Numéro de publication"
         description: "Numéro de publication du brevet, constitué du code zone + numéro du brevet + catégorie de publication"
         type: "string"
@@ -121,7 +116,7 @@ inpi:
     tags:
       - "Propriété intellectuelle"
     attributes:
-      id:
+      numero_application:
         title: "Numéro d'identification"
         type: "string"
         example: "4313464"
@@ -184,7 +179,7 @@ inpi:
     tags:
       - "Propriété intellectuelle"
     attributes:
-      id:
+      document_id:
         title: 'Identifiant'
         description: "Identifiant du modèle dans la base de l'INPI, constitué du code de l'office de dépôt (ex: FR), du numéro national de dépôt (ex: 20203928) et du numéro de référence (ex: 001) "
         type: 'string'

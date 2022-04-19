@@ -1,7 +1,8 @@
 class INPI::ModeleSerializer::V3 < V3AndMore::BaseSerializer
   link :notice, &:notice_url
 
-  attributes :numero_depot,
+  attributes :document_id,
+    :numero_depot,
     :titre,
     :total_representations,
     :deposant,

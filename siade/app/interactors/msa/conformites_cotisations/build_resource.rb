@@ -9,7 +9,6 @@ class MSA::ConformitesCotisations::BuildResource < BuildResource
 
   def resource_attributes
     {
-      id: siret,
       status:
     }
   end

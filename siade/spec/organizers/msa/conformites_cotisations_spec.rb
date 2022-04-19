@@ -14,12 +14,6 @@ RSpec.describe MSA::ConformitesCotisations, type: :retriever_organizer do
 
   shared_examples 'MSA::ConformitesCotisations success' do
     it { is_expected.to be_success }
-
-    it 'sets the resource id' do
-      id = subject.resource.id
-
-      expect(id).to eq(siret)
-    end
   end
 
   context 'when siret is up to date' do

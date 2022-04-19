@@ -1,5 +1,5 @@
 class OPQIBI::CertificationsIngenierieSerializer::V3 < V3AndMore::BaseSerializer
-  attributes :siren,
+  attributes :numero_certificat,
     :date_delivrance_certificat,
     :duree_validite_certificat,
     :assurances,

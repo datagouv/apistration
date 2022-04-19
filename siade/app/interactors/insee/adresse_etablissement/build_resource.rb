@@ -3,7 +3,7 @@ class INSEE::AdresseEtablissement::BuildResource < INSEE::Etablissement::BuildRe
 
   def resource_attributes
     {
-      id: "adresse_#{etablissement['siret']}",
+      siret: etablissement['siret'],
       siren: etablissement['siren'],
       complement_adresse: etablissement_address['complementAdresseEtablissement'],
       numero_voie: etablissement_address['numeroVoieEtablissement'],

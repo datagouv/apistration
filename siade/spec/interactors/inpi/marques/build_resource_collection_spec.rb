@@ -5,7 +5,7 @@ RSpec.describe INPI::Marques::BuildResourceCollection, type: :build_resource do
     let(:valid_collection_sample) do
       [
         {
-          id: '4746787',
+          numero_application: '4746787',
           nom: 'H',
           status: 'Marque enregistrée',
           depositaire: 'PSA AUTOMOBILES SA',
@@ -13,7 +13,7 @@ RSpec.describe INPI::Marques::BuildResourceCollection, type: :build_resource do
           notice_url: 'https://opendata-pi.inpi.fr/inpi/marques/notice/FR4746787'
         },
         {
-          id: '4553017',
+          numero_application: '4553017',
           nom: 'PSA GROUPE',
           status: 'Marque enregistrée',
           depositaire: 'PSA AUTOMOBILES SA',

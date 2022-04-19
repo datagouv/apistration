@@ -4,7 +4,6 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
 
     let(:valid_pp) do
       {
-        id: 'HISQUIN-FRANCOIS-1965-01-27',
         type: 'personne_physique',
         nom: 'HISQUIN',
         prenom: 'FRANCOIS',
@@ -21,7 +20,7 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
 
     let(:valid_pm) do
       {
-        id: '784824153',
+        numero_identification: '784824153',
         type: 'personne_morale',
         fonction: 'COMMISSAIRE AUX COMPTES TITULAIRE',
         raison_sociale: 'MAZARS - SOCIETE ANONYME',

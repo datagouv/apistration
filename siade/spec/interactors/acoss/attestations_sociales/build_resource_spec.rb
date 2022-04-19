@@ -15,7 +15,6 @@ RSpec.describe ACOSS::AttestationsSociales::BuildResource, type: :build_resource
       expect(subject.resource).to be_a(Resource)
 
       expect(subject.resource.to_h).to include(
-        id: valid_siren(:acoss),
         document_url: url
       )
     end

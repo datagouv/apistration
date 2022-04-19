@@ -4,8 +4,6 @@ RSpec.describe RNM::EntreprisesArtisanales::BuildResource, type: :build_resource
 
     let(:valid_payload) do
       {
-        id: '301123626',
-        siren: '301123626',
         etablissement_origine_id: '3',
 
         modalite_exercice: 'P',

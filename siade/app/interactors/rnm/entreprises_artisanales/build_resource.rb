@@ -3,8 +3,6 @@ class RNM::EntreprisesArtisanales::BuildResource < BuildResource
 
   def resource_attributes
     {
-      id: json_body['ent_id_siren'],
-      siren: json_body['ent_id_siren'],
       etablissement_origine_id: json_body['ent_id_origine'],
 
       modalite_exercice: json_body['ent_act_modalite_exercice'],

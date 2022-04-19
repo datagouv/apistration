@@ -15,7 +15,7 @@ class INPI::Marques::BuildResourceCollection < BuildResourceCollection
 
   def resource_attributes(item)
     {
-      id: id_number(item),
+      numero_application: id_number(item),
       nom: nom(item),
       status: status(item),
       depositaire: depositaire(item),

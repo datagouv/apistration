@@ -20,7 +20,7 @@ class INSEE::AdresseEtablissementSerializer::V3 < V3AndMore::BaseSerializer
   end
 
   link :etablissement do |object|
-    "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/#{object.id}"
+    "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/#{object.siret}"
   end
 
   meta do |object|

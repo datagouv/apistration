@@ -3,7 +3,6 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
 
   def resource_attributes
     {
-      id: siren,
       siret_siege_social:,
 
       type: type_of_person,

@@ -21,12 +21,10 @@ RSpec.describe DGFIP::ChiffresAffaires::BuildResource, type: :build_resource do
   let(:valid_collection) do
     [
       {
-        id: "#{siret}-2016-12-31",
         date_fin_exercice: '2016-12-31',
         chiffre_affaires: 9001
       },
       {
-        id: "#{siret}-2015-12-31",
         date_fin_exercice: '2015-12-31',
         chiffre_affaires: 425_169
       }

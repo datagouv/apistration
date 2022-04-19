@@ -13,7 +13,6 @@ RSpec.describe CNETP::AttestationCotisationsCongesPayesChomageIntemperies::Build
     expect(subject.resource).to be_a(Resource)
 
     expect(subject.resource.to_h).to include(
-      id: valid_siren(:cnetp),
       document_url: 'not.a.real/file/upload'
     )
   end

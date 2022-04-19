@@ -4,7 +4,7 @@ RSpec.describe MI::Associations::BuildResource, type: :build_resource do
 
     let(:valid_payload) do
       {
-        id: 'W751227325',
+        rna_id: 'W751227325',
         titre: 'LA PRÉVENTION ROUTIERE',
         objet: 'Accroitre la sécurité des usagers en encourageant toutes mesures ou initiatives propres à réduire les accidents',
         siret: nil,

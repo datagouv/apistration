@@ -5,7 +5,7 @@ RSpec.describe INPI::Brevets::BuildResourceCollection, type: :build_resource do
     let(:valid_collection) do
       [
         {
-          id: 'FR3110115A1',
+          numero_publication: 'FR3110115A1',
           titre: 'RENFORT LATÉRAL DE PLANCHER DE VÉHICULE AUTOMOBILE ÉQUIPÉ DE BATTERIES DE TRACTION',
           date_publication: '2021-11-19',
           date_depot: '2020-05-12',
@@ -14,7 +14,7 @@ RSpec.describe INPI::Brevets::BuildResourceCollection, type: :build_resource do
           categorie_publication: 'A1'
         },
         {
-          id: 'FR3109459A1',
+          numero_publication: 'FR3109459A1',
           titre: 'Procédé et dispositif de planification de la maintenance d’un véhicule au cours de son cycle de vie.',
           date_publication: '2021-10-22',
           date_depot: '2020-04-15',

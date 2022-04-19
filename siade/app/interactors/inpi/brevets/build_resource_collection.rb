@@ -15,7 +15,7 @@ class INPI::Brevets::BuildResourceCollection < BuildResourceCollection
 
   def resource_attributes(item)
     {
-      id: numero_publication(item),
+      numero_publication: numero_publication(item),
       titre: titre(item),
       date_publication: date_publication(item),
       date_depot: date_depot(item),

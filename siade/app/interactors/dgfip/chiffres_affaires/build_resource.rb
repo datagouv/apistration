@@ -7,7 +7,6 @@ class DGFIP::ChiffresAffaires::BuildResource < BuildResourceCollection
 
   def resource_attributes(item)
     {
-      id: "#{siret}-#{build_date(item)}",
       date_fin_exercice: build_date(item),
       chiffre_affaires: item['ca'].to_i
     }
@@ -23,9 +22,5 @@ class DGFIP::ChiffresAffaires::BuildResource < BuildResourceCollection
 
   def build_date(item)
     Date.parse(item['dateFinExercice']).to_s
-  end
-
-  def siret
-    context.params[:siret]
   end
 end

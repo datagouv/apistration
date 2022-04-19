@@ -19,7 +19,7 @@ RSpec.describe DGFIP::LiassesFiscales::Declarations::BuildResource, type: :build
 
       it { expect(builder.resource).to be_a(Resource) }
 
-      it { expect(builder.resource.to_h).to match(a_hash_including(:id, :declarations, :obligations_fiscales)) }
+      it { expect(builder.resource.to_h).to match(a_hash_including(:declarations, :obligations_fiscales)) }
 
       it 'has no-nil values and at least one value in each entries' do
         builder.resource.declarations.each do |declaration|

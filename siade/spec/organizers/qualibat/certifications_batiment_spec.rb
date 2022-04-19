@@ -12,10 +12,6 @@ RSpec.describe QUALIBAT::CertificationsBatiment, :self_hosted_doc do
 
     it { is_expected.to be_a_success }
 
-    it 'sets the resource id' do
-      expect(subject.resource.id).to eq(siret)
-    end
-
     it 'uploads the certification on self storage' do
       certif_url = subject.resource.document_url
 

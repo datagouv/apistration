@@ -5,7 +5,7 @@ RSpec.describe INPI::Modeles::BuildResourceCollection, type: :build_resource do
     let(:valid_collection_sample) do
       [
         {
-          id: 'FR20203928-001',
+          document_id: 'FR20203928-001',
           numero_depot: '20203928',
           titre: 'FEUX AVANT DIURNE',
           total_representations: 7,
@@ -17,7 +17,7 @@ RSpec.describe INPI::Modeles::BuildResourceCollection, type: :build_resource do
           notice_url: 'https://opendata-pi.inpi.fr/inpi/modeles/notice/FR20203928?ref=001'
         },
         {
-          id: 'FR20203928-002',
+          document_id: 'FR20203928-002',
           numero_depot: '20203928',
           titre: 'FEUX AVANT DIURNE',
           total_representations: 7,

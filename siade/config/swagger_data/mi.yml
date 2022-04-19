@@ -5,6 +5,9 @@ mi:
     tags:
       - "Informations générales"
     attributes:
+      rna_id:
+        type: "string"
+        title: "Identifiant RNA"
       titre:
         type: "string"
         example: "LA PRÉVENTION ROUTIERE"

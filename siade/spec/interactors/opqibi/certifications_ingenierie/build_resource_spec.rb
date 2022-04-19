@@ -17,8 +17,7 @@ RSpec.describe OPQIBI::CertificationsIngenierie::BuildResource, type: :build_res
 
   let(:valid_payload) do
     {
-      id: '05 02 1690',
-      siren: '434717997',
+      numero_certificat: '05 02 1690',
       url: 'https://www.opqibi.com/fiche/1777',
       date_delivrance_certificat: '2022-02-01',
       duree_validite_certificat: 'valable un an',

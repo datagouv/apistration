@@ -5,7 +5,7 @@ class MI::Associations::BuildResource < BuildResource
     @asso_hash = xml_body_as_hash[:asso]
 
     {
-      id: @asso_hash[:identite][:id_rna],
+      rna_id: @asso_hash[:identite][:id_rna],
       titre: @asso_hash[:identite][:nom],
       objet: @asso_hash[:activites][:objet],
       siret: @siret,

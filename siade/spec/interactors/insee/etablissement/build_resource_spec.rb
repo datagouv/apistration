@@ -24,7 +24,6 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
 
       it { is_expected.to be_a(Resource) }
 
-      its(:id) { is_expected.to eq(siret) }
       its(:siege_social) { is_expected.to be(false) }
       its(:etat_administratif) { is_expected.to eq('A') }
       its(:date_fermeture) { is_expected.to be_nil }

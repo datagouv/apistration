@@ -15,7 +15,7 @@ class INPI::Modeles::BuildResourceCollection < BuildResourceCollection
 
   def resource_attributes(item)
     {
-      id: id(item),
+      document_id: document_id(item),
       numero_depot: numero_depot(item),
       titre: titre(item),
       total_representations: total_representations(item),
@@ -34,7 +34,7 @@ class INPI::Modeles::BuildResourceCollection < BuildResourceCollection
     json_body['results'].first(limit)
   end
 
-  def id(item)
+  def document_id(item)
     item['documentId']
   end
 

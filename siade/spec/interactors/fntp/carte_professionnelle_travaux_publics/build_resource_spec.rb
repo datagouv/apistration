@@ -13,7 +13,6 @@ RSpec.describe FNTP::CarteProfessionnelleTravauxPublics::BuildResource, type: :b
     expect(subject.resource).to be_a(Resource)
 
     expect(subject.resource.to_h).to include(
-      id: valid_siren(:fntp),
       document_url: 'not.a.real/file/upload'
     )
   end

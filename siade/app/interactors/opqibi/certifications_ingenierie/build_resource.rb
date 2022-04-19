@@ -3,8 +3,7 @@ class OPQIBI::CertificationsIngenierie::BuildResource < BuildResource
 
   def resource_attributes
     {
-      id: json_body['numero_certificat'],
-      siren: context.params[:siren],
+      numero_certificat: json_body['numero_certificat'],
       url: json_body['url'],
       date_delivrance_certificat: normalized_date(json_body['date_de_delivrance_du_certificat']),
       duree_validite_certificat: json_body['duree_de_validite_du_certificat'],

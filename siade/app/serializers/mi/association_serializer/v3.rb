@@ -1,5 +1,6 @@
 class MI::AssociationSerializer::V3 < V3AndMore::BaseSerializer
-  attributes :titre,
+  attributes :rna_id,
+    :titre,
     :objet,
     :siret,
     :siret_siege_social,

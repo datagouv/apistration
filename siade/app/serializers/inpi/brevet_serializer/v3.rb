@@ -1,5 +1,6 @@
 class INPI::BrevetSerializer::V3 < V3AndMore::BaseSerializer
-  attributes :titre,
+  attributes :numero_publication,
+    :titre,
     :date_publication,
     :date_depot,
     :code_zone,
