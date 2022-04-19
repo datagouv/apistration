@@ -24,8 +24,6 @@ RSpec.describe 'OPQIBI: Certificationsingenierie', type: %i[request swagger] do
           rate_limit_headers
 
           schema build_rswag_response(
-            id: valid_siren(:opqibi_with_probatoire),
-            type: 'certificat_ingenierie',
             attributes: SwaggerData.get('opqibi.certifications_ingenierie.attributes')
           )
 

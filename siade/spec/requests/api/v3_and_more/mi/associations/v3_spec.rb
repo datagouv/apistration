@@ -22,8 +22,6 @@ RSpec.describe 'MI : Associations', type: %i[request swagger] do
           description SwaggerData.get('mi.association.description')
 
           schema build_rswag_response(
-            id: valid_rna_id,
-            type: 'association',
             attributes: SwaggerData.get('mi.association.attributes')
           )
 

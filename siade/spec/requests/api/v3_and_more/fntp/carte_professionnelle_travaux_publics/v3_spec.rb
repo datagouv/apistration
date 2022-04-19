@@ -24,7 +24,6 @@ RSpec.describe 'FNTP: Carte professionnelle Travaux Publics', type: %i[request s
           rate_limit_headers
 
           schema build_rswag_document_response(
-            id: valid_siren(:fntp),
             document_url_properties: SwaggerData.get('fntp.carte_professionnelle_travaux_publics.document_url_properties')
           )
 

@@ -31,7 +31,6 @@ RSpec.describe 'DGFIP: Attestationfiscale', type: %i[request swagger] do
           rate_limit_headers
 
           schema build_rswag_document_response(
-            id: valid_siren,
             document_url_properties: SwaggerData.get('dgfip.attestations_fiscales.document_url_properties')
           )
 

@@ -22,7 +22,6 @@ RSpec.describe 'Qualibat : CertificationsBatiment', type: %i[request swagger] do
           description SwaggerData.get('qualibat.certifications_batiment.description')
 
           schema build_rswag_document_response(
-            id: valid_siret(:qualibat),
             document_url_properties: SwaggerData.get('qualibat.certifications_batiment.document_url_properties')
           )
 

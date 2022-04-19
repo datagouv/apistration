@@ -22,7 +22,6 @@ RSpec.describe 'PROBTP : Attestations cotisations retraite', type: %i[request sw
           description SwaggerData.get('probtp.attestation_cotisation_retraite.description')
 
           schema build_rswag_document_response(
-            id: eligible_siret(:probtp),
             document_url_properties: SwaggerData.get('probtp.attestation_cotisation_retraite.document_url_properties')
           )
 

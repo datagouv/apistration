@@ -24,8 +24,6 @@ RSpec.describe 'INSEE: Unités légales diffusibles', type: %i[request swagger] 
           description SwaggerData.get('insee.unite_legale_diffusable.description')
 
           schema build_rswag_response(
-            id: '130025265',
-            type: 'entreprise',
             attributes: SwaggerData.get('insee.unite_legale_diffusable.attributes'),
             links: SwaggerData.get('insee.unite_legale.links'),
             meta: SwaggerData.get('insee.unite_legale.meta')

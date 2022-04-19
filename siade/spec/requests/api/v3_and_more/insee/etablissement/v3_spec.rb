@@ -22,8 +22,6 @@ RSpec.describe 'INSEE: Etablissement', type: %i[request swagger] do
           description SwaggerData.get('insee.etablissement.description')
 
           schema build_rswag_response(
-            id: sirets_insee_v3[:active_GE],
-            type: 'etablissement',
             attributes: SwaggerData.get('insee.etablissement.attributes'),
             links: SwaggerData.get('insee.etablissement.links'),
             meta: SwaggerData.get('insee.etablissement.meta')

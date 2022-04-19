@@ -27,8 +27,6 @@ RSpec.describe 'MSA: Conformitescotisations', type: %i[request swagger] do
           rate_limit_headers
 
           schema build_rswag_response(
-            id: valid_siret(:msa),
-            type: 'conformite',
             attributes: SwaggerData.get('msa.conformites_cotisations.attributes')
           )
 

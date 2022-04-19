@@ -1,35 +1,19 @@
 module RSWagResourcesPayloads
-  # rubocop:disable Naming/MethodParameterName
-  def build_rswag_response(id:, type:, attributes:, links: nil, meta: nil)
+  def build_rswag_response(attributes:, links: nil, meta: nil)
     {
       type: :object,
       properties: {
         data: {
           type: :object,
-          properties: {
-            id: {
-              type: :string,
-              example: id
-            },
-            type: {
-              type: :string,
-              example: type,
-              enum: [type]
-            },
-            attributes: {
-              type: :object,
-              properties: add_required_keys_to_all_type_object(attributes),
-              required: attributes.keys
-            }
-          }.merge(
-            build_rswag_links(links)
-          ).merge(
-            build_rswag_meta(meta)
-          ),
-          required: build_rswag_data_required_keys(meta, links)
+          properties: add_required_keys_to_all_type_object(attributes),
+          required: attributes.keys
         }
-      },
-      required: %w[data]
+      }.merge(
+        build_rswag_links(links)
+      ).merge(
+        build_rswag_meta(meta)
+      ),
+      required: %w[data links meta]
     }
   end
 
@@ -41,69 +25,42 @@ module RSWagResourcesPayloads
           type: :array,
           items: {
             type: :object,
-            properties: {
-              id: properties['id'],
-              type: properties['type'],
-              attributes: {
-                type: :object,
-                properties: add_required_keys_to_all_type_object(properties.except('id', 'type')),
-                required: required || (properties.keys - %w[id type])
-              }
-            }.merge(
+            properties: add_required_keys_to_all_type_object(properties.except('id', 'type')).merge(
               build_rswag_links(links)
             ),
-            required: build_rswag_collection_item_required_keys(links)
-          }
+            required: required || (properties.keys - %w[id type])
+          },
+          required: build_rswag_collection_item_required_keys(links)
         }
       }.merge(
-          build_rswag_meta(meta)
-        ),
+        build_rswag_meta(meta)
+      ),
       required: build_rswag_collection_required_keys(meta)
     }.merge(build_custom_example(example))
   end
 
-  def build_rswag_document_response(id:, document_url_properties: {})
+  def build_rswag_document_response(document_url_properties: {})
     {
       type: :object,
       properties: {
         data: {
           type: :object,
           properties: {
-            id: {
-              type: :string,
-              example: id
-            },
-            type: {
-              type: :string,
-              example: :document,
-              enum: %w[document]
-            },
-            attributes: {
-              type: :object,
-              properties: {
-                document_url: {
-                  type: :string
-                }.merge(document_url_properties),
-                expires_in: {
-                  type: :integer,
-                  example: 7889238,
-                  description: "Nombre de secondes avant l'expiration de l'url associée à l'attribut document_url : cette durée correspond généralement à 3 mois."
-                }
-              },
-              required: %w[document_url expires_in]
+            document_url: {
+              type: :string
+            }.merge(document_url_properties),
+            expires_in: {
+              type: :integer,
+              example: 7889238,
+              description: "Nombre de secondes avant l'expiration de l'url associée à l'attribut document_url : cette durée correspond généralement à 3 mois."
             }
           },
-          required: %w[
-            id
-            type
-            attributes
-          ]
+          required: %w[document_url expires_in]
         }
       },
       required: %w[data]
     }
   end
-  # rubocop:enable Naming/MethodParameterName
 
   def build_rswag_meta(meta)
     return {} if meta.blank?

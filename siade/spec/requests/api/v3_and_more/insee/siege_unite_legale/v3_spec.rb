@@ -26,8 +26,6 @@ RSpec.describe 'INSEE: Siège Unité Légale', type: %i[request swagger] do
           rate_limit_headers
 
           schema build_rswag_response(
-            id: sirens_insee_v3[:active_GE],
-            type: 'etablissement',
             attributes: SwaggerData.get('insee.etablissement.attributes'),
             links: SwaggerData.get('insee.etablissement.links'),
             meta: SwaggerData.get('insee.etablissement.meta')

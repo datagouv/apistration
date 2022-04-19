@@ -22,8 +22,6 @@ RSpec.describe 'INSEE: Unités légales', type: %i[request swagger] do
           description SwaggerData.get('insee.unite_legale.description')
 
           schema build_rswag_response(
-            id: sirens_insee_v3[:active_GE],
-            type: 'entreprise',
             attributes: SwaggerData.get('insee.unite_legale.attributes'),
             links: SwaggerData.get('insee.unite_legale.links'),
             meta: SwaggerData.get('insee.unite_legale.meta')

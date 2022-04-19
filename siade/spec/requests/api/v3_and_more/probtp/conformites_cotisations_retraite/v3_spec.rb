@@ -24,8 +24,6 @@ RSpec.describe 'PROBTP: Conformites Cotisations Retraite', type: %i[request swag
           rate_limit_headers
 
           schema build_rswag_response(
-            id: eligible_siret(:probtp),
-            type: 'entreprise',
             attributes: SwaggerData.get('probtp.conformites_cotisations_retraite.attributes')
           )
 

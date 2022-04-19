@@ -22,8 +22,6 @@ RSpec.describe 'DGDDI: EORI', type: %i[request swagger] do
           description SwaggerData.get('dgddi.eori.description')
 
           schema build_rswag_response(
-            id: valid_eori,
-            type: 'entreprise',
             attributes: SwaggerData.get('dgddi.eori.attributes')
           )
 

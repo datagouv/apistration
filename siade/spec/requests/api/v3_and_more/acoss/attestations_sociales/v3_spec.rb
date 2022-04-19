@@ -24,7 +24,6 @@ RSpec.describe 'ACOSS: Attestations sociales', type: %i[request swagger] do
           rate_limit_headers
 
           schema build_rswag_document_response(
-            id: valid_siren(:acoss),
             document_url_properties: SwaggerData.get('acoss.attestation_sociale.document_url_properties')
           )
 

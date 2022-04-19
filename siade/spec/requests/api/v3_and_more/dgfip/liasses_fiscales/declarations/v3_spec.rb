@@ -27,8 +27,6 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', type: %i[request swa
           rate_limit_headers
 
           schema build_rswag_response(
-            id: valid_siren(:liasse_fiscale),
-            type: 'liasses_fiscales',
             attributes: SwaggerData.get('dgfip.liasses_fiscales.declarations.attributes'),
             meta: SwaggerData.get('dgfip.liasses_fiscales.declarations.meta')
           )

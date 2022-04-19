@@ -22,8 +22,6 @@ RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
           description SwaggerData.get('rnm.entreprise_artisanale.description')
 
           schema build_rswag_response(
-            id: valid_siren(:rnm_cma),
-            type: 'entreprise',
             attributes: SwaggerData.get('rnm.entreprise_artisanale.attributes')
           )
 

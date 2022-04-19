@@ -22,8 +22,6 @@ RSpec.describe 'INSEE: Adresse Etablissement diffusible', type: %i[request swagg
           description SwaggerData.get('insee.adresse_etablissement_diffusable.description')
 
           schema build_rswag_response(
-            id: sirets_insee_v3[:active_GE],
-            type: 'adresse',
             attributes: SwaggerData.get('insee.adresse_etablissement_diffusable.attributes'),
             links: SwaggerData.get('insee.adresse_etablissement.links'),
             meta: SwaggerData.get('insee.adresse_etablissement.meta')
