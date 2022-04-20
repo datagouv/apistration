@@ -25,7 +25,7 @@ set :rails_env, ENV['to']
 set :execution_mode, :system
 set :forward_agent, true
 set :port, 22
-set :repository, 'git@gitlab.com:etalab/api-entreprise/siade.git'
+set :repository, 'git@github.com:etalab/siade.git'
 
 branch = ENV['branch'] || begin
                             case ENV['to']
