@@ -1,7 +1,7 @@
 probtp:
   attestation_cotisation_retraite:
-    title: "Cotisations retraite bâtiment"
-    description: "Obtenir l’attestation de l’entreprise (si celle-ci est éligible) auprès de la Protection Sociale du Bâtiment et des Travaux publics (PROBTP)"
+    title: "Conformité cotisations retraite bâtiment"
+    description: "Attestation délivrée par la Protection sociale du bâtiment et des travaux publics (PROBTP), indiquant que l'entreprise est à jour de ses cotisations."
     tags:
       - "Attestations sociales et fiscales"
     document_url_properties:
