@@ -26,6 +26,44 @@ RSpec.shared_context 'Valid mandatory params and unauthorized token' do
 end
 # rubocop:enable RSpec/VariableName
 
+# rubocop:disable Metrics/MethodLength
+def build_rswag_error(title: nil, detail: nil, code: nil)
+  {
+    type: :object,
+    properties: {
+      errors: {
+        type: :array,
+        items: {
+          type: :object,
+          properties: {
+            title: {
+              type: :string,
+              example: title
+            }.compact,
+            detail: {
+              type: :string,
+              example: detail
+            }.compact,
+            code: {
+              type: :string,
+              example: code
+            }.compact
+          },
+          required: %w[
+            title
+            detail
+            code
+          ]
+        }
+      }
+    },
+    required: %w[
+      errors
+    ]
+  }
+end
+# rubocop:enable Metrics/MethodLength
+
 # rubocop:disable Metrics/BlockLength
 RSpec.configure do |config|
   # Specify a root folder where Swagger JSON files are generated
@@ -84,62 +122,15 @@ RSpec.configure do |config|
       ],
       components: {
         schemas: {
-          NotFound: {
-            type: :object,
-            properties: {
-              errors: {
-                type: :array,
-                items: {
-                  type: :object,
-                  properties: {
-                    title: {
-                      type: :string,
-                      example: 'Resource not found'
-                    },
-                    detail: {
-                      type: :string,
-                      example: 'Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel'
-                    }
-                  },
-                  required: %w[
-                    title
-                    detail
-                  ]
-                }
-              }
-            },
-            required: %w[
-              errors
-            ]
-          },
-          UnprocessableEntity: {
-            type: :object,
-            properties: {
-              errors: {
-                type: :array,
-                items: {
-                  type: :object,
-                  properties: {
-                    title: {
-                      type: :string,
-                      example: 'Unprocessable entity'
-                    },
-                    detail: {
-                      type: :string,
-                      example: 'Le siret ou siren indiqué n\'est pas correctement formaté.'
-                    }
-                  },
-                  required: %w[
-                    title
-                    detail
-                  ]
-                }
-              }
-            },
-            required: %w[
-              errors
-            ]
-          }
+          Error: build_rswag_error,
+          NotFound: build_rswag_error(
+            title: 'Resource not found',
+            detail: 'Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel'
+          ),
+          UnprocessableEntity: build_rswag_error(
+            title: 'Unprocessable entity',
+            detail: 'Le siret ou siren indiqué n\'est pas correctement formaté.'
+          )
         },
         securitySchemes: {
           jwt_bearer_token: {
