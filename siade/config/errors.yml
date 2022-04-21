@@ -21,7 +21,7 @@
 
 - subcode: '005'
   title: 'Indisponible pour des raisons légales'
-  detail: "Problème de résolution DNS de l'adresse du serveur"
+  detail: "Cette entité n'est accessible par aucun organisme."
 
 - subcode: '006'
   title: "Erreur d'authentification auprès du fournisseur de données"
