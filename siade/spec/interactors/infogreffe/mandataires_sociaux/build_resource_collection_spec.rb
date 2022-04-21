@@ -74,7 +74,7 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
     end
 
     context 'when no greffe code in mandataires sociaux payload',
-      vcr: { cassette_name: 'infogreffe/mandataires_sociaux/with_valid_siren_no_greffe_code' } do
+      vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren_no_greffe_code' } do
       it 'does not raise' do
         expect { call }.not_to raise_error
       end

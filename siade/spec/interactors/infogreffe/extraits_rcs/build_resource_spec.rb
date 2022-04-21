@@ -1,15 +1,15 @@
 RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
-  let(:instance) { described_class.call(params: params, response: response) }
+  let(:instance) { described_class.call(params:, response:) }
 
   describe '.call', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren' } do
     subject { instance }
 
     let(:response) do
-      instance_double('Net::HTTPOK', body: body)
+      instance_double(Net::HTTPOK, body:)
     end
 
     let(:body) do
-      Infogreffe::MakeRequest.call(params: params).response.body
+      Infogreffe::MakeRequest.call(params:).response.body
     end
 
     let(:params) do
