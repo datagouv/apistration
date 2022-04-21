@@ -106,7 +106,7 @@ Naming/AccessorMethodName:
 
 # Allowing uppercase in some method names
 Naming/MethodName:
-  IgnoredPatterns:
+  AllowedPatterns:
     - starts_with_FR?
 
 Naming/MethodParameterName:
