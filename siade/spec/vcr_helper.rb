@@ -57,7 +57,7 @@ VCR.configure do |c|
 
     bool = request.headers.except(*headers_to_ignore) == registered_request.headers.except(*headers_to_ignore)
 
-    if ENV['DEBUG_VCR'] && !bool
+    if ENV.fetch('DEBUG_VCR', false) && !bool
       print "Diff on headers:\n"
       mismatching_keys = (request.headers.except(*headers_to_ignore).to_a - registered_request.headers.except(*headers_to_ignore).to_a).map { |header| header[0] }
       mismatching_keys += (registered_request.headers.except(*headers_to_ignore).to_a - request.headers.except(*headers_to_ignore).to_a).map { |header| header[0] }
