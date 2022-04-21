@@ -8,13 +8,7 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
         nom: 'HISQUIN',
         prenom: 'FRANCOIS',
         fonction: 'PRESIDENT DU DIRECTOIRE',
-        date_naissance: '1965-01-27',
-        lieu_naissance: 'ROUBAIX',
-        pays_naissance: 'FRANCE',
-        code_pays_naissance: 'FR',
-        nationalite: 'FRANCAISE',
-        code_nationalite: 'FR',
-        date_naissance_timestamp: -155_523_600
+        date_naissance: '1965-01'
       }
     end
 
