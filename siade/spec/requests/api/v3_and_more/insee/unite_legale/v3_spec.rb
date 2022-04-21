@@ -17,7 +17,7 @@ RSpec.describe 'INSEE: Unités légales', type: %i[request swagger] do
         let(:siren) { sirens_insee_v3[:active_GE] }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Unité légale trouvée', vcr: { cassette_name: 'insee/siren/active_GE_with_token' } do
           description SwaggerData.get('insee.unite_legale.description')
 
@@ -32,12 +32,29 @@ RSpec.describe 'INSEE: Unités légales', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Non trouvée', vcr: { cassette_name: 'insee/siren/non_existent_with_token' } do
-          let(:siren) { non_existent_siren }
+        describe 'server errors' do
+          let(:siren) { sirens_insee_v3[:active_GE] }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siren) do
+            let(:siren) { 'lol' }
+          end
 
-          run_test!
+          not_found_error_request('INSEE', INSEE::UniteLegale)
+          common_provider_errors_request('INSEE', INSEE::UniteLegale)
+          common_network_error_request('INSEE', INSEE::UniteLegale)
+
+          response '451', 'Indisponible pour des raisons légales' do
+            let(:siren) { sirens_insee_v3[:active_GE] }
+
+            stubbed_organizer_error(
+              INSEE::UniteLegale,
+              UnavailableForLegalReasonsError.new('INSEE', 'whatever')
+            )
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
+          end
         end
       end
     end

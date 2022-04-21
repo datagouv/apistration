@@ -93,8 +93,18 @@ paths:
         obligations de cotisations et contributions sociales auprès de l'URSSAF Caisse
         nationale.
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Entreprise found
           headers:
@@ -501,8 +511,18 @@ paths:
         entrepreneurs de travaux publics (CNETP), attestant le respect des obligations
         relatives aux congés payés et au chômage-intempéries.
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Certificat trouvé
           headers:
@@ -621,8 +641,18 @@ paths:
 
         '
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Entité trouvée
           headers:
@@ -798,8 +828,18 @@ paths:
         publiques (DGFIP), indiquant que l’entreprise est à jour de ses obligations
         fiscales.
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Attestation fiscale trouvée
           headers:
@@ -940,8 +980,18 @@ paths:
       description: Déclarations de chiffre d’affaires, des trois derniers exercices,
         faites auprès de la Direction générale des finances publiques (DGFIP).
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Exercices trouvés
           headers:
@@ -1057,8 +1107,18 @@ paths:
         déclarations de résultat d’une entreprise auprès de la Direction générale
         des finances publiques (DGFIP).
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Entreprise trouvée
           headers:
@@ -1376,8 +1436,18 @@ paths:
       description: Conventions collectives d’un établissement (identifiant de la convention,
         lien vers les textes en vigueur, etc.)
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Entreprise trouvée
           headers:
@@ -1528,8 +1598,18 @@ paths:
         à une entreprise de travaux publics en règle de ses obligations sociales,
         administratives et juridiques.
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Carte professionnelle trouvée
           headers:
@@ -1661,8 +1741,18 @@ paths:
       description: Liste des mandataires sociaux d'une société inscrite au RCS, délivrée
         par Infogreffe.
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Entité trouvée
           headers:
@@ -1924,8 +2014,18 @@ paths:
 
         '
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Actes trouvés
           headers:
@@ -2053,8 +2153,18 @@ paths:
 
         '
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Brevets trouvés
           headers:
@@ -2303,8 +2413,18 @@ paths:
 
         '
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Marques trouvées
           headers:
@@ -2455,8 +2575,18 @@ paths:
 
         '
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Modèles trouvés
           headers:
@@ -2650,8 +2780,18 @@ paths:
       description: Adresse d'un établissement inscrit au répertoire Sirene. Tous les
         établissements sont appelables, y compris les non-diffusibles.
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Etablissement trouvé
           content:
@@ -2991,8 +3131,18 @@ paths:
       - jwt_bearer_token: []
       description: Adresse d'un établissement diffusible inscrit au répertoire Sirene."
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Etablissement trouvé
           content:
@@ -3333,8 +3483,18 @@ paths:
       description: Informations générales concernant un établissement inscrit au répertoire
         Sirene. Tous les établissements sont appelables, y compris les non-diffusibles.
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Etablissement trouvé
           headers:
@@ -4230,8 +4390,18 @@ paths:
       description: Informations générales concernant un établissement diffusible inscrit
         au répertoire Sirene.
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Etablissement trouvé
           headers:
@@ -5127,8 +5297,18 @@ paths:
       description: Informations générales concernant le siège d'une unité légale diffusible
         inscrite au répertoire Sirene.
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Établissement trouvé
           headers:
@@ -6025,8 +6205,18 @@ paths:
         inscrite au répertoire Sirene. Tous les sièges sociaux sont appelables, y
         compris les non-diffusibles.
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Établissement trouvé
           headers:
@@ -6924,8 +7114,18 @@ paths:
         ou administration) inscrite au répertoire Sirene. Toutes les unités légales
         sont appelables, y compris les non-diffusibles.
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Unité légale trouvée
           headers:
@@ -7336,12 +7536,143 @@ paths:
                 - data
                 - links
                 - meta
+        '422':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                unprocessable_entity_error_siren_error:
+                  value:
+                    errors:
+                    - code: '00301'
+                      title: Entité non traitable
+                      detail: Le numéro de siren n'est pas correctement formatté
+                      source:
+                        parameter: siren
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le numéro de siren n'est pas correctement formatté
+                missing_mandatory_params_context_error:
+                  value:
+                    errors:
+                    - code: '00201'
+                      title: Entité non traitable
+                      detail: Le paramètre context est obligatoire
+                      source:
+                        parameter: context
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre context est obligatoire
+                missing_mandatory_params_object_error:
+                  value:
+                    errors:
+                    - code: '00202'
+                      title: Entité non traitable
+                      detail: Le paramètre object est obligatoire
+                      source:
+                        parameter: object
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre object est obligatoire
+                missing_mandatory_params_recipient_error:
+                  value:
+                    errors:
+                    - code: '00203'
+                      title: Entité non traitable
+                      detail: Le paramètre recipient est obligatoire
+                      source:
+                        parameter: recipient
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre recipient est obligatoire
+              schema:
+                "$ref": "#/components/schemas/Error"
         '404':
           description: Non trouvée
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/NotFound"
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unknown_error:
+                  value:
+                    errors:
+                    - code: '01000'
+                      title: Erreur inconnue
+                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur inconnue
+                  description: Mauvaise réponse envoyée par le fournisseur de données
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '01002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+                provider_unavailable_error:
+                  value:
+                    errors:
+                    - code: '01001'
+                      title: Service non disponible
+                      detail: Service du fournisseur de données temporairement indisponible
+                        ou en maintenance.
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Service non disponible
+                  description: Service du fournisseur de données temporairement indisponible
+                    ou en maintenance.
+                network_error:
+                  value:
+                    errors:
+                    - code: '00501'
+                      title: Erreur réseau
+                      detail: Problème de connexion au serveur distant. L'erreur peut
+                        venir soit du fournisseur, soit de API Entreprise
+                      source:
+                      meta: {}
+                  summary: Erreur réseau
+                  description: Problème de connexion au serveur distant. L'erreur
+                    peut venir soit du fournisseur, soit de API Entreprise
+                dns_resolution_error:
+                  value:
+                    errors:
+                    - code: '01004'
+                      title: Erreur de résolution DNS
+                      detail: Problème de résolution DNS de l'adresse du serveur
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur de résolution DNS
+                  description: Problème de résolution DNS de l'adresse du serveur
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '451':
+          description: Indisponible pour des raisons légales
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -7422,8 +7753,18 @@ paths:
       description: Informations de référence d'une unité légale (entreprise, association
         ou administration) diffusible, inscrite au répertoire Sirene.
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Unité légale trouvée
           headers:
@@ -7836,12 +8177,143 @@ paths:
                 - data
                 - links
                 - meta
+        '422':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                unprocessable_entity_error_siren_error:
+                  value:
+                    errors:
+                    - code: '00301'
+                      title: Entité non traitable
+                      detail: Le numéro de siren n'est pas correctement formatté
+                      source:
+                        parameter: siren
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le numéro de siren n'est pas correctement formatté
+                missing_mandatory_params_context_error:
+                  value:
+                    errors:
+                    - code: '00201'
+                      title: Entité non traitable
+                      detail: Le paramètre context est obligatoire
+                      source:
+                        parameter: context
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre context est obligatoire
+                missing_mandatory_params_object_error:
+                  value:
+                    errors:
+                    - code: '00202'
+                      title: Entité non traitable
+                      detail: Le paramètre object est obligatoire
+                      source:
+                        parameter: object
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre object est obligatoire
+                missing_mandatory_params_recipient_error:
+                  value:
+                    errors:
+                    - code: '00203'
+                      title: Entité non traitable
+                      detail: Le paramètre recipient est obligatoire
+                      source:
+                        parameter: recipient
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre recipient est obligatoire
+              schema:
+                "$ref": "#/components/schemas/Error"
         '404':
           description: Non trouvée
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/NotFound"
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unknown_error:
+                  value:
+                    errors:
+                    - code: '01000'
+                      title: Erreur inconnue
+                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur inconnue
+                  description: Mauvaise réponse envoyée par le fournisseur de données
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '01002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+                provider_unavailable_error:
+                  value:
+                    errors:
+                    - code: '01001'
+                      title: Service non disponible
+                      detail: Service du fournisseur de données temporairement indisponible
+                        ou en maintenance.
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Service non disponible
+                  description: Service du fournisseur de données temporairement indisponible
+                    ou en maintenance.
+                network_error:
+                  value:
+                    errors:
+                    - code: '00501'
+                      title: Erreur réseau
+                      detail: Problème de connexion au serveur distant. L'erreur peut
+                        venir soit du fournisseur, soit de API Entreprise
+                      source:
+                      meta: {}
+                  summary: Erreur réseau
+                  description: Problème de connexion au serveur distant. L'erreur
+                    peut venir soit du fournisseur, soit de API Entreprise
+                dns_resolution_error:
+                  value:
+                    errors:
+                    - code: '01004'
+                      title: Erreur de résolution DNS
+                      detail: Problème de résolution DNS de l'adresse du serveur
+                      source:
+                      meta:
+                        provider: INSEE
+                  summary: Erreur de résolution DNS
+                  description: Problème de résolution DNS de l'adresse du serveur
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '451':
+          description: Indisponible pour des raisons légales
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -7903,8 +8375,18 @@ paths:
       description: Divers documents administratifs en PDF tels que les statuts, le
         récépissé de déclaration de création, la liste des dirigeants...
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Document Association found
           headers:
@@ -8054,8 +8536,18 @@ paths:
       description: Informations issues du répertoire national des associations (RNA),
         telles que la date de création, l’adresse du siège et les dirigeants.
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Association found
           headers:
@@ -8288,8 +8780,18 @@ paths:
       description: Statut des cotisations sociales d'une entreprise indiquant si elle
         est en règle auprès de la sécurité sociale agricole (MSA).
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Entreprise trouvée
           headers:
@@ -8403,8 +8905,18 @@ paths:
 
         Une entreprise possède au moins une qualification ou une qualification probatoire.
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Entreprise trouvée
           headers:
@@ -8636,8 +9148,18 @@ paths:
       description: Attestation délivrée par la Protection sociale du bâtiment et des
         travaux publics (PROBTP), indiquant que l'entreprise est à jour de ses cotisations.
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Attestation found
           headers:
@@ -8742,8 +9264,18 @@ paths:
       description: Savoir si une entreprise est à jour de ses cotisations retraite
         à la Protection Sociale du Bâtiment et des Travaux publics (PROBTP)
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Entreprise trouvée
           headers:
@@ -8871,8 +9403,18 @@ paths:
       description: Certificat délivré par l'association Qualibat, attestant de la
         **qualification d’une entreprise dans le bâtiment**.
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Certification trouvée
           headers:
@@ -9004,8 +9546,18 @@ paths:
       description: Informations de référence d'une entreprise artisanale enregistrée
         au répertoire national des métiers (RNM)
       responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Entreprise found
           headers:
@@ -9083,6 +9635,26 @@ servers:
   description: Environnement de staging
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              detail:
+                type: string
+              code:
+                type: string
+            required:
+            - title
+            - detail
+            - code
+      required:
+      - errors
     NotFound:
       type: object
       properties:
@@ -9098,9 +9670,12 @@ components:
                 type: string
                 example: Le siret ou siren indiqué n'existe pas, n'est pas connu ou
                   ne comporte aucune information pour cet appel
+              code:
+                type: string
             required:
             - title
             - detail
+            - code
       required:
       - errors
     UnprocessableEntity:
@@ -9117,9 +9692,12 @@ components:
               detail:
                 type: string
                 example: Le siret ou siren indiqué n'est pas correctement formaté.
+              code:
+                type: string
             required:
             - title
             - detail
+            - code
       required:
       - errors
   securitySchemes:
