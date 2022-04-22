@@ -52,5 +52,7 @@ module Siade
     config.throttle = config_for(:throttle)
     config.jwt_whitelist = config_for(:jwt_whitelist)
     config.jwt_blacklist = config_for(:jwt_blacklist)
+
+    config.cache_store = :redis_cache_store, { url: ENV['REDIS_DATABASE_URL'] || 'redis://localhost:6379/0' }
   end
 end
