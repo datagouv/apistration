@@ -44,10 +44,34 @@ class API::V2::AbstractDGFIPController < API::V2::BaseController
     ).as_json
   end
 
+  def write_retriever_cache(retriever)
+    Rails.cache.write(cache_key, retriever, expires_in: until_next_dgfip_update_time)
+  end
+
+  def cached_retriever
+    Rails.cache.read(cache_key)
+  end
+
+  def cache_key
+    request.path
+  end
+
+  def until_next_dgfip_update_time
+    if (0..3).include?(now.hour)
+      (now.beginning_of_day + 3.hours) - now
+    else
+      (now.end_of_day + 3.hours) - now
+    end
+  end
+
   private
 
   def no_cookie_on_provider_connection_refused_response?(exception)
     exception.name == :cookie &&
       exception.receiver.instance_of?(SIADE::V2::Responses::ServiceUnavailable)
+  end
+
+  def now
+    Time.zone.now
   end
 end

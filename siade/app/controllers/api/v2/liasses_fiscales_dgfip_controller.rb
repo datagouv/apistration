@@ -14,13 +14,23 @@ class API::V2::LiassesFiscalesDGFIPController < API::V2::AbstractDGFIPController
   private
 
   def dgfip_action(request_type:)
-    retriever_liasse_fiscale = SIADE::V2::Retrievers::LiassesFiscalesDGFIP.new(retriever_params.merge(request_type: request_type))
-    retriever_liasse_fiscale.retrieve
+    retriever = cached_retriever || retrieve_liasse_fiscale(request_type:)
 
-    if retriever_liasse_fiscale.success?
-      render json: retriever_liasse_fiscale.response, status: :ok
+    if retriever.success?
+      render json: retriever.response, status: :ok
     else
-      render_errors(retriever_liasse_fiscale)
+      render_errors(retriever)
+    end
+  end
+
+  def retrieve_liasse_fiscale(request_type:)
+    @retrieve_liasse_fiscale ||= begin
+      retriever = SIADE::V2::Retrievers::LiassesFiscalesDGFIP.new(retriever_params.merge(request_type: request_type))
+      retriever.retrieve
+
+      write_retriever_cache(retriever) unless at_least_one_error_kind_of?(:network_error, retriever)
+
+      retriever
     end
   end
 
