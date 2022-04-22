@@ -47,7 +47,7 @@ class API::V2::AbstractDGFIPController < API::V2::BaseController
   def write_retriever_cache(retriever)
     mark_retrieved_as_cached!
 
-    Rails.cache.write(cache_key, retriever, expires_in: until_next_dgfip_update_time)
+    Rails.cache.write(cache_key, retriever, expires_in: until_next_dgfip_update_in_seconds)
   end
 
   def cached_retriever
@@ -58,11 +58,11 @@ class API::V2::AbstractDGFIPController < API::V2::BaseController
     request.path
   end
 
-  def until_next_dgfip_update_time
+  def until_next_dgfip_update_in_seconds
     if (0..3).include?(now.hour)
-      (now.beginning_of_day + 3.hours) - now
+      ((now.beginning_of_day + 3.hours) - now).to_i
     else
-      (now.end_of_day + 3.hours) - now
+      ((now.end_of_day + 3.hours) - now).to_i
     end
   end
 
@@ -74,6 +74,6 @@ class API::V2::AbstractDGFIPController < API::V2::BaseController
   end
 
   def now
-    Time.zone.now
+    @now ||= Time.zone.now
   end
 end
