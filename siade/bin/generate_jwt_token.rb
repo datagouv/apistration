@@ -36,7 +36,7 @@ end.concat(extra_roles).uniq
 
 token_payload = {
   uid: SecureRandom.uuid,
-  jti: "api-entreprise-#{env}",
+  jti: "00000000-0000-0000-0000-000000000000",
   roles: roles,
   sub: "#{env} development",
   iat: Time.now.to_i,
