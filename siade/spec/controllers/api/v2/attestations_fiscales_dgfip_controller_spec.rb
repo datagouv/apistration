@@ -1,7 +1,6 @@
 RSpec.describe API::V2::AttestationsFiscalesDGFIPController, type: :controller do
   before do
-    allow_any_instance_of(SIADE::V2::Requests::INSEE::Etablissement).to receive(:insee_token).and_return('not a valid token')
-    allow_any_instance_of(SIADE::V2::Requests::INSEE::Entreprise).to receive(:insee_token).and_return('not a valid token')
+    allow(INSEE::Authenticate).to receive(:call).and_return(double('insee_authenticate', token: 'not a valid token'))
   end
 
   describe 'when DGFiP authentication fails' do
