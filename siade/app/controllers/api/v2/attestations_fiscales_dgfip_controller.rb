@@ -1,16 +1,26 @@
 class API::V2::AttestationsFiscalesDGFIPController < API::V2::AbstractDGFIPController
   def show
-    retrieve_attestation = SIADE::V2::Retrievers::AttestationsFiscalesDGFIP.new(retriever_params(dgfip_service))
-    retrieve_attestation.retrieve
+    retriever = cached_retriever || retrieve_attestation
 
-    if retrieve_attestation.success?
-      render json: { url: retrieve_attestation.document_url }, status: retrieve_attestation.http_code
+    if retriever.success?
+      render json: { url: retriever.document_url }, status: retriever.http_code
     else
-      render_errors(retrieve_attestation)
+      render_errors(retriever)
     end
   end
 
   private
+
+  def retrieve_attestation
+    @retrieve_attestation ||= begin
+      retriever = SIADE::V2::Retrievers::AttestationsFiscalesDGFIP.new(retriever_params(dgfip_service))
+      retriever.retrieve
+
+      write_retriever_cache(retriever) unless at_least_one_error_kind_of?(:network_error, retriever)
+
+      retriever
+    end
+  end
 
   def resource_scope
     :attestations_fiscales
@@ -23,5 +33,9 @@ class API::V2::AttestationsFiscalesDGFIPController < API::V2::AbstractDGFIPContr
     retriever_params[:cookie]  = dgfip_service.cookie
 
     retriever_params
+  end
+
+  def cache_key
+    request.path << params.permit(:siren_is, :siren_tva).to_query
   end
 end
