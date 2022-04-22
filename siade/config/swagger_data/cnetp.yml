@@ -1,7 +1,7 @@
 cnetp:
   attestation_cotisations_conges_payes_chomage_intemperies:
     title: "Attestation de cotisations congés payés & chômage-intempéries"
-    description: "Obtenir l’attestation de cotisation des congés payés et chômage intempéries d’une entreprise, délivrée par la Caisse Nationale des Entrepreneurs de Travaux Publics (CNETP)."
+    description: "Attestation de cotisations, délivrée par la Caisse nationale des entrepreneurs de travaux publics (CNETP), attestant le respect des obligations relatives aux congés payés et au chômage-intempéries."
     tags:
       - "Attestations sociales et fiscales"
     document_url_properties:
