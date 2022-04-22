@@ -110,6 +110,8 @@ RSpec.configure do |config|
   # Defer garbage collection to prevent it from running randomly as usual and slowing testing
   config.before(:all) do
     DeferredGarbageCollection.start
+
+    Rails.cache.clear
   end
 
   config.after(:all) do
