@@ -49,7 +49,7 @@ class ApplicationError
   end
 
   def errors_backend
-    @errors_backend ||= ErrorsBackend.instance
+    ErrorsBackend.instance
   end
 
   def lookup_error_attribute(attribute)
