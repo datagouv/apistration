@@ -15,6 +15,10 @@ if LogStasher.enabled?
     if is_api_request
       fields[:api_version] = controller_name.split('/')[1]
     end
+
+    if retriever_cached?
+      fields[:retriever_cached] = true
+    end
   end
 
   # /!\

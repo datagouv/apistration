@@ -29,6 +29,14 @@ class APIController < ActionController::API
 
   protected
 
+  def mark_retrieved_as_cached!
+    @retriever_cached = true
+  end
+
+  def retriever_cached?
+    @retriever_cached
+  end
+
   def at_least_one_error_kind_of?(kind, retriever)
     retriever.errors.any? do |error|
       error.kind == kind

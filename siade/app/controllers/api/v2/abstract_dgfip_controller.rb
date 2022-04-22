@@ -45,6 +45,8 @@ class API::V2::AbstractDGFIPController < API::V2::BaseController
   end
 
   def write_retriever_cache(retriever)
+    mark_retrieved_as_cached!
+
     Rails.cache.write(cache_key, retriever, expires_in: until_next_dgfip_update_time)
   end
 
