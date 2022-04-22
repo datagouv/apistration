@@ -113,12 +113,6 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
   end
   # rubocop:enable Metrics/MethodLength
 
-  def at_least_one_error_kind_of?(kind, retriever)
-    retriever.errors.any? do |error|
-      error.kind == kind
-    end
-  end
-
   def content_type_header
     'application/vnd.api+json'
   end

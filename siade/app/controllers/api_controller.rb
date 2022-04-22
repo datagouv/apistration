@@ -29,6 +29,12 @@ class APIController < ActionController::API
 
   protected
 
+  def at_least_one_error_kind_of?(kind, retriever)
+    retriever.errors.any? do |error|
+      error.kind == kind
+    end
+  end
+
   def content_type_header
     raise ::NotImplementedError
   end
