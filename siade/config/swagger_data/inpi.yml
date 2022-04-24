@@ -40,15 +40,9 @@ inpi:
         description: "Données sur le bureau des greffes ayant traité l'acte"
 
   brevets:
-    title: "Derniers brevets"
+    title: "Brevets déposés"
     description: |
-      Derniers brevets déposés par l'entreprise et nombre total de brevets.
-      Cet endpoint appelle les informations à partir d’un SIREN. Le SIREN étant une information facultative lors du dépôt de dossier à l’INPI, le taux de sirénage est donc incomplet.
-
-      Taux de sirénage des déposants (sur personnes morales FR) pour les brevets France et brevets Europe est d'environ 80% sur les demandes de brevets publiées ces 20 dernières années ;
-      \n
-      ℹ️ Pour information, seule la raison sociale compte lors du dépôt pour une personne morale.
-      \n
+      Nombre total des brevets déposés par l'entreprise (lorsque le SIREN a été spécifié) ainsi que des informations sur les brevets les plus récents.
     tags:
       - "Propriété intellectuelle"
     attributes:
@@ -103,16 +97,9 @@ inpi:
         type: "number"
         example: 13161
   marques:
-    title: "Marques"
+    title: "Marques déposées"
     description: |
-      Marques déposées par l'entreprise:
-      Cet endpoint appelle les informations à partir d’un SIREN. Le SIREN étant une information facultative lors du dépôt de dossier à l’INPI, le taux de sirénage est donc incomplet.
-
-      Taux de sirénage des déposants (sur personnes morales FR) :
-
-      *Marques France : 60% ;
-      *Marques européennes : 0 % (marques déposées à l’EUIPO) ;
-      *Marques internationales : 0% (marques déposées à l’OMPI) ;
+      Nombre total des marques déposées par l'entreprise (lorsque le SIREN a été spécifié) ainsi que des informations sur les marques les plus récentes.
     tags:
       - "Propriété intellectuelle"
     attributes:
@@ -167,15 +154,9 @@ inpi:
         type: "number"
         example: 13161
   modeles:
-    title: "Modeles"
+    title: "Modèles déposés"
     description: |
-      Modèles déposés par l'entreprise:
-      Cet endpoint appelle les informations à partir d’un SIREN. Le SIREN étant une information facultative lors du dépôt de dossier à l’INPI, le taux de sirénage est donc incomplet.
-
-      Taux de sirénage des déposants (sur personnes morales FR) :
-
-      * Dessins & Modèles France : 50% ;
-      * Dessins & Modèles internationaux : 0% (dessins & modèles déposés à l’OMPI).
+      Nombre total des modèles déposés par l'entreprise (lorsque le SIREN a été spécifié) ainsi que des informations sur les modèles les plus récents.
     tags:
       - "Propriété intellectuelle"
     attributes:
