@@ -24,8 +24,6 @@ RSpec.describe 'Infogreffe: Extraitsrcs', type: %i[request swagger] do
           rate_limit_headers
 
           schema build_rswag_response(
-            id: valid_siren(:extrait_rcs),
-            type: 'extraits_rcs',
             attributes: SwaggerData.get('infogreffe.extraits_rcs.attributes')
           )
 
