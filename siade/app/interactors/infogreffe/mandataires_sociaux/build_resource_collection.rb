@@ -39,7 +39,13 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
       nom: nom(dirigeant),
       prenom: prenom(dirigeant),
       fonction: fonction(dirigeant),
-      date_naissance: month_year_date_naissance(dirigeant)
+      date_naissance: date_naissance(dirigeant),
+      date_naissance_timestamp: date_naissance_timestamp(dirigeant),
+      lieu_naissance: lieu_naissance(dirigeant),
+      pays_naissance: pays_naissance(dirigeant),
+      code_pays_naissance: code_pays_naissance(dirigeant),
+      nationalite: nationalite(dirigeant),
+      code_nationalite: code_nationalite(dirigeant)
     }
   end
 
@@ -66,12 +72,34 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
     dirigeant.css('qualite').text.strip
   end
 
-  def month_year_date_naissance(dirigeant)
+  def date_naissance(dirigeant)
     return if dirigeant.css('naissance date').blank?
 
-    date_naissance = dirigeant.css('naissance date').attribute('dateISO').value
+    dirigeant.css('naissance date').attribute('dateISO').value
+  end
 
-    date_naissance.first(7)
+  def lieu_naissance(dirigeant)
+    dirigeant.css('naissance lieu').text.strip
+  end
+
+  def pays_naissance(dirigeant)
+    dirigeant.css('naissance').attribute('pays').value
+  end
+
+  def code_pays_naissance(dirigeant)
+    dirigeant.css('naissance').attribute('codePays').value
+  end
+
+  def nationalite(dirigeant)
+    dirigeant.css('pp').attribute('nationalite').value
+  end
+
+  def code_nationalite(dirigeant)
+    dirigeant.css('pp').attribute('codeNationalite').value
+  end
+
+  def date_naissance_timestamp(dirigeant)
+    date_naissance(dirigeant).in_time_zone.to_i if date_naissance(dirigeant)
   end
 
   def raison_sociale(dirigeant)

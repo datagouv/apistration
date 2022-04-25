@@ -63,9 +63,45 @@ infogreffe:
           nullable: true
         date_naissance:
           title: 'Date de naissance'
-          description: 'Date de naissance (Année et mois uniquement) du mandataire social. Ce champ est disponible uniquement pour une personne physique.'
+          description: 'Date de naissance du mandataire social. Ce champ est disponible uniquement pour une personne physique.'
           type: 'string'
-          example: '1965-01'
+          example: '1965-01-27'
+          nullable: true
+        date_naissance_timestamp:
+          title: "Date de naissance (timestamp)"
+          description: 'Date de naissance délivrée au format timestamp. Ce champ est disponible uniquement pour une personne physique.'
+          type: "integer"
+          example: -155_523_600
+          nullable: true
+        lieu_naissance:
+          title: 'Lieu de naissance'
+          description: 'Lieu de naissance du mandataire social. Ce champ est disponible uniquement pour une personne physique.'
+          type: 'string'
+          example: 'ROUBAIX'
+          nullable: true
+        pays_naissance:
+          title: 'Pays de naissance'
+          description: 'Pays de naissance du mandataire social. Ce champ est disponible uniquement pour une personne physique.'
+          type: 'string'
+          example: 'FRANCE'
+          nullable: true
+        code_pays_naissance:
+          title: "Code pays ISO 3166 Alpha 2 du pays de naissance"
+          description: 'Code à deux lettres indiquant le pays de naissance du mandataire social, suivant la norme ISO 3166 Alpha 2. Ce champ est disponible uniquement pour une personne physique.'
+          type: "string"
+          example: "FR"
+          nullable: true
+        nationalite:
+          title: 'Nationalité de la personne physique'
+          description: 'Nationalité du mandataire social. Ce champ est disponible uniquement pour une personne physique.'
+          type: 'string'
+          example: 'FRANCAISE'
+          nullable: true
+        code_nationalite:
+          title: "Code pays ISO 3166 Alpha 2"
+          description: 'Code à deux lettres indiquant le pays de nationalité du mandataire social, suivant la norme ISO 3166 Alpha 2. Ce champ est disponible uniquement pour une personne physique.'
+          type: "string"
+          example: "FR"
           nullable: true
         raison_sociale:
           title: "Raison sociale"
