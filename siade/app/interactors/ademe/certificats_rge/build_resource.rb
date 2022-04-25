@@ -3,7 +3,6 @@ class ADEME::CertificatsRGE::BuildResource < BuildResource
 
   def resource_attributes
     {
-      id: body_first_record['siret'],
       entreprise:,
       certificats:
     }
@@ -28,6 +27,7 @@ class ADEME::CertificatsRGE::BuildResource < BuildResource
   # rubocop:disable Metrics/AbcSize
   def entreprise
     {
+      siret: body_first_record['siret'],
       nom: body_first_record['nom_entreprise'],
       adresse: body_first_record['adresse'],
       code_postal: body_first_record['code_postal'],
@@ -48,7 +48,7 @@ class ADEME::CertificatsRGE::BuildResource < BuildResource
 
   def certificat_attributes(certificat)
     {
-      id: certificat['_id'],
+      id_ademe: certificat['_id'],
       url: certificat['url_qualification'],
       nom_certificat: certificat['nom_certificat'],
       domaine: certificat['domaine'],

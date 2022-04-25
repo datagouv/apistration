@@ -18,6 +18,7 @@ RSpec.describe ADEME::CertificatsRGE::BuildResource, type: :build_resource do
 
   let(:valid_payload_entreprise) do
     {
+      siret: '50530961700023',
       nom: 'MIXENERGIE',
       adresse: '25 ROUTE DE LOUHANS',
       code_postal: '71440',
@@ -33,7 +34,7 @@ RSpec.describe ADEME::CertificatsRGE::BuildResource, type: :build_resource do
 
   let(:valid_payload_certificat_1) do
     {
-      id: 'Q112379-8611M12D108-2022-03-30',
+      id_ademe: 'Q112379-8611M12D108-2022-03-30',
       url: 'https://www.qualibat.com/Views/GetFichier.aspx?fn=2022\\D71-Certificat-112379-MIXENERGIE-E112379-2-20220214-RGEAnnexe.pdf',
       nom_certificat: 'QUALIBAT-RGE',
       domaine: 'Ventilation mécanique',
@@ -49,7 +50,7 @@ RSpec.describe ADEME::CertificatsRGE::BuildResource, type: :build_resource do
 
   let(:valid_payload_certificat_2) do
     {
-      id: 'Q112379-8611M12D108-2022-02-15',
+      id_ademe: 'Q112379-8611M12D108-2022-02-15',
       url: 'http://www.qualibat.com/Views/GetFichier.aspx?fn=2022\\D71-Certificat-112379-MIXENERGIE-E112379-2-20220214-RGEAnnexe.pdf',
       nom_certificat: 'QUALIBAT-RGE',
       domaine: 'Ventilation mécanique',

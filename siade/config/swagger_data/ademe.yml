@@ -4,11 +4,6 @@ ademe:
     description: "Obtenir les certifications RGE (Reconnu Garant de l'Environnement) d'un établissement"
     tags:
       - "Certifications professionnelles"
-    id:
-      title: "SIRET"
-      type: "string"
-      description: "SIRET de l'établissement recherché"
-      example: "95045724200044"
     meta:
       count:
         title: "Count"
@@ -19,6 +14,11 @@ ademe:
       entreprise:
         type: "object"
         properties:
+          siret:
+            title: "SIRET"
+            type: "string"
+            description: "SIRET de l'établissement recherché"
+            example: "95045724200044"
           nom:
             title: "Nom"
             description: "Nom de l'entreprise"
@@ -73,7 +73,7 @@ ademe:
         type: "array"
         items:
           properties:
-            id:
+            id_ademe:
               title: "Identifiant ADEME"
               description: "Identifiant unique du certificat dans la base ADEME"
               type: "string"

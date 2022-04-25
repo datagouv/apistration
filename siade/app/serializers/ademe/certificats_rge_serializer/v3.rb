@@ -1,6 +1,4 @@
-class ADEME::CertificatsRGESerializer::V3 < JSONAPI::BaseSerializer
-  set_type :certificats_rge
-
+class ADEME::CertificatsRGESerializer::V3 < V3AndMore::BaseSerializer
   attributes :entreprise,
     :certificats
 end
