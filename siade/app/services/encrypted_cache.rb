@@ -18,7 +18,7 @@ class EncryptedCache
     return if cached_value.nil?
 
     unmarshal(decrypt(cached_value))
-  rescue TypeError, Lockbox::DecryptionError
+  rescue TypeError, Lockbox::DecryptionError, NoMethodError
     write(key, nil)
 
     nil

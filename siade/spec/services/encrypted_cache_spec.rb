@@ -29,9 +29,23 @@ RSpec.describe EncryptedCache, type: :service do
       end
     end
 
-    context 'with invalid value set' do
+    context 'with invalid string value set' do
       before do
         Rails.cache.write(key, 'lol')
+      end
+
+      it { is_expected.to be_nil }
+
+      it 'cleans invalid value in cache' do
+        expect {
+          cached_value
+        }.to change { Rails.cache.read(key) }.to(nil)
+      end
+    end
+
+    context 'with invalid value set (non-string object)' do
+      before do
+        Rails.cache.write(key, Siren.new(valid_siren))
       end
 
       it { is_expected.to be_nil }
