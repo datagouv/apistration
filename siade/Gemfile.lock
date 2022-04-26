@@ -138,6 +138,7 @@ GEM
     listen (3.6.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    lockbox (0.6.8)
     logstasher (2.1.5)
       activesupport (>= 5.2)
       request_store
@@ -343,6 +344,7 @@ DEPENDENCIES
   json-schema
   jsonapi-serializer
   jwt (~> 2.3)
+  lockbox
   logstasher
   marcel
   mina
