@@ -13,6 +13,7 @@ class MI::Associations::Documents::UploadCollection < ApplicationInteractor
 
       if upload.success?
         item[:hosted_url] = upload.url
+        item[:url_expires_in] = upload.url_expires_in
         uploaded_collection << item
       else
         context.upload_errors += 1

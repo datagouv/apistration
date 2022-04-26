@@ -41,8 +41,8 @@ RSpec.describe MI::Associations::Documents::UploadCollection do
     # rubocop:disable RSpec/VerifiedDoubles
 
     context 'when upload is valid for all documents' do
-      let(:first_uploader) { double('uploader', success?: true, url: 'first_url') }
-      let(:second_uploader) { double('uploader', success?: true, url: 'second_url') }
+      let(:first_uploader) { double('uploader', success?: true, url: 'first_url', url_expires_in: 1.day.to_i) }
+      let(:second_uploader) { double('uploader', success?: true, url: 'second_url', url_expires_in: 3.days.to_i) }
 
       it { is_expected.to be_a_success }
 
@@ -57,7 +57,8 @@ RSpec.describe MI::Associations::Documents::UploadCollection do
             time: '1418807656',
             url: 'https://much.url/doc_1',
             lib_sous_type: 'Décret',
-            hosted_url: 'first_url'
+            hosted_url: 'first_url',
+            url_expires_in: 1.day.to_i
           },
           {
             id: 'much_id_2',
@@ -68,7 +69,8 @@ RSpec.describe MI::Associations::Documents::UploadCollection do
             time: '1418807674',
             url: 'https://another.url/great',
             lib_sous_type: 'Statuts',
-            hosted_url: 'second_url'
+            hosted_url: 'second_url',
+            url_expires_in: 3.day.to_i
           }
         )
       end
@@ -78,7 +80,7 @@ RSpec.describe MI::Associations::Documents::UploadCollection do
     end
 
     context 'when upload fails for at least one documents' do
-      let(:first_uploader) { double('uploader', success?: true, url: 'first_url') }
+      let(:first_uploader) { double('uploader', success?: true, url: 'first_url', url_expires_in: 1.day.to_i) }
       let(:second_uploader) { double('uploader', success?: false) }
 
       it { is_expected.to be_a_success }
@@ -94,7 +96,8 @@ RSpec.describe MI::Associations::Documents::UploadCollection do
             time: '1418807656',
             url: 'https://much.url/doc_1',
             lib_sous_type: 'Décret',
-            hosted_url: 'first_url'
+            hosted_url: 'first_url',
+            url_expires_in: 1.day.to_i
           }
         )
       end

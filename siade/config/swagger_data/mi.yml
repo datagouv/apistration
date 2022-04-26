@@ -115,6 +115,9 @@ mi:
           example: "https://storage.entreprise.api.gouv.fr/siade/1635505765-5cd08405e4163c9f7713447829aeef7284c3283d-document_asso.pdf"
           description: "L'URL du fichier"
           type: "string"
+        expires_in:
+          title: "Nombre de secondes avant expiration du lien URL"
+          type: "integer"
     meta:
       nombre_documents:
         example: 1

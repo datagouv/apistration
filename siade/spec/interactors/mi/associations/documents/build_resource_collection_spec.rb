@@ -17,7 +17,8 @@ RSpec.describe MI::Associations::Documents::BuildResourceCollection, type: :buil
             time: '1418807656',
             url: 'https://much.url/doc_1',
             lib_sous_type: 'Décret',
-            hosted_url: 'first_url'
+            hosted_url: 'first_url',
+            url_expires_in: 1.day.to_i
           },
           {
             id: 'much_id_2',
@@ -28,7 +29,8 @@ RSpec.describe MI::Associations::Documents::BuildResourceCollection, type: :buil
             time: '1418807674',
             url: 'https://another.url/great',
             lib_sous_type: 'Statuts',
-            hosted_url: 'second_url'
+            hosted_url: 'second_url',
+            url_expires_in: 2.day.to_i
           }
         ]
       }
@@ -46,13 +48,15 @@ RSpec.describe MI::Associations::Documents::BuildResourceCollection, type: :buil
           id: 'very_id_1',
           timestamp: '1418807656',
           url: 'first_url',
-          type: 'Décret'
+          type: 'Décret',
+          expires_in: 1.day.to_i
         },
         {
           id: 'much_id_2',
           timestamp: '1418807674',
           url: 'second_url',
-          type: 'Statuts'
+          type: 'Statuts',
+          expires_in: 2.day.to_i
         }
       ])
     end

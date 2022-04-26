@@ -15,6 +15,10 @@ RSpec.describe Documents::Upload, :self_hosted_doc do
       its(:url) do
         is_expected.to be_a_valid_self_hosted_document_url('test.lol')
       end
+
+      it 'returns the time before the URL expires' do
+        expect(subject.url_expires_in).to eq(1.day.to_i)
+      end
     end
 
     context 'when upload does no work' do

@@ -15,7 +15,8 @@ class MI::Associations::Documents::BuildResourceCollection < BuildResourceCollec
       id: doc[:id],
       timestamp: doc[:time],
       url: doc[:hosted_url],
-      type: doc[:lib_sous_type]
+      type: doc[:lib_sous_type],
+      expires_in: doc[:url_expires_in]
     }
   end
 end

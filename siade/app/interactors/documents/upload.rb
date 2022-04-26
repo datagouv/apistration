@@ -15,6 +15,7 @@ class Documents::Upload < ApplicationInteractor
   def call
     store!
     context.url = document_public_url
+    context.url_expires_in = EXPIRES_IN
   rescue *uploader_hosting_errors
     context.errors << HostingServiceError.new
     context.fail!
