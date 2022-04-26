@@ -26,6 +26,27 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       its(:id) { is_expected.to eq('418166096') }
       its(:date_immatriculation) { is_expected.to eq('1998-03-27') }
       its(:date_extrait) { is_expected.to eq('30 MAI 2017') }
+      its(:mandataires_sociaux) { is_expected.to be_an_instance_of(Array) }
+
+      describe 'resource.mandataires_sociaux entry pp' do
+        subject(:mandataire_social) { instance.resource.mandataires_sociaux[0] }
+
+        it { expect(mandataire_social[:type]).to eq('personne_physique') }
+        it { expect(mandataire_social[:nom]).to eq('HISQUIN') }
+        it { expect(mandataire_social[:prenom]).to eq('FRANCOIS') }
+        it { expect(mandataire_social[:fonction]).to eq('PRESIDENT DU DIRECTOIRE') }
+        it { expect(mandataire_social[:date_naissance]).to eq('1965-01') }
+      end
+
+      describe 'resource.mandataires_sociaux entry pm' do
+        subject(:mandataire_social) { instance.resource.mandataires_sociaux[9] }
+
+        it { expect(mandataire_social[:type]).to eq('personne_morale') }
+        it { expect(mandataire_social[:numero_identification]).to eq('784824153') }
+        it { expect(mandataire_social[:fonction]).to eq('COMMISSAIRE AUX COMPTES TITULAIRE') }
+        it { expect(mandataire_social[:raison_sociale]).to eq('MAZARS - SOCIETE ANONYME') }
+      end
+
       its(:observations) { is_expected.to be_an_instance_of(Array) }
 
       describe 'resource.observations entry' do

@@ -152,6 +152,58 @@ infogreffe:
         title: "Date d'immatriculation au RCS"
         description: "À compter de cette date, les sociétés jouissent de la personnalité morale. Cette date d'immatriculation n'est pas la même que celle délivrée par l'INSEE. Elle ne correspond pas non plus à la date du début d'activité."
         example: '1998-07-12'
+
+      mandataires_sociaux:
+        title: "Mandataires sociaux"
+        description: "Liste des mandataires sociaux d'une société inscrite au RCS, délivrée par Infogreffe. Certaines informations telles que la date de naissance ont été omises, vous pouvez les obtenir en appelant l'endpoint /infogreffe/mandataires_sociaux/"
+        tags:
+          - "Informations générales"
+        type: "array"
+        items:
+          required: ["fonction"]
+          properties:
+            numero_identification:
+              title: "Numéro d'identification"
+              description: "Ce champ est uniquement disponible pour une personne morale."
+              type: "string"
+              example: "784824153"
+            type:
+              title: "Type de mandataire social"
+              description: "Ce champ permet de faire la distinction entre les personnes physiques et morales."
+              type: "string"
+              example: "personne_morale"
+              enum:
+                - "personne_morale"
+                - "personne_physique"
+            fonction:
+              title: "Fonction au sein de l'entreprise"
+              description: "Ce champ décrit la fonction du mandataire social au sein de l'entreprise. Cette information est disponible pour les personnes morales et physiques."
+              type: 'string'
+              example: 'COMMISSAIRE AUX COMPTES SUPPLEANT'
+            nom:
+              title: 'Nom'
+              description: 'Nom du mandataire social. Ce champ est disponible uniquement pour une personne physique.'
+              type: 'string'
+              example: 'Henri'
+              nullable: true
+            prenom:
+              title: 'Prénom'
+              description: 'Prénom du mandataire social. Ce champ est disponible uniquement pour une personne physique.'
+              type: 'string'
+              example: 'Martin'
+              nullable: true
+            date_naissance:
+              title: 'Date de naissance (mois/année)'
+              description: "Date de naissance du mandataire social (seulement le mois et l'année). Ce champ est disponible uniquement pour une personne physique."
+              type: 'string'
+              example: '1965-01'
+              nullable: true
+            raison_sociale:
+              title: "Raison sociale"
+              description: 'Raison sociale de la personne morale mandataire social. Ce champ est disponible uniquement pour une personne morale.'
+              type: "string"
+              example: "BCRH & ASSOCIES - SOCIETE A RESPONSABILITE LIMITEE A ASSOCIE UNIQUE"
+              nullable: true
       observations:
         type: array
         title: "Ensemble des observations du greffier"
