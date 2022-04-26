@@ -17,9 +17,9 @@ if LogStasher.enabled?
     end
 
     if retriever_cached?
-      fields[:retriever_cached] = true
+      fields[:retriever_cached] = 't'
     else
-      fields[:retriever_cached] = false
+      fields[:retriever_cached] = 'f'
     end
   end
 
