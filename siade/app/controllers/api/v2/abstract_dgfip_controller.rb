@@ -45,11 +45,11 @@ class API::V2::AbstractDGFIPController < API::V2::BaseController
   end
 
   def write_retriever_cache(retriever)
-    Rails.cache.write(cache_key, retriever, expires_in: until_next_dgfip_update_in_seconds)
+    EncryptedCache.write(cache_key, retriever, expires_in: until_next_dgfip_update_in_seconds)
   end
 
   def cached_retriever
-    @cached_retriever ||= Rails.cache.read(cache_key)
+    @cached_retriever ||= EncryptedCache.read(cache_key)
   end
 
   def cache_key
