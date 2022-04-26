@@ -6,7 +6,7 @@ class MI::Associations::Documents::Upload < UploadDocumentOrganizer
   end
 
   def filename
-    'document_asso'
+    'document_association'
   end
 
   def source_file_content

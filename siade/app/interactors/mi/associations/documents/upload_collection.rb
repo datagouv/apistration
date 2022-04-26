@@ -8,12 +8,12 @@ class MI::Associations::Documents::UploadCollection < ApplicationInteractor
   end
 
   def call
-    raw_items.each_with_object(context.uploaded_collection) do |item, res|
+    raw_items.each_with_object(context.uploaded_collection) do |item, uploaded_collection|
       upload = MI::Associations::Documents::Upload.call(url: item[:url])
 
       if upload.success?
         item[:hosted_url] = upload.url
-        res << item
+        uploaded_collection << item
       else
         context.upload_errors += 1
       end
