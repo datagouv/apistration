@@ -18,6 +18,8 @@ if LogStasher.enabled?
 
     if retriever_cached?
       fields[:retriever_cached] = true
+    else
+      fields[:retriever_cached] = false
     end
   end
 
