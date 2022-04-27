@@ -568,6 +568,9 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/dgfip/attestations_fiscales/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+      x-maintenances:
+        from_hour: '01:00'
+        to_hour: '02:00'
   "/v3/dgfip/chiffres_affaires/{siret}":
     get:
       summary: Chiffre d'affaires
@@ -702,6 +705,9 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/dgfip/chiffres_affaires/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+      x-maintenances:
+        from_hour: '01:00'
+        to_hour: '02:00'
   "/v3/dgfip/liasses_fiscales/declarations/{year}/{siren}":
     get:
       summary: Liasses fiscales
@@ -998,6 +1004,9 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/dgfip/liasses_fiscales/declarations/2019/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+      x-maintenances:
+        from_hour: '01:00'
+        to_hour: '02:00'
   "/v3/fabrique_numerique_ministeres_sociaux/conventions_collectives/{siret}":
     get:
       summary: Conventions collectives
