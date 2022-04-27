@@ -57,7 +57,8 @@ class ErrorsBackend
       '18' => 'Agence BIO',
       '19' => 'ADEME',
       '20' => 'API Geo',
-      '21' => 'MI'
+      '21' => 'MI',
+      '22' => 'RNM'
     }
   end
   # rubocop:enable Metrics/MethodLength
