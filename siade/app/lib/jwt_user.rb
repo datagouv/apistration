@@ -27,6 +27,11 @@ class JwtUser
     self
   end
 
+  def valid?
+    jti =~ uuid_regex &&
+      id =~ uuid_regex
+  end
+
   def expired?
     if @exp.nil?
       ::MonitoringService.instance.track('info', "JWT #{logstash_id.inspect} without Expiration Time")
@@ -35,5 +40,11 @@ class JwtUser
     end
 
     ::Time.zone.at(@exp).past?
+  end
+
+  private
+
+  def uuid_regex
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
   end
 end

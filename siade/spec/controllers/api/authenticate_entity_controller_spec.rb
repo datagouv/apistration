@@ -44,6 +44,24 @@ RSpec.describe API::AuthenticateEntityController do
         end
       end
 
+      context 'with a jwt which has no valid uid for jti' do
+        let(:token) { JwtHelper.jwt(:without_uuid_as_jti) }
+
+        it 'returns 401' do
+          get :index, params: mandatory_params
+          assert_response 401
+        end
+      end
+
+      context 'with a jwt which has no valid uid for uid' do
+        let(:token) { JwtHelper.jwt(:without_uuid_as_uid) }
+
+        it 'returns 401' do
+          get :index, params: mandatory_params
+          assert_response 401
+        end
+      end
+
       context 'with an expired jwt' do
         let(:token) { expired_jwt }
 

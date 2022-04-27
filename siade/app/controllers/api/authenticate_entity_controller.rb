@@ -15,7 +15,7 @@ class API::AuthenticateEntityController < APIController
 
     @authenticated_user = user_from_jwt if jwt?
 
-    unless @authenticated_user
+    if @authenticated_user.blank? || !@authenticated_user.valid?
       UserAccessSpy.log_unauthorized(user_info: @token)
       raise not_valid_token_error
     end
