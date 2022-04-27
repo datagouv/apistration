@@ -7,7 +7,7 @@ class API::V3AndMore::MI::DocumentsAssociationsController < API::V3AndMore::Base
     @organizer = ::MI::Associations::Documents.call(params: organizer_params)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.resource_collection, options(organizer)).serializable_hash, status: extract_http_code(organizer)
+      render json: serializer_class.new(organizer.resource_collection, options).serializable_hash, status: extract_http_code(organizer)
     else
       render_errors(organizer)
     end
@@ -25,7 +25,7 @@ class API::V3AndMore::MI::DocumentsAssociationsController < API::V3AndMore::Base
     ::MI::DocumentAssociationSerializer
   end
 
-  def options(organizer)
+  def options
     {
       is_collection: true,
       meta: organizer.meta
