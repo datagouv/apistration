@@ -7631,35 +7631,34 @@ paths:
                     items:
                       type: object
                       properties:
-                        id:
+                        timestamp:
+                          example: '1631182730'
+                          description: Date du dépot du document au format timestamp
+                            UNIX
                           type: string
-                        type:
-                          example: Statuts
-                          description: 'Ce sont les différents types de documents,
-                            et de fait, pour chaque URL, celui-ci est indiqué. Voici
-                            une liste non-exhaustive des options possibles : ''Liste
-                            des dirigeants'', ''Statuts'', ''Procès verbal'', ''Récépissé
-                            de dissolution'', ''Récépissé de modification''...'
+                        url:
+                          example: https://storage.entreprise.api.gouv.fr/siade/1635505765-5cd08405e4163c9f7713447829aeef7284c3283d-document_asso.pdf
+                          description: L'URL du fichier
                           type: string
-                        attributes:
-                          type: object
-                          properties:
-                            timestamp:
-                              example: '1631182730'
-                              description: Date du dépot du document au format timestamp
-                                UNIX
-                              type: string
-                            url:
-                              example: https://storage.entreprise.api.gouv.fr/siade/1635505765-5cd08405e4163c9f7713447829aeef7284c3283d-document_asso.pdf
-                              description: L'URL du fichier
-                              type: string
-                          required:
-                          - timestamp
-                          - url
+                        expires_in:
+                          title: Nombre de secondes avant expiration du lien URL
+                          type: integer
+                        errors:
+                          title: Détail de l'erreur survenue au traitement du fichier
+                            (URL fourni par le fournisseur de données invalide, fichier
+                            corrompu, ...)
+                          type: array
+                          items:
+                            type: string
                       required:
-                      - id
-                      - type
-                      - attributes
+                      - timestamp
+                      - url
+                      - expires_in
+                      - errors
+                    required:
+                    - id
+                    - type
+                    - attributes
                   meta:
                     type: object
                     properties:
