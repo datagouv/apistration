@@ -118,6 +118,11 @@ mi:
         expires_in:
           title: "Nombre de secondes avant expiration du lien URL"
           type: "integer"
+        errors:
+          title: "Détail de l'erreur survenue au traitement du fichier (URL fourni par le fournisseur de données invalide, fichier corrompu, ...)"
+          type: "array"
+          items:
+            type: "string"
     meta:
       nombre_documents:
         example: 1

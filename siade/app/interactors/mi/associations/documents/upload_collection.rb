@@ -11,13 +11,11 @@ class MI::Associations::Documents::UploadCollection < ApplicationInteractor
     raw_items.each_with_object(context.uploaded_collection) do |item, uploaded_collection|
       upload = MI::Associations::Documents::Upload.call(url: item[:url])
 
-      if upload.success?
-        item[:hosted_url] = upload.url
-        item[:url_expires_in] = upload.url_expires_in
-        uploaded_collection << item
-      else
-        context.upload_errors += 1
-      end
+      uploaded_collection << if upload.success?
+                               retrieve_upload_metadata(item, upload)
+                             else
+                               process_error(item, upload)
+                             end
     end
   end
 
@@ -32,5 +30,27 @@ class MI::Associations::Documents::UploadCollection < ApplicationInteractor
     in Array
       items.flatten
     end
+  end
+
+  def retrieve_upload_metadata(item, uploader)
+    item.merge({
+      hosted_url: uploader.url,
+      url_expires_in: uploader.url_expires_in,
+      errors: []
+    })
+  end
+
+  def upload_errors_msg(uploader)
+    uploader.errors.map(&:detail)
+  end
+
+  def process_error(item, uploader)
+    context.upload_errors += 1
+
+    item.merge({
+      errors: upload_errors_msg(uploader),
+      hosted_url: 'Non disponible',
+      url_expires_in: nil
+    })
   end
 end

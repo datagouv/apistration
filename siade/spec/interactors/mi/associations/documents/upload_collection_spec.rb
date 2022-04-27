@@ -58,7 +58,8 @@ RSpec.describe MI::Associations::Documents::UploadCollection do
             url: 'https://much.url/doc_1',
             lib_sous_type: 'Décret',
             hosted_url: 'first_url',
-            url_expires_in: 1.day.to_i
+            url_expires_in: 1.day.to_i,
+            errors: []
           },
           {
             id: 'much_id_2',
@@ -70,7 +71,8 @@ RSpec.describe MI::Associations::Documents::UploadCollection do
             url: 'https://another.url/great',
             lib_sous_type: 'Statuts',
             hosted_url: 'second_url',
-            url_expires_in: 3.day.to_i
+            url_expires_in: 3.days.to_i,
+            errors: []
           }
         )
       end
@@ -81,12 +83,18 @@ RSpec.describe MI::Associations::Documents::UploadCollection do
 
     context 'when upload fails for at least one documents' do
       let(:first_uploader) { double('uploader', success?: true, url: 'first_url', url_expires_in: 1.day.to_i) }
-      let(:second_uploader) { double('uploader', success?: false) }
+      let(:second_uploader) { double('uploader', success?: false, errors:) }
+
+      let(:errors) do
+        [
+          BadFileFromProviderError.new('Much provider', :invalid_url, 'very error')
+        ]
+      end
 
       it { is_expected.to be_a_success }
 
-      it 'only keeps the successful upload data' do
-        expect(subject.uploaded_collection).to contain_exactly(
+      it 'keeps the successful upload data' do
+        expect(subject.uploaded_collection).to include(
           {
             id: 'very_id_1',
             type: 'PIECE',
@@ -97,24 +105,32 @@ RSpec.describe MI::Associations::Documents::UploadCollection do
             url: 'https://much.url/doc_1',
             lib_sous_type: 'Décret',
             hosted_url: 'first_url',
-            url_expires_in: 1.day.to_i
+            url_expires_in: 1.day.to_i,
+            errors: []
+          }
+        )
+      end
+
+      it 'keeps the document errors metadata' do
+        expect(subject.uploaded_collection).to include(
+          {
+            id: 'much_id_2',
+            type: 'PIECE',
+            annee: '2014',
+            sous_type: 'STC',
+            even: '5248133',
+            time: '1418807674',
+            url: 'https://another.url/great',
+            lib_sous_type: 'Statuts',
+            hosted_url: 'Non disponible',
+            url_expires_in: nil,
+            errors: ['very error']
           }
         )
       end
 
       its(:total_documents) { is_expected.to eq(2) }
       its(:upload_errors) { is_expected.to eq(1) }
-    end
-
-    context 'when upload fails for all documents' do
-      let(:first_uploader) { double('uploader', success?: false) }
-      let(:second_uploader) { double('uploader', success?: false) }
-
-      it { is_expected.to be_a_success }
-
-      its(:uploaded_collection) { is_expected.to be_empty }
-      its(:total_documents) { is_expected.to eq(2) }
-      its(:upload_errors) { is_expected.to eq(2) }
     end
 
     # rubocop:enable RSpec/VerifiedDoubles
