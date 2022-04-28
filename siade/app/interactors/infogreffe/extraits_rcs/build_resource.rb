@@ -1,15 +1,27 @@
 class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
   include Infogreffe::Concerns::MandatairesSociaux
+  include Infogreffe::ExtraitsRCS::BuildResource::AdresseHelpers
 
   protected
 
   def resource_attributes
     {
-      id: context.params[:siren],
+      siren: context.params[:siren],
       date_extrait: dossier['date_extrait'],
       date_immatriculation: dossier['dateISO_immat'],
       mandataires_sociaux:,
-      observations:
+      observations:,
+      denomination: infos.css('pm denomination').text,
+      nom_commercial:,
+      forme_juridique: infos.css('pm').attr('forme_juridique').to_s,
+      code_forme_juridique: infos.css('pm').attr('codeFormeJuridique').to_s,
+      adresse_siege: build_adresse(reference_adresse_siege),
+      etablissement_principal:,
+      date_cloture_exercice_comptable: dossier.css('pm date_cloture').attr('dateISO').to_s,
+      date_fin_de_vie: infos.css('pm duree_ste valeur_duree').attr('dateISO').to_s,
+      capital:,
+      greffe: dossier.css('entreprise greffe').text,
+      code_greffe: dossier.css('entreprise greffe').attr('code').to_s
     }
   end
 
@@ -52,6 +64,14 @@ class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
     }
   end
 
+  def etablissements_raw
+    infos.css('etablissement')
+  end
+
+  def etablissement_principal_raw
+    etablissements_raw.select { |etablissement| etablissement.attr('type').to_s == '1' }.first
+  end
+
   def dossier
     infos.css('dossier').first
   end
@@ -64,5 +84,39 @@ class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
         date: observation.attribute('dateISO').value
       }
     end
+  end
+
+  def nom_commercial
+    nom_commercial_from_etablissement_principal || nom_commercial_any_etablissement
+  end
+
+  def nom_commercial_from_etablissement_principal
+    etablissement_principal_raw&.css('nom_commercial')&.text
+  end
+
+  def nom_commercial_any_etablissement
+    etablissements_raw&.css('nom_commercial')&.text
+  end
+
+  def etablissement_principal
+    {
+      adresse: build_adresse(reference_adresse_etablissement_principal),
+      activite: etablissement_principal_raw.css('activite').text,
+      origine_fonds: etablissement_principal_raw.css('origine_fonds').text,
+      mode_exploitation: etablissement_principal_raw.css('mode_exploit').text,
+      code_ape: etablissement_principal_raw.css('codeAPE').text
+    }
+  end
+
+  def capital
+    {
+      montant: cast_montant_as_float(infos.css('capital montant').text),
+      devise: infos.css('capital montant devise').to_s,
+      code_devise: infos.css('capital montant codeDevise').to_s
+    }
+  end
+
+  def cast_montant_as_float(montant)
+    montant.delete(' ').split(',').join('.').to_f
   end
 end
