@@ -11,11 +11,7 @@ class MI::Associations::Documents::UploadCollection < ApplicationInteractor
     raw_items.each_with_object(context.uploaded_collection) do |item, uploaded_collection|
       upload = MI::Associations::Documents::Upload.call(url: item[:url])
 
-      uploaded_collection << if upload.success?
-                               retrieve_upload_metadata(item, upload)
-                             else
-                               process_error(item, upload)
-                             end
+      uploaded_collection << document_with_upload_metadata(item, upload)
     end
   end
 
@@ -29,6 +25,14 @@ class MI::Associations::Documents::UploadCollection < ApplicationInteractor
       [items]
     in Array
       items.flatten
+    end
+  end
+
+  def document_with_upload_metadata(doc, upload)
+    if upload.success?
+      retrieve_upload_metadata(doc, upload)
+    else
+      process_error(doc, upload)
     end
   end
 
