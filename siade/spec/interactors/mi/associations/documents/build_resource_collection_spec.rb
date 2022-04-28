@@ -43,7 +43,7 @@ RSpec.describe MI::Associations::Documents::BuildResourceCollection, type: :buil
             time: 'timestamp_3',
             url: 'https://another.url/great',
             lib_sous_type: 'type_3',
-            hosted_url: 'error placeholder',
+            hosted_url: nil,
             errors: ['error message']
           }
         ]
@@ -82,7 +82,7 @@ RSpec.describe MI::Associations::Documents::BuildResourceCollection, type: :buil
         {
           id: 'very_id_3',
           timestamp: 'timestamp_3',
-          url: 'error placeholder',
+          url: nil,
           expires_in: nil,
           type: 'type_3',
           errors: ['error message']

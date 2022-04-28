@@ -124,7 +124,7 @@ RSpec.describe MI::Associations::Documents::UploadCollection do
             time: '1418807674',
             url: 'https://another.url/great',
             lib_sous_type: 'Statuts',
-            hosted_url: 'Non disponible',
+            hosted_url: nil,
             url_expires_in: nil,
             errors: ['very error']
           }

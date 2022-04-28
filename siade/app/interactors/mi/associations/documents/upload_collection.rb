@@ -53,7 +53,7 @@ class MI::Associations::Documents::UploadCollection < ApplicationInteractor
 
     item.merge({
       errors: upload_errors_msg(uploader),
-      hosted_url: 'Non disponible',
+      hosted_url: nil,
       url_expires_in: nil
     })
   end
