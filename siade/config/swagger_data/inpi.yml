@@ -2,10 +2,7 @@ inpi:
   actes:
     title: "Actes"
     description: |
-      Obtenir les métadonnées associées aux actes d’une entreprise issus des greffes et archivés à l’Institut national de propriété industrielle (INPI).
-      Ces actes comportent des informations générales, des informations sur le capital social et sa répartition, ou encore des informations sur les associés et tout ce qui est relatif à l’administration de la société.
-
-      Cet API renvoie uniquement des métadonnées sur les actes, dont l’identifiant d’accès au fichier de téléchargement de l’Acte et du fichier de métadonnées associé. Pour récupérer les actes eux-mêmes, il faut utiliser l'API /inpi/actes/{siren}/documents.
+      Actes d’une entreprise issus des greffes et archivés à l’Institut national de propriété industrielle (INPI).
     tags:
       - "Informations générales"
     attributes:
