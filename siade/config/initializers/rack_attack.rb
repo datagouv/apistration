@@ -61,13 +61,14 @@ class Rack::Attack
   throttle_exceptions(zone_name_prefix: 'high_latency_docs', **high_latency_documents_config)
   throttle_exceptions(zone_name_prefix: 'very_low_latency_json_resources', **very_low_latency_json_resources_config)
 
-
   self.blocklisted_response = lambda do |req|
-    error_format = req.params[:error_format] || :flat
+    query_params = Rack::Utils.parse_nested_query(req['QUERY_STRING'])
+    error_format = query_params['error_format'] || 'flat'
+
     [
       401,
       { 'Content-Type' => 'application/json' },
-      ErrorsSerializer.new([InvalidTokenError.new], format: error_format).to_json
+      ErrorsSerializer.new([BlacklistedTokenError.new], format: error_format).to_json
     ]
   end
 
