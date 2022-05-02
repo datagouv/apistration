@@ -8,7 +8,6 @@ class BuildResource < ApplicationInteractor
       after do
         context.resource.nil? &&
           resource_not_defined!
-        context.meta = meta
       end
     end
   end
@@ -18,10 +17,6 @@ class BuildResource < ApplicationInteractor
   end
 
   protected
-
-  def meta
-    {}
-  end
 
   def resource_attributes
     raise NotImplementedError
