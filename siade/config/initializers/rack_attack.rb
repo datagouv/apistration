@@ -61,7 +61,7 @@ class Rack::Attack
   throttle_exceptions(zone_name_prefix: 'high_latency_docs', **high_latency_documents_config)
   throttle_exceptions(zone_name_prefix: 'very_low_latency_json_resources', **very_low_latency_json_resources_config)
 
-  self.blocklisted_response = lambda do |req|
+  self.blocklisted_responder = lambda do |req|
     query_params = Rack::Utils.parse_nested_query(req['QUERY_STRING'])
     error_format = query_params['error_format'] || 'flat'
 
@@ -72,7 +72,9 @@ class Rack::Attack
     ]
   end
 
-  self.throttled_response = lambda do |env|
+  self.throttled_responder = lambda do |req|
+    env = req.env
+
     headers = rate_limiting_service.build_rate_limit_headers(env['rack.attack.match_data'])
 
     headers.merge!(
