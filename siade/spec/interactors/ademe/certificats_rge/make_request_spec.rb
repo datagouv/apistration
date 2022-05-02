@@ -5,7 +5,7 @@ RSpec.describe ADEME::CertificatsRGE::MakeRequest, type: :make_request do
     let(:params) do
       {
         siret:,
-        size: 10_000
+        limit: 10_000
       }
     end
 

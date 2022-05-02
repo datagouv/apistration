@@ -10,7 +10,7 @@ RSpec.describe ADEME::CertificatsRGE::BuildResource, type: :build_resource do
   let(:params) do
     {
       siret:,
-      size: 10_000
+      limit: 10_000
     }
   end
 

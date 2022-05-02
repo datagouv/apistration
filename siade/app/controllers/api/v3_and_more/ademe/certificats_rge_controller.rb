@@ -17,7 +17,7 @@ class API::V3AndMore::ADEME::CertificatsRGEController < API::V3AndMore::BaseCont
   def organizer_params
     {
       siret: params.require(:siret),
-      size: 10_000
+      limit: limit_with_default
     }
   end
 
@@ -29,5 +29,9 @@ class API::V3AndMore::ADEME::CertificatsRGEController < API::V3AndMore::BaseCont
 
   def serializer_module
     ::ADEME::CertificatsRGESerializer
+  end
+
+  def limit_with_default
+    params[:limit].presence&.to_i || 10_000
   end
 end

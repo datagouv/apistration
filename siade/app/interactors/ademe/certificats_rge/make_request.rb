@@ -27,6 +27,6 @@ class ADEME::CertificatsRGE::MakeRequest < MakeRequest::Get
   end
 
   def size
-    context.params[:size]
+    context.params[:limit]
   end
 end

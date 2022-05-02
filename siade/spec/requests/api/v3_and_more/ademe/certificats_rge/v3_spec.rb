@@ -7,7 +7,15 @@ RSpec.describe 'ADEME: Certificatsrge', type: %i[request swagger] do
 
       common_action_attributes
 
-      parameter name: :siret, in: :path, type: :string
+      parameter_siret
+
+      parameter name: :limit,
+        in: :query,
+        type: :number,
+        description: "Limite le nombre de résultats retournés. Valeur entre 1 et 10 000 (Défault 10 000)",
+        example: 100
+
+      let(:limit) { nil }
 
       unauthorized_request do
         let(:siret) { valid_siret(:rge_ademe) }
@@ -28,6 +36,14 @@ RSpec.describe 'ADEME: Certificatsrge', type: %i[request swagger] do
           )
 
           run_test!
+
+          describe 'with optional limit' do
+            let(:limit) { 2 }
+
+            response '200', 'Entreprise trouvée', vcr: { cassette_name: 'ademe/certificats_rge/valid_siret_with_limit' } do
+              run_test!
+            end
+          end
         end
 
         response '404', 'Non trouvée', vcr: { cassette_name: 'ademe/certificats_rge/not_found_siret' } do

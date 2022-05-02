@@ -195,9 +195,42 @@ paths:
           type: string
       - name: siret
         in: path
+        description: Siret de l'établissement
+        examples:
+          siret_octo_technology:
+            value: '41816609600069'
+            summary: SIRET Octo Technology
+          siret_non_diffusible:
+            value: '00557246600026'
+            summary: SIRET établissement non diffusible
+          siret_agefiph:
+            value: '39332832300059'
+            summary: SIRET pour AGEFIPH
+          siret_msa:
+            value: '81104725700019'
+            summary: SIRET pour MSA
+          siret_probtp:
+            value: '43841606700017'
+            summary: SIRET pour ProBTP
+          siret_agence_bio:
+            value: '48311105000025'
+            summary: SIRET pour l'Agence Bio
+          siret_qualibat:
+            value: '78824266700020'
+            summary: SIRET pour Qualibat
+          siret_entrepreneur_individuel:
+            value: '38983993700015'
+            summary: SIRET d'un entrepreneur individuel (fermé)
         required: true
         schema:
           type: string
+      - name: limit
+        in: query
+        description: Limite le nombre de résultats retournés. Valeur entre 1 et 10
+          000 (Défault 10 000)
+        example: 100
+        schema:
+          type: number
       security:
       - jwt_bearer_token: []
       description: Obtenir les certifications RGE (Reconnu Garant de l'Environnement)
