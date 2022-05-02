@@ -206,5 +206,32 @@ RSpec.describe SIADE::V2::OAuth2::AbstractTokenProvider do
         end
       end
     end
+
+    context 'when it is a net timeout error' do
+      let(:error) { Net::OpenTimeout }
+
+      it 'raises an error when retrieving the token' do
+        expect { subject.token }.to raise_error(SIADE::V2::OAuth2::AbstractTokenProvider::Error)
+      end
+
+      it 'tracks error' do
+        expect(MonitoringService.instance)
+          .to receive(:track)
+          .with(
+            :warn,
+            'Error while retrieving DummyTokenProvider OAuth2 JSON token from provider',
+            {
+              exception: {
+                class: 'Net::OpenTimeout',
+                message: 'Net::OpenTimeout'
+              }
+            }
+          )
+        begin
+          subject.token
+        rescue SIADE::V2::OAuth2::AbstractTokenProvider::Error
+        end
+      end
+    end
   end
 end
