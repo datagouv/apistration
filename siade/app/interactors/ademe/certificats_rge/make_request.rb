@@ -8,7 +8,7 @@ class ADEME::CertificatsRGE::MakeRequest < MakeRequest::Get
   def request_params
     {
       size:,
-      qs: "siret:#{siret}"
+      qs: "siret:#{siret} AND traitement_termine:false"
     }
   end
 

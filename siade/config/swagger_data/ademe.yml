@@ -1,7 +1,7 @@
 ademe:
   certificats_rge:
     title: "Certificat RGE"
-    description: "Obtenir les certifications RGE (Reconnu Garant de l'Environnement) d'un établissement"
+    description: "Obtenir les certifications RGE (Reconnu Garant de l'Environnement) d'un établissement. Seules les certifications valides à la date du jour sont renvoyées."
     tags:
       - "Certifications professionnelles"
     meta:
@@ -189,5 +189,4 @@ ademe:
               description: "Date à laquelle cette information à été mise à jour dans la base ADEME"
               type: "string"
               example: "2021-02-25"
-# manque date_debut, date_fin, et #traitement_termine
 

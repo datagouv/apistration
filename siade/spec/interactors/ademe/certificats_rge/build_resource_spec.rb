@@ -50,13 +50,13 @@ RSpec.describe ADEME::CertificatsRGE::BuildResource, type: :build_resource do
 
   let(:valid_payload_certificat_2) do
     {
-      id_ademe: 'Q112379-8611M12D108-2022-02-15',
-      url: 'http://www.qualibat.com/Views/GetFichier.aspx?fn=2022\\D71-Certificat-112379-MIXENERGIE-E112379-2-20220214-RGEAnnexe.pdf',
+      id_ademe: 'Q112379-8611M12D107-2022-03-30',
+      url: 'https://www.qualibat.com/Views/GetFichier.aspx?fn=2022\\D71-Certificat-112379-MIXENERGIE-E112379-2-20220214-RGEAnnexe.pdf',
       nom_certificat: 'QUALIBAT-RGE',
-      domaine: 'Ventilation mécanique',
+      domaine: 'Radiateurs électriques, dont régulation.',
       meta_domaine: "Travaux d'efficacité énergétique",
-      code_qualification: '8611M12D108',
-      nom_qualification: 'Efficacité énergétique - "ECO Artisan®" - Chauffagiste (8611M12D108)',
+      code_qualification: '8611M12D107',
+      nom_qualification: 'Efficacité énergétique - "ECO Artisan®" - Chauffagiste (8611M12D107)',
       organisme: 'qualibat',
       date_attribution: '2019-01-24',
       date_expiration: '2023-02-04',
