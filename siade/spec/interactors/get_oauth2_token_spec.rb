@@ -168,6 +168,7 @@ RSpec.describe GetOAuth2Token, type: :interactor do
     end
 
     it { is_expected.to be_a_failure }
+
     its(:errors) { is_expected.to include(instance_of(ProviderAuthenticationError)) }
 
     it 'sends a message to Sentry' do
@@ -177,5 +178,24 @@ RSpec.describe GetOAuth2Token, type: :interactor do
 
       subject.token
     end
+  end
+
+  context 'when there is a network error' do
+    before do
+      allow(OAuth2::Client).to receive(:new).and_return(dummy_client)
+      allow(dummy_client).to receive(:get_token).and_raise(network_error)
+    end
+
+    let(:network_error) do
+      [
+        Net::OpenTimeout,
+        Errno::ECONNRESET,
+        Errno::ENETUNREACH
+      ].sample
+    end
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to be_present }
   end
 end

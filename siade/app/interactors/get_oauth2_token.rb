@@ -73,6 +73,7 @@ class GetOAuth2Token < ApplicationInteractor
     Redis.current.get(redis_key) || '{}'
   end
 
+  # rubocop:disable Metrics/MethodLength
   def token_from_provider
     client.get_token(client_get_token_params, access_token_options)
       .tap(&method(:save_to_redis))
@@ -83,7 +84,17 @@ class GetOAuth2Token < ApplicationInteractor
 
     context.errors << ProviderAuthenticationError.new(context.provider_name, message)
     context.fail!
+  rescue Net::OpenTimeout, Net::ReadTimeout, EOFError
+    context.errors << ProviderTimeoutError.new(context.provider_name)
+    context.fail!
+  rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EHOSTUNREACH
+    context.errors << ProviderUnavailable.new(context.provider_name)
+    context.fail!
+  rescue Errno::ENETUNREACH
+    context.errors << NetworkError.new
+    context.fail!
   end
+  # rubocop:enable Metrics/MethodLength
 
   def save_to_redis(token)
     Redis.current.set(redis_key, token.to_json)
