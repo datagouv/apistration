@@ -34,6 +34,8 @@ class EncryptedCache
     else
       cache.delete(key)
     end
+  rescue Redis::CommandError => e
+    track_redis_error(e, key, options)
   end
 
   private
@@ -55,6 +57,20 @@ class EncryptedCache
     Marshal.load(value)
   end
   # rubocop:enable Security/MarshalLoad
+
+  def track_redis_error(redis_error, key, options)
+    MonitoringService.instance.track(
+      :warn,
+      'EncryptedCache redis error',
+      {
+        exception_message: redis_error.message,
+        params: {
+          key:,
+          options:
+        }
+      }
+    )
+  end
 
   def cache
     Rails.cache

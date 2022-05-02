@@ -57,4 +57,44 @@ RSpec.describe EncryptedCache, type: :service do
       end
     end
   end
+
+  describe '.write' do
+    subject { described_class.write(key, value, options) }
+
+    let(:key) { 'key' }
+    let(:value) { 'value' }
+    let(:options) { { expires_in: 9001 } }
+
+    let(:redis_error) do
+      Redis::CommandError.new('ERR invalid expire time in set')
+    end
+
+    context 'when redis raises an error' do
+      before do
+        allow(Rails.cache).to receive(:write).and_raise(redis_error)
+      end
+
+      it 'does not raise error' do
+        expect {
+          subject
+        }.not_to raise_error
+      end
+
+      it 'tracks error with key and option (not value, which can be sensitive)' do
+        expect(MonitoringService.instance).to receive(:track).with(
+          :warn,
+          'EncryptedCache redis error',
+          {
+            exception_message: redis_error.message,
+            params: {
+              key:,
+              options:
+            }
+          }
+        )
+
+        subject
+      end
+    end
+  end
 end
