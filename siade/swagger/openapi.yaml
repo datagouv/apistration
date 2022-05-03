@@ -234,7 +234,8 @@ paths:
       security:
       - jwt_bearer_token: []
       description: Obtenir les certifications RGE (Reconnu Garant de l'Environnement)
-        d'un établissement
+        d'un établissement. Seules les certifications valides à la date du jour sont
+        renvoyées.
       responses:
         '403':
           description: Accès interdit
@@ -264,221 +265,146 @@ paths:
                 type: object
                 properties:
                   data:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        example: '50530961700023'
-                      type:
-                        type: string
-                        example: certificats_rge
-                        enum:
-                        - certificats_rge
-                      attributes:
-                        type: object
-                        properties:
-                          entreprise:
-                            type: object
-                            properties:
-                              nom:
-                                title: Nom
-                                description: Nom de l'entreprise
-                                type: string
-                                example: GROUP ENERGY SOLLIDARITE
-                              adresse:
-                                title: Adresse
-                                description: Adresse de l'entreprise
-                                type: string
-                                example: 6 RUE DU BOIS SAUVAGE
-                              code_postal:
-                                title: Code postal
-                                description: Code postal de l'entreprise
-                                type: string
-                                example: '91000'
-                              commune:
-                                title: Commune
-                                description: Commune de l'entreprise
-                                type: string
-                                example: MONTRET
-                              latitude:
-                                title: Latitude
-                                description: Latitude de l'entreprise
-                                type: number
-                                example: 46.717769
-                              longitude:
-                                title: Longitude
-                                description: Longitude de l'entreprise
-                                type: number
-                                example: 5.18096
-                              telephone:
-                                title: téléphone
-                                description: Numéro de téléphone de l'entreprise
-                                type: string
-                                example: 01 02 03 04 05
-                              site_internet:
-                                title: Site internet
-                                description: Site internet de l'entreprise
-                                type: string
-                                example: http://data.gouv.com/
-                              email:
-                                title: Email de l'entreprise
-                                description: Adresse email de contact de l'entreprise
-                                type: string
-                                example: contact@entreprise.fr
-                              particuliers:
-                                title: Particuliers
-                                description: Indique si l'entreprise travaille pour
-                                  les particuliers
-                                type: boolean
-                                example: false
-                            required:
-                            - nom
-                            - adresse
-                            - code_postal
-                            - commune
-                            - latitude
-                            - longitude
-                            - telephone
-                            - site_internet
-                            - email
-                            - particuliers
-                          certificats:
-                            type: array
-                            items:
-                              properties:
-                                id:
-                                  title: Identifiant ADEME
-                                  description: Identifiant unique du certificat dans
-                                    la base ADEME
-                                  type: string
-                                  example: Q112379-8611M12D10-2017-03-23
-                                url:
-                                  title: URL Certificat
-                                  description: URL de téléchargement du certificat
-                                  type: string
-                                  example: https://www.qualypso.fr/download_file.php?id=545cf132-b12f-445d-bcde-56a5b235b1d0
-                                nom_certificat:
-                                  title: Nom du certificat
-                                  description: libéllé du certificat
-                                  type: string
-                                  example: Qualisol CESI
-                                domaine:
-                                  title: Domaine de travaux
-                                  description: Domaine des travaux sur lesquelles
-                                    porte la qualification du certificat
-                                  type: string
-                                  enum:
-                                  - Fenêtres, volets, portes extérieures 2020
-                                  - Isolation du toit 2020
-                                  - Isolation des murs et planchers bas 2020
-                                  - Chaudière condensation ou micro-cogénération gaz
-                                    ou fioul 2020
-                                  - 'Equipements électriques hors ENR : chauffage,
-                                    eau chaude, éclairage 2020'
-                                  - Isolation par l'intérieur des murs ou rampants
-                                    de toitures  ou plafonds
-                                  - Isolation des combles perdus
-                                  - 'Pompe à chaleur : chauffage'
-                                  - Fenêtres, volets, portes donnant sur l'extérieur
-                                  - Isolation des planchers bas
-                                  - Chaudière condensation ou micro-cogénération gaz
-                                    ou fioul
-                                  - Ventilation 2020
-                                  - Poêle ou insert bois
-                                  - Isolation des murs par l'extérieur
-                                  - Radiateurs électriques, dont régulation.
-                                  - Chauffe-Eau Thermodynamique
-                                  - Isolation des toitures terrasses ou des toitures
-                                    par l'extérieur
-                                  - Fenêtres de toit
-                                  - Chaudière bois
-                                  - Pompe à chaleur et/ou Chauffe-eau thermodynamique
-                                    2020
-                                  - Architecte
-                                  - Chauffage et/ou eau chaude solaire
-                                  - Panneaux solaires photovoltaïques
-                                  - Ventilation mécanique
-                                  - Chauffage et/ou eau chaude au bois 2020
-                                  - Audit énergétique
-                                  - Panneaux photovoltaïques 2020
-                                  - Etude thermique reglementaire
-                                  - Chauffage et/ou eau chaude solaire 2020
-                                  - Projet complet de rénovation
-                                  - Etude solaire photovoltaïque
-                                  - Etude bois énergie
-                                  - Etude forage géothermique
-                                  - Etude solaire thermique
-                                  - Etude système technique bâtiment
-                                  - Etude eclairage
-                                  - Forage géothermique
-                                  - Etude ACV
-                                  - Inconnu
-                                  - Non renseigné
-                                  - Etude enveloppe du bâtiment
-                                  - Commisionnement
-                                meta_domaine:
-                                  title: Méta domaine
-                                  description: Le Méta domaine explicite le contexte
-                                    de la qualification du certificat
-                                  type: string
-                                  example: anciens domaines avant 2021
-                                  enum:
-                                  - anciens domaines avant 2021
-                                  - Travaux d'efficacité énergétique
-                                  - Installations d'énergies renouvelables
-                                  - Rénovation globale
-                                  - Etudes énergétiques
-                                  - Inconnu
-                                  - Non renseigné
-                                code_qualification:
-                                  title: Code qualification
-                                  description: Code de la qualification du présent
-                                    certificat
-                                  type: string
-                                  example: '32'
-                                nom_qualification:
-                                  title: Nom qualification
-                                  description: Nom de la qualification du présent
-                                    certificat
-                                  type: string
-                                  example: QualiPV Elec - Pose de générateur photovoltaïque
-                                    raccordé au réseau (32)
-                                organisme:
-                                  title: Organisme de certification
-                                  description: Organisme ayant délivré le certificat
-                                  type: string
-                                  example: qualibat
-                                  enum:
-                                  - Non renseigné
-                                  - qualibat
-                                  - qualitenr
-                                  - cnoa
-                                  - opqibi
-                                  - qualifelec
-                                  - cequami
-                                  - certibat
-                                  - afnor
-                                  - Inconnu
-                                date_attribution:
-                                  title: Date d'attribution
-                                  description: Date à laquelle a été attribué le certificat
-                                  type: string
-                                  example: '2020-12-24'
-                                date_expiration:
-                                  title: Date d'expiration
-                                  description: Date à laquelle le présent certificat
-                                    expire
-                                  type: string
-                                  example: '2025-08-01'
-                                updated_at:
-                                  title: Date de mise à jour
-                                  description: Date à laquelle cette information à
-                                    été mise à jour dans la base ADEME
-                                  type: string
-                                  example: '2021-02-25'
-                        required:
-                        - entreprise
-                        - certificats
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id_ademe:
+                          title: Identifiant ADEME
+                          description: Identifiant unique du certificat dans la base
+                            ADEME
+                          type: string
+                          example: Q112379-8611M12D10-2017-03-23
+                        url:
+                          title: URL Certificat
+                          description: URL de téléchargement du certificat
+                          type: string
+                          example: https://www.qualypso.fr/download_file.php?id=545cf132-b12f-445d-bcde-56a5b235b1d0
+                        nom_certificat:
+                          title: Nom du certificat
+                          description: libéllé du certificat
+                          type: string
+                          example: Qualisol CESI
+                        domaine:
+                          title: Domaine de travaux
+                          description: Domaine des travaux sur lesquelles porte la
+                            qualification du certificat
+                          type: string
+                          enum:
+                          - Fenêtres, volets, portes extérieures 2020
+                          - Isolation du toit 2020
+                          - Isolation des murs et planchers bas 2020
+                          - Chaudière condensation ou micro-cogénération gaz ou fioul
+                            2020
+                          - 'Equipements électriques hors ENR : chauffage, eau chaude,
+                            éclairage 2020'
+                          - Isolation par l'intérieur des murs ou rampants de toitures  ou
+                            plafonds
+                          - Isolation des combles perdus
+                          - 'Pompe à chaleur : chauffage'
+                          - Fenêtres, volets, portes donnant sur l'extérieur
+                          - Isolation des planchers bas
+                          - Chaudière condensation ou micro-cogénération gaz ou fioul
+                          - Ventilation 2020
+                          - Poêle ou insert bois
+                          - Isolation des murs par l'extérieur
+                          - Radiateurs électriques, dont régulation.
+                          - Chauffe-Eau Thermodynamique
+                          - Isolation des toitures terrasses ou des toitures par l'extérieur
+                          - Fenêtres de toit
+                          - Chaudière bois
+                          - Pompe à chaleur et/ou Chauffe-eau thermodynamique 2020
+                          - Architecte
+                          - Chauffage et/ou eau chaude solaire
+                          - Panneaux solaires photovoltaïques
+                          - Ventilation mécanique
+                          - Chauffage et/ou eau chaude au bois 2020
+                          - Audit énergétique
+                          - Panneaux photovoltaïques 2020
+                          - Etude thermique reglementaire
+                          - Chauffage et/ou eau chaude solaire 2020
+                          - Projet complet de rénovation
+                          - Etude solaire photovoltaïque
+                          - Etude bois énergie
+                          - Etude forage géothermique
+                          - Etude solaire thermique
+                          - Etude système technique bâtiment
+                          - Etude eclairage
+                          - Forage géothermique
+                          - Etude ACV
+                          - Inconnu
+                          - Non renseigné
+                          - Etude enveloppe du bâtiment
+                          - Commisionnement
+                        meta_domaine:
+                          title: Méta domaine
+                          description: Le Méta domaine explicite le contexte de la
+                            qualification du certificat
+                          type: string
+                          example: anciens domaines avant 2021
+                          enum:
+                          - anciens domaines avant 2021
+                          - Travaux d'efficacité énergétique
+                          - Installations d'énergies renouvelables
+                          - Rénovation globale
+                          - Etudes énergétiques
+                          - Inconnu
+                          - Non renseigné
+                        code_qualification:
+                          title: Code qualification
+                          description: Code de la qualification du présent certificat
+                          type: string
+                          example: '32'
+                        nom_qualification:
+                          title: Nom qualification
+                          description: Nom de la qualification du présent certificat
+                          type: string
+                          example: QualiPV Elec - Pose de générateur photovoltaïque
+                            raccordé au réseau (32)
+                        organisme:
+                          title: Organisme de certification
+                          description: Organisme ayant délivré le certificat
+                          type: string
+                          example: qualibat
+                          enum:
+                          - Non renseigné
+                          - qualibat
+                          - qualitenr
+                          - cnoa
+                          - opqibi
+                          - qualifelec
+                          - cequami
+                          - certibat
+                          - afnor
+                          - Inconnu
+                        date_attribution:
+                          title: Date d'attribution
+                          description: Date à laquelle a été attribué le certificat
+                          type: string
+                          example: '2020-12-24'
+                        date_expiration:
+                          title: Date d'expiration
+                          description: Date à laquelle le présent certificat expire
+                          type: string
+                          example: '2025-08-01'
+                        updated_at:
+                          title: Date de mise à jour
+                          description: Date à laquelle cette information à été mise
+                            à jour dans la base ADEME
+                          type: string
+                          example: '2021-02-25'
+                      required:
+                      - id_ademe
+                      - url
+                      - nom_certificat
+                      - domaine
+                      - meta_domaine
+                      - code_qualification
+                      - nom_qualification
+                      - organisme
+                      - date_attribution
+                      - date_expiration
+                      - updated_at
                     required:
                     - id
                     - type

@@ -31,8 +31,8 @@ RSpec.describe 'ADEME: Certificatsrge', type: %i[request swagger] do
 
           rate_limit_headers
 
-          schema build_rswag_response(
-            attributes: SwaggerData.get('ademe.certificats_rge.attributes')
+          schema build_rswag_response_collection(
+            properties: SwaggerData.get('ademe.certificats_rge.attributes')
           )
 
           run_test!

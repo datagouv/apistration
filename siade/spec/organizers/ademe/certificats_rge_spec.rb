@@ -16,10 +16,10 @@ RSpec.describe ADEME::CertificatsRGE, type: :retriever_organizer do
 
       it { is_expected.to be_a_success }
 
-      its(:resource) { is_expected.to be_present }
+      its(:resource_collection) { is_expected.to be_present }
 
       describe 'with limit param', vcr: { cassette_name: 'ademe/certificats_rge/valid_siret_with_limit' } do
-        subject(:results) { described_class.call(params:).resource.certificats }
+        subject(:results) { described_class.call(params:).resource_collection }
 
         let(:limit) { 2 }
 

@@ -5,7 +5,7 @@ class API::V3AndMore::ADEME::CertificatsRGEController < API::V3AndMore::BaseCont
     organizer = ::ADEME::CertificatsRGE.call(params: organizer_params)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.resource, options(organizer)).serializable_hash,
+      render json: serializer_class.new(organizer.resource_collection, options(organizer)).serializable_hash,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)
@@ -23,12 +23,13 @@ class API::V3AndMore::ADEME::CertificatsRGEController < API::V3AndMore::BaseCont
 
   def options(organizer)
     {
+      is_collection: true,
       meta: organizer.meta
     }
   end
 
   def serializer_module
-    ::ADEME::CertificatsRGESerializer
+    ::ADEME::CertificatRGESerializer
   end
 
   def limit_with_default
