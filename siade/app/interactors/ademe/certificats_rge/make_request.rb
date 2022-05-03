@@ -12,6 +12,12 @@ class ADEME::CertificatsRGE::MakeRequest < MakeRequest::Get
     }
   end
 
+  def set_headers(request)
+    request['x-apiKey'] = Siade.credentials[:ademe_rge_token_new]
+    request['Referer'] = "https://entreprise.api.gouv.fr/#{Rails.env}"
+    super(request)
+  end
+
   private
 
   def ademe_rge_url
