@@ -69,7 +69,7 @@ RSpec.configure do |config|
 
   config.before do
     # let's use a new instance of MockedRedis (in memory) for each specs
-    allow(Redis).to receive(:current).and_return(MockRedis.new)
+    allow(RedisService).to receive(:instance).and_return(MockRedis.new)
   end
 
   # If true, the base class of anonymous controllers will be inferred

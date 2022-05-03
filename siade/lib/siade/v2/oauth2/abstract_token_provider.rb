@@ -34,7 +34,7 @@ module SIADE::V2::OAuth2::AbstractTokenProvider
   end
 
   def redis_access_token_property_values_string
-    Redis.current.get(redis_key) || '{}'
+    RedisService.instance.get(redis_key) || '{}'
   end
 
   def token_from_provider
@@ -47,7 +47,7 @@ module SIADE::V2::OAuth2::AbstractTokenProvider
   end
 
   def save_to_redis(token)
-    Redis.current.set(redis_key, token.to_json)
+    RedisService.instance.set(redis_key, token.to_json)
   end
 
   def redis_key

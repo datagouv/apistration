@@ -53,7 +53,7 @@ RSpec.describe SIADE::V2::OAuth2::AbstractTokenProvider do
     end
 
     it 'stores the new token in Redis' do
-      expect(Redis.current).to receive(:set).with(:dummy, /access_token.+dummy token from client/)
+      expect(RedisService.instance).to receive(:set).with(:dummy, /access_token.+dummy token from client/)
       subject.token
     end
   end
@@ -68,7 +68,7 @@ RSpec.describe SIADE::V2::OAuth2::AbstractTokenProvider do
     end
 
     before do
-      Redis.current.set(:dummy, token_redis.to_json)
+      RedisService.instance.set(:dummy, token_redis.to_json)
     end
 
     context 'when the token in Redis is not expired' do
@@ -82,7 +82,7 @@ RSpec.describe SIADE::V2::OAuth2::AbstractTokenProvider do
       end
 
       it 'retrieves the token from Redis' do
-        expect(Redis.current).to receive(:get).with(:dummy)
+        expect(RedisService.instance).to receive(:get).with(:dummy)
         subject.token
       end
     end
@@ -100,14 +100,14 @@ RSpec.describe SIADE::V2::OAuth2::AbstractTokenProvider do
       end
 
       it 'stores the new token into Redis' do
-        expect(Redis.current).to receive(:set).with(:dummy, /access_token.+dummy token from client/)
+        expect(RedisService.instance).to receive(:set).with(:dummy, /access_token.+dummy token from client/)
         subject.token
       end
     end
   end
 
   context 'when parsing stored token fails' do
-    before { Redis.current.set(:dummy, 'not a valid JSON') }
+    before { RedisService.instance.set(:dummy, 'not a valid JSON') }
 
     its(:token) { is_expected.to eq 'This is a dummy token from client' }
 

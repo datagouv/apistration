@@ -55,7 +55,7 @@ RSpec.describe GetOAuth2Token, type: :interactor do
     end
 
     it 'stores the new token in Redis' do
-      expect(Redis.current).to receive(:set).with(:dummy_token_authentication, /access_token.+dummy token from client/)
+      expect(RedisService.instance).to receive(:set).with(:dummy_token_authentication, /access_token.+dummy token from client/)
       subject.token
     end
   end
@@ -70,7 +70,7 @@ RSpec.describe GetOAuth2Token, type: :interactor do
     end
 
     before do
-      Redis.current.set(:dummy_token_authentication, token_redis.to_json)
+      RedisService.instance.set(:dummy_token_authentication, token_redis.to_json)
     end
 
     context 'when the token in Redis is not expired' do
@@ -87,7 +87,7 @@ RSpec.describe GetOAuth2Token, type: :interactor do
       end
 
       it 'retrieves the token from Redis' do
-        expect(Redis.current).to receive(:get).with(:dummy_token_authentication)
+        expect(RedisService.instance).to receive(:get).with(:dummy_token_authentication)
         subject.token
       end
     end
@@ -108,14 +108,14 @@ RSpec.describe GetOAuth2Token, type: :interactor do
       end
 
       it 'stores the new token into Redis' do
-        expect(Redis.current).to receive(:set).with(:dummy_token_authentication, /access_token.+dummy token from client/)
+        expect(RedisService.instance).to receive(:set).with(:dummy_token_authentication, /access_token.+dummy token from client/)
         subject.token
       end
     end
   end
 
   context 'when parsing stored token fails' do
-    before { Redis.current.set(:dummy_token_authentication, 'not a valid JSON') }
+    before { RedisService.instance.set(:dummy_token_authentication, 'not a valid JSON') }
 
     it { is_expected.to be_a_success }
     its(:errors) { is_expected.to be_empty }

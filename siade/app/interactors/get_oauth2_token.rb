@@ -70,7 +70,7 @@ class GetOAuth2Token < ApplicationInteractor
   end
 
   def redis_access_token_property_values_string
-    Redis.current.get(redis_key) || '{}'
+    RedisService.instance.get(redis_key) || '{}'
   end
 
   # rubocop:disable Metrics/MethodLength
@@ -97,7 +97,7 @@ class GetOAuth2Token < ApplicationInteractor
   # rubocop:enable Metrics/MethodLength
 
   def save_to_redis(token)
-    Redis.current.set(redis_key, token.to_json)
+    RedisService.instance.set(redis_key, token.to_json)
   end
 
   def redis_key

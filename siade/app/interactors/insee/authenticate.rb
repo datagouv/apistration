@@ -54,6 +54,6 @@ class INSEE::Authenticate < ApplicationInteractor
   end
 
   def redis
-    @redis ||= Redis.current
+    @redis ||= RedisService.instance
   end
 end

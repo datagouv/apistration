@@ -19,13 +19,13 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
     it 'stores the new token retrieved from INSEE API in redis' do
       expect {
         retrieve_token
-      }.to change { Redis.current.get('insee_token') }.to(token)
+      }.to change { RedisService.instance.get('insee_token') }.to(token)
     end
 
     it 'sets a expires_in value as ttl for this redis key' do
       expect {
         retrieve_token
-      }.to change { Redis.current.ttl('insee_token') }.to(expires_in)
+      }.to change { RedisService.instance.ttl('insee_token') }.to(expires_in)
     end
   end
 
@@ -33,7 +33,7 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
     let(:token) { '1234567890' }
 
     before do
-      Redis.current.set('insee_token', token)
+      RedisService.instance.set('insee_token', token)
     end
 
     it { is_expected.to be_a_success }
