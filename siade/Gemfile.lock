@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/rswag/rswag.git
-  revision: a813b63bcc64e9ea49f6416ab4fe023b7f090ad8
+  revision: e2bc45f19567cb52e8dc5898b255a6ad4b1c0590
   specs:
     rswag-api (0.0.0)
       railties (>= 3.1, < 7.1)
@@ -189,7 +189,7 @@ GEM
     pry-byebug (3.9.0)
       byebug (~> 11.0)
       pry (~> 0.13.0)
-    public_suffix (4.0.6)
+    public_suffix (4.0.7)
     pundit (1.0.0)
       activesupport (>= 3.0.0)
     racc (1.6.0)
