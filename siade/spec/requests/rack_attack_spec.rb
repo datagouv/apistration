@@ -346,7 +346,7 @@ RSpec.describe Rack::Attack, type: :request do
           get endpoint, headers: { 'Authorization' => "Bearer #{token}" }
         end
 
-        its(:status) { is_expected.to eq(429) }
+        it { expect(subject.status).to eq(429) }
 
         it 'has rate limit headers defined' do
           rate_limit_subkeys.each do |subkey|
