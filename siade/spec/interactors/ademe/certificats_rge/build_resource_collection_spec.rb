@@ -37,6 +37,7 @@ RSpec.describe ADEME::CertificatsRGE::BuildResourceCollection, type: :build_reso
         organisme: 'qualibat',
         date_attribution: '2019-01-24',
         date_expiration: '2023-02-04',
+        archived: false,
         updated_at: '2022-03-30'
       },
       {
@@ -50,6 +51,7 @@ RSpec.describe ADEME::CertificatsRGE::BuildResourceCollection, type: :build_reso
         organisme: 'qualibat',
         date_attribution: '2019-01-24',
         date_expiration: '2023-02-04',
+        archived: false,
         updated_at: '2022-03-30'
       }
     ]

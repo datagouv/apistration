@@ -9,5 +9,6 @@ class ADEME::CertificatRGESerializer::V3 < V3AndMore::BaseSerializer
     :organisme,
     :date_attribution,
     :date_expiration,
+    :archived,
     :updated_at
 end

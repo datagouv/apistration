@@ -387,6 +387,13 @@ paths:
                           description: Date à laquelle le présent certificat expire
                           type: string
                           example: '2025-08-01'
+                        archived:
+                          title: Archivé
+                          description: Indique si le présent certificat est archivé
+                            dans la base ADEME et donc invalide. "True" signifie archivé
+                            donc invalide.
+                          type: boolean
+                          example: false
                         updated_at:
                           title: Date de mise à jour
                           description: Date à laquelle cette information à été mise
@@ -404,6 +411,7 @@ paths:
                       - organisme
                       - date_attribution
                       - date_expiration
+                      - archived
                       - updated_at
                     required:
                     - id

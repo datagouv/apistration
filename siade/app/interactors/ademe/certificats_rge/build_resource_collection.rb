@@ -24,6 +24,7 @@ class ADEME::CertificatsRGE::BuildResourceCollection < BuildResourceCollection
       organisme: certificat['organisme'],
       date_attribution: certificat['lien_date_debut'],
       date_expiration: certificat['lien_date_fin'],
+      archived: certificat['traitement_termine'],
       updated_at: normalized_date(certificat['_updatedAt'])
     }
   end
