@@ -7603,9 +7603,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Obtenir divers documents, différents selon l’association ; tels
-        que les statuts, la liste des personnes habilitées à représenter l’association
-        ou encore les délibérations pour modification ou dissolution de l’association.
+      description: Divers documents administratifs en PDF tels que les statuts, le
+        récépissé de déclaration de création, la liste des dirigeants...
       responses:
         '403':
           description: Accès interdit
