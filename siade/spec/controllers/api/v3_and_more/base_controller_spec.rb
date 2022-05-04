@@ -47,11 +47,13 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
         let(:errors) { response_json[:errors] }
 
         it do
-          expect(errors).to include({
-            code: '00402',
-            title: 'Version d\'API non prise en charge',
-            detail: 'La version v4 n\'est pas supportée pour cet endpoint'
-          })
+          expect(errors).to include(
+            hash_including(
+              code: '00402',
+              title: 'Version d\'API non prise en charge',
+              detail: 'La version v4 n\'est pas supportée pour cet endpoint'
+            )
+          )
         end
       end
     end
@@ -85,14 +87,16 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
         let(:errors) { response_json[:errors] }
 
         it do
-          expect(errors).to include({
-            code: '00210',
-            title: 'Entité non traitable',
-            detail: 'Le paramètre recipient n\'est pas un siret valide',
-            source: {
-              parameter: 'recipient'
-            }
-          })
+          expect(errors).to include(
+            hash_including(
+              code: '00210',
+              title: 'Entité non traitable',
+              detail: 'Le paramètre recipient n\'est pas un siret valide',
+              source: {
+                parameter: 'recipient'
+              }
+            )
+          )
         end
       end
     end
@@ -111,14 +115,16 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
         let(:errors) { response_json[:errors] }
 
         it do
-          expect(errors).to include({
-            code: '00211',
-            title: 'Entité non traitable',
-            detail: 'Le paramètre recipient est identique au siret de la demande',
-            source: {
-              parameter: 'recipient'
-            }
-          })
+          expect(errors).to include(
+            hash_including(
+              code: '00211',
+              title: 'Entité non traitable',
+              detail: 'Le paramètre recipient est identique au siret de la demande',
+              source: {
+                parameter: 'recipient'
+              }
+            )
+          )
         end
       end
     end
@@ -145,14 +151,16 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
         let(:errors) { response_json[:errors] }
 
         it do
-          expect(errors).to include({
-            code: '00211',
-            title: 'Entité non traitable',
-            detail: 'Le paramètre recipient est identique au siret de la demande',
-            source: {
-              parameter: 'recipient'
-            }
-          })
+          expect(errors).to include(
+            hash_including(
+              code: '00211',
+              title: 'Entité non traitable',
+              detail: 'Le paramètre recipient est identique au siret de la demande',
+              source: {
+                parameter: 'recipient'
+              }
+            )
+          )
         end
       end
     end

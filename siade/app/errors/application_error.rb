@@ -16,7 +16,7 @@ class ApplicationError
   end
 
   def meta
-    nil
+    {}
   end
 
   def to_h
