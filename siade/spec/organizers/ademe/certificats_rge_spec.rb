@@ -10,7 +10,7 @@ RSpec.describe ADEME::CertificatsRGE, type: :retriever_organizer do
     end
 
     context 'with valid siret', vcr: { cassette_name: 'ademe/certificats_rge/valid_siret' } do
-      let(:limit) { 10_000 }
+      let(:limit) { nil }
 
       let(:siret) { valid_siret(:rge_ademe) }
 

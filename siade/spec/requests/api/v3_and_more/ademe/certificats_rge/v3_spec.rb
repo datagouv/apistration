@@ -12,7 +12,7 @@ RSpec.describe 'ADEME: Certificatsrge', type: %i[request swagger] do
       parameter name: :limit,
         in: :query,
         type: :number,
-        description: "Limite le nombre de résultats retournés. Valeur entre 1 et 10 000 (Défault 10 000)",
+        description: "Limite le nombre de résultats retournés. Valeur entre 1 et 1000 (Défault 1000)",
         example: 100
 
       let(:limit) { nil }

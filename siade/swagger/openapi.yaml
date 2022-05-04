@@ -226,8 +226,8 @@ paths:
           type: string
       - name: limit
         in: query
-        description: Limite le nombre de résultats retournés. Valeur entre 1 et 10
-          000 (Défault 10 000)
+        description: Limite le nombre de résultats retournés. Valeur entre 1 et 1000
+          (Défault 1000)
         example: 100
         schema:
           type: number

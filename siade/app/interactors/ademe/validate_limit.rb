@@ -1,6 +1,6 @@
 class ADEME::ValidateLimit < ValidateParamInteractor
   def call
-    return if limit.between?(1, 10_000)
+    return if limit.between?(1, 1_000)
 
     invalid_param!(:limit)
   end
