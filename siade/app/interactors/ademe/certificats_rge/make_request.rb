@@ -14,7 +14,7 @@ class ADEME::CertificatsRGE::MakeRequest < MakeRequest::Get
 
   def set_headers(request)
     request['x-apiKey'] = ademe_token
-    request['Referer'] = "https://entreprise.api.gouv.fr/#{Rails.env}"
+    request['Referer'] = current_host
     super(request)
   end
 

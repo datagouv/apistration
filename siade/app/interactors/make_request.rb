@@ -1,4 +1,6 @@
 class MakeRequest < ApplicationInteractor
+  include RequestHelpers
+
   class ResponseNotDefined < StandardError; end
 
   def self.inherited(klass)
