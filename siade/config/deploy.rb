@@ -42,12 +42,7 @@ set :branch, branch
 ensure!(:branch)
 
 def samhain_db_update
-  samhain_listfile = "/tmp/listfile-#{SecureRandom.hex(48)}"
-
-  comment %{Updating Samhain signature database}
-  command %{find "/var/www/siade_#{ENV['to']}" >#{samhain_listfile}}
-  command %{sudo /usr/local/sbin/update-samhain-db.sh #{samhain_listfile}}
-  command %{rm -f #{samhain_listfile}}
+  command %{sudo /usr/local/sbin/update-samhain-db.sh "/var/www/siade_#{ENV['to']}"}
 end
 
 print "Deploying branch #{branch} to #{ENV['to']} environment\n".green
