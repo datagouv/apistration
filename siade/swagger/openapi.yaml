@@ -441,6 +441,12 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/NotFound"
+        '422':
+          description: with wrong limit parameter
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/UnprocessableEntity"
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande

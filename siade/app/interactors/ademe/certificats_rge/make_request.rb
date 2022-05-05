@@ -14,7 +14,7 @@ class ADEME::CertificatsRGE::MakeRequest < MakeRequest::Get
 
   def set_headers(request)
     request['x-apiKey'] = ademe_token
-    request['Referer'] = current_host
+    request['Referer'] = current_host_url
     super(request)
   end
 

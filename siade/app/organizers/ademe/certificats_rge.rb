@@ -12,8 +12,4 @@ class ADEME::CertificatsRGE < RetrieverOrganizer
   def provider_name
     'ADEME'
   end
-
-  def limit
-    context.params[:limit]
-  end
 end

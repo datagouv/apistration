@@ -1,5 +1,5 @@
 class MakeRequest < ApplicationInteractor
-  include RequestHelpers
+  include HostMethodsHelpers
 
   class ResponseNotDefined < StandardError; end
 

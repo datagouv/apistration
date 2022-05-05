@@ -10,7 +10,7 @@ RSpec.describe ADEME::ValidateLimit, type: :validate_param_interactor do
 
     it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to be_present }
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
   context 'when under 0' do
@@ -18,7 +18,7 @@ RSpec.describe ADEME::ValidateLimit, type: :validate_param_interactor do
 
     it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to be_present }
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
   context 'when between 0 and 1_000' do
