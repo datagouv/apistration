@@ -8,6 +8,6 @@ class ADEME::ValidateLimit < ValidateParamInteractor
   private
 
   def limit
-    context.params[:limit]
+    context.params[:limit].to_i
   end
 end

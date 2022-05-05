@@ -1,7 +1,6 @@
 class ADEME::CertificatsRGE < RetrieverOrganizer
   before do
-    context.params[:limit] = 1000 if context.params[:limit].blank?
-    context.params[:limit] = context.params[:limit].to_i
+    context.params[:limit] = '1000' if context.params[:limit].blank?
   end
 
   organize ValidateSiret,
