@@ -5,22 +5,12 @@ ademe:
     tags:
       - "Certifications professionnelles"
     meta:
-      count:
-        title: "Count"
-        description: "Nombre de résultats (certificats) renvoyés, dans la limite passée en paramètre"
-        type: "number"
-        example: 5
       total:
         title: "Total"
         description: "Nombre de résultats (certificats) totaux"
         type: "number"
-        example: 12
+        example: 8
     attributes:
-      id_ademe:
-        title: "Identifiant ADEME"
-        description: "Identifiant unique du certificat dans la base ADEME"
-        type: "string"
-        example: "Q112379-8611M12D10-2017-03-23"
       url:
         title: "URL Certificat"
         description: "URL de téléchargement du certificat"
@@ -91,16 +81,21 @@ ademe:
           - "Etudes énergétiques"
           - "Inconnu"
           - "Non renseigné"
-      code_qualification:
-        title: "Code qualification"
-        description: "Code de la qualification du présent certificat"
-        type: "string"
-        example: "32"
-      nom_qualification:
-        title: "Nom qualification"
-        description: "Nom de la qualification du présent certificat"
-        type: "string"
-        example: "QualiPV Elec - Pose de générateur photovoltaïque raccordé au réseau (32)"
+      qualification:
+        title: "Qualification"
+        description: "Informations sur la qualification du présent certificat"
+        type: "object"
+        properties:
+          code:
+            title: "Code qualification"
+            description: "Code de la qualification du présent certificat"
+            type: "string"
+            example: "32"
+          nom:
+            title: "Nom qualification"
+            description: "Nom de la qualification du présent certificat"
+            type: "string"
+            example: "QualiPV Elec - Pose de générateur photovoltaïque raccordé au réseau (32)"
       organisme:
         title: "Organisme de certification"
         description: "Organisme ayant délivré le certificat"
@@ -127,14 +122,23 @@ ademe:
         description: "Date à laquelle le présent certificat expire"
         type: "string"
         example: "2025-08-01"
-      archived:
-        title: "Archivé"
-        description: "Indique si le présent certificat est archivé dans la base ADEME et donc invalide. \"True\" signifie archivé donc invalide."
-        type: "boolean"
-        example: false
-      updated_at:
-        title: "Date de mise à jour"
-        description: "Date à laquelle cette information à été mise à jour dans la base ADEME"
-        type: "string"
-        example: "2021-02-25"
-
+      meta:
+        title: "Informations ADEME"
+        description: "informations sur l'enregistrement de ce certificat dans la base ADEME"
+        type: "object"
+        properties:
+          internal_id:
+            title: "Identifiant interne"
+            description: "Identifiant unique du certificat dans la base ADEME"
+            type: "string"
+            example: "Q112379-8611M12D10-2017-03-23"
+          updated_at:
+            title: "Date de mise à jour"
+            description: "Date à laquelle cette information à été mise à jour dans la base ADEME"
+            type: "string"
+            example: "2021-02-25"
+          archived:
+            title: "Archivé"
+            description: "Indique si le présent certificat est archivé dans la base ADEME et donc invalide. \"True\" signifie archivé donc invalide."
+            type: "boolean"
+            example: false
