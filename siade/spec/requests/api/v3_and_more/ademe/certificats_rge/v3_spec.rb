@@ -53,6 +53,14 @@ RSpec.describe 'ADEME: Certificatsrge', type: %i[request swagger] do
 
           run_test!
         end
+
+        response '422', 'with wrong limit parameter' do
+          let(:limit) { 100_000 }
+
+          schema '$ref' => '#/components/schemas/UnprocessableEntity'
+
+          run_test!
+        end
       end
     end
   end

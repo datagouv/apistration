@@ -21,7 +21,9 @@ class UnprocessableEntityError < ApplicationError
       siren_is: '00311',
       siren_tva: '00312',
       # ACOSS
-      attestation_kind: '00310'
+      attestation_kind: '00310',
+      # ADEME
+      limit: '00313'
     }.fetch(field) do
       raise KeyError, "#{field} is not a valid field name"
     end

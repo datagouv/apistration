@@ -158,6 +158,12 @@
   source:
     parameter: 'siren_tva'
 
+- code: '00313'
+  title: 'Entité non traitable'
+  detail: "Le paramètre limit n'est pas correctement formatté"
+  source:
+    parameter: 'limit'
+
 - code: '00402'
   title: Version d'API non prise en charge
 
