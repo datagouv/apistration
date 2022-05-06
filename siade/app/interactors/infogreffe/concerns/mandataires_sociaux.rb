@@ -3,7 +3,7 @@ module Infogreffe::Concerns::MandatairesSociaux
     info_document.try(:css, 'liste_dirigeant dirigeant')
   end
 
-  def pp?(dirigeant)
+  def personne_physique?(dirigeant)
     type(dirigeant) == 'PP'
   end
 

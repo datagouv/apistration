@@ -33,10 +33,10 @@ class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
 
   def mandataires_sociaux
     mandataires_sociaux_raw.map do |dirigeant|
-      if pp?(dirigeant)
-        mandataire_social_pp(dirigeant)
+      if personne_physique?(dirigeant)
+        personne_physique_payload(dirigeant)
       else
-        mandataire_social_pm(dirigeant)
+        personne_morale_payload(dirigeant)
       end
     end
   end
@@ -45,7 +45,7 @@ class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
     extract_mandataires_sociaux(infos)
   end
 
-  def mandataire_social_pp(dirigeant)
+  def personne_physique_payload(dirigeant)
     {
       type: 'personne_physique',
       nom: nom(dirigeant),
@@ -55,7 +55,7 @@ class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
     }
   end
 
-  def mandataire_social_pm(dirigeant)
+  def personne_morale_payload(dirigeant)
     {
       type: 'personne_morale',
       numero_identification: identifiant(dirigeant),
