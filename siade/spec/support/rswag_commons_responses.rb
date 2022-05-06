@@ -109,7 +109,6 @@ module RSWagCommonsResponses
     end
   end
 
-  # rubocop:disable Metrics/AbcSize
   def common_provider_errors_request(provider_name, organizer_klass, extra_errors = [], &block)
     response '502', 'Erreur du fournisseur' do
       provider_unknown_error = ProviderUnknownError.new(provider_name)
@@ -121,18 +120,10 @@ module RSWagCommonsResponses
 
       schema '$ref' => '#/components/schemas/Error'
 
-      example 'application/json', :unknown_error, {
-        errors: [
-          provider_unknown_error.to_h
-        ]
-      }, provider_unknown_error.title, provider_unknown_error.detail
+      build_rswag_example(provider_unknown_error, :unknown_error)
 
       Array(extra_errors).each do |error|
-        example 'application/json', error.title.parameterize.underscore.to_sym, {
-          errors: [
-            error.to_h
-          ]
-        }, error.title, error.detail
+        build_rswag_example(error)
       end
 
       block if block_given?
@@ -140,7 +131,6 @@ module RSWagCommonsResponses
       run_test!
     end
   end
-  # rubocop:enable Metrics/AbcSize
 
   def not_found_error_request(provider_name, organizer_klass, &block)
     response '404', 'Non trouvée' do
@@ -157,7 +147,6 @@ module RSWagCommonsResponses
     end
   end
 
-  # rubocop:disable Metrics/AbcSize
   def unprocessable_entity_error_request(params, &block)
     response '422', 'Paramètre(s) invalide(s)' do
       block.call if block_given?
@@ -165,13 +154,7 @@ module RSWagCommonsResponses
       schema '$ref' => '#/components/schemas/Error'
 
       Array(params).each do |param|
-        unprocessable_entity_error = UnprocessableEntityError.new(param)
-
-        example 'application/json', "unprocessable_entity_error_#{param}_error".to_sym, {
-          errors: [
-            unprocessable_entity_error.to_h
-          ]
-        }, unprocessable_entity_error.title, unprocessable_entity_error.detail
+        build_rswag_example(UnprocessableEntityError.new(param), "unprocessable_entity_error_#{param}_error".to_sym)
       end
 
       %i[
@@ -179,21 +162,13 @@ module RSWagCommonsResponses
         object
         recipient
       ].each do |field|
-        missing_mandatory_param_error = MissingMandatoryParamError.new(field)
-
-        example 'application/json', "missing_mandatory_params_#{field}_error".to_sym, {
-          errors: [
-            missing_mandatory_param_error.to_h
-          ]
-        }, missing_mandatory_param_error.title, missing_mandatory_param_error.detail
+        build_rswag_example(MissingMandatoryParamError.new(field), "missing_mandatory_params_#{field}_error".to_sym)
       end
 
       run_test!
     end
   end
-  # rubocop:enable Metrics/AbcSize
 
-  # rubocop:disable Metrics/AbcSize
   def common_network_error_request(provider_name, organizer_klass, &block)
     response '504', 'Erreur d\'intermédiaire' do
       schema '$ref' => '#/components/schemas/Error'
@@ -205,39 +180,16 @@ module RSWagCommonsResponses
         provider_timeout_error
       )
 
-      example 'application/json', :timeout_error, {
-        errors: [
-          provider_timeout_error.to_h
-        ]
-      }, provider_timeout_error.title, provider_timeout_error.detail
-
-      provider_unavailable_error = ProviderUnavailable.new(provider_name)
-      example 'application/json', :provider_unavailable_error, {
-        errors: [
-          provider_unavailable_error.to_h
-        ]
-      }, provider_unavailable_error.title, provider_unavailable_error.detail
-
-      network_error = NetworkError.new
-      example 'application/json', :network_error, {
-        errors: [
-          network_error.to_h
-        ]
-      }, network_error.title, network_error.detail
-
-      dns_resolution_error = DnsResolutionError.new(provider_name)
-      example 'application/json', :dns_resolution_error, {
-        errors: [
-          dns_resolution_error.to_h
-        ]
-      }, dns_resolution_error.title, dns_resolution_error.detail
+      build_rswag_example(provider_timeout_error, :timeout_error)
+      build_rswag_example(ProviderUnavailable.new(provider_name), :provider_unavailable_error)
+      build_rswag_example(NetworkError.new, :network_error)
+      build_rswag_example(DnsResolutionError.new(provider_name), :dns_resolution_error)
 
       block.call if block_given?
 
       run_test!
     end
   end
-  # rubocop:enable Metrics/AbcSize
 
   # rubocop:disable RSpec/VerifiedDoubles
   def stubbed_organizer_error(organizer_klass, error)
@@ -248,4 +200,12 @@ module RSWagCommonsResponses
     end
   end
   # rubocop:enable RSpec/VerifiedDoubles
+
+  def build_rswag_example(error, key = nil)
+    example 'application/json', key || error.title.parameterize.underscore.to_sym, {
+      errors: [
+        error.to_h
+      ]
+    }, error.title, error.detail
+  end
 end
