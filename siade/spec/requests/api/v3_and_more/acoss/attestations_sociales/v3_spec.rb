@@ -17,7 +17,7 @@ RSpec.describe 'ACOSS: Attestations sociales', type: %i[request swagger] do
         let(:siren) { valid_siren(:acoss) }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entreprise found', vcr: { cassette_name: 'acoss/with_valid_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body) } do
           description SwaggerData.get('acoss.attestation_sociale.description')
 
@@ -30,12 +30,21 @@ RSpec.describe 'ACOSS: Attestations sociales', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'acoss/with_non_existent_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body) } do
-          let(:siren) { not_found_siren }
+        describe 'server errors' do
+          let(:siren) { valid_siren(:acoss) }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siren) do
+            let(:siren) { 'lol' }
+          end
 
-          run_test!
+          common_provider_errors_request(
+            'ACOSS',
+            ACOSS::AttestationsSociales,
+            ACOSSError.new(:ongoing_manual_verification)
+          )
+
+          not_found_error_request('ACOSS', ACOSS::AttestationsSociales)
+          common_network_error_request('ACOSS', ACOSS::AttestationsSociales)
         end
       end
     end

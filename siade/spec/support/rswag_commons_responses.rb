@@ -109,10 +109,9 @@ module RSWagCommonsResponses
     end
   end
 
-  def common_provider_errors_request(provider_name, organizer_klass, &block)
+  # rubocop:disable Metrics/AbcSize
+  def common_provider_errors_request(provider_name, organizer_klass, extra_errors = [], &block)
     response '502', 'Erreur du fournisseur' do
-      block.call if block_given?
-
       provider_unknown_error = ProviderUnknownError.new(provider_name)
 
       stubbed_organizer_error(
@@ -128,9 +127,20 @@ module RSWagCommonsResponses
         ]
       }, provider_unknown_error.title, provider_unknown_error.detail
 
+      Array(extra_errors).each do |error|
+        example 'application/json', error.title.parameterize.underscore.to_sym, {
+          errors: [
+            error.to_h
+          ]
+        }, error.title, error.detail
+      end
+
+      block if block_given?
+
       run_test!
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def not_found_error_request(provider_name, organizer_klass, &block)
     response '404', 'Non trouvée' do
