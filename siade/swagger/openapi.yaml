@@ -97,12 +97,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -656,12 +726,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -786,12 +926,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -973,12 +1183,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -1125,12 +1405,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -1252,12 +1602,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -1581,12 +2001,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -1743,12 +2233,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -1886,12 +2446,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -2159,12 +2789,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -2298,12 +2998,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -2558,12 +3328,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -2720,12 +3560,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -2925,12 +3835,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -3276,12 +4256,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -3628,12 +4678,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -4535,12 +5655,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -5442,12 +6632,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -6350,12 +7610,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -7259,12 +8589,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -7898,12 +9298,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -8520,12 +9990,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -8681,12 +10221,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -8925,12 +10535,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -9050,12 +10730,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -9293,12 +11043,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -9409,12 +11229,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -9548,12 +11438,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -9691,12 +11651,82 @@ paths:
           description: Non autorisé
           content:
             application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
           description: Accès interdit
           content:
             application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
