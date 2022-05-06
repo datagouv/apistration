@@ -209,10 +209,6 @@ infogreffe:
         title: "Ensemble des observations du greffier"
         items:
           type: object
-          required:
-            - numero
-            - libelle
-            - date
           properties:
             numero:
               type: 'string'
