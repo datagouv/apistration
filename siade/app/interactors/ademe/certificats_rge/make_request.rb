@@ -21,11 +21,11 @@ class ADEME::CertificatsRGE::MakeRequest < MakeRequest::Get
   private
 
   def ademe_rge_url
-    Siade.credentials[:ademe_rge_url_new]
+    Siade.credentials[:ademe_rge_url]
   end
 
   def ademe_token
-    Siade.credentials[:ademe_rge_token_new]
+    Siade.credentials[:ademe_rge_token]
   end
 
   def siret
