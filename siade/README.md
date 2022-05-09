@@ -118,18 +118,6 @@ bundle exec mina setup domain=$domain
 bundle exec mina deploy domain=$domain
 ```
 
-## Debugging du Gitlab CI en local
-
-Si vous rencontrez des difficultés à faire fonctionner le CI (pour X ou Y
-raison), vous pouvez le faire tourner en local à l'aide de `gitlab-runner`.
-
-Pour l'installation : [Install GitLab
-Runner](https://docs.gitlab.com/runner/install/)
-
-Il suffit ensuite de lancer avec la commande suivante:
-
-    $ gitlab-runner exec docker test
-
 ## Code Coverage
 
 Celui-ci est automatiquement généré à chaque push, et est publié sur gitlab
