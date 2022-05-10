@@ -40,7 +40,7 @@ RSpec.describe 'ACOSS: Attestations sociales', type: %i[request swagger] do
           common_provider_errors_request(
             'ACOSS',
             ACOSS::AttestationsSociales,
-            ACOSSError.new(:ongoing_manual_verification)
+            documents_errors('ACOSS').concat([ACOSSError.new(:ongoing_manual_verification)])
           )
 
           not_found_error_request('ACOSS', ACOSS::AttestationsSociales)

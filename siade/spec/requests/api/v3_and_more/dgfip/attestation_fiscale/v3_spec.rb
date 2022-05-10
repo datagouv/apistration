@@ -55,7 +55,12 @@ RSpec.describe 'DGFIP: Attestationfiscale', type: %i[request swagger] do
             let(:siren) { 'lol' }
           end
 
-          common_provider_errors_request('DGFIP', DGFIP::AttestationFiscale)
+          common_provider_errors_request(
+            'DGFIP',
+            DGFIP::AttestationFiscale,
+            documents_errors('DGFIP')
+          )
+
           common_network_error_request('DGFIP', DGFIP::AttestationFiscale)
         end
       end

@@ -198,6 +198,12 @@ module RSWagCommonsResponses
     end
   end
 
+  def documents_errors(provider_name)
+    BadFileFromProviderError::KIND_TO_SUBCODE.dup.keys.map do |subcode|
+      BadFileFromProviderError.new(provider_name, subcode)
+    end
+  end
+
   # rubocop:disable RSpec/VerifiedDoubles
   def stubbed_organizer_error(organizer_klass, error)
     let(:organizer) { double('organizer', success?: false, errors: [error]) }
@@ -209,7 +215,7 @@ module RSWagCommonsResponses
   # rubocop:enable RSpec/VerifiedDoubles
 
   def build_rswag_example(error, key = nil)
-    example 'application/json', key || error.title.parameterize.underscore.to_sym, {
+    example 'application/json', key || "#{error.title.parameterize.underscore}_#{error.code}".to_sym, {
       errors: [
         error.to_h
       ]

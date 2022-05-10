@@ -37,8 +37,13 @@ RSpec.describe 'PROBTP : Attestations cotisations retraite', type: %i[request sw
             let(:siret) { 'lol' }
           end
 
+          common_provider_errors_request(
+            'ProBTP',
+            PROBTP::AttestationsCotisationsRetraite,
+            documents_errors('ProBTP')
+          )
+
           not_found_error_request('ProBTP', PROBTP::AttestationsCotisationsRetraite)
-          common_provider_errors_request('ProBTP', PROBTP::AttestationsCotisationsRetraite)
           common_network_error_request('ProBTP', PROBTP::AttestationsCotisationsRetraite)
         end
       end

@@ -40,8 +40,13 @@ RSpec.describe 'MI: Documents Associations', type: %i[request swagger] do
             let(:siret_or_rna) { 'lol' }
           end
 
+          common_provider_errors_request(
+            'MI',
+            MI::Associations::Documents,
+            documents_errors('MI')
+          )
+
           not_found_error_request('MI', MI::Associations::Documents)
-          common_provider_errors_request('MI', MI::Associations::Documents)
           common_network_error_request('MI', MI::Associations::Documents)
         end
       end

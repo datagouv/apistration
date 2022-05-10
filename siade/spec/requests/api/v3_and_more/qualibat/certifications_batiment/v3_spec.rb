@@ -37,8 +37,13 @@ RSpec.describe 'Qualibat : CertificationsBatiment', type: %i[request swagger] do
             let(:siret) { 'lol' }
           end
 
+          common_provider_errors_request(
+            'Qualibat',
+            QUALIBAT::CertificationsBatiment,
+            documents_errors('Qualibat')
+          )
+
           not_found_error_request('Qualibat', QUALIBAT::CertificationsBatiment)
-          common_provider_errors_request('Qualibat', QUALIBAT::CertificationsBatiment)
           common_network_error_request('Qualibat', QUALIBAT::CertificationsBatiment)
         end
       end

@@ -37,8 +37,13 @@ RSpec.describe 'FNTP: Carte professionnelle Travaux Publics', type: %i[request s
             let(:siren) { 'lol' }
           end
 
+          common_provider_errors_request(
+            'FNTP',
+            FNTP::CarteProfessionnelleTravauxPublics,
+            documents_errors('FNTP')
+          )
+
           not_found_error_request('FNTP', FNTP::CarteProfessionnelleTravauxPublics)
-          common_provider_errors_request('FNTP', FNTP::CarteProfessionnelleTravauxPublics)
           common_network_error_request('FNTP', FNTP::CarteProfessionnelleTravauxPublics)
         end
       end
