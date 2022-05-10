@@ -17,7 +17,7 @@ RSpec.describe 'INPI: Latest Brevets', type: %i[request swagger] do
         let(:siren) { valid_siren(:inpi) }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Brevets trouvés', vcr: { cassette_name: 'inpi/brevets/with_valid_siren' } do
           description SwaggerData.get('inpi.brevets.description')
 
@@ -30,12 +30,16 @@ RSpec.describe 'INPI: Latest Brevets', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Brevets non trouvés', vcr: { cassette_name: 'inpi/brevets/with_siren_not_found' } do
-          let(:siren) { not_found_siren(:inpi) }
+        describe 'server errors' do
+          let(:siren) { valid_siren(:inpi) }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siren) do
+            let(:siren) { 'lol' }
+          end
 
-          run_test!
+          not_found_error_request('INPI', INPI::Brevets)
+          common_provider_errors_request('INPI', INPI::Brevets)
+          common_network_error_request('INPI', INPI::Brevets)
         end
       end
     end

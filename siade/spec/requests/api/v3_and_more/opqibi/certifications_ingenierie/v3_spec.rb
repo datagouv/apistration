@@ -17,7 +17,7 @@ RSpec.describe 'OPQIBI: Certificationsingenierie', type: %i[request swagger] do
         let(:siren) { valid_siren(:opqibi_with_probatoire) }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: 'opqibi/certifications_ingenierie/valid_siren' } do
           description SwaggerData.get('opqibi.certifications_ingenierie.description')
 
@@ -30,12 +30,16 @@ RSpec.describe 'OPQIBI: Certificationsingenierie', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Non trouvée', vcr: { cassette_name: 'opqibi/certifications_ingenierie/not_found_siren' } do
-          let(:siren) { not_found_siren }
+        describe 'server errors' do
+          let(:siren) { valid_siren(:opqibi_with_probatoire) }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siren) do
+            let(:siren) { 'lol' }
+          end
 
-          run_test!
+          not_found_error_request('OPQIBI', OPQIBI::CertificationsIngenierie)
+          common_provider_errors_request('OPQIBI', OPQIBI::CertificationsIngenierie)
+          common_network_error_request('OPQIBI', OPQIBI::CertificationsIngenierie)
         end
       end
     end

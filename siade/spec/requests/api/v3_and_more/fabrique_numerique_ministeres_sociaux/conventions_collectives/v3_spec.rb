@@ -17,7 +17,7 @@ RSpec.describe 'FabriqueNumeriqueMinisteresSociaux: Conventionscollectives', typ
         let(:siret) { valid_siret(:conventions_collectives) }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/valid_siret' } do
           description SwaggerData.get('fabrique_numerique_ministeres_sociaux.conventions_collectives.description')
 
@@ -30,12 +30,16 @@ RSpec.describe 'FabriqueNumeriqueMinisteresSociaux: Conventionscollectives', typ
           run_test!
         end
 
-        response '404', 'Non trouvée', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/not_found_siret' } do
-          let(:siret) { not_found_siret(:conventions_collectives) }
+        describe 'server errors' do
+          let(:siret) { valid_siret(:conventions_collectives) }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siren) do
+            let(:siret) { 'lol' }
+          end
 
-          run_test!
+          not_found_error_request('Fabrique numérique des Ministères Sociaux', FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives)
+          common_provider_errors_request('Fabrique numérique des Ministères Sociaux', FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives)
+          common_network_error_request('Fabrique numérique des Ministères Sociaux', FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives)
         end
       end
     end

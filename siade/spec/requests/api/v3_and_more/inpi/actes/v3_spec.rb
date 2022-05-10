@@ -17,7 +17,7 @@ RSpec.describe 'INPI: Actes', type: %i[request swagger] do
         let(:siren) { valid_siren(:inpi) }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Actes trouvés', vcr: { cassette_name: 'inpi/actes/with_valid_siren' } do
           description SwaggerData.get('inpi.actes.description')
 
@@ -30,12 +30,16 @@ RSpec.describe 'INPI: Actes', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Actes non trouvés', vcr: { cassette_name: 'inpi/actes/with_siren_not_found' } do
-          let(:siren) { not_found_siren(:inpi) }
+        describe 'server errors' do
+          let(:siren) { valid_siren(:inpi) }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siren) do
+            let(:siren) { 'lol' }
+          end
 
-          run_test!
+          not_found_error_request('INPI', INPI::Actes)
+          common_provider_errors_request('INPI', INPI::Actes)
+          common_network_error_request('INPI', INPI::Actes)
         end
       end
     end

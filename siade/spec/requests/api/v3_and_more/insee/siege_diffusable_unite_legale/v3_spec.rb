@@ -19,7 +19,7 @@ RSpec.describe 'INSEE: Siège diffusible Unité Légale', type: %i[request swagg
         let(:siren) { sirens_insee_v3[:active_GE] }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Établissement trouvé', vcr: { cassette_name: 'insee/siege/active_GE_with_token' } do
           description SwaggerData.get('insee.siege_diffusable_unite_legale.description')
 
@@ -34,12 +34,16 @@ RSpec.describe 'INSEE: Siège diffusible Unité Légale', type: %i[request swagg
           run_test!
         end
 
-        response '404', 'Non trouvé', vcr: { cassette_name: 'insee/siege/non_existent_with_token' } do
-          let(:siren) { non_existent_siren }
+        describe 'server errors' do
+          let(:siren) { sirens_insee_v3[:active_GE] }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siren) do
+            let(:siren) { 'lol' }
+          end
 
-          run_test!
+          not_found_error_request('INSEE', INSEE::SiegeDiffusableUniteLegale)
+          common_provider_errors_request('INSEE', INSEE::SiegeDiffusableUniteLegale)
+          common_network_error_request('INSEE', INSEE::SiegeDiffusableUniteLegale)
         end
       end
     end

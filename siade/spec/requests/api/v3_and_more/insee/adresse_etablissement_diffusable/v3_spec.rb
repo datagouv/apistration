@@ -17,7 +17,7 @@ RSpec.describe 'INSEE: Adresse Etablissement diffusible', type: %i[request swagg
         let(:siret) { sirets_insee_v3[:active_GE] }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Etablissement trouvé', vcr: { cassette_name: 'insee/siret/active_GE_with_token' } do
           description SwaggerData.get('insee.adresse_etablissement_diffusable.description')
 
@@ -30,12 +30,16 @@ RSpec.describe 'INSEE: Adresse Etablissement diffusible', type: %i[request swagg
           run_test!
         end
 
-        response '404', 'Non trouvé', vcr: { cassette_name: 'insee/siret/non_existent_with_token' } do
-          let(:siret) { non_existent_siret }
+        describe 'server errors' do
+          let(:siret) { sirets_insee_v3[:active_GE] }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siret) do
+            let(:siret) { 'lol' }
+          end
 
-          run_test!
+          not_found_error_request('INSEE', INSEE::AdresseEtablissementDiffusable)
+          common_provider_errors_request('INSEE', INSEE::AdresseEtablissementDiffusable)
+          common_network_error_request('INSEE', INSEE::AdresseEtablissementDiffusable)
         end
       end
     end

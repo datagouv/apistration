@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'INSEE: Etablissement diffusibbles', type: %i[request swagger] do
+RSpec.describe 'INSEE: EtablissementDiffusable diffusibbles', type: %i[request swagger] do
   path '/v3/insee/sirene/etablissements/diffusibles/{siret}' do
     get SwaggerData.get('insee.etablissement_diffusable.title') do
       tags(*SwaggerData.get('insee.etablissement_diffusable.tags'))
@@ -17,8 +17,8 @@ RSpec.describe 'INSEE: Etablissement diffusibbles', type: %i[request swagger] do
         let(:siret) { sirets_insee_v3[:active_GE] }
       end
 
-      describe 'with valid mandatory params', valid: true do
-        response '200', 'Etablissement trouvé', vcr: { cassette_name: 'insee/siret/active_GE_with_token' } do
+      describe 'with valid token and mandatory params', valid: true do
+        response '200', 'EtablissementDiffusable trouvé', vcr: { cassette_name: 'insee/siret/active_GE_with_token' } do
           description SwaggerData.get('insee.etablissement_diffusable.description')
 
           schema build_rswag_response(
@@ -32,12 +32,16 @@ RSpec.describe 'INSEE: Etablissement diffusibbles', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Non trouvé', vcr: { cassette_name: 'insee/siret/non_existent_with_token' } do
-          let(:siret) { non_existent_siret }
+        describe 'server errors' do
+          let(:siret) { sirets_insee_v3[:active_GE] }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siret) do
+            let(:siret) { 'lol' }
+          end
 
-          run_test!
+          not_found_error_request('INSEE', INSEE::EtablissementDiffusable)
+          common_provider_errors_request('INSEE', INSEE::EtablissementDiffusable)
+          common_network_error_request('INSEE', INSEE::EtablissementDiffusable)
         end
       end
     end

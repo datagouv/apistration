@@ -17,7 +17,7 @@ RSpec.describe 'Qualibat : CertificationsBatiment', type: %i[request swagger] do
         let(:siret) { valid_siret(:qualibat) }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response 200, 'Certification trouvée', vcr: { cassette_name: 'qualibat/certifications_batiment/valid_siret' } do
           description SwaggerData.get('qualibat.certifications_batiment.description')
 
@@ -30,12 +30,16 @@ RSpec.describe 'Qualibat : CertificationsBatiment', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Certification non trouvée', vcr: { cassette_name: 'qualibat/certifications_batiment/not_found_siret' } do
-          let(:siret) { not_found_siret(:qualibat) }
+        describe 'server errors' do
+          let(:siret) { valid_siret(:qualibat) }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siret) do
+            let(:siret) { 'lol' }
+          end
 
-          run_test!
+          not_found_error_request('Qualibat', QUALIBAT::CertificationsBatiment)
+          common_provider_errors_request('Qualibat', QUALIBAT::CertificationsBatiment)
+          common_network_error_request('Qualibat', QUALIBAT::CertificationsBatiment)
         end
       end
     end

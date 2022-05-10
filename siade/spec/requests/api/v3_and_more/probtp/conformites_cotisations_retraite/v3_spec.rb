@@ -17,7 +17,7 @@ RSpec.describe 'PROBTP: Conformites Cotisations Retraite', type: %i[request swag
         let(:siret) { eligible_siret(:probtp) }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_eligible_siret' } do
           description SwaggerData.get('probtp.conformites_cotisations_retraite.description')
 
@@ -30,12 +30,16 @@ RSpec.describe 'PROBTP: Conformites Cotisations Retraite', type: %i[request swag
           run_test!
         end
 
-        response '404', 'Non trouvée', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_not_found_siret' } do
-          let(:siret) { not_found_siret(:probtp) }
+        describe 'server errors' do
+          let(:siret) { eligible_siret(:probtp) }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siret) do
+            let(:siret) { 'lol' }
+          end
 
-          run_test!
+          not_found_error_request('ProBTP', PROBTP::ConformitesCotisationsRetraite)
+          common_provider_errors_request('ProBTP', PROBTP::ConformitesCotisationsRetraite)
+          common_network_error_request('ProBTP', PROBTP::ConformitesCotisationsRetraite)
         end
       end
     end

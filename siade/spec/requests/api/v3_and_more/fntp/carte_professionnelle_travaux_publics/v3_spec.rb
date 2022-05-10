@@ -17,7 +17,7 @@ RSpec.describe 'FNTP: Carte professionnelle Travaux Publics', type: %i[request s
         let(:siren) { valid_siren(:fntp) }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Carte professionnelle trouvée', vcr: { cassette_name: 'fntp/carte_professionnelle_travaux_publics/valid_siren' } do
           description SwaggerData.get('fntp.carte_professionnelle_travaux_publics.description')
 
@@ -30,12 +30,16 @@ RSpec.describe 'FNTP: Carte professionnelle Travaux Publics', type: %i[request s
           run_test!
         end
 
-        response '404', 'Non trouvée', vcr: { cassette_name: 'fntp/carte_professionnelle_travaux_publics/not_found_siren' } do
-          let(:siren) { not_found_siren }
+        describe 'server errors' do
+          let(:siren) { valid_siren(:fntp) }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siren) do
+            let(:siren) { 'lol' }
+          end
 
-          run_test!
+          not_found_error_request('FNTP', FNTP::CarteProfessionnelleTravauxPublics)
+          common_provider_errors_request('FNTP', FNTP::CarteProfessionnelleTravauxPublics)
+          common_network_error_request('FNTP', FNTP::CarteProfessionnelleTravauxPublics)
         end
       end
     end

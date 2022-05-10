@@ -17,7 +17,7 @@ RSpec.describe 'CNETP: Attestations cotisations congés payés et aux chômage-i
         let(:siren) { valid_siren(:cnetp) }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Certificat trouvé', vcr: { cassette_name: 'cnetp/attestation_cotisations_conges_payes_chomage_intemperies/valid_siren' } do
           description SwaggerData.get('cnetp.attestation_cotisations_conges_payes_chomage_intemperies.description')
 
@@ -30,12 +30,16 @@ RSpec.describe 'CNETP: Attestations cotisations congés payés et aux chômage-i
           run_test!
         end
 
-        response '404', 'Non trouvé', vcr: { cassette_name: 'cnetp/attestation_cotisations_conges_payes_chomage_intemperies/not_found_siren' } do
-          let(:siren) { not_found_siren }
+        describe 'server errors' do
+          let(:siren) { valid_siren(:cnetp) }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siren) do
+            let(:siren) { 'lol' }
+          end
 
-          run_test!
+          common_provider_errors_request('CNETP', CNETP::AttestationCotisationsCongesPayesChomageIntemperies)
+          not_found_error_request('CNETP', CNETP::AttestationCotisationsCongesPayesChomageIntemperies)
+          common_network_error_request('CNETP', CNETP::AttestationCotisationsCongesPayesChomageIntemperies)
         end
       end
     end

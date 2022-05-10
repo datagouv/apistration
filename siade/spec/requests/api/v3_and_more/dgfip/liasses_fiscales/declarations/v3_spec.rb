@@ -20,7 +20,7 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', type: %i[request swa
         let(:siren) { valid_siren(:liasse_fiscale) }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
           description SwaggerData.get('dgfip.liasses_fiscales.declarations.description')
 
@@ -34,12 +34,21 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', type: %i[request swa
           run_test!
         end
 
-        response '502', 'Non trouvée', vcr: { cassette_name: 'dgfip/liasses_fiscales/with_non_existent_siren' } do
-          let(:siren) { non_existent_siren }
+        describe 'server errors' do
+          let(:siren) { valid_siren(:liasse_fiscale) }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siren) do
+            let(:siren) { 'lol' }
+          end
 
-          run_test!
+          common_provider_errors_request(
+            'DGFIP',
+            DGFIP::LiassesFiscales::Declarations,
+            DGFIPPotentialNotFoundError.new
+          )
+
+          not_found_error_request('DGFIP', DGFIP::LiassesFiscales::Declarations)
+          common_network_error_request('DGFIP', DGFIP::LiassesFiscales::Declarations)
         end
       end
     end

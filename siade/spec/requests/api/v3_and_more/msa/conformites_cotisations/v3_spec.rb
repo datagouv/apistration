@@ -16,7 +16,7 @@ RSpec.describe 'MSA: Conformitescotisations', type: %i[request swagger] do
         let(:siret) { valid_siret(:msa) }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entreprise trouvée' do
           before do
             mock_msa_cotisations(siret, :up_to_date)
@@ -33,16 +33,16 @@ RSpec.describe 'MSA: Conformitescotisations', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Non trouvée' do
-          before do
-            mock_msa_cotisations(siret, :unknown)
+        describe 'server errors' do
+          let(:siret) { valid_siret(:msa) }
+
+          unprocessable_entity_error_request(:siret) do
+            let(:siret) { 'lol' }
           end
 
-          let(:siret) { not_found_siret(:msa) }
-
-          schema '$ref' => '#/components/schemas/NotFound'
-
-          run_test!
+          not_found_error_request('MSA', MSA::ConformitesCotisations)
+          common_provider_errors_request('MSA', MSA::ConformitesCotisations)
+          common_network_error_request('MSA', MSA::ConformitesCotisations)
         end
       end
     end

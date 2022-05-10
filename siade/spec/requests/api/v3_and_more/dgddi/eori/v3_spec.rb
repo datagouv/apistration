@@ -17,7 +17,7 @@ RSpec.describe 'DGDDI: EORI', type: %i[request swagger] do
         let(:siret_or_eori) { valid_eori }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entité trouvée', vcr: { cassette_name: 'dgddi/eori/valid_eori' } do
           description SwaggerData.get('dgddi.eori.description')
 
@@ -30,12 +30,16 @@ RSpec.describe 'DGDDI: EORI', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Non trouvée', vcr: { cassette_name: 'dgddi/eori/non_existing_eori' } do
-          let(:siret_or_eori) { non_existing_eori }
+        describe 'server errors' do
+          let(:siret_or_eori) { valid_eori }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siret_or_eori) do
+            let(:siret_or_eori) { 'lol' }
+          end
 
-          run_test!
+          not_found_error_request('DGDDI', DGDDI::EORI)
+          common_provider_errors_request('DGDDI', DGDDI::EORI)
+          common_network_error_request('DGDDI', DGDDI::EORI)
         end
       end
     end

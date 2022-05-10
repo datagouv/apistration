@@ -17,7 +17,7 @@ RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
         let(:siren) { valid_siren(:rnm_cma) }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entreprise found', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
           description SwaggerData.get('rnm.entreprise_artisanale.description')
 
@@ -30,12 +30,16 @@ RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'rnm_cma/not_found_siren' } do
-          let(:siren) { not_found_siren(:rnm_cma) }
+        describe 'server errors' do
+          let(:siren) { sirens_insee_v3[:active_GE] }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siren) do
+            let(:siren) { 'lol' }
+          end
 
-          run_test!
+          not_found_error_request('RNM', RNM::EntreprisesArtisanales)
+          common_provider_errors_request('RNM', RNM::EntreprisesArtisanales)
+          common_network_error_request('RNM', RNM::EntreprisesArtisanales)
         end
       end
     end

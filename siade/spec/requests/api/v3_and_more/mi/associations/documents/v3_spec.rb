@@ -17,7 +17,7 @@ RSpec.describe 'MI: Documents Associations', type: %i[request swagger] do
         let(:siret_or_rna) { valid_rna_id }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response 200, 'Document Association found', vcr: { cassette_name: 'mi/associations/documents/with_documents' } do
           let(:siret_or_rna) { '77571979202585' }
 
@@ -33,20 +33,16 @@ RSpec.describe 'MI: Documents Associations', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Association not found', vcr: { cassette_name: 'mi/associations/with_rna_not_found' } do
-          let(:siret_or_rna) { non_existing_rna_id }
+        describe 'server errors' do
+          let(:siret_or_rna) { '77571979202585' }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siret_or_rna) do
+            let(:siret_or_rna) { 'lol' }
+          end
 
-          run_test!
-        end
-
-        response '422', 'Unprocessable entity', vcr: { cassette_name: 'mi/associations/unprocessable_entity' } do
-          let(:siret_or_rna) { 'random_content' }
-
-          schema '$ref' => '#/components/schemas/UnprocessableEntity'
-
-          run_test!
+          not_found_error_request('MI', MI::Associations::Documents)
+          common_provider_errors_request('MI', MI::Associations::Documents)
+          common_network_error_request('MI', MI::Associations::Documents)
         end
       end
     end

@@ -25,7 +25,7 @@ RSpec.describe 'ADEME: Certificatsrge', type: %i[request swagger] do
         let(:siret) { valid_siret(:rge_ademe) }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: 'ademe/certificats_rge/valid_siret' } do
           description SwaggerData.get('ademe.certificats_rge.description')
 
@@ -46,20 +46,17 @@ RSpec.describe 'ADEME: Certificatsrge', type: %i[request swagger] do
           end
         end
 
-        response '404', 'Non trouvée', vcr: { cassette_name: 'ademe/certificats_rge/not_found_siret' } do
-          let(:siret) { not_found_siret(:rge_ademe) }
+        describe 'server errors' do
+          let(:siren) { valid_siren(:rge_ademe) }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(%i[siren limit]) do
+            let(:siren) { 'lol' }
+            let(:limit) { 'lol' }
+          end
 
-          run_test!
-        end
-
-        response '422', 'with wrong limit parameter' do
-          let(:limit) { 100_000 }
-
-          schema '$ref' => '#/components/schemas/UnprocessableEntity'
-
-          run_test!
+          common_provider_errors_request('ADEME', ADEME::CertificatsRGE)
+          not_found_error_request('ADEME', ADEME::CertificatsRGE)
+          common_network_error_request('ADEME', ADEME::CertificatsRGE)
         end
       end
     end

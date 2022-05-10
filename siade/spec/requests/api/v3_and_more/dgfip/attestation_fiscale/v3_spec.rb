@@ -17,7 +17,7 @@ RSpec.describe 'DGFIP: Attestationfiscale', type: %i[request swagger] do
         let(:siren) { valid_siren }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         let(:siren) { valid_siren }
 
         response '200', 'Attestation fiscale trouvée' do
@@ -37,15 +37,26 @@ RSpec.describe 'DGFIP: Attestationfiscale', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Non trouvée' do
-          before do
-            mock_dgfip_authenticate
-            mock_invalid_dgfip_attestation_fiscale(404)
+        describe 'server errors' do
+          response '404', 'Non trouvée' do
+            let(:siren) { valid_siren }
+
+            before do
+              mock_dgfip_authenticate
+              mock_invalid_dgfip_attestation_fiscale(404)
+            end
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
           end
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siren) do
+            let(:siren) { 'lol' }
+          end
 
-          run_test!
+          common_provider_errors_request('DGFIP', DGFIP::AttestationFiscale)
+          common_network_error_request('DGFIP', DGFIP::AttestationFiscale)
         end
       end
     end

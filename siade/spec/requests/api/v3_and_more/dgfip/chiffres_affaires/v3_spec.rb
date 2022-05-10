@@ -17,7 +17,7 @@ RSpec.describe 'DGFIP: chiffres d\'affaires', type: %i[request swagger] do
         let(:siret) { valid_siret(:exercice) }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Exercices trouvés', vcr: { cassette_name: 'dgfip/chiffres_affaires/valid' } do
           description SwaggerData.get('dgfip.chiffres_affaires.description')
 
@@ -30,12 +30,21 @@ RSpec.describe 'DGFIP: chiffres d\'affaires', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Non trouvée', vcr: { cassette_name: 'dgfip/chiffres_affaires/not_found' } do
-          let(:siret) { not_found_siret }
+        describe 'server errors' do
+          response '404', 'Non trouvée', vcr: { cassette_name: 'dgfip/chiffres_affaires/not_found' } do
+            let(:siret) { not_found_siret }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/NotFound'
 
-          run_test!
+            run_test!
+          end
+
+          unprocessable_entity_error_request(:siret) do
+            let(:siret) { 'lol' }
+          end
+
+          common_provider_errors_request('DGFIP', DGFIP::ChiffresAffaires)
+          common_network_error_request('DGFIP', DGFIP::ChiffresAffaires)
         end
       end
     end
