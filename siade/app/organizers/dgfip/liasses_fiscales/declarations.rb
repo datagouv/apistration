@@ -1,6 +1,6 @@
 class DGFIP::LiassesFiscales::Declarations < ApplicationOrganizer
-  organize DGFIP::Authenticate,
-    DGFIP::LiassesFiscales::ValidateParams,
+  organize DGFIP::LiassesFiscales::ValidateParams,
+    DGFIP::Authenticate,
     DGFIP::LiassesFiscales::Declarations::MakeRequest,
     DGFIP::LiassesFiscales::Declarations::ValidateResponse,
     DGFIP::LiassesFiscales::Declarations::BuildResource
