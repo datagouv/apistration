@@ -1,4 +1,6 @@
 class API::V3AndMore::BaseController < API::AuthenticateEntityController
+  include V2AndMoreHelpers
+
   class UnsupportedVersionError < ::ActionController::RoutingError; end
 
   before_action :verify_api_version!
@@ -88,30 +90,6 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
   def error_format
     :json_api
   end
-
-  # rubocop:disable Metrics/MethodLength
-  def extract_http_code(retriever)
-    if retriever.errors.blank?
-      :ok
-    elsif at_least_one_error_kind_of?(:wrong_parameter, retriever)
-      :unprocessable_entity
-    elsif at_least_one_error_kind_of?(:network_error, retriever)
-      :gateway_timeout
-    elsif at_least_one_error_kind_of?(:unavailable_for_legal_reason, retriever)
-      :unavailable_for_legal_reasons
-    elsif at_least_one_error_kind_of?(:unauthorized, retriever)
-      :unauthorized
-    elsif at_least_one_error_kind_of?(:not_found, retriever)
-      :not_found
-    elsif at_least_one_error_kind_of?(:provider_error, retriever)
-      :bad_gateway
-    elsif at_least_one_error_kind_of?(:internal_error, retriever)
-      :internal_error
-    else
-      raise 'No valid HTTP status'
-    end
-  end
-  # rubocop:enable Metrics/MethodLength
 
   def content_type_header
     'application/vnd.api+json'

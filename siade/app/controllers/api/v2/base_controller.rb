@@ -1,4 +1,5 @@
 class API::V2::BaseController < ::API::AuthenticateEntityController
+  include V2AndMoreHelpers
   rescue_from ::ProviderInMaintenance, with: :provider_in_maintenance
 
   protected
