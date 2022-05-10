@@ -37,9 +37,7 @@ RSpec.describe 'INSEE: Siège diffusible Unité Légale', type: %i[request swagg
         describe 'server errors' do
           let(:siren) { sirens_insee_v3[:active_GE] }
 
-          unprocessable_entity_error_request(:siren) do
-            let(:siren) { 'lol' }
-          end
+          unprocessable_entity_error_request(:siren)
 
           not_found_error_request('INSEE', INSEE::SiegeDiffusableUniteLegale)
           common_provider_errors_request('INSEE', INSEE::SiegeDiffusableUniteLegale)

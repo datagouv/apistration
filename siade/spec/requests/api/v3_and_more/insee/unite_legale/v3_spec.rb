@@ -35,9 +35,7 @@ RSpec.describe 'INSEE: Unités légales', type: %i[request swagger] do
         describe 'server errors' do
           let(:siren) { sirens_insee_v3[:active_GE] }
 
-          unprocessable_entity_error_request(:siren) do
-            let(:siren) { 'lol' }
-          end
+          unprocessable_entity_error_request(:siren)
 
           not_found_error_request('INSEE', INSEE::UniteLegale)
           common_provider_errors_request('INSEE', INSEE::UniteLegale)

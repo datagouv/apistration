@@ -161,6 +161,8 @@ module RSWagCommonsResponses
       schema '$ref' => '#/components/schemas/Error'
 
       Array(params).each do |param|
+        let(param) { 'invalid' }
+
         build_rswag_example(UnprocessableEntityError.new(param), "unprocessable_entity_error_#{param}_error".to_sym)
       end
 

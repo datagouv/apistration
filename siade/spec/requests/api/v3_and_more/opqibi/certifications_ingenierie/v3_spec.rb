@@ -33,9 +33,7 @@ RSpec.describe 'OPQIBI: Certificationsingenierie', type: %i[request swagger] do
         describe 'server errors' do
           let(:siren) { valid_siren(:opqibi_with_probatoire) }
 
-          unprocessable_entity_error_request(:siren) do
-            let(:siren) { 'lol' }
-          end
+          unprocessable_entity_error_request(:siren)
 
           not_found_error_request('OPQIBI', OPQIBI::CertificationsIngenierie)
           common_provider_errors_request('OPQIBI', OPQIBI::CertificationsIngenierie)

@@ -33,9 +33,7 @@ RSpec.describe 'ACOSS: Attestations sociales', type: %i[request swagger] do
         describe 'server errors' do
           let(:siren) { valid_siren(:acoss) }
 
-          unprocessable_entity_error_request(:siren) do
-            let(:siren) { 'lol' }
-          end
+          unprocessable_entity_error_request(:siren)
 
           common_provider_errors_request(
             'ACOSS',

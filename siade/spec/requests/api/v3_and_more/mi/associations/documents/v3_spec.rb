@@ -36,9 +36,7 @@ RSpec.describe 'MI: Documents Associations', type: %i[request swagger] do
         describe 'server errors' do
           let(:siret_or_rna) { '77571979202585' }
 
-          unprocessable_entity_error_request(:siret_or_rna) do
-            let(:siret_or_rna) { 'lol' }
-          end
+          unprocessable_entity_error_request(:siret_or_rna)
 
           common_provider_errors_request(
             'MI',

@@ -33,9 +33,7 @@ RSpec.describe 'FabriqueNumeriqueMinisteresSociaux: Conventionscollectives', typ
         describe 'server errors' do
           let(:siret) { valid_siret(:conventions_collectives) }
 
-          unprocessable_entity_error_request(:siren) do
-            let(:siret) { 'lol' }
-          end
+          unprocessable_entity_error_request(:siret)
 
           not_found_error_request('Fabrique numérique des Ministères Sociaux', FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives)
           common_provider_errors_request('Fabrique numérique des Ministères Sociaux', FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives)

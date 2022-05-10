@@ -33,9 +33,7 @@ RSpec.describe 'CNETP: Attestations cotisations congés payés et aux chômage-i
         describe 'server errors' do
           let(:siren) { valid_siren(:cnetp) }
 
-          unprocessable_entity_error_request(:siren) do
-            let(:siren) { 'lol' }
-          end
+          unprocessable_entity_error_request(:siren)
 
           common_provider_errors_request(
             'CNETP',

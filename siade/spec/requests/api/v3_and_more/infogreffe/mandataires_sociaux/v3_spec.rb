@@ -36,9 +36,7 @@ RSpec.describe 'Infogreffe: Mandataires sociaux', type: %i[request swagger] do
         describe 'server errors' do
           let(:siren) { valid_siren(:extrait_rcs) }
 
-          unprocessable_entity_error_request(:siren) do
-            let(:siren) { 'lol' }
-          end
+          unprocessable_entity_error_request(:siren)
 
           not_found_error_request('Infogreffe', Infogreffe::MandatairesSociaux)
           common_provider_errors_request('Infogreffe', Infogreffe::MandatairesSociaux)

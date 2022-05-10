@@ -33,9 +33,7 @@ RSpec.describe 'Qualibat : CertificationsBatiment', type: %i[request swagger] do
         describe 'server errors' do
           let(:siret) { valid_siret(:qualibat) }
 
-          unprocessable_entity_error_request(:siret) do
-            let(:siret) { 'lol' }
-          end
+          unprocessable_entity_error_request(:siret)
 
           common_provider_errors_request(
             'Qualibat',

@@ -33,9 +33,7 @@ RSpec.describe 'INSEE: Adresse Etablissement', type: %i[request swagger] do
         describe 'server errors' do
           let(:siret) { sirets_insee_v3[:active_GE] }
 
-          unprocessable_entity_error_request(:siret) do
-            let(:siret) { 'lol' }
-          end
+          unprocessable_entity_error_request(:siret)
 
           not_found_error_request('INSEE', INSEE::AdresseEtablissement)
           common_provider_errors_request('INSEE', INSEE::AdresseEtablissement)

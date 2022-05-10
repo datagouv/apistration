@@ -33,9 +33,7 @@ RSpec.describe 'MI : Associations', type: %i[request swagger] do
         describe 'server errors' do
           let(:siret_or_rna) { valid_rna_id }
 
-          unprocessable_entity_error_request(:siret_or_rna) do
-            let(:siret_or_rna) { 'lol' }
-          end
+          unprocessable_entity_error_request(:siret_or_rna)
 
           not_found_error_request('MI', MI::Associations)
           common_network_error_request('MI', MI::Associations)

@@ -36,9 +36,7 @@ RSpec.describe 'MSA: Conformitescotisations', type: %i[request swagger] do
         describe 'server errors' do
           let(:siret) { valid_siret(:msa) }
 
-          unprocessable_entity_error_request(:siret) do
-            let(:siret) { 'lol' }
-          end
+          unprocessable_entity_error_request(:siret)
 
           not_found_error_request('MSA', MSA::ConformitesCotisations)
           common_provider_errors_request('MSA', MSA::ConformitesCotisations)

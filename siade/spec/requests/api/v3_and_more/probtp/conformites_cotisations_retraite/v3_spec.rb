@@ -33,9 +33,7 @@ RSpec.describe 'PROBTP: Conformites Cotisations Retraite', type: %i[request swag
         describe 'server errors' do
           let(:siret) { eligible_siret(:probtp) }
 
-          unprocessable_entity_error_request(:siret) do
-            let(:siret) { 'lol' }
-          end
+          unprocessable_entity_error_request(:siret)
 
           not_found_error_request('ProBTP', PROBTP::ConformitesCotisationsRetraite)
           common_provider_errors_request('ProBTP', PROBTP::ConformitesCotisationsRetraite)

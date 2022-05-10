@@ -51,9 +51,7 @@ RSpec.describe 'DGFIP: Attestationfiscale', type: %i[request swagger] do
             run_test!
           end
 
-          unprocessable_entity_error_request(:siren) do
-            let(:siren) { 'lol' }
-          end
+          unprocessable_entity_error_request(:siren)
 
           common_provider_errors_request(
             'DGFIP',

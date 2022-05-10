@@ -49,10 +49,7 @@ RSpec.describe 'ADEME: Certificatsrge', type: %i[request swagger] do
         describe 'server errors' do
           let(:siren) { valid_siren(:rge_ademe) }
 
-          unprocessable_entity_error_request(%i[siren limit]) do
-            let(:siren) { 'lol' }
-            let(:limit) { 'lol' }
-          end
+          unprocessable_entity_error_request(%i[siren limit])
 
           common_provider_errors_request('ADEME', ADEME::CertificatsRGE)
           not_found_error_request('ADEME', ADEME::CertificatsRGE)

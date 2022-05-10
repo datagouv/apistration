@@ -33,9 +33,7 @@ RSpec.describe 'DGDDI: EORI', type: %i[request swagger] do
         describe 'server errors' do
           let(:siret_or_eori) { valid_eori }
 
-          unprocessable_entity_error_request(:siret_or_eori) do
-            let(:siret_or_eori) { 'lol' }
-          end
+          unprocessable_entity_error_request(:siret_or_eori)
 
           not_found_error_request('DGDDI', DGDDI::EORI)
           common_provider_errors_request('DGDDI', DGDDI::EORI)
