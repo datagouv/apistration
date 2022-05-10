@@ -16,4 +16,8 @@ class RequestSpecGenerator < BaseGenerator
   def id_path_param
     options[:validation_type].downcase
   end
+
+  def document_resource?
+    options[:document]
+  end
 end

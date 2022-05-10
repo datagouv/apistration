@@ -17,7 +17,7 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
         let(:<%= id_path_param %>) { valid_<%= id_path_param %>(:<%= provider_namespace.underscore %>) }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: '<%= provider_namespace.underscore %>/valid_<%= id_path_param %>_json' } do
           description SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.description')
 
@@ -32,12 +32,24 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
           run_test!
         end
 
-        response '404', 'Non trouvée', vcr: { cassette_name: '<%= provider_namespace.underscore %>/not_found_<%= id_path_param %>' } do
-          let(:<%= id_path_param %>) { not_found_<%= id_path_param %>(:<%= provider_namespace.underscore %>) }
+        describe 'server errors' do
+          let(:<%= id_path_param %>) { valid_<%= id_path_param %>(:<%= provider_namespace.underscore %>) }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:<%= id_path_param %>) do
+            let(:<%= id_path_param %>) { 'lol' }
+          end
 
-          run_test!
+          <% if document_resource? %>
+          common_provider_errors_request(
+            '<%= provider_namespace %>',
+            <%= name %>,
+            documents_errors('<%= provider_namespace %>')
+          )
+        <% else %>
+          common_provider_errors_request('<%= provider_namespace %>', <%= name %>)
+        <% end %>
+          not_found_error_request('<%= provider_namespace %>', <%= name %>)
+          common_network_error_request('<%= provider_namespace %>', <%= name %>)
         end
       end
     end
