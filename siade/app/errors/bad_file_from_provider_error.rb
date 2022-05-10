@@ -1,5 +1,29 @@
 class BadFileFromProviderError < ApplicationError
-  def initialize(provider_name, kind, message)
+  KIND_TO_SUBCODE = {
+    invalid_base64: {
+      subcode: '051',
+      default_detail: 'Erreur lors du décodage : invalide Base64 format'
+    },
+    timeout_error: {
+      subcode: '052',
+      default_detail: 'Temps d\'attente de téléchargement du document écoulé'
+    },
+    http_error: {
+      subcode: '053',
+      default_detail: 'Erreur de connexion sur le server distant'
+    },
+    invalid_url: {
+      subcode: '054',
+      default_detail: 'L\'URL vers le document renvoyée par le fournisseur de données est invalide'
+    },
+    invalid_extension: {
+      subcode: '055',
+      default_detail: 'Le fichier n\'est pas au format attendu'
+
+    }
+  }.freeze
+
+  def initialize(provider_name, kind, message = nil)
     @provider_name = provider_name
     @kind = kind.to_sym
     @message = message
@@ -14,7 +38,7 @@ class BadFileFromProviderError < ApplicationError
   end
 
   def detail
-    @message
+    @message || subcode_attributes[:default_detail]
   end
 
   def kind
@@ -24,13 +48,11 @@ class BadFileFromProviderError < ApplicationError
   protected
 
   def subcode
-    {
-      invalid_base64: '051',
-      timeout_error: '052',
-      http_error: '053',
-      invalid_url: '054',
-      invalid_extension: '055'
-    }.fetch(@kind) do
+    subcode_attributes[:subcode]
+  end
+
+  def subcode_attributes
+    @subcode_attributes ||= KIND_TO_SUBCODE.fetch(@kind) do
       raise KeyError, "#{@kind} is not a valid kind name"
     end
   end
