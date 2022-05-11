@@ -17,7 +17,7 @@ RSpec.describe 'Infogreffe: Extraitsrcs', type: %i[request swagger] do
         let(:siren) { valid_siren(:extrait_rcs) }
       end
 
-      describe 'with valid mandatory params', valid: true do
+      describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren' } do
           description SwaggerData.get('infogreffe.extraits_rcs.description')
 
@@ -30,12 +30,21 @@ RSpec.describe 'Infogreffe: Extraitsrcs', type: %i[request swagger] do
           run_test!
         end
 
-        response '404', 'Non trouvée', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_siren_not_found' } do
-          let(:siren) { not_found_siren(:extrait_rcs) }
+        describe 'server errors' do
+          let(:siren) { valid_siren(:extrait_rcs) }
 
-          schema '$ref' => '#/components/schemas/NotFound'
+          unprocessable_entity_error_request(:siren)
 
-          run_test!
+          response '404', 'Non trouvée', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_siren_not_found' } do
+            let(:siren) { not_found_siren(:extrait_rcs) }
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
+          end
+
+          common_provider_errors_request('Infogreffe', Infogreffe::ExtraitsRCS)
+          common_network_error_request('Infogreffe', Infogreffe::ExtraitsRCS)
         end
       end
     end

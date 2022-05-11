@@ -18,7 +18,7 @@ RSpec.describe 'URSSAF: Attestation de vigilance', type: %i[request swagger] do
       end
 
       describe 'with valid token and mandatory params', valid: true do
-        response '200', 'Entreprise found', vcr: { cassette_name: 'acoss/with_valid_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body) } do
+        response '200', 'Entreprise found', vcr: { cassette_name: 'acoss/with_valid_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body_sanitized) } do
           description SwaggerData.get('acoss.attestation_sociale.description')
 
           rate_limit_headers
@@ -41,7 +41,7 @@ RSpec.describe 'URSSAF: Attestation de vigilance', type: %i[request swagger] do
             documents_errors('ACOSS').concat([ACOSSError.new(:ongoing_manual_verification)])
           )
 
-          response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'acoss/with_non_existent_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body) } do
+          response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'acoss/with_non_existent_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body_sanitized) } do
             let(:siren) { not_found_siren }
 
             schema '$ref' => '#/components/schemas/Error'
