@@ -18,7 +18,21 @@ RSpec.describe 'Infogreffe: Extraitsrcs', type: %i[request swagger] do
       end
 
       describe 'with valid token and mandatory params', valid: true do
-        response '200', 'Entreprise trouvée', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren' } do
+        response '200', 'Entreprise trouvée (personne morale)', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren' } do
+          description SwaggerData.get('infogreffe.extraits_rcs.description')
+
+          rate_limit_headers
+
+          schema build_rswag_response(
+            attributes: SwaggerData.get('infogreffe.extraits_rcs.attributes')
+          )
+
+          run_test!
+        end
+
+        response '200', 'Entreprise trouvée (personne physique)', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren_personne_physique' } do
+          let(:siren) { valid_siren(:extrait_rcs_personne_physique) }
+
           description SwaggerData.get('infogreffe.extraits_rcs.description')
 
           rate_limit_headers

@@ -9,6 +9,7 @@ def valid_siren(sample_type = :default)
     opqibi: '309103877',
     opqibi_with_probatoire: '434717997',
     extrait_rcs: '418166096',
+    extrait_rcs_personne_physique: '403860265',
     insee_entreprise: '552032534',
     dgfip: valid_siret(:dgfip).first(9),
     liasse_fiscale: '301028346',
