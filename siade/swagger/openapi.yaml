@@ -362,7 +362,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Entreprise non trouvée
           content:
             application/json:
               schema:
@@ -850,6 +850,12 @@ paths:
                   description: Le paramètre recipient est obligatoire
               schema:
                 "$ref": "#/components/schemas/Error"
+        '404':
+          description: Non trouvée
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '502':
           description: Erreur du fournisseur
           content:
@@ -866,12 +872,6 @@ paths:
                         provider: ADEME
                   summary: Erreur inconnue
                   description: Mauvaise réponse envoyée par le fournisseur de données
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '404':
-          description: Non trouvée
-          content:
-            application/json:
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -1233,7 +1233,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Non trouvé
           content:
             application/json:
               schema:
@@ -1884,7 +1884,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/NotFound"
+                "$ref": "#/components/schemas/Error"
         '422':
           description: Paramètre(s) invalide(s)
           content:
@@ -2278,7 +2278,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/NotFound"
+                "$ref": "#/components/schemas/Error"
         '422':
           description: Paramètre(s) invalide(s)
           content:
@@ -2863,12 +2863,6 @@ paths:
                     ou ne comporte aucune information pour cet appel.
               schema:
                 "$ref": "#/components/schemas/Error"
-        '404':
-          description: Non trouvée
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/Error"
         '504':
           description: Erreur d'intermédiaire
           content:
@@ -3184,17 +3178,17 @@ paths:
           content:
             application/json:
               examples:
-                unprocessable_entity_error_siren_error:
+                unprocessable_entity_error_siret_error:
                   value:
                     errors:
-                    - code: '00301'
+                    - code: '00302'
                       title: Entité non traitable
-                      detail: Le numéro de siren n'est pas correctement formatté
+                      detail: Le numéro de siret n'est pas correctement formatté
                       source:
-                        parameter: siren
+                        parameter: siret
                       meta: {}
                   summary: Entité non traitable
-                  description: Le numéro de siren n'est pas correctement formatté
+                  description: Le numéro de siret n'est pas correctement formatté
                 missing_mandatory_params_context_error:
                   value:
                     errors:
@@ -4082,7 +4076,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Entreprise non trouvée
           content:
             application/json:
               schema:
@@ -4415,7 +4409,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Actes non trouvés
           content:
             application/json:
               schema:
@@ -4870,7 +4864,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Brevets non trouvés
           content:
             application/json:
               schema:
@@ -5227,7 +5221,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Marques non trouvées
           content:
             application/json:
               schema:
@@ -5604,7 +5598,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Modèles non trouvés
           content:
             application/json:
               schema:
@@ -6151,7 +6145,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Non trouvé
           content:
             application/json:
               schema:
@@ -6697,7 +6691,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Non trouvé
           content:
             application/json:
               schema:
@@ -7799,7 +7793,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Non trouvé
           content:
             application/json:
               schema:
@@ -8900,7 +8894,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Non trouvé
           content:
             application/json:
               schema:
@@ -10002,7 +9996,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Non trouvé
           content:
             application/json:
               schema:
@@ -11106,7 +11100,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Non trouvé
           content:
             application/json:
               schema:
@@ -12949,7 +12943,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Association not found
           content:
             application/json:
               schema:
@@ -13348,7 +13342,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Association not found
           content:
             application/json:
               schema:
@@ -14513,7 +14507,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Attestation non trouvée
           content:
             application/json:
               schema:
@@ -15210,7 +15204,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Certification non trouvée
           content:
             application/json:
               schema:
@@ -15542,7 +15536,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Non trouvée
+          description: Entreprise non trouvée
           content:
             application/json:
               schema:
@@ -15647,51 +15641,6 @@ components:
                 type: string
               detail:
                 type: string
-              code:
-                type: string
-            required:
-            - title
-            - detail
-            - code
-      required:
-      - errors
-    NotFound:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              title:
-                type: string
-                example: Resource not found
-              detail:
-                type: string
-                example: Le siret ou siren indiqué n'existe pas, n'est pas connu ou
-                  ne comporte aucune information pour cet appel
-              code:
-                type: string
-            required:
-            - title
-            - detail
-            - code
-      required:
-      - errors
-    UnprocessableEntity:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              title:
-                type: string
-                example: Unprocessable entity
-              detail:
-                type: string
-                example: Le siret ou siren indiqué n'est pas correctement formaté.
               code:
                 type: string
             required:
