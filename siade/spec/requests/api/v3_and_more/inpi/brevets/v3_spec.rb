@@ -35,7 +35,14 @@ RSpec.describe 'INPI: Latest Brevets', type: %i[request swagger] do
 
           unprocessable_entity_error_request(:siren)
 
-          not_found_error_request('INPI', INPI::Brevets)
+          response '404', 'Brevets non trouvés', vcr: { cassette_name: 'inpi/brevets/with_siren_not_found' } do
+            let(:siren) { not_found_siren(:inpi) }
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
+          end
+
           common_provider_errors_request('INPI', INPI::Brevets)
           common_network_error_request('INPI', INPI::Brevets)
         end

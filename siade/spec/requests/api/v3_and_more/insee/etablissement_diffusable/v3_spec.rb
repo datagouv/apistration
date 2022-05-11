@@ -37,7 +37,14 @@ RSpec.describe 'INSEE: EtablissementDiffusable diffusibbles', type: %i[request s
 
           unprocessable_entity_error_request(:siret)
 
-          not_found_error_request('INSEE', INSEE::EtablissementDiffusable)
+          response '404', 'Non trouvé', vcr: { cassette_name: 'insee/siret/non_existent_with_token' } do
+            let(:siret) { non_existent_siret }
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
+          end
+
           common_provider_errors_request('INSEE', INSEE::EtablissementDiffusable)
           common_network_error_request('INSEE', INSEE::EtablissementDiffusable)
         end

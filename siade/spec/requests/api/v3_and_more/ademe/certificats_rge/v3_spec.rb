@@ -51,8 +51,15 @@ RSpec.describe 'ADEME: Certificatsrge', type: %i[request swagger] do
 
           unprocessable_entity_error_request(%i[siren limit])
 
+          response '404', 'Non trouvée', vcr: { cassette_name: 'ademe/certificats_rge/not_found_siret' } do
+            let(:siret) { not_found_siret(:rge_ademe) }
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
+          end
+
           common_provider_errors_request('ADEME', ADEME::CertificatsRGE)
-          not_found_error_request('ADEME', ADEME::CertificatsRGE)
           common_network_error_request('ADEME', ADEME::CertificatsRGE)
         end
       end

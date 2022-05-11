@@ -41,7 +41,14 @@ RSpec.describe 'FNTP: Carte professionnelle Travaux Publics', type: %i[request s
             documents_errors('FNTP')
           )
 
-          not_found_error_request('FNTP', FNTP::CarteProfessionnelleTravauxPublics)
+          response '404', 'Non trouvée', vcr: { cassette_name: 'fntp/carte_professionnelle_travaux_publics/not_found_siren' } do
+            let(:siren) { not_found_siren }
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
+          end
+
           common_network_error_request('FNTP', FNTP::CarteProfessionnelleTravauxPublics)
         end
       end

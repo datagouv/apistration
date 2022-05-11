@@ -38,7 +38,18 @@ RSpec.describe 'MSA: Conformitescotisations', type: %i[request swagger] do
 
           unprocessable_entity_error_request(:siret)
 
-          not_found_error_request('MSA', MSA::ConformitesCotisations)
+          response '404', 'Non trouvée' do
+            before do
+              mock_msa_cotisations(siret, :unknown)
+            end
+
+            let(:siret) { not_found_siret(:msa) }
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
+          end
+
           common_provider_errors_request('MSA', MSA::ConformitesCotisations)
           common_network_error_request('MSA', MSA::ConformitesCotisations)
         end

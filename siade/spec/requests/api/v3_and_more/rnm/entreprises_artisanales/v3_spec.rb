@@ -35,7 +35,14 @@ RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
 
           unprocessable_entity_error_request(:siren)
 
-          not_found_error_request('RNM', RNM::EntreprisesArtisanales)
+          response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'rnm_cma/not_found_siren' } do
+            let(:siren) { not_found_siren(:rnm_cma) }
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
+          end
+
           common_provider_errors_request('RNM', RNM::EntreprisesArtisanales)
           common_network_error_request('RNM', RNM::EntreprisesArtisanales)
         end

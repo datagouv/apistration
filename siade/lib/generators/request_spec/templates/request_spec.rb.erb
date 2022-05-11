@@ -39,6 +39,14 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
             let(:<%= id_path_param %>) { 'lol' }
           end
 
+          response '404', 'Non trouvée', vcr: { cassette_name: '<%= provider_namespace.underscore %>/not_found_<%= id_path_param %>' } do
+            let(:<%= id_path_param %>) { not_found_<%= id_path_param %>(:<%= provider_namespace.underscore %>) }
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
+          end
+
           <% if document_resource? %>
           common_provider_errors_request(
             '<%= provider_namespace %>',
@@ -48,7 +56,6 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
         <% else %>
           common_provider_errors_request('<%= provider_namespace %>', <%= name %>)
         <% end %>
-          not_found_error_request('<%= provider_namespace %>', <%= name %>)
           common_network_error_request('<%= provider_namespace %>', <%= name %>)
         end
       end

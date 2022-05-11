@@ -36,7 +36,14 @@ RSpec.describe 'INPI: Modeles', type: %i[request swagger] do
 
           unprocessable_entity_error_request(:siren)
 
-          not_found_error_request('INPI', INPI::Modeles)
+          response '404', 'Modèles non trouvés', vcr: { cassette_name: 'inpi/modeles/not_found_siren' } do
+            let(:siren) { not_found_siren(:inpi) }
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
+          end
+
           common_provider_errors_request('INPI', INPI::Modeles)
           common_network_error_request('INPI', INPI::Modeles)
         end

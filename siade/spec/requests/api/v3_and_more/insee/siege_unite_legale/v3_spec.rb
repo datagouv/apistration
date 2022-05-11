@@ -39,7 +39,14 @@ RSpec.describe 'INSEE: Siège Unité Légale', type: %i[request swagger] do
 
           unprocessable_entity_error_request(:siren)
 
-          not_found_error_request('INSEE', INSEE::SiegeUniteLegale)
+          response '404', 'Non trouvé', vcr: { cassette_name: 'insee/siege/non_existent_with_token' } do
+            let(:siren) { non_existent_siren }
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
+          end
+
           common_provider_errors_request('INSEE', INSEE::SiegeUniteLegale)
           common_network_error_request('INSEE', INSEE::SiegeUniteLegale)
         end

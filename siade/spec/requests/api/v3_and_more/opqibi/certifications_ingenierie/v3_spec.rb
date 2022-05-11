@@ -35,7 +35,14 @@ RSpec.describe 'OPQIBI: Certificationsingenierie', type: %i[request swagger] do
 
           unprocessable_entity_error_request(:siren)
 
-          not_found_error_request('OPQIBI', OPQIBI::CertificationsIngenierie)
+          response '404', 'Non trouvée', vcr: { cassette_name: 'opqibi/certifications_ingenierie/not_found_siren' } do
+            let(:siren) { not_found_siren }
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
+          end
+
           common_provider_errors_request('OPQIBI', OPQIBI::CertificationsIngenierie)
           common_network_error_request('OPQIBI', OPQIBI::CertificationsIngenierie)
         end

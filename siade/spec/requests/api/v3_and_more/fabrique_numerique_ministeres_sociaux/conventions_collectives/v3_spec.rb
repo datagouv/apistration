@@ -35,7 +35,14 @@ RSpec.describe 'FabriqueNumeriqueMinisteresSociaux: Conventionscollectives', typ
 
           unprocessable_entity_error_request(:siret)
 
-          not_found_error_request('Fabrique numérique des Ministères Sociaux', FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives)
+          response '404', 'Non trouvée', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/not_found_siret' } do
+            let(:siret) { not_found_siret(:conventions_collectives) }
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
+          end
+
           common_provider_errors_request('Fabrique numérique des Ministères Sociaux', FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives)
           common_network_error_request('Fabrique numérique des Ministères Sociaux', FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives)
         end

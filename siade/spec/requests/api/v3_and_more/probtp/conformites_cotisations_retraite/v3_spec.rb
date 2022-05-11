@@ -35,7 +35,14 @@ RSpec.describe 'PROBTP: Conformites Cotisations Retraite', type: %i[request swag
 
           unprocessable_entity_error_request(:siret)
 
-          not_found_error_request('ProBTP', PROBTP::ConformitesCotisationsRetraite)
+          response '404', 'Non trouvée', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_not_found_siret' } do
+            let(:siret) { not_found_siret(:probtp) }
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
+          end
+
           common_provider_errors_request('ProBTP', PROBTP::ConformitesCotisationsRetraite)
           common_network_error_request('ProBTP', PROBTP::ConformitesCotisationsRetraite)
         end

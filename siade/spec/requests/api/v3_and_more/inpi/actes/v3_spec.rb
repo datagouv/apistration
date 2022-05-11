@@ -35,7 +35,14 @@ RSpec.describe 'INPI: Actes', type: %i[request swagger] do
 
           unprocessable_entity_error_request(:siren)
 
-          not_found_error_request('INPI', INPI::Actes)
+          response '404', 'Actes non trouvés', vcr: { cassette_name: 'inpi/actes/with_siren_not_found' } do
+            let(:siren) { not_found_siren(:inpi) }
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
+          end
+
           common_provider_errors_request('INPI', INPI::Actes)
           common_network_error_request('INPI', INPI::Actes)
         end

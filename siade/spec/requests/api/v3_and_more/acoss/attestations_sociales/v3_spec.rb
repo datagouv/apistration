@@ -41,7 +41,14 @@ RSpec.describe 'ACOSS: Attestations sociales', type: %i[request swagger] do
             documents_errors('ACOSS').concat([ACOSSError.new(:ongoing_manual_verification)])
           )
 
-          not_found_error_request('ACOSS', ACOSS::AttestationsSociales)
+          response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'acoss/with_non_existent_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body) } do
+            let(:siren) { not_found_siren }
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
+          end
+
           common_network_error_request('ACOSS', ACOSS::AttestationsSociales)
         end
       end

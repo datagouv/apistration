@@ -35,7 +35,14 @@ RSpec.describe 'MI : Associations', type: %i[request swagger] do
 
           unprocessable_entity_error_request(:siret_or_rna)
 
-          not_found_error_request('MI', MI::Associations)
+          response '404', 'Association not found', vcr: { cassette_name: 'mi/associations/with_rna_not_found' } do
+            let(:siret_or_rna) { non_existing_rna_id }
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
+          end
+
           common_network_error_request('MI', MI::Associations)
           common_provider_errors_request('MI', MI::Associations)
         end

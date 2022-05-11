@@ -139,21 +139,6 @@ module RSWagCommonsResponses
     end
   end
 
-  def not_found_error_request(provider_name, organizer_klass, &block)
-    response '404', 'Non trouvée' do
-      block.call if block_given?
-
-      stubbed_organizer_error(
-        organizer_klass,
-        NotFoundError.new(provider_name)
-      )
-
-      schema '$ref' => '#/components/schemas/Error'
-
-      run_test!
-    end
-  end
-
   def unprocessable_entity_error_request(params, &block)
     response '422', 'Paramètre(s) invalide(s)' do
       block.call if block_given?

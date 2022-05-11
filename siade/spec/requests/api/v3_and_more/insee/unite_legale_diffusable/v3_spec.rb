@@ -39,7 +39,14 @@ RSpec.describe 'INSEE: Unités légales diffusibles', type: %i[request swagger] 
 
           unprocessable_entity_error_request(:siren)
 
-          not_found_error_request('INSEE', INSEE::UniteLegaleDiffusable)
+          response '404', 'Non trouvée', vcr: { cassette_name: 'insee/siren/non_diffusable_with_token' } do
+            let(:siren) { non_diffusable_siren }
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
+          end
+
           common_provider_errors_request('INSEE', INSEE::UniteLegaleDiffusable)
           common_network_error_request('INSEE', INSEE::UniteLegaleDiffusable)
 

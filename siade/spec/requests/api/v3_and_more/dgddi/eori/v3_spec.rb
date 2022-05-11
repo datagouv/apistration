@@ -35,7 +35,14 @@ RSpec.describe 'DGDDI: EORI', type: %i[request swagger] do
 
           unprocessable_entity_error_request(:siret_or_eori)
 
-          not_found_error_request('DGDDI', DGDDI::EORI)
+          response '404', 'Non trouvée', vcr: { cassette_name: 'dgddi/eori/non_existing_eori' } do
+            let(:siret_or_eori) { non_existing_eori }
+
+            schema '$ref' => '#/components/schemas/NotFound'
+
+            run_test!
+          end
+
           common_provider_errors_request('DGDDI', DGDDI::EORI)
           common_network_error_request('DGDDI', DGDDI::EORI)
         end
