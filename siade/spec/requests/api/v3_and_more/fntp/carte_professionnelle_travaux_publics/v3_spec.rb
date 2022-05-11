@@ -44,7 +44,7 @@ RSpec.describe 'FNTP: Carte professionnelle Travaux Publics', type: %i[request s
           response '404', 'Non trouvée', vcr: { cassette_name: 'fntp/carte_professionnelle_travaux_publics/not_found_siren' } do
             let(:siren) { not_found_siren }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

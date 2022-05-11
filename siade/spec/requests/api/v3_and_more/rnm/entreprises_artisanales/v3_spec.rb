@@ -38,7 +38,7 @@ RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger] do
           response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'rnm_cma/not_found_siren' } do
             let(:siren) { not_found_siren(:rnm_cma) }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

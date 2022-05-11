@@ -54,7 +54,7 @@ RSpec.describe 'ADEME: Certificatsrge', type: %i[request swagger] do
           response '404', 'Non trouvée', vcr: { cassette_name: 'ademe/certificats_rge/not_found_siret' } do
             let(:siret) { not_found_siret(:rge_ademe) }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

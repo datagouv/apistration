@@ -122,15 +122,7 @@ RSpec.configure do |config|
       ],
       components: {
         schemas: {
-          Error: build_rswag_error,
-          NotFound: build_rswag_error(
-            title: 'Resource not found',
-            detail: 'Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel'
-          ),
-          UnprocessableEntity: build_rswag_error(
-            title: 'Unprocessable entity',
-            detail: 'Le siret ou siren indiqué n\'est pas correctement formaté.'
-          )
+          Error: build_rswag_error
         },
         securitySchemes: {
           jwt_bearer_token: {

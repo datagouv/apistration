@@ -40,7 +40,7 @@ RSpec.describe 'INSEE: Unités légales', type: %i[request swagger] do
           response '404', 'Non trouvée', vcr: { cassette_name: 'insee/siren/non_existent_with_token' } do
             let(:siren) { non_existent_siren }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

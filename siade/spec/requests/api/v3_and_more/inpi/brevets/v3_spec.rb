@@ -38,7 +38,7 @@ RSpec.describe 'INPI: Latest Brevets', type: %i[request swagger] do
           response '404', 'Brevets non trouvés', vcr: { cassette_name: 'inpi/brevets/with_siren_not_found' } do
             let(:siren) { not_found_siren(:inpi) }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

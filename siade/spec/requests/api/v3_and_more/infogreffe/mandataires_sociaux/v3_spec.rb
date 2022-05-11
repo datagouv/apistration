@@ -42,7 +42,7 @@ RSpec.describe 'Infogreffe: Mandataires sociaux', type: %i[request swagger] do
             vcr: { cassette_name: 'infogreffe/mandataires_sociaux/with_siren_not_found' } do
             let(:siren) { not_found_siren(:extrait_rcs) }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

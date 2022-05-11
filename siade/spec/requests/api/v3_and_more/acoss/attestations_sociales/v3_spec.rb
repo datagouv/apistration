@@ -44,7 +44,7 @@ RSpec.describe 'ACOSS: Attestations sociales', type: %i[request swagger] do
           response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'acoss/with_non_existent_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body) } do
             let(:siren) { not_found_siren }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

@@ -38,7 +38,7 @@ RSpec.describe 'OPQIBI: Certificationsingenierie', type: %i[request swagger] do
           response '404', 'Non trouvée', vcr: { cassette_name: 'opqibi/certifications_ingenierie/not_found_siren' } do
             let(:siren) { not_found_siren }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

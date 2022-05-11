@@ -42,7 +42,7 @@ RSpec.describe 'INSEE: Unités légales diffusibles', type: %i[request swagger] 
           response '404', 'Non trouvée', vcr: { cassette_name: 'insee/siren/non_diffusable_with_token' } do
             let(:siren) { non_diffusable_siren }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

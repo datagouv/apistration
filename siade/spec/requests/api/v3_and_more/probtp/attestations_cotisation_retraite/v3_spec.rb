@@ -44,7 +44,7 @@ RSpec.describe 'PROBTP : Attestations cotisations retraite', type: %i[request sw
           response '404', 'Attestation non trouvée', vcr: { cassette_name: 'probtp/attestation/with_not_found_siret' } do
             let(:siret) { not_found_siret(:probtp) }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

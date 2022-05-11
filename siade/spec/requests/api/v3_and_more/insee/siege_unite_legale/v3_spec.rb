@@ -42,7 +42,7 @@ RSpec.describe 'INSEE: Siège Unité Légale', type: %i[request swagger] do
           response '404', 'Non trouvé', vcr: { cassette_name: 'insee/siege/non_existent_with_token' } do
             let(:siren) { non_existent_siren }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

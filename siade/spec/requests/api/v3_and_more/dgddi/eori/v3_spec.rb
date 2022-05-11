@@ -38,7 +38,7 @@ RSpec.describe 'DGDDI: EORI', type: %i[request swagger] do
           response '404', 'Non trouvée', vcr: { cassette_name: 'dgddi/eori/non_existing_eori' } do
             let(:siret_or_eori) { non_existing_eori }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

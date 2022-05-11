@@ -44,7 +44,7 @@ RSpec.describe 'Qualibat : CertificationsBatiment', type: %i[request swagger] do
           response '404', 'Certification non trouvée', vcr: { cassette_name: 'qualibat/certifications_batiment/not_found_siret' } do
             let(:siret) { not_found_siret(:qualibat) }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

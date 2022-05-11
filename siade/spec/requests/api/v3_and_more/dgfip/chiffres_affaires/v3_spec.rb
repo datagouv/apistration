@@ -34,7 +34,7 @@ RSpec.describe 'DGFIP: chiffres d\'affaires', type: %i[request swagger] do
           response '404', 'Non trouvée', vcr: { cassette_name: 'dgfip/chiffres_affaires/not_found' } do
             let(:siret) { not_found_siret }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

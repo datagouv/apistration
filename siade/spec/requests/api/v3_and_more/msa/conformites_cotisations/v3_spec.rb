@@ -45,7 +45,7 @@ RSpec.describe 'MSA: Conformitescotisations', type: %i[request swagger] do
 
             let(:siret) { not_found_siret(:msa) }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

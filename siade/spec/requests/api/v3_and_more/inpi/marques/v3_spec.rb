@@ -39,7 +39,7 @@ RSpec.describe 'INPI: Marques', type: %i[request swagger] do
           response '404', 'Marques non trouvées', vcr: { cassette_name: 'inpi/marques/not_found_siren' } do
             let(:siren) { not_found_siren(:inpi) }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

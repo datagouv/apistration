@@ -47,7 +47,7 @@ RSpec.describe 'MI: Documents Associations', type: %i[request swagger] do
           response '404', 'Association not found', vcr: { cassette_name: 'mi/associations/with_rna_not_found' } do
             let(:siret_or_rna) { non_existing_rna_id }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

@@ -46,7 +46,7 @@ RSpec.describe 'DGFIP: Attestationfiscale', type: %i[request swagger] do
               mock_invalid_dgfip_attestation_fiscale(404)
             end
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end
