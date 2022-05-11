@@ -1,5 +1,5 @@
 class API::V3AndMore::BaseController < API::AuthenticateEntityController
-  include V2AndMoreHelpers
+  include OrganizersMethodsHelpers
 
   class UnsupportedVersionError < ::ActionController::RoutingError; end
 

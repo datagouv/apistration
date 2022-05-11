@@ -13,16 +13,11 @@ class API::V2::CertificatsRGEADEMEController < API::V2::BaseController
     end
   end
 
-  def request_params
-    params.require(:siret)
-  end
-
   private
 
   def organizer_params
     {
-      siret: params.require(:siret),
-      limit: params[:limit]
+      siret: params.require(:siret)
     }
   end
 end

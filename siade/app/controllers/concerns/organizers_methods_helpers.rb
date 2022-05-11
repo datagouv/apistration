@@ -1,5 +1,4 @@
-module V2AndMoreHelpers
-  extend ActiveSupport::Concern
+module OrganizersMethodsHelpers
   # rubocop:disable Metrics
   def extract_http_code(retriever)
     if retriever.errors.blank?
