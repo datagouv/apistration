@@ -296,11 +296,13 @@ paths:
                     errors:
                     - code: '04051'
                       title: Fichier renvoyé par le fournisseur de données non valide
-                      detail: 'Erreur lors du décodage : invalide Base64 format'
+                      detail: 'Erreur lors du décodage : la chaîne de caractères en
+                        base64 est invalide'
                       source:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
-                  description: 'Erreur lors du décodage : invalide Base64 format'
+                  description: 'Erreur lors du décodage : la chaîne de caractères
+                    en base64 est invalide'
                 fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_04052:
                   value:
                     errors:
@@ -1183,11 +1185,13 @@ paths:
                     errors:
                     - code: '08051'
                       title: Fichier renvoyé par le fournisseur de données non valide
-                      detail: 'Erreur lors du décodage : invalide Base64 format'
+                      detail: 'Erreur lors du décodage : la chaîne de caractères en
+                        base64 est invalide'
                       source:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
-                  description: 'Erreur lors du décodage : invalide Base64 format'
+                  description: 'Erreur lors du décodage : la chaîne de caractères
+                    en base64 est invalide'
                 fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_08052:
                   value:
                     errors:
@@ -1957,11 +1961,13 @@ paths:
                     errors:
                     - code: '03051'
                       title: Fichier renvoyé par le fournisseur de données non valide
-                      detail: 'Erreur lors du décodage : invalide Base64 format'
+                      detail: 'Erreur lors du décodage : la chaîne de caractères en
+                        base64 est invalide'
                       source:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
-                  description: 'Erreur lors du décodage : invalide Base64 format'
+                  description: 'Erreur lors du décodage : la chaîne de caractères
+                    en base64 est invalide'
                 fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_03052:
                   value:
                     errors:
@@ -3557,11 +3563,13 @@ paths:
                     errors:
                     - code: '12051'
                       title: Fichier renvoyé par le fournisseur de données non valide
-                      detail: 'Erreur lors du décodage : invalide Base64 format'
+                      detail: 'Erreur lors du décodage : la chaîne de caractères en
+                        base64 est invalide'
                       source:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
-                  description: 'Erreur lors du décodage : invalide Base64 format'
+                  description: 'Erreur lors du décodage : la chaîne de caractères
+                    en base64 est invalide'
                 fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_12052:
                   value:
                     errors:
@@ -12893,11 +12901,13 @@ paths:
                     errors:
                     - code: '21051'
                       title: Fichier renvoyé par le fournisseur de données non valide
-                      detail: 'Erreur lors du décodage : invalide Base64 format'
+                      detail: 'Erreur lors du décodage : la chaîne de caractères en
+                        base64 est invalide'
                       source:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
-                  description: 'Erreur lors du décodage : invalide Base64 format'
+                  description: 'Erreur lors du décodage : la chaîne de caractères
+                    en base64 est invalide'
                 fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_21052:
                   value:
                     errors:
@@ -14457,11 +14467,13 @@ paths:
                     errors:
                     - code: '09051'
                       title: Fichier renvoyé par le fournisseur de données non valide
-                      detail: 'Erreur lors du décodage : invalide Base64 format'
+                      detail: 'Erreur lors du décodage : la chaîne de caractères en
+                        base64 est invalide'
                       source:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
-                  description: 'Erreur lors du décodage : invalide Base64 format'
+                  description: 'Erreur lors du décodage : la chaîne de caractères
+                    en base64 est invalide'
                 fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_09052:
                   value:
                     errors:
@@ -15154,11 +15166,13 @@ paths:
                     errors:
                     - code: '06051'
                       title: Fichier renvoyé par le fournisseur de données non valide
-                      detail: 'Erreur lors du décodage : invalide Base64 format'
+                      detail: 'Erreur lors du décodage : la chaîne de caractères en
+                        base64 est invalide'
                       source:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
-                  description: 'Erreur lors du décodage : invalide Base64 format'
+                  description: 'Erreur lors du décodage : la chaîne de caractères
+                    en base64 est invalide'
                 fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_06052:
                   value:
                     errors:

@@ -2,7 +2,7 @@ class BadFileFromProviderError < ApplicationError
   KIND_TO_SUBCODE = {
     invalid_base64: {
       subcode: '051',
-      default_detail: 'Erreur lors du décodage : invalide Base64 format'
+      default_detail: 'Erreur lors du décodage : la chaîne de caractères en base64 est invalide'
     },
     timeout_error: {
       subcode: '052',
