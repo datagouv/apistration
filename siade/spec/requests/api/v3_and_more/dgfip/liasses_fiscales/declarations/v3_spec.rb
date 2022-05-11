@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', type: %i[request swagger] do
-  path '/v3/dgfip/liasses_fiscales/declarations/{year}/{siren}' do
+  path '/v3/dgfip/unites_legales/{siren}/liasses_fiscales/{year}' do
     get SwaggerData.get('dgfip.liasses_fiscales.declarations.title') do
       tags(*SwaggerData.get('dgfip.liasses_fiscales.declarations.tags'))
 

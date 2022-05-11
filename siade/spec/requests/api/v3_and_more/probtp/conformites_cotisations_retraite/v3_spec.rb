@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'PROBTP: Conformites Cotisations Retraite', type: %i[request swagger] do
-  path '/v3/probtp/conformites_cotisations_retraite/{siret}' do
+  path '/v3/probtp/etablissements/{siret}/conformite_cotisations_retraite' do
     get SwaggerData.get('probtp.conformites_cotisations_retraite.title') do
       tags(*SwaggerData.get('probtp.conformites_cotisations_retraite.tags'))
 

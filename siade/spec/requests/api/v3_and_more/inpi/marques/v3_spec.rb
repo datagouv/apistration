@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'INPI: Marques', type: %i[request swagger] do
-  path '/v3/inpi/marques/{siren}' do
+  path '/v3/inpi/unites_legales/{siren}/marques' do
     get SwaggerData.get('inpi.marques.title') do
       tags(*SwaggerData.get('inpi.marques.tags'))
 

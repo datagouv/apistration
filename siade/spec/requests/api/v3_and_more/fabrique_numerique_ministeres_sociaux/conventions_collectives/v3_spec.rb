@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'FabriqueNumeriqueMinisteresSociaux: Conventionscollectives', type: %i[request swagger] do
-  path '/v3/fabrique_numerique_ministeres_sociaux/conventions_collectives/{siret}' do
+  path '/v3/fabrique_numerique_ministeres_sociaux/etablissements/{siret}/conventions_collectives' do
     get SwaggerData.get('fabrique_numerique_ministeres_sociaux.conventions_collectives.title') do
       tags(*SwaggerData.get('fabrique_numerique_ministeres_sociaux.conventions_collectives.tags'))
 

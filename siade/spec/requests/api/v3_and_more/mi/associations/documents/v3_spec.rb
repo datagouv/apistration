@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'MI: Documents Associations', type: %i[request swagger] do
-  path '/v3/mi/associations/{siret_or_rna}/documents' do
+  path '/v3/ministere_interieur/rna/associations/{siret_or_rna}/documents' do
     get SwaggerData.get('mi.document_association.title') do
       tags(*SwaggerData.get('mi.document_association.tags'))
 

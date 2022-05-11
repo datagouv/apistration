@@ -19,7 +19,7 @@ tags:
 - name: Certifications professionnelles
 - name: Propriété intellectuelle
 paths:
-  "/v3/acoss/attestations_sociales/{siren}":
+  "/v3/urssaf/unites_legales/{siren}/attestation_vigilance":
     get:
       summary: Attestation de vigilance
       tags:
@@ -431,8 +431,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/acoss/attestations_sociales/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/ademe/certificats_rge/{siret}":
+            --url "https://entreprise.api.gouv.fr/v3/urssaf/unites_legales/130025265/attestation_vigilance?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/ademe/etablissements/{siret}/certification_rge":
     get:
       summary: Certificat RGE
       tags:
@@ -938,8 +938,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/ademe/certificats_rge/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/cnetp/attestations_cotisations_conges_payes_chomage_intemperies/{siren}":
+            --url "https://entreprise.api.gouv.fr/v3/ademe/etablissements/13002526500013/certification_rge?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/cnetp/unites_legales/{siren}/attestation_cotisations_conges_payes_chomage_intemperies":
     get:
       summary: Attestation de cotisations congés payés & chômage-intempéries
       tags:
@@ -1304,8 +1304,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/cnetp/attestations_cotisations_conges_payes_chomage_intemperies/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/dgddi/eoris/{siret_or_eori}":
+            --url "https://entreprise.api.gouv.fr/v3/cnetp/unites_legales/130025265/attestation_cotisations_conges_payes_chomage_intemperies?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/douanes/etablissements/{siret_or_eori}/immatriculations_eori":
     get:
       summary: Immatriculation EORI
       tags:
@@ -1674,8 +1674,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/dgddi/eoris/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/dgfip/attestations_fiscales/{siren}":
+            --url "https://entreprise.api.gouv.fr/v3/douanes/etablissements/13002526500013/immatriculations_eori?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/dgfip/unites_legales/{siren}/attestation_fiscale":
     get:
       summary: Attestation fiscale
       tags:
@@ -2074,11 +2074,11 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/dgfip/attestations_fiscales/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+            --url "https://entreprise.api.gouv.fr/v3/dgfip/unites_legales/130025265/attestation_fiscale?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
       x-maintenances:
         from_hour: '01:00'
         to_hour: '02:00'
-  "/v3/dgfip/chiffres_affaires/{siret}":
+  "/v3/dgfip/etablissements/{siret}/chiffres_affaires":
     get:
       summary: Chiffre d'affaires
       tags:
@@ -2416,11 +2416,11 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/dgfip/chiffres_affaires/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+            --url "https://entreprise.api.gouv.fr/v3/dgfip/etablissements/13002526500013/chiffres_affaires?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
       x-maintenances:
         from_hour: '01:00'
         to_hour: '02:00'
-  "/v3/dgfip/liasses_fiscales/declarations/{year}/{siren}":
+  "/v3/dgfip/unites_legales/{siren}/liasses_fiscales/{year}":
     get:
       summary: Liasses fiscales
       tags:
@@ -2931,11 +2931,11 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/dgfip/liasses_fiscales/declarations/2019/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+            --url "https://entreprise.api.gouv.fr/v3/dgfip/unites_legales/130025265/liasses_fiscales/2019?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
       x-maintenances:
         from_hour: '01:00'
         to_hour: '02:00'
-  "/v3/fabrique_numerique_ministeres_sociaux/conventions_collectives/{siret}":
+  "/v3/fabrique_numerique_ministeres_sociaux/etablissements/{siret}/conventions_collectives":
     get:
       summary: Conventions collectives
       tags:
@@ -3316,8 +3316,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/fabrique_numerique_ministeres_sociaux/conventions_collectives/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/fntp/cartes_professionnelle_travaux_publics/{siren}":
+            --url "https://entreprise.api.gouv.fr/v3/fabrique_numerique_ministeres_sociaux/etablissements/13002526500013/conventions_collectives?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/fntp/unites_legales/{siren}/carte_professionnelle_travaux_publics":
     get:
       summary: Carte professionnelle travaux publics
       tags:
@@ -3682,8 +3682,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/fntp/cartes_professionnelle_travaux_publics/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/infogreffe/mandataires_sociaux/{siren}":
+            --url "https://entreprise.api.gouv.fr/v3/fntp/unites_legales/130025265/carte_professionnelle_travaux_publics?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/infogreffe/unites_legales/{siren}/mandataires_sociaux":
     get:
       summary: Mandataires sociaux
       tags:
@@ -4169,8 +4169,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/infogreffe/mandataires_sociaux/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/inpi/actes/{siren}":
+            --url "https://entreprise.api.gouv.fr/v3/infogreffe/unites_legales/130025265/mandataires_sociaux?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/inpi/unites_legales/{siren}/actes":
     get:
       summary: Actes
       tags:
@@ -4502,8 +4502,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/inpi/actes/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/inpi/brevets/{siren}":
+            --url "https://entreprise.api.gouv.fr/v3/inpi/unites_legales/130025265/actes?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/inpi/unites_legales/{siren}/brevets":
     get:
       summary: Brevets déposés
       tags:
@@ -4957,8 +4957,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/inpi/brevets/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/inpi/marques/{siren}":
+            --url "https://entreprise.api.gouv.fr/v3/inpi/unites_legales/130025265/brevets?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/inpi/unites_legales/{siren}/marques":
     get:
       summary: Marques déposées
       tags:
@@ -5314,8 +5314,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/inpi/marques/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/inpi/modeles/{siren}":
+            --url "https://entreprise.api.gouv.fr/v3/inpi/unites_legales/130025265/marques?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/inpi/unites_legales/{siren}/modeles":
     get:
       summary: Modèles déposés
       tags:
@@ -5691,7 +5691,7 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/inpi/modeles/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+            --url "https://entreprise.api.gouv.fr/v3/inpi/unites_legales/130025265/modeles?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/etablissements/{siret}/adresse":
     get:
       summary: Adresse de l'établissement
@@ -8988,7 +8988,7 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/diffusibles/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/insee/sirene/unites_legales/diffusibles/{siren}/siege":
+  "/v3/insee/sirene/unites_legales/diffusibles/{siren}/siege_social":
     get:
       summary: Données d'un siège social diffusible
       tags:
@@ -10089,8 +10089,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/diffusibles/130025265/siege?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/insee/sirene/unites_legales/{siren}/siege":
+            --url "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/diffusibles/130025265/siege_social?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/insee/sirene/unites_legales/{siren}/siege_social":
     get:
       summary: Données d'un siège social
       tags:
@@ -11193,7 +11193,7 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/130025265/siege?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+            --url "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/130025265/siege_social?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/unites_legales/{siren}":
     get:
       summary: Données de référence d'une unité légale
@@ -12615,7 +12615,7 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/diffusibles/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/mi/associations/{siret_or_rna}/documents":
+  "/v3/ministere_interieur/rna/associations/{siret_or_rna}/documents":
     get:
       summary: Divers documents d'une association
       tags:
@@ -13020,8 +13020,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/mi/associations/13002526500013/documents?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/mi/associations/{siret_or_rna}":
+            --url "https://entreprise.api.gouv.fr/v3/ministere_interieur/rna/associations/13002526500013/documents?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/ministere_interieur/rna/associations/{siret_or_rna}":
     get:
       summary: Données du RNA d'une association
       tags:
@@ -13437,8 +13437,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/mi/associations/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/msa/conformites_cotisations/{siret}":
+            --url "https://entreprise.api.gouv.fr/v3/ministere_interieur/rna/associations/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/msa/etablissements/{siret}/conformite_cotisations":
     get:
       summary: Conformité cotisations de sécurité sociale agricole
       tags:
@@ -13775,8 +13775,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/msa/conformites_cotisations/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/opqibi/certifications_ingenierie/{siren}":
+            --url "https://entreprise.api.gouv.fr/v3/msa/etablissements/13002526500013/conformite_cotisations?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/opqibi/unites_legales/{siren}/certification_ingenierie":
     get:
       summary: Certifications Ingénierie
       tags:
@@ -14195,8 +14195,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/opqibi/certifications_ingenierie/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/probtp/attestations_cotisations_retraite/{siret}":
+            --url "https://entreprise.api.gouv.fr/v3/opqibi/unites_legales/130025265/certification_ingenierie?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/probtp/etablissements/{siret}/attestation_cotisations_retraite":
     get:
       summary: Conformité cotisations retraite bâtiment
       tags:
@@ -14586,8 +14586,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/probtp/attestations_cotisations_retraite/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/probtp/conformites_cotisations_retraite/{siret}":
+            --url "https://entreprise.api.gouv.fr/v3/probtp/etablissements/13002526500013/attestation_cotisations_retraite?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/probtp/etablissements/{siret}/conformite_cotisations_retraite":
     get:
       summary: Conformités vis-à-vis des cotisations retraites
       tags:
@@ -14894,8 +14894,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/probtp/conformites_cotisations_retraite/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/qualibat/certifications_batiment/{siret}":
+            --url "https://entreprise.api.gouv.fr/v3/probtp/etablissements/13002526500013/conformite_cotisations_retraite?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/qualibat/etablissements/{siret}/certification_batiment":
     get:
       summary: Certification Qualibat
       tags:
@@ -15285,8 +15285,8 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/qualibat/certifications_batiment/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/rnm/entreprises/{siren}":
+            --url "https://entreprise.api.gouv.fr/v3/qualibat/etablissements/13002526500013/certification_batiment?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/cma_france/rnm/unites_legales/{siren}":
     get:
       summary: Données du RNM d'une entreprise artisanale
       tags:
@@ -15635,7 +15635,7 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/rnm/entreprises/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+            --url "https://entreprise.api.gouv.fr/v3/cma_france/rnm/unites_legales/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
 servers:
 - url: https://entreprise.api.gouv.fr
   description: Environnement de production

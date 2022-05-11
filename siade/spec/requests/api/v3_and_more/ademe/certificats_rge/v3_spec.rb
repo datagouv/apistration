@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
-RSpec.describe 'ADEME: Certificatsrge', type: %i[request swagger] do
-  path '/v3/ademe/certificats_rge/{siret}' do
+RSpec.describe 'ADEME: Certification RGE', type: %i[request swagger] do
+  path '/v3/ademe/etablissements/{siret}/certification_rge' do
     get SwaggerData.get('ademe.certificats_rge.title') do
       tags(*SwaggerData.get('ademe.certificats_rge.tags'))
 

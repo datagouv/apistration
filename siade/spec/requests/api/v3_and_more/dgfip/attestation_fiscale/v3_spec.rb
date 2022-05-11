@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
-RSpec.describe 'DGFIP: Attestationfiscale', type: %i[request swagger] do
-  path '/v3/dgfip/attestations_fiscales/{siren}' do
+RSpec.describe 'DGFIP: Attestation fiscale', type: %i[request swagger] do
+  path '/v3/dgfip/unites_legales/{siren}/attestation_fiscale' do
     get SwaggerData.get('dgfip.attestations_fiscales.title') do
       tags(*SwaggerData.get('dgfip.attestations_fiscales.tags'))
 

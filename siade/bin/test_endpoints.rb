@@ -143,29 +143,29 @@ endpoints = <<STR
 - name: EORI DGDDI (Douane)
   http_path: '/v2/eori_douanes/FR16002307300010'
 
-- name: '[V3] ACOSS Attestations sociales'
-  http_path: '/v3/acoss/attestations_sociales/418166096'
+- name: '[V3] URSSAF Attestations de vigilance'
+  http_path: '/v3/urssaf/unites_legales/418166096/attestation_vigilance'
 
-- name: '[V3] ADEME Certificats RGE'
-  http_path: '/v3/ademe/certificats_rge/50530961700023'
+- name: '[V3] ADEME Certification RGE'
+  http_path: '/v3/ademe/etablissements/50530961700023/certification_rge'
 
-- name: '[V3] DGDDI EORI'
-  http_path: '/v3/dgddi/eoris/FR16002307300010'
+- name: '[V3] Douanes Immatriculations EORI'
+  http_path: '/v3/douanes/etablissements/FR16002307300010/immatriculations_eori'
 
 - name: '[V3] Infogreffe Mandataires Sociaux'
-  http_path: '/v3/infogreffe/mandataires_sociaux/418166096'
+  http_path: '/v3/infogreffe/unites_legales/418166096/mandataires_sociaux'
 
 - name: '[V3] INPI Actes'
-  http_path: '/v3/inpi/actes/542065479'
+  http_path: '/v3/inpi/unites_legales/542065479/actes'
 
 - name: '[V3] INPI Brevets'
-  http_path: '/v3/inpi/brevets/542065479'
+  http_path: '/v3/inpi/unites_legales/542065479/brevets'
 
 - name: '[V3] INPI Marques'
-  http_path: '/v3/inpi/marques/542065479'
+  http_path: '/v3/inpi/unites_legales/542065479/marques'
 
 - name: '[V3] INPI Modeles'
-  http_path: '/v3/inpi/modeles/542065479'
+  http_path: '/v3/inpi/unites_legales/542065479/modeles'
 
 - name: '[V3] INSEE Etablissements'
   http_path: '/v3/insee/sirene/etablissements/30613890002979'
@@ -176,33 +176,38 @@ endpoints = <<STR
 - name: '[V3] INSEE Unites Legales'
   http_path: '/v3/insee/sirene/unites_legales/306138900'
 
-- name: '[V3] INSEE Unites Legales Diffusibles'
+- name: '[V3] INSEE Unites Legales diffusibles'
   http_path: '/v3/insee/sirene/unites_legales/diffusibles/306138900'
 
-- name: '[V3] INSEE Unites Legales Siege'
-  http_path: '/v3/insee/sirene/unites_legales/306138900/siege'
+- name: '[V3] INSEE Unites Legales Siege social'
+  http_path: '/v3/insee/sirene/unites_legales/306138900/siege_social'
 
-- name: '[V3] MI Associations'
-  http_path: '/v3/mi/associations/77571979202650'
+- name: '[V3] INSEE Unites Legales Siege social diffusibles'
+  http_path: '/v3/insee/sirene/unites_legales/diffusibles/306138900/siege_social'
+
+- name: "[V3] Ministère de l'Intérieur associations"
+  http_path: '/v3/ministere_interieur/rna/associations/77571979202650'
+
+- name: "[V3] Ministère de l'Intérieur documents associations"
+  http_path: '/v3/ministere_interieur/rna/associations/77571979202650/documents'
 
 - name: '[V3] OPQIBI Certifications Ingénierie'
-  http_path: '/v3/opqibi/certifications_ingenierie/309103877'
-
-- name: '[V3] MI Documents Associations'
-  http_path: '/v3/mi/associations/77571979202650/documents'
+  http_path: '/v3/opqibi/unites_legales/309103877/certification_ingenierie'
 
 - name: '[V3] ProBTP Attestations cotisations retraite'
-  http_path: '/v3/probtp/attestations_cotisations_retraite/43841606700017'
+  http_path: '/v3/probtp/etablissements/43841606700017/attestation_cotisations_retraite'
+
+- name: '[V3] ProBTP Conformité cotisations retraite'
+  http_path: '/v3/probtp/etablissements/43841606700017/conformite_cotisations_retraite'
 
 - name: '[V3] FNMS Conventions collectives'
-  http_path: '/v3/fabrique_numerique_ministeres_sociaux/conventions_collectives/82161143100015'
+  http_path: '/v3/fabrique_numerique_ministeres_sociaux/etablissements/82161143100015/conventions_collectives'
 
 - name: '[V3] RNM Entreprises'
-  http_path: '/v3/rnm/entreprises/301123626'
+  http_path: '/v3/cma_france/rnm/unites_legales/301123626'
 
 - name: '[V3] QUALIBAT Certifications batiment'
-  http_path: '/v3/qualibat/certifications_batiment/78824266700020'
-
+  http_path: '/v3/qualibat/etablissements/78824266700020/certification_batiment'
 STR
 
 def test_endpoint(endpoint, index)
@@ -244,7 +249,11 @@ ensure
 
   if ENV['DEBUG']
     print "Payload:\n"
-    print JSON.pretty_generate(JSON.parse(response.body))
+    begin
+      print JSON.pretty_generate(JSON.parse(response.body))
+    rescue JSON::ParserError
+      print "#{response.body}\n"
+    end
   end
 end
 

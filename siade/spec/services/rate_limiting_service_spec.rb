@@ -54,7 +54,7 @@ RSpec.describe RateLimitingService do
         end
 
         describe 'non-regression test: when the request path matches dgfip v3 attestations_fiscales' do
-          before { allow(req).to receive(:path).and_return('/v3/dgfip/liasses_fiscales/declarations/2017/301028346') }
+          before { allow(req).to receive(:path).and_return('/v3/dgfip/unites_legales/301028346/liasses_fiscales/2017') }
 
           it { is_expected.to eq(Digest::SHA256.hexdigest(token_value)) }
         end

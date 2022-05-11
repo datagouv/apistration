@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
-RSpec.describe 'DGDDI: EORI', type: %i[request swagger] do
-  path '/v3/dgddi/eoris/{siret_or_eori}' do
+RSpec.describe 'Douanes: Immatriculations EORI', type: %i[request swagger] do
+  path '/v3/douanes/etablissements/{siret_or_eori}/immatriculations_eori' do
     get SwaggerData.get('dgddi.eori.title') do
       tags(*SwaggerData.get('dgddi.eori.tags'))
 

@@ -23,7 +23,7 @@ class ExtractProviderFromPath
       'insee' => 'INSEE',
       'infogreffe' => 'Infogreffe',
       'dgfip' => 'DGFIP',
-      'acoss' => 'ACOSS',
+      'urssaf' => 'URSSAF',
       'inpi' => 'INPI',
       'qualibat' => 'Qualibat',
       'rna' => 'RNA',
@@ -35,12 +35,12 @@ class ExtractProviderFromPath
       'agefiph' => 'Agefiph',
       'fabrique_numerique_ministeres_sociaux' => 'Fabrique numérique des Ministères Sociaux',
       'cma' => 'CMA France',
-      'dgddi' => 'DGDDI',
+      'douanes' => 'Douanes',
       'bdf' => 'Banque de France',
       'bio' => 'Agence BIO',
       'ademe' => 'ADEME',
-      'mi' => 'MI',
-      'rnm' => 'RNM'
+      'ministere_interieur' => 'Ministère de l\'Intérieur',
+      'cma_france' => 'CMA France'
     }
   end
   # rubocop:enable Metrics/MethodLength

@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'MSA: Conformitescotisations', type: %i[request swagger] do
-  path '/v3/msa/conformites_cotisations/{siret}' do
+  path '/v3/msa/etablissements/{siret}/conformite_cotisations' do
     get SwaggerData.get('msa.conformites_cotisations.title') do
       tags(*SwaggerData.get('msa.conformites_cotisations.tags'))
 

@@ -65,50 +65,46 @@ Rails.application.routes.draw do
   end
 
   scope path: 'v:api_version', constraints: { api_version: /\d+/ } do
-    namespace :acoss do
-      get 'attestations_sociales/:siren' => '/api/v3_and_more/acoss/attestations_sociales#show'
-    end
+    get 'urssaf/unites_legales/:siren/attestation_vigilance', to: 'api/v3_and_more/acoss/attestations_sociales#show'
 
     namespace :ademe do
-      get 'certificats_rge/:siret' => '/api/v3_and_more/ademe/certificats_rge#show'
+      get 'etablissements/:siret/certification_rge' => '/api/v3_and_more/ademe/certificats_rge#show'
     end
 
     namespace :cnetp do
-      get 'attestations_cotisations_conges_payes_chomage_intemperies/:siren' => '/api/v3_and_more/cnetp/attestation_cotisations_conges_payes_chomage_intemperies#show'
+      get 'unites_legales/:siren/attestation_cotisations_conges_payes_chomage_intemperies' => '/api/v3_and_more/cnetp/attestation_cotisations_conges_payes_chomage_intemperies#show'
     end
 
-    namespace :dgddi do
-      get 'eoris/:siret_or_eori' => '/api/v3_and_more/dgddi/eori#show'
-    end
+    get 'douanes/etablissements/:siret_or_eori/immatriculations_eori', to: 'api/v3_and_more/dgddi/eori#show'
 
     namespace :dgfip do
-      get 'liasses_fiscales/declarations/:year/:siren' => '/api/v3_and_more/dgfip/liasses_fiscales/declarations#show'
-      get 'chiffres_affaires/:siret' => '/api/v3_and_more/dgfip/chiffres_affaires#show'
-      get 'attestations_fiscales/:siren' => '/api/v3_and_more/dgfip/attestations_fiscales#show'
+      get 'unites_legales/:siren/liasses_fiscales/:year' => '/api/v3_and_more/dgfip/liasses_fiscales/declarations#show'
+      get 'etablissements/:siret/chiffres_affaires' => '/api/v3_and_more/dgfip/chiffres_affaires#show'
+      get 'unites_legales/:siren/attestation_fiscale' => '/api/v3_and_more/dgfip/attestations_fiscales#show'
     end
 
     namespace :fabrique_numerique_ministeres_sociaux do
-      get 'conventions_collectives/:siret' => '/api/v3_and_more/fabrique_numerique_ministeres_sociaux/conventions_collectives#show'
+      get 'etablissements/:siret/conventions_collectives' => '/api/v3_and_more/fabrique_numerique_ministeres_sociaux/conventions_collectives#show'
     end
 
     namespace :fntp do
-      get 'cartes_professionnelle_travaux_publics/:siren' => '/api/v3_and_more/fntp/carte_professionnelle_travaux_publics#show'
+      get 'unites_legales/:siren/carte_professionnelle_travaux_publics' => '/api/v3_and_more/fntp/carte_professionnelle_travaux_publics#show'
     end
 
     namespace :inpi do
-      get 'actes/:siren' => '/api/v3_and_more/inpi/actes#show'
+      get 'unites_legales/:siren/actes' => '/api/v3_and_more/inpi/actes#show'
 
-      get 'brevets/:siren' => '/api/v3_and_more/inpi/latest_brevets#show'
-      get 'marques/:siren' => '/api/v3_and_more/inpi/latest_marques#show'
-      get 'modeles/:siren' => '/api/v3_and_more/inpi/latest_modeles#show'
+      get 'unites_legales/:siren/brevets' => '/api/v3_and_more/inpi/latest_brevets#show'
+      get 'unites_legales/:siren/marques' => '/api/v3_and_more/inpi/latest_marques#show'
+      get 'unites_legales/:siren/modeles' => '/api/v3_and_more/inpi/latest_modeles#show'
     end
 
     namespace :insee do
       get 'sirene/unites_legales/:siren' => '/api/v3_and_more/insee/unites_legales#show'
       get 'sirene/unites_legales/diffusibles/:siren' => '/api/v3_and_more/insee/unites_legales_diffusables#show'
 
-      get 'sirene/unites_legales/:siren/siege' => '/api/v3_and_more/insee/sieges_unites_legales#show'
-      get 'sirene/unites_legales/diffusibles/:siren/siege' => '/api/v3_and_more/insee/sieges_diffusables_unites_legales#show'
+      get 'sirene/unites_legales/:siren/siege_social' => '/api/v3_and_more/insee/sieges_unites_legales#show'
+      get 'sirene/unites_legales/diffusibles/:siren/siege_social' => '/api/v3_and_more/insee/sieges_diffusables_unites_legales#show'
 
       get 'sirene/etablissements/:siret' => '/api/v3_and_more/insee/etablissements#show'
       get 'sirene/etablissements/diffusibles/:siret' => '/api/v3_and_more/insee/etablissements_diffusables#show'
@@ -118,34 +114,30 @@ Rails.application.routes.draw do
     end
 
     namespace :infogreffe do
-      get 'mandataires_sociaux/:siren' => '/api/v3_and_more/infogreffe/mandataires_sociaux#show'
+      get 'unites_legales/:siren/mandataires_sociaux' => '/api/v3_and_more/infogreffe/mandataires_sociaux#show'
     end
 
-    namespace :mi do
-      get 'associations/:siret_or_rna' => '/api/v3_and_more/mi/associations#show'
-      get 'associations/:siret_or_rna/documents' => '/api/v3_and_more/mi/documents_associations#show'
-    end
+    get 'ministere_interieur/rna/associations/:siret_or_rna', to: 'api/v3_and_more/mi/associations#show'
+    get 'ministere_interieur/rna/associations/:siret_or_rna/documents', to: 'api/v3_and_more/mi/documents_associations#show'
 
     namespace :msa do
-      get 'conformites_cotisations/:siret' => '/api/v3_and_more/msa/conformites_cotisations#show'
+      get 'etablissements/:siret/conformite_cotisations' => '/api/v3_and_more/msa/conformites_cotisations#show'
     end
 
     namespace :opqibi do
-      get 'certifications_ingenierie/:siren' => '/api/v3_and_more/opqibi/certifications_ingenierie#show'
+      get 'unites_legales/:siren/certification_ingenierie' => '/api/v3_and_more/opqibi/certifications_ingenierie#show'
     end
 
     namespace :probtp do
-      get 'attestations_cotisations_retraite/:siret' => '/api/v3_and_more/probtp/attestations_cotisation_retraite#show'
-      get 'conformites_cotisations_retraite/:siret' => '/api/v3_and_more/probtp/conformites_cotisations_retraite#show'
+      get 'etablissements/:siret/attestation_cotisations_retraite' => '/api/v3_and_more/probtp/attestations_cotisation_retraite#show'
+      get 'etablissements/:siret/conformite_cotisations_retraite' => '/api/v3_and_more/probtp/conformites_cotisations_retraite#show'
     end
 
     namespace :qualibat do
-      get 'certifications_batiment/:siret' => '/api/v3_and_more/qualibat/certifications_batiment#show'
+      get 'etablissements/:siret/certification_batiment' => '/api/v3_and_more/qualibat/certifications_batiment#show'
     end
 
-    namespace :rnm do
-      get 'entreprises/:siren' => '/api/v3_and_more/rnm/entreprises_artisanales#show'
-    end
+    get 'cma_france/rnm/unites_legales/:siren', to: 'api/v3_and_more/rnm/entreprises_artisanales#show'
   end
 
   mount Rswag::Ui::Engine   => '/v3/developers'
