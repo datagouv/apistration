@@ -36,6 +36,8 @@ module ResourceHelpers
   end
 
   def normalized_date(date)
+    return unless date
+
     date.to_time.strftime('%Y-%m-%d')
   end
 end
