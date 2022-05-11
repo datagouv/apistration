@@ -154,7 +154,7 @@ RSpec.describe Rack::Attack, type: :request do
 
           let(:endpoints) do
             [{
-              controller: 'api/v2/entreprises_legacy',
+              controller: 'api/v2/entreprises_restored',
               action: 'show',
               siren: '123'
             }]

@@ -1,9 +1,0 @@
-class API::V2::EntreprisesLegacyController < API::V2::BaseController
-  include INSEEDeprecation
-
-  def show
-    authorize :entreprises
-
-    render deprecation_error(:entreprise)
-  end
-end

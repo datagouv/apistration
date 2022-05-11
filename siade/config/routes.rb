@@ -2,18 +2,9 @@ Rails.application.routes.draw do
   namespace :v2 do
     get 'uptime' => '/api/v2/uptime#show'
 
-    # COVID
     get 'effectifs_annuels_acoss_covid/:siren'                              => '/api/v2/effectifs_annuels_entreprise_acoss_covid#show'
     get 'effectifs_mensuels_acoss_covid/:annee/:mois/etablissement/:siret'  => '/api/v2/effectifs_mensuels_etablissement_acoss_covid#show'
     get 'effectifs_mensuels_acoss_covid/:annee/:mois/entreprise/:siren'     => '/api/v2/effectifs_mensuels_entreprise_acoss_covid#show'
-
-    # LEGACY from v1
-    get 'entreprises_legacy/:siren' => '/api/v2/entreprises_legacy#show'
-    get 'etablissements_legacy/:siret' => '/api/v2/etablissements_legacy#show'
-    # LEGACY from v1
-
-    get 'etablissements/:siret/predecesseur'                => '/api/v2/etablissements/predecesseur#show'
-    get 'etablissements/:siret/successeur'                  => '/api/v2/etablissements/successeur#show'
 
     get 'exercices/:siret'                                  => '/api/v2/exercices#show'
 

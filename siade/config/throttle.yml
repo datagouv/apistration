@@ -27,8 +27,6 @@ shared:
     period: 60
   json_resources:
     endpoints:
-      - { controller: 'api/v2/entreprises_legacy', action: 'show' }
-      - { controller: 'api/v2/etablissements_legacy', action: 'show' }
       - { controller: 'api/v2/etablissements_restored', action: 'show' }
       - { controller: 'api/v2/exercices', action: 'show' }
       - { controller: 'api/v2/cotisations_msa', action: 'show' }
@@ -45,8 +43,6 @@ shared:
       - { controller: 'api/v2/bilans_entreprises_bdf', action: 'show' }
       - { controller: 'api/v2/entreprises_restored', action: 'show' }
       - { controller: 'api/v2/eori_douanes', action: 'show' }
-      - { controller: 'api/v2/etablissements/predecesseur', action: 'show' }
-      - { controller: 'api/v2/etablissements/successeur', action: 'show' }
 
       - { controller: 'api/v3_and_more/ademe/certificats_rge', action: 'show' }
       - { controller: 'api/v3_and_more/rnm/entreprises_artisanales', action: 'show' }
