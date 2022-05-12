@@ -26,16 +26,16 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
   def resource_attributes(dirigeant)
     if personne_physique?(dirigeant)
       @personnes_physiques_count += 1
-      personne_physique_payload(dirigeant)
+      mandataire_personne_physique(dirigeant)
     else
       @personnes_morales_count += 1
-      personne_morale_payload(dirigeant)
+      mandataire_personne_morale(dirigeant)
     end
   end
 
   private
 
-  def personne_physique_payload(dirigeant)
+  def mandataire_personne_physique(dirigeant)
     {
       type: 'personne_physique',
       nom: nom(dirigeant),
@@ -51,7 +51,7 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
     }
   end
 
-  def personne_morale_payload(dirigeant)
+  def mandataire_personne_morale(dirigeant)
     {
       type: 'personne_morale',
       numero_identification: identifiant(dirigeant),
