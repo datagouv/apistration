@@ -18,6 +18,13 @@ class CNETP::AttestationCotisationsCongesPayesChomageIntemperies::MakeRequest < 
     super(request)
   end
 
+  def http_options
+    {
+      use_ssl: true,
+      verify_mode: OpenSSL::SSL::VERIFY_NONE
+    }
+  end
+
   private
 
   def cnetp_domain
