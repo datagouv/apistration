@@ -18,7 +18,7 @@ RSpec.describe 'Infogreffe: Extraitsrcs', type: %i[request swagger] do
       end
 
       describe 'with valid token and mandatory params', valid: true do
-        response '200', 'Entreprise trouvée (personne morale)', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren' } do
+        response '200', 'Entreprise trouvée (personne morale)', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren_personne_morale' } do
           description SwaggerData.get('infogreffe.extraits_rcs.description')
 
           rate_limit_headers

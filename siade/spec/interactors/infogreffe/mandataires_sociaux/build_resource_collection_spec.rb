@@ -1,5 +1,5 @@
 RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :build_resource do
-  describe '.call', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren' } do
+  describe '.call', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_morale' } do
     subject(:call) { described_class.call(response:) }
 
     let(:valid_pp) do

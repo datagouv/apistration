@@ -18,7 +18,7 @@ RSpec.describe 'Infogreffe: Mandataires sociaux', type: %i[request swagger] do
       end
 
       describe 'with valid token and mandatory params', valid: true do
-        response '200', 'Entité trouvée', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren' } do
+        response '200', 'Entité trouvée', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren_personne_morale' } do
           description SwaggerData.get('infogreffe.mandataires_sociaux.description')
 
           schema build_rswag_response_collection(

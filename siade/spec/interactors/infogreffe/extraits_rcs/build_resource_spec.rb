@@ -17,7 +17,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
     }
   end
 
-  describe '.call personne morale', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren' } do
+  describe '.call personne morale', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren_personne_morale' } do
     let(:siren) { valid_siren(:extrait_rcs) }
 
     it { is_expected.to be_a_success }
