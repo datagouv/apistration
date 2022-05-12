@@ -15,11 +15,11 @@ module Infogreffe::ExtraitsRCS::BuildResource::AdresseHelpers
   end
 
   def extract_from_adresse(reference_adresse, target)
-    adresse_raw_from_reference(reference_adresse).select { |info| info.name == target }.first&.text
+    adresse_raw_from_reference(reference_adresse)&.select { |info| info.name == target }&.first&.text
   end
 
   def adresse_raw_from_reference(reference)
-    infos.css('adresse').select { |adresse| adresse&.attr('id') == reference }.first.children
+    infos.css('adresse').select { |adresse| adresse&.attr('id') == reference }.first&.children
   end
 
   def reference_adresse_siege

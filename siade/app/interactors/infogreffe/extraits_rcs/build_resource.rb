@@ -1,6 +1,6 @@
 class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
-  include Infogreffe::Concerns::MandatairesSociaux
   include Infogreffe::ExtraitsRCS::BuildResource::AdresseHelpers
+  include Infogreffe::ExtraitsRCS::BuildResource::MandatairesHelpers
 
   protected
 
@@ -11,17 +11,13 @@ class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
       date_immatriculation: dossier['dateISO_immat'],
       mandataires_sociaux:,
       observations:,
-      denomination: infos.css('pm denomination').text,
       nom_commercial:,
-      forme_juridique: infos.css('pm').attr('forme_juridique').to_s,
-      code_forme_juridique: infos.css('pm').attr('codeFormeJuridique').to_s,
       adresse_siege: build_adresse(reference_adresse_siege),
       etablissement_principal:,
-      date_cloture_exercice_comptable: dossier.css('pm date_cloture').attr('dateISO').to_s,
-      date_fin_de_vie: infos.css('pm duree_ste valeur_duree').attr('dateISO').to_s,
       capital:,
-      greffe: dossier.css('entreprise greffe').text,
-      code_greffe: dossier.css('entreprise greffe').attr('code').to_s
+      greffe:,
+      personne_morale:,
+      personne_physique:
     }
   end
 
@@ -29,39 +25,6 @@ class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
 
   def infos
     @infos ||= Nokogiri.XML(body)
-  end
-
-  def mandataires_sociaux
-    mandataires_sociaux_raw.map do |dirigeant|
-      if personne_physique?(dirigeant)
-        personne_physique_payload(dirigeant)
-      else
-        personne_morale_payload(dirigeant)
-      end
-    end
-  end
-
-  def mandataires_sociaux_raw
-    extract_mandataires_sociaux(infos)
-  end
-
-  def personne_physique_payload(dirigeant)
-    {
-      type: 'personne_physique',
-      nom: nom(dirigeant),
-      prenom: prenom(dirigeant),
-      fonction: fonction(dirigeant),
-      date_naissance: date_naissance_no_day(dirigeant)
-    }
-  end
-
-  def personne_morale_payload(dirigeant)
-    {
-      type: 'personne_morale',
-      numero_identification: identifiant(dirigeant),
-      fonction: fonction(dirigeant),
-      raison_sociale: raison_sociale(dirigeant)
-    }
   end
 
   def etablissements_raw
@@ -118,5 +81,59 @@ class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
 
   def cast_montant_as_float(montant)
     montant.delete(' ').split(',').join('.').to_f
+  end
+
+  def greffe
+    {
+      valeur: dossier.css('entreprise greffe').text,
+      code: dossier.css('entreprise greffe').attr('code').to_s
+    }
+  end
+
+  def personne_morale
+    {
+      forme_juridique: forme_juridique_personne_morale,
+      denomination: dossier.css('entreprise pm denomination').text,
+      date_cloture_exercice_comptable: dossier.css('entreprise pm date_cloture').attr('dateISO').to_s,
+      date_fin_de_vie: dossier.css('entreprise pm duree_ste valeur_duree').attr('dateISO').to_s
+    }
+  end
+
+  def forme_juridique_personne_morale
+    {
+      valeur: dossier.css('entreprise pm').attr('forme_juridique').to_s,
+      code: dossier.css('entreprise pm').attr('codeFormeJuridique').to_s
+    }
+  end
+
+  def personne_physique
+    {
+      nationalite: nationalite_personne_physique,
+      nom: dossier.css('entreprise pp nom').text,
+      prenom: dossier.css('entreprise pp prenom').text,
+      naissance: naissance_personne_physique
+    }
+  end
+
+  def nationalite_personne_physique
+    {
+      valeur: dossier.css('entreprise pp').attr('nationalite').to_s,
+      code: dossier.css('entreprise pp').attr('codeNationalite').to_s
+    }
+  end
+
+  def naissance_personne_physique
+    {
+      pays: pays_naissance_personne_physique,
+      date: dossier.css('entreprise pp naissance date').attr('dateISO').to_s,
+      lieu: dossier.css('entreprise pp naissance lieu').text
+    }
+  end
+
+  def pays_naissance_personne_physique
+    {
+      valeur: dossier.css('entreprise pp naissance').attr('pays').to_s,
+      code: dossier.css('entreprise pp naissance').attr('codePays').to_s
+    }
   end
 end

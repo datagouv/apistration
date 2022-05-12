@@ -1,22 +1,24 @@
 RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
+  subject { instance }
+
   let(:instance) { described_class.call(params:, response:) }
 
-  describe '.call', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren' } do
-    subject { instance }
+  let(:response) do
+    instance_double(Net::HTTPOK, body:)
+  end
 
-    let(:response) do
-      instance_double(Net::HTTPOK, body:)
-    end
+  let(:body) do
+    Infogreffe::MakeRequest.call(params:).response.body
+  end
 
-    let(:body) do
-      Infogreffe::MakeRequest.call(params:).response.body
-    end
+  let(:params) do
+    {
+      siren:
+    }
+  end
 
-    let(:params) do
-      {
-        siren: valid_siren(:extrait_rcs)
-      }
-    end
+  describe '.call personne morale', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren' } do
+    let(:siren) { valid_siren(:extrait_rcs) }
 
     it { is_expected.to be_a_success }
 
@@ -26,14 +28,16 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       its(:siren) { is_expected.to eq('418166096') }
       its(:date_immatriculation) { is_expected.to eq('1998-03-27') }
       its(:date_extrait) { is_expected.to eq('30 MAI 2017') }
-      its(:denomination) { is_expected.to eq('OCTO-TECHNOLOGYMAZARS - SOCIETE ANONYMEBCRH & ASSOCIES - SOCIETE A RESPONSABILITE LIMITEE') }
       its(:nom_commercial) { is_expected.to eq('OCTO-TECHNOLOGY') }
-      its(:forme_juridique) { is_expected.to eq('SOCIETE ANONYME') }
-      its(:code_forme_juridique) { is_expected.to eq('SAh') }
-      its(:greffe) { is_expected.to eq('PARIS') }
-      its(:code_greffe) { is_expected.to eq('7501') }
-      its(:date_cloture_exercice_comptable) { is_expected.to eq('12-31') }
-      its(:date_fin_de_vie) { is_expected.to eq('2097-03-26') }
+
+      its(:greffe) { is_expected.to be_an_instance_of(Hash) }
+
+      describe 'greffe' do
+        subject(:greffe) { instance.resource.greffe }
+
+        it { expect(greffe[:valeur]).to eq('PARIS') }
+        it { expect(greffe[:code]).to eq('7501') }
+      end
 
       its(:adresse_siege) { is_expected.to be_an_instance_of(Hash) }
 
@@ -103,6 +107,116 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
         it { expect(mandataire_social[:numero_identification]).to eq('784824153') }
         it { expect(mandataire_social[:fonction]).to eq('COMMISSAIRE AUX COMPTES TITULAIRE') }
         it { expect(mandataire_social[:raison_sociale]).to eq('MAZARS - SOCIETE ANONYME') }
+      end
+    end
+
+    describe 'personne morale' do
+      subject(:personne_morale) { instance.resource.personne_morale }
+
+      it { expect(personne_morale[:denomination]).to eq('OCTO-TECHNOLOGY') }
+      it { expect(personne_morale[:date_fin_de_vie]).to eq('2097-03-26') }
+      it { expect(personne_morale[:date_cloture_exercice_comptable]).to eq('12-31') }
+
+      it { expect(personne_morale[:forme_juridique]).to be_an_instance_of(Hash) }
+
+      describe 'forme_juridique' do
+        subject(:forme_juridique) { instance.resource.personne_morale[:forme_juridique] }
+
+        it { expect(forme_juridique[:valeur]).to eq('SOCIETE ANONYME') }
+        it { expect(forme_juridique[:code]).to eq('SAh') }
+      end
+    end
+
+    describe 'personne_physique' do
+      subject(:personne_physique) { instance.resource.personne_physique }
+
+      it { expect(personne_physique[:nom]).to be_empty }
+      it { expect(personne_physique[:prenom]).to be_empty }
+
+      it { expect(personne_physique[:nationalite]).to be_an_instance_of(Hash) }
+
+      describe 'nationalite' do
+        subject(:nationalite) { instance.resource.personne_physique[:nationalite] }
+
+        it { expect(nationalite[:valeur]).to be_empty }
+        it { expect(nationalite[:code]).to be_empty }
+      end
+
+      it { expect(personne_physique[:naissance]).to be_an_instance_of(Hash) }
+
+      describe 'naissance' do
+        subject(:naissance) { instance.resource.personne_physique[:naissance] }
+
+        it { expect(naissance[:date]).to be_empty }
+        it { expect(naissance[:lieu]).to be_empty }
+
+        it { expect(naissance[:pays]).to be_an_instance_of(Hash) }
+
+        describe 'pays' do
+          subject(:naissance) { instance.resource.personne_physique[:naissance][:pays] }
+
+          it { expect(naissance[:valeur]).to be_empty }
+          it { expect(naissance[:code]).to be_empty }
+        end
+      end
+    end
+  end
+
+  describe '.call personne physique', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren_personne_physique' } do
+    let(:siren) { valid_siren(:extrait_rcs_personne_physique) }
+
+    it { is_expected.to be_a_success }
+
+    describe 'resource' do
+      describe 'personne morale' do
+        subject(:personne_morale) { instance.resource.personne_morale }
+
+        it { expect(personne_morale[:denomination]).to be_empty }
+        it { expect(personne_morale[:date_fin_de_vie]).to be_empty }
+        it { expect(personne_morale[:date_cloture_exercice_comptable]).to be_empty }
+
+        it { expect(personne_morale[:forme_juridique]).to be_an_instance_of(Hash) }
+
+        describe 'forme_juridique' do
+          subject(:forme_juridique) { instance.resource.personne_morale[:forme_juridique] }
+
+          it { expect(forme_juridique[:valeur]).to be_empty }
+          it { expect(forme_juridique[:code]).to be_empty }
+        end
+      end
+
+      describe 'personne_physique' do
+        subject(:personne_physique) { instance.resource.personne_physique }
+
+        it { expect(personne_physique[:nom]).to eq('SPLOUSHY') }
+        it { expect(personne_physique[:prenom]).to eq('FANCY MCFACE') }
+
+        it { expect(personne_physique[:nationalite]).to be_an_instance_of(Hash) }
+
+        describe 'nationalite' do
+          subject(:nationalite) { instance.resource.personne_physique[:nationalite] }
+
+          it { expect(nationalite[:valeur]).to eq('FRANCAISE') }
+          it { expect(nationalite[:code]).to eq('FR') }
+        end
+
+        it { expect(personne_physique[:naissance]).to be_an_instance_of(Hash) }
+
+        describe 'naissance' do
+          subject(:naissance) { instance.resource.personne_physique[:naissance] }
+
+          it { expect(naissance[:date]).to eq('1971-02-26') }
+          it { expect(naissance[:lieu]).to eq('UNEVILLE') }
+
+          it { expect(naissance[:pays]).to be_an_instance_of(Hash) }
+
+          describe 'pays' do
+            subject(:naissance) { instance.resource.personne_physique[:naissance][:pays] }
+
+            it { expect(naissance[:valeur]).to eq('FRANCE') }
+            it { expect(naissance[:code]).to eq('FR') }
+          end
+        end
       end
     end
   end
