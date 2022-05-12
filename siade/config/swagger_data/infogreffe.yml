@@ -222,25 +222,10 @@ infogreffe:
               type: 'string'
               title: "Date de l'observation"
               example: "2000-01-01"
-      denomination:
-        type: 'string'
-        title: "Dénomination de l'entreprise"
-        example: '2X INVEST'
       nom_commercial:
         type: 'string'
         title: "Nom commercial"
         example: "DECATHLON"
-        nullable: true
-      forme_juridique:
-        type: 'string'
-        title: "Forme juridique"
-        example: "SOCIETE PAR ACTIONS SIMPLIFIEES"
-        nullable: true
-      code_forme_juridique:
-        type: 'string'
-        title: "Code forme juridique"
-        description: "Code représentant la forme juridique de l'entreprise. Attention, la nomenclature est différente de celle de l'INSEE."
-        example: "SASh"
         nullable: true
       adresse_siege: &infogreffe_adresse
         type: 'object'
@@ -312,16 +297,6 @@ infogreffe:
             title: "Code APE"
             description: "Code APE représentant l'activité de l'entreprise"
             example: "6420Z"
-      date_cloture_exercice_comptable:
-        type: 'string'
-        title: "Date de cloture de l'exercice comptable"
-        description: "Date (mois et jour) dans l'année où l'exercice comptable de l'entreprise est clôturé"
-        example: "02-24"
-      date_fin_de_vie:
-        type: 'string'
-        title: "Date de fin de vie de l'entreprise"
-        description: "Date à laquelle l'entreprise cesse d'exister, sauf potentiel renouvellement. Correspond souvent à la date de création + 100 ans."
-        example: "2075-05-18"
       capital:
         type: "object"
         title: "Capital de l'entreprise"
@@ -345,12 +320,123 @@ infogreffe:
             example: "EUR"
             nullable: true
       greffe:
-        type: "string"
+        type: "object"
         title: "Greffe"
-        description: "Nom du greffe en charge de l'entreprise"
-        example: "COLMAR"
-      code_greffe:
-        type: "string"
-        title: "Code greffe"
-        description: "Code du greffe en charge de l'entreprise"
-        example: "6851"
+        description: "Informations sur le greffe"
+        properties:
+          valeur:
+            type: "string"
+            title: "Greffe"
+            description: "Nom du greffe en charge de l'entreprise"
+            example: "COLMAR"
+          code:
+            type: "string"
+            title: "Code greffe"
+            description: "Code du greffe en charge de l'entreprise"
+            example: "6851"
+      personne_physique:
+        type: "object"
+        title: "Personne physique"
+        description: "Informations sur l'entreprise dans le cas où l'entreprise est une personne physique. Les champs sont vides si l'entreprise est une personne morale."
+        properties:
+          nationalite:
+            type: "object"
+            title: "Nationalité"
+            description: "Nationalité de la personne physique"
+            properties:
+              valeur:
+                type: "string"
+                title: "Nationalité (valeur)"
+                description: "Nationalité de la personne physique"
+                example: "FRANÇAISE"
+                nullable: true
+              code:
+                type: "string"
+                title: "Code Pays"
+                description: "Code pays de la nationalité de la personne physique"
+                example: "FR"
+                nullable: true
+          nom:
+            type: "string"
+            title: "Nom"
+            description: "Nom de la personne physique"
+            example: "MARTIN"
+            nullable: true
+          prenom:
+            type: "string"
+            title: "Prénom"
+            description: "Prénom de la personne physique"
+            example: "JEAN-MARIE"
+            nullable: true
+          naissance:
+            type: "object"
+            title: "Naissance"
+            description: "Informations de naissance de la personne physique (lieu, date, pays)"
+            properties:
+              pays:
+                type: "object"
+                title: "Pays de naissance"
+                description: "Pays de naissance de la personne physique"
+                properties:
+                  valeur:
+                    type: "string"
+                    title: "Pays de naissance (valeur)"
+                    description: "Pays de naissance de la personne physique"
+                    example: "FRANCE"
+                    nullable: true
+                  code:
+                    type: "string"
+                    title: "Code Pays de naissance"
+                    description: "Code du pays de naissance de la personne physique"
+                    example: "FR"
+                    nullable: true
+              date:
+                type: "string"
+                title: "Date de naissance"
+                description: "Date de naissance de la personne physique"
+                example: "1972-01-30"
+                nullable: true
+              lieu:
+                type: "string"
+                title: "Lieu de naissance"
+                description: "Lieu de naissance de la personne physique"
+                example: "MONTPELLIER"
+                nullable: true
+      personne_morale:
+        type: "object"
+        title: "Personne morale"
+        description: "Informations sur l'entreprise dans le cas où l'entreprise est une personne morale. Les champs sont vides si l'entreprise est une personne physique."
+        properties:
+          forme_juridique:
+            type: "object"
+            title: "Forme juridique"
+            description: "Forme juridique de la personne morale"
+            properties:
+              valeur:
+                type: 'string'
+                title: "Forme juridique (valeur)"
+                example: "SOCIETE PAR ACTIONS SIMPLIFIEES"
+                nullable: true
+              code:
+                type: 'string'
+                title: "Code forme juridique"
+                description: "Code représentant la forme juridique de l'entreprise. Attention, la nomenclature est différente de celle de l'INSEE."
+                example: "SASh"
+                nullable: true
+          denomination:
+            type: 'string'
+            title: "Dénomination de la personne morale"
+            example: '2X INVEST'
+            nullable: true
+          date_cloture_exercice_comptable:
+            type: 'string'
+            title: "Date de cloture de l'exercice comptable"
+            description: "Date (mois et jour) dans l'année où l'exercice comptable de l'entreprise est clôturé"
+            example: "02-24"
+            nullable: true
+          date_fin_de_vie:
+            type: 'string'
+            title: "Date de fin de vie de l'entreprise"
+            description: "Date à laquelle l'entreprise cesse d'exister, sauf potentiel renouvellement. Correspond souvent à la date de création + 100 ans."
+            example: "2075-05-18"
+            nullable: true
