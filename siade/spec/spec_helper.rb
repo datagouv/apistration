@@ -125,14 +125,6 @@ RSpec.configure do |config|
   config.include ProviderStubs::MSACotisations
   config.include ProviderStubs::DGFIP
 
-  if ENV['MOCK_CALL_SYSTEM_FOR_MEMORY_ERROR']
-    config.include MockCallSystemForCi
-
-    config.before do
-      make_qpdf_call_safe_on_memory_error!
-    end
-  end
-
   config.include ActivateStrictVcrRequestMatchingForV3
   config.extend ActivateStrictVcrRequestMatchingForV3
 

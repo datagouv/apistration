@@ -1,9 +1,7 @@
-require 'open3'
+require 'hexapdf'
 
 class Documents::DecryptPDF < ApplicationInteractor
   def call
-    raise('qpdf dependency not installed') if qpdf_path.empty?
-
     decrypt_file!
 
     clean_temporary_encrypted_file!
@@ -14,10 +12,6 @@ class Documents::DecryptPDF < ApplicationInteractor
   end
 
   private
-
-  def qpdf_path
-    @qpdf_path ||= `which qpdf`.chop
-  end
 
   def encrypted_file
     @encrypted_file ||= begin
@@ -51,53 +45,12 @@ class Documents::DecryptPDF < ApplicationInteractor
   end
 
   def decrypt_file!
-    Open3.popen3(command) do |_stdin, _stdout, stderr, thread|
-      stderr_string = stderr.read.chomp
-
-      if qpdf_failed?(thread.value) && !provider_error?(stderr_string)
-        track_qpdf_error(
-          thread.value.exitstatus,
-          stderr_string
-        )
-      end
-    end
-  end
-
-  def command
-    [
-      qpdf_path,
-      '--decrypt',
-      encrypted_file.path,
-      decrypted_file.path
-    ].join(' ')
-  end
-
-  def qpdf_failed?(process_status)
-    [
-      0,
-      3
-    ].exclude?(
-      process_status.exitstatus
-    )
-  end
-
-  def track_qpdf_error(exit_status, stderr_message)
-    MonitoringService.instance.track(
-      'error',
-      "PDF Decrypt fail to execute '#{command}'",
-      {
-        exit_status:,
-        stderr: stderr_message
-      }
-    )
-  end
-
-  def provider_error?(stderr)
-    [
-      'unable to find trailer dictionary while recovering damaged file'
-    ].any? do |error_message|
-      stderr.include?(error_message)
-    end
+    doc = HexaPDF::Document.open(encrypted_file)
+    doc.encrypt(name: nil)
+    doc.write(decrypted_file)
+  rescue HexaPDF::MalformedPDFError
+    encrypted_file.rewind
+    decrypted_file.write(encrypted_file.read)
   end
 
   def raw_pdf

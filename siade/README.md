@@ -5,13 +5,7 @@
 Il est nécessaire d'avoir Redis d'installé pour l'environnement de dévelopment
 (pas nécessaire pour les tests)
 
-Le package _QPDF_ doit par ailleurs être installé. Exemple sur Ubuntu :
-
-```sh
-sudo apt-get install qpdf
-```
-
-De même pour `libmagic-dev`:
+Le package `libmagic-dev` doit par ailleurs être installé. Exemple sur Ubuntu :
 
 ```sh
 sudo apt-get install libmagic-dev

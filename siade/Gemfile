@@ -33,6 +33,7 @@ gem 'utf8-cleaner'
 gem 'rack-attack'
 gem 'marcel'
 gem 'rexml'
+gem 'hexapdf'
 
 gem 'fog-openstack', '1.0.11'
 

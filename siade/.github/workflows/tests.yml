@@ -29,8 +29,8 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
 
-      - name: Install qpdf (PDF manipulation)
-        run: sudo apt-get install qpdf libmagic-dev
+      - name: Install libmagic-dev
+        run: sudo apt-get install libmagic-dev
 
       - name: Cache Gems
         uses: actions/cache@v1
@@ -65,4 +65,3 @@ jobs:
 
             exit 0
           fi
-
