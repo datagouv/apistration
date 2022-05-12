@@ -42,7 +42,7 @@ class API::V3AndMore::Infogreffe::MandatairesSociauxController < API::V3AndMore:
   end
 
   def dynamic_serializer_module(resource_type)
-    ::Infogreffe.const_get("#{resource_type}_serializer".classify)
+    ::Infogreffe::MandatairesSociaux.const_get("#{resource_type}_serializer".classify)
   end
 
   def supported_version?

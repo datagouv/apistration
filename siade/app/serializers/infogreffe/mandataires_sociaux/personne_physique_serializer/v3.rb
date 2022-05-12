@@ -1,4 +1,4 @@
-class Infogreffe::PersonnePhysiqueSerializer::V3 < V3AndMore::BaseSerializer
+class Infogreffe::MandatairesSociaux::PersonnePhysiqueSerializer::V3 < V3AndMore::BaseSerializer
   attributes :fonction,
     :nom,
     :type,

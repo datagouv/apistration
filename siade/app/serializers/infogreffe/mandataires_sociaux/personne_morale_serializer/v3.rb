@@ -1,4 +1,4 @@
-class Infogreffe::PersonneMoraleSerializer::V3 < V3AndMore::BaseSerializer
+class Infogreffe::MandatairesSociaux::PersonneMoraleSerializer::V3 < V3AndMore::BaseSerializer
   attributes :numero_identification,
     :type,
     :fonction,
