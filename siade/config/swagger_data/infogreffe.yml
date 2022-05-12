@@ -339,6 +339,7 @@ infogreffe:
         title: "Personne physique"
         description: "Informations sur l'entreprise dans le cas où l'entreprise est une personne physique. Les champs sont vides si l'entreprise est une personne morale."
         properties:
+          adresse: *infogreffe_adresse
           nationalite:
             type: "object"
             title: "Nationalité"

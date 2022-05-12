@@ -108,6 +108,7 @@ class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
 
   def personne_physique
     {
+      adresse: build_adresse(reference_adresse_personne_physique),
       nationalite: nationalite_personne_physique,
       nom: dossier.css('entreprise pp nom').text,
       prenom: dossier.css('entreprise pp prenom').text,

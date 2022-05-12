@@ -50,7 +50,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
         it { expect(adresse_siege[:voie]).to eq('') }
         it { expect(adresse_siege[:ligne_1]).to eq('34 AVENUE DE L\'OPERA') }
         it { expect(adresse_siege[:ligne_2]).to eq('75002 PARIS (FRANCE) ') }
-        it { expect(adresse_siege[:localite]).to be_nil }
+        it { expect(adresse_siege[:localite]).to eq('') }
         it { expect(adresse_siege[:code_postal]).to eq('75002') }
         it { expect(adresse_siege[:bureau_distributeur]).to eq('PARIS') }
         it { expect(adresse_siege[:pays]).to eq('FRANCE') }
@@ -133,6 +133,23 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       it { expect(personne_physique[:nom]).to be_empty }
       it { expect(personne_physique[:prenom]).to be_empty }
 
+      it { expect(personne_physique[:adresse]).to be_an_instance_of(Hash) }
+
+      describe 'adresse' do
+        subject(:adresse) { instance.resource.personne_physique[:adresse] }
+
+        it { expect(adresse[:nom_postal]).to be_empty }
+        it { expect(adresse[:numero]).to be_empty }
+        it { expect(adresse[:type]).to be_empty }
+        it { expect(adresse[:voie]).to be_empty }
+        it { expect(adresse[:ligne_1]).to be_empty }
+        it { expect(adresse[:ligne_2]).to be_empty }
+        it { expect(adresse[:localite]).to be_empty }
+        it { expect(adresse[:code_postal]).to be_empty }
+        it { expect(adresse[:bureau_distributeur]).to be_empty }
+        it { expect(adresse[:pays]).to be_empty }
+      end
+
       it { expect(personne_physique[:nationalite]).to be_an_instance_of(Hash) }
 
       describe 'nationalite' do
@@ -190,6 +207,23 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
 
         it { expect(personne_physique[:nom]).to eq('SPLOUSHY') }
         it { expect(personne_physique[:prenom]).to eq('FANCY MCFACE') }
+
+        it { expect(personne_physique[:adresse]).to be_an_instance_of(Hash) }
+
+        describe 'adresse' do
+          subject(:adresse) { instance.resource.personne_physique[:adresse] }
+
+          it { expect(adresse[:nom_postal]).to eq('') }
+          it { expect(adresse[:numero]).to eq('') }
+          it { expect(adresse[:type]).to eq('') }
+          it { expect(adresse[:voie]).to eq('UN ENDROIT ') }
+          it { expect(adresse[:ligne_1]).to eq('') }
+          it { expect(adresse[:ligne_2]).to eq('UN ENDROIT ') }
+          it { expect(adresse[:localite]).to eq('') }
+          it { expect(adresse[:code_postal]).to eq('40440') }
+          it { expect(adresse[:bureau_distributeur]).to eq('UNBUREAU') }
+          it { expect(adresse[:pays]).to eq('') }
+        end
 
         it { expect(personne_physique[:nationalite]).to be_an_instance_of(Hash) }
 

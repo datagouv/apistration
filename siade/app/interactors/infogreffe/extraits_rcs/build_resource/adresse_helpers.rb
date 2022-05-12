@@ -15,7 +15,7 @@ module Infogreffe::ExtraitsRCS::BuildResource::AdresseHelpers
   end
 
   def extract_from_adresse(reference_adresse, target)
-    adresse_raw_from_reference(reference_adresse)&.select { |info| info.name == target }&.first&.text
+    adresse_raw_from_reference(reference_adresse)&.select { |info| info.name == target }&.first&.text || ''
   end
 
   def adresse_raw_from_reference(reference)
@@ -28,5 +28,9 @@ module Infogreffe::ExtraitsRCS::BuildResource::AdresseHelpers
 
   def reference_adresse_etablissement_principal
     etablissement_principal_raw.attr('adresse').to_s
+  end
+
+  def reference_adresse_personne_physique
+    dossier.css('entreprise pp').attr('adresse').to_s
   end
 end

@@ -3683,7 +3683,7 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/fntp/unites_legales/130025265/carte_professionnelle_travaux_publics?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/infogreffe/extraits_rcs/{siren}":
+  "/v3/infogreffe/unites_legales/{siren}/extrait_rcs":
     get:
       summary: Extrait RCS
       tags:
@@ -4162,6 +4162,61 @@ paths:
                           l'entreprise est une personne physique. Les champs sont
                           vides si l'entreprise est une personne morale.
                         properties:
+                          adresse:
+                            type: object
+                            title: Adresse de l'établissement siège
+                            properties:
+                              nom_postal:
+                                type: string
+                                title: Nom postal
+                                nullable: true
+                              numero:
+                                type: string
+                                title: Numéro rue
+                                nullable: true
+                              type:
+                                type: string
+                                title: Type
+                                nullable: true
+                              voie:
+                                type: string
+                                title: Nom de la voie
+                                nullable: true
+                              ligne_1:
+                                type: string
+                                title: Ligne 1 adresse
+                                nullable: true
+                              ligne_2:
+                                type: string
+                                title: Ligne 2 adresse
+                                nullable: true
+                              localite:
+                                type: string
+                                title: Localité
+                                nullable: true
+                              code_postal:
+                                type: string
+                                title: Code postal
+                                nullable: true
+                              bureau_distributeur:
+                                type: string
+                                title: Bureau distributeur
+                                nullable: true
+                              pays:
+                                type: string
+                                title: Pays
+                                nullable: true
+                            required:
+                            - nom_postal
+                            - numero
+                            - type
+                            - voie
+                            - ligne_1
+                            - ligne_2
+                            - localite
+                            - code_postal
+                            - bureau_distributeur
+                            - pays
                           nationalite:
                             type: object
                             title: Nationalité
@@ -4240,6 +4295,7 @@ paths:
                             - date
                             - lieu
                         required:
+                        - adresse
                         - nationalite
                         - nom
                         - prenom
@@ -4450,7 +4506,7 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/infogreffe/extraits_rcs/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+            --url "https://entreprise.api.gouv.fr/v3/infogreffe/unites_legales/130025265/extrait_rcs?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/infogreffe/unites_legales/{siren}/mandataires_sociaux":
     get:
       summary: Mandataires sociaux
