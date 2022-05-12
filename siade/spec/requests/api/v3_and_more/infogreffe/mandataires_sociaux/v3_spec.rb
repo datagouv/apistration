@@ -18,7 +18,7 @@ RSpec.describe 'Infogreffe: Mandataires sociaux', type: %i[request swagger] do
       end
 
       describe 'with valid token and mandatory params', valid: true do
-        response '200', 'Entité trouvée', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren_personne_morale' } do
+        response '200', 'Entité trouvée', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_morale' } do
           description SwaggerData.get('infogreffe.mandataires_sociaux.description')
 
           schema build_rswag_response_collection(
@@ -39,7 +39,7 @@ RSpec.describe 'Infogreffe: Mandataires sociaux', type: %i[request swagger] do
           unprocessable_entity_error_request(:siren)
 
           response '404', 'Entreprise non trouvée',
-            vcr: { cassette_name: 'infogreffe/extraits_rcs/with_siren_not_found' } do
+            vcr: { cassette_name: 'infogreffe/with_siren_not_found' } do
             let(:siren) { not_found_siren(:extrait_rcs) }
 
             schema '$ref' => '#/components/schemas/Error'

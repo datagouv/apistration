@@ -18,7 +18,7 @@ RSpec.describe 'Infogreffe: Extraitsrcs', type: %i[request swagger] do
       end
 
       describe 'with valid token and mandatory params', valid: true do
-        response '200', 'Entreprise trouvée (personne morale)', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren_personne_morale' } do
+        response '200', 'Entreprise trouvée (personne morale)', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_morale' } do
           description SwaggerData.get('infogreffe.extraits_rcs.description')
 
           rate_limit_headers
@@ -30,7 +30,7 @@ RSpec.describe 'Infogreffe: Extraitsrcs', type: %i[request swagger] do
           run_test!
         end
 
-        response '200', 'Entreprise trouvée (personne physique)', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_valid_siren_personne_physique' } do
+        response '200', 'Entreprise trouvée (personne physique)', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_physique' } do
           let(:siren) { valid_siren(:extrait_rcs_personne_physique) }
 
           description SwaggerData.get('infogreffe.extraits_rcs.description')
@@ -49,7 +49,7 @@ RSpec.describe 'Infogreffe: Extraitsrcs', type: %i[request swagger] do
 
           unprocessable_entity_error_request(:siren)
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'infogreffe/extraits_rcs/with_siren_not_found' } do
+          response '404', 'Non trouvée', vcr: { cassette_name: 'infogreffe/with_siren_not_found' } do
             let(:siren) { not_found_siren(:extrait_rcs) }
 
             schema '$ref' => '#/components/schemas/Error'
