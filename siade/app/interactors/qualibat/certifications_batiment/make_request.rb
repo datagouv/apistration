@@ -12,6 +12,13 @@ class QUALIBAT::CertificationsBatiment::MakeRequest < MakeRequest::Get
     }
   end
 
+  def http_options
+    {
+      use_ssl: true,
+      verify_mode: OpenSSL::SSL::VERIFY_NONE
+    }
+  end
+
   def token
     Siade.credentials[:qualibat_token]
   end
