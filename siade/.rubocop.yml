@@ -115,7 +115,7 @@ Naming/MethodParameterName:
     - "nb"
 
 RSpec/NestedGroups:
-  Max: 5
+  Enabled: false
 
 RSpec/ScatteredSetup:
   Exclude:
