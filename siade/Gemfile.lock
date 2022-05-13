@@ -132,8 +132,6 @@ GEM
     json-schema (2.8.1)
       addressable (>= 2.4)
     jsonapi-renderer (0.2.2)
-    jsonapi-serializer (2.2.0)
-      activesupport (>= 4.2)
     jwt (2.3.0)
     listen (3.6.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -344,7 +342,6 @@ DEPENDENCIES
   guard-rspec
   interactor
   json-schema
-  jsonapi-serializer
   jwt (~> 2.3)
   lockbox
   logstasher
