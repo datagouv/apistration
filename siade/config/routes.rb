@@ -65,6 +65,8 @@ Rails.application.routes.draw do
   end
 
   scope path: 'v:api_version', constraints: { api_version: /\d+/ } do
+    get 'ping', to: 'api/ping#show'
+
     get 'urssaf/unites_legales/:siren/attestation_vigilance', to: 'api/v3_and_more/acoss/attestations_sociales#show'
 
     namespace :ademe do
