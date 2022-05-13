@@ -56,15 +56,20 @@ class MakeRequest < ApplicationInteractor
     context.fail!
   end
 
+  def timeout_http_options
+    {
+      open_timeout: 10,
+      read_timeout: 10
+    }
+  end
+
   private
 
   def http_wrapper(&block)
-    Net::HTTP.start(request_uri.host, request_uri.port, http_options) do |http|
+    Net::HTTP.start(request_uri.host, request_uri.port, http_options.merge(timeout_http_options)) do |http|
       request = block.call
 
       set_headers(request)
-      http.read_timeout = 10
-      http.open_timeout = 10
       http.request(request)
     end
   end
