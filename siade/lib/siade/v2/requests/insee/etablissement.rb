@@ -61,11 +61,9 @@ class SIADE::V2::Requests::INSEE::Etablissement < SIADE::V2::Requests::Generic
   def follow_redirect(moved_response)
     uri = URI(moved_response['location'])
 
-    @raw_response = Net::HTTP.start(uri.host, uri.port, net_http_options) do |http|
+    @raw_response = Net::HTTP.start(uri.host, uri.port, net_http_options.merge(timeout_http_options)) do |http|
       request = Net::HTTP::Get.new(uri)
       set_headers(request)
-      http.read_timeout = 10
-      http.open_timeout = 10
       http.request(request)
     end
 
@@ -73,6 +71,13 @@ class SIADE::V2::Requests::INSEE::Etablissement < SIADE::V2::Requests::Generic
   end
 
   private
+
+  def timeout_http_options
+    {
+      open_timeout: 2,
+      read_timeout: 2,
+    }
+  end
 
   def set_error_message_422
     set_error_for_bad_siret

@@ -14,6 +14,13 @@ class INSEE::Etablissement::MakeRequest < MakeRequest::Get
     super(request)
   end
 
+  def timeout_http_options
+    {
+      open_timeout: 2,
+      read_timeout: 2
+    }
+  end
+
   private
 
   def siret

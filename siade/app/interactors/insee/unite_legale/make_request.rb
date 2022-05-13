@@ -14,6 +14,13 @@ class INSEE::UniteLegale::MakeRequest < MakeRequest::Get
     super(request)
   end
 
+  def timeout_http_options
+    {
+      open_timeout: 2,
+      read_timeout: 2
+    }
+  end
+
   def handle_redirect
     siren_from_location = context.response.header['Location'].split('/')[-1]
     context_for_new_location = context.dup
