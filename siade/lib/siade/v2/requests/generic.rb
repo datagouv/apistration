@@ -122,11 +122,9 @@ class SIADE::V2::Requests::Generic
 
   def net_http_get_call
     PerformanceMonitoringService.instance.track(op: :net_http_all, description: 'whole get call + TLS stuff') do
-      @raw_response = Net::HTTP.start(request_uri.host, request_uri.port, net_http_options) do |http|
+      @raw_response = Net::HTTP.start(request_uri.host, request_uri.port, net_http_options.merge(timeout_http_options)) do |http|
         request = Net::HTTP::Get.new(build_request)
         set_headers(request)
-        http.read_timeout = 10
-        http.open_timeout = 10
         http.request(request)
       end
 
@@ -135,16 +133,21 @@ class SIADE::V2::Requests::Generic
   end
 
   def net_http_post_call
-    @raw_response = Net::HTTP.start(request_uri.host, request_uri.port, net_http_options) do |http|
+    @raw_response = Net::HTTP.start(request_uri.host, request_uri.port, net_http_options.merge(timeout_http_options)) do |http|
       request = Net::HTTP::Post.new(request_uri)
       set_headers(request)
       request.body = post_request_body
-      http.read_timeout = 10
-      http.open_timeout = 10
       http.request(request)
     end
 
     @response = build_response
+  end
+
+  def timeout_http_options
+    {
+      open_timeout: 10,
+      read_timeout: 10,
+    }
   end
 
   def build_request
