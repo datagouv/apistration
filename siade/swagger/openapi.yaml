@@ -3683,7 +3683,7 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/fntp/unites_legales/130025265/carte_professionnelle_travaux_publics?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/infogreffe/unites_legales/{siren}/extrait_rcs":
+  "/v3/infogreffe/rcs/unites_legales/{siren}/extrait_kbis":
     get:
       summary: Extrait RCS
       tags:
@@ -4506,7 +4506,7 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/infogreffe/unites_legales/130025265/extrait_rcs?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+            --url "https://entreprise.api.gouv.fr/v3/infogreffe/rcs/unites_legales/130025265/extrait_kbis?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/infogreffe/unites_legales/{siren}/mandataires_sociaux":
     get:
       summary: Mandataires sociaux
