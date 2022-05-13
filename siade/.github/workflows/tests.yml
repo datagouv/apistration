@@ -4,7 +4,7 @@ env:
   RUBY_VERSION: 3.1.2
 
 name: Tests
-on: [push, pull_request]
+on: [push]
 jobs:
   test:
     name: Tests (RSpec)
