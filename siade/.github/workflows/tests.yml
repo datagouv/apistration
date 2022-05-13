@@ -3,8 +3,8 @@ env:
   COVERAGE: true
   RUBY_VERSION: 3.1.2
 
-name: CI
-on: [push]
+name: Tests
+on: [push, pull_request]
 jobs:
   test:
     name: Tests (RSpec)
@@ -29,16 +29,8 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
 
-      # - name: Setup tmate session (for debugging purpose)
-      #   uses: mxschmitt/action-tmate@v2
-
       - name: Install qpdf (PDF manipulation)
         run: sudo apt-get install qpdf libmagic-dev
-
-      # - name: Authorize PDF manipulation for imagemagick
-      #   run: |
-      #     sudo grep -v PDF /etc/ImageMagick-6/policy.xml > policy.xml
-      #     sudo cp policy.xml /etc/ImageMagick-6/policy.xml
 
       - name: Cache Gems
         uses: actions/cache@v1
@@ -73,28 +65,4 @@ jobs:
 
             exit 0
           fi
-  lint:
-    name: Linter (Rubocop)
-    if: "${{ github.actor != 'dependabot[bot]' || contains(github.head_commit.message, 'Bump rubocop') }}"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
 
-      - name: RuboCop Linter Action
-        uses: andrewmcodes/rubocop-linter-action@v3.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  security:
-    name: Brakeman (Static security)
-    if: "${{ github.actor != 'dependabot[bot]' }}"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Brakeman
-        uses: devmasx/brakeman-linter-action@v1.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
