@@ -155,6 +155,9 @@ endpoints = <<STR
 - name: '[V3] Infogreffe Mandataires Sociaux'
   http_path: '/v3/infogreffe/unites_legales/418166096/mandataires_sociaux'
 
+- name: '[V3] Infogreffe Extrait KBIS'
+  http_path: '/v3/infogreffe/rcs/unites_legales/831386297/extrait_kbis'
+
 - name: '[V3] INPI Actes'
   http_path: '/v3/inpi/unites_legales/542065479/actes'
 
