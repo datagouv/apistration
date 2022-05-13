@@ -383,6 +383,10 @@ RSpec.describe Rack::Attack, type: :request do
         {
           controller: 'api/v2/privileges',
           action: 'show'
+        },
+        {
+          controller: 'api/ping',
+          action: 'show'
         }
       ]
     end
