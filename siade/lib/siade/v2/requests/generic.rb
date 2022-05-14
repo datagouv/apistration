@@ -222,7 +222,7 @@ class SIADE::V2::Requests::Generic
     when Net::HTTPMovedPermanently, Net::HTTPMovedTemporarily
       follow_redirect(@raw_response)
     else
-      SIADE::V2::Responses::UnexpectedError.new(provider_name)
+      SIADE::V2::Responses::UnexpectedError.new(provider_name, @raw_response)
     end
   end
 

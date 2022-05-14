@@ -97,10 +97,14 @@ RSpec.describe SIADE::V2::Requests::Generic do
         its(:http_code) { is_expected.to eq 502 }
         its(:response) { is_expected.to be_a SIADE::V2::Responses::UnexpectedError }
 
-        it 'tracks provider error in monitoring service' do
-          expect(MonitoringService.instance).to receive(:track_provider_error_from_response).with(
-            an_instance_of(SIADE::V2::Responses::UnexpectedError),
-            anything
+        it 'logs as error this unexpected behaviour, with exception backtrace' do
+          expect(MonitoringService.instance).to receive(:track).with(
+            'error',
+            anything,
+            {
+              provider_name:,
+              exception_backtrace: anything,
+            }
           )
 
           subject
@@ -116,6 +120,31 @@ RSpec.describe SIADE::V2::Requests::Generic do
 
         its(:http_code) { is_expected.to eq(504) }
         its(:response) { is_expected.to be_a(SIADE::V2::Responses::TimeoutError) }
+      end
+
+      context 'for an unexpected http error code' do
+        before do
+          stub_request(:get, valid_uri.to_s).to_return(
+            status: 506,
+            body: 'PANIK'
+          )
+        end
+
+        it 'logs as error this unexpected behaviour, with exception backtrace' do
+          expect(MonitoringService.instance).to receive(:track).with(
+            'error',
+            anything,
+            {
+              provider_name:,
+              exception_backtrace: anything,
+            }
+          )
+
+          subject
+        end
+
+        its(:http_code) { is_expected.to eq 502 }
+        its(:response) { is_expected.to be_a SIADE::V2::Responses::UnexpectedError }
       end
     end
 
@@ -192,14 +221,20 @@ RSpec.describe SIADE::V2::Requests::Generic do
       context 'for an unexpected http error code' do
         before do
           stub_request(:get, valid_uri.to_s).to_return(
-            status: 506
+            status: 506,
+            body: 'PANIK'
           )
         end
 
-        it 'logs as error this unexpected behaviour' do
-          expect_any_instance_of(MonitoringService).to receive(:track_provider_error_from_response).with(
-            instance_of(SIADE::V2::Responses::UnexpectedError),
-            anything
+        it 'logs as error this unexpected behaviour, with status and body' do
+          expect(MonitoringService.instance).to receive(:track).with(
+            'error',
+            anything,
+            {
+              provider_name:,
+              net_http_error_status: '506',
+              net_http_error_body: 'PANIK',
+            }
           )
 
           subject
@@ -219,10 +254,14 @@ RSpec.describe SIADE::V2::Requests::Generic do
         context 'when it is a "SSLv3/TLS write client hello" error' do
           let(:ssl_error_message) { 'SSL_connect SYSCALL returned=5 errno=0 SSLv3/TLS write client hello' }
 
-          it 'logs as error' do
-            expect_any_instance_of(MonitoringService).to receive(:track_provider_error_from_response).with(
-              instance_of(SIADE::V2::Responses::UnexpectedError),
-              anything
+          it 'logs as error this unexpected behaviour, with exception backtrace' do
+            expect(MonitoringService.instance).to receive(:track).with(
+              'error',
+              anything,
+              {
+                provider_name:,
+                exception_backtrace: anything,
+              }
             )
 
             subject
