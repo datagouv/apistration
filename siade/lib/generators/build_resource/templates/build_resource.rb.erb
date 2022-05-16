@@ -1,5 +1,5 @@
-class <%= name %>::BuildResource < BuildResource<% if document_resource? %>::Document<% end %>
-  <% if document_resource? %>def id
+class <%= name %>::BuildResource < BuildResource<% if document_resource? %>::Document<% end %><% if document_resource? %>
+  def id
     fail NotImplementedError
   end<% else %>
   protected
