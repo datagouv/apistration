@@ -1,3 +1,20 @@
 RSpec.describe <%= name %>::MakeRequest, type: :make_request do
-  it { is_expected.to raise 'implement specs here' }
+  describe '.call' do
+    subject { described_class.call(params:) }<% if id_name %>
+
+    let(:params) do
+      {
+        <%= id_name %>:
+      }
+    end
+
+    context 'with a valid <%= id_name %>', vcr: { cassette_name: '<%= provider_namespace.underscore %>/<%= resource_class.underscore %>/valid_<%= id_name %>' } do
+      let(:<%= id_name %>) { valid_<%= id_name %>(:<%= provider_namespace.underscore %>) }
+
+      it { is_expected.to be_a_success }
+
+      its(:response) { is_expected.to be_a(Net::HTTPOK) }
+    end
+  end<% else %>
+    it { is_expected.to raise 'implement specs here' }<%end%>
 end

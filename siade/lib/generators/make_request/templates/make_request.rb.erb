@@ -8,4 +8,10 @@ class <%= name %>::MakeRequest < MakeRequest::<%= get_request? ? 'Get' : 'Post' 
   def request_params
     fail NotImplementedError
   end
+
+  private
+
+  def <%= provider_namespace.underscore %>_domain
+    Siade.credentials[:<%= provider_namespace.underscore %>_domain]
+  end
 end
