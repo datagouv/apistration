@@ -11,6 +11,11 @@ class RetrieverGenerator < BaseGenerator
     default: 'siren',
     desc: 'Does the API needs to validate: siren, siret or custom ?'
 
+  class_option :is_collection,
+    type: :boolean,
+    default: false,
+    desc: 'Is the payload a collection or a single resource?'
+
   desc 'See `bin/rails generate scaffold_resource --help` instead'
   def create_retriever
     template 'retriever.rb.erb', File.join('app/organizers', provider_namespace.underscore, "#{resource_class.underscore}.rb")

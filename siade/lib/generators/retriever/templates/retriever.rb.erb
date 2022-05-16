@@ -2,8 +2,9 @@ class <%= name %> < RetrieverOrganizer
   organize <%= validation_class %>,
            <%= name %>::MakeRequest,
            <%= name %>::ValidateResponse,<% if document_resource? %>
-           <%= name %>::UploadDocument,<% end %>
-           <%= name %>::BuildResource
+           <%= name %>::UploadDocument,<% end %><% if options[:is_collection] %>
+           <%= name %>::BuildResourceCollection<% else %>
+           <%= name %>::BuildResource<% end %>
 
   def provider_name
     '<%= provider_namespace %>'
