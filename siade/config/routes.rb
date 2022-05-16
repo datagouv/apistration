@@ -116,7 +116,7 @@ Rails.application.routes.draw do
     end
 
     namespace :infogreffe do
-      get 'unites_legales/:siren/mandataires_sociaux' => '/api/v3_and_more/infogreffe/mandataires_sociaux#show'
+      get 'rcs/unites_legales/:siren/mandataires_sociaux' => '/api/v3_and_more/infogreffe/mandataires_sociaux#show'
       get 'rcs/unites_legales/:siren/extrait_kbis' => '/api/v3_and_more/infogreffe/extraits_rcs#show'
     end
 

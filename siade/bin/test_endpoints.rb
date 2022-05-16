@@ -153,7 +153,7 @@ endpoints = <<STR
   http_path: '/v3/douanes/etablissements/FR16002307300010/immatriculations_eori'
 
 - name: '[V3] Infogreffe Mandataires Sociaux'
-  http_path: '/v3/infogreffe/unites_legales/418166096/mandataires_sociaux'
+  http_path: '/v3/infogreffe/rcs/unites_legales/418166096/mandataires_sociaux'
 
 - name: '[V3] Infogreffe Extrait KBIS'
   http_path: '/v3/infogreffe/rcs/unites_legales/831386297/extrait_kbis'
