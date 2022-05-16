@@ -18,7 +18,7 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
       end
 
       describe 'with valid token and mandatory params', valid: true do
-        response '200', 'Entreprise trouvée', vcr: { cassette_name: '<%= provider_namespace.underscore %>/valid_<%= id_path_param %>_json' } do
+        response '200', 'Entreprise trouvée', vcr: { cassette_name: '<%= provider_namespace.underscore %>/valid_<%= id_path_param %>' } do
           description SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.description')
 
           rate_limit_headers
