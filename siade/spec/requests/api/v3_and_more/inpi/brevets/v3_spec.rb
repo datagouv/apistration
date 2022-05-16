@@ -9,6 +9,14 @@ RSpec.describe 'INPI: Latest Brevets', type: %i[request swagger] do
 
       parameter name: :siren, in: :path, type: :string
 
+      parameter name: :limit,
+        in: :query,
+        type: :number,
+        description: "Limite le nombre de résultats retournés. Valeur entre 1 et 20 (Défaut 5)",
+        example: 10
+
+      let(:limit) { nil }
+
       unauthorized_request do
         let(:siren) { valid_siren(:inpi) }
       end

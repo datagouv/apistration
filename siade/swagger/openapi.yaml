@@ -5368,6 +5368,13 @@ paths:
         required: true
         schema:
           type: string
+      - name: limit
+        in: query
+        description: Limite le nombre de résultats retournés. Valeur entre 1 et 20
+          (Défaut 5)
+        example: 10
+        schema:
+          type: number
       security:
       - jwt_bearer_token: []
       description: 'Nombre total des brevets déposés par l''entreprise (lorsque le
@@ -5823,6 +5830,13 @@ paths:
         required: true
         schema:
           type: string
+      - name: limit
+        in: query
+        description: Limite le nombre de résultats retournés. Valeur entre 1 et 20
+          (Défaut 5)
+        example: 10
+        schema:
+          type: number
       security:
       - jwt_bearer_token: []
       description: 'Nombre total des marques déposées par l''entreprise (lorsque le
@@ -6180,6 +6194,13 @@ paths:
         required: true
         schema:
           type: string
+      - name: limit
+        in: query
+        description: Limite le nombre de résultats retournés. Valeur entre 1 et 20
+          (Défaut 5)
+        example: 10
+        schema:
+          type: number
       security:
       - jwt_bearer_token: []
       description: 'Nombre total des modèles déposés par l''entreprise (lorsque le
