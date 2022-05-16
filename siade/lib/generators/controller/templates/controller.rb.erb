@@ -6,7 +6,7 @@ class API::V3AndMore::<%= name %>Controller < API::V3AndMore::BaseController
 
     if organizer.success?
       render json: serializer_class.new(organizer.resource).serializable_hash,
-             status: extract_http_code(organizer)
+        status: extract_http_code(organizer)
     else
       render_errors(organizer)
     end
