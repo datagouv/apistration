@@ -1,3 +1,5 @@
+require 'date'
+
 extra_roles = [
   'exercices',
   'attestations_fiscales',
@@ -41,7 +43,7 @@ token_payload = {
   sub: "#{env} development",
   iat: Time.now.to_i,
   version: '1.0',
-  exp: env == 'test' ? nil : 1.month.from_now.to_i
+  exp: env == 'test' ? nil : DateTime.now.next_month.to_i
 }.compact
 
 token = JWT.encode(token_payload, jwt_hash_secret, jwt_hash_algo)
