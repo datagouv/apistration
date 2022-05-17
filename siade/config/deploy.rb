@@ -15,7 +15,6 @@ end
 
 
 set :commit, ENV['commit']
-set :user, 'deploy'
 set :application_name, 'siade'
 set :domain, ENV['domain']
 
@@ -40,10 +39,6 @@ branch = ENV['branch'] || begin
 
 set :branch, branch
 ensure!(:branch)
-
-def samhain_db_update
-  command %{sudo /usr/local/sbin/update-samhain-db.sh "/var/www/siade_#{ENV['to']}"}
-end
 
 print "Deploying branch #{branch} to #{ENV['to']} environment\n".green
 
@@ -84,10 +79,15 @@ task :remote_environment do
   end
 end
 
+task :samhain_db_update do
+  command %{sudo /usr/local/sbin/update-samhain-db.sh "/var/www/siade_#{ENV['to']}"}
+end
+
 # Put any custom commands you need to run at setup
 # All paths in `shared_dirs` and `shared_paths` will be created on their own.
 task :setup do
-  samhain_db_update
+  invoke :'ownership'
+  invoke :'samhain_db_update'
   # Production database has to be setup !
 end
 
@@ -101,12 +101,13 @@ task :deploy do
     invoke :'bundle:config'
     invoke :'bundle:install'
     invoke :'bundle:clean'
+    invoke :'ownership'
 
     on :launch do
       invoke :'passenger'
     end
   end
-  samhain_db_update
+  invoke :'samhain_db_update'
 end
 
 task :passenger do
@@ -114,9 +115,13 @@ task :passenger do
   command %{
     if (sudo passenger-status | grep siade_#{ENV['to']}) >/dev/null
     then
-      passenger-config restart-app /var/www/siade_#{ENV['to']}/current
+      sudo passenger-config restart-app /var/www/siade_#{ENV['to']}/current
     else
       echo 'Skipping: no passenger app found (will be automatically loaded)'
     fi
   }
+end
+
+task :ownership do
+  command %{sudo chown -R deploy /var/www/siade_#{ENV['to']}}
 end
