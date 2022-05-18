@@ -41,25 +41,23 @@ RSpec.describe SIADE::V2::Drivers::CertificatsAgenceBIO, type: :provider_driver 
 
     it 'contains organic operator data' do
       expect(subject).to contain_exactly(a_hash_including({
-        siret: '48311105000025',
-        numero_bio: 18_344,
-        date_derniere_mise_a_jour: '2020-10-27',
+        siret: '88375327900016',
+        numero_bio: 15_727,
+        date_derniere_mise_a_jour: '2022-04-27',
         reseau: ''
       }))
     end
 
     it 'contains categories data' do
       expect(subject).to contain_exactly(a_hash_including({
-        categories: a_collection_including('Vente aux consommateurs')
+        categories: a_collection_including('Grossistes')
       }))
     end
 
     it 'contains activities data' do
       expect(subject).to contain_exactly(a_hash_including({
         activites: a_collection_containing_exactly(
-          'Production',
-          'Distribution',
-          'Stockage'
+          'Préparation',
         )
       }))
     end
@@ -90,9 +88,9 @@ RSpec.describe SIADE::V2::Drivers::CertificatsAgenceBIO, type: :provider_driver 
       expect(subject).to contain_exactly(
         a_hash_including(
           certificats: a_hash_including(
-            organisme: 'Certipaq',
-            date_engagement: '2020-09-29',
-            url: 'https://www.certipaq.solutions/bio/certificats/fiche/56530/barbot-fabrice/',
+            organisme: 'Ecocert France',
+            date_engagement: '2020-08-10',
+            url: 'http://certificat.ecocert.com/index.php?ln=fr&source=agencebio&id=230419',
             etat_certification: 'ENGAGEE',
             date_arret: nil,
             date_suspension: nil

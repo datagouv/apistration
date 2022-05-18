@@ -34,8 +34,8 @@ RSpec.describe API::V2::CertificatsAgenceBIOController, type: :controller do
         subject
 
         expect(infos_entreprise['siret']).to eq(valid_siret(:agence_bio))
-        expect(infos_entreprise['activites']).to eq(['Production', 'Distribution', 'Stockage'])
-        expect(infos_entreprise['numero_bio']).to eq(18344)
+        expect(infos_entreprise['activites']).to eq(['Préparation'])
+        expect(infos_entreprise['numero_bio']).to eq(15_727)
       end
     end
   end
