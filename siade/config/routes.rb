@@ -62,6 +62,8 @@ Rails.application.routes.draw do
     get 'etablissements/:siret'                             => '/api/v2/etablissements_restored#show'
 
     get 'eori_douanes/:siret_or_eori'                       => '/api/v2/eori_douanes#show'
+
+    get 'openapi.yaml', to: ->(env) { [200, {}, [File.read(Rails.root.join('public/v2/open-api.yml'))]] }
   end
 
   scope path: 'v:api_version', constraints: { api_version: /\d+/ } do
