@@ -12,9 +12,12 @@ RSpec.describe Documents::DecryptPDF do
 
     it { is_expected.to be_a_success }
 
-    it 'decrypts the PDF' do
+    it 'decrypts the pdf' do
       expect(subject.content).not_to include('Encrypt')
-      expect(subject.content).not_to be_empty
+    end
+
+    it 'renders a valid pdf file' do
+      expect(Marcel::MimeType.for(subject.content)).to eq('application/pdf')
     end
   end
 
@@ -24,8 +27,11 @@ RSpec.describe Documents::DecryptPDF do
 
       it { is_expected.to be_a_success }
 
-      it 'renders a valid pdf file without encryption' do
+      it 'decrypts the pdf' do
         expect(subject.content).not_to include('Encrypt')
+      end
+
+      it 'renders a valid pdf file' do
         expect(Marcel::MimeType.for(subject.content)).to eq('application/pdf')
       end
     end
