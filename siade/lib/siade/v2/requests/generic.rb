@@ -217,6 +217,8 @@ class SIADE::V2::Requests::Generic
       SIADE::V2::Responses::InternalServerError.new(provider_name)
     when Net::HTTPBadRequest
       SIADE::V2::Responses::UnexpectedBadRequest.new(provider_name)
+    when Net::HTTPGatewayTimeout
+      SIADE::V2::Responses::TimeoutError.new(provider_name)
     when Net::HTTPServiceUnavailable
       SIADE::V2::Responses::ServiceUnavailable.new(provider_name)
     when Net::HTTPMovedPermanently, Net::HTTPMovedTemporarily
