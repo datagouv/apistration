@@ -4,9 +4,12 @@ RSpec.describe SIADE::SelfHostedDocument::PDFDecrypt do
   context 'with encrypted file' do
     let(:file_content) { open_payload_file('pdf/encrypted.pdf').read }
 
-    it 'decrypts the PDF' do
+    it 'decrypts the pdf' do
       expect(subject).not_to include('Encrypt')
-      expect(subject).not_to be_empty
+    end
+
+    it 'renders a valid pdf' do
+      expect(Marcel::MimeType.for(subject)).to eq('application/pdf')
     end
   end
 
@@ -14,9 +17,12 @@ RSpec.describe SIADE::SelfHostedDocument::PDFDecrypt do
     context 'when pdf is damaged but only triggers warning' do
       let(:file_content) { open_payload_file('pdf/damaged-with-warnings.pdf').read }
 
-      it 'renders a valid pdf file without encryption' do
-        expect(subject).not_to include('Encrypt')
+      it 'renders a valid pdf' do
         expect(Marcel::MimeType.for(subject)).to eq('application/pdf')
+      end
+
+      it 'decrypts the pdf' do
+        expect(subject).not_to include('Encrypt')
       end
     end
 
