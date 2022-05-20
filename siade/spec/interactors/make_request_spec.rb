@@ -63,6 +63,20 @@ RSpec.describe MakeRequest, type: :interactor do
       end
     end
 
+    context 'when it is a gateway error (504)' do
+      before do
+        stub_request(:get, uri.to_s).to_return(
+          status: 504
+        )
+      end
+
+      it { is_expected.to be_a_failure }
+
+      it 'adds ProviderTimeoutError to errors' do
+        expect(subject.errors).to include(instance_of(ProviderTimeoutError))
+      end
+    end
+
     context 'for a connection refused error' do
       before do
         stub_request(:get, uri.to_s).to_raise(
