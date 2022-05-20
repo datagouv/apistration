@@ -5,12 +5,6 @@
 Il est nécessaire d'avoir Redis d'installé pour l'environnement de dévelopment
 (pas nécessaire pour les tests)
 
-Le package `libmagic-dev` doit par ailleurs être installé. Exemple sur Ubuntu :
-
-```sh
-sudo apt-get install libmagic-dev
-```
-
 ## Tests
 
 Par défaut:
