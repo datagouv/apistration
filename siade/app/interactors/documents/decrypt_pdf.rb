@@ -49,6 +49,14 @@ class Documents::DecryptPDF < ApplicationInteractor
     doc.encrypt(name: nil)
     doc.write(decrypted_file)
   rescue HexaPDF::MalformedPDFError
+    use_initial_file
+  rescue HexaPDF::Error => e
+    raise unless e.message.include?('Required field Parent is not set')
+
+    use_initial_file
+  end
+
+  def use_initial_file
     encrypted_file.rewind
     decrypted_file.write(encrypted_file.read)
   end
