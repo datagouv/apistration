@@ -20,32 +20,6 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
     end
   end
 
-  shared_examples 'logs_http_code' do |http_code|
-    it 'logs provider HTTP Code' do
-      expect(ProviderResponseSpy).to receive(:log_http_code).with(provider_name: 'RNA', http_code: http_code)
-      get :show, params: { token: token, id: id }.merge(mandatory_params)
-    end
-  end
-
-  describe 'provider returns an error', vcr: { cassette_name: 'non_regenerable/documents_associations_croix_rouge_error' } do
-    subject do
-      get :show, params: { id: id, token: token }.merge(mandatory_params)
-    end
-
-    let(:id) { '77567227221138' }
-
-    # it's a 200 with an error in documents URLs catched by us !
-    it_behaves_like 'logs_http_code', '200'
-
-    its(:status) { is_expected.to eq(502) }
-
-    it 'returns an error message' do
-      json = JSON.parse(subject.body)
-
-      expect(json).to have_json_error(detail: 'Mauvaise réponse envoyée par le fournisseur de données')
-    end
-  end
-
   describe 'happy path' do
     subject do
       get :show, params: { id: id, token: token }.merge(mandatory_params)
@@ -55,24 +29,9 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
       let(:id) { '78441274400053' }
       let(:json) { JSON.parse(subject.body) }
 
-      it_behaves_like 'logs_http_code', '200'
-
-      its(:status) { is_expected.to eq 200 }
-
-      it 'nombre_documents' do
-        expect(json['nombre_documents']).to eq 0
-      end
-
-      it 'documents' do
-        expect(json['documents']).to be_a_kind_of(Array)
-        expect(json['documents'].size).to eq 0
-      end
+      its(:status) { is_expected.to eq 404 }
     end
 
-    # Prévention routière
-    # 77571979202585
-
-    # TODO: regenerate cassette when data is back !
     context 'when using a siret', vcr: { cassette_name: 'mi/associations/documents/with_documents' } do
       context 'when siret is correct' do
         context 'when siret is found' do
@@ -115,8 +74,6 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
 
           let(:id) { 'W000000000' }
 
-          it_behaves_like 'logs_http_code', '404'
-
           its(:status) { is_expected.to eq(404) }
         end
       end
@@ -126,44 +83,6 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
 
         it { expect(subject.status).to eq(422) }
       end
-    end
-  end
-
-  describe 'unhappy paths' do
-    context 'some document_rna urls are 404', vcr: { cassette_name: 'non_regenerable/rna_association/W262001597_missing_documents' } do
-      let(:id) { 'W262001597' }
-      let(:response_payload) { JSON.parse(response.body) }
-      let(:response) { get :show, params: { id: id, token: token }.merge(mandatory_params) }
-
-      before do
-        allow(Rails.logger).to receive(:error)
-      end
-
-      it 'still works, but returns partial content' do
-        expect(response.status).to eq(206)
-      end
-
-      it 'receives 5 documents but returns only the 2 non 404 pdfs' do
-        expect(API::V2::DocumentsAssociationsController::DocumentRNA)
-          .to receive(:new).exactly(5).times.and_call_original
-        expect(Rails.logger).to receive(:error).once.with(/3 documents sont déficients pour l'association W262001597/)
-
-        expect(response_payload['nombre_documents']).to eq(2)
-        expect(response_payload['nombre_documents_deficients']).to eq(3)
-        expect(response_payload['documents'].size).to eq(2)
-      end
-    end
-  end
-
-  describe 'Non regression test' do
-    subject do
-      get :show, params: { id: id, token: token }.merge(mandatory_params)
-    end
-
-    context 'when association retrievers returns a hash instead of an array for asso->documents->document_rna ', vcr: { cassette_name: 'mi/associations/documents/no_documents_key' } do
-      let(:id) { '41763950700017' }
-
-      its(:status) { is_expected.to eq(200) }
     end
   end
 end
