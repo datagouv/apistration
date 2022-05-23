@@ -1,6 +1,5 @@
 require 'xmlsimple'
 
-# rubocop:disable Metrics/BlockLength
 VCR.configure do |c|
   c.allow_http_connections_when_no_cassette = false
   c.ignore_localhost = true
@@ -90,4 +89,3 @@ VCR.configure do |c|
 
   c.debug_logger = $stdout if ENV['DEBUG_VCR']
 end
-# rubocop:enable Metrics/BlockLength

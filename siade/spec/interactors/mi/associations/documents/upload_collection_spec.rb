@@ -46,7 +46,6 @@ RSpec.describe MI::Associations::Documents::UploadCollection do
 
       it { is_expected.to be_a_success }
 
-      # rubocop:disable Metrics/BlockLength
       it 'keeps the entire collection data and adds the self hosted URL' do
         expect(subject.uploaded_collection).to contain_exactly(
           {
@@ -77,7 +76,6 @@ RSpec.describe MI::Associations::Documents::UploadCollection do
           }
         )
       end
-      # rubocop:enable Metrics/BlockLength
 
       its(:total_documents) { is_expected.to eq(2) }
       its(:upload_errors) { is_expected.to eq(0) }

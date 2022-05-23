@@ -64,7 +64,6 @@ def build_rswag_error(title: nil, detail: nil, code: nil)
 end
 # rubocop:enable Metrics/MethodLength
 
-# rubocop:disable Metrics/BlockLength
 RSpec.configure do |config|
   # Specify a root folder where Swagger JSON files are generated
   # NOTE: If you're using the rswag-api to serve API descriptions, you'll need
@@ -160,4 +159,3 @@ Exemple cURL :
   config.extend RSWagCommonsResponses
   config.extend RSWagResourcesPayloads
 end
-# rubocop:enable Metrics/BlockLength
