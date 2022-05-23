@@ -32,6 +32,11 @@ class ValidateResponse < ApplicationInteractor
     fail_with_error!(build_error(::ProviderUnknownError, message))
   end
 
+  def provider_in_maintenance!
+    context.errors << MaintenanceError.new(context.provider_name)
+    context.fail!
+  end
+
   def resource_not_found!(resource = nil)
     message = not_found_message(resource)
 

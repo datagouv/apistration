@@ -17,6 +17,10 @@ module ResourceHelpers
     http_code == 403
   end
 
+  def http_unauthorized?
+    http_code == 401
+  end
+
   delegate :body, to: :response
 
   def json_body

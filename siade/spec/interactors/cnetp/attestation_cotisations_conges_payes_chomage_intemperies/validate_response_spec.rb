@@ -9,6 +9,14 @@ RSpec.describe CNETP::AttestationCotisationsCongesPayesChomageIntemperies::Valid
     its(:errors) { is_expected.to be_empty }
   end
 
+  context 'when it is a unauthorized error' do
+    let(:response) { instance_double(Net::HTTPNotFound, code: '401', body: '') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(MaintenanceError)) }
+  end
+
   context 'when it is a not found response' do
     let(:response) { instance_double(Net::HTTPNotFound, code: '404', body: '') }
 
