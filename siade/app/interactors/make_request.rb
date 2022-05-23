@@ -105,7 +105,8 @@ class MakeRequest < ApplicationInteractor
   def net_http_response_class_to_error
     {
       Net::HTTPServiceUnavailable => ProviderUnavailable,
-      Net::HTTPGatewayTimeout => ProviderTimeoutError
+      Net::HTTPGatewayTimeout => ProviderTimeoutError,
+      Net::HTTPBadGateway => ProviderUnavailable
     }
   end
 

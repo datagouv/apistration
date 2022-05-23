@@ -77,6 +77,20 @@ RSpec.describe MakeRequest, type: :interactor do
       end
     end
 
+    context 'for a bad gateway error (502)' do
+      before do
+        stub_request(:get, uri.to_s).to_return(
+          status: 502
+        )
+      end
+
+      it { is_expected.to be_a_failure }
+
+      it 'adds ProviderUnavailable to errors' do
+        expect(subject.errors).to include(instance_of(ProviderUnavailable))
+      end
+    end
+
     context 'for a connection refused error' do
       before do
         stub_request(:get, uri.to_s).to_raise(
