@@ -186,6 +186,17 @@ RSpec.describe SIADE::V2::Requests::Generic do
         its(:response) { is_expected.to be_a SIADE::V2::Responses::ServiceUnavailable }
       end
 
+      context 'for Net::HTTPBadGateway (502)' do
+        before do
+          stub_request(:get, valid_uri.to_s).to_return(
+            status: 502,
+          )
+        end
+
+        its(:http_code) { is_expected.to eq 502 }
+        its(:response) { is_expected.to be_a SIADE::V2::Responses::ServiceUnavailable }
+      end
+
       context 'for Net::HTTPBadRequest (400)' do
         before do
           stub_request(:get, valid_uri.to_s).to_return(
