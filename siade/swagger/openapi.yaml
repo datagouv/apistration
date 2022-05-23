@@ -1304,6 +1304,9 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/cnetp/unites_legales/130025265/attestation_cotisations_conges_payes_chomage_intemperies?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+      x-maintenances:
+        from_hour: '06:00'
+        to_hour: '06:30'
   "/v3/douanes/etablissements/{siret_or_eori}/immatriculations_eori":
     get:
       summary: Immatriculation EORI
