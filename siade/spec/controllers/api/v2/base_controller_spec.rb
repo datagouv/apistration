@@ -32,6 +32,6 @@ RSpec.describe API::V2::BaseController, type: :controller do
     end
 
     its(:code) { is_expected.to eq('502') }
-    its(:body) { is_expected.to include("Le fournisseur de données est en maintenance") }
+    its(:body) { is_expected.to match(/fournisseur de données.*maintenance/) }
   end
 end

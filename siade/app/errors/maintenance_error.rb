@@ -4,16 +4,28 @@ class MaintenanceError < AbstractGenericProviderError
   end
 
   def detail
-    "Le fournisseur de données est en maintenance de #{format_hour(maintenance_service.from_hour)} à #{format_hour(maintenance_service.to_hour)}"
+    if maintenance_on?
+      "Le fournisseur de données est en maintenance de #{format_hour(maintenance_service.from_hour)} à #{format_hour(maintenance_service.to_hour)}"
+    else
+      'Le fournisseur de données semble être en maintenance'
+    end
   end
 
   def extra_meta
-    {
-      retry_in: maintenance_service.remaining_seconds
-    }
+    if maintenance_on?
+      {
+        retry_in: maintenance_service.remaining_seconds
+      }
+    else
+      super
+    end
   end
 
   private
+
+  def maintenance_on?
+    maintenance_service.on?
+  end
 
   def format_hour(time)
     time.strftime('%H:%M')
