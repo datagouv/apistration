@@ -2,7 +2,7 @@ dgddi:
   eori:
     title: "Immatriculation EORI"
     description: |
-      État du numéro EORI (Economic Operator Registration and Identification) d'une entreprise permettant de vérifier celle-ci est immatriculée auprès des douanes dans le cadre de l’import/export en Union Européenne.
+      État du numéro EORI d'une entreprise indiquant si celle-ci est immatriculée auprès des douanes dans le cadre de l’import/export en Union Européenne.
     tags:
       - "Informations générales"
     attributes:
