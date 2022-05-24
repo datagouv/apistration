@@ -1,7 +1,7 @@
 fntp:
   carte_professionnelle_travaux_publics:
     title: "Carte professionnelle travaux publics"
-    description: "Carte professionnelle d'entrepreneur de travaux publics, délivrée à une entreprise de travaux publics en règle de ses obligations sociales, administratives et juridiques."
+    description: "Carte professionnelle d'entrepreneur de travaux publics, délivrée à une entreprise en règle de ses obligations sociales, administratives et juridiques."
     tags:
       - "Attestations sociales et fiscales"
     document_url_properties:
