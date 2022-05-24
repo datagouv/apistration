@@ -10,7 +10,7 @@ probtp:
       example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf"
   conformites_cotisations_retraite:
     title: "Conformités vis-à-vis des cotisations retraites"
-    description: "Savoir si une entreprise est à jour de ses cotisations retraite à la Protection Sociale du Bâtiment et des Travaux publics (PROBTP)"
+    description: "Savoir si une entreprise est à jour de ses cotisations retraite à la Protection Sociale du Bâtiment et des Travaux publics (PROBTP)."
     tags:
       - "Attestations sociales et fiscales"
     attributes:
