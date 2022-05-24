@@ -1,7 +1,7 @@
 qualibat:
   certifications_batiment:
     title: "Certification Qualibat"
-    description: "Certificat délivré par l'association Qualibat, attestant de la **qualification d’une entreprise dans le bâtiment**."
+    description: "Certificat délivré par l'association Qualibat, attestant de la qualification d’une entreprise dans le bâtiment."
     tags:
       - "Certifications professionnelles"
     document_url_properties:
