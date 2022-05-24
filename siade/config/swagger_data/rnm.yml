@@ -1,7 +1,7 @@
 rnm:
   entreprise_artisanale:
     title: "Données du RNM d'une entreprise artisanale"
-    description: "Informations de référence d'une entreprise artisanale enregistrée au répertoire national des métiers (RNM)"
+    description: "Informations de référence d'une entreprise artisanale enregistrée au répertoire national des métiers (RNM)."
     tags:
       - "Informations générales"
     attributes:
