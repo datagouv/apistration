@@ -508,9 +508,8 @@ paths:
           type: number
       security:
       - jwt_bearer_token: []
-      description: Obtenir les certifications RGE (Reconnu Garant de l'Environnement)
-        d'un établissement. Seules les certifications valides à la date du jour sont
-        renvoyées.
+      description: Certifications RGE (Reconnu Garant de l'Environnement), valides
+        à la date du jour, d'un établissement.
       responses:
         '401':
           description: Non autorisé
@@ -1359,9 +1358,9 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: 'État du numéro EORI (Economic Operator Registration and Identification)
-        d''une entreprise permettant de vérifier celle-ci est immatriculée auprès
-        des douanes dans le cadre de l’import/export en Union Européenne.
+      description: 'État du numéro EORI d''une entreprise indiquant si celle-ci est
+        immatriculée auprès des douanes dans le cadre de l’import/export en Union
+        Européenne.
 
         '
       responses:
@@ -3004,8 +3003,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Conventions collectives d’un établissement (identifiant de la convention,
-        lien vers les textes en vigueur, etc.)
+      description: Identifiants des conventions collectives d’un établissement et
+        lien vers les textes en vigueur.
       responses:
         '401':
           description: Non autorisé
@@ -3361,8 +3360,8 @@ paths:
       security:
       - jwt_bearer_token: []
       description: Carte professionnelle d'entrepreneur de travaux publics, délivrée
-        à une entreprise de travaux publics en règle de ses obligations sociales,
-        administratives et juridiques.
+        à une entreprise en règle de ses obligations sociales, administratives et
+        juridiques.
       responses:
         '401':
           description: Non autorisé
@@ -3753,9 +3752,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Obtenir un extrait des données présentes dans le RCS, registre
-        du commerce et des sociétés ; dont les observations qui permettent de savoir
-        si une entreprise est en redressement judiciaire.
+      description: Extrait d'une partie des données du registre du commerce et des
+        sociétés (RCS) ; ainsi que les commentaires laissés par les greffiers.
       responses:
         '401':
           description: Non autorisé
@@ -5377,9 +5375,8 @@ paths:
           type: number
       security:
       - jwt_bearer_token: []
-      description: 'Nombre total des brevets déposés par l''entreprise (lorsque le
-        SIREN a été spécifié) ainsi que des informations sur les brevets les plus
-        récents.
+      description: 'Nombre de brevets déposés par l''entreprise (lorsque le SIREN
+        a été spécifié) et informations sur les brevets les plus récents.
 
         '
       responses:
@@ -5839,9 +5836,8 @@ paths:
           type: number
       security:
       - jwt_bearer_token: []
-      description: 'Nombre total des marques déposées par l''entreprise (lorsque le
-        SIREN a été spécifié) ainsi que des informations sur les marques les plus
-        récentes.
+      description: 'Nombre de marques déposées par l''entreprise (lorsque le SIREN
+        a été spécifié) et informations sur les marques les plus récentes.
 
         '
       responses:
@@ -6203,9 +6199,8 @@ paths:
           type: number
       security:
       - jwt_bearer_token: []
-      description: 'Nombre total des modèles déposés par l''entreprise (lorsque le
-        SIREN a été spécifié) ainsi que des informations sur les modèles les plus
-        récents.
+      description: 'Nombre de modèles déposés par l''entreprise (lorsque le SIREN
+        a été spécifié) et informations sur les modèles les plus récents.
 
         '
       responses:
@@ -7153,7 +7148,7 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Adresse d'un établissement diffusible inscrit au répertoire Sirene."
+      description: Adresse d'un établissement diffusible inscrit au répertoire Sirene.
       responses:
         '401':
           description: Non autorisé
@@ -15476,7 +15471,7 @@ paths:
       security:
       - jwt_bearer_token: []
       description: Savoir si une entreprise est à jour de ses cotisations retraite
-        à la Protection Sociale du Bâtiment et des Travaux publics (PROBTP)
+        à la Protection Sociale du Bâtiment et des Travaux publics (PROBTP).
       responses:
         '401':
           description: Non autorisé
@@ -15810,7 +15805,7 @@ paths:
       security:
       - jwt_bearer_token: []
       description: Certificat délivré par l'association Qualibat, attestant de la
-        **qualification d’une entreprise dans le bâtiment**.
+        qualification d’une entreprise dans le bâtiment.
       responses:
         '401':
           description: Non autorisé
@@ -16202,7 +16197,7 @@ paths:
       security:
       - jwt_bearer_token: []
       description: Informations de référence d'une entreprise artisanale enregistrée
-        au répertoire national des métiers (RNM)
+        au répertoire national des métiers (RNM).
       responses:
         '401':
           description: Non autorisé
