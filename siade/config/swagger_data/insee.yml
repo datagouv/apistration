@@ -153,7 +153,7 @@ insee:
         description: "Lien vers la ressource 'Donnée Sirene d'un établissement' correspondant à cette adresse d'établissement pour obtenir les données de référence de l'établissement."
   adresse_etablissement_diffusable:
     title: "Adresse d'un établissement diffusible"
-    description: Adresse d'un établissement diffusible inscrit au répertoire Sirene."
+    description: "Adresse d'un établissement diffusible inscrit au répertoire Sirene."
     tags:
       - "Informations générales"
     attributes: *insee_adresse_etablissement_attributes
