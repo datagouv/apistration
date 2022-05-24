@@ -1,7 +1,7 @@
 fabrique_numerique_ministeres_sociaux:
   conventions_collectives:
     title: "Conventions collectives"
-    description: "Conventions collectives d’un établissement (identifiant de la convention, lien vers les textes en vigueur, etc.)"
+    description: "Identifiants des conventions collectives d’un établissement et lien vers les textes en vigueur."
     tags:
       - "Informations générales"
     attributes:
