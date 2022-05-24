@@ -39,7 +39,7 @@ inpi:
   brevets:
     title: "Brevets déposés"
     description: |
-      Nombre total des brevets déposés par l'entreprise (lorsque le SIREN a été spécifié) ainsi que des informations sur les brevets les plus récents.
+      Nombre de brevets déposés par l'entreprise (lorsque le SIREN a été spécifié) et informations sur les brevets les plus récents.
     tags:
       - "Propriété intellectuelle"
     attributes:
@@ -96,7 +96,7 @@ inpi:
   marques:
     title: "Marques déposées"
     description: |
-      Nombre total des marques déposées par l'entreprise (lorsque le SIREN a été spécifié) ainsi que des informations sur les marques les plus récentes.
+      Nombre de marques déposées par l'entreprise (lorsque le SIREN a été spécifié) et informations sur les marques les plus récentes.
     tags:
       - "Propriété intellectuelle"
     attributes:
@@ -153,7 +153,7 @@ inpi:
   modeles:
     title: "Modèles déposés"
     description: |
-      Nombre total des modèles déposés par l'entreprise (lorsque le SIREN a été spécifié) ainsi que des informations sur les modèles les plus récents.
+      Nombre de modèles déposés par l'entreprise (lorsque le SIREN a été spécifié) et informations sur les modèles les plus récents.
     tags:
       - "Propriété intellectuelle"
     attributes:
