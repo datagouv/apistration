@@ -45,9 +45,7 @@ class SIADE::V2::Requests::CertificatsCNETP < SIADE::V2::Requests::Generic
   end
 
   def rest_client_options
-    {
-      verify_ssl: OpenSSL::SSL::VERIFY_NONE
-    }
+    { verify_ssl: OpenSSL::SSL::VERIFY_PEER }
   end
 
   private
