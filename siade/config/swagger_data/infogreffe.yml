@@ -140,7 +140,7 @@ infogreffe:
 
   extraits_rcs:
     title: "Extrait RCS"
-    description: "Obtenir un extrait des données présentes dans le RCS, registre du commerce et des sociétés ; dont les observations qui permettent de savoir si une entreprise est en redressement judiciaire."
+    description: "Extrait d'une partie des données du registre du commerce et des sociétés (RCS) ; ainsi que les commentaires laissés par les greffiers."
     tags:
       - "Informations générales"
     attributes:
