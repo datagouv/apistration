@@ -17,7 +17,7 @@ RSpec.describe MI::Associations::BuildResource, type: :build_resource do
                                 {
                                   complement: '  ',
                                   numero_voie: '33',
-                                  type_voie: 'rue',
+                                  type_voie: 'RUE',
                                   libelle_voie: 'de Mogador',
                                   distribution: nil,
                                   code_insee: '75108',

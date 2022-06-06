@@ -35,6 +35,7 @@ VCR.configure do |c|
   c.filter_sensitive_data('<ACOSS_CLIENT_SECRET>') { Siade.credentials[:acoss_client_secret].to_s }
   c.filter_sensitive_data('<SIADE_TOKEN>') { Siade.credentials[:uptime_robot_internal_jwt].to_s }
   c.filter_sensitive_data('<DOUANES_CLIENT_ID>') { Siade.credentials[:douanes_client_id].to_s }
+  c.filter_sensitive_data('<MI_API_KEY>') { Siade.credentials[:mi_gravitee_api_key].to_s }
 
   # VCR url filters
   c.filter_sensitive_data('<URL_INSEE_V3>') { Siade.credentials[:insee_v3_domain].to_s }
@@ -50,6 +51,7 @@ VCR.configure do |c|
   c.filter_sensitive_data('<URL_DGFIP_LIASSE_DICO>') { Siade.credentials[:dgfip_liasse_fiscale_dictionnaire_url].to_s }
 
   c.filter_sensitive_data('<URL_QUALIBAT>') { Siade.credentials[:qualibat_url].to_s }
+  c.filter_sensitive_data('<URL_MI>') { Siade.credentials[:mi_domain].to_s }
 
   c.register_request_matcher :body_sanitized do |r_1, r_2|
     body_1 = r_1.body || ''
