@@ -198,4 +198,25 @@ RSpec.describe GetOAuth2Token, type: :interactor do
 
     its(:errors) { is_expected.to be_present }
   end
+
+  context 'when there is an issue with redis' do
+    before do
+      allow(RedisService.instance).to receive(:get).and_raise(redis_error)
+      allow(RedisService.instance).to receive(:set).and_raise(redis_error)
+    end
+
+    let(:redis_error) { Redis::BaseConnectionError.new }
+
+    it { is_expected.to be_a_success }
+
+    its(:errors) { is_expected.to be_empty }
+    its(:token) { is_expected.to eq 'This is a dummy token from client' }
+
+    it 'gets a new token from provider' do
+      expect(dummy_client)
+        .to receive(:get_token)
+        .with({ params: :params }, {})
+      subject.token
+    end
+  end
 end

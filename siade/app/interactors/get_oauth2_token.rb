@@ -46,6 +46,8 @@ class GetOAuth2Token < ApplicationInteractor
 
   def token_from_redis
     redis_token if redis_token_valid?
+  rescue *redis_connection_errors
+    nil
   end
 
   def redis_token_valid?
@@ -75,8 +77,11 @@ class GetOAuth2Token < ApplicationInteractor
 
   # rubocop:disable Metrics/MethodLength
   def token_from_provider
-    client.get_token(client_get_token_params, access_token_options)
-      .tap(&method(:save_to_redis))
+    token = client.get_token(client_get_token_params, access_token_options)
+    save_to_redis(token)
+    token
+  rescue *redis_connection_errors
+    token
   rescue OAuth2::Error => e
     message = "Error while retrieving #{self.class.name} OAuth2 JSON token from provider (#{e.class} #{e.message}))"
 
@@ -106,6 +111,13 @@ class GetOAuth2Token < ApplicationInteractor
       .name
       .underscore
       .to_sym
+  end
+
+  def redis_connection_errors
+    [
+      Redis::BaseConnectionError,
+      Redis::CommandError
+    ]
   end
 
   def client
