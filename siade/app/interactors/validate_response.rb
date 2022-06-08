@@ -5,6 +5,11 @@ class ValidateResponse < ApplicationInteractor
     klass.class_eval do
       before do
         context.errors ||= []
+        context.cacheable = false
+      end
+
+      after do
+        mark_payload_as_cacheable_on_success!
       end
     end
   end
@@ -41,6 +46,14 @@ class ValidateResponse < ApplicationInteractor
     message = not_found_message(resource)
 
     fail_with_error!(build_error(::NotFoundError, message))
+  end
+
+  def make_payload_cacheable!
+    context.cacheable = true
+  end
+
+  def mark_payload_as_cacheable_on_success!
+    make_payload_cacheable!
   end
 
   def not_found_message(resource)
