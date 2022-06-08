@@ -98,4 +98,34 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
   def set_content_type_header!
     response.headers['Content-Type'] = content_type_header
   end
+
+  def retrieve_single_resource(retriever, cache: false, expires_in: nil, cache_key: nil)
+    if cache && !bypass_cache?
+      CacheResourceRetriever.call(
+        retriever_organizer: retriever,
+        retriever_params: organizer_params,
+        cache_key:,
+        expires_in:
+      )
+    else
+      retriever.call(organizer_params)
+    end
+  end
+
+  def retrieve_resources_collection(retriever, cache: false, expires_in: nil, cache_key: nil)
+    if cache && !bypass_cache?
+      CacheResourceCollectionRetriever.call(
+        retriever_organizer: retriever,
+        retriever_params: organizer_params,
+        cache_key:,
+        expires_in:
+      )
+    else
+      retriever.call(organizer_params)
+    end
+  end
+
+  def bypass_cache?
+    request.headers['Cache-Control'] == 'no-cache'
+  end
 end
