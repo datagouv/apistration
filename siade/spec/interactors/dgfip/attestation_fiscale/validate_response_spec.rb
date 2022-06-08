@@ -10,6 +10,8 @@ RSpec.describe DGFIP::AttestationFiscale::ValidateResponse, type: :validate_resp
       it { is_expected.to be_a_success }
 
       its(:errors) { is_expected.to be_empty }
+
+      its(:cacheable) { is_expected.to be(true) }
     end
 
     context 'when body is not a pdf' do
@@ -18,6 +20,8 @@ RSpec.describe DGFIP::AttestationFiscale::ValidateResponse, type: :validate_resp
       it { is_expected.to be_a_failure }
 
       its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+
+      its(:cacheable) { is_expected.to be(false) }
     end
   end
 
@@ -27,6 +31,8 @@ RSpec.describe DGFIP::AttestationFiscale::ValidateResponse, type: :validate_resp
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+
+    its(:cacheable) { is_expected.to be(false) }
   end
 
   context 'with an unknown error' do
@@ -35,5 +41,7 @@ RSpec.describe DGFIP::AttestationFiscale::ValidateResponse, type: :validate_resp
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+
+    its(:cacheable) { is_expected.to be(false) }
   end
 end

@@ -25,6 +25,8 @@ RSpec.describe DGFIP::AttestationFiscale, :self_hosted_doc, type: :retriever_org
 
         expect(document_url).to be_a_valid_self_hosted_pdf_url('attestation_fiscale_dgfip')
       end
+
+      its(:cacheable) { is_expected.to be(true) }
     end
   end
 
