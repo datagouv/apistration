@@ -2,7 +2,7 @@ class API::V3AndMore::DGFIP::ChiffresAffairesController < API::V3AndMore::BaseCo
   def show
     authorize :exercices
 
-    organizer = ::DGFIP::ChiffresAffaires.call(params: organizer_params)
+    organizer = retrieve_resources_collection(::DGFIP::ChiffresAffaires, cache: true, cache_key:)
 
     if organizer.success?
       render json: serializer_class.new(organizer.resource_collection, options(organizer)).serializable_hash,
@@ -19,6 +19,10 @@ class API::V3AndMore::DGFIP::ChiffresAffairesController < API::V3AndMore::BaseCo
       siret: params[:siret],
       user_id: @authenticated_user.id
     }
+  end
+
+  def cache_key
+    "dgfip/attestations_fiscales:siret=#{params[:siret]}"
   end
 
   def options(organizer)

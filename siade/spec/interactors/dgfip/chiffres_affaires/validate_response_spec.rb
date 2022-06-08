@@ -26,6 +26,8 @@ RSpec.describe DGFIP::ChiffresAffaires::ValidateResponse, type: :validate_respon
         it { is_expected.to be_a_success }
 
         its(:errors) { is_expected.to be_empty }
+
+        its(:cacheable) { is_expected.to be(true) }
       end
 
       context 'when json is not valid' do
@@ -38,6 +40,8 @@ RSpec.describe DGFIP::ChiffresAffaires::ValidateResponse, type: :validate_respon
         it { is_expected.to be_a_failure }
 
         its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+
+        its(:cacheable) { is_expected.to be(false) }
       end
     end
 
@@ -48,6 +52,8 @@ RSpec.describe DGFIP::ChiffresAffaires::ValidateResponse, type: :validate_respon
         it { is_expected.to be_a_failure }
 
         its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+
+        its(:cacheable) { is_expected.to be(false) }
       end
 
       context 'when body is "null" string' do
@@ -56,6 +62,8 @@ RSpec.describe DGFIP::ChiffresAffaires::ValidateResponse, type: :validate_respon
         it { is_expected.to be_a_failure }
 
         its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+
+        its(:cacheable) { is_expected.to be(false) }
       end
     end
   end
@@ -66,5 +74,7 @@ RSpec.describe DGFIP::ChiffresAffaires::ValidateResponse, type: :validate_respon
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+
+    its(:cacheable) { is_expected.to be(false) }
   end
 end
