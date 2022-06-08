@@ -1,16 +1,6 @@
 class Resource
   def initialize(params = {})
-    @data = params
-
-    params.each_key do |key|
-      self.class.define_method(key) do
-        @data[key]
-      end
-
-      self.class.define_method("#{key}=") do |new_value|
-        @data[key] = new_value
-      end
-    end
+    @data = params.symbolize_keys
   end
 
   def to_h
@@ -26,6 +16,18 @@ class Resource
         value
       end
     end
+  end
+
+  def method_missing(name, *args, &)
+    if args.empty? && @data.key?(name.to_sym)
+      @data.fetch(name.to_sym)
+    else
+      super
+    end
+  end
+
+  def respond_to_missing?(name, *)
+    @data.key?(name.to_sym)
   end
 
   private

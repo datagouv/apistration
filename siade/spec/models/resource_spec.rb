@@ -4,17 +4,17 @@ RSpec.describe Resource, type: :model do
   describe '#id' do
     subject { instance.id }
 
-    context 'when params has an id key' do
+    context 'when params has an id key which is not nil' do
       let(:params) do
         {
-          id: valid_siren
+          id: 'whatever'
         }
       end
 
-      it { is_expected.to eq(valid_siren) }
+      it { is_expected.to eq('whatever') }
     end
 
-    context 'when params has an no id key' do
+    context 'when params has a nil id key' do
       let(:params) do
         {
           id: nil
@@ -22,6 +22,20 @@ RSpec.describe Resource, type: :model do
       end
 
       it { is_expected.to be_nil }
+    end
+
+    context 'when params has a no id key' do
+      let(:params) do
+        {
+          lol: 'whatever'
+        }
+      end
+
+      it 'raises a no method error' do
+        expect {
+          subject
+        }.to raise_error(NoMethodError)
+      end
     end
   end
 
