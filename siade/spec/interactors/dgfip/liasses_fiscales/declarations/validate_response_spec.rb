@@ -17,6 +17,8 @@ RSpec.describe DGFIP::LiassesFiscales::Declarations::ValidateResponse, type: :va
         it { is_expected.to be_a_success }
 
         its(:errors) { is_expected.to be_empty }
+
+        its(:cacheable) { is_expected.to be(true) }
       end
 
       context 'when body is not a valid json' do
@@ -25,6 +27,8 @@ RSpec.describe DGFIP::LiassesFiscales::Declarations::ValidateResponse, type: :va
         it { is_expected.to be_a_failure }
 
         its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+
+        its(:cacheable) { is_expected.to be(false) }
       end
     end
 
@@ -35,6 +39,8 @@ RSpec.describe DGFIP::LiassesFiscales::Declarations::ValidateResponse, type: :va
       it { is_expected.to be_a_failure }
 
       its(:errors) { is_expected.to include(instance_of(DGFIPPotentialNotFoundError)) }
+
+      its(:cacheable) { is_expected.to be(true) }
     end
 
     context 'when http status is another error' do
@@ -44,6 +50,8 @@ RSpec.describe DGFIP::LiassesFiscales::Declarations::ValidateResponse, type: :va
       it { is_expected.to be_a_failure }
 
       its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+
+      its(:cacheable) { is_expected.to be(false) }
     end
   end
 end

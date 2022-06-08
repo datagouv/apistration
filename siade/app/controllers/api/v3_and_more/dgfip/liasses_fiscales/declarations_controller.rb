@@ -2,7 +2,7 @@ class API::V3AndMore::DGFIP::LiassesFiscales::DeclarationsController < API::V3An
   def show
     authorize :liasse_fiscale
 
-    organizer = ::DGFIP::LiassesFiscales::Declarations.call(params: organizer_params)
+    organizer = retrieve_single_resource(::DGFIP::LiassesFiscales::Declarations, cache: true, cache_key:)
 
     if organizer.success?
       render json: serializer_class.new(organizer.resource).serializable_hash,
@@ -20,6 +20,10 @@ class API::V3AndMore::DGFIP::LiassesFiscales::DeclarationsController < API::V3An
       year: params[:year],
       user_id: @authenticated_user.id
     }
+  end
+
+  def cache_key
+    "dgfip/attestations_fiscales:siren=#{params[:siren]}&year=#{params[:year]}"
   end
 
   def serializer_module
