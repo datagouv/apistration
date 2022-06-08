@@ -146,6 +146,15 @@ endpoints = <<STR
 - name: '[V3] URSSAF Attestations de vigilance'
   http_path: '/v3/urssaf/unites_legales/418166096/attestation_vigilance'
 
+- name: "[V3] DGFIP Attestation fiscale"
+  http_path: '/v3/dgfip/unites_legales/532010576/attestation_fiscale'
+
+- name: '[V3] DGFIP Liasses fiscales'
+  http_path: '/v3//dgfip/unites_legales/301028346/liasses_fiscales/2016'
+
+- name: "[V3] DGFIP Chiffre d'affaires"
+  http_path: '/v3/dgfip/etablissements/78951073200017/chiffres_affaires'
+
 - name: '[V3] ADEME Certification RGE'
   http_path: '/v3/ademe/etablissements/50530961700023/certification_rge'
 
