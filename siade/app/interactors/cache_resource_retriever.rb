@@ -31,13 +31,13 @@ class CacheResourceRetriever < ApplicationInteractor
   end
 
   def retrieve_from_cache!
-    return unless (cache = EncryptedCache.read(cache_key))
+    return unless (context.cached_data = EncryptedCache.read(cache_key))
 
-    wrap_cache_data_in_context!(cache)
+    wrap_cache_data_in_context!
   end
 
-  def wrap_cache_data_in_context!(hash_data)
-    hash_data.each do |k, v|
+  def wrap_cache_data_in_context!
+    context.cached_data.each do |k, v|
       context.public_send("#{k}=", v)
     end
   end

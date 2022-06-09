@@ -17,6 +17,10 @@ RSpec.shared_examples 'it retrieves cached errors' do
 
       subject
     end
+
+    it 'has the cached data in context' do
+      expect(subject.cached_data).to be_present
+    end
   end
 end
 
@@ -45,6 +49,10 @@ RSpec.shared_examples 'it caches the provider errors' do
         cached_errors = EncryptedCache.read(cache_key).fetch(:errors)
 
         expect(cached_errors.map(&:to_h)).to eq(errors.map(&:to_h))
+      end
+
+      it 'does not have the cached data in context' do
+        expect(subject.cached_data).not_to be_present
       end
 
       context 'when no cache key nor expiration time are provided' do

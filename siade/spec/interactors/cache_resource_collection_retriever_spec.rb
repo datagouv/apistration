@@ -45,6 +45,10 @@ RSpec.describe CacheResourceCollectionRetriever do
 
         subject
       end
+
+      it 'has the cached data in context' do
+        expect(subject.cached_data).to be_present
+      end
     end
 
     it_behaves_like 'it retrieves cached errors'
@@ -94,6 +98,10 @@ RSpec.describe CacheResourceCollectionRetriever do
 
       it 'returns the meta' do
         expect(subject.meta).to eq('provider meta')
+      end
+
+      it 'does not have the cached data in context' do
+        expect(subject.cached_data).not_to be_present
       end
 
       context 'when no cache key nor expiration time are provided' do

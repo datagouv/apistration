@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class API::V3AndMore::BaseController < API::AuthenticateEntityController
   include OrganizersMethodsHelpers
 
@@ -9,6 +10,8 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
   before_action :set_content_type_header!
 
   rescue_from UnsupportedVersionError, with: :unsupported_version_response
+
+  attr_reader :cached_retriever
 
   protected
 
@@ -101,7 +104,7 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
 
   def retrieve_single_resource(retriever, cache: false, expires_in: nil, cache_key: nil)
     if cache && !bypass_cache?
-      CacheResourceRetriever.call(
+      @cached_retriever = CacheResourceRetriever.call(
         retriever_organizer: retriever,
         retriever_params: organizer_params,
         cache_key:,
@@ -114,7 +117,7 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
 
   def retrieve_resources_collection(retriever, cache: false, expires_in: nil, cache_key: nil)
     if cache && !bypass_cache?
-      CacheResourceCollectionRetriever.call(
+      @cached_retriever = CacheResourceCollectionRetriever.call(
         retriever_organizer: retriever,
         retriever_params: organizer_params,
         cache_key:,
@@ -129,3 +132,4 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
     request.headers['Cache-Control'] == 'no-cache'
   end
 end
+# rubocop:enable Metrics/ClassLength

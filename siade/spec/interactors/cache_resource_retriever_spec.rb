@@ -37,6 +37,10 @@ RSpec.describe CacheResourceRetriever do
 
         subject
       end
+
+      it 'has the cached data in context' do
+        expect(subject.cached_data).to be_present
+      end
     end
 
     it_behaves_like 'it retrieves cached errors'
@@ -74,6 +78,10 @@ RSpec.describe CacheResourceRetriever do
 
         cache = EncryptedCache.read(cache_key).fetch(:resource)
         expect(cache.to_h).to eq({ much: :success })
+      end
+
+      it 'does not have the cached data in context' do
+        expect(subject.cached_data).not_to be_present
       end
 
       context 'when no cache key nor expiration time are provided' do
