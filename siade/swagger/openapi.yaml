@@ -6537,7 +6537,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/inpi/unites_legales/130025265/modeles?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/etablissements/{siret}/adresse":
     get:
-      summary: Adresse de l'établissement
+      summary: Adresse établissement
       tags:
       - Informations générales
       parameters:
@@ -7084,7 +7084,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/13002526500013/adresse?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/etablissements/diffusibles/{siret}/adresse":
     get:
-      summary: Adresse d'un établissement diffusible
+      summary: Adresse établissement diffusible
       tags:
       - Informations générales
       parameters:
@@ -7630,7 +7630,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/diffusibles/13002526500013/adresse?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/etablissements/{siret}":
     get:
-      summary: Données de référence d'un établissement
+      summary: Données établissement
       tags:
       - Informations générales
       parameters:
@@ -8732,7 +8732,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/etablissements/diffusibles/{siret}":
     get:
-      summary: Données de référence d'un établissement diffusible
+      summary: Données établissement diffusible
       tags:
       - Informations générales
       parameters:
@@ -9833,7 +9833,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/diffusibles/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/unites_legales/diffusibles/{siren}/siege_social":
     get:
-      summary: Données d'un siège social diffusible
+      summary: Données siège social diffusible
       tags:
       - Informations générales
       parameters:
@@ -10935,7 +10935,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/diffusibles/130025265/siege_social?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/unites_legales/{siren}/siege_social":
     get:
-      summary: Données d'un siège social
+      summary: Données siège social
       tags:
       - Informations générales
       parameters:
@@ -12039,7 +12039,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/130025265/siege_social?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/unites_legales/{siren}":
     get:
-      summary: Données de référence d'une unité légale
+      summary: Données unité légale
       tags:
       - Informations générales
       parameters:
@@ -12749,7 +12749,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/unites_legales/diffusibles/{siren}":
     get:
-      summary: Données de référence d'une unité légale diffusible
+      summary: Données unité légale diffusible
       tags:
       - Informations générales
       parameters:
