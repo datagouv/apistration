@@ -9,6 +9,20 @@ production: &shared
   'Banque de France':
     from_hour: '23:00'
     to_hour:  '08:00'
+  'RNA':
+    dates:
+      - day: '2022-06-24'
+        from_hour: '19:00'
+        to_hour: '23:59'
+      - day: '2022-06-25'
+        from_hour: '00:00'
+        to_hour: '23:59'
+      - day: '2022-06-26'
+        from_hour: '00:00'
+        to_hour: '23:59'
+      - day: '2022-06-27'
+        from_hour: '00:00'
+        to_hour: '10:00'
 sandbox: *shared
 staging: *shared
 development: *shared
