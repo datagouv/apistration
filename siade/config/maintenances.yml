@@ -9,11 +9,6 @@ production: &shared
   'Banque de France':
     from_hour: '23:00'
     to_hour:  '08:00'
-  'INSEE':
-    dates:
-      - day: '2022-03-24'
-        from_hour: '08:00'
-        to_hour:  '14:00'
 sandbox: *shared
 staging: *shared
 development: *shared
