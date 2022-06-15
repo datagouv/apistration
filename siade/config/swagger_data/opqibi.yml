@@ -7,16 +7,8 @@ opqibi:
       description: "Numéro du présent certificat"
       type: "string"
       example: "14 12 2819"
-    description: |
-      Ce certificat permet de connaitre les qualifications et les qualifications probatoires qu’une entreprise maitrise.
-
-      Au 31 décembre 2019, l’OPQIBI compte 1962 entreprises qualifiées.
-
-      Une qualification atteste de la capacité d’une entreprise d’ingénierie à réaliser une prestation déterminée. Elle est attribuée sur la base de critères légaux, administratifs, juridiques, financiers et techniques (moyens (humains, matériels, méthodologiques) et références).
-
-      Une qualification probatoire est attribuée à une entreprise nouvellement créée ou en cours de diversification qui ne dispose pas encore de référence ou en nombre insuffisant mais satisfait aux critères légaux, administratifs, juridiques et moyens.
-
-      Une entreprise possède au moins une qualification ou une qualification probatoire.
+    description: |+
+      Certificats délivrés par l’OPQIBI attestant de la capacité d’une entreprise à réaliser une prestation d’ingénierie.
     tags:
       - "Certifications professionnelles"
     attributes:
