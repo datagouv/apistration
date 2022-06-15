@@ -8,7 +8,7 @@ opqibi:
       type: "string"
       example: "14 12 2819"
     description: |+
-      Certificats délivrés par l’OPQIBI attestant de la capacité d’une entreprise à réaliser une prestation d’ingénierie.
+      Certificat délivré par l’OPQIBI, attestant de la capacité d’une entreprise à réaliser une prestation d’ingénierie.
     tags:
       - "Certifications professionnelles"
     attributes:
