@@ -14662,7 +14662,7 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: 'Certificats délivrés par l’OPQIBI attestant de la capacité d’une
+      description: 'Certificat délivré par l’OPQIBI, attestant de la capacité d’une
         entreprise à réaliser une prestation d’ingénierie.
 
         '
