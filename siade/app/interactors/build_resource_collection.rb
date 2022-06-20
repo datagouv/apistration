@@ -8,16 +8,17 @@ class BuildResourceCollection < ApplicationInteractor
 
     klass.class_eval do
       after do
-        resource_not_defined! unless valid?(context.resource_collection)
-        context.meta = items_meta
+        resource_not_defined! unless valid?(context.bundled_data.data)
       end
     end
   end
 
   def call
-    context.resource_collection = items.map do |item|
+    resource_collection = items.map do |item|
       resource_klass.new(resource_attributes(item))
     end
+
+    context.bundled_data = BundledData.new(data: resource_collection, context: items_context)
   end
 
   protected
@@ -26,12 +27,12 @@ class BuildResourceCollection < ApplicationInteractor
     raise NotImplementedError
   end
 
-  def resource_attributes(item)
-    raise NotImplementedError
+  def items_context
+    {}
   end
 
-  def items_meta
-    {}
+  def resource_attributes(item)
+    raise NotImplementedError
   end
 
   def resource_klass

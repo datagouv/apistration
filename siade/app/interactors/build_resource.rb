@@ -6,14 +6,15 @@ class BuildResource < ApplicationInteractor
   def self.inherited(klass)
     klass.class_eval do
       after do
-        context.resource.nil? &&
+        context.bundled_data.nil? &&
           resource_not_defined!
       end
     end
   end
 
   def call
-    context.resource = resource_klass.new(resource_attributes)
+    resource = resource_klass.new(resource_attributes)
+    context.bundled_data = BundledData.new(data: resource, context: {})
   end
 
   protected
