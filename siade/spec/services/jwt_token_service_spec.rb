@@ -14,12 +14,12 @@ RSpec.describe JwtTokenService do
       its(:jti) { is_expected.to eq('3d4706c4-7f5e-4442-a734-00d6c675f3c9') }
     end
 
-    describe 'non regression test: works with new token (scopes instead of roles)' do
+    describe 'non regression test: scope token turns into role token' do
       subject { helper.jwt_user }
 
       let(:jwt) { yes_jwt_with_scopes }
 
-      its(:id) { is_expected.to eq('ba261f98-f204-44ff-8d0a-82a35a3b1eaa') }
+      its(:roles) { is_expected.not_to be_empty }
     end
   end
 
