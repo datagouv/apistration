@@ -434,7 +434,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/urssaf/unites_legales/130025265/attestation_vigilance?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/ademe/etablissements/{siret}/certification_rge":
     get:
-      summary: Certificat RGE
+      summary: Certification RGE
       tags:
       - Certifications professionnelles
       parameters:
@@ -508,8 +508,8 @@ paths:
           type: number
       security:
       - jwt_bearer_token: []
-      description: Certifications RGE (Reconnu Garant de l'Environnement), valides
-        à la date du jour, d'un établissement.
+      description: Certifications RGE (Reconnu Garant de l'Environnement), d'un établissement,
+        délivrée par l'Ademe.
       responses:
         '401':
           description: Non autorisé
@@ -5038,8 +5038,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: 'Actes d’une entreprise issus des greffes et archivés à l’Institut
-        national de propriété industrielle (INPI).
+      description: 'Actes issus des greffes et archivés à l’Institut national de propriété
+        industrielle (Inpi).
 
         '
       responses:
@@ -14621,7 +14621,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/msa/etablissements/13002526500013/conformite_cotisations?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/opqibi/unites_legales/{siren}/certification_ingenierie":
     get:
-      summary: Certifications Ingénierie
+      summary: Certification d'ingénierie OPQIBI
       tags:
       - Certifications professionnelles
       parameters:
@@ -14662,8 +14662,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: 'Certificat délivré par l’OPQIBI, attestant de la capacité d’une
-        entreprise à réaliser une prestation d’ingénierie.
+      description: 'Certification délivrée par l''association OPQIBI, attestant des
+        différentes qualifications d''ingénierie d''une unité légale.
 
         '
       responses:
@@ -15801,8 +15801,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Certificat délivré par l'association Qualibat, attestant de la
-        qualification d’une entreprise dans le bâtiment.
+      description: Certification délivrée par l'association Qualibat, attestant de
+        la qualification d’une entreprise dans le bâtiment.
       responses:
         '401':
           description: Non autorisé
