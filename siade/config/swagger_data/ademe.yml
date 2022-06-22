@@ -1,7 +1,7 @@
 ademe:
   certificats_rge:
-    title: "Certificat RGE"
-    description: "Certifications RGE (Reconnu Garant de l'Environnement), valides à la date du jour, d'un établissement."
+    title: "Certification RGE"
+    description: "Certifications RGE (Reconnu Garant de l'Environnement), d'un établissement, délivrée par l'Ademe."
     tags:
       - "Certifications professionnelles"
     meta:
