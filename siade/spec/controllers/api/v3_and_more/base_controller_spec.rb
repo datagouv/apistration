@@ -179,88 +179,35 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
       allow(DummyRetrieverOrganizer).to receive(:call)
     end
 
-    context 'with single resources' do
-      context 'when cache is activated' do
-        controller(described_class) do
-          skip_after_action :verify_authorized
+    context 'when cache is activated' do
+      controller(described_class) do
+        skip_after_action :verify_authorized
 
-          def show
-            retrieve_single_resource(
-              DummyRetrieverOrganizer,
-              cache: true,
-              cache_key: 'keykey',
-              expires_in: 1.hour
-            )
-          end
-
-          private
-
-          def organizer_params
-            {
-              very: :parameters
-            }
-          end
-
-          def serializer_module
-            DummyResourceSerializer
-          end
+        def show
+          retrieve_payload_data(
+            DummyRetrieverOrganizer,
+            cache: true,
+            cache_key: 'keykey',
+            expires_in: 1.hour
+          )
         end
 
-        context 'when Cache-Control: no-cache request header is present' do
-          before do
-            request.headers['Cache-Control'] = 'no-cache'
-          end
+        private
 
-          it 'does not call CacheResourceRetriever' do
-            expect(CacheResourceRetriever).not_to receive(:call)
-
-            call!
-          end
-
-          it 'calls the retriever directly with parameters' do
-            expect(DummyRetrieverOrganizer)
-              .to receive(:call)
-              .with({ very: :parameters })
-
-            call!
-          end
+        def organizer_params
+          {
+            very: :parameters
+          }
         end
 
-        context 'without the Cache-Control: no-cache request header' do
-          it 'calls CacheResourceRetriever with parameters' do
-            expect(CacheResourceRetriever)
-              .to receive(:call)
-              .with({
-                retriever_organizer: DummyRetrieverOrganizer,
-                retriever_params: { very: :parameters },
-                cache_key: 'keykey',
-                expires_in: 1.hour
-              })
-
-            call!
-          end
+        def serializer_module
+          DummyResourceSerializer
         end
       end
 
-      context 'when cache is deactivated' do
-        controller(described_class) do
-          skip_after_action :verify_authorized
-
-          def show
-            retrieve_single_resource(DummyRetrieverOrganizer, cache: false)
-          end
-
-          private
-
-          def organizer_params
-            {
-              very: :parameters
-            }
-          end
-
-          def serializer_module
-            DummyResourceSerializer
-          end
+      context 'when Cache-Control: no-cache request header is present' do
+        before do
+          request.headers['Cache-Control'] = 'no-cache'
         end
 
         it 'does not call CacheResourceRetriever' do
@@ -277,105 +224,56 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
           call!
         end
       end
-    end
 
-    context 'with resources collections' do
-      context 'when cache is activated' do
-        controller(described_class) do
-          skip_after_action :verify_authorized
-
-          def show
-            retrieve_resources_collection(
-              DummyRetrieverOrganizer,
-              cache: true,
+      context 'without the Cache-Control: no-cache request header' do
+        it 'calls CacheResourceRetriever with parameters' do
+          expect(CacheResourceRetriever)
+            .to receive(:call)
+            .with({
+              retriever_organizer: DummyRetrieverOrganizer,
+              retriever_params: { very: :parameters },
               cache_key: 'keykey',
               expires_in: 1.hour
-            )
-          end
+            })
 
-          private
+          call!
+        end
+      end
+    end
 
-          def organizer_params
-            {
-              very: :parameters
-            }
-          end
+    context 'when cache is deactivated' do
+      controller(described_class) do
+        skip_after_action :verify_authorized
 
-          def serializer_module
-            DummyResourceSerializer
-          end
+        def show
+          retrieve_payload_data(DummyRetrieverOrganizer, cache: false)
         end
 
-        context 'when Cache-Control: no-cache request header is present' do
-          before do
-            request.headers['Cache-Control'] = 'no-cache'
-          end
+        private
 
-          it 'does not call CacheResourceRetriever' do
-            expect(CacheResourceCollectionRetriever).not_to receive(:call)
-
-            call!
-          end
-
-          it 'calls the retriever directly with parameters' do
-            expect(DummyRetrieverOrganizer)
-              .to receive(:call)
-              .with({ very: :parameters })
-
-            call!
-          end
+        def organizer_params
+          {
+            very: :parameters
+          }
         end
 
-        context 'without the Cache-Control: no-cache request header' do
-          it 'calls CacheResourceRetriever with parameters' do
-            expect(CacheResourceCollectionRetriever)
-              .to receive(:call)
-              .with({
-                retriever_organizer: DummyRetrieverOrganizer,
-                retriever_params: { very: :parameters },
-                cache_key: 'keykey',
-                expires_in: 1.hour
-              })
-
-            call!
-          end
+        def serializer_module
+          DummyResourceSerializer
         end
       end
 
-      context 'when cache is deactivated' do
-        controller(described_class) do
-          skip_after_action :verify_authorized
+      it 'does not call CacheResourceRetriever' do
+        expect(CacheResourceRetriever).not_to receive(:call)
 
-          def show
-            retrieve_resources_collection(DummyRetrieverOrganizer, cache: false)
-          end
+        call!
+      end
 
-          private
+      it 'calls the retriever directly with parameters' do
+        expect(DummyRetrieverOrganizer)
+          .to receive(:call)
+          .with({ very: :parameters })
 
-          def organizer_params
-            {
-              very: :parameters
-            }
-          end
-
-          def serializer_module
-            DummyResourceSerializer
-          end
-        end
-
-        it 'does not call CacheResourceRetriever' do
-          expect(CacheResourceCollectionRetriever).not_to receive(:call)
-
-          call!
-        end
-
-        it 'calls the retriever directly with parameters' do
-          expect(DummyRetrieverOrganizer)
-            .to receive(:call)
-            .with({ very: :parameters })
-
-          call!
-        end
+        call!
       end
     end
   end
