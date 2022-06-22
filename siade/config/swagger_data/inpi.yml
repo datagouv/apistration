@@ -2,7 +2,7 @@ inpi:
   actes:
     title: "Actes"
     description: |
-      Actes d’une entreprise issus des greffes et archivés à l’Institut national de propriété industrielle (INPI).
+      Actes issus des greffes et archivés à l’Institut national de propriété industrielle (Inpi).
     tags:
       - "Informations générales"
     attributes:
