@@ -79,7 +79,7 @@ module MockableInStaging
   end
 
   def schema_path
-    Rails.root.join('public/v2/open-api.yml')
+    Rails.public_path.join('v2/open-api.yml')
   end
 
   def errors
