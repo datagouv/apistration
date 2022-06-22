@@ -58,7 +58,7 @@ class CacheResourceRetriever < ApplicationInteractor
   end
 
   def wrap_retriever_data
-    context.resource = retrieved_context.resource
+    context.bundled_data = retrieved_context.bundled_data
   end
 
   def wrap_retriever_errors
@@ -79,7 +79,7 @@ class CacheResourceRetriever < ApplicationInteractor
     return unless retrieved_context.cacheable
 
     {
-      resource: retrieved_context.resource
+      bundled_data: retrieved_context.bundled_data
     }
   end
 
