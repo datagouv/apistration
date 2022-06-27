@@ -160,7 +160,7 @@ GEM
       rake
     mini_histogram (0.3.1)
     mini_portile2 (2.8.0)
-    minitest (5.15.0)
+    minitest (5.16.1)
     mock_redis (0.32.0)
       ruby2_keywords
     multi_json (1.15.0)
@@ -278,7 +278,7 @@ GEM
       parser (>= 3.1.1.0)
     rubocop-checkstyle_formatter (0.5.0)
       rubocop (>= 1.14.0)
-    rubocop-rails (2.14.2)
+    rubocop-rails (2.15.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
@@ -317,7 +317,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
-    unicode-display_width (2.1.0)
+    unicode-display_width (2.2.0)
     unindent (1.0)
     utf8-cleaner (1.0.0)
       activesupport
