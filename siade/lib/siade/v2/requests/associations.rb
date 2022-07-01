@@ -21,7 +21,7 @@ class SIADE::V2::Requests::Associations < SIADE::V2::Requests::Generic
   end
 
   def request_uri
-    URI("https://siva.jeunesse-sports.gouv.fr/api-asso/api/structure/#{@association_id}")
+    URI("#{mi_domain}/apim/api-asso-partenaires/api/structure/#{@association_id}")
   end
 
   def request_params
@@ -47,7 +47,20 @@ class SIADE::V2::Requests::Associations < SIADE::V2::Requests::Generic
     SIADE::V2::Responses::Associations
   end
 
+  def set_headers(request)
+    super
+    request['X-Gravitee-Api-Key'] = mi_gravitee_api_key
+  end
+
   private
+
+  def mi_domain
+    Siade.credentials[:mi_domain]
+  end
+
+  def mi_gravitee_api_key
+    Siade.credentials[:mi_gravitee_api_key]
+  end
 
   def set_error_message_422
     (@errors ||= []) << UnprocessableEntityError.new(:siret_or_rna)

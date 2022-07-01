@@ -73,7 +73,7 @@ RSpec.describe API::V2::AssociationsController, type: :controller do
             its([:numero_voie])  { is_expected.to eq('29') }
             its([:type_voie])    { is_expected.to eq('AV') }
             its([:libelle_voie]) { is_expected.to eq('de la République') }
-            its([:distribution]) { is_expected.to eq('_') }
+            its([:distribution]) { is_expected.to be_nil }
             its([:code_insee])   { is_expected.to eq('95288') }
             its([:code_postal])  { is_expected.to eq('95410') }
             its([:commune])      { is_expected.to eq('Groslay') }
@@ -103,7 +103,7 @@ RSpec.describe API::V2::AssociationsController, type: :controller do
             subject { JSON.parse(super().body) }
 
             it { expect(subject['association']['id']).to                 eq('W751135389') }
-            it { expect(subject['association']['siret_siege_social']).to eq('42135938100033') }
+            it { expect(subject['association']['siret_siege_social']).to eq('42135938100025') }
             it { expect(subject['association']['siret']).to              eq('42135938100025') }
           end
         end

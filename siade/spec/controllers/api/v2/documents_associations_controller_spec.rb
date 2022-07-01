@@ -25,8 +25,8 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
       get :show, params: { id: id, token: token }.merge(mandatory_params)
     end
 
-    context 'when there is no documents', vcr: { cassette_name: 'non_regenerable/rna_association/78441274400053_no_doc' } do
-      let(:id) { '78441274400053' }
+    context 'when there is no documents', vcr: { cassette_name: 'mi/associations/documents/without_document' } do
+      let(:id) { rna_id_without_documents }
       let(:json) { JSON.parse(subject.body) }
 
       its(:status) { is_expected.to eq 404 }

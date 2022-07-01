@@ -17,8 +17,8 @@ RSpec.describe SIADE::V2::Drivers::Associations, type: :provider_driver do
     its(:errors)    { is_expected.to have_error('Echec lors du parcours du fichier XML rna association.') }
   end # end invalid xml
 
-  context 'asso with 0 documents', vcr: { cassette_name: 'non_regenerable/rna_association/78441274400053_no_doc' } do
-    subject { described_class.new(association_id: '78441274400053').perform_request }
+  context 'asso with 0 documents', vcr: { cassette_name: 'mi/associations/documents/without_document' } do
+    subject { described_class.new(association_id: rna_id_without_documents).perform_request }
 
     its(:nombre_documents) { is_expected.to eq(0) }
     its(:documents) { is_expected.to eq [] }
@@ -79,7 +79,7 @@ RSpec.describe SIADE::V2::Drivers::Associations, type: :provider_driver do
 
         its(['timestamp']) { is_expected.to eq('1418807628') }
         its(['type'])      { is_expected.to eq('Arrêté') }
-        its(['url'])       { is_expected.to match(%r{https://siva\.jeunesse-sports\.gouv\.fr/api-asso/api/documents/PJ}) }
+        its(['url'])       { is_expected.to match(%r{/api-asso/api/documents/PJ}) }
       end
     end
   end

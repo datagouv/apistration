@@ -8,8 +8,8 @@ RSpec.describe MI::Associations::Documents, type: :retrieve_organizer do
       }
     end
 
-    context 'when happy path', vcr: { cassette_name: 'mi/associations/documents/with_documents' } do
-      let(:siret_or_rna) { '77571979202585' }
+    context 'when happy path', vcr: { cassette_name: 'mi/associations/with_valid_rna' } do
+      let(:siret_or_rna) { valid_rna_id }
 
       before do
         stub_request(:get, %r{jeunesse-sports\.gouv\.fr/cxf/api/documents/PJ})
