@@ -3,11 +3,13 @@ class GenerateCodeSampleFromPath
     @path = path
   end
 
+  # rubocop:disable Layout/LineContinuationLeadingSpace
   def perform
     "curl -X GET \\\n" \
       "  -H \"Authorization: Bearer $token\" \\\n" \
       "  --url \"https://entreprise.api.gouv.fr#{interpolated_path}?#{query_params}\""
   end
+  # rubocop:enable Layout/LineContinuationLeadingSpace
 
   private
 
