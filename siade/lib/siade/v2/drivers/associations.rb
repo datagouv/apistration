@@ -53,19 +53,27 @@ class SIADE::V2::Drivers::Associations < SIADE::V2::Drivers::GenericDriver
   end
 
   def date_creation_raw
-    association_information['asso']['identite']['date_creat']
+    replace_wrong_date_with_nil(
+      association_information['asso']['identite']['date_creat']
+    )
   end
 
   def date_declaration_raw
-    association_information['asso']['identite']['date_modif_rna']
+    replace_wrong_date_with_nil(
+      association_information['asso']['identite']['date_modif_rna']
+    )
   end
 
   def date_publication_raw
-    association_information['asso']['identite']['date_pub_jo']
+    replace_wrong_date_with_nil(
+      association_information['asso']['identite']['date_pub_jo']
+    )
   end
 
   def date_dissolution_raw
-    association_information['asso']['identite']['date_dissolution']
+    replace_wrong_date_with_nil(
+      association_information['asso']['identite']['date_dissolution']
+    )
   end
 
   def adresse_siege_complement_1_raw
@@ -167,5 +175,9 @@ class SIADE::V2::Drivers::Associations < SIADE::V2::Drivers::GenericDriver
   def delete_hash_fields(hash, fields)
     fields.each { |field| hash.delete(field) }
     hash
+  end
+
+  def replace_wrong_date_with_nil(date)
+    date == '0001-01-01' ? nil : date
   end
 end

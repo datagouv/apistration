@@ -10,10 +10,10 @@ class MI::Associations::BuildResource < BuildResource
       objet: @asso_hash[:activites][:objet],
       siret: @siret,
       siret_siege_social: @asso_hash[:identite][:id_siret_siege],
-      date_creation: @asso_hash[:identite][:date_creat],
-      date_declaration: @asso_hash[:identite][:date_modif_rna],
-      date_publication: @asso_hash[:identite][:date_pub_jo],
-      date_dissolution: @asso_hash[:identite][:date_dissolution],
+      date_creation: replace_wrong_date_with_nil(@asso_hash[:identite][:date_creat]),
+      date_declaration: replace_wrong_date_with_nil(@asso_hash[:identite][:date_modif_rna]),
+      date_publication: replace_wrong_date_with_nil(@asso_hash[:identite][:date_pub_jo]),
+      date_dissolution: replace_wrong_date_with_nil(@asso_hash[:identite][:date_dissolution]),
       adresse_siege:,
       etat: @asso_hash[:identite][:active],
       groupement: @asso_hash[:identite][:groupement],
@@ -41,4 +41,8 @@ class MI::Associations::BuildResource < BuildResource
     }
   end
   # rubocop:enable Metrics/AbcSize
+
+  def replace_wrong_date_with_nil(date)
+    date == '0001-01-01' ? nil : date
+  end
 end

@@ -11,8 +11,8 @@ RSpec.describe MI::Associations::BuildResource, type: :build_resource do
         siret_siege_social: '77571979202650',
         date_creation: '1955-01-01',
         date_declaration: '2022-04-26',
-        date_publication: '0001-01-01',
-        date_dissolution: '0001-01-01',
+        date_publication: nil,
+        date_dissolution: nil,
         adresse_siege:
                                 {
                                   complement: '  _',

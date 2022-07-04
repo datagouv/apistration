@@ -43,8 +43,8 @@ RSpec.describe SIADE::V2::Drivers::Associations, type: :provider_driver do
     its(:siret_siege_social)          { is_expected.to eq('77571979202650') }
     its(:date_creation)               { is_expected.to eq('1955-01-01') }
     its(:date_declaration)            { is_expected.to eq('2022-04-26') }
-    its(:date_publication)            { is_expected.to eq('0001-01-01') }
-    its(:date_dissolution)            { is_expected.to eq('0001-01-01') }
+    its(:date_publication)            { is_expected.to eq(nil) }
+    its(:date_dissolution)            { is_expected.to eq(nil) }
     its(:adresse_siege_complement_1)  { is_expected.to eq(nil) }
     its(:adresse_siege_complement_2)  { is_expected.to eq(nil) }
     its(:adresse_siege_complement_3)  { is_expected.to eq('_') }
