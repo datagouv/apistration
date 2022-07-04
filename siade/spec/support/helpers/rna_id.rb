@@ -1,5 +1,5 @@
 def valid_rna_id
-  'W751227325'
+  'W751107336'
 end
 
 def invalid_rna_id

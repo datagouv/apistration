@@ -52,16 +52,16 @@ RSpec.describe API::V2::DocumentsAssociationsController, type: :controller do
             expect(response).to have_http_status(:ok)
           end
 
-          its(['nombre_documents'])            { is_expected.to eq(3) }
-          its(['nombre_documents_deficients']) { is_expected.to eq(0) }
+          its(['nombre_documents'])            { is_expected.to eq(12) }
+          its(['nombre_documents_deficients']) { is_expected.to eq(3) }
 
           its(['documents']) { is_expected.to be_a_kind_of(Array) }
-          its(['documents']) { is_expected.to have(3).items }
+          its(['documents']) { is_expected.to have(12).items }
 
           context 'document sample' do
             subject { super()['documents'][0] }
 
-            its(['type']) { is_expected.to eq('Arrêté') }
+            its(['type']) { is_expected.to eq('Statuts') }
             its(['url'])  { is_expected.to match(/document_asso/) }
             its(:keys) { are_expected.to include('timestamp') }
           end

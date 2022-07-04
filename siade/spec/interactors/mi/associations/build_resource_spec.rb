@@ -4,29 +4,29 @@ RSpec.describe MI::Associations::BuildResource, type: :build_resource do
 
     let(:valid_payload) do
       {
-        rna_id: 'W751227325',
-        titre: 'LA PRÉVENTION ROUTIERE',
+        rna_id: 'W751107336',
+        titre: 'LA PREVENTION ROUTIERE',
         objet: 'Accroitre la sécurité des usagers en encourageant toutes mesures ou initiatives propres à réduire les accidents',
         siret: nil,
         siret_siege_social: '77571979202650',
         date_creation: '1955-01-01',
-        date_declaration: '1955-01-01',
-        date_publication: nil,
-        date_dissolution: nil,
+        date_declaration: '2022-04-26',
+        date_publication: '0001-01-01',
+        date_dissolution: '0001-01-01',
         adresse_siege:
                                 {
-                                  complement: '  ',
+                                  complement: '  _',
                                   numero_voie: '33',
                                   type_voie: 'RUE',
                                   libelle_voie: 'de Mogador',
                                   distribution: nil,
-                                  code_insee: '75108',
+                                  code_insee: '75109',
                                   code_postal: '75009',
-                                  commune: 'Paris'
+                                  commune: 'Paris 9ème'
                                 },
         etat: 'true',
-        groupement: nil,
-        mise_a_jour: '1955-01-01'
+        groupement: 'Simple',
+        mise_a_jour: '2022-04-26'
       }
     end
 

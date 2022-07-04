@@ -22,6 +22,7 @@ mi:
       siret_siege_social:
         type: "string"
         example: "77571979202650"
+        nullable: true
       date_creation:
         type: "string"
         example: "1955-01-01"
