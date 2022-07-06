@@ -28,7 +28,6 @@ RSpec.describe INSEE::UniteLegale::BuildResource, type: :build_resource do
         its(:siret_siege_social) { is_expected.to eq("#{siren}01294") }
 
         its(:categorie_entreprise) { is_expected.to eq('GE') }
-        its(:numero_tva_intracommunautaire) { is_expected.to eq('FR51306138900') }
         its(:diffusable_commercialement) { is_expected.to be(true) }
 
         its(:type) { is_expected.to eq(:personne_morale) }

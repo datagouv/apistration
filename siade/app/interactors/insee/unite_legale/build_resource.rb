@@ -24,7 +24,6 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
       },
 
       categorie_entreprise: unite_legale['categorieEntreprise'],
-      numero_tva_intracommunautaire: compute_numero_tva_intracommunautaire,
       diffusable_commercialement: yes_no_to_boolean(unite_legale['statutDiffusionUniteLegale']),
 
       forme_juridique: referential(

@@ -8096,19 +8096,6 @@ paths:
                               agricole ou ne faisant pas partie du système productif).
                               \n \n Définition de 'catégorie d'entreprise' par l'Insee
                               : https://www.insee.fr/fr/metadonnees/definition/c1057"
-                          numero_tva_intracommunautaire:
-                            title: Numéro de TVA intracommunautaire
-                            type: string
-                            example: FR07130025265
-                            description: "Le numéro de TVA intracommunautaire est
-                              un numéro d’identification individuel attribué aux entreprises
-                              assujetties à la TVA et domiciliées au sein de l’Union
-                              européenne. Le numéro renvoyé par l'API est calculé
-                              par API Entreprise à l'aide du numéro de SIREN, cette
-                              donnée est donc théorique. \n \n Dans le cas où l’établissement
-                              siège est à l’étranger la valeur est systématiquement
-                              'null' \n \n Plus d'informations sur la méthode de calcul
-                              : LIEN TODO"
                           diffusable_commercialement:
                             title: Diffusable commercialement
                             type: boolean
@@ -8326,7 +8313,6 @@ paths:
                         - personne_morale_attributs
                         - personne_physique_attributs
                         - categorie_entreprise
-                        - numero_tva_intracommunautaire
                         - diffusable_commercialement
                         - forme_juridique
                         - activite_principale
@@ -9197,19 +9183,6 @@ paths:
                               agricole ou ne faisant pas partie du système productif).
                               \n \n Définition de 'catégorie d'entreprise' par l'Insee
                               : https://www.insee.fr/fr/metadonnees/definition/c1057"
-                          numero_tva_intracommunautaire:
-                            title: Numéro de TVA intracommunautaire
-                            type: string
-                            example: FR07130025265
-                            description: "Le numéro de TVA intracommunautaire est
-                              un numéro d’identification individuel attribué aux entreprises
-                              assujetties à la TVA et domiciliées au sein de l’Union
-                              européenne. Le numéro renvoyé par l'API est calculé
-                              par API Entreprise à l'aide du numéro de SIREN, cette
-                              donnée est donc théorique. \n \n Dans le cas où l’établissement
-                              siège est à l’étranger la valeur est systématiquement
-                              'null' \n \n Plus d'informations sur la méthode de calcul
-                              : LIEN TODO"
                           diffusable_commercialement:
                             title: Diffusable commercialement
                             type: boolean
@@ -9427,7 +9400,6 @@ paths:
                         - personne_morale_attributs
                         - personne_physique_attributs
                         - categorie_entreprise
-                        - numero_tva_intracommunautaire
                         - diffusable_commercialement
                         - forme_juridique
                         - activite_principale
@@ -10299,19 +10271,6 @@ paths:
                               agricole ou ne faisant pas partie du système productif).
                               \n \n Définition de 'catégorie d'entreprise' par l'Insee
                               : https://www.insee.fr/fr/metadonnees/definition/c1057"
-                          numero_tva_intracommunautaire:
-                            title: Numéro de TVA intracommunautaire
-                            type: string
-                            example: FR07130025265
-                            description: "Le numéro de TVA intracommunautaire est
-                              un numéro d’identification individuel attribué aux entreprises
-                              assujetties à la TVA et domiciliées au sein de l’Union
-                              européenne. Le numéro renvoyé par l'API est calculé
-                              par API Entreprise à l'aide du numéro de SIREN, cette
-                              donnée est donc théorique. \n \n Dans le cas où l’établissement
-                              siège est à l’étranger la valeur est systématiquement
-                              'null' \n \n Plus d'informations sur la méthode de calcul
-                              : LIEN TODO"
                           diffusable_commercialement:
                             title: Diffusable commercialement
                             type: boolean
@@ -10529,7 +10488,6 @@ paths:
                         - personne_morale_attributs
                         - personne_physique_attributs
                         - categorie_entreprise
-                        - numero_tva_intracommunautaire
                         - diffusable_commercialement
                         - forme_juridique
                         - activite_principale
@@ -11403,19 +11361,6 @@ paths:
                               agricole ou ne faisant pas partie du système productif).
                               \n \n Définition de 'catégorie d'entreprise' par l'Insee
                               : https://www.insee.fr/fr/metadonnees/definition/c1057"
-                          numero_tva_intracommunautaire:
-                            title: Numéro de TVA intracommunautaire
-                            type: string
-                            example: FR07130025265
-                            description: "Le numéro de TVA intracommunautaire est
-                              un numéro d’identification individuel attribué aux entreprises
-                              assujetties à la TVA et domiciliées au sein de l’Union
-                              européenne. Le numéro renvoyé par l'API est calculé
-                              par API Entreprise à l'aide du numéro de SIREN, cette
-                              donnée est donc théorique. \n \n Dans le cas où l’établissement
-                              siège est à l’étranger la valeur est systématiquement
-                              'null' \n \n Plus d'informations sur la méthode de calcul
-                              : LIEN TODO"
                           diffusable_commercialement:
                             title: Diffusable commercialement
                             type: boolean
@@ -11633,7 +11578,6 @@ paths:
                         - personne_morale_attributs
                         - personne_physique_attributs
                         - categorie_entreprise
-                        - numero_tva_intracommunautaire
                         - diffusable_commercialement
                         - forme_juridique
                         - activite_principale
@@ -12345,18 +12289,6 @@ paths:
                           (unité légale agricole ou ne faisant pas partie du système
                           productif). \n \n Définition de 'catégorie d'entreprise'
                           par l'Insee : https://www.insee.fr/fr/metadonnees/definition/c1057"
-                      numero_tva_intracommunautaire:
-                        title: Numéro de TVA intracommunautaire
-                        type: string
-                        example: FR07130025265
-                        description: "Le numéro de TVA intracommunautaire est un numéro
-                          d’identification individuel attribué aux entreprises assujetties
-                          à la TVA et domiciliées au sein de l’Union européenne. Le
-                          numéro renvoyé par l'API est calculé par API Entreprise
-                          à l'aide du numéro de SIREN, cette donnée est donc théorique.
-                          \n \n Dans le cas où l’établissement siège est à l’étranger
-                          la valeur est systématiquement 'null' \n \n Plus d'informations
-                          sur la méthode de calcul : LIEN TODO"
                       diffusable_commercialement:
                         title: Diffusable commercialement
                         type: boolean
@@ -12565,7 +12497,6 @@ paths:
                     - personne_morale_attributs
                     - personne_physique_attributs
                     - categorie_entreprise
-                    - numero_tva_intracommunautaire
                     - diffusable_commercialement
                     - forme_juridique
                     - activite_principale
@@ -13054,18 +12985,6 @@ paths:
                           (unité légale agricole ou ne faisant pas partie du système
                           productif). \n \n Définition de 'catégorie d'entreprise'
                           par l'Insee : https://www.insee.fr/fr/metadonnees/definition/c1057"
-                      numero_tva_intracommunautaire:
-                        title: Numéro de TVA intracommunautaire
-                        type: string
-                        example: FR07130025265
-                        description: "Le numéro de TVA intracommunautaire est un numéro
-                          d’identification individuel attribué aux entreprises assujetties
-                          à la TVA et domiciliées au sein de l’Union européenne. Le
-                          numéro renvoyé par l'API est calculé par API Entreprise
-                          à l'aide du numéro de SIREN, cette donnée est donc théorique.
-                          \n \n Dans le cas où l’établissement siège est à l’étranger
-                          la valeur est systématiquement 'null' \n \n Plus d'informations
-                          sur la méthode de calcul : LIEN TODO"
                       diffusable_commercialement:
                         title: Diffusible commercialement
                         type: boolean
@@ -13276,7 +13195,6 @@ paths:
                     - personne_morale_attributs
                     - personne_physique_attributs
                     - categorie_entreprise
-                    - numero_tva_intracommunautaire
                     - diffusable_commercialement
                     - forme_juridique
                     - activite_principale

@@ -1,7 +1,6 @@
 class INSEE::UniteLegaleSerializer::V3 < V3AndMore::BaseSerializer
   attributes :siret_siege_social,
     :categorie_entreprise,
-    :numero_tva_intracommunautaire,
     :diffusable_commercialement,
     :type,
     :personne_morale_attributs,
