@@ -27,6 +27,8 @@ class BadFileFromProviderError < ApplicationError
     @provider_name = provider_name
     @kind = kind.to_sym
     @message = message
+
+    verify_valid_kind!
   end
 
   def code
@@ -55,5 +57,11 @@ class BadFileFromProviderError < ApplicationError
     @subcode_attributes ||= KIND_TO_SUBCODE.fetch(@kind) do
       raise KeyError, "#{@kind} is not a valid kind name"
     end
+  end
+
+  private
+
+  def verify_valid_kind!
+    subcode_attributes
   end
 end
