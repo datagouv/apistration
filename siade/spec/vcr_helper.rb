@@ -44,6 +44,8 @@ VCR.configure do |c|
   c.filter_sensitive_data('<POLE_EMPLOI_CLIENT_SECRET>') { Siade.credentials[:pole_emploi_client_secret].to_s }
   c.filter_sensitive_data('<POLE_EMPLOI_AUTHENTICATE_URL>') { Siade.credentials[:pole_emploi_authenticate_url].to_s }
   c.filter_sensitive_data('<BANQUE_DE_FRANCE_BILANS_URL>') { Siade.credentials[:banque_de_france_bilans_url].to_s }
+  c.filter_sensitive_data('<DGFIP_DS_IR_CLIENT_ID>') { Siade.credentials[:dgfip_derniere_situation_ir_client_id].to_s }
+  c.filter_sensitive_data('<DGFIP_DS_IR_CLIENT_SECRET>') { Siade.credentials[:dgfip_derniere_situation_ir_client_secret].to_s }
 
   # VCR url filters
   c.filter_sensitive_data('<URL_INSEE_V3>') { Siade.credentials[:insee_v3_domain].to_s }
@@ -51,6 +53,7 @@ VCR.configure do |c|
   c.filter_sensitive_data('<URL_INPI>') { Siade.credentials[:inpi_url].to_s }
   c.filter_sensitive_data('<URL_ACOSS>') { Siade.credentials[:acoss_domain].to_s }
   c.filter_sensitive_data('<URL_DOUANES>') { Siade.credentials[:douanes_domain].to_s }
+  c.filter_sensitive_data('<URL_APIM>') { Siade.credentials[:dgfip_apim_domain].to_s }
 
   c.filter_sensitive_data('<AUTH_DGFIP>') { Siade.credentials[:dgfip_authenticate_url].to_s }
   c.filter_sensitive_data('<URL_DGFIP_CA>') { Siade.credentials[:dgfip_chiffres_affaires_url].to_s }
