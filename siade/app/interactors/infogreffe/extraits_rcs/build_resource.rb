@@ -64,10 +64,10 @@ class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
   def etablissement_principal
     {
       adresse: build_adresse(reference_adresse_etablissement_principal),
-      activite: etablissement_principal_raw.css('activite').text,
-      origine_fonds: etablissement_principal_raw.css('origine_fonds').text,
-      mode_exploitation: etablissement_principal_raw.css('mode_exploit').text,
-      code_ape: etablissement_principal_raw.css('codeAPE').text
+      activite: extract_etablissement_text_attribute('activite'),
+      origine_fonds: extract_etablissement_text_attribute('origine_fonds'),
+      mode_exploitation: extract_etablissement_text_attribute('mode_exploit'),
+      code_ape: extract_etablissement_text_attribute('codeAPE')
     }
   end
 
@@ -136,5 +136,9 @@ class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
       valeur: dossier.css('entreprise pp naissance').attr('pays').to_s,
       code: dossier.css('entreprise pp naissance').attr('codePays').to_s
     }
+  end
+
+  def extract_etablissement_text_attribute(attribute)
+    etablissement_principal_raw&.css(attribute)&.text
   end
 end

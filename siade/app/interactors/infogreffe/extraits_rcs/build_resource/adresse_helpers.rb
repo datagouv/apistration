@@ -27,7 +27,7 @@ module Infogreffe::ExtraitsRCS::BuildResource::AdresseHelpers
   end
 
   def reference_adresse_etablissement_principal
-    etablissement_principal_raw.attr('adresse').to_s
+    etablissement_principal_raw&.attr('adresse')&.to_s
   end
 
   def reference_adresse_personne_physique
