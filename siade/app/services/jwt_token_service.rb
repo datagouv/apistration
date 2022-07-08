@@ -16,7 +16,7 @@ class JwtTokenService
 
     jwt_data = decoded_token.slice(:uid, :roles, :scopes, :jti, :iat, :exp)
 
-    jwt_data[:roles] = jwt_data.delete(:scopes) if jwt_data[:scopes]
+    jwt_data[:scopes] = jwt_data.delete(:roles) if jwt_data[:roles]
 
     JwtUser.new(**jwt_data)
   rescue JWT::DecodeError
