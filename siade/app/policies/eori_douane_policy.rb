@@ -1,5 +1,5 @@
 class EORIDouanePolicy < APIPolicy
-  def jwt_role_tag
+  def jwt_scope_tag
     'eori_douanes'
   end
 end

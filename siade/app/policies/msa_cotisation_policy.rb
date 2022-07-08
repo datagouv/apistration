@@ -1,5 +1,5 @@
 class MSACotisationPolicy < APIPolicy
-  def jwt_role_tag
+  def jwt_scope_tag
     'msa_cotisations'
   end
 end

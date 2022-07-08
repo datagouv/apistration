@@ -3,7 +3,7 @@ class AideCovidEffectifsPolicy < APIPolicy
     true
   end
 
-  def jwt_role_tag
+  def jwt_scope_tag
     'aides_covid_effectifs'
   end
 end

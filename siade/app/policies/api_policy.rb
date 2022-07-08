@@ -24,10 +24,10 @@ class APIPolicy
   end
 
   def user_authorized?
-    user.has_access?(jwt_role_tag)
+    user.has_access?(jwt_scope_tag)
   end
 
-  def jwt_role_tag
+  def jwt_scope_tag
     fail 'Child implementation needed'
   end
 end

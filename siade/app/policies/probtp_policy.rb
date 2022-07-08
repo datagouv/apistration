@@ -1,5 +1,5 @@
 class PROBTPPolicy < APIPolicy
-  def jwt_role_tag
+  def jwt_scope_tag
     'probtp'
   end
 end

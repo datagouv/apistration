@@ -1,5 +1,5 @@
 class BilansEntrepriseBDFPolicy < APIPolicy
-  def jwt_role_tag
+  def jwt_scope_tag
     'bilans_entreprise_bdf'
   end
 end

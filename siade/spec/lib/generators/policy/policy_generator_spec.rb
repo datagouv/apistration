@@ -9,7 +9,7 @@ RSpec.describe PolicyGenerator, type: :generator do
     it { is_expected.to exist }
     it { is_expected.to have_correct_syntax }
     it { is_expected.to contain(/class #{resource_name}Policy < APIPolicy/) }
-    it { is_expected.to have_method 'jwt_role_tag' }
+    it { is_expected.to have_method 'jwt_scope_tag' }
   end
 
   describe 'Policy spec file' do

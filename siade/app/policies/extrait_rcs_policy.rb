@@ -1,5 +1,5 @@
 class ExtraitRCSPolicy < APIPolicy
-  def jwt_role_tag
+  def jwt_scope_tag
     'extraits_rcs'
   end
 end

@@ -10,6 +10,6 @@ class API::V2::PrivilegesController < API::V2::BaseController
   end
 
   def privileges
-    user_from_jwt.roles
+    user_from_jwt.scopes
   end
 end

@@ -1,16 +1,16 @@
 class JwtUser
-  attr_reader :id, :jti, :roles, :iat
+  attr_reader :id, :jti, :scopes, :iat
 
-  def initialize(uid:, roles:, jti:, iat:, exp: nil)
+  def initialize(uid:, scopes:, jti:, iat:, exp: nil)
     @id = uid
-    @roles = roles
+    @scopes = scopes
     @jti = jti
     @iat = Time.zone.at iat
     @exp = exp
   end
 
-  def has_access?(role)
-    @roles.include?(role)
+  def has_access?(scope)
+    @scopes.include?(scope)
   end
 
   def logstash_id

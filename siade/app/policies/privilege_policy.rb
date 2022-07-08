@@ -4,7 +4,7 @@ class PrivilegePolicy < APIPolicy
     true
   end
 
-  def jwt_role_tag
+  def jwt_scope_tag
     nil # no tag since it is open provided jwt is valid
   end
 end

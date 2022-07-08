@@ -1,5 +1,5 @@
 class ExercicePolicy < APIPolicy
-  def jwt_role_tag
+  def jwt_scope_tag
     'exercices'
   end
 end

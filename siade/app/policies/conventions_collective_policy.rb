@@ -1,5 +1,5 @@
 class ConventionsCollectivePolicy < APIPolicy
-  def jwt_role_tag
+  def jwt_scope_tag
     'conventions_collectives'
   end
 end
