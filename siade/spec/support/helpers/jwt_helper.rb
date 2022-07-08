@@ -25,7 +25,7 @@ module JwtHelper
       {
         id: 'f5d5cb02-185a-426f-b3f4-99a25ce6cdf4',
         jti: '3d4706c4-7f5e-4442-a734-00d6c675f3c9',
-        roles: %w[
+        scopes: %w[
           attestations_agefiph
           attestations_fiscales
           attestations_sociales
@@ -70,8 +70,8 @@ def yes_jwt
   JwtHelper.jwt(:valid)
 end
 
-def yes_jwt_with_scopes
-  JwtHelper.jwt(:with_scopes_not_roles)
+def yes_jwt_with_roles
+  JwtHelper.jwt(:with_roles_not_scopes)
 end
 
 def expired_jwt
@@ -95,7 +95,7 @@ def corrupted_jwt
 end
 
 def nope_jwt
-  JwtHelper.jwt(:no_roles)
+  JwtHelper.jwt(:no_scopes)
 end
 
 def uptime_jwt

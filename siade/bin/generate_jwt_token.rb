@@ -1,6 +1,6 @@
 require 'date'
 
-extra_roles = [
+extra_scopes = [
   'exercices',
   'attestations_fiscales',
   'liasse_fiscale',
@@ -28,18 +28,18 @@ end
 jwt_hash_secret = credentials[:jwt_hash_secret]
 jwt_hash_algo = credentials[:jwt_hash_algo]
 
-raw_grep_roles = `grep --no-filename -R "authorize :" app/controllers/`
+raw_grep_scopes = `grep --no-filename -R "authorize :" app/controllers/`
 
-roles = raw_grep_roles.split.reject do |str|
+scopes = raw_grep_scopes.split.reject do |str|
   str == 'authorize'
-end.map do |role_symbol|
-  role_symbol[1..-1]
-end.concat(extra_roles).uniq
+end.map do |scope_symbol|
+  scope_symbol[1..-1]
+end.concat(extra_scopes).uniq
 
 token_payload = {
   uid: SecureRandom.uuid,
   jti: "00000000-0000-0000-0000-000000000000",
-  roles: roles,
+  scopes: scopes,
   sub: "#{env} development",
   iat: Time.now.to_i,
   version: '1.0',

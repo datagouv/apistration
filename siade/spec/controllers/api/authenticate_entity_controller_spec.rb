@@ -164,7 +164,7 @@ RSpec.describe API::AuthenticateEntityController do
     it 'sets user context with pundit user' do
       expect(MonitoringService.instance).to receive(:set_user_context).with({
         id: a_string_matching(uuid_regex),
-        roles: an_instance_of(Array),
+        scopes: an_instance_of(Array),
         jti: a_string_matching(uuid_regex),
         iat: a_string_matching(date_regex),
         exp: nil

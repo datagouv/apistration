@@ -249,7 +249,7 @@ RSpec.describe MonitoringService, type: :service do
       let(:user_context) do
         {
           id: user_uuid,
-          roles: %w[role1 role2],
+          scopes: %w[scope1 scope2],
           jti: jti_uuid
         }
       end

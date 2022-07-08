@@ -139,7 +139,7 @@ Avec `environment` un environnement valide.
 
 Dans le cadre des tests (lors de l'ajout d'un nouveau rôle), le script récupère
 automagiquement les rôles depuis les controllers, vous pouvez modifier le
-script pour ajouter le rôle à la main dans la variable `extra_roles`.
+script pour ajouter le rôle à la main dans la variable `extra_scopes`.
 
 Il vous suffit à la fin de prendre la valeur générée et remplacer dans le
 fichier [jwt_helper.rb](spec/support/helpers/jwt_helper.rb) dans la méthode
@@ -154,7 +154,7 @@ Lors de l'ajout d'une nouvelle API il faut (quasiment à chque fois) ajouter un
 nouveau rôle d'accès à ladie ressource.
 
 1.  Dans SIADE, créer une nouvelle policy Pundit avec le tag associé ; le tag
-    est passé à la méthode `authorize` dans le controller `authorize :new_role` ;
+    est passé à la méthode `authorize` dans le controller `authorize :new_scope` ;
 2.  Créer le nouveau rôle dans les API Admin : se connecter au
     [dashboard](https://dashboard.entreprise.api.gouv.fr/login) et créer le rôle
     (depuis le menu adéquat sur la gauche).

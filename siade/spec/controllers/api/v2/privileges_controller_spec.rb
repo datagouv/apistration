@@ -12,8 +12,8 @@ RSpec.describe API::V2::PrivilegesController, type: :controller do
       expect(response).to have_http_status(:ok)
     end
 
-    it 'displays all roles for jwt' do
-      expect(subject['privileges']).to contain_exactly(*JwtHelper.values_for_valid_jwt[:roles])
+    it 'displays all scopes for jwt' do
+      expect(subject['privileges']).to contain_exactly(*JwtHelper.values_for_valid_jwt[:scopes])
     end
   end
 end
