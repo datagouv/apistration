@@ -18,7 +18,7 @@ RSpec.describe Rack::Attack, type: :request do
     it 'returns 401' do
       get url, headers: headers_params
 
-      expect(response.status).to eq(401)
+      expect(response).to have_http_status(:unauthorized)
     end
 
     it 'returns an error message' do
@@ -43,7 +43,7 @@ RSpec.describe Rack::Attack, type: :request do
       limit.times do
         call!(token_sample_1)
 
-        expect(response.status).not_to eq(429)
+        expect(response).not_to have_http_status(:too_many_requests)
       end
     end
 
@@ -53,21 +53,21 @@ RSpec.describe Rack::Attack, type: :request do
       it 'rejects incoming requests after the limit' do
         call!(token_sample_1)
 
-        expect(response.status).to eq(429)
+        expect(response).to have_http_status(:too_many_requests)
       end
 
       it 'resets the counter after 60 seconds' do
         Timecop.freeze(60.seconds.from_now) do
           call!(token_sample_1)
 
-          expect(response.status).not_to eq(429)
+          expect(response).not_to have_http_status(:too_many_requests)
         end
       end
 
       it 'limits requests on a per token basis' do
         call!(token_sample_2)
 
-        expect(response.status).not_to eq(429)
+        expect(response).not_to have_http_status(:too_many_requests)
       end
 
       it 'responds with the Retry-After header when off limit' do
@@ -84,7 +84,7 @@ RSpec.describe Rack::Attack, type: :request do
         limit.times { call!(token) }
         call!(token)
 
-        expect(response.status).not_to eq(429)
+        expect(response).not_to have_http_status(:too_many_requests)
       end
     end
 
@@ -104,7 +104,7 @@ RSpec.describe Rack::Attack, type: :request do
       it 'returns 401' do
         get url, headers: headers_params
 
-        expect(response.status).to eq(401)
+        expect(response).to have_http_status(:unauthorized)
       end
 
       it 'returns an error message associated to blacklisted token' do

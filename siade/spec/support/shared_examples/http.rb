@@ -87,7 +87,7 @@ RSpec.shared_examples 'happy_pdf_endpoint_siren' do |arg_siren, pdf_suffix|
   end
 
   it 'response has 200 status' do
-    expect(response.status).to eq(200)
+    expect(response).to have_http_status(:ok)
   end
 
   its 'body has a url key' do
@@ -110,7 +110,7 @@ RSpec.shared_examples 'happy_pdf_endpoint_siret' do |arg_siret, pdf_suffix|
   end
 
   it 'response has 200 status' do
-    expect(response.status).to eq(200)
+    expect(response).to have_http_status(:ok)
   end
 
   its 'body has a url key' do
@@ -147,7 +147,7 @@ RSpec.shared_examples 'ask_for_mandatory_parameters' do |action = :show, extra_g
     let(:test_params) { { context: context_param, recipient: } }
 
     it 'returns 422 with error message' do
-      expect(response.status).to eq 422
+      expect(response).to have_http_status :unprocessable_entity
       expect(subject).to have_json_error(detail: 'Le paramètre object est obligatoire')
     end
   end
@@ -156,7 +156,7 @@ RSpec.shared_examples 'ask_for_mandatory_parameters' do |action = :show, extra_g
     let(:test_params) { { object:, recipient: } }
 
     it 'returns 422 with error message' do
-      expect(response.status).to eq 422
+      expect(response).to have_http_status :unprocessable_entity
       expect(subject).to have_json_error(detail: 'Le paramètre context est obligatoire')
     end
   end
@@ -165,7 +165,7 @@ RSpec.shared_examples 'ask_for_mandatory_parameters' do |action = :show, extra_g
     let(:test_params) { { object:, context: context_param } }
 
     it 'returns 422 with error message' do
-      expect(response.status).to eq 422
+      expect(response).to have_http_status :unprocessable_entity
       expect(subject).to have_json_error(detail: 'Le paramètre recipient est obligatoire')
     end
   end
