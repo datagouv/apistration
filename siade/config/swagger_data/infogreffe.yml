@@ -232,22 +232,27 @@ infogreffe:
       adresse_siege: 
         type: 'object'
         title: "Adresse de l'établissement siège"
+        description: &infogreffe_adresse_description "L'adresse transmise par infogreffe est renvoyée sous différents formats, utilisant parfois le champ "nom postal", parfois les champs "ligne 1" et "ligne 2", ou encore au travers des champs "numéro de la voie" + "type de la voie" + "nom de la voie". Pour obtenir l'adresse du siège ou l'établissement principal, nous vous recommandons fortement de faire appel à l'API Adresse établissement - Insee."
         properties: &infogreffe_adresse_properties
           nom_postal:
             type: "string"
             title: "Nom postal"
+            example: "22 RUE DE LA PAIX"
             nullable: true
           numero:
             type: "string"
-            title: "Numéro rue"
+            title: "Numéro de voie"
+            example: "22"
             nullable: true
           type:
             type: "string"
             title: "Type"
+            example: "RUE"
             nullable: true
           voie:
             type: "string"
             title: "Nom de la voie"
+            example: "DE LA PAIX"
             nullable: true
           ligne_1:
             type: "string"
@@ -264,6 +269,7 @@ infogreffe:
           code_postal:
             type: "string"
             title: "Code postal"
+            example: 75016"
             nullable: true
           bureau_distributeur:
             type: "string"
@@ -272,14 +278,16 @@ infogreffe:
           pays:
             type: "string"
             title: "Pays"
+            example: "FRANCE"
             nullable: true
       etablissement_principal:
         type: "object"
-        title: "Informations sur l'établissement principal"
+        title: "Informations de l'établissement principal"
         properties:
           adresse: 
             type: 'object'
             title: "Adresse de l'établissement principal"
+            description: *infogreffe_adresse_description
             properties: *infogreffe_adresse_properties
           activite:
             type: "string"
@@ -354,6 +362,7 @@ infogreffe:
           adresse: 
             type: 'object'
             title: "Adresse"
+            description: *infogreffe_adresse_description
             properties: *infogreffe_adresse_properties
           nationalite:
             type: "object"
