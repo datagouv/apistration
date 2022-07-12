@@ -232,7 +232,7 @@ infogreffe:
       adresse_siege: 
         type: 'object'
         title: "Adresse de l'établissement siège"
-        description: &infogreffe_adresse_description "L'adresse transmise par infogreffe est renvoyée sous différents formats, utilisant parfois le champ "nom postal", parfois les champs "ligne 1" et "ligne 2", ou encore au travers des champs "numéro de la voie" + "type de la voie" + "nom de la voie". Pour obtenir l'adresse du siège ou l'établissement principal, nous vous recommandons fortement de faire appel à l'API Adresse établissement - Insee."
+        description: &infogreffe_adresse_description "L'adresse transmise par infogreffe est renvoyée sous différents formats, utilisant parfois le champ «nom postal», parfois les champs «ligne 1» et «ligne 2», ou encore au travers des champs «numéro de la voie» + «type de la voie» + «nom de la voie». Pour obtenir l'adresse du siège ou l'établissement principal, nous vous recommandons fortement de faire appel à l'API Adresse établissement - Insee."
         properties: &infogreffe_adresse_properties
           nom_postal:
             type: "string"
