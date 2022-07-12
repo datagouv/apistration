@@ -20,6 +20,8 @@ set :domain, ENV['domain']
 
 set :deploy_to, "/var/www/siade_#{ENV['to']}"
 set :rails_env, ENV['to']
+set :app_owner, "deploy"
+set :app_group, "webapp"
 
 set :execution_mode, :system
 set :forward_agent, true
@@ -67,6 +69,10 @@ namespace :bundle do
     command %{#{fetch(:bundle_bin)} config set --local path '#{fetch(:bundle_path)}'}
     command %{#{fetch(:bundle_bin)} config set --local without '#{fetch(:bundle_withouts)}'}
   end
+  task :install do
+    desc 'Allow group write and set setGID bit on gems folders.'
+    command %{sudo chmod u+rwx-s,g+rwxs,o= "#{fetch(:bundle_path)}"/ruby/*/gems/*}
+  end
 end
 
 # This task is the environment that is loaded for all remote run commands, such as
@@ -80,7 +86,7 @@ task :remote_environment do
 end
 
 task :samhain_db_update do
-  command %{sudo /usr/local/sbin/update-samhain-db.sh "/var/www/siade_#{ENV['to']}"}
+  command %{sudo /usr/local/sbin/update-samhain-db.sh "#{fetch(:deploy_to)}"}
 end
 
 # Put any custom commands you need to run at setup
@@ -115,7 +121,7 @@ task :passenger do
   command %{
     if (sudo passenger-status | grep siade_#{ENV['to']}) >/dev/null
     then
-      sudo passenger-config restart-app /var/www/siade_#{ENV['to']}/current
+      sudo passenger-config restart-app #{fetch(:deploy_to)}/current
     else
       echo 'Skipping: no passenger app found (will be automatically loaded)'
     fi
@@ -123,5 +129,5 @@ task :passenger do
 end
 
 task :ownership do
-  command %{sudo chown -R deploy /var/www/siade_#{ENV['to']}}
+  command %{sudo chown -R #{fetch(:app_owner)}:#{fetch(:app_group)} "#{fetch(:deploy_to)}"}
 end
