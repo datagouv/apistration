@@ -1,9 +1,9 @@
 class V3AndMore::BaseSerializer
-  def initialize(model_or_collection, options = {})
-    @model_or_collection = model_or_collection
-    @is_collection = options.delete(:is_collection)
-    @meta = options.delete(:meta)
-    @links = options.delete(:links)
+  attr_reader :data, :context
+
+  def initialize(payload_data)
+    @data = payload_data.data
+    @context = payload_data.context
   end
 
   class << self
@@ -13,7 +13,7 @@ class V3AndMore::BaseSerializer
       self.__attributes ||= {}
 
       attrs.each do |attr|
-        self.__attributes[attr] = ->(model) { model.public_send(attr) }
+        self.__attributes[attr] = ->(resource) { resource.public_send(attr) }
       end
     end
 
@@ -33,33 +33,20 @@ class V3AndMore::BaseSerializer
   end
 
   def serializable_hash
-    if @is_collection
-      serialize_collection
-    else
-      serialize_single_model(@model_or_collection)
-    end
+    serialize_single_resource
   end
 
   private
 
-  def serialize_collection
-    {
-      data: @model_or_collection.map { |model| compute_attributes(:__attributes, model).merge(links: compute_attributes(:__links, model)) },
-      meta: @meta || {},
-      links: @links || {}
-    }
-  end
-
-  def serialize_single_model(model)
-    serialize_model(model).merge({
-      meta: self.class.__meta.try(:call, model) || {}
-    })
+  def serialize_single_resource
+    serialize_model(data)
   end
 
   def serialize_model(model)
     {
       data: compute_attributes(:__attributes, model),
-      links: compute_attributes(:__links, model)
+      links: compute_attributes(:__links, model),
+      meta: self.class.__meta.try(:call, model) || {}
     }
   end
 

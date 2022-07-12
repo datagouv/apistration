@@ -11,9 +11,11 @@ RSpec.describe DGFIP::AttestationFiscale::BuildResource, type: :build_resource d
     it { is_expected.to be_success }
 
     it 'builds valid resource' do
-      expect(subject.resource).to be_a(Resource)
+      resource = subject.payload_data.data
 
-      expect(subject.resource.to_h).to include(
+      expect(resource).to be_a(Resource)
+
+      expect(resource.to_h).to include(
         document_url: 'not.a.real/file/upload'
       )
     end

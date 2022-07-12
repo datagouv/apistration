@@ -3,12 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe V3AndMore::BaseSerializer, type: :serializer do
-  subject { DummySerializer.new(dummy_object).serializable_hash }
+  subject { serializer.new(dummy_object).serializable_hash }
 
-  before(:all) do
-    DummySerializable = Struct.new(:attr_1, :attr_2, :url_1, :meta_1)
-
-    class DummySerializer < V3AndMore::BaseSerializer
+  let(:serializer) do
+    Class.new(described_class) do
       attributes :attr_1, :attr_2
 
       attribute :attr_3 do |object|
@@ -25,7 +23,16 @@ RSpec.describe V3AndMore::BaseSerializer, type: :serializer do
     end
   end
 
-  let(:dummy_object) { DummySerializable.new('attr_1', 'attr_2', 'url_1', 'meta_1') }
+  let(:dummy_object) do
+    data = Resource.new({
+      attr_1: 'attr_1',
+      attr_2: 'attr_2',
+      meta_1: 'meta_1',
+      url_1: 'url_1'
+    })
+
+    BundledData.new(data:)
+  end
 
   it do
     expect(subject).to eq({
