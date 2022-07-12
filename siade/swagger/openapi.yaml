@@ -3870,24 +3870,27 @@ paths:
                     properties:
                       date_extrait:
                         type: string
-                        title: Date d'extrait
-                        example: '1999-06-11'
+                        title: Date de l'extrait
+                        description: Il s'agit de la date d'émission de l'extrait
+                          RCS.
+                        example: '2022-07-11'
                         nullable: true
                       date_immatriculation:
                         type: string
                         title: Date d'immatriculation au RCS
-                        description: À compter de cette date, les sociétés jouissent
+                        description: Il s'agit du jour d'immatriculation de l'entreprise
+                          au RCS. À compter de cette date, les sociétés jouissent
                           de la personnalité morale. Cette date d'immatriculation
-                          n'est pas la même que celle délivrée par l'INSEE. Elle ne
+                          n'est pas la même que celle délivrée par l'Insee. Elle ne
                           correspond pas non plus à la date du début d'activité.
                         example: '1998-07-12'
                         nullable: true
                       mandataires_sociaux:
                         title: Mandataires sociaux
                         description: Liste des mandataires sociaux d'une société inscrite
-                          au RCS, délivrée par Infogreffe. Certaines informations
-                          telles que la date de naissance ont été omises, vous pouvez
-                          les obtenir en appelant l'endpoint /infogreffe/mandataires_sociaux/
+                          au RCS. Certaines informations telles que la date de naissance
+                          complète ne figurent pas dans cette API. Pour plus d'exhaustivité,
+                          appeler l'API Mandataires sociaux - Infogreffe.
                         type: array
                         items:
                           required:
@@ -3930,10 +3933,10 @@ paths:
                               example: Martin
                               nullable: true
                             date_naissance:
-                              title: Date de naissance (mois/année)
-                              description: Date de naissance du mandataire social
-                                (seulement le mois et l'année). Ce champ est disponible
-                                uniquement pour une personne physique.
+                              title: Mois et année de naissance
+                              description: Mois et année de naissance du mandataire
+                                social. Ce champ est disponible uniquement pour une
+                                personne physique.
                               type: string
                               example: 1965-01
                               nullable: true
@@ -3949,6 +3952,8 @@ paths:
                       observations:
                         type: array
                         title: Ensemble des observations du greffier
+                        description: Ce champ regroupe tous les messages laissés par
+                          le greffier et inscrits dans les observations.
                         items:
                           type: object
                           properties:
@@ -3973,22 +3978,33 @@ paths:
                       adresse_siege:
                         type: object
                         title: Adresse de l'établissement siège
+                        description: L'adresse transmise par Infogreffe est renvoyée
+                          sous différents formats, utilisant parfois le champ «nom
+                          postal», parfois les champs «ligne 1» et «ligne 2», ou encore
+                          au travers des champs «numéro de la voie» + «type de la
+                          voie» + «nom de la voie». Pour obtenir l'adresse du siège
+                          ou l'établissement principal, nous vous recommandons fortement
+                          de faire appel à l'API Adresse établissement - Insee.
                         properties:
                           nom_postal:
                             type: string
                             title: Nom postal
+                            example: 22 RUE DE LA PAIX
                             nullable: true
                           numero:
                             type: string
-                            title: Numéro rue
+                            title: Numéro de voie
+                            example: '22'
                             nullable: true
                           type:
                             type: string
                             title: Type
+                            example: RUE
                             nullable: true
                           voie:
                             type: string
                             title: Nom de la voie
+                            example: DE LA PAIX
                             nullable: true
                           ligne_1:
                             type: string
@@ -4005,6 +4021,7 @@ paths:
                           code_postal:
                             type: string
                             title: Code postal
+                            example: 75016"
                             nullable: true
                           bureau_distributeur:
                             type: string
@@ -4013,6 +4030,7 @@ paths:
                           pays:
                             type: string
                             title: Pays
+                            example: FRANCE
                             nullable: true
                         required:
                         - nom_postal
@@ -4027,27 +4045,39 @@ paths:
                         - pays
                       etablissement_principal:
                         type: object
-                        title: Informations sur l'établissement principal
+                        title: Informations de l'établissement principal
                         properties:
                           adresse:
                             type: object
-                            title: Adresse de l'établissement siège
+                            title: Adresse de l'établissement principal
+                            description: L'adresse transmise par Infogreffe est renvoyée
+                              sous différents formats, utilisant parfois le champ
+                              «nom postal», parfois les champs «ligne 1» et «ligne
+                              2», ou encore au travers des champs «numéro de la voie»
+                              + «type de la voie» + «nom de la voie». Pour obtenir
+                              l'adresse du siège ou l'établissement principal, nous
+                              vous recommandons fortement de faire appel à l'API Adresse
+                              établissement - Insee.
                             properties:
                               nom_postal:
                                 type: string
                                 title: Nom postal
+                                example: 22 RUE DE LA PAIX
                                 nullable: true
                               numero:
                                 type: string
-                                title: Numéro rue
+                                title: Numéro de voie
+                                example: '22'
                                 nullable: true
                               type:
                                 type: string
                                 title: Type
+                                example: RUE
                                 nullable: true
                               voie:
                                 type: string
                                 title: Nom de la voie
+                                example: DE LA PAIX
                                 nullable: true
                               ligne_1:
                                 type: string
@@ -4064,6 +4094,7 @@ paths:
                               code_postal:
                                 type: string
                                 title: Code postal
+                                example: 75016"
                                 nullable: true
                               bureau_distributeur:
                                 type: string
@@ -4072,6 +4103,7 @@ paths:
                               pays:
                                 type: string
                                 title: Pays
+                                example: FRANCE
                                 nullable: true
                             required:
                             - nom_postal
@@ -4103,7 +4135,17 @@ paths:
                           code_ape:
                             type: string
                             title: Code APE
-                            description: Code APE représentant l'activité de l'entreprise
+                            description: "Le code APE (activité principale exercée)
+                              permet d'identifier la branche d'activité principale.
+                              Il est attribué par l'Insee lors de l'immatriculation
+                              ou la déclaration d'activité de l'entreprise. Ce code
+                              de 4 chiffres + 1 lettre est extrait de la nomenclature
+                              d'activité française (NAF) de l'Insee. \n \n À noter
+                              qu'une entreprise n'ayant pas encore de code APE peut
+                              se voir affecter la valeur '00.00Z' de manière provisoire.
+                              \n \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
+                              Nomemclature d'activité française - NAF rév.2 de l'Insee
+                              : https://www.insee.fr/fr/information/2120875"
                             example: 6420Z
                         required:
                         - adresse
@@ -4118,20 +4160,20 @@ paths:
                           montant:
                             type: number
                             title: Montant du capital
-                            description: Montant du capital de création de l'entreprise
+                            description: Montant du capital de création de l'entreprise.
                             example: 50123.6
                             nullable: true
                           devise:
                             type: string
                             title: Devise
-                            description: Devise du capital de création de l'entreprise
+                            description: Devise du capital de création de l'entreprise.
                             example: EUROS
                             nullable: true
                           code_devise:
                             type: string
                             title: Code devise
                             description: Code de la devise du capital de création
-                              de l'entreprise
+                              de l'entreprise.
                             example: EUR
                             nullable: true
                         required:
@@ -4141,17 +4183,17 @@ paths:
                       greffe:
                         type: object
                         title: Greffe
-                        description: Informations sur le greffe
+                        description: Informations sur le greffe.
                         properties:
                           valeur:
                             type: string
-                            title: Greffe
-                            description: Nom du greffe en charge de l'entreprise
+                            title: Libellé du greffe
+                            description: Nom du greffe en charge de l'entreprise.
                             example: COLMAR
                           code:
                             type: string
                             title: Code greffe
-                            description: Code du greffe en charge de l'entreprise
+                            description: Code du greffe en charge de l'entreprise.
                             example: '6851'
                         required:
                         - valeur
@@ -4159,29 +4201,41 @@ paths:
                       personne_physique:
                         type: object
                         title: Personne physique
-                        description: Informations sur l'entreprise dans le cas où
-                          l'entreprise est une personne physique. Les champs sont
-                          vides si l'entreprise est une personne morale.
+                        description: Informations sur l'entreprise s'il s'agit d'une
+                          personne physique. Les champs sont vides si l'entreprise
+                          est une personne morale.
                         properties:
                           adresse:
                             type: object
-                            title: Adresse de l'établissement siège
+                            title: Adresse
+                            description: L'adresse transmise par Infogreffe est renvoyée
+                              sous différents formats, utilisant parfois le champ
+                              «nom postal», parfois les champs «ligne 1» et «ligne
+                              2», ou encore au travers des champs «numéro de la voie»
+                              + «type de la voie» + «nom de la voie». Pour obtenir
+                              l'adresse du siège ou l'établissement principal, nous
+                              vous recommandons fortement de faire appel à l'API Adresse
+                              établissement - Insee.
                             properties:
                               nom_postal:
                                 type: string
                                 title: Nom postal
+                                example: 22 RUE DE LA PAIX
                                 nullable: true
                               numero:
                                 type: string
-                                title: Numéro rue
+                                title: Numéro de voie
+                                example: '22'
                                 nullable: true
                               type:
                                 type: string
                                 title: Type
+                                example: RUE
                                 nullable: true
                               voie:
                                 type: string
                                 title: Nom de la voie
+                                example: DE LA PAIX
                                 nullable: true
                               ligne_1:
                                 type: string
@@ -4198,6 +4252,7 @@ paths:
                               code_postal:
                                 type: string
                                 title: Code postal
+                                example: 75016"
                                 nullable: true
                               bureau_distributeur:
                                 type: string
@@ -4206,6 +4261,7 @@ paths:
                               pays:
                                 type: string
                                 title: Pays
+                                example: FRANCE
                                 nullable: true
                             required:
                             - nom_postal
@@ -4221,19 +4277,19 @@ paths:
                           nationalite:
                             type: object
                             title: Nationalité
-                            description: Nationalité de la personne physique
+                            description: Nationalité de la personne physique.
                             properties:
                               valeur:
                                 type: string
-                                title: Nationalité (valeur)
-                                description: Nationalité de la personne physique
+                                title: Nationalité
+                                description: Nationalité de la personne physique.
                                 example: FRANÇAISE
                                 nullable: true
                               code:
                                 type: string
                                 title: Code Pays
                                 description: Code pays de la nationalité de la personne
-                                  physique
+                                  physique.
                                 example: FR
                                 nullable: true
                             required:
@@ -4242,13 +4298,13 @@ paths:
                           nom:
                             type: string
                             title: Nom
-                            description: Nom de la personne physique
+                            description: Nom de la personne physique.
                             example: MARTIN
                             nullable: true
                           prenom:
                             type: string
                             title: Prénom
-                            description: Prénom de la personne physique
+                            description: Prénom de la personne physique.
                             example: JEAN-MARIE
                             nullable: true
                           naissance:
@@ -4264,14 +4320,14 @@ paths:
                                 properties:
                                   valeur:
                                     type: string
-                                    title: Pays de naissance (valeur)
-                                    description: Pays de naissance de la personne
+                                    title: Libellé du pays de naissance
+                                    description: Nom du pays de naissance de la personne
                                       physique
                                     example: FRANCE
                                     nullable: true
                                   code:
                                     type: string
-                                    title: Code Pays de naissance
+                                    title: Code du pays de naissance
                                     description: Code du pays de naissance de la personne
                                       physique
                                     example: FR
@@ -4304,9 +4360,9 @@ paths:
                       personne_morale:
                         type: object
                         title: Personne morale
-                        description: Informations sur l'entreprise dans le cas où
-                          l'entreprise est une personne morale. Les champs sont vides
-                          si l'entreprise est une personne physique.
+                        description: Informations sur l'entreprise s'il s'agit d'une
+                          personne morale. Les champs sont vides si l'entreprise est
+                          une personne physique.
                         properties:
                           forme_juridique:
                             type: object
@@ -4315,7 +4371,7 @@ paths:
                             properties:
                               valeur:
                                 type: string
-                                title: Forme juridique (valeur)
+                                title: Libellé de la forme juridique
                                 example: SOCIETE PAR ACTIONS SIMPLIFIEES
                                 nullable: true
                               code:
@@ -4331,19 +4387,19 @@ paths:
                             - code
                           denomination:
                             type: string
-                            title: Dénomination de la personne morale
+                            title: Dénomination ou raison sociale de la personne morale
                             example: 2X INVEST
                             nullable: true
                           date_cloture_exercice_comptable:
                             type: string
-                            title: Date de cloture de l'exercice comptable
-                            description: Date (mois et jour) dans l'année où l'exercice
-                              comptable de l'entreprise est clôturé
+                            title: Date de clôture de l'exercice social
+                            description: Mois et jour de l'année où l'exercice comptable
+                              de l'entreprise est clôturé.
                             example: 02-24
                             nullable: true
                           date_fin_de_vie:
                             type: string
-                            title: Date de fin de vie de l'entreprise
+                            title: Durée de la personne morale
                             description: Date à laquelle l'entreprise cesse d'exister,
                               sauf potentiel renouvellement. Correspond souvent à
                               la date de création + 100 ans.
