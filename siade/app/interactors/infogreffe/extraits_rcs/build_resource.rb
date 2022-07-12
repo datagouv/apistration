@@ -63,7 +63,6 @@ class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
 
   def etablissement_principal
     {
-      adresse: build_adresse(reference_adresse_etablissement_principal),
       activite: extract_etablissement_text_attribute('activite'),
       origine_fonds: extract_etablissement_text_attribute('origine_fonds'),
       mode_exploitation: extract_etablissement_text_attribute('mode_exploit'),

@@ -61,7 +61,6 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       describe 'etablissement principal' do
         subject(:etablissement_principal) { instance.resource.etablissement_principal }
 
-        it { expect(etablissement_principal[:adresse]).to be_an_instance_of(Hash) }
         it { expect(etablissement_principal[:activite]).to eq('GAGNER DES SOUS') }
         it { expect(etablissement_principal[:origine_fonds]).to eq('CREATION') }
         it { expect(etablissement_principal[:mode_exploitation]).to eq('EXPLOITATION DIRECTE') }
@@ -252,28 +251,6 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
           end
         end
       end
-    end
-  end
-
-  describe 'non-regression test: when payload has no etablissement key' do
-    let(:body) { infogreffe_payload(siren, :without_etablissement) }
-    let(:siren) { '911406452' }
-
-    it { is_expected.to be_a_success }
-
-    describe 'etablissement principal -> adresse' do
-      subject(:etablissement_principal_adresse) { instance.resource.etablissement_principal[:adresse] }
-
-      it { expect(etablissement_principal_adresse[:nom_postal]).to be_blank }
-      it { expect(etablissement_principal_adresse[:numero]).to be_blank }
-      it { expect(etablissement_principal_adresse[:type]).to be_blank }
-      it { expect(etablissement_principal_adresse[:voie]).to be_blank }
-      it { expect(etablissement_principal_adresse[:ligne_1]).to be_blank }
-      it { expect(etablissement_principal_adresse[:ligne_2]).to be_blank }
-      it { expect(etablissement_principal_adresse[:localite]).to be_blank }
-      it { expect(etablissement_principal_adresse[:code_postal]).to be_blank }
-      it { expect(etablissement_principal_adresse[:bureau_distributeur]).to be_blank }
-      it { expect(etablissement_principal_adresse[:pays]).to be_blank }
     end
   end
 end

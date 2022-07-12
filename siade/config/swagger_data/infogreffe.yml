@@ -229,66 +229,10 @@ infogreffe:
         title: "Nom commercial"
         example: "DECATHLON"
         nullable: true
-      adresse_siege: 
-        type: 'object'
-        title: "Adresse de l'établissement siège"
-        description: &infogreffe_adresse_description "L'adresse transmise par Infogreffe est renvoyée sous différents formats, utilisant parfois le champ «nom postal», parfois les champs «ligne 1» et «ligne 2», ou encore au travers des champs «numéro de la voie» + «type de la voie» + «nom de la voie». Pour obtenir l'adresse du siège ou l'établissement principal, nous vous recommandons fortement de faire appel à l'API Adresse établissement - Insee."
-        properties: &infogreffe_adresse_properties
-          nom_postal:
-            type: "string"
-            title: "Nom postal"
-            example: "22 RUE DE LA PAIX"
-            nullable: true
-          numero:
-            type: "string"
-            title: "Numéro de voie"
-            example: "22"
-            nullable: true
-          type:
-            type: "string"
-            title: "Type"
-            example: "RUE"
-            nullable: true
-          voie:
-            type: "string"
-            title: "Nom de la voie"
-            example: "DE LA PAIX"
-            nullable: true
-          ligne_1:
-            type: "string"
-            title: "Ligne 1 adresse"
-            nullable: true
-          ligne_2:
-            type: "string"
-            title: "Ligne 2 adresse"
-            nullable: true
-          localite:
-            type: "string"
-            title: "Localité"
-            nullable: true
-          code_postal:
-            type: "string"
-            title: "Code postal"
-            example: 75016"
-            nullable: true
-          bureau_distributeur:
-            type: "string"
-            title: "Bureau distributeur"
-            nullable: true
-          pays:
-            type: "string"
-            title: "Pays"
-            example: "FRANCE"
-            nullable: true
       etablissement_principal:
         type: "object"
         title: "Informations de l'établissement principal"
         properties:
-          adresse: 
-            type: 'object'
-            title: "Adresse de l'établissement principal"
-            description: *infogreffe_adresse_description
-            properties: *infogreffe_adresse_properties
           activite:
             type: "string"
             title: "Activité de l'établissement principal"
@@ -359,11 +303,57 @@ infogreffe:
         title: "Personne physique"
         description: "Informations sur l'entreprise s'il s'agit d'une personne physique. Les champs sont vides si l'entreprise est une personne morale."
         properties:
-          adresse: 
+          adresse:
             type: 'object'
             title: "Adresse"
-            description: *infogreffe_adresse_description
-            properties: *infogreffe_adresse_properties
+            description: &infogreffe_adresse_description "L'adresse transmise par Infogreffe est renvoyée sous différents formats, utilisant parfois le champ «nom postal», parfois les champs «ligne 1» et «ligne 2», ou encore au travers des champs «numéro de la voie» + «type de la voie» + «nom de la voie». Pour obtenir l'adresse du siège ou l'établissement principal, nous vous recommandons fortement de faire appel à l'API Adresse établissement - Insee."
+            properties: &infogreffe_adresse_properties
+              nom_postal:
+                type: "string"
+                title: "Nom postal"
+                example: "22 RUE DE LA PAIX"
+                nullable: true
+              numero:
+                type: "string"
+                title: "Numéro de voie"
+                example: "22"
+                nullable: true
+              type:
+                type: "string"
+                title: "Type"
+                example: "RUE"
+                nullable: true
+              voie:
+                type: "string"
+                title: "Nom de la voie"
+                example: "DE LA PAIX"
+                nullable: true
+              ligne_1:
+                type: "string"
+                title: "Ligne 1 adresse"
+                nullable: true
+              ligne_2:
+                type: "string"
+                title: "Ligne 2 adresse"
+                nullable: true
+              localite:
+                type: "string"
+                title: "Localité"
+                nullable: true
+              code_postal:
+                type: "string"
+                title: "Code postal"
+                example: 75016"
+                nullable: true
+              bureau_distributeur:
+                type: "string"
+                title: "Bureau distributeur"
+                nullable: true
+              pays:
+                type: "string"
+                title: "Pays"
+                example: "FRANCE"
+                nullable: true
           nationalite:
             type: "object"
             title: "Nationalité"
