@@ -147,7 +147,7 @@ infogreffe:
       date_extrait:
         type: 'string'
         title: "Date de l'extrait"
-        description: "Il s'agit de la date d'émission de l'extrait, il peut s'agir de la date d'appel de la donnée."
+        description: "Il s'agit de la date d'émission de l'extrait, il peut s'agir de la date d'appel de l'API."
         example: '2022-07-11'
         nullable: true
       date_immatriculation:
@@ -338,7 +338,7 @@ infogreffe:
         properties:
           valeur:
             type: "string"
-            title: "Greffe"
+            title: "Libellé du greffe"
             description: "Nom du greffe en charge de l'entreprise."
             example: "COLMAR"
           code:
@@ -362,7 +362,7 @@ infogreffe:
             properties:
               valeur:
                 type: "string"
-                title: "Nationalité (valeur)"
+                title: "Nationalité"
                 description: "Nationalité de la personne physique."
                 example: "FRANÇAISE"
                 nullable: true
@@ -396,7 +396,7 @@ infogreffe:
                 properties:
                   valeur:
                     type: "string"
-                    title: "Nom du pays de naissance"
+                    title: "Libellé du pays de naissance"
                     description: "Nom du pays de naissance de la personne physique"
                     example: "FRANCE"
                     nullable: true
@@ -430,7 +430,7 @@ infogreffe:
             properties:
               valeur:
                 type: 'string'
-                title: "Forme juridique (valeur)"
+                title: "Libellé de la forme juridique"
                 example: "SOCIETE PAR ACTIONS SIMPLIFIEES"
                 nullable: true
               code:
@@ -441,18 +441,18 @@ infogreffe:
                 nullable: true
           denomination:
             type: 'string'
-            title: "Dénomination de la personne morale"
+            title: "Dénomination ou raison sociale de la personne morale"
             example: '2X INVEST'
             nullable: true
           date_cloture_exercice_comptable:
             type: 'string'
-            title: "Date de clôture de l'exercice comptable"
-            description: "Mois et jour de l'année où l'exercice comptable de l'entreprise est clôturé"
+            title: "Date de clôture de l'exercice social"
+            description: "Mois et jour de l'année où l'exercice comptable de l'entreprise est clôturé."
             example: "02-24"
             nullable: true
           date_fin_de_vie:
             type: 'string'
-            title: "Date de fin de vie de l'entreprise"
+            title: "Durée de la personne morale"
             description: "Date à laquelle l'entreprise cesse d'exister, sauf potentiel renouvellement. Correspond souvent à la date de création + 100 ans."
             example: "2075-05-18"
             nullable: true
