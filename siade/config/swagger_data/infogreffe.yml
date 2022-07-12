@@ -147,7 +147,7 @@ infogreffe:
       date_extrait:
         type: 'string'
         title: "Date de l'extrait"
-        description: "Il s'agit de la date d'émission de l'extrait, il peut s'agir de la date d'appel de l'API."
+        description: "Il s'agit de la date d'émission de l'extrait RCS."
         example: '2022-07-11'
         nullable: true
       date_immatriculation:
