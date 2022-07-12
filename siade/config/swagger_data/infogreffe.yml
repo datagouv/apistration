@@ -146,8 +146,9 @@ infogreffe:
     attributes:
       date_extrait:
         type: 'string'
-        title: "Date d'extrait"
-        example: '1999-06-11'
+        title: "Date de l'extrait"
+        description: "Il s'agit de la date d'émission de l'extrait, il peut s'agir de la date d'appel de la donnée."
+        example: '2022-07-11'
         nullable: true
       date_immatriculation:
         type: 'string'
