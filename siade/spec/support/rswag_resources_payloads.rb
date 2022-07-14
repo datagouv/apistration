@@ -17,7 +17,7 @@ module RSWagResourcesPayloads
     }
   end
 
-  def build_rswag_response_collection(properties: nil, links: nil, meta: nil, example: nil, required: nil)
+  def build_rswag_response_collection(properties: nil, links: nil, meta: nil, item_links: nil, item_meta: nil, example: nil, required: nil)
     {
       type: :object,
       properties: {
@@ -25,15 +25,23 @@ module RSWagResourcesPayloads
           type: :array,
           items: {
             type: :object,
-            properties: add_required_keys_to_all_type_object(properties.except('id', 'type')).merge(
-              build_rswag_links(links)
-            ),
-            required: required || (properties.keys - %w[id type])
-          },
-          required: build_rswag_collection_item_required_keys(links)
+            properties: {
+              data: {
+                type: :object,
+                properties: add_required_keys_to_all_type_object(properties.except('id', 'type')),
+                required: required || (properties.keys - %w[id type])
+              }
+            }.merge(
+              build_rswag_links(item_links)
+            ).merge(
+              build_rswag_meta(item_meta)
+            )
+          }
         }
       }.merge(
         build_rswag_meta(meta)
+      ).merge(
+        build_rswag_links(links)
       ),
       required: build_rswag_collection_required_keys(meta)
     }.merge(build_custom_example(example))
