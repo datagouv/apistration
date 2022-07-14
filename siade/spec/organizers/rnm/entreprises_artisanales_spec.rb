@@ -13,7 +13,11 @@ RSpec.describe RNM::EntreprisesArtisanales, type: :retriever_organizer do
 
       it { is_expected.to be_a_success }
 
-      its(:resource) { is_expected.to be_present }
+      it 'retrieves the resource' do
+        resource = subject.bundled_data.data
+
+        expect(resource).to be_present
+      end
     end
   end
 end

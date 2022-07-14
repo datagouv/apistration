@@ -65,14 +65,21 @@ RSpec.describe ADEME::CertificatsRGE::BuildResourceCollection, type: :build_reso
   end
 
   describe '.call', vcr: { cassette_name: 'ademe/certificats_rge/valid_siret_with_limit' } do
+    let(:resource_collection) { subject.bundled_data.data }
+    let(:meta) { subject.bundled_data.context }
+
     it { is_expected.to be_a_success }
 
-    its(:meta) { is_expected.to eq(valid_meta) }
+    it 'retrieves the resource collection' do
+      expect(resource_collection).to all(be_a(Resource))
+    end
 
-    its(:resource_collection) { is_expected.to all be_a(Resource) }
+    it 'retrieves the meta' do
+      expect(meta).to eq(valid_meta)
+    end
 
     it 'builds valid resource collection' do
-      expect(subject.resource_collection.map(&:to_h)).to eq(valid_collection)
+      expect(resource_collection.map(&:to_h)).to eq(valid_collection)
     end
   end
 end

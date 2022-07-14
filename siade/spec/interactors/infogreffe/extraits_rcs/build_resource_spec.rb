@@ -23,7 +23,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
     it { is_expected.to be_a_success }
 
     describe 'resource' do
-      subject { instance.resource }
+      subject { instance.bundled_data.data }
 
       its(:siren) { is_expected.to eq('418166096') }
       its(:date_immatriculation) { is_expected.to eq('1998-03-27') }
@@ -33,7 +33,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       its(:greffe) { is_expected.to be_an_instance_of(Hash) }
 
       describe 'greffe' do
-        subject(:greffe) { instance.resource.greffe }
+        subject(:greffe) { instance.bundled_data.data.greffe }
 
         it { expect(greffe[:valeur]).to eq('PARIS') }
         it { expect(greffe[:code]).to eq('7501') }
@@ -42,7 +42,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       its(:adresse_siege) { is_expected.to be_an_instance_of(Hash) }
 
       describe 'adresse_siege' do
-        subject(:adresse_siege) { instance.resource.adresse_siege }
+        subject(:adresse_siege) { instance.bundled_data.data.adresse_siege }
 
         it { expect(adresse_siege[:nom_postal]).to eq('34 AVENUE DE L\'OPERA') }
         it { expect(adresse_siege[:numero]).to eq('') }
@@ -59,7 +59,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       its(:etablissement_principal) { is_expected.to be_an_instance_of(Hash) }
 
       describe 'etablissement principal' do
-        subject(:etablissement_principal) { instance.resource.etablissement_principal }
+        subject(:etablissement_principal) { instance.bundled_data.data.etablissement_principal }
 
         it { expect(etablissement_principal[:activite]).to eq('GAGNER DES SOUS') }
         it { expect(etablissement_principal[:origine_fonds]).to eq('CREATION') }
@@ -70,7 +70,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       its(:capital) { is_expected.to be_an_instance_of(Hash) }
 
       describe 'capital' do
-        subject(:capital) { instance.resource.capital }
+        subject(:capital) { instance.bundled_data.data.capital }
 
         it { expect(capital[:montant]).to eq(509_525.3) }
         it { expect(capital[:devise]).to eq('') }
@@ -80,7 +80,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       its(:observations) { is_expected.to be_an_instance_of(Array) }
 
       describe 'resource.observations entry' do
-        subject(:observation) { instance.resource.observations[0] }
+        subject(:observation) { instance.bundled_data.data.observations[0] }
 
         it { expect(observation[:numero]).to eq('12197') }
         it { expect(observation[:libelle]).to eq('LA SOCIETE NE CONSERVE AUCUNE ACTIVITE A SON ANCIEN SIEGE') }
@@ -90,7 +90,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       its(:mandataires_sociaux) { is_expected.to be_an_instance_of(Array) }
 
       describe 'resource.mandataires_sociaux entry pp' do
-        subject(:mandataire_social) { instance.resource.mandataires_sociaux[0] }
+        subject(:mandataire_social) { instance.bundled_data.data.mandataires_sociaux[0] }
 
         it { expect(mandataire_social[:type]).to eq('personne_physique') }
         it { expect(mandataire_social[:nom]).to eq('HISQUIN') }
@@ -100,7 +100,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       end
 
       describe 'resource.mandataires_sociaux entry pm' do
-        subject(:mandataire_social) { instance.resource.mandataires_sociaux[9] }
+        subject(:mandataire_social) { instance.bundled_data.data.mandataires_sociaux[9] }
 
         it { expect(mandataire_social[:type]).to eq('personne_morale') }
         it { expect(mandataire_social[:numero_identification]).to eq('784824153') }
@@ -110,7 +110,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
     end
 
     describe 'personne morale' do
-      subject(:personne_morale) { instance.resource.personne_morale }
+      subject(:personne_morale) { instance.bundled_data.data.personne_morale }
 
       it { expect(personne_morale[:denomination]).to eq('OCTO-TECHNOLOGY') }
       it { expect(personne_morale[:date_fin_de_vie]).to eq('2097-03-26') }
@@ -119,7 +119,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       it { expect(personne_morale[:forme_juridique]).to be_an_instance_of(Hash) }
 
       describe 'forme_juridique' do
-        subject(:forme_juridique) { instance.resource.personne_morale[:forme_juridique] }
+        subject(:forme_juridique) { instance.bundled_data.data.personne_morale[:forme_juridique] }
 
         it { expect(forme_juridique[:valeur]).to eq('SOCIETE ANONYME') }
         it { expect(forme_juridique[:code]).to eq('SAh') }
@@ -127,7 +127,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
     end
 
     describe 'personne_physique' do
-      subject(:personne_physique) { instance.resource.personne_physique }
+      subject(:personne_physique) { instance.bundled_data.data.personne_physique }
 
       it { expect(personne_physique[:nom]).to be_empty }
       it { expect(personne_physique[:prenom]).to be_empty }
@@ -135,7 +135,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       it { expect(personne_physique[:adresse]).to be_an_instance_of(Hash) }
 
       describe 'adresse' do
-        subject(:adresse) { instance.resource.personne_physique[:adresse] }
+        subject(:adresse) { instance.bundled_data.data.personne_physique[:adresse] }
 
         it { expect(adresse[:nom_postal]).to be_empty }
         it { expect(adresse[:numero]).to be_empty }
@@ -152,7 +152,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       it { expect(personne_physique[:nationalite]).to be_an_instance_of(Hash) }
 
       describe 'nationalite' do
-        subject(:nationalite) { instance.resource.personne_physique[:nationalite] }
+        subject(:nationalite) { instance.bundled_data.data.personne_physique[:nationalite] }
 
         it { expect(nationalite[:valeur]).to be_empty }
         it { expect(nationalite[:code]).to be_empty }
@@ -161,7 +161,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       it { expect(personne_physique[:naissance]).to be_an_instance_of(Hash) }
 
       describe 'naissance' do
-        subject(:naissance) { instance.resource.personne_physique[:naissance] }
+        subject(:naissance) { instance.bundled_data.data.personne_physique[:naissance] }
 
         it { expect(naissance[:date]).to be_empty }
         it { expect(naissance[:lieu]).to be_empty }
@@ -169,7 +169,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
         it { expect(naissance[:pays]).to be_an_instance_of(Hash) }
 
         describe 'pays' do
-          subject(:naissance) { instance.resource.personne_physique[:naissance][:pays] }
+          subject(:naissance) { instance.bundled_data.data.personne_physique[:naissance][:pays] }
 
           it { expect(naissance[:valeur]).to be_empty }
           it { expect(naissance[:code]).to be_empty }
@@ -185,7 +185,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
 
     describe 'resource' do
       describe 'personne morale' do
-        subject(:personne_morale) { instance.resource.personne_morale }
+        subject(:personne_morale) { instance.bundled_data.data.personne_morale }
 
         it { expect(personne_morale[:denomination]).to be_empty }
         it { expect(personne_morale[:date_fin_de_vie]).to be_empty }
@@ -194,7 +194,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
         it { expect(personne_morale[:forme_juridique]).to be_an_instance_of(Hash) }
 
         describe 'forme_juridique' do
-          subject(:forme_juridique) { instance.resource.personne_morale[:forme_juridique] }
+          subject(:forme_juridique) { instance.bundled_data.data.personne_morale[:forme_juridique] }
 
           it { expect(forme_juridique[:valeur]).to be_empty }
           it { expect(forme_juridique[:code]).to be_empty }
@@ -202,7 +202,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
       end
 
       describe 'personne_physique' do
-        subject(:personne_physique) { instance.resource.personne_physique }
+        subject(:personne_physique) { instance.bundled_data.data.personne_physique }
 
         it { expect(personne_physique[:nom]).to eq('SPLOUSHY') }
         it { expect(personne_physique[:prenom]).to eq('FANCY MCFACE') }
@@ -210,7 +210,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
         it { expect(personne_physique[:adresse]).to be_an_instance_of(Hash) }
 
         describe 'adresse' do
-          subject(:adresse) { instance.resource.personne_physique[:adresse] }
+          subject(:adresse) { instance.bundled_data.data.personne_physique[:adresse] }
 
           it { expect(adresse[:nom_postal]).to eq('') }
           it { expect(adresse[:numero]).to eq('') }
@@ -227,7 +227,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
         it { expect(personne_physique[:nationalite]).to be_an_instance_of(Hash) }
 
         describe 'nationalite' do
-          subject(:nationalite) { instance.resource.personne_physique[:nationalite] }
+          subject(:nationalite) { instance.bundled_data.data.personne_physique[:nationalite] }
 
           it { expect(nationalite[:valeur]).to eq('FRANCAISE') }
           it { expect(nationalite[:code]).to eq('FR') }
@@ -236,7 +236,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
         it { expect(personne_physique[:naissance]).to be_an_instance_of(Hash) }
 
         describe 'naissance' do
-          subject(:naissance) { instance.resource.personne_physique[:naissance] }
+          subject(:naissance) { instance.bundled_data.data.personne_physique[:naissance] }
 
           it { expect(naissance[:date]).to eq('1971-02-26') }
           it { expect(naissance[:lieu]).to eq('UNEVILLE') }
@@ -244,7 +244,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
           it { expect(naissance[:pays]).to be_an_instance_of(Hash) }
 
           describe 'pays' do
-            subject(:naissance) { instance.resource.personne_physique[:naissance][:pays] }
+            subject(:naissance) { instance.bundled_data.data.personne_physique[:naissance][:pays] }
 
             it { expect(naissance[:valeur]).to eq('FRANCE') }
             it { expect(naissance[:code]).to eq('FR') }

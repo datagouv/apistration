@@ -50,14 +50,16 @@ RSpec.describe MI::Associations::Documents::BuildResourceCollection, type: :buil
       }
     end
 
+    let(:resource_collection) { call.bundled_data.data }
+
     it { is_expected.to be_a_success }
 
     it 'builds a valid resource collection' do
-      expect(call.resource_collection).to all(be_a(Resource))
+      expect(resource_collection).to all(be_a(Resource))
     end
 
     it 'has successfully self hosted documents data' do
-      expect(call.resource_collection.map(&:to_h)).to include(
+      expect(resource_collection.map(&:to_h)).to include(
         {
           id: 'very_id_1',
           timestamp: '1418807656',
@@ -78,7 +80,7 @@ RSpec.describe MI::Associations::Documents::BuildResourceCollection, type: :buil
     end
 
     it 'has the documents with errors data' do
-      expect(call.resource_collection.map(&:to_h)).to include(
+      expect(resource_collection.map(&:to_h)).to include(
         {
           id: 'very_id_3',
           timestamp: 'timestamp_3',
@@ -91,7 +93,9 @@ RSpec.describe MI::Associations::Documents::BuildResourceCollection, type: :buil
     end
 
     it 'has valid meta' do
-      expect(call.meta).to eq({
+      meta = call.bundled_data.context
+
+      expect(meta).to eq({
         nombre_documents: 3,
         nombre_documents_deficients: 1
       })

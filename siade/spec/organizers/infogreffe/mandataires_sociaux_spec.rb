@@ -13,8 +13,13 @@ RSpec.describe Infogreffe::MandatairesSociaux, type: :retriever_organizer do
 
       it { is_expected.to be_a_success }
 
-      its(:resource_collection) { is_expected.to be_present }
-      its(:meta) { is_expected.to be_present }
+      it 'retrieves the resource collection' do
+        expect(subject.bundled_data.data).to be_present
+      end
+
+      it 'has meta' do
+        expect(subject.bundled_data.context).to be_present
+      end
     end
 
     context 'with invalid siren', vcr: { cassette_name: 'infogreffe/with_siren_not_found' } do

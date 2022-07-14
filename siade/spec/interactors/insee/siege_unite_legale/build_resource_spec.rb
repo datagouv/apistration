@@ -21,7 +21,7 @@ RSpec.describe INSEE::SiegeUniteLegale::BuildResource, type: :build_resource do
     it { is_expected.to be_a_success }
 
     describe 'resource' do
-      subject { organizer.resource }
+      subject { organizer.bundled_data.data }
 
       it { is_expected.to be_a(Resource) }
 

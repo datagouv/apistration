@@ -44,12 +44,14 @@ RSpec.describe MI::Associations::BuildResource, type: :build_resource do
       }
     end
 
+    let(:resource) { subject.bundled_data.data }
+
     it { is_expected.to be_a_success }
 
     it 'builds valid resource' do
-      expect(subject.resource).to be_a(Resource)
+      expect(resource).to be_a(Resource)
 
-      expect(subject.resource.to_h).to eq(valid_payload)
+      expect(resource.to_h).to eq(valid_payload)
     end
   end
 end

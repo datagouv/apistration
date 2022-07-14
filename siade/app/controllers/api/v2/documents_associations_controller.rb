@@ -21,7 +21,7 @@ class API::V2::DocumentsAssociationsController < API::V2::BaseController
 
   def serialized_data(organizer)
     {
-      documents: organizer.resource_collection.map do |document_resource|
+      documents: organizer.bundled_data.data.map do |document_resource|
         {
           type: document_resource.type,
           url: document_resource.url,

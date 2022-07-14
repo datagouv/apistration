@@ -5,7 +5,7 @@ class FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::BuildResourceC
     conventions
   end
 
-  def items_meta
+  def items_context
     {
       count: conventions.count
     }

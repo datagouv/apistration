@@ -5,7 +5,7 @@ class API::V3AndMore::INPI::ActesController < API::V3AndMore::BaseController
     organizer = ::INPI::Actes.call(params: organizer_params)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.resource_collection, options).serializable_hash,
+      render json: serializer_class.new(organizer.bundled_data).serializable_hash,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)
@@ -22,11 +22,5 @@ class API::V3AndMore::INPI::ActesController < API::V3AndMore::BaseController
 
   def serializer_module
     ::INPI::ActeSerializer
-  end
-
-  def options
-    {
-      is_collection: true
-    }
   end
 end

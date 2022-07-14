@@ -96,9 +96,11 @@ RSpec.describe RNM::EntreprisesArtisanales::BuildResource, type: :build_resource
     it { is_expected.to be_a_success }
 
     it 'builds valid resource' do
-      expect(subject.resource).to be_a(Resource)
+      resource = subject.bundled_data.data
 
-      expect(subject.resource.to_h).to eq(valid_payload)
+      expect(resource).to be_a(Resource)
+
+      expect(resource.to_h).to eq(valid_payload)
     end
   end
 end

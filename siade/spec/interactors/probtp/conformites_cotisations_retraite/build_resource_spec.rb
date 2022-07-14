@@ -9,6 +9,8 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite::BuildResource, type: :bui
       }
     end
 
+    let(:resource) { subject.bundled_data.data }
+
     context 'when it is ok and conforme', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_eligible_siret' } do
       let(:siret) { eligible_siret(:probtp) }
 
@@ -22,10 +24,12 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite::BuildResource, type: :bui
 
       it { is_expected.to be_a_success }
 
-      its(:resource) { is_expected.to be_a(Resource) }
+      it 'retrieves the resource' do
+        expect(resource).to be_a(Resource)
+      end
 
       it 'sets eligible as true' do
-        expect(subject.resource.eligible).to be(true)
+        expect(resource.eligible).to be(true)
       end
     end
 
@@ -42,10 +46,12 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite::BuildResource, type: :bui
 
       it { is_expected.to be_a_success }
 
-      its(:resource) { is_expected.to be_a(Resource) }
+      it 'retrieves the resource' do
+        expect(resource).to be_a(Resource)
+      end
 
       it 'sets eligible as false' do
-        expect(subject.resource.eligible).to be(false)
+        expect(resource.eligible).to be(false)
       end
     end
   end

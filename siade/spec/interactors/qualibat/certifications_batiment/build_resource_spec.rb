@@ -13,9 +13,11 @@ RSpec.describe QUALIBAT::CertificationsBatiment::BuildResource do
     it { is_expected.to be_a_success }
 
     it 'build a valid resource' do
-      expect(subject.resource).to be_a(Resource)
+      resource = subject.bundled_data.data
 
-      expect(subject.resource.to_h).to include(
+      expect(resource).to be_a(Resource)
+
+      expect(resource.to_h).to include(
         document_url: 'uploaded/file/url'
       )
     end

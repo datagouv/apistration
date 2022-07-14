@@ -7,7 +7,7 @@ class INPI::Brevets::BuildResourceCollection < BuildResourceCollection
     latest_brevets
   end
 
-  def items_meta
+  def items_context
     {
       count: json_body['metadata']['count']
     }

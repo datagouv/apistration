@@ -12,7 +12,11 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite, type: :retriever_organize
 
     it { is_expected.to be_a_success }
 
-    its(:resource) { is_expected.to be_a(Resource) }
+    it 'retrieves the resource' do
+      resource = subject.bundled_data.data
+
+      expect(resource).to be_a(Resource)
+    end
   end
 
   context 'when it is ok and not conforme', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_non_eligible_siret' } do
@@ -20,7 +24,11 @@ RSpec.describe PROBTP::ConformitesCotisationsRetraite, type: :retriever_organize
 
     it { is_expected.to be_a_success }
 
-    its(:resource) { is_expected.to be_a(Resource) }
+    it 'retrieves the resource' do
+      resource = subject.bundled_data.data
+
+      expect(resource).to be_a(Resource)
+    end
   end
 
   context 'when siret is not found', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_not_found_siret' } do

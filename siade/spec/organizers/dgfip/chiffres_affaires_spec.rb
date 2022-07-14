@@ -15,8 +15,18 @@ RSpec.describe DGFIP::ChiffresAffaires, type: :retriever_organizer do
 
     it { is_expected.to be_a_success }
 
-    its(:resource_collection) { is_expected.to be_present }
-    its(:meta) { is_expected.to be_present }
+    it 'retrieves the resource collection' do
+      resource_collection = subject.bundled_data.data
+
+      expect(resource_collection).to be_present
+    end
+
+    it 'has meta' do
+      meta = subject.bundled_data.context
+
+      expect(meta).to be_present
+    end
+
     its(:cacheable) { is_expected.to be(true) }
   end
 

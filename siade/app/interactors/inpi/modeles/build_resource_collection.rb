@@ -7,7 +7,7 @@ class INPI::Modeles::BuildResourceCollection < BuildResourceCollection
     latest_modeles
   end
 
-  def items_meta
+  def items_context
     {
       count: json_body['metadata']['count']
     }

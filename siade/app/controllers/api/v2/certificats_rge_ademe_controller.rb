@@ -5,7 +5,7 @@ class API::V2::CertificatsRGEADEMEController < API::V2::BaseController
     organizer = ::ADEME::CertificatsRGE.call(params: organizer_params)
 
     if organizer.success?
-      render json: CertificatRGEADEMESerializer.new(organizer.resource_collection).as_json,
+      render json: CertificatRGEADEMESerializer.new(organizer.bundled_data.data).as_json,
         status: extract_http_code(organizer)
     else
       render json: ErrorsSerializer.new(organizer.errors, format: :json_api).as_json,

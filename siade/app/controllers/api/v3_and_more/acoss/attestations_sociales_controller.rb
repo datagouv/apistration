@@ -5,7 +5,7 @@ class API::V3AndMore::ACOSS::AttestationsSocialesController < API::V3AndMore::Ba
     organizer = ::ACOSS::AttestationsSociales.call(params: organizer_params)
 
     if organizer.success?
-      render json:   ::ACOSS::AttestationSocialeSerializer::V3.new(organizer.resource).serializable_hash,
+      render json:   ::ACOSS::AttestationSocialeSerializer::V3.new(organizer.bundled_data).serializable_hash,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)

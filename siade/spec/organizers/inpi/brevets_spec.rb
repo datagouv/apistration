@@ -13,8 +13,17 @@ RSpec.describe INPI::Brevets, type: :retriever_organizer do
 
     it { is_expected.to be_a_success }
 
-    its(:resource_collection) { is_expected.to be_present }
-    its(:meta) { is_expected.to be_present }
+    it 'retrieves the resource collection' do
+      resource_collection = subject.bundled_data.data
+
+      expect(resource_collection).to be_present
+    end
+
+    it 'has meta' do
+      meta = subject.bundled_data.context
+
+      expect(meta).to be_present
+    end
   end
 
   context 'with siren not found', vcr: { cassette_name: 'inpi/brevets/with_siren_not_found' } do

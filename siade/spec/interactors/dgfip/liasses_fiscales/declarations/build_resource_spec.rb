@@ -6,6 +6,8 @@ RSpec.describe DGFIP::LiassesFiscales::Declarations::BuildResource, type: :build
       instance_double(Net::HTTPOK, body:)
     end
 
+    let(:resource) { builder.bundled_data.data }
+
     describe 'real payload', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
       let(:body) { DGFIP::LiassesFiscales::Declarations::MakeRequest.call(cookie:, params:).response.body }
       let(:cookie) { DGFIP::Authenticate.call.cookie }
@@ -17,12 +19,12 @@ RSpec.describe DGFIP::LiassesFiscales::Declarations::BuildResource, type: :build
         }
       end
 
-      it { expect(builder.resource).to be_a(Resource) }
+      it { expect(resource).to be_a(Resource) }
 
-      it { expect(builder.resource.to_h).to match(a_hash_including(:declarations, :obligations_fiscales)) }
+      it { expect(resource.to_h).to match(a_hash_including(:declarations, :obligations_fiscales)) }
 
       it 'has no-nil values and at least one value in each entries' do
-        builder.resource.declarations.each do |declaration|
+        resource.declarations.each do |declaration|
           declaration[:donnees].each do |data|
             expect(data[:valeurs]).not_to include(nil)
             expect(data[:valeurs]).not_to be_empty
@@ -31,7 +33,7 @@ RSpec.describe DGFIP::LiassesFiscales::Declarations::BuildResource, type: :build
       end
 
       it 'one obligations fiscales entries' do
-        expect(builder.resource.obligations_fiscales.count).to eq(1)
+        expect(resource.obligations_fiscales.count).to eq(1)
       end
     end
 
@@ -42,7 +44,7 @@ RSpec.describe DGFIP::LiassesFiscales::Declarations::BuildResource, type: :build
 
       describe 'non repeated entries' do
         it 'creates an array for values with the value' do
-          example_data_with_repeated_entries = builder.resource.declarations.find do |declaration|
+          example_data_with_repeated_entries = resource.declarations.find do |declaration|
             declaration[:numero_imprime] == '2033A'
           end
 
@@ -56,7 +58,7 @@ RSpec.describe DGFIP::LiassesFiscales::Declarations::BuildResource, type: :build
 
       describe 'repeated entries' do
         it 'creates an array for values with all values ordered' do
-          example_data_with_repeated_entries = builder.resource.declarations.find do |declaration|
+          example_data_with_repeated_entries = resource.declarations.find do |declaration|
             declaration[:numero_imprime] == '2033F'
           end
 
@@ -75,7 +77,7 @@ RSpec.describe DGFIP::LiassesFiscales::Declarations::BuildResource, type: :build
       let(:body) { extract_dgfip_liasses_fiscales_payload(payload_name).to_json }
 
       it 'has multiple obligations fiscales entries' do
-        expect(builder.resource.obligations_fiscales.count).to eq(2)
+        expect(resource.obligations_fiscales.count).to eq(2)
       end
     end
   end

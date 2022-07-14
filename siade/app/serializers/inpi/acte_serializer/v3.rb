@@ -1,8 +1,12 @@
-class INPI::ActeSerializer::V3 < V3AndMore::BaseSerializer
-  link :greffe, &:greffe_url
+class INPI::ActeSerializer::V3 < V3AndMore::BaseCollectionSerializer
+  class ItemSerializer < V3AndMore::BaseSerializer
+    link :greffe, &:greffe_url
 
-  attributes :siren,
-    :code_greffe,
-    :date_depot,
-    :nature_archive
+    attributes :siren,
+      :code_greffe,
+      :date_depot,
+      :nature_archive
+  end
+
+  item_serializer ItemSerializer
 end

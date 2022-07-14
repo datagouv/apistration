@@ -12,7 +12,11 @@ RSpec.describe INSEE::SiegeUniteLegale, type: :retriever_organizer do
 
     it { is_expected.to be_a_success }
 
-    its(:resource) { is_expected.to be_present }
+    it 'retrieves the resource' do
+      resource = subject.bundled_data.data
+
+      expect(resource).to be_present
+    end
   end
 
   context 'with a non-existent siren', vcr: { cassette_name: 'insee/siege/non_existent_with_token' } do
@@ -32,7 +36,11 @@ RSpec.describe INSEE::SiegeUniteLegale, type: :retriever_organizer do
 
     it { is_expected.to be_a_success }
 
-    its(:resource) { is_expected.to be_present }
+    it 'retrieves the resource' do
+      resource = subject.bundled_data.data
+
+      expect(resource).to be_present
+    end
   end
 
   context 'with a gendarmerie', vcr: { cassette_name: 'insee/siege/gendarmerie_limousin_with_token' } do

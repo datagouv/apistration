@@ -33,7 +33,7 @@ RSpec.describe 'INPI: Marques', type: %i[request swagger] do
 
           schema build_rswag_response_collection(
             properties: SwaggerData.get('inpi.marques.attributes'),
-            links: SwaggerData.get('inpi.marques.links')
+            item_links: SwaggerData.get('inpi.marques.links')
           )
 
           run_test!

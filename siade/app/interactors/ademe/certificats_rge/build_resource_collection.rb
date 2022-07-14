@@ -5,7 +5,7 @@ class ADEME::CertificatsRGE::BuildResourceCollection < BuildResourceCollection
     json_body['results']
   end
 
-  def items_meta
+  def items_context
     {
       total: json_body['total']
     }

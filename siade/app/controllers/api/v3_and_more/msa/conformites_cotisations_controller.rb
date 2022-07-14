@@ -5,7 +5,7 @@ class API::V3AndMore::MSA::ConformitesCotisationsController < API::V3AndMore::Ba
     organizer = ::MSA::ConformitesCotisations.call(params: organizer_params)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.resource).serializable_hash,
+      render json: serializer_class.new(organizer.bundled_data).serializable_hash,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)

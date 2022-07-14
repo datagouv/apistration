@@ -14,7 +14,7 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite, :self_hosted_doc do
       it { is_expected.to be_success }
 
       it 'uploads the attestation on the self hosted storage' do
-        document_url = subject.resource.document_url
+        document_url = subject.bundled_data.data.document_url
 
         expect(document_url).to be_a_valid_self_hosted_pdf_url('attestation_cotisation_retraite_probtp')
       end

@@ -7,7 +7,7 @@ class INPI::Marques::BuildResourceCollection < BuildResourceCollection
     latest_marques
   end
 
-  def items_meta
+  def items_context
     {
       count: json_body['metadata']['count']
     }

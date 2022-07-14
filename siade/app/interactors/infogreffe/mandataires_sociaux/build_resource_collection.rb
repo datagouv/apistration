@@ -15,7 +15,7 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
     extract_mandataires_sociaux(infos)
   end
 
-  def items_meta
+  def items_context
     {
       personnes_physiques_count: @personnes_physiques_count,
       personnes_morales_count: @personnes_morales_count,

@@ -5,7 +5,7 @@ class API::V3AndMore::FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives
     organizer = ::FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives.call(params: organizer_params)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.resource_collection, options(organizer)).serializable_hash,
+      render json: serializer_class.new(organizer.bundled_data).serializable_hash,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)
@@ -17,13 +17,6 @@ class API::V3AndMore::FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives
   def organizer_params
     {
       siret: params[:siret]
-    }
-  end
-
-  def options(organizer)
-    {
-      is_collection: true,
-      meta: organizer.meta
     }
   end
 

@@ -12,7 +12,7 @@ class DGFIP::ChiffresAffaires::BuildResource < BuildResourceCollection
     }
   end
 
-  def items_meta
+  def items_context
     {
       count: items.count
     }

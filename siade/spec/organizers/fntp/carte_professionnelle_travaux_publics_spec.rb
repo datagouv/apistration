@@ -13,7 +13,7 @@ RSpec.describe FNTP::CarteProfessionnelleTravauxPublics, :self_hosted_doc, type:
     it { is_expected.to be_success }
 
     it 'uploads the attestation on the self hosted storage' do
-      document_url = subject.resource.document_url
+      document_url = subject.bundled_data.data.document_url
 
       expect(document_url).to be_a_valid_self_hosted_pdf_url('carte_professionnelle_fntp')
     end

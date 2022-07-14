@@ -2,10 +2,10 @@ class API::V3AndMore::DGFIP::LiassesFiscales::DeclarationsController < API::V3An
   def show
     authorize :liasse_fiscale
 
-    organizer = retrieve_single_resource(::DGFIP::LiassesFiscales::Declarations, cache: true, cache_key:)
+    organizer = retrieve_payload_data(::DGFIP::LiassesFiscales::Declarations, cache: true, cache_key:)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.resource).serializable_hash,
+      render json: serializer_class.new(organizer.bundled_data).serializable_hash,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)

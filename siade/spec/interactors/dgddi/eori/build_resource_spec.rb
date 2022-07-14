@@ -32,11 +32,11 @@ RSpec.describe DGDDI::EORI::BuildResource, type: :build_resource do
     it { is_expected.to be_a_success }
 
     it 'builds valid resource' do
-      expect(call.resource).to be_a(Resource)
+      expect(call.bundled_data.data).to be_a(Resource)
     end
 
     it 'has valid payload' do
-      expect(call.resource.to_h).to eq(valid_payload)
+      expect(call.bundled_data.data.to_h).to eq(valid_payload)
     end
   end
 end

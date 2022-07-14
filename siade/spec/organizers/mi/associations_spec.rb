@@ -13,7 +13,11 @@ RSpec.describe MI::Associations, type: :retriever_organizer do
 
       it { is_expected.to be_a_success }
 
-      its(:resource) { is_expected.to be_present }
+      it 'retrieves the resource' do
+        resource = subject.bundled_data.data
+
+        expect(resource).to be_present
+      end
     end
 
     context 'with valid rna_id', vcr: { cassette_name: 'mi/associations/with_valid_rna' } do
@@ -21,7 +25,11 @@ RSpec.describe MI::Associations, type: :retriever_organizer do
 
       it { is_expected.to be_a_success }
 
-      its(:resource) { is_expected.to be_present }
+      it 'retrieves the resource' do
+        resource = subject.bundled_data.data
+
+        expect(resource).to be_present
+      end
     end
 
     context 'with invalid rna_id', vcr: { cassette_name: 'mi/associations/with_invalid_rna' } do

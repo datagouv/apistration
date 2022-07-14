@@ -16,7 +16,11 @@ RSpec.describe DGFIP::LiassesFiscales::Declarations, type: :retriever_organizer 
   context 'with valid attributes', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
     it { is_expected.to be_a_success }
 
-    its(:resource) { is_expected.to be_present }
+    it 'retrieves the resource' do
+      resource = subject.bundled_data.data
+
+      expect(resource).to be_present
+    end
 
     its(:cacheable) { is_expected.to be(true) }
   end

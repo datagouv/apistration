@@ -13,7 +13,7 @@ RSpec.describe QUALIBAT::CertificationsBatiment, :self_hosted_doc do
     it { is_expected.to be_a_success }
 
     it 'uploads the certification on self storage' do
-      certif_url = subject.resource.document_url
+      certif_url = subject.bundled_data.data.document_url
 
       expect(certif_url).to be_a_valid_self_hosted_pdf_url('certificat_qualibat')
     end

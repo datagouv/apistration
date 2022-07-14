@@ -13,17 +13,19 @@ RSpec.describe FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::Build
     }
   end
 
+  let(:resource_collection) { call.bundled_data.data }
+
   context 'when siret is valid', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/valid_siret' } do
     let(:siret) { valid_siret(:conventions_collectives) }
 
     it { is_expected.to be_a_success }
 
     it 'builds valid resources' do
-      expect(call.resource_collection).to all be_a(Resource)
+      expect(resource_collection).to all be_a(Resource)
     end
 
     it 'builds valid resource items' do
-      expect(call.resource_collection.first.to_h).to eq(
+      expect(resource_collection.first.to_h).to eq(
         {
           id: 'KALICONT000005635173',
           numero_idcc: 1486,

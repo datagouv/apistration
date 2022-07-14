@@ -11,7 +11,7 @@ RSpec.describe DGFIP::AttestationFiscale::BuildResource, type: :build_resource d
     it { is_expected.to be_success }
 
     it 'builds valid resource' do
-      resource = subject.payload_data.data
+      resource = subject.bundled_data.data
 
       expect(resource).to be_a(Resource)
 

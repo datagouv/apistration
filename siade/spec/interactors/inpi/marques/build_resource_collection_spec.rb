@@ -44,22 +44,26 @@ RSpec.describe INPI::Marques::BuildResourceCollection, type: :build_resource do
       }
     end
 
+    let(:resource_collection) { call.bundled_data.data }
+
     it { is_expected.to be_a_success }
 
     it 'builds valid resources' do
-      expect(call.resource_collection).to all be_a(Resource)
+      expect(resource_collection).to all be_a(Resource)
     end
 
     it 'Has limit amount of resources' do
-      expect(call.resource_collection.count).to eq(2)
+      expect(resource_collection.count).to eq(2)
     end
 
     it 'has meta' do
-      expect(call.meta).to eq(valid_meta)
+      meta = call.bundled_data.context
+
+      expect(meta).to eq(valid_meta)
     end
 
     it 'has valid resource_collection' do
-      expect(call.resource_collection.map(&:to_h)).to eq(valid_collection_sample)
+      expect(resource_collection.map(&:to_h)).to eq(valid_collection_sample)
     end
   end
 end

@@ -6,7 +6,7 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
       siret: etablissement['siret'],
       siren: etablissement['siren'],
 
-      unite_legale: INSEE::UniteLegale::BuildResource.call(response: context.response, unite_legale: etablissement['uniteLegale']).resource,
+      unite_legale: INSEE::UniteLegale::BuildResource.call(response: context.response, unite_legale: etablissement['uniteLegale']).bundled_data.data,
 
       siege_social: etablissement['etablissementSiege'],
       etat_administratif:,
@@ -24,7 +24,7 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
         date_reference: etablissement['anneeEffectifsEtablissement']
       ),
 
-      adresse: INSEE::AdresseEtablissement::BuildResource.call(response: context.response, etablissement:).resource,
+      adresse: INSEE::AdresseEtablissement::BuildResource.call(response: context.response, etablissement:).bundled_data.data,
 
       diffusable_commercialement: yes_no_to_boolean(etablissement['statutDiffusionEtablissement']),
       date_creation: date_to_timestamp(etablissement['dateCreationEtablissement']),

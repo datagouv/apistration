@@ -2,10 +2,10 @@ class API::V3AndMore::DGFIP::ChiffresAffairesController < API::V3AndMore::BaseCo
   def show
     authorize :exercices
 
-    organizer = retrieve_resources_collection(::DGFIP::ChiffresAffaires, cache: true, cache_key:)
+    organizer = retrieve_payload_data(::DGFIP::ChiffresAffaires, cache: true, cache_key:)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.resource_collection, options(organizer)).serializable_hash,
+      render json: serializer_class.new(organizer.bundled_data).serializable_hash,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)
@@ -33,6 +33,6 @@ class API::V3AndMore::DGFIP::ChiffresAffairesController < API::V3AndMore::BaseCo
   end
 
   def serializer_module
-    ::DGFIP::ChiffresAffairesSerializer
+    ::DGFIP::ChiffresAffairesCollectionSerializer
   end
 end

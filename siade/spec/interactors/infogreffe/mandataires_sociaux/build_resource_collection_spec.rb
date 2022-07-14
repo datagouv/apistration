@@ -14,6 +14,8 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
       { siren: }
     end
 
+    let(:resource_collection) { call.bundled_data.data }
+
     context 'with a SIREN for personne morale', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_morale' } do
       let(:siren) { valid_siren(:extrait_rcs) }
 
@@ -55,31 +57,33 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
       it { is_expected.to be_a_success }
 
       it 'builds valid resource' do
-        expect(subject.resource_collection).to all be_a(Resource)
+        expect(resource_collection).to all be_a(Resource)
       end
 
       it 'has exactly 2 resources' do
-        expect(call.resource_collection.count).to eq(12)
+        expect(resource_collection.count).to eq(12)
       end
 
       it 'has valid meta' do
-        expect(call.meta).to eq(valid_meta)
+        meta = call.bundled_data.context
+
+        expect(meta).to eq(valid_meta)
       end
 
       it 'contain valid pp' do
-        expect(call.resource_collection.map(&:to_h)).to include(valid_pp)
+        expect(resource_collection.map(&:to_h)).to include(valid_pp)
       end
 
       it 'contain valid pm' do
-        expect(call.resource_collection.map(&:to_h)).to include(valid_pm)
+        expect(resource_collection.map(&:to_h)).to include(valid_pm)
       end
 
       context 'when no greffe code in mandataires sociaux payload',
         vcr: { cassette_name: 'infogreffe/with_valid_siren_no_greffe_code' } do
-        it 'does not raise' do
-          expect { call }.not_to raise_error
+          it 'does not raise' do
+            expect { call }.not_to raise_error
+          end
         end
-      end
     end
 
     context 'with a SIREN for personne physique', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_physique' } do
@@ -112,19 +116,21 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
       it { is_expected.to be_a_success }
 
       it 'builds valid resource' do
-        expect(subject.resource_collection.first).to be_a(Resource)
+        expect(resource_collection.first).to be_a(Resource)
       end
 
       it 'returns only one result' do
-        expect(subject.resource_collection.count).to eq(1)
+        expect(resource_collection.count).to eq(1)
       end
 
       it 'has valid meta' do
-        expect(call.meta).to eq(valid_meta)
+        meta = call.bundled_data.context
+
+        expect(meta).to eq(valid_meta)
       end
 
       it 'contain valid pp' do
-        expect(call.resource_collection.first.to_h).to eq(valid_pp)
+        expect(resource_collection.first.to_h).to eq(valid_pp)
       end
     end
   end

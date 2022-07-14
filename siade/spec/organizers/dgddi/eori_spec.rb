@@ -8,12 +8,16 @@ RSpec.describe DGDDI::EORI, type: :retriever_organizer do
       }
     end
 
+    let(:resource) { subject.bundled_data.data }
+
     context 'with valid eori', vcr: { cassette_name: 'dgddi/eori/valid_eori' } do
       let(:siret_or_eori) { valid_eori }
 
       it { is_expected.to be_a_success }
 
-      its(:resource) { is_expected.to be_present }
+      it 'retrieves the resource' do
+        expect(resource).to be_present
+      end
     end
 
     context 'with valid spanish eori', vcr: { cassette_name: 'dgddi/eori/valid_spanish_eori' } do
@@ -21,7 +25,9 @@ RSpec.describe DGDDI::EORI, type: :retriever_organizer do
 
       it { is_expected.to be_a_success }
 
-      its(:resource) { is_expected.to be_present }
+      it 'retrieves the resource' do
+        expect(resource).to be_present
+      end
     end
 
     context 'with invalid eori', vcr: { cassette_name: 'dgddi/eori/invalid_eori_format' } do

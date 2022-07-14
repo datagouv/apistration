@@ -3,7 +3,7 @@ class MI::Associations::Documents::BuildResourceCollection < BuildResourceCollec
     context.uploaded_collection
   end
 
-  def items_meta
+  def items_context
     {
       nombre_documents: context.total_documents,
       nombre_documents_deficients: context.upload_errors

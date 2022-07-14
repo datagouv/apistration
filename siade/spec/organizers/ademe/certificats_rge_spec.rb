@@ -9,6 +9,8 @@ RSpec.describe ADEME::CertificatsRGE, type: :retriever_organizer do
       }
     end
 
+    let(:resource_collection) { subject.bundled_data.data }
+
     context 'with valid siret', vcr: { cassette_name: 'ademe/certificats_rge/valid_siret' } do
       let(:limit) { nil }
 
@@ -16,14 +18,16 @@ RSpec.describe ADEME::CertificatsRGE, type: :retriever_organizer do
 
       it { is_expected.to be_a_success }
 
-      its(:resource_collection) { is_expected.to be_present }
+      it 'retrieves the resource collection' do
+        expect(resource_collection).to be_present
+      end
 
       describe 'with limit param', vcr: { cassette_name: 'ademe/certificats_rge/valid_siret_with_limit' } do
-        subject(:results) { described_class.call(params:).resource_collection }
-
         let(:limit) { 2 }
 
-        its(:size) { is_expected.to eq(limit) }
+        it 'paginates according to the limit params' do
+          expect(resource_collection.size).to eq(limit)
+        end
       end
     end
   end

@@ -2,10 +2,10 @@ class API::V3AndMore::DGFIP::AttestationsFiscalesController < API::V3AndMore::Ba
   def show
     authorize :attestations_fiscales
 
-    organizer = retrieve_single_resource(::DGFIP::AttestationFiscale, cache: true, cache_key:)
+    organizer = retrieve_payload_data(::DGFIP::AttestationFiscale, cache: true, cache_key:)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.resource).serializable_hash,
+      render json: serializer_class.new(organizer.bundled_data).serializable_hash,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)

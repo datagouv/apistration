@@ -12,8 +12,17 @@ RSpec.describe FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives, type:
 
     it { is_expected.to be_success }
 
-    its(:resource_collection) { is_expected.to be_present }
-    its(:meta) { is_expected.to be_present }
+    it 'retrieves the resource collection' do
+      resource_collection = subject.bundled_data.data
+
+      expect(resource_collection).to be_present
+    end
+
+    it 'has meta' do
+      meta = subject.bundled_data.context
+
+      expect(meta).to be_present
+    end
   end
 
   context 'when siret is not found', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/not_found_siret' } do
