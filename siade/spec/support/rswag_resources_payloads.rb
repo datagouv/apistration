@@ -17,6 +17,7 @@ module RSWagResourcesPayloads
     }
   end
 
+  # rubocop:disable Metrics/ParameterLists
   def build_rswag_response_collection(properties: nil, links: nil, meta: nil, item_links: nil, item_meta: nil, example: nil, required: nil)
     {
       type: :object,
@@ -46,6 +47,7 @@ module RSWagResourcesPayloads
       required: build_rswag_collection_required_keys(meta)
     }.merge(build_custom_example(example))
   end
+  # rubocop:enable Metrics/ParameterLists
 
   def build_rswag_document_response(document_url_properties: {})
     {

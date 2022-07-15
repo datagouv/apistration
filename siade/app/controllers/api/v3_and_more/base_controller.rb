@@ -1,4 +1,3 @@
-# rubocop:disable Metrics/ClassLength
 class API::V3AndMore::BaseController < API::AuthenticateEntityController
   include OrganizersMethodsHelpers
 
@@ -119,4 +118,3 @@ class API::V3AndMore::BaseController < API::AuthenticateEntityController
     request.headers['Cache-Control'] == 'no-cache'
   end
 end
-# rubocop:enable Metrics/ClassLength
