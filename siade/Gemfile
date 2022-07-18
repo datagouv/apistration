@@ -35,7 +35,7 @@ gem 'marcel'
 gem 'rexml'
 gem 'hexapdf'
 
-gem 'fog-openstack', '1.0.11'
+gem 'fog-openstack', '1.1.0'
 
 # allow to retry a block n times if exception occurs https://github.com/nfedyashev/retryable
 gem 'retryable'
