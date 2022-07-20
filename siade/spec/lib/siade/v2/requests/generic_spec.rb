@@ -7,34 +7,6 @@ RSpec.describe SIADE::V2::Requests::Generic do
     allow_any_instance_of(described_class).to receive(:provider_name).and_return provider_name
   end
 
-  context 'ProviderResponseSpy logs raw HTTP code' do
-    before do
-      allow_any_instance_of(described_class).to receive(:valid?).and_return true
-      allow_any_instance_of(described_class).to receive(:call_api).and_return nil
-      allow_any_instance_of(described_class).to receive(:http_code).and_return 200
-    end
-
-    it 'logs an HTTP code 200' do
-      expect(ProviderResponseSpy).to receive(:log_http_code).with(provider_name: provider_name, http_code: '200')
-      subject.perform
-    end
-
-    context 'when there\'s a non-catch error raised' do
-      before do
-        allow_any_instance_of(described_class).to receive(:call_api).and_raise(StandardError)
-      end
-
-      it 'does not log an http code' do
-        expect(ProviderResponseSpy).not_to receive(:log_http_code)
-
-        begin
-          subject.perform
-        rescue StandardError
-        end
-      end
-    end
-  end
-
   describe 'monitoring service' do
     before do
       allow_any_instance_of(described_class).to receive(:valid?).and_return true

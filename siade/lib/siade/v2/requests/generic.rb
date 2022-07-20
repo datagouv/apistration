@@ -26,8 +26,6 @@ class SIADE::V2::Requests::Generic
 
     valid? && call_api
 
-    log_http_code if http_code.present?
-
     self
   end
 
@@ -198,10 +196,6 @@ class SIADE::V2::Requests::Generic
   end
 
   private
-
-  def log_http_code
-    ProviderResponseSpy.log_http_code(provider_name: provider_name, http_code: http_code.to_s)
-  end
 
   def set_monitoring_context
     MonitoringService.instance.set_provider(provider_name)

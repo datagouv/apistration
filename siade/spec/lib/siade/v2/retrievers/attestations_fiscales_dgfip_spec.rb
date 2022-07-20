@@ -49,11 +49,6 @@ RSpec.describe SIADE::V2::Retrievers::AttestationsFiscalesDGFIP do
         adapter = subject.send(:retrieve_dgfip_informations)
         expect(adapter).to be_valid
       end
-
-      it 'logs once http code' do
-        expect(ProviderResponseSpy).to receive(:log_http_code).exactly(5).times
-        subject.retrieve
-      end
     end
   end
 end

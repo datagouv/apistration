@@ -33,11 +33,6 @@ if LogStasher.enabled?
       store[k] = v
     end
   end
-
-  # Log the provider http code
-  LogStasher.watch('provider_http_code') do |name, start, finish, id, payload, store|
-    store[payload[:provider_name]] = payload[:http_code]
-  end
   # /!\
 end
 # :nocov:
