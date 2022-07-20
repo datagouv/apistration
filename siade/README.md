@@ -26,6 +26,12 @@ obtenir plus de logs de la manière suivante:
 DEBUG_VCR=true rspec
 ```
 
+### Avertissements sur les cas de tests
+
+Il n'est pas possible de mettre de données personnelles dans les tests, soit le
+fournisseur de données a un environnement de test soit il faut utiliser webmock
+et non VCR.
+
 ## Utilisation et edition des credentials
 
 Avant toute chose, lisez la partie sur la gestion des credentials chiffré dans
