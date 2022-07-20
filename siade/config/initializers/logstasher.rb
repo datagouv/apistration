@@ -27,13 +27,6 @@ if LogStasher.enabled?
   # On ActiveSupport notification
   # --> Theses lines haven't any spec, handle with caution
 
-  # Log the backup used for this request
-  LogStasher.watch('response') do |name, start, finish, id, payload, store|
-    payload.each do |k,v|
-      store[k] = v
-    end
-  end
-
   # Log the user access informations & jwt usage
   LogStasher.watch('user_access') do |name, start, finish, id, payload, store|
     payload.each do |k,v|
