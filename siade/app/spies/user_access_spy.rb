@@ -19,10 +19,5 @@ class UserAccessSpy
       ActiveSupport::Notifications.instrument('user_access', user: user_info, jti: nil, access: 'deny')
       false
     end
-
-    def log_not_acceptable
-      ActiveSupport::Notifications.instrument('user_access', user: nil, jti: nil, access: 'not acceptable context')
-      false
-    end
   end
 end

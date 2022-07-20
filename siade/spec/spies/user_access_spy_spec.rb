@@ -15,9 +15,4 @@ RSpec.describe UserAccessSpy do
     expect(ActiveSupport::Notifications).to receive(:instrument).with('user_access', user: 'user_info', jti: nil, access: 'deny')
     described_class.log_unauthorized(user_info: 'user_info')
   end
-
-  it 'logs not acceptable' do
-    expect(ActiveSupport::Notifications).to receive(:instrument).with('user_access', user: nil, jti: nil, access: 'not acceptable context')
-    described_class.log_not_acceptable
-  end
 end
