@@ -8,6 +8,7 @@ require 'colorize'
 
 @host = ARGV[0] || "https://entreprise.api.gouv.fr"
 @endpoints = !ARGV[1].nil? ? ARGV[1].split(',').map(&:to_i) : []
+@only_v3 = ENV.fetch('ONLY_V3', false)
 
 if @host =~ /sandbox/
   token_to_read = '.token.sandbox'
@@ -272,6 +273,8 @@ end
 print "## Test endpoints on #{@host}\n\n"
 
 YAML.load(endpoints).each_with_index do |endpoint, index|
+  next if @only_v3 && !endpoint['name'].include?('V3')
+
   if @endpoints.empty? || @endpoints.include?(index+1)
     test_endpoint(endpoint, index+1)
     sleep 1
