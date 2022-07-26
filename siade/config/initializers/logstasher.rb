@@ -1,4 +1,3 @@
-# :nocov:
 if LogStasher.enabled?
   LogStasher.add_custom_fields do |fields|
     fields[:type] = "siade"
@@ -6,7 +5,6 @@ if LogStasher.enabled?
     fields[:user_agent_raw] = request.user_agent
   end
 
-  # Controller request log custom request
   LogStasher.add_custom_fields_to_request_context do |fields|
     controller_name = request.params['controller']
 
@@ -35,4 +33,3 @@ if LogStasher.enabled?
   end
   # /!\
 end
-# :nocov:
