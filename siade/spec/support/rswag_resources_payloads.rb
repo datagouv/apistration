@@ -29,8 +29,8 @@ module RSWagResourcesPayloads
             properties: {
               data: {
                 type: :object,
-                properties: add_required_keys_to_all_type_object(properties.except('id', 'type')),
-                required: required || (properties.keys - %w[id type])
+                properties: add_required_keys_to_all_type_object(properties),
+                required: required || properties.keys
               }
             }.merge(
               build_rswag_links(item_links)

@@ -2271,6 +2271,13 @@ paths:
                         data:
                           type: object
                           properties:
+                            id:
+                              title: FIXME
+                              type: string
+                            type:
+                              title: Exercice annuel
+                              type: string
+                              example: exercice
                             chiffre_affaires:
                               title: Chiffre d'affaires en euros
                               type: number
@@ -2280,6 +2287,8 @@ paths:
                               type: string
                               example: '2015-12-01'
                           required:
+                          - id
+                          - type
                           - chiffre_affaires
                           - date_fin_exercice
                 required:
@@ -3127,6 +3136,14 @@ paths:
                         data:
                           type: object
                           properties:
+                            id:
+                              type: string
+                              description: Identifiant interne (DILA) de la convention
+                              example: KALICONT000005635173
+                            type:
+                              title: Convention collective
+                              type: string
+                              example: convention_collective
                             titre:
                               type: string
                               description: Titre historique de la convention collective
@@ -3174,6 +3191,8 @@ paths:
                               description: Date de la dernière mise à jour de la convention
                               example: '1988-01-01'
                           required:
+                          - id
+                          - type
                           - titre
                           - titre_court
                           - numero_idcc
@@ -4622,6 +4641,15 @@ paths:
                                 une personne morale.
                               type: string
                               example: '784824153'
+                            type:
+                              title: Type de mandataire social
+                              description: Ce champ permet de faire la distinction
+                                entre les personnes physiques et morales.
+                              type: string
+                              example: personne_morale
+                              enum:
+                              - personne_morale
+                              - personne_physique
                             fonction:
                               title: Fonction au sein de l'entreprise
                               description: Ce champ décrit la fonction du mandataire
@@ -5081,6 +5109,10 @@ paths:
                         data:
                           type: object
                           properties:
+                            type:
+                              title: Acte
+                              type: string
+                              example: acte
                             siren:
                               title: Numéro Siren
                               description: Numéro SIREN de l'entreprise concernée
@@ -5108,6 +5140,7 @@ paths:
                               type: string
                               example: A-R
                           required:
+                          - type
                           - siren
                           - code_greffe
                           - date_depot
@@ -5428,6 +5461,10 @@ paths:
                                 du code zone + numéro du brevet + catégorie de publication
                               type: string
                               example: FR3110115A1
+                            type:
+                              title: Brevet
+                              type: string
+                              example: brevet
                             titre:
                               title: Titre
                               description: Titre du brevet
@@ -5566,6 +5603,7 @@ paths:
                               example: A1
                           required:
                           - numero_publication
+                          - type
                           - titre
                           - date_publication
                           - date_depot
@@ -5886,6 +5924,10 @@ paths:
                               title: Numéro d'identification
                               type: string
                               example: '4313464'
+                            type:
+                              title: Marque
+                              type: string
+                              example: marque
                             nom:
                               title: Nom
                               type: string
@@ -5919,6 +5961,7 @@ paths:
                               example: FMARK|4313464
                           required:
                           - numero_application
+                          - type
                           - nom
                           - status
                           - depositaire
@@ -6251,6 +6294,10 @@ paths:
                                 du numéro de référence (ex: 001) '
                               type: string
                               example: FR20203928-001
+                            type:
+                              title: Modèle
+                              type: string
+                              example: modele
                             numero_depot:
                               title: Numéro national de dépôt
                               description: Numéro national sous lequel le modèle est
@@ -6298,6 +6345,7 @@ paths:
                               example: '001'
                           required:
                           - document_id
+                          - type
                           - numero_depot
                           - titre
                           - total_representations
@@ -13466,10 +13514,21 @@ paths:
                         data:
                           type: object
                           properties:
+                            id:
+                              type: string
                             timestamp:
                               example: '1631182730'
                               description: Date du dépot du document au format timestamp
                                 UNIX
+                              type: string
+                            type:
+                              example: Statuts
+                              description: 'Ce sont les différents types de documents,
+                                et de fait, pour chaque URL, celui-ci est indiqué.
+                                Voici une liste non-exhaustive des options possibles
+                                : ''Liste des dirigeants'', ''Statuts'', ''Procès
+                                verbal'', ''Récépissé de dissolution'', ''Récépissé
+                                de modification''...'
                               type: string
                             url:
                               example: https://storage.entreprise.api.gouv.fr/siade/1635505765-5cd08405e4163c9f7713447829aeef7284c3283d-document_asso.pdf
@@ -13488,7 +13547,9 @@ paths:
                               items:
                                 type: string
                           required:
+                          - id
                           - timestamp
+                          - type
                           - url
                           - expires_in
                           - errors
