@@ -1,5 +1,9 @@
 class INPI::ModeleSerializer::V3 < V3AndMore::BaseCollectionSerializer
   class ItemSerializer < V3AndMore::BaseSerializer
+    attribute :type do
+      'modele'
+    end
+
     link :notice, &:notice_url
 
     attributes :document_id,

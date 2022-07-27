@@ -24,7 +24,8 @@ RSpec.describe 'FabriqueNumeriqueMinisteresSociaux: Conventionscollectives', typ
           rate_limit_headers
 
           schema build_rswag_response_collection(
-            properties: SwaggerData.get('fabrique_numerique_ministeres_sociaux.conventions_collectives.attributes')
+            properties: SwaggerData.get('fabrique_numerique_ministeres_sociaux.conventions_collectives.attributes'),
+            item_meta: SwaggerData.get('fabrique_numerique_ministeres_sociaux.conventions_collectives.meta')
           )
 
           run_test!

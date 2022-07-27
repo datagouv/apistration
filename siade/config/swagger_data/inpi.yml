@@ -7,9 +7,11 @@ inpi:
       - "Informations générales"
     attributes:
       type:
-        title: "Acte"
+        title: "Type de la ressource"
         type: "string"
         example: "acte"
+        enum:
+          - 'acte'
       siren:
         title: "Numéro Siren"
         description: "Numéro SIREN de l'entreprise concernée par l'acte"
@@ -49,9 +51,11 @@ inpi:
         type: "string"
         example: "FR3110115A1"
       type:
-        title: "Brevet"
+        title: "Type de la ressource"
         type: "string"
         example: "brevet"
+        enum:
+          'brevet'
       titre:
         title: "Titre"
         description: "Titre du brevet"
@@ -105,9 +109,11 @@ inpi:
         type: "string"
         example: "4313464"
       type:
-        title: "Marque"
+        title: "Type de la ressource"
         type: "string"
         example: "marque"
+        enum:
+          - 'marque'
       nom:
         title: "Nom"
         type: "string"
@@ -163,9 +169,11 @@ inpi:
         type: 'string'
         example: 'FR20203928-001'
       type:
-        title: "Modèle"
+        title: "Type de la ressource"
         type: "string"
         example: "modele"
+        enum:
+          - 'modele'
       numero_depot:
         title: "Numéro national de dépôt"
         description: "Numéro national sous lequel le modèle est enregistré."

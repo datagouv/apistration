@@ -213,13 +213,13 @@ dgfip:
     tags:
       - "Informations financières"
     attributes:
-      id:
-        title: "FIXME"
-        type: "string"
-      type:
-        title: "Exercice annuel"
-        type: 'string'
-        example: 'exercice'
+      # id:
+      #   title: "FIXME"
+      #   type: "string"
+      # type:
+      #   title: "Exercice annuel"
+      #   type: 'string'
+      #   example: 'exercice'
       chiffre_affaires:
         title: "Chiffre d'affaires en euros"
         type: "number"

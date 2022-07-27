@@ -2,6 +2,10 @@ class INPI::ActeSerializer::V3 < V3AndMore::BaseCollectionSerializer
   class ItemSerializer < V3AndMore::BaseSerializer
     link :greffe, &:greffe_url
 
+    attribute :type do
+      'acte'
+    end
+
     attributes :siren,
       :code_greffe,
       :date_depot,

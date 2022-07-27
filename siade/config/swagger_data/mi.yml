@@ -102,8 +102,6 @@ mi:
     items:
       type: "object"
       properties:
-        id:
-          type: "string"
         timestamp:
           example: "1631182730"
           description: "Date du dépot du document au format timestamp UNIX"

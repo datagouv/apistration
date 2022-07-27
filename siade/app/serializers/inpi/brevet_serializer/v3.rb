@@ -1,5 +1,9 @@
 class INPI::BrevetSerializer::V3 < V3AndMore::BaseCollectionSerializer
   class ItemSerializer < V3AndMore::BaseSerializer
+    attribute :type do
+      'brevet'
+    end
+
     attributes :numero_publication,
       :titre,
       :date_publication,
