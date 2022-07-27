@@ -15,7 +15,7 @@ class FabriqueNumeriqueMinisteresSociaux::ConventionsCollectivesSerializer::V3 <
 
     meta do |object|
       {
-        internal_id: object.id,
+        internal_id: object.id
       }
     end
   end

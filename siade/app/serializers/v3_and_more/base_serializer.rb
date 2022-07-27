@@ -13,9 +13,9 @@ class V3AndMore::BaseSerializer
       self.__attributes ||= {}
 
       attrs.each do |attr|
-        self.__attributes[attr] = ->(resource) do
+        self.__attributes[attr] = lambda { |resource|
           resource.public_send(attr)
-        end
+        }
       end
     end
 
