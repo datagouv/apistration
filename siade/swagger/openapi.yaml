@@ -5464,7 +5464,8 @@ paths:
                               title: Type de la ressource
                               type: string
                               example: brevet
-                              enum: brevet
+                              enum:
+                              - brevet
                             titre:
                               title: Titre
                               description: Titre du brevet

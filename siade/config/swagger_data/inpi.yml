@@ -55,7 +55,7 @@ inpi:
         type: "string"
         example: "brevet"
         enum:
-          'brevet'
+          - 'brevet'
       titre:
         title: "Titre"
         description: "Titre du brevet"
