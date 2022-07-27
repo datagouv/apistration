@@ -2271,13 +2271,6 @@ paths:
                         data:
                           type: object
                           properties:
-                            id:
-                              title: FIXME
-                              type: string
-                            type:
-                              title: Exercice annuel
-                              type: string
-                              example: exercice
                             chiffre_affaires:
                               title: Chiffre d'affaires en euros
                               type: number
@@ -2287,8 +2280,6 @@ paths:
                               type: string
                               example: '2015-12-01'
                           required:
-                          - id
-                          - type
                           - chiffre_affaires
                           - date_fin_exercice
                 required:
@@ -3136,14 +3127,12 @@ paths:
                         data:
                           type: object
                           properties:
-                            id:
-                              type: string
-                              description: Identifiant interne (DILA) de la convention
-                              example: KALICONT000005635173
                             type:
                               title: Convention collective
                               type: string
                               example: convention_collective
+                              enum:
+                              - convention_collective
                             titre:
                               type: string
                               description: Titre historique de la convention collective
@@ -3191,7 +3180,6 @@ paths:
                               description: Date de la dernière mise à jour de la convention
                               example: '1988-01-01'
                           required:
-                          - id
                           - type
                           - titre
                           - titre_court
@@ -3201,6 +3189,15 @@ paths:
                           - synonymes
                           - url
                           - date_publication
+                        meta:
+                          type: object
+                          properties:
+                            internal_id:
+                              type: string
+                              description: Identifiant interne (DILA) de la convention
+                              example: KALICONT000005635173
+                          required:
+                          - internal_id
                 required:
                 - data
         '422':
@@ -5110,9 +5107,11 @@ paths:
                           type: object
                           properties:
                             type:
-                              title: Acte
+                              title: Type de la ressource
                               type: string
                               example: acte
+                              enum:
+                              - acte
                             siren:
                               title: Numéro Siren
                               description: Numéro SIREN de l'entreprise concernée
@@ -5462,9 +5461,10 @@ paths:
                               type: string
                               example: FR3110115A1
                             type:
-                              title: Brevet
+                              title: Type de la ressource
                               type: string
                               example: brevet
+                              enum: brevet
                             titre:
                               title: Titre
                               description: Titre du brevet
@@ -5925,9 +5925,11 @@ paths:
                               type: string
                               example: '4313464'
                             type:
-                              title: Marque
+                              title: Type de la ressource
                               type: string
                               example: marque
+                              enum:
+                              - marque
                             nom:
                               title: Nom
                               type: string
@@ -6295,9 +6297,11 @@ paths:
                               type: string
                               example: FR20203928-001
                             type:
-                              title: Modèle
+                              title: Type de la ressource
                               type: string
                               example: modele
+                              enum:
+                              - modele
                             numero_depot:
                               title: Numéro national de dépôt
                               description: Numéro national sous lequel le modèle est
@@ -13514,8 +13518,6 @@ paths:
                         data:
                           type: object
                           properties:
-                            id:
-                              type: string
                             timestamp:
                               example: '1631182730'
                               description: Date du dépot du document au format timestamp
@@ -13547,7 +13549,6 @@ paths:
                               items:
                                 type: string
                           required:
-                          - id
                           - timestamp
                           - type
                           - url
