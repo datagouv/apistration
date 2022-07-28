@@ -21,15 +21,9 @@ if LogStasher.enabled?
     end
   end
 
-  # /!\
-  # On ActiveSupport notification
-  # --> Theses lines haven't any spec, handle with caution
-
-  # Log the user access informations & jwt usage
   LogStasher.watch('user_access') do |name, start, finish, id, payload, store|
     payload.each do |k,v|
       store[k] = v
     end
   end
-  # /!\
 end

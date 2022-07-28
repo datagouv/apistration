@@ -29,6 +29,14 @@ class APIController < ActionController::API
 
   protected
 
+  def jwt?
+    false
+  end
+
+  def user_from_jwt
+    nil
+  end
+
   def at_least_one_error_kind_of?(kind, retriever)
     retriever.errors.any? do |error|
       error.kind == kind
@@ -59,8 +67,6 @@ class APIController < ActionController::API
   end
 
   def user_no_longer_authorized(_exception)
-    ::UserAccessSpy.log_expired_token(user: pundit_user)
-
     render_generic_errors_serializer(ExpiredTokenError, status: 401)
   end
 

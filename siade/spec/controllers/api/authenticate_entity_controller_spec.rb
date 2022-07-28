@@ -37,11 +37,6 @@ RSpec.describe API::AuthenticateEntityController do
           get :index, params: mandatory_params
           assert_response 200
         end
-
-        it 'does not logs unauthorized' do
-          expect(UserAccessSpy).not_to receive(:log_unauthorized)
-          get :index
-        end
       end
 
       context 'with a jwt which has no valid uid for jti' do
@@ -69,21 +64,16 @@ RSpec.describe API::AuthenticateEntityController do
           ::JwtTokenService.new(jwt: expired_jwt).jwt_user
         end
 
-        it 'logs unauthorized' do
-          expect(UserAccessSpy).to receive(:log_expired_token).with(user: instance_of(jwt_user.class))
-
+        it 'returns 401' do
           get :index
           assert_response 401
-          expect(response.body).to include('Votre token est expiré. Vous devez refaire une demande à API Entreprise,')
         end
       end
 
       context 'with an unsigned jwt' do
         let(:token) { unsigned_jwt }
 
-        it 'logs unauthorized' do
-          expect(UserAccessSpy).to receive(:log_unauthorized).with(user_info: token)
-
+        it 'returns 401' do
           get :index
           assert_response 401
         end
@@ -92,9 +82,7 @@ RSpec.describe API::AuthenticateEntityController do
       context 'with a invalid jwt' do
         let(:token) { forged_jwt }
 
-        it 'logs unauthorized' do
-          expect(UserAccessSpy).to receive(:log_unauthorized).with(user_info: token)
-
+        it 'returns 401' do
           get :index
           assert_response 401
         end
@@ -103,9 +91,7 @@ RSpec.describe API::AuthenticateEntityController do
       context 'with a incorrect jwt' do
         let(:token) { corrupted_jwt }
 
-        it 'logs unauthorized' do
-          expect(UserAccessSpy).to receive(:log_unauthorized).with(user_info: token)
-
+        it 'returns 401' do
           get :index
           assert_response 401
         end
@@ -116,9 +102,7 @@ RSpec.describe API::AuthenticateEntityController do
       context 'with a valid jwt' do
         let(:token) { yes_jwt }
 
-        it 'does not logs unauthorized' do
-          expect(UserAccessSpy).not_to receive(:log_unauthorized)
-
+        it 'returns 200' do
           get :index, params: { token: }.merge(mandatory_params)
           assert_response 200
         end
@@ -127,10 +111,8 @@ RSpec.describe API::AuthenticateEntityController do
       context 'with an unsigned jwt' do
         let(:token) { unsigned_jwt }
 
-        it 'logs unauthorized' do
-          expect(UserAccessSpy).to receive(:log_unauthorized).with(user_info: token)
-
-          get :index, params: { token: }
+        it 'returns 401' do
+          get :index
           assert_response 401
         end
       end
@@ -138,9 +120,8 @@ RSpec.describe API::AuthenticateEntityController do
       context 'with a invalid jwt' do
         let(:token) { forged_jwt }
 
-        it 'logs unauthorized' do
-          expect(UserAccessSpy).to receive(:log_unauthorized).with(user_info: token)
-          get :index, params: { token: }
+        it 'returns 401' do
+          get :index
           assert_response 401
         end
       end
@@ -148,9 +129,8 @@ RSpec.describe API::AuthenticateEntityController do
       context 'with a incorrect jwt' do
         let(:token) { corrupted_jwt }
 
-        it 'logs unauthorized' do
-          expect(UserAccessSpy).to receive(:log_unauthorized).with(user_info: token)
-          get :index, params: { token: }
+        it 'returns 401' do
+          get :index
           assert_response 401
         end
       end

@@ -4,6 +4,8 @@ class API::AuthenticateEntityController < APIController
 
   rescue_from APIPolicy::AccessForbiddenError, with: :access_forbidden
 
+  after_action :add_user_access_to_logstash
+
   include HasMandatoryParams
   include MockableInStaging
 
@@ -16,7 +18,6 @@ class API::AuthenticateEntityController < APIController
     @authenticated_user = user_from_jwt if jwt?
 
     if @authenticated_user.blank? || !@authenticated_user.valid?
-      UserAccessSpy.log_unauthorized(user_info: @token)
       raise not_valid_token_error
     end
 
@@ -55,7 +56,7 @@ class API::AuthenticateEntityController < APIController
   end
 
   def user_from_jwt
-    jwt_token_service.jwt_user
+    @user_from_jwt ||= jwt_token_service.jwt_user
   end
 
   def jwt_token_service
@@ -70,6 +71,17 @@ class API::AuthenticateEntityController < APIController
     monitoring_service.set_controller_params(
       params.to_unsafe_h
     )
+  end
+
+  def add_user_access_to_logstash
+    if jwt? && user_from_jwt.present?
+      ActiveSupport::Notifications.instrument(
+        'user_access',
+        user: user_from_jwt.logstash_id,
+        jti: user_from_jwt.token_id,
+        iat: user_from_jwt.iat
+      )
+    end
   end
 
   def monitoring_service

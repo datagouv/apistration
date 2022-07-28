@@ -13,13 +13,11 @@ RSpec.shared_examples 'jwt policy' do |scope, action = :show?|
 
   permissions action do
     it "authorizes a user with granted access (#{scope})" do
-      expect(UserAccessSpy).to receive(:log_authorized).with(user: jwt_user)
       payload.fetch(:scopes).push(scope.to_s)
       expect(subject).to permit(jwt_user)
     end
 
     it 'denies an forbidden user' do
-      expect(UserAccessSpy).to receive(:log_forbidden_jwt_token).with(user: jwt_user)
       expect(subject).not_to permit(jwt_user)
     end
   end
