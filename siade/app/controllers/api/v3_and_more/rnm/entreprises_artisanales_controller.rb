@@ -1,6 +1,6 @@
 class API::V3AndMore::RNM::EntreprisesArtisanalesController < API::V3AndMore::BaseController
   def show
-    authorize :entreprise_artisanale
+    authorize :entreprises_artisanales
 
     organizer = ::RNM::EntreprisesArtisanales.call(params: organizer_params)
 

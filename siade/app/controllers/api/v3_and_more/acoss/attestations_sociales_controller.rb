@@ -17,7 +17,7 @@ class API::V3AndMore::ACOSS::AttestationsSocialesController < API::V3AndMore::Ba
   def organizer_params
     {
       siren: params.require(:siren),
-      user_id: pundit_user.logstash_id,
+      user_id: current_user.logstash_id,
       recipient: params[:recipient]
     }
   end

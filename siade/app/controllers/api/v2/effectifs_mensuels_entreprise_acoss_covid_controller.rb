@@ -4,8 +4,6 @@ class API::V2::EffectifsMensuelsEntrepriseACOSSCovidController < API::V2::BaseCo
   include AidesCovidRequestsHelper
 
   def show
-    authorize :aides_covid_effectifs
-
     check_mois && check_siren
 
     if success?

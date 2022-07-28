@@ -1,6 +1,6 @@
 class API::V2::EntreprisesArtisanalesController < API::V2::BaseController
   def show
-    authorize :entreprise_artisanale
+    authorize :entreprises_artisanales
 
     retrieve_entreprise = SIADE::V2::Retrievers::EntreprisesArtisanales.new(request_params)
     retrieve_entreprise.retrieve

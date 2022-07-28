@@ -4,8 +4,6 @@ class API::V3AndMore::DummyController < APIController; end
 # rubocop:disable Lint/NestedMethodDefinition
 def define_dummy_controller(controller_klass)
   controller(controller_klass) do
-    skip_after_action :verify_authorized
-
     def index
       head :ok
     end
@@ -145,10 +143,8 @@ RSpec.describe 'logstasher custom fields', type: :controller do
     end
 
     controller(API::AuthenticateEntityController) do
-      skip_after_action :verify_authorized
-
       def index
-        authorize :entreprises, :show?
+        authorize :entreprises
 
         head :ok
       end

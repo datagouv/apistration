@@ -16,11 +16,6 @@ class ScaffoldResourceGenerator < Rails::Generators::NamedBase
     default: 'GET',
     desc: 'HTTP request verb (GET or POST)'
 
-  class_option :policy,
-    type: :boolean,
-    default: false,
-    desc: 'Does it have to generate a policy ?'
-
   class_option :is_collection,
     type: :boolean,
     default: false,
@@ -29,7 +24,6 @@ class ScaffoldResourceGenerator < Rails::Generators::NamedBase
   def create_scaffold_resource
     generate 'controller', name, string_options
     generate 'serializer', name, string_options
-    generate 'policy', name, string_options if new_policy?
     generate 'retriever', name, string_options
     generate 'validate_params', name, string_options if custom_validation?
     generate 'upload_document', name, string_options if document_resource?
@@ -55,9 +49,5 @@ class ScaffoldResourceGenerator < Rails::Generators::NamedBase
 
   def custom_validation?
     options[:validation_type].downcase == 'custom'
-  end
-
-  def new_policy?
-    options[:policy]
   end
 end

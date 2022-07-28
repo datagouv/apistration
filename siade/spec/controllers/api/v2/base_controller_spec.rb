@@ -8,8 +8,6 @@ RSpec.describe API::V2::BaseController, type: :controller do
   end
 
   controller(described_class) do
-    skip_after_action :verify_authorized
-
     def index
       FakeRetriever.new.retrieve
 

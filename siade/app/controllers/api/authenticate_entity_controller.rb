@@ -2,8 +2,6 @@ class API::AuthenticateEntityController < APIController
   before_action :authenticate_entity!,
     :set_monitoring_context
 
-  rescue_from APIPolicy::AccessForbiddenError, with: :access_forbidden
-
   after_action :add_user_access_to_logstash
 
   include HasMandatoryParams
@@ -17,21 +15,19 @@ class API::AuthenticateEntityController < APIController
 
     @authenticated_user = user_from_jwt if jwt?
 
-    if @authenticated_user.blank? || !@authenticated_user.valid?
-      raise not_valid_token_error
-    end
+    raise not_valid_token_error if @authenticated_user.blank? || !@authenticated_user.valid?
 
     @authenticated_user.not_expired!
 
     true
   end
 
-  def pundit_user
+  def current_user
     @authenticated_user
   end
 
   def not_valid_token_error
-    Pundit::NotAuthorizedError.new(message: 'must have valid token')
+    NotValidTokenError.new
   end
 
   def retrieve_token
@@ -65,7 +61,7 @@ class API::AuthenticateEntityController < APIController
 
   def set_monitoring_context
     monitoring_service.set_user_context(
-      pundit_user.as_json.symbolize_keys!
+      current_user.as_json.symbolize_keys!
     )
 
     monitoring_service.set_controller_params(
@@ -74,14 +70,14 @@ class API::AuthenticateEntityController < APIController
   end
 
   def add_user_access_to_logstash
-    if jwt? && user_from_jwt.present?
-      ActiveSupport::Notifications.instrument(
-        'user_access',
-        user: user_from_jwt.logstash_id,
-        jti: user_from_jwt.token_id,
-        iat: user_from_jwt.iat
-      )
-    end
+    return unless jwt? && user_from_jwt.present?
+
+    ActiveSupport::Notifications.instrument(
+      'user_access',
+      user: user_from_jwt.logstash_id,
+      jti: user_from_jwt.token_id,
+      iat: user_from_jwt.iat
+    )
   end
 
   def monitoring_service

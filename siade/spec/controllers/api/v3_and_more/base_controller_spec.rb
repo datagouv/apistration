@@ -8,8 +8,6 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
   end
 
   controller(described_class) do
-    skip_after_action :verify_authorized
-
     def index
       render json: { data: true }, status: :ok
     end
@@ -181,8 +179,6 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
 
     context 'when cache is activated' do
       controller(described_class) do
-        skip_after_action :verify_authorized
-
         def show
           retrieve_payload_data(
             DummyRetrieverOrganizer,
@@ -243,8 +239,6 @@ RSpec.describe API::V3AndMore::BaseController, type: :controller do
 
     context 'when cache is deactivated' do
       controller(described_class) do
-        skip_after_action :verify_authorized
-
         def show
           retrieve_payload_data(DummyRetrieverOrganizer, cache: false)
         end

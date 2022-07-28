@@ -1,7 +1,5 @@
 RSpec.describe API::AuthenticateEntityController do
   controller(described_class) do
-    skip_after_action :verify_authorized
-
     def index
       render json: {}, status: :ok
     end
@@ -141,7 +139,7 @@ RSpec.describe API::AuthenticateEntityController do
     let(:uuid_regex) { /\A\h{8}-\h{4}-\h{4}-\h{4}-\h{12}\z/ }
     let(:date_regex) { /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}[+-]\d{2}:\d{2}/ }
 
-    it 'sets user context with pundit user' do
+    it 'sets user context with user' do
       expect(MonitoringService.instance).to receive(:set_user_context).with({
         id: a_string_matching(uuid_regex),
         scopes: an_instance_of(Array),

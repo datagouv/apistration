@@ -2,7 +2,7 @@ class API::V3AndMore::Infogreffe::MandatairesSociauxController < API::V3AndMore:
   attr_reader :organizer
 
   def show
-    authorize :entreprise
+    authorize :entreprises
 
     @organizer = ::Infogreffe::MandatairesSociaux.call(params: organizer_params)
 

@@ -18,7 +18,7 @@ class API::V2::AttestationsSocialesACOSSController < API::V2::BaseController
     {
       siren: params[:siren],
       type_attestation: params[:type_attestation],
-      user_id: pundit_user.logstash_id,
+      user_id: current_user.logstash_id,
       recipient: params[:recipient]
     }
   end

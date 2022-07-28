@@ -1,6 +1,6 @@
 class API::V3AndMore::Infogreffe::ExtraitsRCSController < API::V3AndMore::BaseController
   def show
-    authorize :extrait_rcs
+    authorize :extraits_rcs
 
     organizer = ::Infogreffe::ExtraitsRCS.call(params: organizer_params)
 

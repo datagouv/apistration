@@ -42,8 +42,6 @@ gem 'retryable'
 
 gem 'interactor'
 
-# Authorization
-gem 'pundit', '1.0.0'
 gem 'jwt', '~> 2.4'
 
 gem 'sentry-ruby'

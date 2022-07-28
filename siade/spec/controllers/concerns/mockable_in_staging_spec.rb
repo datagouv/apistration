@@ -1,7 +1,6 @@
 RSpec.describe MockableInStaging do
   controller(API::AuthenticateEntityController) do
     include MockableInStaging
-    skip_after_action :verify_authorized
 
     def controller_name
       'dummy_name'

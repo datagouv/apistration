@@ -20,7 +20,6 @@ require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'rspec/json_expectations'
 require 'webmock/rspec'
-require 'pundit/rspec'
 require 'vcr_helper'
 
 # Requires supporting ruby files with custom matchers and macros, etc,

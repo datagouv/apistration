@@ -1,6 +1,6 @@
 class API::V3AndMore::INSEE::SiegesDiffusablesUnitesLegalesController < API::V3AndMore::BaseController
   def show
-    authorize :etablissement
+    authorize :etablissements
 
     organizer = ::INSEE::SiegeDiffusableUniteLegale.call(params: organizer_params)
 

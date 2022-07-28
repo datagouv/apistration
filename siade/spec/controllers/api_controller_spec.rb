@@ -2,8 +2,6 @@
 
 RSpec.describe APIController, type: :controller do
   controller(described_class) do
-    skip_after_action :verify_authorized
-
     def index
       head :ok
     end

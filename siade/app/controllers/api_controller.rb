@@ -1,16 +1,16 @@
 class APIController < ActionController::API
-  include Pundit
+  class NotValidTokenError < StandardError; end
+  class NotAuthorizedError < StandardError; end
+
   # Not needed anymore with rails 5 ActionController::API controllers
   # protect_from_forgery with: :null_session
 
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  rescue_from NotAuthorizedError, NotValidTokenError, with: :user_not_authorized
   rescue_from ::JWT::ExpiredSignature, with: :user_no_longer_authorized
 
   # FIXME: need test
   # rescue_from ActionDispatch::ParamsParser::ParseError, with: :bad_request
   rescue_from ActionController::ParameterMissing, with: :bad_request
-
-  after_action :verify_authorized
 
   def process_action(*args)
     super
@@ -25,6 +25,21 @@ class APIController < ActionController::API
   def remote_ip
     # XXX Might be because of old infra load balancer shit
     request.env['HTTP_X_FORWARDED_FOR'] || request.remote_ip
+  end
+
+  def self.authorize(scopes)
+    send(:before_action, :check_authorization, lambda {
+      controller.authorize(scopes)
+    })
+    send(:prepend_after_action, :authenticate_entity!)
+  end
+
+  def authorize(scopes)
+    scopes = Array(scopes).map(&:to_s)
+
+    return if (scopes & current_user.scopes).any?
+
+    raise NotAuthorizedError
   end
 
   protected
@@ -54,15 +69,14 @@ class APIController < ActionController::API
 
   private
 
-  # XXX Clean this, after no more old tokens
   def user_not_authorized(exception)
-    case exception.message
-    when /must have valid token/
+    case exception
+    when NotValidTokenError
       render_generic_errors_serializer(InvalidTokenError, status: 401)
-    when /must be activated/
-      render_generic_errors_serializer(OldTokenError, status: 401)
-    when /not allowed to/
+    when NotAuthorizedError
       render_generic_errors_serializer(InsufficientPrivilegesError, status: 403)
+    else
+      raise 'Invalid exception class', exception.class
     end
   end
 
