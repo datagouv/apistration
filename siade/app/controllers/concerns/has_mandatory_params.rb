@@ -36,6 +36,10 @@ module HasMandatoryParams
     ]
   end
 
+  def error_format
+    :flat
+  end
+
   def errors
     @errors ||= []
   end

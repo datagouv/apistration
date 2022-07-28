@@ -8,7 +8,7 @@ RSpec.describe Rack::Attack, type: :request do
   RSpec.shared_examples 'returns a 401 error' do
     let(:random_endpoint) do
       {
-        controller: 'api/v2/certificats_opqibi',
+        controller: 'api_entreprise/v2/certificats_opqibi',
         action: 'show',
         siren: 123
       }
@@ -94,7 +94,7 @@ RSpec.describe Rack::Attack, type: :request do
 
       let(:random_endpoint) do
         {
-          controller: 'api/v2/certificats_opqibi',
+          controller: 'api_entreprise/v2/certificats_opqibi',
           action: 'show',
           siren: 123
         }
@@ -154,7 +154,7 @@ RSpec.describe Rack::Attack, type: :request do
 
           let(:endpoints) do
             [{
-              controller: 'api/v2/entreprises_restored',
+              controller: 'api_entreprise/v2/entreprises_restored',
               action: 'show',
               siren: '123'
             }]
@@ -167,7 +167,7 @@ RSpec.describe Rack::Attack, type: :request do
           let(:limit) { throttle_config.dig(:json_resources, :limit) }
           let(:endpoints) do
             [{
-              controller: 'api/v2/cartes_professionnelles_fntp',
+              controller: 'api_entreprise/v2/cartes_professionnelles_fntp',
               action: 'show',
               siren: '123'
             }]
@@ -182,7 +182,7 @@ RSpec.describe Rack::Attack, type: :request do
           it_behaves_like 'throttling group of endpoints' do
             let(:endpoints) do
               [{
-                controller: 'api/v2/attestations_fiscales_dgfip',
+                controller: 'api_entreprise/v2/attestations_fiscales_dgfip',
                 action: 'show',
                 siren: 123
               }]
@@ -192,7 +192,7 @@ RSpec.describe Rack::Attack, type: :request do
           it_behaves_like 'throttling group of endpoints' do
             let(:endpoints) do
               [{
-                controller: 'api/v2/documents_inpi',
+                controller: 'api_entreprise/v2/documents_inpi',
                 action: 'actes',
                 siren: 123
               }]
@@ -202,7 +202,7 @@ RSpec.describe Rack::Attack, type: :request do
           it_behaves_like 'throttling group of endpoints' do
             let(:endpoints) do
               [{
-                controller: 'api/v2/documents_inpi',
+                controller: 'api_entreprise/v2/documents_inpi',
                 action: 'bilans',
                 siren: 123
               }]
@@ -216,7 +216,7 @@ RSpec.describe Rack::Attack, type: :request do
           it_behaves_like 'throttling group of endpoints' do
             let(:endpoints) do
               [{
-                controller: 'api/v2/effectifs_annuels_entreprise_acoss_covid',
+                controller: 'api_entreprise/v2/effectifs_annuels_entreprise_acoss_covid',
                 action: 'show',
                 siren: 123
               }]
@@ -226,7 +226,7 @@ RSpec.describe Rack::Attack, type: :request do
           it_behaves_like 'throttling group of endpoints' do
             let(:endpoints) do
               [{
-                controller: 'api/v2/effectifs_mensuels_etablissement_acoss_covid',
+                controller: 'api_entreprise/v2/effectifs_mensuels_etablissement_acoss_covid',
                 action: 'show',
                 siret: 123,
                 annee: 2020,
@@ -238,7 +238,7 @@ RSpec.describe Rack::Attack, type: :request do
           it_behaves_like 'throttling group of endpoints' do
             let(:endpoints) do
               [{
-                controller: 'api/v2/effectifs_mensuels_entreprise_acoss_covid',
+                controller: 'api_entreprise/v2/effectifs_mensuels_entreprise_acoss_covid',
                 action: 'show',
                 siren: 123,
                 annee: 2020,
@@ -250,7 +250,7 @@ RSpec.describe Rack::Attack, type: :request do
           it_behaves_like 'throttling group of endpoints' do
             let(:endpoints) do
               [{
-                controller: 'api/v2/attestations_agefiph',
+                controller: 'api_entreprise/v2/attestations_agefiph',
                 action: 'show',
                 siret: 123
               }]
@@ -377,15 +377,15 @@ RSpec.describe Rack::Attack, type: :request do
     let(:non_throttled_endpoints) do
       [
         {
-          controller: 'api/v2/uptime',
+          controller: 'api_entreprise/v2/uptime',
           action: 'show'
         },
         {
-          controller: 'api/v2/privileges',
+          controller: 'api_entreprise/v2/privileges',
           action: 'show'
         },
         {
-          controller: 'api/ping',
+          controller: 'api_entreprise/ping',
           action: 'show'
         }
       ]

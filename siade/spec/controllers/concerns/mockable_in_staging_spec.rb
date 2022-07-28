@@ -1,5 +1,5 @@
 RSpec.describe MockableInStaging do
-  controller(API::AuthenticateEntityController) do
+  controller(APIEntrepriseController) do
     include MockableInStaging
 
     def controller_name
@@ -12,7 +12,7 @@ RSpec.describe MockableInStaging do
   end
 
   before do
-    routes.draw { get 'index', to: 'api/authenticate_entity#index' }
+    routes.draw { get 'index', to: 'api_entreprise#index' }
   end
 
   context 'when requesting any env but staging' do

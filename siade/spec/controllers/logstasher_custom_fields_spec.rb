@@ -1,5 +1,5 @@
-class API::V2::DummyController < APIController; end
-class API::V3AndMore::DummyController < APIController; end
+class APIEntreprise::V2::DummyController < APIController; end
+class APIEntreprise::V3AndMore::DummyController < APIController; end
 
 # rubocop:disable Lint/NestedMethodDefinition
 def define_dummy_controller(controller_klass)
@@ -71,7 +71,7 @@ RSpec.describe 'logstasher custom fields', type: :controller do
         routes.draw { get 'index' => 'api/v2/dummy#index' }
       end
 
-      define_dummy_controller(API::V2::DummyController)
+      define_dummy_controller(APIEntreprise::V2::DummyController)
 
       it 'adds retrieved_cached to logstasher' do
         expect(LogStasher).to receive(:build_logstash_event).with(
@@ -104,7 +104,7 @@ RSpec.describe 'logstasher custom fields', type: :controller do
         routes.draw { get 'index' => 'api/v3_and_more/dummy#index' }
       end
 
-      define_dummy_controller(API::V3AndMore::DummyController)
+      define_dummy_controller(APIEntreprise::V3AndMore::DummyController)
 
       it 'adds retrieved_cached to logstasher' do
         expect(LogStasher).to receive(:build_logstash_event).with(
@@ -139,10 +139,10 @@ RSpec.describe 'logstasher custom fields', type: :controller do
     end
 
     before do
-      routes.draw { get 'index' => 'api/authenticate_entity#index' }
+      routes.draw { get 'index' => 'api_entreprise#index' }
     end
 
-    controller(API::AuthenticateEntityController) do
+    controller(APIEntrepriseController) do
       def index
         authorize :entreprises
 

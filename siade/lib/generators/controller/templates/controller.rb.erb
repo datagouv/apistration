@@ -1,4 +1,4 @@
-class API::V3AndMore::<%= name %>Controller < API::V3AndMore::BaseController
+class APIEntreprise::V3AndMore::<%= name %>Controller < APIEntreprise::V3AndMore::BaseController
   def show
     authorize :<%= resource_class.underscore %>
 
@@ -24,6 +24,6 @@ class API::V3AndMore::<%= name %>Controller < API::V3AndMore::BaseController
   end
 
   def serializer_module
-    ::<%= provider_namespace %>::<%= resource_class %>Serializer
+    ::APIEntreprise::<%= provider_namespace %>::<%= resource_class %>Serializer
   end
 end

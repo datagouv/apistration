@@ -1,0 +1,38 @@
+class APIEntreprise::V3AndMore::DGFIP::ChiffresAffairesController < APIEntreprise::V3AndMore::BaseController
+  def show
+    authorize :exercices
+
+    organizer = retrieve_payload_data(::DGFIP::ChiffresAffaires, cache: true, cache_key:)
+
+    if organizer.success?
+      render json: serializer_class.new(organizer.bundled_data).serializable_hash,
+        status: extract_http_code(organizer)
+    else
+      render_errors(organizer)
+    end
+  end
+
+  private
+
+  def organizer_params
+    {
+      siret: params[:siret],
+      user_id: @authenticated_user.id
+    }
+  end
+
+  def cache_key
+    "dgfip/attestations_fiscales:siret=#{params[:siret]}"
+  end
+
+  def options(organizer)
+    {
+      is_collection: true,
+      meta: organizer.meta
+    }
+  end
+
+  def serializer_module
+    ::APIEntreprise::DGFIP::ChiffresAffairesCollectionSerializer
+  end
+end

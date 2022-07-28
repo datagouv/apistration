@@ -26,7 +26,6 @@ Lint/MissingSuper:
     - 'app/organizers/retriever_organizer.rb'
     - 'app/organizers/upload_document_organizer.rb'
     - 'app/organizers/validate_params_organizer.rb'
-    - 'app/serializers/jsonapi/document_serializer.rb'
 
 # Offense count: 2
 Lint/UselessAssignment:
@@ -40,7 +39,7 @@ Metrics/AbcSize:
   Exclude:
     - 'app/interactors/get_oauth2_token.rb'
     - 'app/interactors/rnm/entreprises_artisanales/build_resource.rb'
-    - 'app/serializers/etablissement_serializer/v2.rb'
+    - 'app/serializers/api_entreprise/etablissement_serializer/v2.rb'
     - 'lib/generators/scaffold_resource/scaffold_resource_generator.rb'
     - 'spec/organizers/retriever_organizer_spec.rb'
 
@@ -61,12 +60,6 @@ Metrics/CyclomaticComplexity:
 Metrics/ParameterLists:
   Exclude:
     - 'app/lib/jwt_user.rb'
-
-# Offense count: 1
-# Configuration parameters: IgnoredMethods, Max.
-Metrics/PerceivedComplexity:
-  Exclude:
-    - 'app/controllers/api/v3_and_more/base_controller.rb'
 
 # Offense count: 2
 # Configuration parameters: ForbiddenDelimiters.
@@ -89,7 +82,6 @@ Naming/MemoizedInstanceVariableName:
 # AllowedNames: at, by, db, id, in, io, ip, of, on, os, pp, to
 Naming/MethodParameterName:
   Exclude:
-    - 'app/controllers/api/v3_and_more/base_controller.rb'
     - 'app/services/performance_monitoring_service.rb'
 
 # Offense count: 1
@@ -111,7 +103,7 @@ Naming/VariableNumber:
     - 'app/errors/bad_file_from_provider_error.rb'
     - 'app/interactors/documents/base64_decode.rb'
     - 'app/interactors/rnm/entreprises_artisanales/build_resource.rb'
-    - 'app/serializers/etablissement_serializer/v2.rb'
+    - 'app/serializers/api_entreprise/etablissement_serializer/v2.rb'
     - 'lib/siade/self_hosted_document/file/generic.rb'
     - 'spec/interactors/rnm/entreprises_artisanales/build_resource_spec.rb'
     - 'spec/lib/siade/self_hosted_document/file/generic_spec.rb'

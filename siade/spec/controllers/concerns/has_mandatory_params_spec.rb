@@ -1,5 +1,5 @@
 RSpec.describe HasMandatoryParams do
-  controller(APIController) do
+  controller(ApplicationController) do
     include HasMandatoryParams
 
     def index

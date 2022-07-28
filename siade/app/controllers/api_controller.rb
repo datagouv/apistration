@@ -1,15 +1,6 @@
-class APIController < ActionController::API
-  class NotValidTokenError < StandardError; end
-  class NotAuthorizedError < StandardError; end
+class APIController < ApplicationController
+  include HandleTokens
 
-  # Not needed anymore with rails 5 ActionController::API controllers
-  # protect_from_forgery with: :null_session
-
-  rescue_from NotAuthorizedError, NotValidTokenError, with: :user_not_authorized
-  rescue_from ::JWT::ExpiredSignature, with: :user_no_longer_authorized
-
-  # FIXME: need test
-  # rescue_from ActionDispatch::ParamsParser::ParseError, with: :bad_request
   rescue_from ActionController::ParameterMissing, with: :bad_request
 
   def process_action(*args)
@@ -22,35 +13,7 @@ class APIController < ActionController::API
     render error_json(error, status: 400)
   end
 
-  def remote_ip
-    # XXX Might be because of old infra load balancer shit
-    request.env['HTTP_X_FORWARDED_FOR'] || request.remote_ip
-  end
-
-  def self.authorize(scopes)
-    send(:before_action, :check_authorization, lambda {
-      controller.authorize(scopes)
-    })
-    send(:prepend_after_action, :authenticate_entity!)
-  end
-
-  def authorize(scopes)
-    scopes = Array(scopes).map(&:to_s)
-
-    return if (scopes & current_user.scopes).any?
-
-    raise NotAuthorizedError
-  end
-
   protected
-
-  def jwt?
-    false
-  end
-
-  def user_from_jwt
-    nil
-  end
 
   def at_least_one_error_kind_of?(kind, retriever)
     retriever.errors.any? do |error|
@@ -59,7 +22,7 @@ class APIController < ActionController::API
   end
 
   def content_type_header
-    raise ::NotImplementedError
+    'application/json'
   end
 
   def render_errors(retriever, extra_payload = {})

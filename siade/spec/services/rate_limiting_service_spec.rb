@@ -11,15 +11,15 @@ RSpec.describe RateLimitingService do
     let(:endpoints) do
       [
         {
-          controller: 'api/v2/entreprises_restored',
+          controller: 'api_entreprise/v2/entreprises_restored',
           action: 'show'
         },
         {
-          controller: 'api/v2/etablissements_restored',
+          controller: 'api_entreprise/v2/etablissements_restored',
           action: 'show'
         },
         {
-          controller: 'api/v3_and_more/dgfip/liasses_fiscales/declarations',
+          controller: 'api_entreprise/v3_and_more/dgfip/liasses_fiscales/declarations',
           action: 'show'
         }
       ]

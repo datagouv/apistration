@@ -1,0 +1,15 @@
+class APIEntreprise::MI::AssociationSerializer::V3 < APIEntreprise::V3AndMore::BaseSerializer
+  attributes :rna_id,
+    :titre,
+    :objet,
+    :siret,
+    :siret_siege_social,
+    :date_creation,
+    :date_declaration,
+    :date_publication,
+    :date_dissolution,
+    :adresse_siege,
+    :etat,
+    :groupement,
+    :mise_a_jour
+end
