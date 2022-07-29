@@ -12,7 +12,7 @@ RSpec.describe 'INPI: Latest Brevets', type: %i[request swagger] do
       parameter name: :limit,
         in: :query,
         type: :number,
-        description: "Limite le nombre de résultats retournés. Valeur entre 1 et 20 (Défaut 5)",
+        description: 'Limite le nombre de résultats retournés. Valeur entre 1 et 20 (Défaut 5)',
         example: 10
 
       let(:limit) { nil }
