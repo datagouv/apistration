@@ -3,7 +3,7 @@ class RateLimitingService
 
   def discriminate_by_jwt_for_endpoints(req, endpoints_list)
     jwt = extract_token_from_request(req)
-    endpoint = extract_endpoint_from_path(req.path).slice(:controller, :action)
+    endpoint = extract_endpoint_from_url(req.url).slice(:controller, :action)
 
     Digest::SHA256.hexdigest(jwt) if jwt && endpoints_list.include?(endpoint)
   end
@@ -40,8 +40,8 @@ class RateLimitingService
     [remaining, 0].max.to_s
   end
 
-  def extract_endpoint_from_path(path)
-    Rails.application.routes.recognize_path(path)
+  def extract_endpoint_from_url(url)
+    Rails.application.routes.recognize_path(url)
   rescue ActionController::RoutingError
     {}
   end

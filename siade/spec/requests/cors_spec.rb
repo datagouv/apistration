@@ -1,4 +1,8 @@
 RSpec.describe 'Cors', type: :request do
+  before do
+    host! 'entreprise.api.localtest.me'
+  end
+
   it 'reject Cors policy for example.com for any resource' do
     get '/v2/ping', params: {}, headers: { Origin: 'http://example.com' }
     expect(response.header).not_to have_key('Access-Control-Allow-Origin')

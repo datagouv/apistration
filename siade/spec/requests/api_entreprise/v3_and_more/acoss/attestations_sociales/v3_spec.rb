@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'URSSAF: Attestation de vigilance', type: %i[request swagger] do
+RSpec.describe 'URSSAF: Attestation de vigilance', type: %i[request swagger], api: :entreprise do
   path '/v3/urssaf/unites_legales/{siren}/attestation_vigilance' do
     get SwaggerData.get('acoss.attestation_sociale.title') do
       tags(*SwaggerData.get('acoss.attestation_sociale.tags'))

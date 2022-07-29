@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'DGFIP: chiffres d\'affaires', type: %i[request swagger] do
+RSpec.describe 'DGFIP: chiffres d\'affaires', type: %i[request swagger], api: :entreprise do
   path '/v3/dgfip/etablissements/{siret}/chiffres_affaires' do
     get SwaggerData.get('dgfip.chiffres_affaires.title') do
       tags(*SwaggerData.get('dgfip.chiffres_affaires.tags'))

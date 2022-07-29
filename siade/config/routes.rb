@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  namespace :v2 do
+  namespace :v2, constraints: APIEntrepriseDomainConstraint.new  do
     get 'uptime' => '/api_entreprise/v2/uptime#show'
 
     get 'effectifs_annuels_acoss_covid/:siren'                              => '/api_entreprise/v2/effectifs_annuels_entreprise_acoss_covid#show'
@@ -57,7 +57,7 @@ Rails.application.routes.draw do
     get 'openapi.yaml', to: ->(env) { [200, {}, [File.read(Rails.root.join('public/v2/open-api.yml'))]] }
   end
 
-  scope path: 'v:api_version', constraints: { api_version: /\d+/ } do
+  scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_and_more: true) do
     get 'ping', to: 'api_entreprise/ping#show'
 
     get 'urssaf/unites_legales/:siren/attestation_vigilance', to: 'api_entreprise/v3_and_more/acoss/attestations_sociales#show'
@@ -136,6 +136,5 @@ Rails.application.routes.draw do
     get 'cma_france/rnm/unites_legales/:siren', to: 'api_entreprise/v3_and_more/rnm/entreprises_artisanales#show'
   end
 
-  mount Rswag::Ui::Engine   => '/v3/developers'
-  mount Rswag::Api::Engine  => '/v3'
+  mount Rswag::Api::Engine  => '/v3', constraints: APIEntrepriseDomainConstraint.new
 end

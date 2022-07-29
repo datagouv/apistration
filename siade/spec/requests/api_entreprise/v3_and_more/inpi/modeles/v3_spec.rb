@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'INPI: Modeles', type: %i[request swagger] do
+RSpec.describe 'INPI: Modeles', type: %i[request swagger], api: :entreprise do
   path '/v3/inpi/unites_legales/{siren}/modeles' do
     get SwaggerData.get('inpi.modeles.title') do
       tags(*SwaggerData.get('inpi.modeles.tags'))

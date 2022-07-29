@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'INSEE: Etablissement', type: %i[request swagger] do
+RSpec.describe 'INSEE: Etablissement', type: %i[request swagger], api: :entreprise do
   path '/v3/insee/sirene/etablissements/{siret}' do
     get SwaggerData.get('insee.etablissement.title') do
       tags(*SwaggerData.get('insee.etablissement.tags'))

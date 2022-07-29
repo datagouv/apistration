@@ -1,5 +1,5 @@
-RSpec.describe Rack::Attack, type: :request do
-  after { described_class.reset! }
+RSpec.describe 'Rack::Attack config for API Entreprise', type: :request, api: :entreprise do
+  after { Rack::Attack.reset! }
 
   def extract_without_context_url_for(options)
     url_for(options.merge(_recall: {}))
@@ -47,7 +47,7 @@ RSpec.describe Rack::Attack, type: :request do
       end
     end
 
-    context 'after the limit has been reached' do
+    context 'when the limit has been reached' do
       before { limit.times { call!(token_sample_1) } }
 
       it 'rejects incoming requests after the limit' do
@@ -142,7 +142,7 @@ RSpec.describe Rack::Attack, type: :request do
 
     context 'when the token is a valid JWT' do
       def limit_value_for_production(endpoints_list)
-        config = YAML.safe_load(File.open("#{Rails.root}/config/throttle.yml"))
+        config = YAML.safe_load(File.open(Rails.root.join('config/throttle.yml')))
         config.dig('production', endpoints_list, 'limit')
       end
 

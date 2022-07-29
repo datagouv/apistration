@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type: %i[request swagger] do
+RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type: %i[request swagger], api: :entreprise do
   path '/v3/<%= provider_namespace.underscore %>/<%= resource_class.underscore.pluralize %>/{<%= id_path_param %>}' do
     get SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.title') do
       tags(*SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.tags'))

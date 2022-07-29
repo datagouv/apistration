@@ -14,7 +14,7 @@ class APIEntreprise::V2::UptimeController < APIEntreprise::V2::BaseController
   private
 
   def route_recognized?
-    Rails.application.routes.recognize_path route
+    Rails.application.routes.recognize_path(request.base_url + route)
   rescue ActionController::RoutingError
     false
   end
@@ -47,7 +47,15 @@ class APIEntreprise::V2::UptimeController < APIEntreprise::V2::BaseController
   end
 
   def route
-    params.permit(:route)[:route]
+    @route ||= begin
+      raw_route = params.permit(:route)[:route]
+
+      if raw_route.starts_with?('/')
+        raw_route
+      else
+        "/#{raw_route}"
+      end
+    end
   end
 
   def request_options

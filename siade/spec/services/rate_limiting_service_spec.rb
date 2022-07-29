@@ -25,8 +25,10 @@ RSpec.describe RateLimitingService do
       ]
     end
 
+    let(:base_path) { 'http://entreprise.api.localtest.me' }
+
     before do
-      allow(req).to receive(:path).and_return('/random/path')
+      allow(req).to receive(:url).and_return("#{base_path}/random/path")
     end
 
     context 'when authorization header is not set' do
@@ -48,19 +50,19 @@ RSpec.describe RateLimitingService do
         before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return("Bearer #{token_value}") }
 
         context 'when the request path matches one of the endpoint\'s URL in the list' do
-          before { allow(req).to receive(:path).and_return('/v2/etablissements/yoparam') }
+          before { allow(req).to receive(:url).and_return("#{base_path}/v2/etablissements/yoparam") }
 
           it { is_expected.to eq(Digest::SHA256.hexdigest(token_value)) }
         end
 
         describe 'non-regression test: when the request path matches dgfip v3 attestations_fiscales' do
-          before { allow(req).to receive(:path).and_return('/v3/dgfip/unites_legales/301028346/liasses_fiscales/2017') }
+          before { allow(req).to receive(:url).and_return("#{base_path}/v3/dgfip/unites_legales/301028346/liasses_fiscales/2017") }
 
           it { is_expected.to eq(Digest::SHA256.hexdigest(token_value)) }
         end
 
         context 'when the request path does not match any of the endpoints in the list' do
-          before { allow(req).to receive(:path).and_return('/not/in/the/list') }
+          before { allow(req).to receive(:url).and_return("#{base_path}/not/in/the/list") }
 
           it { is_expected.to be_nil }
         end

@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'CNETP: Attestations cotisations congés payés et aux chômage intempéries', type: %i[request swagger] do
+RSpec.describe 'CNETP: Attestations cotisations congés payés et aux chômage intempéries', type: %i[request swagger], api: :entreprise do
   path '/v3/cnetp/unites_legales/{siren}/attestation_cotisations_conges_payes_chomage_intemperies' do
     get SwaggerData.get('cnetp.attestation_cotisations_conges_payes_chomage_intemperies.title') do
       tags(*SwaggerData.get('cnetp.attestation_cotisations_conges_payes_chomage_intemperies.tags'))

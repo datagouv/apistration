@@ -4,6 +4,10 @@ RSpec.describe APIEntreprise::V2::UptimeController, type: :controller do
   it_behaves_like 'unauthorized'
   it_behaves_like 'forbidden'
 
+  before do
+    request.host = 'entreprise.api.localhost.me'
+  end
+
   describe '#show' do
     before do
       request.headers[:Authorization] = "Bearer #{token}"
