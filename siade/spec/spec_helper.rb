@@ -138,6 +138,10 @@ RSpec.configure do |config|
     host! 'entreprise.api.localtest.me'
   end
 
+  config.before(type: :request, api: :particulier) do
+    host! 'particulier.api.localtest.me'
+  end
+
   config.include_context 'has a provider_name', type: :provider_request
   config.include_context 'has a provider_name', type: :provider_response
   config.include_context 'has a provider_name', type: :provider_driver

@@ -1,0 +1,2 @@
+class APIParticulierController < APIController
+end

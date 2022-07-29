@@ -365,6 +365,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', type: :request, api: :e
     let(:all_routes) do
       Rails.application.routes.routes.each_with_object([]) do |route, res|
         next if route.defaults == {}
+        next if route.defaults[:controller] =~ /api_particulier/
 
         route_conf = {
           controller: route.defaults[:controller],
