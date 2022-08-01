@@ -172,7 +172,7 @@ RSpec.describe APIController, type: :controller do
         end
       end
 
-      context 'with a invalid jwt' do
+      context 'with an invalid jwt' do
         let(:token) { forged_jwt }
 
         it 'returns 401' do
@@ -181,7 +181,7 @@ RSpec.describe APIController, type: :controller do
         end
       end
 
-      context 'with a incorrect jwt' do
+      context 'with an incorrect jwt' do
         let(:token) { corrupted_jwt }
 
         it 'returns 401' do
@@ -210,7 +210,7 @@ RSpec.describe APIController, type: :controller do
         end
       end
 
-      context 'with a invalid jwt' do
+      context 'with an invalid jwt' do
         let(:token) { forged_jwt }
 
         it 'returns 401' do
@@ -219,7 +219,7 @@ RSpec.describe APIController, type: :controller do
         end
       end
 
-      context 'with a incorrect jwt' do
+      context 'with an incorrect jwt' do
         let(:token) { corrupted_jwt }
 
         it 'returns 401' do
