@@ -7944,13 +7944,13 @@ paths:
                         title: Enseigne de l'établissement
                         type: string
                         nullable: true
-                        description: "L'enseigne identifie l'emplacement ou le local
-                          dans lequel est exercée l'activité. Un établissement peut
-                          posséder une enseigne, plusieurs enseignes ou aucune. \n
-                          \n Cette variable est la concaténation séparé par des virgules
-                          de 3 champs enseignes renvoyé par l'INSEE. Plus d'informations
+                        description: "L'enseigne est l'appellation désignant l'emplacement
+                          ou le local dans lequel est exercée l'activité. Un établissement
+                          peut posséder une enseigne, plusieurs enseignes ou aucune.
+                          \n \n Cette variable est la concaténation séparée par des
+                          virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations
                           ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement"
-                        example: Direction interministérielle du numérique
+                        example: Coiff Land, CoiffureLand
                       unite_legale:
                         type: object
                         title: Unité légale de l'établissement
@@ -9043,13 +9043,13 @@ paths:
                         title: Enseigne de l'établissement
                         type: string
                         nullable: true
-                        description: "L'enseigne identifie l'emplacement ou le local
-                          dans lequel est exercée l'activité. Un établissement peut
-                          posséder une enseigne, plusieurs enseignes ou aucune. \n
-                          \n Cette variable est la concaténation séparé par des virgules
-                          de 3 champs enseignes renvoyé par l'INSEE. Plus d'informations
+                        description: "L'enseigne est l'appellation désignant l'emplacement
+                          ou le local dans lequel est exercée l'activité. Un établissement
+                          peut posséder une enseigne, plusieurs enseignes ou aucune.
+                          \n \n Cette variable est la concaténation séparée par des
+                          virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations
                           ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement"
-                        example: Direction interministérielle du numérique
+                        example: Coiff Land, CoiffureLand
                       unite_legale:
                         type: object
                         title: Unité légale de l'établissement
@@ -10143,13 +10143,13 @@ paths:
                         title: Enseigne de l'établissement
                         type: string
                         nullable: true
-                        description: "L'enseigne identifie l'emplacement ou le local
-                          dans lequel est exercée l'activité. Un établissement peut
-                          posséder une enseigne, plusieurs enseignes ou aucune. \n
-                          \n Cette variable est la concaténation séparé par des virgules
-                          de 3 champs enseignes renvoyé par l'INSEE. Plus d'informations
+                        description: "L'enseigne est l'appellation désignant l'emplacement
+                          ou le local dans lequel est exercée l'activité. Un établissement
+                          peut posséder une enseigne, plusieurs enseignes ou aucune.
+                          \n \n Cette variable est la concaténation séparée par des
+                          virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations
                           ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement"
-                        example: Direction interministérielle du numérique
+                        example: Coiff Land, CoiffureLand
                       unite_legale:
                         type: object
                         title: Unité légale de l'établissement
@@ -11245,13 +11245,13 @@ paths:
                         title: Enseigne de l'établissement
                         type: string
                         nullable: true
-                        description: "L'enseigne identifie l'emplacement ou le local
-                          dans lequel est exercée l'activité. Un établissement peut
-                          posséder une enseigne, plusieurs enseignes ou aucune. \n
-                          \n Cette variable est la concaténation séparé par des virgules
-                          de 3 champs enseignes renvoyé par l'INSEE. Plus d'informations
+                        description: "L'enseigne est l'appellation désignant l'emplacement
+                          ou le local dans lequel est exercée l'activité. Un établissement
+                          peut posséder une enseigne, plusieurs enseignes ou aucune.
+                          \n \n Cette variable est la concaténation séparée par des
+                          virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations
                           ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement"
-                        example: Direction interministérielle du numérique
+                        example: Coiff Land, CoiffureLand
                       unite_legale:
                         type: object
                         title: Unité légale de l'établissement
