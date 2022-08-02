@@ -7940,6 +7940,17 @@ paths:
                           informations obtenues ne doivent en aucun cas être accessibles
                           au grand public. \n \n Plus d'informations sur les conditions
                           de diffusion : LIEN TODO"
+                      enseigne:
+                        title: Enseigne de l'établissement
+                        type: string
+                        nullable: true
+                        description: "L'enseigne identifie l'emplacement ou le local
+                          dans lequel est exercée l'activité. Un établissement peut
+                          posséder une enseigne, plusieurs enseignes ou aucune. \n
+                          \n Cette variable est la concaténation séparé par des virgules
+                          de 3 champs enseignes renvoyé par l'INSEE. Plus d'informations
+                          ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement"
+                        example: Direction interministérielle du numérique
                       unite_legale:
                         type: object
                         title: Unité légale de l'établissement
@@ -8526,6 +8537,7 @@ paths:
                     - activite_principale
                     - tranche_effectif_salarie
                     - diffusable_commercialement
+                    - enseigne
                     - unite_legale
                     - adresse
                     - date_creation
@@ -9027,6 +9039,17 @@ paths:
                           est toujours à 'true'. Pour récupérer des établissements
                           non-diffusibles, référez-vous à la documentation de l'API
                           /insee/etablissements/:siren
+                      enseigne:
+                        title: Enseigne de l'établissement
+                        type: string
+                        nullable: true
+                        description: "L'enseigne identifie l'emplacement ou le local
+                          dans lequel est exercée l'activité. Un établissement peut
+                          posséder une enseigne, plusieurs enseignes ou aucune. \n
+                          \n Cette variable est la concaténation séparé par des virgules
+                          de 3 champs enseignes renvoyé par l'INSEE. Plus d'informations
+                          ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement"
+                        example: Direction interministérielle du numérique
                       unite_legale:
                         type: object
                         title: Unité légale de l'établissement
@@ -9613,6 +9636,7 @@ paths:
                     - activite_principale
                     - tranche_effectif_salarie
                     - diffusable_commercialement
+                    - enseigne
                     - unite_legale
                     - adresse
                     - date_creation
@@ -10115,6 +10139,17 @@ paths:
                           est toujours à 'true'. Pour récupérer des établissements
                           non-diffusibles, référez-vous à la documentation de l'API
                           /insee/etablissements/:siren
+                      enseigne:
+                        title: Enseigne de l'établissement
+                        type: string
+                        nullable: true
+                        description: "L'enseigne identifie l'emplacement ou le local
+                          dans lequel est exercée l'activité. Un établissement peut
+                          posséder une enseigne, plusieurs enseignes ou aucune. \n
+                          \n Cette variable est la concaténation séparé par des virgules
+                          de 3 champs enseignes renvoyé par l'INSEE. Plus d'informations
+                          ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement"
+                        example: Direction interministérielle du numérique
                       unite_legale:
                         type: object
                         title: Unité légale de l'établissement
@@ -10701,6 +10736,7 @@ paths:
                     - activite_principale
                     - tranche_effectif_salarie
                     - diffusable_commercialement
+                    - enseigne
                     - unite_legale
                     - adresse
                     - date_creation
@@ -11205,6 +11241,17 @@ paths:
                           informations obtenues ne doivent en aucun cas être accessibles
                           au grand public. \n \n Plus d'informations sur les conditions
                           de diffusion : LIEN TODO"
+                      enseigne:
+                        title: Enseigne de l'établissement
+                        type: string
+                        nullable: true
+                        description: "L'enseigne identifie l'emplacement ou le local
+                          dans lequel est exercée l'activité. Un établissement peut
+                          posséder une enseigne, plusieurs enseignes ou aucune. \n
+                          \n Cette variable est la concaténation séparé par des virgules
+                          de 3 champs enseignes renvoyé par l'INSEE. Plus d'informations
+                          ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement"
+                        example: Direction interministérielle du numérique
                       unite_legale:
                         type: object
                         title: Unité légale de l'établissement
@@ -11791,6 +11838,7 @@ paths:
                     - activite_principale
                     - tranche_effectif_salarie
                     - diffusable_commercialement
+                    - enseigne
                     - unite_legale
                     - adresse
                     - date_creation

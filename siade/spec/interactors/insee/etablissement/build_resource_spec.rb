@@ -27,6 +27,7 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
       its(:siege_social) { is_expected.to be(false) }
       its(:etat_administratif) { is_expected.to eq('A') }
       its(:date_fermeture) { is_expected.to be_nil }
+      its(:enseigne) { is_expected.to be_nil }
 
       its(:activite_principale) do
         is_expected.to eq({
@@ -69,6 +70,20 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
 
       its(:etat_administratif) { is_expected.to eq('F') }
       its(:date_fermeture) { is_expected.to eq(Date.parse('2011-09-05').to_time.to_i) }
+    end
+  end
+
+  context 'with a siret which has an enseigne', vcr: { cassette_name: 'insee/siret/active_GE_ss' } do
+    let(:siret) { sirets_insee_v3[:active_GE_ss] }
+
+    it { is_expected.to be_a_success }
+
+    describe 'resource' do
+      subject { organizer.bundled_data.data }
+
+      it { is_expected.to be_a(Resource) }
+
+      its(:enseigne) { is_expected.to eq('DECATHLON DIRECTION GENERALE FRANCE') }
     end
   end
 end

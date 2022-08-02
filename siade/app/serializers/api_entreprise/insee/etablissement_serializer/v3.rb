@@ -2,6 +2,7 @@ class APIEntreprise::INSEE::EtablissementSerializer::V3 < APIEntreprise::V3AndMo
   attributes :siege_social,
     :etat_administratif,
     :date_fermeture,
+    :enseigne,
     :activite_principale,
     :tranche_effectif_salarie,
     :diffusable_commercialement,

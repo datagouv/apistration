@@ -700,6 +700,16 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
           \n
           Plus d'informations sur les conditions de diffusion : LIEN TODO"
 
+      enseigne:
+        title: "Enseigne de l'établissement"
+        type: "string"
+        nullable: true
+        description: "L'enseigne identifie l'emplacement ou le local dans lequel est exercée l'activité. Un établissement peut posséder une enseigne, plusieurs enseignes ou aucune.
+          \n
+          \n
+          Cette variable est la concaténation séparé par des virgules de 3 champs enseignes renvoyé par l'INSEE. Plus d'informations ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement"
+        example: "Direction interministérielle du numérique"
+
       unite_legale:
         type: "object"
         title: "Unité légale de l'établissement"

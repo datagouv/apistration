@@ -12,6 +12,8 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
       etat_administratif:,
       date_fermeture:,
 
+      enseigne: build_enseigne,
+
       activite_principale: referential(
         'activite_principale',
         code: latest_info_on_etablissement['activitePrincipaleEtablissement'],
@@ -42,6 +44,14 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
     @latest_info_on_etablissement ||= etablissement['periodesEtablissement'].find do |periode_etablissement|
       periode_etablissement['dateFin'].nil?
     end
+  end
+
+  def build_enseigne
+    enseigne_parts = latest_info_on_etablissement.slice('enseigne1Etablissement', 'enseigne2Etablissement', 'enseigne3Etablissement').values
+
+    return unless enseigne_parts.any?
+
+    enseigne_parts.compact.join(', ')
   end
 
   def date_fermeture
