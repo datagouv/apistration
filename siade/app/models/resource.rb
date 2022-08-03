@@ -18,6 +18,10 @@ class Resource
     end
   end
 
+  def read_attribute_for_serialization(key)
+    public_send(key)
+  end
+
   def method_missing(name, *args, &)
     if args.empty? && @data.key?(name.to_sym)
       @data.fetch(name.to_sym)
