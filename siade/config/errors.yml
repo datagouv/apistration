@@ -164,6 +164,10 @@
   source:
     parameter: 'limit'
 
+- code: '00351'
+  title: 'Entité non traitable'
+  detail: "Le code postal n'est pas correctement formatté"
+
 - code: '00402'
   title: Version d'API non prise en charge
 

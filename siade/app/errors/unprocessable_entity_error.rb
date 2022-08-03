@@ -23,7 +23,9 @@ class UnprocessableEntityError < ApplicationError
       # ACOSS
       attestation_kind: '00310',
       # ADEME
-      limit: '00313'
+      limit: '00313',
+      # CNAF
+      postal_code: '00351'
     }.fetch(field) do
       raise KeyError, "#{field} is not a valid field name"
     end
