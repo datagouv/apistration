@@ -25,7 +25,8 @@ class UnprocessableEntityError < ApplicationError
       # ADEME
       limit: '00313',
       # CNAF
-      postal_code: '00351'
+      postal_code: '00351',
+      cnaf_beneficiary_number: '00352'
     }.fetch(field) do
       raise KeyError, "#{field} is not a valid field name"
     end
