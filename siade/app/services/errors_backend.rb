@@ -58,7 +58,8 @@ class ErrorsBackend
       '19' => 'ADEME',
       '20' => 'API Geo',
       '21' => 'MI',
-      '22' => 'RNM'
+      '22' => 'RNM',
+      '23' => 'CNAF'
     }
   end
   # rubocop:enable Metrics/MethodLength
