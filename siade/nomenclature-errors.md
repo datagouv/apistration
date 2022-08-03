@@ -26,6 +26,8 @@ Tiré de JSON API:
 
 ### Codes fournisseur de données (XX)
 
+Liste non-exhaustive (la liste se trouve dans [`ErrorsBackend`](app/services/errors_backend.rb))
+
 - `01` = INSEE
 - `02` = Infogreffe
 - `03` = DGFIP
