@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'Dummy endpoint API Particulier', type: %i[request swagger], api: :particulier do
-  path '/v2/dummy' do
+  path '/api/v2/dummy' do
     get 'Dummy endpoint' do
       security [jwt_bearer_token: []]
 
