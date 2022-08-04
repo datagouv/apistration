@@ -33,7 +33,7 @@ raw_grep_scopes = `grep --no-filename -R "authorize :" app/controllers/`
 scopes = raw_grep_scopes.split.reject do |str|
   str == 'authorize'
 end.map do |scope_symbol|
-  scope_symbol[1..-1]
+  scope_symbol[1..-1].sub(',', '').strip
 end.concat(extra_scopes).uniq
 
 token_payload = {
