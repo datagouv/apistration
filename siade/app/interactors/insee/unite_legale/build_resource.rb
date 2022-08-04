@@ -8,7 +8,8 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
       type: type_of_person,
 
       personne_morale_attributs: {
-        raison_sociale: unite_legale['denominationUniteLegale']
+        raison_sociale: unite_legale['denominationUniteLegale'],
+        sigle: unite_legale['sigleUniteLegale']
       },
 
       personne_physique_attributs: {

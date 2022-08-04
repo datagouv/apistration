@@ -7979,10 +7979,16 @@ paths:
                               raison_sociale:
                                 title: Raison sociale de l'unité légale
                                 type: string
+                                example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
+                                nullable: true
+                              sigle:
+                                title: Sigle de l'unité légale
+                                type: string
                                 example: DINUM
                                 nullable: true
                             required:
                             - raison_sociale
+                            - sigle
                           personne_physique_attributs:
                             type: object
                             title: Attributs de la personne physique
@@ -9078,10 +9084,16 @@ paths:
                               raison_sociale:
                                 title: Raison sociale de l'unité légale
                                 type: string
+                                example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
+                                nullable: true
+                              sigle:
+                                title: Sigle de l'unité légale
+                                type: string
                                 example: DINUM
                                 nullable: true
                             required:
                             - raison_sociale
+                            - sigle
                           personne_physique_attributs:
                             type: object
                             title: Attributs de la personne physique
@@ -10178,10 +10190,16 @@ paths:
                               raison_sociale:
                                 title: Raison sociale de l'unité légale
                                 type: string
+                                example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
+                                nullable: true
+                              sigle:
+                                title: Sigle de l'unité légale
+                                type: string
                                 example: DINUM
                                 nullable: true
                             required:
                             - raison_sociale
+                            - sigle
                           personne_physique_attributs:
                             type: object
                             title: Attributs de la personne physique
@@ -11280,10 +11298,16 @@ paths:
                               raison_sociale:
                                 title: Raison sociale de l'unité légale
                                 type: string
+                                example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
+                                nullable: true
+                              sigle:
+                                title: Sigle de l'unité légale
+                                type: string
                                 example: DINUM
                                 nullable: true
                             required:
                             - raison_sociale
+                            - sigle
                           personne_physique_attributs:
                             type: object
                             title: Attributs de la personne physique
@@ -12211,10 +12235,16 @@ paths:
                           raison_sociale:
                             title: Raison sociale de l'unité légale
                             type: string
+                            example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
+                            nullable: true
+                          sigle:
+                            title: Sigle de l'unité légale
+                            type: string
                             example: DINUM
                             nullable: true
                         required:
                         - raison_sociale
+                        - sigle
                       personne_physique_attributs:
                         type: object
                         title: Attributs de la personne physique
@@ -12907,10 +12937,16 @@ paths:
                           raison_sociale:
                             title: Raison sociale de l'unité légale
                             type: string
+                            example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
+                            nullable: true
+                          sigle:
+                            title: Sigle de l'unité légale
+                            type: string
                             example: DINUM
                             nullable: true
                         required:
                         - raison_sociale
+                        - sigle
                       personne_physique_attributs:
                         type: object
                         title: Attributs de la personne physique

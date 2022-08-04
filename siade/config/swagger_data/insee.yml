@@ -188,6 +188,11 @@ insee:
           raison_sociale:
             title: "Raison sociale de l'unité légale"
             type: "string"
+            example: "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
+            nullable: true
+          sigle:
+            title: "Sigle de l'unité légale"
+            type: "string"
             example: "DINUM"
             nullable: true
       personne_physique_attributs:
