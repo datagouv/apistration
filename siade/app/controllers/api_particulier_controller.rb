@@ -1,2 +1,77 @@
 class APIParticulierController < APIController
+  include OrganizersMethodsHelpers
+
+  protected
+
+  def serializer_class
+    api_version, provider_name, resource_controller_name = self.class.to_s.split('::')[1..3]
+    resource_name = resource_controller_name.sub('Controller', '')
+
+    APIParticulier.const_get("#{provider_name}::#{resource_name}::#{api_version}")
+  end
+
+  def render_errors(organizer)
+    render content_type: 'application/json',
+      json: format_error(organizer.errors.first),
+      status: extract_http_code(organizer)
+  end
+
+  private
+
+  def user_not_authorized(exception)
+    case exception
+    when NotValidTokenError
+      render json: format_unauthorized_error(InvalidTokenError.new),
+        status: :unauthorized
+    when NotAuthorizedError
+      render json: format_unauthorized_error(InsufficientPrivilegesError.new),
+        status: :unauthorized
+    else
+      raise 'Invalid exception class', exception.class
+    end
+  end
+
+  def extract_http_code(organizer)
+    if at_least_one_error_kind_of?(:wrong_parameter, organizer)
+      :bad_request
+    elsif at_least_one_error_kind_of?(:provider_error, organizer)
+      :service_unavailable
+    else
+      super
+    end
+  end
+
+  def format_error(error)
+    send("format_#{error.kind}_error", error)
+  rescue NoMethodError
+    {
+      error: error.kind,
+      reason: error.detail,
+      message: error.detail
+    }
+  end
+
+  def format_wrong_parameter_error(error)
+    {
+      error: 'bad_request',
+      reason: error.detail,
+      message: error.detail
+    }
+  end
+
+  def format_unauthorized_error(error)
+    {
+      error: 'access_denied',
+      reason: error.detail,
+      message: error.detail
+    }
+  end
+
+  def format_provider_error_error(error)
+    {
+      error: 'data_provider_error',
+      reason: error.detail,
+      message: error.detail
+    }
+  end
 end

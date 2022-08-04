@@ -1,0 +1,101 @@
+require 'rails_helper'
+
+RSpec.describe APIParticulierController, type: :controller do
+  controller(described_class) do
+    def show
+      authorize :dummy
+
+      render_errors(organizer)
+    end
+
+    def organizer; end
+  end
+
+  # rubocop:disable RSpec/VerifiedDoubles
+  let(:organizer) { double('organizer', errors:) }
+  # rubocop:enable RSpec/VerifiedDoubles
+
+  let(:token) { TokenFactory.new('dummy').valid }
+  let(:errors) { [error] }
+
+  # rubocop:disable RSpec/InstanceVariable
+  before do
+    allow(@controller).to receive(:organizer).and_return(organizer)
+  end
+  # rubocop:enable RSpec/InstanceVariable
+
+  describe 'errors rendering' do
+    subject do
+      routes.draw { get 'show' => 'api_particulier#show' }
+
+      get :show, params: { token: }
+    end
+
+    context 'with NotFoundError' do
+      let(:error) { NotFoundError.new('whatever', 'message') }
+
+      its(:status) { is_expected.to eq(404) }
+
+      its(:body) do
+        is_expected.to eq({
+          error: 'not_found',
+          reason: 'message',
+          message: 'message'
+        }.to_json)
+      end
+    end
+
+    context 'with UnprocessableEntityError' do
+      let(:error) { UnprocessableEntityError.new('siren') }
+
+      its(:status) { is_expected.to eq(400) }
+
+      its(:body) do
+        is_expected.to eq({
+          error: 'bad_request',
+          reason: error.detail,
+          message: error.detail
+        }.to_json)
+      end
+    end
+
+    context 'with InsufficientPrivilegesError (triggers by scope not found)' do
+      let(:token) { TokenFactory.new('another').valid }
+      let(:error) { nil }
+
+      its(:status) { is_expected.to eq(401) }
+
+      its(:body) do
+        is_expected.to include('access_denied')
+      end
+    end
+
+    context 'with token error (UnauthorizedError)' do
+      let(:error) { InvalidTokenError.new }
+
+      its(:status) { is_expected.to eq(401) }
+
+      its(:body) do
+        is_expected.to eq({
+          error: 'access_denied',
+          reason: error.detail,
+          message: error.detail
+        }.to_json)
+      end
+    end
+
+    context 'with a provider error' do
+      let(:error) { ProviderInternalServerError.new('whatever') }
+
+      its(:status) { is_expected.to eq(503) }
+
+      its(:body) do
+        is_expected.to eq({
+          error: 'data_provider_error',
+          reason: error.detail,
+          message: error.detail
+        }.to_json)
+      end
+    end
+  end
+end
