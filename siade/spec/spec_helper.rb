@@ -125,6 +125,7 @@ RSpec.configure do |config|
   config.include ProviderStubs::MSACotisations
   config.include ProviderStubs::DGFIP
   config.include ProviderStubs::Infogreffe
+  config.include ProviderStubs::CNAFQuotientFamilial
 
   config.include ActivateStrictVcrRequestMatchingForV3
   config.extend ActivateStrictVcrRequestMatchingForV3
