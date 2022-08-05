@@ -3,6 +3,32 @@ class APIParticulierController < APIController
 
   protected
 
+  def authenticate_user!
+    @token ||= retrieve_token
+
+    if @token && legacy_token_exists?(@token)
+      @current_user = build_user_from_legacy_token(@token)
+    else
+      super
+    end
+  end
+
+  def legacy_token_exists?(token)
+    APIParticulierLegacyTokensBackend.exists?(token)
+  end
+
+  def build_user_from_legacy_token(token)
+    token_data = APIParticulierLegacyTokensBackend.get(token)
+
+    JwtUser.new(
+      uid: '99999999-9999-9999-9999-999999999999',
+      scopes: token_data['scopes'],
+      jti: token_data['token_id'],
+      iat: Time.new(2022, 1, 1).to_i,
+      exp: Time.new(2042, 1, 1).to_i
+    )
+  end
+
   def serialize_data(organizer)
     serializer_class.new(organizer.bundled_data.data, serializer_base_options).serializable_hash
   end

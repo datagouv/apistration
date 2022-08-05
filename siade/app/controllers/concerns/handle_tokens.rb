@@ -38,7 +38,8 @@ module HandleTokens
   end
 
   def authenticate_user!
-    @token = retrieve_token
+    @token ||= retrieve_token
+
     raise NotValidTokenError unless @token
 
     @current_user = jwt_token_service.jwt_user if jwt?
@@ -82,7 +83,7 @@ module HandleTokens
   end
 
   def add_user_access_to_logstash
-    return unless current_user.present?
+    return if current_user.blank?
 
     ActiveSupport::Notifications.instrument(
       'user_access',
