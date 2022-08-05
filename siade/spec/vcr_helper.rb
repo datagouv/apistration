@@ -36,6 +36,9 @@ VCR.configure do |c|
   c.filter_sensitive_data('<SIADE_TOKEN>') { Siade.credentials[:uptime_robot_internal_jwt].to_s }
   c.filter_sensitive_data('<DOUANES_CLIENT_ID>') { Siade.credentials[:douanes_client_id].to_s }
   c.filter_sensitive_data('<MI_API_KEY>') { Siade.credentials[:mi_gravitee_api_key].to_s }
+  c.filter_sensitive_data('<POLE_EMPLOI_CLIENT_ID>') { Siade.credentials[:pole_emploi_client_id].to_s }
+  c.filter_sensitive_data('<POLE_EMPLOI_CLIENT_SECRET>') { Siade.credentials[:pole_emploi_client_secret].to_s }
+  c.filter_sensitive_data('<POLE_EMPLOI_AUTHENTICATE_URL>') { Siade.credentials[:pole_emploi_authenticate_url].to_s }
 
   # VCR url filters
   c.filter_sensitive_data('<URL_INSEE_V3>') { Siade.credentials[:insee_v3_domain].to_s }
