@@ -56,6 +56,7 @@ set :shared_dirs, fetch(:shared_dirs, []).push(*%w[
 set :shared_files, fetch(:shared_files, []).push(*%w[
   config/jwt_blacklist.yml
   config/jwt_whitelist.yml
+  config/api_particulier_legacy_tokens.yml
   config/master.key
   config/initializers/redis.rb
 ])
