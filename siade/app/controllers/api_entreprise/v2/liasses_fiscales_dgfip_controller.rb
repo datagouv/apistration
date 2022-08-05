@@ -41,7 +41,7 @@ class APIEntreprise::V2::LiassesFiscalesDGFIPController < APIEntreprise::V2::Abs
   def retriever_params
     retriever_params = params.permit(:siren, :annee)
     retriever_params[:cookie]  = dgfip_service.cookie
-    retriever_params[:user_id] = UserIdDGFIPService.call(@authenticated_user.id)
+    retriever_params[:user_id] = UserIdDGFIPService.call(current_user.id)
 
     retriever_params
   end

@@ -29,7 +29,7 @@ class APIEntreprise::V2::ExercicesController < APIEntreprise::V2::AbstractDGFIPC
   def retriever_params(dgfip_service)
     retriever_params = params.permit(:siret)
 
-    retriever_params[:user_id] = UserIdDGFIPService.call(@authenticated_user.id)
+    retriever_params[:user_id] = UserIdDGFIPService.call(current_user.id)
     retriever_params[:cookie]  = dgfip_service.cookie
 
     retriever_params

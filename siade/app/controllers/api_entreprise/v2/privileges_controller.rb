@@ -8,6 +8,6 @@ class APIEntreprise::V2::PrivilegesController < APIEntreprise::V2::BaseControlle
   end
 
   def privileges
-    user_from_jwt.scopes
+    current_user.scopes
   end
 end

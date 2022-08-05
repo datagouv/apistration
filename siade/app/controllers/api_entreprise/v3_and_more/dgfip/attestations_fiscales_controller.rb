@@ -17,7 +17,7 @@ class APIEntreprise::V3AndMore::DGFIP::AttestationsFiscalesController < APIEntre
   def organizer_params
     {
       siren: params[:siren],
-      user_id: @authenticated_user.id
+      user_id: current_user.id
     }
   end
 

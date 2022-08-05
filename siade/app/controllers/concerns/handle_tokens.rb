@@ -5,6 +5,8 @@ module HandleTokens
   class NotAuthorizedError < StandardError; end
 
   included do
+    attr_reader :current_user
+
     before_action :authenticate_user!
     before_action :set_monitoring_context
 
@@ -21,16 +23,8 @@ module HandleTokens
     end
   end
 
-  def current_user
-    @authenticated_user
-  end
-
   def jwt?
     jwt_token_service.valid?
-  end
-
-  def user_from_jwt
-    @user_from_jwt ||= jwt_token_service.jwt_user
   end
 
   private
@@ -47,11 +41,11 @@ module HandleTokens
     @token = retrieve_token
     raise NotValidTokenError unless @token
 
-    @authenticated_user = user_from_jwt if jwt?
+    @current_user = jwt_token_service.jwt_user if jwt?
 
-    raise NotValidTokenError if @authenticated_user.blank? || !@authenticated_user.valid?
+    raise NotValidTokenError if current_user.blank? || !current_user.valid?
 
-    @authenticated_user.not_expired!
+    current_user.not_expired!
 
     true
   end
@@ -88,13 +82,13 @@ module HandleTokens
   end
 
   def add_user_access_to_logstash
-    return unless jwt? && user_from_jwt.present?
+    return unless current_user.present?
 
     ActiveSupport::Notifications.instrument(
       'user_access',
-      user: user_from_jwt.logstash_id,
-      jti: user_from_jwt.token_id,
-      iat: user_from_jwt.iat
+      user: current_user.logstash_id,
+      jti: current_user.token_id,
+      iat: current_user.iat
     )
   end
 

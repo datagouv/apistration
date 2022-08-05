@@ -17,7 +17,7 @@ class APIEntreprise::V3AndMore::DGFIP::ChiffresAffairesController < APIEntrepris
   def organizer_params
     {
       siret: params[:siret],
-      user_id: @authenticated_user.id
+      user_id: current_user.id
     }
   end
 

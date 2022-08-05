@@ -18,7 +18,7 @@ class APIEntreprise::V3AndMore::DGFIP::LiassesFiscales::DeclarationsController <
     {
       siren: params[:siren],
       year: params[:year],
-      user_id: @authenticated_user.id
+      user_id: current_user.id
     }
   end
 

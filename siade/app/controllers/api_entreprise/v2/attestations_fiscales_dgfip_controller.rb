@@ -29,7 +29,7 @@ class APIEntreprise::V2::AttestationsFiscalesDGFIPController < APIEntreprise::V2
   def retriever_params(dgfip_service)
     retriever_params = params.permit(:siren, :siren_is, :siren_tva)
 
-    retriever_params[:user_id] = UserIdDGFIPService.call(@authenticated_user.id)
+    retriever_params[:user_id] = UserIdDGFIPService.call(current_user.id)
     retriever_params[:cookie]  = dgfip_service.cookie
 
     retriever_params
