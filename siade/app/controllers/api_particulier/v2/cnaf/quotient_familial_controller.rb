@@ -5,7 +5,7 @@ class APIParticulier::V2::CNAF::QuotientFamilialController < APIParticulierContr
     organizer = ::CNAF::QuotientFamilial.call(params: organizer_params)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.bundled_data.data, scope: current_user, scope_name: :current_user).serializable_hash,
+      render json: serialize_data(organizer),
         status: extract_http_code(organizer)
     else
       render_errors(organizer)

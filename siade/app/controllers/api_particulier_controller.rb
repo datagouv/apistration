@@ -3,11 +3,22 @@ class APIParticulierController < APIController
 
   protected
 
+  def serialize_data(organizer)
+    serializer_class.new(organizer.bundled_data.data, serializer_base_options).serializable_hash
+  end
+
   def serializer_class
     api_version, provider_name, resource_controller_name = self.class.to_s.split('::')[1..3]
     resource_name = resource_controller_name.sub('Controller', '')
 
     APIParticulier.const_get("#{provider_name}::#{resource_name}::#{api_version}")
+  end
+
+  def serializer_base_options
+    {
+      scope: current_user,
+      scope_name: :current_user
+    }
   end
 
   def render_errors(organizer)
