@@ -1,4 +1,6 @@
 class CNAF::QuotientFamilial::BuildResource < BuildResource
+  include CNAF::QuotientFamilial::ResponseBodyHelpers
+
   def resource_attributes
     {
       adresse: build_address,
@@ -56,13 +58,5 @@ class CNAF::QuotientFamilial::BuildResource < BuildResource
     return if value.blank?
 
     value.to_i
-  end
-
-  def data
-    Nokogiri.XML(xml_without_mime.css('fluxRetour').children.text)
-  end
-
-  def xml_without_mime
-    @xml_without_mime ||= Nokogiri.XML(response.body.split("\n")[4..].join("\n").strip)
   end
 end

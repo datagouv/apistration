@@ -1,4 +1,6 @@
 class CNAF::QuotientFamilial::ValidateResponse < ValidateResponse
+  include CNAF::QuotientFamilial::ResponseBodyHelpers
+
   def call
     unknown_provider_response! unless http_ok?
 
@@ -29,10 +31,6 @@ class CNAF::QuotientFamilial::ValidateResponse < ValidateResponse
     !data_present?
   end
 
-  def data
-    Nokogiri.XML(xml_without_mime.css('fluxRetour').children.text)
-  end
-
   def beneficiary_not_found?
     libelle_retour.include?('Dossier allocataire inexistant')
   end
@@ -43,9 +41,5 @@ class CNAF::QuotientFamilial::ValidateResponse < ValidateResponse
 
   def libelle_retour
     xml_without_mime.css('libelleRetour').text
-  end
-
-  def xml_without_mime
-    @xml_without_mime ||= Nokogiri.XML(response.body.split("\n")[4..].join("\n").strip)
   end
 end
