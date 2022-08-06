@@ -1,0 +1,9 @@
+{
+  "message": "inscription introuvable",
+  "uid": "62ee80b93834a_0000",
+  "details": {
+    "method": "GET",
+    "endpoint": "etudiant",
+    "parameter": "1234567890H"
+  }
+}
