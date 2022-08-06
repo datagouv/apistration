@@ -27,6 +27,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'PDF'
   inflect.acronym 'ZIP'
   inflect.acronym 'TVA'
+  inflect.acronym 'INE'
 
   inflect.acronym 'ACOSS'
   inflect.acronym 'ADEME'
@@ -42,6 +43,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'INPI'
   inflect.acronym 'INPI'
   inflect.acronym 'INSEE'
+  inflect.acronym 'MESRI'
   inflect.acronym 'MI'
   inflect.acronym 'MSA'
   inflect.acronym 'OPQIBI'
