@@ -60,7 +60,8 @@ class ErrorsBackend
       '21' => 'MI',
       '22' => 'RNM',
       '23' => 'CNAF',
-      '24' => 'Pôle Emploi'
+      '24' => 'Pôle Emploi',
+      '25' => 'MESRI'
     }
   end
   # rubocop:enable Metrics/MethodLength
