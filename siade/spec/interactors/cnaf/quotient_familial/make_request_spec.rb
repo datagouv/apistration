@@ -24,6 +24,10 @@ RSpec.describe CNAF::QuotientFamilial::MakeRequest, type: :make_request do
     stub_cnaf_quotient_familial_make_request_ssl_config
   end
 
+  it { is_expected.to be_a_success }
+
+  its(:response) { is_expected.to be_a(Net::HTTPOK) }
+
   it 'calls url with valid body, which interpolates params' do
     make_call
 
