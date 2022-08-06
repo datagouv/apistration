@@ -59,7 +59,8 @@ class ErrorsBackend
       '20' => 'API Geo',
       '21' => 'MI',
       '22' => 'RNM',
-      '23' => 'CNAF'
+      '23' => 'CNAF',
+      '24' => 'Pôle Emploi'
     }
   end
   # rubocop:enable Metrics/MethodLength
