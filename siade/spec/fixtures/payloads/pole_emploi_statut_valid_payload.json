@@ -1,0 +1,23 @@
+{
+  "adresse": {
+    "INSEECommune": "75107",
+    "codePostal": "75007",
+    "ligneComplementAdresse": " ",
+    "ligneComplementDestinataire": "APPARTEMENT 42",
+    "ligneNom": "DUPONT",
+    "ligneVoie": "42 RUE DE LA PAIX",
+    "localite": "75001 PARIS"
+  },
+  "categorieInscription": "1",
+  "civilite": "M.",
+  "codeCertificationCNAV": "VC",
+  "dateInscription": "2020-01-01T00:00:00+01:00",
+  "dateNaissance": "1990-01-01T00:00:00+01:00",
+  "email": "jean.dupont@france.fr",
+  "libellecategorieInscription": "PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS",
+  "nom": "DUPONT",
+  "nomUsage": " ",
+  "prenom": "JEAN",
+  "sexe": "Masculin",
+  "telephone": "0636656565"
+}
