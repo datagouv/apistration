@@ -319,7 +319,7 @@ GEM
     utf8-cleaner (1.0.0)
       activesupport
     vcr (6.1.0)
-    webmock (3.14.0)
+    webmock (3.17.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -389,7 +389,7 @@ DEPENDENCIES
   unindent
   utf8-cleaner
   vcr
-  webmock (~> 3.14)
+  webmock (~> 3.17)
   xml-simple
 
 BUNDLED WITH

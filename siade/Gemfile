@@ -59,7 +59,7 @@ group :test do
   gem 'timecop'
   gem 'mock_redis'
   gem 'vcr'
-  gem 'webmock', '~> 3.14'
+  gem 'webmock', '~> 3.17'
 
   gem 'ammeter'
   gem 'rspec-rails'
