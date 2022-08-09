@@ -104,6 +104,7 @@ Naming/AccessorMethodName:
     - "app/services/monitoring_service.rb"
     - "lib/generators/scaffold_resource/scaffold_resource_generator.rb"
     - "app/interactors/inpi/authenticate.rb"
+    - "app/interactors/mesri/make_request_commons.rb"
 
 # Allowing uppercase in some method names
 Naming/MethodName:
