@@ -28,7 +28,11 @@ class UnprocessableEntityError < ApplicationError
       postal_code: '00351',
       cnaf_beneficiary_number: '00352',
       # MESRI
-      ine: '00360'
+      ine: '00360',
+      family_name: '00361',
+      first_name: '00362',
+      birthday_date: '00363',
+      gender: '00364'
     }.fetch(field) do
       raise KeyError, "#{field} is not a valid field name"
     end
