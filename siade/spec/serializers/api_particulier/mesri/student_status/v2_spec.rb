@@ -3,7 +3,7 @@ RSpec.describe APIParticulier::MESRI::StudentStatus::V2, type: :serializer do
 
   let(:current_user) { JwtUser.new(uid: SecureRandom.uuid, scopes:, jti: SecureRandom.uuid, iat: 1.year.ago.to_i, exp: 1.year.from_now.to_i) }
 
-  let(:resource) { MESRI::StudentStatusWithINE::BuildResource.call(response:).bundled_data.data }
+  let(:resource) { MESRI::BuildResource.call(response:).bundled_data.data }
   # rubocop:disable Style/OpenStructUse
   let(:response) { OpenStruct.new(body:) }
   # rubocop:enable Style/OpenStructUse

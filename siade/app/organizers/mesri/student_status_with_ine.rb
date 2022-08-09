@@ -2,7 +2,7 @@ class MESRI::StudentStatusWithINE < RetrieverOrganizer
   organize MESRI::StudentStatusWithINE::ValidateParams,
     MESRI::StudentStatusWithINE::MakeRequest,
     MESRI::ValidateResponse,
-    MESRI::StudentStatusWithINE::BuildResource
+    MESRI::BuildResource
 
   def provider_name
     'MESRI'
