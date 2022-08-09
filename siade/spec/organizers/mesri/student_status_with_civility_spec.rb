@@ -1,0 +1,40 @@
+RSpec.describe MESRI::StudentStatusWithCivility, type: :retriever_organizer do
+  describe '.call' do
+    subject { described_class.call(params:) }
+
+    let(:params) do
+      {
+        family_name:,
+        first_name:,
+        birthday_date:,
+        birthday_place:,
+        gender:,
+
+        user_id: SecureRandom.uuid
+      }
+    end
+
+    let(:family_name) { 'Dupont' }
+    let(:first_name) { 'Jean' }
+    let(:birthday_date) { '2000-01-01' }
+    let(:birthday_place) { 'Paris' }
+    let(:gender) { 'm' }
+
+    describe 'happy path' do
+      before do
+        stub_request(:post, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
+          status: 200,
+          body: File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_civility_valid_response.json'))
+        )
+      end
+
+      it { is_expected.to be_a_success }
+
+      it 'retrieves the resource' do
+        resource = subject.bundled_data.data
+
+        expect(resource).to be_present
+      end
+    end
+  end
+end
