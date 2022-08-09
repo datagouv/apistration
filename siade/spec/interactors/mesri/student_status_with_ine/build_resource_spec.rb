@@ -7,7 +7,7 @@ RSpec.describe MESRI::StudentStatusWithINE::BuildResource, type: :buils_resource
     instance_double(Net::HTTPOK, body:)
   end
 
-  let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_valid_response.json')) }
+  let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_ine_valid_response.json')) }
 
   it { is_expected.to be_a_success }
 

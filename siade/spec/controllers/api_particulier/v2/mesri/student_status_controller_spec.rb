@@ -11,7 +11,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController, type: :contro
     before do
       stub_request(:get, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
         status: 200,
-        body: File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_valid_response.json'))
+        body: File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_ine_valid_response.json'))
       )
     end
 
@@ -50,7 +50,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController, type: :contro
     before do
       stub_request(:get, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
         status: 404,
-        body: File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_not_found_response.json'))
+        body: File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_ine_not_found_response.json'))
       )
     end
 

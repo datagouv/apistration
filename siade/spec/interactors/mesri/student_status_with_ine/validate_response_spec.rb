@@ -10,7 +10,7 @@ RSpec.describe MESRI::StudentStatusWithINE::ValidateResponse, type: :validate_re
       let(:code) { '200' }
 
       context 'with data in payload' do
-        let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_valid_response.json')) }
+        let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_ine_valid_response.json')) }
 
         it { is_expected.to be_a_success }
 
@@ -32,7 +32,7 @@ RSpec.describe MESRI::StudentStatusWithINE::ValidateResponse, type: :validate_re
       end
 
       let(:code) { '404' }
-      let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_not_found_response.json')) }
+      let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_ine_not_found_response.json')) }
 
       it { is_expected.to be_a_failure }
 
@@ -45,7 +45,7 @@ RSpec.describe MESRI::StudentStatusWithINE::ValidateResponse, type: :validate_re
       end
 
       let(:code) { '400' }
-      let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_invalid_ine_response.json')) }
+      let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_ine_invalid_ine_response.json')) }
 
       it { is_expected.to be_a_failure }
 
