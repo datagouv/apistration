@@ -20,4 +20,12 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulierControl
       user_id: current_user.id
     }
   end
+
+  def format_not_found_error(error)
+    {
+      error: 'not_found',
+      reason: 'Student not found',
+      message: error.detail
+    }
+  end
 end

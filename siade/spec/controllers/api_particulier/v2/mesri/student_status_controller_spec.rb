@@ -4,11 +4,10 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController, type: :contro
   let(:all_scopes) { %w[mesri_identifiant mesri_identite mesri_inscription_etudiant mesri_inscription_autre mesri_admission mesri_etablissements] }
   let(:one_field_of_each_scope) { %w[ine nom inscriptions] }
 
+  let(:token) { TokenFactory.new(scopes).valid }
+  let(:ine) { '1234567890G' }
+
   describe 'with valid params' do
-    let(:token) { TokenFactory.new(scopes).valid }
-
-    let(:ine) { '1234567890G' }
-
     before do
       stub_request(:get, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
         status: 200,
@@ -42,6 +41,27 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController, type: :contro
 
         expect(json).not_to have_key('nom')
       end
+    end
+  end
+
+  describe 'when it is a 404' do
+    let(:scopes) { all_scopes }
+
+    before do
+      stub_request(:get, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
+        status: 404,
+        body: File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_not_found_response.json'))
+      )
+    end
+
+    its(:status) { is_expected.to eq(404) }
+
+    its(:body) do
+      is_expected.to eq({
+        error: 'not_found',
+        reason: 'Student not found',
+        message: 'Aucun étudiant n\'a pu être trouvé avec les critères de recherche fournis'
+      }.to_json)
     end
   end
 end
