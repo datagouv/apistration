@@ -1,0 +1,9 @@
+{
+  "message": "étudiant introuvable",
+  "uid": "62f27dbf21772_0000",
+  "details": {
+    "method": "POST",
+    "endpoint": "etudiant",
+    "parameter": ""
+  }
+}

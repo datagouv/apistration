@@ -1,4 +1,4 @@
-class MESRI::StudentStatusWithINE::ValidateResponse < ValidateResponse
+class MESRI::ValidateResponse < ValidateResponse
   def call
     resource_not_found! if http_not_found?
     unprocessable_entity_error! if http_bad_request?
@@ -11,7 +11,7 @@ class MESRI::StudentStatusWithINE::ValidateResponse < ValidateResponse
   private
 
   def data_present?
-    json_body['ine'].present?
+    json_body['nomFamille'].present?
   end
 
   def resource_not_found!
