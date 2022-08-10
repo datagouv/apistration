@@ -141,7 +141,7 @@ RSpec.describe APIParticulierController, 'legacy tokens', type: :controller do
       context 'when it is a valid jwt token' do
         let(:token) { TokenFactory.new(['scope1']).valid }
 
-        its(:status) { is_expected.to eq(200) }
+        its(:status) { is_expected.to eq(401) }
       end
     end
 

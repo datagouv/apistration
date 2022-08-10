@@ -113,6 +113,6 @@ class APIParticulierController < APIController
   end
 
   def token_from_headers
-    request.headers['X-Api-key'] || super
+    request.headers['X-Api-key']
   end
 end
