@@ -37,6 +37,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'BIO'
   inflect.acronym 'CNAF'
   inflect.acronym 'CNETP'
+  inflect.acronym 'CNOUS'
   inflect.acronym 'DGDDI'
   inflect.acronym 'DGFIP'
   inflect.acronym 'EORI'
