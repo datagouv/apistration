@@ -126,6 +126,7 @@ RSpec.configure do |config|
   config.include ProviderStubs::DGFIP
   config.include ProviderStubs::Infogreffe
   config.include ProviderStubs::CNAFQuotientFamilial
+  config.include ProviderStubs::FranceConnect
 
   config.include ActivateStrictVcrRequestMatchingForV3
   config.extend ActivateStrictVcrRequestMatchingForV3

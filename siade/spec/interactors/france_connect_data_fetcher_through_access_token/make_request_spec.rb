@@ -16,7 +16,7 @@ RSpec.describe FranceConnectDataFetcherThroughAccessToken::MakeRequest, type: :m
       }.to_json
     ).to_return(
       status: 200,
-      body: File.read(Rails.root.join('spec/fixtures/payloads/france_connnect_checktoken_valid_response.json'))
+      body: france_connect_checktoken_payload.to_json
     )
   end
 
@@ -29,5 +29,4 @@ RSpec.describe FranceConnectDataFetcherThroughAccessToken::MakeRequest, type: :m
 
     expect(stubbed_request).to have_been_requested
   end
-
 end
