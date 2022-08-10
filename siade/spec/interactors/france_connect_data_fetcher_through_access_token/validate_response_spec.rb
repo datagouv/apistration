@@ -1,0 +1,89 @@
+RSpec.describe FranceConnectDataFetcherThroughAccessToken::ValidateResponse, type: :validate_response do
+  describe '.call' do
+    subject(:call) { described_class.call(response:, provider_name: 'FranceConnect') }
+
+    let(:response) do
+      instance_double(Net::HTTPOK, code:, body:)
+    end
+
+    context 'with an invalid code' do
+      let(:code) { '500' }
+      let(:body) { 'whatever' }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+    end
+
+    context 'with a 401 code' do
+      let(:code) { '401' }
+
+      context 'when error said token is malformed' do
+        let(:body) do
+          {
+            status: 'fail',
+            message: 'Malformed access token.'
+          }.to_json
+        end
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(InvalidFranceConnectAccessTokenError)) }
+      end
+
+      context 'when error said token is not found or expired' do
+        let(:body) do
+          {
+            status: 'fail',
+            message: 'token_not_found_or_expired'
+          }.to_json
+        end
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(InvalidFranceConnectAccessTokenError)) }
+      end
+
+      context 'when error is unknown' do
+        let(:body) do
+          {
+            status: 'fail',
+            message: 'lol'
+          }.to_json
+        end
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+      end
+    end
+
+    context 'with a 200 code and payload' do
+      let(:code) { '200' }
+
+      context 'when scope includes identite_pivoti nor profile or birth' do
+        let(:body) { france_connect_checktoken_payload(scopes: %w[openid identite_pivot]).to_json }
+
+        it { is_expected.to be_a_success }
+
+        its(:errors) { is_expected.to be_empty }
+      end
+
+      context 'when scope includes profile and birth (which is the same as identite_pivot)' do
+        let(:body) { france_connect_checktoken_payload(scopes: %w[openid birth profile]).to_json }
+
+        it { is_expected.to be_a_success }
+
+        its(:errors) { is_expected.to be_empty }
+      end
+
+      context 'when scope does not include identite_pivot' do
+        let(:body) { france_connect_checktoken_payload(scopes: %w[openid]).to_json }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+      end
+    end
+  end
+end
