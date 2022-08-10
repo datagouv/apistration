@@ -62,6 +62,7 @@ class ErrorsBackend
       '23' => 'CNAF',
       '24' => 'Pôle Emploi',
       '25' => 'MESRI',
+      '26' => 'CNOUS',
       '50' => 'FranceConnect'
     }
   end
