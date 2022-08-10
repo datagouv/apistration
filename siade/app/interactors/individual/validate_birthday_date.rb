@@ -1,4 +1,4 @@
-class MESRI::StudentStatusWithCivility::ValidateBirthdayDate < ValidateParamInteractor
+class Individual::ValidateBirthdayDate < ValidateParamInteractor
   def call
     invalid_param!(:birthday_date) if param(:birthday_date).blank?
 

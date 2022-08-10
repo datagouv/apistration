@@ -1,4 +1,4 @@
-class MESRI::StudentStatusWithCivility::ValidateGender < ValidateParamInteractor
+class Individual::ValidateGender < ValidateParamInteractor
   def call
     invalid_param!(:gender) if param(:gender).blank?
 
