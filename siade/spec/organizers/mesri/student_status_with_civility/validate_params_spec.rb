@@ -13,7 +13,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::ValidateParams, type: :validate
   end
 
   let(:family_name) { 'Dupont' }
-  let(:first_name) { 'Jean' }
+  let(:first_names) { 'Jean' }
   let(:birthday_date) { '2000-01-01' }
   let(:birthday_place) { 'Paris' }
   let(:gender) { 'm' }
@@ -31,7 +31,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::ValidateParams, type: :validate
   end
 
   context 'without first name' do
-    let(:first_name) { '' }
+    let(:first_names) { '' }
 
     it { is_expected.to be_a_failure }
 
