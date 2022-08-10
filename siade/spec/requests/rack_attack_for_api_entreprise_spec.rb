@@ -388,6 +388,10 @@ RSpec.describe 'Rack::Attack config for API Entreprise', type: :request, api: :e
         {
           controller: 'api_entreprise/ping',
           action: 'show'
+        },
+        {
+          controller: 'errors',
+          action: 'not_found'
         }
       ]
     end

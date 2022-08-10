@@ -14,9 +14,9 @@ class APIEntreprise::V2::UptimeController < APIEntreprise::V2::BaseController
   private
 
   def route_recognized?
-    Rails.application.routes.recognize_path(request.base_url + route)
-  rescue ActionController::RoutingError
-    false
+    route_attributes = Rails.application.routes.recognize_path(request.base_url + route)
+
+    route_attributes[:controller] != 'errors'
   end
 
   def http_code
