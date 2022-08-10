@@ -61,7 +61,8 @@ class ErrorsBackend
       '22' => 'RNM',
       '23' => 'CNAF',
       '24' => 'Pôle Emploi',
-      '25' => 'MESRI'
+      '25' => 'MESRI',
+      '50' => 'FranceConnect'
     }
   end
   # rubocop:enable Metrics/MethodLength
