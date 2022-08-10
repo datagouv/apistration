@@ -111,4 +111,8 @@ class APIParticulierController < APIController
       message: error.detail
     }
   end
+
+  def token_from_headers
+    request.headers['X-Api-key'] || super
+  end
 end

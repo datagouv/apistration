@@ -24,102 +24,142 @@ RSpec.describe APIParticulierController, 'legacy tokens', type: :controller do
     end
   end
 
-  subject(:make_call) do
-    routes.draw { get 'show' => 'api_particulier#show' }
-
-    get :show, params: { token: }
-  end
-
   before do
     allow(LogStasher).to receive(:build_logstash_event)
   end
 
-  context 'with jwt token' do
-    let(:token) { TokenFactory.new(scopes).valid }
+  context 'when token is in params' do
+    subject(:make_call) do
+      routes.draw { get 'show' => 'api_particulier#show' }
 
-    describe 'with at least one valid scope' do
-      let(:scopes) { ['scope1'] }
+      get :show, params: { token: }
+    end
 
-      its(:status) { is_expected.to eq(200) }
+    context 'with jwt token' do
+      let(:token) { TokenFactory.new(scopes).valid }
 
-      its(:body) do
-        is_expected.to eq({
-          scope1: 'scope1'
-        }.to_json)
+      describe 'with at least one valid scope' do
+        let(:scopes) { ['scope1'] }
+
+        its(:status) { is_expected.to eq(200) }
+
+        its(:body) do
+          is_expected.to eq({
+            scope1: 'scope1'
+          }.to_json)
+        end
+      end
+
+      describe 'with multiple valid scopes' do
+        let(:scopes) { %w[scope1 scope2] }
+
+        its(:status) { is_expected.to eq(200) }
+
+        its(:body) do
+          is_expected.to eq({
+            scope1: 'scope1',
+            scope2: 'scope2'
+          }.to_json)
+        end
+      end
+
+      describe 'without valid scope' do
+        let(:scopes) { ['another_scope1'] }
+
+        its(:status) { is_expected.to eq(401) }
+
+        its(:body) do
+          is_expected.to include('access_denied')
+        end
       end
     end
 
-    describe 'with multiple valid scopes' do
-      let(:scopes) { %w[scope1 scope2] }
+    context 'with legacy token' do
+      describe 'with at least one valid scope' do
+        let(:token) { '1_scope' }
 
-      its(:status) { is_expected.to eq(200) }
+        its(:status) { is_expected.to eq(200) }
 
-      its(:body) do
-        is_expected.to eq({
-          scope1: 'scope1',
-          scope2: 'scope2'
-        }.to_json)
+        its(:body) do
+          is_expected.to eq({
+            scope1: 'scope1'
+          }.to_json)
+        end
+
+        it 'adds jwt info logstasher' do
+          expect(LogStasher).to receive(:build_logstash_event).with(
+            hash_including(
+              'user_access' => hash_including(
+                user: '99999999-9999-9999-9999-999999999999',
+                jti: '11111111-1111-1111-1111-111111111110'
+              )
+            ),
+            anything
+          )
+
+          make_call
+        end
       end
-    end
 
-    describe 'without valid scope' do
-      let(:scopes) { ['another_scope1'] }
+      describe 'without valid scope' do
+        let(:token) { '1_another_scope' }
 
-      its(:status) { is_expected.to eq(401) }
+        its(:status) { is_expected.to eq(401) }
 
-      its(:body) do
-        is_expected.to include('access_denied')
+        its(:body) do
+          is_expected.to include('access_denied')
+        end
+      end
+
+      describe 'with multiple valid scopes' do
+        let(:token) { '2_scopes' }
+
+        its(:status) { is_expected.to eq(200) }
+
+        its(:body) do
+          is_expected.to eq({
+            scope1: 'scope1',
+            scope2: 'scope2'
+          }.to_json)
+        end
       end
     end
   end
 
-  context 'with legacy token' do
-    describe 'with at least one valid scope' do
-      let(:token) { '1_scope' }
+  context 'when token is in header' do
+    subject(:make_call) do
+      routes.draw { get 'show' => 'api_particulier#show' }
 
-      its(:status) { is_expected.to eq(200) }
+      get :show
+    end
 
-      its(:body) do
-        is_expected.to eq({
-          scope1: 'scope1'
-        }.to_json)
+    context 'when it is bearer token' do
+      before do
+        request.headers['Authorization'] = "Bearer #{token}"
       end
 
-      it 'adds jwt info logstasher' do
-        expect(LogStasher).to receive(:build_logstash_event).with(
-          hash_including(
-            'user_access' => hash_including(
-              user: '99999999-9999-9999-9999-999999999999',
-              jti: '11111111-1111-1111-1111-111111111110'
-            )
-          ),
-          anything
-        )
+      context 'when it is a valid jwt token' do
+        let(:token) { TokenFactory.new(['scope1']).valid }
 
-        make_call
+        its(:status) { is_expected.to eq(200) }
       end
     end
 
-    describe 'without valid scope' do
-      let(:token) { '1_another_scope' }
-
-      its(:status) { is_expected.to eq(401) }
-
-      its(:body) do
-        is_expected.to include('access_denied')
+    context 'when it is in X-Api-key header' do
+      before do
+        request.headers['X-Api-Key'] = token
       end
-    end
 
-    describe 'with multiple valid scopes' do
-      let(:token) { '2_scopes' }
+      context 'when it is a legacy token' do
+        let(:token) { '1_scope' }
 
-      its(:status) { is_expected.to eq(200) }
+        its(:status) { is_expected.to eq(200) }
+      end
 
-      its(:body) do
-        is_expected.to eq({
-          scope1: 'scope1',
-          scope2: 'scope2'
-        }.to_json)
+      context 'when it is a valid jwt token' do
+        let(:token) { TokenFactory.new(['scope1']).valid }
+
+        its(:status) { is_expected.to eq(200) }
       end
     end
   end
