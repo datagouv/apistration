@@ -11,11 +11,45 @@ RSpec.describe MESRI::StudentStatusWithINE::ValidateINE, type: :validate_param_i
 
   context 'when attribute is present' do
     context 'when it is 11 alpha-numeric chars' do
-      let(:ine) { '1234567890G' }
+      context 'when it is a INE-RNIE ( INES ) identifiant' do
+        let(:ine) { '123456789AA' }
 
-      it { is_expected.to be_a_success }
+        it { is_expected.to be_a_success }
 
-      its(:errors) { is_expected.to be_empty }
+        its(:errors) { is_expected.to be_empty }
+      end
+
+      context 'when it is a INE-BEA identifiant' do
+        let(:ine) { '1234567890A' }
+
+        it { is_expected.to be_a_success }
+
+        its(:errors) { is_expected.to be_empty }
+      end
+
+      context 'when it is a INE-Base36 identifiant' do
+        let(:ine) { 'AAAAAAAAAA1' }
+
+        it { is_expected.to be_a_success }
+
+        its(:errors) { is_expected.to be_empty }
+      end
+
+      context 'when it is a INE-SIFA identifiant' do
+        let(:ine) { '1111A11111A' }
+
+        it { is_expected.to be_a_success }
+
+        its(:errors) { is_expected.to be_empty }
+      end
+
+      context 'when it is something else' do
+        let(:ine) { '1111111111Q' }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+      end
     end
 
     context 'when it is 11 non-alpha-numeric chars' do
