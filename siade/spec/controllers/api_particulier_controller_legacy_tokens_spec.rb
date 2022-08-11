@@ -28,6 +28,20 @@ RSpec.describe APIParticulierController, 'legacy tokens', type: :controller do
     allow(LogStasher).to receive(:build_logstash_event)
   end
 
+  context 'without any token' do
+    subject(:make_call) do
+      routes.draw { get 'show' => 'api_particulier#show' }
+
+      get :show
+    end
+
+    its(:status) { is_expected.to eq(401) }
+
+    its(:body) do
+      is_expected.to include('access_denied')
+    end
+  end
+
   context 'when token is in params' do
     subject(:make_call) do
       routes.draw { get 'show' => 'api_particulier#show' }
