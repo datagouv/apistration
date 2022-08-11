@@ -60,6 +60,10 @@ module HandleTokens
   end
 
   def token_from_headers
+    bearer_token_from_headers
+  end
+
+  def bearer_token_from_headers
     auth = request.headers['Authorization']
 
     return unless auth
