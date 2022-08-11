@@ -61,8 +61,10 @@ RSpec.describe FranceConnectDataFetcherThroughAccessToken::ValidateResponse, typ
     context 'with a 200 code and payload' do
       let(:code) { '200' }
 
+      let(:body) { france_connect_checktoken_payload(scopes:).to_json }
+
       context 'when scope includes identite_pivoti nor profile or birth' do
-        let(:body) { france_connect_checktoken_payload(scopes: %w[openid identite_pivot]).to_json }
+        let(:scopes) { %w[openid identite_pivot] }
 
         it { is_expected.to be_a_success }
 
@@ -70,15 +72,30 @@ RSpec.describe FranceConnectDataFetcherThroughAccessToken::ValidateResponse, typ
       end
 
       context 'when scope includes profile and birth (which is the same as identite_pivot)' do
-        let(:body) { france_connect_checktoken_payload(scopes: %w[openid birth profile]).to_json }
+        let(:scopes) { %w[openid birth profile] }
 
         it { is_expected.to be_a_success }
 
         its(:errors) { is_expected.to be_empty }
       end
 
-      context 'when scope does not include identite_pivot' do
-        let(:body) { france_connect_checktoken_payload(scopes: %w[openid]).to_json }
+      context 'when scope includes combinaisons of scopes which build the pivot identity' do
+        let(:scopes) do
+          %w[
+            openid
+            profile
+            birthplace
+            birthcountry
+          ]
+        end
+
+        it { is_expected.to be_a_success }
+
+        its(:errors) { is_expected.to be_empty }
+      end
+
+      context 'when scope does not include valid scope to build pivot identity' do
+        let(:scopes) { %w[openid profile] }
 
         it { is_expected.to be_a_failure }
 

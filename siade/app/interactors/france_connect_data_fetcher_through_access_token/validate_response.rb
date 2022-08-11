@@ -12,10 +12,7 @@ class FranceConnectDataFetcherThroughAccessToken::ValidateResponse < ValidateRes
   private
 
   def scopes_include_hub_identity?
-    json_body['scope'].include?('identite_pivot') || (
-      json_body['scope'].include?('profile') &&
-        json_body['scope'].include?('birth')
-    )
+    (hub_identity_scopes - scopes_flatten_without_aliases).empty?
   end
 
   def handle_unauthorized
@@ -27,6 +24,34 @@ class FranceConnectDataFetcherThroughAccessToken::ValidateResponse < ValidateRes
     else
       unknown_provider_response!
     end
+  end
+
+  def scopes_flatten_without_aliases
+    scopes = json_body['scope'].dup
+
+    replace_scopes(scopes, 'identite_pivot', %w[profile birth])
+    replace_scopes(scopes, 'profile', %w[given_name family_name birthdate gender])
+    replace_scopes(scopes, 'birth', %w[birthplace birthcountry])
+
+    scopes
+  end
+
+  def replace_scopes(scopes, from_scope, to_scopes)
+    return unless scopes.include?(from_scope)
+
+    scopes.delete(from_scope)
+    scopes.concat(to_scopes)
+  end
+
+  def hub_identity_scopes
+    %w[
+      family_name
+      given_name
+      gender
+      birthdate
+      birthplace
+      birthcountry
+    ]
   end
 
   def error_message
