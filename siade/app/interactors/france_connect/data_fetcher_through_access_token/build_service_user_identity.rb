@@ -1,4 +1,4 @@
-class FranceConnectDataFetcherThroughAccessToken::BuildServiceUserIdentity < ApplicationInteractor
+class FranceConnect::DataFetcherThroughAccessToken::BuildServiceUserIdentity < ApplicationInteractor
   def call
     context.service_user_identity = Resource.new(json_body['identity'])
   end

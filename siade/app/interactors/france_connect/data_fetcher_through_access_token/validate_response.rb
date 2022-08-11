@@ -1,4 +1,4 @@
-class FranceConnectDataFetcherThroughAccessToken::ValidateResponse < ValidateResponse
+class FranceConnect::DataFetcherThroughAccessToken::ValidateResponse < ValidateResponse
   def call
     unknown_provider_response! if invalid_json?
 

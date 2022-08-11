@@ -1,4 +1,4 @@
-class FranceConnectDataFetcherThroughAccessToken::BuildUser < ApplicationInteractor
+class FranceConnect::DataFetcherThroughAccessToken::BuildUser < ApplicationInteractor
   def call
     context.user = build_user
   end

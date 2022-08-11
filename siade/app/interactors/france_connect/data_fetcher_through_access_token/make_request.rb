@@ -1,4 +1,4 @@
-class FranceConnectDataFetcherThroughAccessToken::MakeRequest < MakeRequest::Post
+class FranceConnect::DataFetcherThroughAccessToken::MakeRequest < MakeRequest::Post
   def request_uri
     URI(Siade.credentials[:france_connect_check_token_url])
   end

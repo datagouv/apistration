@@ -16,7 +16,7 @@ module APIParticulier::FranceConnectable
   private
 
   def handle_france_connect_flow(france_connect_token)
-    france_connect_organizer = FranceConnectDataFetcherThroughAccessToken.call(params: { token: france_connect_token })
+    france_connect_organizer = FranceConnect::DataFetcherThroughAccessToken.call(params: { token: france_connect_token })
 
     if france_connect_organizer.success?
       @france_connect_service_user_identity = france_connect_organizer.service_user_identity
