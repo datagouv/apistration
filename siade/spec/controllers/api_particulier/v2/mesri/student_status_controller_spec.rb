@@ -101,4 +101,50 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController, type: :contro
       end
     end
   end
+
+  describe 'with france connect token' do
+    subject(:make_call) do
+      request.headers['Authorization'] = 'Bearer token'
+
+      get :show
+    end
+
+    let(:france_connect_person_identity_attributes) { default_france_connect_identity_attributes }
+
+    before do
+      allow(MESRI::StudentStatusWithCivility).to receive(:call).and_call_original
+
+      stub_request(:post, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
+        status: 200,
+        body: File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_civility_valid_response.json'))
+      )
+
+      mock_valid_france_connect_checktoken(scopes: minimal_france_connect_scopes.concat(all_scopes))
+    end
+
+    its(:status) { is_expected.to eq(200) }
+
+    it 'returns all fields' do
+      json = JSON.parse(subject.body)
+
+      one_field_of_each_scope.each do |key|
+        expect(json).to have_key(key), "#{key} is missing"
+      end
+    end
+
+    it 'calls MESRI::StudentStatusWithCivility with france connect person identity attributes' do
+      make_call
+
+      expect(MESRI::StudentStatusWithCivility).to have_received(:call).with(
+        params: {
+          user_id: anything,
+          family_name: france_connect_person_identity_attributes[:family_name],
+          first_name: france_connect_person_identity_attributes[:given_name],
+          birthday_date: france_connect_person_identity_attributes[:birthdate],
+          birthday_place: france_connect_person_identity_attributes[:birthplace],
+          gender: 'm'
+        }
+      )
+    end
+  end
 end

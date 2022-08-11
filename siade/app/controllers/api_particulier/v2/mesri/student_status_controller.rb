@@ -1,4 +1,6 @@
 class APIParticulier::V2::MESRI::StudentStatusController < APIParticulierController
+  include APIParticulier::FranceConnectable
+
   def show
     authorize :mesri_identifiant, :mesri_identite, :mesri_inscription_etudiant, :mesri_inscription_autre, :mesri_admission, :mesri_etablissements
 
@@ -29,7 +31,9 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulierControl
   end
 
   def mesri_student_status_params
-    if call_with_ine?
+    if france_connect?
+      mesri_student_civility_params_from_france_connect_service_user_identity
+    elsif call_with_ine?
       {
         ine: params[:ine]
       }
@@ -42,6 +46,16 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulierControl
         gender: params[:sexe]
       }
     end
+  end
+
+  def mesri_student_civility_params_from_france_connect_service_user_identity
+    {
+      family_name: france_connect_service_user_identity.family_name,
+      first_name: france_connect_service_user_identity.given_name,
+      birthday_date: france_connect_service_user_identity.birthdate,
+      birthday_place: france_connect_service_user_identity.birthplace,
+      gender: france_connect_service_user_identity.gender == 'male' ? 'm' : 'f'
+    }
   end
 
   def call_with_ine?
