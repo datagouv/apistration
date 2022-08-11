@@ -13,4 +13,10 @@ Rails.application.config.filter_parameters += %i[
   ssn
 
   numeroAllocataire
+
+  identifiant
+
+  nom
+  dateDeNaissance
+  lieuDeNaissance
 ]
