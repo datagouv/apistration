@@ -14,7 +14,7 @@ class UnprocessableEntityError < ApplicationError
       siret_or_eori: '00304',
       month: '00305',
       code_insee_commune: '00306',
-      # DGFIP
+      # DGFIP entreprise
       year: '00307',
       user_id: '00308',
       request_name: '00309',
@@ -32,7 +32,10 @@ class UnprocessableEntityError < ApplicationError
       family_name: '00361',
       first_name: '00362',
       birthday_date: '00363',
-      gender: '00364'
+      gender: '00364',
+      # DGFIP usager
+      tax_number: '00370',
+      tax_notice_number: '00371'
     }.fetch(field) do
       raise KeyError, "#{field} is not a valid field name"
     end

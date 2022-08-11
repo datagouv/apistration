@@ -192,6 +192,14 @@
   title: 'Entité non traitable'
   detail: "Le sexe n'est pas correctement formaté (m ou f)"
 
+- code: '00370'
+  title: 'Entité non traitable'
+  detail: "Le numéro fiscal n'est pas correctement formaté"
+
+- code: '00371'
+  title: 'Entité non traitable'
+  detail: "La référence de l'avis n'est pas correctement formatée"
+
 - code: '00402'
   title: Version d'API non prise en charge
 
