@@ -94,6 +94,8 @@ RSpec.describe CacheResourceRetriever do
 
       it { is_expected.to be_a_success }
 
+      its(:errors) { is_expected.to eq([]) }
+
       it 'returns the data' do
         expect(subject.bundled_data).to have_attributes({
           data: 'wow data',

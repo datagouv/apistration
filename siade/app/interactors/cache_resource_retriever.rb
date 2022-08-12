@@ -1,11 +1,15 @@
 class CacheResourceRetriever < ApplicationInteractor
   DEFAULT_EXPIRATION_TIME = 1.hour
 
+  before do
+    context.errors ||= []
+  end
+
   def call
     retrieve_from_cache! ||
       call_and_cache
 
-    context.fail! if context.errors&.any?
+    context.fail! if context.errors.any?
   end
 
   private
