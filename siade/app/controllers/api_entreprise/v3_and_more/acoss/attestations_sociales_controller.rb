@@ -2,7 +2,7 @@ class APIEntreprise::V3AndMore::ACOSS::AttestationsSocialesController < APIEntre
   def show
     authorize :attestations_sociales
 
-    organizer = retrieve_payload_data(::ACOSS::AttestationsSociales, cache: true, expires_in: 24.hours.to_i, cache_key:)
+    organizer = retrieve_payload_data(::ACOSS::AttestationsSociales, cache: true, expires_in:, cache_key:)
 
     if organizer.success?
       render json: serializer_class.new(organizer.bundled_data).serializable_hash,
@@ -28,5 +28,9 @@ class APIEntreprise::V3AndMore::ACOSS::AttestationsSocialesController < APIEntre
 
   def cache_key
     "acoss/attestations_sociales:siren=#{params[:siren]}"
+  end
+
+  def expires_in
+    (Time.zone.now.end_of_day + 8.hours - Time.zone.now).to_i
   end
 end
