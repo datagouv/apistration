@@ -18,6 +18,14 @@ RSpec.describe DGFIP::SVAIR::ValidateResponse, type: :validate_response do
     context 'with a 200 code' do
       let(:code) { '200' }
 
+      context 'with a body which is a access denied' do
+        let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/dgfip-svair-access-denied.html')) }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(DGFIPSVAIRAccessDeniedError)) }
+      end
+
       context 'with a body which is a not found result' do
         let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/dgfip-svair-not-found.html')) }
 
