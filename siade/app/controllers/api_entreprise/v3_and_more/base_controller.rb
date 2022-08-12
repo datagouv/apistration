@@ -1,4 +1,5 @@
 class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
+  include Cacheable
   include OrganizersMethodsHelpers
 
   class UnsupportedVersionError < ::ActionController::RoutingError; end
@@ -9,8 +10,6 @@ class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
   before_action :set_content_type_header!
 
   rescue_from UnsupportedVersionError, with: :unsupported_version_response
-
-  attr_reader :cached_retriever
 
   protected
 
@@ -99,22 +98,5 @@ class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
 
   def set_content_type_header!
     response.headers['Content-Type'] = content_type_header
-  end
-
-  def retrieve_payload_data(retriever, cache: false, expires_in: nil, cache_key: nil)
-    if cache && !bypass_cache?
-      @cached_retriever = CacheResourceRetriever.call(
-        retriever_organizer: retriever,
-        retriever_params: organizer_params,
-        cache_key:,
-        expires_in:
-      )
-    else
-      retriever.call(organizer_params)
-    end
-  end
-
-  def bypass_cache?
-    request.headers['Cache-Control'] == 'no-cache'
   end
 end
