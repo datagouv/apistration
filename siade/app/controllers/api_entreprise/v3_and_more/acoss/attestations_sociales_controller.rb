@@ -2,7 +2,7 @@ class APIEntreprise::V3AndMore::ACOSS::AttestationsSocialesController < APIEntre
   def show
     authorize :attestations_sociales
 
-    organizer = ::ACOSS::AttestationsSociales.call(params: organizer_params)
+    organizer = retrieve_payload_data(::ACOSS::AttestationsSociales, cache: true, expires_in: 24.hours.to_i, cache_key:)
 
     if organizer.success?
       render json: serializer_class.new(organizer.bundled_data).serializable_hash,
@@ -24,5 +24,9 @@ class APIEntreprise::V3AndMore::ACOSS::AttestationsSocialesController < APIEntre
 
   def serializer_module
     ::APIEntreprise::ACOSS::AttestationSocialeSerializer
+  end
+
+  def cache_key
+    "acoss/attestations_sociales:siren=#{params[:siren]}"
   end
 end

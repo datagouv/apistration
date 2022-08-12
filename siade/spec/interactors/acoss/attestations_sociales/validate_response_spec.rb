@@ -13,6 +13,8 @@ RSpec.describe ACOSS::AttestationsSociales::ValidateResponse, type: :validate_re
       it { is_expected.to be_a_success }
 
       its(:errors) { is_expected.to be_empty }
+
+      its(:cacheable) { is_expected.to be(true) }
     end
 
     context 'with an empty body' do
@@ -21,6 +23,8 @@ RSpec.describe ACOSS::AttestationsSociales::ValidateResponse, type: :validate_re
       it { is_expected.to be_a_failure }
 
       its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+
+      its(:cacheable) { is_expected.to be(false) }
     end
 
     context 'when body has an error payload' do
@@ -37,6 +41,8 @@ RSpec.describe ACOSS::AttestationsSociales::ValidateResponse, type: :validate_re
         it { is_expected.to be_a_failure }
 
         its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+
+        its(:cacheable) { is_expected.to be(false) }
       end
 
       context 'when it is only not found errors codes' do
@@ -50,6 +56,8 @@ RSpec.describe ACOSS::AttestationsSociales::ValidateResponse, type: :validate_re
         it { is_expected.to be_a_failure }
 
         its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+
+        its(:cacheable) { is_expected.to be(false) }
 
         it 'adds meta with json errors' do
           subject

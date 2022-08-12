@@ -23,6 +23,8 @@ RSpec.describe ACOSS::AttestationsSociales, type: :retriever_organizer do
 
       its(:errors) { is_expected.to be_blank }
 
+      its(:cacheable) { is_expected.to be(true) }
+
       it 'has a document_url key on resource' do
         expect(subject.bundled_data.data.document_url).to be_present
       end
@@ -40,6 +42,8 @@ RSpec.describe ACOSS::AttestationsSociales, type: :retriever_organizer do
       end
 
       its(:errors) { is_expected.to be_present }
+
+      its(:cacheable) { is_expected.to be(false) }
     end
   end
 end
