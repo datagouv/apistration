@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+
+<title>Impots.gouv.fr - Service de vérification en ligne des avis</title>
+<link href="/secavis/css/style.css" rel="styleSheet" type="text/css" />
+
+<script type="text/javascript" src="/secavis/js/fonctions.js"></script>
+
+</head>
+<body>
+<div id="conteneur">
+<div id="barre_haut">
+			<div style="float: left;"><img src="/secavis/img/bo_seule-2.gif;jsessionid=ECA0D96FF5CEC5E2294D524C864AF30D.secavis-02-01" alt="" /></div>
+			<div style="float: right;"><img src="/secavis/img/bo_seule-3.gif;jsessionid=ECA0D96FF5CEC5E2294D524C864AF30D.secavis-02-01" alt="" /></div>
+</div>
+<div id="principal">
+<div id="nav_pro">
+<b>Bienvenue sur le service de vérification des avis</b>
+</div>
+
+<div id="infoService"><p>Le service permet de vérifier l'authenticité des avis (Impôt sur le revenu) présentés par un usager</p></div>
+<br />
+<div class="titre"><span>Accès au service de vérification</span></div>
+<br />
+<div class="titre2">Saisissez les identifiants</div><form id="j_id_7" name="j_id_7" method="post" action="/secavis/faces/avis/saisie_error.jsf;jsessionid=ECA0D96FF5CEC5E2294D524C864AF30D.secavis-02-01" enctype="application/x-www-form-urlencoded">
+	<table>
+		<tbody>
+			<tr>
+				<td> 
+					<label>Numéro fiscal *</label><a href="#" onclick="win = ouvrePopup('/secavis/faces/commun/aideSpi.jsf', 520, 460); win.focus();" tabindex="4"><img src="/secavis/img/pic_aide_pro.gif;jsessionid=ECA0D96FF5CEC5E2294D524C864AF30D.secavis-02-01" alt="aideSPI" style="vertical-align:middle" /></a>					
+				</td>
+			</tr>
+			<tr>
+				<td><input id="j_id_7:spi" name="j_id_7:spi" type="text" value="" maxlength="13" size="15" tabindex="1" autocomplete="off" />
+				</td>
+				
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td>
+				 <label>Référence de l'avis *</label><a href="#" onclick="win = ouvrePopup('/secavis/faces/commun/aideNumFacture.jsf', 520, 460); win.focus();" tabindex="5"><img src="/secavis/img/pic_aide_pro.gif;jsessionid=ECA0D96FF5CEC5E2294D524C864AF30D.secavis-02-01" alt="aideReferenceAvis" style="vertical-align:middle" /></a>	
+				</td>
+			</tr>
+			<tr>
+				<td><input id="j_id_7:num_facture" name="j_id_7:num_facture" type="text" value="" maxlength="14" size="15" tabindex="2" autocomplete="off" />
+				</td>
+				
+			</tr>
+ 
+			<tr>
+				<td>
+				<div id="nonTrouve">La référence saisie ne correspond pas à un avis présent dans la base. Son authenticité ne peut être vérifiée en ligne.
+				</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+
+				<td>
+				<div align="right">
+					
+					<div class="bloc_boutons"><input id="j_id_7:j_id_l" name="j_id_7:j_id_l" type="submit" value="Valider" title="Vérifier les informations d'avis" class="valider" tabindex="3" />
+					</div>
+
+			 	</div>
+				</td>
+			</tr>
+
+		</tbody>
+	</table><input type="hidden" name="j_id_7_SUBMIT" value="1" /><input type="hidden" name="javax.faces.ViewState" id="j_id__v_0:javax.faces.ViewState:1" value="RxJe/1JKTJSr3aiM3H9DqZq0DrwqEXsY7Rw4eLRgEBsCF1IALJGqVla+oWOgceGCnnj9fkumwGWTu+GoXkd0Az9cZL2lgLODubx5Du8xqXULpO3yBbsjQnZwTdA2v1vhSJD5cw==" /></form>
+<br />
+<div id="donneesObligatoires">* données obligatoires</div>
+</div>
+<div id="bas_page">© Ministère de l'Économie et des Finances</div><img src="https://logs1279.xiti.com/hit.xiti?s=532158&amp;s2=3&amp;p=AFFICHAGE::Erreur_Saisie_erreur_pas_javascript&amp;" alt="" height="1" width="1" />
+</div>
+</body>
+</html>
