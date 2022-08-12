@@ -256,6 +256,10 @@
   title: 'Potentielle ressource non trouvée'
   detail: "Le serveur a renvoyé une erreur interne, mais cela peut aussi indiquer que le siret ou siren renseigné n'existe pas, n'est pas connu, n'est pas en règle de ses obligations fiscales ou ne comporte aucune information pour cet appel."
 
+- code: '03510'
+  title: 'Limitation de débit'
+  detail: "Le fournisseur de données a rejeté la demande en raison d'un trop grand nombre d'échecs antérieurs."
+
 ## BDF
 
 - code: '17501'
