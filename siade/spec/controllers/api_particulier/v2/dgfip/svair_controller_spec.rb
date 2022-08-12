@@ -24,12 +24,22 @@ RSpec.describe APIParticulier::V2::DGFIP::SVAIRController, type: :controller do
     ]
   end
 
+  let(:token) { TokenFactory.new(scopes).valid }
+
+  let(:tax_number) { '1234567890ABC' }
+  let(:tax_notice_number) { '1234567890ABC' }
+
+  context 'with errors' do
+    let(:scopes) { all_scopes }
+
+    before do
+      mock_not_found_dgfip_svair
+    end
+
+    its(:status) { is_expected.to eq(404) }
+  end
+
   describe 'with valid params' do
-    let(:token) { TokenFactory.new(scopes).valid }
-
-    let(:tax_number) { '1234567890ABC' }
-    let(:tax_notice_number) { '1234567890ABC' }
-
     before do
       mock_valid_dgfip_svair
     end

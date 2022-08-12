@@ -2,7 +2,7 @@ class APIParticulier::V2::DGFIP::SVAIRController < APIParticulierController
   def show
     authorize(*scopes)
 
-    organizer = ::DGFIP::SVAIR.call(params: organizer_params)
+    organizer = retrieve_payload_data(::DGFIP::SVAIR, cache: true, cache_key:, expires_in: 1.hour)
 
     if organizer.success?
       render json: serialize_data(organizer),
@@ -19,6 +19,10 @@ class APIParticulier::V2::DGFIP::SVAIRController < APIParticulierController
       tax_number: params[:numeroFiscal],
       tax_notice_number: params[:referenceAvis]
     }
+  end
+
+  def cache_key
+    "dgfip/svair:#{organizer_params.to_query}"
   end
 
   # rubocop:disable Metrics/MethodLength

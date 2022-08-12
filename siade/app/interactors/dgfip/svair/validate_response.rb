@@ -2,7 +2,11 @@ class DGFIP::SVAIR::ValidateResponse < ValidateResponse
   def call
     unknown_provider_response! unless http_ok?
 
-    resource_not_found! if html_nodes.css('#nonTrouve').any?
+    if html_nodes.css('#nonTrouve').any?
+      make_payload_cacheable!
+      resource_not_found!
+    end
+
     access_denied! if html_nodes.css('.interdit').any?
 
     return if data_present?

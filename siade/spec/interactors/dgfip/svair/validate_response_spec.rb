@@ -13,6 +13,8 @@ RSpec.describe DGFIP::SVAIR::ValidateResponse, type: :validate_response do
       it { is_expected.to be_a_failure }
 
       its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+
+      its(:cacheable) { is_expected.to be(false) }
     end
 
     context 'with a 200 code' do
@@ -23,6 +25,8 @@ RSpec.describe DGFIP::SVAIR::ValidateResponse, type: :validate_response do
 
         it { is_expected.to be_a_failure }
 
+        its(:cacheable) { is_expected.to be(false) }
+
         its(:errors) { is_expected.to include(instance_of(DGFIPSVAIRAccessDeniedError)) }
       end
 
@@ -31,6 +35,8 @@ RSpec.describe DGFIP::SVAIR::ValidateResponse, type: :validate_response do
 
         it { is_expected.to be_a_failure }
 
+        its(:cacheable) { is_expected.to be(true) }
+
         its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
       end
 
@@ -38,6 +44,8 @@ RSpec.describe DGFIP::SVAIR::ValidateResponse, type: :validate_response do
         let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/dgfip-svair-valid-response-one-declarant.html')) }
 
         it { is_expected.to be_a_success }
+
+        its(:cacheable) { is_expected.to be(true) }
 
         its(:errors) { is_expected.to be_empty }
       end
