@@ -317,7 +317,7 @@ GEM
     utf8-cleaner (1.0.0)
       activesupport
     vcr (6.1.0)
-    webmock (3.17.0)
+    webmock (3.17.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
