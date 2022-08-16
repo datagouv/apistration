@@ -1,32 +1,8 @@
 class ACOSS::AttestationsSociales::Authenticate < GetOAuth2Token
   SCOPE_API_ENTREPRISE = 'attn.api_entreprise'.freeze
 
-  private
-
-  def client_get_token_params
-    {
-      grant_type: :client_credentials,
-      scope: SCOPE_API_ENTREPRISE
-    }
-  end
-
-  def client_options
-    {
-      site: domain,
-      token_url: access_token_path
-    }
-  end
-
-  def access_token_options
-    { refresh_token: nil }
-  end
-
-  def access_token_path
-    '/api/oauth/v1/token'
-  end
-
-  def domain
-    Siade.credentials[:acoss_domain]
+  def client_url
+    "#{Siade.credentials[:acoss_domain]}/api/oauth/v1/token"
   end
 
   def client_id
@@ -35,5 +11,9 @@ class ACOSS::AttestationsSociales::Authenticate < GetOAuth2Token
 
   def client_secret
     Siade.credentials[:acoss_client_secret]
+  end
+
+  def scope
+    SCOPE_API_ENTREPRISE
   end
 end
