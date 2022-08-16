@@ -7,105 +7,52 @@ class GetOAuth2Token < ApplicationInteractor
     end
   end
 
-  extend Forwardable
-
   def call
-    context.token = oauth_token.token
+    context.token = token_from_redis || retrieve_and_save_token
+  end
+
+  protected
+
+  def headers
+    {}
+  end
+
+  def client_url
+    fail NotImplementedError
+  end
+
+  def request_options
+    {}
+  end
+
+  def client_id
+    nil
+  end
+
+  def client_secret
+    nil
+  end
+
+  def scope
+    nil
   end
 
   private
 
-  # @see https://rdoc.info/github/intridea/oauth2/OAuth2/Client#get_token-instance_method
-  def client_get_token_params
-    fail NotImplementedError
+  def auth_uri
+    URI(client_url)
   end
 
-  # @see https://rdoc.info/github/intridea/oauth2/OAuth2/Client#get_token-instance_method
-  def access_token_options
-    fail NotImplementedError
+  def body_credentials
+    {
+      client_id:,
+      client_secret:,
+      scope:,
+      grant_type: 'client_credentials'
+    }.compact
   end
 
-  # @see https://rdoc.info/github/intridea/oauth2/OAuth2/Client#initialize-instance_method
-  def client_options
-    fail NotImplementedError
-  end
-
-  # @see https://rdoc.info/github/intridea/oauth2/OAuth2/Client#initialize-instance_method
-  def client_id
-    fail NotImplementedError
-  end
-
-  # @see https://rdoc.info/github/intridea/oauth2/OAuth2/Client#initialize-instance_method
-  def client_secret
-    fail NotImplementedError
-  end
-
-  def oauth_token
-    token_from_redis || token_from_provider
-  end
-
-  def token_from_redis
-    redis_token if redis_token_valid?
-  rescue *redis_connection_errors
-    nil
-  end
-
-  def redis_token_valid?
-    redis_token.expires? && !redis_token.expired?
-  end
-
-  def redis_token
-    @redis_token ||= OAuth2::AccessToken
-      .from_hash(
-        client,
-        redis_json_token
-      )
-  end
-
-  def redis_json_token
-    JSON.parse(redis_access_token_property_values_string)
-  rescue JSON::ParserError => e
-    message = "Error while parsing #{self.class.name} OAuth2 JSON token from Redis (#{e.class} #{e.message})"
-
-    MonitoringService.instance.capture_message(message, level: 'warning')
-    {}
-  end
-
-  def redis_access_token_property_values_string
-    RedisService.instance.get(redis_key) || '{}'
-  end
-
-  # rubocop:disable Metrics/MethodLength
-  def token_from_provider
-    token = client.get_token(client_get_token_params, access_token_options)
-    save_to_redis(token)
-    token
-  rescue *redis_connection_errors
-    token
-  rescue OAuth2::Error => e
-    message = "Error while retrieving #{self.class.name} OAuth2 JSON token from provider (#{e.class} #{e.message}))"
-
-    MonitoringService.instance.capture_message(message, level: 'warning')
-
-    context.errors << ProviderAuthenticationError.new(context.provider_name, message)
-    context.fail!
-  rescue Net::OpenTimeout, Net::ReadTimeout, EOFError
-    context.errors << ProviderTimeoutError.new(context.provider_name)
-    context.fail!
-  rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EHOSTUNREACH
-    context.errors << ProviderUnavailable.new(context.provider_name)
-    context.fail!
-  rescue Errno::ENETUNREACH
-    context.errors << NetworkError.new
-    context.fail!
-  end
-  # rubocop:enable Metrics/MethodLength
-
-  def save_to_redis(token)
-    RedisService.instance.set(redis_key, token.to_json)
-  end
-
-  def redis_key
+  def redis_token_key
     self
       .class
       .name
@@ -113,14 +60,36 @@ class GetOAuth2Token < ApplicationInteractor
       .to_sym
   end
 
-  def redis_connection_errors
-    [
-      Redis::BaseConnectionError,
-      Redis::CommandError
-    ]
+  def retrieve_and_save_token
+    response_body = JSON.parse(http_response.body)
+
+    redis.set(redis_token_key, response_body['access_token'], ex: response_body['expires_in'])
+
+    token_from_redis
   end
 
-  def client
-    @client ||= OAuth2::Client.new(client_id, client_secret, client_options)
+  def http_response
+    Net::HTTP.start(auth_uri.hostname, auth_uri.port, request_options.merge({ use_ssl: true })) do |http|
+      http.request(request)
+    end
+  end
+
+  def request
+    request = Net::HTTP::Post.new(auth_uri)
+
+    headers.each { |key, value| request[key.to_s] = value }
+
+    request.set_form_data(grant_type: 'client_credentials')
+    request.body = body_credentials.to_query
+
+    request
+  end
+
+  def token_from_redis
+    redis.get(redis_token_key)
+  end
+
+  def redis
+    @redis ||= RedisService.instance
   end
 end
