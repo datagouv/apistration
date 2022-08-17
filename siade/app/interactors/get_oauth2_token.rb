@@ -39,6 +39,10 @@ class GetOAuth2Token < ApplicationInteractor
 
   private
 
+  def response_not_defined?
+    context.token.nil?
+  end
+
   def auth_uri
     URI(client_url)
   end

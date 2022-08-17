@@ -10,7 +10,7 @@ class MakeRequest < ApplicationInteractor
       end
 
       after do
-        response_not_defined! if context.response.nil?
+        response_not_defined! if response_not_defined?
       end
     end
   end
@@ -61,6 +61,10 @@ class MakeRequest < ApplicationInteractor
       open_timeout: 10,
       read_timeout: 10
     }
+  end
+
+  def response_not_defined?
+    context.response.nil?
   end
 
   private
