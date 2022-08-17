@@ -1,28 +1,12 @@
-class GetOAuth2Token < ApplicationInteractor
-  def self.inherited(klass)
-    klass.class_eval do
-      before do
-        context.errors ||= []
-      end
-    end
-  end
-
+class GetOAuth2Token < MakeRequest::Post
   def call
     context.token = token_from_redis || retrieve_and_save_token
   end
 
   protected
 
-  def headers
-    {}
-  end
-
   def client_url
     fail NotImplementedError
-  end
-
-  def request_options
-    {}
   end
 
   def client_id
@@ -43,16 +27,16 @@ class GetOAuth2Token < ApplicationInteractor
     context.token.nil?
   end
 
-  def auth_uri
+  def request_uri
     URI(client_url)
   end
 
-  def body_credentials
+  def form_data
     {
       client_id:,
       client_secret:,
-      scope:,
-      grant_type: 'client_credentials'
+      grant_type: 'client_credentials',
+      scope:
     }.compact
   end
 
@@ -65,28 +49,13 @@ class GetOAuth2Token < ApplicationInteractor
   end
 
   def retrieve_and_save_token
-    response_body = JSON.parse(http_response.body)
+    response = api_call
 
-    redis.set(redis_token_key, response_body['access_token'], ex: response_body['expires_in'])
+    parsed_response = JSON.parse(response.body)
+
+    redis.set(redis_token_key, parsed_response['access_token'], ex: parsed_response['expires_in'])
 
     token_from_redis
-  end
-
-  def http_response
-    Net::HTTP.start(auth_uri.hostname, auth_uri.port, request_options.merge({ use_ssl: true })) do |http|
-      http.request(request)
-    end
-  end
-
-  def request
-    request = Net::HTTP::Post.new(auth_uri)
-
-    headers.each { |key, value| request[key.to_s] = value }
-
-    request.set_form_data(grant_type: 'client_credentials')
-    request.body = body_credentials.to_query
-
-    request
   end
 
   def token_from_redis

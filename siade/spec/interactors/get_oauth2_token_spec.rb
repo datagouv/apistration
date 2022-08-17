@@ -7,10 +7,8 @@ RSpec.describe GetOAuth2Token, type: :interactor do
         'https://dummy_client_uri'
       end
 
-      def headers
-        {
-          Authorization: 'Basic dummy_client_credentials'
-        }
+      def set_headers(request)
+        request['Authorization'] = 'Basic dummy_client_credentials'
       end
 
       def client_id
