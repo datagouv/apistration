@@ -61,7 +61,7 @@ Lint/ConstantDefinitionInBlock:
     - "spec/**/*"
 
 Metrics/AbcSize:
-  IgnoredMethods:
+  AllowedMethods:
     - resource_attributes
 
 Metrics/BlockLength:
@@ -69,7 +69,7 @@ Metrics/BlockLength:
     - "spec/spec_helper.rb"
     - "spec/support/shared_examples/*"
     - "spec/factories/**/*"
-  IgnoredMethods:
+  AllowedMethods:
     - "describe"
     - "context"
     - "namespace"
@@ -88,7 +88,7 @@ Metrics/MethodLength:
   Exclude:
     - "spec/support/rswag_resources_payloads.rb"
     - "spec/support/rswag_commons_responses.rb"
-  IgnoredMethods:
+  AllowedMethods:
     - resource_attributes
 
 Metrics/ModuleLength:
