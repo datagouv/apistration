@@ -1,5 +1,5 @@
 class APIParticulier::DGFIP::SVAIR::V2 < APIParticulier::V2BaseSerializer
-  %i[
+  %w[
     date_recouvrement
     date_etablissement
     nombre_parts
@@ -12,7 +12,7 @@ class APIParticulier::DGFIP::SVAIR::V2 < APIParticulier::V2BaseSerializer
     erreur_correctif
     situation_partielle
   ].each do |resource_attribute|
-    attribute resource_attribute.to_s.camelize(:lower), if: -> { scope?("dgfip_#{resource_attribute}".to_sym) }
+    attribute resource_attribute.camelize(:lower), if: -> { scope?("dgfip_#{resource_attribute}".to_sym) }
   end
 
   # rubocop:disable Naming/VariableNumber
