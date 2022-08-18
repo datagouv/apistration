@@ -29,7 +29,7 @@ RSpec.describe DGFIP::SVAIR::BuildResource, type: :build_resource do
               prenoms: '',
               dateNaissance: ''
             },
-            foyerFiscale: {
+            foyerFiscal: {
               adresse: 'APPARTEMENT 42 42 RUE DE LA PAIX 75001 PARIS',
               annee: 2021
             },
@@ -70,7 +70,7 @@ RSpec.describe DGFIP::SVAIR::BuildResource, type: :build_resource do
               prenoms: 'JEANNE',
               dateNaissance: '01/02/2000'
             },
-            foyerFiscale: {
+            foyerFiscal: {
               adresse: '42 RUE DE LA PAIX 75001 PARIS',
               annee: 2021
             },

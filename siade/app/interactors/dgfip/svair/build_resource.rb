@@ -4,7 +4,7 @@ class DGFIP::SVAIR::BuildResource < BuildResource
     {
       declarant1: build_declarant(1),
       declarant2: build_declarant(2),
-      foyerFiscale: {
+      foyerFiscal: {
         adresse: build_address,
         annee: extract_tax_year.to_i
       },
@@ -74,9 +74,9 @@ class DGFIP::SVAIR::BuildResource < BuildResource
     impot_raw.gsub(/[^\d]/, '').to_i
   end
 
-  def extract_info_from_table(line, colomn = 2)
+  def extract_info_from_table(line, column = 2)
     line = table.css('tr')[line - 1]
-    cell = line.css('td')[colomn - 1]
+    cell = line.css('td')[column - 1]
 
     cell.text.strip
   end

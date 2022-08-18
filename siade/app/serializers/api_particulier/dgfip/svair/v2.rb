@@ -17,7 +17,7 @@ class APIParticulier::DGFIP::SVAIR::V2 < APIParticulier::V2BaseSerializer
 
   # rubocop:disable Naming/VariableNumber
   attributes :declarant1, :declarant2
-  attribute :foyerFiscale, method: :foyer_fiscale
+  attribute :foyerFiscal, method: :foyer_fiscal
 
   attribute :situationFamille, if: -> { scope?(:dgfip_situation_familiale) }
   attribute :nombrePersonnesCharge, if: -> { scope?(:dgfip_nombre_personnes_a_charge) }
@@ -32,10 +32,10 @@ class APIParticulier::DGFIP::SVAIR::V2 < APIParticulier::V2BaseSerializer
   end
   # rubocop:enable Naming/VariableNumber
 
-  def foyer_fiscale
+  def foyer_fiscal
     {
-      adresse: attribute_or_nil_if_scope(object.foyerFiscale[:adresse], scope: 'dgfip_adresse_fiscale_taxation'),
-      annee: attribute_or_nil_if_scope(object.foyerFiscale[:annee], scope: 'dgfip_adresse_fiscale_annee')
+      adresse: attribute_or_nil_if_scope(object.foyerFiscal[:adresse], scope: 'dgfip_adresse_fiscale_taxation'),
+      annee: attribute_or_nil_if_scope(object.foyerFiscal[:annee], scope: 'dgfip_adresse_fiscale_annee')
     }.compact
   end
 

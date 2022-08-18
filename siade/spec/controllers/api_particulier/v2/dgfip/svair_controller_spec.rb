@@ -6,7 +6,7 @@ RSpec.describe APIParticulier::V2::DGFIP::SVAIRController, type: :controller do
     %w[
       declarant1
       declarant2
-      foyerFiscale
+      foyerFiscal
       dateRecouvrement
       dateEtablissement
       nombreParts
@@ -63,7 +63,7 @@ RSpec.describe APIParticulier::V2::DGFIP::SVAIRController, type: :controller do
         end
 
         %w[adresse annee].each do |key|
-          expect(json['foyerFiscale']).to have_key(key), "declarant1->#{key} is missing"
+          expect(json['foyerFiscal']).to have_key(key), "declarant1->#{key} is missing"
         end
       end
     end
