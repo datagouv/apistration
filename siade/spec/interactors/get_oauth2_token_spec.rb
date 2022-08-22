@@ -59,6 +59,7 @@ RSpec.describe GetOAuth2Token, type: :interactor do
     end
 
     it 'stores the new token in Redis' do
+      allow(RedisService.instance).to receive(:get).and_return(nil, 'a token that was just stored')
       expect(RedisService.instance).to receive(:set).with(:dummy_token_authentication, /This is a dummy token from client/, { ex: expires_in })
 
       make_call
