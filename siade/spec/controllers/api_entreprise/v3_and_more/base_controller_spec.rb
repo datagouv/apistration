@@ -215,7 +215,7 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController, type: :controller do
         it 'calls the retriever directly with parameters' do
           expect(DummyRetrieverOrganizer)
             .to receive(:call)
-            .with({ very: :parameters })
+            .with(params: { very: :parameters })
 
           call!
         end
@@ -265,7 +265,7 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController, type: :controller do
       it 'calls the retriever directly with parameters' do
         expect(DummyRetrieverOrganizer)
           .to receive(:call)
-          .with({ very: :parameters })
+          .with(params: { very: :parameters })
 
         call!
       end

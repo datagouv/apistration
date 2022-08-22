@@ -14,7 +14,7 @@ module Cacheable
         expires_in:
       )
     else
-      retriever.call(organizer_params)
+      retriever.call(params: organizer_params)
     end
   end
 
