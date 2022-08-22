@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class MakeRequest < ApplicationInteractor
   include HostMethodsHelpers
 
@@ -129,3 +130,4 @@ class MakeRequest < ApplicationInteractor
     raise ResponseNotDefined
   end
 end
+# rubocop:enable Metrics/ClassLength
