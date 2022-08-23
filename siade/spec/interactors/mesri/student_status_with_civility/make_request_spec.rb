@@ -1,4 +1,4 @@
-RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :FEEDME do
+RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_request do
   subject(:make_call) { described_class.call(params:) }
 
   let(:params) do
