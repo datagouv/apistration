@@ -27,6 +27,7 @@ RSpec.describe CacheResourceRetriever do
       end
 
       it { is_expected.to be_a_success }
+      its(:from_cache) { is_expected.to be(true) }
 
       it 'returns the cached data' do
         expect(subject.bundled_data).to have_attributes({
@@ -54,6 +55,7 @@ RSpec.describe CacheResourceRetriever do
       let(:cached_errors) { [BadRequestError.new('so bad')] }
 
       it { is_expected.to be_a_failure }
+      its(:from_cache) { is_expected.to be(true) }
 
       it 'returns the cached errors' do
         expect(subject.errors.map(&:to_h)).to eq(cached_errors.map(&:to_h))
@@ -93,6 +95,7 @@ RSpec.describe CacheResourceRetriever do
       let(:bundled_data) { BundledData.new(data: 'wow data', context: { so: 'meta' }) }
 
       it { is_expected.to be_a_success }
+      its(:from_cache) { is_expected.to be(false) }
 
       its(:errors) { is_expected.to eq([]) }
 
@@ -172,6 +175,7 @@ RSpec.describe CacheResourceRetriever do
         let(:cacheable) { true }
 
         it { is_expected.to be_a_failure }
+        its(:from_cache) { is_expected.to be(false) }
 
         it 'writes the errors in the cache' do
           subject
@@ -227,6 +231,7 @@ RSpec.describe CacheResourceRetriever do
         let(:cacheable) { false }
 
         it { is_expected.to be_a_failure }
+        its(:from_cache) { is_expected.to be(false) }
 
         it 'does not writes the error in the cache' do
           subject

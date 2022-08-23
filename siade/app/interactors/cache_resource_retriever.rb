@@ -3,6 +3,7 @@ class CacheResourceRetriever < ApplicationInteractor
 
   before do
     context.errors ||= []
+    context.from_cache = false
   end
 
   def call
@@ -36,6 +37,8 @@ class CacheResourceRetriever < ApplicationInteractor
 
   def retrieve_from_cache!
     return unless (context.cached_data = EncryptedCache.read(cache_key))
+
+    context.from_cache = true
 
     wrap_cache_data_in_context!
   end
