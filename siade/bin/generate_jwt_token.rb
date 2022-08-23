@@ -36,6 +36,10 @@ end.map do |scope_symbol|
   scope_symbol[1..-1].sub(',', '').strip
 end.concat(extra_scopes).uniq
 
+File.open(Rails.root.join('config/all_scopes.yml'), 'w') do |f|
+  f.write(scopes.to_yaml)
+end
+
 token_payload = {
   uid: SecureRandom.uuid,
   jti: "00000000-0000-0000-0000-000000000000",
