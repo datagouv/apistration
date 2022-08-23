@@ -21,6 +21,18 @@ class GetOAuth2Token < MakeRequest::Post
     nil
   end
 
+  def access_token(response)
+    parsed_response(response)['access_token']
+  end
+
+  def expires_in(response)
+    parsed_response(response)['expires_in']
+  end
+
+  def parsed_response(response)
+    @parsed_response ||= JSON.parse(response.body)
+  end
+
   private
 
   def response_not_defined?
@@ -51,9 +63,7 @@ class GetOAuth2Token < MakeRequest::Post
   def retrieve_and_save_token
     response = api_call
 
-    parsed_response = JSON.parse(response.body)
-
-    redis.set(redis_token_key, parsed_response['access_token'], ex: parsed_response['expires_in'])
+    redis.set(redis_token_key, access_token(response), ex: expires_in(response))
 
     token_from_redis
   end
