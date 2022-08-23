@@ -1,4 +1,4 @@
-class MESRI::StudentStatusWithINE::ValidateINE < ValidateParamInteractor
+class Individual::ValidateINE < ValidateParamInteractor
   def call
     return if ine_number_valid?
 

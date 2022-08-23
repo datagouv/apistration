@@ -1,4 +1,4 @@
-RSpec.describe MESRI::StudentStatusWithCivility::ValidateParams, type: :validate_params do
+RSpec.describe ValidateParams::StudentCivility, type: :validate_params do
   subject { described_class.call(params:) }
 
   let(:params) do
