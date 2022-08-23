@@ -26,7 +26,7 @@ class APIEntreprise::V2::UptimeController < APIEntreprise::V2::BaseController
   end
 
   def internal_response
-    Net::HTTP.start(uri.hostname, uri.port, request_options) do |http|
+    @internal_response ||= Net::HTTP.start(uri.hostname, uri.port, request_options) do |http|
       uptime_request = Net::HTTP::Get.new uri
       uptime_request['Authorization'] = "Bearer #{jwt}"
       http.request uptime_request
@@ -42,7 +42,7 @@ class APIEntreprise::V2::UptimeController < APIEntreprise::V2::BaseController
   end
 
   def uri
-    URI("https://entreprise.api.gouv.fr#{route}")
+    URI("#{base_uri}#{route}")
       .tap { |u| u.query = URI.encode_www_form(query_params) }
   end
 
@@ -65,14 +65,37 @@ class APIEntreprise::V2::UptimeController < APIEntreprise::V2::BaseController
     }
   end
 
+  def base_uri
+    case Rails.env
+    when 'staging', 'sandbox'
+      "https://#{Rails.env}.entreprise.api.gouv.fr"
+    else
+      'https://entreprise.api.gouv.fr'
+    end
+  end
+
   def jwt
-    JwtUser.new(
+    JWT.encode(jwt_payload, jwt_hash_secret, jwt_hash_algo)
+  end
+
+  def jwt_payload
+    {
       uid: '99999999-9999-9999-9999-999999999999',
       jti: '99999999-9999-9999-9999-999999999999',
       scopes: all_scopes,
+      sub: 'whatever',
+      version: '1.0',
       iat: 10.seconds.ago.to_i,
-      exp: 1.minutes.from_now.to_i
-    )
+      exp: 90.seconds.from_now.to_i
+    }
+  end
+
+  def jwt_hash_secret
+    Siade.credentials[:jwt_hash_secret]
+  end
+
+  def jwt_hash_algo
+    Siade.credentials[:jwt_hash_algo]
   end
 
   def all_scopes
