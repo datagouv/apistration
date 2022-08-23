@@ -1,4 +1,4 @@
-class Individual::ValidateBirthdayDate < ValidateParamInteractor
+class ServiceUser::ValidateBirthdayDate < ValidateParamInteractor
   def call
     invalid_param!(:birthday_date) if param(:birthday_date).blank?
 

@@ -1,7 +1,7 @@
 class ValidateParams::StudentCivility < ValidateParamsOrganizer
-  organize Individual::ValidateFamilyName,
-    Individual::ValidateFirstName,
-    Individual::ValidateBirthdayDate,
-    Individual::ValidateGender,
-    Individual::ValidateUserId
+  organize ServiceUser::ValidateFamilyName,
+    ServiceUser::ValidateFirstName,
+    ServiceUser::ValidateBirthdayDate,
+    ServiceUser::ValidateGender,
+    ServiceUser::ValidateUserId
 end

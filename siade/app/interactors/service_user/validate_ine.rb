@@ -1,4 +1,4 @@
-class Individual::ValidateINE < ValidateParamInteractor
+class ServiceUser::ValidateINE < ValidateParamInteractor
   def call
     return if ine_number_valid?
 
