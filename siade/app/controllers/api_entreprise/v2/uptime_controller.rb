@@ -66,6 +66,16 @@ class APIEntreprise::V2::UptimeController < APIEntreprise::V2::BaseController
   end
 
   def jwt
-    Siade.credentials[:uptime_robot_internal_jwt]
+    JwtUser.new(
+      uid: '99999999-9999-9999-9999-999999999999',
+      jti: '99999999-9999-9999-9999-999999999999',
+      scopes: all_scopes,
+      iat: 10.seconds.ago.to_i,
+      exp: 1.minutes.from_now.to_i
+    )
+  end
+
+  def all_scopes
+    YAML.load_file(Rails.root.join('config/all_scopes.yml'))
   end
 end
