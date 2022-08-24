@@ -1,5 +1,5 @@
 class MESRI::StudentStatusWithCivility < RetrieverOrganizer
-  organize ValidateParams::StudentCivility,
+  organize MESRI::ValidateParamsStudentCivility,
     MESRI::StudentStatusWithCivility::MakeRequest,
     MESRI::ValidateResponse,
     MESRI::BuildResource

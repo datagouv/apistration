@@ -31,7 +31,6 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility, type: :retriever_organizer
       it { is_expected.to be_a_success }
 
       it 'retrieves the resource' do
-        binding.pry
         resource = subject.bundled_data.data
 
         expect(resource).to be_present

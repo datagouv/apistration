@@ -1,5 +1,5 @@
 class CNOUS::StudentScholarshipWithCivility < RetrieverOrganizer
-  organize ValidateParams::StudentCivility,
+  organize CNOUS::ValidateParamsStudentCivility,
     CNOUS::Authenticate,
     CNOUS::StudentScholarshipWithCivility::MakeRequest,
     CNOUS::ValidateResponse,

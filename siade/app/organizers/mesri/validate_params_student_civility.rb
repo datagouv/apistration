@@ -1,7 +1,7 @@
-class ValidateParams::StudentCivility < ValidateParamsOrganizer
+class MESRI::ValidateParamsStudentCivility < ValidateParamsOrganizer
   organize ServiceUser::ValidateFamilyName,
     ServiceUser::ValidateFirstName,
     ServiceUser::ValidateBirthdayDate,
-    ServiceUser::ValidateGender,
+    MESRI::StudentStatusWithCivility::ValidateGender,
     ServiceUser::ValidateUserId
 end
