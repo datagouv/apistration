@@ -13,7 +13,7 @@ RSpec.describe ValidateParams::StudentCivility, type: :validate_params do
   end
 
   let(:family_name) { 'Dupont' }
-  let(:first_names) { 'Jean' }
+  let(:first_name) { 'Jean' }
   let(:birthday_date) { '2000-01-01' }
   let(:birthday_place) { 'Paris' }
   let(:gender) { 'm' }
@@ -30,8 +30,8 @@ RSpec.describe ValidateParams::StudentCivility, type: :validate_params do
     it { is_expected.to be_a_success }
   end
 
-  context 'without first name' do
-    let(:first_names) { '' }
+  context 'without first names' do
+    let(:first_name) { '' }
 
     it { is_expected.to be_a_failure }
 
