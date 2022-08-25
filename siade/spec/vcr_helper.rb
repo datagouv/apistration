@@ -56,6 +56,8 @@ VCR.configure do |c|
   c.filter_sensitive_data('<URL_QUALIBAT>') { Siade.credentials[:qualibat_url].to_s }
   c.filter_sensitive_data('<URL_MI>') { Siade.credentials[:mi_domain].to_s }
 
+  c.filter_sensitive_data('<CNOUS_CREDENTIALS>') { Siade.credentials[:cnous_authenticate_credentials].to_s }
+
   c.register_request_matcher :body_sanitized do |r_1, r_2|
     body_1 = r_1.body || ''
     body_2 = r_2.body || ''
