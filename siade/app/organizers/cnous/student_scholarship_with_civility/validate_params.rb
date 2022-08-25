@@ -1,4 +1,4 @@
-class CNOUS::ValidateParamsStudentCivility < ValidateParamsOrganizer
+class CNOUS::StudentScholarshipWithCivility::ValidateParams < ValidateParamsOrganizer
   organize ServiceUser::ValidateFamilyName,
     ServiceUser::ValidateFirstNames,
     ServiceUser::ValidateBirthdayDate,

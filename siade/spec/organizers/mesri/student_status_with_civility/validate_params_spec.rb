@@ -1,10 +1,10 @@
-RSpec.describe CNOUS::ValidateParamsStudentCivility, type: :validate_params do
+RSpec.describe MESRI::StudentStatusWithCivility::ValidateParams, type: :validate_params do
   subject { described_class.call(params:) }
 
   let(:params) do
     {
       family_name:,
-      first_names:,
+      first_name:,
       birthday_date:,
       birthday_place:,
       gender:,
@@ -13,10 +13,10 @@ RSpec.describe CNOUS::ValidateParamsStudentCivility, type: :validate_params do
   end
 
   let(:family_name) { 'Dupont' }
-  let(:first_names) { 'Jean Charlie' }
+  let(:first_name) { 'Jean' }
   let(:birthday_date) { '2000-01-01' }
   let(:birthday_place) { 'Paris' }
-  let(:gender) { 'M' }
+  let(:gender) { 'm' }
 
   let(:user_id) { SecureRandom.uuid }
 
@@ -31,7 +31,7 @@ RSpec.describe CNOUS::ValidateParamsStudentCivility, type: :validate_params do
   end
 
   context 'without first name' do
-    let(:first_names) { '' }
+    let(:first_name) { '' }
 
     it { is_expected.to be_a_failure }
 
