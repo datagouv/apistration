@@ -5,6 +5,10 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController, type: :c
   let(:token) { TokenFactory.new(scopes).valid }
   let(:ine) { '1234567890G' }
 
+  before do
+    mock_cnous_authenticate
+  end
+
   describe 'with ine param' do
     subject { get :show, params: { ine:, token: } }
 
@@ -49,7 +53,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController, type: :c
       let(:scopes) { all_scopes }
 
       before do
-        stub_request(:get, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
+        stub_request(:get, /#{Siade.credentials[:cnous_student_scholarship_ine_url]}/).to_return(
           status: 404,
           body: File.read(Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_not_found.json'))
         )
@@ -75,7 +79,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController, type: :c
     let(:prenom) { 'Jean' }
     let(:dateDeNaissance) { '2000-01-01' }
     let(:lieuDeNaissance) { 'Paris' }
-    let(:sexe) { 'm' }
+    let(:sexe) { 'M' }
     # rubocop:enable RSpec/VariableName
 
     describe 'with valid params' do

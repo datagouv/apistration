@@ -30,7 +30,7 @@ RSpec.describe MESRI::ValidateParamsStudentCivility, type: :validate_params do
     it { is_expected.to be_a_success }
   end
 
-  context 'without first names' do
+  context 'without first name' do
     let(:first_name) { '' }
 
     it { is_expected.to be_a_failure }

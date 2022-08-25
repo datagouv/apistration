@@ -12,7 +12,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
   end
 
   let(:family_name) { 'Dupont' }
-  let(:first_names) { 'Jean, Charlie' }
+  let(:first_names) { 'Jean Charlie' }
   let(:birthday_date) { '2000-01-01' }
   let(:gender) { 'M' }
   let(:user_id) { SecureRandom.uuid }
@@ -23,7 +23,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
     stub_request(:post, /#{Siade.credentials[:cnous_student_scholarship_civility_url]}/).with(
       body: {
         lastName: family_name,
-        firstNames: first_names,
+        firstNames: 'Jean, Charlie',
         birthDate: birthday_date,
         civility: gender
       }.to_json,
