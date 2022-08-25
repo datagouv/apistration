@@ -7,6 +7,7 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
     instance_double(Net::HTTPOK, body:)
   end
 
+  # rubocop:disable RSpec/RepeatedExampleGroupBody
   context 'when it is from a call with ine param' do
     let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_valid_response.json')) }
 
@@ -70,4 +71,5 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
       end
     end
   end
+  # rubocop:enable RSpec/RepeatedExampleGroupBody
 end
