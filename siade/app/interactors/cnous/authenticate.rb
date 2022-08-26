@@ -7,6 +7,7 @@ class CNOUS::Authenticate < GetOAuth2Token
 
   def access_token(response)
     authorization = response['Authorization']
+
     authorization.match(/^Bearer\s(.*\z)/)[1]
   end
 

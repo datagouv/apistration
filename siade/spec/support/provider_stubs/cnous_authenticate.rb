@@ -2,20 +2,28 @@ require_relative '../provider_stubs'
 
 module ProviderStubs::CNOUSAuthenticate
   def mock_cnous_authenticate
-    stub_cnous_authenticate_interactor
-
-    stub_request(:post, /#{Siade.credentials[:cnous_authenticate_url]}/).to_return(
+    stub_request(:post, Siade.credentials[:cnous_authenticate_url]).to_return(
       status: 200,
-      headers: { Authorization: 'Bearer valid_bearer' }
+      headers: { Authorization: "Bearer #{build_jwt_bearer}" }
     )
   end
 
   private
 
-  def stub_cnous_authenticate_interactor
-    dbl_authenticate = instance_double(CNOUS::Authenticate).as_null_object
-    allow(CNOUS::Authenticate).to receive(:new).and_return(dbl_authenticate)
+  def build_jwt_bearer
+    JWT.encode(payload_jwt_cnous, OpenSSL::PKey::RSA.new(512), Siade.credentials[:cnous_jwt_hash_algo])
+  end
 
-    allow(dbl_authenticate).to receive(:decoded_jwt).with('valid_bearer').and_return([{ 'exp' => Time.zone.now.to_i + 100 }])
+  def payload_jwt_cnous
+    {
+      exp: 2_661_444_052,
+      admin: false,
+      view_doc: true,
+      sub: '178',
+      iss: 'api.lescrous.fr',
+      env: 'PRD',
+      appId: '59b17725ae575a4530ab6bbaafeb8eadd754',
+      roles: 'VIEW_DOC,ETU_READ_STATUT'
+    }
   end
 end
