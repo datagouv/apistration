@@ -1,5 +1,6 @@
 class MESRI::StudentStatusWithINE < RetrieverOrganizer
-  organize ValidateParams::StudentINE,
+  organize ServiceUser::ValidateINE,
+    ServiceUser::ValidateUserId,
     MESRI::StudentStatusWithINE::MakeRequest,
     MESRI::ValidateResponse,
     MESRI::BuildResource
