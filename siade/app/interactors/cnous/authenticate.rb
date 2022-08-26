@@ -1,4 +1,4 @@
-class CNOUS::Authenticate < GetOAuth2Token
+class CNOUS::Authenticate < AbstractGetToken
   private
 
   def set_headers(request)
@@ -33,5 +33,12 @@ class CNOUS::Authenticate < GetOAuth2Token
 
   def client_url
     Siade.credentials[:cnous_authenticate_url]
+  end
+
+  def form_data
+    {
+      grant_type: 'client_credentials',
+      scope:
+    }
   end
 end
