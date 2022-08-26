@@ -12,7 +12,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
   end
 
   let(:family_name) { 'Dupont' }
-  let(:first_names) { 'Jean Charlie' }
+  let(:first_names) { %w[Jean Charlie] }
   let(:birthday_date) { '2000-01-01' }
   let(:gender) { 'M' }
   let(:user_id) { SecureRandom.uuid }

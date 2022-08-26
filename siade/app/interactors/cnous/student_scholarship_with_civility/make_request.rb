@@ -24,7 +24,7 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
   end
 
   def first_names
-    context.params[:first_names].split.join(', ')
+    context.params[:first_names].join(', ')
   end
 
   def birthday_date
