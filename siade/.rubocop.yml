@@ -106,9 +106,9 @@ Naming/AccessorMethodName:
     - "app/interactors/inpi/authenticate.rb"
     - "app/interactors/mesri/make_request_commons.rb"
     - "app/interactors/insee/authenticate.rb"
-    - "spec/interactors/get_oauth2_token_spec.rb"
     - "app/interactors/cnous/make_request_commons.rb"
     - "app/interactors/cnous/authenticate.rb"
+    - "spec/interactors/abstract_get_token_spec.rb"
 
 # Allowing uppercase in some method names
 Naming/MethodName:
