@@ -2,6 +2,7 @@ class CNOUS::StudentScholarshipWithCivility::ValidateParams < ValidateParamsOrga
   organize ServiceUser::ValidateFamilyName,
     ServiceUser::ValidateFirstNames,
     ServiceUser::ValidateBirthdayDate,
+    ServiceUser::ValidateBirthdayPlace,
     CNOUS::StudentScholarshipWithCivility::ValidateGender,
     ServiceUser::ValidateUserId
 end

@@ -27,7 +27,9 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::ValidateParams, type: :val
   context 'without birthday place' do
     let(:birthday_place) { '' }
 
-    it { is_expected.to be_a_success }
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(::UnprocessableEntityError)) }
   end
 
   context 'without first name' do
