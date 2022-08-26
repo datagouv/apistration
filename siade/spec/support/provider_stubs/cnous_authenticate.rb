@@ -1,6 +1,20 @@
 require_relative '../provider_stubs'
 
 module ProviderStubs::CNOUSAuthenticate
+  def mock_cnous_student_scholarship_civility_valid_call
+    stub_request(:post, /#{Siade.credentials[:cnous_student_scholarship_civility_url]}/).to_return(
+      status: 200,
+      body: File.read(Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_valid_response.json'))
+    )
+  end
+
+  def mock_cnous_student_scholarship_ine_valid_call
+    stub_request(:get, /#{Siade.credentials[:cnous_student_scholarship_ine_url]}/).to_return(
+      status: 200,
+      body: File.read(Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_valid_response.json'))
+    )
+  end
+
   def mock_cnous_authenticate
     stub_request(:post, Siade.credentials[:cnous_authenticate_url]).to_return(
       status: 200,

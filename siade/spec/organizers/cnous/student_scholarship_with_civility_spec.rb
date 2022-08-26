@@ -23,11 +23,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility, type: :retriever_organizer
     describe 'happy path' do
       before do
         mock_cnous_authenticate
-
-        stub_request(:post, /#{Siade.credentials[:cnous_student_scholarship_civility_url]}/).to_return(
-          status: 200,
-          body: File.read(Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_valid_response.json'))
-        )
+        mock_cnous_student_scholarship_civility_valid_call
       end
 
       it { is_expected.to be_a_success }

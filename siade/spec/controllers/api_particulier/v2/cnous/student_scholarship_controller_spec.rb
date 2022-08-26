@@ -14,10 +14,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController, type: :c
 
     describe 'with valid params' do
       before do
-        stub_request(:get, /#{Siade.credentials[:cnous_student_scholarship_ine_url]}/).to_return(
-          status: 200,
-          body: File.read(Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_valid_response.json'))
-        )
+        mock_cnous_student_scholarship_ine_valid_call
       end
 
       context 'when token has full access' do
@@ -84,10 +81,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController, type: :c
 
     describe 'with valid params' do
       before do
-        stub_request(:post, Siade.credentials[:cnous_student_scholarship_civility_url]).to_return(
-          status: 200,
-          body: File.read(Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_valid_response.json'))
-        )
+        mock_cnous_student_scholarship_civility_valid_call
       end
 
       context 'when token has full access' do
