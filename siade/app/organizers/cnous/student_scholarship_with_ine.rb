@@ -8,4 +8,8 @@ class CNOUS::StudentScholarshipWithINE < RetrieverOrganizer
   def provider_name
     'CNOUS'
   end
+
+  def params_kind
+    'ine'
+  end
 end

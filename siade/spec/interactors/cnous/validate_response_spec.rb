@@ -1,6 +1,6 @@
 RSpec.describe CNOUS::ValidateResponse, type: :validate_response do
   describe '.call' do
-    subject(:call) { described_class.call(response:, provider_name: 'MESRI') }
+    subject(:call) { described_class.call(response:, provider_name: 'MESRI', params_kind: 'ine') }
 
     let(:response) do
       instance_double(Net::HTTPOK, code:, body:)
