@@ -192,6 +192,14 @@
   title: 'Entité non traitable'
   detail: "Le sexe n'est pas correctement formaté (m ou f)"
 
+- code: '00365'
+  title: 'Entité non traitable'
+  detail: "Le lieu de naissance n'est pas correctement formaté"
+
+- code: '00366'
+  title: 'Entité non traitable'
+  detail: "Un ou plusieurs paramètres de civilité ne sont pas correctement formatés"
+
 - code: '00370'
   title: 'Entité non traitable'
   detail: "Le numéro fiscal n'est pas correctement formaté"
