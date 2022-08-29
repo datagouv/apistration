@@ -69,11 +69,11 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController, type: :c
   end
 
   describe 'with civility params' do
-    subject { get :show, params: { nom:, prenom:, dateDeNaissance:, lieuDeNaissance:, sexe:, token: } }
+    subject { get :show, params: { nom:, prenoms:, dateDeNaissance:, lieuDeNaissance:, sexe:, token: } }
 
     # rubocop:disable RSpec/VariableName
     let(:nom) { 'Dupont' }
-    let(:prenom) { 'Jean' }
+    let(:prenoms) { 'Jean Charlie' }
     let(:dateDeNaissance) { '2000-01-01' }
     let(:lieuDeNaissance) { 'Paris' }
     let(:sexe) { 'M' }
