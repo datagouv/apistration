@@ -19,10 +19,14 @@ class CNOUS::ValidateResponse < ValidateResponse
   end
 
   def unprocessable_entity_error!
-    fail_with_error!(::UnprocessableEntityError.new(context.params_kind))
+    fail_with_error!(::UnprocessableEntityError.new(params_kind))
   end
 
   def http_bad_request?
     http_code == 400
+  end
+
+  def params_kind
+    context.params[:ine].present? ? :ine : :civility
   end
 end

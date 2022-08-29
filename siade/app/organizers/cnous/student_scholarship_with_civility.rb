@@ -8,8 +8,4 @@ class CNOUS::StudentScholarshipWithCivility < RetrieverOrganizer
   def provider_name
     'CNOUS'
   end
-
-  def params_kind
-    'civility'
-  end
 end
