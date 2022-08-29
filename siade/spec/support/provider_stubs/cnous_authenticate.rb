@@ -30,13 +30,13 @@ module ProviderStubs::CNOUSAuthenticate
 
   def payload_jwt_cnous
     {
-      exp: 2_661_444_052,
+      exp: 2.hours.from_now.to_i,
       admin: false,
       view_doc: true,
       sub: '178',
       iss: 'api.lescrous.fr',
       env: 'PRD',
-      appId: '59b17725ae575a4530ab6bbaafeb8eadd754',
+      appId: 'dummy app_id',
       roles: 'VIEW_DOC,ETU_READ_STATUT'
     }
   end
