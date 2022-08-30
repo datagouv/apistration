@@ -9,17 +9,23 @@ class MakeRequest::Get < MakeRequest
     fail NotImplementedError
   end
 
+  def request_body
+    nil
+  end
+
   private
 
   def api_call
     context.response = http_wrapper do
-      Net::HTTP::Get.new(build_request)
+      Net::HTTP::Get.new(build_request).tap do |req|
+        req.body = request_body
+      end
     end
   end
 
   def build_request
-    request_uri.tap do |req|
-      req.query = encode_request_params if query_params?
+    request_uri.tap do |uri|
+      uri.query = encode_request_params if query_params?
     end
   end
 
