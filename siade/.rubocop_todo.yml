@@ -44,12 +44,6 @@ Metrics/AbcSize:
     - 'spec/organizers/retriever_organizer_spec.rb'
 
 # Offense count: 1
-# Configuration parameters: CountComments, Max, CountAsOne.
-Metrics/ClassLength:
-  Exclude:
-    - 'app/interactors/rnm/entreprises_artisanales/build_resource.rb'
-
-# Offense count: 1
 # Configuration parameters: IgnoredMethods, Max.
 Metrics/CyclomaticComplexity:
   Exclude:

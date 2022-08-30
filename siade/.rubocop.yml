@@ -80,6 +80,7 @@ Metrics/BlockLength:
     - "response"
 
 Metrics/ClassLength:
+  Max: 200
   Exclude:
     - "app/interactors/**/build_resource.rb"
 
