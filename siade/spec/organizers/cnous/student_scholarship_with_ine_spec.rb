@@ -12,7 +12,7 @@ RSpec.describe CNOUS::StudentScholarshipWithINE, type: :retriever_organizer do
     describe 'happy path' do
       before do
         mock_cnous_authenticate
-        mock_cnous_student_scholarship_ine_valid_call
+        mock_cnous_valid_call('ine')
       end
 
       it { is_expected.to be_a_success }

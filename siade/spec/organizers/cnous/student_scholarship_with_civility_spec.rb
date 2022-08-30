@@ -23,7 +23,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility, type: :retriever_organizer
     describe 'happy path' do
       before do
         mock_cnous_authenticate
-        mock_cnous_student_scholarship_civility_valid_call
+        mock_cnous_valid_call('civility')
       end
 
       it { is_expected.to be_a_success }

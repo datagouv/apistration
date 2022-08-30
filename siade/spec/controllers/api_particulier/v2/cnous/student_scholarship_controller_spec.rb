@@ -14,7 +14,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController, type: :c
 
     describe 'with valid params' do
       before do
-        mock_cnous_student_scholarship_ine_valid_call
+        mock_cnous_valid_call('ine')
       end
 
       context 'when token has full access' do
@@ -81,7 +81,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController, type: :c
 
     describe 'with valid params' do
       before do
-        mock_cnous_student_scholarship_civility_valid_call
+        mock_cnous_valid_call('civility')
       end
 
       context 'when token has full access' do
