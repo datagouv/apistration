@@ -1,4 +1,6 @@
 class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulierController
+  include APIParticulier::FranceConnectable
+
   def show
     authorize :cnous_statut_boursier,
       :cnous_echelon_bourse,
@@ -21,7 +23,9 @@ class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulierCo
   private
 
   def extract_organizer_thanks_to_params
-    if call_with_ine?
+    if france_connect?
+      CNOUS::StudentScholarshipWithFranceConnect
+    elsif call_with_ine?
       CNOUS::StudentScholarshipWithINE
     else
       CNOUS::StudentScholarshipWithCivility
@@ -35,23 +39,33 @@ class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulierCo
   end
 
   def cnous_student_scholarship_params
-    if call_with_ine?
-      {
-        ine: params[:ine]
-      }
+    if france_connect?
+      france_connect_service_user_identity.to_h
+    elsif call_with_ine?
+      ine_params
     else
-      {
-        family_name: params[:nom],
-        first_names: params[:prenoms].split,
-        birthday_date: params[:dateDeNaissance],
-        birthday_place: params[:lieuDeNaissance],
-        gender: params[:sexe]
-      }
+      civility_params
     end
   end
 
   def call_with_ine?
     params[:ine].present?
+  end
+
+  def ine_params
+    {
+      ine: params[:ine]
+    }
+  end
+
+  def civility_params
+    {
+      family_name: params[:nom],
+      first_names: params[:prenoms].split,
+      birthday_date: params[:dateDeNaissance],
+      birthday_place: params[:lieuDeNaissance],
+      gender: params[:sexe]
+    }
   end
 
   def format_not_found_error(error)

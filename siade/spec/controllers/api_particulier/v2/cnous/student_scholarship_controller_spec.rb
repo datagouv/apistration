@@ -99,4 +99,38 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController, type: :c
       end
     end
   end
+
+  describe 'with france connect token' do
+    subject(:make_call) do
+      request.headers['Authorization'] = 'Bearer france_connect_token'
+
+      get :show
+    end
+
+    let(:params) { default_france_connect_identity_attributes.merge(user_id: anything) }
+
+    before do
+      allow(CNOUS::StudentScholarshipWithFranceConnect).to receive(:call).and_call_original
+
+      mock_cnous_valid_call('france_connect')
+
+      mock_valid_france_connect_checktoken(scopes: minimal_france_connect_scopes.concat(all_scopes))
+    end
+
+    its(:status) { is_expected.to eq(200) }
+
+    it 'returns all fields' do
+      json = JSON.parse(subject.body)
+
+      one_field_of_each_scope.each do |key|
+        expect(json).to have_key(key), "#{key} is missing"
+      end
+    end
+
+    it 'calls CNOUS::StudentScholarshipWithFranceConnect with france connect person identity attributes' do
+      make_call
+
+      expect(CNOUS::StudentScholarshipWithFranceConnect).to have_received(:call).with(params:)
+    end
+  end
 end
