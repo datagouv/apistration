@@ -73,6 +73,21 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
     end
   end
 
+  context 'with a closed siret without date of closing', vcr: { cassette_name: 'insee/siret/closed_without_date' } do
+    let(:siret) { '78365263900015' }
+
+    it { is_expected.to be_a_success }
+
+    describe 'resource' do
+      subject { organizer.bundled_data.data }
+
+      it { is_expected.to be_a(Resource) }
+
+      its(:etat_administratif) { is_expected.to eq('F') }
+      its(:date_fermeture) { is_expected.to be_nil }
+    end
+  end
+
   context 'with a siret which has an enseigne', vcr: { cassette_name: 'insee/siret/active_GE_ss' } do
     let(:siret) { sirets_insee_v3[:active_GE_ss] }
 

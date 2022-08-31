@@ -56,8 +56,13 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
 
   def date_fermeture
     return if etablissement_active?
+    return if date_fermeture_is_missing?
 
     date_to_timestamp(periode_with_fermeture_status['dateDebut'])
+  end
+
+  def date_fermeture_is_missing?
+    periode_with_fermeture_status.blank?
   end
 
   def etablissement_active?
