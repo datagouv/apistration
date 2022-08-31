@@ -20,7 +20,7 @@ class MonitoringService
     )
 
     track(
-      'warning',
+      error.tracking_level,
       "[#{current_provider}] Error: #{error.detail}"
     )
   end

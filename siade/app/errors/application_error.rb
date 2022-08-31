@@ -38,6 +38,10 @@ class ApplicationError
     monitoring_private_context.merge!(context)
   end
 
+  def tracking_level
+    'warning'
+  end
+
   def kind
     fail NotImplementedError
   end
