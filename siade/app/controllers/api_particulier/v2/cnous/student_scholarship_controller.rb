@@ -63,7 +63,7 @@ class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulierCo
       family_name: params[:nom],
       first_names: params[:prenoms].split,
       birthday_date: params[:dateDeNaissance],
-      birthday_place: params[:lieuDeNaissance],
+      birth_place: params[:lieuDeNaissance],
       gender: params[:sexe]
     }
   end

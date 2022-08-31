@@ -141,7 +141,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController, type: :contro
           family_name: france_connect_person_identity_attributes[:family_name],
           first_name: france_connect_person_identity_attributes[:given_name],
           birthday_date: france_connect_person_identity_attributes[:birthdate],
-          birthday_place: france_connect_person_identity_attributes[:birthplace],
+          birth_place: france_connect_person_identity_attributes[:birthplace],
           gender: 'm'
         }
       )

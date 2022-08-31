@@ -1,5 +1,5 @@
 class ServiceUser::ValidateBirthdayPlace < ValidateAttributePresence
   def attribute
-    :birthday_place
+    :birth_place
   end
 end

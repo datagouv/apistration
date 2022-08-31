@@ -33,7 +33,7 @@ class UnprocessableEntityError < ApplicationError
       first_name: '00362',
       birthday_date: '00363',
       gender: '00364',
-      birthday_place: '00365',
+      birth_place: '00365',
       civility: '00366',
       # DGFIP usager
       tax_number: '00370',

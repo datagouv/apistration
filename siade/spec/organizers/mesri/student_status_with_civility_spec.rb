@@ -7,7 +7,7 @@ RSpec.describe MESRI::StudentStatusWithCivility, type: :retriever_organizer do
         family_name:,
         first_name:,
         birthday_date:,
-        birthday_place:,
+        birth_place:,
         gender:,
 
         user_id: SecureRandom.uuid
@@ -17,7 +17,7 @@ RSpec.describe MESRI::StudentStatusWithCivility, type: :retriever_organizer do
     let(:family_name) { 'Dupont' }
     let(:first_name) { 'Jean' }
     let(:birthday_date) { '2000-01-01' }
-    let(:birthday_place) { 'Paris' }
+    let(:birth_place) { 'Paris' }
     let(:gender) { 'm' }
 
     describe 'happy path' do

@@ -6,7 +6,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::ValidateParams, type: :val
       family_name:,
       first_names:,
       birthday_date:,
-      birthday_place:,
+      birth_place:,
       gender:,
       user_id:
     }
@@ -15,7 +15,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::ValidateParams, type: :val
   let(:family_name) { 'Dupont' }
   let(:first_names) { 'Jean Charlie' }
   let(:birthday_date) { '2000-01-01' }
-  let(:birthday_place) { 'Paris' }
+  let(:birth_place) { 'Paris' }
   let(:gender) { 'M' }
 
   let(:user_id) { SecureRandom.uuid }
@@ -25,7 +25,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::ValidateParams, type: :val
   end
 
   context 'without birthday place' do
-    let(:birthday_place) { '' }
+    let(:birth_place) { '' }
 
     it { is_expected.to be_a_failure }
 

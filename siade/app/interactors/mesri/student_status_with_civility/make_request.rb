@@ -10,7 +10,7 @@ class MESRI::StudentStatusWithCivility::MakeRequest < MakeRequest::Post
       prenom1: first_name,
       dateNaissance: birthday_date,
       sexe: gender,
-      lieuNaissance: birthday_place
+      lieuNaissance: birth_place
     }.compact
   end
   # rubocop:enable Naming/VariableNumber
@@ -33,8 +33,8 @@ class MESRI::StudentStatusWithCivility::MakeRequest < MakeRequest::Post
     context.params[:birthday_date]
   end
 
-  def birthday_place
-    context.params[:birthday_place]
+  def birth_place
+    context.params[:birth_place]
   end
 
   def gender
