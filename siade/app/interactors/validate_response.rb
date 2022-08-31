@@ -34,7 +34,15 @@ class ValidateResponse < ApplicationInteractor
   end
 
   def unknown_provider_response!(message = nil)
-    fail_with_error!(build_error(::ProviderUnknownError, message))
+    error = build_error(::ProviderUnknownError, message)
+
+    error.add_to_monitoring_private_context({
+      http_response_code: context.response.code,
+      http_response_body: context.response.body,
+      http_response_headers: context.response.to_hash
+    })
+
+    fail_with_error!(error)
   end
 
   def provider_in_maintenance!
