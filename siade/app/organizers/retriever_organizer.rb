@@ -4,8 +4,7 @@ class RetrieverOrganizer < ApplicationOrganizer
   def self.inherited(klass)
     klass.class_eval do
       before do
-        context.provider_name = provider_name
-        invalid_provider_name! unless provider_name_valid?
+        handles_provider
         context.resource = nil
         context.errors   = []
         provider_in_maintenance! if in_maintenance?
@@ -32,7 +31,7 @@ class RetrieverOrganizer < ApplicationOrganizer
 
   def track_providers_errors
     provider_errors.each do |provider_error|
-      MonitoringService.instance.track_provider_error(provider_error)
+      monitoring_service.track_provider_error(provider_error)
     end
   end
 
@@ -54,9 +53,19 @@ class RetrieverOrganizer < ApplicationOrganizer
     context.called!(self)
   end
 
+  def handles_provider
+    context.provider_name = provider_name
+    invalid_provider_name! unless provider_name_valid?
+    monitoring_service.set_provider(provider_name)
+  end
+
   def provider_in_maintenance!
     context.errors << MaintenanceError.new(context.provider_name)
     context.fail!
+  end
+
+  def monitoring_service
+    MonitoringService.instance
   end
 
   def in_maintenance?

@@ -20,6 +20,12 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
     end
   end
 
+  let(:monitoring_service) { double('monitoring_service', track_provider_error: nil, set_provider: nil) }
+
+  before do
+    allow(MonitoringService).to receive(:instance).and_return(monitoring_service)
+  end
+
   describe 'provider_name method' do
     subject { DummyRetrieverOrganizer.call(provider_name:) }
 
@@ -43,6 +49,12 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
           subject
         }.not_to raise_error
       end
+
+      it 'sets provider on monitoring' do
+        subject
+
+        expect(monitoring_service).to have_received(:set_provider).with(provider_name)
+      end
     end
   end
 
@@ -50,12 +62,6 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
     subject { DummyRetrieverOrganizer.call(provider_name:, error_kind:) }
 
     let(:provider_name) { 'INSEE' }
-    let(:monitoring_service) { double('monitoring_service') }
-
-    before do
-      allow(MonitoringService).to receive(:instance).and_return(monitoring_service)
-      allow(monitoring_service).to receive(:track_provider_error)
-    end
 
     context 'when there is no error' do
       let(:error_kind) { nil }
