@@ -20,15 +20,7 @@ RSpec.describe QUALIBAT::CertificationsBatiment::ValidateResponse, type: :valida
   end
 
   context 'with http ok but an empty body' do
-    let(:siret) { '47882868400017' }
-
-    before do
-      url_pattern = %r{mps.qualibat.eu/MPS/CERTIFICAT/\?SIRET=#{siret}}
-      stub_request(:get, url_pattern).to_return({
-        status: 200,
-        body: ''
-      })
-    end
+    let(:response) { instance_double(Net::HTTPOK, body: '', code: '200') }
 
     it { is_expected.to be_a_failure }
 

@@ -145,6 +145,16 @@ RSpec.configure do |config|
     host! 'particulier.api.localtest.me'
   end
 
+  config.before(type: :validate_response) do
+    if defined?(response)
+      allow(response).to receive(:body).and_return('') unless response.respond_to?(:body)
+
+      allow(response).to receive(:to_hash).and_return({
+        'header' => 'value'
+      })
+    end
+  end
+
   config.include_context 'has a provider_name', type: :provider_request
   config.include_context 'has a provider_name', type: :provider_response
   config.include_context 'has a provider_name', type: :provider_driver

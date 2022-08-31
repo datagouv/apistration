@@ -7,14 +7,11 @@ RSpec.describe DGFIP::Authenticate::ValidateResponse, type: :validate_response d
     it { is_expected.to be_a_success }
   end
 
-  context 'when response renders invalid credentials', vcr: { cassette_name: 'dgfip/authenticate/wrong_secret' } do
-    let(:response) { DGFIP::Authenticate::MakeRequest.call.response }
-
-    before do
-      stub_credential(:dgfip_secret, 'wrong_secret')
-    end
+  context 'when response renders invalid credentials' do
+    let(:response) { instance_double(Net::HTTPOK, code: '200', body: 'Identifiant ou mot de passe erroné') }
 
     it { is_expected.to be_a_failure }
+
     its(:errors) { is_expected.to include(ProviderAuthenticationError) }
   end
 
@@ -22,6 +19,7 @@ RSpec.describe DGFIP::Authenticate::ValidateResponse, type: :validate_response d
     let(:response) { instance_double(Net::HTTPOK, code: '200', body: '', '[]': 'invalid') }
 
     it { is_expected.to be_a_failure }
+
     its(:errors) { is_expected.to include(ProviderAuthenticationError) }
   end
 end
