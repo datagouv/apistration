@@ -21,31 +21,12 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', type: %i[request swa
       end
 
       describe 'with valid token and mandatory params', valid: true do
-        response '200', 'Entreprise trouvée', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
-          description SwaggerData.get('dgfip.liasses_fiscales.declarations.description')
+        response '501', 'Fonctionnalité non implémenté', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
+          description 'Fonctionnalité non implémenté pour le moment. Cette API est encore en travaux: le dictionnaire sera intégré directement dans les liasses pour éviter d’avoir à appeler 2 API comme sur la V.2.'
 
           rate_limit_headers
 
-          schema build_rswag_response(
-            attributes: SwaggerData.get('dgfip.liasses_fiscales.declarations.attributes'),
-            meta: SwaggerData.get('dgfip.liasses_fiscales.declarations.meta')
-          )
-
           run_test!
-        end
-
-        describe 'server errors' do
-          let(:siren) { valid_siren(:liasse_fiscale) }
-
-          unprocessable_entity_error_request(:siren)
-
-          common_provider_errors_request(
-            'DGFIP',
-            DGFIP::LiassesFiscales::Declarations,
-            DGFIPPotentialNotFoundError.new
-          )
-
-          common_network_error_request('DGFIP', DGFIP::LiassesFiscales::Declarations)
         end
       end
     end
