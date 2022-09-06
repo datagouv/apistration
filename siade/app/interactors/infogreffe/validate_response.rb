@@ -3,6 +3,9 @@ class Infogreffe::ValidateResponse < ValidateResponse
     return if http_ok? && payload_has_siren?
 
     resource_not_found!(:siren) if not_found_in_body?
+
+    provider_unavailable! if provider_unavailable_in_body?
+
     unknown_provider_response!
   end
 
@@ -13,6 +16,11 @@ class Infogreffe::ValidateResponse < ValidateResponse
       not_found_codes.any? do |not_found_code|
         potentiel_error.starts_with?(not_found_code)
       end
+  end
+
+  def provider_unavailable_in_body?
+    potentiel_error.present? &&
+      potentiel_error.starts_with?(provider_unavailable_code)
   end
 
   def payload_has_siren?
@@ -34,5 +42,9 @@ class Infogreffe::ValidateResponse < ValidateResponse
       006
       008
     ]
+  end
+
+  def provider_unavailable_code
+    '999'
   end
 end

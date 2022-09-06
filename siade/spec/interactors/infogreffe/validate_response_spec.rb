@@ -73,6 +73,33 @@ RSpec.describe Infogreffe::ValidateResponse, type: :validate_response do
       its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
     end
 
+    context 'with a valid code and a body containing Service Indisponible' do
+      let(:code) { '200' }
+      let(:xml_open_tags) do
+        '<SOAP-ENV:Envelope ' \
+          "xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/' " \
+          "xmlns:SOAP-ENC='http://schemas.xmlsoap.org/soap/encoding/' " \
+          "xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' " \
+          "xmlns:xsd='http://www.w3.org/2001/XMLSchema'> " \
+          '<SOAP-ENV:Body>' \
+          "<ns0:getProduitsWebServicesXMLResponse xmlns:ns0='urn:local' SOAP-ENV:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'> " \
+          "<return xsi:type='xsd:string'>"
+      end
+
+      let(:xml_close_tags) do
+        '</return>' \
+          '</ns0:getProduitsWebServicesXMLResponse>' \
+          '</SOAP-ENV:Body>' \
+          '</SOAP-ENV:Envelope>'
+      end
+
+      let(:body) { "#{xml_open_tags}999 -SERVICE INDISPONIBLE-#{xml_close_tags}" }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(ProviderUnavailable)) }
+    end
+
     context 'with a valid code and a body containing nonsense' do
       let(:code) { '200' }
       let(:body) { 'Nonsense' }

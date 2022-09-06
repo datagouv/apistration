@@ -50,6 +50,11 @@ class ValidateResponse < ApplicationInteractor
     context.fail!
   end
 
+  def provider_unavailable!
+    context.errors << ProviderUnavailable.new(context.provider_name)
+    context.fail!
+  end
+
   def resource_not_found!(resource = nil)
     message = not_found_message(resource)
 
