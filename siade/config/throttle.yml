@@ -23,6 +23,9 @@ shared:
       - { controller: 'api_entreprise/v2/attestations_fiscales_dgfip', action: 'show' }
       - { controller: 'api_entreprise/v2/documents_inpi', action: 'actes' }
       - { controller: 'api_entreprise/v2/documents_inpi', action: 'bilans' }
+
+      - { controller: 'api_entreprise/v3_and_more/dgfip/attestations_fiscales', action: 'show' }
+      - { controller: 'api_entreprise/v3_and_more/inpi/actes', action: 'show' }
     limit: 5
     period: 60
   json_resources:
@@ -50,7 +53,6 @@ shared:
       - { controller: 'api_entreprise/v3_and_more/dgddi/eori', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/infogreffe/mandataires_sociaux', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/infogreffe/extraits_rcs', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/inpi/actes', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/inpi/latest_brevets', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/inpi/latest_marques', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/inpi/latest_modeles', action: 'show' }
@@ -66,7 +68,6 @@ shared:
       - { controller: 'api_entreprise/v3_and_more/probtp/conformites_cotisations_retraite', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/dgfip/liasses_fiscales/declarations', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/dgfip/chiffres_affaires', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/dgfip/attestations_fiscales', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/msa/conformites_cotisations', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/fabrique_numerique_ministeres_sociaux/conventions_collectives', action: 'show' }
     limit: 250
