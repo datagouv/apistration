@@ -37,4 +37,21 @@ RSpec.describe SIADE::V2::Responses::Infogreffe, type: :provider_response do
 
     include_examples 'provider\'s response error'
   end
+
+  context 'when SERVICE INDISPONIBLE' do
+    let(:url) { SIADE::V2::Requests::Infogreffe.new(siren: 'oki').send(:request_uri) }
+    let(:siren) { valid_siren(:extrait_rcs) }
+    let(:stub_response) do
+      {
+        status: 200,
+        body: 'something that includes 999 -SERVICE INDISPONIBLE- but not only'
+      }
+    end
+
+    before do
+      stub_request(:post, url).to_return(stub_response)
+    end
+
+    its(:http_code) { is_expected.to eq 502 }
+  end
 end

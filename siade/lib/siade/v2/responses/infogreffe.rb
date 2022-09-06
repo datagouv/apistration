@@ -22,6 +22,12 @@ class SIADE::V2::Responses::Infogreffe < SIADE::V2::Responses::Generic
       return 500 if @raw_response.body.include?(message)
     end
 
+    [
+      '999 -SERVICE INDISPONIBLE-'
+    ].each do |message|
+      return 502 if @raw_response.body.include?(message)
+    end
+
     @raw_response.code.to_i
   end
 end
