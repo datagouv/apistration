@@ -61,7 +61,11 @@ class DGFIP::SVAIR::BuildResource < BuildResource
   end
 
   def extract_revenu(line)
-    extract_info_from_table(line).gsub(/[^\d]/, '').to_i
+    revenu_raw = extract_info_from_table(line)
+
+    return if revenu_raw == 'Non imposable'
+
+    revenu_raw.gsub(/[^\d]/, '').to_i
   end
 
   def extract_impot(line)
