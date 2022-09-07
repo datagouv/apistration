@@ -28,7 +28,6 @@ class PoleEmploi::Statut::BuildResource < BuildResource
     )
   end
 
-  # rubocop:disable Naming/VariableNumber
   def contact_attributes
     build_hash_from_attributes(
       json_body,
@@ -39,7 +38,6 @@ class PoleEmploi::Statut::BuildResource < BuildResource
       ]
     )
   end
-  # rubocop:enable Naming/VariableNumber
 
   def inscription_attributes
     build_hash_from_attributes(

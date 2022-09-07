@@ -15,7 +15,6 @@ class APIParticulier::DGFIP::SVAIR::V2 < APIParticulier::V2BaseSerializer
     attribute resource_attribute.camelize(:lower), if: -> { scope?("dgfip_#{resource_attribute}".to_sym) }
   end
 
-  # rubocop:disable Naming/VariableNumber
   attributes :declarant1, :declarant2
   attribute :foyerFiscal, method: :foyer_fiscal
 
@@ -30,7 +29,6 @@ class APIParticulier::DGFIP::SVAIR::V2 < APIParticulier::V2BaseSerializer
   def declarant2
     build_declarant(2)
   end
-  # rubocop:enable Naming/VariableNumber
 
   def foyer_fiscal
     {

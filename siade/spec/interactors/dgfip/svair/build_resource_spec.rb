@@ -7,7 +7,6 @@ RSpec.describe DGFIP::SVAIR::BuildResource, type: :build_resource do
     instance_double(Net::HTTPOK, body:)
   end
 
-  # rubocop:disable Naming/VariableNumber
   describe 'resource' do
     subject { instance.bundled_data.data.to_h }
 
@@ -93,5 +92,4 @@ RSpec.describe DGFIP::SVAIR::BuildResource, type: :build_resource do
       end
     end
   end
-  # rubocop:enable Naming/VariableNumber
 end

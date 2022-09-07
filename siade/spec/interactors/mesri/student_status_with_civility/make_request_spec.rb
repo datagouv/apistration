@@ -17,7 +17,6 @@ RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_reques
   let(:gender) { 'm' }
   let(:user_id) { SecureRandom.uuid }
 
-  # rubocop:disable Naming/VariableNumber
   let!(:stubbed_request) do
     stub_request(:post, Siade.credentials[:mesri_student_status_url]).with(
       body: {
@@ -35,7 +34,6 @@ RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_reques
       body: File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_civility_valid_response.json'))
     )
   end
-  # rubocop:enable Naming/VariableNumber
 
   it { is_expected.to be_a_success }
 

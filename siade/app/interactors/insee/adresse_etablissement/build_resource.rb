@@ -28,7 +28,6 @@ class INSEE::AdresseEtablissement::BuildResource < INSEE::Etablissement::BuildRe
 
   private
 
-  # rubocop:disable Naming/VariableNumber
   def acheminement_postal
     {
       l1: acheminement_postal_denomination_personne_morale,
@@ -40,7 +39,6 @@ class INSEE::AdresseEtablissement::BuildResource < INSEE::Etablissement::BuildRe
       l7: etablissement_address['libellePaysEtrangerEtablissement'] || 'FRANCE'
     }
   end
-  # rubocop:enable Naming/VariableNumber
 
   def acheminement_postal_denomination_personne_morale
     return '' unless type_of_person == :personne_morale

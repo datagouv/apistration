@@ -21,7 +21,6 @@ class APIParticulier::PoleEmploi::Statut::V2 < APIParticulier::V2BaseSerializer
     attribute resource_attribute, if: -> { scope?(:pole_emploi_inscription) }
   end
 
-  # rubocop:disable Naming/VariableNumber
   %i[
     email
     telephone
@@ -29,7 +28,5 @@ class APIParticulier::PoleEmploi::Statut::V2 < APIParticulier::V2BaseSerializer
   ].each do |resource_attribute|
     attribute resource_attribute, if: -> { scope?(:pole_emploi_contact) }
   end
-  # rubocop:enable Naming/VariableNumber
-
   attribute :adresse, if: -> { scope?(:pole_emploi_adresse) }
 end

@@ -129,7 +129,7 @@ RSpec/ScatteredSetup:
     - "spec/requests/api/v3_and_more/**/*_spec.rb"
 
 Naming/VariableNumber:
-  EnforcedStyle: snake_case
+  Enabled: false
 
 Style/AsciiComments:
   Enabled: false

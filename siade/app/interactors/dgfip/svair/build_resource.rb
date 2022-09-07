@@ -1,5 +1,4 @@
 class DGFIP::SVAIR::BuildResource < BuildResource
-  # rubocop:disable Naming/VariableNumber
   def resource_attributes
     {
       declarant1: build_declarant(1),
@@ -24,7 +23,6 @@ class DGFIP::SVAIR::BuildResource < BuildResource
       situationPartielle: extract_situation_partielle
     }
   end
-  # rubocop:enable Naming/VariableNumber
 
   private
 

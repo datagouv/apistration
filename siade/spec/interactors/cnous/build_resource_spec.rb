@@ -19,7 +19,7 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
         {
           nom: 'Martin',
           prenom: 'Jerome',
-          prenom2: 'Francis', # rubocop:disable Naming/VariableNumber
+          prenom2: 'Francis',
           dateNaissance: '1980-11-14',
           lieuNaissance: 'La Crèche',
           sexe: 'M',

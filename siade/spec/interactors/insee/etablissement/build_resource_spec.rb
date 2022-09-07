@@ -112,11 +112,9 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
 
       it { is_expected.to be_a(Resource) }
 
-      # rubocop:disable Naming/VariableNumber
       it 'has a valid adresse->acheminement_postal->l2, which is nomUniteLegale concatenated with prenom1UniteLegale' do
         expect(resource.adresse.acheminement_postal[:l2]).to eq('BIDAU ODILE')
       end
-      # rubocop:enable Naming/VariableNumber
     end
   end
 end

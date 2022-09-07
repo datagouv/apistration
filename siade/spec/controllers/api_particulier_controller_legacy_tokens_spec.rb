@@ -1,5 +1,4 @@
 # rubocop:disable RSpec/DescribeMethod
-# rubocop:disable Naming/VariableNumber
 RSpec.describe APIParticulierController, 'legacy tokens', type: :controller do
   # rubocop:enable RSpec/DescribeMethod
   controller(described_class) do
@@ -178,4 +177,3 @@ RSpec.describe APIParticulierController, 'legacy tokens', type: :controller do
     end
   end
 end
-# rubocop:enable Naming/VariableNumber

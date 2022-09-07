@@ -3,7 +3,6 @@ class MESRI::StudentStatusWithCivility::MakeRequest < MakeRequest::Post
 
   protected
 
-  # rubocop:disable Naming/VariableNumber
   def request_params
     {
       nomFamille: family_name,
@@ -13,7 +12,6 @@ class MESRI::StudentStatusWithCivility::MakeRequest < MakeRequest::Post
       lieuNaissance: birth_place
     }.compact
   end
-  # rubocop:enable Naming/VariableNumber
 
   def api_key
     Siade.credentials[:mesri_student_status_token_with_civility]

@@ -15,7 +15,6 @@ RSpec.describe PoleEmploi::Statut::BuildResource, type: :build_resource do
   describe 'resource' do
     subject { instance.bundled_data.data.to_h }
 
-    # rubocop:disable Naming/VariableNumber
     it do
       expect(subject).to eq(
         {
@@ -47,6 +46,5 @@ RSpec.describe PoleEmploi::Statut::BuildResource, type: :build_resource do
         }
       )
     end
-    # rubocop:enable Naming/VariableNumber
   end
 end

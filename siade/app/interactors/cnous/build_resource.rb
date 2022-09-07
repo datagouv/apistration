@@ -3,7 +3,7 @@ class CNOUS::BuildResource < BuildResource
     {
       nom: json_body['lastName'],
       prenom: json_body['firstName'],
-      prenom2: json_body['firstName2'], # rubocop:disable Naming/VariableNumber
+      prenom2: json_body['firstName2'],
       dateNaissance: format_date(json_body['birthDate']),
       lieuNaissance: json_body['birthPlace']['libelle'],
       sexe: json_body['civility'],

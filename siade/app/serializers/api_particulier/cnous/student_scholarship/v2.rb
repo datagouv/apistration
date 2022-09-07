@@ -1,5 +1,4 @@
 class APIParticulier::CNOUS::StudentScholarship::V2 < APIParticulier::V2BaseSerializer
-  # rubocop:disable Naming/VariableNumber
   %i[
     nom
     prenom
@@ -10,8 +9,6 @@ class APIParticulier::CNOUS::StudentScholarship::V2 < APIParticulier::V2BaseSeri
   ].each do |resource_attribute|
     attribute resource_attribute, if: -> { scope?(:cnous_identite) }
   end
-  # rubocop:enable Naming/VariableNumber
-
   attribute :email, if: -> { scope?(:cnous_email) }
 
   attribute :boursier, if: -> { scope?(:cnous_statut_boursier) }
