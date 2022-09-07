@@ -2,7 +2,7 @@ RSpec.describe CNOUS::StudentScholarshipWithFranceConnect, type: :retriever_orga
   describe '.call' do
     subject { described_class.call(params:) }
 
-    let(:params) { default_france_connect_identity_attributes.merge(user_id: SecureRandom.uuid) }
+    let(:params) { default_france_connect_identity_attributes }
 
     describe 'happy path' do
       before do

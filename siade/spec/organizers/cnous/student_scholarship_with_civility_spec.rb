@@ -8,9 +8,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility, type: :retriever_organizer
         first_names:,
         birthday_date:,
         birth_place:,
-        gender:,
-
-        user_id: SecureRandom.uuid
+        gender:
       }
     end
 

@@ -1,6 +1,5 @@
 class CNOUS::StudentScholarshipWithINE < RetrieverOrganizer
   organize ServiceUser::ValidateINE,
-    ServiceUser::ValidateUserId,
     CNOUS::Authenticate,
     CNOUS::StudentScholarshipWithINE::MakeRequest,
     CNOUS::ValidateResponse,

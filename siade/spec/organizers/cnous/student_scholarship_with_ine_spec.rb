@@ -4,8 +4,7 @@ RSpec.describe CNOUS::StudentScholarshipWithINE, type: :retriever_organizer do
 
     let(:params) do
       {
-        ine: '1234567890G',
-        user_id: SecureRandom.uuid
+        ine: '1234567890G'
       }
     end
 

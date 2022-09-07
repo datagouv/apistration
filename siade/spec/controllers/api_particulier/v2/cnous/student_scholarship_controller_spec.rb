@@ -107,7 +107,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController, type: :c
       get :show
     end
 
-    let(:params) { default_france_connect_identity_attributes.merge(user_id: anything) }
+    let(:params) { default_france_connect_identity_attributes }
 
     before do
       allow(CNOUS::StudentScholarshipWithFranceConnect).to receive(:call).and_call_original

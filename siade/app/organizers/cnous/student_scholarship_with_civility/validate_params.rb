@@ -3,6 +3,5 @@ class CNOUS::StudentScholarshipWithCivility::ValidateParams < ValidateParamsOrga
     ServiceUser::ValidateFirstNames,
     ServiceUser::ValidateBirthdayPlace,
     CNOUS::StudentScholarshipWithCivility::ValidateBirthdayDate,
-    CNOUS::StudentScholarshipWithCivility::ValidateGender,
-    ServiceUser::ValidateUserId
+    CNOUS::StudentScholarshipWithCivility::ValidateGender
 end

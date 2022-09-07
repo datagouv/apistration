@@ -33,9 +33,7 @@ class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulierCo
   end
 
   def organizer_params
-    cnous_student_scholarship_params.merge(
-      user_id: current_user.id
-    )
+    cnous_student_scholarship_params
   end
 
   def cnous_student_scholarship_params
