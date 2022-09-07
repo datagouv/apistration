@@ -13,7 +13,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
 
   let(:family_name) { 'Dupont' }
   let(:first_names) { %w[Jean Charlie] }
-  let(:birthday_date) { '2000-01-01' }
+  let(:birthday_date) { '2000-01-02' }
   let(:gender) { 'M' }
   let(:user_id) { SecureRandom.uuid }
 
@@ -24,11 +24,11 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
       body: {
         lastName: family_name,
         firstNames: 'Jean, Charlie',
-        birthDate: birthday_date,
+        birthDate: '02/01/2000',
         civility: gender
       }.to_json,
       headers: {
-        'Authorization' => "Bearer #{token}",
+        'Authorization' => "Bearer #{token}"
       }
     ).to_return(
       status: 200,

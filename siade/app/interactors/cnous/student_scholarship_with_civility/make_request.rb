@@ -28,7 +28,7 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
   end
 
   def birthday_date
-    context.params[:birthday_date]
+    Date.parse(context.params[:birthday_date]).strftime('%d/%m/%Y')
   end
 
   def birth_place

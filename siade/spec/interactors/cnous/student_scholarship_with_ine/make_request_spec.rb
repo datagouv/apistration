@@ -15,7 +15,7 @@ RSpec.describe CNOUS::StudentScholarshipWithINE::MakeRequest, type: :make_reques
   let!(:stubbed_request) do
     stub_request(:get, "#{Siade.credentials[:cnous_student_scholarship_ine_url]}/#{ine}").with(
       headers: {
-        'Authorization' => "Bearer #{token}",
+        'Authorization' => "Bearer #{token}"
       }
     ).to_return(
       status: 200,
