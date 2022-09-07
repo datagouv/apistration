@@ -101,4 +101,22 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
       its(:enseigne) { is_expected.to eq('DECATHLON DIRECTION GENERALE FRANCE') }
     end
   end
+
+  context 'with a siret which is a personne physique (auto entrepreneur)', vcr: { cassette_name: 'insee/siret/active_AE' } do
+    let(:siret) { sirets_insee_v3[:active_AE] }
+
+    it { is_expected.to be_a_success }
+
+    describe 'resource' do
+      subject(:resource) { organizer.bundled_data.data }
+
+      it { is_expected.to be_a(Resource) }
+
+      # rubocop:disable Naming/VariableNumber
+      it 'has a valid adresse->acheminement_postal->l2, which is nomUniteLegale concatenated with prenom1UniteLegale' do
+        expect(resource.adresse.acheminement_postal[:l2]).to eq('BIDAU ODILE')
+      end
+      # rubocop:enable Naming/VariableNumber
+    end
+  end
 end

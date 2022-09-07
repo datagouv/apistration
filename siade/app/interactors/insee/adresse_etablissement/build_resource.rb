@@ -51,7 +51,7 @@ class INSEE::AdresseEtablissement::BuildResource < INSEE::Etablissement::BuildRe
   def acheminement_postal_denomination_personne_physique
     return '' unless type_of_person == :personne_physique
 
-    [unite_legale['nomUniteLegale'], unite_legale['denominationUsuelle1UniteLegale']].join(' ').squish
+    [unite_legale['nomUniteLegale'], unite_legale['prenom1UniteLegale']].join(' ').squish
   end
 
   def acheminement_postal_voie
