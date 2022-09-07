@@ -1,6 +1,12 @@
 require 'open-uri'
 
 class DGFIP::SVAIR::MakeRequest < MakeRequest::Post
+  def api_call
+    super
+
+    context.response.body.force_encoding('UTF-8')
+  end
+
   def request_uri
     URI('https://cfsmsp.impots.gouv.fr/secavis/faces/commun/index.jsf')
   end
