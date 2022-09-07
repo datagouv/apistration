@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class DGFIP::SVAIR::MakeRequest < MakeRequest::Post
   def request_uri
     URI('https://cfsmsp.impots.gouv.fr/secavis/faces/commun/index.jsf')
