@@ -38,8 +38,8 @@ class APIParticulier::MESRI::StudentStatus::V2 < APIParticulier::V2BaseSerialize
     final_inscription.merge!(
       statut: 'inscrit',
       regime: 'formation initiale',
-      dateDebutInscription: initial_inscription[:dateDebutInscription],
-      dateFinInscription: initial_inscription[:dateFinInscription]
+      dateDebutInscription: format_date(initial_inscription[:dateDebutInscription]),
+      dateFinInscription: format_date(initial_inscription[:dateFinInscription])
     )
   end
 
@@ -49,8 +49,8 @@ class APIParticulier::MESRI::StudentStatus::V2 < APIParticulier::V2BaseSerialize
     final_inscription.merge!(
       statut: 'inscrit',
       regime: 'formation continue',
-      dateDebutInscription: initial_inscription[:dateDebutInscription],
-      dateFinInscription: initial_inscription[:dateFinInscription]
+      dateDebutInscription: format_date(initial_inscription[:dateDebutInscription]),
+      dateFinInscription: format_date(initial_inscription[:dateFinInscription])
     )
   end
 
@@ -60,8 +60,16 @@ class APIParticulier::MESRI::StudentStatus::V2 < APIParticulier::V2BaseSerialize
     final_inscription.merge!(
       statut: 'admis',
       regime: initial_inscription[:regime],
-      dateDebutAdmission: initial_inscription[:dateDebutInscription],
-      dateFinAdmission: initial_inscription[:dateFinInscription]
+      dateDebutAdmission: format_date(initial_inscription[:dateDebutInscription]),
+      dateFinAdmission: format_date(initial_inscription[:dateFinInscription])
     )
+  end
+
+  def format_date(date)
+    if date.blank?
+      date
+    else
+      Date.parse(date).to_s
+    end
   end
 end
