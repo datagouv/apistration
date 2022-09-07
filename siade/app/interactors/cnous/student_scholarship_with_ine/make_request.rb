@@ -4,13 +4,11 @@ class CNOUS::StudentScholarshipWithINE::MakeRequest < MakeRequest::Get
   protected
 
   def request_params
-    {
-      INE: ine_number
-    }
+    {}
   end
 
   def request_uri
-    URI(Siade.credentials[:cnous_student_scholarship_ine_url])
+    URI("#{Siade.credentials[:cnous_student_scholarship_ine_url]}/#{ine_number}")
   end
 
   private

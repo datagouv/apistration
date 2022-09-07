@@ -11,8 +11,7 @@ RSpec.describe CNOUS::StudentScholarshipWithFranceConnect::MakeRequest, type: :m
     stub_request(:get, Siade.credentials[:cnous_student_scholarship_france_connect_url]).with(
       body:,
       headers: {
-        'X-API-Key' => "Bearer #{token}",
-        'X-Caller' => "DINUM - #{user_id}"
+        'Authorization' => "Bearer #{token}",
       }
     )
       .to_return(

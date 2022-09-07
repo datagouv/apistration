@@ -13,13 +13,9 @@ RSpec.describe CNOUS::StudentScholarshipWithINE::MakeRequest, type: :make_reques
   let(:token) { 'dummy_oauth_token' }
 
   let!(:stubbed_request) do
-    stub_request(:get, Siade.credentials[:cnous_student_scholarship_ine_url]).with(
-      query: {
-        INE: ine
-      },
+    stub_request(:get, "#{Siade.credentials[:cnous_student_scholarship_ine_url]}/#{ine}").with(
       headers: {
-        'X-API-Key' => "Bearer #{token}",
-        'X-Caller' => "DINUM - #{user_id}"
+        'Authorization' => "Bearer #{token}",
       }
     ).to_return(
       status: 200,

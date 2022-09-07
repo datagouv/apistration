@@ -28,8 +28,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
         civility: gender
       }.to_json,
       headers: {
-        'X-API-Key' => "Bearer #{token}",
-        'X-Caller' => "DINUM - #{user_id}"
+        'Authorization' => "Bearer #{token}",
       }
     ).to_return(
       status: 200,
