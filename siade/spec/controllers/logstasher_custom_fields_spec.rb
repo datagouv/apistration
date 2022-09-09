@@ -71,6 +71,17 @@ RSpec.describe 'logstasher custom fields', type: :controller do
 
     define_dummy_controller(APIParticulier::DummyController)
 
+    it 'adds api: particulier to logstasher' do
+      expect(LogStasher).to receive(:build_logstash_event).with(
+        hash_including(
+          api: 'particulier'
+        ),
+        anything
+      )
+
+      make_call
+    end
+
     it 'adds retrieved_cached to logstasher' do
       expect(LogStasher).to receive(:build_logstash_event).with(
         hash_including(
@@ -92,6 +103,17 @@ RSpec.describe 'logstasher custom fields', type: :controller do
       end
 
       define_dummy_controller(APIEntreprise::V2::DummyController)
+
+      it 'adds api: entreprise to logstasher' do
+        expect(LogStasher).to receive(:build_logstash_event).with(
+          hash_including(
+            api: 'entreprise'
+          ),
+          anything
+        )
+
+        make_call
+      end
 
       it 'adds retrieved_cached to logstasher' do
         expect(LogStasher).to receive(:build_logstash_event).with(
@@ -125,6 +147,17 @@ RSpec.describe 'logstasher custom fields', type: :controller do
       end
 
       define_dummy_controller(APIEntreprise::V3AndMore::DummyController)
+
+      it 'adds api: entreprise to logstasher' do
+        expect(LogStasher).to receive(:build_logstash_event).with(
+          hash_including(
+            api: 'entreprise'
+          ),
+          anything
+        )
+
+        make_call
+      end
 
       it 'adds retrieved_cached to logstasher' do
         expect(LogStasher).to receive(:build_logstash_event).with(
