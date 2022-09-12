@@ -20,7 +20,7 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
     it { is_expected.to be_a_success }
 
     describe 'resource' do
-      subject { organizer.bundled_data.data }
+      subject(:resource) { organizer.bundled_data.data }
 
       it { is_expected.to be_a(Resource) }
 
@@ -114,6 +114,14 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
 
       it 'has a valid adresse->acheminement_postal->l2, which is nomUniteLegale concatenated with prenom1UniteLegale' do
         expect(resource.adresse.acheminement_postal[:l2]).to eq('BIDAU ODILE')
+      end
+
+      describe 'non-regression test: when there is no code cedex' do
+        it 'has a valid adresse->acheminement_postal->l6, which includes postal code (and not commune code)' do
+          expect(resource.adresse.acheminement_postal[:l6]).not_to include('71129')
+
+          expect(resource.adresse.acheminement_postal[:l6]).to include('71540')
+        end
       end
     end
   end

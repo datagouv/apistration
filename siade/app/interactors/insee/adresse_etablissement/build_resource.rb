@@ -67,7 +67,7 @@ class INSEE::AdresseEtablissement::BuildResource < INSEE::Etablissement::BuildRe
     elsif etablissement_address['codePaysEtrangerEtablissement']
       etablissement_address['libelleCommuneEtrangerEtablissement']
     else
-      [etablissement_address['codeCommuneEtablissement'], etablissement_address['libelleCommuneEtablissement']].join(' ')
+      [etablissement_address['codePostalEtablissement'], etablissement_address['libelleCommuneEtablissement']].join(' ')
     end
   end
 
