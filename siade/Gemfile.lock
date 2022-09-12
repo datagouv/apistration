@@ -64,6 +64,7 @@ GEM
     colorize (0.8.1)
     commonmarker (0.23.4)
     concurrent-ruby (1.1.10)
+    connection_pool (2.2.5)
     crack (0.4.5)
       rexml
     crass (1.0.6)
@@ -222,7 +223,10 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rb-readline (0.5.5)
-    redis (4.8.0)
+    redis (5.0.4)
+      redis-client (>= 0.7.4)
+    redis-client (0.8.0)
+      connection_pool
     regexp_parser (2.5.0)
     request_store (1.5.0)
       rack (>= 1.4)
