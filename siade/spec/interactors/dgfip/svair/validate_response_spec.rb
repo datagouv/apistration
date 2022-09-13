@@ -28,6 +28,15 @@ RSpec.describe DGFIP::SVAIR::ValidateResponse, type: :validate_response do
         its(:cacheable) { is_expected.to be(false) }
 
         its(:errors) { is_expected.to include(instance_of(DGFIPSVAIRAccessDeniedError)) }
+
+        it 'captures error in monitoring' do
+          expect(MonitoringService.instance).to receive(:track).with(
+            'error',
+            anything
+          )
+
+          call
+        end
       end
 
       context 'with a body which is a not found result' do

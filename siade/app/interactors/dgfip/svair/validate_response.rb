@@ -21,10 +21,18 @@ class DGFIP::SVAIR::ValidateResponse < ValidateResponse
   end
 
   def access_denied!
+    track_access_denied
     fail_with_error!(DGFIPSVAIRAccessDeniedError.new)
   end
 
   def html_nodes
     @html_nodes ||= Nokogiri.XML(response.body)
+  end
+
+  def track_access_denied
+    MonitoringService.instance.track(
+      'error',
+      'DGFIP SVAIR: access denied'
+    )
   end
 end
