@@ -8,7 +8,7 @@ RSpec.describe PoleEmploi::Statut::BuildResource, type: :build_resource do
   end
 
   let(:identifiant) { 'whatever' }
-  let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/pole_emploi_statut_valid_payload.json')) }
+  let(:body) { Rails.root.join('spec/fixtures/payloads/pole_emploi_statut_valid_payload.json').read }
 
   it { is_expected.to be_a_success }
 

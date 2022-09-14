@@ -14,7 +14,7 @@ RSpec.describe APIParticulier::MESRI::StudentStatus::V2, type: :serializer do
     let(:scopes) { all_scopes }
 
     context 'when resource has inscrit status' do
-      let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_ine_valid_response.json')) }
+      let(:body) { Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_ine_valid_response.json').read }
 
       # rubocop:disable RSpec/IteratedExpectation
       it 'has dateDebutInscription and dateFinInscription in inscriptions items' do
@@ -27,7 +27,7 @@ RSpec.describe APIParticulier::MESRI::StudentStatus::V2, type: :serializer do
     end
 
     context 'when resource has admis status' do
-      let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_ine_valid_response_with_admis_statut.json')) }
+      let(:body) { Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_ine_valid_response_with_admis_statut.json').read }
 
       # rubocop:disable RSpec/IteratedExpectation
       it 'has dateDebutAdmission and dateFinAdmission in inscriptions items' do

@@ -22,7 +22,7 @@ RSpec.describe PoleEmploi::Statut::MakeRequest, type: :make_request do
       }
     ).to_return(
       status: 200,
-      body: File.read(Rails.root.join('spec/fixtures/payloads/pole_emploi_statut_valid_payload.json'))
+      body: Rails.root.join('spec/fixtures/payloads/pole_emploi_statut_valid_payload.json').read
     )
   end
 

@@ -24,7 +24,7 @@ RSpec.describe MESRI::StudentStatusWithCivility, type: :retriever_organizer do
       before do
         stub_request(:post, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
           status: 200,
-          body: File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_civility_valid_response.json'))
+          body: Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_civility_valid_response.json').read
         )
       end
 

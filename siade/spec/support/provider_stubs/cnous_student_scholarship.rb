@@ -6,7 +6,7 @@ module ProviderStubs::CNOUSStudentScholarship
 
     stub_request(method, /#{cnous_url_for(endpoint)}/).to_return(
       status: 200,
-      body: File.read(Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_valid_response.json'))
+      body: Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_valid_response.json').read
     )
   end
 

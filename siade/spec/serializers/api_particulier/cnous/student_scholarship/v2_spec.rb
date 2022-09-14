@@ -5,7 +5,7 @@ RSpec.describe APIParticulier::CNOUS::StudentScholarship::V2, type: :serializer 
 
   let(:resource) { CNOUS::BuildResource.call(response:).bundled_data.data }
   let(:response) { OpenStruct.new(body:) } # rubocop:disable Style/OpenStructUse
-  let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_valid_response.json')) }
+  let(:body) { Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_valid_response.json').read }
 
   let(:all_scopes) { %w[cnous_identite cnous_email cnous_statut_boursier cnous_echelon_bourse cnous_statut_bourse cnous_periode_versement cnous_ville_etudes] }
 

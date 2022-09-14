@@ -31,7 +31,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_reques
       }
     ).to_return(
       status: 200,
-      body: File.read(Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_civility_valid_response.json'))
+      body: Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_civility_valid_response.json').read
     )
   end
 

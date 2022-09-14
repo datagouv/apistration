@@ -21,7 +21,7 @@ RSpec.describe DGFIP::SVAIR::ValidateResponse, type: :validate_response do
       let(:code) { '200' }
 
       context 'with a body which is a access denied' do
-        let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/dgfip-svair-access-denied.html')) }
+        let(:body) { Rails.root.join('spec/fixtures/payloads/dgfip-svair-access-denied.html').read }
 
         it { is_expected.to be_a_failure }
 
@@ -40,7 +40,7 @@ RSpec.describe DGFIP::SVAIR::ValidateResponse, type: :validate_response do
       end
 
       context 'with a body which is a not found result' do
-        let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/dgfip-svair-not-found.html')) }
+        let(:body) { Rails.root.join('spec/fixtures/payloads/dgfip-svair-not-found.html').read }
 
         it { is_expected.to be_a_failure }
 
@@ -50,7 +50,7 @@ RSpec.describe DGFIP::SVAIR::ValidateResponse, type: :validate_response do
       end
 
       context 'with a body which is a valid response' do
-        let(:body) { File.read(Rails.root.join('spec/fixtures/payloads/dgfip-svair-valid-response-one-declarant.html')) }
+        let(:body) { Rails.root.join('spec/fixtures/payloads/dgfip-svair-valid-response-one-declarant.html').read }
 
         it { is_expected.to be_a_success }
 

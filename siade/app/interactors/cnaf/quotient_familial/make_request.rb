@@ -25,12 +25,12 @@ class CNAF::QuotientFamilial::MakeRequest < MakeRequest::Post
   private
 
   def ssl_certificate_key
-    raw_key = File.read(Rails.root.join(Siade.credentials[:cnaf_quotient_familial_certificate_key_path]))
+    raw_key = Rails.root.join(Siade.credentials[:cnaf_quotient_familial_certificate_key_path]).read
     OpenSSL::PKey::RSA.new(raw_key)
   end
 
   def ssl_certificate
-    raw_cert = File.read(Rails.root.join(Siade.credentials[:cnaf_quotient_familial_certificate_path]))
+    raw_cert = Rails.root.join(Siade.credentials[:cnaf_quotient_familial_certificate_path]).read
     OpenSSL::X509::Certificate.new(raw_cert)
   end
 

@@ -10,10 +10,8 @@ module ProviderStubs::Infogreffe
   private
 
   def extract_infogreffe_payload_template_path(kind)
-    File.read(
-      Rails.root.join(
+    Rails.root.join(
         "spec/fixtures/payloads/infogreffe_#{kind}.xml.erb"
-      )
-    )
+      ).read
   end
 end

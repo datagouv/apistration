@@ -23,7 +23,7 @@ RSpec.describe DGFIP::SVAIR::MakeRequest, type: :make_request do
         }
       ).to_return(
         status: 200,
-        body: File.read(Rails.root.join('spec/fixtures/payloads/dgfip-svair-valid-response-one-declarant.html'))
+        body: Rails.root.join('spec/fixtures/payloads/dgfip-svair-valid-response-one-declarant.html').read
       )
     end
 

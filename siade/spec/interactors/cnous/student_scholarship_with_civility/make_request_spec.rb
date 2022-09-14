@@ -32,7 +32,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
       }
     ).to_return(
       status: 200,
-      body: File.read(Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_valid_response.json'))
+      body: Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_valid_response.json').read
     )
   end
 

@@ -11,7 +11,7 @@ RSpec.describe APIParticulier::V2::PoleEmploi::StatutController, type: :controll
     before do
       stub_request(:post, Siade.credentials[:pole_emploi_status_url]).and_return(
         status: 200,
-        body: File.read(Rails.root.join('spec/fixtures/payloads/pole_emploi_statut_valid_payload.json'))
+        body: Rails.root.join('spec/fixtures/payloads/pole_emploi_statut_valid_payload.json').read
       )
     end
 
@@ -50,7 +50,7 @@ RSpec.describe APIParticulier::V2::PoleEmploi::StatutController, type: :controll
     before do
       stub_request(:post, Siade.credentials[:pole_emploi_status_url]).and_return(
         status: 404,
-        body: File.read(Rails.root.join('spec/fixtures/payloads/pole_emploi_statut_not_found_payload.json'))
+        body: Rails.root.join('spec/fixtures/payloads/pole_emploi_statut_not_found_payload.json').read
       )
     end
 

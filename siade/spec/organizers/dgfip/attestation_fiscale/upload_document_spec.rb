@@ -4,7 +4,7 @@ RSpec.describe DGFIP::AttestationFiscale::UploadDocument, :self_hosted_doc do
 
     let(:response) { instance_double(Net::HTTPOK, code:, body:) }
     let(:code) { 200 }
-    let(:body) { File.read(Rails.root.join('spec/support/dgfip_attestations_fiscales/basic.pdf')) }
+    let(:body) { Rails.root.join('spec/support/dgfip_attestations_fiscales/basic.pdf').read }
 
     it { is_expected.to be_success }
 

@@ -35,7 +35,7 @@ module ProviderStubs::DGFIP
 
     stub_request(:post, 'https://cfsmsp.impots.gouv.fr/secavis/faces/commun/index.jsf').to_return(
       status: 200,
-      body: File.read(Rails.root.join('spec/fixtures/payloads/dgfip-svair-valid-response-one-declarant.html'))
+      body: Rails.root.join('spec/fixtures/payloads/dgfip-svair-valid-response-one-declarant.html').read
     )
   end
 
@@ -44,7 +44,7 @@ module ProviderStubs::DGFIP
 
     stub_request(:post, 'https://cfsmsp.impots.gouv.fr/secavis/faces/commun/index.jsf').to_return(
       status: 200,
-      body: File.read(Rails.root.join('spec/fixtures/payloads/dgfip-svair-not-found.html'))
+      body: Rails.root.join('spec/fixtures/payloads/dgfip-svair-not-found.html').read
     )
   end
 
@@ -59,23 +59,19 @@ module ProviderStubs::DGFIP
 
   def extract_dgfip_liasses_fiscales_payload(name)
     JSON.parse(
-      File.read(
-        Rails.root.join(
+      Rails.root.join(
           "spec/fixtures/payloads/#{name}.json"
-        )
-      )
+        ).read
     )
   end
 
   private
 
   def extract_valid_dgfip_attestation_fiscale_pdf(siren_is, siren_tva)
-    File.read(
-      Rails.root.join(
-        'spec/support/dgfip_attestations_fiscales',
-        extract_valid_dgfip_attestation_fiscale_pdf_name(siren_is, siren_tva)
-      )
-    )
+    Rails.root.join(
+      'spec/support/dgfip_attestations_fiscales',
+      extract_valid_dgfip_attestation_fiscale_pdf_name(siren_is, siren_tva)
+    ).read
   end
 
   def build_dgfip_attestation_fiscale_query_params(siren, user_id)
