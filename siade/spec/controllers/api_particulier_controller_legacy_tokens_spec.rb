@@ -25,6 +25,7 @@ RSpec.describe APIParticulierController, 'legacy tokens', type: :controller do
 
   before do
     allow(LogStasher).to receive(:build_logstash_event)
+    allow(MonitoringService.instance).to receive(:track)
   end
 
   context 'without any token' do
@@ -38,6 +39,74 @@ RSpec.describe APIParticulierController, 'legacy tokens', type: :controller do
 
     its(:body) do
       is_expected.to include('access_denied')
+    end
+
+    it 'does not track invalid token' do
+      make_call
+
+      expect(MonitoringService.instance).not_to have_received(:track).with(
+        'error',
+        'Invalid token but legit format for legacy token',
+        anything
+      )
+    end
+  end
+
+  context 'with invalid token value which can be a legacy token, but not registered in the backend' do
+    let(:token) { 'a' * 60 }
+
+    context 'when it is in query params' do
+      subject(:make_call) do
+        routes.draw { get 'show' => 'api_particulier#show' }
+
+        get :show, params: { token: }
+      end
+
+      its(:status) { is_expected.to eq(401) }
+
+      its(:body) do
+        is_expected.to include('access_denied')
+      end
+
+      it 'tracks invalid token (for debugging purpose)' do
+        make_call
+
+        expect(MonitoringService.instance).to have_received(:track).with(
+          'error',
+          'Invalid token but legit format for legacy token',
+          {
+            legacy_token_value: token
+          }
+        )
+      end
+    end
+
+    context 'when it is in header' do
+      subject(:make_call) do
+        routes.draw { get 'show' => 'api_particulier#show' }
+
+        request.headers['X-Api-Key'] = token
+
+        get :show
+      end
+
+      its(:status) { is_expected.to eq(401) }
+
+      its(:body) do
+        is_expected.to include('access_denied')
+      end
+
+      it 'tracks invalid token (for debugging purpose)' do
+        make_call
+
+        expect(MonitoringService.instance).to have_received(:track).with(
+          'error',
+          'Invalid token but legit format for legacy token',
+          {
+            legacy_token_value: token
+          }
+        )
+      end
     end
   end
 
@@ -122,6 +191,16 @@ RSpec.describe APIParticulierController, 'legacy tokens', type: :controller do
         its(:body) do
           is_expected.to include('access_denied')
         end
+
+        it 'does not track invalid token (because it is a valid one)' do
+          make_call
+
+          expect(MonitoringService.instance).not_to have_received(:track).with(
+            'error',
+            'Invalid token but legit format for legacy token',
+            anything
+          )
+        end
       end
 
       describe 'with multiple valid scopes' do
@@ -155,6 +234,16 @@ RSpec.describe APIParticulierController, 'legacy tokens', type: :controller do
         let(:token) { TokenFactory.new(['scope1']).valid }
 
         its(:status) { is_expected.to eq(401) }
+
+        it 'does not track invalid token (because it is a valid one)' do
+          make_call
+
+          expect(MonitoringService.instance).not_to have_received(:track).with(
+            'error',
+            'Invalid token but legit format for legacy token',
+            anything
+          )
+        end
       end
     end
 
