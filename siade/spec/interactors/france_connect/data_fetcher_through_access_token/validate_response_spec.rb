@@ -63,7 +63,7 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken::ValidateResponse, t
 
       let(:body) { france_connect_checktoken_payload(scopes:).to_json }
 
-      context 'when scope includes identite_pivoti nor profile or birth' do
+      context 'when scope includes identite_pivot nor profile or birth' do
         let(:scopes) { %w[openid identite_pivot] }
 
         it { is_expected.to be_a_success }
