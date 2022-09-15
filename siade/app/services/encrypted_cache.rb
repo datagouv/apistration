@@ -12,6 +12,10 @@ class EncryptedCache
     instance.write(key, value, options)
   end
 
+  def self.expires_in(key)
+    instance.expires_in(key)
+  end
+
   def read(key)
     cached_value = cache.read(key)
 
@@ -22,6 +26,14 @@ class EncryptedCache
     write(key, nil)
 
     nil
+  end
+
+  def expires_in(key)
+    ttl = cache.redis.ttl(key)
+
+    return if ttl.negative?
+
+    ttl
   end
 
   def write(key, value, options = {})

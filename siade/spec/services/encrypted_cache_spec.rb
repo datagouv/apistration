@@ -97,4 +97,30 @@ RSpec.describe EncryptedCache, type: :service do
       end
     end
   end
+
+  describe '.expires_in' do
+    subject { described_class.expires_in(key) }
+
+    let(:key) { 'key' }
+
+    context 'when key does not exist' do
+      it { is_expected.to be_nil }
+    end
+
+    context 'when key exists but has no expiration sets' do
+      before do
+        described_class.write(key, 'whatever')
+      end
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'when key exists and has an expiration sets' do
+      before do
+        described_class.write(key, 'whatever', expires_in: 9001)
+      end
+
+      it { is_expected.to be_within(10).of(9000) }
+    end
+  end
 end
