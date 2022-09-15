@@ -4,14 +4,14 @@ module ProviderStubs::FranceConnect
   def mock_valid_france_connect_checktoken(scopes: nil)
     scopes ||= minimal_france_connect_scopes
 
-    stub_request(:post, Siade.credentials[:france_connect_check_token_url]).to_return(
+    stub_request(:post, Siade.credentials[:france_connect_sandbox_check_token_url]).to_return(
       status: 200,
       body: france_connect_checktoken_payload(scopes:).to_json
     )
   end
 
   def mock_invalid_france_connect_checktoken
-    stub_request(:post, Siade.credentials[:france_connect_check_token_url]).to_return(
+    stub_request(:post, Siade.credentials[:france_connect_sandbox_check_token_url]).to_return(
       status: 401,
       body: {
         status: 'fail',

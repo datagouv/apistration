@@ -10,7 +10,7 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken::MakeRequest, type: 
   let(:token) { 'token' }
 
   let!(:stubbed_request) do
-    stub_request(:post, Siade.credentials[:france_connect_check_token_url]).with(
+    stub_request(:post, Siade.credentials[:france_connect_sandbox_check_token_url]).with(
       body: {
         token:
       }.to_json
