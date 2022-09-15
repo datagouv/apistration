@@ -21,6 +21,10 @@ module ResourceHelpers
     http_code == 401
   end
 
+  def http_internal_error?
+    http_code == 500
+  end
+
   delegate :body, to: :response
 
   def json_body

@@ -6,6 +6,8 @@ class INSEE::UniteLegale::ValidateResponse < ValidateResponse
       resource_not_found!
     elsif http_forbidden?
       fail_with_error!(build_error(::UnavailableForLegalReasonsError, unavailable_for_legal_reason_message))
+    elsif http_internal_error?
+      provider_internal_error!
     else
       unknown_provider_response!
     end
