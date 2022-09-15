@@ -299,4 +299,4 @@
   detail: "Le jeton d'accès n'a pas été trouvé ou est expiré."
 
 - code: '50003'
-  detail: "Le jeton d'accès ne possède pas les données pivot requis pour effectuer cet appel."
+  detail: "Le jeton d'accès ne possède pas les données pivot requises pour effectuer cet appel."

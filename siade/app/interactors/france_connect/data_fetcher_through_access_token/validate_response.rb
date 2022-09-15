@@ -1,8 +1,8 @@
 class FranceConnect::DataFetcherThroughAccessToken::ValidateResponse < ValidateResponse
   def call
-    unknown_provider_response! if invalid_json?
-
     handle_unauthorized if http_unauthorized?
+    unknown_provider_response! if invalid_json?
+    fail_for_insufficient_privileges! unless scopes_include_hub_identity?
 
     return if http_ok? && scopes_include_hub_identity?
 
@@ -12,7 +12,8 @@ class FranceConnect::DataFetcherThroughAccessToken::ValidateResponse < ValidateR
   private
 
   def scopes_include_hub_identity?
-    (hub_identity_scopes - scopes_flatten_without_aliases).empty?
+    json_body['scope'].present? &&
+      (hub_identity_scopes - scopes_flatten_without_aliases).empty?
   end
 
   def handle_unauthorized
@@ -26,14 +27,20 @@ class FranceConnect::DataFetcherThroughAccessToken::ValidateResponse < ValidateR
     end
   end
 
+  def fail_for_insufficient_privileges!
+    fail_with_error!(InvalidFranceConnectAccessTokenError.new(:missing_hub_identity_scope, scopes: json_body['scope']))
+  end
+
   def scopes_flatten_without_aliases
-    scopes = json_body['scope'].dup
+    @scopes_flatten_without_aliases ||= begin
+      scopes = json_body['scope'].dup
 
-    replace_scopes(scopes, 'identite_pivot', %w[profile birth])
-    replace_scopes(scopes, 'profile', %w[given_name family_name birthdate gender])
-    replace_scopes(scopes, 'birth', %w[birthplace birthcountry])
+      replace_scopes(scopes, 'identite_pivot', %w[profile birth])
+      replace_scopes(scopes, 'profile', %w[given_name family_name birthdate gender])
+      replace_scopes(scopes, 'birth', %w[birthplace birthcountry])
 
-    scopes
+      scopes
+    end
   end
 
   def replace_scopes(scopes, from_scope, to_scopes)
