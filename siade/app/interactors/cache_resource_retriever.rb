@@ -39,6 +39,7 @@ class CacheResourceRetriever < ApplicationInteractor
     return unless (context.cached_data = EncryptedCache.read(cache_key))
 
     context.from_cache = true
+    context.expires_in = EncryptedCache.expires_in(cache_key)
 
     wrap_cache_data_in_context!
   end

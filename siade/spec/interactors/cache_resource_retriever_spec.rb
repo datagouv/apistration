@@ -19,7 +19,7 @@ RSpec.describe CacheResourceRetriever do
   context 'when data had been cached' do
     context 'when bundled data had been cached' do
       before do
-        EncryptedCache.write(cache_key, { bundled_data: cached_data })
+        EncryptedCache.write(cache_key, { bundled_data: cached_data }, expires_in: 9000)
       end
 
       let(:cached_data) do
@@ -27,7 +27,9 @@ RSpec.describe CacheResourceRetriever do
       end
 
       it { is_expected.to be_a_success }
+
       its(:from_cache) { is_expected.to be(true) }
+      its(:expires_in) { is_expected.to be_an_instance_of(Integer) }
 
       it 'returns the cached data' do
         expect(subject.bundled_data).to have_attributes({
@@ -49,13 +51,15 @@ RSpec.describe CacheResourceRetriever do
 
     context 'when errors had been cached' do
       before do
-        EncryptedCache.write(cache_key, { errors: cached_errors })
+        EncryptedCache.write(cache_key, { errors: cached_errors }, expires_in: 9000)
       end
 
       let(:cached_errors) { [BadRequestError.new('so bad')] }
 
       it { is_expected.to be_a_failure }
+
       its(:from_cache) { is_expected.to be(true) }
+      its(:expires_in) { is_expected.to be_an_instance_of(Integer) }
 
       it 'returns the cached errors' do
         expect(subject.errors.map(&:to_h)).to eq(cached_errors.map(&:to_h))
@@ -95,7 +99,9 @@ RSpec.describe CacheResourceRetriever do
       let(:bundled_data) { BundledData.new(data: 'wow data', context: { so: 'meta' }) }
 
       it { is_expected.to be_a_success }
+
       its(:from_cache) { is_expected.to be(false) }
+      its(:expires_in) { is_expected.to be_nil }
 
       its(:errors) { is_expected.to eq([]) }
 
@@ -175,7 +181,9 @@ RSpec.describe CacheResourceRetriever do
         let(:cacheable) { true }
 
         it { is_expected.to be_a_failure }
+
         its(:from_cache) { is_expected.to be(false) }
+        its(:expires_in) { is_expected.to be_nil }
 
         it 'writes the errors in the cache' do
           subject
@@ -231,7 +239,9 @@ RSpec.describe CacheResourceRetriever do
         let(:cacheable) { false }
 
         it { is_expected.to be_a_failure }
+
         its(:from_cache) { is_expected.to be(false) }
+        its(:expires_in) { is_expected.to be_nil }
 
         it 'does not writes the error in the cache' do
           subject
