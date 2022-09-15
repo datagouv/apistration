@@ -212,6 +212,12 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController, type: :controller do
           call!
         end
 
+        it 'renders X-Response-cached header as false' do
+          call!
+
+          expect(response.headers['X-Response-Cached']).to be(false)
+        end
+
         it 'calls the retriever directly with parameters' do
           expect(DummyRetrieverOrganizer)
             .to receive(:call)
@@ -222,6 +228,18 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController, type: :controller do
       end
 
       context 'without the Cache-Control: no-cache request header' do
+        let(:cache_resource_retriever) { double('cache_resource_retriever', from_cache: true) }
+
+        before do
+          allow(CacheResourceRetriever).to receive(:call).and_return(cache_resource_retriever)
+        end
+
+        it 'renders X-Response-cached header as true' do
+          call!
+
+          expect(response.headers['X-Response-Cached']).to be(true)
+        end
+
         it 'calls CacheResourceRetriever with parameters' do
           expect(CacheResourceRetriever)
             .to receive(:call)
@@ -254,6 +272,12 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController, type: :controller do
         def serializer_module
           APIEntreprise::DummyResourceSerializer
         end
+      end
+
+      it 'renders X-Response-cached header as false' do
+        call!
+
+        expect(response.headers['X-Response-Cached']).to be(false)
       end
 
       it 'does not call CacheResourceRetriever' do
