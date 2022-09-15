@@ -7,6 +7,8 @@ RSpec.describe 'DGFIP: Attestation fiscale', type: %i[request swagger], api: :en
 
       parameter_siren
 
+      cacheable_request
+
       common_action_attributes
 
       unauthorized_request do
@@ -25,6 +27,8 @@ RSpec.describe 'DGFIP: Attestation fiscale', type: %i[request swagger], api: :en
             mock_dgfip_authenticate
             mock_valid_dgfip_attestation_fiscale(siren, valid_dgfip_user_id)
           end
+
+          cacheable_response
 
           description SwaggerData.get('dgfip.attestations_fiscales.description')
 

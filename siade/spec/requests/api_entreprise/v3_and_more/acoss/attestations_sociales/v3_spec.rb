@@ -7,6 +7,8 @@ RSpec.describe 'URSSAF: Attestation de vigilance', type: %i[request swagger], ap
 
       parameter_siren
 
+      cacheable_request
+
       common_action_attributes
 
       unauthorized_request do
@@ -19,6 +21,8 @@ RSpec.describe 'URSSAF: Attestation de vigilance', type: %i[request swagger], ap
 
       describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entreprise found', vcr: { cassette_name: 'acoss/with_valid_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body_sanitized) } do
+          cacheable_response
+
           description SwaggerData.get('acoss.attestation_sociale.description')
 
           rate_limit_headers

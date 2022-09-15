@@ -26,6 +26,28 @@ module RSWagCommonsResponses
     security [jwt_bearer_token: []]
   end
 
+  # rubocop:disable RSpec/VariableName
+  def cacheable_request
+    parameter name: 'Cache-Control',
+      in: :header,
+      type: :string,
+      description: SwaggerData.get('parameters.header.cache_control.description')
+
+    let(:'Cache-Control') { '' }
+  end
+  # rubocop:enable RSpec/VariableName
+
+  def cacheable_response
+    header 'X-Response-Cached',
+      schema: {
+        type: :boolean,
+        example: true,
+        enum: [true, false],
+        default: false
+      },
+      description: SwaggerData.get('response.headers.x_response_cached.description')
+  end
+
   def parameter_siren
     parameter name: :siren,
       in: :path,

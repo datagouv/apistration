@@ -1,4 +1,11 @@
+response:
+  headers:
+    x_response_cached:
+      description: "Indique si la réponse a été caché"
 parameters:
+  header:
+    cache_control:
+      description: 'Si cette valeur est fixée à "no-cache", le système de cache est alors ignoré et la donnée est directement récupérée depuis le fournisseur de données.'
   siren:
     description: "Siren de l'entreprise"
     examples:
