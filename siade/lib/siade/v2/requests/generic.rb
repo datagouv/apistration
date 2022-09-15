@@ -180,7 +180,7 @@ class SIADE::V2::Requests::Generic
     yield
   rescue RestClient::ResourceNotFound
     @response = SIADE::V2::Responses::ResourceNotFound.new(provider_name)
-  rescue RestClient::InternalServerError => e
+  rescue RestClient::InternalServerError, RestClient::ServerBrokeConnection => e
     @response = SIADE::V2::Responses::InternalServerError.new(provider_name, e)
   rescue RestClient::RequestTimeout => e
     @response = SIADE::V2::Responses::TimeoutError.new(provider_name, e)

@@ -61,6 +61,24 @@ RSpec.describe SIADE::V2::Requests::Generic do
         end
       end
 
+      context 'for RestClient::ServerBrokeConnection (network error)' do
+        before do
+          allow_any_instance_of(RestClient::Resource).to receive(:get).and_raise(RestClient::ServerBrokeConnection)
+        end
+
+        its(:http_code) { is_expected.to eq 502 }
+        its(:response) { is_expected.to be_a SIADE::V2::Responses::InternalServerError }
+
+        it 'tracks provider error in monitoring service' do
+          expect(MonitoringService.instance).to receive(:track_provider_error_from_response).with(
+            an_instance_of(SIADE::V2::Responses::InternalServerError),
+            anything
+          )
+
+          subject
+        end
+      end
+
       context 'for RestClient::Forbidden (403)' do
         before do
           allow_any_instance_of(RestClient::Resource).to receive(:get).and_raise(RestClient::Forbidden)
