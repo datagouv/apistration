@@ -30,6 +30,7 @@ module Cacheable
 
   def mark_response_as_cached_in_response!
     response.headers['X-Response-Cached'] = @cached_retriever.from_cache
+    response.headers['X-Cache-Expires-in'] = @cached_retriever.expires_in || 0
   end
 
   def init_x_response_cached_header

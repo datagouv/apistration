@@ -216,6 +216,7 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController, type: :controller do
           call!
 
           expect(response.headers['X-Response-Cached']).to be(false)
+          expect(response.headers['X-Cache-Expires-in']).to be_nil
         end
 
         it 'calls the retriever directly with parameters' do
@@ -228,7 +229,7 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController, type: :controller do
       end
 
       context 'without the Cache-Control: no-cache request header' do
-        let(:cache_resource_retriever) { double('cache_resource_retriever', from_cache: true) }
+        let(:cache_resource_retriever) { double('cache_resource_retriever', from_cache: true, expires_in: 9001) }
 
         before do
           allow(CacheResourceRetriever).to receive(:call).and_return(cache_resource_retriever)
@@ -238,6 +239,7 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController, type: :controller do
           call!
 
           expect(response.headers['X-Response-Cached']).to be(true)
+          expect(response.headers['X-Cache-Expires-in']).to be_an_instance_of(Integer)
         end
 
         it 'calls CacheResourceRetriever with parameters' do
@@ -278,6 +280,7 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController, type: :controller do
         call!
 
         expect(response.headers['X-Response-Cached']).to be(false)
+        expect(response.headers['X-Cache-Expires-in']).to be_nil
       end
 
       it 'does not call CacheResourceRetriever' do

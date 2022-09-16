@@ -46,6 +46,13 @@ module RSWagCommonsResponses
         default: false
       },
       description: SwaggerData.get('response.headers.x_response_cached.description')
+
+    header 'X-Cache-Expires-in',
+      schema: {
+        type: :numeric,
+        example: 9001
+      },
+      description: SwaggerData.get('response.headers.x_cache_expires_in.description')
   end
 
   def parameter_siren

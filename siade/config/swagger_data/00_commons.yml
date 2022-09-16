@@ -2,6 +2,8 @@ response:
   headers:
     x_response_cached:
       description: "Indique si la réponse a été caché"
+    x_cache_expires_in:
+      description: "Secondes avant que le cache n'expire. Si le cache est vide, ce header à 0."
 parameters:
   header:
     cache_control:
