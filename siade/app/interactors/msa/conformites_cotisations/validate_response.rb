@@ -2,12 +2,14 @@ class MSA::ConformitesCotisations::ValidateResponse < ValidateResponse
   class InvalidStatus < StandardError; end
 
   def call
-    if !http_ok?
-      unknown_provider_response!
-    elsif status == :unknown
-      resource_not_found!(:siret)
-    end
-  rescue InvalidStatus
+    resource_not_found!(:siret) if http_ok? && status == :unknown
+
+    return if http_ok?
+
+    invalid_provider_response! if bad_gateway_in_response? || timeout_in_response?
+
+    unknown_provider_response!
+  rescue InvalidStatus, JSON::ParserError
     unknown_provider_response!
   end
 
@@ -26,5 +28,13 @@ class MSA::ConformitesCotisations::ValidateResponse < ValidateResponse
     else
       raise InvalidStatus
     end
+  end
+
+  def bad_gateway_in_response?
+    json_body['Erreur'] && json_body['Erreur']['Message'] == '502 Bad Gateway'
+  end
+
+  def timeout_in_response?
+    json_body['Erreur'] && json_body['Erreur']['Message'] == '504 Gateway Timeout'
   end
 end

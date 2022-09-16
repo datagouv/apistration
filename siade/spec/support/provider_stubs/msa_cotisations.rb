@@ -17,6 +17,24 @@ module ProviderStubs::MSACotisations
     }
   end
 
+  def msa_gateway_timeout_payload
+    {
+      Erreur: {
+        Code: 'soap:Server',
+        Message: '504 Gateway Timeout'
+      }
+    }.to_json
+  end
+
+  def msa_bad_gateway_payload
+    {
+      Erreur: {
+        Code: 'soap:Server',
+        Message: '502 Bad Gateway'
+      }
+    }.to_json
+  end
+
   private
 
   def status_to_letter(status, allow_another_status)

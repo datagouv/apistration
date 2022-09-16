@@ -30,10 +30,30 @@ RSpec.describe MSA::ConformitesCotisations::ValidateResponse, type: :validate_re
   end
 
   context 'when it is an another response' do
-    let(:response) { instance_double(Net::HTTPBadGateway, code: '502') }
+    let(:response) { instance_double(Net::HTTPBadGateway, code: '502', body:) }
 
-    it { is_expected.to be_a_failure }
+    context 'when body contains a 502 Bad Gateway error' do
+      let(:body) { msa_bad_gateway_payload }
 
-    its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+    end
+
+    context 'when body contains a 504 Gateway Timeout error' do
+      let(:body) { msa_gateway_timeout_payload }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+    end
+
+    context 'when body contains something else' do
+      let(:body) { 'whatever' }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+    end
   end
 end
