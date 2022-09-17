@@ -241,7 +241,7 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController, type: :controller do
           call!
 
           expect(response.headers['X-Response-Cached']).to be(true)
-          expect(response.headers['X-Cache-Expires-in']).to be_an_instance_of(Integer)
+          expect(response.headers['X-Cache-Expires-in']).to be_within(10).of(9000)
         end
 
         it 'calls CacheResourceRetriever with parameters' do

@@ -29,7 +29,7 @@ RSpec.describe CacheResourceRetriever do
       it { is_expected.to be_a_success }
 
       its(:from_cache) { is_expected.to be(true) }
-      its(:expires_in) { is_expected.to be_an_instance_of(Integer) }
+      its(:expires_in) { is_expected.to be_within(10).of(9000) }
 
       it 'returns the cached data' do
         expect(subject.bundled_data).to have_attributes({
@@ -59,7 +59,7 @@ RSpec.describe CacheResourceRetriever do
       it { is_expected.to be_a_failure }
 
       its(:from_cache) { is_expected.to be(true) }
-      its(:expires_in) { is_expected.to be_an_instance_of(Integer) }
+      its(:expires_in) { is_expected.to be_within(10).of(9000) }
 
       it 'returns the cached errors' do
         expect(subject.errors.map(&:to_h)).to eq(cached_errors.map(&:to_h))
