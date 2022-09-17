@@ -193,13 +193,14 @@ paths:
                 - true
                 - false
                 default: false
-              description: Indique si la réponse a été caché
+              description: Indique si la réponse a été caché.
             X-Cache-Expires-in:
               schema:
                 type: numeric
+                nullable: true
                 example: 9001
               description: Secondes avant que le cache n'expire. Si le cache est vide,
-                ce header à 0.
+                ce header est vide (mais présent).
             RateLimit-Limit:
               schema:
                 type: integer
@@ -1877,13 +1878,14 @@ paths:
                 - true
                 - false
                 default: false
-              description: Indique si la réponse a été caché
+              description: Indique si la réponse a été caché.
             X-Cache-Expires-in:
               schema:
                 type: numeric
+                nullable: true
                 example: 9001
               description: Secondes avant que le cache n'expire. Si le cache est vide,
-                ce header à 0.
+                ce header est vide (mais présent).
             RateLimit-Limit:
               schema:
                 type: integer

@@ -50,6 +50,7 @@ module RSWagCommonsResponses
     header 'X-Cache-Expires-in',
       schema: {
         type: :numeric,
+        nullable: true,
         example: 9001
       },
       description: SwaggerData.get('response.headers.x_cache_expires_in.description')

@@ -212,11 +212,11 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController, type: :controller do
           call!
         end
 
-        it 'renders X-Response-cached header as false' do
+        it 'renders X-Response-cached header as false, and an empty X-Cache-Expires-in' do
           call!
 
           expect(response.headers['X-Response-Cached']).to be(false)
-          expect(response.headers['X-Cache-Expires-in']).to be_nil
+          expect(response.headers['X-Cache-Expires-in']).to eq('')
         end
 
         it 'calls the retriever directly with parameters' do
@@ -237,11 +237,11 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController, type: :controller do
           allow(CacheResourceRetriever).to receive(:call).and_return(cache_resource_retriever)
         end
 
-        it 'renders X-Response-cached header as true' do
+        it 'renders X-Response-cached header as true, with X-Cache-Expires-in sets as an integer' do
           call!
 
           expect(response.headers['X-Response-Cached']).to be(true)
-          expect(response.headers['X-Cache-Expires-in']).to be_within(10).of(9000)
+          expect(response.headers['X-Cache-Expires-in']).to eq(9001)
         end
 
         it 'calls CacheResourceRetriever with parameters' do
@@ -278,11 +278,11 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController, type: :controller do
         end
       end
 
-      it 'renders X-Response-cached header as false' do
+      it 'renders X-Response-cached header as false, and an empty X-Cache-Expires-in' do
         call!
 
         expect(response.headers['X-Response-Cached']).to be(false)
-        expect(response.headers['X-Cache-Expires-in']).to be_nil
+        expect(response.headers['X-Cache-Expires-in']).to eq('')
       end
 
       it 'does not call CacheResourceRetriever' do
