@@ -4,6 +4,11 @@ require:
   - rubocop-rspec
   - rubocop-rails
 
+RSpec:
+  Language:
+    Expectations:
+      - assert_response
+
 AllCops:
   NewCops: enable
   Exclude:
