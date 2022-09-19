@@ -8,7 +8,7 @@ RSpec.describe 'Not found page', type: :request do
   end
 
   it 'renders not found text' do
-    expect(call.body).to eq('Not found')
+    expect(call.body).to include('Cette URL n\'existe pas')
   end
 
   it 'renders 404 status' do
