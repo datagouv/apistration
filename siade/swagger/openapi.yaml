@@ -368,6 +368,19 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                une_demande_d_analyse_est_deja_en_cours_de_traitement_04502:
+                  value:
+                    errors:
+                    - code: '04502'
+                      title: Une demande d'analyse est déjà en cours de traitement
+                      detail: Une demande d'analyse du dossier de l'entreprise a déjà
+                        été demandée, cela prend au maximum 2 jours.
+                      source:
+                      meta:
+                        provider: ACOSS
+                  summary: Une demande d'analyse est déjà en cours de traitement
+                  description: Une demande d'analyse du dossier de l'entreprise a
+                    déjà été demandée, cela prend au maximum 2 jours.
                 analyse_de_la_situation_du_compte_en_cours_04501:
                   value:
                     errors:
@@ -384,6 +397,19 @@ paths:
                   description: La situation de l'entreprise requiert une analyse manuelle
                     d'un agent de l'URSSAF. Une demande d'analyse vient d'être envoyée,
                     cela prend au maximum 2 jours.
+                attestation_de_vigilance_non_delivree_04503:
+                  value:
+                    errors:
+                    - code: '04503'
+                      title: Attestation de vigilance non délivrée
+                      detail: La situation du compte ne permet pas de délivrer l'attestation
+                        de vigilance demandée, contactez directement l'entreprise.
+                      source:
+                      meta:
+                        provider: ACOSS
+                  summary: Attestation de vigilance non délivrée
+                  description: La situation du compte ne permet pas de délivrer l'attestation
+                    de vigilance demandée, contactez directement l'entreprise.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':

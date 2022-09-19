@@ -4,7 +4,7 @@ class ACOSSError < AbstractSpecificProviderError
   end
 
   def extra_meta
-    return {} unless @kind == :ongoing_manual_verification
+    return {} unless @kind == :manual_verification_asked
 
     {
       retry_in: 2.days.to_i
@@ -13,7 +13,9 @@ class ACOSSError < AbstractSpecificProviderError
 
   def subcode_config
     {
-      ongoing_manual_verification: '501'
+      manual_verification_asked: '501',
+      ongoing_manual_verification: '502',
+      cannot_deliver_document: '503',
     }
   end
 

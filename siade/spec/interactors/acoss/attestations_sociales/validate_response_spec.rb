@@ -33,7 +33,7 @@ RSpec.describe ACOSS::AttestationsSociales::ValidateResponse, type: :validate_re
       context 'when it has at least one internal error code' do
         let(:json_errors) do
           [
-            { code: 'FUNC502', message: 'Message 502', description: 'description 2' },
+            { code: 'FUNC511', message: 'Message 511', description: 'description 11' },
             { code: 'FUNC517', message: 'Message 517', description: 'description 17' }
           ]
         end
@@ -80,6 +80,33 @@ RSpec.describe ACOSS::AttestationsSociales::ValidateResponse, type: :validate_re
         it { is_expected.to be_a_failure }
 
         its(:errors) { is_expected.to include(instance_of(ACOSSError)) }
+        its(:errors) { is_expected.to include(have_attributes(code: '04501')) }
+      end
+
+      context 'when company situation is already ongoing manual operation by the provider' do
+        let(:json_errors) do
+          [
+            { code: 'FUNC504', message: 'manual operation ongoing', description: 'we are doing something' }
+          ]
+        end
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(ACOSSError)) }
+        its(:errors) { is_expected.to include(have_attributes(code: '04502')) }
+      end
+
+      context 'when company situation do not permit to deliver the document' do
+        let(:json_errors) do
+          [
+            { code: 'FUNC502', message: 'cannot deliver document', description: 'rend l argent !' }
+          ]
+        end
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(ACOSSError)) }
+        its(:errors) { is_expected.to include(have_attributes(code: '04503')) }
       end
 
       context 'when it is a hash instead of an array' do

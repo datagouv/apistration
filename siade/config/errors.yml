@@ -290,6 +290,14 @@
   title: 'Analyse de la situation du compte en cours'
   detail: "La situation de l'entreprise requiert une analyse manuelle d'un agent de l'URSSAF. Une demande d'analyse vient d'être envoyée, cela prend au maximum 2 jours."
 
+- code: '04502'
+  title: "Une demande d'analyse est déjà en cours de traitement"
+  detail: "Une demande d'analyse du dossier de l'entreprise a déjà été demandée, cela prend au maximum 2 jours."
+
+- code: '04503'
+  title: 'Attestation de vigilance non délivrée'
+  detail: "La situation du compte ne permet pas de délivrer l'attestation de vigilance demandée, contactez directement l'entreprise."
+
 ## FranceConnect
 
 - code: '50001'
