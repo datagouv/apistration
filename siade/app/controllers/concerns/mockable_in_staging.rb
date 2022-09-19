@@ -10,11 +10,7 @@ module MockableInStaging
   end
 
   def mock_response
-    if v3_and_more?
-      render json: ErrorsSerializer.new([NotImplementedYetError.new], format: error_format).as_json, status: :not_implemented
-    else
-      render json:, status: :ok
-    end
+    render json:, status: :ok
   end
 
   def staging?
@@ -66,12 +62,20 @@ module MockableInStaging
 
   def valid_schema
     open_api_schema['paths'].find do |_, schema|
-      schema['get']['operationId'] == operation_id
+      if v3_and_more?
+        schema['get']['responses']['200']['x-operationId'] == operation_id
+      else
+        schema['get']['operationId'] == operation_id
+      end
     end
   end
 
   def operation_id
-    "#{controller_name}_#{action_name}"
+    if v3_and_more?
+      self.class.to_s.underscore.gsub('api_entreprise/v3_and_more/', '')
+    else
+      "#{controller_name}_#{action_name}"
+    end
   end
 
   def open_api_schema
@@ -79,7 +83,11 @@ module MockableInStaging
   end
 
   def schema_path
-    Rails.public_path.join('v2/open-api.yml')
+    if v3_and_more?
+      Rails.root.join('swagger/openapi.yaml')
+    else
+      Rails.public_path.join('v2/open-api.yml')
+    end
   end
 
   def errors

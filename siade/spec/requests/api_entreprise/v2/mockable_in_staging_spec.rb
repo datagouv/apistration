@@ -4,10 +4,10 @@ RSpec.describe 'OpenAPI integrity check for v2 APIs', api: :entreprise do
     Rack::Attack.reset!
   end
 
-  it 'renders not implemented error for v3_and_more endpoints' do
+  it 'renders valid payload for v3_and_more endpoints' do
     get '/v3/ministere_interieur/rna/associations/00000', params: { token: yes_jwt }.merge(mandatory_params)
-    assert_response 501
-    expect(response_json.dig(:errors, 0)).to include(code: '00503')
+
+    assert_response 200
   end
 
   %w[
