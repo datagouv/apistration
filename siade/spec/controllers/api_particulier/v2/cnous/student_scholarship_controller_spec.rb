@@ -61,8 +61,8 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController, type: :c
       its(:body) do
         is_expected.to eq({
           error: 'not_found',
-          reason: 'Student situation not found',
-          message: "Impossible de trouver la situation de l'étudiant correspondant à la recherche"
+          reason: 'Scholarship not found',
+          message: "Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis"
         }.to_json)
       end
     end

@@ -69,7 +69,7 @@ class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulierCo
   def format_not_found_error(error)
     {
       error: 'not_found',
-      reason: 'Student situation not found',
+      reason: 'Scholarship not found',
       message: error.detail
     }
   end

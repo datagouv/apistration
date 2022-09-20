@@ -15,7 +15,7 @@ class CNOUS::ValidateResponse < ValidateResponse
   end
 
   def resource_not_found!
-    fail_with_error!(build_error(::NotFoundError, "Impossible de trouver la situation de l'étudiant correspondant à la recherche"))
+    fail_with_error!(build_error(::NotFoundError, "Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis"))
   end
 
   def unprocessable_entity_error!
