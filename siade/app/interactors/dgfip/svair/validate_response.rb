@@ -20,6 +20,10 @@ class DGFIP::SVAIR::ValidateResponse < ValidateResponse
     response.body.include?('L\'administration fiscale certifie l\'authenticité du document présenté')
   end
 
+  def resource_not_found!
+    fail_with_error!(build_error(::NotFoundError, 'Les paramètres fournis sont incorrects ou ne correspondent pas à un avis'))
+  end
+
   def access_denied!
     track_access_denied
     fail_with_error!(DGFIPSVAIRAccessDeniedError.new)
