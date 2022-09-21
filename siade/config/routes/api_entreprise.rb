@@ -1,6 +1,7 @@
-namespace :v2, constraints: APIEntrepriseDomainConstraint.new  do
-  get 'uptime' => '/api_entreprise/v2/uptime#show'
+get '/v2/uptime' => 'uptime#show', constraints: APIEntrepriseDomainConstraint.new
+get '/v:api_version/uptime' => 'uptime#show', constraints: APIEntrepriseDomainConstraint.new(v3_and_more: true)
 
+namespace :v2, constraints: APIEntrepriseDomainConstraint.new  do
   get 'effectifs_annuels_acoss_covid/:siren'                              => '/api_entreprise/v2/effectifs_annuels_entreprise_acoss_covid#show'
   get 'effectifs_mensuels_acoss_covid/:annee/:mois/etablissement/:siret'  => '/api_entreprise/v2/effectifs_mensuels_etablissement_acoss_covid#show'
   get 'effectifs_mensuels_acoss_covid/:annee/:mois/entreprise/:siren'     => '/api_entreprise/v2/effectifs_mensuels_entreprise_acoss_covid#show'

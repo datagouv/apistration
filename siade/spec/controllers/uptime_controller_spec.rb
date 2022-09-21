@@ -1,17 +1,17 @@
-RSpec.describe APIEntreprise::V2::UptimeController, type: :controller do
+RSpec.describe UptimeController, type: :controller do
   let(:token) { uptime_jwt }
-
-  it_behaves_like 'unauthorized'
-  it_behaves_like 'forbidden'
 
   before do
     request.host = 'entreprise.api.localhost.me'
   end
 
+  it_behaves_like 'unauthorized'
+  it_behaves_like 'forbidden'
+
   describe '#show' do
     before do
       request.headers[:Authorization] = "Bearer #{token}"
-      get :show, params: { route: route }
+      get :show, params: { route: }
     end
 
     describe 'existing route' do
@@ -44,7 +44,7 @@ RSpec.describe APIEntreprise::V2::UptimeController, type: :controller do
       stub_request(:get, /entreprise.api.gouv.fr/).to_return(status: 502)
 
       request.headers[:Authorization] = "Bearer #{token}"
-      get :show, params: { route: route }
+      get :show, params: { route: }
     end
 
     let(:route) { "v2/associations/#{siren}" }
@@ -58,7 +58,7 @@ RSpec.describe APIEntreprise::V2::UptimeController, type: :controller do
       stub_request(:get, /entreprise.api.gouv.fr/).to_timeout
 
       request.headers[:Authorization] = "Bearer #{token}"
-      get :show, params: { route: route }
+      get :show, params: { route: }
     end
 
     let(:route) { "v2/associations/#{siren}" }
@@ -72,7 +72,7 @@ RSpec.describe APIEntreprise::V2::UptimeController, type: :controller do
       stub_request(:get, /entreprise.api.gouv.fr/).to_raise(SocketError)
 
       request.headers[:Authorization] = "Bearer #{token}"
-      get :show, params: { route: route }
+      get :show, params: { route: }
     end
 
     let(:route) { "v2/associations/#{siren}" }

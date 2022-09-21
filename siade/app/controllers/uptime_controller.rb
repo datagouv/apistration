@@ -1,6 +1,4 @@
-class APIEntreprise::V2::UptimeController < APIEntreprise::V2::BaseController
-  skip_before_action :context_is_filled!
-
+class UptimeController < APIController
   def show
     authorize :uptime
 
