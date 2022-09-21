@@ -219,6 +219,17 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController, type: :controller do
           expect(response.headers['X-Cache-Expires-in']).to eq('')
         end
 
+        it 'adds custom field retriever_cached as false on LogStasher' do
+          expect(LogStasher).to receive(:build_logstash_event).with(
+            hash_including(
+              retriever_cached: false
+            ),
+            anything
+          )
+
+          call!
+        end
+
         it 'calls the retriever directly with parameters' do
           expect(DummyRetrieverOrganizer)
             .to receive(:call)
@@ -242,6 +253,17 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController, type: :controller do
 
           expect(response.headers['X-Response-Cached']).to be(true)
           expect(response.headers['X-Cache-Expires-in']).to eq(9001)
+        end
+
+        it 'adds custom field retriever_cached as true on LogStasher' do
+          expect(LogStasher).to receive(:build_logstash_event).with(
+            hash_including(
+              retriever_cached: true
+            ),
+            anything
+          )
+
+          call!
         end
 
         it 'calls CacheResourceRetriever with parameters' do

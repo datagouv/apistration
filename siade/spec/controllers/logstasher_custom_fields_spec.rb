@@ -41,17 +41,6 @@ RSpec.describe 'logstasher custom fields', type: :controller do
       make_call
     end
 
-    it 'does not add retrieved_cached to logstasher' do
-      expect(LogStasher).not_to receive(:build_logstash_event).with(
-        hash_including(
-          retriever_cached: anything
-        ),
-        anything
-      )
-
-      make_call
-    end
-
     it 'does not add api_version to logstasher' do
       expect(LogStasher).not_to receive(:build_logstash_event).with(
         hash_including(
@@ -86,17 +75,6 @@ RSpec.describe 'logstasher custom fields', type: :controller do
       expect(LogStasher).to receive(:build_logstash_event).with(
         hash_including(
           api_version: 'v2'
-        ),
-        anything
-      )
-
-      make_call
-    end
-
-    it 'adds retrieved_cached to logstasher' do
-      expect(LogStasher).to receive(:build_logstash_event).with(
-        hash_including(
-          retriever_cached: false
         ),
         anything
       )
@@ -162,17 +140,6 @@ RSpec.describe 'logstasher custom fields', type: :controller do
         expect(LogStasher).to receive(:build_logstash_event).with(
           hash_including(
             api: 'entreprise'
-          ),
-          anything
-        )
-
-        make_call
-      end
-
-      it 'adds retrieved_cached to logstasher' do
-        expect(LogStasher).to receive(:build_logstash_event).with(
-          hash_including(
-            retriever_cached: false
           ),
           anything
         )

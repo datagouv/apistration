@@ -5,6 +5,7 @@ module Cacheable
     attr_reader :cached_retriever
 
     before_action :init_x_response_cached_header
+    after_action :logs_cache_status_to_logstash
   end
 
   def retrieve_payload_data(retriever, cache: false, expires_in: nil, cache_key: nil)
@@ -40,5 +41,9 @@ module Cacheable
   def init_x_response_cached_header
     response.headers['X-Response-Cached'] = false
     response.headers['X-Cache-Expires-in'] = ''
+  end
+
+  def logs_cache_status_to_logstash
+    LogStasher.store[:retriever_cached] = response.headers['X-Response-Cached']
   end
 end
