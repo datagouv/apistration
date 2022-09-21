@@ -13,7 +13,7 @@ production: &shared
     dates:
       - day: '2022-09-21'
         from_hour: '06:00'
-        to_hour: '23:59'
+        to_hour: '17:00'
 sandbox: *shared
 staging: *shared
 development: *shared
