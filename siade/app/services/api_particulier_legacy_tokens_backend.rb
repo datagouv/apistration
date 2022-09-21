@@ -1,4 +1,5 @@
 require 'singleton'
+require 'digest'
 
 class APIParticulierLegacyTokensBackend
   include Singleton
@@ -12,17 +13,22 @@ class APIParticulierLegacyTokensBackend
   end
 
   def exists?(key)
-    backend.key?(key)
+    backend.key?(key) ||
+      backend.key?(hashed_key(key))
   end
 
   def get(key)
-    backend[key] || {}
+    backend[key] || backend[hashed_key(key)] || {}
   end
 
   private
 
   def backend
     @backend ||= load_backend
+  end
+
+  def hashed_key(key)
+    Digest::SHA512.hexdigest(key)
   end
 
   def load_backend

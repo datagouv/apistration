@@ -28,6 +28,16 @@ RSpec.describe APIParticulierLegacyTokensBackend, type: :service do
       it { expect(token_data['token_id']).to be_present }
     end
 
+    context 'with a valid token which has a sha512 value in backend' do
+      let(:key) { 'hashed_value' }
+
+      it { is_expected.to be_present }
+
+      it { expect(token_data['scopes']).to eq(['initial_value_of_this_token_is:hashed_value']) }
+      it { expect(token_data['legacy_token_id']).to be_present }
+      it { expect(token_data['token_id']).to be_present }
+    end
+
     context 'when key does not exist' do
       let(:key) { 'invalid' }
 

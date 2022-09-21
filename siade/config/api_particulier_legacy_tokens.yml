@@ -15,3 +15,8 @@
   legacy_token_id: '33333333-3333-3333-3333-333333333331'
   scopes:
     - 'another_scope1'
+'c5ac7d7a684a031b6ac2b31f256342cb13468409f88b40aabe36fcb4217875b096e8917f8f4c20c1aaecf9016073b0707481e38f9a8c11c6fa6784c2b0a20160':
+  token_id: '44444444-4444-4444-4444-444444444440'
+  legacy_token_id: '44444444-4444-4444-4444-444444444441'
+  scopes:
+    - 'initial_value_of_this_token_is:hashed_value'
