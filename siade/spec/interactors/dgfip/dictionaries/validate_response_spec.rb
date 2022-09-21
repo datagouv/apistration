@@ -5,29 +5,7 @@ RSpec.describe DGFIP::Dictionaries::ValidateResponse, type: :validate_response d
     let(:response) { instance_double(Net::HTTPOK, code: '200', body:) }
 
     context 'with a valid json body' do
-      let(:body) do
-        {
-          dictionnaire: [
-            {
-              numero_imprime: '2050',
-              millesimes: {
-                millesime: '201501',
-                statut_version: 'X',
-                declaration: [
-                  {
-                    code_absolu: '2006345',
-                    code_EDI: 'XX:C123:4567:8:XXX',
-                    code: 'XX',
-                    intitule: 'Déposé néant',
-                    code_type_donnee: 'XXX',
-                    code_nref: '123456'
-                  }
-                ]
-              }
-            }
-          ]
-        }.to_json
-      end
+      let(:body) { Rails.root.join('spec/fixtures/payloads/dgfip-dictionary.json').read }
 
       it { is_expected.to be_a_success }
 
