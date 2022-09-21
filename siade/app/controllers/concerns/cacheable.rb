@@ -31,6 +31,7 @@ module Cacheable
   def mark_response_as_cached_in_response!
     response.headers['X-Response-Cached'] = @cached_retriever.from_cache
 
+    return unless @cached_retriever.from_cache
     return if @cached_retriever.expires_in.blank?
 
     response.headers['X-Cache-Expires-in'] = @cached_retriever.expires_in
