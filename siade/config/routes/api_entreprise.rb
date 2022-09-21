@@ -1,6 +1,9 @@
 get '/v2/uptime' => 'uptime#show', constraints: APIEntrepriseDomainConstraint.new
 get '/v:api_version/uptime' => 'uptime#show', constraints: APIEntrepriseDomainConstraint.new(v3_and_more: true)
 
+get '/v2/ping' => 'ping#show', constraints: APIEntrepriseDomainConstraint.new
+get '/v:api_version/ping' => 'ping#show', constraints: APIEntrepriseDomainConstraint.new(v3_and_more: true)
+
 namespace :v2, constraints: APIEntrepriseDomainConstraint.new  do
   get 'effectifs_annuels_acoss_covid/:siren'                              => '/api_entreprise/v2/effectifs_annuels_entreprise_acoss_covid#show'
   get 'effectifs_mensuels_acoss_covid/:annee/:mois/etablissement/:siret'  => '/api_entreprise/v2/effectifs_mensuels_etablissement_acoss_covid#show'
@@ -58,7 +61,6 @@ namespace :v2, constraints: APIEntrepriseDomainConstraint.new  do
 end
 
 scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_and_more: true) do
-  get 'ping', to: 'api_entreprise/ping#show'
 
   get 'urssaf/unites_legales/:siren/attestation_vigilance', to: 'api_entreprise/v3_and_more/acoss/attestations_sociales#show'
 
