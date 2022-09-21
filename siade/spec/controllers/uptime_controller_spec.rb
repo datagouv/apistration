@@ -15,7 +15,7 @@ RSpec.describe UptimeController, type: :controller do
     end
 
     describe 'existing route' do
-      context 'when provider is UP', vcr: { cassette_name: 'uptime/entreprises' } do
+      context 'when provider is UP', vcr: { cassette_name: 'uptime/api_entreprise/v2/entreprises' } do
         let(:route) { "/v2/entreprises/#{siren}" }
 
         let(:siren) { sirens_insee_v3[:active_GE] }
@@ -23,7 +23,7 @@ RSpec.describe UptimeController, type: :controller do
         it { expect(response).to have_http_status :ok }
       end
 
-      describe 'more complexe route', vcr: { cassette_name: 'uptime/liasses_fiscales' } do
+      describe 'more complexe route', vcr: { cassette_name: 'uptime/api_entreprise/v2/liasses_fiscales' } do
         let(:route) do
           "/v2/liasses_fiscales_dgfip/2017/declarations/#{valid_siren(:liasse_fiscale)}"
         end
