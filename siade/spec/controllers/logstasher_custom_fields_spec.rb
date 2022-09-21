@@ -1,4 +1,4 @@
-class APIParticulier::DummyController < APIParticulierController; end
+class APIParticulier::V2::DummyController < APIParticulierController; end
 class APIEntreprise::V2::DummyController < APIController; end
 class APIEntreprise::V3AndMore::DummyController < APIController; end
 
@@ -66,15 +66,26 @@ RSpec.describe 'logstasher custom fields', type: :controller do
 
   describe 'on api particulier request' do
     before do
-      routes.draw { get 'index' => 'api/v3_and_more/dummy#index' }
+      routes.draw { get 'index' => 'api/v2/dummy#index' }
     end
 
-    define_dummy_controller(APIParticulier::DummyController)
+    define_dummy_controller(APIParticulier::V2::DummyController)
 
     it 'adds api: particulier to logstasher' do
       expect(LogStasher).to receive(:build_logstash_event).with(
         hash_including(
           api: 'particulier'
+        ),
+        anything
+      )
+
+      make_call
+    end
+
+    it 'adds api_version v2 to logstasher' do
+      expect(LogStasher).to receive(:build_logstash_event).with(
+        hash_including(
+          api_version: 'v2'
         ),
         anything
       )
@@ -129,7 +140,6 @@ RSpec.describe 'logstasher custom fields', type: :controller do
       it 'adds api_version v2 to logstasher' do
         expect(LogStasher).to receive(:build_logstash_event).with(
           hash_including(
-            retriever_cached: false,
             api_version: 'v2'
           ),
           anything
