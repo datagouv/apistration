@@ -1,0 +1,315 @@
+info:
+  title: API Particulier
+  version: 2.2.0
+  contact:
+    email: contact@particulier.api.gouv.fr
+    name: Contact API Particulier
+    url: https://api.gouv.fr/les-api/api-particulier
+  termsOfService: https://api.gouv.fr/resources/CGU%20API%20Particulier.pdf
+  license:
+    name: GNU Affero General Public License v3.0
+    url: https://github.com/betagouv/api-particulier/blob/master/LICENSE
+  description: >
+    ## Bienvenue sur la documentation interactive d'API Particulier.
+
+
+    ### Commencer à utiliser l'API
+
+
+    API Particulier est une API en accès restreint, ce qui signifie qu'il vous faut remplir une [demande d'habilitation](https://datapass.api.gouv.fr) avant de pouvoir l'utiliser avec des vraies données.
+
+
+    Afin de vous permettre de commencer à utiliser l'API avant la validation de votre demande d'habilitation, nous avons mis en place un bac à sable de l'API, qui reproduit les comportements de l'API, en remplaçant les données réelles par des données fictives.
+
+
+    Dans le bac à sable, pour chaque type de donnée disponible, un jeu de donnée libre en édition est mis à votre disposition, afin que vous puissiez faire vos tests en toute autonomie.
+
+
+    Le fonctionnement du bac à sable est identique à celui de la véritable API de production, à la différence près que les données sont fictives, éditables par tout le monde, et que les jetons d'accès sont en libre service.
+
+
+    Le bac à sable et l'API de production sont appelables par deux adresses distinctes :
+
+
+    - bac à sable : [https://particulier-test.api.gouv.fr/api](https://particulier-test.api.gouv.fr/api)
+
+    - production : [https://particulier.api.gouv.fr/api](https://particulier.api.gouv.fr/api)
+
+
+    ### Périmètre des données retournées
+
+
+    **Important :** le contenu du jeu de données retourné dépend des _scopes_ associés à votre accès FranceConnect.
+
+
+    En effet, les disposition de l'article [L144-8](https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000031366350&idArticle=LEGIARTI000031367412&dateTexte=&categorieLien=cid) n'autorisent que l'échange des informations **strictement nécessaires** pour traiter une démarche.
+
+
+    Afin de respecter ce devoir de minimisation de la donnée, chaque jeton est associé, par la demande d'habilitation, à des _scopes_ agissant comme des masques sur la donnée.
+
+
+    Ainsi, pour pouvoir lire de la donnée provenant de la DGFIP par exemple, il est nécessaire de cocher lors de votre [demande d'habilitation](https://datapass.api.gouv.fr) une ou plusieurs cases correspondant aux données de la DGFIP, votre jeton possèdera alors les _scopes_ associés aux données cochées.
+
+
+    En conséquence, suivant les accès conférés, une même requête peut retourner des résultats différents.
+
+
+    **Attention :** La documentation ci-dessous ne prend pas en compte les _scopes_, qui agissent comme masques de la donnée retournée par l'API. Cette documentation suppose donc que vous avez été habilité à accéder à la donnée décrite.
+openapi: 3.0.0
+servers:
+  - url: https://particulier-test.api.gouv.fr/api
+    description: Serveur de bac à sable
+  - url: https://particulier.api.gouv.fr/api
+    description: Serveur de production
+security:
+  - franceConnectToken: []
+components:
+  securitySchemes:
+    franceConnectToken:
+      type: http
+      scheme: bearer
+      bearerFormat: Jeton FranceConnect
+      description: Jeton FranceConnect obtenu suite à une cinématique de connexion
+        FranceConnect
+paths:
+  /v2/etudiants:
+    get:
+      tags:
+        - Statut étudiant
+      summary: Recherche du statut étudiant d'un particulier
+      description: >-
+        Le service permet de récupérer le statut étudiant d'un particulier, avec
+        ses données d'inscriptions scolaires.
+
+
+        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=invaqM68okWdPDzc5&inviteToken=43864c010a85095fd8acc6770f6528ce3beff684f60e7aab58e248c29e6d0433&utm_source=email)
+      responses:
+        "200":
+          description: La situation d'un étudiant et ses inscriptions
+          content:
+            application/json:
+              schema:
+                properties:
+                  ine:
+                    type: string
+                    description: Identifiant unique de l'étudiant
+                    example: 1234567890G
+                  nom:
+                    type: string
+                    description: Le nom de naissance
+                    example: Moustaki
+                  prenom:
+                    type: string
+                    description: Le prénom
+                    example: Georges
+                  dateNaissance:
+                    type: string
+                    format: date
+                    description: La date de naissance
+                    example: 1992-11-29
+                  inscriptions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        dateDebutInscription:
+                          type: string
+                          format: date
+                          description: La date de début d'inscription à l'établissement
+                          example: 2019-09-01
+                        dateFinInscription:
+                          type: string
+                          format: date
+                          description: La date de fin d'inscription à l'établissement
+                          example: 2020-06-29
+                        statut:
+                          type: string
+                          description: Le statut de l'inscription
+                          example: admis
+                          enum:
+                            - admis
+                            - inscrit
+                        regime:
+                          type: string
+                          description: Le régime de formation
+                          example: formation initiale
+                          enum:
+                            - formation initiale
+                            - formation continue
+                        codeCommune:
+                          type: string
+                          description: Le code commune
+                          example: "29085"
+                        etablissement:
+                          type: object
+                          properties:
+                            uai:
+                              type: string
+                              description: Identifiant unique de l'établissement
+                              example: 0011402U
+                            nom:
+                              type: string
+                              description: Nom de l'établissement
+                              example: EGC AIN BOURG EN BRESSE EC GESTION ET COMMERCE (01000)
+        "401":
+          &a1
+          description: Votre jeton d'API n'a pas été trouvé ou n'est pas actif
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: access_denied
+                  reason:
+                    type: string
+                    example: Token not found or inactive
+                  message:
+                    type: string
+                    example: Votre jeton d'API n'a pas été trouvé ou n'est pas actif
+        "404":
+          &a2
+          description: Aucun étudiant n'a pu être trouvé avec les critères de recherche
+            fournis
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: not_found
+                  reason:
+                    type: string
+                    example: Student not found
+                  message:
+                    type: string
+                    example: Aucun étudiant n'a pu être trouvé avec les critères de recherche
+                      fournis
+        "500":
+          &a3
+          description: Une erreur interne s'est produite, l'équipe a été prévenue.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: error
+                  reason:
+                    type: string
+                    example: Internal server error
+                  message:
+                    type: string
+                    example: Une erreur interne s'est produite, l'équipe a été prévenue.
+        "503":
+          &a4
+          description: Une erreur est survenue lors de l'appel au fournisseur de donnée
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: network_error
+                  reason:
+                    type: string
+                    example: timeout of 10000 ms exceeded
+                  message:
+                    type: string
+                    example: Une erreur est survenue lors de l'appel au fournisseur de donnée
+  /v2/etudiants-boursiers:
+    get:
+      tags:
+        - Statut étudiant boursier
+      summary: Recherche du statut étudiant boursier d'un particulier
+      description: >-
+        Le service permet de récupérer le statut étudiant boursier d'un
+        particulier, avec les données relatives à sa bourse.
+
+
+        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=inv9lBycvDR5UzbyM&inviteToken=6e46235c19bbb4a70dd31ab483eb7375ac0bf46c9d8145d1358e0aa50f65277a&utm_source=email)
+      responses:
+        "200":
+          description: La situation d'un étudiant boursier
+          content:
+            application/json:
+              schema:
+                properties:
+                  nom:
+                    type: string
+                    description: Le nom de naissance
+                    example: Moustaki
+                  prenom:
+                    type: string
+                    description: Le prénom
+                    example: Georges
+                  prenom2:
+                    type: string
+                    description: Le deuxième prénom
+                    example: Claude
+                  dateNaissance:
+                    type: string
+                    format: date
+                    description: La date de naissance
+                    example: 1992-11-29
+                  lieuNaissance:
+                    type: string
+                    description: Le lieu de naissance
+                    example: Poitiers
+                  sexe:
+                    type: string
+                    description: Le sexe de l'étudiant
+                    example: M
+                    enum:
+                      - M
+                      - F
+                  boursier:
+                    type: boolean
+                    description: L'étudiant est-il boursier ?
+                    example: true
+                  echelonBourse:
+                    type: string
+                    description: L'échelon de bourse de l'étudiant, de 0bis à 8
+                    example: "6"
+                  email:
+                    type: string
+                    description: L'adresse email de l'étudiant
+                    example: georges@moustaki.fr
+                  dateDeRentree:
+                    type: string
+                    format: date
+                    description: La date de rentrée de l'étudiant
+                    example: 2019-09-01
+                  dureeVersement:
+                    type: number
+                    description: La durée du versement de la bourse, en mois
+                    example: 12
+                  statut:
+                    type: number
+                    description: Le statut de la bourse, 0 si définitif, >0 si provisoire
+                      (conditionnel)
+                    examples:
+                      - 0
+                      - 3
+                  statutLibelle:
+                    type: string
+                    description: Le libellé assoccié au statut
+                    examples:
+                      - définitif
+                      - provisoire (conditionnel)
+                  villeEtudes:
+                    type: string
+                    description: Le ville d'étude de l'étudiant
+                    example: Brest
+                  etablissement:
+                    type: string
+                    description: L'établissement d'étude de l'étudiant
+                    example: Carnot
+        "401": *a1
+        "404": *a2
+        "500": *a3
+        "503": *a4
