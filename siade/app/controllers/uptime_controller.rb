@@ -40,7 +40,13 @@ class UptimeController < APIController
   def internal_response
     @internal_response ||= Net::HTTP.start(uri.hostname, uri.port, request_options) do |http|
       uptime_request = Net::HTTP::Get.new uri
-      uptime_request['Authorization'] = "Bearer #{jwt}"
+
+      if api == 'entreprise'
+        uptime_request['Authorization'] = "Bearer #{jwt}"
+      else
+        uptime_request['X-Api-key'] = jwt
+      end
+
       http.request uptime_request
     end
   end
