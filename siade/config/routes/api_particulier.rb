@@ -1,8 +1,10 @@
 namespace '/api', constraints: APIParticulierDomainConstraint.new do
   get 'ping' => '/ping#show'
+  get 'uptime' => '/uptime#show'
 
   get 'caf/famille' => '/api_particulier/v2/cnaf/quotient_familial#show'
   get 'impots/svair' => '/api_particulier/v2/dgfip/svair#show'
+
   get 'open-api.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/api-particulier-open-api.yml'))]] }
   get 'france-connect/open-api.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/api-particulier-france-connect-open-api.yml'))]] }
 

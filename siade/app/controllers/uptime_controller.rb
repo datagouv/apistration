@@ -32,11 +32,15 @@ class UptimeController < APIController
   end
 
   def query_params
-    {
-      context: 'Ping',
-      recipient: 'DINUM',
-      object: 'Uptime'
-    }
+    if api == 'entreprise'
+      {
+        context: 'Ping',
+        recipient: 'DINUM',
+        object: 'Uptime'
+      }
+    else
+      URI.decode_www_form(URI("#{base_uri}#{route}").query).to_h
+    end
   end
 
   def uri
@@ -66,9 +70,17 @@ class UptimeController < APIController
   def base_uri
     case Rails.env
     when 'staging', 'sandbox'
-      "https://#{Rails.env}.entreprise.api.gouv.fr"
+      "https://#{Rails.env}.#{api}.api.gouv.fr"
     else
-      'https://entreprise.api.gouv.fr'
+      "https://#{api}.api.gouv.fr"
+    end
+  end
+
+  def api
+    if request.host.include?('entreprise.api')
+      'entreprise'
+    else
+      'particulier'
     end
   end
 

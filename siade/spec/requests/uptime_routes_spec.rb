@@ -32,4 +32,25 @@ RSpec.describe 'Uptime routes', type: :request do
       end
     end
   end
+
+  describe 'API particulier' do
+    before do
+      host! 'particulier.api.localtest.me'
+    end
+
+    let(:uptime_path) { '/api/uptime' }
+    let(:route) { "/api/v2/etudiants?ine=1234567890" }
+
+    before do
+      stub_request(:get, "https://particulier.api.gouv.fr#{route}").to_return(
+        status: 200
+      )
+    end
+
+    it 'works' do
+      uptime
+
+      expect(response.status).to eq(200)
+    end
+  end
 end
