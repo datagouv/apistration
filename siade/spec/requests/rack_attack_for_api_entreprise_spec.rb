@@ -378,7 +378,11 @@ RSpec.describe 'Rack::Attack config for API Entreprise', type: :request, api: :e
     let(:non_throttled_endpoints) do
       [
         {
-          controller: 'api_entreprise/v2/uptime',
+          controller: 'uptime',
+          action: 'show_without_token'
+        },
+        {
+          controller: 'uptime',
           action: 'show'
         },
         {
@@ -386,7 +390,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', type: :request, api: :e
           action: 'show'
         },
         {
-          controller: 'api_entreprise/ping',
+          controller: 'ping',
           action: 'show'
         },
         {
@@ -403,11 +407,11 @@ RSpec.describe 'Rack::Attack config for API Entreprise', type: :request, api: :e
         .concat(throttle_config.dig(:json_resources, :endpoints))
         .concat(throttle_config.dig(:high_latency_documents, :endpoints))
         .concat(throttle_config.dig(:very_low_latency_json_resources, :endpoints))
-      config.map { |conf| conf.slice(:controller, :action) }
+      config.map { |conf| conf.slice(:controller, :action) }.uniq
     end
 
     it 'throttles the resources' do
-      expect(all_routes).to contain_exactly(*throttled_endpoints)
+      expect(all_routes.uniq).to contain_exactly(*throttled_endpoints)
     end
   end
 end
