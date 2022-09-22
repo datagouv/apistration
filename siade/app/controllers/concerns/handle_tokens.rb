@@ -77,6 +77,8 @@ module HandleTokens
   end
 
   def set_monitoring_context
+    return if current_user.blank?
+
     monitoring_service.set_user_context(
       current_user.as_json.symbolize_keys!
     )
