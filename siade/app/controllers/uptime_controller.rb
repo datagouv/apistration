@@ -1,15 +1,29 @@
 class UptimeController < APIController
+  skip_before_action :authenticate_user!, only: :show_without_token
+
   def show
     authorize :uptime
 
-    if route_recognized?
-      render status: http_code
+    render_status
+  end
+
+  def show_without_token
+    if valid_provider?
+      render_status
     else
       render status: :not_found
     end
   end
 
   private
+
+  def render_status
+    if route_recognized?
+      render status: http_code
+    else
+      render status: :not_found
+    end
+  end
 
   def route_recognized?
     route_attributes = Rails.application.routes.recognize_path(request.base_url + route)
@@ -49,7 +63,15 @@ class UptimeController < APIController
   end
 
   def route
-    @route ||= begin
+    if valid_provider?
+      route_for_provider
+    else
+      route_from_params
+    end
+  end
+
+  def route_from_params
+    @route_from_params ||= begin
       raw_route = params.permit(:route)[:route]
 
       if raw_route.starts_with?('/')
@@ -58,6 +80,17 @@ class UptimeController < APIController
         "/#{raw_route}"
       end
     end
+  end
+
+  def route_for_provider
+    {
+      'caf' => "/api/v2/composition-familiale?codePostal=#{Siade.credentials['ping_cnaf_postal_code']}&numeroAllocataire=#{Siade.credentials['ping_cnaf_numero_allocataire']}",
+      'impots' => "/api/v2/avis-imposition?numeroFiscal=#{Siade.credentials['ping_dgfip_svair_numero_fiscal']}&referenceAvis=#{Siade.credentials['ping_dgfip_svair_reference_avis']}"
+    }[params[:provider]]
+  end
+
+  def valid_provider?
+    route_for_provider.present?
   end
 
   def request_options
