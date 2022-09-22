@@ -96,7 +96,7 @@ components:
         sur <a href="https://mon.portail.api.gouv.fr">le portail API
         Particulier</a>
 paths:
-  /impots/svair:
+  /v2/avis-imposition:
     get:
       description: >-
         Le service permet de vérifier l'authenticité du justificatif d'impôt sur
@@ -104,7 +104,7 @@ paths:
 
 
         **Paramètres d'appel :** numéro fiscal et numéro d'avis d'imposition
-         
+
         **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=inv3ImCypw30uuLK9&inviteToken=0482ffbcc5d830fb6a409161fc372635a48b6bbcffdcde552f5be4290f80db50)
       summary: Service de vérification de l'avis d'impôt sur le revenu
       parameters:
@@ -127,7 +127,6 @@ paths:
       tags:
         &a5
         - Avis d'imposition
-      deprecated: true
       responses:
         "200":
           description: Avis d'imposition
@@ -136,8 +135,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  declarant1:
-                    &a1
+                  declarant1: &a1
                     type: object
                     properties:
                       nom:
@@ -149,12 +147,13 @@ paths:
                       prenoms:
                         type: string
                         description: Prénoms du déclarant
+
                   declarant2: *a1
-                  dateRecouvrement:
-                    &a2
+                  dateRecouvrement: &a2
                     type: string
                     pattern: ^\d{2}/\d{2}/\d{4}$
                     example: 03/05/1991
+
                   dateEtablissement: *a2
                   nombreParts:
                     type: number
@@ -172,8 +171,7 @@ paths:
                     type: number
                   nombrePersonnesCharge:
                     type: integer
-                  anneeImpots:
-                    &a3
+                  anneeImpots: &a3
                     type: string
                     pattern: ^\d{4}$
                     example: "2021"
@@ -317,93 +315,8 @@ paths:
                     type: string
                     example: Le fournisseur de donnée a rejeté la demande en raison d'un trop grand
                       nombre d'échecs antérieurs.
-  /v2/avis-imposition:
-    get:
-      description: >-
-        Le service permet de vérifier l'authenticité du justificatif d'impôt sur
-        le revenu ou de l'avis d'impôt sur le revenu présenté par un usager.
 
-
-        **Paramètres d'appel :** numéro fiscal et numéro d'avis d'imposition
-         
-        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=inv3ImCypw30uuLK9&inviteToken=0482ffbcc5d830fb6a409161fc372635a48b6bbcffdcde552f5be4290f80db50)
-      summary: Service de vérification de l'avis d'impôt sur le revenu
-      parameters: *a4
-      tags: *a5
-      responses:
-        "200":
-          description: Avis d'imposition
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  declarant1: *a1
-                  declarant2: *a1
-                  dateRecouvrement: *a2
-                  dateEtablissement: *a2
-                  nombreParts:
-                    type: number
-                  situationFamille:
-                    type: string
-                  revenuBrutGlobal:
-                    type: number
-                    nullable: true
-                  revenuImposable:
-                    type: number
-                    nullable: true
-                  impotRevenuNetAvantCorrections:
-                    type: number
-                    nullable: true
-                  montantImpot:
-                    type: number
-                    nullable: true
-                  revenuFiscalReference:
-                    type: number
-                    nullable: true
-                  nombrePersonnesCharge:
-                    type: integer
-                  anneeImpots: *a3
-                  anneeRevenus: *a3
-                  erreurCorrectif:
-                    type: string
-                    description: "S'il existe un correctif plus récent que l'avis contrôlé, ce champ
-                      prend la valeur \"Ce document ne correspond pas à la
-                      situation la plus récente pour cet usager\". Sinon, le
-                      champ est absent de la réponse. La présence de ce champ
-                      indique qu'il existe un avis d'imposition avec un numéro
-                      d'avis distinct qui contient les informations plus
-                      récentes. La mise à jour de l'avis initial est en général
-                      à l'initiative de l'administré auprès des impôts (par
-                      exemple : changement de revenus ou du nombre de part).
-                      L'API Particulier peut fournir cet avis à condition de
-                      connaître le numéro de l'avis le plus récent. L'API
-                      Particulier ne peut pas fournir le numéro de l'avis le
-                      plus récent en réponse de l'appel initial. Pour trouver le
-                      numéro de cet avis, il faut le demander au particulier
-                      auquel l'avis est adressé ou le demander manuellement
-                      auprès du centre des impôts de votre région. Vous
-                      trouverez de plus amples informations sur <a
-                      href=\"https://www.impots.gouv.fr/portail/precisions-sur-\
-                      le-service-de-verification-des-avis-dimpot-sur-le-revenu-\
-                      svair\">le site des impôts</a>."
-                  situationPartielle:
-                    type: string
-                    description: "Le champ \"situationPartielle\" indique, dans un foyer marié ou
-                      pacsé, le décès d'un des contribuables. Cela signifie
-                      qu'il y aura 2 avis de taxations pour une même année : une
-                      taxation pour le couple du 01/01/AAAA à la date du décès
-                      d'un déclarant, et une autre taxation, pour le conjoint
-                      survivant, de la date de décès du conjoint au 31/12/AAAA.
-                      Ce champ prend la valeur \"(*) Situation  {anneeRevenus}
-                      partielle\". Sinon, le champ est absent de la réponse."
-        "401": *a6
-        "404": *a7
-        "500": *a8
-        "502": *a9
-        "503": *a10
-        "509": *a11
-  /caf/famille:
+  /v2/composition-familiale:
     get:
       description: >-
         Le service permet de récupérer la composition de la famille, l'adresse
@@ -431,7 +344,6 @@ paths:
           schema:
             type: number
             format: string
-      deprecated: true
       tags:
         - Situation CAF
       responses:
@@ -444,8 +356,7 @@ paths:
                 properties:
                   allocataires:
                     type: array
-                    items:
-                      &a12
+                    items: &a12
                       type: object
                       properties:
                         nomPrenom:
@@ -519,10 +430,11 @@ paths:
                   message:
                     type: string
                     example: Dossier allocataire inexistant. Le document ne peut être édité.
+
         "500": *a8
         "503":
           &a14
-          description: rreur inconnue du fournisseur de donnée CAF
+          description: Erreur inconnue du fournisseur de donnée CAF
           content:
             application/json:
               schema:
@@ -536,94 +448,8 @@ paths:
                     example: Unknown error code 134
                   message:
                     type: string
-                    example: rreur inconnue du fournisseur de donnée CAF
-  /v2/composition-familiale:
-    get:
-      description: >-
-        Le service permet de récupérer la composition de la famille, l'adresse
-        déclarée à la CAF, ainsi que le quotient familial. Les données sont
-        actualisées chaque mois.
+                    example: Erreur inconnue du fournisseur de donnée CAF
 
-
-        **Paramètres d'appel :** numéro d'allocataire et code postal
-
-
-        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=invpeDu6xq16LHfI5&inviteToken=66173d447bcbdf7d43548facb7c6b38df1267f8481f1a21491410ff30ecb2c8b&utm_source=email)
-      summary: Informations concernant la famille
-      parameters:
-        - name: numeroAllocataire
-          in: query
-          description: Numéro d'allocataire
-          required: true
-          schema:
-            type: number
-            format: string
-        - name: codePostal
-          in: query
-          description: Code postal
-          required: true
-          schema:
-            type: number
-            format: string
-      deprecated: false
-      tags:
-        - Situation CAF
-      responses:
-        "200":
-          description: Foyer tel qu'il est déclaré à la CAF
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  allocataires:
-                    type: array
-                    items: *a12
-                  enfants:
-                    type: array
-                    items: *a12
-                  adresse:
-                    type: object
-                    description: Adresse au format de la poste
-                    properties:
-                      identite:
-                        type: string
-                        description: "Identité du destinataire : Civilité, titre ou qualité + nom et
-                          prénom"
-                      complementIdentite:
-                        type: string
-                        description: "Complément d'information du destinataire ou point de remise :
-                          Numéro d'appartement, Escalier"
-                      complementIdentiteGeo:
-                        type: string
-                        description: "Complément d'information du point géographique : Entrée, tour,
-                          immeuble, bâtiment, Résidence"
-                      numeroRue:
-                        type: string
-                        description: Numéro et libellé de la voie
-                      lieuDit:
-                        type: string
-                        description: "Lieu-dit ou service particulier de distribution : poste restante,
-                          boîte postale"
-                      codePostalVille:
-                        type: string
-                        description: Code postale et localité de destination
-                      pays:
-                        type: string
-                        description: Pays
-                  quotientFamilial:
-                    type: integer
-                    description: Valeur du quotient familial calculé par la CAF
-                  annee:
-                    type: integer
-                    description: Année du quotient familial
-                  mois:
-                    type: integer
-                    description: Mois du quotient familial
-        "401": *a6
-        "404": *a13
-        "500": *a8
-        "503": *a14
   /v2/situations-pole-emploi:
     get:
       summary: Recherche de la situation Pôle Emploi d'un particulier
@@ -634,7 +460,7 @@ paths:
 
 
         **Paramètres d'appel :** Nom d’utilisateur Pôle emploi choisi par le particulier lors de la création de son espace personnel en ligne
-         
+
         **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=inv1n0CkFzq3Y0pvn&inviteToken=a5b49ec5bb9d2323df4adbdfc6c65da35a2248af30c38095101b3cca6ea0898a&utm_source=email)
       parameters:
         - name: identifiant
@@ -982,34 +808,6 @@ paths:
         "404": *a15
         "500": *a8
         "503": *a10
-  /introspect:
-    get:
-      summary: Introspection du jeton donné en paramètre
-      description: Cet endpoint permet de découvrir les informations correspondant à
-        un jeton donné
-      tags:
-        - Jeton
-      responses:
-        "200":
-          description: L'introspection du jeton
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  _id:
-                    type: string
-                    description: Id du jeton introspecté
-                  name:
-                    type: string
-                    description: Nom associé au jeton
-                  scopes:
-                    type: array
-                    description: Scopes techniques associés au jeton
-                    items:
-                      type: string
-        "401": *a6
-        "500": *a8
   /ping:
     get:
       summary: Statut des serveurs applicatifs API Particulier
