@@ -84,8 +84,8 @@ class UptimeController < APIController
 
   def route_for_provider
     {
-      'caf' => "/api/v2/composition-familiale?codePostal=#{Siade.credentials['ping_cnaf_postal_code']}&numeroAllocataire=#{Siade.credentials['ping_cnaf_numero_allocataire']}",
-      'impots' => "/api/v2/avis-imposition?numeroFiscal=#{Siade.credentials['ping_dgfip_svair_numero_fiscal']}&referenceAvis=#{Siade.credentials['ping_dgfip_svair_reference_avis']}"
+      'caf' => "/api/v2/composition-familiale?codePostal=#{Siade.credentials[:ping_cnaf_postal_code]}&numeroAllocataire=#{Siade.credentials[:ping_cnaf_numero_allocataire]}",
+      'impots' => "/api/v2/avis-imposition?numeroFiscal=#{Siade.credentials[:ping_dgfip_svair_numero_fiscal]}&referenceAvis=#{Siade.credentials[:ping_dgfip_svair_reference_avis]}"
     }[params[:provider]]
   end
 

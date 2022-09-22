@@ -55,8 +55,8 @@ RSpec.describe 'Ping routes', type: :request do
         let(:route) { '/api/caf/ping' }
         let(:path_tested) { "/api/v2/composition-familiale?codePostal=#{code_postal}&numeroAllocataire=#{numero_allocataire}" }
 
-        let(:code_postal) { Siade.credentials['ping_cnaf_postal_code'] }
-        let(:numero_allocataire) { Siade.credentials['ping_cnaf_numero_allocataire'] }
+        let(:code_postal) { Siade.credentials[:ping_cnaf_postal_code] }
+        let(:numero_allocataire) { Siade.credentials[:ping_cnaf_numero_allocataire] }
 
         it 'works' do
           ping
@@ -75,8 +75,8 @@ RSpec.describe 'Ping routes', type: :request do
         let(:route) { '/api/impots/ping' }
         let(:path_tested) { "/api/v2/avis-imposition?numeroFiscal=#{numero_fiscal}&referenceAvis=#{reference_avis}" }
 
-        let(:numero_fiscal) { Siade.credentials['ping_dgfip_svair_numero_fiscal'] }
-        let(:reference_avis) { Siade.credentials['ping_dgfip_svair_reference_avis'] }
+        let(:numero_fiscal) { Siade.credentials[:ping_dgfip_svair_numero_fiscal] }
+        let(:reference_avis) { Siade.credentials[:ping_dgfip_svair_reference_avis] }
 
         it 'works' do
           ping
