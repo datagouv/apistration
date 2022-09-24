@@ -10,7 +10,7 @@ RSpec.describe CNOUS::ValidateResponse, type: :validate_response do
       let(:code) { '200' }
 
       context 'with data in payload' do
-        let(:body) { Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_valid_response.json').read }
+        let(:body) { Rails.root.join('spec/fixtures/payloads/cnous/student_scholarship_valid_response.json').read }
 
         it { is_expected.to be_a_success }
 
@@ -33,7 +33,7 @@ RSpec.describe CNOUS::ValidateResponse, type: :validate_response do
 
       let(:code) { '404' }
 
-      let(:body) { Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_not_found.json').read }
+      let(:body) { Rails.root.join('spec/fixtures/payloads/cnous/student_scholarship_not_found.json').read }
 
       it { is_expected.to be_a_failure }
 
@@ -46,7 +46,7 @@ RSpec.describe CNOUS::ValidateResponse, type: :validate_response do
       end
 
       let(:code) { '400' }
-      let(:body) { Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_bad_request.json').read }
+      let(:body) { Rails.root.join('spec/fixtures/payloads/cnous/student_scholarship_bad_request.json').read }
 
       it { is_expected.to be_a_failure }
 

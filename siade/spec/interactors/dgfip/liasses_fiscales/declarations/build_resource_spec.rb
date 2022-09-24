@@ -38,7 +38,7 @@ RSpec.describe DGFIP::LiassesFiscales::Declarations::BuildResource, type: :build
     end
 
     describe 'with a payload which has repeated entries' do
-      let(:payload_name) { 'dgfip_liasses_fiscales_one_obligation_fiscale' }
+      let(:payload_name) { 'one_obligation_fiscale' }
 
       let(:body) { extract_dgfip_liasses_fiscales_payload(payload_name).to_json }
 
@@ -72,7 +72,7 @@ RSpec.describe DGFIP::LiassesFiscales::Declarations::BuildResource, type: :build
     end
 
     describe 'with a payload which has repeated obligations fiscales' do
-      let(:payload_name) { 'dgfip_liasses_fiscales_two_obligations_fiscales' }
+      let(:payload_name) { 'two_obligations_fiscales' }
 
       let(:body) { extract_dgfip_liasses_fiscales_payload(payload_name).to_json }
 

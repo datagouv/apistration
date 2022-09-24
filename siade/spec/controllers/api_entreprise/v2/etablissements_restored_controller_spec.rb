@@ -164,7 +164,7 @@ RSpec.describe APIEntreprise::V2::EtablissementsRestoredController, type: :contr
   end
 
   describe 'checks json of active_GE', vcr: { cassette_name: 'insee/siret/active_GE' } do
-    it_behaves_like 'ENFORCED SPECS', sirets_insee_v3[:active_GE], JSON.parse(File.read('spec/support/payload_files/json/etablissement_restored_active_GE.json'))
+    it_behaves_like 'ENFORCED SPECS', sirets_insee_v3[:active_GE], JSON.parse(File.read('spec/fixtures/payloads/insee/etablissement_restored_active_GE.json'))
   end
 
   describe 'checks json of with_enseigne_siret', vcr: { cassette_name: 'insee/siret/with_enseigne_siret' } do

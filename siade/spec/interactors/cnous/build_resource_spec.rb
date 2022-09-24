@@ -7,7 +7,7 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
     instance_double(Net::HTTPOK, body:)
   end
 
-  let(:body) { Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_valid_response.json').read }
+  let(:body) { Rails.root.join('spec/fixtures/payloads/cnous/student_scholarship_valid_response.json').read }
 
   it { is_expected.to be_a_success }
 

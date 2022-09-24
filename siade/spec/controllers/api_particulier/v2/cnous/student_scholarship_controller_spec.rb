@@ -52,7 +52,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController, type: :c
       before do
         stub_request(:get, /#{Siade.credentials[:cnous_student_scholarship_ine_url]}/).to_return(
           status: 404,
-          body: Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_not_found.json').read
+          body: Rails.root.join('spec/fixtures/payloads/cnous/student_scholarship_not_found.json').read
         )
       end
 

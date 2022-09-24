@@ -1,13 +1,13 @@
 def open_payload_file(filename, read_option = nil)
   if read_option
-    Rails.root.join('spec/support/payload_files/', filename).open(read_option)
+    Rails.root.join('spec/fixtures/payloads/', filename).open(read_option)
   else
-    Rails.root.join('spec/support/payload_files/', filename).open
+    Rails.root.join('spec/fixtures/payloads/', filename).open
   end
 end
 
 def read_payload_file(filename)
-  Rails.root.join('spec/support/payload_files', filename).read
+  Rails.root.join('spec/fixtures/payloads', filename).read
 end
 
 def encode64_payload_file(filename)

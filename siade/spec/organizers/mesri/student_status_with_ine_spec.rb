@@ -13,7 +13,7 @@ RSpec.describe MESRI::StudentStatusWithINE, type: :retriever_organizer do
       before do
         stub_request(:get, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
           status: 200,
-          body: Rails.root.join('spec/fixtures/payloads/mesri_student_status_with_ine_valid_response.json').read
+          body: Rails.root.join('spec/fixtures/payloads/mesri/student_status_with_ine_valid_response.json').read
         )
       end
 

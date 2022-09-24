@@ -7,7 +7,7 @@ RSpec.describe CNAF::QuotientFamilial::BuildResource, type: :build_resource do
     instance_double(Net::HTTPOK, body:)
   end
 
-  let(:body) { Rails.root.join('spec/fixtures/payloads/cnaf_quotient_familial_valid_response.mime').read }
+  let(:body) { Rails.root.join('spec/fixtures/payloads/cnaf/quotient_familial_valid_response.mime').read }
 
   it { is_expected.to be_a_success }
 

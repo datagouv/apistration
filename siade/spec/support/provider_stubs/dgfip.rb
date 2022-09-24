@@ -35,7 +35,7 @@ module ProviderStubs::DGFIP
 
     stub_request(:post, 'https://cfsmsp.impots.gouv.fr/secavis/faces/commun/index.jsf').to_return(
       status: 200,
-      body: Rails.root.join('spec/fixtures/payloads/dgfip-svair-valid-response-one-declarant.html').read
+      body: Rails.root.join('spec/fixtures/payloads/dgfip/svair/valid_response_one_declarant.html').read
     )
   end
 
@@ -44,7 +44,7 @@ module ProviderStubs::DGFIP
 
     stub_request(:post, 'https://cfsmsp.impots.gouv.fr/secavis/faces/commun/index.jsf').to_return(
       status: 200,
-      body: Rails.root.join('spec/fixtures/payloads/dgfip-svair-not-found.html').read
+      body: Rails.root.join('spec/fixtures/payloads/dgfip/svair/not_found.html').read
     )
   end
 
@@ -60,7 +60,7 @@ module ProviderStubs::DGFIP
   def extract_dgfip_liasses_fiscales_payload(name)
     JSON.parse(
       Rails.root.join(
-          "spec/fixtures/payloads/#{name}.json"
+          "spec/fixtures/payloads/dgfip/liasses_fiscales/#{name}.json"
         ).read
     )
   end

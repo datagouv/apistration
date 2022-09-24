@@ -19,7 +19,7 @@ RSpec.describe CNAF::QuotientFamilial::ValidateResponse, type: :validate_respons
       let(:code) { '200' }
 
       context 'with data in payload' do
-        let(:body) { Rails.root.join('spec/fixtures/payloads/cnaf_quotient_familial_valid_response.mime').read }
+        let(:body) { Rails.root.join('spec/fixtures/payloads/cnaf/quotient_familial_valid_response.mime').read }
 
         it { is_expected.to be_a_success }
 
@@ -28,7 +28,7 @@ RSpec.describe CNAF::QuotientFamilial::ValidateResponse, type: :validate_respons
 
       context 'without data in payload' do
         context 'when it is a beneficiary not found' do
-          let(:body) { Rails.root.join('spec/fixtures/payloads/cnaf_quotient_familial_not_found_response.mime').read }
+          let(:body) { Rails.root.join('spec/fixtures/payloads/cnaf/quotient_familial_not_found_response.mime').read }
 
           it { is_expected.to be_a_failure }
 
@@ -40,7 +40,7 @@ RSpec.describe CNAF::QuotientFamilial::ValidateResponse, type: :validate_respons
         end
 
         context 'when it is a beneficiary disbared' do
-          let(:body) { Rails.root.join('spec/fixtures/payloads/cnaf_quotient_familial_disbared_beneficiary_response.mime').read }
+          let(:body) { Rails.root.join('spec/fixtures/payloads/cnaf/quotient_familial_disbared_beneficiary_response.mime').read }
 
           it { is_expected.to be_a_failure }
 

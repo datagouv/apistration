@@ -19,7 +19,7 @@ RSpec.describe CNOUS::StudentScholarshipWithINE::MakeRequest, type: :make_reques
       }
     ).to_return(
       status: 200,
-      body: Rails.root.join('spec/fixtures/payloads/cnous_student_scholarship_valid_response.json').read
+      body: Rails.root.join('spec/fixtures/payloads/cnous/student_scholarship_valid_response.json').read
     )
   end
 

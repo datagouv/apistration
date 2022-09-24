@@ -129,12 +129,12 @@ RSpec.describe APIEntreprise::V2::EntreprisesRestoredController, type: :controll
   end
 
   describe 'checks json of active_GE', vcr: { cassette_name: 'insee/siren/active_GE' } do
-    it_behaves_like 'ENFORCED SPECS', sirens_insee_v3[:active_GE], JSON.parse(File.read('spec/support/payload_files/json/entreprise_restored_active_GE.json'))
+    it_behaves_like 'ENFORCED SPECS', sirens_insee_v3[:active_GE], JSON.parse(File.read('spec/fixtures/payloads/insee/entreprise_restored_active_GE.json'))
   end
 
   describe 'checks json of active_AE', vcr: { cassette_name: 'insee/siren/active_AE' } do
     # if AE: raison sociale = raison sociale | nomS+prenomS
-    it_behaves_like 'ENFORCED SPECS', sirens_insee_v3[:active_AE], JSON.parse(File.read('spec/support/payload_files/json/entreprise_restored_active_AE.json'))
+    it_behaves_like 'ENFORCED SPECS', sirens_insee_v3[:active_AE], JSON.parse(File.read('spec/fixtures/payloads/insee/entreprise_restored_active_AE.json'))
   end
 
   describe 'checks json of etranger', vcr: { cassette_name: 'insee/siren/etranger' } do

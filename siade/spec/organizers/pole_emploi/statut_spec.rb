@@ -16,7 +16,7 @@ RSpec.describe PoleEmploi::Statut, type: :retriever_organizer do
       before do
         stub_request(:post, Siade.credentials[:pole_emploi_status_url]).and_return(
           status: 200,
-          body: Rails.root.join('spec/fixtures/payloads/pole_emploi_statut_valid_payload.json').read
+          body: Rails.root.join('spec/fixtures/payloads/pole_emploi/statut_valid.json').read
         )
       end
 
