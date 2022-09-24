@@ -15,7 +15,7 @@ class ACOSSError < AbstractSpecificProviderError
     {
       manual_verification_asked: '501',
       ongoing_manual_verification: '502',
-      cannot_deliver_document: '503',
+      cannot_deliver_document: '503'
     }
   end
 
