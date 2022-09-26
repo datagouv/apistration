@@ -53,7 +53,7 @@ module ProviderStubs::DGFIP
 
     stub_request(:post, 'https://cfsmsp.impots.gouv.fr/secavis/faces/commun/index.jsf').to_return(
       status: 200,
-      body: Rails.root.join('spec/fixtures/payloads/dgfip-svair-access-denied.html').read
+      body: Rails.root.join('spec/fixtures/payloads/dgfip/svair/access_denied.html').read
     )
   end
 
