@@ -7,7 +7,7 @@ RSpec.describe DGFIP::Dictionaries, type: :retriever_organizer do
     }
   end
 
-  describe 'happy path', vcr: { cassette_name: 'dgfip/dictionaries/2019' } do
+  describe 'happy path', vcr: { cassette_name: 'dgfip/dictionaries/2019', decode_compressed_response: true } do
     let(:declarations_1) do
       [
         {

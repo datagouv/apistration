@@ -1,6 +1,10 @@
 require 'xmlsimple'
 
 VCR.configure do |c|
+  c.before_record do |interaction|
+    interaction.response.body.force_encoding('UTF-8')
+  end
+
   c.allow_http_connections_when_no_cassette = false
   c.ignore_localhost = true
   c.hook_into :webmock
