@@ -55,4 +55,20 @@ class APIParticulier::V2::DGFIP::SVAIRController < APIParticulierController
     ]
   end
   # rubocop:enable Metrics/MethodLength
+
+  def extract_http_code(organizer)
+    if at_least_one_error_kind_of?(:forbidden, organizer)
+      :bandwidth_limit_exceeded
+    else
+      super
+    end
+  end
+
+  def format_bandwidth_limit_exceeded_error(_error)
+    {
+      error: 'rate_limited',
+      reason: 'DGFIP error rate limit exceeded',
+      message: "Le fournisseur de donnée a rejeté la demande en raison d'un trop grand nombre d'échecs antérieurs."
+    }
+  end
 end

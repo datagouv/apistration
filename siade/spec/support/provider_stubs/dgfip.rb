@@ -48,6 +48,15 @@ module ProviderStubs::DGFIP
     )
   end
 
+  def mock_access_denied_dgfip_svair
+    mock_dgfip_svair_view_state
+
+    stub_request(:post, 'https://cfsmsp.impots.gouv.fr/secavis/faces/commun/index.jsf').to_return(
+      status: 200,
+      body: Rails.root.join('spec/fixtures/payloads/dgfip-svair-access-denied.html').read
+    )
+  end
+
   def mock_dgfip_svair_view_state(payload: nil)
     payload ||= '<input type="hidden" name="javax.faces.ViewState" value="view_state_value" />'
 
