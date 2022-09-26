@@ -4,6 +4,6 @@ class DGFIP::Dictionaries::ValidateResponse < ValidateResponse
   end
 
   def dictionary_in_body?
-    body.present? && json_body['dictionnaire'].present?
+    body.present? && !invalid_json? && json_body['dictionnaire'].present?
   end
 end
