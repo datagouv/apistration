@@ -7,7 +7,7 @@ class DGFIP::Dictionaries::MakeRequest < MakeRequest::Get
 
   def request_params
     {
-      siren: '',
+      siren: mandatory_siren_but_must_be_empty,
       annee: year
     }
   end
@@ -18,6 +18,10 @@ class DGFIP::Dictionaries::MakeRequest < MakeRequest::Get
   end
 
   private
+
+  def mandatory_siren_but_must_be_empty
+    ''
+  end
 
   def year
     context.params[:year]
