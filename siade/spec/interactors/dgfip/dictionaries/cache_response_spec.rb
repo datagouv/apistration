@@ -2,7 +2,7 @@ RSpec.describe DGFIP::Dictionaries::CacheResponse do
   subject { described_class.call(response:, params:) }
 
   let(:response) { instance_double(Net::HTTPOK, code: '200', body:) }
-  let(:body) { Rails.root.join('spec/fixtures/payloads/dgfip-dictionary.json').read }
+  let(:body) { Rails.root.join('spec/fixtures/payloads/dgfip/dictionary.json').read }
   let(:params) do
     {
       year: 2018
