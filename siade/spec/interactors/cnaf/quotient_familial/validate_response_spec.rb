@@ -6,13 +6,22 @@ RSpec.describe CNAF::QuotientFamilial::ValidateResponse, type: :validate_respons
       instance_double(Net::HTTPOK, code:, body:)
     end
 
-    context 'with an invalid code' do
-      let(:code) { '500' }
+    context 'with an unknown http code' do
+      let(:code) { '511' }
       let(:body) { 'whatever' }
 
       it { is_expected.to be_a_failure }
 
       its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+    end
+
+    context 'when it is an internal error' do
+      let(:code) { '500' }
+      let(:body) { 'panik Internal Server Error panik everywhere' }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
     end
 
     context 'with a valid code' do

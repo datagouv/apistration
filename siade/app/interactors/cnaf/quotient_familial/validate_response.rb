@@ -2,6 +2,7 @@ class CNAF::QuotientFamilial::ValidateResponse < ValidateResponse
   include CNAF::QuotientFamilial::ResponseBodyHelpers
 
   def call
+    invalid_provider_response! if internal_server_error?
     unknown_provider_response! unless http_ok?
 
     resource_not_found! if not_found?
@@ -29,6 +30,11 @@ class CNAF::QuotientFamilial::ValidateResponse < ValidateResponse
 
   def data_missing?
     !data_present?
+  end
+
+  def internal_server_error?
+    http_code == 500 &&
+      body.include?('Internal Server Error')
   end
 
   def beneficiary_not_found?
