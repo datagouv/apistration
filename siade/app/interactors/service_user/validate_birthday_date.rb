@@ -1,9 +1,19 @@
 class ServiceUser::ValidateBirthdayDate < ValidateParamInteractor
   def call
-    invalid_param!(:birthday_date) if param(:birthday_date).blank?
+    invalid_param!(:birthday_date) if param(:birthday_date).blank? || invalid_format? || invalid_date?
+  end
 
-    return if param(:birthday_date) =~ /\A\d{4}-\d{2}-\d{2}\z/
+  private
 
-    invalid_param!(:birthday_date)
+  def invalid_format?
+    param(:birthday_date) !~ /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/
+  end
+
+  def invalid_date?
+    Date.parse(param(:birthday_date))
+
+    false
+  rescue Date::Error
+    true
   end
 end

@@ -1,4 +1,4 @@
-RSpec.describe CNOUS::StudentScholarshipWithCivility::ValidateBirthdayDate, type: :validate_params do
+RSpec.describe ServiceUser::ValidateBirthdayDate, type: :validate_params do
   subject { described_class.call(params: { birthday_date: }) }
 
   context 'with valid birthday_date' do
@@ -19,6 +19,14 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::ValidateBirthdayDate, type
 
   context 'when birthday_date has an invalid format' do
     let(:birthday_date) { '2000-01-001' }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+  end
+
+  context 'when birthday_date is an invalid date' do
+    let(:birthday_date) { '2000-16-01' }
 
     it { is_expected.to be_a_failure }
 
