@@ -1,4 +1,341 @@
 insee:
+  shared_insee_unite_legale_attributes: &shared_insee_unite_legale_attributes
+    siret_siege_social:
+      title: "SIRET du siège social"
+      type: "string"
+      example: "13002526500013"
+    type:
+      title: "Type de personne"
+      type: "string"
+      enum:
+        - "personne_physique"
+        - "personne_morale"
+      example: "personne_morale"
+      description:
+        "Indique si l'unité légale est une personne morale ou une personne physique.
+        Cette valeur est déterminée à l'aide du code juridique : '1000' correspondant à une personne physique."
+    personne_morale_attributs:
+      type: "object"
+      title: "Attributs de la personne morale"
+      description:
+        "Attributs associés à la personne morale. Les valeurs sont à
+        'null' pour les personnes physiques."
+      properties:
+        raison_sociale:
+          title: "Raison sociale de l'unité légale"
+          type: "string"
+          example: "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
+          nullable: true
+        sigle:
+          title: "Sigle de l'unité légale"
+          type: "string"
+          example: "DINUM"
+          nullable: true
+    personne_physique_attributs:
+      type: "object"
+      title: "Attributs de la personne physique"
+      description: "Attributs associés à la personne physique. Les
+        valeurs sont à 'null' pour les personnes morales."
+      properties:
+        pseudonyme:
+          title: "Pseudonyme"
+          type: "string"
+          example: "DJ Falcon"
+          nullable: true
+          description: "Le pseudonyme correspond au nom qu'une
+            personne utilise pour se désigner dans l'exercice
+            de son activité, généralement littéraire ou artistique."
+        prenom_usuel:
+          title: "Prénom usuel"
+          type: "string"
+          example: "Jean"
+          nullable: true
+          description: "Le prénom usuel est le prénom par lequel
+            une personne choisit de se faire appeler dans la
+            vie courante. Ce prénom fait partie de ceux qui lui ont
+            été donnés à sa naissance et qui sont inscrits à
+            l'état civil."
+        prenom_1:
+          title: "Prénom numéro 1 déclaré"
+          type: "string"
+          example: "Jean"
+          nullable: true
+        prenom_2:
+          title: "Prénom numéro 2 déclaré"
+          type: "string"
+          example: "Jacques"
+          nullable: true
+        prenom_3:
+          title: "Prénom numéro 3 déclaré"
+          type: "string"
+          example: "Pierre"
+          nullable: true
+        prenom_4:
+          title: "Prénom numéro 4 déclaré"
+          type: "string"
+          example: "Paul"
+          nullable: true
+        nom_usage:
+          title: "Nom d'usage"
+          type: "string"
+          example: "Dupont"
+          nullable: true
+          description: "Nom que la personne physique a choisi d'utiliser."
+        nom_naissance:
+          title: "Nom de naissance"
+          type: "string"
+          example: "Dubois"
+          nullable: true
+        sexe:
+          title: "Genre"
+          type: "string"
+          example: "M"
+          enum:
+            - "M"
+            - "F"
+            - null
+          nullable: true
+          description: "Caractère féminin ou masculin de la personne
+            physique. Cette valeur peut ne pas être renseignée
+            pour une personne physique."
+    categorie_entreprise:
+      title: "Catégorie de l'unité légale"
+      type: "string"
+      example: "GE"
+      enum:
+        - "GE"
+        - "ETI"
+        - "PME"
+        - null
+      description: "Il s'agit d'une
+        variable statistique calculée par l'Insee. Elle ne peut
+        prendre que 3 valeurs:
+        \n
+        \n
+        - GE: Grande Entreprise
+        \n
+        - ETI: Entreprise de Taille Intermédiaire
+        \n
+        - PME: Petite ou Moyenne Entreprise
+        \n
+        \n
+        Celle-ci peut-être 'null' dans
+        certains cas : quand il s’agit d’une unité légale nouvellement
+        créée, ou bien d’une unité légale cessée, ou encore d’une unité
+        légale hors champ du calcul de la catégorie (unité légale
+        agricole ou ne faisant pas partie du système productif).
+        \n
+        \n
+        Définition de 'catégorie d'entreprise' par l'Insee : https://www.insee.fr/fr/metadonnees/definition/c1057"
+    diffusable_commercialement:
+      title: "Diffusable commercialement"
+      type: "boolean"
+      example: true
+      description: "Indique si l'unité légale est :
+        \n
+        \n
+        - une unité légale diffusible : 'true'
+        \n
+        - une unité légale non-diffusible : 'false'. Dans ce cas, les
+        informations obtenues ne doivent en aucun cas être accessibles
+        au grand public.
+        \n
+        \n
+        Plus d'informations sur les conditions de diffusion : LIEN TODO"
+    forme_juridique:
+      type: "object"
+      title: "Attributs de la forme juridique"
+      properties:
+        code:
+          title: "Code de la forme juridique de l'unité légale."
+          type: "string"
+          example: "7120"
+          description: "Il existe plus de 300 catégories juridiques, identifiables par un code spécifique à quatre chiffres. Leur nomenclature comporte 3 niveaux. Le premier niveau de classement contient 9 grandes catégories identifiables avec le premier chiffre du code :
+            \n
+            \n
+            - 0 : Organisme de placement collectif en valeurs mobilières sans personnalité morale
+            \n
+            - 1 : Entrepreneur individuel. La catégorie juridique des personnes physiques est '1000'.
+            \n
+            - 2 : Groupement de droit privé non doté de la personnalité morale
+            \n
+            - 3 : Personne morale de droit étranger
+            \n
+            - 4 : Personne morale de droit public soumise au droit commercial
+            \n
+            - 5 : Société commerciale
+            \n
+            - 6 : Autre personne morale immatriculée au RCS
+            \n
+            - 7 : Personne morale et organisme soumis au droit administratif
+            \n
+            - 8 : Organisme privé spécialisé
+            \n
+            - 9 : Groupement de droit privé
+            \n
+            \n
+            Nomenclature exhaustive des codes fournie par l'Insee : https://www.insee.fr/fr/information/2028129"
+        libelle:
+          title: "Libellé associé au code de la forme juridique de l'unité légale."
+          type: "string"
+          example: "Service central d'un ministère"
+          description: "indique le libellé correspondant au code juridique.
+          Si le code ne correspond à aucun libellé la valeur 'non référencé' est utilisée.
+          \n
+          \n
+          Nomenclature exhaustive fournie par l'Insee : https://www.insee.fr/fr/information/2028129"
+    activite_principale:
+      title: "Attributs de l'activité principale"
+      type: "object"
+      properties:
+        code:
+          title: "Code de l'activité principale (APE) de l'unité légale"
+          type: "string"
+          example: "8411Z"
+          description: "Le code APE (activité principale exercée) permet d'identifier la branche d'activité principale. Il est attribué par l'Insee lors de l'immatriculation ou la déclaration d'activité de l'entreprise. Ce code de 4 chiffres + 1 lettre est extrait de la nomenclature d'activité française (NAF) de l'Insee.
+          \n
+          \n
+          À noter qu'une entreprise n'ayant pas encore de code APE peut se voir affecter la valeur '00.00Z' de manière provisoire.
+          \n
+          \n
+          Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
+          Nomemclature d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2120875"
+        libelle:
+          title: "Libellé associé au code APE"
+          type: "string"
+          nullable: true
+          example: "Administration publique générale"
+          description:
+            "Si le code n'est pas renseigné dans la nomenclature 'Naf Rév2'
+            (nomenclature en vigueur), le libellé n'est pas
+            renseigné ici. Si le code ne correspond à aucun
+            libellé au sein de la nomenclature 'Naf Rév2', la
+            valeur 'non référencé' est utilisée.
+            \n
+            \n
+            Nomemclature d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2406147"
+        nomenclature:
+          title: "Nomenclature associée au code"
+          type: "string"
+          example: "NAFRev2"
+          description:
+            "Ce champ indique le nom de la nomenclature associée au code APE."
+    tranche_effectif_salarie:
+      type: "object"
+      title: "Tranche d'effectif salarié de l'unité légale"
+      properties:
+        code:
+          type: "string"
+          nullable: true
+          example: "51"
+          description:
+            "Le code effectif indique la tranche d'effectif salarié de l'unité légale. Le nombre de salarié est déterminé en fonction de l'effectif de chacun des établissements de l'unité légale :
+            \n
+            \n
+            - NN : Unités non employeuses (pas de salarié au cours de l'année de référence et pas d'effectif au 31/12). Cette tranche peut contenir quelques effectifs inconnus
+            \n
+            - 00 : 0 salarié (n'ayant pas d'effectif au 31/12 mais ayant employé des salariés au cours de l'année de référence)
+            \n
+            - 01 : 1 ou 2 salariés
+            \n
+            - 02 : 3 à 5 salariés
+            \n
+            - 03 : 6 à 9 salariés
+            \n
+            - 11 : 10 à 19 salariés
+            \n
+            - 12 : 20 à 49 salariés
+            \n
+            - 21 : 50 à 99 salariés
+            \n
+            - 22 : 100 à 199 salariés
+            \n
+            - 31 : 200 à 249 salariés
+            \n
+            - 32 : 250 à 499 salariés
+            \n
+            - 41 : 500 à 999 salariés
+            \n
+            - 42 : 1 000 à 1 999 salariés
+            \n
+            - 51 : 2 000 à 4 999 salariés
+            \n
+            - 52 : 5 000 à 9 999 salariés
+            \n
+            - 53 : 10 000 salariés et plus
+            \n
+            \n
+            Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+            \n
+            \n
+            L'effectif exact de l'entreprise, mensuel et annuel, est disponible au travers de l'[API Effectifs - URSSAF Caisse nationale](TODO). Si votre jeton contient ce droit d'accès, nous vous recommandons d'utiliser cette API. Ces données étant protégées, leur cadre d'utilisation est différent de la tranche effectif fournie par l'Insee, qui elle est une donnée publique."
+          enum:
+          - "NN"
+          - "00"
+          - "01"
+          - "02"
+          - "03"
+          - "11"
+          - "12"
+          - "21"
+          - "22"
+          - "31"
+          - "32"
+          - "41"
+          - "42"
+          - "51"
+          - "52"
+          - "53"
+        intitule:
+          title: "Intitulé associé au code effectif"
+          type: "string"
+          nullable: true
+          example: "2 000 à 4 999 salariés"
+        date_reference:
+          title: "Date de référence de l'effectif"
+          type: "string"
+          nullable: true
+          example: "2016"
+        de:
+          title: "Seuil inférieur de la tranche effectif"
+          type: "integer"
+          example: 2000
+          nullable: true
+        a:
+          title: "Seuil supérieur de la tranche effectif"
+          type: "integer"
+          example: 4999
+          nullable: true
+    etat_administratif:
+      title: "État administratif de l'unité légale"
+      type: "string"
+      example: 'A'
+      enum:
+        - "A"
+        - "C"
+      description:
+        "Cette valeur décrit l'état administratif de l'unité légale, qui peut être :
+        \n
+        \n
+        - cessée. Le passage à l'état « Cessée » découle de la prise en compte d'une déclaration de cessation administrative. Pour les personnes morales, cela correspond au dépôt de la déclaration de disparition de la personne morale. Pour les personnes physiques, cela correspond soit à la prise en compte de la déclaration de cessation d'activité déposée par l'exploitant soit au décès de l'exploitant conformément à la réglementation.
+        \n
+        - active. En dehors des cas explicités ci-dessus, l'unité légale est toujours à l'état administratif « Active ».
+        \n
+        \n
+        Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+    date_creation:
+      title: "Date de création de l'unité légale"
+      type: "integer"
+      example: 1634103818
+      description: "La date de création correspond à la date qui figure dans les statuts de l'entreprise qui sont déposés au centre de formalité des entreprises (CFE) compétent. Cette valeur est renvoyée sous format timestamp.
+        \n
+        \n
+Saufpour les unités purgées, la date de création n'est jamais à 'null'. Si elle est non renseignée, elle sera au 01/01/1900.
+        \n
+        \n
+        Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+
+insee:
   adresse_etablissement:
     title: "Adresse établissement"
     description: "Adresse d'un établissement inscrit au répertoire Sirene. Tous les établissements sont appelables, y compris les non-diffusibles."
@@ -164,346 +501,13 @@ insee:
     tags:
       - "Informations générales"
     attributes: &insee_unite_legale_attributes
-      siret_siege_social:
-        title: "SIRET du siège social"
-        type: "string"
-        example: "13002526500013"
-      type:
-        title: "Type de personne"
-        type: "string"
-        enum:
-          - "personne_physique"
-          - "personne_morale"
-        example: "personne_morale"
-        description:
-          "Indique si l'unité légale est une personne morale ou une personne physique.
-          Cette valeur est déterminée à l'aide du code juridique : '1000' correspondant à une personne physique."
-      personne_morale_attributs:
-        type: "object"
-        title: "Attributs de la personne morale"
-        description:
-          "Attributs associés à la personne morale. Les valeurs sont à
-          'null' pour les personnes physiques."
-        properties:
-          raison_sociale:
-            title: "Raison sociale de l'unité légale"
-            type: "string"
-            example: "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
-            nullable: true
-          sigle:
-            title: "Sigle de l'unité légale"
-            type: "string"
-            example: "DINUM"
-            nullable: true
-      personne_physique_attributs:
-        type: "object"
-        title: "Attributs de la personne physique"
-        description: "Attributs associés à la personne physique. Les
-          valeurs sont à 'null' pour les personnes morales."
-        properties:
-          pseudonyme:
-            title: "Pseudonyme"
-            type: "string"
-            example: "DJ Falcon"
-            nullable: true
-            description: "Le pseudonyme correspond au nom qu'une
-              personne utilise pour se désigner dans l'exercice
-              de son activité, généralement littéraire ou artistique."
-          prenom_usuel:
-            title: "Prénom usuel"
-            type: "string"
-            example: "Jean"
-            nullable: true
-            description: "Le prénom usuel est le prénom par lequel
-              une personne choisit de se faire appeler dans la
-              vie courante. Ce prénom fait partie de ceux qui lui ont
-              été donnés à sa naissance et qui sont inscrits à
-              l'état civil."
-          prenom_1:
-            title: "Prénom numéro 1 déclaré"
-            type: "string"
-            example: "Jean"
-            nullable: true
-          prenom_2:
-            title: "Prénom numéro 2 déclaré"
-            type: "string"
-            example: "Jacques"
-            nullable: true
-          prenom_3:
-            title: "Prénom numéro 3 déclaré"
-            type: "string"
-            example: "Pierre"
-            nullable: true
-          prenom_4:
-            title: "Prénom numéro 4 déclaré"
-            type: "string"
-            example: "Paul"
-            nullable: true
-          nom_usage:
-            title: "Nom d'usage"
-            type: "string"
-            example: "Dupont"
-            nullable: true
-            description: "Nom que la personne physique a choisi d'utiliser."
-          nom_naissance:
-            title: "Nom de naissance"
-            type: "string"
-            example: "Dubois"
-            nullable: true
-          sexe:
-            title: "Genre"
-            type: "string"
-            example: "M"
-            enum:
-              - "M"
-              - "F"
-              - null
-            nullable: true
-            description: "Caractère féminin ou masculin de la personne
-              physique. Cette valeur peut ne pas être renseignée
-              pour une personne physique."
-      categorie_entreprise:
-        title: "Catégorie de l'unité légale"
-        type: "string"
-        example: "GE"
-        enum:
-          - "GE"
-          - "ETI"
-          - "PME"
-          - null
-        description: "Il s'agit d'une
-          variable statistique calculée par l'Insee. Elle ne peut
-          prendre que 3 valeurs:
-          \n
-          \n
-          - GE: Grande Entreprise
-          \n
-          - ETI: Entreprise de Taille Intermédiaire
-          \n
-          - PME: Petite ou Moyenne Entreprise
-          \n
-          \n
-          Celle-ci peut-être 'null' dans
-          certains cas : quand il s’agit d’une unité légale nouvellement
-          créée, ou bien d’une unité légale cessée, ou encore d’une unité
-          légale hors champ du calcul de la catégorie (unité légale
-          agricole ou ne faisant pas partie du système productif).
-          \n
-          \n
-          Définition de 'catégorie d'entreprise' par l'Insee : https://www.insee.fr/fr/metadonnees/definition/c1057"
-      diffusable_commercialement:
-        title: "Diffusable commercialement"
-        type: "boolean"
-        example: true
-        description: "Indique si l'unité légale est :
-          \n
-          \n
-          - une unité légale diffusible : 'true'
-          \n
-          - une unité légale non-diffusible : 'false'. Dans ce cas, les
-          informations obtenues ne doivent en aucun cas être accessibles
-          au grand public.
-          \n
-          \n
-          Plus d'informations sur les conditions de diffusion : LIEN TODO"
-      forme_juridique:
-        type: "object"
-        title: "Attributs de la forme juridique"
-        properties:
-          code:
-            title: "Code de la forme juridique de l'unité légale."
-            type: "string"
-            example: "7120"
-            description: "Il existe plus de 300 catégories juridiques, identifiables par un code spécifique à quatre chiffres. Leur nomenclature comporte 3 niveaux. Le premier niveau de classement contient 9 grandes catégories identifiables avec le premier chiffre du code :
-              \n
-              \n
-              - 0 : Organisme de placement collectif en valeurs mobilières sans personnalité morale
-              \n
-              - 1 : Entrepreneur individuel. La catégorie juridique des personnes physiques est '1000'.
-              \n
-              - 2 : Groupement de droit privé non doté de la personnalité morale
-              \n
-              - 3 : Personne morale de droit étranger
-              \n
-              - 4 : Personne morale de droit public soumise au droit commercial
-              \n
-              - 5 : Société commerciale
-              \n
-              - 6 : Autre personne morale immatriculée au RCS
-              \n
-              - 7 : Personne morale et organisme soumis au droit administratif
-              \n
-              - 8 : Organisme privé spécialisé
-              \n
-              - 9 : Groupement de droit privé
-              \n
-              \n
-              Nomenclature exhaustive des codes fournie par l'Insee : https://www.insee.fr/fr/information/2028129"
-          libelle:
-            title: "Libellé associé au code de la forme juridique de l'unité légale."
-            type: "string"
-            example: "Service central d'un ministère"
-            description: "indique le libellé correspondant au code juridique.
-            Si le code ne correspond à aucun libellé la valeur 'non référencé' est utilisée.
-            \n
-            \n
-            Nomenclature exhaustive fournie par l'Insee : https://www.insee.fr/fr/information/2028129"
-      activite_principale:
-        title: "Attributs de l'activité principale"
-        type: "object"
-        properties:
-          code:
-            title: "Code de l'activité principale (APE) de l'unité légale"
-            type: "string"
-            example: "8411Z"
-            description: "Le code APE (activité principale exercée) permet d'identifier la branche d'activité principale. Il est attribué par l'Insee lors de l'immatriculation ou la déclaration d'activité de l'entreprise. Ce code de 4 chiffres + 1 lettre est extrait de la nomenclature d'activité française (NAF) de l'Insee.
-            \n
-            \n
-            À noter qu'une entreprise n'ayant pas encore de code APE peut se voir affecter la valeur '00.00Z' de manière provisoire.
-            \n
-            \n
-            Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
-            Nomemclature d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2120875"
-          libelle:
-            title: "Libellé associé au code APE"
-            type: "string"
-            nullable: true
-            example: "Administration publique générale"
-            description:
-              "Si le code n'est pas renseigné dans la nomenclature 'Naf Rév2'
-              (nomenclature en vigueur), le libellé n'est pas
-              renseigné ici. Si le code ne correspond à aucun
-              libellé au sein de la nomenclature 'Naf Rév2', la
-              valeur 'non référencé' est utilisée.
-              \n
-              \n
-              Nomemclature d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2406147"
-          nomenclature:
-            title: "Nomenclature associée au code"
-            type: "string"
-            example: "NAFRev2"
-            description:
-              "Ce champ indique le nom de la nomenclature associée au code APE."
-      tranche_effectif_salarie:
-        type: "object"
-        title: "Tranche d'effectif salarié de l'unité légale"
-        properties:
-          code:
-            type: "string"
-            nullable: true
-            example: "51"
-            description:
-              "Le code effectif indique la tranche d'effectif salarié de l'unité légale. Le nombre de salarié est déterminé en fonction de l'effectif de chacun des établissements de l'unité légale :
-              \n
-              \n
-              - NN : Unités non employeuses (pas de salarié au cours de l'année de référence et pas d'effectif au 31/12). Cette tranche peut contenir quelques effectifs inconnus
-              \n
-              - 00 : 0 salarié (n'ayant pas d'effectif au 31/12 mais ayant employé des salariés au cours de l'année de référence)
-              \n
-              - 01 : 1 ou 2 salariés
-              \n
-              - 02 : 3 à 5 salariés
-              \n
-              - 03 : 6 à 9 salariés
-              \n
-              - 11 : 10 à 19 salariés
-              \n
-              - 12 : 20 à 49 salariés
-              \n
-              - 21 : 50 à 99 salariés
-              \n
-              - 22 : 100 à 199 salariés
-              \n
-              - 31 : 200 à 249 salariés
-              \n
-              - 32 : 250 à 499 salariés
-              \n
-              - 41 : 500 à 999 salariés
-              \n
-              - 42 : 1 000 à 1 999 salariés
-              \n
-              - 51 : 2 000 à 4 999 salariés
-              \n
-              - 52 : 5 000 à 9 999 salariés
-              \n
-              - 53 : 10 000 salariés et plus
-              \n
-              \n
-              Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
-              \n
-              \n
-              L'effectif exact de l'entreprise, mensuel et annuel, est disponible au travers de l'[API Effectifs - URSSAF Caisse nationale](TODO). Si votre jeton contient ce droit d'accès, nous vous recommandons d'utiliser cette API. Ces données étant protégées, leur cadre d'utilisation est différent de la tranche effectif fournie par l'Insee, qui elle est une donnée publique."
-            enum:
-            - "NN"
-            - "00"
-            - "01"
-            - "02"
-            - "03"
-            - "11"
-            - "12"
-            - "21"
-            - "22"
-            - "31"
-            - "32"
-            - "41"
-            - "42"
-            - "51"
-            - "52"
-            - "53"
-          intitule:
-            title: "Intitulé associé au code effectif"
-            type: "string"
-            nullable: true
-            example: "2 000 à 4 999 salariés"
-          date_reference:
-            title: "Date de référence de l'effectif"
-            type: "string"
-            nullable: true
-            example: "2016"
-          de:
-            title: "Seuil inférieur de la tranche effectif"
-            type: "integer"
-            example: 2000
-            nullable: true
-          a:
-            title: "Seuil supérieur de la tranche effectif"
-            type: "integer"
-            example: 4999
-            nullable: true
-      etat_administratif:
-        title: "État administratif de l'unité légale"
-        type: "string"
-        example: 'A'
-        enum:
-          - "A"
-          - "C"
-        description:
-          "Cette valeur décrit l'état administratif de l'unité légale, qui peut être :
-          \n
-          \n
-          - cessée. Le passage à l'état « Cessée » découle de la prise en compte d'une déclaration de cessation administrative. Pour les personnes morales, cela correspond au dépôt de la déclaration de disparition de la personne morale. Pour les personnes physiques, cela correspond soit à la prise en compte de la déclaration de cessation d'activité déposée par l'exploitant soit au décès de l'exploitant conformément à la réglementation.
-          \n
-          - active. En dehors des cas explicités ci-dessus, l'unité légale est toujours à l'état administratif « Active ».
-          \n
-          \n
-          Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+      <<: *shared_insee_unite_legale_attributes
       date_cessation:
         title: "Date de cessation de l'unité légale"
         type: "integer"
         nullable: true
         example: 1634133818
         description: "Cette valeur est renvoyée sous format timestamp. Si l'entreprise est juridique active, cette valeur est à 'null'."
-      date_creation:
-        title: "Date de création de l'unité légale"
-        type: "integer"
-        example: 1634103818
-        description: "La date de création correspond à la date qui figure dans les statuts de l'entreprise qui sont déposés au centre de formalité des entreprises (CFE) compétent. Cette valeur est renvoyée sous format timestamp.
-          \n
-          \n
-Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si elle est non renseignée, elle sera au 01/01/1900.
-          \n
-          \n
-          Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
     links:
       siege_social:
         type: "string"
@@ -718,7 +722,7 @@ Sauf pour les unités purgées, la date de création n'est jamais à 'null'. Si 
       unite_legale:
         type: "object"
         title: "Unité légale de l'établissement"
-        properties: *insee_unite_legale_attributes
+        properties: *shared_insee_unite_legale_attributes
 
       adresse:
         type: "object"

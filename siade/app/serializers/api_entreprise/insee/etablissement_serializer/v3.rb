@@ -10,7 +10,8 @@ class APIEntreprise::INSEE::EtablissementSerializer::V3 < APIEntreprise::V3AndMo
 
   attribute :unite_legale do |object|
     object.unite_legale.to_h.except(
-      :id
+      :id,
+      :date_cessation
     )
   end
 

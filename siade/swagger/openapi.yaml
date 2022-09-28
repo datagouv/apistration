@@ -7999,14 +7999,6 @@ paths:
                               des cas explicités ci-dessus, l'unité légale est toujours
                               à l'état administratif « Active ». \n \n Plus d'informations
                               dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
-                          date_cessation:
-                            title: Date de cessation de l'unité légale
-                            type: integer
-                            nullable: true
-                            example: 1634133818
-                            description: Cette valeur est renvoyée sous format timestamp.
-                              Si l'entreprise est juridique active, cette valeur est
-                              à 'null'.
                           date_creation:
                             title: Date de création de l'unité légale
                             type: integer
@@ -8015,7 +8007,7 @@ paths:
                               qui figure dans les statuts de l'entreprise qui sont
                               déposés au centre de formalité des entreprises (CFE)
                               compétent. Cette valeur est renvoyée sous format timestamp.
-                              \n \n Sauf pour les unités purgées, la date de création
+                              \n \n Saufpour les unités purgées, la date de création
                               n'est jamais à 'null'. Si elle est non renseignée, elle
                               sera au 01/01/1900. \n \n Plus d'informations dans la
                               documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
@@ -8030,7 +8022,6 @@ paths:
                         - activite_principale
                         - tranche_effectif_salarie
                         - etat_administratif
-                        - date_cessation
                         - date_creation
                       adresse:
                         type: object
@@ -9104,14 +9095,6 @@ paths:
                               des cas explicités ci-dessus, l'unité légale est toujours
                               à l'état administratif « Active ». \n \n Plus d'informations
                               dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
-                          date_cessation:
-                            title: Date de cessation de l'unité légale
-                            type: integer
-                            nullable: true
-                            example: 1634133818
-                            description: Cette valeur est renvoyée sous format timestamp.
-                              Si l'entreprise est juridique active, cette valeur est
-                              à 'null'.
                           date_creation:
                             title: Date de création de l'unité légale
                             type: integer
@@ -9120,7 +9103,7 @@ paths:
                               qui figure dans les statuts de l'entreprise qui sont
                               déposés au centre de formalité des entreprises (CFE)
                               compétent. Cette valeur est renvoyée sous format timestamp.
-                              \n \n Sauf pour les unités purgées, la date de création
+                              \n \n Saufpour les unités purgées, la date de création
                               n'est jamais à 'null'. Si elle est non renseignée, elle
                               sera au 01/01/1900. \n \n Plus d'informations dans la
                               documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
@@ -9135,7 +9118,6 @@ paths:
                         - activite_principale
                         - tranche_effectif_salarie
                         - etat_administratif
-                        - date_cessation
                         - date_creation
                       adresse:
                         type: object
@@ -10210,14 +10192,6 @@ paths:
                               des cas explicités ci-dessus, l'unité légale est toujours
                               à l'état administratif « Active ». \n \n Plus d'informations
                               dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
-                          date_cessation:
-                            title: Date de cessation de l'unité légale
-                            type: integer
-                            nullable: true
-                            example: 1634133818
-                            description: Cette valeur est renvoyée sous format timestamp.
-                              Si l'entreprise est juridique active, cette valeur est
-                              à 'null'.
                           date_creation:
                             title: Date de création de l'unité légale
                             type: integer
@@ -10226,7 +10200,7 @@ paths:
                               qui figure dans les statuts de l'entreprise qui sont
                               déposés au centre de formalité des entreprises (CFE)
                               compétent. Cette valeur est renvoyée sous format timestamp.
-                              \n \n Sauf pour les unités purgées, la date de création
+                              \n \n Saufpour les unités purgées, la date de création
                               n'est jamais à 'null'. Si elle est non renseignée, elle
                               sera au 01/01/1900. \n \n Plus d'informations dans la
                               documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
@@ -10241,7 +10215,6 @@ paths:
                         - activite_principale
                         - tranche_effectif_salarie
                         - etat_administratif
-                        - date_cessation
                         - date_creation
                       adresse:
                         type: object
@@ -11318,14 +11291,6 @@ paths:
                               des cas explicités ci-dessus, l'unité légale est toujours
                               à l'état administratif « Active ». \n \n Plus d'informations
                               dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
-                          date_cessation:
-                            title: Date de cessation de l'unité légale
-                            type: integer
-                            nullable: true
-                            example: 1634133818
-                            description: Cette valeur est renvoyée sous format timestamp.
-                              Si l'entreprise est juridique active, cette valeur est
-                              à 'null'.
                           date_creation:
                             title: Date de création de l'unité légale
                             type: integer
@@ -11334,7 +11299,7 @@ paths:
                               qui figure dans les statuts de l'entreprise qui sont
                               déposés au centre de formalité des entreprises (CFE)
                               compétent. Cette valeur est renvoyée sous format timestamp.
-                              \n \n Sauf pour les unités purgées, la date de création
+                              \n \n Saufpour les unités purgées, la date de création
                               n'est jamais à 'null'. Si elle est non renseignée, elle
                               sera au 01/01/1900. \n \n Plus d'informations dans la
                               documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
@@ -11349,7 +11314,6 @@ paths:
                         - activite_principale
                         - tranche_effectif_salarie
                         - etat_administratif
-                        - date_cessation
                         - date_creation
                       adresse:
                         type: object
@@ -12244,6 +12208,18 @@ paths:
                           En dehors des cas explicités ci-dessus, l'unité légale est
                           toujours à l'état administratif « Active ». \n \n Plus d'informations
                           dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                      date_creation:
+                        title: Date de création de l'unité légale
+                        type: integer
+                        example: 1634103818
+                        description: "La date de création correspond à la date qui
+                          figure dans les statuts de l'entreprise qui sont déposés
+                          au centre de formalité des entreprises (CFE) compétent.
+                          Cette valeur est renvoyée sous format timestamp. \n \n Saufpour
+                          les unités purgées, la date de création n'est jamais à 'null'.
+                          Si elle est non renseignée, elle sera au 01/01/1900. \n
+                          \n Plus d'informations dans la documentation Insee de l'API
+                          Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                       date_cessation:
                         title: Date de cessation de l'unité légale
                         type: integer
@@ -12252,18 +12228,6 @@ paths:
                         description: Cette valeur est renvoyée sous format timestamp.
                           Si l'entreprise est juridique active, cette valeur est à
                           'null'.
-                      date_creation:
-                        title: Date de création de l'unité légale
-                        type: integer
-                        example: 1634103818
-                        description: "La date de création correspond à la date qui
-                          figure dans les statuts de l'entreprise qui sont déposés
-                          au centre de formalité des entreprises (CFE) compétent.
-                          Cette valeur est renvoyée sous format timestamp. \n \n Sauf
-                          pour les unités purgées, la date de création n'est jamais
-                          à 'null'. Si elle est non renseignée, elle sera au 01/01/1900.
-                          \n \n Plus d'informations dans la documentation Insee de
-                          l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                     required:
                     - siret_siege_social
                     - type
@@ -12275,8 +12239,8 @@ paths:
                     - activite_principale
                     - tranche_effectif_salarie
                     - etat_administratif
-                    - date_cessation
                     - date_creation
+                    - date_cessation
                   links:
                     type: object
                     properties:
@@ -12948,6 +12912,18 @@ paths:
                           En dehors des cas explicités ci-dessus, l'unité légale est
                           toujours à l'état administratif « Active ». \n \n Plus d'informations
                           dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                      date_creation:
+                        title: Date de création de l'unité légale
+                        type: integer
+                        example: 1634103818
+                        description: "La date de création correspond à la date qui
+                          figure dans les statuts de l'entreprise qui sont déposés
+                          au centre de formalité des entreprises (CFE) compétent.
+                          Cette valeur est renvoyée sous format timestamp. \n \n Saufpour
+                          les unités purgées, la date de création n'est jamais à 'null'.
+                          Si elle est non renseignée, elle sera au 01/01/1900. \n
+                          \n Plus d'informations dans la documentation Insee de l'API
+                          Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                       date_cessation:
                         title: Date de cessation de l'unité légale
                         type: integer
@@ -12956,18 +12932,6 @@ paths:
                         description: Cette valeur est renvoyée sous format timestamp.
                           Si l'entreprise est juridique active, cette valeur est à
                           'null'.
-                      date_creation:
-                        title: Date de création de l'unité légale
-                        type: integer
-                        example: 1634103818
-                        description: "La date de création correspond à la date qui
-                          figure dans les statuts de l'entreprise qui sont déposés
-                          au centre de formalité des entreprises (CFE) compétent.
-                          Cette valeur est renvoyée sous format timestamp. \n \n Sauf
-                          pour les unités purgées, la date de création n'est jamais
-                          à 'null'. Si elle est non renseignée, elle sera au 01/01/1900.
-                          \n \n Plus d'informations dans la documentation Insee de
-                          l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                     required:
                     - siret_siege_social
                     - type
@@ -12979,8 +12943,8 @@ paths:
                     - activite_principale
                     - tranche_effectif_salarie
                     - etat_administratif
-                    - date_cessation
                     - date_creation
+                    - date_cessation
                   links:
                     type: object
                     properties:
