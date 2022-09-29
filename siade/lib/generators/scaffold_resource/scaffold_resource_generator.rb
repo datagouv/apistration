@@ -1,6 +1,12 @@
 class ScaffoldResourceGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('templates', __dir__)
 
+  class_option :api,
+    type: :string,
+    default: 'entreprise',
+    desc: 'Which product ?',
+    enum: %w[entreprise particulier]
+
   class_option :document,
     type: :boolean,
     default: false,

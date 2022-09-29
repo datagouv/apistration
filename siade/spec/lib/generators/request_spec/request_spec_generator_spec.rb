@@ -1,5 +1,5 @@
 RSpec.describe RequestSpecGenerator, type: :generator do
-  subject { file('spec/requests/api/v3_and_more/module/resource_name/v3_spec.rb') }
+  subject { file('spec/requests/api_entreprise/v3_and_more/module/resource_name/v3_spec.rb') }
 
   let(:resource_name) { 'MODULE::ResourceName' }
 
