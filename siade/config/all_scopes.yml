@@ -19,7 +19,6 @@
 - attestations_fiscales
 - exercices
 - conventions_collectives
-- uptime
 - bilans_inpi
 - documents_association
 - certificat_agence_bio
@@ -40,6 +39,7 @@
 - cnaf_enfants
 - cnaf_adresse
 - cnous_statut_boursier
+- uptime
 - cnous_echelon_bourse
 - cnous_email
 - cnous_periode_versement
