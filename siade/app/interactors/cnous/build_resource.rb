@@ -5,7 +5,7 @@ class CNOUS::BuildResource < BuildResource
       prenom: json_body['firstName'],
       prenom2: json_body['firstName2'],
       dateNaissance: format_date(json_body['birthDate']),
-      lieuNaissance: json_body['birthPlace']['libelle'],
+      lieuNaissance: extract_birth_place,
       sexe: json_body['civility'],
       boursier: json_body['boursier'],
       echelonBourse: json_body['grantEchelon'],
@@ -23,6 +23,14 @@ class CNOUS::BuildResource < BuildResource
 
   def format_date(date)
     Date.parse(date).strftime('%Y-%m-%d')
+  end
+
+  def extract_birth_place
+    if json_body['birthPlace']
+      json_body['birthPlace']['libelle']
+    else
+      json_body['birthPlaceLibelle']
+    end
   end
 
   def statut_libelle
