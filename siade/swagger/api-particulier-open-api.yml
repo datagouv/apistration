@@ -861,3 +861,32 @@ paths:
       deprecated: true
       security: []
       responses: *a16
+  /introspect:
+    get:
+      summary: Introspection du jeton donné en paramètre
+      description: Cet endpoint permet de découvrir les informations correspondant à
+        un jeton donné
+      tags:
+        - Jeton
+      responses:
+        "200":
+          description: L'introspection du jeton
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    description: Id du jeton introspecté
+                  name:
+                    type: string
+                    description: Ce champ est systématiquement vide. Celui-ci correspondant avant au nom du jeton.
+                  scopes:
+                    type: array
+                    description: Scopes techniques associés au jeton
+                    items:
+                      type: string
+        "401": *a6
+        "500": *a8
+
