@@ -1,4 +1,4 @@
-RSpec.describe DGFIP::LiassesFiscales::Declarations, type: :retriever_organizer do
+RSpec.describe DGFIP::LiassesFiscales, type: :retriever_organizer do
   subject { described_class.call(params:) }
 
   let(:params) do

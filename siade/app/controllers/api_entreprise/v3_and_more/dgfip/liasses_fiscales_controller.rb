@@ -1,8 +1,8 @@
-class APIEntreprise::V3AndMore::DGFIP::LiassesFiscales::DeclarationsController < APIEntreprise::V3AndMore::BaseController
+class APIEntreprise::V3AndMore::DGFIP::LiassesFiscalesController < APIEntreprise::V3AndMore::BaseController
   def show
     authorize :liasse_fiscale
 
-    organizer = retrieve_payload_data(::DGFIP::LiassesFiscales::Declarations, cache: true, cache_key:)
+    organizer = retrieve_payload_data(::DGFIP::LiassesFiscales, cache: true, cache_key:)
 
     if organizer.success?
       render json: serializer_class.new(organizer.bundled_data).serializable_hash,
@@ -27,6 +27,6 @@ class APIEntreprise::V3AndMore::DGFIP::LiassesFiscales::DeclarationsController <
   end
 
   def serializer_module
-    ::APIEntreprise::DGFIP::LiassesFiscales::DeclarationsSerializer
+    ::APIEntreprise::DGFIP::LiassesFiscalesSerializer
   end
 end

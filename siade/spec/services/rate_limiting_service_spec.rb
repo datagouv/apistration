@@ -19,7 +19,7 @@ RSpec.describe RateLimitingService do
           action: 'show'
         },
         {
-          controller: 'api_entreprise/v3_and_more/dgfip/liasses_fiscales/declarations',
+          controller: 'api_entreprise/v3_and_more/dgfip/liasses_fiscales',
           action: 'show'
         }
       ]

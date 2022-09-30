@@ -1,4 +1,4 @@
-RSpec.describe DGFIP::LiassesFiscales::Declarations::MakeRequest, type: :make_request do
+RSpec.describe DGFIP::LiassesFiscales::MakeRequest, type: :make_request do
   subject { described_class.call(cookie:, params:) }
 
   let(:params) do

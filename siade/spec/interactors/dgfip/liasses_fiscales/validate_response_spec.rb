@@ -1,4 +1,4 @@
-RSpec.describe DGFIP::LiassesFiscales::Declarations::ValidateResponse, type: :validate_response do
+RSpec.describe DGFIP::LiassesFiscales::ValidateResponse, type: :validate_response do
   describe '.call' do
     subject { described_class.call(response:) }
 

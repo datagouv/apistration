@@ -1,4 +1,4 @@
-class APIEntreprise::DGFIP::LiassesFiscales::DeclarationsSerializer::V3 < APIEntreprise::V3AndMore::BaseSerializer
+class APIEntreprise::DGFIP::LiassesFiscalesSerializer::V3 < APIEntreprise::V3AndMore::BaseSerializer
   attributes :obligations_fiscales,
     :declarations
 

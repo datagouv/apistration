@@ -1,4 +1,4 @@
-class DGFIP::LiassesFiscales::Declarations::MakeRequest < MakeRequest::Get
+class DGFIP::LiassesFiscales::MakeRequest < MakeRequest::Get
   protected
 
   def request_uri

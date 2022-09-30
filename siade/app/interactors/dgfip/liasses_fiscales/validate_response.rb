@@ -1,4 +1,4 @@
-class DGFIP::LiassesFiscales::Declarations::ValidateResponse < ValidateResponse
+class DGFIP::LiassesFiscales::ValidateResponse < ValidateResponse
   def call
     if http_not_found?
       make_payload_cacheable!

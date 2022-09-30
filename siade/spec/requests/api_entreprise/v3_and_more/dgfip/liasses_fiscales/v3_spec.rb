@@ -41,11 +41,11 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', type: %i[request swa
 
           common_provider_errors_request(
             'DGFIP',
-            DGFIP::LiassesFiscales::Declarations,
+            DGFIP::LiassesFiscales,
             DGFIPPotentialNotFoundError.new
           )
 
-          common_network_error_request('DGFIP', DGFIP::LiassesFiscales::Declarations)
+          common_network_error_request('DGFIP', DGFIP::LiassesFiscales)
         end
       end
     end

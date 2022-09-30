@@ -75,7 +75,7 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
   get 'douanes/etablissements/:siret_or_eori/immatriculations_eori', to: 'api_entreprise/v3_and_more/dgddi/eori#show'
 
   namespace :dgfip do
-    get 'unites_legales/:siren/liasses_fiscales/:year' => '/api_entreprise/v3_and_more/dgfip/liasses_fiscales/declarations#show'
+    get 'unites_legales/:siren/liasses_fiscales/:year' => '/api_entreprise/v3_and_more/dgfip/liasses_fiscales#show'
     get 'etablissements/:siret/chiffres_affaires' => '/api_entreprise/v3_and_more/dgfip/chiffres_affaires#show'
     get 'unites_legales/:siren/attestation_fiscale' => '/api_entreprise/v3_and_more/dgfip/attestations_fiscales#show'
   end

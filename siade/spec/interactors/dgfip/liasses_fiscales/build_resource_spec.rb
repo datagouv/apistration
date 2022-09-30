@@ -1,4 +1,4 @@
-RSpec.describe DGFIP::LiassesFiscales::Declarations::BuildResource, type: :build_resource do
+RSpec.describe DGFIP::LiassesFiscales::BuildResource, type: :build_resource do
   describe '.call' do
     subject(:builder) { described_class.call(response:) }
 
@@ -9,7 +9,7 @@ RSpec.describe DGFIP::LiassesFiscales::Declarations::BuildResource, type: :build
     let(:resource) { builder.bundled_data.data }
 
     describe 'real payload', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
-      let(:body) { DGFIP::LiassesFiscales::Declarations::MakeRequest.call(cookie:, params:).response.body }
+      let(:body) { DGFIP::LiassesFiscales::MakeRequest.call(cookie:, params:).response.body }
       let(:cookie) { DGFIP::Authenticate.call.cookie }
       let(:params) do
         {
