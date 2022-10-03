@@ -124,7 +124,7 @@ GEM
     hashdiff (1.0.1)
     heapy (0.2.0)
       thor
-    hexapdf (0.24.2)
+    hexapdf (0.25.0)
       cmdparse (~> 3.0, >= 3.0.3)
       geom2d (~> 0.3)
     http-accept (1.7.0)
