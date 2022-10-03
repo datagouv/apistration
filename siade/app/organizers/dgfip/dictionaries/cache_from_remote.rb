@@ -1,4 +1,4 @@
-class DGFIP::Dictionaries < RetrieverOrganizer
+class DGFIP::Dictionaries::CacheFromRemote < RetrieverOrganizer
   organize DGFIP::Authenticate,
     DGFIP::Dictionaries::MakeRequest,
     DGFIP::Dictionaries::ValidateResponse,
