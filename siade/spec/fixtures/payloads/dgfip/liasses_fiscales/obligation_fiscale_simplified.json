@@ -1,0 +1,57 @@
+{
+  "declarations": [
+    {
+      "code_regime": "RS",
+      "date_declaration": "2017-07-10",
+      "fin_exercice": "2017-03-31",
+      "duree_exercice": "365 jours",
+      "millesime": "201701",
+      "numero_imprime": "2033A",
+      "imprime": {
+        "donnees": [
+          {
+            "code_nref": "304330",
+            "valeur": "1111"
+          },
+          {
+            "code_nref": "304331",
+            "valeur": "2222"
+          }
+        ]
+      }
+    },
+    {
+      "code_regime": "RS",
+      "date_declaration": "2017-07-10",
+      "fin_exercice": "2017-03-31",
+      "duree_exercice": "365 jours",
+      "millesime": "201701",
+      "numero_imprime": "2033B",
+      "imprime": {
+        "donnees": [
+          {
+            "code_nref": "304331",
+            "valeur": "3333"
+          }
+        ]
+      }
+    }
+  ],
+  "entreprise": {
+    "denomination": "SARL UMADCORP",
+    "itip": "100000101111",
+    "setOcfis": {
+      "codeNace": "4669B",
+      "codeObf": "IS",
+      "dateDebut": "1991-04-15T00:00:00+02:00",
+      "dateDebutPourAttestationRegularite": "1991-04-15T00:00:00+02:00",
+      "nbRof": "0",
+      "numOcfi": "100210511111",
+      "ROF": "IS1",
+      "regime": "RSI",
+      "texteExploitation": "ACHAT VTE MACHINES OUTILS"
+    },
+    "siren": "130025265"
+  }
+}
+
