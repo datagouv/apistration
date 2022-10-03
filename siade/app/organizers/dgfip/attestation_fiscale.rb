@@ -7,6 +7,6 @@ class DGFIP::AttestationFiscale < RetrieverOrganizer
     DGFIP::AttestationFiscale::BuildResource
 
   def provider_name
-    'DGFIP'
+    'DGFIP - Adélie'
   end
 end

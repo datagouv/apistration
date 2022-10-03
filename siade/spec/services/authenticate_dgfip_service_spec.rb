@@ -8,7 +8,7 @@ RSpec.describe AuthenticateDGFIPService do
 
     its(:http_code) { is_expected.to eq(502) }
     its(:success?) { is_expected.to be_falsey }
-    its(:errors) { is_expected.to have_error("L'authentification auprès du fournisseur de données 'DGFIP' a échoué") }
+    its(:errors) { is_expected.to have_error("L'authentification auprès du fournisseur de données 'DGFIP - Adélie' a échoué") }
   end
 
   describe 'authentication succeeds', vcr: { cassette_name: 'dgfip/authenticate/valid' } do

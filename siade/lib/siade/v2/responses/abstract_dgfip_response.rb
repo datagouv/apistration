@@ -2,7 +2,7 @@ class SIADE::V2::Responses::AbstractDGFIPResponse < SIADE::V2::Responses::Generi
   protected
 
   def provider_name
-    'DGFIP'
+    'DGFIP - Adélie'
   end
 
   def set_error_message_for_potential_not_found_error

@@ -6,6 +6,6 @@ class DGFIP::ChiffresAffaires < RetrieverOrganizer
     DGFIP::ChiffresAffaires::BuildResource
 
   def provider_name
-    'DGFIP'
+    'DGFIP - Adélie'
   end
 end

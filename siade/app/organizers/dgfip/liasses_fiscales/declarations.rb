@@ -6,6 +6,6 @@ class DGFIP::LiassesFiscales::Declarations < ApplicationOrganizer
     DGFIP::LiassesFiscales::Declarations::BuildResource
 
   def provider_name
-    'DGFIP'
+    'DGFIP - Adélie'
   end
 end

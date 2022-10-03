@@ -22,7 +22,7 @@ class ExtractProviderFromPath
     {
       'insee' => 'INSEE',
       'infogreffe' => 'Infogreffe',
-      'dgfip' => 'DGFIP',
+      'dgfip' => 'DGFIP - Adélie',
       'urssaf' => 'URSSAF',
       'inpi' => 'INPI',
       'qualibat' => 'Qualibat',

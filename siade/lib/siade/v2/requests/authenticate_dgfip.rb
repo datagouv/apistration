@@ -14,7 +14,7 @@ class SIADE::V2::Requests::AuthenticateDGFIP < SIADE::V2::Requests::Generic
   protected
 
   def provider_name
-    'DGFIP'
+    'DGFIP - Adélie'
   end
 
   def request_lib

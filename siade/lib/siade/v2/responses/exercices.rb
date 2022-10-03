@@ -2,7 +2,7 @@ class SIADE::V2::Responses::Exercices < SIADE::V2::Responses::Generic
   protected
 
   def provider_name
-    'DGFIP'
+    'DGFIP - Adélie'
   end
 
   def adapt_raw_response_code
@@ -18,6 +18,6 @@ class SIADE::V2::Responses::Exercices < SIADE::V2::Responses::Generic
   end
 
   def set_error_message_for_unexpected_redirection
-    (@errors ||= []) << ProviderUnknownError.new('DGFIP', 'Erreur de la DGFIP, celle intervient généralement lorsque l\'organisme n\'est pas soumis à l\'impôt sur les sociétés. Si c\'est bien le cas il est possible que les comptes n\'est pas encore été déposés aux greffes.')
+    (@errors ||= []) << ProviderUnknownError.new('DGFIP - Adélie', 'Erreur de la DGFIP, celle intervient généralement lorsque l\'organisme n\'est pas soumis à l\'impôt sur les sociétés. Si c\'est bien le cas il est possible que les comptes n\'est pas encore été déposés aux greffes.')
   end
 end

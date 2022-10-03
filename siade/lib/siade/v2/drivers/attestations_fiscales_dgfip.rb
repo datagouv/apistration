@@ -14,7 +14,7 @@ class SIADE::V2::Drivers::AttestationsFiscalesDGFIP < SIADE::V2::Drivers::Generi
   end
 
   def provider_name
-    'DGFIP'
+    'DGFIP - Adélie'
   end
 
   def request

@@ -19,7 +19,7 @@ class SIADE::V2::Requests::Exercices < SIADE::V2::Requests::Generic
   protected
 
   def provider_name
-    'DGFIP'
+    'DGFIP - Adélie'
   end
 
   def request_uri

@@ -6,7 +6,7 @@ class SIADE::V2::Responses::AuthenticateDGFIP < SIADE::V2::Responses::Generic
   protected
 
   def provider_name
-    'DGFIP'
+    'DGFIP - Adélie'
   end
 
   def adapt_raw_response_code

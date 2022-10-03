@@ -39,7 +39,7 @@ class ErrorsBackend
       '00' => 'API Entreprise',
       '01' => 'INSEE',
       '02' => 'Infogreffe',
-      '03' => 'DGFIP',
+      '03' => 'DGFIP - Adélie',
       '04' => 'ACOSS',
       '05' => 'INPI',
       '06' => 'Qualibat',
@@ -63,6 +63,7 @@ class ErrorsBackend
       '24' => 'Pôle Emploi',
       '25' => 'MESRI',
       '26' => 'CNOUS',
+      '27' => 'DGFIP - SVAIR',
       '50' => 'FranceConnect'
     }
   end

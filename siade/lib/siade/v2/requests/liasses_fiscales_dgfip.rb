@@ -10,7 +10,7 @@ class SIADE::V2::Requests::LiassesFiscalesDGFIP < SIADE::V2::Requests::Generic
   protected
 
   def provider_name
-    'DGFIP'
+    'DGFIP - Adélie'
   end
 
   def request_uri
@@ -107,7 +107,7 @@ class SIADE::V2::Requests::LiassesFiscalesDGFIP < SIADE::V2::Requests::Generic
   end
 
   def cookie_error
-    ProviderAuthenticationError.new('DGFIP')
+    ProviderAuthenticationError.new('DGFIP - Adélie')
   end
 
   def user_id_valid?

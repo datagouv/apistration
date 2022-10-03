@@ -1,6 +1,6 @@
 class SIADE::V2::Responses::AttestationsFiscalesDGFIP < SIADE::V2::Responses::AbstractDGFIPResponse
   def provider_name
-    'DGFIP'
+    'DGFIP - Adélie'
   end
 
   protected

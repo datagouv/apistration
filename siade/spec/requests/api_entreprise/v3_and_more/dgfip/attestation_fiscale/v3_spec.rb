@@ -58,12 +58,12 @@ RSpec.describe 'DGFIP: Attestation fiscale', type: %i[request swagger], api: :en
           unprocessable_entity_error_request(:siren)
 
           common_provider_errors_request(
-            'DGFIP',
+            'DGFIP - Adélie',
             DGFIP::AttestationFiscale,
-            documents_errors('DGFIP')
+            documents_errors('DGFIP - Adélie')
           )
 
-          common_network_error_request('DGFIP', DGFIP::AttestationFiscale)
+          common_network_error_request('DGFIP - Adélie', DGFIP::AttestationFiscale)
         end
       end
     end

@@ -5,7 +5,7 @@ RSpec.describe SIADE::V2::Requests::AuthenticateDGFIP, type: :provider_request d
     before { allow_any_instance_of(SIADE::V2::Requests::AuthenticateDGFIP).to receive(:secret).and_return('wrong_secret') }
 
     its(:http_code) { is_expected.to eq(502) }
-    its(:errors)    { is_expected.to have_error("L'authentification auprès du fournisseur de données 'DGFIP' a échoué") }
+    its(:errors)    { is_expected.to have_error("L'authentification auprès du fournisseur de données 'DGFIP - Adélie' a échoué") }
   end
 
   context 'good request', vcr: { cassette_name: 'dgfip/authenticate/valid' } do

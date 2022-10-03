@@ -41,8 +41,8 @@ RSpec.describe 'DGFIP: chiffres d\'affaires', type: %i[request swagger], api: :e
 
           unprocessable_entity_error_request(:siret)
 
-          common_provider_errors_request('DGFIP', DGFIP::ChiffresAffaires)
-          common_network_error_request('DGFIP', DGFIP::ChiffresAffaires)
+          common_provider_errors_request('DGFIP - Adélie', DGFIP::ChiffresAffaires)
+          common_network_error_request('DGFIP - Adélie', DGFIP::ChiffresAffaires)
         end
       end
     end

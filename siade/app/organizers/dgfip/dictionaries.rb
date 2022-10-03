@@ -5,6 +5,6 @@ class DGFIP::Dictionaries < RetrieverOrganizer
     DGFIP::Dictionaries::CacheResponse
 
   def provider_name
-    'DGFIP'
+    'DGFIP - Adélie'
   end
 end

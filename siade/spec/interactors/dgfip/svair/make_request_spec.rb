@@ -1,5 +1,5 @@
 RSpec.describe DGFIP::SVAIR::MakeRequest, type: :make_request do
-  subject(:make_call) { described_class.call(params:, provider_name: 'DGFIP') }
+  subject(:make_call) { described_class.call(params:, provider_name: 'DGFIP - SVAIR') }
 
   let(:params) do
     {

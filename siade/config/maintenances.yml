@@ -3,7 +3,7 @@ production: &shared
   'CNETP':
     from_hour: '06:00'
     to_hour: '06:30'
-  'DGFIP':
+  'DGFIP - Adélie':
     from_hour: '01:00'
     to_hour: '02:00'
   'Banque de France':

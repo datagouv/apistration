@@ -38,7 +38,7 @@ class APIEntreprise::V2::AbstractDGFIPController < APIEntreprise::V2::BaseContro
   def authenticate_errors
     ErrorsSerializer.new(
       [
-        ProviderAuthenticationError.new('DGFIP')
+        ProviderAuthenticationError.new('DGFIP - Adélie')
       ],
       format: error_format
     ).as_json

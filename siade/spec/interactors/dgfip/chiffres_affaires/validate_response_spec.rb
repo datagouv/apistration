@@ -1,5 +1,5 @@
 RSpec.describe DGFIP::ChiffresAffaires::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response:, provider_name: 'DGFIP') }
+  subject { described_class.call(response:, provider_name: 'DGFIP - Adélie') }
 
   context 'with a http ok' do
     let(:response) { instance_double(Net::HTTPOK, code: '200', body:) }

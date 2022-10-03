@@ -5,6 +5,6 @@ class DGFIP::SVAIR < RetrieverOrganizer
     DGFIP::SVAIR::BuildResource
 
   def provider_name
-    'DGFIP'
+    'DGFIP - SVAIR'
   end
 end

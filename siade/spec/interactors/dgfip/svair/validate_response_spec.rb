@@ -1,6 +1,6 @@
 RSpec.describe DGFIP::SVAIR::ValidateResponse, type: :validate_response do
   describe '.call' do
-    subject(:call) { described_class.call(response:, provider_name: 'DGFIP') }
+    subject(:call) { described_class.call(response:, provider_name: 'DGFIP - SVAIR') }
 
     let(:response) do
       instance_double(Net::HTTPOK, code:, body:)

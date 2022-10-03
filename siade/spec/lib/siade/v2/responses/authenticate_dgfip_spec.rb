@@ -13,7 +13,7 @@ RSpec.describe SIADE::V2::Responses::AuthenticateDGFIP, type: :provider_response
     end
 
     its(:cookie)    { is_expected.to include('_test_client') }
-    its(:errors)    { is_expected.to have_error("L'authentification auprès du fournisseur de données 'DGFIP' a échoué") }
+    its(:errors)    { is_expected.to have_error("L'authentification auprès du fournisseur de données 'DGFIP - Adélie' a échoué") }
     its(:http_code) { is_expected.to eq(502) }
   end
 end

@@ -9,7 +9,7 @@ class SIADE::V2::Drivers::Exercices < SIADE::V2::Drivers::GenericDriver
   end
 
   def provider_name
-    'DGFIP'
+    'DGFIP - Adélie'
   end
 
   def request

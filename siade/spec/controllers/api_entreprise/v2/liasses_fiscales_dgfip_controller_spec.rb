@@ -111,7 +111,7 @@ RSpec.describe APIEntreprise::V2::LiassesFiscalesDGFIPController, type: :control
       it 'returns 502 with error message' do
         json = JSON.parse(response.body)
 
-        expect(json).to have_json_error(detail: "L'authentification auprès du fournisseur de données 'DGFIP' a échoué")
+        expect(json).to have_json_error(detail: "L'authentification auprès du fournisseur de données 'DGFIP - Adélie' a échoué")
       end
     end
 

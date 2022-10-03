@@ -14,7 +14,7 @@ class SIADE::V2::Requests::AttestationsFiscalesDGFIP < SIADE::V2::Requests::Gene
   protected
 
   def provider_name
-    'DGFIP'
+    'DGFIP - Adélie'
   end
 
   def request_lib

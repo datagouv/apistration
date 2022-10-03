@@ -107,7 +107,7 @@ RSpec.describe SIADE::V2::Requests::LiassesFiscalesDGFIP, type: :provider_reques
       let(:cookie) { 'invalid_cookie' }
 
       its(:http_code) { is_expected.to eq(502) }
-      its(:errors) { is_expected.to have_error("L'authentification auprès du fournisseur de données 'DGFIP' a échoué") }
+      its(:errors) { is_expected.to have_error("L'authentification auprès du fournisseur de données 'DGFIP - Adélie' a échoué") }
     end
   end
 end
