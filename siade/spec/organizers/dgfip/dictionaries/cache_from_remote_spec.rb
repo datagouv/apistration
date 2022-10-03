@@ -11,20 +11,20 @@ RSpec.describe DGFIP::Dictionaries::CacheFromRemote, type: :retriever_organizer 
     let(:declarations_1) do
       [
         {
-          'code' => 'XX',
-          'code_EDI' => 'XX:X123:4567:0:XXX',
           'code_absolu' => '1234567',
-          'code_nref' => '123456',
+          'code_EDI' => 'XX:X123:4567:0:XXX',
+          'code' => 'XX',
+          'intitule' => 'Intitulé 1',
           'code_type_donnee' => 'XXX',
-          'intitule' => 'Intitulé 1'
+          'code_nref' => '123456'
         },
         {
-          'code' => 'YY',
-          'code_EDI' => 'XX:X123:4568:2',
           'code_absolu' => '1234568',
-          'code_nref' => '123457',
+          'code_EDI' => 'XX:X123:4568:2',
+          'code' => 'YY',
+          'intitule' => 'Intitulé 2',
           'code_type_donnee' => 'YYY',
-          'intitule' => 'Intitulé 2'
+          'code_nref' => '123457'
         }
       ]
     end
@@ -32,12 +32,12 @@ RSpec.describe DGFIP::Dictionaries::CacheFromRemote, type: :retriever_organizer 
     let(:declarations_2) do
       [
         {
-          'code' => 'ZZ',
-          'code_EDI' => 'XX:X123:2222:2:XXX',
           'code_absolu' => '2345678',
-          'code_nref' => '123458',
+          'code_EDI' => 'XX:X123:2222:2:XXX',
+          'code' => 'ZZ',
+          'intitule' => 'Déposé néant',
           'code_type_donnee' => 'XXY',
-          'intitule' => 'Déposé néant'
+          'code_nref' => '123458'
         }
       ]
     end
@@ -50,8 +50,8 @@ RSpec.describe DGFIP::Dictionaries::CacheFromRemote, type: :retriever_organizer 
     it { is_expected.to be_a_success }
 
     it 'caches all results in redis' do
-      expect(RedisService.instance).to receive(:set).with(redis_key_1, declarations_1, { ex: expires_in })
-      expect(RedisService.instance).to receive(:set).with(redis_key_2, declarations_2, { ex: expires_in })
+      expect(RedisService.instance).to receive(:set).with(redis_key_1, declarations_1.to_json, { ex: expires_in })
+      expect(RedisService.instance).to receive(:set).with(redis_key_2, declarations_2.to_json, { ex: expires_in })
 
       subject
     end

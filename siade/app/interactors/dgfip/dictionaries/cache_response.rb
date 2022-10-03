@@ -30,7 +30,7 @@ class DGFIP::Dictionaries::CacheResponse < ApplicationInteractor
   end
 
   def declarations(imprime)
-    imprime['millesimes']['declaration']
+    imprime['millesimes']['declaration'].to_json
   end
 
   def dictionary_expires_in

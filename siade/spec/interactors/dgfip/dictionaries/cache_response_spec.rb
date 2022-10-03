@@ -28,7 +28,7 @@ RSpec.describe DGFIP::Dictionaries::CacheResponse do
           'code_type_donnee' => 'YYY',
           'code_nref' => '123457'
         }
-      ]
+      ].to_json
     end
 
     let(:declarations_2) do
@@ -41,7 +41,7 @@ RSpec.describe DGFIP::Dictionaries::CacheResponse do
           'code_type_donnee' => 'XXY',
           'code_nref' => '123458'
         }
-      ]
+      ].to_json
     end
 
     let(:redis_key_1) { 'dgfip:dictionnaires:year_2018:imprime_2050:millesime_201501' }
