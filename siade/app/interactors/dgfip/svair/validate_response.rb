@@ -2,11 +2,8 @@ class DGFIP::SVAIR::ValidateResponse < ValidateResponse
   def call
     unknown_provider_response! unless http_ok?
 
-    if html_nodes.css('#nonTrouve').any?
-      make_payload_cacheable!
-      resource_not_found!
-    end
-
+    invalid_provider_response! if html_nodes.css('#service_indispo').any?
+    handle_not_found if html_nodes.css('#nonTrouve').any?
     access_denied! if html_nodes.css('.interdit').any?
 
     return if data_present?
@@ -15,6 +12,11 @@ class DGFIP::SVAIR::ValidateResponse < ValidateResponse
   end
 
   private
+
+  def handle_not_found
+    make_payload_cacheable!
+    resource_not_found!
+  end
 
   def data_present?
     response.body.include?('L\'administration fiscale certifie l\'authenticité du document présenté')
