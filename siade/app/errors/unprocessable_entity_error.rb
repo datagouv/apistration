@@ -31,6 +31,7 @@ class UnprocessableEntityError < ApplicationError
       ine: '00360',
       family_name: '00361',
       first_name: '00362',
+      first_names: '00367',
       birthday_date: '00363',
       gender: '00364',
       birth_place: '00365',
