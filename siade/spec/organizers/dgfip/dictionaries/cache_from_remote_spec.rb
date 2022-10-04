@@ -42,8 +42,8 @@ RSpec.describe DGFIP::Dictionaries::CacheFromRemote, type: :retriever_organizer 
       ]
     end
 
-    let(:redis_key_1) { 'dgfip:dictionnaires:year_2019:imprime_2050:millesime_201501' }
-    let(:redis_key_2) { 'dgfip:dictionnaires:year_2019:imprime_2051:millesime_201501' }
+    let(:redis_key_1) { 'dgfip:dictionnaires:year_2019:imprime_2050' }
+    let(:redis_key_2) { 'dgfip:dictionnaires:year_2019:imprime_2051' }
 
     let(:expires_in) { 6.months.from_now.to_i }
 

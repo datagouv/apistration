@@ -2,7 +2,7 @@ RSpec.describe DGFIP::Dictionaries, type: :interactor do
   describe '.call' do
     subject { described_class.call(key:) }
 
-    let(:key) { 'dgfip:dictionnaires:year_2019:imprime_2051:millesime_201501' }
+    let(:key) { 'dgfip:dictionnaires:year_2019:imprime_2051' }
 
     context 'when data is available in Redis' do
       let(:data) do

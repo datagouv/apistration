@@ -14,7 +14,7 @@ class DGFIP::Dictionaries::CacheResponse < ApplicationInteractor
   end
 
   def redis_key(imprime)
-    "dgfip:dictionnaires:#{year}:#{numero(imprime)}:#{millesime(imprime)}"
+    "dgfip:dictionnaires:#{year}:#{numero(imprime)}"
   end
 
   def year
@@ -23,10 +23,6 @@ class DGFIP::Dictionaries::CacheResponse < ApplicationInteractor
 
   def numero(imprime)
     "imprime_#{imprime['numero_imprime']}"
-  end
-
-  def millesime(imprime)
-    "millesime_#{imprime['millesimes']['millesime']}"
   end
 
   def declarations(imprime)
