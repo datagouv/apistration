@@ -9,9 +9,6 @@ RSpec.describe SIADE::V2::Drivers::BilansEntreprisesBDF, type: :provider_driver 
     its(:http_code) { is_expected.to eq(404) }
   end
 
-  # XXX TODO REFACTOR how do we handle json / xml / whatever parsing errors accross app
-  context 'Handle well parsing error'
-
   context 'bad formated siren' do
     subject do
       d = described_class.new({ siren: invalid_siren })
