@@ -8,7 +8,7 @@ RSpec.describe SIADE::V2::Requests::BilansEntreprisesBDF, type: :provider_reques
     its(:errors)    { is_expected.to have_error(invalid_siren_error_message) }
   end
 
-  context 'well formated request', vcr: { cassette_name: 'bilan_entreprise_bdf_valid_siren' } do
+  context 'well formated request', vcr: { cassette_name: 'banque_de_france/bilans_entreprises/valid_siren' } do
     let(:siren) { valid_siren(:bilan_entreprise_bdf) }
 
     its(:http_code) { is_expected.to eq 200 }

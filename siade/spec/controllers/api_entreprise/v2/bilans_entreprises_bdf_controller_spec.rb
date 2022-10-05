@@ -6,11 +6,11 @@ RSpec.describe APIEntreprise::V2::BilansEntreprisesBDFController, type: :control
 
   describe 'happy path' do
     context 'when user authenticates with valid token' do
-      context 'when siren is not found', vcr: { cassette_name: 'bilan_entreprise_bdf_non_existent_siren' } do
+      context 'when siren is not found', vcr: { cassette_name: 'banque_de_france/bilans_entreprises/not_found_siren' } do
         it_behaves_like 'not_found'
       end
 
-      context 'when siren is found', vcr: { cassette_name: 'bilan_entreprise_bdf_valid_siren' } do
+      context 'when siren is found', vcr: { cassette_name: 'banque_de_france/bilans_entreprises/valid_siren' } do
         let(:token) { yes_jwt }
         let(:siren) { valid_siren(:bilan_entreprise_bdf) }
 

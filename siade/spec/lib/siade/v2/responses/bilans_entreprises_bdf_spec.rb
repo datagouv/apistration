@@ -2,7 +2,7 @@ RSpec.describe SIADE::V2::Responses::BilansEntreprisesBDF, type: :provider_respo
   subject { SIADE::V2::Requests::BilansEntreprisesBDF.new(siren).perform.response }
 
   context 'BDF app returns 200 and embeds true http code into json field' do
-    context 'we return 404 when siren does not exist', vcr: { cassette_name: 'bilan_entreprise_bdf_non_existent_siren' } do
+    context 'we return 404 when siren does not exist', vcr: { cassette_name: 'banque_de_france/bilans_entreprises/not_found_siren' } do
       let(:siren) { non_existent_siren }
 
       its(:'raw_response.code')       { is_expected.to eq(200) }
@@ -11,7 +11,7 @@ RSpec.describe SIADE::V2::Responses::BilansEntreprisesBDF, type: :provider_respo
       its(:errors)                    { is_expected.to have_error("Le siret ou siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel") }
     end
 
-    context 'we return 404 when siren exists but has no data', vcr: { cassette_name: 'bilan_entreprise_bdf_no_data_siren' } do
+    context 'we return 404 when siren exists but has no data', vcr: { cassette_name: 'banque_de_france/bilans_entreprises/no_data_siren' } do
       let(:siren) { '828277871' } # Saturne consulting
 
       its(:'raw_response.code')       { is_expected.to eq(200) }

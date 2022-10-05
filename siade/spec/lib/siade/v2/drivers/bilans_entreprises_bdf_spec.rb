@@ -1,5 +1,5 @@
 RSpec.describe SIADE::V2::Drivers::BilansEntreprisesBDF, type: :provider_driver do
-  context 'Siren does not exist', vcr: { cassette_name: 'bilan_entreprise_bdf_non_existent_siren' } do
+  context 'Siren does not exist', vcr: { cassette_name: 'banque_de_france/bilans_entreprises/not_found_siren' } do
     subject do
       d = described_class.new({ siren: non_existent_siren })
       d.perform_request
@@ -22,7 +22,7 @@ RSpec.describe SIADE::V2::Drivers::BilansEntreprisesBDF, type: :provider_driver 
     its(:errors)    { is_expected.to have_error(invalid_siren_error_message) }
   end
 
-  context 'well formated valid siren with information', vcr: { cassette_name: 'bilan_entreprise_bdf_valid_siren' } do
+  context 'well formated valid siren with information', vcr: { cassette_name: 'banque_de_france/bilans_entreprises/valid_siren' } do
     subject { @bilan_entreprise_bdf_valid_siren }
 
     let(:siren) { valid_siren(:bilan_entreprise_bdf) }
