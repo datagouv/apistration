@@ -37,48 +37,62 @@ RSpec.describe AbstractGetToken, type: :interactor do
   let(:access_token) { 'This is a dummy token from client' }
   let(:expires_in) { '1660563182' }
 
-  let!(:stubbed_request) do
-    stub_request(:post, /dummy_client_uri/)
-      .with(
-        headers: { Authorization: 'Basic dummy_client_credentials' }
-      )
-      .to_return(body: response_body.to_json)
-  end
-
-  context 'when the token is not stored in Redis' do
-    it { is_expected.to be_a_success }
-    its(:errors) { is_expected.to be_empty }
-
-    its(:token) { is_expected.to eq access_token }
-
-    it 'asks the provider for a new token' do
-      make_call
-
-      expect(stubbed_request).to have_been_requested
+  context 'when call works' do
+    let!(:stubbed_request) do
+      stub_request(:post, /dummy_client_uri/)
+        .with(
+          headers: { Authorization: 'Basic dummy_client_credentials' }
+        )
+        .to_return(body: response_body.to_json)
     end
 
-    it 'stores the new token in Redis' do
-      allow(RedisService.instance).to receive(:get).and_return(nil, 'a token that was just stored')
-      expect(RedisService.instance).to receive(:set).with(:dummy_token_authentication, /This is a dummy token from client/, { ex: expires_in })
+    context 'when the token is not stored in Redis' do
+      it { is_expected.to be_a_success }
+      its(:errors) { is_expected.to be_empty }
 
-      make_call
+      its(:token) { is_expected.to eq access_token }
+
+      it 'asks the provider for a new token' do
+        make_call
+
+        expect(stubbed_request).to have_been_requested
+      end
+
+      it 'stores the new token in Redis' do
+        allow(RedisService.instance).to receive(:get).and_return(nil, 'a token that was just stored')
+        expect(RedisService.instance).to receive(:set).with(:dummy_token_authentication, /This is a dummy token from client/, { ex: expires_in })
+
+        make_call
+      end
+    end
+
+    context 'when the token is stored in Redis' do
+      before do
+        RedisService.instance.set(:dummy_token_authentication, access_token, ex: expires_in)
+      end
+
+      it { is_expected.to be_a_success }
+      its(:errors) { is_expected.to be_empty }
+
+      its(:token) { is_expected.to eq access_token }
+
+      it 'does not ask for a new token' do
+        make_call
+
+        expect(stubbed_request).not_to have_been_requested
+      end
     end
   end
 
-  context 'when the token is stored in Redis' do
+  context 'when call failed because of a request fail' do
     before do
-      RedisService.instance.set(:dummy_token_authentication, access_token, ex: expires_in)
+      stub_request(:post, /dummy_client_uri/).to_timeout
     end
 
-    it { is_expected.to be_a_success }
-    its(:errors) { is_expected.to be_empty }
+    it { is_expected.to be_a_failure }
 
-    its(:token) { is_expected.to eq access_token }
-
-    it 'does not ask for a new token' do
-      make_call
-
-      expect(stubbed_request).not_to have_been_requested
+    it 'adds ProviderTimeoutError to errors' do
+      expect(subject.errors).to include(instance_of(ProviderTimeoutError))
     end
   end
 end

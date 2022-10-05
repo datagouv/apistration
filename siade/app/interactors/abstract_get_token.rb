@@ -36,7 +36,7 @@ class AbstractGetToken < MakeRequest::Post
   end
 
   def retrieve_and_save_token
-    response = api_call
+    response = api_call_with_error_handling
 
     redis.set(redis_token_key, access_token(response), ex: expires_in(response))
 

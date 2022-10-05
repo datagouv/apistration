@@ -16,11 +16,19 @@ class MakeRequest < ApplicationInteractor
   end
 
   def call
-    api_call
+    api_call_with_error_handling
+  end
+
+  protected
+
+  def api_call_with_error_handling
+    response = api_call
 
     handle_potential_soft_errors
 
     handle_redirect if response_is_a_redirection?
+
+    response
   rescue Net::OpenTimeout, Net::ReadTimeout, EOFError
     fail_to_request_provider!(ProviderTimeoutError)
   rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EHOSTUNREACH
@@ -33,8 +41,6 @@ class MakeRequest < ApplicationInteractor
 
     fail_to_request_provider!(DnsResolutionError)
   end
-
-  protected
 
   def api_call
     fail NotImplementedError
