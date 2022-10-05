@@ -55,6 +55,7 @@ RSpec.configure do |config|
   # TODO: move this conf somewhere else
   config.before do
     unless ENV['regenerate_cassettes']
+      allow_any_instance_of(BanqueDeFrance::BilansEntreprise::MakeRequest).to receive(:http_options).and_return({ use_ssl: true, verify_ssl: OpenSSL::SSL::VERIFY_NONE, cert: nil, key: nil })
       allow_any_instance_of(PROBTP::AttestationsCotisationsRetraite::MakeRequest).to receive(:http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
       allow_any_instance_of(PROBTP::ConformitesCotisationsRetraite::MakeRequest).to receive(:http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
 
