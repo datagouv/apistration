@@ -1,3 +1,4 @@
+---
 info:
   title: API Particulier
   version: 2.2.0
@@ -789,15 +790,11 @@ paths:
                     type: number
                     description: Le statut de la bourse, 0 si définitif, >0 si provisoire
                       (conditionnel)
-                    examples:
-                      - 0
-                      - 3
+                    example: 0
                   statutLibelle:
                     type: string
                     description: Le libellé assoccié au statut
-                    examples:
-                      - définitif
-                      - provisoire (conditionnel)
+                    example: définitif
                   villeEtudes:
                     type: string
                     description: Le ville d'étude de l'étudiant

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe 'OpenAPI file', type: :acceptance do
-  context 'API v2 definition' do
+  context 'API Entreprise v2 definition' do
     let(:definition_path) { 'public/v2/open-api.yml' }
 
     it 'is a valid YAML' do
@@ -14,7 +14,33 @@ RSpec.describe 'OpenAPI file', type: :acceptance do
     end
   end
 
-  context 'API v3 (and more) definition' do
+  context 'API Particulier definition' do
+    let(:definition_path) { 'swagger/api-particulier-open-api.yml' }
+
+    it 'is a valid YAML' do
+      expect(YAML.unsafe_load_file(definition_path)).to be_truthy
+    end
+
+    it 'is a valid configuration' do
+      document = Openapi3Parser.load_file(definition_path)
+      expect(document).to be_valid, "Errors: #{document.errors.to_h}"
+    end
+  end
+
+  context 'API Particulier France connect definition' do
+    let(:definition_path) { 'swagger/api-particulier-france-connect-open-api.yml' }
+
+    it 'is a valid YAML' do
+      expect(YAML.unsafe_load_file(definition_path)).to be_truthy
+    end
+
+    it 'is a valid configuration' do
+      document = Openapi3Parser.load_file(definition_path)
+      expect(document).to be_valid, "Errors: #{document.errors.to_h}"
+    end
+  end
+
+  context 'API Entreprise v3 (and more) definition' do
     let(:definition_path) { 'swagger/openapi.yaml' }
 
     it 'is a valid YAML' do
