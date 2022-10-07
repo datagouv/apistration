@@ -40,12 +40,12 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', type: %i[request swa
           unprocessable_entity_error_request(:siren)
 
           common_provider_errors_request(
-            'DGFIP',
+            'DGFIP - Adélie',
             DGFIP::LiassesFiscales,
             DGFIPPotentialNotFoundError.new
           )
 
-          common_network_error_request('DGFIP', DGFIP::LiassesFiscales)
+          common_network_error_request('DGFIP - Adélie', DGFIP::LiassesFiscales)
         end
       end
     end

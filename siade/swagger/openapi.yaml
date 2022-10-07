@@ -2962,7 +2962,7 @@ paths:
                       detail: Mauvaise réponse envoyée par le fournisseur de données
                       source:
                       meta:
-                        provider: DGFIP
+                        provider: DGFIP - Adélie
                   summary: Erreur inconnue
                   description: Mauvaise réponse envoyée par le fournisseur de données
                 potentielle_ressource_non_trouvee_03501:
@@ -2998,7 +2998,7 @@ paths:
                         écoulé.
                       source:
                       meta:
-                        provider: DGFIP
+                        provider: DGFIP - Adélie
                   summary: Intermédiaire hors-délai
                   description: Temps d’attente d’une réponse du fournisseur de données
                     écoulé.
@@ -3011,7 +3011,7 @@ paths:
                         ou en maintenance.
                       source:
                       meta:
-                        provider: DGFIP
+                        provider: DGFIP - Adélie
                   summary: Service non disponible
                   description: Service du fournisseur de données temporairement indisponible
                     ou en maintenance.
@@ -3035,7 +3035,7 @@ paths:
                       detail: Problème de résolution DNS de l'adresse du serveur
                       source:
                       meta:
-                        provider: DGFIP
+                        provider: DGFIP - Adélie
                   summary: Erreur de résolution DNS
                   description: Problème de résolution DNS de l'adresse du serveur
               schema:
