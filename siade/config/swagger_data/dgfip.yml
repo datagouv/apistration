@@ -186,8 +186,34 @@ dgfip:
                     - 'code_nref'
                     - 'valeurs'
                   properties:
+                    code:
+                      title: 'Code'
+                      type: 'string'
+                      description: "Code permettant d'identifier la donnée, constitué de 2 lettres de AA à ZZ (cf. Code EDI)"
+                      example: 'GR'
+                    code_EDI:
+                      title: 'Code EDI'
+                      type: 'string'
+                      description: "Le code EDI est utilisé lorsque la liasses fiscale a été souscrite via la filière EDI/TDFC. Il permet l’échange des données de nature comptable et/ou fiscale avec la norme EDIFACT entre la DGFiP et les utilisateurs des téléprocédures EDI "
+                      example: 'GR:C889:7111:1:TBX'
+                    code_absolu:
+                      title: 'Code absolu'
+                      type: 'string'
+                      description: 'Ce code interne à la DGFiP identifie une seule donnée sur un seul formulaire'
+                      example: '2006744'
+                    code_type_donnee:
+                      title: 'Code Type Donnée'
+                      description: 'Ce code détermine la nature de la donnée, le nombre et type des caractères qu’elle peut contenir'
+                      type: 'string'
+                      example: 'CCI'
+                    intitule:
+                      title: 'Intitulé'
+                      description: 'Intitulé de la donnée. Désigne une donnée correspondant à une case à cocher présente en haut de certains
+tableaux de la liasse fiscale'
+                      type: 'string'
+                      example: 'Déposé néant'
                     code_nref:
-                      title: "Code N-REF absolu permettant de faire le lien avec le dictionnaire"
+                      title: "A un code N-REF correspond un code absolu pour les liasses fiscales. Ces deux codes désignent une seule donnée présente sur un seul formulaire"
                       type: 'string'
                       example: '304651'
                     valeurs:
