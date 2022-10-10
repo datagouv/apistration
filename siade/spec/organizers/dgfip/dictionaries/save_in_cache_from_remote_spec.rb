@@ -1,4 +1,4 @@
-RSpec.describe DGFIP::Dictionaries::CacheFromRemote, type: :retriever_organizer do
+RSpec.describe DGFIP::Dictionaries::SaveInCacheFromRemote, type: :retriever_organizer do
   subject { described_class.call(params:) }
 
   let(:params) do

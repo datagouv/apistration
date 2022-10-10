@@ -16,7 +16,7 @@ class DGFIP::Dictionaries < ApplicationInteractor
   end
 
   def cache_dictionary_from_remote
-    DGFIP::Dictionaries::CacheFromRemote.call(params:).json_body
+    DGFIP::Dictionaries::SaveInCacheFromRemote.call(params:).json_body
   end
 
   def params
