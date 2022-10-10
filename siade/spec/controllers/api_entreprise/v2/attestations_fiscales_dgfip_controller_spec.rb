@@ -3,7 +3,7 @@ RSpec.describe APIEntreprise::V2::AttestationsFiscalesDGFIPController, type: :co
     allow(INSEE::Authenticate).to receive(:call).and_return(double('insee_authenticate', token: 'not a valid token'))
   end
 
-  describe 'when DGFiP authentication fails' do
+  describe 'when DGFIP authentication fails' do
     subject { response }
 
     let(:siren) { invalid_siren }

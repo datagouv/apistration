@@ -61,7 +61,7 @@ RSpec.describe APIEntreprise::V2::LiassesFiscalesDGFIPController, type: :control
     end
   end
 
-  describe 'with a valid DGFiP authentication', vcr: { cassette_name: 'dgfip/liasses_fiscales/with_non_existent_siren' } do
+  describe 'with a valid DGFIP authentication', vcr: { cassette_name: 'dgfip/liasses_fiscales/with_non_existent_siren' } do
     before do
       allow(UserIdDGFIPService).to receive(:call).and_return(valid_dgfip_user_id)
     end
@@ -94,7 +94,7 @@ RSpec.describe APIEntreprise::V2::LiassesFiscalesDGFIPController, type: :control
     end
   end
 
-  describe 'when DGFiP authentication fails' do
+  describe 'when DGFIP authentication fails' do
     subject { response }
 
     let(:siren) { invalid_siren }
@@ -105,7 +105,7 @@ RSpec.describe APIEntreprise::V2::LiassesFiscalesDGFIPController, type: :control
       allow_any_instance_of(AuthenticateDGFIPService).to receive(:success?).and_return(false)
     end
 
-    shared_examples 'DGFiP authentication failed' do
+    shared_examples 'DGFIP authentication failed' do
       its(:status) { is_expected.to eq(502) }
 
       it 'returns 502 with error message' do
@@ -118,19 +118,19 @@ RSpec.describe APIEntreprise::V2::LiassesFiscalesDGFIPController, type: :control
     describe 'liasse complete' do
       before { get :show, params: { token: token, siren: siren, annee: 2017 }.merge(mandatory_params) }
 
-      it_behaves_like 'DGFiP authentication failed'
+      it_behaves_like 'DGFIP authentication failed'
     end
 
     describe 'liasse declaration' do
       before { get :declaration, params: { token: token, siren: siren, annee: 2017 }.merge(mandatory_params) }
 
-      it_behaves_like 'DGFiP authentication failed'
+      it_behaves_like 'DGFIP authentication failed'
     end
 
     describe 'liasse dictionnaire' do
       before { get :dictionnaire, params: { token: token, siren: siren, annee: 2017 }.merge(mandatory_params) }
 
-      it_behaves_like 'DGFiP authentication failed'
+      it_behaves_like 'DGFIP authentication failed'
     end
   end
 end

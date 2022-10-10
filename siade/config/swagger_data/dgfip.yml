@@ -194,12 +194,12 @@ dgfip:
                     code_EDI:
                       title: 'Code EDI'
                       type: 'string'
-                      description: "Le code EDI est utilisé lorsque la liasses fiscale a été souscrite via la filière EDI/TDFC. Il permet l’échange des données de nature comptable et/ou fiscale avec la norme EDIFACT entre la DGFiP et les utilisateurs des téléprocédures EDI "
+                      description: "Le code EDI est utilisé lorsque la liasses fiscale a été souscrite via la filière EDI/TDFC. Il permet l’échange des données de nature comptable et/ou fiscale avec la norme EDIFACT entre la DGFIP et les utilisateurs des téléprocédures EDI "
                       example: 'GR:C889:7111:1:TBX'
                     code_absolu:
                       title: 'Code absolu'
                       type: 'string'
-                      description: 'Ce code interne à la DGFiP identifie une seule donnée sur un seul formulaire'
+                      description: 'Ce code interne à la DGFIP identifie une seule donnée sur un seul formulaire'
                       example: '2006744'
                     code_type_donnee:
                       title: 'Code Type Donnée'
