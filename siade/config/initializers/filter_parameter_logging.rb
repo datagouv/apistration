@@ -19,4 +19,9 @@ Rails.application.config.filter_parameters += %i[
   nom
   dateDeNaissance
   lieuDeNaissance
+
+  ine
+
+  numeroFiscal
+  referenceAvis
 ]
