@@ -6,9 +6,6 @@ production: &shared
   'DGFIP - Adélie':
     from_hour: '01:00'
     to_hour: '02:00'
-  'Banque de France':
-    from_hour: '23:00'
-    to_hour:  '08:00'
   'INSEE':
     dates:
       - day: '2022-09-21'
