@@ -91,8 +91,8 @@
     parameter: 'recipient'
 
 - code: '00211'
-  title: 'Entité non traitable'
-  detail: "Le paramètre recipient est identique au siret de la demande"
+  title: "Le paramètre recipient est identique au siret de la demande"
+  detail: "Le paramètre recipient est identique au siret de la demande. Le paramètre recipient doit correspondre au SIRET du bénéficiaire de la données. Si vous êtes une collectivité ou une administration il s'agit de votre SIRET. Si vous êtes un éditeur de logiciel il s'agit du SIRET du client demandant la donnée."
   source:
     parameter: 'recipient'
 
