@@ -3,8 +3,7 @@ class DGFIP::LiassesFiscales < ApplicationOrganizer
     DGFIP::Authenticate,
     DGFIP::LiassesFiscales::MakeRequest,
     DGFIP::LiassesFiscales::ValidateResponse,
-    DGFIP::LiassesFiscales::BuildResource,
-    DGFIP::LiassesFiscales::EnrichResource
+    DGFIP::LiassesFiscales::BuildResource
 
   def provider_name
     'DGFIP - Adélie'

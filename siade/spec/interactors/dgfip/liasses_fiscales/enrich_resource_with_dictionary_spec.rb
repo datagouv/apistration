@@ -1,8 +1,8 @@
-RSpec.describe DGFIP::LiassesFiscales::EnrichResource, type: :interactor do
+RSpec.describe DGFIP::LiassesFiscales::EnrichResourceWithDictionary, type: :interactor do
   subject(:enricher) { described_class.call(bundled_data:, params:) }
 
   let(:bundled_data) { builder.bundled_data }
-  let(:builder) { DGFIP::LiassesFiscales::BuildResource.call(response:) }
+  let(:builder) { DGFIP::LiassesFiscales::BuildResourceWithoutDictionary.call(response:) }
   let(:response) { instance_double(Net::HTTPOK, body:) }
   let(:body) { extract_dgfip_liasses_fiscales_payload('obligation_fiscale_simplified').to_json }
 

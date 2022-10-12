@@ -1,4 +1,4 @@
-class DGFIP::LiassesFiscales::EnrichResource < ApplicationInteractor
+class DGFIP::LiassesFiscales::EnrichResourceWithDictionary < ApplicationInteractor
   def call
     declarations = context.bundled_data.data.declarations
 

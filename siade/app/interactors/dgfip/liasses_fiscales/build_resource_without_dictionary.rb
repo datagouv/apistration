@@ -1,4 +1,4 @@
-class DGFIP::LiassesFiscales::BuildResource < BuildResource
+class DGFIP::LiassesFiscales::BuildResourceWithoutDictionary < BuildResource
   protected
 
   def resource_attributes

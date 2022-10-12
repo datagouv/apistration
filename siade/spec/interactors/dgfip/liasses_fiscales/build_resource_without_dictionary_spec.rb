@@ -1,4 +1,4 @@
-RSpec.describe DGFIP::LiassesFiscales::BuildResource, type: :build_resource do
+RSpec.describe DGFIP::LiassesFiscales::BuildResourceWithoutDictionary, type: :build_resource do
   describe '.call' do
     subject(:builder) { described_class.call(response:) }
 
