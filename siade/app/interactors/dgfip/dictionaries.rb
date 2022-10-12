@@ -1,7 +1,5 @@
 class DGFIP::Dictionaries < ApplicationInteractor
   def call
-    @key = context.key
-
     dictionary = retrieve_dictionary
 
     context.dictionary = JSON.parse(dictionary) if dictionary
@@ -16,20 +14,18 @@ class DGFIP::Dictionaries < ApplicationInteractor
   end
 
   def cache_dictionary_from_remote
-    DGFIP::Dictionaries::SaveInCacheFromRemote.call(params:).json_body
-  end
-
-  def params
-    {
-      year: year_from_key
-    }
-  end
-
-  def year_from_key
-    @key.split(':')[2].delete('year_')
+    DGFIP::Dictionaries::SaveInCacheFromRemote.call(params: context.params)
   end
 
   def retrieve_from_redis
-    RedisService.instance.get(@key)
+    RedisService.instance.get(key)
+  end
+
+  def key
+    "dgfip:dictionnaires:#{year}"
+  end
+
+  def year
+    context.params[:year]
   end
 end

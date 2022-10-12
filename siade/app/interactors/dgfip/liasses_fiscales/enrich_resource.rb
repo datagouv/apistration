@@ -36,24 +36,24 @@ class DGFIP::LiassesFiscales::EnrichResource < ApplicationInteractor
   end
 
   def enrichment_for_code_nref_from_dictionary_data(donnee, numero_imprime)
-    dictionary_data_for_imprime(numero_imprime)&.find do |data_declaration|
-      data_declaration[:code_nref] == donnee[:code_nref]
+    formatted_declaration_dictionary_data_for_imprime(numero_imprime)&.find do |data|
+      data[:code_nref] == donnee[:code_nref]
     end
   end
 
+  def formatted_declaration_dictionary_data_for_imprime(numero_imprime)
+    declaration_dictionary_data_for_imprime(numero_imprime)&.map { |entry| entry.transform_keys(&:to_sym) }
+  end
+
+  def declaration_dictionary_data_for_imprime(numero_imprime)
+    dictionary_data_for_imprime(numero_imprime).try(:[], 'millesimes').try(:[], 'declaration')
+  end
+
   def dictionary_data_for_imprime(numero_imprime)
-    dictionary_lookup(numero_imprime).map { |entry| entry.transform_keys(&:to_sym) }
+    dictionary.find { |entry| entry['numero_imprime'] == numero_imprime }
   end
 
-  def dictionary_lookup(numero_imprime)
-    DGFIP::Dictionaries.call(key: redis_key(numero_imprime))
-  end
-
-  def redis_key(numero_imprime)
-    "dgfip:dictionnaires:year_#{year}:imprime_#{numero_imprime}"
-  end
-
-  def year
-    context.params[:year]
+  def dictionary
+    DGFIP::Dictionaries.call(params: context.params)
   end
 end

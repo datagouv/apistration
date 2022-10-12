@@ -10,35 +10,14 @@ RSpec.describe DGFIP::LiassesFiscales::EnrichResource, type: :interactor do
     {
       siren: valid_siren(:liasse_fiscale),
       user_id: valid_dgfip_user_id,
-      year: 2017
+      year:
     }
   end
+  let(:year) { 2017 }
 
-  let(:dictionary_key_1) { 'dgfip:dictionnaires:year_2017:imprime_2033A' }
-  let(:dictionary_key_2) { 'dgfip:dictionnaires:year_2017:imprime_2033B' }
-  let(:dictionary_data_1) do
-    [
-      {
-        'code' => 'Z0',
-        'code_EDI' => 'XX:X123:2222:2:XX0',
-        'code_absolu' => '2345670',
-        'code_nref' => '304330',
-        'code_type_donnee' => 'XX0',
-        'intitule' => 'Déposé néant0'
-      }
-    ]
-  end
-  let(:dictionary_data_2) do
-    [
-      {
-        'code' => 'Z1',
-        'code_EDI' => 'XX:X123:2222:2:XX1',
-        'code_absolu' => '2345671',
-        'code_nref' => '304331',
-        'code_type_donnee' => 'XX1',
-        'intitule' => 'Déposé néant1'
-      }
-    ]
+  let(:dictionary_key) { 'dgfip:dictionnaires:2017' }
+  let(:dictionary_data) do
+    JSON.parse(open_payload_file('dgfip/dictionary.json').read)['dictionnaire']
   end
 
   let(:enriched_payload) do
@@ -49,12 +28,12 @@ RSpec.describe DGFIP::LiassesFiscales::EnrichResource, type: :interactor do
         donnees:
           [
             {
-              code: 'Z0',
-              code_EDI: 'XX:X123:2222:2:XX0',
-              code_absolu: '2345670',
-              code_nref: '304330',
-              code_type_donnee: 'XX0',
-              intitule: 'Déposé néant0',
+              code: 'XX',
+              code_EDI: 'XX:X123:4567:0:XXX',
+              code_absolu: '1234567',
+              code_nref: '123456',
+              code_type_donnee: 'XXX',
+              intitule: 'Intitulé 1',
               valeurs: ['1111']
             },
             {
@@ -77,12 +56,7 @@ RSpec.describe DGFIP::LiassesFiscales::EnrichResource, type: :interactor do
         donnees:
           [
             {
-              code: 'Z1',
-              code_EDI: 'XX:X123:2222:2:XX1',
-              code_absolu: '2345671',
               code_nref: '304331',
-              code_type_donnee: 'XX1',
-              intitule: 'Déposé néant1',
               valeurs: ['3333']
             }
           ],
@@ -99,8 +73,7 @@ RSpec.describe DGFIP::LiassesFiscales::EnrichResource, type: :interactor do
   end
 
   before do
-    allow(DGFIP::Dictionaries).to receive(:call).with(key: dictionary_key_1).and_return(dictionary_data_1)
-    allow(DGFIP::Dictionaries).to receive(:call).with(key: dictionary_key_2).and_return(dictionary_data_2)
+    allow(DGFIP::Dictionaries).to receive(:call).with(params:).and_return(dictionary_data)
   end
 
   it 'enrich the payload with dictionary data' do

@@ -1,32 +1,20 @@
 class DGFIP::Dictionaries::CacheResponse < ApplicationInteractor
   def call
-    dictionary.each { |imprime| save_in_redis(imprime) }
+    redis.set(redis_key, dictionary, ex: dictionary_expires_in)
   end
 
   private
 
   def dictionary
-    JSON.parse(context.response.body)['dictionnaire']
+    JSON.parse(context.response.body)['dictionnaire'].to_json
   end
 
-  def save_in_redis(imprime)
-    redis.set(redis_key(imprime), declarations(imprime), ex: dictionary_expires_in)
-  end
-
-  def redis_key(imprime)
-    "dgfip:dictionnaires:#{year}:#{numero(imprime)}"
+  def redis_key
+    "dgfip:dictionnaires:#{year}"
   end
 
   def year
-    "year_#{context.params[:year]}"
-  end
-
-  def numero(imprime)
-    "imprime_#{imprime['numero_imprime']}"
-  end
-
-  def declarations(imprime)
-    imprime['millesimes']['declaration'].to_json
+    context.params[:year]
   end
 
   def dictionary_expires_in

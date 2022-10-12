@@ -1,8 +1,16 @@
 RSpec.describe DGFIP::Dictionaries, type: :interactor do
   describe '.call' do
-    subject { described_class.call(key:) }
+    subject { described_class.call(params:) }
 
-    let(:key) { 'dgfip:dictionnaires:year_2019:imprime_2051' }
+    let(:params) do
+      {
+        siren: valid_siren(:liasse_fiscale),
+        user_id: valid_dgfip_user_id,
+        year: 2019
+      }
+    end
+
+    let(:key) { 'dgfip:dictionnaires:2019' }
 
     context 'when data is available in Redis' do
       let(:data) do
@@ -19,18 +27,7 @@ RSpec.describe DGFIP::Dictionaries, type: :interactor do
     end
 
     context 'when data is not available in Redis', vcr: { cassette_name: 'dgfip/dictionaries/2019', decode_compressed_response: true } do
-      let(:data) do
-        [
-          {
-            'code' => 'ZZ',
-            'code_EDI' => 'XX:X123:2222:2:XXX',
-            'code_absolu' => '2345678',
-            'code_nref' => '123458',
-            'code_type_donnee' => 'XXY',
-            'intitule' => 'Déposé néant'
-          }
-        ]
-      end
+      let(:data) { JSON.parse(open_payload_file('dgfip/dictionary.json').read)['dictionnaire'] }
 
       before do
         RedisService.instance.set(nil, key)
