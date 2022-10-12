@@ -23,5 +23,4 @@ Rails.application.config.filter_parameters += %i[
   ine
 
   numeroFiscal
-  referenceAvis
 ]
