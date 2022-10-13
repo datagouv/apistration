@@ -24,6 +24,7 @@ RSpec.describe DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote, type
         EncryptedCache.write(key, { bundled_data: cached_data })
       end
 
+      it { is_expected.to be_a_success }
       its(:dictionary) { is_expected.to eq(data[:dictionnaire]) }
     end
 
@@ -34,19 +35,19 @@ RSpec.describe DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote, type
         EncryptedCache.write(key, nil)
       end
 
+      it { is_expected.to be_a_success }
       its(:dictionary) { is_expected.to eq(data) }
     end
   end
 
-  describe 'when CacheResourceRetriever fails' do
-    let(:failed_retriever) do
-      Interactor::Context.new(errors: DnsResolutionError.new(provider_name: 'DGFIP - Adélie', message: 'error'))
-    end
-
+  describe 'when there is something wrong with the retriever' do
     before do
-      allow(CacheResourceRetriever).to receive(:call).and_return(failed_retriever)
+      allow(CacheResourceRetriever).to receive(:call).and_return(
+        double('retriever', success?: false, errors: [DnsResolutionError.new(provider_name: 'DGFIP - Adélie', message: 'error')])
+      )
     end
 
+    it { is_expected.to be_a_failure }
     its(:dictionary) { is_expected.to be_nil }
 
     its(:errors) { is_expected.to include(instance_of(DnsResolutionError)) }
