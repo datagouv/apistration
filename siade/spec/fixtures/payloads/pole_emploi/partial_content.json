@@ -1,0 +1,19 @@
+{
+  "adresse": {
+    "INSEECommune": "75107",
+    "codePostal": "75007",
+    "ligneComplementAdresse": " ",
+    "ligneComplementDestinataire": "APPARTEMENT 42",
+    "ligneNom": "DUPONT",
+    "ligneVoie": "42 RUE DE LA PAIX",
+    "localite": "75001 PARIS"
+  },
+  "civilite": "M.",
+  "dateNaissance": "1990-01-01T00:00:00+01:00",
+  "email": "jean.dupont@france.fr",
+  "nom": "DUPONT",
+  "nomUsage": " ",
+  "prenom": "JEAN",
+  "sexe": "Masculin",
+  "telephone": "0636656565"
+}

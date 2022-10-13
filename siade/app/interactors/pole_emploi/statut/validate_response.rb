@@ -1,6 +1,6 @@
 class PoleEmploi::Statut::ValidateResponse < ValidateResponse
   def call
-    resource_not_found! if http_not_found?
+    resource_not_found! if http_not_found? || http_code == 206
     unknown_provider_response! if !http_ok? || invalid_json? || inscription_category.blank?
   end
 

@@ -36,6 +36,18 @@ RSpec.describe PoleEmploi::Statut::ValidateResponse, type: :validate_response do
       its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
     end
 
+    context 'with 206 response (partial content)' do
+      let(:response) do
+        instance_double(Net::HTTPNotFound, code: 206, body:)
+      end
+
+      let(:body) { Rails.root.join('spec/fixtures/payloads/pole_emploi/partial_content.json').read }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+    end
+
     context 'with random http code response' do
       let(:response) do
         instance_double(Net::HTTPOK, code: 400)
