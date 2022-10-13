@@ -3,8 +3,10 @@ module Siade
     @credentials ||= begin
       credentials = Rails.application.credentials.config[Rails.env.to_sym] || {}
 
-      credentials.default_proc = proc do |_,key|
-        raise KeyError, "key '#{key}' not found"
+      unless ENV['ZEITWERK_CHECK']
+        credentials.default_proc = proc do |_,key|
+          raise KeyError, "key '#{key}' not found"
+        end
       end
 
       credentials

@@ -39,6 +39,8 @@ jobs:
 
       - name: Check Zeitwerk
         run: bundle exec rails runner "print 'Test that production is loading for Zeitwerk'" -e production
+        env:
+          ZEITWERK_CHECK: true
 
       - name: Force push develop to master
         run: |
