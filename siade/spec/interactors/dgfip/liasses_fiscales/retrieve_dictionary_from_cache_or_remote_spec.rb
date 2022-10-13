@@ -1,17 +1,17 @@
 RSpec.describe DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote, type: :interactor do
-  describe '.call' do
-    subject { described_class.call(params:) }
+  subject { described_class.call(params:) }
 
-    let(:params) do
-      {
-        siren: valid_siren(:liasse_fiscale),
-        user_id: valid_dgfip_user_id,
-        year: 2019
-      }
-    end
+  let(:params) do
+    {
+      siren: valid_siren(:liasse_fiscale),
+      user_id: valid_dgfip_user_id,
+      year: 2019
+    }
+  end
 
-    let(:key) { 'dgfip:dictionnaires:2019' }
+  let(:key) { 'dgfip:dictionnaires:2019' }
 
+  describe 'happy path' do
     context 'when data is available in cache' do
       let(:data) do
         {
@@ -36,5 +36,19 @@ RSpec.describe DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote, type
 
       its(:dictionary) { is_expected.to eq(data) }
     end
+  end
+
+  describe 'when CacheResourceRetriever fails' do
+    let(:failed_retriever) do
+      Interactor::Context.new(errors: DnsResolutionError.new(provider_name: 'DGFIP - Adélie', message: 'error'))
+    end
+
+    before do
+      allow(CacheResourceRetriever).to receive(:call).and_return(failed_retriever)
+    end
+
+    its(:dictionary) { is_expected.to be_nil }
+
+    its(:errors) { is_expected.to include(instance_of(DnsResolutionError)) }
   end
 end

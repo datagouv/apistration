@@ -1,16 +1,27 @@
 class DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote < ApplicationInteractor
+  before do
+    context.errors ||= []
+  end
+
   def call
-    retriever = CacheResourceRetriever.call(
+    if retriever.errors.present?
+      context.errors << retriever.errors
+      context.fail!
+    else
+      context.dictionary = retriever.bundled_data.data.dictionnaire
+    end
+  end
+
+  private
+
+  def retriever
+    CacheResourceRetriever.call(
       retriever_organizer:,
       retriever_params:,
       cache_key:,
       expires_in:
     )
-
-    context.dictionary = retriever.bundled_data.data.dictionnaire
   end
-
-  private
 
   def retriever_organizer
     DGFIP::Dictionaries
