@@ -1,4 +1,4 @@
-class DGFIP::LiassesFiscales::Dictionary < ApplicationInteractor
+class DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote < ApplicationInteractor
   def call
     retriever = CacheResourceRetriever.call(
       retriever_organizer:,

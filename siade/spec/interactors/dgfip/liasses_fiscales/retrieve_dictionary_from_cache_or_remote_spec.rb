@@ -1,4 +1,4 @@
-RSpec.describe DGFIP::LiassesFiscales::Dictionary, type: :interactor do
+RSpec.describe DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote, type: :interactor do
   describe '.call' do
     subject { described_class.call(params:) }
 
