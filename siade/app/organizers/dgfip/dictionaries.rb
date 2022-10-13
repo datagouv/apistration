@@ -1,8 +1,8 @@
-class DGFIP::Dictionaries::SaveInCacheFromRemote < RetrieverOrganizer
+class DGFIP::Dictionaries < RetrieverOrganizer
   organize DGFIP::Authenticate,
     DGFIP::Dictionaries::MakeRequest,
     DGFIP::Dictionaries::ValidateResponse,
-    DGFIP::Dictionaries::CacheResponse
+    DGFIP::Dictionaries::BuildResource
 
   def provider_name
     'DGFIP - Adélie'

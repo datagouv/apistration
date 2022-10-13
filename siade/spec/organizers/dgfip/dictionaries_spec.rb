@@ -1,4 +1,4 @@
-RSpec.describe DGFIP::Dictionaries::SaveInCacheFromRemote, type: :retriever_organizer do
+RSpec.describe DGFIP::Dictionaries, type: :retriever_organizer do
   subject { described_class.call(params:) }
 
   let(:params) do
@@ -8,9 +8,8 @@ RSpec.describe DGFIP::Dictionaries::SaveInCacheFromRemote, type: :retriever_orga
   end
 
   describe 'happy path', vcr: { cassette_name: 'dgfip/dictionaries/2019', decode_compressed_response: true } do
-    let(:dictionnaire) do
-      JSON.parse(open_payload_file('dgfip/dictionary.json').read)['dictionnaire'].to_json
-    end
+    let(:dictionnaire_raw) { open_payload_file('dgfip/dictionary.json').read }
+    let(:dictionnaire) { JSON.parse(dictionnaire_raw)['dictionnaire'] }
 
     let(:redis_key) { 'dgfip:dictionnaires:2019' }
 
@@ -18,10 +17,8 @@ RSpec.describe DGFIP::Dictionaries::SaveInCacheFromRemote, type: :retriever_orga
 
     it { is_expected.to be_a_success }
 
-    it 'caches all results in redis' do
-      expect(RedisService.instance).to receive(:set).with(redis_key, dictionnaire, { ex: expires_in })
-
-      subject
+    it 'bundles a dictionnaire' do
+      expect(subject.bundled_data.data.dictionnaire).to eq(dictionnaire)
     end
   end
 end

@@ -1,5 +1,5 @@
 RSpec.describe DGFIP::LiassesFiscales::EnrichResourceWithDictionary, type: :interactor do
-  subject(:enricher) { described_class.call(bundled_data:, params:) }
+  subject(:enricher) { described_class.call(bundled_data:, params:, dictionary:) }
 
   let(:bundled_data) { builder.bundled_data }
   let(:builder) { DGFIP::LiassesFiscales::BuildResourceWithoutDictionary.call(response:) }
@@ -15,10 +15,7 @@ RSpec.describe DGFIP::LiassesFiscales::EnrichResourceWithDictionary, type: :inte
   end
   let(:year) { 2017 }
 
-  let(:dictionary_key) { 'dgfip:dictionnaires:2017' }
-  let(:dictionary_data) do
-    JSON.parse(open_payload_file('dgfip/dictionary.json').read)['dictionnaire']
-  end
+  let(:dictionary) { JSON.parse(open_payload_file('dgfip/dictionary.json').read)['dictionnaire'] }
 
   let(:enriched_payload) do
     [
@@ -70,10 +67,6 @@ RSpec.describe DGFIP::LiassesFiscales::EnrichResourceWithDictionary, type: :inte
           }
       }
     ]
-  end
-
-  before do
-    allow(DGFIP::Dictionaries).to receive(:call).with(params:).and_return(dictionary_data)
   end
 
   it 'enrich the payload with dictionary data' do

@@ -50,10 +50,6 @@ class DGFIP::LiassesFiscales::EnrichResourceWithDictionary < ApplicationInteract
   end
 
   def dictionary_data_for_imprime(numero_imprime)
-    dictionary.find { |entry| entry['numero_imprime'] == numero_imprime }
-  end
-
-  def dictionary
-    DGFIP::Dictionaries.call(params: context.params)
+    context.dictionary&.find { |entry| entry['numero_imprime'] == numero_imprime }
   end
 end

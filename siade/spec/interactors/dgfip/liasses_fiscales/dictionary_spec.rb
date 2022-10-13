@@ -1,4 +1,4 @@
-RSpec.describe DGFIP::Dictionaries, type: :interactor do
+RSpec.describe DGFIP::LiassesFiscales::Dictionary, type: :interactor do
   describe '.call' do
     subject { described_class.call(params:) }
 
@@ -12,25 +12,26 @@ RSpec.describe DGFIP::Dictionaries, type: :interactor do
 
     let(:key) { 'dgfip:dictionnaires:2019' }
 
-    context 'when data is available in Redis' do
+    context 'when data is available in cache' do
       let(:data) do
         {
-          'local data' => 'anything'
+          dictionnaire: 'anything'
         }
       end
+      let(:cached_data) { BundledData.new(data: Resource.new(data)) }
 
       before do
-        RedisService.instance.set(key, data.to_json)
+        EncryptedCache.write(key, { bundled_data: cached_data })
       end
 
-      its(:dictionary) { is_expected.to eq(data) }
+      its(:dictionary) { is_expected.to eq(data[:dictionnaire]) }
     end
 
-    context 'when data is not available in Redis', vcr: { cassette_name: 'dgfip/dictionaries/2019', decode_compressed_response: true } do
+    context 'when data is not available in cache', vcr: { cassette_name: 'dgfip/dictionaries/2019', decode_compressed_response: true } do
       let(:data) { JSON.parse(open_payload_file('dgfip/dictionary.json').read)['dictionnaire'] }
 
       before do
-        RedisService.instance.set(nil, key)
+        EncryptedCache.write(key, nil)
       end
 
       its(:dictionary) { is_expected.to eq(data) }
