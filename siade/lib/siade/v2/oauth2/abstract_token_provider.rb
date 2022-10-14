@@ -40,7 +40,7 @@ module SIADE::V2::OAuth2::AbstractTokenProvider
   def token_from_provider
     client.get_token(client_get_token_params, access_token_options)
       .tap(&method(:save_to_redis))
-  rescue OAuth2::Error, Errno::ECONNRESET, Net::OpenTimeout, Net::ReadTimeout => e
+  rescue OAuth2::ConnectionError, OAuth2::Error, Errno::ECONNRESET, Net::OpenTimeout, Net::ReadTimeout => e
     track_error_from_provider(e)
 
     raise Error, e.message
