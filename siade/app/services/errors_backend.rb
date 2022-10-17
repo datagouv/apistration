@@ -64,6 +64,7 @@ class ErrorsBackend
       '25' => 'MESRI',
       '26' => 'CNOUS',
       '27' => 'DGFIP - SVAIR',
+      '28' => 'Commission Européenne',
       '50' => 'FranceConnect'
     }
   end

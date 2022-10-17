@@ -40,6 +40,7 @@ class ExtractProviderFromPath
       'bio' => 'Agence BIO',
       'ademe' => 'ADEME',
       'ministere_interieur' => 'Ministère de l\'Intérieur',
+      'european_commission' => 'Commission Européenne',
       'cma_france' => 'CMA France'
     }
   end
