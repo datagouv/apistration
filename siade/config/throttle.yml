@@ -70,6 +70,7 @@ shared:
       - { controller: 'api_entreprise/v3_and_more/dgfip/chiffres_affaires', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/msa/conformites_cotisations', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/fabrique_numerique_ministeres_sociaux/conventions_collectives', action: 'show' }
+      - { controller: 'api_entreprise/v3_and_more/european_commission/vies', action: 'show' }
     limit: 250
     period: 60
   very_low_latency_json_resources:

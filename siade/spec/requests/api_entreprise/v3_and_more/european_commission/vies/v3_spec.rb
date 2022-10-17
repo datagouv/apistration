@@ -1,0 +1,63 @@
+require 'swagger_helper'
+
+RSpec.describe 'EuropeanCommission: Vies', type: %i[request swagger], api: :entreprise do
+  path '/v3/european_commission/unites_legales/{siren}/numero_tva' do
+    get SwaggerData.get('european_commission.vies.title') do
+      tags(*SwaggerData.get('european_commission.vies.tags'))
+
+      common_action_attributes
+
+      parameter name: :siren, in: :path, type: :string
+
+      unauthorized_request do
+        let(:siren) { danone_siren }
+      end
+
+      describe 'with valid token and mandatory params', valid: true do
+        let(:siren) { danone_siren }
+
+        before do
+          stub_request(:get, "https://european_commission_vies_url.gouv.fr/#{danone_tva_number[2..]}").to_return(
+            status: 200,
+            body:
+          )
+        end
+
+        describe 'found response' do
+          let(:body) { Rails.root.join('spec/fixtures/payloads/vies/valid.json').read }
+
+          response '200', 'Numéro de TVA trouvé' do
+            description SwaggerData.get('european_commission.vies.description')
+
+            rate_limit_headers
+
+            schema build_rswag_response(
+              attributes: SwaggerData.get('european_commission.vies.attributes')
+            )
+
+            run_test!
+          end
+        end
+
+        describe 'not found response' do
+          let(:body) { Rails.root.join('spec/fixtures/payloads/vies/invalid.json').read }
+
+          response '404', 'Non trouvée' do
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
+          end
+        end
+      end
+
+      describe 'server errors', valid: true do
+        unprocessable_entity_error_request(:siren) do
+          let(:siren) { danone_siren }
+        end
+
+        common_provider_errors_request('Commission Européenne', EuropeanCommission::VIES)
+        common_network_error_request('Commission Européenne', EuropeanCommission::VIES)
+      end
+    end
+  end
+end
