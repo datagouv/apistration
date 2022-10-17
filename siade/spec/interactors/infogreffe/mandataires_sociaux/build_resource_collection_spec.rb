@@ -133,5 +133,33 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
         expect(resource_collection.first.to_h).to eq(valid_pp)
       end
     end
+
+    context 'when payload has no Personne Physique naissance data' do
+      let(:body) do
+        open_payload_file('infogreffe/without_personne_physique_naissance.xml').read
+      end
+
+      let(:valid_pp) do
+        {
+          code_nationalite: '',
+          code_pays_naissance: '',
+          date_naissance: '',
+          date_naissance_timestamp: '',
+          fonction: 'LAQUALITE',
+          lieu_naissance: '',
+          nationalite: '',
+          nom: 'LAPERSONNEPHYSIQUE',
+          pays_naissance: '',
+          prenom: '',
+          type: 'personne_physique'
+        }
+      end
+
+      it { is_expected.to be_a_success }
+
+      it 'contain valid pp' do
+        expect(resource_collection.first.to_h).to eq(valid_pp)
+      end
+    end
   end
 end

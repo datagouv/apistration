@@ -48,11 +48,11 @@ module Infogreffe::Concerns::MandatairesSociaux
   end
 
   def pays_naissance(dirigeant)
-    dirigeant.css('naissance').attribute('pays').value
+    dirigeant.css('naissance')&.attribute('pays')&.value
   end
 
   def code_pays_naissance(dirigeant)
-    dirigeant.css('naissance').attribute('codePays').value
+    dirigeant.css('naissance')&.attribute('codePays')&.value
   end
 
   def nationalite(dirigeant)
