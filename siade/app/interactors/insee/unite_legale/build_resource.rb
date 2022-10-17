@@ -67,10 +67,6 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
     end || {}
   end
 
-  def compute_numero_tva_intracommunautaire
-    TVAIntracommunautaire.new(siren).perform
-  end
-
   def date_cessation
     return if entreprise_active?
     return if periode_with_cessation_status.blank?
