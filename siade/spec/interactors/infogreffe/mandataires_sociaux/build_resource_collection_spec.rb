@@ -94,13 +94,13 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
           type: 'personne_physique',
           nom: 'SPLOUSHY',
           prenom: 'FANCY MCFACE',
-          fonction: '',
+          fonction: nil,
           date_naissance: '1971-02-26',
           lieu_naissance: 'UNEVILLE',
           pays_naissance: 'FRANCE',
           code_pays_naissance: 'FR',
-          nationalite: '',
-          code_nationalite: '',
+          nationalite: nil,
+          code_nationalite: nil,
           date_naissance_timestamp: 36_370_800
         }
       end
@@ -141,16 +141,16 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
 
       let(:valid_pp) do
         {
-          code_nationalite: '',
-          code_pays_naissance: '',
-          date_naissance: '',
-          date_naissance_timestamp: '',
+          code_nationalite: nil,
+          code_pays_naissance: nil,
+          date_naissance: nil,
+          date_naissance_timestamp: nil,
           fonction: 'LAQUALITE',
-          lieu_naissance: '',
-          nationalite: '',
+          lieu_naissance: nil,
+          nationalite: nil,
           nom: 'LAPERSONNEPHYSIQUE',
-          pays_naissance: '',
-          prenom: '',
+          pays_naissance: nil,
+          prenom: nil,
           type: 'personne_physique'
         }
       end

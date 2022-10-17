@@ -49,6 +49,7 @@ infogreffe:
           description: "Ce champ décrit la fonction du mandataire social au sein de l'entreprise. Cette information est disponible pour les personnes morales et physiques."
           type: 'string'
           example: 'COMMISSAIRE AUX COMPTES SUPPLEANT'
+          nullable: true
         nom:
           title: 'Nom'
           description: 'Nom du mandataire social. Ce champ est disponible uniquement pour une personne physique.'
@@ -168,6 +169,7 @@ infogreffe:
               description: "Ce champ est uniquement disponible pour une personne morale."
               type: "string"
               example: "784824153"
+              nullable: true
             type:
               title: "Type de mandataire social"
               description: "Ce champ permet de faire la distinction entre les personnes physiques et morales."
@@ -181,6 +183,7 @@ infogreffe:
               description: "Ce champ décrit la fonction du mandataire social au sein de l'entreprise. Cette information est disponible pour les personnes morales et physiques."
               type: 'string'
               example: 'COMMISSAIRE AUX COMPTES SUPPLEANT'
+              nullable: true
             nom:
               title: 'Nom'
               description: 'Nom du mandataire social. Ce champ est disponible uniquement pour une personne physique.'

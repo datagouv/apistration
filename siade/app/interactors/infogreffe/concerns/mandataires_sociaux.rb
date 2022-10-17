@@ -20,21 +20,19 @@ module Infogreffe::Concerns::MandatairesSociaux
   end
 
   def nom(dirigeant)
-    dirigeant.css('nom').text.strip
+    dirigeant.css('nom').text.strip.presence
   end
 
   def prenom(dirigeant)
-    dirigeant.css('prenom').text.strip
+    dirigeant.css('prenom').text.strip.presence
   end
 
   def fonction(dirigeant)
-    dirigeant.css('qualite').text.strip
+    dirigeant.css('qualite').text.strip.presence
   end
 
   def date_naissance(dirigeant)
-    return if dirigeant.css('naissance date').blank?
-
-    dirigeant.css('naissance date').attribute('dateISO').value
+    dirigeant.css('naissance date')&.attribute('dateISO')&.value
   end
 
   def date_naissance_no_day(dirigeant)
@@ -44,7 +42,7 @@ module Infogreffe::Concerns::MandatairesSociaux
   end
 
   def lieu_naissance(dirigeant)
-    dirigeant.css('naissance lieu').text.strip
+    dirigeant.css('naissance lieu').text.strip.presence
   end
 
   def pays_naissance(dirigeant)
@@ -56,11 +54,11 @@ module Infogreffe::Concerns::MandatairesSociaux
   end
 
   def nationalite(dirigeant)
-    dirigeant.css('pp').attribute('nationalite')&.value || ''
+    dirigeant.css('pp').attribute('nationalite')&.value
   end
 
   def code_nationalite(dirigeant)
-    dirigeant.css('pp').attribute('codeNationalite')&.value || ''
+    dirigeant.css('pp').attribute('codeNationalite')&.value
   end
 
   def date_naissance_timestamp(dirigeant)
@@ -68,7 +66,7 @@ module Infogreffe::Concerns::MandatairesSociaux
   end
 
   def raison_sociale(dirigeant)
-    dirigeant.css('denomination').text.strip
+    dirigeant.css('denomination').text.strip.presence
   end
 
   def code_greffe(dirigeant)
@@ -76,11 +74,11 @@ module Infogreffe::Concerns::MandatairesSociaux
   end
 
   def libelle_greffe(dirigeant)
-    dirigeant.css('greffe').text.strip
+    dirigeant.css('greffe').text.strip.presence
   end
 
   def identifiant(dirigeant)
-    dirigeant.css('pm num_ident').text.strip
+    dirigeant.css('pm num_ident').text.strip.presence
   end
 
   def type(dirigeant)

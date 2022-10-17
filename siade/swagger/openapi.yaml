@@ -4031,6 +4031,7 @@ paths:
                                 une personne morale.
                               type: string
                               example: '784824153'
+                              nullable: true
                             type:
                               title: Type de mandataire social
                               description: Ce champ permet de faire la distinction
@@ -4047,6 +4048,7 @@ paths:
                                 est disponible pour les personnes morales et physiques.
                               type: string
                               example: COMMISSAIRE AUX COMPTES SUPPLEANT
+                              nullable: true
                             nom:
                               title: Nom
                               description: Nom du mandataire social. Ce champ est
@@ -4764,6 +4766,7 @@ paths:
                                 est disponible pour les personnes morales et physiques.
                               type: string
                               example: COMMISSAIRE AUX COMPTES SUPPLEANT
+                              nullable: true
                             nom:
                               title: Nom
                               description: Nom du mandataire social. Ce champ est
