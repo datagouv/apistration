@@ -29,6 +29,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'TVA'
   inflect.acronym 'INE'
   inflect.acronym 'SVAIR'
+  inflect.acronym 'VIES'
 
   inflect.acronym 'ACOSS'
   inflect.acronym 'ADEME'
