@@ -3052,7 +3052,7 @@ paths:
         to_hour: '02:00'
   "/v3/european_commission/unites_legales/{siren}/numero_tva":
     get:
-      summary: 'Récupération du numéro de TVA '
+      summary: Récupération du numéro de TVA
       tags:
       - Informations générales
       parameters:

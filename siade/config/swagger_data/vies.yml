@@ -1,6 +1,6 @@
 european_commission:
   vies:
-    title: "Récupération du numéro de TVA "
+    title: "Récupération du numéro de TVA"
     description: "Récupération du numéro du TVA à partir d'un numéro de siren."
     tags:
       - "Informations générales"
