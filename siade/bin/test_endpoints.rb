@@ -221,6 +221,9 @@ endpoints = <<STR
 
 - name: '[V3] QUALIBAT Certifications batiment'
   http_path: '/v3/qualibat/etablissements/78824266700020/certification_batiment'
+
+- name: '[V3] Commission Européenne numéro de TVA'
+  http_path: '/v3/european_commission/unites_legales/552032534/numero_tva'
 STR
 
 def test_endpoint(endpoint, index)
