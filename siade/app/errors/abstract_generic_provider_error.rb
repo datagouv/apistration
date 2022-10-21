@@ -45,6 +45,6 @@ class AbstractGenericProviderError < ApplicationError
 
   def provider_code
     errors_backend.provider_code_from_name(provider_name) ||
-      (raise UnknownProviderCode.new("Code '#{provider_name}' does not exist"))
+      (raise UnknownProviderCode, "Code '#{provider_name}' does not exist")
   end
 end
