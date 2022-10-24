@@ -1,4 +1,4 @@
-RSpec.describe APIParticulier::V2::MESRI::StudentStatusController, type: :controller do
+RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
   let(:all_scopes) { %w[mesri_identifiant mesri_identite mesri_inscription_etudiant mesri_inscription_autre mesri_admission mesri_etablissements] }
   let(:one_field_of_each_scope) { %w[ine nom inscriptions] }
 

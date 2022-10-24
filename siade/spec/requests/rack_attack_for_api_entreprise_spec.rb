@@ -1,4 +1,4 @@
-RSpec.describe 'Rack::Attack config for API Entreprise', type: :request, api: :entreprise do
+RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
   after { Rack::Attack.reset! }
 
   def extract_without_context_url_for(options)

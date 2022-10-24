@@ -1,4 +1,4 @@
-RSpec.describe APIEntrepriseController, type: :controller do
+RSpec.describe APIEntrepriseController do
   controller(described_class) do
     def index
       render json: {}, status: :ok

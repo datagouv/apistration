@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'FNTP: Carte professionnelle Travaux Publics', type: %i[request swagger], api: :entreprise do
+RSpec.describe 'FNTP: Carte professionnelle Travaux Publics', api: :entreprise, type: %i[request swagger] do
   path '/v3/fntp/unites_legales/{siren}/carte_professionnelle_travaux_publics' do
     get SwaggerData.get('fntp.carte_professionnelle_travaux_publics.title') do
       tags(*SwaggerData.get('fntp.carte_professionnelle_travaux_publics.tags'))

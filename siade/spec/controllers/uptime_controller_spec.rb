@@ -1,4 +1,4 @@
-RSpec.describe UptimeController, type: :controller do
+RSpec.describe UptimeController do
   let(:token) { uptime_jwt }
 
   before do

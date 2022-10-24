@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 # rubocop:disable RSpec/DescribeMethod
-RSpec.describe APIParticulierController, 'errors rendering', type: :controller do
+RSpec.describe APIParticulierController, 'errors rendering' do
   # rubocop:enable RSpec/DescribeMethod
   controller(described_class) do
     def show

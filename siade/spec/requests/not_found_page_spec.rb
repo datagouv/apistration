@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Not found page', type: :request do
+RSpec.describe 'Not found page' do
   subject(:call) do
     get '/whatever'
 

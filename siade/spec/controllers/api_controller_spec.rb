@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe APIController, type: :controller do
+RSpec.describe APIController do
   controller(described_class) do
     def index
       head :ok

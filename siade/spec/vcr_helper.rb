@@ -82,8 +82,8 @@ VCR.configure do |c|
 
     if ENV.fetch('DEBUG_VCR', false) && !bool
       print "Diff on headers:\n"
-      mismatching_keys = (request.headers.except(*headers_to_ignore).to_a - registered_request.headers.except(*headers_to_ignore).to_a).map { |header| header[0] }
-      mismatching_keys += (registered_request.headers.except(*headers_to_ignore).to_a - request.headers.except(*headers_to_ignore).to_a).map { |header| header[0] }
+      mismatching_keys = (request.headers.except(*headers_to_ignore).to_a - registered_request.headers.except(*headers_to_ignore).to_a).pluck(0)
+      mismatching_keys += (registered_request.headers.except(*headers_to_ignore).to_a - request.headers.except(*headers_to_ignore).to_a).pluck(0)
       mismatching_keys.uniq!
 
       mismatching_keys.each do |key|

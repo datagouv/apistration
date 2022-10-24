@@ -1,4 +1,4 @@
-RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController, type: :controller do
+RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
   let(:all_scopes) { %w[cnous_identite cnous_email cnous_statut_boursier cnous_echelon_bourse cnous_statut_bourse cnous_periode_versement cnous_ville_etudes] }
   let(:one_field_of_each_scope) { %w[nom email boursier echelonBourse statut dateDeRentree villeEtudes] }
 

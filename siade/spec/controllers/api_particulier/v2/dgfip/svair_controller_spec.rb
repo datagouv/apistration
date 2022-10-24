@@ -1,4 +1,4 @@
-RSpec.describe APIParticulier::V2::DGFIP::SVAIRController, type: :controller do
+RSpec.describe APIParticulier::V2::DGFIP::SVAIRController do
   subject { get :show, params: { numeroFiscal: tax_number, referenceAvis: tax_notice_number, token: } }
 
   let(:all_scopes) { described_class.new.send(:scopes) }

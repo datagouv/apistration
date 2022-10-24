@@ -1,4 +1,4 @@
-RSpec.describe 'API Particulier: swagger files', type: :request do
+RSpec.describe 'API Particulier: swagger files' do
   before do
     host! 'particulier.api.localtest.me'
   end

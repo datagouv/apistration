@@ -1,4 +1,4 @@
-RSpec.describe APIParticulier::IntrospectController, type: :controller do
+RSpec.describe APIParticulier::IntrospectController do
   subject { get :show, params: { token: } }
 
   context 'with valid token' do

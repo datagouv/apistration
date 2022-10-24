@@ -1,4 +1,4 @@
-RSpec.describe APIParticulier::V2::CNAF::QuotientFamilialController, type: :controller do
+RSpec.describe APIParticulier::V2::CNAF::QuotientFamilialController do
   subject { get :show, params: { numeroAllocataire: beneficiary_number, codePostal: postal_code, token: } }
 
   let(:all_scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse] }

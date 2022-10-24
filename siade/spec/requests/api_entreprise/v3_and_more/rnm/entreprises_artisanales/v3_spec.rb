@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'RNM: Entreprises artisanales', type: %i[request swagger], api: :entreprise do
+RSpec.describe 'RNM: Entreprises artisanales', api: :entreprise, type: %i[request swagger] do
   path '/v3/cma_france/rnm/unites_legales/{siren}' do
     get SwaggerData.get('rnm.entreprise_artisanale.title') do
       tags(*SwaggerData.get('rnm.entreprise_artisanale.tags'))

@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'Infogreffe: Extraitsrcs', type: %i[request swagger], api: :entreprise do
+RSpec.describe 'Infogreffe: Extraitsrcs', api: :entreprise, type: %i[request swagger] do
   path '/v3/infogreffe/rcs/unites_legales/{siren}/extrait_kbis' do
     get SwaggerData.get('infogreffe.extraits_rcs.title') do
       tags(*SwaggerData.get('infogreffe.extraits_rcs.tags'))

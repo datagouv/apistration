@@ -1,4 +1,4 @@
-RSpec.describe APIParticulier::V2::PoleEmploi::StatutController, type: :controller do
+RSpec.describe APIParticulier::V2::PoleEmploi::StatutController do
   subject { get :show, params: { identifiant:, token: } }
 
   let(:all_scopes) { %i[pole_emploi_identite pole_emploi_adresse pole_emploi_contact pole_emploi_inscription] }

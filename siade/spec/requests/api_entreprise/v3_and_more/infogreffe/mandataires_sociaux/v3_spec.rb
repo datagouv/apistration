@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'Infogreffe: Mandataires sociaux', type: %i[request swagger], api: :entreprise do
+RSpec.describe 'Infogreffe: Mandataires sociaux', api: :entreprise, type: %i[request swagger] do
   path '/v3/infogreffe/rcs/unites_legales/{siren}/mandataires_sociaux' do
     get SwaggerData.get('infogreffe.mandataires_sociaux.title') do
       tags(*SwaggerData.get('infogreffe.mandataires_sociaux.tags'))

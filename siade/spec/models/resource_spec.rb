@@ -1,4 +1,4 @@
-RSpec.describe Resource, type: :model do
+RSpec.describe Resource do
   let(:instance) { described_class.new(params) }
 
   describe '#id' do

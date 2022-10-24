@@ -1,4 +1,4 @@
-RSpec.describe 'Uptime routes', type: :request do
+RSpec.describe 'Uptime routes' do
   subject(:uptime) do
     get uptime_path, params: { route: }, headers: { 'Authorization' => "Bearer #{uptime_jwt}" }
   end
@@ -13,7 +13,7 @@ RSpec.describe 'Uptime routes', type: :request do
       let(:route) { "/v2/entreprises/#{siren}" }
       let(:siren) { sirens_insee_v3[:active_GE] }
 
-      it 'works' do
+      it 'renders 200' do
         uptime
 
         expect(response).to have_http_status(:ok)
@@ -25,7 +25,7 @@ RSpec.describe 'Uptime routes', type: :request do
       let(:route) { "/v3/insee/sirene/unites_legales/#{siren}" }
       let(:siren) { sirens_insee_v3[:active_GE] }
 
-      it 'works' do
+      it 'renders 200' do
         uptime
 
         expect(response).to have_http_status(:ok)
@@ -45,7 +45,7 @@ RSpec.describe 'Uptime routes', type: :request do
     let(:uptime_path) { '/api/uptime' }
     let(:route) { '/api/v2/etudiants?ine=1234567890' }
 
-    it 'works' do
+    it 'renders 200' do
       uptime
 
       expect(response).to have_http_status(:ok)

@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'EuropeanCommission: Vies', type: %i[request swagger], api: :entreprise do
+RSpec.describe 'EuropeanCommission: Vies', api: :entreprise, type: %i[request swagger] do
   path '/v3/european_commission/unites_legales/{siren}/numero_tva' do
     get SwaggerData.get('european_commission.vies.title') do
       tags(*SwaggerData.get('european_commission.vies.tags'))

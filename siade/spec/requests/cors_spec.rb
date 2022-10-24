@@ -1,4 +1,4 @@
-RSpec.describe 'Cors', type: :request do
+RSpec.describe 'Cors' do
   before do
     host! 'entreprise.api.localtest.me'
   end

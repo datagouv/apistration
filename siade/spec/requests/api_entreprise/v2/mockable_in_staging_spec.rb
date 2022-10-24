@@ -1,4 +1,4 @@
-RSpec.describe 'OpenAPI inegrity check for v2 APIs', type: :request, api: :entreprise do
+RSpec.describe 'OpenAPI inegrity check for v2 APIs', api: :entreprise do
   before do
     allow(Rails.env).to receive(:staging?).and_return(true)
     Rack::Attack.reset!

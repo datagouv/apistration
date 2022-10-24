@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'OPQIBI: Certificationsingenierie', type: %i[request swagger], api: :entreprise do
+RSpec.describe 'OPQIBI: Certificationsingenierie', api: :entreprise, type: %i[request swagger] do
   path '/v3/opqibi/unites_legales/{siren}/certification_ingenierie' do
     get SwaggerData.get('opqibi.certifications_ingenierie.title') do
       tags(*SwaggerData.get('opqibi.certifications_ingenierie.tags'))

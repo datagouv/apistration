@@ -21,7 +21,7 @@ module SelfHostedDoc
     end
 
     def expected_storage_url
-      "https:\/\/my_example_storage.fr\/siade_dev\/.+-#{@expected}#{@file_extension}"
+      "https://my_example_storage.fr/siade_dev/.+-#{@expected}#{@file_extension}"
     end
   end
 

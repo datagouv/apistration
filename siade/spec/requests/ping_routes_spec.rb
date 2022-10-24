@@ -1,4 +1,4 @@
-RSpec.describe 'Ping routes', type: :request do
+RSpec.describe 'Ping routes' do
   subject(:ping) do
     get route
   end
@@ -11,7 +11,7 @@ RSpec.describe 'Ping routes', type: :request do
     context 'with v2' do
       let(:route) { '/v2/ping' }
 
-      it 'works' do
+      it 'renders 200' do
         ping
 
         expect(response).to have_http_status(:ok)
@@ -21,7 +21,7 @@ RSpec.describe 'Ping routes', type: :request do
     context 'with v3' do
       let(:route) { '/v3/ping' }
 
-      it 'works' do
+      it 'renders 200' do
         ping
 
         expect(response).to have_http_status(:ok)
@@ -37,7 +37,7 @@ RSpec.describe 'Ping routes', type: :request do
     describe '/ping' do
       let(:route) { '/api/ping' }
 
-      it 'works' do
+      it 'renders 200' do
         ping
 
         expect(response).to have_http_status(:ok)
@@ -58,7 +58,7 @@ RSpec.describe 'Ping routes', type: :request do
         let(:code_postal) { Siade.credentials[:ping_cnaf_postal_code] }
         let(:numero_allocataire) { Siade.credentials[:ping_cnaf_numero_allocataire] }
 
-        it 'works' do
+        it 'renders 200' do
           ping
 
           expect(response).to have_http_status(:ok)
@@ -78,7 +78,7 @@ RSpec.describe 'Ping routes', type: :request do
         let(:numero_fiscal) { Siade.credentials[:ping_dgfip_svair_numero_fiscal] }
         let(:reference_avis) { Siade.credentials[:ping_dgfip_svair_reference_avis] }
 
-        it 'works' do
+        it 'renders 200' do
           ping
 
           expect(response).to have_http_status(:ok)
