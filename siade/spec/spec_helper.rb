@@ -155,6 +155,14 @@ RSpec.configure do |config|
     end
   end
 
+  config.after(type: :swagger) do |example|
+    next unless example.metadata[:response][:code].dup.to_s == '200'
+
+    operation_id = request.controller_class.to_s.underscore.gsub('api_entreprise/v3_and_more/', '')
+
+    example.metadata[:response][:'x-operationId'] = operation_id
+  end
+
   config.include_context 'has a provider_name', type: :provider_request
   config.include_context 'has a provider_name', type: :provider_response
   config.include_context 'has a provider_name', type: :provider_driver

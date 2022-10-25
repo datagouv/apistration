@@ -218,6 +218,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: acoss/attestations_sociales_controller
           content:
             application/json:
               schema:
@@ -644,6 +645,7 @@ paths:
                 "$ref": "#/components/schemas/Error"
         '200':
           description: Entreprise trouvée
+          x-operationId: ademe/certificats_rge_controller
           headers:
             RateLimit-Limit:
               schema:
@@ -1140,6 +1142,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: cnetp/attestation_cotisations_conges_payes_chomage_intemperies_controller
           content:
             application/json:
               schema:
@@ -1522,6 +1525,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: dgddi/eori_controller
           content:
             application/json:
               schema:
@@ -1929,6 +1933,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: dgfip/attestations_fiscales_controller
           content:
             application/json:
               schema:
@@ -2330,6 +2335,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: dgfip/chiffres_affaires_controller
           content:
             application/json:
               schema:
@@ -2651,6 +2657,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: dgfip/liasses_fiscales_controller
           content:
             application/json:
               schema:
@@ -3178,6 +3185,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: european_commission/vies_controller
           content:
             application/json:
               schema:
@@ -3511,6 +3519,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: fabrique_numerique_ministeres_sociaux/conventions_collectives_controller
           content:
             application/json:
               schema:
@@ -3884,6 +3893,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: fntp/carte_professionnelle_travaux_publics_controller
           content:
             application/json:
               schema:
@@ -4276,6 +4286,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: infogreffe/extraits_rcs_controller
           content:
             application/json:
               schema:
@@ -5018,6 +5029,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: infogreffe/mandataires_sociaux_controller
           content:
             application/json:
               schema:
@@ -5493,6 +5505,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: inpi/actes_controller
           content:
             application/json:
               schema:
@@ -5841,6 +5854,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: inpi/latest_brevets_controller
           content:
             application/json:
               schema:
@@ -6308,6 +6322,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: inpi/latest_marques_controller
           content:
             application/json:
               schema:
@@ -6676,6 +6691,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: inpi/latest_modeles_controller
           content:
             application/json:
               schema:
@@ -7065,6 +7081,7 @@ paths:
                 "$ref": "#/components/schemas/Error"
         '200':
           description: Etablissement trouvé
+          x-operationId: insee/adresses_etablissements_controller
           content:
             application/json:
               schema:
@@ -7611,6 +7628,7 @@ paths:
                 "$ref": "#/components/schemas/Error"
         '200':
           description: Etablissement trouvé
+          x-operationId: insee/adresses_etablissements_diffusables_controller
           content:
             application/json:
               schema:
@@ -8176,6 +8194,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: insee/etablissements_controller
           content:
             application/json:
               schema:
@@ -9273,6 +9292,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: insee/etablissements_diffusables_controller
           content:
             application/json:
               schema:
@@ -10370,6 +10390,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: insee/sieges_diffusables_unites_legales_controller
           content:
             application/json:
               schema:
@@ -11468,6 +11489,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: insee/sieges_unites_legales_controller
           content:
             application/json:
               schema:
@@ -12567,6 +12589,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: insee/unites_legales_controller
           content:
             application/json:
               schema:
@@ -13269,6 +13292,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: insee/unites_legales_diffusables_controller
           content:
             application/json:
               schema:
@@ -13954,6 +13978,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: mi/documents_associations_controller
           content:
             application/json:
               schema:
@@ -14371,6 +14396,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: mi/associations_controller
           content:
             application/json:
               schema:
@@ -14807,6 +14833,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: msa/conformites_cotisations_controller
           content:
             application/json:
               schema:
@@ -15121,6 +15148,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: opqibi/certifications_ingenierie_controller
           content:
             application/json:
               schema:
@@ -15559,6 +15587,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: probtp/attestations_cotisation_retraite_controller
           content:
             application/json:
               schema:
@@ -15924,6 +15953,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: probtp/conformites_cotisations_retraite_controller
           content:
             application/json:
               schema:
@@ -16258,6 +16288,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: qualibat/certifications_batiment_controller
           content:
             application/json:
               schema:
@@ -16650,6 +16681,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
+          x-operationId: rnm/entreprises_artisanales_controller
           content:
             application/json:
               schema:
