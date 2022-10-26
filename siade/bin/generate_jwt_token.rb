@@ -44,7 +44,8 @@ end
 
 env = ARGV[0]
 
-ENV['RAILS_ENV'] = env
+config_to_retrieve = env == 'staging' ? 'production' : env
+ENV['RAILS_ENV'] = config_to_retrieve
 
 require File.expand_path('../../config/application', __FILE__)
 
@@ -70,6 +71,15 @@ File.open(Rails.root.join('config/all_scopes.yml'), 'w') do |f|
   f.write(scopes.to_yaml)
 end
 
+exp = case env
+  when 'staging'
+    DateTime.now.next_year(10).to_i
+  when 'test'
+    nil
+  else
+    DateTime.now.next_month.to_i
+  end
+
 token_payload = {
   uid: SecureRandom.uuid,
   jti: "00000000-0000-0000-0000-000000000000",
@@ -77,7 +87,7 @@ token_payload = {
   sub: "#{env} development",
   iat: Time.now.to_i,
   version: '1.0',
-  exp: env == 'test' ? nil : DateTime.now.next_month.to_i
+  exp: exp,
 }.compact
 
 token = JWT.encode(token_payload, jwt_hash_secret, jwt_hash_algo)
