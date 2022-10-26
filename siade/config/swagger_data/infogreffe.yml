@@ -163,6 +163,7 @@ infogreffe:
         type: "array"
         items:
           required: ["fonction"]
+          type: 'object'
           properties:
             numero_identification:
               title: "Numéro d'identification"

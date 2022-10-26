@@ -122,6 +122,7 @@ dgfip:
                 properties:
                   code:
                     title: "Code du régime d’imposition applicable au résultat fiscal de l'unité légale"
+                    type: 'string'
                     description: "Les valeurs possibles sont les suivantes:
                       \n
                       \n
@@ -170,6 +171,7 @@ dgfip:
                 example: 365
               millesime:
                 title: "Millesime"
+                type: 'string'
                 description: "Code composé de 6 caractères:
                   \n
                   - 4 caractères correspondant à l'année de création ou modification du formulaire. Les valeurs possibles vont de 2006 à l'année courante dès avril, l'année précédente sinon.
@@ -229,6 +231,7 @@ tableaux de la liasse fiscale'
       meta:
         internal_id_itip:
           title: "Identifiant interne dénommé ITIP de la DGFIP"
+          type: 'string'
           description: "Identifiant technique interne de la DGFIP ITIP: Identifiant Transversal Informatique de la Personne"
           example: '100004763104'
 

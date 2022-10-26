@@ -20,7 +20,7 @@ fabrique_numerique_ministeres_sociaux:
         description: "Titre abrégé / d'usage"
         example: "Bureaux d'études techniques, cabinets d'ingénieurs-conseils et sociétés de conseils"
       numero_idcc:
-        type: 'numeric'
+        type: 'number'
         description: "Numéro IDCC"
         example: 1486
       active:

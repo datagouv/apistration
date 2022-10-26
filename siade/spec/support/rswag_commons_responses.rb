@@ -49,7 +49,7 @@ module RSWagCommonsResponses
 
     header 'X-Cache-Expires-in',
       schema: {
-        type: :numeric,
+        type: :number,
         nullable: true,
         example: 9001
       },

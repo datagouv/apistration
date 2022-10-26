@@ -200,7 +200,7 @@ paths:
               description: Indique si la réponse a été caché.
             X-Cache-Expires-in:
               schema:
-                type: numeric
+                type: number
                 nullable: true
                 example: 9001
               description: Secondes avant que le cache n'expire. Si le cache est vide,
@@ -1915,7 +1915,7 @@ paths:
               description: Indique si la réponse a été caché.
             X-Cache-Expires-in:
               schema:
-                type: numeric
+                type: number
                 nullable: true
                 example: 9001
               description: Secondes avant que le cache n'expire. Si le cache est vide,
@@ -2773,6 +2773,7 @@ paths:
                                 code:
                                   title: Code du régime d’imposition applicable au
                                     résultat fiscal de l'unité légale
+                                  type: string
                                   description: "Les valeurs possibles sont les suivantes:
                                     \n \n - RN: Réel normal \n - RSI ou RS: Réel simplifié
                                     FIXME: A CONFIRMER le RS \n - RNMEMBRE: Réel normal
@@ -2819,6 +2820,7 @@ paths:
                               example: 365
                             millesime:
                               title: Millesime
+                              type: string
                               description: "Code composé de 6 caractères: \n - 4 caractères
                                 correspondant à l'année de création ou modification
                                 du formulaire. Les valeurs possibles vont de 2006
@@ -2900,6 +2902,7 @@ paths:
                     properties:
                       internal_id_itip:
                         title: Identifiant interne dénommé ITIP de la DGFIP
+                        type: string
                         description: 'Identifiant technique interne de la DGFIP ITIP:
                           Identifiant Transversal Informatique de la Personne'
                         example: '100004763104'
@@ -3200,6 +3203,7 @@ paths:
                     properties:
                       tva_number:
                         title: Numéro de TVA intracommunautaire français
+                        type: string
                         description: Ce numéro de TVA est extrait du numéro de SIREN,
                           à l'aide de la règle de calcul du numéro de TVA, et validé
                           auprès du service VIES de la Commission européenne. Ce numéro
@@ -3555,7 +3559,7 @@ paths:
                               example: Bureaux d'études techniques, cabinets d'ingénieurs-conseils
                                 et sociétés de conseils
                             numero_idcc:
-                              type: numeric
+                              type: number
                               description: Numéro IDCC
                               example: 1486
                             active:
@@ -4326,6 +4330,7 @@ paths:
                         items:
                           required:
                           - fonction
+                          type: object
                           properties:
                             numero_identification:
                               title: Numéro d'identification
@@ -7166,6 +7171,7 @@ paths:
                         -
                       libelle_voie:
                         title: Libellé de la voie
+                        type: string
                         example: DE LA PAIX
                       complement_adresse:
                         title: Complément d'adresse
@@ -7194,6 +7200,8 @@ paths:
                         type: string
                       distribution_speciale:
                         title: Distribution spéciale
+                        type: string
+                        nullable: true
                         description: "La distribution spéciale reprend les éléments
                           particuliers qui accompagnent une adresse de distribution
                           spéciale, la modalité la plus connue étant les adresses
@@ -7202,6 +7210,7 @@ paths:
                           * https://www.sirene.fr/sirene/public/variable/l5-disp"
                       code_cedex:
                         title: Code cedex
+                        type: string
                         nullable: true
                         description: 'Plus d''informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle'
                         example: '75590'
@@ -7248,32 +7257,38 @@ paths:
                         properties:
                           l1:
                             title: Ligne 1
+                            type: string
                             description: 'Si l''établissement correspond à une personne
                               morale: la dénomination sociale de la personne morale.
                               Le cas contraire: cette variable est vide.'
                             example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                           l2:
                             title: Ligne 2
+                            type: string
                             description: 'Si l''établissement correspond à une personne
                               physique: concaténation du nom et prénom'
                             example: JEAN MARIE DURAND
                           l3:
                             title: Ligne 3
+                            type: string
                             description: Complément d'adresse comme décrit dans la
                               clé `complement_adresse`
                             example: ZAE SAINT GUENAULT
                           l4:
                             title: Ligne 4
+                            type: string
                             description: Concaténation du numéro de voie, d'indice
                               de répétition, du type de voie et du libellé de la voie
                             example: 51 BIS RUE DE LA PAIX
                           l5:
                             title: Ligne 5
+                            type: string
                             description: Distribution spéciale comme décrit dans la
                               clé `distribution_speciale`
                             example: CS 72809
                           l6:
                             title: Ligne 6
+                            type: string
                             description: 'Si le code cedex est existant: code cedex
                               accompagné de son libellé ; sinon, si le pays est en
                               France: code postal accompagné de son libellé, sinon
@@ -7282,6 +7297,7 @@ paths:
                             example: 75256 PARIX CEDEX 12
                           l7:
                             title: Ligne 7
+                            type: string
                             description: Pays de l'établissement
                             example: FRANCE
                         required:
@@ -7713,6 +7729,7 @@ paths:
                         -
                       libelle_voie:
                         title: Libellé de la voie
+                        type: string
                         example: DE LA PAIX
                       complement_adresse:
                         title: Complément d'adresse
@@ -7741,6 +7758,8 @@ paths:
                         type: string
                       distribution_speciale:
                         title: Distribution spéciale
+                        type: string
+                        nullable: true
                         description: "La distribution spéciale reprend les éléments
                           particuliers qui accompagnent une adresse de distribution
                           spéciale, la modalité la plus connue étant les adresses
@@ -7749,6 +7768,7 @@ paths:
                           * https://www.sirene.fr/sirene/public/variable/l5-disp"
                       code_cedex:
                         title: Code cedex
+                        type: string
                         nullable: true
                         description: 'Plus d''informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle'
                         example: '75590'
@@ -7795,32 +7815,38 @@ paths:
                         properties:
                           l1:
                             title: Ligne 1
+                            type: string
                             description: 'Si l''établissement correspond à une personne
                               morale: la dénomination sociale de la personne morale.
                               Le cas contraire: cette variable est vide.'
                             example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                           l2:
                             title: Ligne 2
+                            type: string
                             description: 'Si l''établissement correspond à une personne
                               physique: concaténation du nom et prénom'
                             example: JEAN MARIE DURAND
                           l3:
                             title: Ligne 3
+                            type: string
                             description: Complément d'adresse comme décrit dans la
                               clé `complement_adresse`
                             example: ZAE SAINT GUENAULT
                           l4:
                             title: Ligne 4
+                            type: string
                             description: Concaténation du numéro de voie, d'indice
                               de répétition, du type de voie et du libellé de la voie
                             example: 51 BIS RUE DE LA PAIX
                           l5:
                             title: Ligne 5
+                            type: string
                             description: Distribution spéciale comme décrit dans la
                               clé `distribution_speciale`
                             example: CS 72809
                           l6:
                             title: Ligne 6
+                            type: string
                             description: 'Si le code cedex est existant: code cedex
                               accompagné de son libellé ; sinon, si le pays est en
                               France: code postal accompagné de son libellé, sinon
@@ -7829,6 +7855,7 @@ paths:
                             example: 75256 PARIX CEDEX 12
                           l7:
                             title: Ligne 7
+                            type: string
                             description: Pays de l'établissement
                             example: FRANCE
                         required:
@@ -8801,6 +8828,7 @@ paths:
                             -
                           libelle_voie:
                             title: Libellé de la voie
+                            type: string
                             example: DE LA PAIX
                           complement_adresse:
                             title: Complément d'adresse
@@ -8831,6 +8859,8 @@ paths:
                             type: string
                           distribution_speciale:
                             title: Distribution spéciale
+                            type: string
+                            nullable: true
                             description: "La distribution spéciale reprend les éléments
                               particuliers qui accompagnent une adresse de distribution
                               spéciale, la modalité la plus connue étant les adresses
@@ -8839,6 +8869,7 @@ paths:
                               * https://www.sirene.fr/sirene/public/variable/l5-disp"
                           code_cedex:
                             title: Code cedex
+                            type: string
                             nullable: true
                             description: 'Plus d''informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle'
                             example: '75590'
@@ -8886,33 +8917,39 @@ paths:
                             properties:
                               l1:
                                 title: Ligne 1
+                                type: string
                                 description: 'Si l''établissement correspond à une
                                   personne morale: la dénomination sociale de la personne
                                   morale. Le cas contraire: cette variable est vide.'
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                               l2:
                                 title: Ligne 2
+                                type: string
                                 description: 'Si l''établissement correspond à une
                                   personne physique: concaténation du nom et prénom'
                                 example: JEAN MARIE DURAND
                               l3:
                                 title: Ligne 3
+                                type: string
                                 description: Complément d'adresse comme décrit dans
                                   la clé `complement_adresse`
                                 example: ZAE SAINT GUENAULT
                               l4:
                                 title: Ligne 4
+                                type: string
                                 description: Concaténation du numéro de voie, d'indice
                                   de répétition, du type de voie et du libellé de
                                   la voie
                                 example: 51 BIS RUE DE LA PAIX
                               l5:
                                 title: Ligne 5
+                                type: string
                                 description: Distribution spéciale comme décrit dans
                                   la clé `distribution_speciale`
                                 example: CS 72809
                               l6:
                                 title: Ligne 6
+                                type: string
                                 description: 'Si le code cedex est existant: code
                                   cedex accompagné de son libellé ; sinon, si le pays
                                   est en France: code postal accompagné de son libellé,
@@ -8921,6 +8958,7 @@ paths:
                                 example: 75256 PARIX CEDEX 12
                               l7:
                                 title: Ligne 7
+                                type: string
                                 description: Pays de l'établissement
                                 example: FRANCE
                             required:
@@ -9898,6 +9936,7 @@ paths:
                             -
                           libelle_voie:
                             title: Libellé de la voie
+                            type: string
                             example: DE LA PAIX
                           complement_adresse:
                             title: Complément d'adresse
@@ -9928,6 +9967,8 @@ paths:
                             type: string
                           distribution_speciale:
                             title: Distribution spéciale
+                            type: string
+                            nullable: true
                             description: "La distribution spéciale reprend les éléments
                               particuliers qui accompagnent une adresse de distribution
                               spéciale, la modalité la plus connue étant les adresses
@@ -9936,6 +9977,7 @@ paths:
                               * https://www.sirene.fr/sirene/public/variable/l5-disp"
                           code_cedex:
                             title: Code cedex
+                            type: string
                             nullable: true
                             description: 'Plus d''informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle'
                             example: '75590'
@@ -9983,33 +10025,39 @@ paths:
                             properties:
                               l1:
                                 title: Ligne 1
+                                type: string
                                 description: 'Si l''établissement correspond à une
                                   personne morale: la dénomination sociale de la personne
                                   morale. Le cas contraire: cette variable est vide.'
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                               l2:
                                 title: Ligne 2
+                                type: string
                                 description: 'Si l''établissement correspond à une
                                   personne physique: concaténation du nom et prénom'
                                 example: JEAN MARIE DURAND
                               l3:
                                 title: Ligne 3
+                                type: string
                                 description: Complément d'adresse comme décrit dans
                                   la clé `complement_adresse`
                                 example: ZAE SAINT GUENAULT
                               l4:
                                 title: Ligne 4
+                                type: string
                                 description: Concaténation du numéro de voie, d'indice
                                   de répétition, du type de voie et du libellé de
                                   la voie
                                 example: 51 BIS RUE DE LA PAIX
                               l5:
                                 title: Ligne 5
+                                type: string
                                 description: Distribution spéciale comme décrit dans
                                   la clé `distribution_speciale`
                                 example: CS 72809
                               l6:
                                 title: Ligne 6
+                                type: string
                                 description: 'Si le code cedex est existant: code
                                   cedex accompagné de son libellé ; sinon, si le pays
                                   est en France: code postal accompagné de son libellé,
@@ -10018,6 +10066,7 @@ paths:
                                 example: 75256 PARIX CEDEX 12
                               l7:
                                 title: Ligne 7
+                                type: string
                                 description: Pays de l'établissement
                                 example: FRANCE
                             required:
@@ -10996,6 +11045,7 @@ paths:
                             -
                           libelle_voie:
                             title: Libellé de la voie
+                            type: string
                             example: DE LA PAIX
                           complement_adresse:
                             title: Complément d'adresse
@@ -11026,6 +11076,8 @@ paths:
                             type: string
                           distribution_speciale:
                             title: Distribution spéciale
+                            type: string
+                            nullable: true
                             description: "La distribution spéciale reprend les éléments
                               particuliers qui accompagnent une adresse de distribution
                               spéciale, la modalité la plus connue étant les adresses
@@ -11034,6 +11086,7 @@ paths:
                               * https://www.sirene.fr/sirene/public/variable/l5-disp"
                           code_cedex:
                             title: Code cedex
+                            type: string
                             nullable: true
                             description: 'Plus d''informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle'
                             example: '75590'
@@ -11081,33 +11134,39 @@ paths:
                             properties:
                               l1:
                                 title: Ligne 1
+                                type: string
                                 description: 'Si l''établissement correspond à une
                                   personne morale: la dénomination sociale de la personne
                                   morale. Le cas contraire: cette variable est vide.'
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                               l2:
                                 title: Ligne 2
+                                type: string
                                 description: 'Si l''établissement correspond à une
                                   personne physique: concaténation du nom et prénom'
                                 example: JEAN MARIE DURAND
                               l3:
                                 title: Ligne 3
+                                type: string
                                 description: Complément d'adresse comme décrit dans
                                   la clé `complement_adresse`
                                 example: ZAE SAINT GUENAULT
                               l4:
                                 title: Ligne 4
+                                type: string
                                 description: Concaténation du numéro de voie, d'indice
                                   de répétition, du type de voie et du libellé de
                                   la voie
                                 example: 51 BIS RUE DE LA PAIX
                               l5:
                                 title: Ligne 5
+                                type: string
                                 description: Distribution spéciale comme décrit dans
                                   la clé `distribution_speciale`
                                 example: CS 72809
                               l6:
                                 title: Ligne 6
+                                type: string
                                 description: 'Si le code cedex est existant: code
                                   cedex accompagné de son libellé ; sinon, si le pays
                                   est en France: code postal accompagné de son libellé,
@@ -11116,6 +11175,7 @@ paths:
                                 example: 75256 PARIX CEDEX 12
                               l7:
                                 title: Ligne 7
+                                type: string
                                 description: Pays de l'établissement
                                 example: FRANCE
                             required:
@@ -12096,6 +12156,7 @@ paths:
                             -
                           libelle_voie:
                             title: Libellé de la voie
+                            type: string
                             example: DE LA PAIX
                           complement_adresse:
                             title: Complément d'adresse
@@ -12126,6 +12187,8 @@ paths:
                             type: string
                           distribution_speciale:
                             title: Distribution spéciale
+                            type: string
+                            nullable: true
                             description: "La distribution spéciale reprend les éléments
                               particuliers qui accompagnent une adresse de distribution
                               spéciale, la modalité la plus connue étant les adresses
@@ -12134,6 +12197,7 @@ paths:
                               * https://www.sirene.fr/sirene/public/variable/l5-disp"
                           code_cedex:
                             title: Code cedex
+                            type: string
                             nullable: true
                             description: 'Plus d''informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle'
                             example: '75590'
@@ -12181,33 +12245,39 @@ paths:
                             properties:
                               l1:
                                 title: Ligne 1
+                                type: string
                                 description: 'Si l''établissement correspond à une
                                   personne morale: la dénomination sociale de la personne
                                   morale. Le cas contraire: cette variable est vide.'
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                               l2:
                                 title: Ligne 2
+                                type: string
                                 description: 'Si l''établissement correspond à une
                                   personne physique: concaténation du nom et prénom'
                                 example: JEAN MARIE DURAND
                               l3:
                                 title: Ligne 3
+                                type: string
                                 description: Complément d'adresse comme décrit dans
                                   la clé `complement_adresse`
                                 example: ZAE SAINT GUENAULT
                               l4:
                                 title: Ligne 4
+                                type: string
                                 description: Concaténation du numéro de voie, d'indice
                                   de répétition, du type de voie et du libellé de
                                   la voie
                                 example: 51 BIS RUE DE LA PAIX
                               l5:
                                 title: Ligne 5
+                                type: string
                                 description: Distribution spéciale comme décrit dans
                                   la clé `distribution_speciale`
                                 example: CS 72809
                               l6:
                                 title: Ligne 6
+                                type: string
                                 description: 'Si le code cedex est existant: code
                                   cedex accompagné de son libellé ; sinon, si le pays
                                   est en France: code postal accompagné de son libellé,
@@ -12216,6 +12286,7 @@ paths:
                                 example: 75256 PARIX CEDEX 12
                               l7:
                                 title: Ligne 7
+                                type: string
                                 description: Pays de l'établissement
                                 example: FRANCE
                             required:
