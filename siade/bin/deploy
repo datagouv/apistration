@@ -8,6 +8,7 @@ git stash && \
   git pull origin master && \
   bundle install && \
   bundle exec rake deploy to=production && \
+  bundle exec rake deploy to=staging && \
   git tag releases/$(date +"%Y-%m-%d--%H-%M") master && \
   git push --tags && \
   git checkout $current_branch && \
