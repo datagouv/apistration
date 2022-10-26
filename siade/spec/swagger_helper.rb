@@ -86,7 +86,7 @@ RSpec.configure do |config|
 
 ### Comment tester l'API ?
 
-Il est possible de tester les API via notre environnement de **staging** (https://staging.entreprise.api.gouv.fr) qui vous retournera systématiquement des données fictives.
+Il est possible de tester les API via notre environnement de **staging** qui vous retournera systématiquement des données fictives.
 
 Il est nécessaire d'utiliser le jeton de staging indiqué ci-dessous.
 
