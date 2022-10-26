@@ -76,4 +76,14 @@ RSpec.describe OpenAPISchemaToExample do
       expect { stubbed_json }.to raise_error(OpenAPISchemaToExample::InvalidOpenAPIType, '{"type"=>"unknown", "example"=>"useless"}')
     end
   end
+
+  describe 'v3 and more endpoints' do
+    YAML.load_file(Rails.root.join('swagger/openapi.yaml'), aliases: true)['paths'].each do |path, definition|
+      it "works for path '#{path}'" do
+        expect {
+          described_class.new(definition['get']['responses']['200']['content']['application/json']['schema']).perform
+        }.not_to raise_error
+      end
+    end
+  end
 end
