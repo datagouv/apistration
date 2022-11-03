@@ -1,17 +1,21 @@
 class DGFIP::LiassesFiscales::EnrichResourceWithDictionary < ApplicationInteractor
   def call
-    declarations = context.bundled_data.data.declarations
-
-    enrich!(declarations)
-  end
-
-  private
-
-  def enrich!(declarations)
     declarations.map do |declaration|
       enrich_declaration_with_code_nref!(declaration)
     end
   end
+
+  protected
+
+  def declarations
+    context.declarations || context.bundled_data.data.declarations
+  end
+
+  def dictionary
+    context.dictionary
+  end
+
+  private
 
   def enrich_declaration_with_code_nref!(declaration)
     declaration[:donnees] = donnees_with_enriched_code_nref(declaration)
@@ -50,6 +54,6 @@ class DGFIP::LiassesFiscales::EnrichResourceWithDictionary < ApplicationInteract
   end
 
   def dictionary_data_for_imprime(numero_imprime)
-    context.dictionary&.find { |entry| entry['numero_imprime'] == numero_imprime }
+    dictionary.find { |entry| entry['numero_imprime'] == numero_imprime }
   end
 end
