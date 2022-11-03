@@ -20,8 +20,6 @@ set :domain, ENV['domain']
 
 set :deploy_to, "/var/www/siade_#{ENV['to']}"
 set :rails_env, ENV['to']
-set :app_owner, "deploy"
-set :app_group, "webapp"
 
 set :execution_mode, :system
 set :forward_agent, true
@@ -70,10 +68,6 @@ namespace :bundle do
     command %{#{fetch(:bundle_bin)} config set --local path '#{fetch(:bundle_path)}'}
     command %{#{fetch(:bundle_bin)} config set --local without '#{fetch(:bundle_withouts)}'}
   end
-  task :install do
-    desc 'Allow group write and set setGID bit on gems folders.'
-    command %{sudo chmod u+rwx-s,g+rwxs,o= "#{fetch(:bundle_path)}"/ruby/*/gems/*}
-  end
 end
 
 # This task is the environment that is loaded for all remote run commands, such as
@@ -93,7 +87,6 @@ end
 # Put any custom commands you need to run at setup
 # All paths in `shared_dirs` and `shared_paths` will be created on their own.
 task :setup do
-  invoke :'ownership'
   invoke :'samhain_db_update'
   # Production database has to be setup !
 end
@@ -108,7 +101,6 @@ task :deploy do
     invoke :'bundle:config'
     invoke :'bundle:install'
     invoke :'bundle:clean'
-    invoke :'ownership'
 
     on :launch do
       invoke :'passenger'
@@ -127,8 +119,4 @@ task :passenger do
       echo 'Skipping: no passenger app found (will be automatically loaded)'
     fi
   }
-end
-
-task :ownership do
-  command %{sudo chown -R #{fetch(:app_owner)}:#{fetch(:app_group)} "#{fetch(:deploy_to)}"}
 end
