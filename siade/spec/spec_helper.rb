@@ -129,6 +129,7 @@ RSpec.configure do |config|
   config.include ProviderStubs::CNAFQuotientFamilial
   config.include ProviderStubs::FranceConnect
   config.include ProviderStubs::CNOUSStudentScholarship
+  config.include ProviderStubs::BanqueDeFrance
 
   config.include ActivateStrictVcrRequestMatchingForV3
   config.extend ActivateStrictVcrRequestMatchingForV3
