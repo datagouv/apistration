@@ -41,6 +41,7 @@ class ExtractProviderFromPath
       'ademe' => 'ADEME',
       'ministere_interieur' => 'Ministère de l\'Intérieur',
       'european_commission' => 'Commission Européenne',
+      'banque_de_france' => 'Banque de France',
       'cma_france' => 'CMA France'
     }
   end
