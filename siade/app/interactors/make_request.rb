@@ -33,7 +33,7 @@ class MakeRequest < ApplicationInteractor
     fail_to_request_provider!(ProviderTimeoutError)
   rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EHOSTUNREACH
     fail_to_request_provider!(ProviderUnavailable)
-  rescue Errno::ENETUNREACH
+  rescue Errno::ENETUNREACH, OpenSSL::SSL::SSLError
     context.errors << NetworkError.new
     context.fail!
   rescue SocketError => e

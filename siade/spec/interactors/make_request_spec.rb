@@ -112,7 +112,10 @@ RSpec.describe MakeRequest, type: :interactor do
     context 'for a network unreachable error' do
       before do
         stub_request(:get, uri.to_s).to_raise(
-          Errno::ENETUNREACH
+          [
+            Errno::ENETUNREACH,
+            OpenSSL::SSL::SSLError
+          ].sample
         )
       end
 
