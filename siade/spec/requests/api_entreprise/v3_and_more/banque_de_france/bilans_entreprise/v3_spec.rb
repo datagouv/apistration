@@ -1,0 +1,67 @@
+require 'swagger_helper'
+
+RSpec.describe 'Banque de France: Bilans', api: :entreprise, type: %i[request swagger] do
+  path '/v3/banque_de_france/unites_legales/{siren}/bilans' do
+    get SwaggerData.get('banque_de_france.bilans_entreprise.title') do
+      tags(*SwaggerData.get('banque_de_france.bilans_entreprise.tags'))
+
+      common_action_attributes
+
+      parameter name: :siren, in: :path, type: :string
+
+      unauthorized_request do
+        let(:siren) { valid_siren(:bilan_entreprise_bdf) }
+      end
+
+      forbidden_request do
+        let(:siren) { valid_siren(:bilan_entreprise_bdf) }
+      end
+
+      describe 'with valid token and mandatory params', valid: true do
+        describe 'with valid siren' do
+          before do
+            VCR.use_cassette('dgfip/dictionaries/2020_and_2021', decode_compressed_response: true) do
+              retrieve_dgfip_dictionaries(%w[2020 2021])
+            end
+
+            mock_valid_banque_de_france
+          end
+
+          let(:siren) { valid_siren(:bilan_entreprise_bdf) }
+
+          response '200', 'Entreprise trouvée', vcr: { cassette_name: 'banque_de_france/valid_siren' } do
+            description SwaggerData.get('banque_de_france.bilans_entreprise.description')
+
+            rate_limit_headers
+
+            schema build_rswag_response_collection(
+              properties: SwaggerData.get('banque_de_france.bilans_entreprise.attributes')
+            )
+
+            run_test!
+          end
+        end
+
+        describe 'server errors' do
+          let(:siren) { valid_siren(:bilan_entreprise_bdf) }
+
+          unprocessable_entity_error_request(:siren) do
+            let(:siren) { 'lol' }
+          end
+
+          response '404', 'Non trouvée', vcr: { cassette_name: 'banque_de_france/bilans_entreprises/not_found_siren' } do
+            let(:siren) { non_existent_siren }
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
+          end
+
+          common_provider_errors_request('Banque de France', BanqueDeFrance::BilansEntreprise)
+
+          common_network_error_request('Banque de France', BanqueDeFrance::BilansEntreprise)
+        end
+      end
+    end
+  end
+end

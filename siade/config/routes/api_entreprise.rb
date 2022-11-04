@@ -138,6 +138,8 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
   get 'cma_france/rnm/unites_legales/:siren', to: 'api_entreprise/v3_and_more/rnm/entreprises_artisanales#show'
 
   get 'european_commission/unites_legales/:siren/numero_tva', to: 'api_entreprise/v3_and_more/european_commission/vies#show'
+
+  get 'banque_de_france/unites_legales/:siren/bilans', to: 'api_entreprise/v3_and_more/banque_de_france/bilans_entreprise#show'
 end
 
 mount Rswag::Api::Engine  => '/v3', constraints: APIEntrepriseDomainConstraint.new
