@@ -43,6 +43,17 @@ RSpec.describe DGFIP::LiassesFiscales::ValidateResponse, type: :validate_respons
       its(:cacheable) { is_expected.to be(true) }
     end
 
+    context 'when http status is a 503' do
+      let(:code) { 503 }
+      let(:body) { '' }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(ProviderUnavailable)) }
+
+      its(:cacheable) { is_expected.to be(false) }
+    end
+
     context 'when http status is another error' do
       let(:code) { 403 }
       let(:body) { '' }

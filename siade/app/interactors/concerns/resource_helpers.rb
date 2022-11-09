@@ -25,6 +25,10 @@ module ResourceHelpers
     http_code == 500
   end
 
+  def http_unavailable?
+    http_code == 503
+  end
+
   delegate :body, to: :response
 
   def json_body
