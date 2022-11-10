@@ -1,4 +1,4 @@
-class DGFIP::LiassesFiscales < ApplicationOrganizer
+class DGFIP::LiassesFiscales < RetrieverOrganizer
   organize DGFIP::LiassesFiscales::ValidateParams,
     DGFIP::Authenticate,
     DGFIP::LiassesFiscales::MakeRequest,
