@@ -1,6 +1,9 @@
 RSpec.describe DGFIP::LiassesFiscales, type: :retriever_organizer do
   subject { described_class.call(params:) }
 
+  let(:annee) { 2017 }
+  let(:siren) { valid_siren(:liasse_fiscale) }
+  let(:user_id) { yes_jwt_user.id }
   let(:params) do
     {
       siren:,
@@ -8,10 +11,6 @@ RSpec.describe DGFIP::LiassesFiscales, type: :retriever_organizer do
       user_id:
     }
   end
-
-  let(:user_id) { yes_jwt_user.id }
-  let(:siren) { valid_siren(:liasse_fiscale) }
-  let(:annee) { 2017 }
 
   context 'with valid attributes', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
     it { is_expected.to be_a_success }

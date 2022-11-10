@@ -8,37 +8,39 @@ RSpec.describe MSA::ConformitesCotisations, type: :retriever_organizer do
     }
   end
 
-  before do
-    mock_msa_cotisations(siret, status)
-  end
-
   shared_examples 'MSA::ConformitesCotisations success' do
     it { is_expected.to be_success }
   end
 
-  context 'when siret is up to date' do
-    it_behaves_like 'MSA::ConformitesCotisations success' do
-      let(:status) { :up_to_date }
+  describe '.call' do
+    before do
+      mock_msa_cotisations(siret, status)
     end
-  end
 
-  context 'when siret is outdated' do
-    it_behaves_like 'MSA::ConformitesCotisations success' do
-      let(:status) { :outdated }
+    context 'when siret is up to date' do
+      it_behaves_like 'MSA::ConformitesCotisations success' do
+        let(:status) { :up_to_date }
+      end
     end
-  end
 
-  context 'when siret is under investigation' do
-    it_behaves_like 'MSA::ConformitesCotisations success' do
-      let(:status) { :under_investigation }
+    context 'when siret is outdated' do
+      it_behaves_like 'MSA::ConformitesCotisations success' do
+        let(:status) { :outdated }
+      end
     end
-  end
 
-  context 'when siret does not exists or there is something wrong' do
-    let(:status) { :unknown }
+    context 'when siret is under investigation' do
+      it_behaves_like 'MSA::ConformitesCotisations success' do
+        let(:status) { :under_investigation }
+      end
+    end
 
-    it { is_expected.to be_a_failure }
+    context 'when siret does not exists or there is something wrong' do
+      let(:status) { :unknown }
 
-    its(:errors) { is_expected.to have_error('Le siret indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel.') }
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to have_error('Le siret indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel.') }
+    end
   end
 end

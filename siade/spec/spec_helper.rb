@@ -167,4 +167,5 @@ RSpec.configure do |config|
   config.include_context 'has a provider_name', type: :provider_response
   config.include_context 'has a provider_name', type: :provider_driver
   config.include_context 'with generator', type: :generator
+  config.include_context 'retriever organizer', type: :retriever_organizer
 end

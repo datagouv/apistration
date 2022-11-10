@@ -1,15 +1,14 @@
 RSpec.describe DGFIP::AttestationFiscale, :self_hosted_doc, type: :retriever_organizer do
   subject { described_class.call(params:) }
 
+  let(:siren) { valid_siren }
+  let(:user_id) { yes_jwt_user.id }
   let(:params) do
     {
       siren:,
       user_id:
     }
   end
-
-  let(:user_id) { yes_jwt_user.id }
-  let(:siren) { valid_siren }
 
   context 'with valid attributes' do
     context 'when DGFIP works' do
