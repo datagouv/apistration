@@ -7,7 +7,7 @@ RSpec.describe DGFIP::Dictionaries, type: :retriever_organizer do
     }
   end
 
-  describe 'happy path', vcr: { cassette_name: 'dgfip/dictionaries/2019', decode_compressed_response: true } do
+  describe 'happy path', vcr: { cassette_name: 'dgfip/dictionaries/2019' } do
     let(:dictionnaire_raw) { open_payload_file('dgfip/dictionary.json').read }
     let(:dictionnaire) { JSON.parse(dictionnaire_raw)['dictionnaire'] }
 

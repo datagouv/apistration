@@ -28,7 +28,7 @@ RSpec.describe DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote, type
       its(:dictionary) { is_expected.to eq(data[:dictionnaire]) }
     end
 
-    context 'when data is not available in cache', vcr: { cassette_name: 'dgfip/dictionaries/2019', decode_compressed_response: true } do
+    context 'when data is not available in cache', vcr: { cassette_name: 'dgfip/dictionaries/2019' } do
       let(:data) { JSON.parse(open_payload_file('dgfip/dictionary.json').read)['dictionnaire'] }
 
       before do

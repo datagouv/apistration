@@ -1,4 +1,4 @@
-RSpec.describe BanqueDeFrance::BilansEntreprise::BuildResourceCollection, type: :build_resource, vcr: { cassette_name: 'dgfip/dictionaries/2020_and_2021', decode_compressed_response: true } do
+RSpec.describe BanqueDeFrance::BilansEntreprise::BuildResourceCollection, type: :build_resource, vcr: { cassette_name: 'dgfip/dictionaries/2020_and_2021' } do
   subject { organizer }
 
   let(:organizer) { described_class.call(response:) }

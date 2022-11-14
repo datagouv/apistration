@@ -11,7 +11,7 @@ RSpec.describe BanqueDeFrance::BilansEntreprise::EnrichResourceCollectionWithDic
   end
 
   let(:dictionaries) do
-    VCR.use_cassette('dgfip/dictionaries/2020_and_2021', decode_compressed_response: true) do
+    VCR.use_cassette('dgfip/dictionaries/2020_and_2021') do
       BanqueDeFrance::BilansEntreprise::RetrieveDictionariesFromCacheOrRemote.call(bundled_data:).dictionaries
     end
   end

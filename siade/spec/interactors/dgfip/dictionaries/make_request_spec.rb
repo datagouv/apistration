@@ -9,7 +9,7 @@ RSpec.describe DGFIP::Dictionaries::MakeRequest, type: :make_request do
       }
     end
 
-    describe 'happy path', vcr: { cassette_name: 'dgfip/dictionaries/2019', decode_compressed_response: true } do
+    describe 'happy path', vcr: { cassette_name: 'dgfip/dictionaries/2019' } do
       it { is_expected.to be_a_success }
 
       its(:response) { is_expected.to be_a(Net::HTTPOK) }

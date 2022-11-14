@@ -10,7 +10,7 @@ RSpec.describe BanqueDeFrance::BilansEntreprise::RetrieveDictionariesFromCacheOr
     open_payload_file('banque_de_france/bilans_entreprise_valid_data.json').read
   end
 
-  describe 'happy path', vcr: { cassette_name: 'dgfip/dictionaries/2020_and_2021', decode_compressed_response: true } do
+  describe 'happy path', vcr: { cassette_name: 'dgfip/dictionaries/2020_and_2021' } do
     before do
       allow(DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote).to receive(:call).and_call_original
     end
