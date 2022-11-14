@@ -1,6 +1,4 @@
 class BanqueDeFrance::BilansEntreprise::BuildResourceCollectionWithoutDictionaries < BuildResourceCollection
-  include BanqueDeFrance::BilansEntreprise::BodyDecoder
-
   protected
 
   def items

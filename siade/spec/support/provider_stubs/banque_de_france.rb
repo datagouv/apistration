@@ -17,9 +17,7 @@ module ProviderStubs::BanqueDeFrance
   end
 
   def build_banque_de_france_response(json_body)
-    gz = Zlib::GzipWriter.new(StringIO.new)
-    gz << json_body
-    gz.close.string
+    json_body
   end
 
   def retrieve_dgfip_dictionaries(years)
