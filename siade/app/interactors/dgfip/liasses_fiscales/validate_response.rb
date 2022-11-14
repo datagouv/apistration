@@ -7,6 +7,14 @@ class DGFIP::LiassesFiscales::ValidateResponse < ValidateResponse
       provider_unavailable!
     elsif invalid_json? || !http_ok?
       unknown_provider_response!
+    elsif no_declarations?
+      resource_not_found!(:siren)
     end
+  end
+
+  private
+
+  def no_declarations?
+    json_body['declarations'].blank?
   end
 end

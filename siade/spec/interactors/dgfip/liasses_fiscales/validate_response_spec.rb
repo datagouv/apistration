@@ -8,17 +8,29 @@ RSpec.describe DGFIP::LiassesFiscales::ValidateResponse, type: :validate_respons
       let(:code) { 200 }
 
       context 'when body is a valid json' do
-        let(:body) do
-          {
-            declarations: []
-          }.to_json
+        context 'with declarations' do
+          let(:body) do
+            { declarations: ['anything'] }.to_json
+          end
+
+          it { is_expected.to be_a_success }
+
+          its(:errors) { is_expected.to be_empty }
+
+          its(:cacheable) { is_expected.to be(true) }
         end
 
-        it { is_expected.to be_a_success }
+        context 'without declarations' do
+          let(:body) do
+            { declarations: [] }.to_json
+          end
 
-        its(:errors) { is_expected.to be_empty }
+          it { is_expected.to be_a_failure }
 
-        its(:cacheable) { is_expected.to be(true) }
+          its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+
+          its(:cacheable) { is_expected.to be(false) }
+        end
       end
 
       context 'when body is not a valid json' do

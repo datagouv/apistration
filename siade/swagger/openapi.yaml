@@ -2912,6 +2912,12 @@ paths:
                 - data
                 - links
                 - meta
+        '404':
+          description: Pas de liasses fiscales pour cette unité légale
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '422':
           description: Paramètre(s) invalide(s)
           content:

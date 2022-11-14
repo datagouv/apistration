@@ -34,6 +34,24 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', api: :entreprise, ty
           run_test!
         end
 
+        response '404', 'Pas de liasses fiscales pour cette unité légale' do
+          before do
+            mock_dgfip_authenticate
+
+            stub_request(
+              :get,
+              /#{Siade.credentials[:dgfip_liasse_fiscale_declaration_url]}\?annee=#{year}&siren=#{siren}&userId=#{/[a-f0-9_]{36}/}/
+            ).to_return(
+              status: 200,
+              body: open_payload_file('dgfip/liasses_fiscales/no_declarations.json')
+            )
+          end
+
+          schema '$ref' => '#/components/schemas/Error'
+
+          run_test!
+        end
+
         describe 'server errors' do
           let(:siren) { valid_siren(:liasse_fiscale) }
 

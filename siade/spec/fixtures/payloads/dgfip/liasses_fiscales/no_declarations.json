@@ -1,0 +1,19 @@
+{
+  "entreprise": {
+    "denomination": "SARL UMADCORP",
+    "itip": "100000101111",
+    "setOcfis": {
+      "codeNace": "4669B",
+      "codeObf": "IS",
+      "dateDebut": "1991-04-15T00:00:00+02:00",
+      "dateDebutPourAttestationRegularite": "1991-04-15T00:00:00+02:00",
+      "nbRof": "0",
+      "numOcfi": "100210511111",
+      "ROF": "IS1",
+      "regime": "RSI",
+      "texteExploitation": "ACHAT VTE MACHINES OUTILS"
+    },
+    "siren": "130025265"
+  }
+}
+
