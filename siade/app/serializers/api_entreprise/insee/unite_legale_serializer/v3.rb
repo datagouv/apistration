@@ -9,6 +9,7 @@ class APIEntreprise::INSEE::UniteLegaleSerializer::V3 < APIEntreprise::V3AndMore
     :activite_principale,
     :tranche_effectif_salarie,
     :etat_administratif,
+    :economie_sociale_et_solidaire,
     :date_cessation,
     :date_creation
 

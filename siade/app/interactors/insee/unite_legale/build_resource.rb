@@ -42,6 +42,8 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
         date_reference: unite_legale['anneeEffectifsUniteLegale']
       ),
 
+      economie_sociale_et_solidaire: yes_no_to_boolean(unite_legale['economieSocialeSolidaireUniteLegale']),
+
       date_creation: date_to_timestamp(unite_legale['dateCreationUniteLegale']),
 
       etat_administratif:,

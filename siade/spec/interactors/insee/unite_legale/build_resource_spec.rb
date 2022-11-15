@@ -78,6 +78,8 @@ RSpec.describe INSEE::UniteLegale::BuildResource, type: :build_resource do
           })
         end
 
+        its(:economie_sociale_et_solidaire) { is_expected.to be_nil }
+
         its(:date_creation) { is_expected.to eq(Date.parse('1977-01-01').to_time.to_i) }
 
         its(:etat_administratif) { is_expected.to eq('A') }
