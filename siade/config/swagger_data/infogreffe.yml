@@ -159,7 +159,7 @@ infogreffe:
         nullable: true
       mandataires_sociaux:
         title: "Mandataires sociaux"
-        description: "Liste des mandataires sociaux d'une société inscrite au RCS. Certaines informations telles que la date de naissance complète ne figurent pas dans cette API. Pour plus d'exhaustivité, appeler l'API Mandataires sociaux - Infogreffe."
+        description: "Liste des mandataires sociaux d'une société inscrite au RCS. Certaines informations telles que le jour de naissance, le lieu ou la nationalité des personnes physiques ne figurent pas dans cette API. Pour plus d'exhaustivité, appeler l'[API Mandataires sociaux - Infogreffe](https://entreprise.api.gouv.fr/catalogue/infogreffe/mandataires_sociaux)."
         type: "array"
         items:
           required: ["fonction"]
@@ -199,7 +199,7 @@ infogreffe:
               nullable: true
             date_naissance:
               title: 'Mois et année de naissance'
-              description: "Mois et année de naissance du mandataire social. Ce champ est disponible uniquement pour une personne physique."
+              description: "Mois et année de naissance du mandataire social. Ce champ est disponible uniquement pour une personne physique. Vous avez besoin d'une donnée plus précise ? L'[API Mandataires sociaux d'Infogreffe](https://entreprise.api.gouv.fr/catalogue/infogreffe/mandataires_sociaux) permet d'accéder à des données protégées : le jour de naissance, le lieu de naissance et la nationalité de la personne physique."
               type: 'string'
               example: '1965-01'
               nullable: true
