@@ -1,4 +1,6 @@
 class BanqueDeFrance::BilansEntreprise::MakeRequest < MakeRequest::Get
+  include UseWildcardSSLCertificate
+
   protected
 
   def request_uri
@@ -12,12 +14,7 @@ class BanqueDeFrance::BilansEntreprise::MakeRequest < MakeRequest::Get
   end
 
   def http_options
-    {
-      use_ssl: true,
-      verify_mode: OpenSSL::SSL::VERIFY_NONE,
-      cert:,
-      key:
-    }
+    http_wildcard_ssl_options
   end
 
   private

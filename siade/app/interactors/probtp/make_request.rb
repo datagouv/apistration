@@ -1,4 +1,6 @@
 class PROBTP::MakeRequest < MakeRequest::Post
+  include UseWildcardSSLCertificate
+
   protected
 
   def request_params
@@ -8,12 +10,7 @@ class PROBTP::MakeRequest < MakeRequest::Post
   end
 
   def http_options
-    {
-      use_ssl: true,
-      verify_mode: OpenSSL::SSL::VERIFY_PEER,
-      cert:,
-      key:
-    }
+    http_wildcard_ssl_options
   end
 
   def probtp_domain
@@ -21,16 +18,6 @@ class PROBTP::MakeRequest < MakeRequest::Post
   end
 
   private
-
-  def key
-    raw_key = File.read(Siade.credentials[:ssl_wildcard_certif_key_path])
-    OpenSSL::PKey::RSA.new(raw_key)
-  end
-
-  def cert
-    raw_cert = File.read(Siade.credentials[:ssl_wildcard_certif_crt_path])
-    OpenSSL::X509::Certificate.new(raw_cert)
-  end
 
   def siret
     context.params[:siret]
