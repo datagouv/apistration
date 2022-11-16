@@ -1,5 +1,6 @@
 class APIEntreprise::INSEE::EtablissementSerializer::V3 < APIEntreprise::V3AndMore::BaseSerializer
-  attributes :siege_social,
+  attributes :siret,
+    :siege_social,
     :etat_administratif,
     :date_fermeture,
     :enseigne,

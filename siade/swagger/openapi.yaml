@@ -8245,6 +8245,13 @@ paths:
                   data:
                     type: object
                     properties:
+                      siret:
+                        title: Siret de l'établissement
+                        type: string
+                        example: '30613890001294'
+                        description: Il peut arriver que le siret renvoyé soit différent
+                          du paramètre d'appel. Il s'agit d'une erreur généralement
+                          temporaire dans la base de données Sirene.
                       siege_social:
                         type: boolean
                         example: true
@@ -9034,6 +9041,7 @@ paths:
                         type: integer
                         example: 1634103818
                     required:
+                    - siret
                     - siege_social
                     - etat_administratif
                     - date_fermeture
@@ -9388,6 +9396,13 @@ paths:
                   data:
                     type: object
                     properties:
+                      siret:
+                        title: Siret de l'établissement
+                        type: string
+                        example: '30613890001294'
+                        description: Il peut arriver que le siret renvoyé soit différent
+                          du paramètre d'appel. Il s'agit d'une erreur généralement
+                          temporaire dans la base de données Sirene.
                       siege_social:
                         type: boolean
                         example: true
@@ -10176,6 +10191,7 @@ paths:
                         type: integer
                         example: 1634103818
                     required:
+                    - siret
                     - siege_social
                     - etat_administratif
                     - date_fermeture
@@ -10531,6 +10547,13 @@ paths:
                   data:
                     type: object
                     properties:
+                      siret:
+                        title: Siret de l'établissement
+                        type: string
+                        example: '30613890001294'
+                        description: Il peut arriver que le siret renvoyé soit différent
+                          du paramètre d'appel. Il s'agit d'une erreur généralement
+                          temporaire dans la base de données Sirene.
                       siege_social:
                         type: boolean
                         example: true
@@ -11319,6 +11342,7 @@ paths:
                         type: integer
                         example: 1634103818
                     required:
+                    - siret
                     - siege_social
                     - etat_administratif
                     - date_fermeture
@@ -11675,6 +11699,13 @@ paths:
                   data:
                     type: object
                     properties:
+                      siret:
+                        title: Siret de l'établissement
+                        type: string
+                        example: '30613890001294'
+                        description: Il peut arriver que le siret renvoyé soit différent
+                          du paramètre d'appel. Il s'agit d'une erreur généralement
+                          temporaire dans la base de données Sirene.
                       siege_social:
                         type: boolean
                         example: true
@@ -12464,6 +12495,7 @@ paths:
                         type: integer
                         example: 1634103818
                     required:
+                    - siret
                     - siege_social
                     - etat_administratif
                     - date_fermeture
