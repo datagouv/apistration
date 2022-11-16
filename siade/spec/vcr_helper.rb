@@ -43,6 +43,7 @@ VCR.configure do |c|
   c.filter_sensitive_data('<POLE_EMPLOI_CLIENT_ID>') { Siade.credentials[:pole_emploi_client_id].to_s }
   c.filter_sensitive_data('<POLE_EMPLOI_CLIENT_SECRET>') { Siade.credentials[:pole_emploi_client_secret].to_s }
   c.filter_sensitive_data('<POLE_EMPLOI_AUTHENTICATE_URL>') { Siade.credentials[:pole_emploi_authenticate_url].to_s }
+  c.filter_sensitive_data('<BANQUE_DE_FRANCE_BILANS_URL>') { Siade.credentials[:banque_de_france_bilans_url].to_s }
 
   # VCR url filters
   c.filter_sensitive_data('<URL_INSEE_V3>') { Siade.credentials[:insee_v3_domain].to_s }

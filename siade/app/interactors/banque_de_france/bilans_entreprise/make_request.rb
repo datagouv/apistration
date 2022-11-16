@@ -4,7 +4,7 @@ class BanqueDeFrance::BilansEntreprise::MakeRequest < MakeRequest::Get
   protected
 
   def request_uri
-    URI('https://ws-dlnuf.banque-france.fr/ws/BILAN_APIEntreprise_1_0_0_PRD/bilans/json')
+    URI(Siade.credentials[:banque_de_france_bilans_url])
   end
 
   def request_params

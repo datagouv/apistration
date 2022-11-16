@@ -24,7 +24,7 @@ RSpec.describe SIADE::V2::Responses::BilansEntreprisesBDF, type: :provider_respo
       let(:siren) { valid_siren }
 
       before do
-        stub_request(:get, /ws-dlnuf.banque-france.fr/).to_return(
+        stub_request(:get, /#{Siade.credentials[:banque_de_france_bilans_url]}/).to_return(
           status: 200, body: '{ "code-retour": 501 }'
         )
       end
@@ -41,7 +41,7 @@ RSpec.describe SIADE::V2::Responses::BilansEntreprisesBDF, type: :provider_respo
       let(:siren) { valid_siren }
 
       before do
-        stub_request(:get, /ws-dlnuf.banque-france.fr/).to_return(
+        stub_request(:get, /#{Siade.credentials[:banque_de_france_bilans_url]}/).to_return(
           status: 200, body: '{ "code-retour": 500 }'
         )
       end
@@ -59,7 +59,7 @@ RSpec.describe SIADE::V2::Responses::BilansEntreprisesBDF, type: :provider_respo
       let(:random_tea_pot_http_code) { 418 }
 
       before do
-        stub_request(:get, /ws-dlnuf.banque-france.fr/).to_return(
+        stub_request(:get, /#{Siade.credentials[:banque_de_france_bilans_url]}/).to_return(
           status: 200, body: '{ "code-retour": 418 }'
         )
       end
