@@ -81,9 +81,11 @@ class SIADE::V2::Drivers::Infogreffe < SIADE::V2::Drivers::GenericDriver
   end
 
   def date_radiation_raw
-    Date.parse(retrieve_date_radiation).in_time_zone.to_i
-  rescue StandardError
-    nil
+    date_radiation_node = entreprise_information.xpath('//radiation/date_radiation/@dateISO')
+
+    return unless date_radiation_node.present?
+
+    Date.parse(date_radiation_node.text).in_time_zone.to_i
   end
 
   def date_immatriculation_raw
