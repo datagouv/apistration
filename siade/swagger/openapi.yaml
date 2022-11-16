@@ -4309,6 +4309,11 @@ paths:
                   data:
                     type: object
                     properties:
+                      date_radiation:
+                        title: Date de radiation de l'entreprise
+                        type: string
+                        example: '2019-01-01'
+                        nullable: true
                       date_extrait:
                         type: string
                         title: Date de l'extrait
@@ -4722,6 +4727,7 @@ paths:
                         - date_cloture_exercice_comptable
                         - date_fin_de_vie
                     required:
+                    - date_radiation
                     - date_extrait
                     - date_immatriculation
                     - mandataires_sociaux

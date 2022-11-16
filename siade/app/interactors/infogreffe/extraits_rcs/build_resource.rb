@@ -8,6 +8,7 @@ class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
     {
       siren: context.params[:siren],
       date_extrait: dossier['date_extrait'],
+      date_radiation:,
       date_immatriculation: dossier['dateISO_immat'],
       mandataires_sociaux:,
       observations:,
@@ -22,6 +23,14 @@ class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
   end
 
   private
+
+  def date_radiation
+    date_radiation_node = infos.xpath('//radiation/date_radiation/@dateISO')
+
+    return if date_radiation_node.blank?
+
+    date_radiation_node.text
+  end
 
   def infos
     @infos ||= Nokogiri.XML(body)

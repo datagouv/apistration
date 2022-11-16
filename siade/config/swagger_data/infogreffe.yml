@@ -145,6 +145,11 @@ infogreffe:
     tags:
       - "Informations générales"
     attributes:
+      date_radiation:
+        title: "Date de radiation de l'entreprise"
+        type: "string"
+        example: "2019-01-01"
+        nullable: true
       date_extrait:
         type: 'string'
         title: "Date de l'extrait"
