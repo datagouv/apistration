@@ -2,7 +2,7 @@ class DGFIP::ChiffresAffaires::BuildResource < BuildResourceCollection
   protected
 
   def items
-    json_body['liste_ca']
+    Array.wrap(json_body['liste_ca'])
   end
 
   def resource_attributes(item)

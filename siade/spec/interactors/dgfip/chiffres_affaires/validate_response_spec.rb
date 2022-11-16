@@ -8,26 +8,45 @@ RSpec.describe DGFIP::ChiffresAffaires::ValidateResponse, type: :validate_respon
       let(:body) { data.to_json }
 
       context 'when json is valid' do
-        let(:data) do
-          {
-            'liste_ca' => [
-              {
-                'ca' => '9001',
-                'dateFinExercice' => '2016-12-31T00:00:00+01:00'
-              },
-              {
-                'ca' => '425169',
-                'dateFinExercice' => '2015-12-31T00:00:00+01:00'
-              }
-            ]
-          }
+        context 'when liste_ca is an array' do
+          let(:data) do
+            {
+              'liste_ca' => [
+                {
+                  'ca' => '9001',
+                  'dateFinExercice' => '2016-12-31T00:00:00+01:00'
+                },
+                {
+                  'ca' => '425169',
+                  'dateFinExercice' => '2015-12-31T00:00:00+01:00'
+                }
+              ]
+            }
+          end
+
+          it { is_expected.to be_a_success }
+
+          its(:errors) { is_expected.to be_empty }
+
+          its(:cacheable) { is_expected.to be(true) }
         end
 
-        it { is_expected.to be_a_success }
+        context 'when liste_ca is a single element' do
+          let(:data) do
+            {
+              'liste_ca' => {
+                'ca' => '9001',
+                'dateFinExercice' => '2016-12-31T00:00:00+01:00'
+              }
+            }
+          end
 
-        its(:errors) { is_expected.to be_empty }
+          it { is_expected.to be_a_success }
 
-        its(:cacheable) { is_expected.to be(true) }
+          its(:errors) { is_expected.to be_empty }
+
+          its(:cacheable) { is_expected.to be(true) }
+        end
       end
 
       context 'when json is not valid' do
