@@ -324,9 +324,19 @@ insee:
         \n
         Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
     economie_sociale_et_solidaire:
-      title: "Unité légale appartenant au champ de l'économie sociale et solidaire"
+      title: "Unité légale de l'économie sociale et solidaire (ESS)"
       description:
-        "La loi n° 2014-856 du 31 juillet 2014 définit officiellement le périmètre de l’économie sociale et solidaire (ESS). Celle-ci comprend les quatre familles traditionnelles en raison de leur régime juridique (associations, fondations, coopératives et mutuelles) et inclut une nouvelle catégorie, les entreprises de l’ESS, adhérant aux mêmes principes :
+        "Indique si l'unité légale est une ESS : 
+        \n
+        \n
+        - true : l'entreprise est une ESS
+        \n
+        - false : l'entreprise n'est pas une ESS
+        \n
+        - null : le statut ESS est inconnu. Cette information est connue pour environ 1 million d'unités légales, autrement, elle est à null.
+        \n
+        \n
+        Les unités légales de l'ESS adhèrent aux mêmes principes :
         \n
         * poursuivre un but social autre que le seul partage des bénéfices ;
         \n
@@ -334,7 +344,7 @@ insee:
         \n
         * une gouvernance démocratique et participative.
         \n
-        Cette variable est renseignée pour environ 1 million d'unités légales, sinon celle-ci est à null.
+        Ces conditions cumulatives sont explicitées à l'[Article 1 de la loi n° 2014-856 du 31 juillet 2014](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000029314926){:target='_blank'}.
         \n
         \n
         Plus d'informations dans la documentation INSEE de l'API Sirene : https://www.sirene.fr/sirene/public/variable/economieSocialeSolidaireUniteLegale"
