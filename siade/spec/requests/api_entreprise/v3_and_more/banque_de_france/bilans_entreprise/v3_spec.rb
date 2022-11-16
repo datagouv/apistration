@@ -35,7 +35,8 @@ RSpec.describe 'Banque de France: Bilans', api: :entreprise, type: %i[request sw
             rate_limit_headers
 
             schema build_rswag_response_collection(
-              properties: SwaggerData.get('banque_de_france.bilans_entreprise.attributes')
+              properties: SwaggerData.get('banque_de_france.bilans_entreprise.attributes'),
+              meta: SwaggerData.get('banque_de_france.bilans_entreprise.meta')
             )
 
             run_test!

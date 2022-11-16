@@ -7,4 +7,10 @@ class APIEntreprise::BanqueDeFrance::BilansEntrepriseSerializer::V3 < APIEntrepr
   end
 
   item_serializer ItemSerializer
+
+  meta do |ctx|
+    {
+      count: ctx[:count]
+    }
+  end
 end

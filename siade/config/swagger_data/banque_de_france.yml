@@ -161,3 +161,8 @@ La capacité d'autofinancement représente l'essentiel du flux de trésorerie d'
                       type: 'integer'
                     example:
                       - 4245
+    meta:
+      count:
+        title: "Nombre de bilans"
+        type: 'integer'
+        example: 1

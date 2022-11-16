@@ -5,8 +5,10 @@ class BanqueDeFrance::BilansEntreprise::BuildResourceCollectionWithoutDictionari
     valid_bilans
   end
 
-  def items_meta
-    {}
+  def items_context
+    {
+      count: valid_bilans.count,
+    }
   end
 
   def resource_attributes(item)

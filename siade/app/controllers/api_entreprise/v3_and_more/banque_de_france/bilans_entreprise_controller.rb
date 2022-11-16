@@ -2,7 +2,7 @@ class APIEntreprise::V3AndMore::BanqueDeFrance::BilansEntrepriseController < API
   def show
     authorize :bilans_entreprise_bdf
 
-    organizer = ::BanqueDeFrance::BilansEntreprise.call(params: organizer_params)
+    organizer = retrieve_payload_data(::BanqueDeFrance::BilansEntreprise)
 
     if organizer.success?
       render json: serializer_class.new(organizer.bundled_data).serializable_hash,
@@ -17,6 +17,12 @@ class APIEntreprise::V3AndMore::BanqueDeFrance::BilansEntrepriseController < API
   def organizer_params
     {
       siren: params.require(:siren)
+    }
+  end
+
+  def options(organizer)
+    {
+      meta: organizer.meta
     }
   end
 
