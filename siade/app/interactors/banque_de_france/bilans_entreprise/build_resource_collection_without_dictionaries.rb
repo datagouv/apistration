@@ -7,7 +7,7 @@ class BanqueDeFrance::BilansEntreprise::BuildResourceCollectionWithoutDictionari
 
   def items_context
     {
-      count: valid_bilans.count,
+      count: valid_bilans.count
     }
   end
 
@@ -122,6 +122,6 @@ class BanqueDeFrance::BilansEntreprise::BuildResourceCollectionWithoutDictionari
   def convert_to_euros(value)
     return 0 if value.blank?
 
-    value.to_i * 1000
+    (value.to_i * 1000).to_s
   end
 end

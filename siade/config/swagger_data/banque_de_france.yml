@@ -30,8 +30,8 @@ banque_de_france:
               properties:
                 valeur: &valeur_euros
                   title: "Valeur en euros"
-                  type: 'integer'
-                  example: 9001
+                  type: 'string'
+                  example: '9001'
                 evolution: &evolution_attribute
                   title: "Évolution en pourcentage"
                   type: 'number'
@@ -153,14 +153,14 @@ La capacité d'autofinancement représente l'essentiel du flux de trésorerie d'
                     type: 'string'
                     example: '304651'
                   valeurs:
-                    title: "Valeurs associés à l'entrée "
+                    title: "Valeurs associés à l'entrée"
                     description: "Si une entrée de l'imprimé est répétable, le tableau contient plusieurs entrées et sont ordonnées en fonction de l'indice de répétition."
                     type: "array"
                     minItems: 1
                     items:
-                      type: 'integer'
+                      type: 'string'
                     example:
-                      - 4245
+                      - '4245'
     meta:
       count:
         title: "Nombre de bilans"

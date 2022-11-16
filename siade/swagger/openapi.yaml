@@ -1191,8 +1191,8 @@ paths:
                                     properties:
                                       valeur:
                                         title: Valeur en euros
-                                        type: integer
-                                        example: 9001
+                                        type: string
+                                        example: '9001'
                                       evolution:
                                         title: Évolution en pourcentage
                                         type: number
@@ -1204,8 +1204,8 @@ paths:
                                     properties:
                                       valeur:
                                         title: Valeur en euros
-                                        type: integer
-                                        example: 9001
+                                        type: string
+                                        example: '9001'
                                       evolution:
                                         title: Évolution en pourcentage
                                         type: number
@@ -1225,8 +1225,8 @@ paths:
                                     properties:
                                       valeur:
                                         title: Valeur en euros
-                                        type: integer
-                                        example: 9001
+                                        type: string
+                                        example: '9001'
                                       evolution:
                                         title: Évolution en pourcentage
                                         type: number
@@ -1245,8 +1245,8 @@ paths:
                                     properties:
                                       valeur:
                                         title: Valeur en euros
-                                        type: integer
-                                        example: 9001
+                                        type: string
+                                        example: '9001'
                                       evolution:
                                         title: Évolution en pourcentage
                                         type: number
@@ -1265,8 +1265,8 @@ paths:
                                     properties:
                                       valeur:
                                         title: Valeur en euros
-                                        type: integer
-                                        example: 9001
+                                        type: string
+                                        example: '9001'
                                       evolution:
                                         title: Évolution en pourcentage
                                         type: number
@@ -1290,8 +1290,8 @@ paths:
                                     properties:
                                       valeur:
                                         title: Valeur en euros
-                                        type: integer
-                                        example: 9001
+                                        type: string
+                                        example: '9001'
                                       evolution:
                                         title: Évolution en pourcentage
                                         type: number
@@ -1313,8 +1313,8 @@ paths:
                                     properties:
                                       valeur:
                                         title: Valeur en euros
-                                        type: integer
-                                        example: 9001
+                                        type: string
+                                        example: '9001'
                                       evolution:
                                         title: Évolution en pourcentage
                                         type: number
@@ -1342,8 +1342,8 @@ paths:
                                     properties:
                                       valeur:
                                         title: Valeur en euros
-                                        type: integer
-                                        example: 9001
+                                        type: string
+                                        example: '9001'
                                       evolution:
                                         title: Évolution en pourcentage
                                         type: number
