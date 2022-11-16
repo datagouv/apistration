@@ -1,5 +1,10 @@
 insee:
   shared_insee_unite_legale_attributes: &shared_insee_unite_legale_attributes
+    siren:
+      title: "Siren de l'unité légale"
+      description: "Il peut arriver que le siren renvoyé soit différent du paramètre d'appel. Il s'agit d'une erreur généralement temporaire dans la base de données Sirene."
+      type: "string"
+      example: "130025265"
     siret_siege_social:
       title: "SIRET du siège social"
       type: "string"
@@ -326,7 +331,7 @@ insee:
     economie_sociale_et_solidaire:
       title: "Unité légale de l'économie sociale et solidaire (ESS)"
       description:
-        "Indique si l'unité légale est une ESS : 
+        "Indique si l'unité légale est une ESS :
         \n
         \n
         - true : l'entreprise est une ESS

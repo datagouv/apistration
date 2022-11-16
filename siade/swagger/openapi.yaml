@@ -8416,6 +8416,13 @@ paths:
                         type: object
                         title: Unité légale de l'établissement
                         properties:
+                          siren:
+                            title: Siren de l'unité légale
+                            description: Il peut arriver que le siren renvoyé soit
+                              différent du paramètre d'appel. Il s'agit d'une erreur
+                              généralement temporaire dans la base de données Sirene.
+                            type: string
+                            example: '130025265'
                           siret_siege_social:
                             title: SIRET du siège social
                             type: string
@@ -8777,6 +8784,7 @@ paths:
                               sera au 01/01/1900. \n \n Plus d'informations dans la
                               documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                         required:
+                        - siren
                         - siret_siege_social
                         - type
                         - personne_morale_attributs
@@ -9550,6 +9558,13 @@ paths:
                         type: object
                         title: Unité légale de l'établissement
                         properties:
+                          siren:
+                            title: Siren de l'unité légale
+                            description: Il peut arriver que le siren renvoyé soit
+                              différent du paramètre d'appel. Il s'agit d'une erreur
+                              généralement temporaire dans la base de données Sirene.
+                            type: string
+                            example: '130025265'
                           siret_siege_social:
                             title: SIRET du siège social
                             type: string
@@ -9911,6 +9926,7 @@ paths:
                               sera au 01/01/1900. \n \n Plus d'informations dans la
                               documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                         required:
+                        - siren
                         - siret_siege_social
                         - type
                         - personne_morale_attributs
@@ -10685,6 +10701,13 @@ paths:
                         type: object
                         title: Unité légale de l'établissement
                         properties:
+                          siren:
+                            title: Siren de l'unité légale
+                            description: Il peut arriver que le siren renvoyé soit
+                              différent du paramètre d'appel. Il s'agit d'une erreur
+                              généralement temporaire dans la base de données Sirene.
+                            type: string
+                            example: '130025265'
                           siret_siege_social:
                             title: SIRET du siège social
                             type: string
@@ -11046,6 +11069,7 @@ paths:
                               sera au 01/01/1900. \n \n Plus d'informations dans la
                               documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                         required:
+                        - siren
                         - siret_siege_social
                         - type
                         - personne_morale_attributs
@@ -11822,6 +11846,13 @@ paths:
                         type: object
                         title: Unité légale de l'établissement
                         properties:
+                          siren:
+                            title: Siren de l'unité légale
+                            description: Il peut arriver que le siren renvoyé soit
+                              différent du paramètre d'appel. Il s'agit d'une erreur
+                              généralement temporaire dans la base de données Sirene.
+                            type: string
+                            example: '130025265'
                           siret_siege_social:
                             title: SIRET du siège social
                             type: string
@@ -12183,6 +12214,7 @@ paths:
                               sera au 01/01/1900. \n \n Plus d'informations dans la
                               documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                         required:
+                        - siren
                         - siret_siege_social
                         - type
                         - personne_morale_attributs
@@ -12788,6 +12820,13 @@ paths:
                   data:
                     type: object
                     properties:
+                      siren:
+                        title: Siren de l'unité légale
+                        description: Il peut arriver que le siren renvoyé soit différent
+                          du paramètre d'appel. Il s'agit d'une erreur généralement
+                          temporaire dans la base de données Sirene.
+                        type: string
+                        example: '130025265'
                       siret_siege_social:
                         title: SIRET du siège social
                         type: string
@@ -13144,6 +13183,7 @@ paths:
                           Si l'entreprise est juridique active, cette valeur est à
                           'null'.
                     required:
+                    - siren
                     - siret_siege_social
                     - type
                     - personne_morale_attributs
@@ -13515,6 +13555,13 @@ paths:
                   data:
                     type: object
                     properties:
+                      siren:
+                        title: Siren de l'unité légale
+                        description: Il peut arriver que le siren renvoyé soit différent
+                          du paramètre d'appel. Il s'agit d'une erreur généralement
+                          temporaire dans la base de données Sirene.
+                        type: string
+                        example: '130025265'
                       siret_siege_social:
                         title: SIRET du siège social
                         type: string
@@ -13873,6 +13920,7 @@ paths:
                           Si l'entreprise est juridique active, cette valeur est à
                           'null'.
                     required:
+                    - siren
                     - siret_siege_social
                     - type
                     - personne_morale_attributs

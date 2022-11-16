@@ -1,5 +1,6 @@
 class APIEntreprise::INSEE::UniteLegaleSerializer::V3 < APIEntreprise::V3AndMore::BaseSerializer
-  attributes :siret_siege_social,
+  attributes :siren,
+    :siret_siege_social,
     :categorie_entreprise,
     :diffusable_commercialement,
     :type,
