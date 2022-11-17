@@ -24,9 +24,8 @@ class INSEE::Etablissement::MakeRequest < MakeRequest::Get
   def handle_redirect
     context.redirect_from_siret = siret.dup
 
-    siren_from_location = context.response.header['Location'].split('%3A')[-1]
     context_for_siege_unite_legale = context.dup
-    context_for_siege_unite_legale.params[:siren] = siren_from_location
+    context_for_siege_unite_legale.params[:siren] = extract_siren_unite_legale_from_location
 
     make_request_on_siege_unite_legale = INSEE::SiegeUniteLegale::MakeRequest.call(
       context_for_siege_unite_legale
@@ -36,6 +35,10 @@ class INSEE::Etablissement::MakeRequest < MakeRequest::Get
   end
 
   private
+
+  def extract_siren_unite_legale_from_location
+    context.response.header['Location'].split('%3A')[-1]
+  end
 
   def siret
     context.params[:siret]
