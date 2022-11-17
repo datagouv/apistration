@@ -13919,8 +13919,21 @@ paths:
                         type: integer
                         example: 1618396818
                         description: Date de la dernière mise à jour à l'Insee.
+                      redirect_from_siren:
+                        type: string
+                        title: Siren d'origine de la requête
+                        description: "Si la requête a été effectuée sur un siren qui
+                          a été redirigé vers un autre siren, cette variable contient
+                          le siren d'origine de la requête. Cela arrive parfois lorsque
+                          la base Sirene possède des unités légales en doublons. Ces
+                          doublons sont généralement temporaires. \n Si cette variable
+                          est renseignée, le paramètre data->siren est différent du
+                          paramètre d'appel, et cette variable est le siren d'entrée."
+                        example: '306138900'
+                        nullable: true
                     required:
                     - date_derniere_mise_a_jour
+                    - redirect_from_siren
                 required:
                 - data
                 - links
@@ -14656,8 +14669,21 @@ paths:
                         type: integer
                         example: 1618396818
                         description: Date de la dernière mise à jour à l'Insee.
+                      redirect_from_siren:
+                        type: string
+                        title: Siren d'origine de la requête
+                        description: "Si la requête a été effectuée sur un siren qui
+                          a été redirigé vers un autre siren, cette variable contient
+                          le siren d'origine de la requête. Cela arrive parfois lorsque
+                          la base Sirene possède des unités légales en doublons. Ces
+                          doublons sont généralement temporaires. \n Si cette variable
+                          est renseignée, le paramètre data->siren est différent du
+                          paramètre d'appel, et cette variable est le siren d'entrée."
+                        example: '306138900'
+                        nullable: true
                     required:
                     - date_derniere_mise_a_jour
+                    - redirect_from_siren
                 required:
                 - data
                 - links

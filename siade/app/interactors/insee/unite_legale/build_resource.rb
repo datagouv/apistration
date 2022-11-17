@@ -50,7 +50,9 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
       etat_administratif:,
       date_cessation:,
 
-      date_derniere_mise_a_jour: date_to_timestamp(unite_legale['dateDernierTraitementUniteLegale'])
+      date_derniere_mise_a_jour: date_to_timestamp(unite_legale['dateDernierTraitementUniteLegale']),
+
+      redirect_from_siren: context.redirect_from_siren
     }
   end
 

@@ -22,6 +22,8 @@ class INSEE::UniteLegale::MakeRequest < MakeRequest::Get
   end
 
   def handle_redirect
+    context.redirect_from_siren = siren.dup
+
     siren_from_location = context.response.header['Location'].split('/')[-1]
     context_for_new_location = context.dup
     context_for_new_location.params[:siren] = siren_from_location

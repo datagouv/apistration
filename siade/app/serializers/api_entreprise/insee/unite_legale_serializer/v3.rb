@@ -24,7 +24,8 @@ class APIEntreprise::INSEE::UniteLegaleSerializer::V3 < APIEntreprise::V3AndMore
 
   meta do |object|
     {
-      date_derniere_mise_a_jour: object.date_derniere_mise_a_jour
+      date_derniere_mise_a_jour: object.date_derniere_mise_a_jour,
+      redirect_from_siren: object.redirect_from_siren
     }
   end
 end
