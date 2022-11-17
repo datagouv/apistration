@@ -30,7 +30,9 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
 
       diffusable_commercialement: yes_no_to_boolean(etablissement['statutDiffusionEtablissement']),
       date_creation: date_to_timestamp(etablissement['dateCreationEtablissement']),
-      date_derniere_mise_a_jour: date_to_timestamp(etablissement['dateDernierTraitementEtablissement'])
+      date_derniere_mise_a_jour: date_to_timestamp(etablissement['dateDernierTraitementEtablissement']),
+
+      redirect_from_siret: context.redirect_from_siret
     }
   end
 

@@ -9667,8 +9667,25 @@ paths:
                         type: integer
                         example: 1618396818
                         description: Date de la dernière mise à jour à l'Insee.
+                      redirect_from_siret:
+                        type: string
+                        title: Siret d'origine de la requête
+                        description: "Si la requête a été effectuée sur un siret qui
+                          a été redirigé vers un autre siret , cette variable contient
+                          le siret d'origine de la requête. Cela arrive parfois lorsque
+                          la base Sirene possède des unités légales en doublons. Ces
+                          doublons sont généralement temporaires. \n Si cette variable
+                          est renseignée, le paramètre data->siret est différent du
+                          paramètre d'appel, et cette variable est le siret d'entrée.
+                          \n \n A noter que le siret de redirection est systématiquement
+                          le siret du siège social de l'unité légale: en effet la
+                          base Sirene ne possède pas la correspondance exacte entre
+                          un siret doublon et le siret d'origine. "
+                        example: '30613890000010'
+                        nullable: true
                     required:
                     - date_derniere_mise_a_jour
+                    - redirect_from_siret
                 required:
                 - data
                 - links
@@ -10817,8 +10834,25 @@ paths:
                         type: integer
                         example: 1618396818
                         description: Date de la dernière mise à jour à l'Insee.
+                      redirect_from_siret:
+                        type: string
+                        title: Siret d'origine de la requête
+                        description: "Si la requête a été effectuée sur un siret qui
+                          a été redirigé vers un autre siret , cette variable contient
+                          le siret d'origine de la requête. Cela arrive parfois lorsque
+                          la base Sirene possède des unités légales en doublons. Ces
+                          doublons sont généralement temporaires. \n Si cette variable
+                          est renseignée, le paramètre data->siret est différent du
+                          paramètre d'appel, et cette variable est le siret d'entrée.
+                          \n \n A noter que le siret de redirection est systématiquement
+                          le siret du siège social de l'unité légale: en effet la
+                          base Sirene ne possède pas la correspondance exacte entre
+                          un siret doublon et le siret d'origine. "
+                        example: '30613890000010'
+                        nullable: true
                     required:
                     - date_derniere_mise_a_jour
+                    - redirect_from_siret
                 required:
                 - data
                 - links
@@ -11968,8 +12002,25 @@ paths:
                         type: integer
                         example: 1618396818
                         description: Date de la dernière mise à jour à l'Insee.
+                      redirect_from_siret:
+                        type: string
+                        title: Siret d'origine de la requête
+                        description: "Si la requête a été effectuée sur un siret qui
+                          a été redirigé vers un autre siret , cette variable contient
+                          le siret d'origine de la requête. Cela arrive parfois lorsque
+                          la base Sirene possède des unités légales en doublons. Ces
+                          doublons sont généralement temporaires. \n Si cette variable
+                          est renseignée, le paramètre data->siret est différent du
+                          paramètre d'appel, et cette variable est le siret d'entrée.
+                          \n \n A noter que le siret de redirection est systématiquement
+                          le siret du siège social de l'unité légale: en effet la
+                          base Sirene ne possède pas la correspondance exacte entre
+                          un siret doublon et le siret d'origine. "
+                        example: '30613890000010'
+                        nullable: true
                     required:
                     - date_derniere_mise_a_jour
+                    - redirect_from_siret
                 required:
                 - data
                 - links
@@ -13121,8 +13172,25 @@ paths:
                         type: integer
                         example: 1618396818
                         description: Date de la dernière mise à jour à l'Insee.
+                      redirect_from_siret:
+                        type: string
+                        title: Siret d'origine de la requête
+                        description: "Si la requête a été effectuée sur un siret qui
+                          a été redirigé vers un autre siret , cette variable contient
+                          le siret d'origine de la requête. Cela arrive parfois lorsque
+                          la base Sirene possède des unités légales en doublons. Ces
+                          doublons sont généralement temporaires. \n Si cette variable
+                          est renseignée, le paramètre data->siret est différent du
+                          paramètre d'appel, et cette variable est le siret d'entrée.
+                          \n \n A noter que le siret de redirection est systématiquement
+                          le siret du siège social de l'unité légale: en effet la
+                          base Sirene ne possède pas la correspondance exacte entre
+                          un siret doublon et le siret d'origine. "
+                        example: '30613890000010'
+                        nullable: true
                     required:
                     - date_derniere_mise_a_jour
+                    - redirect_from_siret
                 required:
                 - data
                 - links

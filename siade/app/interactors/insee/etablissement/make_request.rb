@@ -22,6 +22,8 @@ class INSEE::Etablissement::MakeRequest < MakeRequest::Get
   end
 
   def handle_redirect
+    context.redirect_from_siret = siret.dup
+
     siren_from_location = context.response.header['Location'].split('%3A')[-1]
     context_for_siege_unite_legale = context.dup
     context_for_siege_unite_legale.params[:siren] = siren_from_location

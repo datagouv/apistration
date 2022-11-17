@@ -30,7 +30,8 @@ class APIEntreprise::INSEE::EtablissementSerializer::V3 < APIEntreprise::V3AndMo
 
   meta do |object|
     {
-      date_derniere_mise_a_jour: object.date_derniere_mise_a_jour
+      date_derniere_mise_a_jour: object.date_derniere_mise_a_jour,
+      redirect_from_siret: object.redirect_from_siret
     }
   end
 end
