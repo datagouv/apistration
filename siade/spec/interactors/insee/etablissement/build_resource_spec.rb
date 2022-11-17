@@ -125,4 +125,20 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
       end
     end
   end
+
+  context 'with a siege social payload, from a call to INSEE::SiegeUniteLegale::MakeRequest (which happens with redirect sirets)', vcr: { cassette_name: 'insee/siret/redirected' } do
+    let(:siret) { '53222169400013' }
+
+    it { is_expected.to be_a_success }
+
+    describe 'resource' do
+      subject(:resource) { organizer.bundled_data.data }
+
+      it { is_expected.to be_a(Resource) }
+
+      it 'has the redirected siret' do
+        expect(subject.siret).to eq('77887067500015')
+      end
+    end
+  end
 end
