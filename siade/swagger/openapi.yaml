@@ -16817,7 +16817,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/probtp/etablissements/13002526500013/attestation_cotisations_retraite?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/probtp/etablissements/{siret}/conformite_cotisations_retraite":
     get:
-      summary: Conformités des cotisations retraites
+      summary: Conformité cotisations retraite complémentaire
       tags:
       - Attestations sociales et fiscales
       parameters:
@@ -16858,8 +16858,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Savoir si une entreprise est à jour de ses cotisations retraite
-        à la Protection Sociale du Bâtiment et des Travaux publics (PROBTP).
+      description: Régularité des cotisations de retraite complémentaire auprès de
+        la Protection Sociale du Bâtiment et des Travaux publics (ProBTP).
       responses:
         '401':
           description: Non autorisé
