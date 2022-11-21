@@ -3,7 +3,7 @@ class APIEntreprise::MI::AssociationSerializer::V3 < APIEntreprise::V3AndMore::B
     :adresse_siege
 
   attribute :rna_id do |object|
-    object.identite[:id_rna]
+    object.identite[:rna]
   end
 
   attribute :titre do |object|
@@ -15,19 +15,19 @@ class APIEntreprise::MI::AssociationSerializer::V3 < APIEntreprise::V3AndMore::B
   end
 
   attribute :siret_siege_social do |object|
-    object.identite[:id_siret_siege]
+    object.identite[:siret_siege]
   end
 
   attribute :date_creation do |object|
-    object.identite[:date_creat]
+    object.identite[:date_creation_rna]
   end
 
   attribute :date_declaration do |object|
-    object.identite[:date_modif_rna]
+    object.identite[:date_derniere_mise_a_jour_rna]
   end
 
   attribute :date_publication do |object|
-    object.identite[:date_pub_jo]
+    object.identite[:date_publication_journal_officiel]
   end
 
   attribute :date_dissolution do |object|
@@ -43,6 +43,6 @@ class APIEntreprise::MI::AssociationSerializer::V3 < APIEntreprise::V3AndMore::B
   end
 
   attribute :mise_a_jour do |object|
-    object.identite[:date_modif_rna]
+    object.identite[:date_derniere_mise_a_jour_rna]
   end
 end

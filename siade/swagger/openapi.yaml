@@ -15730,8 +15730,8 @@ paths:
                         - code_postal
                         - commune
                       etat:
-                        type: string
-                        example: 'true'
+                        type: boolean
+                        example: true
                       groupement:
                         type: string
                         nullable: true

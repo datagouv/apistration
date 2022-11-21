@@ -78,8 +78,8 @@ mi:
             type: "string"
             example: "Paris"
       etat:
-        type: "string"
-        example: "true"
+        type: "boolean"
+        example: true
       groupement:
         type: "string"
         nullable: true

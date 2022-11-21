@@ -1,5 +1,5 @@
 RSpec.describe MI::Associations::BuildResource, type: :build_resource do
-  describe '.call', vcr: { cassette_name: 'mi/associations/with_valid_siret' } do
+  describe '.call' do
     subject { described_class.call(response:, params:) }
 
     let(:response) do
@@ -7,7 +7,7 @@ RSpec.describe MI::Associations::BuildResource, type: :build_resource do
     end
 
     let(:body) do
-      MI::Associations::MakeRequest.call(params:).response.body
+      open_payload_file('mi/association-77567227238579.xml').read
     end
 
     let(:params) do
