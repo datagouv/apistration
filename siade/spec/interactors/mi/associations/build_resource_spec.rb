@@ -1,34 +1,6 @@
 RSpec.describe MI::Associations::BuildResource, type: :build_resource do
   describe '.call', vcr: { cassette_name: 'mi/associations/with_valid_siret' } do
-    subject { described_class.call(response:) }
-
-    let(:valid_payload) do
-      {
-        rna_id: 'W751107336',
-        titre: 'LA PREVENTION ROUTIERE',
-        objet: 'Accroitre la sécurité des usagers en encourageant toutes mesures ou initiatives propres à réduire les accidents',
-        siret: nil,
-        siret_siege_social: '77571979202650',
-        date_creation: '1955-01-01',
-        date_declaration: '2022-04-26',
-        date_publication: nil,
-        date_dissolution: nil,
-        adresse_siege:
-                                {
-                                  complement: '  _',
-                                  numero_voie: '33',
-                                  type_voie: 'RUE',
-                                  libelle_voie: 'de Mogador',
-                                  distribution: nil,
-                                  code_insee: '75109',
-                                  code_postal: '75009',
-                                  commune: 'Paris 9ème'
-                                },
-        etat: 'true',
-        groupement: 'Simple',
-        mise_a_jour: '2022-04-26'
-      }
-    end
+    subject { described_class.call(response:, params:) }
 
     let(:response) do
       instance_double(Net::HTTPOK, body:)
@@ -50,8 +22,6 @@ RSpec.describe MI::Associations::BuildResource, type: :build_resource do
 
     it 'builds valid resource' do
       expect(resource).to be_a(Resource)
-
-      expect(resource.to_h).to eq(valid_payload)
     end
   end
 end

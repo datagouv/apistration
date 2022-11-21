@@ -2,45 +2,56 @@ class MI::Associations::BuildResource < BuildResource
   protected
 
   def resource_attributes
-    @asso_hash = xml_body_as_hash[:asso]
-
     {
-      rna_id: @asso_hash[:identite][:id_rna],
-      titre: @asso_hash[:identite][:nom],
-      objet: @asso_hash[:activites][:objet],
-      siret: @siret,
-      siret_siege_social: @asso_hash[:identite][:id_siret_siege],
-      date_creation: replace_wrong_date_with_nil(@asso_hash[:identite][:date_creat]),
-      date_declaration: replace_wrong_date_with_nil(@asso_hash[:identite][:date_modif_rna]),
-      date_publication: replace_wrong_date_with_nil(@asso_hash[:identite][:date_pub_jo]),
-      date_dissolution: replace_wrong_date_with_nil(@asso_hash[:identite][:date_dissolution]),
+      identite: association[:identite],
+      activites: association[:activites],
+      siret:,
       adresse_siege:,
-      etat: @asso_hash[:identite][:active],
-      groupement: @asso_hash[:identite][:groupement],
-      mise_a_jour: @asso_hash[:identite][:date_modif_rna]
     }
   end
 
   private
 
-  # rubocop:disable Metrics/AbcSize
+  def identite
+    association[:identite].each_with_object({}) do |(key, value), hash|
+      if key =~ /^date/
+        [key, replace_wrong_date_with_nil(value)]
+      else
+        [key, value]
+      end
+    end.to_h
+  end
+
   def adresse_siege
-    adresse_siege_complement_1 = @asso_hash[:coordonnees][:adresse_siege][:cplt_1]
-    adresse_siege_complement_2 = @asso_hash[:coordonnees][:adresse_siege][:cplt_2]
-    adresse_siege_complement_3 = @asso_hash[:coordonnees][:adresse_siege][:cplt_3]
+    adresse_siege_complement_1 = adresse_siege_raw[:cplt_1]
+    adresse_siege_complement_2 = adresse_siege_raw[:cplt_2]
+    adresse_siege_complement_3 = adresse_siege_raw[:cplt_3]
 
     {
       complement: [adresse_siege_complement_1, adresse_siege_complement_2, adresse_siege_complement_3].join(' '),
-      numero_voie: @asso_hash[:coordonnees][:adresse_siege][:num_voie],
-      type_voie: @asso_hash[:coordonnees][:adresse_siege][:type_voie],
-      libelle_voie: @asso_hash[:coordonnees][:adresse_siege][:voie],
-      distribution: @asso_hash[:coordonnees][:adresse_siege][:bp],
-      code_insee: @asso_hash[:coordonnees][:adresse_siege][:code_insee],
-      code_postal: @asso_hash[:coordonnees][:adresse_siege][:cp],
-      commune: @asso_hash[:coordonnees][:adresse_siege][:commune]
+      numero_voie: adresse_siege_raw[:num_voie],
+      type_voie: adresse_siege_raw[:type_voie],
+      libelle_voie: adresse_siege_raw[:voie],
+      distribution: adresse_siege_raw[:bp],
+      code_insee: adresse_siege_raw[:code_insee],
+      code_postal: adresse_siege_raw[:cp],
+      commune: adresse_siege_raw[:commune]
     }
   end
-  # rubocop:enable Metrics/AbcSize
+
+  def siret
+    return unless Siret.new(context.params[:siret_or_rna]).valid?
+
+    context.params[:siret_or_rna]
+  end
+
+  def adresse_siege_raw
+    @adresse_siege_raw ||= association[:coordonnees][:adresse_siege]
+  end
+
+  def association
+    @association ||= xml_body_as_hash[:asso]
+  end
 
   def replace_wrong_date_with_nil(date)
     date == '0001-01-01' ? nil : date
