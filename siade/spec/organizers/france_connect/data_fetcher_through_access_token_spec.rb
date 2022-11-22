@@ -1,4 +1,4 @@
-RSpec.describe FranceConnect::DataFetcherThroughAccessToken, type: :organizer do
+RSpec.describe FranceConnect::DataFetcherThroughAccessToken, type: :retriever_organizer do
   subject { described_class.call(params: { token: }) }
 
   let(:token) { 'token' }
