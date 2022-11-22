@@ -8922,6 +8922,11 @@ paths:
                       tranche_effectif_salarie:
                         type: object
                         title: Tranche d'effectif salarié de l'établissement
+                        description: Pour environ la moitié des établissements, la
+                          tranche d'effectif salarié n'est pas renseignée. Il s'agit
+                          principalement d'établissements récents (créés il y a moins
+                          de trois ans). Les délais de récolte et traitement font
+                          que les valeurs indiquées datent de l’année N-2 ou N-3.
                         properties:
                           code:
                             title: Code effectif
@@ -9255,6 +9260,12 @@ paths:
                           tranche_effectif_salarie:
                             type: object
                             title: Tranche d'effectif salarié de l'unité légale
+                            description: Pour environ la moitié des établissements,
+                              la tranche d'effectif salarié n'est pas renseignée.
+                              Il s'agit principalement d'établissements récents (créés
+                              il y a moins de trois ans). Les délais de récolte et
+                              traitement font que les valeurs indiquées datent de
+                              l’année N-2 ou N-3.
                             properties:
                               code:
                                 type: string
@@ -9380,14 +9391,18 @@ paths:
                             title: Date de création de l'unité légale
                             type: integer
                             example: 1634103818
+                            nullable: true
                             description: "La date de création correspond à la date
                               qui figure dans les statuts de l'entreprise qui sont
                               déposés au centre de formalité des entreprises (CFE)
                               compétent. Cette valeur est renvoyée sous format timestamp.
-                              \n \n Saufpour les unités purgées, la date de création
-                              n'est jamais à 'null'. Si elle est non renseignée, elle
-                              sera au 01/01/1900. \n \n Plus d'informations dans la
-                              documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                              \n \n Pour certains établissements très anciens, tous
+                              fermés et dont l’unité légale est cessée la date de
+                              création peut être nulle. \n Pour les unités purgées,
+                              la date de création n'est jamais à 'null'. Si elle est
+                              non renseignée, elle sera au 01/01/1900. \n \n Plus
+                              d'informations dans la documentation Insee de l'API
+                              Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                         required:
                         - siren
                         - siret_siege_social
@@ -9636,8 +9651,20 @@ paths:
                         - libelle_pays_etranger
                         - acheminement_postal
                       date_creation:
+                        title: Date de création de l'unité légale
                         type: integer
                         example: 1634103818
+                        nullable: true
+                        description: "La date de création correspond à la date qui
+                          figure dans les statuts de l'entreprise qui sont déposés
+                          au centre de formalité des entreprises (CFE) compétent.
+                          Cette valeur est renvoyée sous format timestamp. \n \n Pour
+                          certains établissements très anciens, tous fermés et dont
+                          l’unité légale est cessée la date de création peut être
+                          nulle. \n Pour les unités purgées, la date de création n'est
+                          jamais à 'null'. Si elle est non renseignée, elle sera au
+                          01/01/1900. \n \n Plus d'informations dans la documentation
+                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                     required:
                     - siret
                     - siege_social
@@ -10090,6 +10117,11 @@ paths:
                       tranche_effectif_salarie:
                         type: object
                         title: Tranche d'effectif salarié de l'établissement
+                        description: Pour environ la moitié des établissements, la
+                          tranche d'effectif salarié n'est pas renseignée. Il s'agit
+                          principalement d'établissements récents (créés il y a moins
+                          de trois ans). Les délais de récolte et traitement font
+                          que les valeurs indiquées datent de l’année N-2 ou N-3.
                         properties:
                           code:
                             title: Code effectif
@@ -10422,6 +10454,12 @@ paths:
                           tranche_effectif_salarie:
                             type: object
                             title: Tranche d'effectif salarié de l'unité légale
+                            description: Pour environ la moitié des établissements,
+                              la tranche d'effectif salarié n'est pas renseignée.
+                              Il s'agit principalement d'établissements récents (créés
+                              il y a moins de trois ans). Les délais de récolte et
+                              traitement font que les valeurs indiquées datent de
+                              l’année N-2 ou N-3.
                             properties:
                               code:
                                 type: string
@@ -10547,14 +10585,18 @@ paths:
                             title: Date de création de l'unité légale
                             type: integer
                             example: 1634103818
+                            nullable: true
                             description: "La date de création correspond à la date
                               qui figure dans les statuts de l'entreprise qui sont
                               déposés au centre de formalité des entreprises (CFE)
                               compétent. Cette valeur est renvoyée sous format timestamp.
-                              \n \n Saufpour les unités purgées, la date de création
-                              n'est jamais à 'null'. Si elle est non renseignée, elle
-                              sera au 01/01/1900. \n \n Plus d'informations dans la
-                              documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                              \n \n Pour certains établissements très anciens, tous
+                              fermés et dont l’unité légale est cessée la date de
+                              création peut être nulle. \n Pour les unités purgées,
+                              la date de création n'est jamais à 'null'. Si elle est
+                              non renseignée, elle sera au 01/01/1900. \n \n Plus
+                              d'informations dans la documentation Insee de l'API
+                              Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                         required:
                         - siren
                         - siret_siege_social
@@ -10803,8 +10845,20 @@ paths:
                         - libelle_pays_etranger
                         - acheminement_postal
                       date_creation:
+                        title: Date de création de l'unité légale
                         type: integer
                         example: 1634103818
+                        nullable: true
+                        description: "La date de création correspond à la date qui
+                          figure dans les statuts de l'entreprise qui sont déposés
+                          au centre de formalité des entreprises (CFE) compétent.
+                          Cette valeur est renvoyée sous format timestamp. \n \n Pour
+                          certains établissements très anciens, tous fermés et dont
+                          l’unité légale est cessée la date de création peut être
+                          nulle. \n Pour les unités purgées, la date de création n'est
+                          jamais à 'null'. Si elle est non renseignée, elle sera au
+                          01/01/1900. \n \n Plus d'informations dans la documentation
+                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                     required:
                     - siret
                     - siege_social
@@ -11258,6 +11312,11 @@ paths:
                       tranche_effectif_salarie:
                         type: object
                         title: Tranche d'effectif salarié de l'établissement
+                        description: Pour environ la moitié des établissements, la
+                          tranche d'effectif salarié n'est pas renseignée. Il s'agit
+                          principalement d'établissements récents (créés il y a moins
+                          de trois ans). Les délais de récolte et traitement font
+                          que les valeurs indiquées datent de l’année N-2 ou N-3.
                         properties:
                           code:
                             title: Code effectif
@@ -11590,6 +11649,12 @@ paths:
                           tranche_effectif_salarie:
                             type: object
                             title: Tranche d'effectif salarié de l'unité légale
+                            description: Pour environ la moitié des établissements,
+                              la tranche d'effectif salarié n'est pas renseignée.
+                              Il s'agit principalement d'établissements récents (créés
+                              il y a moins de trois ans). Les délais de récolte et
+                              traitement font que les valeurs indiquées datent de
+                              l’année N-2 ou N-3.
                             properties:
                               code:
                                 type: string
@@ -11715,14 +11780,18 @@ paths:
                             title: Date de création de l'unité légale
                             type: integer
                             example: 1634103818
+                            nullable: true
                             description: "La date de création correspond à la date
                               qui figure dans les statuts de l'entreprise qui sont
                               déposés au centre de formalité des entreprises (CFE)
                               compétent. Cette valeur est renvoyée sous format timestamp.
-                              \n \n Saufpour les unités purgées, la date de création
-                              n'est jamais à 'null'. Si elle est non renseignée, elle
-                              sera au 01/01/1900. \n \n Plus d'informations dans la
-                              documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                              \n \n Pour certains établissements très anciens, tous
+                              fermés et dont l’unité légale est cessée la date de
+                              création peut être nulle. \n Pour les unités purgées,
+                              la date de création n'est jamais à 'null'. Si elle est
+                              non renseignée, elle sera au 01/01/1900. \n \n Plus
+                              d'informations dans la documentation Insee de l'API
+                              Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                         required:
                         - siren
                         - siret_siege_social
@@ -11971,8 +12040,20 @@ paths:
                         - libelle_pays_etranger
                         - acheminement_postal
                       date_creation:
+                        title: Date de création de l'unité légale
                         type: integer
                         example: 1634103818
+                        nullable: true
+                        description: "La date de création correspond à la date qui
+                          figure dans les statuts de l'entreprise qui sont déposés
+                          au centre de formalité des entreprises (CFE) compétent.
+                          Cette valeur est renvoyée sous format timestamp. \n \n Pour
+                          certains établissements très anciens, tous fermés et dont
+                          l’unité légale est cessée la date de création peut être
+                          nulle. \n Pour les unités purgées, la date de création n'est
+                          jamais à 'null'. Si elle est non renseignée, elle sera au
+                          01/01/1900. \n \n Plus d'informations dans la documentation
+                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                     required:
                     - siret
                     - siege_social
@@ -12427,6 +12508,11 @@ paths:
                       tranche_effectif_salarie:
                         type: object
                         title: Tranche d'effectif salarié de l'établissement
+                        description: Pour environ la moitié des établissements, la
+                          tranche d'effectif salarié n'est pas renseignée. Il s'agit
+                          principalement d'établissements récents (créés il y a moins
+                          de trois ans). Les délais de récolte et traitement font
+                          que les valeurs indiquées datent de l’année N-2 ou N-3.
                         properties:
                           code:
                             title: Code effectif
@@ -12760,6 +12846,12 @@ paths:
                           tranche_effectif_salarie:
                             type: object
                             title: Tranche d'effectif salarié de l'unité légale
+                            description: Pour environ la moitié des établissements,
+                              la tranche d'effectif salarié n'est pas renseignée.
+                              Il s'agit principalement d'établissements récents (créés
+                              il y a moins de trois ans). Les délais de récolte et
+                              traitement font que les valeurs indiquées datent de
+                              l’année N-2 ou N-3.
                             properties:
                               code:
                                 type: string
@@ -12885,14 +12977,18 @@ paths:
                             title: Date de création de l'unité légale
                             type: integer
                             example: 1634103818
+                            nullable: true
                             description: "La date de création correspond à la date
                               qui figure dans les statuts de l'entreprise qui sont
                               déposés au centre de formalité des entreprises (CFE)
                               compétent. Cette valeur est renvoyée sous format timestamp.
-                              \n \n Saufpour les unités purgées, la date de création
-                              n'est jamais à 'null'. Si elle est non renseignée, elle
-                              sera au 01/01/1900. \n \n Plus d'informations dans la
-                              documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                              \n \n Pour certains établissements très anciens, tous
+                              fermés et dont l’unité légale est cessée la date de
+                              création peut être nulle. \n Pour les unités purgées,
+                              la date de création n'est jamais à 'null'. Si elle est
+                              non renseignée, elle sera au 01/01/1900. \n \n Plus
+                              d'informations dans la documentation Insee de l'API
+                              Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                         required:
                         - siren
                         - siret_siege_social
@@ -13141,8 +13237,20 @@ paths:
                         - libelle_pays_etranger
                         - acheminement_postal
                       date_creation:
+                        title: Date de création de l'unité légale
                         type: integer
                         example: 1634103818
+                        nullable: true
+                        description: "La date de création correspond à la date qui
+                          figure dans les statuts de l'entreprise qui sont déposés
+                          au centre de formalité des entreprises (CFE) compétent.
+                          Cette valeur est renvoyée sous format timestamp. \n \n Pour
+                          certains établissements très anciens, tous fermés et dont
+                          l’unité légale est cessée la date de création peut être
+                          nulle. \n Pour les unités purgées, la date de création n'est
+                          jamais à 'null'. Si elle est non renseignée, elle sera au
+                          01/01/1900. \n \n Plus d'informations dans la documentation
+                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                     required:
                     - siret
                     - siege_social
@@ -13745,6 +13853,11 @@ paths:
                       tranche_effectif_salarie:
                         type: object
                         title: Tranche d'effectif salarié de l'unité légale
+                        description: Pour environ la moitié des établissements, la
+                          tranche d'effectif salarié n'est pas renseignée. Il s'agit
+                          principalement d'établissements récents (créés il y a moins
+                          de trois ans). Les délais de récolte et traitement font
+                          que les valeurs indiquées datent de l’année N-2 ou N-3.
                         properties:
                           code:
                             type: string
@@ -13864,14 +13977,17 @@ paths:
                         title: Date de création de l'unité légale
                         type: integer
                         example: 1634103818
+                        nullable: true
                         description: "La date de création correspond à la date qui
                           figure dans les statuts de l'entreprise qui sont déposés
                           au centre de formalité des entreprises (CFE) compétent.
-                          Cette valeur est renvoyée sous format timestamp. \n \n Saufpour
-                          les unités purgées, la date de création n'est jamais à 'null'.
-                          Si elle est non renseignée, elle sera au 01/01/1900. \n
-                          \n Plus d'informations dans la documentation Insee de l'API
-                          Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                          Cette valeur est renvoyée sous format timestamp. \n \n Pour
+                          certains établissements très anciens, tous fermés et dont
+                          l’unité légale est cessée la date de création peut être
+                          nulle. \n Pour les unités purgées, la date de création n'est
+                          jamais à 'null'. Si elle est non renseignée, elle sera au
+                          01/01/1900. \n \n Plus d'informations dans la documentation
+                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                       date_cessation:
                         title: Date de cessation de l'unité légale
                         type: integer
@@ -14495,6 +14611,11 @@ paths:
                       tranche_effectif_salarie:
                         type: object
                         title: Tranche d'effectif salarié de l'unité légale
+                        description: Pour environ la moitié des établissements, la
+                          tranche d'effectif salarié n'est pas renseignée. Il s'agit
+                          principalement d'établissements récents (créés il y a moins
+                          de trois ans). Les délais de récolte et traitement font
+                          que les valeurs indiquées datent de l’année N-2 ou N-3.
                         properties:
                           code:
                             type: string
@@ -14614,14 +14735,17 @@ paths:
                         title: Date de création de l'unité légale
                         type: integer
                         example: 1634103818
+                        nullable: true
                         description: "La date de création correspond à la date qui
                           figure dans les statuts de l'entreprise qui sont déposés
                           au centre de formalité des entreprises (CFE) compétent.
-                          Cette valeur est renvoyée sous format timestamp. \n \n Saufpour
-                          les unités purgées, la date de création n'est jamais à 'null'.
-                          Si elle est non renseignée, elle sera au 01/01/1900. \n
-                          \n Plus d'informations dans la documentation Insee de l'API
-                          Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
+                          Cette valeur est renvoyée sous format timestamp. \n \n Pour
+                          certains établissements très anciens, tous fermés et dont
+                          l’unité légale est cessée la date de création peut être
+                          nulle. \n Pour les unités purgées, la date de création n'est
+                          jamais à 'null'. Si elle est non renseignée, elle sera au
+                          01/01/1900. \n \n Plus d'informations dans la documentation
+                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
                       date_cessation:
                         title: Date de cessation de l'unité légale
                         type: integer
