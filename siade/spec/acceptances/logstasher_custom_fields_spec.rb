@@ -14,7 +14,7 @@ end
 
 RSpec.describe 'logstasher custom fields', type: :controller do
   subject(:make_call) do
-    get :index
+    get :index, params: { api_version: '42' }
   end
 
   before do
@@ -147,11 +147,10 @@ RSpec.describe 'logstasher custom fields', type: :controller do
         make_call
       end
 
-      it 'adds api_version v3_and_more to logstasher' do
+      it 'adds api_version path param to logstasher' do
         expect(LogStasher).to receive(:build_logstash_event).with(
           hash_including(
-            retriever_cached: false,
-            api_version: 'v3_and_more'
+            api_version: 'v42'
           ),
           anything
         )
