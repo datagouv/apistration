@@ -12,8 +12,19 @@ RSpec.describe APIParticulierController, 'france connectable' do
     def show
       authorize :dummy
 
-      render json: france_connect_service_user_identity.to_h,
-        status: :ok
+      # rubocop:disable Style/OpenStructUse
+      organizer = OpenStruct.new(
+        provider_name: 'dummy',
+        errors: [UnprocessableEntityError.new(:gender)]
+      )
+      # rubocop:enable Style/OpenStructUse
+
+      if params[:test_invalid_params]
+        render_errors(organizer)
+      else
+        render json: france_connect_service_user_identity.to_h,
+          status: :ok
+      end
     end
   end
 
@@ -25,8 +36,10 @@ RSpec.describe APIParticulierController, 'france connectable' do
 
       request.headers['Authorization'] = "Bearer #{token}"
 
-      get :show
+      get :show, params:
     end
+
+    let(:params) { {} }
 
     context 'when it is not a valid france connect token' do
       before do
@@ -48,6 +61,22 @@ RSpec.describe APIParticulierController, 'france connectable' do
 
         it 'affects person attributes in controller context' do
           expect(make_call.body).to eq(default_france_connect_identity_attributes.to_json)
+        end
+
+        context 'when organizer has errors' do
+          let(:params) { { test_invalid_params: true } }
+
+          its(:status) { is_expected.to eq(400) }
+
+          it 'tracks errors' do
+            expect(MonitoringService.instance).to receive(:track).with(
+              'error',
+              /Invalid params with FranceConnect/,
+              anything
+            )
+
+            make_call
+          end
         end
       end
 

@@ -51,6 +51,8 @@ class APIParticulierController < APIController
   end
 
   def render_errors(organizer)
+    track_invalid_paramaters_error_for_france_connect(organizer, organizer.errors) if france_connect? && at_least_one_error_kind_of?(:wrong_parameter, organizer)
+
     render content_type: 'application/json',
       json: format_error(organizer.errors.first),
       status: extract_http_code(organizer)
@@ -136,5 +138,9 @@ class APIParticulierController < APIController
         legacy_token_value: token
       }
     )
+  end
+
+  def france_connect?
+    false
   end
 end

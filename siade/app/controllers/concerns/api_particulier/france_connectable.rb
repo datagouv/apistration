@@ -27,6 +27,17 @@ module APIParticulier::FranceConnectable
     end
   end
 
+  def track_invalid_paramaters_error_for_france_connect(organizer, errors)
+    MonitoringService.instance.track(
+      'error',
+      'Invalid params with FranceConnect',
+      {
+        provider_name: organizer.provider_name,
+        errors: errors.map(&:to_h)
+      }
+    )
+  end
+
   def france_connect?
     france_connect_service_user_identity.present?
   end
