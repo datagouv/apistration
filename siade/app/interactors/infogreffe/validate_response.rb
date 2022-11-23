@@ -42,6 +42,7 @@ class Infogreffe::ValidateResponse < ValidateResponse
       006
       008
       065
+      081
     ]
   end
 
