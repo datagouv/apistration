@@ -112,10 +112,7 @@ RSpec.describe MakeRequest, type: :interactor do
     context 'for a network unreachable error' do
       before do
         stub_request(:get, uri.to_s).to_raise(
-          [
-            Errno::ENETUNREACH,
-            OpenSSL::SSL::SSLError
-          ].sample
+          Errno::ENETUNREACH
         )
       end
 
@@ -123,6 +120,36 @@ RSpec.describe MakeRequest, type: :interactor do
 
       it 'adds NetworkError to errors' do
         expect(subject.errors).to include(instance_of(NetworkError))
+      end
+    end
+
+    context 'when it is an OpenSSL error' do
+      let(:openssl_error) { OpenSSL::SSL::SSLError.new(ssl_error_message) }
+
+      before do
+        stub_request(:get, uri.to_s).to_raise(
+          openssl_error
+        )
+      end
+
+      context 'when it is a "SSLv3/TLS write client hello" error' do
+        let(:ssl_error_message) { 'SSL_connect SYSCALL returned=5 errno=0 SSLv3/TLS write client hello' }
+
+        it { is_expected.to be_a_failure }
+
+        it 'adds NetworkError to errors' do
+          expect(subject.errors).to include(instance_of(NetworkError))
+        end
+      end
+
+      context 'when it is an another error' do
+        let(:ssl_error_message) { 'whatever' }
+
+        it 'raises this error' do
+          expect {
+            subject
+          }.to raise_error(OpenSSL::SSL::SSLError)
+        end
       end
     end
 
