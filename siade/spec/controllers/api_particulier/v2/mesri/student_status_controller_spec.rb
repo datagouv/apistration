@@ -106,8 +106,10 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
     subject(:make_call) do
       request.headers['Authorization'] = 'Bearer token'
 
-      get :show
+      get :show, params:
     end
+
+    let(:params) { {} }
 
     let(:france_connect_person_identity_attributes) { default_france_connect_identity_attributes }
 
@@ -145,6 +147,25 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
           gender: 'm'
         }
       )
+    end
+
+    context 'when there is an ine param' do
+      let(:params) { { ine: 'whatever' } }
+
+      it 'calls MESRI::StudentStatusWithCivility with france connect person identity attributes (ignore INE param)' do
+        make_call
+
+        expect(MESRI::StudentStatusWithCivility).to have_received(:call).with(
+          params: {
+            user_id: anything,
+            family_name: france_connect_person_identity_attributes[:family_name],
+            first_name: france_connect_person_identity_attributes[:given_name],
+            birthday_date: france_connect_person_identity_attributes[:birthdate],
+            birth_place: france_connect_person_identity_attributes[:birthplace],
+            gender: 'm'
+          }
+        )
+      end
     end
   end
 end
