@@ -46,11 +46,21 @@ RSpec.describe Infogreffe::ValidateResponse, type: :validate_response do
     context 'with a valid code and a body containing NotFound message' do
       let(:code) { '200' }
 
-      let(:body) { "#{xml_open_tags}006 -DOSSIER NON TROUVE DANS LA BASE DE GREFFES-#{xml_close_tags}" }
+      context 'with 006 error' do
+        let(:body) { "#{xml_open_tags}006 -DOSSIER NON TROUVE DANS LA BASE DE GREFFES-#{xml_close_tags}" }
 
-      it { is_expected.to be_a_failure }
+        it { is_expected.to be_a_failure }
 
-      its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+        its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+      end
+
+      context 'with 008 error' do
+        let(:body) { "#{xml_open_tags}008 -KBIS INDISPONIBLE POUR LE SIREN-#{xml_close_tags}" }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+      end
     end
 
     context 'with a valid code and a body containing Service Indisponible' do
