@@ -75,6 +75,14 @@ RSpec.describe Infogreffe::ValidateResponse, type: :validate_response do
 
         its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
       end
+
+      context 'with 065 error' do
+        let(:body) { "#{xml_open_tags}065 -LES MODES DE DIFFUSION SONT INVALIDES-#{xml_close_tags}" }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+      end
     end
 
     context 'with a valid code and a body containing Service Indisponible' do

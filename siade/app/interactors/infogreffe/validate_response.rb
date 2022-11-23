@@ -41,6 +41,7 @@ class Infogreffe::ValidateResponse < ValidateResponse
     %w[
       006
       008
+      065
     ]
   end
 
