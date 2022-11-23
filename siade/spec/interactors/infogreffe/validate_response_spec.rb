@@ -43,6 +43,20 @@ RSpec.describe Infogreffe::ValidateResponse, type: :validate_response do
       its(:errors) { is_expected.to be_empty }
     end
 
+    describe 'not found error extra meta' do
+      let(:code) { '200' }
+      let(:body) { "#{xml_open_tags}006 -DOSSIER NON TROUVE DANS LA BASE DE GREFFES-#{xml_close_tags}" }
+
+      it 'adds provider_error hash with code and message' do
+        expect(subject.errors.first.meta).to include(
+          provider_error: {
+            code: '006',
+            message: 'DOSSIER NON TROUVE DANS LA BASE DE GREFFES'
+          }
+        )
+      end
+    end
+
     context 'with a valid code and a body containing NotFound message' do
       let(:code) { '200' }
 

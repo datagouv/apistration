@@ -47,4 +47,21 @@ class Infogreffe::ValidateResponse < ValidateResponse
   def provider_unavailable_code
     '999'
   end
+
+  def resource_not_found!(resource)
+    error = build_error(::NotFoundError, not_found_message(resource))
+
+    error.add_meta(
+      provider_error: extract_provider_error_attributes
+    )
+
+    fail_with_error!(error)
+  end
+
+  def extract_provider_error_attributes
+    {
+      code: potentiel_error[0..2],
+      message: potentiel_error[5..-2]
+    }
+  end
 end
