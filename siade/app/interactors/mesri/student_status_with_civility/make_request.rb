@@ -9,7 +9,7 @@ class MESRI::StudentStatusWithCivility::MakeRequest < MakeRequest::Post
       prenom1: first_name,
       dateNaissance: birthday_date,
       sexe: gender,
-      lieuNaissance: birth_place
+      lieuNaissance: birth_place.presence
     }.compact
   end
 
