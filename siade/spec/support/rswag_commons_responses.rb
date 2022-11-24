@@ -121,7 +121,7 @@ module RSWagCommonsResponses
         build_rswag_example(InvalidTokenError.new, :invalid_token_error)
         build_rswag_example(OldTokenError.new, :old_token_error)
         build_rswag_example(ExpiredTokenError.new, :expired_token_error)
-        build_rswag_example(BlacklistedTokenError.new, :blacklisted_token_error)
+        build_rswag_example(BlacklistedTokenError.new('entreprise'), :blacklisted_token_error)
 
         schema '$ref' => '#/components/schemas/Error'
 

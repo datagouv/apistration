@@ -64,11 +64,12 @@ class Rack::Attack
   self.blocklisted_responder = lambda do |req|
     query_params = Rack::Utils.parse_nested_query(req['QUERY_STRING'])
     error_format = query_params['error_format'] || 'flat'
+    api = req.host.split('.').first
 
     [
       401,
       { 'Content-Type' => 'application/json' },
-      ErrorsSerializer.new([BlacklistedTokenError.new], format: error_format).to_json
+      ErrorsSerializer.new([BlacklistedTokenError.new(api)], format: error_format).to_json
     ]
   end
 

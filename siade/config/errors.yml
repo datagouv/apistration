@@ -63,7 +63,7 @@
 
 - code: '00105'
   title: 'Jeton sur liste noire'
-  detail: "Votre jeton est sur liste noire, celui-ci a certainement été divulgué sur un canal non-sécurisé. Vous pouvez trouver un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile"
+  detail: "Votre jeton est sur liste noire, celui-ci a certainement été divulgué sur un canal non-sécurisé. Vous pouvez trouver un jeton valide sur votre espace personnel: %{dashboard_url}"
   source: *source_token
 
 - code: '00201'

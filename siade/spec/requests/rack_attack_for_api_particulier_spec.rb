@@ -16,7 +16,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :particulier do
     it 'returns a message associated to blacklist token' do
       make_call
 
-      expect(response.body).to include('liste noire')
+      expect(response_json).to have_json_error(detail: 'Votre jeton est sur liste noire, celui-ci a certainement été divulgué sur un canal non-sécurisé. Vous pouvez trouver un jeton valide sur votre espace personnel: https://particulier.api.gouv.fr/compte')
     end
   end
 end

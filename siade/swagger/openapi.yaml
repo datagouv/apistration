@@ -156,14 +156,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -617,14 +617,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -1098,14 +1098,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -1688,14 +1688,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -2071,14 +2071,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -2463,14 +2463,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -2881,14 +2881,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -3203,14 +3203,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -3760,14 +3760,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -4075,14 +4075,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -4449,14 +4449,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -4842,14 +4842,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -5597,14 +5597,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -6073,14 +6073,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -6422,14 +6422,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -6890,14 +6890,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -7259,14 +7259,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -7667,14 +7667,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -8225,14 +8225,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -8784,14 +8784,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -9979,14 +9979,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -11174,14 +11174,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -12370,14 +12370,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -13567,14 +13567,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -14323,14 +14323,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -15062,14 +15062,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -15480,14 +15480,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -15917,14 +15917,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -16232,14 +16232,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -16671,14 +16671,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -17037,14 +17037,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -17372,14 +17372,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
@@ -17765,14 +17765,14 @@ paths:
                       title: Jeton sur liste noire
                       detail: 'Votre jeton est sur liste noire, celui-ci a certainement
                         été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton sur liste noire
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://dashboard.entreprise.api.gouv.fr/profile'
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
               schema:
                 "$ref": "#/components/schemas/Error"
         '403':
