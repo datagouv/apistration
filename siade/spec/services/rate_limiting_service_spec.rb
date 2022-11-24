@@ -29,6 +29,7 @@ RSpec.describe RateLimitingService do
 
     before do
       allow(req).to receive(:url).and_return("#{base_path}/random/path")
+      allow(req).to receive(:get_header).with('HTTP_X_API_KEY').and_return(nil)
     end
 
     context 'when authorization header is not set' do
@@ -73,6 +74,10 @@ RSpec.describe RateLimitingService do
   describe '#whitelisted_access?' do
     subject { described_class.new.whitelisted_access?(req) }
 
+    before do
+      allow(req).to receive(:get_header).with('HTTP_X_API_KEY').and_return(nil)
+    end
+
     context 'when authorization header is not set' do
       before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return(nil) }
 
@@ -106,6 +111,10 @@ RSpec.describe RateLimitingService do
 
   describe '#blacklisted_access?' do
     subject { described_class.new.blacklisted_access?(req) }
+
+    before do
+      allow(req).to receive(:get_header).with('HTTP_X_API_KEY').and_return(nil)
+    end
 
     context 'when authorization header is not set' do
       before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return(nil) }

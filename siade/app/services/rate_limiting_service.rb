@@ -53,10 +53,13 @@ class RateLimitingService
 
   def extract_token_from_header(request)
     auth_header = request.get_header('HTTP_AUTHORIZATION')
-    return unless auth_header
 
-    matchs = auth_header.match(/\ABearer (.+)\z/)
-    matchs[1] if matchs
+    if auth_header
+      matchs = auth_header.match(/\ABearer (.+)\z/)
+      matchs[1] if matchs
+    else
+      request.get_header('HTTP_X_API_KEY')
+    end
   end
 
   def extract_token_from_query_params(request)
