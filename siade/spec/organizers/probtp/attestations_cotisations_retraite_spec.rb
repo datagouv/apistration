@@ -57,14 +57,6 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite, :self_hosted_doc do
 
         its(:errors) { is_expected.to have_error('Erreur fournisseur: Une erreur est survenue, merci de bien vouloir renouveler votre demande ultérieurement') }
       end
-
-      context 'NON-REGRESSION - when there is an internal error from PROBTP (unexpected error body)' do
-        let(:mocked_body) { '<H1>SRVE0255E: A WebGroup/Virtual Host to handle /ws_ext/rest/certauth/mpsservices/getAttestationCotisation has not been defined.</H1><BR>H3><SRVE0255E: A WebGroup/Virtual Host to handle partenaires.webservices.probtp.com:443 has not been defined./H3><BR>' }
-
-        it { is_expected.to be_a_failure }
-
-        its(:errors) { is_expected.to have_error('Mauvaise réponse envoyée par le fournisseur de données') }
-      end
     end
   end
 end

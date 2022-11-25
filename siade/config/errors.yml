@@ -1,8 +1,12 @@
 ---
 ## Erreurs communes
+- subcode: '999'
+  title: 'Erreur inconnue du fournisseur de données'
+  detail: "La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation."
+
 - subcode: '000'
-  title: 'Erreur inconnue'
-  detail: 'Mauvaise réponse envoyée par le fournisseur de données'
+  title: 'Erreur interne du fournisseur de données'
+  detail: 'La réponse retournée par le fournisseur de données est invalide et a été identifié comme étant une erreur interne. Si le problème persiste, consultez la page de status ou contactez nous sur le support.'
 
 - subcode: '001'
   title: 'Service non disponible'

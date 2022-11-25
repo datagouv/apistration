@@ -311,14 +311,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '04000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '04999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: ACOSS
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
                 fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_04051:
                   value:
                     errors:
@@ -924,14 +928,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '19000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '19999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: ADEME
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -1516,14 +1524,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '17000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '17999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: Banque de France
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -1823,14 +1835,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '08000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '08999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: CNETP
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
                 fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_08051:
                   value:
                     errors:
@@ -2257,14 +2273,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '16000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '16999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: DGDDI
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -2627,14 +2647,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '03000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '03999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: DGFIP - Adélie
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
                 fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_03051:
                   value:
                     errors:
@@ -3023,14 +3047,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '03000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '03999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: DGFIP - Adélie
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -3569,14 +3597,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '03000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '03999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: DGFIP - Adélie
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
                 potentielle_ressource_non_trouvee_03501:
                   value:
                     errors:
@@ -3878,14 +3910,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '28000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '28999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: Commission Européenne
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -4277,14 +4313,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '14000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '14999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: Fabrique numérique des Ministères Sociaux
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -4584,14 +4624,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '12000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '12999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: FNTP
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
                 fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_12051:
                   value:
                     errors:
@@ -5399,14 +5443,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '02000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '02999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: Infogreffe
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -5900,14 +5948,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '02000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '02999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: Infogreffe
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -6242,14 +6294,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '05000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '05999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: INPI
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -6710,14 +6766,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '05000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '05999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: INPI
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -7079,14 +7139,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '05000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '05999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: INPI
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -7470,14 +7534,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '05000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '05999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: INPI
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -8029,14 +8097,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '01000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '01999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: INSEE
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -8587,14 +8659,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '01000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '01999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: INSEE
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -9782,14 +9858,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '01000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '01999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: INSEE
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -10976,14 +11056,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '01000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '01999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: INSEE
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -12171,14 +12255,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '01000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '01999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: INSEE
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -13368,14 +13456,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '01000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '01999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: INSEE
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -14119,14 +14211,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '01000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '01999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: INSEE
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -14877,14 +14973,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '01000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '01999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: INSEE
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -15241,14 +15341,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '21000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '21999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: MI
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
                 fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_21051:
                   value:
                     errors:
@@ -15776,14 +15880,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '21000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '21999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: MI
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
       x-codeSamples:
@@ -16059,14 +16167,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '10000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '10999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: MSA
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -16474,14 +16586,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '11000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '11999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: OPQIBI
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -16806,14 +16922,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '09000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '09999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: ProBTP
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
                 fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_09051:
                   value:
                     errors:
@@ -17175,14 +17295,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '09000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '09999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: ProBTP
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -17507,14 +17631,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '06000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '06999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: Qualibat
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
                 fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_06051:
                   value:
                     errors:
@@ -17918,14 +18046,18 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '22000'
-                      title: Erreur inconnue
-                      detail: Mauvaise réponse envoyée par le fournisseur de données
+                    - code: '22999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
                         provider: RNM
-                  summary: Erreur inconnue
-                  description: Mauvaise réponse envoyée par le fournisseur de données
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':

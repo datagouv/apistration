@@ -13,6 +13,6 @@ RSpec.describe SIADE::V2::Retrievers::DocumentsAssociations do
     end
 
     its(:http_code) { is_expected.to eq(502) }
-    its(:errors) { is_expected.to have_error('Mauvaise réponse envoyée par le fournisseur de données') }
+    its(:errors) { is_expected.to have_error("La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation.") }
   end
 end

@@ -42,7 +42,7 @@ RSpec.describe SIADE::V2::Responses::AttestationsCotisationRetraitePROBTP, type:
     let(:stub_response) { { status: 200, body: '<H1>SRVE0255E: A WebGroup/Virtual Host to handle /ws_ext/rest/certauth/mpsservices/getAttestationCotisation has not been defined.</H1><BR>H3><SRVE0255E: A WebGroup/Virtual Host to handle partenaires.webservices.probtp.com:443 has not been defined./H3><BR>' } }
 
     its(:http_code) { is_expected.to eq(502) }
-    its(:errors) { is_expected.to have_error('Mauvaise réponse envoyée par le fournisseur de données') }
+    its(:errors) { is_expected.to have_error('La réponse retournée par le fournisseur de données est invalide et a été identifié comme étant une erreur interne. Si le problème persiste, consultez la page de status ou contactez nous sur le support.') }
 
     include_examples 'provider\'s response error'
   end
