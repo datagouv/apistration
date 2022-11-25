@@ -37,13 +37,9 @@ info:
     - production : [https://particulier.api.gouv.fr/api](https://particulier.api.gouv.fr/api)
 
 
-    Pour récupérer le jeton de production ou créer des jetons de bac à sable, un portail développeur est mis à votre disposition aux adresses suivantes :
+    Pour récupérer le jeton de production un portail développeur est mis à votre disposition à l'adresse suivante : [https://mon.portail.api.gouv.fr](https://mon.portail.api.gouv.fr)
 
-
-    - bac à sable : [https://mon.portail-test.api.gouv.fr](https://mon.portail-test.api.gouv.fr)
-
-    - production : [https://mon.portail.api.gouv.fr](https://mon.portail.api.gouv.fr)
-
+    Pour effectuer vos tests sur le bac à sable: vous pouvez utiliser ce jeton qui donne accès à l'ensemble des données: `7792dc29bca0d8ed8ba24976ad009214d23a2eea`
 
     ### Périmètre des données retournées
 
@@ -62,8 +58,6 @@ info:
 
     En conséquence, suivant le jeton utilisé, une même requête peut retourner des résultats différents.
 
-
-    Pendant vos tests, assurez-vous d'utiliser le jeton associé au _scope_ correspondant aux données auxquelles vous aurez accès d'un point de vue légal.
 
 
     **Attention :** La documentation ci-dessous ne prend pas en compte les _scopes_, qui agissent comme masques de la donnée retournée par l'API. Cette documentation suppose donc que votre jeton permet d'accéder à la donnée décrite.
