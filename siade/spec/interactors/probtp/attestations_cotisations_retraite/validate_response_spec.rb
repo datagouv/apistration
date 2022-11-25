@@ -2,7 +2,7 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite::ValidateResponse do
   describe '.call' do
     subject { described_class.call(response:) }
 
-    let(:response) { instance_double(Net::HTTPOK, code:, body:) }
+    let(:response) { instance_double(Net::HTTPOK, code:, body:, to_hash: {}) }
 
     context 'when the attestation is found', vcr: { cassette_name: 'probtp/attestation/with_eligible_siret' } do
       let(:code) { 200 }
@@ -45,13 +45,13 @@ RSpec.describe PROBTP::AttestationsCotisationsRetraite::ValidateResponse do
       end
     end
 
-    context 'when there is an internal error from PROBTP (unexpected error body)' do
-      let(:code) { 200 }
-      let(:body) { '<H1>SRVE0255E: A WebGroup/Virtual Host to handle /ws_ext/rest/certauth/mpsservices/getAttestationCotisation has not been defined.</H1><BR>H3><SRVE0255E: A WebGroup/Virtual Host to handle partenaires.webservices.probtp.com:443 has not been defined./H3><BR>' }
+    context 'when http code is not 200 nor 500' do
+      let(:code) { 403 }
+      let(:body) { '' }
 
       it { is_expected.to be_a_failure }
 
-      its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+      its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
     end
   end
 end
