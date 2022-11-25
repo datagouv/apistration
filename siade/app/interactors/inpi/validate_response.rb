@@ -1,6 +1,6 @@
 class INPI::ValidateResponse < ValidateResponse
   def call
-    invalid_provider_response! if invalid_json?
+    internal_server_error! if invalid_json?
 
     resource_not_found! unless payload_has_results?
 

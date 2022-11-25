@@ -5,7 +5,7 @@ class RNM::EntreprisesArtisanales::ValidateResponse < ValidateResponse
     if http_not_found?
       resource_not_found!
     else
-      invalid_provider_response!
+      internal_server_error!
     end
   end
 

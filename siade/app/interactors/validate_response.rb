@@ -29,7 +29,7 @@ class ValidateResponse < ApplicationInteractor
     context.fail!
   end
 
-  def invalid_provider_response!(message = nil)
+  def internal_server_error!(message = nil)
     fail_with_error!(build_error(::ProviderInternalServerError, message))
   end
 

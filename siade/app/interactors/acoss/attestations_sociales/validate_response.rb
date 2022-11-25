@@ -1,7 +1,7 @@
 class ACOSS::AttestationsSociales::ValidateResponse < ValidateResponse
   def call
     if body.blank?
-      invalid_provider_response!('Blank body')
+      internal_server_error!('Blank body')
     elsif json_body_has_errors?
       handle_errors
     end

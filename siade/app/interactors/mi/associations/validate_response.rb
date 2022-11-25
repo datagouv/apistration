@@ -5,7 +5,7 @@ class MI::Associations::ValidateResponse < ValidateResponse
     return if http_ok? && payload_valid?
 
     resource_not_found!(:siret_or_rna) if not_found_in_body?
-    invalid_provider_response!
+    internal_server_error!
   end
 
   private

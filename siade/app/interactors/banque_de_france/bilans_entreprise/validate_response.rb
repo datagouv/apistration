@@ -5,7 +5,7 @@ class BanqueDeFrance::BilansEntreprise::ValidateResponse < ValidateResponse
     return if json_body['bilans'].present?
 
     resource_not_found! if not_found?
-    invalid_provider_response! if application_code == 500
+    internal_server_error! if application_code == 500
 
     unknown_provider_response!
   end

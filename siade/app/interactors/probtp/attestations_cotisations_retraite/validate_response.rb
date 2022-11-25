@@ -1,9 +1,9 @@
 class PROBTP::AttestationsCotisationsRetraite::ValidateResponse < ValidateResponse
   def call
     if internal_error? || invalid_json?
-      invalid_provider_response!
+      internal_server_error!
     elsif custom_error?
-      invalid_provider_response!("Erreur fournisseur: #{entete['message']}")
+      internal_server_error!("Erreur fournisseur: #{entete['message']}")
     elsif etablissement_not_found?
       resource_not_found!(:siret_or_siren)
     end

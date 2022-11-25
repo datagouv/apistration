@@ -2,7 +2,7 @@ class DGFIP::SVAIR::ValidateResponse < ValidateResponse
   def call
     unknown_provider_response! unless http_ok?
 
-    invalid_provider_response! if html_nodes.css('#service_indispo').any?
+    internal_server_error! if html_nodes.css('#service_indispo').any?
     handle_not_found if html_nodes.css('#nonTrouve').any?
     access_denied! if html_nodes.css('.interdit').any?
 
