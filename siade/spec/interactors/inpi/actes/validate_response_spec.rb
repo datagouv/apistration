@@ -51,7 +51,7 @@ RSpec.describe INPI::Actes::ValidateResponse, type: :validate_response do
 
       it { is_expected.to be_a_failure }
 
-      its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+      its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
     end
   end
 end
