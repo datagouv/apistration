@@ -5,7 +5,8 @@ class MI::Associations::Documents::ValidateResponse < MI::Associations::Validate
     return if http_ok? && payload_valid? && payload_has_documents?
 
     resource_not_found!(:siret_or_rna) if not_found_in_body? || !payload_has_documents?
-    internal_server_error!
+
+    unknown_provider_response!
   end
 
   private
