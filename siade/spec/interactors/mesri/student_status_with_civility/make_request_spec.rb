@@ -9,7 +9,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_reques
         birthday_date:,
         birth_place:,
         gender:,
-        user_id:
+        token_id:
       }
     end
 
@@ -18,7 +18,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_reques
     let(:birthday_date) { '2000-01-01' }
     let(:birth_place) { '' }
     let(:gender) { 'm' }
-    let(:user_id) { SecureRandom.uuid }
+    let(:token_id) { SecureRandom.uuid }
 
     let!(:stubbed_request) do
       stub_request(:post, Siade.credentials[:mesri_student_status_url]).with(
@@ -30,7 +30,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_reques
         }.to_json,
         headers: {
           'X-API-Key' => Siade.credentials[:mesri_student_status_token_with_civility],
-          'X-Caller' => "DINUM - #{user_id}"
+          'X-Caller' => "DINUM - #{token_id}"
         }
       ).to_return(
         status: 200,
@@ -56,7 +56,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_reques
         first_name:,
         birthday_date:,
         gender:,
-        user_id:
+        token_id:
       }
     end
 
@@ -64,7 +64,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_reques
     let(:first_name) { 'Jean' }
     let(:birthday_date) { '2000-01-01' }
     let(:gender) { 'm' }
-    let(:user_id) { SecureRandom.uuid }
+    let(:token_id) { SecureRandom.uuid }
 
     let!(:stubbed_request) do
       stub_request(:post, Siade.credentials[:mesri_student_status_url]).with(
@@ -76,7 +76,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_reques
         }.to_json,
         headers: {
           'X-API-Key' => Siade.credentials[:mesri_student_status_token_with_civility],
-          'X-Caller' => "DINUM - #{user_id}"
+          'X-Caller' => "DINUM - #{token_id}"
         }
       ).to_return(
         status: 200,

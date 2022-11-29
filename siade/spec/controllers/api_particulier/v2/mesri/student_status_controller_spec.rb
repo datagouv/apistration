@@ -139,7 +139,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
 
       expect(MESRI::StudentStatusWithCivility).to have_received(:call).with(
         params: {
-          user_id: anything,
+          token_id: anything,
           family_name: france_connect_person_identity_attributes[:family_name],
           first_name: france_connect_person_identity_attributes[:given_name],
           birthday_date: france_connect_person_identity_attributes[:birthdate],
@@ -157,7 +157,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
 
         expect(MESRI::StudentStatusWithCivility).to have_received(:call).with(
           params: {
-            user_id: anything,
+            token_id: anything,
             family_name: france_connect_person_identity_attributes[:family_name],
             first_name: france_connect_person_identity_attributes[:given_name],
             birthday_date: france_connect_person_identity_attributes[:birthdate],

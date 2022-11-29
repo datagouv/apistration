@@ -10,7 +10,7 @@ RSpec.describe MESRI::StudentStatusWithCivility, type: :retriever_organizer do
         birth_place:,
         gender:,
 
-        user_id: SecureRandom.uuid
+        token_id: SecureRandom.uuid
       }
     end
 

@@ -8,7 +8,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::ValidateParams, type: :validate
       birthday_date:,
       birth_place:,
       gender:,
-      user_id:
+      token_id:
     }
   end
 
@@ -18,7 +18,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::ValidateParams, type: :validate
   let(:birth_place) { 'Paris' }
   let(:gender) { 'm' }
 
-  let(:user_id) { SecureRandom.uuid }
+  let(:token_id) { SecureRandom.uuid }
 
   context 'with valid attributes' do
     it { is_expected.to be_a_success }

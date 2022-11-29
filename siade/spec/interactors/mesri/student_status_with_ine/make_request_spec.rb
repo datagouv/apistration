@@ -4,12 +4,12 @@ RSpec.describe MESRI::StudentStatusWithINE::MakeRequest, type: :make_request do
   let(:params) do
     {
       ine:,
-      user_id:
+      token_id:
     }
   end
 
   let(:ine) { '1234567890G' }
-  let(:user_id) { SecureRandom.uuid }
+  let(:token_id) { SecureRandom.uuid }
 
   let!(:stubbed_request) do
     stub_request(:get, Siade.credentials[:mesri_student_status_url]).with(
@@ -18,7 +18,7 @@ RSpec.describe MESRI::StudentStatusWithINE::MakeRequest, type: :make_request do
       },
       headers: {
         'X-API-Key' => Siade.credentials[:mesri_student_status_token_with_ine],
-        'X-Caller' => "DINUM - #{user_id}"
+        'X-Caller' => "DINUM - #{token_id}"
       }
     ).to_return(
       status: 200,

@@ -26,7 +26,7 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulierControl
 
   def organizer_params
     mesri_student_status_params.merge(
-      user_id: current_user.id
+      token_id: current_user.token_id
     )
   end
 

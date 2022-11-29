@@ -3,14 +3,14 @@ module MESRI::MakeRequestCommons
 
   def set_headers(request)
     request['X-API-Key'] = api_key
-    request['X-Caller'] = "DINUM - #{user_id}"
+    request['X-Caller'] = "DINUM - #{token_id}"
   end
 
   def request_uri
     URI(Siade.credentials[:mesri_student_status_url])
   end
 
-  def user_id
-    context.params[:user_id]
+  def token_id
+    context.params[:token_id]
   end
 end

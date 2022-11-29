@@ -3,5 +3,5 @@ class MESRI::StudentStatusWithCivility::ValidateParams < ValidateParamsOrganizer
     ServiceUser::ValidateFirstName,
     ServiceUser::ValidateBirthdayDate,
     MESRI::StudentStatusWithCivility::ValidateGender,
-    ServiceUser::ValidateUserId
+    ServiceUser::ValidateTokenId
 end
