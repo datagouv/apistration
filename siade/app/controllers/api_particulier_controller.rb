@@ -24,7 +24,7 @@ class APIParticulierController < APIController
     token_data = APIParticulierLegacyTokensBackend.get(token)
 
     JwtUser.new(
-      uid: '99999999-9999-9999-9999-999999999999',
+      uid: token_data['token_id'],
       scopes: token_data['scopes'],
       jti: token_data['token_id'],
       iat: Time.new(2022, 1, 1).to_i,

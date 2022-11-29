@@ -168,11 +168,11 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
           }.to_json)
         end
 
-        it 'adds jwt info logstasher' do
+        it 'adds jwt info to logstasher: user and jti is legacy_token_id from backend file' do
           expect(LogStasher).to receive(:build_logstash_event).with(
             hash_including(
               'user_access' => hash_including(
-                user: '99999999-9999-9999-9999-999999999999',
+                user: '11111111-1111-1111-1111-111111111110',
                 jti: '11111111-1111-1111-1111-111111111110'
               )
             ),
