@@ -1,5 +1,5 @@
 mi:
-  association:
+  v3/association:
     title: "Données du RNA d'une association"
     description: "Informations issues du répertoire national des associations (RNA), telles que la date de création, l’adresse du siège et les dirigeants."
     tags:
@@ -93,7 +93,7 @@ mi:
         type: "string"
         example: "1955-01-01"
 
-  document_association:
+  v3/document_association:
     title: "Divers documents d'une association"
     description: "Divers documents administratifs en PDF tels que les statuts, le récépissé de déclaration de création, la liste des dirigeants..."
     tags:
