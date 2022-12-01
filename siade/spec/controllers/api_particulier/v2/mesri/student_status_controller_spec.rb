@@ -134,14 +134,14 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
       end
     end
 
-    it 'calls MESRI::StudentStatusWithCivility with france connect person identity attributes' do
+    it 'calls MESRI::StudentStatusWithCivility with france connect person identity attributes, only first first name' do
       make_call
 
       expect(MESRI::StudentStatusWithCivility).to have_received(:call).with(
         params: {
           token_id: anything,
           family_name: france_connect_person_identity_attributes[:family_name],
-          first_name: france_connect_person_identity_attributes[:given_name],
+          first_name: france_connect_person_identity_attributes[:given_name].split[0],
           birthday_date: france_connect_person_identity_attributes[:birthdate],
           birth_place: france_connect_person_identity_attributes[:birthplace],
           gender: 'm'
@@ -152,14 +152,14 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
     context 'when there is an ine param' do
       let(:params) { { ine: 'whatever' } }
 
-      it 'calls MESRI::StudentStatusWithCivility with france connect person identity attributes (ignore INE param)' do
+      it 'calls MESRI::StudentStatusWithCivility with france connect person identity attributes, only first first name (ignore INE param)' do
         make_call
 
         expect(MESRI::StudentStatusWithCivility).to have_received(:call).with(
           params: {
             token_id: anything,
             family_name: france_connect_person_identity_attributes[:family_name],
-            first_name: france_connect_person_identity_attributes[:given_name],
+            first_name: france_connect_person_identity_attributes[:given_name].split[0],
             birthday_date: france_connect_person_identity_attributes[:birthdate],
             birth_place: france_connect_person_identity_attributes[:birthplace],
             gender: 'm'

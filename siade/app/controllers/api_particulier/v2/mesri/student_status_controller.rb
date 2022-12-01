@@ -51,7 +51,7 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulierControl
   def mesri_student_civility_params_from_france_connect_service_user_identity
     {
       family_name: france_connect_service_user_identity.family_name,
-      first_name: france_connect_service_user_identity.given_name,
+      first_name: extract_first_first_name_from_france_connect_given_name(france_connect_service_user_identity.given_name),
       birthday_date: france_connect_service_user_identity.birthdate,
       birth_place: france_connect_service_user_identity.birthplace,
       gender: france_connect_service_user_identity.gender == 'male' ? 'm' : 'f'
@@ -68,5 +68,9 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulierControl
       reason: 'Student not found',
       message: error.detail
     }
+  end
+
+  def extract_first_first_name_from_france_connect_given_name(given_name)
+    given_name.split.first
   end
 end
