@@ -30,7 +30,7 @@ module ProviderStubs::FranceConnect
 
   def default_france_connect_identity_attributes
     {
-      given_name: 'Jean',
+      given_name: 'Jean Martin',
       family_name: 'DUPONT',
       birthdate: '2000-01-01',
       gender: 'male',
