@@ -118,6 +118,12 @@
   source:
     parameter: 'id'
 
+- code: '00333'
+  title: 'Entité non traitable'
+  detail: "Le numéro de siren ou le numéro d'association indiqué n'est pas correctement formatté"
+  source:
+    parameter: 'id'
+
 - code: '00304'
   title: 'Entité non traitable'
   detail: "Le numéro de siret ou le numéro EORI n'est pas correctement formatté"

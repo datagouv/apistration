@@ -11,6 +11,7 @@ class UnprocessableEntityError < ApplicationError
       siren: '00301',
       siret: '00302',
       siret_or_rna: '00303',
+      siren_or_rna: '00333',
       siret_or_eori: '00304',
       month: '00305',
       code_insee_commune: '00306',
