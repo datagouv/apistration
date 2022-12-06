@@ -24,8 +24,13 @@ class APIEntreprise::INSEE::EtablissementSerializer::V3 < APIEntreprise::V3AndMo
     )
   end
 
-  link :entreprise do |object|
-    "https://entreprises.api.gouv.fr/api/v3/insee/entreprises/#{object.siren}"
+  link :unite_legale do |object|
+    url_for(
+      controller: 'api_entreprise/v3_and_more/insee/unites_legales',
+      action: :show,
+      api_version: '3',
+      siren: object.siren
+    )
   end
 
   meta do |object|

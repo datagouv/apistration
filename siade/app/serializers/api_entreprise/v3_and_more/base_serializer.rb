@@ -32,6 +32,10 @@ class APIEntreprise::V3AndMore::BaseSerializer
     def meta(&block)
       self.__meta = block
     end
+
+    def url_for(params = {})
+      Rails.application.routes.url_helpers.url_for(params.merge(host: 'entreprise.api.gouv.fr'))
+    end
   end
 
   def serializable_hash

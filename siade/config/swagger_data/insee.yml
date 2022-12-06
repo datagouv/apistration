@@ -532,13 +532,13 @@ insee:
         description: "Date de la dernière mise à jour à l'Insee."
 
     links:
-      entreprise:
+      unite_legale: &link_unite_legale
         type: "string"
-        example: "https://entreprises.api.gouv.fr/api/v3/insee/entreprises/130025265/"
+        example: "https://entreprise.api.gouv.fr/api/v3/insee/unites_legales/130025265"
         description: "Lien vers la ressource 'Donnée Sirene d'une unité légale' correspondant à cette adresse d'établissement pour obtenir les données de référence de l'unité légale."
       etablissement:
         type: "string"
-        example: "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/13002526500013"
+        example: "https://entreprise.api.gouv.fr/api/v3/insee/etablissements/13002526500013"
         description: "Lien vers la ressource 'Donnée Sirene d'un établissement' correspondant à cette adresse d'établissement pour obtenir les données de référence de l'établissement."
   adresse_etablissement_diffusable:
     title: "Adresse établissement diffusible"
@@ -798,10 +798,7 @@ insee:
       date_creation: *insee_date_creation
 
     links:
-      entreprise:
-        type: "string"
-        example: "https://entreprises.api.gouv.fr/api/v3/insee/entreprises/306138900"
-        description: "Lien vers la ressource entreprise correspondant à cet établissement"
+      unite_legale: *link_unite_legale
 
     meta:
       date_derniere_mise_a_jour: *insee_date_derniere_mise_a_jour

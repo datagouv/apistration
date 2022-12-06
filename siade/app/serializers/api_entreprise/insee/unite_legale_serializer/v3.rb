@@ -15,11 +15,21 @@ class APIEntreprise::INSEE::UniteLegaleSerializer::V3 < APIEntreprise::V3AndMore
     :date_creation
 
   link :siege_social do |object|
-    "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/#{object.siret_siege_social}"
+    url_for(
+      controller: 'api_entreprise/v3_and_more/insee/etablissements',
+      action: :show,
+      api_version: '3',
+      siret: object.siret_siege_social
+    )
   end
 
   link :siege_social_adresse do |object|
-    "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/#{object.siret_siege_social}/adresse"
+    url_for(
+      controller: 'api_entreprise/v3_and_more/insee/adresses_etablissements',
+      action: :show,
+      api_version: '3',
+      siret: object.siret_siege_social
+    )
   end
 
   meta do |object|

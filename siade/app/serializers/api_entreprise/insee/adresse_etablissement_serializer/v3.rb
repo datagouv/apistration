@@ -15,12 +15,22 @@ class APIEntreprise::INSEE::AdresseEtablissementSerializer::V3 < APIEntreprise::
     :code_pays_etranger,
     :libelle_pays_etranger
 
-  link :entreprise do |object|
-    "https://entreprises.api.gouv.fr/api/v3/insee/entreprises/#{object.siren}"
+  link :unite_legale do |object|
+    url_for(
+      controller: 'api_entreprise/v3_and_more/insee/unites_legales',
+      action: :show,
+      api_version: '3',
+      siren: object.siren
+    )
   end
 
   link :etablissement do |object|
-    "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/#{object.siret}"
+    url_for(
+      controller: 'api_entreprise/v3_and_more/insee/etablissements',
+      action: :show,
+      api_version: '3',
+      siret: object.siret
+    )
   end
 
   meta do |object|
