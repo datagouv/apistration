@@ -14,6 +14,7 @@
 - probtp
 - actes_inpi
 - extrait_court_inpi
+- bilans_entreprise_bdf
 - attestations_sociales
 - liasse_fiscale
 - attestations_fiscales
@@ -22,7 +23,6 @@
 - bilans_inpi
 - documents_association
 - certificat_agence_bio
-- bilans_entreprise_bdf
 - attestations_agefiph
 - mesri_identifiant
 - mesri_identite
