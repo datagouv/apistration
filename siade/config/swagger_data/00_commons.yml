@@ -67,12 +67,20 @@ parameters:
   siret_or_rna:
     description: "Siret de l'association ou le numéro RNA"
     examples:
-      openstreetmap_france:
+      openstreetmap_france: &openstreetmap_france
         value: W751212517
         summary: ID RNA Openstreetmap France
       croix_rouge:
         value: "77567227221138"
         summary: SIRET de la Croix-Rouge France
+
+  siren_or_rna:
+    description: "Siren de l'association ou le numéro RNA"
+    examples:
+      openstreetmap_france: *openstreetmap_france
+      croix_rouge:
+        value: "775672272"
+        summary: SIREN de la Croix-Rouge France
 
   siret_or_eori:
     description: "Siret ou numéro EORI de l'entreprise"

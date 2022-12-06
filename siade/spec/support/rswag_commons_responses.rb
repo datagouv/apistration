@@ -80,6 +80,14 @@ module RSWagCommonsResponses
       examples: SwaggerData.get('parameters.siret_or_rna.examples')
   end
 
+  def parameter_siren_or_rna
+    parameter name: :siren_or_rna,
+      in: :path,
+      type: :string,
+      description: SwaggerData.get('parameters.siren_or_rna.description'),
+      examples: SwaggerData.get('parameters.siren_or_rna.examples')
+  end
+
   def parameter_siret_or_eori
     parameter name: :siret_or_eori,
       in: :path,
