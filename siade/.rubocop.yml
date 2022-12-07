@@ -92,6 +92,7 @@ Metrics/ClassLength:
 Metrics/MethodLength:
   Max: 15
   Exclude:
+    - "app/interactors/**/build_resource.rb"
     - "spec/support/rswag_resources_payloads.rb"
     - "spec/support/rswag_commons_responses.rb"
   AllowedMethods:

@@ -49,7 +49,6 @@ class RNM::EntreprisesArtisanales::BuildResource < BuildResource
     }
   end
 
-  # rubocop:disable Metrics/MethodLength
   def adresse_payload
     {
       # FIXME: JSONAPI use this field to retrieve the relationship
@@ -72,7 +71,6 @@ class RNM::EntreprisesArtisanales::BuildResource < BuildResource
       )
     }
   end
-  # rubocop:enable Metrics/MethodLength
 
   def dirigeant_payload
     {
