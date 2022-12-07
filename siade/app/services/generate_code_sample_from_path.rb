@@ -20,7 +20,7 @@ class GenerateCodeSampleFromPath
       case parameter[1..-2]
       when 'siret', 'siret_or_rna', 'siret_or_eori'
         example_siret
-      when 'siren'
+      when 'siren', 'siren_or_rna'
         example_siret.first(9)
       when 'year'
         2019
