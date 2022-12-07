@@ -1,8 +1,8 @@
 mi:
   v3/association:
-    title: "Données du RNA d'une association"
-    description: "Informations issues du répertoire national des associations (RNA), telles que la date de création, l’adresse du siège et les dirigeants."
-    tags:
+    title: &association_title "Données du RNA d'une association"
+    description: &association_description "Informations issues du répertoire national des associations (RNA), telles que la date de création, l’adresse du siège et les dirigeants."
+    tags: &association_tags
       - "Informations générales"
     attributes:
       rna_id:
@@ -49,34 +49,49 @@ mi:
         example:
         description: "Si l'association est dissolue, ce champ indique
           la date de dissolution, autrement, il est indiqué 'null'."
-      adresse_siege:
+      adresse_siege: &association_adresse_siege
         type: "object"
-        properties:
+        title: "Adresse du siège social de l'association"
+        properties: &association_adresse_properties
           complement:
+            title: "Complément d'adresse"
             type: "string"
-            example: "  "
+            example: ""
+            nullable: true
           numero_voie:
+            title: "Numéro de voie"
             type: "string"
             example: "33"
+            nullable: true
           type_voie:
+            title: "Type de voie"
             type: "string"
             example: "rue"
+            nullable: true
           libelle_voie:
+            title: "Libellé de la voie"
             type: "string"
             example: "de Modagor"
+            nullable: true
           distribution:
+            title: "Distribution"
             type: "string"
             nullable: true
-            example:
           code_insee:
+            title: "Code INSEE de la commune"
             type: "string"
             example: "75108"
+            nullable: true
           code_postal:
+            title: "Code postal de la commune"
             type: "string"
             example: "75009"
+            nullable: true
           commune:
+            title: "Nom de la commune"
             type: "string"
             example: "Paris"
+            nullable: true
       etat:
         type: "boolean"
         example: true
@@ -133,3 +148,1007 @@ mi:
         example: 0
         description: "Le nombre de documents ignorés car déficients (indisponibles, PDF invalide etc...)"
         type: "integer"
+  v4/unite_legale:
+    title: *association_title
+    description: *association_description
+    tags: *association_tags
+    attributes:
+      rna:
+        type: "string"
+        title: "Numéro RNA"
+        description: "Si le régime de l'association est Alsace-Moselle, celle-ci ne possède pas de numéro RNA. Dans ce cas, le champ est vide."
+        example: "W751080001"
+        nullable: true
+      ancien_id:
+        type: "string"
+        title: "Ancien identifiant de l'entité avant l'arrêté du 14 octobre 2009 portant la création du RNA"
+        example: "1234567890"
+        nullable: true
+      siren:
+        type: "string"
+        title: "Numéro SIREN"
+        description: "Une association ne possède pas forcément de numéro SIREN. Dans ce cas, le champ est vide."
+        example: "751080001"
+        nullable: true
+      nom:
+        title: "Nom de l'association (raison sociale)"
+        description: "Ce nom est soit tiré du RNA soit de la base SIRENE. Si le régime est Loi 1901 l'information vient de la base RNA."
+        type: "string"
+        example: "LA PRÉVENTION ROUTIERE"
+      active:
+        title: "Statut de l'association"
+        type: "boolean"
+        example: true
+        description: "L'association est active si elle est enregistrée à la Préfecture et si elle n'a pas été dissoute. Si le régime est Loi 1901 l'information vient de la base RNA, sinon celle-ci vient de la base SIRENE."
+      sigle:
+        title: "Sigle de l'unité légale"
+        description: "Ce sigle est soit tiré du RNA soit de la base SIRENE. Si le régime est Loi 1901 l'information vient de la base RNA."
+        type: "string"
+        example: "LPR"
+        nullable: true
+      nature:
+        title: "Nature de l'unité légale"
+        type: "string"
+        example: "Simplement déclarée"
+        enum:
+          - "Simplement déclarée"
+          - "Reconnue d'utilité publique"
+      reconnue_utilite_publique:
+        title: "Indique si l'association est reconnue d'utilité publique"
+        type: "boolean"
+        example: false
+      siret_siege:
+        title: "Numéro SIRET du siège social"
+        description: "Une association ne possède pas forcément de numéro SIREN, et par conséquent pas de numéro SIRET pour ses établissements. Dans ce cas, le champ est vide."
+        type: "string"
+        example: "75108000100013"
+        nullable: true
+      forme_juridique:
+        type: "object"
+        title: "Forme juridique"
+        required:
+          - code
+          - libelle
+        properties:
+          code:
+            title: "Code de la forme juridique de l'unité légale."
+            type: "string"
+            example: "7120"
+            description: "Il existe plus de 300 catégories juridiques, identifiables par un code spécifique à quatre chiffres. Leur nomenclature comporte 3 niveaux. Le premier niveau de classement contient 9 grandes catégories identifiables avec le premier chiffre du code :
+              \n
+              \n
+              - 0 : Organisme de placement collectif en valeurs mobilières sans personnalité morale
+              \n
+              - 1 : Entrepreneur individuel. La catégorie juridique des personnes physiques est '1000'.
+              \n
+              - 2 : Groupement de droit privé non doté de la personnalité morale
+              \n
+              - 3 : Personne morale de droit étranger
+              \n
+              - 4 : Personne morale de droit public soumise au droit commercial
+              \n
+              - 5 : Société commerciale
+              \n
+              - 6 : Autre personne morale immatriculée au RCS
+              \n
+              - 7 : Personne morale et organisme soumis au droit administratif
+              \n
+              - 8 : Organisme privé spécialisé
+              \n
+              - 9 : Groupement de droit privé
+              \n
+              \n
+              Nomenclature exhaustive des codes fournie par l'Insee : https://www.insee.fr/fr/information/2028129"
+            nullable: true
+          libelle:
+            title: "Libellé associé au code de la forme juridique de l'unité légale."
+            type: "string"
+            example: "Service central d'un ministère"
+            description: "indique le libellé correspondant au code juridique.
+            Si le code ne correspond à aucun libellé la valeur 'non référencé' est utilisée.
+            \n
+            \n
+            Nomenclature exhaustive fournie par l'Insee : https://www.insee.fr/fr/information/2028129"
+            nullable: true
+      regime:
+        title: "Régime de l'association"
+        type: "string"
+        description: "Les 2 régimes possibles sont 'Loi 1901' et 'Alsace-Moselle'"
+        example: "Loi 1901"
+        enum:
+          - "Loi 1901"
+          - "Alsace-Moselle"
+      groupement:
+        title: "Type de groupement"
+        description: "Une association peut faire parti d'un groupement de type union ou fédération. Ce champ est à 'Simple' si l'association n'est pas membre d'un groupement."
+        type: "string"
+        example: "Simple"
+        enum:
+          - "Simple"
+          - "Fédération"
+          - "Union"
+        nullable: true
+      eligibilite_cec:
+        title: "Indique si l'association est éligible au CEC"
+        description: "CEC = Compte d'Engagement Citoyen"
+        type: "boolean"
+        example: false
+        enum:
+          - true
+          - false
+      raison_non_eligibilite_cec:
+        title: "Raison de l'inéligibilité au CEC"
+        description: "Ce champ est vide si l'association est éligible au CEC"
+        type: "string"
+        example: "L’association n’a pas trois ans d’existence"
+        enum:
+          - "L’association n’a pas trois ans d’existence"
+          - "L’objet de l’association ne rentre pas dans les critères d’éligibilité au CEC"
+          - "L’association n’a pas trois ans d’existence et son objet ne rentre pas dans les critères d’éligibilité au CEC"
+        nullable: true
+      impots_commerciaux:
+        title: "Association assujettie aux impôts commerciaux"
+        type: "boolean"
+        example: true
+      date_creation:
+        title: "Date de création de l'association"
+        description: "Cette information vient en priorité de la base RNA si celle-ci est présente, sinon de la base SIRENE."
+        type: "string"
+        format: "date"
+        example: "2015-01-01"
+        nullable: true
+      date_dissolution:
+        title: "Date de dissolution de l'association"
+        description: "Cette information vient en priorité de la base RNA si celle-ci est présente, sinon de la base SIRENE."
+        type: "string"
+        format: "date"
+        example: "2016-01-01"
+        nullable: true
+      date_publication_reconnue_utilite_publique:
+        title: "Date de publication de la reconnaissance d'utilité publique"
+        type: "string"
+        format: "date"
+        example: "2017-01-01"
+        nullable: true
+      date_publication_journal_officiel:
+        title: "Date de publication au Journal Officiel"
+        description: "Cette information est exclusive aux associations de loi 1901."
+        type: "string"
+        format: "date"
+        example: "2018-01-01"
+        nullable: true
+      adresse_siege: *association_adresse_siege
+      alsace_moselle:
+        title: "Attributs relatif aux associations du régime associé à l'Alsace-Moselle. L'ensemble de ces attributs sont vides si l'association est une association de loi 1901."
+        type: "object"
+        required:
+          - tribunal_instance
+          - volume
+          - folio
+          - date_publication_registre_association
+        properties:
+          tribunal_instance:
+            title: "Tribunal d'instance"
+            type: "string"
+            example: "Tribunal d'instance de Strasbourg"
+            nullable: true
+            enum:
+              - Tribunal d’instance de Metz
+              - Tribunal d’instance de Saint-Avold
+              - Tribunal d’instance de Sarrebourg
+              - Tribunal d’instance de Sarreguemines
+              - Tribunal d’instance de de Thionville
+              - Tribunal d’instance de Haguenau
+              - Tribunal d’instance d’Illkirch
+              - Tribunal d’instance de Molsheim
+              - Tribunal d’instance de Saverne
+              - Tribunal d’instance de Schiltigheim
+              - Tribunal d’instance de Sélestat
+              - Tribunal d’instance de Strasbourg
+              - Tribunal d’instance de Colmar
+              - Tribunal d’instance de Guebwiller
+              - Tribunal d’instance de Mulhouse
+              - Tribunal d’instance de Thann
+          volume:
+            title: "Volume du registre du tribunal d'instance"
+            type: "string"
+            example: "122"
+            nullable: true
+          folio:
+            title: "Folio du volume associé au tribunal d'instance"
+            type: "string"
+            example: "082"
+            nullable: true
+          date_publication_registre_association:
+            title: "Date de publication au registre des associations d'Alsace-Moselle"
+            type: "string"
+            format: "date"
+            example: "2019-01-01"
+            nullable: true
+      activites:
+        title: "Liste des activités de l'association"
+        type: "object"
+        required:
+          - objet
+          - objet_social1
+          - objet_social2
+          - champ_action_territorial
+          - activite_principale
+          - tranche_effectif
+          - economie_sociale_et_solidaire
+          - date_appartenance_ess
+        properties:
+          objet:
+            title: "Objet de l'association"
+            type: "string"
+            example: "L'association a pour objet de promouvoir la pratique du sport de haut niveau et de contribuer à la formation des jeunes sportifs."
+          objet_social1:
+            type: "object"
+            title: "Objet social principal"
+            description: &objet_social_description "Vous pouvez trouver une liste exhaustive sur le lien suivant: https://www.data.gouv.fr/fr/datasets/repertoire-national-des-associations-nomenclature-waldec (environ 300 entrées)"
+            properties: &objet_social_properties
+              code:
+                type: "string"
+                title: "Code de l'objet social"
+                example: "017055"
+                nullable: true
+              libelle:
+                type: "string"
+                title: "Libellé de l'objet social"
+                example: "accompagnement, aide aux malades"
+                nullable: true
+          objet_social2:
+            type: "object"
+            title: "Objet social secondaire"
+            description: *objet_social_description
+            properties:
+              code:
+                type: "string"
+                title: "Code de l'objet social"
+                example: "009040"
+                nullable: true
+              libelle:
+                type: "string"
+                title: "Libellé de l'objet social"
+                example: "clubs troisième âge"
+                nullable: true
+          champ_action_territorial:
+            title: "Champ d'action territorial"
+            type: "string"
+            enum:
+              - "national"
+              - "international"
+              - "regional"
+              - "departemental"
+              - "local"
+            nullable: true
+          activite_principale: &activite_principale
+            type: "object"
+            title: "Activité principale"
+            required:
+              - code
+              - libelle
+            properties:
+              code:
+                type: "string"
+                title: "Code de l'activité principale"
+                example: "88.99B"
+                nullable: true
+              libelle:
+                type: "string"
+                title: "Libellé de l'activité principale"
+                example: "Action sociale sans hébergement n.c.a."
+                nullable: true
+          tranche_effectif: &tranche_effectif
+            type: "object"
+            title: "Tranche d'effectif salarié de l'entité"
+            description: "Pour environ la moitié des établissements, la tranche d'effectif salarié n'est pas renseignée. Il s'agit principalement d'établissements récents (créés il y a moins de trois ans). Les délais de récolte et traitement font que les valeurs indiquées datent de l’année N-2 ou N-3."
+            required:
+              - code
+              - libelle
+            properties:
+              code:
+                type: "string"
+                nullable: true
+                example: "51"
+                nullable: true
+                description:
+                  "Le code effectif indique la tranche d'effectif salarié de l'unité légale. Le nombre de salarié est déterminé en fonction de l'effectif de chacun des établissements de l'unité légale :
+                  \n
+                  \n
+                  - NN : Unités non employeuses (pas de salarié au cours de l'année de référence et pas d'effectif au 31/12). Cette tranche peut contenir quelques effectifs inconnus
+                  \n
+                  - 00 : 0 salarié (n'ayant pas d'effectif au 31/12 mais ayant employé des salariés au cours de l'année de référence)
+                  \n
+                  - 01 : 1 ou 2 salariés
+                  \n
+                  - 02 : 3 à 5 salariés
+                  \n
+                  - 03 : 6 à 9 salariés
+                  \n
+                  - 11 : 10 à 19 salariés
+                  \n
+                  - 12 : 20 à 49 salariés
+                  \n
+                  - 21 : 50 à 99 salariés
+                  \n
+                  - 22 : 100 à 199 salariés
+                  \n
+                  - 31 : 200 à 249 salariés
+                  \n
+                  - 32 : 250 à 499 salariés
+                  \n
+                  - 41 : 500 à 999 salariés
+                  \n
+                  - 42 : 1 000 à 1 999 salariés
+                  \n
+                  - 51 : 2 000 à 4 999 salariés
+                  \n
+                  - 52 : 5 000 à 9 999 salariés
+                  \n
+                  - 53 : 10 000 salariés et plus
+                  \n
+                  \n
+                  Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+                  \n
+                  \n
+                  L'effectif exact de l'entreprise, mensuel et annuel, est disponible au travers de l'[API Effectifs - URSSAF Caisse nationale](TODO). Si votre jeton contient ce droit d'accès, nous vous recommandons d'utiliser cette API. Ces données étant protégées, leur cadre d'utilisation est différent de la tranche effectif fournie par l'Insee, qui elle est une donnée publique."
+                enum:
+                - "NN"
+                - "00"
+                - "01"
+                - "02"
+                - "03"
+                - "11"
+                - "12"
+                - "21"
+                - "22"
+                - "31"
+                - "32"
+                - "41"
+                - "42"
+                - "51"
+                - "52"
+                - "53"
+              intitule:
+                title: "Intitulé associé au code effectif"
+                type: "string"
+                nullable: true
+                example: "2 000 à 4 999 salariés"
+                nullable: true
+          economie_sociale_et_solidaire:
+            title: "Indicateur de l'économie sociale et solidaire"
+            type: "boolean"
+            nullable: true
+            example: true
+          date_appartenance_ess:
+            title: "Date d'appartenance à l'économie sociale et solidaire"
+            type: "string"
+            format: "date"
+            nullable: true
+            example: "2019-01-01"
+      etablissements:
+        title: "Liste des établissements de l'association"
+        type: "array"
+        items:
+          type: "object"
+          required:
+            - siren
+            - siret
+            - siege
+            - nom
+            - telephone
+            - courriel
+            - actif
+            - date_debut_activite
+            - adresse
+            - activite_principale
+            - tranche_effectif
+            - representants_legaux
+            - rhs
+            - comptes
+            - documents_dac
+          properties:
+            siren:
+              type: "string"
+              title: "Numéro SIREN de l'association lié à l'établissement"
+              example: "123456789"
+            siret:
+              type: "string"
+              title: "Numéro SIRET de l'établissement"
+              example: "12345678900001"
+            actif:
+              type: "boolean"
+              title: "Indique si l'établissement est actif"
+              example: true
+            siege:
+              type: "boolean"
+              title: "Indique si l'établissement est le siège de l'association"
+              example: true
+            nom:
+              type: "string"
+              title: "Enseigne de l'établissement"
+              description: "Cette valeur est très rarement renseignée."
+              example: "Croix rouge française"
+              nullable: true
+            telephone:
+              type: "string"
+              title: "Numéro de téléphone de l'établissement"
+              example: "0123456789"
+              nullable: true
+            courriel:
+              type: "string"
+              title: "Courriel de l'établissement"
+              example: "contact@association.fr"
+              nullable: true
+            date_debut_activite:
+              type: "string"
+              format: "date"
+              title: "Date de début d'activité de l'établissement"
+              # FIXME pas sûr de cette info
+              # description: "Cette valeur peut être nulle si l'établissement est très ancien"
+              example: "2019-01-01"
+              nullable: true
+            adresse:
+              title: "Adresse de l'établissement"
+              type: "object"
+              properties: *association_adresse_properties
+            activite_principale: *activite_principale
+            tranche_effectif: *tranche_effectif
+            representant_legaux:
+              title: "Liste des représentants légaux de l'établissement"
+              # NOTE: j'exclut les deleted ainsi que les personnes marquées comme est_representant_legal = false
+              description: "Les personnes renvoyées dans cette liste sont celles uniquement comme étant renseignée comme représentant légal actif."
+              type: "array"
+              items:
+                type: "object"
+                required:
+                  - civilite
+                  - nom
+                  - prenom
+                  - courriel
+                  - fonction
+                  - telephone
+                  - valideur_cec
+                  - publication_internet
+                properties:
+                  civilite:
+                    type: "string"
+                    title: "Civilité du représentant légal"
+                    example: "Monsieur"
+                  nom:
+                    type: "string"
+                    title: "Nom du représentant légal"
+                    # NOTE voulu car le formatage est random
+                    description: "Le nom est systématiquement en majuscule."
+                    example: "DUPONT"
+                  prenom:
+                    type: "string"
+                    title: "Prénom du représentant légal"
+                    # NOTE voulu car le formatage est random
+                    description: "Le prénom est systématiquement en majuscule."
+                    example: "JEAN"
+                  fonction:
+                    type: "string"
+                    title: "Fonction du représentant légal"
+                    description: "Il s'agit d'un champ déroulant avec possibilité de modification libre, la liste des fonctions est donc non exhaustive."
+                    example: "Président"
+                  valideur_cec:
+                    type: "boolean"
+                    title: "Indique si le représentant légal est valideur CEC"
+                    description: "Plus d'information ici: https://www.associations.gouv.fr/valideur-cec.html"
+                    example: true
+                  publication_internet:
+                    type: "boolean"
+                    title: "Indique si le représentant légal peut être publié sur internet"
+                    example: true
+                  telephone:
+                    type: "string"
+                    title: "Numéro de téléphone du représentant légal"
+                    example: "0623456789"
+                    nullable: true
+                  courriel:
+                    type: "string"
+                    title: "Courriel du représentant légal"
+                    example: "dupont.jean@association.fr"
+                    nullable: true
+            rhs:
+              title: "Information sur les ressources humaines"
+              type: "array"
+              items:
+                type: "object"
+                required:
+                  - annee
+                  - nombre_benevoles
+                  - nombre_volontaires
+                  - nombre_salaries
+                  - nombre_salaries_etpt
+                  - nombre_emplois_aides
+                  - nombre_personnels_detaches
+                  - nombre_adherents
+                properties:
+                  annee:
+                    type: "string"
+                    title: "Année de la donnée"
+                    example: "2019"
+                  nombre_benevoles:
+                    type: "integer"
+                    title: "Nombre de bénévoles"
+                    example: 10
+                  nombre_volontaires:
+                    type: "integer"
+                    title: "Nombre de volontaires"
+                    example: 11
+                  nombre_salaries:
+                    type: "integer"
+                    title: "Nombre de salariés"
+                    example: 12
+                  nombre_salaries_etpt:
+                    type: "number"
+                    format: "float"
+                    title: "Nombre de salariés à temps partiel"
+                    example: 13.0
+                  nombre_emplois_aides:
+                    type: "integer"
+                    title: "Nombre d'emplois aidés"
+                    example: 14
+                  nombre_personnels_detaches:
+                    type: "integer"
+                    title: "Nombre de personnels détachés"
+                    example: 15
+                  nombre_adherents:
+                    type: "object"
+                    title: "Nombre d'adhérents"
+                    required:
+                      - total
+                      - hommes
+                      - femmes
+                    properties:
+                      hommes:
+                        type: "integer"
+                        title: "Nombre d'adhérents hommes"
+                        example: 16
+                      femmes:
+                        type: "integer"
+                        title: "Nombre d'adhérents femmes"
+                        example: 17
+                      total:
+                        type: "integer"
+                        title: "Nombre d'adhérents total"
+                        example: 33
+            comptes:
+              title: "Comptes de résultat et financement perçus"
+              type: "array"
+              items:
+                type: "object"
+                required:
+                  - annee
+                  - commisaire_aux_comptes
+                  - montant_dons
+                  - cause_subventions
+                  - montant_subventions
+                  - montant_aides_sur_3ans
+                  - total_charges
+                  - total_resultat
+                  - total_produits
+                properties:
+                  annee:
+                    type: "string"
+                    title: "Année associé à ce compte"
+                    example: "2019"
+                  commisaire_aux_comptes:
+                    title: "Détermine si l'association possède un commissaire aux comptes"
+                    type: "boolean"
+                    example: true
+                  montant_dons:
+                    title: "Montant des dons perçus"
+                    type: "number"
+                    example: 1000.0
+                  cause_subventions:
+                    title: "Cause des subventions"
+                    type: "string"
+                    example: "Subventions d'investissement"
+                    nullable: true
+                  montant_subventions:
+                    title: "Montant des subventions"
+                    type: "number"
+                    example: 1200.0
+                  montant_aides_sur_3ans:
+                    title: "Montant des aides sur 3 ans"
+                    type: "number"
+                    example: 1230.0
+                  total_charges:
+                    title: "Total des charges"
+                    type: "number"
+                    example: 1234.0
+                  total_resultat:
+                    title: "Total du résultat"
+                    type: "number"
+                    example: 2000.0
+                  total_produits:
+                    title: "Total des produits"
+                    type: "number"
+                    example: 3000.0
+            documents_dac:
+              title: "Liste des Documents Administratifs Complémentaires (DAC) associé à cet établissement"
+              description: "Tous les documents DAC sont renvoyés à l'exception des documents marqués comme étant des RIBs ou ceux marqué comme étant supprimés."
+              type: "array"
+              items:
+                type: "object"
+                required:
+                  - "nom"
+                  - "annee_validite"
+                  - "commentaire"
+                  - "etat"
+                  - "type"
+                  - "date_depot"
+                  - "url"
+                properties:
+                  # NOTE exclut car on peut deviner l'url derrière, dans l'optique de mettre un proxy il vaut mieux l'exclure ici
+                  # id:
+                  #   type: "string"
+                  #   title: "Identifiant interne du document"
+                  #   example: "00000000-0000-0000-0000-000000000001"
+                  nom:
+                    type: "string"
+                    title: "Nom du document"
+                    example: "Rapport annuel 2019.pdf"
+                  annee_validite:
+                    type: "string"
+                    title: "Année de validité du document"
+                    description: "Cette valeur peut-être omise si le document n'est pas lié à une année"
+                    example: "2019"
+                    nullable: true
+                  commentaire:
+                    type: "string"
+                    title: "Commentaire du document"
+                    example: "Les comptes annuels sont consolidés au niveau national"
+                    nullable: true
+                  etat:
+                    type: "string"
+                    title: "État du document"
+                    example: "courant"
+                    enum:
+                      - "courant"
+                      - "archivé"
+                  type:
+                    type: "string"
+                    title: "Type du document"
+                    description: "La liste des types est la suivante (liste non-exhaustive, le champ pouvant être renseigné manuellement):
+                      \n
+                      \n
+                      - Budget prévisionnel
+                      \n
+                      - Comptes du dernier exercice clôt
+                      \n
+                      - Rapport du commissaire au compte
+                      \n
+                      - Rapport d'activité (le plus récent)
+                      \n
+                      - Rapport financier
+                      \n
+                      - Arrêté de l'agrement
+                      \n
+                      - Attestation d’affiliation
+                      \n
+                      - Projet sportif
+                        "
+                    example: "Budget prévisionnel"
+                  date_depot:
+                    type: "string"
+                    format: "date"
+                    title: "Date de dépôt du document"
+                    example: "2019-01-01"
+                    nullable: true
+                  url:
+                    type: "string"
+                    title: "URL du document"
+                    example: "https://associations.api.gouv.fr/documents/rapport_annuel.pdf"
+      reseaux_affiliation:
+        title: "Union, fédération ou réseau auquel est affiliée l'association"
+        type: "array"
+        items:
+          type: "object"
+          required:
+            - "nom"
+            - "numero"
+            - "rna"
+            - "siret"
+            - "objet"
+            - "nombre_licencies"
+          properties:
+            nom:
+              type: "string"
+              title: "Nom du réseau"
+              example: "Réseau des associations de parents d'élèves"
+            numero:
+              type: "string"
+              title: "Numéro d'affiliation à la fédération"
+              example: "IDF0234567"
+              nullable: true
+            rna:
+              type: "string"
+              title: "Numéro RNA du réseau"
+              example: "W123456789"
+              nullable: true
+            siret:
+              type: "string"
+              title: "Numéro SIRET du réseau"
+              example: "12345678901234"
+              nullable: true
+            objet:
+              type: "string"
+              title: "Objet du réseau"
+              example: "Promouvoir l'engagement des parents d'élèves dans l'éducation de leurs enfants"
+              nullable: true
+            adresse:
+              title: "Adresse du réseau"
+              type: "object"
+              properties: *association_adresse_properties
+            telephone:
+              type: "string"
+              title: "Numéro de téléphone du réseau"
+              example: "0123456789"
+              nullable: true
+            courriel:
+              type: "string"
+              title: "Courriel du réseau"
+              example: "reseau@association.fr"
+              nullable: true
+            attestation_affiliation_url:
+              type: "string"
+              title: "URL de l'attestation d'affiliation"
+              example: "https://associations.api.gouv.fr/documents/attestation_affiliation.pdf"
+              nullable: true
+            nombre_licencies:
+              type: "object"
+              title: "Nombre de licenciés"
+              description: "Ces informations ne sont pas tout le temps renseignées"
+              required:
+                - total
+                - hommes
+                - femmes
+              properties:
+                hommes:
+                  type: "integer"
+                  title: "Nombre de licenciés hommes"
+                  example: 16
+                  nullable: true
+                femmes:
+                  type: "integer"
+                  title: "Nombre de licenciés femmes"
+                  example: 17
+                  nullable: true
+                total:
+                  type: "integer"
+                  title: "Nombre de licenciés total"
+                  example: 33
+                  nullable: true
+      composition_reseau:
+        title: "Composition du réseau, de l'union ou de la fédération"
+        type: "array"
+        items:
+          type: "object"
+          required:
+            - nom
+            - rna
+            - siret
+            - telephone
+            - courriel
+            - objet
+          properties:
+            nom:
+              type: "string"
+              title: "Nom du membre du réseau"
+              example: "Association des parents d'élèves de l'école primaire de la ville"
+            rna:
+              type: "string"
+              title: "Numéro RNA du membre du réseau"
+              example: "W123456789"
+              nullable: true
+            siret:
+              type: "string"
+              title: "Numéro SIRET du membre du réseau"
+              example: "12345678901234"
+              nullable: true
+            telephone:
+              type: "string"
+              title: "Numéro de téléphone du membre du réseau"
+              example: "0123456789"
+              nullable: true
+            courriel:
+              type: "string"
+              title: "Courriel du membre du réseau"
+              example: "reseau@association.fr"
+              nullable: true
+            objet:
+              type: "string"
+              title: "Objet du membre du réseau"
+              example: "Promouvoir l'engagement des parents d'élèves dans l'éducation de leurs enfants"
+      agrements:
+        title: "Liste des agréments administratifs associés à l'entité"
+        type: "array"
+        items:
+          type: "object"
+          required:
+            - "numero"
+            - "date_attribution"
+            - "type"
+            - "niveau"
+            - "attributeur"
+            - "url"
+          properties:
+            numero:
+              type: "string"
+              title: "Numéro de l'agrément"
+              description: "Ce champ étant libre, il n'y a pas de format spécifique"
+              example: "05.11.2018"
+            date_attribution:
+              type: "string"
+              format: "date"
+              title: "Date d'attribution de l'agrément"
+              example: "2018-11-05"
+            type:
+              type: "string"
+              title: "Type de l'agrément"
+              description: "Une liste non-exhaustive:
+                \n
+                \n
+                - Agriculture
+                \n
+                - CIDFF
+                \n
+                - Consommation
+                \n
+                - Ecologie
+                \n
+                - Education nationale
+                \n
+                - Formation
+                \n
+                - Formation professionnelle
+                \n
+                - JEP
+                \n
+                - Santé
+                \n
+                - Service civique
+                \n
+                - Sport
+                \n
+                - Tourisme
+                \n
+                - Autre
+                "
+              example: "Formation"
+            niveau:
+              type: "string"
+              title: "Niveau de l'agrément"
+              example: "local"
+              enum:
+                - "national"
+                - "local"
+            attributeur:
+              type: "string"
+              title: "Nom de l'organisme qui a attribué l'agrément"
+              example: "Ministère de l'Education nationale"
+            url:
+              type: "string"
+              title: "URL de l'agrément"
+              example: "https://associations.api.gouv.fr/agrements/05.11.2018.pdf"
+      documents_rna:
+        title: "Documents issus du RNA associés à l'entité"
+        type: "array"
+        items:
+          type: "object"
+          required:
+            - "type"
+            - "sous_type"
+            - "date_depot"
+            - "url"
+          properties:
+            # NOTE exclut car on peut deviner l'url derrière, dans l'optique de mettre un proxy il vaut mieux l'exclure ici
+            # id:
+            #   type: "string"
+            #   title: "Identifiant interne du document"
+            #   example: "0b2fefc5-84af-4733-939e-4c9277f78ac7"
+            type:
+              type: "string"
+              title: "Type du document"
+              enum:
+                - 'Pièce'
+                - 'Récipissé'
+              example: "Pièce"
+            sous_type:
+              type: "object"
+              title: "Sous-type du document"
+              required:
+                - "code"
+                - "libelle"
+              properties:
+                code:
+                  type: "string"
+                  title: "Code du sous-type"
+                  example: "STC"
+                  enum:
+                    - STC
+                    - LDC
+                    - PV
+                    - MD
+                    - ARR
+                    - DCR
+                    - FRM
+                    - CR
+                    - RCS
+                    - RCF
+                    - LAC
+                    - MDT
+                    - ADC
+                    - ETC
+                    - LAD
+                    - PV2
+                    - FIN
+                    - IMC
+                    - LAS
+                    - RCC
+                    - RIN
+                libelle:
+                  type: "string"
+                  title: "Libellé du sous-type"
+                  example: "Statuts"
+                  enum:
+                    - Statuts
+                    - Liste dirigeants
+                    - Procès verbal
+                    - Récépissé de modification
+                    - Arrêté
+                    - Décret
+                    - formulaire déclaration
+                    - Récepissé de création
+                    - télé-récépissé signé automatiquement
+                    - Récépissé délivré
+                    - Lettre de déclaration
+                    - Lettre de mandat
+                    - Adhésion(s) (liste complète)
+                    - Etablissement(s) (liste complète)
+                    - Lettre de démission
+                    - Deuxième PV
+                    - Document financier
+                    - Immeuble(s) (liste complète)
+                    - Lettre
+                    - Autre
+                    - règlement intérieur
+            date_depot:
+              type: "string"
+              format: "date"
+              title: "Date de dépôt du document"
+              description: "Parfois cette date est vide, vous pouvez vous référer à l'année (clé annee_depot)"
+              example: "2019-01-01"
+              nullable: true
+            annee_depot:
+              type: "string"
+              title: "Année de dépôt du document"
+              example: "2019"
+              nullable: true
+            url:
+              type: "string"
+              title: "URL du document"
+              example: "https://associations.api.gouv.fr/documents/rapport_annuel.pdf"
+    meta:
+      internal_id:
+        type: "string"
+        title: "Identifiant interne de l'entité au sein de l'API manager du Ministère de l'Intérieur"
+        example: "1234567890"
+      date_derniere_mise_a_jour_sirene:
+        title: "Date de dernière mise à jour de l'association dans la base SIRENE"
+        type: "string"
+        format: "date"
+        example: "2019-01-01"
+        nullable: true
+      date_derniere_mise_a_jour_rna:
+        title: "Date de dernière mise à jour de l'association dans le RNA"
+        type: "string"
+        format: "date"
+        example: "2019-01-01"
+        nullable: true
+

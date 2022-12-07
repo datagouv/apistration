@@ -50,6 +50,7 @@ shared:
       - { controller: 'api_entreprise/v3_and_more/ademe/certificats_rge', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/rnm/entreprises_artisanales', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/mi/associations', action: 'show' }
+      - { controller: 'api_entreprise/v3_and_more/mi/unites_legales', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/dgddi/eori', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/infogreffe/mandataires_sociaux', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/infogreffe/extraits_rcs', action: 'show' }
