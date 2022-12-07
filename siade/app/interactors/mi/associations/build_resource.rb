@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/AbcSize
 class MI::Associations::BuildResource < BuildResource
   protected
 
@@ -405,3 +406,4 @@ class MI::Associations::BuildResource < BuildResource
     annee
   end
 end
+# rubocop:enable Metrics/AbcSize
