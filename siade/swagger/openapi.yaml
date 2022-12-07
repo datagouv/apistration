@@ -4947,6 +4947,8 @@ paths:
                     properties:
                       date_radiation:
                         title: Date de radiation de l'entreprise
+                        description: Il s'agit de la date de radiation au registre
+                          du commerce et des sociétés.
                         type: string
                         example: '2019-01-01'
                         nullable: true
