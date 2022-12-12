@@ -16,8 +16,4 @@ class MI::Associations::Documents::ValidateResponse < MI::Associations::Validate
 
     xml_body_as_hash[:asso][:documents][:nbDocRna].to_i.positive?
   end
-
-  def not_found_msg
-    "Aucun document pour l'identifiant association demandé (Numéro RNA ou Siret)."
-  end
 end

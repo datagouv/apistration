@@ -37,8 +37,4 @@ class MI::Associations::ValidateResponse < ValidateResponse
 
     !xml_body_as_hash[:asso][:identite][:nom].nil?
   end
-
-  def not_found_msg
-    "L'identifiant association demandé (Numéro RNA ou Siret) n'est pas connu."
-  end
 end
