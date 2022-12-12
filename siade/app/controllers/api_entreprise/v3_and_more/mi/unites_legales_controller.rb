@@ -16,7 +16,7 @@ class APIEntreprise::V3AndMore::MI::UnitesLegalesController < APIEntreprise::V3A
 
   def organizer_params
     {
-      siren_or_rna: params.require(:siren_or_rna)
+      id: params.require(:siren_or_rna)
     }
   end
 

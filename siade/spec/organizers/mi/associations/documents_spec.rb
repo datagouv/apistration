@@ -4,12 +4,12 @@ RSpec.describe MI::Associations::Documents, type: :retrieve_organizer do
 
     let(:params) do
       {
-        siret_or_rna:
+        id:
       }
     end
 
     context 'when happy path', vcr: { cassette_name: 'mi/associations/with_valid_rna' } do
-      let(:siret_or_rna) { valid_rna_id }
+      let(:id) { valid_rna_id }
 
       before do
         stub_request(:get, %r{jeunesse-sports\.gouv\.fr/cxf/api/documents/PJ})
@@ -27,7 +27,7 @@ RSpec.describe MI::Associations::Documents, type: :retrieve_organizer do
 
     describe 'non regression test' do
       context 'when association retrievers returns a hash instead of an array for asso->documents->document_rna', vcr: { cassette_name: 'mi/associations/documents/no_documents_key' } do
-        let(:siret_or_rna) { '41763950700017' }
+        let(:id) { '41763950700017' }
 
         it { is_expected.to be_a_success }
       end

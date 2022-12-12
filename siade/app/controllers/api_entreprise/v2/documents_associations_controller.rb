@@ -35,7 +35,7 @@ class APIEntreprise::V2::DocumentsAssociationsController < APIEntreprise::V2::Ba
 
   def organizer_params
     {
-      siret_or_rna: params.require(:id)
+      id: params.require(:id)
     }
   end
 end

@@ -2,7 +2,7 @@ class MI::Associations::MakeRequest < MakeRequest::Get
   protected
 
   def request_uri
-    URI("#{mi_domain}/apim/api-asso-partenaires/api/structure/#{siret_or_rna}")
+    URI("#{mi_domain}/apim/api-asso-partenaires/api/structure/#{id}")
   end
 
   def request_params
@@ -26,7 +26,7 @@ class MI::Associations::MakeRequest < MakeRequest::Get
     Siade.credentials[:mi_gravitee_api_key]
   end
 
-  def siret_or_rna
-    context.params[:siret_or_rna]
+  def id
+    context.params[:id]
   end
 end

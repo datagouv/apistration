@@ -16,7 +16,7 @@ class APIEntreprise::V3AndMore::MI::AssociationsController < APIEntreprise::V3An
 
   def organizer_params
     {
-      siret_or_rna: params.require(:siret_or_rna)
+      id: params.require(:siret_or_rna)
     }
   end
 

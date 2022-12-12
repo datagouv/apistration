@@ -1,6 +1,6 @@
 class MI::UniteLegale < RetrieverOrganizer
   before do
-    context.params[:siret_or_rna] = context.params[:siren_or_rna]
+    context.params[:siren_or_rna] = context.params[:id]
   end
 
   organize ValidateSirenOrRNA,
