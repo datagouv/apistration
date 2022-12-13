@@ -15,47 +15,90 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
       its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
     end
 
-    context 'with a valid code and a valid xml' do
+    context 'with a valid code' do
       let(:code) { '200' }
-      let(:body) do
-        '<asso>' \
-          '<identite>' \
-          '<nom>' \
-          'A Name' \
-          '</nom>' \
-          '</identite>' \
-          '</asso>'
+
+      context 'with a body containing rna id' do
+        let(:body) do
+          '<asso>' \
+            '<identite>' \
+            '<nom>' \
+            'A Name' \
+            '</nom>' \
+            "<id_rna>#{valid_rna_id}</id_rna>" \
+            '</identite>' \
+            '</asso>'
+        end
+
+        it { is_expected.to be_a_success }
+
+        its(:errors) { is_expected.to be_empty }
       end
 
-      it { is_expected.to be_a_success }
+      context 'with a body without rna id' do
+        context 'when regime is not alsaceMoselle' do
+          let(:body) do
+            '<asso>' \
+              '<identite>' \
+              '<nom>' \
+              'A Name' \
+              '</nom>' \
+              '<regime>' \
+              'loi1901' \
+              '</regime>' \
+              '</identite>' \
+              '</asso>'
+          end
 
-      its(:errors) { is_expected.to be_empty }
-    end
+          it { is_expected.to be_a_failure }
 
-    context 'with a valid code and a body containing NotFound message' do
-      let(:code) { '200' }
-      let(:body) do
-        '<asso>' \
-          '<erreur>' \
-          '<proxy_correspondance>' \
-          'org.apache.camel.http.common.HttpOperationFailedException: HTTP operation failed invoking http://localhost:8181/services/proxy_db_asso/correspondance/idsByRna/W111111111 with statusCode: 404' \
-          '</proxy_correspondance>' \
-          '</erreur>' \
-          '</asso>'
+          its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+        end
+
+        context 'when regime is alsaceMoselle' do
+          let(:body) do
+            '<asso>' \
+              '<identite>' \
+              '<nom>' \
+              'A Name' \
+              '</nom>' \
+              '<regime>' \
+              'alsaceMoselle' \
+              '</regime>' \
+              '</identite>' \
+              '</asso>'
+          end
+
+          it { is_expected.to be_a_success }
+
+          its(:errors) { is_expected.to be_empty }
+        end
       end
 
-      it { is_expected.to be_a_failure }
+      context 'with a body containing NotFound message' do
+        let(:body) do
+          '<asso>' \
+            '<erreur>' \
+            '<proxy_correspondance>' \
+            'org.apache.camel.http.common.HttpOperationFailedException: HTTP operation failed invoking http://localhost:8181/services/proxy_db_asso/correspondance/idsByRna/W111111111 with statusCode: 404' \
+            '</proxy_correspondance>' \
+            '</erreur>' \
+            '</asso>'
+        end
 
-      its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
-    end
+        it { is_expected.to be_a_failure }
 
-    context 'with a valid code and a body containing nonsense' do
-      let(:code) { '200' }
-      let(:body) { 'Nonsense' }
+        its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+      end
 
-      it { is_expected.to be_a_failure }
+      context 'with a body containing nonsense' do
+        let(:code) { '200' }
+        let(:body) { 'Nonsense' }
 
-      its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+      end
     end
   end
 end

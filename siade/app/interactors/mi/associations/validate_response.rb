@@ -2,9 +2,9 @@ class MI::Associations::ValidateResponse < ValidateResponse
   def call
     check_body_integrity!
 
-    return if http_ok? && payload_valid?
+    resource_not_found!(:siret_or_rna) if not_found_in_body? || not_valid_association?
 
-    resource_not_found!(:siret_or_rna) if not_found_in_body?
+    return if http_ok? && payload_valid?
 
     unknown_provider_response!
   end
@@ -17,9 +17,24 @@ class MI::Associations::ValidateResponse < ValidateResponse
     unknown_provider_response!
   end
 
+  def not_valid_association?
+    payload_valid? && (
+      rna_id_missing? &&
+        !alsace_moselle?
+    )
+  end
+
   def payload_valid?
     payload_present? &&
       payload_has_name?
+  end
+
+  def rna_id_missing?
+    xml_body_as_hash[:asso][:identite][:id_rna].nil?
+  end
+
+  def alsace_moselle?
+    xml_body_as_hash[:asso][:identite][:regime] == 'alsaceMoselle'
   end
 
   def not_found_in_body?
