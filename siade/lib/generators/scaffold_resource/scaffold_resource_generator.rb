@@ -1,7 +1,7 @@
 class ScaffoldResourceGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('templates', __dir__)
 
-  class_option :api,
+  class_option :api_kind,
     type: :string,
     default: 'entreprise',
     desc: 'Which product ?',
