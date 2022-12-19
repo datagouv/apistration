@@ -35,7 +35,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::ValidateParams, type: :validate
 
     it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to include(instance_of(::UnprocessableEntityError)) }
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
   context 'without family name' do
@@ -43,7 +43,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::ValidateParams, type: :validate
 
     it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to include(instance_of(::UnprocessableEntityError)) }
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
   context 'with invalid gender' do
@@ -51,7 +51,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::ValidateParams, type: :validate
 
     it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to include(instance_of(::UnprocessableEntityError)) }
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
   context 'with invalid birthday date' do
@@ -59,6 +59,6 @@ RSpec.describe MESRI::StudentStatusWithCivility::ValidateParams, type: :validate
 
     it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to include(instance_of(::UnprocessableEntityError)) }
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 end

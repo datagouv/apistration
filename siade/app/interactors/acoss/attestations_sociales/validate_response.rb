@@ -63,23 +63,23 @@ class ACOSS::AttestationsSociales::ValidateResponse < ValidateResponse
   end
 
   def not_found?
-    (error_code_acoss_for_404 & errors_codes).any?
+    error_code_acoss_for_404.intersect?(errors_codes)
   end
 
   def internal_error?
-    (error_code_acoss_for_503 & errors_codes).any?
+    error_code_acoss_for_503.intersect?(errors_codes)
   end
 
   def manual_verification_asked?
-    (%w[FUNC503] & errors_codes).any?
+    %w[FUNC503].intersect?(errors_codes)
   end
 
   def ongoing_manual_verification?
-    (%w[FUNC504] & errors_codes).any?
+    %w[FUNC504].intersect?(errors_codes)
   end
 
   def cannot_deliver_document?
-    (%w[FUNC502] & errors_codes).any?
+    %w[FUNC502].intersect?(errors_codes)
   end
 
   def errors_codes

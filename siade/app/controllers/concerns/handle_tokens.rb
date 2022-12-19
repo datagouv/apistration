@@ -32,7 +32,7 @@ module HandleTokens
   def authorize(*scopes)
     scopes = Array(scopes).map(&:to_s)
 
-    return if (scopes & current_user.scopes).any?
+    return if scopes.intersect?(current_user.scopes)
 
     raise NotAuthorizedError
   end
