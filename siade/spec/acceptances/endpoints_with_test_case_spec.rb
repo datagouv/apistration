@@ -1,5 +1,5 @@
-RSpec.describe 'config/all_endpoints.yml' do
-  let(:endpoints) { Rails.root.join('config/all_endpoints.yml').read }
+RSpec.describe 'config/endpoints_with_test_case.yml' do
+  let(:endpoints) { Rails.root.join('config/endpoints_with_test_case.yml').read }
 
   let(:swagger_file) { Rails.root.join('swagger/openapi.yaml') }
   let(:swagger) { Psych.safe_load_file(swagger_file) }
@@ -7,9 +7,9 @@ RSpec.describe 'config/all_endpoints.yml' do
   let!(:swagger_endpoints_regex) { swagger_endpoints.map { |endpoint| regexify(endpoint) } }
 
   describe 'endpoints' do
-    it 'has all endpoints in config/all_endpoints.yml' do
+    it 'has all endpoints in config/endpoints_with_test_case.yml' do
       swagger_endpoints_regex.each do |endpoint|
-        expect(endpoints).to match(endpoint), "Endpoint #{endpoint} is missing from config/all_endpoints.yml"
+        expect(endpoints).to match(endpoint), "Endpoint #{endpoint} is missing from config/endpoints_with_test_case.yml"
       end
     end
   end

@@ -39,7 +39,7 @@ end
   verify_mode: OpenSSL::SSL::VERIFY_PEER,
 }
 
-endpoints = File.read("#{File.dirname(__FILE__)}/../config/all_endpoints.yml")
+endpoints = File.read("#{File.dirname(__FILE__)}/../config/endpoints_with_test_case.yml")
 
 def test_endpoint(endpoint, index)
   name = endpoint['name']
