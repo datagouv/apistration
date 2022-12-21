@@ -15,18 +15,8 @@ RSpec.describe 'config/all_endpoints.yml' do
   end
 
   def regexify(endpoint)
-    regex_ready_string = endpoint.gsub(/{(.*?)}/, replacements)
+    regex_ready_string = endpoint.gsub(/{(.*?)}/, '[^/]+')
 
     Regexp.new(regex_ready_string)
-  end
-
-  def replacements
-    {
-      '{siren}' => '\d{9}',
-      '{siret}' => '\d{14}',
-      '{siret_or_eori}' => '(\d{14}|\w{2}\d{13})',
-      '{siret_or_rna}' => '(\d{14}|\w\d{9})',
-      '{year}' => '\d{4}'
-    }
   end
 end
