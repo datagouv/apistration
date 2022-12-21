@@ -181,3 +181,24 @@
 
 - name: '[V3] Commission Européenne numéro de TVA'
   http_path: '/v3/european_commission/unites_legales/552032534/numero_tva'
+
+- name: '[V3] Banque de France Bilans'
+  http_path: '/v3/banque_de_france/unites_legales/418166096/bilans'
+
+- name: '[V3] CNETP Attestations cotisations conges payes chomages intemperies'
+  http_path: '/v3/cnetp/unites_legales/418166096/attestation_cotisations_conges_payes_chomage_intemperies'
+
+- name: '[V3] Douanes Immatriculations EORI'
+  http_path: '/v3/douanes/etablissements/41816609600069/immatriculations_eori'
+
+- name: '[V3] DGFIP liasses_fiscales'
+  http_path: '/v3/dgfip/unites_legales/418166096/liasses_fiscales/2016'
+
+- name: '[V3] FNTP Carte professionnelle travaux publics'
+  http_path: '/v3/fntp/unites_legales/418166096/carte_professionnelle_travaux_publics'
+
+- name: '[V3] INSEE Etablissements diffusibles Adresse'
+  http_path: '/v3/insee/sirene/etablissements/diffusibles/41816609600069/adresse'
+
+- name: '[V3] MSA Conformité cotisations'
+  http_path: '/v3/msa/etablissements/41816609600069/conformite_cotisations'
