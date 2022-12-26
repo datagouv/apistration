@@ -1,7 +1,7 @@
 class BanqueDeFrance::BilansEntreprise::RetrieveDictionariesFromCacheOrRemote < ApplicationInteractor
   def call
-    context.dictionaries = bilans_years.each_with_object({}) do |year, hash|
-      hash[year] = retrieve_dictionaries_for_year(year)
+    context.dictionaries = bilans_years.index_with do |year|
+      retrieve_dictionaries_for_year(year)
     end
   end
 

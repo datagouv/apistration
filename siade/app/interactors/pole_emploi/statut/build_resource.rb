@@ -70,8 +70,8 @@ class PoleEmploi::Statut::BuildResource < BuildResource
   end
 
   def build_hash_from_attributes(data, attributes)
-    attributes.each_with_object({}) do |attribute, hash|
-      hash[attribute] = string_value_or_nil(data[attribute.to_s])
+    attributes.index_with do |attribute|
+      string_value_or_nil(data[attribute.to_s])
     end
   end
 

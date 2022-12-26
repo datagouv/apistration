@@ -43,11 +43,7 @@ RSpec.describe 'URSSAF: Attestation de vigilance', api: :entreprise, type: %i[re
             'ACOSS',
             ACOSS::AttestationsSociales,
             documents_errors('ACOSS')
-            .concat([
-              ACOSSError.new(:ongoing_manual_verification),
-              ACOSSError.new(:manual_verification_asked),
-              ACOSSError.new(:cannot_deliver_document)
-            ])
+            .push(ACOSSError.new(:ongoing_manual_verification), ACOSSError.new(:manual_verification_asked), ACOSSError.new(:cannot_deliver_document))
           )
 
           response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'acoss/with_non_existent_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body_sanitized) } do
