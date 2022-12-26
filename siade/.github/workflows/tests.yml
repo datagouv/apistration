@@ -27,6 +27,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+          cache-version: 320
 
       - name: Install libmagic-dev
         run: sudo apt-get install libmagic-dev
