@@ -15922,7 +15922,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/ministere_interieur/rna/associations/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v4/ministere_interieur/api-asso/unites_legales/{siren_or_rna}":
     get:
-      summary: Données du RNA d'une association
+      summary: Données association et documents
       tags:
       - Informations générales
       parameters:
@@ -15971,8 +15971,9 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Informations issues du répertoire national des associations (RNA),
-        telles que la date de création, l’adresse du siège et les dirigeants.
+      description: Informations de référence de l'unité légale d'une association,
+        issues du répertoire national des associations (RNA) et des documents administratifs
+        complémentaires (DAC).
       responses:
         '401':
           description: Non autorisé
@@ -16088,56 +16089,64 @@ paths:
                       rna:
                         type: string
                         title: Numéro RNA
-                        description: Si le régime de l'association est Alsace-Moselle,
-                          celle-ci ne possède pas de numéro RNA. Dans ce cas, le champ
-                          est vide.
+                        description: "Numéro identifiant de toute association inscrite
+                          au répertoire national des associations (RNA). Il est constitué
+                          de la lettre W suivie de 9 chiffres. \n \n Cas particulier
+                          : Si l'association relève du droit local d'Alsace-Moselle,
+                          elle n'est pas immatriculée au RNA et ne possède donc pas
+                          de numéro RNA. Dans ce cas, le champ est vide. \n \n En
+                          savoir plus : https://associations.gouv.fr/le-no-siren-de-l-insee.html"
                         example: W751080001
                         nullable: true
                       ancien_id:
                         type: string
                         title: Ancien identifiant de l'entité avant l'arrêté du 14
-                          octobre 2009 portant la création du RNA
+                          octobre 2009 portant la création du RNA.
                         example: '1234567890'
                         nullable: true
                       siren:
                         type: string
                         title: Numéro SIREN
-                        description: Une association ne possède pas forcément de numéro
-                          SIREN. Dans ce cas, le champ est vide.
+                        description: "Numéro identifiant des associations inscrites
+                          au répertoire Sirene. Cet enregistrement n'est pas obligatoire
+                          : pour les associations qui n'ont pas de numéro SIREN, le
+                          champ est vide. \n \n En savoir plus : https://associations.gouv.fr/le-no-siren-de-l-insee.html"
                         example: '751080001'
                         nullable: true
                       nom:
                         title: Nom de l'association (raison sociale)
-                        description: Ce nom est soit tiré du RNA soit de la base SIRENE.
-                          Si le régime est Loi 1901 l'information vient de la base
-                          RNA.
+                        description: Ce nom provient du répertoire national des associations
+                          (RNA) ou du répertoire Sirene. Si le régime de l'association
+                          est indiqué "Loi 1901", le nom provient toujours du RNA.
                         type: string
                         example: LA PRÉVENTION ROUTIERE
                       active:
-                        title: Statut de l'association
+                        title: État de l'association
                         type: boolean
                         example: true
                         description: L'association est active si elle est enregistrée
                           à la Préfecture et si elle n'a pas été dissoute. Si le régime
-                          est Loi 1901 l'information vient de la base RNA, sinon celle-ci
-                          vient de la base SIRENE.
+                          de l'association est "Loi 1901" l'information provient du
+                          RNA, autrement elle est issue du répertoire Sirene.
                       sigle:
-                        title: Sigle de l'unité légale
-                        description: Ce sigle est soit tiré du RNA soit de la base
-                          SIRENE. Si le régime est Loi 1901 l'information vient de
-                          la base RNA.
+                        title: Sigle de l'association
+                        description: Ce sigle provient du répertoire national des
+                          associations (RNA) ou du répertoire Sirene. Si le régime
+                          de l'association est indiqué "Loi 1901", le nom provient
+                          toujours du RNA.
                         type: string
                         example: LPR
                         nullable: true
                       reconnue_utilite_publique:
-                        title: Indique si l'association est reconnue d'utilité publique
+                        title: Indique si l'association est reconnue d'utilité publique.
                         type: boolean
                         example: false
                       siret_siege:
                         title: Numéro SIRET du siège social
-                        description: Une association ne possède pas forcément de numéro
-                          SIREN, et par conséquent pas de numéro SIRET pour ses établissements.
-                          Dans ce cas, le champ est vide.
+                        description: 'Les établissements sièges des  associations
+                          inscrites au répertoire Sirene ont un numéro identifiant
+                          : le SIRET. Pour les associations qui ne sont pas répertoriées,
+                          le champ est vide.'
                         type: string
                         example: '75108000100013'
                         nullable: true
@@ -16151,30 +16160,15 @@ paths:
                           code:
                             title: Code de la forme juridique de l'unité légale.
                             type: string
-                            example: '7120'
-                            description: "Il existe plus de 300 catégories juridiques,
-                              identifiables par un code spécifique à quatre chiffres.
-                              Leur nomenclature comporte 3 niveaux. Le premier niveau
-                              de classement contient 9 grandes catégories identifiables
-                              avec le premier chiffre du code : \n \n - 0 : Organisme
-                              de placement collectif en valeurs mobilières sans personnalité
-                              morale \n - 1 : Entrepreneur individuel. La catégorie
-                              juridique des personnes physiques est '1000'. \n - 2
-                              : Groupement de droit privé non doté de la personnalité
-                              morale \n - 3 : Personne morale de droit étranger \n
-                              - 4 : Personne morale de droit public soumise au droit
-                              commercial \n - 5 : Société commerciale \n - 6 : Autre
-                              personne morale immatriculée au RCS \n - 7 : Personne
-                              morale et organisme soumis au droit administratif \n
-                              - 8 : Organisme privé spécialisé \n - 9 : Groupement
-                              de droit privé \n \n Nomenclature exhaustive des codes
-                              fournie par l'Insee : https://www.insee.fr/fr/information/2028129"
+                            example: '9220'
+                            description: 'Nomenclature exhaustive fournie par l''Insee
+                              : https://www.insee.fr/fr/information/2028129'
                             nullable: true
                           libelle:
                             title: Libellé associé au code de la forme juridique de
                               l'unité légale.
                             type: string
-                            example: Service central d'un ministère
+                            example: Association déclarée
                             description: "indique le libellé correspondant au code
                               juridique. Si le code ne correspond à aucun libellé
                               la valeur 'non référencé' est utilisée. \n \n Nomenclature
@@ -16183,16 +16177,23 @@ paths:
                       regime:
                         title: Régime de l'association
                         type: string
-                        description: Les 2 régimes possibles sont 'Loi 1901' et 'Alsace-Moselle'
+                        description: "Les deux régimes possibles sont 'Loi 1901' et
+                          'Alsace-Moselle'. \n \n Le régime \"Loi 1901\" est le cas
+                          général des associations établies en France. Les associations
+                          dont le siège se trouve en Alsace et en Moselle sont régies
+                          par un droit local, dit \"régime Alsace-Moselle\". \n \n
+                          Cette information provient des documents administratifs
+                          complémentaires (DAC). \n \n Pour en savoir plus sur les
+                          particularités du régime Alsace-Moselle : https://www.associations.gouv.fr/le-droit-local-des-associations-en-alsace-moselle.html"
                         example: Loi 1901
                         enum:
                         - Loi 1901
                         - Alsace-Moselle
                       groupement:
                         title: Type de groupement
-                        description: Une association peut faire parti d'un groupement
-                          de type union ou fédération. Ce champ est à 'Simple' si
-                          l'association n'est pas membre d'un groupement.
+                        description: "Une association peut faire partie d'un groupement
+                          de type union ou fédération. \n \n Ce champ est à 'Simple'
+                          si l'association n'est pas membre d'un groupement."
                         type: string
                         example: Simple
                         enum:
@@ -16202,7 +16203,11 @@ paths:
                         nullable: true
                       eligibilite_cec:
                         title: Indique si l'association est éligible au CEC
-                        description: CEC = Compte d'Engagement Citoyen
+                        description: "Indique si l'association est éligible au compte
+                          d'engagement citoyen (CEC). Ce dispositif permet de bénéficier
+                          de droits à formation supplémentaires et vise valoriser
+                          l'engagement bénévole de responsables associatifs.\nPour
+                          en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-engagement-citoyen-qu-est-ce-que-c-est.html "
                         type: boolean
                         example: false
                         enum:
@@ -16211,7 +16216,7 @@ paths:
                       raison_non_eligibilite_cec:
                         title: Raison de l'inéligibilité au CEC
                         description: Ce champ est vide si l'association est éligible
-                          au CEC
+                          au CEC.
                         type: string
                         example: L’association n’a pas trois ans d’existence
                         enum:
@@ -16223,20 +16228,24 @@ paths:
                         nullable: true
                       impots_commerciaux:
                         title: Association assujettie aux impôts commerciaux
+                        description: "En fonction de ses missions et de ses activités,
+                          une association peut être soumise aux impôts commerciaux.
+                          Ce cas particulier concerne notamment les associations exerçant
+                          une activité lucrative. \n \n En savoir plus : https://www.associations.gouv.fr/l-association-et-les-impots-commerciaux.html"
                         type: boolean
                         example: true
                       date_creation:
                         title: Date de création de l'association
-                        description: Cette information vient en priorité de la base
-                          RNA si celle-ci est présente, sinon de la base SIRENE.
+                        description: La date de création provient en priorité de la
+                          base RNA si celle-ci est présente, sinon de la base Sirene.
                         type: string
                         format: date
                         example: '2015-01-01'
                         nullable: true
                       date_dissolution:
                         title: Date de dissolution de l'association
-                        description: Cette information vient en priorité de la base
-                          RNA si celle-ci est présente, sinon de la base SIRENE.
+                        description: La date de dissolution provient en priorité de
+                          la base RNA si celle-ci est présente, sinon de la base Sirene.
                         type: string
                         format: date
                         example: '2016-01-01'
@@ -16249,9 +16258,11 @@ paths:
                         example: '2017-01-01'
                         nullable: true
                       date_publication_journal_officiel:
-                        title: Date de publication au Journal Officiel
+                        title: Date de publication au Journal Officiel de la création
+                          de l'association
                         description: Cette information est exclusive aux associations
-                          de loi 1901.
+                          "Loi 1901" et provient du répertoire national des associations
+                          (RNA).
                         type: string
                         format: date
                         example: '2018-01-01'
@@ -16309,9 +16320,11 @@ paths:
                         - code_postal
                         - commune
                       alsace_moselle:
-                        title: Attributs relatif aux associations du régime associé
-                          à l'Alsace-Moselle. L'ensemble de ces attributs sont vides
-                          si l'association est une association de loi 1901.
+                        title: Attributs relatifs aux associations de droit local
+                          d'Alsace-Moselle
+                        description: Ces information proviennent des documents administratifs
+                          complémentaires (DAC). Les attributs sont vides si l'association
+                          est une association "Loi 1901".
                         type: object
                         required:
                         - tribunal_instance
@@ -16373,6 +16386,9 @@ paths:
                         properties:
                           objet:
                             title: Objet de l'association
+                            description: Définit l'objet de l'association et les activités
+                              envisagées pour atteindre l'objet. Ce champ délivre
+                              l'objet tel que rédigé dans les statuts de l'association.
                             type: string
                             example: L'association a pour objet de promouvoir la pratique
                               du sport de haut niveau et de contribuer à la formation
@@ -16380,9 +16396,14 @@ paths:
                           objet_social1:
                             type: object
                             title: Objet social principal
-                            description: 'Vous pouvez trouver une liste exhaustive
-                              sur le lien suivant: https://www.data.gouv.fr/fr/datasets/repertoire-national-des-associations-nomenclature-waldec
-                              (environ 300 entrées)'
+                            description: 'L''objet social suit la nomenclature nationale
+                              Waldec et permet de rattacher l''objet de l''association
+                              à une catégorie, comme par exemple : "centres aérés,
+                              colonies de vacances", "défense des droits des personnes
+                              en situation de handicap" ou "loisirs scientifiques
+                              et techniques". La liste exhaustive des objets sociaux
+                              est disponible au lien suivant: https://www.data.gouv.fr/fr/datasets/repertoire-national-des-associations-nomenclature-waldec
+                              (environ 300 entrées).'
                             properties:
                               code:
                                 type: string
@@ -16400,9 +16421,14 @@ paths:
                           objet_social2:
                             type: object
                             title: Objet social secondaire
-                            description: 'Vous pouvez trouver une liste exhaustive
-                              sur le lien suivant: https://www.data.gouv.fr/fr/datasets/repertoire-national-des-associations-nomenclature-waldec
-                              (environ 300 entrées)'
+                            description: 'L''objet social suit la nomenclature nationale
+                              Waldec et permet de rattacher l''objet de l''association
+                              à une catégorie, comme par exemple : "centres aérés,
+                              colonies de vacances", "défense des droits des personnes
+                              en situation de handicap" ou "loisirs scientifiques
+                              et techniques". La liste exhaustive des objets sociaux
+                              est disponible au lien suivant: https://www.data.gouv.fr/fr/datasets/repertoire-national-des-associations-nomenclature-waldec
+                              (environ 300 entrées).'
                             properties:
                               code:
                                 type: string
@@ -16430,6 +16456,11 @@ paths:
                           activite_principale:
                             type: object
                             title: Activité principale
+                            description: "Lorsque l'association est immatriculée au
+                              répertoire Sirene, elle se voit attribuer un code APE.
+                              Ce code de 4 chiffres + 1 lettre est extrait de la nomenclature
+                              d'activité française (NAF) de l'Insee. \n \n Nomemclature
+                              d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2120875"
                             required:
                             - code
                             - libelle
@@ -16452,7 +16483,9 @@ paths:
                               Il s'agit principalement d'établissements récents (créés
                               il y a moins de trois ans). Les délais de récolte et
                               traitement font que les valeurs indiquées datent de
-                              l’année N-2 ou N-3.
+                              l’année N-2 ou N-3. Cette information est issue du répertoire
+                              Sirene et ne concerne donc que les associations qui
+                              y sont immatriculées.
                             required:
                             - code
                             - libelle
@@ -16480,15 +16513,7 @@ paths:
                                   : 2 000 à 4 999 salariés \n - 52 : 5 000 à 9 999
                                   salariés \n - 53 : 10 000 salariés et plus \n \n
                                   Plus d'informations dans la documentation Insee
-                                  de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
-                                  \n \n L'effectif exact de l'entreprise, mensuel
-                                  et annuel, est disponible au travers de l'[API Effectifs
-                                  - URSSAF Caisse nationale](TODO). Si votre jeton
-                                  contient ce droit d'accès, nous vous recommandons
-                                  d'utiliser cette API. Ces données étant protégées,
-                                  leur cadre d'utilisation est différent de la tranche
-                                  effectif fournie par l'Insee, qui elle est une donnée
-                                  publique."
+                                  de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen."
                                 enum:
                                 - NN
                                 - '00'
@@ -16523,7 +16548,8 @@ paths:
                             nullable: true
                             example: '2019-01-01'
                       etablissements:
-                        title: Liste des établissements de l'association
+                        title: Liste des établissements de l'association pour lesquels
+                          des informations sont disponibles.
                         type: array
                         items:
                           type: object
@@ -16546,7 +16572,8 @@ paths:
                           properties:
                             siren:
                               type: string
-                              title: Numéro SIREN de l'association lié à l'établissement
+                              title: Numéro SIREN de l'association à laquelle l'établissement
+                                est lié
                               example: '123456789'
                             siret:
                               type: string
@@ -16555,35 +16582,50 @@ paths:
                             actif:
                               type: boolean
                               title: Indique si l'établissement est actif
+                              description: Cette information provient du répertoire
+                                Sirene.
                               example: true
                             siege:
                               type: boolean
                               title: Indique si l'établissement est le siège de l'association
+                              description: Cette information provient du répertoire
+                                Sirene.
                               example: true
                             nom:
                               type: string
                               title: Enseigne de l'établissement
                               description: Cette valeur est très rarement renseignée.
+                                Elle provient du répertoire Sirene ou des documents
+                                administratifs complémentaires (DAC).
                               example: Croix rouge française
                               nullable: true
                             telephone:
                               type: string
                               title: Numéro de téléphone de l'établissement
+                              description: Cette information provient du répertoire
+                                Sirene ou des documents administratifs complémentaires
+                                (DAC).
                               example: '0123456789'
                               nullable: true
                             courriel:
                               type: string
                               title: Courriel de l'établissement
+                              description: Cette information provient des documents
+                                administratifs complémentaires (DAC).
                               example: contact@association.fr
                               nullable: true
                             date_debut_activite:
                               type: string
                               format: date
                               title: Date de début d'activité de l'établissement
+                              description: Cette information provient du répertoire
+                                Sirene.
                               example: '2019-01-01'
                               nullable: true
                             adresse:
                               title: Adresse de l'établissement
+                              description: Cette information provient du répertoire
+                                Sirene.
                               type: object
                               properties:
                                 complement:
@@ -16628,6 +16670,12 @@ paths:
                             activite_principale:
                               type: object
                               title: Activité principale
+                              description: "Lorsque l'association est immatriculée
+                                au répertoire Sirene, elle se voit attribuer un code
+                                APE. Ce code de 4 chiffres + 1 lettre est extrait
+                                de la nomenclature d'activité française (NAF) de l'Insee.
+                                \n \n Nomemclature d'activité française - NAF rév.2
+                                de l'Insee : https://www.insee.fr/fr/information/2120875"
                               required:
                               - code
                               - libelle
@@ -16650,7 +16698,9 @@ paths:
                                 Il s'agit principalement d'établissements récents
                                 (créés il y a moins de trois ans). Les délais de récolte
                                 et traitement font que les valeurs indiquées datent
-                                de l’année N-2 ou N-3.
+                                de l’année N-2 ou N-3. Cette information est issue
+                                du répertoire Sirene et ne concerne donc que les associations
+                                qui y sont immatriculées.
                               required:
                               - code
                               - libelle
@@ -16678,15 +16728,7 @@ paths:
                                     \n - 51 : 2 000 à 4 999 salariés \n - 52 : 5 000
                                     à 9 999 salariés \n - 53 : 10 000 salariés et
                                     plus \n \n Plus d'informations dans la documentation
-                                    Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
-                                    \n \n L'effectif exact de l'entreprise, mensuel
-                                    et annuel, est disponible au travers de l'[API
-                                    Effectifs - URSSAF Caisse nationale](TODO). Si
-                                    votre jeton contient ce droit d'accès, nous vous
-                                    recommandons d'utiliser cette API. Ces données
-                                    étant protégées, leur cadre d'utilisation est
-                                    différent de la tranche effectif fournie par l'Insee,
-                                    qui elle est une donnée publique."
+                                    Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen."
                                   enum:
                                   - NN
                                   - '00'
@@ -16712,8 +16754,9 @@ paths:
                             representant_legaux:
                               title: Liste des représentants légaux de l'établissement
                               description: Les personnes renvoyées dans cette liste
-                                sont celles uniquement comme étant renseignée comme
-                                représentant légal actif.
+                                sont uniquement celles renseignées comme représentant
+                                légal actif. Ces informations proviennent des documents
+                                administratifs complémentaires (DAC).
                               type: array
                               items:
                                 type: object
@@ -16753,12 +16796,22 @@ paths:
                                     type: boolean
                                     title: Indique si le représentant légal est valideur
                                       CEC
-                                    description: 'Plus d''information ici: https://www.associations.gouv.fr/valideur-cec.html'
+                                    description: "Le compte d'engagement citoyen (CEC)
+                                      est un dispositif visant à valoriser l'engagement
+                                      bénévoles des responsables associatifs. Pour
+                                      fonctionner, les bénévoles doivent déclarer
+                                      leurs engagements, l'exactitude de ces déclarations
+                                      doit être attestée par un dirigeant bénévole
+                                      de l'association désigné  \"validateur CEC \".
+                                      \n \n Pour en savoir plus : https://www.associations.gouv.fr/valideur-cec.html"
                                     example: true
                                   publication_internet:
                                     type: boolean
-                                    title: Indique si le représentant légal peut être
-                                      publié sur internet
+                                    title: Indique si les coordonnées du représentant
+                                      légal sont publiables
+                                    description: Si ce champ est à  "true ", le téléphone
+                                      et le courriel du représentant légal ont la
+                                      possibilité d'être publiés sur internet.
                                     example: true
                                   telephone:
                                     type: string
@@ -17133,7 +17186,7 @@ paths:
                               type: string
                               title: Numéro de l'agrément
                               description: Ce champ étant libre, il n'y a pas de format
-                                spécifique
+                                spécifique.
                               example: 05.11.2018
                             date_attribution:
                               type: string
@@ -17142,12 +17195,12 @@ paths:
                               example: '2018-11-05'
                             type:
                               type: string
-                              title: Type de l'agrément
-                              description: "Une liste non-exhaustive: \n \n - Agriculture
-                                \n - CIDFF \n - Consommation \n - Ecologie \n - Education
-                                nationale \n - Formation \n - Formation professionnelle
-                                \n - JEP \n - Santé \n - Service civique \n - Sport
-                                \n - Tourisme \n - Autre "
+                              title: Type d'agrément
+                              description: "Liste non-exhaustive des agréments : \n
+                                \n - Agriculture \n - CIDFF \n - Consommation \n -
+                                Ecologie \n - Education nationale \n - Formation \n
+                                - Formation professionnelle \n - JEP \n - Santé \n
+                                - Service civique \n - Sport \n - Tourisme \n - Autre "
                               example: Formation
                             niveau:
                               type: string
@@ -17165,7 +17218,8 @@ paths:
                               title: URL de l'agrément
                               example: https://associations.api.gouv.fr/agrements/05.11.2018.pdf
                       documents_rna:
-                        title: Documents issus du RNA associés à l'entité
+                        title: Documents de l'association issus du répertoire national
+                          des associations (RNA)
                         type: array
                         items:
                           type: object
@@ -17246,7 +17300,7 @@ paths:
                               format: date
                               title: Date de dépôt du document
                               description: Parfois cette date est vide, vous pouvez
-                                vous référer à l'année (clé annee_depot)
+                                vous référer à l'année (clé annee_depot).
                               example: '2019-01-01'
                               nullable: true
                             annee_depot:
@@ -17256,7 +17310,7 @@ paths:
                               nullable: true
                             url:
                               type: string
-                              title: URL du document
+                              title: URL de téléchargement du document
                               example: https://associations.api.gouv.fr/documents/rapport_annuel.pdf
                     required:
                     - rna
@@ -17295,14 +17349,14 @@ paths:
                         example: '1234567890'
                       date_derniere_mise_a_jour_sirene:
                         title: Date de dernière mise à jour de l'association dans
-                          la base SIRENE
+                          le répertoire Sirene
                         type: string
                         format: date
                         example: '2019-01-01'
                         nullable: true
                       date_derniere_mise_a_jour_rna:
                         title: Date de dernière mise à jour de l'association dans
-                          le RNA
+                          le répertoire national des associations (RNA)
                         type: string
                         format: date
                         example: '2019-01-01'
