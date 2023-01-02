@@ -10,7 +10,7 @@ class TVAIntracommunautaire
   end
 
   def cle
-    cle = ((12 + (3 * (siren.to_i % 97))) % 97).to_s
+    cle = ((((siren.to_i % 97) * 3) + 12) % 97).to_s
     cle.rjust(2, '0')
   end
 end
