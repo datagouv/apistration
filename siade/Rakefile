@@ -11,10 +11,10 @@ begin
 rescue LoadError
 end
 
-production1 = 'production1.entreprise.api.gouv.fr'
-production2 = 'production2.entreprise.api.gouv.fr'
+api1 = 'api1.entreprise.api.gouv.fr'
+api2 = 'api2.entreprise.api.gouv.fr'
 
-domains = [production1, production2]
+domains = [api1, api2]
 
 task :setup do
   domains.each do |domain|
