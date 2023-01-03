@@ -14,6 +14,7 @@ class RedisService
 
   def_delegators :redis,
     :get,
+    :exists?,
     :set,
     :ttl
 end
