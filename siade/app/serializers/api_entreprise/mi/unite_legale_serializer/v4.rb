@@ -5,7 +5,6 @@ class APIEntreprise::MI::UniteLegaleSerializer::V4 < APIEntreprise::V3AndMore::B
     siren
     nom
     sigle
-    nature
     reconnue_utilite_publique
     siret_siege
     forme_juridique

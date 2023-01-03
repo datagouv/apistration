@@ -39,7 +39,6 @@ class MI::Associations::BuildResource < BuildResource
       nom_sirene: association[:identite][:nom_sirene],
       sigle: association[:identite][:sigle],
       sigle_sirene: association[:identite][:sigle_sirene],
-      nature: association[:identite][:nature],
       reconnue_utilite_publique: association[:identite][:util_publique] == 'true',
       siret_siege: association[:identite][:id_siret_siege],
       forme_juridique: {

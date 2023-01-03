@@ -16129,13 +16129,6 @@ paths:
                         type: string
                         example: LPR
                         nullable: true
-                      nature:
-                        title: Nature de l'unité légale
-                        type: string
-                        example: Simplement déclarée
-                        enum:
-                        - Simplement déclarée
-                        - Reconnue d'utilité publique
                       reconnue_utilite_publique:
                         title: Indique si l'association est reconnue d'utilité publique
                         type: boolean
@@ -17272,7 +17265,6 @@ paths:
                     - nom
                     - active
                     - sigle
-                    - nature
                     - reconnue_utilite_publique
                     - siret_siege
                     - forme_juridique
