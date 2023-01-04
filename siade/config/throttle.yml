@@ -83,6 +83,11 @@ shared:
       - { controller: 'api_entreprise/v2/attestations_agefiph', action: 'show' }
     limit: 250
     period: 60
+  proxied_files:
+    endpoints:
+      - { controller: 'api_entreprise/proxied_files', action: 'show' }
+    limit: 50
+    period: 60
 
 test:
   low_latency_documents:
@@ -92,4 +97,6 @@ test:
   json_resources:
     limit: 2
   very_low_latency_json_resources:
+    limit: 2
+  proxied_files:
     limit: 2

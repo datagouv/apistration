@@ -162,6 +162,20 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
         end
       end
 
+      describe 'proxied files resources throttling' do
+        it_behaves_like 'throttling group of endpoints' do
+          let(:limit) { throttle_config.dig(:proxied_files, :limit) }
+
+          let(:endpoints) do
+            [{
+              controller: 'api_entreprise/proxied_files',
+              action: 'show',
+              uuid: '123'
+            }]
+          end
+        end
+      end
+
       describe 'JSON resources throttling' do
         it_behaves_like 'throttling group of endpoints' do
           let(:limit) { throttle_config.dig(:json_resources, :limit) }

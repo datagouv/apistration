@@ -38,6 +38,10 @@ class Rack::Attack
       throttle_config.fetch(:very_low_latency_json_resources)
     end
 
+    def proxied_files_config
+      throttle_config.fetch(:proxied_files)
+    end
+
     def throttle_config
       Rails.configuration.throttle
     end
@@ -60,6 +64,7 @@ class Rack::Attack
 
   throttle_exceptions(zone_name_prefix: 'high_latency_docs', **high_latency_documents_config)
   throttle_exceptions(zone_name_prefix: 'very_low_latency_json_resources', **very_low_latency_json_resources_config)
+  throttle_exceptions(zone_name_prefix: 'proxied_files', **proxied_files_config)
 
   self.blocklisted_responder = lambda do |req|
     query_params = Rack::Utils.parse_nested_query(req['QUERY_STRING'])
