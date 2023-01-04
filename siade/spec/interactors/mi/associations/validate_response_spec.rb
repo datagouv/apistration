@@ -22,9 +22,9 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
         let(:body) do
           '<asso>' \
             '<identite>' \
-            '<nom>' \
-            'A Name' \
-            '</nom>' \
+            '<id_correspondance>' \
+            '1234567890' \
+            '</id_correspondance>' \
             "<id_rna>#{valid_rna_id}</id_rna>" \
             '</identite>' \
             '</asso>'
@@ -40,9 +40,9 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
           let(:body) do
             '<asso>' \
               '<identite>' \
-              '<nom>' \
-              'A Name' \
-              '</nom>' \
+              '<id_correspondance>' \
+              '1234567890' \
+              '</id_correspondance>' \
               '<regime>' \
               'loi1901' \
               '</regime>' \
@@ -59,9 +59,9 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
           let(:body) do
             '<asso>' \
               '<identite>' \
-              '<nom>' \
-              'A Name' \
-              '</nom>' \
+              '<id_correspondance>' \
+              '1234567890' \
+              '</id_correspondance>' \
               '<regime>' \
               'alsaceMoselle' \
               '</regime>' \

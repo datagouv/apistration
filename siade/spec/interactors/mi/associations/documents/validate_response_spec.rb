@@ -20,9 +20,9 @@ RSpec.describe MI::Associations::Documents::ValidateResponse, type: :validate_re
       let(:body) do
         '<asso>' \
           '<identite>' \
-          '<nom>' \
-          'A Name' \
-          '</nom>' \
+          '<id_correspondance>' \
+          '1234567890' \
+          '</id_correspondance>' \
           '</identite>' \
           '<documents>' \
           '<nbDocRna>' \
@@ -62,9 +62,9 @@ RSpec.describe MI::Associations::Documents::ValidateResponse, type: :validate_re
       let(:body) do
         '<asso>' \
           '<identite>' \
-          '<nom>' \
-          'A Name' \
-          '</nom>' \
+          '<id_correspondance>' \
+          '1234567890' \
+          '</id_correspondance>' \
           '</identite>' \
           '<documents>' \
           '<nbDocRna>' \

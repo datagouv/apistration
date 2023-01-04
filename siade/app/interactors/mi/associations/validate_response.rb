@@ -26,7 +26,7 @@ class MI::Associations::ValidateResponse < ValidateResponse
 
   def payload_valid?
     payload_present? &&
-      payload_has_name?
+      payload_has_id_correspondance?
   end
 
   def rna_id_missing?
@@ -47,9 +47,9 @@ class MI::Associations::ValidateResponse < ValidateResponse
     xml_body_as_hash[:asso].present?
   end
 
-  def payload_has_name?
+  def payload_has_id_correspondance?
     return unless xml_body_as_hash[:asso][:identite]
 
-    !xml_body_as_hash[:asso][:identite][:nom].nil?
+    !xml_body_as_hash[:asso][:identite][:id_correspondance].nil?
   end
 end
