@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'MI : Associations unite legales', api: :entreprise, type: %i[request swagger] do
+RSpec.describe 'MI: Associations v4', api: :entreprise, type: %i[request swagger] do
   path '/v4/ministere_interieur/api-asso/associations/{siren_or_rna}' do
     get SwaggerData.get('mi.v4/unite_legale.title') do
       tags(*SwaggerData.get('mi.v4/unite_legale.tags'))
@@ -18,7 +18,7 @@ RSpec.describe 'MI : Associations unite legales', api: :entreprise, type: %i[req
       end
 
       describe 'with valid token and mandatory params', valid: true do
-        response 200, 'Unite legale trouvée' do
+        response 200, 'Association trouvée' do
           description SwaggerData.get('mi.v4/unite_legale.description')
 
           schema build_rswag_response(
@@ -43,7 +43,7 @@ RSpec.describe 'MI : Associations unite legales', api: :entreprise, type: %i[req
 
           unprocessable_entity_error_request(:siren_or_rna)
 
-          response '404', 'Unité légale non trouvée', vcr: { cassette_name: 'mi/associations/with_rna_not_found' } do
+          response '404', 'Association non trouvée', vcr: { cassette_name: 'mi/associations/with_rna_not_found' } do
             let(:siren_or_rna) { non_existing_rna_id }
 
             schema '$ref' => '#/components/schemas/Error'

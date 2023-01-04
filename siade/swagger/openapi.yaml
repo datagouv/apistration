@@ -16062,7 +16062,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
-          description: Unite legale trouvée
+          description: Association trouvée
           headers:
             RateLimit-Limit:
               schema:
@@ -17427,7 +17427,7 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Unité légale non trouvée
+          description: Association non trouvée
           content:
             application/json:
               schema:
