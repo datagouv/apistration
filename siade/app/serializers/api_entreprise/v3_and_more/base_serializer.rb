@@ -34,7 +34,9 @@ class APIEntreprise::V3AndMore::BaseSerializer
     end
 
     def url_for(params = {})
-      Rails.application.routes.url_helpers.url_for(params.merge(host: 'entreprise.api.gouv.fr'))
+      host = Rails.env.production? ? 'entreprise.api.gouv.fr' : "#{Rails.env}.entreprise.api.gouv.fr"
+
+      Rails.application.routes.url_helpers.url_for(params.merge(host:))
     end
   end
 
