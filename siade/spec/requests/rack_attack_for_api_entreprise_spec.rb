@@ -230,7 +230,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
                 action: 'show',
                 siret: 123,
                 annee: 2020,
-                mois: 01
+                mois: 1
               }]
             end
           end
@@ -242,7 +242,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
                 action: 'show',
                 siren: 123,
                 annee: 2020,
-                mois: 01
+                mois: 1
               }]
             end
           end
