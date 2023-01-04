@@ -118,7 +118,7 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
   get 'ministere_interieur/rna/associations/:siret_or_rna', to: 'api_entreprise/v3_and_more/mi/associations#show'
   get 'ministere_interieur/rna/associations/:siret_or_rna/documents', to: 'api_entreprise/v3_and_more/mi/documents_associations#show'
 
-  get 'ministere_interieur/api-asso/unites_legales/:siren_or_rna', to: 'api_entreprise/v3_and_more/mi/unites_legales#show'
+  get 'ministere_interieur/api-asso/associations/:siren_or_rna', to: 'api_entreprise/v3_and_more/mi/unites_legales#show'
 
   namespace :msa do
     get 'etablissements/:siret/conformite_cotisations' => '/api_entreprise/v3_and_more/msa/conformites_cotisations#show'

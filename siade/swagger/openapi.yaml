@@ -15920,7 +15920,7 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/ministere_interieur/rna/associations/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v4/ministere_interieur/api-asso/unites_legales/{siren_or_rna}":
+  "/v4/ministere_interieur/api-asso/associations/{siren_or_rna}":
     get:
       summary: Données association et documents
       tags:
@@ -17512,7 +17512,7 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v4/ministere_interieur/api-asso/unites_legales/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+            --url "https://entreprise.api.gouv.fr/v4/ministere_interieur/api-asso/associations/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/msa/etablissements/{siret}/conformite_cotisations":
     get:
       summary: Conformité cotisations de sécurité sociale agricole
