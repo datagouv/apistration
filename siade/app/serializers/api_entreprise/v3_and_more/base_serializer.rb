@@ -38,6 +38,14 @@ class APIEntreprise::V3AndMore::BaseSerializer
 
       Rails.application.routes.url_helpers.url_for(params.merge(host:))
     end
+
+    def url_for_proxied_file(url)
+      url_for(
+        controller: 'api_entreprise/proxied_files',
+        action: :show,
+        uuid: ProxiedFileService.set(url)
+      )
+    end
   end
 
   def serializable_hash
