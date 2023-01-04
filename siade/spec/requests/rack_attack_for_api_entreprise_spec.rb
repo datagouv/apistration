@@ -403,10 +403,8 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
     let(:throttle_config) { Rails.application.config_for(:throttle) }
 
     let(:throttled_endpoints) do
-      config = throttle_config.dig(:low_latency_documents, :endpoints)
-        .concat(throttle_config.dig(:json_resources, :endpoints))
-        .concat(throttle_config.dig(:high_latency_documents, :endpoints))
-        .concat(throttle_config.dig(:very_low_latency_json_resources, :endpoints))
+      config = throttle_config.values.pluck(:endpoints).flatten
+
       config.map { |conf| conf.slice(:controller, :action) }.uniq
     end
 
