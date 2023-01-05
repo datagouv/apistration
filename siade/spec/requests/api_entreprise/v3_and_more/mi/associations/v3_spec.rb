@@ -3,6 +3,8 @@ require 'swagger_helper'
 RSpec.describe 'MI : Associations', api: :entreprise, type: %i[request swagger] do
   path '/v3/ministere_interieur/rna/associations/{siret_or_rna}' do
     get SwaggerData.get('mi.v3/association.title') do
+      deprecated true
+
       tags(*SwaggerData.get('mi.v3/association.tags'))
 
       parameter_siret_or_rna

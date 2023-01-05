@@ -15065,6 +15065,7 @@ paths:
   "/v3/ministere_interieur/rna/associations/{siret_or_rna}/documents":
     get:
       summary: Divers documents d'une association
+      deprecated: true
       tags:
       - Informations générales
       parameters:
@@ -15487,6 +15488,7 @@ paths:
   "/v3/ministere_interieur/rna/associations/{siret_or_rna}":
     get:
       summary: Données du RNA d'une association
+      deprecated: true
       tags:
       - Informations générales
       parameters:
