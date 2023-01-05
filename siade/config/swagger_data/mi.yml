@@ -148,12 +148,8 @@ mi:
         example: 0
         description: "Le nombre de documents ignorés car déficients (indisponibles, PDF invalide etc...)"
         type: "integer"
-  v4/unite_legale:
-    title: "Données association et documents"
-    description: "Informations de référence d'une association, issues du répertoire national des associations (RNA) et des documents administratifs complémentaires (DAC)."
-    tags:
-      - "Informations générales"
-    attributes:
+  v4/unite_legale_shared:
+    flat_attributes: &unite_legale_shared_flat_attributes
       rna:
         type: "string"
         title: "Numéro RNA"
@@ -287,6 +283,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
         En savoir plus : https://www.associations.gouv.fr/l-association-et-les-impots-commerciaux.html"
         type: "boolean"
         example: true
+
       date_creation:
         title: "Date de création de l'association"
         description: "La date de création provient en priorité de la base RNA si celle-ci est présente, sinon de la base Sirene."
@@ -363,7 +360,389 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
             format: "date"
             example: "2019-01-01"
             nullable: true
-      activites:
+      composition_reseau:
+        title: "Composition du réseau, de l'union ou de la fédération"
+        type: "array"
+        items:
+          type: "object"
+          required:
+            - nom
+            - rna
+            - siret
+            - telephone
+            - courriel
+            - objet
+          properties:
+            nom:
+              type: "string"
+              title: "Nom du membre du réseau"
+              example: "Association des parents d'élèves de l'école primaire de la ville"
+            rna:
+              type: "string"
+              title: "Numéro RNA du membre du réseau"
+              example: "W123456789"
+              nullable: true
+            siret:
+              type: "string"
+              title: "Numéro SIRET du membre du réseau"
+              example: "12345678901234"
+              nullable: true
+            telephone:
+              type: "string"
+              title: "Numéro de téléphone du membre du réseau"
+              example: "0123456789"
+              nullable: true
+            courriel:
+              type: "string"
+              title: "Courriel du membre du réseau"
+              example: "reseau@association.fr"
+              nullable: true
+            objet:
+              type: "string"
+              title: "Objet du membre du réseau"
+              example: "Promouvoir l'engagement des parents d'élèves dans l'éducation de leurs enfants"
+      agrements:
+        title: "Liste des agréments administratifs associés à l'entité"
+        type: "array"
+        items:
+          type: "object"
+          required:
+            - "numero"
+            - "date_attribution"
+            - "type"
+            - "niveau"
+            - "attributeur"
+            - "url"
+          properties:
+            numero:
+              type: "string"
+              title: "Numéro de l'agrément"
+              description: "Ce champ étant libre, il n'y a pas de format spécifique."
+              example: "05.11.2018"
+            date_attribution:
+              type: "string"
+              format: "date"
+              title: "Date d'attribution de l'agrément"
+              example: "2018-11-05"
+            type:
+              type: "string"
+              title: "Type d'agrément"
+              description: "Liste non-exhaustive des agréments :
+                \n
+                \n
+                - Agriculture
+                \n
+                - CIDFF
+                \n
+                - Consommation
+                \n
+                - Ecologie
+                \n
+                - Education nationale
+                \n
+                - Formation
+                \n
+                - Formation professionnelle
+                \n
+                - JEP
+                \n
+                - Santé
+                \n
+                - Service civique
+                \n
+                - Sport
+                \n
+                - Tourisme
+                \n
+                - Autre
+                "
+              example: "Formation"
+            niveau:
+              type: "string"
+              title: "Niveau de l'agrément"
+              example: "local"
+              enum:
+                - "national"
+                - "local"
+            attributeur:
+              type: "string"
+              title: "Nom de l'organisme qui a attribué l'agrément"
+              example: "Ministère de l'Education nationale"
+            url:
+              type: "string"
+              title: "URL de l'agrément"
+              example: "https://associations.api.gouv.fr/agrements/05.11.2018.pdf"
+
+    unite_legale_etablissement_shared_attributes: &unite_legale_etablissement_shared_attributes
+      siren:
+        type: "string"
+        title: "Numéro SIREN de l'association à laquelle l'établissement est lié"
+        example: "123456789"
+      siret:
+        type: "string"
+        title: "Numéro SIRET de l'établissement"
+        example: "12345678900001"
+      actif:
+        type: "boolean"
+        title: "Indique si l'établissement est actif"
+        description: "Cette information provient du répertoire Sirene."
+        example: true
+      siege:
+        type: "boolean"
+        title: "Indique si l'établissement est le siège de l'association"
+        description: "Cette information provient du répertoire Sirene."
+        example: true
+      nom:
+        type: "string"
+        title: "Enseigne de l'établissement"
+        description: "Cette valeur est très rarement renseignée. Elle provient du répertoire Sirene ou des documents administratifs complémentaires (DAC)."
+        example: "Croix rouge française"
+        nullable: true
+      telephone:
+        type: "string"
+        title: "Numéro de téléphone de l'établissement"
+        description: "Cette information provient du répertoire Sirene ou des documents administratifs complémentaires (DAC)."
+        example: "0123456789"
+        nullable: true
+      courriel:
+        type: "string"
+        title: "Courriel de l'établissement"
+        description: "Cette information provient des documents administratifs complémentaires (DAC)."
+        example: "contact@association.fr"
+        nullable: true
+      date_debut_activite:
+        type: "string"
+        format: "date"
+        title: "Date de début d'activité de l'établissement"
+        description: "Cette information provient du répertoire Sirene."
+        example: "2019-01-01"
+        nullable: true
+      adresse:
+        title: "Adresse de l'établissement"
+        description: "Cette information provient du répertoire Sirene."
+        type: "object"
+        properties: *association_adresse_properties
+      activite_principale: &activite_principale
+        type: "object"
+        title: "Activité principale"
+        description: "Lorsque l'association est immatriculée au répertoire Sirene, elle se voit attribuer un code APE. Ce code de 4 chiffres + 1 lettre est extrait de la nomenclature d'activité française (NAF) de l'Insee.
+        \n
+        \n
+        Nomemclature d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2120875"
+        required:
+          - code
+          - libelle
+        properties:
+          code:
+            type: "string"
+            title: "Code de l'activité principale"
+            example: "88.99B"
+            nullable: true
+          libelle:
+            type: "string"
+            title: "Libellé de l'activité principale"
+            example: "Action sociale sans hébergement n.c.a."
+            nullable: true
+      tranche_effectif: &tranche_effectif
+        type: "object"
+        title: "Tranche d'effectif salarié de l'entité"
+        description: "Pour environ la moitié des établissements, la tranche d'effectif salarié n'est pas renseignée. Il s'agit principalement d'établissements récents (créés il y a moins de trois ans). Les délais de récolte et traitement font que les valeurs indiquées datent de l’année N-2 ou N-3. Cette information est issue du répertoire Sirene et ne concerne donc que les associations qui y sont immatriculées."
+        required:
+          - code
+          - libelle
+        properties:
+          code:
+            type: "string"
+            nullable: true
+            example: "51"
+            nullable: true
+            description:
+              "Le code effectif indique la tranche d'effectif salarié de l'unité légale. Le nombre de salarié est déterminé en fonction de l'effectif de chacun des établissements de l'unité légale :
+              \n
+              \n
+              - NN : Unités non employeuses (pas de salarié au cours de l'année de référence et pas d'effectif au 31/12). Cette tranche peut contenir quelques effectifs inconnus
+              \n
+              - 00 : 0 salarié (n'ayant pas d'effectif au 31/12 mais ayant employé des salariés au cours de l'année de référence)
+              \n
+              - 01 : 1 ou 2 salariés
+              \n
+              - 02 : 3 à 5 salariés
+              \n
+              - 03 : 6 à 9 salariés
+              \n
+              - 11 : 10 à 19 salariés
+              \n
+              - 12 : 20 à 49 salariés
+              \n
+              - 21 : 50 à 99 salariés
+              \n
+              - 22 : 100 à 199 salariés
+              \n
+              - 31 : 200 à 249 salariés
+              \n
+              - 32 : 250 à 499 salariés
+              \n
+              - 41 : 500 à 999 salariés
+              \n
+              - 42 : 1 000 à 1 999 salariés
+              \n
+              - 51 : 2 000 à 4 999 salariés
+              \n
+              - 52 : 5 000 à 9 999 salariés
+              \n
+              - 53 : 10 000 salariés et plus
+              \n
+              \n
+              Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen."
+            enum:
+            - "NN"
+            - "00"
+            - "01"
+            - "02"
+            - "03"
+            - "11"
+            - "12"
+            - "21"
+            - "22"
+            - "31"
+            - "32"
+            - "41"
+            - "42"
+            - "51"
+            - "52"
+            - "53"
+          intitule:
+            title: "Intitulé associé au code effectif"
+            type: "string"
+            nullable: true
+            example: "2 000 à 4 999 salariés"
+            nullable: true
+      rhs:
+        title: "Information sur les ressources humaines"
+        type: "array"
+        items:
+          type: "object"
+          required:
+            - annee
+            - nombre_benevoles
+            - nombre_volontaires
+            - nombre_salaries
+            - nombre_salaries_etpt
+            - nombre_emplois_aides
+            - nombre_personnels_detaches
+            - nombre_adherents
+          properties:
+            annee:
+              type: "string"
+              title: "Année de la donnée"
+              example: "2019"
+            nombre_benevoles:
+              type: "integer"
+              title: "Nombre de bénévoles"
+              example: 10
+            nombre_volontaires:
+              type: "integer"
+              title: "Nombre de volontaires"
+              example: 11
+            nombre_salaries:
+              type: "integer"
+              title: "Nombre de salariés"
+              example: 12
+            nombre_salaries_etpt:
+              type: "number"
+              format: "float"
+              title: "Nombre de salariés à temps partiel"
+              example: 13.0
+            nombre_emplois_aides:
+              type: "integer"
+              title: "Nombre d'emplois aidés"
+              example: 14
+            nombre_personnels_detaches:
+              type: "integer"
+              title: "Nombre de personnels détachés"
+              example: 15
+            nombre_adherents:
+              type: "object"
+              title: "Nombre d'adhérents"
+              required:
+                - total
+                - hommes
+                - femmes
+              properties:
+                hommes:
+                  type: "integer"
+                  title: "Nombre d'adhérents hommes"
+                  example: 16
+                femmes:
+                  type: "integer"
+                  title: "Nombre d'adhérents femmes"
+                  example: 17
+                total:
+                  type: "integer"
+                  title: "Nombre d'adhérents total"
+                  example: 33
+      comptes:
+        title: "Comptes de résultat et financement perçus"
+        type: "array"
+        items:
+          type: "object"
+          required:
+            - annee
+            - commisaire_aux_comptes
+            - montant_dons
+            - cause_subventions
+            - montant_subventions
+            - montant_aides_sur_3ans
+            - total_charges
+            - total_resultat
+            - total_produits
+          properties:
+            annee:
+              type: "string"
+              title: "Année associé à ce compte"
+              example: "2019"
+            commisaire_aux_comptes:
+              title: "Détermine si l'association possède un commissaire aux comptes"
+              type: "boolean"
+              example: true
+            montant_dons:
+              title: "Montant des dons perçus"
+              type: "number"
+              example: 1000.0
+            cause_subventions:
+              title: "Cause des subventions"
+              type: "string"
+              example: "Subventions d'investissement"
+              nullable: true
+            montant_subventions:
+              title: "Montant des subventions"
+              type: "number"
+              example: 1200.0
+            montant_aides_sur_3ans:
+              title: "Montant des aides sur 3 ans"
+              type: "number"
+              example: 1230.0
+            total_charges:
+              title: "Total des charges"
+              type: "number"
+              example: 1234.0
+            total_resultat:
+              title: "Total du résultat"
+              type: "number"
+              example: 2000.0
+            total_produits:
+              title: "Total des produits"
+              type: "number"
+              example: 3000.0
+
+  v4/unite_legale:
+    title: "Données association et documents"
+    description: "Informations de référence d'une association, issues du répertoire national des associations (RNA) et des documents administratifs complémentaires (DAC)."
+    tags:
+      - "Informations générales"
+    attributes:
+      <<: *unite_legale_shared_flat_attributes
+      activites: &unite_legale_activites
         title: "Liste des activités de l'association"
         type: "object"
         required:
@@ -421,101 +800,8 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
               - "departemental"
               - "local"
             nullable: true
-          activite_principale: &activite_principale
-            type: "object"
-            title: "Activité principale"
-            description: "Lorsque l'association est immatriculée au répertoire Sirene, elle se voit attribuer un code APE. Ce code de 4 chiffres + 1 lettre est extrait de la nomenclature d'activité française (NAF) de l'Insee.
-            \n
-            \n
-            Nomemclature d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2120875"
-            required:
-              - code
-              - libelle
-            properties:
-              code:
-                type: "string"
-                title: "Code de l'activité principale"
-                example: "88.99B"
-                nullable: true
-              libelle:
-                type: "string"
-                title: "Libellé de l'activité principale"
-                example: "Action sociale sans hébergement n.c.a."
-                nullable: true
-          tranche_effectif: &tranche_effectif
-            type: "object"
-            title: "Tranche d'effectif salarié de l'entité"
-            description: "Pour environ la moitié des établissements, la tranche d'effectif salarié n'est pas renseignée. Il s'agit principalement d'établissements récents (créés il y a moins de trois ans). Les délais de récolte et traitement font que les valeurs indiquées datent de l’année N-2 ou N-3. Cette information est issue du répertoire Sirene et ne concerne donc que les associations qui y sont immatriculées."
-            required:
-              - code
-              - libelle
-            properties:
-              code:
-                type: "string"
-                nullable: true
-                example: "51"
-                nullable: true
-                description:
-                  "Le code effectif indique la tranche d'effectif salarié de l'unité légale. Le nombre de salarié est déterminé en fonction de l'effectif de chacun des établissements de l'unité légale :
-                  \n
-                  \n
-                  - NN : Unités non employeuses (pas de salarié au cours de l'année de référence et pas d'effectif au 31/12). Cette tranche peut contenir quelques effectifs inconnus
-                  \n
-                  - 00 : 0 salarié (n'ayant pas d'effectif au 31/12 mais ayant employé des salariés au cours de l'année de référence)
-                  \n
-                  - 01 : 1 ou 2 salariés
-                  \n
-                  - 02 : 3 à 5 salariés
-                  \n
-                  - 03 : 6 à 9 salariés
-                  \n
-                  - 11 : 10 à 19 salariés
-                  \n
-                  - 12 : 20 à 49 salariés
-                  \n
-                  - 21 : 50 à 99 salariés
-                  \n
-                  - 22 : 100 à 199 salariés
-                  \n
-                  - 31 : 200 à 249 salariés
-                  \n
-                  - 32 : 250 à 499 salariés
-                  \n
-                  - 41 : 500 à 999 salariés
-                  \n
-                  - 42 : 1 000 à 1 999 salariés
-                  \n
-                  - 51 : 2 000 à 4 999 salariés
-                  \n
-                  - 52 : 5 000 à 9 999 salariés
-                  \n
-                  - 53 : 10 000 salariés et plus
-                  \n
-                  \n
-                  Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen."
-                enum:
-                - "NN"
-                - "00"
-                - "01"
-                - "02"
-                - "03"
-                - "11"
-                - "12"
-                - "21"
-                - "22"
-                - "31"
-                - "32"
-                - "41"
-                - "42"
-                - "51"
-                - "52"
-                - "53"
-              intitule:
-                title: "Intitulé associé au code effectif"
-                type: "string"
-                nullable: true
-                example: "2 000 à 4 999 salariés"
-                nullable: true
+          activite_principale: *activite_principale
+          tranche_effectif: *tranche_effectif
           economie_sociale_et_solidaire:
             title: "Indicateur de l'économie sociale et solidaire"
             type: "boolean"
@@ -549,58 +835,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
             - comptes
             - documents_dac
           properties:
-            siren:
-              type: "string"
-              title: "Numéro SIREN de l'association à laquelle l'établissement est lié"
-              example: "123456789"
-            siret:
-              type: "string"
-              title: "Numéro SIRET de l'établissement"
-              example: "12345678900001"
-            actif:
-              type: "boolean"
-              title: "Indique si l'établissement est actif"
-              description: "Cette information provient du répertoire Sirene."
-              example: true
-            siege:
-              type: "boolean"
-              title: "Indique si l'établissement est le siège de l'association"
-              description: "Cette information provient du répertoire Sirene."
-              example: true
-            nom:
-              type: "string"
-              title: "Enseigne de l'établissement"
-              description: "Cette valeur est très rarement renseignée. Elle provient du répertoire Sirene ou des documents administratifs complémentaires (DAC)."
-              example: "Croix rouge française"
-              nullable: true
-            telephone:
-              type: "string"
-              title: "Numéro de téléphone de l'établissement"
-              description: "Cette information provient du répertoire Sirene ou des documents administratifs complémentaires (DAC)."
-              example: "0123456789"
-              nullable: true
-            courriel:
-              type: "string"
-              title: "Courriel de l'établissement"
-              description: "Cette information provient des documents administratifs complémentaires (DAC)."
-              example: "contact@association.fr"
-              nullable: true
-            date_debut_activite:
-              type: "string"
-              format: "date"
-              title: "Date de début d'activité de l'établissement"
-              description: "Cette information provient du répertoire Sirene."
-              # FIXME pas sûr de cette info
-              # description: "Cette valeur peut être nulle si l'établissement est très ancien"
-              example: "2019-01-01"
-              nullable: true
-            adresse:
-              title: "Adresse de l'établissement"
-              description: "Cette information provient du répertoire Sirene."
-              type: "object"
-              properties: *association_adresse_properties
-            activite_principale: *activite_principale
-            tranche_effectif: *tranche_effectif
+            <<: *unite_legale_etablissement_shared_attributes
             representant_legaux:
               title: "Liste des représentants légaux de l'établissement"
               # NOTE: j'exclut les deleted ainsi que les personnes marquées comme est_representant_legal = false
@@ -662,123 +897,6 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
                     title: "Courriel du représentant légal"
                     example: "dupont.jean@association.fr"
                     nullable: true
-            rhs:
-              title: "Information sur les ressources humaines"
-              type: "array"
-              items:
-                type: "object"
-                required:
-                  - annee
-                  - nombre_benevoles
-                  - nombre_volontaires
-                  - nombre_salaries
-                  - nombre_salaries_etpt
-                  - nombre_emplois_aides
-                  - nombre_personnels_detaches
-                  - nombre_adherents
-                properties:
-                  annee:
-                    type: "string"
-                    title: "Année de la donnée"
-                    example: "2019"
-                  nombre_benevoles:
-                    type: "integer"
-                    title: "Nombre de bénévoles"
-                    example: 10
-                  nombre_volontaires:
-                    type: "integer"
-                    title: "Nombre de volontaires"
-                    example: 11
-                  nombre_salaries:
-                    type: "integer"
-                    title: "Nombre de salariés"
-                    example: 12
-                  nombre_salaries_etpt:
-                    type: "number"
-                    format: "float"
-                    title: "Nombre de salariés à temps partiel"
-                    example: 13.0
-                  nombre_emplois_aides:
-                    type: "integer"
-                    title: "Nombre d'emplois aidés"
-                    example: 14
-                  nombre_personnels_detaches:
-                    type: "integer"
-                    title: "Nombre de personnels détachés"
-                    example: 15
-                  nombre_adherents:
-                    type: "object"
-                    title: "Nombre d'adhérents"
-                    required:
-                      - total
-                      - hommes
-                      - femmes
-                    properties:
-                      hommes:
-                        type: "integer"
-                        title: "Nombre d'adhérents hommes"
-                        example: 16
-                      femmes:
-                        type: "integer"
-                        title: "Nombre d'adhérents femmes"
-                        example: 17
-                      total:
-                        type: "integer"
-                        title: "Nombre d'adhérents total"
-                        example: 33
-            comptes:
-              title: "Comptes de résultat et financement perçus"
-              type: "array"
-              items:
-                type: "object"
-                required:
-                  - annee
-                  - commisaire_aux_comptes
-                  - montant_dons
-                  - cause_subventions
-                  - montant_subventions
-                  - montant_aides_sur_3ans
-                  - total_charges
-                  - total_resultat
-                  - total_produits
-                properties:
-                  annee:
-                    type: "string"
-                    title: "Année associé à ce compte"
-                    example: "2019"
-                  commisaire_aux_comptes:
-                    title: "Détermine si l'association possède un commissaire aux comptes"
-                    type: "boolean"
-                    example: true
-                  montant_dons:
-                    title: "Montant des dons perçus"
-                    type: "number"
-                    example: 1000.0
-                  cause_subventions:
-                    title: "Cause des subventions"
-                    type: "string"
-                    example: "Subventions d'investissement"
-                    nullable: true
-                  montant_subventions:
-                    title: "Montant des subventions"
-                    type: "number"
-                    example: 1200.0
-                  montant_aides_sur_3ans:
-                    title: "Montant des aides sur 3 ans"
-                    type: "number"
-                    example: 1230.0
-                  total_charges:
-                    title: "Total des charges"
-                    type: "number"
-                    example: 1234.0
-                  total_resultat:
-                    title: "Total du résultat"
-                    type: "number"
-                    example: 2000.0
-                  total_produits:
-                    title: "Total des produits"
-                    type: "number"
-                    example: 3000.0
             documents_dac:
               title: "Liste des Documents Administratifs Complémentaires (DAC) associé à cet établissement"
               description: "Tous les documents DAC sont renvoyés à l'exception des documents marqués comme étant des RIBs ou ceux marqué comme étant supprimés."
@@ -934,119 +1052,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
                   title: "Nombre de licenciés total"
                   example: 33
                   nullable: true
-      composition_reseau:
-        title: "Composition du réseau, de l'union ou de la fédération"
-        type: "array"
-        items:
-          type: "object"
-          required:
-            - nom
-            - rna
-            - siret
-            - telephone
-            - courriel
-            - objet
-          properties:
-            nom:
-              type: "string"
-              title: "Nom du membre du réseau"
-              example: "Association des parents d'élèves de l'école primaire de la ville"
-            rna:
-              type: "string"
-              title: "Numéro RNA du membre du réseau"
-              example: "W123456789"
-              nullable: true
-            siret:
-              type: "string"
-              title: "Numéro SIRET du membre du réseau"
-              example: "12345678901234"
-              nullable: true
-            telephone:
-              type: "string"
-              title: "Numéro de téléphone du membre du réseau"
-              example: "0123456789"
-              nullable: true
-            courriel:
-              type: "string"
-              title: "Courriel du membre du réseau"
-              example: "reseau@association.fr"
-              nullable: true
-            objet:
-              type: "string"
-              title: "Objet du membre du réseau"
-              example: "Promouvoir l'engagement des parents d'élèves dans l'éducation de leurs enfants"
-      agrements:
-        title: "Liste des agréments administratifs associés à l'entité"
-        type: "array"
-        items:
-          type: "object"
-          required:
-            - "numero"
-            - "date_attribution"
-            - "type"
-            - "niveau"
-            - "attributeur"
-            - "url"
-          properties:
-            numero:
-              type: "string"
-              title: "Numéro de l'agrément"
-              description: "Ce champ étant libre, il n'y a pas de format spécifique."
-              example: "05.11.2018"
-            date_attribution:
-              type: "string"
-              format: "date"
-              title: "Date d'attribution de l'agrément"
-              example: "2018-11-05"
-            type:
-              type: "string"
-              title: "Type d'agrément"
-              description: "Liste non-exhaustive des agréments :
-                \n
-                \n
-                - Agriculture
-                \n
-                - CIDFF
-                \n
-                - Consommation
-                \n
-                - Ecologie
-                \n
-                - Education nationale
-                \n
-                - Formation
-                \n
-                - Formation professionnelle
-                \n
-                - JEP
-                \n
-                - Santé
-                \n
-                - Service civique
-                \n
-                - Sport
-                \n
-                - Tourisme
-                \n
-                - Autre
-                "
-              example: "Formation"
-            niveau:
-              type: "string"
-              title: "Niveau de l'agrément"
-              example: "local"
-              enum:
-                - "national"
-                - "local"
-            attributeur:
-              type: "string"
-              title: "Nom de l'organisme qui a attribué l'agrément"
-              example: "Ministère de l'Education nationale"
-            url:
-              type: "string"
-              title: "URL de l'agrément"
-              example: "https://associations.api.gouv.fr/agrements/05.11.2018.pdf"
-      documents_rna:
+      documents_rna: &unite_legale_documents_rna
         title: "Documents de l'association issus du répertoire national des associations (RNA)"
         type: "array"
         items:
@@ -1144,7 +1150,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
               type: "string"
               title: "URL de téléchargement du document"
               example: "https://associations.api.gouv.fr/documents/rapport_annuel.pdf"
-    meta:
+    meta: &unite_legale_meta
       internal_id:
         type: "string"
         title: "Identifiant interne de l'entité au sein de l'API manager du Ministère de l'Intérieur"
@@ -1161,4 +1167,35 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
         format: "date"
         example: "2019-01-01"
         nullable: true
+
+  v4/unite_legale_open_data:
+    title: "Données association et documents en open data"
+    description: "Informations de référence accessible en open data d'une association, issues du répertoire national des associations (RNA)."
+    tags:
+      - "Informations générales"
+    attributes:
+      <<: *unite_legale_shared_flat_attributes
+      activites: *unite_legale_activites
+      etablissements:
+        title: "Liste des établissements de l'association pour lesquels des informations sont disponibles."
+        type: "array"
+        items:
+          type: "object"
+          required:
+            - siren
+            - siret
+            - siege
+            - nom
+            - telephone
+            - courriel
+            - actif
+            - date_debut_activite
+            - adresse
+            - activite_principale
+            - tranche_effectif
+            - rhs
+            - comptes
+          properties:
+            <<: *unite_legale_etablissement_shared_attributes
+    meta: *unite_legale_meta
 

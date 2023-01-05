@@ -205,3 +205,6 @@
 
 - name: "[V4] Ministère de l'Intérieur associations"
   http_path: '/v4/ministere_interieur/api-asso/associations/77571979202650'
+
+- name: "[V4] Ministère de l'Intérieur associations open data"
+  http_path: '/v4/ministere_interieur/api-asso/associations/open_data/77571979202650'
