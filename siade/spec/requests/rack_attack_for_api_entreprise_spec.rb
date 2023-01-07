@@ -206,8 +206,8 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
           it_behaves_like 'throttling group of endpoints' do
             let(:endpoints) do
               [{
-                controller: 'api_entreprise/v2/documents_inpi',
-                action: 'actes',
+                controller: 'api_entreprise/v2/actes_inpi',
+                action: 'show',
                 siren: 123
               }]
             end
@@ -216,8 +216,8 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
           it_behaves_like 'throttling group of endpoints' do
             let(:endpoints) do
               [{
-                controller: 'api_entreprise/v2/documents_inpi',
-                action: 'bilans',
+                controller: 'api_entreprise/v2/bilans_inpi',
+                action: 'show',
                 siren: 123
               }]
             end

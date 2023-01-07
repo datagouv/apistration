@@ -21,8 +21,8 @@ shared:
   high_latency_documents:
     endpoints:
       - { controller: 'api_entreprise/v2/attestations_fiscales_dgfip', action: 'show' }
-      - { controller: 'api_entreprise/v2/documents_inpi', action: 'actes' }
-      - { controller: 'api_entreprise/v2/documents_inpi', action: 'bilans' }
+      - { controller: 'api_entreprise/v2/actes_inpi', action: 'show' }
+      - { controller: 'api_entreprise/v2/bilans_inpi', action: 'show' }
 
       - { controller: 'api_entreprise/v3_and_more/dgfip/attestations_fiscales', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/inpi/actes', action: 'show' }

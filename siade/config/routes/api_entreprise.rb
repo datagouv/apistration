@@ -45,8 +45,8 @@ namespace :v2, constraints: APIEntrepriseDomainConstraint.new  do
   get 'certificats_rge_ademe/:siret'                      => '/api_entreprise/v2/certificats_rge_ademe#show'
 
   get 'extraits_courts_inpi/:siren'                       => '/api_entreprise/v2/extraits_courts_inpi#show'
-  get 'actes_inpi/:siren'                                 => '/api_entreprise/v2/documents_inpi#actes'
-  get 'bilans_inpi/:siren'                                => '/api_entreprise/v2/documents_inpi#bilans'
+  get 'actes_inpi/:siren'                                 => '/api_entreprise/v2/actes_inpi#show'
+  get 'bilans_inpi/:siren'                                => '/api_entreprise/v2/bilans_inpi#show'
 
   get 'bilans_entreprises_bdf/:siren'                     => '/api_entreprise/v2/bilans_entreprises_bdf#show'
 

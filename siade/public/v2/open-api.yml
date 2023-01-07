@@ -1369,7 +1369,7 @@ paths:
       summary: "[INPI] Actes"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-actes_inpi'>Documentation métier</a>"
       parameters: *only_siren_parameters
-      operationId: 'documents_inpi_actes'
+      operationId: 'actes_inpi_show'
       responses:
         '200':
           description: 'OK'
@@ -1730,7 +1730,7 @@ paths:
       summary: "[INPI] Bilan annuels"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-bilans_inpi'>Documentation métier</a>"
       parameters: *only_siren_parameters
-      operationId: 'documents_inpi_bilans'
+      operationId: 'bilans_inpi_show'
       responses:
         '200':
           description: OK
