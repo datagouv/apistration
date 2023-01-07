@@ -14,13 +14,6 @@ module HandleTokens
 
     rescue_from NotAuthorizedError, NotValidTokenError, with: :user_not_authorized
     rescue_from ::JWT::ExpiredSignature, with: :user_no_longer_authorized
-
-    def self.authorize(*scopes)
-      send(:before_action, :check_authorization, lambda {
-        controller.authorize(*scopes)
-      })
-      send(:prepend_after_action, :authenticate_user!)
-    end
   end
 
   def jwt?
