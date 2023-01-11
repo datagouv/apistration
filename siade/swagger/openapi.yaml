@@ -15971,9 +15971,9 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Informations de référence de l'unité légale d'une association,
-        issues du répertoire national des associations (RNA) et des documents administratifs
-        complémentaires (DAC).
+      description: Informations de référence d'une association, issues du répertoire
+        national des associations (RNA) et des documents administratifs complémentaires
+        (DAC).
       responses:
         '401':
           description: Non autorisé

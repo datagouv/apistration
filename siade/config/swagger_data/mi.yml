@@ -150,7 +150,7 @@ mi:
         type: "integer"
   v4/unite_legale:
     title: "Données association et documents"
-    description: "Informations de référence de l'unité légale d'une association, issues du répertoire national des associations (RNA) et des documents administratifs complémentaires (DAC)."
+    description: "Informations de référence d'une association, issues du répertoire national des associations (RNA) et des documents administratifs complémentaires (DAC)."
     tags:
       - "Informations générales"
     attributes:
