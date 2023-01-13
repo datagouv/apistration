@@ -16,9 +16,9 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulierControl
 
   def extract_organizer_thanks_to_params
     if call_with_ine? && !france_connect?
-      MESRI::StudentStatusWithINE
+      MESRI::StudentStatus::WithINE
     else
-      MESRI::StudentStatusWithCivility
+      MESRI::StudentStatus::WithCivility
     end
   end
 

@@ -1,4 +1,4 @@
-RSpec.describe MESRI::StudentStatusWithCivility, type: :retriever_organizer do
+RSpec.describe MESRI::StudentStatus::WithCivility, type: :retriever_organizer do
   describe '.call' do
     subject { described_class.call(params:) }
 
@@ -24,7 +24,7 @@ RSpec.describe MESRI::StudentStatusWithCivility, type: :retriever_organizer do
       before do
         stub_request(:post, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
           status: 200,
-          body: Rails.root.join('spec/fixtures/payloads/mesri/student_status_with_civility_valid_response.json').read
+          body: Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_civility_valid_response.json').read
         )
       end
 

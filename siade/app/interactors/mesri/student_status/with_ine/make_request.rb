@@ -1,5 +1,5 @@
-class MESRI::StudentStatusWithINE::MakeRequest < MakeRequest::Get
-  include MESRI::MakeRequestCommons
+class MESRI::StudentStatus::WithINE::MakeRequest < MakeRequest::Get
+  include MESRI::StudentStatus::MakeRequestCommons
 
   protected
 

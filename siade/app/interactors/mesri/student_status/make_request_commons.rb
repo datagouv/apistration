@@ -1,4 +1,4 @@
-module MESRI::MakeRequestCommons
+module MESRI::StudentStatus::MakeRequestCommons
   protected
 
   def set_headers(request)

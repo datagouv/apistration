@@ -1,4 +1,4 @@
-class MESRI::BuildResource < BuildResource
+class MESRI::StudentStatus::BuildResource < BuildResource
   def resource_attributes
     {
       ine: json_body['ine'],

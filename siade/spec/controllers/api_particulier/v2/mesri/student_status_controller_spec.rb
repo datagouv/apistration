@@ -12,7 +12,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
       before do
         stub_request(:get, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
           status: 200,
-          body: Rails.root.join('spec/fixtures/payloads/mesri/student_status_with_ine_valid_response.json').read
+          body: Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_ine_valid_response.json').read
         )
       end
 
@@ -51,7 +51,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
       before do
         stub_request(:get, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
           status: 404,
-          body: Rails.root.join('spec/fixtures/payloads/mesri/student_status_with_ine_not_found_response.json').read
+          body: Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_ine_not_found_response.json').read
         )
       end
 
@@ -82,7 +82,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
       before do
         stub_request(:post, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
           status: 200,
-          body: Rails.root.join('spec/fixtures/payloads/mesri/student_status_with_civility_valid_response.json').read
+          body: Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_civility_valid_response.json').read
         )
       end
 
@@ -114,11 +114,11 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
     let(:france_connect_person_identity_attributes) { default_france_connect_identity_attributes }
 
     before do
-      allow(MESRI::StudentStatusWithCivility).to receive(:call).and_call_original
+      allow(MESRI::StudentStatus::WithCivility).to receive(:call).and_call_original
 
       stub_request(:post, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
         status: 200,
-        body: Rails.root.join('spec/fixtures/payloads/mesri/student_status_with_civility_valid_response.json').read
+        body: Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_civility_valid_response.json').read
       )
 
       mock_valid_france_connect_checktoken(scopes: minimal_france_connect_scopes.concat(all_scopes))
@@ -134,10 +134,10 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
       end
     end
 
-    it 'calls MESRI::StudentStatusWithCivility with france connect person identity attributes, only first first name' do
+    it 'calls MESRI::StudentStatus::WithCivility with france connect person identity attributes, only first first name' do
       make_call
 
-      expect(MESRI::StudentStatusWithCivility).to have_received(:call).with(
+      expect(MESRI::StudentStatus::WithCivility).to have_received(:call).with(
         params: {
           token_id: anything,
           family_name: france_connect_person_identity_attributes[:family_name],
@@ -152,10 +152,10 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
     context 'when there is an ine param' do
       let(:params) { { ine: 'whatever' } }
 
-      it 'calls MESRI::StudentStatusWithCivility with france connect person identity attributes, only first first name (ignore INE param)' do
+      it 'calls MESRI::StudentStatus::WithCivility with france connect person identity attributes, only first first name (ignore INE param)' do
         make_call
 
-        expect(MESRI::StudentStatusWithCivility).to have_received(:call).with(
+        expect(MESRI::StudentStatus::WithCivility).to have_received(:call).with(
           params: {
             token_id: anything,
             family_name: france_connect_person_identity_attributes[:family_name],

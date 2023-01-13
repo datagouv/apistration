@@ -111,7 +111,7 @@ Naming/AccessorMethodName:
     - "app/services/monitoring_service.rb"
     - "lib/generators/scaffold_resource/scaffold_resource_generator.rb"
     - "app/interactors/inpi/authenticate.rb"
-    - "app/interactors/mesri/make_request_commons.rb"
+    - "app/interactors/mesri/student_status/make_request_commons.rb"
     - "app/interactors/insee/authenticate.rb"
     - "app/interactors/cnous/make_request_commons.rb"
     - "app/interactors/cnous/authenticate.rb"

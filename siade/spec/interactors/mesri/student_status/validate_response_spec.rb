@@ -1,4 +1,4 @@
-RSpec.describe MESRI::ValidateResponse, type: :validate_response do
+RSpec.describe MESRI::StudentStatus::ValidateResponse, type: :validate_response do
   describe '.call' do
     subject(:call) { described_class.call(response:, provider_name: 'MESRI') }
 
@@ -11,7 +11,7 @@ RSpec.describe MESRI::ValidateResponse, type: :validate_response do
 
       context 'with data in payload' do
         context 'when it is with ine param' do
-          let(:body) { Rails.root.join('spec/fixtures/payloads/mesri/student_status_with_ine_valid_response.json').read }
+          let(:body) { Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_ine_valid_response.json').read }
 
           it { is_expected.to be_a_success }
 
@@ -19,7 +19,7 @@ RSpec.describe MESRI::ValidateResponse, type: :validate_response do
         end
 
         context 'when it is with civility params' do
-          let(:body) { Rails.root.join('spec/fixtures/payloads/mesri/student_status_with_civility_valid_response.json').read }
+          let(:body) { Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_civility_valid_response.json').read }
 
           it { is_expected.to be_a_success }
 
@@ -44,7 +44,7 @@ RSpec.describe MESRI::ValidateResponse, type: :validate_response do
       let(:code) { '404' }
 
       context 'when it is with ine param' do
-        let(:body) { Rails.root.join('spec/fixtures/payloads/mesri/student_status_with_ine_not_found_response.json').read }
+        let(:body) { Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_ine_not_found_response.json').read }
 
         it { is_expected.to be_a_failure }
 
@@ -52,7 +52,7 @@ RSpec.describe MESRI::ValidateResponse, type: :validate_response do
       end
 
       context 'when it is with civility params' do
-        let(:body) { Rails.root.join('spec/fixtures/payloads/mesri/student_status_with_civility_not_found_response.json').read }
+        let(:body) { Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_civility_not_found_response.json').read }
 
         it { is_expected.to be_a_failure }
 
@@ -66,7 +66,7 @@ RSpec.describe MESRI::ValidateResponse, type: :validate_response do
       end
 
       let(:code) { '400' }
-      let(:body) { Rails.root.join('spec/fixtures/payloads/mesri/student_status_with_ine_invalid_ine_response.json').read }
+      let(:body) { Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_ine_invalid_ine_response.json').read }
 
       it { is_expected.to be_a_failure }
 

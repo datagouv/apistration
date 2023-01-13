@@ -1,5 +1,5 @@
-class MESRI::StudentStatusWithCivility::MakeRequest < MakeRequest::Post
-  include MESRI::MakeRequestCommons
+class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
+  include MESRI::StudentStatus::MakeRequestCommons
 
   protected
 

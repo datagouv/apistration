@@ -1,4 +1,4 @@
-RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_request do
+RSpec.describe MESRI::StudentStatus::WithCivility::MakeRequest, type: :make_request do
   subject(:make_call) { described_class.call(params:) }
 
   context 'with a birth place empty' do
@@ -34,7 +34,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_reques
         }
       ).to_return(
         status: 200,
-        body: Rails.root.join('spec/fixtures/payloads/mesri/student_status_with_civility_valid_response.json').read
+        body: Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_civility_valid_response.json').read
       )
     end
 
@@ -80,7 +80,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_reques
         }
       ).to_return(
         status: 200,
-        body: Rails.root.join('spec/fixtures/payloads/mesri/student_status_with_civility_valid_response.json').read
+        body: Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_civility_valid_response.json').read
       )
     end
 

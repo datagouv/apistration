@@ -1,4 +1,4 @@
-RSpec.describe MESRI::BuildResource, type: :build_resource do
+RSpec.describe MESRI::StudentStatus::BuildResource, type: :build_resource do
   subject { instance }
 
   let(:instance) { described_class.call(response:) }
@@ -8,7 +8,7 @@ RSpec.describe MESRI::BuildResource, type: :build_resource do
   end
 
   context 'when it is from a call with ine param' do
-    let(:body) { Rails.root.join('spec/fixtures/payloads/mesri/student_status_with_ine_valid_response.json').read }
+    let(:body) { Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_ine_valid_response.json').read }
 
     it { is_expected.to be_a_success }
 
@@ -42,7 +42,7 @@ RSpec.describe MESRI::BuildResource, type: :build_resource do
   end
 
   context 'when it is from a call with civility params' do
-    let(:body) { Rails.root.join('spec/fixtures/payloads/mesri/student_status_with_civility_valid_response.json').read }
+    let(:body) { Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_civility_valid_response.json').read }
 
     it { is_expected.to be_a_success }
 
