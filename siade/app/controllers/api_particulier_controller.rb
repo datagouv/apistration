@@ -10,8 +10,6 @@ class APIParticulierController < APIController
     if @token && legacy_token_exists?(@token)
       @current_user = build_user_from_legacy_token(@token)
     else
-      track_invalid_but_potential_legit_legacy_token(@token) if legit_format_for_legacy_token?(@token)
-
       super
     end
   end
@@ -126,15 +124,5 @@ class APIParticulierController < APIController
 
   def legacy_token_valid_length_range
     (36..128)
-  end
-
-  def track_invalid_but_potential_legit_legacy_token(token)
-    MonitoringService.instance.track(
-      'error',
-      'Invalid token but legit format for legacy token',
-      {
-        legacy_token_value: token
-      }
-    )
   end
 end
