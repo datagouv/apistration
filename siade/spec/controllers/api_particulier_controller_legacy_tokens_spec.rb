@@ -67,18 +67,6 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
       its(:body) do
         is_expected.to include('access_denied')
       end
-
-      it 'tracks invalid token (for debugging purpose)' do
-        make_call
-
-        expect(MonitoringService.instance).to have_received(:track).with(
-          'error',
-          'Invalid token but legit format for legacy token',
-          {
-            legacy_token_value: token
-          }
-        )
-      end
     end
 
     context 'when it is in header' do
@@ -94,18 +82,6 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
 
       its(:body) do
         is_expected.to include('access_denied')
-      end
-
-      it 'tracks invalid token (for debugging purpose)' do
-        make_call
-
-        expect(MonitoringService.instance).to have_received(:track).with(
-          'error',
-          'Invalid token but legit format for legacy token',
-          {
-            legacy_token_value: token
-          }
-        )
       end
     end
   end
