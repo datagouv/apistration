@@ -1,0 +1,108 @@
+mesri:
+  scolarite:
+    title: "Scolarité"
+    description: "Cette API permet de confirmer qu'un étudiant est bien inscrit dans un établissement d'enseignement."
+    tags:
+      - "Informations particulier"
+    parameters:
+      nom:
+        description: "nom de l'élève"
+        type: string
+        example: "Martin"
+        required: true
+      prenom:
+        description: "prénom de l'élève"
+        type: string
+        example: "Camille"
+        required: true
+      sexe:
+        description: "sexe de l'élève; 1 : Masculin, 2 : Féminin"
+        type: string
+        example: "Camille"
+        required: true
+      date_naissance:
+        description: "date de naissance de l'élève au format AAAA-MM-JJ"
+        type: string
+        example: "2000-01-20"
+        required: true
+      code_etablissement: &code_etablissement
+        description: "code uai de l'établissement de l'élève"
+        type: string
+        pattern: '^\d{7}\w$'
+        example: "0890003V"
+        required: true
+      annee_scolaire:
+        description: "année scolaire de l'élève au format AAAA-AAAA ou AAAA"
+        type: string
+        pattern: '^(\d{4}$|^\d{4}-\d{4})$'
+        examples:
+          court:
+            summary: "format court"
+            value: "2022"
+          long:
+            summary: "format long"
+            value: "2022-2023"
+        required: true
+
+    attributes:
+      eleve:
+        type: object
+        title: "Informations sur l'élève"
+        properties:
+          nom:
+            description: "Nom de l'élève"
+            type: string
+            example: "Martin"
+          prenom:
+            description: "Prénom de l'élève"
+            type: string
+            example: "Camille"
+          sexe:
+            description: "Sexe de l'élève, Masculin ou Féminin"
+            type: string
+            example: "F"
+            enum:
+              - "M"
+              - "F"
+          date_naissance:
+            description: "date de naissance de l'élève au format AAAA-MM-JJ"
+            type: string
+            example: "2000-01-20"
+      code_etablissement: *code_etablissement
+      annee_scolaire:
+        description: "année scolaire de l'élève au format AAAA-AAAA"
+        type: string
+        pattern: '^\d{4}$|^\d{4}-\d{4}$'
+        example: "2022-2023"
+      est_scolarise:
+        description: "indique si l'élève est scolarisé dans l'établissement"
+        type: boolean
+        example: true
+      est_boursier:
+        description: "indique si l'élève est boursier dans l'établissement"
+        type: boolean
+        example: false
+      code_status_eleve:
+        description: |+
+          Code du statut de l'élève. Les valeurs possibles sont :&nbsp;
+          - ED -> Enseignement à distance
+          - IN -> Candidat Individuel
+          - ST -> Scolaire
+          - SQ -> Scolaire Loi Quinquennale sur l'Emploi
+          - AP -> Apprenti
+          - FQ -> Stagiaire de la Formation Professionnelle
+          - CQ -> Contrat de Qualification
+          - SC -> Scolaire / Formation Initiale
+          - FC -> Formation Continue
+        type: string
+        enum:
+          - "ED"
+          - "IN"
+          - "ST"
+          - "SQ"
+          - "AP"
+          - "FQ"
+          - "CQ"
+          - "SC"
+          - "FC"
+
