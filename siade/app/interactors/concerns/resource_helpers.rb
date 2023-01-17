@@ -9,24 +9,36 @@ module ResourceHelpers
     http_code == 200
   end
 
-  def http_not_found?
-    http_code == 404
-  end
-
-  def http_forbidden?
-    http_code == 403
+  def http_bad_request?
+    http_code == 400
   end
 
   def http_unauthorized?
     http_code == 401
   end
 
+  def http_forbidden?
+    http_code == 403
+  end
+
+  def http_not_found?
+    http_code == 404
+  end
+
   def http_internal_error?
     http_code == 500
   end
 
+  def http_provider_bad_gateway_error?
+    http_code == 502
+  end
+
   def http_unavailable?
     http_code == 503
+  end
+
+  def http_provider_timeout_error?
+    http_code == 504
   end
 
   delegate :body, to: :response
