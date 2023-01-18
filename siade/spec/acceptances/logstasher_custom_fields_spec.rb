@@ -172,9 +172,9 @@ RSpec.describe 'logstasher custom fields', type: :controller do
     end
 
     controller(APIEntrepriseController) do
-      def index
-        authorize :entreprises
+      skip_before_action :authorize_access_to_resource!
 
+      def index
         head :ok
       end
     end

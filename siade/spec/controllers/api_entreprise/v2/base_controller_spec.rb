@@ -8,6 +8,8 @@ RSpec.describe APIEntreprise::V2::BaseController, type: :controller do
   end
 
   controller(described_class) do
+    skip_before_action :authorize_access_to_resource!
+
     def index
       FakeRetriever.new.retrieve
 

@@ -4,9 +4,9 @@ require 'rails_helper'
 RSpec.describe APIParticulierController, 'errors rendering' do
   # rubocop:enable RSpec/DescribeMethod
   controller(described_class) do
-    def show
-      authorize :dummy
+    skip_before_action :authorize_access_to_resource!
 
+    def show
       render_errors(organizer)
     end
 
@@ -57,17 +57,6 @@ RSpec.describe APIParticulierController, 'errors rendering' do
         reason: error.detail,
         message: error.detail
       }.to_json)
-    end
-  end
-
-  context 'with InsufficientPrivilegesError (triggers by scope not found)' do
-    let(:token) { TokenFactory.new('another').valid }
-    let(:error) { nil }
-
-    its(:status) { is_expected.to eq(401) }
-
-    its(:body) do
-      is_expected.to include('access_denied')
     end
   end
 

@@ -9,7 +9,13 @@ RSpec.describe APIEntrepriseController do
 
       render json: {}, status: :ok
     end
+
+    def controller_full_name
+      'dummy'
+    end
   end
+
+  let(:token) { TokenFactory.new('dummy').valid }
 
   context 'when in staging environement' do
     before do
@@ -23,8 +29,13 @@ RSpec.describe APIEntrepriseController do
     end
 
     it 'runs mandatory params before trying to mock response' do
-      get :index, params: { token: yes_jwt }
+      get :index, params: { token: }
       assert_response 422
+    end
+
+    it 'check scopes before trying to mock response' do
+      get :index, params: { token: TokenFactory.new('not_allowed').valid }
+      assert_response 403
     end
   end
 
@@ -35,7 +46,7 @@ RSpec.describe APIEntrepriseController do
       get :show, params: mandatory_params
     end
 
-    before { request.headers['Authorization'] = "Bearer #{yes_jwt}" }
+    before { request.headers['Authorization'] = "Bearer #{token}" }
 
     it 'raises this error' do
       expect {

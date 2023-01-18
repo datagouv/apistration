@@ -3,8 +3,6 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
   # rubocop:enable RSpec/DescribeMethod
   controller(described_class) do
     def show
-      authorize :scope1, :scope2
-
       render json: serializer_class.new(data, serializer_base_options).serializable_hash
     end
 
@@ -13,6 +11,10 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
         scope1: 'scope1',
         scope2: 'scope2'
       )
+    end
+
+    def controller_full_name
+      'dummy_scopes12'
     end
 
     def serializer_class

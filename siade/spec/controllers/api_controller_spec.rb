@@ -2,6 +2,8 @@
 
 RSpec.describe APIController do
   controller(described_class) do
+    skip_before_action :authorize_access_to_resource!
+
     def index
       head :ok
     end

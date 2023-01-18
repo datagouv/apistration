@@ -9,6 +9,7 @@ module HandleTokens
 
     before_action :authenticate_user!
     before_action :set_monitoring_context
+    before_action :authorize_access_to_resource!
 
     after_action :add_user_access_to_logstash
 
@@ -22,12 +23,17 @@ module HandleTokens
 
   private
 
-  def authorize(*scopes)
-    scopes = Array(scopes).map(&:to_s)
+  def authorize(*scopes); end
 
-    return if scopes.intersect?(current_user.scopes)
+  def authorize_access_to_resource!
+    return if current_user.blank?
+    return if ScopesAuthorizationService.new(current_user.scopes, controller_full_name).allow?
 
     raise NotAuthorizedError
+  end
+
+  def controller_full_name
+    self.class.name
   end
 
   def authenticate_user!

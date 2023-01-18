@@ -1,5 +1,7 @@
 RSpec.describe MockableInStaging do
   controller(APIEntrepriseController) do
+    skip_before_action :authorize_access_to_resource!
+
     include MockableInStaging
 
     def controller_name

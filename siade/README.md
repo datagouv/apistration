@@ -351,3 +351,16 @@ Chaque entrée du tableau `errors` possède comme attributs:
 - `code`, `string`: code correspondant à la table de correspondance
 - `title`, `string`: nom associé au code (fixe en fonction du code)
 - `detail`, `string`: description exhaustive associée à l'erreur
+
+### Gestion des scopes de jetons
+
+L'ensemble des scopes sont regroupé dans le fichier
+[`config/authorizations.yml`](./config/authorizations.yml).
+
+Le format est le suivant:
+
+```yaml
+endpoint_path_without_controller:
+  - scope1
+  - scope2
+```

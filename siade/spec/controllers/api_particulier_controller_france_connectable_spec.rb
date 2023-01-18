@@ -10,8 +10,6 @@ RSpec.describe APIParticulierController, 'france connectable' do
     include APIParticulier::FranceConnectable
 
     def show
-      authorize :dummy
-
       # rubocop:disable Style/OpenStructUse
       organizer = OpenStruct.new(
         provider_name: 'dummy',
@@ -25,6 +23,10 @@ RSpec.describe APIParticulierController, 'france connectable' do
         render json: france_connect_service_user_identity.to_h,
           status: :ok
       end
+    end
+
+    def controller_full_name
+      'dummy'
     end
   end
 

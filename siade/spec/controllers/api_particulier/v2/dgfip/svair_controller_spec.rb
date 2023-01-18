@@ -1,7 +1,7 @@
 RSpec.describe APIParticulier::V2::DGFIP::SVAIRController do
   subject { get :show, params: { numeroFiscal: tax_number, referenceAvis: tax_notice_number, token: } }
 
-  let(:all_scopes) { described_class.new.send(:scopes) }
+  let(:all_scopes) { Rails.application.config_for(:authorizations)['api_particulier/v2/dgfip/svair'] }
   let(:all_keys) do
     %w[
       declarant1
@@ -60,7 +60,7 @@ RSpec.describe APIParticulier::V2::DGFIP::SVAIRController do
       end
 
       context 'when dgfip_declarant1_nom is missing' do
-        let(:scopes) { all_scopes - %i[dgfip_declarant1_nom] }
+        let(:scopes) { all_scopes - %w[dgfip_declarant1_nom] }
 
         it 'does not return this field, which is in declarant1 payload' do
           json = JSON.parse(subject.body)
