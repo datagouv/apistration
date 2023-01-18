@@ -25,13 +25,9 @@ module HandleTokens
 
   def authorize_access_to_resource!
     return if current_user.blank?
-    return if ScopesAuthorizationService.new(current_user.scopes, controller_full_name).allow?
+    return if ScopesAuthorizationService.new(current_user.scopes, self.class.name).allow?
 
     raise NotAuthorizedError
-  end
-
-  def controller_full_name
-    self.class.name
   end
 
   def authenticate_user!

@@ -24,10 +24,6 @@ RSpec.describe APIParticulierController, 'france connectable' do
           status: :ok
       end
     end
-
-    def controller_full_name
-      'dummy'
-    end
   end
 
   let(:token) { 'token' }
@@ -57,7 +53,7 @@ RSpec.describe APIParticulierController, 'france connectable' do
       end
 
       context 'when built token has valid scope' do
-        let(:scopes) { %w[dummy] }
+        let(:scopes) { %w[allowed_scope] }
 
         its(:status) { is_expected.to eq(200) }
 

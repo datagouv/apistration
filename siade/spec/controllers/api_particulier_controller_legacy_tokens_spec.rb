@@ -13,10 +13,6 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
       )
     end
 
-    def controller_full_name
-      'dummy_scopes12'
-    end
-
     def serializer_class
       Class.new(APIParticulier::V2BaseSerializer) do
         attribute :scope1, if: -> { scope?('scope1') }

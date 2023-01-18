@@ -9,13 +9,9 @@ RSpec.describe APIEntrepriseController do
 
       render json: {}, status: :ok
     end
-
-    def controller_full_name
-      'dummy'
-    end
   end
 
-  let(:token) { TokenFactory.new('dummy').valid }
+  let(:token) { yes_jwt }
 
   context 'when in staging environement' do
     before do

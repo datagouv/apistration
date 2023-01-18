@@ -183,13 +183,10 @@ shared:
 test:
   api_whatever/whatever_resource: &default_test_scopes
     - allowed_scope
+    - scope1
+    - scope2
   api: *default_test_scopes
   api_entreprise: *default_test_scopes
   api_entreprise/v3_and_more/base: *default_test_scopes
   api_entreprise/v2/base: *default_test_scopes
   api_particulier: *default_test_scopes
-  dummy:
-    - dummy
-  dummy_scopes12:
-    - scope1
-    - scope2
