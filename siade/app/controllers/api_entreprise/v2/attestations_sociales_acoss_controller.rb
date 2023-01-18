@@ -1,7 +1,5 @@
 class APIEntreprise::V2::AttestationsSocialesACOSSController < APIEntreprise::V2::BaseController
   def show
-    authorize :attestations_sociales
-
     retriever = cached_retriever || retrieve_attestation
 
     if retriever.success?

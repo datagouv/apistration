@@ -2,8 +2,6 @@ class APIEntreprise::V3AndMore::Infogreffe::MandatairesSociauxController < APIEn
   attr_reader :organizer
 
   def show
-    authorize :entreprises
-
     @organizer = ::Infogreffe::MandatairesSociaux.call(params: organizer_params)
 
     if organizer.success?

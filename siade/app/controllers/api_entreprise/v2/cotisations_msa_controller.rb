@@ -1,7 +1,5 @@
 class APIEntreprise::V2::CotisationsMSAController < APIEntreprise::V2::BaseController
   def show
-    authorize :msa_cotisations
-
     cotisation = SIADE::V2::Retrievers::CotisationsMSA.new(siret_from_params)
 
     cotisation.retrieve

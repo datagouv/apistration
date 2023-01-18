@@ -1,7 +1,5 @@
 class APIEntreprise::V2::AttestationsAGEFIPHController < APIEntreprise::V2::BaseController
   def show
-    authorize :attestations_agefiph
-
     attestation_retriever = SIADE::V2::Retrievers::AttestationsAGEFIPH.new(params[:siret])
 
     attestation_retriever.retrieve

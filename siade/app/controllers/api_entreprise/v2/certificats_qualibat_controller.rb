@@ -2,8 +2,6 @@ require 'open-uri'
 
 class APIEntreprise::V2::CertificatsQUALIBATController < APIEntreprise::V2::BaseController
   def show
-    authorize :qualibat
-
     retrieve_certificat = SIADE::V2::Retrievers::CertificatsQUALIBAT.new(siret_from_params)
     retrieve_certificat.retrieve
 

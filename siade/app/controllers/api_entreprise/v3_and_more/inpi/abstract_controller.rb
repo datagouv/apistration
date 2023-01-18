@@ -2,8 +2,6 @@ class APIEntreprise::V3AndMore::INPI::AbstractController < APIEntreprise::V3AndM
   attr_reader :organizer
 
   def call(organizer_klass)
-    authorize :extrait_court_inpi
-
     @organizer = organizer_klass.call(params: organizer_params)
 
     if organizer.success?

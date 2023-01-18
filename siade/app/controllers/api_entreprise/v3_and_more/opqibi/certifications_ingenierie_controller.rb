@@ -1,7 +1,5 @@
 class APIEntreprise::V3AndMore::OPQIBI::CertificationsIngenierieController < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :certificat_opqibi
-
     organizer = ::OPQIBI::CertificationsIngenierie.call(params: organizer_params)
 
     if organizer.success?

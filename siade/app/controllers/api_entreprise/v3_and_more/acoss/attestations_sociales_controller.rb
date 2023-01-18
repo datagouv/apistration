@@ -1,7 +1,5 @@
 class APIEntreprise::V3AndMore::ACOSS::AttestationsSocialesController < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :attestations_sociales
-
     organizer = retrieve_payload_data(::ACOSS::AttestationsSociales, cache: true, expires_in:, cache_key:)
 
     if organizer.success?

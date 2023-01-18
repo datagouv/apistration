@@ -1,7 +1,5 @@
 class APIEntreprise::V2::CartesProfessionnellesFNTPController < APIEntreprise::V2::BaseController
   def show
-    authorize :fntp_carte_pro
-
     retrieve_carte_pro_fntp = SIADE::V2::Retrievers::CartesProfessionnellesFNTP.new(siren)
 
     retrieve_carte_pro_fntp.retrieve

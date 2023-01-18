@@ -1,7 +1,5 @@
 class APIParticulier::V2::PoleEmploi::StatutController < APIParticulierController
   def show
-    authorize :pole_emploi_identite, :pole_emploi_adresse, :pole_emploi_contact, :pole_emploi_inscription
-
     organizer = ::PoleEmploi::Statut.call(params: organizer_params)
 
     if organizer.success?

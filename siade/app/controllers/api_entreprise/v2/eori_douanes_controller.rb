@@ -1,7 +1,5 @@
 class APIEntreprise::V2::EORIDouanesController < APIEntreprise::V2::BaseController
   def show
-    authorize :eori_douanes
-
     retrieve_eori_douanes = SIADE::V2::Retrievers::EORIDouanes.new(eori)
     retrieve_eori_douanes.retrieve
 

@@ -34,10 +34,6 @@ class APIEntreprise::V2::LiassesFiscalesDGFIPController < APIEntreprise::V2::Abs
     end
   end
 
-  def resource_scope
-    :liasse_fiscale
-  end
-
   def retriever_params
     retriever_params = params.permit(:siren, :annee)
     retriever_params[:cookie]  = dgfip_service.cookie

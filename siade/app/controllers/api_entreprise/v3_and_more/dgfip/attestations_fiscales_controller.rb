@@ -1,7 +1,5 @@
 class APIEntreprise::V3AndMore::DGFIP::AttestationsFiscalesController < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :attestations_fiscales
-
     organizer = retrieve_payload_data(::DGFIP::AttestationFiscale, cache: true, cache_key:)
 
     if organizer.success?

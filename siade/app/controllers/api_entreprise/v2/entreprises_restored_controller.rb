@@ -1,7 +1,5 @@
 class APIEntreprise::V2::EntreprisesRestoredController < APIEntreprise::V2::BaseController
   def show
-    authorize :entreprises
-
     if retriever_entreprise.success?
       if retriever_etablissement.success?
         check_numero_tva

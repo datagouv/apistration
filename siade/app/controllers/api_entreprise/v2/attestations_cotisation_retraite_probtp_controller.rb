@@ -1,7 +1,5 @@
 class APIEntreprise::V2::AttestationsCotisationRetraitePROBTPController < APIEntreprise::V2::BaseController
   def show
-    authorize :probtp
-
     retrieve_attestation = SIADE::V2::Retrievers::AttestationsCotisationRetraitePROBTP.new(siret_from_params)
 
     retrieve_attestation.retrieve

@@ -22,10 +22,6 @@ class APIEntreprise::V2::ExercicesController < APIEntreprise::V2::AbstractDGFIPC
     end
   end
 
-  def resource_scope
-    :exercices
-  end
-
   def retriever_params(dgfip_service)
     retriever_params = params.permit(:siret)
 

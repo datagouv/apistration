@@ -1,7 +1,5 @@
 class APIEntreprise::V2::CertificatsOPQIBIController < APIEntreprise::V2::BaseController
   def show
-    authorize :certificat_opqibi
-
     retrieve_opqibi = SIADE::V2::Retrievers::CertificatsOPQIBI.new(siren)
 
     retrieve_opqibi.retrieve

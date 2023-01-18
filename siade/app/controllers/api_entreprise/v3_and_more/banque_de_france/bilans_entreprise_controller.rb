@@ -1,7 +1,5 @@
 class APIEntreprise::V3AndMore::BanqueDeFrance::BilansEntrepriseController < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :bilans_entreprise_bdf
-
     organizer = retrieve_payload_data(::BanqueDeFrance::BilansEntreprise)
 
     if organizer.success?

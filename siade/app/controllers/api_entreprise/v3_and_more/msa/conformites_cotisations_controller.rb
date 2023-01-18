@@ -1,7 +1,5 @@
 class APIEntreprise::V3AndMore::MSA::ConformitesCotisationsController < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :msa_cotisations
-
     organizer = ::MSA::ConformitesCotisations.call(params: organizer_params)
 
     if organizer.success?

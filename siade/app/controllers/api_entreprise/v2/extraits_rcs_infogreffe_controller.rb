@@ -1,7 +1,5 @@
 class APIEntreprise::V2::ExtraitsRCSInfogreffeController < APIEntreprise::V2::BaseController
   def show
-    authorize :extraits_rcs
-
     retrieve_extrait_rcs = SIADE::V2::Retrievers::ExtraitsRCSInfogreffe.new(siren_from_params)
     retrieve_extrait_rcs.retrieve
 

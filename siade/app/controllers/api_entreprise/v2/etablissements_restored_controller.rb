@@ -1,7 +1,5 @@
 class APIEntreprise::V2::EtablissementsRestoredController < APIEntreprise::V2::BaseController
   def show
-    authorize :etablissements
-
     if retriever.success?
       if siret_redirected_to_another_siret?
         redirect_to_new_siret

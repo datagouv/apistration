@@ -1,14 +1,5 @@
 class APIEntreprise::V2::AbstractDGFIPController < APIEntreprise::V2::BaseController
-  before_action :authorize_resource
   before_action :authenticate_dgfip_service
-
-  def authorize_resource
-    authorize resource_scope
-  end
-
-  def resource_scope
-    fail NotImplementedError
-  end
 
   def authenticate_dgfip_service
     dgfip_service.authenticate!

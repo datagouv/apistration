@@ -1,7 +1,5 @@
 class APIEntreprise::V3AndMore::QUALIBAT::CertificationsBatimentController < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :qualibat
-
     organizer = ::QUALIBAT::CertificationsBatiment.call(params: organizer_params)
 
     if organizer.success?

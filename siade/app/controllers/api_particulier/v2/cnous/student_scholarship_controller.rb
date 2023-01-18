@@ -2,14 +2,6 @@ class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulierCo
   include APIParticulier::FranceConnectable
 
   def show
-    authorize :cnous_statut_boursier,
-      :cnous_echelon_bourse,
-      :cnous_email,
-      :cnous_periode_versement,
-      :cnous_statut_bourse,
-      :cnous_ville_etudes,
-      :cnous_identite
-
     organizer = extract_organizer_thanks_to_params.call(params: organizer_params)
 
     if organizer.success?

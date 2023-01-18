@@ -1,7 +1,5 @@
 class APIEntreprise::V3AndMore::DGFIP::ChiffresAffairesController < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :exercices
-
     organizer = retrieve_payload_data(::DGFIP::ChiffresAffaires, cache: true, cache_key:)
 
     if organizer.success?

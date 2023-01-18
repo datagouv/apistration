@@ -1,7 +1,5 @@
 class APIEntreprise::V2::CertificatsCNETPController < APIEntreprise::V2::BaseController
   def show
-    authorize :certificat_cnetp
-
     retrieve_certificate = SIADE::V2::Retrievers::CertificatsCNETP.new(siren_from_params)
     retrieve_certificate.retrieve
 

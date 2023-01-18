@@ -23,8 +23,6 @@ module HandleTokens
 
   private
 
-  def authorize(*scopes); end
-
   def authorize_access_to_resource!
     return if current_user.blank?
     return if ScopesAuthorizationService.new(current_user.scopes, controller_full_name).allow?

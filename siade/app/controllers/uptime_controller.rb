@@ -2,8 +2,6 @@ class UptimeController < APIController
   skip_before_action :authenticate_user!, only: :show_without_token
 
   def show
-    authorize :uptime
-
     render_status
   end
 

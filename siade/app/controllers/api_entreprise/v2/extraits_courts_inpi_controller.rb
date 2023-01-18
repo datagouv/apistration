@@ -1,7 +1,5 @@
 class APIEntreprise::V2::ExtraitsCourtsINPIController < APIEntreprise::V2::BaseController
   def show
-    authorize :extrait_court_inpi
-
     retrieve_extrait_court_inpi = SIADE::V2::Retrievers::ExtraitCourtINPI.new(siren).retrieve
 
     if retrieve_extrait_court_inpi.success?

@@ -1,7 +1,5 @@
 class APIEntreprise::V2::EligibilitesCotisationRetraitePROBTPController < APIEntreprise::V2::BaseController
   def show
-    authorize :probtp
-
     eligibility_cotisation_status_retriever = SIADE::V2::Retrievers::EligibilitesCotisationRetraitePROBTP.new(siret_from_params)
 
     eligibility_cotisation_status_retriever.retrieve

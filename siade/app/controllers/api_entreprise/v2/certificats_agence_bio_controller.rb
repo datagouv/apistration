@@ -1,7 +1,5 @@
 class APIEntreprise::V2::CertificatsAgenceBIOController < APIEntreprise::V2::BaseController
   def show
-    authorize :certificat_agence_bio
-
     retrieve_certificats_bio = SIADE::V2::Retrievers::CertificatsAgenceBIO.new(request_params)
     retrieve_certificats_bio.retrieve
 

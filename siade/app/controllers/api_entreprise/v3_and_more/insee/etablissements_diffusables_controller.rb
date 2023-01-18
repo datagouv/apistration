@@ -1,7 +1,5 @@
 class APIEntreprise::V3AndMore::INSEE::EtablissementsDiffusablesController < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :etablissements
-
     organizer = ::INSEE::EtablissementDiffusable.call(params: organizer_params)
 
     if organizer.success?

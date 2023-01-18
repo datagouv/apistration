@@ -1,7 +1,5 @@
 class APIEntreprise::V2::ConventionsCollectivesController < APIEntreprise::V2::BaseController
   def show
-    authorize :conventions_collectives
-
     retrieve_conventions = SIADE::V2::Retrievers::ConventionsCollectives.new(siret_from_params)
     retrieve_conventions.retrieve
 

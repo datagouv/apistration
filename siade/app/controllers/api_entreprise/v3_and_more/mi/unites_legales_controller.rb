@@ -1,7 +1,5 @@
 class APIEntreprise::V3AndMore::MI::UnitesLegalesController < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :associations
-
     organizer = ::MI::UniteLegale.call(params: organizer_params)
 
     if organizer.success?

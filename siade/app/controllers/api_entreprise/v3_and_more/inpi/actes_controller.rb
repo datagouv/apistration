@@ -1,7 +1,5 @@
 class APIEntreprise::V3AndMore::INPI::ActesController < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :actes_inpi
-
     organizer = ::INPI::Actes.call(params: organizer_params)
 
     if organizer.success?

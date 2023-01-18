@@ -1,7 +1,5 @@
 class APIEntreprise::V3AndMore::FabriqueNumeriqueMinisteresSociaux::ConventionsCollectivesController < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :conventions_collectives
-
     organizer = ::FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives.call(params: organizer_params)
 
     if organizer.success?

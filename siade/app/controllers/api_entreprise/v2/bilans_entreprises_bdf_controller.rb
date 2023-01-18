@@ -1,7 +1,5 @@
 class APIEntreprise::V2::BilansEntreprisesBDFController < APIEntreprise::V2::BaseController
   def show
-    authorize :bilans_entreprise_bdf
-
     retrieve_bilans_bdf = SIADE::V2::Retrievers::BilansEntreprisesBDF.new(siren)
 
     retrieve_bilans_bdf.retrieve

@@ -1,7 +1,5 @@
 class APIEntreprise::V3AndMore::FNTP::CarteProfessionnelleTravauxPublicsController < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :fntp_carte_pro
-
     organizer = ::FNTP::CarteProfessionnelleTravauxPublics.call(params: organizer_params)
 
     if organizer.success?

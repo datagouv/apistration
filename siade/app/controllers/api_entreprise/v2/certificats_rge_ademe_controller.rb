@@ -1,7 +1,5 @@
 class APIEntreprise::V2::CertificatsRGEADEMEController < APIEntreprise::V2::BaseController
   def show
-    authorize :certificat_rge_ademe
-
     organizer = ::ADEME::CertificatsRGE.call(params: organizer_params)
 
     if organizer.success?

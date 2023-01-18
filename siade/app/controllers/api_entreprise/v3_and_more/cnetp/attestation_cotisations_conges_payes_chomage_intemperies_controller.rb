@@ -1,7 +1,5 @@
 class APIEntreprise::V3AndMore::CNETP::AttestationCotisationsCongesPayesChomageIntemperiesController < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :certificat_cnetp
-
     organizer = ::CNETP::AttestationCotisationsCongesPayesChomageIntemperies.call(params: organizer_params)
 
     if organizer.success?

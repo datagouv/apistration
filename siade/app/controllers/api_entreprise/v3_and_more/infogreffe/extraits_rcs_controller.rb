@@ -1,7 +1,5 @@
 class APIEntreprise::V3AndMore::Infogreffe::ExtraitsRCSController < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :extraits_rcs
-
     organizer = ::Infogreffe::ExtraitsRCS.call(params: organizer_params)
 
     if organizer.success?

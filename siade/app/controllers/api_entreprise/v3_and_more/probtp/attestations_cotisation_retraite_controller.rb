@@ -1,7 +1,5 @@
 class APIEntreprise::V3AndMore::PROBTP::AttestationsCotisationRetraiteController < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :probtp
-
     organizer = ::PROBTP::AttestationsCotisationsRetraite.call(params: organizer_params)
 
     if organizer.success?

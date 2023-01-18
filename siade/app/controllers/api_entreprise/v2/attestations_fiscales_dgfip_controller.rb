@@ -22,10 +22,6 @@ class APIEntreprise::V2::AttestationsFiscalesDGFIPController < APIEntreprise::V2
     end
   end
 
-  def resource_scope
-    :attestations_fiscales
-  end
-
   def retriever_params(dgfip_service)
     retriever_params = params.permit(:siren, :siren_is, :siren_tva)
 

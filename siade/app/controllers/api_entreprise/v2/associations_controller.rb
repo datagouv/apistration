@@ -1,7 +1,5 @@
 class APIEntreprise::V2::AssociationsController < APIEntreprise::V2::BaseController
   def show
-    authorize :associations
-
     retrieve_association = SIADE::V2::Retrievers::Associations.new(association_id_from_params)
     retrieve_association.retrieve
 

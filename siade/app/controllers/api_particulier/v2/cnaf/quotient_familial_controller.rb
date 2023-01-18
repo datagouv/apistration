@@ -1,7 +1,5 @@
 class APIParticulier::V2::CNAF::QuotientFamilialController < APIParticulierController
   def show
-    authorize :cnaf_quotient_familial, :cnaf_allocataires, :cnaf_enfants, :cnaf_adresse
-
     organizer = ::CNAF::QuotientFamilial.call(params: organizer_params)
 
     if organizer.success?

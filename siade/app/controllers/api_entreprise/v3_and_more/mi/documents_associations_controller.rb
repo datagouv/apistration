@@ -2,8 +2,6 @@ class APIEntreprise::V3AndMore::MI::DocumentsAssociationsController < APIEntrepr
   attr_reader :organizer
 
   def show
-    authorize :associations
-
     @organizer = ::MI::Associations::Documents.call(params: organizer_params)
 
     if organizer.success?

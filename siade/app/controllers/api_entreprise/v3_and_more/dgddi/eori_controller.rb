@@ -1,7 +1,5 @@
 class APIEntreprise::V3AndMore::DGDDI::EORIController < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :eori_douanes
-
     organizer = ::DGDDI::EORI.call(params: organizer_params)
 
     if organizer.success?

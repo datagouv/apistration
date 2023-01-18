@@ -1,7 +1,5 @@
 class APIEntreprise::V3AndMore::DGFIP::LiassesFiscalesController < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :liasse_fiscale
-
     organizer = retrieve_payload_data(::DGFIP::LiassesFiscales, cache: true, cache_key:)
 
     if organizer.success?

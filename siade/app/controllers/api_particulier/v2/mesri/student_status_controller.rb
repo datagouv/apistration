@@ -2,8 +2,6 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulierControl
   include APIParticulier::FranceConnectable
 
   def show
-    authorize :mesri_identifiant, :mesri_identite, :mesri_inscription_etudiant, :mesri_inscription_autre, :mesri_admission, :mesri_etablissements
-
     organizer = extract_organizer_thanks_to_params.call(params: organizer_params)
 
     if organizer.success?

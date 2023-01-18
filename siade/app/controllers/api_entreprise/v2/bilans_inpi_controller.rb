@@ -1,7 +1,5 @@
 class APIEntreprise::V2::BilansINPIController < APIEntreprise::V2::DocumentsINPIController
   def show
-    authorize :bilans_inpi
-
     process_through_authentication do
       retriever = SIADE::V2::Retrievers::BilansINPI.new(siren, cookie)
       retriever.retrieve
