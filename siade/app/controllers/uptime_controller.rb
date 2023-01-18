@@ -78,7 +78,7 @@ class UptimeController < APIController
 
   def route_from_params
     @route_from_params ||= begin
-      raw_route = params.permit(:route)[:route]
+      raw_route = params.require(:route)
 
       if raw_route.starts_with?('/')
         raw_route
