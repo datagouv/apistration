@@ -4,8 +4,6 @@ require 'rails_helper'
 RSpec.describe APIParticulierController, 'errors rendering' do
   # rubocop:enable RSpec/DescribeMethod
   controller(described_class) do
-    skip_before_action :authorize_access_to_resource!
-
     def show
       render_errors(organizer)
     end
@@ -23,7 +21,7 @@ RSpec.describe APIParticulierController, 'errors rendering' do
   let(:organizer) { double('organizer', errors:) }
   # rubocop:enable RSpec/VerifiedDoubles
 
-  let(:token) { TokenFactory.new('dummy').valid }
+  let(:token) { yes_jwt }
   let(:errors) { [error] }
 
   # rubocop:disable RSpec/InstanceVariable

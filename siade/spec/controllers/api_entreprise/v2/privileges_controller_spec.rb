@@ -13,7 +13,7 @@ RSpec.describe APIEntreprise::V2::PrivilegesController, type: :controller do
     end
 
     it 'displays all scopes for jwt' do
-      expect(subject['privileges']).to contain_exactly(*JwtHelper.values_for_valid_jwt[:scopes])
+      expect(subject['privileges']).to contain_exactly(*all_scopes)
     end
   end
 end

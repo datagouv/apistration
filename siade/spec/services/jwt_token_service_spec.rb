@@ -11,7 +11,7 @@ RSpec.describe JwtTokenService do
       subject { helper.jwt_user }
 
       its(:id) { is_expected.to eq('f5d5cb02-185a-426f-b3f4-99a25ce6cdf4') }
-      its(:jti) { is_expected.to eq('3d4706c4-7f5e-4442-a734-00d6c675f3c9') }
+      its(:jti) { is_expected.to be_present }
     end
 
     describe 'non regression test: role token turns into scope token' do

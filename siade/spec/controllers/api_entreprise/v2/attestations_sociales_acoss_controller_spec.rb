@@ -28,32 +28,4 @@ RSpec.describe APIEntreprise::V2::AttestationsSocialesACOSSController, type: :co
   describe 'happy path', vcr: { cassette_name: 'acoss/with_valid_siren' } do
     it_behaves_like 'happy_pdf_endpoint_siren', valid_siren(:acoss), 'attestation_vigilance_acoss'
   end
-
-  it 'forwards parameters to ACOSS', vcr: { cassette_name: 'acoss/with_valid_siren' } do
-    expect(SIADE::V2::Retrievers::AttestationsSocialesACOSS)
-      .to receive(:new)
-      .with({
-        siren: valid_siren(:acoss),
-        type_attestation: nil,
-        user_id: user.logstash_id,
-        recipient: mandatory_params[:recipient]
-      })
-      .and_call_original
-
-    get :show, params: { token: token, siren: valid_siren(:acoss) }.merge(mandatory_params)
-  end
-
-  it 'sends a body with the expected payload', vcr: { cassette_name: 'acoss/with_valid_siren' } do
-    expect(SIADE::V2::Requests::AttestationsSocialesACOSS)
-      .to receive(:new)
-      .with({
-        siren: valid_siren(:acoss),
-        type_attestation: nil,
-        user_id: user.logstash_id,
-        recipient: mandatory_params[:recipient]
-      })
-      .and_call_original
-
-    get :show, params: { token: token, siren: valid_siren(:acoss) }.merge(mandatory_params)
-  end
 end

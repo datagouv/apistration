@@ -7,15 +7,15 @@ class TokenFactory
     @scopes = Array(scopes).map(&:to_s) || []
   end
 
-  def valid
-    JWT.encode(payload, hash_secret, hash_algo)
+  def valid(uid: nil)
+    JWT.encode(payload(uid:), hash_secret, hash_algo)
   end
 
   private
 
-  def payload
+  def payload(uid:)
     {
-      uid: SecureRandom.uuid,
+      uid: uid || SecureRandom.uuid,
       jti: SecureRandom.uuid,
       scopes:,
       sub: 'whatever',

@@ -55,19 +55,17 @@ module JwtHelper
       }
     end
     # rubocop:enable Metrics/MethodLength
-
-    def user_for_valid_jwt
-      JwtTokenService.new(jwt: jwt(:valid)).jwt_user
-    end
   end
 end
 
+def all_scopes
+  Rails.application.config_for(:authorizations).values.flatten.uniq
+end
+
 def yes_jwt
-  # A jwt meant to not trigger any auth error or permissions exceptions
-  # We use it in controllers to test functionality, 2xx, 404 and >, 5xx
-  # The 403 behaviour should be tested with nope_jwt
-  # But the 401 behaviour should be tested with forged jwt
-  JwtHelper.jwt(:valid)
+  @yes_jwt ||= TokenFactory.new(all_scopes).valid(
+    uid: 'f5d5cb02-185a-426f-b3f4-99a25ce6cdf4'
+  )
 end
 
 def yes_jwt_with_roles

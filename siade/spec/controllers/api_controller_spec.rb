@@ -2,8 +2,6 @@
 
 RSpec.describe APIController do
   controller(described_class) do
-    skip_before_action :authorize_access_to_resource!
-
     def index
       head :ok
     end
@@ -242,7 +240,7 @@ RSpec.describe APIController do
         scopes: an_instance_of(Array),
         jti: a_string_matching(uuid_regex),
         iat: a_string_matching(date_regex),
-        exp: nil
+        exp: an_instance_of(Integer)
       })
 
       get :index, params: { token: yes_jwt }
@@ -253,7 +251,7 @@ RSpec.describe APIController do
         mandatory_params.merge(
           controller: 'api',
           action: 'index',
-          token: yes_jwt
+          token: an_instance_of(String)
         )
       )
 

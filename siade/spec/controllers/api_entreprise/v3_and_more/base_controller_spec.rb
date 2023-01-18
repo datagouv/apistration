@@ -8,8 +8,6 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
   end
 
   controller(described_class) do
-    skip_before_action :authorize_access_to_resource!
-
     def index
       render json: { data: true }, status: :ok
     end
@@ -154,8 +152,6 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
 
     context 'when cache is activated' do
       controller(described_class) do
-        skip_before_action :authorize_access_to_resource!
-
         def show
           retrieve_payload_data(
             DummyRetrieverOrganizer,
@@ -260,8 +256,6 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
 
     context 'when cache is deactivated' do
       controller(described_class) do
-        skip_before_action :authorize_access_to_resource!
-
         def show
           retrieve_payload_data(DummyRetrieverOrganizer, cache: false)
         end
