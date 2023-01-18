@@ -1,7 +1,5 @@
 class API<%= api.classify %>::V3AndMore::<%= name %>Controller < APIEntreprise::V3AndMore::BaseController
   def show
-    authorize :<%= resource_class.underscore %>
-
     organizer = ::<%= name %>.call(params: organizer_params)
 
     if organizer.success?
