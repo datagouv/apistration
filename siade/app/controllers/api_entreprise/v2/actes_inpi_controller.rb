@@ -1,6 +1,5 @@
 class APIEntreprise::V2::ActesINPIController < APIEntreprise::V2::DocumentsINPIController
   def show
-
     process_through_authentication do
       retriever = SIADE::V2::Retrievers::ActesINPI.new(siren, cookie)
       retriever.retrieve
