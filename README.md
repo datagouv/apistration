@@ -1,5 +1,7 @@
 # Dépôt de données de tests pour API Particulier / API Entreprise
 
+[![Tests](https://github.com/etalab/siade_staging_data/actions/workflows/tests.yml/badge.svg)](https://github.com/etalab/siade_staging_data/actions/workflows/tests.yml)
+
 # ⚠️ Il s'agit encore d'un dépôt en chantier, rien n'est actuellement fonctionnel ⚠️
 
 Ce dépôt contient l'ensemble des données de tests pour les environnements de bac
