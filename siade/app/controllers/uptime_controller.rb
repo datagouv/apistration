@@ -1,5 +1,6 @@
 class UptimeController < APIController
   skip_before_action :authenticate_user!, only: :show_without_token
+  skip_before_action :authorize_access_to_resource!, only: :show_without_token
 
   def show
     render_status
