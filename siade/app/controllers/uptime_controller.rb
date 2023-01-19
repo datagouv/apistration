@@ -147,6 +147,6 @@ class UptimeController < APIController
   end
 
   def all_scopes
-    YAML.load_file(Rails.root.join('config/all_scopes.yml'))
+    Rails.application.config_for(:authorizations).values.flatten.uniq
   end
 end
