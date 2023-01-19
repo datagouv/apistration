@@ -14,7 +14,11 @@ class ScopesAuthorizationService
   private
 
   def scopes
-    @scopes ||= config[controller_name_sanitizied] || (raise "No authorization config for controller #{controller_name}\nPlease fill the config/authorizations.yml file for '#{controller_name_sanitizied}'")
+    @scopes ||= config[controller_name_sanitizied] || raise_no_authorization
+  end
+
+  def raise_no_authorization
+    raise "No authorization config for controller #{controller_name}\nPlease fill the config/authorizations.yml file for '#{controller_name_sanitizied}'"
   end
 
   def controller_name_sanitizied
