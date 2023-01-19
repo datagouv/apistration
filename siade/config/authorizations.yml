@@ -6,7 +6,7 @@ shared:
   api_entreprise/v2/associations:
     - associations
   api_entreprise/v2/attestations_agefiph:
-      - attestations_agefiph
+    - attestations_agefiph
   api_entreprise/v2/attestations_cotisation_retraite_probtp:
     - probtp
   api_entreprise/v2/attestations_fiscales_dgfip:
