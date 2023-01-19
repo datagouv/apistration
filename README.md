@@ -24,8 +24,8 @@ suivant:
 ```yaml
 ---
 params:
-  first_name: ‘John’
-  last_name: ‘Doe’
+  first_name: 'John'
+  last_name: 'Doe'
 status: 200
 payload: |
   {
@@ -39,6 +39,18 @@ Avec:
     réponse associée ;
 * `status`, le status de la réponse HTTP associé ;
 * `payload`, la payload renvoyée.
+
+
+Pour déclencher la réponse ci-dessous, si ce fichier était dans
+`api_entreprise/v1_dgfip_example`, il faut effectuer l'appel suivant:
+
+```sh
+curl -X GET \
+  -G -d 'first_name=John' -d 'last_name=Doe' \
+  https://staging.entreprise.api.gouv.fr/v1/dgfip
+```
+
+L'url est précisé dans le fichier README.md du dossier `api_entreprise/v1_dgfip_example`
 
 ## Contribution
 
