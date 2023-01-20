@@ -1,0 +1,10 @@
+---
+params:
+  arg1: 'arg1'
+  arg2: 'arg2'
+status: 404
+payload: '
+  {
+    "status": "nok"
+  }
+'

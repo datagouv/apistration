@@ -1,0 +1,9 @@
+---
+params:
+  whatever: 'whatever'
+status: 200
+payload: '
+  {
+    "status": "ok"
+  }
+'
