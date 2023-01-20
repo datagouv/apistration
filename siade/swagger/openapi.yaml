@@ -16102,7 +16102,7 @@ paths:
                       ancien_id:
                         type: string
                         title: Ancien identifiant de l'entité avant l'arrêté du 14
-                          octobre 2009 portant la création du RNA.
+                          octobre 2009 portant la création du RNA
                         example: '1234567890'
                         nullable: true
                       siren:
@@ -16139,7 +16139,7 @@ paths:
                         example: LPR
                         nullable: true
                       reconnue_utilite_publique:
-                        title: Indique si l'association est reconnue d'utilité publique.
+                        title: Indique si l'association est reconnue d'utilité publique
                         type: boolean
                         example: false
                       siret_siege:
@@ -16159,7 +16159,7 @@ paths:
                         - libelle
                         properties:
                           code:
-                            title: Code de la forme juridique de l'unité légale.
+                            title: Code de la forme juridique de l'unité légale
                             type: string
                             example: '9220'
                             description: 'Nomenclature exhaustive fournie par l''Insee
@@ -16167,7 +16167,7 @@ paths:
                             nullable: true
                           libelle:
                             title: Libellé associé au code de la forme juridique de
-                              l'unité légale.
+                              l'unité légale
                             type: string
                             example: Association déclarée
                             description: "indique le libellé correspondant au code
@@ -16228,11 +16228,13 @@ paths:
                           ne rentre pas dans les critères d’éligibilité au CEC
                         nullable: true
                       impots_commerciaux:
-                        title: Association assujettie aux impôts commerciaux
+                        title: Indique si l'association est assujettie aux impôts
+                          commerciaux
                         description: "En fonction de ses missions et de ses activités,
-                          une association peut être soumise aux impôts commerciaux.
-                          Ce cas particulier concerne notamment les associations exerçant
-                          une activité lucrative. \n \n En savoir plus : https://www.associations.gouv.fr/l-association-et-les-impots-commerciaux.html"
+                          une association peut être soumise aux impôts commerciaux
+                          (à la TVA ou à l’impôt sur les sociétés). Ce cas particulier
+                          concerne notamment les associations exerçant une activité
+                          lucrative. \n \n En savoir plus : https://www.associations.gouv.fr/l-association-et-les-impots-commerciaux.html"
                         type: boolean
                         example: true
                       date_creation:
@@ -16361,7 +16363,7 @@ paths:
                             example: '122'
                             nullable: true
                           folio:
-                            title: Folio du volume associé au tribunal d'instance
+                            title: Folio du volume du registre du tribunal d'instance
                             type: string
                             example: '082'
                             nullable: true
@@ -16416,7 +16418,7 @@ paths:
                               example: Promouvoir l'engagement des parents d'élèves
                                 dans l'éducation de leurs enfants
                       agrements:
-                        title: Liste des agréments administratifs associés à l'entité
+                        title: Liste des agréments administratifs associés à l'association
                         type: array
                         items:
                           type: object
@@ -16537,6 +16539,7 @@ paths:
                             - libelle
                           champ_action_territorial:
                             title: Champ d'action territorial
+                            example: departemental
                             type: string
                             enum:
                             - national
@@ -16629,19 +16632,20 @@ paths:
                                 nullable: true
                                 example: 2 000 à 4 999 salariés
                           economie_sociale_et_solidaire:
-                            title: Indicateur de l'économie sociale et solidaire
+                            title: Indique si l'association appartient à de l'économie
+                              sociale et solidaire (ESS)
                             type: boolean
                             nullable: true
                             example: true
                           date_appartenance_ess:
-                            title: Date d'appartenance à l'économie sociale et solidaire
+                            title: Date d'appartenance à l'ESS
                             type: string
                             format: date
                             nullable: true
                             example: '2019-01-01'
                       etablissements:
                         title: Liste des établissements de l'association pour lesquels
-                          des informations sont disponibles.
+                          des informations sont disponibles
                         type: array
                         items:
                           type: object
@@ -16844,7 +16848,7 @@ paths:
                                   nullable: true
                                   example: 2 000 à 4 999 salariés
                             rhs:
-                              title: Information sur les ressources humaines
+                              title: Information sur les moyens humains
                               type: array
                               items:
                                 type: object
@@ -16901,14 +16905,14 @@ paths:
                                         example: 16
                                       femmes:
                                         type: integer
-                                        title: Nombre d'adhérents femmes
+                                        title: Nombre d'adhérentes femmes
                                         example: 17
                                       total:
                                         type: integer
                                         title: Nombre d'adhérents total
                                         example: 33
                             comptes:
-                              title: Comptes de résultat et financement perçus
+                              title: Comptes de résultat et financements perçus
                               type: array
                               items:
                                 type: object
@@ -16925,10 +16929,10 @@ paths:
                                 properties:
                                   annee:
                                     type: string
-                                    title: Année associé à ce compte
+                                    title: Année associée à ce compte
                                     example: '2019'
                                   commisaire_aux_comptes:
-                                    title: Détermine si l'association possède un commissaire
+                                    title: Indique si l'association possède un commissaire
                                       aux comptes
                                     type: boolean
                                     example: true
@@ -16946,7 +16950,7 @@ paths:
                                     type: number
                                     example: 1200.0
                                   montant_aides_sur_3ans:
-                                    title: Montant des aides sur 3 ans
+                                    title: Montant total des aides sur 3 ans
                                     type: number
                                     example: 1230.0
                                   total_charges:
@@ -17034,8 +17038,8 @@ paths:
                                     example: dupont.jean@association.fr
                                     nullable: true
                             documents_dac:
-                              title: Liste des Documents Administratifs Complémentaires
-                                (DAC) associé à cet établissement
+                              title: Liste des documents administratifs complémentaires
+                                (DAC) associés à cet établissement
                               description: Tous les documents DAC sont renvoyés à
                                 l'exception des documents marqués comme étant des
                                 RIBs ou ceux marqué comme étant supprimés.
@@ -17098,7 +17102,7 @@ paths:
                                     title: URL du document
                                     example: https://associations.api.gouv.fr/documents/rapport_annuel.pdf
                       reseaux_affiliation:
-                        title: Union, fédération ou réseau auquel est affiliée l'association
+                        title: Affiliation à une union, fédération ou réseau
                         type: array
                         items:
                           type: object
@@ -17210,7 +17214,7 @@ paths:
                                   nullable: true
                                 femmes:
                                   type: integer
-                                  title: Nombre de licenciés femmes
+                                  title: Nombre de licenciées femmes
                                   example: 17
                                   nullable: true
                                 total:
@@ -17694,7 +17698,7 @@ paths:
                       ancien_id:
                         type: string
                         title: Ancien identifiant de l'entité avant l'arrêté du 14
-                          octobre 2009 portant la création du RNA.
+                          octobre 2009 portant la création du RNA
                         example: '1234567890'
                         nullable: true
                       siren:
@@ -17731,7 +17735,7 @@ paths:
                         example: LPR
                         nullable: true
                       reconnue_utilite_publique:
-                        title: Indique si l'association est reconnue d'utilité publique.
+                        title: Indique si l'association est reconnue d'utilité publique
                         type: boolean
                         example: false
                       siret_siege:
@@ -17751,7 +17755,7 @@ paths:
                         - libelle
                         properties:
                           code:
-                            title: Code de la forme juridique de l'unité légale.
+                            title: Code de la forme juridique de l'unité légale
                             type: string
                             example: '9220'
                             description: 'Nomenclature exhaustive fournie par l''Insee
@@ -17759,7 +17763,7 @@ paths:
                             nullable: true
                           libelle:
                             title: Libellé associé au code de la forme juridique de
-                              l'unité légale.
+                              l'unité légale
                             type: string
                             example: Association déclarée
                             description: "indique le libellé correspondant au code
@@ -17820,11 +17824,13 @@ paths:
                           ne rentre pas dans les critères d’éligibilité au CEC
                         nullable: true
                       impots_commerciaux:
-                        title: Association assujettie aux impôts commerciaux
+                        title: Indique si l'association est assujettie aux impôts
+                          commerciaux
                         description: "En fonction de ses missions et de ses activités,
-                          une association peut être soumise aux impôts commerciaux.
-                          Ce cas particulier concerne notamment les associations exerçant
-                          une activité lucrative. \n \n En savoir plus : https://www.associations.gouv.fr/l-association-et-les-impots-commerciaux.html"
+                          une association peut être soumise aux impôts commerciaux
+                          (à la TVA ou à l’impôt sur les sociétés). Ce cas particulier
+                          concerne notamment les associations exerçant une activité
+                          lucrative. \n \n En savoir plus : https://www.associations.gouv.fr/l-association-et-les-impots-commerciaux.html"
                         type: boolean
                         example: true
                       date_creation:
@@ -17953,7 +17959,7 @@ paths:
                             example: '122'
                             nullable: true
                           folio:
-                            title: Folio du volume associé au tribunal d'instance
+                            title: Folio du volume du registre du tribunal d'instance
                             type: string
                             example: '082'
                             nullable: true
@@ -18008,7 +18014,7 @@ paths:
                               example: Promouvoir l'engagement des parents d'élèves
                                 dans l'éducation de leurs enfants
                       agrements:
-                        title: Liste des agréments administratifs associés à l'entité
+                        title: Liste des agréments administratifs associés à l'association
                         type: array
                         items:
                           type: object
@@ -18129,6 +18135,7 @@ paths:
                             - libelle
                           champ_action_territorial:
                             title: Champ d'action territorial
+                            example: departemental
                             type: string
                             enum:
                             - national
@@ -18221,19 +18228,20 @@ paths:
                                 nullable: true
                                 example: 2 000 à 4 999 salariés
                           economie_sociale_et_solidaire:
-                            title: Indicateur de l'économie sociale et solidaire
+                            title: Indique si l'association appartient à de l'économie
+                              sociale et solidaire (ESS)
                             type: boolean
                             nullable: true
                             example: true
                           date_appartenance_ess:
-                            title: Date d'appartenance à l'économie sociale et solidaire
+                            title: Date d'appartenance à l'ESS
                             type: string
                             format: date
                             nullable: true
                             example: '2019-01-01'
                       etablissements:
                         title: Liste des établissements de l'association pour lesquels
-                          des informations sont disponibles.
+                          des informations sont disponibles
                         type: array
                         items:
                           type: object
@@ -18434,7 +18442,7 @@ paths:
                                   nullable: true
                                   example: 2 000 à 4 999 salariés
                             rhs:
-                              title: Information sur les ressources humaines
+                              title: Information sur les moyens humains
                               type: array
                               items:
                                 type: object
@@ -18491,14 +18499,14 @@ paths:
                                         example: 16
                                       femmes:
                                         type: integer
-                                        title: Nombre d'adhérents femmes
+                                        title: Nombre d'adhérentes femmes
                                         example: 17
                                       total:
                                         type: integer
                                         title: Nombre d'adhérents total
                                         example: 33
                             comptes:
-                              title: Comptes de résultat et financement perçus
+                              title: Comptes de résultat et financements perçus
                               type: array
                               items:
                                 type: object
@@ -18515,10 +18523,10 @@ paths:
                                 properties:
                                   annee:
                                     type: string
-                                    title: Année associé à ce compte
+                                    title: Année associée à ce compte
                                     example: '2019'
                                   commisaire_aux_comptes:
-                                    title: Détermine si l'association possède un commissaire
+                                    title: Indique si l'association possède un commissaire
                                       aux comptes
                                     type: boolean
                                     example: true
@@ -18536,7 +18544,7 @@ paths:
                                     type: number
                                     example: 1200.0
                                   montant_aides_sur_3ans:
-                                    title: Montant des aides sur 3 ans
+                                    title: Montant total des aides sur 3 ans
                                     type: number
                                     example: 1230.0
                                   total_charges:
