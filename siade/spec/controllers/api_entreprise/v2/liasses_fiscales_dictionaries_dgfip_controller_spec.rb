@@ -1,8 +1,7 @@
-RSpec.describe APIEntreprise::V2::LiassesFiscalesDGFIPController, type: :controller do
+RSpec.describe APIEntreprise::V2::LiassesFiscalesDictionariesDGFIPController, type: :controller do
   subject { response }
 
   let(:token) { yes_jwt }
-  let(:siren) { valid_siren(:liasse_fiscale) }
   let(:annee) { 2017 }
 
   describe 'happy path', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
@@ -10,13 +9,13 @@ RSpec.describe APIEntreprise::V2::LiassesFiscalesDGFIPController, type: :control
       allow(UserIdDGFIPService).to receive(:call).and_return(valid_dgfip_user_id)
     end
 
-    before { get :show, params: { token:, siren:, annee: }.merge(mandatory_params) }
+    before { get :show, params: { token:, annee: 2017 }.merge(mandatory_params) }
 
     its(:status) { is_expected.to eq(200) }
 
     it 'response matches' do
       json = JSON.parse(response.body)
-      expect(json).to match_json_schema('liasse_fiscale_declaration')
+      expect(json).to match_json_schema('liasse_fiscale_dictionary')
     end
   end
 
@@ -27,14 +26,10 @@ RSpec.describe APIEntreprise::V2::LiassesFiscalesDGFIPController, type: :control
 
     it_behaves_like 'unauthorized', :show, annee: 2017
     it_behaves_like 'forbidden', :show, annee: 2017
-    it_behaves_like 'not_found', action: :show, annee: 2017
-    it_behaves_like 'unprocessable_entity', :show, :siren, annee: 2017
 
     describe 'wrong year format' do
-      subject { response }
-
       before do
-        get :show, params: { token:, siren:, annee: 'not a year' }.merge(mandatory_params)
+        get :show, params: { token:, annee: 'not a year' }.merge(mandatory_params)
       end
 
       its(:status) { is_expected.to eq(422) }
@@ -48,7 +43,7 @@ RSpec.describe APIEntreprise::V2::LiassesFiscalesDGFIPController, type: :control
       allow_any_instance_of(AuthenticateDGFIPService).to receive(:success?).and_return(false)
     end
 
-    before { get :show, params: { token:, siren:, annee: }.merge(mandatory_params) }
+    before { get :show, params: { token:, annee: }.merge(mandatory_params) }
 
     its(:status) { is_expected.to eq(502) }
 

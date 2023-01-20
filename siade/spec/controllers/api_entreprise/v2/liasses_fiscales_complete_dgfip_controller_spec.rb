@@ -1,4 +1,4 @@
-RSpec.describe APIEntreprise::V2::LiassesFiscalesDGFIPController, type: :controller do
+RSpec.describe APIEntreprise::V2::LiassesFiscalesCompleteDGFIPController, type: :controller do
   subject { response }
 
   let(:token) { yes_jwt }
@@ -16,7 +16,7 @@ RSpec.describe APIEntreprise::V2::LiassesFiscalesDGFIPController, type: :control
 
     it 'response matches' do
       json = JSON.parse(response.body)
-      expect(json).to match_json_schema('liasse_fiscale_declaration')
+      expect(json).to match_json_schema('liasse_fiscale_complete')
     end
   end
 
@@ -31,8 +31,6 @@ RSpec.describe APIEntreprise::V2::LiassesFiscalesDGFIPController, type: :control
     it_behaves_like 'unprocessable_entity', :show, :siren, annee: 2017
 
     describe 'wrong year format' do
-      subject { response }
-
       before do
         get :show, params: { token:, siren:, annee: 'not a year' }.merge(mandatory_params)
       end
@@ -43,6 +41,8 @@ RSpec.describe APIEntreprise::V2::LiassesFiscalesDGFIPController, type: :control
   end
 
   describe 'without a valid DGFIP authentication' do
+    let(:siren) { invalid_siren }
+
     before do
       allow_any_instance_of(AuthenticateDGFIPService).to receive(:authenticate!)
       allow_any_instance_of(AuthenticateDGFIPService).to receive(:success?).and_return(false)

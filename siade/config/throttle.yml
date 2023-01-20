@@ -34,9 +34,9 @@ shared:
       - { controller: 'api_entreprise/v2/exercices', action: 'show' }
       - { controller: 'api_entreprise/v2/cotisations_msa', action: 'show' }
       - { controller: 'api_entreprise/v2/certificats_agence_bio', action: 'show' }
+      - { controller: 'api_entreprise/v2/liasses_fiscales_complete_dgfip', action: 'show' }
+      - { controller: 'api_entreprise/v2/liasses_fiscales_dictionaries_dgfip', action: 'show' }
       - { controller: 'api_entreprise/v2/liasses_fiscales_dgfip', action: 'show' }
-      - { controller: 'api_entreprise/v2/liasses_fiscales_dgfip', action: 'declaration' }
-      - { controller: 'api_entreprise/v2/liasses_fiscales_dgfip', action: 'dictionnaire' }
       - { controller: 'api_entreprise/v2/conventions_collectives', action: 'show' }
       - { controller: 'api_entreprise/v2/entreprises_artisanales', action: 'show' }
       - { controller: 'api_entreprise/v2/eligibilites_cotisation_retraite_probtp', action: 'show' }

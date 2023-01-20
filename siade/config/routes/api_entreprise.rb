@@ -18,9 +18,9 @@ namespace :v2, constraints: APIEntrepriseDomainConstraint.new  do
   get 'certificats_opqibi/:siren'                         => '/api_entreprise/v2/certificats_opqibi#show'
   get 'certificats_agence_bio/:siret'                     => '/api_entreprise/v2/certificats_agence_bio#show'
 
-  get 'liasses_fiscales_dgfip/:annee/complete/:siren'     => '/api_entreprise/v2/liasses_fiscales_dgfip#show'
-  get 'liasses_fiscales_dgfip/:annee/declarations/:siren' => '/api_entreprise/v2/liasses_fiscales_dgfip#declaration'
-  get 'liasses_fiscales_dgfip/:annee/dictionnaire'        => '/api_entreprise/v2/liasses_fiscales_dgfip#dictionnaire'
+  get 'liasses_fiscales_dgfip/:annee/complete/:siren'     => '/api_entreprise/v2/liasses_fiscales_complete_dgfip#show'
+  get 'liasses_fiscales_dgfip/:annee/declarations/:siren' => '/api_entreprise/v2/liasses_fiscales_dgfip#show'
+  get 'liasses_fiscales_dgfip/:annee/dictionnaire'        => '/api_entreprise/v2/liasses_fiscales_dictionaries_dgfip#show'
   get 'attestations_fiscales_dgfip/:siren'                => '/api_entreprise/v2/attestations_fiscales_dgfip#show'
 
   get 'attestations_sociales_acoss/:siren'                => '/api_entreprise/v2/attestations_sociales_acoss#show'
