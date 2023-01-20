@@ -1,3 +1,6 @@
+env:
+  LOCAL: true
+
 name: Tests
 on: [push]
 jobs:
