@@ -16,10 +16,23 @@ class MakeRequest < ApplicationInteractor
   end
 
   def call
-    api_call_with_error_handling
+    if staging?
+      mock_call
+    else
+      api_call_with_error_handling
+    end
   end
 
   protected
+
+  def staging?
+    Rails.env.staging?
+  end
+
+  def mock_call
+    context.mocked_data = MockService.new(context.operation_id, context.params).mock
+    context.response = true
+  end
 
   # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
   def api_call_with_error_handling

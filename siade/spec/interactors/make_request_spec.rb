@@ -1,5 +1,5 @@
 RSpec.describe MakeRequest, type: :interactor do
-  subject { DummyMakeRequest.call(provider_name:) }
+  subject { DummyMakeRequest.call(provider_name:, params:, operation_id:) }
 
   before(:all) do
     class DummyMakeRequest < MakeRequest
@@ -19,6 +19,8 @@ RSpec.describe MakeRequest, type: :interactor do
 
   let(:uri) { DummyMakeRequest.new.send(:request_uri) }
   let(:provider_name) { 'INSEE' }
+  let(:operation_id) { 'operation_id' }
+  let(:params) { { 'arg1' => 'value1' } }
 
   describe 'response presence in context' do
     context 'when response is not present on context' do
@@ -216,6 +218,67 @@ RSpec.describe MakeRequest, type: :interactor do
 
       it 'adds DnsResolutionError to errors' do
         expect(subject.errors).to include(instance_of(UnexpectedRedirectionError))
+      end
+    end
+  end
+
+  describe 'mock behaviour' do
+    let(:mock_service) { instance_double(MockService) }
+
+    before do
+      allow(MockService).to receive(:new).and_return(mock_service)
+    end
+
+    describe 'when it is a staging environment' do
+      let!(:stubbed_request) { stub_request(:get, uri.to_s) }
+      let(:mocked_data) do
+        {
+          status: 200,
+          payload: {
+            'status' => 'ok'
+          }
+        }
+      end
+
+      before do
+        allow(Rails).to receive(:env).and_return('staging'.inquiry)
+        allow(mock_service).to receive(:mock).and_return(mocked_data)
+      end
+
+      it 'does not make a request' do
+        subject
+
+        expect(stubbed_request).not_to have_been_requested
+      end
+
+      it 'calls MockService' do
+        subject
+
+        expect(MockService).to have_received(:new).with(
+          operation_id,
+          params
+        )
+        expect(mock_service).to have_received(:mock)
+      end
+
+      it 'affects mocked data to context' do
+        expect(subject.mocked_data).to eq(mocked_data)
+      end
+    end
+
+    context 'when it is not a staging environment' do
+      before do
+        stub_request(:get, uri.to_s)
+      end
+
+      it 'does not call MockService' do
+        subject
+
+        expect(MockService).not_to have_received(:new)
+      end
+
+      it 'does not affect the mock status and payload to context' do
+        expect(subject.mocked_data).to be_nil
       end
     end
   end
