@@ -1,7 +1,8 @@
 require 'open-uri'
 
 root_path = File.expand_path(File.join(File.dirname(__FILE__), '../..'))
-api_particulier_schema = YAML.load(URI.open('https://particulier.api.gouv.fr/api/open-api.yml').read, aliases: true, permitted_classes: [Date])
+api_particulier_open_api_file_content = ENV['LOCAL'].nil? ? URI.open('https://particulier.api.gouv.fr/api/open-api.yml').read : File.read(File.join(root_path, 'openapi_files/api-particulier.yml'))
+api_particulier_schema = YAML.load(api_particulier_open_api_file_content, aliases: true, permitted_classes: [Date])
 
 def extract_path_spec_from_schema(path, schema)
   schema['paths'].find do |path_name, _|
