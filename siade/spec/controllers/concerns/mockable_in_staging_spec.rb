@@ -2,7 +2,7 @@ RSpec.describe MockableInStaging do
   controller(APIEntrepriseController) do
     include MockableInStaging
 
-    def controller_name
+    def operation_id
       'dummy_name'
     end
 
@@ -40,9 +40,9 @@ RSpec.describe MockableInStaging do
         paths: {
           '/any/path/will/work': {
             get: {
-              operationId: operation_id,
               responses: {
                 '200': {
+                  'x-operationId': operation_id,
                   content: {
                     'application/json': {
                       schema: {
@@ -66,7 +66,7 @@ RSpec.describe MockableInStaging do
 
     context 'with valid schema' do
       let(:type) { 'string' }
-      let(:operation_id) { 'dummy_name_index' }
+      let(:operation_id) { 'dummy_name' }
 
       it 'renders an example instead of normal payload' do
         get :index, params: { token: yes_jwt }.merge(mandatory_params)
@@ -76,7 +76,7 @@ RSpec.describe MockableInStaging do
 
     context 'with invalid schema' do
       let(:type) { 'unknown' }
-      let(:operation_id) { 'dummy_name_index' }
+      let(:operation_id) { 'dummy_name' }
 
       it 'renders an error' do
         get :index, params: { token: yes_jwt }.merge(mandatory_params)
@@ -112,7 +112,7 @@ RSpec.describe MockableInStaging do
 
         expect(MonitoringService.instance)
           .to have_received(:capture_message)
-          .with('operationId not found: dummy_name_index', level: 'warning')
+          .with('operationId not found: dummy_name', level: 'warning')
       end
     end
   end

@@ -66,20 +66,17 @@ module MockableInStaging
 
   def valid_schema
     open_api_schema['paths'].find do |_, schema|
-      if v3_and_more?
-        schema['get']['responses']['200']['x-operationId'] == operation_id
-      else
-        schema['get']['operationId'] == operation_id
-      end
+      schema['get']['responses']['200']['x-operationId'] == operation_id
     end
   end
 
   def operation_id
-    if v3_and_more?
-      self.class.to_s.underscore.gsub('api_entreprise/v3_and_more/', '')
-    else
-      "#{controller_name}_#{action_name}"
-    end
+    api_name, _, *final_part = self.class.to_s.underscore.split('/')
+    [api_name, current_version, final_part].join('_').sub(/_controller$/, '')
+  end
+
+  def current_version
+    "v#{params.fetch(:api_version, 2)}"
   end
 
   def open_api_schema

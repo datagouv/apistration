@@ -161,7 +161,10 @@ RSpec.configure do |config|
   config.after(type: :swagger) do |example|
     next unless example.metadata[:response][:code].dup.to_s == '200'
 
-    operation_id = request.controller_class.to_s.underscore.gsub('api_entreprise/v3_and_more/', '')
+    api_name, _, *final_part = request.controller_class.to_s.underscore.split('/')
+    api_version = example.metadata[:path_item][:template].split('/')[1]
+    operation_id = [api_name, api_version, final_part].join('_')
+    operation_id = operation_id.sub('_controller', '')
 
     example.metadata[:response][:'x-operationId'] = operation_id
   end
