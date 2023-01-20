@@ -682,7 +682,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
                   title: "Nombre d'adhérents total"
                   example: 33
       comptes:
-        title: "Comptes de résultat et financement perçus"
+        title: "Comptes de résultat et financements perçus"
         type: "array"
         items:
           type: "object"
