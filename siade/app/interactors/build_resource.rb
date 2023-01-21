@@ -5,9 +5,12 @@ class BuildResource < ApplicationInteractor
 
   def self.inherited(klass)
     klass.class_eval do
+      around do |interactor|
+        interactor.call unless staging?
+      end
+
       after do
-        context.bundled_data.nil? &&
-          resource_not_defined!
+        resource_not_defined! unless resource_or_mock_data_valid?
       end
     end
   end
@@ -31,5 +34,10 @@ class BuildResource < ApplicationInteractor
 
   def resource_not_defined!
     raise ResourceNotDefined
+  end
+
+  def resource_or_mock_data_valid?
+    staging? ||
+      context.bundled_data.present?
   end
 end

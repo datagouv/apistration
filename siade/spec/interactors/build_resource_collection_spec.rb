@@ -1,5 +1,7 @@
 RSpec.describe BuildResourceCollection do
-  subject { build_resource_collection.call }
+  subject { build_resource_collection.call(mocked_data:) }
+
+  let(:mocked_data) { nil }
 
   context 'when items is not specified' do
     let(:build_resource_collection) do
@@ -10,8 +12,20 @@ RSpec.describe BuildResourceCollection do
       end
     end
 
-    it 'raises an error' do
-      expect { subject }.to raise_error(NotImplementedError)
+    context 'when it is staging' do
+      before do
+        allow(Rails).to receive(:env).and_return('staging'.inquiry)
+      end
+
+      it 'does not raise an error' do
+        expect { subject }.not_to raise_error
+      end
+    end
+
+    context 'when it is not staging' do
+      it 'raises an error' do
+        expect { subject }.to raise_error(NotImplementedError)
+      end
     end
   end
 

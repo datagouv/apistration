@@ -25,10 +25,6 @@ class MakeRequest < ApplicationInteractor
 
   protected
 
-  def staging?
-    Rails.env.staging?
-  end
-
   def mock_call
     context.mocked_data = MockService.new(context.operation_id, mocking_params).mock
     context.response = true

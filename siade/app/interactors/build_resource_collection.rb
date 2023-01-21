@@ -4,11 +4,13 @@ class BuildResourceCollection < ApplicationInteractor
   class ResourceNotDefined < NotImplementedError; end
 
   def self.inherited(klass)
-    super
-
     klass.class_eval do
+      around do |interactor|
+        interactor.call unless staging?
+      end
+
       after do
-        resource_not_defined! unless valid?(context.bundled_data.data)
+        resource_not_defined! unless resource_or_mock_data_valid?
       end
     end
   end
@@ -43,6 +45,11 @@ class BuildResourceCollection < ApplicationInteractor
 
   def valid?(collection)
     collection.present? && collection.is_a?(Array)
+  end
+
+  def resource_or_mock_data_valid?
+    staging? ||
+      valid?(context.bundled_data.data)
   end
 
   def resource_not_defined!
