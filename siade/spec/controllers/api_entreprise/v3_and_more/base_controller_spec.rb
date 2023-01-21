@@ -206,7 +206,11 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
         it 'calls the retriever directly with parameters' do
           expect(DummyRetrieverOrganizer)
             .to receive(:call)
-            .with(params: { very: :parameters })
+            .with(
+              hash_including(
+                params: { very: :parameters }
+              )
+            )
 
           call!
         end
@@ -289,7 +293,11 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
       it 'calls the retriever directly with parameters' do
         expect(DummyRetrieverOrganizer)
           .to receive(:call)
-          .with(params: { very: :parameters })
+          .with(
+            hash_including(
+              params: { very: :parameters }
+            )
+          )
 
         call!
       end

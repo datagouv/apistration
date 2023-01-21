@@ -1,6 +1,6 @@
 class APIParticulier::V2::PoleEmploi::StatutController < APIParticulierController
   def show
-    organizer = ::PoleEmploi::Statut.call(params: organizer_params)
+    organizer = retrieve_payload_data(::PoleEmploi::Statut)
 
     if organizer.success?
       render json: serialize_data(organizer),

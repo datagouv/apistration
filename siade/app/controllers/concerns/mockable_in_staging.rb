@@ -70,15 +70,6 @@ module MockableInStaging
     end
   end
 
-  def operation_id
-    api_name, _, *final_part = self.class.to_s.underscore.split('/')
-    [api_name, current_version, final_part].join('_').sub(/_controller$/, '')
-  end
-
-  def current_version
-    "v#{params.fetch(:api_version, 2)}"
-  end
-
   def open_api_schema
     YAML.load_file(schema_path, aliases: true)
   end

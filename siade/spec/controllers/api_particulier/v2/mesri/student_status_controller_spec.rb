@@ -138,14 +138,16 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
       make_call
 
       expect(MESRI::StudentStatus::WithCivility).to have_received(:call).with(
-        params: {
-          token_id: anything,
-          family_name: france_connect_person_identity_attributes[:family_name],
-          first_name: france_connect_person_identity_attributes[:given_name].split[0],
-          birth_date: france_connect_person_identity_attributes[:birthdate],
-          birth_place: france_connect_person_identity_attributes[:birthplace],
-          gender: 'm'
-        }
+        hash_including(
+          params: {
+            token_id: anything,
+            family_name: france_connect_person_identity_attributes[:family_name],
+            first_name: france_connect_person_identity_attributes[:given_name].split[0],
+            birth_date: france_connect_person_identity_attributes[:birthdate],
+            birth_place: france_connect_person_identity_attributes[:birthplace],
+            gender: 'm'
+          }
+        )
       )
     end
 
@@ -156,14 +158,16 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
         make_call
 
         expect(MESRI::StudentStatus::WithCivility).to have_received(:call).with(
-          params: {
-            token_id: anything,
-            family_name: france_connect_person_identity_attributes[:family_name],
-            first_name: france_connect_person_identity_attributes[:given_name].split[0],
-            birth_date: france_connect_person_identity_attributes[:birthdate],
-            birth_place: france_connect_person_identity_attributes[:birthplace],
-            gender: 'm'
-          }
+          hash_including(
+            params: {
+              token_id: anything,
+              family_name: france_connect_person_identity_attributes[:family_name],
+              first_name: france_connect_person_identity_attributes[:given_name].split[0],
+              birth_date: france_connect_person_identity_attributes[:birthdate],
+              birth_place: france_connect_person_identity_attributes[:birthplace],
+              gender: 'm'
+            }
+          )
         )
       end
     end

@@ -141,7 +141,11 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
     it 'calls CNOUS::StudentScholarshipWithFranceConnect with france connect person identity attributes' do
       make_call
 
-      expect(CNOUS::StudentScholarshipWithFranceConnect).to have_received(:call).with(params:)
+      expect(CNOUS::StudentScholarshipWithFranceConnect).to have_received(:call).with(
+        hash_including(
+          params:
+        )
+      )
     end
   end
 end

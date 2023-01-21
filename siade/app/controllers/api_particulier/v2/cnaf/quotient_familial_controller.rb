@@ -1,6 +1,6 @@
 class APIParticulier::V2::CNAF::QuotientFamilialController < APIParticulierController
   def show
-    organizer = ::CNAF::QuotientFamilial.call(params: organizer_params)
+    organizer = retrieve_payload_data(::CNAF::QuotientFamilial)
 
     if organizer.success?
       render json: serialize_data(organizer),

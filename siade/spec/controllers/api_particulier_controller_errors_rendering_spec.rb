@@ -18,7 +18,7 @@ RSpec.describe APIParticulierController, 'errors rendering' do
     get :show, params: { token: }
   end
 
-  let(:organizer) { double('organizer', errors:) }
+  let(:organizer) { double('organizer', mocked_data: nil, errors:) }
   # rubocop:enable RSpec/VerifiedDoubles
 
   let(:token) { yes_jwt }

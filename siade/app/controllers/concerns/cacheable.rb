@@ -21,12 +21,13 @@ module Cacheable
 
       @cached_retriever
     else
-      retriever.call(params: organizer_params)
+      retriever.call(params: organizer_params, operation_id:)
     end
   end
 
   def bypass_cache?
-    request.headers['Cache-Control'] == 'no-cache'
+    request.headers['Cache-Control'] == 'no-cache' ||
+      Rails.env.staging?
   end
 
   def mark_response_as_cached_in_response!

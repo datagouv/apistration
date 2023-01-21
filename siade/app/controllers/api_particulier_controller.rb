@@ -36,7 +36,11 @@ class APIParticulierController < APIController
   end
 
   def serialize_data(organizer)
-    serializer_class.new(organizer.bundled_data.data, serializer_base_options).serializable_hash
+    if organizer.mocked_data.present?
+      organizer.mocked_data[:payload]
+    else
+      serializer_class.new(organizer.bundled_data.data, serializer_base_options).serializable_hash
+    end
   end
 
   def serializer_class
@@ -75,6 +79,8 @@ class APIParticulierController < APIController
   end
 
   def extract_http_code(organizer)
+    return organizer.mocked_data[:status] if organizer.mocked_data
+
     if at_least_one_error_kind_of?(:wrong_parameter, organizer)
       :bad_request
     elsif at_least_one_error_kind_of?(:provider_error, organizer)
