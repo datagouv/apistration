@@ -1,5 +1,3 @@
-require 'open-uri'
-
 RSpec.describe 'Payload specs' do
   Dir[File.join(root_path, 'payloads/*')].each do |operation_id|
     describe "operation #{operation_id.split('/')[-1]}" do
