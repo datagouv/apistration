@@ -20,8 +20,14 @@ class OpenAPISchemaToExample
       extract_value(schema, rand(50))
     when 'boolean'
       extract_value(schema, true)
+    when 'null'
+      nil
     else
-      unknown_type(schema)
+      if schema['oneOf'].present?
+        perform_recursively(schema['oneOf'].sample)
+      else
+        unknown_type(schema)
+      end
     end
   end
   # rubocop:enable Metrics/AbcSize
