@@ -478,6 +478,7 @@ paths:
           content:
             application/json:
               schema:
+                type: object
                 properties:
                   identifiant:
                     type: string
@@ -602,6 +603,7 @@ paths:
           content:
             application/json:
               schema:
+                type: object
                 properties:
                   ine:
                     type: string
@@ -738,6 +740,7 @@ paths:
           content:
             application/json:
               schema:
+                type: object
                 properties:
                   nom:
                     type: string
