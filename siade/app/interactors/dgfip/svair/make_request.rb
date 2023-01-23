@@ -27,6 +27,13 @@ class DGFIP::SVAIR::MakeRequest < MakeRequest::Post
 
   private
 
+  def mocking_params
+    {
+      numeroFiscal: tax_number,
+      referenceAvis: tax_notice_number
+    }
+  end
+
   def tax_number
     context.params[:tax_number]
   end

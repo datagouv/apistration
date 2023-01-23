@@ -30,8 +30,12 @@ class MakeRequest < ApplicationInteractor
   end
 
   def mock_call
-    context.mocked_data = MockService.new(context.operation_id, context.params).mock
+    context.mocked_data = MockService.new(context.operation_id, mocking_params).mock
     context.response = true
+  end
+
+  def mocking_params
+    context.params
   end
 
   # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
