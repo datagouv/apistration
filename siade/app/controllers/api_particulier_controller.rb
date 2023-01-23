@@ -1,13 +1,8 @@
 class APIParticulierController < APIController
-  include MockableInStaging
   include Cacheable
   include OrganizersMethodsHelpers
 
   protected
-
-  def mocked_response_for_staging
-    render status: :ok
-  end
 
   def authenticate_user!
     @token ||= retrieve_token

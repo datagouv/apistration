@@ -54,18 +54,40 @@ RSpec.describe 'Mocking in staging for each routes' do
   end
 
   describe 'API Particulier', api: :particulier do
-    %w[
-      /api/v2/composition-familiale
-      /api/v2/situations-pole-emploi
-      /api/v2/etudiants
-      /api/v2/etudiants-boursiers
-      /api/v2/scolarites
-      /api/v2/avis-imposition
+    before do
+      allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
+    end
 
-      /api/ping
-    ].each do |path|
+    {
+      '/api/v2/composition-familiale' => {
+        'numeroAllocataire' => '1234567',
+        'codePostal' => '75001'
+      },
+      '/api/v2/situations-pole-emploi' => {
+        'identifiant' => '1234567890'
+      },
+      '/api/v2/etudiants' => {
+        'ine' => '1234567890G'
+      },
+      '/api/v2/etudiants-boursiers' => {
+        'ine' => '1234567890G'
+      },
+      '/api/v2/scolarites' => {
+        'nom' => 'DUPONT',
+        'prenom' => 'Jean',
+        'sexe' => 'm',
+        'dateNaissance' => '1980-01-01',
+        'codeEtablissement' => '1234567A',
+        'anneeScolaire' => '2019-2020'
+      },
+      '/api/v2/avis-imposition' => {
+        'numeroFiscal' => '1234567890ABC',
+        'referenceAvis' => '1234567890ABC'
+      },
+      '/api/ping' => {}
+    }.each do |path, params|
       it "works for #{path}" do
-        get path, params: { token: yes_jwt }
+        get path, params: { token: yes_jwt }.merge(params)
         assert_response 200
       end
     end
