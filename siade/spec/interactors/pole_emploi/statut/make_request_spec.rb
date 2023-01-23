@@ -6,15 +6,15 @@ RSpec.describe PoleEmploi::Statut::MakeRequest, type: :make_request do
 
   let(:params) do
     {
-      identifiant:,
+      identifiant_pole_emploi:,
       user_id:
     }
   end
-  let(:identifiant) { 'whatever' }
+  let(:identifiant_pole_emploi) { 'whatever' }
 
   let!(:stubbed_request) do
     stub_request(:post, Siade.credentials[:pole_emploi_status_url]).with(
-      body: identifiant,
+      body: identifiant_pole_emploi,
       headers: {
         'Content-Type' => 'application/json',
         'Authorization' => "Bearer #{token}",

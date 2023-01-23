@@ -1,5 +1,5 @@
 class PoleEmploi::Statut::ValidateIdentifiantPresence < ValidateAttributePresence
   def attribute
-    :identifiant
+    :identifiant_pole_emploi
   end
 end

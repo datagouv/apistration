@@ -4,12 +4,12 @@ RSpec.describe PoleEmploi::Statut, type: :retriever_organizer do
 
     let(:params) do
       {
-        identifiant:,
+        identifiant_pole_emploi:,
         user_id:
       }
     end
 
-    let(:identifiant) { 'whatever' }
+    let(:identifiant_pole_emploi) { 'whatever' }
     let(:user_id) { SecureRandom.uuid }
 
     describe 'happy path', vcr: { cassette_name: 'pole_emploi/oauth2' } do

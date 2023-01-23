@@ -14,7 +14,7 @@ class APIParticulier::V2::PoleEmploi::StatutController < APIParticulierControlle
 
   def organizer_params
     {
-      identifiant: params[:identifiant],
+      identifiant_pole_emploi: params[:identifiant],
       user_id: current_user.id
     }
   end

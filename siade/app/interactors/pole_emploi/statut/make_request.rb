@@ -18,7 +18,7 @@ class PoleEmploi::Statut::MakeRequest < MakeRequest::Post
   private
 
   def identifiant
-    context.params[:identifiant]
+    context.params[:identifiant_pole_emploi]
   end
 
   def user_id
