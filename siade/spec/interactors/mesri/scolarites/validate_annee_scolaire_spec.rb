@@ -1,4 +1,4 @@
-RSpec.describe MESRI::Scolarite::ValidateAnneeScolaire, type: :validate_param_interactor do
+RSpec.describe MESRI::Scolarites::ValidateAnneeScolaire, type: :validate_param_interactor do
   describe '.call' do
     subject { described_class.call(params:) }
 

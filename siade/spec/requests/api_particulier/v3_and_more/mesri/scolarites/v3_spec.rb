@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'MESRI: Scolarite', api: :particulier, type: %i[request swagger] do
+RSpec.describe 'MESRI: Scolarites', api: :particulier, type: %i[request swagger] do
   path '/v3/mesri/scolarites/' do
     get SwaggerData.get('mesri.scolarite.title') do
       tags(*SwaggerData.get('mesri.scolarite.tags'))
@@ -49,9 +49,9 @@ RSpec.describe 'MESRI: Scolarite', api: :particulier, type: %i[request swagger] 
             run_test!
           end
 
-          common_provider_errors_request('MESRI', MESRI::Scolarite)
+          common_provider_errors_request('MESRI', MESRI::Scolarites)
 
-          common_network_error_request('MESRI', MESRI::Scolarite)
+          common_network_error_request('MESRI', MESRI::Scolarites)
         end
       end
     end

@@ -1,4 +1,4 @@
-class APIEntreprise::MESRI::ScolariteSerializer::V3 < APIEntreprise::V3AndMore::BaseSerializer
+class APIParticulier::MESRI::ScolaritesSerializer::V3 < APIParticulier::V3AndMore::BaseSerializer
   attributes :eleve,
     :code_etablissement,
     :annee_scolaire,

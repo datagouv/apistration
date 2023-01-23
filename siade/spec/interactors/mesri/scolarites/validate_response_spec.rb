@@ -1,4 +1,4 @@
-RSpec.describe MESRI::Scolarite::ValidateResponse, type: :validate_response do
+RSpec.describe MESRI::Scolarites::ValidateResponse, type: :validate_response do
   subject { described_class.call(response:, provider_name: 'MESRI') }
 
   context 'with a http ok' do

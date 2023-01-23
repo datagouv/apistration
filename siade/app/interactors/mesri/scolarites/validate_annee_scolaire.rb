@@ -1,4 +1,4 @@
-class MESRI::Scolarite::ValidateAnneeScolaire < ValidateParamInteractor
+class MESRI::Scolarites::ValidateAnneeScolaire < ValidateParamInteractor
   def call
     invalid_param!(:annee_scolaire) if param(:annee_scolaire).blank?
 

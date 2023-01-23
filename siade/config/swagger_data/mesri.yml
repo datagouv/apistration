@@ -16,9 +16,11 @@ mesri:
         example: "Camille"
         required: true
       sexe:
-        description: "sexe de l'élève; 1 : Masculin, 2 : Féminin"
+        description: "sexe de l'élève; Masculin ou Féminin"
         type: string
-        example: "Camille"
+        enum:
+          - "m"
+          - "f"
         required: true
       date_naissance:
         description: "date de naissance de l'élève au format AAAA-MM-JJ"

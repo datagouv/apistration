@@ -1,4 +1,4 @@
-RSpec.describe MESRI::Scolarite::ValidateCodeEtablissement, type: :validate_param_interactor do
+RSpec.describe MESRI::Scolarites::ValidateCodeEtablissement, type: :validate_param_interactor do
   describe '.call' do
     subject { described_class.call(params:) }
 

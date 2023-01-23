@@ -1,4 +1,4 @@
-RSpec.describe MESRI::Scolarite::ValidateParams, type: :validate_params do
+RSpec.describe MESRI::Scolarites::ValidateParams, type: :validate_params do
   subject { described_class.call(params:) }
 
   let(:params) do
@@ -14,7 +14,7 @@ RSpec.describe MESRI::Scolarite::ValidateParams, type: :validate_params do
 
   let(:family_name) { 'Dupont' }
   let(:first_name) { 'Jean' }
-  let(:gender) { 2 }
+  let(:gender) { 'M' }
   let(:birthday_date) { '2000-01-01' }
   let(:code_etablissement) { '123456' }
   let(:annee_scolaire) { '2022' }

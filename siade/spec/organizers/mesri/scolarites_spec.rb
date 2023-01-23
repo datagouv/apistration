@@ -1,13 +1,13 @@
-RSpec.describe MESRI::Scolarite, type: :retriever_organizer do
+RSpec.describe MESRI::Scolarites, type: :retriever_organizer do
   describe '.call' do
     subject { described_class.call(params:) }
 
     let(:params) do
       {
-        nom: 'COULEARD',
-        prenom: 'cecile',
-        sexe: '2',
-        date_naissance: '2000-06-10',
+        family_name: 'COULEARD',
+        first_name: 'cecile',
+        gender: 'f',
+        birthday_date: '2000-06-10',
         code_etablissement: '0511474A',
         annee_scolaire: '2021'
       }

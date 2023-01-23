@@ -5,7 +5,7 @@ RSpec.describe MESRI::Scolarites::BuildResource, type: :build_resource do
 
   let(:response) { instance_double(Net::HTTPOK, body:) }
 
-  let(:body) { open_payload_file('mesri/scolarite/valid.json').read }
+  let(:body) { open_payload_file('mesri/scolarites/valid.json').read }
 
   it { is_expected.to be_a_success }
 

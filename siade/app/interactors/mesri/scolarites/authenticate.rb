@@ -1,4 +1,4 @@
-class MESRI::Scolarite::Authenticate < GetOAuth2Token
+class MESRI::Scolarites::Authenticate < GetOAuth2Token
   def client_url
     Siade.credentials[:mesri_scolarite_authenticate_url]
   end
