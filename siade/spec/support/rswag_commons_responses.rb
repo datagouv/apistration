@@ -231,7 +231,7 @@ module RSWagCommonsResponses
 
   # rubocop:disable RSpec/VerifiedDoubles
   def stubbed_organizer_error(organizer_klass, error)
-    let(:organizer) { double('organizer', success?: false, errors: [error], cacheable: false) }
+    let(:organizer) { double('organizer', success?: false, errors: [error], mocked_data: nil, cacheable: false) }
 
     before do
       allow(organizer_klass).to receive(:call).and_return(organizer)

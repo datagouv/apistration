@@ -1,11 +1,9 @@
 class APIEntreprise::V3AndMore::Infogreffe::MandatairesSociauxController < APIEntreprise::V3AndMore::BaseController
-  attr_reader :organizer
-
   def show
-    @organizer = ::Infogreffe::MandatairesSociaux.call(params: organizer_params)
+    organizer = retrieve_payload_data(::Infogreffe::MandatairesSociaux)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.bundled_data).serializable_hash,
+      render json: serialize_data(organizer),
         status: extract_http_code(organizer)
     else
       render_errors(organizer)

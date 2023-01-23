@@ -13,6 +13,14 @@ class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
 
   protected
 
+  def serialize_data(organizer)
+    if organizer.mocked_data.present?
+      organizer.mocked_data[:payload]
+    else
+      serializer_class.new(organizer.bundled_data).serializable_hash
+    end
+  end
+
   def verify_api_version!
     raise_unsupported_version_error! unless supported_version?
   end

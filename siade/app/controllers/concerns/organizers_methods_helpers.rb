@@ -1,6 +1,8 @@
 module OrganizersMethodsHelpers
   # rubocop:disable Metrics
   def extract_http_code(retriever)
+    return retriever.mocked_data[:status] if retriever.mocked_data
+
     if retriever.errors.blank?
       :ok
     elsif at_least_one_error_kind_of?(:wrong_parameter, retriever)

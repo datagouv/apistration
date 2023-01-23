@@ -1,13 +1,15 @@
 RSpec.describe 'Mocking in staging for each routes' do
   before do
     allow(Rails.env).to receive(:staging?).and_return(true)
+    allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
+
     Rack::Attack.reset!
   end
 
   describe 'API Entreprise', api: :entreprise do
     describe 'v3 and more endpoint' do
       it 'renders a 200' do
-        get '/v3/ministere_interieur/rna/associations/00000', params: { token: yes_jwt }.merge(mandatory_params)
+        get "/v3/ministere_interieur/rna/associations/#{valid_siret}", params: { token: yes_jwt }.merge(mandatory_params)
 
         assert_response 200
       end
@@ -54,10 +56,6 @@ RSpec.describe 'Mocking in staging for each routes' do
   end
 
   describe 'API Particulier', api: :particulier do
-    before do
-      allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
-    end
-
     {
       '/api/v2/composition-familiale' => {
         'numeroAllocataire' => '1234567',

@@ -1,9 +1,9 @@
 class API<%= api.classify %>::V3AndMore::<%= name %>Controller < APIEntreprise::V3AndMore::BaseController
   def show
-    organizer = ::<%= name %>.call(params: organizer_params)
+    organizer = retrieve_payload_data(::<%= name %>)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.resource<% if options[:is_collection] %>_collection<% end %>).serializable_hash,
+      render json: serialize_data(organizer),
         status: extract_http_code(organizer)
     else
       render_errors(organizer)

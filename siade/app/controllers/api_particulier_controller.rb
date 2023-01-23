@@ -74,8 +74,6 @@ class APIParticulierController < APIController
   end
 
   def extract_http_code(organizer)
-    return organizer.mocked_data[:status] if organizer.mocked_data
-
     if at_least_one_error_kind_of?(:wrong_parameter, organizer)
       :bad_request
     elsif at_least_one_error_kind_of?(:provider_error, organizer)

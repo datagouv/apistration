@@ -1,11 +1,10 @@
 class APIEntreprise::V3AndMore::MI::DocumentsAssociationsController < APIEntreprise::V3AndMore::BaseController
-  attr_reader :organizer
-
   def show
-    @organizer = ::MI::Associations::Documents.call(params: organizer_params)
+    organizer = retrieve_payload_data(::MI::Associations::Documents)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.bundled_data).serializable_hash, status: extract_http_code(organizer)
+      render json: serialize_data(organizer),
+        status: extract_http_code(organizer)
     else
       render_errors(organizer)
     end

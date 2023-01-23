@@ -1,11 +1,9 @@
 class APIEntreprise::V3AndMore::INPI::AbstractController < APIEntreprise::V3AndMore::BaseController
-  attr_reader :organizer
-
-  def call(organizer_klass)
-    @organizer = organizer_klass.call(params: organizer_params)
+  def show
+    organizer = retrieve_payload_data(organizer_klass)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.bundled_data).serializable_hash,
+      render json: serialize_data(organizer),
         status: extract_http_code(organizer)
     else
       render_errors(organizer)

@@ -3,7 +3,7 @@ class APIEntreprise::V3AndMore::DGFIP::AttestationsFiscalesController < APIEntre
     organizer = retrieve_payload_data(::DGFIP::AttestationFiscale, cache: true, cache_key:)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.bundled_data).serializable_hash,
+      render json: serialize_data(organizer),
         status: extract_http_code(organizer)
     else
       render_errors(organizer)

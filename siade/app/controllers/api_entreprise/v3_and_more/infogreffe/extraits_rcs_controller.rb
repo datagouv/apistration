@@ -1,9 +1,9 @@
 class APIEntreprise::V3AndMore::Infogreffe::ExtraitsRCSController < APIEntreprise::V3AndMore::BaseController
   def show
-    organizer = ::Infogreffe::ExtraitsRCS.call(params: organizer_params)
+    organizer = retrieve_payload_data(::Infogreffe::ExtraitsRCS)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.bundled_data).serializable_hash,
+      render json: serialize_data(organizer),
         status: extract_http_code(organizer)
     else
       render_errors(organizer)

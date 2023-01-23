@@ -1,9 +1,9 @@
 class APIEntreprise::V3AndMore::FabriqueNumeriqueMinisteresSociaux::ConventionsCollectivesController < APIEntreprise::V3AndMore::BaseController
   def show
-    organizer = ::FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives.call(params: organizer_params)
+    organizer = retrieve_payload_data(::FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.bundled_data).serializable_hash,
+      render json: serialize_data(organizer),
         status: extract_http_code(organizer)
     else
       render_errors(organizer)

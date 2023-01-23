@@ -1,9 +1,9 @@
 class APIEntreprise::V3AndMore::MSA::ConformitesCotisationsController < APIEntreprise::V3AndMore::BaseController
   def show
-    organizer = ::MSA::ConformitesCotisations.call(params: organizer_params)
+    organizer = retrieve_payload_data(::MSA::ConformitesCotisations)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.bundled_data).serializable_hash,
+      render json: serialize_data(organizer),
         status: extract_http_code(organizer)
     else
       render_errors(organizer)

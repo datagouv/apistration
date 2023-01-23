@@ -1,9 +1,9 @@
 class APIEntreprise::V3AndMore::INPI::ActesController < APIEntreprise::V3AndMore::BaseController
   def show
-    organizer = ::INPI::Actes.call(params: organizer_params)
+    organizer = retrieve_payload_data(::INPI::Actes)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.bundled_data).serializable_hash,
+      render json: serialize_data(organizer),
         status: extract_http_code(organizer)
     else
       render_errors(organizer)
