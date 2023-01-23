@@ -160,7 +160,9 @@ paths:
                   revenuImposable:
                     type: number
                   impotRevenuNetAvantCorrections:
-                    type: number
+                    oneOf:
+                      - type: number
+                      - type: 'null'
                   montantImpot:
                     type: number
                   revenuFiscalReference:
@@ -473,6 +475,7 @@ paths:
           content:
             application/json:
               schema:
+                type: object
                 properties:
                   identifiant:
                     type: string
@@ -596,6 +599,7 @@ paths:
           content:
             application/json:
               schema:
+                type: object
                 properties:
                   ine:
                     type: string
@@ -731,6 +735,7 @@ paths:
           content:
             application/json:
               schema:
+                type: object
                 properties:
                   nom:
                     type: string
