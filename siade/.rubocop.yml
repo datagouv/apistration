@@ -127,6 +127,10 @@ Naming/MethodParameterName:
     - "_"
     - "nb"
 
+Rails/Inquiry:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
 RSpec/NestedGroups:
   Enabled: false
 
