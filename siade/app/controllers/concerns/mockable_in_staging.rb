@@ -10,7 +10,11 @@ module MockableInStaging
   end
 
   def mock_response
-    render json:, status: :ok
+    mocked_response_for_staging
+  end
+
+  def mocked_response_for_staging
+    render json: mocked_json, status: :ok
   end
 
   def staging?
@@ -56,7 +60,7 @@ module MockableInStaging
       .capture_message(message, level: 'warning')
   end
 
-  def json
+  def mocked_json
     OpenAPISchemaToExample.new(extract_valid_open_api_path_schema).perform
   end
 

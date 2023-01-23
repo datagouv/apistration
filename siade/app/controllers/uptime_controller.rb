@@ -16,6 +16,10 @@ class UptimeController < APIController
 
   private
 
+  def mocked_response_for_staging
+    render status: :ok
+  end
+
   def render_status
     if route_recognized?
       render status: http_code
