@@ -8,6 +8,10 @@ class ValidateResponse < ApplicationInteractor
         context.cacheable = false
       end
 
+      around do |interactor|
+        interactor.call unless staging?
+      end
+
       after do
         mark_payload_as_cacheable_on_success!
       end
