@@ -1,17 +1,5 @@
 require 'open-uri'
 
-root_path = File.expand_path(File.join(File.dirname(__FILE__), '../..'))
-
-api_particulier_open_api_file_content = ENV['LOCAL'].nil? ? URI.open('https://particulier.api.gouv.fr/api/open-api.yml').read : File.read(File.join(root_path, 'openapi_files/api-particulier.yml'))
-api_particulier_schema = YAML.load(api_particulier_open_api_file_content, aliases: true, permitted_classes: [Date])
-api_entreprise_schema = nil
-
-def extract_path_spec_from_schema(operation_id, schema)
-  schema['paths'].find do |_, schema|
-    schema['get']['responses']['200']['x-operationId'] == operation_id
-  end[1]['get']
-end
-
 RSpec.describe 'Payload specs' do
   Dir[File.join(root_path, 'payloads/*')].each do |operation_id|
     describe "operation #{operation_id.split('/')[-1]}" do
@@ -35,8 +23,7 @@ RSpec.describe 'Payload specs' do
 
           it 'has valid params according to OpenAPI file' do
             params = YAML.load_file(payload)['params']
-            api_schema = operation_id.include?('api_particulier') ? api_particulier_schema : api_entreprise_schema
-            path_spec = extract_path_spec_from_schema(File.basename(operation_id), api_schema)
+            path_spec = extract_path_spec_from_schema(File.basename(operation_id), load_schema(operation_id))
 
             schema = {
               type: 'object',
@@ -52,8 +39,7 @@ RSpec.describe 'Payload specs' do
 
           it 'has a valid payload according to OpenAPI file' do
             data = YAML.load_file(payload)
-            api_schema = operation_id.include?('api_particulier') ? api_particulier_schema : api_entreprise_schema
-            path_spec = extract_path_spec_from_schema(File.basename(operation_id), api_schema)
+            path_spec = extract_path_spec_from_schema(File.basename(operation_id), load_schema(operation_id))
 
             schema = path_spec['responses'][data['status'].to_s]['content']['application/json']['schema']
 
