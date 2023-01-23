@@ -125,6 +125,7 @@ paths:
         - Avis d'imposition
       responses:
         "200":
+          x-operationId: api_particulier_v2_dgfip_svair
           description: Avis d'imposition
           content:
             application/json:
@@ -346,6 +347,7 @@ paths:
         - Situation CAF
       responses:
         "200":
+          x-operationId: api_particulier_v2_cnaf_quotient_familial
           description: Foyer tel qu'il est déclaré à la CAF
           content:
             application/json:
@@ -471,6 +473,7 @@ paths:
         - Situation Pôle Emploi
       responses:
         "200":
+          x-operationId: api_particulier_v2_pole_emploi_statut
           description: La situation Pôle Emploi d'un individu
           content:
             application/json:
@@ -594,6 +597,7 @@ paths:
         **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=invaqM68okWdPDzc5&inviteToken=43864c010a85095fd8acc6770f6528ce3beff684f60e7aab58e248c29e6d0433&utm_source=email)
       responses:
         "200":
+          x-operationId: api_particulier_v2_mesri_student_status
           description: La situation d'un étudiant et ses inscriptions
           content:
             application/json:
@@ -729,6 +733,7 @@ paths:
         **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=inv9lBycvDR5UzbyM&inviteToken=6e46235c19bbb4a70dd31ab483eb7375ac0bf46c9d8145d1358e0aa50f65277a&utm_source=email)
       responses:
         "200":
+          x-operationId: api_particulier_v2_cnous_student_scholarship
           description: La situation d'un étudiant boursier
           content:
             application/json:

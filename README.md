@@ -11,12 +11,22 @@ Particulier ( https://staging.entreprise.api.gouv.fr )
 ## Fonctionnement
 
 L'ensemble des payloads de réponses se trouvent dans le dossier `payloads/`.
-Chaque endpoint possède son propre dossier au sein de son api sous cette forme:
+Chaque endpoint possède son propre dossier sous l'une de ces formes:
 
 ```
-api_entreprise/path_to_payload_with_{param}
-api_particulier/path_to_payload_with_{param}
+api_entreprise_version_path_to_payload
+api_particulier_version_path_to_payload
 ```
+
+Par exemple:
+
+```
+api_entreprise_v3_insee_unite_legale
+api_particulier_v2_dgfip_svair
+```
+
+FEEDME Une table de correspondance url <-> nom du dossier est disponible à la
+racine du dossier.
 
 Chaque dossier possède un README.md ainsi que des fichiers YAML ayant le format
 suivant:
@@ -41,16 +51,14 @@ Avec:
 * `payload`, la payload renvoyée.
 
 
-Pour déclencher la réponse ci-dessous, si ce fichier était dans
-`api_entreprise/v1_dgfip_example`, il faut effectuer l'appel suivant:
+Pour déclencher la réponse ci-dessous, avec comme application API Particulier
+et comme chemin `v1/dgfip/impots`, il faut effectuer l'appel suivant:
 
 ```sh
 curl -X GET \
   -G -d 'first_name=John' -d 'last_name=Doe' \
-  https://staging.entreprise.api.gouv.fr/v1/dgfip
+  https://staging.particulier.api.gouv.fr/v1/dgfip/impots
 ```
-
-L'url est précisé dans le fichier README.md du dossier `api_entreprise/v1_dgfip_example`
 
 ## Contribution
 
@@ -71,3 +79,6 @@ bundle install
 bundle exec rspec
 ```
 
+## TODO
+
+* Script de bootstrap de dossier pour un endpoint
