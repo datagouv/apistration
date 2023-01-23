@@ -51,7 +51,7 @@ class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulierCo
   def civility_params
     {
       family_name: params[:nom],
-      first_names: params[:prenoms].split,
+      first_names: (params[:prenoms] || '').split,
       birth_date: params[:dateDeNaissance],
       birth_place: params[:lieuDeNaissance],
       gender: params[:sexe]

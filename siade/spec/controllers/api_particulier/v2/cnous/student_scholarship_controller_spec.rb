@@ -69,7 +69,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
   end
 
   describe 'with civility params' do
-    subject { get :show, params: { nom:, prenoms:, dateDeNaissance:, lieuDeNaissance:, sexe:, token: } }
+    subject { get :show, params: { nom:, prenoms:, dateDeNaissance:, lieuDeNaissance:, sexe:, token: }.compact }
 
     # rubocop:disable RSpec/VariableName
     let(:nom) { 'Dupont' }
@@ -97,6 +97,17 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
           end
         end
       end
+    end
+
+    describe 'without prenoms (non regression test)' do
+      before do
+        mock_cnous_valid_call('civility')
+      end
+
+      let(:scopes) { all_scopes }
+      let(:prenoms) { nil }
+
+      its(:status) { is_expected.to eq(400) }
     end
   end
 
