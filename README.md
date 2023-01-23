@@ -50,7 +50,6 @@ Avec:
 * `status`, le status de la réponse HTTP associé ;
 * `payload`, la payload renvoyée.
 
-
 Pour déclencher la réponse ci-dessous, avec comme application API Particulier
 et comme chemin `v1/dgfip/impots`, il faut effectuer l'appel suivant:
 
@@ -69,6 +68,7 @@ FEEDME
 ### Dépendances
 
 * ruby 3.2.0
+
 ```sh
 bundle install
 ```
