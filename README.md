@@ -25,8 +25,9 @@ api_entreprise_v3_insee_unite_legale
 api_particulier_v2_dgfip_svair
 ```
 
-FEEDME Une table de correspondance url <-> nom du dossier est disponible à la
-racine du dossier.
+Une table de correspondance url <-> nom du dossier est disponible à la
+racine du dossier payload: [README.md](./payloads/README.md) (généré
+automatiquement par `bin/generate_payload_readme.rb`)
 
 Chaque dossier possède un README.md ainsi que des fichiers YAML ayant le format
 suivant:
