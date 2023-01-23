@@ -39,7 +39,9 @@ class UnprocessableEntityError < ApplicationError
       civility: '00366',
       # DGFIP usager
       tax_number: '00370',
-      tax_notice_number: '00371'
+      tax_notice_number: '00371',
+      # Pole Emploi
+      identifiant_pole_emploi: '00380'
     }.fetch(field) do
       raise KeyError, "#{field} is not a valid field name"
     end
