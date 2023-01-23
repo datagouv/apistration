@@ -23,13 +23,6 @@ class APIEntreprise::V3AndMore::DGFIP::ChiffresAffairesController < APIEntrepris
     "dgfip/attestations_fiscales:siret=#{params[:siret]}"
   end
 
-  def options(organizer)
-    {
-      is_collection: true,
-      meta: organizer.meta
-    }
-  end
-
   def serializer_module
     ::APIEntreprise::DGFIP::ChiffresAffairesCollectionSerializer
   end

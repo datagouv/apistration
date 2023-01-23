@@ -11,12 +11,7 @@ class API<%= api.classify %>::V3AndMore::<%= name %>Controller < APIEntreprise::
   end
 
   private
-  <% if options[:is_collection] %>def options
-   {
-     is_collection: true
-   }
-  end
-  <%end%>
+
   def organizer_params
     fail NotImplementedError
   end
