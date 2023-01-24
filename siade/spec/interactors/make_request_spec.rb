@@ -22,20 +22,6 @@ RSpec.describe MakeRequest, type: :interactor do
   let(:operation_id) { 'operation_id' }
   let(:params) { { 'arg1' => 'value1' } }
 
-  describe 'response presence in context' do
-    context 'when response is not present on context' do
-      before do
-        allow_any_instance_of(DummyMakeRequest).to receive(:api_call)
-      end
-
-      it 'raises a ResponseNotDefined error' do
-        expect {
-          subject
-        }.to raise_error(MakeRequest::ResponseNotDefined)
-      end
-    end
-  end
-
   describe 'when request succeed' do
     before do
       stub_request(:get, uri.to_s).to_return(

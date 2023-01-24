@@ -8,10 +8,6 @@ class MakeRequest < ApplicationInteractor
       before do
         context.errors ||= []
       end
-
-      after do
-        response_not_defined! if response_not_defined?
-      end
     end
   end
 
@@ -27,7 +23,6 @@ class MakeRequest < ApplicationInteractor
 
   def mock_call
     context.mocked_data = MockService.new(context.operation_id, mocking_params).mock
-    context.response = true
   end
 
   def mocking_params
@@ -89,10 +84,6 @@ class MakeRequest < ApplicationInteractor
     }
   end
 
-  def response_not_defined?
-    context.response.nil?
-  end
-
   private
 
   def http_wrapper(&block)
@@ -149,9 +140,5 @@ class MakeRequest < ApplicationInteractor
         307
         308
       ].include?(context.response.code)
-  end
-
-  def response_not_defined!
-    raise ResponseNotDefined
   end
 end
