@@ -8,10 +8,6 @@ class BuildResource < ApplicationInteractor
       around do |interactor|
         interactor.call unless staging?
       end
-
-      after do
-        resource_not_defined! unless resource_or_mock_data_valid?
-      end
     end
   end
 
@@ -28,16 +24,5 @@ class BuildResource < ApplicationInteractor
 
   def resource_klass
     Resource
-  end
-
-  private
-
-  def resource_not_defined!
-    raise ResourceNotDefined
-  end
-
-  def resource_or_mock_data_valid?
-    staging? ||
-      context.bundled_data.present?
   end
 end
