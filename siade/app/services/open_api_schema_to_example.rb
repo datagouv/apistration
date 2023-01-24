@@ -7,32 +7,30 @@ class OpenAPISchemaToExample
     @schema = schema
   end
 
-  # rubocop:disable Metrics/AbcSize
   def perform
+    if schema['type']
+      handle_with_type_key(schema)
+    elsif schema['oneOf'].present?
+      perform_recursively(schema['oneOf'].sample)
+    else
+      unknown_type(schema)
+    end
+  end
+
+  private
+
+  def handle_with_type_key(schema)
     case schema['type']
     when 'array'
       extract_array_value(schema['items'])
     when 'object'
       extract_object_value(schema['properties'])
-    when 'string'
-      extract_value(schema, 'dummy')
-    when 'integer', 'number'
-      extract_value(schema, rand(50))
-    when 'boolean'
-      extract_value(schema, true)
-    when 'null'
-      nil
+    when 'string', 'integer', 'number', 'boolean', 'null'
+      extract_value(schema)
     else
-      if schema['oneOf'].present?
-        perform_recursively(schema['oneOf'].sample)
-      else
-        unknown_type(schema)
-      end
+      unknown_type(schema)
     end
   end
-  # rubocop:enable Metrics/AbcSize
-
-  private
 
   def unknown_type(open_api_schema)
     raise InvalidOpenAPIType, open_api_schema.to_s
@@ -54,8 +52,21 @@ class OpenAPISchemaToExample
     self.class.new(value).perform
   end
 
-  def extract_value(sub_schema, default)
+  def extract_value(sub_schema)
     sub_schema['example'] ||
-      default
+      extract_default_value(sub_schema)
+  end
+
+  def extract_default_value(sub_schema)
+    case sub_schema['type']
+    when 'string'
+      'dummy'
+    when 'integer', 'number'
+      rand(50)
+    when 'boolean'
+      true
+    when 'null'
+      nil
+    end
   end
 end
