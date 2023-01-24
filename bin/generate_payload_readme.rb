@@ -17,7 +17,6 @@ readme_stream.puts 'génère une payload par défaut basée sur la spécificatio
 
 {
   'api_particulier' => 'API Particulier',
-  'api_entreprise_v2' => 'API Entreprise v2 (deprecated)',
   'api_entreprise' => 'API Entreprise v3+',
 }.each do |api_id, api_name|
   readme_stream.puts

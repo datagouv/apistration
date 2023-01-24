@@ -7,6 +7,5 @@ fi
 
 path=$1
 
-cp $path/public/v2/open-api.yml openapi_files/api_entreprise_v2.yaml
 cp $path/swagger/openapi.yaml openapi_files/api_entreprise.yaml
 cp $path/swagger/api-particulier-open-api.yml openapi_files/api_particulier.yaml

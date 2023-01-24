@@ -29,8 +29,6 @@ module OpenApiHelpers
     uri = case extract_open_api_name(operation_id)
           when 'api_particulier'
             'https://staging.particulier.api.gouv.fr/api/open-api.yml'
-          when 'api_entreprise_v2'
-            'https://staging.entreprise.api.gouv.fr/v2/open-api.yml'
           else
             'https://staging.entreprise.api.gouv.fr/v3/openapi.yaml'
           end
@@ -42,8 +40,6 @@ module OpenApiHelpers
     base_name = File.basename(operation_id)
     if base_name.start_with?('api_particulier')
       'api_particulier'
-    elsif base_name.start_with?('api_entreprise_v2')
-      'api_entreprise_v2'
     else
       'api_entreprise'
     end

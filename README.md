@@ -1,11 +1,12 @@
-# Dépôt de données de tests pour API Particulier / API Entreprise
+# Dépôt de données de tests pour API Particulier / API Entreprise v3+
 
 [![Tests](https://github.com/etalab/siade_staging_data/actions/workflows/tests.yml/badge.svg)](https://github.com/etalab/siade_staging_data/actions/workflows/tests.yml)
 
 # ⚠️ Il s'agit encore d'un dépôt en chantier, rien n'est actuellement fonctionnel ⚠️
 
 Ce dépôt contient l'ensemble des données de tests pour les environnements de bac
-à sable d'API Entreprise ( https://staging.entreprise.api.gouv.fr ) et d'API
+à sable d'API Entreprise (seulement pour la v3+)
+( https://staging.entreprise.api.gouv.fr ) et d'API
 Particulier ( https://staging.entreprise.api.gouv.fr )
 
 ## Fonctionnement
@@ -59,6 +60,8 @@ curl -X GET \
   -G -d 'first_name=John' -d 'last_name=Doe' \
   https://staging.particulier.api.gouv.fr/v1/dgfip/impots
 ```
+
+L'ensemble des routes sont listé à la racine du dossier [payloads](./payloads)
 
 ## Contribution
 
