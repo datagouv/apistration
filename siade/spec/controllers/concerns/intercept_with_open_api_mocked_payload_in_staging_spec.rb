@@ -1,6 +1,6 @@
-RSpec.describe MockableInStaging do
+RSpec.describe InterceptWithOpenAPIMockedPayloadInStaging do
   controller(APIEntrepriseController) do
-    include MockableInStaging
+    include InterceptWithOpenAPIMockedPayloadInStaging
 
     def operation_id
       'dummy_name'

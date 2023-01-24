@@ -1,5 +1,7 @@
 class APIEntreprise::V2::BaseController < ::APIEntrepriseController
   include OrganizersMethodsHelpers
+  include InterceptWithOpenAPIMockedPayloadInStaging
+
   rescue_from ::ProviderInMaintenance, with: :provider_in_maintenance
 
   protected

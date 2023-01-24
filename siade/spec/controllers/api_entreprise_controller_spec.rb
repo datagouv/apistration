@@ -18,7 +18,7 @@ RSpec.describe APIEntrepriseController do
       allow(Rails.env).to receive(:staging?).and_return(true)
 
       # rubocop:disable RSpec/AnyInstance
-      allow_any_instance_of(MockableInStaging)
+      allow_any_instance_of(InterceptWithOpenAPIMockedPayloadInStaging)
         .to receive(:json)
         .and_return(dummy: 'example value')
       # rubocop:enable RSpec/AnyInstance

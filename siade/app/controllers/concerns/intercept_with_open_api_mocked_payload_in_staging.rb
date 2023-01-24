@@ -1,4 +1,4 @@
-module MockableInStaging
+module InterceptWithOpenAPIMockedPayloadInStaging
   extend ActiveSupport::Concern
 
   class NoOperationId < StandardError; end
