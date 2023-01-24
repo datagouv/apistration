@@ -1,6 +1,5 @@
 class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
-  include Cacheable
-  include OrganizersMethodsHelpers
+  include UseRetrievers
 
   class UnsupportedVersionError < ::ActionController::RoutingError; end
 

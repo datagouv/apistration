@@ -1,6 +1,5 @@
 class APIParticulierController < APIController
-  include Cacheable
-  include OrganizersMethodsHelpers
+  include UseRetrievers
 
   protected
 
