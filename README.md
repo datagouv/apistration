@@ -63,6 +63,15 @@ curl -X GET \
 
 L'ensemble des routes sont listé à la racine du dossier [payloads](./payloads)
 
+A noter qu'il est possible de mettre n'importe quel status hormis celui associé
+aux paramètres invalides:
+
+* Pour API Entreprise: 422
+* Pour API Particulier: 400
+
+En effet, les paramètres d'entrées sont vérifiés directement par l'application,
+ce qui garantie un comportement iso avec la production.
+
 ## Contribution
 
 FEEDME
@@ -86,3 +95,7 @@ bundle exec rspec
 ## TODO
 
 * Script de bootstrap de dossier pour un endpoint
+* Exclure les 422 => c'est déjà
+* Tester avec FranceConnect sur API Particulier
+* Bootstrap un exemple avec API Entreprise v3
+* Vérifier qu'il n'y a pas de doublons dans les params
