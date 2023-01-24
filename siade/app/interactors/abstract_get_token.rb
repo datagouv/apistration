@@ -1,5 +1,7 @@
 class AbstractGetToken < MakeRequest::Post
   def call
+    return if staging?
+
     context.token = token_from_redis || retrieve_and_save_token
   end
 
