@@ -64,13 +64,23 @@ et comme chemin `v1/dgfip/impots`, il faut effectuer l'appel suivant:
 
 ```sh
 curl -X GET \
+  -H 'X-Api-Key: TOKEN' \
   -G -d 'first_name=John' -d 'last_name=Doe' \
   https://staging.particulier.api.gouv.fr/v1/dgfip/impots
 ```
 
+Pour le cas d'API Entreprise:
+
+```sh
+curl -X GET \
+  -H 'Authorization: Bearer TOKEN' \
+  -G -d 'first_name=John' -d 'last_name=Doe' \
+  https://staging.entreprise.api.gouv.fr/v1/dgfip/impots
+```
+
 L'ensemble des routes est listé à la racine du dossier [payloads](./payloads)
 
-A noter qu'il est possible de mettre n'importe quel status hormis celui associé
+A noter qu'il est possible de mettre n'importe quel status (valide) hormis celui associé
 aux paramètres invalides:
 
 * Pour API Entreprise: 422
