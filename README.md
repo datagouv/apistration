@@ -74,17 +74,9 @@ ce qui garantie un comportement iso avec la production.
 
 ## Contribution
 
-### Ajout d'un nouvel endpoint
+### Installation en local
 
-1. Identifier l'operation_id (dans les fichiers swaggers: `x-operationId`) ;
-2. Executer la commande : `bundle exec ruby bin/bootstrap_payload.rb
-   operation_id` ;
-3. La commande crée un dossier avec un `default.yaml` que vous devez adapter pour
-   que la suite de test passe (cf plus bas).
-
-## Installation en local
-
-### Dépendances
+#### Dépendances
 
 * ruby 3.2.0
 
@@ -92,11 +84,19 @@ ce qui garantie un comportement iso avec la production.
 bundle install
 ```
 
-## Lancer la suite de tests pour vérifier les payloads
+### Lancer la suite de tests pour vérifier les payloads
 
 ```sh
 bundle exec rspec
 ```
+
+### Ajout d'un nouvel endpoint
+
+1. Identifier l'operation_id (dans les fichiers swaggers: `x-operationId`) ;
+2. Executer la commande : `bundle exec ruby bin/bootstrap_payload.rb
+   operation_id` ;
+3. La commande crée un dossier avec un `default.yaml` que vous devez adapter pour
+   que la suite de test passe (cf plus bas).
 
 ## TODO
 
