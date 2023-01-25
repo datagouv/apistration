@@ -100,8 +100,7 @@ bundle exec rspec
 
 ## TODO
 
-* Script de bootstrap de dossier pour un endpoint
-* Exclure les 422 => c'est déjà
-* Tester avec FranceConnect sur API Particulier
+* Ajouter un jeton + un script pour générer des jetons
+* Exclure les 422 => c'est déjà géré
 * Bootstrap un exemple avec API Entreprise v3
 * Vérifier qu'il n'y a pas de doublons dans les params
