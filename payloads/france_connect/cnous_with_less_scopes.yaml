@@ -21,10 +21,10 @@ payload: |-
     "identity": {
       "given_name": "Jean",
       "family_name": "MARTIN",
-      "birthdate": "2001-01-02",
+      "birthdate": "2001-01-01",
       "gender": "male",
       "birthplace": "75002",
       "birthcountry": "99100",
-      "preferred_username": "jmartin_cnous"
+      "preferred_username": "jmartin_cnous_with_less_scopes"
     }
   }

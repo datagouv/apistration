@@ -125,7 +125,8 @@ A noter que les scopes renvoyés par FranceConnect permettent de construire la
 réponse adéquate.
 
 Si on prend l'exemple de [payloads/france_connect/cnous_with_less_scopes.yaml](./payloads/france_connect/cnous_with_less_scopes.yaml) où le scope `cnous_identite` est manquant, couplé à
-[payloads/api_particulier_v2_cnous_student_scholarship/france_connect_cnous_with_less_scopes.yml](./payloads/api_particulier_v2_cnous_student_scholarship/franceconnect_cnous_with_less_scopes.yml), on obtient l'appel suivant:
+[payloads/api_particulier_v2_cnous_student_scholarship/france_connect_cnous_with_less_scopes.yml](./payloads/api_particulier_v2_cnous_student_scholarship/franceconnect_cnous_with_less_scopes.yml),
+on obtient l'appel suivant:
 
 ```sh
 curl -X GET \
@@ -136,6 +137,10 @@ curl -X GET \
 La payload finale renvoyée par l'API sera filtrée des paramètres
 correspondant au scope `cnous_identite`, soit les champs `nom`, `prenom`,
 `prenom2`, `dateNaissance`, `lieuNaissance`, `sexe`.
+
+A noter que les paramètres d'identité doivent être différentes afin que l'on
+puisse faire un matching exacte: ici le `preferred_username` est différent entre
+`cnous.yaml` et `cnous_with_less_scopes.yaml`.
 
 ## Contribution
 
