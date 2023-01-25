@@ -2,7 +2,7 @@
 params:
   token: 'default'
 status: 200
-payload: '
+payload: |-
   {
     "scope": ["openid", "identite_pivot"],
     "client": {
@@ -19,4 +19,3 @@ payload: '
       "preferred_username": "jdupont"
     }
   }
-'

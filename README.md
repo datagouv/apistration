@@ -39,7 +39,7 @@ params:
   first_name: 'John'
   last_name: 'Doe'
 status: 200
-payload: |
+payload: |-
   {
     "status": "OK"
   }

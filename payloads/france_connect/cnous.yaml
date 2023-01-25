@@ -2,7 +2,7 @@
 params:
   token: 'cnous'
 status: 200
-payload: '
+payload: |-
   {
     "scope": [
       "openid",
@@ -29,4 +29,3 @@ payload: '
       "preferred_username": "jmartin_cnous"
     }
   }
-'
