@@ -1,0 +1,28 @@
+---
+params:
+  given_name: "Jean"
+  family_name: "MARTIN"
+  birthdate: "2001-01-02"
+  gender: "male"
+  birthplace: "75002"
+  birthcountry: "99100"
+  preferred_username: "jmartin_cnous"
+status: 200
+payload: |-
+  {
+    "nom": "DUPONT",
+    "prenom": "Jean",
+    "prenom2": "Martin",
+    "dateNaissance": "2000-01-01",
+    "lieuNaissance": "Paris",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "5",
+    "email": "jean@dupont.fr",
+    "dateDeRentree": "2020-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Bordeaux",
+    "etablissement": "Camille Jullian"
+  }

@@ -1,0 +1,30 @@
+---
+params:
+  token: 'cnous_with_less_scopes'
+status: 200
+payload: |-
+  {
+    "scope": [
+      "openid",
+      "identite_pivot",
+      "cnous_statut_boursier",
+      "cnous_echelon_bourse",
+      "cnous_email",
+      "cnous_periode_versement",
+      "cnous_statut_bourse",
+      "cnous_ville_etudes"
+    ],
+    "client": {
+      "client_id": "client_id",
+      "client_name": "client_name"
+    },
+    "identity": {
+      "given_name": "Jean",
+      "family_name": "MARTIN",
+      "birthdate": "2001-01-02",
+      "gender": "male",
+      "birthplace": "75002",
+      "birthcountry": "99100",
+      "preferred_username": "jmartin_cnous"
+    }
+  }

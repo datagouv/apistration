@@ -108,7 +108,7 @@ Par exemple pour `api/v2/etudiants-boursiers`:
 1. Un mapping valide pour FranceConnect: [payloads/france_connect/cnous.yaml](./payloads/france_connect/cnous.yaml) ;
 2. Un mapping pour `api/v2/etudiants-boursiers` qui prend exactement les
    paramètres d'identité renvoyés par le fichier ci-dessus:
-   [payloads/api_particulier_v2_cnous_student_scholarship/franceconnect1.yml](./payloads/api_particulier_v2_cnous_student_scholarship/franceconnect1.yml)
+   [payloads/api_particulier_v2_cnous_student_scholarship/franceconnect_cnous.yml](./payloads/api_particulier_v2_cnous_student_scholarship/franceconnect_cnous.yml)
 
 Ainsi, l'appel suivant renverra in-fine la réponse définie en 2.:
 
@@ -123,6 +123,19 @@ définition de FranceConnect.
 
 A noter que les scopes renvoyés par FranceConnect permettent de construire la
 réponse adéquate.
+
+Si on prend l'exemple de [payloads/france_connect/cnous_with_less_scopes.yaml](./payloads/france_connect/cnous_with_less_scopes.yaml) où le scope `cnous_identite` est manquant, couplé à
+[payloads/api_particulier_v2_cnous_student_scholarship/france_connect_cnous_with_less_scopes.yml](./payloads/api_particulier_v2_cnous_student_scholarship/franceconnect_cnous_with_less_scopes.yml), on obtient l'appel suivant:
+
+```sh
+curl -X GET \
+  -H "Authorization: Bearer cnous_with_less_scopes" \
+  https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers
+```
+
+La payload finale renvoyée par l'API sera filtrée des paramètres
+correspondant au scope `cnous_identite`, soit les champs `nom`, `prenom`,
+`prenom2`, `dateNaissance`, `lieuNaissance`, `sexe`.
 
 ## Contribution
 
