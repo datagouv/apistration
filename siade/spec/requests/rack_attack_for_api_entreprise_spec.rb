@@ -410,6 +410,10 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
         {
           controller: 'errors',
           action: 'not_found'
+        },
+        {
+          controller: 'reload_mock_backend',
+          action: 'create'
         }
       ]
     end

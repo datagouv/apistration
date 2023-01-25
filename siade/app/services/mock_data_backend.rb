@@ -14,6 +14,15 @@ class MockDataBackend
     instance.get_response_for(operation_id, params)
   end
 
+  def self.reset!
+    instance.reset!
+  end
+
+  def reset!
+    @endpoints = {}
+    @github_files = nil
+  end
+
   def get_response_for(operation_id, params)
     @payloads_paths ||= fetch_payloads_paths_from_github
     @endpoints[operation_id] ||= fetch_all_payloads_for(operation_id)
