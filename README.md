@@ -5,6 +5,7 @@
 # ⚠️ Il s'agit encore d'un dépôt en chantier, rien n'est actuellement fonctionnel ⚠️
 
 * [Fonctionnement](#fonctionnement)
+  * [Cas de FranceConnect](#cas-de-franceconnect)
 * [Contribution](#contribution)
   * [Installation en local](#installation-en-local)
   * [Lancer la suite de tests pour vérifier les payloads](#lancer-la-suite-de-tests-pour-vérifier-les-payloads)
@@ -89,6 +90,40 @@ aux paramètres invalides:
 En effet, les paramètres d'entrées sont vérifiés directement par l'application,
 ce qui garantie un comportement iso avec la production.
 
+### Cas de FranceConnect
+
+Certains endpoints d'API Particulier sont FranceConnectés: cela implique que
+l'on peut passer un jeton FranceConnect à la place des paramètres classiques
+afin d'effectuer un appel auprès des fournisseurs de données.
+
+Les données de tests de FranceConnect se trouvent dans le dossier
+[payloads/france_connect/](payloads/france_connect/)
+
+Il est possible dans ce dépôt de faire un mapping jeton <-> données
+FranceConnect, et derrière faire un mapping Données FranceConnect <-> réponse de
+l'API.
+
+Par exemple pour `api/v2/etudiants-boursiers`:
+
+1. Un mapping valide pour FranceConnect: [payloads/france_connect/cnous.yaml](./payloads/france_connect/cnous.yaml) ;
+2. Un mapping pour `api/v2/etudiants-boursiers` qui prend exactement les
+   paramètres d'identité renvoyés par le fichier ci-dessus:
+   [payloads/api_particulier_v2_cnous_student_scholarship/franceconnect1.yml](./payloads/api_particulier_v2_cnous_student_scholarship/franceconnect1.yml)
+
+Ainsi, l'appel suivant renverra in-fine la réponse définie en 2.:
+
+```sh
+curl -X GET \
+  -H "Authorization: Bearer cnous" \
+  https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers
+```
+
+Le jeton `cnous` correspond à la valeur du paramètre `token` dans le fichier de
+définition de FranceConnect.
+
+A noter que les scopes renvoyés par FranceConnect permettent de construire la
+réponse adéquate.
+
 ## Contribution
 
 ### Installation en local
@@ -122,5 +157,4 @@ Référez vous à [tokens/](./tokens)
 ## TODO
 
 * Documenter FranceConnect
-* Exclure les 422 => c'est déjà géré
 * Bootstrap un exemple avec API Entreprise v3
