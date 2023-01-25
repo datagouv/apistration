@@ -1,5 +1,5 @@
 RSpec.describe 'FranceConnect specs' do
-  Dir[File.join(root_path, 'payloads/france_connect/*.yaml')].each do |payload|
+  Dir[File.join(root_path, 'payloads/france_connect/*.y*ml')].each do |payload|
     describe "Payload #{File.basename(payload)}" do
       it 'is a valid YAML file' do
         expect { YAML.load_file(payload) }.not_to raise_error

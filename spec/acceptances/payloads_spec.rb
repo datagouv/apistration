@@ -3,7 +3,7 @@ RSpec.describe 'Payload specs' do
     next if operation_id.split('/')[-1] == 'france_connect'
 
     describe operation_id.split('/')[-1] do
-      Dir[File.join(operation_id, '*.yaml')].each do |payload|
+      Dir[File.join(operation_id, '*.y*ml')].each do |payload|
         describe "Payload #{File.basename(payload)}" do
           it 'is a valid YAML file' do
             expect { YAML.load_file(payload) }.not_to raise_error
@@ -24,10 +24,15 @@ RSpec.describe 'Payload specs' do
           it 'has valid params according to OpenAPI file' do
             params = YAML.load_file(payload)['params']
             path_spec = extract_path_spec_from_schema(File.basename(operation_id), load_schema(operation_id))
+            required_params = params.keys.reject do |param|
+              valid_param = path_spec['parameters'].find { |p| p['name'] == param }
+
+              valid_param.nil? || valid_param['required'] == false
+            end
 
             schema = {
               type: 'object',
-              required: params.keys.reject { |param| path_spec['parameters'].find { |p| p['name'] == param }['required'] == false },
+              required: required_params,
               properties: path_spec['parameters'].each_with_object({}) do |param_spec, acc|
                 acc[param_spec['name']] = param_spec['schema']
               end

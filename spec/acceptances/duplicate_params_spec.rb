@@ -4,7 +4,7 @@ RSpec.describe 'Duplicate params' do
 
     describe operation_id.split('/')[-1] do
       it 'has no duplicate params' do
-        all_payloads = Dir[File.join(operation_id, '*.yaml')].map do |payload|
+        all_payloads = Dir[File.join(operation_id, '*.y*ml')].map do |payload|
           YAML.load_file(payload).merge(
             'name' => File.basename(payload)
           )
