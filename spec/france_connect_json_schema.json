@@ -5,11 +5,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "minLength": 2,
-        "enum": [
-          "openid",
-          "identite_pivot"
-        ]
+        "minLength": 2
       }
     },
     "client": {
