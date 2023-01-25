@@ -4,6 +4,13 @@
 
 # ⚠️ Il s'agit encore d'un dépôt en chantier, rien n'est actuellement fonctionnel ⚠️
 
+* [Fonctionnement](#fonctionnement)
+* [Contribution](#contribution)
+  * [Installation en local](#installation-en-local)
+  * [Lancer la suite de tests pour vérifier les payloads](#lancer-la-suite-de-tests-pour-vérifier-les-payloads)
+  * [Génerer un jeton](./tokens)
+  * [Ajout d'un nouvel endpoint](#ajout-dun-nouvel-endpoint)
+
 Ce dépôt contient l'ensemble des données de tests pour les environnements de bac
 à sable d'API Entreprise (seulement pour la v3+)
 ( https://staging.entreprise.api.gouv.fr ) et d'API
@@ -61,7 +68,7 @@ curl -X GET \
   https://staging.particulier.api.gouv.fr/v1/dgfip/impots
 ```
 
-L'ensemble des routes sont listé à la racine du dossier [payloads](./payloads)
+L'ensemble des routes est listé à la racine du dossier [payloads](./payloads)
 
 A noter qu'il est possible de mettre n'importe quel status hormis celui associé
 aux paramètres invalides:
@@ -90,7 +97,7 @@ bundle install
 bundle exec rspec
 ```
 
-### Générer un nouveau jeton
+### Générer un jeton
 
 Référez vous à [tokens/](./tokens)
 
@@ -104,6 +111,6 @@ Référez vous à [tokens/](./tokens)
 
 ## TODO
 
+* Documenter FranceConnect
 * Exclure les 422 => c'est déjà géré
 * Bootstrap un exemple avec API Entreprise v3
-* Vérifier qu'il n'y a pas de doublons dans les params
