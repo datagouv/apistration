@@ -7,6 +7,7 @@ GEM
     diff-lcs (1.5.0)
     json-schema (3.0.0)
       addressable (>= 2.8)
+    jwt (2.6.0)
     public_suffix (5.0.0)
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
@@ -29,6 +30,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   json-schema
+  jwt
   rspec
 
 BUNDLED WITH

@@ -90,6 +90,10 @@ bundle install
 bundle exec rspec
 ```
 
+### Générer un nouveau jeton
+
+Référez vous à [tokens/](./tokens)
+
 ### Ajout d'un nouvel endpoint
 
 1. Identifier l'operation_id (dans les fichiers swaggers: `x-operationId`) ;
@@ -100,7 +104,6 @@ bundle exec rspec
 
 ## TODO
 
-* Ajouter un jeton + un script pour générer des jetons
 * Exclure les 422 => c'est déjà géré
 * Bootstrap un exemple avec API Entreprise v3
 * Vérifier qu'il n'y a pas de doublons dans les params
