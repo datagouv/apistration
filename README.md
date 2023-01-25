@@ -122,25 +122,21 @@ Le jeton `cnous` correspond à la valeur du paramètre `token` dans le fichier d
 définition de FranceConnect.
 
 A noter que les scopes renvoyés par FranceConnect permettent de construire la
-réponse adéquate.
+réponse adéquate: si les scopes nécessaires pour renvoyer la réponse ne sont pas
+présent l'API renverra une 401.
 
-Si on prend l'exemple de [payloads/france_connect/cnous_with_less_scopes.yaml](./payloads/france_connect/cnous_with_less_scopes.yaml) où le scope `cnous_identite` est manquant, couplé à
-[payloads/api_particulier_v2_cnous_student_scholarship/france_connect_cnous_with_less_scopes.yml](./payloads/api_particulier_v2_cnous_student_scholarship/franceconnect_cnous_with_less_scopes.yml),
-on obtient l'appel suivant:
+Attention, il y a une divergence entre la production et le staging sur les
+champs renvoyés: l'API en production effectue un filtrage des champs en fonction
+des scopes. Par exemple ici si `cnous_email` est absent des scopes, l'API en
+production retira le champ `email` de la réponse. Ce comportement n'existe pas
+en staging, l'API renverra la payload définie dans le fichier de ce dépôt sans
+aucun filtrage.
 
-```sh
-curl -X GET \
-  -H "Authorization: Bearer cnous_with_less_scopes" \
-  https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers
-```
-
-La payload finale renvoyée par l'API sera filtrée des paramètres
-correspondant au scope `cnous_identite`, soit les champs `nom`, `prenom`,
-`prenom2`, `dateNaissance`, `lieuNaissance`, `sexe`.
-
-A noter que les paramètres d'identité doivent être différentes afin que l'on
-puisse faire un matching exacte: ici le `preferred_username` est différent entre
-`cnous.yaml` et `cnous_with_less_scopes.yaml`.
+Pour contourner ce problème, il faut retirer les champs de la payload finale.
+Vous pouvez vous référer à l'exemple
+[payloads/api_particulier_v2_cnous_student_scholarship/franceconnect_cnous_with_less_scopes.yml](./payloads/api_particulier_v2_cnous_student_scholarship/franceconnect_cnous_with_less_scopes.yml),
+où les clés `nom`, `prenom`, `prenom2`, `dateNaissance`, `lieuNaissance`, `sexe`
+ont été omises.
 
 ## Contribution
 

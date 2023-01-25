@@ -10,12 +10,6 @@ params:
 status: 200
 payload: |-
   {
-    "nom": "DUPONT",
-    "prenom": "Jean",
-    "prenom2": "Martin",
-    "dateNaissance": "2000-01-01",
-    "lieuNaissance": "Paris",
-    "sexe": "M",
     "boursier": true,
     "echelonBourse": "5",
     "email": "jean@dupont.fr",
