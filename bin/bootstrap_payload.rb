@@ -40,7 +40,9 @@ File.open(File.join(payload_folder_path, 'default.yaml'), 'w') do |f|
       hash[param['name']] = param['example'] || 'example'
     end),
     'status' => 200,
-    'payload' => OpenAPISchemaToExample.new(operation_id_schema['responses']['200']['content']['application/json']['schema']).perform
+    'payload' => JSON.pretty_generate(
+      OpenAPISchemaToExample.new(operation_id_schema['responses']['200']['content']['application/json']['schema']).perform
+    )
   }
 
   f.write(data.to_yaml)
