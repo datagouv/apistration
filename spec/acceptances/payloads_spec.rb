@@ -2,7 +2,7 @@ RSpec.describe 'Payload specs' do
   Dir[File.join(root_path, 'payloads/*')].each do |operation_id|
     next if operation_id.split('/')[-1] == 'france_connect'
 
-    describe "operation #{operation_id.split('/')[-1]}" do
+    describe operation_id.split('/')[-1] do
       Dir[File.join(operation_id, '*.yaml')].each do |payload|
         describe "Payload #{File.basename(payload)}" do
           it 'is a valid YAML file' do
