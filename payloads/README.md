@@ -9,7 +9,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * Informations concernant la famille (`/v2/composition-familiale`)
 * Recherche de la situation Pôle Emploi d'un particulier (`/v2/situations-pole-emploi`)
 * Recherche du statut étudiant d'un particulier (`/v2/etudiants`)
-* Recherche du statut étudiant boursier d'un particulier (`/v2/etudiants-boursiers`)
+* [Recherche du statut étudiant boursier d'un particulier](api_particulier_v2_cnous_student_scholarship) (`/v2/etudiants-boursiers`)
 
 ## API Entreprise v3+
 
