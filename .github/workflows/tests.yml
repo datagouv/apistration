@@ -30,3 +30,8 @@ jobs:
             exit 0
           fi
 
+      - name: Reload mock backend on staging (on main branch)
+        run: |
+          if [ `git branch --show-current` = "main" ] ; then
+            bundle exec ruby bin/reload_mock_backend.rb
+          fi
