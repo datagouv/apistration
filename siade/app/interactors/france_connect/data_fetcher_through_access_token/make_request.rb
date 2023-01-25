@@ -1,10 +1,14 @@
 class FranceConnect::DataFetcherThroughAccessToken::MakeRequest < MakeRequest::Post
   def mock_call
-    context.mocked_data = MockService.new('france_connect', { token: }).mock_from_backend
+    context.mocked_data = MockService.new(operation_id, mocking_params).mock_from_backend
 
     return if context.mocked_data
 
     simulate_not_found_error
+  end
+
+  def operation_id
+    'france_connect'
   end
 
   def request_uri
@@ -24,6 +28,7 @@ class FranceConnect::DataFetcherThroughAccessToken::MakeRequest < MakeRequest::P
   end
 
   def simulate_not_found_error
+    track_mock_operation
     context.errors << InvalidFranceConnectAccessTokenError.new(:not_found_or_expired)
     context.fail!
   end

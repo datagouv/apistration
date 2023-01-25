@@ -14,6 +14,7 @@ class MakeRequest < ApplicationInteractor
   def call
     if staging?
       mock_call
+      track_mock_operation
     else
       api_call_with_error_handling
     end
@@ -22,7 +23,11 @@ class MakeRequest < ApplicationInteractor
   protected
 
   def mock_call
-    context.mocked_data = MockService.new(context.operation_id, mocking_params).mock
+    context.mocked_data = MockService.new(operation_id, mocking_params).mock
+  end
+
+  def operation_id
+    context.operation_id
   end
 
   def mocking_params
@@ -93,6 +98,12 @@ class MakeRequest < ApplicationInteractor
       set_headers(request)
       http.request(request)
     end
+  end
+
+  def track_mock_operation
+    mocked_operation_ok = context.mocked_data.present? ? 'OK' : 'NOK'
+
+    Rails.logger.debug { "## Mocking operation #{operation_id} with params #{mocking_params} : #{mocked_operation_ok}" }
   end
 
   def fail_to_request_provider!(provider_klass_error)
