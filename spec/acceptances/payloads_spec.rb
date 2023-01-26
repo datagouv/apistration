@@ -44,9 +44,14 @@ RSpec.describe 'Payload specs' do
 
           it 'has a valid payload according to OpenAPI file' do
             data = YAML.load_file(payload)
-            path_spec = extract_path_spec_from_schema(File.basename(operation_id), load_schema(operation_id))
+            main_schema = load_schema(operation_id)
+            path_spec = extract_path_spec_from_schema(File.basename(operation_id), main_schema)
 
             schema = path_spec['responses'][data['status'].to_s]['content']['application/json']['schema']
+
+            if schema['$ref']
+              schema = main_schema['components']['schemas'][schema['$ref'].split('/').last]
+            end
 
             test = JSON::Validator.fully_validate(schema, JSON.parse(data['payload']))
             expect(test).to be_empty, "JSON schema validation failed: #{test}"
