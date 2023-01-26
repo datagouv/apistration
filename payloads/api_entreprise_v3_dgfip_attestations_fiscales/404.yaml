@@ -1,0 +1,17 @@
+---
+params:
+  siren: '000000000'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "03003",
+        "title": "Entité non trouvée",
+        "detail": "L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
+        "meta": {
+          "provider": "DGFIP - Adélie"
+        }
+      }
+    ]
+  }

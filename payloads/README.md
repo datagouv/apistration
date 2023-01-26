@@ -18,7 +18,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * 3 derniers bilans annuels (`/v3/banque_de_france/unites_legales/{siren}/bilans`)
 * Attestation de cotisations congés payés & chômage-intempéries (`/v3/cnetp/unites_legales/{siren}/attestation_cotisations_conges_payes_chomage_intemperies`)
 * Immatriculation EORI (`/v3/douanes/etablissements/{siret_or_eori}/immatriculations_eori`)
-* Attestation fiscale (`/v3/dgfip/unites_legales/{siren}/attestation_fiscale`)
+* [Attestation fiscale](api_entreprise_v3_dgfip_attestations_fiscales) (`/v3/dgfip/unites_legales/{siren}/attestation_fiscale`)
 * Chiffre d'affaires (`/v3/dgfip/etablissements/{siret}/chiffres_affaires`)
 * Liasses fiscales (`/v3/dgfip/unites_legales/{siren}/liasses_fiscales/{year}`)
 * N°TVA intracommunautaire français (`/v3/european_commission/unites_legales/{siren}/numero_tva`)
