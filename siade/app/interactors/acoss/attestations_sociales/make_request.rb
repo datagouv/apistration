@@ -5,13 +5,23 @@ class ACOSS::AttestationsSociales::MakeRequest < MakeRequest::Post
     URI("#{acoss_domain}#{acoss_path}")
   end
 
+  def mocking_params
+    {
+      siren:
+    }
+  end
+
   def request_params
     {
       typeAttestation: 'AVG_UR',
-      siren: context.params[:siren],
+      siren:,
       idClient: context.params[:user_id],
       beneficiaire: context.params[:recipient]
     }
+  end
+
+  def siren
+    context.params[:siren]
   end
 
   def set_headers(request)
