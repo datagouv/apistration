@@ -33,7 +33,8 @@ module OpenApiHelpers
             'https://staging.entreprise.api.gouv.fr/v3/openapi.yaml'
           end
 
-    URI.open(uri).read
+    $remote_schemas ||= {}
+    $remote_schemas[uri] ||= URI.open(uri).read
   end
 
   def extract_open_api_name(operation_id)
