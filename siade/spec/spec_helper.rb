@@ -68,8 +68,7 @@ RSpec.configure do |config|
   end
 
   config.before do
-    # let's use a new instance of MockedRedis (in memory) for each specs
-    allow(RedisService).to receive(:instance).and_return(MockRedis.new)
+    allow(RedisService.instance).to receive(:redis).and_return(MockRedis.new)
     Rails.cache.clear
   end
 
