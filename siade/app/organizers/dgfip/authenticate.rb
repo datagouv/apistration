@@ -3,6 +3,6 @@ class DGFIP::Authenticate < ApplicationOrganizer
     DGFIP::Authenticate::ValidateResponse
 
   after do
-    context.cookie = context.response['set-cookie']
+    context.cookie = context.response['set-cookie'] unless staging?
   end
 end
