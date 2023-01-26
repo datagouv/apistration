@@ -3,8 +3,6 @@ RSpec.describe DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote, type
 
   let(:params) do
     {
-      siren: valid_siren(:liasse_fiscale),
-      user_id: valid_dgfip_user_id,
       year: 2019
     }
   end
