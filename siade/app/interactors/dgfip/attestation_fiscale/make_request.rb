@@ -6,6 +6,12 @@ class DGFIP::AttestationFiscale::MakeRequest < MakeRequest::Get
     request['Cookie'] = context.cookie
   end
 
+  def mocking_params
+    {
+      siren:
+    }
+  end
+
   def request_uri
     URI(Siade.credentials[:dgfip_attestations_fiscales_url])
   end
@@ -13,13 +19,17 @@ class DGFIP::AttestationFiscale::MakeRequest < MakeRequest::Get
   def request_params
     {
       userId: user_id_sanitized,
-      siren: context.params[:siren],
+      siren:,
       groupeIS: 'NON',
       groupeTVA: 'NON'
     }
   end
 
   private
+
+  def siren
+    context.params[:siren]
+  end
 
   # TODO: refactor with attestations fiscales
   def user_id_sanitized
