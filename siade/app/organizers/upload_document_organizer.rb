@@ -8,6 +8,10 @@ class UploadDocumentOrganizer < ApplicationOrganizer
         context.file_type = file_type
         context.filename = filename
       end
+
+      around do |interactor|
+        interactor.call unless staging?
+      end
     end
   end
 
