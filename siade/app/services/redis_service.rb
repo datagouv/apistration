@@ -12,6 +12,18 @@ class RedisService
     Rails.application.config_for(:redis)
   end
 
+  def dump(key, object)
+    redis.set(key, Marshal.dump(object))
+  end
+
+  # rubocop:disable Security/MarshalLoad
+  def restore(key)
+    return unless redis.exists?(key)
+
+    Marshal.restore(redis.get(key))
+  end
+  # rubocop:enable Security/MarshalLoad
+
   def_delegators :redis,
     :get,
     :exists?,
