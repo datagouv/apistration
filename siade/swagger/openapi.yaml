@@ -250,8 +250,14 @@ paths:
                     required:
                     - document_url
                     - expires_in
+                  links:
+                    type: object
+                  meta:
+                    type: object
                 required:
                 - data
+                - links
+                - meta
         '422':
           description: Paramètre(s) invalide(s)
           content:
@@ -850,6 +856,14 @@ paths:
                           - date_attribution
                           - date_expiration
                           - meta
+                        links:
+                          type: object
+                        meta:
+                          type: object
+                  meta:
+                    type: object
+                  links:
+                    type: object
                 required:
                 - data
         '422':
@@ -1444,6 +1458,10 @@ paths:
                           - date_arrete_exercice
                           - valeurs_calculees
                           - declarations
+                        links:
+                          type: object
+                        meta:
+                          type: object
                   meta:
                     type: object
                     properties:
@@ -1453,6 +1471,8 @@ paths:
                         example: 1
                     required:
                     - count
+                  links:
+                    type: object
                 required:
                 - data
                 - meta
@@ -1771,8 +1791,14 @@ paths:
                     required:
                     - document_url
                     - expires_in
+                  links:
+                    type: object
+                  meta:
+                    type: object
                 required:
                 - data
+                - links
+                - meta
         '422':
           description: Paramètre(s) invalide(s)
           content:
@@ -2199,6 +2225,10 @@ paths:
                     - pays
                     - rue
                     - ville
+                  links:
+                    type: object
+                  meta:
+                    type: object
                 required:
                 - data
                 - links
@@ -2570,8 +2600,14 @@ paths:
                     required:
                     - document_url
                     - expires_in
+                  links:
+                    type: object
+                  meta:
+                    type: object
                 required:
                 - data
+                - links
+                - meta
         '404':
           description: Non trouvée
           content:
@@ -2970,6 +3006,14 @@ paths:
                           required:
                           - chiffre_affaires
                           - date_fin_exercice
+                        links:
+                          type: object
+                        meta:
+                          type: object
+                  meta:
+                    type: object
+                  links:
+                    type: object
                 required:
                 - data
         '404':
@@ -3507,6 +3551,8 @@ paths:
                     required:
                     - obligations_fiscales
                     - declarations
+                  links:
+                    type: object
                   meta:
                     type: object
                     properties:
@@ -3831,6 +3877,10 @@ paths:
                         example: FR48672039971
                     required:
                     - tva_number
+                  links:
+                    type: object
+                  meta:
+                    type: object
                 required:
                 - data
                 - links
@@ -4227,6 +4277,8 @@ paths:
                           - synonymes
                           - url
                           - date_publication
+                        links:
+                          type: object
                         meta:
                           type: object
                           properties:
@@ -4236,6 +4288,10 @@ paths:
                               example: KALICONT000005635173
                           required:
                           - internal_id
+                  meta:
+                    type: object
+                  links:
+                    type: object
                 required:
                 - data
         '422':
@@ -4553,8 +4609,14 @@ paths:
                     required:
                     - document_url
                     - expires_in
+                  links:
+                    type: object
+                  meta:
+                    type: object
                 required:
                 - data
+                - links
+                - meta
         '422':
           description: Paramètre(s) invalide(s)
           content:
@@ -5366,6 +5428,10 @@ paths:
                     - greffe
                     - personne_physique
                     - personne_morale
+                  links:
+                    type: object
+                  meta:
+                    type: object
                 required:
                 - data
                 - links
@@ -5824,6 +5890,10 @@ paths:
                               nullable: true
                           required:
                           - fonction
+                        links:
+                          type: object
+                        meta:
+                          type: object
                   meta:
                     type: object
                     properties:
@@ -5848,6 +5918,8 @@ paths:
                     - personnes_physiques_count
                     - personnes_morales_count
                     - count
+                  links:
+                    type: object
                 required:
                 - data
                 - meta
@@ -6219,6 +6291,14 @@ paths:
                           - code_greffe
                           - date_depot
                           - nature_archive
+                        links:
+                          type: object
+                        meta:
+                          type: object
+                  meta:
+                    type: object
+                  links:
+                    type: object
                 required:
                 - data
         '422':
@@ -6691,6 +6771,14 @@ paths:
                           - code_zone
                           - numero_brevet
                           - categorie_publication
+                        links:
+                          type: object
+                        meta:
+                          type: object
+                  meta:
+                    type: object
+                  links:
+                    type: object
                 required:
                 - data
         '422':
@@ -7064,6 +7152,12 @@ paths:
                                 de marque, au format XML.
                           required:
                           - notice
+                        meta:
+                          type: object
+                  meta:
+                    type: object
+                  links:
+                    type: object
                 required:
                 - data
         '422':
@@ -7459,6 +7553,12 @@ paths:
                                 de modèle, au format XML
                           required:
                           - notice
+                        meta:
+                          type: object
+                  meta:
+                    type: object
+                  links:
+                    type: object
                 required:
                 - data
         '422':
@@ -15259,6 +15359,10 @@ paths:
                           - url
                           - expires_in
                           - errors
+                        links:
+                          type: object
+                        meta:
+                          type: object
                   meta:
                     type: object
                     properties:
@@ -15274,6 +15378,8 @@ paths:
                     required:
                     - nombre_documents
                     - nombre_documents_deficients
+                  links:
+                    type: object
                 required:
                 - data
                 - meta
@@ -15766,6 +15872,10 @@ paths:
                     - etat
                     - groupement
                     - mise_a_jour
+                  links:
+                    type: object
+                  meta:
+                    type: object
                 required:
                 - data
                 - links
@@ -17337,6 +17447,8 @@ paths:
                     - etablissements
                     - reseaux_affiliation
                     - documents_rna
+                  links:
+                    type: object
                   meta:
                     type: object
                     properties:
@@ -18577,6 +18689,8 @@ paths:
                     - agrements
                     - activites
                     - etablissements
+                  links:
+                    type: object
                   meta:
                     type: object
                     properties:
@@ -18948,6 +19062,10 @@ paths:
                         - under_investigation
                     required:
                     - status
+                  links:
+                    type: object
+                  meta:
+                    type: object
                 required:
                 - data
                 - links
@@ -19367,6 +19485,10 @@ paths:
                     - date_validite_qualifications
                     - qualifications_probatoires
                     - date_validite_qualifications_probatoires
+                  links:
+                    type: object
+                  meta:
+                    type: object
                 required:
                 - data
                 - links
@@ -19711,8 +19833,14 @@ paths:
                     required:
                     - document_url
                     - expires_in
+                  links:
+                    type: object
+                  meta:
+                    type: object
                 required:
                 - data
+                - links
+                - meta
         '422':
           description: Paramètre(s) invalide(s)
           content:
@@ -20076,6 +20204,10 @@ paths:
                           aux cotisations retraites de ProBTP.
                     required:
                     - eligible
+                  links:
+                    type: object
+                  meta:
+                    type: object
                 required:
                 - data
                 - links
@@ -20420,8 +20552,14 @@ paths:
                     required:
                     - document_url
                     - expires_in
+                  links:
+                    type: object
+                  meta:
+                    type: object
                 required:
                 - data
+                - links
+                - meta
         '422':
           description: Paramètre(s) invalide(s)
           content:
@@ -20827,6 +20965,10 @@ paths:
                     required:
                     - modalite_exercice
                     - non_sedentaire
+                  links:
+                    type: object
+                  meta:
+                    type: object
                 required:
                 - data
                 - links

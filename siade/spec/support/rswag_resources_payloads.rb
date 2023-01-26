@@ -49,7 +49,7 @@ module RSWagResourcesPayloads
   end
   # rubocop:enable Metrics/ParameterLists
 
-  def build_rswag_document_response(document_url_properties: {})
+  def build_rswag_document_response(document_url_properties: {}, links: nil, meta: nil)
     {
       type: :object,
       properties: {
@@ -67,13 +67,23 @@ module RSWagResourcesPayloads
           },
           required: %w[document_url expires_in]
         }
-      },
-      required: %w[data]
+      }.merge(
+        build_rswag_links(links)
+      ).merge(
+        build_rswag_meta(meta)
+      ),
+      required: %w[data links meta]
     }
   end
 
   def build_rswag_meta(meta)
-    return {} if meta.blank?
+    if meta.blank?
+      return {
+        meta: {
+          type: :object
+        }
+      }
+    end
 
     {
       meta: {
@@ -85,7 +95,13 @@ module RSWagResourcesPayloads
   end
 
   def build_rswag_links(links)
-    return {} if links.blank?
+    if links.blank?
+      return {
+        links: {
+          type: :object
+        }
+      }
+    end
 
     {
       links: {
