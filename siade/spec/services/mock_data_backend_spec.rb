@@ -11,16 +11,29 @@ RSpec.describe MockDataBackend, type: :service do
     allow(instance).to receive(:fetch_payloads_paths_from_github).and_return(
       [
         {
+          sha: '01',
+          path: 'payloads/whatever_endpoint1',
+          type: 'tree'
+        },
+        {
           sha: '11',
-          path: 'payloads/whatever/endpoint1/1.yaml'
+          path: 'payloads/whatever_endpoint1/1.yaml',
+          type: 'blob'
         },
         {
           sha: '12',
-          path: 'payloads/whatever/endpoint1/2.yaml'
+          path: 'payloads/whatever_endpoint1/2.yaml',
+          type: 'blob'
+        },
+        {
+          sha: '02',
+          path: 'payloads/whatever_endpoint2',
+          type: 'tree'
         },
         {
           sha: '21',
-          path: 'payloads/whatever/endpoint2/1.yaml'
+          path: 'payloads/whatever_endpoint2/1.yaml',
+          type: 'blob'
         }
       ]
     )
@@ -42,7 +55,7 @@ RSpec.describe MockDataBackend, type: :service do
 
     context 'when the operation_id exists' do
       context 'with endpoint1 example' do
-        let(:operation_id) { 'whatever/endpoint1' }
+        let(:operation_id) { 'whatever_endpoint1' }
 
         context 'when 3 params match (in whatever order)' do
           let(:params) do
@@ -92,7 +105,7 @@ RSpec.describe MockDataBackend, type: :service do
       end
 
       context 'with endpoint2 example' do
-        let(:operation_id) { 'whatever/endpoint2' }
+        let(:operation_id) { 'whatever_endpoint2' }
         let(:params) { { 'whatever' => 'whatever' } }
 
         it 'returns hash with status and payload' do
@@ -104,6 +117,18 @@ RSpec.describe MockDataBackend, type: :service do
           )
         end
       end
+    end
+  end
+
+  describe '.reset!' do
+    subject { described_class.reset! }
+
+    before do
+      described_class.get_response_for('whatever_endpoint2', { 'whatever' => 'whatever' })
+    end
+
+    it 'does not raise error' do
+      expect { subject }.not_to raise_error
     end
   end
 end
