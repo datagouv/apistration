@@ -47,3 +47,5 @@ File.open(File.join(payload_folder_path, 'default.yaml'), 'w') do |f|
 
   f.write(data.to_yaml)
 end
+
+load File.join(root_path, 'bin', 'generate_payload_readme.rb')
