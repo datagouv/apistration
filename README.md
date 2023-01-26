@@ -2,8 +2,6 @@
 
 [![Tests](https://github.com/etalab/siade_staging_data/actions/workflows/tests.yml/badge.svg)](https://github.com/etalab/siade_staging_data/actions/workflows/tests.yml)
 
-# ⚠️ Il s'agit encore d'un dépôt en chantier, rien n'est actuellement fonctionnel ⚠️
-
 * [Fonctionnement](#fonctionnement)
   * [Cas de FranceConnect](#cas-de-franceconnect)
 * [Contribution](#contribution)
@@ -167,8 +165,3 @@ Référez vous à [tokens/](./tokens)
    operation_id` ;
 3. La commande crée un dossier avec un `default.yaml` que vous devez adapter pour
    que la suite de test passe (cf plus bas).
-
-## TODO
-
-* Documenter FranceConnect
-* Bootstrap un exemple avec API Entreprise v3
