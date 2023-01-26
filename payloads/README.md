@@ -13,7 +13,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 
 ## API Entreprise v3+
 
-* Attestation de vigilance (`/v3/urssaf/unites_legales/{siren}/attestation_vigilance`)
+* [Attestation de vigilance](api_entreprise_v3_acoss_attestations_sociales) (`/v3/urssaf/unites_legales/{siren}/attestation_vigilance`)
 * Certification RGE (`/v3/ademe/etablissements/{siret}/certification_rge`)
 * 3 derniers bilans annuels (`/v3/banque_de_france/unites_legales/{siren}/bilans`)
 * Attestation de cotisations congés payés & chômage-intempéries (`/v3/cnetp/unites_legales/{siren}/attestation_cotisations_conges_payes_chomage_intemperies`)
