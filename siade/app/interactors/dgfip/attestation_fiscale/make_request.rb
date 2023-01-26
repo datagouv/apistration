@@ -1,4 +1,4 @@
-class DGFIP::AttestationFiscale::MakeRequest < MakeRequest::Get
+class DGFIP::AttestationFiscale::MakeRequest < DGFIP::AbstractMakeRequest
   protected
 
   def set_headers(request)
@@ -28,11 +28,6 @@ class DGFIP::AttestationFiscale::MakeRequest < MakeRequest::Get
   private
 
   def siren
-    context.params[:siren]
-  end
-
-  # TODO: refactor with attestations fiscales
-  def user_id_sanitized
-    UserIdDGFIPService.call(context.params[:user_id])
+    params[:siren]
   end
 end

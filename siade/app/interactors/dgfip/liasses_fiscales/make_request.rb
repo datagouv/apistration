@@ -1,4 +1,4 @@
-class DGFIP::LiassesFiscales::MakeRequest < MakeRequest::Get
+class DGFIP::LiassesFiscales::MakeRequest < DGFIP::AbstractMakeRequest
   protected
 
   def request_uri
@@ -19,11 +19,5 @@ class DGFIP::LiassesFiscales::MakeRequest < MakeRequest::Get
 
   def params
     context.params
-  end
-
-  private
-
-  def user_id_sanitized
-    UserIdDGFIPService.call(params[:user_id])
   end
 end

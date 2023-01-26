@@ -1,4 +1,4 @@
-class DGFIP::ChiffresAffaires::MakeRequest < MakeRequest::Get
+class DGFIP::ChiffresAffaires::MakeRequest < DGFIP::AbstractMakeRequest
   protected
 
   def request_uri
@@ -14,15 +14,5 @@ class DGFIP::ChiffresAffaires::MakeRequest < MakeRequest::Get
       userId: user_id_sanitized,
       siret: params[:siret]
     }
-  end
-
-  private
-
-  def params
-    context.params
-  end
-
-  def user_id_sanitized
-    UserIdDGFIPService.call(params[:user_id])
   end
 end
