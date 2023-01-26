@@ -1,0 +1,22 @@
+---
+params:
+  ine: '1234567890G'
+status: 200
+payload: |-
+  {
+    "nom": "Durand",
+    "prenom": "Géraldine",
+    "prenom2": "",
+    "dateNaissance": "1990-01-01",
+    "lieuNaissance": "Paris",
+    "sexe": "F",
+    "boursier": true,
+    "echelonBourse": "6",
+    "email": "geraldine@@durand.fr",
+    "dateDeRentree": "2018-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Marseille",
+    "etablissement": "Pagnol"
+  }
