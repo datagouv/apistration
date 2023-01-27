@@ -3,6 +3,34 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
 
   protected
 
+  def mocking_params
+    if context.params[:france_connect]
+      france_connect_mocking_params
+    else
+      civility_mocking_params
+    end
+  end
+
+  def france_connect_mocking_params
+    {
+      given_name: first_name,
+      family_name:,
+      birthdate: birthday_date,
+      birthplace: birth_place,
+      gender: context.params[:gender] == 'm' ? 'male' : 'female'
+    }
+  end
+
+  def civility_mocking_params
+    {
+      nom: family_name,
+      prenom: first_name,
+      dateDeNaissance: birthday_date,
+      lieuDeNaissance: birth_place,
+      sexe: gender
+    }
+  end
+
   def request_params
     {
       nomFamille: family_name,

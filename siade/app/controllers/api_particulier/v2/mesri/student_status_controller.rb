@@ -52,7 +52,8 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulierControl
       first_name: extract_first_first_name_from_france_connect_given_name(france_connect_service_user_identity.given_name),
       birth_date: france_connect_service_user_identity.birthdate,
       birth_place: france_connect_service_user_identity.birthplace,
-      gender: france_connect_service_user_identity.gender == 'male' ? 'm' : 'f'
+      gender: france_connect_service_user_identity.gender == 'male' ? 'm' : 'f',
+      france_connect: true
     }
   end
 

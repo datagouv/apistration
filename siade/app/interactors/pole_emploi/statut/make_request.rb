@@ -5,6 +5,12 @@ class PoleEmploi::Statut::MakeRequest < MakeRequest::Post
     URI(Siade.credentials[:pole_emploi_status_url])
   end
 
+  def mocking_params
+    {
+      identifiant:
+    }
+  end
+
   def build_request_body
     identifiant
   end

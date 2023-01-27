@@ -139,14 +139,14 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
 
       expect(MESRI::StudentStatus::WithCivility).to have_received(:call).with(
         hash_including(
-          params: {
+          params: hash_including(
             token_id: anything,
             family_name: france_connect_person_identity_attributes[:family_name],
             first_name: france_connect_person_identity_attributes[:given_name].split[0],
             birth_date: france_connect_person_identity_attributes[:birthdate],
             birth_place: france_connect_person_identity_attributes[:birthplace],
             gender: 'm'
-          }
+          )
         )
       )
     end
@@ -159,14 +159,14 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
 
         expect(MESRI::StudentStatus::WithCivility).to have_received(:call).with(
           hash_including(
-            params: {
+            params: hash_including(
               token_id: anything,
               family_name: france_connect_person_identity_attributes[:family_name],
               first_name: france_connect_person_identity_attributes[:given_name].split[0],
               birth_date: france_connect_person_identity_attributes[:birthdate],
               birth_place: france_connect_person_identity_attributes[:birthplace],
               gender: 'm'
-            }
+            )
           )
         )
       end

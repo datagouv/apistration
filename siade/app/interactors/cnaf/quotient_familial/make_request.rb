@@ -9,6 +9,13 @@ class CNAF::QuotientFamilial::MakeRequest < MakeRequest::Post
     CNAFQuotientFamilialSoapBuilder.new(postal_code, beneficiary_number).render
   end
 
+  def mocking_params
+    {
+      codePostal: postal_code,
+      numeroAllocataire: beneficiary_number
+    }
+  end
+
   def set_headers(request)
     request['Content-Type'] = 'text/xml; charset=utf-8'
   end
