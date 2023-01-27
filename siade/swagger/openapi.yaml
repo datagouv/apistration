@@ -17085,7 +17085,7 @@ paths:
                                     description: "La liste des types est la suivante
                                       (liste non-exhaustive, le champ pouvant être
                                       renseigné manuellement): \n \n - Budget prévisionnel
-                                      \n - Comptes du dernier exercice clôt \n - Rapport
+                                      \n - Comptes du dernier exercice clos \n - Rapport
                                       du commissaire au compte \n - Rapport d'activité
                                       (le plus récent) \n - Rapport financier \n -
                                       Arrêté de l'agrement \n - Attestation d’affiliation
