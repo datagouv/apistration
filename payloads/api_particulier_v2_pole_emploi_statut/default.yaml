@@ -1,0 +1,32 @@
+---
+params:
+  identifiant: 'default'
+status: 200
+payload: |-
+  {
+    "identifiant": "default",
+    "civilite": "M.",
+    "nom": "DUPONT",
+    "nomUsage": null,
+    "prenom": "JEAN",
+    "sexe": "Masculin",
+    "codeCertificationCNAV": "VC",
+    "libelleCategorieInscription": "PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS",
+    "email": "jean.dupont@france.fr",
+    "telephone": "0636656565",
+    "telephone2": null,
+    "adresse": {
+      "INSEECommune": "75107",
+      "codePostal": "75007",
+      "ligneComplementAdresse": null,
+      "ligneComplementDestinataire": "APPARTEMENT 42",
+      "ligneComplementDistribution": null,
+      "ligneNom": "DUPONT",
+      "ligneVoie": "42 RUE DE LA PAIX",
+      "localite": "75001 PARIS"
+    },
+    "dateNaissance": "1990-01-01",
+    "dateInscription": "2020-01-01",
+    "dateCessationInscription": null,
+    "codeCategorieInscription": 1
+  }

@@ -1,0 +1,28 @@
+---
+params:
+  nom: "MARTIN"
+  given_name: "Jacques"
+  dateDeNaissance: "2004-01-01"
+  sexe: "m"
+  birth_place: "75002"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "Martin",
+    "prenom": "Jacques",
+    "dateNaissance": "2004-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2020-07-01",
+        "dateFinInscription": "2021-08-31",
+        "statut": "inscrit",
+        "codeCommune": "33063",
+        "etablissement": {
+          "uai": "0330023W",
+          "nomEtablissement": "LYCEE GENERAL ET TECHNOLOGIQUE CAMILLE JULLIAN"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

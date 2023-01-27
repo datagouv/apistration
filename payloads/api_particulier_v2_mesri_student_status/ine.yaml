@@ -1,0 +1,24 @@
+---
+params:
+  ine: '1234567890G'
+status: 200
+payload: |-
+  {
+    "ine": "1234567890G",
+    "nomFamille": "Dupont",
+    "prenom": "Jean",
+    "dateNaissance": "2002-02-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2020-09-01",
+        "dateFinInscription": "2021-06-31",
+        "statut": "inscrit",
+        "codeCommune": "33199",
+        "etablissement": {
+          "uai": "0332870R",
+          "nomEtablissement": "LPO LYCEE DES METIERS DE LA MER"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

@@ -1,0 +1,30 @@
+---
+params:
+  given_name: "Jean"
+  family_name: "MESRI"
+  birthdate: "2002-01-01"
+  gender: "male"
+  birthplace: "75002"
+  birthcountry: "99100"
+  preferred_username: "jean_mesri"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890T",
+    "nomFamille": "Mesri",
+    "prenom": "Jean",
+    "dateNaissance": "2002-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2020-07-01",
+        "dateFinInscription": "2021-08-31",
+        "statut": "inscrit",
+        "codeCommune": "33063",
+        "etablissement": {
+          "uai": "0330023W",
+          "nomEtablissement": "LYCEE GENERAL ET TECHNOLOGIQUE CAMILLE JULLIAN"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
