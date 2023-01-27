@@ -51,6 +51,26 @@ module OpenApiHelpers
       schema['get']['responses']['200']['x-operationId'] == operation_id
     end[1]['get']
   end
+
+  def convert_open_api_3_to_json_schema(open_api_schema)
+    case open_api_schema['type']
+    when 'array'
+      open_api_schema['items'] = convert_open_api_3_to_json_schema(open_api_schema['items'])
+    when 'object'
+      if open_api_schema['properties']
+        open_api_schema['properties'] = open_api_schema['properties'].each_with_object({}) do |(key, value), hash|
+          hash[key] = convert_open_api_3_to_json_schema(value)
+        end
+      end
+    else
+      if open_api_schema['nullable']
+        open_api_schema['type'] = [open_api_schema['type'], 'null']
+        open_api_schema.delete('nullable')
+      end
+    end
+
+    open_api_schema
+  end
 end
 
 OpenAPIHelpers = OpenApiHelpers

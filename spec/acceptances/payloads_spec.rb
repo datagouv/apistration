@@ -53,7 +53,7 @@ RSpec.describe 'Payload specs' do
               schema = main_schema['components']['schemas'][schema['$ref'].split('/').last]
             end
 
-            test = JSON::Validator.fully_validate(schema, JSON.parse(data['payload']))
+            test = JSON::Validator.fully_validate(convert_open_api_3_to_json_schema(schema), JSON.parse(data['payload']))
             expect(test).to be_empty, "JSON schema validation failed: #{test}"
           end
         end
