@@ -138,49 +138,86 @@ paths:
                       nom:
                         type: string
                         description: Nom du déclarant
+                        example: 'MARTIN'
                       nomNaissance:
                         type: string
                         description: Nom de naissance du déclarant
+                        example: 'MARTIN'
                       prenoms:
                         type: string
                         description: Prénoms du déclarant
+                        example: 'JEAN'
 
                   declarant2: *a1
-                  dateRecouvrement: &a2
+                  foyerFiscal:
+                    type: object
+                    description: Adresse déclarée au 1e janvier
+                    properties:
+                      adresse:
+                        type: string
+                        example: '21 RUE DES MARMOTS 75001 PARIS'
+                      annee:
+                        type: number
+                        example: 2022
+                  dateRecouvrement:
                     type: string
+                    description: Date de mise en recouvrement de l'avis d'impôt
                     pattern: ^\d{2}/\d{2}/\d{4}$
-                    example: 03/05/1991
-
-                  dateEtablissement: *a2
+                    example: 31/07/2021
+                  dateEtablissement:
+                    type: string
+                    description: Date d'établissement
+                    pattern: ^\d{2}/\d{2}/\d{4}$
+                    example: 06/07/2021
                   nombreParts:
                     type: number
+                    description: Nombre de part(s)
+                    example: 1.0
                   situationFamille:
                     type: string
+                    description: Situation de famille
+                    example: 'Marié(e)s'
                   revenuBrutGlobal:
                     type: number
+                    description: Revenu brut global
+                    example: 30000
                   revenuImposable:
                     type: number
+                    description: Revenu imposable
+                    example: 29000
                   impotRevenuNetAvantCorrections:
-                    oneOf:
-                      - type: number
-                      - type: 'null'
+                    type: number
+                    nullable: true
+                    description: Impôt sur le revenu net avant corrections. Est nul si Non imposable
                   montantImpot:
                     type: number
+                    nullable: true
+                    description: Montant de l'impôt. Est nul si Non imposable
                   revenuFiscalReference:
                     type: number
+                    description: Revenu fiscal de référence
+                    example: 29000
                   nombrePersonnesCharge:
                     type: integer
-                  anneeImpots: &a3
+                    description: "Nombre de personne(s) à charge"
+                    example: 3
+                  anneeImpots:
                     type: string
                     pattern: ^\d{4}$
+                    description: Année de l'impôt
                     example: "2021"
-                  anneeRevenus: *a3
+                  anneeRevenus:
+                    type: string
+                    pattern: ^\d{4}$
+                    description: Année des revenus
+                    example: "2020"
                   erreurCorrectif:
                     type: string
+                    example: ''
                     description: "S'il existe un correctif plus récent que l'avis contrôlé, ce champ
                       prend la valeur \"Ce document ne correspond pas à la
                       situation la plus récente pour cet usager\". Sinon, le
-                      champ est absent de la réponse. La présence de ce champ
+                      champ est vide. La présence de ce champ
                       indique qu'il existe un avis d'imposition avec un numéro
                       d'avis distinct qui contient les informations plus
                       récentes. La mise à jour de l'avis initial est en général
@@ -199,6 +236,7 @@ paths:
                       svair\">le site des impôts</a>."
                   situationPartielle:
                     type: string
+                    example: ''
                     description: "Le champ \"situationPartielle\" indique, dans un foyer marié ou
                       pacsé, le décès d'un des contribuables. Cela signifie
                       qu'il y aura 2 avis de taxations pour une même année : une
@@ -206,7 +244,7 @@ paths:
                       d'un déclarant, et une autre taxation, pour le conjoint
                       survivant, de la date de décès du conjoint au 31/12/AAAA.
                       Ce champ prend la valeur \"(*) Situation  {anneeRevenus}
-                      partielle\". Sinon, le champ est absent de la réponse."
+                      partielle\". Sinon, le champ est vide."
         "401":
           &a6
           description: Votre jeton d'API n'a pas été trouvé ou n'est pas actif
@@ -356,62 +394,96 @@ paths:
                 properties:
                   allocataires:
                     type: array
-                    items: &a12
+                    items:
                       type: object
                       properties:
                         nomPrenom:
                           type: string
                           description: Noms et prénoms des personnes allocataires de la CAF
+                          example: "JEAN JACQUES"
                         dateDeNaissance:
                           type: string
-                          pattern: ^d{8}$
+                          pattern: ^\d{8}$
                           description: "Date de naissance au format: JJMMAAAA"
+                          example: "01021970"
                         sexe:
                           type: string
+                          example: "M"
                           enum:
                             - F
                             - M
                   enfants:
                     type: array
-                    items: *a12
+                    items:
+                      type: object
+                      properties:
+                        nomPrenom:
+                          type: string
+                          description: Noms et prénoms des enfants des allocataires
+                          example: "JESSICA JACQUES"
+                        dateDeNaissance:
+                          type: string
+                          pattern: ^\d{8}$
+                          description: "Date de naissance au format: JJMMAAAA"
+                          example: "01031995"
+                        sexe:
+                          type: string
+                          example: "F"
+                          enum:
+                            - F
+                            - M
+
                   adresse:
                     type: object
                     description: Adresse au format de la poste
                     properties:
                       identite:
                         type: string
+                        example: "Monsieur JEAN JACQUES"
                         description: "Identité du destinataire : Civilité, titre ou qualité + nom et
                           prénom"
                       complementIdentite:
-                        type: string
                         description: "Complément d'information du destinataire ou point de remise :
                           Numéro d'appartement, Escalier"
+                        type: string
+                        nullable: true
+                        example: null
                       complementIdentiteGeo:
                         type: string
+                        nullable: true
+                        example: null
                         description: "Complément d'information du point géographique : Entrée, tour,
                           immeuble, bâtiment, Résidence"
                       numeroRue:
                         type: string
                         description: Numéro et libellé de la voie
+                        example: "1 RUE DE LA GARE"
                       lieuDit:
                         type: string
+                        nullable: true
+                        example: null
                         description: "Lieu-dit ou service particulier de distribution : poste restante,
                           boîte postale"
                       codePostalVille:
                         type: string
                         description: Code postale et localité de destination
+                        example: '75002'
                       pays:
                         type: string
                         description: Pays
+                        example: 'FRANCE'
                   quotientFamilial:
                     type: integer
                     description: Valeur du quotient familial calculé par la CAF
+                    example: 1045
                   annee:
                     type: integer
                     description: Année du quotient familial
+                    example: 2021
                   mois:
                     type: integer
                     description: Mois du quotient familial
+                    example: 6
         "401": *a6
         "404":
           &a13
@@ -482,56 +554,99 @@ paths:
                 properties:
                   identifiant:
                     type: string
+                    description: Identifiant Pôle Emploi (passé en paramètre)
+                    example: 'martin.jacques'
                   civilite:
                     type: string
+                    example: 'M.'
                   nom:
                     type: string
+                    description: Nom de l'individu
+                    example: 'MARTIN'
                   nomUsage:
                     type: string
+                    description: Nom d'usage de l'individu
+                    nullable: true
+                    example: null
                   prenom:
                     type: string
+                    example: 'JACQUES'
+                    description: Prénom de l'individu
                   sexe:
                     type: string
+                    description: Sexe de l'individu
+                    example: 'Masculin'
                   dateNaissance:
                     format: date
                     type: string
+                    description: Date de naissance
+                    example: 1995-02-02
+
                   codeCertificationCNAV:
                     type: string
+                    description: Code de certification
+                    example: VC
                   telephone:
                     type: string
+                    description: Numéro de téléphone principal
+                    example: 0636676767
                   telephone2:
                     type: string
+                    description: Numéro de téléphone secondaire
+                    nullable: true
                   email:
                     type: string
+                    nullable: true
+                    description: Email de l'individu
+                    example: martin.jacques@france.fr
                   adresse:
                     type: object
+                    description: Adresse de l'individu
                     properties:
                       codePostal:
                         type: string
+                        description: Code postal
+                        example: 75001
                       INSEECommune:
                         type: string
+                        example: 75101
                       localite:
                         type: string
+                        example: 75001 Paris
                       ligneVoie:
                         type: string
+                        example: 21 RUE DES MARMOTS
                       ligneComplementDestinaire:
                         type: string
+                        nullable: true
+                        example: null
                       ligneComplementAdresse:
                         type: string
+                        nullable: true
+                        example: null
                       ligneComplementDistribution:
                         type: string
+                        nullable: true
+                        example: null
                       ligneNom:
                         type: string
+                        example: MARTIN
                   dateInscription:
                     format: date
                     type: string
+                    description: Date d'inscription à Pôle Emploi
+                    example: 2019-02-02
                   dateCessationInscription:
-                    format: date
                     type: string
+                    format: date
+                    nullable: true
+                    example: null
                   codeCategorieInscription:
                     type: integer
+                    example: 1
                   libelleCategorieInscription:
                     type: string
+                    example: PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS
         "401": *a6
         "404":
           description: Aucune situation Pôle Emploi n'a pu être trouvée avec les critères
