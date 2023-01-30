@@ -1,5 +1,5 @@
 # Service de vérification de l'avis d'impôt sur le revenu
-* [default.yaml](default.yaml)
+* [200.yaml](200.yaml)
 
   Status `200`
 
