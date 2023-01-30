@@ -1,0 +1,11 @@
+---
+params:
+  numeroFiscal: '1111111111502'
+  referenceAvis: '1111111111502'
+status: 502
+payload: |-
+  {
+    "error": "invalid_response",
+    "reason": "Data provider returned an invalid data format.",
+    "message": "La réponse du fournisseur de donnée est inexploitable"
+  }
