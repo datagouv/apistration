@@ -1,0 +1,10 @@
+---
+params:
+  ine: '1234567500G'
+status: 500
+payload: |-
+  {
+    "error": "error",
+    "reason": "Internal server error",
+    "message": "Une erreur interne s'est produite, l'équipe a été prévenue."
+  }
