@@ -23,29 +23,45 @@ else
   exit 3
 end
 
-operation_id_schema = extract_path_spec_from_schema(ARGV[0], schema)
+@operation_id_schema = extract_path_spec_from_schema(ARGV[0], schema)
 
-if operation_id_schema.nil?
+if @operation_id_schema.nil?
   puts "Unknown operation_id: #{ARGV[0]}"
   exit 2
 end
 
-payload_folder_path = File.join(root_path, 'payloads', ARGV[0])
+@payload_folder_path = File.join(root_path, 'payloads', ARGV[0])
 
-FileUtils.mkdir_p(payload_folder_path)
+FileUtils.mkdir_p(@payload_folder_path)
 
-File.open(File.join(payload_folder_path, 'default.yaml'), 'w') do |f|
-  data = {
-    'params' => (operation_id_schema['parameters'].each_with_object({}) do |param, hash|
-      hash[param['name']] = param['example'] || 'example'
-    end),
-    'status' => 200,
-    'payload' => JSON.pretty_generate(
-      OpenAPISchemaToExample.new(operation_id_schema['responses']['200']['content']['application/json']['schema']).perform
-    )
-  }
+def create_payload_file(name, status, payload)
+  file_path = File.join(@payload_folder_path, "#{name}.yaml")
 
-  f.write(data.to_yaml)
+  return if File.exist?(file_path)
+
+  File.open(file_path, 'w') do |f|
+    data = {
+      'params' => (@operation_id_schema['parameters'].each_with_object({}) do |param, hash|
+        hash[param['name']] = param['example'] || 'example'
+      end),
+      'status' => status.to_i,
+      'payload' => JSON.pretty_generate(payload),
+    }
+
+    f.write(data.to_yaml)
+  end
 end
 
-load File.join(root_path, 'bin', 'generate_payload_readme.rb')
+@operation_id_schema['responses'].each do |status, response|
+  next if status == '401'
+
+  create_payload_file(
+    status,
+    status,
+    OpenAPISchemaToExample.new(
+      response['content']['application/json']['schema'],
+    ).perform
+  )
+end
+
+print "Check payload files for #{ARGV[0]}, then run ./bin/generate_payload_readme.rb\n"
