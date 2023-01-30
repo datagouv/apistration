@@ -1,6 +1,8 @@
 ---
 params:
   token: 'mesri'
+api_path: '/v2/etudiants'
+description: 'Réponse FranceConnect permettant de déclencher la réponse de [`/v2/etudiants` suivante](../api_particulier_v2_mesri_student_status/france_connect.yml)'
 status: 200
 payload: |-
   {
