@@ -1,0 +1,10 @@
+---
+params:
+  identifiant: 'internal_error'
+status: 500
+payload: |-
+  {
+    "error": "error",
+    "reason": "Internal server error",
+    "message": "Une erreur interne s'est produite, l'équipe a été prévenue."
+  }

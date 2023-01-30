@@ -1,0 +1,10 @@
+---
+params:
+  identifiant: 'not_found'
+status: 404
+payload: |-
+  {
+    "error": "not_found",
+    "reason": "Situation not found",
+    "message": "Aucune situation Pôle Emploi n'a pu être trouvée avec les critères de recherche fournis"
+  }

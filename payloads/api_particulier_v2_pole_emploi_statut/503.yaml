@@ -1,0 +1,10 @@
+---
+params:
+  identifiant: 'timeout'
+status: 503
+payload: |-
+  {
+    "error": "network_error",
+    "reason": "timeout of 10000 ms exceeded",
+    "message": "Une erreur est survenue lors de l'appel au fournisseur de donnée"
+  }
