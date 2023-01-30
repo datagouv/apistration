@@ -18,7 +18,7 @@ RSpec.describe 'Payload specs' do
           it 'has a valid status code' do
             data = YAML.load_file(payload)
 
-            expect([200, 401, 403, 404, 502]).to include(data['status'])
+            expect([200, 403, 404, 500, 502, 503, 509]).to include(data['status'])
           end
 
           it 'has valid params according to OpenAPI file' do
