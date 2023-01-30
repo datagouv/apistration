@@ -79,11 +79,11 @@ curl -X GET \
 
 L'ensemble des routes est listé à la racine du dossier [payloads](./payloads)
 
-A noter qu'il est possible de mettre n'importe quel status (valide) hormis celui associé
-aux paramètres invalides:
+A noter qu'il est possible de mettre n'importe quel status (valide) hormis ceux
+associés aux paramètres invalides et au jeton invalide:
 
-* Pour API Entreprise: 422
-* Pour API Particulier: 400
+* Pour API Entreprise: 422 et 403
+* Pour API Particulier: 400 et 401
 
 En effet, les paramètres d'entrées sont vérifiés directement par l'application,
 ce qui garantie un comportement iso avec la production.
