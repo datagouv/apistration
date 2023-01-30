@@ -11,6 +11,10 @@ class APIEntreprise::ProxiedFilesController < ApplicationController
     else
       head :not_found
     end
+  rescue OpenURI::HTTPError => e
+    raise unless e.io.status.include?('404')
+
+    head :not_found
   end
 
   private
