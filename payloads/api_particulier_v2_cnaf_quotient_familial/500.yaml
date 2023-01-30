@@ -1,0 +1,11 @@
+---
+params:
+  numeroAllocataire: 1234567
+  codePostal: 33500
+status: 500
+payload: |-
+  {
+    "error": "error",
+    "reason": "Internal server error",
+    "message": "Une erreur interne s'est produite, l'équipe a été prévenue."
+  }
