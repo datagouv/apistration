@@ -2,6 +2,8 @@
 params:
   token: 'cnous_with_less_scopes'
 status: 200
+api_path: '/v2/etudiants-boursiers'
+description: 'Réponse FranceConnect permettant de déclencher la réponse de [`/v2/etudiants-boursiers` suivante](../api_particulier_v2_cnous_student_scholarship/france_connect_cnous_with_less_scopes.yml)'
 payload: |-
   {
     "scope": [
