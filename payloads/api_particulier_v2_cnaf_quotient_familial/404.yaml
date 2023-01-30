@@ -1,0 +1,11 @@
+---
+params:
+  numeroAllocataire: 1234567
+  codePostal: 33404
+status: 404
+payload: |-
+  {
+    "error": "not_found",
+    "reason": "Dossier allocataire inexistant. Le document ne peut être édité.",
+    "message": "Dossier allocataire inexistant. Le document ne peut être édité."
+  }

@@ -1,0 +1,11 @@
+---
+params:
+  numeroAllocataire: 1234567
+  codePostal: 33503
+status: 503
+payload: |-
+  {
+    "error": "data_provider_error",
+    "reason": "Unknown error code 134",
+    "message": "Erreur inconnue du fournisseur de donnée CAF"
+  }

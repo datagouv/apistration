@@ -1,4 +1,127 @@
 # Recherche du statut étudiant boursier d'un particulier
+* [404.yml](404.yml)
+
+  Status `404`
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567404G"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "not_found",
+    "reason": "Scholarship not found",
+    "message": "Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567404G' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [500.yaml](500.yaml)
+
+  Status `500`
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567500G"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "error",
+    "reason": "Internal server error",
+    "message": "Une erreur interne s'est produite, l'équipe a été prévenue."
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567500G' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [503.yaml](503.yaml)
+
+  Status `503`
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567503G"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "network_error",
+    "reason": "timeout of 10000 ms exceeded",
+    "message": "Une erreur est survenue lors de l'appel au fournisseur de donnée"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567503G' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
 * [civility.yml](civility.yml)
 
   Status `200`
@@ -216,47 +339,6 @@
   ```bash
   curl -H "X-Api-Key: $token" \
     -G -d 'ine=1234567890G' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
-  ```
-
-  </p>
-  </details>
-* [not_found.yml](not_found.yml)
-
-  Status `404`
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "ine": "1234567890F"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "error": "not_found",
-    "reason": "Scholarship not found",
-    "message": "Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=1234567890F' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
   ```
 

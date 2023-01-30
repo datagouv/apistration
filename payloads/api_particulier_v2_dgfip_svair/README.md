@@ -1,5 +1,5 @@
 # Service de vérification de l'avis d'impôt sur le revenu
-* [default.yaml](default.yaml)
+* [200.yaml](200.yaml)
 
   Status `200`
 
@@ -63,6 +63,216 @@
   ```bash
   curl -H "X-Api-Key: $token" \
     -G -d 'numeroFiscal=1111111111111' -d 'referenceAvis=1111111111111' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/avis-imposition"
+  ```
+
+  </p>
+  </details>
+* [404.yaml](404.yaml)
+
+  Status `404`
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroFiscal": "1111111111404",
+    "referenceAvis": "1111111111404"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "not_found",
+    "reason": "Les paramètres fournis sont incorrects ou ne correspondent pas à un avis",
+    "message": "Les paramètres fournis sont incorrects ou ne correspondent pas à un avis"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroFiscal=1111111111404' -d 'referenceAvis=1111111111404' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/avis-imposition"
+  ```
+
+  </p>
+  </details>
+* [500.yaml](500.yaml)
+
+  Status `500`
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroFiscal": "1111111111500",
+    "referenceAvis": "1111111111500"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "error",
+    "reason": "Internal server error",
+    "message": "Une erreur interne s'est produite, l'équipe a été prévenue."
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroFiscal=1111111111500' -d 'referenceAvis=1111111111500' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/avis-imposition"
+  ```
+
+  </p>
+  </details>
+* [502.yaml](502.yaml)
+
+  Status `502`
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroFiscal": "1111111111502",
+    "referenceAvis": "1111111111502"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "invalid_response",
+    "reason": "Data provider returned an invalid data format.",
+    "message": "La réponse du fournisseur de donnée est inexploitable"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroFiscal=1111111111502' -d 'referenceAvis=1111111111502' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/avis-imposition"
+  ```
+
+  </p>
+  </details>
+* [503.yaml](503.yaml)
+
+  Status `503`
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroFiscal": "1111111111503",
+    "referenceAvis": "1111111111503"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "network_error",
+    "reason": "timeout of 10000 ms exceeded",
+    "message": "Une erreur est survenue lors de l'appel au fournisseur de donnée"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroFiscal=1111111111503' -d 'referenceAvis=1111111111503' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/avis-imposition"
+  ```
+
+  </p>
+  </details>
+* [509.yaml](509.yaml)
+
+  Status `509`
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroFiscal": "1111111111509",
+    "referenceAvis": "1111111111509"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "rate_limited",
+    "reason": "DGFIP error rate limit exceeded",
+    "message": "Le fournisseur de donnée a rejeté la demande en raison d'un trop grand nombre d'échecs antérieurs."
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroFiscal=1111111111509' -d 'referenceAvis=1111111111509' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/avis-imposition"
   ```
 
