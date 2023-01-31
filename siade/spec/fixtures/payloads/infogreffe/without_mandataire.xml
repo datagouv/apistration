@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SOAP-ENV:Envelope
+  xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/'
+  xmlns:SOAP-ENC='http://schemas.xmlsoap.org/soap/encoding/'
+  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+  xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+  <SOAP-ENV:Body>
+    <ns0:getProduitsWebServicesXMLResponse
+      xmlns:ns0='urn:local' SOAP-ENV:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'>
+      <return xsi:type='xsd:string'>
+        <Extrait type="2">
+          <dossier id_adr_greffe="AD1" date_immat="20 FEVRIER 1987" dateISO_immat="1987-02-20" date_extrait="16 OCTOBRE 1987">
+            <entreprise id_adr_siege="AD1">
+              <greffe code="9201">NANTERRE</greffe>
+              <num_ident siren="403123456"/>
+              <num_gest numGreffe="9204">
+                <millesime>1996</millesime>
+                <statut>B</statut>
+                <chrono>01929</chrono>
+              </num_gest>
+              <pm forme_juridique="SOCIETE PAR ACTIONS SIMPLIFIEE A ASSOCIE UNIQUE" codeFormeJuridique="SASUh">
+                <denomination>A COMPANY</denomination>
+                <capital>
+                  <montant devise="EUROS" codeDevise="EUR" valeur="532216">123 456,00</montant>
+                </capital>
+                <duree_ste>
+                  <valeur_duree dateISO="2077-02-20">JUSQU'AU 20 FEVRIER 2077</valeur_duree>
+                </duree_ste>
+                <date_cloture dateISO="12-31"/>
+                <acte_const greffe="LEGREFFE" codeGreffe="9204" num_depot="" greffe_dossier="false">
+                  <date_depot dateISO="1997-02-20">20 FEVRIER 1987</date_depot>
+                  <journal_parution libelle="LEJOURNAL" date_debut="12 FEVRIER 1985" dateISO_debut="1985-02-12"/>
+                </acte_const>
+              </pm>
+            </entreprise>
+            <liste_observations>
+              <observation dateISO="2000-01-01" numero="0">
+                <libelle position=" ">LELIBELLE DOBSERVATION</libelle>
+              </observation>
+            </liste_observations>
+            <etablissement type="1" mode="0" adresse="AD1">
+              <activite date_debut="20 JANVIER 1997" dateISO_debut="1997-01-20">LACTIVITE</activite>
+              <origine_fonds>CREATION</origine_fonds>
+              <mode_exploit>EXPLOITATION DIRECTE</mode_exploit>
+              <codeAPE>5601A</codeAPE>
+            </etablissement>
+          </dossier>
+          <adresse id="AD1">
+            <nompostal/>
+            <numero/>
+            <type/>
+            <voie/>
+            <ligne1/>
+            <ligne2/>
+            <localite/>
+            <code_postal/>
+            <bureau_distributeur/>
+            <pays/>
+          </adresse>
+        </Extrait>
+      </return>
+    </ns0:getProduitsWebServicesXMLResponse>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
