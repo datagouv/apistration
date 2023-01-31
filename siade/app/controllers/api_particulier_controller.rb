@@ -67,7 +67,7 @@ class APIParticulierController < APIController
       render json: format_unauthorized_error(InvalidTokenError.new),
         status: :unauthorized
     when NotAuthorizedError
-      render json: format_unauthorized_error(InsufficientPrivilegesError.new),
+      render json: format_unauthorized_error(InsufficientPrivilegesError.new('api_particulier')),
         status: :unauthorized
     else
       raise 'Invalid exception class', exception.class

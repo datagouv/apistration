@@ -37,7 +37,7 @@ class APIController < ApplicationController
     when NotValidTokenError
       render_generic_errors_serializer(InvalidTokenError, status: 401)
     when NotAuthorizedError
-      render_generic_errors_serializer(InsufficientPrivilegesError, status: 403)
+      render error_json(InsufficientPrivilegesError.new(api_kind), status: 403)
     else
       raise 'Invalid exception class', exception.class
     end

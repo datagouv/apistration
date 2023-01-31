@@ -145,7 +145,7 @@ module RSWagCommonsResponses
       response '403', 'Accès interdit' do
         block.call if block_given?
 
-        build_rswag_example(InsufficientPrivilegesError.new, :insufficient_privileges_error)
+        build_rswag_example(InsufficientPrivilegesError.new('api_entreprise'), :insufficient_privileges_error)
 
         schema '$ref' => '#/components/schemas/Error'
 

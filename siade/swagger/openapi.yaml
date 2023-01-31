@@ -177,13 +177,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -642,13 +642,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -1124,13 +1124,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -1718,13 +1718,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -2105,13 +2105,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -2501,13 +2501,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -2916,13 +2916,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -3242,13 +3242,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -4122,13 +4122,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -4500,13 +4500,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -4897,13 +4897,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -5658,13 +5658,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -6138,13 +6138,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -6491,13 +6491,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -6963,13 +6963,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -7336,13 +7336,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -7748,13 +7748,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -8310,13 +8310,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -8873,13 +8873,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -10073,13 +10073,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -11273,13 +11273,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -12474,13 +12474,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -13676,13 +13676,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -14436,13 +14436,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -15180,13 +15180,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -15603,13 +15603,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -16042,13 +16042,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -17638,13 +17638,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -18896,13 +18896,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -19215,13 +19215,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -19658,13 +19658,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -20028,13 +20028,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -20367,13 +20367,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -20764,13 +20764,13 @@ paths:
                     - code: '00100'
                       title: Privilèges insuffisants
                       detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                        Listez vos privilèges sur /v2/privileges
                       source:
                         parameter: token
                       meta: {}
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
