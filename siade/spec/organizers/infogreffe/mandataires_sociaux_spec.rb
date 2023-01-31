@@ -44,5 +44,23 @@ RSpec.describe Infogreffe::MandatairesSociaux, type: :retriever_organizer do
 
       its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
     end
+
+    context 'with a payload which has personne morale and personne physique' do
+      let(:siren) { valid_siren }
+
+      before do
+        stub_request(:post, /#{Siade.credentials[:infogreffe_url_extrait_rcs]}/).to_return(
+          status: 200,
+          body: open_payload_file('infogreffe/with_pp_and_pm.xml')
+        )
+      end
+
+      it { is_expected.to be_a_success }
+
+      it 'retrieves the resource collection with both kind of mandataire social' do
+        expect(subject.bundled_data.data).to be_present
+        expect(subject.bundled_data.data.map(&:type)).to match_array(%w[personne_morale personne_physique])
+      end
+    end
   end
 end

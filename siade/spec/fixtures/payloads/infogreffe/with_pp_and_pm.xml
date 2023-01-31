@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/' xmlns:SOAP-ENC='http://schemas.xmlsoap.org/soap/encoding/' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+  <SOAP-ENV:Body>
+    <ns0:getProduitsWebServicesXMLResponse xmlns:ns0='urn:local' SOAP-ENV:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'>
+      <return xsi:type='xsd:string'>
+        <Extrait type="2">
+          <dossier id_adr_greffe="AD1" date_immat="1 FEVRIER 2022" dateISO_immat="2022-02-01" date_extrait="15 JANVIER 2022">
+            <entreprise id_adr_siege="AD2">
+              <greffe code="9001">PARIS</greffe>
+              <num_ident siren="403123456"/>
+              <num_gest numGreffe="9001">
+                <millesime>2022</millesime>
+                <statut>B</statut>
+                <chrono>00276</chrono>
+              </num_gest>
+              <pm forme_juridique="SOCIETE PAR ACTIONS SIMPLIFIEE" codeFormeJuridique="SASh">
+                <denomination>UMAD CORP</denomination>
+                <capital>
+                  <montant devise="EUROS" codeDevise="EUR" valeur="1000">1 000,00</montant>
+                </capital>
+                <duree_ste>
+                  <valeur_duree dateISO="2121-01-01">JUSQU'AU 1 JANVIER 2121</valeur_duree>
+                </duree_ste>
+                <date_cloture dateISO="01-31"/>
+                <acte_const/>
+              </pm>
+            </entreprise>
+            <liste_dirigeant>
+              <dirigeant type="PP" refugie="0">
+                <qualite code="PREH">PRESIDENT</qualite>
+                <pp nationalite="FRANCAISE" codeNationalite="FR" adresse="AD3" civilite="MONSIEUR">
+                  <nom>DUPONT</nom>
+                  <prenom>JEAN</prenom>
+                  <naissance pays="FRANCE" codePays="FR">
+                    <date dateISO="1990-01-10">10 JANVIER 1990</date>
+                    <lieu>PARIS</lieu>
+                  </naissance>
+                </pp>
+              </dirigeant>
+              <dirigeant type="PM">
+                <qualite code="CACTITH">COMMISSAIRE AUX COMPTES TITULAIRE</qualite>
+                <pm adresse_siege="AD12">
+                  <denomination>TUFOU - SOCIETE ANONYME</denomination>
+                  <greffe code="9201">PARIS</greffe>
+                  <num_ident>123456789</num_ident>
+                </pm>
+              </dirigeant>
+            </liste_dirigeant>
+          </dossier>
+          <adresse id="AD1">
+            <nompostal/>
+            <numero/>
+            <type/>
+            <voie>AV GEOGRES CLEMENCEAU </voie>
+            <ligne1/>
+            <ligne2>AV GEORGES CLEMENCEAU </ligne2>
+            <localite/>
+            <code_postal>75001</code_postal>
+            <bureau_distributeur/>
+            <pays/>
+          </adresse>
+        </Extrait>
+      </return>
+    </ns0:getProduitsWebServicesXMLResponse>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
