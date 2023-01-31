@@ -313,7 +313,7 @@ class MI::Associations::BuildResource < BuildResource
   end
 
   def valid_documents_for(siret)
-    association[:documents][:document_dac].select do |document|
+    Array.wrap(association[:documents][:document_dac]).select do |document|
       document[:meta][:id_siret] == siret &&
         document[:meta][:type] != 'RIB' &&
         document[:meta][:etat] != 'supprimé'

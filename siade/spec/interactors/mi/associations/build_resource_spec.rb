@@ -6,22 +6,38 @@ RSpec.describe MI::Associations::BuildResource, type: :build_resource do
       instance_double(Net::HTTPOK, body:)
     end
 
-    let(:body) do
-      open_payload_file('mi/association-77567227238579.xml').read
-    end
-
     let(:params) do
       {
         siret_or_rna: valid_rna_id
       }
     end
 
-    let(:resource) { subject.bundled_data.data }
+    describe 'happy path' do
+      let(:body) do
+        open_payload_file('mi/association-77567227238579.xml').read
+      end
 
-    it { is_expected.to be_a_success }
+      let(:resource) { subject.bundled_data.data }
 
-    it 'builds valid resource' do
-      expect(resource).to be_a(Resource)
+      it { is_expected.to be_a_success }
+
+      it 'builds valid resource' do
+        expect(resource).to be_a(Resource)
+      end
+    end
+
+    describe 'when payload has only one dac document (non-regression test)' do
+      let(:body) do
+        open_payload_file('mi/association-77567227238579-1dac.xml').read
+      end
+
+      let(:resource) { subject.bundled_data.data }
+
+      it { is_expected.to be_a_success }
+
+      it 'builds valid resource' do
+        expect(resource).to be_a(Resource)
+      end
     end
   end
 end

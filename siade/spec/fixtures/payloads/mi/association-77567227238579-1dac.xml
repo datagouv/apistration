@@ -1,0 +1,341 @@
+<asso>
+  <id_siren>775672272</id_siren>
+  <id_rna>W751004076</id_rna>
+  <id_correspondance>1011627</id_correspondance>
+
+  <identite>
+    <nom>CROIX ROUGE FRANCAISE</nom>
+    <nom_sirene>CROIX ROUGE FRANCAISE</nom_sirene>
+    <sigle>CRF</sigle>
+    <sigle_sirene>CRF</sigle_sirene>
+    <id_rna>W751004076</id_rna>
+    <id_ex>759S4076</id_ex>
+    <id_siren>775672272</id_siren>
+    <id_siret_siege>77567227221138</id_siret_siege>
+    <id_correspondance>1011627</id_correspondance>
+    <id_forme_juridique>9230</id_forme_juridique>
+    <lib_forme_juridique>Association déclarée, reconnue d'utilité publique</lib_forme_juridique>
+    <date_pub_jo>0001-01-01</date_pub_jo>
+    <date_creat>1964-12-30</date_creat>
+    <date_creation_sirene>1952-05-11</date_creation_sirene>
+    <date_dissolution>0001-01-01</date_dissolution>
+    <date_modif_rna>2022-08-10</date_modif_rna>
+    <date_modif_siren>2022-11-10</date_modif_siren>
+    <active>true</active>
+    <active_sirene>true</active_sirene>
+    <nature>Reconnue d'utilité publique</nature>
+    <util_publique>true</util_publique>
+    <date_publication_util_publique>1945-04-17</date_publication_util_publique>
+    <groupement>Simple</groupement>
+    <eligibilite_cec>true</eligibilite_cec>
+    <regime>loi1901</regime>
+    <impots_commerciaux>false</impots_commerciaux>
+  </identite>
+
+  <activites>
+    <objet>prévenir et alléger en toutes circonstances les souffrances humaines. Protéger la vie et la santé ainsi qu'à faire respecter la personnes humaine.</objet>
+    <id_objet_social1>017055</id_objet_social1>
+    <lib_objet_social1>accompagnement, aide aux malades</lib_objet_social1>
+    <id_famille1>017000</id_famille1>
+    <lib_famille1>santé </lib_famille1>
+    <id_theme1>4</id_theme1>
+    <lib_theme1>Santé et action sociale</lib_theme1>
+    <id_activite_principale>88.99B</id_activite_principale>
+    <lib_activite_principale>Action sociale sans hébergement n.c.a.</lib_activite_principale>
+    <annee_activite_principale>0</annee_activite_principale>
+    <champ_action_territorial>national</champ_action_territorial>
+    <id_tranche_effectif>53</id_tranche_effectif>
+    <lib_tranche_effectif>10 000 salariés et plus</lib_tranche_effectif>
+    <effectif_salarie_cent>0</effectif_salarie_cent>
+    <annee_effectif_salarie_cent>2020</annee_effectif_salarie_cent>
+    <appartenance_ess>N</appartenance_ess>
+    <domaine>Autre</domaine>
+  </activites>
+
+  <coordonnees>
+    <adresse_siege>
+      <num_voie>98</num_voie>
+      <type_voie>RUE</type_voie>
+      <voie>Didot</voie>
+      <cp>75694</cp>
+      <commune>Paris 14e</commune>
+      <code_insee>75114</code_insee>
+      <code_type_voie_insee>RUE</code_type_voie_insee>
+    </adresse_siege>
+
+    <adresse_siege_sirene>
+      <cplt_1>SITE CROIX ROUGE</cplt_1>
+      <num_voie>98</num_voie>
+      <type_voie>RUE</type_voie>
+      <voie>DIDOT</voie>
+      <cp>75014</cp>
+      <commune>PARIS 14</commune>
+      <cedex>75694</cedex>
+      <code_insee>75114</code_insee>
+    </adresse_siege_sirene>
+
+    <adresse_gestion>
+      <cplt_3>CS 90070</cplt_3>
+      <voie>21 rue de la Vanne</voie>
+      <cp>92126</cp>
+      <commune>Montrouge</commune>
+      <cedex>Cedex</cedex>
+      <pays>FRANCE</pays>
+    </adresse_gestion>
+
+    <telephone>0144431100</telephone>
+
+    <courriel>formation.benevoles@croix-rouge.fr</courriel>
+
+    <site_web>www.croix-rouge.fr</site_web>
+  </coordonnees>
+
+  <commentaire>
+    <note>Association reconnue d'utilité publique</note>
+  </commentaire>
+
+  <specificites>{"passsport": {"activites": "!Multi activités physiques ou sportives", "est_volontaire": "true"}}</specificites>
+
+  <reseaux_affiliation>
+    <reseau_affiliation>
+      <id_correspondance>1234567</id_correspondance>
+      <nom>CROIX ROUGE FRANCAISE</nom>
+      <id_rna>W751004076</id_rna>
+      <id_siret>77567227221138</id_siret>
+      <objet>prévenir et alléger en toutes circonstances les souffrances humaines. Protéger la vie et la santé ainsi qu'à faire respecter la personnes humaine.</objet>
+      <!-- NOTE L'adresse peut être présente, ici elle est omise pour les tests -->
+      <!-- <adresse> -->
+      <!--   <num_voie>98</num_voie> -->
+      <!--   <type_voie>RUE</type_voie> -->
+      <!--   <voie>Didot</voie> -->
+      <!--   <cp>75694</cp> -->
+      <!--   <commune>Paris 14e</commune> -->
+      <!-- </adresse> -->
+
+      <nb_licencies>2</nb_licencies>
+      <nb_licencies_h>1</nb_licencies_h>
+      <nb_licencies_f>1</nb_licencies_f>
+      <numero>37050001</numero>
+    </reseau_affiliation>
+  </reseaux_affiliation>
+
+  <composition_reseau>
+    <membre>
+      <id_correspondance>123456</id_correspondance>
+      <nom>ARTS ET CULTURES EN FOLIE</nom>
+      <id_rna>W532003071</id_rna>
+      <id_siret>81412456600013</id_siret>
+      <objet>rassembler des associations de solidarité (caritatives et humanitaires) dans le but d'organiser des manifestations culturelles</objet>
+
+      <adresse>
+        <cplt_3>_</cplt_3>
+        <num_voie>43</num_voie>
+        <type_voie>RUE</type_voie>
+        <voie>des Grands Carrés</voie>
+        <cp>53000</cp>
+        <commune>Laval</commune>
+      </adresse>
+
+      <telephone>0836656565</telephone>
+      <courriel>whatever@gouv.fr</courriel>
+    </membre>
+  </composition_reseau>
+
+  <representants_legaux>
+    <representant_legal>
+      <id>234567</id>
+      <civilite>Monsieur</civilite>
+      <nom>Martin</nom>
+      <prenom>Jean</prenom>
+      <fonction>Directeur général</fonction>
+      <telephone>0837777777</telephone>
+      <courriel>martin.jean@croix-rouge.fr</courriel>
+      <id_siret>77567227221138</id_siret>
+      <deleted>false</deleted>
+    </representant_legal>
+
+    <representant_legal>
+      <id>123456</id>
+      <civilite>Madame</civilite>
+      <nom>Dupont</nom>
+      <prenom>Aurélie</prenom>
+      <fonction>Secrétaire générale</fonction>
+      <telephone>0836666666</telephone>
+      <courriel>dupont.aurelie@croix-rouge.fr</courriel>
+      <id_siret>77567227235716</id_siret>
+      <deleted>false</deleted>
+    </representant_legal>
+  </representants_legaux>
+
+  <rhs>
+    <rh annee="2022">
+      <nb_benevoles>70</nb_benevoles>
+      <nb_volontaires>0</nb_volontaires>
+      <nb_salaries>0</nb_salaries>
+      <nb_salaries_etpt>0.0</nb_salaries_etpt>
+      <id_siret>77567227221138</id_siret>
+      <nb_emplois_aides>0</nb_emplois_aides>
+      <nb_personnels_detaches>0</nb_personnels_detaches>
+      <nb_adherents>70</nb_adherents>
+      <nb_adherents_h>36</nb_adherents_h>
+      <nb_adherents_f>34</nb_adherents_f>
+    </rh>
+
+    <rh annee="2022">
+      <nb_benevoles>80</nb_benevoles>
+      <nb_volontaires>0</nb_volontaires>
+      <nb_salaries>0</nb_salaries>
+      <nb_salaries_etpt>0.0</nb_salaries_etpt>
+      <id_siret>77567227235716</id_siret>
+      <nb_emplois_aides>0</nb_emplois_aides>
+      <nb_personnels_detaches>0</nb_personnels_detaches>
+      <nb_adherents>90</nb_adherents>
+      <nb_adherents_h>36</nb_adherents_h>
+      <nb_adherents_f>44</nb_adherents_f>
+    </rh>
+
+    <rh annee="2021">
+      <nb_benevoles>512</nb_benevoles>
+      <nb_volontaires>3</nb_volontaires>
+      <nb_salaries>1</nb_salaries>
+      <nb_salaries_etpt>1.0</nb_salaries_etpt>
+      <id_siret>77567227221138</id_siret>
+      <nb_emplois_aides>0</nb_emplois_aides>
+      <nb_personnels_detaches>0</nb_personnels_detaches>
+      <nb_adherents>512</nb_adherents>
+      <nb_adherents_h>256</nb_adherents_h>
+      <nb_adherents_f>256</nb_adherents_f>
+    </rh>
+  </rhs>
+
+  <agrements>
+    <agrement>
+      <type>Education nationale</type>
+      <numero>05.11.2018</numero>
+      <niveau>national</niveau>
+      <attributeur>Ministère de l'éducation nationale et de la jeunesse</attributeur>
+      <date_attribution>2017-10-18</date_attribution>
+      <id>12345</id>
+      <url>https://associations.gouv.fr/api/documents/00000000-0000-0000-0000-000000000001</url>
+    </agrement>
+  </agrements>
+
+  <comptes>
+    <compte annee="2020">
+      <dons>0.00</dons>
+      <subv>23456.00</subv>
+      <subv_cause>toutes activités</subv_cause>
+      <aides_3ans>0.00</aides_3ans>
+      <produits>234567.00</produits>
+      <charges>123456.00</charges>
+      <resultat>-14345.00</resultat>
+      <id>23456</id>
+      <id_siret>77567227221138</id_siret>
+    </compte>
+  </comptes>
+
+  <etablissements>
+    <nb_actifs>1969</nb_actifs>
+
+    <etablissement>
+      <id_siret>77567227221138</id_siret>
+      <id_siren>775672272</id_siren>
+      <nom>CROIX ROUGE FRANCAISE</nom>
+      <courriel>contact@croix-rouge.fr</courriel>
+      <telephone>01 56 88 01 83</telephone>
+      <est_siege>true</est_siege>
+      <actif>true</actif>
+      <date_actif>2006-01-24</date_actif>
+
+      <adresse>
+        <cplt_1>SITE CROIX ROUGE</cplt_1>
+        <num_voie>98</num_voie>
+        <type_voie>RUE</type_voie>
+        <voie>DIDOT</voie>
+        <cp>75014</cp>
+        <commune>PARIS 14</commune>
+        <cedex>75694</cedex>
+        <code_insee>75114</code_insee>
+      </adresse>
+
+      <id_activite_principale>88.99B</id_activite_principale>
+      <lib_activite_principale>Action sociale sans hébergement n.c.a.</lib_activite_principale>
+      <annee_activite_principale>0   </annee_activite_principale>
+      <id_tranche_effectif>41</id_tranche_effectif>
+      <lib_tranche_effectif>500 à 999 salariés</lib_tranche_effectif>
+      <effectif_salarie_cent>0</effectif_salarie_cent>
+      <annee_effectif_salarie_cent>2019</annee_effectif_salarie_cent>
+    </etablissement>
+
+    <etablissement>
+      <id_siret>77567227235716</id_siret>
+      <id_siren>775672272</id_siren>
+      <nom>CROIX ROUGE FRANCAISE UL LE HOUGA</nom>
+      <courriel>ul.lehouga@croix-rouge.fr</courriel>
+      <telephone>0562030879</telephone>
+      <est_siege>false</est_siege>
+      <actif>true</actif>
+      <date_actif>2019-03-11</date_actif>
+
+      <adresse>
+        <num_voie>23</num_voie>
+        <type_voie>ROUTE</type_voie>
+        <voie>DE MONT-DE-MARSAN</voie>
+        <cp>32460</cp>
+        <commune>LE HOUGA</commune>
+        <code_insee>32155</code_insee>
+      </adresse>
+
+      <id_activite_principale>88.99B</id_activite_principale>
+      <lib_activite_principale>Action sociale sans hébergement n.c.a.</lib_activite_principale>
+      <annee_activite_principale>0   </annee_activite_principale>
+      <id_tranche_effectif>00</id_tranche_effectif>
+      <lib_tranche_effectif>0 salarié (n'ayant pas d'effectif au 31/12 mais ayant employé des salariés au cours de l'année de référence)</lib_tranche_effectif>
+      <effectif_salarie_cent>0</effectif_salarie_cent>
+      <annee_effectif_salarie_cent>0   </annee_effectif_salarie_cent>
+    </etablissement>
+  </etablissements>
+
+  <ribs>
+    <rib>
+      <titulaire>Croix Rouge Française</titulaire>
+      <banque>Société Générale</banque>
+      <domiciliation>SG Paris (75001) 51 rue de la Paix 75001 Paris</domiciliation>
+      <iban>FR7630003004452345676543456</iban>
+      <bic>SOGEFRXXXXX</bic>
+      <id_siret>77567227221138</id_siret>
+      <id>12345</id>
+      <deleted>false</deleted>
+    </rib>
+  </ribs>
+
+  <documents>
+    <nbDocDac>1</nbDocDac>
+    <nbDocRna>1</nbDocRna>
+
+    <document_dac>
+      <meta>
+        <id_siret>77567227221138</id_siret>
+        <type>RAR</type>
+        <id_correspondance>1234567</id_correspondance>
+        <etat>archivé</etat>
+      </meta>
+
+      <time_depot>2018-09-01 21:00:00</time_depot>
+      <uuid>00000000-0000-0000-0000-000000000002</uuid>
+      <nom>RapportActivite2018.docx</nom>
+      <url>https://associations.gouv.fr/api/documents/00000000-0000-0000-0000-000000000002</url>
+    </document_dac>
+
+    <document_rna>
+      <id>00000000-0000-0000-0000-000000000004</id>
+      <type>PIECE</type>
+      <annee>2014</annee>
+      <sous_type>ARR</sous_type>
+      <even>5106010</even>
+      <time>1604185200</time>
+      <url>https://associations.gouv.fr/api/documents/00000000-0000-0000-0000-000000000004</url>
+      <lib_sous_type>Arrêté</lib_sous_type>
+    </document_rna>
+  </documents>
+</asso>
