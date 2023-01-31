@@ -46,6 +46,16 @@ RSpec.describe AbstractGetToken, type: :interactor do
         .to_return(body: response_body.to_json)
     end
 
+    context 'when token is empty' do
+      let(:access_token) { '' }
+
+      it { is_expected.to be_a_failure }
+
+      it 'adds ProviderUnknownError to errors' do
+        expect(subject.errors).to include(instance_of(ProviderUnknownError))
+      end
+    end
+
     context 'when the token is not stored in Redis' do
       it { is_expected.to be_a_success }
       its(:errors) { is_expected.to be_empty }

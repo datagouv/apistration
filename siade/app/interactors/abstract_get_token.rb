@@ -38,7 +38,11 @@ class AbstractGetToken < MakeRequest::Post
   def retrieve_and_save_token
     response = api_call_with_error_handling
 
-    redis.set(redis_token_key, access_token(response), ex: expires_in(response))
+    token = access_token(response)
+
+    fail_to_request_provider!(ProviderUnknownError) if token.blank?
+
+    redis.set(redis_token_key, token, ex: expires_in(response))
 
     token_from_redis
   end
