@@ -15923,7 +15923,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/ministere_interieur/rna/associations/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v4/ministere_interieur/api-association/associations/{siren_or_rna}":
     get:
-      summary: Données association et documents
+      summary: Données association
       tags:
       - Informations générales
       parameters:
@@ -15972,9 +15972,9 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Informations de référence d'une association, issues du répertoire
-        national des associations (RNA) et des documents administratifs complémentaires
-        (DAC).
+      description: Informations et documents de référence d'une association, issues
+        du répertoire national des associations (RNA) et des documents administratifs
+        complémentaires (DAC).
       responses:
         '401':
           description: Non autorisé
@@ -17520,7 +17520,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v4/ministere_interieur/api-association/associations/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v4/ministere_interieur/api-association/associations/open_data/{siren_or_rna}":
     get:
-      summary: Données association et documents en open data
+      summary: Données association en&nbsp;open&nbsp;data
       tags:
       - Informations générales
       parameters:
@@ -17569,8 +17569,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Informations de référence accessible en open data d'une association,
-        issues du répertoire national des associations (RNA).
+      description: Informations et documents de référence d'une association, accessibles
+        en open data, issues du répertoire national des associations (RNA).
       responses:
         '401':
           description: Non autorisé
