@@ -56,7 +56,8 @@ set :shared_files, fetch(:shared_files, []).push(*%w[
   config/jwt_whitelist.yml
   config/api_particulier_legacy_tokens.yml
   config/master.key
-  config/initializers/redis.rb
+  config/redis.yml
+  config/cache_redis.yml
 ])
 
 namespace :bundle do

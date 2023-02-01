@@ -5,11 +5,11 @@ class RedisService
   attr_reader :redis
 
   def initialize
-    @redis = Redis.new(url:)
+    @redis = Redis.new(redis_options)
   end
 
-  def url
-    ENV.fetch('REDIS_DATABASE_URL', 'redis://localhost:6379/0')
+  def redis_options
+    Rails.application.config_for(:redis)
   end
 
   def_delegators :redis,
