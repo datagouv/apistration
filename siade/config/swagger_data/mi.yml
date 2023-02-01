@@ -736,8 +736,8 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
               example: 3000.0
 
   v4/unite_legale:
-    title: "Données association et documents"
-    description: "Informations de référence d'une association, issues du répertoire national des associations (RNA) et des documents administratifs complémentaires (DAC)."
+    title: "Données association"
+    description: "Informations et documents de référence d'une association, issues du répertoire national des associations (RNA) et des documents administratifs complémentaires (DAC)."
     tags:
       - "Informations générales"
     attributes:
@@ -1170,8 +1170,8 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
         nullable: true
 
   v4/unite_legale_open_data:
-    title: "Données association et documents en open data"
-    description: "Informations de référence accessible en open data d'une association, issues du répertoire national des associations (RNA)."
+    title: "Données association en&nbsp;open&nbsp;data"
+    description: "Informations et documents de référence d'une association, accessibles en open data, issues du répertoire national des associations (RNA)."
     tags:
       - "Informations générales"
     attributes:
