@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'MI: Associations v4, open data version', api: :entreprise, type: %i[request swagger] do
-  path '/v4/ministere_interieur/api-asso/associations/open_data/{siren_or_rna}' do
+  path '/v4/ministere_interieur/api-association/associations/open_data/{siren_or_rna}' do
     get SwaggerData.get('mi.v4/unite_legale_open_data.title') do
       tags(*SwaggerData.get('mi.v4/unite_legale_open_data.tags'))
 

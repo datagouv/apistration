@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'MI: Associations v4', api: :entreprise, type: %i[request swagger] do
-  path '/v4/ministere_interieur/api-asso/associations/{siren_or_rna}' do
+  path '/v4/ministere_interieur/api-association/associations/{siren_or_rna}' do
     get SwaggerData.get('mi.v4/unite_legale.title') do
       tags(*SwaggerData.get('mi.v4/unite_legale.tags'))
 
