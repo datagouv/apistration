@@ -148,6 +148,17 @@ indiquant la réponse associée sur le fournisseur de données.
 
 Si vous êtes développeur, référez-vous à la section [Développement](#developpement) ci-dessous.
 
+Si ce n'est pas le cas, il y a 2 cas de figures:
+
+1. Le dossier associé au endpoint que vous voulez n'existe pas : ouvrez un
+   ticket pour que l'on vous accompagne sur l'implémentation : [Ajout d'un
+   endpoint manquant](https://github.com/etalab/siade_staging_data/issues/new?template=proposer-une-am-lioration.md)
+2. Le dossier existe :
+   1. Soit vous pouvez tenter d'ajouter vous même les fichiers que vous voulez à
+      l'aide d'une pull request ;
+   2. Soit vous ouvrez un ticket pour que l'on vous accompagne sur
+      l'implémentation : [Ajout de nouvelles données](https://github.com/etalab/siade_staging_data/issues/new?template=ajout-payloads.md)
+
 ## Développement
 
 ### Installation en local
