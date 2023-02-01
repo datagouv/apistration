@@ -5,6 +5,7 @@
 * [Fonctionnement](#fonctionnement)
   * [Cas de FranceConnect](#cas-de-franceconnect)
 * [Contribution](#contribution)
+* [Développement](#developpement)
   * [Installation en local](#installation-en-local)
   * [Lancer la suite de tests pour vérifier les payloads](#lancer-la-suite-de-tests-pour-vérifier-les-payloads)
   * [Génerer un jeton](./tokens)
