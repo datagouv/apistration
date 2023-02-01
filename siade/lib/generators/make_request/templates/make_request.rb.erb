@@ -1,6 +1,12 @@
 class <%= name %>::MakeRequest < MakeRequest::<%= get_request? ? 'Get' : 'Post' %>
   protected
 
+  def mocking_params
+    # XXX You should remove request params which are not provided by the user
+    # If you don't have to remove any params, you can remove this method
+    context.params
+  end
+
   def request_uri
     fail NotImplementedError
   end
