@@ -10,6 +10,7 @@
   * [Lancer la suite de tests pour vérifier les payloads](#lancer-la-suite-de-tests-pour-vérifier-les-payloads)
   * [Génerer un jeton](./tokens)
   * [Ajout d'un nouvel endpoint](#ajout-dun-nouvel-endpoint)
+* [Limitations](#limitations)
 
 Ce dépôt contient l'ensemble des données de tests pour les environnements de bac
 à sable d'API Entreprise (seulement pour la v3+)
@@ -144,6 +145,20 @@ ont été omises.
 Plusieurs exemples existent pour tous les endpoints FranceConnectés dans le
 dossier [france_connect](./payloads/france_connect/), avec une description
 indiquant la réponse associée sur le fournisseur de données.
+
+## Déploiement des données
+
+Lorsque des nouvelles données sont poussées sur la branche `develop`, le système
+effectue des vérifications sur la cohérence à l'aide d'une suite de tests
+automatisés. Si tout est OK, le système notifie l'API afin que celle-ci prenne
+en compte les nouvelles données.
+
+En cas de problème, il est possible d'effectuer une recharge des données en
+lançant la commande suivante:
+
+```sh
+bundle exec ruby bin/reload_mock_backend.rb
+```
 
 ## Contribution
 
