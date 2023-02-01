@@ -3,7 +3,7 @@ class INPI::Authenticate < ApplicationOrganizer
     INPI::Authenticate::ValidateResponse
 
   after do
-    context.cookie = cookie
+    context.cookie = cookie unless staging?
   end
 
   private
