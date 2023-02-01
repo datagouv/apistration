@@ -95,6 +95,6 @@ YAML.load(endpoints).each_with_index do |endpoint, index|
 
   if @endpoints.empty? || @endpoints.include?(index+1)
     test_endpoint(endpoint, index+1)
-    sleep 1
+    sleep 1 unless @host =~ /staging/
   end
 end
