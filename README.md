@@ -92,7 +92,11 @@ ce qui garantie un comportement iso avec la production.
 
 Certains endpoints d'API Particulier sont FranceConnectés: cela implique que
 l'on peut passer un jeton FranceConnect à la place des paramètres classiques
-afin d'effectuer un appel auprès des fournisseurs de données.
+afin d'effectuer un appel auprès des fournisseurs de données. A l'aide du jeton
+FranceConnect, l'API effectue un appel auprès de FranceConnect pour récupérer
+des données de civilité (un exemple [ici](./payloads/france_connect/default.yaml)),
+données qui sont ensuite formatées pour effectuer un appel auprès du fournisseur
+de données correspondant.
 
 Les données de tests de FranceConnect se trouvent dans le dossier
 [payloads/france_connect/](payloads/france_connect/)
@@ -136,7 +140,15 @@ Vous pouvez vous référer à l'exemple
 où les clés `nom`, `prenom`, `prenom2`, `dateNaissance`, `lieuNaissance`, `sexe`
 ont été omises.
 
+Plusieurs exemples existent pour tous les endpoints FranceConnectés dans le
+dossier [france_connect](./payloads/france_connect/), avec une description
+indiquant la réponse associée sur le fournisseur de données.
+
 ## Contribution
+
+Si vous êtes développeur, référez-vous à la section [Développement](#developpement) ci-dessous.
+
+## Développement
 
 ### Installation en local
 
@@ -165,3 +177,23 @@ Référez vous à [tokens/](./tokens)
    operation_id` ;
 3. La commande crée un dossier avec un `default.yaml` que vous devez adapter pour
    que la suite de test passe (cf plus bas).
+
+## Limitations
+
+* Pour API Particulier, si un jeton ne possède pas l'ensemble des scopes pour
+  un fournisseur de données, l'environnement de test ignore le filtrage sur ces
+  scopes (contrairement à la production qui filtre en fonction des scopes).
+
+  Par exemple, si votre jeton possède l'ensemble des autorisations pour
+  `/v2/etudiants-boursiers` sauf celle de récupérer l'email (`cnous_email`), la
+  production retirera le champ `email` de la réponse, mais pas l'environnement
+  de test.
+
+  Pour palier ce problème, le plus simple reste de créer une réponse spécifique
+  avec moins de champ.
+* Pour les endpoints qui ne sont pas encore présents dans ce dépôt, des
+  ajustements techniques vis-à-vis des paramètres à prendre en compte peuvent
+  être nécessaires
+
+Si ces limitations sont problématiques pour votre développement et intégration,
+nous vous invitons à [ouvrir un ticket](https://github.com/etalab/siade_staging_data/issues/new).
