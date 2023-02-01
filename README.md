@@ -8,8 +8,9 @@
 * [Développement](#developpement)
   * [Installation en local](#installation-en-local)
   * [Lancer la suite de tests pour vérifier les payloads](#lancer-la-suite-de-tests-pour-vérifier-les-payloads)
-  * [Génerer un jeton](./tokens)
+  * [Génerer un jeton](#générer-un-jeton)
   * [Ajout d'un nouvel endpoint](#ajout-dun-nouvel-endpoint)
+  * [Déploiement des données](#déploiement-des-données)
 * [Limitations](#limitations)
 
 Ce dépôt contient l'ensemble des données de tests pour les environnements de bac
