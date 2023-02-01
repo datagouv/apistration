@@ -3,11 +3,13 @@ class MI::Associations::Documents::UploadCollection < ApplicationInteractor
 
   before do
     context.uploaded_collection = []
-    context.total_documents = raw_items.size
+    context.total_documents = raw_items.size unless staging?
     context.upload_errors = 0
   end
 
   def call
+    return if staging?
+
     raw_items.each_with_object(context.uploaded_collection) do |item, uploaded_collection|
       upload = MI::Associations::Documents::Upload.call(url: item[:url])
 
