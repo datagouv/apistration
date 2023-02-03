@@ -6,13 +6,7 @@ dgfip:
       - "Attestations sociales et fiscales"
     document_url_properties:
       title: "URL de téléchargement de l'attestation fiscale (.pdf)"
-      description: "Ce lien donne accès à l'attestation fiscale, au format PDF. L'attestation, toujours datée du 31/12 de l’année précédente, atteste que l'entreprise est à jour de ses obligations fiscales jusqu'à cette date.
-      \n
-      \n
-      Par exemple, vous appelez l'API en mars 2022, l’attestation fiscale renvoyée indique que l’entreprise est à jour de ses obligations fiscales lui incombant au 31/12/2021.
-      \n
-      \n
-      L’attestation fiscale est valide un an sur une année civile (jusqu’au 31/12/AAAA)."
+      description: "Ce lien donne accès à l'attestation fiscale au format PDF."
       example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_fiscale_dgfip.pdf"
 
   liasses_fiscales:
