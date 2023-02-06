@@ -14,7 +14,7 @@ RSpec.describe Infogreffe::MandatairesSociaux::ValidateResponse, type: :validate
       its(:errors) { is_expected.to be_empty }
     end
 
-    context 'with a payload with has no mandataires sociaux' do
+    context 'with a payload which has no mandataires sociaux' do
       let(:body) { open_payload_file('infogreffe/without_mandataire.xml').read }
 
       it { is_expected.to be_a_failure }
