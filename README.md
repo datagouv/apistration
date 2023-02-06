@@ -113,7 +113,7 @@ Par exemple pour `api/v2/etudiants-boursiers`:
 1. Un mapping valide pour FranceConnect: [payloads/france_connect/cnous.yaml](./payloads/france_connect/cnous.yaml) ;
 2. Un mapping pour `api/v2/etudiants-boursiers` qui prend exactement les
    paramètres d'identité renvoyés par le fichier ci-dessus:
-   [payloads/api_particulier_v2_cnous_student_scholarship/franceconnect_cnous.yml](./payloads/api_particulier_v2_cnous_student_scholarship/franceconnect_cnous.yml)
+   [payloads/api_particulier_v2_cnous_student_scholarship/franceconnect_cnous.yml](./payloads/api_particulier_v2_cnous_student_scholarship/france_connect_cnous.yml)
 
 Ainsi, l'appel suivant renverra in-fine la réponse définie en 2.:
 
