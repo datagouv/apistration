@@ -42,7 +42,7 @@ gem 'retryable'
 
 gem 'interactor'
 
-gem 'jwt', '~> 2.6'
+gem 'jwt', '~> 2.7'
 
 gem 'sentry-ruby'
 gem 'sentry-rails'
