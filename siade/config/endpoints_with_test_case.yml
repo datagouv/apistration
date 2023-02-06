@@ -1,5 +1,5 @@
 - name: Bilans Entreprises Banque de France
-  http_path: '/v2/bilans_entreprises_bdf/775670417'
+  http_path: '/v2/bilans_entreprises_bdf/784778250'
 
 - name: Liasses fiscales (complete)
   http_path: '/v2/liasses_fiscales_dgfip/2016/complete/301028346'
