@@ -213,7 +213,7 @@ class SIADE::V2::Requests::Generic
       SIADE::V2::Responses::UnexpectedBadRequest.new(provider_name)
     when Net::HTTPGatewayTimeout
       SIADE::V2::Responses::TimeoutError.new(provider_name)
-    when Net::HTTPServiceUnavailable, Net::HTTPBadGateway
+    when Net::HTTPServiceUnavailable, Net::HTTPBadGateway, Net::HTTPTooManyRequests
       SIADE::V2::Responses::ServiceUnavailable.new(provider_name)
     when Net::HTTPMovedPermanently, Net::HTTPMovedTemporarily
       follow_redirect(@raw_response)
