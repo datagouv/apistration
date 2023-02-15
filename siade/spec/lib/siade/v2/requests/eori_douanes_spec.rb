@@ -35,7 +35,6 @@ RSpec.describe SIADE::V2::Requests::EORIDouanes, type: :provider_request do
   end
 
   describe 'success' do
-    # TODO: test "operateur tiers ?!"
     context 'with french EORI', vcr: { cassette_name: 'dgddi/eori/valid_eori' } do
       let(:eori) { valid_eori }
 

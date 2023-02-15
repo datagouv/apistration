@@ -1,8 +1,6 @@
 RSpec.describe APIEntreprise::V2::AttestationsCotisationRetraitePROBTPController, type: :controller do
   it_behaves_like 'unauthorized'
   it_behaves_like 'unprocessable_entity', :show, :siret
-  # TODO: Alexis no vcr error here
-  # it_behaves_like 'not_found', not_found_siret(:probtp)
   it_behaves_like 'forbidden'
   it_behaves_like 'ask_for_mandatory_parameters'
 

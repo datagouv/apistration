@@ -20,8 +20,6 @@ RSpec.describe SIADE::V2::Requests::Geo::Localite, type: :provider_request do
 
     its(:valid?) { is_expected.to be_truthy }
     its(:http_code) { is_expected.to eq 404 }
-    # TODO: XXX le rattrapage des erreurs 404 est fait trop en amont pour qu'on puisse facilement customiser le message d'erreur...
-    # its(:errors) { is_expected.to have_error('Le code INSEE commune n\'a pas été trouvé') }
     its(:errors) { is_expected.to have_error('Le siret ou siren indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel') }
   end
 

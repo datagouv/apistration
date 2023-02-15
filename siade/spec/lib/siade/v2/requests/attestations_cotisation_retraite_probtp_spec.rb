@@ -24,15 +24,6 @@ RSpec.describe SIADE::V2::Requests::AttestationsCotisationRetraitePROBTP, type: 
       end
     end
 
-    context 'siret eligible', vcr: { cassette_name: 'probtp/attestation/with_eligible_siret' } do
-      let(:siret) { eligible_siret(:probtp) }
-
-      # TODO: PROBTP ask for siret
-      # its(:http_code, pending('Find an eligible siret') { is_expected.to eq(200) }
-      # its(:errors, pending('Find an eligible siret') { is_expected.to be_empty }
-      # its(:body, pending('Find an eligible siret') { is_expected.to include("") }
-    end
-
     context 'when returns error 500' do
       let(:siret) { eligible_siret(:probtp) }
 

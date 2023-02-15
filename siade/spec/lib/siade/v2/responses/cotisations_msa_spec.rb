@@ -1,4 +1,3 @@
-# TODO: add cassettes vcr
 RSpec.describe SIADE::V2::Responses::CotisationsMSA, type: :provider_response do
   subject { described_class.new(raw_response) }
 

@@ -109,11 +109,6 @@ RSpec.describe APIEntreprise::V2::EntreprisesRestoredController, type: :controll
     end
   end
 
-  #  context 'DEBUG', vcr: { cassette_name: 'insee/siren/active_GE_bis' } do
-  #    it_behaves_like 'happy path', sirens_insee_v3[:active_GE_bis]
-  #  end
-
-  # TODO: INSEE if pays != France TVA intracommu is null else not null !
   shared_examples 'ENFORCED SPECS' do |siren, expected_json|
     subject do
       get :show, params: { siren: siren, token: token }.merge(mandatory_params)

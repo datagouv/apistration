@@ -1,8 +1,6 @@
 RSpec.describe APIEntreprise::V2::CotisationsMSAController, type: :controller do
   it_behaves_like 'unauthorized'
   it_behaves_like 'unprocessable_entity', :show, :siret
-  # TODO: Alexis VCR errors ???
-  # it_behaves_like 'not_found', not_found_siret(:msa)
   it_behaves_like 'forbidden'
   it_behaves_like 'ask_for_mandatory_parameters'
 

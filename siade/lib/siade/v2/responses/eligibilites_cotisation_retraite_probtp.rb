@@ -11,7 +11,6 @@ class SIADE::V2::Responses::EligibilitesCotisationRetraitePROBTP < SIADE::V2::Re
     elsif unhandled_error?
       set_error_message_for(502)
     else
-      # TODO: the NET::HTTPResponse.code method returns a string
       @raw_response.code.to_i
     end
   end

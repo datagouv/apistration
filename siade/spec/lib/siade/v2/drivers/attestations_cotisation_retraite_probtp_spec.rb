@@ -20,12 +20,10 @@ RSpec.describe SIADE::V2::Drivers::AttestationsCotisationRetraitePROBTP, :self_h
     context 'siret eligible PROBTP', vcr: { cassette_name: 'probtp/attestation/with_eligible_siret' } do
       let(:siret) { eligible_siret(:probtp) }
 
-      # TODO: PROBTP find a siret
       its(:http_code) { is_expected.to eq(200) }
     end
   end
 
-  # TODO: PROBTP to remove when eligible siret found
   context 'STUB RESPONSE' do
     before do
       stub_request(:post, url)

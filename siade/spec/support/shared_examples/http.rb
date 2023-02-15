@@ -28,7 +28,6 @@ RSpec.shared_examples 'forbidden' do |action = :show, extra_get_params = {}|
   end
 
   its(:status) { is_expected.to eq(403) }
-  # its('body.errors')  { is_expected.to include('Votre token est valide mais vos privilèges sont insuffisants. Listez vos privilèges grâce à un GET sur /v2/privileges?token=VOTRE_TOKEN') }
 end
 
 RSpec.shared_examples 'not_found' do |siret: nil, siren: nil, action: :show, **extra_get_params|
@@ -75,7 +74,6 @@ RSpec.shared_examples 'unprocessable_entity' do |action = :show, kind = :siren, 
   end
 end
 
-# XXX TODO much redondance
 RSpec.shared_examples 'happy_pdf_endpoint_siren' do |arg_siren, pdf_suffix|
   subject { JSON.parse(response.body) }
 

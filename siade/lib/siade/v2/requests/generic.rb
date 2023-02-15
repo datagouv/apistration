@@ -1,5 +1,4 @@
 class SIADE::V2::Requests::Generic
-  # TODO: drop me
   include ActiveModel::Model
   include SIADE::V2::Utilities::UnprocessableEntityHelpers
 
@@ -91,8 +90,6 @@ class SIADE::V2::Requests::Generic
   end
 
   def call_api
-    # TODO: refactor, mutualise with RestClient errors ?
-
     try_call_api
   rescue Net::OpenTimeout, Net::ReadTimeout, EOFError => e
     @response = SIADE::V2::Responses::TimeoutError.new(provider_name, e)
