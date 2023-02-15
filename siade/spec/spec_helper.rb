@@ -68,7 +68,32 @@ RSpec.configure do |config|
   end
 
   config.before do
-    allow(RedisService.instance).to receive(:redis).and_return(MockRedis.new)
+    class FakeRedis < Hash
+      def get(key)
+        self[key.to_s]
+      end
+
+      # rubocop:disable Naming/MethodParameterName
+      def set(key, value, ex: nil)
+        self[key.to_s] = value
+        self["expires_#{key}"] = ex if ex
+      end
+      # rubocop:enable Naming/MethodParameterName
+
+      def del(key)
+        delete(key.to_s)
+      end
+
+      def exists?(key)
+        key?(key.to_s)
+      end
+
+      def ttl(key)
+        self["expires_#{key}"] || -1
+      end
+    end
+
+    allow(RedisService.instance).to receive(:redis).and_return(FakeRedis.new)
     Rails.cache.clear
   end
 

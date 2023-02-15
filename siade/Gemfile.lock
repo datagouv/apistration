@@ -163,8 +163,6 @@ GEM
     mini_histogram (0.3.1)
     mini_portile2 (2.8.1)
     minitest (5.17.0)
-    mock_redis (0.36.0)
-      ruby2_keywords
     multi_json (1.15.0)
     multi_xml (0.6.0)
     nenv (0.3.0)
@@ -361,7 +359,6 @@ DEPENDENCIES
   logstasher
   marcel
   mina
-  mock_redis
   nokogiri
   oauth2 (~> 1.0)
   octokit (~> 5.0)
