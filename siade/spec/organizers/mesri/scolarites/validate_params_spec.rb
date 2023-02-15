@@ -14,9 +14,9 @@ RSpec.describe MESRI::Scolarites::ValidateParams, type: :validate_params do
 
   let(:family_name) { 'Dupont' }
   let(:first_name) { 'Jean' }
-  let(:gender) { 'M' }
+  let(:gender) { 'm' }
   let(:birthday_date) { '2000-01-01' }
-  let(:code_etablissement) { '123456' }
+  let(:code_etablissement) { '1234567w' }
   let(:annee_scolaire) { '2022' }
 
   let(:token_id) { SecureRandom.uuid }

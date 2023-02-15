@@ -1,10 +1,10 @@
 RSpec.describe MESRI::Scolarites::MakeRequest, type: :make_request do
   describe '.call' do
-    subject { described_class.call(params:, access_token:) }
+    subject { described_class.call(params:, token:) }
 
-    let(:access_token) { 'correct-auth-token' }
+    let(:token) { 'jwt-access-token' }
 
-    context 'with valid params', vcr: { cassette_name: 'mesri/scolarite/valid' } do
+    context 'with valid params', vcr: { cassette_name: 'mesri/scolarites/valid' } do
       let(:params) do
         {
           family_name: 'COULEARD',

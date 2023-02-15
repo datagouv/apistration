@@ -33,6 +33,14 @@ RSpec.describe MESRI::Scolarites::ValidateResponse, type: :validate_response do
     its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
   end
 
+  context 'with a provider bad gateway proxy' do
+    let(:response) { instance_double(Net::HTTPBadGateway, code: '502') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderBadGatewayError)) }
+  end
+
   context 'with an unknown error' do
     let(:response) { instance_double(Net::HTTPUnknownResponse, code: '506') }
 

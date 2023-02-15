@@ -17,7 +17,7 @@ class MESRI::Scolarites::MakeRequest < MakeRequest::Get
   end
 
   def set_headers(request)
-    request['Authorization'] = "Bearer #{context.access_token}"
+    request['Authorization'] = "Bearer #{context.token}"
     super(request)
   end
 

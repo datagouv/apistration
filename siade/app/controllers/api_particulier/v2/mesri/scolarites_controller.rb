@@ -1,11 +1,9 @@
-class APIParticulier::V3AndMore::MESRI::ScolaritesController < APIEntreprise::V3AndMore::BaseController
+class APIParticulier::V2::MESRI::ScolaritesController < APIParticulierController
   def show
-    authorize :scolarite
-
     organizer = ::MESRI::Scolarites.call(params: organizer_params)
 
     if organizer.success?
-      render json: serializer_class.new(organizer.resource).serializable_hash,
+      render json: ::APIParticulier::MESRI::ScolaritesSerializer::V3.new(organizer.bundled_data).serializable_hash,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)
@@ -18,7 +16,7 @@ class APIParticulier::V3AndMore::MESRI::ScolaritesController < APIEntreprise::V3
     {
       family_name: params[:nom],
       first_name: params[:prenom],
-      gender:,
+      gender: params[:sexe],
       birthday_date: params[:date_naissance],
       code_etablissement: params[:code_etablissement],
       annee_scolaire: params[:annee_scolaire]
@@ -27,14 +25,5 @@ class APIParticulier::V3AndMore::MESRI::ScolaritesController < APIEntreprise::V3
 
   def serializer_module
     ::APIParticulier::MESRI::ScolaritesSerializer
-  end
-
-  def gender
-    case params[:sexe]
-    when 'M'
-      1
-    when 'F'
-      2
-    end
   end
 end

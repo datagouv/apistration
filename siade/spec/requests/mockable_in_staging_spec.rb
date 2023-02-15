@@ -59,6 +59,7 @@ RSpec.describe 'Mocking in staging for each routes' do
       /api/v2/situations-pole-emploi
       /api/v2/etudiants
       /api/v2/etudiants-boursiers
+      /api/v2/scolarites
       /api/v2/avis-imposition
 
       /api/ping
