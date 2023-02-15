@@ -34,7 +34,11 @@ class Infogreffe::ValidateResponse < ValidateResponse
   end
 
   def potentiel_error
-    xml.xpath('//return/text()').last.try(:text)
+    potential_error = xml.xpath('//return/text()').last.try(:text).try(:strip)
+
+    return unless potential_error =~ /^\d{2}/
+
+    potential_error
   end
 
   def not_found_codes
@@ -61,6 +65,8 @@ class Infogreffe::ValidateResponse < ValidateResponse
   end
 
   def extract_provider_error_attributes
+    return {} if potentiel_error.blank?
+
     {
       code: potentiel_error[0..2],
       message: potentiel_error[5..-2]
