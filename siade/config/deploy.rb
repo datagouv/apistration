@@ -107,6 +107,7 @@ task :deploy do
       invoke :'passenger'
     end
   end
+  invoke :'rake', 'cache:clear'
   invoke :'samhain_db_update'
 end
 
