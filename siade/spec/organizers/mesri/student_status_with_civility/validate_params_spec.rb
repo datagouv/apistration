@@ -5,7 +5,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::ValidateParams, type: :validate
     {
       family_name:,
       first_name:,
-      birthday_date:,
+      birth_date:,
       birth_place:,
       gender:,
       token_id:
@@ -14,7 +14,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::ValidateParams, type: :validate
 
   let(:family_name) { 'Dupont' }
   let(:first_name) { 'Jean' }
-  let(:birthday_date) { '2000-01-01' }
+  let(:birth_date) { '2000-01-01' }
   let(:birth_place) { 'Paris' }
   let(:gender) { 'm' }
 
@@ -55,7 +55,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::ValidateParams, type: :validate
   end
 
   context 'with invalid birthday date' do
-    let(:birthday_date) { 'lol' }
+    let(:birth_date) { 'lol' }
 
     it { is_expected.to be_a_failure }
 

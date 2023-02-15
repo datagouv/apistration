@@ -5,7 +5,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::ValidateParams, type: :val
     {
       family_name:,
       first_names:,
-      birthday_date:,
+      birth_date:,
       birth_place:,
       gender:,
       user_id:
@@ -14,7 +14,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::ValidateParams, type: :val
 
   let(:family_name) { 'Dupont' }
   let(:first_names) { 'Jean Charlie' }
-  let(:birthday_date) { '2000-01-01' }
+  let(:birth_date) { '2000-01-01' }
   let(:birth_place) { 'Paris' }
   let(:gender) { 'M' }
 
@@ -57,7 +57,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::ValidateParams, type: :val
   end
 
   context 'with invalid birthday date' do
-    let(:birthday_date) { 'lol' }
+    let(:birth_date) { 'lol' }
 
     it { is_expected.to be_a_failure }
 

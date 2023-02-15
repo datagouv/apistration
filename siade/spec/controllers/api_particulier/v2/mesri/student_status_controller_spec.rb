@@ -142,7 +142,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
           token_id: anything,
           family_name: france_connect_person_identity_attributes[:family_name],
           first_name: france_connect_person_identity_attributes[:given_name].split[0],
-          birthday_date: france_connect_person_identity_attributes[:birthdate],
+          birth_date: france_connect_person_identity_attributes[:birthdate],
           birth_place: france_connect_person_identity_attributes[:birthplace],
           gender: 'm'
         }
@@ -160,7 +160,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
             token_id: anything,
             family_name: france_connect_person_identity_attributes[:family_name],
             first_name: france_connect_person_identity_attributes[:given_name].split[0],
-            birthday_date: france_connect_person_identity_attributes[:birthdate],
+            birth_date: france_connect_person_identity_attributes[:birthdate],
             birth_place: france_connect_person_identity_attributes[:birthplace],
             gender: 'm'
           }

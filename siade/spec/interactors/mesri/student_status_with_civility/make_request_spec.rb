@@ -6,7 +6,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_reques
       {
         family_name:,
         first_name:,
-        birthday_date:,
+        birth_date:,
         birth_place:,
         gender:,
         token_id:
@@ -15,7 +15,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_reques
 
     let(:family_name) { 'Dupont' }
     let(:first_name) { 'Jean' }
-    let(:birthday_date) { '2000-01-01' }
+    let(:birth_date) { '2000-01-01' }
     let(:birth_place) { '' }
     let(:gender) { 'm' }
     let(:token_id) { SecureRandom.uuid }
@@ -25,7 +25,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_reques
         body: {
           nomFamille: family_name,
           prenom1: first_name,
-          dateNaissance: birthday_date,
+          dateNaissance: birth_date,
           sexe: '1'
         }.to_json,
         headers: {
@@ -54,7 +54,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_reques
       {
         family_name:,
         first_name:,
-        birthday_date:,
+        birth_date:,
         gender:,
         token_id:
       }
@@ -62,7 +62,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_reques
 
     let(:family_name) { 'Dupont' }
     let(:first_name) { 'Jean' }
-    let(:birthday_date) { '2000-01-01' }
+    let(:birth_date) { '2000-01-01' }
     let(:gender) { 'm' }
     let(:token_id) { SecureRandom.uuid }
 
@@ -71,7 +71,7 @@ RSpec.describe MESRI::StudentStatusWithCivility::MakeRequest, type: :make_reques
         body: {
           nomFamille: family_name,
           prenom1: first_name,
-          dateNaissance: birthday_date,
+          dateNaissance: birth_date,
           sexe: '1'
         }.to_json,
         headers: {

@@ -6,7 +6,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility, type: :retriever_organizer
       {
         family_name:,
         first_names:,
-        birthday_date:,
+        birth_date:,
         birth_place:,
         gender:
       }
@@ -14,7 +14,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility, type: :retriever_organizer
 
     let(:family_name) { 'Dupont' }
     let(:first_names) { %w[Jean Charlie] }
-    let(:birthday_date) { '2000-01-01' }
+    let(:birth_date) { '2000-01-01' }
     let(:birth_place) { 'Paris' }
     let(:gender) { 'M' }
 

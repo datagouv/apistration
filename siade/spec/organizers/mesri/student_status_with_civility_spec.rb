@@ -6,7 +6,7 @@ RSpec.describe MESRI::StudentStatusWithCivility, type: :retriever_organizer do
       {
         family_name:,
         first_name:,
-        birthday_date:,
+        birth_date:,
         birth_place:,
         gender:,
 
@@ -16,7 +16,7 @@ RSpec.describe MESRI::StudentStatusWithCivility, type: :retriever_organizer do
 
     let(:family_name) { 'Dupont' }
     let(:first_name) { 'Jean' }
-    let(:birthday_date) { '2000-01-01' }
+    let(:birth_date) { '2000-01-01' }
     let(:birth_place) { 'Paris' }
     let(:gender) { 'm' }
 

@@ -7,7 +7,7 @@ class MESRI::StudentStatusWithCivility::MakeRequest < MakeRequest::Post
     {
       nomFamille: family_name,
       prenom1: first_name,
-      dateNaissance: birthday_date,
+      dateNaissance: birth_date,
       sexe: gender,
       lieuNaissance: birth_place.presence
     }.compact
@@ -27,8 +27,8 @@ class MESRI::StudentStatusWithCivility::MakeRequest < MakeRequest::Post
     context.params[:first_name]
   end
 
-  def birthday_date
-    context.params[:birthday_date]
+  def birth_date
+    context.params[:birth_date]
   end
 
   def birth_place

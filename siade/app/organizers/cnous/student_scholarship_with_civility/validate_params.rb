@@ -1,7 +1,7 @@
 class CNOUS::StudentScholarshipWithCivility::ValidateParams < ValidateParamsOrganizer
   organize ServiceUser::ValidateFamilyName,
     ServiceUser::ValidateFirstNames,
-    ServiceUser::ValidateBirthdayPlace,
-    CNOUS::StudentScholarshipWithCivility::ValidateBirthdayDate,
+    ServiceUser::ValidateBirthPlace,
+    CNOUS::StudentScholarshipWithCivility::ValidateBirthDate,
     CNOUS::StudentScholarshipWithCivility::ValidateGender
 end

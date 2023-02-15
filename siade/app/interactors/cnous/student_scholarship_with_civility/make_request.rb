@@ -7,7 +7,7 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
     {
       lastName: family_name,
       firstNames: first_names,
-      birthDate: birthday_date,
+      birthDate: birth_date,
       birthPlace: birth_place,
       civility: gender
     }.compact
@@ -27,8 +27,8 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
     context.params[:first_names].join(', ')
   end
 
-  def birthday_date
-    Date.parse(context.params[:birthday_date]).strftime('%d/%m/%Y')
+  def birth_date
+    Date.parse(context.params[:birth_date]).strftime('%d/%m/%Y')
   end
 
   def birth_place

@@ -39,7 +39,7 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulierControl
       {
         family_name: params[:nom],
         first_name: params[:prenom],
-        birthday_date: params[:dateDeNaissance],
+        birth_date: params[:dateDeNaissance],
         birth_place: params[:lieuDeNaissance],
         gender: params[:sexe]
       }
@@ -50,7 +50,7 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulierControl
     {
       family_name: france_connect_service_user_identity.family_name,
       first_name: extract_first_first_name_from_france_connect_given_name(france_connect_service_user_identity.given_name),
-      birthday_date: france_connect_service_user_identity.birthdate,
+      birth_date: france_connect_service_user_identity.birthdate,
       birth_place: france_connect_service_user_identity.birthplace,
       gender: france_connect_service_user_identity.gender == 'male' ? 'm' : 'f'
     }
