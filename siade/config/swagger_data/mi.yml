@@ -1170,7 +1170,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
         nullable: true
 
   v4/unite_legale_open_data:
-    title: "Données association en&nbsp;open&nbsp;data"
+    title: "Données association en open data"
     description: "Informations et documents de référence d'une association, accessibles en open data, issues du répertoire national des associations (RNA)."
     tags:
       - "Informations générales"

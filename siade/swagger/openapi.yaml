@@ -17513,7 +17513,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v4/ministere_interieur/api-association/associations/130025265?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v4/ministere_interieur/api-association/associations/open_data/{siren_or_rna}":
     get:
-      summary: Données association en&nbsp;open&nbsp;data
+      summary: Données association en open data
       tags:
       - Informations générales
       parameters:
