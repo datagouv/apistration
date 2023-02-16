@@ -1,7 +1,7 @@
 {
   "eleve": {
-    "nom": "COULEARD",
-    "prenom": "cecile",
+    "nom": "NOMFAMILLE",
+    "prenom": "prenom",
     "sexe": 2,
     "date-naissance": "2000-06-10"
   },

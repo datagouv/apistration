@@ -22,8 +22,8 @@ RSpec.describe 'MESRI: Scolarites', api: :particulier, document: false, type: %i
       let(:codeEtablissement) { '0511474A' }
       let(:anneeScolaire) { '2021' }
       # rubocop:enable RSpec/VariableName
-      let(:nom) { 'COULEARD' }
-      let(:prenom) { 'cecile' }
+      let(:nom) { 'NOMFAMILLE' }
+      let(:prenom) { 'prenom' }
       let(:sexe) { 'f' }
 
       let(:x_api_key) { nil }

@@ -15,8 +15,8 @@ RSpec.describe MESRI::Scolarites::BuildResource, type: :build_resource do
     let(:valid_resource) do
       {
         eleve: {
-          nom: 'COULEARD',
-          prenom: 'cecile',
+          nom: 'NOMFAMILLE',
+          prenom: 'prenom',
           sexe: 'F',
           date_naissance: '2000-06-10'
         },

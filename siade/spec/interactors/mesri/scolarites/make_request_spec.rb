@@ -7,8 +7,8 @@ RSpec.describe MESRI::Scolarites::MakeRequest, type: :make_request do
     context 'with valid params', vcr: { cassette_name: 'mesri/scolarites/valid' } do
       let(:params) do
         {
-          family_name: 'COULEARD',
-          first_name: 'cecile',
+          family_name: 'NOMFAMILLE',
+          first_name: 'prenom',
           gender: 'f',
           birth_date: '2000-06-10',
           code_etablissement: '0511474A',
