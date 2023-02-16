@@ -60,16 +60,6 @@ class ValidateResponse < ApplicationInteractor
     context.fail!
   end
 
-  def provider_timeout_error!
-    context.errors << ProviderTimeoutError.new(context.provider_name)
-    context.fail!
-  end
-
-  def provider_bad_gateway_error!
-    context.errors << ProviderBadGatewayError.new(context.provider_name)
-    context.fail!
-  end
-
   def resource_not_found!(resource = nil)
     message = not_found_message(resource)
 

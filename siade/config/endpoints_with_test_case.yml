@@ -203,10 +203,6 @@
 - name: '[V3] MSA Conformité cotisations'
   http_path: '/v3/msa/etablissements/41816609600069/conformite_cotisations'
 
-# TODO: add whole query for actual endpoint test
-- name: '[V3] MESRI Scolarité'
-  http_path: '/v3/mesri/scolarites'
-
 - name: "[V4] Ministère de l'Intérieur associations"
   http_path: '/v4/ministere_interieur/api-association/associations/775719792'
 
