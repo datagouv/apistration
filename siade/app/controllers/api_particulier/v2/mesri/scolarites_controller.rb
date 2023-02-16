@@ -3,7 +3,7 @@ class APIParticulier::V2::MESRI::ScolaritesController < APIParticulierController
     organizer = ::MESRI::Scolarites.call(params: organizer_params)
 
     if organizer.success?
-      render json: ::APIParticulier::MESRI::ScolaritesSerializer::V3.new(organizer.bundled_data).serializable_hash,
+      render json: serialize_data(organizer),
         status: extract_http_code(organizer)
     else
       render_errors(organizer)
@@ -21,9 +21,5 @@ class APIParticulier::V2::MESRI::ScolaritesController < APIParticulierController
       code_etablissement: params[:codeEtablissement],
       annee_scolaire: params[:anneeScolaire]
     }
-  end
-
-  def serializer_module
-    ::APIParticulier::MESRI::ScolaritesSerializer
   end
 end

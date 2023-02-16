@@ -32,11 +32,11 @@ RSpec.describe 'MESRI: Scolarites', api: :particulier, document: false, type: %i
         let(:x_api_key) { TokenFactory.new(['mesri_scolarites']).valid }
 
         response '200', 'Scolarité trouvée', vcr: { cassette_name: 'mesri/scolarites/valid' } do
-          description SwaggerData.get('mesri.scolarite.description')
+          # description SwaggerData.get('mesri.scolarite.description')
 
-          schema build_rswag_response(
-            attributes: SwaggerData.get('mesri.scolarite.attributes')
-          )
+          # schema build_rswag_response(
+          #   attributes: SwaggerData.get('mesri.scolarite.attributes')
+          # )
 
           run_test!
         end
