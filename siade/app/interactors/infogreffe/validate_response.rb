@@ -12,15 +12,15 @@ class Infogreffe::ValidateResponse < ValidateResponse
   private
 
   def not_found_in_body?
-    potentiel_error.present? &&
+    potential_error.present? &&
       not_found_codes.any? do |not_found_code|
-        potentiel_error.starts_with?(not_found_code)
+        potential_error.starts_with?(not_found_code)
       end
   end
 
   def provider_unavailable_in_body?
-    potentiel_error.present? &&
-      potentiel_error.starts_with?(provider_unavailable_code)
+    potential_error.present? &&
+      potential_error.starts_with?(provider_unavailable_code)
   end
 
   def payload_has_siren?
@@ -33,7 +33,7 @@ class Infogreffe::ValidateResponse < ValidateResponse
     @xml ||= Nokogiri.XML(body)
   end
 
-  def potentiel_error
+  def potential_error
     potential_error = xml.xpath('//return/text()').last.try(:text).try(:strip)
 
     return unless potential_error =~ /^\d{2}/
@@ -65,11 +65,11 @@ class Infogreffe::ValidateResponse < ValidateResponse
   end
 
   def extract_provider_error_attributes
-    return {} if potentiel_error.blank?
+    return {} if potential_error.blank?
 
     {
-      code: potentiel_error[0..2],
-      message: potentiel_error[5..-2]
+      code: potential_error[0..2],
+      message: potential_error[5..-2]
     }
   end
 end
