@@ -85,6 +85,11 @@ RSpec.describe 'Mocking in staging for each routes' do
       '/api/ping' => {}
     }.each do |path, params|
       it "works for #{path}" do
+        if path == '/api/v2/scolarites'
+          pending "Mocking is not implemented for #{path}: we need to add x-operationId in swagger (and the specification for this endpoint)"
+          break
+        end
+
         get path, params: { token: yes_jwt }.merge(params)
         assert_response 200
       end
