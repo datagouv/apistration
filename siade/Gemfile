@@ -54,6 +54,8 @@ gem 'lockbox'
 
 gem 'octokit', '~> 6.0'
 
+gem 'pdf-reader'
+
 group :test do
   gem 'rswag-specs', github: 'rswag/rswag'
 
