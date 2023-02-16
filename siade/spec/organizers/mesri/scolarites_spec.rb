@@ -13,7 +13,12 @@ RSpec.describe MESRI::Scolarites, type: :retriever_organizer do
       }
     end
 
-    describe 'happy path', vcr: { cassette_name: 'mesri/scolarites/valid' } do
+    before do
+      mock_mesri_scolarite_auth
+      mock_mesri_scolarite
+    end
+
+    describe 'happy path' do
       it { is_expected.to be_a_success }
 
       it 'retrieves the resource' do
