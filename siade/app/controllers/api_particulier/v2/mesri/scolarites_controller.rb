@@ -17,9 +17,9 @@ class APIParticulier::V2::MESRI::ScolaritesController < APIParticulierController
       family_name: params[:nom],
       first_name: params[:prenom],
       gender: params[:sexe],
-      birthday_date: params[:date_naissance],
-      code_etablissement: params[:code_etablissement],
-      annee_scolaire: params[:annee_scolaire]
+      birth_date: params[:dateNaissance],
+      code_etablissement: params[:codeEtablissement],
+      annee_scolaire: params[:anneeScolaire]
     }
   end
 

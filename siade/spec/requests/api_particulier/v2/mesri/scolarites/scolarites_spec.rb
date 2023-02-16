@@ -11,21 +11,22 @@ RSpec.describe 'MESRI: Scolarites', api: :particulier, document: false, type: %i
       parameter name: :nom,                in: :query, type: :string
       parameter name: :prenom,             in: :query, type: :string
       parameter name: :sexe,               in: :query, type: :string
-      parameter name: :date_naissance,     in: :query, type: :string
-      parameter name: :code_etablissement, in: :query, type: :string
-      parameter name: :annee_scolaire,     in: :query, type: :string
+      parameter name: :dateNaissance,     in: :query, type: :string
+      parameter name: :codeEtablissement, in: :query, type: :string
+      parameter name: :anneeScolaire,     in: :query, type: :string
 
       # rubocop:disable RSpec/VariableName
       let(:'X-Api-Key') { x_api_key }
-      # rubocop:enable RSpec/VariableName
-      let(:x_api_key) { nil }
 
+      let(:dateNaissance) { '2000-06-10' }
+      let(:codeEtablissement) { '0511474A' }
+      let(:anneeScolaire) { '2021' }
+      # rubocop:enable RSpec/VariableName
       let(:nom) { 'COULEARD' }
       let(:prenom) { 'cecile' }
       let(:sexe) { 'f' }
-      let(:date_naissance) { '2000-06-10' }
-      let(:code_etablissement) { '0511474A' }
-      let(:annee_scolaire) { '2021' }
+
+      let(:x_api_key) { nil }
 
       describe 'with valid token and mandatory params' do
         let(:x_api_key) { TokenFactory.new(['mesri_scolarites']).valid }
