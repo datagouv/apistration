@@ -62,6 +62,7 @@ VCR.configure do |c|
   c.filter_sensitive_data('<URL_MI>') { Siade.credentials[:mi_domain].to_s }
 
   c.filter_sensitive_data('<CNOUS_CREDENTIALS>') { Siade.credentials[:cnous_authenticate_credentials].to_s }
+  c.filter_sensitive_data('<MESRI_SCOLARITE_URL>') { Siade.credentials[:mesri_scolarite_url].to_s }
   c.filter_sensitive_data('<MESRI_SCOLARITE_CLIENT_SECRET>') { Siade.credentials[:mesri_scolarite_client_secret].to_s }
   c.filter_sensitive_data('<MESRI_SCOLARITE_AUTHENTICATE_URL>') { Siade.credentials[:mesri_scolarite_authenticate_url].to_s }
 
