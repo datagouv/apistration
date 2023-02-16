@@ -6,7 +6,7 @@ RSpec.describe MESRI::Scolarites::ValidateParams, type: :validate_params do
       family_name:,
       first_name:,
       gender:,
-      birthday_date:,
+      birth_date:,
       code_etablissement:,
       annee_scolaire:
     }
@@ -15,7 +15,7 @@ RSpec.describe MESRI::Scolarites::ValidateParams, type: :validate_params do
   let(:family_name) { 'Dupont' }
   let(:first_name) { 'Jean' }
   let(:gender) { 'm' }
-  let(:birthday_date) { '2000-01-01' }
+  let(:birth_date) { '2000-01-01' }
   let(:code_etablissement) { '1234567w' }
   let(:annee_scolaire) { '2022' }
 
@@ -66,7 +66,7 @@ RSpec.describe MESRI::Scolarites::ValidateParams, type: :validate_params do
   end
 
   context 'with invalid birthday date' do
-    let(:birthday_date) { 'lol' }
+    let(:birth_date) { 'lol' }
 
     it { is_expected.to be_a_failure }
 

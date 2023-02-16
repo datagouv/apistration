@@ -10,7 +10,7 @@ RSpec.describe MESRI::Scolarites::MakeRequest, type: :make_request do
           family_name: 'COULEARD',
           first_name: 'cecile',
           gender: 'f',
-          birthday_date: '2000-06-10',
+          birth_date: '2000-06-10',
           code_etablissement: '0511474A',
           annee_scolaire: '2021'
         }

@@ -10,7 +10,7 @@ class MESRI::Scolarites::MakeRequest < MakeRequest::Get
       nom: context.params[:family_name],
       prenom: context.params[:first_name],
       sexe:,
-      'date-naissance': context.params[:birthday_date],
+      'date-naissance': context.params[:birth_date],
       'code-uai': context.params[:code_etablissement],
       'annee-scolaire': context.params[:annee_scolaire]
     }
