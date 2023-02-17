@@ -1,6 +1,6 @@
 class APIParticulier::V2::MESRI::ScolaritesController < APIParticulierController
   def show
-    organizer = ::MESRI::Scolarites.call(params: organizer_params)
+    organizer = retrieve_payload_data(::MESRI::Scolarites)
 
     if organizer.success?
       render json: serialize_data(organizer),
