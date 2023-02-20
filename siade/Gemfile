@@ -52,7 +52,7 @@ gem 'rswag-ui', github: 'rswag/rswag'
 
 gem 'lockbox'
 
-gem 'octokit', '~> 5.0'
+gem 'octokit', '~> 6.0'
 
 group :test do
   gem 'rswag-specs', github: 'rswag/rswag'
