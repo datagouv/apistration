@@ -203,8 +203,8 @@
 - name: '[V3] MSA Conformité cotisations'
   http_path: '/v3/msa/etablissements/41816609600069/conformite_cotisations'
 
-- name: "[V4] Ministère de l'Intérieur associations"
-  http_path: '/v4/ministere_interieur/api-association/associations/775719792'
+- name: "[V4] DJEPVA associations"
+  http_path: '/v4/djepva/api-association/associations/775719792'
 
-- name: "[V4] Ministère de l'Intérieur associations open data"
-  http_path: '/v4/ministere_interieur/api-association/associations/open_data/775719792'
+- name: "[V4] DJEPVA associations open data"
+  http_path: '/v4/djepva/api-association/associations/open_data/775719792'

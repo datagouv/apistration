@@ -1,9 +1,9 @@
 require 'swagger_helper'
 
-RSpec.describe 'MI: Associations v4', api: :entreprise, type: %i[request swagger] do
-  path '/v4/ministere_interieur/api-association/associations/{siren_or_rna}' do
-    get SwaggerData.get('mi.v4/unite_legale.title') do
-      tags(*SwaggerData.get('mi.v4/unite_legale.tags'))
+RSpec.describe 'DJEPVA: Associations v4, open data version', api: :entreprise, type: %i[request swagger] do
+  path '/v4/djepva/api-association/associations/open_data/{siren_or_rna}' do
+    get SwaggerData.get('mi.v4/unite_legale_open_data.title') do
+      tags(*SwaggerData.get('mi.v4/unite_legale_open_data.tags'))
 
       parameter_siren_or_rna
 
@@ -19,11 +19,11 @@ RSpec.describe 'MI: Associations v4', api: :entreprise, type: %i[request swagger
 
       describe 'with valid token and mandatory params', valid: true do
         response 200, 'Association trouvée' do
-          description SwaggerData.get('mi.v4/unite_legale.description')
+          description SwaggerData.get('mi.v4/unite_legale_open_data.description')
 
           schema build_rswag_response(
-            attributes: SwaggerData.get('mi.v4/unite_legale.attributes'),
-            meta: SwaggerData.get('mi.v4/unite_legale.meta')
+            attributes: SwaggerData.get('mi.v4/unite_legale_open_data.attributes'),
+            meta: SwaggerData.get('mi.v4/unite_legale_open_data.meta')
           )
 
           rate_limit_headers
@@ -51,8 +51,8 @@ RSpec.describe 'MI: Associations v4', api: :entreprise, type: %i[request swagger
             run_test!
           end
 
-          common_network_error_request('MI', MI::UniteLegale)
-          common_provider_errors_request('MI', MI::UniteLegale)
+          common_network_error_request('DJEPVA', DJEPVA::UniteLegale)
+          common_provider_errors_request('DJEPVA', DJEPVA::UniteLegale)
         end
       end
     end

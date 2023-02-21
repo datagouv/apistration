@@ -42,7 +42,8 @@ class ExtractProviderFromPath
       'ministere_interieur' => 'Ministère de l\'Intérieur',
       'european_commission' => 'Commission Européenne',
       'banque_de_france' => 'Banque de France',
-      'cma_france' => 'CMA France'
+      'cma_france' => 'CMA France',
+      'djepva' => 'DJEPVA'
     }
   end
   # rubocop:enable Metrics/MethodLength

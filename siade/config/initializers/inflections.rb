@@ -42,6 +42,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'CNOUS'
   inflect.acronym 'DGDDI'
   inflect.acronym 'DGFIP'
+  inflect.acronym 'DJEPVA'
   inflect.acronym 'EORI'
   inflect.acronym 'FNTP'
   inflect.acronym 'INPI'

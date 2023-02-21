@@ -65,6 +65,7 @@ class ErrorsBackend
       '26' => 'CNOUS',
       '27' => 'DGFIP - SVAIR',
       '28' => 'Commission Européenne',
+      '29' => 'DJEPVA',
       '50' => 'FranceConnect'
     }
   end

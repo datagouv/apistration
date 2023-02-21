@@ -1,4 +1,4 @@
-class MI::UniteLegale < RetrieverOrganizer
+class DJEPVA::UniteLegale < RetrieverOrganizer
   before do
     context.params[:siren_or_rna] = context.params[:id]
   end
@@ -9,6 +9,6 @@ class MI::UniteLegale < RetrieverOrganizer
     MI::Associations::BuildResource
 
   def provider_name
-    'MI'
+    'DJEPVA'
   end
 end
