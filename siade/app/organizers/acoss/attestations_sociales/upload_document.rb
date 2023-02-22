@@ -10,6 +10,6 @@ class ACOSS::AttestationsSociales::UploadDocument < UploadDocumentOrganizer
   end
 
   def filename
-    'attestation_fiscale_acoss'
+    'attestation-vigilance-urssaf'
   end
 end

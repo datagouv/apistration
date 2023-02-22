@@ -12,10 +12,10 @@ RSpec.describe ACOSS::AttestationsSociales::UploadDocument, :self_hosted_doc do
 
     its(:file_type) { is_expected.to eq('pdf') }
 
-    its(:filename) { is_expected.to eq('attestation_fiscale_acoss') }
+    its(:filename) { is_expected.to eq('attestation-vigilance-urssaf') }
 
     its(:content) { is_expected.to eq(decoded_file_content) }
 
-    its(:url) { is_expected.to be_a_valid_self_hosted_pdf_url('attestation_fiscale_acoss') }
+    its(:url) { is_expected.to be_a_valid_self_hosted_pdf_url('attestation-vigilance-urssaf') }
   end
 end
