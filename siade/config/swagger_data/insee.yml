@@ -40,7 +40,7 @@ insee:
       type: "object"
       title: "Attributs de la personne physique"
       description: "Attributs associés à la personne physique. Les
-        valeurs sont à 'null' pour les personnes morales."
+        valeurs sont à 'null' pour les personnes morales. Pour les personnes physiques, la raison sociale / dénomination / nom de l'entreprise correspond toujours au nom de famille et au prénom, précédés ou suivis de la mention \"entrepreneur individuel\" ou \"EI\". Pour en savoir plus, consulter cette page du site service-public.fr https://entreprendre.service-public.fr/vosdroits/F23283/personnalisation/resultat"
       properties:
         pseudonyme:
           title: "Pseudonyme"
