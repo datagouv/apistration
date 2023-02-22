@@ -323,7 +323,7 @@ insee:
         "Cette valeur décrit l'état administratif de l'unité légale qui peut être « active » ou « cessée »
         \n
         \n
-         **Pour les personnes morales**, l'unité légale est considérée comme juridiquement « cessée » si :
+         **Pour les personnes morales**, l'unité légale est considérée comme juridiquement « cessée » si&nbsp;:nbsp;
         \n
         - il y a eu dépôt de la déclaration de disparition de la personne morale ;
         \n
@@ -332,7 +332,7 @@ insee:
         - elle n'a plus d'établissement en activité.
         \n
         \n
-        **Pour les personnes physiques**, l'unité légale est considérée comme juridiquement « cessée » si :
+        **Pour les personnes physiques**, l'unité légale est considérée comme juridiquement « cessée » si&nbsp;:nbsp;
         \n
         - l'exploitant de l'unité légale décède ;
         \n
@@ -342,7 +342,7 @@ insee:
         En dehors de ces cas, l'état administratif de l'unité légale est toujours « actif ».
         \n
         \n
-        Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+        Plus d'informations dans la documentation Insee de l'API Sirene&nbsp;:nbsp;https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
     economie_sociale_et_solidaire:
       title: "Unité légale de l'économie sociale et solidaire (ESS)"
       description:
