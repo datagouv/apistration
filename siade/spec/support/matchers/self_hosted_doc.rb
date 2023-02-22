@@ -10,6 +10,10 @@ module SelfHostedDoc
       valid_url?
     end
 
+    def description
+      "matches #{expected_storage_url}"
+    end
+
     def failure_message(target)
       "expected #{target} to match #{expected_storage_url}"
     end
