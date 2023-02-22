@@ -59,6 +59,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'RGE'
   inflect.acronym 'RNA'
   inflect.acronym 'RNM'
+  inflect.acronym 'URSSAF'
 
   inflect.irregular 'aide_covid_effectifs', 'aides_covid_effectifs'
   inflect.irregular 'appel_offre', 'appels_offres'
