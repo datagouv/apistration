@@ -320,12 +320,26 @@ insee:
         - "A"
         - "C"
       description:
-        "Cette valeur décrit l'état administratif de l'unité légale, qui peut être :
+        "Cette valeur décrit l'état administratif de l'unité légale qui peut être « active » ou « cessée »
         \n
         \n
-        - cessée. Le passage à l'état « Cessée » découle de la prise en compte d'une déclaration de cessation administrative. Pour les personnes morales, cela correspond au dépôt de la déclaration de disparition de la personne morale. Pour les personnes physiques, cela correspond soit à la prise en compte de la déclaration de cessation d'activité déposée par l'exploitant soit au décès de l'exploitant conformément à la réglementation.
+         **Pour les personnes morales**, l'unité légale est considérée comme juridiquement « cessée » si :
         \n
-        - active. En dehors des cas explicités ci-dessus, l'unité légale est toujours à l'état administratif « Active ».
+        - il y a eu dépôt de la déclaration de disparition de la personne morale ;
+        \n
+        - elle a été inscrite sans activité à sa demande. Dans le cas d'une création au répertoire Sirene mais sans avoir encore démarré une activité (activité principale provisoire “0000Z”) ;
+        \n
+        - elle n'a plus d'établissement en activité.
+        \n
+        \n
+        **Pour les personnes physiques**, l'unité légale est considérée comme juridiquement « cessée » si :
+        \n
+        - l'exploitant de l'unité légale décède ;
+        \n
+        - l'exploitant dépose une cessation d'activité.
+        \n
+        \n
+        En dehors de ces cas, l'état administratif de l'unité légale est toujours « actif ».
         \n
         \n
         Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
