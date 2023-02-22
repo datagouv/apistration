@@ -14,8 +14,8 @@ module SelfHostedDoc
       "matches #{expected_storage_url}"
     end
 
-    def failure_message(target)
-      "expected #{target} to match #{expected_storage_url}"
+    def failure_message
+      "expected '#{@target}' to match /#{expected_storage_url}/"
     end
 
     private
