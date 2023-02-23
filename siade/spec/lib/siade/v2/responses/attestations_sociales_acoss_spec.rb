@@ -106,19 +106,6 @@ RSpec.describe SIADE::V2::Responses::AttestationsSocialesACOSS, type: :provider_
             subject
           end
         end
-
-        context 'when it is another random error' do
-          it 'logs this specific error for future investigation (not documented)' do
-            expect(Sentry).to receive(:set_extras).with({
-              body: body
-            })
-            expect(Sentry).to receive(:capture_message).with(
-              'Wrong payload from ACOSS (originaly reported in 1895733)'
-            )
-
-            subject
-          end
-        end
       end
     end
   end
