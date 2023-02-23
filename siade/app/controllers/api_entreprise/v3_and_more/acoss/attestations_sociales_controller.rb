@@ -1,6 +1,6 @@
 class APIEntreprise::V3AndMore::ACOSS::AttestationsSocialesController < APIEntreprise::V3AndMore::BaseController
   def show
-    organizer = retrieve_payload_data(::ACOSS::AttestationsSociales, cache: true, expires_in:, cache_key:)
+    organizer = retrieve_payload_data(retrieve_organizer_based_on_version, cache: true, expires_in:, cache_key:)
 
     if organizer.success?
       render json: serialize_data(organizer),
@@ -18,6 +18,14 @@ class APIEntreprise::V3AndMore::ACOSS::AttestationsSocialesController < APIEntre
       user_id: current_user.logstash_id,
       recipient: params[:recipient]
     }
+  end
+
+  def retrieve_organizer_based_on_version
+    if api_version == 3
+      ::ACOSS::AttestationsSociales
+    else
+      ::URSSAF::AttestationsSociales
+    end
   end
 
   def serializer_module

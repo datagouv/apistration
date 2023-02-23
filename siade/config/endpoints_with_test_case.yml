@@ -104,6 +104,9 @@
 - name: '[V3] URSSAF Attestations de vigilance'
   http_path: '/v3/urssaf/unites_legales/418166096/attestation_vigilance'
 
+- name: '[V4] URSSAF Attestations de vigilance'
+  http_path: '/v4/urssaf/unites_legales/418166096/attestation_vigilance'
+
 - name: "[V3] DGFIP Attestation fiscale"
   http_path: '/v3/dgfip/unites_legales/532010576/attestation_fiscale'
 

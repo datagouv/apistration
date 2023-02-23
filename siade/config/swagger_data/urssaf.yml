@@ -1,0 +1,51 @@
+urssaf:
+  attestation_sociale:
+    title: "Attestation de vigilance"
+    description: "Attestation sociale délivrée à une entreprise acquittée de ses obligations de cotisations et contributions sociales auprès de l'URSSAF Caisse nationale."
+    tags:
+      - "Attestations sociales et fiscales"
+    attributes:
+      entity_status:
+        title: "Status de l'entreprise vis-à-vis de ses obligations sociales"
+        type: 'object'
+        properties:
+          code:
+            type: 'string'
+            title: "Code du status"
+            description: "Cette valeur ne peut être actuellement que 'ok' ou 'refus_de_delivrance'. Pour ce dernier cas, cela signifie que l'entité n'est pas à jour de ses cotisations."
+            enum:
+              - 'ok'
+              - 'refus_de_delivrance'
+            example: 'ok'
+      date_debut_validite:
+        title: "Date de début de validité"
+        type: "date"
+        nullable: true
+        description: "Cette date est présente en fin de document dans le paragraphe « Attestation de l'union de recouvrement ».
+        \n
+        \n
+        Cette donnée est extraire du document PDF par API Entreprise."
+        example: "2023-31-01"
+      code_securite:
+        title: "Code de sécurité"
+        type: "string"
+        nullable: true
+        description: "Ce code de sécurité permet de vérifier auprès de l'URSSAF la véracité des infos du document. Vous pouvez faire cette vérification sur le lien suivant: https://www.urssaf.fr/portail/home/utile-et-pratique/verification-attestation.html
+        \n
+        \n
+        Cette donnée est extraire du document PDF par API Entreprise."
+        example: "GB1QWERTYJJEX1O"
+      document_url:
+        title: "URL de téléchargement de l'attestation de vigilance"
+        type: 'string'
+        nullable: true
+        description: "Ce lien délivre l'attestation de vigilance de l'entreprise au format PDF. La date du document dépend de la situation de chaque entreprise, et de la dernière déclaration enregistrée dans le système. Elle est donc variable d'une entreprise à l'autre.
+        \n
+        \n
+        Plus d'informations sur le site de l'URSSAF : https://www.urssaf.fr/portail/home/employeur/declarer-et-payer/obtenir-une-attestation/attestation-de-vigilance.html"
+        example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_vigilance_acoss.pdf"
+      document_url_expires_in:
+        title: "Nombre de secondes avant expiration du document référencé dans 'document_url'"
+        type: 'integer'
+        nullable: true
+        example: 86400

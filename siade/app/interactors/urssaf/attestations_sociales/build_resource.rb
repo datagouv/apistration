@@ -6,7 +6,7 @@ class URSSAF::AttestationsSociales::BuildResource < BuildResource
       {
         entity_status_code: 'ok',
         document_url: context.url,
-        document_url_expires_in: context.expires_in,
+        document_url_expires_in: context.url_expires_in,
         date_debut_validite: document_data[:date_debut_validite],
         code_securite: document_data[:code_securite],
         date_fin_validite: extract_date_fin_validite_from_date_debut_validite(document_data[:date_debut_validite])
