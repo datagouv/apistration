@@ -1,0 +1,58 @@
+---
+shared:
+  enable: false
+  operation_ids: []
+staging:
+  enable: true
+  operation_ids:
+    # - 'api_particulier_v2_dgfip_svair'
+    - 'api_particulier_v2_cnaf_quotient_familial'
+    - 'api_particulier_v2_pole_emploi_statut'
+    - 'api_particulier_v2_mesri_student_status'
+    - 'api_particulier_v2_cnous_student_scholarship'
+
+    - 'api_entreprise_v3_acoss_attestations_sociales'
+    - 'api_entreprise_v3_ademe_certificats_rge'
+    - 'api_entreprise_v3_banque_de_france_bilans_entreprise'
+    - 'api_entreprise_v3_cnetp_attestation_cotisations_conges_payes_chomage_intemperies'
+    - 'api_entreprise_v3_dgddi_eori'
+    - 'api_entreprise_v3_dgfip_attestations_fiscales'
+    - 'api_entreprise_v3_dgfip_chiffres_affaires'
+    - 'api_entreprise_v3_dgfip_liasses_fiscales'
+    - 'api_entreprise_v4_mi_unites_legales'
+    - 'api_entreprise_v4_mi_unites_legales_open_data'
+    - 'api_entreprise_v3_european_commission_vies'
+    - 'api_entreprise_v3_fabrique_numerique_ministeres_sociaux_conventions_collectives'
+    - 'api_entreprise_v3_fntp_carte_professionnelle_travaux_publics'
+    - 'api_entreprise_v3_infogreffe_extraits_rcs'
+    - 'api_entreprise_v3_infogreffe_mandataires_sociaux'
+    - 'api_entreprise_v3_inpi_actes'
+    - 'api_entreprise_v3_inpi_latest_brevets'
+    - 'api_entreprise_v3_inpi_latest_marques'
+    - 'api_entreprise_v3_inpi_latest_modeles'
+    - 'api_entreprise_v3_insee_adresses_etablissements'
+    - 'api_entreprise_v3_insee_adresses_etablissements_diffusables'
+    - 'api_entreprise_v3_insee_etablissements'
+    - 'api_entreprise_v3_insee_etablissements_diffusables'
+    - 'api_entreprise_v3_insee_sieges_diffusables_unites_legales'
+    - 'api_entreprise_v3_insee_sieges_unites_legales'
+    - 'api_entreprise_v3_insee_unites_legales'
+    - 'api_entreprise_v3_insee_unites_legales_diffusables'
+    - 'api_entreprise_v3_mi_documents_associations'
+    - 'api_entreprise_v3_mi_associations'
+    - 'api_entreprise_v3_msa_conformites_cotisations'
+    - 'api_entreprise_v3_opqibi_certifications_ingenierie'
+    - 'api_entreprise_v3_probtp_attestations_cotisation_retraite'
+    - 'api_entreprise_v3_probtp_conformites_cotisations_retraite'
+    - 'api_entreprise_v3_qualibat_certifications_batiment'
+    - 'api_entreprise_v3_rnm_entreprises_artisanales'
+
+sandbox:
+  enable: true
+  operation_ids: []
+
+production:
+  enable: true
+  operation_ids:
+    - 'api_particulier_v2_mesri_student_status'
+    - 'api_particulier_v2_cnous_student_scholarship'
