@@ -1,5 +1,6 @@
 class APIController < ApplicationController
   include HandleTokens
+  include CanLogRequestsInfoForDebugging
 
   rescue_from ActionController::ParameterMissing, with: :bad_request
 

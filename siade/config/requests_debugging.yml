@@ -56,3 +56,7 @@ production:
   operation_ids:
     - 'api_particulier_v2_mesri_student_status'
     - 'api_particulier_v2_cnous_student_scholarship'
+test:
+  enable: true
+  operation_ids:
+    - 'api_teapot'
