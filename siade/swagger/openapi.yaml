@@ -383,48 +383,54 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
-                une_demande_d_analyse_est_deja_en_cours_de_traitement_04502:
+                demande_de_traitement_logiciel_en_cours_04502:
                   value:
                     errors:
                     - code: '04502'
-                      title: Une demande d'analyse est déjà en cours de traitement
-                      detail: Une demande d'analyse du dossier de l'entreprise a déjà
-                        été demandée, cela prend au maximum 2 jours.
+                      title: Demande de traitement logiciel en cours
+                      detail: Une erreur informatique a eu lieu, une demande de traitement
+                        par le logiciel est en cours.
                       source:
                       meta:
                         provider: ACOSS
-                  summary: Une demande d'analyse est déjà en cours de traitement
-                  description: Une demande d'analyse du dossier de l'entreprise a
-                    déjà été demandée, cela prend au maximum 2 jours.
-                analyse_de_la_situation_du_compte_en_cours_04501:
+                  summary: Demande de traitement logiciel en cours
+                  description: Une erreur informatique a eu lieu, une demande de traitement
+                    par le logiciel est en cours.
+                analyse_manuelle_de_la_situation_du_compte_en_cours_04501:
                   value:
                     errors:
                     - code: '04501'
-                      title: Analyse de la situation du compte en cours
-                      detail: La situation de l'entreprise requiert une analyse manuelle
-                        d'un agent de l'URSSAF. Une demande d'analyse vient d'être
-                        envoyée, cela prend au maximum 2 jours.
+                      title: Analyse manuelle de la situation du compte en cours
+                      detail: Une analyse humaine par un agent des URSSAF est requise.
+                        Le temps de traitement est très variable selon de la complexité
+                        de situation, la demande de pièces justificatives complémentaires
+                        ou la charge de travail des agents.
                       source:
                       meta:
                         provider: ACOSS
                         retry_in: 172800
-                  summary: Analyse de la situation du compte en cours
-                  description: La situation de l'entreprise requiert une analyse manuelle
-                    d'un agent de l'URSSAF. Une demande d'analyse vient d'être envoyée,
-                    cela prend au maximum 2 jours.
-                attestation_de_vigilance_non_delivree_04503:
+                  summary: Analyse manuelle de la situation du compte en cours
+                  description: Une analyse humaine par un agent des URSSAF est requise.
+                    Le temps de traitement est très variable selon de la complexité
+                    de situation, la demande de pièces justificatives complémentaires
+                    ou la charge de travail des agents.
+                la_situation_du_compte_ne_permet_pas_de_delivrer_l_attestation_demandee_04503:
                   value:
                     errors:
                     - code: '04503'
-                      title: Attestation de vigilance non délivrée
-                      detail: La situation du compte ne permet pas de délivrer l'attestation
-                        de vigilance demandée, contactez directement l'entreprise.
+                      title: La situation du compte ne permet pas de délivrer l'attestation
+                        demandée
+                      detail: Il n'est pas possible de renvoyer l'attestation. Cela
+                        peut être dû au fait qu'un des établissements d'une entreprise
+                        n'a pas retourné les informations.
                       source:
                       meta:
                         provider: ACOSS
-                  summary: Attestation de vigilance non délivrée
-                  description: La situation du compte ne permet pas de délivrer l'attestation
-                    de vigilance demandée, contactez directement l'entreprise.
+                  summary: La situation du compte ne permet pas de délivrer l'attestation
+                    demandée
+                  description: Il n'est pas possible de renvoyer l'attestation. Cela
+                    peut être dû au fait qu'un des établissements d'une entreprise
+                    n'a pas retourné les informations.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
