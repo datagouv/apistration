@@ -311,12 +311,12 @@
   detail: "La situation de l'entreprise requiert une analyse manuelle d'un agent de l'URSSAF. Une demande d'analyse vient d'être envoyée, cela prend au maximum 2 jours."
 
 - code: '04502'
-  title: "Une demande d'analyse est déjà en cours de traitement"
-  detail: "Une demande d'analyse du dossier de l'entreprise a déjà été demandée, cela prend au maximum 2 jours."
+  title: "La situation du compte ne permet pas de délivrer l'attestation demandée"
+  detail: "Il n'est pas possible de renvoyer l'attestation. Cela peut être dû au fait qu'un des établissements d'une entreprise n'a pas retourné les informations."
 
 - code: '04503'
-  title: 'Attestation de vigilance non délivrée'
-  detail: "La situation du compte ne permet pas de délivrer l'attestation de vigilance demandée, contactez directement l'entreprise."
+  title: 'Analyse de la situation du compte en cours'
+  detail: "Une analyse humaine par un agent des URSSAF est requise. Le temps de traitement est très variable selon de la complexité de situation, la demande de pièces justificatives complémentaires ou la charge de travail des agents."
 
 ## FranceConnect
 
