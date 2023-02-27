@@ -1,10 +1,12 @@
 RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
   describe '.call' do
-    subject { described_class.call(response:, provider_name: 'MI') }
+    subject { described_class.call(response:, provider_name: 'MI', params:) }
 
     let(:response) do
       instance_double(Net::HTTPOK, code:, body:)
     end
+
+    let(:params) { { siret_or_rna: 'super siret' } }
 
     describe 'with an invalid code' do
       let(:code) { '418' }
@@ -98,6 +100,30 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
         it { is_expected.to be_a_failure }
 
         its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+      end
+    end
+
+    describe 'non regression test: error message not found' do
+      let(:code) { '404' }
+
+      let(:body) do
+        '<asso>' \
+          '<erreur>' \
+          '<proxy_correspondance>' \
+          'org.apache.camel.http.common.HttpOperationFailedException: HTTP operation failed invoking http://localhost:8181/services/proxy_db_asso/correspondance/idsByRna/W111111111 with statusCode: 404' \
+          '</proxy_correspondance>' \
+          '</erreur>' \
+          '</asso>'
+      end
+
+      context 'when param is siret_or_rna' do
+        its(:errors) { is_expected.to have_error("Le siret ou l'identifiant RNA indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.") }
+      end
+
+      context 'when param is siren_or_rna' do
+        let(:params) { { siren_or_rna: 'super siren' } }
+
+        its(:errors) { is_expected.to have_error("Le siren ou l'identifiant RNA indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.") }
       end
     end
   end

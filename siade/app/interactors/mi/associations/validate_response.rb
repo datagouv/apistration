@@ -2,7 +2,7 @@ class MI::Associations::ValidateResponse < ValidateResponse
   def call
     check_body_integrity!
 
-    resource_not_found!(:siret_or_rna) if not_found_in_body? || not_valid_association?
+    resource_not_found!(id_param) if not_found_in_body? || not_valid_association?
 
     return if http_ok? && payload_valid?
 
@@ -10,6 +10,12 @@ class MI::Associations::ValidateResponse < ValidateResponse
   end
 
   private
+
+  def id_param
+    return :siret_or_rna if context.params[:siret_or_rna]
+
+    :siren_or_rna
+  end
 
   def check_body_integrity!
     xml_body_as_hash

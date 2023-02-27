@@ -86,6 +86,8 @@ class ValidateResponse < ApplicationInteractor
                     'Le siren'
                   when :siret_or_rna
                     "Le siret ou l'identifiant RNA"
+                  when :siren_or_rna
+                    "Le siren ou l'identifiant RNA"
                   when :siret_or_siren
                     'Le siret ou le siren'
                   else
