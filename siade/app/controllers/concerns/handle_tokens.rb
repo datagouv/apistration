@@ -36,7 +36,7 @@ module HandleTokens
 
     @current_user = jwt_token_service.jwt_user if jwt?
 
-    raise NotValidTokenError if current_user.blank? || !current_user.valid?
+    raise NotValidTokenError if current_user.blank? || current_user.invalid?
 
     current_user.not_expired!
 

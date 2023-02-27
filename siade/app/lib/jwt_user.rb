@@ -32,6 +32,10 @@ class JwtUser
       id =~ uuid_regex
   end
 
+  def invalid?
+    !valid?
+  end
+
   def expired?
     if @exp.nil?
       ::MonitoringService.instance.track('info', "JWT #{logstash_id.inspect} without Expiration Time")

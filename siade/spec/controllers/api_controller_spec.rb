@@ -38,7 +38,7 @@ RSpec.describe APIController do
       it 'renders flatten errors' do
         subject
 
-        json = JSON.parse(response.body)
+        json = response.parsed_body
         expect(json['errors']).to be_an(Array)
         expect(json['errors'].first).to be_a(String)
       end
@@ -50,7 +50,7 @@ RSpec.describe APIController do
       it 'renders flatten errors' do
         subject
 
-        json = JSON.parse(response.body)
+        json = response.parsed_body
         expect(json['errors']).to be_an(Array)
         expect(json['errors'].first).to be_a(String)
       end
@@ -62,7 +62,7 @@ RSpec.describe APIController do
       it 'renders json API errors' do
         subject
 
-        json = JSON.parse(response.body)
+        json = response.parsed_body
 
         expect(json['errors']).to be_an(Array)
         expect(json['errors'].first).to be_a(Hash)
