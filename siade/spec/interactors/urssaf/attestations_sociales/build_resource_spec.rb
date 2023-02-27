@@ -8,7 +8,7 @@ RSpec.describe URSSAF::AttestationsSociales::BuildResource, type: :build_resourc
     let(:extractor_data) do
       {
         code_securite: 'QWERTYUIOIUYTRE',
-        date_debut_validite: Date.new(2022, 12, 31)
+        date_debut_validite: Date.new(2022, 12, 3)
       }
     end
 
@@ -29,13 +29,13 @@ RSpec.describe URSSAF::AttestationsSociales::BuildResource, type: :build_resourc
         expect(URSSAFAttestationVigilanceExtractor).to have_received(:new).with('body')
       end
 
-      it 'builds valid resource' do
+      it 'builds valid resource, with date_fin_validite 6 months, at the end of the month, after the date_debut_validite' do
         expect(subject.bundled_data.data).to be_a(Resource)
 
         expect(subject.bundled_data.data.to_h).to include(
           entity_status_code: 'ok',
           document_url: url,
-          date_debut_validite: Date.new(2022, 12, 31),
+          date_debut_validite: Date.new(2022, 12, 3),
           date_fin_validite: Date.new(2023, 6, 30),
           code_securite: 'QWERTYUIOIUYTRE'
         )
