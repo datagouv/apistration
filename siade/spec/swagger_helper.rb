@@ -139,16 +139,48 @@ Il est nécessaire d'utiliser le jeton de staging indiqué ci-dessous.
             type: :http,
             description: "Votre jeton d'authentification doit être placé dans le header 'Authorization: Bearer VOTRE_JWT', sa validité est de 18 mois.
 
-Exemple cURL :
+    Exemple cURL :
 
-    curl -X GET \\
-    -H \"Authorization: Bearer $token\" \\
-    --url \"https://entreprise.api.gouv.fr/v3/...\"",
+        curl -X GET \\
+        -H \"Authorization: Bearer $token\" \\
+        --url \"https://entreprise.api.gouv.fr/v3/...\"",
             name: 'Authorization',
             in: :header,
             scheme: :bearer,
             bearerFormat: 'JWT'
           }
+        }
+      }
+    },
+    'openapi-particulier.yaml' => {
+      openapi: '3.0.0',
+      info: {
+        title: 'API Particulier',
+        version: '3.0.0',
+        description: 'A remplir',
+        termsOfService: 'https://entreprise.api.gouv.fr/cgu/',
+        contact:
+        {
+          name: 'Support API Particulier',
+          email: 'support@particulier.api.gouv.fr',
+          url: 'https://particulier.api.gouv.fr/'
+        }
+      },
+      tags: [],
+      paths: {},
+      servers: [
+        {
+          url: 'https://particulier.api.gouv.fr',
+          description: 'Environnement de production'
+        },
+        {
+          url: 'https://staging.particulier.api.gouv.fr',
+          description: 'Environnement de staging'
+        }
+      ],
+      components: {
+        schemas: {
+          Error: build_rswag_error
         }
       }
     }
