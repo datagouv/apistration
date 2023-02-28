@@ -3787,9 +3787,9 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Informations et documents de référence d'une association, issues
-        du répertoire national des associations (RNA) et des documents administratifs
-        complémentaires (DAC).
+      description: Informations et documents de référence d'une association et de
+        ses établissements, issues du répertoire national des associations (RNA) et
+        des documents administratifs complémentaires (DAC).
       responses:
         '401':
           description: Non autorisé
@@ -5386,8 +5386,9 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Informations et documents de référence d'une association, accessibles
-        en open data, issues du répertoire national des associations (RNA).
+      description: Informations et documents de référence d'une association et de
+        ses établissements, accessibles en open data, issues du répertoire national
+        des associations (RNA).
       responses:
         '401':
           description: Non autorisé
