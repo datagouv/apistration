@@ -10853,8 +10853,8 @@ paths:
                         nullable: true
                       code_pays_etranger:
                         title: Code du pays pour les établissements situés à l'étranger
-                        description: 'La nomenclature des codes pays se trouve ici:
-                          https://www.insee.fr/fr/information/2028273'
+                        description: 'La nomenclature des codes pays se trouve ici
+                          : https://www.insee.fr/fr/information/2028273'
                         type: string
                         example: '99132'
                         nullable: true
@@ -10875,14 +10875,14 @@ paths:
                             title: Ligne 1
                             type: string
                             description: 'Si l''établissement correspond à une personne
-                              morale: la dénomination sociale de la personne morale.
+                              morale : la dénomination sociale de la personne morale.
                               Le cas contraire: cette variable est vide.'
                             example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                           l2:
                             title: Ligne 2
                             type: string
                             description: 'Si l''établissement correspond à une personne
-                              physique: concaténation du nom et prénom'
+                              physique : concaténation du nom et prénom'
                             example: JEAN MARIE DURAND
                           l3:
                             title: Ligne 3
@@ -10905,9 +10905,9 @@ paths:
                           l6:
                             title: Ligne 6
                             type: string
-                            description: 'Si le code cedex est existant: code cedex
+                            description: 'Si le code cedex est existant : code cedex
                               accompagné de son libellé ; sinon, si le pays est en
-                              France: code postal accompagné de son libellé, sinon
+                              France : code postal accompagné de son libellé, sinon
                               : libellé de la commune de l''établissement situé à
                               l''étranger'
                             example: 75256 PARIX CEDEX 12
@@ -11415,8 +11415,8 @@ paths:
                         nullable: true
                       code_pays_etranger:
                         title: Code du pays pour les établissements situés à l'étranger
-                        description: 'La nomenclature des codes pays se trouve ici:
-                          https://www.insee.fr/fr/information/2028273'
+                        description: 'La nomenclature des codes pays se trouve ici
+                          : https://www.insee.fr/fr/information/2028273'
                         type: string
                         example: '99132'
                         nullable: true
@@ -11437,14 +11437,14 @@ paths:
                             title: Ligne 1
                             type: string
                             description: 'Si l''établissement correspond à une personne
-                              morale: la dénomination sociale de la personne morale.
+                              morale : la dénomination sociale de la personne morale.
                               Le cas contraire: cette variable est vide.'
                             example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                           l2:
                             title: Ligne 2
                             type: string
                             description: 'Si l''établissement correspond à une personne
-                              physique: concaténation du nom et prénom'
+                              physique : concaténation du nom et prénom'
                             example: JEAN MARIE DURAND
                           l3:
                             title: Ligne 3
@@ -11467,9 +11467,9 @@ paths:
                           l6:
                             title: Ligne 6
                             type: string
-                            description: 'Si le code cedex est existant: code cedex
+                            description: 'Si le code cedex est existant : code cedex
                               accompagné de son libellé ; sinon, si le pays est en
-                              France: code postal accompagné de son libellé, sinon
+                              France : code postal accompagné de son libellé, sinon
                               : libellé de la commune de l''établissement situé à
                               l''étranger'
                             example: 75256 PARIX CEDEX 12
@@ -12175,9 +12175,9 @@ paths:
                             - PME
                             -
                             description: "Il s'agit d'une variable statistique calculée
-                              par l'Insee. Elle ne peut prendre que 3 valeurs: \n
-                              \n - GE: Grande Entreprise \n - ETI: Entreprise de Taille
-                              Intermédiaire \n - PME: Petite ou Moyenne Entreprise
+                              par l'Insee. Elle ne peut prendre que 3 valeurs : \n
+                              \n - GE : Grande Entreprise \n - ETI : Entreprise de
+                              Taille Intermédiaire \n - PME : Petite ou Moyenne Entreprise
                               \n \n Celle-ci peut-être 'null' dans certains cas :
                               quand il s’agit d’une unité légale nouvellement créée,
                               ou bien d’une unité légale cessée, ou encore d’une unité
@@ -12370,18 +12370,22 @@ paths:
                             - A
                             - C
                             description: "Cette valeur décrit l'état administratif
-                              de l'unité légale, qui peut être : \n \n - cessée. Le
-                              passage à l'état « Cessée » découle de la prise en compte
-                              d'une déclaration de cessation administrative. Pour
-                              les personnes morales, cela correspond au dépôt de la
-                              déclaration de disparition de la personne morale. Pour
-                              les personnes physiques, cela correspond soit à la prise
-                              en compte de la déclaration de cessation d'activité
-                              déposée par l'exploitant soit au décès de l'exploitant
-                              conformément à la réglementation. \n - active. En dehors
-                              des cas explicités ci-dessus, l'unité légale est toujours
-                              à l'état administratif « Active ». \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                              de l'unité légale qui peut être « active » ou « cessée
+                              » \n \n **Pour les personnes morales**, l'unité légale
+                              est considérée comme juridiquement « cessée » si : \n
+                              - il y a eu dépôt de la déclaration de disparition
+                              de la personne morale ; \n - elle a été inscrite sans
+                              activité à sa demande. Dans le cas d'une création au
+                              répertoire Sirene mais sans avoir encore démarré une
+                              activité (activité principale provisoire “0000Z”) ;
+                              \n - elle n'a plus d'établissement en activité. \n \n
+                              **Pour les personnes physiques**, l'unité légale est
+                              considérée comme juridiquement « cessée » si : \n -
+                              l'exploitant de l'unité légale décède ; \n - l'exploitant
+                              dépose une cessation d'activité. \n \n En dehors de
+                              ces cas, l'état administratif de l'unité légale est
+                              toujours « actif ». \n \n Plus d'informations dans la
+                              documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
                           economie_sociale_et_solidaire:
                             title: Unité légale de l'économie sociale et solidaire
                               (ESS)
@@ -12582,7 +12586,7 @@ paths:
                           code_pays_etranger:
                             title: Code du pays pour les établissements situés à l'étranger
                             description: 'La nomenclature des codes pays se trouve
-                              ici: https://www.insee.fr/fr/information/2028273'
+                              ici : https://www.insee.fr/fr/information/2028273'
                             type: string
                             example: '99132'
                             nullable: true
@@ -12604,14 +12608,15 @@ paths:
                                 title: Ligne 1
                                 type: string
                                 description: 'Si l''établissement correspond à une
-                                  personne morale: la dénomination sociale de la personne
-                                  morale. Le cas contraire: cette variable est vide.'
+                                  personne morale : la dénomination sociale de la
+                                  personne morale. Le cas contraire: cette variable
+                                  est vide.'
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                               l2:
                                 title: Ligne 2
                                 type: string
                                 description: 'Si l''établissement correspond à une
-                                  personne physique: concaténation du nom et prénom'
+                                  personne physique : concaténation du nom et prénom'
                                 example: JEAN MARIE DURAND
                               l3:
                                 title: Ligne 3
@@ -12635,9 +12640,9 @@ paths:
                               l6:
                                 title: Ligne 6
                                 type: string
-                                description: 'Si le code cedex est existant: code
+                                description: 'Si le code cedex est existant : code
                                   cedex accompagné de son libellé ; sinon, si le pays
-                                  est en France: code postal accompagné de son libellé,
+                                  est en France : code postal accompagné de son libellé,
                                   sinon : libellé de la commune de l''établissement
                                   situé à l''étranger'
                                 example: 75256 PARIX CEDEX 12
@@ -12726,7 +12731,7 @@ paths:
                           est renseignée, le paramètre data->siret est différent du
                           paramètre d'appel, et cette variable est le siret d'entrée.
                           \n \n A noter que le siret de redirection est systématiquement
-                          le siret du siège social de l'unité légale: en effet la
+                          le siret du siège social de l'unité légale : en effet la
                           base Sirene ne possède pas la correspondance exacte entre
                           un siret doublon et le siret d'origine. "
                         example: '30613890000010'
@@ -13379,9 +13384,9 @@ paths:
                             - PME
                             -
                             description: "Il s'agit d'une variable statistique calculée
-                              par l'Insee. Elle ne peut prendre que 3 valeurs: \n
-                              \n - GE: Grande Entreprise \n - ETI: Entreprise de Taille
-                              Intermédiaire \n - PME: Petite ou Moyenne Entreprise
+                              par l'Insee. Elle ne peut prendre que 3 valeurs : \n
+                              \n - GE : Grande Entreprise \n - ETI : Entreprise de
+                              Taille Intermédiaire \n - PME : Petite ou Moyenne Entreprise
                               \n \n Celle-ci peut-être 'null' dans certains cas :
                               quand il s’agit d’une unité légale nouvellement créée,
                               ou bien d’une unité légale cessée, ou encore d’une unité
@@ -13574,18 +13579,22 @@ paths:
                             - A
                             - C
                             description: "Cette valeur décrit l'état administratif
-                              de l'unité légale, qui peut être : \n \n - cessée. Le
-                              passage à l'état « Cessée » découle de la prise en compte
-                              d'une déclaration de cessation administrative. Pour
-                              les personnes morales, cela correspond au dépôt de la
-                              déclaration de disparition de la personne morale. Pour
-                              les personnes physiques, cela correspond soit à la prise
-                              en compte de la déclaration de cessation d'activité
-                              déposée par l'exploitant soit au décès de l'exploitant
-                              conformément à la réglementation. \n - active. En dehors
-                              des cas explicités ci-dessus, l'unité légale est toujours
-                              à l'état administratif « Active ». \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                              de l'unité légale qui peut être « active » ou « cessée
+                              » \n \n **Pour les personnes morales**, l'unité légale
+                              est considérée comme juridiquement « cessée » si : \n
+                              - il y a eu dépôt de la déclaration de disparition
+                              de la personne morale ; \n - elle a été inscrite sans
+                              activité à sa demande. Dans le cas d'une création au
+                              répertoire Sirene mais sans avoir encore démarré une
+                              activité (activité principale provisoire “0000Z”) ;
+                              \n - elle n'a plus d'établissement en activité. \n \n
+                              **Pour les personnes physiques**, l'unité légale est
+                              considérée comme juridiquement « cessée » si : \n -
+                              l'exploitant de l'unité légale décède ; \n - l'exploitant
+                              dépose une cessation d'activité. \n \n En dehors de
+                              ces cas, l'état administratif de l'unité légale est
+                              toujours « actif ». \n \n Plus d'informations dans la
+                              documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
                           economie_sociale_et_solidaire:
                             title: Unité légale de l'économie sociale et solidaire
                               (ESS)
@@ -13786,7 +13795,7 @@ paths:
                           code_pays_etranger:
                             title: Code du pays pour les établissements situés à l'étranger
                             description: 'La nomenclature des codes pays se trouve
-                              ici: https://www.insee.fr/fr/information/2028273'
+                              ici : https://www.insee.fr/fr/information/2028273'
                             type: string
                             example: '99132'
                             nullable: true
@@ -13808,14 +13817,15 @@ paths:
                                 title: Ligne 1
                                 type: string
                                 description: 'Si l''établissement correspond à une
-                                  personne morale: la dénomination sociale de la personne
-                                  morale. Le cas contraire: cette variable est vide.'
+                                  personne morale : la dénomination sociale de la
+                                  personne morale. Le cas contraire: cette variable
+                                  est vide.'
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                               l2:
                                 title: Ligne 2
                                 type: string
                                 description: 'Si l''établissement correspond à une
-                                  personne physique: concaténation du nom et prénom'
+                                  personne physique : concaténation du nom et prénom'
                                 example: JEAN MARIE DURAND
                               l3:
                                 title: Ligne 3
@@ -13839,9 +13849,9 @@ paths:
                               l6:
                                 title: Ligne 6
                                 type: string
-                                description: 'Si le code cedex est existant: code
+                                description: 'Si le code cedex est existant : code
                                   cedex accompagné de son libellé ; sinon, si le pays
-                                  est en France: code postal accompagné de son libellé,
+                                  est en France : code postal accompagné de son libellé,
                                   sinon : libellé de la commune de l''établissement
                                   situé à l''étranger'
                                 example: 75256 PARIX CEDEX 12
@@ -13930,7 +13940,7 @@ paths:
                           est renseignée, le paramètre data->siret est différent du
                           paramètre d'appel, et cette variable est le siret d'entrée.
                           \n \n A noter que le siret de redirection est systématiquement
-                          le siret du siège social de l'unité légale: en effet la
+                          le siret du siège social de l'unité légale : en effet la
                           base Sirene ne possède pas la correspondance exacte entre
                           un siret doublon et le siret d'origine. "
                         example: '30613890000010'
@@ -14584,9 +14594,9 @@ paths:
                             - PME
                             -
                             description: "Il s'agit d'une variable statistique calculée
-                              par l'Insee. Elle ne peut prendre que 3 valeurs: \n
-                              \n - GE: Grande Entreprise \n - ETI: Entreprise de Taille
-                              Intermédiaire \n - PME: Petite ou Moyenne Entreprise
+                              par l'Insee. Elle ne peut prendre que 3 valeurs : \n
+                              \n - GE : Grande Entreprise \n - ETI : Entreprise de
+                              Taille Intermédiaire \n - PME : Petite ou Moyenne Entreprise
                               \n \n Celle-ci peut-être 'null' dans certains cas :
                               quand il s’agit d’une unité légale nouvellement créée,
                               ou bien d’une unité légale cessée, ou encore d’une unité
@@ -14779,18 +14789,22 @@ paths:
                             - A
                             - C
                             description: "Cette valeur décrit l'état administratif
-                              de l'unité légale, qui peut être : \n \n - cessée. Le
-                              passage à l'état « Cessée » découle de la prise en compte
-                              d'une déclaration de cessation administrative. Pour
-                              les personnes morales, cela correspond au dépôt de la
-                              déclaration de disparition de la personne morale. Pour
-                              les personnes physiques, cela correspond soit à la prise
-                              en compte de la déclaration de cessation d'activité
-                              déposée par l'exploitant soit au décès de l'exploitant
-                              conformément à la réglementation. \n - active. En dehors
-                              des cas explicités ci-dessus, l'unité légale est toujours
-                              à l'état administratif « Active ». \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                              de l'unité légale qui peut être « active » ou « cessée
+                              » \n \n **Pour les personnes morales**, l'unité légale
+                              est considérée comme juridiquement « cessée » si : \n
+                              - il y a eu dépôt de la déclaration de disparition
+                              de la personne morale ; \n - elle a été inscrite sans
+                              activité à sa demande. Dans le cas d'une création au
+                              répertoire Sirene mais sans avoir encore démarré une
+                              activité (activité principale provisoire “0000Z”) ;
+                              \n - elle n'a plus d'établissement en activité. \n \n
+                              **Pour les personnes physiques**, l'unité légale est
+                              considérée comme juridiquement « cessée » si : \n -
+                              l'exploitant de l'unité légale décède ; \n - l'exploitant
+                              dépose une cessation d'activité. \n \n En dehors de
+                              ces cas, l'état administratif de l'unité légale est
+                              toujours « actif ». \n \n Plus d'informations dans la
+                              documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
                           economie_sociale_et_solidaire:
                             title: Unité légale de l'économie sociale et solidaire
                               (ESS)
@@ -14991,7 +15005,7 @@ paths:
                           code_pays_etranger:
                             title: Code du pays pour les établissements situés à l'étranger
                             description: 'La nomenclature des codes pays se trouve
-                              ici: https://www.insee.fr/fr/information/2028273'
+                              ici : https://www.insee.fr/fr/information/2028273'
                             type: string
                             example: '99132'
                             nullable: true
@@ -15013,14 +15027,15 @@ paths:
                                 title: Ligne 1
                                 type: string
                                 description: 'Si l''établissement correspond à une
-                                  personne morale: la dénomination sociale de la personne
-                                  morale. Le cas contraire: cette variable est vide.'
+                                  personne morale : la dénomination sociale de la
+                                  personne morale. Le cas contraire: cette variable
+                                  est vide.'
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                               l2:
                                 title: Ligne 2
                                 type: string
                                 description: 'Si l''établissement correspond à une
-                                  personne physique: concaténation du nom et prénom'
+                                  personne physique : concaténation du nom et prénom'
                                 example: JEAN MARIE DURAND
                               l3:
                                 title: Ligne 3
@@ -15044,9 +15059,9 @@ paths:
                               l6:
                                 title: Ligne 6
                                 type: string
-                                description: 'Si le code cedex est existant: code
+                                description: 'Si le code cedex est existant : code
                                   cedex accompagné de son libellé ; sinon, si le pays
-                                  est en France: code postal accompagné de son libellé,
+                                  est en France : code postal accompagné de son libellé,
                                   sinon : libellé de la commune de l''établissement
                                   situé à l''étranger'
                                 example: 75256 PARIX CEDEX 12
@@ -15135,7 +15150,7 @@ paths:
                           est renseignée, le paramètre data->siret est différent du
                           paramètre d'appel, et cette variable est le siret d'entrée.
                           \n \n A noter que le siret de redirection est systématiquement
-                          le siret du siège social de l'unité légale: en effet la
+                          le siret du siège social de l'unité légale : en effet la
                           base Sirene ne possède pas la correspondance exacte entre
                           un siret doublon et le siret d'origine. "
                         example: '30613890000010'
@@ -15791,9 +15806,9 @@ paths:
                             - PME
                             -
                             description: "Il s'agit d'une variable statistique calculée
-                              par l'Insee. Elle ne peut prendre que 3 valeurs: \n
-                              \n - GE: Grande Entreprise \n - ETI: Entreprise de Taille
-                              Intermédiaire \n - PME: Petite ou Moyenne Entreprise
+                              par l'Insee. Elle ne peut prendre que 3 valeurs : \n
+                              \n - GE : Grande Entreprise \n - ETI : Entreprise de
+                              Taille Intermédiaire \n - PME : Petite ou Moyenne Entreprise
                               \n \n Celle-ci peut-être 'null' dans certains cas :
                               quand il s’agit d’une unité légale nouvellement créée,
                               ou bien d’une unité légale cessée, ou encore d’une unité
@@ -15986,18 +16001,22 @@ paths:
                             - A
                             - C
                             description: "Cette valeur décrit l'état administratif
-                              de l'unité légale, qui peut être : \n \n - cessée. Le
-                              passage à l'état « Cessée » découle de la prise en compte
-                              d'une déclaration de cessation administrative. Pour
-                              les personnes morales, cela correspond au dépôt de la
-                              déclaration de disparition de la personne morale. Pour
-                              les personnes physiques, cela correspond soit à la prise
-                              en compte de la déclaration de cessation d'activité
-                              déposée par l'exploitant soit au décès de l'exploitant
-                              conformément à la réglementation. \n - active. En dehors
-                              des cas explicités ci-dessus, l'unité légale est toujours
-                              à l'état administratif « Active ». \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                              de l'unité légale qui peut être « active » ou « cessée
+                              » \n \n **Pour les personnes morales**, l'unité légale
+                              est considérée comme juridiquement « cessée » si : \n
+                              - il y a eu dépôt de la déclaration de disparition
+                              de la personne morale ; \n - elle a été inscrite sans
+                              activité à sa demande. Dans le cas d'une création au
+                              répertoire Sirene mais sans avoir encore démarré une
+                              activité (activité principale provisoire “0000Z”) ;
+                              \n - elle n'a plus d'établissement en activité. \n \n
+                              **Pour les personnes physiques**, l'unité légale est
+                              considérée comme juridiquement « cessée » si : \n -
+                              l'exploitant de l'unité légale décède ; \n - l'exploitant
+                              dépose une cessation d'activité. \n \n En dehors de
+                              ces cas, l'état administratif de l'unité légale est
+                              toujours « actif ». \n \n Plus d'informations dans la
+                              documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
                           economie_sociale_et_solidaire:
                             title: Unité légale de l'économie sociale et solidaire
                               (ESS)
@@ -16198,7 +16217,7 @@ paths:
                           code_pays_etranger:
                             title: Code du pays pour les établissements situés à l'étranger
                             description: 'La nomenclature des codes pays se trouve
-                              ici: https://www.insee.fr/fr/information/2028273'
+                              ici : https://www.insee.fr/fr/information/2028273'
                             type: string
                             example: '99132'
                             nullable: true
@@ -16220,14 +16239,15 @@ paths:
                                 title: Ligne 1
                                 type: string
                                 description: 'Si l''établissement correspond à une
-                                  personne morale: la dénomination sociale de la personne
-                                  morale. Le cas contraire: cette variable est vide.'
+                                  personne morale : la dénomination sociale de la
+                                  personne morale. Le cas contraire: cette variable
+                                  est vide.'
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                               l2:
                                 title: Ligne 2
                                 type: string
                                 description: 'Si l''établissement correspond à une
-                                  personne physique: concaténation du nom et prénom'
+                                  personne physique : concaténation du nom et prénom'
                                 example: JEAN MARIE DURAND
                               l3:
                                 title: Ligne 3
@@ -16251,9 +16271,9 @@ paths:
                               l6:
                                 title: Ligne 6
                                 type: string
-                                description: 'Si le code cedex est existant: code
+                                description: 'Si le code cedex est existant : code
                                   cedex accompagné de son libellé ; sinon, si le pays
-                                  est en France: code postal accompagné de son libellé,
+                                  est en France : code postal accompagné de son libellé,
                                   sinon : libellé de la commune de l''établissement
                                   situé à l''étranger'
                                 example: 75256 PARIX CEDEX 12
@@ -16342,7 +16362,7 @@ paths:
                           est renseignée, le paramètre data->siret est différent du
                           paramètre d'appel, et cette variable est le siret d'entrée.
                           \n \n A noter que le siret de redirection est systématiquement
-                          le siret du siège social de l'unité légale: en effet la
+                          le siret du siège social de l'unité légale : en effet la
                           base Sirene ne possède pas la correspondance exacte entre
                           un siret doublon et le siret d'origine. "
                         example: '30613890000010'
@@ -16814,15 +16834,15 @@ paths:
                         - PME
                         -
                         description: "Il s'agit d'une variable statistique calculée
-                          par l'Insee. Elle ne peut prendre que 3 valeurs: \n \n -
-                          GE: Grande Entreprise \n - ETI: Entreprise de Taille Intermédiaire
-                          \n - PME: Petite ou Moyenne Entreprise \n \n Celle-ci peut-être
-                          'null' dans certains cas : quand il s’agit d’une unité légale
-                          nouvellement créée, ou bien d’une unité légale cessée, ou
-                          encore d’une unité légale hors champ du calcul de la catégorie
-                          (unité légale agricole ou ne faisant pas partie du système
-                          productif). \n \n Définition de 'catégorie d'entreprise'
-                          par l'Insee : https://www.insee.fr/fr/metadonnees/definition/c1057"
+                          par l'Insee. Elle ne peut prendre que 3 valeurs : \n \n
+                          - GE : Grande Entreprise \n - ETI : Entreprise de Taille
+                          Intermédiaire \n - PME : Petite ou Moyenne Entreprise \n
+                          \n Celle-ci peut-être 'null' dans certains cas : quand il
+                          s’agit d’une unité légale nouvellement créée, ou bien d’une
+                          unité légale cessée, ou encore d’une unité légale hors champ
+                          du calcul de la catégorie (unité légale agricole ou ne faisant
+                          pas partie du système productif). \n \n Définition de 'catégorie
+                          d'entreprise' par l'Insee : https://www.insee.fr/fr/metadonnees/definition/c1057"
                       diffusable_commercialement:
                         title: Diffusable commercialement
                         type: boolean
@@ -16999,17 +17019,21 @@ paths:
                         - A
                         - C
                         description: "Cette valeur décrit l'état administratif de
-                          l'unité légale, qui peut être : \n \n - cessée. Le passage
-                          à l'état « Cessée » découle de la prise en compte d'une
-                          déclaration de cessation administrative. Pour les personnes
-                          morales, cela correspond au dépôt de la déclaration de disparition
-                          de la personne morale. Pour les personnes physiques, cela
-                          correspond soit à la prise en compte de la déclaration de
-                          cessation d'activité déposée par l'exploitant soit au décès
-                          de l'exploitant conformément à la réglementation. \n - active.
-                          En dehors des cas explicités ci-dessus, l'unité légale est
-                          toujours à l'état administratif « Active ». \n \n Plus d'informations
-                          dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                          l'unité légale qui peut être « active » ou « cessée » \n
+                          \n **Pour les personnes morales**, l'unité légale est considérée
+                          comme juridiquement « cessée » si : \n - il y a eu dépôt
+                          de la déclaration de disparition de la personne morale
+                          ; \n - elle a été inscrite sans activité à sa demande. Dans
+                          le cas d'une création au répertoire Sirene mais sans avoir
+                          encore démarré une activité (activité principale provisoire
+                          “0000Z”) ; \n - elle n'a plus d'établissement en activité.
+                          \n \n **Pour les personnes physiques**, l'unité légale est
+                          considérée comme juridiquement « cessée » si : \n - l'exploitant
+                          de l'unité légale décède ; \n - l'exploitant dépose une
+                          cessation d'activité. \n \n En dehors de ces cas, l'état
+                          administratif de l'unité légale est toujours « actif ».
+                          \n \n Plus d'informations dans la documentation Insee de
+                          l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
                       economie_sociale_et_solidaire:
                         title: Unité légale de l'économie sociale et solidaire (ESS)
                         description: "Indique si l'unité légale est une ESS : \n \n
@@ -17579,15 +17603,15 @@ paths:
                         - PME
                         -
                         description: "Il s'agit d'une variable statistique calculée
-                          par l'Insee. Elle ne peut prendre que 3 valeurs: \n \n -
-                          GE: Grande Entreprise \n - ETI: Entreprise de Taille Intermédiaire
-                          \n - PME: Petite ou Moyenne Entreprise \n \n Celle-ci peut-être
-                          'null' dans certains cas : quand il s’agit d’une unité légale
-                          nouvellement créée, ou bien d’une unité légale cessée, ou
-                          encore d’une unité légale hors champ du calcul de la catégorie
-                          (unité légale agricole ou ne faisant pas partie du système
-                          productif). \n \n Définition de 'catégorie d'entreprise'
-                          par l'Insee : https://www.insee.fr/fr/metadonnees/definition/c1057"
+                          par l'Insee. Elle ne peut prendre que 3 valeurs : \n \n
+                          - GE : Grande Entreprise \n - ETI : Entreprise de Taille
+                          Intermédiaire \n - PME : Petite ou Moyenne Entreprise \n
+                          \n Celle-ci peut-être 'null' dans certains cas : quand il
+                          s’agit d’une unité légale nouvellement créée, ou bien d’une
+                          unité légale cessée, ou encore d’une unité légale hors champ
+                          du calcul de la catégorie (unité légale agricole ou ne faisant
+                          pas partie du système productif). \n \n Définition de 'catégorie
+                          d'entreprise' par l'Insee : https://www.insee.fr/fr/metadonnees/definition/c1057"
                       diffusable_commercialement:
                         title: Diffusible commercialement
                         type: boolean
@@ -17766,17 +17790,21 @@ paths:
                         - A
                         - C
                         description: "Cette valeur décrit l'état administratif de
-                          l'unité légale, qui peut être : \n \n - cessée. Le passage
-                          à l'état « Cessée » découle de la prise en compte d'une
-                          déclaration de cessation administrative. Pour les personnes
-                          morales, cela correspond au dépôt de la déclaration de disparition
-                          de la personne morale. Pour les personnes physiques, cela
-                          correspond soit à la prise en compte de la déclaration de
-                          cessation d'activité déposée par l'exploitant soit au décès
-                          de l'exploitant conformément à la réglementation. \n - active.
-                          En dehors des cas explicités ci-dessus, l'unité légale est
-                          toujours à l'état administratif « Active ». \n \n Plus d'informations
-                          dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+                          l'unité légale qui peut être « active » ou « cessée » \n
+                          \n **Pour les personnes morales**, l'unité légale est considérée
+                          comme juridiquement « cessée » si : \n - il y a eu dépôt
+                          de la déclaration de disparition de la personne morale
+                          ; \n - elle a été inscrite sans activité à sa demande. Dans
+                          le cas d'une création au répertoire Sirene mais sans avoir
+                          encore démarré une activité (activité principale provisoire
+                          “0000Z”) ; \n - elle n'a plus d'établissement en activité.
+                          \n \n **Pour les personnes physiques**, l'unité légale est
+                          considérée comme juridiquement « cessée » si : \n - l'exploitant
+                          de l'unité légale décède ; \n - l'exploitant dépose une
+                          cessation d'activité. \n \n En dehors de ces cas, l'état
+                          administratif de l'unité légale est toujours « actif ».
+                          \n \n Plus d'informations dans la documentation Insee de
+                          l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
                       economie_sociale_et_solidaire:
                         title: Unité légale de l'économie sociale et solidaire (ESS)
                         description: "Indique si l'unité légale est une ESS : \n \n
