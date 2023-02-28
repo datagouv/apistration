@@ -114,14 +114,14 @@ insee:
         - null
       description: "Il s'agit d'une
         variable statistique calculée par l'Insee. Elle ne peut
-        prendre que 3 valeurs:
+        prendre que 3 valeurs :
         \n
         \n
-        - GE: Grande Entreprise
+        - GE : Grande Entreprise
         \n
-        - ETI: Entreprise de Taille Intermédiaire
+        - ETI : Entreprise de Taille Intermédiaire
         \n
-        - PME: Petite ou Moyenne Entreprise
+        - PME : Petite ou Moyenne Entreprise
         \n
         \n
         Celle-ci peut-être 'null' dans
@@ -332,7 +332,7 @@ insee:
         - elle n'a plus d'établissement en activité.
         \n
         \n
-        **Pour les personnes physiques**, l'unité légale est considérée comme juridiquement « cessée » si&nbsp;:nbsp;
+        **Pour les personnes physiques**, l'unité légale est considérée comme juridiquement « cessée » si :
         \n
         - l'exploitant de l'unité légale décède ;
         \n
@@ -342,7 +342,7 @@ insee:
         En dehors de ces cas, l'état administratif de l'unité légale est toujours « actif ».
         \n
         \n
-        Plus d'informations dans la documentation Insee de l'API Sirene&nbsp;:nbsp;https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
+        Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifUniteLegale"
     economie_sociale_et_solidaire:
       title: "Unité légale de l'économie sociale et solidaire (ESS)"
       description:
@@ -487,7 +487,7 @@ insee:
 
       code_pays_etranger:
         title: "Code du pays pour les établissements situés à l'étranger"
-        description: "La nomenclature des codes pays se trouve ici: https://www.insee.fr/fr/information/2028273"
+        description: "La nomenclature des codes pays se trouve ici : https://www.insee.fr/fr/information/2028273"
         type: "string"
         example: "99132"
         nullable: true
@@ -505,12 +505,12 @@ insee:
           l1:
             title: "Ligne 1"
             type: "string"
-            description: "Si l'établissement correspond à une personne morale: la dénomination sociale de la personne morale. Le cas contraire: cette variable est vide."
+            description: "Si l'établissement correspond à une personne morale : la dénomination sociale de la personne morale. Le cas contraire: cette variable est vide."
             example: 'DIRECTION INTERMINISTERIELLE DU NUMERIQUE'
           l2:
             title: "Ligne 2"
             type: "string"
-            description: "Si l'établissement correspond à une personne physique: concaténation du nom et prénom"
+            description: "Si l'établissement correspond à une personne physique : concaténation du nom et prénom"
             example: 'JEAN MARIE DURAND'
           l3:
             title: "Ligne 3"
@@ -530,7 +530,7 @@ insee:
           l6:
             title: "Ligne 6"
             type: "string"
-            description: "Si le code cedex est existant: code cedex accompagné de son libellé ; sinon, si le pays est en France: code postal accompagné de son libellé, sinon : libellé de la commune de l'établissement situé à l'étranger"
+            description: "Si le code cedex est existant : code cedex accompagné de son libellé ; sinon, si le pays est en France : code postal accompagné de son libellé, sinon : libellé de la commune de l'établissement situé à l'étranger"
             example: "75256 PARIX CEDEX 12"
           l7:
             title: "Ligne 7"
@@ -824,7 +824,7 @@ insee:
           Si cette variable est renseignée, le paramètre data->siret est différent du paramètre d'appel, et cette variable est le siret d'entrée.
           \n
           \n
-          A noter que le siret de redirection est systématiquement le siret du siège social de l'unité légale: en effet la base Sirene ne possède pas la correspondance exacte entre un siret doublon et le siret d'origine.
+          A noter que le siret de redirection est systématiquement le siret du siège social de l'unité légale : en effet la base Sirene ne possède pas la correspondance exacte entre un siret doublon et le siret d'origine.
           "
         example: "30613890000010"
         nullable: true
