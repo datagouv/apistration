@@ -87,15 +87,15 @@ mesri:
       code_status_eleve:
         description: |+
           Code du statut de l'élève. Les valeurs possibles sont :&nbsp;
-          - ED -> Enseignement à distance
-          - IN -> Candidat Individuel
-          - ST -> Scolaire
-          - SQ -> Scolaire Loi Quinquennale sur l'Emploi
-          - AP -> Apprenti
-          - FQ -> Stagiaire de la Formation Professionnelle
-          - CQ -> Contrat de Qualification
-          - SC -> Scolaire / Formation Initiale
-          - FC -> Formation Continue
+          - ED : Enseignement à distance
+          - IN : Candidat Individuel
+          - ST : Scolaire
+          - SQ : Scolaire Loi Quinquennale sur l'Emploi
+          - AP : Apprenti
+          - FQ : Stagiaire de la Formation Professionnelle
+          - CQ : Contrat de Qualification
+          - SC : Scolaire / Formation Initiale
+          - FC : Formation Continue
         type: string
         enum:
           - "ED"
