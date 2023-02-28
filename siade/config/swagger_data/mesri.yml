@@ -6,35 +6,35 @@ mesri:
       - "Informations particulier"
     parameters:
       nom:
-        description: "nom de l'élève"
+        description: "Nom de l'élève"
         type: string
         example: "Martin"
         required: true
       prenom:
-        description: "prénom de l'élève"
+        description: "Prénom de l'élève"
         type: string
         example: "Camille"
         required: true
       sexe:
-        description: "sexe de l'élève; Masculin ou Féminin"
+        description: "Sexe de l'élève; Masculin ou Féminin"
         type: string
         enum:
           - "m"
           - "f"
         required: true
       date_naissance:
-        description: "date de naissance de l'élève au format AAAA-MM-JJ"
+        description: "Date de naissance de l'élève au format AAAA-MM-JJ"
         type: string
         example: "2000-01-20"
         required: true
       code_etablissement: &code_etablissement
-        description: "code uai de l'établissement de l'élève"
+        description: "Code uai de l'établissement de l'élève"
         type: string
         pattern: '^\d{7}\w$'
         example: "0890003V"
         required: true
       annee_scolaire:
-        description: "année scolaire de l'élève au format AAAA-AAAA ou AAAA"
+        description: "Année scolaire de l'élève au format AAAA-AAAA ou AAAA"
         type: string
         pattern: '^(\d{4}$|^\d{4}-\d{4})$'
         examples:
@@ -67,21 +67,21 @@ mesri:
               - "M"
               - "F"
           date_naissance:
-            description: "date de naissance de l'élève au format AAAA-MM-JJ"
+            description: "Date de naissance de l'élève au format AAAA-MM-JJ"
             type: string
             example: "2000-01-20"
       code_etablissement: *code_etablissement
       annee_scolaire:
-        description: "année scolaire de l'élève au format AAAA-AAAA"
+        description: "Année scolaire de l'élève au format AAAA-AAAA"
         type: string
         pattern: '^\d{4}$|^\d{4}-\d{4}$'
         example: "2022-2023"
       est_scolarise:
-        description: "indique si l'élève est scolarisé dans l'établissement"
+        description: "Indique si l'élève est scolarisé dans l'établissement"
         type: boolean
         example: true
       est_boursier:
-        description: "indique si l'élève est boursier dans l'établissement"
+        description: "Indique si l'élève est boursier dans l'établissement"
         type: boolean
         example: false
       code_status_eleve:
