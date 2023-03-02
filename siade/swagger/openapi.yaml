@@ -98,6 +98,7 @@ paths:
         required: true
         schema:
           type: string
+      deprecated: true
       security:
       - jwt_bearer_token: []
       description: Attestation sociale délivrée à une entreprise acquittée de ses

@@ -7,6 +7,8 @@ RSpec.describe 'URSSAF: Attestation de vigilance', api: :entreprise, type: %i[re
 
       parameter_siren
 
+      deprecated true
+
       cacheable_request
 
       common_action_attributes
