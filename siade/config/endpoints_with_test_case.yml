@@ -14,10 +14,10 @@
   http_path: '/v2/cotisations_msa/81104725700019'
 
 - name: Eligibilité cotisation retraite ProBTP
-  http_path: '/v2/eligibilites_cotisation_retraite_probtp/43841606700017'
+  http_path: '/v2/eligibilites_cotisation_retraite_probtp/45309127400036'
 
 - name: Attestations cotisations retraite ProBTP
-  http_path: '/v2/attestations_cotisation_retraite_probtp/43841606700017'
+  http_path: '/v2/attestations_cotisation_retraite_probtp/45309127400036'
 
 - name: Entreprise
   http_path: '/v2/entreprises/418166096'
@@ -168,10 +168,10 @@
   http_path: '/v3/opqibi/unites_legales/309103877/certification_ingenierie'
 
 - name: '[V3] ProBTP Attestations cotisations retraite'
-  http_path: '/v3/probtp/etablissements/43841606700017/attestation_cotisations_retraite'
+  http_path: '/v3/probtp/etablissements/45309127400036/attestation_cotisations_retraite'
 
 - name: '[V3] ProBTP Conformité cotisations retraite'
-  http_path: '/v3/probtp/etablissements/43841606700017/conformite_cotisations_retraite'
+  http_path: '/v3/probtp/etablissements/45309127400036/conformite_cotisations_retraite'
 
 - name: '[V3] FNMS Conventions collectives'
   http_path: '/v3/fabrique_numerique_ministeres_sociaux/etablissements/82161143100015/conventions_collectives'
