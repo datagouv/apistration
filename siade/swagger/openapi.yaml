@@ -21258,9 +21258,9 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: "Attestation sociale délivrée à une entreprise acquittée de ses
+      description: Attestation sociale délivrée à une entreprise acquittée de ses
         obligations de cotisations et contributions sociales auprès de l'URSSAF Caisse
-        nationale. \n \n Plus d'informations sur le site de l'URSSAF : https://www.urssaf.fr/portail/home/employeur/declarer-et-payer/obtenir-une-attestation/attestation-de-vigilance.html"
+        nationale.
       responses:
         '401':
           description: Non autorisé
