@@ -21,7 +21,7 @@ class RequestsDebuggerLogger
   end
 
   def logger
-    @logger ||= Logger.new(logger_path, 'daily')
+    @logger ||= Logger.new(logger_path, 0, 1.gigabytes)
   end
 
   def logger_path
