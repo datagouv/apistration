@@ -1,9 +1,10 @@
 ---
 shared:
-  enable: false
+  enable_until: '2023-01-01'
   operation_ids: []
+
 staging:
-  enable: true
+  enable_until: '2051-01-01'
   operation_ids:
     # - 'api_particulier_v2_dgfip_svair'
     - 'api_particulier_v2_cnaf_quotient_familial'
@@ -48,15 +49,15 @@ staging:
     - 'api_entreprise_v3_rnm_entreprises_artisanales'
 
 sandbox:
-  enable: true
+  enable_until: '2051-01-01'
   operation_ids: []
 
 production:
-  enable: true
+  enable_until: '2051-01-01'
   operation_ids:
     - 'api_particulier_v2_mesri_student_status'
     - 'api_particulier_v2_cnous_student_scholarship'
 test:
-  enable: true
+  enable_until: '2051-01-01'
   operation_ids:
     - 'api_teapot'
