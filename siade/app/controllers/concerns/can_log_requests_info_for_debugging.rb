@@ -16,11 +16,6 @@ module CanLogRequestsInfoForDebugging
   end
 
   def requests_debugging_enabled?
-    requests_debugging_config['enable'] &&
-      requests_debugging_config['operation_ids'].include?(operation_id)
-  end
-
-  def requests_debugging_config
-    @requests_debugging_config ||= Rails.configuration.requests_debugging
+    RequestsDebuggingService.new(operation_id, response.status).enable?
   end
 end

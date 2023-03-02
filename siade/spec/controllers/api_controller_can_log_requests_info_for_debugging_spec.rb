@@ -10,27 +10,42 @@ RSpec.describe APIController, 'log requests info for debugging' do
     end
 
     def operation_id
-      params[:operation_id]
+      'whatever'
     end
   end
 
   subject do
     routes.draw { get 'show/:path_example_param' => 'api#show' }
 
-    get :show, params: { token:, operation_id:, what: 'ever', path_example_param: 'drink' }
+    get :show, params: { token:, what: 'ever', path_example_param: 'drink' }
   end
 
+  let(:requests_debugging_service) { instance_double(RequestsDebuggingService) }
   let(:token) { yes_jwt }
 
-  context 'when operation id matches' do
-    let(:operation_id) { 'api_teapot' }
+  before do
+    allow(RequestsDebuggingService).to receive(:new).and_return(requests_debugging_service)
+  end
+
+  context 'when request debugging is enable' do
+    before do
+      allow(requests_debugging_service).to receive(:enable?).and_return(true)
+    end
+
+    it 'instanciates a RequestsDebuggingService with valid argument' do
+      expect(RequestsDebuggingService).to receive(:new).with(
+        'whatever',
+        418
+      )
+
+      subject
+    end
 
     it 'logs request info, excluding token' do
       expect(RequestsDebuggerLogger.instance).to receive(:log).with(
         controller_name: 'api',
         path: '/show/drink',
         request_params: {
-          'operation_id' => operation_id,
           'what' => 'ever',
           'path_example_param' => 'drink'
         },
@@ -44,8 +59,10 @@ RSpec.describe APIController, 'log requests info for debugging' do
     end
   end
 
-  context 'when operation id does not match' do
-    let(:operation_id) { 'api_coffee' }
+  context 'when request debugging is disabled' do
+    before do
+      allow(requests_debugging_service).to receive(:enable?).and_return(false)
+    end
 
     it 'does not log request info' do
       expect(RequestsDebuggerLogger.instance).not_to receive(:log)
