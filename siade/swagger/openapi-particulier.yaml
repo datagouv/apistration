@@ -1,0 +1,98 @@
+---
+openapi: 3.0.0
+info:
+  title: API Particulier
+  version: 3.0.0
+  description: A remplir
+  termsOfService: https://entreprise.api.gouv.fr/cgu/
+  contact:
+    name: Support API Particulier
+    email: support@particulier.api.gouv.fr
+    url: https://particulier.api.gouv.fr/
+tags: []
+paths:
+  "/api/v2/scolarites":
+    get:
+      summary: Scolarité
+      parameters:
+      - name: X-Api-Key
+        in: header
+        schema:
+          type: string
+      - name: nom
+        in: query
+        schema:
+          type: string
+      - name: prenom
+        in: query
+        schema:
+          type: string
+      - name: sexe
+        in: query
+        schema:
+          type: string
+      - name: dateNaissance
+        in: query
+        schema:
+          type: string
+      - name: codeEtablissement
+        in: query
+        schema:
+          type: string
+      - name: anneeScolaire
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Scolarité trouvée
+          x-operationId: api_particulier_api_mesri_scolarites
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/api/v2/scolarites?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+servers:
+- url: https://particulier.api.gouv.fr
+  description: Environnement de production
+- url: https://staging.particulier.api.gouv.fr
+  description: Environnement de staging
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              detail:
+                type: string
+              code:
+                type: string
+            required:
+            - title
+            - detail
+            - code
+      required:
+      - errors
+  securitySchemes:
+    jwt_bearer_token:
+      type: http
+      description: |-
+        Votre jeton d'authentification doit être placé dans le header 'Authorization: Bearer VOTRE_JWT', sa validité est de 18 mois.
+
+        Exemple cURL :
+
+            curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/..."
+      name: Authorization
+      in: header
+      scheme: bearer
+      bearerFormat: JWT
