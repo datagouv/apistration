@@ -88,7 +88,7 @@ RSpec.describe OpenAPISchemaToExample do
   end
 
   describe 'API Particulier v2 endpoints' do
-    YAML.load_file(Rails.root.join('swagger/api-particulier-open-api.yml'), aliases: true, permitted_classes: [Date])['paths'].each do |path, definition|
+    YAML.load_file(Rails.root.join('swagger/openapi-particulier.yaml'), aliases: true, permitted_classes: [Date])['paths'].each do |path, definition|
       it "works for path '#{path}'" do
         expect {
           described_class.new(definition['get']['responses']['200']['content']['application/json']['schema']).perform
