@@ -173,6 +173,10 @@ RSpec.configure do |config|
     host! 'particulier.api.localtest.me'
   end
 
+  config.define_derived_metadata(type: :swagger) do |metadata|
+    metadata[:swagger_doc] = "openapi-#{metadata[:api]}.yaml"
+  end
+
   config.before(type: :validate_response) do
     if defined?(response)
       allow(response).to receive(:body).and_return('') unless response.respond_to?(:body)
