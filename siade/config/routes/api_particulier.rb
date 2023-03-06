@@ -9,7 +9,9 @@ namespace '/api', constraints: APIParticulierDomainConstraint.new do
   get 'impots/svair' => '/api_particulier/v2/dgfip/svair#show'
 
   get 'open-api.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/openapi-particulier.yaml'))]] }
-  get 'france-connect/open-api.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/openapi-particulier-france-connect-v2.yaml'))]] }
+  get 'france-connect/open-api.yml', to: ->(env) do
+    [200, {}, [File.read(Rails.root.join('swagger/api_particulier_v2_partials/openapi-particulier-france-connect-v2.yaml'))]]
+  end
 
   namespace '/v2' do
     get 'composition-familiale' => '/api_particulier/v2/cnaf/quotient_familial#show'
