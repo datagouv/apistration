@@ -17,6 +17,13 @@ module RSWagResourcesPayloads
     }
   end
 
+  def build_rswag_response_api_particulier(attributes:)
+    {
+      type: :object,
+      properties: add_required_keys_to_all_type_object(attributes)
+    }
+  end
+
   # rubocop:disable Metrics/ParameterLists
   def build_rswag_response_collection(properties: nil, links: nil, meta: nil, item_links: nil, item_meta: nil, example: nil, required: nil)
     {

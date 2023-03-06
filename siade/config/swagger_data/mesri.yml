@@ -3,7 +3,7 @@ mesri:
     title: "Scolarité"
     description: "Cette API permet de confirmer qu'un étudiant est bien inscrit dans un établissement d'enseignement."
     tags:
-      - "Informations particulier"
+      - "Scolarité étudiant"
     parameters:
       nom:
         description: "Nom de l'élève"
@@ -35,7 +35,6 @@ mesri:
         type: string
         pattern: '^\d{7}\w$'
         example: "0890003V"
-        required: true
       annee_scolaire:
         title: "Année scolaire de l'élève"
         description: "Format AAAA-AAAA ou AAAA"
@@ -52,8 +51,8 @@ mesri:
 
     attributes:
       eleve:
-        type: object
         title: "Informations sur l'élève"
+        type: object
         properties:
           nom:
             description: "Nom de l'élève"

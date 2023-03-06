@@ -1,11 +1,12 @@
 require 'swagger_helper'
 
-RSpec.describe 'MESRI: Scolarites', api: :particulier, document: false, type: %i[request swagger] do
+RSpec.describe 'MESRI: Scolarites', api: :particulier, type: %i[request swagger] do
   path '/api/v2/scolarites' do
     get SwaggerData.get('mesri.scolarite.title') do
-      # tags(*SwaggerData.get('mesri.scolarite.tags'))
+      tags(*SwaggerData.get('mesri.scolarite.tags'))
 
-      # common_action_attributes
+      produces 'application/json'
+
       parameter name: 'X-Api-Key', in: :header, type: :string
 
       parameter name: :nom,                in: :query, type: :string
@@ -32,11 +33,11 @@ RSpec.describe 'MESRI: Scolarites', api: :particulier, document: false, type: %i
         let(:x_api_key) { TokenFactory.new(['mesri_scolarites']).valid }
 
         response '200', 'Scolarité trouvée', vcr: { cassette_name: 'mesri/scolarites/valid' } do
-          # description SwaggerData.get('mesri.scolarite.description')
+          description SwaggerData.get('mesri.scolarite.description')
 
-          # schema build_rswag_response(
-          #   attributes: SwaggerData.get('mesri.scolarite.attributes')
-          # )
+          schema build_rswag_response_api_particulier(
+            attributes: SwaggerData.get('mesri.scolarite.attributes')
+          )
 
           run_test!
         end

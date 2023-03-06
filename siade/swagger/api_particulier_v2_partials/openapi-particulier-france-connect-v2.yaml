@@ -57,9 +57,9 @@ info:
     **Attention :** La documentation ci-dessous ne prend pas en compte les _scopes_, qui agissent comme masques de la donnée retournée par l'API. Cette documentation suppose donc que vous avez été habilité à accéder à la donnée décrite.
 openapi: 3.0.0
 servers:
-  - url: https://particulier-test.api.gouv.fr/api
+  - url: https://particulier-test.api.gouv.fr/
     description: Serveur de bac à sable
-  - url: https://particulier.api.gouv.fr/api
+  - url: https://particulier.api.gouv.fr/
     description: Serveur de production
 security:
   - franceConnectToken: []
@@ -72,7 +72,7 @@ components:
       description: Jeton FranceConnect obtenu suite à une cinématique de connexion
         FranceConnect
 paths:
-  /v2/etudiants:
+  /api/v2/etudiants:
     get:
       tags:
         - Statut étudiant
@@ -221,7 +221,7 @@ paths:
                   message:
                     type: string
                     example: Une erreur est survenue lors de l'appel au fournisseur de donnée
-  /v2/etudiants-boursiers:
+  /api/v2/etudiants-boursiers:
     get:
       tags:
         - Statut étudiant boursier

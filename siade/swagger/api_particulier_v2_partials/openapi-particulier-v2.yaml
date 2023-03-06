@@ -75,9 +75,9 @@ info:
     - remplacez le jeton de test par le jeton obtenu sur [le portail API Particulier](https://mon.portail.api.gouv.fr)
 openapi: 3.0.0
 servers:
-  - url: https://particulier-test.api.gouv.fr/api
+  - url: https://particulier-test.api.gouv.fr
     description: Serveur de bac à sable
-  - url: https://particulier.api.gouv.fr/api
+  - url: https://particulier.api.gouv.fr
     description: Serveur de production
 security:
   - apiKey: []
@@ -92,7 +92,7 @@ components:
         sur <a href="https://mon.portail.api.gouv.fr">le portail API
         Particulier</a>
 paths:
-  /v2/avis-imposition:
+  /api/v2/avis-imposition:
     get:
       description: >-
         Le service permet de vérifier l'authenticité du justificatif d'impôt sur
@@ -353,7 +353,7 @@ paths:
                     example: Le fournisseur de donnée a rejeté la demande en raison d'un trop grand
                       nombre d'échecs antérieurs.
 
-  /v2/composition-familiale:
+  /api/v2/composition-familiale:
     get:
       summary: Quotient familial CAF
       description: >-
@@ -543,7 +543,7 @@ paths:
                     type: string
                     example: Erreur inconnue du fournisseur de donnée (CNAF)
 
-  /v2/situations-pole-emploi:
+  /api/v2/situations-pole-emploi:
     get:
       summary: Statut demandeur d'emploi
       description: >-
@@ -763,7 +763,7 @@ paths:
                       recherche fournis
         "500": *a8
         "503": *a10
-  /v2/etudiants:
+  /api/v2/etudiants:
     get:
       tags:
         - Statut étudiant
@@ -931,7 +931,7 @@ Les étudiants \"admis\" passent au statut \"inscrit\" une fois leur inscription
                       fournis
         "500": *a8
         "503": *a10
-  /v2/etudiants-boursiers:
+  /api/v2/etudiants-boursiers:
     get:
       tags:
         - Statut étudiant boursier
@@ -1081,7 +1081,7 @@ Les étudiants \"admis\" passent au statut \"inscrit\" une fois leur inscription
         "404": *a15
         "500": *a8
         "503": *a10
-  /ping:
+  /api/ping:
     get:
       summary: Statut des serveurs applicatifs API Particulier
       description: >
@@ -1104,7 +1104,7 @@ Les étudiants \"admis\" passent au statut \"inscrit\" une fois leur inscription
                 example: pong
                 pattern: ^pong$
         "500": *a8
-  /impots/ping:
+  /api/impots/ping:
     get:
       summary: Statut des serveurs de la DGFIP
       description: >
@@ -1119,7 +1119,7 @@ Les étudiants \"admis\" passent au statut \"inscrit\" une fois leur inscription
       security: []
       deprecated: true
       responses: *a16
-  /caf/ping:
+  /api/caf/ping:
     get:
       summary: Statut des serveurs de la CAF
       description: >
@@ -1134,7 +1134,7 @@ Les étudiants \"admis\" passent au statut \"inscrit\" une fois leur inscription
       deprecated: true
       security: []
       responses: *a16
-  /introspect:
+  /api/introspect:
     get:
       summary: Introspection du jeton donné en paramètre
       description: Cet endpoint permet de découvrir les informations correspondant à
