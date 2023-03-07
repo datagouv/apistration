@@ -87,8 +87,8 @@ builds/
 !/config/credentials/development.key
 !/config/credentials/test.key
 
-swagger/v3/openapi.yaml
-swagger/openapi-versionned.yaml
+swagger/v3/openapi-entreprise.yaml
+swagger/openapi-entreprise-versionned.yaml
 config/credentials/sandbox.yml.enc
 config/credentials/staging.yml.enc
 

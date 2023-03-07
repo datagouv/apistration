@@ -76,7 +76,7 @@ module InterceptWithOpenAPIMockedPayloadInStaging
 
   def schema_path
     if v3_and_more?
-      Rails.root.join('swagger/openapi.yaml')
+      Rails.root.join('swagger/openapi-entreprise.yaml')
     else
       Rails.public_path.join('v2/open-api.yml')
     end

@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe ExtractProviderFromPath, type: :service do
   it 'works with all paths from swagger' do
-    open_api_path = Rails.root.join('swagger/openapi.yaml')
+    open_api_path = Rails.root.join('swagger/openapi-entreprise.yaml')
     open_api = YAML.load_file(open_api_path)
 
     open_api['paths'].each do |path, _|

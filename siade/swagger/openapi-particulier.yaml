@@ -10,50 +10,7 @@ info:
     email: support@particulier.api.gouv.fr
     url: https://particulier.api.gouv.fr/
 tags: []
-paths:
-  "/api/v2/scolarites":
-    get:
-      summary: Scolarité
-      parameters:
-      - name: X-Api-Key
-        in: header
-        schema:
-          type: string
-      - name: nom
-        in: query
-        schema:
-          type: string
-      - name: prenom
-        in: query
-        schema:
-          type: string
-      - name: sexe
-        in: query
-        schema:
-          type: string
-      - name: dateNaissance
-        in: query
-        schema:
-          type: string
-      - name: codeEtablissement
-        in: query
-        schema:
-          type: string
-      - name: anneeScolaire
-        in: query
-        schema:
-          type: string
-      responses:
-        '200':
-          description: Scolarité trouvée
-          x-operationId: api_particulier_api_mesri_scolarites
-      x-codeSamples:
-      - lang: cURL
-        label: Ligne de commande
-        source: |-
-          curl -X GET \
-            -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/api/v2/scolarites?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+paths: {}
 servers:
 - url: https://particulier.api.gouv.fr
   description: Environnement de production

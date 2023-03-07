@@ -1,7 +1,7 @@
 RSpec.describe 'config/endpoints_with_test_case.yml' do
   let(:endpoints) { Rails.root.join('config/endpoints_with_test_case.yml').read }
 
-  let(:swagger_file) { Rails.root.join('swagger/openapi.yaml') }
+  let(:swagger_file) { Rails.root.join('swagger/openapi-entreprise.yaml') }
   let(:swagger) { Psych.safe_load_file(swagger_file) }
   let(:swagger_endpoints) { swagger['paths'].keys }
   let!(:swagger_endpoints_regex) { swagger_endpoints.map { |endpoint| regexify(endpoint) } }
