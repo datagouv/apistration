@@ -89,6 +89,7 @@ builds/
 
 swagger/v3/openapi-entreprise.yaml
 swagger/versionned/openapi-entreprise.yaml
+swagger/versionned/openapi-particulier.yaml
 config/credentials/sandbox.yml.enc
 config/credentials/staging.yml.enc
 
