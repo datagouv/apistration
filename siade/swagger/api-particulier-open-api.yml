@@ -366,15 +366,13 @@ paths:
         **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=invpeDu6xq16LHfI5&inviteToken=66173d447bcbdf7d43548facb7c6b38df1267f8481f1a21491410ff30ecb2c8b&utm_source=email)
       parameters:
         - name: numeroAllocataire
-          title: Numéro d'allocataire
           in: query
-          description: Numéro de 1 à 7 chiffres. Le numéro d'allocataire n'est pas un numéro unique. Pour être identifiant, il doit être accompagné d'un code postal.
+          description: Numéro d'allocataire. Numéro de 1 à 7 chiffres. Le numéro d'allocataire n'est pas un numéro unique. Pour être identifiant, il doit être accompagné d'un code postal.
           required: true
           schema:
             type: number
             format: string
         - name: codePostal
-          title: Code postal
           in: query
           description: Code postal français (métropôle & DROM COM). Cette donnée permet de faire la correspondance avec la CAF de rattachement de l’allocataire.
           required: true
@@ -555,7 +553,7 @@ paths:
 
         **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=inv1n0CkFzq3Y0pvn&inviteToken=a5b49ec5bb9d2323df4adbdfc6c65da35a2248af30c38095101b3cca6ea0898a&utm_source=email)
       parameters:
-        - name: Nom d'utilisateur Pôle emploi
+        - name: identifiant
           required: true
           in: query
           description: Identifiant Pôle emploi choisi par le particulier lors de la création de son espace personnel en ligne.
@@ -771,33 +769,28 @@ paths:
         - Statut étudiant
       parameters:
         - name: ine
-          title: Numéro INE
           description: Identifiant National Étudiant (INE). Cet identifiant est unique à chaque étudiant sur le territoire français. Il est composé de 11 caractères, 10 chiffres et 1 lettre, et depuis la rentrée 2018, 9 chiffres et 2 lettres. Les étudiants peuvent retrouver leur numéro INE sur leur carte étudiant et leur certificat de scolarité.
           in: query
           schema:
             type: string
             pattern: ^[0-9a-zA-Z]{11}$
         - name: nom
-          title: Nom de naissance
           description: Nom de naissance de l'étudiant
           in: query
           schema:
             type: string
         - name: prenom
-          title: Prénom
           description: Prénom de l'étudiant
           in: query
           schema:
             type: string
         - name: dateDeNaissance
-          title: Date de naissance
           description: Date de naissance de l'étudiant
           in: query
           schema:
             type: string
             pattern: ^\d{4}-\d{2}-\d{2}$
         - name: lieuDeNaissance
-          title: Lieu de naissance
           description: "Le lieu de naissance est donné par le code Insee composé de 5 caractères.
           \n
           \n
@@ -809,7 +802,6 @@ paths:
             type: string
             required: false
         - name: sexe
-          title: Sexe
           description: Sexe de l'étudiant
           in: query
           schema:
@@ -945,26 +937,22 @@ Les étudiants \"admis\" passent au statut \"inscrit\" une fois leur inscription
         - Statut étudiant boursier
       parameters:
         - name: ine
-          title: Numéro INE
           description: Identifiant National Étudiant (INE). Cet identifiant est unique à chaque étudiant sur le territoire français. Il est composé de 11 caractères, 10 chiffres et 1 lettre, et depuis la rentrée 2018, 9 chiffres et 2 lettres. Les étudiants peuvent retrouver leur numéro INE sur leur carte étudiant et leur certificat de scolarité.
           in: query
           schema:
             type: string
             pattern: ^[0-9a-zA-Z]{11}$
         - name: nom
-          title: Nom de naissance
           description: Nom de naissance de l'étudiant
           in: query
           schema:
             type: string
         - name: prenoms
-          title: Prénoms
           description: Prénoms de l'étudiant, à séparer uniquement avec des espaces et non des virgules ou points-virgules.
           in: query
           schema:
             type: string
         - name: dateDeNaissance
-          title: Date de naissance
           description: Date de naissance de l'étudiant
           in: query
           description: 'Format: 2022-12-25'
@@ -972,13 +960,12 @@ Les étudiants \"admis\" passent au statut \"inscrit\" une fois leur inscription
             type: string
             pattern: ^\d{4}-\d{2}-\d{2}$
         - name: lieuDeNaissance
-          title: Lieu de naissance
+          description: Lieu de naissance de l'étudiant
           in: query
           schema:
             type: string
             required: false
         - name: sexe
-          title: Sexe
           description: Sexe de l'étudiant
           in: query
           schema:
