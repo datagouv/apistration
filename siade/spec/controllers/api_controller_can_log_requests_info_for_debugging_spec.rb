@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-# rubocop:disable RSpec/DescribeMethod
 RSpec.describe APIController, 'log requests info for debugging' do
   # rubocop:enable RSpec/DescribeMethod
   controller(described_class) do

@@ -1,4 +1,3 @@
-# rubocop:disable RSpec/DescribeMethod
 RSpec.describe APIParticulierController, 'legacy tokens' do
   # rubocop:enable RSpec/DescribeMethod
   controller(described_class) do

@@ -200,13 +200,16 @@ Rails/UnknownEnv:
 
 # This is okay when use_transactional_fixtures is disabled
 RSpec/BeforeAfterAll:
-  Enabled: False
+  Enabled: false
 
 # Not relevant for RSwag
 RSpec/DescribeClass:
   Exclude:
     - "spec/requests/**/*"
     - "spec/acceptances/**/*"
+
+RSpec/DescribeMethod:
+  Enabled: false
 
 # Necessary to avoid 'Include described_class' which bugs
 RSpec/DescribedClass:
@@ -230,7 +233,7 @@ RSpec/FilePath:
 
 # Sometimes useful in tests
 RSpec/LeakyConstantDeclaration:
-  Enabled: False
+  Enabled: false
 
 RSpec/MessageSpies:
   Enabled: false

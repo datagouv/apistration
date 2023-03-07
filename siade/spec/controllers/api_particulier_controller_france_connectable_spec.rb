@@ -2,7 +2,6 @@
 
 require 'rails_helper'
 
-# rubocop:disable RSpec/DescribeMethod
 RSpec.describe APIParticulierController, 'france connectable' do
   # rubocop:enable RSpec/DescribeMethod
 
