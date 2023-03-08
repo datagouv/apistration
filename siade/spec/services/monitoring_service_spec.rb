@@ -193,6 +193,19 @@ RSpec.describe MonitoringService, type: :service do
       end
     end
 
+    describe '#set_retriever_context' do
+      subject { instance.set_retriever_context(retriever_context) }
+
+      let(:retriever_context) { Interactor::Context.new(context_data) }
+      let(:context_data) { { foo: 'bar' } }
+
+      it 'sets extra context on Sentry' do
+        expect(Sentry).to receive(:set_extras).with(context_data)
+
+        subject
+      end
+    end
+
     describe '#track' do
       subject { instance.track(level, message, extra_context) }
 

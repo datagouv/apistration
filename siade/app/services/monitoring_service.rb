@@ -84,6 +84,10 @@ class MonitoringService
     )
   end
 
+  def set_retriever_context(context)
+    set_extras(context.to_h)
+  end
+
   def track(level, message, extra_context = {})
     set_extras(extra_context) if extra_context.present?
 
