@@ -2,57 +2,13 @@
 openapi: 3.0.0
 info:
   title: API Particulier
-  version: 2.2.0
-  description: |
-    ## Bienvenue sur la documentation interactive d'API Particulier.
-
-    ### Commencer à utiliser l'API
-
-    API Particulier est une API en accès restreint, ce qui signifie qu'il vous faut remplir une [demande d'habilitation](https://datapass.api.gouv.fr) avant de pouvoir l'utiliser avec des vraies données.
-
-    Afin de vous permettre de commencer à utiliser l'API avant la validation de votre demande d'habilitation, nous avons mis en place un bac à sable de l'API, qui reproduit les comportements de l'API, en remplaçant les données réelles par des données fictives.
-
-    Dans le bac à sable, pour chaque type de donnée disponible, un jeu de donnée libre en édition est mis à votre disposition, afin que vous puissiez faire vos tests en toute autonomie.
-
-    Le fonctionnement du bac à sable est identique à celui de la véritable API de production, à la différence près que les données sont fictives, éditables par tout le monde, et que les jetons d'accès sont en libre service.
-
-    Le bac à sable et l'API de production sont appelables par deux adresses distinctes :
-
-    - bac à sable : [https://particulier-test.api.gouv.fr/api](https://particulier-test.api.gouv.fr/api)
-    - production : [https://particulier.api.gouv.fr/api](https://particulier.api.gouv.fr/api)
-
-    Pour récupérer le jeton de production un portail développeur est mis à votre disposition à l'adresse suivante : [https://mon.portail.api.gouv.fr](https://mon.portail.api.gouv.fr)
-
-    Pour effectuer vos tests sur le bac à sable: vous pouvez utiliser ce jeton qui donne accès à l'ensemble des données: `7792dc29bca0d8ed8ba24976ad009214d23a2eea`
-    ### Périmètre des données retournées
-
-    **Important :** le contenu du jeu de données retourné dépend des _scopes_ ou _périmètres_ du jeton utilisé.
-
-    En effet, les disposition de l'article [L144-8](https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000031366350&idArticle=LEGIARTI000031367412&dateTexte=&categorieLien=cid) n'autorisent que l'échange des informations **strictement nécessaires** pour traiter une démarche.
-
-    Afin de respecter ce devoir de minimisation de la donnée, chaque jeton est associé, par la demande d'habilitation, à des _scopes_ agissant comme des masques sur la donnée.
-
-    Ainsi, pour pouvoir lire de la donnée provenant de la DGFIP par exemple, il est nécessaire de cocher lors de votre [demande d'habilitation](https://datapass.api.gouv.fr) une ou plusieurs cases correspondant aux données de la DGFIP, votre jeton possèdera alors les _scopes_ associés aux données cochées.
-
-    En conséquence, suivant le jeton utilisé, une même requête peut retourner des résultats différents.
-
-
-    **Attention :** La documentation ci-dessous ne prend pas en compte les _scopes_, qui agissent comme masques de la donnée retournée par l'API. Cette documentation suppose donc que votre jeton permet d'accéder à la donnée décrite.
-
-    ### Passer son service en production
-
-    Lors de votre passage en production :
-
-    - remplacez l'URL de particulier-test.api.gouv.fr à particulier.api.gouv.fr
-    - remplacez le jeton de test par le jeton obtenu sur [le portail API Particulier](https://mon.portail.api.gouv.fr)
-  termsOfService: https://api.gouv.fr/resources/CGU%20API%20Particulier.pdf
+  version: 3.0.0
+  description: A remplir
+  termsOfService: https://entreprise.api.gouv.fr/cgu/
   contact:
-    name: Contact API Particulier
-    email: contact@particulier.api.gouv.fr
-    url: https://api.gouv.fr/les-api/api-particulier
-  license:
-    name: GNU Affero General Public License v3.0
-    url: https://github.com/betagouv/api-particulier/blob/master/LICENSE
+    name: Support API Particulier
+    email: support@particulier.api.gouv.fr
+    url: https://particulier.api.gouv.fr/
 tags: []
 paths:
   "/api/v2/scolarites":
@@ -176,370 +132,6 @@ paths:
                     - FQ
                     - CQ
                     - FC
-  "/api/v2/etudiants":
-    get:
-      tags:
-      - Statut étudiant
-      summary: Recherche du statut étudiant d'un particulier
-      description: |-
-        Le service permet de récupérer le statut étudiant d'un particulier, avec ses données d'inscriptions scolaires.
-
-        **Paramètres d'appel :** (mutuellement exclusifs, l'appel par INE est réservé aux acteurs de la sphère de l'enseignement)
-         - INE, l'Identifiant National Étudiant
-         - état civil, constitué du nom, prénom, date de naissance, sexe et lieu de naissance
-
-        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=invaqM68okWdPDzc5&inviteToken=43864c010a85095fd8acc6770f6528ce3beff684f60e7aab58e248c29e6d0433&utm_source=email)
-      responses:
-        '200':
-          description: La situation d'un étudiant et ses inscriptions
-          content:
-            application/json:
-              schema:
-                properties:
-                  ine:
-                    type: string
-                    description: Identifiant unique de l'étudiant
-                    example: 1234567890G
-                  nom:
-                    type: string
-                    description: Le nom de naissance
-                    example: Moustaki
-                  prenom:
-                    type: string
-                    description: Le prénom
-                    example: Georges
-                  dateNaissance:
-                    type: string
-                    format: date
-                    description: La date de naissance
-                    example: 1992-11-29
-                  inscriptions:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        dateDebutInscription:
-                          type: string
-                          format: date
-                          description: La date de début d'inscription à l'établissement
-                          example: 2019-09-01
-                        dateFinInscription:
-                          type: string
-                          format: date
-                          description: La date de fin d'inscription à l'établissement
-                          example: 2020-06-29
-                        statut:
-                          type: string
-                          description: Le statut de l'inscription
-                          example: admis
-                          enum:
-                          - admis
-                          - inscrit
-                        regime:
-                          type: string
-                          description: Le régime de formation
-                          example: formation initiale
-                          enum:
-                          - formation initiale
-                          - formation continue
-                        codeCommune:
-                          type: string
-                          description: Le code commune
-                          example: '29085'
-                        etablissement:
-                          type: object
-                          properties:
-                            uai:
-                              type: string
-                              description: Identifiant unique de l'établissement
-                              example: 0011402U
-                            nom:
-                              type: string
-                              description: Nom de l'établissement
-                              example: EGC AIN BOURG EN BRESSE EC GESTION ET COMMERCE
-                                (01000)
-                type: object
-          x-operationId: api_particulier_v2_mesri_student_status
-        '401':
-          description: Votre jeton d'API n'a pas été trouvé ou n'est pas actif
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: access_denied
-                  reason:
-                    type: string
-                    example: Token not found or inactive
-                  message:
-                    type: string
-                    example: Votre jeton d'API n'a pas été trouvé ou n'est pas actif
-        '404':
-          description: Aucun étudiant n'a pu être trouvé avec les critères de recherche
-            fournis
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: not_found
-                  reason:
-                    type: string
-                    example: Student not found
-                  message:
-                    type: string
-                    example: Aucun étudiant n'a pu être trouvé avec les critères de
-                      recherche fournis
-        '500':
-          description: Une erreur interne s'est produite, l'équipe a été prévenue.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: error
-                  reason:
-                    type: string
-                    example: Internal server error
-                  message:
-                    type: string
-                    example: Une erreur interne s'est produite, l'équipe a été prévenue.
-        '503':
-          description: Une erreur est survenue lors de l'appel au fournisseur de donnée
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: network_error
-                  reason:
-                    type: string
-                    example: timeout of 10000 ms exceeded
-                  message:
-                    type: string
-                    example: Une erreur est survenue lors de l'appel au fournisseur
-                      de donnée
-      parameters:
-      - name: ine
-        in: query
-        schema:
-          type: string
-          pattern: "^[0-9a-zA-Z]{11}$"
-      - name: nom
-        in: query
-        schema:
-          type: string
-      - name: prenom
-        in: query
-        schema:
-          type: string
-      - name: dateDeNaissance
-        in: query
-        schema:
-          type: string
-          pattern: "^\\d{4}-\\d{2}-\\d{2}$"
-      - name: lieuDeNaissance
-        in: query
-        schema:
-          type: string
-          required: false
-      - name: sexe
-        in: query
-        schema:
-          type: string
-  "/api/v2/etudiants-boursiers":
-    get:
-      tags:
-      - Statut étudiant boursier
-      summary: Recherche du statut étudiant boursier d'un particulier
-      description: |-
-        Le service permet de récupérer le statut étudiant boursier d'un particulier, avec les données relatives à sa bourse.
-
-        **Paramètres d'appel :** (mutuellement exclusifs, l'appel par INE est réservé aux acteurs de la sphère de l'enseignement)
-         - INE, l'Identifiant National Étudiant
-         - état civil, constitué du nom, prénoms, date de naissance, sexe et lieu de naissance
-
-        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=inv9lBycvDR5UzbyM&inviteToken=6e46235c19bbb4a70dd31ab483eb7375ac0bf46c9d8145d1358e0aa50f65277a&utm_source=email)
-      responses:
-        '200':
-          description: La situation d'un étudiant boursier
-          content:
-            application/json:
-              schema:
-                properties:
-                  nom:
-                    type: string
-                    description: Le nom de naissance
-                    example: Moustaki
-                  prenom:
-                    type: string
-                    description: Le prénom
-                    example: Georges
-                  prenom2:
-                    type: string
-                    description: Le deuxième prénom
-                    example: Claude
-                  dateNaissance:
-                    type: string
-                    format: date
-                    description: La date de naissance
-                    example: 1992-11-29
-                  lieuNaissance:
-                    type: string
-                    description: Le lieu de naissance
-                    example: Poitiers
-                  sexe:
-                    type: string
-                    description: Le sexe de l'étudiant
-                    example: M
-                    enum:
-                    - M
-                    - F
-                  boursier:
-                    type: boolean
-                    description: L'étudiant est-il boursier ?
-                    example: true
-                  echelonBourse:
-                    type: string
-                    description: L'échelon de bourse de l'étudiant, de 0bis à 8
-                    example: '6'
-                  email:
-                    type: string
-                    description: L'adresse email de l'étudiant
-                    example: georges@moustaki.fr
-                  dateDeRentree:
-                    type: string
-                    format: date
-                    description: La date de rentrée de l'étudiant
-                    example: 2019-09-01
-                  dureeVersement:
-                    type: number
-                    description: La durée du versement de la bourse, en mois
-                    example: 12
-                  statut:
-                    type: number
-                    description: Le statut de la bourse, 0 si définitif, >0 si provisoire
-                      (conditionnel)
-                    example: 0
-                  statutLibelle:
-                    type: string
-                    description: Le libellé assoccié au statut
-                    example: définitif
-                  villeEtudes:
-                    type: string
-                    description: Le ville d'étude de l'étudiant
-                    example: Brest
-                  etablissement:
-                    type: string
-                    description: L'établissement d'étude de l'étudiant
-                    example: Carnot
-                type: object
-          x-operationId: api_particulier_v2_cnous_student_scholarship
-        '401':
-          description: Votre jeton d'API n'a pas été trouvé ou n'est pas actif
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: access_denied
-                  reason:
-                    type: string
-                    example: Token not found or inactive
-                  message:
-                    type: string
-                    example: Votre jeton d'API n'a pas été trouvé ou n'est pas actif
-        '404':
-          description: Aucun étudiant n'a pu être trouvé avec les critères de recherche
-            fournis
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: not_found
-                  reason:
-                    type: string
-                    example: Student not found
-                  message:
-                    type: string
-                    example: Aucun étudiant n'a pu être trouvé avec les critères de
-                      recherche fournis
-        '500':
-          description: Une erreur interne s'est produite, l'équipe a été prévenue.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: error
-                  reason:
-                    type: string
-                    example: Internal server error
-                  message:
-                    type: string
-                    example: Une erreur interne s'est produite, l'équipe a été prévenue.
-        '503':
-          description: Une erreur est survenue lors de l'appel au fournisseur de donnée
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: network_error
-                  reason:
-                    type: string
-                    example: timeout of 10000 ms exceeded
-                  message:
-                    type: string
-                    example: Une erreur est survenue lors de l'appel au fournisseur
-                      de donnée
-      parameters:
-      - name: ine
-        in: query
-        schema:
-          type: string
-          pattern: "^[0-9a-zA-Z]{11}$"
-      - name: nom
-        in: query
-        schema:
-          type: string
-      - name: prenoms
-        in: query
-        description: A séparer avec des espaces et non des virgules ou point virgules
-        schema:
-          type: string
-      - name: dateDeNaissance
-        in: query
-        description: 'Format: 2022-12-25'
-        schema:
-          type: string
-          pattern: "^\\d{4}-\\d{2}-\\d{2}$"
-      - name: lieuDeNaissance
-        in: query
-        schema:
-          type: string
-          required: false
-      - name: sexe
-        in: query
-        schema:
-          type: string
   "/api/v2/avis-imposition":
     get:
       description: |-
@@ -788,24 +380,27 @@ paths:
                       d'un trop grand nombre d'échecs antérieurs.
   "/api/v2/composition-familiale":
     get:
+      summary: Quotient familial CAF
       description: |-
-        Le service permet de récupérer la composition de la famille, l'adresse déclarée à la CAF, ainsi que le quotient familial. Les données sont actualisées chaque mois.
+        Quotient familial et composition de la famille d'un allocataire de la Caisse nationale des allocations familiales (CNAF). Attention, le quotient familial de la CAF n'a rien à voir avec le quotient familial fiscal utilisé pour le calcul de l'impôt sur le revenu
 
         **Paramètres d'appel :** numéro d'allocataire et code postal
 
         **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=invpeDu6xq16LHfI5&inviteToken=66173d447bcbdf7d43548facb7c6b38df1267f8481f1a21491410ff30ecb2c8b&utm_source=email)
-      summary: Informations concernant la famille
       parameters:
       - name: numeroAllocataire
         in: query
-        description: Numéro d'allocataire
+        description: Numéro d'allocataire. Numéro de 1 à 7 chiffres. Le numéro d'allocataire
+          n'est pas un numéro unique. Pour être identifiant, il doit être accompagné
+          d'un code postal.
         required: true
         schema:
           type: number
           format: string
       - name: codePostal
         in: query
-        description: Code postal
+        description: Code postal français (métropôle & DROM COM). Cette donnée permet
+          de faire la correspondance avec la CAF de rattachement de l’allocataire.
         required: true
         schema:
           type: number
@@ -822,96 +417,131 @@ paths:
                 type: object
                 properties:
                   allocataires:
+                    title: Informations sur les parents composant la famille
                     type: array
                     items:
                       type: object
                       properties:
                         nomPrenom:
+                          title: Noms et prénoms du parent
                           type: string
-                          description: Noms et prénoms des personnes allocataires
-                            de la CAF
+                          description: Noms et prénoms du parent allocataire de la
+                            CAF
                           example: JEAN JACQUES
                         dateDeNaissance:
+                          title: Date de naissance
                           type: string
                           pattern: "^\\d{8}$"
                           description: 'Date de naissance au format: JJMMAAAA'
                           example: '01021970'
                         sexe:
+                          title: Sexe du parent
                           type: string
                           example: M
                           enum:
                           - F
                           - M
                   enfants:
+                    title: Informations sur les enfants composant la famille
+                    description: "La liste des enfants correspond à la notion d'enfant
+                      à charge au sens de la législation familiale. Pour qu'un enfant
+                      soit considéré comme \"à charge\", l’allocataire doit assurer
+                      financièrement son entretien de manière effective et permanente
+                      et assumer à son égard la responsabilité affective et éducative.
+                      Il n'y a pas d'obligation de lien de parenté avec l’enfant.
+                      \n \n Deux notions d’enfant à charge cohabitent : \n - enfant
+                      à charge au sens des prestations familiales (Pf) : un enfant
+                      est reconnu à charge s’il est âgé d’un mois à moins de 20 ans
+                      quelle que soit sa situation, dès lors que son salaire net mensuel
+                      ne dépasse pas 55 % du Smic brut ; \n - enfant à charge au sens
+                      de la législation familiale : sont considérés à charge pour
+                      les aides au logement, les enfants âgés de moins de 21 ans en
+                      Métropole (22 ans dans les Dom), les enfants âgés de 20 à 25
+                      ans pour le calcul du Rmi/Rsa, et dès le mois de leur naissance,
+                      les enfants bénéficiaires de l’allocation de base de la Paje."
                     type: array
                     items:
                       type: object
                       properties:
                         nomPrenom:
+                          title: Noms et prénoms de l'enfant
                           type: string
-                          description: Noms et prénoms des enfants des allocataires
+                          description: Noms et prénoms de l'enfant des allocataires
                           example: JESSICA JACQUES
                         dateDeNaissance:
+                          title: Date de naissance de l'enfant
                           type: string
                           pattern: "^\\d{8}$"
                           description: 'Date de naissance au format: JJMMAAAA'
                           example: '01031995'
                         sexe:
+                          title: Sexe de l'enfant
                           type: string
                           example: F
                           enum:
                           - F
                           - M
                   adresse:
+                    title: Adresse de la famille
                     type: object
-                    description: Adresse au format de la poste
+                    description: Adresse structurée au format de la poste. C'est l'adresse
+                      connue de la CAF, il s'agit d'une information déclarative.
                     properties:
                       identite:
+                        title: Identité du destinataire
                         type: string
                         example: Monsieur JEAN JACQUES
-                        description: 'Identité du destinataire : Civilité, titre ou
-                          qualité + nom et prénom'
+                        description: L'identité se compose de la civilité, du titre
+                          ou de la qualité, suivis du nom et du prénom.
                       complementIdentite:
-                        description: 'Complément d''information du destinataire ou
-                          point de remise : Numéro d''appartement, Escalier'
+                        title: Complément d'information du destinataire ou point de
+                          remise
+                        description: Numéro d'appartement, escalier
                         type: string
                         nullable: true
                         example:
                       complementIdentiteGeo:
+                        title: Complément d'information du point géographique
                         type: string
                         nullable: true
                         example:
-                        description: 'Complément d''information du point géographique
-                          : Entrée, tour, immeuble, bâtiment, Résidence'
+                        description: Entrée, tour, immeuble, bâtiment, résidence
                       numeroRue:
+                        title: Voie
                         type: string
                         description: Numéro et libellé de la voie
                         example: 1 RUE DE LA GARE
                       lieuDit:
+                        title: Lieu-dit
                         type: string
                         nullable: true
                         example:
                         description: 'Lieu-dit ou service particulier de distribution
                           : poste restante, boîte postale'
                       codePostalVille:
+                        title: Code postal
                         type: string
-                        description: Code postale et localité de destination
+                        description: Code postal et localité de destination
                         example: '75002'
                       pays:
+                        title: Pays
                         type: string
-                        description: Pays
                         example: FRANCE
                   quotientFamilial:
+                    title: Quotient familial CAF de la famille
                     type: integer
-                    description: Valeur du quotient familial calculé par la CAF
+                    description: Valeur du quotient familial calculée par la CAF.
                     example: 1045
                   annee:
+                    title: Année du quotient familial
                     type: integer
-                    description: Année du quotient familial
+                    description: Il s'agit toujours de l'année du mois précédent l'appel.
                     example: 2021
                   mois:
+                    title: Mois du quotient familial
                     type: integer
-                    description: Mois du quotient familial
+                    description: Le quotient familial transmis correspond au QF du
+                      mois M-1 (M étant le mois de l'appel).
                     example: 6
         '401': *2
         '404':
@@ -934,7 +564,7 @@ paths:
                       édité.
         '500': *3
         '503':
-          description: Erreur inconnue du fournisseur de donnée CAF
+          description: Erreur inconnue du fournisseur de donnée (CNAF)
           content:
             application/json:
               schema:
@@ -948,83 +578,119 @@ paths:
                     example: Unknown error code 134
                   message:
                     type: string
-                    example: Erreur inconnue du fournisseur de donnée CAF
+                    example: Erreur inconnue du fournisseur de donnée (CNAF)
   "/api/v2/situations-pole-emploi":
     get:
-      summary: Recherche de la situation Pôle Emploi d'un particulier
+      summary: Statut demandeur d'emploi
       description: |-
-        Le service permet de récupérer la situation Pôle Emploi d'un particulier, avec ses données d'état civil et ses données relatives à son inscription à Pôle Emploi.
-
+        Données d'identité, de contact et de statut du demandeur d'emploi.
         **Paramètres d'appel :** Nom d’utilisateur Pôle emploi choisi par le particulier lors de la création de son espace personnel en ligne
         **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=inv1n0CkFzq3Y0pvn&inviteToken=a5b49ec5bb9d2323df4adbdfc6c65da35a2248af30c38095101b3cca6ea0898a&utm_source=email)
       parameters:
       - name: identifiant
         required: true
         in: query
-        description: Identifiant Pôle Emploi de l'individu recherché, aussi appelé
-          PeamU
+        description: Identifiant Pôle emploi choisi par le particulier lors de la
+          création de son espace personnel en ligne.
         schema:
           type: string
       tags:
-      - Situation Pôle Emploi
+      - Situation Pôle emploi
       responses:
         '200':
           x-operationId: api_particulier_v2_pole_emploi_statut
-          description: La situation Pôle Emploi d'un individu
+          description: La situation Pôle emploi d'un individu
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   identifiant:
+                    title: Nom d'utilisateur Pôle emploi
                     type: string
-                    description: Identifiant Pôle Emploi (passé en paramètre)
+                    description: Identifiant Pôle emploi, tel qu'il a été renseigné
+                      en paramètre d'appel. Cet identifiant est le nom d'utilisateur
+                      tel que choisi par le particulier lors de la création de son
+                      espace personnel en ligne.
                     example: martin.jacques
                   civilite:
+                    title: Civilité
+                    description: Civilité du particulier, Madame ou Monsieur
                     type: string
-                    example: M.
+                    example: M
+                    enum:
+                    - MME
+                    - M
                   nom:
+                    title: Nom de naissance
                     type: string
-                    description: Nom de l'individu
+                    description: Nom de naissance du particulier
                     example: MARTIN
                   nomUsage:
+                    title: Nom d'usage
                     type: string
-                    description: Nom d'usage de l'individu
+                    description: Nom d'usage du particulier
                     nullable: true
                     example:
                   prenom:
+                    title: Prénom
                     type: string
                     example: JACQUES
-                    description: Prénom de l'individu
+                    description: Prénom du particulier, limité à 13 caractère
                   sexe:
+                    title: Sexe
                     type: string
-                    description: Sexe de l'individu
+                    description: Sexe du particulier
                     example: Masculin
                   dateNaissance:
+                    title: Date de naissance
                     format: date
                     type: string
-                    description: Date de naissance
+                    description: Date de naissance du particulier au format YYYY-MM-DD
                     example: 1995-02-02
                   codeCertificationCNAV:
+                    title: Code du statut de certification d'identité CNAV
                     type: string
-                    description: Code de certification
+                    description: "Pôle emploi dépend d'un flux de certification d'identité
+                      émis par la CNAV, un particulier peut avoir été certifié ou
+                      non. \n \n Sont considérés comme certifés, les statuts suivants
+                      : \n \n - VC IDENTITE CERTIFIEE \n - IC : IDENTITE ASSIMILEE
+                      CERTIFIEE \n - PC : IDENTITE CERTIFIEE PARTIELLEMENT \n \n Sont
+                      considérés comme non-certifiés : \n \n - AC : ATTENTE TRAITEMENT
+                      RETOUR CNAV \n - DC : DEMANDE CERTIF. ENVOYEE \n - EC : ECHEC
+                      DE CERTIFICATION CNAV \n - null : IDENTITE NON CERTIFIEE \n
+                      - RC : REFUS PROPOSITION DE CERTIFICATION"
                     example: VC
+                    enum:
+                    - VC
+                    - IC
+                    - PC
+                    - AC
+                    - DC
+                    - RC
+                    -
                   telephone:
+                    title: Téléphone principal
                     type: string
-                    description: Numéro de téléphone principal
+                    description: Numéro de téléphone principal du particulier
                     example: 108756471
                   telephone2:
+                    title: Téléphone secondaire
                     type: string
-                    description: Numéro de téléphone secondaire
+                    description: Numéro de téléphone secondaire du particulier
                     nullable: true
                   email:
+                    title: E-mail
                     type: string
                     nullable: true
-                    description: Email de l'individu
+                    description: Adresse e-mail du particulier
                     example: martin.jacques@france.fr
                   adresse:
+                    title: Adresse
                     type: object
-                    description: Adresse de l'individu
+                    description: Adresse du particulier, déclarée par le particulier
+                      lors de son inscription à Pôle emploi ou suite à une déclaration
+                      de changement d’adresse.
                     properties:
                       codePostal:
                         type: string
@@ -1055,25 +721,51 @@ paths:
                         type: string
                         example: MARTIN
                   dateInscription:
+                    title: Date d'inscription
                     format: date
                     type: string
-                    description: Date d'inscription à Pôle Emploi
-                    example: 2019-02-02
+                    description: Date d'inscription à Pôle emploi au format YYYY-MM-DD
+                    example: 2021-01-07
                   dateCessationInscription:
+                    title: Date de cessation d'inscription au format YYYY-MM-DD
+                    description: Date de cessation d'inscription à Pôle emploi
                     type: string
                     format: date
                     nullable: true
-                    example:
+                    example: 2023-03-12
                   codeCategorieInscription:
+                    title: Code de la catégorie d'inscription
+                    description: "Code de la catégorie d'inscription du particulier
+                      à Pôle emploi. \n \n - 1 : PERSONNE SANS EMPLOI DISPONIBLE DUREE
+                      INDETERMINEE PLEIN TPS \n - 2 : PERSONNE SANS EMPLOI DISPONIBLE
+                      DUREE INDETERMINEE PARTIEL \n - 3 : PERSONNE SANS EMPLOI DISPONIBLE
+                      DUREE DETERMINEE OU SAISON \n - 4 : PERSONNE SANS EMPLOI NON
+                      DISPONIBLE IMMEDIATEMENT \n - 5 : PERSONNE POURVUE D'UN EMPLOI
+                      A LA RECHERCHE D'UN AUTRE"
                     type: integer
                     example: 1
+                    enum:
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+                    - 5
                   libelleCategorieInscription:
+                    title: Libellé de la catégorie d'inscription
+                    description: Libellé de la catégorie d'inscription du particulier
+                      à Pôle emploi, associé au cod précédent.
                     type: string
                     example: PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN
                       TPS
+                    enum:
+                    - PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS
+                    - PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PARTIEL
+                    - PERSONNE SANS EMPLOI DISPONIBLE DUREE DETERMINEE OU SAISON
+                    - PERSONNE SANS EMPLOI NON DISPONIBLE IMMEDIATEMENT
+                    - PERSONNE POURVUE D'UN EMPLOI A LA RECHERCHE D'UN AUTRE
         '401': *2
         '404':
-          description: Aucune situation Pôle Emploi n'a pu être trouvée avec les critères
+          description: Aucune situation Pôle emploi n'a pu être trouvée avec les critères
             de recherche fournis
           content:
             application/json:
@@ -1088,21 +780,382 @@ paths:
                     example: Situation not found
                   message:
                     type: string
-                    example: Aucune situation Pôle Emploi n'a pu être trouvée avec
+                    example: Aucune situation Pôle emploi n'a pu être trouvée avec
                       les critères de recherche fournis
+        '500': *3
+        '503': *4
+  "/api/v2/etudiants":
+    get:
+      tags:
+      - Statut étudiant
+      parameters:
+      - name: ine
+        description: Identifiant National Étudiant (INE). Cet identifiant est unique
+          à chaque étudiant sur le territoire français. Il est composé de 11 caractères,
+          10 chiffres et 1 lettre, et depuis la rentrée 2018, 9 chiffres et 2 lettres.
+          Les étudiants peuvent retrouver leur numéro INE sur leur carte étudiant
+          et leur certificat de scolarité.
+        in: query
+        schema:
+          type: string
+          pattern: "^[0-9a-zA-Z]{11}$"
+      - name: nom
+        description: Nom de naissance de l'étudiant
+        in: query
+        schema:
+          type: string
+      - name: prenom
+        description: Prénom de l'étudiant
+        in: query
+        schema:
+          type: string
+      - name: dateDeNaissance
+        description: Date de naissance de l'étudiant
+        in: query
+        schema:
+          type: string
+          pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+      - name: lieuDeNaissance
+        description: "Le lieu de naissance est donné par le code Insee composé de
+          5 caractères. \n \n - Dans le cas d'un étudiant né en France, il s'agit
+          du code Insee de la commune de naissance. \n - Dans le cas d'un étudiant
+          né à l'étranger, il s'agit du code Insee du pays de naissance, construit
+          avec deux caractères « 99 » auxquels sont concaténés les 3 caractères du
+          code pays de la BCN. Ce champ est facultatif, même s'il est recommandé en
+          cas de doublon."
+        in: query
+        schema:
+          type: string
+          required: false
+      - name: sexe
+        description: Sexe de l'étudiant
+        in: query
+        schema:
+          type: string
+      summary: Statut étudiant
+      description: |-
+        Inscriptions et pré-inscriptions CROUS d'un étudiant aux établissements d'enseignement supérieur.
+        **Paramètres d'appel :** Pour appeler l'API statut étudiant, deux modes d'appel sont possibles :
+         - INE, l'identifiant national étudiant ;
+         - l'état civil de l'étudiant: nom, prénom, date de naissance, sexe et lieu de naissance.
+
+        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=invaqM68okWdPDzc5&inviteToken=43864c010a85095fd8acc6770f6528ce3beff684f60e7aab58e248c29e6d0433&utm_source=email)
+      responses:
+        '200':
+          x-operationId: api_particulier_v2_mesri_student_status
+          description: La situation d'un étudiant et ses inscriptions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ine:
+                    title: Numéro INE
+                    type: string
+                    description: Identifiant National Étudiant (INE). Cet identifiant
+                      est unique à chaque étudiant sur le territoire français. Il
+                      est composé de 11 caractères, 10 chiffres et 1 lettre, et depuis
+                      la rentrée 2018, 9 chiffres et 2 lettres. Les étudiants peuvent
+                      retrouver leur numéro INE sur leur carte étudiant et leur certificat
+                      de scolarité.
+                    example: 1234567890G
+                  nom:
+                    title: Nom de naissance
+                    type: string
+                    description: Nom de naissance de l'étudiant
+                    example: Moustaki
+                  prenom:
+                    title: Prénom
+                    type: string
+                    description: Prénom de l'étudiant
+                    example: Georges
+                  dateNaissance:
+                    title: Date de naissance
+                    type: string
+                    format: date
+                    description: Date de naissance de l'étudiant
+                    example: 1992-11-29
+                  inscriptions:
+                    title: Liste des inscriptions de l'étudiant pour l'année en cours
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        dateDebutInscription:
+                          title: Date de début d'inscription
+                          type: string
+                          format: date
+                          description: Date de début de la période d'études dans l'établissement
+                          example: 2022-09-01
+                        dateFinInscription:
+                          title: Date de fin d'inscription
+                          type: string
+                          format: date
+                          description: Date de fin de la période d'étude dans l'établissement
+                          example: 2023-08-31
+                        statut:
+                          title: Statut d'inscription
+                          type: string
+                          description: "Statut d'inscription de l'étudiant. Il existe
+                            deux modalités différentes : \n \n - inscrit : inscrit
+                            dans l'établissement ; \n - admis, c'est-à-dire pré-inscrit
+                            au sens du CROUS. Le statut admis correspond à une pré-inscription
+                            de l'étudiant dans un établissement, en formation initiale
+                            ou continue. Ce statut ne garantit pas que l'étudiant
+                            soit accepté par l'établissement. Cette pré-inscription
+                            permet à l'étudiant de faire ses démarches auprès du CROUS.
+                            Les étudiants \"admis\" passent au statut \"inscrit\"
+                            une fois leur inscription validée par l'établissement.
+                            L'inscription dépend des critères de l'établissement :
+                            acceptation la candidature, paiement des droits d'inscription...
+                            Tous les étudiants \"admis\" ne sont donc pas forcément
+                            de futurs étudiants \"inscrits\"."
+                          example: admis
+                          enum:
+                          - admis
+                          - inscrit
+                        regime:
+                          title: Régime de l'étudiant
+                          type: string
+                          description: "Régime de formation de l'étudiant. Il existe
+                            deux modalités différentes : \n \n - formation initiale
+                            ou reprise d'études : Cette modalité indique que l'étudiant
+                            est en formation initiale ou en reprise d'études. La formation
+                            initiale correspond à un parcours d’études amorcé à l’école
+                            élémentaire et suivi sans interruption durant plus d’un
+                            an. S'il y a interruption, il s’agit d'une reprise d’études;
+                            \n - formation continue : Cette modalité indique que l'étudiant
+                            est en formation continue. Ce type de formation est destinée
+                            aux salariés, employés ou demandeurs d’emploi et a pour
+                            objectif de conforter, améliorer ou acquérir des connaissances
+                            professionnelles au-delà de la formation initiale. La
+                            formation continue s'accompagne toujours de la signature
+                            d’une convention ou d’un contrat de formation professionnelle
+                            entre la personne et l’établissement formateur."
+                          example: formation initiale
+                          enum:
+                          - formation initiale
+                          - formation continue
+                        codeCommune:
+                          title: Lieu d'études
+                          type: string
+                          description: Code officiel géographique (code COG de l'Insee)
+                            de la commune du lieu d'études.
+                          example: '29085'
+                        etablissement:
+                          title: Établissement de l'inscription
+                          type: object
+                          properties:
+                            uai:
+                              title: Identifiant de l'établissement UAI
+                              type: string
+                              description: Code UAI (Unité administrative immatriculée)
+                                de l'établissement. Cet identifiant unique de l'établissement
+                                scolaire est composé de 7 chiffres et d’une lettre,
+                                les trois premiers chiffres correspondant au numéro
+                                de département de l’établissement.
+                              example: 0011402U
+                            nom:
+                              title: Nom de l'établissement
+                              type: string
+                              description: Appelation officielle de l'établissement
+                                associée au code UAI
+                              example: EGC AIN BOURG EN BRESSE EC GESTION ET COMMERCE
+                                (01000)
+        '401': *2
+        '404': &5
+          description: Aucun étudiant n'a pu être trouvé avec les critères de recherche
+            fournis
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: not_found
+                  reason:
+                    type: string
+                    example: Student not found
+                  message:
+                    type: string
+                    example: Aucun étudiant n'a pu être trouvé avec les critères de
+                      recherche fournis
+        '500': *3
+        '503': *4
+  "/api/v2/etudiants-boursiers":
+    get:
+      tags:
+      - Statut étudiant boursier
+      parameters:
+      - name: ine
+        description: Identifiant National Étudiant (INE). Cet identifiant est unique
+          à chaque étudiant sur le territoire français. Il est composé de 11 caractères,
+          10 chiffres et 1 lettre, et depuis la rentrée 2018, 9 chiffres et 2 lettres.
+          Les étudiants peuvent retrouver leur numéro INE sur leur carte étudiant
+          et leur certificat de scolarité.
+        in: query
+        schema:
+          type: string
+          pattern: "^[0-9a-zA-Z]{11}$"
+      - name: nom
+        description: Nom de naissance de l'étudiant
+        in: query
+        schema:
+          type: string
+      - name: prenoms
+        description: Prénoms de l'étudiant, à séparer uniquement avec des espaces
+          et non des virgules ou points-virgules.
+        in: query
+        schema:
+          type: string
+      - name: dateDeNaissance
+        description: 'Format: 2022-12-25'
+        in: query
+        schema:
+          type: string
+          pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+      - name: lieuDeNaissance
+        description: Lieu de naissance de l'étudiant
+        in: query
+        schema:
+          type: string
+          required: false
+      - name: sexe
+        description: Sexe de l'étudiant
+        in: query
+        schema:
+          type: string
+      summary: Statut étudiant boursier
+      description: |-
+        Statut boursier d'un étudiant.
+        **Paramètres d'appel :** Pour appeler l'API statut boursier, deux modes d'appel sont possibles :
+         - INE, l'identifiant national étudiant ;
+         - l'état civil de l'étudiant: nom, prénom, date de naissance, sexe et lieu de naissance.
+
+        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=inv9lBycvDR5UzbyM&inviteToken=6e46235c19bbb4a70dd31ab483eb7375ac0bf46c9d8145d1358e0aa50f65277a&utm_source=email)
+      responses:
+        '200':
+          x-operationId: api_particulier_v2_cnous_student_scholarship
+          description: La situation d'un étudiant boursier
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  nom:
+                    title: Nom de naissance
+                    type: string
+                    description: Nom de naissance de l'étudiant
+                    example: Moustaki
+                  prenom:
+                    title: Prénom 1
+                    type: string
+                    description: Premier prénom de l'étudiant
+                    example: Georges
+                  prenom2:
+                    title: Prénom 2
+                    type: string
+                    description: Deuxième prénom de l'étudiant
+                    example: Claude
+                  dateNaissance:
+                    title: Date de naissance
+                    type: string
+                    format: date
+                    description: Date de naissance de l'étudiant
+                    example: 1992-11-29
+                  lieuNaissance:
+                    title: Lieu de naissance
+                    type: string
+                    description: Libellé de la commune de naissance de l'étudiant
+                    example: Poitiers
+                  sexe:
+                    title: Sexe
+                    type: string
+                    description: Sexe de l'étudiant
+                    example: M
+                    enum:
+                    - M
+                    - F
+                  boursier:
+                    title: Statut boursier
+                    type: boolean
+                    description: Indique si l'étudiant est boursier
+                    example: true
+                  echelonBourse:
+                    title: Échelon de la bourse
+                    type: string
+                    description: Échelon de bourse de l'étudiant, indiquant le montant
+                      reçu pour l'année scolaire. Il y a 8 échelons de bourse, de
+                      0bis à 7. Chaque échelon est composé de deux montants, le premier
+                      correspondant au montant versé pour 10 mois ; le second, plus
+                      élevé, pour les étudiants bénéficiant du maintien de la bourse
+                      pendant les grandes vacances universitaires. Les taux sont fixé
+                      par arrêté, la page dédiée sur Service-public.fr détaille les
+                      montants et vous permettra de retrouver l'arrêté de l'année
+                      en cours.
+                    example: '6'
+                    enum:
+                    - 0bis
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+                    - 5
+                    - 6
+                    - 7
+                  email:
+                    title: E-mail
+                    type: string
+                    description: Adresse email de l'étudiant
+                    example: georges@moustaki.fr
+                  dateDeRentree:
+                    title: Date de rentrée
+                    type: string
+                    format: date
+                    description: Date de début de rentrée scolaire ou universitaire
+                    example: 2019-09-01
+                  dureeVersement:
+                    title: Durée de versement de la bourse
+                    type: number
+                    description: Nombre de mois de versement de la bourse
+                    example: 12
+                  statut:
+                    title: Code de statut de la bourse
+                    type: number
+                    description: Code du statut de la bourse, 0 si définitif, >0 si
+                      provisoire (conditionnel)
+                    example: 0
+                  statutLibelle:
+                    title: Libellé du statut de la bourse
+                    type: string
+                    description: Le libellé associé au code de statut de la bourse
+                    example: définitif
+                  villeEtudes:
+                    title: Ville d'études
+                    type: string
+                    description: Libellé de la ville d'études de l'étudiant
+                    example: Brest
+                  etablissement:
+                    title: Établissement d'études
+                    type: string
+                    description: L'établissement d'études de l'étudiant
+                    example: Carnot
+        '401': *2
+        '404': *5
         '500': *3
         '503': *4
   "/api/ping":
     get:
       summary: Statut des serveurs applicatifs API Particulier
       description: |
-        Ce endpoint permet de connaitre l'état du serveur API Particulier.
+        Cet endpoint permet de connaître l'état du serveur API Particulier.
         Si le résultat est autre qu'un code HTTP 200, le serveur rencontre un problème.
-        On peut alors considérer que les résultat des autres endpoints seront perturbés.
+        On peut alors considérer que les résultats des autres endpoints seront perturbés.
       tags:
       - Ping
       security: []
-      responses: &5
+      responses: &6
         '200':
           description: pong
           content:
@@ -1116,26 +1169,26 @@ paths:
     get:
       summary: Statut des serveurs de la DGFIP
       description: |
-        Ce endpoint permet de connaitre l'état du serveur de la DGFIP sur lequel s'appuie API Particulier pour vous restituer les données impôts.
+        Cet endpoint permet de connaitre l'état du serveur de la DGFIP sur lequel s'appuie API Particulier pour vous restituer les données impôts.
         Si le résultat est autre qu'un code HTTP 200, le serveur de la DGFIP rencontre un problème.
-        On peut alors considérer que les résultats du endpoint /impots/svair seront perturbés.
+        On peut alors considérer que les résultats de l'endpoint /impots/svair seront perturbés.
       tags:
       - Ping
       security: []
       deprecated: true
-      responses: *5
+      responses: *6
   "/api/caf/ping":
     get:
       summary: Statut des serveurs de la CAF
       description: |
-        Ce endpoint permet de connaitre l'état du serveur de la CAF sur lequel s'appuie API Particulier pour vous restituer les données famille.
+        Cet endpoint permet de connaitre l'état du serveur de la CAF sur lequel s'appuie API Particulier pour vous restituer les données famille.
         Si le résultat est autre qu'un code HTTP 200, le serveur de la CAF rencontre un problème.
-        On peut alors considérer que les résultats du endpoint /caf/famille seront perturbés.
+        On peut alors considérer que les résultats de l'endpoint /caf/famille seront perturbés.
       tags:
       - Ping
       deprecated: true
       security: []
-      responses: *5
+      responses: *6
   "/api/introspect":
     get:
       summary: Introspection du jeton donné en paramètre
@@ -1166,10 +1219,10 @@ paths:
         '401': *2
         '500': *3
 servers:
-- url: https://particulier-test.api.gouv.fr
-  description: Serveur de bac à sable
 - url: https://particulier.api.gouv.fr
-  description: Serveur de production
+  description: Environnement de production
+- url: https://staging.particulier.api.gouv.fr
+  description: Environnement de staging
 components:
   schemas:
     Error:
@@ -1192,19 +1245,3 @@ components:
             - code
       required:
       - errors
-  securitySchemes:
-    franceConnectToken:
-      type: http
-      scheme: bearer
-      bearerFormat: Jeton FranceConnect
-      description: Jeton FranceConnect obtenu suite à une cinématique de connexion
-        FranceConnect
-    apiKey:
-      type: apiKey
-      in: header
-      name: X-Api-Key
-      description: Jeton d'authentification obtenu suite à la validation de votre
-        <a href="https://datapass.api.gouv.fr/">demande d'habilitation</a>, visible
-        sur <a href="https://mon.portail.api.gouv.fr">le portail API Particulier</a>
-security:
-- apiKey: []

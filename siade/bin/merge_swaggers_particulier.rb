@@ -8,12 +8,17 @@ def merge_openapi_particulier(partial_path)
 
   partial = YAML.load_file(partial_path, permitted_classes: [Date], aliases: true)
 
-  openapi_particulier.deep_merge!(partial)
+  merged_openapi = merge_openapi_paths(openapi_particulier, partial)
 
-  File.write(openapi_particulier_path, openapi_particulier.to_yaml)
+  File.write(openapi_particulier_path, merged_openapi.to_yaml)
 end
 
-openapi_partial_directory = File.expand_path('../../swagger/api_particulier_v2_partials', __FILE__)
-openapi_partials_paths = Dir.glob("#{openapi_partial_directory}/*.yaml")
+def merge_openapi_paths(base_openapi, partial_openapi)
+  base_openapi['paths'].merge!(partial_openapi['paths'])
 
-openapi_partials_paths.each { |partial_path| merge_openapi_particulier(partial_path) }
+  base_openapi
+end
+
+partial_path = File.expand_path('../../swagger/api_particulier_v2_partials/openapi-particulier-v2.yaml', __FILE__)
+
+merge_openapi_particulier(partial_path)
