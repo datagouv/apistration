@@ -27,7 +27,7 @@ end
 # rubocop:enable RSpec/VariableName
 
 # rubocop:disable Metrics/MethodLength
-def build_rswag_error(title: nil, detail: nil, code: nil)
+def build_rswag_error_entreprise(title: nil, detail: nil, code: nil)
   {
     type: :object,
     properties: {
@@ -60,6 +60,26 @@ def build_rswag_error(title: nil, detail: nil, code: nil)
     required: %w[
       errors
     ]
+  }
+end
+
+def build_rswag_error_particulier_v2(type: nil, reason: nil, message: nil)
+  {
+    type: :object,
+    properties: {
+      error: {
+        type: :string,
+        example: type
+      },
+      reason: {
+        type: :string,
+        example: reason
+      },
+      message: {
+        type: :string,
+        example: message
+      }
+    }
   }
 end
 # rubocop:enable Metrics/MethodLength
@@ -132,7 +152,7 @@ Il est nécessaire d'utiliser le jeton de staging indiqué ci-dessous.
       ],
       components: {
         schemas: {
-          Error: build_rswag_error
+          Error: build_rswag_error_entreprise
         },
         securitySchemes: {
           jwt_bearer_token: {
@@ -156,18 +176,86 @@ Il est nécessaire d'utiliser le jeton de staging indiqué ci-dessous.
       openapi: '3.0.0',
       info: {
         title: 'API Particulier',
-        version: '3.0.0',
-        description: 'A remplir',
-        termsOfService: 'https://entreprise.api.gouv.fr/cgu/',
-        contact:
-        {
-          name: 'Support API Particulier',
-          email: 'support@particulier.api.gouv.fr',
+        version: '2.2.0',
+        description: "
+    ## Bienvenue sur la documentation interactive d'API Particulier.
+
+
+    ### Commencer à utiliser l'API
+
+
+    API Particulier est une API en accès restreint, ce qui signifie qu'il vous faut remplir une [demande d'habilitation](https://datapass.api.gouv.fr) avant de pouvoir l'utiliser avec des vraies données.
+
+
+    Afin de tester l'API avant la validation de votre demande d'habilitation, nous avons mis en place un bac à sable de l'API qui reproduit les comportements de l'API en production.
+
+
+    Dans le bac à sable, pour chaque type de donnée disponible, un jeu de donnée libre en édition est mis à votre disposition, afin que vous puissiez faire vos tests en toute autonomie.
+
+
+    Le fonctionnement du bac à sable est identique à celui de la véritable API de production, à la différence près que les données sont fictives, éditables par tout le monde, et que les jetons d'accès sont en libre service.
+
+
+    Le bac à sable et l'API de production sont appelables par deux adresses distinctes :
+
+
+    - bac à sable : [https://particulier-test.api.gouv.fr/api](https://particulier-test.api.gouv.fr/api)
+
+    - production : [https://particulier.api.gouv.fr/api](https://particulier.api.gouv.fr/api)
+
+
+    Pour récupérer le jeton de production un portail développeur est mis à votre disposition à l'adresse suivante : [https://mon.portail.api.gouv.fr](https://mon.portail.api.gouv.fr)
+
+
+    Pour effectuer vos tests sur le bac à sable: vous pouvez utiliser ce jeton qui donne accès à l'ensemble des données: `7792dc29bca0d8ed8ba24976ad009214d23a2eea`
+
+    ### Périmètre des données retournées
+
+
+    **Important :** le contenu du jeu de données retourné dépend des _scopes_ ou _périmètres_ du jeton utilisé.
+
+
+    En effet, les disposition de l'article [L144-8](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315) n'autorisent que l'échange des informations **strictement nécessaires** pour traiter une démarche.
+
+
+    Afin de respecter ce devoir de minimisation de la donnée, chaque jeton est associé, par la demande d'habilitation, à des _scopes_ agissant comme des masques sur la donnée.
+
+
+    Ainsi, pour pouvoir lire de la donnée, il est nécessaire de cocher lors de votre [demande d'habilitation](https://datapass.api.gouv.fr) une ou plusieurs cases correspondant aux données du même fournisseur, votre jeton possèdera alors les _scopes_ associés aux données cochées.
+
+
+    En conséquence, suivant le jeton utilisé, une même requête peut retourner des résultats différents.
+
+
+
+    **Attention :** La documentation ci-dessous ne prend pas en compte les _scopes_, qui agissent comme masques de la donnée retournée par l'API. Cette documentation suppose donc que votre jeton permet d'accéder à la donnée décrite.
+
+
+    ### Passer son service en production
+
+
+    Lors de votre passage en production :
+
+
+    - remplacez l'URL de particulier-test.api.gouv.fr à particulier.api.gouv.fr
+
+    - remplacez le jeton de test par le jeton obtenu sur [le portail API Particulier](https://mon.portail.api.gouv.fr)",
+        termsOfService: 'https://api.gouv.fr/resources/CGU%20API%20Particulier.pdf',
+        contact: {
+          name: 'Contact API Particulier',
+          email: 'contact@particulier.api.gouv.fr',
           url: 'https://particulier.api.gouv.fr/'
+        },
+        license: {
+          name: 'GNU Affero General Public License v3.0',
+          url: 'https://github.com/betagouv/api-particulier/blob/master/LICENSE'
         }
       },
       tags: [],
       paths: {},
+      security: [
+        apiKey: []
+      ],
       servers: [
         {
           url: 'https://particulier.api.gouv.fr',
@@ -180,7 +268,15 @@ Il est nécessaire d'utiliser le jeton de staging indiqué ci-dessous.
       ],
       components: {
         schemas: {
-          Error: build_rswag_error
+          Error: build_rswag_error_particulier_v2
+        },
+        securitySchemes: {
+          apiKey: {
+            type: :apiKey,
+            name: 'X-Api-Key',
+            in: :header,
+            description: "Jeton d'authentification obtenu suite à la validation de votre <a href='https://datapass.api.gouv.fr/'>demande d'habilitation</a>, visible sur <a href='https://mon.portail.api.gouv.fr'>le portail API Particulier</a>"
+          }
         }
       }
     }
