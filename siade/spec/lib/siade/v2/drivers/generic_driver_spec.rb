@@ -59,7 +59,7 @@ RSpec.describe SIADE::V2::Drivers::GenericDriver do
     allow_any_instance_of(SIADE::V2::Drivers::GenericDriver).to receive(:success?).and_return(true)
   end
 
-  describe 'monitoring' do
+  describe 'maintenance' do
     subject { fake_driver.new.perform_request }
 
     before do
