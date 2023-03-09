@@ -70,6 +70,10 @@ VCR.configure do |c|
   c.filter_sensitive_data('<MEN_SCOLARITES_CLIENT_SECRET>') { Siade.credentials[:men_scolarites_client_secret].to_s }
   c.filter_sensitive_data('<MEN_SCOLARITES_AUTHENTICATE_URL>') { Siade.credentials[:men_scolarites_authenticate_url].to_s }
 
+  c.filter_sensitive_data('<GIP_MDS_DOMAIN>') { Siade.credentials[:gip_mds_domain].to_s }
+  c.filter_sensitive_data('<GIP_MDS_CLIENT_ID>') { Siade.credentials[:gip_mds_client_id].to_s }
+  c.filter_sensitive_data('<GIP_MDS_CLIENT_SECRET>') { Siade.credentials[:gip_mds_client_secret].to_s }
+
   c.register_request_matcher :body_sanitized do |r_1, r_2|
     body_1 = r_1.body || ''
     body_2 = r_2.body || ''
