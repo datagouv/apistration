@@ -11,11 +11,6 @@ production: &shared
       - day: '2023-03-10'
         from_hour: '00:00'
         to_hour: '09:30'
-  'INSEE':
-    dates:
-      - day: '2022-09-21'
-        from_hour: '06:00'
-        to_hour: '17:00'
 sandbox: *shared
 staging: *shared
 development: *shared
