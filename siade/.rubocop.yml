@@ -217,6 +217,8 @@ RSpec/ExampleLength:
   Enabled: false
 
 RSpec/FilePath:
+  CustomTransform:
+    GIPMDS: gip_mds
   Exclude:
     - "spec/policies/certificat_rge_ademe_policy_spec.rb"
     - "spec/requests/rack_attack_spec.rb"
