@@ -798,9 +798,9 @@ paths:
           \n
           - Dans le cas d'un étudiant né à l'étranger, il s'agit du code Insee du pays de naissance, construit avec deux caractères « 99 » auxquels sont concaténés les 3 caractères du code pays de la BCN. Ce champ est facultatif, même s'il est recommandé en cas de doublon."
           in: query
+          required: false
           schema:
             type: string
-            required: false
         - name: sexe
           description: Sexe de l'étudiant
           in: query
@@ -953,18 +953,17 @@ Les étudiants \"admis\" passent au statut \"inscrit\" une fois leur inscription
           schema:
             type: string
         - name: dateDeNaissance
-          description: Date de naissance de l'étudiant
+          description: "Date de naissance de l'étudiant. Format: YYYY-MM-DD"
           in: query
-          description: 'Format: 2022-12-25'
           schema:
             type: string
             pattern: ^\d{4}-\d{2}-\d{2}$
         - name: lieuDeNaissance
           description: Lieu de naissance de l'étudiant
           in: query
+          required: false
           schema:
             type: string
-            required: false
         - name: sexe
           description: Sexe de l'étudiant
           in: query
