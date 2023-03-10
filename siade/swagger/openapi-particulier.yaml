@@ -562,10 +562,10 @@ paths:
                     title: Civilité
                     description: Civilité du particulier, Madame ou Monsieur
                     type: string
-                    example: M
+                    example: M.
                     enum:
                     - MME
-                    - M
+                    - M.
                   nom:
                     title: Nom de naissance
                     type: string
@@ -1042,13 +1042,13 @@ paths:
                     example: '6'
                     enum:
                     - 0bis
-                    - 1
-                    - 2
-                    - 3
-                    - 4
-                    - 5
-                    - 6
-                    - 7
+                    - '1'
+                    - '2'
+                    - '3'
+                    - '4'
+                    - '5'
+                    - '6'
+                    - '7'
                   email:
                     title: E-mail
                     type: string
