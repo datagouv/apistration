@@ -2,6 +2,7 @@ require 'byebug'
 require 'fileutils'
 require 'yaml'
 require 'json'
+require 'openapi3_parser'
 
 lib_folder = File.expand_path('../lib', File.dirname(__FILE__))
 $LOAD_PATH.unshift(lib_folder) unless $LOAD_PATH.include?(lib_folder)
@@ -22,6 +23,8 @@ else
   puts "Unknown operation_id: #{ARGV[0]}"
   exit 3
 end
+
+schema = Openapi3Parser.load(schema)
 
 @operation_id_schema = extract_path_spec_from_schema(ARGV[0], schema)
 
