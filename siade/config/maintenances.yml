@@ -6,13 +6,6 @@ production: &shared
   'DGFIP - Adélie':
     from_hour: '01:00'
     to_hour: '02:00'
-    dates:
-      - day: '2023-03-09'
-        from_hour: '09:30'
-        to_hour: '23:59'
-      - day: '2023-03-10'
-        from_hour: '00:00'
-        to_hour: '09:30'
 sandbox: *shared
 staging: *shared
 development: *shared
