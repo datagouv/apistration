@@ -1,0 +1,107 @@
+---
+params:
+  siret: '55204944776279'
+  context: 'Contexte de test'
+  recipient: '13002526500013'
+  object: 'Marchés publics 123'
+status: 200
+payload: |-
+  {
+    "data": {
+      "siret": "55204944776279",
+      "siege_social": true,
+      "etat_administratif": "A",
+      "date_fermeture": null,
+      "enseigne": "SNCF ST DENIS 2 PL AUX ETOILES",
+      "activite_principale": {
+        "code": "49.10Z",
+        "nomenclature": "NAFRev2",
+        "libelle": "Transport ferroviaire interurbain de voyageurs"
+      },
+      "tranche_effectif_salarie": {
+        "de": 500,
+        "a": 999,
+        "code": "41",
+        "date_reference": "2020",
+        "intitule": "500 à 999 salariés"
+      },
+      "diffusable_commercialement": true,
+      "date_creation": 519861600,
+      "unite_legale": {
+        "siren": "552049447",
+        "siret_siege_social": "55204944776279",
+        "type": "personne_morale",
+        "personne_morale_attributs": {
+          "raison_sociale": "SOCIETE NATIONALE SNCF",
+          "sigle": "SNCF"
+        },
+        "personne_physique_attributs": {
+          "pseudonyme": null,
+          "prenom_usuel": null,
+          "prenom_1": null,
+          "prenom_2": null,
+          "prenom_3": null,
+          "prenom_4": null,
+          "nom_usage": null,
+          "nom_naissance": null,
+          "sexe": null
+        },
+        "categorie_entreprise": "GE",
+        "diffusable_commercialement": true,
+        "forme_juridique": {
+          "code": "5599",
+          "libelle": "SA à conseil d'administration (s.a.i.)"
+        },
+        "activite_principale": {
+          "code": "49.10Z",
+          "nomenclature": "NAFRev2",
+          "libelle": "Transport ferroviaire interurbain de voyageurs"
+        },
+        "tranche_effectif_salarie": {
+          "de": 10000,
+          "a": null,
+          "code": "53",
+          "date_reference": "2020",
+          "intitule": "10 000 salariés et plus"
+        },
+        "economie_sociale_et_solidaire": false,
+        "date_creation": -473389200,
+        "etat_administratif": "A",
+        "date_derniere_mise_a_jour": 1673478000,
+        "redirect_from_siren": null
+      },
+      "adresse": {
+        "siret": "55204944776279",
+        "complement_adresse": null,
+        "numero_voie": "2",
+        "indice_repetition_voie": null,
+        "type_voie": "PLACE",
+        "libelle_voie": "AUX ETOILES",
+        "code_postal": "93210",
+        "libelle_commune": "SAINT-DENIS",
+        "libelle_commune_etranger": null,
+        "distribution_speciale": null,
+        "code_commune": "93066",
+        "code_cedex": null,
+        "libelle_cedex": null,
+        "code_pays_etranger": null,
+        "libelle_pays_etranger": null,
+        "acheminement_postal": {
+          "l1": "SOCIETE NATIONALE SNCF",
+          "l2": "",
+          "l3": "",
+          "l4": "2 PLACE AUX ETOILES",
+          "l5": "",
+          "l6": "93210 SAINT-DENIS",
+          "l7": "FRANCE"
+        }
+      }
+    },
+    "links": {
+      "unite_legale": "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/552049447"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1661724000,
+      "redirect_from_siret": null
+    }
+  }

@@ -1,0 +1,107 @@
+---
+params:
+  siret: '42417936400023'
+  context: 'Contexte de test'
+  recipient: '13002526500013'
+  object: 'Demande de subventions 135'
+status: 200
+payload: |-
+  {
+    "data": {
+      "siret": "42417936400023",
+      "siege_social": true,
+      "etat_administratif": "A",
+      "date_fermeture": null,
+      "enseigne": null,
+      "activite_principale": {
+        "code": "94.99Z",
+        "nomenclature": "NAFRev2",
+        "libelle": "Autres organisations fonctionnant par adhésion volontaire"
+      },
+      "tranche_effectif_salarie": {
+        "de": null,
+        "a": null,
+        "code": null,
+        "date_reference": null,
+        "intitule": null
+      },
+      "diffusable_commercialement": true,
+      "date_creation": 1626300000,
+      "unite_legale": {
+        "siren": "424179364",
+        "siret_siege_social": "42417936400023",
+        "type": "personne_morale",
+        "personne_morale_attributs": {
+          "raison_sociale": "ASSOCIATION SOCIO-CULTURELLE - LE REPERE",
+          "sigle": null
+        },
+        "personne_physique_attributs": {
+          "pseudonyme": null,
+          "prenom_usuel": null,
+          "prenom_1": null,
+          "prenom_2": null,
+          "prenom_3": null,
+          "prenom_4": null,
+          "nom_usage": null,
+          "nom_naissance": null,
+          "sexe": null
+        },
+        "categorie_entreprise": "PME",
+        "diffusable_commercialement": true,
+        "forme_juridique": {
+          "code": "9260",
+          "libelle": "Association de droit local (Bas-Rhin, Haut-Rhin et Moselle)"
+        },
+        "activite_principale": {
+          "code": "94.99Z",
+          "nomenclature": "NAFRev2",
+          "libelle": "Autres organisations fonctionnant par adhésion volontaire"
+        },
+        "tranche_effectif_salarie": {
+          "de": null,
+          "a": null,
+          "code": "NN",
+          "date_reference": null,
+          "intitule": "Unités non employeuses"
+        },
+        "economie_sociale_et_solidaire": true,
+        "date_creation": 931298400,
+        "etat_administratif": "A",
+        "date_derniere_mise_a_jour": 1635458400,
+        "redirect_from_siren": null
+      },
+      "adresse": {
+        "siret": "42417936400023",
+        "complement_adresse": null,
+        "numero_voie": "169",
+        "indice_repetition_voie": null,
+        "type_voie": null,
+        "libelle_voie": "GRAND RUE",
+        "code_postal": "67130",
+        "libelle_commune": "SCHIRMECK",
+        "libelle_commune_etranger": null,
+        "distribution_speciale": null,
+        "code_commune": "67448",
+        "code_cedex": null,
+        "libelle_cedex": null,
+        "code_pays_etranger": null,
+        "libelle_pays_etranger": null,
+        "acheminement_postal": {
+          "l1": "ASSOCIATION SOCIO-CULTURELLE - LE REPERE",
+          "l2": "",
+          "l3": "",
+          "l4": "169 GRAND RUE",
+          "l5": "",
+          "l6": "67130 SCHIRMECK",
+          "l7": "FRANCE"
+        }
+      }
+    },
+    "links": {
+      "unite_legale": "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/424179364"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1635458400,
+      "redirect_from_siret": null
+    }
+  }

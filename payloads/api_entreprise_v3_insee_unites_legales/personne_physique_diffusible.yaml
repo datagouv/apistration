@@ -1,0 +1,60 @@
+---
+params:
+  siren: '478464803'
+  context: 'Contexte de test'
+  recipient: '13002526500013'
+  object: 'Marché Numéro 126'
+status: 200
+payload: |-
+  {
+    "data": {
+      "siren": "478464803",
+      "siret_siege_social": "47846480300319",
+      "categorie_entreprise": null,
+      "diffusable_commercialement": true,
+      "type": "personne_physique",
+      "personne_morale_attributs": {
+        "raison_sociale": null,
+        "sigle": null
+      },
+      "personne_physique_attributs": {
+        "pseudonyme": null,
+        "prenom_usuel": "MAXIME",
+        "prenom_1": "MAXIME",
+        "prenom_2": "LAURENT",
+        "prenom_3": "ERIC",
+        "prenom_4": null,
+        "nom_usage": null,
+        "nom_naissance": "DUPONT",
+        "sexe": "M"
+      },
+      "forme_juridique": {
+        "code": "1000",
+        "libelle": "Entrepreneur individuel"
+      },
+      "activite_principale": {
+        "code": "74.10Z",
+        "nomenclature": "NAFRev2",
+        "libelle": "Activités spécialisées de design"
+      },
+      "tranche_effectif_salarie": {
+        "de": null,
+        "a": null,
+        "code": "NN",
+        "date_reference": null,
+        "intitule": "Unités non employeuses"
+      },
+      "etat_administratif": "A",
+      "economie_sociale_et_solidaire": null,
+      "date_cessation": null,
+      "date_creation": 1085349600
+    },
+    "links": {
+      "siege_social": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/47846480300319",
+      "siege_social_adresse": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/47846480300319/adresse"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1667430000,
+      "redirect_from_siren": null
+    }
+  }

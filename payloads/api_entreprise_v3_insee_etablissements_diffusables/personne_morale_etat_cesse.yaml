@@ -1,0 +1,107 @@
+---
+params:
+  siret: '35005144700018'
+  context: 'Contexte de test'
+  recipient: '13002526500013'
+  object: 'Marchés publics 132'
+status: 200
+payload: |-
+  {
+    "data": {
+      "siret": "35005144700018",
+      "siege_social": true,
+      "etat_administratif": "F",
+      "date_fermeture": 816390000,
+      "enseigne": null,
+      "activite_principale": {
+        "code": "70.2C",
+        "nomenclature": "NAF1993",
+        "libelle": "ancienne révision NAF (NAF1993) non supportée"
+      },
+      "tranche_effectif_salarie": {
+        "de": null,
+        "a": null,
+        "code": "NN",
+        "date_reference": null,
+        "intitule": "Unités non employeuses"
+      },
+      "diffusable_commercialement": true,
+      "date_creation": null,
+      "unite_legale": {
+        "siren": "350051447",
+        "siret_siege_social": "35005144700018",
+        "type": "personne_morale",
+        "personne_morale_attributs": {
+          "raison_sociale": "SCI SERGENT",
+          "sigle": null
+        },
+        "personne_physique_attributs": {
+          "pseudonyme": null,
+          "prenom_usuel": null,
+          "prenom_1": null,
+          "prenom_2": null,
+          "prenom_3": null,
+          "prenom_4": null,
+          "nom_usage": null,
+          "nom_naissance": null,
+          "sexe": null
+        },
+        "categorie_entreprise": null,
+        "diffusable_commercialement": true,
+        "forme_juridique": {
+          "code": "6540",
+          "libelle": "Société civile immobilière"
+        },
+        "activite_principale": {
+          "code": "70.2C",
+          "nomenclature": "NAFRev1",
+          "libelle": "ancienne révision NAF (NAFRev1) non supportée"
+        },
+        "tranche_effectif_salarie": {
+          "de": null,
+          "a": null,
+          "code": null,
+          "date_reference": null,
+          "intitule": null
+        },
+        "economie_sociale_et_solidaire": null,
+        "date_creation": 605746800,
+        "etat_administratif": "C",
+        "date_derniere_mise_a_jour": null,
+        "redirect_from_siren": null
+      },
+      "adresse": {
+        "siret": "35005144700018",
+        "complement_adresse": null,
+        "numero_voie": "4",
+        "indice_repetition_voie": null,
+        "type_voie": "ALLÉE",
+        "libelle_voie": "DU COMMANDANT",
+        "code_postal": "75017",
+        "libelle_commune": "PARIS 17",
+        "libelle_commune_etranger": null,
+        "distribution_speciale": null,
+        "code_commune": "75117",
+        "code_cedex": null,
+        "libelle_cedex": null,
+        "code_pays_etranger": null,
+        "libelle_pays_etranger": null,
+        "acheminement_postal": {
+          "l1": "SCI SERGENT",
+          "l2": "",
+          "l3": "",
+          "l4": "4 ALLÉE DU COMMANDANT",
+          "l5": "",
+          "l6": "75017 PARIS 17",
+          "l7": "FRANCE"
+        }
+      }
+    },
+    "links": {
+      "unite_legale": "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/350051447"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1671404400,
+      "redirect_from_siret": null
+    }
+  }
