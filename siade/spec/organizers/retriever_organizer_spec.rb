@@ -9,6 +9,8 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
         when :provider_error
           context.errors << ProviderUnknownError.new(context.provider_name, 'whatever')
           context.fail!
+        when :exception
+          raise StandardError
         end
       end
     end
@@ -63,6 +65,8 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
 
     let(:provider_name) { 'INSEE' }
 
+    before { allow(monitoring_service).to receive(:set_retriever_context) }
+
     context 'when there is no error' do
       let(:error_kind) { nil }
 
@@ -99,6 +103,22 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
           expect(monitoring_service).to have_received(:track_provider_error).with(
             instance_of(ProviderUnknownError)
           )
+        end
+
+        it 'adds the context to tracking' do
+          subject
+
+          expect(monitoring_service).to have_received(:set_retriever_context).with(an_instance_of(Interactor::Context))
+        end
+      end
+
+      context 'when it is an exception' do
+        let(:error_kind) { :exception }
+
+        it 'logs the context and raises error' do
+          expect { subject }.to raise_error(StandardError)
+
+          expect(monitoring_service).to have_received(:set_retriever_context).with(an_instance_of(Interactor::Context))
         end
       end
     end
