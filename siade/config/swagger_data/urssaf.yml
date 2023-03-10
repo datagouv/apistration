@@ -21,9 +21,6 @@ urssaf:
             type: 'string'
             title: "Libellé associé au code"
             example: "Attestation délivrée par l'Urssaf"
-            enum:
-            - Attestation délivrée par l'Urssaf
-            - Attestation non-délivrée, l'entité n'est pas à jour
           description:
             type: 'string'
             title: "Description associé au code"
