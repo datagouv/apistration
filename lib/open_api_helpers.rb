@@ -66,6 +66,11 @@ module OpenApiHelpers
       if open_api_schema['nullable']
         open_api_schema['type'] = [open_api_schema['type'], 'null']
         open_api_schema.delete('nullable')
+
+        if open_api_schema['enum']
+          open_api_schema['enum'] << nil
+          open_api_schema['enum'].uniq!
+        end
       end
     end
 
