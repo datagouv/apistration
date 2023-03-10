@@ -1,4 +1,4 @@
-# Recherche du statut étudiant boursier d'un particulier
+# Statut étudiant boursier
 * [404.yml](404.yml)
 
   Status `404`

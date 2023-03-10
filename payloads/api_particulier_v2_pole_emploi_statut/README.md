@@ -1,4 +1,4 @@
-# Recherche de la situation Pôle Emploi d'un particulier
+# Statut demandeur d'emploi
 * [200.yaml](200.yaml)
 
   Status `200`

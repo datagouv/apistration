@@ -1,4 +1,4 @@
-# Recherche du statut étudiant d'un particulier
+# Statut étudiant
 * [404.yaml](404.yaml)
 
   Status `404`
