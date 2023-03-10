@@ -80,7 +80,7 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
     end
 
     context 'when there is an error' do
-      context 'when it is a not a provider error (not found)' do
+      context 'when it is a client error (not found)' do
         let(:error_kind) { :not_found }
 
         it { is_expected.to be_a_failure }
