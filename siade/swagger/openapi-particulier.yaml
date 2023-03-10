@@ -890,9 +890,9 @@ paths:
           code pays de la BCN. Ce champ est facultatif, même s'il est recommandé en
           cas de doublon."
         in: query
+        required: false
         schema:
           type: string
-          required: false
       - name: sexe
         description: Sexe de l'étudiant
         in: query
@@ -1076,7 +1076,7 @@ paths:
         schema:
           type: string
       - name: dateDeNaissance
-        description: 'Format: 2022-12-25'
+        description: 'Date de naissance de l''étudiant. Format: YYYY-MM-DD'
         in: query
         schema:
           type: string
@@ -1084,9 +1084,9 @@ paths:
       - name: lieuDeNaissance
         description: Lieu de naissance de l'étudiant
         in: query
+        required: false
         schema:
           type: string
-          required: false
       - name: sexe
         description: Sexe de l'étudiant
         in: query

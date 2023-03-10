@@ -10,7 +10,7 @@ namespace '/api', constraints: APIParticulierDomainConstraint.new do
 
   get 'open-api.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/openapi-particulier.yaml'))]] }
   get 'france-connect/open-api.yml', to: ->(env) do
-    [200, {}, [File.read(Rails.root.join('swagger/api_particulier_v2_partials/openapi-particulier-france-connect-v2.yaml'))]]
+    [200, {}, [File.read(Rails.root.join('swagger/api_particulier_open_api_static/france-connect-v2.yaml'))]]
   end
 
   namespace '/v2' do

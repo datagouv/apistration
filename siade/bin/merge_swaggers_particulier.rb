@@ -19,6 +19,6 @@ def merge_openapi_paths(base_openapi, partial_openapi)
   base_openapi
 end
 
-partial_path = File.expand_path('../../swagger/api_particulier_v2_partials/openapi-particulier-v2.yaml', __FILE__)
+partial_path = File.expand_path('../../swagger/api_particulier_open_api_static/v2.yaml', __FILE__)
 
 merge_openapi_particulier(partial_path)
