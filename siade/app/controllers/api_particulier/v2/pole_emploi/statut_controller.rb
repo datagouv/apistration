@@ -12,6 +12,10 @@ class APIParticulier::V2::PoleEmploi::StatutController < APIParticulierControlle
 
   private
 
+  def cache_key
+    "#{request.path}:#{params[:identifiant]}"
+  end
+
   def organizer_params
     {
       identifiant_pole_emploi: params[:identifiant],

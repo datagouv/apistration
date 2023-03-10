@@ -1,6 +1,6 @@
 class APIEntreprise::V3AndMore::DGFIP::ChiffresAffairesController < APIEntreprise::V3AndMore::BaseController
   def show
-    organizer = retrieve_payload_data(::DGFIP::ChiffresAffaires, cache: true, cache_key:)
+    organizer = retrieve_payload_data(::DGFIP::ChiffresAffaires, cache: true)
 
     if organizer.success?
       render json: serialize_data(organizer),
@@ -17,10 +17,6 @@ class APIEntreprise::V3AndMore::DGFIP::ChiffresAffairesController < APIEntrepris
       siret: params[:siret],
       user_id: current_user.id
     }
-  end
-
-  def cache_key
-    "dgfip/attestations_fiscales:siret=#{params[:siret]}"
   end
 
   def serializer_module

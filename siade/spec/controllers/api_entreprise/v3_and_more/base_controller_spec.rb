@@ -156,12 +156,15 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
           retrieve_payload_data(
             DummyRetrieverOrganizer,
             cache: true,
-            cache_key: 'keykey',
             expires_in: 1.hour
           )
         end
 
         private
+
+        def cache_key
+          'keykey'
+        end
 
         def organizer_params
           {

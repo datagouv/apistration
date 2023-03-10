@@ -8,7 +8,7 @@ module Cacheable
     after_action :logs_cache_status_to_logstash
   end
 
-  def retrieve_payload_data(retriever, cache: false, expires_in: nil, cache_key: nil)
+  def retrieve_payload_data(retriever, cache: false, expires_in: nil)
     if cache && !bypass_cache?
       @cached_retriever = CacheResourceRetriever.call(
         retriever_organizer: retriever,
@@ -23,6 +23,10 @@ module Cacheable
     else
       retriever.call(params: organizer_params, operation_id:)
     end
+  end
+
+  def cache_key
+    fail NotImplementedError
   end
 
   def bypass_cache?

@@ -12,6 +12,10 @@ class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
 
   protected
 
+  def cache_key
+    request.path
+  end
+
   def serialize_data(organizer)
     if organizer.mocked_data.present?
       organizer.mocked_data[:payload]

@@ -3,6 +3,10 @@ class APIParticulierController < APIController
 
   protected
 
+  def cache_key
+    "#{request.path}:#{organizer_params.to_query}"
+  end
+
   def authenticate_user!
     @token ||= retrieve_token
 
