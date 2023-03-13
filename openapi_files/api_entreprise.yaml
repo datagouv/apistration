@@ -12152,7 +12152,6 @@ paths:
                                 enum:
                                 - M
                                 - F
-                                -
                                 nullable: true
                                 description: Caractère féminin ou masculin de la personne
                                   physique. Cette valeur peut ne pas être renseignée
@@ -12171,11 +12170,11 @@ paths:
                             title: Catégorie de l'unité légale
                             type: string
                             example: GE
+                            nullable: true
                             enum:
                             - GE
                             - ETI
                             - PME
-                            -
                             description: "Il s'agit d'une variable statistique calculée
                               par l'Insee. Elle ne peut prendre que 3 valeurs : \n
                               \n - GE : Grande Entreprise \n - ETI : Entreprise de
@@ -12412,7 +12411,6 @@ paths:
                             enum:
                             - true
                             - false
-                            -
                           date_creation:
                             title: Date de création de l'unité légale
                             type: integer
@@ -13361,7 +13359,6 @@ paths:
                                 enum:
                                 - M
                                 - F
-                                -
                                 nullable: true
                                 description: Caractère féminin ou masculin de la personne
                                   physique. Cette valeur peut ne pas être renseignée
@@ -13380,11 +13377,11 @@ paths:
                             title: Catégorie de l'unité légale
                             type: string
                             example: GE
+                            nullable: true
                             enum:
                             - GE
                             - ETI
                             - PME
-                            -
                             description: "Il s'agit d'une variable statistique calculée
                               par l'Insee. Elle ne peut prendre que 3 valeurs : \n
                               \n - GE : Grande Entreprise \n - ETI : Entreprise de
@@ -13621,7 +13618,6 @@ paths:
                             enum:
                             - true
                             - false
-                            -
                           date_creation:
                             title: Date de création de l'unité légale
                             type: integer
@@ -14571,7 +14567,6 @@ paths:
                                 enum:
                                 - M
                                 - F
-                                -
                                 nullable: true
                                 description: Caractère féminin ou masculin de la personne
                                   physique. Cette valeur peut ne pas être renseignée
@@ -14590,11 +14585,11 @@ paths:
                             title: Catégorie de l'unité légale
                             type: string
                             example: GE
+                            nullable: true
                             enum:
                             - GE
                             - ETI
                             - PME
-                            -
                             description: "Il s'agit d'une variable statistique calculée
                               par l'Insee. Elle ne peut prendre que 3 valeurs : \n
                               \n - GE : Grande Entreprise \n - ETI : Entreprise de
@@ -14831,7 +14826,6 @@ paths:
                             enum:
                             - true
                             - false
-                            -
                           date_creation:
                             title: Date de création de l'unité légale
                             type: integer
@@ -15783,7 +15777,6 @@ paths:
                                 enum:
                                 - M
                                 - F
-                                -
                                 nullable: true
                                 description: Caractère féminin ou masculin de la personne
                                   physique. Cette valeur peut ne pas être renseignée
@@ -15802,11 +15795,11 @@ paths:
                             title: Catégorie de l'unité légale
                             type: string
                             example: GE
+                            nullable: true
                             enum:
                             - GE
                             - ETI
                             - PME
-                            -
                             description: "Il s'agit d'une variable statistique calculée
                               par l'Insee. Elle ne peut prendre que 3 valeurs : \n
                               \n - GE : Grande Entreprise \n - ETI : Entreprise de
@@ -16043,7 +16036,6 @@ paths:
                             enum:
                             - true
                             - false
-                            -
                           date_creation:
                             title: Date de création de l'unité légale
                             type: integer
@@ -16811,7 +16803,6 @@ paths:
                             enum:
                             - M
                             - F
-                            -
                             nullable: true
                             description: Caractère féminin ou masculin de la personne
                               physique. Cette valeur peut ne pas être renseignée pour
@@ -16830,11 +16821,11 @@ paths:
                         title: Catégorie de l'unité légale
                         type: string
                         example: GE
+                        nullable: true
                         enum:
                         - GE
                         - ETI
                         - PME
-                        -
                         description: "Il s'agit d'une variable statistique calculée
                           par l'Insee. Elle ne peut prendre que 3 valeurs : \n \n
                           - GE : Grande Entreprise \n - ETI : Entreprise de Taille
@@ -17058,7 +17049,6 @@ paths:
                         enum:
                         - true
                         - false
-                        -
                       date_creation:
                         title: Date de création de l'unité légale
                         type: integer
@@ -17580,7 +17570,6 @@ paths:
                             enum:
                             - M
                             - F
-                            -
                             nullable: true
                             description: Caractère féminin ou masculin de la personne
                               physique. Cette valeur peut ne pas être renseignée pour
@@ -17599,11 +17588,11 @@ paths:
                         title: Catégorie de l'unité légale
                         type: string
                         example: GE
+                        nullable: true
                         enum:
                         - GE
                         - ETI
                         - PME
-                        -
                         description: "Il s'agit d'une variable statistique calculée
                           par l'Insee. Elle ne peut prendre que 3 valeurs : \n \n
                           - GE : Grande Entreprise \n - ETI : Entreprise de Taille
@@ -17829,7 +17818,6 @@ paths:
                         enum:
                         - true
                         - false
-                        -
                       date_creation:
                         title: Date de création de l'unité légale
                         type: integer
@@ -21412,9 +21400,8 @@ paths:
                             type: string
                             title: Description associé au code
                             example: La délivrance de l'attestation de vigilance a
-                              été refusée par l'Urssaf car la situation de l'entreprise
-                              n'entre pas dans le cadre précis de délivrance. Consulter
-                              la documentation métier pour en savoir plus.
+                              été refusée par l'Urssaf car l'entité n'est pas à jour
+                              de ses cotisations sociales.
                         required:
                         - code
                         - libelle
