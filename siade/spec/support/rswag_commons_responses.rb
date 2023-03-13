@@ -26,7 +26,6 @@ module RSWagCommonsResponses
     security [jwt_bearer_token: []]
   end
 
-  # rubocop:disable RSpec/VariableName
   def cacheable_request
     parameter name: 'Cache-Control',
       in: :header,
@@ -35,7 +34,6 @@ module RSWagCommonsResponses
 
     let(:'Cache-Control') { '' }
   end
-  # rubocop:enable RSpec/VariableName
 
   def cacheable_response
     header 'X-Response-Cached',

@@ -18,7 +18,7 @@ RSpec.describe BanqueDeFrance::BilansEntreprise::RetrieveDictionariesFromCacheOr
     it { is_expected.to be_success }
 
     it 'retrieves all dictionaries for each year' do
-      expect(call.dictionaries.keys).to contain_exactly(*%w[2020 2021])
+      expect(call.dictionaries.keys).to match_array(%w[2020 2021])
     end
 
     it 'calls DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote for each year' do

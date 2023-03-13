@@ -427,7 +427,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
     end
 
     it 'throttles the resources' do
-      expect(all_routes.uniq).to contain_exactly(*throttled_endpoints)
+      expect(all_routes.uniq).to match_array(throttled_endpoints)
     end
   end
 end
