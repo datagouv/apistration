@@ -7,7 +7,7 @@ class APIEntreprise::V2::CertificatsRGEADEMEController < APIEntreprise::V2::Base
         status: extract_http_code(organizer)
     else
       render json: ErrorsSerializer.new(organizer.errors, format: :json_api).as_json,
-      status: extract_http_code(organizer)
+        status: extract_http_code(organizer)
     end
   end
 
