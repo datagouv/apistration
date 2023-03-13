@@ -98,7 +98,6 @@ insee:
           enum:
             - "M"
             - "F"
-            - null
           nullable: true
           description: "Caractère féminin ou masculin de la personne
             physique. Cette valeur peut ne pas être renseignée
@@ -107,11 +106,11 @@ insee:
       title: "Catégorie de l'unité légale"
       type: "string"
       example: "GE"
+      nullable: true
       enum:
         - "GE"
         - "ETI"
         - "PME"
-        - null
       description: "Il s'agit d'une
         variable statistique calculée par l'Insee. Elle ne peut
         prendre que 3 valeurs :
@@ -374,7 +373,6 @@ insee:
       enum:
         - true
         - false
-        - null
     date_creation: &insee_date_creation
       title: "Date de création de l'unité légale"
       type: "integer"
