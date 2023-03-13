@@ -67,6 +67,7 @@ class ErrorsBackend
       '28' => 'Commission Européenne',
       '29' => 'DJEPVA',
       '30' => 'MEN',
+      '31' => 'GIP-MDS',
       '50' => 'FranceConnect'
     }
   end
