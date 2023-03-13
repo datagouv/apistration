@@ -1,0 +1,119 @@
+require_relative '../provider_stubs'
+
+# rubocop:disable Metrics/ModuleLength
+module ProviderStubs::GIPMDS
+  def mock_gip_mds_authenticate
+    stub_request(:post, "#{Siade.credentials[:gip_mds_domain]}/token").and_return(
+      status: 200,
+      body: {
+        access_token: 'access_token',
+        expires_in: 3600,
+        token_type: 'Bearer'
+      }.to_json
+    )
+  end
+
+  def mock_gip_mds_not_found
+    stub_request(:get, %r{#{Siade.credentials[:gip_mds_domain]}/rcd-api/1.0.0/effectifs}).and_return(
+      status: 404
+    )
+  end
+
+  # rubocop:disable Metrics/MethodLength
+  def mock_gip_mds_annuel_effectifs(siren:, year:)
+    stub_request(:get, "#{Siade.credentials[:gip_mds_domain]}/rcd-api/1.0.0/effectifs").with(
+      query: {
+        codeOPSDemandeur: '00000DINUM',
+        dateHeure: Time.zone.now.iso8601,
+        source: 'RA;RG',
+        nature: 'A01',
+        siren:,
+        periode: "#{year}1231"
+      },
+      headers: {
+        'Content-Type' => 'application/json',
+        'Authorization' => 'Bearer access_token'
+      }
+    ).and_return(
+      status: 200,
+      body: gip_mds_stubbed_payload_for_annuel(siren:, year:).to_json
+    )
+  end
+
+  def mock_gip_mds_mensuel_effectifs(siret:, year:, month:)
+    stub_request(:get, "#{Siade.credentials[:gip_mds_domain]}/rcd-api/1.0.0/effectifs").with(
+      query: {
+        codeOPSDemandeur: '00000DINUM',
+        dateHeure: Time.zone.now.iso8601,
+        source: 'RA;RG',
+        nature: 'M01',
+        siret:,
+        periode: "#{year}#{month}01"
+      },
+      headers: {
+        'Content-Type' => 'application/json',
+        'Authorization' => 'Bearer access_token'
+      }
+    ).and_return(
+      status: 200,
+      body: gip_mds_stubbed_payload_for_mensuel(siret:, year:, month:).to_json
+    )
+  end
+
+  def gip_mds_stubbed_payload_for_annuel(siren:, year:, regime_agricole_effectifs: '12.34', regime_general_effectifs: '56.78')
+    [
+      build_gip_mds_effectif_payload(
+        effectifs: regime_agricole_effectifs
+      ).merge(
+        siren:,
+        periode: "#{year}1231",
+        nature: 'A01',
+        source: 'RA'
+      ),
+      build_gip_mds_effectif_payload(
+        effectifs: regime_general_effectifs
+      ).merge(
+        siren:,
+        nature: 'A01',
+        periode: "#{year}1231",
+        source: 'RG'
+      )
+    ]
+  end
+
+  def gip_mds_stubbed_payload_for_mensuel(siret:, year:, month:, regime_agricole_effectifs: '12.34', regime_general_effectifs: '56.78')
+    [
+      build_gip_mds_effectif_payload(
+        effectifs: regime_agricole_effectifs
+      ).merge(
+        siret:,
+        periode: "#{year}#{month}01",
+        nature: 'M01',
+        source: 'RA'
+      ),
+      build_gip_mds_effectif_payload(
+        effectifs: regime_general_effectifs
+      ).merge(
+        siret:,
+        nature: 'M01',
+        periode: "#{year}#{month}01",
+        source: 'RG'
+      )
+    ]
+  end
+  # rubocop:enable Metrics/MethodLength
+
+  def build_gip_mds_effectif_payload(effectifs:, updated_at: nil)
+    if effectifs
+      {
+        effectifs:,
+        miseAjourRCD: (updated_at || Time.zone.now).strftime('%Y-%m-%d')
+      }
+    else
+      {
+        effectifs: 'NC'
+      }
+    end
+  end
+end
+# rubocop:enable Metrics/ModuleLength
