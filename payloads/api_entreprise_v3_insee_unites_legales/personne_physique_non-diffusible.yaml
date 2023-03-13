@@ -1,0 +1,60 @@
+---
+params:
+  siren: '350042925'
+  context: 'Contexte de test'
+  recipient: '13002526500013'
+  object: 'Marché Numéro 125'
+status: 200
+payload: |-
+  {
+    "data": {
+      "siren": "350042925",
+      "siret_siege_social": "35004292500031",
+      "categorie_entreprise": "PME",
+      "diffusable_commercialement": false,
+      "type": "personne_physique",
+      "personne_morale_attributs": {
+        "raison_sociale": null,
+        "sigle": null
+      },
+      "personne_physique_attributs": {
+        "pseudonyme": null,
+        "prenom_usuel": "AURELIE",
+        "prenom_1": "AURELIE",
+        "prenom_2": "JAQUELINE",
+        "prenom_3": "NADIA",
+        "prenom_4": null,
+        "nom_usage": null,
+        "nom_naissance": "MOREAU",
+        "sexe": "F"
+      },
+      "forme_juridique": {
+        "code": "1000",
+        "libelle": "Entrepreneur individuel"
+      },
+      "activite_principale": {
+        "code": "74.10Z",
+        "nomenclature": "NAFRev2",
+        "libelle": "Activités spécialisées de design"
+      },
+      "tranche_effectif_salarie": {
+        "de": null,
+        "a": null,
+        "code": "NN",
+        "date_reference": null,
+        "intitule": "Unités non employeuses"
+      },
+      "etat_administratif": "C",
+      "economie_sociale_et_solidaire": null,
+      "date_cessation": 1656021600,
+      "date_creation": 599612400
+    },
+    "links": {
+      "siege_social": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/35004292500031",
+      "siege_social_adresse": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/35004292500031/adresse"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1655762400,
+      "redirect_from_siren": null
+    }
+  }

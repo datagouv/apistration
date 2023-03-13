@@ -1,0 +1,60 @@
+---
+params:
+  siren: '552049447'
+  context: 'Contexte de test'
+  recipient: '13002526500013'
+  object: 'Marchés publics 123'
+status: 200
+payload: |-
+  {
+    "data": {
+      "siren": "552049447",
+      "siret_siege_social": "55204944776279",
+      "categorie_entreprise": "GE",
+      "diffusable_commercialement": true,
+      "type": "personne_morale",
+      "personne_morale_attributs": {
+        "raison_sociale": "SOCIETE NATIONALE SNCF",
+        "sigle": "SNCF"
+      },
+      "personne_physique_attributs": {
+        "pseudonyme": null,
+        "prenom_usuel": null,
+        "prenom_1": null,
+        "prenom_2": null,
+        "prenom_3": null,
+        "prenom_4": null,
+        "nom_usage": null,
+        "nom_naissance": null,
+        "sexe": null
+      },
+      "forme_juridique": {
+        "code": "5599",
+        "libelle": "SA à conseil d'administration (s.a.i.)"
+      },
+      "activite_principale": {
+        "code": "49.10Z",
+        "nomenclature": "NAFRev2",
+        "libelle": "Transport ferroviaire interurbain de voyageurs"
+      },
+      "tranche_effectif_salarie": {
+        "de": 10000,
+        "a": null,
+        "code": "53",
+        "date_reference": "2020",
+        "intitule": "10 000 salariés et plus"
+      },
+      "etat_administratif": "A",
+      "economie_sociale_et_solidaire": false,
+      "date_cessation": null,
+      "date_creation": -473389200
+    },
+    "links": {
+      "siege_social": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/55204944776279",
+      "siege_social_adresse": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/55204944776279/adresse"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1673478000,
+      "redirect_from_siren": null
+    }
+  }

@@ -1,0 +1,60 @@
+---
+params:
+  siren: '350051447'
+  context: 'Contexte de test'
+  recipient: '13002526500013'
+  object: 'Marchés publics 132'
+status: 200
+payload: |-
+  {
+    "data": {
+      "siren": "350051447",
+      "siret_siege_social": "35005144700018",
+      "categorie_entreprise": null,
+      "diffusable_commercialement": true,
+      "type": "personne_morale",
+      "personne_morale_attributs": {
+        "raison_sociale": "SCI SERGENT",
+        "sigle": null
+      },
+      "personne_physique_attributs": {
+        "pseudonyme": null,
+        "prenom_usuel": null,
+        "prenom_1": null,
+        "prenom_2": null,
+        "prenom_3": null,
+        "prenom_4": null,
+        "nom_usage": null,
+        "nom_naissance": null,
+        "sexe": null
+      },
+      "forme_juridique": {
+        "code": "6540",
+        "libelle": "Société civile immobilière"
+      },
+      "activite_principale": {
+        "code": "70.2C",
+        "nomenclature": "NAF1993",
+        "libelle": "ancienne révision NAF (NAF1993) non supportée"
+      },
+      "tranche_effectif_salarie": {
+        "de": null,
+        "a": null,
+        "code": null,
+        "date_reference": null,
+        "intitule": null
+      },
+      "etat_administratif": "C",
+      "economie_sociale_et_solidaire": null,
+      "date_cessation": 816390000,
+      "date_creation": 605746800
+    },
+    "links": {
+      "siege_social": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/35005144700018",
+      "siege_social_adresse": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/35005144700018/adresse"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1671404400,
+      "redirect_from_siren": null
+    }
+  }

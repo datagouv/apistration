@@ -1,0 +1,60 @@
+---
+params:
+  siren: '775672272'
+  context: 'Contexte de test'
+  recipient: '13002526500013'
+  object: 'Demande de subventions 135'
+status: 200
+payload: |-
+  {
+    "data": {
+      "siren": "775672272",
+      "siret_siege_social": "77567227221138",
+      "categorie_entreprise": "GE",
+      "diffusable_commercialement": true,
+      "type": "personne_morale",
+      "personne_morale_attributs": {
+        "raison_sociale": "CROIX ROUGE FRANCAISE",
+        "sigle": "CRF"
+      },
+      "personne_physique_attributs": {
+        "pseudonyme": null,
+        "prenom_usuel": null,
+        "prenom_1": null,
+        "prenom_2": null,
+        "prenom_3": null,
+        "prenom_4": null,
+        "nom_usage": null,
+        "nom_naissance": null,
+        "sexe": null
+      },
+      "forme_juridique": {
+        "code": "9230",
+        "libelle": "Association déclarée, reconnue d'utilité publique"
+      },
+      "activite_principale": {
+        "code": "88.99B",
+        "nomenclature": "NAFRev2",
+        "libelle": "Action sociale sans hébergement n.c.a."
+      },
+      "tranche_effectif_salarie": {
+        "de": 10000,
+        "a": null,
+        "code": "53",
+        "date_reference": "2020",
+        "intitule": "10 000 salariés et plus"
+      },
+      "etat_administratif": "A",
+      "economie_sociale_et_solidaire": false,
+      "date_cessation": null,
+      "date_creation": -556765200
+    },
+    "links": {
+      "siege_social": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/77567227221138",
+      "siege_social_adresse": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/77567227221138/adresse"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1678143600,
+      "redirect_from_siren": null
+    }
+  }

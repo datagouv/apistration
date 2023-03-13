@@ -1,0 +1,20 @@
+---
+params:
+  siret: '00000000000000'
+  context: 'Context de test'
+  recipient: '13002526500013'
+  object: 'Marché Numéro 127'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "04003",
+        "title": "Entité non trouvée",
+        "detail": "Le siret indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel",
+        "meta": {
+          "provider": "INSEE"
+        }
+      }
+    ]
+  }

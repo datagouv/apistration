@@ -1,0 +1,60 @@
+---
+params:
+  siren: '424179364'
+  context: 'Contexte de test'
+  recipient: '13002526500013'
+  object: 'Demande de subventions 135'
+status: 200
+payload: |-
+  {
+    "data": {
+      "siren": "424179364",
+      "siret_siege_social": "42417936400023",
+      "categorie_entreprise": "PME",
+      "diffusable_commercialement": true,
+      "type": "personne_morale",
+      "personne_morale_attributs": {
+        "raison_sociale": "ASSOCIATION SOCIO-CULTURELLE - LE REPERE",
+        "sigle": null
+      },
+      "personne_physique_attributs": {
+        "pseudonyme": null,
+        "prenom_usuel": null,
+        "prenom_1": null,
+        "prenom_2": null,
+        "prenom_3": null,
+        "prenom_4": null,
+        "nom_usage": null,
+        "nom_naissance": null,
+        "sexe": null
+      },
+      "forme_juridique": {
+        "code": "9260",
+        "libelle": "Association de droit local (Bas-Rhin, Haut-Rhin et Moselle)"
+      },
+      "activite_principale": {
+        "code": "94.99Z",
+        "nomenclature": "NAFRev2",
+        "libelle": "Autres organisations fonctionnant par adhésion volontaire"
+      },
+      "tranche_effectif_salarie": {
+        "de": null,
+        "a": null,
+        "code": "NN",
+        "date_reference": null,
+        "intitule": "Unités non employeuses"
+      },
+      "etat_administratif": "A",
+      "economie_sociale_et_solidaire": true,
+      "date_cessation": null,
+      "date_creation": 931298400
+    },
+    "links": {
+      "siege_social": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/42417936400023",
+      "siege_social_adresse": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/42417936400023/adresse"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1635458400,
+      "redirect_from_siren": null
+    }
+  }
