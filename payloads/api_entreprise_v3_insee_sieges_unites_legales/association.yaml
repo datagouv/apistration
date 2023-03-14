@@ -1,0 +1,107 @@
+---
+params:
+  siren: '775672272'
+  context: 'Contexte de test'
+  recipient: '13002526500013'
+  object: 'Demande de subventions 135'
+status: 200
+payload: |-
+  {
+    "data": {
+      "siret": "77567227221138",
+      "siege_social": true,
+      "etat_administratif": "A",
+      "date_fermeture": null,
+      "enseigne": null,
+      "activite_principale": {
+        "code": "88.99B",
+        "nomenclature": "NAFRev2",
+        "libelle": "Action sociale sans hébergement n.c.a."
+      },
+      "tranche_effectif_salarie": {
+        "de": null,
+        "a": null,
+        "code": "NN",
+        "date_reference": null,
+        "intitule": "Unités non employeuses"
+      },
+      "diffusable_commercialement": true,
+      "date_creation": 1138143600,
+      "unite_legale": {
+        "siren": "775672272",
+        "siret_siege_social": "77567227221138",
+        "type": "personne_morale",
+        "personne_morale_attributs": {
+          "raison_sociale": "CROIX ROUGE FRANCAISE",
+          "sigle": "CRF"
+        },
+        "personne_physique_attributs": {
+          "pseudonyme": null,
+          "prenom_usuel": null,
+          "prenom_1": null,
+          "prenom_2": null,
+          "prenom_3": null,
+          "prenom_4": null,
+          "nom_usage": null,
+          "nom_naissance": null,
+          "sexe": null
+        },
+        "categorie_entreprise": "GE",
+        "diffusable_commercialement": true,
+        "forme_juridique": {
+          "code": "9230",
+          "libelle": "Association déclarée, reconnue d'utilité publique"
+        },
+        "activite_principale": {
+          "code": "88.99B",
+          "nomenclature": "NAFRev2",
+          "libelle": "Action sociale sans hébergement n.c.a."
+        },
+        "tranche_effectif_salarie": {
+          "de": 10000,
+          "a": null,
+          "code": "53",
+          "date_reference": "2020",
+          "intitule": "10 000 salariés et plus"
+        },
+        "economie_sociale_et_solidaire": false,
+        "date_creation": -556765200,
+        "etat_administratif": "A",
+        "date_derniere_mise_a_jour": 1678143600,
+        "redirect_from_siren": null
+      },
+      "adresse": {
+        "siret": "77567227221138",
+        "complement_adresse": "SITE CROIX ROUGE",
+        "numero_voie": "98",
+        "indice_repetition_voie": null,
+        "type_voie": "RUE",
+        "libelle_voie": "DIDOT",
+        "code_postal": "75014",
+        "libelle_commune": "PARIS 14",
+        "libelle_commune_etranger": null,
+        "distribution_speciale": null,
+        "code_commune": "75114",
+        "code_cedex": "75694",
+        "libelle_cedex": "PARIS CEDEX 14",
+        "code_pays_etranger": null,
+        "libelle_pays_etranger": null,
+        "acheminement_postal": {
+          "l1": "CROIX ROUGE FRANCAISE",
+          "l2": "",
+          "l3": "SITE CROIX ROUGE",
+          "l4": "98 RUE DIDOT",
+          "l5": "",
+          "l6": "75694 PARIS CEDEX 14",
+          "l7": "FRANCE"
+        }
+      }
+    },
+    "links": {
+      "unite_legale": "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/775672272"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1676329200,
+      "redirect_from_siret": null
+    }
+  }
