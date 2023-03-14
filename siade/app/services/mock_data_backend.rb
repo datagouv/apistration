@@ -1,16 +1,13 @@
-require 'singleton'
 require 'yaml'
 require 'json'
 
 class MockDataBackend
-  include Singleton
-
   def self.get_response_for(operation_id, params)
-    instance.get_response_for(operation_id, params)
+    new.get_response_for(operation_id, params)
   end
 
   def self.reset!
-    instance.reset!
+    new.reset!
   end
 
   def reset!

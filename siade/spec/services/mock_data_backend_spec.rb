@@ -1,15 +1,22 @@
 RSpec.describe MockDataBackend, type: :service do
-  let(:instance) { described_class.instance }
+  let(:instance) { described_class.new }
+
+  let(:github_client) { instance_double(Octokit::Client) }
 
   def mock_sha_github(sha)
-    allow(instance).to receive(:extract_content_from_github).with(sha).and_return(
-      Rails.root.join("spec/fixtures/github_mocks/endpoints#{sha}.yaml").read
+    allow(github_client).to receive(:blob).with('etalab/siade_staging_data', sha).and_return(
+      {
+        encoding: 'base64',
+        content: Base64.encode64(Rails.root.join("spec/fixtures/github_mocks/endpoints#{sha}.yaml").read)
+      }
     )
   end
 
   before do
-    allow(instance).to receive(:fetch_payloads_paths_from_github).and_return(
-      [
+    allow(Octokit::Client).to receive(:new).and_return(github_client)
+
+    allow(github_client).to receive(:tree).and_return(
+      tree: [
         {
           sha: '01',
           path: 'payloads/whatever_endpoint1',
