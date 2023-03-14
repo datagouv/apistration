@@ -16,8 +16,10 @@ if ARGV[0].nil?
   puts "Usage: #{$0} <operation_id>"
   exit 1
 elsif ARGV[0].start_with?('api_entreprise')
+  api = 'api_entreprise'
   schema = load_schema('api_entreprise')
 elsif ARGV[0].start_with?('api_particulier')
+  api = 'api_particulier'
   schema = load_schema('api_particulier')
 else
   puts "Unknown operation_id: #{ARGV[0]}"
@@ -34,6 +36,15 @@ if @operation_id_schema.nil?
 end
 
 @payload_folder_path = File.join(root_path, 'payloads', ARGV[0])
+@operation_id_params = @operation_id_schema['parameters']
+
+if api == 'api_entreprise'
+  @operation_id_params = @operation_id_params.to_a.delete_if do |parameter|
+    %w[context object recipient].include?(parameter.name) ||
+      parameter.in != 'path'
+  end
+end
+
 
 FileUtils.mkdir_p(@payload_folder_path)
 
@@ -44,7 +55,7 @@ def create_payload_file(name, status, payload)
 
   File.open(file_path, 'w') do |f|
     data = {
-      'params' => (@operation_id_schema['parameters'].each_with_object({}) do |param, hash|
+      'params' => (@operation_id_params.each_with_object({}) do |param, hash|
         hash[param['name']] = param['example'] || 'example'
       end),
       'status' => status.to_i,
