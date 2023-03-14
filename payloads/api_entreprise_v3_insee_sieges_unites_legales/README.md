@@ -8,10 +8,7 @@
 
   ```json
   {
-    "siren": "775672272",
-    "context": "Contexte de test",
-    "recipient": "13002526500013",
-    "object": "Demande de subventions 135"
+    "siren": "775672272"
   }
   ```
 
@@ -146,10 +143,7 @@
 
   ```json
   {
-    "siren": "424179364",
-    "context": "Contexte de test",
-    "recipient": "13002526500013",
-    "object": "Demande de subventions 135"
+    "siren": "424179364"
   }
   ```
 
@@ -284,10 +278,7 @@
 
   ```json
   {
-    "siren": "552049447",
-    "context": "Contexte de test",
-    "recipient": "13002526500013",
-    "object": "Marchés publics 123"
+    "siren": "552049447"
   }
   ```
 
@@ -422,10 +413,7 @@
 
   ```json
   {
-    "siren": "350051447",
-    "context": "Contexte de test",
-    "recipient": "13002526500013",
-    "object": "Marchés publics 132"
+    "siren": "350051447"
   }
   ```
 
@@ -560,10 +548,7 @@
 
   ```json
   {
-    "siren": "478464803",
-    "context": "Contexte de test",
-    "recipient": "13002526500013",
-    "object": "Marché Numéro 126"
+    "siren": "478464803"
   }
   ```
 
@@ -698,10 +683,7 @@
 
   ```json
   {
-    "siren": "350042925",
-    "context": "Contexte de test",
-    "recipient": "13002526500013",
-    "object": "Marché Numéro 125"
+    "siren": "350042925"
   }
   ```
 

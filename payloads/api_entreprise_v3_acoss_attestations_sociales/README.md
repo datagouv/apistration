@@ -8,10 +8,7 @@
 
   ```json
   {
-    "siren": "418166096",
-    "context": "Context de test",
-    "recipient": "13002526500013",
-    "object": "Marché Numéro 127"
+    "siren": "418166096"
   }
   ```
 
@@ -57,10 +54,7 @@
 
   ```json
   {
-    "siren": "000000000",
-    "context": "Context de test",
-    "recipient": "13002526500013",
-    "object": "Marché Numéro 127"
+    "siren": "000000000"
   }
   ```
 

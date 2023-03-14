@@ -1,9 +1,6 @@
 ---
 params:
   siret: '30613890001294'
-  context: 'Context de test'
-  recipient: '13002526500013'
-  object: 'Marché Numéro 127'
 status: 200
 payload: |-
   {

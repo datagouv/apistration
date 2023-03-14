@@ -1,9 +1,6 @@
 ---
 params:
   siren: '424179364'
-  context: 'Contexte de test'
-  recipient: '13002526500013'
-  object: 'Demande de subventions 135'
 status: 200
 payload: |-
   {

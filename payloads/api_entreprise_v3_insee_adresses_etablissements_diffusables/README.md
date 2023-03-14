@@ -8,10 +8,7 @@
 
   ```json
   {
-    "siret": "77567227221138",
-    "context": "Contexte de test",
-    "recipient": "13002526500013",
-    "object": "Demande de subventions 135"
+    "siret": "77567227221138"
   }
   ```
 
@@ -81,10 +78,7 @@
 
   ```json
   {
-    "siret": "42417936400023",
-    "context": "Contexte de test",
-    "recipient": "13002526500013",
-    "object": "Demande de subventions 135"
+    "siret": "42417936400023"
   }
   ```
 
@@ -154,10 +148,7 @@
 
   ```json
   {
-    "siret": "55204944776279",
-    "context": "Contexte de test",
-    "recipient": "13002526500013",
-    "object": "Marchés publics 123"
+    "siret": "55204944776279"
   }
   ```
 
@@ -227,10 +218,7 @@
 
   ```json
   {
-    "siret": "35005144700018",
-    "context": "Contexte de test",
-    "recipient": "13002526500013",
-    "object": "Marchés publics 132"
+    "siret": "35005144700018"
   }
   ```
 
@@ -300,10 +288,7 @@
 
   ```json
   {
-    "siret": "47846480300319",
-    "context": "Contexte de test",
-    "recipient": "13002526500013",
-    "object": "Marché Numéro 126"
+    "siret": "47846480300319"
   }
   ```
 
@@ -373,10 +358,7 @@
 
   ```json
   {
-    "siret": "35004292500031",
-    "context": "Contexte de test",
-    "recipient": "13002526500013",
-    "object": "Marché Numéro 125"
+    "siret": "35004292500031"
   }
   ```
 

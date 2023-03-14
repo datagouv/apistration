@@ -21,6 +21,14 @@ RSpec.describe 'Payload specs' do
             expect([200, 403, 404, 500, 502, 503, 509]).to include(data['status'])
           end
 
+          if operation_id.split('/')[-1].start_with?('api_entreprise')
+            it 'does not have tracking params' do
+              param_keys = YAML.load_file(payload)['params'].keys
+
+              expect(param_keys).not_to include('context', 'recipient', 'object')
+            end
+          end
+
           it 'has valid params according to OpenAPI file' do
             params = YAML.load_file(payload)['params']
             path_spec = extract_path_spec_from_schema(File.basename(operation_id), load_schema(operation_id))

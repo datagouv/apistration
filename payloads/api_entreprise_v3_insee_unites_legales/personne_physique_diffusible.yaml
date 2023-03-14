@@ -1,9 +1,6 @@
 ---
 params:
   siren: '478464803'
-  context: 'Contexte de test'
-  recipient: '13002526500013'
-  object: 'Marché Numéro 126'
 status: 200
 payload: |-
   {
