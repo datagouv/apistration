@@ -30,7 +30,7 @@ module OpenApiHelpers
           when 'api_particulier'
             'https://staging.particulier.api.gouv.fr/api/open-api.yml'
           else
-            'https://staging.entreprise.api.gouv.fr/v3/openapi.yaml'
+            'https://staging.entreprise.api.gouv.fr/open-api.yml'
           end
 
     $remote_schemas ||= {}
