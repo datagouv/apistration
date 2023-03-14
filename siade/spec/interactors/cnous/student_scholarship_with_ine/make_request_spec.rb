@@ -3,13 +3,11 @@ RSpec.describe CNOUS::StudentScholarshipWithINE::MakeRequest, type: :make_reques
 
   let(:params) do
     {
-      ine:,
-      user_id:
+      ine:
     }
   end
 
   let(:ine) { '1234567890G' }
-  let(:user_id) { SecureRandom.uuid }
   let(:token) { 'dummy_oauth_token' }
 
   let!(:stubbed_request) do

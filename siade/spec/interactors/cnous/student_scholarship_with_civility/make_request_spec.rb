@@ -6,16 +6,16 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
       family_name:,
       first_names:,
       birth_date:,
-      gender:,
-      user_id:
+      birth_place:,
+      gender:
     }
   end
 
   let(:family_name) { 'Dupont' }
   let(:first_names) { %w[Jean Charlie] }
   let(:birth_date) { '2000-01-02' }
+  let(:birth_place) { 'Angers' }
   let(:gender) { 'M' }
-  let(:user_id) { SecureRandom.uuid }
 
   let(:token) { 'dummy_oauth_token' }
 
@@ -25,6 +25,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
         lastName: family_name,
         firstNames: 'Jean, Charlie',
         birthDate: '02/01/2000',
+        birthPlace: birth_place,
         civility: gender
       }.to_json,
       headers: {

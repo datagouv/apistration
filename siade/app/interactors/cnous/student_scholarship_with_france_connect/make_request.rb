@@ -4,7 +4,7 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
   protected
 
   def request_body
-    context.params.except(:user_id).to_json
+    context.params.to_json
   end
 
   def request_params

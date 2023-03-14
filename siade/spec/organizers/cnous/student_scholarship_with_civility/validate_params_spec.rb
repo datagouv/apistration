@@ -7,8 +7,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::ValidateParams, type: :val
       first_names:,
       birth_date:,
       birth_place:,
-      gender:,
-      user_id:
+      gender:
     }
   end
 
@@ -17,8 +16,6 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::ValidateParams, type: :val
   let(:birth_date) { '2000-01-01' }
   let(:birth_place) { 'Paris' }
   let(:gender) { 'M' }
-
-  let(:user_id) { SecureRandom.uuid }
 
   context 'with valid attributes' do
     it { is_expected.to be_a_success }

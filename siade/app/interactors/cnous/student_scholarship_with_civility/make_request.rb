@@ -10,7 +10,7 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
       birthDate: birth_date,
       birthPlace: birth_place,
       civility: gender
-    }.compact
+    }
   end
 
   def request_uri

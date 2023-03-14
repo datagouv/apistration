@@ -1,10 +1,9 @@
 RSpec.describe CNOUS::StudentScholarshipWithFranceConnect::MakeRequest, type: :make_request do
   subject(:make_call) { described_class.call(params:, token:) }
 
-  let(:params) { default_france_connect_identity_attributes.merge(user_id:) }
+  let(:params) { default_france_connect_identity_attributes }
   let(:body) { default_france_connect_identity_attributes.to_json }
 
-  let(:user_id) { SecureRandom.uuid }
   let(:token) { 'dummy_oauth_token' }
 
   let!(:stubbed_request) do
