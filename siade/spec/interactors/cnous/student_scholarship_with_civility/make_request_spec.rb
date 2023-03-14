@@ -15,7 +15,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
   let(:first_names) { %w[Jean Charlie] }
   let(:birth_date) { '2000-01-02' }
   let(:birth_place) { 'Angers' }
-  let(:gender) { 'M' }
+  let(:gender) { 'm' }
 
   let(:token) { 'dummy_oauth_token' }
 
@@ -26,7 +26,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
         firstNames: 'Jean, Charlie',
         birthDate: '02/01/2000',
         birthPlace: birth_place,
-        civility: gender
+        civility: 'M'
       }.to_json,
       headers: {
         'Authorization' => "Bearer #{token}"

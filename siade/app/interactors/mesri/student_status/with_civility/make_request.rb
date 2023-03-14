@@ -17,7 +17,7 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
       family_name:,
       birthdate: birthday_date,
       birthplace: birth_place,
-      gender: context.params[:gender] == 'm' ? 'male' : 'female'
+      gender: gender.downcase == 'm' ? 'male' : 'female'
     }
   end
 
@@ -36,7 +36,7 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
       nomFamille: family_name,
       prenom1: first_name,
       dateNaissance: birth_date,
-      sexe: gender,
+      sexe: gender.downcase == 'm' ? '1' : '2',
       lieuNaissance: birth_place.presence
     }.compact
   end
@@ -64,6 +64,6 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
   end
 
   def gender
-    context.params[:gender] == 'm' ? '1' : '2'
+    context.params[:gender]
   end
 end

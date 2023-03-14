@@ -17,7 +17,7 @@ RSpec.describe MESRI::StudentStatus::WithCivility::MakeRequest, type: :make_requ
     let(:first_name) { 'Jean' }
     let(:birth_date) { '2000-01-01' }
     let(:birth_place) { '' }
-    let(:gender) { 'm' }
+    let(:gender) { 'M' }
     let(:token_id) { SecureRandom.uuid }
 
     let!(:stubbed_request) do

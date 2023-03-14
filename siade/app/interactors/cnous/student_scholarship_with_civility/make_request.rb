@@ -36,6 +36,6 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
   end
 
   def gender
-    context.params[:gender]
+    context.params[:gender].upcase
   end
 end
