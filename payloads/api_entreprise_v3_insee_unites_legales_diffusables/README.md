@@ -343,7 +343,7 @@
       "siege_social_adresse": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/35005144700018/adresse"
     },
     "meta": {
-      "date_derniere_mise_a_jour": null,
+      "date_derniere_mise_a_jour": 1671404400,
       "redirect_from_siren": null
     }
   }

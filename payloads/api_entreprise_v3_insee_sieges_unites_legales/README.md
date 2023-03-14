@@ -1,4 +1,4 @@
-# Données établissement diffusible
+# Données siège social
 * [association.yaml](association.yaml)
 
   Status `200`
@@ -8,7 +8,7 @@
 
   ```json
   {
-    "siret": "77567227221138",
+    "siren": "775672272",
     "context": "Contexte de test",
     "recipient": "13002526500013",
     "object": "Demande de subventions 135"
@@ -132,7 +132,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/diffusibles/77567227221138"
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/775672272/siege_social"
   ```
 
   </p>
@@ -146,7 +146,7 @@
 
   ```json
   {
-    "siret": "42417936400023",
+    "siren": "424179364",
     "context": "Contexte de test",
     "recipient": "13002526500013",
     "object": "Demande de subventions 135"
@@ -270,7 +270,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/diffusibles/42417936400023"
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/424179364/siege_social"
   ```
 
   </p>
@@ -284,7 +284,7 @@
 
   ```json
   {
-    "siret": "55204944776279",
+    "siren": "552049447",
     "context": "Contexte de test",
     "recipient": "13002526500013",
     "object": "Marchés publics 123"
@@ -408,7 +408,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/diffusibles/55204944776279"
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/552049447/siege_social"
   ```
 
   </p>
@@ -422,7 +422,7 @@
 
   ```json
   {
-    "siret": "35005144700018",
+    "siren": "350051447",
     "context": "Contexte de test",
     "recipient": "13002526500013",
     "object": "Marchés publics 132"
@@ -546,7 +546,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/diffusibles/35005144700018"
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/350051447/siege_social"
   ```
 
   </p>
@@ -560,7 +560,7 @@
 
   ```json
   {
-    "siret": "47846480300319",
+    "siren": "478464803",
     "context": "Contexte de test",
     "recipient": "13002526500013",
     "object": "Marché Numéro 126"
@@ -684,21 +684,21 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/diffusibles/47846480300319"
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/478464803/siege_social"
   ```
 
   </p>
   </details>
 * [personne_physique_non-diffusible.yaml](personne_physique_non-diffusible.yaml)
 
-  Status `404`
+  Status `200`
 
   <details><summary>Paramètres</summary>
   <p>
 
   ```json
   {
-    "siret": "35004292500031",
+    "siren": "350042925",
     "context": "Contexte de test",
     "recipient": "13002526500013",
     "object": "Marché Numéro 125"
@@ -713,16 +713,103 @@
 
   ```json
   {
-    "errors": [
-      {
-        "code": "01003",
-        "title": "Entité non trouvée",
-        "detail": "L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
-        "meta": {
-          "provider": "INSEE"
+    "data": {
+      "siret": "35004292500031",
+      "siege_social": true,
+      "etat_administratif": "A",
+      "date_fermeture": null,
+      "enseigne": null,
+      "activite_principale": {
+        "code": "74.10Z",
+        "nomenclature": "NAFRev2",
+        "libelle": "Activités spécialisées de design"
+      },
+      "tranche_effectif_salarie": {
+        "de": null,
+        "a": null,
+        "code": null,
+        "date_reference": null,
+        "intitule": null
+      },
+      "diffusable_commercialement": false,
+      "date_creation": 1396303200,
+      "unite_legale": {
+        "siren": "350042925",
+        "siret_siege_social": "35004292500031",
+        "type": "personne_physique",
+        "personne_morale_attributs": {
+          "raison_sociale": null,
+          "sigle": null
+        },
+        "personne_physique_attributs": {
+          "pseudonyme": null,
+          "prenom_usuel": "AURELIE",
+          "prenom_1": "AURELIE",
+          "prenom_2": "JAQUELINE",
+          "prenom_3": "NADIA",
+          "prenom_4": null,
+          "nom_usage": null,
+          "nom_naissance": "MOREAU",
+          "sexe": "F"
+        },
+        "categorie_entreprise": "PME",
+        "diffusable_commercialement": false,
+        "forme_juridique": {
+          "code": "1000",
+          "libelle": "Entrepreneur individuel"
+        },
+        "activite_principale": {
+          "code": "74.10Z",
+          "nomenclature": "NAFRev2",
+          "libelle": "Activités spécialisées de design"
+        },
+        "tranche_effectif_salarie": {
+          "de": null,
+          "a": null,
+          "code": null,
+          "date_reference": null,
+          "intitule": null
+        },
+        "economie_sociale_et_solidaire": null,
+        "date_creation": 1326303200,
+        "etat_administratif": "A",
+        "date_derniere_mise_a_jour": 1670347900,
+        "redirect_from_siren": null
+      },
+      "adresse": {
+        "siret": "35004292500031",
+        "complement_adresse": null,
+        "numero_voie": "346",
+        "indice_repetition_voie": null,
+        "type_voie": "ALLÉE",
+        "libelle_voie": "DE LA PLAGE",
+        "code_postal": "16210",
+        "libelle_commune": "MEDILLAC",
+        "libelle_commune_etranger": null,
+        "distribution_speciale": null,
+        "code_commune": "16399",
+        "code_cedex": null,
+        "libelle_cedex": null,
+        "code_pays_etranger": null,
+        "libelle_pays_etranger": null,
+        "acheminement_postal": {
+          "l1": "",
+          "l2": "MOREAU AURELIE",
+          "l3": "",
+          "l4": "346 ALLÉE DE LA PLAGE",
+          "l5": "",
+          "l6": "16210 MEDILLAC",
+          "l7": "FRANCE"
         }
       }
-    ]
+    },
+    "links": {
+      "unite_legale": "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/350042925"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 267038293600,
+      "redirect_from_siret": null
+    }
   }
   ```
 
@@ -735,7 +822,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/diffusibles/35004292500031"
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/350042925/siege_social"
   ```
 
   </p>

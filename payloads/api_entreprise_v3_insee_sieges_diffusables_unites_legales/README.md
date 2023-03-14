@@ -1,4 +1,4 @@
-# Données établissement diffusible
+# Données siège social diffusible
 * [association.yaml](association.yaml)
 
   Status `200`
@@ -8,7 +8,7 @@
 
   ```json
   {
-    "siret": "77567227221138",
+    "siren": "775672272",
     "context": "Contexte de test",
     "recipient": "13002526500013",
     "object": "Demande de subventions 135"
@@ -132,7 +132,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/diffusibles/77567227221138"
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/diffusibles/775672272/siege_social"
   ```
 
   </p>
@@ -146,7 +146,7 @@
 
   ```json
   {
-    "siret": "42417936400023",
+    "siren": "424179364",
     "context": "Contexte de test",
     "recipient": "13002526500013",
     "object": "Demande de subventions 135"
@@ -270,7 +270,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/diffusibles/42417936400023"
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/diffusibles/424179364/siege_social"
   ```
 
   </p>
@@ -284,7 +284,7 @@
 
   ```json
   {
-    "siret": "55204944776279",
+    "siren": "552049447",
     "context": "Contexte de test",
     "recipient": "13002526500013",
     "object": "Marchés publics 123"
@@ -408,7 +408,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/diffusibles/55204944776279"
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/diffusibles/552049447/siege_social"
   ```
 
   </p>
@@ -422,7 +422,7 @@
 
   ```json
   {
-    "siret": "35005144700018",
+    "siren": "350051447",
     "context": "Contexte de test",
     "recipient": "13002526500013",
     "object": "Marchés publics 132"
@@ -546,7 +546,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/diffusibles/35005144700018"
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/diffusibles/350051447/siege_social"
   ```
 
   </p>
@@ -560,7 +560,7 @@
 
   ```json
   {
-    "siret": "47846480300319",
+    "siren": "478464803",
     "context": "Contexte de test",
     "recipient": "13002526500013",
     "object": "Marché Numéro 126"
@@ -684,7 +684,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/diffusibles/47846480300319"
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/diffusibles/478464803/siege_social"
   ```
 
   </p>
@@ -698,7 +698,7 @@
 
   ```json
   {
-    "siret": "35004292500031",
+    "siren": "350042925",
     "context": "Contexte de test",
     "recipient": "13002526500013",
     "object": "Marché Numéro 125"
@@ -735,7 +735,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/diffusibles/35004292500031"
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/diffusibles/350042925/siege_social"
   ```
 
   </p>

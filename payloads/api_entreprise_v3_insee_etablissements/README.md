@@ -765,7 +765,7 @@
       "unite_legale": "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/350051447"
     },
     "meta": {
-      "date_derniere_mise_a_jour": null,
+      "date_derniere_mise_a_jour": 1671404400,
       "redirect_from_siret": null
     }
   }

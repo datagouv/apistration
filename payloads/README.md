@@ -5,11 +5,11 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 
 ## API Particulier
 
-* [Service de vérification de l'avis d'impôt sur le revenu](api_particulier_v2_dgfip_svair) (`/v2/avis-imposition`)
-* [Quotient familial CAF](api_particulier_v2_cnaf_quotient_familial) (`/v2/composition-familiale`)
-* [Statut demandeur d'emploi](api_particulier_v2_pole_emploi_statut) (`/v2/situations-pole-emploi`)
-* [Statut étudiant](api_particulier_v2_mesri_student_status) (`/v2/etudiants`)
-* [Statut étudiant boursier](api_particulier_v2_cnous_student_scholarship) (`/v2/etudiants-boursiers`)
+* [Service de vérification de l'avis d'impôt sur le revenu](api_particulier_v2_dgfip_svair) (`/api/v2/avis-imposition`)
+* [Quotient familial CAF](api_particulier_v2_cnaf_quotient_familial) (`/api/v2/composition-familiale`)
+* [Statut demandeur d'emploi](api_particulier_v2_pole_emploi_statut) (`/api/v2/situations-pole-emploi`)
+* [Statut étudiant](api_particulier_v2_mesri_student_status) (`/api/v2/etudiants`)
+* [Statut étudiant boursier](api_particulier_v2_cnous_student_scholarship) (`/api/v2/etudiants-boursiers`)
 
 ## API Entreprise v3+
 
@@ -32,12 +32,12 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * Brevets déposés (`/v3/inpi/unites_legales/{siren}/brevets`)
 * Marques déposées (`/v3/inpi/unites_legales/{siren}/marques`)
 * Modèles déposés (`/v3/inpi/unites_legales/{siren}/modeles`)
-* Adresse établissement (`/v3/insee/sirene/etablissements/{siret}/adresse`)
-* Adresse établissement diffusible (`/v3/insee/sirene/etablissements/diffusibles/{siret}/adresse`)
+* [Adresse établissement](api_entreprise_v3_insee_adresses_etablissements) (`/v3/insee/sirene/etablissements/{siret}/adresse`)
+* [Adresse établissement diffusible](api_entreprise_v3_insee_adresses_etablissements_diffusables) (`/v3/insee/sirene/etablissements/diffusibles/{siret}/adresse`)
 * [Données établissement](api_entreprise_v3_insee_etablissements) (`/v3/insee/sirene/etablissements/{siret}`)
 * [Données établissement diffusible](api_entreprise_v3_insee_etablissements_diffusables) (`/v3/insee/sirene/etablissements/diffusibles/{siret}`)
-* Données siège social diffusible (`/v3/insee/sirene/unites_legales/diffusibles/{siren}/siege_social`)
-* Données siège social (`/v3/insee/sirene/unites_legales/{siren}/siege_social`)
+* [Données siège social diffusible](api_entreprise_v3_insee_sieges_diffusables_unites_legales) (`/v3/insee/sirene/unites_legales/diffusibles/{siren}/siege_social`)
+* [Données siège social](api_entreprise_v3_insee_sieges_unites_legales) (`/v3/insee/sirene/unites_legales/{siren}/siege_social`)
 * [Données unité légale](api_entreprise_v3_insee_unites_legales) (`/v3/insee/sirene/unites_legales/{siren}`)
 * [Données unité légale diffusible](api_entreprise_v3_insee_unites_legales_diffusables) (`/v3/insee/sirene/unites_legales/diffusibles/{siren}`)
 * Divers documents d'une association (`/v3/ministere_interieur/rna/associations/{siret_or_rna}/documents`)
