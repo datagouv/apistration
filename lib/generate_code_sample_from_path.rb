@@ -32,7 +32,7 @@ class GenerateCodeSampleFromPath
   def api_particulier_curl
     "curl -H \"X-Api-Key: $token\" \\\n" \
       "  -G #{build_curl_query_params(params)} \\\n" \
-      "  --url \"https://staging.particulier.api.gouv.fr/api#{interpolated_path}\""
+      "  --url \"https://staging.particulier.api.gouv.fr#{interpolated_path}\""
   end
 
   def france_connect_curl
