@@ -25,7 +25,7 @@ class OpenAPISchemaToExample
       extract_array_value(schema['items'])
     when 'object'
       extract_object_value(schema['properties'])
-    when 'string', 'integer', 'number', 'boolean', 'null'
+    when 'string', 'integer', 'number', 'boolean', 'date', 'null'
       extract_value(schema)
     else
       unknown_type(schema)
@@ -33,7 +33,7 @@ class OpenAPISchemaToExample
   end
 
   def unknown_type(open_api_schema)
-    raise InvalidOpenAPIType, open_api_schema.to_s
+    raise InvalidOpenAPIType, open_api_schema.to_h
   end
 
   def extract_array_value(value)
@@ -65,6 +65,8 @@ class OpenAPISchemaToExample
       rand(50)
     when 'boolean'
       true
+    when 'date'
+      Date.new(2023, 1, 31)
     when 'null'
       nil
     end
