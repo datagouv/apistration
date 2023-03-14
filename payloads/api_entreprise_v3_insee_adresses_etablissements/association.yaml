@@ -1,0 +1,42 @@
+---
+params:
+  siret: '77567227221138'
+  context: 'Contexte de test'
+  recipient: '13002526500013'
+  object: 'Demande de subventions 135'
+status: 200
+payload: |-
+  {
+    "data": {
+      "numero_voie": "98",
+      "indice_repetition_voie": null,
+      "type_voie": "RUE",
+      "libelle_voie": "DIDOT",
+      "complement_adresse": "SITE CROIX ROUGE",
+      "code_commune": "75114",
+      "libelle_commune": "PARIS 14",
+      "code_postal": "75014",
+      "distribution_speciale": null,
+      "code_cedex": "75694",
+      "libelle_cedex": "PARIS CEDEX 14",
+      "acheminement_postal": {
+        "l1": "CROIX ROUGE FRANCAISE",
+        "l2": "",
+        "l3": "SITE CROIX ROUGE",
+        "l4": "98 RUE DIDOT",
+        "l5": "",
+        "l6": "75694 PARIS CEDEX 14",
+        "l7": "FRANCE"
+      },
+      "libelle_commune_etranger": null,
+      "code_pays_etranger": null,
+      "libelle_pays_etranger": null
+    },
+    "links": {
+      "unite_legale": "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/775672272",
+      "etablissement": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/77567227221138"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1676329200
+    }
+  }

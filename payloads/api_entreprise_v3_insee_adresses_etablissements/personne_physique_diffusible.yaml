@@ -1,0 +1,42 @@
+---
+params:
+  siret: '47846480300319'
+  context: 'Contexte de test'
+  recipient: '13002526500013'
+  object: 'Marché Numéro 126'
+status: 200
+payload: |-
+  {
+    "data": {
+      "numero_voie": "346",
+      "indice_repetition_voie": null,
+      "type_voie": "ALLÉE",
+      "libelle_voie": "DE LA PLAGE",
+      "complement_adresse": "null",
+      "code_commune": "16399",
+      "libelle_commune": "MEDILLAC",
+      "code_postal": "16210",
+      "distribution_speciale": null,
+      "code_cedex": null,
+      "libelle_cedex": null,
+      "acheminement_postal": {
+        "l1": "",
+        "l2": "MAXIME DUPONT",
+        "l3": "",
+        "l4": "346 ALLÉE DE LA PLAGE",
+        "l5": "",
+        "l6": "16210 MEDILLAC",
+        "l7": "FRANCE"
+      },
+      "libelle_commune_etranger": null,
+      "code_pays_etranger": null,
+      "libelle_pays_etranger": null
+    },
+    "links": {
+      "unite_legale": "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/478464803",
+      "etablissement": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/47846480300319"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1606258800
+    }
+  }

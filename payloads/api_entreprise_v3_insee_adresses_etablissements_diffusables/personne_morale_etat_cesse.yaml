@@ -1,0 +1,42 @@
+---
+params:
+  siret: '35005144700018'
+  context: 'Contexte de test'
+  recipient: '13002526500013'
+  object: 'Marchés publics 132'
+status: 200
+payload: |-
+  {
+    "data": {
+      "numero_voie": "4",
+      "indice_repetition_voie": null,
+      "type_voie": "ALLÉE",
+      "libelle_voie": "DU COMMANDANT",
+      "complement_adresse": null,
+      "code_commune": "75117",
+      "libelle_commune": "PARIS 17",
+      "code_postal": "75017",
+      "distribution_speciale": null,
+      "code_cedex": null,
+      "libelle_cedex": null,
+      "acheminement_postal": {
+        "l1": "SCI SERGENT",
+        "l2": "",
+        "l3": "",
+        "l4": "4 ALLÉE DU COMMANDANT",
+        "l5": "",
+        "l6": "75017 PARIS 17",
+        "l7": "FRANCE"
+      },
+      "libelle_commune_etranger": null,
+      "code_pays_etranger": null,
+      "libelle_pays_etranger": null
+    },
+    "links": {
+      "unite_legale": "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/350051447",
+      "etablissement": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/35005144700018"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1661724000
+    }
+  }

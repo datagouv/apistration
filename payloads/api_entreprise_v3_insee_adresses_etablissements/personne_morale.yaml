@@ -1,0 +1,42 @@
+---
+params:
+  siret: '55204944776279'
+  context: 'Contexte de test'
+  recipient: '13002526500013'
+  object: 'Marchés publics 123'
+status: 200
+payload: |-
+  {
+    "data": {
+      "numero_voie": "2",
+      "indice_repetition_voie": null,
+      "type_voie": "PLACE",
+      "libelle_voie": "AUX ETOILES",
+      "complement_adresse": null,
+      "code_commune": "93066",
+      "libelle_commune": "SAINT-DENIS",
+      "code_postal": "93210",
+      "distribution_speciale": null,
+      "code_cedex": null,
+      "libelle_cedex": null,
+      "acheminement_postal": {
+        "l1": "SOCIETE NATIONALE SNCF",
+        "l2": "",
+        "l3": "",
+        "l4": "2 PLACE AUX ETOILES",
+        "l5": "",
+        "l6": "93210 SAINT-DENIS",
+        "l7": "FRANCE"
+      },
+      "libelle_commune_etranger": null,
+      "code_pays_etranger": null,
+      "libelle_pays_etranger": null
+    },
+    "links": {
+      "unite_legale": "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/552049447",
+      "etablissement": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/55204944776279"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1661724000
+    }
+  }

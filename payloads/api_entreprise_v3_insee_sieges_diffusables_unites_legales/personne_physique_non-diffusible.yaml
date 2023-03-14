@@ -1,0 +1,20 @@
+---
+params:
+  siren: '350042925'
+  context: 'Contexte de test'
+  recipient: '13002526500013'
+  object: 'Marché Numéro 125'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "01003",
+        "title": "Entité non trouvée",
+        "detail": "L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
+        "meta": {
+          "provider": "INSEE"
+        }
+      }
+    ]
+  }
