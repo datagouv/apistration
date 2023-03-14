@@ -1,0 +1,42 @@
+---
+params:
+  siret: '42417936400023'
+  context: 'Contexte de test'
+  recipient: '13002526500013'
+  object: 'Demande de subventions 135'
+status: 200
+payload: |-
+  {
+    "data": {
+      "numero_voie": "169",
+      "indice_repetition_voie": null,
+      "type_voie": null,
+      "libelle_voie": "GRAND RUE",
+      "complement_adresse": null,
+      "code_commune": "67448",
+      "libelle_commune": "SCHIRMECK",
+      "code_postal": "67130",
+      "distribution_speciale": null,
+      "code_cedex": null,
+      "libelle_cedex": null,
+      "acheminement_postal": {
+        "l1": "ASSOCIATION SOCIO-CULTURELLE - LE REPERE",
+        "l2": "",
+        "l3": "",
+        "l4": "169 GRAND RUE",
+        "l5": "",
+        "l6": "67130 SCHIRMECK",
+        "l7": "FRANCE"
+      },
+      "libelle_commune_etranger": null,
+      "code_pays_etranger": null,
+      "libelle_pays_etranger": null
+    },
+    "links": {
+      "unite_legale": "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/424179364",
+      "etablissement": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/42417936400023"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1635458400
+    }
+  }
