@@ -328,22 +328,22 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
             example: "Tribunal d'instance de Strasbourg"
             nullable: true
             enum:
-              - Tribunal d’instance de Metz
-              - Tribunal d’instance de Saint-Avold
-              - Tribunal d’instance de Sarrebourg
-              - Tribunal d’instance de Sarreguemines
-              - Tribunal d’instance de de Thionville
-              - Tribunal d’instance de Haguenau
-              - Tribunal d’instance d’Illkirch
-              - Tribunal d’instance de Molsheim
-              - Tribunal d’instance de Saverne
-              - Tribunal d’instance de Schiltigheim
-              - Tribunal d’instance de Sélestat
-              - Tribunal d’instance de Strasbourg
-              - Tribunal d’instance de Colmar
-              - Tribunal d’instance de Guebwiller
-              - Tribunal d’instance de Mulhouse
-              - Tribunal d’instance de Thann
+              - Tribunal d'instance de Metz
+              - Tribunal d'instance de Saint-Avold
+              - Tribunal d'instance de Sarrebourg
+              - Tribunal d'instance de Sarreguemines
+              - Tribunal d'instance de de Thionville
+              - Tribunal d'instance de Haguenau
+              - Tribunal d'instance d’Illkirch
+              - Tribunal d'instance de Molsheim
+              - Tribunal d'instance de Saverne
+              - Tribunal d'instance de Schiltigheim
+              - Tribunal d'instance de Sélestat
+              - Tribunal d'instance de Strasbourg
+              - Tribunal d'instance de Colmar
+              - Tribunal d'instance de Guebwiller
+              - Tribunal d'instance de Mulhouse
+              - Tribunal d'instance de Thann
           volume:
             title: "Volume du registre du tribunal d'instance"
             type: "string"
@@ -792,13 +792,13 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
                 nullable: true
           champ_action_territorial:
             title: "Champ d'action territorial"
-            example: "departemental"
+            example: "départemental"
             type: "string"
             enum:
               - "national"
               - "international"
-              - "regional"
-              - "departemental"
+              - "régional"
+              - "départemental"
               - "local"
             nullable: true
           activite_principale: *activite_principale
@@ -1074,7 +1074,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
               title: "Type du document"
               enum:
                 - 'Pièce'
-                - 'Récipissé'
+                - 'Récipicé'
               example: "Pièce"
             sous_type:
               type: "object"
