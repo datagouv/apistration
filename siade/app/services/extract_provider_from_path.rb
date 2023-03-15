@@ -43,7 +43,8 @@ class ExtractProviderFromPath
       'european_commission' => 'Commission Européenne',
       'banque_de_france' => 'Banque de France',
       'cma_france' => 'CMA France',
-      'djepva' => 'DJEPVA'
+      'djepva' => 'DJEPVA',
+      'gip_mds' => 'GIP-MDS'
     }
   end
   # rubocop:enable Metrics/MethodLength
