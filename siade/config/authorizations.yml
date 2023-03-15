@@ -192,6 +192,8 @@ shared:
   api_entreprise/v3_and_more/rnm/entreprises_artisanales:
     - entreprises_artisanales
     - open_data
+  api_entreprise/v3_and_more/gip_mds/effectifs_annuels_entreprise:
+    - effectifs_urssaf
 
   api_particulier/introspect: []
   api_particulier/v2/cnaf/quotient_familial:

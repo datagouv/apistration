@@ -214,3 +214,6 @@
 
 - name: "[V4] DJEPVA associations open data"
   http_path: '/v4/djepva/api-association/associations/open_data/775719792'
+
+- name: "[V3] GIP-MDS effectifs annuel unité légale"
+  http_path: '/v3/gip_mds/unites_legales/552032534/effectifs_annuels/2020'

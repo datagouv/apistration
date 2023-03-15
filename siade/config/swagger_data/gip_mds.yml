@@ -1,0 +1,37 @@
+gip_mds:
+  effectifs_annuels_entreprise:
+    title: "Effectifs annuels d'une unité légale"
+    tags:
+      - 'Informations générales'
+    description: "Ces effectifs sont extrait pour le régime général de l'URSSAF et pour le régime agricole de la MSA"
+    attributes:
+      siren:
+        title: "Siren de l'unité légale"
+        type: "string"
+        example: "130025265"
+      annee:
+        title: "Année de référence"
+        type: "string"
+        example: "2017"
+      effectifs_annuel:
+        title: "Effectif annuel de l'établissement"
+        type: "object"
+        properties:
+          regime_general:
+            title: "Effectifs du régime général"
+            description: "Cette donnée provient de l'URSSAF"
+            type: "object"
+            properties: &regime_properties
+              value:
+                title: "Valeur"
+                type: "number"
+                example: 12.34
+              date_derniere_mise_a_jour:
+                title: "Date de la dernière mise à jour de la donnée"
+                type: "string"
+                example: "2018-01-01"
+          regime_agricole:
+            title: "Effectifs du régime agricole"
+            description: "Cette donnée provient de la MSA"
+            type: "object"
+            properties: *regime_properties

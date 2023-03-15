@@ -146,6 +146,10 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
   get 'european_commission/unites_legales/:siren/numero_tva', to: 'api_entreprise/v3_and_more/european_commission/vies#show'
 
   get 'banque_de_france/unites_legales/:siren/bilans', to: 'api_entreprise/v3_and_more/banque_de_france/bilans_entreprise#show'
+
+  namespace :gip_mds do
+    get 'unites_legales/:siren/effectifs_annuels/:year', to: '/api_entreprise/v3_and_more/gip_mds/effectifs_annuels_entreprise#show'
+  end
 end
 
 get 'proxy/files/:uuid', to: 'api_entreprise/proxied_files#show', constraints: APIEntrepriseDomainConstraint.new
