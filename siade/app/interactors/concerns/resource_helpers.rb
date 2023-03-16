@@ -55,6 +55,10 @@ module ResourceHelpers
     true
   end
 
+  def valid_json?
+    !invalid_json?
+  end
+
   def xml_body_as_hash
     context.xml_body_as_hash ||= Ox.load(body.force_encoding('UTF-8'), mode: :hash)
   end
