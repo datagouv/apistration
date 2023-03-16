@@ -2,17 +2,22 @@ class DGFIP::ChiffresAffaires::ValidateResponse < ValidateResponse
   def call
     unknown_provider_response! unless http_ok?
 
-    if ['', 'null'].include?(body)
+    if null_body? || empty_liste_ca?
       resource_not_found!
-    elsif invalid_json? || json_is_not_valid?
+    elsif invalid_json? || !json_body.key?('liste_ca')
       unknown_provider_response!
     end
   end
 
   private
 
-  def json_is_not_valid?
-    json_body['liste_ca'].blank? ||
-      Array.wrap(json_body['liste_ca']).any? { |ca_json| ca_json['ca'].blank? || ca_json['dateFinExercice'].blank? }
+  def null_body?
+    ['', 'null'].include?(body)
+  end
+
+  def empty_liste_ca?
+    valid_json? &&
+      json_body.key?('liste_ca') &&
+      json_body['liste_ca'].blank?
   end
 end

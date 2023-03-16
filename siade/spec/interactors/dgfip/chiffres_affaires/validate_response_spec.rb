@@ -47,6 +47,20 @@ RSpec.describe DGFIP::ChiffresAffaires::ValidateResponse, type: :validate_respon
 
           its(:cacheable) { is_expected.to be(true) }
         end
+
+        context 'when liste_ca is empty' do
+          let(:data) do
+            {
+              'liste_ca' => []
+            }
+          end
+
+          it { is_expected.to be_a_failure }
+
+          its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+
+          its(:cacheable) { is_expected.to be(false) }
+        end
       end
 
       context 'when json is not valid' do
