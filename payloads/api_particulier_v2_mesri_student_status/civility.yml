@@ -1,7 +1,4 @@
 ---
-title: 'Civilité'
-description: 'Payload MESRI Statut Étudiant, appel avec Civilité - succès 200'
-example: true
 params:
   nom: "MARTIN"
   given_name: "Jacques"

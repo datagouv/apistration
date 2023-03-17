@@ -1,7 +1,4 @@
 ---
-title: '503'
-description: 'Payload MESRI Statut Étudiant - error 503'
-example: false
 params:
   ine: '1234567503G'
 status: 503

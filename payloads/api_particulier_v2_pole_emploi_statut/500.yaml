@@ -1,7 +1,4 @@
 ---
-title: '500'
-description: 'Payload Pole Emploi Statut - error 500'
-example: true
 params:
   identifiant: 'internal_error'
 status: 500

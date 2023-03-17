@@ -1,7 +1,4 @@
 ---
-title: '500'
-description: 'Payload CNOUS Bourse Étudiant - error 500'
-example: true
 params:
   ine: '1234567500G'
 status: 500

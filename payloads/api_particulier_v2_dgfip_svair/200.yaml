@@ -1,7 +1,4 @@
 ---
-title: '200'
-description: 'Payload DGFIP SVAIR - succès 200'
-example: true
 params:
   numeroFiscal: '1111111111111'
   referenceAvis: '1111111111111'

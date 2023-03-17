@@ -1,7 +1,4 @@
 ---
-title: 'France-connect'
-description: 'Payload CNOUS Bourse Étudiant, appel avec France-connect - succès 200'
-example: false
 params:
   given_name: "Jean"
   family_name: "MARTIN"

@@ -1,7 +1,4 @@
 ---
-title: '500'
-description: 'Payload DGFIP SVAIR - error 500'
-example: true
 params:
   numeroFiscal: '1111111111500'
   referenceAvis: '1111111111500'

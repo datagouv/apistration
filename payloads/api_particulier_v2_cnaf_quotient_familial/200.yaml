@@ -1,7 +1,4 @@
 ---
-title: '200'
-description: 'Payload CNAF Quotient Familial - succès 200'
-example: true
 params:
   numeroAllocataire: 1234567
   codePostal: 75001
