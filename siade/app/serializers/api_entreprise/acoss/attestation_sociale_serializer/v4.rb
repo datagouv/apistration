@@ -23,7 +23,7 @@ class APIEntreprise::ACOSS::AttestationSocialeSerializer::V4 < APIEntreprise::V3
     when 'refus_de_delivrance'
       {
         libelle: "Délivrance de l'attestation refusée par l'Urssaf",
-        description: "La délivrance de l'attestation de vigilance a été refusée par l'Urssaf car la situation de l'entreprise n'entre pas dans le cadre précis de délivrance. Consulter la documentation métier pour en savoir plus."
+        description: "La délivrance de l'attestation de vigilance a été refusée par l'Urssaf car l'entité n'est pas à jour de ses cotisations sociales."
       }
     else
       {}
