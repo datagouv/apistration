@@ -4157,22 +4157,22 @@ paths:
                             example: Tribunal d'instance de Strasbourg
                             nullable: true
                             enum:
-                            - Tribunal d’instance de Metz
-                            - Tribunal d’instance de Saint-Avold
-                            - Tribunal d’instance de Sarrebourg
-                            - Tribunal d’instance de Sarreguemines
-                            - Tribunal d’instance de de Thionville
-                            - Tribunal d’instance de Haguenau
-                            - Tribunal d’instance d’Illkirch
-                            - Tribunal d’instance de Molsheim
-                            - Tribunal d’instance de Saverne
-                            - Tribunal d’instance de Schiltigheim
-                            - Tribunal d’instance de Sélestat
-                            - Tribunal d’instance de Strasbourg
-                            - Tribunal d’instance de Colmar
-                            - Tribunal d’instance de Guebwiller
-                            - Tribunal d’instance de Mulhouse
-                            - Tribunal d’instance de Thann
+                            - Tribunal d'instance de Metz
+                            - Tribunal d'instance de Saint-Avold
+                            - Tribunal d'instance de Sarrebourg
+                            - Tribunal d'instance de Sarreguemines
+                            - Tribunal d'instance de de Thionville
+                            - Tribunal d'instance de Haguenau
+                            - Tribunal d'instance d’Illkirch
+                            - Tribunal d'instance de Molsheim
+                            - Tribunal d'instance de Saverne
+                            - Tribunal d'instance de Schiltigheim
+                            - Tribunal d'instance de Sélestat
+                            - Tribunal d'instance de Strasbourg
+                            - Tribunal d'instance de Colmar
+                            - Tribunal d'instance de Guebwiller
+                            - Tribunal d'instance de Mulhouse
+                            - Tribunal d'instance de Thann
                           volume:
                             title: Volume du registre du tribunal d'instance
                             type: string
@@ -4280,6 +4280,7 @@ paths:
                             url:
                               type: string
                               title: URL de l'agrément
+                              nullable: true
                               example: https://associations.api.gouv.fr/agrements/05.11.2018.pdf
                       activites:
                         title: Liste des activités de l'association
@@ -4300,6 +4301,7 @@ paths:
                               envisagées pour atteindre l'objet. Ce champ délivre
                               l'objet tel que rédigé dans les statuts de l'association.
                             type: string
+                            nullable: true
                             example: L'association a pour objet de promouvoir la pratique
                               du sport de haut niveau et de contribuer à la formation
                               des jeunes sportifs.
@@ -4355,13 +4357,13 @@ paths:
                             - libelle
                           champ_action_territorial:
                             title: Champ d'action territorial
-                            example: departemental
+                            example: départemental
                             type: string
                             enum:
                             - national
                             - international
-                            - regional
-                            - departemental
+                            - régional
+                            - départemental
                             - local
                             nullable: true
                           activite_principale:
@@ -5055,7 +5057,7 @@ paths:
                               title: Type du document
                               enum:
                               - Pièce
-                              - Récipissé
+                              - Récipicé
                               example: Pièce
                             sous_type:
                               type: object
@@ -5756,22 +5758,22 @@ paths:
                             example: Tribunal d'instance de Strasbourg
                             nullable: true
                             enum:
-                            - Tribunal d’instance de Metz
-                            - Tribunal d’instance de Saint-Avold
-                            - Tribunal d’instance de Sarrebourg
-                            - Tribunal d’instance de Sarreguemines
-                            - Tribunal d’instance de de Thionville
-                            - Tribunal d’instance de Haguenau
-                            - Tribunal d’instance d’Illkirch
-                            - Tribunal d’instance de Molsheim
-                            - Tribunal d’instance de Saverne
-                            - Tribunal d’instance de Schiltigheim
-                            - Tribunal d’instance de Sélestat
-                            - Tribunal d’instance de Strasbourg
-                            - Tribunal d’instance de Colmar
-                            - Tribunal d’instance de Guebwiller
-                            - Tribunal d’instance de Mulhouse
-                            - Tribunal d’instance de Thann
+                            - Tribunal d'instance de Metz
+                            - Tribunal d'instance de Saint-Avold
+                            - Tribunal d'instance de Sarrebourg
+                            - Tribunal d'instance de Sarreguemines
+                            - Tribunal d'instance de de Thionville
+                            - Tribunal d'instance de Haguenau
+                            - Tribunal d'instance d’Illkirch
+                            - Tribunal d'instance de Molsheim
+                            - Tribunal d'instance de Saverne
+                            - Tribunal d'instance de Schiltigheim
+                            - Tribunal d'instance de Sélestat
+                            - Tribunal d'instance de Strasbourg
+                            - Tribunal d'instance de Colmar
+                            - Tribunal d'instance de Guebwiller
+                            - Tribunal d'instance de Mulhouse
+                            - Tribunal d'instance de Thann
                           volume:
                             title: Volume du registre du tribunal d'instance
                             type: string
@@ -5879,6 +5881,7 @@ paths:
                             url:
                               type: string
                               title: URL de l'agrément
+                              nullable: true
                               example: https://associations.api.gouv.fr/agrements/05.11.2018.pdf
                       activites:
                         title: Liste des activités de l'association
@@ -5899,6 +5902,7 @@ paths:
                               envisagées pour atteindre l'objet. Ce champ délivre
                               l'objet tel que rédigé dans les statuts de l'association.
                             type: string
+                            nullable: true
                             example: L'association a pour objet de promouvoir la pratique
                               du sport de haut niveau et de contribuer à la formation
                               des jeunes sportifs.
@@ -5954,13 +5958,13 @@ paths:
                             - libelle
                           champ_action_territorial:
                             title: Champ d'action territorial
-                            example: departemental
+                            example: départemental
                             type: string
                             enum:
                             - national
                             - international
-                            - regional
-                            - departemental
+                            - régional
+                            - départemental
                             - local
                             nullable: true
                           activite_principale:
