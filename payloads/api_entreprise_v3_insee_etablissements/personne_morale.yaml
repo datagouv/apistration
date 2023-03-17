@@ -1,4 +1,7 @@
 ---
+title: 'Personne Morale'
+description: 'Payload INSEE Établissements Personne Morale - succès 200'
+example: false
 params:
   siret: '55204944776279'
 status: 200

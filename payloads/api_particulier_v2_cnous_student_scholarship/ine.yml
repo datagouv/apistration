@@ -1,4 +1,7 @@
 ---
+title: 'INE'
+description: 'Payload CNOUS Bourse Étudiant, appel avec INE - succès 200'
+example: true
 params:
   ine: '1234567890G'
 status: 200

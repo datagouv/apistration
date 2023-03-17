@@ -1,4 +1,6 @@
 ---
+title: 'CNOUS'
+example: true
 params:
   token: 'cnous'
 status: 200

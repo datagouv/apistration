@@ -1,4 +1,7 @@
 ---
+title: 'Personne Physique Non-Diffusible'
+description: "Payload INSEE Adresse Personne Physique diffusibles, example non-diffusible - not found 404"
+example: false
 params:
   siret: '35004292500031'
 status: 404

@@ -1,4 +1,7 @@
 ---
+title: '404'
+description: 'Payload INSEE Établissements - not found 404'
+example: true
 params:
   siret: '00000000000000'
 status: 404

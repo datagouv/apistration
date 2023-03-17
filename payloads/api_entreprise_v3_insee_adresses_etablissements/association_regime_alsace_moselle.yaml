@@ -1,4 +1,7 @@
 ---
+title: 'Associations (Alsace-Moselle)'
+description: 'Payload INSEE Assocations régime Alsace Moselle - succès 200'
+example: false
 params:
   siret: '42417936400023'
 status: 200

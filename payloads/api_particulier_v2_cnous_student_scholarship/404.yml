@@ -1,4 +1,7 @@
 ---
+title: '404'
+description: 'Payload CNOUS Bourse Étudiant - not found 404'
+example: true
 params:
   ine: '1234567404G'
 status: 404

@@ -1,4 +1,7 @@
 ---
+title: '500'
+description: 'Payload CNAF Quotient Familial - error 500'
+example: true
 params:
   numeroAllocataire: 1234567
   codePostal: 33500

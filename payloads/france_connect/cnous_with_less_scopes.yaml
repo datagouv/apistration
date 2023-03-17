@@ -1,4 +1,6 @@
 ---
+title: 'CNOUS (réduit)'
+example: true
 params:
   token: 'cnous_with_less_scopes'
 status: 200

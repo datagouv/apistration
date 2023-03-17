@@ -1,4 +1,7 @@
 ---
+title: 'Défaut'
+example: true
+description: 'Réponse FranceConnect par défaut'
 params:
   token: 'default'
 status: 200

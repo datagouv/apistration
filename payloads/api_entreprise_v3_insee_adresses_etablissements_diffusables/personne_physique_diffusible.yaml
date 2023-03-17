@@ -1,4 +1,7 @@
 ---
+title: 'Personne Physique'
+description: "Payload INSEE Adresse Personne Physique diffusibles - succès 200"
+example: false
 params:
   siret: '47846480300319'
 status: 200

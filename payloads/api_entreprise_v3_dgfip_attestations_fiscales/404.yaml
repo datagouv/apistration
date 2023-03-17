@@ -1,4 +1,7 @@
 ---
+title: '404'
+description: 'Payload DGFIP Attestations fiscales - not found 404'
+example: true
 params:
   siren: '000000000'
 status: 404
