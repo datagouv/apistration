@@ -1,0 +1,227 @@
+---
+params:
+  siren_or_rna: '389486242'
+status: 200
+payload: |-
+  {
+    "data": {
+      "rna": "W301000624",
+      "ancien_id": "301S0301001688",
+      "siren": "389486242",
+      "nom": "ASSOCIATION SPORTIVE SALINDROISE",
+      "sigle": "ASSOCIATION SPORTIVE SALINDROISE",
+      "reconnue_utilite_publique": false,
+      "siret_siege": "38948624200032",
+      "forme_juridique": {
+        "code": "9220",
+        "libelle": "Association déclarée "
+      },
+      "regime": "Loi 1901",
+      "groupement": "Simple",
+      "eligibilite_cec": true,
+      "raison_non_eligibilite_cec": null,
+      "alsace_moselle": {
+        "tribunal_instance": null,
+        "volume": null,
+        "folio": null,
+        "date_publication_registre_association": null
+      },
+      "impots_commerciaux": false,
+      "date_dissolution": null,
+      "date_publication_reconnue_utilite_publique": null,
+      "date_publication_journal_officiel": "1955-08-05",
+      "active": true,
+      "date_creation": "1955-07-08",
+      "adresse_siege": {
+        "complement": null,
+        "numero_voie": null,
+        "type_voie": "RUE",
+        "libelle_voie": "de Cambis",
+        "distribution": null,
+        "code_insee": "30305",
+        "code_postal": "30340",
+        "commune": "Salindres"
+      },
+      "composition_reseau": [],
+      "agrements": [],
+      "adresse_gestion": {
+        "complement": null,
+        "numero_voie": null,
+        "type_voie": null,
+        "libelle_voie": "Rue de Cambis",
+        "distribution": null,
+        "code_insee": null,
+        "code_postal": "30340",
+        "commune": "SALINDRES"
+      },
+      "activites": {
+        "objet": "Pratique du rugby, elle a pour but de creer des liens d'amitie entre tous les sportifs et developper la pratique de l'education physique.",
+        "objet_social1": {
+          "code": "011080",
+          "libelle": "Rugby (rugby à 13, à 15)"
+        },
+        "objet_social2": {
+          "code": null,
+          "libelle": null
+        },
+        "champ_action_territorial": "local",
+        "activite_principale": {
+          "code": "93.12Z",
+          "libelle": "Activités de clubs de sports",
+          "annee": "2008"
+        },
+        "tranche_effectif": {
+          "code": "NN",
+          "libelle": "Non référencé",
+          "annee": "2017"
+        },
+        "economie_sociale_et_solidaire": true,
+        "date_appartenance_ess": "2016-01-01"
+      },
+      "etablissements": [
+        {
+          "siren": "389486242",
+          "siret": "38948624200065",
+          "actif": true,
+          "siege": false,
+          "nom": "SPORT BOULES",
+          "telephone": null,
+          "courriel": null,
+          "date_debut_activite": "1955-07-19",
+          "adresse": {
+            "complement": "CENTRE RECREATIF",
+            "numero_voie": null,
+            "type_voie": "RUE",
+            "libelle_voie": "HENRY MERLE",
+            "distribution": null,
+            "code_insee": "30305",
+            "code_postal": "30340",
+            "commune": "SALINDRES"
+          },
+          "activite_principale": {
+            "code": "93.12Z",
+            "libelle": "Activités de clubs de sports"
+          },
+          "tranche_effectif": {
+            "code": "NN",
+            "libelle": "Non référencé"
+          },
+          "rhs": [],
+          "comptes": []
+        },
+        {
+          "siren": "389486242",
+          "siret": "38948624200057",
+          "actif": true,
+          "siege": false,
+          "nom": "SECTION BASKET-BALL",
+          "telephone": "0000000000",
+          "courriel": "nom.prenom@quelquechose.com",
+          "date_debut_activite": "2011-12-05",
+          "adresse": {
+            "complement": "MAISON DES ASSOCIATIONS",
+            "numero_voie": null,
+            "type_voie": "RUE",
+            "libelle_voie": "DE CAMBIS",
+            "distribution": null,
+            "code_insee": "30305",
+            "code_postal": "30340",
+            "commune": "SALINDRES"
+          },
+          "activite_principale": {
+            "code": "93.12Z",
+            "libelle": "Activités de clubs de sports"
+          },
+          "tranche_effectif": {
+            "code": "NN",
+            "libelle": "Non référencé"
+          },
+          "rhs": [
+            {
+              "annee": "2021",
+              "nombre_benevoles": 0,
+              "nombre_volontaires": 0,
+              "nombre_salaries": 0,
+              "nombre_salaries_etpt": 0.0,
+              "nombre_emplois_aides": 0,
+              "nombre_personnels_detaches": 0,
+              "nombre_adherents": {
+                "hommes": 17,
+                "femmes": 24,
+                "total": 41
+              }
+            }
+          ],
+          "comptes": []
+        },
+        {
+          "siren": "389486242",
+          "siret": "38948624200040",
+          "actif": true,
+          "siege": false,
+          "nom": "Association Sportive Salindres Tennis",
+          "telephone": "0000000000",
+          "courriel": "contact@quelque-chose.fr",
+          "date_debut_activite": "2000-01-01",
+          "adresse": {
+            "complement": "CHALET DU CLUB",
+            "numero_voie": null,
+            "type_voie": "RTE",
+            "libelle_voie": "DE LIQUIERES",
+            "distribution": null,
+            "code_insee": "30305",
+            "code_postal": "30340",
+            "commune": "SALINDRES"
+          },
+          "activite_principale": {
+            "code": "93.12Z",
+            "libelle": "Activités de clubs de sports"
+          },
+          "tranche_effectif": {
+            "code": "NN",
+            "libelle": "Non référencé"
+          },
+          "rhs": [
+            {
+              "annee": "2022",
+              "nombre_benevoles": 10,
+              "nombre_volontaires": 0,
+              "nombre_salaries": 2,
+              "nombre_salaries_etpt": 1.0,
+              "nombre_emplois_aides": 0,
+              "nombre_personnels_detaches": 0,
+              "nombre_adherents": {
+                "hommes": 41,
+                "femmes": 69,
+                "total": 110
+              }
+            },
+            {
+              "annee": "2021",
+              "nombre_benevoles": 10,
+              "nombre_volontaires": 0,
+              "nombre_salaries": 1,
+              "nombre_salaries_etpt": 1.0,
+              "nombre_emplois_aides": 0,
+              "nombre_personnels_detaches": 0,
+              "nombre_adherents": {
+                "hommes": 56,
+                "femmes": 51,
+                "total": 107
+              }
+            }
+          ],
+          "comptes": []
+        }
+      ]
+    },
+    "links": {
+      "insee_siege_social": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/38948624200032",
+      "insee_siege_social_adresse": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/38948624200032/adresse"
+    },
+    "meta": {
+      "internal_id": "332408",
+      "date_derniere_mise_a_jour_sirene": "2020-06-08",
+      "date_derniere_mise_a_jour_rna": "2010-12-22"
+    }
+  }

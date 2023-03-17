@@ -1,0 +1,185 @@
+---
+params:
+  siren_or_rna: 'W604004799'
+status: 200
+payload: |-
+  {
+    "data": {
+      "rna": "W604004799",
+      "ancien_id": "751P0604005880",
+      "siren": null,
+      "nom": "POLE POSITION : LA SECURITE ROUTIERE EN PREMIERE LIGNE",
+      "sigle": "POLE POSITION : LA SECURITE ROUTIER...",
+      "reconnue_utilite_publique": false,
+      "siret_siege": null,
+      "forme_juridique": {
+        "code": null,
+        "libelle": null
+      },
+      "regime": "Loi 1901",
+      "groupement": null,
+      "eligibilite_cec": true,
+      "raison_non_eligibilite_cec": null,
+      "alsace_moselle": {
+        "tribunal_instance": null,
+        "volume": null,
+        "folio": null,
+        "date_publication_registre_association": null
+      },
+      "impots_commerciaux": false,
+      "date_dissolution": null,
+      "date_publication_reconnue_utilite_publique": null,
+      "date_publication_journal_officiel": "2003-05-03",
+      "active": false,
+      "date_creation": null,
+      "adresse_siege": {
+        "complement": null,
+        "numero_voie": "11",
+        "type_voie": "RUE",
+        "libelle_voie": "Bachaumont",
+        "distribution": null,
+        "code_insee": "75102",
+        "code_postal": "75002",
+        "commune": "Paris"
+      },
+      "composition_reseau": [],
+      "agrements": [],
+      "adresse_gestion": {
+        "complement": null,
+        "numero_voie": null,
+        "type_voie": null,
+        "libelle_voie": "11 RUE BACHAUMONT",
+        "distribution": null,
+        "code_insee": null,
+        "code_postal": "75002",
+        "commune": "PARIS 2E"
+      },
+      "activites": {
+        "objet": "l'éducation et la formation des jeunes en ce qui concerne la conduite automobile, le comportement au volant et plus généralement la lutte contre l'insécurité routière ; l'association a pour objet de sensibiliser la population des jeunes de 10 à 25 ans au respect des règles élémentaires de sécurité au volant et de favoriser des comportements citoyens ; l'association entend utiliser le sport automobile comme vecteur essentiel de son action en matière de formation et de communication",
+        "objet_social1": {
+          "code": "011160",
+          "libelle": "Sports mécaniques (sport automobile, moto, trial)"
+        },
+        "objet_social2": {
+          "code": null,
+          "libelle": null
+        },
+        "champ_action_territorial": null,
+        "activite_principale": {
+          "code": null,
+          "libelle": null,
+          "annee": null
+        },
+        "tranche_effectif": {
+          "code": null,
+          "libelle": null,
+          "annee": null
+        },
+        "economie_sociale_et_solidaire": false,
+        "date_appartenance_ess": null
+      },
+      "reseaux_affiliation": [],
+      "etablissements": [],
+      "documents_rna": [
+        {
+          "type": "Pièce",
+          "sous_type": {
+            "code": "LDC",
+            "libelle": "Liste dirigeants"
+          },
+          "date_depot": "2017-05-28T11:22:56.000+02:00",
+          "annee_depot": "2017",
+          "url": "https://entreprise.api.gouv.fr/url-du-document"
+        },
+        {
+          "type": "Pièce",
+          "sous_type": {
+            "code": "LAC",
+            "libelle": "Lettre de déclaration"
+          },
+          "date_depot": "2017-05-28T11:33:33.000+02:00",
+          "annee_depot": "2017",
+          "url": "https://entreprise.api.gouv.fr/url-du-document"
+        },
+        {
+          "type": "Pièce",
+          "sous_type": {
+            "code": "RCF",
+            "libelle": "Récépissé délivré"
+          },
+          "date_depot": "2017-05-27T17:51:03.000+02:00",
+          "annee_depot": "2017",
+          "url": "https://entreprise.api.gouv.fr/url-du-document"
+        },
+        {
+          "type": "Pièce",
+          "sous_type": {
+            "code": "RCF",
+            "libelle": "Récépissé délivré"
+          },
+          "date_depot": "2017-05-28T11:33:25.000+02:00",
+          "annee_depot": "2017",
+          "url": "https://entreprise.api.gouv.fr/url-du-document"
+        },
+        {
+          "type": "Pièce",
+          "sous_type": {
+            "code": "LDC",
+            "libelle": "Liste dirigeants"
+          },
+          "date_depot": "2017-05-27T17:51:15.000+02:00",
+          "annee_depot": "2017",
+          "url": "https://entreprise.api.gouv.fr/url-du-document"
+        },
+        {
+          "type": "Pièce",
+          "sous_type": {
+            "code": "STC",
+            "libelle": "Statuts"
+          },
+          "date_depot": "2017-05-27T17:51:10.000+02:00",
+          "annee_depot": "2017",
+          "url": "https://entreprise.api.gouv.fr/url-du-document"
+        },
+        {
+          "type": "Pièce",
+          "sous_type": {
+            "code": "STC",
+            "libelle": "Statuts"
+          },
+          "date_depot": "2017-05-28T11:22:26.000+02:00",
+          "annee_depot": "2017",
+          "url": "https://entreprise.api.gouv.fr/url-du-document"
+        },
+        {
+          "type": "Récipicé",
+          "sous_type": {
+            "code": "MD",
+            "libelle": "Récépissé de modification"
+          },
+          "date_depot": "2017-05-28T11:33:25.000+02:00",
+          "annee_depot": "2017",
+          "url": "https://entreprise.api.gouv.fr/url-du-document"
+        },
+        {
+          "type": "Pièce",
+          "sous_type": {
+            "code": "PV",
+            "libelle": "Procès verbal"
+          },
+          "date_depot": "2017-05-28T11:22:41.000+02:00",
+          "annee_depot": "2017",
+          "url": "https://entreprise.api.gouv.fr/url-du-document"
+        }
+      ]
+    },
+    "links": {
+      "insee_siege_social": null,
+      "insee_siege_social_adresse": null
+    },
+    "meta": {
+      "internal_id": "2990175",
+      "date_derniere_mise_a_jour_sirene": null,
+      "date_derniere_mise_a_jour_rna": "2017-01-30"
+    }
+  }
