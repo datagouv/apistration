@@ -12,7 +12,8 @@ payload: |-
       "code_securite": null,
       "entity_status": {
         "code": "refus_de_delivrance",
-        "libelle": "La délivrance de l'attestation de vigilance a été refusée par l'Urssaf car l'entité n'est pas à jour de ses cotisations sociales"
+        "libelle": "Délivrance de l'attestation refusée par l'Urssaf",
+        "description": "La délivrance de l'attestation de vigilance a été refusée par l'Urssaf car l'entité n'est pas à jour de ses cotisations sociales"
       }
     },
     "links": {},
