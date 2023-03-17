@@ -1,0 +1,21 @@
+---
+params:
+  siren: '000000002'
+status: 200
+payload: |-
+  {
+    "data": {
+      "document_url": null,
+      "document_url_expires_in": null,
+      "date_debut_validite": null,
+      "date_fin_validite": null,
+      "code_securite": null,
+      "entity_status": {
+        "code": "refus_de_delivrance",
+        "libelle": "Délivrance de l'attestation refusée par l'Urssaf",
+        "description": "La délivrance de l'attestation de vigilance a été refusée par l'Urssaf car l'entité n'est pas à jour de ses cotisations sociales."
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

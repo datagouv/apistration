@@ -1,0 +1,24 @@
+---
+params:
+  siren: '440752244'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "04003",
+        "title": "Entité non trouvée",
+        "detail": "Le siret ou siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel",
+        "meta": {
+          "provider": "ACOSS",
+          "provider_errors": [
+            {
+              "code": "FUNC517",
+              "message": "Le Siren est inconnu",
+              "description": "Le siren est inconnu du SI Attestations, radié ou hors périmètre"
+            }
+          ]
+        }
+      }
+    ]
+  }

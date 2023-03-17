@@ -1,0 +1,21 @@
+---
+params:
+  siren: '000000001'
+status: 200
+payload: |-
+  {
+    "data": {
+      "document_url": "https://storage.entreprise.api.gouv.fr/url-de-telechargement-attestation-vigilance.pdf",
+      "document_url_expires_in": 86400,
+      "date_debut_validite": "2023-01-31",
+      "date_fin_validite": "2023-07-31",
+      "code_securite": "YAB458G1B2T8IZW",
+      "entity_status": {
+        "code": "ok",
+        "libelle": "Attestation délivrée par l'Urssaf",
+        "description": "La délivrance de l'attestation de vigilance a été validée par l'Urssaf. L'attestation est délivrée lorsque l'entité est à jour de ses cotisations et contributions, ou bien dans le cas de situations spécifiques détaillées dans la documentation métier."
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
