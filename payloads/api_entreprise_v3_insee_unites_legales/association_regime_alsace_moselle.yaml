@@ -1,7 +1,4 @@
 ---
-title: 'Associations (Alsace-Moselle)'
-description: 'Payload INSEE Associations Unité Légale, régime Alsace Moselle - succès 200'
-example: false
 params:
   siren: '424179364'
 status: 200

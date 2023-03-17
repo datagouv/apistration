@@ -1,7 +1,4 @@
 ---
-title: 'Personne morale (cessée)'
-description: 'Payload INSEE unité légale Personne Morale après cessation activité - succès 200'
-example: false
 params:
   siren: '350051447'
 status: 200

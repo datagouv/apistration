@@ -1,7 +1,4 @@
 ---
-title: 'Personne morale'
-description: 'Payload INSEE Établissements des Association diffusibles - succès 200'
-example: false
 params:
   siret: '55204944776279'
 status: 200
