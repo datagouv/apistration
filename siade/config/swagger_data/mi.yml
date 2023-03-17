@@ -760,6 +760,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
             title: "Objet de l'association"
             description: "Définit l'objet de l'association et les activités envisagées pour atteindre l'objet. Ce champ délivre l'objet tel que rédigé dans les statuts de l'association."
             type: "string"
+            nullable: true
             example: "L'association a pour objet de promouvoir la pratique du sport de haut niveau et de contribuer à la formation des jeunes sportifs."
           objet_social1:
             type: "object"
