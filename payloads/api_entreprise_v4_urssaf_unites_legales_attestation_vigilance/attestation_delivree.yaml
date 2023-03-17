@@ -1,7 +1,4 @@
 ---
-title: 'Attestation délivrée'
-description: "Payload Urssaf, attestation de vigilance - appel unité légale, avec délivrance de l'attestation - succès 200"
-example: true
 params:
   siren: '000000001'
 status: 200

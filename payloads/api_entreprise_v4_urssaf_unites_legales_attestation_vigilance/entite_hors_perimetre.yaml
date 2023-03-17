@@ -1,7 +1,4 @@
 ---
-title: 'Entité hors périmètre'
-description: 'Payload Urssaf, attestation de vigilance - appel unité légale personne physique non libéral, donc hors périmètre - erreur 404'
-example: true
 params:
   siren: '440752244'
 status: 404
