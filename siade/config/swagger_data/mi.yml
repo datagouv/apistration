@@ -471,6 +471,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
             url:
               type: "string"
               title: "URL de l'agrément"
+              nullable: true
               example: "https://associations.api.gouv.fr/agrements/05.11.2018.pdf"
 
     unite_legale_etablissement_shared_attributes: &unite_legale_etablissement_shared_attributes

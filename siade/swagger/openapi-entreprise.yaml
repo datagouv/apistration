@@ -4280,6 +4280,7 @@ paths:
                             url:
                               type: string
                               title: URL de l'agrément
+                              nullable: true
                               example: https://associations.api.gouv.fr/agrements/05.11.2018.pdf
                       activites:
                         title: Liste des activités de l'association
@@ -5879,6 +5880,7 @@ paths:
                             url:
                               type: string
                               title: URL de l'agrément
+                              nullable: true
                               example: https://associations.api.gouv.fr/agrements/05.11.2018.pdf
                       activites:
                         title: Liste des activités de l'association
