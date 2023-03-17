@@ -1,4 +1,7 @@
 ---
+title: 'France-connect'
+description: 'Payload MESRI Statut Étudiant, appel avec France-connect - succès 200'
+example: false
 params:
   given_name: "Jean"
   family_name: "MESRI"

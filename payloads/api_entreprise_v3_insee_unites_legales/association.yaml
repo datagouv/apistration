@@ -1,4 +1,7 @@
 ---
+title: 'Associations'
+description: 'Payload INSEE Unité Légale des Associations - succès 200'
+example: true
 params:
   siren: '775672272'
 status: 200

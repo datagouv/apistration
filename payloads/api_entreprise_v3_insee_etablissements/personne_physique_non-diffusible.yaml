@@ -1,4 +1,7 @@
 ---
+title: 'Personne physique non-diffusible'
+description: 'Payload INSEE Établissements Personne Physique Non-Diffusible - succès 200'
+example: false
 params:
   siret: '35004292500031'
 status: 200

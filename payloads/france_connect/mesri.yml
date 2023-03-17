@@ -1,4 +1,6 @@
 ---
+title: 'MESRI'
+example: true
 params:
   token: 'mesri'
 api_path: '/v2/etudiants'

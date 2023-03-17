@@ -1,4 +1,7 @@
 ---
+title: 'Entité hors périmètre'
+description: 'Payload ACOSS Attestations sociales - not found 404'
+example: true
 params:
   siren: '000000000'
 status: 404

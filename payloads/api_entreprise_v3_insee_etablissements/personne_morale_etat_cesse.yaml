@@ -1,4 +1,7 @@
 ---
+title: 'Personne morale (cessée)'
+description: 'Payload INSEE Établissements Personne Morale (état céssé) - succès 200'
+example: false
 params:
   siret: '35005144700018'
 status: 200

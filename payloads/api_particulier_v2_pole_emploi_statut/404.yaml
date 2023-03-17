@@ -1,4 +1,7 @@
 ---
+title: '404'
+description: 'Payload Pole Emploi Statut - not found 404'
+example: true
 params:
   identifiant: 'not_found'
 status: 404

@@ -1,4 +1,7 @@
 ---
+title: 'Personne Physique'
+description: 'Payload INSEE Adresse unité légale Personne Physique diffusible - succès 200'
+example: false
 params:
   siren: '478464803'
 status: 200

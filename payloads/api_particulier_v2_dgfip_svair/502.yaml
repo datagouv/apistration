@@ -1,4 +1,7 @@
 ---
+title: '502'
+description: 'Payload DGFIP SVAIR - error 502'
+example: false
 params:
   numeroFiscal: '1111111111502'
   referenceAvis: '1111111111502'

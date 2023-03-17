@@ -1,4 +1,7 @@
 ---
+title: 'Association'
+description: 'Payload INSEE Association diffusibles - succès 200'
+example: true
 params:
   siret: '77567227221138'
 status: 200
