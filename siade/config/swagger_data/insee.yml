@@ -218,7 +218,9 @@ insee:
         \n
         - une unité légale non-diffusible : 'false'. Dans ce cas, les
         informations obtenues ne doivent en aucun cas être accessibles
-        au grand public."
+        au grand public.
+        \n
+        Plus d'informations sur les conditions de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionUniteLegale"
     forme_juridique:
       type: "object"
       title: "Attributs de la forme juridique"
@@ -346,7 +348,7 @@ insee:
             Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
             \n
             \n
-            L'effectif exact de l'entreprise, mensuel et annuel, est disponible au travers de l'[API Effectifs - URSSAF Caisse nationale](TODO). Si votre jeton contient ce droit d'accès, nous vous recommandons d'utiliser cette API. Ces données étant protégées, leur cadre d'utilisation est différent de la tranche effectif fournie par l'Insee, qui elle est une donnée publique."
+            L'effectif exact de l'entreprise, mensuel et annuel, est disponible au travers de l'API Effectifs - URSSAF Caisse nationale. Si votre jeton contient ce droit d'accès, nous vous recommandons d'utiliser cette API. Ces données étant protégées, leur cadre d'utilisation est différent de la tranche effectif fournie par l'Insee, qui elle est une donnée publique."
           enum:
           - "NN"
           - "00"
@@ -477,7 +479,9 @@ insee:
         \n
         - une unité légale non-diffusible : 'false'. Dans ce cas, les
         informations obtenues ne doivent en aucun cas être accessibles
-        au grand public."
+        au grand public.
+        \n
+        Plus d'informations sur les conditions de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionEtablissement"
 
   insee_unite_legale_attributes: &insee_unite_legale_attributes
     <<: *shared_insee_unite_legale_attributes
@@ -914,7 +918,9 @@ insee:
         \n
         - non-diffusible : 'false'. Dans ce cas, les
         informations obtenues ne doivent en aucun cas être accessibles
-        au grand public."
+        au grand public.
+        \n
+        Plus d'informations sur les conditions de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionEtablissement"
     enseigne: &insee_etabliseement_enseigne_property
       title: "Enseigne de l'établissement"
       type: "string"
@@ -968,7 +974,9 @@ insee:
         \n
         - non-diffusible : 'false'. Dans ce cas, les
         informations obtenues ne doivent en aucun cas être accessibles
-        au grand public."
+        au grand public.
+        \n
+        Plus d'informations sur les conditions de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionEtablissement"
 
 insee:
   adresse_etablissement:

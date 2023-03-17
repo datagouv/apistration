@@ -12616,7 +12616,8 @@ paths:
                           cas, les informations obtenues ne doivent en aucun cas être
                           accessibles au grand public. \n - non-diffusible : 'false'.
                           Dans ce cas, les informations obtenues ne doivent en aucun
-                          cas être accessibles au grand public."
+                          cas être accessibles au grand public. \n Plus d'informations
+                          sur les conditions de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionEtablissement"
                       enseigne:
                         title: Enseigne de l'établissement
                         type: string
@@ -12794,7 +12795,8 @@ paths:
                               doivent en aucun cas être accessibles au grand public.
                               \n - une unité légale non-diffusible : 'false'. Dans
                               ce cas, les informations obtenues ne doivent en aucun
-                              cas être accessibles au grand public."
+                              cas être accessibles au grand public. \n Plus d'informations
+                              sur les conditions de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionUniteLegale"
                           forme_juridique:
                             type: object
                             title: Attributs de la forme juridique
@@ -12912,13 +12914,12 @@ paths:
                                   Plus d'informations dans la documentation Insee
                                   de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
                                   \n \n L'effectif exact de l'entreprise, mensuel
-                                  et annuel, est disponible au travers de l'[API Effectifs
-                                  - URSSAF Caisse nationale](TODO). Si votre jeton
-                                  contient ce droit d'accès, nous vous recommandons
-                                  d'utiliser cette API. Ces données étant protégées,
-                                  leur cadre d'utilisation est différent de la tranche
-                                  effectif fournie par l'Insee, qui elle est une donnée
-                                  publique."
+                                  et annuel, est disponible au travers de l'API Effectifs
+                                  - URSSAF Caisse nationale. Si votre jeton contient
+                                  ce droit d'accès, nous vous recommandons d'utiliser
+                                  cette API. Ces données étant protégées, leur cadre
+                                  d'utilisation est différent de la tranche effectif
+                                  fournie par l'Insee, qui elle est une donnée publique."
                                 enum:
                                 - NN
                                 - '00'
@@ -13862,7 +13863,8 @@ paths:
                           cas, les informations obtenues peuvent être masquées par
                           la chaîne de caractère '[ND]' \n - non-diffusible : 'false'.
                           Dans ce cas, les informations obtenues ne doivent en aucun
-                          cas être accessibles au grand public."
+                          cas être accessibles au grand public. \n Plus d'informations
+                          sur les conditions de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionEtablissement"
                       enseigne:
                         title: Enseigne de l'établissement
                         type: string
@@ -14062,7 +14064,8 @@ paths:
                               être masquées par la chaîne de caractère '[ND]' \n -
                               une unité légale non-diffusible : 'false'. Dans ce cas,
                               les informations obtenues ne doivent en aucun cas être
-                              accessibles au grand public."
+                              accessibles au grand public. \n Plus d'informations
+                              sur les conditions de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionEtablissement"
                           forme_juridique:
                             type: object
                             title: Attributs de la forme juridique
@@ -14180,13 +14183,12 @@ paths:
                                   Plus d'informations dans la documentation Insee
                                   de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
                                   \n \n L'effectif exact de l'entreprise, mensuel
-                                  et annuel, est disponible au travers de l'[API Effectifs
-                                  - URSSAF Caisse nationale](TODO). Si votre jeton
-                                  contient ce droit d'accès, nous vous recommandons
-                                  d'utiliser cette API. Ces données étant protégées,
-                                  leur cadre d'utilisation est différent de la tranche
-                                  effectif fournie par l'Insee, qui elle est une donnée
-                                  publique."
+                                  et annuel, est disponible au travers de l'API Effectifs
+                                  - URSSAF Caisse nationale. Si votre jeton contient
+                                  ce droit d'accès, nous vous recommandons d'utiliser
+                                  cette API. Ces données étant protégées, leur cadre
+                                  d'utilisation est différent de la tranche effectif
+                                  fournie par l'Insee, qui elle est une donnée publique."
                                 enum:
                                 - NN
                                 - '00'
@@ -15150,7 +15152,8 @@ paths:
                           cas, les informations obtenues peuvent être masquées par
                           la chaîne de caractère '[ND]' \n - non-diffusible : 'false'.
                           Dans ce cas, les informations obtenues ne doivent en aucun
-                          cas être accessibles au grand public."
+                          cas être accessibles au grand public. \n Plus d'informations
+                          sur les conditions de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionEtablissement"
                       enseigne:
                         title: Enseigne de l'établissement
                         type: string
@@ -15350,7 +15353,8 @@ paths:
                               être masquées par la chaîne de caractère '[ND]' \n -
                               une unité légale non-diffusible : 'false'. Dans ce cas,
                               les informations obtenues ne doivent en aucun cas être
-                              accessibles au grand public."
+                              accessibles au grand public. \n Plus d'informations
+                              sur les conditions de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionEtablissement"
                           forme_juridique:
                             type: object
                             title: Attributs de la forme juridique
@@ -15468,13 +15472,12 @@ paths:
                                   Plus d'informations dans la documentation Insee
                                   de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
                                   \n \n L'effectif exact de l'entreprise, mensuel
-                                  et annuel, est disponible au travers de l'[API Effectifs
-                                  - URSSAF Caisse nationale](TODO). Si votre jeton
-                                  contient ce droit d'accès, nous vous recommandons
-                                  d'utiliser cette API. Ces données étant protégées,
-                                  leur cadre d'utilisation est différent de la tranche
-                                  effectif fournie par l'Insee, qui elle est une donnée
-                                  publique."
+                                  et annuel, est disponible au travers de l'API Effectifs
+                                  - URSSAF Caisse nationale. Si votre jeton contient
+                                  ce droit d'accès, nous vous recommandons d'utiliser
+                                  cette API. Ces données étant protégées, leur cadre
+                                  d'utilisation est différent de la tranche effectif
+                                  fournie par l'Insee, qui elle est une donnée publique."
                                 enum:
                                 - NN
                                 - '00'
@@ -16439,7 +16442,8 @@ paths:
                           cas, les informations obtenues ne doivent en aucun cas être
                           accessibles au grand public. \n - non-diffusible : 'false'.
                           Dans ce cas, les informations obtenues ne doivent en aucun
-                          cas être accessibles au grand public."
+                          cas être accessibles au grand public. \n Plus d'informations
+                          sur les conditions de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionEtablissement"
                       enseigne:
                         title: Enseigne de l'établissement
                         type: string
@@ -16617,7 +16621,8 @@ paths:
                               doivent en aucun cas être accessibles au grand public.
                               \n - une unité légale non-diffusible : 'false'. Dans
                               ce cas, les informations obtenues ne doivent en aucun
-                              cas être accessibles au grand public."
+                              cas être accessibles au grand public. \n Plus d'informations
+                              sur les conditions de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionUniteLegale"
                           forme_juridique:
                             type: object
                             title: Attributs de la forme juridique
@@ -16735,13 +16740,12 @@ paths:
                                   Plus d'informations dans la documentation Insee
                                   de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
                                   \n \n L'effectif exact de l'entreprise, mensuel
-                                  et annuel, est disponible au travers de l'[API Effectifs
-                                  - URSSAF Caisse nationale](TODO). Si votre jeton
-                                  contient ce droit d'accès, nous vous recommandons
-                                  d'utiliser cette API. Ces données étant protégées,
-                                  leur cadre d'utilisation est différent de la tranche
-                                  effectif fournie par l'Insee, qui elle est une donnée
-                                  publique."
+                                  et annuel, est disponible au travers de l'API Effectifs
+                                  - URSSAF Caisse nationale. Si votre jeton contient
+                                  ce droit d'accès, nous vous recommandons d'utiliser
+                                  cette API. Ces données étant protégées, leur cadre
+                                  d'utilisation est différent de la tranche effectif
+                                  fournie par l'Insee, qui elle est une donnée publique."
                                 enum:
                                 - NN
                                 - '00'
@@ -17667,7 +17671,8 @@ paths:
                           en aucun cas être accessibles au grand public. \n - une
                           unité légale non-diffusible : 'false'. Dans ce cas, les
                           informations obtenues ne doivent en aucun cas être accessibles
-                          au grand public."
+                          au grand public. \n Plus d'informations sur les conditions
+                          de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionUniteLegale"
                       forme_juridique:
                         type: object
                         title: Attributs de la forme juridique
@@ -17778,12 +17783,12 @@ paths:
                               plus \n \n Plus d'informations dans la documentation
                               Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
                               \n \n L'effectif exact de l'entreprise, mensuel et annuel,
-                              est disponible au travers de l'[API Effectifs - URSSAF
-                              Caisse nationale](TODO). Si votre jeton contient ce
-                              droit d'accès, nous vous recommandons d'utiliser cette
-                              API. Ces données étant protégées, leur cadre d'utilisation
-                              est différent de la tranche effectif fournie par l'Insee,
-                              qui elle est une donnée publique."
+                              est disponible au travers de l'API Effectifs - URSSAF
+                              Caisse nationale. Si votre jeton contient ce droit d'accès,
+                              nous vous recommandons d'utiliser cette API. Ces données
+                              étant protégées, leur cadre d'utilisation est différent
+                              de la tranche effectif fournie par l'Insee, qui elle
+                              est une donnée publique."
                             enum:
                             - NN
                             - '00'
@@ -18468,7 +18473,8 @@ paths:
                           être masquées par la chaîne de caractère '[ND]' \n - une
                           unité légale non-diffusible : 'false'. Dans ce cas, les
                           informations obtenues ne doivent en aucun cas être accessibles
-                          au grand public."
+                          au grand public. \n Plus d'informations sur les conditions
+                          de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionEtablissement"
                       forme_juridique:
                         type: object
                         title: Attributs de la forme juridique
@@ -18579,12 +18585,12 @@ paths:
                               plus \n \n Plus d'informations dans la documentation
                               Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
                               \n \n L'effectif exact de l'entreprise, mensuel et annuel,
-                              est disponible au travers de l'[API Effectifs - URSSAF
-                              Caisse nationale](TODO). Si votre jeton contient ce
-                              droit d'accès, nous vous recommandons d'utiliser cette
-                              API. Ces données étant protégées, leur cadre d'utilisation
-                              est différent de la tranche effectif fournie par l'Insee,
-                              qui elle est une donnée publique."
+                              est disponible au travers de l'API Effectifs - URSSAF
+                              Caisse nationale. Si votre jeton contient ce droit d'accès,
+                              nous vous recommandons d'utiliser cette API. Ces données
+                              étant protégées, leur cadre d'utilisation est différent
+                              de la tranche effectif fournie par l'Insee, qui elle
+                              est une donnée publique."
                             enum:
                             - NN
                             - '00'
