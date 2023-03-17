@@ -44,6 +44,9 @@ suivant :
 
 ```yaml
 ---
+title: 'Status validité 200'
+description: 'Renvoie le status de validité pour un particulier'
+example: true
 params:
   first_name: 'John'
   last_name: 'Doe'
@@ -56,6 +59,9 @@ payload: |-
 
 Avec:
 
+* `title`, titre du payload ;
+* `description`, une description du payload ;
+* `example`, booléen, précise si le payload sera affiché en example sur le site vitrine ;
 * `params`, ensemble de clé valeur traduisant les paramètres qui déclenchent la
     réponse associée ;
 * `status`, le status de la réponse HTTP associé ;
