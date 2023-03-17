@@ -44,9 +44,6 @@ suivant :
 
 ```yaml
 ---
-title: 'Status validité 200'
-description: 'Renvoie le status de validité pour un particulier'
-example: true
 params:
   first_name: 'John'
   last_name: 'Doe'
@@ -59,13 +56,18 @@ payload: |-
 
 Avec:
 
-* `title`, titre du payload ;
-* `description`, une description du payload ;
-* `example`, booléen, précise si le payload sera affiché en example sur le site vitrine ;
 * `params`, ensemble de clé valeur traduisant les paramètres qui déclenchent la
     réponse associée ;
 * `status`, le status de la réponse HTTP associé ;
 * `payload`, la payload renvoyée.
+
+Toutes les autres clé potentiellements présentes dans la payload sont
+facultatives ou servent pour tout autre chose (affichage d'exemples sur les
+sites vitrines par exemple). Une liste (non-exhaustive) :
+
+* `title`, titre de la payload, utilisé pour l'exemple ;
+* `description`, une description de la payload, utilisé pour l'exemple ;
+* `example`, booléen, précise si la payload sera affichée en example sur le site vitrine ;
 
 Pour déclencher la réponse ci-dessous, avec comme application API Particulier
 et comme chemin `v1/dgfip/impots`, il faut effectuer l'appel suivant:
