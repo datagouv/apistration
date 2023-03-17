@@ -1,0 +1,23 @@
+---
+title: 'Attestation non-délivrée'
+description: "Payload Urssaf, attestation de vigilance - appel unité légale, avec refus de délivrance de l'attestation - succès 200"
+example: true
+params:
+  siren: '000000001'
+status: 200
+payload: |-
+  {
+    "data": {
+      "document_url": null,
+      "document_url_expires_in": null,
+      "date_debut_validite": null,
+      "date_fin_validite": null,
+      "code_securite": null,
+      "entity_status": {
+        "code": "refus_de_delivrance",
+        "libelle": "La délivrance de l'attestation de vigilance a été refusée par l'Urssaf car l'entité n'est pas à jour de ses cotisations sociales"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }
