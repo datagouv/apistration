@@ -26,7 +26,7 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
       },
 
       categorie_entreprise: unite_legale['categorieEntreprise'],
-      diffusable_commercialement: yes_no_to_boolean(unite_legale['statutDiffusionUniteLegale']),
+      diffusable_commercialement: unite_legale['statutDiffusionUniteLegale'] == 'O',
 
       forme_juridique: referential(
         'categorie_juridique',
