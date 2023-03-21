@@ -130,6 +130,16 @@ RSpec.describe MakeRequest, type: :interactor do
         end
       end
 
+      context 'when it is a "SSL_read: unexpected eof while reading" error' do
+        let(:ssl_error_message) { 'SSL_read: unexpected eof while reading' }
+
+        it { is_expected.to be_a_failure }
+
+        it 'adds NetworkError to errors' do
+          expect(subject.errors).to include(instance_of(NetworkError))
+        end
+      end
+
       context 'when it is an another error' do
         let(:ssl_error_message) { 'whatever' }
 

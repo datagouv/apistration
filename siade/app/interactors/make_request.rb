@@ -51,7 +51,7 @@ class MakeRequest < ApplicationInteractor
     context.errors << NetworkError.new
     context.fail!
   rescue OpenSSL::SSL::SSLError => e
-    raise unless e.message.include?('SSLv3/TLS write client hello')
+    raise unless open_ssl_network_error?(e)
 
     context.errors << NetworkError.new
     context.fail!
@@ -140,6 +140,15 @@ class MakeRequest < ApplicationInteractor
       Net::HTTPGatewayTimeout => ProviderTimeoutError,
       Net::HTTPBadGateway => ProviderUnavailable
     }
+  end
+
+  def open_ssl_network_error?(exception)
+    [
+      'SSLv3/TLS write client hello',
+      'SSL_read: unexpected eof while reading'
+    ].any? do |error_message|
+      exception.message.include?(error_message)
+    end
   end
 
   def response_is_a_redirection?
