@@ -20,6 +20,14 @@ RSpec.describe INSEE::UniteLegaleDiffusable::ValidateResponse, type: :validate_r
       its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
     end
 
+    context 'when it is a partial diffusable entreprise' do
+      let(:diffusable) { 'P' }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+    end
+
     context 'when it is a diffusable entreprise' do
       let(:diffusable) { 'O' }
 

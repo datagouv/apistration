@@ -8,6 +8,6 @@ class INSEE::EtablissementDiffusable::ValidateResponse < INSEE::Etablissement::V
   private
 
   def non_diffusable?
-    json_body['etablissement']['statutDiffusionEtablissement'] == 'N'
+    %w[N P].include?(json_body['etablissement']['statutDiffusionEtablissement'])
   end
 end
