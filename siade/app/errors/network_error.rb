@@ -6,4 +6,10 @@ class NetworkError < ApplicationError
   def kind
     :network_error
   end
+
+  def meta
+    {
+      retry_in: 10
+    }
+  end
 end

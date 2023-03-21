@@ -237,7 +237,7 @@
 
 - code: '00501'
   title: 'Erreur réseau'
-  detail: "Problème de connexion au serveur distant. L'erreur peut venir soit du fournisseur, soit de API Entreprise"
+  detail: "Problème de connexion au serveur distant. L'erreur peut venir soit du fournisseur, soit de API Entreprise. Il s'agit souvent d'une erreur temporaire."
 
 - code: '00502'
   title: "Erreur réseau du service d'hébergement de données"

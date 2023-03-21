@@ -477,12 +477,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -1000,12 +1003,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -1599,12 +1605,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -1976,12 +1985,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -2358,12 +2370,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -2785,12 +2800,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -3139,12 +3157,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -3708,12 +3729,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -5290,12 +5314,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -6535,12 +6562,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -6854,12 +6884,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -7263,12 +7296,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -7640,12 +7676,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -8405,12 +8444,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -8916,12 +8958,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -9270,12 +9315,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -9750,12 +9798,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -10129,12 +10180,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -10530,12 +10584,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -11093,12 +11150,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -11655,12 +11715,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -12863,12 +12926,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -14070,12 +14136,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -15278,12 +15347,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -16488,12 +16560,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -17250,12 +17325,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -18019,12 +18097,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -18454,12 +18535,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -18875,12 +18959,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -19244,12 +19331,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -19667,12 +19757,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -20069,12 +20162,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -20386,12 +20482,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -20788,12 +20887,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -21147,12 +21249,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
@@ -21672,12 +21777,15 @@ paths:
                     - code: '00501'
                       title: Erreur réseau
                       detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
                       source:
-                      meta: {}
+                      meta:
+                        retry_in: 10
                   summary: Erreur réseau
                   description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
                 dns_resolution_error:
                   value:
                     errors:
