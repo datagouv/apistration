@@ -12,7 +12,7 @@ RSpec.describe INSEE::EtablissementDiffusable::ValidateResponse, type: :validate
       }
     end
 
-    context 'when it is a non-diffusable entreprise' do
+    context 'when it is a non-diffusable etablissement' do
       let(:diffusable) { 'N' }
 
       it { is_expected.to be_a_failure }
@@ -20,7 +20,7 @@ RSpec.describe INSEE::EtablissementDiffusable::ValidateResponse, type: :validate
       its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
     end
 
-    context 'when it is a diffusable entreprise' do
+    context 'when it is a diffusable etablissement' do
       let(:diffusable) { 'O' }
 
       it { is_expected.to be_a_success }
