@@ -81,7 +81,7 @@ class SIADE::V2::Drivers::INSEE::Etablissement < SIADE::V2::Drivers::GenericDriv
   end
 
   def diffusable_commercialement_raw
-    yes_no_to_boolean(info_etab[:statutDiffusionEtablissement])
+    info_etab[:statutDiffusionEtablissement] == 'O'
   end
 
   def tranche_effectif_salarie_raw

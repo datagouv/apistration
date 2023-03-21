@@ -70,7 +70,7 @@ class SIADE::V2::Drivers::INSEE::Entreprise < SIADE::V2::Drivers::GenericDriver
   end
 
   def diffusable_commercialement_raw
-    yes_no_to_boolean(info_entreprise[:statutDiffusionUniteLegale])
+    info_entreprise[:statutDiffusionUniteLegale] == 'O'
   end
 
   def sigle_raw
