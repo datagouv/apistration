@@ -12,6 +12,13 @@ class DGFIP::AttestationFiscale::MakeRequest < DGFIP::AbstractMakeRequest
     }
   end
 
+  def timeout_http_options
+    {
+      open_timeout: 15,
+      read_timeout: 15
+    }
+  end
+
   def request_uri
     URI(Siade.credentials[:dgfip_attestations_fiscales_url])
   end
