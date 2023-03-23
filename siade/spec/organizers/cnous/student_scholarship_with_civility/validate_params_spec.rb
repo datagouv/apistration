@@ -21,14 +21,6 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::ValidateParams, type: :val
     it { is_expected.to be_a_success }
   end
 
-  context 'without birthday place' do
-    let(:birth_place) { '' }
-
-    it { is_expected.to be_a_failure }
-
-    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
-  end
-
   context 'without first name' do
     let(:first_names) { '' }
 
@@ -39,14 +31,6 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::ValidateParams, type: :val
 
   context 'without family name' do
     let(:family_name) { '' }
-
-    it { is_expected.to be_a_failure }
-
-    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
-  end
-
-  context 'with invalid gender' do
-    let(:gender) { 'lol' }
 
     it { is_expected.to be_a_failure }
 

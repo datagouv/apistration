@@ -10,7 +10,7 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
       birthDate: birth_date,
       birthPlace: birth_place,
       civility: gender
-    }
+    }.compact
   end
 
   def request_uri
@@ -36,6 +36,6 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
   end
 
   def gender
-    context.params[:gender].upcase
+    context.params[:gender].try(:upcase)
   end
 end
