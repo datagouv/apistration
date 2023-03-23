@@ -1,4 +1,4 @@
-class INSEE::SiegeUniteLegale::MakeRequest < MakeRequest::Get
+class INSEE::SiegeUniteLegale::MakeRequest < INSEE::MakeRequest
   protected
 
   def request_uri
@@ -11,29 +11,9 @@ class INSEE::SiegeUniteLegale::MakeRequest < MakeRequest::Get
     }
   end
 
-  def set_headers(request)
-    request['Authorization'] = "Bearer #{token}"
-    super(request)
-  end
-
-  def timeout_http_options
-    {
-      open_timeout: 2,
-      read_timeout: 2
-    }
-  end
-
   private
 
   def siren
     context.params[:siren]
-  end
-
-  def token
-    context.token
-  end
-
-  def base_uri
-    Siade.credentials[:insee_v3_domain]
   end
 end

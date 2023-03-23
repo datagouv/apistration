@@ -1,4 +1,4 @@
-class INSEE::Etablissement::MakeRequest < MakeRequest::Get
+class INSEE::Etablissement::MakeRequest < INSEE::MakeRequest
   protected
 
   def request_uri
@@ -7,18 +7,6 @@ class INSEE::Etablissement::MakeRequest < MakeRequest::Get
 
   def request_params
     {}
-  end
-
-  def set_headers(request)
-    request['Authorization'] = "Bearer #{token}"
-    super(request)
-  end
-
-  def timeout_http_options
-    {
-      open_timeout: 2,
-      read_timeout: 2
-    }
   end
 
   def handle_redirect
@@ -42,13 +30,5 @@ class INSEE::Etablissement::MakeRequest < MakeRequest::Get
 
   def siret
     context.params[:siret]
-  end
-
-  def token
-    context.token
-  end
-
-  def base_uri
-    Siade.credentials[:insee_v3_domain]
   end
 end
