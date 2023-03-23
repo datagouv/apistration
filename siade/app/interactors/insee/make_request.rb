@@ -6,7 +6,7 @@ class INSEE::MakeRequest < MakeRequest::Get
     super(request)
   end
 
-  def timeout_http_options
+  def extra_http_start_options
     {
       open_timeout: 2,
       read_timeout: 2
