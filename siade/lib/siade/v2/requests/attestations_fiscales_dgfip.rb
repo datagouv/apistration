@@ -46,6 +46,14 @@ class SIADE::V2::Requests::AttestationsFiscalesDGFIP < SIADE::V2::Requests::Gene
     request['Cookie'] = cookie
   end
 
+  def timeout_http_options
+    {
+      open_timeout: 15,
+      read_timeout: 15
+    }
+  end
+
+
   # DGFIP doesn't support normal encoding : %20 in querystring -> code 401 unauthorized
   # So we replace whitespace by +, when the pdf is generated, + are replaced by whitespaces
   def encode_request_params
