@@ -99,7 +99,7 @@ RSpec.describe Resource do
       }
     end
 
-    it 'deeps nils to hash' do
+    it 'replaces deep values with a deep merge' do
       expect(subject).to eq(
         {
           id: nil,

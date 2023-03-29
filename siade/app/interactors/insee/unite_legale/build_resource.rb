@@ -1,12 +1,6 @@
 class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
   protected
 
-  STATE_DIFFUSION = {
-    'O' => :diffusable,
-    'N' => :non_diffusable,
-    'P' => :partially_diffusable
-  }.freeze
-
   def resource_attributes
     {
       siren:,
@@ -32,8 +26,8 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
       },
 
       categorie_entreprise: unite_legale['categorieEntreprise'],
-      status_diffusion: STATE_DIFFUSION[unite_legale['statutDiffusionUniteLegale']],
-      diffusable_commercialement: STATE_DIFFUSION[unite_legale['statutDiffusionUniteLegale']] != :non_diffusable,
+      status_diffusion: STATUT_DIFFUSION[unite_legale['statutDiffusionUniteLegale']],
+      diffusable_commercialement: STATUT_DIFFUSION[unite_legale['statutDiffusionUniteLegale']] != :non_diffusable,
 
       forme_juridique: referential(
         'categorie_juridique',
