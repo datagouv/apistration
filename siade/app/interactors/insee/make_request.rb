@@ -1,7 +1,7 @@
 class INSEE::MakeRequest < MakeRequest::Get
   protected
 
-  def set_headers(request)
+  def extra_headers(request)
     request['Authorization'] = "Bearer #{token}"
     super(request)
   end

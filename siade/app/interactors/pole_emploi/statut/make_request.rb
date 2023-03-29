@@ -15,7 +15,7 @@ class PoleEmploi::Statut::MakeRequest < MakeRequest::Post
     identifiant
   end
 
-  def set_headers(request)
+  def extra_headers(request)
     request['Content-Type'] = 'application/json'
     request['Authorization'] = "Bearer #{token}"
     request['X-pe-consommateur'] = "DINUM - #{user_id}"

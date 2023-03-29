@@ -105,17 +105,9 @@ Metrics/ModuleLength:
 
 Naming/AccessorMethodName:
   Exclude:
-    - "app/interactors/**/**/make_request.rb"
-    - "app/interactors/make_request.rb"
     - "lib/generators/make_request/make_request_generator.rb"
     - "app/services/monitoring_service.rb"
     - "lib/generators/scaffold_resource/scaffold_resource_generator.rb"
-    - "app/interactors/inpi/authenticate.rb"
-    - "app/interactors/mesri/student_status/make_request_commons.rb"
-    - "app/interactors/insee/authenticate.rb"
-    - "app/interactors/cnous/make_request_commons.rb"
-    - "app/interactors/cnous/authenticate.rb"
-    - "spec/interactors/abstract_get_token_spec.rb"
 
 # Allowing uppercase in some method names
 Naming/MethodName:

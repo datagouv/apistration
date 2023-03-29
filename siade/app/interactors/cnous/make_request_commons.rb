@@ -1,7 +1,7 @@
 module CNOUS::MakeRequestCommons
   protected
 
-  def set_headers(request)
+  def extra_headers(request)
     request['Authorization'] = "Bearer #{context.token}"
   end
 end

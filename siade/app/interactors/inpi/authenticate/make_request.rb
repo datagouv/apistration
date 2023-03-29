@@ -5,7 +5,7 @@ class INPI::Authenticate::MakeRequest < MakeRequest::Post
     URI "#{inpi_url}/login"
   end
 
-  def set_headers(request)
+  def extra_headers(request)
     request['login'] = inpi_login
     request['password'] = inpi_password
     request['Content-Type'] = 'application/json'

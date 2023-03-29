@@ -24,7 +24,7 @@ class ACOSS::AttestationsSociales::MakeRequest < MakeRequest::Post
     context.params[:siren]
   end
 
-  def set_headers(request)
+  def extra_headers(request)
     request['Content-Type'] = 'application/json'
     request['authorization'] = "Bearer #{token}"
   end

@@ -3,7 +3,7 @@ class DGFIP::Authenticate::MakeRequest < MakeRequest::Post
     URI(Siade.credentials[:dgfip_authenticate_url])
   end
 
-  def set_headers(request)
+  def extra_headers(request)
     request['Content-Type'] = 'application/x-www-form-urlencoded'
   end
 

@@ -1,7 +1,7 @@
 class CNOUS::Authenticate < AbstractGetToken
   private
 
-  def set_headers(request)
+  def extra_headers(request)
     request['Authorization'] = "Basic #{client_credentials_header}"
   end
 

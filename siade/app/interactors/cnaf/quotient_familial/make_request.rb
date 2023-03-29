@@ -16,7 +16,7 @@ class CNAF::QuotientFamilial::MakeRequest < MakeRequest::Post
     }
   end
 
-  def set_headers(request)
+  def extra_headers(request)
     request['Content-Type'] = 'text/xml; charset=utf-8'
   end
 

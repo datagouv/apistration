@@ -73,7 +73,7 @@ class MakeRequest < ApplicationInteractor
     }
   end
 
-  def set_headers(request)
+  def extra_headers(request)
     request['Content-Type'] = 'application/json' if request['Content-Type'].nil?
   end
 
@@ -95,7 +95,7 @@ class MakeRequest < ApplicationInteractor
     Net::HTTP.start(request_uri.host, request_uri.port, http_options.merge(extra_http_start_options)) do |http|
       request = block.call
 
-      set_headers(request)
+      extra_headers(request)
       http.request(request)
     end
   end

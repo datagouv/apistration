@@ -9,7 +9,7 @@ class Infogreffe::MakeRequest < MakeRequest::Post
     InfogreffeKbisSoapBuilder.new(siren).render
   end
 
-  def set_headers(request)
+  def extra_headers(request)
     request['Content-Type'] = 'text/xml'
     request['charset'] = 'utf-8'
     request['SOAPAction'] = 'getProduitsWebServicesXML'

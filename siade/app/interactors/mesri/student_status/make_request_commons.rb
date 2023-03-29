@@ -1,7 +1,7 @@
 module MESRI::StudentStatus::MakeRequestCommons
   protected
 
-  def set_headers(request)
+  def extra_headers(request)
     request['X-API-Key'] = api_key
     request['X-Caller'] = "DINUM - #{token_id}"
   end

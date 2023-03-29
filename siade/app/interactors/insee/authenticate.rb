@@ -1,7 +1,7 @@
 class INSEE::Authenticate < GetOAuth2Token
   protected
 
-  def set_headers(request)
+  def extra_headers(request)
     request['Authorization'] = "Basic #{client_credentials_header}"
   end
 

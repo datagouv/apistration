@@ -1,7 +1,7 @@
 class DGFIP::AttestationFiscale::MakeRequest < DGFIP::AbstractMakeRequest
   protected
 
-  def set_headers(request)
+  def extra_headers(request)
     request['Accept'] = 'application/pdf'
     request['Cookie'] = context.cookie
   end

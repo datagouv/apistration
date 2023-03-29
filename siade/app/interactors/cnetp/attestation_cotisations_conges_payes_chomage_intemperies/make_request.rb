@@ -13,7 +13,7 @@ class CNETP::AttestationCotisationsCongesPayesChomageIntemperies::MakeRequest < 
     }
   end
 
-  def set_headers(request)
+  def extra_headers(request)
     request['Content-Type'] = 'application/octet-stream'
     super(request)
   end

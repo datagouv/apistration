@@ -21,7 +21,7 @@ class DGFIP::SVAIR::MakeRequest < MakeRequest::Post
     }
   end
 
-  def set_headers(request)
+  def extra_headers(request)
     request['Content-Type'] = 'application/x-www-form-urlencoded'
   end
 

@@ -5,7 +5,7 @@ class DGFIP::LiassesFiscales::MakeRequest < DGFIP::AbstractMakeRequest
     URI(Siade.credentials[:dgfip_liasse_fiscale_declaration_url])
   end
 
-  def set_headers(request)
+  def extra_headers(request)
     request['Cookie'] = context.cookie
   end
 

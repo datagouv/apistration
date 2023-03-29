@@ -5,7 +5,7 @@ class FNTP::CarteProfessionnelleTravauxPublics::MakeRequest < MakeRequest::Get
     URI.parse("#{fntp_domain}/rip/sgmap/#{siren}/cartepro")
   end
 
-  def set_headers(request)
+  def extra_headers(request)
     request['Content-Type'] = 'application/pdf'
     super(request)
   end

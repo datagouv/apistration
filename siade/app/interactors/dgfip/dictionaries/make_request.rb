@@ -12,7 +12,7 @@ class DGFIP::Dictionaries::MakeRequest < MakeRequest::Get
     }
   end
 
-  def set_headers(request)
+  def extra_headers(request)
     request['Cookie'] = context.cookie
     super(request)
   end

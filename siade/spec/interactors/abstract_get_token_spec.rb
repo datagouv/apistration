@@ -11,7 +11,7 @@ RSpec.describe AbstractGetToken, type: :interactor do
         'dummy_scope'
       end
 
-      def set_headers(request)
+      def extra_headers(request)
         request['Authorization'] = 'Basic dummy_client_credentials'
       end
 
