@@ -35,6 +35,14 @@ def sirens_insee_v3
     with_enseigne_siren: '130015522',
     address_complete: '331457648',
     ceased: ceased_siren
+
+  }
+end
+
+def sirens_insee_v3_mock
+  {
+    partially_diffusible_unite_legale_personne_physique: '888861299',
+    partially_diffusible_unite_legale_personne_morale: association_siren
   }
 end
 

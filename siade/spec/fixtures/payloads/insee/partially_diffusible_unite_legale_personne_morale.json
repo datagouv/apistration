@@ -1,0 +1,53 @@
+{
+  "uniteLegale": {
+		"siren": "195901830",
+		"statutDiffusionUniteLegale": "P",
+		"dateCreationUniteLegale": "2009-03-23",
+		"sigleUniteLegale": null,
+		"sexeUniteLegale": null,
+		"prenom1UniteLegale": "Thomas",
+		"prenom2UniteLegale": "Samuel",
+		"prenom3UniteLegale": "Loic",
+		"prenom4UniteLegale": "Alexandre",
+		"prenomUsuelUniteLegale": null,
+		"pseudonymeUniteLegale": null,
+		"identifiantAssociationUniteLegale": null,
+		"trancheEffectifsUniteLegale": "21",
+		"anneeEffectifsUniteLegale": "2020",
+		"dateDernierTraitementUniteLegale": "2022-08-29T09:04:33",
+		"nombrePeriodesUniteLegale": 6,
+		"categorieEntreprise": "PME",
+		"anneeCategorieEntreprise": "2020",
+		"periodesUniteLegale": [
+			{
+				"dateFin": null,
+				"dateDebut": "2009-03-23",
+				"etatAdministratifUniteLegale": "A",
+				"changementEtatAdministratifUniteLegale": false,
+				"nomUniteLegale": null,
+				"changementNomUniteLegale": false,
+				"nomUsageUniteLegale": null,
+				"changementNomUsageUniteLegale": false,
+				"denominationUniteLegale": "COLLEGE MADAME DE SEVIGNE",
+				"changementDenominationUniteLegale": true,
+				"denominationUsuelle1UniteLegale": null,
+				"denominationUsuelle2UniteLegale": null,
+				"denominationUsuelle3UniteLegale": null,
+				"changementDenominationUsuelleUniteLegale": false,
+				"categorieJuridiqueUniteLegale": "7331",
+				"changementCategorieJuridiqueUniteLegale": false,
+				"activitePrincipaleUniteLegale": "85.31Z",
+				"nomenclatureActivitePrincipaleUniteLegale": "NAFRev2",
+				"changementActivitePrincipaleUniteLegale": false,
+				"nicSiegeUniteLegale": "00024",
+				"changementNicSiegeUniteLegale": false,
+				"economieSocialeSolidaireUniteLegale": null,
+				"changementEconomieSocialeSolidaireUniteLegale": false,
+				"societeMissionUniteLegale": null,
+				"changementSocieteMissionUniteLegale": false,
+				"caractereEmployeurUniteLegale": "O",
+				"changementCaractereEmployeurUniteLegale": false
+			}
+		]
+  }
+}
