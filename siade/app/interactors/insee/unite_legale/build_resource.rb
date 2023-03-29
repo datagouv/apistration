@@ -27,7 +27,7 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
 
       categorie_entreprise: unite_legale['categorieEntreprise'],
       status_diffusion: STATUT_DIFFUSION[unite_legale['statutDiffusionUniteLegale']],
-      diffusable_commercialement: STATUT_DIFFUSION[unite_legale['statutDiffusionUniteLegale']] != :non_diffusable,
+      diffusable_commercialement: STATUT_DIFFUSION[unite_legale['statutDiffusionUniteLegale']] != :non_diffusible,
 
       forme_juridique: referential(
         'categorie_juridique',

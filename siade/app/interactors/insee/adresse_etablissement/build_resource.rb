@@ -5,6 +5,8 @@ class INSEE::AdresseEtablissement::BuildResource < INSEE::Etablissement::BuildRe
     {
       siret: etablissement['siret'],
       siren: etablissement['siren'],
+      diffusable_commercialement: STATUT_DIFFUSION[etablissement['statutDiffusionEtablissement']] != :non_diffusible,
+      status_diffusion: STATUT_DIFFUSION[etablissement['statutDiffusionEtablissement']],
       complement_adresse: etablissement_address['complementAdresseEtablissement'],
       numero_voie: etablissement_address['numeroVoieEtablissement'],
       indice_repetition_voie: indices_repetition_de_voie[etablissement_address['indiceRepetitionEtablissement']],
@@ -19,6 +21,7 @@ class INSEE::AdresseEtablissement::BuildResource < INSEE::Etablissement::BuildRe
       libelle_cedex: etablissement_address['libelleCedexEtablissement'],
       code_pays_etranger: etablissement_address['codePaysEtrangerEtablissement'],
       libelle_pays_etranger: etablissement_address['libellePaysEtrangerEtablissement'],
+      type: type_of_person,
 
       acheminement_postal:,
 

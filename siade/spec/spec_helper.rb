@@ -156,7 +156,6 @@ RSpec.configure do |config|
   config.include ProviderStubs::BanqueDeFrance
   config.include ProviderStubs::MESRI
   config.include ProviderStubs::URSSAF
-  config.include ProviderStubs::INSEE
 
   config.include ActivateStrictVcrRequestMatchingForV3
   config.extend ActivateStrictVcrRequestMatchingForV3

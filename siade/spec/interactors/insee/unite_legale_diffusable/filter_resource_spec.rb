@@ -7,22 +7,8 @@ RSpec.describe INSEE::UniteLegaleDiffusable::FilterResource, type: :filter_resou
     let(:builded_resources) { INSEE::UniteLegale::BuildResource.call(response:) }
     let(:response) { instance_double(Net::HTTPOK, body:) }
 
-    let(:body) do
-      INSEE::UniteLegale::MakeRequest.call(params:, token: 'valid insee token').response.body
-    end
-
-    let(:params) do
-      {
-        siren:
-      }
-    end
-
-    context 'with an active GE, which is a personne physique' do
-      before do
-        mock_insee_partially_diffusible_unite_legale_personne_physique
-      end
-
-      let(:siren) { sirens_insee_v3_mock[:partially_diffusible_unite_legale_personne_physique] }
+    context 'with a personne physique' do
+      let(:body) { open_payload_file('insee/partially_diffusible_unite_legale_personne_physique.json').read }
 
       it { is_expected.to be_a_success }
 
@@ -31,10 +17,14 @@ RSpec.describe INSEE::UniteLegaleDiffusable::FilterResource, type: :filter_resou
 
         it { is_expected.to be_a(Resource) }
 
+        its(:siren) { is_expected.to eq('808861199') }
+        its(:siret_siege_social) { is_expected.to eq('80886119900020') }
+        its(:type) { is_expected.to eq(:personne_physique) }
+
         its(:personne_morale_attributs) do
           is_expected.to eq({
-            raison_sociale: '[ND]',
-            sigle: '[ND]'
+            raison_sociale: nil,
+            sigle: nil
           })
         end
 
@@ -54,12 +44,8 @@ RSpec.describe INSEE::UniteLegaleDiffusable::FilterResource, type: :filter_resou
       end
     end
 
-    context 'with an active GE, which is a personne morale' do
-      before do
-        mock_insee_partially_diffusible_unite_legale_personne_morale
-      end
-
-      let(:siren) { sirens_insee_v3_mock[:partially_diffusible_unite_legale_personne_morale] }
+    context 'with a personne morale' do
+      let(:body) { open_payload_file('insee/partially_diffusible_unite_legale_personne_morale.json').read }
 
       it { is_expected.to be_a_success }
 
@@ -68,9 +54,13 @@ RSpec.describe INSEE::UniteLegaleDiffusable::FilterResource, type: :filter_resou
 
         it { is_expected.to be_a(Resource) }
 
+        its(:siren) { is_expected.to eq('243400819') }
+        its(:siret_siege_social) { is_expected.to eq('24340081900013') }
+        its(:type) { is_expected.to eq(:personne_morale) }
+
         its(:personne_morale_attributs) do
           is_expected.to eq({
-            raison_sociale: 'COLLEGE MADAME DE SEVIGNE',
+            raison_sociale: 'COMMUNAUTE D AGGLOMERATION HERAULT MEDITERRANEE',
             sigle: '[ND]'
           })
         end
@@ -80,10 +70,10 @@ RSpec.describe INSEE::UniteLegaleDiffusable::FilterResource, type: :filter_resou
             sexe: nil,
             nom_naissance: nil,
             nom_usage: nil,
-            prenom_1: 'Thomas',
-            prenom_2: 'Samuel',
-            prenom_3: 'Loic',
-            prenom_4: 'Alexandre',
+            prenom_1: nil,
+            prenom_2: nil,
+            prenom_3: nil,
+            prenom_4: nil,
             prenom_usuel: nil,
             pseudonyme: nil
           })

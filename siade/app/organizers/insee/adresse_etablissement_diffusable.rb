@@ -3,7 +3,7 @@ class INSEE::AdresseEtablissementDiffusable < RetrieverOrganizer
     INSEE::Authenticate,
     INSEE::Etablissement::MakeRequest,
     INSEE::EtablissementDiffusable::ValidateResponse,
-    INSEE::AdresseEtablissement::BuildResource
+    INSEE::AdresseEtablissementDiffusable::BuildResource
 
   def provider_name
     'INSEE'

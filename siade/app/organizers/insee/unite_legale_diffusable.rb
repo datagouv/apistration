@@ -3,8 +3,7 @@ class INSEE::UniteLegaleDiffusable < RetrieverOrganizer
     INSEE::Authenticate,
     INSEE::UniteLegale::MakeRequest,
     INSEE::UniteLegaleDiffusable::ValidateResponse,
-    INSEE::UniteLegale::BuildResource,
-    INSEE::UniteLegaleDiffusable::FilterResource
+    INSEE::UniteLegaleDiffusable::BuildResource
 
   def provider_name
     'INSEE'
