@@ -1,13 +1,39 @@
 dgfip:
   attestations_fiscales:
-    title: "Attestation fiscale"
-    description: "Attestation fiscale délivrée par la Direction générale des finances publiques (DGFIP), indiquant que l’entreprise est à jour de ses obligations fiscales."
-    tags:
-      - "Attestations sociales et fiscales"
-    document_url_properties:
-      title: "URL de téléchargement de l'attestation fiscale (.pdf)"
-      description: "Ce lien donne accès à l'attestation fiscale au format PDF."
-      example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_fiscale_dgfip.pdf"
+    v3:
+      title: &dgfip_attestations_fiscales_title "Attestation fiscale"
+      description: &dgfip_attestations_fiscales_description "Attestation fiscale délivrée par la Direction générale des finances publiques (DGFIP), indiquant que l’entreprise est à jour de ses obligations fiscales."
+      tags: &dgfip_attestations_fiscales_tags
+        - "Attestations sociales et fiscales"
+      document_url_properties: &document_url_properties
+        title: "URL de téléchargement de l'attestation fiscale (.pdf)"
+        type: 'string'
+        description: "Ce lien donne accès à l'attestation fiscale au format PDF."
+        example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_fiscale_dgfip.pdf"
+    v4:
+      title: *dgfip_attestations_fiscales_title
+      description: *dgfip_attestations_fiscales_description
+      tags: *dgfip_attestations_fiscales_tags
+      attributes:
+        document_url: *document_url_properties
+        document_url_expires_in:
+          title: "Nombre de secondes avant expiration du document référencé dans 'document_url'"
+          description: "Il s'agit d'une expiration technique: cette valeur n'a aucun lien avec les autres dates présentes dans la réponse."
+          type: 'integer'
+          example: 86400
+        date_delivrance_attestation:
+          title: "Date délivrance de l'attestation"
+          description: "Date à laquelle l'attestation a été délivré. Il s'agit en général de la date du jour de l'appel."
+          type: 'date'
+          example: '2023-04-11'
+        date_periode_analysee:
+          title: "Date de la période analysée"
+          description: "La situation est appréciée au dernier jour du mois précédant la demande de délivrance de l'attestation.
+            \n
+            \n
+            Source: https://bofip.impots.gouv.fr/bofip/8485-PGP.html/identifiant=BOI-DJC-ARF-20220209#Modalites_de_controle_des_o_26"
+          example: '2023-03-31'
+          type: 'date'
 
   liasses_fiscales:
     declarations:

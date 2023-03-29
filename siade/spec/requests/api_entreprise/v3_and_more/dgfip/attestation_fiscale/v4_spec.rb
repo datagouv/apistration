@@ -1,9 +1,9 @@
 require 'swagger_helper'
 
 RSpec.describe 'DGFIP: Attestation fiscale', api: :entreprise, type: %i[request swagger] do
-  path '/v3/dgfip/unites_legales/{siren}/attestation_fiscale' do
-    get SwaggerData.get('dgfip.attestations_fiscales.v3.title') do
-      tags(*SwaggerData.get('dgfip.attestations_fiscales.v3.tags'))
+  path '/v4/dgfip/unites_legales/{siren}/attestation_fiscale' do
+    get SwaggerData.get('dgfip.attestations_fiscales.v4.title') do
+      tags(*SwaggerData.get('dgfip.attestations_fiscales.v4.tags'))
 
       parameter_siren
 
@@ -30,12 +30,12 @@ RSpec.describe 'DGFIP: Attestation fiscale', api: :entreprise, type: %i[request 
 
           cacheable_response
 
-          description SwaggerData.get('dgfip.attestations_fiscales.v3.description')
+          description SwaggerData.get('dgfip.attestations_fiscales.v4.description')
 
           rate_limit_headers
 
-          schema build_rswag_document_response(
-            document_url_properties: SwaggerData.get('dgfip.attestations_fiscales.v3.document_url_properties')
+          schema build_rswag_response(
+            attributes: SwaggerData.get('dgfip.attestations_fiscales.v4.attributes')
           )
 
           run_test!

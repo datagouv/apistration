@@ -110,6 +110,9 @@
 - name: "[V3] DGFIP Attestation fiscale"
   http_path: '/v3/dgfip/unites_legales/532010576/attestation_fiscale'
 
+- name: "[V4] DGFIP Attestation fiscale"
+  http_path: '/v4/dgfip/unites_legales/532010576/attestation_fiscale'
+
 - name: '[V3] DGFIP Liasses fiscales'
   http_path: '/v3//dgfip/unites_legales/301028346/liasses_fiscales/2016'
 
