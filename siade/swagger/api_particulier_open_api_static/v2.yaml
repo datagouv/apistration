@@ -32,7 +32,7 @@ info:
     Le bac à sable et l'API de production sont appelables par deux adresses distinctes :
 
 
-    - bac à sable : [https://particulier-test.api.gouv.fr/api](https://particulier-test.api.gouv.fr/api)
+    - bac à sable : [https://staging.particulier.api.gouv.fr/api](https://staging.particulier.api.gouv.fr/api)
 
     - production : [https://particulier.api.gouv.fr/api](https://particulier.api.gouv.fr/api)
 
@@ -40,7 +40,7 @@ info:
     Pour récupérer le jeton de production un portail développeur est mis à votre disposition à l'adresse suivante : [https://mon.portail.api.gouv.fr](https://mon.portail.api.gouv.fr)
 
 
-    Pour effectuer vos tests sur le bac à sable: vous pouvez utiliser ce jeton qui donne accès à l'ensemble des données: `7792dc29bca0d8ed8ba24976ad009214d23a2eea`
+    Pour effectuer vos tests sur le bac à sable, référez-vous à ce dépôt github: [etalab/siade_staging_data](https://github.com/etalab/siade_staging_data/) (l'ancien système basé sur Airtable n'est plus maintenu et va être remplacé par le nouveau système)
 
     ### Périmètre des données retournées
 
@@ -70,12 +70,12 @@ info:
     Lors de votre passage en production :
 
 
-    - remplacez l'URL de particulier-test.api.gouv.fr à particulier.api.gouv.fr
+    - remplacez l'URL de staging.particulier.api.gouv.fr à particulier.api.gouv.fr
 
     - remplacez le jeton de test par le jeton obtenu sur [le portail API Particulier](https://mon.portail.api.gouv.fr)
 openapi: 3.0.0
 servers:
-  - url: https://particulier-test.api.gouv.fr
+  - url: https://staging.particulier.api.gouv.fr
     description: Serveur de bac à sable
   - url: https://particulier.api.gouv.fr
     description: Serveur de production
@@ -101,7 +101,7 @@ paths:
 
         **Paramètres d'appel :** numéro fiscal et numéro d'avis d'imposition
 
-        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=inv3ImCypw30uuLK9&inviteToken=0482ffbcc5d830fb6a409161fc372635a48b6bbcffdcde552f5be4290f80db50)
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/tree/develop/payloads/api_particulier_v2_dgfip_svair)
       summary: Service de vérification de l'avis d'impôt sur le revenu
       parameters:
         &a4
@@ -363,7 +363,7 @@ paths:
         **Paramètres d'appel :** numéro d'allocataire et code postal
 
 
-        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=invpeDu6xq16LHfI5&inviteToken=66173d447bcbdf7d43548facb7c6b38df1267f8481f1a21491410ff30ecb2c8b&utm_source=email)
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial)
       parameters:
         - name: numeroAllocataire
           in: query
@@ -551,7 +551,7 @@ paths:
 
         **Paramètres d'appel :** Nom d’utilisateur Pôle emploi choisi par le particulier lors de la création de son espace personnel en ligne
 
-        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=inv1n0CkFzq3Y0pvn&inviteToken=a5b49ec5bb9d2323df4adbdfc6c65da35a2248af30c38095101b3cca6ea0898a&utm_source=email)
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_pole_emploi_statut)
       parameters:
         - name: identifiant
           required: true
@@ -814,7 +814,7 @@ paths:
          - INE, l'identifiant national étudiant ;
          - l'état civil de l'étudiant: nom, prénom, date de naissance, sexe et lieu de naissance.
 
-        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=invaqM68okWdPDzc5&inviteToken=43864c010a85095fd8acc6770f6528ce3beff684f60e7aab58e248c29e6d0433&utm_source=email)
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_mesri_student_status)
       responses:
         "200":
           x-operationId: api_particulier_v2_mesri_student_status
@@ -977,7 +977,7 @@ Les étudiants \"admis\" passent au statut \"inscrit\" une fois leur inscription
          - INE, l'identifiant national étudiant ;
          - l'état civil de l'étudiant: nom, prénom, date de naissance, sexe et lieu de naissance.
 
-        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=inv9lBycvDR5UzbyM&inviteToken=6e46235c19bbb4a70dd31ab483eb7375ac0bf46c9d8145d1358e0aa50f65277a&utm_source=email)
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnous_student_scholarship)
       responses:
         "200":
           x-operationId: api_particulier_v2_cnous_student_scholarship
