@@ -16,7 +16,7 @@
 Ce dépôt contient l'ensemble des données de tests pour les environnements de bac
 à sable d'API Entreprise (seulement pour la v3+)
 ( https://staging.entreprise.api.gouv.fr ) et d'API
-Particulier ( https://staging.entreprise.api.gouv.fr )
+Particulier ( https://staging.particulier.api.gouv.fr )
 
 ## Fonctionnement
 
