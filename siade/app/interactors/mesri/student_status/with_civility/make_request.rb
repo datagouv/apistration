@@ -15,7 +15,7 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
     {
       given_name: first_name,
       family_name:,
-      birthdate: birthday_date,
+      birthdate: birth_date,
       birthplace: birth_place,
       gender: gender.downcase == 'm' ? 'male' : 'female'
     }
@@ -25,7 +25,7 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
     {
       nom: family_name,
       prenom: first_name,
-      dateDeNaissance: birthday_date,
+      dateDeNaissance: birth_date,
       lieuDeNaissance: birth_place,
       sexe: gender
     }
