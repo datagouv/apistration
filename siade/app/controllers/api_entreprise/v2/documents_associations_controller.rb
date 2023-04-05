@@ -2,7 +2,7 @@ class APIEntreprise::V2::DocumentsAssociationsController < APIEntreprise::V2::Ba
   def show
     retriever = cached_retriever || retrieve_documents_associations
 
-    if retriever.success?
+    if retriever.success? && retriever.bundled_data.present?
       render json: serialized_data(retriever),
         status: extract_http_code(retriever)
     else
