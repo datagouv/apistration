@@ -1,5 +1,3 @@
-require 'open-uri'
-
 class APIEntreprise::V2::DocumentsAssociationsController < APIEntreprise::V2::BaseController
   attr_reader :organizer
 
