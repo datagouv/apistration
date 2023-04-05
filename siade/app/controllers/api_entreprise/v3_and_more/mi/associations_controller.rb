@@ -1,6 +1,6 @@
 class APIEntreprise::V3AndMore::MI::AssociationsController < APIEntreprise::V3AndMore::BaseController
   def show
-    organizer = retrieve_payload_data(::MI::Associations)
+    organizer = retrieve_payload_data(::MI::Associations, cache: true, expires_in: 1.hour)
 
     if organizer.success?
       render json:   serialize_data(organizer),

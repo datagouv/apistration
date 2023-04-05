@@ -1,6 +1,6 @@
 class APIEntreprise::V3AndMore::MI::UnitesLegalesController < APIEntreprise::V3AndMore::BaseController
   def show
-    organizer = retrieve_payload_data(::DJEPVA::UniteLegale)
+    organizer = retrieve_payload_data(::DJEPVA::UniteLegale, cache: true, expires_in: 1.hour)
 
     if organizer.success?
       render json: serialize_data(organizer),
