@@ -323,7 +323,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Erreur inconnue du fournisseur de données
@@ -337,7 +337,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -348,7 +348,7 @@ paths:
                     - code: '04052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -358,7 +358,7 @@ paths:
                     - code: '04053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -369,7 +369,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -380,7 +380,7 @@ paths:
                     - code: '04055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -391,7 +391,7 @@ paths:
                       title: Demande de traitement logiciel en cours
                       detail: Une erreur informatique a eu lieu, une demande de traitement
                         par le logiciel est en cours.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Demande de traitement logiciel en cours
@@ -406,7 +406,7 @@ paths:
                         Le temps de traitement est très variable selon de la complexité
                         de situation, la demande de pièces justificatives complémentaires
                         ou la charge de travail des agents.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                         retry_in: 172800
@@ -424,7 +424,7 @@ paths:
                       detail: Il n'est pas possible de renvoyer l'attestation. Cela
                         peut être dû au fait qu'un des établissements d'une entreprise
                         n'a pas retourné les informations.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: La situation du compte ne permet pas de délivrer l'attestation
@@ -452,7 +452,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Intermédiaire hors-délai
@@ -465,7 +465,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Service non disponible
@@ -479,7 +479,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -492,7 +492,7 @@ paths:
                     - code: '04004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Erreur de résolution DNS
@@ -957,7 +957,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: ADEME
                   summary: Erreur inconnue du fournisseur de données
@@ -978,7 +978,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: ADEME
                   summary: Intermédiaire hors-délai
@@ -991,7 +991,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: ADEME
                   summary: Service non disponible
@@ -1005,7 +1005,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -1018,7 +1018,7 @@ paths:
                     - code: '19004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: ADEME
                   summary: Erreur de résolution DNS
@@ -1559,7 +1559,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: Banque de France
                   summary: Erreur inconnue du fournisseur de données
@@ -1580,7 +1580,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: Banque de France
                   summary: Intermédiaire hors-délai
@@ -1593,7 +1593,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: Banque de France
                   summary: Service non disponible
@@ -1607,7 +1607,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -1620,7 +1620,7 @@ paths:
                     - code: '17004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: Banque de France
                   summary: Erreur de résolution DNS
@@ -1879,7 +1879,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: CNETP
                   summary: Erreur inconnue du fournisseur de données
@@ -1893,7 +1893,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -1904,7 +1904,7 @@ paths:
                     - code: '08052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -1914,7 +1914,7 @@ paths:
                     - code: '08053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -1925,7 +1925,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -1936,7 +1936,7 @@ paths:
                     - code: '08055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -1960,7 +1960,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: CNETP
                   summary: Intermédiaire hors-délai
@@ -1973,7 +1973,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: CNETP
                   summary: Service non disponible
@@ -1987,7 +1987,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -2000,7 +2000,7 @@ paths:
                     - code: '08004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: CNETP
                   summary: Erreur de résolution DNS
@@ -2324,7 +2324,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: DGDDI
                   summary: Erreur inconnue du fournisseur de données
@@ -2345,7 +2345,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: DGDDI
                   summary: Intermédiaire hors-délai
@@ -2358,7 +2358,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: DGDDI
                   summary: Service non disponible
@@ -2372,7 +2372,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -2385,7 +2385,7 @@ paths:
                     - code: '16004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: DGDDI
                   summary: Erreur de résolution DNS
@@ -2700,7 +2700,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Erreur inconnue du fournisseur de données
@@ -2714,7 +2714,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -2725,7 +2725,7 @@ paths:
                     - code: '03052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -2735,7 +2735,7 @@ paths:
                     - code: '03053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -2746,7 +2746,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -2757,7 +2757,7 @@ paths:
                     - code: '03055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -2775,7 +2775,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Intermédiaire hors-délai
@@ -2788,7 +2788,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Service non disponible
@@ -2802,7 +2802,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -2815,7 +2815,7 @@ paths:
                     - code: '03004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Erreur de résolution DNS
@@ -3111,7 +3111,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Erreur inconnue du fournisseur de données
@@ -3132,7 +3132,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Intermédiaire hors-délai
@@ -3145,7 +3145,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Service non disponible
@@ -3159,7 +3159,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -3172,7 +3172,7 @@ paths:
                     - code: '03004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Erreur de résolution DNS
@@ -3666,7 +3666,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Erreur inconnue du fournisseur de données
@@ -3682,7 +3682,7 @@ paths:
                         aussi indiquer que le siret ou siren renseigné n'existe pas,
                         n'est pas connu, n'est pas en règle de ses obligations fiscales
                         ou ne comporte aucune information pour cet appel.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP
                   summary: Potentielle ressource non trouvée
@@ -3704,7 +3704,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Intermédiaire hors-délai
@@ -3717,7 +3717,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Service non disponible
@@ -3731,7 +3731,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -3744,7 +3744,7 @@ paths:
                     - code: '03004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Erreur de résolution DNS
@@ -5289,7 +5289,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: DJEPVA
                   summary: Intermédiaire hors-délai
@@ -5302,7 +5302,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: DJEPVA
                   summary: Service non disponible
@@ -5316,7 +5316,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -5329,7 +5329,7 @@ paths:
                     - code: '29004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: DJEPVA
                   summary: Erreur de résolution DNS
@@ -5349,7 +5349,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: DJEPVA
                   summary: Erreur inconnue du fournisseur de données
@@ -6537,7 +6537,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: DJEPVA
                   summary: Intermédiaire hors-délai
@@ -6550,7 +6550,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: DJEPVA
                   summary: Service non disponible
@@ -6564,7 +6564,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -6577,7 +6577,7 @@ paths:
                     - code: '29004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: DJEPVA
                   summary: Erreur de résolution DNS
@@ -6597,7 +6597,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: DJEPVA
                   summary: Erreur inconnue du fournisseur de données
@@ -6838,7 +6838,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: Commission Européenne
                   summary: Erreur inconnue du fournisseur de données
@@ -6859,7 +6859,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: Commission Européenne
                   summary: Intermédiaire hors-délai
@@ -6872,7 +6872,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: Commission Européenne
                   summary: Service non disponible
@@ -6886,7 +6886,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -6899,7 +6899,7 @@ paths:
                     - code: '28004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: Commission Européenne
                   summary: Erreur de résolution DNS
@@ -7250,7 +7250,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: Fabrique numérique des Ministères Sociaux
                   summary: Erreur inconnue du fournisseur de données
@@ -7271,7 +7271,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: Fabrique numérique des Ministères Sociaux
                   summary: Intermédiaire hors-délai
@@ -7284,7 +7284,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: Fabrique numérique des Ministères Sociaux
                   summary: Service non disponible
@@ -7298,7 +7298,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -7311,7 +7311,7 @@ paths:
                     - code: '14004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: Fabrique numérique des Ministères Sociaux
                   summary: Erreur de résolution DNS
@@ -7570,7 +7570,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: FNTP
                   summary: Erreur inconnue du fournisseur de données
@@ -7584,7 +7584,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -7595,7 +7595,7 @@ paths:
                     - code: '12052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -7605,7 +7605,7 @@ paths:
                     - code: '12053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -7616,7 +7616,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -7627,7 +7627,7 @@ paths:
                     - code: '12055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -7651,7 +7651,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: FNTP
                   summary: Intermédiaire hors-délai
@@ -7664,7 +7664,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: FNTP
                   summary: Service non disponible
@@ -7678,7 +7678,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -7691,7 +7691,7 @@ paths:
                     - code: '12004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: FNTP
                   summary: Erreur de résolution DNS
@@ -8398,7 +8398,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: Infogreffe
                   summary: Erreur inconnue du fournisseur de données
@@ -8419,7 +8419,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: Infogreffe
                   summary: Intermédiaire hors-délai
@@ -8432,7 +8432,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: Infogreffe
                   summary: Service non disponible
@@ -8446,7 +8446,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -8459,7 +8459,7 @@ paths:
                     - code: '02004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: Infogreffe
                   summary: Erreur de résolution DNS
@@ -8912,7 +8912,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: Infogreffe
                   summary: Erreur inconnue du fournisseur de données
@@ -8933,7 +8933,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: Infogreffe
                   summary: Intermédiaire hors-délai
@@ -8946,7 +8946,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: Infogreffe
                   summary: Service non disponible
@@ -8960,7 +8960,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -8973,7 +8973,7 @@ paths:
                     - code: '02004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: Infogreffe
                   summary: Erreur de résolution DNS
@@ -9269,7 +9269,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Erreur inconnue du fournisseur de données
@@ -9290,7 +9290,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Intermédiaire hors-délai
@@ -9303,7 +9303,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Service non disponible
@@ -9317,7 +9317,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -9330,7 +9330,7 @@ paths:
                     - code: '05004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Erreur de résolution DNS
@@ -9648,7 +9648,7 @@ paths:
                               - ZA
                               - ZM
                               - ZW
-                              -
+                              - 
                             numero_brevet:
                               title: Numéro du brevet
                               description: 'Numéro du brevet dans l''organisation
@@ -9752,7 +9752,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Erreur inconnue du fournisseur de données
@@ -9773,7 +9773,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Intermédiaire hors-délai
@@ -9786,7 +9786,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Service non disponible
@@ -9800,7 +9800,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -9813,7 +9813,7 @@ paths:
                     - code: '05004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Erreur de résolution DNS
@@ -10134,7 +10134,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Erreur inconnue du fournisseur de données
@@ -10155,7 +10155,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Intermédiaire hors-délai
@@ -10168,7 +10168,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Service non disponible
@@ -10182,7 +10182,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -10195,7 +10195,7 @@ paths:
                     - code: '05004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Erreur de résolution DNS
@@ -10538,7 +10538,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Erreur inconnue du fournisseur de données
@@ -10559,7 +10559,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Intermédiaire hors-délai
@@ -10572,7 +10572,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Service non disponible
@@ -10586,7 +10586,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -10599,7 +10599,7 @@ paths:
                     - code: '05004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Erreur de résolution DNS
@@ -10793,7 +10793,7 @@ paths:
                         - ter
                         - quarter
                         - quinquies
-                        -
+                        - 
                       type_voie:
                         title: Type de la voie de localisation
                         example: RUE
@@ -10847,7 +10847,7 @@ paths:
                         - TRAVERSE
                         - VILLA
                         - VILLAGE
-                        -
+                        - 
                       libelle_voie:
                         title: Libellé de la voie
                         type: string
@@ -11104,7 +11104,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur inconnue du fournisseur de données
@@ -11125,7 +11125,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Intermédiaire hors-délai
@@ -11138,7 +11138,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Service non disponible
@@ -11152,7 +11152,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -11165,7 +11165,7 @@ paths:
                     - code: '01004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur de résolution DNS
@@ -11347,10 +11347,14 @@ paths:
                         title: Numéro dans la voie
                         type: string
                         example: '22'
+                        description: Cette valeur est masquée à [ND] si l'etablissement
+                          correspond à une personne morale non-diffusible.
                       indice_repetition_voie:
                         title: Indice de répétition du numéro dans la voie
-                        description: 'Plus d''informations dans la documentation Insee
-                          de l''API Sirene : https://www.sirene.fr/sirene/public/variable/indrep'
+                        description: "Plus d'informations dans la documentation Insee
+                          de l'API Sirene : https://www.sirene.fr/sirene/public/variable/indrep
+                          \n Cette valeur est masquée à [ND] si l'etablissement correspond
+                          à une personne morale non-diffusible."
                         type: string
                         nullable: true
                         enum:
@@ -11358,7 +11362,7 @@ paths:
                         - ter
                         - quarter
                         - quinquies
-                        -
+                        - 
                       type_voie:
                         title: Type de la voie de localisation
                         example: RUE
@@ -11366,7 +11370,9 @@ paths:
                           en abrégé et en majuscules. L'information n'est pas toujours
                           renseignée. Pour certaines petites communes, l'information
                           n'existe pas. \n \n Plus d'informations dans la documentation
-                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie"
+                          Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie
+                          \n Cette valeur est masquée à [ND] si l'etablissement correspond
+                          à une personne morale non-diffusible."
                         type: string
                         nullable: true
                         enum:
@@ -11412,17 +11418,21 @@ paths:
                         - TRAVERSE
                         - VILLA
                         - VILLAGE
-                        -
+                        - 
                       libelle_voie:
                         title: Libellé de la voie
                         type: string
                         example: DE LA PAIX
+                        description: Cette valeur est masquée à [ND] si l'etablissement
+                          correspond à une personne morale non-diffusible.
                       complement_adresse:
                         title: Complément d'adresse
                         type: string
-                        description: Le complément d'adresse correspond à des éléments
+                        description: "Le complément d'adresse correspond à des éléments
                           situés à l'extérieur du bâtiment qui permettent de compléter
-                          l'adresse (résidence, bâtiment, entrée, etc..)
+                          l'adresse (résidence, bâtiment, entrée, etc..) \n Cette
+                          valeur est masquée à [ND] si l'etablissement correspond
+                          à une personne morale non-diffusible."
                         example: ZAE SAINT GUENAULT
                         nullable: true
                       code_commune:
@@ -11442,30 +11452,38 @@ paths:
                         title: Code postal
                         example: '75016'
                         type: string
+                        description: Cette valeur est masquée à [ND] si l'etablissement
+                          correspond à une personne morale non-diffusible.
                       distribution_speciale:
                         title: Distribution spéciale
                         type: string
                         nullable: true
                         description: "La distribution spéciale reprend les éléments
                           particuliers qui accompagnent une adresse de distribution
-                          spéciale, la modalité la plus connue étant les adresses
+                          \  spéciale, la modalité la plus connue étant les adresses
                           en 'CEDEX'. \n \n Plus d'informations dans la documentation
                           Insee de l'API Sirene : * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
-                          * https://www.sirene.fr/sirene/public/variable/l5-disp"
+                          * https://www.sirene.fr/sirene/public/variable/l5-disp \n
+                          Cette valeur est masquée à [ND] si l'etablissement correspond
+                          à une personne morale non-diffusible."
                       code_cedex:
                         title: Code cedex
                         type: string
                         nullable: true
-                        description: 'Plus d''informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle'
+                        description: "Plus d'informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle
+                          \n Cette valeur est masquée à [ND] si l'etablissement correspond
+                          à une personne morale non-diffusible."
                         example: '75590'
                       libelle_cedex:
                         title: Libellé du code cedex
                         type: string
                         nullable: true
                         example: PARIS CEDEX 12
-                        description: Ce champ indique le libellé correspondant au
+                        description: "Ce champ indique le libellé correspondant au
                           code cedex de l'établissement. Si le code cedex est à 'null',
-                          ce champ est également à 'null'.
+                          ce champ est également à 'null'. \n Cette valeur est masquée
+                          à [ND] si l'etablissement correspond à une personne morale
+                          non-diffusible."
                       libelle_commune:
                         title: Nom de la commune pour une adresse en France
                         description: Cette valeur est à 'null' pour les établissements
@@ -11502,48 +11520,54 @@ paths:
                           l1:
                             title: Ligne 1
                             type: string
-                            description: 'Si l''établissement correspond à une personne
+                            description: "Si l'établissement correspond à une personne
                               morale : la dénomination sociale de la personne morale.
-                              Le cas contraire: cette variable est vide.'
+                              Le cas contraire: cette variable est vide. \n Cette
+                              valeur est masquée à [ND] si l'etablissement correspond
+                              à une personne morale non-diffusible."
                             example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                           l2:
                             title: Ligne 2
                             type: string
-                            description: 'Si l''établissement correspond à une personne
-                              physique : concaténation du nom et prénom'
+                            description: "Si l'établissement correspond à une personne
+                              physique : concaténation du nom et prénom \n Cette valeur
+                              est masquée à [ND] si l'etablissement correspond à une
+                              personne morale non-diffusible."
                             example: JEAN MARIE DURAND
                           l3:
                             title: Ligne 3
                             type: string
-                            description: Complément d'adresse comme décrit dans la
-                              clé `complement_adresse`
+                            description: "Si l'établissement correspond à une personne
+                              physique : concaténation du nom et prénom \n Cette valeur
+                              est masquée à [ND] si l'etablissement correspond à une
+                              personne morale non-diffusible."
                             example: ZAE SAINT GUENAULT
                           l4:
                             title: Ligne 4
                             type: string
-                            description: Concaténation du numéro de voie, d'indice
+                            description: "Concaténation du numéro de voie, d'indice
                               de répétition, du type de voie et du libellé de la voie
+                              \n Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible."
                             example: 51 BIS RUE DE LA PAIX
                           l5:
                             title: Ligne 5
                             type: string
-                            description: Distribution spéciale comme décrit dans la
-                              clé `distribution_speciale`
+                            description: "Distribution spéciale comme décrit dans
+                              la clé `distribution_speciale` \n Cette valeur est masquée
+                              à [ND] si l'etablissement correspond à une personne
+                              morale non-diffusible."
                             example: CS 72809
                           l6:
                             title: Ligne 6
                             type: string
-                            description: 'Si le code cedex est existant : code cedex
+                            description: "Si le code cedex est existant : code cedex
                               accompagné de son libellé ; sinon, si le pays est en
                               France : code postal accompagné de son libellé, sinon
-                              : libellé de la commune de l''établissement situé à
-                              l''étranger'
+                              : libellé de la commune de l'établissement situé à l'étranger
+                              \n Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible."
                             example: 75256 PARIX CEDEX 12
-                          l7:
-                            title: Ligne 7
-                            type: string
-                            description: Pays de l'établissement
-                            example: FRANCE
                         required:
                         - l1
                         - l2
@@ -11551,7 +11575,6 @@ paths:
                         - l4
                         - l5
                         - l6
-                        - l7
                     required:
                     - numero_voie
                     - indice_repetition_voie
@@ -11669,7 +11692,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur inconnue du fournisseur de données
@@ -11690,7 +11713,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Intermédiaire hors-délai
@@ -11703,7 +11726,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Service non disponible
@@ -11717,7 +11740,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -11730,7 +11753,7 @@ paths:
                     - code: '01004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur de résolution DNS
@@ -12091,10 +12114,12 @@ paths:
                         - true
                         - false
                         description: "Indique si l'établissement est : \n \n - diffusible
-                          : 'true' \n - non-diffusible : 'false'. Dans ce cas, les
-                          informations obtenues ne doivent en aucun cas être accessibles
-                          au grand public. \n \n Plus d'informations sur les conditions
-                          de diffusion : LIEN TODO"
+                          : 'true' \n - partiellement-diffusible : 'true'. Dans ce
+                          cas, les informations obtenues peuvent être masquées par
+                          la chaîne de caractère '[ND]' \n - non-diffusible : 'false'.
+                          Dans ce cas, les informations obtenues ne doivent en aucun
+                          cas être accessibles au grand public. \n \n Plus d'informations
+                          sur les conditions de diffusion : LIEN TODO"
                       enseigne:
                         title: Enseigne de l'établissement
                         type: string
@@ -12258,11 +12283,13 @@ paths:
                             type: boolean
                             example: true
                             description: "Indique si l'unité légale est : \n \n -
-                              une unité légale diffusible : 'true' \n - une unité
-                              légale non-diffusible : 'false'. Dans ce cas, les informations
-                              obtenues ne doivent en aucun cas être accessibles au
-                              grand public. \n \n Plus d'informations sur les conditions
-                              de diffusion : LIEN TODO"
+                              une unité légale diffusible : 'true' \n - partiellement-diffusible
+                              : 'true'. Dans ce cas, les informations obtenues peuvent
+                              être masquées par la chaîne de caractère '[ND]' \n -
+                              une unité légale non-diffusible : 'false'. Dans ce cas,
+                              les informations obtenues ne doivent en aucun cas être
+                              accessibles au grand public. \n \n Plus d'informations
+                              sur les conditions de diffusion : LIEN TODO"
                           forme_juridique:
                             type: object
                             title: Attributs de la forme juridique
@@ -12527,7 +12554,7 @@ paths:
                             - ter
                             - quarter
                             - quinquies
-                            -
+                            - 
                           type_voie:
                             title: Type de la voie de localisation
                             example: RUE
@@ -12581,7 +12608,7 @@ paths:
                             - TRAVERSE
                             - VILLA
                             - VILLAGE
-                            -
+                            - 
                           libelle_voie:
                             title: Libellé de la voie
                             type: string
@@ -12880,7 +12907,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur inconnue du fournisseur de données
@@ -12901,7 +12928,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Intermédiaire hors-délai
@@ -12914,7 +12941,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Service non disponible
@@ -12928,7 +12955,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -12941,7 +12968,7 @@ paths:
                     - code: '01004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur de résolution DNS
@@ -13314,7 +13341,9 @@ paths:
                           peut posséder une enseigne, plusieurs enseignes ou aucune.
                           \n \n Cette variable est la concaténation séparée par des
                           virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations
-                          ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement"
+                          ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement
+                          \n Cette valeur est masquée à [ND] si l'unité légale correspond
+                          à une personne morale non-diffusible."
                         example: Coiff Land, CoiffureLand
                       unite_legale:
                         type: object
@@ -13358,6 +13387,8 @@ paths:
                                 type: string
                                 example: DINUM
                                 nullable: true
+                                description: Cette valeur est masquée à [ND] si l'unité
+                                  légale correspond à une personne morale non-diffusible.
                             required:
                             - raison_sociale
                             - sigle
@@ -13377,51 +13408,67 @@ paths:
                                 type: string
                                 example: DJ Falcon
                                 nullable: true
-                                description: Le pseudonyme correspond au nom qu'une
+                                description: "Le pseudonyme correspond au nom qu'une
                                   personne utilise pour se désigner dans l'exercice
                                   de son activité, généralement littéraire ou artistique.
+                                  \n Cette valeur est masquée à [ND] si l'unité légale
+                                  correspond à une personne physique non-diffusible."
                               prenom_usuel:
                                 title: Prénom usuel
                                 type: string
                                 example: Jean
                                 nullable: true
-                                description: Le prénom usuel est le prénom par lequel
+                                description: "Le prénom usuel est le prénom par lequel
                                   une personne choisit de se faire appeler dans la
                                   vie courante. Ce prénom fait partie de ceux qui
                                   lui ont été donnés à sa naissance et qui sont inscrits
-                                  à l'état civil.
+                                  à l'état civil. \n Cette valeur est masquée à [ND]
+                                  si l'unité légale correspond à une personne physique
+                                  non-diffusible."
                               prenom_1:
                                 title: Prénom numéro 1 déclaré
                                 type: string
                                 example: Jean
                                 nullable: true
+                                description: Cette valeur est masquée à [ND] si l'unité
+                                  légale correspond à une personne physique non-diffusible.
                               prenom_2:
                                 title: Prénom numéro 2 déclaré
                                 type: string
                                 example: Jacques
                                 nullable: true
+                                description: Cette valeur est masquée à [ND] si l'unité
+                                  légale correspond à une personne physique non-diffusible.
                               prenom_3:
                                 title: Prénom numéro 3 déclaré
                                 type: string
                                 example: Pierre
                                 nullable: true
+                                description: Cette valeur est masquée à [ND] si l'unité
+                                  légale correspond à une personne physique non-diffusible.
                               prenom_4:
                                 title: Prénom numéro 4 déclaré
                                 type: string
                                 example: Paul
                                 nullable: true
+                                description: Cette valeur est masquée à [ND] si l'unité
+                                  légale correspond à une personne physique non-diffusible.
                               nom_usage:
                                 title: Nom d'usage
                                 type: string
                                 example: Dupont
                                 nullable: true
-                                description: Nom que la personne physique a choisi
-                                  d'utiliser.
+                                description: "Nom que la personne physique a choisi
+                                  d'utiliser. \n Cette valeur est masquée à [ND] si
+                                  l'unité légale correspond à une personne physique
+                                  non-diffusible."
                               nom_naissance:
                                 title: Nom de naissance
                                 type: string
                                 example: Dubois
                                 nullable: true
+                                description: Cette valeur est masquée à [ND] si l'unité
+                                  légale correspond à une personne physique non-diffusible.
                               sexe:
                                 title: Genre
                                 type: string
@@ -13430,9 +13477,11 @@ paths:
                                 - M
                                 - F
                                 nullable: true
-                                description: Caractère féminin ou masculin de la personne
-                                  physique. Cette valeur peut ne pas être renseignée
-                                  pour une personne physique.
+                                description: "Caractère féminin ou masculin de la
+                                  personne physique. Cette valeur peut ne pas être
+                                  renseignée pour une personne physique. \n Cette
+                                  valeur est masquée à [ND] si l'unité légale correspond
+                                  à une personne physique non-diffusible."
                             required:
                             - pseudonyme
                             - prenom_usuel
@@ -13468,11 +13517,13 @@ paths:
                             type: boolean
                             example: true
                             description: "Indique si l'unité légale est : \n \n -
-                              une unité légale diffusible : 'true' \n - une unité
-                              légale non-diffusible : 'false'. Dans ce cas, les informations
-                              obtenues ne doivent en aucun cas être accessibles au
-                              grand public. \n \n Plus d'informations sur les conditions
-                              de diffusion : LIEN TODO"
+                              une unité légale diffusible : 'true' \n - partiellement-diffusible
+                              : 'true'. Dans ce cas, les informations obtenues peuvent
+                              être masquées par la chaîne de caractère '[ND]' \n -
+                              une unité légale non-diffusible : 'false'. Dans ce cas,
+                              les informations obtenues ne doivent en aucun cas être
+                              accessibles au grand public. \n \n Plus d'informations
+                              sur les conditions de diffusion : LIEN TODO"
                           forme_juridique:
                             type: object
                             title: Attributs de la forme juridique
@@ -13726,10 +13777,14 @@ paths:
                             title: Numéro dans la voie
                             type: string
                             example: '22'
+                            description: Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible.
                           indice_repetition_voie:
                             title: Indice de répétition du numéro dans la voie
-                            description: 'Plus d''informations dans la documentation
-                              Insee de l''API Sirene : https://www.sirene.fr/sirene/public/variable/indrep'
+                            description: "Plus d'informations dans la documentation
+                              Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/indrep
+                              \n Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible."
                             type: string
                             nullable: true
                             enum:
@@ -13737,7 +13792,7 @@ paths:
                             - ter
                             - quarter
                             - quinquies
-                            -
+                            - 
                           type_voie:
                             title: Type de la voie de localisation
                             example: RUE
@@ -13745,7 +13800,9 @@ paths:
                               en abrégé et en majuscules. L'information n'est pas
                               toujours renseignée. Pour certaines petites communes,
                               l'information n'existe pas. \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie"
+                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie
+                              \n Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible."
                             type: string
                             nullable: true
                             enum:
@@ -13791,18 +13848,21 @@ paths:
                             - TRAVERSE
                             - VILLA
                             - VILLAGE
-                            -
+                            - 
                           libelle_voie:
                             title: Libellé de la voie
                             type: string
                             example: DE LA PAIX
+                            description: Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible.
                           complement_adresse:
                             title: Complément d'adresse
                             type: string
-                            description: Le complément d'adresse correspond à des
+                            description: "Le complément d'adresse correspond à des
                               éléments situés à l'extérieur du bâtiment qui permettent
                               de compléter l'adresse (résidence, bâtiment, entrée,
-                              etc..)
+                              etc..) \n Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible."
                             example: ZAE SAINT GUENAULT
                             nullable: true
                           code_commune:
@@ -13823,30 +13883,38 @@ paths:
                             title: Code postal
                             example: '75016'
                             type: string
+                            description: Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible.
                           distribution_speciale:
                             title: Distribution spéciale
                             type: string
                             nullable: true
                             description: "La distribution spéciale reprend les éléments
                               particuliers qui accompagnent une adresse de distribution
-                              spéciale, la modalité la plus connue étant les adresses
+                              \  spéciale, la modalité la plus connue étant les adresses
                               en 'CEDEX'. \n \n Plus d'informations dans la documentation
                               Insee de l'API Sirene : * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
-                              * https://www.sirene.fr/sirene/public/variable/l5-disp"
+                              * https://www.sirene.fr/sirene/public/variable/l5-disp
+                              \n Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible."
                           code_cedex:
                             title: Code cedex
                             type: string
                             nullable: true
-                            description: 'Plus d''informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle'
+                            description: "Plus d'informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle
+                              \n Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible."
                             example: '75590'
                           libelle_cedex:
                             title: Libellé du code cedex
                             type: string
                             nullable: true
                             example: PARIS CEDEX 12
-                            description: Ce champ indique le libellé correspondant
+                            description: "Ce champ indique le libellé correspondant
                               au code cedex de l'établissement. Si le code cedex est
-                              à 'null', ce champ est également à 'null'.
+                              à 'null', ce champ est également à 'null'. \n Cette
+                              valeur est masquée à [ND] si l'etablissement correspond
+                              à une personne morale non-diffusible."
                           libelle_commune:
                             title: Nom de la commune pour une adresse en France
                             description: Cette valeur est à 'null' pour les établissements
@@ -13884,50 +13952,56 @@ paths:
                               l1:
                                 title: Ligne 1
                                 type: string
-                                description: 'Si l''établissement correspond à une
+                                description: "Si l'établissement correspond à une
                                   personne morale : la dénomination sociale de la
                                   personne morale. Le cas contraire: cette variable
-                                  est vide.'
+                                  est vide. \n Cette valeur est masquée à [ND] si
+                                  l'etablissement correspond à une personne morale
+                                  non-diffusible."
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                               l2:
                                 title: Ligne 2
                                 type: string
-                                description: 'Si l''établissement correspond à une
-                                  personne physique : concaténation du nom et prénom'
+                                description: "Si l'établissement correspond à une
+                                  personne physique : concaténation du nom et prénom
+                                  \n Cette valeur est masquée à [ND] si l'etablissement
+                                  correspond à une personne morale non-diffusible."
                                 example: JEAN MARIE DURAND
                               l3:
                                 title: Ligne 3
                                 type: string
-                                description: Complément d'adresse comme décrit dans
-                                  la clé `complement_adresse`
+                                description: "Si l'établissement correspond à une
+                                  personne physique : concaténation du nom et prénom
+                                  \n Cette valeur est masquée à [ND] si l'etablissement
+                                  correspond à une personne morale non-diffusible."
                                 example: ZAE SAINT GUENAULT
                               l4:
                                 title: Ligne 4
                                 type: string
-                                description: Concaténation du numéro de voie, d'indice
+                                description: "Concaténation du numéro de voie, d'indice
                                   de répétition, du type de voie et du libellé de
-                                  la voie
+                                  la voie \n Cette valeur est masquée à [ND] si l'etablissement
+                                  correspond à une personne morale non-diffusible."
                                 example: 51 BIS RUE DE LA PAIX
                               l5:
                                 title: Ligne 5
                                 type: string
-                                description: Distribution spéciale comme décrit dans
-                                  la clé `distribution_speciale`
+                                description: "Distribution spéciale comme décrit dans
+                                  la clé `distribution_speciale` \n Cette valeur est
+                                  masquée à [ND] si l'etablissement correspond à une
+                                  personne morale non-diffusible."
                                 example: CS 72809
                               l6:
                                 title: Ligne 6
                                 type: string
-                                description: 'Si le code cedex est existant : code
+                                description: "Si le code cedex est existant : code
                                   cedex accompagné de son libellé ; sinon, si le pays
                                   est en France : code postal accompagné de son libellé,
-                                  sinon : libellé de la commune de l''établissement
-                                  situé à l''étranger'
+                                  sinon : libellé de la commune de l'établissement
+                                  situé à l'étranger \n Cette valeur est masquée à
+                                  [ND] si l'etablissement correspond à une personne
+                                  morale non-diffusible."
                                 example: 75256 PARIX CEDEX 12
-                              l7:
-                                title: Ligne 7
-                                type: string
-                                description: Pays de l'établissement
-                                example: FRANCE
                             required:
                             - l1
                             - l2
@@ -13935,7 +14009,6 @@ paths:
                             - l4
                             - l5
                             - l6
-                            - l7
                         required:
                         - numero_voie
                         - indice_repetition_voie
@@ -14090,7 +14163,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur inconnue du fournisseur de données
@@ -14111,7 +14184,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Intermédiaire hors-délai
@@ -14124,7 +14197,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Service non disponible
@@ -14138,7 +14211,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -14151,7 +14224,7 @@ paths:
                     - code: '01004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur de résolution DNS
@@ -14525,7 +14598,9 @@ paths:
                           peut posséder une enseigne, plusieurs enseignes ou aucune.
                           \n \n Cette variable est la concaténation séparée par des
                           virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations
-                          ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement"
+                          ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement
+                          \n Cette valeur est masquée à [ND] si l'unité légale correspond
+                          à une personne morale non-diffusible."
                         example: Coiff Land, CoiffureLand
                       unite_legale:
                         type: object
@@ -14569,6 +14644,8 @@ paths:
                                 type: string
                                 example: DINUM
                                 nullable: true
+                                description: Cette valeur est masquée à [ND] si l'unité
+                                  légale correspond à une personne morale non-diffusible.
                             required:
                             - raison_sociale
                             - sigle
@@ -14588,51 +14665,67 @@ paths:
                                 type: string
                                 example: DJ Falcon
                                 nullable: true
-                                description: Le pseudonyme correspond au nom qu'une
+                                description: "Le pseudonyme correspond au nom qu'une
                                   personne utilise pour se désigner dans l'exercice
                                   de son activité, généralement littéraire ou artistique.
+                                  \n Cette valeur est masquée à [ND] si l'unité légale
+                                  correspond à une personne physique non-diffusible."
                               prenom_usuel:
                                 title: Prénom usuel
                                 type: string
                                 example: Jean
                                 nullable: true
-                                description: Le prénom usuel est le prénom par lequel
+                                description: "Le prénom usuel est le prénom par lequel
                                   une personne choisit de se faire appeler dans la
                                   vie courante. Ce prénom fait partie de ceux qui
                                   lui ont été donnés à sa naissance et qui sont inscrits
-                                  à l'état civil.
+                                  à l'état civil. \n Cette valeur est masquée à [ND]
+                                  si l'unité légale correspond à une personne physique
+                                  non-diffusible."
                               prenom_1:
                                 title: Prénom numéro 1 déclaré
                                 type: string
                                 example: Jean
                                 nullable: true
+                                description: Cette valeur est masquée à [ND] si l'unité
+                                  légale correspond à une personne physique non-diffusible.
                               prenom_2:
                                 title: Prénom numéro 2 déclaré
                                 type: string
                                 example: Jacques
                                 nullable: true
+                                description: Cette valeur est masquée à [ND] si l'unité
+                                  légale correspond à une personne physique non-diffusible.
                               prenom_3:
                                 title: Prénom numéro 3 déclaré
                                 type: string
                                 example: Pierre
                                 nullable: true
+                                description: Cette valeur est masquée à [ND] si l'unité
+                                  légale correspond à une personne physique non-diffusible.
                               prenom_4:
                                 title: Prénom numéro 4 déclaré
                                 type: string
                                 example: Paul
                                 nullable: true
+                                description: Cette valeur est masquée à [ND] si l'unité
+                                  légale correspond à une personne physique non-diffusible.
                               nom_usage:
                                 title: Nom d'usage
                                 type: string
                                 example: Dupont
                                 nullable: true
-                                description: Nom que la personne physique a choisi
-                                  d'utiliser.
+                                description: "Nom que la personne physique a choisi
+                                  d'utiliser. \n Cette valeur est masquée à [ND] si
+                                  l'unité légale correspond à une personne physique
+                                  non-diffusible."
                               nom_naissance:
                                 title: Nom de naissance
                                 type: string
                                 example: Dubois
                                 nullable: true
+                                description: Cette valeur est masquée à [ND] si l'unité
+                                  légale correspond à une personne physique non-diffusible.
                               sexe:
                                 title: Genre
                                 type: string
@@ -14641,9 +14734,11 @@ paths:
                                 - M
                                 - F
                                 nullable: true
-                                description: Caractère féminin ou masculin de la personne
-                                  physique. Cette valeur peut ne pas être renseignée
-                                  pour une personne physique.
+                                description: "Caractère féminin ou masculin de la
+                                  personne physique. Cette valeur peut ne pas être
+                                  renseignée pour une personne physique. \n Cette
+                                  valeur est masquée à [ND] si l'unité légale correspond
+                                  à une personne physique non-diffusible."
                             required:
                             - pseudonyme
                             - prenom_usuel
@@ -14679,11 +14774,13 @@ paths:
                             type: boolean
                             example: true
                             description: "Indique si l'unité légale est : \n \n -
-                              une unité légale diffusible : 'true' \n - une unité
-                              légale non-diffusible : 'false'. Dans ce cas, les informations
-                              obtenues ne doivent en aucun cas être accessibles au
-                              grand public. \n \n Plus d'informations sur les conditions
-                              de diffusion : LIEN TODO"
+                              une unité légale diffusible : 'true' \n - partiellement-diffusible
+                              : 'true'. Dans ce cas, les informations obtenues peuvent
+                              être masquées par la chaîne de caractère '[ND]' \n -
+                              une unité légale non-diffusible : 'false'. Dans ce cas,
+                              les informations obtenues ne doivent en aucun cas être
+                              accessibles au grand public. \n \n Plus d'informations
+                              sur les conditions de diffusion : LIEN TODO"
                           forme_juridique:
                             type: object
                             title: Attributs de la forme juridique
@@ -14937,10 +15034,14 @@ paths:
                             title: Numéro dans la voie
                             type: string
                             example: '22'
+                            description: Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible.
                           indice_repetition_voie:
                             title: Indice de répétition du numéro dans la voie
-                            description: 'Plus d''informations dans la documentation
-                              Insee de l''API Sirene : https://www.sirene.fr/sirene/public/variable/indrep'
+                            description: "Plus d'informations dans la documentation
+                              Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/indrep
+                              \n Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible."
                             type: string
                             nullable: true
                             enum:
@@ -14948,7 +15049,7 @@ paths:
                             - ter
                             - quarter
                             - quinquies
-                            -
+                            - 
                           type_voie:
                             title: Type de la voie de localisation
                             example: RUE
@@ -14956,7 +15057,9 @@ paths:
                               en abrégé et en majuscules. L'information n'est pas
                               toujours renseignée. Pour certaines petites communes,
                               l'information n'existe pas. \n \n Plus d'informations
-                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie"
+                              dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie
+                              \n Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible."
                             type: string
                             nullable: true
                             enum:
@@ -15002,18 +15105,21 @@ paths:
                             - TRAVERSE
                             - VILLA
                             - VILLAGE
-                            -
+                            - 
                           libelle_voie:
                             title: Libellé de la voie
                             type: string
                             example: DE LA PAIX
+                            description: Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible.
                           complement_adresse:
                             title: Complément d'adresse
                             type: string
-                            description: Le complément d'adresse correspond à des
+                            description: "Le complément d'adresse correspond à des
                               éléments situés à l'extérieur du bâtiment qui permettent
                               de compléter l'adresse (résidence, bâtiment, entrée,
-                              etc..)
+                              etc..) \n Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible."
                             example: ZAE SAINT GUENAULT
                             nullable: true
                           code_commune:
@@ -15034,30 +15140,38 @@ paths:
                             title: Code postal
                             example: '75016'
                             type: string
+                            description: Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible.
                           distribution_speciale:
                             title: Distribution spéciale
                             type: string
                             nullable: true
                             description: "La distribution spéciale reprend les éléments
                               particuliers qui accompagnent une adresse de distribution
-                              spéciale, la modalité la plus connue étant les adresses
+                              \  spéciale, la modalité la plus connue étant les adresses
                               en 'CEDEX'. \n \n Plus d'informations dans la documentation
                               Insee de l'API Sirene : * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
-                              * https://www.sirene.fr/sirene/public/variable/l5-disp"
+                              * https://www.sirene.fr/sirene/public/variable/l5-disp
+                              \n Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible."
                           code_cedex:
                             title: Code cedex
                             type: string
                             nullable: true
-                            description: 'Plus d''informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle'
+                            description: "Plus d'informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle
+                              \n Cette valeur est masquée à [ND] si l'etablissement
+                              correspond à une personne morale non-diffusible."
                             example: '75590'
                           libelle_cedex:
                             title: Libellé du code cedex
                             type: string
                             nullable: true
                             example: PARIS CEDEX 12
-                            description: Ce champ indique le libellé correspondant
+                            description: "Ce champ indique le libellé correspondant
                               au code cedex de l'établissement. Si le code cedex est
-                              à 'null', ce champ est également à 'null'.
+                              à 'null', ce champ est également à 'null'. \n Cette
+                              valeur est masquée à [ND] si l'etablissement correspond
+                              à une personne morale non-diffusible."
                           libelle_commune:
                             title: Nom de la commune pour une adresse en France
                             description: Cette valeur est à 'null' pour les établissements
@@ -15095,50 +15209,56 @@ paths:
                               l1:
                                 title: Ligne 1
                                 type: string
-                                description: 'Si l''établissement correspond à une
+                                description: "Si l'établissement correspond à une
                                   personne morale : la dénomination sociale de la
                                   personne morale. Le cas contraire: cette variable
-                                  est vide.'
+                                  est vide. \n Cette valeur est masquée à [ND] si
+                                  l'etablissement correspond à une personne morale
+                                  non-diffusible."
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                               l2:
                                 title: Ligne 2
                                 type: string
-                                description: 'Si l''établissement correspond à une
-                                  personne physique : concaténation du nom et prénom'
+                                description: "Si l'établissement correspond à une
+                                  personne physique : concaténation du nom et prénom
+                                  \n Cette valeur est masquée à [ND] si l'etablissement
+                                  correspond à une personne morale non-diffusible."
                                 example: JEAN MARIE DURAND
                               l3:
                                 title: Ligne 3
                                 type: string
-                                description: Complément d'adresse comme décrit dans
-                                  la clé `complement_adresse`
+                                description: "Si l'établissement correspond à une
+                                  personne physique : concaténation du nom et prénom
+                                  \n Cette valeur est masquée à [ND] si l'etablissement
+                                  correspond à une personne morale non-diffusible."
                                 example: ZAE SAINT GUENAULT
                               l4:
                                 title: Ligne 4
                                 type: string
-                                description: Concaténation du numéro de voie, d'indice
+                                description: "Concaténation du numéro de voie, d'indice
                                   de répétition, du type de voie et du libellé de
-                                  la voie
+                                  la voie \n Cette valeur est masquée à [ND] si l'etablissement
+                                  correspond à une personne morale non-diffusible."
                                 example: 51 BIS RUE DE LA PAIX
                               l5:
                                 title: Ligne 5
                                 type: string
-                                description: Distribution spéciale comme décrit dans
-                                  la clé `distribution_speciale`
+                                description: "Distribution spéciale comme décrit dans
+                                  la clé `distribution_speciale` \n Cette valeur est
+                                  masquée à [ND] si l'etablissement correspond à une
+                                  personne morale non-diffusible."
                                 example: CS 72809
                               l6:
                                 title: Ligne 6
                                 type: string
-                                description: 'Si le code cedex est existant : code
+                                description: "Si le code cedex est existant : code
                                   cedex accompagné de son libellé ; sinon, si le pays
                                   est en France : code postal accompagné de son libellé,
-                                  sinon : libellé de la commune de l''établissement
-                                  situé à l''étranger'
+                                  sinon : libellé de la commune de l'établissement
+                                  situé à l'étranger \n Cette valeur est masquée à
+                                  [ND] si l'etablissement correspond à une personne
+                                  morale non-diffusible."
                                 example: 75256 PARIX CEDEX 12
-                              l7:
-                                title: Ligne 7
-                                type: string
-                                description: Pays de l'établissement
-                                example: FRANCE
                             required:
                             - l1
                             - l2
@@ -15146,7 +15266,6 @@ paths:
                             - l4
                             - l5
                             - l6
-                            - l7
                         required:
                         - numero_voie
                         - indice_repetition_voie
@@ -15301,7 +15420,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur inconnue du fournisseur de données
@@ -15322,7 +15441,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Intermédiaire hors-délai
@@ -15335,7 +15454,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Service non disponible
@@ -15349,7 +15468,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -15362,7 +15481,7 @@ paths:
                     - code: '01004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur de résolution DNS
@@ -15725,10 +15844,12 @@ paths:
                         - true
                         - false
                         description: "Indique si l'établissement est : \n \n - diffusible
-                          : 'true' \n - non-diffusible : 'false'. Dans ce cas, les
-                          informations obtenues ne doivent en aucun cas être accessibles
-                          au grand public. \n \n Plus d'informations sur les conditions
-                          de diffusion : LIEN TODO"
+                          : 'true' \n - partiellement-diffusible : 'true'. Dans ce
+                          cas, les informations obtenues peuvent être masquées par
+                          la chaîne de caractère '[ND]' \n - non-diffusible : 'false'.
+                          Dans ce cas, les informations obtenues ne doivent en aucun
+                          cas être accessibles au grand public. \n \n Plus d'informations
+                          sur les conditions de diffusion : LIEN TODO"
                       enseigne:
                         title: Enseigne de l'établissement
                         type: string
@@ -15892,11 +16013,13 @@ paths:
                             type: boolean
                             example: true
                             description: "Indique si l'unité légale est : \n \n -
-                              une unité légale diffusible : 'true' \n - une unité
-                              légale non-diffusible : 'false'. Dans ce cas, les informations
-                              obtenues ne doivent en aucun cas être accessibles au
-                              grand public. \n \n Plus d'informations sur les conditions
-                              de diffusion : LIEN TODO"
+                              une unité légale diffusible : 'true' \n - partiellement-diffusible
+                              : 'true'. Dans ce cas, les informations obtenues peuvent
+                              être masquées par la chaîne de caractère '[ND]' \n -
+                              une unité légale non-diffusible : 'false'. Dans ce cas,
+                              les informations obtenues ne doivent en aucun cas être
+                              accessibles au grand public. \n \n Plus d'informations
+                              sur les conditions de diffusion : LIEN TODO"
                           forme_juridique:
                             type: object
                             title: Attributs de la forme juridique
@@ -16161,7 +16284,7 @@ paths:
                             - ter
                             - quarter
                             - quinquies
-                            -
+                            - 
                           type_voie:
                             title: Type de la voie de localisation
                             example: RUE
@@ -16215,7 +16338,7 @@ paths:
                             - TRAVERSE
                             - VILLA
                             - VILLAGE
-                            -
+                            - 
                           libelle_voie:
                             title: Libellé de la voie
                             type: string
@@ -16514,7 +16637,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur inconnue du fournisseur de données
@@ -16535,7 +16658,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Intermédiaire hors-délai
@@ -16548,7 +16671,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Service non disponible
@@ -16562,7 +16685,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -16575,7 +16698,7 @@ paths:
                     - code: '01004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur de résolution DNS
@@ -16920,10 +17043,13 @@ paths:
                         type: boolean
                         example: true
                         description: "Indique si l'unité légale est : \n \n - une
-                          unité légale diffusible : 'true' \n - une unité légale non-diffusible
-                          : 'false'. Dans ce cas, les informations obtenues ne doivent
-                          en aucun cas être accessibles au grand public. \n \n Plus
-                          d'informations sur les conditions de diffusion : LIEN TODO"
+                          unité légale diffusible : 'true' \n - partiellement-diffusible
+                          : 'true'. Dans ce cas, les informations obtenues peuvent
+                          être masquées par la chaîne de caractère '[ND]' \n - une
+                          unité légale non-diffusible : 'false'. Dans ce cas, les
+                          informations obtenues ne doivent en aucun cas être accessibles
+                          au grand public. \n \n Plus d'informations sur les conditions
+                          de diffusion : LIEN TODO"
                       forme_juridique:
                         type: object
                         title: Attributs de la forme juridique
@@ -17279,7 +17405,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur inconnue du fournisseur de données
@@ -17300,7 +17426,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Intermédiaire hors-délai
@@ -17313,7 +17439,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Service non disponible
@@ -17327,7 +17453,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -17340,7 +17466,7 @@ paths:
                     - code: '01004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur de résolution DNS
@@ -17582,6 +17708,8 @@ paths:
                             type: string
                             example: DINUM
                             nullable: true
+                            description: Cette valeur est masquée à [ND] si l'unité
+                              légale correspond à une personne morale non-diffusible.
                         required:
                         - raison_sociale
                         - sigle
@@ -17601,50 +17729,65 @@ paths:
                             type: string
                             example: DJ Falcon
                             nullable: true
-                            description: Le pseudonyme correspond au nom qu'une personne
+                            description: "Le pseudonyme correspond au nom qu'une personne
                               utilise pour se désigner dans l'exercice de son activité,
-                              généralement littéraire ou artistique.
+                              généralement littéraire ou artistique. \n Cette valeur
+                              est masquée à [ND] si l'unité légale correspond à une
+                              personne physique non-diffusible."
                           prenom_usuel:
                             title: Prénom usuel
                             type: string
                             example: Jean
                             nullable: true
-                            description: Le prénom usuel est le prénom par lequel
+                            description: "Le prénom usuel est le prénom par lequel
                               une personne choisit de se faire appeler dans la vie
                               courante. Ce prénom fait partie de ceux qui lui ont
                               été donnés à sa naissance et qui sont inscrits à l'état
-                              civil.
+                              civil. \n Cette valeur est masquée à [ND] si l'unité
+                              légale correspond à une personne physique non-diffusible."
                           prenom_1:
                             title: Prénom numéro 1 déclaré
                             type: string
                             example: Jean
                             nullable: true
+                            description: Cette valeur est masquée à [ND] si l'unité
+                              légale correspond à une personne physique non-diffusible.
                           prenom_2:
                             title: Prénom numéro 2 déclaré
                             type: string
                             example: Jacques
                             nullable: true
+                            description: Cette valeur est masquée à [ND] si l'unité
+                              légale correspond à une personne physique non-diffusible.
                           prenom_3:
                             title: Prénom numéro 3 déclaré
                             type: string
                             example: Pierre
                             nullable: true
+                            description: Cette valeur est masquée à [ND] si l'unité
+                              légale correspond à une personne physique non-diffusible.
                           prenom_4:
                             title: Prénom numéro 4 déclaré
                             type: string
                             example: Paul
                             nullable: true
+                            description: Cette valeur est masquée à [ND] si l'unité
+                              légale correspond à une personne physique non-diffusible.
                           nom_usage:
                             title: Nom d'usage
                             type: string
                             example: Dupont
                             nullable: true
-                            description: Nom que la personne physique a choisi d'utiliser.
+                            description: "Nom que la personne physique a choisi d'utiliser.
+                              \n Cette valeur est masquée à [ND] si l'unité légale
+                              correspond à une personne physique non-diffusible."
                           nom_naissance:
                             title: Nom de naissance
                             type: string
                             example: Dubois
                             nullable: true
+                            description: Cette valeur est masquée à [ND] si l'unité
+                              légale correspond à une personne physique non-diffusible.
                           sexe:
                             title: Genre
                             type: string
@@ -17653,9 +17796,11 @@ paths:
                             - M
                             - F
                             nullable: true
-                            description: Caractère féminin ou masculin de la personne
+                            description: "Caractère féminin ou masculin de la personne
                               physique. Cette valeur peut ne pas être renseignée pour
-                              une personne physique.
+                              une personne physique. \n Cette valeur est masquée à
+                              [ND] si l'unité légale correspond à une personne physique
+                              non-diffusible."
                         required:
                         - pseudonyme
                         - prenom_usuel
@@ -18051,7 +18196,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur inconnue du fournisseur de données
@@ -18072,7 +18217,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Intermédiaire hors-délai
@@ -18085,7 +18230,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Service non disponible
@@ -18099,7 +18244,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -18112,7 +18257,7 @@ paths:
                     - code: '01004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur de résolution DNS
@@ -18429,7 +18574,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: MI
                   summary: Erreur inconnue du fournisseur de données
@@ -18443,7 +18588,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -18454,7 +18599,7 @@ paths:
                     - code: '21052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -18464,7 +18609,7 @@ paths:
                     - code: '21053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -18475,7 +18620,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -18486,7 +18631,7 @@ paths:
                     - code: '21055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -18510,7 +18655,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: MI
                   summary: Intermédiaire hors-délai
@@ -18523,7 +18668,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: MI
                   summary: Service non disponible
@@ -18537,7 +18682,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -18550,7 +18695,7 @@ paths:
                     - code: '21004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: MI
                   summary: Erreur de résolution DNS
@@ -18745,7 +18890,7 @@ paths:
                       siret:
                         type: string
                         nullable: true
-                        example:
+                        example: 
                       siret_siege_social:
                         type: string
                         example: '77571979202650'
@@ -18762,7 +18907,7 @@ paths:
                       date_publication:
                         type: string
                         nullable: true
-                        example:
+                        example: 
                         description: Jour de la publication au journal officiel de
                           l'avis de création de l'association. Toutes les assoiations
                           ne sont pas forcément 'déclarées'. La publication au Journal
@@ -18772,7 +18917,7 @@ paths:
                       date_dissolution:
                         type: string
                         nullable: true
-                        example:
+                        example: 
                         description: Si l'association est dissolue, ce champ indique
                           la date de dissolution, autrement, il est indiqué 'null'.
                       adresse_siege:
@@ -18833,7 +18978,7 @@ paths:
                       groupement:
                         type: string
                         nullable: true
-                        example:
+                        example: 
                         description: 'Trois modalités possibles : si l''association
                           n''est pas un groupement, il est indiqué ''Simple'' ; si
                           l''association est un groupement, la valeur est ''Union''
@@ -18934,7 +19079,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: MI
                   summary: Intermédiaire hors-délai
@@ -18947,7 +19092,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: MI
                   summary: Service non disponible
@@ -18961,7 +19106,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -18974,7 +19119,7 @@ paths:
                     - code: '21004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: MI
                   summary: Erreur de résolution DNS
@@ -18994,7 +19139,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: MI
                   summary: Erreur inconnue du fournisseur de données
@@ -19285,7 +19430,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: MSA
                   summary: Erreur inconnue du fournisseur de données
@@ -19306,7 +19451,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: MSA
                   summary: Intermédiaire hors-délai
@@ -19319,7 +19464,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: MSA
                   summary: Service non disponible
@@ -19333,7 +19478,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -19346,7 +19491,7 @@ paths:
                     - code: '10004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: MSA
                   summary: Erreur de résolution DNS
@@ -19711,7 +19856,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: OPQIBI
                   summary: Erreur inconnue du fournisseur de données
@@ -19732,7 +19877,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: OPQIBI
                   summary: Intermédiaire hors-délai
@@ -19745,7 +19890,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: OPQIBI
                   summary: Service non disponible
@@ -19759,7 +19904,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -19772,7 +19917,7 @@ paths:
                     - code: '11004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: OPQIBI
                   summary: Erreur de résolution DNS
@@ -20056,7 +20201,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: ProBTP
                   summary: Erreur inconnue du fournisseur de données
@@ -20070,7 +20215,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -20081,7 +20226,7 @@ paths:
                     - code: '09052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -20091,7 +20236,7 @@ paths:
                     - code: '09053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -20102,7 +20247,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -20113,7 +20258,7 @@ paths:
                     - code: '09055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -20137,7 +20282,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: ProBTP
                   summary: Intermédiaire hors-délai
@@ -20150,7 +20295,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: ProBTP
                   summary: Service non disponible
@@ -20164,7 +20309,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -20177,7 +20322,7 @@ paths:
                     - code: '09004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: ProBTP
                   summary: Erreur de résolution DNS
@@ -20436,7 +20581,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: ProBTP
                   summary: Erreur inconnue du fournisseur de données
@@ -20457,7 +20602,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: ProBTP
                   summary: Intermédiaire hors-délai
@@ -20470,7 +20615,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: ProBTP
                   summary: Service non disponible
@@ -20484,7 +20629,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -20497,7 +20642,7 @@ paths:
                     - code: '09004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: ProBTP
                   summary: Erreur de résolution DNS
@@ -20781,7 +20926,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: Qualibat
                   summary: Erreur inconnue du fournisseur de données
@@ -20795,7 +20940,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -20806,7 +20951,7 @@ paths:
                     - code: '06052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -20816,7 +20961,7 @@ paths:
                     - code: '06053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -20827,7 +20972,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -20838,7 +20983,7 @@ paths:
                     - code: '06055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -20862,7 +21007,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: Qualibat
                   summary: Intermédiaire hors-délai
@@ -20875,7 +21020,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: Qualibat
                   summary: Service non disponible
@@ -20889,7 +21034,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -20902,7 +21047,7 @@ paths:
                     - code: '06004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: Qualibat
                   summary: Erreur de résolution DNS
@@ -21203,7 +21348,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: RNM
                   summary: Erreur inconnue du fournisseur de données
@@ -21224,7 +21369,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: RNM
                   summary: Intermédiaire hors-délai
@@ -21237,7 +21382,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: RNM
                   summary: Service non disponible
@@ -21251,7 +21396,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -21264,7 +21409,7 @@ paths:
                     - code: '22004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: RNM
                   summary: Erreur de résolution DNS
@@ -21640,7 +21785,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Erreur inconnue du fournisseur de données
@@ -21654,7 +21799,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -21665,7 +21810,7 @@ paths:
                     - code: '04052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -21675,7 +21820,7 @@ paths:
                     - code: '04053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -21686,7 +21831,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -21697,7 +21842,7 @@ paths:
                     - code: '04055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -21708,7 +21853,7 @@ paths:
                       title: Demande de traitement logiciel en cours
                       detail: Une erreur informatique a eu lieu, une demande de traitement
                         par le logiciel est en cours.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Demande de traitement logiciel en cours
@@ -21723,7 +21868,7 @@ paths:
                         Le temps de traitement est très variable selon de la complexité
                         de situation, la demande de pièces justificatives complémentaires
                         ou la charge de travail des agents.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                         retry_in: 172800
@@ -21752,7 +21897,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Intermédiaire hors-délai
@@ -21765,7 +21910,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Service non disponible
@@ -21779,7 +21924,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -21792,7 +21937,7 @@ paths:
                     - code: '04004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Erreur de résolution DNS
