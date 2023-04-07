@@ -808,7 +808,7 @@ paths:
             type: string
       summary: Statut étudiant
       description: >-
-        Inscriptions et pré-inscriptions CROUS d'un étudiant aux établissements d'enseignement supérieur.
+        Admissions et inscriptions d'un étudiant aux établissements d'enseignement supérieur.
 
         **Paramètres d'appel :** Pour appeler l'API statut étudiant, deux modes d'appel sont possibles :
          - INE, l'identifiant national étudiant ;
@@ -825,9 +825,9 @@ paths:
                 type: object
                 properties:
                   ine:
-                    title: Numéro INE
+                    title: Identifiant National Étudiant (INE)
                     type: string
-                    description: Identifiant National Étudiant (INE). Cet identifiant est unique à chaque étudiant sur le territoire français. Il est composé de 11 caractères, 10 chiffres et 1 lettre, et depuis la rentrée 2018, 9 chiffres et 2 lettres. Les étudiants peuvent retrouver leur numéro INE sur leur carte étudiant et leur certificat de scolarité.
+                    description: Cet identifiant est unique à chaque étudiant sur le territoire français. Il est composé de 11 caractères, 10 chiffres et 1 lettre, et depuis la rentrée 2018, 9 chiffres et 2 lettres. Les étudiants peuvent retrouver leur numéro INE sur leur carte étudiant et leur certificat de scolarité.
                     example: 1234567890G
                   nom:
                     title: Nom de naissance
@@ -846,7 +846,7 @@ paths:
                     description: Date de naissance de l'étudiant
                     example: 1992-11-29
                   inscriptions:
-                    title: Liste des inscriptions de l'étudiant pour l'année en cours
+                    title: Liste des admissions et inscriptions de l'étudiant pour l'année en cours
                     type: array
                     items:
                       type: object
@@ -864,15 +864,15 @@ paths:
                           description: Date de fin de la période d'étude dans l'établissement
                           example: 2023-08-31
                         statut:
-                          title: Statut d'inscription
+                          title: Statut de l'inscription
                           type: string
-                          description: "Statut d'inscription de l'étudiant. Il existe deux modalités différentes :
+                          description: "Statut de l'inscription de l'étudiant. Il existe deux modalités différentes :
                           \n
                           \n
-                          - inscrit : inscrit dans l'établissement ;
+                          - admis : l'étudiant est pré-inscrit dans l'établissement mais la procédure complète d'inscription et le règlement des droits d'inscription ne sont pas terminés. Les étudiants \"admis\" passent au statut \"inscrit\" une fois leurs droits d'inscription régularisés (paiement des droits, premier versement des droits ou acquittement des droits selon la situation de l'étudiant et les règles de l'établissement.) Tous les étudiants \"admis\" ne sont donc pas forcément de futurs étudiants \"inscrits\"."
                           \n
-                          - admis, c'est-à-dire pré-inscrit au sens du CROUS. Le statut admis correspond à une pré-inscription de l'étudiant dans un établissement, en formation initiale ou continue. Ce statut ne garantit pas que l'étudiant soit accepté par l'établissement. Cette pré-inscription permet à l'étudiant de faire ses démarches auprès du CROUS.
-Les étudiants \"admis\" passent au statut \"inscrit\" une fois leur inscription validée par l'établissement. L'inscription dépend des critères de l'établissement : acceptation la candidature, paiement des droits d'inscription... Tous les étudiants \"admis\" ne sont donc pas forcément de futurs étudiants \"inscrits\"."
+                          - inscrit : l'étudiant est inscrit dans l'établissement car il est en règle de ses droits d'inscription. L'étudiant peut être inscrit dans plusieurs établissements.
+                          \n
                           example: admis
                           enum:
                             - admis
