@@ -883,9 +883,9 @@ paths:
                           description: "Régime de formation de l'étudiant. Il existe deux modalités différentes :
                           \n
                           \n
-                          - formation initiale ou reprise d'études : Cette modalité indique que l'étudiant est en formation initiale ou en reprise d'études. La formation initiale correspond à un parcours d’études amorcé à l’école élémentaire et suivi sans interruption durant plus d’un an. S'il y a interruption, il s’agit d'une reprise d’études;
+                          - formation initiale : Ce champ indique que l'étudiant est en formation initiale sous statut étudiant (y compris dans le cadre de reprise d’études) ou en en apprentissage ;
                           \n
-                          - formation continue : Cette modalité indique que l'étudiant est en formation continue. Ce type de formation est destinée aux salariés, employés ou demandeurs d’emploi et a pour objectif de conforter, améliorer ou acquérir des connaissances professionnelles au-delà de la formation initiale. La formation continue s'accompagne toujours de la signature d’une convention ou d’un contrat de formation professionnelle entre la personne et l’établissement formateur."
+                          - formation continue : Ce champ indique que l'étudiant est en formation continue ou en contrat de professionalisation.                          
                           example: formation initiale
                           enum:
                             - formation initiale
