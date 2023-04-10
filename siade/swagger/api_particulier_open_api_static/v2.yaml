@@ -966,7 +966,7 @@ paths:
             type: string
       summary: Statut étudiant boursier
       description: >-
-        Statut boursier d'un étudiant.
+        Statut et échelon boursier d'un étudiant, délivrés par le Cnous.
 
         **Paramètres d'appel :** Pour appeler l'API statut boursier, deux modes d'appel sont possibles :
          - INE, l'identifiant national étudiant ;
