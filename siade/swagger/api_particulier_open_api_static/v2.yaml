@@ -878,7 +878,7 @@ paths:
                             - admis
                             - inscrit
                         regime:
-                          title: Régime de l'étudiant
+                          title: Régime de formation
                           type: string
                           description: "Régime de formation de l'étudiant. Il existe deux modalités différentes :
                           \n
