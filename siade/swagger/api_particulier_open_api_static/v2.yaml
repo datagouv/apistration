@@ -572,7 +572,7 @@ paths:
                     example: 'martin.jacques'
                   civilite:
                     title: Civilité
-                    description: Civilité du particulier, Madame ou Monsieur
+                    description: Civilité du demandeur d'emploi, Madame ou Monsieur
                     type: string
                     example: 'M.'
                     enum:
@@ -581,29 +581,29 @@ paths:
                   nom:
                     title: Nom de naissance
                     type: string
-                    description: Nom de naissance du particulier
+                    description: Nom de naissance du demandeur d'emploi
                     example: 'MARTIN'
                   nomUsage:
                     title: Nom d'usage
                     type: string
-                    description: Nom d'usage du particulier
+                    description: Nom d'usage du demandeur d'emploi
                     nullable: true
                     example: null
                   prenom:
                     title: Prénom
                     type: string
                     example: 'JACQUES'
-                    description: Prénom du particulier, limité à 13 caractère
+                    description: Prénom ddu demandeur d'emploi, limité à 13 caractères
                   sexe:
                     title: Sexe
                     type: string
-                    description: Sexe du particulier
+                    description: Sexe du demandeur d'emploi
                     example: 'Masculin'
                   dateNaissance:
                     title: Date de naissance
                     format: date
                     type: string
-                    description: Date de naissance du particulier au format YYYY-MM-DD
+                    description: Date de naissance du demandeur d'emploi au format YYYY-MM-DD
                     example: 1995-02-02
                   codeCertificationCNAV:
                     title: Code du statut de certification d'identité CNAV
@@ -645,23 +645,23 @@ paths:
                   telephone:
                     title: Téléphone principal
                     type: string
-                    description: Numéro de téléphone principal du particulier
+                    description: Numéro de téléphone principal du demandeur d'emploi
                     example: 0636676767
                   telephone2:
                     title: Téléphone secondaire
                     type: string
-                    description: Numéro de téléphone secondaire du particulier
+                    description: Numéro de téléphone secondaire du demandeur d'emploi
                     nullable: true
                   email:
                     title: E-mail
                     type: string
                     nullable: true
-                    description: Adresse e-mail du particulier
+                    description: Adresse e-mail du demandeur d'emploi
                     example: martin.jacques@france.fr
                   adresse:
                     title: Adresse
                     type: object
-                    description: Adresse du particulier, déclarée par le particulier lors de son inscription à Pôle emploi ou suite à une déclaration de changement d’adresse.
+                    description: Adresse du demandeur d'emploi, déclarée par le particulier lors de son inscription à Pôle emploi ou suite à une déclaration de changement d’adresse.
                     properties:
                       codePostal:
                         type: string
