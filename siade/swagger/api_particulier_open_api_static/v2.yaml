@@ -1024,7 +1024,7 @@ paths:
                   echelonBourse:
                     title: Échelon de la bourse
                     type: string
-                    description: Échelon de bourse de l'étudiant, indiquant le montant reçu pour l'année scolaire. Il y a 8 échelons de bourse, de 0bis à 7. Chaque échelon est composé de deux montants, le premier correspondant au montant versé pour 10 mois ; le second, plus élevé, pour les étudiants bénéficiant du maintien de la bourse pendant les grandes vacances universitaires. Les taux sont fixé par arrêté, la page dédiée sur Service-public.fr détaille les montants et vous permettra de retrouver l'arrêté de l'année en cours.
+                    description: Il existe 8 échelons de bourse, de 0bis à 7, correspondant aux montants reçus par l'étudiant pour l'année scolaire. Pour en savoir plus, consulter la FAQ : https://particulier.api.gouv.fr/catalogue/cnous/statut_etudiant_boursier#faq_entry_answer_0_api_particulier_endpoint_cnous_statut_etudiant_boursier.
                     example: "6"
                     enum:
                     - '0bis'
