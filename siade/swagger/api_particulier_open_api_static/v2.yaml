@@ -418,7 +418,7 @@ paths:
                   enfants:
                     title: Informations sur les enfants composant la famille
                     description: "La liste des enfants correspond à la notion d'enfant à charge au sens de la législation familiale. Il n'y a notamment pas d'obligation de lien de parenté avec l’enfant. Pour en savoir plus, consultez la FAQ https://particulier.api.gouv.fr/catalogue/cnaf/quotient_familial#faq_entry_2_api_particulier_endpoint_cnaf_quotient_familial: 
-   type: array
+                    type: array
                     items:
                       type: object
                       properties:
