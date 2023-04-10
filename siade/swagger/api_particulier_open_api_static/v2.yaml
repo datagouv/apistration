@@ -397,18 +397,19 @@ paths:
                       type: object
                       properties:
                         nomPrenom:
-                          title: Noms et prénoms du parent
+                          title: Nom et prénoms
                           type: string
-                          description: Noms et prénoms du parent allocataire de la CAF
+                          description: Nom et prénoms du parent allocataire de la CAF
                           example: "JEAN JACQUES"
                         dateDeNaissance:
                           title: Date de naissance
                           type: string
                           pattern: ^\d{8}$
-                          description: "Date de naissance au format: JJMMAAAA"
+                          description: "Date de naissance au format JJMMAAAA"
                           example: "01021970"
                         sexe:
-                          title: Sexe du parent
+                          title: Sexe
+                          description: Sexe du parent
                           type: string
                           example: "M"
                           enum:
@@ -416,31 +417,25 @@ paths:
                             - M
                   enfants:
                     title: Informations sur les enfants composant la famille
-                    description: "La liste des enfants correspond à la notion d'enfant à charge au sens de la législation familiale. Pour qu'un enfant soit considéré comme \"à charge\", l’allocataire doit assurer financièrement son entretien de manière effective et permanente et assumer à son égard la responsabilité affective et éducative. Il n'y a pas d'obligation de lien de parenté avec l’enfant.
-                    \n
-                    \n
-                    Deux notions d’enfant à charge cohabitent :
-                    \n
-                    - enfant à charge au sens des prestations familiales (Pf) : un enfant est reconnu à charge s’il est âgé d’un mois à moins de 20 ans quelle que soit sa situation, dès lors que son salaire net mensuel ne dépasse pas 55 % du Smic brut ;
-                    \n
-                    - enfant à charge au sens de la législation familiale : sont considérés à charge pour les aides au logement, les enfants âgés de moins de 21 ans en Métropole (22 ans dans les Dom), les enfants âgés de 20 à 25 ans pour le calcul du Rmi/Rsa, et dès le mois de leur naissance, les enfants bénéficiaires de l’allocation de base de la Paje."
-                    type: array
+                    description: "La liste des enfants correspond à la notion d'enfant à charge au sens de la législation familiale. Il n'y a notamment pas d'obligation de lien de parenté avec l’enfant. Pour en savoir plus, consultez la FAQ https://particulier.api.gouv.fr/catalogue/cnaf/quotient_familial#faq_entry_2_api_particulier_endpoint_cnaf_quotient_familial: 
+   type: array
                     items:
                       type: object
                       properties:
                         nomPrenom:
-                          title: Noms et prénoms de l'enfant
+                          title: Nom et prénoms
                           type: string
-                          description: Noms et prénoms de l'enfant des allocataires
+                          description: Nom et prénoms de l'enfant des allocataires
                           example: "JESSICA JACQUES"
                         dateDeNaissance:
-                          title: Date de naissance de l'enfant
+                          title: Date de naissance
                           type: string
                           pattern: ^\d{8}$
-                          description: "Date de naissance au format: JJMMAAAA"
+                          description: "Date de naissance au format JJMMAAAA"
                           example: "01031995"
                         sexe:
-                          title: Sexe de l'enfant
+                          title: Sexe
+                          description: Sexe de l'enfant
                           type: string
                           example: "F"
                           enum:
@@ -449,7 +444,7 @@ paths:
                   adresse:
                     title: Adresse de la famille
                     type: object
-                    description: Adresse structurée au format de la poste. C'est l'adresse connue de la CAF, il s'agit d'une information déclarative.
+                    description: Adresse structurée au format de la poste. C'est l'adresse connue de la CNAF, il s'agit d'une information déclarative.
                     properties:
                       identite:
                         title: Identité du destinataire
@@ -493,7 +488,7 @@ paths:
                   quotientFamilial:
                     title: Quotient familial CAF de la famille
                     type: integer
-                    description: Valeur du quotient familial calculée par la CAF.
+                    description: Valeur du quotient familial calculée par la CAF
                     example: 1045
                   annee:
                     title: Année du quotient familial
