@@ -53,10 +53,10 @@ sandbox:
   operation_ids: []
 
 production:
-  enable_until: '2023-03-21'
+  enable_until: '2023-04-15'
   operation_ids:
-    - 'api_particulier_v2_mesri_student_status'
-    - 'api_particulier_v2_cnous_student_scholarship'
+    - 'api_particulier_v2_dgfip_svair'
+
 test:
   enable_until: '2051-01-01'
   operation_ids:
