@@ -2402,6 +2402,7 @@ paths:
   "/v3/dgfip/unites_legales/{siren}/attestation_fiscale":
     get:
       summary: Attestation fiscale
+      deprecated: true
       tags:
       - Attestations sociales et fiscales
       parameters:
