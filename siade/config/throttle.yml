@@ -1,4 +1,16 @@
 shared:
+  api_particulier_json_resources:
+    endpoints:
+      - { controller: 'api_particulier/v2/cnaf/quotient_familial', action: 'show' }
+      - { controller: 'api_particulier/v2/dgfip/svair', action: 'show' }
+      - { controller: 'api_particulier/v2/cnaf/quotient_familial', action: 'show' }
+      - { controller: 'api_particulier/v2/pole_emploi/statut', action: 'show' }
+      - { controller: 'api_particulier/v2/mesri/student_status', action: 'show' }
+      - { controller: 'api_particulier/v2/mesri/scolarites', action: 'show' }
+      - { controller: 'api_particulier/v2/cnous/student_scholarship', action: 'show' }
+      - { controller: 'api_particulier/v2/dgfip/svair', action: 'show' }
+    limit: 20
+    period: 60
   low_latency_documents:
     endpoints:
       - { controller: 'api_entreprise/v2/cartes_professionnelles_fntp', action: 'show' }
@@ -91,6 +103,8 @@ shared:
     period: 60
 
 test:
+  api_particulier_json_resources:
+    limit: 2
   low_latency_documents:
     limit: 2
   high_latency_documents:
