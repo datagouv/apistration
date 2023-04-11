@@ -417,7 +417,7 @@ paths:
                             - M
                   enfants:
                     title: Informations sur les enfants composant la famille
-                    description: "La liste des enfants correspond à la notion d'enfant à charge au sens de la législation familiale. Il n'y a notamment pas d'obligation de lien de parenté avec l’enfant. Pour en savoir plus, consultez la FAQ https://particulier.api.gouv.fr/catalogue/cnaf/quotient_familial#faq_entry_2_api_particulier_endpoint_cnaf_quotient_familial: 
+                    description: "La liste des enfants correspond à la notion d'enfant à charge au sens de la législation familiale. Il n'y a notamment pas d'obligation de lien de parenté avec l’enfant. Pour en savoir plus, consultez la FAQ https://particulier.api.gouv.fr/catalogue/cnaf/quotient_familial#faq_entry_2_api_particulier_endpoint_cnaf_quotient_familial:"
                     type: array
                     items:
                       type: object
@@ -861,13 +861,13 @@ paths:
                         statut:
                           title: Statut de l'inscription
                           type: string
-                          description: "Statut de l'inscription de l'étudiant. Il existe deux modalités différentes :
-                          \n
-                          \n
-                          - admis : l'étudiant est pré-inscrit dans l'établissement mais la procédure complète d'inscription et le règlement des droits d'inscription ne sont pas terminés. Les étudiants \"admis\" passent au statut \"inscrit\" une fois leurs droits d'inscription régularisés (paiement des droits, premier versement des droits ou acquittement des droits selon la situation de l'étudiant et les règles de l'établissement.) Tous les étudiants \"admis\" ne sont donc pas forcément de futurs étudiants \"inscrits\"."
-                          \n
-                          - inscrit : l'étudiant est inscrit dans l'établissement car il est en règle de ses droits d'inscription. L'étudiant peut être inscrit dans plusieurs établissements.
-                          \n
+                          description: |
+                            "Statut de l'inscription de l'étudiant. Il existe deux modalités différentes :
+                            \n
+                            \n
+                            - admis : l'étudiant est pré-inscrit dans l'établissement mais la procédure complète d'inscription et le règlement des droits d'inscription ne sont pas terminés. Les étudiants \"admis\" passent au statut \"inscrit\" une fois leurs droits d'inscription régularisés (paiement des droits, premier versement des droits ou acquittement des droits selon la situation de l'étudiant et les règles de l'établissement.) Tous les étudiants \"admis\" ne sont donc pas forcément de futurs étudiants \"inscrits\".
+                            \n
+                            - inscrit : l'étudiant est inscrit dans l'établissement car il est en règle de ses droits d'inscription. L'étudiant peut être inscrit dans plusieurs établissements."
                           example: admis
                           enum:
                             - admis
@@ -876,11 +876,11 @@ paths:
                           title: Régime de formation
                           type: string
                           description: "Régime de formation de l'étudiant. Il existe deux modalités différentes :
-                          \n
-                          \n
-                          - formation initiale : Ce champ indique que l'étudiant est en formation initiale sous statut étudiant (y compris dans le cadre de reprise d’études) ou en en apprentissage ;
-                          \n
-                          - formation continue : Ce champ indique que l'étudiant est en formation continue ou en contrat de professionalisation.                          
+                            \n
+                            \n
+                            - formation initiale : Ce champ indique que l'étudiant est en formation initiale sous statut étudiant (y compris dans le cadre de reprise d’études) ou en en apprentissage ;
+                            \n
+                            - formation continue : Ce champ indique que l'étudiant est en formation continue ou en contrat de professionalisation."
                           example: formation initiale
                           enum:
                             - formation initiale
@@ -1024,7 +1024,8 @@ paths:
                   echelonBourse:
                     title: Échelon de la bourse
                     type: string
-                    description: Il existe 8 échelons de bourse, de 0bis à 7, correspondant aux montants reçus par l'étudiant pour l'année scolaire. Pour en savoir plus, consulter la FAQ : https://particulier.api.gouv.fr/catalogue/cnous/statut_etudiant_boursier#faq_entry_answer_0_api_particulier_endpoint_cnous_statut_etudiant_boursier.
+                    description: |
+                      "Il existe 8 échelons de bourse, de 0bis à 7, correspondant aux montants reçus par l'étudiant pour l'année scolaire. Pour en savoir plus, consulter la FAQ : https://particulier.api.gouv.fr/catalogue/cnous/statut_etudiant_boursier#faq_entry_answer_0_api_particulier_endpoint_cnous_statut_etudiant_boursier."
                     example: "6"
                     enum:
                     - '0bis'
