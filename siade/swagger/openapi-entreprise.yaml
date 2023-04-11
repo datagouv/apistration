@@ -3048,16 +3048,16 @@ paths:
                           format PDF.
                         example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_fiscale_dgfip.pdf
                       document_url_expires_in:
-                        title: Nombre de secondes avant expiration du document référencé
-                          dans 'document_url'
-                        description: 'Il s''agit d''une expiration technique: cette
-                          valeur n''a aucun lien avec les autres dates présentes dans
-                          la réponse.'
+                        title: Délai avant expiration de l'URL de téléchargement du
+                          document'
+                        description: Nombre de secondes avant expiration de l'URL
+                          de téléchargement du document. Il s'agit d'une expiration
+                          purement technique.
                         type: integer
                         example: 86400
                       date_delivrance_attestation:
-                        title: Date délivrance de l'attestation
-                        description: Date à laquelle l'attestation a été délivré.
+                        title: Date de délivrance de l'attestation
+                        description: Date à laquelle l'attestation a été délivrée.
                           Il s'agit en général de la date du jour de l'appel.
                         type: date
                         example: '2023-04-11'
