@@ -6,7 +6,7 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
       siret: etablissement['siret'],
       siren: etablissement['siren'],
 
-      unite_legale:,
+      unite_legale: INSEE::UniteLegale::BuildResource.call(response: context.response, unite_legale: etablissement['uniteLegale']).bundled_data.data,
 
       siege_social: etablissement['etablissementSiege'],
       etat_administratif:,
@@ -26,12 +26,9 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
         date_reference: etablissement['anneeEffectifsEtablissement']
       ),
 
-      adresse:,
+      adresse: INSEE::AdresseEtablissement::BuildResource.call(response: context.response, etablissement:).bundled_data.data,
 
-      diffusable_commercialement: STATUT_DIFFUSION[etablissement['statutDiffusionEtablissement']] != :non_diffusible,
-      status_diffusion: STATUT_DIFFUSION[etablissement['statutDiffusionEtablissement']],
-      type: unite_legale.type,
-
+      diffusable_commercialement: yes_no_to_boolean(etablissement['statutDiffusionEtablissement']),
       date_creation: date_to_timestamp(etablissement['dateCreationEtablissement']),
       date_derniere_mise_a_jour: date_to_timestamp(etablissement['dateDernierTraitementEtablissement']),
 
@@ -44,14 +41,6 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
   end
 
   private
-
-  def adresse
-    @adresse ||= INSEE::AdresseEtablissement::BuildResource.call(response: context.response, etablissement:).bundled_data.data
-  end
-
-  def unite_legale
-    @unite_legale ||= INSEE::UniteLegale::BuildResource.call(response: context.response, unite_legale: etablissement['uniteLegale']).bundled_data.data
-  end
 
   def latest_info_on_etablissement
     @latest_info_on_etablissement ||= etablissement['periodesEtablissement'].find do |periode_etablissement|

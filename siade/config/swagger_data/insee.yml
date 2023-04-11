@@ -1,149 +1,4 @@
 insee:
-  personne_morale_properties: &personne_morale_properties
-    raison_sociale:
-      title: "Raison sociale de l'unité légale"
-      type: "string"
-      example: "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
-      nullable: true
-    sigle: &personne_morale_property_sigle
-      title: "Sigle de l'unité légale"
-      type: "string"
-      example: "DINUM"
-      nullable: true
-  personne_morale_attributes: &personne_morale_attributes
-    type: "object"
-    title: "Attributs de la personne morale"
-    description:
-      "Attributs associés à la personne morale. Les valeurs sont à
-      'null' pour les personnes physiques."
-    properties: *personne_morale_properties
-
-  personne_morale_properties_diffusible: &personne_morale_properties_diffusible
-    <<: *personne_morale_properties
-    sigle:
-      <<: *personne_morale_property_sigle
-      description: "Cette valeur est masquée à [ND] si l'unité légale correspond à une personne morale non-diffusible."
-  personne_morale_attributes_diffusible: &personne_morale_attributes_diffusible
-    <<: *personne_morale_attributes
-    properties: *personne_morale_properties_diffusible
-
-  personne_physique_properties: &personne_physique_properties
-    pseudonyme: &personne_physique_property_pseudonyme
-      title: "Pseudonyme"
-      type: "string"
-      example: "DJ Falcon"
-      nullable: true
-      description: "Le pseudonyme correspond au nom qu'une
-        personne utilise pour se désigner dans l'exercice
-        de son activité, généralement littéraire ou artistique."
-    prenom_usuel: &personne_physique_property_prenom_usuel
-      title: "Prénom usuel"
-      type: "string"
-      example: "Jean"
-      nullable: true
-      description: "Le prénom usuel est le prénom par lequel
-        une personne choisit de se faire appeler dans la
-        vie courante. Ce prénom fait partie de ceux qui lui ont
-        été donnés à sa naissance et qui sont inscrits à
-        l'état civil."
-    prenom_1: &personne_physique_property_prenom_1
-      title: "Prénom numéro 1 déclaré"
-      type: "string"
-      example: "Jean"
-      nullable: true
-    prenom_2: &personne_physique_property_prenom_2
-      title: "Prénom numéro 2 déclaré"
-      type: "string"
-      example: "Jacques"
-      nullable: true
-    prenom_3: &personne_physique_property_prenom_3
-      title: "Prénom numéro 3 déclaré"
-      type: "string"
-      example: "Pierre"
-      nullable: true
-    prenom_4: &personne_physique_property_prenom_4
-      title: "Prénom numéro 4 déclaré"
-      type: "string"
-      example: "Paul"
-      nullable: true
-    nom_usage: &personne_physique_property_nom_usage
-      title: "Nom d'usage"
-      type: "string"
-      example: "Dupont"
-      nullable: true
-      description: "Nom que la personne physique a choisi d'utiliser."
-    nom_naissance: &personne_physique_property_nom_naissance
-      title: "Nom de naissance"
-      type: "string"
-      example: "Dubois"
-      nullable: true
-    sexe: &personne_physique_property_sexe
-      title: "Genre"
-      type: "string"
-      example: "M"
-      enum:
-        - "M"
-        - "F"
-      nullable: true
-      description: "Caractère féminin ou masculin de la personne
-        physique. Cette valeur peut ne pas être renseignée
-        pour une personne physique."
-  personne_physique_attributes: &personne_physique_attributes
-    type: "object"
-    title: "Attributs de la personne physique"
-    description: "Attributs associés à la personne physique. Les
-      valeurs sont à 'null' pour les personnes morales. Pour les personnes physiques, la raison sociale / dénomination / nom de l'entreprise correspond toujours au nom de famille et au prénom, précédés ou suivis de la mention \"entrepreneur individuel\" ou \"EI\". Pour en savoir plus, consulter cette page du site service-public.fr https://entreprendre.service-public.fr/vosdroits/F23283/personnalisation/resultat"
-    properties: *personne_physique_properties
-
-  personne_physique_properties_diffusible: &personne_physique_properties_diffusible
-    <<: *personne_physique_properties
-    sexe:
-      <<: *personne_physique_property_sexe
-      description: "Caractère féminin ou masculin de la personne
-        physique. Cette valeur peut ne pas être renseignée
-        pour une personne physique.
-        \n
-        Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
-    nom_naissance :
-      <<: *personne_physique_property_nom_naissance
-      description: "Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
-    nom_usage:
-      <<: *personne_physique_property_nom_usage
-      description: "Nom que la personne physique a choisi d'utiliser.
-      \n
-      Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
-    prenom_1:
-      <<: *personne_physique_property_prenom_1
-      description: "Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
-    prenom_2:
-      <<: *personne_physique_property_prenom_2
-      description: "Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
-    prenom_3:
-      <<: *personne_physique_property_prenom_3
-      description: "Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
-    prenom_4:
-      <<: *personne_physique_property_prenom_4
-      description: "Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
-    prenom_usuel:
-      <<: *personne_physique_property_prenom_usuel
-      description: "Le prénom usuel est le prénom par lequel
-        une personne choisit de se faire appeler dans la
-        vie courante. Ce prénom fait partie de ceux qui lui ont
-        été donnés à sa naissance et qui sont inscrits à
-        l'état civil.
-        \n
-        Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
-    pseudonyme:
-      <<: *personne_physique_property_pseudonyme
-      description: "Le pseudonyme correspond au nom qu'une
-        personne utilise pour se désigner dans l'exercice
-        de son activité, généralement littéraire ou artistique.
-        \n
-        Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
-  personne_physique_attributes_diffusible: &personne_physique_attributes_diffusible
-    <<: *personne_physique_attributes
-    properties: *personne_physique_properties_diffusible
-
   shared_insee_unite_legale_attributes: &shared_insee_unite_legale_attributes
     siren:
       title: "Siren de l'unité légale"
@@ -164,8 +19,89 @@ insee:
       description:
         "Indique si l'unité légale est une personne morale ou une personne physique.
         Cette valeur est déterminée à l'aide du code juridique : '1000' correspondant à une personne physique."
-    personne_morale_attributs: *personne_morale_attributes
-    personne_physique_attributs: *personne_physique_attributes
+    personne_morale_attributs:
+      type: "object"
+      title: "Attributs de la personne morale"
+      description:
+        "Attributs associés à la personne morale. Les valeurs sont à
+        'null' pour les personnes physiques."
+      properties:
+        raison_sociale:
+          title: "Raison sociale de l'unité légale"
+          type: "string"
+          example: "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
+          nullable: true
+        sigle:
+          title: "Sigle de l'unité légale"
+          type: "string"
+          example: "DINUM"
+          nullable: true
+    personne_physique_attributs:
+      type: "object"
+      title: "Attributs de la personne physique"
+      description: "Attributs associés à la personne physique. Les
+        valeurs sont à 'null' pour les personnes morales. Pour les personnes physiques, la raison sociale / dénomination / nom de l'entreprise correspond toujours au nom de famille et au prénom, précédés ou suivis de la mention \"entrepreneur individuel\" ou \"EI\". Pour en savoir plus, consulter cette page du site service-public.fr https://entreprendre.service-public.fr/vosdroits/F23283/personnalisation/resultat"
+      properties:
+        pseudonyme:
+          title: "Pseudonyme"
+          type: "string"
+          example: "DJ Falcon"
+          nullable: true
+          description: "Le pseudonyme correspond au nom qu'une
+            personne utilise pour se désigner dans l'exercice
+            de son activité, généralement littéraire ou artistique."
+        prenom_usuel:
+          title: "Prénom usuel"
+          type: "string"
+          example: "Jean"
+          nullable: true
+          description: "Le prénom usuel est le prénom par lequel
+            une personne choisit de se faire appeler dans la
+            vie courante. Ce prénom fait partie de ceux qui lui ont
+            été donnés à sa naissance et qui sont inscrits à
+            l'état civil."
+        prenom_1:
+          title: "Prénom numéro 1 déclaré"
+          type: "string"
+          example: "Jean"
+          nullable: true
+        prenom_2:
+          title: "Prénom numéro 2 déclaré"
+          type: "string"
+          example: "Jacques"
+          nullable: true
+        prenom_3:
+          title: "Prénom numéro 3 déclaré"
+          type: "string"
+          example: "Pierre"
+          nullable: true
+        prenom_4:
+          title: "Prénom numéro 4 déclaré"
+          type: "string"
+          example: "Paul"
+          nullable: true
+        nom_usage:
+          title: "Nom d'usage"
+          type: "string"
+          example: "Dupont"
+          nullable: true
+          description: "Nom que la personne physique a choisi d'utiliser."
+        nom_naissance:
+          title: "Nom de naissance"
+          type: "string"
+          example: "Dubois"
+          nullable: true
+        sexe:
+          title: "Genre"
+          type: "string"
+          example: "M"
+          enum:
+            - "M"
+            - "F"
+          nullable: true
+          description: "Caractère féminin ou masculin de la personne
+            physique. Cette valeur peut ne pas être renseignée
+            pour une personne physique."
     categorie_entreprise:
       title: "Catégorie de l'unité légale"
       type: "string"
@@ -203,8 +139,6 @@ insee:
         \n
         \n
         - une unité légale diffusible : 'true'
-        \n
-        - partiellement-diffusible : 'true'. Dans ce cas, les informations obtenues peuvent être masquées par la chaîne de caractère '[ND]'
         \n
         - une unité légale non-diffusible : 'false'. Dans ce cas, les
         informations obtenues ne doivent en aucun cas être accessibles
@@ -453,484 +387,6 @@ insee:
         \n
         \n
         Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/dateCreationUniteLegale"
-  shared_insee_unite_legale_attributes_diffusible: &shared_insee_unite_legale_attributes_diffusible
-    <<: *shared_insee_unite_legale_attributes
-    personne_morale_attributs: *personne_morale_attributes_diffusible
-    personne_physique_attributs: *personne_physique_attributes_diffusible
-
-  insee_unite_legale_attributes: &insee_unite_legale_attributes
-    <<: *shared_insee_unite_legale_attributes
-    date_cessation:
-      title: "Date de cessation de l'unité légale"
-      type: "integer"
-      nullable: true
-      example: 1634133818
-      description: "Cette valeur est renvoyée sous format timestamp. Si l'entreprise est juridique active, cette valeur est à 'null'."
-
-  insee_unite_legale_attributes_diffusible: &insee_unite_legale_attributes_diffusible
-    <<: *shared_insee_unite_legale_attributes_diffusible
-    date_cessation:
-      title: "Date de cessation de l'unité légale"
-      type: "integer"
-      nullable: true
-      example: 1634133818
-      description: "Cette valeur est renvoyée sous format timestamp. Si l'entreprise est juridique active, cette valeur est à 'null'."
-    diffusable_commercialement:
-      title: "Diffusible commercialement"
-      type: "boolean"
-      example: true
-      enum:
-        - true
-      description: "Détermine si l'unité légale est une entité non-diffusible. Cette API n'appelant pas les non-diffusible, cette valeur est toujours à 'true'. Pour récupérer des unités légales non-diffusible, référez-vous à la documentation de l'API /insee/unites_legales/:siren"
-
-  insee_adresse_etablissement_attributes: &insee_adresse_etablissement_attributes
-    numero_voie: &insee_adresse_etablissement_numero_voie_property
-      title: "Numéro dans la voie"
-      type: "string"
-      example: "22"
-    indice_repetition_voie: &insee_adresse_etablissement_indice_repetition_voie_property
-      title: "Indice de répétition du numéro dans la voie"
-      description: "Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/indrep"
-      type: "string"
-      nullable: true
-      enum:
-        - "bis"
-        - "ter"
-        - "quarter"
-        - "quinquies"
-        -
-    type_voie: &insee_adresse_etablissement_type_voie_property
-      title: "Type de la voie de localisation"
-      example: "RUE"
-      description:
-        "Le type de la voie de localisation est indiquée en abrégé et en majuscules.
-        L'information n'est pas toujours renseignée. Pour certaines petites communes,
-        l'information n'existe pas.
-        \n
-        \n
-        Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie"
-      type: "string"
-      nullable: true
-      enum: <%= YAML.load_file(Rails.root.join('config/data/insee/types_de_voie.yml')).values.map(&:upcase).concat([nil]).to_json %>
-    libelle_voie: &insee_adresse_etablissement_libelle_voie_property
-      title: "Libellé de la voie"
-      type: "string"
-      example: "DE LA PAIX"
-    complement_adresse: &insee_adresse_etablissement_complement_adresse_property
-      title: "Complément d'adresse"
-      type: "string"
-      description: "Le complément d'adresse correspond à des éléments situés à l'extérieur du bâtiment qui permettent de compléter l'adresse (résidence, bâtiment, entrée, etc..)"
-      example: "ZAE SAINT GUENAULT"
-      nullable: true
-    code_commune:
-      title: "Code commune"
-      description:
-        "Le code commune désigne le code de la commune de localisation de l'établissement. Le code renvoyé correspond à la date de l'appel, ce qui implique que toute modification du code commune est repercutée sur l'ensemble des établissements concernés, y compris ceux qui sont fermés.
-        Cette valeur est à 'null' pour les entreprises à l'étranger.
-        \n
-        \n
-        Les codes sont listés dans la table d'appartenance géographique fournie par l'Insee et disponible ici: https://www.insee.fr/fr/information/2028028"
-      type: "string"
-      example: "75112"
-      nullable: true
-    code_postal: &insee_adresse_etablissement_code_postal_property
-      title: "Code postal"
-      example: "75016"
-      type: "string"
-    distribution_speciale: &insee_adresse_etablissement_distribution_speciale_property
-      title: "Distribution spéciale"
-      type: "string"
-      nullable: true
-      description:
-        "La distribution spéciale reprend les éléments particuliers qui accompagnent une adresse de distribution spéciale, la modalité la plus connue étant les adresses en 'CEDEX'.
-        \n
-        \n
-        Plus d'informations dans la documentation Insee de l'API Sirene :
-        * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
-        * https://www.sirene.fr/sirene/public/variable/l5-disp"
-    code_cedex: &insee_adresse_etablissement_code_cedex_property
-      title: "Code cedex"
-      type: "string"
-      nullable: true
-      description: "Plus d'informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle"
-      example: "75590"
-    libelle_cedex: &insee_adresse_etablissement_libelle_cedex_property
-      title: "Libellé du code cedex"
-      type: "string"
-      nullable: true
-      example: "PARIS CEDEX 12"
-      description: "Ce champ indique le libellé correspondant au code cedex de l'établissement. Si le code cedex est à 'null', ce champ est également à 'null'."
-    libelle_commune:
-      title: "Nom de la commune pour une adresse en France"
-      description: "Cette valeur est à 'null' pour les établissements à l'étranger."
-      type: "string"
-      example: "PARIS 12"
-      nullable: true
-    libelle_commune_etranger:
-      title: "Nom de la commune pour une adresse à l'étranger."
-      description: "Cette valeur est à 'null' pour les établissements en France."
-      type: "string"
-      nullable: true
-
-    code_pays_etranger:
-      title: "Code du pays pour les établissements situés à l'étranger"
-      description: "La nomenclature des codes pays se trouve ici : https://www.insee.fr/fr/information/2028273"
-      type: "string"
-      example: "99132"
-      nullable: true
-    libelle_pays_etranger:
-      title: "Nom du pays pour les établissements situés à l'étranger"
-      type: "string"
-      nullable: true
-      example: "ROYAUME-UNI"
-
-    acheminement_postal: &adresse_etablissement_acheminement_postal_property
-      type: "object"
-      title: "Éléments constitutifs de l'adresse postale pour son acheminement."
-      description: "Il ne s'agit pas d'un traitement RNVP mais simplement d'une réorganisation des éléments renvoyé par l'Insee pour faciliter l'affichage des adresses postales"
-      properties:
-        l1: &adresse_etablissement_acheminement_postal_l1_property
-          title: "Ligne 1"
-          type: "string"
-          description: "Si l'établissement correspond à une personne morale : la dénomination sociale de la personne morale. Le cas contraire: cette variable est vide."
-          example: 'DIRECTION INTERMINISTERIELLE DU NUMERIQUE'
-        l2: &adresse_etablissement_acheminement_postal_l2_property
-          title: "Ligne 2"
-          type: "string"
-          description: "Si l'établissement correspond à une personne physique : concaténation du nom et prénom"
-          example: 'JEAN MARIE DURAND'
-        l3: &adresse_etablissement_acheminement_postal_l3_property
-          title: "Ligne 3"
-          type: "string"
-          description: "Complément d'adresse comme décrit dans la clé `complement_adresse`"
-          example: "ZAE SAINT GUENAULT"
-        l4: &adresse_etablissement_acheminement_postal_l4_property
-          title: "Ligne 4"
-          type: "string"
-          description: "Concaténation du numéro de voie, d'indice de répétition, du type de voie et du libellé de la voie"
-          example: "51 BIS RUE DE LA PAIX"
-        l5: &adresse_etablissement_acheminement_postal_l5_property
-          title: "Ligne 5"
-          type: "string"
-          description: "Distribution spéciale comme décrit dans la clé `distribution_speciale`"
-          example: "CS 72809"
-        l6: &adresse_etablissement_acheminement_postal_l6_property
-          title: "Ligne 6"
-          type: "string"
-          description: "Si le code cedex est existant : code cedex accompagné de son libellé ; sinon, si le pays est en France : code postal accompagné de son libellé, sinon : libellé de la commune de l'établissement situé à l'étranger"
-          example: "75256 PARIX CEDEX 12"
-        l7:
-          title: "Ligne 7"
-          type: "string"
-          description: "Pays de l'établissement"
-          example: 'FRANCE'
-
-  insee_adresse_etablissement_attributes_diffusible: &insee_adresse_etablissement_attributes_diffusible
-    <<: *insee_adresse_etablissement_attributes
-    complement_adresse:
-      <<: *insee_adresse_etablissement_complement_adresse_property
-      description: "Le complément d'adresse correspond à des éléments situés à l'extérieur du bâtiment qui permettent de compléter l'adresse (résidence, bâtiment, entrée, etc..)
-      \n
-      Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
-    numero_voie:
-      <<: *insee_adresse_etablissement_numero_voie_property
-      description: "Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
-    indice_repetition_voie:
-      <<: *insee_adresse_etablissement_indice_repetition_voie_property
-      description: "Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/indrep
-      \n
-      Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
-    type_voie:
-      <<: *insee_adresse_etablissement_type_voie_property
-      description:
-        "Le type de la voie de localisation est indiquée en abrégé et en majuscules.
-        L'information n'est pas toujours renseignée. Pour certaines petites communes,
-        l'information n'existe pas.
-        \n
-        \n
-        Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie
-        \n
-        Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
-    libelle_voie:
-      <<: *insee_adresse_etablissement_libelle_voie_property
-      description: "Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
-    code_postal:
-      <<: *insee_adresse_etablissement_code_postal_property
-      description: "Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
-    distribution_speciale:
-      <<: *insee_adresse_etablissement_distribution_speciale_property
-      description: "La distribution spéciale reprend les éléments particuliers qui accompagnent une adresse de distribution   spéciale, la modalité la plus connue étant les adresses en 'CEDEX'.
-        \n
-        \n
-        Plus d'informations dans la documentation Insee de l'API Sirene :
-        * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
-        * https://www.sirene.fr/sirene/public/variable/l5-disp
-        \n
-        Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
-    code_cedex:
-      <<: *insee_adresse_etablissement_code_cedex_property
-      description: "Plus d'informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle
-      \n
-      Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
-    libelle_cedex:
-      <<: *insee_adresse_etablissement_libelle_cedex_property
-      description: "Ce champ indique le libellé correspondant au code cedex de l'établissement. Si le code cedex est à 'null', ce champ est également à 'null'.
-      \n
-      Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
-    acheminement_postal:
-      <<: *adresse_etablissement_acheminement_postal_property
-      properties:
-        l1:
-          <<: *adresse_etablissement_acheminement_postal_l1_property
-          description: "Si l'établissement correspond à une personne morale : la dénomination sociale de la personne morale. Le cas contraire: cette variable est vide.
-          \n
-          Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
-        l2:
-          <<: *adresse_etablissement_acheminement_postal_l2_property
-          description: "Si l'établissement correspond à une personne physique : concaténation du nom et prénom
-          \n
-          Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
-        l3:
-          <<: *adresse_etablissement_acheminement_postal_l3_property
-          description: "Si l'établissement correspond à une personne physique : concaténation du nom et prénom
-          \n
-          Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
-        l4:
-          <<: *adresse_etablissement_acheminement_postal_l4_property
-          description: "Concaténation du numéro de voie, d'indice de répétition, du type de voie et du libellé de la voie
-          \n
-          Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
-        l5:
-          <<: *adresse_etablissement_acheminement_postal_l5_property
-          description: "Distribution spéciale comme décrit dans la clé `distribution_speciale`
-          \n
-          Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
-        l6:
-          <<: *adresse_etablissement_acheminement_postal_l6_property
-          description: "Si le code cedex est existant : code cedex accompagné de son libellé ; sinon, si le pays est en France : code postal accompagné de son libellé, sinon : libellé de la commune de l'établissement situé à l'étranger
-          \n
-          Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
-
-  insee_etablissement_attributes: &insee_etablissement_attributes
-    siret:
-      title: "Siret de l'établissement"
-      type: "string"
-      example: "30613890001294"
-      description: "Il peut arriver que le siret renvoyé soit différent du paramètre d'appel. Il s'agit d'une erreur généralement temporaire dans la base de données Sirene."
-    siege_social:
-      type: "boolean"
-      example: true
-      enum:
-        - true
-        - false
-      description: "Indique si l'établissement est le siège social de l'entreprise."
-    etat_administratif:
-      title: "État administratif de l'établissement"
-      type: "string"
-      example: 'A'
-      enum:
-        - "A"
-        - "F"
-      description:
-        "Cette valeur décrit l'état administratif de l'établissement, qui peut être :
-        \n
-        \n
-        - actif. Sauf exception, lors de son inscription au répertoire, tout établissement est à l'état 'actif'
-
-        \n
-        - fermé. Cet état découle de la prise en compte d'une déclaration de fermeture. Un établissement fermé peut être rouvert.
-        \n
-        \n
-        Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifEtablissement"
-    date_fermeture:
-      title: "Date de fermeture de l'établissement"
-      type: "integer"
-      nullable: true
-      example: 1634133818
-      description: "Cette valeur est renvoyée sous format timestamp"
-    activite_principale:
-      title: "Attributs de l'activité principale"
-      type: "object"
-      properties:
-        code:
-          title: "Code de l'activité principale (APE) de l'établissement"
-          type: "string"
-          example: "8411Z"
-          description: "Le code APE (activité principale exercée) permet d'identifier la branche d'activité principale. Il est attribué par l'Insee lors de l'immatriculation ou la déclaration d'activité de l'entreprise. Ce code de 4 chiffres + 1 lettre est extrait de la nomenclature d'activité française (NAF) de l'Insee.
-          \n
-          \n
-          À noter qu'un établissement n'ayant pas encore de code APE peut se voir affecter la valeur '00.00Z' de manière provisoire.
-          \n
-          \n
-          Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
-          Nomemclature d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2120875"
-        libelle:
-          title: "Libellé associé au code APE"
-          type: "string"
-          nullable: true
-          example: "Administration publique générale"
-          description:
-            "Libellé associé au code APE. Si le code n'est pas renseigné dans la nomenclature 'Naf Rév2' (nomenclature en vigueur), le libellé n'est pas renseigné ici. Si le code ne correspond à aucun libellé au sein de la nomenclature 'Naf Rév2', la valeur 'non référencé' est utilisée.
-            \n
-            \n
-            Nomemclature d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2406147"
-        nomenclature:
-          title: "Nomenclature associée au code"
-          type: "string"
-          example: "NAFRev2"
-          description:
-            "Ce champ indique le nom de la nomenclature associée au code APE."
-    tranche_effectif_salarie:
-      type: "object"
-      title: "Tranche d'effectif salarié de l'établissement"
-      description: "Pour environ la moitié des établissements, la tranche d'effectif salarié n'est pas renseignée. Il s'agit principalement d'établissements récents (créés il y a moins de trois ans). Les délais de récolte et traitement font que les valeurs indiquées datent de l’année N-2 ou N-3."
-      properties:
-        code:
-          title: "Code effectif"
-          type: "string"
-          nullable: true
-          example: "51"
-          description: "Le code effectif correspond à la tranche d'effectif salarié de l'établissement :
-            \n
-            \n
-            - NN : Unités non employeuses (pas de salarié au cours de l'année de référence et pas d'effectif au 31/12). Cette tranche peut contenir quelques effectifs inconnus
-            \n
-            - 00 : 0 salarié (n'ayant pas d'effectif au 31/12 mais ayant employé des salariés au cours de l'année de référence)
-            \n
-            - 01 : 1 ou 2 salariés
-            \n
-            - 02 : 3 à 5 salariés
-            \n
-            - 03 : 6 à 9 salariés
-            \n
-            - 11 : 10 à 19 salariés
-            \n
-            - 12 : 20 à 49 salariés
-            \n
-            - 21 : 50 à 99 salariés
-            \n
-            - 22 : 100 à 199 salariés
-            \n
-            - 31 : 200 à 249 salariés
-            \n
-            - 32 : 250 à 499 salariés
-            \n
-            - 41 : 500 à 999 salariés
-            \n
-            - 42 : 1 000 à 1 999 salariés
-            \n
-            - 51 : 2 000 à 4 999 salariés
-            \n
-            - 52 : 5 000 à 9 999 salariés
-            \n
-            - 53 : 10 000 salariés et plus
-            \n
-            \n
-            Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
-            \n
-            \n
-            L'effectif mensuel exact de l'établissement est disponible au travers de l'[API Effectifs - URSSAF Caisse nationale](TODO). Si votre jeton contient ce droit d'accès, nous vous recommandons d'utiliser cette API. Ces données étant protégées, leur cadre d'utilisation est différent de la tranche effectif fournie par l'Insee, qui elle est une donnée publique."
-          enum:
-          - "NN"
-          - "00"
-          - "01"
-          - "02"
-          - "03"
-          - "11"
-          - "12"
-          - "21"
-          - "22"
-          - "31"
-          - "32"
-          - "41"
-          - "42"
-          - "51"
-          - "52"
-          - "53"
-        intitule:
-          title: "Intitulé associé au code effectif"
-          type: "string"
-          nullable: true
-          example: "2 000 à 4 999 salariés"
-        date_reference:
-          title: "Date de référence de l'effectif"
-          type: "string"
-          nullable: true
-          example: "2016"
-        de:
-          title: "Seuil inférieur de la tranche effectif"
-          type: "integer"
-          example: 2000
-          nullable: true
-        a:
-          title: "Seuil supérieur de la tranche effectif"
-          type: "integer"
-          example: 4999
-          nullable: true
-    diffusable_commercialement:
-      title: "Diffusable commercialement"
-      type: "boolean"
-      example: true
-      enum:
-        - true
-        - false
-      description: "Indique si l'établissement est :
-        \n
-        \n
-        - diffusible : 'true'
-        \n
-        - partiellement-diffusible : 'true'. Dans ce cas, les informations obtenues peuvent être masquées par la chaîne de caractère '[ND]'
-        \n
-        - non-diffusible : 'false'. Dans ce cas, les
-        informations obtenues ne doivent en aucun cas être accessibles
-        au grand public.
-        \n
-        \n
-        Plus d'informations sur les conditions de diffusion : LIEN TODO"
-    enseigne: &insee_etabliseement_enseigne_property
-      title: "Enseigne de l'établissement"
-      type: "string"
-      nullable: true
-      description: "L'enseigne est l'appellation désignant l'emplacement ou le local dans lequel est exercée l'activité. Un établissement peut posséder une enseigne, plusieurs enseignes ou aucune.
-        \n
-        \n
-        Cette variable est la concaténation séparée par des virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement"
-      example: "Coiff Land, CoiffureLand"
-    unite_legale:
-      type: "object"
-      title: "Unité légale de l'établissement"
-      properties: *shared_insee_unite_legale_attributes
-    adresse:
-      type: "object"
-      title: "Adresse de l'établissement"
-      properties: *insee_adresse_etablissement_attributes
-    date_creation: *insee_date_creation
-
-  insee_etablissement_attributes_diffusible: &insee_etablissement_attributes_diffusible
-    <<: *insee_etablissement_attributes
-    unite_legale:
-      type: "object"
-      title: "Unité légale de l'établissement"
-      properties: *shared_insee_unite_legale_attributes_diffusible
-    adresse:
-      type: "object"
-      title: "Adresse de l'établissement"
-      properties: *insee_adresse_etablissement_attributes_diffusible
-    enseigne:
-      <<: *insee_etabliseement_enseigne_property
-      description: "L'enseigne est l'appellation désignant l'emplacement ou le local dans lequel est exercée l'activité. Un établissement peut posséder une enseigne, plusieurs enseignes ou aucune.
-        \n
-        \n
-        Cette variable est la concaténation séparée par des virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement
-        \n
-        Cette valeur est masquée à [ND] si l'unité légale correspond à une personne morale non-diffusible."
-    diffusable_commercialement:
-      title: "Diffusable commercialement"
-      type: 'boolean'
-      example: true
-      enum:
-        - true
-      description: "Détermine si l'établissement est non-diffusible. Cette API n'appelant pas les non-diffusible, cette valeur est toujours à 'true'. Pour récupérer des établissements non-diffusibles, référez-vous à la documentation de l'API /insee/etablissements/:siren"
 
 insee:
   adresse_etablissement:
@@ -938,12 +394,155 @@ insee:
     description: "Adresse d'un établissement inscrit au répertoire Sirene. Tous les établissements sont appelables, y compris les non-diffusibles."
     tags:
       - "Informations générales"
-    attributes: *insee_adresse_etablissement_attributes
+    attributes: &insee_adresse_etablissement_attributes
+      numero_voie:
+        title: "Numéro dans la voie"
+        type: "string"
+        example: "22"
+      indice_repetition_voie:
+        title: "Indice de répétition du numéro dans la voie"
+        description: "Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/indrep"
+        type: "string"
+        nullable: true
+        enum:
+          - "bis"
+          - "ter"
+          - "quarter"
+          - "quinquies"
+          -
+      type_voie:
+        title: "Type de la voie de localisation"
+        example: "RUE"
+        description:
+          "Le type de la voie de localisation est indiquée en abrégé et en majuscules.
+          L'information n'est pas toujours renseignée. Pour certaines petites communes,
+          l'information n'existe pas.
+          \n
+          \n
+          Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie"
+        type: "string"
+        nullable: true
+        enum: <%= YAML.load_file(Rails.root.join('config/data/insee/types_de_voie.yml')).values.map(&:upcase).concat([nil]).to_json %>
+      libelle_voie:
+        title: "Libellé de la voie"
+        type: "string"
+        example: "DE LA PAIX"
+      complement_adresse:
+        title: "Complément d'adresse"
+        type: "string"
+        description: "Le complément d'adresse correspond à des éléments situés à l'extérieur du bâtiment qui permettent de compléter l'adresse (résidence, bâtiment, entrée, etc..)"
+        example: "ZAE SAINT GUENAULT"
+        nullable: true
+      code_commune:
+        title: "Code commune"
+        description:
+          "Le code commune désigne le code de la commune de localisation de l'établissement. Le code renvoyé correspond à la date de l'appel, ce qui implique que toute modification du code commune est repercutée sur l'ensemble des établissements concernés, y compris ceux qui sont fermés.
+          Cette valeur est à 'null' pour les entreprises à l'étranger.
+          \n
+          \n
+          Les codes sont listés dans la table d'appartenance géographique fournie par l'Insee et disponible ici: https://www.insee.fr/fr/information/2028028"
+        type: "string"
+        example: "75112"
+        nullable: true
+      code_postal:
+        title: "Code postal"
+        example: "75016"
+        type: "string"
+      distribution_speciale:
+        title: "Distribution spéciale"
+        type: "string"
+        nullable: true
+        description:
+          "La distribution spéciale reprend les éléments particuliers qui accompagnent une adresse de distribution spéciale, la modalité la plus connue étant les adresses en 'CEDEX'.
+          \n
+          \n
+          Plus d'informations dans la documentation Insee de l'API Sirene :
+          * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
+          * https://www.sirene.fr/sirene/public/variable/l5-disp"
+      code_cedex:
+        title: "Code cedex"
+        type: "string"
+        nullable: true
+        description: "Plus d'informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle"
+        example: "75590"
+      libelle_cedex:
+        title: "Libellé du code cedex"
+        type: "string"
+        nullable: true
+        example: "PARIS CEDEX 12"
+        description: "Ce champ indique le libellé correspondant au code cedex de l'établissement. Si le code cedex est à 'null', ce champ est également à 'null'."
+      libelle_commune:
+        title: "Nom de la commune pour une adresse en France"
+        description: "Cette valeur est à 'null' pour les établissements à l'étranger."
+        type: "string"
+        example: "PARIS 12"
+        nullable: true
+      libelle_commune_etranger:
+        title: "Nom de la commune pour une adresse à l'étranger."
+        description: "Cette valeur est à 'null' pour les établissements en France."
+        type: "string"
+        nullable: true
+
+      code_pays_etranger:
+        title: "Code du pays pour les établissements situés à l'étranger"
+        description: "La nomenclature des codes pays se trouve ici : https://www.insee.fr/fr/information/2028273"
+        type: "string"
+        example: "99132"
+        nullable: true
+      libelle_pays_etranger:
+        title: "Nom du pays pour les établissements situés à l'étranger"
+        type: "string"
+        nullable: true
+        example: "ROYAUME-UNI"
+
+      acheminement_postal:
+        type: "object"
+        title: "Éléments constitutifs de l'adresse postale pour son acheminement."
+        description: "Il ne s'agit pas d'un traitement RNVP mais simplement d'une réorganisation des éléments renvoyé par l'Insee pour faciliter l'affichage des adresses postales"
+        properties:
+          l1:
+            title: "Ligne 1"
+            type: "string"
+            description: "Si l'établissement correspond à une personne morale : la dénomination sociale de la personne morale. Le cas contraire: cette variable est vide."
+            example: 'DIRECTION INTERMINISTERIELLE DU NUMERIQUE'
+          l2:
+            title: "Ligne 2"
+            type: "string"
+            description: "Si l'établissement correspond à une personne physique : concaténation du nom et prénom"
+            example: 'JEAN MARIE DURAND'
+          l3:
+            title: "Ligne 3"
+            type: "string"
+            description: "Complément d'adresse comme décrit dans la clé `complement_adresse`"
+            example: "ZAE SAINT GUENAULT"
+          l4:
+            title: "Ligne 4"
+            type: "string"
+            description: "Concaténation du numéro de voie, d'indice de répétition, du type de voie et du libellé de la voie"
+            example: "51 BIS RUE DE LA PAIX"
+          l5:
+            title: "Ligne 5"
+            type: "string"
+            description: "Distribution spéciale comme décrit dans la clé `distribution_speciale`"
+            example: "CS 72809"
+          l6:
+            title: "Ligne 6"
+            type: "string"
+            description: "Si le code cedex est existant : code cedex accompagné de son libellé ; sinon, si le pays est en France : code postal accompagné de son libellé, sinon : libellé de la commune de l'établissement situé à l'étranger"
+            example: "75256 PARIX CEDEX 12"
+          l7:
+            title: "Ligne 7"
+            type: "string"
+            description: "Pays de l'établissement"
+            example: 'FRANCE'
+
+
     meta:
       date_derniere_mise_a_jour: &insee_date_derniere_mise_a_jour
         type: "integer"
         example: 1618396818
         description: "Date de la dernière mise à jour à l'Insee."
+
     links:
       unite_legale: &link_unite_legale
         type: "string"
@@ -953,20 +552,26 @@ insee:
         type: "string"
         example: "https://entreprise.api.gouv.fr/api/v3/insee/etablissements/13002526500013"
         description: "Lien vers la ressource 'Donnée Sirene d'un établissement' correspondant à cette adresse d'établissement pour obtenir les données de référence de l'établissement."
-        
   adresse_etablissement_diffusable:
     title: "Adresse établissement diffusible"
     description: "Adresse d'un établissement diffusible inscrit au répertoire Sirene."
     tags:
       - "Informations générales"
-    attributes: *insee_adresse_etablissement_attributes_diffusible
+    attributes: *insee_adresse_etablissement_attributes
 
   unite_legale:
     title: "Données unité légale"
     description: "Informations de référence d'une unité légale (entreprise, association ou administration) inscrite au répertoire Sirene. Toutes les unités légales sont appelables, y compris les non-diffusibles."
     tags:
       - "Informations générales"
-    attributes: *insee_unite_legale_attributes
+    attributes: &insee_unite_legale_attributes
+      <<: *shared_insee_unite_legale_attributes
+      date_cessation:
+        title: "Date de cessation de l'unité légale"
+        type: "integer"
+        nullable: true
+        example: 1634133818
+        description: "Cette valeur est renvoyée sous format timestamp. Si l'entreprise est juridique active, cette valeur est à 'null'."
     links:
       siege_social:
         type: "string"
@@ -992,16 +597,221 @@ insee:
     description: "Informations de référence d'une unité légale (entreprise, association ou administration) diffusible, inscrite au répertoire Sirene."
     tags:
       - "Informations générales"
-    attributes: *insee_unite_legale_attributes_diffusible
+    attributes:
+      <<: *insee_unite_legale_attributes
+      diffusable_commercialement:
+        title: "Diffusible commercialement"
+        type: "boolean"
+        example: true
+        enum:
+          - true
+        description: "Détermine si l'unité légale est une entité non-diffusible. Cette API n'appelant pas les non-diffusible, cette valeur est toujours à 'true'. Pour récupérer des unités légales non-diffusible, référez-vous à la documentation de l'API /insee/unites_legales/:siren"
 
   etablissement:
     title: "Données établissement"
     description: "Informations générales concernant un établissement inscrit au répertoire Sirene. Tous les établissements sont appelables, y compris les non-diffusibles."
     tags:
       - "Informations générales"
-    attributes: *insee_etablissement_attributes
+    attributes: &insee_etablissement_attributes
+      siret:
+        title: "Siret de l'établissement"
+        type: "string"
+        example: "30613890001294"
+        description: "Il peut arriver que le siret renvoyé soit différent du paramètre d'appel. Il s'agit d'une erreur généralement temporaire dans la base de données Sirene."
+      siege_social:
+        type: "boolean"
+        example: true
+        enum:
+          - true
+          - false
+        description: "Indique si l'établissement est le siège social de l'entreprise."
+      etat_administratif:
+        title: "État administratif de l'établissement"
+        type: "string"
+        example: 'A'
+        enum:
+          - "A"
+          - "F"
+        description:
+          "Cette valeur décrit l'état administratif de l'établissement, qui peut être :
+          \n
+          \n
+          - actif. Sauf exception, lors de son inscription au répertoire, tout établissement est à l'état 'actif'
+
+          \n
+          - fermé. Cet état découle de la prise en compte d'une déclaration de fermeture. Un établissement fermé peut être rouvert.
+          \n
+          \n
+          Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/etatAdministratifEtablissement"
+      date_fermeture:
+        title: "Date de fermeture de l'établissement"
+        type: "integer"
+        nullable: true
+        example: 1634133818
+        description: "Cette valeur est renvoyée sous format timestamp"
+      activite_principale:
+        title: "Attributs de l'activité principale"
+        type: "object"
+        properties:
+          code:
+            title: "Code de l'activité principale (APE) de l'établissement"
+            type: "string"
+            example: "8411Z"
+            description: "Le code APE (activité principale exercée) permet d'identifier la branche d'activité principale. Il est attribué par l'Insee lors de l'immatriculation ou la déclaration d'activité de l'entreprise. Ce code de 4 chiffres + 1 lettre est extrait de la nomenclature d'activité française (NAF) de l'Insee.
+            \n
+            \n
+            À noter qu'un établissement n'ayant pas encore de code APE peut se voir affecter la valeur '00.00Z' de manière provisoire.
+            \n
+            \n
+            Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
+            Nomemclature d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2120875"
+          libelle:
+            title: "Libellé associé au code APE"
+            type: "string"
+            nullable: true
+            example: "Administration publique générale"
+            description:
+              "Libellé associé au code APE. Si le code n'est pas renseigné dans la nomenclature 'Naf Rév2' (nomenclature en vigueur), le libellé n'est pas renseigné ici. Si le code ne correspond à aucun libellé au sein de la nomenclature 'Naf Rév2', la valeur 'non référencé' est utilisée.
+              \n
+              \n
+              Nomemclature d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2406147"
+          nomenclature:
+            title: "Nomenclature associée au code"
+            type: "string"
+            example: "NAFRev2"
+            description:
+              "Ce champ indique le nom de la nomenclature associée au code APE."
+      tranche_effectif_salarie:
+        type: "object"
+        title: "Tranche d'effectif salarié de l'établissement"
+        description: "Pour environ la moitié des établissements, la tranche d'effectif salarié n'est pas renseignée. Il s'agit principalement d'établissements récents (créés il y a moins de trois ans). Les délais de récolte et traitement font que les valeurs indiquées datent de l’année N-2 ou N-3."
+        properties:
+          code:
+            title: "Code effectif"
+            type: "string"
+            nullable: true
+            example: "51"
+            description: "Le code effectif correspond à la tranche d'effectif salarié de l'établissement :
+              \n
+              \n
+              - NN : Unités non employeuses (pas de salarié au cours de l'année de référence et pas d'effectif au 31/12). Cette tranche peut contenir quelques effectifs inconnus
+              \n
+              - 00 : 0 salarié (n'ayant pas d'effectif au 31/12 mais ayant employé des salariés au cours de l'année de référence)
+              \n
+              - 01 : 1 ou 2 salariés
+              \n
+              - 02 : 3 à 5 salariés
+              \n
+              - 03 : 6 à 9 salariés
+              \n
+              - 11 : 10 à 19 salariés
+              \n
+              - 12 : 20 à 49 salariés
+              \n
+              - 21 : 50 à 99 salariés
+              \n
+              - 22 : 100 à 199 salariés
+              \n
+              - 31 : 200 à 249 salariés
+              \n
+              - 32 : 250 à 499 salariés
+              \n
+              - 41 : 500 à 999 salariés
+              \n
+              - 42 : 1 000 à 1 999 salariés
+              \n
+              - 51 : 2 000 à 4 999 salariés
+              \n
+              - 52 : 5 000 à 9 999 salariés
+              \n
+              - 53 : 10 000 salariés et plus
+              \n
+              \n
+              Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/tefen.
+              \n
+              \n
+              L'effectif mensuel exact de l'établissement est disponible au travers de l'[API Effectifs - URSSAF Caisse nationale](TODO). Si votre jeton contient ce droit d'accès, nous vous recommandons d'utiliser cette API. Ces données étant protégées, leur cadre d'utilisation est différent de la tranche effectif fournie par l'Insee, qui elle est une donnée publique."
+            enum:
+            - "NN"
+            - "00"
+            - "01"
+            - "02"
+            - "03"
+            - "11"
+            - "12"
+            - "21"
+            - "22"
+            - "31"
+            - "32"
+            - "41"
+            - "42"
+            - "51"
+            - "52"
+            - "53"
+          intitule:
+            title: "Intitulé associé au code effectif"
+            type: "string"
+            nullable: true
+            example: "2 000 à 4 999 salariés"
+          date_reference:
+            title: "Date de référence de l'effectif"
+            type: "string"
+            nullable: true
+            example: "2016"
+          de:
+            title: "Seuil inférieur de la tranche effectif"
+            type: "integer"
+            example: 2000
+            nullable: true
+          a:
+            title: "Seuil supérieur de la tranche effectif"
+            type: "integer"
+            example: 4999
+            nullable: true
+      diffusable_commercialement:
+        title: "Diffusable commercialement"
+        type: "boolean"
+        example: true
+        enum:
+          - true
+          - false
+        description: "Indique si l'établissement est :
+          \n
+          \n
+          - diffusible : 'true'
+          \n
+          - non-diffusible : 'false'. Dans ce cas, les
+          informations obtenues ne doivent en aucun cas être accessibles
+          au grand public.
+          \n
+          \n
+          Plus d'informations sur les conditions de diffusion : LIEN TODO"
+
+      enseigne:
+        title: "Enseigne de l'établissement"
+        type: "string"
+        nullable: true
+        description: "L'enseigne est l'appellation désignant l'emplacement ou le local dans lequel est exercée l'activité. Un établissement peut posséder une enseigne, plusieurs enseignes ou aucune.
+          \n
+          \n
+          Cette variable est la concaténation séparée par des virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement"
+        example: "Coiff Land, CoiffureLand"
+
+      unite_legale:
+        type: "object"
+        title: "Unité légale de l'établissement"
+        properties: *shared_insee_unite_legale_attributes
+
+      adresse:
+        type: "object"
+        title: "Adresse de l'établissement"
+        properties: *insee_adresse_etablissement_attributes
+
+      date_creation: *insee_date_creation
+
     links:
       unite_legale: *link_unite_legale
+
     meta:
       date_derniere_mise_a_jour: *insee_date_derniere_mise_a_jour
       redirect_from_siret:
@@ -1022,8 +832,15 @@ insee:
     description: "Informations générales concernant un établissement diffusible inscrit au répertoire Sirene."
     tags:
       - "Informations générales"
-    attributes: *insee_etablissement_attributes_diffusible
-
+    attributes:
+      <<: *insee_etablissement_attributes
+      diffusable_commercialement:
+        title: "Diffusable commercialement"
+        type: 'boolean'
+        example: true
+        enum:
+          - true
+        description: "Détermine si l'établissement est non-diffusible. Cette API n'appelant pas les non-diffusible, cette valeur est toujours à 'true'. Pour récupérer des établissements non-diffusibles, référez-vous à la documentation de l'API /insee/etablissements/:siren"
   siege_unite_legale:
     title: "Données siège social"
     description: "Informations générales concernant le siège social d'une unité légale inscrite au répertoire Sirene. Tous les sièges sociaux sont appelables, y compris les non-diffusibles."

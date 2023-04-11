@@ -8,6 +8,6 @@ class INSEE::UniteLegaleDiffusable::ValidateResponse < INSEE::UniteLegale::Valid
   private
 
   def non_diffusable?
-    %w[N].include?(json_body['uniteLegale']['statutDiffusionUniteLegale'])
+    %w[N P].include?(json_body['uniteLegale']['statutDiffusionUniteLegale'])
   end
 end

@@ -28,7 +28,6 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
       its(:etat_administratif) { is_expected.to eq('A') }
       its(:date_fermeture) { is_expected.to be_nil }
       its(:enseigne) { is_expected.to be_nil }
-      its(:type) { is_expected.to eq(:personne_morale) }
 
       its(:activite_principale) do
         is_expected.to eq({

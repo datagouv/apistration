@@ -23,9 +23,9 @@ RSpec.describe INSEE::EtablissementDiffusable::ValidateResponse, type: :validate
     context 'when it is a partial diffusable etablissement' do
       let(:diffusable) { 'P' }
 
-      it { is_expected.to be_a_success }
+      it { is_expected.to be_a_failure }
 
-      its(:errors) { is_expected.to be_empty }
+      its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
     end
 
     context 'when it is a diffusable etablissement' do
