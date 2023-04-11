@@ -8,7 +8,7 @@ class INSEE::SiegeDiffusableUniteLegale::ValidateResponse < INSEE::SiegeUniteLeg
   private
 
   def siege_non_diffusable?
-    %w[N P].include?(etablissement['statutDiffusionEtablissement'])
+    %w[N].include?(etablissement['statutDiffusionEtablissement'])
   end
 
   def etablissement

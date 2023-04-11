@@ -76,4 +76,39 @@ RSpec.describe Resource do
       )
     end
   end
+
+  describe 'deep_merge' do
+    subject { instance.deep_merge!(to_nil) }
+
+    let(:params) do
+      {
+        id: 'id',
+        payload: {
+          key: 'value',
+          key1: 'value1'
+        }
+      }
+    end
+
+    let(:to_nil) do
+      {
+        id: nil,
+        payload: {
+          key: nil
+        }
+      }
+    end
+
+    it 'replaces deep values with a deep merge' do
+      expect(subject).to eq(
+        {
+          id: nil,
+          payload: {
+            key: nil,
+            key1: 'value1'
+          }
+        }
+      )
+    end
+  end
 end

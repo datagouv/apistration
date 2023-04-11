@@ -32,9 +32,9 @@ RSpec.describe INSEE::SiegeDiffusableUniteLegale::ValidateResponse, type: :valid
       context 'when etablissement is partial diffusable' do
         let(:status_diffusion) { 'P' }
 
-        it { is_expected.to be_a_failure }
+        it { is_expected.to be_a_success }
 
-        its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+        its(:errors) { is_expected.to be_empty }
       end
 
       context 'when etablissement is not diffusable' do

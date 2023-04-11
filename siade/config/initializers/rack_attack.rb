@@ -22,6 +22,10 @@ class Rack::Attack
 
     private
 
+    def api_particulier_json_resources_config
+      throttle_config.fetch(:api_particulier_json_resources)
+    end
+
     def low_latency_documents_config
       throttle_config.fetch(:low_latency_documents)
     end
@@ -59,6 +63,8 @@ class Rack::Attack
     rate_limiting_service.blacklisted_access?(req)
   end
 
+
+  throttle_zone(zone_name: 'api_particulier_json_resources', **api_particulier_json_resources_config)
   throttle_zone(zone_name: 'low_latency_docs', **low_latency_documents_config)
   throttle_zone(zone_name: 'json_resources', **json_resources_config)
 

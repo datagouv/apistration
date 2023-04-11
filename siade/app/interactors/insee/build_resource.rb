@@ -1,6 +1,12 @@
 class INSEE::BuildResource < BuildResource
   protected
 
+  STATUT_DIFFUSION = {
+    'O' => :diffusible,
+    'N' => :non_diffusible,
+    'P' => :partiellement_diffusible
+  }.freeze
+
   def date_to_timestamp(value)
     return if value.nil?
 
