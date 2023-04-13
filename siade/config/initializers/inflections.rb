@@ -31,6 +31,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'SVAIR'
   inflect.acronym 'SSL'
   inflect.acronym 'VIES'
+  inflect.acronym 'IR'
 
   inflect.acronym 'ACOSS'
   inflect.acronym 'ADEME'
