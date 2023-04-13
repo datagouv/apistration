@@ -21,5 +21,6 @@ namespace '/api', constraints: APIParticulierDomainConstraint.new do
     get 'scolarites' => '/api_particulier/v2/mesri/scolarites#show'
     get 'etudiants-boursiers' => '/api_particulier/v2/cnous/student_scholarship#show'
     get 'avis-imposition' => '/api_particulier/v2/dgfip/svair#show'
+    get 'avis-imposition-migration' => '/api_particulier/v2/dgfip/derniere_situation_ir#show'
   end
 end

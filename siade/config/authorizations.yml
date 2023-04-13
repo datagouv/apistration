@@ -148,7 +148,7 @@ shared:
     - cnous_statut_bourse
     - cnous_ville_etudes
     - cnous_identite
-  api_particulier/v2/dgfip/svair:
+  api_particulier/v2/dgfip/svair: &api_particulier_v2_dgfip_svair
     - dgfip_declarant1_nom
     - dgfip_declarant1_nom_naissance
     - dgfip_declarant1_prenoms
@@ -173,6 +173,7 @@ shared:
     - dgfip_annee_revenus
     - dgfip_erreur_correctif
     - dgfip_situation_partielle
+  api_particulier/v2/dgfip/derniere_situation_ir: *api_particulier_v2_dgfip_svair
   api_particulier/v2/mesri/student_status:
     - mesri_identifiant
     - mesri_identite
