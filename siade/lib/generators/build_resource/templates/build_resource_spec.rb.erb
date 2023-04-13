@@ -1,10 +1,10 @@
 RSpec.describe <%= name %>::BuildResource, type: :build_resource do
-  subject { described_class.call(response: response) }
+  subject { described_class.call(response:) }
 
-  let(:response) { instance_double('Net::HTTPOK', body: body) }
+  let(:response) { instance_double(Net::HTTPOK, body:) }
 
   let(:body) do
-    <%= name %>::MakeRequest.call(params: params).response.body
+    <%= name %>::MakeRequest.call(params:).response.body
   end<% if id_name %>
 
   let(:params) do
