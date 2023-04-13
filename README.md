@@ -172,6 +172,10 @@ bundle exec ruby bin/reload_mock_backend.rb
 
 Si vous êtes développeur, référez-vous à la section [Développement](#developpement) ci-dessous.
 
+Si vous êtes un fournisseur de données et que vous voulez ajouter des données
+d'une API non existante encore, veuillez vous réferer au dossier
+[future_payloads](./future_payloads).
+
 Si ce n'est pas le cas, il y a deux cas de figures:
 
 1. Le dossier associé au endpoint que vous voulez n'existe pas : ouvrez un
