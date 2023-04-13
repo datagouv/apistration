@@ -24,29 +24,29 @@ RSpec.describe DGFIP::DerniereSituationIR::BuildResource, type: :build_resource 
           dateNaissance: '30/09/1945'
         },
         declarant2: {
-          nom: nil,
+          nom: '',
           nomNaissance: 'CIS VINGTSEPT',
           prenoms: 'PRENOM GABIN',
           dateNaissance: '06/11/1973'
         },
         foyerFiscal: {
           adresse: '55 BOULEVARD MARCELLIN BERTHELOT 13200 ARLES',
-          annee: 2021
+          annee: 2022
         },
         dateRecouvrement: '31/07/2022',
         dateEtablissement: '07/07/2022',
         nombreParts: 6.75,
-        situationFamille: 'Pacsé(e)',
+        situationFamille: 'Pacsé(e)s',
         revenuBrutGlobal: 13_070,
         revenuImposable: 10_586,
         impotRevenuNetAvantCorrections: 99,
-        montantImpot: -36,
+        montantImpot: nil,
         revenuFiscalReference: 33_640,
         nombrePersonnesCharge: 5,
         anneeImpots: '2022',
         anneeRevenus: '2021',
-        erreurCorrectif: nil,
-        situationPartielle: nil
+        erreurCorrectif: '',
+        situationPartielle: ''
       }
     end
 
