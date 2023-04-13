@@ -80,6 +80,7 @@ VCR.configure do |c|
   c.register_request_matcher :headers_sanitized do |request, registered_request|
     headers_to_ignore = %w[
       User-Agent
+      X-Correlation-Id
     ]
 
     bool = request.headers.except(*headers_to_ignore) == registered_request.headers.except(*headers_to_ignore)
