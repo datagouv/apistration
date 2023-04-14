@@ -970,7 +970,7 @@ paths:
 
         **Paramètres d'appel :** Pour appeler l'API statut boursier, deux modes d'appel sont possibles :
          - INE, l'identifiant national étudiant ;
-         - l'état civil de l'étudiant: nom, prénom, date de naissance, sexe et lieu de naissance.
+         - l'état civil de l'étudiant: nom, prénom, date de naissance, sexe (optionnel) et lieu de naissance (optionnel).
 
         **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnous_student_scholarship)
       responses:
