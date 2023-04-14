@@ -49,7 +49,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
     end
   end
 
-  context 'without bith place' do
+  context 'without birth place' do
     let(:birth_place) { nil }
 
     before do
