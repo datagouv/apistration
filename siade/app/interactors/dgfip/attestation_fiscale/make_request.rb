@@ -12,7 +12,7 @@ class DGFIP::AttestationFiscale::MakeRequest < DGFIP::AbstractMakeRequest
     }
   end
 
-  def timeout_http_options
+  def extra_http_start_options
     {
       open_timeout: 15,
       read_timeout: 15
