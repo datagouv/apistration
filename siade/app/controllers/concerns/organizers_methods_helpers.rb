@@ -17,6 +17,8 @@ module OrganizersMethodsHelpers
       :not_found
     elsif at_least_one_error_kind_of?(:provider_error, retriever)
       :bad_gateway
+    elsif at_least_one_error_kind_of?(:conflict, retriever)
+      :conflict
     elsif at_least_one_error_kind_of?(:internal_error, retriever)
       :internal_error
     else

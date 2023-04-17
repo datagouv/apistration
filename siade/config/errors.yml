@@ -37,6 +37,10 @@
   title: 'Contenu partiel'
   detail: "Des données n'ont pas pu être récupérées auprès d'un ou plusieurs fournisseurs."
 
+- subcode: '015'
+  title: 'Conflit'
+  detail: 'Plusieurs ressources correspondent aux critères'
+
 - subcode: '020'
   title: 'Maintenance du fournisseur de données'
 
