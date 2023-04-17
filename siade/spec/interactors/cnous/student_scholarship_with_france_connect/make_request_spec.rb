@@ -12,11 +12,10 @@ RSpec.describe CNOUS::StudentScholarshipWithFranceConnect::MakeRequest, type: :m
       headers: {
         'Authorization' => "Bearer #{token}"
       }
+    ).to_return(
+      status: 200,
+      body: cnous_valid_payload('france_connect').to_json
     )
-      .to_return(
-        status: 200,
-        body: Rails.root.join('spec/fixtures/payloads/cnous/student_scholarship_valid_response.json').read
-      )
   end
 
   it { is_expected.to be_a_success }

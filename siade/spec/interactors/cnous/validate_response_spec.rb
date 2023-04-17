@@ -9,8 +9,8 @@ RSpec.describe CNOUS::ValidateResponse, type: :validate_response do
     context 'with a valid code' do
       let(:code) { '200' }
 
-      context 'with data in payload' do
-        let(:body) { Rails.root.join('spec/fixtures/payloads/cnous/student_scholarship_valid_response.json').read }
+      context 'with valid data' do
+        let(:body) { cnous_valid_payload('ine').to_json }
 
         it { is_expected.to be_a_success }
 

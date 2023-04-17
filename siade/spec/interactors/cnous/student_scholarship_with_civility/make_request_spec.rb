@@ -34,7 +34,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
         }
       ).to_return(
         status: 200,
-        body: open_payload_file('cnous/student_scholarship_valid_response.json')
+        body: cnous_valid_payload('civility').to_json
       )
     end
 
@@ -65,7 +65,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
         }
       ).to_return(
         status: 200,
-        body: open_payload_file('cnous/student_scholarship_valid_response.json')
+        body: cnous_valid_payload('civility').to_json
       )
     end
 

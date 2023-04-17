@@ -8,7 +8,7 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
   end
 
   context 'when response has a json birthPlace key' do
-    let(:body) { Rails.root.join('spec/fixtures/payloads/cnous/student_scholarship_valid_response.json').read }
+    let(:body) { read_payload_file('cnous/student_scholarship_valid_response.json') }
 
     it { is_expected.to be_a_success }
 
@@ -40,7 +40,7 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
   end
 
   context 'when response has a null birthPlace key (takes birthPlaceLibelle instead)' do
-    let(:body) { Rails.root.join('spec/fixtures/payloads/cnous/student_scholarship_valid_response_without_birthplace.json').read }
+    let(:body) { read_payload_file('cnous/student_scholarship_valid_response_without_birthplace.json') }
 
     it { is_expected.to be_a_success }
 
