@@ -295,7 +295,7 @@ GEM
       rubocop (~> 1.41)
     rubocop-checkstyle_formatter (0.6.0)
       rubocop (>= 1.14.0)
-    rubocop-rails (2.19.0)
+    rubocop-rails (2.19.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
