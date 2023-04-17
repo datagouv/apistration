@@ -1,6 +1,14 @@
 class INSEE::FilterPartiallyDiffusableResource < ApplicationInteractor
   class ResourceNotDefined < NotImplementedError; end
 
+  def self.inherited(klass)
+    klass.class_eval do
+      around do |interactor|
+        interactor.call unless staging?
+      end
+    end
+  end
+
   def call
     filter_resource! if partiellement_diffusible?
   end
