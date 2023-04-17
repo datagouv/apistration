@@ -1075,6 +1075,23 @@ paths:
                     example: Carnot
         "401": *a6
         "404": *a15
+        "409":
+          description: Des doublons ont été trouvé, merci d'affiner vos critères.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: conflict
+                  reason:
+                    type: string
+                    example: Plusieurs ressources correspondent aux critères
+                  message:
+                    type: string
+                    example: Plusieurs ressources correspondent aux critères
+
         "500": *a8
         "503": *a10
   /api/ping:

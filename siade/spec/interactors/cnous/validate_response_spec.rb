@@ -10,11 +10,46 @@ RSpec.describe CNOUS::ValidateResponse, type: :validate_response do
       let(:code) { '200' }
 
       context 'with valid data' do
-        let(:body) { cnous_valid_payload('ine').to_json }
+        context 'when data is a single element (from INE endpoint)' do
+          let(:body) { cnous_valid_payload('ine').to_json }
 
-        it { is_expected.to be_a_success }
+          it { is_expected.to be_a_success }
 
-        its(:errors) { is_expected.to be_empty }
+          its(:errors) { is_expected.to be_empty }
+        end
+
+        context 'when data is an array (from civility endpoint)' do
+          context 'when there is only one element' do
+            let(:body) { cnous_valid_payload('civility').to_json }
+
+            it { is_expected.to be_a_success }
+
+            its(:errors) { is_expected.to be_empty }
+          end
+
+          context 'when there are multiple elements' do
+            let(:body) do
+              [
+                read_payload_file('cnous/student_scholarship_valid_response.json'),
+                read_payload_file('cnous/student_scholarship_valid_response.json')
+              ].to_json
+            end
+
+            it { is_expected.to be_a_failure }
+
+            its(:errors) { is_expected.to include(instance_of(ConflictError)) }
+
+            it 'captures error in monitoring' do
+              expect(MonitoringService.instance).to receive(:track).with(
+                'error',
+                anything,
+                { ine: 'dummy ine' }
+              )
+
+              call
+            end
+          end
+        end
       end
 
       context 'with invalid body' do

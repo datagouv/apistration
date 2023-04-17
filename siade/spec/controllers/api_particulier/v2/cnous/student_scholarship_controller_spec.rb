@@ -109,6 +109,19 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
 
       its(:status) { is_expected.to eq(400) }
     end
+
+    describe 'when it is a 409' do
+      let(:scopes) { all_scopes }
+
+      before do
+        stub_request(:post, /#{cnous_url_for('civility')}/).to_return(
+          status: 200,
+          body: [cnous_valid_payload('civility'), cnous_valid_payload('civility')].to_json
+        )
+      end
+
+      its(:status) { is_expected.to eq(409) }
+    end
   end
 
   describe 'with france connect token' do

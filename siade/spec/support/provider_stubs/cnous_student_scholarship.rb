@@ -10,8 +10,10 @@ module ProviderStubs::CNOUSStudentScholarship
     )
   end
 
-  def cnous_valid_payload(_endpoint)
-    JSON.parse(read_payload_file('cnous/student_scholarship_valid_response.json'))
+  def cnous_valid_payload(endpoint)
+    valid_json_entry = JSON.parse(read_payload_file('cnous/student_scholarship_valid_response.json'))
+
+    endpoint == 'civility' ? [valid_json_entry] : valid_json_entry
   end
 
   def cnous_url_for(kind)
