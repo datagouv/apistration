@@ -15,8 +15,8 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken::ValidateResponse, t
       its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
     end
 
-    context 'with a 401 code' do
-      let(:code) { '401' }
+    context 'with a 400 code' do
+      let(:code) { '400' }
 
       context 'when error said token is malformed' do
         let(:body) do
@@ -30,6 +30,10 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken::ValidateResponse, t
 
         its(:errors) { is_expected.to include(instance_of(InvalidFranceConnectAccessTokenError)) }
       end
+    end
+
+    context 'with a 401 code' do
+      let(:code) { '401' }
 
       context 'when error said token is not found or expired' do
         let(:body) do

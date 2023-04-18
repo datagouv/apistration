@@ -10,15 +10,34 @@ module ProviderStubs::FranceConnect
     )
   end
 
-  def mock_invalid_france_connect_checktoken
+  def mock_invalid_france_connect_checktoken(kind = :expired_or_not_found)
     stub_request(:post, Siade.credentials[:france_connect_sandbox_check_token_url]).to_return(
-      status: 401,
-      body: {
-        status: 'fail',
-        message: 'token_not_found_or_expired'
-      }.to_json
+      extract_france_connect_checktoken_error(kind)
     )
   end
+
+  # rubocop:disable Metrics/MethodLength
+  def extract_france_connect_checktoken_error(kind)
+    case kind
+    when :expired_or_not_found
+      {
+        status: 401,
+        body: {
+          status: 'fail',
+          message: 'token_not_found_or_expired'
+        }.to_json
+      }
+    when :malformed
+      {
+        status: 400,
+        body: {
+          status: 'fail',
+          message: 'Malformed access token.'
+        }.to_json
+      }
+    end
+  end
+  # rubocop:enable Metrics/MethodLength
 
   def france_connect_checktoken_payload(scopes: nil)
     {

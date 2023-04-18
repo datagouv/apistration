@@ -40,10 +40,20 @@ RSpec.describe APIParticulierController, 'france connectable' do
 
     context 'when it is not a valid france connect token' do
       before do
-        mock_invalid_france_connect_checktoken
+        mock_invalid_france_connect_checktoken(kind)
       end
 
-      its(:status) { is_expected.to eq(401) }
+      context 'when it is expired or not found' do
+        let(:kind) { :expired_or_not_found }
+
+        its(:status) { is_expected.to eq(401) }
+      end
+
+      context 'when it is malformed' do
+        let(:kind) { :malformed }
+
+        its(:status) { is_expected.to eq(401) }
+      end
     end
 
     context 'when it is a valid france connect token' do

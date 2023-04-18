@@ -1,6 +1,6 @@
 class FranceConnect::DataFetcherThroughAccessToken::ValidateResponse < ValidateResponse
   def call
-    handle_unauthorized if http_unauthorized?
+    handle_invalid_token_error if [400, 401].include?(http_code)
     unknown_provider_response! if invalid_json?
     fail_for_insufficient_privileges! unless scopes_include_hub_identity?
 
@@ -16,7 +16,7 @@ class FranceConnect::DataFetcherThroughAccessToken::ValidateResponse < ValidateR
       (hub_identity_scopes - scopes_flatten_without_aliases).empty?
   end
 
-  def handle_unauthorized
+  def handle_invalid_token_error
     case error_message
     when /Malformed/
       fail_with_error!(InvalidFranceConnectAccessTokenError.new(:malformed_token))

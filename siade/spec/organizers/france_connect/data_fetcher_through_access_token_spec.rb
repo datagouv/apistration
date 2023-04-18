@@ -48,11 +48,23 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken, type: :retriever_or
 
   context 'with invalid token' do
     before do
-      mock_invalid_france_connect_checktoken
+      mock_invalid_france_connect_checktoken(kind)
     end
 
-    it { is_expected.to be_a_failure }
+    context 'when it is expired or not found' do
+      let(:kind) { :expired_or_not_found }
 
-    its(:errors) { is_expected.to include(instance_of(InvalidFranceConnectAccessTokenError)) }
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(InvalidFranceConnectAccessTokenError)) }
+    end
+
+    context 'when it is malformed' do
+      let(:kind) { :malformed }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(InvalidFranceConnectAccessTokenError)) }
+    end
   end
 end
