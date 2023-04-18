@@ -63,6 +63,9 @@ parameters:
       siret_entrepreneur_individuel:
         value: "38983993700015"
         summary: SIRET d'un entrepreneur individuel (fermé)
+      siret_ademe:
+        value: "42878198300039"
+        summary: SIRET pour ADEME RGE
 
   siret_or_rna:
     description: "Siret de l'association ou le numéro RNA"
