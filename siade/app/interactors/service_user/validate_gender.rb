@@ -1,6 +1,6 @@
 class ServiceUser::ValidateGender < ValidateParamInteractor
   def call
-    invalid_param!(:gender) if param(:gender).blank?
+    return invalid_param!(:gender) if param(:gender).blank?
 
     return if %w[m f].include?(param(:gender).downcase)
 

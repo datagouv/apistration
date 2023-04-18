@@ -54,6 +54,14 @@ RSpec.describe MESRI::StudentStatus::WithCivility::ValidateParams, type: :valida
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
+  context 'without gender' do
+    let(:gender) { nil }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+  end
+
   context 'with invalid birthday date' do
     let(:birth_date) { 'lol' }
 
