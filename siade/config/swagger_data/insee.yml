@@ -195,6 +195,14 @@ insee:
         \n
         \n
         Définition de 'catégorie d'entreprise' par l'Insee : https://www.insee.fr/fr/metadonnees/definition/c1057"
+    status_diffusion:
+      title: "Statut de la diffusion"
+      type: "string"
+      enum:
+        - "diffusible"
+        - "partiellement_diffusible"
+        - "non_diffusible"
+      description: "Indique si l'unite légale est diffusable, partiellement diffusable ou non diffusable"
     diffusable_commercialement:
       title: "Diffusable commercialement"
       type: "boolean"
@@ -204,14 +212,13 @@ insee:
         \n
         - une unité légale diffusible : 'true'
         \n
-        - partiellement-diffusible : 'true'. Dans ce cas, les informations obtenues peuvent être masquées par la chaîne de caractère '[ND]'
-        \n
-        - une unité légale non-diffusible : 'false'. Dans ce cas, les
+        - partiellement-diffusible : 'false'. Dans ce cas, les
         informations obtenues ne doivent en aucun cas être accessibles
         au grand public.
         \n
-        \n
-        Plus d'informations sur les conditions de diffusion : LIEN TODO"
+        - une unité légale non-diffusible : 'false'. Dans ce cas, les
+        informations obtenues ne doivent en aucun cas être accessibles
+        au grand public."
     forme_juridique:
       type: "object"
       title: "Attributs de la forme juridique"
@@ -457,6 +464,20 @@ insee:
     <<: *shared_insee_unite_legale_attributes
     personne_morale_attributs: *personne_morale_attributes_diffusible
     personne_physique_attributs: *personne_physique_attributes_diffusible
+    diffusable_commercialement:
+      title: "Diffusable commercialement"
+      type: "boolean"
+      example: true
+      description: "Indique si l'unité légale est :
+        \n
+        \n
+        - une unité légale diffusible : 'true'
+        \n
+        - partiellement-diffusible : 'true'. Dans ce cas, les informations obtenues peuvent être masquées par la chaîne de caractère '[ND]'
+        \n
+        - une unité légale non-diffusible : 'false'. Dans ce cas, les
+        informations obtenues ne doivent en aucun cas être accessibles
+        au grand public."
 
   insee_unite_legale_attributes: &insee_unite_legale_attributes
     <<: *shared_insee_unite_legale_attributes
@@ -475,13 +496,6 @@ insee:
       nullable: true
       example: 1634133818
       description: "Cette valeur est renvoyée sous format timestamp. Si l'entreprise est juridique active, cette valeur est à 'null'."
-    diffusable_commercialement:
-      title: "Diffusible commercialement"
-      type: "boolean"
-      example: true
-      enum:
-        - true
-      description: "Détermine si l'unité légale est une entité non-diffusible. Cette API n'appelant pas les non-diffusible, cette valeur est toujours à 'true'. Pour récupérer des unités légales non-diffusible, référez-vous à la documentation de l'API /insee/unites_legales/:siren"
 
   insee_adresse_etablissement_attributes: &insee_adresse_etablissement_attributes
     numero_voie: &insee_adresse_etablissement_numero_voie_property
@@ -583,7 +597,14 @@ insee:
       type: "string"
       nullable: true
       example: "ROYAUME-UNI"
-
+    status_diffusion:
+      title: "Statut de la diffusion"
+      type: "string"
+      enum:
+        - "diffusible"
+        - "partiellement_diffusible"
+        - "non_diffusible"
+      description: "Indique si l'établissement rattaché est diffusable, partiellement diffusable ou non diffusable"
     acheminement_postal: &adresse_etablissement_acheminement_postal_property
       type: "object"
       title: "Éléments constitutifs de l'adresse postale pour son acheminement."
@@ -867,6 +888,14 @@ insee:
           type: "integer"
           example: 4999
           nullable: true
+    status_diffusion:
+      title: "Statut de la diffusion"
+      type: "string"
+      enum:
+        - "diffusible"
+        - "partiellement_diffusible"
+        - "non_diffusible"
+      description: "Indique si l'établissement est diffusable, partiellement diffusable ou non diffusable"
     diffusable_commercialement:
       title: "Diffusable commercialement"
       type: "boolean"
@@ -879,14 +908,13 @@ insee:
         \n
         - diffusible : 'true'
         \n
-        - partiellement-diffusible : 'true'. Dans ce cas, les informations obtenues peuvent être masquées par la chaîne de caractère '[ND]'
-        \n
-        - non-diffusible : 'false'. Dans ce cas, les
+        - partiellement-diffusible : 'false'. Dans ce cas, les
         informations obtenues ne doivent en aucun cas être accessibles
         au grand public.
         \n
-        \n
-        Plus d'informations sur les conditions de diffusion : LIEN TODO"
+        - non-diffusible : 'false'. Dans ce cas, les
+        informations obtenues ne doivent en aucun cas être accessibles
+        au grand public."
     enseigne: &insee_etabliseement_enseigne_property
       title: "Enseigne de l'établissement"
       type: "string"
@@ -926,11 +954,21 @@ insee:
         Cette valeur est masquée à [ND] si l'unité légale correspond à une personne morale non-diffusible."
     diffusable_commercialement:
       title: "Diffusable commercialement"
-      type: 'boolean'
+      type: "boolean"
       example: true
       enum:
         - true
-      description: "Détermine si l'établissement est non-diffusible. Cette API n'appelant pas les non-diffusible, cette valeur est toujours à 'true'. Pour récupérer des établissements non-diffusibles, référez-vous à la documentation de l'API /insee/etablissements/:siren"
+        - false
+      description: "Indique si l'établissement est :
+        \n
+        \n
+        - diffusible : 'true'
+        \n
+        - partiellement-diffusible : 'true'. Dans ce cas, les informations obtenues peuvent être masquées par la chaîne de caractère '[ND]'
+        \n
+        - non-diffusible : 'false'. Dans ce cas, les
+        informations obtenues ne doivent en aucun cas être accessibles
+        au grand public."
 
 insee:
   adresse_etablissement:

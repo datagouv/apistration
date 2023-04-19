@@ -10,6 +10,7 @@ class APIEntreprise::INSEE::AdresseEtablissementSerializer::V3 < APIEntreprise::
     :distribution_speciale,
     :code_cedex,
     :libelle_cedex,
+    :status_diffusion,
     :acheminement_postal,
     :libelle_commune_etranger,
     :code_pays_etranger,

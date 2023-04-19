@@ -7,6 +7,10 @@ class INSEE::BuildResource < BuildResource
     'P' => :partiellement_diffusible
   }.freeze
 
+  def diffusable_commercialement(status_diffusion)
+    STATUT_DIFFUSION[status_diffusion] == :diffusible
+  end
+
   def date_to_timestamp(value)
     return if value.nil?
 

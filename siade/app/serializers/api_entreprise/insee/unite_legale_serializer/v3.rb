@@ -6,6 +6,7 @@ class APIEntreprise::INSEE::UniteLegaleSerializer::V3 < APIEntreprise::V3AndMore
     :personne_morale_attributs,
     :personne_physique_attributs,
     :diffusable_commercialement,
+    :status_diffusion,
     :forme_juridique,
     :activite_principale,
     :tranche_effectif_salarie,

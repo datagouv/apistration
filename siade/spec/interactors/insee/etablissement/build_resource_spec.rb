@@ -14,6 +14,21 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
     }
   end
 
+  context 'with a personne physique' do
+    let(:body) { open_payload_file('insee/partially_diffusible_etablissement_personne_physique.json').read }
+
+    it { is_expected.to be_a_success }
+
+    describe 'resource' do
+      subject { organizer.bundled_data.data }
+
+      it { is_expected.to be_a(Resource) }
+
+      its(:diffusable_commercialement) { is_expected.to be(false) }
+      its(:status_diffusion) { is_expected.to be(:partiellement_diffusible) }
+    end
+  end
+
   context 'with an active GE, which is a personne morale', vcr: { cassette_name: 'insee/siret/active_GE' } do
     let(:siret) { sirets_insee_v3[:active_GE] }
 

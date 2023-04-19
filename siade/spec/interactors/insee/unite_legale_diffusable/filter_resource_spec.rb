@@ -4,7 +4,7 @@ RSpec.describe INSEE::UniteLegaleDiffusable::FilterResource, type: :filter_resou
   describe 'with an unite legale response' do
     let(:organizer) { described_class.call(builded_resources) }
 
-    let(:builded_resources) { INSEE::UniteLegale::BuildResource.call(response:) }
+    let(:builded_resources) { INSEE::UniteLegaleDiffusable::BuildUnfilteredResource.call(response:) }
     let(:response) { instance_double(Net::HTTPOK, body:) }
 
     context 'with a personne physique' do
@@ -20,6 +20,8 @@ RSpec.describe INSEE::UniteLegaleDiffusable::FilterResource, type: :filter_resou
         its(:siren) { is_expected.to eq('808861199') }
         its(:siret_siege_social) { is_expected.to eq('80886119900020') }
         its(:type) { is_expected.to eq(:personne_physique) }
+        its(:diffusable_commercialement) { is_expected.to be(true) }
+        its(:status_diffusion) { is_expected.to be(:partiellement_diffusible) }
 
         its(:personne_morale_attributs) do
           is_expected.to eq({
@@ -57,6 +59,8 @@ RSpec.describe INSEE::UniteLegaleDiffusable::FilterResource, type: :filter_resou
         its(:siren) { is_expected.to eq('243400819') }
         its(:siret_siege_social) { is_expected.to eq('24340081900013') }
         its(:type) { is_expected.to eq(:personne_morale) }
+        its(:diffusable_commercialement) { is_expected.to be(true) }
+        its(:status_diffusion) { is_expected.to be(:partiellement_diffusible) }
 
         its(:personne_morale_attributs) do
           is_expected.to eq({

@@ -5,7 +5,7 @@ class INSEE::AdresseEtablissement::BuildResource < INSEE::Etablissement::BuildRe
     {
       siret: etablissement['siret'],
       siren: etablissement['siren'],
-      diffusable_commercialement: STATUT_DIFFUSION[etablissement['statutDiffusionEtablissement']] != :non_diffusible,
+      diffusable_commercialement: diffusable_commercialement(etablissement['statutDiffusionEtablissement']),
       status_diffusion: STATUT_DIFFUSION[etablissement['statutDiffusionEtablissement']],
       complement_adresse: etablissement_address['complementAdresseEtablissement'],
       numero_voie: etablissement_address['numeroVoieEtablissement'],

@@ -1,2 +1,2 @@
-class INSEE::SiegeDiffusableUniteLegale::BuildUnfilteredResource < INSEE::SiegeUniteLegale::BuildResource
+class INSEE::SiegeDiffusableUniteLegale::BuildUnfilteredResource < INSEE::EtablissementDiffusable::BuildUnfilteredResource
 end

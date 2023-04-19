@@ -7,6 +7,7 @@ class APIEntreprise::INSEE::EtablissementSerializer::V3 < APIEntreprise::V3AndMo
     :activite_principale,
     :tranche_effectif_salarie,
     :diffusable_commercialement,
+    :status_diffusion,
     :date_creation
 
   attribute :unite_legale do |object|

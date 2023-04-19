@@ -15,6 +15,24 @@ RSpec.describe INSEE::UniteLegale::BuildResource, type: :build_resource do
       }
     end
 
+    context 'with a partially diffusible personne physique' do
+      let(:body) { open_payload_file('insee/partially_diffusible_unite_legale_personne_physique.json').read }
+
+      it { is_expected.to be_a_success }
+
+      describe 'resource' do
+        subject { organizer.bundled_data.data }
+
+        it { is_expected.to be_a(Resource) }
+
+        its(:siren) { is_expected.to eq('808861199') }
+        its(:siret_siege_social) { is_expected.to eq('80886119900020') }
+        its(:type) { is_expected.to eq(:personne_physique) }
+        its(:diffusable_commercialement) { is_expected.to be(false) }
+        its(:status_diffusion) { is_expected.to be(:partiellement_diffusible) }
+      end
+    end
+
     context 'with an active GE, which is a personne morale', vcr: { cassette_name: 'insee/siren/active_GE' } do
       let(:siren) { sirens_insee_v3[:active_GE] }
 
@@ -29,6 +47,7 @@ RSpec.describe INSEE::UniteLegale::BuildResource, type: :build_resource do
 
         its(:categorie_entreprise) { is_expected.to eq('GE') }
         its(:diffusable_commercialement) { is_expected.to be(true) }
+        its(:status_diffusion) { is_expected.to be(:diffusible) }
 
         its(:type) { is_expected.to eq(:personne_morale) }
 
@@ -100,6 +119,8 @@ RSpec.describe INSEE::UniteLegale::BuildResource, type: :build_resource do
         it { is_expected.to be_a(Resource) }
 
         its(:type) { is_expected.to eq(:personne_physique) }
+        its(:diffusable_commercialement) { is_expected.to be(true) }
+        its(:status_diffusion) { is_expected.to be(:diffusible) }
 
         its(:personne_morale_attributs) do
           is_expected.to eq({

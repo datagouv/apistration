@@ -4,7 +4,7 @@ RSpec.describe INSEE::EtablissementDiffusable::FilterResource, type: :filter_res
   describe 'with an etablissement response' do
     let(:organizer) { described_class.call(builded_resources) }
 
-    let(:builded_resources) { INSEE::Etablissement::BuildResource.call(response:) }
+    let(:builded_resources) { INSEE::EtablissementDiffusable::BuildUnfilteredResource.call(response:) }
     let(:response) { instance_double(Net::HTTPOK, body:) }
 
     context 'with a personne physique' do
@@ -18,6 +18,8 @@ RSpec.describe INSEE::EtablissementDiffusable::FilterResource, type: :filter_res
         it { is_expected.to be_a(Resource) }
 
         its(:enseigne) { is_expected.to eq('[ND]') }
+        its(:diffusable_commercialement) { is_expected.to be(true) }
+        its(:status_diffusion) { is_expected.to be(:partiellement_diffusible) }
 
         its(:adresse) do
           is_expected.to be_a(Resource)
@@ -74,6 +76,8 @@ RSpec.describe INSEE::EtablissementDiffusable::FilterResource, type: :filter_res
         it { is_expected.to be_a(Resource) }
 
         its(:enseigne) { is_expected.to eq('PAE -HM- LA FONTAINE') }
+        its(:diffusable_commercialement) { is_expected.to be(true) }
+        its(:status_diffusion) { is_expected.to be(:partiellement_diffusible) }
 
         its(:adresse) { is_expected.to be_a(Resource) }
 

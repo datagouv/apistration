@@ -28,7 +28,7 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
 
       adresse:,
 
-      diffusable_commercialement: STATUT_DIFFUSION[etablissement['statutDiffusionEtablissement']] != :non_diffusible,
+      diffusable_commercialement: diffusable_commercialement(etablissement['statutDiffusionEtablissement']),
       status_diffusion: STATUT_DIFFUSION[etablissement['statutDiffusionEtablissement']],
       type: unite_legale.type,
 
