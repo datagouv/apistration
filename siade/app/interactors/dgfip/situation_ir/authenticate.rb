@@ -1,4 +1,4 @@
-class DGFIP::DerniereSituationIR::Authenticate < GetOAuth2Token
+class DGFIP::SituationIR::Authenticate < GetOAuth2Token
   SCOPE_API_PARTICULIER = 'RessourceIRDerniere2'.freeze
 
   protected
@@ -12,10 +12,10 @@ class DGFIP::DerniereSituationIR::Authenticate < GetOAuth2Token
   end
 
   def client_id
-    Siade.credentials[:dgfip_derniere_situation_ir_client_id]
+    Siade.credentials[:dgfip_situation_ir_client_id]
   end
 
   def client_secret
-    Siade.credentials[:dgfip_derniere_situation_ir_client_secret]
+    Siade.credentials[:dgfip_situation_ir_client_secret]
   end
 end

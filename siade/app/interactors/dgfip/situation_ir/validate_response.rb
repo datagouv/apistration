@@ -1,4 +1,4 @@
-class DGFIP::DerniereSituationIR::ValidateResponse < ValidateResponse
+class DGFIP::SituationIR::ValidateResponse < ValidateResponse
   def call
     return if http_ok?
 

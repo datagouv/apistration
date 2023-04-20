@@ -1,4 +1,4 @@
-class DGFIP::DerniereSituationIR::BuildResource < BuildResource
+class DGFIP::SituationIR::BuildResource < BuildResource
   protected
 
   DATE_FORMAT = '%d/%m/%Y'.freeze

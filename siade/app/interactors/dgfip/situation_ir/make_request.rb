@@ -1,8 +1,8 @@
-class DGFIP::DerniereSituationIR::MakeRequest < MakeRequest::Get
+class DGFIP::SituationIR::MakeRequest < MakeRequest::Get
   protected
 
   def request_uri
-    URI("#{dgfip_domain}#{dgfip_derniere_situation_ir_path}")
+    URI("#{dgfip_domain}#{dgfip_situation_ir_path}")
   end
 
   def request_params
@@ -22,10 +22,10 @@ class DGFIP::DerniereSituationIR::MakeRequest < MakeRequest::Get
   end
 
   def id_teleservice
-    Siade.credentials[:dgfip_derniere_situation_id_teleservice]
+    Siade.credentials[:dgfip_situation_id_teleservice]
   end
 
-  def dgfip_derniere_situation_ir_path
+  def dgfip_situation_ir_path
     "/impotparticulier/1.0/spi/#{tax_number}/dernieresituation/ir/assiettes/deuxans"
   end
 

@@ -1,4 +1,4 @@
-RSpec.describe DGFIP::DerniereSituationIR::ValidateResponse, type: :validate_response do
+RSpec.describe DGFIP::SituationIR::ValidateResponse, type: :validate_response do
   subject { described_class.call(response:, provider_name: 'DGFIP - SVAIR') }
 
   context 'with a http ok' do

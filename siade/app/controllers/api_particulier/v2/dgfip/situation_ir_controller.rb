@@ -1,6 +1,6 @@
-class APIParticulier::V2::DGFIP::DerniereSituationIRController < APIParticulierController
+class APIParticulier::V2::DGFIP::SituationIRController < APIParticulierController
   def show
-    organizer = retrieve_payload_data(::DGFIP::DerniereSituationIR, cache: true, expires_in: 1.hour)
+    organizer = retrieve_payload_data(::DGFIP::SituationIR, cache: true, expires_in: 1.hour)
 
     if organizer.success?
       render json: serialize_data(organizer),

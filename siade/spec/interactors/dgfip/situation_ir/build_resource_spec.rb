@@ -1,15 +1,15 @@
-RSpec.describe DGFIP::DerniereSituationIR::BuildResource, type: :build_resource do
-  describe '.call', vcr: { cassette_name: 'dgfip/derniere_situation_ir/valid_tax_number' } do
+RSpec.describe DGFIP::SituationIR::BuildResource, type: :build_resource do
+  describe '.call', vcr: { cassette_name: 'dgfip/situation_ir/valid_tax_number' } do
     subject(:call) { described_class.call(response:) }
 
     let(:response) { instance_double(Net::HTTPOK, body:) }
 
     let(:token) do
-      DGFIP::DerniereSituationIR::Authenticate.call.token
+      DGFIP::SituationIR::Authenticate.call.token
     end
 
     let(:body) do
-      DGFIP::DerniereSituationIR::MakeRequest.call(token:, params:).response.body
+      DGFIP::SituationIR::MakeRequest.call(token:, params:).response.body
     end
 
     let(:params) { { tax_number: } }

@@ -1,4 +1,4 @@
-RSpec.describe DGFIP::DerniereSituationIR::Authenticate, type: :interactor do
+RSpec.describe DGFIP::SituationIR::Authenticate, type: :interactor do
   subject { described_class.call }
 
   context 'when authentication succeed', vcr: { cassette_name: 'dgfip/oauth2' } do

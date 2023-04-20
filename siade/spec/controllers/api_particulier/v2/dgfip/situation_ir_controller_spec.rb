@@ -1,4 +1,4 @@
-RSpec.describe APIParticulier::V2::DGFIP::DerniereSituationIRController do
+RSpec.describe APIParticulier::V2::DGFIP::SituationIRController do
   subject { get :show, params: { numeroFiscal: tax_number, referenceAvis: tax_notice_number, token: } }
 
   let(:all_scopes) { Rails.application.config_for(:authorizations)['api_particulier/v2/dgfip/svair'] }
@@ -30,7 +30,7 @@ RSpec.describe APIParticulier::V2::DGFIP::DerniereSituationIRController do
   let(:tax_notice_number) { '1234567890ABC' }
 
   describe 'with valid params' do
-    context 'when API returns 200', vcr: { cassette_name: 'dgfip/derniere_situation_ir/valid_tax_number' } do
+    context 'when API returns 200', vcr: { cassette_name: 'dgfip/situation_ir/valid_tax_number' } do
       context 'when token has full access' do
         let(:scopes) { all_scopes }
 
