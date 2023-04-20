@@ -1,5 +1,5 @@
 RSpec.describe DGFIP::SituationIR::BuildResource, type: :build_resource do
-  describe '.call', vcr: { cassette_name: 'dgfip/situation_ir/valid_tax_number' } do
+  describe '.call', vcr: { cassette_name: 'dgfip/situation_ir/valid' } do
     subject(:call) { described_class.call(response:) }
 
     let(:response) { instance_double(Net::HTTPOK, body:) }
@@ -12,8 +12,9 @@ RSpec.describe DGFIP::SituationIR::BuildResource, type: :build_resource do
       DGFIP::SituationIR::MakeRequest.call(token:, params:).response.body
     end
 
-    let(:params) { { tax_number: } }
+    let(:params) { { tax_number:, tax_notice_number: } }
     let(:tax_number) { '1234567890ABC' }
+    let(:tax_notice_number) { '2134567890ABC' }
 
     let(:valid_payload) do
       {

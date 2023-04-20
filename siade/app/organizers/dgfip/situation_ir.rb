@@ -1,5 +1,5 @@
 class DGFIP::SituationIR < RetrieverOrganizer
-  organize DGFIP::SVAIR::ValidateParams,
+  organize DGFIP::SituationIR::ValidateParams,
     DGFIP::SituationIR::Authenticate,
     DGFIP::SituationIR::MakeRequest,
     DGFIP::SituationIR::ValidateResponse,

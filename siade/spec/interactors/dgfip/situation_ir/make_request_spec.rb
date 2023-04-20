@@ -1,10 +1,11 @@
 RSpec.describe DGFIP::SituationIR::MakeRequest, type: :make_request do
   subject { described_class.call(token:, params:) }
 
-  let(:params) { { tax_number: } }
+  let(:params) { { tax_number:, tax_notice_number: } }
 
-  describe '.call', vcr: { cassette_name: 'dgfip/situation_ir/valid_tax_number' } do
+  describe '.call', vcr: { cassette_name: 'dgfip/situation_ir/valid' } do
     let(:tax_number) { '1234567890ABC' }
+    let(:tax_notice_number) { '2134567890ABC' }
 
     let(:token) do
       DGFIP::SituationIR::Authenticate.call.token
