@@ -7,6 +7,8 @@ class INSEE::SiegeUniteLegale::ValidateResponse < ValidateResponse
       end
     elsif http_not_found?
       resource_not_found!
+    elsif http_internal_error?
+      internal_server_error!
     else
       unknown_provider_response!
     end
