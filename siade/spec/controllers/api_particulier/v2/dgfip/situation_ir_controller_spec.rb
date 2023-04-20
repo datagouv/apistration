@@ -1,7 +1,7 @@
 RSpec.describe APIParticulier::V2::DGFIP::SituationIRController do
   subject { get :show, params: { numeroFiscal: tax_number, referenceAvis: tax_notice_number, token: } }
 
-  let(:all_scopes) { Rails.application.config_for(:authorizations)['api_particulier/v2/dgfip/svair'] }
+  let(:all_scopes) { Rails.application.config_for(:authorizations)['api_particulier/v2/dgfip/situation_ir'] }
   let(:all_keys) do
     %w[
       declarant1

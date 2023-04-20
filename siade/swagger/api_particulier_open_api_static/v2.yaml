@@ -64,7 +64,7 @@ paths:
         - Avis d'imposition
       responses:
         "200":
-          x-operationId: api_particulier_v2_dgfip_svair
+          x-operationId: api_particulier_v2_dgfip_situation_ir
           description: Avis d'imposition
           content:
             application/json:

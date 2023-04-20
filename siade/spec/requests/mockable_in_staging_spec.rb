@@ -80,7 +80,7 @@ RSpec.describe 'Mocking in staging for each routes' do
       },
       '/api/v2/avis-imposition' => {
         'numeroFiscal' => '1234567890ABC',
-        'referenceAvis' => '1234567890ABC'
+        'referenceAvis' => '2134567890ABC'
       },
       '/api/ping' => {}
     }.each do |path, params|

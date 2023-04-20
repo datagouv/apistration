@@ -6,7 +6,7 @@ namespace '/api', constraints: APIParticulierDomainConstraint.new do
   get 'introspect' => '/api_particulier/introspect#show'
 
   get 'caf/famille' => '/api_particulier/v2/cnaf/quotient_familial#show'
-  get 'impots/svair' => '/api_particulier/v2/dgfip/svair#show'
+  get 'impots/svair' => '/api_particulier/v2/dgfip/situation_ir#show'
 
   get 'open-api.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/openapi-particulier.yaml'))]] }
   get 'france-connect/open-api.yml', to: ->(env) do
@@ -20,7 +20,6 @@ namespace '/api', constraints: APIParticulierDomainConstraint.new do
     get 'etudiants' => '/api_particulier/v2/mesri/student_status#show'
     get 'scolarites' => '/api_particulier/v2/mesri/scolarites#show'
     get 'etudiants-boursiers' => '/api_particulier/v2/cnous/student_scholarship#show'
-    get 'avis-imposition' => '/api_particulier/v2/dgfip/svair#show'
-    get 'avis-imposition-migration' => '/api_particulier/v2/dgfip/situation_ir#show'
+    get 'avis-imposition' => '/api_particulier/v2/dgfip/situation_ir#show'
   end
 end
