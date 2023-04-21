@@ -145,6 +145,10 @@ infogreffe:
     tags:
       - "Informations générales"
     attributes:
+      siren:
+        title: "Siren de l'unité légale"
+        type: "string"
+        example: "130025265"
       date_radiation:
         title: "Date de radiation de l'entreprise"
         description: "Il s'agit de la date de radiation au registre du commerce et des sociétés."
@@ -170,6 +174,7 @@ infogreffe:
         items:
           required: ["fonction"]
           type: 'object'
+          additionalProperties: false
           properties:
             numero_identification:
               title: "Numéro d'identification"
@@ -221,6 +226,7 @@ infogreffe:
         description: "Ce champ regroupe tous les messages laissés par le greffier et inscrits dans les observations."
         items:
           type: object
+          additionalProperties: false
           properties:
             numero:
               type: 'string'
@@ -240,8 +246,9 @@ infogreffe:
         example: "DECATHLON"
         nullable: true
       etablissement_principal:
-        type: "object"
         title: "Informations de l'établissement principal"
+        type: "object"
+        additionalProperties: false
         properties:
           activite:
             type: "string"
@@ -273,6 +280,7 @@ infogreffe:
             example: "6420Z"
       capital:
         type: "object"
+        additionalProperties: false
         title: "Capital de l'entreprise"
         properties:
           montant:
@@ -295,6 +303,7 @@ infogreffe:
             nullable: true
       greffe:
         type: "object"
+        additionalProperties: false
         title: "Greffe"
         description: "Informations sur le greffe."
         properties:
@@ -310,11 +319,13 @@ infogreffe:
             example: "6851"
       personne_physique:
         type: "object"
+        additionalProperties: false
         title: "Personne physique"
         description: "Informations sur l'entreprise s'il s'agit d'une personne physique. Les champs sont vides si l'entreprise est une personne morale."
         properties:
           adresse:
             type: 'object'
+            additionalProperties: false
             title: "Adresse"
             description: &infogreffe_adresse_description "L'adresse transmise par Infogreffe est renvoyée sous différents formats, utilisant parfois le champ «nom postal», parfois les champs «ligne 1» et «ligne 2», ou encore au travers des champs «numéro de la voie» + «type de la voie» + «nom de la voie». Pour obtenir l'adresse du siège ou l'établissement principal, nous vous recommandons fortement de faire appel à l'API Adresse établissement - Insee."
             properties: &infogreffe_adresse_properties
@@ -366,6 +377,7 @@ infogreffe:
                 nullable: true
           nationalite:
             type: "object"
+            additionalProperties: false
             title: "Nationalité"
             description: "Nationalité de la personne physique."
             properties:
@@ -395,11 +407,13 @@ infogreffe:
             nullable: true
           naissance:
             type: "object"
+            additionalProperties: false
             title: "Naissance"
             description: "Informations de naissance de la personne physique (lieu, date, pays)"
             properties:
               pays:
                 type: "object"
+                additionalProperties: false
                 title: "Pays de naissance"
                 description: "Pays de naissance de la personne physique"
                 properties:
@@ -429,11 +443,13 @@ infogreffe:
                 nullable: true
       personne_morale:
         type: "object"
+        additionalProperties: false
         title: "Personne morale"
         description: "Informations sur l'entreprise s'il s'agit d'une personne morale. Les champs sont vides si l'entreprise est une personne physique."
         properties:
           forme_juridique:
             type: "object"
+            additionalProperties: false
             title: "Forme juridique"
             description: "Forme juridique de la personne morale"
             properties:

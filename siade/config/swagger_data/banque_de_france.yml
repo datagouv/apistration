@@ -18,9 +18,11 @@ banque_de_france:
         type: 'array'
         items:
           type: 'object'
+          additionalProperties: false
           properties:
             disponibilites:
               type: 'object'
+              additionalProperties: false
               title: "Disponibilités"
               description: "Correspond aux disponibilités présentés à l'actif du bilan diminués des provisions constatées sur ce poste.
                 \n
@@ -39,12 +41,14 @@ banque_de_france:
                   nullable: true
             total_dettes_stables:
               type: 'object'
+              additionalProperties: false
               title: "Total des dettes stables"
               properties:
                 valeur: *valeur_euros
                 evolution: *evolution_attribute
             valeur_ajoutee_bdf:
               type: 'object'
+              additionalProperties: false
               title: "Valeur ajoutée"
               description: "La valeur ajoutée est un solde intermédiaire de gestion issu du compte de résultat définie comme tel : il correspond à la différence entre la valeur finale de la production (valorisée par le chiffre d'affaires) et la valeur des biens qui ont été consommés par le processus de production (consommations intermédiaires, comme les matières premières)."
               properties:
@@ -52,6 +56,7 @@ banque_de_france:
                 evolution: *evolution_attribute
             besoin_en_fonds_de_roulement:
               type: 'object'
+              additionalProperties: false
               title: "Besoin en fonds de roulement"
               description: "Représente le montant nécessaire au financement du cycle d'exploitation qui est né du décalage entre les encaissements (clients) et les décaissements (fournisseurs, salaires et charges sociales) et du portage des stocks avant leur utilisation dans le cycle de production ou de commercialisation."
               properties:
@@ -59,6 +64,7 @@ banque_de_france:
                 evolution: *evolution_attribute
             excedent_brut_exploitation:
               type: 'object'
+              additionalProperties: false
               title: "Excédent brut d’exploitation"
               description: "Solde intermédiaire de gestion issu du compte de résultat défini comme tel : il correspond principalement à la différence entre la valeur ajoutée augmentée des subventions d'exploitation et diminuées de la charge du personnel et des impôts et taxes.
                 \n
@@ -68,6 +74,7 @@ banque_de_france:
                 evolution: *evolution_attribute
             capacite_autofinancement:
               type: 'object'
+              additionalProperties: false
               title: "Capacité d’autofinancement"
               description: "Correspond à la somme du résultat net et des charges non décaissables diminuées des produits non encaissables (les éléments non décaissables et non encaissables correspondent essentiellement aux dotations nettes aux amortissements et aux provisions).
                 \n
@@ -77,6 +84,7 @@ La capacité d'autofinancement représente l'essentiel du flux de trésorerie d'
                 evolution: *evolution_attribute
             fonds_roulement_net_global:
               type: 'object'
+              additionalProperties: false
               title: "Fonds de roulement net global"
               description: "Correspond à la part des capitaux permanents non absorbée par le financement des valeurs immobilisées et qui est disponible pour le financement des besoins lié au cycle d'exploitation (besoins en fonds de roulement)
 (1) Capitaux permanents = capitaux propres + autres fonds propres + prov. pour risques et charges + total dettes financieres - dettes financières CT à l'origine (concours bancaires courants et soldes créditeurs de banque notamment)"
@@ -85,6 +93,7 @@ La capacité d'autofinancement représente l'essentiel du flux de trésorerie d'
                 evolution: *evolution_attribute
             ratio_fonds_roulement_net_global_sur_besoin_en_fonds_de_roulement:
               type: 'object'
+              additionalProperties: false
               title: "Ratio fonds de roulement net global sur besoin en fonds de roulement"
               properties:
                 valeur: &valeur_percent
@@ -94,6 +103,7 @@ La capacité d'autofinancement représente l'essentiel du flux de trésorerie d'
                 evolution: *evolution_attribute
             dettes4_maturite_a_un_an_au_plus:
               type: 'object'
+              additionalProperties: false
               title: "Dettes à maturité à un an au plus"
               description: "Correspond à la somme des références fiscales 2057VG2 et 2057VH2"
               properties:
@@ -103,6 +113,7 @@ La capacité d'autofinancement représente l'essentiel du flux de trésorerie d'
         type: 'array'
         items:
           type: 'object'
+          additionalProperties: false
           required:
             - numero_imprime
             - donnees
@@ -116,11 +127,13 @@ La capacité d'autofinancement représente l'essentiel du flux de trésorerie d'
               type: 'array'
               items:
                 type: 'object'
+                additionalProperties: false
                 title: "Données de l'imprimé"
                 description: "Chaque entrée du tableau correspondant à couple code / valeur, spécifique au numéro d'imprimé référencé à la clé `numero_imprime`"
                 required:
                   - 'code_nref'
                   - 'valeurs'
+                  - 'evolution'
                 properties:
                   code:
                     title: 'Code'
@@ -132,6 +145,11 @@ La capacité d'autofinancement représente l'essentiel du flux de trésorerie d'
                     type: 'string'
                     description: "Le code EDI est utilisé lorsque la liasses fiscale a été souscrite via la filière EDI/TDFC. Il permet l’échange des données de nature comptable et/ou fiscale avec la norme EDIFACT entre la DGFIP et les utilisateurs des téléprocédures EDI "
                     example: 'GR:C889:7111:1:TBX'
+                  evolution:
+                    title: "Évolution de la donnée"
+                    type: 'number'
+                    example: 4.56
+                    nullable: true
                   code_absolu:
                     title: 'Code absolu'
                     type: 'string'

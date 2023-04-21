@@ -13,7 +13,9 @@ class APIEntreprise::INSEE::EtablissementSerializer::V3 < APIEntreprise::V3AndMo
   attribute :unite_legale do |object|
     object.unite_legale.to_h.except(
       :id,
-      :date_cessation
+      :date_cessation,
+      :date_derniere_mise_a_jour,
+      :redirect_from_siren
     )
   end
 
@@ -21,6 +23,9 @@ class APIEntreprise::INSEE::EtablissementSerializer::V3 < APIEntreprise::V3AndMo
     object.adresse.to_h.except(
       :id,
       :siren,
+      :siret,
+      :diffusable_commercialement,
+      :type,
       :date_derniere_mise_a_jour
     )
   end

@@ -85,6 +85,7 @@ ademe:
         title: "Qualification"
         description: "Informations sur la qualification du présent certificat"
         type: "object"
+        additionalProperties: false
         properties:
           code:
             title: "Code qualification"
@@ -126,6 +127,7 @@ ademe:
         title: "Informations ADEME"
         description: "informations sur l'enregistrement de ce certificat dans la base ADEME"
         type: "object"
+        additionalProperties: false
         properties:
           internal_id:
             title: "Identifiant interne"

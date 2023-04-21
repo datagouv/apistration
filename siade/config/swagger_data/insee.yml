@@ -12,6 +12,7 @@ insee:
       nullable: true
   personne_morale_attributes: &personne_morale_attributes
     type: "object"
+    additionalProperties: false
     title: "Attributs de la personne morale"
     description:
       "Attributs associés à la personne morale. Les valeurs sont à
@@ -90,6 +91,7 @@ insee:
         pour une personne physique."
   personne_physique_attributes: &personne_physique_attributes
     type: "object"
+    additionalProperties: false
     title: "Attributs de la personne physique"
     description: "Attributs associés à la personne physique. Les
       valeurs sont à 'null' pour les personnes morales. Pour les personnes physiques, la raison sociale / dénomination / nom de l'entreprise correspond toujours au nom de famille et au prénom, précédés ou suivis de la mention \"entrepreneur individuel\" ou \"EI\". Pour en savoir plus, consulter cette page du site service-public.fr https://entreprendre.service-public.fr/vosdroits/F23283/personnalisation/resultat"
@@ -223,6 +225,7 @@ insee:
         Plus d'informations sur les conditions de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionUniteLegale"
     forme_juridique:
       type: "object"
+      additionalProperties: false
       title: "Attributs de la forme juridique"
       properties:
         code:
@@ -266,6 +269,7 @@ insee:
     activite_principale:
       title: "Attributs de l'activité principale"
       type: "object"
+      additionalProperties: false
       properties:
         code:
           title: "Code de l'activité principale (APE) de l'unité légale"
@@ -301,6 +305,7 @@ insee:
             "Ce champ indique le nom de la nomenclature associée au code APE."
     tranche_effectif_salarie:
       type: "object"
+      additionalProperties: false
       title: "Tranche d'effectif salarié de l'unité légale"
       description: "Pour environ la moitié des établissements, la tranche d'effectif salarié n'est pas renseignée. Il s'agit principalement d'établissements récents (créés il y a moins de trois ans). Les délais de récolte et traitement font que les valeurs indiquées datent de l’année N-2 ou N-3."
       properties:
@@ -611,6 +616,7 @@ insee:
       description: "Indique si l'établissement rattaché est diffusable, partiellement diffusable ou non diffusable"
     acheminement_postal: &adresse_etablissement_acheminement_postal_property
       type: "object"
+      additionalProperties: false
       title: "Éléments constitutifs de l'adresse postale pour son acheminement."
       description: "Il ne s'agit pas d'un traitement RNVP mais simplement d'une réorganisation des éléments renvoyé par l'Insee pour faciliter l'affichage des adresses postales"
       properties:
@@ -644,7 +650,7 @@ insee:
           type: "string"
           description: "Si le code cedex est existant : code cedex accompagné de son libellé ; sinon, si le pays est en France : code postal accompagné de son libellé, sinon : libellé de la commune de l'établissement situé à l'étranger"
           example: "75256 PARIX CEDEX 12"
-        l7:
+        l7: &adresse_etablissement_acheminement_postal_l7_property
           title: "Ligne 7"
           type: "string"
           description: "Pays de l'établissement"
@@ -735,6 +741,9 @@ insee:
           description: "Si le code cedex est existant : code cedex accompagné de son libellé ; sinon, si le pays est en France : code postal accompagné de son libellé, sinon : libellé de la commune de l'établissement situé à l'étranger
           \n
           Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
+        l7:
+          <<: *adresse_etablissement_acheminement_postal_l7_property
+
 
   insee_etablissement_attributes: &insee_etablissement_attributes
     siret:
@@ -776,6 +785,7 @@ insee:
     activite_principale:
       title: "Attributs de l'activité principale"
       type: "object"
+      additionalProperties: false
       properties:
         code:
           title: "Code de l'activité principale (APE) de l'établissement"
@@ -807,6 +817,7 @@ insee:
             "Ce champ indique le nom de la nomenclature associée au code APE."
     tranche_effectif_salarie:
       type: "object"
+      additionalProperties: false
       title: "Tranche d'effectif salarié de l'établissement"
       description: "Pour environ la moitié des établissements, la tranche d'effectif salarié n'est pas renseignée. Il s'agit principalement d'établissements récents (créés il y a moins de trois ans). Les délais de récolte et traitement font que les valeurs indiquées datent de l’année N-2 ou N-3."
       properties:
@@ -932,10 +943,12 @@ insee:
       example: "Coiff Land, CoiffureLand"
     unite_legale:
       type: "object"
+      additionalProperties: false
       title: "Unité légale de l'établissement"
       properties: *shared_insee_unite_legale_attributes
     adresse:
       type: "object"
+      additionalProperties: false
       title: "Adresse de l'établissement"
       properties: *insee_adresse_etablissement_attributes
     date_creation: *insee_date_creation
@@ -944,10 +957,12 @@ insee:
     <<: *insee_etablissement_attributes
     unite_legale:
       type: "object"
+      additionalProperties: false
       title: "Unité légale de l'établissement"
       properties: *shared_insee_unite_legale_attributes_diffusible
     adresse:
       type: "object"
+      additionalProperties: false
       title: "Adresse de l'établissement"
       properties: *insee_adresse_etablissement_attributes_diffusible
     enseigne:
@@ -999,7 +1014,7 @@ insee:
         type: "string"
         example: "https://entreprise.api.gouv.fr/api/v3/insee/etablissements/13002526500013"
         description: "Lien vers la ressource 'Donnée Sirene d'un établissement' correspondant à cette adresse d'établissement pour obtenir les données de référence de l'établissement."
-        
+
   adresse_etablissement_diffusable:
     title: "Adresse établissement diffusible"
     description: "Adresse d'un établissement diffusible inscrit au répertoire Sirene."

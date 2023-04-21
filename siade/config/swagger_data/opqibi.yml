@@ -44,6 +44,7 @@ opqibi:
         type: "array"
         items:
           type: "object"
+          additionalProperties: false
           properties:
             nom:
               title: "Nom"
@@ -78,6 +79,7 @@ opqibi:
         type: "array"
         items:
           type: "object"
+          additionalProperties: false
           properties:
             nom:
               title: "Nom"

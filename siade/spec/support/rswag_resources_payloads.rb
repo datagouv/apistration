@@ -6,7 +6,8 @@ module RSWagResourcesPayloads
         data: {
           type: :object,
           properties: add_required_keys_to_all_type_object(attributes),
-          required: attributes.keys
+          required: attributes.keys,
+          additionalProperties: false
         }
       }.merge(
         build_rswag_links(links)
@@ -96,7 +97,8 @@ module RSWagResourcesPayloads
       meta: {
         type: :object,
         properties: meta,
-        required: meta.keys
+        required: meta.keys,
+        additionalProperties: false
       }
     }
   end
@@ -114,7 +116,8 @@ module RSWagResourcesPayloads
       links: {
         type: :object,
         properties: links,
-        required: links.keys
+        required: links.keys,
+        additionalProperties: false
       }
     }
   end

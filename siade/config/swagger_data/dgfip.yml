@@ -48,6 +48,7 @@ dgfip:
           description: "Une entité légale peut posséder plusieurs règles d'impositions, notamment si celle-ci fait partie d'un groupe."
           items:
             type: 'object'
+            additionalProperties: false
             required:
               - id
               - code
@@ -118,6 +119,7 @@ dgfip:
           type: "array"
           items:
             type: 'object'
+            additionalProperties: false
             required:
               - numero_imprime
               - regime
@@ -136,6 +138,7 @@ dgfip:
               regime:
                 title: "Régime d’imposition applicable au résultat fiscal de l'unité légale"
                 type: 'object'
+                additionalProperties: false
                 required:
                   - code
                   - libelle
@@ -204,6 +207,7 @@ dgfip:
                 description: "Chaque entrée du tableau correspondant à couple code / valeur, spécifique au numéro d'imprimé référencé à la clé `numero_imprime`"
                 items:
                   type: 'object'
+                  additionalProperties: false
                   required:
                     - 'code_nref'
                     - 'valeurs'

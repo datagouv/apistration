@@ -8,6 +8,7 @@ urssaf:
       entity_status:
         title: "Status de l'entreprise vis-à-vis de ses obligations sociales"
         type: 'object'
+        additionalProperties: false
         properties:
           code:
             type: 'string'

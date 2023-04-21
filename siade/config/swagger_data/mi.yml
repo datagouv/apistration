@@ -51,6 +51,7 @@ mi:
           la date de dissolution, autrement, il est indiqué 'null'."
       adresse_siege: &association_adresse_siege
         type: "object"
+        additionalProperties: false
         title: "Adresse du siège social de l'association"
         properties: &association_adresse_properties
           complement:
@@ -116,6 +117,7 @@ mi:
     type: "array"
     items:
       type: "object"
+      additionalProperties: false
       properties:
         timestamp:
           example: "1631182730"
@@ -204,6 +206,7 @@ En savoir plus : https://associations.gouv.fr/le-no-siren-de-l-insee.html"
         nullable: true
       forme_juridique:
         type: "object"
+        additionalProperties: false
         title: "Forme juridique"
         required:
           - code
@@ -312,10 +315,17 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
         example: "2018-01-01"
         nullable: true
       adresse_siege: *association_adresse_siege
+      adresse_gestion:
+        type: "object"
+        additionalProperties: false
+        title: "Adresse de gestion de l'association"
+        description: "L'adresse de gestion est l'adresse à laquelle se trouve les bureaux administratifs."
+        properties: *association_adresse_properties
       alsace_moselle:
         title: "Attributs relatifs aux associations de droit local d'Alsace-Moselle"
         description: "Ces information proviennent des documents administratifs complémentaires (DAC). Les attributs sont vides si l'association est une association \"Loi 1901\"."
         type: "object"
+        additionalProperties: false
         required:
           - tribunal_instance
           - volume
@@ -365,6 +375,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
         type: "array"
         items:
           type: "object"
+          additionalProperties: false
           required:
             - nom
             - rna
@@ -372,6 +383,8 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
             - telephone
             - courriel
             - objet
+            - adresse
+            - site_web
           properties:
             nom:
               type: "string"
@@ -401,11 +414,18 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
               type: "string"
               title: "Objet du membre du réseau"
               example: "Promouvoir l'engagement des parents d'élèves dans l'éducation de leurs enfants"
+            adresse: *association_adresse_siege
+            site_web:
+              title: "Site internet du membre du réseau"
+              type: "string"
+              example: "reseau-association.fr"
+              nullable: true
       agrements:
         title: "Liste des agréments administratifs associés à l'association"
         type: "array"
         items:
           type: "object"
+          additionalProperties: false
           required:
             - "numero"
             - "date_attribution"
@@ -522,11 +542,13 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
         title: "Adresse de l'établissement"
         description: "Cette information provient du répertoire Sirene."
         type: "object"
+        additionalProperties: false
         properties: *association_adresse_properties
       activite_principale: &activite_principale
         type: "object"
-        title: "Activité principale"
-        description: "Lorsque l'association est immatriculée au répertoire Sirene, elle se voit attribuer un code APE. Ce code de 4 chiffres + 1 lettre est extrait de la nomenclature d'activité française (NAF) de l'Insee.
+        additionalProperties: false
+        title: &activite_principale_title "Activité principale"
+        description: &activite_principale_title_description "Lorsque l'association est immatriculée au répertoire Sirene, elle se voit attribuer un code APE. Ce code de 4 chiffres + 1 lettre est extrait de la nomenclature d'activité française (NAF) de l'Insee.
         \n
         \n
         Nomemclature d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2120875"
@@ -534,25 +556,26 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
           - code
           - libelle
         properties:
-          code:
+          code: &activite_principale_code_property
             type: "string"
             title: "Code de l'activité principale"
             example: "88.99B"
             nullable: true
-          libelle:
+          libelle: &activite_principale_libelle_property
             type: "string"
             title: "Libellé de l'activité principale"
             example: "Action sociale sans hébergement n.c.a."
             nullable: true
       tranche_effectif: &tranche_effectif
         type: "object"
-        title: "Tranche d'effectif salarié de l'entité"
-        description: "Pour environ la moitié des établissements, la tranche d'effectif salarié n'est pas renseignée. Il s'agit principalement d'établissements récents (créés il y a moins de trois ans). Les délais de récolte et traitement font que les valeurs indiquées datent de l’année N-2 ou N-3. Cette information est issue du répertoire Sirene et ne concerne donc que les associations qui y sont immatriculées."
+        additionalProperties: false
+        title: &tranche_effectif_title "Tranche d'effectif salarié de l'entité"
+        description: &tranche_effectif_description "Pour environ la moitié des établissements, la tranche d'effectif salarié n'est pas renseignée. Il s'agit principalement d'établissements récents (créés il y a moins de trois ans). Les délais de récolte et traitement font que les valeurs indiquées datent de l’année N-2 ou N-3. Cette information est issue du répertoire Sirene et ne concerne donc que les associations qui y sont immatriculées."
         required:
           - code
           - libelle
         properties:
-          code:
+          code: &tranche_effectif_code_property
             type: "string"
             nullable: true
             example: "51"
@@ -612,17 +635,18 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
             - "51"
             - "52"
             - "53"
-          intitule:
+          libelle: &tranche_effectif_libelle_property
             title: "Intitulé associé au code effectif"
             type: "string"
             nullable: true
             example: "2 000 à 4 999 salariés"
-            nullable: true
+
       rhs:
         title: "Information sur les moyens humains"
         type: "array"
         items:
           type: "object"
+          additionalProperties: false
           required:
             - annee
             - nombre_benevoles
@@ -664,6 +688,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
               example: 15
             nombre_adherents:
               type: "object"
+              additionalProperties: false
               title: "Nombre d'adhérents"
               required:
                 - total
@@ -687,6 +712,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
         type: "array"
         items:
           type: "object"
+          additionalProperties: false
           required:
             - annee
             - commisaire_aux_comptes
@@ -746,6 +772,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
       activites: &unite_legale_activites
         title: "Liste des activités de l'association"
         type: "object"
+        additionalProperties: false
         required:
           - objet
           - objet_social1
@@ -764,6 +791,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
             example: "L'association a pour objet de promouvoir la pratique du sport de haut niveau et de contribuer à la formation des jeunes sportifs."
           objet_social1:
             type: "object"
+            additionalProperties: false
             title: "Objet social principal"
             description: &objet_social_description "L'objet social suit la nomenclature nationale Waldec et permet de rattacher l'objet de l'association à une catégorie, comme par exemple : \"centres aérés, colonies de vacances\", \"défense des droits des personnes en situation de handicap\" ou \"loisirs scientifiques et techniques\". La liste exhaustive des objets sociaux est disponible au lien suivant: https://www.data.gouv.fr/fr/datasets/repertoire-national-des-associations-nomenclature-waldec (environ 300 entrées)."
             properties: &objet_social_properties
@@ -779,6 +807,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
                 nullable: true
           objet_social2:
             type: "object"
+            additionalProperties: false
             title: "Objet social secondaire"
             description: *objet_social_description
             properties:
@@ -803,8 +832,40 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
               - "départemental"
               - "local"
             nullable: true
-          activite_principale: *activite_principale
-          tranche_effectif: *tranche_effectif
+          activite_principale:
+            type: "object"
+            additionalProperties: false
+            title: *activite_principale_title
+            description: *activite_principale_title_description
+            required:
+              - code
+              - libelle
+              - annee
+            properties:
+              code: *activite_principale_code_property
+              libelle: *activite_principale_libelle_property
+              annee:
+                title: "Année de l'activité principale"
+                type: "string"
+                example: "2012"
+                nullable: true
+          tranche_effectif:
+            type: 'object'
+            additionalProperties: false
+            title: *tranche_effectif_title
+            description: *tranche_effectif_description
+            required:
+              - code
+              - libelle
+              - annee
+            properties:
+              code: *tranche_effectif_code_property
+              libelle: *tranche_effectif_libelle_property
+              annee:
+                title: "Année d'affectation du code effectif"
+                type: "string"
+                example: '2013'
+                nullable: true
           economie_sociale_et_solidaire:
             title: "Indique si l'association appartient à de l'économie sociale et solidaire (ESS)"
             type: "boolean"
@@ -821,6 +882,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
         type: "array"
         items:
           type: "object"
+          additionalProperties: false
           required:
             - siren
             - siret
@@ -839,13 +901,14 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
             - documents_dac
           properties:
             <<: *unite_legale_etablissement_shared_attributes
-            representant_legaux:
+            representants_legaux:
               title: "Liste des représentants légaux de l'établissement"
               # NOTE: j'exclut les deleted ainsi que les personnes marquées comme est_representant_legal = false
               description: "Les personnes renvoyées dans cette liste sont uniquement celles renseignées comme représentant légal actif. Ces informations proviennent des documents administratifs complémentaires (DAC)."
               type: "array"
               items:
                 type: "object"
+                additionalProperties: false
                 required:
                   - civilite
                   - nom
@@ -906,6 +969,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
               type: "array"
               items:
                 type: "object"
+                additionalProperties: false
                 required:
                   - "nom"
                   - "annee_validite"
@@ -980,6 +1044,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
         type: "array"
         items:
           type: "object"
+          additionalProperties: false
           required:
             - "nom"
             - "numero"
@@ -1015,6 +1080,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
             adresse:
               title: "Adresse du réseau"
               type: "object"
+              additionalProperties: false
               properties: *association_adresse_properties
             telephone:
               type: "string"
@@ -1033,6 +1099,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
               nullable: true
             nombre_licencies:
               type: "object"
+              additionalProperties: false
               title: "Nombre de licenciés"
               description: "Ces informations ne sont pas tout le temps renseignées"
               required:
@@ -1060,6 +1127,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
         type: "array"
         items:
           type: "object"
+          additionalProperties: false
           required:
             - "type"
             - "sous_type"
@@ -1080,6 +1148,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
               example: "Pièce"
             sous_type:
               type: "object"
+              additionalProperties: false
               title: "Sous-type du document"
               required:
                 - "code"
@@ -1184,6 +1253,7 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
         type: "array"
         items:
           type: "object"
+          additionalProperties: false
           required:
             - siren
             - siret
