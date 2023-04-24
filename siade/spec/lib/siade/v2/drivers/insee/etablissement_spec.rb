@@ -267,7 +267,7 @@ RSpec.describe SIADE::V2::Drivers::INSEE::Etablissement, type: :provider_driver 
     its(:date_fermeture) { is_expected.to eq 1_315_173_600 }
   end
 
-  describe 'siret redirected to another siret', vcr: { cassette_name: 'insee/siret/redirected' } do
+  describe 'siret redirected to another siret', vcr: { cassette_name: 'insee/siret/redirected_v2' } do
     subject { described_class.new(siret: siret).tap(&:perform_request) }
 
     let(:siret) { redirected_siret }

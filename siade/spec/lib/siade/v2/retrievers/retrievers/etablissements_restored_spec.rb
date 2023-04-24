@@ -66,7 +66,7 @@ RSpec.describe SIADE::V2::Retrievers::EtablissementsRestored do
     end
   end
 
-  describe 'siret redirected to another siret', vcr: { cassette_name: 'insee/siret/redirected' } do
+  describe 'siret redirected to another siret', vcr: { cassette_name: 'insee/siret/redirected_v2' } do
     let(:siret) { redirected_siret }
 
     its(:success?) { is_expected.to be_truthy }

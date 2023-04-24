@@ -64,7 +64,7 @@ RSpec.describe APIEntreprise::V2::EtablissementsRestoredController, type: :contr
     end
   end
 
-  describe 'siret redirected to another siret', vcr: { cassette_name: 'insee/siret/redirected' } do
+  describe 'siret redirected to another siret', vcr: { cassette_name: 'insee/siret/redirected_v2' } do
     subject { get :show, params: { siret: siret, token: token }.merge(mandatory_params) }
 
     let(:token) { yes_jwt }
