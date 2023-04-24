@@ -29,8 +29,8 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
   end
 
   RSpec.shared_examples 'throttling group of endpoints' do
-    let(:token_sample_1) { yes_jwt }
-    let(:token_sample_2) { uptime_jwt }
+    let(:token_sample) { yes_jwt }
+    let(:another_token_sample) { uptime_jwt }
 
     def call!(token)
       random_endpoint = endpoints.sample
@@ -41,37 +41,37 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
 
     it 'accepts incoming requests up to the limit' do
       limit.times do
-        call!(token_sample_1)
+        call!(token_sample)
 
         expect(response).not_to have_http_status(:too_many_requests)
       end
     end
 
     context 'when the limit has been reached' do
-      before { limit.times { call!(token_sample_1) } }
+      before { limit.times { call!(token_sample) } }
 
       it 'rejects incoming requests after the limit' do
-        call!(token_sample_1)
+        call!(token_sample)
 
         expect(response).to have_http_status(:too_many_requests)
       end
 
       it 'resets the counter after 60 seconds' do
         Timecop.freeze(60.seconds.from_now) do
-          call!(token_sample_1)
+          call!(token_sample)
 
           expect(response).not_to have_http_status(:too_many_requests)
         end
       end
 
       it 'limits requests on a per token basis' do
-        call!(token_sample_2)
+        call!(another_token_sample)
 
         expect(response).not_to have_http_status(:too_many_requests)
       end
 
       it 'responds with the Retry-After header when off limit' do
-        call!(token_sample_1)
+        call!(token_sample)
 
         expect(response.headers).to include('Retry-After')
       end
