@@ -3,6 +3,8 @@
 
   Status `200`
 
+  Payload ACOSS Attestations sociales - succès 200
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -48,6 +50,8 @@
 * [404.yaml](404.yaml)
 
   Status `404`
+
+  Payload ACOSS Attestations sociales - not found 404
 
   <details><summary>Paramètres</summary>
   <p>

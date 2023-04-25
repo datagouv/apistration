@@ -3,6 +3,8 @@
 
   Status `200`
 
+  Payload INSEE Établissements - succès 200
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -135,6 +137,8 @@
 
   Status `404`
 
+  Payload INSEE Établissements - not found 404
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -182,6 +186,8 @@
 * [association.yaml](association.yaml)
 
   Status `200`
+
+  Payload INSEE Établissements Association - succès 200
 
   <details><summary>Paramètres</summary>
   <p>

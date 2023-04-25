@@ -3,6 +3,8 @@
 
   Status `200`
 
+  Payload INSEE Adresse Association diffusibles - succès 200
+
   <details><summary>Paramètres</summary>
   <p>
 

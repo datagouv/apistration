@@ -3,6 +3,8 @@
 
   Status `200`
 
+  Payload INSEE Siège Unité Légale des Associations - succès 200
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -272,6 +274,8 @@
 * [personne_morale.yaml](personne_morale.yaml)
 
   Status `200`
+
+  Payload INSEE Siège unité légale Personne Morale - succès 200
 
   <details><summary>Paramètres</summary>
   <p>

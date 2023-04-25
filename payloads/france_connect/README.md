@@ -12,7 +12,6 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
   Réponse FranceConnect permettant de déclencher la réponse de [`/v2/etudiants-boursiers` suivante](../api_particulier_v2_cnous_student_scholarship/france_connect_cnous.yml)
 
-
   <details><summary>Paramètres</summary>
   <p>
 
@@ -76,7 +75,6 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
   Réponse FranceConnect permettant de déclencher la réponse de [`/v2/etudiants-boursiers` suivante](../api_particulier_v2_cnous_student_scholarship/france_connect_cnous_with_less_scopes.yml)
 
-
   <details><summary>Paramètres</summary>
   <p>
 
@@ -137,6 +135,8 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
   Status `200`
 
+  Réponse FranceConnect par défaut
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -181,7 +181,6 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
   Status `200`
 
   Réponse FranceConnect permettant de déclencher la réponse de [`/v2/etudiants` suivante](../api_particulier_v2_mesri_student_status/france_connect.yml)
-
 
   <details><summary>Paramètres</summary>
   <p>

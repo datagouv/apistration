@@ -3,6 +3,8 @@
 
   Status `200`
 
+  Payload INSEE Adresse Établissements des Associations - succès 200
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -142,6 +144,8 @@
 * [personne_morale.yaml](personne_morale.yaml)
 
   Status `200`
+
+  Payload INSEE Établissements Personne Morale - succès 200
 
   <details><summary>Paramètres</summary>
   <p>

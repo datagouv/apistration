@@ -3,6 +3,8 @@
 
   Status `200`
 
+  Payload INSEE Unité Légale des Associations - succès 200
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -179,6 +181,8 @@
 
   Status `200`
 
+  Payload INSEE unité légale Personne Morale - succès 200
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -354,6 +358,8 @@
 * [personne_physique_diffusible.yaml](personne_physique_diffusible.yaml)
 
   Status `200`
+
+  Payload INSEE Adresse unité légale Personne Physique diffusible - succès 200
 
   <details><summary>Paramètres</summary>
   <p>
