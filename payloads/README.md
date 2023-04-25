@@ -19,6 +19,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * Attestation de cotisations congés payés & chômage-intempéries (`/v3/cnetp/unites_legales/{siren}/attestation_cotisations_conges_payes_chomage_intemperies`)
 * Immatriculation EORI (`/v3/douanes/etablissements/{siret_or_eori}/immatriculations_eori`)
 * [Attestation fiscale](api_entreprise_v3_dgfip_attestations_fiscales) (`/v3/dgfip/unites_legales/{siren}/attestation_fiscale`)
+* Attestation fiscale (`/v4/dgfip/unites_legales/{siren}/attestation_fiscale`)
 * Chiffre d'affaires (`/v3/dgfip/etablissements/{siret}/chiffres_affaires`)
 * Liasses fiscales (`/v3/dgfip/unites_legales/{siren}/liasses_fiscales/{year}`)
 * [Données association](api_entreprise_v4_mi_unites_legales) (`/v4/djepva/api-association/associations/{siren_or_rna}`)
@@ -48,4 +49,4 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * Conformité cotisations retraite complémentaire (`/v3/probtp/etablissements/{siret}/conformite_cotisations_retraite`)
 * Certification Qualibat (`/v3/qualibat/etablissements/{siret}/certification_batiment`)
 * Données du RNM d'une entreprise artisanale (`/v3/cma_france/rnm/unites_legales/{siren}`)
-* Attestation de vigilance (`/v4/urssaf/unites_legales/{siren}/attestation_vigilance`)
+* [Attestation de vigilance](api_entreprise_v4_acoss_attestations_sociales) (`/v4/urssaf/unites_legales/{siren}/attestation_vigilance`)
