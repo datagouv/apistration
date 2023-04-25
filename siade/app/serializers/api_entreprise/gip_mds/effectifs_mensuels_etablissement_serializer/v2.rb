@@ -5,7 +5,7 @@ class APIEntreprise::GIPMDS::EffectifsMensuelsEtablissementSerializer::V2 < APIE
     :effectifs_mensuels
 
   def effectifs_mensuels
-    count = valid_effectifs.sum do |data|
+    count = valid_effectifs.values.sum do |data|
       data[:value].to_f
     end
 
@@ -15,8 +15,9 @@ class APIEntreprise::GIPMDS::EffectifsMensuelsEtablissementSerializer::V2 < APIE
   private
 
   def valid_effectifs
-    object.effectifs_mensuel.values.select do |data|
-      data[:value].present?
+    object.effectifs_mensuel.select do |regime, data|
+      regime == :regime_general &&
+        data[:value].present?
     end
   end
 end

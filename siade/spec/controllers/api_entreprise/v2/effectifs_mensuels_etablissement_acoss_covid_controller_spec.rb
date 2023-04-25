@@ -20,7 +20,7 @@ RSpec.describe APIEntreprise::V2::EffectifsMensuelsEtablissementACOSSCovidContro
           siret: valid_siret,
           annee: ,
           mois: ,
-          effectifs_mensuels: (12.34 + 56.78).to_s
+          effectifs_mensuels: 56.78.to_s
         }
       end
 

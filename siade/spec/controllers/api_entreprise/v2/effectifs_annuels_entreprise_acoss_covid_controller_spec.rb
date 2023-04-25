@@ -17,7 +17,7 @@ RSpec.describe APIEntreprise::V2::EffectifsAnnuelsEntrepriseACOSSCovidController
         {
           siren: valid_siren,
           annee: (Time.zone.today.year - 1).to_s,
-          effectifs_annuel: (12.34 + 56.78).to_s,
+          effectifs_annuel: 56.78.to_s,
         }
       end
 

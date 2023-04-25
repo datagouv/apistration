@@ -4,7 +4,7 @@ class APIEntreprise::GIPMDS::EffectifsAnnuelsEntrepriseSerializer::V2 < APIEntre
     :effectifs_annuel
 
   def effectifs_annuel
-    count = valid_effectifs.sum do |data|
+    count = valid_effectifs.values.sum do |data|
       data[:value].to_f
     end
 
@@ -14,8 +14,9 @@ class APIEntreprise::GIPMDS::EffectifsAnnuelsEntrepriseSerializer::V2 < APIEntre
   private
 
   def valid_effectifs
-    object.effectifs_annuel.values.select do |data|
-      data[:value].present?
+    object.effectifs_annuel.select do |regime, data|
+      regime == :regime_general &&
+        data[:value].present?
     end
   end
 end
