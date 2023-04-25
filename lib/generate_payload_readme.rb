@@ -44,7 +44,6 @@ class GeneratePayloadReadme
     if payload['description']
       readme_stream.puts
       readme_stream.puts "  #{payload['description']}"
-      readme_stream.puts
     end
 
     add_collapse_section(
