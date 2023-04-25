@@ -1,0 +1,11 @@
+---
+params:
+  codePaysLieuDeNaissance: '99404'
+  genre: F
+status: 404
+payload: |-
+  {
+    "error": "not_found",
+    "reason": "Dossier allocataire inexistant. Le document ne peut être édité.",
+    "message": "Dossier allocataire inexistant. Le document ne peut être édité."
+  }

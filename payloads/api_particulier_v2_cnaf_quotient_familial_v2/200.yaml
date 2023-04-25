@@ -1,0 +1,49 @@
+---
+params:
+  codePaysLieuDeNaissance: '99100'
+  genre: 'M'
+  nomUsage: 'JACQUES'
+  prenoms:
+    - 'JEAN-PIERRE'
+    - 'THOMAS'
+  anneeDateDeNaissance: 2000
+  moisDateDeNaissance: 01
+status: 200
+payload: |-
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "JACQUES",
+        "nomUsage": "JACQUES",
+        "prenoms": "JEAN-PIERRE THOMAS",
+        "anneeDateDeNaissance": "1937",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "27",
+        "genre": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "JACQUES",
+        "nomUsage": "JACQUES",
+        "prenoms": "TRISTAN HENRI",
+        "anneeDateDeNaissance": "1970",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "20",
+        "genre": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur JEAN-PIERRE JACQUES",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE DE LA GARE",
+      "lieuDit": null,
+      "codePostalVille": "75002",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 1045,
+    "annee": 2021,
+    "mois": 6
+  }

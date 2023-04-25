@@ -10,6 +10,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [Statut demandeur d'emploi](api_particulier_v2_pole_emploi_statut) (`/api/v2/situations-pole-emploi`)
 * [Statut étudiant](api_particulier_v2_mesri_student_status) (`/api/v2/etudiants`)
 * [Statut étudiant boursier](api_particulier_v2_cnous_student_scholarship) (`/api/v2/etudiants-boursiers`)
+* [Quotient familial MSA x CNAF](api_particulier_v2_cnaf_quotient_familial_v2) (`/v2/composition-familiale-v2`)
 
 ## API Entreprise v3+
 
