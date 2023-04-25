@@ -1,20 +1,26 @@
 require 'net/http'
 
 class APIEntreprise::V2::EffectifsMensuelsEtablissementACOSSCovidController < APIEntreprise::V2::BaseController
-  include AidesCovidRequestsHelper
-
   def show
-    check_mois && check_siret
+    organizer = GIPMDS::EffectifsMensuelsEtablissement.call(params: organizer_params)
 
-    if success?
-      render_aides_covid_data(endpoint_uri)
+    if organizer.success?
+      render json: APIEntreprise::GIPMDS::EffectifsMensuelsEtablissementSerializer::V2.new(organizer.bundled_data.data).as_json,
+        status: extract_http_code(organizer)
     else
-      render_errors
+      render json: ErrorsSerializer.new(organizer.errors, format: :json_api).as_json,
+        status: extract_http_code(organizer)
     end
   end
 
-  def endpoint_uri
-    @endpoint_uri ||= URI.parse("http://127.0.0.1/effectifs_mensuels_etablissement/#{siret}/#{annee}/#{mois}")
+  private
+
+  def organizer_params
+    {
+      siret: siret,
+      year: annee,
+      month: mois,
+    }
   end
 
   def siret
@@ -27,21 +33,5 @@ class APIEntreprise::V2::EffectifsMensuelsEtablissementACOSSCovidController < AP
 
   def mois
     params.require(:mois)
-  end
-
-  def check_siret
-    if Siret.new(siret).valid?
-      true
-    else
-      (@errors ||= []) << UnprocessableEntityError.new(:siret)
-    end
-  end
-
-  def check_mois
-    if mois =~ /\A\d\d\z/
-      true
-    else
-      (@errors ||= []) << UnprocessableEntityError.new(:month)
-    end
   end
 end
