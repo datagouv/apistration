@@ -5,6 +5,10 @@ RSpec.describe APIEntreprise::V2::EffectifsAnnuelsEntrepriseACOSSCovidController
   it_behaves_like 'unauthorized', :show
   it_behaves_like 'ask_for_mandatory_parameters', :show
 
+  before do
+    mock_gip_mds_authenticate
+  end
+
   describe 'show' do
     subject { get :show, params: { siren: siren, token: token }.merge(mandatory_params) }
 
@@ -12,16 +16,13 @@ RSpec.describe APIEntreprise::V2::EffectifsAnnuelsEntrepriseACOSSCovidController
       let(:valid_response) do
         {
           siren: valid_siren,
-          annee: '2019',
-          effectifs_mensuels: '1.00'
+          annee: (Time.zone.today.year - 1).to_s,
+          effectifs_annuel: (12.34 + 56.78).to_s,
         }
       end
 
       before do
-        stub_request(:get, "http://127.0.0.1/effectifs_annuels_entreprise/#{siren}").and_return(
-          status: 200,
-          body: valid_response.to_json
-        )
+        mock_gip_mds_annuel_effectifs(siren: valid_siren, year: (Time.zone.today.year - 1).to_s)
       end
 
       it 'returns 200' do
@@ -33,26 +34,13 @@ RSpec.describe APIEntreprise::V2::EffectifsAnnuelsEntrepriseACOSSCovidController
       end
     end
 
-    describe 'when there is a timeout' do
-      let(:timeout_error) do
-        [
-          Net::OpenTimeout,
-          Net::ReadTimeout
-        ].sample
-      end
-
+    describe 'when GIP-MDS renders an error' do
       before do
-        stub_request(:get, "http://127.0.0.1/effectifs_annuels_entreprise/#{siren}").to_raise(timeout_error)
+        mock_gip_mds_not_found
       end
 
-      it 'returns 502' do
-        expect(subject.status).to eq(502)
-      end
-
-      it 'has an error body' do
-        expect(JSON.parse(subject.body)).to have_json_error(
-          detail: 'Le service intermédiaire n\'a pas répondu'
-        )
+      it 'returns 404' do
+        expect(subject.status).to eq(404)
       end
     end
   end
