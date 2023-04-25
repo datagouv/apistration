@@ -14,6 +14,7 @@ payload: |-
       "libelle_commune": "SCHIRMECK",
       "code_postal": "67130",
       "distribution_speciale": null,
+      "status_diffusion": "diffusible",
       "code_cedex": null,
       "libelle_cedex": null,
       "acheminement_postal": {

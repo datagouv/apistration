@@ -9,6 +9,7 @@ payload: |-
       "siege_social": true,
       "etat_administratif": "A",
       "date_fermeture": null,
+      "status_diffusion": "partiellement_diffusible",
       "enseigne": null,
       "activite_principale": {
         "code": "74.10Z",
@@ -27,6 +28,7 @@ payload: |-
       "unite_legale": {
         "siren": "350042925",
         "siret_siege_social": "35004292500031",
+        "status_diffusion": "partiellement_diffusible",
         "type": "personne_physique",
         "personne_morale_attributs": {
           "raison_sociale": null,
@@ -79,6 +81,7 @@ payload: |-
         "libelle_commune_etranger": null,
         "distribution_speciale": null,
         "code_commune": "16399",
+        "status_diffusion": "partiellement_diffusible",
         "code_cedex": null,
         "libelle_cedex": null,
         "code_pays_etranger": null,

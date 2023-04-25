@@ -9,6 +9,7 @@ payload: |-
       "siret_siege_social": "47846480300319",
       "categorie_entreprise": null,
       "diffusable_commercialement": true,
+      "status_diffusion": "diffusible",
       "type": "personne_physique",
       "personne_morale_attributs": {
         "raison_sociale": null,

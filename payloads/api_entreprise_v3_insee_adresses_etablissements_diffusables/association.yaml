@@ -19,6 +19,7 @@ payload: |-
       "distribution_speciale": null,
       "code_cedex": "75694",
       "libelle_cedex": "PARIS CEDEX 14",
+      "status_diffusion": "diffusible",
       "acheminement_postal": {
         "l1": "CROIX ROUGE FRANCAISE",
         "l2": "",

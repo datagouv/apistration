@@ -16,6 +16,7 @@ payload: |-
       "distribution_speciale": null,
       "code_cedex": null,
       "libelle_cedex": null,
+      "status_diffusion": "partiellement_diffusible",
       "acheminement_postal": {
         "l1": "",
         "l2": "MOREAU AURELIE",

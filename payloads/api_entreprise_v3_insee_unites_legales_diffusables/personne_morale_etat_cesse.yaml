@@ -9,6 +9,7 @@ payload: |-
       "siret_siege_social": "35005144700018",
       "categorie_entreprise": null,
       "diffusable_commercialement": true,
+      "status_diffusion": "diffusible",
       "type": "personne_morale",
       "personne_morale_attributs": {
         "raison_sociale": "SCI SERGENT",

@@ -11,6 +11,7 @@ payload: |-
       "siret": "77567227221138",
       "siege_social": true,
       "etat_administratif": "A",
+      "status_diffusion": "diffusible",
       "date_fermeture": null,
       "enseigne": null,
       "activite_principale": {
@@ -31,6 +32,7 @@ payload: |-
         "siren": "775672272",
         "siret_siege_social": "77567227221138",
         "type": "personne_morale",
+        "status_diffusion": "diffusible",
         "personne_morale_attributs": {
           "raison_sociale": "CROIX ROUGE FRANCAISE",
           "sigle": "CRF"
@@ -84,6 +86,7 @@ payload: |-
         "code_commune": "75114",
         "code_cedex": "75694",
         "libelle_cedex": "PARIS CEDEX 14",
+        "status_diffusion": "diffusible",
         "code_pays_etranger": null,
         "libelle_pays_etranger": null,
         "acheminement_postal": {

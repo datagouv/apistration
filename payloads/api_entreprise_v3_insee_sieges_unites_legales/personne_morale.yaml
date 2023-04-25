@@ -10,6 +10,7 @@ payload: |-
     "data": {
       "siret": "55204944776279",
       "siege_social": true,
+      "status_diffusion": "diffusible",
       "etat_administratif": "A",
       "date_fermeture": null,
       "enseigne": "SNCF ST DENIS 2 PL AUX ETOILES",
@@ -30,6 +31,7 @@ payload: |-
       "unite_legale": {
         "siren": "552049447",
         "siret_siege_social": "55204944776279",
+        "status_diffusion": "diffusible",
         "type": "personne_morale",
         "personne_morale_attributs": {
           "raison_sociale": "SOCIETE NATIONALE SNCF",
@@ -85,6 +87,7 @@ payload: |-
         "code_cedex": null,
         "libelle_cedex": null,
         "code_pays_etranger": null,
+        "status_diffusion": "diffusible",
         "libelle_pays_etranger": null,
         "acheminement_postal": {
           "l1": "SOCIETE NATIONALE SNCF",
