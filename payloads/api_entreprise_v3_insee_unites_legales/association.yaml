@@ -10,6 +10,7 @@ payload: |-
     "data": {
       "siren": "775672272",
       "siret_siege_social": "77567227221138",
+      "status_diffusion": "diffusible",
       "categorie_entreprise": "GE",
       "diffusable_commercialement": true,
       "type": "personne_morale",

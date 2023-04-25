@@ -12,6 +12,7 @@ payload: |-
       "categorie_entreprise": null,
       "diffusable_commercialement": true,
       "type": "personne_physique",
+      "status_diffusion": "diffusible",
       "personne_morale_attributs": {
         "raison_sociale": null,
         "sigle": null

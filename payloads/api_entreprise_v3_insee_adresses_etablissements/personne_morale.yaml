@@ -18,6 +18,7 @@ payload: |-
       "code_postal": "93210",
       "distribution_speciale": null,
       "code_cedex": null,
+      "status_diffusion": "diffusible",
       "libelle_cedex": null,
       "acheminement_postal": {
         "l1": "SOCIETE NATIONALE SNCF",

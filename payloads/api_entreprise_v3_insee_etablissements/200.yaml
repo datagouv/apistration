@@ -12,6 +12,7 @@ payload: |-
       "siege_social": true,
       "etat_administratif": "A",
       "date_fermeture": 1634133818,
+      "status_diffusion": "diffusible",
       "activite_principale": {
         "code": "8411Z",
         "libelle": "Administration publique générale",
@@ -30,6 +31,7 @@ payload: |-
         "siren": "130025265",
         "siret_siege_social": "13002526500013",
         "type": "personne_morale",
+        "status_diffusion": "diffusible",
         "personne_morale_attributs": {
           "raison_sociale": "DIRECTION INTERMINISTERIELLE DU NUMERIQUE",
           "sigle": "DINUM"
@@ -82,6 +84,7 @@ payload: |-
         "libelle_commune_etranger": "dummy",
         "code_pays_etranger": "99132",
         "libelle_pays_etranger": "ROYAUME-UNI",
+        "status_diffusion": "diffusible",
         "acheminement_postal": {
           "l1": "DIRECTION INTERMINISTERIELLE DU NUMERIQUE",
           "l2": "JEAN MARIE DURAND",

@@ -13,6 +13,7 @@ payload: |-
       "etat_administratif": "A",
       "date_fermeture": null,
       "enseigne": null,
+      "status_diffusion": "diffusible",
       "activite_principale": {
         "code": "88.99B",
         "nomenclature": "NAFRev2",
@@ -30,6 +31,7 @@ payload: |-
       "unite_legale": {
         "siren": "775672272",
         "siret_siege_social": "77567227221138",
+        "status_diffusion": "diffusible",
         "type": "personne_morale",
         "personne_morale_attributs": {
           "raison_sociale": "CROIX ROUGE FRANCAISE",
@@ -86,6 +88,7 @@ payload: |-
         "libelle_cedex": "PARIS CEDEX 14",
         "code_pays_etranger": null,
         "libelle_pays_etranger": null,
+        "status_diffusion": "diffusible",
         "acheminement_postal": {
           "l1": "CROIX ROUGE FRANCAISE",
           "l2": "",

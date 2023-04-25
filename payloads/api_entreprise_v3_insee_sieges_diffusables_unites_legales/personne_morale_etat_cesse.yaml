@@ -24,10 +24,12 @@ payload: |-
       },
       "diffusable_commercialement": true,
       "date_creation": null,
+      "status_diffusion": "diffusible",
       "unite_legale": {
         "siren": "350051447",
         "siret_siege_social": "35005144700018",
         "type": "personne_morale",
+        "status_diffusion": "diffusible",
         "personne_morale_attributs": {
           "raison_sociale": "SCI SERGENT",
           "sigle": null
@@ -76,6 +78,7 @@ payload: |-
         "libelle_voie": "DU COMMANDANT",
         "code_postal": "75017",
         "libelle_commune": "PARIS 17",
+        "status_diffusion": "diffusible",
         "libelle_commune_etranger": null,
         "distribution_speciale": null,
         "code_commune": "75117",

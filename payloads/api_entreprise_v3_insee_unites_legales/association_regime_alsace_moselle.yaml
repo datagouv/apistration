@@ -8,6 +8,7 @@ payload: |-
       "siren": "424179364",
       "siret_siege_social": "42417936400023",
       "categorie_entreprise": "PME",
+      "status_diffusion": "diffusible",
       "diffusable_commercialement": true,
       "type": "personne_morale",
       "personne_morale_attributs": {

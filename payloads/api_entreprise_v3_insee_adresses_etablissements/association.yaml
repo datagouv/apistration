@@ -16,6 +16,7 @@ payload: |-
       "code_commune": "75114",
       "libelle_commune": "PARIS 14",
       "code_postal": "75014",
+      "status_diffusion": "diffusible",
       "distribution_speciale": null,
       "code_cedex": "75694",
       "libelle_cedex": "PARIS CEDEX 14",

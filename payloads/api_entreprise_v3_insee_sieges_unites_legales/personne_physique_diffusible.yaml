@@ -10,6 +10,7 @@ payload: |-
       "etat_administratif": "A",
       "date_fermeture": null,
       "enseigne": null,
+      "status_diffusion": "diffusible",
       "activite_principale": {
         "code": "74.10Z",
         "nomenclature": "NAFRev2",
@@ -28,6 +29,7 @@ payload: |-
         "siren": "478464803",
         "siret_siege_social": "47846480300319",
         "type": "personne_physique",
+        "status_diffusion": "diffusible",
         "personne_morale_attributs": {
           "raison_sociale": null,
           "sigle": null
@@ -83,6 +85,7 @@ payload: |-
         "libelle_cedex": null,
         "code_pays_etranger": null,
         "libelle_pays_etranger": null,
+        "status_diffusion": "diffusible",
         "acheminement_postal": {
           "l1": "",
           "l2": "MAXIME DUPONT",

@@ -10,6 +10,7 @@ payload: |-
       "etat_administratif": "A",
       "date_fermeture": null,
       "enseigne": null,
+      "status_diffusion": "diffusible",
       "activite_principale": {
         "code": "94.99Z",
         "nomenclature": "NAFRev2",
@@ -28,6 +29,7 @@ payload: |-
         "siren": "424179364",
         "siret_siege_social": "42417936400023",
         "type": "personne_morale",
+        "status_diffusion": "diffusible",
         "personne_morale_attributs": {
           "raison_sociale": "ASSOCIATION SOCIO-CULTURELLE - LE REPERE",
           "sigle": null
@@ -78,6 +80,7 @@ payload: |-
         "libelle_commune": "SCHIRMECK",
         "libelle_commune_etranger": null,
         "distribution_speciale": null,
+        "status_diffusion": "diffusible",
         "code_commune": "67448",
         "code_cedex": null,
         "libelle_cedex": null,
