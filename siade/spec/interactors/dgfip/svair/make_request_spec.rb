@@ -8,8 +8,8 @@ RSpec.describe DGFIP::SVAIR::MakeRequest, type: :make_request do
     }
   end
 
-  let(:tax_number) { '1234567890ABC' }
-  let(:tax_notice_number) { '1234567890ABC' }
+  let(:tax_number) { valid_tax_number }
+  let(:tax_notice_number) { valid_tax_notice_number }
 
   context 'when everything works' do
     let!(:stubbed_request) do

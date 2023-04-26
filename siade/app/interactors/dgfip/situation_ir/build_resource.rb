@@ -39,7 +39,7 @@ class DGFIP::SituationIR::BuildResource < BuildResource
       montantImpot: positive_or_nil(json_body['montTotIr']),
       revenuFiscalReference: json_body['rfr'],
       anneeImpots: annee_impots.to_s,
-      anneeRevenus: json_body['annRevenu'].to_s,
+      anneeRevenus: annee_revenus,
       erreurCorrectif: '',
       situationPartielle: ''
     }
@@ -85,7 +85,15 @@ class DGFIP::SituationIR::BuildResource < BuildResource
     SITUATIONS_DE_FAMILLE[json_body['sitFam']]
   end
 
+  def tax_notice_number
+    context.params[:tax_notice_number]
+  end
+
+  def annee_revenus
+    "20#{tax_notice_number.first(2)}"
+  end
+
   def annee_impots
-    json_body['annRevenu'] + 1
+    annee_revenus.to_i + 1
   end
 end

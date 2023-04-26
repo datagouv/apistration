@@ -8,8 +8,8 @@ RSpec.describe DGFIP::SVAIR::ValidateParams, type: :validate_params do
     }
   end
 
-  let(:tax_number) { '1234567890ABC' }
-  let(:tax_notice_number) { '1234567890ABC' }
+  let(:tax_number) { valid_tax_number }
+  let(:tax_notice_number) { valid_tax_notice_number }
 
   context 'with valid params' do
     it { is_expected.to be_a_success }

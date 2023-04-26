@@ -8,8 +8,8 @@ RSpec.describe DGFIP::SituationIR, type: :retriever_organizer do
     }
   end
 
-  let(:tax_number) { '1234567890ABC' }
-  let(:tax_notice_number) { '2134567890ABC' }
+  let(:tax_number) { valid_tax_number }
+  let(:tax_notice_number) { valid_tax_notice_number }
 
   describe 'happy path', vcr: { cassette_name: 'dgfip/situation_ir/valid' } do
     it { is_expected.to be_a_success }

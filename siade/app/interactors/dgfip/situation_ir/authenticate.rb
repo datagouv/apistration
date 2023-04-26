@@ -1,5 +1,5 @@
 class DGFIP::SituationIR::Authenticate < GetOAuth2Token
-  SCOPE_API_PARTICULIER = 'RessourceIRDerniere'.freeze
+  SCOPE_API_PARTICULIER = 'RessourceIR'.freeze
 
   protected
 

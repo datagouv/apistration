@@ -26,8 +26,8 @@ RSpec.describe APIParticulier::V2::DGFIP::SituationIRController do
 
   let(:token) { TokenFactory.new(scopes).valid }
 
-  let(:tax_number) { '1234567890ABC' }
-  let(:tax_notice_number) { '2134567890ABC' }
+  let(:tax_number) { valid_tax_number }
+  let(:tax_notice_number) { valid_tax_notice_number }
 
   describe 'with valid params' do
     context 'when API returns 200', vcr: { cassette_name: 'dgfip/situation_ir/valid' } do
