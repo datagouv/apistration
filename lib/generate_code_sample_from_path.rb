@@ -45,7 +45,17 @@ class GenerateCodeSampleFromPath
   end
 
   def build_curl_query_params(query_params)
-    query_params.map { |key, value| "-d '#{key}=#{CGI.escape(value.to_s)}'" }.join(' ')
+    query_params.map do |key, value|
+      build_curl_query_param(key, value)
+    end.flatten.join(' ')
+  end
+
+  def build_curl_query_param(key, value)
+    if value.is_a?(Array)
+      value.map { |v| build_curl_query_param("#{key}[]", v) }.join(' ')
+    else
+      "-d '#{key}=#{CGI.escape(value.to_s)}'"
+    end
   end
 
   def api_entreprise_default_query_params
