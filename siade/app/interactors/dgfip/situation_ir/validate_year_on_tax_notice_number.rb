@@ -8,6 +8,6 @@ class DGFIP::SituationIR::ValidateYearOnTaxNoticeNumber < ValidateParamInteracto
   private
 
   def year
-    param(:tax_notice_number)[0..1]
+    param(:tax_notice_number).first(2)
   end
 end
