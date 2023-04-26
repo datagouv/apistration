@@ -1,7 +1,7 @@
 ---
 params:
   codePaysLieuDeNaissance: '99100'
-  genre: 'M'
+  sexe: 'M'
   nomUsage: 'JACQUES'
   prenoms:
     - 'JEAN-PIERRE'
@@ -20,7 +20,7 @@ payload: |-
         "anneeDateDeNaissance": "1937",
         "moisDateDeNaissance": "06",
         "jourDateDeNaissance": "27",
-        "genre": "M"
+        "sexe": "M"
       }
     ],
     "enfants": [
@@ -31,7 +31,7 @@ payload: |-
         "anneeDateDeNaissance": "1970",
         "moisDateDeNaissance": "04",
         "jourDateDeNaissance": "20",
-        "genre": "M"
+        "sexe": "M"
       }
     ],
     "adresse": {

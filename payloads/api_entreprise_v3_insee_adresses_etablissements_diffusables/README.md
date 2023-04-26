@@ -34,6 +34,7 @@
       "distribution_speciale": null,
       "code_cedex": "75694",
       "libelle_cedex": "PARIS CEDEX 14",
+      "status_diffusion": "diffusible",
       "acheminement_postal": {
         "l1": "CROIX ROUGE FRANCAISE",
         "l2": "",
@@ -102,6 +103,7 @@
       "libelle_commune": "SCHIRMECK",
       "code_postal": "67130",
       "distribution_speciale": null,
+      "status_diffusion": "diffusible",
       "code_cedex": null,
       "libelle_cedex": null,
       "acheminement_postal": {
@@ -172,6 +174,7 @@
       "libelle_commune": "SAINT-DENIS",
       "code_postal": "93210",
       "distribution_speciale": null,
+      "status_diffusion": "diffusible",
       "code_cedex": null,
       "libelle_cedex": null,
       "acheminement_postal": {
@@ -242,6 +245,7 @@
       "libelle_commune": "PARIS 17",
       "code_postal": "75017",
       "distribution_speciale": null,
+      "status_diffusion": "diffusible",
       "code_cedex": null,
       "libelle_cedex": null,
       "acheminement_postal": {
@@ -314,6 +318,7 @@
       "distribution_speciale": null,
       "code_cedex": null,
       "libelle_cedex": null,
+      "status_diffusion": "diffusible",
       "acheminement_postal": {
         "l1": "",
         "l2": "MAXIME DUPONT",
