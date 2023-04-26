@@ -31,6 +31,7 @@
       "code_commune": "75114",
       "libelle_commune": "PARIS 14",
       "code_postal": "75014",
+      "status_diffusion": "diffusible",
       "distribution_speciale": null,
       "code_cedex": "75694",
       "libelle_cedex": "PARIS CEDEX 14",
@@ -104,6 +105,7 @@
       "distribution_speciale": null,
       "code_cedex": null,
       "libelle_cedex": null,
+      "status_diffusion": "diffusible",
       "acheminement_postal": {
         "l1": "ASSOCIATION SOCIO-CULTURELLE - LE REPERE",
         "l2": "",
@@ -175,6 +177,7 @@
       "code_postal": "93210",
       "distribution_speciale": null,
       "code_cedex": null,
+      "status_diffusion": "diffusible",
       "libelle_cedex": null,
       "acheminement_postal": {
         "l1": "SOCIETE NATIONALE SNCF",
@@ -246,6 +249,7 @@
       "distribution_speciale": null,
       "code_cedex": null,
       "libelle_cedex": null,
+      "status_diffusion": "diffusible",
       "acheminement_postal": {
         "l1": "SCI SERGENT",
         "l2": "",
@@ -316,6 +320,7 @@
       "distribution_speciale": null,
       "code_cedex": null,
       "libelle_cedex": null,
+      "status_diffusion": "diffusible",
       "acheminement_postal": {
         "l1": "",
         "l2": "MAXIME DUPONT",
@@ -386,6 +391,7 @@
       "distribution_speciale": null,
       "code_cedex": null,
       "libelle_cedex": null,
+      "status_diffusion": "partiellement_diffusible",
       "acheminement_postal": {
         "l1": "",
         "l2": "MOREAU AURELIE",

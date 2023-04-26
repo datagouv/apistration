@@ -25,6 +25,7 @@
     "data": {
       "siren": "775672272",
       "siret_siege_social": "77567227221138",
+      "status_diffusion": "diffusible",
       "categorie_entreprise": "GE",
       "diffusable_commercialement": true,
       "type": "personne_morale",
@@ -114,6 +115,7 @@
       "siren": "424179364",
       "siret_siege_social": "42417936400023",
       "categorie_entreprise": "PME",
+      "status_diffusion": "diffusible",
       "diffusable_commercialement": true,
       "type": "personne_morale",
       "personne_morale_attributs": {
@@ -204,6 +206,7 @@
       "siren": "552049447",
       "siret_siege_social": "55204944776279",
       "categorie_entreprise": "GE",
+      "status_diffusion": "diffusible",
       "diffusable_commercialement": true,
       "type": "personne_morale",
       "personne_morale_attributs": {
@@ -293,6 +296,7 @@
       "siret_siege_social": "35005144700018",
       "categorie_entreprise": null,
       "diffusable_commercialement": true,
+      "status_diffusion": "diffusible",
       "type": "personne_morale",
       "personne_morale_attributs": {
         "raison_sociale": "SCI SERGENT",
@@ -381,6 +385,7 @@
       "siret_siege_social": "47846480300319",
       "categorie_entreprise": null,
       "diffusable_commercialement": true,
+      "status_diffusion": "diffusible",
       "type": "personne_physique",
       "personne_morale_attributs": {
         "raison_sociale": null,
@@ -469,6 +474,7 @@
       "siret_siege_social": "35004292500031",
       "categorie_entreprise": "PME",
       "diffusable_commercialement": false,
+      "status_diffusion": "partiellement_diffusible",
       "type": "personne_physique",
       "personne_morale_attributs": {
         "raison_sociale": null,

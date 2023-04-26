@@ -1,7 +1,7 @@
 ---
 params:
   codePaysLieuDeNaissance: '99500'
-  genre: F
+  sexe: F
 status: 500
 payload: |-
   {

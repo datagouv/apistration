@@ -1,4 +1,4 @@
-# Quotient familial MSA x CNAF
+# Quotient familial CAF & MSA
 * [200.yaml](200.yaml)
 
   Status `200`
@@ -9,14 +9,14 @@
   ```json
   {
     "codePaysLieuDeNaissance": "99100",
-    "genre": "M",
+    "sexe": "M",
     "nomUsage": "JACQUES",
     "prenoms": [
       "JEAN-PIERRE",
       "THOMAS"
     ],
-    "anneeDateDeNaissance": "2000",
-    "moisDateDeNaissance": "01"
+    "anneeDateDeNaissance": 2000,
+    "moisDateDeNaissance": 1
   }
   ```
 
@@ -34,25 +34,25 @@
         "nomNaissance": "JACQUES",
         "nomUsage": "JACQUES",
         "prenoms": "JEAN-PIERRE THOMAS",
-        "anneeDateDeNaissance": "2000",
-        "moisDateDeNaissance": "01",
-        "jourDateDeNaissance": "31",
-        "genre": "M"
+        "anneeDateDeNaissance": "1937",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "27",
+        "sexe": "M"
       }
     ],
     "enfants": [
       {
         "nomNaissance": "JACQUES",
         "nomUsage": "JACQUES",
-        "prenoms": "JEAN-PIERRE THOMAS",
-        "anneeDateDeNaissance": "2000",
-        "moisDateDeNaissance": "01",
-        "jourDateDeNaissance": "31",
-        "genre": "M"
+        "prenoms": "TRISTAN HENRI",
+        "anneeDateDeNaissance": "1970",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "20",
+        "sexe": "M"
       }
     ],
     "adresse": {
-      "identite": "Monsieur JEAN JACQUES",
+      "identite": "Monsieur JEAN-PIERRE JACQUES",
       "complementInformation": null,
       "complementInformationGeographique": null,
       "numeroLibelleVoie": "1 RUE DE LA GARE",
@@ -74,7 +74,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99100' -d 'genre=M' -d 'nomUsage=JACQUES' -d 'prenoms=%5B%22JEAN-PIERRE%22%2C+%22THOMAS%22%5D' -d 'anneeDateDeNaissance=2000' -d 'moisDateDeNaissance=01' \
+    -G -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' -d 'nomUsage=JACQUES' -d 'prenoms=%5B%22JEAN-PIERRE%22%2C+%22THOMAS%22%5D' -d 'anneeDateDeNaissance=2000' -d 'moisDateDeNaissance=1' \
     --url "https://staging.particulier.api.gouv.fr/v2/composition-familiale-v2"
   ```
 
@@ -90,7 +90,7 @@
   ```json
   {
     "codePaysLieuDeNaissance": "99404",
-    "genre": "F"
+    "sexe": "F"
   }
   ```
 
@@ -116,7 +116,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99404' -d 'genre=F' \
+    -G -d 'codePaysLieuDeNaissance=99404' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/v2/composition-familiale-v2"
   ```
 
@@ -132,7 +132,7 @@
   ```json
   {
     "codePaysLieuDeNaissance": "99500",
-    "genre": "F"
+    "sexe": "F"
   }
   ```
 
@@ -158,7 +158,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99500' -d 'genre=F' \
+    -G -d 'codePaysLieuDeNaissance=99500' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/v2/composition-familiale-v2"
   ```
 
@@ -174,7 +174,7 @@
   ```json
   {
     "codePaysLieuDeNaissance": "99503",
-    "genre": "F"
+    "sexe": "F"
   }
   ```
 
@@ -200,7 +200,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99503' -d 'genre=F' \
+    -G -d 'codePaysLieuDeNaissance=99503' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/v2/composition-familiale-v2"
   ```
 

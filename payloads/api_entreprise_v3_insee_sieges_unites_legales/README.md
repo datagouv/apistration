@@ -26,6 +26,7 @@
       "siret": "77567227221138",
       "siege_social": true,
       "etat_administratif": "A",
+      "status_diffusion": "diffusible",
       "date_fermeture": null,
       "enseigne": null,
       "activite_principale": {
@@ -46,6 +47,7 @@
         "siren": "775672272",
         "siret_siege_social": "77567227221138",
         "type": "personne_morale",
+        "status_diffusion": "diffusible",
         "personne_morale_attributs": {
           "raison_sociale": "CROIX ROUGE FRANCAISE",
           "sigle": "CRF"
@@ -99,6 +101,7 @@
         "code_commune": "75114",
         "code_cedex": "75694",
         "libelle_cedex": "PARIS CEDEX 14",
+        "status_diffusion": "diffusible",
         "code_pays_etranger": null,
         "libelle_pays_etranger": null,
         "acheminement_postal": {
@@ -163,6 +166,7 @@
       "etat_administratif": "A",
       "date_fermeture": null,
       "enseigne": null,
+      "status_diffusion": "diffusible",
       "activite_principale": {
         "code": "94.99Z",
         "nomenclature": "NAFRev2",
@@ -181,6 +185,7 @@
         "siren": "424179364",
         "siret_siege_social": "42417936400023",
         "type": "personne_morale",
+        "status_diffusion": "diffusible",
         "personne_morale_attributs": {
           "raison_sociale": "ASSOCIATION SOCIO-CULTURELLE - LE REPERE",
           "sigle": null
@@ -231,6 +236,7 @@
         "libelle_commune": "SCHIRMECK",
         "libelle_commune_etranger": null,
         "distribution_speciale": null,
+        "status_diffusion": "diffusible",
         "code_commune": "67448",
         "code_cedex": null,
         "libelle_cedex": null,
@@ -297,6 +303,7 @@
     "data": {
       "siret": "55204944776279",
       "siege_social": true,
+      "status_diffusion": "diffusible",
       "etat_administratif": "A",
       "date_fermeture": null,
       "enseigne": "SNCF ST DENIS 2 PL AUX ETOILES",
@@ -317,6 +324,7 @@
       "unite_legale": {
         "siren": "552049447",
         "siret_siege_social": "55204944776279",
+        "status_diffusion": "diffusible",
         "type": "personne_morale",
         "personne_morale_attributs": {
           "raison_sociale": "SOCIETE NATIONALE SNCF",
@@ -372,6 +380,7 @@
         "code_cedex": null,
         "libelle_cedex": null,
         "code_pays_etranger": null,
+        "status_diffusion": "diffusible",
         "libelle_pays_etranger": null,
         "acheminement_postal": {
           "l1": "SOCIETE NATIONALE SNCF",
@@ -449,10 +458,12 @@
       },
       "diffusable_commercialement": true,
       "date_creation": null,
+      "status_diffusion": "diffusible",
       "unite_legale": {
         "siren": "350051447",
         "siret_siege_social": "35005144700018",
         "type": "personne_morale",
+        "status_diffusion": "diffusible",
         "personne_morale_attributs": {
           "raison_sociale": "SCI SERGENT",
           "sigle": null
@@ -501,6 +512,7 @@
         "libelle_voie": "DU COMMANDANT",
         "code_postal": "75017",
         "libelle_commune": "PARIS 17",
+        "status_diffusion": "diffusible",
         "libelle_commune_etranger": null,
         "distribution_speciale": null,
         "code_commune": "75117",
@@ -570,6 +582,7 @@
       "etat_administratif": "A",
       "date_fermeture": null,
       "enseigne": null,
+      "status_diffusion": "diffusible",
       "activite_principale": {
         "code": "74.10Z",
         "nomenclature": "NAFRev2",
@@ -588,6 +601,7 @@
         "siren": "478464803",
         "siret_siege_social": "47846480300319",
         "type": "personne_physique",
+        "status_diffusion": "diffusible",
         "personne_morale_attributs": {
           "raison_sociale": null,
           "sigle": null
@@ -643,6 +657,7 @@
         "libelle_cedex": null,
         "code_pays_etranger": null,
         "libelle_pays_etranger": null,
+        "status_diffusion": "diffusible",
         "acheminement_postal": {
           "l1": "",
           "l2": "MAXIME DUPONT",
@@ -704,6 +719,7 @@
       "siege_social": true,
       "etat_administratif": "A",
       "date_fermeture": null,
+      "status_diffusion": "partiellement_diffusible",
       "enseigne": null,
       "activite_principale": {
         "code": "74.10Z",
@@ -722,6 +738,7 @@
       "unite_legale": {
         "siren": "350042925",
         "siret_siege_social": "35004292500031",
+        "status_diffusion": "partiellement_diffusible",
         "type": "personne_physique",
         "personne_morale_attributs": {
           "raison_sociale": null,
@@ -774,6 +791,7 @@
         "libelle_commune_etranger": null,
         "distribution_speciale": null,
         "code_commune": "16399",
+        "status_diffusion": "partiellement_diffusible",
         "code_cedex": null,
         "libelle_cedex": null,
         "code_pays_etranger": null,
