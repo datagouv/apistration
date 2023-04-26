@@ -74,7 +74,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' -d 'nomUsage=JACQUES' -d 'prenoms=%5B%22JEAN-PIERRE%22%2C+%22THOMAS%22%5D' -d 'anneeDateDeNaissance=2000' -d 'moisDateDeNaissance=1' \
+    -G -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' -d 'nomUsage=JACQUES' -d 'prenoms[]=JEAN-PIERRE' -d 'prenoms[]=THOMAS' -d 'anneeDateDeNaissance=2000' -d 'moisDateDeNaissance=1' \
     --url "https://staging.particulier.api.gouv.fr/v2/composition-familiale-v2"
   ```
 
