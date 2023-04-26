@@ -19,31 +19,31 @@ RSpec.describe DGFIP::SituationIR::BuildResource, type: :build_resource do
     let(:valid_payload) do
       {
         declarant1: {
-          nom: 'CIS CINQ',
-          nomNaissance: 'CIS CINQ',
-          prenoms: 'PRENOM TATIANA',
-          dateNaissance: '30/09/1945'
+          nom: '',
+          nomNaissance: 'CIS QUATORZE',
+          prenoms: 'PRENOM VINCENT',
+          dateNaissance: '02/08/1973'
         },
         declarant2: {
-          nom: '',
-          nomNaissance: 'CIS VINGTSEPT',
-          prenoms: 'PRENOM GABIN',
-          dateNaissance: '06/11/1973'
+          nom: 'CIS QUATORZE',
+          nomNaissance: 'CIS TRENTEHUIT',
+          prenoms: 'PNM LEA',
+          dateNaissance: '10/02/1973'
         },
         foyerFiscal: {
-          adresse: '55 BOULEVARD MARCELLIN BERTHELOT 13200 ARLES',
+          adresse: '18 RUE DU COMMANDANT MOWAT 94300 VINCENNES',
           annee: 2022
         },
         dateRecouvrement: '31/07/2022',
         dateEtablissement: '07/07/2022',
-        nombreParts: 6.75,
-        situationFamille: 'Pacsé(e)s',
-        revenuBrutGlobal: 13_070,
-        revenuImposable: 10_586,
-        impotRevenuNetAvantCorrections: 99,
-        montantImpot: nil,
-        revenuFiscalReference: 33_640,
-        nombrePersonnesCharge: 5,
+        nombreParts: 2.0,
+        situationFamille: 'Marié(e)s',
+        revenuBrutGlobal: 47_560,
+        revenuImposable: 47_560,
+        impotRevenuNetAvantCorrections: nil,
+        montantImpot: 2982,
+        revenuFiscalReference: 48_583,
+        nombrePersonnesCharge: 0,
         anneeImpots: '2022',
         anneeRevenus: '2021',
         erreurCorrectif: '',

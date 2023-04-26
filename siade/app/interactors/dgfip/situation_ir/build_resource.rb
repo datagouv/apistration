@@ -13,7 +13,7 @@ class DGFIP::SituationIR::BuildResource < BuildResource
   def resource_attributes
     {
       declarant1: {
-        nom: json_body['nmUsaDec1'],
+        nom: json_body['nmUsaDec1'] || '',
         nomNaissance: json_body['nmNaiDec1'],
         prenoms: json_body['prnmDec1'],
         dateNaissance: date_naissance_declarant_1
@@ -48,6 +48,8 @@ class DGFIP::SituationIR::BuildResource < BuildResource
   private
 
   def positive_or_nil(value)
+    return nil if value.nil?
+
     value.positive? ? value : nil
   end
 

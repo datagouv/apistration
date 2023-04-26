@@ -8,7 +8,7 @@ def valid_dgfip_cookie
 end
 
 def valid_tax_number
-  '3999999776202'
+  '3999999898230'
 end
 
 def valid_tax_notice_number
