@@ -4,5 +4,5 @@ class APIParticulier::MESRI::Scolarites::V2 < APIParticulier::V2BaseSerializer
     :annee_scolaire,
     :est_scolarise,
     :est_boursier,
-    :code_status_eleve
+    :status_eleve
 end

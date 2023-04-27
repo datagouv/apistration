@@ -24,7 +24,10 @@ RSpec.describe MESRI::Scolarites::BuildResource, type: :build_resource do
         annee_scolaire: '2021',
         est_scolarise: true,
         est_boursier: true,
-        code_status_eleve: 'SC'
+        status_eleve: {
+          code: 'ST',
+          libelle: 'Scolaire'
+        }
       }
     end
 

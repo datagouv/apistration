@@ -87,21 +87,35 @@ mesri:
         description: "Indique si l'élève est boursier dans l'établissement"
         type: boolean
         example: false
-      code_status_eleve:
+      status_eleve:
         title: "Statut de l'élève"
         description: |+
           Indique le statut sous lequel l'élève est scolarisé dans l'établissement. Les valeurs possibles sont :
           - ST : Scolaire, il s'agit du statut de base renvoyé pour près de 95% des élèves. Ce statut concerne également les élèves qui suivent le CNED (Centre national d'éducation à distance). Ceux-ci peuvent être distingués par l'établissement car ils sont tous affectés au même : `0861288H (CNED DIRECTION GENERALE)`.
           - SQ : Scolaire Loi Quinquennale sur l'Emploi
           - AP : Apprenti
-          - FQ : Stagiaire de la Formation Professionnelle
-          - CQ : Contrat de Qualification
-          - FC : Formation Continue
-        type: string
-        enum:
-          - "ST"
-          - "SQ"
-          - "AP"
-          - "FQ"
-          - "CQ"
-          - "FC"
+          - CQ : Contrat de qualification
+          - FC : Formation continue
+        type: object
+        properties:
+          code:
+            title: "Code statut de l'élève"
+            description: "Code du statut sous lequel l'élève est scolarisé dans l'établissement."
+            type: string
+            enum:
+              - "ST"
+              - "AP"
+              - "FQ"
+              - "CQ"
+              - "FC"
+          libelle:
+            title: "Libellé du statut de l'élève"
+            description: "Libellé du statut sous lequel l'élève est scolarisé dans l'établissement."
+            type: string
+            enum:
+              - "Scolaire"
+              - "Apprenti"
+              - "Stagiaire de la Formation Professionnelle"
+              - "Contrat de Qualification"
+              - "Formation Continue"
+
