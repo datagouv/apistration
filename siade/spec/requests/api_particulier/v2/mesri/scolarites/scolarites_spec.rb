@@ -43,19 +43,51 @@ RSpec.describe 'MESRI: Scolarites', api: :particulier, type: %i[request swagger]
         end
 
         describe 'server errors' do
-          # unprocessable_entity_error_request do
-          #   let(:sexe) { 'whatever' }
-          # end
+          response '400', 'Paramètre(s) invalide(s)' do
+            let(:sexe) { 'invalid' }
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'mesri/scolarites/not_found' } do
-            let(:sexe) { 'f' }
+            build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_entity_error_gender_error)
+
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end
 
-          # common_provider_errors_request('MESRI', MESRI::Scolarites)
+          response '404', 'Non trouvée', vcr: { cassette_name: 'mesri/scolarites/not_found' } do
+            let(:sexe) { 'f' }
 
-          # common_network_error_request('MESRI', MESRI::Scolarites)
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
+          end
+
+          response '503', 'Erreur du fournisseur' do
+            provider_unknown_error = ProviderUnknownError.new('MESRI')
+
+            stubbed_organizer_error(
+              MESRI::Scolarites,
+              provider_unknown_error
+            )
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            build_rswag_example(provider_unknown_error, :unknown_error)
+
+            run_test!
+          end
+
+          response '504', 'Erreur d\'intermédiaire' do
+            schema '$ref' => '#/components/schemas/Error'
+
+            provider_timeout_error = ProviderTimeoutError.new('MESRI')
+
+            stubbed_organizer_error(
+              MESRI::Scolarites,
+              provider_timeout_error
+            )
+
+            run_test!
+          end
         end
       end
     end
