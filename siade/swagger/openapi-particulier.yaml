@@ -57,7 +57,7 @@ tags: []
 paths:
   "/api/v2/scolarites":
     get:
-      summary: Scolarité
+      summary: Statut élève scolarisé et boursier
       tags:
       - Scolarité étudiant
       parameters:
@@ -89,8 +89,8 @@ paths:
         in: query
         schema:
           type: string
-      description: Cette API permet de confirmer qu'un étudiant est bien inscrit dans
-        un établissement d'enseignement.
+      description: Statut scolarisé et statut boursier d'un élève du primaire, collège
+        ou lycée.
       responses:
         '200':
           description: Scolarité trouvée
@@ -102,24 +102,31 @@ paths:
                 properties:
                   eleve:
                     title: Informations sur l'élève
+                    description: Les informations retournées ici sont celles transmises
+                      en paramètre d'appel. S'il y a eu des erreurs de frappe à la
+                      saisie, elles seront renvoyées.
                     type: object
                     properties:
                       nom:
+                        title: Nom
                         description: Nom de l'élève
                         type: string
-                        example: Martin
+                        example: Dubois
                       prenom:
+                        title: Prénom
                         description: Prénom de l'élève
                         type: string
                         example: Camille
                       sexe:
-                        description: Sexe de l'élève, Masculin ou Féminin
+                        title: Sexe
+                        description: Sexe de l'élève, masculin ou féminin
                         type: string
                         example: F
                         enum:
                         - M
                         - F
                       date_naissance:
+                        title: Date de naissance
                         description: Date de naissance de l'élève au format AAAA-MM-JJ
                         type: string
                         example: '2000-01-20'
@@ -129,71 +136,67 @@ paths:
                     - sexe
                     - date_naissance
                   code_etablissement:
-                    title: Code UAI de l'établissement de l'élève
-                    description: "Le code d'unité administrative immatriculée (code
-                      UAI) est un code unique inscrit au répertoire national des établissements.
-                      Il est composé de 7 chiffres et d'une lettre ; les trois premiers
-                      chiffres correspondent au numéro de département de l'établissement.
-                      \n Pour retrouver facilement le code UAI d'un établissement
-                      à partir d' informations plus facilement connues des usagers
-                      (commune, code postal, etc.), vous pouvez utiliser l'[API \"Annuaire
-                      de l'éducation nationale\" ](https://api.gouv.fr/les-api/api-annuaire-education).
-                      \n ⚠️ L'établissement 0861288H (CNED Direction générale) n'existe
-                      pas dans l'API annuaire de l'éducation nationale, il faudra
-                      donc compléter la liste des établissements avec une ligne CNED
-                      à laquelle sera associée le code UAI qui sera en passé en entrée."
+                    title: Code UAI de l'établissement
+                    description: |
+                      Code d'unité administrative immatriculée (code UAI) de l'établissement où est scolarisé l'élève. Ce code unique inscrit au répertoire national des établissements est composé de 7 chiffres et d'une lettre ; les trois premiers chiffres correspondent au numéro de département de l'établissement.
+
+                      Pour retrouver facilement le code UAI d'un établissement à partir d' informations plus facilement connues des usagers (commune, code postal, etc.), vous pouvez utiliser l'[API \"Annuaire de l'éducation nationale\" ](https://api.gouv.fr/les-api/api-annuaire-education).
+
+                      ⚠️ L'établissement 0861288H (CNED Direction générale) n'existe pas dans l'API annuaire de l'éducation nationale, il faudra donc compléter la liste des établissements avec une ligne CNED à laquelle sera associée le code UAI qui sera en passé en entrée.
                     type: string
                     pattern: "^\\d{7}\\w$"
                     example: '0890003V'
                   annee_scolaire:
+                    title: Année scolaire
                     description: Année scolaire de l'élève au format AAAA-AAAA
                     type: string
                     pattern: "^\\d{4}$|^\\d{4}-\\d{4}$"
                     example: 2022-2023
                   est_scolarise:
-                    description: Indique si l'élève est scolarisé dans l'établissement
+                    description: Indique si l'élève est scolarisé dans l'établissement.
                     type: boolean
                     example: true
                   est_boursier:
-                    description: Indique si l'élève est boursier dans l'établissement
+                    description: Indique si l'élève est boursier dans l'établissement.
+                      Les bourses concernent uniquement les élèves des collèges et
+                      lycées.
                     type: boolean
                     example: false
-                  code_status_eleve:
+                  status_eleve:
                     title: Statut de l'élève
                     description: |
-                      Indique le statut sous lequel l'élève est scolarisé dans l'établissement. Les valeurs possibles sont :
+                      Indique le statut sous lequel l'élève est scolarisé dans l'établissement. Les valeurs possibles sont&nbsp;:&nbsp;
                       - ST : Scolaire, il s'agit du statut de base renvoyé pour près de 95% des élèves. Ce statut concerne également les élèves qui suivent le CNED (Centre national d'éducation à distance). Ceux-ci peuvent être distingués par l'établissement car ils sont tous affectés au même : `0861288H (CNED DIRECTION GENERALE)`.
-                      - SQ : Scolaire Loi Quinquennale sur l'Emploi
                       - AP : Apprenti
-                      - FQ : Stagiaire de la Formation Professionnelle
-                      - CQ : Contrat de Qualification
-                      - FC : Formation Continue
-                    type: string
-                    enum:
-                    - ST
-                    - SQ
-                    - AP
-                    - FQ
-                    - CQ
-                    - FC
-                  libelle_status_eleve:
-                    title: Libellé du statut de l'élève
-                    description: |
-                      Indique le libellé du statut sous lequel l'élève est scolarisé dans l'établissement. Les valeurs possibles sont :
-                      - Scolaire
-                      - Scolaire Loi Quinquennale sur l'Emploi
-                      - Apprenti
-                      - Stagiaire de la Formation Professionnelle
-                      - Contrat de Qualification
-                      - Formation Continue
-                    type: string
-                    enum:
-                    - Scolaire
-                    - Scolaire Loi Quinquennale sur l'Emploi
-                    - Apprenti
-                    - Stagiaire de la Formation Professionnelle
-                    - Contrat de Qualification
-                    - Formation Continue
+                      - CQ : Contrat de qualification
+                      - FC : Formation continue
+                    type: object
+                    properties:
+                      code:
+                        title: Code statut de l'élève
+                        description: Code du statut sous lequel l'élève est scolarisé
+                          dans l'établissement.
+                        type: string
+                        enum:
+                        - ST
+                        - AP
+                        - FQ
+                        - CQ
+                        - FC
+                      libelle:
+                        title: Libellé du statut de l'élève
+                        description: Libellé du statut sous lequel l'élève est scolarisé
+                          dans l'établissement.
+                        type: string
+                        enum:
+                        - Scolaire
+                        - Apprenti
+                        - Stagiaire de la Formation Professionnelle
+                        - Contrat de Qualification
+                        - Formation Continue
+                    required:
+                    - code
+                    - libelle
         '400':
           description: Paramètre(s) invalide(s)
           content:
@@ -602,12 +605,12 @@ paths:
                         description: Numéro d'appartement, escalier
                         type: string
                         nullable: true
-                        example: 
+                        example:
                       complementIdentiteGeo:
                         title: Complément d'information du point géographique
                         type: string
                         nullable: true
-                        example: 
+                        example:
                         description: Entrée, tour, immeuble, bâtiment, résidence
                       numeroRue:
                         title: Voie
@@ -618,7 +621,7 @@ paths:
                         title: Lieu-dit
                         type: string
                         nullable: true
-                        example: 
+                        example:
                         description: 'Lieu-dit ou service particulier de distribution
                           : poste restante, boîte postale'
                       codePostalVille:
@@ -734,7 +737,7 @@ paths:
                     type: string
                     description: Nom d'usage du demandeur d'emploi
                     nullable: true
-                    example: 
+                    example:
                   prenom:
                     title: Prénom
                     type: string
@@ -772,7 +775,7 @@ paths:
                     - AC
                     - DC
                     - RC
-                    - 
+                    -
                   telephone:
                     title: Téléphone principal
                     type: string
@@ -812,15 +815,15 @@ paths:
                       ligneComplementDestinaire:
                         type: string
                         nullable: true
-                        example: 
+                        example:
                       ligneComplementAdresse:
                         type: string
                         nullable: true
-                        example: 
+                        example:
                       ligneComplementDistribution:
                         type: string
                         nullable: true
-                        example: 
+                        example:
                       ligneNom:
                         type: string
                         example: MARTIN
@@ -1545,12 +1548,12 @@ paths:
                           de remise.
                         type: string
                         nullable: true
-                        example: 
+                        example:
                       complementInformationGeographique:
                         title: Complément d'information du point géographique
                         type: string
                         nullable: true
-                        example: 
+                        example:
                         description: Complément d'information du point géographique.
                       numeroLibelleVoie:
                         title: Voie
@@ -1561,7 +1564,7 @@ paths:
                         title: Lieu-dit
                         type: string
                         nullable: true
-                        example: 
+                        example:
                         description: 'Lieu-dit ou service particulier de distribution
                           : poste restante, boîte postale'
                       codePostalVille:
@@ -1911,13 +1914,13 @@ components:
       properties:
         error:
           type: string
-          example: 
+          example:
         reason:
           type: string
-          example: 
+          example:
         message:
           type: string
-          example: 
+          example:
   securitySchemes:
     apiKey:
       type: apiKey
