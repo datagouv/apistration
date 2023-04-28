@@ -2,7 +2,7 @@ paths:
   /api/v2/composition-familiale-v2:
     get:
       summary: Quotient familial CAF & MSA
-      description: "## PROCHAINNEMENT
+      description: "## PROCHAINEMENT
         \n
         \n
         Quotient familial et composition de la famille d'un allocataire du régime général et du régime agricole. 
