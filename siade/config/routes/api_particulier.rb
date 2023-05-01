@@ -14,6 +14,7 @@ namespace '/api', constraints: APIParticulierDomainConstraint.new do
   end
 
   namespace '/v2' do
+    get 'complementaire-sante-solidaire' => '/api_particulier/v2/cnaf/complementaire_sante_solidaire#show'
     get 'composition-familiale-v2' => '/api_particulier/v2/cnaf/quotient_familial_v2#show'
     get 'composition-familiale' => '/api_particulier/v2/cnaf/quotient_familial#show'
     get 'situations-pole-emploi' => '/api_particulier/v2/pole_emploi/statut#show'
