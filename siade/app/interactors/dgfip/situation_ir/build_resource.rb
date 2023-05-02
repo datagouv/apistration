@@ -92,7 +92,7 @@ class DGFIP::SituationIR::BuildResource < BuildResource
   end
 
   def annee_revenus
-    "20#{tax_notice_number.first(2)}"
+    "20#{tax_notice_number.first(2).to_i - 1}"
   end
 
   def annee_impots
