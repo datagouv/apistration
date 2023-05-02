@@ -140,6 +140,8 @@ ruby bin/generate_jwt_token.rb environment
 ```
 
 Avec `environment` un environnement valide.
+/!\ Attention: Un jeton de sandbox est valide en production et doit donc être manipulé
+avec les mêmes critères de sécurité.
 
 ### Cas de l'environnement de test
 

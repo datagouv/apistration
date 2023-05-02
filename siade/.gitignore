@@ -82,7 +82,8 @@ builds/
 
 /config/master.key
 
-# production.key in this repo is a symlink to master.key
+# production.key and sandbox.key in this repo are a symlink to master.key
+!/config/credentials/sandbox.key
 !/config/credentials/production.key
 !/config/credentials/development.key
 !/config/credentials/test.key
@@ -90,7 +91,6 @@ builds/
 swagger/v3/openapi-entreprise.yaml
 swagger/versionned/openapi-entreprise.yaml
 swagger/versionned/openapi-particulier.yaml
-config/credentials/sandbox.yml.enc
 config/credentials/staging.yml.enc
 
 sandbox/
