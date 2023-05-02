@@ -38,7 +38,7 @@ class DGFIP::SituationIR::MakeRequest < MakeRequest::Get
   end
 
   def year
-    "20#{tax_notice_number.first(2)}"
+    context.year ||= "20#{tax_notice_number.first(2).to_i - 1}"
   end
 
   def token

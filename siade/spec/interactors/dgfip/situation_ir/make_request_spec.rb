@@ -13,6 +13,8 @@ RSpec.describe DGFIP::SituationIR::MakeRequest, type: :make_request do
 
     it { is_expected.to be_a_success }
 
+    its(:year) { is_expected.to eq("20#{tax_notice_number.first(2).to_i - 1}") }
+
     its(:response) { is_expected.to be_a(Net::HTTPOK) }
   end
 end
