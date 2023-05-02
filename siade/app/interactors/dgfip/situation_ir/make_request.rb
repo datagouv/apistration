@@ -26,7 +26,7 @@ class DGFIP::SituationIR::MakeRequest < MakeRequest::Get
   end
 
   def dgfip_situation_ir_path
-    "/impotparticulier/1.0/spi/#{tax_number}/situations/ir/assiettes/annrev/#{year}"
+    "/impotparticulier/1.0/spi/#{tax_number}/dernieresituation/ir/assiettes/annrev/#{year}"
   end
 
   def tax_number
