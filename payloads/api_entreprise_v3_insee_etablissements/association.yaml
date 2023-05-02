@@ -68,12 +68,9 @@ payload: |-
         },
         "economie_sociale_et_solidaire": false,
         "date_creation": -556765200,
-        "etat_administratif": "A",
-        "date_derniere_mise_a_jour": 1678143600,
-        "redirect_from_siren": null
+        "etat_administratif": "A"
       },
       "adresse": {
-        "siret": "77567227221138",
         "complement_adresse": "SITE CROIX ROUGE",
         "numero_voie": "98",
         "indice_repetition_voie": null,
