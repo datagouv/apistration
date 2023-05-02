@@ -75,7 +75,7 @@
   ```bash
   curl -H "X-Api-Key: $token" \
     -G -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' -d 'nomUsage=JACQUES' -d 'prenoms[]=JEAN-PIERRE' -d 'prenoms[]=THOMAS' -d 'anneeDateDeNaissance=2000' -d 'moisDateDeNaissance=1' \
-    --url "https://staging.particulier.api.gouv.fr/v2/composition-familiale-v2"
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
   </p>
@@ -117,7 +117,7 @@
   ```bash
   curl -H "X-Api-Key: $token" \
     -G -d 'codePaysLieuDeNaissance=99404' -d 'sexe=F' \
-    --url "https://staging.particulier.api.gouv.fr/v2/composition-familiale-v2"
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
   </p>
@@ -159,7 +159,7 @@
   ```bash
   curl -H "X-Api-Key: $token" \
     -G -d 'codePaysLieuDeNaissance=99500' -d 'sexe=F' \
-    --url "https://staging.particulier.api.gouv.fr/v2/composition-familiale-v2"
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
   </p>
@@ -201,7 +201,7 @@
   ```bash
   curl -H "X-Api-Key: $token" \
     -G -d 'codePaysLieuDeNaissance=99503' -d 'sexe=F' \
-    --url "https://staging.particulier.api.gouv.fr/v2/composition-familiale-v2"
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
   </p>

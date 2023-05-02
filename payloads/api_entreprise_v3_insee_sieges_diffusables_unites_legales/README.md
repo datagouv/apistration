@@ -83,12 +83,9 @@
         },
         "economie_sociale_et_solidaire": false,
         "date_creation": -556765200,
-        "etat_administratif": "A",
-        "date_derniere_mise_a_jour": 1678143600,
-        "redirect_from_siren": null
+        "etat_administratif": "A"
       },
       "adresse": {
-        "siret": "77567227221138",
         "complement_adresse": "SITE CROIX ROUGE",
         "numero_voie": "98",
         "indice_repetition_voie": null,
@@ -221,12 +218,9 @@
         },
         "economie_sociale_et_solidaire": true,
         "date_creation": 931298400,
-        "etat_administratif": "A",
-        "date_derniere_mise_a_jour": 1635458400,
-        "redirect_from_siren": null
+        "etat_administratif": "A"
       },
       "adresse": {
-        "siret": "42417936400023",
         "complement_adresse": null,
         "numero_voie": "169",
         "indice_repetition_voie": null,
@@ -361,12 +355,9 @@
         },
         "economie_sociale_et_solidaire": false,
         "date_creation": -473389200,
-        "etat_administratif": "A",
-        "date_derniere_mise_a_jour": 1673478000,
-        "redirect_from_siren": null
+        "etat_administratif": "A"
       },
       "adresse": {
-        "siret": "55204944776279",
         "complement_adresse": null,
         "numero_voie": "2",
         "status_diffusion": "diffusible",
@@ -499,12 +490,9 @@
         },
         "economie_sociale_et_solidaire": null,
         "date_creation": 605746800,
-        "etat_administratif": "C",
-        "date_derniere_mise_a_jour": null,
-        "redirect_from_siren": null
+        "etat_administratif": "C"
       },
       "adresse": {
-        "siret": "35005144700018",
         "complement_adresse": null,
         "numero_voie": "4",
         "indice_repetition_voie": null,
@@ -637,12 +625,9 @@
         },
         "economie_sociale_et_solidaire": null,
         "date_creation": 1085349600,
-        "etat_administratif": "A",
-        "date_derniere_mise_a_jour": 1667430000,
-        "redirect_from_siren": null
+        "etat_administratif": "A"
       },
       "adresse": {
-        "siret": "47846480300319",
         "complement_adresse": null,
         "numero_voie": "346",
         "indice_repetition_voie": null,

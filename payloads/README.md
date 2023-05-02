@@ -5,12 +5,12 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 
 ## API Particulier
 
-* [Service de vérification de l'avis d'impôt sur le revenu](api_particulier_v2_dgfip_svair) (`/api/v2/avis-imposition`)
+* Service de vérification de l'avis d'impôt sur le revenu (`/api/v2/avis-imposition`)
 * [Quotient familial CAF](api_particulier_v2_cnaf_quotient_familial) (`/api/v2/composition-familiale`)
 * [Statut demandeur d'emploi](api_particulier_v2_pole_emploi_statut) (`/api/v2/situations-pole-emploi`)
 * [Statut étudiant](api_particulier_v2_mesri_student_status) (`/api/v2/etudiants`)
 * [Statut étudiant boursier](api_particulier_v2_cnous_student_scholarship) (`/api/v2/etudiants-boursiers`)
-* [Quotient familial CAF & MSA](api_particulier_v2_cnaf_quotient_familial_v2) (`/v2/composition-familiale-v2`)
+* [Quotient familial CAF & MSA](api_particulier_v2_cnaf_quotient_familial_v2) (`/api/v2/composition-familiale-v2`)
 
 ## API Entreprise v3+
 

@@ -68,12 +68,9 @@ payload: |-
         },
         "economie_sociale_et_solidaire": false,
         "date_creation": -473389200,
-        "etat_administratif": "A",
-        "date_derniere_mise_a_jour": 1673478000,
-        "redirect_from_siren": null
+        "etat_administratif": "A"
       },
       "adresse": {
-        "siret": "55204944776279",
         "complement_adresse": null,
         "numero_voie": "2",
         "indice_repetition_voie": null,
