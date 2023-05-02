@@ -59,10 +59,6 @@ class Rack::Attack
     rate_limiting_service.blacklisted_access?(req)
   end
 
-  throttle('API Particulier global limit', limit: 20, period: 1) do |request|
-    request.get_header('HTTP_X_API_KEY') if  request.host =~ /particulier/
-  end
-
   throttle_zone(zone_name: 'low_latency_docs', **low_latency_documents_config)
   throttle_zone(zone_name: 'json_resources', **json_resources_config)
 
