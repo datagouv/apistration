@@ -1,0 +1,18 @@
+---
+params:
+  recipient: '13002526500013'
+  codePaysLieuDeNaissance: '99108'
+  sexe: 'M'
+  nomUsage: 'ALEXIS'
+  prenoms:
+    - 'TRISTAN'
+    - 'SERGE'
+  anneeDateDeNaissance: 1988
+  moisDateDeNaissance: 8
+status: 200
+payload: |-
+  {
+    "status": "non_beneficiaire_css",
+    "dateDebut": null, 
+    "dateFin": null
+  }

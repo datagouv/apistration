@@ -7,7 +7,7 @@ params:
     - 'JEAN-PIERRE'
     - 'THOMAS'
   anneeDateDeNaissance: 2000
-  moisDateDeNaissance: 01
+  moisDateDeNaissance: 1
 status: 200
 payload: |-
   {

@@ -1,0 +1,11 @@
+---
+params:
+  codePaysLieuDeNaissance: '99500'
+  sexe: F
+status: 500
+payload: |-
+  {
+    "error": "error",
+    "reason": "Internal server error",
+    "message": "Une erreur interne s'est produite, l'équipe a été prévenue."
+  }

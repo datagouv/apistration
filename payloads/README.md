@@ -11,6 +11,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [Statut étudiant](api_particulier_v2_mesri_student_status) (`/api/v2/etudiants`)
 * [Statut étudiant boursier](api_particulier_v2_cnous_student_scholarship) (`/api/v2/etudiants-boursiers`)
 * [Quotient familial CAF & MSA](api_particulier_v2_cnaf_quotient_familial_v2) (`/api/v2/composition-familiale-v2`)
+* [Complémentaire santé solidaire](api_particulier_v2_cnaf_complementaire_sante_solidaire) (`/api/v2/complementaire-sante-solidaire`)
 
 ## API Entreprise v3+
 
