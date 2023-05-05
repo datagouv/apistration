@@ -12,4 +12,10 @@ class MESRI::Scolarites::ValidateResponse < ValidateResponse
 
     unknown_provider_response!
   end
+
+  private
+
+  def resource_not_found!
+    fail_with_error!(build_error(::NotFoundError, 'Aucun étudiant n\'a pu être trouvé avec les critères de recherche fournis'))
+  end
 end

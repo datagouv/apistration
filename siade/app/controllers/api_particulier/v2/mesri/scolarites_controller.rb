@@ -22,4 +22,12 @@ class APIParticulier::V2::MESRI::ScolaritesController < APIParticulierController
       annee_scolaire: params[:anneeScolaire]
     }
   end
+
+  def format_not_found_error(error)
+    {
+      error: 'not_found',
+      reason: 'Student not found',
+      message: error.detail
+    }
+  end
 end
