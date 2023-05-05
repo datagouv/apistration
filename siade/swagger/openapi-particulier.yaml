@@ -95,7 +95,7 @@ paths:
       responses:
         '200':
           description: Scolarité trouvée
-          x-operationId: api_particulier_api_mesri_scolarites
+          x-operationId: api_particulier_v2_mesri_scolarites
           content:
             application/json:
               schema:

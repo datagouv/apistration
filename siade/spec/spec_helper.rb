@@ -191,7 +191,14 @@ RSpec.configure do |config|
     next unless example.metadata[:response][:code].dup.to_s == '200'
 
     api_name, _, *final_part = request.controller_class.to_s.underscore.split('/')
-    api_version = example.metadata[:path_item][:template].split('/')[1]
+
+    split_path_item = example.metadata[:path_item][:template].split('/')
+    api_version = if example.metadata[:api] == :entreprise
+                    split_path_item[1]
+                  elsif example.metadata[:api] == :particulier
+                    split_path_item[2]
+                  end
+
     operation_id = [api_name, api_version, final_part].join('_')
     operation_id = operation_id.sub('_controller', '')
 
