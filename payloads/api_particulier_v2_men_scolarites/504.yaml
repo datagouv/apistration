@@ -1,0 +1,15 @@
+---
+params:
+  nom: "Faure"
+  prenom: "Felix"
+  sexe: "m"
+  dateNaissance: "2000-01-20"
+  codeEtablissement: "0890003V"
+  anneeScolaire: "2022"
+status: 504
+payload: |-
+  {
+    "error": "dummy",
+    "reason": "dummy",
+    "message": "dummy"
+  }

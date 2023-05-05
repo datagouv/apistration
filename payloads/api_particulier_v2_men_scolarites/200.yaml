@@ -1,0 +1,26 @@
+---
+params:
+  nom: "Dubois"
+  prenom: "Camille"
+  sexe: "m"
+  dateNaissance: "2000-01-20"
+  codeEtablissement: "0890003V"
+  anneeScolaire: "2022"
+status: 200
+payload: |-
+  {
+    "eleve": {
+      "nom": "Dubois",
+      "prenom": "Camille",
+      "sexe": "F",
+      "date_naissance": "2000-01-20"
+    },
+    "code_etablissement": "0890003V",
+    "annee_scolaire": "2022-2023",
+    "est_scolarise": true,
+    "est_boursier": true,
+    "status_eleve": {
+      "code": "ST",
+      "libelle": "Scolaire"
+    }
+  }

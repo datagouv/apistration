@@ -1,0 +1,15 @@
+---
+params:
+  nom: "Martin"
+  prenom: "Camille"
+  sexe: "f"
+  dateNaissance: "2000-01-20"
+  codeEtablissement: "0890003V"
+  anneeScolaire: "2022"
+status: 404
+payload: |-
+  {
+    "error": "not_found",
+    "reason": "Student not found",
+    "message": "Aucun étudiant n'a pu être trouvé avec les critères de recherche fournis"
+  }
