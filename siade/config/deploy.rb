@@ -25,6 +25,7 @@ set :execution_mode, :system
 set :forward_agent, true
 set :port, 22
 set :repository, 'git@github.com:etalab/siade.git'
+set :keep_releases, 20
 
 branch = ENV['branch'] || begin
                             case ENV['to']
@@ -108,6 +109,7 @@ task :deploy do
     end
   end
   invoke :'rake', 'cache:clear'
+  invoke :'deploy:cleanup'
   invoke :'samhain_db_update'
 end
 
