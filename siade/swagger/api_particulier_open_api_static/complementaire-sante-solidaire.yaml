@@ -106,8 +106,11 @@ paths:
                     type: string
                     description: "Indique si le particulier est bénéficiaire de la complémentaire de santé solidaire au moment de l'appel. Cet indicateur précise sous quelle forme la C2S est attribuée (avec ou sans participation financière).
                     \n
+                    \n
                     - Si le statut est 'beneficiaire_sans_participation_financiere', cela signifie que le particulier est bénéficiaire d'une C2S sans participation financière.
+                    \n
                     - Si le statut est 'beneficiaire_avec_participation_financiere', cela signifie que le particulier est d'une bénéficiaire de C2S avec participation financière.
+                    \n
                     - Si le statut est 'non_beneficiaire_css', cela signifie que le particulier n'est pas concerné par la C2S."
                     enum:
                       - "beneficiaire_sans_participation_financiere"
@@ -119,7 +122,7 @@ paths:
                     format: date
                     nullable: true
                     description: "Date de début de droit à la complémentaire santé solidaire (C2S) si le particulier est bénéficiaire.
-                    \n                    \n
+                    \n                    
                     Dans le cas d'un particulier bénéficiant de plusieurs C2S, la date d'ouverture de droit la plus récente est transmise.
                     \n
                     Ce champs est null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
