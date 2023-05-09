@@ -1,16 +1,5 @@
-class APIParticulier::V2::CNAF::ComplementaireSanteSolidaireController < APIParticulierController
-  def show
-    return render not_implemented_error unless Rails.env.staging?
-
-    mocked_data = MockService.new(operation_id, mocking_params).mock
-    render json: mocked_data[:payload], status: mocked_data[:status]
-  end
-
-  private
-
-  def not_implemented_error
-    error_json(NotImplementedYetError.new, status: :not_implemented)
-  end
+class APIParticulier::V2::CNAF::ComplementaireSanteSolidaireController < APIParticulier::MockedController
+  protected
 
   def mocking_params
     {
