@@ -106,8 +106,8 @@ paths:
                     type: string
                     description: "Indique si le particulier est bénéficiaire de la complémentaire de santé solidaire au moment de l'appel. Cet indicateur précise sous quelle forme la C2S est attribuée (avec ou sans participation financière).
                     \n
-                    - Si le statut est 'beneficiaire_sans_participation_financiere', cela signifie que le particulier est bénéficiaire d'une C2S sans participation financière. Dans le cas d'un bénéficiaire de plusieurs C2S, le particulier peut être aussi bénéficiaire d'une C2S avec participation financière.
-                    - Si le statut est 'beneficiaire_avec_participation_financiere', cela signifie que le particulier est UNIQUEMENT bénéficiaire de C2S avec participation financière.
+                    - Si le statut est 'beneficiaire_sans_participation_financiere', cela signifie que le particulier est bénéficiaire d'une C2S sans participation financière.
+                    - Si le statut est 'beneficiaire_avec_participation_financiere', cela signifie que le particulier est d'une bénéficiaire de C2S avec participation financière.
                     - Si le statut est 'non_beneficiaire_css', cela signifie que le particulier n'est pas concerné par la C2S."
                     enum:
                       - "beneficiaire_sans_participation_financiere"
