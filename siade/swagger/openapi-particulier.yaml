@@ -1132,11 +1132,10 @@ paths:
   "/api/v2/composition-familiale-v2":
     get:
       summary: Quotient familial CAF & MSA
-      description: "Quotient familial et composition de la
-        famille d'un allocataire du régime général et du régime agricole. \n Pour
-        de plus amples informations sur cette api et y avoir accès en avant première,
-        veuillez contacter l'équipe API Particulier. \n **Données disponibles en bac
-        à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial_v2) "
+      description: "Quotient familial et composition de la famille d'un allocataire
+        du régime général et du régime agricole. \n Pour de plus amples informations
+        sur cette api et y avoir accès en avant première, veuillez contacter l'équipe
+        API Particulier. \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial_v2) "
       tags:
       - Prochainement
       parameters:
@@ -1592,11 +1591,12 @@ paths:
                     description: "Indique si le particulier est bénéficiaire de la
                       complémentaire de santé solidaire au moment de l'appel. Cet
                       indicateur précise sous quelle forme la C2S est attribuée (avec
-                      ou sans participation financière). \n - Si le statut est 'beneficiaire_sans_participation_financiere',
-                      cela signifie que le particulier est bénéficiaire d'une C2S
-                      sans participation financière. - Si le statut est 'beneficiaire_avec_participation_financiere',
+                      ou sans participation financière). \n \n - Si le statut est
+                      'beneficiaire_sans_participation_financiere', cela signifie
+                      que le particulier est bénéficiaire d'une C2S sans participation
+                      financière. \n - Si le statut est 'beneficiaire_avec_participation_financiere',
                       cela signifie que le particulier est d'une bénéficiaire de C2S
-                      avec participation financière. - Si le statut est 'non_beneficiaire_css',
+                      avec participation financière. \n - Si le statut est 'non_beneficiaire_css',
                       cela signifie que le particulier n'est pas concerné par la C2S."
                     enum:
                     - beneficiaire_sans_participation_financiere
@@ -1608,10 +1608,10 @@ paths:
                     format: date
                     nullable: true
                     description: "Date de début de droit à la complémentaire santé
-                      solidaire (C2S) si le particulier est bénéficiaire. \n                    \n
-                      Dans le cas d'un particulier bénéficiant de plusieurs C2S, la
-                      date d'ouverture de droit la plus récente est transmise. \n
-                      Ce champs est null dans le cas où le particulier n'est pas bénéficiaire
+                      solidaire (C2S) si le particulier est bénéficiaire. \n Dans
+                      le cas d'un particulier bénéficiant de plusieurs C2S, la date
+                      d'ouverture de droit la plus récente est transmise. \n Ce champs
+                      est null dans le cas où le particulier n'est pas bénéficiaire
                       de la C2S."
                     example: 1992-11-29
                   dateFin:
