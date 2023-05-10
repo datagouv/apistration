@@ -1,0 +1,18 @@
+---
+params:
+  recipient: '13002526500013'
+  codePaysLieuDeNaissance: '99105'
+  sexe: 'M'
+  nomUsage: 'PHILIPPE'
+  prenoms:
+    - 'PHILIPPE'
+    - 'CLAUDE'
+  anneeDateDeNaissance: 1990
+  moisDateDeNaissance: 6
+status: 200
+payload: |-
+  {
+    "status": "beneficiaire_sans_participation_financiere",
+    "dateDebut": "2022-02-01", 
+    "dateFin": "2023-02-01"
+  }

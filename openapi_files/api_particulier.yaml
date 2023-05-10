@@ -3,70 +3,48 @@ openapi: 3.0.0
 info:
   title: API Particulier
   version: 2.2.0
-  description: |2-
+  description: |
+    ## Bienvenue sur la documentation interactive d'API Particulier.
 
-        ## Bienvenue sur la documentation interactive d'API Particulier.
+    ### Commencer à utiliser l'API
 
+    API Particulier est une API en accès restreint, ce qui signifie qu'il vous faut remplir une [demande d'habilitation](https://datapass.api.gouv.fr) avant de pouvoir l'utiliser avec des vraies données.
 
-        ### Commencer à utiliser l'API
+    Afin de tester l'API avant la validation de votre demande d'habilitation, nous avons mis en place un bac à sable de l'API qui reproduit les comportements de l'API en production.
 
+    Dans le bac à sable, pour chaque type de donnée disponible, un jeu de donnée libre en édition est mis à votre disposition, afin que vous puissiez faire vos tests en toute autonomie.
 
-        API Particulier est une API en accès restreint, ce qui signifie qu'il vous faut remplir une [demande d'habilitation](https://datapass.api.gouv.fr) avant de pouvoir l'utiliser avec des vraies données.
+    Le fonctionnement du bac à sable est identique à celui de la véritable API de production, à la différence près que les données sont fictives, éditables par tout le monde, et que les jetons d'accès sont en libre service.
 
+    Le bac à sable et l'API de production sont appelables par deux adresses distinctes :
 
-        Afin de tester l'API avant la validation de votre demande d'habilitation, nous avons mis en place un bac à sable de l'API qui reproduit les comportements de l'API en production.
+    - bac à sable : [https://staging.particulier.api.gouv.fr/api](https://staging.particulier.api.gouv.fr/api)
+    - production : [https://particulier.api.gouv.fr/api](https://particulier.api.gouv.fr/api)
 
+    Pour récupérer le jeton de production un portail développeur est mis à votre disposition à l'adresse suivante : [https://mon.portail.api.gouv.fr](https://mon.portail.api.gouv.fr)
 
-        Dans le bac à sable, pour chaque type de donnée disponible, un jeu de donnée libre en édition est mis à votre disposition, afin que vous puissiez faire vos tests en toute autonomie.
+    Pour effectuer vos tests sur le bac à sable, référez-vous à ce dépôt github: [etalab/siade_staging_data](https://github.com/etalab/siade_staging_data/) (l'ancien système basé sur Airtable n'est plus maintenu et va être remplacé par le nouveau système). Un jeton nommé default est disponible ici: [tokens](https://github.com/etalab/siade_staging_data/tree/develop/tokens)
 
+    ### Périmètre des données retournées
 
-        Le fonctionnement du bac à sable est identique à celui de la véritable API de production, à la différence près que les données sont fictives, éditables par tout le monde, et que les jetons d'accès sont en libre service.
+    **Important :** le contenu du jeu de données retourné dépend des _scopes_ ou _périmètres_ du jeton utilisé.
 
+    En effet, les disposition de l'article [L144-8](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315) n'autorisent que l'échange des informations **strictement nécessaires** pour traiter une démarche.
 
-        Le bac à sable et l'API de production sont appelables par deux adresses distinctes :
+    Afin de respecter ce devoir de minimisation de la donnée, chaque jeton est associé, par la demande d'habilitation, à des _scopes_ agissant comme des masques sur la donnée.
 
+    Ainsi, pour pouvoir lire de la donnée, il est nécessaire de cocher lors de votre [demande d'habilitation](https://datapass.api.gouv.fr) une ou plusieurs cases correspondant aux données du même fournisseur, votre jeton possèdera alors les _scopes_ associés aux données cochées.
 
-        - bac à sable : [https://particulier-test.api.gouv.fr/api](https://particulier-test.api.gouv.fr/api)
+    En conséquence, suivant le jeton utilisé, une même requête peut retourner des résultats différents.
 
-        - production : [https://particulier.api.gouv.fr/api](https://particulier.api.gouv.fr/api)
+    **Attention :** La documentation ci-dessous ne prend pas en compte les _scopes_, qui agissent comme masques de la donnée retournée par l'API. Cette documentation suppose donc que votre jeton permet d'accéder à la donnée décrite.
 
+    ### Passer son service en production
 
-        Pour récupérer le jeton de production un portail développeur est mis à votre disposition à l'adresse suivante : [https://mon.portail.api.gouv.fr](https://mon.portail.api.gouv.fr)
+    Lors de votre passage en production :
 
-
-        Pour effectuer vos tests sur le bac à sable: vous pouvez utiliser ce jeton qui donne accès à l'ensemble des données: `7792dc29bca0d8ed8ba24976ad009214d23a2eea`
-
-        ### Périmètre des données retournées
-
-
-        **Important :** le contenu du jeu de données retourné dépend des _scopes_ ou _périmètres_ du jeton utilisé.
-
-
-        En effet, les disposition de l'article [L144-8](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315) n'autorisent que l'échange des informations **strictement nécessaires** pour traiter une démarche.
-
-
-        Afin de respecter ce devoir de minimisation de la donnée, chaque jeton est associé, par la demande d'habilitation, à des _scopes_ agissant comme des masques sur la donnée.
-
-
-        Ainsi, pour pouvoir lire de la donnée, il est nécessaire de cocher lors de votre [demande d'habilitation](https://datapass.api.gouv.fr) une ou plusieurs cases correspondant aux données du même fournisseur, votre jeton possèdera alors les _scopes_ associés aux données cochées.
-
-
-        En conséquence, suivant le jeton utilisé, une même requête peut retourner des résultats différents.
-
-
-
-        **Attention :** La documentation ci-dessous ne prend pas en compte les _scopes_, qui agissent comme masques de la donnée retournée par l'API. Cette documentation suppose donc que votre jeton permet d'accéder à la donnée décrite.
-
-
-        ### Passer son service en production
-
-
-        Lors de votre passage en production :
-
-
-        - remplacez l'URL de particulier-test.api.gouv.fr à particulier.api.gouv.fr
-
-        - remplacez le jeton de test par le jeton obtenu sur [le portail API Particulier](https://mon.portail.api.gouv.fr)
+    - remplacez l'URL de staging.particulier.api.gouv.fr à particulier.api.gouv.fr
+    - remplacez le jeton de test par le jeton obtenu sur [le portail API Particulier](https://mon.portail.api.gouv.fr)
   termsOfService: https://api.gouv.fr/resources/CGU%20API%20Particulier.pdf
   contact:
     name: Contact API Particulier
@@ -83,7 +61,7 @@ paths:
         Le service permet de vérifier l'authenticité du justificatif d'impôt sur le revenu ou de l'avis d'impôt sur le revenu présenté par un usager.
 
         **Paramètres d'appel :** numéro fiscal et numéro d'avis d'imposition
-        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=inv3ImCypw30uuLK9&inviteToken=0482ffbcc5d830fb6a409161fc372635a48b6bbcffdcde552f5be4290f80db50)
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/tree/develop/payloads/api_particulier_v2_dgfip_svair)
       summary: Service de vérification de l'avis d'impôt sur le revenu
       parameters:
       - name: numeroFiscal
@@ -105,7 +83,7 @@ paths:
       - Avis d'imposition
       responses:
         '200':
-          x-operationId: api_particulier_v2_dgfip_svair
+          x-operationId: api_particulier_v2_dgfip_situation_ir
           description: Avis d'imposition
           content:
             application/json:
@@ -331,7 +309,7 @@ paths:
 
         **Paramètres d'appel :** numéro d'allocataire et code postal
 
-        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=invpeDu6xq16LHfI5&inviteToken=66173d447bcbdf7d43548facb7c6b38df1267f8481f1a21491410ff30ecb2c8b&utm_source=email)
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial)
       parameters:
       - name: numeroAllocataire
         in: query
@@ -368,19 +346,20 @@ paths:
                       type: object
                       properties:
                         nomPrenom:
-                          title: Noms et prénoms du parent
+                          title: Nom et prénoms
                           type: string
-                          description: Noms et prénoms du parent allocataire de la
+                          description: Nom et prénoms du parent allocataire de la
                             CAF
                           example: JEAN JACQUES
                         dateDeNaissance:
                           title: Date de naissance
                           type: string
                           pattern: "^\\d{8}$"
-                          description: 'Date de naissance au format: JJMMAAAA'
+                          description: Date de naissance au format JJMMAAAA
                           example: '01021970'
                         sexe:
-                          title: Sexe du parent
+                          title: Sexe
+                          description: Sexe du parent
                           type: string
                           example: M
                           enum:
@@ -388,39 +367,28 @@ paths:
                           - M
                   enfants:
                     title: Informations sur les enfants composant la famille
-                    description: "La liste des enfants correspond à la notion d'enfant
-                      à charge au sens de la législation familiale. Pour qu'un enfant
-                      soit considéré comme \"à charge\", l’allocataire doit assurer
-                      financièrement son entretien de manière effective et permanente
-                      et assumer à son égard la responsabilité affective et éducative.
-                      Il n'y a pas d'obligation de lien de parenté avec l’enfant.
-                      \n \n Deux notions d’enfant à charge cohabitent : \n - enfant
-                      à charge au sens des prestations familiales (Pf) : un enfant
-                      est reconnu à charge s’il est âgé d’un mois à moins de 20 ans
-                      quelle que soit sa situation, dès lors que son salaire net mensuel
-                      ne dépasse pas 55 % du Smic brut ; \n - enfant à charge au sens
-                      de la législation familiale : sont considérés à charge pour
-                      les aides au logement, les enfants âgés de moins de 21 ans en
-                      Métropole (22 ans dans les Dom), les enfants âgés de 20 à 25
-                      ans pour le calcul du Rmi/Rsa, et dès le mois de leur naissance,
-                      les enfants bénéficiaires de l’allocation de base de la Paje."
+                    description: 'La liste des enfants correspond à la notion d''enfant
+                      à charge au sens de la législation familiale. Il n''y a notamment
+                      pas d''obligation de lien de parenté avec l’enfant. Pour en
+                      savoir plus, consultez la FAQ https://particulier.api.gouv.fr/catalogue/cnaf/quotient_familial#faq_entry_2_api_particulier_endpoint_cnaf_quotient_familial:'
                     type: array
                     items:
                       type: object
                       properties:
                         nomPrenom:
-                          title: Noms et prénoms de l'enfant
+                          title: Nom et prénoms
                           type: string
-                          description: Noms et prénoms de l'enfant des allocataires
+                          description: Nom et prénoms de l'enfant des allocataires
                           example: JESSICA JACQUES
                         dateDeNaissance:
-                          title: Date de naissance de l'enfant
+                          title: Date de naissance
                           type: string
                           pattern: "^\\d{8}$"
-                          description: 'Date de naissance au format: JJMMAAAA'
+                          description: Date de naissance au format JJMMAAAA
                           example: '01031995'
                         sexe:
-                          title: Sexe de l'enfant
+                          title: Sexe
+                          description: Sexe de l'enfant
                           type: string
                           example: F
                           enum:
@@ -430,7 +398,7 @@ paths:
                     title: Adresse de la famille
                     type: object
                     description: Adresse structurée au format de la poste. C'est l'adresse
-                      connue de la CAF, il s'agit d'une information déclarative.
+                      connue de la CNAF, il s'agit d'une information déclarative.
                     properties:
                       identite:
                         title: Identité du destinataire
@@ -444,12 +412,12 @@ paths:
                         description: Numéro d'appartement, escalier
                         type: string
                         nullable: true
-                        example:
+                        example: 
                       complementIdentiteGeo:
                         title: Complément d'information du point géographique
                         type: string
                         nullable: true
-                        example:
+                        example: 
                         description: Entrée, tour, immeuble, bâtiment, résidence
                       numeroRue:
                         title: Voie
@@ -460,7 +428,7 @@ paths:
                         title: Lieu-dit
                         type: string
                         nullable: true
-                        example:
+                        example: 
                         description: 'Lieu-dit ou service particulier de distribution
                           : poste restante, boîte postale'
                       codePostalVille:
@@ -475,7 +443,7 @@ paths:
                   quotientFamilial:
                     title: Quotient familial CAF de la famille
                     type: integer
-                    description: Valeur du quotient familial calculée par la CAF.
+                    description: Valeur du quotient familial calculée par la CAF
                     example: 1045
                   annee:
                     title: Année du quotient familial
@@ -530,7 +498,7 @@ paths:
       description: |-
         Données d'identité, de contact et de statut du demandeur d'emploi.
         **Paramètres d'appel :** Nom d’utilisateur Pôle emploi choisi par le particulier lors de la création de son espace personnel en ligne
-        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=inv1n0CkFzq3Y0pvn&inviteToken=a5b49ec5bb9d2323df4adbdfc6c65da35a2248af30c38095101b3cca6ea0898a&utm_source=email)
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_pole_emploi_statut)
       parameters:
       - name: identifiant
         required: true
@@ -560,7 +528,7 @@ paths:
                     example: martin.jacques
                   civilite:
                     title: Civilité
-                    description: Civilité du particulier, Madame ou Monsieur
+                    description: Civilité du demandeur d'emploi, Madame ou Monsieur
                     type: string
                     example: M.
                     enum:
@@ -569,29 +537,30 @@ paths:
                   nom:
                     title: Nom de naissance
                     type: string
-                    description: Nom de naissance du particulier
+                    description: Nom de naissance du demandeur d'emploi
                     example: MARTIN
                   nomUsage:
                     title: Nom d'usage
                     type: string
-                    description: Nom d'usage du particulier
+                    description: Nom d'usage du demandeur d'emploi
                     nullable: true
-                    example:
+                    example: 
                   prenom:
                     title: Prénom
                     type: string
                     example: JACQUES
-                    description: Prénom du particulier, limité à 13 caractère
+                    description: Prénom ddu demandeur d'emploi, limité à 13 caractères
                   sexe:
                     title: Sexe
                     type: string
-                    description: Sexe du particulier
+                    description: Sexe du demandeur d'emploi
                     example: Masculin
                   dateNaissance:
                     title: Date de naissance
                     format: date
                     type: string
-                    description: Date de naissance du particulier au format YYYY-MM-DD
+                    description: Date de naissance du demandeur d'emploi au format
+                      YYYY-MM-DD
                     example: 1995-02-02
                   codeCertificationCNAV:
                     title: Code du statut de certification d'identité CNAV
@@ -613,27 +582,27 @@ paths:
                     - AC
                     - DC
                     - RC
-                    -
+                    - 
                   telephone:
                     title: Téléphone principal
                     type: string
-                    description: Numéro de téléphone principal du particulier
+                    description: Numéro de téléphone principal du demandeur d'emploi
                     example: 108756471
                   telephone2:
                     title: Téléphone secondaire
                     type: string
-                    description: Numéro de téléphone secondaire du particulier
+                    description: Numéro de téléphone secondaire du demandeur d'emploi
                     nullable: true
                   email:
                     title: E-mail
                     type: string
                     nullable: true
-                    description: Adresse e-mail du particulier
+                    description: Adresse e-mail du demandeur d'emploi
                     example: martin.jacques@france.fr
                   adresse:
                     title: Adresse
                     type: object
-                    description: Adresse du particulier, déclarée par le particulier
+                    description: Adresse du demandeur d'emploi, déclarée par le particulier
                       lors de son inscription à Pôle emploi ou suite à une déclaration
                       de changement d’adresse.
                     properties:
@@ -653,15 +622,15 @@ paths:
                       ligneComplementDestinaire:
                         type: string
                         nullable: true
-                        example:
+                        example: 
                       ligneComplementAdresse:
                         type: string
                         nullable: true
-                        example:
+                        example: 
                       ligneComplementDistribution:
                         type: string
                         nullable: true
-                        example:
+                        example: 
                       ligneNom:
                         type: string
                         example: MARTIN
@@ -779,12 +748,12 @@ paths:
           type: string
       summary: Statut étudiant
       description: |-
-        Inscriptions et pré-inscriptions CROUS d'un étudiant aux établissements d'enseignement supérieur.
+        Admissions et inscriptions d'un étudiant aux établissements d'enseignement supérieur.
         **Paramètres d'appel :** Pour appeler l'API statut étudiant, deux modes d'appel sont possibles :
          - INE, l'identifiant national étudiant ;
          - l'état civil de l'étudiant: nom, prénom, date de naissance, sexe et lieu de naissance.
 
-        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=invaqM68okWdPDzc5&inviteToken=43864c010a85095fd8acc6770f6528ce3beff684f60e7aab58e248c29e6d0433&utm_source=email)
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_mesri_student_status)
       responses:
         '200':
           x-operationId: api_particulier_v2_mesri_student_status
@@ -795,14 +764,13 @@ paths:
                 type: object
                 properties:
                   ine:
-                    title: Numéro INE
+                    title: Identifiant National Étudiant (INE)
                     type: string
-                    description: Identifiant National Étudiant (INE). Cet identifiant
-                      est unique à chaque étudiant sur le territoire français. Il
-                      est composé de 11 caractères, 10 chiffres et 1 lettre, et depuis
-                      la rentrée 2018, 9 chiffres et 2 lettres. Les étudiants peuvent
-                      retrouver leur numéro INE sur leur carte étudiant et leur certificat
-                      de scolarité.
+                    description: Cet identifiant est unique à chaque étudiant sur
+                      le territoire français. Il est composé de 11 caractères, 10
+                      chiffres et 1 lettre, et depuis la rentrée 2018, 9 chiffres
+                      et 2 lettres. Les étudiants peuvent retrouver leur numéro INE
+                      sur leur carte étudiant et leur certificat de scolarité.
                     example: 1234567890G
                   nom:
                     title: Nom de naissance
@@ -821,7 +789,8 @@ paths:
                     description: Date de naissance de l'étudiant
                     example: 1992-11-29
                   inscriptions:
-                    title: Liste des inscriptions de l'étudiant pour l'année en cours
+                    title: Liste des admissions et inscriptions de l'étudiant pour
+                      l'année en cours
                     type: array
                     items:
                       type: object
@@ -839,44 +808,29 @@ paths:
                           description: Date de fin de la période d'étude dans l'établissement
                           example: 2023-08-31
                         statut:
-                          title: Statut d'inscription
+                          title: Statut de l'inscription
                           type: string
-                          description: "Statut d'inscription de l'étudiant. Il existe
-                            deux modalités différentes : \n \n - inscrit : inscrit
-                            dans l'établissement ; \n - admis, c'est-à-dire pré-inscrit
-                            au sens du CROUS. Le statut admis correspond à une pré-inscription
-                            de l'étudiant dans un établissement, en formation initiale
-                            ou continue. Ce statut ne garantit pas que l'étudiant
-                            soit accepté par l'établissement. Cette pré-inscription
-                            permet à l'étudiant de faire ses démarches auprès du CROUS.
-                            Les étudiants \"admis\" passent au statut \"inscrit\"
-                            une fois leur inscription validée par l'établissement.
-                            L'inscription dépend des critères de l'établissement :
-                            acceptation la candidature, paiement des droits d'inscription...
-                            Tous les étudiants \"admis\" ne sont donc pas forcément
-                            de futurs étudiants \"inscrits\"."
+                          description: |
+                            "Statut de l'inscription de l'étudiant. Il existe deux modalités différentes :
+                            \n
+                            \n
+                            - admis : l'étudiant est pré-inscrit dans l'établissement mais la procédure complète d'inscription et le règlement des droits d'inscription ne sont pas terminés. Les étudiants \"admis\" passent au statut \"inscrit\" une fois leurs droits d'inscription régularisés (paiement des droits, premier versement des droits ou acquittement des droits selon la situation de l'étudiant et les règles de l'établissement.) Tous les étudiants \"admis\" ne sont donc pas forcément de futurs étudiants \"inscrits\".
+                            \n
+                            - inscrit : l'étudiant est inscrit dans l'établissement car il est en règle de ses droits d'inscription. L'étudiant peut être inscrit dans plusieurs établissements."
                           example: admis
                           enum:
                           - admis
                           - inscrit
                         regime:
-                          title: Régime de l'étudiant
+                          title: Régime de formation
                           type: string
                           description: "Régime de formation de l'étudiant. Il existe
                             deux modalités différentes : \n \n - formation initiale
-                            ou reprise d'études : Cette modalité indique que l'étudiant
-                            est en formation initiale ou en reprise d'études. La formation
-                            initiale correspond à un parcours d’études amorcé à l’école
-                            élémentaire et suivi sans interruption durant plus d’un
-                            an. S'il y a interruption, il s’agit d'une reprise d’études;
-                            \n - formation continue : Cette modalité indique que l'étudiant
-                            est en formation continue. Ce type de formation est destinée
-                            aux salariés, employés ou demandeurs d’emploi et a pour
-                            objectif de conforter, améliorer ou acquérir des connaissances
-                            professionnelles au-delà de la formation initiale. La
-                            formation continue s'accompagne toujours de la signature
-                            d’une convention ou d’un contrat de formation professionnelle
-                            entre la personne et l’établissement formateur."
+                            : Ce champ indique que l'étudiant est en formation initiale
+                            sous statut étudiant (y compris dans le cadre de reprise
+                            d’études) ou en en apprentissage ; \n - formation continue
+                            : Ce champ indique que l'étudiant est en formation continue
+                            ou en contrat de professionalisation."
                           example: formation initiale
                           enum:
                           - formation initiale
@@ -973,12 +927,12 @@ paths:
           type: string
       summary: Statut étudiant boursier
       description: |-
-        Statut boursier d'un étudiant.
+        Statut et échelon boursier d'un étudiant, délivrés par le Cnous.
         **Paramètres d'appel :** Pour appeler l'API statut boursier, deux modes d'appel sont possibles :
          - INE, l'identifiant national étudiant ;
-         - l'état civil de l'étudiant: nom, prénom, date de naissance, sexe et lieu de naissance.
+         - l'état civil de l'étudiant: nom, prénom, date de naissance, sexe (optionnel) et lieu de naissance (optionnel).
 
-        **Données disponibles en bac à sable :** [liste](https://airtable.com/invite/l?inviteId=inv9lBycvDR5UzbyM&inviteToken=6e46235c19bbb4a70dd31ab483eb7375ac0bf46c9d8145d1358e0aa50f65277a&utm_source=email)
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnous_student_scholarship)
       responses:
         '200':
           x-operationId: api_particulier_v2_cnous_student_scholarship
@@ -1030,15 +984,11 @@ paths:
                   echelonBourse:
                     title: Échelon de la bourse
                     type: string
-                    description: Échelon de bourse de l'étudiant, indiquant le montant
-                      reçu pour l'année scolaire. Il y a 8 échelons de bourse, de
-                      0bis à 7. Chaque échelon est composé de deux montants, le premier
-                      correspondant au montant versé pour 10 mois ; le second, plus
-                      élevé, pour les étudiants bénéficiant du maintien de la bourse
-                      pendant les grandes vacances universitaires. Les taux sont fixé
-                      par arrêté, la page dédiée sur Service-public.fr détaille les
-                      montants et vous permettra de retrouver l'arrêté de l'année
-                      en cours.
+                    description: '"Il existe 8 échelons de bourse, de 0bis à 7, correspondant
+                      aux montants reçus par l''étudiant pour l''année scolaire. Pour
+                      en savoir plus, consulter la FAQ : https://particulier.api.gouv.fr/catalogue/cnous/statut_etudiant_boursier#faq_entry_answer_0_api_particulier_endpoint_cnous_statut_etudiant_boursier."
+
+                      '
                     example: '6'
                     enum:
                     - 0bis
@@ -1088,6 +1038,22 @@ paths:
                     example: Carnot
         '401': *2
         '404': *5
+        '409':
+          description: Des doublons ont été trouvé, merci d'affiner vos critères.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: conflict
+                  reason:
+                    type: string
+                    example: Plusieurs ressources correspondent aux critères
+                  message:
+                    type: string
+                    example: Plusieurs ressources correspondent aux critères
         '500': *3
         '503': *4
   "/api/ping":
@@ -1163,6 +1129,573 @@ paths:
                       type: string
         '401': *2
         '500': *3
+  "/api/v2/composition-familiale-v2":
+    get:
+      summary: Quotient familial CAF & MSA
+      description: "## PROCHAINNEMENT \n \n Quotient familial et composition de la
+        famille d'un allocataire du régime général et du régime agricole. \n Pour
+        de plus amples informations sur cette api et y avoir accès en avant première,
+        veuillez contacter l'équipe API Particulier. \n **Données disponibles en bac
+        à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial_v2) "
+      tags:
+      - Prochainement
+      parameters:
+      - name: nomUsage
+        schema:
+          type: string
+        in: query
+        description: Nom d'usage
+        required: false
+      - name: nomNaissance
+        schema:
+          type: string
+        in: query
+        description: Nom de naissance
+        required: false
+      - name: prenoms[]
+        in: query
+        description: Liste des prénoms
+        required: false
+        schema:
+          type: array
+          minItems: 1
+          items:
+            type: string
+      - name: anneeDateDeNaissance
+        description: Année de naissance. Ne pas la renseigner si celle-ci est inconnue
+        required: false
+        in: query
+        schema:
+          type: integer
+          example: 1990
+      - name: moisDateDeNaissance
+        description: Mois de naissance. Ne pas le renseigner si celle-ci est inconnu.
+          Cette valeur est ignorée si anneeDateDeNaissance est vide.
+        required: false
+        in: query
+        schema:
+          type: integer
+          example: 1
+      - name: jourDateDeNaissance
+        description: Jour de naissance. Ne pas le renseigner si celui-ci est inconnu.
+          Cette valeur est ignorée si moisDateDeNaissance ou anneeDateDeNaissance
+          est vide.
+        required: false
+        in: query
+        schema:
+          type: integer
+          example: 1
+      - name: codeInseeLieuDeNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '08480'
+        description: Code Insee à 5 chiffres du lieu de naissance de la personne sur
+          5 chiffres. Ne pas remplir si la personne est née à l'étranger.
+        required: false
+      - name: codePaysLieuDeNaissance
+        in: query
+        description: Code Insee à 5 chiffres du pays de naissance (France = 99100)
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '99100'
+        required: true
+      - name: sexe
+        in: query
+        description: Sexe de la personne, masculin ou féminin
+        required: true
+        schema:
+          enum:
+          - M
+          - F
+      - name: annee
+        in: query
+        description: Année du quotient familial recherché. Si l'année n'est pas renseignée,
+          le dernier QF est transmis.
+        required: false
+        schema:
+          type: integer
+          example: 2021
+      - name: mois
+        in: query
+        required: false
+        description: Mois pour le quotient, si non renseigné renvoie le dernier QF
+          calculé
+        schema:
+          type: integer
+          example: 12
+      responses:
+        '200':
+          x-operationId: api_particulier_v2_cnaf_quotient_familial_v2
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allocataires:
+                    title: Informations sur les parents composant la famille
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        nomNaissance:
+                          title: Nom
+                          type: string
+                          description: Nom de naissance de l'allocataire
+                          example: JACQUES
+                        nomUsuel:
+                          title: Nom d'usage
+                          type: string
+                          description: Nom d'usage de l'allocataire
+                          example: JACQUES
+                        prenoms:
+                          title: Prénoms
+                          type: string
+                          description: Prénoms de l'allocataire
+                          example: JEAN-PIERRE THOMAS
+                        anneeDateDeNaissance:
+                          title: Année de naissance
+                          type: string
+                          example: '2000'
+                          description: Année de la date de naissance de l'allocataire.
+                            Peut-être vide si inconnue.
+                          nullable: true
+                        moisDateDeNaissance:
+                          title: Mois de naissance
+                          type: string
+                          example: '01'
+                          description: Mois de la date de naissance de l'allocataire.
+                            Peut-être vide si inconnue.
+                          nullable: true
+                        jourDateDeNaissance:
+                          title: Jour de naissance
+                          type: string
+                          example: '31'
+                          description: Jour de la date de naissance de l'allocataire.
+                            Peut-être vide si inconnue.
+                          nullable: true
+                        sexe:
+                          title: Sexe
+                          type: string
+                          description: Sexe de l'allocataire
+                          example: M
+                          enum:
+                          - F
+                          - M
+                  enfants:
+                    type: array
+                    title: Informations sur les enfants composant la famille
+                    items:
+                      type: object
+                      properties:
+                        nomNaissance:
+                          title: Nom de naissance
+                          type: string
+                          description: Nom de naissance de l'enfant
+                          example: JACQUES
+                        nomUsuel:
+                          title: Nom d'usage
+                          type: string
+                          description: Nom d'usage de l'enfant
+                          example: JACQUES
+                        prenoms:
+                          title: Prénoms
+                          type: string
+                          description: Prénoms de l'enfant
+                          example: JEAN-PIERRE THOMAS
+                        anneeDateDeNaissance:
+                          title: Année de naissance
+                          type: string
+                          example: '2000'
+                          description: Année de la date de naissance de l'enfant.
+                            Peut-être vide si inconnue.
+                          nullable: true
+                        moisDateDeNaissance:
+                          title: Mois de naissance
+                          type: string
+                          example: '01'
+                          description: Mois de la date de naissance de l'enfant. Peut-être
+                            vide si inconnue.
+                          nullable: true
+                        jourDateDeNaissance:
+                          title: Jour de naissance
+                          type: string
+                          example: '31'
+                          description: Jour de la date de naissance de l'enfant. Peut-être
+                            vide si inconnue.
+                          nullable: true
+                        sexe:
+                          title: Sexe
+                          type: string
+                          description: Sexe de l'enfant
+                          example: M
+                          enum:
+                          - F
+                          - M
+                  adresse:
+                    title: Adresse de la famille
+                    type: object
+                    description: Adresse au format de la poste
+                    properties:
+                      identite:
+                        title: Identité du destinataire
+                        type: string
+                        example: Monsieur JEAN JACQUES
+                        description: 'Identité du destinataire : Civilité, titre ou
+                          qualité + nom et prénom'
+                      complementInformation:
+                        title: Complément d'information du destinataire ou point de
+                          remise
+                        description: Complément d'information du destinataire ou point
+                          de remise.
+                        type: string
+                        nullable: true
+                        example: 
+                      complementInformationGeographique:
+                        title: Complément d'information du point géographique
+                        type: string
+                        nullable: true
+                        example: 
+                        description: Complément d'information du point géographique.
+                      numeroLibelleVoie:
+                        title: Voie
+                        type: string
+                        description: Numéro et libellé de la voie
+                        example: 1 RUE DE LA GARE
+                      lieuDit:
+                        title: Lieu-dit
+                        type: string
+                        nullable: true
+                        example: 
+                        description: 'Lieu-dit ou service particulier de distribution
+                          : poste restante, boîte postale'
+                      codePostalVille:
+                        title: Code postal
+                        type: string
+                        description: Code postale et localité de destination
+                        example: '75002'
+                      pays:
+                        title: Pays
+                        type: string
+                        description: Pays
+                        example: FRANCE
+                  quotientFamilial:
+                    title: Quotient familial CAF ou MSA
+                    type: integer
+                    description: Valeur du quotient familial calculé par la CAF ou
+                      la MSA
+                    example: 1045
+                  annee:
+                    title: Année du quotient familial
+                    type: integer
+                    description: Année de calcul du quotient familial
+                    example: 2021
+                  mois:
+                    title: Mois du quotient familial
+                    type: integer
+                    description: Mois de calcul du quotient familial
+                    example: 6
+        '400':
+          description: Mauvais paramètres d'appels
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: bad_request
+                  reason:
+                    type: string
+                    example: Le codePaysLieuDeNaissance est manquant
+                  message:
+                    type: string
+                    example: Le codePaysLieuDeNaissance est manquant
+        '401':
+          description: Votre jeton d'API n'a pas été trouvé ou n'est pas actif
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: access_denied
+                  reason:
+                    type: string
+                    example: Token not found or inactive
+                  message:
+                    type: string
+                    example: Votre jeton d'API n'a pas été trouvé ou n'est pas actif
+        '404':
+          description: Dossier allocataire inexistant. Le document ne peut être édité.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: not_found
+                  reason:
+                    type: string
+                    example: Dossier allocataire inexistant. Le document ne peut être
+                      édité.
+                  message:
+                    type: string
+                    example: Dossier allocataire inexistant. Le document ne peut être
+                      édité.
+        '500':
+          description: Une erreur interne s'est produite, l'équipe a été prévenue.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: error
+                  reason:
+                    type: string
+                    example: Internal server error
+                  message:
+                    type: string
+                    example: Une erreur interne s'est produite, l'équipe a été prévenue.
+        '503':
+          description: Une erreur est survenue lors de l'appel au fournisseur de donnée
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: network_error
+                  reason:
+                    type: string
+                    example: timeout of 10000 ms exceeded
+                  message:
+                    type: string
+                    example: Une erreur est survenue lors de l'appel au fournisseur
+                      de donnée
+  "/api/v2/complementaire-sante-solidaire":
+    get:
+      summary: Complémentaire santé solidaire
+      description: "Récupérer les informations de la complémentaire santé solidaire
+        d'un individu. \n\n Pour de plus amples informations sur cette api et y avoir
+        accès en avant première, veuillez contacter l'équipe API Particulier. \n **Données
+        disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire) "
+      tags:
+      - Prochainement
+      parameters:
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: true
+        schema:
+          type: string
+      - name: nomUsage
+        schema:
+          type: string
+        in: query
+        description: Nom d'usage
+        required: false
+      - name: nomNaissance
+        schema:
+          type: string
+        in: query
+        description: Nom de naissance
+        required: false
+      - name: prenoms[]
+        in: query
+        description: Liste des prénoms
+        required: false
+        schema:
+          type: array
+          minItems: 1
+          items:
+            type: string
+      - name: anneeDateDeNaissance
+        description: Année de naissance. Ne pas la renseigner si celle-ci est inconnue
+        required: false
+        in: query
+        schema:
+          type: integer
+          example: 1990
+      - name: moisDateDeNaissance
+        description: Mois de naissance. Ne pas le renseigner si celle-ci est inconnu.
+          Cette valeur est ignorée si anneeDateDeNaissance est vide.
+        required: false
+        in: query
+        schema:
+          type: integer
+          example: 1
+      - name: jourDateDeNaissance
+        description: Jour de naissance. Ne pas le renseigner si celui-ci est inconnu.
+          Cette valeur est ignorée si moisDateDeNaissance ou anneeDateDeNaissance
+          est vide.
+        required: false
+        in: query
+        schema:
+          type: integer
+          example: 1
+      - name: codeInseeLieuDeNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '08480'
+        description: Code Insee à 5 chiffres du lieu de naissance de la personne sur
+          5 chiffres. Ne pas remplir si la personne est née à l'étranger.
+        required: false
+      - name: codePaysLieuDeNaissance
+        in: query
+        description: Code Insee à 5 chiffres du pays de naissance (France = 99100)
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '99100'
+        required: true
+      - name: sexe
+        in: query
+        description: Sexe de la personne, masculin ou féminin
+        required: true
+        schema:
+          enum:
+          - M
+          - F
+      responses:
+        '200':
+          x-operationId: api_particulier_v2_cnaf_complementaire_sante_solidaire
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    title: Le Statut bénéficiaire CSS
+                    type: string
+                    description: indique si le particulier est bénéficiaire de la
+                      complémentaire de santé solidaire et sous quelle forme (avec
+                      ou sans participation financière)
+                    enum:
+                    - BENEFICIAIRE_SANS_PARTICIPATION_FINANCIERE
+                    - BENEFICIAIRE_AVEC_PARTICIPATION_FINANCIERE
+                    - NON_BENEFICIAIRE_CSS
+                  dateDebut:
+                    title: Date d'ouverture du droit à la CSS
+                    type: string
+                    format: date
+                    nullable: true
+                    description: "Indique la date de début de la CSS pour le particulier
+                      si bénéficiaire. \n Ce champs sera null dans le cas où le particulier
+                      n'est pas bénéficiaire de la CSS."
+                    example: 1992-11-29
+                  dateFin:
+                    title: Date de fermeture du droit à la CSS
+                    type: string
+                    format: date
+                    nullable: true
+                    description: "Indique la date de fin de la CSS pour le particulier
+                      si bénéficiaire. \n Ce champs est calculé et a pour valeur la
+                      date de début de la CSS + 12 mois \n Ce champs sera null dans
+                      le cas où le particulier n'est pas bénéficiaire de la CSS."
+        '400':
+          description: Mauvais paramètres d'appels
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: bad_request
+                  reason:
+                    type: string
+                    example: Le codePaysLieuDeNaissance est manquant
+                  message:
+                    type: string
+                    example: Le codePaysLieuDeNaissance est manquant
+        '401':
+          description: Votre jeton d'API n'a pas été trouvé ou n'est pas actif
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: access_denied
+                  reason:
+                    type: string
+                    example: Token not found or inactive
+                  message:
+                    type: string
+                    example: Votre jeton d'API n'a pas été trouvé ou n'est pas actif
+        '404':
+          description: Dossier allocataire inexistant. Le document ne peut être édité.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: not_found
+                  reason:
+                    type: string
+                    example: Dossier allocataire inexistant. Le document ne peut être
+                      édité.
+                  message:
+                    type: string
+                    example: Dossier allocataire inexistant. Le document ne peut être
+                      édité.
+        '500':
+          description: Une erreur interne s'est produite, l'équipe a été prévenue.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: error
+                  reason:
+                    type: string
+                    example: Internal server error
+                  message:
+                    type: string
+                    example: Une erreur interne s'est produite, l'équipe a été prévenue.
+        '503':
+          description: Une erreur est survenue lors de l'appel au fournisseur de donnée
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: network_error
+                  reason:
+                    type: string
+                    example: timeout of 10000 ms exceeded
+                  message:
+                    type: string
+                    example: Une erreur est survenue lors de l'appel au fournisseur
+                      de donnée
 security:
 - apiKey: []
 servers:
@@ -1177,13 +1710,13 @@ components:
       properties:
         error:
           type: string
-          example:
+          example: 
         reason:
           type: string
-          example:
+          example: 
         message:
           type: string
-          example:
+          example: 
   securitySchemes:
     apiKey:
       type: apiKey
