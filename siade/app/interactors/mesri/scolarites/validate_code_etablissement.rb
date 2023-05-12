@@ -1,6 +1,6 @@
 class MESRI::Scolarites::ValidateCodeEtablissement < ValidateParamInteractor
   def call
-    invalid_param!(:code_etablissement) if param(:code_etablissement).blank?
+    return invalid_param!(:code_etablissement) if param(:code_etablissement).blank?
 
     return if param(:code_etablissement).match?(code_etablissement_regexp)
 
