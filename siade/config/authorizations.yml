@@ -187,7 +187,7 @@ shared:
     - pole_emploi_contact
     - pole_emploi_inscription
   api_particulier/v2/mesri/scolarites:
-    - mesri_scolarites
+    - s
 test:
   api_whatever/whatever_resource: &default_test_scopes
     - allowed_scope

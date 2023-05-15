@@ -1,4 +1,4 @@
-RSpec.describe MESRI::Scolarites, type: :retriever_organizer do
+RSpec.describe MEN::Scolarites, type: :retriever_organizer do
   describe '.call' do
     subject { described_class.call(params:) }
 
@@ -14,8 +14,8 @@ RSpec.describe MESRI::Scolarites, type: :retriever_organizer do
     end
 
     before do
-      mock_mesri_scolarite_auth
-      mock_mesri_scolarite
+      mock_men_scolarites_auth
+      mock_men_scolarite
     end
 
     describe 'happy path' do

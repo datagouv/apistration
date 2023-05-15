@@ -1,9 +1,9 @@
 require 'swagger_helper'
 
-RSpec.describe 'MESRI: Scolarites', api: :particulier, type: %i[request swagger] do
+RSpec.describe 'MEN: Scolarites', api: :particulier, type: %i[request swagger] do
   path '/api/v2/scolarites' do
-    get SwaggerData.get('mesri.scolarite.title') do
-      tags(*SwaggerData.get('mesri.scolarite.tags'))
+    get SwaggerData.get('men.scolarite.title') do
+      tags(*SwaggerData.get('men.scolarite.tags'))
 
       produces 'application/json'
 
@@ -30,13 +30,13 @@ RSpec.describe 'MESRI: Scolarites', api: :particulier, type: %i[request swagger]
       let(:x_api_key) { nil }
 
       describe 'with valid token and mandatory params' do
-        let(:x_api_key) { TokenFactory.new(['mesri_scolarites']).valid }
+        let(:x_api_key) { TokenFactory.new(['men_scolarites']).valid }
 
-        response '200', 'Scolarité trouvée', vcr: { cassette_name: 'mesri/scolarites/valid' } do
-          description SwaggerData.get('mesri.scolarite.description')
+        response '200', 'Scolarité trouvée', vcr: { cassette_name: 'men/scolarites/valid' } do
+          description SwaggerData.get('men.scolarite.description')
 
           schema build_rswag_response_api_particulier(
-            attributes: SwaggerData.get('mesri.scolarite.attributes')
+            attributes: SwaggerData.get('men.scolarite.attributes')
           )
 
           run_test!
@@ -53,7 +53,7 @@ RSpec.describe 'MESRI: Scolarites', api: :particulier, type: %i[request swagger]
             run_test!
           end
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'mesri/scolarites/not_found' } do
+          response '404', 'Non trouvée', vcr: { cassette_name: 'men/scolarites/not_found' } do
             let(:sexe) { 'f' }
 
             schema '$ref' => '#/components/schemas/Error'
@@ -62,10 +62,10 @@ RSpec.describe 'MESRI: Scolarites', api: :particulier, type: %i[request swagger]
           end
 
           response '503', 'Erreur du fournisseur' do
-            provider_unknown_error = ProviderUnknownError.new('MESRI')
+            provider_unknown_error = ProviderUnknownError.new('MEN')
 
             stubbed_organizer_error(
-              MESRI::Scolarites,
+              MEN::Scolarites,
               provider_unknown_error
             )
 
@@ -79,10 +79,10 @@ RSpec.describe 'MESRI: Scolarites', api: :particulier, type: %i[request swagger]
           response '504', 'Erreur d\'intermédiaire' do
             schema '$ref' => '#/components/schemas/Error'
 
-            provider_timeout_error = ProviderTimeoutError.new('MESRI')
+            provider_timeout_error = ProviderTimeoutError.new('MEN')
 
             stubbed_organizer_error(
-              MESRI::Scolarites,
+              MEN::Scolarites,
               provider_timeout_error
             )
 

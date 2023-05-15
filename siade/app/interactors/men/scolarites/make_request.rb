@@ -1,8 +1,8 @@
-class MESRI::Scolarites::MakeRequest < MakeRequest::Get
+class MEN::Scolarites::MakeRequest < MakeRequest::Get
   protected
 
   def request_uri
-    URI(Siade.credentials[:mesri_scolarite_url])
+    URI(Siade.credentials[:men_scolarites_url])
   end
 
   def request_params

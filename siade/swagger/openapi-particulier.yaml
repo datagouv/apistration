@@ -95,7 +95,6 @@ paths:
       responses:
         '200':
           description: Scolarité trouvée
-          x-operationId: api_particulier_v2_mesri_scolarites
           content:
             application/json:
               schema:
@@ -229,14 +228,14 @@ paths:
                 unknown_error:
                   value:
                     errors:
-                    - code: '25999'
+                    - code: '30999'
                       title: Erreur inconnue du fournisseur de données
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
                       source:
                       meta:
-                        provider: MESRI
+                        provider: MEN
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique

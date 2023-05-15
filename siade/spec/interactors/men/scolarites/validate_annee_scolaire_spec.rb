@@ -1,4 +1,4 @@
-RSpec.describe MESRI::Scolarites::ValidateAnneeScolaire, type: :validate_param_interactor do
+RSpec.describe MEN::Scolarites::ValidateAnneeScolaire, type: :validate_param_interactor do
   describe '.call' do
     subject { described_class.call(params:) }
 
@@ -47,7 +47,7 @@ RSpec.describe MESRI::Scolarites::ValidateAnneeScolaire, type: :validate_param_i
 
   describe 'Non-regression test: when called in an ValidateParamsOrganizer with wait_to_fail' do
     class DummyOrganizer < ValidateParamsOrganizer
-      organize MESRI::Scolarites::ValidateAnneeScolaire
+      organize MEN::Scolarites::ValidateAnneeScolaire
     end
 
     subject { DummyOrganizer.call(params:) }

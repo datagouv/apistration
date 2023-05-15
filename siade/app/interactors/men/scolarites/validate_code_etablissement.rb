@@ -1,4 +1,4 @@
-class MESRI::Scolarites::ValidateCodeEtablissement < ValidateParamInteractor
+class MEN::Scolarites::ValidateCodeEtablissement < ValidateParamInteractor
   def call
     return invalid_param!(:code_etablissement) if param(:code_etablissement).blank?
 

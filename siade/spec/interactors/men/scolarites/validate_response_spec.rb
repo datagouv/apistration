@@ -1,5 +1,5 @@
-RSpec.describe MESRI::Scolarites::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response:, provider_name: 'MESRI') }
+RSpec.describe MEN::Scolarites::ValidateResponse, type: :validate_response do
+  subject { described_class.call(response:, provider_name: 'MEN') }
 
   context 'with a http ok' do
     let(:response) { instance_double(Net::HTTPOK, code: '200') }

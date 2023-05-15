@@ -1,4 +1,4 @@
-class MESRI::Scolarites::ValidateResponse < ValidateResponse
+class MEN::Scolarites::ValidateResponse < ValidateResponse
   def call
     provider_timeout_error! if http_provider_timeout_error?
 

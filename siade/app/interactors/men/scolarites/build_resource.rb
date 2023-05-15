@@ -1,4 +1,4 @@
-class MESRI::Scolarites::BuildResource < BuildResource
+class MEN::Scolarites::BuildResource < BuildResource
   LIBELLES_STATUS = {
     ST: 'Scolaire',
     AP: 'Apprenti',

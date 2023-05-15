@@ -1,7 +1,7 @@
-RSpec.describe MESRI::Scolarites::Authenticate do
+RSpec.describe MEN::Scolarites::Authenticate do
   subject(:interactor) { described_class.call }
 
-  context 'when authentication succeed', vcr: { cassette_name: 'mesri/scolarites/authenticate' } do
+  context 'when authentication succeed', vcr: { cassette_name: 'men/scolarites/authenticate' } do
     let(:access_token_from_vcr) { 'jwt-access-token' }
 
     it { is_expected.to be_a_success }

@@ -1,4 +1,4 @@
-RSpec.describe MESRI::Scolarites::ValidateParams, type: :validate_params do
+RSpec.describe MEN::Scolarites::ValidateParams, type: :validate_params do
   subject { described_class.call(params:) }
 
   let(:params) do

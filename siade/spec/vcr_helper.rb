@@ -66,9 +66,9 @@ VCR.configure do |c|
   c.filter_sensitive_data('<URL_MI>') { Siade.credentials[:mi_domain].to_s }
 
   c.filter_sensitive_data('<CNOUS_CREDENTIALS>') { Siade.credentials[:cnous_authenticate_credentials].to_s }
-  c.filter_sensitive_data('<MESRI_SCOLARITE_URL>') { Siade.credentials[:mesri_scolarite_url].to_s }
-  c.filter_sensitive_data('<MESRI_SCOLARITE_CLIENT_SECRET>') { Siade.credentials[:mesri_scolarite_client_secret].to_s }
-  c.filter_sensitive_data('<MESRI_SCOLARITE_AUTHENTICATE_URL>') { Siade.credentials[:mesri_scolarite_authenticate_url].to_s }
+  c.filter_sensitive_data('<MEN_SCOLARITES_URL>') { Siade.credentials[:men_scolarites_url].to_s }
+  c.filter_sensitive_data('<MEN_SCOLARITES_CLIENT_SECRET>') { Siade.credentials[:men_scolarites_client_secret].to_s }
+  c.filter_sensitive_data('<MEN_SCOLARITES_AUTHENTICATE_URL>') { Siade.credentials[:men_scolarites_authenticate_url].to_s }
 
   c.register_request_matcher :body_sanitized do |r_1, r_2|
     body_1 = r_1.body || ''
