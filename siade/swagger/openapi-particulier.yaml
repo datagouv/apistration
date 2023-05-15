@@ -95,6 +95,7 @@ paths:
       responses:
         '200':
           description: Scolarité trouvée
+          x-operationId: api_particulier_v2_men_scolarites
           content:
             application/json:
               schema:
