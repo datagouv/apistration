@@ -186,8 +186,10 @@ shared:
     - pole_emploi_adresse
     - pole_emploi_contact
     - pole_emploi_inscription
-  api_particulier/v2/mesri/scolarites:
-    - s
+  api_particulier/v2/men/scolarites:
+    - men_statut_scolarite
+    - men_statut_boursier
+    - men_echelon_bourse
 test:
   api_whatever/whatever_resource: &default_test_scopes
     - allowed_scope
