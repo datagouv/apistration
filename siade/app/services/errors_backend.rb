@@ -66,6 +66,7 @@ class ErrorsBackend
       '27' => 'DGFIP - SVAIR',
       '28' => 'Commission Européenne',
       '29' => 'DJEPVA',
+      '30' => 'MEN',
       '50' => 'FranceConnect'
     }
   end

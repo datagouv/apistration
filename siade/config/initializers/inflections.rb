@@ -50,6 +50,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'INPI'
   inflect.acronym 'INSEE'
   inflect.acronym 'MESRI'
+  inflect.acronym 'MEN'
   inflect.acronym 'MI'
   inflect.acronym 'MSA'
   inflect.acronym 'OPQIBI'
