@@ -60,7 +60,6 @@ paths:
       summary: Statut élève scolarisé et boursier
       tags:
       - Scolarité étudiant
-      - Prochainement
       parameters:
       - name: X-Api-Key
         in: header
