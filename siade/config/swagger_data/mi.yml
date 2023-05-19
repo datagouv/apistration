@@ -979,11 +979,10 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
                   - "date_depot"
                   - "url"
                 properties:
-                  # NOTE exclut car on peut deviner l'url derrière, dans l'optique de mettre un proxy il vaut mieux l'exclure ici
-                  # id:
-                  #   type: "string"
-                  #   title: "Identifiant interne du document"
-                  #   example: "00000000-0000-0000-0000-000000000001"
+                  id:
+                    type: "string"
+                    title: "Identifiant interne du document. L'ID a été hashée pour des raisons de confidentialité."
+                    example: "3d53b6bfe05370b45df327123656e54260ce56e1fafd1881853cebae6ead8458"
                   nom:
                     type: "string"
                     title: "Nom du document"
@@ -1134,11 +1133,10 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
             - "date_depot"
             - "url"
           properties:
-            # NOTE exclut car on peut deviner l'url derrière, dans l'optique de mettre un proxy il vaut mieux l'exclure ici
-            # id:
-            #   type: "string"
-            #   title: "Identifiant interne du document"
-            #   example: "0b2fefc5-84af-4733-939e-4c9277f78ac7"
+            id:
+              type: "string"
+              title: "Identifiant interne du document. L'ID a été hashée pour raisons de confidentialité."
+              example: "7ac1b8d7010bb6cd3a3e84e7f90136b880bbc899e428ece49333372911ab9052"
             type:
               type: "string"
               title: "Type du document"

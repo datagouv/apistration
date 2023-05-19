@@ -24,6 +24,24 @@ RSpec.describe MI::Associations::BuildResource, type: :build_resource do
       it 'builds valid resource' do
         expect(resource).to be_a(Resource)
       end
+
+      describe 'when there is document dac or rna' do
+        let(:regexp_uuid) { /d{8}-\d{4}-\d{4}-\d{4}-\d{12}/ }
+        let(:regexp_hashed_uuid) { /\A[a-fA-F0-9]{64}\z/ }
+
+        let(:document_rna_id) { subject.bundled_data.data.documents_rna.first[:id] }
+        let(:document_dac_id) { subject.bundled_data.data.etablissements.first[:documents_dac].first[:id] }
+
+        it 'do not return the original ID of documents' do
+          expect(document_rna_id).not_to match(regexp_uuid)
+          expect(document_dac_id).not_to match(regexp_uuid)
+        end
+
+        it 'returns a hashed ID of documents' do
+          expect(document_rna_id).to match(regexp_hashed_uuid)
+          expect(document_dac_id).to match(regexp_hashed_uuid)
+        end
+      end
     end
 
     describe 'when payload has only one dac document (non-regression test)' do

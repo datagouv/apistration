@@ -281,7 +281,7 @@ class MI::Associations::BuildResource < BuildResource
 
     Array.wrap(association[:documents][:document_rna]).map do |document_rna|
       {
-        id: document_rna[:id],
+        id: Digest::SHA256.hexdigest(document_rna[:id]),
         type: document_rna[:type] == 'PIECE' ? 'Pièce' : 'Récipicé',
         sous_type: {
           code: document_rna[:sous_type],
@@ -300,7 +300,7 @@ class MI::Associations::BuildResource < BuildResource
 
     valid_documents_for(siret).map do |document|
       {
-        id: document[:uuid],
+        id: Digest::SHA256.hexdigest(document[:uuid]),
         nom: document[:nom],
         commentaire: document[:commentaire],
         type: document_dac_code_type_to_libelle(document[:meta][:type]),
