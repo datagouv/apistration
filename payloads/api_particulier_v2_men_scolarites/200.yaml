@@ -2,7 +2,7 @@
 params:
   nom: "Dubois"
   prenom: "Camille"
-  sexe: "m"
+  sexe: "f"
   dateNaissance: "2000-01-20"
   codeEtablissement: "0890003V"
   anneeScolaire: "2022"
