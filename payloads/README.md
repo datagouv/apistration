@@ -5,6 +5,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 
 ## API Particulier
 
+* [Statut élève scolarisé et boursier](api_particulier_v2_men_scolarites) (`/api/v2/scolarites`)
 * Service de vérification de l'avis d'impôt sur le revenu (`/api/v2/avis-imposition`)
 * [Quotient familial CAF](api_particulier_v2_cnaf_quotient_familial) (`/api/v2/composition-familiale`)
 * [Statut demandeur d'emploi](api_particulier_v2_pole_emploi_statut) (`/api/v2/situations-pole-emploi`)

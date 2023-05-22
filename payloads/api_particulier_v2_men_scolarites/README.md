@@ -11,9 +11,9 @@
     "nom": "Dubois",
     "prenom": "Camille",
     "sexe": "m",
-    "date_naissance": "2000-01-20",
-    "code_etablissement": "0890003V",
-    "annee_scolaire": "2022"
+    "dateNaissance": "2000-01-20",
+    "codeEtablissement": "0890003V",
+    "anneeScolaire": "2022"
   }
   ```
 
@@ -50,7 +50,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nom=Dubois' -d 'prenom=Camille' -d 'sexe=m' -d 'date_naissance=2000-01-20' -d 'code_etablissement=0890003V' -d 'annee_scolaire=2022' \
+    -G -d 'nom=Dubois' -d 'prenom=Camille' -d 'sexe=m' -d 'dateNaissance=2000-01-20' -d 'codeEtablissement=0890003V' -d 'anneeScolaire=2022' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/scolarites"
   ```
 
@@ -68,9 +68,9 @@
     "nom": "Dubois",
     "prenom": "Camille",
     "sexe": "not_valid",
-    "date_naissance": "2000-01-20",
-    "code_etablissement": "0890003V",
-    "annee_scolaire": "2022"
+    "dateNaissance": "2000-01-20",
+    "codeEtablissement": "0890003V",
+    "anneeScolaire": "2022"
   }
   ```
 
@@ -96,7 +96,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nom=Dubois' -d 'prenom=Camille' -d 'sexe=not_valid' -d 'date_naissance=2000-01-20' -d 'code_etablissement=0890003V' -d 'annee_scolaire=2022' \
+    -G -d 'nom=Dubois' -d 'prenom=Camille' -d 'sexe=not_valid' -d 'dateNaissance=2000-01-20' -d 'codeEtablissement=0890003V' -d 'anneeScolaire=2022' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/scolarites"
   ```
 
@@ -114,9 +114,9 @@
     "nom": "Martin",
     "prenom": "Camille",
     "sexe": "f",
-    "date_naissance": "2000-01-20",
-    "code_etablissement": "0890003V",
-    "annee_scolaire": "2022"
+    "dateNaissance": "2000-01-20",
+    "codeEtablissement": "0890003V",
+    "anneeScolaire": "2022"
   }
   ```
 
@@ -142,7 +142,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nom=Martin' -d 'prenom=Camille' -d 'sexe=f' -d 'date_naissance=2000-01-20' -d 'code_etablissement=0890003V' -d 'annee_scolaire=2022' \
+    -G -d 'nom=Martin' -d 'prenom=Camille' -d 'sexe=f' -d 'dateNaissance=2000-01-20' -d 'codeEtablissement=0890003V' -d 'anneeScolaire=2022' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/scolarites"
   ```
 
@@ -160,9 +160,9 @@
     "nom": "Depardieu",
     "prenom": "Francis",
     "sexe": "m",
-    "date_naissance": "2000-01-20",
-    "code_etablissement": "0890003V",
-    "annee_scolaire": "2022"
+    "dateNaissance": "2000-01-20",
+    "codeEtablissement": "0890003V",
+    "anneeScolaire": "2022"
   }
   ```
 
@@ -188,7 +188,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nom=Depardieu' -d 'prenom=Francis' -d 'sexe=m' -d 'date_naissance=2000-01-20' -d 'code_etablissement=0890003V' -d 'annee_scolaire=2022' \
+    -G -d 'nom=Depardieu' -d 'prenom=Francis' -d 'sexe=m' -d 'dateNaissance=2000-01-20' -d 'codeEtablissement=0890003V' -d 'anneeScolaire=2022' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/scolarites"
   ```
 
@@ -206,9 +206,9 @@
     "nom": "Faure",
     "prenom": "Felix",
     "sexe": "m",
-    "date_naissance": "2000-01-20",
-    "code_etablissement": "0890003V",
-    "annee_scolaire": "2022"
+    "dateNaissance": "2000-01-20",
+    "codeEtablissement": "0890003V",
+    "anneeScolaire": "2022"
   }
   ```
 
@@ -234,7 +234,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nom=Faure' -d 'prenom=Felix' -d 'sexe=m' -d 'date_naissance=2000-01-20' -d 'code_etablissement=0890003V' -d 'annee_scolaire=2022' \
+    -G -d 'nom=Faure' -d 'prenom=Felix' -d 'sexe=m' -d 'dateNaissance=2000-01-20' -d 'codeEtablissement=0890003V' -d 'anneeScolaire=2022' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/scolarites"
   ```
 
