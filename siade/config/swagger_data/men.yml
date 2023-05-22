@@ -4,6 +4,7 @@ men:
     description: "Statut scolarisé et statut boursier d'un élève du primaire, collège ou lycée."
     tags:
       - Scolarité étudiant
+      - Prochainement
     parameters:
       nom:
         title: "Nom"
