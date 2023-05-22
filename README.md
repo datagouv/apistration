@@ -217,6 +217,9 @@ Référez-vous à [tokens/](./tokens)
 3. La commande crée un dossier avec un `default.yaml` que vous devez adapter pour
    que la suite de tests passe (cf plus bas).
 
+Par défaut, la commande se base sur les fichiers OpenAPI en staging.
+Pour utiliser les fichiers openapi locaux (dossier `openapi_files`), utilisez la variable d'environnement `LOCAL=true`
+
 ## Limitations
 
 * Pour API Particulier, si un jeton ne possède pas l'ensemble des scopes pour

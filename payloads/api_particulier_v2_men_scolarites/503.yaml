@@ -1,0 +1,15 @@
+---
+params:
+  nom: "Depardieu"
+  prenom: "Francis"
+  sexe: "m"
+  dateNaissance: "2000-01-20"
+  codeEtablissement: "0890003V"
+  anneeScolaire: "2022"
+status: 503
+payload: |-
+  {
+    "error": "network_error",
+    "reason": "timeout of 10000 ms exceeded",
+    "message": "Une erreur est survenue lors de l'appel au fournisseur de donnée"
+  }

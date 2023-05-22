@@ -1,0 +1,15 @@
+---
+params:
+  nom: "Dubois"
+  prenom: "Camille"
+  sexe: "not_valid"
+  dateNaissance: "2000-01-20"
+  codeEtablissement: "0890003V"
+  anneeScolaire: "2022"
+status: 400
+payload: |-
+  {
+    "error": "unprocessable_entity_error_gender_error",
+    "reason": "Entité non traitable",
+    "message": "Le sexe n'est pas correctement formaté (m ou f)"
+  }
