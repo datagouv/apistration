@@ -165,7 +165,7 @@ paths:
                   status_eleve:
                     title: Statut de l'élève
                     description: |
-                      Indique le statut sous lequel l'élève est scolarisé dans l'établissement. Les valeurs possibles sont&nbsp;:&nbsp;
+                      Indique le statut sous lequel l'élève est scolarisé dans l'établissement. Les valeurs possibles sont&nbsp;:&nbsp;(non exhaustif)
                       - ST : Scolaire, il s'agit du statut de base renvoyé pour près de 95% des élèves. Ce statut concerne également les élèves qui suivent le CNED (Centre national d'éducation à distance). Ceux-ci peuvent être distingués par l'établissement car ils sont tous affectés au même : `0861288H (CNED DIRECTION GENERALE)`.
                       - AP : Apprenti
                       - CQ : Contrat de qualification
@@ -177,23 +177,13 @@ paths:
                         description: Code du statut sous lequel l'élève est scolarisé
                           dans l'établissement.
                         type: string
-                        enum:
-                        - ST
-                        - AP
-                        - FQ
-                        - CQ
-                        - FC
+                        example: ST
                       libelle:
                         title: Libellé du statut de l'élève
                         description: Libellé du statut sous lequel l'élève est scolarisé
                           dans l'établissement.
                         type: string
-                        enum:
-                        - Scolaire
-                        - Apprenti
-                        - Stagiaire de la Formation Professionnelle
-                        - Contrat de Qualification
-                        - Formation Continue
+                        example: Scolaire
                     required:
                     - code
                     - libelle
