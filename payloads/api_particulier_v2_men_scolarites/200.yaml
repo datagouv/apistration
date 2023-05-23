@@ -1,7 +1,7 @@
 ---
 params:
-  nom: "Dubois"
-  prenom: "Camille"
+  nom: "Martin"
+  prenom: "Justine"
   sexe: "f"
   dateNaissance: "2000-01-20"
   codeEtablissement: "0890003V"
@@ -10,8 +10,8 @@ status: 200
 payload: |-
   {
     "eleve": {
-      "nom": "Dubois",
-      "prenom": "Camille",
+      "nom": "Martin",
+      "prenom": "Justine",
       "sexe": "F",
       "date_naissance": "2000-01-20"
     },

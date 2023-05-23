@@ -8,9 +8,9 @@
 
   ```json
   {
-    "nom": "Dubois",
-    "prenom": "Camille",
-    "sexe": "m",
+    "nom": "Martin",
+    "prenom": "Justine",
+    "sexe": "f",
     "dateNaissance": "2000-01-20",
     "codeEtablissement": "0890003V",
     "anneeScolaire": "2022"
@@ -26,8 +26,8 @@
   ```json
   {
     "eleve": {
-      "nom": "Dubois",
-      "prenom": "Camille",
+      "nom": "Martin",
+      "prenom": "Justine",
       "sexe": "F",
       "date_naissance": "2000-01-20"
     },
@@ -50,7 +50,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nom=Dubois' -d 'prenom=Camille' -d 'sexe=m' -d 'dateNaissance=2000-01-20' -d 'codeEtablissement=0890003V' -d 'anneeScolaire=2022' \
+    -G -d 'nom=Martin' -d 'prenom=Justine' -d 'sexe=f' -d 'dateNaissance=2000-01-20' -d 'codeEtablissement=0890003V' -d 'anneeScolaire=2022' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/scolarites"
   ```
 
@@ -65,8 +65,8 @@
 
   ```json
   {
-    "nom": "Dubois",
-    "prenom": "Camille",
+    "nom": "Martin",
+    "prenom": "Justine",
     "sexe": "not_valid",
     "dateNaissance": "2000-01-20",
     "codeEtablissement": "0890003V",
@@ -96,7 +96,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nom=Dubois' -d 'prenom=Camille' -d 'sexe=not_valid' -d 'dateNaissance=2000-01-20' -d 'codeEtablissement=0890003V' -d 'anneeScolaire=2022' \
+    -G -d 'nom=Martin' -d 'prenom=Justine' -d 'sexe=not_valid' -d 'dateNaissance=2000-01-20' -d 'codeEtablissement=0890003V' -d 'anneeScolaire=2022' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/scolarites"
   ```
 
@@ -112,7 +112,7 @@
   ```json
   {
     "nom": "Martin",
-    "prenom": "Camille",
+    "prenom": "Jerome",
     "sexe": "f",
     "dateNaissance": "2000-01-20",
     "codeEtablissement": "0890003V",
@@ -142,7 +142,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nom=Martin' -d 'prenom=Camille' -d 'sexe=f' -d 'dateNaissance=2000-01-20' -d 'codeEtablissement=0890003V' -d 'anneeScolaire=2022' \
+    -G -d 'nom=Martin' -d 'prenom=Jerome' -d 'sexe=f' -d 'dateNaissance=2000-01-20' -d 'codeEtablissement=0890003V' -d 'anneeScolaire=2022' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/scolarites"
   ```
 
