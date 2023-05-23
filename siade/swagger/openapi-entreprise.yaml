@@ -13115,7 +13115,7 @@ paths:
                               nom_naissance:
                                 title: Nom de naissance
                                 type: string
-                                example: Dubois
+                                example: Martin
                                 nullable: true
                               sexe:
                                 title: Genre
@@ -14393,7 +14393,7 @@ paths:
                               nom_naissance:
                                 title: Nom de naissance
                                 type: string
-                                example: Dubois
+                                example: Martin
                                 nullable: true
                                 description: Cette valeur est masquée à [ND] si l'unité
                                   légale correspond à une personne physique non-diffusible.
@@ -15701,7 +15701,7 @@ paths:
                               nom_naissance:
                                 title: Nom de naissance
                                 type: string
-                                example: Dubois
+                                example: Martin
                                 nullable: true
                                 description: Cette valeur est masquée à [ND] si l'unité
                                   légale correspond à une personne physique non-diffusible.
@@ -16992,7 +16992,7 @@ paths:
                               nom_naissance:
                                 title: Nom de naissance
                                 type: string
-                                example: Dubois
+                                example: Martin
                                 nullable: true
                               sexe:
                                 title: Genre
@@ -18053,7 +18053,7 @@ paths:
                           nom_naissance:
                             title: Nom de naissance
                             type: string
-                            example: Dubois
+                            example: Martin
                             nullable: true
                           sexe:
                             title: Genre
@@ -18859,7 +18859,7 @@ paths:
                           nom_naissance:
                             title: Nom de naissance
                             type: string
-                            example: Dubois
+                            example: Martin
                             nullable: true
                             description: Cette valeur est masquée à [ND] si l'unité
                               légale correspond à une personne physique non-diffusible.

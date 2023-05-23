@@ -111,12 +111,12 @@ paths:
                         title: Nom
                         description: Nom de l'élève
                         type: string
-                        example: Dubois
+                        example: Martin
                       prenom:
                         title: Prénom
                         description: Prénom de l'élève
                         type: string
-                        example: Camille
+                        example: Justine
                       sexe:
                         title: Sexe
                         description: Sexe de l'élève, masculin ou féminin

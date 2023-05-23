@@ -76,7 +76,7 @@ insee:
     nom_naissance: &personne_physique_property_nom_naissance
       title: "Nom de naissance"
       type: "string"
-      example: "Dubois"
+      example: "Martin"
       nullable: true
     sexe: &personne_physique_property_sexe
       title: "Genre"
