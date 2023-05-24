@@ -132,7 +132,7 @@
   ```json
   {
     "nom": "MARTIN",
-    "given_name": "Jacques",
+    "prenom": "Jacques",
     "dateDeNaissance": "2004-01-01",
     "sexe": "m",
     "birth_place": "75002"
@@ -175,7 +175,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nom=MARTIN' -d 'given_name=Jacques' -d 'dateDeNaissance=2004-01-01' -d 'sexe=m' -d 'birth_place=75002' \
+    -G -d 'nom=MARTIN' -d 'prenom=Jacques' -d 'dateDeNaissance=2004-01-01' -d 'sexe=m' -d 'birth_place=75002' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
   ```
 
@@ -190,8 +190,8 @@
 
   ```json
   {
-    "given_name": "Jean",
-    "family_name": "MESRI",
+    "prenom": "Jean",
+    "nom": "MESRI",
     "birthdate": "2002-01-01",
     "gender": "male",
     "birthplace": "75002"
@@ -234,7 +234,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'given_name=Jean' -d 'family_name=MESRI' -d 'birthdate=2002-01-01' -d 'gender=male' -d 'birthplace=75002' \
+    -G -d 'prenom=Jean' -d 'nom=MESRI' -d 'birthdate=2002-01-01' -d 'gender=male' -d 'birthplace=75002' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
   ```
 

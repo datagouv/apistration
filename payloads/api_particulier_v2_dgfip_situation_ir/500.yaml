@@ -1,0 +1,11 @@
+---
+params:
+  numeroFiscal: '1111111111500'
+  referenceAvis: '1111111111500'
+status: 500
+payload: |-
+  {
+    "error": "error",
+    "reason": "Internal server error",
+    "message": "Une erreur interne s'est produite, l'équipe a été prévenue."
+  }

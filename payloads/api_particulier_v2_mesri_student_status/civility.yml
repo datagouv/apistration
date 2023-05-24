@@ -1,7 +1,7 @@
 ---
 params:
   nom: "MARTIN"
-  given_name: "Jacques"
+  prenom: "Jacques"
   dateDeNaissance: "2004-01-01"
   sexe: "m"
   birth_place: "75002"
