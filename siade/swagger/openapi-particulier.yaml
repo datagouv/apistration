@@ -1807,9 +1807,7 @@ paths:
                     format: date
                     nullable: true
                     description: "Date de début de droit à la complémentaire santé
-                      solidaire (C2S) si le particulier est bénéficiaire. \n Dans
-                      le cas d'un particulier bénéficiant de plusieurs C2S, la date
-                      d'ouverture de droit la plus récente est transmise. \n Ce champs
+                      solidaire (C2S) si le particulier est bénéficiaire. \n Ce champs
                       est null dans le cas où le particulier n'est pas bénéficiaire
                       de la C2S."
                     example: 1992-11-29
