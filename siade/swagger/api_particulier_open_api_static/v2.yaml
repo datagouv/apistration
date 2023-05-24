@@ -40,7 +40,7 @@ paths:
 
         **Paramètres d'appel :** numéro fiscal et numéro d'avis d'imposition
 
-        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/tree/develop/payloads/api_particulier_v2_dgfip_svair)
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/tree/develop/payloads/api_particulier_v2_dgfip_situation_ir)
       summary: Service de vérification de l'avis d'impôt sur le revenu
       parameters:
         &a4
@@ -747,7 +747,7 @@ paths:
         **Paramètres d'appel :** Pour appeler l'API statut étudiant, deux modes d'appel sont possibles :
          - INE, l'identifiant national étudiant ;
          - l'état civil de l'étudiant: nom, prénom, date de naissance, sexe et lieu de naissance.
-
+         
         **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_mesri_student_status)
       responses:
         "200":
@@ -761,7 +761,9 @@ paths:
                   ine:
                     title: Identifiant National Étudiant (INE)
                     type: string
-                    description: Cet identifiant est unique à chaque étudiant sur le territoire français. Il est composé de 11 caractères, 10 chiffres et 1 lettre, et depuis la rentrée 2018, 9 chiffres et 2 lettres. Les étudiants peuvent retrouver leur numéro INE sur leur carte étudiant et leur certificat de scolarité.
+                    description: "Cet identifiant est unique à chaque étudiant sur le territoire français. Il est composé de 11 caractères, 10 chiffres et 1 lettre, et depuis la rentrée 2018, 9 chiffres et 2 lettres. Les étudiants peuvent retrouver leur numéro INE sur leur carte étudiant et leur certificat de scolarité.
+                    \n
+                    Dans le cas où l'appel à l'api n'a pas été fait avec l'INE, le champ est null."
                     example: 1234567890G
                   nom:
                     title: Nom de naissance
@@ -1012,6 +1014,22 @@ paths:
                     type: string
                     description: L'établissement d'études de l'étudiant
                     example: Carnot
+        "400":
+          description: Mauvais paramètres d'appels
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: bad_request
+                  reason:
+                    type: string
+                    example: Le sexe est manquant
+                  message:
+                    type: string
+                    example: Le sexe est manquant
         "401": *a6
         "404": *a15
         "409":
@@ -1114,4 +1132,3 @@ paths:
                       type: string
         "401": *a6
         "500": *a8
-

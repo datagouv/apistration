@@ -28,6 +28,12 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
             expect(json).to have_key(key), "#{key} is missing"
           end
         end
+
+        it 'returns matching ine params' do
+          json = JSON.parse(subject.body)
+
+          expect(json['ine']).to eq(ine)
+        end
       end
 
       context 'when mesri_identite is missing' do
@@ -98,6 +104,12 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
             expect(json).to have_key(key), "#{key} is missing"
           end
         end
+
+        it 'returns null as ine params' do
+          json = JSON.parse(subject.body)
+
+          expect(json['ine']).to be_nil
+        end
       end
     end
   end
@@ -132,6 +144,12 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
       one_field_of_each_scope.each do |key|
         expect(json).to have_key(key), "#{key} is missing"
       end
+    end
+
+    it 'returns null as ine params' do
+      json = JSON.parse(subject.body)
+
+      expect(json['ine']).to be_nil
     end
 
     it 'calls MESRI::StudentStatus::WithCivility with france connect person identity attributes, only first first name' do

@@ -10,6 +10,10 @@ class APIParticulier::V2::DGFIP::SituationIRController < APIParticulierControlle
     end
   end
 
+  def operation_id
+    'api_particulier_v2_dgfip_situation_ir'
+  end
+
   private
 
   def serializer_class
