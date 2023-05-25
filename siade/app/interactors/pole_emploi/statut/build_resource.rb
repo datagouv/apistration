@@ -11,7 +11,7 @@ class PoleEmploi::Statut::BuildResource < BuildResource
   private
 
   def identifiant
-    context.params[:identifiant]
+    context.params[:identifiant_pole_emploi]
   end
 
   def identity_attributes

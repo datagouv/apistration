@@ -1,13 +1,13 @@
 RSpec.describe PoleEmploi::Statut::BuildResource, type: :build_resource do
   subject { instance }
 
-  let(:instance) { described_class.call(params: { identifiant: }, response:) }
+  let(:instance) { described_class.call(params: { identifiant_pole_emploi: }, response:) }
 
   let(:response) do
     instance_double(Net::HTTPOK, body:)
   end
 
-  let(:identifiant) { 'whatever' }
+  let(:identifiant_pole_emploi) { 'whatever' }
   let(:body) { Rails.root.join('spec/fixtures/payloads/pole_emploi/statut_valid.json').read }
 
   it { is_expected.to be_a_success }
@@ -18,7 +18,7 @@ RSpec.describe PoleEmploi::Statut::BuildResource, type: :build_resource do
     it do
       expect(subject).to eq(
         {
-          identifiant:,
+          identifiant: identifiant_pole_emploi,
           civilite: 'M.',
           nom: 'DUPONT',
           nomUsage: nil,

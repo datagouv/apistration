@@ -27,6 +27,12 @@ RSpec.describe APIParticulier::V2::PoleEmploi::StatutController do
           expect(json).to have_key(key), "#{key} is missing"
         end
       end
+
+      it 'returns correct identifiant' do
+        json = JSON.parse(subject.body)
+
+        expect(json['identifiant']).to eq(identifiant)
+      end
     end
 
     context 'when pole_emploi_identite is missing' do
