@@ -23,10 +23,10 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
         code_etablissement: '0511474A',
         annee_scolaire: '2021',
         est_scolarise: true,
-        est_boursier: true,
+        est_boursier: false,
         status_eleve: {
           code: 'ST',
-          libelle: 'Scolaire'
+          libelle: 'SCOLAIRE'
         }
       }
     end

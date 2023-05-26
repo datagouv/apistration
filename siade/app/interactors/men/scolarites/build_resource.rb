@@ -1,29 +1,21 @@
 class MEN::Scolarites::BuildResource < BuildResource
-  LIBELLES_STATUS = {
-    ST: 'Scolaire',
-    AP: 'Apprenti',
-    FQ: 'Stagiaire de la Formation Professionnelle',
-    CQ: 'Contrat de Qualification',
-    FC: 'Formation Continue'
-  }.freeze
-
   protected
 
   def resource_attributes
     {
       eleve: {
-        nom: json_body['eleve']['nom'],
-        prenom: json_body['eleve']['prenom'],
+        nom: json_body['identification']['nom'],
+        prenom: json_body['identification']['prenom'],
         sexe:,
-        date_naissance: json_body['eleve']['date-naissance']
+        date_naissance: json_body['identification']['date-naissance']
       },
-      code_etablissement: json_body['etablissement']['code-uai'],
-      annee_scolaire: json_body['annee-scolaire'],
-      est_scolarise: json_body['est-scolarise'],
-      est_boursier: json_body['est-boursier'],
+      code_etablissement: json_body['identification']['etablissement']['code-uai'],
+      annee_scolaire: json_body['identification']['annee-scolaire'],
+      est_scolarise: json_body['info-scolarite']['est-scolarise'],
+      est_boursier: json_body['info-bourse']['est-boursier'],
       status_eleve: {
-        code: json_body['code-statut-eleve'],
-        libelle: libelle_status_eleve
+        code: json_body['info-scolarite']['statut-eleve']['code'],
+        libelle: json_body['info-scolarite']['statut-eleve']['libelle']
       }
     }
   end
@@ -31,10 +23,6 @@ class MEN::Scolarites::BuildResource < BuildResource
   private
 
   def sexe
-    json_body['eleve']['sexe'] == 1 ? 'M' : 'F'
-  end
-
-  def libelle_status_eleve
-    LIBELLES_STATUS[json_body['code-statut-eleve'].to_sym]
+    json_body['identification']['sexe'] == 1 ? 'M' : 'F'
   end
 end
