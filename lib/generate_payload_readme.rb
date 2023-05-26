@@ -1,5 +1,8 @@
 require 'open_api_helpers'
 require 'generate_code_sample_from_path'
+require 'openapi3_parser'
+require 'open_api_schema_to_example'
+require 'active_support/all'
 
 class GeneratePayloadReadme
   include OpenAPIHelpers
@@ -41,10 +44,10 @@ class GeneratePayloadReadme
     readme_stream.puts
     readme_stream.puts "  Status `#{payload['status']}`"
 
-    if payload['description']
-      readme_stream.puts
-      readme_stream.puts "  #{payload['description']}"
-    end
+    raise("All response must have a description (#{payload_path})") if payload['description'].blank?
+
+    readme_stream.puts
+    readme_stream.puts "  #{payload['description']}"
 
     add_collapse_section(
       'Paramètres',
