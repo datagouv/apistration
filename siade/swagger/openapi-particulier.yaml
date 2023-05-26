@@ -194,7 +194,7 @@ paths:
                         description: Libellé du statut sous lequel l'élève est scolarisé
                           dans l'établissement.
                         type: string
-                        example: Scolaire
+                        example: SCOLAIRE
                     required:
                     - code
                     - libelle
