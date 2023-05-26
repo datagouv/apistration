@@ -18,6 +18,7 @@ class GeneratePayloadReadme
   def perform
     add_title
     add_description
+    add_default_payload_infos
 
     payload_entries.each do |payload_path|
       add_payload_entry(payload_path, api_path)
@@ -85,6 +86,33 @@ class GeneratePayloadReadme
       readme_stream.puts File.read(extra_description_path)
       readme_stream.puts
     end
+  end
+
+  def add_default_payload_infos
+    return if operation_id == 'france_connect'
+
+    readme_stream.puts "### Retour par défaut de l'API"
+    readme_stream.puts "lors d'un appel avec des paramètres valides l'API renvoie systématiquement cette réponse :"
+    add_collapse_section(
+      "Réponse par défault de l'API",
+      "```json\n" \
+      "#{JSON.pretty_generate(generate_default_json)}\n" \
+      "```"
+    )
+  end
+
+  def load_operation_id_schema
+    schema_name = operation_id.start_with?('api_entreprise') ? 'api_entreprise' : 'api_particulier'
+    schema = Openapi3Parser.load(load_schema(schema_name))
+    extract_path_spec_from_schema(operation_id, schema)
+  end
+
+  def generate_default_json
+    response200 = load_operation_id_schema['responses'].find { |status, _response| status == '200' }
+
+    OpenAPISchemaToExample.new(
+      response200[1]['content']['application/json']['schema']
+    ).perform
   end
 
   def add_collapse_section(title, content)

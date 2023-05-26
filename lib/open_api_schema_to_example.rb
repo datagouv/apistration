@@ -54,13 +54,14 @@ class OpenAPISchemaToExample
 
   def extract_value(sub_schema)
     sub_schema['example'] ||
+      sub_schema['enum']&.first ||
       extract_default_value(sub_schema)
   end
 
   def extract_default_value(sub_schema)
     case sub_schema['type']
     when 'string'
-      'dummy'
+      sub_schema['nullable'] ? nil : 'dummy'
     when 'integer', 'number'
       rand(50)
     when 'boolean'
