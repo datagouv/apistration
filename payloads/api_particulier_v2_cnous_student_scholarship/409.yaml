@@ -1,0 +1,15 @@
+---
+description: "Plusieurs identités ont été trouvé avec ces paramètres d'appels"
+params:
+  nom: 'Homonyme'
+  prenoms: 'Stéphanie'
+  dateDeNaissance: '1995-01-01'
+  lieuDeNaissance: '75001'
+  sexe: 'F'
+status: 409
+payload: |-
+  {
+    "error": "conflict",
+    "reason": "Plusieurs ressources correspondent aux critères",
+    "message": "Plusieurs ressources correspondent aux critères"
+  }
