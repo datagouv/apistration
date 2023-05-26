@@ -49,7 +49,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
 
   ```json
   {
-    "numeroAllocataire": 1234567,
+    "numeroAllocataire": 2345678,
     "codePostal": 75001
   }
   ```
@@ -109,7 +109,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'numeroAllocataire=1234567' -d 'codePostal=75001' \
+    -G -d 'numeroAllocataire=2345678' -d 'codePostal=75001' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
   ```
 

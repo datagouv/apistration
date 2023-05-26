@@ -291,7 +291,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
 
   ```json
   {
-    "ine": "1234567890G"
+    "ine": "1234567890A"
   }
   ```
 
@@ -303,7 +303,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
 
   ```json
   {
-    "ine": "1234567890G",
+    "ine": "1234567890A",
     "nomFamille": "Dupont",
     "prenom": "Jean",
     "dateNaissance": "2002-02-01",
@@ -331,7 +331,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'ine=1234567890G' \
+    -G -d 'ine=1234567890A' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
   ```
 

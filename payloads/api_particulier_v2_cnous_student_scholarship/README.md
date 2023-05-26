@@ -70,6 +70,53 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
 
   </p>
   </details>
+* [409.yaml](409.yaml)
+
+  Status `409`
+
+  Plusieurs identités ont été trouvé avec ces paramètres d'appels
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Homonyme",
+    "prenoms": "Stéphanie",
+    "dateDeNaissance": "1995-01-01",
+    "lieuDeNaissance": "75001",
+    "sexe": "F"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "conflict",
+    "reason": "Plusieurs ressources correspondent aux critères",
+    "message": "Plusieurs ressources correspondent aux critères"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=Homonyme' -d 'prenoms=St%C3%A9phanie' -d 'dateDeNaissance=1995-01-01' -d 'lieuDeNaissance=75001' -d 'sexe=F' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
 * [500.yaml](500.yaml)
 
   Status `500`
@@ -170,7 +217,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
     "nom": "Pagnol",
     "prenoms": "Marcel",
     "dateDeNaissance": "1998-07-12",
-    "lieuDeNaissance": "Paris",
+    "lieuDeNaissance": "75000",
     "sexe": "M"
   }
   ```
@@ -342,7 +389,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
 
   ```json
   {
-    "ine": "1234567890G"
+    "ine": "1234567890A"
   }
   ```
 
@@ -380,7 +427,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'ine=1234567890G' \
+    -G -d 'ine=1234567890A' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
   ```
 
