@@ -758,13 +758,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  ine:
-                    title: Identifiant National Étudiant (INE)
-                    type: string
-                    description: "Cet identifiant est unique à chaque étudiant sur le territoire français. Il est composé de 11 caractères, 10 chiffres et 1 lettre, et depuis la rentrée 2018, 9 chiffres et 2 lettres. Les étudiants peuvent retrouver leur numéro INE sur leur carte étudiant et leur certificat de scolarité.
-                    \n
-                    Dans le cas où l'appel à l'api n'a pas été fait avec l'INE, le champ est null."
-                    example: 1234567890G
                   nom:
                     title: Nom de naissance
                     type: string
