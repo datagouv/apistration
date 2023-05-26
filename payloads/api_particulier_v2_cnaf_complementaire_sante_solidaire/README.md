@@ -9,7 +9,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
   {
     "status": "beneficiaire_sans_participation_financiere",
     "dateDebut": "1992-11-29",
-    "dateFin": null
+    "dateFin": "1993-11-29"
   }
   ```
 

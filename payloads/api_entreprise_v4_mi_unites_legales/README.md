@@ -34,7 +34,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
         "numero_voie": "33",
         "type_voie": "rue",
         "libelle_voie": "de Modagor",
-        "distribution": null,
+        "distribution": "dummy",
         "code_insee": "75108",
         "code_postal": "75009",
         "commune": "Paris"
@@ -44,7 +44,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
         "numero_voie": "33",
         "type_voie": "rue",
         "libelle_voie": "de Modagor",
-        "distribution": null,
+        "distribution": "dummy",
         "code_insee": "75108",
         "code_postal": "75009",
         "commune": "Paris"
@@ -68,7 +68,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
             "numero_voie": "33",
             "type_voie": "rue",
             "libelle_voie": "de Modagor",
-            "distribution": null,
+            "distribution": "dummy",
             "code_insee": "75108",
             "code_postal": "75009",
             "commune": "Paris"
@@ -125,7 +125,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
             "numero_voie": "33",
             "type_voie": "rue",
             "libelle_voie": "de Modagor",
-            "distribution": null,
+            "distribution": "dummy",
             "code_insee": "75108",
             "code_postal": "75009",
             "commune": "Paris"
@@ -205,7 +205,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
             "numero_voie": "33",
             "type_voie": "rue",
             "libelle_voie": "de Modagor",
-            "distribution": null,
+            "distribution": "dummy",
             "code_insee": "75108",
             "code_postal": "75009",
             "commune": "Paris"

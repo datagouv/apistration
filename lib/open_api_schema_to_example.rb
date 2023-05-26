@@ -61,7 +61,7 @@ class OpenAPISchemaToExample
   def extract_default_value(sub_schema)
     case sub_schema['type']
     when 'string'
-      sub_schema['nullable'] ? nil : 'dummy'
+      'dummy'
     when 'integer', 'number'
       rand(50)
     when 'boolean'

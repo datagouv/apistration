@@ -23,10 +23,10 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
     ],
     "adresse": {
       "identite": "Monsieur JEAN JACQUES",
-      "complementIdentite": null,
-      "complementIdentiteGeo": null,
+      "complementIdentite": "dummy",
+      "complementIdentiteGeo": "dummy",
       "numeroRue": "1 RUE DE LA GARE",
-      "lieuDit": null,
+      "lieuDit": "dummy",
       "codePostalVille": "75002",
       "pays": "FRANCE"
     },

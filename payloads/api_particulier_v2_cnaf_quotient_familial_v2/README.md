@@ -31,10 +31,10 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
     ],
     "adresse": {
       "identite": "Monsieur JEAN JACQUES",
-      "complementInformation": null,
-      "complementInformationGeographique": null,
+      "complementInformation": "dummy",
+      "complementInformationGeographique": "dummy",
       "numeroLibelleVoie": "1 RUE DE LA GARE",
-      "lieuDit": null,
+      "lieuDit": "dummy",
       "codePostalVille": "75002",
       "pays": "FRANCE"
     },

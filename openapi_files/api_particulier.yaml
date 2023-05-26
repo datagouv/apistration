@@ -794,6 +794,7 @@ paths:
                     type: string
                     description: Numéro de téléphone secondaire du demandeur d'emploi
                     nullable: true
+                    example: '1122334455'
                   email:
                     title: E-mail
                     type: string
@@ -1845,6 +1846,7 @@ paths:
                       en ajoutant 12 mois à la date de début de droit à la C2S. \n
                       Ce champs sera null dans le cas où le particulier n'est pas
                       bénéficiaire de la C2S."
+                    example: 1993-11-29
         '400':
           description: Mauvais paramètres d'appels
           content:
