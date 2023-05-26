@@ -1,4 +1,5 @@
 ---
+description: "Étudiant non trouvé"
 params:
   ine: '1234567404G'
 status: 404

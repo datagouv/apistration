@@ -3,6 +3,8 @@
 
   Status `200`
 
+  Couple avec deux enfants (2022)
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -78,6 +80,8 @@
 
   Status `404`
 
+  Dossier non trouvé
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -120,6 +124,8 @@
 
   Status `500`
 
+  Erreur interne du serveur
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -161,6 +167,8 @@
 * [503.yaml](503.yaml)
 
   Status `503`
+
+  Erreur inconnue du fournisseur de données
 
   <details><summary>Paramètres</summary>
   <p>

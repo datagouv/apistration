@@ -1,4 +1,5 @@
 ---
+description: 'API Dépréciée - ne plus intégrer'
 params:
   numeroFiscal: '1111111111500'
   referenceAvis: '1111111111500'

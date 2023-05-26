@@ -1,4 +1,5 @@
 ---
+description: 'Erreur interne du serveur'
 params:
   numeroAllocataire: 1234567
   codePostal: 33500

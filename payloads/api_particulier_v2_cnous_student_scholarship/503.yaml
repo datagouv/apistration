@@ -1,4 +1,5 @@
 ---
+description: "Timeout - délai d'attente dépassé"
 params:
   ine: '1234567503G'
 status: 503

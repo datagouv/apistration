@@ -1,4 +1,5 @@
 ---
+description: 'Erreur interne du serveur'
 params:
   identifiant: 'internal_error'
 status: 500

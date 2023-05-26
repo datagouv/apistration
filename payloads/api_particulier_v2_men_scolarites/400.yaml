@@ -1,4 +1,5 @@
 ---
+description: 'Erreur de paramètre (sexe invalide)'
 params:
   nom: "Martin"
   prenom: "Justine"

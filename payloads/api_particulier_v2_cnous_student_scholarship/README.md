@@ -3,6 +3,8 @@
 
   Status `404`
 
+  Dossier non trouvé
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -43,6 +45,8 @@
 * [500.yaml](500.yaml)
 
   Status `500`
+
+  Erreur interne du serveur
 
   <details><summary>Paramètres</summary>
   <p>
@@ -85,6 +89,8 @@
 
   Status `503`
 
+  Timeout - délai d'attente dépassé
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -125,6 +131,8 @@
 * [civility.yml](civility.yml)
 
   Status `200`
+
+  Boursier échelon 5
 
   <details><summary>Paramètres</summary>
   <p>
@@ -182,6 +190,8 @@
 * [france_connect_cnous.yml](france_connect_cnous.yml)
 
   Status `200`
+
+  FranceConnect: Boursier échelon 5 (scope complet)
 
   <details><summary>Paramètres</summary>
   <p>
@@ -242,6 +252,8 @@
 
   Status `200`
 
+  FranceConnect: Boursier échelon 5 (scope partiel)
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -294,6 +306,8 @@
 * [ine.yml](ine.yml)
 
   Status `200`
+
+  Boursier échelon 6 (appel par INE)
 
   <details><summary>Paramètres</summary>
   <p>

@@ -1,4 +1,5 @@
 ---
+description: 'Erreur interne du serveur'
 params:
   ine: '1234567500G'
 status: 500

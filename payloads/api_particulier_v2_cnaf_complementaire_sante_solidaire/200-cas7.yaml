@@ -1,4 +1,5 @@
 ---
+description: "Bénéficiaire (M) **sans** participation financière"
 params:
   recipient: '13002526500013'
   codePaysLieuDeNaissance: '99107'
@@ -13,6 +14,6 @@ status: 200
 payload: |-
   {
     "status": "beneficiaire_sans_participation_financiere",
-    "dateDebut": "2022-02-01", 
+    "dateDebut": "2022-02-01",
     "dateFin": "2023-02-01"
   }

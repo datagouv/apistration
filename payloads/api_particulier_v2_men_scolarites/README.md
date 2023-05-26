@@ -3,6 +3,8 @@
 
   Status `200`
 
+  Élève boursier
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -60,6 +62,8 @@
 
   Status `400`
 
+  Erreur de paramètre (sexe invalide)
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -105,6 +109,8 @@
 * [404.yaml](404.yaml)
 
   Status `404`
+
+  Élève non trouvé
 
   <details><summary>Paramètres</summary>
   <p>
@@ -152,6 +158,8 @@
 
   Status `503`
 
+  Timeout - délai d'attente dépassé
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -197,6 +205,8 @@
 * [504.yaml](504.yaml)
 
   Status `504`
+
+  Erreur serveur
 
   <details><summary>Paramètres</summary>
   <p>

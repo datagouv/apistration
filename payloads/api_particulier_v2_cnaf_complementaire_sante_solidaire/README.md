@@ -3,6 +3,8 @@
 
   Status `200`
 
+  Bénéficiaire (M) **avec** participation financière
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -52,6 +54,8 @@
 * [200-cas2.yaml](200-cas2.yaml)
 
   Status `200`
+
+  Bénéficiaire (F) **avec** participation financière
 
   <details><summary>Paramètres</summary>
   <p>
@@ -103,6 +107,8 @@
 
   Status `200`
 
+  Bénéficiaire (M) **avec** participation financière
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -152,6 +158,8 @@
 * [200-cas4.yaml](200-cas4.yaml)
 
   Status `200`
+
+  Bénéficiaire (F) **avec** participation financière
 
   <details><summary>Paramètres</summary>
   <p>
@@ -203,6 +211,8 @@
 
   Status `200`
 
+  Bénéficiaire (M) **sans** participation financière
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -252,6 +262,8 @@
 * [200-cas6.yaml](200-cas6.yaml)
 
   Status `200`
+
+  Bénéficiaire (M) **sans** participation financière
 
   <details><summary>Paramètres</summary>
   <p>
@@ -303,6 +315,8 @@
 
   Status `200`
 
+  Bénéficiaire (M) **sans** participation financière
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -352,6 +366,8 @@
 * [200-cas8.yaml](200-cas8.yaml)
 
   Status `200`
+
+  Personne (M) non bénéficiaire de la CSS
 
   <details><summary>Paramètres</summary>
   <p>
@@ -403,6 +419,8 @@
 
   Status `404`
 
+  Dossier non trouvé
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -445,6 +463,8 @@
 
   Status `500`
 
+  Erreur interne du serveur
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -486,6 +506,8 @@
 * [503.yaml](503.yaml)
 
   Status `503`
+
+  Timeout - délai d'attente dépassé
 
   <details><summary>Paramètres</summary>
   <p>

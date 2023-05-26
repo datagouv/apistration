@@ -3,6 +3,8 @@
 
   Status `200`
 
+  Personne insrite
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -66,6 +68,8 @@
 
   Status `404`
 
+  Personne non trouvée
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -107,6 +111,8 @@
 
   Status `500`
 
+  Erreur interne du serveur
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -147,6 +153,8 @@
 * [503.yaml](503.yaml)
 
   Status `503`
+
+  Timeout - délai d'attente dépassé
 
   <details><summary>Paramètres</summary>
   <p>

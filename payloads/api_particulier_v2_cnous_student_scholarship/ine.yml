@@ -1,4 +1,5 @@
 ---
+description: 'Boursier échelon 6 (appel par INE)'
 params:
   ine: '1234567890G'
 status: 200

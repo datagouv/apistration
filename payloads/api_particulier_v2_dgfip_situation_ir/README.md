@@ -3,6 +3,8 @@
 
   Status `200`
 
+  API Dépréciée - ne plus intégrer
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -72,6 +74,8 @@
 
   Status `404`
 
+  API Dépréciée - ne plus intégrer
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -113,6 +117,8 @@
 * [500.yaml](500.yaml)
 
   Status `500`
+
+  API Dépréciée - ne plus intégrer
 
   <details><summary>Paramètres</summary>
   <p>
@@ -156,6 +162,8 @@
 
   Status `502`
 
+  API Dépréciée - ne plus intégrer
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -198,6 +206,8 @@
 
   Status `503`
 
+  API Dépréciée - ne plus intégrer
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -239,6 +249,8 @@
 * [509.yaml](509.yaml)
 
   Status `509`
+
+  API Dépréciée - ne plus intégrer
 
   <details><summary>Paramètres</summary>
   <p>

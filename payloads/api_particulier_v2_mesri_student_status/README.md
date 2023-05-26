@@ -3,6 +3,8 @@
 
   Status `404`
 
+  Étudiant non trouvé
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -43,6 +45,8 @@
 * [500.yaml](500.yaml)
 
   Status `500`
+
+  Erreur interne du serveur
 
   <details><summary>Paramètres</summary>
   <p>
@@ -85,6 +89,8 @@
 
   Status `503`
 
+  Timeout - délai d'attente dépassé
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -125,6 +131,8 @@
 * [civility.yml](civility.yml)
 
   Status `200`
+
+  Étudiant inscrit
 
   <details><summary>Paramètres</summary>
   <p>
@@ -185,6 +193,8 @@
 
   Status `200`
 
+  FranceConnect: étudiant inscrit
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -243,6 +253,8 @@
 * [ine.yaml](ine.yaml)
 
   Status `200`
+
+  Étudiant inscrit (appel par INE)
 
   <details><summary>Paramètres</summary>
   <p>

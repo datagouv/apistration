@@ -1,4 +1,5 @@
 ---
+description: "Erreur inconnue du fournisseur de données"
 params:
   numeroAllocataire: 1234567
   codePostal: 33503

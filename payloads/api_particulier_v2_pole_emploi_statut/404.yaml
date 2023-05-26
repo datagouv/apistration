@@ -1,4 +1,5 @@
 ---
+description: 'Personne non trouvée'
 params:
   identifiant: 'not_found'
 status: 404
