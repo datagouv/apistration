@@ -214,7 +214,7 @@ paths:
                     - code: '00364'
                       title: Entité non traitable
                       detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source:
+                      source: 
                       meta: {}
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
@@ -239,7 +239,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: MEN
                   summary: Erreur inconnue du fournisseur de données
@@ -613,12 +613,12 @@ paths:
                         description: Numéro d'appartement, escalier
                         type: string
                         nullable: true
-                        example:
+                        example: 
                       complementIdentiteGeo:
                         title: Complément d'information du point géographique
                         type: string
                         nullable: true
-                        example:
+                        example: 
                         description: Entrée, tour, immeuble, bâtiment, résidence
                       numeroRue:
                         title: Voie
@@ -629,7 +629,7 @@ paths:
                         title: Lieu-dit
                         type: string
                         nullable: true
-                        example:
+                        example: 
                         description: 'Lieu-dit ou service particulier de distribution
                           : poste restante, boîte postale'
                       codePostalVille:
@@ -745,7 +745,7 @@ paths:
                     type: string
                     description: Nom d'usage du demandeur d'emploi
                     nullable: true
-                    example:
+                    example: 
                   prenom:
                     title: Prénom
                     type: string
@@ -783,12 +783,12 @@ paths:
                     - AC
                     - DC
                     - RC
-                    -
+                    - 
                   telephone:
                     title: Téléphone principal
                     type: string
                     description: Numéro de téléphone principal du demandeur d'emploi
-                    example: '108756471'
+                    example: '0636676767'
                   telephone2:
                     title: Téléphone secondaire
                     type: string
@@ -817,22 +817,22 @@ paths:
                         example: '75101'
                       localite:
                         type: string
-                        example: '75001 Paris'
+                        example: 75001 Paris
                       ligneVoie:
                         type: string
-                        example: '21 RUE DES MARMOTS'
+                        example: 21 RUE DES MARMOTS
                       ligneComplementDestinaire:
                         type: string
                         nullable: true
-                        example:
+                        example: 
                       ligneComplementAdresse:
                         type: string
                         nullable: true
-                        example:
+                        example: 
                       ligneComplementDistribution:
                         type: string
                         nullable: true
-                        example:
+                        example: 
                       ligneNom:
                         type: string
                         example: MARTIN
@@ -932,7 +932,7 @@ paths:
         schema:
           type: string
           pattern: "^\\d{4}-\\d{2}-\\d{2}$"
-          example: "1992-11-29"
+          example: '1992-11-29'
       - name: lieuDeNaissance
         description: "Le lieu de naissance est donné par le code Insee composé de
           5 caractères. \n \n - Dans le cas d'un étudiant né en France, il s'agit
@@ -951,11 +951,13 @@ paths:
         schema:
           type: string
       summary: Statut étudiant
-      description: "Admissions et inscriptions d'un étudiant aux établissements d'enseignement
-        supérieur.\n**Paramètres d'appel :** Pour appeler l'API statut étudiant, deux
-        modes d'appel sont possibles :\n - INE, l'identifiant national étudiant ;\n
-        - l'état civil de l'étudiant: nom, prénom, date de naissance, sexe et lieu
-        de naissance.\n \n**Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_mesri_student_status)"
+      description: |-
+        Admissions et inscriptions d'un étudiant aux établissements d'enseignement supérieur.
+        **Paramètres d'appel :** Pour appeler l'API statut étudiant, deux modes d'appel sont possibles :
+         - INE, l'identifiant national étudiant ;
+         - l'état civil de l'étudiant: nom, prénom, date de naissance, sexe et lieu de naissance.
+
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_mesri_student_status)
       responses:
         '200':
           x-operationId: api_particulier_v2_mesri_student_status
@@ -1101,7 +1103,7 @@ paths:
         schema:
           type: string
           pattern: "^[0-9a-zA-Z]{11}$"
-          example: "1234567890G"
+          example: 1234567890G
       - name: nom
         description: Nom de naissance de l'étudiant
         in: query
@@ -1119,7 +1121,7 @@ paths:
         schema:
           type: string
           pattern: "^\\d{4}-\\d{2}-\\d{2}$"
-          example: "1992-11-29"
+          example: '1992-11-29'
       - name: lieuDeNaissance
         description: Lieu de naissance de l'étudiant
         in: query
@@ -1131,6 +1133,9 @@ paths:
         in: query
         schema:
           type: string
+          enum:
+          - M
+          - F
       summary: Statut étudiant boursier
       description: |-
         Statut et échelon boursier d'un étudiant, délivrés par le Cnous.
@@ -1382,7 +1387,9 @@ paths:
           minItems: 1
           items:
             type: string
-          example: ['JEAN', 'MARCEL']
+          example:
+          - JEAN
+          - MARCEL
       - name: anneeDateDeNaissance
         description: Année de naissance. Ne pas la renseigner si celle-ci est inconnue
         required: false
@@ -1578,12 +1585,12 @@ paths:
                           de remise.
                         type: string
                         nullable: true
-                        example:
+                        example: 
                       complementInformationGeographique:
                         title: Complément d'information du point géographique
                         type: string
                         nullable: true
-                        example:
+                        example: 
                         description: Complément d'information du point géographique.
                       numeroLibelleVoie:
                         title: Voie
@@ -1594,7 +1601,7 @@ paths:
                         title: Lieu-dit
                         type: string
                         nullable: true
-                        example:
+                        example: 
                         description: 'Lieu-dit ou service particulier de distribution
                           : poste restante, boîte postale'
                       codePostalVille:
@@ -1747,7 +1754,9 @@ paths:
           minItems: 1
           items:
             type: string
-          example: ['PIERRE', 'RICHARD']
+          example:
+          - PIERRE
+          - RICHARD
       - name: anneeDateDeNaissance
         description: Année de naissance. Ne pas la renseigner si celle-ci est inconnue
         required: false
@@ -1846,7 +1855,7 @@ paths:
                       en ajoutant 12 mois à la date de début de droit à la C2S. \n
                       Ce champs sera null dans le cas où le particulier n'est pas
                       bénéficiaire de la C2S."
-                    example: 1993-11-29
+                    example: '1993-11-29'
         '400':
           description: Mauvais paramètres d'appels
           content:
@@ -1944,13 +1953,13 @@ components:
       properties:
         error:
           type: string
-          example:
+          example: 
         reason:
           type: string
-          example:
+          example: 
         message:
           type: string
-          example:
+          example: 
   securitySchemes:
     apiKey:
       type: apiKey

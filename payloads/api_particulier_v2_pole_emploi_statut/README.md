@@ -15,7 +15,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
     "sexe": "Masculin",
     "dateNaissance": "1995-02-02",
     "codeCertificationCNAV": "VC",
-    "telephone": "108756471",
+    "telephone": "0636676767",
     "telephone2": "1122334455",
     "email": "martin.jacques@france.fr",
     "adresse": {
