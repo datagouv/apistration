@@ -18,7 +18,7 @@ RSpec.describe 'Payload specs' do
           it 'has a valid status code' do
             data = YAML.load_file(payload)
 
-            expect([200, 400, 403, 404, 500, 502, 503, 504, 509]).to include(data['status'])
+            expect([200, 400, 403, 404, 409, 500, 502, 503, 504, 509]).to include(data['status'])
           end
 
           if operation_id.split('/')[-1].start_with?('api_entreprise')
