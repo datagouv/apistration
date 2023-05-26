@@ -1,4 +1,68 @@
 # Données unité légale diffusible
+### Retour par défaut de l'API
+lors d'un appel avec des paramètres valides l'API renvoie systématiquement cette réponse :
+
+  <details><summary>Réponse par défault de l'API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "siren": "130025265",
+      "siret_siege_social": "13002526500013",
+      "type": "personne_morale",
+      "personne_morale_attributs": {
+        "raison_sociale": "DIRECTION INTERMINISTERIELLE DU NUMERIQUE",
+        "sigle": "DINUM"
+      },
+      "personne_physique_attributs": {
+        "pseudonyme": "DJ Falcon",
+        "prenom_usuel": "Jean",
+        "prenom_1": "Jean",
+        "prenom_2": "Jacques",
+        "prenom_3": "Pierre",
+        "prenom_4": "Paul",
+        "nom_usage": "Dupont",
+        "nom_naissance": "Martin",
+        "sexe": "M"
+      },
+      "categorie_entreprise": "GE",
+      "status_diffusion": "diffusible",
+      "diffusable_commercialement": true,
+      "forme_juridique": {
+        "code": "7120",
+        "libelle": "Service central d'un ministère"
+      },
+      "activite_principale": {
+        "code": "8411Z",
+        "libelle": "Administration publique générale",
+        "nomenclature": "NAFRev2"
+      },
+      "tranche_effectif_salarie": {
+        "code": "51",
+        "intitule": "2 000 à 4 999 salariés",
+        "date_reference": "2016",
+        "de": 2000,
+        "a": 4999
+      },
+      "etat_administratif": "A",
+      "economie_sociale_et_solidaire": true,
+      "date_creation": 1634103818,
+      "date_cessation": 1634133818
+    },
+    "links": {
+      "siege_social": "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/30613890001294",
+      "siege_social_adresse": "https://entreprises.api.gouv.fr/api/v3/insee/etablissements/30613890001294/adresse"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1618396818,
+      "redirect_from_siren": "306138900"
+    }
+  }
+  ```
+
+  </p>
+  </details>
 * [association.yaml](association.yaml)
 
   Status `200`

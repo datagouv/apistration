@@ -1,4 +1,32 @@
 # Statut étudiant boursier
+### Retour par défaut de l'API
+lors d'un appel avec des paramètres valides l'API renvoie systématiquement cette réponse :
+
+  <details><summary>Réponse par défault de l'API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Moustaki",
+    "prenom": "Georges",
+    "prenom2": "Claude",
+    "dateNaissance": "1992-11-29",
+    "lieuNaissance": "Poitiers",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "6",
+    "email": "georges@moustaki.fr",
+    "dateDeRentree": "2019-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Brest",
+    "etablissement": "Carnot"
+  }
+  ```
+
+  </p>
+  </details>
 * [404.yml](404.yml)
 
   Status `404`
@@ -181,7 +209,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nom=Pagnol' -d 'prenoms=Marcel' -d 'dateDeNaissance=1998-07-12' -d 'lieuDeNaissance=Paris' -d 'sexe=M' \
+    -G -d 'nom=Pagnol' -d 'prenoms=Marcel' -d 'dateDeNaissance=1998-07-12' -d 'lieuDeNaissance=75000' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
   ```
 

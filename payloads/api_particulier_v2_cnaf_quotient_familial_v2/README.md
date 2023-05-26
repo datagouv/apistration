@@ -1,4 +1,51 @@
 # Quotient familial CAF & MSA
+### Retour par défaut de l'API
+lors d'un appel avec des paramètres valides l'API renvoie systématiquement cette réponse :
+
+  <details><summary>Réponse par défault de l'API</summary>
+  <p>
+
+  ```json
+  {
+    "allocataires": [
+      {
+        "nomNaissance": "JACQUES",
+        "nomUsuel": "JACQUES",
+        "prenoms": "JEAN-PIERRE THOMAS",
+        "anneeDateDeNaissance": "2000",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "31",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "JACQUES",
+        "nomUsuel": "JACQUES",
+        "prenoms": "JEAN-PIERRE THOMAS",
+        "anneeDateDeNaissance": "2000",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "31",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur JEAN JACQUES",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE DE LA GARE",
+      "lieuDit": null,
+      "codePostalVille": "75002",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 1045,
+    "annee": 2021,
+    "mois": 6
+  }
+  ```
+
+  </p>
+  </details>
 * [200.yaml](200.yaml)
 
   Status `200`

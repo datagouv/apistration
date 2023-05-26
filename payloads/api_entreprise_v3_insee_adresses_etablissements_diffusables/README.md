@@ -1,4 +1,50 @@
 # Adresse établissement diffusible
+### Retour par défaut de l'API
+lors d'un appel avec des paramètres valides l'API renvoie systématiquement cette réponse :
+
+  <details><summary>Réponse par défault de l'API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "numero_voie": "22",
+      "indice_repetition_voie": "bis",
+      "type_voie": "RUE",
+      "libelle_voie": "DE LA PAIX",
+      "complement_adresse": "ZAE SAINT GUENAULT",
+      "code_commune": "75112",
+      "code_postal": "75016",
+      "distribution_speciale": null,
+      "code_cedex": "75590",
+      "libelle_cedex": "PARIS CEDEX 12",
+      "libelle_commune": "PARIS 12",
+      "libelle_commune_etranger": null,
+      "code_pays_etranger": "99132",
+      "libelle_pays_etranger": "ROYAUME-UNI",
+      "status_diffusion": "diffusible",
+      "acheminement_postal": {
+        "l1": "DIRECTION INTERMINISTERIELLE DU NUMERIQUE",
+        "l2": "JEAN MARIE DURAND",
+        "l3": "ZAE SAINT GUENAULT",
+        "l4": "51 BIS RUE DE LA PAIX",
+        "l5": "CS 72809",
+        "l6": "75256 PARIX CEDEX 12",
+        "l7": "FRANCE"
+      }
+    },
+    "links": {
+      "unite_legale": "https://entreprise.api.gouv.fr/api/v3/insee/unites_legales/130025265",
+      "etablissement": "https://entreprise.api.gouv.fr/api/v3/insee/etablissements/13002526500013"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1618396818
+    }
+  }
+  ```
+
+  </p>
+  </details>
 * [association.yaml](association.yaml)
 
   Status `200`

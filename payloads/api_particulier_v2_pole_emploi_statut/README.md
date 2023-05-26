@@ -1,4 +1,42 @@
 # Statut demandeur d'emploi
+### Retour par défaut de l'API
+lors d'un appel avec des paramètres valides l'API renvoie systématiquement cette réponse :
+
+  <details><summary>Réponse par défault de l'API</summary>
+  <p>
+
+  ```json
+  {
+    "identifiant": "martin.jacques",
+    "civilite": "M.",
+    "nom": "MARTIN",
+    "nomUsage": null,
+    "prenom": "JACQUES",
+    "sexe": "Masculin",
+    "dateNaissance": "1995-02-02",
+    "codeCertificationCNAV": "VC",
+    "telephone": 108756471,
+    "telephone2": null,
+    "email": "martin.jacques@france.fr",
+    "adresse": {
+      "codePostal": 75001,
+      "INSEECommune": 75101,
+      "localite": "75001 Paris",
+      "ligneVoie": "21 RUE DES MARMOTS",
+      "ligneComplementDestinaire": null,
+      "ligneComplementAdresse": null,
+      "ligneComplementDistribution": null,
+      "ligneNom": "MARTIN"
+    },
+    "dateInscription": "2021-01-07",
+    "dateCessationInscription": "2023-03-12",
+    "codeCategorieInscription": 1,
+    "libelleCategorieInscription": "PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS"
+  }
+  ```
+
+  </p>
+  </details>
 * [200.yaml](200.yaml)
 
   Status `200`

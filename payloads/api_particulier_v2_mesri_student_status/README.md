@@ -1,4 +1,34 @@
 # Statut étudiant
+### Retour par défaut de l'API
+lors d'un appel avec des paramètres valides l'API renvoie systématiquement cette réponse :
+
+  <details><summary>Réponse par défault de l'API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567890G",
+    "nom": "Moustaki",
+    "prenom": "Georges",
+    "dateNaissance": "1992-11-29",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2022-09-01",
+        "dateFinInscription": "2023-08-31",
+        "statut": "admis",
+        "regime": "formation initiale",
+        "codeCommune": "29085",
+        "etablissement": {
+          "uai": "0011402U",
+          "nom": "EGC AIN BOURG EN BRESSE EC GESTION ET COMMERCE (01000)"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
 * [404.yaml](404.yaml)
 
   Status `404`
