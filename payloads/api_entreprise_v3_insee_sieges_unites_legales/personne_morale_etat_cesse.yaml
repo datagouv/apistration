@@ -1,4 +1,5 @@
 ---
+description: 'Personne morale (PM) cessée'
 params:
   siren: '350051447'
 status: 200

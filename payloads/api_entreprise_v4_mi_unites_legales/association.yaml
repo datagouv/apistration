@@ -1,4 +1,5 @@
 ---
+description: 'Association'
 params:
   siren_or_rna: '389486242'
 status: 200

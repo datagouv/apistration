@@ -3,6 +3,8 @@
 
   Status `200`
 
+  Entreprise à jour de ses cotisations
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -57,6 +59,8 @@
 
   Status `200`
 
+  Entreprise non à jour de ses cotisations
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -110,6 +114,8 @@
 * [entite_hors_perimetre.yaml](entite_hors_perimetre.yaml)
 
   Status `404`
+
+  Entreprise non trouvée
 
   <details><summary>Paramètres</summary>
   <p>

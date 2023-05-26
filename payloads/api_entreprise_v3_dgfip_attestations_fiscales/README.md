@@ -3,6 +3,8 @@
 
   Status `200`
 
+  Entreprise à jour PDF disponible
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -48,6 +50,8 @@
 * [404.yaml](404.yaml)
 
   Status `404`
+
+  Entreprise non trouvée ou non à jour
 
   <details><summary>Paramètres</summary>
   <p>
@@ -97,6 +101,8 @@
 
   Status `200`
 
+  Entreprise à jour PDF disponible
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -142,6 +148,8 @@
 * [entite_hors_perimetre.yaml](entite_hors_perimetre.yaml)
 
   Status `404`
+
+  Entreprise non trouvée ou non à jour
 
   <details><summary>Paramètres</summary>
   <p>

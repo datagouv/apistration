@@ -1,4 +1,5 @@
 ---
+description: 'Personne morale (PM) cessée'
 params:
   siret: '35005144700018'
 status: 200

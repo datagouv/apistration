@@ -94,6 +94,8 @@
 
   Status `200`
 
+  Association (régime Alsace-Moselle)
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -274,6 +276,8 @@
 
   Status `200`
 
+  Personne morale (PM) cessée
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -453,6 +457,8 @@
 * [personne_physique_non-diffusible.yaml](personne_physique_non-diffusible.yaml)
 
   Status `404`
+
+  Personne physique (PP) - non diffusible
 
   <details><summary>Paramètres</summary>
   <p>

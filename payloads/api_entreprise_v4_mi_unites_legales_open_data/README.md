@@ -3,6 +3,8 @@
 
   Status `200`
 
+  Association
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -272,6 +274,8 @@
 * [association_regime_alsace_moselle.yaml](association_regime_alsace_moselle.yaml)
 
   Status `200`
+
+  Association (régime Alsace-Moselle)
 
   <details><summary>Paramètres</summary>
   <p>
@@ -548,6 +552,8 @@
 * [association_sans_siren.yaml](association_sans_siren.yaml)
 
   Status `200`
+
+  Association sans SIREN
 
   <details><summary>Paramètres</summary>
   <p>

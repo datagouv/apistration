@@ -1,4 +1,5 @@
 ---
+description: 'Association (régime Alsace-Moselle)'
 params:
   siren: '424179364'
 status: 200

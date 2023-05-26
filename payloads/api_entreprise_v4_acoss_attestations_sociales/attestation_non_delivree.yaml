@@ -1,4 +1,5 @@
 ---
+description: 'Entreprise non à jour de ses cotisations'
 params:
   siren: '000000002'
 status: 200

@@ -1,4 +1,5 @@
 ---
+description: 'Entreprise à jour PDF disponible'
 params:
   siren: '000000001'
 status: 200
