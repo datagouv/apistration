@@ -83,6 +83,19 @@ rails credentials:edit --environment development
 **Il ne faut absolument pas mettre de véritable credentials dans ce fichier,
 uniquement dans ceux de productions**
 
+### D'où viennent les credentials
+
+Certains credentials ont été transmis par email ou autre, mais tous les accès qui
+sont récupérable depuis Internet doivent être documenté avec un commentaire
+
+- l'URL pour se connecter au service qui sert à récupérer les credentials ;
+- l'email/idenfiant pour se connecter
+
+Pour l'email il faut privilégier integration-bouquet-api@api.gouv.fr qui est une
+redirection vers une adresse de notre choix (depuis [OVH](https://www.ovh.com/manager/#/web/email_domain/api.gouv.fr/email/redirection)).
+Seule la personne spécifiée dans OVH peut théoriquement accéder à l'interface,
+si besoin faire une récupération de mot de passe.
+
 ## Déploiement sur les serveurs
 
     $ ./bin/deploy
