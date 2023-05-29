@@ -4,6 +4,7 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
   def resource_attributes
     {
       siren:,
+      rna:,
       siret_siege_social:,
 
       type: type_of_person,
@@ -104,6 +105,10 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
 
   def categorie_juridique
     unite_legale['categorieJuridiqueUniteLegale']
+  end
+
+  def rna
+    unite_legale['identifiantAssociationUniteLegale']
   end
 
   def siren
