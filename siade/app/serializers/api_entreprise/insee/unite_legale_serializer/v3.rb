@@ -1,5 +1,6 @@
 class APIEntreprise::INSEE::UniteLegaleSerializer::V3 < APIEntreprise::V3AndMore::BaseSerializer
   attributes :siren,
+    :rna,
     :siret_siege_social,
     :categorie_entreprise,
     :type,

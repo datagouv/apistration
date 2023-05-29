@@ -152,6 +152,12 @@ insee:
       description: "Il peut arriver que le siren renvoyé soit différent du paramètre d'appel. Il s'agit d'une erreur généralement temporaire dans la base de données Sirene."
       type: "string"
       example: "130025265"
+    rna:
+      title: "Numéro RNA de l'unité légale"
+      description: "Ce champ n'est rempli que si l'unité légale est également une association enregistré dans le RNA."
+      type: "string"
+      example: "W751004076"
+      nullable: true
     siret_siege_social:
       title: "SIRET du siège social"
       type: "string"
