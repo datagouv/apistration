@@ -1,4 +1,5 @@
 require 'rack/utils'
+require 'digest/sha2'
 
 require 'rate_limiting_service'
 require 'rate_limit_headers_middleware'
@@ -60,7 +61,9 @@ class Rack::Attack
   end
 
   throttle('API Particulier global limit', limit: 20, period: 1) do |request|
-    request.get_header('HTTP_X_API_KEY') if  request.host =~ /particulier/
+    next if request.get_header('HTTP_X_API_KEY').blank?
+
+    Digest::SHA512.hexdigest(request.get_header('HTTP_X_API_KEY')) if request.host =~ /particulier/
   end
 
   throttle_zone(zone_name: 'low_latency_docs', **low_latency_documents_config)
