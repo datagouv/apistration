@@ -11,16 +11,6 @@ paths:
       tags:
         - Prochainement
       parameters:
-        - name: recipient
-          in: query
-          description: |-
-            "**Bénéficiaire de l’appel**
-
-            SIRET de l’administration destinatrice des données."
-          example: '13002526500013'
-          required: true
-          schema:
-            type: string
         - name: "nomUsage"
           schema:
             type: "string"
