@@ -1,22 +1,22 @@
 ---
 params:
-  codePaysLieuDeNaissance: '99100'
-  sexe: 'M'
-  nomUsage: 'JACQUES'
+  codePaysLieuDeNaissance: '99001'
+  sexe: 'F'
+  nomUsage: 'JEANNE'
   prenoms:
-    - 'JEAN-PIERRE'
-    - 'THOMAS'
-  anneeDateDeNaissance: 2000
-  moisDateDeNaissance: 1
+    - 'JEANNE'
+    - 'STEPHANIE'
+  anneeDateDeNaissance: 1937
+  moisDateDeNaissance: 06
 status: 200
 payload: |-
   {
     "regime": "MSA",
     "allocataires": [
       {
-        "nomNaissance": "JACQUES",
-        "nomUsage": "JACQUES",
-        "prenoms": "JEAN-PIERRE THOMAS",
+        "nomNaissance": "JEANNE",
+        "nomUsage": "JEANNE",
+        "prenoms": "JEANNE STEPHANIE",
         "anneeDateDeNaissance": "1937",
         "moisDateDeNaissance": "06",
         "jourDateDeNaissance": "27",
@@ -25,9 +25,9 @@ payload: |-
     ],
     "enfants": [
       {
-        "nomNaissance": "JACQUES",
-        "nomUsage": "JACQUES",
-        "prenoms": "TRISTAN HENRI",
+        "nomNaissance": "ALEXIS",
+        "nomUsage": "ALEXIS",
+        "prenoms": "ALEXIS VINCENT",
         "anneeDateDeNaissance": "1970",
         "moisDateDeNaissance": "04",
         "jourDateDeNaissance": "20",
@@ -35,10 +35,10 @@ payload: |-
       }
     ],
     "adresse": {
-      "identite": "Monsieur JEAN-PIERRE JACQUES",
+      "identite": "Madame JEANNE STEPHANIE",
       "complementInformation": null,
       "complementInformationGeographique": null,
-      "numeroLibelleVoie": "1 RUE DE LA GARE",
+      "numeroLibelleVoie": "1 RUE MONTORGUEIL",
       "lieuDit": null,
       "codePostalVille": "75002",
       "pays": "FRANCE"
