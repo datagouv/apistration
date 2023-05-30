@@ -1,9 +1,8 @@
 ---
 params:
-  recipient: '13002526500013'
   codePaysLieuDeNaissance: '99104'
   sexe: 'F'
-  nomUsage: 'GERALDINE'
+  nomUsage: 'PELLETI'
   prenoms:
     - 'GERALDINE'
     - 'ANTOINETTE'

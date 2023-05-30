@@ -1,9 +1,8 @@
 ---
 params:
-  recipient: '13002526500013'
   codePaysLieuDeNaissance: '99105'
   sexe: 'M'
-  nomUsage: 'PHILIPPE'
+  nomUsage: 'LEMONCELLO'
   prenoms:
     - 'PHILIPPE'
     - 'CLAUDE'

@@ -1,9 +1,8 @@
 ---
 params:
-  recipient: '13002526500013'
   codePaysLieuDeNaissance: '99106'
   sexe: 'M'
-  nomUsage: 'BERTRAND'
+  nomUsage: 'GOMEZ'
   prenoms:
     - 'BERTRAND'
     - 'JEAN'

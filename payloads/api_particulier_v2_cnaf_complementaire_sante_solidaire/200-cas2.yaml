@@ -1,11 +1,10 @@
 ---
 params:
-  recipient: '13002526500013'
   codePaysLieuDeNaissance: '99102'
   sexe: 'F'
   nomUsage: 'SABER'
   prenoms:
-    - 'SABER'
+    - 'YOLENE'
     - 'BRIGITTE'
   anneeDateDeNaissance: 1970
   moisDateDeNaissance: 6
