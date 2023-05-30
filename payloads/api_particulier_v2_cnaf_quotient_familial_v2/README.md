@@ -8,15 +8,15 @@
 
   ```json
   {
-    "codePaysLieuDeNaissance": "99100",
-    "sexe": "M",
-    "nomUsage": "JACQUES",
+    "codePaysLieuDeNaissance": "99001",
+    "sexe": "F",
+    "nomUsage": "JEANNE",
     "prenoms": [
-      "JEAN-PIERRE",
-      "THOMAS"
+      "JEANNE",
+      "STEPHANIE"
     ],
-    "anneeDateDeNaissance": 2000,
-    "moisDateDeNaissance": 1
+    "anneeDateDeNaissance": 1937,
+    "moisDateDeNaissance": 6
   }
   ```
 
@@ -31,9 +31,9 @@
     "regime": "MSA",
     "allocataires": [
       {
-        "nomNaissance": "JACQUES",
-        "nomUsage": "JACQUES",
-        "prenoms": "JEAN-PIERRE THOMAS",
+        "nomNaissance": "JEANNE",
+        "nomUsage": "JEANNE",
+        "prenoms": "JEANNE STEPHANIE",
         "anneeDateDeNaissance": "1937",
         "moisDateDeNaissance": "06",
         "jourDateDeNaissance": "27",
@@ -42,9 +42,9 @@
     ],
     "enfants": [
       {
-        "nomNaissance": "JACQUES",
-        "nomUsage": "JACQUES",
-        "prenoms": "TRISTAN HENRI",
+        "nomNaissance": "ALEXIS",
+        "nomUsage": "ALEXIS",
+        "prenoms": "ALEXIS VINCENT",
         "anneeDateDeNaissance": "1970",
         "moisDateDeNaissance": "04",
         "jourDateDeNaissance": "20",
@@ -52,10 +52,10 @@
       }
     ],
     "adresse": {
-      "identite": "Monsieur JEAN-PIERRE JACQUES",
+      "identite": "Madame JEANNE STEPHANIE",
       "complementInformation": null,
       "complementInformationGeographique": null,
-      "numeroLibelleVoie": "1 RUE DE LA GARE",
+      "numeroLibelleVoie": "1 RUE MONTORGUEIL",
       "lieuDit": null,
       "codePostalVille": "75002",
       "pays": "FRANCE"
@@ -74,7 +74,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' -d 'nomUsage=JACQUES' -d 'prenoms[]=JEAN-PIERRE' -d 'prenoms[]=THOMAS' -d 'anneeDateDeNaissance=2000' -d 'moisDateDeNaissance=1' \
+    -G -d 'codePaysLieuDeNaissance=99001' -d 'sexe=F' -d 'nomUsage=JEANNE' -d 'prenoms[]=JEANNE' -d 'prenoms[]=STEPHANIE' -d 'anneeDateDeNaissance=1937' -d 'moisDateDeNaissance=6' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
