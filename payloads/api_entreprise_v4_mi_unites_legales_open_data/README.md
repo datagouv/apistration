@@ -1,6 +1,8 @@
 # Données association en open data
-### Retour par défaut de l'API
-lors d'un appel avec des paramètres valides l'API renvoie systématiquement cette réponse :
+* __Retour par défaut de l'API__
+
+  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
+
 
   <details><summary>Réponse par défault de l'API</summary>
   <p>
@@ -182,6 +184,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
 
   </p>
   </details>
+
 * [association.yaml](association.yaml)
 
   Status `200`

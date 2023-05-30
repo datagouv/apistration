@@ -1,13 +1,14 @@
 # Statut étudiant
-### Retour par défaut de l'API
-lors d'un appel avec des paramètres valides l'API renvoie systématiquement cette réponse :
+* __Retour par défaut de l'API__
+
+  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
+
 
   <details><summary>Réponse par défault de l'API</summary>
   <p>
 
   ```json
   {
-    "ine": "1234567890G",
     "nom": "Moustaki",
     "prenom": "Georges",
     "dateNaissance": "1992-11-29",
@@ -29,6 +30,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
 
   </p>
   </details>
+
 * [404.yaml](404.yaml)
 
   Status `404`

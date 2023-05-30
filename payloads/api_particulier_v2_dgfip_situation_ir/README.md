@@ -1,6 +1,8 @@
 # Service de vérification de l'avis d'impôt sur le revenu
-### Retour par défaut de l'API
-lors d'un appel avec des paramètres valides l'API renvoie systématiquement cette réponse :
+* __Retour par défaut de l'API__
+
+  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
+
 
   <details><summary>Réponse par défault de l'API</summary>
   <p>
@@ -27,8 +29,8 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
     "situationFamille": "Marié(e)s",
     "revenuBrutGlobal": 30000,
     "revenuImposable": 29000,
-    "impotRevenuNetAvantCorrections": 30,
-    "montantImpot": 33,
+    "impotRevenuNetAvantCorrections": 8,
+    "montantImpot": 25,
     "revenuFiscalReference": 29000,
     "nombrePersonnesCharge": 3,
     "anneeImpots": "2021",
@@ -40,6 +42,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
 
   </p>
   </details>
+
 * [200.yaml](200.yaml)
 
   Status `200`

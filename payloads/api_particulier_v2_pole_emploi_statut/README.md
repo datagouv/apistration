@@ -1,6 +1,8 @@
 # Statut demandeur d'emploi
-### Retour par défaut de l'API
-lors d'un appel avec des paramètres valides l'API renvoie systématiquement cette réponse :
+* __Retour par défaut de l'API__
+
+  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
+
 
   <details><summary>Réponse par défault de l'API</summary>
   <p>
@@ -15,12 +17,12 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
     "sexe": "Masculin",
     "dateNaissance": "1995-02-02",
     "codeCertificationCNAV": "VC",
-    "telephone": "0636676767",
-    "telephone2": "1122334455",
+    "telephone": 108756471,
+    "telephone2": "dummy",
     "email": "martin.jacques@france.fr",
     "adresse": {
-      "codePostal": "75001",
-      "INSEECommune": "75101",
+      "codePostal": 75001,
+      "INSEECommune": 75101,
       "localite": "75001 Paris",
       "ligneVoie": "21 RUE DES MARMOTS",
       "ligneComplementDestinaire": "dummy",
@@ -37,6 +39,7 @@ lors d'un appel avec des paramètres valides l'API renvoie systématiquement cet
 
   </p>
   </details>
+
 * [200.yaml](200.yaml)
 
   Status `200`
