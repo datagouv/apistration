@@ -8,10 +8,9 @@
 
   ```json
   {
-    "recipient": "13002526500013",
     "codePaysLieuDeNaissance": "99101",
     "sexe": "M",
-    "nomUsage": "PIERRE",
+    "nomUsage": "DUPONT",
     "prenoms": [
       "PIERRE",
       "PAUL"
@@ -43,7 +42,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codePaysLieuDeNaissance=99101' -d 'sexe=M' -d 'nomUsage=PIERRE' -d 'prenoms[]=PIERRE' -d 'prenoms[]=PAUL' -d 'anneeDateDeNaissance=1970' -d 'moisDateDeNaissance=6' \
+    -G -d 'codePaysLieuDeNaissance=99101' -d 'sexe=M' -d 'nomUsage=DUPONT' -d 'prenoms[]=PIERRE' -d 'prenoms[]=PAUL' -d 'anneeDateDeNaissance=1970' -d 'moisDateDeNaissance=6' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 
@@ -58,12 +57,11 @@
 
   ```json
   {
-    "recipient": "13002526500013",
     "codePaysLieuDeNaissance": "99102",
     "sexe": "F",
     "nomUsage": "SABER",
     "prenoms": [
-      "SABER",
+      "YOLENE",
       "BRIGITTE"
     ],
     "anneeDateDeNaissance": 1970,
@@ -93,7 +91,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codePaysLieuDeNaissance=99102' -d 'sexe=F' -d 'nomUsage=SABER' -d 'prenoms[]=SABER' -d 'prenoms[]=BRIGITTE' -d 'anneeDateDeNaissance=1970' -d 'moisDateDeNaissance=6' \
+    -G -d 'codePaysLieuDeNaissance=99102' -d 'sexe=F' -d 'nomUsage=SABER' -d 'prenoms[]=YOLENE' -d 'prenoms[]=BRIGITTE' -d 'anneeDateDeNaissance=1970' -d 'moisDateDeNaissance=6' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 
@@ -108,10 +106,9 @@
 
   ```json
   {
-    "recipient": "13002526500013",
     "codePaysLieuDeNaissance": "99103",
     "sexe": "M",
-    "nomUsage": "JEROME",
+    "nomUsage": "KOWALSKY",
     "prenoms": [
       "JEROME",
       "ANTHONY"
@@ -143,7 +140,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codePaysLieuDeNaissance=99103' -d 'sexe=M' -d 'nomUsage=JEROME' -d 'prenoms[]=JEROME' -d 'prenoms[]=ANTHONY' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=6' \
+    -G -d 'codePaysLieuDeNaissance=99103' -d 'sexe=M' -d 'nomUsage=KOWALSKY' -d 'prenoms[]=JEROME' -d 'prenoms[]=ANTHONY' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=6' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 
@@ -158,10 +155,9 @@
 
   ```json
   {
-    "recipient": "13002526500013",
     "codePaysLieuDeNaissance": "99104",
     "sexe": "F",
-    "nomUsage": "GERALDINE",
+    "nomUsage": "PELLETI",
     "prenoms": [
       "GERALDINE",
       "ANTOINETTE"
@@ -193,7 +189,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codePaysLieuDeNaissance=99104' -d 'sexe=F' -d 'nomUsage=GERALDINE' -d 'prenoms[]=GERALDINE' -d 'prenoms[]=ANTOINETTE' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=6' \
+    -G -d 'codePaysLieuDeNaissance=99104' -d 'sexe=F' -d 'nomUsage=PELLETI' -d 'prenoms[]=GERALDINE' -d 'prenoms[]=ANTOINETTE' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=6' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 
@@ -208,10 +204,9 @@
 
   ```json
   {
-    "recipient": "13002526500013",
     "codePaysLieuDeNaissance": "99105",
     "sexe": "M",
-    "nomUsage": "PHILIPPE",
+    "nomUsage": "LEMONCELLO",
     "prenoms": [
       "PHILIPPE",
       "CLAUDE"
@@ -243,7 +238,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codePaysLieuDeNaissance=99105' -d 'sexe=M' -d 'nomUsage=PHILIPPE' -d 'prenoms[]=PHILIPPE' -d 'prenoms[]=CLAUDE' -d 'anneeDateDeNaissance=1990' -d 'moisDateDeNaissance=6' \
+    -G -d 'codePaysLieuDeNaissance=99105' -d 'sexe=M' -d 'nomUsage=LEMONCELLO' -d 'prenoms[]=PHILIPPE' -d 'prenoms[]=CLAUDE' -d 'anneeDateDeNaissance=1990' -d 'moisDateDeNaissance=6' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 
@@ -258,10 +253,9 @@
 
   ```json
   {
-    "recipient": "13002526500013",
     "codePaysLieuDeNaissance": "99106",
     "sexe": "M",
-    "nomUsage": "BERTRAND",
+    "nomUsage": "GOMEZ",
     "prenoms": [
       "BERTRAND",
       "JEAN"
@@ -293,7 +287,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codePaysLieuDeNaissance=99106' -d 'sexe=M' -d 'nomUsage=BERTRAND' -d 'prenoms[]=BERTRAND' -d 'prenoms[]=JEAN' -d 'anneeDateDeNaissance=1990' -d 'moisDateDeNaissance=6' \
+    -G -d 'codePaysLieuDeNaissance=99106' -d 'sexe=M' -d 'nomUsage=GOMEZ' -d 'prenoms[]=BERTRAND' -d 'prenoms[]=JEAN' -d 'anneeDateDeNaissance=1990' -d 'moisDateDeNaissance=6' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 
@@ -308,10 +302,9 @@
 
   ```json
   {
-    "recipient": "13002526500013",
     "codePaysLieuDeNaissance": "99107",
     "sexe": "M",
-    "nomUsage": "ALAIN",
+    "nomUsage": "NAUDI",
     "prenoms": [
       "ALAIN",
       "JEROME"
@@ -343,7 +336,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codePaysLieuDeNaissance=99107' -d 'sexe=M' -d 'nomUsage=ALAIN' -d 'prenoms[]=ALAIN' -d 'prenoms[]=JEROME' -d 'anneeDateDeNaissance=2000' -d 'moisDateDeNaissance=6' \
+    -G -d 'codePaysLieuDeNaissance=99107' -d 'sexe=M' -d 'nomUsage=NAUDI' -d 'prenoms[]=ALAIN' -d 'prenoms[]=JEROME' -d 'anneeDateDeNaissance=2000' -d 'moisDateDeNaissance=6' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 
@@ -358,10 +351,9 @@
 
   ```json
   {
-    "recipient": "13002526500013",
     "codePaysLieuDeNaissance": "99108",
     "sexe": "M",
-    "nomUsage": "ALEXIS",
+    "nomUsage": "BOULZY",
     "prenoms": [
       "TRISTAN",
       "SERGE"
@@ -393,7 +385,55 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codePaysLieuDeNaissance=99108' -d 'sexe=M' -d 'nomUsage=ALEXIS' -d 'prenoms[]=TRISTAN' -d 'prenoms[]=SERGE' -d 'anneeDateDeNaissance=1988' -d 'moisDateDeNaissance=8' \
+    -G -d 'codePaysLieuDeNaissance=99108' -d 'sexe=M' -d 'nomUsage=BOULZY' -d 'prenoms[]=TRISTAN' -d 'prenoms[]=SERGE' -d 'anneeDateDeNaissance=1988' -d 'moisDateDeNaissance=8' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
+  ```
+
+  </p>
+  </details>
+* [200-cas9.yaml](200-cas9.yaml)
+
+  Status `200`
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codePaysLieuDeNaissance": "99101",
+    "sexe": "M",
+    "nomUsage": "PIERRE",
+    "prenoms": [
+      "GUI"
+    ],
+    "anneeDateDeNaissance": 1970,
+    "moisDateDeNaissance": 6
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "status": "beneficiaire_avec_participation_financiere",
+    "dateDebut": "2022-02-01",
+    "dateFin": "2023-02-01"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codePaysLieuDeNaissance=99101' -d 'sexe=M' -d 'nomUsage=PIERRE' -d 'prenoms[]=GUI' -d 'anneeDateDeNaissance=1970' -d 'moisDateDeNaissance=6' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 

@@ -1,12 +1,11 @@
 ---
 params:
-  codePaysLieuDeNaissance: '99103'
+  codePaysLieuDeNaissance: '99101'
   sexe: 'M'
-  nomUsage: 'KOWALSKY'
+  nomUsage: 'PIERRE'
   prenoms:
-    - 'JEROME'
-    - 'ANTHONY'
-  anneeDateDeNaissance: 1980
+    - 'GUI'
+  anneeDateDeNaissance: 1970
   moisDateDeNaissance: 6
 status: 200
 payload: |-
