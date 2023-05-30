@@ -42,6 +42,17 @@ RSpec.describe OpenAPISchemaToExample do
     it { is_expected.to eq('example value') }
   end
 
+  describe 'string item with enum and no example' do
+    let(:schema) do
+      {
+        type: 'string',
+        enum: %w[value1 value2]
+      }
+    end
+
+    it { is_expected.to eq('value1') }
+  end
+
   describe 'integer item' do
     let(:schema) do
       {
