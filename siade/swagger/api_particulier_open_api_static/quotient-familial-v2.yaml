@@ -2,7 +2,7 @@ paths:
   /api/v2/composition-familiale-v2:
     get:
       summary: Quotient familial CAF & MSA
-      description: "Quotient familial et composition de la famille d'un allocataire du régime général et du régime agricole. 
+      description: "Quotient familial et composition de la famille d'un allocataire du régime général et du régime agricole.
         \n
         Pour de plus amples informations sur cette api et y avoir accès en avant première, veuillez contacter l'équipe API Particulier.
         \n
@@ -35,6 +35,7 @@ paths:
             minItems: 1
             items:
               type: 'string'
+            example: ['JEAN', 'MARCEL']
         - name: "anneeDateDeNaissance"
           description: "Année de naissance. Ne pas la renseigner si celle-ci est inconnue"
           required: false
@@ -343,4 +344,4 @@ paths:
                   message:
                     type: string
                     example: Une erreur est survenue lors de l'appel au fournisseur de donnée
-  
+

@@ -514,6 +514,7 @@ paths:
         schema:
           type: number
           format: string
+          example: 1234567
       - name: codePostal
         in: query
         description: Code postal français (métropôle & DROM COM). Cette donnée permet
@@ -522,6 +523,7 @@ paths:
         schema:
           type: number
           format: string
+          example: 75001
       tags:
       - Situation CAF
       responses:
@@ -781,12 +783,13 @@ paths:
                     title: Téléphone principal
                     type: string
                     description: Numéro de téléphone principal du demandeur d'emploi
-                    example: 108756471
+                    example: '0636676767'
                   telephone2:
                     title: Téléphone secondaire
                     type: string
                     description: Numéro de téléphone secondaire du demandeur d'emploi
                     nullable: true
+                    example: '1122334455'
                   email:
                     title: E-mail
                     type: string
@@ -803,10 +806,10 @@ paths:
                       codePostal:
                         type: string
                         description: Code postal
-                        example: 75001
+                        example: '75001'
                       INSEECommune:
                         type: string
-                        example: 75101
+                        example: '75101'
                       localite:
                         type: string
                         example: 75001 Paris
@@ -907,6 +910,7 @@ paths:
         schema:
           type: string
           pattern: "^[0-9a-zA-Z]{11}$"
+          example: 1234567890G
       - name: nom
         description: Nom de naissance de l'étudiant
         in: query
@@ -923,6 +927,7 @@ paths:
         schema:
           type: string
           pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+          example: '1992-11-29'
       - name: lieuDeNaissance
         description: "Le lieu de naissance est donné par le code Insee composé de
           5 caractères. \n \n - Dans le cas d'un étudiant né en France, il s'agit
@@ -941,11 +946,13 @@ paths:
         schema:
           type: string
       summary: Statut étudiant
-      description: "Admissions et inscriptions d'un étudiant aux établissements d'enseignement
-        supérieur.\n**Paramètres d'appel :** Pour appeler l'API statut étudiant, deux
-        modes d'appel sont possibles :\n - INE, l'identifiant national étudiant ;\n
-        - l'état civil de l'étudiant: nom, prénom, date de naissance, sexe et lieu
-        de naissance.\n \n**Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_mesri_student_status)"
+      description: |-
+        Admissions et inscriptions d'un étudiant aux établissements d'enseignement supérieur.
+        **Paramètres d'appel :** Pour appeler l'API statut étudiant, deux modes d'appel sont possibles :
+         - INE, l'identifiant national étudiant ;
+         - l'état civil de l'étudiant: nom, prénom, date de naissance, sexe et lieu de naissance.
+
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_mesri_student_status)
       responses:
         '200':
           x-operationId: api_particulier_v2_mesri_student_status
@@ -1080,6 +1087,7 @@ paths:
         schema:
           type: string
           pattern: "^[0-9a-zA-Z]{11}$"
+          example: 1234567890G
       - name: nom
         description: Nom de naissance de l'étudiant
         in: query
@@ -1097,6 +1105,7 @@ paths:
         schema:
           type: string
           pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+          example: '1992-11-29'
       - name: lieuDeNaissance
         description: Lieu de naissance de l'étudiant
         in: query
@@ -1108,6 +1117,9 @@ paths:
         in: query
         schema:
           type: string
+          enum:
+          - M
+          - F
       summary: Statut étudiant boursier
       description: |-
         Statut et échelon boursier d'un étudiant, délivrés par le Cnous.
@@ -1359,6 +1371,9 @@ paths:
           minItems: 1
           items:
             type: string
+          example:
+          - JEAN
+          - MARCEL
       - name: anneeDateDeNaissance
         description: Année de naissance. Ne pas la renseigner si celle-ci est inconnue
         required: false
@@ -1713,6 +1728,9 @@ paths:
           minItems: 1
           items:
             type: string
+          example:
+          - PIERRE
+          - RICHARD
       - name: anneeDateDeNaissance
         description: Année de naissance. Ne pas la renseigner si celle-ci est inconnue
         required: false

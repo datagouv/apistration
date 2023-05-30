@@ -35,6 +35,7 @@ paths:
             minItems: 1
             items:
               type: 'string'
+            example: ['PIERRE', 'RICHARD']
         - name: "anneeDateDeNaissance"
           description: "Année de naissance. Ne pas la renseigner si celle-ci est inconnue"
           required: false
@@ -112,7 +113,7 @@ paths:
                     format: date
                     nullable: true
                     description: "Date de début de droit à la complémentaire santé solidaire (C2S) si le particulier est bénéficiaire.
-                    \n                    
+                    \n
                     Ce champs est null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
                     example: 1992-11-29
                   dateFin:
