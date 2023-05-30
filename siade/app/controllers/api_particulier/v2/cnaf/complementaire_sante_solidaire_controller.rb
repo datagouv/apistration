@@ -3,6 +3,7 @@ class APIParticulier::V2::CNAF::ComplementaireSanteSolidaireController < APIPart
 
   def mocking_params
     {
+      recipient: params[:recipient],
       codePaysLieuDeNaissance: params[:codePaysLieuDeNaissance],
       sexe: params[:sexe],
       nomUsage: params[:nomUsage],
