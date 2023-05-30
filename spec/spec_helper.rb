@@ -3,6 +3,7 @@ require 'yaml'
 require 'json'
 require 'date'
 require 'json-schema'
+require 'active_support/all'
 
 lib_folder = File.expand_path("../lib", File.dirname(__FILE__))
 $LOAD_PATH.unshift(lib_folder) unless $LOAD_PATH.include?(lib_folder)

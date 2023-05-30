@@ -83,6 +83,6 @@ end
       response['content']['application/json']['schema'],
     ).perform
   )
-  end
+end
 
 print "Check payload files for #{ARGV[0]}, then run ./bin/generate_payload_readme.rb\n"

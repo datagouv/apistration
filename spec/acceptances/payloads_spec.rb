@@ -21,6 +21,12 @@ RSpec.describe 'Payload specs' do
             expect([200, 400, 403, 404, 409, 500, 502, 503, 504, 509]).to include(data['status'])
           end
 
+          it 'has a use case description' do
+            data = YAML.load_file(payload)
+
+            expect(data['description']).not_to be_empty
+          end
+
           if operation_id.split('/')[-1].start_with?('api_entreprise')
             it 'does not have tracking params' do
               param_keys = YAML.load_file(payload)['params'].keys
