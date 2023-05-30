@@ -131,51 +131,6 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
   </p>
   </details>
-* [default.yaml](default.yaml)
-
-  Status `200`
-
-  Réponse FranceConnect par défaut
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "token": "default"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "scope": [
-      "openid",
-      "identite_pivot"
-    ],
-    "client": {
-      "client_id": "client_id",
-      "client_name": "client_name"
-    },
-    "identity": {
-      "given_name": "Jean Martin",
-      "family_name": "DUPONT",
-      "birthdate": "2000-01-01",
-      "gender": "male",
-      "birthplace": "75001",
-      "birthcountry": "99100",
-      "preferred_username": "jdupont"
-    }
-  }
-  ```
-
-  </p>
-  </details>
 * [mesri.yml](mesri.yml)
 
   Status `200`

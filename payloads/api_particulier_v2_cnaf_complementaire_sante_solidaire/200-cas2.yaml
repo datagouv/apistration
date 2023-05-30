@@ -1,4 +1,5 @@
 ---
+description: "Bénéficiaire (F) **avec** participation financière"
 params:
   codePaysLieuDeNaissance: '99102'
   sexe: 'F'
@@ -12,6 +13,6 @@ status: 200
 payload: |-
   {
     "status": "beneficiaire_avec_participation_financiere",
-    "dateDebut": "2022-02-01", 
+    "dateDebut": "2022-02-01",
     "dateFin": "2023-02-01"
   }

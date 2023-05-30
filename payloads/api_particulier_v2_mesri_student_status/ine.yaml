@@ -1,10 +1,11 @@
 ---
+description: 'Étudiant inscrit (appel par INE)'
 params:
-  ine: '1234567890G'
+  ine: '1234567890A'
 status: 200
 payload: |-
   {
-    "ine": "1234567890G",
+    "ine": "1234567890A",
     "nomFamille": "Dupont",
     "prenom": "Jean",
     "dateNaissance": "2002-02-01",

@@ -1,5 +1,7 @@
 require 'open_api_helpers'
 require 'generate_code_sample_from_path'
+require 'openapi3_parser'
+require 'open_api_schema_to_example'
 
 class GeneratePayloadReadme
   include OpenAPIHelpers
@@ -15,6 +17,7 @@ class GeneratePayloadReadme
   def perform
     add_title
     add_description
+    add_default_payload_infos
 
     payload_entries.each do |payload_path|
       add_payload_entry(payload_path, api_path)
@@ -41,10 +44,8 @@ class GeneratePayloadReadme
     readme_stream.puts
     readme_stream.puts "  Status `#{payload['status']}`"
 
-    if payload['description']
-      readme_stream.puts
-      readme_stream.puts "  #{payload['description']}"
-    end
+    readme_stream.puts
+    readme_stream.puts "  #{payload['description']}"
 
     add_collapse_section(
       'Paramètres',
@@ -82,6 +83,36 @@ class GeneratePayloadReadme
       readme_stream.puts File.read(extra_description_path)
       readme_stream.puts
     end
+  end
+
+  def add_default_payload_infos
+    return if operation_id == 'france_connect'
+
+    readme_stream.puts "* __Retour par défaut de l'API__"
+    readme_stream.puts
+    readme_stream.puts "  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :"
+    readme_stream.puts
+    add_collapse_section(
+      "Réponse par défault de l'API",
+      "```json\n" \
+      "#{JSON.pretty_generate(generate_default_json)}\n" \
+      "```"
+    )
+    readme_stream.puts
+  end
+
+  def load_operation_id_schema
+    schema_name = operation_id.start_with?('api_entreprise') ? 'api_entreprise' : 'api_particulier'
+    schema = Openapi3Parser.load(load_schema(schema_name))
+    extract_path_spec_from_schema(operation_id, schema)
+  end
+
+  def generate_default_json
+    response200 = load_operation_id_schema['responses'].find { |status, _response| status == '200' }
+
+    OpenAPISchemaToExample.new(
+      response200[1]['content']['application/json']['schema']
+    ).perform
   end
 
   def add_collapse_section(title, content)

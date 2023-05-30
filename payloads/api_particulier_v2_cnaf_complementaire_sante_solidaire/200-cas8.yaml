@@ -1,4 +1,5 @@
 ---
+description: "Personne (M) non bénéficiaire de la CSS"
 params:
   codePaysLieuDeNaissance: '99108'
   sexe: 'M'
@@ -12,6 +13,6 @@ status: 200
 payload: |-
   {
     "status": "non_beneficiaire_css",
-    "dateDebut": null, 
+    "dateDebut": null,
     "dateFin": null
   }

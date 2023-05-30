@@ -1,9 +1,10 @@
 ---
+description: 'Boursier échelon 5'
 params:
   nom: 'Pagnol'
   prenoms: 'Marcel'
   dateDeNaissance: '1998-07-12'
-  lieuDeNaissance: 'Paris'
+  lieuDeNaissance: '75000'
   sexe: 'M'
 status: 200
 payload: |-

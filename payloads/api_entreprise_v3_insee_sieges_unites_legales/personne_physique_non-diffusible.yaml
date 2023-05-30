@@ -1,4 +1,5 @@
 ---
+description: 'Personne physique (PP) - non diffusible'
 params:
   siren: '350042925'
 status: 200

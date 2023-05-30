@@ -1,6 +1,7 @@
 ---
+description: 'Boursier échelon 6 (appel par INE)'
 params:
-  ine: '1234567890G'
+  ine: '1234567890A'
 status: 200
 payload: |-
   {

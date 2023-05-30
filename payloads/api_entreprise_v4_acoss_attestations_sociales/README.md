@@ -1,7 +1,41 @@
 # Attestation de vigilance
+* __Retour par défaut de l'API__
+
+  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
+
+
+  <details><summary>Réponse par défault de l'API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "entity_status": {
+        "code": "ok",
+        "libelle": "Attestation délivrée par l'Urssaf",
+        "description": "La délivrance de l'attestation de vigilance a été refusée par l'Urssaf car l'entité n'est pas à jour de ses cotisations sociales."
+      },
+      "date_debut_validite": "2022-12-03",
+      "date_fin_validite": "2023-06-30",
+      "code_securite": "GB1QWERTYJJEX1O",
+      "document_url": "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_vigilance_acoss.pdf",
+      "document_url_expires_in": 86400
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
 * [attestation_delivree.yaml](attestation_delivree.yaml)
 
   Status `200`
+
+  Entreprise à jour de ses cotisations
 
   <details><summary>Paramètres</summary>
   <p>
@@ -57,6 +91,8 @@
 
   Status `200`
 
+  Entreprise non à jour de ses cotisations
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -110,6 +146,8 @@
 * [entite_hors_perimetre.yaml](entite_hors_perimetre.yaml)
 
   Status `404`
+
+  Entreprise non trouvée
 
   <details><summary>Paramètres</summary>
   <p>

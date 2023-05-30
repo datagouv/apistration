@@ -1,4 +1,5 @@
 ---
+description: 'Association (régime Alsace-Moselle)'
 params:
   siret: '42417936400023'
 status: 200

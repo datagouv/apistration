@@ -1,7 +1,41 @@
 # Statut étudiant
+* __Retour par défaut de l'API__
+
+  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
+
+
+  <details><summary>Réponse par défault de l'API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Moustaki",
+    "prenom": "Georges",
+    "dateNaissance": "1992-11-29",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2022-09-01",
+        "dateFinInscription": "2023-08-31",
+        "statut": "admis",
+        "regime": "formation initiale",
+        "codeCommune": "29085",
+        "etablissement": {
+          "uai": "0011402U",
+          "nom": "EGC AIN BOURG EN BRESSE EC GESTION ET COMMERCE (01000)"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
 * [404.yaml](404.yaml)
 
   Status `404`
+
+  Étudiant non trouvé
 
   <details><summary>Paramètres</summary>
   <p>
@@ -44,6 +78,8 @@
 
   Status `500`
 
+  Erreur interne du serveur
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -85,6 +121,8 @@
 
   Status `503`
 
+  Timeout - délai d'attente dépassé
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -125,6 +163,8 @@
 * [civility.yml](civility.yml)
 
   Status `200`
+
+  Étudiant inscrit
 
   <details><summary>Paramètres</summary>
   <p>
@@ -185,6 +225,8 @@
 
   Status `200`
 
+  FranceConnect: étudiant inscrit
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -244,12 +286,14 @@
 
   Status `200`
 
+  Étudiant inscrit (appel par INE)
+
   <details><summary>Paramètres</summary>
   <p>
 
   ```json
   {
-    "ine": "1234567890G"
+    "ine": "1234567890A"
   }
   ```
 
@@ -261,7 +305,7 @@
 
   ```json
   {
-    "ine": "1234567890G",
+    "ine": "1234567890A",
     "nomFamille": "Dupont",
     "prenom": "Jean",
     "dateNaissance": "2002-02-01",
@@ -289,7 +333,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'ine=1234567890G' \
+    -G -d 'ine=1234567890A' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
   ```
 

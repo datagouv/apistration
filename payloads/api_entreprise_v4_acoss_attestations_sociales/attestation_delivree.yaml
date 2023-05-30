@@ -1,4 +1,5 @@
 ---
+description: 'Entreprise à jour de ses cotisations'
 params:
   siren: '000000001'
 status: 200

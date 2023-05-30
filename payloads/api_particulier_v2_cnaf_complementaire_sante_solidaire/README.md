@@ -1,7 +1,28 @@
 # Complémentaire santé solidaire
+* __Retour par défaut de l'API__
+
+  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
+
+
+  <details><summary>Réponse par défault de l'API</summary>
+  <p>
+
+  ```json
+  {
+    "status": "beneficiaire_sans_participation_financiere",
+    "dateDebut": "1992-11-29",
+    "dateFin": "1993-11-29"
+  }
+  ```
+
+  </p>
+  </details>
+
 * [200-cas1.yaml](200-cas1.yaml)
 
   Status `200`
+
+  Bénéficiaire (M) **avec** participation financière
 
   <details><summary>Paramètres</summary>
   <p>
@@ -52,6 +73,8 @@
 
   Status `200`
 
+  Bénéficiaire (F) **avec** participation financière
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -100,6 +123,8 @@
 * [200-cas3.yaml](200-cas3.yaml)
 
   Status `200`
+
+  Bénéficiaire (M) **avec** participation financière
 
   <details><summary>Paramètres</summary>
   <p>
@@ -150,6 +175,8 @@
 
   Status `200`
 
+  Bénéficiaire (F) **avec** participation financière
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -198,6 +225,8 @@
 * [200-cas5.yaml](200-cas5.yaml)
 
   Status `200`
+
+  Bénéficiaire (M) **sans** participation financière
 
   <details><summary>Paramètres</summary>
   <p>
@@ -248,6 +277,8 @@
 
   Status `200`
 
+  Bénéficiaire (M) **sans** participation financière
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -297,6 +328,8 @@
 
   Status `200`
 
+  Bénéficiaire (M) **sans** participation financière
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -345,6 +378,8 @@
 * [200-cas8.yaml](200-cas8.yaml)
 
   Status `200`
+
+  Personne (M) non bénéficiaire de la CSS
 
   <details><summary>Paramètres</summary>
   <p>
@@ -443,6 +478,8 @@
 
   Status `404`
 
+  Dossier non trouvé
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -485,6 +522,8 @@
 
   Status `500`
 
+  Erreur interne du serveur
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -526,6 +565,8 @@
 * [503.yaml](503.yaml)
 
   Status `503`
+
+  Timeout - délai d'attente dépassé
 
   <details><summary>Paramètres</summary>
   <p>

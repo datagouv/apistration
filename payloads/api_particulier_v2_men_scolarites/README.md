@@ -1,7 +1,39 @@
 # Statut élève scolarisé et boursier
+* __Retour par défaut de l'API__
+
+  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
+
+
+  <details><summary>Réponse par défault de l'API</summary>
+  <p>
+
+  ```json
+  {
+    "eleve": {
+      "nom": "Martin",
+      "prenom": "Justine",
+      "sexe": "F",
+      "date_naissance": "2000-01-20"
+    },
+    "code_etablissement": "0210015C",
+    "annee_scolaire": "2022-2023",
+    "est_scolarise": true,
+    "est_boursier": true,
+    "status_eleve": {
+      "code": "ST",
+      "libelle": "SCOLAIRE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
 * [200.yaml](200.yaml)
 
   Status `200`
+
+  Élève boursier
 
   <details><summary>Paramètres</summary>
   <p>
@@ -60,6 +92,8 @@
 
   Status `400`
 
+  Erreur de paramètre (sexe invalide)
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -105,6 +139,8 @@
 * [404.yaml](404.yaml)
 
   Status `404`
+
+  Élève non trouvé
 
   <details><summary>Paramètres</summary>
   <p>
@@ -152,6 +188,8 @@
 
   Status `503`
 
+  Timeout - délai d'attente dépassé
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -197,6 +235,8 @@
 * [504.yaml](504.yaml)
 
   Status `504`
+
+  Erreur serveur
 
   <details><summary>Paramètres</summary>
   <p>

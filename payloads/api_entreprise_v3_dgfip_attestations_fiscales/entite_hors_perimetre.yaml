@@ -1,4 +1,5 @@
 ---
+description: 'Entreprise non trouvée ou non à jour'
 params:
   siren: '000000002'
 status: 404

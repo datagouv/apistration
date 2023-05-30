@@ -1,4 +1,5 @@
 ---
+description: 'Personne insrite'
 params:
   identifiant: 'default'
 status: 200

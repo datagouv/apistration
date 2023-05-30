@@ -1,7 +1,59 @@
 # Quotient familial CAF & MSA
+* __Retour par défaut de l'API__
+
+  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
+
+
+  <details><summary>Réponse par défault de l'API</summary>
+  <p>
+
+  ```json
+  {
+    "allocataires": [
+      {
+        "nomNaissance": "JACQUES",
+        "nomUsuel": "JACQUES",
+        "prenoms": "JEAN-PIERRE THOMAS",
+        "anneeDateDeNaissance": "2000",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "31",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "JACQUES",
+        "nomUsuel": "JACQUES",
+        "prenoms": "JEAN-PIERRE THOMAS",
+        "anneeDateDeNaissance": "2000",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "31",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur JEAN JACQUES",
+      "complementInformation": "dummy",
+      "complementInformationGeographique": "dummy",
+      "numeroLibelleVoie": "1 RUE DE LA GARE",
+      "lieuDit": "dummy",
+      "codePostalVille": "75002",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 1045,
+    "annee": 2021,
+    "mois": 6
+  }
+  ```
+
+  </p>
+  </details>
+
 * [200.yaml](200.yaml)
 
   Status `200`
+
+  Couple avec deux enfants à la MSA en 2021
 
   <details><summary>Paramètres</summary>
   <p>
@@ -84,6 +136,8 @@
 
   Status `404`
 
+  Dossier non trouvé
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -126,6 +180,8 @@
 
   Status `500`
 
+  Erreur interne du serveur
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -167,6 +223,8 @@
 * [503.yaml](503.yaml)
 
   Status `503`
+
+  Timeout - délai d'attente dépassé
 
   <details><summary>Paramètres</summary>
   <p>

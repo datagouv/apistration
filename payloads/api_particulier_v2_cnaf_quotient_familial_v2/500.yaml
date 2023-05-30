@@ -1,4 +1,5 @@
 ---
+description: 'Erreur interne du serveur'
 params:
   codePaysLieuDeNaissance: '99500'
   sexe: F

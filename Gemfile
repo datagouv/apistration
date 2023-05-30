@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'activesupport'
 gem 'jwt'
 gem 'openapi3_parser'
 

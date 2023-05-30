@@ -1,4 +1,117 @@
 # Données établissement diffusible
+* __Retour par défaut de l'API__
+
+  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
+
+
+  <details><summary>Réponse par défault de l'API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "siret": "30613890001294",
+      "siege_social": true,
+      "etat_administratif": "A",
+      "date_fermeture": 1634133818,
+      "activite_principale": {
+        "code": "8411Z",
+        "libelle": "Administration publique générale",
+        "nomenclature": "NAFRev2"
+      },
+      "tranche_effectif_salarie": {
+        "code": "51",
+        "intitule": "2 000 à 4 999 salariés",
+        "date_reference": "2016",
+        "de": 2000,
+        "a": 4999
+      },
+      "status_diffusion": "diffusible",
+      "diffusable_commercialement": true,
+      "enseigne": "Coiff Land, CoiffureLand",
+      "unite_legale": {
+        "siren": "130025265",
+        "siret_siege_social": "13002526500013",
+        "type": "personne_morale",
+        "personne_morale_attributs": {
+          "raison_sociale": "DIRECTION INTERMINISTERIELLE DU NUMERIQUE",
+          "sigle": "DINUM"
+        },
+        "personne_physique_attributs": {
+          "pseudonyme": "DJ Falcon",
+          "prenom_usuel": "Jean",
+          "prenom_1": "Jean",
+          "prenom_2": "Jacques",
+          "prenom_3": "Pierre",
+          "prenom_4": "Paul",
+          "nom_usage": "Dupont",
+          "nom_naissance": "Martin",
+          "sexe": "M"
+        },
+        "categorie_entreprise": "GE",
+        "status_diffusion": "diffusible",
+        "diffusable_commercialement": true,
+        "forme_juridique": {
+          "code": "7120",
+          "libelle": "Service central d'un ministère"
+        },
+        "activite_principale": {
+          "code": "8411Z",
+          "libelle": "Administration publique générale",
+          "nomenclature": "NAFRev2"
+        },
+        "tranche_effectif_salarie": {
+          "code": "51",
+          "intitule": "2 000 à 4 999 salariés",
+          "date_reference": "2016",
+          "de": 2000,
+          "a": 4999
+        },
+        "etat_administratif": "A",
+        "economie_sociale_et_solidaire": true,
+        "date_creation": 1634103818
+      },
+      "adresse": {
+        "numero_voie": "22",
+        "indice_repetition_voie": "bis",
+        "type_voie": "RUE",
+        "libelle_voie": "DE LA PAIX",
+        "complement_adresse": "ZAE SAINT GUENAULT",
+        "code_commune": "75112",
+        "code_postal": "75016",
+        "distribution_speciale": "dummy",
+        "code_cedex": "75590",
+        "libelle_cedex": "PARIS CEDEX 12",
+        "libelle_commune": "PARIS 12",
+        "libelle_commune_etranger": "dummy",
+        "code_pays_etranger": "99132",
+        "libelle_pays_etranger": "ROYAUME-UNI",
+        "status_diffusion": "diffusible",
+        "acheminement_postal": {
+          "l1": "DIRECTION INTERMINISTERIELLE DU NUMERIQUE",
+          "l2": "JEAN MARIE DURAND",
+          "l3": "ZAE SAINT GUENAULT",
+          "l4": "51 BIS RUE DE LA PAIX",
+          "l5": "CS 72809",
+          "l6": "75256 PARIX CEDEX 12",
+          "l7": "FRANCE"
+        }
+      },
+      "date_creation": 1634103818
+    },
+    "links": {
+      "unite_legale": "https://entreprise.api.gouv.fr/api/v3/insee/unites_legales/130025265"
+    },
+    "meta": {
+      "date_derniere_mise_a_jour": 1618396818,
+      "redirect_from_siret": "30613890000010"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
 * [association.yaml](association.yaml)
 
   Status `200`
@@ -140,6 +253,8 @@
 
   Status `200`
 
+  Association (régime Alsace-Moselle)
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -274,6 +389,8 @@
 * [personne_morale.yaml](personne_morale.yaml)
 
   Status `200`
+
+  Personne morale (PM) trouvée
 
   <details><summary>Paramètres</summary>
   <p>
@@ -410,6 +527,8 @@
 
   Status `200`
 
+  Personne morale (PM) cessée
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -545,6 +664,8 @@
 
   Status `200`
 
+  Personne physique (PP) - diffusible
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -679,6 +800,8 @@
 * [personne_physique_non-diffusible.yaml](personne_physique_non-diffusible.yaml)
 
   Status `404`
+
+  Personne physique (PP) - non diffusible
 
   <details><summary>Paramètres</summary>
   <p>

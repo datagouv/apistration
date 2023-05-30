@@ -1,4 +1,5 @@
 ---
+description: "Timeout - délai d'attente dépassé"
 params:
   identifiant: 'timeout'
 status: 503

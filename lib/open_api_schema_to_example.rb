@@ -54,6 +54,7 @@ class OpenAPISchemaToExample
 
   def extract_value(sub_schema)
     sub_schema['example'] ||
+      sub_schema['enum']&.first ||
       extract_default_value(sub_schema)
   end
 

@@ -1,14 +1,58 @@
 # Quotient familial CAF
+* __Retour par défaut de l'API__
+
+  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
+
+
+  <details><summary>Réponse par défault de l'API</summary>
+  <p>
+
+  ```json
+  {
+    "allocataires": [
+      {
+        "nomPrenom": "JEAN JACQUES",
+        "dateDeNaissance": "01021970",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "JESSICA JACQUES",
+        "dateDeNaissance": "01031995",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur JEAN JACQUES",
+      "complementIdentite": "dummy",
+      "complementIdentiteGeo": "dummy",
+      "numeroRue": "1 RUE DE LA GARE",
+      "lieuDit": "dummy",
+      "codePostalVille": "75002",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 1045,
+    "annee": 2021,
+    "mois": 6
+  }
+  ```
+
+  </p>
+  </details>
+
 * [200.yaml](200.yaml)
 
   Status `200`
+
+  Couple avec deux enfants (2022)
 
   <details><summary>Paramètres</summary>
   <p>
 
   ```json
   {
-    "numeroAllocataire": 1234567,
+    "numeroAllocataire": 2345678,
     "codePostal": 75001
   }
   ```
@@ -68,7 +112,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'numeroAllocataire=1234567' -d 'codePostal=75001' \
+    -G -d 'numeroAllocataire=2345678' -d 'codePostal=75001' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
   ```
 
@@ -77,6 +121,8 @@
 * [404.yaml](404.yaml)
 
   Status `404`
+
+  Dossier non trouvé
 
   <details><summary>Paramètres</summary>
   <p>
@@ -120,6 +166,8 @@
 
   Status `500`
 
+  Erreur interne du serveur
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -161,6 +209,8 @@
 * [503.yaml](503.yaml)
 
   Status `503`
+
+  Erreur inconnue du fournisseur de données
 
   <details><summary>Paramètres</summary>
   <p>

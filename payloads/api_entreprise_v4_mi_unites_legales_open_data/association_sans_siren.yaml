@@ -1,4 +1,5 @@
 ---
+description: 'Association sans SIREN'
 params:
   siren_or_rna: 'W604004799'
 status: 200

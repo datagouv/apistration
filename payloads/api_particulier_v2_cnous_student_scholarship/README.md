@@ -1,7 +1,40 @@
 # Statut étudiant boursier
+* __Retour par défaut de l'API__
+
+  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
+
+
+  <details><summary>Réponse par défault de l'API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Moustaki",
+    "prenom": "Georges",
+    "prenom2": "Claude",
+    "dateNaissance": "1992-11-29",
+    "lieuNaissance": "Poitiers",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "6",
+    "email": "georges@moustaki.fr",
+    "dateDeRentree": "2019-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Brest",
+    "etablissement": "Carnot"
+  }
+  ```
+
+  </p>
+  </details>
+
 * [404.yml](404.yml)
 
   Status `404`
+
+  Dossier non trouvé
 
   <details><summary>Paramètres</summary>
   <p>
@@ -40,9 +73,58 @@
 
   </p>
   </details>
+* [409.yaml](409.yaml)
+
+  Status `409`
+
+  Plusieurs identités ont été trouvé avec ces paramètres d'appels
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Homonyme",
+    "prenoms": "Stéphanie",
+    "dateDeNaissance": "1995-01-01",
+    "lieuDeNaissance": "75001",
+    "sexe": "F"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "conflict",
+    "reason": "Plusieurs ressources correspondent aux critères",
+    "message": "Plusieurs ressources correspondent aux critères"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=Homonyme' -d 'prenoms=St%C3%A9phanie' -d 'dateDeNaissance=1995-01-01' -d 'lieuDeNaissance=75001' -d 'sexe=F' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
 * [500.yaml](500.yaml)
 
   Status `500`
+
+  Erreur interne du serveur
 
   <details><summary>Paramètres</summary>
   <p>
@@ -85,6 +167,8 @@
 
   Status `503`
 
+  Timeout - délai d'attente dépassé
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -126,6 +210,8 @@
 
   Status `200`
 
+  Boursier échelon 5
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -134,7 +220,7 @@
     "nom": "Pagnol",
     "prenoms": "Marcel",
     "dateDeNaissance": "1998-07-12",
-    "lieuDeNaissance": "Paris",
+    "lieuDeNaissance": "75000",
     "sexe": "M"
   }
   ```
@@ -173,7 +259,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nom=Pagnol' -d 'prenoms=Marcel' -d 'dateDeNaissance=1998-07-12' -d 'lieuDeNaissance=Paris' -d 'sexe=M' \
+    -G -d 'nom=Pagnol' -d 'prenoms=Marcel' -d 'dateDeNaissance=1998-07-12' -d 'lieuDeNaissance=75000' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
   ```
 
@@ -182,6 +268,8 @@
 * [france_connect_cnous.yml](france_connect_cnous.yml)
 
   Status `200`
+
+  FranceConnect: Boursier échelon 5 (scope complet)
 
   <details><summary>Paramètres</summary>
   <p>
@@ -242,6 +330,8 @@
 
   Status `200`
 
+  FranceConnect: Boursier échelon 5 (scope partiel)
+
   <details><summary>Paramètres</summary>
   <p>
 
@@ -295,12 +385,14 @@
 
   Status `200`
 
+  Boursier échelon 6 (appel par INE)
+
   <details><summary>Paramètres</summary>
   <p>
 
   ```json
   {
-    "ine": "1234567890G"
+    "ine": "1234567890A"
   }
   ```
 
@@ -338,7 +430,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'ine=1234567890G' \
+    -G -d 'ine=1234567890A' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
   ```
 

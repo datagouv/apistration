@@ -1,4 +1,5 @@
 ---
+description: 'Erreur serveur'
 params:
   nom: "Faure"
   prenom: "Felix"

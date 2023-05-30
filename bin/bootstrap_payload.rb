@@ -55,14 +55,21 @@ def create_payload_file(name, status, payload)
 
   File.open(file_path, 'w') do |f|
     data = {
-      'params' => (@operation_id_params.each_with_object({}) do |param, hash|
-        hash[param['name']] = param['example'] || 'example'
-      end),
+      'params' => generate_params,
       'status' => status.to_i,
       'payload' => JSON.pretty_generate(payload),
     }
 
     f.write(data.to_yaml)
+  end
+end
+
+def generate_params
+  @operation_id_params.each_with_object({}) do |param, hash|
+    default_param = param['schema']['nullable'] ? nil : 'example'
+    hash[param['name']] = param['schema']['example'] ||
+      param['schema']['enum']&.first ||
+      default_param
   end
 end
 
