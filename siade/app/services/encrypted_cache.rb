@@ -1,5 +1,6 @@
 require 'singleton'
 require 'lockbox'
+require 'digest/sha2'
 
 class EncryptedCache
   include Singleton
@@ -17,7 +18,7 @@ class EncryptedCache
   end
 
   def read(key)
-    cached_value = cache.read(key)
+    cached_value = cache.read(hashed_key(key))
 
     return if cached_value.nil?
 
@@ -29,7 +30,7 @@ class EncryptedCache
   end
 
   def expires_in(key)
-    ttl = cache.redis.ttl(key)
+    ttl = cache.redis.ttl(hashed_key(key))
 
     return if ttl.negative?
 
@@ -39,12 +40,12 @@ class EncryptedCache
   def write(key, value, options = {})
     if value
       cache.write(
-        key,
+        hashed_key(key),
         encrypt(marshal(value)),
         options
       )
     else
-      cache.delete(key)
+      cache.delete(hashed_key(key))
     end
   rescue Redis::CommandError => e
     track_redis_error(e, key, options)
@@ -82,6 +83,10 @@ class EncryptedCache
         }
       }
     )
+  end
+
+  def hashed_key(key)
+    Digest::SHA256.hexdigest(key)
   end
 
   def cache

@@ -4,11 +4,12 @@ RSpec.describe EncryptedCache, type: :service do
   describe '.read' do
     subject(:cached_value) { described_class.read(key) }
 
+    let(:hashed_key) { Digest::SHA256.hexdigest(key) }
     let(:key) { 'whatever' }
 
     context 'without value set' do
       before do
-        Rails.cache.delete(key)
+        Rails.cache.clear
       end
 
       it { is_expected.to be_nil }
@@ -24,14 +25,14 @@ RSpec.describe EncryptedCache, type: :service do
       it { is_expected.to be_a(Siren) }
       it { expect(cached_value.siren).to eq(valid_siren) }
 
-      it 'sets value in Rails cache' do
-        expect(Rails.cache.read(key)).to be_present
+      it 'sets value in Rails cache with a hashed key' do
+        expect(Rails.cache.read(hashed_key)).to be_present
       end
     end
 
     context 'with invalid string value set' do
       before do
-        Rails.cache.write(key, 'lol')
+        Rails.cache.write(hashed_key, 'lol')
       end
 
       it { is_expected.to be_nil }
@@ -39,13 +40,13 @@ RSpec.describe EncryptedCache, type: :service do
       it 'cleans invalid value in cache' do
         expect {
           cached_value
-        }.to change { Rails.cache.read(key) }.to(nil)
+        }.to change { Rails.cache.read(hashed_key) }.to(nil)
       end
     end
 
     context 'with invalid value set (non-string object)' do
       before do
-        Rails.cache.write(key, Siren.new(valid_siren))
+        Rails.cache.write(hashed_key, Siren.new(valid_siren))
       end
 
       it { is_expected.to be_nil }
@@ -53,7 +54,7 @@ RSpec.describe EncryptedCache, type: :service do
       it 'cleans invalid value in cache' do
         expect {
           cached_value
-        }.to change { Rails.cache.read(key) }.to(nil)
+        }.to change { Rails.cache.read(hashed_key) }.to(nil)
       end
     end
   end
