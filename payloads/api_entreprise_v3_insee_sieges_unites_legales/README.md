@@ -31,6 +31,7 @@
       "enseigne": "Coiff Land, CoiffureLand",
       "unite_legale": {
         "siren": "130025265",
+        "rna": "W751004076",
         "siret_siege_social": "13002526500013",
         "type": "personne_morale",
         "personne_morale_attributs": {
