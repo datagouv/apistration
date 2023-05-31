@@ -158,6 +158,7 @@
       "enseigne": "Coiff Land, CoiffureLand",
       "unite_legale": {
         "siren": "130025265",
+        "rna": null,
         "siret_siege_social": "13002526500013",
         "type": "personne_morale",
         "status_diffusion": "diffusible",
@@ -346,6 +347,7 @@
       "date_creation": 1138143600,
       "unite_legale": {
         "siren": "775672272",
+        "rna": "W751004076",
         "siret_siege_social": "77567227221138",
         "status_diffusion": "diffusible",
         "type": "personne_morale",
@@ -483,6 +485,7 @@
       "date_creation": 1626300000,
       "unite_legale": {
         "siren": "424179364",
+        "rna": null,
         "siret_siege_social": "42417936400023",
         "type": "personne_morale",
         "status_diffusion": "diffusible",
@@ -620,6 +623,7 @@
       "date_creation": 519861600,
       "unite_legale": {
         "siren": "552049447",
+        "rna": null,
         "siret_siege_social": "55204944776279",
         "type": "personne_morale",
         "status_diffusion": "diffusible",
@@ -757,6 +761,7 @@
       "status_diffusion": "diffusible",
       "unite_legale": {
         "siren": "350051447",
+        "rna": null,
         "siret_siege_social": "35005144700018",
         "type": "personne_morale",
         "status_diffusion": "diffusible",
@@ -894,6 +899,7 @@
       "date_creation": 1550790000,
       "unite_legale": {
         "siren": "478464803",
+        "rna": null,
         "siret_siege_social": "47846480300319",
         "type": "personne_physique",
         "status_diffusion": "diffusible",
@@ -1031,6 +1037,7 @@
       "date_creation": 1396303200,
       "unite_legale": {
         "siren": "350042925",
+        "rna": null,
         "siret_siege_social": "35004292500031",
         "status_diffusion": "partiellement_diffusible",
         "type": "personne_physique",

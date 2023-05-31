@@ -92,6 +92,7 @@
   {
     "data": {
       "siren": "775672272",
+      "rna": "W751004076",
       "siret_siege_social": "77567227221138",
       "status_diffusion": "diffusible",
       "categorie_entreprise": "GE",
@@ -183,6 +184,7 @@
   {
     "data": {
       "siren": "424179364",
+      "rna": null,
       "siret_siege_social": "42417936400023",
       "categorie_entreprise": "PME",
       "status_diffusion": "diffusible",
@@ -274,6 +276,7 @@
   {
     "data": {
       "siren": "552049447",
+      "rna": null,
       "siret_siege_social": "55204944776279",
       "categorie_entreprise": "GE",
       "status_diffusion": "diffusible",
@@ -365,6 +368,7 @@
   {
     "data": {
       "siren": "350051447",
+      "rna": null,
       "siret_siege_social": "35005144700018",
       "categorie_entreprise": null,
       "diffusable_commercialement": true,
@@ -456,6 +460,7 @@
   {
     "data": {
       "siren": "478464803",
+      "rna": null,
       "siret_siege_social": "47846480300319",
       "categorie_entreprise": null,
       "diffusable_commercialement": true,
@@ -547,6 +552,7 @@
   {
     "data": {
       "siren": "350042925",
+      "rna": null,
       "siret_siege_social": "35004292500031",
       "categorie_entreprise": "PME",
       "diffusable_commercialement": false,

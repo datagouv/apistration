@@ -28,6 +28,7 @@ payload: |-
       "status_diffusion": "diffusible",
       "unite_legale": {
         "siren": "350051447",
+        "rna": null,
         "siret_siege_social": "35005144700018",
         "type": "personne_morale",
         "status_diffusion": "diffusible",
