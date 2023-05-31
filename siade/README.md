@@ -1,9 +1,15 @@
 # SIADE : Système d'Information des API de l'État [![CI](https://github.com/etalab/siade/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/etalab/siade/actions/workflows/ci.yml)
 
-## Setup Dev environment
+## Requirements
 
-Il est nécessaire d'avoir Redis d'installé pour l'environnement de dévelopment
-(pas nécessaire pour les tests)
+* ruby 3.2.1
+* redis-server >= 5
+
+## Install
+
+```sh
+./bin/install.sh
+```
 
 ## Tests
 
