@@ -1,0 +1,13 @@
+CREATE ROLE siade WITH SUPERUSER LOGIN CREATEDB PASSWORD 'wow*verysecret';
+CREATE DATABASE siade_production WITH OWNER siade;
+CREATE DATABASE siade_development WITH OWNER siade;
+CREATE DATABASE siade_test WITH OWNER siade;
+
+\c siade_production;
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+\c siade_test;
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+\c siade_development;
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

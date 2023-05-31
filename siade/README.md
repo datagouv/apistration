@@ -3,6 +3,7 @@
 ## Requirements
 
 * ruby 3.2.1
+* postgresql >= 9
 * redis-server >= 5
 
 ## Install

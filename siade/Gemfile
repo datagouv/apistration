@@ -7,7 +7,7 @@ version = '~> 7.0'
 'actionpack',
 #'actionview',
 'activemodel',
-#'activerecord',
+'activerecord',
 #'actionmailer',
 #'activejob',
 #'actioncable',
@@ -18,6 +18,8 @@ version = '~> 7.0'
 ].each do |rails_subgem|
   gem rails_subgem, version
 end
+
+gem 'pg'
 
 gem 'rest-client'
 

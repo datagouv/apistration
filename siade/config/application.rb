@@ -4,7 +4,7 @@ require "rails"
 # Pick the frameworks you want:
 require "active_model/railtie"
 # require "active_job/railtie"
-# require "active_record/railtie"
+require "active_record/railtie"
 # require "active_storage/engine"
 # require "action_mailbox/engine"
 # require "action_text/engine"
@@ -55,5 +55,7 @@ module Siade
     config.requests_debugging = config_for(:requests_debugging)
 
     config.cache_store = :redis_cache_store, config_for(:cache_redis)
+
+    config.active_record.schema_format = :sql
   end
 end

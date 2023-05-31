@@ -56,6 +56,7 @@ set :shared_files, fetch(:shared_files, []).push(*%w[
   config/jwt_blacklist.yml
   config/jwt_whitelist.yml
   config/api_particulier_legacy_tokens.yml
+  config/database.yml
   config/master.key
   config/redis.yml
   config/cache_redis.yml

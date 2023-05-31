@@ -9,6 +9,20 @@ jobs:
     name: Tests (RSpec)
     runs-on: ubuntu-latest
     services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: siade
+          POSTGRES_DB: siade_test
+          POSTGRES_PASSWORD: wow*verysecret
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
       redis:
         image: redis
         ports: ["6379:6379"]
@@ -32,6 +46,9 @@ jobs:
       - name: Install libmagic-dev
         run: sudo apt-get install libmagic-dev
 
+      - name: Create database
+        run: bundle exec rails db:create db:schema:load RAILS_ENV=test
+
       - name: Check Swagger file is up-to-date
         run: ./bin/test_swagger.sh
 
@@ -39,7 +56,9 @@ jobs:
         run: bundle exec rspec
 
       - name: Check Zeitwerk
-        run: bundle exec rails runner "print 'Test that production is loading for Zeitwerk'" -e production
+        run: |
+          echo "production: *test" >> config/database.yml
+          bundle exec rails runner "print 'Test that production is loading for Zeitwerk'" -e production
         env:
           ZEITWERK_CHECK: true
 

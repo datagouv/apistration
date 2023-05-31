@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: siade
+  password: wow*verysecret
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 15 } %>
+
+development:
+  <<: *default
+  host: <%= ENV.fetch("POSTGRES_HOST") { 'localhost' } %>
+  database: siade_development
+
+test: &test
+  <<: *default
+  host: localhost
+  database: siade_test
+
