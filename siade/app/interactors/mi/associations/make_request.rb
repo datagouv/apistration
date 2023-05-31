@@ -1,6 +1,20 @@
 class MI::Associations::MakeRequest < MakeRequest::Get
   protected
 
+  def mocking_params
+    if context.params[:siret_or_rna].present?
+      {
+        siret_or_rna: id
+      }
+    elsif context.params[:siren_or_rna].present?
+      {
+        siren_or_rna: id
+      }
+    else
+      super
+    end
+  end
+
   def request_uri
     URI("#{mi_domain}/apim/api-asso-partenaires/api/structure/#{id}")
   end
