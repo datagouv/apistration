@@ -28,6 +28,7 @@ payload: |-
       "date_creation": 1626300000,
       "unite_legale": {
         "siren": "424179364",
+        "rna": null,
         "siret_siege_social": "42417936400023",
         "type": "personne_morale",
         "status_diffusion": "diffusible",

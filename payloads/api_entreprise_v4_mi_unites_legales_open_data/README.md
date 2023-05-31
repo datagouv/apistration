@@ -185,6 +185,56 @@
   </p>
   </details>
 
+* [404.yaml](404.yaml)
+
+  Status `404`
+
+  Association non trouvé par la DJEPVA
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "siren_or_rna": "552032534"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "29003",
+        "title": "Entité non trouvée",
+        "detail": "Le siren ou l'identifiant RNA indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
+        "meta": {
+          "provider": "DJEPVA"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
+    --url "https://staging.entreprise.api.gouv.fr/v4/djepva/api-association/associations/open_data/552032534"
+  ```
+
+  </p>
+  </details>
 * [association.yaml](association.yaml)
 
   Status `200`

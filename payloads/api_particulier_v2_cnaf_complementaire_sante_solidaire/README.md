@@ -430,6 +430,8 @@
 
   Status `200`
 
+  Bénéficiaire (M) **avec** participation financière
+
   <details><summary>Paramètres</summary>
   <p>
 

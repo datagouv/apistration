@@ -9,6 +9,7 @@ payload: |-
   {
     "data": {
       "siren": "775672272",
+      "rna": "W751004076",
       "siret_siege_social": "77567227221138",
       "status_diffusion": "diffusible",
       "categorie_entreprise": "GE",

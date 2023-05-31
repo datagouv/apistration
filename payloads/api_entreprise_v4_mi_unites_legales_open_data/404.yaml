@@ -1,0 +1,18 @@
+---
+description: "Association non trouvé par la DJEPVA"
+params:
+  siren_or_rna: '552032534'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "29003",
+        "title": "Entité non trouvée",
+        "detail": "Le siren ou l'identifiant RNA indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
+        "meta": {
+          "provider": "DJEPVA"
+        }
+      }
+    ]
+  }
