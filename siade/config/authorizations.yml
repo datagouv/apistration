@@ -53,12 +53,9 @@ shared:
   api_entreprise/v2/bilans_inpi:
     - bilans_inpi
     - comptes_annuels_inpi
-  api_entreprise/v2/effectifs_annuels_entreprise_acoss_covid:
-    - effectifs_urssaf
-  api_entreprise/v2/effectifs_mensuels_entreprise_acoss_covid:
-    - effectifs_urssaf
-  api_entreprise/v2/effectifs_mensuels_etablissement_acoss_covid:
-    - effectifs_urssaf
+  api_entreprise/v2/effectifs_annuels_entreprise_acoss_covid: []
+  api_entreprise/v2/effectifs_mensuels_entreprise_acoss_covid: []
+  api_entreprise/v2/effectifs_mensuels_etablissement_acoss_covid: []
   api_entreprise/v2/eligibilites_cotisation_retraite_probtp:
     - probtp
     - cotisations_probtp
