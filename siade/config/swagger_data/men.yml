@@ -97,7 +97,10 @@ men:
         type: boolean
         example: true
       est_boursier:
-        description: "Indique si l'élève est boursier dans l'établissement. Les bourses concernent uniquement les élèves des collèges et lycées."
+        description: |+
+          Indique si l'élève est boursier dans l'établissement. Les bourses concernent uniquement les élèves des collèges et lycées.
+          \n
+          ⚠️ Si le statut boursier est à \"false\" avant mi-octobre, cela ne signifie pas forcément que l'élève n'est pas boursier. Il peut s'agir d'un faux négatif lié à une absence de l'information en base. Pour en savoir plus consulter la fiche métier : https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise#faq_entry_answer_1_api_particulier_endpoint_education_nationale_statut_eleve_scolarise.
         type: boolean
         example: false
       status_eleve:
