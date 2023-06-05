@@ -173,7 +173,14 @@ paths:
                       \n
                       ⚠️ Si le statut boursier est à \"false\" avant mi-octobre, cela ne signifie pas forcément que l'élève n'est pas boursier. Il peut s'agir d'un faux négatif lié à une absence de l'information en base. Pour en savoir plus consulter la fiche métier : https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise#faq_entry_answer_1_api_particulier_endpoint_education_nationale_statut_eleve_scolarise.
                     type: boolean
-                    example: false
+                    example: true
+                  niveau_bourse:
+                    description: Indique l'échelon de la bourse de l'élève. Est nul
+                      quand est_boursier est false. Les bourses concernent uniquement
+                      les élèves des collèges et lycées.
+                    type: integer
+                    example: 1
+                    nullable: true
                   status_eleve:
                     title: Statut de l'élève
                     description: |

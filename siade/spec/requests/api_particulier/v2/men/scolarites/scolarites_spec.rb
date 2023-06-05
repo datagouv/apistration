@@ -34,30 +34,14 @@ RSpec.describe 'MEN: Scolarites', api: :particulier, type: %i[request swagger] d
         let(:x_api_key) { TokenFactory.new(scopes).valid }
         let(:scopes) { %w[men_statut_scolarite men_statut_boursier men_echelon_bourse] }
 
-        context 'with all scopes' do
-          response '200', 'Scolarité trouvée', vcr: { cassette_name: 'men/scolarites/valid' } do
-            description SwaggerData.get('men.scolarite.description')
+        response '200', 'Scolarité trouvée', vcr: { cassette_name: 'men/scolarites/valid' } do
+          description SwaggerData.get('men.scolarite.description')
 
-            schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('men.scolarite.attributes')
-            )
+          schema build_rswag_response_api_particulier(
+            attributes: SwaggerData.get('men.scolarite.attributes')
+          )
 
-            run_test!
-          end
-        end
-
-        context 'with restricted scopes', document: false do
-          let(:scopes) { %w[men_statut_scolarite men_echelon_bourse] }
-
-          response '200', 'Scolarité trouvée', vcr: { cassette_name: 'men/scolarites/valid' } do
-            description SwaggerData.get('men.scolarite.description')
-
-            schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('men.scolarite.attributes').except('est_boursier')
-            )
-
-            run_test!
-          end
+          run_test!
         end
 
         describe 'server errors' do

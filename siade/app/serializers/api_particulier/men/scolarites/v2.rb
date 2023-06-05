@@ -4,5 +4,6 @@ class APIParticulier::MEN::Scolarites::V2 < APIParticulier::V2BaseSerializer
     :annee_scolaire,
     :est_scolarise,
     :est_boursier,
+    :niveau_bourse,
     :status_eleve
 end
