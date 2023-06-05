@@ -21,6 +21,17 @@ class MEN::Scolarites::MakeRequest < MakeRequest::Get
     super(request)
   end
 
+  def mocking_params # rubocop:disable Metrics/AbcSize
+    {
+      nom: context.params[:family_name],
+      prenom: context.params[:first_name],
+      sexe: context.params[:gender],
+      dateNaissance: context.params[:birth_date],
+      codeEtablissement: context.params[:code_etablissement],
+      anneeScolaire: context.params[:annee_scolaire]
+    }
+  end
+
   private
 
   def sexe
