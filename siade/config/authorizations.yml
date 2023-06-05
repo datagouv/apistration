@@ -113,8 +113,7 @@ shared:
   api_entreprise/v3_and_more/dgfip/liasses_fiscales:
     - liasse_fiscale
     - liasses_fiscales_dgfip
-  api_entreprise/v3_and_more/european_commission/vies:
-    - open_data
+  api_entreprise/v3_and_more/european_commission/vies: []
   api_entreprise/v3_and_more/fabrique_numerique_ministeres_sociaux/conventions_collectives:
     - conventions_collectives
     - open_data
