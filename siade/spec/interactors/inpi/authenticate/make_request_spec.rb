@@ -9,7 +9,7 @@ RSpec.describe INPI::Authenticate::MakeRequest, type: :make_request do
 
   describe 'when authentication failed' do
     let(:inpi_url) { Siade.credentials[:inpi_url] }
-    let(:url_pattern) { Regexp.new(/#{inpi_url}/) }
+    let(:url_pattern) { /#{inpi_url}/ }
 
     before do
       stub_request(:post, url_pattern).to_return({

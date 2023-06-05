@@ -2,7 +2,7 @@ RSpec.describe INPI::Authenticate, type: :organizer do
   subject { described_class.call }
 
   let(:inpi_url) { Siade.credentials[:inpi_url] }
-  let(:url_pattern) { Regexp.new(/#{inpi_url}/) }
+  let(:url_pattern) { /#{inpi_url}/ }
 
   context 'when authentication is successful', vcr: { cassette_name: 'inpi/authenticate' } do
     it { is_expected.to be_a_success }
