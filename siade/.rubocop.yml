@@ -130,6 +130,10 @@ RSpec/ScatteredSetup:
   Exclude:
     - "spec/requests/api/v3_and_more/**/*_spec.rb"
 
+RSpec/VariableName:
+  Exclude: 
+  - "spec/requests/api_particulier/**/*_spec.rb"
+
 Naming/VariableNumber:
   Enabled: false
 

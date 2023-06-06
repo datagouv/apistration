@@ -206,14 +206,6 @@ RSpec.configure do |config|
     example.metadata[:response][:'x-operationId'] = operation_id
   end
 
-  config.before(type: :request, api: :particulier) do
-    ENV['BYPASS_MOCKED_CONTROLLER'] = '1'
-  end
-
-  config.after(type: :request, api: :particulier) do
-    ENV['BYPASS_MOCKED_CONTROLLER'] = nil
-  end
-
   config.include_context 'has a provider_name', type: :provider_request
   config.include_context 'has a provider_name', type: :provider_response
   config.include_context 'has a provider_name', type: :provider_driver

@@ -11,86 +11,87 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
 
       parameter name: :nomUsage,
         in: :query,
-        type: :string,
-        description: "Nom d'usage",
-        example: 'DUPONT',
+        type: SwaggerData.get('cnaf.c2s.parameters.nomUsage.type'),
+        description: SwaggerData.get('cnaf.c2s.parameters.nomUsage.description'),
+        example: SwaggerData.get('cnaf.c2s.parameters.nomUsage.example'),
         required: false
 
       parameter name: :nomNaissance,
         in: :query,
-        type: :string,
-        description: 'Nom de naissance',
-        example: 'MARTIN',
+        type: SwaggerData.get('cnaf.c2s.parameters.nomNaissance.type'),
+        description: SwaggerData.get('cnaf.c2s.parameters.nomNaissance.description'),
+        example: SwaggerData.get('cnaf.c2s.parameters.nomNaissance.example'),
         required: false
 
       parameter name: :prenoms,
         in: :query,
         schema: {
-          type: :array,
-          minItems: 1,
+          type: SwaggerData.get('cnaf.c2s.parameters.prenoms.type'),
+          minItems: SwaggerData.get('cnaf.c2s.parameters.prenoms.minItems'),
           items: { type: :string },
-          example: %w[MARTIN PIERRE]
+          example: SwaggerData.get('cnaf.c2s.parameters.prenoms.example')
         },
-        description: 'Liste des prénoms',
+        description: SwaggerData.get('cnaf.c2s.parameters.prenoms.description'),
         required: false
 
       parameter name: :anneeDateDeNaissance,
         in: :query,
-        type: :integer,
-        description: 'Année de naissance. Ne pas la renseigner si celle-ci est inconnue',
-        required: false,
-        example: 1990
+        type: SwaggerData.get('cnaf.c2s.parameters.anneeDateDeNaissance.type'),
+        description: SwaggerData.get('cnaf.c2s.parameters.anneeDateDeNaissance.description'),
+        example: SwaggerData.get('cnaf.c2s.parameters.anneeDateDeNaissance.example'),
+        required: false
 
       parameter name: :moisDateDeNaissance,
         in: :query,
-        type: :integer,
-        description: 'Mois de naissance. Ne pas le renseigner si celui-ci est inconnu. Cette valeur est ignorée si anneeDateDeNaissance est vide.',
-        required: false,
-        example: 1
+        type: SwaggerData.get('cnaf.c2s.parameters.moisDateDeNaissance.type'),
+        description: SwaggerData.get('cnaf.c2s.parameters.moisDateDeNaissance.description'),
+        example: SwaggerData.get('cnaf.c2s.parameters.moisDateDeNaissance.example'),
+        required: false
 
       parameter name: :jourDateDeNaissance,
         in: :query,
-        type: :integer,
-        description: 'Jour de naissance. Ne pas le renseigner si celui-ci est inconnu. Cette valeur est ignorée si moisDateDeNaissance ou anneeDateDeNaissance est vide.',
-        required: false,
-        example: 1
+        type: SwaggerData.get('cnaf.c2s.parameters.jourDateDeNaissance.type'),
+        description: SwaggerData.get('cnaf.c2s.parameters.jourDateDeNaissance.description'),
+        example: SwaggerData.get('cnaf.c2s.parameters.jourDateDeNaissance.example'),
+        required: false
 
       parameter name: :codeInseeLieuDeNaissance,
         in: :query,
-        type: :string,
-        example: '08480',
-        description: "Code Insee à 5 chiffres du lieu de naissance de la personne sur 5 chiffres. Ne pas remplir si la personne est née à l'étranger.",
+        schema: {
+          type: SwaggerData.get('cnaf.c2s.parameters.codeInseeLieuDeNaissance.type'),
+          minLength: SwaggerData.get('cnaf.c2s.parameters.codeInseeLieuDeNaissance.minLength'),
+          maxLength: SwaggerData.get('cnaf.c2s.parameters.codeInseeLieuDeNaissance.maxLength'),
+          example: SwaggerData.get('cnaf.c2s.parameters.codeInseeLieuDeNaissance.example')
+        },
+        description: SwaggerData.get('cnaf.c2s.parameters.codeInseeLieuDeNaissance.description'),
         required: false
 
       parameter name: :codePaysLieuDeNaissance,
         in: :query,
-        type: :string,
-        description: 'Code Insee à 5 chiffres du pays de naissance (France = 99100)',
-        example: '99100',
-        required: true
+        schema: {
+          type: SwaggerData.get('cnaf.c2s.parameters.codePaysLieuDeNaissance.type'),
+          minLength: SwaggerData.get('cnaf.c2s.parameters.codePaysLieuDeNaissance.minLength'),
+          maxLength: SwaggerData.get('cnaf.c2s.parameters.codePaysLieuDeNaissance.maxLength'),
+          example: SwaggerData.get('cnaf.c2s.parameters.codePaysLieuDeNaissance.example')
+        },
+        description: SwaggerData.get('cnaf.c2s.parameters.codePaysLieuDeNaissance.description'),
+        required: SwaggerData.get('cnaf.c2s.parameters.codePaysLieuDeNaissance.required')
 
       parameter name: :sexe,
         in: :query,
-        description: 'Sexe de la personne, masculin ou féminin',
-        required: true,
-        type: :string,
-        example: 'F'
+        schema: {
+          type: SwaggerData.get('cnaf.c2s.parameters.sexe.type'),
+          enum: SwaggerData.get('cnaf.c2s.parameters.sexe.enum')
+        },
+        description: SwaggerData.get('cnaf.c2s.parameters.sexe.description'),
+        required: SwaggerData.get('cnaf.c2s.parameters.sexe.required'),
+        example: SwaggerData.get('cnaf.c2s.parameters.sexe.example')
 
-      # rubocop:disable RSpec/VariableName
-      let(:'X-Api-Key') { x_api_key }
+      let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
 
-      let(:nomUsage) { 'DUPONT' }
-      let(:nomNaissance) { 'DUPOND' }
-      let(:prenoms) { %w[Anne Marie Jacqueline] }
-      let(:anneeDateDeNaissance) { 1970 }
-      let(:moisDateDeNaissance) { 8 }
-      let(:jourDateDeNaissance) { 16 }
-      let(:codeInseeLieuDeNaissance) { '08480' }
       let(:codePaysLieuDeNaissance) { '99100' }
       let(:sexe) { 'F' }
-      # rubocop:enable RSpec/VariableName
 
-      let(:x_api_key) { nil }
       let(:scopes) { nil }
 
       let(:mocked_data) do
@@ -109,7 +110,6 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
       end
 
       describe 'with valid token and mandatory params' do
-        let(:x_api_key) { TokenFactory.new(scopes).valid }
         let(:scopes) { %w[] }
 
         context 'with all scopes' do
@@ -126,7 +126,6 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
       end
 
       describe 'server errors' do
-        let(:x_api_key) { TokenFactory.new(scopes).valid }
         let(:scopes) { %w[] }
 
         response '400', 'Mauvais paramètres d\'appels' do
