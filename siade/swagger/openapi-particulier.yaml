@@ -175,12 +175,24 @@ paths:
                     type: boolean
                     example: true
                   niveau_bourse:
-                    description: Indique l'échelon de la bourse de l'élève. Est nul
-                      quand est_boursier est false. Les bourses concernent uniquement
-                      les élèves des collèges et lycées.
+                    description: "Indique l'échelon de la bourse de l'élève. Est à
+                      \"null\" quand \"est_boursier\" est \"false\". Les bourses concernent
+                      uniquement les élèves des collèges et lycées. \n Il existe trois
+                      échelons de bourses pour les collégiens (1 à 3) et six échelons
+                      pour les lycéens (1 à 6), correspondant aux montants reçus par
+                      l'élève pour l'année scolaire. Pour en savoir plus, consulter
+                      la FAQ : https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise#faq_entry_answer_2_api_particulier_endpoint_education_nationale_statut_eleve_scolarise"
                     type: integer
                     example: 1
                     nullable: true
+                    enum:
+                    -
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+                    - 5
+                    - 6
                   status_eleve:
                     title: Statut de l'élève
                     description: |
