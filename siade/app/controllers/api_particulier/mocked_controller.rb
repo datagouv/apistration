@@ -1,6 +1,6 @@
 class APIParticulier::MockedController < APIParticulierController
   def show
-    return render not_implemented_error unless Rails.env.staging?
+    return render not_implemented_error unless Rails.env.staging? || Rails.env.test?
 
     mocked_data = MockService.new(operation_id, mocking_params).mock
     render json: mocked_data[:payload], status: mocked_data[:status]

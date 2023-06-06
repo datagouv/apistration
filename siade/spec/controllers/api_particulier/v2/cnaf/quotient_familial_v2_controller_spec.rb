@@ -12,13 +12,25 @@ RSpec.describe APIParticulier::V2::CNAF::QuotientFamilialV2Controller do
     }
   end
 
-  describe 'when not in staging' do
+  describe 'when not in staging nor test' do
+    before do
+      allow(Rails).to receive(:env).and_return('production'.inquiry)
+    end
+
     its(:status) { is_expected.to eq(501) }
   end
 
   describe 'when in staging' do
     before do
       allow(Rails).to receive(:env).and_return('staging'.inquiry)
+      allow(MockService).to receive(:new).and_return(instance_double(MockService, mock: mocked_data))
+    end
+
+    its(:status) { is_expected.to eq(200) }
+  end
+
+  describe 'when in test' do
+    before do
       allow(MockService).to receive(:new).and_return(instance_double(MockService, mock: mocked_data))
     end
 
