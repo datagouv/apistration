@@ -1,6 +1,4 @@
 RSpec.describe MockDataBackend, type: :service do
-  let(:instance) { described_class.new }
-
   let(:github_client) { instance_double(Octokit::Client) }
 
   def mock_sha_github(sha)
