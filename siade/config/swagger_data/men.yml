@@ -24,6 +24,7 @@ men:
         enum:
           - "m"
           - "f"
+        example: 'm'
         required: true
       date_naissance:
         title: "Date de naissance"

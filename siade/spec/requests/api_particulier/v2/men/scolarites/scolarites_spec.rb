@@ -9,12 +9,47 @@ RSpec.describe 'MEN: Scolarites', api: :particulier, type: %i[request swagger] d
 
       parameter name: 'X-Api-Key', in: :header, type: :string
 
-      parameter name: :nom,                in: :query, type: :string
-      parameter name: :prenom,             in: :query, type: :string
-      parameter name: :sexe,               in: :query, type: :string
-      parameter name: :dateNaissance,     in: :query, type: :string
-      parameter name: :codeEtablissement, in: :query, type: :string
-      parameter name: :anneeScolaire,     in: :query, type: :string
+      parameter name: :nom,
+        in: :query,
+        type: SwaggerData.get('men.scolarite.parameters.nom.type'),
+        description: SwaggerData.get('men.scolarite.parameters.nom.description'),
+        example: SwaggerData.get('men.scolarite.parameters.nom.example'),
+        required: SwaggerData.get('men.scolarite.parameters.nom.required')
+
+      parameter name: :prenom,
+        in: :query,
+        type: SwaggerData.get('men.scolarite.parameters.prenom.type'),
+        description: SwaggerData.get('men.scolarite.parameters.prenom.description'),
+        example: SwaggerData.get('men.scolarite.parameters.prenom.example'),
+        required: SwaggerData.get('men.scolarite.parameters.prenom.required')
+
+      parameter name: :sexe,
+        in: :query,
+        type: SwaggerData.get('men.scolarite.parameters.sexe.type'),
+        description: SwaggerData.get('men.scolarite.parameters.sexe.description'),
+        example: SwaggerData.get('men.scolarite.parameters.sexe.example'),
+        required: SwaggerData.get('men.scolarite.parameters.sexe.required')
+
+      parameter name: :dateNaissance,
+        in: :query,
+        type: SwaggerData.get('men.scolarite.parameters.date_naissance.type'),
+        description: SwaggerData.get('men.scolarite.parameters.date_naissance.description'),
+        example: SwaggerData.get('men.scolarite.parameters.date_naissance.example'),
+        required: SwaggerData.get('men.scolarite.parameters.date_naissance.required')
+
+      parameter name: :codeEtablissement,
+        in: :query,
+        type: SwaggerData.get('men.scolarite.parameters.code_etablissement.type'),
+        description: SwaggerData.get('men.scolarite.parameters.code_etablissement.description'),
+        example: SwaggerData.get('men.scolarite.parameters.code_etablissement.example'),
+        required: true
+
+      parameter name: :anneeScolaire,
+        in: :query,
+        type: SwaggerData.get('men.scolarite.parameters.annee_scolaire.type'),
+        description: SwaggerData.get('men.scolarite.parameters.annee_scolaire.description'),
+        example: SwaggerData.get('men.scolarite.parameters.annee_scolaire.examples.long.value'),
+        required: SwaggerData.get('men.scolarite.parameters.annee_scolaire.required')
 
       # rubocop:disable RSpec/VariableName
       let(:'X-Api-Key') { x_api_key }
