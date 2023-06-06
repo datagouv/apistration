@@ -22,7 +22,6 @@ end
 partial_paths = %w[
   ../../swagger/api_particulier_open_api_static/v2.yaml
   ../../swagger/api_particulier_open_api_static/quotient-familial-v2.yaml
-  ../../swagger/api_particulier_open_api_static/complementaire-sante-solidaire.yaml
 ]
 
 partial_paths.each do |partial_path|
