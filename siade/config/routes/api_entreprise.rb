@@ -141,6 +141,10 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
     get 'etablissements/:siret/certification_batiment' => '/api_entreprise/v3_and_more/qualibat/certifications_batiment#show'
   end
 
+  namespace :qualifelec do
+    get 'certificats/:siret' => '/api_entreprise/v3_and_more/qualifelec/certificats#show'
+  end
+
   get 'cma_france/rnm/unites_legales/:siren', to: 'api_entreprise/v3_and_more/rnm/entreprises_artisanales#show'
 
   get 'european_commission/unites_legales/:siren/numero_tva', to: 'api_entreprise/v3_and_more/european_commission/vies#show'

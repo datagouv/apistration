@@ -196,7 +196,7 @@ shared:
     - effectifs_urssaf
   api_entreprise/v3_and_more/gip_mds/effectifs_mensuels_etablissement:
     - effectifs_urssaf
-
+  api_entreprise/v3_and_more/qualifelec/certificats: []
   api_particulier/introspect: []
   api_particulier/v2/cnaf/quotient_familial:
     - cnaf_quotient_familial

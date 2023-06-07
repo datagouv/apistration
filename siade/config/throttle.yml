@@ -78,6 +78,8 @@ shared:
       - { controller: 'api_entreprise/v3_and_more/banque_de_france/bilans_entreprise', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/gip_mds/effectifs_annuels_entreprise', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/gip_mds/effectifs_mensuels_etablissement', action: 'show' }
+      - { controller: 'api_entreprise/v3_and_more/qualifelec/certificats', action: 'show' }
+
     limit: 250
     period: 60
   very_low_latency_json_resources:
