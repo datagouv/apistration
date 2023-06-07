@@ -68,6 +68,18 @@ RSpec.describe GIPMDS::Effectifs::ValidateResponse, type: :validate_response do
 
       its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
     end
+
+    context 'with a code key and KO_TECHNIQUE' do
+      let(:body) do
+        {
+          code: 'KO_TECHNIQUE'
+        }.to_json
+      end
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(GIPMDSError)) }
+    end
   end
 
   context 'with a 204 status' do
