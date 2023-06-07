@@ -228,6 +228,7 @@ RSpec/FilePath:
     - "spec/requests/rack_attack_spec.rb"
     - "spec/interactors/get_oauth2_token_spec.rb"
     - "spec/errors/dgfip_svair_access_denied_error_spec.rb"
+    - "spec/errors/gip_mds_error_spec.rb"
 
 # Sometimes useful in tests
 RSpec/LeakyConstantDeclaration:
