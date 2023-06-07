@@ -44,7 +44,8 @@ class ExtractProviderFromPath
       'banque_de_france' => 'Banque de France',
       'cma_france' => 'CMA France',
       'djepva' => 'DJEPVA',
-      'gip_mds' => 'GIP-MDS'
+      'gip_mds' => 'GIP-MDS',
+      'qualifelec' => 'Qualifelec'
     }
   end
   # rubocop:enable Metrics/MethodLength

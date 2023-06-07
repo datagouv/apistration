@@ -220,3 +220,6 @@
 
 - name: "[V3] GIP-MDS effectifs mensuels établissement"
   http_path: '/v3/gip_mds/etablissements/84503885000010/effectifs_mensuels/12/annee/2022'
+  
+- name: "[V3] Qualifelec certificats"
+  http_path: '/v3/qualifelec/etablissements/78824266700020/certificats'
