@@ -6,7 +6,7 @@ class MSA::ConformitesCotisations::ValidateResponse < ValidateResponse
 
     return if http_ok?
 
-    internal_server_error! if bad_gateway_in_response? || timeout_in_response?
+    internal_server_error! if internal_server_error?
 
     unknown_provider_response!
   rescue InvalidStatus, JSON::ParserError
@@ -28,6 +28,12 @@ class MSA::ConformitesCotisations::ValidateResponse < ValidateResponse
     else
       raise InvalidStatus
     end
+  end
+
+  def internal_server_error?
+    http_internal_error? ||
+      bad_gateway_in_response? ||
+      timeout_in_response?
   end
 
   def bad_gateway_in_response?
