@@ -63,8 +63,9 @@ RSpec.describe GIPMDS::Effectifs::MakeRequest, type: :make_request do
           source: 'RA;RG',
           nature: 'M01',
           siret:,
-          periode: "#{year}#{month}01"
-        },
+          periode: "#{year}#{month}01",
+          profondeurHistorique: depth
+        }.compact,
         headers: {
           'Content-Type' => 'application/json',
           'Authorization' => "Bearer #{token}"
@@ -79,13 +80,15 @@ RSpec.describe GIPMDS::Effectifs::MakeRequest, type: :make_request do
         nature: :monthly,
         siret:,
         year:,
-        month:
+        month:,
+        depth:
       }
     end
 
     let(:year) { '2020' }
     let(:month) { '01' }
     let(:siret) { valid_siret }
+    let(:depth) { nil }
 
     it { is_expected.to be_a_success }
 
@@ -95,6 +98,16 @@ RSpec.describe GIPMDS::Effectifs::MakeRequest, type: :make_request do
       subject
 
       expect(stubbed_request).to have_been_requested
+    end
+
+    context 'with depth' do
+      let(:depth) { 3 }
+
+      it 'calls endpoint with params' do
+        subject
+
+        expect(stubbed_request).to have_been_requested
+      end
     end
   end
 end

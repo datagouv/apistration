@@ -49,8 +49,13 @@ class GIPMDS::Effectifs::MakeRequest < MakeRequest::Get
   def monthly_params
     {
       siret: context.params[:siret],
-      periode: "#{context.params[:year]}#{context.params[:month]}01"
-    }
+      periode: "#{context.params[:year]}#{context.params[:month]}01",
+      profondeurHistorique: depth
+    }.compact
+  end
+
+  def depth
+    context.params[:depth]
   end
 
   def token

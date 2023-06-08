@@ -40,7 +40,7 @@ module ProviderStubs::GIPMDS
     )
   end
 
-  def mock_gip_mds_mensuel_effectifs(siret:, year:, month:)
+  def mock_gip_mds_mensuel_effectifs(siret:, year:, month:, depth: nil)
     stub_request(:get, "#{Siade.credentials[:gip_mds_domain]}/rcd-api/1.0.0/effectifs").with(
       query: {
         codeOPSDemandeur: '00000DINUM',
@@ -48,8 +48,9 @@ module ProviderStubs::GIPMDS
         source: 'RA;RG',
         nature: 'M01',
         siret:,
+        profondeurHistorique: depth,
         periode: "#{year}#{month}01"
-      },
+      }.compact,
       headers: {
         'Content-Type' => 'application/json',
         'Authorization' => 'Bearer access_token'
