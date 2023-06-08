@@ -91,6 +91,14 @@ RSpec.describe Infogreffe::ValidateResponse, type: :validate_response do
 
         its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
       end
+
+      context 'with 003 error, which is a temporary credentials error' do
+        let(:body) { "#{xml_open_tags}003 -CODE ABONNE OU MOT DE PASSE INVALIDE-#{xml_close_tags}" }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(InfogreffeError)) }
+      end
     end
 
     context 'with a valid code and a body containing Service Indisponible' do

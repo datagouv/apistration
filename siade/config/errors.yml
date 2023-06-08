@@ -326,6 +326,11 @@
   title: 'Erreur interne du GIP-MDS'
   detail: "Les serveurs du GIP-MDS rencontrent une erreur interne impliquant une indisponibilité momentanée"
 
+## Infogreffe
+- code: '02501'
+  title: "Erreur temporaire d'identification d'Infogreffe"
+  detail: "Une erreur d'identification a été relevée par le système, il s'agit généralement d'une erreur temporaire, veuillez réessayer dans quelques secondes."
+
 ## FranceConnect
 
 - code: '50001'
