@@ -324,7 +324,7 @@
 
 - code: '31501'
   title: 'Erreur interne du GIP-MDS'
-  detail: "Les serveurs du GIP_MDS rencontrent une erreur interne impliquant une indisponibilité momentanée"
+  detail: "Les serveurs du GIP-MDS rencontrent une erreur interne impliquant une indisponibilité momentanée"
 
 ## FranceConnect
 
