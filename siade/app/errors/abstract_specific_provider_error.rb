@@ -20,7 +20,11 @@ class AbstractSpecificProviderError < ApplicationError
   def meta
     {
       provider: provider_name
-    }
+    }.merge(extra_meta)
+  end
+
+  def extra_meta
+    {}
   end
 
   def kind
