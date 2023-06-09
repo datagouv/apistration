@@ -232,6 +232,10 @@
   title: 'Entité non traitable'
   detail: "L'identifiant Pole Emploi est manquant"
 
+- code: '00390'
+  title: 'Entité non traitable'
+  detail: "La valeur de la profondeur n'est pas valide: celle-ci doit être comprise entre 1 et 13"
+
 - code: '00402'
   title: Version d'API non prise en charge
 

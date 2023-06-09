@@ -41,7 +41,9 @@ class UnprocessableEntityError < ApplicationError
       tax_number: '00370',
       tax_notice_number: '00371',
       # Pole Emploi
-      identifiant_pole_emploi: '00380'
+      identifiant_pole_emploi: '00380',
+      # GIP-MDS
+      gip_mds_depth: '00390'
     }.fetch(field) do
       raise KeyError, "#{field} is not a valid field name"
     end
