@@ -76,6 +76,7 @@ group :test do
 
   gem 'simplecov', require: false
   gem 'simplecov-cobertura'
+  gem 'super_diff'
 end
 
 group :development, :test, :sandbox do
