@@ -5,16 +5,36 @@ RSpec.describe GIPMDS::EffectifsMensuelsEtablissement::ValidateParams, type: :va
     {
       siret:,
       year:,
-      month:
+      month:,
+      depth:
     }
   end
 
   let(:siret) { valid_siret }
   let(:year) { '1990' }
   let(:month) { '07' }
+  let(:depth) { '1' }
 
   context 'with valid params' do
     it { is_expected.to be_a_success }
+  end
+
+  context 'with empty depth' do
+    let(:depth) { nil }
+
+    it { is_expected.to be_a_success }
+  end
+
+  context 'with invalid depth' do
+    let(:depth) { 'invalid' }
+
+    it { is_expected.to be_a_failure }
+  end
+
+  context 'with a depth of 14' do
+    let(:depth) { '14' }
+
+    it { is_expected.to be_a_failure }
   end
 
   context 'with invalid siret' do

@@ -1,5 +1,6 @@
 class GIPMDS::EffectifsMensuelsEtablissement::ValidateParams < ValidateParamsOrganizer
   organize ValidateSiret,
     ValidateYear,
-    ValidateMonth
+    ValidateMonth,
+    GIPMDS::Effectifs::ValidateDepth
 end
