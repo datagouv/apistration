@@ -17,7 +17,7 @@ class GIPMDS::Effectifs::BuildResource < BuildResource
       else
         base_data.merge({
           value: effectif['effectifs'].to_f,
-          date_derniere_mise_a_jour: build_date(effectif['miseAjourRCD'])
+          date_derniere_mise_a_jour: build_date(effectif['miseAJourRCD'])
         })
       end
     end

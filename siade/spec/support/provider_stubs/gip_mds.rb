@@ -108,7 +108,7 @@ module ProviderStubs::GIPMDS
     if effectifs
       {
         effectifs:,
-        miseAjourRCD: (updated_at || Time.zone.now).strftime('%Y-%m-%d')
+        miseAJourRCD: (updated_at || Time.zone.now).strftime('%Y-%m-%d')
       }
     else
       {
