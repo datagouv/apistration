@@ -149,6 +149,7 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
 
   namespace :gip_mds do
     get 'unites_legales/:siren/effectifs_annuels/:year', to: '/api_entreprise/v3_and_more/gip_mds/effectifs_annuels_entreprise#show'
+    get 'etablissements/:siret/effectifs_mensuels/:month/annee/:year', to: '/api_entreprise/v3_and_more/gip_mds/effectifs_mensuels_etablissement#show'
   end
 end
 
