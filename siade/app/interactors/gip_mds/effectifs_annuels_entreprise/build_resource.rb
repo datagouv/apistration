@@ -4,17 +4,13 @@ class GIPMDS::EffectifsAnnuelsEntreprise::BuildResource < GIPMDS::Effectifs::Bui
   def resource_attributes
     {
       siren:,
-      annee:,
-      effectifs_annuel: {
-        regime_general:,
-        regime_agricole:
-      }
+      effectifs_annuel: cleaned_effectifs
     }
   end
 
   private
 
   def siren
-    json_body.first['siren']
+    context.params[:siren]
   end
 end

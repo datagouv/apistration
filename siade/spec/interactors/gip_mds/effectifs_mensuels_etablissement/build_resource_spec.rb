@@ -2,7 +2,7 @@ RSpec.describe GIPMDS::EffectifsMensuelsEtablissement::BuildResource, type: :bui
   let(:siret) { valid_siret }
   let(:year) { '2020' }
   let(:month) { '01' }
-  let(:organizer) { described_class.call(response:) }
+  let(:organizer) { described_class.call(response:, params:) }
 
   let(:response) { instance_double(Net::HTTPOK, body:) }
   let(:body) do
@@ -14,6 +14,13 @@ RSpec.describe GIPMDS::EffectifsMensuelsEtablissement::BuildResource, type: :bui
       regime_general_effectifs: '16.64'
     ).to_json
   end
+  let(:params) do
+    {
+      siret:,
+      year:,
+      month:
+    }
+  end
 
   describe 'resource' do
     subject { organizer.bundled_data.data }
@@ -24,18 +31,23 @@ RSpec.describe GIPMDS::EffectifsMensuelsEtablissement::BuildResource, type: :bui
       expect(subject.to_h).to eq(
         {
           siret:,
-          annee: year,
-          mois: month,
-          effectifs_mensuel: {
-            regime_general: {
-              value: 16.64,
-              date_derniere_mise_a_jour: Time.zone.today
-            },
-            regime_agricole: {
+          depth: '0',
+          effectifs_mensuels: [
+            {
+              regime: 'regime_agricole',
+              year:,
+              month: '01',
               value: nil,
               date_derniere_mise_a_jour: nil
+            },
+            {
+              regime: 'regime_general',
+              year:,
+              month: '01',
+              value: 16.64,
+              date_derniere_mise_a_jour: Time.zone.today
             }
-          }
+          ]
         }
       )
     end

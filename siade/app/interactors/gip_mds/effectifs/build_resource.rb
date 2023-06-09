@@ -1,33 +1,38 @@
 class GIPMDS::Effectifs::BuildResource < BuildResource
   protected
 
-  def annee
-    json_body
-      .first['periode']
-      .first(4)
-  end
-
-  def regime_general
-    build_effectifs_annuel_for('RG')
-  end
-
-  def regime_agricole
-    build_effectifs_annuel_for('RA')
-  end
-
-  def build_effectifs_annuel_for(regime)
-    valid_payload = json_body.find { |effectif_annuel| effectif_annuel['source'] == regime }
-
-    if valid_payload['effectifs'] == 'NC'
-      {
-        value: nil,
-        date_derniere_mise_a_jour: nil
+  def cleaned_effectifs
+    @cleaned_effectifs ||= json_body.map do |effectif|
+      base_data = {
+        regime: extract_regime_from_effectif(effectif),
+        year: effectif['periode'].first(4),
+        month: effectif['periode'][4..5]
       }
+
+      if effectif['effectifs'] == 'NC'
+        base_data.merge({
+          value: nil,
+          date_derniere_mise_a_jour: nil
+        })
+      else
+        base_data.merge({
+          value: effectif['effectifs'].to_f,
+          date_derniere_mise_a_jour: build_date(effectif['miseAjourRCD'])
+        })
+      end
+    end
+  end
+
+  private
+
+  def extract_regime_from_effectif(effectif)
+    case effectif['source']
+    when 'RA'
+      'regime_agricole'
+    when 'RG'
+      'regime_general'
     else
-      {
-        value: valid_payload['effectifs'].to_f,
-        date_derniere_mise_a_jour: build_date(valid_payload['miseAjourRCD'])
-      }
+      raise "Unknown source #{effectif['source']}"
     end
   end
 

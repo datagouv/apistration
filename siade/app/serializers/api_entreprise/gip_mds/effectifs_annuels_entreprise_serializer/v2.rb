@@ -4,19 +4,19 @@ class APIEntreprise::GIPMDS::EffectifsAnnuelsEntrepriseSerializer::V2 < APIEntre
     :effectifs_annuel
 
   def effectifs_annuel
-    count = valid_effectifs.values.sum do |data|
-      data[:value].to_f
-    end
+    format('%.2f', valid_effectif[:value])
+  end
 
-    format('%.2f', count)
+  def annee
+    object.effectifs_annuel.first[:year]
   end
 
   private
 
-  def valid_effectifs
-    object.effectifs_annuel.select do |regime, data|
-      regime == :regime_general &&
-        data[:value].present?
+  def valid_effectif
+    object.effectifs_annuel.find do |effectif_annuel|
+      effectif_annuel[:regime] == 'regime_general' &&
+        effectif_annuel[:value].present?
     end
   end
 end

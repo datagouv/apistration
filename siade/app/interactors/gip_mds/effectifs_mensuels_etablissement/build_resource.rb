@@ -4,23 +4,18 @@ class GIPMDS::EffectifsMensuelsEtablissement::BuildResource < GIPMDS::Effectifs:
   def resource_attributes
     {
       siret:,
-      annee:,
-      mois:,
-      effectifs_mensuel: {
-        regime_general:,
-        regime_agricole:
-      }
+      depth:,
+      effectifs_mensuels: cleaned_effectifs
     }
   end
 
   private
 
   def siret
-    json_body.first['siret']
+    context.params[:siret]
   end
 
-  def mois
-    json_body
-      .first['periode'][4..5]
+  def depth
+    context.params[:depth] || '0'
   end
 end

@@ -5,19 +5,23 @@ class APIEntreprise::GIPMDS::EffectifsMensuelsEtablissementSerializer::V2 < APIE
     :effectifs_mensuels
 
   def effectifs_mensuels
-    count = valid_effectifs.values.sum do |data|
-      data[:value].to_f
-    end
+    format('%.2f', valid_effectif[:value])
+  end
 
-    format('%.2f', count)
+  def annee
+    object.effectifs_mensuels.first[:year]
+  end
+
+  def mois
+    object.effectifs_mensuels.first[:month]
   end
 
   private
 
-  def valid_effectifs
-    object.effectifs_mensuel.select do |regime, data|
-      regime == :regime_general &&
-        data[:value].present?
+  def valid_effectif
+    object.effectifs_mensuels.find do |effectif_mensuel|
+      effectif_mensuel[:regime] == 'regime_general' &&
+        effectif_mensuel[:value].present?
     end
   end
 end
