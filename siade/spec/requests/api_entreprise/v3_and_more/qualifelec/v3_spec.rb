@@ -9,89 +9,49 @@ RSpec.describe 'QualifElec: Qualification Electrique', api: :entreprise, type: %
 
       common_action_attributes
 
-      let(:siret) { valid_siret(:qualibat) }
-
-      let(:mocked_data) do
-        {
-          status: 200,
-          payload: {
-            meta: {
-              total: 0
-            },
-            data: []
-          }
-        }
-      end
+      let(:siret) { valid_siret(:default) }
 
       describe 'with valid token and mandatory params', valid: true do
-        before do
-          allow(MockService).to receive(:new).and_return(instance_double(MockService, mock: mocked_data))
-        end
-
-        response '200', 'Certificats qualifelec trouvés' do
-          description SwaggerData.get('qualifelec.certificats.description')
-
-          schema build_rswag_response_collection(
-            properties: SwaggerData.get('qualifelec.certificats.attributes'),
-            meta: SwaggerData.get('qualifelec.certificats.meta')
-          )
-
-          run_test!
-        end
-
-        response '404', 'Certificats entrerprise inexistant.' do
-          let(:mocked_data) do
-            {
-              status: 404,
-              payload: {
-                errors: [
-                  {
-                    code: '404',
-                    title: 'Entitée non trouvée',
-                    detail: 'Certificats entrerprise inexistant. Le(s) document(s) ne peut être récupéré.',
-                    meta: {}
-                  }
-                ]
-              }
-            }
+        describe 'with mocked data' do
+          before do
+            allow(MockService).to receive(:new).and_return(instance_double(MockService, mock: mocked_data))
           end
 
-          schema '$ref' => '#/components/schemas/Error'
-
-          run_test!
-        end
-
-        describe 'server errors' do
-          response '422', 'Paramètre(s) invalide(s)' do
+          response '200', 'Certificats qualifelec trouvés' do
             let(:mocked_data) do
               {
-                status: 422,
+                status: 200,
                 payload: {
-                  errors: [
-                    {
-                      code: '00210',
-                      title: 'Entité non traitable',
-                      detail: "Le paramètre recipient n'est pas un siret valide",
-                      meta: {}
-                    }
+                  meta: {
+                    total: 0
+                  },
+                  data: [
+                    OpenAPISchemaToExample.new(SwaggerData.get('qualifelec.certificats.attributes'))
                   ]
                 }
               }
             end
 
-            unprocessable_entity_error_request(:siret)
+            description SwaggerData.get('qualifelec.certificats.description')
+
+            schema build_rswag_response_collection(
+              properties: SwaggerData.get('qualifelec.certificats.attributes'),
+              meta: SwaggerData.get('qualifelec.certificats.meta')
+            )
+
+            run_test!
           end
 
-          response '500', 'Une erreur interne s\'est produite.' do
+          response '404', 'Certificats entreprise inexistant.' do
             let(:mocked_data) do
               {
-                status: 500,
+                status: 404,
                 payload: {
                   errors: [
                     {
-                      code: '500',
-                      title: 'Erreur interne',
-                      detail: "Une erreur interne s'est produite, l'équipe a été prévenue.",
+                      code: '404',
+                      title: 'Entitée non trouvée',
+                      detail: 'Certificats entrerprise inexistant. Le(s) document(s) ne peut être récupéré.',
                       meta: {}
                     }
                   ]
@@ -103,6 +63,14 @@ RSpec.describe 'QualifElec: Qualification Electrique', api: :entreprise, type: %
 
             run_test!
           end
+        end
+
+        describe 'server errors' do
+          let(:siren) { valid_siren(:rge_ademe) }
+
+          unprocessable_entity_error_request(%i[siret])
+          common_provider_errors_request('Qualifelec', Qualifelec::Certificats)
+          common_network_error_request('Qualifelec', Qualifelec::Certificats)
         end
       end
     end

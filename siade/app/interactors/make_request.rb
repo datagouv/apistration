@@ -12,7 +12,7 @@ class MakeRequest < ApplicationInteractor
   end
 
   def call
-    if staging?
+    if use_mocked_data?
       mock_call
       track_mock_operation
     else

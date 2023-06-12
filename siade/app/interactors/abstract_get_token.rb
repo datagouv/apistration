@@ -1,6 +1,6 @@
 class AbstractGetToken < MakeRequest::Post
   def call
-    return if staging?
+    return if use_mocked_data?
 
     context.token = token_from_redis || retrieve_and_save_token
   end

@@ -68,6 +68,7 @@ class ErrorsBackend
       '29' => 'DJEPVA',
       '30' => 'MEN',
       '31' => 'GIP-MDS',
+      '32' => 'Qualifelec',
       '50' => 'FranceConnect'
     }
   end

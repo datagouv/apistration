@@ -3,8 +3,8 @@ RSpec.describe APIEntreprise::V3AndMore::Qualifelec::CertificatsController do
     get :show,
       params: {
         api_version: 3,
-        siret: '12345678901234',
-        recipient: '55204599900828',
+        siret: valid_siret(:default),
+        recipient: valid_siret(:recipient),
         context: 'test',
         object: 'certificats'
       }

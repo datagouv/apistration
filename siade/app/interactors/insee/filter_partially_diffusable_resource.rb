@@ -4,7 +4,7 @@ class INSEE::FilterPartiallyDiffusableResource < ApplicationInteractor
   def self.inherited(klass)
     klass.class_eval do
       around do |interactor|
-        interactor.call unless staging?
+        interactor.call unless use_mocked_data?
       end
     end
   end

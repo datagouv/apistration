@@ -1,7 +1,7 @@
 class ApplicationInteractor
   include Interactor
 
-  def staging?
+  def use_mocked_data?
     Rails.env.staging?
   end
 end

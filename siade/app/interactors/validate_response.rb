@@ -9,7 +9,7 @@ class ValidateResponse < ApplicationInteractor
       end
 
       around do |interactor|
-        interactor.call unless staging?
+        interactor.call unless use_mocked_data?
       end
 
       after do
