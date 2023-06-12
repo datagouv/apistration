@@ -12860,35 +12860,39 @@ paths:
                             title: Code de l'activité principale (APE) de l'établissement
                             type: string
                             example: 8411Z
+                            nullable: true
                             description: "Le code APE (activité principale exercée)
                               permet d'identifier la branche d'activité principale.
                               Il est attribué par l'Insee lors de l'immatriculation
                               ou la déclaration d'activité de l'entreprise. Ce code
                               de 4 chiffres + 1 lettre est extrait de la nomenclature
-                              d'activité française (NAF) de l'Insee. \n \n À noter
-                              qu'un établissement n'ayant pas encore de code APE peut
-                              se voir affecter la valeur '00.00Z' de manière provisoire.
+                              d'activité française (NAF) de l'Insee. Si le code n'est
+                              pas renseigné dans la nomenclature 'Naf Rév2' (nomenclature
+                              en vigueur), le code est null ici. \n \n À noter qu'un
+                              établissement n'ayant pas encore de code APE peut se
+                              voir affecter la valeur '00.00Z' de manière provisoire.
                               \n \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875"
                           libelle:
                             title: Libellé associé au code APE
                             type: string
-                            nullable: true
+                            nullable: false
                             example: Administration publique générale
                             description: "Libellé associé au code APE. Si le code
-                              n'est pas renseigné dans la nomenclature 'Naf Rév2'
-                              (nomenclature en vigueur), le libellé n'est pas renseigné
-                              ici. Si le code ne correspond à aucun libellé au sein
-                              de la nomenclature 'Naf Rév2', la valeur 'non référencé'
-                              est utilisée. \n \n Nomemclature d'activité française
-                              - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2406147"
+                              ne correspond à aucun libellé au sein de la nomenclature
+                              'Naf Rév2', la valeur 'non référencé' est utilisée.
+                              \n \n Nomemclature d'activité française - NAF rév.2
+                              de l'Insee : https://www.insee.fr/fr/information/2406147"
                           nomenclature:
                             title: Nomenclature associée au code
                             type: string
+                            nullable: true
                             example: NAFRev2
                             description: Ce champ indique le nom de la nomenclature
-                              associée au code APE.
+                              associée au code APE. Si le code n'est pas renseigné
+                              dans la nomenclature 'Naf Rév2' (nomenclature en vigueur),
+                              la nomenclature null ici.
                         required:
                         - code
                         - libelle
@@ -13236,36 +13240,40 @@ paths:
                                   légale
                                 type: string
                                 example: 8411Z
+                                nullable: true
                                 description: "Le code APE (activité principale exercée)
                                   permet d'identifier la branche d'activité principale.
                                   Il est attribué par l'Insee lors de l'immatriculation
                                   ou la déclaration d'activité de l'entreprise. Ce
                                   code de 4 chiffres + 1 lettre est extrait de la
                                   nomenclature d'activité française (NAF) de l'Insee.
-                                  \n \n À noter qu'une entreprise n'ayant pas encore
-                                  de code APE peut se voir affecter la valeur '00.00Z'
-                                  de manière provisoire. \n \n Plus d'informations
-                                  métier : https://entreprendre.service-public.fr/vosdroits/F33050
+                                  Si le code n'est pas renseigné dans la nomenclature
+                                  'Naf Rév2' (nomenclature en vigueur), le code est
+                                  null ici. \n \n À noter qu'une entreprise n'ayant
+                                  pas encore de code APE peut se voir affecter la
+                                  valeur '00.00Z' de manière provisoire. \n \n Plus
+                                  d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                                   Nomemclature d'activité française - NAF rév.2 de
                                   l'Insee : https://www.insee.fr/fr/information/2120875"
                               libelle:
                                 title: Libellé associé au code APE
                                 type: string
-                                nullable: true
+                                nullable: false
                                 example: Administration publique générale
-                                description: "Si le code n'est pas renseigné dans
-                                  la nomenclature 'Naf Rév2' (nomenclature en vigueur),
-                                  le libellé n'est pas renseigné ici. Si le code ne
-                                  correspond à aucun libellé au sein de la nomenclature
+                                description: "Libellé associé au code APE. Si le code
+                                  ne correspond à aucun libellé au sein de la nomenclature
                                   'Naf Rév2', la valeur 'non référencé' est utilisée.
                                   \n \n Nomemclature d'activité française - NAF rév.2
                                   de l'Insee : https://www.insee.fr/fr/information/2406147"
                               nomenclature:
                                 title: Nomenclature associée au code
                                 type: string
+                                nullable: true
                                 example: NAFRev2
                                 description: Ce champ indique le nom de la nomenclature
-                                  associée au code APE.
+                                  associée au code APE. Si le code n'est pas renseigné
+                                  dans la nomenclature 'Naf Rév2' (nomenclature en
+                                  vigueur), la nomenclature null ici.
                             required:
                             - code
                             - libelle
@@ -14128,35 +14136,39 @@ paths:
                             title: Code de l'activité principale (APE) de l'établissement
                             type: string
                             example: 8411Z
+                            nullable: true
                             description: "Le code APE (activité principale exercée)
                               permet d'identifier la branche d'activité principale.
                               Il est attribué par l'Insee lors de l'immatriculation
                               ou la déclaration d'activité de l'entreprise. Ce code
                               de 4 chiffres + 1 lettre est extrait de la nomenclature
-                              d'activité française (NAF) de l'Insee. \n \n À noter
-                              qu'un établissement n'ayant pas encore de code APE peut
-                              se voir affecter la valeur '00.00Z' de manière provisoire.
+                              d'activité française (NAF) de l'Insee. Si le code n'est
+                              pas renseigné dans la nomenclature 'Naf Rév2' (nomenclature
+                              en vigueur), le code est null ici. \n \n À noter qu'un
+                              établissement n'ayant pas encore de code APE peut se
+                              voir affecter la valeur '00.00Z' de manière provisoire.
                               \n \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875"
                           libelle:
                             title: Libellé associé au code APE
                             type: string
-                            nullable: true
+                            nullable: false
                             example: Administration publique générale
                             description: "Libellé associé au code APE. Si le code
-                              n'est pas renseigné dans la nomenclature 'Naf Rév2'
-                              (nomenclature en vigueur), le libellé n'est pas renseigné
-                              ici. Si le code ne correspond à aucun libellé au sein
-                              de la nomenclature 'Naf Rév2', la valeur 'non référencé'
-                              est utilisée. \n \n Nomemclature d'activité française
-                              - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2406147"
+                              ne correspond à aucun libellé au sein de la nomenclature
+                              'Naf Rév2', la valeur 'non référencé' est utilisée.
+                              \n \n Nomemclature d'activité française - NAF rév.2
+                              de l'Insee : https://www.insee.fr/fr/information/2406147"
                           nomenclature:
                             title: Nomenclature associée au code
                             type: string
+                            nullable: true
                             example: NAFRev2
                             description: Ce champ indique le nom de la nomenclature
-                              associée au code APE.
+                              associée au code APE. Si le code n'est pas renseigné
+                              dans la nomenclature 'Naf Rév2' (nomenclature en vigueur),
+                              la nomenclature null ici.
                         required:
                         - code
                         - libelle
@@ -14526,36 +14538,40 @@ paths:
                                   légale
                                 type: string
                                 example: 8411Z
+                                nullable: true
                                 description: "Le code APE (activité principale exercée)
                                   permet d'identifier la branche d'activité principale.
                                   Il est attribué par l'Insee lors de l'immatriculation
                                   ou la déclaration d'activité de l'entreprise. Ce
                                   code de 4 chiffres + 1 lettre est extrait de la
                                   nomenclature d'activité française (NAF) de l'Insee.
-                                  \n \n À noter qu'une entreprise n'ayant pas encore
-                                  de code APE peut se voir affecter la valeur '00.00Z'
-                                  de manière provisoire. \n \n Plus d'informations
-                                  métier : https://entreprendre.service-public.fr/vosdroits/F33050
+                                  Si le code n'est pas renseigné dans la nomenclature
+                                  'Naf Rév2' (nomenclature en vigueur), le code est
+                                  null ici. \n \n À noter qu'une entreprise n'ayant
+                                  pas encore de code APE peut se voir affecter la
+                                  valeur '00.00Z' de manière provisoire. \n \n Plus
+                                  d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                                   Nomemclature d'activité française - NAF rév.2 de
                                   l'Insee : https://www.insee.fr/fr/information/2120875"
                               libelle:
                                 title: Libellé associé au code APE
                                 type: string
-                                nullable: true
+                                nullable: false
                                 example: Administration publique générale
-                                description: "Si le code n'est pas renseigné dans
-                                  la nomenclature 'Naf Rév2' (nomenclature en vigueur),
-                                  le libellé n'est pas renseigné ici. Si le code ne
-                                  correspond à aucun libellé au sein de la nomenclature
+                                description: "Libellé associé au code APE. Si le code
+                                  ne correspond à aucun libellé au sein de la nomenclature
                                   'Naf Rév2', la valeur 'non référencé' est utilisée.
                                   \n \n Nomemclature d'activité française - NAF rév.2
                                   de l'Insee : https://www.insee.fr/fr/information/2406147"
                               nomenclature:
                                 title: Nomenclature associée au code
                                 type: string
+                                nullable: true
                                 example: NAFRev2
                                 description: Ce champ indique le nom de la nomenclature
-                                  associée au code APE.
+                                  associée au code APE. Si le code n'est pas renseigné
+                                  dans la nomenclature 'Naf Rév2' (nomenclature en
+                                  vigueur), la nomenclature null ici.
                             required:
                             - code
                             - libelle
@@ -15444,35 +15460,39 @@ paths:
                             title: Code de l'activité principale (APE) de l'établissement
                             type: string
                             example: 8411Z
+                            nullable: true
                             description: "Le code APE (activité principale exercée)
                               permet d'identifier la branche d'activité principale.
                               Il est attribué par l'Insee lors de l'immatriculation
                               ou la déclaration d'activité de l'entreprise. Ce code
                               de 4 chiffres + 1 lettre est extrait de la nomenclature
-                              d'activité française (NAF) de l'Insee. \n \n À noter
-                              qu'un établissement n'ayant pas encore de code APE peut
-                              se voir affecter la valeur '00.00Z' de manière provisoire.
+                              d'activité française (NAF) de l'Insee. Si le code n'est
+                              pas renseigné dans la nomenclature 'Naf Rév2' (nomenclature
+                              en vigueur), le code est null ici. \n \n À noter qu'un
+                              établissement n'ayant pas encore de code APE peut se
+                              voir affecter la valeur '00.00Z' de manière provisoire.
                               \n \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875"
                           libelle:
                             title: Libellé associé au code APE
                             type: string
-                            nullable: true
+                            nullable: false
                             example: Administration publique générale
                             description: "Libellé associé au code APE. Si le code
-                              n'est pas renseigné dans la nomenclature 'Naf Rév2'
-                              (nomenclature en vigueur), le libellé n'est pas renseigné
-                              ici. Si le code ne correspond à aucun libellé au sein
-                              de la nomenclature 'Naf Rév2', la valeur 'non référencé'
-                              est utilisée. \n \n Nomemclature d'activité française
-                              - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2406147"
+                              ne correspond à aucun libellé au sein de la nomenclature
+                              'Naf Rév2', la valeur 'non référencé' est utilisée.
+                              \n \n Nomemclature d'activité française - NAF rév.2
+                              de l'Insee : https://www.insee.fr/fr/information/2406147"
                           nomenclature:
                             title: Nomenclature associée au code
                             type: string
+                            nullable: true
                             example: NAFRev2
                             description: Ce champ indique le nom de la nomenclature
-                              associée au code APE.
+                              associée au code APE. Si le code n'est pas renseigné
+                              dans la nomenclature 'Naf Rév2' (nomenclature en vigueur),
+                              la nomenclature null ici.
                         required:
                         - code
                         - libelle
@@ -15842,36 +15862,40 @@ paths:
                                   légale
                                 type: string
                                 example: 8411Z
+                                nullable: true
                                 description: "Le code APE (activité principale exercée)
                                   permet d'identifier la branche d'activité principale.
                                   Il est attribué par l'Insee lors de l'immatriculation
                                   ou la déclaration d'activité de l'entreprise. Ce
                                   code de 4 chiffres + 1 lettre est extrait de la
                                   nomenclature d'activité française (NAF) de l'Insee.
-                                  \n \n À noter qu'une entreprise n'ayant pas encore
-                                  de code APE peut se voir affecter la valeur '00.00Z'
-                                  de manière provisoire. \n \n Plus d'informations
-                                  métier : https://entreprendre.service-public.fr/vosdroits/F33050
+                                  Si le code n'est pas renseigné dans la nomenclature
+                                  'Naf Rév2' (nomenclature en vigueur), le code est
+                                  null ici. \n \n À noter qu'une entreprise n'ayant
+                                  pas encore de code APE peut se voir affecter la
+                                  valeur '00.00Z' de manière provisoire. \n \n Plus
+                                  d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                                   Nomemclature d'activité française - NAF rév.2 de
                                   l'Insee : https://www.insee.fr/fr/information/2120875"
                               libelle:
                                 title: Libellé associé au code APE
                                 type: string
-                                nullable: true
+                                nullable: false
                                 example: Administration publique générale
-                                description: "Si le code n'est pas renseigné dans
-                                  la nomenclature 'Naf Rév2' (nomenclature en vigueur),
-                                  le libellé n'est pas renseigné ici. Si le code ne
-                                  correspond à aucun libellé au sein de la nomenclature
+                                description: "Libellé associé au code APE. Si le code
+                                  ne correspond à aucun libellé au sein de la nomenclature
                                   'Naf Rév2', la valeur 'non référencé' est utilisée.
                                   \n \n Nomemclature d'activité française - NAF rév.2
                                   de l'Insee : https://www.insee.fr/fr/information/2406147"
                               nomenclature:
                                 title: Nomenclature associée au code
                                 type: string
+                                nullable: true
                                 example: NAFRev2
                                 description: Ce champ indique le nom de la nomenclature
-                                  associée au code APE.
+                                  associée au code APE. Si le code n'est pas renseigné
+                                  dans la nomenclature 'Naf Rév2' (nomenclature en
+                                  vigueur), la nomenclature null ici.
                             required:
                             - code
                             - libelle
@@ -16761,35 +16785,39 @@ paths:
                             title: Code de l'activité principale (APE) de l'établissement
                             type: string
                             example: 8411Z
+                            nullable: true
                             description: "Le code APE (activité principale exercée)
                               permet d'identifier la branche d'activité principale.
                               Il est attribué par l'Insee lors de l'immatriculation
                               ou la déclaration d'activité de l'entreprise. Ce code
                               de 4 chiffres + 1 lettre est extrait de la nomenclature
-                              d'activité française (NAF) de l'Insee. \n \n À noter
-                              qu'un établissement n'ayant pas encore de code APE peut
-                              se voir affecter la valeur '00.00Z' de manière provisoire.
+                              d'activité française (NAF) de l'Insee. Si le code n'est
+                              pas renseigné dans la nomenclature 'Naf Rév2' (nomenclature
+                              en vigueur), le code est null ici. \n \n À noter qu'un
+                              établissement n'ayant pas encore de code APE peut se
+                              voir affecter la valeur '00.00Z' de manière provisoire.
                               \n \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875"
                           libelle:
                             title: Libellé associé au code APE
                             type: string
-                            nullable: true
+                            nullable: false
                             example: Administration publique générale
                             description: "Libellé associé au code APE. Si le code
-                              n'est pas renseigné dans la nomenclature 'Naf Rév2'
-                              (nomenclature en vigueur), le libellé n'est pas renseigné
-                              ici. Si le code ne correspond à aucun libellé au sein
-                              de la nomenclature 'Naf Rév2', la valeur 'non référencé'
-                              est utilisée. \n \n Nomemclature d'activité française
-                              - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2406147"
+                              ne correspond à aucun libellé au sein de la nomenclature
+                              'Naf Rév2', la valeur 'non référencé' est utilisée.
+                              \n \n Nomemclature d'activité française - NAF rév.2
+                              de l'Insee : https://www.insee.fr/fr/information/2406147"
                           nomenclature:
                             title: Nomenclature associée au code
                             type: string
+                            nullable: true
                             example: NAFRev2
                             description: Ce champ indique le nom de la nomenclature
-                              associée au code APE.
+                              associée au code APE. Si le code n'est pas renseigné
+                              dans la nomenclature 'Naf Rév2' (nomenclature en vigueur),
+                              la nomenclature null ici.
                         required:
                         - code
                         - libelle
@@ -17137,36 +17165,40 @@ paths:
                                   légale
                                 type: string
                                 example: 8411Z
+                                nullable: true
                                 description: "Le code APE (activité principale exercée)
                                   permet d'identifier la branche d'activité principale.
                                   Il est attribué par l'Insee lors de l'immatriculation
                                   ou la déclaration d'activité de l'entreprise. Ce
                                   code de 4 chiffres + 1 lettre est extrait de la
                                   nomenclature d'activité française (NAF) de l'Insee.
-                                  \n \n À noter qu'une entreprise n'ayant pas encore
-                                  de code APE peut se voir affecter la valeur '00.00Z'
-                                  de manière provisoire. \n \n Plus d'informations
-                                  métier : https://entreprendre.service-public.fr/vosdroits/F33050
+                                  Si le code n'est pas renseigné dans la nomenclature
+                                  'Naf Rév2' (nomenclature en vigueur), le code est
+                                  null ici. \n \n À noter qu'une entreprise n'ayant
+                                  pas encore de code APE peut se voir affecter la
+                                  valeur '00.00Z' de manière provisoire. \n \n Plus
+                                  d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                                   Nomemclature d'activité française - NAF rév.2 de
                                   l'Insee : https://www.insee.fr/fr/information/2120875"
                               libelle:
                                 title: Libellé associé au code APE
                                 type: string
-                                nullable: true
+                                nullable: false
                                 example: Administration publique générale
-                                description: "Si le code n'est pas renseigné dans
-                                  la nomenclature 'Naf Rév2' (nomenclature en vigueur),
-                                  le libellé n'est pas renseigné ici. Si le code ne
-                                  correspond à aucun libellé au sein de la nomenclature
+                                description: "Libellé associé au code APE. Si le code
+                                  ne correspond à aucun libellé au sein de la nomenclature
                                   'Naf Rév2', la valeur 'non référencé' est utilisée.
                                   \n \n Nomemclature d'activité française - NAF rév.2
                                   de l'Insee : https://www.insee.fr/fr/information/2406147"
                               nomenclature:
                                 title: Nomenclature associée au code
                                 type: string
+                                nullable: true
                                 example: NAFRev2
                                 description: Ce champ indique le nom de la nomenclature
-                                  associée au code APE.
+                                  associée au code APE. Si le code n'est pas renseigné
+                                  dans la nomenclature 'Naf Rév2' (nomenclature en
+                                  vigueur), la nomenclature null ici.
                             required:
                             - code
                             - libelle
@@ -18203,34 +18235,39 @@ paths:
                               légale
                             type: string
                             example: 8411Z
+                            nullable: true
                             description: "Le code APE (activité principale exercée)
                               permet d'identifier la branche d'activité principale.
                               Il est attribué par l'Insee lors de l'immatriculation
                               ou la déclaration d'activité de l'entreprise. Ce code
                               de 4 chiffres + 1 lettre est extrait de la nomenclature
-                              d'activité française (NAF) de l'Insee. \n \n À noter
-                              qu'une entreprise n'ayant pas encore de code APE peut
-                              se voir affecter la valeur '00.00Z' de manière provisoire.
-                              \n \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
+                              d'activité française (NAF) de l'Insee. Si le code n'est
+                              pas renseigné dans la nomenclature 'Naf Rév2' (nomenclature
+                              en vigueur), le code est null ici. \n \n À noter qu'une
+                              entreprise n'ayant pas encore de code APE peut se voir
+                              affecter la valeur '00.00Z' de manière provisoire. \n
+                              \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875"
                           libelle:
                             title: Libellé associé au code APE
                             type: string
-                            nullable: true
+                            nullable: false
                             example: Administration publique générale
-                            description: "Si le code n'est pas renseigné dans la nomenclature
-                              'Naf Rév2' (nomenclature en vigueur), le libellé n'est
-                              pas renseigné ici. Si le code ne correspond à aucun
-                              libellé au sein de la nomenclature 'Naf Rév2', la valeur
-                              'non référencé' est utilisée. \n \n Nomemclature d'activité
-                              française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2406147"
+                            description: "Libellé associé au code APE. Si le code
+                              ne correspond à aucun libellé au sein de la nomenclature
+                              'Naf Rév2', la valeur 'non référencé' est utilisée.
+                              \n \n Nomemclature d'activité française - NAF rév.2
+                              de l'Insee : https://www.insee.fr/fr/information/2406147"
                           nomenclature:
                             title: Nomenclature associée au code
                             type: string
+                            nullable: true
                             example: NAFRev2
                             description: Ce champ indique le nom de la nomenclature
-                              associée au code APE.
+                              associée au code APE. Si le code n'est pas renseigné
+                              dans la nomenclature 'Naf Rév2' (nomenclature en vigueur),
+                              la nomenclature null ici.
                         required:
                         - code
                         - libelle
@@ -19021,34 +19058,39 @@ paths:
                               légale
                             type: string
                             example: 8411Z
+                            nullable: true
                             description: "Le code APE (activité principale exercée)
                               permet d'identifier la branche d'activité principale.
                               Il est attribué par l'Insee lors de l'immatriculation
                               ou la déclaration d'activité de l'entreprise. Ce code
                               de 4 chiffres + 1 lettre est extrait de la nomenclature
-                              d'activité française (NAF) de l'Insee. \n \n À noter
-                              qu'une entreprise n'ayant pas encore de code APE peut
-                              se voir affecter la valeur '00.00Z' de manière provisoire.
-                              \n \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
+                              d'activité française (NAF) de l'Insee. Si le code n'est
+                              pas renseigné dans la nomenclature 'Naf Rév2' (nomenclature
+                              en vigueur), le code est null ici. \n \n À noter qu'une
+                              entreprise n'ayant pas encore de code APE peut se voir
+                              affecter la valeur '00.00Z' de manière provisoire. \n
+                              \n Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
                               Nomemclature d'activité française - NAF rév.2 de l'Insee
                               : https://www.insee.fr/fr/information/2120875"
                           libelle:
                             title: Libellé associé au code APE
                             type: string
-                            nullable: true
+                            nullable: false
                             example: Administration publique générale
-                            description: "Si le code n'est pas renseigné dans la nomenclature
-                              'Naf Rév2' (nomenclature en vigueur), le libellé n'est
-                              pas renseigné ici. Si le code ne correspond à aucun
-                              libellé au sein de la nomenclature 'Naf Rév2', la valeur
-                              'non référencé' est utilisée. \n \n Nomemclature d'activité
-                              française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2406147"
+                            description: "Libellé associé au code APE. Si le code
+                              ne correspond à aucun libellé au sein de la nomenclature
+                              'Naf Rév2', la valeur 'non référencé' est utilisée.
+                              \n \n Nomemclature d'activité française - NAF rév.2
+                              de l'Insee : https://www.insee.fr/fr/information/2406147"
                           nomenclature:
                             title: Nomenclature associée au code
                             type: string
+                            nullable: true
                             example: NAFRev2
                             description: Ce champ indique le nom de la nomenclature
-                              associée au code APE.
+                              associée au code APE. Si le code n'est pas renseigné
+                              dans la nomenclature 'Naf Rév2' (nomenclature en vigueur),
+                              la nomenclature null ici.
                         required:
                         - code
                         - libelle

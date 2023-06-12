@@ -707,7 +707,7 @@ paths:
                     example: 1
                     nullable: true
                     enum:
-                    -
+                    - 
                     - 1
                     - 2
                     - 3
