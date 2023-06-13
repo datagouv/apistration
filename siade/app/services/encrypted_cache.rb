@@ -86,7 +86,11 @@ class EncryptedCache
   end
 
   def hashed_key(key)
-    Digest::SHA256.hexdigest(key)
+    Digest::SHA256.hexdigest("#{salt_key}:#{key}")
+  end
+
+  def salt_key
+    Siade.credentials[:encrypted_cache_salt_key]
   end
 
   def cache

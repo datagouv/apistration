@@ -4,7 +4,8 @@ RSpec.describe EncryptedCache, type: :service do
   describe '.read' do
     subject(:cached_value) { described_class.read(key) }
 
-    let(:hashed_key) { Digest::SHA256.hexdigest(key) }
+    let(:hashed_key) { Digest::SHA256.hexdigest("#{salt_key}:#{key}") }
+    let(:salt_key) { Siade.credentials[:encrypted_cache_salt_key] }
     let(:key) { 'whatever' }
 
     context 'without value set' do
