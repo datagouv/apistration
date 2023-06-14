@@ -20,7 +20,7 @@ module ProviderStubs::GIPMDS
   end
 
   # rubocop:disable Metrics/MethodLength
-  def mock_gip_mds_annuel_effectifs(siren:, year:)
+  def mock_gip_mds_annuel_effectifs(siren:, year:, body: nil)
     stub_request(:get, "#{Siade.credentials[:gip_mds_domain]}/rcd-api/1.0.0/effectifs").with(
       query: {
         codeOPSDemandeur: '00000DINUM',
@@ -36,7 +36,7 @@ module ProviderStubs::GIPMDS
       }
     ).and_return(
       status: 200,
-      body: gip_mds_stubbed_payload_for_annuel(siren:, year:).to_json
+      body: body || gip_mds_stubbed_payload_for_annuel(siren:, year:).to_json
     )
   end
 

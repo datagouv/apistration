@@ -49,5 +49,21 @@ RSpec.describe APIEntreprise::V2::EffectifsAnnuelsEntrepriseACOSSCovidController
         expect(subject.status).to eq(404)
       end
     end
+
+    describe 'when GIP-MDS renders only RA effectifs' do
+      let(:year) { (Time.zone.today.year - 1).to_s }
+      let(:siren) { valid_siren }
+      before do
+        mock_gip_mds_annuel_effectifs(
+          siren:,
+          year:,
+          body: gip_mds_stubbed_payload_for_annuel(siren:, year:, regime_general_effectifs: nil).to_json
+        )
+      end
+
+      it 'returns 404' do
+        expect(subject.status).to eq(404)
+      end
+    end
   end
 end
