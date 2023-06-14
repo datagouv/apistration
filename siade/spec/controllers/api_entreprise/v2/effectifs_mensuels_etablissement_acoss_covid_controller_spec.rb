@@ -5,7 +5,13 @@ RSpec.describe APIEntreprise::V2::EffectifsMensuelsEtablissementACOSSCovidContro
   let(:siret) { valid_siret }
 
   before do
+    Timecop.freeze
+
     mock_gip_mds_authenticate
+  end
+
+  after do
+    Timecop.return
   end
 
   it_behaves_like 'unauthorized', :show, mois: '08', annee: '2020'

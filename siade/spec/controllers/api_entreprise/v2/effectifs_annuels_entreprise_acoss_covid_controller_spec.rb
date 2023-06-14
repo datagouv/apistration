@@ -6,7 +6,13 @@ RSpec.describe APIEntreprise::V2::EffectifsAnnuelsEntrepriseACOSSCovidController
   it_behaves_like 'ask_for_mandatory_parameters', :show
 
   before do
+    Timecop.freeze
+
     mock_gip_mds_authenticate
+  end
+
+  after do
+    Timecop.return
   end
 
   describe 'show' do

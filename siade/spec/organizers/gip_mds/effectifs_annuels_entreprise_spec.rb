@@ -9,7 +9,13 @@ RSpec.describe GIPMDS::EffectifsAnnuelsEntreprise, type: :retriever_organizer do
   end
 
   before do
+    Timecop.freeze
+
     mock_gip_mds_authenticate
+  end
+
+  after do
+    Timecop.return
   end
 
   context 'when GIP-MDS returns effectifs' do

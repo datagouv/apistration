@@ -3,7 +3,13 @@ require 'swagger_helper'
 RSpec.describe 'GIP-MDS: effectifs mensuels établissement', api: :entreprise, type: %i[request swagger] do
   path '/v3/gip_mds/etablissements/{siret}/effectifs_mensuels/{month}/annee/{year}' do
     before do
+      Timecop.freeze
+
       mock_gip_mds_authenticate
+    end
+
+    after do
+      Timecop.return
     end
 
     get SwaggerData.get('gip_mds.effectifs_mensuels_etablissement.title') do
