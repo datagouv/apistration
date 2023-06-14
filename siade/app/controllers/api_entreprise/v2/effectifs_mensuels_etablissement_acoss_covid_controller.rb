@@ -2,7 +2,7 @@ require 'net/http'
 
 class APIEntreprise::V2::EffectifsMensuelsEtablissementACOSSCovidController < APIEntreprise::V2::BaseController
   def show
-    organizer = GIPMDS::EffectifsMensuelsEtablissement.call(params: organizer_params)
+    organizer = GIPMDS::EffectifsMensuelsEtablissementForV2.call(params: organizer_params)
 
     if organizer.success?
       render json: APIEntreprise::GIPMDS::EffectifsMensuelsEtablissementSerializer::V2.new(organizer.bundled_data.data).as_json,

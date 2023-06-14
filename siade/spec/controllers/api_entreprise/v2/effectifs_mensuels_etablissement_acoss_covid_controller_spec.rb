@@ -42,5 +42,21 @@ RSpec.describe APIEntreprise::V2::EffectifsMensuelsEtablissementACOSSCovidContro
         expect(subject.body).to eq(valid_response.to_json)
       end
     end
+
+    describe 'when GIP-MDS renders only RA effectifs' do
+      before do
+        mock_gip_mds_mensuel_effectifs(
+          siret: valid_siret,
+          year: annee,
+          month: mois,
+          body: gip_mds_stubbed_payload_for_mensuel(siret: valid_siret, year: annee, month: mois, regime_general_effectifs: nil).to_json
+        )
+      end
+
+      it 'returns 404' do
+        expect(subject.status).to eq(404)
+      end
+    end
+
   end
 end
