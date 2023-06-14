@@ -13,6 +13,7 @@ Rails.application.config.filter_parameters += %i[
   ssn
 
   numeroAllocataire
+  codePostal
 
   identifiant
 
