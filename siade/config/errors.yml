@@ -330,6 +330,10 @@
   title: 'Erreur interne du GIP-MDS'
   detail: "Les serveurs du GIP-MDS rencontrent une erreur interne impliquant une indisponibilité momentanée"
 
+- code: '31502'
+  title: "Erreur temporaire d'authentification au GIP-MDS"
+  detail: "Les serveurs du GIP-MDS rencontrent une erreur interne impliquant une erreur momentanée d'authentification, veuillez réessayer votre appel dans quelques secondes."
+
 ## Infogreffe
 - code: '02501'
   title: "Erreur temporaire d'identification d'Infogreffe"
