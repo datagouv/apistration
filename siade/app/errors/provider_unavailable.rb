@@ -4,6 +4,6 @@ class ProviderUnavailable < AbstractGenericProviderError
   end
 
   def kind
-    :network_error
+    :provider_error
   end
 end
