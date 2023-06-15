@@ -1,13 +1,16 @@
 class CNOUS::ValidateResponse < ValidateResponse
+  # rubocop:disable Metrics/CyclomaticComplexity
   def call
     resource_not_found! if http_not_found?
     unprocessable_entity_error! if http_bad_request?
     conflict! if conflict?
+    internal_server_error! if http_internal_error?
 
     return if http_ok? && !invalid_json? && data_present?
 
     unknown_provider_response!
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   private
 
