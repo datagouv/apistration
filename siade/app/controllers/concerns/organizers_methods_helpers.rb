@@ -7,8 +7,8 @@ module OrganizersMethodsHelpers
       :ok
     elsif at_least_one_error_kind_of?(:wrong_parameter, retriever)
       :unprocessable_entity
-    elsif at_least_one_error_kind_of?(:network_error, retriever)
-      :gateway_timeout
+    elsif at_least_one_error_kind_of?(%i[network_error provider_error], retriever)
+      :bad_gateway
     elsif at_least_one_error_kind_of?(:timeout_error, retriever)
       :gateway_timeout
     elsif at_least_one_error_kind_of?(:unavailable_for_legal_reason, retriever)
@@ -17,8 +17,6 @@ module OrganizersMethodsHelpers
       :unauthorized
     elsif at_least_one_error_kind_of?(:not_found, retriever)
       :not_found
-    elsif at_least_one_error_kind_of?(:provider_error, retriever)
-      :bad_gateway
     elsif at_least_one_error_kind_of?(:conflict, retriever)
       :conflict
     elsif at_least_one_error_kind_of?(:internal_error, retriever)

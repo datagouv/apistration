@@ -16,9 +16,11 @@ class APIController < ApplicationController
 
   protected
 
-  def at_least_one_error_kind_of?(kind, retriever)
+  def at_least_one_error_kind_of?(kinds, retriever)
+    kinds = Array(kinds)
+
     retriever.errors.any? do |error|
-      error.kind == kind
+      kinds.include?(error.kind)
     end
   end
 
