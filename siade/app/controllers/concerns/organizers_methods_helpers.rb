@@ -9,6 +9,8 @@ module OrganizersMethodsHelpers
       :unprocessable_entity
     elsif at_least_one_error_kind_of?(:network_error, retriever)
       :gateway_timeout
+    elsif at_least_one_error_kind_of?(:timeout_error, retriever)
+      :gateway_timeout
     elsif at_least_one_error_kind_of?(:unavailable_for_legal_reason, retriever)
       :unavailable_for_legal_reasons
     elsif at_least_one_error_kind_of?(:unauthorized, retriever)

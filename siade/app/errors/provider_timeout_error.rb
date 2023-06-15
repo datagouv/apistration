@@ -4,6 +4,6 @@ class ProviderTimeoutError < AbstractGenericProviderError
   end
 
   def kind
-    :network_error
+    :timeout_error
   end
 end
