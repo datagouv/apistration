@@ -17,6 +17,14 @@ RSpec.describe DGFIP::SituationIR::ValidateResponse, type: :validate_response do
     its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
   end
 
+  context 'with a forbidden response' do
+    let(:response) { instance_double(Net::HTTPForbidden, code: '403') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+  end
+
   context 'with a gone response' do
     let(:response) { instance_double(Net::HTTPNotFound, code: '410') }
 
