@@ -1,17 +1,24 @@
 class GIPMDS::Effectifs::ValidateResponse < ValidateResponse
+  # rubocop:disable Metrics/CyclomaticComplexity
   def call
     resource_not_found! if [204, 404].include?(http_code)
     temporary_credentials_error! if temporary_credentials_error?
+    internal_server_error! if internal_server_error?
     unknown_provider_response! if invalid_json?
     ko_technique! if ko_technique?
     unknown_provider_response! unless all_required_regime_are_present?
     resource_not_found! unless at_least_one_effectif_transmitted?
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   private
 
   def all_required_regime_are_present?
     (json_body.pluck('source') & required_regimes).sort == required_regimes
+  end
+
+  def internal_server_error?
+    http_code == 500
   end
 
   def required_regimes

@@ -100,6 +100,13 @@ RSpec.describe GIPMDS::Effectifs::ValidateResponse, type: :validate_response do
     its(:errors) { is_expected.to include(instance_of(GIPMDSError)) }
   end
 
+  context 'with a 500 status' do
+    let(:code) { '500' }
+    let(:body) { '' }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+  end
+
   context 'with unknown provider code' do
     let(:code) { '66' }
     let(:body) { 'execute order' }
