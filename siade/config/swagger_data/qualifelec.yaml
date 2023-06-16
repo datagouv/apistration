@@ -1,7 +1,7 @@
 qualifelec:
   certificats:
     title: Certification Qualifelec
-    description: "Certification délivrée par Qualifelec attestant des qualification d'une entreprise dans le génie électrique et énergétique."
+    description: "Certification délivrée par Qualifelec, attestant des qualifications d'une entreprise dans le génie électrique et énergétique."
     tags:
       - Prochainement
     parameters:

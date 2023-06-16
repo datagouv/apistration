@@ -23150,7 +23150,7 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Certification délivrée par Qualifelec attestant des qualification
+      description: Certification délivrée par Qualifelec, attestant des qualifications
         d'une entreprise dans le génie électrique et énergétique.
       responses:
         '200':
