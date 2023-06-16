@@ -23,6 +23,6 @@ class APIEntreprise::V2::BaseController < ::APIEntrepriseController
   end
 
   def at_least_one_error_cant_be_cached?(retriever)
-    at_least_one_error_kind_of?(:network_error, retriever)
+    at_least_one_error_kind_of?(%i[network_error timeout_error internal_error], retriever)
   end
 end
