@@ -12,12 +12,14 @@ class APIEntreprise::V2::AttestationsSocialesACOSSController < APIEntreprise::V2
   private
 
   def retrieve_attestation
-    retriever = SIADE::V2::Retrievers::AttestationsSocialesACOSS.new(params_requests)
-    retriever.retrieve
+    @retrieve_attestation ||= begin
+      retriever = SIADE::V2::Retrievers::AttestationsSocialesACOSS.new(params_requests)
+      retriever.retrieve
 
-    write_retriever_cache(retriever) unless at_least_one_error_kind_of?(:network_error, retriever)
+      write_retriever_cache(retriever, expires_in: 24.hours.to_i) unless at_least_one_error_cant_be_cached?(retriever)
 
-    retriever
+      retriever
+    end
   end
 
   def params_requests
@@ -27,17 +29,5 @@ class APIEntreprise::V2::AttestationsSocialesACOSSController < APIEntreprise::V2
       user_id: current_user.logstash_id,
       recipient: params[:recipient]
     }
-  end
-
-  def write_retriever_cache(retriever)
-    EncryptedCache.write(cache_key, retriever, expires_in: 24.hours.to_i)
-  end
-
-  def cache_key
-    request.path
-  end
-
-  def cached_retriever
-    @cached_retriever ||= EncryptedCache.read(cache_key)
   end
 end

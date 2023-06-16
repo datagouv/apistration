@@ -17,7 +17,7 @@ class APIEntreprise::V2::DocumentsAssociationsController < APIEntreprise::V2::Ba
     @retrieve_documents_association ||= begin
       retriever = ::MI::Associations::Documents.call(params: retriever_params)
 
-      write_retriever_cache(retriever) unless at_least_one_error_kind_of?(:network_error, retriever)
+      write_retriever_cache(retriever, expires_in: 1.hour) unless at_least_one_error_cant_be_cached?(retriever)
 
       retriever
     end
@@ -41,17 +41,5 @@ class APIEntreprise::V2::DocumentsAssociationsController < APIEntreprise::V2::Ba
     {
       id: params.require(:id)
     }
-  end
-
-  def write_retriever_cache(retriever)
-    EncryptedCache.write(cache_key, retriever, expires_in: 1.hour)
-  end
-
-  def cache_key
-    request.path
-  end
-
-  def cached_retriever
-    @cached_retriever ||= EncryptedCache.read(cache_key)
   end
 end

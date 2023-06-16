@@ -16,7 +16,7 @@ class APIEntreprise::V2::ExercicesController < APIEntreprise::V2::AbstractDGFIPC
       retriever = SIADE::V2::Retrievers::Exercices.new(params[:siret], retriever_params(dgfip_service))
       retriever.retrieve
 
-      write_retriever_cache(retriever) unless at_least_one_error_kind_of?(:network_error, retriever)
+      write_retriever_cache(retriever, expires_in: until_next_dgfip_update_in_seconds) unless at_least_one_error_cant_be_cached?(retriever)
 
       retriever
     end

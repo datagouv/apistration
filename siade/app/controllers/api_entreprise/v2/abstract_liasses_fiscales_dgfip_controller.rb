@@ -16,7 +16,7 @@ class APIEntreprise::V2::AbstractLiassesFiscalesDGFIPController < APIEntreprise:
       retriever = SIADE::V2::Retrievers::LiassesFiscalesDGFIP.new(retriever_params.merge(request_type: request_type))
       retriever.retrieve
 
-      write_retriever_cache(retriever) unless at_least_one_error_kind_of?(:network_error, retriever)
+      write_retriever_cache(retriever, expires_in: until_next_dgfip_update_in_seconds) unless at_least_one_error_cant_be_cached?(retriever)
 
       retriever
     end

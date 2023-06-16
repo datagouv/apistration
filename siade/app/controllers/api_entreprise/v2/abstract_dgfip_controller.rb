@@ -35,18 +35,6 @@ class APIEntreprise::V2::AbstractDGFIPController < APIEntreprise::V2::BaseContro
     ).as_json
   end
 
-  def write_retriever_cache(retriever)
-    EncryptedCache.write(cache_key, retriever, expires_in: until_next_dgfip_update_in_seconds)
-  end
-
-  def cached_retriever
-    @cached_retriever ||= EncryptedCache.read(cache_key)
-  end
-
-  def cache_key
-    request.path
-  end
-
   def until_next_dgfip_update_in_seconds
     if (0..3).include?(now.hour)
       ((now.beginning_of_day + 3.hours) - now).to_i
