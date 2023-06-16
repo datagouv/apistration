@@ -40,4 +40,19 @@ RSpec.describe DGFIP::SituationIR::ValidateResponse, type: :validate_response do
 
     its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
   end
+
+  context 'with a 400 error and a body with "format SPI incorrect"' do
+    let(:response) { instance_double(Net::HTTPBadRequest, code: '400', body:) }
+    let(:body) do
+      {
+        erreur: {
+          message: 'format SPI incorrect'
+        }
+      }.to_json
+    end
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+  end
 end
