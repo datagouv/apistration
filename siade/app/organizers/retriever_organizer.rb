@@ -5,8 +5,9 @@ class RetrieverOrganizer < ApplicationOrganizer
     klass.class_eval do
       before do
         handles_provider
-        context.resource = nil
-        context.errors   = []
+        context.resource  = nil
+        context.errors    = []
+        context.cacheable = false
         provider_in_maintenance! if in_maintenance?
       end
     end
