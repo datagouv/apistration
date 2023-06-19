@@ -11,7 +11,7 @@ class DGFIP::SituationIR::ValidateResponse < ValidateResponse
   private
 
   def not_found?
-    [403, 404, 410].include?(http_code)
+    [204, 403, 404, 410].include?(http_code)
   end
 
   def invalid_spi_code?

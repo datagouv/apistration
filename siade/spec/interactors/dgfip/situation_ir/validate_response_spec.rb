@@ -41,6 +41,14 @@ RSpec.describe DGFIP::SituationIR::ValidateResponse, type: :validate_response do
     its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
   end
 
+  context 'with a http no content error' do
+    let(:response) { instance_double(Net::HTTPNoContent, code: '204') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+  end
+
   context 'with a 400 error and a body with "format SPI incorrect"' do
     let(:response) { instance_double(Net::HTTPBadRequest, code: '400', body:) }
     let(:body) do
