@@ -205,7 +205,11 @@ shared:
     - cnaf_allocataires
     - cnaf_enfants
     - cnaf_adresse
-  api_particulier/v2/cnaf/quotient_familial_v2: []
+  api_particulier/v2/cnaf/quotient_familial_v2: 
+    - cnaf_quotient_familial
+    - cnaf_allocataires
+    - cnaf_enfants
+    - cnaf_adresse
   api_particulier/v2/cnaf/complementaire_sante_solidaire: []
   api_particulier/v2/cnous/student_scholarship:
     - cnous_statut_boursier

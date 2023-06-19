@@ -351,7 +351,7 @@ paths:
         API Particulier. \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial_v2) "
       responses:
         '200':
-          description: Complementaire santé solidaire trouvée
+          description: Quotient Familial trouvée
           x-operationId: api_particulier_v2_cnaf_quotient_familial_v2
           content:
             application/json:
@@ -375,6 +375,7 @@ paths:
                           type: string
                           description: Nom d'usage de l'allocataire
                           example: JACQUES
+                          nullable: true
                         prenoms:
                           title: Prénoms
                           type: string
@@ -425,6 +426,7 @@ paths:
                           type: string
                           description: Nom d'usage de l'enfant
                           example: JACQUES
+                          nullable: true
                         prenoms:
                           title: Prénoms
                           type: string
@@ -489,6 +491,7 @@ paths:
                         type: string
                         description: Numéro et libellé de la voie
                         example: 1 RUE DE LA GARE
+                        nullable: true
                       lieuDit:
                         title: Lieu-dit
                         type: string
@@ -534,12 +537,17 @@ paths:
           description: Mauvais paramètres d'appels
           content:
             application/json:
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '401':
-          description: Votre jeton d'Api n'a pas été trouvé ou n'est pas actif
-          content:
-            application/json:
+              examples:
+                unprocessable_entity_error_gender_error:
+                  value:
+                    errors:
+                    - code: '00364'
+                      title: Entité non traitable
+                      detail: Le sexe n'est pas correctement formaté (m ou f)
+                      source: 
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le sexe n'est pas correctement formaté (m ou f)
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -548,14 +556,8 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/Error"
-        '500':
-          description: Une erreur interne s'est produite, l'équipe a été prévenue.
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/Error"
         '503':
-          description: Une erreur est survenue lors de l'appel au fournisseur de donnée
+          description: Erreur du fournisseur
           content:
             application/json:
               examples:
@@ -574,6 +576,12 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
               schema:
                 "$ref": "#/components/schemas/Error"
   "/api/v2/scolarites":

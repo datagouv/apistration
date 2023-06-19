@@ -7,8 +7,8 @@ class TokenFactory
     @scopes = Array(scopes).map(&:to_s) || []
   end
 
-  def valid(uid: nil)
-    JWT.encode(payload(uid:), hash_secret, hash_algo)
+  def valid(uid: nil, jti: nil)
+    JWT.encode(payload(uid:, jti:), hash_secret, hash_algo)
   end
 
   def payload(uid:)

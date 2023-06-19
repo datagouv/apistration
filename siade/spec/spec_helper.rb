@@ -157,6 +157,7 @@ RSpec.configure do |config|
   config.include ProviderStubs::DGFIP
   config.include ProviderStubs::Infogreffe
   config.include ProviderStubs::CNAFQuotientFamilial
+  config.include ProviderStubs::CNAFQuotientFamilialV2
   config.include ProviderStubs::FranceConnect
   config.include ProviderStubs::CNOUSStudentScholarship
   config.include ProviderStubs::BanqueDeFrance

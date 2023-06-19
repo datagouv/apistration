@@ -43,7 +43,9 @@ class UnprocessableEntityError < ApplicationError
       # Pole Emploi
       identifiant_pole_emploi: '00380',
       # GIP-MDS
-      gip_mds_depth: '00390'
+      gip_mds_depth: '00390',
+      insee_country_code: '00400',
+      request_id: '00401'
     }.fetch(field) do
       raise KeyError, "#{field} is not a valid field name"
     end

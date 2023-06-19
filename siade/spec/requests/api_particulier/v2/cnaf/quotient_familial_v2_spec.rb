@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type: %i[request swagger] do
+RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request swagger] do
   path '/api/v2/composition-familiale-v2' do
     get SwaggerData.get('cnaf.quotient-familial-v2.title') do
       tags(*SwaggerData.get('cnaf.quotient-familial-v2.tags'))
@@ -101,26 +101,30 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
         example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.mois.example'),
         required: false
 
-      let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
+      let(:'X-Api-Key') { TokenFactory.new(scopes).valid(jti: uid) }
+      let(:request_token) { 'super_valid_token' }
+      let(:uid) { SecureRandom.uuid }
 
+      let(:scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse] }
+
+      let(:nomNaissance) { 'CHAMPION' }
+      let(:prenoms) { %w[JEAN-PASCAL] }
+      let(:sexe) { 'M' }
+      let(:anneeDateDeNaissance) { 1980 }
+      let(:moisDateDeNaissance) { 6 }
+      let(:jourDateDeNaissance) { 12 }
       let(:codePaysLieuDeNaissance) { '99100' }
-      let(:sexe) { 'F' }
-
-      let(:scopes) { %w[] }
-
-      let(:mocked_data) do
-        {
-          status: 200,
-          payload: {}
-        }
-      end
+      let(:codeInseeLieuDeNaissance) { '17300' }
+      let(:mois) { 12 }
+      let(:annee) { 2023 }
 
       before do
-        allow(MockService).to receive(:new).and_return(instance_double(MockService, mock: mocked_data))
+        stub_cnaf_quotient_familial_v2_authenticate
+        stub_cnaf_quotient_familial_v2_valid(siret: uid)
       end
 
       describe 'with valid token and mandatory params' do
-        response '200', 'Complementaire santé solidaire trouvée' do
+        response '200', 'Quotient Familial trouvée' do
           description SwaggerData.get('cnaf.quotient-familial-v2.description')
 
           schema build_rswag_response_api_particulier(
@@ -133,33 +137,9 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
 
       describe 'server errors' do
         response '400', 'Mauvais paramètres d\'appels' do
-          let(:mocked_data) do
-            {
-              status: 400,
-              payload: {
-                error: 'bad_request',
-                reason: 'Le codePaysLieuDeNaissance est manquant',
-                message: 'Le codePaysLieuDeNaissance est manquant'
-              }
-            }
-          end
+          let(:sexe) { 'nope' }
 
-          schema '$ref' => '#/components/schemas/Error'
-
-          run_test!
-        end
-
-        response '401', 'Votre jeton d\'Api n\'a pas été trouvé ou n\'est pas actif' do
-          let(:mocked_data) do
-            {
-              status: 401,
-              payload: {
-                error: 'access_denied',
-                reason: 'Token not found or inactive',
-                message: "Votre jeton d'API n'a pas été trouvé ou n'est pas actif"
-              }
-            }
-          end
+          build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_entity_error_gender_error)
 
           schema '$ref' => '#/components/schemas/Error'
 
@@ -167,56 +147,41 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
         end
 
         response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
-          let(:mocked_data) do
-            {
-              status: 404,
-              payload: {
-                error: 'not_found',
-                reason: 'Dossier allocataire inexistant. Le document ne peut être édité.',
-                message: 'Dossier allocataire inexistant. Le document ne peut être édité.'
-              }
-            }
+          before do
+            stub_cnaf_quotient_familial_v2_404
           end
+
+          let(:codePaysLieuDeNaissance) { '99623' }
 
           schema '$ref' => '#/components/schemas/Error'
 
           run_test!
         end
 
-        response '500', 'Une erreur interne s\'est produite, l\'équipe a été prévenue.' do
-          let(:mocked_data) do
-            {
-              status: 500,
-              payload: {
-                error: 'error',
-                reason: 'Internal server error',
-                message: "Une erreur interne s'est produite, l'équipe a été prévenue."
-              }
-            }
-          end
-
-          schema '$ref' => '#/components/schemas/Error'
-
-          run_test!
-        end
-
-        response '503', 'Une erreur est survenue lors de l\'appel au fournisseur de donnée' do
+        response '503', 'Erreur du fournisseur' do
           provider_unknown_error = ProviderUnknownError.new('CNAF')
 
-          let(:mocked_data) do
-            {
-              status: 503,
-              payload: {
-                error: 'network_error',
-                reason: 'timeout of 10000 ms exceeded',
-                message: 'Une erreur est survenue lors de l\'appel au fournisseur de donnée'
-              }
-            }
-          end
+          stubbed_organizer_error(
+            CNAF::QuotientFamilialV2,
+            provider_unknown_error
+          )
 
           schema '$ref' => '#/components/schemas/Error'
 
           build_rswag_example(provider_unknown_error, :unknown_error)
+
+          run_test!
+        end
+
+        response '504', 'Erreur d\'intermédiaire' do
+          schema '$ref' => '#/components/schemas/Error'
+
+          provider_timeout_error = ProviderTimeoutError.new('CNAF')
+
+          stubbed_organizer_error(
+            CNAF::QuotientFamilialV2,
+            provider_timeout_error
+          )
 
           run_test!
         end

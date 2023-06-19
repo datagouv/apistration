@@ -19,6 +19,10 @@ class JwtUser
     @siret = siret
   end
 
+  def siret
+    @jti
+  end
+
   def has_access?(scope)
     @scopes.include?(scope)
   end

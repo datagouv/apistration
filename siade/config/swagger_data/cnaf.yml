@@ -173,6 +173,7 @@ cnaf:
               type: string
               description: Nom d'usage de l'allocataire
               example: "JACQUES"
+              nullable: true
             prenoms:
               title: Prénoms
               type: string
@@ -220,6 +221,7 @@ cnaf:
               type: string
               description: Nom d'usage de l'enfant
               example: "JACQUES"
+              nullable: true
             prenoms:
               title: "Prénoms"
               type: string
@@ -279,6 +281,7 @@ cnaf:
             type: string
             description: Numéro et libellé de la voie
             example: "1 RUE DE LA GARE"
+            nullable: true
           lieuDit:
             title: "Lieu-dit"
             type: string
