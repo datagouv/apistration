@@ -81,6 +81,28 @@ RSpec.describe 'logstasher custom fields', type: :controller do
 
       make_call
     end
+
+    describe 'with params' do
+      subject(:make_call) do
+        get :index, params:
+      end
+
+      let(:params) { { api_version: '51', foo: 'bar', prenom: 'lol' } }
+      let(:hashed_params) { Digest::SHA512.hexdigest("#{Siade.credentials[:api_particulier_log_salt_key]}:#{params.to_json}") }
+
+      it 'adds hashed params to logstasher parameters key' do
+        expect(LogStasher).to receive(:build_logstash_event).with(
+          hash_including(
+            parameters: hash_including(
+              hashed_params:
+            )
+          ),
+          anything
+        )
+
+        make_call
+      end
+    end
   end
 
   describe 'on api entreprise request' do
