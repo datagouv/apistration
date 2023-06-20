@@ -107,6 +107,13 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
           expect(errors.pluck(:code)).to include('00211')
         end
       end
+
+      context 'when it is a whitelisted siret' do
+        let(:recipient) { '13002603200016' }
+        let(:siret) { '13002603200016' }
+
+        its(:status) { is_expected.to be(200) }
+      end
     end
   end
 
@@ -133,6 +140,13 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
         it do
           expect(errors.pluck(:code)).to include('00211')
         end
+      end
+
+      context 'when it is a whitelisted siret' do
+        let(:siren) { '130026032' }
+        let(:recipient) { '13002603200016' }
+
+        its(:status) { is_expected.to be(200) }
       end
     end
   end

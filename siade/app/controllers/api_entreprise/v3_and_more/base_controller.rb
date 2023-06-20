@@ -5,7 +5,7 @@ class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
 
   before_action :verify_api_version!
   before_action :verify_recipient_is_a_siret!
-  before_action :verify_recipient_is_not_resource_id!
+  before_action :verify_recipient_is_not_resource_id_nor_whitelist!
   before_action :set_content_type_header!
 
   rescue_from UnsupportedVersionError, with: :unsupported_version_response
@@ -35,8 +35,9 @@ class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
       status: :unprocessable_entity
   end
 
-  def verify_recipient_is_not_resource_id!
+  def verify_recipient_is_not_resource_id_nor_whitelist!
     return unless recipient_is_resource_siren_or_siret?
+    return if recipient_whitelisted?
 
     render json: ErrorsSerializer.new([RecipientAndResourceIdIdenticalError.new], format: error_format).as_json,
       status: :unprocessable_entity
@@ -44,6 +45,12 @@ class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
 
   def recipient_is_a_siret?
     ValidateSiret.call(params: { siret: params[:recipient] }).success?
+  end
+
+  def recipient_whitelisted?
+    Rails.application.config_for('recipient_sirets_whitelist').any? do |recipient_siret_data|
+      recipient_siret_data[:siret].first(9) == params[:recipient].strip.first(9)
+    end
   end
 
   def recipient_is_resource_siren_or_siret?
