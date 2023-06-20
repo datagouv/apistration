@@ -1,4 +1,4 @@
-RSpec.describe 'Errors config file', type: :acceptance do
+RSpec.describe 'Recipient whitelist config file', type: :acceptance do
   let(:recipient_sirets_whitelist_config) { Rails.application.config_for('recipient_sirets_whitelist') }
 
   it 'is a valid' do
