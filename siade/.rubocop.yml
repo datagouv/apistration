@@ -131,7 +131,7 @@ RSpec/ScatteredSetup:
     - "spec/requests/api/v3_and_more/**/*_spec.rb"
 
 RSpec/VariableName:
-  Exclude: 
+  Exclude:
   - "spec/requests/api_particulier/**/*_spec.rb"
 
 Naming/VariableNumber:
@@ -219,6 +219,10 @@ RSpec/EmptyExampleGroup:
 # This is not relevant for huge payloads, just ignored it
 RSpec/ExampleLength:
   Enabled: false
+
+RSpec/ExampleWording:
+  Exclude:
+    - 'spec/lib/seeds_spec.rb'
 
 RSpec/FilePath:
   CustomTransform:
