@@ -85,7 +85,7 @@ def forged_jwt
 end
 
 def yes_jwt_user
-  JwtTokenService.new(jwt: yes_jwt).jwt_user
+  JwtTokenService.new(yes_jwt).extract_user
 end
 
 def corrupted_jwt

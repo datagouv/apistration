@@ -43,7 +43,7 @@ module HandleTokens
 
     raise NotValidTokenError unless @token
 
-    @current_user = jwt_token_service.jwt_user if jwt?
+    @current_user = jwt_token_service.extract_user
 
     raise NotValidTokenError if current_user.blank? || current_user.invalid?
 
@@ -65,7 +65,7 @@ module HandleTokens
   end
 
   def jwt_token_service
-    ::JwtTokenService.new(jwt: @token)
+    ::JwtTokenService.new(@token)
   end
 
   def set_monitoring_context

@@ -154,7 +154,7 @@ RSpec.describe APIController do
         let(:token) { expired_jwt }
 
         let(:jwt_user) do
-          JwtTokenService.new(jwt: expired_jwt).jwt_user
+          JwtTokenService.new(expired_jwt).extract_user
         end
 
         it 'returns 401' do
