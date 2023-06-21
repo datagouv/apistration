@@ -67,7 +67,7 @@ RSpec.configure do |config|
     end
   end
 
-  config.before do
+  config.before(:all) do
     class FakeRedis < Hash
       def get(key)
         self[key.to_s]
@@ -92,7 +92,9 @@ RSpec.configure do |config|
         self["expires_#{key}"] || -1
       end
     end
+  end
 
+  config.before do
     allow(RedisService.instance).to receive(:redis).and_return(FakeRedis.new)
     Rails.cache.clear
   end
