@@ -4,13 +4,35 @@ class JwtTokenService
   end
 
   def extract_user
-    jwt_data = decoded_token.slice(:uid, :roles, :scopes, :jti, :iat, :exp)
+    jwt_data = decoded_token.slice(:uid, :roles, :jti, :iat, :exp)
 
-    jwt_data[:scopes] = jwt_data.delete(:roles) if jwt_data[:roles]
+    if special_token?
+      jwt_data[:scopes] = decoded_token[:scopes]
+    else
+      token = extract_token_from_database!
+      jwt_data[:scopes] = token.scopes
+    end
 
     JwtUser.new(**jwt_data)
-  rescue JWT::DecodeError
+  rescue JWT::DecodeError, ActiveRecord::RecordNotFound
     nil
+  end
+
+  def jwt_id
+    decoded_token[:jti]
+  end
+
+  private
+
+  def special_token?
+    [
+      JwtUser.uptime_id,
+      JwtUser.debugger_id
+    ].include?(decoded_token[:jti])
+  end
+
+  def extract_token_from_database!
+    Token.find(jwt_id)
   end
 
   def decoded_token
