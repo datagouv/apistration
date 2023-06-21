@@ -1,6 +1,6 @@
 class Seeds
   def perform
-    yes_jwt_id = '3d4706c4-7f5e-4442-a734-00d6c675f3c9'
+    yes_jwt_id = 'f5d5cb02-185a-426f-b3f4-99a25ce6cdf4'
 
     token = Token.find_or_initialize_by(id: yes_jwt_id)
 
