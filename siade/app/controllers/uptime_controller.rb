@@ -134,8 +134,8 @@ class UptimeController < APIController
 
   def jwt_payload
     {
-      uid: '99999999-9999-9999-9999-999999999999',
-      jti: '99999999-9999-9999-9999-999999999999',
+      uid: JwtUser.uptime_id,
+      jti: JwtUser.uptime_id,
       scopes: all_scopes,
       sub: 'whatever',
       version: '1.0',

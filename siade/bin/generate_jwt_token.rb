@@ -34,8 +34,8 @@ exp = case env
   end
 
 token_payload = {
-  uid: SecureRandom.uuid,
-  jti: "00000000-0000-0000-0000-000000000000",
+  uid: JwtUser.debugger_id,
+  jti: JwtUser.debugger_id,
   scopes: scopes,
   sub: "#{env} development",
   iat: Time.now.to_i,

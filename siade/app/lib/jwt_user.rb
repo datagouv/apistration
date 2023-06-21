@@ -1,6 +1,14 @@
 class JwtUser
   attr_reader :id, :jti, :scopes, :iat
 
+  def self.uptime_id
+    '99999999-9999-9999-9999-999999999999'
+  end
+
+  def self.debugger_id
+    '00000000-0000-0000-0000-000000000000'
+  end
+
   def initialize(uid:, scopes:, jti:, iat:, exp: nil)
     @id = uid
     @scopes = scopes
