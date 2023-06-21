@@ -8,6 +8,14 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
   describe 'with ine param' do
     subject { get :show, params: { ine:, token: } }
 
+    before do
+      affect_scopes_to_yes_jwt_token(scopes)
+    end
+
+    after(:all) do
+      reset_yes_jwt_token_scopes!
+    end
+
     describe 'with valid params' do
       before do
         stub_request(:get, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(

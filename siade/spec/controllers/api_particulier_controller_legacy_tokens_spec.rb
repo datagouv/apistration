@@ -93,6 +93,14 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
     context 'with jwt token' do
       let(:token) { TokenFactory.new(scopes).valid }
 
+      before do
+        affect_scopes_to_yes_jwt_token(scopes)
+      end
+
+      after(:all) do
+        reset_yes_jwt_token_scopes!
+      end
+
       describe 'with at least one valid scope' do
         let(:scopes) { ['scope1'] }
 

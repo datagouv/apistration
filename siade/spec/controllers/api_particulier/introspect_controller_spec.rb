@@ -5,6 +5,14 @@ RSpec.describe APIParticulier::IntrospectController do
     let(:token) { TokenFactory.new(scopes).valid }
     let(:scopes) { %w[s1 s2 s3] }
 
+    before do
+      affect_scopes_to_yes_jwt_token(scopes)
+    end
+
+    after(:all) do
+      reset_yes_jwt_token_scopes!
+    end
+
     its(:status) { is_expected.to eq(200) }
 
     it 'renders payload with ID as _id, name key (empty) and scopes' do

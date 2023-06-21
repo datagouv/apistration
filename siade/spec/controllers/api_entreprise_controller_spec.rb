@@ -30,8 +30,12 @@ RSpec.describe APIEntrepriseController do
     end
 
     it 'check scopes before trying to mock response' do
+      affect_scopes_to_yes_jwt_token(['not_allowed'])
+
       get :index, params: { token: TokenFactory.new('not_allowed').valid }
       assert_response 403
+
+      reset_yes_jwt_token_scopes!
     end
   end
 

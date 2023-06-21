@@ -10,7 +10,13 @@ RSpec.describe APIParticulier::V2::CNAF::QuotientFamilialController do
     let(:beneficiary_number) { '1234567' }
 
     before do
+      affect_scopes_to_yes_jwt_token(scopes)
+
       mock_valid_cnaf_quotient_familial
+    end
+
+    after(:all) do
+      reset_yes_jwt_token_scopes!
     end
 
     context 'when token has full access' do

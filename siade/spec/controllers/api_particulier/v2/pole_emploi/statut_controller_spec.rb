@@ -13,6 +13,12 @@ RSpec.describe APIParticulier::V2::PoleEmploi::StatutController do
         status: 200,
         body: Rails.root.join('spec/fixtures/payloads/pole_emploi/statut_valid.json').read
       )
+
+      affect_scopes_to_yes_jwt_token(scopes)
+    end
+
+    after(:all) do
+      reset_yes_jwt_token_scopes!
     end
 
     context 'when token has full access' do

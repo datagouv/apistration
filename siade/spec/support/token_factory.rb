@@ -15,14 +15,18 @@ class TokenFactory
 
   def payload(uid:)
     {
-      uid: uid || SecureRandom.uuid,
-      jti: uid || SecureRandom.uuid,
+      uid: uid || valid_uid,
+      jti: uid || valid_uid,
       scopes:,
       sub: 'whatever',
       version: '1.0',
       iat: 1.year.ago.to_i,
       exp: 1.year.from_now.to_i
     }
+  end
+
+  def valid_uid
+    Seeds.new.yes_jwt_id
   end
 
   def hash_secret

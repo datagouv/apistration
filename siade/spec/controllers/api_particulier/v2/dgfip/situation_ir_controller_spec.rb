@@ -30,6 +30,14 @@ RSpec.describe APIParticulier::V2::DGFIP::SituationIRController do
   let(:tax_notice_number) { valid_tax_notice_number }
 
   describe 'with valid params' do
+    before do
+      affect_scopes_to_yes_jwt_token(scopes)
+    end
+
+    after(:all) do
+      reset_yes_jwt_token_scopes!
+    end
+
     context 'when API returns 200', vcr: { cassette_name: 'dgfip/situation_ir/valid' } do
       context 'when token has full access' do
         let(:scopes) { all_scopes }

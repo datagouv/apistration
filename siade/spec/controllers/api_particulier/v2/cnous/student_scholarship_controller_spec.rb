@@ -12,6 +12,14 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
   describe 'with ine param' do
     subject { get :show, params: { ine:, token: } }
 
+    before do
+      affect_scopes_to_yes_jwt_token(scopes)
+    end
+
+    after(:all) do
+      reset_yes_jwt_token_scopes!
+    end
+
     describe 'with valid params' do
       before do
         mock_cnous_valid_call('ine')

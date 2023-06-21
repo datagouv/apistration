@@ -151,6 +151,7 @@ RSpec.configure do |config|
   config.include ResponsesHelper, type: :controller
   config.include ResponsesHelper, type: :request
   config.include CommonErrorsMessagesHelpers
+  config.include TokenHelpers
 
   config.include ProviderStubs::MSACotisations
   config.include ProviderStubs::DGFIP
