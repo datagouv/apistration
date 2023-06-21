@@ -2,7 +2,7 @@ gip_mds:
   effectifs_annuels_entreprise:
     title: "Effectifs annuels d'une unité légale"
     tags:
-      - 'Informations générales'
+      - Prochainement
     description: "Ces effectifs sont extrait pour le régime général de l'URSSAF et pour le régime agricole de la MSA"
     attributes:
       siren:
@@ -38,7 +38,7 @@ gip_mds:
   effectifs_mensuels_etablissement:
     title: "Effectifs mensuels d'un établissement"
     tags:
-      - 'Informations générales'
+      - Prochainement
     description: "Ces effectifs sont extrait pour le régime général de l'URSSAF et pour le régime agricole de la MSA"
     parameters:
       profondeur:
