@@ -16,7 +16,7 @@ class TokenFactory
   def payload(uid:)
     {
       uid: uid || SecureRandom.uuid,
-      jti: SecureRandom.uuid,
+      jti: uid || SecureRandom.uuid,
       scopes:,
       sub: 'whatever',
       version: '1.0',
