@@ -92,6 +92,9 @@ RSpec.configure do |config|
         self["expires_#{key}"] || -1
       end
     end
+
+    Token.delete_all
+    Seeds.new.perform
   end
 
   config.before do
