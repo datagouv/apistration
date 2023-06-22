@@ -1,6 +1,5 @@
 module JwtHelper
   class << self
-    # rubocop:disable Metrics/MethodLength
     def jwt(type = :valid)
       samples = {
         valid: 'eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJmNWQ1Y2IwMi0xODVhLTQyNmYtYjNmNC05OWEyNWNlNmNkZjQiLCJqdGkiOiIzZDQ3MDZjNC03ZjVlLTQ0NDItYTczNC0wMGQ2YzY3NWYzYzkiLCJzY29wZXMiOlsiYXR0ZXN0YXRpb25zX2FnZWZpcGgiLCJhdHRlc3RhdGlvbnNfZmlzY2FsZXMiLCJhdHRlc3RhdGlvbnNfc29jaWFsZXMiLCJjZXJ0aWZpY2F0X2NuZXRwIiwiYXNzb2NpYXRpb25zIiwiY2VydGlmaWNhdF9vcHFpYmkiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJldGFibGlzc2VtZW50cyIsImVudHJlcHJpc2VzIiwiZW50cmVwcmlzZXNfYXJ0aXNhbmFsZXMiLCJleHRyYWl0X2NvdXJ0X2lucGkiLCJleHRyYWl0c19yY3MiLCJleGVyY2ljZXMiLCJsaWFzc2VfZmlzY2FsZSIsImZudHBfY2FydGVfcHJvIiwicXVhbGliYXQiLCJwcm9idHAiLCJtc2FfY290aXNhdGlvbnMiLCJiaWxhbnNfZW50cmVwcmlzZV9iZGYiLCJjZXJ0aWZpY2F0X3JnZV9hZGVtZSIsImNlcnRpZmljYXRfYWdlbmNlX2JpbyIsImFjdGVzX2lucGkiLCJiaWxhbnNfaW5waSIsImNvbnZlbnRpb25zX2NvbGxlY3RpdmVzIiwiZW9yaV9kb3VhbmVzIl0sInN1YiI6InRlc3Qgc2lhZGUiLCJpYXQiOjE1OTY3OTE2NTksInZlcnNpb24iOiIxLjAifQ.bRe1CTn6ppO_31OhunZAhzxg8vYKuTwgnOCG3O2NbIY',
@@ -17,59 +16,13 @@ module JwtHelper
 
       samples[type]
     end
-
-    # XXX Review me, could cause a decorrelation later on if left like this. Trying
-    # to compensate the lack of vision one can have with the tests since it is
-    # encrypted and not very readable
-    def values_for_valid_jwt
-      {
-        id: 'f5d5cb02-185a-426f-b3f4-99a25ce6cdf4',
-        jti: '3d4706c4-7f5e-4442-a734-00d6c675f3c9',
-        scopes: %w[
-          attestations_agefiph
-          attestations_fiscales
-          attestations_sociales
-          certificat_cnetp
-          associations
-          conventions_collectives
-          certificat_opqibi
-          certificat_agence_bio
-          documents_association
-          etablissements
-          entreprises
-          entreprises_artisanales
-          extrait_court_inpi
-          extraits_rcs
-          exercices
-          liasse_fiscale
-          fntp_carte_pro
-          qualibat
-          probtp
-          msa_cotisations
-          bilans_entreprise_bdf
-          certificat_rge_ademe
-          actes_inpi
-          bilans_inpi
-          eori_douanes
-        ]
-      }
-    end
-    # rubocop:enable Metrics/MethodLength
   end
 end
 
-def all_scopes
-  Rails.application.config_for(:authorizations).values.flatten.uniq
-end
-
 def yes_jwt
-  @yes_jwt ||= TokenFactory.new(all_scopes).valid(
-    uid: 'f5d5cb02-185a-426f-b3f4-99a25ce6cdf4'
+  @yes_jwt ||= TokenFactory.new(Seeds.new.all_scopes).valid(
+    uid: Seeds.new.yes_jwt_id
   )
-end
-
-def yes_jwt_with_roles
-  JwtHelper.jwt(:with_roles_not_scopes)
 end
 
 def expired_jwt
