@@ -13,8 +13,7 @@ class JwtTokenService
     if special_token?
       jwt_data[:scopes] = decoded_token[:scopes]
     else
-      token = extract_token_from_database!
-      jwt_data[:scopes] = token.scopes
+      jwt_data = enhanced_jwt_data_with_token(jwt_data)
     end
 
     build_and_cache_user!(jwt_data)
@@ -30,6 +29,15 @@ class JwtTokenService
 
   def cache
     EncryptedCache.instance
+  end
+
+  def enhanced_jwt_data_with_token(jwt_data)
+    token = extract_token_from_database!
+
+    jwt_data[:scopes] = token.scopes
+    jwt_data[:blacklisted] = token.blacklisted?
+
+    jwt_data
   end
 
   def build_and_cache_user!(jwt_data)
