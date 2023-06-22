@@ -57,7 +57,9 @@ def test_endpoint(endpoint, index)
 
   response = Net::HTTP.start(uri.hostname, uri.port, @request_options) do |http|
     request = Net::HTTP::Get.new(uri)
+
     request['Authorization'] = "Bearer #{@jwt}".gsub("\n", '')
+    request['Cache-Control'] = 'no-cache'
 
     http.read_timeout = 30
     http.open_timeout = 30
