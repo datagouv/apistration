@@ -27,3 +27,5 @@ shared:
     siret: '23130002100012'
   - name: REGION BRETAGNE
     siret: '23350001600040'
+  - name: DINUM
+    siret: '13002526500013'
