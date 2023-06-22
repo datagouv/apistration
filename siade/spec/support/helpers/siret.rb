@@ -19,7 +19,7 @@ def valid_siret(sample_type = nil)
     agefiph: '00552017600016',
     exercice: '55203253400646',
     agence_bio: '88375327900016',
-    recipient: '13002526500013'
+    recipient: '91978102100010'
   }
 
   samples[sample_type]
