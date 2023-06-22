@@ -1,9 +1,13 @@
 class JwtTokenService
+  attr_reader :jwt_token
+
   def initialize(jwt_token)
     @jwt_token = jwt_token
   end
 
   def extract_user
+    return cached_user if cached_user.present?
+
     jwt_data = decoded_token.slice(:uid, :roles, :jti, :iat, :exp)
 
     if special_token?
@@ -13,7 +17,7 @@ class JwtTokenService
       jwt_data[:scopes] = token.scopes
     end
 
-    JwtUser.new(**jwt_data)
+    build_and_cache_user!(jwt_data)
   rescue JWT::DecodeError, ActiveRecord::RecordNotFound
     nil
   end
@@ -23,6 +27,22 @@ class JwtTokenService
   end
 
   private
+
+  def cache
+    EncryptedCache.instance
+  end
+
+  def build_and_cache_user!(jwt_data)
+    user = JwtUser.new(**jwt_data)
+
+    cache.write(jwt_token, user, expires_in: 1.hour)
+
+    user
+  end
+
+  def cached_user
+    cache.read(jwt_token)
+  end
 
   def special_token?
     [
@@ -37,7 +57,7 @@ class JwtTokenService
 
   def decoded_token
     @decoded_token ||= begin
-      decoded_tokens = JWT.decode(@jwt_token, hash_secret, true, { verify_expiration: false, algorithm: hash_algo })
+      decoded_tokens = JWT.decode(jwt_token, hash_secret, true, { verify_expiration: false, algorithm: hash_algo })
       decoded_tokens.fetch(0).deep_symbolize_keys
     end
   end

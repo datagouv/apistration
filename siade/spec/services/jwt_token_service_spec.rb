@@ -53,6 +53,25 @@ RSpec.describe JwtTokenService do
           it 'takes scopes from db, not token' do
             expect(subject.scopes).to eq(['valid'])
           end
+
+          it 'persists user in cache' do
+            subject
+
+            expect(EncryptedCache.read(jwt)).to be_present
+          end
+
+          context 'when user exists in cache (with an id which is not in database)' do
+            let(:jwt) { TokenFactory.new(['from_cache']).valid(uid: SecureRandom.uuid) }
+            let(:user_from_valid_jwt) { described_class.new(jwt).extract_user }
+
+            before do
+              EncryptedCache.write(jwt, user_from_valid_jwt)
+            end
+
+            it 'returns user from cache' do
+              expect(subject).to eq(user_from_valid_jwt)
+            end
+          end
         end
       end
     end
