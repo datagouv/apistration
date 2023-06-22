@@ -50,7 +50,7 @@
   http_path: '/v2/effectifs_mensuels_acoss_covid/2020/02/etablissement/55203253400646'
 
 - name: Conventions Collectives
-  http_path: '/v2/conventions_collectives/82161143100015'
+  http_path: '/v2/conventions_collectives/89337342300019'
 
 - name: Certificats Qualibat
   http_path: '/v2/certificats_qualibat/78824266700020'
@@ -177,7 +177,7 @@
   http_path: '/v3/probtp/etablissements/45309127400036/conformite_cotisations_retraite'
 
 - name: '[V3] FNMS Conventions collectives'
-  http_path: '/v3/fabrique_numerique_ministeres_sociaux/etablissements/82161143100015/conventions_collectives'
+  http_path: '/v3/fabrique_numerique_ministeres_sociaux/etablissements/89337342300019/conventions_collectives'
 
 - name: '[V3] RNM Entreprises'
   http_path: '/v3/cma_france/rnm/unites_legales/301123626'
@@ -220,6 +220,6 @@
 
 - name: "[V3] GIP-MDS effectifs mensuels établissement"
   http_path: '/v3/gip_mds/etablissements/84503885000010/effectifs_mensuels/12/annee/2022'
-  
+
 - name: "[V3] Qualifelec certificats"
   http_path: '/v3/qualifelec/etablissements/78824266700020/certificats'
