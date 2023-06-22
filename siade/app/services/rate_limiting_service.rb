@@ -15,7 +15,11 @@ class RateLimitingService
 
   def blacklisted_access?(req)
     jwt = extract_token_from_request(req)
-    jwt.present? && blacklist.include?(jwt)
+
+    jwt.present? && (
+      blacklist.include?(jwt) ||
+      token_blacklisted_from_database?(jwt)
+    )
   end
 
   def build_rate_limit_headers(data)
@@ -64,6 +68,17 @@ class RateLimitingService
 
   def extract_token_from_query_params(request)
     request.params.fetch('token', nil)
+  end
+
+  def token_blacklisted_from_database?(jwt)
+    user = user_from_jwt(jwt)
+
+    user.present? &&
+      user.blacklisted?
+  end
+
+  def user_from_jwt(jwt)
+    JwtTokenService.new(jwt).extract_user
   end
 
   def whitelist
