@@ -9,12 +9,13 @@ class JwtUser
     '00000000-0000-0000-0000-000000000000'
   end
 
-  def initialize(uid:, scopes:, jti:, iat:, exp: nil)
+  def initialize(uid:, scopes:, jti:, iat:, exp: nil, blacklisted: false)
     @id = uid
     @scopes = scopes
     @jti = jti
     @iat = Time.zone.at iat
     @exp = exp
+    @blacklisted = blacklisted
   end
 
   def has_access?(scope)
@@ -27,6 +28,10 @@ class JwtUser
 
   def token_id
     @jti
+  end
+
+  def blacklisted?
+    @blacklisted
   end
 
   def not_expired!

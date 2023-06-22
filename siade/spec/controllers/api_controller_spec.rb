@@ -235,13 +235,15 @@ RSpec.describe APIController do
     let(:date_regex) { /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}[+-]\d{2}:\d{2}/ }
 
     it 'sets user context with user' do
-      expect(MonitoringService.instance).to receive(:set_user_context).with({
-        id: a_string_matching(uuid_regex),
-        scopes: an_instance_of(Array),
-        jti: a_string_matching(uuid_regex),
-        iat: a_string_matching(date_regex),
-        exp: an_instance_of(Integer)
-      })
+      expect(MonitoringService.instance).to receive(:set_user_context).with(
+        hash_including(
+          id: a_string_matching(uuid_regex),
+          scopes: an_instance_of(Array),
+          jti: a_string_matching(uuid_regex),
+          iat: a_string_matching(date_regex),
+          exp: an_instance_of(Integer)
+        )
+      )
 
       get :index, params: { token: yes_jwt }
     end
