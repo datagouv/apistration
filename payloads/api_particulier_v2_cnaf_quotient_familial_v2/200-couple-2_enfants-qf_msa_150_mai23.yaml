@@ -1,26 +1,30 @@
 ---
 description: |-
-  ## Couple avec deux enfants - allocataire féminin - QF MSA de 150 en juin 2021
+  ## Couple avec deux enfants - allocataire féminin - QF MSA de 150 en mai 2023
 
   Ce cas permet de tester :
-  - [Param. appel] lieu de naissance en France
-  - [Param. appel] sexe feminin
+  - [Param. appel] Mois et année du QF recherché 
+  - [Param. appel] Lieu de naissance en France
+  - [Param. appel] Sexe feminin
+  - [Param. appel] Deux prénoms
   - [Réponse] Tableau d'informations car couple
   - [Réponse] Tableau d'informations car deux enfants
   - [Réponse] Régime MSA
   - [Réponse] Quotient familial de 150
-  - [Réponse] Quotient familial ancien de juin 2021
+  - [Réponse] Quotient familial ancien de mai 2023
 
 params:
   codeInseeLieuDeNaissance: '08480'
   codePaysLieuDeNaissance: '99001'
   sexe: 'F'
-  nomUsage: 'JEANNE'
+  nomUsage: 'ROUX'
   prenoms:
     - 'JEANNE'
     - 'STEPHANIE'
-  anneeDateDeNaissance: 1937
+  anneeDateDeNaissance: 1987
   moisDateDeNaissance: 06
+  annee: 2023
+  mois: 05
 status: 200
 payload: |-
   {
@@ -75,6 +79,6 @@ payload: |-
       "pays": "FRANCE"
     },
     "quotientFamilial": 150,
-    "annee": 2021,
-    "mois": 6
+    "annee": 2023,
+    "mois": 5
   }
