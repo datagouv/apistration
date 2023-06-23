@@ -1,0 +1,25 @@
+---
+description: |-
+  ## Bénéficiaire AVEC participation financière - féminin
+  
+  Ce cas permet de tester :
+  - [Param. appel] lieu de naissance en France
+  - [Param. appel] sexe féminin
+  - [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière
+params:
+  codeInseeLieuDeNaissance: '08480'
+  codePaysLieuDeNaissance: '99100' #Bénéficiaire né en France
+  sexe: 'F'
+  nomUsage: 'DUPONT'
+  prenoms:
+    - 'JEANNE'
+    - 'LAURE'
+  anneeDateDeNaissance: 1970
+  moisDateDeNaissance: 6
+status: 200
+payload: |-
+  {
+    "status": "beneficiaire_avec_participation_financiere",
+    "dateDebut": "2022-02-01",
+    "dateFin": "2023-02-01"
+  }
