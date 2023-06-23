@@ -1,0 +1,80 @@
+---
+description: |-
+  ## Couple avec deux enfants - allocataire féminin - QF MSA de 150 en juin 2021
+
+  Ce cas permet de tester :
+  - [Param. appel] lieu de naissance en France
+  - [Param. appel] sexe feminin
+  - [Réponse] Tableau d'informations car couple
+  - [Réponse] Tableau d'informations car deux enfants
+  - [Réponse] Régime MSA
+  - [Réponse] Quotient familial de 150
+  - [Réponse] Quotient familial ancien de juin 2021
+
+params:
+  codeInseeLieuDeNaissance: '08480'
+  codePaysLieuDeNaissance: '99001'
+  sexe: 'F'
+  nomUsage: 'JEANNE'
+  prenoms:
+    - 'JEANNE'
+    - 'STEPHANIE'
+  anneeDateDeNaissance: 1937
+  moisDateDeNaissance: 06
+status: 200
+payload: |-
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "ROUX",
+        "nomUsage": "ROUX",
+        "prenoms": "JEANNE STEPHANIE",
+        "anneeDateDeNaissance": "1987",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "27",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "ROUX",
+        "nomUsage": "ROUX",
+        "prenoms": "LOIC NATHAN",
+        "anneeDateDeNaissance": "1979",
+        "moisDateDeNaissance": "05",
+        "jourDateDeNaissance": "19",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "ROUX",
+        "nomUsage": "ROUX",
+        "prenoms": "ALEXIS VINCENT",
+        "anneeDateDeNaissance": "2006",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "20",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "ROUX",
+        "nomUsage": "ROUX",
+        "prenoms": "FLEUR EDITH",
+        "anneeDateDeNaissance": "2004",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "20",
+        "sexe": "M"
+      },
+    ],
+    "adresse": {
+      "identite": "Madame ROUX JEANNE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE MONTORGUEIL",
+      "lieuDit": null,
+      "codePostalVille": "75002",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 150,
+    "annee": 2021,
+    "mois": 6
+  }
