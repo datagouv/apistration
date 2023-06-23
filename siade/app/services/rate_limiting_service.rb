@@ -9,17 +9,16 @@ class RateLimitingService
   end
 
   def whitelisted_access?(req)
-    jwt = extract_token_from_request(req)
-    jwt.present? && whitelist.include?(jwt)
+    whitelist.include?(
+      extract_token_from_request(req)
+    )
   end
 
   def blacklisted_access?(req)
     jwt = extract_token_from_request(req)
 
-    jwt.present? && (
-      blacklist.include?(jwt) ||
+    blacklist.include?(jwt) ||
       token_blacklisted_from_database?(jwt)
-    )
   end
 
   def build_rate_limit_headers(data)
