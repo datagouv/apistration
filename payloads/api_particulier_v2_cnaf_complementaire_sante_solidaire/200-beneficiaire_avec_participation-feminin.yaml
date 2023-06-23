@@ -14,12 +14,12 @@ params:
   prenoms:
     - 'JEANNE'
     - 'LAURE'
-  anneeDateDeNaissance: 1970
-  moisDateDeNaissance: 6
+  anneeDateDeNaissance: 1993
+  moisDateDeNaissance: 8
 status: 200
 payload: |-
   {
     "status": "beneficiaire_avec_participation_financiere",
-    "dateDebut": "2022-02-01",
-    "dateFin": "2023-02-01"
+    "dateDebut": "2023-06-01",
+    "dateFin": "2024-06-01"
   }

@@ -1,25 +1,25 @@
 ---
 description: |-
-  ## Bénéficiaire SANS participation financière - masculin
+  ## Bénéficiaire SANS participation financière - masculin - né dans un pays étranger
   
   Ce cas permet de tester :
-  - [Param. appel] lieu de naissance en France
+  - [Param. appel] Pays de naissance autre que la France
   - [Param. appel] sexe masculin
   - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière
 params:
-  codeInseeLieuDeNaissance: '08480'
-  codePaysLieuDeNaissance: '99100' #Code 99100 pour la France
+  codeInseeLieuDeNaissance: 'null'
+  codePaysLieuDeNaissance: '99127'
   sexe: 'M'
   nomUsage: 'DUPONT'
   prenoms:
     - 'PIERRE'
     - 'PAUL'
-  anneeDateDeNaissance: 1970
-  moisDateDeNaissance: 6
+  anneeDateDeNaissance: 1984
+  moisDateDeNaissance: 12
 status: 200
 payload: |-
   {
     "status": "beneficiaire_sans_participation_financiere",
-    "dateDebut": "2022-02-01",
-    "dateFin": "2023-02-01"
+    "dateDebut": "2023-02-01",
+    "dateFin": "2024-02-01"
   }
