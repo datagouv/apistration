@@ -1,4 +1,9 @@
 class APIParticulier::V2::DummyController < APIParticulierController; end
+
+class APIParticulier::V2::DummyFranceConnectedController < APIParticulierController
+  include APIParticulier::FranceConnectable
+end
+
 class APIEntreprise::V2::DummyController < APIController; end
 class APIEntreprise::V3AndMore::DummyController < APIController; end
 
@@ -113,6 +118,41 @@ RSpec.describe 'logstasher custom fields', type: :controller do
         expect(LogStasher).to receive(:build_logstash_event).with(
           hash_excluding(
             parameters: anything
+          ),
+          anything
+        )
+
+        make_call
+      end
+    end
+  end
+
+  describe 'on api particulier franceconnectable request' do
+    before do
+      routes.draw { get 'index' => 'api/v2/dummy#index' }
+    end
+
+    define_dummy_controller(APIParticulier::V2::DummyFranceConnectedController)
+
+    describe 'with FranceConnect bearer token' do
+      subject(:make_call) do
+        request.headers['Authorization'] = "Bearer #{token}"
+
+        get :index
+      end
+
+      before do
+        mock_valid_france_connect_checktoken
+      end
+
+      let(:token) { 'token' }
+
+      it 'adds hashed_france_connect_token to parameters' do
+        expect(LogStasher).to receive(:build_logstash_event).with(
+          hash_including(
+            parameters: hash_including(
+              hashed_france_connect_token: Digest::SHA512.hexdigest("#{Siade.credentials[:api_particulier_log_salt_key]}:#{token}")
+            )
           ),
           anything
         )
