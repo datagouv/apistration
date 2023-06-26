@@ -12,7 +12,7 @@ class MI::Associations::Documents::ValidateResponse < MI::Associations::Validate
   private
 
   def payload_has_documents?
-    return unless xml_body_as_hash[:asso][:documents]
+    return false unless xml_body_as_hash[:asso][:documents]
 
     xml_body_as_hash[:asso][:documents][:nbDocRna].to_i.positive?
   end

@@ -58,13 +58,13 @@ class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
   end
 
   def recipient_is_resource_siren?
-    return unless params[:siren]
+    return false unless params[:siren]
 
     params[:recipient].strip.first(9) == params[:siren].strip
   end
 
   def recipient_is_resource_siret?
-    return unless params[:siret]
+    return false unless params[:siret]
 
     params[:recipient].strip == params[:siret].strip
   end

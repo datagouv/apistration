@@ -44,7 +44,7 @@ class MI::Associations::ValidateResponse < ValidateResponse
   end
 
   def not_found_in_body?
-    return if xml_body_as_hash.dig(:asso, :erreur, :proxy_correspondance).blank?
+    return false if xml_body_as_hash.dig(:asso, :erreur, :proxy_correspondance).blank?
 
     xml_body_as_hash[:asso][:erreur][:proxy_correspondance]['with statusCode: 404']
   end
@@ -54,7 +54,7 @@ class MI::Associations::ValidateResponse < ValidateResponse
   end
 
   def payload_has_id_correspondance?
-    return unless xml_body_as_hash[:asso][:identite]
+    return false unless xml_body_as_hash[:asso][:identite]
 
     !xml_body_as_hash[:asso][:identite][:id_correspondance].nil?
   end

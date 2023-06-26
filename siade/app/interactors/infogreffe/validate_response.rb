@@ -25,7 +25,7 @@ class Infogreffe::ValidateResponse < ValidateResponse
   end
 
   def payload_has_siren?
-    return unless xml.at_css('num_ident')
+    return false unless xml.at_css('num_ident')
 
     xml.at_css('num_ident').attributes['siren'].value
   end
