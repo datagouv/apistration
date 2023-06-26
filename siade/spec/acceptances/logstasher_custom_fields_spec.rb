@@ -103,6 +103,23 @@ RSpec.describe 'logstasher custom fields', type: :controller do
         make_call
       end
     end
+
+    describe 'without params' do
+      subject(:make_call) do
+        get :index
+      end
+
+      it 'does not add hashed params to logstasher parameters key' do
+        expect(LogStasher).to receive(:build_logstash_event).with(
+          hash_excluding(
+            parameters: anything
+          ),
+          anything
+        )
+
+        make_call
+      end
+    end
   end
 
   describe 'on api entreprise request' do
