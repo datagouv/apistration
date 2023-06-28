@@ -22,9 +22,9 @@ params:
     - 'JEANNE'
     - 'STEPHANIE'
   anneeDateDeNaissance: 1987
-  moisDateDeNaissance: 06
+  moisDateDeNaissance: 6
   annee: 2023
-  mois: 05
+  mois: 5
 status: 200
 payload: |-
   {
