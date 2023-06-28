@@ -1,4 +1,4 @@
-class CNAF::QuotientFamilialV2::ValidateCodeINSEELieuDeNaissance < ValidateParamInteractor
+class CNAF::ValidateCodeINSEELieuDeNaissance < ValidateParamInteractor
   def call
     return if valid?
 

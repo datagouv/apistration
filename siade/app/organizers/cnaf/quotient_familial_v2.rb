@@ -1,5 +1,5 @@
 class CNAF::QuotientFamilialV2 < RetrieverOrganizer
-  organize CNAF::QuotientFamilialV2::ValidateParams,
+  organize CNAF::ValidateParams,
     CNAF::QuotientFamilialV2::Authenticate,
     CNAF::QuotientFamilialV2::MakeRequest,
     CNAF::QuotientFamilialV2::ValidateResponse,

@@ -1,4 +1,4 @@
-class CNAF::QuotientFamilialV2::ValidateUserSiret < ValidateParamInteractor
+class CNAF::ValidateUserSiret < ValidateParamInteractor
   def call
     return if siret.valid?
 

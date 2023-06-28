@@ -1,4 +1,4 @@
-RSpec.describe CNAF::QuotientFamilialV2::ValidateParams, type: :validate_params do
+RSpec.describe CNAF::ValidateParams, type: :validate_params do
   subject { described_class.call(params:) }
 
   let(:params) do

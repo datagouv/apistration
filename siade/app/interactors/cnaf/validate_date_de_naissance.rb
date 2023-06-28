@@ -1,4 +1,4 @@
-class CNAF::QuotientFamilialV2::ValidateDateDeNaissance < ValidateParamInteractor
+class CNAF::ValidateDateDeNaissance < ValidateParamInteractor
   def call
     return invalid_param!(:birth_date) unless valid_year?
     return invalid_param!(:birth_date) unless valid_month?

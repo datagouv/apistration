@@ -1,4 +1,4 @@
-RSpec.describe CNAF::QuotientFamilialV2::FormatDateDeNaissance do
+RSpec.describe CNAF::FormatDateDeNaissance do
   subject { described_class.new(year, month, day).format }
 
   describe '#format' do

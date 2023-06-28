@@ -1,4 +1,4 @@
-RSpec.describe CNAF::QuotientFamilialV2::ValidateCodePaysLieuDeNaissance, type: :validate_param_interactor do
+RSpec.describe CNAF::ValidateCodePaysLieuDeNaissance, type: :validate_param_interactor do
   subject { described_class.call(params: { code_pays_lieu_de_naissance: }) }
 
   context 'when attribute is missing' do

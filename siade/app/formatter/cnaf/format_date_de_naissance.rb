@@ -1,4 +1,4 @@
-class CNAF::QuotientFamilialV2::FormatDateDeNaissance < ApplicationFormatter
+class CNAF::FormatDateDeNaissance < ApplicationFormatter
   def initialize(year, month, day)
     @year = year.to_i
     @month = month.to_i

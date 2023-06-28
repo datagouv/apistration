@@ -1,4 +1,4 @@
-RSpec.describe CNAF::QuotientFamilialV2::ValidateDateDeNaissance, type: :validate_param_interactor do
+RSpec.describe CNAF::ValidateDateDeNaissance, type: :validate_param_interactor do
   subject do
     described_class.call(params: {
       annee_date_de_naissance:,
