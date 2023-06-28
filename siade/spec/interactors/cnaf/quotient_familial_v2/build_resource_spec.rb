@@ -18,6 +18,10 @@ RSpec.describe CNAF::QuotientFamilialV2::BuildResource, type: :build_resource do
     Rails.root.join('spec/fixtures/payloads/cnaf/quotient_familial_v2/make_request_valid.json').read
   end
 
+  before do
+    allow(response).to receive(:[]).with('X-APISECU-FD').and_return('00810011')
+  end
+
   it { is_expected.to be_a_success }
 
   describe 'resource' do
@@ -76,6 +80,7 @@ RSpec.describe CNAF::QuotientFamilialV2::BuildResource, type: :build_resource do
             codePostalVille: '81700 GARREVAQUES',
             pays: 'FRANCE'
           },
+          regime: 'CNAF',
           quotientFamilial: 464,
           annee: 2023,
           mois: 6

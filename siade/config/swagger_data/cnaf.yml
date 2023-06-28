@@ -299,6 +299,14 @@ cnaf:
             type: string
             description: Pays
             example: 'FRANCE'
+      regime:
+        title: "Régime de l'allocataire"
+        type: string
+        description: Précise le régime de l'allocataire (CNAF ou MSA)
+        example: MSA
+        enum:
+          - CNAF
+          - MSA
       quotientFamilial:
         title: "Quotient familial CAF ou MSA"
         type: integer

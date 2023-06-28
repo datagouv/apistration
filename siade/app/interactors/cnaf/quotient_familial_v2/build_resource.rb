@@ -8,7 +8,8 @@ class CNAF::QuotientFamilialV2::BuildResource < BuildResource
       adresse: build_address_attributes(json_body['adresse']),
       quotientFamilial: string_value_or_nil(json_body['quotientFamilial']),
       annee: context['params'][:annee].to_i,
-      mois: context['params'][:mois].to_i
+      mois: context['params'][:mois].to_i,
+      regime:
     }
   end
 
@@ -59,5 +60,14 @@ class CNAF::QuotientFamilialV2::BuildResource < BuildResource
     return nil if part.to_i.zero?
 
     part
+  end
+
+  def regime
+    case response['X-APISECU-FD']
+    when '00810011'
+      'CNAF'
+    when '00171001'
+      'MSA'
+    end
   end
 end

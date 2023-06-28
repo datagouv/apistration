@@ -21,7 +21,10 @@ module ProviderStubs::CNAFQuotientFamilialV2
       }
     ).to_return(
       status: 200,
-      body: Rails.root.join('spec/fixtures/payloads/cnaf/quotient_familial_v2/make_request_valid.json').read
+      body: Rails.root.join('spec/fixtures/payloads/cnaf/quotient_familial_v2/make_request_valid.json').read,
+      headers: {
+        'X-APISECU-FD' => '00810011'
+      }
     )
   end
   # rubocop:enable Metrics/MethodLength
