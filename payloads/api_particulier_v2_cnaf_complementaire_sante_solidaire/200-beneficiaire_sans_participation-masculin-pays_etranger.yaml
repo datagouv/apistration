@@ -5,6 +5,7 @@ description: |-
   Ce cas permet de tester :
   - [Param. appel] Pays de naissance autre que la France
   - [Param. appel] sexe masculin
+  - [Param. appel] Deux prénoms
   - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière
 params:
   codeInseeLieuDeNaissance: 'null'

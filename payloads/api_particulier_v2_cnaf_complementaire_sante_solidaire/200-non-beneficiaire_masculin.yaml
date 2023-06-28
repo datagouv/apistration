@@ -13,7 +13,6 @@ params:
   nomUsage: 'DUPONT'
   prenoms:
     - 'PIERRE'
-    - 'PAUL'
   anneeDateDeNaissance: 1966
   moisDateDeNaissance: 6
 status: 200

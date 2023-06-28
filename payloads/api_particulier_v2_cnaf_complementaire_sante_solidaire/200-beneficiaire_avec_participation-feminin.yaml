@@ -5,6 +5,7 @@ description: |-
   Ce cas permet de tester :
   - [Param. appel] lieu de naissance en France
   - [Param. appel] sexe féminin
+  - [Param. appel] Deux prénoms
   - [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière
 params:
   codeInseeLieuDeNaissance: '08480'
