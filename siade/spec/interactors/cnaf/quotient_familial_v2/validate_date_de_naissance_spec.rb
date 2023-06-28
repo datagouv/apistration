@@ -66,7 +66,7 @@ RSpec.describe CNAF::QuotientFamilialV2::ValidateDateDeNaissance, type: :validat
     end
   end
 
-  context 'when day is present' do
+  context 'when day month and year are present' do
     let(:annee_date_de_naissance) { 1980 }
     let(:mois_date_de_naissance) { 1 }
     let(:jour_date_de_naissance) { 12 }

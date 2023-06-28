@@ -46,9 +46,7 @@ class CNAF::QuotientFamilialV2::MakeRequest < MakeRequest::Get
   end
 
   def liste_prenoms
-    return context.params[:prenoms].join(' ') if context.params[:prenoms].is_a?(Array)
-
-    context.params[:prenoms]
+    context.params[:prenoms].try(:join, ' ')
   end
 
   def date_naissance

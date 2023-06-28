@@ -322,3 +322,13 @@ cnaf:
         type: integer
         description: Mois de calcul du quotient familial
         example: 6
+      annee_calcul:
+        title: "Année du calcul du quotient familial"
+        type: integer
+        description: Année à laquelle le quotient familial a été calculé
+        example: 2021
+      mois_calcul:
+        title: "Mois du calcul du quotient familial"
+        type: integer
+        description: Mois auquel le quotient familial a été calculé
+        example: 3

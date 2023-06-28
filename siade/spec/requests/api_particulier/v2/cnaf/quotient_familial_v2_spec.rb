@@ -23,7 +23,7 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
         example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.nomNaissance.example'),
         required: false
 
-      parameter name: :prenoms,
+      parameter name: :'prenoms[]',
         in: :query,
         schema: {
           type: SwaggerData.get('cnaf.quotient-familial-v2.parameters.prenoms.type'),
@@ -108,7 +108,7 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
       let(:scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse] }
 
       let(:nomNaissance) { 'CHAMPION' }
-      let(:prenoms) { %w[JEAN-PASCAL] }
+      let(:'prenoms[]') { %w[JEAN-PASCAL] }
       let(:sexe) { 'M' }
       let(:anneeDateDeNaissance) { 1980 }
       let(:moisDateDeNaissance) { 6 }

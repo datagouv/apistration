@@ -83,7 +83,9 @@ RSpec.describe CNAF::QuotientFamilialV2::BuildResource, type: :build_resource do
           regime: 'CNAF',
           quotientFamilial: 464,
           annee: 2023,
-          mois: 6
+          mois: 6,
+          annee_calcul: 2021,
+          mois_calcul: 3
         }
       )
     end
