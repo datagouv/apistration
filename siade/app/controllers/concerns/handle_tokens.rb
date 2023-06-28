@@ -21,6 +21,15 @@ module HandleTokens
     jwt_token_service.valid?
   end
 
+  def bearer_token_from_headers
+    auth = request.headers['Authorization']
+
+    return unless auth
+
+    matchs = auth.match(/\ABearer (.+)\z/)
+    matchs[1] if matchs
+  end
+
   private
 
   def authorize_access_to_resource!
@@ -53,15 +62,6 @@ module HandleTokens
 
   def token_from_headers
     bearer_token_from_headers
-  end
-
-  def bearer_token_from_headers
-    auth = request.headers['Authorization']
-
-    return unless auth
-
-    matchs = auth.match(/\ABearer (.+)\z/)
-    matchs[1] if matchs
   end
 
   def jwt_token_service
