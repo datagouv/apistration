@@ -21,7 +21,7 @@ params:
 status: 200
 payload: |-
   {
-    "regime": "MSA",
+    "regime": "CAF",
     "allocataires": [
       {
         "nomNaissance": "LEFEBVRE",
