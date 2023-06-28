@@ -266,6 +266,7 @@ paths:
           type: string
       - name: prenoms[]
         in: query
+        type: array
         schema:
           type: array
           minItems: 1

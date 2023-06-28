@@ -25,6 +25,7 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
 
       parameter name: :'prenoms[]',
         in: :query,
+        type: SwaggerData.get('cnaf.quotient-familial-v2.parameters.prenoms.type'),
         schema: {
           type: SwaggerData.get('cnaf.quotient-familial-v2.parameters.prenoms.type'),
           minItems: SwaggerData.get('cnaf.quotient-familial-v2.parameters.prenoms.minItems'),
