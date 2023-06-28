@@ -1,0 +1,58 @@
+---
+description: |-
+  ## Famille monoparentale avec un enfant - allocataire féminin - QF CAF en cours de 650
+
+  Ce cas permet de tester :
+  - [Param. appel] Lieu de naissance en France
+  - [Param. appel] Sexe feminin
+  - [Réponse] Régime CAF
+  - [Réponse] Quotient familial de 650
+
+params:
+  codeInseeLieuDeNaissance: '08480'
+  codePaysLieuDeNaissance: '99001'
+  sexe: 'F'
+  nomUsage: 'BERNARD'
+  prenoms:
+    - 'ELODIE'
+  anneeDateDeNaissance: 1990
+  moisDateDeNaissance: 3
+status: 200
+payload: |-
+  {
+    "regime": "CAF",
+    "allocataires": [
+      {
+        "nomNaissance": "BERNARD",
+        "nomUsage": "BERNARD",
+        "prenoms": "ELODIE JUDITH GERTRUDE",
+        "anneeDateDeNaissance": "1990",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "18",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "BERNARD",
+        "nomUsage": "BERNARD",
+        "prenoms": "LEO",
+        "anneeDateDeNaissance": "1990",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "20",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Madame BERNARD ELODIE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE MONTORGUEIL",
+      "lieuDit": null,
+      "codePostalVille": "75002",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 650,
+    "annee": 2023,
+    "mois": 6
+  }
