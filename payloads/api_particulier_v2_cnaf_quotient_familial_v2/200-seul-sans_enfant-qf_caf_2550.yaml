@@ -8,7 +8,6 @@ description: |-
   - [Réponse] Régime CAF
   - [Réponse] Quotient familial de 2550
   - [Réponse] Quotient familial du mois en cours
-
 params:
   codeInseeLieuDeNaissance: '08480'
   codePaysLieuDeNaissance: '99001'
@@ -33,7 +32,7 @@ payload: |-
         "sexe": "F"
       }
     ],
-    "enfants": null
+    "enfants": [],
     "adresse": {
       "identite": "Monsieur LEFEBVRE ALEXIS",
       "complementInformation": null,

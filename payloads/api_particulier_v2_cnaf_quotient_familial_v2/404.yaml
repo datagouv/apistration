@@ -2,7 +2,7 @@
 description: "Dossier non trouvé"
 params:
   codePaysLieuDeNaissance: '99404'
-  sexe: F
+  sexe: 'F'
 status: 404
 payload: |-
   {

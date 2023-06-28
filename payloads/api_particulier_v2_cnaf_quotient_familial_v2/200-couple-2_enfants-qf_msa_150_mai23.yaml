@@ -12,7 +12,6 @@ description: |-
   - [Réponse] Régime MSA
   - [Réponse] Quotient familial de 150
   - [Réponse] Quotient familial ancien de mai 2023
-
 params:
   codeInseeLieuDeNaissance: '08480'
   codePaysLieuDeNaissance: '99001'
@@ -67,7 +66,7 @@ payload: |-
         "moisDateDeNaissance": "04",
         "jourDateDeNaissance": "20",
         "sexe": "M"
-      },
+      }
     ],
     "adresse": {
       "identite": "Madame ROUX JEANNE",

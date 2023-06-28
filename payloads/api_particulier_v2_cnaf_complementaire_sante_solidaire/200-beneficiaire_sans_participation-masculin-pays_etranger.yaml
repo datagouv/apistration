@@ -8,7 +8,7 @@ description: |-
   - [Param. appel] Deux prénoms
   - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière
 params:
-  codeInseeLieuDeNaissance: 'null'
+  codeInseeLieuDeNaissance: '08481'
   codePaysLieuDeNaissance: '99127'
   sexe: 'M'
   nomUsage: 'DUPONT'
