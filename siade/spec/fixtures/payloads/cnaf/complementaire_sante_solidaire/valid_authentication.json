@@ -1,0 +1,5 @@
+{
+  "access_token": "super_valid_token",
+  "token_type": "Bearer",
+  "expires_in": 3600
+}

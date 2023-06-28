@@ -1,6 +1,6 @@
-class APIParticulier::V2::CNAFController < APIParticulierController
+class APIParticulier::V2::AbstractCNAFController < APIParticulierController
   def show
-    organizer = retrieve_payload_data(organizer_class)
+    organizer = retrieve_payload_data(retriever)
 
     if organizer.success?
       render json: serialize_data(organizer),
@@ -13,7 +13,11 @@ class APIParticulier::V2::CNAFController < APIParticulierController
   protected
 
   def operation_id
-    'api_particulier_v2_cnaf_quotient_familial_v2'
+    raise not_implemented_error
+  end
+
+  def retriever
+    raise not_implemented_error
   end
 
   # rubocop:disable Metrics/AbcSize
