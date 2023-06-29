@@ -7,8 +7,10 @@ git stash && \
   git fetch origin &&
   git pull origin master && \
   bundle install && \
-  bundle exec rake deploy to=production && \
-  bundle exec rake deploy to=staging && \
+  ssh -A watchdoge1 -- /usr/local/bin/rails_deploy_siade_production.sh &&
+  ssh -A watchdoge2 -- /usr/local/bin/rails_deploy_siade_production.sh &&
+  ssh -A watchdoge1 -- /usr/local/bin/rails_deploy_siade_staging.sh &&
+  ssh -A watchdoge2 -- /usr/local/bin/rails_deploy_siade_staging.sh &&
   git tag releases/$(date +"%Y-%m-%d--%H-%M") master && \
   git push --tags && \
   git checkout $current_branch && \

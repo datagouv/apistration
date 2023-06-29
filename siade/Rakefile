@@ -11,21 +11,4 @@ begin
 rescue LoadError
 end
 
-api1 = 'api1.entreprise.api.gouv.fr'
-api2 = 'api2.entreprise.api.gouv.fr'
-
-domains = [api1, api2]
-
-task :setup do
-  domains.each do |domain|
-    sh "mina setup domain=#{domain}"
-  end
-end
-
-task :deploy do
-  domains.each do |domain|
-    sh "mina deploy domain=#{domain}"
-  end
-end
-
 task default: %i[swagger:generate spec]

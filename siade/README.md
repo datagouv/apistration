@@ -105,31 +105,14 @@ si besoin faire une récupération de mot de passe.
 
 ## Déploiement sur les serveurs
 
-    $ ./bin/deploy
+```sh
+./bin/deploy
+```
 
-Dans le cas d'un test sur sandbox avec la branche `features/whatever`
-
-    $ bundle exec mina deploy domain=production.entreprise.api.gouv.fr branch=features/whatever to=sandbox
-
-`domain` ici représente le domaine sur lequel vous voulez déployer votre
-application. L'exemple ci-dessus pointe sur la machine frontale.
-
-Les 3 valeurs possibles pour le domain:
-
-- production.entreprise.api.gouv.fr
-- production1.entreprise.api.gouv.fr
-- production2.entreprise.api.gouv.fr
-
-La première représente la machine frontale (qui est soit la 2e soit la 3e).
-
-## Fresh deployment
-
-Pour `production1.entreprise.api.gouv.fr`
+Dans le cas d'un test sur sandbox de watchdoge1 avec la branche `features/whatever`
 
 ```sh
-domain=production1.entreprise.api.gouv.fr
-bundle exec mina setup domain=$domain
-bundle exec mina deploy domain=$domain
+ssh -A watchdoge1 -- /usr/local/bin/rails_deploy_siade_sandbox.sh features/whatever
 ```
 
 ## Code Coverage
