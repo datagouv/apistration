@@ -1,5 +1,5 @@
 class QUALIBAT::CertificationsBatiment::UploadDocument < UploadDocumentOrganizer
-  organize Documents::StoreFromUrl
+  organize Documents::StoreFromBinary
 
   def file_type
     'pdf'
@@ -10,6 +10,6 @@ class QUALIBAT::CertificationsBatiment::UploadDocument < UploadDocumentOrganizer
   end
 
   def source_file_content
-    json_body['URL']
+    response.body
   end
 end

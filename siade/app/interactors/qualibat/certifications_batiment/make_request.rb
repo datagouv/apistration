@@ -2,25 +2,33 @@ class QUALIBAT::CertificationsBatiment::MakeRequest < MakeRequest::Get
   protected
 
   def request_uri
-    URI(Siade.credentials[:qualibat_url])
+    URI(request_url)
+  end
+
+  def request_url
+    [
+      Siade.credentials[:qualibat_api_url],
+      'certificat',
+      siret
+    ].join('/')
   end
 
   def request_params
-    {
-      token:,
-      SIRET: siret
-    }
+    {}
+  end
+
+  def extra_headers(request)
+    request['Authorization'] = "Bearer #{token}"
   end
 
   def http_options
     {
-      use_ssl: true,
-      verify_mode: OpenSSL::SSL::VERIFY_NONE
+      use_ssl: false
     }
   end
 
   def token
-    Siade.credentials[:qualibat_token]
+    context.token
   end
 
   def siret

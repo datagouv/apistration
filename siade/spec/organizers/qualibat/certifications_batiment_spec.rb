@@ -7,7 +7,7 @@ RSpec.describe QUALIBAT::CertificationsBatiment, :self_hosted_doc do
     }
   end
 
-  context 'when siret is valid', vcr: { cassette_name: 'qualibat/certifications_batiment/valid_siret' } do
+  context 'when siret is valid', vcr: { cassette_name: 'qualibat/certifications_batiment/valid_siret_2' } do
     let(:siret) { valid_siret(:qualibat) }
 
     it { is_expected.to be_a_success }
@@ -19,7 +19,7 @@ RSpec.describe QUALIBAT::CertificationsBatiment, :self_hosted_doc do
     end
   end
 
-  context 'when siret is not found', vcr: { cassette_name: 'qualibat/certifications_batiment/not_found_siret' } do
+  context 'when siret is not found', vcr: { cassette_name: 'qualibat/certifications_batiment/not_found_siret_2' } do
     let(:siret) { not_found_siret(:qualibat) }
 
     it { is_expected.to be_a_failure }
