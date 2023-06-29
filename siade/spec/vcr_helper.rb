@@ -46,6 +46,8 @@ VCR.configure do |c|
   c.filter_sensitive_data('<DGFIP_IR_CLIENT_ID>') { Siade.credentials[:dgfip_situation_ir_client_id].to_s }
   c.filter_sensitive_data('<DGFIP_IR_CLIENT_SECRET>') { Siade.credentials[:dgfip_situation_ir_client_secret].to_s }
   c.filter_sensitive_data('<DGFIP_IR_ID_TELESERVICE>') { Siade.credentials[:dgfip_situation_id_teleservice].to_s }
+  c.filter_sensitive_data('<QUALIBAT_URL>') { URI(Siade.credentials[:qualibat_api_url]).to_s }
+  c.filter_sensitive_data('<QUALIBAT_BASIC_AUTH>') { Base64.strict_encode64("#{Siade.credentials[:qualibat_api_username]}:#{Siade.credentials[:qualibat_api_password]}") }
 
   # VCR url filters
   c.filter_sensitive_data('<URL_INSEE_V3>') { Siade.credentials[:insee_v3_domain].to_s }
