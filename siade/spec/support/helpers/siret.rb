@@ -8,7 +8,7 @@ def valid_siret(sample_type = nil)
     rna: '42135938100033',
     octo: '41816609600069',
     rge_ademe: '50530961700023',
-    qualibat: '33592022900036',
+    qualibat: '89785620900019',
     probtp: '73582032600040',
     msa_pending: '81104725700019',
     msa: '38069910800011',
