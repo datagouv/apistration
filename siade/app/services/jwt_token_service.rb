@@ -10,7 +10,7 @@ class JwtTokenService
 
     jwt_data = decoded_token.slice(:uid, :roles, :jti, :iat, :exp)
 
-    if special_token?
+    if internal_token?
       jwt_data[:scopes] = decoded_token[:scopes]
     else
       jwt_data = enhanced_jwt_data_with_token(jwt_data)
@@ -52,7 +52,7 @@ class JwtTokenService
     cache.read(jwt_token)
   end
 
-  def special_token?
+  def internal_token?
     [
       JwtUser.uptime_id,
       JwtUser.debugger_id
