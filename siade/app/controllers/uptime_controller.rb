@@ -136,7 +136,7 @@ class UptimeController < APIController
     {
       uid: JwtUser.uptime_id,
       jti: JwtUser.uptime_id,
-      scopes: all_scopes,
+      scopes: Scope.all,
       sub: 'whatever',
       version: '1.0',
       iat: 10.seconds.ago.to_i,
@@ -150,9 +150,5 @@ class UptimeController < APIController
 
   def jwt_hash_algo
     Siade.credentials[:jwt_hash_algo]
-  end
-
-  def all_scopes
-    Rails.application.config_for(:authorizations).values.flatten.uniq
   end
 end

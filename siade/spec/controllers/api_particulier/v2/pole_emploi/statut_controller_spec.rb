@@ -1,7 +1,7 @@
 RSpec.describe APIParticulier::V2::PoleEmploi::StatutController do
   subject { get :show, params: { identifiant:, token: } }
 
-  let(:all_scopes) { %i[pole_emploi_identite pole_emploi_adresse pole_emploi_contact pole_emploi_inscription] }
+  let(:all_pole_emploi_scopes) { %i[pole_emploi_identite pole_emploi_adresse pole_emploi_contact pole_emploi_inscription] }
   let(:one_field_of_each_scope) { %w[civilite adresse email dateInscription] }
 
   let(:token) { TokenFactory.new(scopes).valid }
@@ -22,7 +22,7 @@ RSpec.describe APIParticulier::V2::PoleEmploi::StatutController do
     end
 
     context 'when token has full access' do
-      let(:scopes) { all_scopes }
+      let(:scopes) { all_pole_emploi_scopes }
 
       its(:status) { is_expected.to eq(200) }
 
@@ -42,7 +42,7 @@ RSpec.describe APIParticulier::V2::PoleEmploi::StatutController do
     end
 
     context 'when pole_emploi_identite is missing' do
-      let(:scopes) { all_scopes - %i[pole_emploi_identite] }
+      let(:scopes) { all_pole_emploi_scopes - %i[pole_emploi_identite] }
 
       it 'does not return this field' do
         json = JSON.parse(subject.body)
@@ -57,7 +57,7 @@ RSpec.describe APIParticulier::V2::PoleEmploi::StatutController do
   end
 
   describe 'when it is a 404', vcr: { cassette_name: 'pole_emploi/oauth2' } do
-    let(:scopes) { all_scopes }
+    let(:scopes) { all_pole_emploi_scopes }
 
     before do
       stub_request(:post, Siade.credentials[:pole_emploi_status_url]).and_return(

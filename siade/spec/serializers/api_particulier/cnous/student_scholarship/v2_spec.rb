@@ -7,10 +7,10 @@ RSpec.describe APIParticulier::CNOUS::StudentScholarship::V2, type: :serializer 
   let(:response) { OpenStruct.new(body:) } # rubocop:disable Style/OpenStructUse
   let(:body) { cnous_valid_payload('ine').to_json }
 
-  let(:all_scopes) { %w[cnous_identite cnous_email cnous_statut_boursier cnous_echelon_bourse cnous_statut_bourse cnous_periode_versement cnous_ville_etudes] }
+  let(:all_cnous_scopes) { %w[cnous_identite cnous_email cnous_statut_boursier cnous_echelon_bourse cnous_statut_bourse cnous_periode_versement cnous_ville_etudes] }
 
-  context 'with all scopes' do
-    let(:scopes) { all_scopes }
+  context 'with all cnous scopes' do
+    let(:scopes) { all_cnous_scopes }
 
     it 'has key email' do
       expect(serialized_resource).to have_key(:email)

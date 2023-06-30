@@ -8,10 +8,10 @@ RSpec.describe APIParticulier::MESRI::StudentStatus::V2, type: :serializer do
   let(:response) { OpenStruct.new(body:) }
   # rubocop:enable Style/OpenStructUse
 
-  let(:all_scopes) { %w[mesri_identifiant mesri_identite mesri_inscription_etudiant mesri_inscription_autre mesri_admission mesri_etablissements] }
+  let(:all_mesri_scopes) { %w[mesri_identifiant mesri_identite mesri_inscription_etudiant mesri_inscription_autre mesri_admission mesri_etablissements] }
 
-  context 'with all scopes' do
-    let(:scopes) { all_scopes }
+  context 'with all mesri scopes' do
+    let(:scopes) { all_mesri_scopes }
 
     context 'when resource has inscrit status' do
       let(:body) { Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_ine_valid_response.json').read }

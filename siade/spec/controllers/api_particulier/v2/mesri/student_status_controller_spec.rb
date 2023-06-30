@@ -1,5 +1,5 @@
 RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
-  let(:all_scopes) { %w[mesri_identifiant mesri_identite mesri_inscription_etudiant mesri_inscription_autre mesri_admission mesri_etablissements] }
+  let(:all_mesri_scopes) { %w[mesri_identifiant mesri_identite mesri_inscription_etudiant mesri_inscription_autre mesri_admission mesri_etablissements] }
   let(:one_field_of_each_scope) { %w[ine nom inscriptions] }
 
   let(:token) { TokenFactory.new(scopes).valid }
@@ -25,7 +25,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
       end
 
       context 'when token has full access' do
-        let(:scopes) { all_scopes }
+        let(:scopes) { all_mesri_scopes }
 
         its(:status) { is_expected.to eq(200) }
 
@@ -45,7 +45,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
       end
 
       context 'when mesri_identite is missing' do
-        let(:scopes) { all_scopes - %w[mesri_identite] }
+        let(:scopes) { all_mesri_scopes - %w[mesri_identite] }
 
         it 'does not return fields associated to this scope' do
           json = JSON.parse(subject.body)
@@ -60,7 +60,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
     end
 
     describe 'when it is a 404' do
-      let(:scopes) { all_scopes }
+      let(:scopes) { all_mesri_scopes }
 
       before do
         stub_request(:get, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
@@ -101,7 +101,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
       end
 
       context 'when token has full access' do
-        let(:scopes) { all_scopes }
+        let(:scopes) { all_mesri_scopes }
 
         its(:status) { is_expected.to eq(200) }
 
@@ -141,7 +141,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
         body: Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_civility_valid_response.json').read
       )
 
-      mock_valid_france_connect_checktoken(scopes: minimal_france_connect_scopes.concat(all_scopes))
+      mock_valid_france_connect_checktoken(scopes: minimal_france_connect_scopes.concat(all_mesri_scopes))
     end
 
     its(:status) { is_expected.to eq(200) }

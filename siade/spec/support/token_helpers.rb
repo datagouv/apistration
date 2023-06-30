@@ -4,7 +4,7 @@ module TokenHelpers
   end
 
   def reset_yes_jwt_token_scopes!
-    yes_jwt_token_database_model.update!(scopes: seeds.all_scopes)
+    yes_jwt_token_database_model.update!(scopes: Scope.all)
   end
 
   private

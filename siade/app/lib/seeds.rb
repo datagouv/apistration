@@ -15,10 +15,6 @@ class Seeds
     'c1578da0-52fe-4bca-bfac-b5e183e9e71c'
   end
 
-  def all_scopes
-    Rails.application.config_for(:authorizations).values.flatten.uniq
-  end
-
   private
 
   def development_or_test?
@@ -33,7 +29,7 @@ class Seeds
         iat: 1.day.ago.to_i,
         version: '1.0',
         exp: 18.months.from_now.to_i,
-        scopes: all_scopes
+        scopes: Scope.all
       }.merge(params)
     )
 

@@ -7,10 +7,10 @@ RSpec.describe APIParticulier::MEN::Scolarites::V2, type: :serializer do
   let(:response) { OpenStruct.new(body:) } # rubocop:disable Style/OpenStructUse
   let(:body) { open_payload_file('men/scolarites/valid.json').read }
 
-  let(:all_scopes) { %w[men_statut_scolarite men_statut_boursier men_echelon_bourse] }
+  let(:all_men_scopes) { %w[men_statut_scolarite men_statut_boursier men_echelon_bourse] }
 
-  context 'with all scopes' do
-    let(:scopes) { all_scopes }
+  context 'with all men scopes' do
+    let(:scopes) { all_men_scopes }
 
     it 'has all keys' do
       expect(serialized_resource).to have_key(:est_scolarise)

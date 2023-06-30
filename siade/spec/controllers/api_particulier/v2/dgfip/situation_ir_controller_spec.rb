@@ -1,7 +1,7 @@
 RSpec.describe APIParticulier::V2::DGFIP::SituationIRController do
   subject { get :show, params: { numeroFiscal: tax_number, referenceAvis: tax_notice_number, token: } }
 
-  let(:all_scopes) { Rails.application.config_for(:authorizations)['api_particulier/v2/dgfip/situation_ir'] }
+  let(:all_dgfip_ir_scopes) { Rails.application.config_for(:authorizations)['api_particulier/v2/dgfip/situation_ir'] }
   let(:all_keys) do
     %w[
       declarant1
@@ -40,7 +40,7 @@ RSpec.describe APIParticulier::V2::DGFIP::SituationIRController do
 
     context 'when API returns 200', vcr: { cassette_name: 'dgfip/situation_ir/valid' } do
       context 'when token has full access' do
-        let(:scopes) { all_scopes }
+        let(:scopes) { all_dgfip_ir_scopes }
 
         its(:status) { is_expected.to eq(200) }
 
@@ -64,7 +64,7 @@ RSpec.describe APIParticulier::V2::DGFIP::SituationIRController do
       end
 
       context 'when dgfip_declarant1_nom is missing' do
-        let(:scopes) { all_scopes - %w[dgfip_declarant1_nom] }
+        let(:scopes) { all_dgfip_ir_scopes - %w[dgfip_declarant1_nom] }
 
         it 'does not return this field, which is in declarant1 payload' do
           json = JSON.parse(subject.body)

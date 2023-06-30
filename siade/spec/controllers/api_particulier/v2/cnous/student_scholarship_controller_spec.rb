@@ -1,5 +1,5 @@
 RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
-  let(:all_scopes) { %w[cnous_identite cnous_email cnous_statut_boursier cnous_echelon_bourse cnous_statut_bourse cnous_periode_versement cnous_ville_etudes] }
+  let(:all_cnous_scopes) { %w[cnous_identite cnous_email cnous_statut_boursier cnous_echelon_bourse cnous_statut_bourse cnous_periode_versement cnous_ville_etudes] }
   let(:one_field_of_each_scope) { %w[nom email boursier echelonBourse statut dateDeRentree villeEtudes] }
 
   let(:token) { TokenFactory.new(scopes).valid }
@@ -26,7 +26,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
       end
 
       context 'when token has full access' do
-        let(:scopes) { all_scopes }
+        let(:scopes) { all_cnous_scopes }
 
         its(:status) { is_expected.to eq(200) }
 
@@ -40,7 +40,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
       end
 
       context 'when cnous_email is missing' do
-        let(:scopes) { all_scopes - %w[cnous_email] }
+        let(:scopes) { all_cnous_scopes - %w[cnous_email] }
 
         it 'does not return field email' do
           json = JSON.parse(subject.body)
@@ -55,7 +55,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
     end
 
     describe 'when it is a 404' do
-      let(:scopes) { all_scopes }
+      let(:scopes) { all_cnous_scopes }
 
       before do
         stub_request(:get, /#{Siade.credentials[:cnous_student_scholarship_ine_url]}/).to_return(
@@ -93,7 +93,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
       end
 
       context 'when token has full access' do
-        let(:scopes) { all_scopes }
+        let(:scopes) { all_cnous_scopes }
 
         its(:status) { is_expected.to eq(200) }
 
@@ -112,14 +112,14 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
         mock_cnous_valid_call('civility')
       end
 
-      let(:scopes) { all_scopes }
+      let(:scopes) { all_cnous_scopes }
       let(:prenoms) { nil }
 
       its(:status) { is_expected.to eq(400) }
     end
 
     describe 'when it is a 409' do
-      let(:scopes) { all_scopes }
+      let(:scopes) { all_cnous_scopes }
 
       before do
         stub_request(:post, /#{cnous_url_for('civility')}/).to_return(
@@ -146,7 +146,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
 
       mock_cnous_valid_call('france_connect')
 
-      mock_valid_france_connect_checktoken(scopes: minimal_france_connect_scopes.concat(all_scopes))
+      mock_valid_france_connect_checktoken(scopes: minimal_france_connect_scopes.concat(all_cnous_scopes))
     end
 
     its(:status) { is_expected.to eq(200) }

@@ -20,7 +20,7 @@ module JwtHelper
 end
 
 def yes_jwt
-  @yes_jwt ||= TokenFactory.new(Seeds.new.all_scopes).valid(
+  @yes_jwt ||= TokenFactory.new(Scope.all).valid(
     uid: Seeds.new.yes_jwt_id
   )
 end

@@ -1,7 +1,7 @@
 RSpec.describe APIParticulier::V2::CNAF::QuotientFamilialController do
   subject { get :show, params: { numeroAllocataire: beneficiary_number, codePostal: postal_code, token: } }
 
-  let(:all_scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse] }
+  let(:all_cnaf_scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse] }
 
   describe 'with valid params' do
     let(:token) { TokenFactory.new(scopes).valid }
@@ -20,7 +20,7 @@ RSpec.describe APIParticulier::V2::CNAF::QuotientFamilialController do
     end
 
     context 'when token has full access' do
-      let(:scopes) { all_scopes }
+      let(:scopes) { all_cnaf_scopes }
 
       its(:status) { is_expected.to eq(200) }
 
@@ -34,7 +34,7 @@ RSpec.describe APIParticulier::V2::CNAF::QuotientFamilialController do
     end
 
     context 'when cnaf_allocataires is missing' do
-      let(:scopes) { all_scopes - %i[cnaf_allocataires] }
+      let(:scopes) { all_cnaf_scopes - %i[cnaf_allocataires] }
 
       it 'does not return this field' do
         json = JSON.parse(subject.body)
