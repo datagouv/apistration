@@ -60,7 +60,7 @@ RSpec.describe JwtTokenService do
             expect(EncryptedCache.read(jwt)).to be_present
           end
 
-          context 'when user exists in cache (with an id which is not in database)' do
+          context 'when user exists in cache (but not in database)' do
             let(:jwt) { TokenFactory.new(['from_cache']).valid(uid: SecureRandom.uuid) }
             let(:user_from_valid_jwt) { described_class.new(jwt).extract_user }
 
@@ -68,7 +68,7 @@ RSpec.describe JwtTokenService do
               EncryptedCache.write(jwt, user_from_valid_jwt)
             end
 
-            it 'returns user from cache' do
+            it 'returns user from cache, not from database' do
               expect(subject).to eq(user_from_valid_jwt)
             end
           end
