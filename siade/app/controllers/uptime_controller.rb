@@ -105,7 +105,9 @@ class UptimeController < APIController
   def request_options
     {
       use_ssl: true,
-      verify_mode: OpenSSL::SSL::VERIFY_PEER
+      verify_mode: OpenSSL::SSL::VERIFY_PEER,
+      open_timeout: 11,
+      read_timeout: 11
     }
   end
 
