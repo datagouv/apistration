@@ -119,8 +119,8 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
       let(:annee) { 2023 }
 
       before do
-        stub_cnaf_quotient_familial_v2_authenticate
-        stub_cnaf_quotient_familial_v2_valid(siret: '100000009')
+        stub_cnaf_authenticate('quotient_familial_v2')
+        stub_cnaf_valid('quotient_familial_v2', siret: '100000009')
       end
 
       describe 'with valid token and mandatory params' do
@@ -148,7 +148,7 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
 
         response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
           before do
-            stub_cnaf_quotient_familial_v2_404
+            stub_cnaf_404('quotient_familial_v2')
           end
 
           let(:codePaysLieuDeNaissance) { '99623' }

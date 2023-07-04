@@ -87,7 +87,7 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
         required: SwaggerData.get('cnaf.c2s.parameters.sexe.required'),
         example: SwaggerData.get('cnaf.c2s.parameters.sexe.example')
 
-      let(:'X-Api-Key') { TokenFactory.new(scopes).valid(jti: uid) }
+      let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
       let(:request_token) { 'super_valid_token' }
       let(:uid) { SecureRandom.uuid }
 
@@ -103,8 +103,8 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
       let(:codeInseeLieuDeNaissance) { '17300' }
 
       before do
-        stub_cnaf_complementaire_sante_solidaire_authenticate
-        stub_cnaf_complementaire_sante_solidaire_valid(siret: uid)
+        stub_cnaf_authenticate('complementaire_sante_solidaire')
+        stub_cnaf_valid('complementaire_sante_solidaire', siret: '100000009')
       end
 
       describe 'with valid token and mandatory params' do
@@ -132,7 +132,7 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
 
         response '404', 'Dossier complémentaire inexistant. Le document ne peut être édité.' do
           before do
-            stub_cnaf_complementaire_sante_solidaire_404
+            stub_cnaf_404('complementaire_sante_solidaire')
           end
 
           let(:codePaysLieuDeNaissance) { '99623' }

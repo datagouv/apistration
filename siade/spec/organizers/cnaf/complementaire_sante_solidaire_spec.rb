@@ -21,8 +21,8 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire, type: :retriever_organizer do
 
     describe 'happy path' do
       before do
-        stub_cnaf_complementaire_sante_solidaire_authenticate
-        stub_cnaf_complementaire_sante_solidaire_valid
+        stub_cnaf_authenticate('complementaire_sante_solidaire')
+        stub_cnaf_valid('complementaire_sante_solidaire')
       end
 
       it { is_expected.to be_a_success }

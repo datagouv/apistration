@@ -15,7 +15,7 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire::BuildResource, type: :build_r
   end
 
   let(:body) do
-    Rails.root.join('spec/fixtures/payloads/cnaf/complementaire_sante_solidaire/make_request_valid.json').read
+    read_payload_file('cnaf/complementaire_sante_solidaire/make_request_valid.json')
   end
 
   it { is_expected.to be_a_success }

@@ -1,12 +1,20 @@
 class CNAF::ComplementaireSanteSolidaire::Authenticate < GetOAuth2Token
-  private
+  def extra_headers(request)
+    request['Authorization'] = "Basic #{client_credentials_header}"
+  end
 
   def client_url
     Siade.credentials[:cnaf_authenticate_url]
   end
 
+  private
+
   def scope
     Siade.credentials[:cnaf_complementaire_sante_solidaire_scope]
+  end
+
+  def client_credentials_header
+    Base64.urlsafe_encode64("#{client_id}:#{client_secret}")
   end
 
   def client_id

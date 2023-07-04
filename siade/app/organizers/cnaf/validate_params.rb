@@ -4,5 +4,4 @@ class CNAF::ValidateParams < ValidateParamsOrganizer
     CNAF::ValidateCodeINSEELieuDeNaissance,
     CNAF::ValidateDateDeNaissance,
     CNAF::ValidateRequestId
-  # CNAF::ValidateUserSiret,
 end

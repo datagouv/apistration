@@ -2,7 +2,7 @@ RSpec.describe CNAF::QuotientFamilialV2::Authenticate, type: :interactor do
   subject { described_class.call }
 
   before do
-    stub_cnaf_quotient_familial_v2_authenticate
+    stub_cnaf_authenticate('quotient_familial_v2')
   end
 
   context 'when quotient familial v2 authentication succeed' do

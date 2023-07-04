@@ -23,8 +23,8 @@ RSpec.describe CNAF::QuotientFamilialV2, type: :retriever_organizer do
 
     describe 'happy path' do
       before do
-        stub_cnaf_quotient_familial_v2_authenticate
-        stub_cnaf_quotient_familial_v2_valid
+        stub_cnaf_authenticate('quotient_familial_v2')
+        stub_cnaf_valid('quotient_familial_v2')
       end
 
       it { is_expected.to be_a_success }

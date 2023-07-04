@@ -2,7 +2,7 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire::Authenticate, type: :interact
   subject { described_class.call }
 
   before do
-    stub_cnaf_complementaire_sante_solidaire_authenticate
+    stub_cnaf_authenticate('complementaire_sante_solidaire')
   end
 
   context 'when complementaire sante solidaire authentication succeed' do

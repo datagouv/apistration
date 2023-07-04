@@ -13,11 +13,11 @@ class APIParticulier::V2::AbstractCNAFController < APIParticulierController
   protected
 
   def operation_id
-    raise not_implemented_error
+    raise NotImplementedError
   end
 
   def retriever
-    raise not_implemented_error
+    raise NotImplementedError
   end
 
   # rubocop:disable Metrics/AbcSize

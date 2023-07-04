@@ -7,7 +7,7 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire::ValidateResponse, type: :vali
     end
 
     context 'with valid body' do
-      let(:body) { Rails.root.join('spec/fixtures/payloads/cnaf/complementaire_sante_solidaire/make_request_valid.json').read }
+      let(:body) { read_payload_file('cnaf/complementaire_sante_solidaire/make_request_valid.json') }
 
       it { is_expected.to be_a_success }
 
@@ -28,7 +28,7 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire::ValidateResponse, type: :vali
       instance_double(Net::HTTPNotFound, code: 404, body:)
     end
 
-    let(:body) { Rails.root.join('spec/fixtures/payloads/cnaf/complementaire_sante_solidaire/404.json').read }
+    let(:body) { read_payload_file('cnaf/complementaire_sante_solidaire/404.json') }
 
     it { is_expected.to be_a_failure }
 

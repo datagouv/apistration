@@ -37,7 +37,7 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire::MakeRequest, type: :make_requ
       }
     ).to_return(
       status: 200,
-      body: Rails.root.join('spec/fixtures/payloads/cnaf/complementaire_sante_solidaire/make_request_valid.json').read
+      body: read_payload_file('cnaf/complementaire_sante_solidaire/make_request_valid.json')
     )
   end
 
