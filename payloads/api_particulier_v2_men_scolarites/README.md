@@ -19,6 +19,7 @@
     "annee_scolaire": "2022-2023",
     "est_scolarise": true,
     "est_boursier": true,
+    "niveau_bourse": 1,
     "status_eleve": {
       "code": "ST",
       "libelle": "SCOLAIRE"
