@@ -45,7 +45,8 @@ class ExtractProviderFromPath
       'cma_france' => 'CMA France',
       'djepva' => 'DJEPVA',
       'gip_mds' => 'GIP-MDS',
-      'qualifelec' => 'Qualifelec'
+      'qualifelec' => 'Qualifelec',
+      'carif_oref' => 'CARIF-OREF'
     }
   end
   # rubocop:enable Metrics/MethodLength
