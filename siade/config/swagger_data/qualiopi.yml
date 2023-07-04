@@ -1,0 +1,171 @@
+qualiopi:
+  certifications:
+      title: "Certifications Qualiopi & habilitations France compétences"
+      description: "Certifications Qualiopi et habilitations France compétences attestant que l'établissement est habilité à délivrer une formation certifiante."
+      tags:
+        - "Prochainement"
+      attributes:
+        code_uai_etablissement:
+          title: "Code UAI de l'établissement"
+          description: "Code UAI de l'établissement agrée"
+          example: "0123456A"
+          type: "string"
+        unite_legale_avec_plusieurs_nda:
+          title: "Unité légale avec plusieurs NDA"
+          description: "L'unité légale de l'établissement est liée à plusieurs NDA (Numéro de Déclaration de l'Activité)."
+          example: "false"
+          type: "boolean"
+        declarations_activites:
+          type: "array"
+          description: "informations relatives aux certifications de l'activité"
+          items:
+            type: "object"
+            properties:
+              nda:
+                title: "Numéro de Déclaration de l'Activité"
+                description: "Numéro de Déclaration de l'Activité de l'établissement agrée"
+                type: "string"
+                example: "11910843391"
+              formation_apprentis:
+                title: "Centre de Formation d'Apprentis"
+                description: "Indique si le centre est agrée CFA (Centre de Formation d'Apprentis)"
+                type: "boolean"
+                example: true
+              enregistrement_en_cours:
+                title: "Enregistrement en cours (fiche active)"
+                description: "Indique si la fiche Qualiopi est active, c'est à dire si l'enregistrement de la certification est en cours. La certification reste accessible."
+                type: "boolean"
+                example: true
+              date_derniere_declaration:
+                title: "Date de la dernière déclaration d'activité"
+                description: "Date de la dernière fois où cette déclaration d'activité a été déclarée, au format AAAA-MM-DD"
+                type: "string"
+                format: "date"
+                example: "2021-01-30"
+              debut_exercice:
+                title: "Début d'exercice"
+                description: "Date de début d'exercice de l'établissement agrée, au format AAAA-MM-DD"
+                type: "string"
+                format: "date"
+                example: "2021-01-30"
+              certification_qualiopi:
+                type: "object"
+                description: "informations relatives à la certification qualiopi"
+                properties:
+                  action_formation:
+                    title: "Certication Action Formation"
+                    description: "Indique si l'établissement est certifié Action Formation"
+                    type: "boolean"
+                    example: false
+                  bilan_competences:
+                    title: "Certification Bilan Compétences"
+                    description: "Indique si l'établissement est certifié Bilan Compétences"
+                    type: "boolean"
+                    example: false
+                  validation_acquis_experience:
+                    title: "Certification VAE"
+                    description: "Indique si l'établissement est certifié VAE (Validation des Acquis de l'Experience)"
+                    type: "boolean"
+                    example: false
+                  apprentissage:
+                    title: "Certification Apprentissage"
+                    description: "Indique si l'établissement est certifié Action de Formation par Apprentissage"
+                    type: "boolean"
+                    example: false
+                  origine_obtention_qualiopi:
+                    title: "Origine de l'obtention Qualiopi (propagée ou non)"
+                    description: "Décrit l'origine de l'obtention de la certification Qualiopi, si elle est propagée (c'est à dire si elle est liée à une autre certification) ou non (directe)."
+                    type: "string"
+                    example: "Qualiopi direct sur le NDA"
+              specialites:
+                type: "object"
+                description: "informations relatives aux spécialités relevant du certificat qualiopi. Il peut y avoir jusqu'à trois spécialités."
+                properties:
+                  specialite_1:
+                    type: "object"
+                    description: "informations relatives à la première spécialité"
+                    properties:
+                      code:
+                        title: "Code spécialité 1"
+                        description: "Code de la première spécialité de l'établissement agrée"
+                        type: "string"
+                        example: "313"
+                        nullable: true
+                      libelle:
+                        title: "Libellé spécialité 1"
+                        description: "Libellé de la première spécialité de l'établissement agrée"
+                        type: "string"
+                        example: "Finances, banque, assurances"
+                        nullable: true
+                  specialite_2:
+                    type: "object"
+                    description: "informations relatives à la seconde spécialité"
+                    properties:
+                      code:
+                        title: "Code spécialité 2"
+                        description: "Code de la seconde spécialité de l'établissement agrée"
+                        type: "string"
+                        example: "326"
+                        nullable: true
+                      libelle:
+                        title: "Libellé spécialité 2"
+                        description: "Libellé de la seconde spécialité de l'établissement agrée"
+                        type: "string"
+                        example: "Informatique, traitement de l'information, réseaux de transmission des données"
+                        nullable: true
+                  specialite_3:
+                    type: "object"
+                    description: "informations relatives à la troisième spécialité"
+                    properties:
+                      code:
+                        title: "Code spécialité 3"
+                        description: "Code de la troisième spécialité de l'établissement agrée"
+                        type: "string"
+                        example: "327"
+                        nullable: true
+                      libelle:
+                        title: "Libellé spécialité 3"
+                        description: "Libellé de la troisième spécialité de l'établissement agrée"
+                        type: "string"
+                      example: "Langues"
+                      nullable: true
+        habilitations_france_competence:
+          type: "array"
+          description: "informations relatives aux habilitations France Competence"
+          items:
+            type: "object"
+            properties:
+              code_france_competence:
+                title: "Code habilitation FC (France Compétence)"
+                description: "Code de l'habilitation de l'établissement agrée auprès de FranceCompetence"
+                type: "string"
+                example: "RNCP10013"
+              date_fin_enregistrement:
+                title: "Date de fin d'enregistrement"
+                description: "Date de fin d'enregistrement de l'habilitation de l'établissement agrée, au format AAAA-MM-DD"
+                type: "string"
+                format: "date"
+                nullable: true
+              date_decision:
+                title: "Date de décision"
+                description: "Date de décision de l'habilitation de l'établissement agrée, au format AAAA-MM-DD"
+                type: "string"
+                format: "date"
+                nullable: true
+              habilitation_pour_former:
+                title: "Habilitation à former"
+                description: "Indique que cette habilitation autorise à former/préparer les candidats à une certification inscrite au répertoire national des compétences professionnelles (RNCP) ou au répertoire spécifique (RS). Cette habilitation vise à s'assurer que les organismes de formation proposant des offres de formation certifiantes, sont bien habilités à préparer des élèves à cette certification."
+                type: "boolean"
+                example: true
+              habilitation_pour_organiser_l_evaluation:
+                title: "Habilitation à organiser l'évaluation"
+                description: "Indique que cette habilitation autorise à organiser l'évaluation des compétences des candidats visant une certification inscrite au répertoire national des compétences professionnelles (RNCP) ou au répertoire spécifique (RS)."
+                type: "boolean"
+                example: true
+              sirets_organismes_certificateurs:
+                type: "array"
+                description: "Liste des SIRETs des organismes certificateurs ayant délivré à l'établissement les habilitations à former et/ou organiser l'évaluation de leur certification."
+                items:
+                  type: "string"
+                  example: "12345678901234"
+
