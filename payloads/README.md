@@ -5,14 +5,14 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 
 ## API Particulier
 
+* [Complémentaire santé solidaire](api_particulier_v2_cnaf_complementaire_sante_solidaire) (`/api/v2/complementaire-sante-solidaire`)
+* [Quotient familial CAF & MSA](api_particulier_v2_cnaf_quotient_familial_v2) (`/api/v2/composition-familiale-v2`)
 * [Statut élève scolarisé et boursier](api_particulier_v2_men_scolarites) (`/api/v2/scolarites`)
 * [Service de vérification de l'avis d'impôt sur le revenu](api_particulier_v2_dgfip_situation_ir) (`/api/v2/avis-imposition`)
 * [Quotient familial CAF](api_particulier_v2_cnaf_quotient_familial) (`/api/v2/composition-familiale`)
 * [Statut demandeur d'emploi](api_particulier_v2_pole_emploi_statut) (`/api/v2/situations-pole-emploi`)
 * [Statut étudiant](api_particulier_v2_mesri_student_status) (`/api/v2/etudiants`)
 * [Statut étudiant boursier](api_particulier_v2_cnous_student_scholarship) (`/api/v2/etudiants-boursiers`)
-* [Quotient familial CAF & MSA](api_particulier_v2_cnaf_quotient_familial_v2) (`/api/v2/composition-familiale-v2`)
-* [Complémentaire santé solidaire](api_particulier_v2_cnaf_complementaire_sante_solidaire) (`/api/v2/complementaire-sante-solidaire`)
 
 ## API Entreprise v3+
 
@@ -30,6 +30,8 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * N°TVA intracommunautaire français (`/v3/european_commission/unites_legales/{siren}/numero_tva`)
 * Conventions collectives (`/v3/fabrique_numerique_ministeres_sociaux/etablissements/{siret}/conventions_collectives`)
 * Carte professionnelle travaux publics (`/v3/fntp/unites_legales/{siren}/carte_professionnelle_travaux_publics`)
+* Effectifs annuels d'une unité légale (`/v3/gip_mds/unites_legales/{siren}/effectifs_annuels/{year}`)
+* Effectifs mensuels d'un établissement (`/v3/gip_mds/etablissements/{siret}/effectifs_mensuels/{month}/annee/{year}`)
 * Extrait RCS (`/v3/infogreffe/rcs/unites_legales/{siren}/extrait_kbis`)
 * Mandataires sociaux (`/v3/infogreffe/rcs/unites_legales/{siren}/mandataires_sociaux`)
 * Actes (`/v3/inpi/unites_legales/{siren}/actes`)
@@ -51,5 +53,6 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * Conformité cotisations retraite bâtiment (`/v3/probtp/etablissements/{siret}/attestation_cotisations_retraite`)
 * Conformité cotisations retraite complémentaire (`/v3/probtp/etablissements/{siret}/conformite_cotisations_retraite`)
 * Certification Qualibat (`/v3/qualibat/etablissements/{siret}/certification_batiment`)
+* [Certification Qualifelec](api_entreprise_v3_qualifelec_certificats) (`/v3/qualifelec/etablissements/{siret}/certificats`)
 * Données du RNM d'une entreprise artisanale (`/v3/cma_france/rnm/unites_legales/{siren}`)
 * [Attestation de vigilance](api_entreprise_v4_acoss_attestations_sociales) (`/v4/urssaf/unites_legales/{siren}/attestation_vigilance`)
