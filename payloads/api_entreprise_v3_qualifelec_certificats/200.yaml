@@ -1,0 +1,65 @@
+---
+description: 'Payload Qualifelec - default'
+params:
+  siret: '78951073200017'
+status: 200
+payload: |-
+  {
+    "data": [
+      {
+        "data": {
+          "document_url": "https://www.qualifelec.fr/certifmoteur/4/3631.pdf",
+          "numero": 2840,
+          "rge": true,
+          "date_debut": "2019-01-01",
+          "date_fin": "2021-12-31",
+          "qualification": {
+            "label": "Installations Électriques Logement Commerce Petit Tertiaire - LCPT",
+            "date_debut": "2019-01-01",
+            "date_fin": "2024-12-31",
+            "indices": [
+              {
+                "code": "IRVE1",
+                "label": "IRVE – indice 1 (station de recharge – puissance maximale appelable inférieure ou égale à 36 kVA)"
+              }
+            ],
+            "mentions": [
+              {
+                "code": "PRGE",
+                "label": "Probatoire Reconnu Garant de l’Environnement"
+              }
+            ],
+            "domaines": [
+              {
+                "code": "SU",
+                "label": "Sûreté"
+              }
+            ],
+            "classification": {
+              "code": 1,
+              "label": "Classe 1 - de 1 à 3 exécutants"
+            }
+          },
+          "assurance_decennale": {
+            "nom": "AXA",
+            "date_debut": "2024-01-31",
+            "date_fin": "2024-12-31"
+          },
+          "assurance_civile": {
+            "nom": "HISCOX",
+            "date_debut": "2024-01-31",
+            "date_fin": "2024-12-31"
+          }
+        },
+        "links": {
+        },
+        "meta": {
+        }
+      }
+    ],
+    "meta": {
+      "total": 8
+    },
+    "links": {
+    }
+  }
