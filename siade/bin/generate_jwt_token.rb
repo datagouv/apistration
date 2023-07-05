@@ -1,7 +1,7 @@
 require 'date'
 
 if ARGV.count.zero?
-  STDERR.print "Usage: #{$PROGRAM_NAME} environment"
+  STDERR.print "Usage: #{$PROGRAM_NAME} environment [token_uuid]"
   exit 1
 end
 
@@ -11,6 +11,15 @@ config_to_retrieve = env == 'staging' ? 'production' : env
 ENV['RAILS_ENV'] = config_to_retrieve
 
 require File.expand_path('../../config/application', __FILE__)
+
+require_relative '../app/lib/jwt_user'
+
+uid = ARGV[1] || JwtUser.debugger_id
+
+if uid !~ /\A\h{8}-\h{4}-\h{4}-\h{4}-\h{12}\z/
+  STDERR.print "Invalid token UUID: #{uid}\n"
+  exit 2
+end
 
 credentials = Rails.application.credentials.config[env.to_sym]
 
@@ -34,8 +43,8 @@ exp = case env
   end
 
 token_payload = {
-  uid: JwtUser.debugger_id,
-  jti: JwtUser.debugger_id,
+  uid: uid,
+  jti: uid,
   scopes: scopes,
   sub: "#{env} development",
   iat: Time.now.to_i,
