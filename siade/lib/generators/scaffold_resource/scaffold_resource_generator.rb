@@ -27,16 +27,24 @@ class ScaffoldResourceGenerator < Rails::Generators::NamedBase
     default: false,
     desc: 'Is the payload a collection or a single resource?'
 
+  class_option :prochainement,
+    type: :boolean,
+    default: false,
+    desc: 'Prepare the documentation and staging without a working API'
+
   def create_scaffold_resource
     generate 'controller', name, string_options
-    generate 'serializer', name, string_options
     generate 'retriever', name, string_options
     generate 'validate_params', name, string_options if custom_validation?
+    generate 'request_spec', name, string_options
+    generate 'serializer', name, string_options
+
+    return if prochainement?
+
     generate 'upload_document', name, string_options if document_resource?
     generate 'make_request', name, string_options
     generate 'validate_response', name, string_options
     generate 'build_resource', name, string_options
-    generate 'request_spec', name, string_options
   end
 
   private
@@ -47,6 +55,10 @@ class ScaffoldResourceGenerator < Rails::Generators::NamedBase
 
   def document_resource?
     options[:document]
+  end
+
+  def prochainement?
+    options[:prochainement]
   end
 
   def get_request?

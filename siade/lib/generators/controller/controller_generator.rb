@@ -6,13 +6,17 @@ class ControllerGenerator < BaseGenerator
     default: 'entreprise',
     desc: 'Which product ?'
 
-  class_option :is_collection,
+  class_option :prochainement,
     type: :boolean,
     default: false,
-    desc: 'Is the payload a collection or a single resource?'
+    desc: 'Prepare the documentation and staging without a working API'
 
   desc 'See `bin/rails generate scaffold_resource --help` instead'
   def create_controller
     template 'controller.rb.erb', File.join("app/controllers/api_#{api}/v3_and_more", provider_namespace.underscore, "#{resource_class.underscore}_controller.rb")
+  end
+
+  def prochainement?
+    options[:prochainement]
   end
 end

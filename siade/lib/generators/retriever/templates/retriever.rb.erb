@@ -1,10 +1,13 @@
 class <%= name %> < RetrieverOrganizer
+  <% if prochainement? %>
   organize <%= validation_class %>,
-           <%= name %>::MakeRequest,
+           MockedInteractor<% else %>
+  organize <%= validation_class %>,<% if document_resource? %>
+           <%= name %>::MakeRequest,<% end %>
            <%= name %>::ValidateResponse,<% if document_resource? %>
            <%= name %>::UploadDocument,<% end %><% if options[:is_collection] %>
            <%= name %>::BuildResourceCollection<% else %>
-           <%= name %>::BuildResource<% end %>
+           <%= name %>::BuildResource<% end %><% end %>
 
   def provider_name
     '<%= provider_namespace %>'

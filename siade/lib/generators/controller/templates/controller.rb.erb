@@ -1,10 +1,15 @@
-class API<%= api.classify %>::V3AndMore::<%= name %>Controller < APIEntreprise::V3AndMore::BaseController
+class API<%= api.classify %>::V3AndMore::<%= name %>Controller < APIEntreprise::V3AndMore::<%= prochainement? ? 'Mocked' : 'Base' %>Controller
   def show
     organizer = retrieve_payload_data(::<%= name %>)
 
     if organizer.success?
+      <% if prochainement? %>
+      render json: organizer[:payload],
+        status: organizer[:status]
+      <% else %>
       render json: serialize_data(organizer),
         status: extract_http_code(organizer)
+    <% end %>
     else
       render_errors(organizer)
     end

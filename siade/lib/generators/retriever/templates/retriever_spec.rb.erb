@@ -5,4 +5,7 @@ RSpec.describe <%= name %>, type: :retriever_organizer do
     {
     }
   end
+  <% if options[:prochainement] %>describe 'valid params' do
+    pending 'Implement endpoint'
+  end<% end %>
 end

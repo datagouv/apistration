@@ -16,6 +16,11 @@ class RetrieverGenerator < BaseGenerator
     default: false,
     desc: 'Is the payload a collection or a single resource?'
 
+  class_option :prochainement,
+    type: :boolean,
+    default: false,
+    desc: 'Prepare the documentation and staging without a working API'
+
   desc 'See `bin/rails generate scaffold_resource --help` instead'
   def create_retriever
     template 'retriever.rb.erb', File.join('app/organizers', provider_namespace.underscore, "#{resource_class.underscore}.rb")
@@ -26,6 +31,10 @@ class RetrieverGenerator < BaseGenerator
 
   def document_resource?
     options[:document]
+  end
+
+  def prochainement?
+    options[:prochainement]
   end
 
   def validation_class

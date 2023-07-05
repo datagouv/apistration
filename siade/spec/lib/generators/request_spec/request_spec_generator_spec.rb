@@ -3,9 +3,21 @@ RSpec.describe RequestSpecGenerator, type: :generator do
 
   let(:resource_name) { 'MODULE::ResourceName' }
 
-  before { run_generator [resource_name] }
+  shared_examples 'a valid request spec file' do
+    it { is_expected.to exist }
+    it { is_expected.to have_correct_syntax }
+    it { is_expected.to contain(%r{/v3/module/resource_names}) }
+  end
 
-  it { is_expected.to exist }
-  it { is_expected.to have_correct_syntax }
-  it { is_expected.to contain(%r{/v3/module/resource_names}) }
+  context 'without options' do
+    before { run_generator [resource_name] }
+
+    it_behaves_like 'a valid request spec file'
+  end
+
+  context 'with option --prochainement' do
+    before { run_generator [resource_name, '--prochainement', 'true'] }
+
+    it_behaves_like 'a valid request spec file'
+  end
 end

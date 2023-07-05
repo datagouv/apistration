@@ -18,7 +18,11 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
       end
 
       describe 'with valid token and mandatory params', valid: true do
-        response '200', 'Entreprise trouvée', vcr: { cassette_name: '<%= provider_namespace.underscore %>/valid_<%= id_path_param %>' } do
+        response '200', 'Entreprise trouvée'<% unless prochainement? %>, vcr: { cassette_name: '<%= provider_namespace.underscore %>/valid_<%= id_path_param %>' }<% end %> do
+          <% if prochainement? %>before do
+              allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
+          end
+          <% end %>
           description SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.description')
 
           rate_limit_headers
@@ -39,7 +43,7 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
             let(:<%= id_path_param %>) { 'lol' }
           end
 
-          response '404', 'Non trouvée', vcr: { cassette_name: '<%= provider_namespace.underscore %>/not_found_<%= id_path_param %>' } do
+          response '404', 'Non trouvée', vcr: { cassette_name: '<%= provider_namespace.underscore %>/not_found_<%= id_path_param %>' }<%= prochainement? ? ", pending: 'Implement endpoint'" : nil %> do
             let(:<%= id_path_param %>) { not_found_<%= id_path_param %>(:<%= provider_namespace.underscore %>) }
 
             schema '$ref' => '#/components/schemas/NotFound'
