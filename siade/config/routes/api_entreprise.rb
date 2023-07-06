@@ -68,6 +68,10 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
     get 'etablissements/:siret/certification_rge' => '/api_entreprise/v3_and_more/ademe/certificats_rge#show'
   end
 
+  namespace :carif_oref do
+    get 'certifications_qualiopi_france_competences/:siret' => '/api_entreprise/v3_and_more/carif_oref/certifications_qualiopi_france_competences#show'
+  end
+
   namespace :cnetp do
     get 'unites_legales/:siren/attestation_cotisations_conges_payes_chomage_intemperies' => '/api_entreprise/v3_and_more/cnetp/attestation_cotisations_conges_payes_chomage_intemperies#show'
   end
