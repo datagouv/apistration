@@ -72,6 +72,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'attestation_sociale', 'attestations_sociales'
   inflect.irregular 'certificat_cnetp', 'certificats_cnetp'
   inflect.irregular 'certification_ingenierie', 'certifications_ingenierie'
+  inflect.irregular 'certification_qualiopi_france_competences', 'certifications_qualiopi_france_competences'
   inflect.irregular 'certificat_rge_ademe', 'certificats_rge_ademe'
   inflect.irregular 'certificat_rge', 'certificats_rge'
   inflect.irregular 'cotisation_msa', 'cotisations_msa'
