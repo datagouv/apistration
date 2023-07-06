@@ -4,6 +4,7 @@ def valid_siret(sample_type = nil)
 
   samples = {
     default: '78951073200017',
+    carif_oref: '81841109200013',
     rna: '42135938100033',
     octo: '41816609600069',
     rge_ademe: '50530961700023',
