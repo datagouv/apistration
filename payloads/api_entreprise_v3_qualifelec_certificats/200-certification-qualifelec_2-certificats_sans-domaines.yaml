@@ -1,0 +1,123 @@
+---
+description: |-
+  ## 200 - Deux certifications Qualifelec, sans mention RGE
+  
+  Ce cas permet de tester :
+  - Réponse 200 ;
+  - Deux certificats disponibles ;
+  - Pas de mention RGE ;
+  - Indices, mentions et classifications sont complétés ;
+  - Sans domaine ;
+  - Tableaux de plusieurs mentions.
+
+params:
+  siret: '78951073200017'
+status: 200
+payload: |-
+  {
+    "data": [
+      {
+        "data": {
+          "document_url": "https://www.qualifelec.fr/certifmoteur/4/3631.pdf",
+          "numero": 02840,
+          "rge": false,
+          "date_debut": "2023-02-01",
+          "date_fin": "2024-01-31",
+          "qualification": {
+            "label": "COURANTS FAIBLES LOGEMENT COMMERCE PETIT TERTIAIRE (CFLCP)",
+            "date_debut": "2023-02-01",
+            "date_fin": "2027-01-31",
+            "indices": [
+              {
+                "code": "CFLCPT1",
+                "label": "CFLCPT - indice 1"
+              }
+            ],
+            "mentions": [
+              {
+                "code": "MA",
+                "label": "Maintenance"
+              },
+              {
+                "code": "CMO",
+                "label": "Colonnes Montantes"
+              }
+            ],
+            "domaines": null
+            "classification": {
+              "code": 1,
+              "label": "Classe 12 - de 4 à 8 exécutants"
+            }
+          },
+          "assurance_decennale": {
+            "nom": "AXA",
+            "date_debut": "2023-02-01",
+            "date_fin": "2024-01-31",
+          },
+          "assurance_civile": {
+            "nom": "ALLIANZ IARD",
+            "date_debut": "2023-02-01",
+            "date_fin": "2024-01-31",
+          }
+        },
+        "links": {
+        },
+        "meta": {
+        }
+      },
+      {
+        "data": {
+          "document_url": "https://www.qualifelec.fr/certifmoteur/4/3631.pdf",
+          "numero": 02840,
+          "rge": false,
+          "date_debut": "2023-08-01",
+          "date_fin": "2024-07-31",
+          "qualification": {
+            "label": "Installations Électriques Logement Commerce Petit Tertiaire - LCPT",
+            "date_debut": "2023-02-01",
+            "date_fin": "2027-01-31",
+            "indices": [
+              {
+                "code": "LCPT",
+                "label": "Logement Commerce Petit Tertiaire"
+              }
+            ],
+            "mentions": [
+              {
+                "code": "ATC",
+                "label": "Autocontrôle"
+              },
+              { 
+                "code": "IRVE2",
+                "label": "Infrastructures de Recharge des Véhicules Électriques - niveau de formation 2"
+              }
+            ],
+            "domaines": null
+            "classification": {
+              "code": 1,
+              "label": "Classe 1 - de 1 à 3 exécutants"
+            }
+          },
+          "assurance_decennale": {
+            "nom": "AXA",
+            "date_debut": "2023-08-01",
+            "date_fin": "2024-07-31",
+          },
+          "assurance_civile": {
+            "nom": "ALLIANZ IARD",
+            "date_debut": "2023-08-01",
+            "date_fin": "2024-07-31",
+          }
+        },
+        "links": {
+        },
+        "meta": {
+        }
+      },
+    ],
+    "meta": {
+      "total": 8
+    },
+    "links": {
+    }
+  }
