@@ -13,7 +13,7 @@ carif_oref:
         unite_legale_avec_plusieurs_nda:
           title: "Unité légale avec plusieurs NDA"
           description: "L'unité légale de l'établissement est liée à plusieurs NDA (Numéro de Déclaration de l'Activité)."
-          example: "false"
+          example: false
           type: "boolean"
         declarations_activites:
           type: "array"
@@ -127,8 +127,8 @@ carif_oref:
                         title: "Libellé spécialité 3"
                         description: "Libellé de la troisième spécialité de l'établissement agrée"
                         type: "string"
-                      example: "Langues"
-                      nullable: true
+                        nullable: true
+                        example: "Langues"
         habilitations_france_competence:
           type: "array"
           description: "informations relatives aux habilitations France Competence"
