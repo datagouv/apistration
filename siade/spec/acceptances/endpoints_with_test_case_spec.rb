@@ -9,6 +9,8 @@ RSpec.describe 'config/endpoints_with_test_case.yml' do
   describe 'endpoints' do
     it 'has all endpoints in config/endpoints_with_test_case.yml' do
       swagger_endpoints_regex.each do |endpoint|
+        next if endpoint_is_prochainement?(endpoint)
+
         expect(endpoints).to match(endpoint), "Endpoint #{endpoint} is missing from config/endpoints_with_test_case.yml"
       end
     end
@@ -18,5 +20,11 @@ RSpec.describe 'config/endpoints_with_test_case.yml' do
     regex_ready_string = endpoint.gsub(/{(.*?)}/, '[^/]+')
 
     Regexp.new(regex_ready_string)
+  end
+
+  def endpoint_is_prochainement?(endpoint)
+    endpoint_tags = swagger['paths'].find { |key, _| endpoint.match?(key) }[1]['get']['tags']
+
+    endpoint_tags.include?('Prochainement')
   end
 end
