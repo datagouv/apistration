@@ -46,7 +46,7 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
           response '404', 'Non trouvée', vcr: { cassette_name: '<%= provider_namespace.underscore %>/not_found_<%= id_path_param %>' }<%= prochainement? ? ", pending: 'Implement endpoint'" : nil %> do
             let(:<%= id_path_param %>) { not_found_<%= id_path_param %>(:<%= provider_namespace.underscore %>) }
 
-            schema '$ref' => '#/components/schemas/NotFound'
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end
