@@ -11,8 +11,6 @@ class TokenFactory
     JWT.encode(payload(uid:), hash_secret, hash_algo)
   end
 
-  private
-
   def payload(uid:)
     {
       uid: uid || valid_uid,
@@ -24,6 +22,8 @@ class TokenFactory
       exp: 1.year.from_now.to_i
     }
   end
+
+  private
 
   def valid_uid
     Seeds.new.yes_jwt_id

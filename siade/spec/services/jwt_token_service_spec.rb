@@ -72,6 +72,23 @@ RSpec.describe JwtTokenService do
               expect(subject).to eq(user_from_valid_jwt)
             end
           end
+
+          describe 'when token has roles but not scopes (old token)' do
+            let(:jwt) do
+              payload = TokenFactory.new(['invalid']).payload(uid:)
+              payload[:roles] = payload.delete(:scopes)
+
+              JWT.encode(
+                payload,
+                Siade.credentials[:jwt_hash_secret],
+                Siade.credentials[:jwt_hash_algo]
+              )
+            end
+
+            it 'takes scopes from db, not token' do
+              expect(subject.scopes).to eq(['valid'])
+            end
+          end
         end
       end
     end

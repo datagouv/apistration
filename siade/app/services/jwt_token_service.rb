@@ -8,7 +8,9 @@ class JwtTokenService
   def extract_user
     return cached_user if cached_user.present?
 
-    jwt_data = decoded_token.slice(:uid, :roles, :jti, :iat, :exp)
+    jwt_data = decoded_token.slice(:uid, :roles, :scopes, :jti, :iat, :exp)
+
+    jwt_data[:scopes] ||= jwt_data.delete(:roles) if jwt_data[:roles].present?
 
     if internal_token?
       jwt_data[:scopes] = decoded_token[:scopes]
