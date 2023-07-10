@@ -10,14 +10,14 @@ description: |-
   - Sans domaine ;
   - Tableaux de plusieurs mentions.
 params:
-  siret: '78951073200017'
+  siret: '77567227221138'
 status: 200
 payload: |-
   {
     "data":[
         {
           "data":{
-              "document_url":"https://www.qualifelec.fr/certifmoteur/4/3631.pdf",
+              "document_url":"https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
               "numero":"02840",
               "rge":false,
               "date_debut":"2023-02-01",
@@ -42,7 +42,7 @@ payload: |-
                       "label":"Colonnes Montantes"
                     }
                 ],
-                "domaines":null,
+                "domaines":[],
                 "classification":{
                     "code":1,
                     "label":"Classe 12 - de 4 à 8 exécutants"
@@ -66,7 +66,7 @@ payload: |-
         },
         {
           "data":{
-              "document_url":"https://www.qualifelec.fr/certifmoteur/4/3631.pdf",
+              "document_url":"https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
               "numero":"02840",
               "rge":false,
               "date_debut":"2023-08-01",
@@ -91,7 +91,7 @@ payload: |-
                       "label":"Infrastructures de Recharge des Véhicules Électriques - niveau de formation 2"
                     }
                 ],
-                "domaines":null,
+                "domaines": [],
                 "classification":{
                     "code":1,
                     "label":"Classe 1 - de 1 à 3 exécutants"
