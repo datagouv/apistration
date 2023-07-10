@@ -9,75 +9,74 @@ description: |-
   - Indices, mentions et classifications sont complétés ;
   - Avec domaines - peu de qualifications ont des domaines ;
   - Tableaux de mentions et de domaines.
-
 params:
   siret: '78951073200017'
 status: 200
 payload: |-
   {
-    "data": [
-      {
-        "data": {
-          "document_url": "https://www.qualifelec.fr/certifmoteur/4/3631.pdf",
-          "numero": 02840,
-          "rge": true,
-          "date_debut": "2023-02-01",
-          "date_fin": "2024-01-31",
-          "qualification": {
-            "label": "COURANTS FAIBLES MOYEN GROS TERTIAIRE INDUSTRIE (CFMGTI)",
-            "date_debut": "2023-02-01",
-            "date_fin": "2025-01-31",
-            "indices": [
-              {
-                "code": "CFMGTI",
-                "label": "Indice 2 (avec identification d’au minimum 1 domaine)"
-              }
-            ],
-            "mentions": [
-              {
-                "code": "PRGE",
-                "label": "Probatoire Reconnu Garant de l’Environnement"
+    "data":[
+        {
+          "data":{
+              "document_url":"https://www.qualifelec.fr/certifmoteur/4/3631.pdf",
+              "numero":"02840",
+              "rge":true,
+              "date_debut":"2023-02-01",
+              "date_fin":"2024-01-31",
+              "qualification":{
+                "label":"COURANTS FAIBLES MOYEN GROS TERTIAIRE INDUSTRIE (CFMGTI)",
+                "date_debut":"2023-02-01",
+                "date_fin":"2025-01-31",
+                "indices":[
+                    {
+                      "code":"CFMGTI",
+                      "label":"Indice 2 (avec identification d’au minimum 1 domaine)"
+                    }
+                ],
+                "mentions":[
+                    {
+                      "code":"PRGE",
+                      "label":"Probatoire Reconnu Garant de l’Environnement"
+                    },
+                    {
+                      "code":"FO",
+                      "label":"Fibre Optique"
+                    }
+                ],
+                "domaines":[
+                    {
+                      "code":"RC",
+                      "label":"Réseaux de Communications"
+                    },
+                    {
+                      "code":"ST",
+                      "label":"Sécurité"
+                    }
+                ],
+                "classification":{
+                    "code":1,
+                    "label":"Classe 5 - de 50 à 250 exécutants"
+                }
               },
-              {
-                "code": "FO",
-                "label": "Fibre Optique"
-              }
-            ],
-            "domaines": [
-              {
-                "code": "RC",
-                "label": "Réseaux de Communications"
+              "assurance_decennale":{
+                "nom":"AXA",
+                "date_debut":"2023-02-01",
+                "date_fin":"2024-01-31"
               },
-              {
-                "code": "ST",
-                "label": "Sécurité"
+              "assurance_civile":{
+                "nom":"ALLIANZ IARD",
+                "date_debut":"2023-02-01",
+                "date_fin":"2024-01-31"
               }
-            ],
-            "classification": {
-              "code": 1,
-              "label": "Classe 5 - de 50 à 250 exécutants"
-            }
           },
-          "assurance_decennale": {
-            "nom": "AXA",
-            "date_debut": "2023-02-01",
-            "date_fin": "2024-01-31",
+          "links":{
           },
-          "assurance_civile": {
-            "nom": "ALLIANZ IARD",
-            "date_debut": "2023-02-01",
-            "date_fin": "2024-01-31",
+          "meta":{
           }
-        },
-        "links": {
-        },
-        "meta": {
         }
-      }
     ],
-    "meta": {
-      "total": 8
+    "meta":{
+        "total":8
     },
-    "links": {
+    "links":{
     }
   }
