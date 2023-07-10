@@ -20,5 +20,22 @@ RSpec.describe MEN::Scolarites::MakeRequest, type: :make_request do
 
       its(:response) { is_expected.to be_a(Net::HTTPOK) }
     end
+
+    context 'with a gender upcased (non-regression test)', vcr: { cassette_name: 'men/scolarites/valid' } do
+      let(:params) do
+        {
+          family_name: 'NOMFAMILLE',
+          first_name: 'prenom',
+          gender: 'F',
+          birth_date: '2000-06-10',
+          code_etablissement: '0511474A',
+          annee_scolaire: '2021'
+        }
+      end
+
+      it { is_expected.to be_a_success }
+
+      its(:response) { is_expected.to be_a(Net::HTTPOK) }
+    end
   end
 end

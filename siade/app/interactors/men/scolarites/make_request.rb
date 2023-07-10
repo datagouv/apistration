@@ -25,7 +25,7 @@ class MEN::Scolarites::MakeRequest < MakeRequest::Get
     {
       nom: context.params[:family_name],
       prenom: context.params[:first_name],
-      sexe: context.params[:gender],
+      sexe: context.params[:gender].downcase,
       dateNaissance: context.params[:birth_date],
       codeEtablissement: context.params[:code_etablissement],
       anneeScolaire: context.params[:annee_scolaire]
@@ -35,7 +35,7 @@ class MEN::Scolarites::MakeRequest < MakeRequest::Get
   private
 
   def sexe
-    case context.params[:gender]
+    case context.params[:gender].downcase
     when 'm'
       1
     when 'f'
