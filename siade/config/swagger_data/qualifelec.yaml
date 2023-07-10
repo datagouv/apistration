@@ -24,9 +24,9 @@ qualifelec:
         example: "https://www.qualifelec.fr/certifmoteur/4/3631.pdf"
       numero:
         title: 'Numéro du certificat'
-        type: number
+        type: string
         description: "Le numéro d'attribution du certificat"
-        example: 05430
+        example: "05430"
       rge:
         title: "Label RGE de l'entreprise"
         type: boolean
