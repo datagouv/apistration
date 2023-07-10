@@ -5,140 +5,206 @@ shared:
   api_entreprise/v2/privileges: []
   api_entreprise/v2/associations:
     - associations
+    - open_data
   api_entreprise/v2/attestations_agefiph:
     - attestations_agefiph
   api_entreprise/v2/attestations_cotisation_retraite_probtp:
     - probtp
+    - cotisations_probtp
   api_entreprise/v2/attestations_fiscales_dgfip:
     - attestations_fiscales
+    - attestation_fiscale_dgfip
   api_entreprise/v2/attestations_sociales_acoss:
     - attestations_sociales
+    - attestation_sociale_urssaf
   api_entreprise/v2/bilans_entreprises_bdf:
     - bilans_entreprise_bdf
+    - bilans_bdf
   api_entreprise/v2/cartes_professionnelles_fntp:
     - fntp_carte_pro
+    - open_data
   api_entreprise/v2/certificats_agence_bio:
     - certificat_agence_bio
+    - open_data
   api_entreprise/v2/certificats_cnetp:
     - certificat_cnetp
+    - certification_cnetp
   api_entreprise/v2/certificats_opqibi:
     - certificat_opqibi
+    - open_data
   api_entreprise/v2/certificats_qualibat:
     - qualibat
+    - open_data
   api_entreprise/v2/certificats_rge_ademe:
     - certificat_rge_ademe
+    - open_data
   api_entreprise/v2/conventions_collectives:
     - conventions_collectives
+    - open_data
   api_entreprise/v2/cotisations_msa:
     - msa_cotisations
+    - cotisations_msa
   api_entreprise/v2/documents_associations:
     - documents_association
+    - open_data
   api_entreprise/v2/actes_inpi:
     - actes_inpi
+    - open_data
   api_entreprise/v2/bilans_inpi:
     - bilans_inpi
+    - comptes_annuels_inpi
   api_entreprise/v2/effectifs_annuels_entreprise_acoss_covid: []
   api_entreprise/v2/effectifs_mensuels_entreprise_acoss_covid: []
   api_entreprise/v2/effectifs_mensuels_etablissement_acoss_covid: []
   api_entreprise/v2/eligibilites_cotisation_retraite_probtp:
     - probtp
+    - cotisations_probtp
   api_entreprise/v2/entreprises_artisanales:
     - entreprises_artisanales
+    - open_data
   api_entreprise/v2/entreprises_restored:
     - entreprises
+    - unites_legales_etablissements_insee
   api_entreprise/v2/eori_douanes:
     - eori_douanes
+    - open_data
   api_entreprise/v2/etablissements_restored:
     - etablissements
+    - unites_legales_etablissements_insee
   api_entreprise/v2/exercices:
     - exercices
+    - chiffre_affaires_dgfip
   api_entreprise/v2/extraits_courts_inpi:
     - extrait_court_inpi
+    - open_data
   api_entreprise/v2/extraits_rcs_infogreffe:
     - extraits_rcs
+    - open_data
   api_entreprise/v2/liasses_fiscales_complete_dgfip:
     - liasse_fiscale
+    - liasses_fiscales_dgfip
   api_entreprise/v2/liasses_fiscales_dictionaries_dgfip:
     - liasse_fiscale
+    - liasses_fiscales_dgfip
   api_entreprise/v2/liasses_fiscales_dgfip:
     - liasse_fiscale
-
+    - liasses_fiscales_dgfip
   api_entreprise/v3_and_more/acoss/attestations_sociales:
     - attestations_sociales
+    - attestation_sociale_urssaf
   api_entreprise/v3_and_more/ademe/certificats_rge:
     - certificat_rge_ademe
+    - open_data
   api_entreprise/v3_and_more/banque_de_france/bilans_entreprise:
     - bilans_entreprise_bdf
+    - bilans_bdf
   api_entreprise/v3_and_more/cnetp/attestation_cotisations_conges_payes_chomage_intemperies:
     - certificat_cnetp
+    - certification_cnetp
   api_entreprise/v3_and_more/dgddi/eori:
     - eori_douanes
+    - open_data
   api_entreprise/v3_and_more/dgfip/attestations_fiscales:
     - attestations_fiscales
+    - attestation_fiscale_dgfip
   api_entreprise/v3_and_more/dgfip/chiffres_affaires:
     - exercices
+    - chiffre_affaires_dgfip
   api_entreprise/v3_and_more/dgfip/liasses_fiscales:
     - liasse_fiscale
+    - liasses_fiscales_dgfip
   api_entreprise/v3_and_more/european_commission/vies: []
   api_entreprise/v3_and_more/fabrique_numerique_ministeres_sociaux/conventions_collectives:
     - conventions_collectives
+    - open_data
   api_entreprise/v3_and_more/fntp/carte_professionnelle_travaux_publics:
     - fntp_carte_pro
+    - open_data
   api_entreprise/v3_and_more/infogreffe/extraits_rcs:
     - extraits_rcs
+    - open_data
   api_entreprise/v3_and_more/infogreffe/mandataires_sociaux:
     - entreprises
+    - mandataires_sociaux_infogreffe
   api_entreprise/v3_and_more/inpi/actes:
     - actes_inpi
+    - open_data
   api_entreprise/v3_and_more/inpi/latest_brevets:
     - extrait_court_inpi
+    - open_data
   api_entreprise/v3_and_more/inpi/latest_marques:
     - extrait_court_inpi
+    - open_data
   api_entreprise/v3_and_more/inpi/latest_modeles:
     - extrait_court_inpi
+    - open_data
   api_entreprise/v3_and_more/insee/adresses_etablissements:
     - etablissements
+    - unites_legales_etablissements_insee
   api_entreprise/v3_and_more/insee/adresses_etablissements_diffusables:
     - etablissements
+    - open_data
   api_entreprise/v3_and_more/insee/etablissements:
     - etablissements
+    - unites_legales_etablissements_insee
   api_entreprise/v3_and_more/insee/etablissements_diffusables:
     - etablissements
+    - open_data
   api_entreprise/v3_and_more/insee/sieges_diffusables_unites_legales:
     - etablissements
+    - open_data
   api_entreprise/v3_and_more/insee/sieges_unites_legales:
     - etablissements
+    - unites_legales_etablissements_insee
   api_entreprise/v3_and_more/insee/unites_legales:
     - entreprises
+    - unites_legales_etablissements_insee
   api_entreprise/v3_and_more/insee/unites_legales_diffusables:
     - entreprises
+    - open_data
   api_entreprise/v3_and_more/mi/associations:
     - associations
+    - open_data
   api_entreprise/v3_and_more/mi/documents_associations:
     - associations
+    - open_data
   api_entreprise/v3_and_more/mi/unites_legales:
-    - associations
+    - associations_donnees_protegees
+    - associations_djepva
   api_entreprise/v3_and_more/mi/unites_legales_open_data:
     - associations
+    - open_data
   api_entreprise/v3_and_more/msa/conformites_cotisations:
     - msa_cotisations
+    - cotisations_msa
   api_entreprise/v3_and_more/opqibi/certifications_ingenierie:
     - certificat_opqibi
+    - certification_opqibi
   api_entreprise/v3_and_more/probtp/attestations_cotisation_retraite:
     - probtp
+    - cotisations_probtp
   api_entreprise/v3_and_more/probtp/conformites_cotisations_retraite:
     - probtp
+    - cotisations_probtp
   api_entreprise/v3_and_more/qualibat/certifications_batiment:
     - qualibat
+    - open_data
   api_entreprise/v3_and_more/rnm/entreprises_artisanales:
     - entreprises_artisanales
-
+    - open_data
+  api_entreprise/v3_and_more/gip_mds/effectifs_annuels_entreprise:
+    - effectifs_urssaf
+  api_entreprise/v3_and_more/gip_mds/effectifs_mensuels_etablissement:
+    - effectifs_urssaf
+  api_entreprise/v3_and_more/qualifelec/certificats: []
   api_particulier/introspect: []
   api_particulier/v2/cnaf/quotient_familial:
     - cnaf_quotient_familial
     - cnaf_allocataires
     - cnaf_enfants
     - cnaf_adresse
+  api_particulier/v2/cnaf/quotient_familial_v2: []
+  api_particulier/v2/cnaf/complementaire_sante_solidaire: []
   api_particulier/v2/cnous/student_scholarship:
     - cnous_statut_boursier
     - cnous_echelon_bourse
@@ -147,7 +213,7 @@ shared:
     - cnous_statut_bourse
     - cnous_ville_etudes
     - cnous_identite
-  api_particulier/v2/dgfip/svair:
+  api_particulier/v2/dgfip/situation_ir:
     - dgfip_declarant1_nom
     - dgfip_declarant1_nom_naissance
     - dgfip_declarant1_prenoms
@@ -184,6 +250,10 @@ shared:
     - pole_emploi_adresse
     - pole_emploi_contact
     - pole_emploi_inscription
+  api_particulier/v2/men/scolarites:
+    - men_statut_scolarite
+    - men_statut_boursier
+    - men_echelon_bourse
 test:
   api_whatever/whatever_resource: &default_test_scopes
     - allowed_scope
@@ -194,3 +264,4 @@ test:
   api_entreprise/v3_and_more/base: *default_test_scopes
   api_entreprise/v2/base: *default_test_scopes
   api_particulier: *default_test_scopes
+  api_particulier/v2/dummy_france_connected: *default_test_scopes
