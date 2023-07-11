@@ -48,6 +48,7 @@ RSpec.describe JwtTokenService do
 
           its(:id) { is_expected.to eq(uid) }
           its(:jti) { is_expected.to be_present }
+          its(:siret) { is_expected.to eq(token.siret) }
 
           it 'takes scopes from db, not token' do
             expect(subject.scopes).to eq(['valid'])

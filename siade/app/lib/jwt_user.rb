@@ -1,5 +1,5 @@
 class JwtUser
-  attr_reader :id, :jti, :scopes, :iat
+  attr_reader :id, :jti, :scopes, :iat, :siret
 
   def self.uptime_id
     '99999999-9999-9999-9999-999999999999'
@@ -9,13 +9,14 @@ class JwtUser
     '00000000-0000-0000-0000-000000000000'
   end
 
-  def initialize(uid:, scopes:, jti:, iat:, exp: nil, blacklisted: false)
+  def initialize(uid:, scopes:, jti:, iat:, exp: nil, blacklisted: false, siret: nil)
     @id = uid
     @scopes = scopes
     @jti = jti
     @iat = Time.zone.at iat
     @exp = exp
     @blacklisted = blacklisted
+    @siret = siret
   end
 
   def has_access?(scope)

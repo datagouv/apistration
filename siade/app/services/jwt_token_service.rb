@@ -36,6 +36,7 @@ class JwtTokenService
   def enhanced_jwt_data_with_token(jwt_data)
     token = extract_token_from_database!
 
+    jwt_data[:siret] = token.siret
     jwt_data[:scopes] = token.scopes
     jwt_data[:blacklisted] = token.blacklisted?
 
