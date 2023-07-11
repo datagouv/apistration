@@ -33,7 +33,37 @@ class Seeds
       }.merge(params)
     )
 
+    token.authorization_request = create_authorization_request(**params[:authorization_request] || {})
+
     token.save!
+  end
+
+  def create_authorization_request(authorization_request_id: nil, siret: generate_siret)
+    authorization_request = AuthorizationRequest.find_or_initialize_by(id: authorization_request_id)
+
+    authorization_request.assign_attributes(
+      siret:
+    )
+
+    authorization_request.save!
+
+    authorization_request
+  end
+
+  def generate_siret
+    random_number = 10_000_000
+
+    # rubocop:disable Style/MultilineBlockChain
+    sum = random_number.digits.each_with_index.map { |digit, index|
+      index.even? ? digit * 2 : digit
+    }.sum do |value|
+      value > 9 ? value - 9 : value
+    end
+    # rubocop:enable Style/MultilineBlockChain
+
+    last_digit = (10 - (sum % 10)) % 10
+
+    "#{random_number}#{last_digit}"
   end
 
   def no_scopes_jwt_id

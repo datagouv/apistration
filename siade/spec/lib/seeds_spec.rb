@@ -12,6 +12,7 @@ RSpec.describe Seeds, type: :lib do
       }.not_to raise_error
 
       expect(Token.count).to be >= 1
+      expect(AuthorizationRequest.count).to be >= 1
     end
   end
 end
