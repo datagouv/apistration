@@ -1,4 +1,6 @@
 RSpec.describe JwtTokenService do
+  let(:seeds) { Seeds.new }
+
   describe '#extract_user' do
     subject(:extract_user) { described_class.new(jwt).extract_user }
 
@@ -34,17 +36,14 @@ RSpec.describe JwtTokenService do
         end
 
         context 'when the uuid is in the database' do
-          before do
-            token = Token.find_or_initialize_by(id: uid)
-
-            token.assign_attributes(
+          let!(:token) do
+            seeds.create_token(
+              id: uid,
               iat: 1.day.ago.to_i,
               version: '1.0',
               exp: 18.months.from_now.to_i,
               scopes: ['valid']
             )
-
-            token.save!
           end
 
           its(:id) { is_expected.to eq(uid) }

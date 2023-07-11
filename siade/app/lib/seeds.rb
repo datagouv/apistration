@@ -15,12 +15,6 @@ class Seeds
     'c1578da0-52fe-4bca-bfac-b5e183e9e71c'
   end
 
-  private
-
-  def development_or_test?
-    Rails.env.development? || Rails.env.test?
-  end
-
   def create_token(params = {})
     token = Token.find_or_initialize_by(id: params[:id])
 
@@ -36,6 +30,8 @@ class Seeds
     token.authorization_request = create_authorization_request(**params[:authorization_request] || {})
 
     token.save!
+
+    token
   end
 
   def create_authorization_request(authorization_request_id: nil, siret: generate_siret)
@@ -48,6 +44,12 @@ class Seeds
     authorization_request.save!
 
     authorization_request
+  end
+
+  private
+
+  def development_or_test?
+    Rails.env.development? || Rails.env.test?
   end
 
   def generate_siret
