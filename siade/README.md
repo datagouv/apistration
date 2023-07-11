@@ -222,6 +222,11 @@ Pour les options et fichiers générés, voir :
 
 `bundle exec rails generate scaffold_resource --help`
 
+Si l'API n'est pas encore prête à être développée, la commande précédente peut être appellée
+avec l'option `--prochainement`. Cela crée un squelette pour la prochaine API et permet de
+la documenter dans le fichier OpenAPI.
+Il faut bien se rapeller de rajouter le tag `Prochainement` dans le swagger de l'API.
+
 ## Fonctionnement du staging
 
 En staging, aucun appel aux FDs n'est effectué: un système de bouchonnage est
