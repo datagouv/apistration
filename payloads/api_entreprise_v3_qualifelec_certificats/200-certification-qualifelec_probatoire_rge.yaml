@@ -1,0 +1,82 @@
+---
+description: |-
+  ## 200 - Certification probatoire Qualifelec PRGE
+  
+  Ce cas permet de tester :
+  - Réponse 200 ;
+  - Mention RGE ;
+  - Certification probatoire
+  - Indices, mentions et classifications sont complétés ;
+  - Avec domaines - peu de qualifications ont des domaines ;
+  - Tableaux de mentions et de domaines.
+params:
+  siret: '42417936400023'
+status: 200
+payload: |-
+  {
+    "data":[
+        {
+          "data":{
+              "document_url":"https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
+              "numero":"02840",
+              "rge":true,
+              "date_debut":"2023-02-01",
+              "date_fin":"2024-01-31",
+              "qualification":{
+                "label":"COURANTS FAIBLES MOYEN GROS TERTIAIRE INDUSTRIE (CFMGTI)",
+                "date_debut":"2023-02-01",
+                "date_fin":"2025-01-31",
+                "indices":[
+                    {
+                      "code":"CFMGTI",
+                      "label":"Indice 2 (avec identification d’au minimum 1 domaine)"
+                    }
+                ],
+                "mentions":[
+                    {
+                      "code":"PRGE",
+                      "label":"Probatoire Reconnu Garant de l’Environnement"
+                    },
+                    {
+                      "code":"FO",
+                      "label":"Fibre Optique"
+                    }
+                ],
+                "domaines":[
+                    {
+                      "code":"RC",
+                      "label":"Réseaux de Communications"
+                    },
+                    {
+                      "code":"ST",
+                      "label":"Sécurité"
+                    }
+                ],
+                "classification":{
+                    "code":1,
+                    "label":"Classe 5 - de 50 à 250 exécutants"
+                }
+              },
+              "assurance_decennale":{
+                "nom":"AXA",
+                "date_debut":"2023-02-01",
+                "date_fin":"2024-01-31"
+              },
+              "assurance_civile":{
+                "nom":"ALLIANZ IARD",
+                "date_debut":"2023-02-01",
+                "date_fin":"2024-01-31"
+              }
+          },
+          "links":{
+          },
+          "meta":{
+          }
+        }
+    ],
+    "meta":{
+        "total":8
+    },
+    "links":{
+    }
+  }

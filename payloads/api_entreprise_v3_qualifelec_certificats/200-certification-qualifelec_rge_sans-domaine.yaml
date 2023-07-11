@@ -1,0 +1,76 @@
+---
+description: |-
+  ## 200 - Certification Qualifelec RGE
+  
+  Ce cas permet de tester :
+  - Réponse 200 ;
+  - Mention RGE ;
+  - Indices, mentions et classifications sont complétés ;
+  - Sans domaine ;
+  - Tableaux de plusieurs mentions.
+params:
+  siret: '55204944776279'
+status: 200
+payload: |-
+  {
+    "data":[
+        {
+          "data":{
+              "document_url":"https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
+              "numero":"02840",
+              "rge":true,
+              "date_debut":"2023-02-01",
+              "date_fin":"2024-01-31",
+              "qualification":{
+                "label":"Installations Électriques Logement Commerce Petit Tertiaire - LCPT",
+                "date_debut":"2023-02-01",
+                "date_fin":"2027-01-31",
+                "indices":[
+                    {
+                      "code":"LCPT",
+                      "label":"Logement Commerce Petit Tertiaire"
+                    }
+                ],
+                "mentions":[
+                    {
+                      "code":"RGE",
+                      "label":"Reconnu Garant de l’Environnement"
+                    },
+                    {
+                      "code":"ATC",
+                      "label":"Autocontrôle"
+                    },
+                    {
+                      "code":"IRVE2",
+                      "label":"Infrastructures de Recharge des Véhicules Électriques - niveau de formation 2"
+                    }
+                ],
+                "domaines": [],
+                "classification":{
+                    "code":1,
+                    "label":"Classe 1 - de 1 à 3 exécutants"
+                }
+              },
+              "assurance_decennale":{
+                "nom":"AXA",
+                "date_debut":"2023-02-01",
+                "date_fin":"2024-01-31"
+              },
+              "assurance_civile":{
+                "nom":"ALLIANZ IARD",
+                "date_debut":"2023-02-01",
+                "date_fin":"2024-01-31"
+              }
+          },
+          "links":{
+          },
+          "meta":{
+          }
+        }
+    ],
+    "meta":{
+        "total":8
+    },
+    "links":{
+    }
+  }
