@@ -119,6 +119,9 @@ Naming/MethodParameterName:
     - "_"
     - "nb"
 
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
 Rails/Inquiry:
   Exclude:
     - 'spec/**/*_spec.rb'
