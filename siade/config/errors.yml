@@ -64,7 +64,7 @@
 
 - code: '00103'
   title: 'Jeton expiré'
-  detail: "Votre token est expiré. Vous devez refaire une demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token."
+  detail: "Votre token est expiré. Vous devez refaire une demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration"
   source: *source_token
 
 - code: '00104'
