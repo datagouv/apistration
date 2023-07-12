@@ -12,7 +12,7 @@
     "data": [
       {
         "data": {
-          "document_url": "https://www.qualifelec.fr/certifmoteur/4/3631.pdf",
+          "document_url": "https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
           "numero": "05430",
           "rge": true,
           "date_debut": "2019-01-01",

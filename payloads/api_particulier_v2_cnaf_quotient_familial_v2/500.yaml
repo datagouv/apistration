@@ -2,7 +2,7 @@
 description: 'Erreur interne du serveur'
 params:
   codePaysLieuDeNaissance: '99500'
-  sexe: F
+  sexe: 'F'
 status: 500
 payload: |-
   {

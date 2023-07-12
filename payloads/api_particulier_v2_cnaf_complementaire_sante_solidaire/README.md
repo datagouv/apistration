@@ -18,382 +18,32 @@
   </p>
   </details>
 
-* [200-cas1.yaml](200-cas1.yaml)
+* [200-beneficiaire_avec_participation-feminin.yaml](200-beneficiaire_avec_participation-feminin.yaml)
 
   Status `200`
 
-  Bénéficiaire (M) **avec** participation financière
+  ## Bénéficiaire AVEC participation financière - féminin
+
+Ce cas permet de tester :
+- [Param. appel] lieu de naissance en France
+- [Param. appel] sexe féminin
+- [Param. appel] Deux prénoms
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière
 
   <details><summary>Paramètres</summary>
   <p>
 
   ```json
   {
-    "codePaysLieuDeNaissance": "99101",
-    "sexe": "M",
+    "codeInseeLieuDeNaissance": "08480",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "F",
     "nomUsage": "DUPONT",
     "prenoms": [
-      "PIERRE",
-      "PAUL"
+      "JEANNE",
+      "LAURE"
     ],
-    "anneeDateDeNaissance": 1970,
-    "moisDateDeNaissance": 6
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "status": "beneficiaire_avec_participation_financiere",
-    "dateDebut": "2022-02-01",
-    "dateFin": "2023-02-01"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99101' -d 'sexe=M' -d 'nomUsage=DUPONT' -d 'prenoms[]=PIERRE' -d 'prenoms[]=PAUL' -d 'anneeDateDeNaissance=1970' -d 'moisDateDeNaissance=6' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
-  ```
-
-  </p>
-  </details>
-* [200-cas2.yaml](200-cas2.yaml)
-
-  Status `200`
-
-  Bénéficiaire (F) **avec** participation financière
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "codePaysLieuDeNaissance": "99102",
-    "sexe": "F",
-    "nomUsage": "SABER",
-    "prenoms": [
-      "YOLENE",
-      "BRIGITTE"
-    ],
-    "anneeDateDeNaissance": 1970,
-    "moisDateDeNaissance": 6
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "status": "beneficiaire_avec_participation_financiere",
-    "dateDebut": "2022-02-01",
-    "dateFin": "2023-02-01"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99102' -d 'sexe=F' -d 'nomUsage=SABER' -d 'prenoms[]=YOLENE' -d 'prenoms[]=BRIGITTE' -d 'anneeDateDeNaissance=1970' -d 'moisDateDeNaissance=6' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
-  ```
-
-  </p>
-  </details>
-* [200-cas3.yaml](200-cas3.yaml)
-
-  Status `200`
-
-  Bénéficiaire (M) **avec** participation financière
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "codePaysLieuDeNaissance": "99103",
-    "sexe": "M",
-    "nomUsage": "KOWALSKY",
-    "prenoms": [
-      "JEROME",
-      "ANTHONY"
-    ],
-    "anneeDateDeNaissance": 1980,
-    "moisDateDeNaissance": 6
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "status": "beneficiaire_avec_participation_financiere",
-    "dateDebut": "2022-02-01",
-    "dateFin": "2023-02-01"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99103' -d 'sexe=M' -d 'nomUsage=KOWALSKY' -d 'prenoms[]=JEROME' -d 'prenoms[]=ANTHONY' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=6' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
-  ```
-
-  </p>
-  </details>
-* [200-cas4.yaml](200-cas4.yaml)
-
-  Status `200`
-
-  Bénéficiaire (F) **avec** participation financière
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "codePaysLieuDeNaissance": "99104",
-    "sexe": "F",
-    "nomUsage": "PELLETI",
-    "prenoms": [
-      "GERALDINE",
-      "ANTOINETTE"
-    ],
-    "anneeDateDeNaissance": 1980,
-    "moisDateDeNaissance": 6
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "status": "beneficiaire_avec_participation_financiere",
-    "dateDebut": "2022-02-01",
-    "dateFin": "2023-02-01"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99104' -d 'sexe=F' -d 'nomUsage=PELLETI' -d 'prenoms[]=GERALDINE' -d 'prenoms[]=ANTOINETTE' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=6' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
-  ```
-
-  </p>
-  </details>
-* [200-cas5.yaml](200-cas5.yaml)
-
-  Status `200`
-
-  Bénéficiaire (M) **sans** participation financière
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "codePaysLieuDeNaissance": "99105",
-    "sexe": "M",
-    "nomUsage": "LEMONCELLO",
-    "prenoms": [
-      "PHILIPPE",
-      "CLAUDE"
-    ],
-    "anneeDateDeNaissance": 1990,
-    "moisDateDeNaissance": 6
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "status": "beneficiaire_sans_participation_financiere",
-    "dateDebut": "2022-02-01",
-    "dateFin": "2023-02-01"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99105' -d 'sexe=M' -d 'nomUsage=LEMONCELLO' -d 'prenoms[]=PHILIPPE' -d 'prenoms[]=CLAUDE' -d 'anneeDateDeNaissance=1990' -d 'moisDateDeNaissance=6' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
-  ```
-
-  </p>
-  </details>
-* [200-cas6.yaml](200-cas6.yaml)
-
-  Status `200`
-
-  Bénéficiaire (M) **sans** participation financière
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "codePaysLieuDeNaissance": "99106",
-    "sexe": "M",
-    "nomUsage": "GOMEZ",
-    "prenoms": [
-      "BERTRAND",
-      "JEAN"
-    ],
-    "anneeDateDeNaissance": 1990,
-    "moisDateDeNaissance": 6
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "status": "beneficiaire_sans_participation_financiere",
-    "dateDebut": "2022-02-01",
-    "dateFin": "2023-02-01"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99106' -d 'sexe=M' -d 'nomUsage=GOMEZ' -d 'prenoms[]=BERTRAND' -d 'prenoms[]=JEAN' -d 'anneeDateDeNaissance=1990' -d 'moisDateDeNaissance=6' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
-  ```
-
-  </p>
-  </details>
-* [200-cas7.yaml](200-cas7.yaml)
-
-  Status `200`
-
-  Bénéficiaire (M) **sans** participation financière
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "codePaysLieuDeNaissance": "99107",
-    "sexe": "M",
-    "nomUsage": "NAUDI",
-    "prenoms": [
-      "ALAIN",
-      "JEROME"
-    ],
-    "anneeDateDeNaissance": 2000,
-    "moisDateDeNaissance": 6
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "status": "beneficiaire_sans_participation_financiere",
-    "dateDebut": "2022-02-01",
-    "dateFin": "2023-02-01"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99107' -d 'sexe=M' -d 'nomUsage=NAUDI' -d 'prenoms[]=ALAIN' -d 'prenoms[]=JEROME' -d 'anneeDateDeNaissance=2000' -d 'moisDateDeNaissance=6' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
-  ```
-
-  </p>
-  </details>
-* [200-cas8.yaml](200-cas8.yaml)
-
-  Status `200`
-
-  Personne (M) non bénéficiaire de la CSS
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "codePaysLieuDeNaissance": "99108",
-    "sexe": "M",
-    "nomUsage": "BOULZY",
-    "prenoms": [
-      "TRISTAN",
-      "SERGE"
-    ],
-    "anneeDateDeNaissance": 1988,
+    "anneeDateDeNaissance": 1993,
     "moisDateDeNaissance": 8
   }
   ```
@@ -406,9 +56,9 @@
 
   ```json
   {
-    "status": "non_beneficiaire_css",
-    "dateDebut": null,
-    "dateFin": null
+    "status": "beneficiaire_avec_participation_financiere",
+    "dateDebut": "2023-06-01",
+    "dateFin": "2024-06-01"
   }
   ```
 
@@ -420,30 +70,94 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99108' -d 'sexe=M' -d 'nomUsage=BOULZY' -d 'prenoms[]=TRISTAN' -d 'prenoms[]=SERGE' -d 'anneeDateDeNaissance=1988' -d 'moisDateDeNaissance=8' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=DUPONT' -d 'prenoms[]=JEANNE' -d 'prenoms[]=LAURE' -d 'anneeDateDeNaissance=1993' -d 'moisDateDeNaissance=8' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 
   </p>
   </details>
-* [200-cas9.yaml](200-cas9.yaml)
+* [200-beneficiaire_sans_participation-masculin-pays_etranger.yaml](200-beneficiaire_sans_participation-masculin-pays_etranger.yaml)
 
   Status `200`
 
-  Bénéficiaire (M) **avec** participation financière
+  ## Bénéficiaire SANS participation financière - masculin - né dans un pays étranger
+
+Ce cas permet de tester :
+- [Param. appel] Pays de naissance autre que la France
+- [Param. appel] sexe masculin
+- [Param. appel] Deux prénoms
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière
 
   <details><summary>Paramètres</summary>
   <p>
 
   ```json
   {
-    "codePaysLieuDeNaissance": "99101",
+    "codeInseeLieuDeNaissance": "08481",
+    "codePaysLieuDeNaissance": "99127",
     "sexe": "M",
-    "nomUsage": "PIERRE",
+    "nomUsage": "DUPONT",
     "prenoms": [
-      "GUI"
+      "PIERRE",
+      "PAUL"
     ],
-    "anneeDateDeNaissance": 1970,
+    "anneeDateDeNaissance": 1984,
+    "moisDateDeNaissance": 12
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "status": "beneficiaire_sans_participation_financiere",
+    "dateDebut": "2023-02-01",
+    "dateFin": "2024-02-01"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codeInseeLieuDeNaissance=08481' -d 'codePaysLieuDeNaissance=99127' -d 'sexe=M' -d 'nomUsage=DUPONT' -d 'prenoms[]=PIERRE' -d 'prenoms[]=PAUL' -d 'anneeDateDeNaissance=1984' -d 'moisDateDeNaissance=12' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
+  ```
+
+  </p>
+  </details>
+* [200-non-beneficiaire_masculin.yaml](200-non-beneficiaire_masculin.yaml)
+
+  Status `200`
+
+  ## Non bénéficiaire - masculin
+
+Ce cas permet de tester :
+- [Param. appel] lieu de naissance en France
+- [Param. appel] sexe masculin
+- [Réponse] statut non-bénéficiaire de la complémentaire santé solidaire
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeInseeLieuDeNaissance": "08480",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "M",
+    "nomUsage": "DUPONT",
+    "prenoms": [
+      "PIERRE"
+    ],
+    "anneeDateDeNaissance": 1966,
     "moisDateDeNaissance": 6
   }
   ```
@@ -456,9 +170,9 @@
 
   ```json
   {
-    "status": "beneficiaire_avec_participation_financiere",
-    "dateDebut": "2022-02-01",
-    "dateFin": "2023-02-01"
+    "status": "non_beneficiaire_css",
+    "dateDebut": "null",
+    "dateFin": "null"
   }
   ```
 
@@ -470,7 +184,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99101' -d 'sexe=M' -d 'nomUsage=PIERRE' -d 'prenoms[]=GUI' -d 'anneeDateDeNaissance=1970' -d 'moisDateDeNaissance=6' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' -d 'nomUsage=DUPONT' -d 'prenoms[]=PIERRE' -d 'anneeDateDeNaissance=1966' -d 'moisDateDeNaissance=6' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 
