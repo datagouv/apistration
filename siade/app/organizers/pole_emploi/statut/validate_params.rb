@@ -1,4 +1,4 @@
 class PoleEmploi::Statut::ValidateParams < ValidateParamsOrganizer
-  organize PoleEmploi::Statut::ValidateIdentifiantPresence,
+  organize PoleEmploi::ValidateIdentifiantPresence,
     ServiceUser::ValidateUserId
 end
