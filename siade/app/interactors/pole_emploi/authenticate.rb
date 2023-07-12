@@ -8,6 +8,7 @@ class PoleEmploi::Authenticate < GetOAuth2Token
   def scope
     [
       'api_statutaugmentev1',
+      'api_liste-paiementsv1',
       'individuStatutAugmente',
       "application_#{client_id}"
     ].join(' ')
