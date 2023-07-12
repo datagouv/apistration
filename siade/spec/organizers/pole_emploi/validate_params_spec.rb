@@ -1,4 +1,4 @@
-RSpec.describe PoleEmploi::Statut::ValidateParams, type: :validate_params do
+RSpec.describe PoleEmploi::ValidateParams, type: :validate_params do
   subject { described_class.call(params:) }
 
   let(:params) do

@@ -1,5 +1,5 @@
 class PoleEmploi::Statut < RetrieverOrganizer
-  organize PoleEmploi::Statut::ValidateParams,
+  organize PoleEmploi::ValidateParams,
     PoleEmploi::Authenticate,
     PoleEmploi::Statut::MakeRequest,
     PoleEmploi::Statut::ValidateResponse,
