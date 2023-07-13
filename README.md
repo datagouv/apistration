@@ -2,6 +2,7 @@
 
 [![Tests](https://github.com/etalab/siade_staging_data/actions/workflows/tests.yml/badge.svg)](https://github.com/etalab/siade_staging_data/actions/workflows/tests.yml)
 
+* [Quick start](#quick-start)
 * [Fonctionnement](#fonctionnement)
   * [Cas de FranceConnect](#cas-de-franceconnect)
 * [Contribution](#contribution)
@@ -17,6 +18,34 @@ Ce dépôt contient l'ensemble des données de tests pour les environnements de 
 à sable d'API Entreprise (seulement pour la v3+)
 ( https://staging.entreprise.api.gouv.fr ) et d'API
 Particulier ( https://staging.particulier.api.gouv.fr )
+
+## Quick start
+
+tl;dr:
+
+En console:
+
+Récupération d'un jeton:
+```sh
+token=`curl https://raw.githubusercontent.com/etalab/siade_staging_data/develop/tokens/default`
+```
+
+Test d'API Entreprise:
+```sh
+curl -H "Authorization: Bearer $token" \
+  -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
+  --url "https://staging.entreprise.api.gouv.fr/v3/urssaf/unites_legales/418166096/attestation_vigilance"
+```
+
+Test d'API Particulier
+```sh
+curl -H "X-Api-Key: $token" \
+  -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=DUPONT' -d 'prenoms[]=JEANNE' -d 'prenoms[]=LAURE' -d 'anneeDateDeNaissance=1993' -d 'moisDateDeNaissance=8' \
+  --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
+```
+
+Les exemples sont dans les accordéons "Commande cURL" dans les dossiers de
+[payloads](./payloads)
 
 ## Fonctionnement
 
