@@ -8,7 +8,7 @@ RSpec.describe PoleEmploi::Statut::BuildResource, type: :build_resource do
   end
 
   let(:identifiant_pole_emploi) { 'whatever' }
-  let(:body) { read_payload_file('pole_emploi/statut_valid.json') }
+  let(:body) { read_payload_file('pole_emploi/statut/valid.json') }
 
   it { is_expected.to be_a_success }
 

@@ -11,7 +11,7 @@ RSpec.describe APIParticulier::V2::PoleEmploi::StatutController do
     before do
       stub_request(:post, Siade.credentials[:pole_emploi_status_url]).and_return(
         status: 200,
-        body: read_payload_file('pole_emploi/statut_valid.json')
+        body: read_payload_file('pole_emploi/statut/valid.json')
       )
 
       affect_scopes_to_yes_jwt_token(scopes)
@@ -62,7 +62,7 @@ RSpec.describe APIParticulier::V2::PoleEmploi::StatutController do
     before do
       stub_request(:post, Siade.credentials[:pole_emploi_status_url]).and_return(
         status: 404,
-        body: read_payload_file('pole_emploi/statut_not_found.json')
+        body: read_payload_file('pole_emploi/statut/not_found.json')
       )
     end
 

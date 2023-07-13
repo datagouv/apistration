@@ -8,7 +8,7 @@ RSpec.describe PoleEmploi::Statut::ValidateResponse, type: :validate_response do
       end
 
       context 'with valid body' do
-        let(:body) { read_payload_file('pole_emploi/statut_valid.json') }
+        let(:body) { read_payload_file('pole_emploi/statut/valid.json') }
 
         it { is_expected.to be_a_success }
 
@@ -29,7 +29,7 @@ RSpec.describe PoleEmploi::Statut::ValidateResponse, type: :validate_response do
         instance_double(Net::HTTPNotFound, code: 404, body:)
       end
 
-      let(:body) { read_payload_file('pole_emploi/statut_not_found.json') }
+      let(:body) { read_payload_file('pole_emploi/statut/not_found.json') }
 
       it { is_expected.to be_a_failure }
 
