@@ -2584,6 +2584,9 @@ paths:
                   description: Problème de résolution DNS de l'adresse du serveur
               schema:
                 "$ref": "#/components/schemas/Error"
+      x-maintenances:
+        from_hour: '06:00'
+        to_hour: '06:30'
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -2591,9 +2594,6 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/cnetp/unites_legales/130025265/attestation_cotisations_conges_payes_chomage_intemperies?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-      x-maintenances:
-        from_hour: '06:00'
-        to_hour: '06:30'
   "/v3/douanes/etablissements/{siret_or_eori}/immatriculations_eori":
     get:
       summary: Immatriculation EORI
@@ -3401,6 +3401,9 @@ paths:
                   description: Problème de résolution DNS de l'adresse du serveur
               schema:
                 "$ref": "#/components/schemas/Error"
+      x-maintenances:
+        from_hour: '01:00'
+        to_hour: '02:00'
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -3408,9 +3411,6 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/dgfip/unites_legales/130025265/attestation_fiscale?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-      x-maintenances:
-        from_hour: '01:00'
-        to_hour: '02:00'
   "/v4/dgfip/unites_legales/{siren}/attestation_fiscale":
     get:
       summary: Attestation fiscale
@@ -3852,6 +3852,9 @@ paths:
                   description: Problème de résolution DNS de l'adresse du serveur
               schema:
                 "$ref": "#/components/schemas/Error"
+      x-maintenances:
+        from_hour: '01:00'
+        to_hour: '02:00'
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -3859,9 +3862,6 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v4/dgfip/unites_legales/130025265/attestation_fiscale?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-      x-maintenances:
-        from_hour: '01:00'
-        to_hour: '02:00'
   "/v3/dgfip/etablissements/{siret}/chiffres_affaires":
     get:
       summary: Chiffre d'affaires
@@ -4212,6 +4212,9 @@ paths:
                   description: Problème de résolution DNS de l'adresse du serveur
               schema:
                 "$ref": "#/components/schemas/Error"
+      x-maintenances:
+        from_hour: '01:00'
+        to_hour: '02:00'
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -4219,9 +4222,6 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/dgfip/etablissements/13002526500013/chiffres_affaires?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-      x-maintenances:
-        from_hour: '01:00'
-        to_hour: '02:00'
   "/v3/dgfip/unites_legales/{siren}/liasses_fiscales/{year}":
     get:
       summary: Liasses fiscales
@@ -4790,6 +4790,9 @@ paths:
                   description: Problème de résolution DNS de l'adresse du serveur
               schema:
                 "$ref": "#/components/schemas/Error"
+      x-maintenances:
+        from_hour: '01:00'
+        to_hour: '02:00'
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -4797,9 +4800,6 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/dgfip/unites_legales/130025265/liasses_fiscales/2019?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-      x-maintenances:
-        from_hour: '01:00'
-        to_hour: '02:00'
   "/v4/djepva/api-association/associations/{siren_or_rna}":
     get:
       summary: Données association

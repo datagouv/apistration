@@ -9,9 +9,16 @@ open_api = YAML.load_file(open_api_path)
 maintenances_path = File.expand_path('../../config/maintenances.yml', __FILE__)
 maintenances = YAML.load_file(maintenances_path, aliases: true)['production']
 
-open_api['paths'].each do |path, schema|
+def augment_with_maintenances(schema, path, maintenances)
   path_regular_maintenances = (maintenances[ExtractProviderFromPath.new(path).perform] || {}).except('dates')
 
+  schema['get'].merge!({
+      'x-maintenances' => path_regular_maintenances.present? ? path_regular_maintenances : nil,
+    }.compact
+  )
+end
+
+def augment_with_code_samples(schema, path)
   schema['get'].merge!({
       'x-codeSamples' => [
         {
@@ -19,10 +26,14 @@ open_api['paths'].each do |path, schema|
           'label'   => 'Ligne de commande',
           'source'  => GenerateCodeSampleFromPath.new(path).perform
         }
-      ],
-      'x-maintenances' => path_regular_maintenances.present? ? path_regular_maintenances : nil,
+      ]
     }.compact
   )
+end
+
+open_api['paths'].each do |path, schema|
+  augment_with_maintenances(schema, path, maintenances)
+  augment_with_code_samples(schema, path)
 end
 
 File.write(open_api_path, open_api.to_yaml)
