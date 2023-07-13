@@ -816,6 +816,121 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/Error"
+  "/api/v2/paiements-pole-emploi":
+    get:
+      summary: Paiements versés par Pôle Emploi
+      tags:
+      - Paiements Pôle Emploi
+      parameters:
+      - name: X-Api-Key
+        in: header
+        schema:
+          type: string
+      - name: identifiant
+        in: query
+        description: Identifiant Pôle emploi choisi par le particulier lors de la
+          création de son espace personnel en ligne.
+        example: jean.dupont33
+        required: true
+        schema:
+          type: string
+      description: Ensemble des paiements versé par Pôle Emploi pour un usager
+      responses:
+        '200':
+          description: Paiements trouvées
+          x-operationId: api_particulier_v2_pole_emploi_indemnites
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  identifiant:
+                    title: Nom d'utilisateur Pôle emploi
+                    type: string
+                    description: Identifiant Pôle emploi, tel qu'il a été renseigné
+                      en paramètre d'appel. Cet identifiant est le nom d'utilisateur
+                      tel que choisi par le particulier lors de la création de son
+                      espace personnel en ligne.
+                    example: jean.dupont33
+                  paiements:
+                    title: Paiements
+                    type: array
+                    minItems: 1
+                    items:
+                      title: Paiement
+                      type: object
+                      properties:
+                        date:
+                          title: Date du paiement
+                          type: string
+                          example: '2021-01-01'
+                        montant:
+                          title: Montant
+                          type: number
+                          example: 123.4
+                        allocations:
+                          title: Allocations
+                          type: number
+                          example: 45.1
+                        aides:
+                          title: Aides
+                          type: number
+                          example: 12.21
+                        autres:
+                          title: Autres paiements
+                          type: number
+                          example: 2.34
+        '400':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                entite_non_traitable_00380:
+                  value:
+                    errors:
+                    - code: '00380'
+                      title: Entité non traitable
+                      detail: L'identifiant Pole Emploi est manquant
+                      source:
+                      meta: {}
+                  summary: Entité non traitable
+                  description: L'identifiant Pole Emploi est manquant
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '404':
+          description: Non trouvée
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unknown_error:
+                  value:
+                    errors:
+                    - code: '24999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: Pôle Emploi
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/api/v2/avis-imposition":
     get:
       description: |-

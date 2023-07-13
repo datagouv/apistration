@@ -1,0 +1,47 @@
+pole_emploi:
+  indemnites:
+    title: "Paiements versés par Pôle Emploi"
+    description: "Ensemble des paiements versé par Pôle Emploi pour un usager"
+    tags:
+      - Paiements Pôle Emploi
+    parameters:
+      identifiant:
+        required: true
+        description: Identifiant Pôle emploi choisi par le particulier lors de la création de son espace personnel en ligne.
+        type: string
+        example: 'jean.dupont33'
+    attributes:
+      identifiant:
+        title: Nom d'utilisateur Pôle emploi
+        type: string
+        description: Identifiant Pôle emploi, tel qu'il a été renseigné en paramètre d'appel. Cet identifiant est le nom d'utilisateur tel que choisi par le particulier lors de la création de son espace personnel en ligne.
+        example: 'jean.dupont33'
+      paiements:
+        title: "Paiements"
+        type: array
+        minItems: 1
+        items:
+          title: "Paiement"
+          type: object
+          properties:
+            date:
+              title: Date du paiement
+              type: string
+              example: '2021-01-01'
+            montant:
+              title: Montant
+              type: number
+              example: 123.4
+            allocations:
+              title: Allocations
+              type: number
+              example: 45.1
+            aides:
+              title: Aides
+              type: number
+              example: 12.21
+            autres:
+              title: Autres paiements
+              type: number
+              example: 2.34
+

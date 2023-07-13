@@ -18,6 +18,7 @@ namespace '/api', constraints: APIParticulierDomainConstraint.new do
     get 'composition-familiale-v2' => '/api_particulier/v2/cnaf/quotient_familial_v2#show'
     get 'composition-familiale' => '/api_particulier/v2/cnaf/quotient_familial#show'
     get 'situations-pole-emploi' => '/api_particulier/v2/pole_emploi/statut#show'
+    get 'paiements-pole-emploi' => '/api_particulier/v2/pole_emploi/indemnites#show'
     get 'etudiants' => '/api_particulier/v2/mesri/student_status#show'
     get 'scolarites' => '/api_particulier/v2/men/scolarites#show'
     get 'etudiants-boursiers' => '/api_particulier/v2/cnous/student_scholarship#show'
