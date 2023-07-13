@@ -1,0 +1,12 @@
+{
+  "statutInscription":true,
+  "listePaiement": [
+    {
+      "datePaiement": "2023-07-03T00:00:00+02:00",
+      "montantPaiement": 123.4,
+      "allocations": 123.4,
+      "aides": 0.0,
+      "autresPaiements": 0.0
+    }
+  ]
+}
