@@ -1,0 +1,28 @@
+class PoleEmploi::Indemnites::BuildResource < BuildResource
+  protected
+
+  def resource_attributes
+    {
+      identifiant:,
+      paiements: payments
+    }
+  end
+
+  private
+
+  def identifiant
+    context.params[:identifiant_pole_emploi]
+  end
+
+  def payments
+    json_body['listePaiement'].map do |payment|
+      {
+        date: Date.parse(payment['datePaiement']),
+        montant: payment['montantPaiement'],
+        allocations: payment['allocations'],
+        aides: payment['aides'],
+        autres: payment['autresPaiements']
+      }
+    end
+  end
+end
