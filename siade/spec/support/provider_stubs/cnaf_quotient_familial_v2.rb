@@ -30,7 +30,11 @@ module ProviderStubs::CNAFQuotientFamilialV2
   # rubocop:enable Metrics/MethodLength
 
   def stub_cnaf_quotient_familial_v2_authenticate
-    stub_request(:post, Siade.credentials[:cnaf_authenticate_url]).to_return(
+    stub_request(:post, Siade.credentials[:cnaf_authenticate_url]).with(
+      headers: {
+        'Authorization' => "Basic #{Base64.urlsafe_encode64("#{Siade.credentials[:cnaf_quotient_familial_v2_client_id]}:#{Siade.credentials[:cnaf_quotient_familial_v2_client_secret]}")}"
+      }
+    ).to_return(
       status: 200,
       body: Rails.root.join('spec/fixtures/payloads/cnaf/quotient_familial_v2/valid_authentication.json').read
     )
