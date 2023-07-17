@@ -191,7 +191,7 @@ GEM
       commonmarker (~> 0.17)
     openssl (3.1.0)
     optimist (3.0.1)
-    ox (2.14.16)
+    ox (2.14.17)
     parallel (1.23.0)
     parser (3.2.2.3)
       ast (~> 2.4.1)
