@@ -101,7 +101,7 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
         example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.mois.example'),
         required: false
 
-      let(:'X-Api-Key') { TokenFactory.new(scopes).valid(jti: uid) }
+      let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
       let(:request_token) { 'super_valid_token' }
       let(:uid) { SecureRandom.uuid }
 
@@ -120,7 +120,7 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
 
       before do
         stub_cnaf_quotient_familial_v2_authenticate
-        stub_cnaf_quotient_familial_v2_valid(siret: uid)
+        stub_cnaf_quotient_familial_v2_valid(siret: '100000009')
       end
 
       describe 'with valid token and mandatory params' do
