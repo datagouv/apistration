@@ -152,6 +152,27 @@ module RSWagCommonsResponses
     end
   end
 
+  def too_many_requests(provider, &block)
+    describe 'when exceeding request limit' do
+      include_context 'Valid params (mandatory and token)'
+
+      response '429', 'Trop de requêtes' do
+        block.call if block_given?
+
+        stubbed_organizer_error(
+          provider,
+          TooManyRequestsError.new
+        )
+
+        build_rswag_example(TooManyRequestsError.new, :too_many_requests_error)
+
+        schema '$ref' => '#/components/schemas/Error'
+
+        run_test!
+      end
+    end
+  end
+
   def common_provider_errors_request(provider_name, organizer_klass, extra_errors = [], &block)
     response '502', 'Erreur du fournisseur' do
       provider_unknown_error = ProviderUnknownError.new(provider_name)

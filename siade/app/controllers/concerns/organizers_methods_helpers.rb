@@ -21,6 +21,8 @@ module OrganizersMethodsHelpers
       :conflict
     elsif at_least_one_error_kind_of?(:internal_error, retriever)
       :internal_error
+    elsif at_least_one_error_kind_of?(:too_many_requests, retriever)
+      :too_many_requests
     else
       raise 'No valid HTTP status'
     end
