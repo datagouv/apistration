@@ -5,6 +5,7 @@ class GIPMDS::Effectifs::BuildResource < BuildResource
     @cleaned_effectifs ||= json_body.map do |effectif|
       base_data = {
         regime: extract_regime_from_effectif(effectif),
+        nature: extract_nature_from_effectif(effectif),
         year: effectif['periode'].first(4),
         month: effectif['periode'][4..5]
       }
@@ -33,6 +34,17 @@ class GIPMDS::Effectifs::BuildResource < BuildResource
       'regime_general'
     else
       raise "Unknown source #{effectif['source']}"
+    end
+  end
+
+  def extract_nature_from_effectif(effectif)
+    case effectif['nature']
+    when 'A01'
+      'effectif_moyen_annuel'
+    when 'M01'
+      'effectif_moyen_mensuel'
+    else
+      raise "Unknown type #{effectif['nature']}"
     end
   end
 

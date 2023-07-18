@@ -36,6 +36,7 @@ RSpec.describe GIPMDS::EffectifsMensuelsEtablissement::BuildResource, type: :bui
             {
               regime: 'regime_agricole',
               year:,
+              nature: 'effectif_moyen_mensuel',
               month: '01',
               value: nil,
               date_derniere_mise_a_jour: nil
@@ -43,6 +44,7 @@ RSpec.describe GIPMDS::EffectifsMensuelsEtablissement::BuildResource, type: :bui
             {
               regime: 'regime_general',
               year:,
+              nature: 'effectif_moyen_mensuel',
               month: '01',
               value: 16.64,
               date_derniere_mise_a_jour: Time.zone.today

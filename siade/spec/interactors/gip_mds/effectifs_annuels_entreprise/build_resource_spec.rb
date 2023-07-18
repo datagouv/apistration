@@ -32,6 +32,7 @@ RSpec.describe GIPMDS::EffectifsAnnuelsEntreprise::BuildResource, type: :build_r
             {
               regime: 'regime_agricole',
               year:,
+              nature: 'effectif_moyen_annuel',
               month: '12',
               value: nil,
               date_derniere_mise_a_jour: nil
@@ -39,6 +40,7 @@ RSpec.describe GIPMDS::EffectifsAnnuelsEntreprise::BuildResource, type: :build_r
             {
               regime: 'regime_general',
               year:,
+              nature: 'effectif_moyen_annuel',
               month: '12',
               value: 16.64,
               date_derniere_mise_a_jour: Time.zone.today
