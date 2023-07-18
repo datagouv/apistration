@@ -17,6 +17,10 @@ RSpec.describe 'DGFIP: chiffres d\'affaires', api: :entreprise, type: %i[request
         let(:siret) { valid_siret(:exercice) }
       end
 
+      too_many_requests(DGFIP::ChiffresAffaires) do
+        let(:siret) { valid_siret(:exercice) }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         response '200', 'Exercices trouvés', vcr: { cassette_name: 'dgfip/chiffres_affaires/valid' } do
           description SwaggerData.get('dgfip.chiffres_affaires.description')

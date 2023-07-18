@@ -25,6 +25,10 @@ RSpec.describe 'ADEME: Certification RGE', api: :entreprise, type: %i[request sw
         let(:siret) { valid_siret(:rge_ademe) }
       end
 
+      too_many_requests(ADEME::CertificatsRGE) do
+        let(:siret) { valid_siret(:rge_ademe) }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: 'ademe/certificats_rge/valid_siret' } do
           description SwaggerData.get('ademe.certificats_rge.description')

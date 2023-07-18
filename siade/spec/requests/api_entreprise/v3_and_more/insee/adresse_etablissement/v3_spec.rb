@@ -17,6 +17,10 @@ RSpec.describe 'INSEE: Adresse Etablissement', api: :entreprise, type: %i[reques
         let(:siret) { sirets_insee_v3[:active_GE] }
       end
 
+      too_many_requests(INSEE::AdresseEtablissement) do
+        let(:siret) { sirets_insee_v3[:active_GE] }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         response '200', 'Etablissement trouvé', vcr: { cassette_name: 'insee/siret/active_GE_with_token' } do
           description SwaggerData.get('insee.adresse_etablissement.description')

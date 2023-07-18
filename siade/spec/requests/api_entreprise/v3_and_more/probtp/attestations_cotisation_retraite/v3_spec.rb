@@ -17,6 +17,10 @@ RSpec.describe 'PROBTP : Attestations cotisations retraite', api: :entreprise, t
         let(:siret) { eligible_siret(:probtp) }
       end
 
+      too_many_requests(PROBTP::AttestationsCotisationsRetraite) do
+        let(:siret) { eligible_siret(:probtp) }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         response 200, 'Attestation found', vcr: { cassette_name: 'probtp/attestation/with_eligible_siret' } do
           description SwaggerData.get('probtp.attestation_cotisation_retraite.description')

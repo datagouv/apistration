@@ -17,6 +17,10 @@ RSpec.describe 'RNM: Entreprises artisanales', api: :entreprise, type: %i[reques
         let(:siren) { valid_siren(:rnm_cma) }
       end
 
+      too_many_requests(RNM::EntreprisesArtisanales) do
+        let(:siren) { valid_siren(:rnm_cma) }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entreprise found', vcr: { cassette_name: 'rnm_cma/valid_siren_json' } do
           description SwaggerData.get('rnm.entreprise_artisanale.description')

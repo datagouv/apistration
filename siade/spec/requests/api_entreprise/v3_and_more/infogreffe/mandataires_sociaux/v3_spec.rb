@@ -17,6 +17,10 @@ RSpec.describe 'Infogreffe: Mandataires sociaux', api: :entreprise, type: %i[req
         let(:siren) { valid_siren(:extrait_rcs) }
       end
 
+      too_many_requests(Infogreffe::MandatairesSociaux) do
+        let(:siren) { valid_siren(:extrait_rcs) }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entité trouvée', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_morale' } do
           description SwaggerData.get('infogreffe.mandataires_sociaux.description')

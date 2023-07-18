@@ -17,6 +17,10 @@ RSpec.describe 'Banque de France: Bilans', api: :entreprise, type: %i[request sw
         let(:siren) { valid_siren(:bilan_entreprise_bdf) }
       end
 
+      too_many_requests(BanqueDeFrance::BilansEntreprise) do
+        let(:siren) { valid_siren(:bilan_entreprise_bdf) }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         describe 'with valid siren' do
           before do

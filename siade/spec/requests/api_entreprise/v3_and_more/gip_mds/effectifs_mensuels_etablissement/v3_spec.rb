@@ -36,6 +36,10 @@ RSpec.describe 'GIP-MDS: effectifs mensuels établissement', api: :entreprise, t
         let(:siret) { valid_siret }
       end
 
+      too_many_requests(GIPMDS::EffectifsMensuelsEtablissement) do
+        let(:siret) { valid_siret }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         response '200', 'Effectifs annuels trouvé' do
           before do

@@ -19,6 +19,10 @@ RSpec.describe 'MI: Documents Associations', api: :entreprise, type: %i[request 
         let(:siret_or_rna) { valid_rna_id }
       end
 
+      too_many_requests(MI::Associations::Documents) do
+        let(:siret_or_rna) { valid_rna_id }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         response 200, 'Document Association found', vcr: { cassette_name: 'mi/associations/documents/with_documents' } do
           let(:siret_or_rna) { '77571979202585' }

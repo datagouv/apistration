@@ -17,6 +17,10 @@ RSpec.describe 'INPI: Actes', api: :entreprise, type: %i[request swagger] do
         let(:siren) { valid_siren(:inpi) }
       end
 
+      too_many_requests(INPI::Actes) do
+        let(:siren) { valid_siren(:inpi) }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         response '200', 'Actes trouvés', vcr: { cassette_name: 'inpi/actes/with_valid_siren' } do
           description SwaggerData.get('inpi.actes.description')

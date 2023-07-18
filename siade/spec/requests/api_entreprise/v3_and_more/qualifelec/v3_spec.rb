@@ -11,6 +11,10 @@ RSpec.describe 'QualifElec: Qualification Electrique', api: :entreprise, type: %
 
       let(:siret) { valid_siret(:default) }
 
+      too_many_requests(Qualifelec::Certificats) do
+        let(:siret) { valid_siret(:default) }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         describe 'with mocked data' do
           before do

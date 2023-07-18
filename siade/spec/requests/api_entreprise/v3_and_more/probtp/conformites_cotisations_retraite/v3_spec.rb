@@ -17,6 +17,10 @@ RSpec.describe 'PROBTP: Conformites Cotisations Retraite', api: :entreprise, typ
         let(:siret) { eligible_siret(:probtp) }
       end
 
+      too_many_requests(PROBTP::ConformitesCotisationsRetraite) do
+        let(:siret) { eligible_siret(:probtp) }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_eligible_siret' } do
           description SwaggerData.get('probtp.conformites_cotisations_retraite.description')

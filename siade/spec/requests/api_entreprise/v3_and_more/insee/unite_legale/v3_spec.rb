@@ -17,6 +17,10 @@ RSpec.describe 'INSEE: Unités légales', api: :entreprise, type: %i[request swa
         let(:siren) { sirens_insee_v3[:active_GE] }
       end
 
+      too_many_requests(INSEE::UniteLegale) do
+        let(:siren) { sirens_insee_v3[:active_GE] }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         response '200', 'Unité légale trouvée', vcr: { cassette_name: 'insee/siren/active_GE_with_token' } do
           description SwaggerData.get('insee.unite_legale.description')

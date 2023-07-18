@@ -13,6 +13,10 @@ RSpec.describe 'EuropeanCommission: Vies', api: :entreprise, type: %i[request sw
         let(:siren) { danone_siren }
       end
 
+      too_many_requests(EuropeanCommission::VIES) do
+        let(:siren) { danone_siren }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         let(:siren) { danone_siren }
 

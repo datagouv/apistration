@@ -17,6 +17,10 @@ RSpec.describe 'Infogreffe: Extraitsrcs', api: :entreprise, type: %i[request swa
         let(:siren) { valid_siren(:extrait_rcs) }
       end
 
+      too_many_requests(Infogreffe::ExtraitsRCS) do
+        let(:siren) { valid_siren(:extrait_rcs) }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entreprise trouvée (personne morale)', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_morale' } do
           description SwaggerData.get('infogreffe.extraits_rcs.description')

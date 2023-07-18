@@ -21,6 +21,10 @@ RSpec.describe 'DGFIP: Attestation fiscale', api: :entreprise, type: %i[request 
         let(:siren) { valid_siren }
       end
 
+      too_many_requests(DGFIP::AttestationFiscale) do
+        let(:siren) { valid_siren }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         let(:siren) { valid_siren }
 

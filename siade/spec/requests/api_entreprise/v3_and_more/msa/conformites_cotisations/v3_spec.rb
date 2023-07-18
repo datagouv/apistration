@@ -16,6 +16,10 @@ RSpec.describe 'MSA: Conformitescotisations', api: :entreprise, type: %i[request
         let(:siret) { valid_siret(:msa) }
       end
 
+      too_many_requests(MSA::ConformitesCotisations) do
+        let(:siret) { valid_siret(:msa) }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entreprise trouvée' do
           before do

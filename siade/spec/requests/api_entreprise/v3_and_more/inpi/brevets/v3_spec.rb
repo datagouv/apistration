@@ -25,6 +25,10 @@ RSpec.describe 'INPI: Latest Brevets', api: :entreprise, type: %i[request swagge
         let(:siren) { valid_siren(:inpi) }
       end
 
+      too_many_requests(INPI::Brevets) do
+        let(:siren) { valid_siren(:inpi) }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         response '200', 'Brevets trouvés', vcr: { cassette_name: 'inpi/brevets/with_valid_siren' } do
           description SwaggerData.get('inpi.brevets.description')
