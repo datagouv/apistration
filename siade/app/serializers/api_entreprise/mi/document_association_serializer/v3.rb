@@ -2,9 +2,12 @@ class APIEntreprise::MI::DocumentAssociationSerializer::V3 < APIEntreprise::V3An
   class ItemSerializer < APIEntreprise::V3AndMore::BaseSerializer
     attributes :timestamp,
       :type,
-      :url,
       :expires_in,
       :errors
+
+    attribute :url do |object|
+      url_for_proxied_file(object.url)
+    end
   end
 
   item_serializer ItemSerializer

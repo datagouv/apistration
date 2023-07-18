@@ -40,8 +40,6 @@ RSpec.describe APIEntreprise::V2::DocumentsAssociationsController, type: :contro
           let(:id) { '77571979202585' }
 
           before do
-            stub_request(:get, %r{jeunesse-sports\.gouv\.fr/cxf/api/documents/PJ}).to_return(body: open_payload_file('pdf/dummy.pdf'))
-
             remember_through_each_test_of_current_scope('documents_associations_with_valid_siret') do
               get :show, params: { id: id, token: token }.merge(mandatory_params)
               json = JSON.parse(response.body)
@@ -53,7 +51,7 @@ RSpec.describe APIEntreprise::V2::DocumentsAssociationsController, type: :contro
           end
 
           its(['nombre_documents'])            { is_expected.to eq(12) }
-          its(['nombre_documents_deficients']) { is_expected.to eq(3) }
+          its(['nombre_documents_deficients']) { is_expected.to eq(0) }
 
           its(['documents']) { is_expected.to be_a_kind_of(Array) }
           its(['documents']) { is_expected.to have(12).items }
@@ -62,7 +60,7 @@ RSpec.describe APIEntreprise::V2::DocumentsAssociationsController, type: :contro
             subject { super()['documents'][0] }
 
             its(['type']) { is_expected.to eq('Statuts') }
-            its(['url'])  { is_expected.to match(/document_asso/) }
+            its(['url'])  { is_expected.to match(/lecompteasso/) }
             its(:keys) { are_expected.to include('timestamp') }
           end
         end

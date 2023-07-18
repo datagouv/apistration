@@ -32,8 +32,8 @@ class APIEntreprise::V2::DocumentsAssociationsController < APIEntreprise::V2::Ba
           timestamp: document_resource.timestamp
         }
       end,
-      nombre_documents: retriever.total_documents,
-      nombre_documents_deficients: retriever.upload_errors
+      nombre_documents: retriever.bundled_data.data.count,
+      nombre_documents_deficients: 0
     }
   end
 
