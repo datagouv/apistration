@@ -53,7 +53,7 @@ jobs:
         run: ./bin/test_swagger.sh
 
       - name: Run tests
-        run: CODE_COVERAGE=true bundle exec rspec
+        run: COVERAGE=true bundle exec rspec
 
       - uses: joshmfrankel/simplecov-check-action@main
         with:

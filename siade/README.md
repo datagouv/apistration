@@ -23,7 +23,7 @@ rspec
 Avec le coverage:
 
 ```sh
-CODE_COVERAGE=true rspec
+COVERAGE=true rspec
 ```
 
 Si vous rencontrez des problèmes de matching sur les cassettes VCR, vous pouvez
@@ -122,7 +122,7 @@ pages pour la branche develop.
 
 Pour générer un code coverage en local:
 
-    $ CODE_COVERAGE=true bundle exec rspec
+    $ COVERAGE=true bundle exec rspec
 
 ## Édition du Swagger
 

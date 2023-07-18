@@ -1,4 +1,4 @@
-if ENV['CODE_COVERAGE']
+if ENV['COVERAGE']
   require 'simplecov'
   SimpleCov.start 'rails' do
     add_filter 'vendor'
