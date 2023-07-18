@@ -53,7 +53,12 @@ jobs:
         run: ./bin/test_swagger.sh
 
       - name: Run tests
-        run: bundle exec rspec
+        run: CODE_COVERAGE=true bundle exec rspec
+
+      - uses: joshmfrankel/simplecov-check-action@main
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          minimum_suite_coverage: 95
 
       - name: Check Zeitwerk
         run: |
