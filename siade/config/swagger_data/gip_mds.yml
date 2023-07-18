@@ -62,6 +62,7 @@ gip_mds:
           required:
             - regime
             - annee
+            - nature
             - mois
             - value
             - date_derniere_mise_a_jour
@@ -79,6 +80,11 @@ gip_mds:
               type: "number"
               example: 12.34
               nullable: true
+            nature:
+              title: "Nature de l'effectif"
+              type: "string"
+              enum:
+                - 'effectif_moyen_mensuel'
             annee:
               title: "Année"
               type: "string"
