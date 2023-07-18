@@ -17,6 +17,10 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
         let(:<%= id_path_param %>) { valid_<%= id_path_param %>(:<%= provider_namespace.underscore %>) }
       end
 
+      too_many_requests(<%= name %>) do
+        let(:<%= id_path_param %>) { valid_<%= id_path_param %>(:<%= provider_namespace.underscore %>) }
+      end
+
       describe 'with valid token and mandatory params', valid: true do
         response '200', 'Entreprise trouvée'<% unless prochainement? %>, vcr: { cassette_name: '<%= provider_namespace.underscore %>/valid_<%= id_path_param %>' }<% end %> do
           <% if prochainement? %>before do
