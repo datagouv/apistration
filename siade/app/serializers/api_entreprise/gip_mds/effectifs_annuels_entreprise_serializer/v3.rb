@@ -6,15 +6,8 @@ class APIEntreprise::GIPMDS::EffectifsAnnuelsEntrepriseSerializer::V3 < APIEntre
   end
 
   attribute :effectifs_annuel do |object|
-    {
-      regime_general: find_regime('general', object),
-      regime_agricole: find_regime('agricole', object)
-    }
-  end
-
-  def self.find_regime(regime, object)
-    object.effectifs_annuel.find { |effectif|
-      effectif[:regime] == "regime_#{regime}"
-    }.slice(:value, :date_derniere_mise_a_jour)
+    object.effectifs_annuel.map do |effectif|
+      effectif.except(:year, :month)
+    end
   end
 end

@@ -9259,43 +9259,40 @@ paths:
                         example: '2017'
                       effectifs_annuel:
                         title: Effectif annuel de l'établissement
-                        type: object
-                        properties:
-                          regime_general:
-                            title: Effectifs du régime général
-                            description: Cette donnée provient de l'URSSAF
-                            type: object
-                            properties:
-                              value:
-                                title: Valeur
-                                type: number
-                                example: 12.34
-                              date_derniere_mise_a_jour:
-                                title: Date de la dernière mise à jour de la donnée
-                                type: string
-                                example: '2018-01-01'
-                            required:
-                            - value
-                            - date_derniere_mise_a_jour
-                          regime_agricole:
-                            title: Effectifs du régime agricole
-                            description: Cette donnée provient de la MSA
-                            type: object
-                            properties:
-                              value:
-                                title: Valeur
-                                type: number
-                                example: 12.34
-                              date_derniere_mise_a_jour:
-                                title: Date de la dernière mise à jour de la donnée
-                                type: string
-                                example: '2018-01-01'
-                            required:
-                            - value
-                            - date_derniere_mise_a_jour
-                        required:
-                        - regime_general
-                        - regime_agricole
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: false
+                          required:
+                          - regime
+                          - nature
+                          - value
+                          - date_derniere_mise_a_jour
+                          properties:
+                            regime:
+                              title: Type de régime
+                              type: string
+                              example: regime_general
+                              enum:
+                              - regime_general
+                              - regime_agricole
+                            value:
+                              title: Valeur
+                              description: Cette valeur est à null si il n'y a pas
+                                d'effectif dans le régime
+                              type: number
+                              example: 12.34
+                              nullable: true
+                            nature:
+                              title: Nature de l'effectif
+                              type: string
+                              enum:
+                              - effectif_moyen_annuel
+                            date_derniere_mise_a_jour:
+                              title: Date de la dernière mise à jour de la donnée
+                              type: string
+                              example: '2018-01-01'
+                              nullable: true
                     required:
                     - siren
                     - annee
