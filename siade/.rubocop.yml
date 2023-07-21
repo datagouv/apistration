@@ -3,6 +3,7 @@ inherit_from: .rubocop_todo.yml
 require:
   - rubocop-rspec
   - rubocop-rails
+  - ./spec/support/custom_cops/open_payload_file.rb
 
 RSpec:
   Language:
