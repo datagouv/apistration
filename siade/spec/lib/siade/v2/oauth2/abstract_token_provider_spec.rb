@@ -28,10 +28,12 @@ RSpec.describe SIADE::V2::OAuth2::AbstractTokenProvider do
 
   let(:dummy_client) { double(:dummy_client) }
   let(:dummy_token) { OAuth2::AccessToken.from_hash(dummy_client, token_hash) }
+  let(:access_token) { 'dummy_access_token' }
+
   let(:token_hash) do
     {
       grant_type: 'client_credentials',
-      access_token: 'This is a dummy token from client',
+      access_token:,
       expires_at: 10.seconds.since.to_i,
       token_type: 'Bearer'
     }
@@ -42,8 +44,8 @@ RSpec.describe SIADE::V2::OAuth2::AbstractTokenProvider do
     allow(OAuth2::Client).to receive(:new).and_return(dummy_client)
   end
 
-  context 'when the token is not stored in Redis' do
-    its(:token) { is_expected.to eq 'This is a dummy token from client' }
+  context 'when the token is not stored in cache' do
+    its(:token) { is_expected.to eq access_token }
 
     it 'asks the provider for a new token' do
       expect(dummy_client)
@@ -52,64 +54,72 @@ RSpec.describe SIADE::V2::OAuth2::AbstractTokenProvider do
       subject.token
     end
 
-    it 'stores the new token in Redis' do
-      expect(RedisService.instance).to receive(:set).with(:dummy, /access_token.+dummy token from client/)
-      subject.token
+    it 'stores the new token json in cache' do
+      expect {
+        subject.token
+      }.to change { EncryptedCache.read(:dummy) }.to(/#{access_token}/)
     end
   end
 
-  context 'when the token is stored in Redis' do
-    let(:token_redis) do
+  context 'when the token is stored in cache' do
+    let(:cached_access_token) { 'another_dummy_access_token' }
+    let(:token_cached) do
       {
         expires_at: expires_at,
         token_type: 'Bearer',
-        access_token: 'This is an access token from Redis'
+        access_token: cached_access_token
       }
     end
 
     before do
-      RedisService.instance.set(:dummy, token_redis.to_json)
+      EncryptedCache.write(:dummy, token_cached.to_json)
     end
 
-    context 'when the token in Redis is not expired' do
+    context 'when the token in cache is not expired' do
       let(:expires_at) { 10.seconds.since.to_i }
 
-      its(:token) { is_expected.to eq 'This is an access token from Redis' }
+      its(:token) { is_expected.to eq cached_access_token }
 
       it 'does not ask for a new token' do
         expect(dummy_client).not_to receive(:get_token)
+
         subject.token
       end
 
-      it 'retrieves the token from Redis' do
-        expect(RedisService.instance).to receive(:get).with(:dummy)
+      it 'retrieves the token from cache' do
+        expect(EncryptedCache).to receive(:read).with(:dummy)
+
         subject.token
       end
     end
 
-    context 'when the token in Redis is expired' do
+    context 'when the token in cache is expired' do
       let(:expires_at) { 10.seconds.ago.to_i }
 
-      its(:token) { is_expected.to eq 'This is a dummy token from client' }
+      its(:token) { is_expected.to eq access_token }
 
       it 'asks the provider for a new token' do
         expect(dummy_client)
           .to receive(:get_token)
           .with({ params: :params }, {})
+
         subject.token
       end
 
-      it 'stores the new token into Redis' do
-        expect(RedisService.instance).to receive(:set).with(:dummy, /access_token.+dummy token from client/)
-        subject.token
+      it 'stores the new token json into cache' do
+        expect {
+          subject.token
+        }.to change { EncryptedCache.read(:dummy) }.to(/#{access_token}/)
       end
     end
   end
 
   context 'when parsing stored token fails' do
-    before { RedisService.instance.set(:dummy, 'not a valid JSON') }
+    before do
+      EncryptedCache.write(:dummy, 'not a valid JSON')
+    end
 
-    its(:token) { is_expected.to eq 'This is a dummy token from client' }
+    its(:token) { is_expected.to eq access_token }
 
     it 'gets a new token from provider' do
       expect(dummy_client)
@@ -121,7 +131,8 @@ RSpec.describe SIADE::V2::OAuth2::AbstractTokenProvider do
     it 'sends a message to Sentry' do
       expect(MonitoringService.instance)
         .to receive(:capture_message)
-        .with(/Error while parsing DummyTokenProvider OAuth2 JSON token from Redis.*JSON::ParserError/, level: 'warning')
+        .with(/Error while parsing DummyTokenProvider.*JSON::ParserError/, level: 'warning')
+
       subject.token
     end
   end

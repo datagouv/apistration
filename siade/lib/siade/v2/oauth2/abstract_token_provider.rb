@@ -4,53 +4,53 @@ module SIADE::V2::OAuth2::AbstractTokenProvider
   def_delegators :oauth_token, :expires_at, :expires_in, :token, :refresh_token
 
   def oauth_token
-    token_from_redis || token_from_provider
+    token_from_cache || token_from_provider
   end
 
   private
 
-  def token_from_redis
-    redis_token_valid? ? redis_token : nil
+  def token_from_cache
+    cache_token_valid? ? cache_token : nil
   end
 
-  def redis_token_valid?
-    redis_token.expires? && !redis_token.expired?
+  def cache_token_valid?
+    cache_token.expires? && !cache_token.expired?
   end
 
-  def redis_token
-    @redis_token ||= OAuth2::AccessToken
+  def cache_token
+    @cache_token ||= OAuth2::AccessToken
       .from_hash(
         client,
-        redis_json_token
+        json_from_cache
       )
   end
 
-  def redis_json_token
-    JSON.parse(redis_access_token_property_values_string)
+  def json_from_cache
+    JSON.parse(cache_json_access_token)
   rescue JSON::ParserError => e
-    message = "Error while parsing #{self.class.name} OAuth2 JSON token from Redis (#{e.class} #{e.message})"
+    message = "Error while parsing #{self.class.name} OAuth2 JSON token from cache (#{e.class} #{e.message})"
     MonitoringService.instance.capture_message(message, level: 'warning')
     {}
   end
 
-  def redis_access_token_property_values_string
-    RedisService.instance.get(redis_key) || '{}'
+  def cache_json_access_token
+    EncryptedCache.read(cache_key) || '{}'
   end
 
   def token_from_provider
     client.get_token(client_get_token_params, access_token_options)
-      .tap(&method(:save_to_redis))
+      .tap(&method(:save_to_cache))
   rescue OAuth2::ConnectionError, OAuth2::Error, Errno::ECONNRESET, Net::OpenTimeout, Net::ReadTimeout => e
     track_error_from_provider(e)
 
     raise Error, e.message
   end
 
-  def save_to_redis(token)
-    RedisService.instance.set(redis_key, token.to_json)
+  def save_to_cache(token)
+    EncryptedCache.write(cache_key, token.to_json)
   end
 
-  def redis_key
+  def cache_key
     self
       .class
       .name

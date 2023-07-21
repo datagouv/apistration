@@ -34,7 +34,7 @@ RSpec.describe AbstractGetToken, type: :interactor do
     }
   end
 
-  let(:access_token) { 'This is a dummy token from client' }
+  let(:access_token) { 'dummy_client_token' }
   let(:expires_in) { '1660563182' }
 
   context 'when call works' do
@@ -56,7 +56,7 @@ RSpec.describe AbstractGetToken, type: :interactor do
       end
     end
 
-    context 'when the token is not stored in Redis' do
+    context 'when the token is not stored in cache' do
       it { is_expected.to be_a_success }
       its(:errors) { is_expected.to be_empty }
 
@@ -68,17 +68,16 @@ RSpec.describe AbstractGetToken, type: :interactor do
         expect(stubbed_request).to have_been_requested
       end
 
-      it 'stores the new token in Redis' do
-        allow(RedisService.instance).to receive(:get).and_return(nil, 'a token that was just stored')
-        expect(RedisService.instance).to receive(:set).with(:dummy_token_authentication, /This is a dummy token from client/, { ex: expires_in })
-
-        make_call
+      it 'stores the new token in cache' do
+        expect {
+          make_call
+        }.to change { EncryptedCache.read(:dummy_token_authentication) }.to(access_token)
       end
     end
 
-    context 'when the token is stored in Redis' do
+    context 'when the token is already in cache' do
       before do
-        RedisService.instance.set(:dummy_token_authentication, access_token, ex: expires_in)
+        EncryptedCache.write(:dummy_token_authentication, access_token)
       end
 
       it { is_expected.to be_a_success }

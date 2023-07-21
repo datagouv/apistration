@@ -16,24 +16,24 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
       expect(WebMock).to have_requested(:post, /#{Siade.credentials[:insee_v3_domain]}/)
     end
 
-    it 'stores the new token retrieved from INSEE API in redis' do
+    it 'stores the new token retrieved from INSEE API in cache' do
       expect {
         retrieve_token
-      }.to change { RedisService.instance.get('insee/authenticate') }.to(token)
+      }.to change { EncryptedCache.read('insee/authenticate') }.to(token)
     end
 
     it 'sets a expires_in value as ttl for this redis key' do
       expect {
         retrieve_token
-      }.to change { RedisService.instance.ttl('insee/authenticate') }.to(expires_in)
+      }.to change { EncryptedCache.expires_in('insee/authenticate') }.to be_within(10).of(expires_in)
     end
   end
 
-  context 'when the token is stored in redis' do
+  context 'when the token is stored in cache' do
     let(:token) { '1234567890' }
 
     before do
-      RedisService.instance.set('insee/authenticate', token)
+      EncryptedCache.write('insee/authenticate', token)
     end
 
     it { is_expected.to be_a_success }

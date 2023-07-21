@@ -2,7 +2,7 @@ class AbstractGetToken < MakeRequest::Post
   def call
     return if use_mocked_data?
 
-    context.token = token_from_redis || retrieve_and_save_token
+    context.token = token_from_cache || retrieve_and_save_token
   end
 
   protected
@@ -29,7 +29,7 @@ class AbstractGetToken < MakeRequest::Post
     URI(client_url)
   end
 
-  def redis_token_key
+  def cache_key
     self
       .class
       .name
@@ -44,16 +44,16 @@ class AbstractGetToken < MakeRequest::Post
 
     fail_to_request_provider!(ProviderUnknownError) if token.blank?
 
-    redis.set(redis_token_key, token, ex: expires_in(response))
+    cache.write(cache_key, token, expires_in: expires_in(response))
 
-    token_from_redis
+    token_from_cache
   end
 
-  def token_from_redis
-    redis.get(redis_token_key)
+  def token_from_cache
+    cache.read(cache_key)
   end
 
-  def redis
-    @redis ||= RedisService.instance
+  def cache
+    @cache ||= EncryptedCache.instance
   end
 end
