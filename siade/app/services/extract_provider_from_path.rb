@@ -37,7 +37,6 @@ class ExtractProviderFromPath
       'cma' => 'CMA France',
       'douanes' => 'Douanes',
       'bdf' => 'Banque de France',
-      'bio' => 'Agence BIO',
       'ademe' => 'ADEME',
       'ministere_interieur' => 'Ministère de l\'Intérieur',
       'european_commission' => 'Commission Européenne',

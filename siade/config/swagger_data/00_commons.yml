@@ -54,9 +54,6 @@ parameters:
       siret_probtp:
         value: "43841606700017"
         summary: SIRET pour ProBTP
-      siret_agence_bio:
-        value: "48311105000025"
-        summary: SIRET pour l'Agence Bio
       siret_qualibat:
         value: "78824266700020"
         summary: SIRET pour Qualibat

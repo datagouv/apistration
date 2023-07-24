@@ -19,7 +19,6 @@ def valid_siret(sample_type = nil)
     dgfip: '78951073200017',
     agefiph: '00552017600016',
     exercice: '55203253400646',
-    agence_bio: '88375327900016',
     recipient: '91978102100010'
   }
 
@@ -61,8 +60,7 @@ def not_found_siret(sample_type = nil)
     extrait_rcs: '43226899300032',
     conventions_collectives: '82525962500028',
     inpi: '43226899300032',
-    rnm_cma: '87786242500015',
-    agence_bio: '82525962500028'
+    rnm_cma: '87786242500015'
   }
 
   samples[sample_type]
@@ -85,10 +83,6 @@ def non_eligible_siret(sample_type)
     probtp: '55204599900828'
   }
   samples[sample_type]
-end
-
-def agence_bio_duplicated_siret
-  '30119352000014'
 end
 
 def valid_nic

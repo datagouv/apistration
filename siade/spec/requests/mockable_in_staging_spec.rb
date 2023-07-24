@@ -23,7 +23,6 @@ RSpec.describe 'Mocking in staging for each routes' do
       /v2/cotisations_msa/000
       /v2/cartes_professionnelles_fntp/000
       /v2/certificats_opqibi/000
-      /v2/certificats_agence_bio/000
       /v2/liasses_fiscales_dgfip/:annee/complete/000
       /v2/liasses_fiscales_dgfip/:annee/declarations/000
       /v2/liasses_fiscales_dgfip/:annee/dictionnaire

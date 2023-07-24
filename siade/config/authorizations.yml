@@ -23,9 +23,6 @@ shared:
   api_entreprise/v2/cartes_professionnelles_fntp:
     - fntp_carte_pro
     - open_data
-  api_entreprise/v2/certificats_agence_bio:
-    - certificat_agence_bio
-    - open_data
   api_entreprise/v2/certificats_cnetp:
     - certificat_cnetp
     - certification_cnetp
@@ -205,7 +202,7 @@ shared:
     - cnaf_allocataires
     - cnaf_enfants
     - cnaf_adresse
-  api_particulier/v2/cnaf/quotient_familial_v2: 
+  api_particulier/v2/cnaf/quotient_familial_v2:
     - cnaf_quotient_familial
     - cnaf_allocataires
     - cnaf_enfants

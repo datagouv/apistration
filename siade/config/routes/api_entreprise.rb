@@ -16,7 +16,6 @@ namespace :v2, constraints: APIEntrepriseDomainConstraint.new  do
   get 'cartes_professionnelles_fntp/:siren'               => '/api_entreprise/v2/cartes_professionnelles_fntp#show'
 
   get 'certificats_opqibi/:siren'                         => '/api_entreprise/v2/certificats_opqibi#show'
-  get 'certificats_agence_bio/:siret'                     => '/api_entreprise/v2/certificats_agence_bio#show'
 
   get 'liasses_fiscales_dgfip/:annee/complete/:siren'     => '/api_entreprise/v2/liasses_fiscales_complete_dgfip#show'
   get 'liasses_fiscales_dgfip/:annee/declarations/:siren' => '/api_entreprise/v2/liasses_fiscales_dgfip#show'
