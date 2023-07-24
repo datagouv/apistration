@@ -2,7 +2,8 @@ RSpec.describe MEN::Scolarites::ValidateResponse, type: :validate_response do
   subject { described_class.call(response:, provider_name: 'MEN') }
 
   context 'with a http ok' do
-    let(:response) { instance_double(Net::HTTPOK, code: '200') }
+    let(:response) { instance_double(Net::HTTPOK, code: '200', body:) }
+    let(:body) { read_payload_file('men/scolarites/valid.json') }
 
     it { is_expected.to be_a_success }
 
@@ -31,5 +32,14 @@ RSpec.describe MEN::Scolarites::ValidateResponse, type: :validate_response do
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+  end
+
+  context 'with info-scolarite false' do
+    let(:response) { instance_double(Net::HTTPOK, code: '200', body:) }
+    let(:body) { read_payload_file('men/scolarites/with_no_scolarite.json') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
   end
 end
