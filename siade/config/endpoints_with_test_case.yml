@@ -79,12 +79,6 @@
 - name: Certificats RGE ADEME
   http_path: '/v2/certificats_rge_ademe/50044188600016'
 
-- name: Actes INPI
-  http_path: '/v2/actes_inpi/788242667'
-
-- name: Bilans INPI
-  http_path: '/v2/bilans_inpi/788242667'
-
 - name: Etablissements (INSEE v3)
   http_path: '/v2/etablissements/41816609600069'
   extra_http_query:

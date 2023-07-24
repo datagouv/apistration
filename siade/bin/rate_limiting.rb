@@ -15,7 +15,7 @@ endpoints = {
     limit: 50,
   },
   high_latency_documents: {
-    url: '/v2/actes_inpi/788242667',
+    url: '/v3/dgfip/unites_legales/532010576/attestation_fiscale',
     limit: 5,
   },
 }

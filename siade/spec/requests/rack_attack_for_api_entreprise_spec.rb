@@ -202,26 +202,6 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
               }]
             end
           end
-
-          it_behaves_like 'throttling group of endpoints' do
-            let(:endpoints) do
-              [{
-                controller: 'api_entreprise/v2/actes_inpi',
-                action: 'show',
-                siren: 123
-              }]
-            end
-          end
-
-          it_behaves_like 'throttling group of endpoints' do
-            let(:endpoints) do
-              [{
-                controller: 'api_entreprise/v2/bilans_inpi',
-                action: 'show',
-                siren: 123
-              }]
-            end
-          end
         end
 
         describe 'self hosted endpoints' do
