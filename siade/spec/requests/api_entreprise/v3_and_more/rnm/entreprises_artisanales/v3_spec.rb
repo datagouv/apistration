@@ -7,6 +7,8 @@ RSpec.describe 'RNM: Entreprises artisanales', api: :entreprise, type: %i[reques
 
       parameter_siren
 
+      deprecated true
+
       common_action_attributes
 
       unauthorized_request do

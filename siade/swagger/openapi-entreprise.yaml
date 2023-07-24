@@ -24785,6 +24785,7 @@ paths:
         required: true
         schema:
           type: string
+      deprecated: true
       security:
       - jwt_bearer_token: []
       description: Informations de référence d'une entreprise artisanale enregistrée
