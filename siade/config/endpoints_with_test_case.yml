@@ -49,9 +49,6 @@
 - name: Effectifs mensuels (établissement)
   http_path: '/v2/effectifs_mensuels_acoss_covid/2020/02/etablissement/55203253400646'
 
-- name: Conventions Collectives
-  http_path: '/v2/conventions_collectives/89337342300019'
-
 - name: Certificats Qualibat
   http_path: '/v2/certificats_qualibat/78824266700020'
 

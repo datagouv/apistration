@@ -1361,75 +1361,6 @@ paths:
           $ref: '#/components/responses/ServiceUnvailable'
         '504':
           $ref: '#/components/responses/ProviderTimeout'
-  /v2/conventions_collectives/{siret}:
-    get:
-      tags:
-        - *tag_general
-      summary: "[Fabrique numérique des ministères sociaux] Conventions collectives d'une entreprise"
-      description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-conventions_collectives'>Documentation métier</a>"
-      parameters: &only_siret_parameters
-        - $ref: '#/components/parameters/Siret'
-        - $ref: '#/components/parameters/Context'
-        - $ref: '#/components/parameters/Recipient'
-        - $ref: '#/components/parameters/Object'
-      responses:
-        '200':
-          x-operationId: 'api_entreprise_v2_conventions_collectives'
-          description: 'OK'
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  siret:
-                    type: string
-                  conventions:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        active:
-                          type: boolean
-                          example: true
-                        date_publication:
-                          type: string
-                          example: '1988-01-01T00:00:00.000Z'
-                        etat:
-                          type: string
-                          example: 'VIGUEUR_ETEN'
-                        numero:
-                          type: integer
-                          example: 1486
-                        titre_court:
-                          type: string
-                          example: "Bureaux d'études techniques, cabinets d'ingénieurs-conseils et sociétés de conseils"
-                        titre:
-                          type: string
-                          example: "Convention collective nationale des bureaux d'études techniques, des cabinets d'ingénieurs-conseils et des sociétés de conseils du 15 décembre 1987."
-                        url:
-                          type: string
-                          example: "https://www.legifrance.gouv.fr/affichIDCC.do?idConvention=KALICONT000005635173"
-        '206':
-          $ref: '#/components/responses/Incomplete'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '422':
-          $ref: '#/components/responses/NotFound'
-        '451':
-          $ref: '#/components/responses/LegalyUnavailable'
-        '500':
-          $ref: '#/components/responses/InternalError'
-        '502':
-          $ref: '#/components/responses/BadGateway'
-        '503':
-          $ref: '#/components/responses/ServiceUnvailable'
-        '504':
-          $ref: '#/components/responses/ProviderTimeout'
-
   /v2/effectifs_annuels_acoss_covid/{siren}:
     get:
       tags:
@@ -1602,7 +1533,11 @@ paths:
         - *tag_financier
       summary: "[DGFIP] Chiffres d'affaires"
       description: "<a href='https://entreprise.api.gouv.fr/catalogue/#a-exercices'>Documentation métier</a>"
-      parameters: *only_siret_parameters
+      parameters: &only_siret_parameters
+        - $ref: '#/components/parameters/Siret'
+        - $ref: '#/components/parameters/Context'
+        - $ref: '#/components/parameters/Recipient'
+        - $ref: '#/components/parameters/Object'
       responses:
         '200':
           x-operationId: 'api_entreprise_v2_exercices'

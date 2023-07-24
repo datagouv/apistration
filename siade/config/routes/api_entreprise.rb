@@ -26,8 +26,6 @@ namespace :v2, constraints: APIEntrepriseDomainConstraint.new  do
 
   get 'attestations_agefiph/:siret'                       => '/api_entreprise/v2/attestations_agefiph#show'
 
-  get 'conventions_collectives/:siret'                    => '/api_entreprise/v2/conventions_collectives#show'
-
   get 'entreprises_artisanales_cma/:siren'                => '/api_entreprise/v2/entreprises_artisanales#show'
 
   get 'eligibilites_cotisation_retraite_probtp/:siret'    => '/api_entreprise/v2/eligibilites_cotisation_retraite_probtp#show'

@@ -35,9 +35,6 @@ shared:
   api_entreprise/v2/certificats_rge_ademe:
     - certificat_rge_ademe
     - open_data
-  api_entreprise/v2/conventions_collectives:
-    - conventions_collectives
-    - open_data
   api_entreprise/v2/cotisations_msa:
     - msa_cotisations
     - cotisations_msa
