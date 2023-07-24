@@ -29,7 +29,6 @@ RSpec.describe 'Mocking in staging for each routes' do
       /v2/attestations_fiscales_dgfip/000
       /v2/attestations_sociales_acoss/000
       /v2/attestations_agefiph/000
-      /v2/entreprises_artisanales_cma/000
       /v2/eligibilites_cotisation_retraite_probtp/000
       /v2/attestations_cotisation_retraite_probtp/000
       /v2/certificats_qualibat/000

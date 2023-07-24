@@ -47,9 +47,6 @@ shared:
   api_entreprise/v2/eligibilites_cotisation_retraite_probtp:
     - probtp
     - cotisations_probtp
-  api_entreprise/v2/entreprises_artisanales:
-    - entreprises_artisanales
-    - open_data
   api_entreprise/v2/entreprises_restored:
     - entreprises
     - unites_legales_etablissements_insee

@@ -7,7 +7,7 @@ host = ARGV[0] || "https://entreprise.api.gouv.fr"
 
 endpoints = {
   json_resources: {
-    url: '/v2/entreprises_artisanales_cma/301123626',
+    url: '/v4/djepva/api-association/associations/775719792',
     limit: 250,
   },
   low_latency_docs: {
