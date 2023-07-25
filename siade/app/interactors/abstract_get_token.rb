@@ -46,7 +46,7 @@ class AbstractGetToken < MakeRequest::Post
 
     cache.write(cache_key, token, expires_in: expires_in(response))
 
-    token_from_cache
+    token
   end
 
   def token_from_cache
