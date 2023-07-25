@@ -1,0 +1,318 @@
+{
+  "updatedAt": "2023-06-16T03:10:39+02:00",
+  "id": "63ae2e5684e84876b0158ab7",
+  "formality": {
+    "siren": "789510732",
+    "content": {
+      "formeExerciceActivitePrincipale": "COMMERCIALE",
+      "natureCreation": {
+        "dateCreation": "2021-01-01",
+        "societeEtrangere": false,
+        "formeJuridique": "5710",
+        "microEntreprise": false,
+        "etablieEnFrance": true,
+        "salarieEnFrance": true,
+        "relieeEntrepriseAgricole": false,
+        "entrepriseAgricole": false,
+        "eirl": false
+      },
+      "personneMorale": {
+        "beneficiairesEffectifs": [
+          {
+            "beneficiaire": {
+              "descriptionPersonne": {
+                "dateDeNaissance": "1989-01",
+                "nom": "Dupont",
+                "prenoms": [
+                  "JEAN",
+                  "MARC"
+                ],
+                "nationalite": "Française"
+              }
+            },
+            "modalite": {
+              "detentionPartDirecte": true,
+              "detentionPartDirecteRdd": 49.0,
+              "partsDirectesPleinePropriete": 49.0,
+              "partsDirectesNuePropriete": 0.0,
+              "detentionPartIndirecte": false,
+              "detentionPartIndirecteRdd": 0.0,
+              "partsIndirectesIndivision": 0.0,
+              "partsIndirectesIndivisionPleinePropriete": 0.0,
+              "partsIndirectesIndivisionNuePropriete": 0.0,
+              "partsIndirectesPersonnesMorales": 0.0,
+              "partsIndirectesPmoralesPleinePropriete": 0.0,
+              "partsIndirectesPmoralesNuePropriete": 0.0,
+              "detentionPartTotale": 49.0,
+              "detentionVoteDirecte": true,
+              "detentionVoteDirecteRdd": 49.0,
+              "voteDirectePleinePropriete": 49.0,
+              "voteDirecteNuePropriete": 0.0,
+              "voteDirecteUsufruit": 0.0,
+              "detentionVoteIndirecte": false,
+              "detentionVoteIndirecteRdd": 0.0,
+              "voteIndirecteIndivision": 0.0,
+              "voteIndirecteIndivisionPleinePropriete": 0.0,
+              "voteIndirecteIndivisionNuePropriete": 0.0,
+              "voteIndirecteIndivisionUsufruit": 0.0,
+              "voteIndirectePersonnesMorales": 0.0,
+              "voteIndirectePmoralesPleinePropriete": 0.0,
+              "voteIndirectePmoralesNuePropriete": 0.0,
+              "voteIndirectePmoralesUsufruit": 0.0,
+              "vocationTitulaireDirectePleineProprieteRdd": false,
+              "vocationTitulaireDirectePleinePropriete": 0.0,
+              "vocationTitulaireDirecteNuePropriete": 0.0,
+              "vocationTitulaireIndirecteIndivision": 0.0,
+              "vocationTitulaireIndirectePleineProprieteRdd": false,
+              "vocationTitulaireIndirectePleinePropriete": 0.0,
+              "vocationTitulaireIndirecteNuePropriete": 0.0,
+              "vocationTitulaireIndirectePersonnesMorales": 0.0,
+              "vocationTitulaireIndirectePmoralesPleinePropriete": 0.0,
+              "vocationTitulaireIndirectePmoralesNuePropriete": 0.0,
+              "detentionVoteTotal": 0.0,
+              "detentionPouvoirDecisionAG": false,
+              "detentionPouvoirNommageMembresConseilAdmin": false,
+              "detentionAutresMoyensControle": false,
+              "beneficiaireRepresentantLegal": false,
+              "representantLegalPlacementSansGestionDelegue": false
+            }
+          },
+          {
+            "beneficiaire": {
+              "descriptionPersonne": {
+                "dateDeNaissance": "1990-01",
+                "nom": "Martin",
+                "prenoms": [
+                  "JULES",
+                  "ANDRE"
+                ],
+                "nationalite": "Française"
+              }
+            },
+            "modalite": {
+              "detentionPartDirecte": true,
+              "detentionPartDirecteRdd": 51.0,
+              "partsDirectesPleinePropriete": 51.0,
+              "partsDirectesNuePropriete": 0.0,
+              "detentionPartIndirecte": false,
+              "detentionPartIndirecteRdd": 0.0,
+              "partsIndirectesIndivision": 0.0,
+              "partsIndirectesIndivisionPleinePropriete": 0.0,
+              "partsIndirectesIndivisionNuePropriete": 0.0,
+              "partsIndirectesPersonnesMorales": 0.0,
+              "partsIndirectesPmoralesPleinePropriete": 0.0,
+              "partsIndirectesPmoralesNuePropriete": 0.0,
+              "detentionPartTotale": 51.0,
+              "detentionVoteDirecte": true,
+              "detentionVoteDirecteRdd": 51.0,
+              "voteDirectePleinePropriete": 51.0,
+              "voteDirecteNuePropriete": 0.0,
+              "voteDirecteUsufruit": 0.0,
+              "detentionVoteIndirecte": false,
+              "detentionVoteIndirecteRdd": 0.0,
+              "voteIndirecteIndivision": 0.0,
+              "voteIndirecteIndivisionPleinePropriete": 0.0,
+              "voteIndirecteIndivisionNuePropriete": 0.0,
+              "voteIndirecteIndivisionUsufruit": 0.0,
+              "voteIndirectePersonnesMorales": 0.0,
+              "voteIndirectePmoralesPleinePropriete": 0.0,
+              "voteIndirectePmoralesNuePropriete": 0.0,
+              "voteIndirectePmoralesUsufruit": 0.0,
+              "vocationTitulaireDirectePleineProprieteRdd": false,
+              "vocationTitulaireDirectePleinePropriete": 0.0,
+              "vocationTitulaireDirecteNuePropriete": 0.0,
+              "vocationTitulaireIndirecteIndivision": 0.0,
+              "vocationTitulaireIndirectePleineProprieteRdd": false,
+              "vocationTitulaireIndirectePleinePropriete": 0.0,
+              "vocationTitulaireIndirecteNuePropriete": 0.0,
+              "vocationTitulaireIndirectePersonnesMorales": 0.0,
+              "vocationTitulaireIndirectePmoralesPleinePropriete": 0.0,
+              "vocationTitulaireIndirectePmoralesNuePropriete": 0.0,
+              "detentionVoteTotal": 0.0,
+              "detentionPouvoirDecisionAG": false,
+              "detentionPouvoirNommageMembresConseilAdmin": false,
+              "detentionAutresMoyensControle": false,
+              "beneficiaireRepresentantLegal": false,
+              "representantLegalPlacementSansGestionDelegue": false
+            }
+          }
+        ],
+        "adresseEntreprise": {
+          "adresse": {
+            "pays": "FRANCE",
+            "codePays": "FRA",
+            "codePostal": "75001",
+            "commune": "PARIS 1",
+            "codeInseeCommune": "75101",
+            "typeVoie": "RUE",
+            "voie": "DES HALLES",
+            "numVoie": "15"
+          }
+        },
+        "etablissementPrincipal": {
+          "descriptionEtablissement": {
+            "rolePourEntreprise": "2",
+            "pays": "FRANCE",
+            "codePays": "FRA",
+            "siret": "78951073200017",
+            "activiteNonSedentaire": false,
+            "indicateurEtablissementPrincipal": true
+          },
+          "adresse": {
+            "pays": "FRANCE",
+            "codePays": "FRA",
+            "codePostal": "75001",
+            "commune": "PARIS 1",
+            "codeInseeCommune": "75101",
+            "typeVoie": "RUE",
+            "voie": "DES HALLES",
+            "numVoie": "15",
+            "caracteristiques": {
+              "ambulant": false
+            }
+          },
+          "activites": [
+            {
+              "categoryCode": "02080400",
+              "indicateurPrincipal": true,
+              "indicateurProlongement": false,
+              "dateDebut": "2021-01-01",
+              "indicateurNonSedentaire": false,
+              "formeExercice": "COMMERCIALE",
+              "categorisationActivite1": "02",
+              "categorisationActivite2": "08",
+              "categorisationActivite3": "04",
+              "categorisationActivite4": "00",
+              "descriptionDetaillee": "La conception, la programmation, la vente et commercialisation de logiciels, sites web, outils informatiques de communication, ainsi que la gestion de projets et le stockage de données relatifs.",
+              "indicateurActiviteeApe": false,
+              "indicateurArtisteAuteur": false,
+              "indicateurMarinProfessionnel": false,
+              "rolePrincipalPourEntreprise": true,
+              "codeApe": "5829C",
+              "activiteRattacheeEirl": false
+            }
+          ],
+          "registreAnterieur": {
+            "raa": {
+              "estPresent": false
+            },
+            "rnm": {
+              "estPresent": false
+            },
+            "rncs": {
+              "estPresent": true,
+              "dateDebut": "2021-01-01T00:00:00+02:00"
+            }
+          }
+        },
+        "observations": {
+          "rcs": [
+            {
+              "idObservation": 1,
+              "numObservation": "2021B181234",
+              "dateAjout": "2021-01-01",
+              "texte": "Nom de domaine Internet : supersite.com . Date d'effet : 01-01-2021 ",
+              "dateGreffe": "2021-01-01",
+              "etatObs": "Ajout",
+              "dateDerModif": "2021-06-10"
+            }
+          ]
+        },
+        "identite": {
+          "entreprise": {
+            "siren": "789510732",
+            "denomination": "SUPERSITE",
+            "formeJuridique": "5710",
+            "nicSiege": "00018",
+            "codeApe": "5829C",
+            "indicateurAssocieUnique": false,
+            "dateImmat": "2021-06-10T00:00:00+02:00"
+          },
+          "description": {
+            "objet": "La conception, la programmation, la vente et commercialisation de logiciels, sites web, outils informatiques de communication, ainsi que la gestion de projets et le stockage de données relatifs.",
+            "duree": 99,
+            "datePremiereCloture": "2022-12-31",
+            "ess": false,
+            "capitalVariable": false,
+            "montantCapital": 9001.0,
+            "deviseCapital": "EUR",
+            "indicateurOrigineFusionScission": false,
+            "indicateurAssocieUnique": false,
+            "indicateurAssocieUniqueDirigeant": false
+          }
+        },
+        "composition": {
+          "pouvoirs": [
+            {
+              "typeDePersonne": "INDIVIDU",
+              "individu": {
+                "descriptionPersonne": {
+                  "dateDeNaissance": "1989-08",
+                  "nom": "Dupont",
+                  "prenoms": [
+                    "JEAN",
+                    "MARC"
+                  ],
+                  "nationalite": "Française",
+                  "situationMatrimoniale": "1"
+                },
+                "adresseDomicile": {
+                  "pays": "FRANCE",
+                  "codePays": "FRA",
+                  "codePostal": "75017",
+                  "commune": "Paris",
+                  "codeInseeCommune": "75117"
+                }
+              },
+              "indicateurActifAgricole": false
+            },
+            {
+              "typeDePersonne": "INDIVIDU",
+              "individu": {
+                "descriptionPersonne": {
+                  "dateDeNaissance": "1990-01",
+                  "role": "53",
+                  "nom": "Martin",
+                  "prenoms": [
+                    "JULES",
+                    "ANDRE"
+                  ],
+                  "nationalite": "Française",
+                  "situationMatrimoniale": "1"
+                },
+                "adresseDomicile": {
+                  "pays": "FRANCE",
+                  "codePays": "FRA",
+                  "codePostal": "75012",
+                  "commune": "Paris",
+                  "codeInseeCommune": "75112"
+                }
+              },
+              "indicateurActifAgricole": false
+            }
+          ]
+        },
+        "structureEntreprise": {
+          "indicateurPrincipalIdemSiege": true,
+          "aucuneActivite": false
+        }
+      },
+      "registreAnterieur": {
+        "raa": {
+          "estPresent": false
+        },
+        "rnm": {
+          "estPresent": false
+        },
+        "rncs": {
+          "estPresent": true,
+          "dateImmatriculation": "2021-06-10T00:00:00+02:00"
+        }
+      }
+    },
+    "typePersonne": "M",
+    "diffusionCommerciale": true,
+    "formeJuridique": "5710"
+  },
+  "siren": "789510732"
+}
