@@ -1,0 +1,24 @@
+class INPI::RNE::MakeRequest < MakeRequest::Get
+  protected
+
+  def extra_headers(request)
+    request['Authorization'] = "Bearer #{token}"
+    super(request)
+  end
+
+  def request_params
+    {}
+  end
+
+  def request_uri
+    URI("#{Siade.credentials[:inpi_rne_unites_legales_url]}/#{siren}")
+  end
+
+  def siren
+    context.params[:siren]
+  end
+
+  def token
+    context.token
+  end
+end
