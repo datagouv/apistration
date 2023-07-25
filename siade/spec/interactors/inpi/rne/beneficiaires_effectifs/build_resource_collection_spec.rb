@@ -7,6 +7,8 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
       read_payload_file('inpi/rne/valid.json')
     end
 
+    let(:excluded_modalites) { described_class.new.send(:excluded_modalites) }
+
     let(:valid_collection) do
       [
         {
@@ -60,9 +62,9 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
             detention_pouvoir_decision_ag: false,
             detention_pouvoir_nommage_membres_conseil_admin: false,
             detention_autres_moyens_controle: false,
-            beneficiaire_representant_legal: false,
+            representant_legal: false,
             representant_legal_placement_sans_gestion_delegue: false
-          }
+          }.except(*excluded_modalites)
         },
         {
           nom: 'MARTIN',
@@ -115,9 +117,9 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
             detention_pouvoir_decision_ag: false,
             detention_pouvoir_nommage_membres_conseil_admin: false,
             detention_autres_moyens_controle: false,
-            beneficiaire_representant_legal: false,
+            representant_legal: false,
             representant_legal_placement_sans_gestion_delegue: false
-          }
+          }.except(*excluded_modalites)
         }
       ]
     end

@@ -13459,197 +13459,220 @@ paths:
                               additionalProperties: false
                               properties:
                                 detention_part_directe:
-                                  title: Detention part directe
+                                  title: Détention de parts directes
+                                  description: Détermine si le bénéficiaire possède
+                                    des parts en direct sur l'unité légale
                                   type: boolean
                                   example: true
-                                detention_part_directe_rdd:
-                                  title: Detention part directe rdd
-                                  type: number
-                                  example: 51.0
                                 parts_directes_pleine_propriete:
-                                  title: Parts directes pleine propriete
+                                  title: Répartition des parts directes de pleine
+                                    propriété
+                                  description: 'Plus d''infos sur les différents des
+                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    nue-propriété, pleine propriété : quelles différences
+                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
                                   type: number
-                                  example: 0.0
+                                  example: 42.0
                                 parts_directes_nue_propriete:
-                                  title: Parts directes nue propriete
+                                  title: Répartition des parts directes en nue-propriété
+                                  description: 'Plus d''infos sur les différents des
+                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    nue-propriété, pleine propriété : quelles différences
+                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
                                   type: number
-                                  example: 0.0
+                                  example: 9.0
                                 detention_part_indirecte:
-                                  title: Detention part indirecte
+                                  title: Détention de parts indirectes
+                                  description: Détermine si le bénéficiaire possède
+                                    des parts de manière indirect sur l'unité légale
+                                    (via une autre entité)
                                   type: boolean
                                   example: false
-                                detention_part_indirecte_rdd:
-                                  title: Detention part indirecte rdd
-                                  type: number
-                                  example: 0.0
                                 parts_indirectes_indivision:
-                                  title: Parts indirectes indivision
+                                  title: Répartition des parts indirectes en indivision
+                                  description: 'Après un décès, le patrimoine du défunt
+                                    est en indivision, s’il y a plusieurs héritiers.
+                                    Cela signifie que les biens de la succession appartiennent
+                                    indistinctement à tous les héritiers sans que
+                                    leurs parts respectives ne soient matériellement
+                                    individualisées. Plus d''infos sur le lien suivant:
+                                    [Succession : qu''est-ce que l''indivision ?](https://www.economie.gouv.fr/particuliers/heritage-succession-indivision)'
                                   type: number
                                   example: 0.0
                                 parts_indirectes_indivision_pleine_propriete:
-                                  title: Parts indirectes indivision pleine propriete
+                                  title: Répartition des parts indirectes en indivision
+                                    de pleine propriété
+                                  description: 'Après un décès, le patrimoine du défunt
+                                    est en indivision, s’il y a plusieurs héritiers.
+                                    Cela signifie que les biens de la succession appartiennent
+                                    indistinctement à tous les héritiers sans que
+                                    leurs parts respectives ne soient matériellement
+                                    individualisées. Plus d''infos sur le lien suivant:
+                                    [Succession : qu''est-ce que l''indivision ?](https://www.economie.gouv.fr/particuliers/heritage-succession-indivision)'
                                   type: number
                                   example: 0.0
                                 parts_indirectes_indivision_nue_propriete:
-                                  title: Parts indirectes indivision nue propriete
+                                  title: Répartition des parts indirectes en indivision
+                                    en nue-propriété
+                                  description: 'Après un décès, le patrimoine du défunt
+                                    est en indivision, s’il y a plusieurs héritiers.
+                                    Cela signifie que les biens de la succession appartiennent
+                                    indistinctement à tous les héritiers sans que
+                                    leurs parts respectives ne soient matériellement
+                                    individualisées. Plus d''infos sur le lien suivant:
+                                    [Succession : qu''est-ce que l''indivision ?](https://www.economie.gouv.fr/particuliers/heritage-succession-indivision)'
                                   type: number
                                   example: 0.0
                                 parts_indirectes_personnes_morales:
-                                  title: Parts indirectes personnes morales
+                                  title: Répartition des parts indirectes via des
+                                    personnes morales
                                   type: number
                                   example: 0.0
                                 parts_indirectes_personnes_morales_pleine_propriete:
-                                  title: Parts indirectes des personnes morales en
-                                    pleine propriete
+                                  title: Répartition des parts indirectes via des
+                                    personnes morales, de pleine propriété
                                   type: number
                                   example: 0.0
                                 parts_indirectes_personnes_morales_nue_propriete:
-                                  title: Parts indirectes des personnes morales en
-                                    nue propriete
+                                  title: Répartition des parts indirectes via des
+                                    personnes morales en nue-propriété
                                   type: number
                                   example: 0.0
                                 detention_part_totale:
-                                  title: Détention part totale
+                                  title: Répartition totale des parts
+                                  description: Somme des parts en direct et indirect
+                                    associée au bénéficiaire effectif
                                   type: number
                                   example: 51.0
                                 detention_vote_directe:
-                                  title: Detention vote directe
+                                  title: Détention de droits de vote directe
+                                  description: Les droits de vote directs sont en
+                                    pleine et nue propriété
                                   type: boolean
                                   example: true
-                                detention_vote_directe_rdd:
-                                  title: Detention vote directe rdd
-                                  type: number
-                                  example: 51.0
                                 vote_directe_pleine_propriete:
-                                  title: Vote directe pleine propriete
+                                  title: Répartition des droits de vote directes de
+                                    pleine propriété
+                                  description: 'Plus d''infos sur les différents des
+                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    nue-propriété, pleine propriété : quelles différences
+                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
                                   type: number
                                   example: 51.0
                                 vote_directe_nue_propriete:
-                                  title: Vote directe nue propriete
+                                  title: Répartition des droits de vote directes en
+                                    nue-propriété
+                                  description: 'Plus d''infos sur les différents des
+                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    nue-propriété, pleine propriété : quelles différences
+                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
                                   type: number
                                   example: 0.0
                                 vote_directe_usufruit:
-                                  title: Vote directe usufruit
+                                  title: Répartition des droits de vote directes en
+                                    usufruit
+                                  description: 'Plus d''infos sur les différents des
+                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    nue-propriété, pleine propriété : quelles différences
+                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
                                   type: number
                                   example: 0.0
                                 detention_vote_indirecte:
-                                  title: Detention vote indirecte
+                                  title: Détention de droits de vote indirectes
+                                  description: Ces droits sont via des personnes morales
                                   type: boolean
                                   example: false
-                                detention_vote_indirecte_rdd:
-                                  title: Detention vote indirecte rdd
-                                  type: number
-                                  example: 0.0
                                 vote_indirecte_indivision:
-                                  title: Vote indirecte indivision
+                                  title: Répartition des droits de vote indirectes
+                                    via indivision
+                                  description: 'Après un décès, le patrimoine du défunt
+                                    est en indivision, s’il y a plusieurs héritiers.
+                                    Cela signifie que les biens de la succession appartiennent
+                                    indistinctement à tous les héritiers sans que
+                                    leurs parts respectives ne soient matériellement
+                                    individualisées. Plus d''infos sur le lien suivant:
+                                    [Succession : qu''est-ce que l''indivision ?](https://www.economie.gouv.fr/particuliers/heritage-succession-indivision)'
                                   type: number
                                   example: 0.0
                                 vote_indirecte_indivision_pleine_propriete:
-                                  title: Vote indirecte indivision pleine propriete
+                                  title: Répartition des droits de vote indirectes
+                                    via indivision de pleine propriété
+                                  description: 'Plus d''infos sur les différents des
+                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    nue-propriété, pleine propriété : quelles différences
+                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
                                   type: number
                                   example: 0.0
                                 vote_indirecte_indivision_nue_propriete:
-                                  title: Vote indirecte indivision nue propriete
+                                  title: Répartition des droits de vote indirectes
+                                    via indivision en nue-propriété
+                                  description: 'Plus d''infos sur les différents des
+                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    nue-propriété, pleine propriété : quelles différences
+                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
                                   type: number
                                   example: 0.0
                                 vote_indirecte_indivision_usufruit:
-                                  title: Vote indirecte indivision usufruit
+                                  title: Répartition des droits de vote indirectes
+                                    via indivision en usufruit
+                                  description: 'Plus d''infos sur les différents des
+                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    nue-propriété, pleine propriété : quelles différences
+                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
                                   type: number
                                   example: 0.0
                                 vote_indirecte_personnes_morales:
-                                  title: Vote indirecte personnes morales
+                                  title: Répartition des droits de vote indirectes
+                                    via des personnes morales
                                   type: number
                                   example: 0.0
                                 vote_indirecte_personnes_morales_pleine_propriete:
-                                  title: Vote indirecte personnes morales pleine propriete
+                                  title: Répartition des droits de vote indirectes
+                                    via des personnes morales de pleine propriété
                                   type: number
                                   example: 0.0
                                 vote_indirecte_personnes_morales_nue_propriete:
-                                  title: Vote indirecte des personnes morales en nue
-                                    propriete
+                                  title: Répartition des droits de vote indirectes
+                                    via des personnes morales en nue-propriété
                                   type: number
                                   example: 0.0
                                 vote_indirecte_personnes_morales_usufruit:
-                                  title: Vote indirecte des personnes morales en usufruit
-                                  type: number
-                                  example: 0.0
-                                vocation_titulaire_directe_pleine_propriete_rdd:
-                                  title: Vocation titulaire directe pleine propriete
-                                    rdd
-                                  type: boolean
-                                  example: false
-                                vocation_titulaire_directe_pleine_propriete:
-                                  title: Vocation titulaire directe pleine propriete
-                                  type: number
-                                  example: 0.0
-                                vocation_titulaire_directe_nue_propriete:
-                                  title: Vocation titulaire directe nue propriete
-                                  type: number
-                                  example: 0.0
-                                vocation_titulaire_indirecte_indivision:
-                                  title: Vocation titulaire indirecte indivision
-                                  type: number
-                                  example: 0.0
-                                vocation_titulaire_indirecte_pleine_propriete_rdd:
-                                  title: Vocation titulaire indirecte pleine propriete
-                                    rdd
-                                  type: boolean
-                                  example: false
-                                vocation_titulaire_indirecte_pleine_propriete:
-                                  title: Vocation titulaire indirecte pleine propriete
-                                  type: number
-                                  example: 0.0
-                                vocation_titulaire_indirecte_nue_propriete:
-                                  title: Vocation titulaire indirecte nue propriete
-                                  type: number
-                                  example: 0.0
-                                vocation_titulaire_indirecte_personnes_morales:
-                                  title: Vocation titulaire indirecte personnes morales
-                                  type: number
-                                  example: 0.0
-                                vocation_titulaire_indirecte_personnes_morales_pleine_propriete:
-                                  title: Vocation titulaire indirecte personnes morales
-                                    pleine propriete
-                                  type: number
-                                  example: 0.0
-                                vocation_titulaire_indirecte_personnes_morales_nue_propriete:
-                                  title: Vocation titulaire indirecte personnes morales
-                                    nue propriete
+                                  title: Répartition des droits de vote indirectes
+                                    via des personnes morales en usufruit
                                   type: number
                                   example: 0.0
                                 detention_vote_total:
-                                  title: Detention vote total
+                                  title: Détention de droits de  vote total
                                   type: number
                                   example: 0.0
                                 detention_pouvoir_decision_ag:
-                                  title: Detention pouvoir decision ag
+                                  title: Détention du pouvoir de décision en Assemblée
+                                    Générale
                                   type: boolean
                                   example: false
                                 detention_pouvoir_nommage_membres_conseil_admin:
-                                  title: Detention pouvoir nommage membres conseil
-                                    admin
+                                  title: Détention du pouvoir de nommage des membres
+                                    du conseil d'administration
                                   type: boolean
                                   example: false
                                 detention_autres_moyens_controle:
-                                  title: Detention autres moyens controle
+                                  title: Détention d'autres moyens de contrôle
                                   type: boolean
                                   example: false
-                                beneficiaire_representant_legal:
-                                  title: Beneficiaire representant legal
+                                representant_legal:
+                                  title: Est-t'il représentant légal ?
                                   type: boolean
                                   example: false
                                 representant_legal_placement_sans_gestion_delegue:
-                                  title: Representant legal placement sans gestion
-                                    delegue
+                                  title: Est-t'il représentant légal en placement
+                                    sans gestion délégué ?
                                   type: boolean
                                   example: false
                               required:
                               - detention_part_directe
-                              - detention_part_directe_rdd
                               - parts_directes_pleine_propriete
                               - parts_directes_nue_propriete
                               - detention_part_indirecte
-                              - detention_part_indirecte_rdd
                               - parts_indirectes_indivision
                               - parts_indirectes_indivision_pleine_propriete
                               - parts_indirectes_indivision_nue_propriete
@@ -13658,12 +13681,10 @@ paths:
                               - parts_indirectes_personnes_morales_nue_propriete
                               - detention_part_totale
                               - detention_vote_directe
-                              - detention_vote_directe_rdd
                               - vote_directe_pleine_propriete
                               - vote_directe_nue_propriete
                               - vote_directe_usufruit
                               - detention_vote_indirecte
-                              - detention_vote_indirecte_rdd
                               - vote_indirecte_indivision
                               - vote_indirecte_indivision_pleine_propriete
                               - vote_indirecte_indivision_nue_propriete
@@ -13672,21 +13693,11 @@ paths:
                               - vote_indirecte_personnes_morales_pleine_propriete
                               - vote_indirecte_personnes_morales_nue_propriete
                               - vote_indirecte_personnes_morales_usufruit
-                              - vocation_titulaire_directe_pleine_propriete_rdd
-                              - vocation_titulaire_directe_pleine_propriete
-                              - vocation_titulaire_directe_nue_propriete
-                              - vocation_titulaire_indirecte_indivision
-                              - vocation_titulaire_indirecte_pleine_propriete_rdd
-                              - vocation_titulaire_indirecte_pleine_propriete
-                              - vocation_titulaire_indirecte_nue_propriete
-                              - vocation_titulaire_indirecte_personnes_morales
-                              - vocation_titulaire_indirecte_personnes_morales_pleine_propriete
-                              - vocation_titulaire_indirecte_personnes_morales_nue_propriete
                               - detention_vote_total
                               - detention_pouvoir_decision_ag
                               - detention_pouvoir_nommage_membres_conseil_admin
                               - detention_autres_moyens_controle
-                              - beneficiaire_representant_legal
+                              - representant_legal
                               - representant_legal_placement_sans_gestion_delegue
                           required:
                           - nom

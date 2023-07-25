@@ -22,9 +22,35 @@ class INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection < BuildResource
         mois: birth_date_parts[1],
         jour: birth_date_parts[2]
       },
-      modalites: modalites_attributes.transform_keys do |key|
+      modalites: modalites_attributes.transform_keys { |key|
         key.underscore.sub('pmorales', 'personnes_morales').to_sym
-      end
+      }.except(*(excluded_modalites + %i[beneficiaire_representant_legal])).merge(
+        representant_legal: modalites_attributes['beneficiaireRepresentantLegal']
+      )
     }
   end
+
+  private
+
+  # rubocop:disable Metrics/MethodLength
+  def excluded_modalites
+    %i[
+      detention_part_directe_rdd
+      detention_vote_directe_rdd
+      detention_part_indirecte_rdd
+      detention_vote_indirecte_rdd
+
+      vocation_titulaire_directe_pleine_propriete_rdd
+      vocation_titulaire_directe_pleine_propriete
+      vocation_titulaire_directe_nue_propriete
+      vocation_titulaire_indirecte_indivision
+      vocation_titulaire_indirecte_pleine_propriete_rdd
+      vocation_titulaire_indirecte_pleine_propriete
+      vocation_titulaire_indirecte_nue_propriete
+      vocation_titulaire_indirecte_personnes_morales
+      vocation_titulaire_indirecte_personnes_morales_pleine_propriete
+      vocation_titulaire_indirecte_personnes_morales_nue_propriete
+    ]
+  end
+  # rubocop:enable Metrics/MethodLength
 end
