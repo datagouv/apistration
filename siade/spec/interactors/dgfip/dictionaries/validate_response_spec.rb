@@ -5,7 +5,7 @@ RSpec.describe DGFIP::Dictionaries::ValidateResponse, type: :validate_response d
     let(:response) { instance_double(Net::HTTPOK, code: '200', body:) }
 
     context 'with a valid json body' do
-      let(:body) { Rails.root.join('spec/fixtures/payloads/dgfip/dictionary.json').read }
+      let(:body) { read_payload_file('dgfip/dictionary.json') }
 
       it { is_expected.to be_a_success }
 

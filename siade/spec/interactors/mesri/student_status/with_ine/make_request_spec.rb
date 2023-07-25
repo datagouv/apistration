@@ -22,7 +22,7 @@ RSpec.describe MESRI::StudentStatus::WithINE::MakeRequest, type: :make_request d
       }
     ).to_return(
       status: 200,
-      body: Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_ine_valid_response.json').read
+      body: read_payload_file('mesri/student_status/with_ine_valid_response.json')
     )
   end
 

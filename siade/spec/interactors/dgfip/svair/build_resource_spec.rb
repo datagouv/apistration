@@ -11,7 +11,7 @@ RSpec.describe DGFIP::SVAIR::BuildResource, type: :build_resource do
     subject { instance.bundled_data.data.to_h }
 
     context 'with one declarant, with impots, 3 lines for address' do
-      let(:body) { Rails.root.join('spec/fixtures/payloads/dgfip/svair/valid_response_one_declarant.html').read }
+      let(:body) { read_payload_file('dgfip/svair/valid_response_one_declarant.html') }
 
       it do
         expect(subject).to eq(
@@ -52,7 +52,7 @@ RSpec.describe DGFIP::SVAIR::BuildResource, type: :build_resource do
     end
 
     context 'with two declarants, without impots, 2 lines for address' do
-      let(:body) { Rails.root.join('spec/fixtures/payloads/dgfip/svair/valid_response_two_declarants.html').read }
+      let(:body) { read_payload_file('dgfip/svair/valid_response_two_declarants.html') }
 
       it do
         expect(subject).to eq(

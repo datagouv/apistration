@@ -1,3 +1,4 @@
+# rubocop:disable CustomCops/OpenPayloadFile
 def open_payload_file(filename, read_option = nil)
   if read_option
     Rails.root.join('spec/fixtures/payloads/', filename).open(read_option)
@@ -5,6 +6,7 @@ def open_payload_file(filename, read_option = nil)
     Rails.root.join('spec/fixtures/payloads/', filename).open
   end
 end
+# rubocop:enable CustomCops/OpenPayloadFile
 
 def read_payload_file(filename)
   Rails.root.join('spec/fixtures/payloads', filename).read

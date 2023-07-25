@@ -6,7 +6,7 @@ module ProviderStubs::CNAFQuotientFamilial
 
     stub_request(:post, Siade.credentials[:cnaf_quotient_familial_url]).to_return(
       status: 200,
-      body: Rails.root.join('spec/fixtures/payloads/cnaf/quotient_familial_valid_response.mime').read
+      body: read_payload_file('cnaf/quotient_familial_valid_response.mime')
     )
   end
 

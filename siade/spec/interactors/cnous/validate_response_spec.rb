@@ -68,7 +68,7 @@ RSpec.describe CNOUS::ValidateResponse, type: :validate_response do
 
       let(:code) { '404' }
 
-      let(:body) { Rails.root.join('spec/fixtures/payloads/cnous/student_scholarship_not_found.json').read }
+      let(:body) { read_payload_file('cnous/student_scholarship_not_found.json') }
 
       it { is_expected.to be_a_failure }
 
@@ -81,7 +81,7 @@ RSpec.describe CNOUS::ValidateResponse, type: :validate_response do
       end
 
       let(:code) { '400' }
-      let(:body) { Rails.root.join('spec/fixtures/payloads/cnous/student_scholarship_bad_request.json').read }
+      let(:body) { read_payload_file('cnous/student_scholarship_bad_request.json') }
 
       it { is_expected.to be_a_failure }
 

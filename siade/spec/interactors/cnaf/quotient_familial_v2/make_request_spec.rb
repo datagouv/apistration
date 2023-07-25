@@ -39,7 +39,7 @@ RSpec.describe CNAF::QuotientFamilialV2::MakeRequest, type: :make_request do
       }
     ).to_return(
       status: 200,
-      body: Rails.root.join('spec/fixtures/payloads/cnaf/quotient_familial_v2/make_request_valid.json').read
+      body: read_payload_file('cnaf/quotient_familial_v2/make_request_valid.json')
     )
   end
 

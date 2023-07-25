@@ -35,7 +35,7 @@ module ProviderStubs::DGFIP
 
     stub_request(:post, 'https://cfsmsp.impots.gouv.fr/secavis/faces/commun/index.jsf').to_return(
       status: 200,
-      body: Rails.root.join('spec/fixtures/payloads/dgfip/svair/valid_response_one_declarant.html').read
+      body: read_payload_file('dgfip/svair/valid_response_one_declarant.html')
     )
   end
 
@@ -44,7 +44,7 @@ module ProviderStubs::DGFIP
 
     stub_request(:post, 'https://cfsmsp.impots.gouv.fr/secavis/faces/commun/index.jsf').to_return(
       status: 200,
-      body: Rails.root.join('spec/fixtures/payloads/dgfip/svair/not_found.html').read
+      body: read_payload_file('dgfip/svair/not_found.html')
     )
   end
 
@@ -53,7 +53,7 @@ module ProviderStubs::DGFIP
 
     stub_request(:post, 'https://cfsmsp.impots.gouv.fr/secavis/faces/commun/index.jsf').to_return(
       status: 200,
-      body: Rails.root.join('spec/fixtures/payloads/dgfip/svair/access_denied.html').read
+      body: read_payload_file('dgfip/svair/access_denied.html')
     )
   end
 

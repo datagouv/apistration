@@ -5,7 +5,7 @@ RSpec.describe EuropeanCommission::VIES::ValidateResponse, type: :validate_respo
     let(:response) { instance_double(Net::HTTPOK, code: '200', body:) }
 
     context 'when body is a found payload' do
-      let(:body) { Rails.root.join('spec/fixtures/payloads/vies/valid.json').read }
+      let(:body) { read_payload_file('vies/valid.json') }
 
       it { is_expected.to be_a_success }
 
@@ -14,7 +14,7 @@ RSpec.describe EuropeanCommission::VIES::ValidateResponse, type: :validate_respo
     end
 
     context 'when body is a not found payload' do
-      let(:body) { Rails.root.join('spec/fixtures/payloads/vies/invalid.json').read }
+      let(:body) { read_payload_file('vies/invalid.json') }
 
       it { is_expected.to be_a_failure }
 

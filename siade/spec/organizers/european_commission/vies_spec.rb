@@ -19,7 +19,7 @@ RSpec.describe EuropeanCommission::VIES, type: :retriever_organizer do
     end
 
     context 'when siren has a valid tva french number' do
-      let(:body) { Rails.root.join('spec/fixtures/payloads/vies/valid.json').read }
+      let(:body) { read_payload_file('vies/valid.json') }
 
       it { is_expected.to be_a_success }
 
@@ -37,7 +37,7 @@ RSpec.describe EuropeanCommission::VIES, type: :retriever_organizer do
     end
 
     context 'when siren does not have a french tva number' do
-      let(:body) { Rails.root.join('spec/fixtures/payloads/vies/invalid.json').read }
+      let(:body) { read_payload_file('vies/invalid.json') }
 
       it { is_expected.to be_a_failure }
 

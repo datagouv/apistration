@@ -21,7 +21,7 @@ module ProviderStubs::CNAFQuotientFamilialV2
       }
     ).to_return(
       status: 200,
-      body: Rails.root.join('spec/fixtures/payloads/cnaf/quotient_familial_v2/make_request_valid.json').read,
+      body: read_payload_file('cnaf/quotient_familial_v2/make_request_valid.json'),
       headers: {
         'X-APISECU-FD' => '00810011'
       }
@@ -36,7 +36,7 @@ module ProviderStubs::CNAFQuotientFamilialV2
       }
     ).to_return(
       status: 200,
-      body: Rails.root.join('spec/fixtures/payloads/cnaf/quotient_familial_v2/valid_authentication.json').read
+      body: read_payload_file('cnaf/quotient_familial_v2/valid_authentication.json')
     )
   end
 
@@ -47,7 +47,7 @@ module ProviderStubs::CNAFQuotientFamilialV2
       })
     ).to_return(
       status: 404,
-      body: Rails.root.join('spec/fixtures/payloads/cnaf/quotient_familial_v2/404.json').read
+      body: read_payload_file('cnaf/quotient_familial_v2/404.json')
     )
   end
 end

@@ -14,9 +14,7 @@ RSpec.describe CNAF::QuotientFamilialV2::BuildResource, type: :build_resource do
     }
   end
 
-  let(:body) do
-    Rails.root.join('spec/fixtures/payloads/cnaf/quotient_familial_v2/make_request_valid.json').read
-  end
+  let(:body) { read_payload_file('cnaf/quotient_familial_v2/make_request_valid.json') }
 
   before do
     allow(response).to receive(:[]).with('X-APISECU-FD').and_return('00810011')

@@ -20,7 +20,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
       before do
         stub_request(:get, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
           status: 200,
-          body: Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_ine_valid_response.json').read
+          body: read_payload_file('mesri/student_status/with_ine_valid_response.json')
         )
       end
 
@@ -65,7 +65,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
       before do
         stub_request(:get, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
           status: 404,
-          body: Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_ine_not_found_response.json').read
+          body: read_payload_file('mesri/student_status/with_ine_not_found_response.json')
         )
       end
 
@@ -96,7 +96,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
       before do
         stub_request(:post, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
           status: 200,
-          body: Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_civility_valid_response.json').read
+          body: read_payload_file('mesri/student_status/with_civility_valid_response.json')
         )
       end
 
@@ -138,7 +138,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
 
       stub_request(:post, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
         status: 200,
-        body: Rails.root.join('spec/fixtures/payloads/mesri/student_status/with_civility_valid_response.json').read
+        body: read_payload_file('mesri/student_status/with_civility_valid_response.json')
       )
 
       mock_valid_france_connect_checktoken(scopes: minimal_france_connect_scopes.concat(all_mesri_scopes))

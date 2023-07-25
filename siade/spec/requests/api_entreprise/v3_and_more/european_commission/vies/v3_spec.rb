@@ -28,7 +28,7 @@ RSpec.describe 'EuropeanCommission: Vies', api: :entreprise, type: %i[request sw
         end
 
         describe 'found response' do
-          let(:body) { Rails.root.join('spec/fixtures/payloads/vies/valid.json').read }
+          let(:body) { read_payload_file('vies/valid.json') }
 
           response '200', 'Numéro de TVA trouvé' do
             description SwaggerData.get('european_commission.vies.description')
@@ -44,7 +44,7 @@ RSpec.describe 'EuropeanCommission: Vies', api: :entreprise, type: %i[request sw
         end
 
         describe 'not found response' do
-          let(:body) { Rails.root.join('spec/fixtures/payloads/vies/invalid.json').read }
+          let(:body) { read_payload_file('vies/invalid.json') }
 
           response '404', 'Non trouvée' do
             schema '$ref' => '#/components/schemas/Error'

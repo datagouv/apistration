@@ -16,7 +16,7 @@ RSpec.describe CNAF::QuotientFamilial::MakeRequest, type: :make_request do
       body: %r{<matricule>#{beneficiary_number}</matricule>.*<codePostal>#{postal_code}</codePostal>}m
     ).to_return(
       status: 200,
-      body: Rails.root.join('spec/fixtures/payloads/cnaf/quotient_familial_valid_response.mime').read
+      body: read_payload_file('cnaf/quotient_familial_valid_response.mime')
     )
   end
 
