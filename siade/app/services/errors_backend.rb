@@ -70,6 +70,7 @@ class ErrorsBackend
       '31' => 'GIP-MDS',
       '32' => 'Qualifelec',
       '33' => 'CARIF-OREF',
+      '34' => 'INPI - RNE',
       '50' => 'FranceConnect'
     }
   end
