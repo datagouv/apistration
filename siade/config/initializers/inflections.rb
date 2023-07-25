@@ -61,6 +61,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'RCS'
   inflect.acronym 'RGE'
   inflect.acronym 'RNA'
+  inflect.acronym 'RNE'
   inflect.acronym 'RNM'
   inflect.acronym 'URSSAF'
 
