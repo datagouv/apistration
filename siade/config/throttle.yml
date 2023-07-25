@@ -75,6 +75,7 @@ shared:
       - { controller: 'api_entreprise/v3_and_more/gip_mds/effectifs_annuels_entreprise', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/gip_mds/effectifs_mensuels_etablissement', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/qualifelec/certificats', action: 'show' }
+      - { controller: 'api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs', action: 'show' }
 
     limit: 250
     period: 60

@@ -178,6 +178,10 @@
   api: 'entreprise'
   path: '/v2/certificats_qualibat/78824266700020'
 
+- name: "RNE INPI bénéficiaires effectifs"
+  api: 'entreprise'
+  path: '/v3/inpi/rne/unites_legales/900225095/beneficiaires_effectifs'
+
 # API Particulier v2
 
 - name: 'CAF Quotient familial'

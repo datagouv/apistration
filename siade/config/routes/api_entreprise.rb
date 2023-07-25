@@ -91,6 +91,10 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
     get 'unites_legales/:siren/brevets' => '/api_entreprise/v3_and_more/inpi/latest_brevets#show'
     get 'unites_legales/:siren/marques' => '/api_entreprise/v3_and_more/inpi/latest_marques#show'
     get 'unites_legales/:siren/modeles' => '/api_entreprise/v3_and_more/inpi/latest_modeles#show'
+
+    namespace :rne do
+      get 'unites_legales/:siren/beneficiaires_effectifs' => '/api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs#show'
+    end
   end
 
   namespace :insee do

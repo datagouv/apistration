@@ -13198,6 +13198,665 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/inpi/unites_legales/130025265/modeles?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/inpi/rne/unites_legales/{siren}/beneficiaires_effectifs":
+    get:
+      summary: Bénéficiaires effectifs
+      tags:
+      - Informations générales
+      parameters:
+      - name: context
+        in: query
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
+        required: true
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: true
+        schema:
+          type: string
+      - name: object
+        in: query
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
+        required: true
+        schema:
+          type: string
+      - name: siren
+        in: path
+        description: Siren de l'entreprise
+        examples:
+          siren_octo_technology:
+            value: '418166096'
+            summary: SIREN Octo Technology
+          siren_non_diffusible:
+            value: '005572466'
+            summary: SIREN entreprise non diffusible
+          siren_artisant:
+            value: '301123626'
+            summary: SIREN entreprise artisanale
+          siren_fntp:
+            value: '339379984'
+            summary: SIREN pour FNTP
+          siren_cnetp:
+            value: '542036207'
+            summary: SIREN pour CNETP
+          siren_opqibi:
+            value: '515228211'
+            summary: SIREN pour OPQIBI
+          siren_entrepreneur_individuel:
+            value: '389839937'
+            summary: SIREN d'un entrepeneur individuel (cessé)
+          siren_marques_brevets_modeles:
+            value: '542065479'
+            summary: SIREN d'une entreprise ayant des marques, brevets et modèles
+              (INPI)
+        required: true
+        schema:
+          type: string
+      security:
+      - jwt_bearer_token: []
+      description: Liste des bénéficiaires effectifs d'une unité légale délivrée par
+        l'API RNE de l'INPI
+      responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '403':
+          description: Accès interdit
+          content:
+            application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges sur /v2/privileges
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '200':
+          description: Bénéficiaires effectifs trouvés
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
+          x-operationId: api_entreprise_v3_inpi_rne_beneficiaires_effectifs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        data:
+                          type: object
+                          properties:
+                            nom:
+                              title: Nom du bénéficiaire effectif
+                              type: string
+                              example: MARTIN
+                            prenoms:
+                              title: Liste des prénoms du bénéficiaire effectif
+                              type: array
+                              example:
+                              - JEAN
+                              - JACQUES
+                              items:
+                                type: string
+                            date_naissance:
+                              type: object
+                              title: Date de naissance du bénéficiaire effectif
+                              additionalProperties: false
+                              properties:
+                                annee:
+                                  title: Année de la date de naissance
+                                  type: string
+                                  example: '1990'
+                                mois:
+                                  title: Mois de la date de naissance
+                                  type: string
+                                  example: '01'
+                                  enum:
+                                  - '01'
+                                  - '02'
+                                  - '03'
+                                  - '04'
+                                  - '05'
+                                  - '06'
+                                  - '07'
+                                  - '08'
+                                  - '09'
+                                  - '10'
+                                  - '11'
+                                  - '12'
+                                jour:
+                                  title: Jour de la date de naissance
+                                  description: Cette valeur est très souvent vide
+                                  type: string
+                                  example: '01'
+                                  nullable: true
+                              required:
+                              - annee
+                              - mois
+                              - jour
+                            modalites:
+                              title: Liste des modalités et propriétées affectées
+                                au bénéficiaire effectif
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                detention_part_directe:
+                                  title: Detention part directe
+                                  type: boolean
+                                  example: true
+                                detention_part_directe_rdd:
+                                  title: Detention part directe rdd
+                                  type: number
+                                  example: 51.0
+                                parts_directes_pleine_propriete:
+                                  title: Parts directes pleine propriete
+                                  type: number
+                                  example: 0.0
+                                parts_directes_nue_propriete:
+                                  title: Parts directes nue propriete
+                                  type: number
+                                  example: 0.0
+                                detention_part_indirecte:
+                                  title: Detention part indirecte
+                                  type: boolean
+                                  example: false
+                                detention_part_indirecte_rdd:
+                                  title: Detention part indirecte rdd
+                                  type: number
+                                  example: 0.0
+                                parts_indirectes_indivision:
+                                  title: Parts indirectes indivision
+                                  type: number
+                                  example: 0.0
+                                parts_indirectes_indivision_pleine_propriete:
+                                  title: Parts indirectes indivision pleine propriete
+                                  type: number
+                                  example: 0.0
+                                parts_indirectes_indivision_nue_propriete:
+                                  title: Parts indirectes indivision nue propriete
+                                  type: number
+                                  example: 0.0
+                                parts_indirectes_personnes_morales:
+                                  title: Parts indirectes personnes morales
+                                  type: number
+                                  example: 0.0
+                                parts_indirectes_personnes_morales_pleine_propriete:
+                                  title: Parts indirectes des personnes morales en
+                                    pleine propriete
+                                  type: number
+                                  example: 0.0
+                                parts_indirectes_personnes_morales_nue_propriete:
+                                  title: Parts indirectes des personnes morales en
+                                    nue propriete
+                                  type: number
+                                  example: 0.0
+                                detention_part_totale:
+                                  title: Détention part totale
+                                  type: number
+                                  example: 51.0
+                                detention_vote_directe:
+                                  title: Detention vote directe
+                                  type: boolean
+                                  example: true
+                                detention_vote_directe_rdd:
+                                  title: Detention vote directe rdd
+                                  type: number
+                                  example: 51.0
+                                vote_directe_pleine_propriete:
+                                  title: Vote directe pleine propriete
+                                  type: number
+                                  example: 51.0
+                                vote_directe_nue_propriete:
+                                  title: Vote directe nue propriete
+                                  type: number
+                                  example: 0.0
+                                vote_directe_usufruit:
+                                  title: Vote directe usufruit
+                                  type: number
+                                  example: 0.0
+                                detention_vote_indirecte:
+                                  title: Detention vote indirecte
+                                  type: boolean
+                                  example: false
+                                detention_vote_indirecte_rdd:
+                                  title: Detention vote indirecte rdd
+                                  type: number
+                                  example: 0.0
+                                vote_indirecte_indivision:
+                                  title: Vote indirecte indivision
+                                  type: number
+                                  example: 0.0
+                                vote_indirecte_indivision_pleine_propriete:
+                                  title: Vote indirecte indivision pleine propriete
+                                  type: number
+                                  example: 0.0
+                                vote_indirecte_indivision_nue_propriete:
+                                  title: Vote indirecte indivision nue propriete
+                                  type: number
+                                  example: 0.0
+                                vote_indirecte_indivision_usufruit:
+                                  title: Vote indirecte indivision usufruit
+                                  type: number
+                                  example: 0.0
+                                vote_indirecte_personnes_morales:
+                                  title: Vote indirecte personnes morales
+                                  type: number
+                                  example: 0.0
+                                vote_indirecte_personnes_morales_pleine_propriete:
+                                  title: Vote indirecte personnes morales pleine propriete
+                                  type: number
+                                  example: 0.0
+                                vote_indirecte_personnes_morales_nue_propriete:
+                                  title: Vote indirecte des personnes morales en nue
+                                    propriete
+                                  type: number
+                                  example: 0.0
+                                vote_indirecte_personnes_morales_usufruit:
+                                  title: Vote indirecte des personnes morales en usufruit
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_directe_pleine_propriete_rdd:
+                                  title: Vocation titulaire directe pleine propriete
+                                    rdd
+                                  type: boolean
+                                  example: false
+                                vocation_titulaire_directe_pleine_propriete:
+                                  title: Vocation titulaire directe pleine propriete
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_directe_nue_propriete:
+                                  title: Vocation titulaire directe nue propriete
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_indivision:
+                                  title: Vocation titulaire indirecte indivision
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_pleine_propriete_rdd:
+                                  title: Vocation titulaire indirecte pleine propriete
+                                    rdd
+                                  type: boolean
+                                  example: false
+                                vocation_titulaire_indirecte_pleine_propriete:
+                                  title: Vocation titulaire indirecte pleine propriete
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_nue_propriete:
+                                  title: Vocation titulaire indirecte nue propriete
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_personnes_morales:
+                                  title: Vocation titulaire indirecte personnes morales
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_personnes_morales_pleine_propriete:
+                                  title: Vocation titulaire indirecte personnes morales
+                                    pleine propriete
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_personnes_morales_nue_propriete:
+                                  title: Vocation titulaire indirecte personnes morales
+                                    nue propriete
+                                  type: number
+                                  example: 0.0
+                                detention_vote_total:
+                                  title: Detention vote total
+                                  type: number
+                                  example: 0.0
+                                detention_pouvoir_decision_ag:
+                                  title: Detention pouvoir decision ag
+                                  type: boolean
+                                  example: false
+                                detention_pouvoir_nommage_membres_conseil_admin:
+                                  title: Detention pouvoir nommage membres conseil
+                                    admin
+                                  type: boolean
+                                  example: false
+                                detention_autres_moyens_controle:
+                                  title: Detention autres moyens controle
+                                  type: boolean
+                                  example: false
+                                beneficiaire_representant_legal:
+                                  title: Beneficiaire representant legal
+                                  type: boolean
+                                  example: false
+                                representant_legal_placement_sans_gestion_delegue:
+                                  title: Representant legal placement sans gestion
+                                    delegue
+                                  type: boolean
+                                  example: false
+                              required:
+                              - detention_part_directe
+                              - detention_part_directe_rdd
+                              - parts_directes_pleine_propriete
+                              - parts_directes_nue_propriete
+                              - detention_part_indirecte
+                              - detention_part_indirecte_rdd
+                              - parts_indirectes_indivision
+                              - parts_indirectes_indivision_pleine_propriete
+                              - parts_indirectes_indivision_nue_propriete
+                              - parts_indirectes_personnes_morales
+                              - parts_indirectes_personnes_morales_pleine_propriete
+                              - parts_indirectes_personnes_morales_nue_propriete
+                              - detention_part_totale
+                              - detention_vote_directe
+                              - detention_vote_directe_rdd
+                              - vote_directe_pleine_propriete
+                              - vote_directe_nue_propriete
+                              - vote_directe_usufruit
+                              - detention_vote_indirecte
+                              - detention_vote_indirecte_rdd
+                              - vote_indirecte_indivision
+                              - vote_indirecte_indivision_pleine_propriete
+                              - vote_indirecte_indivision_nue_propriete
+                              - vote_indirecte_indivision_usufruit
+                              - vote_indirecte_personnes_morales
+                              - vote_indirecte_personnes_morales_pleine_propriete
+                              - vote_indirecte_personnes_morales_nue_propriete
+                              - vote_indirecte_personnes_morales_usufruit
+                              - vocation_titulaire_directe_pleine_propriete_rdd
+                              - vocation_titulaire_directe_pleine_propriete
+                              - vocation_titulaire_directe_nue_propriete
+                              - vocation_titulaire_indirecte_indivision
+                              - vocation_titulaire_indirecte_pleine_propriete_rdd
+                              - vocation_titulaire_indirecte_pleine_propriete
+                              - vocation_titulaire_indirecte_nue_propriete
+                              - vocation_titulaire_indirecte_personnes_morales
+                              - vocation_titulaire_indirecte_personnes_morales_pleine_propriete
+                              - vocation_titulaire_indirecte_personnes_morales_nue_propriete
+                              - detention_vote_total
+                              - detention_pouvoir_decision_ag
+                              - detention_pouvoir_nommage_membres_conseil_admin
+                              - detention_autres_moyens_controle
+                              - beneficiaire_representant_legal
+                              - representant_legal_placement_sans_gestion_delegue
+                          required:
+                          - nom
+                          - prenoms
+                          - date_naissance
+                          - modalites
+                        links:
+                          type: object
+                        meta:
+                          type: object
+                  meta:
+                    type: object
+                    properties:
+                      count:
+                        title: Nombre de bénéficiaires
+                        type: integer
+                        example: 1
+                    required:
+                    - count
+                    additionalProperties: false
+                  links:
+                    type: object
+                required:
+                - data
+                - meta
+        '404':
+          description: Bénéficiaires effectifs non trouvés
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '422':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                unprocessable_entity_error_siren_error:
+                  value:
+                    errors:
+                    - code: '00301'
+                      title: Entité non traitable
+                      detail: Le numéro de siren n'est pas correctement formatté
+                      source:
+                        parameter: siren
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le numéro de siren n'est pas correctement formatté
+                missing_mandatory_params_context_error:
+                  value:
+                    errors:
+                    - code: '00201'
+                      title: Entité non traitable
+                      detail: Le paramètre context est obligatoire
+                      source:
+                        parameter: context
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre context est obligatoire
+                missing_mandatory_params_object_error:
+                  value:
+                    errors:
+                    - code: '00202'
+                      title: Entité non traitable
+                      detail: Le paramètre object est obligatoire
+                      source:
+                        parameter: object
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre object est obligatoire
+                missing_mandatory_params_recipient_error:
+                  value:
+                    errors:
+                    - code: '00203'
+                      title: Entité non traitable
+                      detail: Le paramètre recipient est obligatoire
+                      source:
+                        parameter: recipient
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre recipient est obligatoire
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unknown_error:
+                  value:
+                    errors:
+                    - code: '34999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: INPI - RNE
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '34002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: INPI - RNE
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+                provider_unavailable_error:
+                  value:
+                    errors:
+                    - code: '34001'
+                      title: Service non disponible
+                      detail: Service du fournisseur de données temporairement indisponible
+                        ou en maintenance.
+                      source:
+                      meta:
+                        provider: INPI - RNE
+                  summary: Service non disponible
+                  description: Service du fournisseur de données temporairement indisponible
+                    ou en maintenance.
+                network_error:
+                  value:
+                    errors:
+                    - code: '00501'
+                      title: Erreur réseau
+                      detail: Problème de connexion au serveur distant. L'erreur peut
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
+                      source:
+                      meta:
+                        retry_in: 10
+                  summary: Erreur réseau
+                  description: Problème de connexion au serveur distant. L'erreur
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
+                dns_resolution_error:
+                  value:
+                    errors:
+                    - code: '34004'
+                      title: Erreur de résolution DNS
+                      detail: Problème de résolution DNS de l'adresse du serveur
+                      source:
+                      meta:
+                        provider: INPI - RNE
+                  summary: Erreur de résolution DNS
+                  description: Problème de résolution DNS de l'adresse du serveur
+              schema:
+                "$ref": "#/components/schemas/Error"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/inpi/rne/unites_legales/130025265/beneficiaires_effectifs?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/etablissements/{siret}/adresse":
     get:
       summary: Adresse établissement

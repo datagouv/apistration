@@ -1,0 +1,237 @@
+inpi_rne:
+  beneficiaires_effectifs:
+    title: "Bénéficiaires effectifs"
+    description: "Liste des bénéficiaires effectifs d'une unité légale délivrée par l'API RNE de l'INPI"
+    tags:
+      - "Informations générales"
+    attributes:
+      nom:
+        title: "Nom du bénéficiaire effectif"
+        type: "string"
+        example: 'MARTIN'
+      prenoms:
+        title: "Liste des prénoms du bénéficiaire effectif"
+        type: 'array'
+        example:
+          - 'JEAN'
+          - 'JACQUES'
+        items:
+          type: 'string'
+      date_naissance:
+        type: 'object'
+        title: "Date de naissance du bénéficiaire effectif"
+        additionalProperties: false
+        properties:
+          annee:
+            title: "Année de la date de naissance"
+            type: 'string'
+            example: '1990'
+          mois:
+            title: "Mois de la date de naissance"
+            type: 'string'
+            example: '01'
+            enum:
+              - '01'
+              - '02'
+              - '03'
+              - '04'
+              - '05'
+              - '06'
+              - '07'
+              - '08'
+              - '09'
+              - '10'
+              - '11'
+              - '12'
+          jour:
+            title: "Jour de la date de naissance"
+            description: "Cette valeur est très souvent vide"
+            type: 'string'
+            example: '01'
+            nullable: true
+      modalites:
+        title: "Liste des modalités et propriétées affectées au bénéficiaire effectif"
+        type: 'object'
+        additionalProperties: false
+        properties:
+          detention_part_directe:
+            title: "Detention part directe"
+            type: 'boolean'
+            example: true
+          detention_part_directe_rdd:
+            title: "Detention part directe rdd"
+            type: 'number'
+            example: 51.0
+          parts_directes_pleine_propriete:
+            title: "Parts directes pleine propriete"
+            type: 'number'
+            example: 0.0
+          parts_directes_nue_propriete:
+            title: "Parts directes nue propriete"
+            type: 'number'
+            example: 0.0
+          detention_part_indirecte:
+            title: "Detention part indirecte"
+            type: 'boolean'
+            example: false
+          detention_part_indirecte_rdd:
+            title: "Detention part indirecte rdd"
+            type: 'number'
+            example: 0.0
+          parts_indirectes_indivision:
+            title: "Parts indirectes indivision"
+            type: 'number'
+            example: 0.0
+          parts_indirectes_indivision_pleine_propriete:
+            title: "Parts indirectes indivision pleine propriete"
+            type: 'number'
+            example: 0.0
+          parts_indirectes_indivision_nue_propriete:
+            title: "Parts indirectes indivision nue propriete"
+            type: 'number'
+            example: 0.0
+          parts_indirectes_personnes_morales:
+            title: "Parts indirectes personnes morales"
+            type: 'number'
+            example: 0.0
+          parts_indirectes_personnes_morales_pleine_propriete:
+            title: "Parts indirectes des personnes morales en pleine propriete"
+            type: 'number'
+            example: 0.0
+          parts_indirectes_personnes_morales_nue_propriete:
+            title: "Parts indirectes des personnes morales en nue propriete"
+            type: 'number'
+            example: 0.0
+          detention_part_totale:
+            title: "Détention part totale"
+            type: 'number'
+            example: 51.0
+          detention_vote_directe:
+            title: "Detention vote directe"
+            type: 'boolean'
+            example: true
+          detention_vote_directe_rdd:
+            title: "Detention vote directe rdd"
+            type: 'number'
+            example: 51.0
+          vote_directe_pleine_propriete:
+            title: "Vote directe pleine propriete"
+            type: 'number'
+            example: 51.0
+          vote_directe_nue_propriete:
+            title: "Vote directe nue propriete"
+            type: 'number'
+            example: 0.0
+          vote_directe_usufruit:
+            title: "Vote directe usufruit"
+            type: 'number'
+            example: 0.0
+          detention_vote_indirecte:
+            title: "Detention vote indirecte"
+            type: 'boolean'
+            example: false
+          detention_vote_indirecte_rdd:
+            title: "Detention vote indirecte rdd"
+            type: 'number'
+            example: 0.0
+          vote_indirecte_indivision:
+            title: "Vote indirecte indivision"
+            type: 'number'
+            example: 0.0
+          vote_indirecte_indivision_pleine_propriete:
+            title: "Vote indirecte indivision pleine propriete"
+            type: 'number'
+            example: 0.0
+          vote_indirecte_indivision_nue_propriete:
+            title: "Vote indirecte indivision nue propriete"
+            type: 'number'
+            example: 0.0
+          vote_indirecte_indivision_usufruit:
+            title: "Vote indirecte indivision usufruit"
+            type: 'number'
+            example: 0.0
+          vote_indirecte_personnes_morales:
+            title: "Vote indirecte personnes morales"
+            type: 'number'
+            example: 0.0
+          vote_indirecte_personnes_morales_pleine_propriete:
+            title: "Vote indirecte personnes morales pleine propriete"
+            type: 'number'
+            example: 0.0
+          vote_indirecte_personnes_morales_nue_propriete:
+            title: "Vote indirecte des personnes morales en nue propriete"
+            type: 'number'
+            example: 0.0
+          vote_indirecte_personnes_morales_usufruit:
+            title: "Vote indirecte des personnes morales en usufruit"
+            type: 'number'
+            example: 0.0
+          vocation_titulaire_directe_pleine_propriete_rdd:
+            title: "Vocation titulaire directe pleine propriete rdd"
+            type: 'boolean'
+            example: false
+          vocation_titulaire_directe_pleine_propriete:
+            title: "Vocation titulaire directe pleine propriete"
+            type: 'number'
+            example: 0.0
+          vocation_titulaire_directe_nue_propriete:
+            title: "Vocation titulaire directe nue propriete"
+            type: 'number'
+            example: 0.0
+          vocation_titulaire_indirecte_indivision:
+            title: "Vocation titulaire indirecte indivision"
+            type: 'number'
+            example: 0.0
+          vocation_titulaire_indirecte_pleine_propriete_rdd:
+            title: "Vocation titulaire indirecte pleine propriete rdd"
+            type: 'boolean'
+            example: false
+          vocation_titulaire_indirecte_pleine_propriete:
+            title: "Vocation titulaire indirecte pleine propriete"
+            type: 'number'
+            example: 0.0
+          vocation_titulaire_indirecte_nue_propriete:
+            title: "Vocation titulaire indirecte nue propriete"
+            type: 'number'
+            example: 0.0
+          vocation_titulaire_indirecte_personnes_morales:
+            title: "Vocation titulaire indirecte personnes morales"
+            type: 'number'
+            example: 0.0
+          vocation_titulaire_indirecte_personnes_morales_pleine_propriete:
+            title: "Vocation titulaire indirecte personnes morales pleine propriete"
+            type: 'number'
+            example: 0.0
+          vocation_titulaire_indirecte_personnes_morales_nue_propriete:
+            title: "Vocation titulaire indirecte personnes morales nue propriete"
+            type: 'number'
+            example: 0.0
+          detention_vote_total:
+            title: "Detention vote total"
+            type: 'number'
+            example: 0.0
+          detention_pouvoir_decision_ag:
+            title: "Detention pouvoir decision ag"
+            type: 'boolean'
+            example: false
+          detention_pouvoir_nommage_membres_conseil_admin:
+            title: "Detention pouvoir nommage membres conseil admin"
+            type: 'boolean'
+            example: false
+          detention_autres_moyens_controle:
+            title: "Detention autres moyens controle"
+            type: 'boolean'
+            example: false
+          beneficiaire_representant_legal:
+            title: "Beneficiaire representant legal"
+            type: 'boolean'
+            example: false
+          representant_legal_placement_sans_gestion_delegue:
+            title: "Representant legal placement sans gestion delegue"
+            type: 'boolean'
+            example: false
+    meta:
+      count:
+        title: "Nombre de bénéficiaires"
+        type: 'integer'
+        example: 1
