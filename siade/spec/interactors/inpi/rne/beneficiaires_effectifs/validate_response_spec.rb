@@ -14,6 +14,14 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::ValidateResponse, type: :valid
 
         its(:errors) { is_expected.to be_empty }
       end
+
+      context 'when body has no beneficiairesEffectifs within formality->content->personneMorale' do
+        let(:json_body) { read_payload_file('inpi/rne/without-beneficiaires-effectifs.json') }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+      end
     end
   end
 
