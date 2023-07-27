@@ -8,6 +8,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [Complémentaire santé solidaire](api_particulier_v2_cnaf_complementaire_sante_solidaire) (`/api/v2/complementaire-sante-solidaire`)
 * [Quotient familial CAF & MSA](api_particulier_v2_cnaf_quotient_familial_v2) (`/api/v2/composition-familiale-v2`)
 * [Statut élève scolarisé et boursier](api_particulier_v2_men_scolarites) (`/api/v2/scolarites`)
+* [Paiements versés par Pôle Emploi](api_particulier_v2_pole_emploi_indemnites) (`/api/v2/paiements-pole-emploi`)
 * [Service de vérification de l'avis d'impôt sur le revenu](api_particulier_v2_dgfip_situation_ir) (`/api/v2/avis-imposition`)
 * [Quotient familial CAF](api_particulier_v2_cnaf_quotient_familial) (`/api/v2/composition-familiale`)
 * [Statut demandeur d'emploi](api_particulier_v2_pole_emploi_statut) (`/api/v2/situations-pole-emploi`)
