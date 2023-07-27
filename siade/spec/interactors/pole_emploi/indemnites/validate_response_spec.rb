@@ -17,13 +17,17 @@ RSpec.describe PoleEmploi::Indemnites::ValidateResponse, type: :validate_respons
         context 'when service user is enrolled' do
           let(:body) { read_payload_file('pole_emploi/indemnites/enrolled_without_payments.json') }
 
-          it { pending 'Should be specified' }
+          it { is_expected.to be_a_failure }
+
+          its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
         end
 
         context 'when service user is not enrolled' do
           let(:body) { read_payload_file('pole_emploi/indemnites/not_enrolled.json') }
 
-          it { pending 'Should be specified' }
+          it { is_expected.to be_a_failure }
+
+          its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
         end
       end
     end
