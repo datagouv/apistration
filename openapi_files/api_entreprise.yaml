@@ -143,13 +143,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -185,6 +185,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -561,9 +578,6 @@ paths:
           siret_probtp:
             value: '43841606700017'
             summary: SIRET pour ProBTP
-          siret_agence_bio:
-            value: '48311105000025'
-            summary: SIRET pour l'Agence Bio
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
@@ -626,13 +640,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -668,6 +682,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -1121,13 +1152,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -1163,6 +1194,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -1658,6 +1706,556 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/banque_de_france/unites_legales/130025265/bilans?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/carif_oref/certifications_qualiopi_france_competences/{siret}":
+    get:
+      summary: Certifications Qualiopi & habilitations France compétences
+      tags:
+      - Prochainement
+      parameters:
+      - name: siret
+        in: path
+        description: Siret de l'établissement
+        examples:
+          siret_octo_technology:
+            value: '41816609600069'
+            summary: SIRET Octo Technology
+          siret_non_diffusible:
+            value: '00557246600026'
+            summary: SIRET établissement non diffusible
+          siret_agefiph:
+            value: '39332832300059'
+            summary: SIRET pour AGEFIPH
+          siret_msa:
+            value: '81104725700019'
+            summary: SIRET pour MSA
+          siret_probtp:
+            value: '43841606700017'
+            summary: SIRET pour ProBTP
+          siret_qualibat:
+            value: '78824266700020'
+            summary: SIRET pour Qualibat
+          siret_entrepreneur_individuel:
+            value: '38983993700015'
+            summary: SIRET d'un entrepreneur individuel (fermé)
+          siret_ademe:
+            value: '42878198300039'
+            summary: SIRET pour ADEME RGE
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
+        required: true
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: true
+        schema:
+          type: string
+      - name: object
+        in: query
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
+        required: true
+        schema:
+          type: string
+      security:
+      - jwt_bearer_token: []
+      description: Certifications Qualiopi et habilitations France compétences attestant
+        que l'établissement est habilité à délivrer une formation certifiante.
+      responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '403':
+          description: Accès interdit
+          content:
+            application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges sur /v2/privileges
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '200':
+          description: Entreprise trouvée
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
+          x-operationId: api_entreprise_v3_carif_oref_certifications_qualiopi_france_competences
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      code_uai_etablissement:
+                        title: Code UAI de l'établissement
+                        description: Code UAI de l'établissement agrée
+                        example: 0123456A
+                        type: string
+                      unite_legale_avec_plusieurs_nda:
+                        title: Unité légale avec plusieurs NDA
+                        description: L'unité légale de l'établissement est liée à
+                          plusieurs NDA (Numéro de Déclaration de l'Activité).
+                        example: false
+                        type: boolean
+                      declarations_activites:
+                        type: array
+                        description: informations relatives aux certifications de
+                          l'activité
+                        items:
+                          type: object
+                          properties:
+                            nda:
+                              title: Numéro de Déclaration de l'Activité
+                              description: Numéro de Déclaration de l'Activité de
+                                l'établissement agrée
+                              type: string
+                              example: '11910843391'
+                            formation_apprentis:
+                              title: Centre de Formation d'Apprentis
+                              description: Indique si le centre est agrée CFA (Centre
+                                de Formation d'Apprentis)
+                              type: boolean
+                              example: true
+                            enregistrement_en_cours:
+                              title: Enregistrement en cours (fiche active)
+                              description: Indique si la fiche Qualiopi est active,
+                                c'est à dire si l'enregistrement de la certification
+                                est en cours. La certification reste accessible.
+                              type: boolean
+                              example: true
+                            date_derniere_declaration:
+                              title: Date de la dernière déclaration d'activité
+                              description: Date de la dernière fois où cette déclaration
+                                d'activité a été déclarée, au format AAAA-MM-DD
+                              type: string
+                              format: date
+                              example: '2021-01-30'
+                            debut_exercice:
+                              title: Début d'exercice
+                              description: Date de début d'exercice de l'établissement
+                                agrée, au format AAAA-MM-DD
+                              type: string
+                              format: date
+                              example: '2021-01-30'
+                            certification_qualiopi:
+                              type: object
+                              description: informations relatives à la certification
+                                qualiopi
+                              properties:
+                                action_formation:
+                                  title: Certication Action Formation
+                                  description: Indique si l'établissement est certifié
+                                    Action Formation
+                                  type: boolean
+                                  example: false
+                                bilan_competences:
+                                  title: Certification Bilan Compétences
+                                  description: Indique si l'établissement est certifié
+                                    Bilan Compétences
+                                  type: boolean
+                                  example: false
+                                validation_acquis_experience:
+                                  title: Certification VAE
+                                  description: Indique si l'établissement est certifié
+                                    VAE (Validation des Acquis de l'Experience)
+                                  type: boolean
+                                  example: false
+                                apprentissage:
+                                  title: Certification Apprentissage
+                                  description: Indique si l'établissement est certifié
+                                    Action de Formation par Apprentissage
+                                  type: boolean
+                                  example: false
+                                origine_obtention_qualiopi:
+                                  title: Origine de l'obtention Qualiopi (propagée
+                                    ou non)
+                                  description: Décrit l'origine de l'obtention de
+                                    la certification Qualiopi, si elle est propagée
+                                    (c'est à dire si elle est liée à une autre certification)
+                                    ou non (directe).
+                                  type: string
+                                  example: Qualiopi direct sur le NDA
+                            specialites:
+                              type: object
+                              description: informations relatives aux spécialités
+                                relevant du certificat qualiopi. Il peut y avoir jusqu'à
+                                trois spécialités.
+                              properties:
+                                specialite_1:
+                                  type: object
+                                  description: informations relatives à la première
+                                    spécialité
+                                  properties:
+                                    code:
+                                      title: Code spécialité 1
+                                      description: Code de la première spécialité
+                                        de l'établissement agrée
+                                      type: string
+                                      example: '313'
+                                      nullable: true
+                                    libelle:
+                                      title: Libellé spécialité 1
+                                      description: Libellé de la première spécialité
+                                        de l'établissement agrée
+                                      type: string
+                                      example: Finances, banque, assurances
+                                      nullable: true
+                                specialite_2:
+                                  type: object
+                                  description: informations relatives à la seconde
+                                    spécialité
+                                  properties:
+                                    code:
+                                      title: Code spécialité 2
+                                      description: Code de la seconde spécialité de
+                                        l'établissement agrée
+                                      type: string
+                                      example: '326'
+                                      nullable: true
+                                    libelle:
+                                      title: Libellé spécialité 2
+                                      description: Libellé de la seconde spécialité
+                                        de l'établissement agrée
+                                      type: string
+                                      example: Informatique, traitement de l'information,
+                                        réseaux de transmission des données
+                                      nullable: true
+                                specialite_3:
+                                  type: object
+                                  description: informations relatives à la troisième
+                                    spécialité
+                                  properties:
+                                    code:
+                                      title: Code spécialité 3
+                                      description: Code de la troisième spécialité
+                                        de l'établissement agrée
+                                      type: string
+                                      example: '327'
+                                      nullable: true
+                                    libelle:
+                                      title: Libellé spécialité 3
+                                      description: Libellé de la troisième spécialité
+                                        de l'établissement agrée
+                                      type: string
+                                      nullable: true
+                                      example: Langues
+                      habilitations_france_competence:
+                        type: array
+                        description: informations relatives aux habilitations France
+                          Competence
+                        items:
+                          type: object
+                          properties:
+                            code_france_competence:
+                              title: Code habilitation FC (France Compétence)
+                              description: Code de l'habilitation de l'établissement
+                                agrée auprès de FranceCompetence
+                              type: string
+                              example: RNCP10013
+                            date_fin_enregistrement:
+                              title: Date de fin d'enregistrement
+                              description: Date de fin d'enregistrement de l'habilitation
+                                de l'établissement agrée, au format AAAA-MM-DD
+                              type: string
+                              format: date
+                              nullable: true
+                            date_decision:
+                              title: Date de décision
+                              description: Date de décision de l'habilitation de l'établissement
+                                agrée, au format AAAA-MM-DD
+                              type: string
+                              format: date
+                              nullable: true
+                            habilitation_pour_former:
+                              title: Habilitation à former
+                              description: Indique que cette habilitation autorise
+                                à former/préparer les candidats à une certification
+                                inscrite au répertoire national des compétences professionnelles
+                                (RNCP) ou au répertoire spécifique (RS). Cette habilitation
+                                vise à s'assurer que les organismes de formation proposant
+                                des offres de formation certifiantes, sont bien habilités
+                                à préparer des élèves à cette certification.
+                              type: boolean
+                              example: true
+                            habilitation_pour_organiser_l_evaluation:
+                              title: Habilitation à organiser l'évaluation
+                              description: Indique que cette habilitation autorise
+                                à organiser l'évaluation des compétences des candidats
+                                visant une certification inscrite au répertoire national
+                                des compétences professionnelles (RNCP) ou au répertoire
+                                spécifique (RS).
+                              type: boolean
+                              example: true
+                            sirets_organismes_certificateurs:
+                              type: array
+                              description: Liste des SIRETs des organismes certificateurs
+                                ayant délivré à l'établissement les habilitations
+                                à former et/ou organiser l'évaluation de leur certification.
+                              items:
+                                type: string
+                                example: '12345678901234'
+                    required:
+                    - code_uai_etablissement
+                    - unite_legale_avec_plusieurs_nda
+                    - declarations_activites
+                    - habilitations_france_competence
+                    additionalProperties: false
+                  links:
+                    type: object
+                  meta:
+                    type: object
+                required:
+                - data
+                - links
+                - meta
+        '422':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                unprocessable_entity_error_siret_error:
+                  value:
+                    errors:
+                    - code: '00302'
+                      title: Entité non traitable
+                      detail: Le numéro de siret n'est pas correctement formatté
+                      source:
+                        parameter: siret
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le numéro de siret n'est pas correctement formatté
+                missing_mandatory_params_context_error:
+                  value:
+                    errors:
+                    - code: '00201'
+                      title: Entité non traitable
+                      detail: Le paramètre context est obligatoire
+                      source:
+                        parameter: context
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre context est obligatoire
+                missing_mandatory_params_object_error:
+                  value:
+                    errors:
+                    - code: '00202'
+                      title: Entité non traitable
+                      detail: Le paramètre object est obligatoire
+                      source:
+                        parameter: object
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre object est obligatoire
+                missing_mandatory_params_recipient_error:
+                  value:
+                    errors:
+                    - code: '00203'
+                      title: Entité non traitable
+                      detail: Le paramètre recipient est obligatoire
+                      source:
+                        parameter: recipient
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre recipient est obligatoire
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '404':
+          description: Non trouvée
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unknown_error:
+                  value:
+                    errors:
+                    - code: '33999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: CARIF-OREF
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '33002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: CARIF-OREF
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+                provider_unavailable_error:
+                  value:
+                    errors:
+                    - code: '33001'
+                      title: Service non disponible
+                      detail: Service du fournisseur de données temporairement indisponible
+                        ou en maintenance.
+                      source:
+                      meta:
+                        provider: CARIF-OREF
+                  summary: Service non disponible
+                  description: Service du fournisseur de données temporairement indisponible
+                    ou en maintenance.
+                network_error:
+                  value:
+                    errors:
+                    - code: '00501'
+                      title: Erreur réseau
+                      detail: Problème de connexion au serveur distant. L'erreur peut
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
+                      source:
+                      meta:
+                        retry_in: 10
+                  summary: Erreur réseau
+                  description: Problème de connexion au serveur distant. L'erreur
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
+                dns_resolution_error:
+                  value:
+                    errors:
+                    - code: '33004'
+                      title: Erreur de résolution DNS
+                      detail: Problème de résolution DNS de l'adresse du serveur
+                      source:
+                      meta:
+                        provider: CARIF-OREF
+                  summary: Erreur de résolution DNS
+                  description: Problème de résolution DNS de l'adresse du serveur
+              schema:
+                "$ref": "#/components/schemas/Error"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/carif_oref/certifications_qualiopi_france_competences/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/cnetp/unites_legales/{siren}/attestation_cotisations_conges_payes_chomage_intemperies":
     get:
       summary: Attestation de cotisations congés payés & chômage-intempéries
@@ -1743,13 +2341,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -1785,6 +2383,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -2031,6 +2646,9 @@ paths:
                   description: Problème de résolution DNS de l'adresse du serveur
               schema:
                 "$ref": "#/components/schemas/Error"
+      x-maintenances:
+        from_hour: '06:00'
+        to_hour: '06:30'
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -2038,9 +2656,6 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/cnetp/unites_legales/130025265/attestation_cotisations_conges_payes_chomage_intemperies?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-      x-maintenances:
-        from_hour: '06:00'
-        to_hour: '06:30'
   "/v3/douanes/etablissements/{siret_or_eori}/immatriculations_eori":
     get:
       summary: Immatriculation EORI
@@ -2139,13 +2754,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -2544,13 +3159,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -2586,6 +3201,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -2848,6 +3480,9 @@ paths:
                   description: Problème de résolution DNS de l'adresse du serveur
               schema:
                 "$ref": "#/components/schemas/Error"
+      x-maintenances:
+        from_hour: '01:00'
+        to_hour: '02:00'
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -2855,9 +3490,6 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/dgfip/unites_legales/130025265/attestation_fiscale?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-      x-maintenances:
-        from_hour: '01:00'
-        to_hour: '02:00'
   "/v4/dgfip/unites_legales/{siren}/attestation_fiscale":
     get:
       summary: Attestation fiscale
@@ -2977,13 +3609,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -3019,6 +3651,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -3299,6 +3948,9 @@ paths:
                   description: Problème de résolution DNS de l'adresse du serveur
               schema:
                 "$ref": "#/components/schemas/Error"
+      x-maintenances:
+        from_hour: '01:00'
+        to_hour: '02:00'
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -3306,9 +3958,6 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v4/dgfip/unites_legales/130025265/attestation_fiscale?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-      x-maintenances:
-        from_hour: '01:00'
-        to_hour: '02:00'
   "/v3/dgfip/etablissements/{siret}/chiffres_affaires":
     get:
       summary: Chiffre d'affaires
@@ -3364,9 +4013,6 @@ paths:
           siret_probtp:
             value: '43841606700017'
             summary: SIRET pour ProBTP
-          siret_agence_bio:
-            value: '48311105000025'
-            summary: SIRET pour l'Agence Bio
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
@@ -3422,13 +4068,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -3464,6 +4110,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -3659,6 +4322,9 @@ paths:
                   description: Problème de résolution DNS de l'adresse du serveur
               schema:
                 "$ref": "#/components/schemas/Error"
+      x-maintenances:
+        from_hour: '01:00'
+        to_hour: '02:00'
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -3666,9 +4332,6 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/dgfip/etablissements/13002526500013/chiffres_affaires?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-      x-maintenances:
-        from_hour: '01:00'
-        to_hour: '02:00'
   "/v3/dgfip/unites_legales/{siren}/liasses_fiscales/{year}":
     get:
       summary: Liasses fiscales
@@ -3759,13 +4422,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -3801,6 +4464,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -4237,6 +4917,9 @@ paths:
                   description: Problème de résolution DNS de l'adresse du serveur
               schema:
                 "$ref": "#/components/schemas/Error"
+      x-maintenances:
+        from_hour: '01:00'
+        to_hour: '02:00'
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -4244,9 +4927,6 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/dgfip/unites_legales/130025265/liasses_fiscales/2019?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-      x-maintenances:
-        from_hour: '01:00'
-        to_hour: '02:00'
   "/v4/djepva/api-association/associations/{siren_or_rna}":
     get:
       summary: Données association
@@ -4340,13 +5020,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -4382,6 +5062,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -6108,13 +6805,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -6150,6 +6847,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -7494,13 +8208,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -7516,6 +8230,23 @@ paths:
                   description: 'Votre jeton est sur liste noire, celui-ci a certainement
                     été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
                     jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -7766,9 +8497,6 @@ paths:
           siret_probtp:
             value: '43841606700017'
             summary: SIRET pour ProBTP
-          siret_agence_bio:
-            value: '48311105000025'
-            summary: SIRET pour l'Agence Bio
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
@@ -7824,13 +8552,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -7866,6 +8594,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -8212,13 +8957,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -8254,6 +8999,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -8623,13 +9385,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -8665,6 +9427,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -8706,43 +9485,40 @@ paths:
                         example: '2017'
                       effectifs_annuel:
                         title: Effectif annuel de l'établissement
-                        type: object
-                        properties:
-                          regime_general:
-                            title: Effectifs du régime général
-                            description: Cette donnée provient de l'URSSAF
-                            type: object
-                            properties:
-                              value:
-                                title: Valeur
-                                type: number
-                                example: 12.34
-                              date_derniere_mise_a_jour:
-                                title: Date de la dernière mise à jour de la donnée
-                                type: string
-                                example: '2018-01-01'
-                            required:
-                            - value
-                            - date_derniere_mise_a_jour
-                          regime_agricole:
-                            title: Effectifs du régime agricole
-                            description: Cette donnée provient de la MSA
-                            type: object
-                            properties:
-                              value:
-                                title: Valeur
-                                type: number
-                                example: 12.34
-                              date_derniere_mise_a_jour:
-                                title: Date de la dernière mise à jour de la donnée
-                                type: string
-                                example: '2018-01-01'
-                            required:
-                            - value
-                            - date_derniere_mise_a_jour
-                        required:
-                        - regime_general
-                        - regime_agricole
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: false
+                          required:
+                          - regime
+                          - nature
+                          - value
+                          - date_derniere_mise_a_jour
+                          properties:
+                            regime:
+                              title: Type de régime
+                              type: string
+                              example: regime_general
+                              enum:
+                              - regime_general
+                              - regime_agricole
+                            value:
+                              title: Valeur
+                              description: Cette valeur est à null si il n'y a pas
+                                d'effectif dans le régime
+                              type: number
+                              example: 12.34
+                              nullable: true
+                            nature:
+                              title: Nature de l'effectif
+                              type: string
+                              enum:
+                              - effectif_moyen_annuel
+                            date_derniere_mise_a_jour:
+                              title: Date de la dernière mise à jour de la donnée
+                              type: string
+                              example: '2018-01-01'
+                              nullable: true
                     required:
                     - siren
                     - annee
@@ -8956,9 +9732,6 @@ paths:
           siret_probtp:
             value: '43841606700017'
             summary: SIRET pour ProBTP
-          siret_agence_bio:
-            value: '48311105000025'
-            summary: SIRET pour l'Agence Bio
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
@@ -9034,13 +9807,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -9076,6 +9849,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -9120,6 +9910,7 @@ paths:
                           required:
                           - regime
                           - annee
+                          - nature
                           - mois
                           - value
                           - date_derniere_mise_a_jour
@@ -9138,6 +9929,11 @@ paths:
                               type: number
                               example: 12.34
                               nullable: true
+                            nature:
+                              title: Nature de l'effectif
+                              type: string
+                              enum:
+                              - effectif_moyen_mensuel
                             annee:
                               title: Année
                               type: string
@@ -9436,13 +10232,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -9478,6 +10274,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -10222,13 +11035,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -10264,6 +11077,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -10712,13 +11542,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -10754,6 +11584,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -11076,13 +11923,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -11118,6 +11965,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -11559,13 +12423,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -11601,6 +12465,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -11942,13 +12823,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -11984,6 +12865,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -12279,9 +13177,6 @@ paths:
           siret_probtp:
             value: '43841606700017'
             summary: SIRET pour ProBTP
-          siret_agence_bio:
-            value: '48311105000025'
-            summary: SIRET pour l'Agence Bio
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
@@ -12367,13 +13262,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -12409,6 +13304,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -12862,9 +13774,6 @@ paths:
           siret_probtp:
             value: '43841606700017'
             summary: SIRET pour ProBTP
-          siret_agence_bio:
-            value: '48311105000025'
-            summary: SIRET pour l'Agence Bio
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
@@ -12949,13 +13858,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -12991,6 +13900,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -13473,9 +14399,6 @@ paths:
           siret_probtp:
             value: '43841606700017'
             summary: SIRET pour ProBTP
-          siret_agence_bio:
-            value: '48311105000025'
-            summary: SIRET pour l'Agence Bio
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
@@ -13561,13 +14484,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -13603,6 +14526,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -14749,9 +15689,6 @@ paths:
           siret_probtp:
             value: '43841606700017'
             summary: SIRET pour ProBTP
-          siret_agence_bio:
-            value: '48311105000025'
-            summary: SIRET pour l'Agence Bio
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
@@ -14837,13 +15774,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -14879,6 +15816,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -16161,13 +17115,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -16203,6 +17157,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -17486,13 +18457,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -17528,6 +18499,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -18761,13 +19749,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -18803,6 +19791,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -19565,13 +20570,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -19607,6 +20612,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -20370,13 +21392,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -20412,6 +21434,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -20803,13 +21842,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -20845,6 +21884,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -21183,9 +22239,6 @@ paths:
           siret_probtp:
             value: '43841606700017'
             summary: SIRET pour ProBTP
-          siret_agence_bio:
-            value: '48311105000025'
-            summary: SIRET pour l'Agence Bio
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
@@ -21271,13 +22324,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -21313,6 +22366,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -21598,13 +22668,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -21640,6 +22710,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -21966,9 +23053,6 @@ paths:
           siret_probtp:
             value: '43841606700017'
             summary: SIRET pour ProBTP
-          siret_agence_bio:
-            value: '48311105000025'
-            summary: SIRET pour l'Agence Bio
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
@@ -22054,13 +23138,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -22096,6 +23180,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -22433,13 +23534,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -22475,6 +23576,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -22695,9 +23813,6 @@ paths:
           siret_probtp:
             value: '43841606700017'
             summary: SIRET pour ProBTP
-          siret_agence_bio:
-            value: '48311105000025'
-            summary: SIRET pour l'Agence Bio
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
@@ -22783,13 +23898,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -22825,6 +23940,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -23103,9 +24235,6 @@ paths:
           siret_probtp:
             value: '43841606700017'
             summary: SIRET pour ProBTP
-          siret_agence_bio:
-            value: '48311105000025'
-            summary: SIRET pour l'Agence Bio
           siret_qualibat:
             value: '78824266700020'
             summary: SIRET pour Qualibat
@@ -23153,6 +24282,23 @@ paths:
       description: Certification délivrée par Qualifelec, attestant des qualifications
         d'une entreprise dans le génie électrique et énergétique.
       responses:
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Certificats qualifelec trouvés
           x-operationId: api_entreprise_v3_qualifelec_certificats
@@ -23175,12 +24321,12 @@ paths:
                               description: Ce lien délivre le certificat Qualifelec
                                 de l'entreprise au format PDF tel qu'accessible depuis
                                 le site https://www.qualifelec.fr/.
-                              example: https://www.qualifelec.fr/certifmoteur/4/3631.pdf
+                              example: https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg
                             numero:
                               title: Numéro du certificat
-                              type: number
+                              type: string
                               description: Le numéro d'attribution du certificat
-                              example: 2840
+                              example: '05430'
                             rge:
                               title: Label RGE de l'entreprise
                               type: boolean
@@ -23283,7 +24429,6 @@ paths:
                                     de la qualification. Une qualification peut être
                                     accompagnée de plusieurs domaines.
                                   type: array
-                                  minItems: 1
                                   items:
                                     title: Codes et libéllés des domaines de la qualification
                                     type: object
@@ -23640,6 +24785,7 @@ paths:
         required: true
         schema:
           type: string
+      deprecated: true
       security:
       - jwt_bearer_token: []
       description: Informations de référence d'une entreprise artisanale enregistrée
@@ -23683,13 +24829,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -23725,6 +24871,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
@@ -24054,13 +25217,13 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/doc/#renouvellement-token.
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -24096,6 +25259,23 @@ paths:
                   summary: Privilèges insuffisants
                   description: Votre token est valide mais vos privilèges sont insuffisants.
                     Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
