@@ -244,6 +244,14 @@
   title: 'Entité non traitable'
   detail: "Le request_id n'est pas correctement formaté"
 
+- code: '00410'
+  title: 'Entité non traitable'
+  detail: "Le code établissement n'est pas correctement formaté: celui doit être composé de 7 chiffres et 1 lettre"
+
+- code: '00411'
+  title: 'Entité non traitable'
+  detail: "L'année scolaire n'est pas correctement formatée: doit être sur le format YYYY ou YYYY-YYYY)"
+
 - code: '00402'
   title: Version d'API non prise en charge
 
