@@ -9,6 +9,11 @@ inpi_rne:
         title: "Nom du bénéficiaire effectif"
         type: "string"
         example: 'MARTIN'
+      nom_usage:
+        title: "Nom d'usage du bénéficiaire effectif"
+        type: "string"
+        example: 'DUBOIS'
+        nullable: true
       prenoms:
         title: "Liste des prénoms du bénéficiaire effectif"
         type: 'array'

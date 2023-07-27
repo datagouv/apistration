@@ -16,6 +16,7 @@ class INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection < BuildResource
 
     {
       nom: personne_physique_attributes['nom'].upcase,
+      nom_usage: personne_physique_attributes['nomUsage'].try(:upcase),
       prenoms: personne_physique_attributes['prenoms'].map(&:upcase),
       date_naissance: {
         annee: birth_date_parts[0],

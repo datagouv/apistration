@@ -13,6 +13,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
       [
         {
           nom: 'DUPONT',
+          nom_usage: 'DUBOIS',
           prenoms: %w[JEAN MARC],
           date_naissance: {
             annee: '1989',
@@ -68,6 +69,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
         },
         {
           nom: 'MARTIN',
+          nom_usage: nil,
           prenoms: %w[JULES ANDRE],
           date_naissance: {
             annee: '1990',

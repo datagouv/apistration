@@ -23,6 +23,7 @@
               "descriptionPersonne": {
                 "dateDeNaissance": "1989-01",
                 "nom": "Dupont",
+                "nomUsage": "Dubois",
                 "prenoms": [
                   "JEAN",
                   "MARC"

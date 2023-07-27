@@ -1,6 +1,7 @@
 class APIEntreprise::INPI::RNE::BeneficiairesEffectifsSerializer::V3 < APIEntreprise::V3AndMore::BaseCollectionSerializer
   class ItemSerializer < APIEntreprise::V3AndMore::BaseSerializer
     attributes :nom,
+      :nom_usage,
       :prenoms,
       :date_naissance,
       :modalites
