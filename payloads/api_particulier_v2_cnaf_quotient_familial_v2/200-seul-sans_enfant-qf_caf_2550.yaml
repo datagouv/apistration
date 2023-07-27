@@ -20,7 +20,7 @@ params:
 status: 200
 payload: |-
   {
-    "regime": "CAF",
+    "regime": "CNAF",
     "allocataires": [
       {
         "nomNaissance": "LEFEBVRE",

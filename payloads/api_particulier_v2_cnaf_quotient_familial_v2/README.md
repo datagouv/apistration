@@ -40,9 +40,12 @@
       "codePostalVille": "75002",
       "pays": "FRANCE"
     },
+    "regime": "MSA",
     "quotientFamilial": 1045,
     "annee": 2021,
-    "mois": 6
+    "mois": 6,
+    "annee_calcul": 2021,
+    "mois_calcul": 3
   }
   ```
 
@@ -201,7 +204,7 @@ Ce cas permet de tester :
 
   ```json
   {
-    "regime": "CAF",
+    "regime": "CNAF",
     "allocataires": [
       {
         "nomNaissance": "BERNARD",
@@ -291,7 +294,7 @@ Ce cas permet de tester :
 
   ```json
   {
-    "regime": "CAF",
+    "regime": "CNAF",
     "allocataires": [
       {
         "nomNaissance": "LEFEBVRE",
@@ -374,50 +377,6 @@ Ce cas permet de tester :
   ```bash
   curl -H "X-Api-Key: $token" \
     -G -d 'codePaysLieuDeNaissance=99404' -d 'sexe=F' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
-  ```
-
-  </p>
-  </details>
-* [500.yaml](500.yaml)
-
-  Status `500`
-
-  Erreur interne du serveur
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "codePaysLieuDeNaissance": "99500",
-    "sexe": "F"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "error": "error",
-    "reason": "Internal server error",
-    "message": "Une erreur interne s'est produite, l'équipe a été prévenue."
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99500' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 

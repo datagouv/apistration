@@ -19,6 +19,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [Attestation de vigilance](api_entreprise_v3_acoss_attestations_sociales) (`/v3/urssaf/unites_legales/{siren}/attestation_vigilance`)
 * Certification RGE (`/v3/ademe/etablissements/{siret}/certification_rge`)
 * 3 derniers bilans annuels (`/v3/banque_de_france/unites_legales/{siren}/bilans`)
+* Certifications Qualiopi & habilitations France compétences (`/v3/carif_oref/certifications_qualiopi_france_competences/{siret}`)
 * Attestation de cotisations congés payés & chômage-intempéries (`/v3/cnetp/unites_legales/{siren}/attestation_cotisations_conges_payes_chomage_intemperies`)
 * Immatriculation EORI (`/v3/douanes/etablissements/{siret_or_eori}/immatriculations_eori`)
 * [Attestation fiscale](api_entreprise_v3_dgfip_attestations_fiscales) (`/v3/dgfip/unites_legales/{siren}/attestation_fiscale`)
