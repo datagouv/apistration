@@ -33,25 +33,14 @@ class INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection < BuildResource
 
   private
 
-  # rubocop:disable Metrics/MethodLength
   def excluded_modalites
     %i[
       detention_part_directe_rdd
       detention_vote_directe_rdd
       detention_part_indirecte_rdd
       detention_vote_indirecte_rdd
-
       vocation_titulaire_directe_pleine_propriete_rdd
-      vocation_titulaire_directe_pleine_propriete
-      vocation_titulaire_directe_nue_propriete
-      vocation_titulaire_indirecte_indivision
       vocation_titulaire_indirecte_pleine_propriete_rdd
-      vocation_titulaire_indirecte_pleine_propriete
-      vocation_titulaire_indirecte_nue_propriete
-      vocation_titulaire_indirecte_personnes_morales
-      vocation_titulaire_indirecte_personnes_morales_pleine_propriete
-      vocation_titulaire_indirecte_personnes_morales_nue_propriete
     ]
   end
-  # rubocop:enable Metrics/MethodLength
 end

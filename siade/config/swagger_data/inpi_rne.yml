@@ -189,45 +189,45 @@ inpi_rne:
             type: 'number'
             example: 0.0
           # vocation_titulaire_directe_pleine_propriete_rdd:
-          #   title: "Vocation titulaire directe pleine propriete rdd"
+          #   title: "Vocation par l'effet d’un acte juridique à devenir titulaire directe pleine propriété rdd"
           #   type: 'boolean'
           #   example: false
-          # vocation_titulaire_directe_pleine_propriete:
-          #   title: "Vocation titulaire directe pleine propriete"
-          #   type: 'number'
-          #   example: 0.0
-          # vocation_titulaire_directe_nue_propriete:
-          #   title: "Vocation titulaire directe nue propriete"
-          #   type: 'number'
-          #   example: 0.0
-          # vocation_titulaire_indirecte_indivision:
-          #   title: "Vocation titulaire indirecte indivision"
-          #   type: 'number'
-          #   example: 0.0
+          vocation_titulaire_directe_pleine_propriete:
+            title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts directes en pleine propriété"
+            type: 'number'
+            example: 0.0
+          vocation_titulaire_directe_nue_propriete:
+            title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts directes en nue-propriété"
+            type: 'number'
+            example: 0.0
+          vocation_titulaire_indirecte_indivision:
+            title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes en indivision"
+            type: 'number'
+            example: 0.0
           # vocation_titulaire_indirecte_pleine_propriete_rdd:
-          #   title: "Vocation titulaire indirecte pleine propriete rdd"
+          #   title: "Vocation par l'effet d’un acte juridique à devenir titulaire indirecte pleine propriété rdd"
           #   type: 'boolean'
           #   example: false
-          # vocation_titulaire_indirecte_pleine_propriete:
-          #   title: "Vocation titulaire indirecte pleine propriete"
-          #   type: 'number'
-          #   example: 0.0
-          # vocation_titulaire_indirecte_nue_propriete:
-          #   title: "Vocation titulaire indirecte nue propriete"
-          #   type: 'number'
-          #   example: 0.0
-          # vocation_titulaire_indirecte_personnes_morales:
-          #   title: "Vocation titulaire indirecte personnes morales"
-          #   type: 'number'
-          #   example: 0.0
-          # vocation_titulaire_indirecte_personnes_morales_pleine_propriete:
-          #   title: "Vocation titulaire indirecte personnes morales pleine propriete"
-          #   type: 'number'
-          #   example: 0.0
-          # vocation_titulaire_indirecte_personnes_morales_nue_propriete:
-          #   title: "Vocation titulaire indirecte personnes morales nue propriete"
-          #   type: 'number'
-          #   example: 0.0
+          vocation_titulaire_indirecte_pleine_propriete:
+            title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes en pleine propriété"
+            type: 'number'
+            example: 0.0
+          vocation_titulaire_indirecte_nue_propriete:
+            title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes nue-propriété"
+            type: 'number'
+            example: 0.0
+          vocation_titulaire_indirecte_personnes_morales:
+            title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes via des personnes morales"
+            type: 'number'
+            example: 0.0
+          vocation_titulaire_indirecte_personnes_morales_pleine_propriete:
+            title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes via des personnes morales en pleine propriété"
+            type: 'number'
+            example: 0.0
+          vocation_titulaire_indirecte_personnes_morales_nue_propriete:
+            title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes via des personnes morales en nue-propriété"
+            type: 'number'
+            example: 0.0
           detention_vote_total:
             title: "Détention de droits de  vote total"
             type: 'number'

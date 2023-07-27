@@ -13646,6 +13646,51 @@ paths:
                                     via des personnes morales en usufruit
                                   type: number
                                   example: 0.0
+                                vocation_titulaire_directe_pleine_propriete:
+                                  title: Vocation par l'effet d’un acte juridique
+                                    à devenir titulaire de parts directes en pleine
+                                    propriété
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_directe_nue_propriete:
+                                  title: Vocation par l'effet d’un acte juridique
+                                    à devenir titulaire de parts directes en nue-propriété
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_indivision:
+                                  title: Vocation par l'effet d’un acte juridique
+                                    à devenir titulaire de parts indirectes en indivision
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_pleine_propriete:
+                                  title: Vocation par l'effet d’un acte juridique
+                                    à devenir titulaire de parts indirectes en pleine
+                                    propriété
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_nue_propriete:
+                                  title: Vocation par l'effet d’un acte juridique
+                                    à devenir titulaire de parts indirectes nue-propriété
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_personnes_morales:
+                                  title: Vocation par l'effet d’un acte juridique
+                                    à devenir titulaire de parts indirectes via des
+                                    personnes morales
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_personnes_morales_pleine_propriete:
+                                  title: Vocation par l'effet d’un acte juridique
+                                    à devenir titulaire de parts indirectes via des
+                                    personnes morales en pleine propriété
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_personnes_morales_nue_propriete:
+                                  title: Vocation par l'effet d’un acte juridique
+                                    à devenir titulaire de parts indirectes via des
+                                    personnes morales en nue-propriété
+                                  type: number
+                                  example: 0.0
                                 detention_vote_total:
                                   title: Détention de droits de  vote total
                                   type: number
@@ -13698,6 +13743,14 @@ paths:
                               - vote_indirecte_personnes_morales_pleine_propriete
                               - vote_indirecte_personnes_morales_nue_propriete
                               - vote_indirecte_personnes_morales_usufruit
+                              - vocation_titulaire_directe_pleine_propriete
+                              - vocation_titulaire_directe_nue_propriete
+                              - vocation_titulaire_indirecte_indivision
+                              - vocation_titulaire_indirecte_pleine_propriete
+                              - vocation_titulaire_indirecte_nue_propriete
+                              - vocation_titulaire_indirecte_personnes_morales
+                              - vocation_titulaire_indirecte_personnes_morales_pleine_propriete
+                              - vocation_titulaire_indirecte_personnes_morales_nue_propriete
                               - detention_vote_total
                               - detention_pouvoir_decision_ag
                               - detention_pouvoir_nommage_membres_conseil_admin
