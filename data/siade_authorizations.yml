@@ -23,9 +23,6 @@ shared:
   api_entreprise/v2/cartes_professionnelles_fntp:
     - fntp_carte_pro
     - open_data
-  api_entreprise/v2/certificats_agence_bio:
-    - certificat_agence_bio
-    - open_data
   api_entreprise/v2/certificats_cnetp:
     - certificat_cnetp
     - certification_cnetp
@@ -38,30 +35,18 @@ shared:
   api_entreprise/v2/certificats_rge_ademe:
     - certificat_rge_ademe
     - open_data
-  api_entreprise/v2/conventions_collectives:
-    - conventions_collectives
-    - open_data
   api_entreprise/v2/cotisations_msa:
     - msa_cotisations
     - cotisations_msa
   api_entreprise/v2/documents_associations:
     - documents_association
     - open_data
-  api_entreprise/v2/actes_inpi:
-    - actes_inpi
-    - open_data
-  api_entreprise/v2/bilans_inpi:
-    - bilans_inpi
-    - comptes_annuels_inpi
   api_entreprise/v2/effectifs_annuels_entreprise_acoss_covid: []
   api_entreprise/v2/effectifs_mensuels_entreprise_acoss_covid: []
   api_entreprise/v2/effectifs_mensuels_etablissement_acoss_covid: []
   api_entreprise/v2/eligibilites_cotisation_retraite_probtp:
     - probtp
     - cotisations_probtp
-  api_entreprise/v2/entreprises_artisanales:
-    - entreprises_artisanales
-    - open_data
   api_entreprise/v2/entreprises_restored:
     - entreprises
     - unites_legales_etablissements_insee
@@ -98,6 +83,8 @@ shared:
   api_entreprise/v3_and_more/banque_de_france/bilans_entreprise:
     - bilans_entreprise_bdf
     - bilans_bdf
+  api_entreprise/v3_and_more/carif_oref/certifications_qualiopi_france_competences:
+    - certifications_qualiopi_france_competences
   api_entreprise/v3_and_more/cnetp/attestation_cotisations_conges_payes_chomage_intemperies:
     - certificat_cnetp
     - certification_cnetp
@@ -203,7 +190,11 @@ shared:
     - cnaf_allocataires
     - cnaf_enfants
     - cnaf_adresse
-  api_particulier/v2/cnaf/quotient_familial_v2: []
+  api_particulier/v2/cnaf/quotient_familial_v2:
+    - cnaf_quotient_familial
+    - cnaf_allocataires
+    - cnaf_enfants
+    - cnaf_adresse
   api_particulier/v2/cnaf/complementaire_sante_solidaire: []
   api_particulier/v2/cnous/student_scholarship:
     - cnous_statut_boursier
@@ -250,6 +241,9 @@ shared:
     - pole_emploi_adresse
     - pole_emploi_contact
     - pole_emploi_inscription
+  api_particulier/v2/pole_emploi/indemnites:
+    - pole_emploi_identite
+    - pole_emploi_paiements
   api_particulier/v2/men/scolarites:
     - men_statut_scolarite
     - men_statut_boursier
