@@ -1,0 +1,126 @@
+{
+  "updatedAt": "2023-05-18T00:31:47+02:00",
+  "id": "646555d301b03975c80c4003",
+  "formality": {
+    "siren": "453751455",
+    "content": {
+      "succursaleOuFiliale": "AVEC_ETABLISSEMENT",
+      "formeExerciceActivitePrincipale": "AGENT_COMMERCIAL",
+      "natureCreation": {
+        "societeEtrangere": false,
+        "formeJuridique": "1000",
+        "microEntreprise": true,
+        "etablieEnFrance": true,
+        "salarieEnFrance": true,
+        "relieeEntrepriseAgricole": false,
+        "entrepriseAgricole": false,
+        "eirl": false
+      },
+      "personnePhysique": {
+        "adresseEntreprise": {
+          "caracteristiques": {
+            "ambulant": false,
+            "domiciliataire": false
+          },
+          "adresse": {
+            "pays": "FRANCE",
+            "codePays": "FRA",
+            "codePostal": "33300",
+            "commune": "Bordeaux",
+            "codeInseeCommune": "33063",
+            "typeVoie": "RUE",
+            "voie": "de la paix",
+            "numVoie": "512"
+          }
+        },
+        "etablissementPrincipal": {
+          "descriptionEtablissement": {
+            "rolePourEntreprise": "3",
+            "siret": "45375145500024",
+            "indicateurEtablissementPrincipal": true
+          },
+          "adresse": {
+            "pays": "FRANCE",
+            "codePays": "FRA",
+            "codePostal": "33300",
+            "commune": "BORDEAUX",
+            "codeInseeCommune": "33063",
+            "typeVoie": "RUE",
+            "voie": "DE LA PAIX",
+            "numVoie": "512",
+            "caracteristiques": {
+              "domiciliataire": false
+            }
+          },
+          "activites": [
+            {
+              "categoryCode": "07121218",
+              "indicateurPrincipal": true,
+              "indicateurProlongement": false,
+              "dateDebut": "2021-01-01",
+              "exerciceActivite": "P",
+              "indicateurNonSedentaire": false,
+              "formeExercice": "AGENT_COMMERCIAL",
+              "categorisationActivite1": "07",
+              "categorisationActivite2": "12",
+              "categorisationActivite3": "12",
+              "categorisationActivite4": "18",
+              "descriptionDetaillee": "Création d'une activité d'agent commercial en immobilier ",
+              "indicateurActiviteeApe": false,
+              "precisionActivite": "99",
+              "precisionAutre": "Activité de services",
+              "indicateurArtisteAuteur": false,
+              "indicateurMarinProfessionnel": false,
+              "rolePrincipalPourEntreprise": true,
+              "codeApe": "6831Z",
+              "activiteRattacheeEirl": false
+            }
+          ]
+        },
+        "identite": {
+          "entreprise": {
+            "siren": "453751455",
+            "formeJuridique": "1000",
+            "nicSiege": "00024",
+            "codeApe": "6831Z"
+          },
+          "entrepreneur": {
+            "descriptionPersonne": {
+              "dateDeNaissance": "1990-01",
+              "nom": "BERNARD",
+              "prenoms": [
+                "LOUIS",
+                "KEVIN"
+              ],
+              "genre": "1",
+              "nationalite": "FRANÇAISE",
+              "situationMatrimoniale": "1",
+              "indicateurDeNonSedentarite": false
+            },
+            "adresseDomicile": {
+              "pays": "FRANCE",
+              "codePays": "FRA",
+              "codePostal": "33300",
+              "commune": "Bordeaux",
+              "codeInseeCommune": "33063"
+            }
+          }
+        }
+      }
+    },
+    "typePersonne": "P",
+    "diffusionCommerciale": true,
+    "historique": [
+      {
+        "dateIntegration": "2021-01-01T00:31:47+02:00",
+        "codeEvenement": "01P",
+        "libelleEvenement": "Création d’une entreprise individuelle",
+        "numeroLiasse": "J00016218158"
+      }
+    ],
+    "formeJuridique": "1000",
+    "created": "2021-01-01T15:12:38+01:00",
+    "updated": "2023-04-08T17:40:29+02:00"
+  },
+  "siren": "453751455"
+}
