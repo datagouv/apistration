@@ -37,6 +37,10 @@ OptionParser.new do |opts|
       index.to_i
     end.uniq
   end
+
+  opts.on('-a', '--api api', 'API to test, default to all') do |api|
+    options[:api] = api
+  end
 end.parse!
 
 @host = options[:host] || 'main'
@@ -149,6 +153,7 @@ print "## Test endpoints on #{@host}\n\n"
 
 YAML.load(endpoints).each_with_index do |endpoint, index|
   next if options[:indexes] && !options[:indexes].include?(index + 1)
+  next if options[:api] && options[:api] != endpoint['api']
 
   test_endpoint(endpoint, index+1)
   sleep 1 unless @host =~ /staging/
