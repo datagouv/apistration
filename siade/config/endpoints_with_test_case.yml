@@ -187,3 +187,14 @@
     codePostal: ping_cnaf_postal_code
     numeroAllocataire: ping_cnaf_numero_allocataire
 
+- name: 'Pole emploi identité'
+  path: '/api/v2/situations-pole-emploi'
+  api: 'particulier'
+  query_params:
+    identifiant: 'azerty3'
+
+- name: 'Pole emploi paiements'
+  path: '/api/v2/paiements-pole-emploi'
+  api: 'particulier'
+  query_params:
+    identifiant: 'azerty3'
