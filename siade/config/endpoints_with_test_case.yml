@@ -180,6 +180,10 @@
 
 # API Particulier v2
 
-- name: 'CAF Quotient familial v1'
-  path: '/api/caf/ping'
+- name: 'CAF Quotient familial'
+  path: '/api/v2/composition-familiale'
   api: 'particulier'
+  encrypted_query_params:
+    codePostal: ping_cnaf_postal_code
+    numeroAllocataire: ping_cnaf_numero_allocataire
+

@@ -45,6 +45,24 @@ end.parse!
 
 @host = options[:host] || 'main'
 
+def rails_env
+  case @host
+  when 'main', 'production1', 'production2'
+    'production'
+  when 'staging1', 'staging2', 'staging'
+    'staging'
+  when 'sandbox1', 'sandbox2', 'sandbox'
+    'sandbox'
+  else
+    raise "Unknown host #{@host}"
+  end
+end
+
+ENV['RAILS_ENV'] = rails_env
+
+require File.expand_path('../../config/application', __FILE__)
+@credentials = Rails.application.credentials.config[rails_env.to_sym]
+
 if @host =~ /sandbox/
   token_to_read = '.token.sandbox'
 elsif @host =~ /staging/
@@ -94,7 +112,14 @@ def make_call(endpoint)
     end
   elsif api_kind == 'particulier'
     uri = URI("#{full_host_url(api_kind)}#{endpoint['path']}").tap do |u|
-      u.query = URI.encode_www_form(endpoint['query_params']) if endpoint['query_params']
+      query_params = {}
+      query_params.merge!(endpoint['query_params']) if endpoint['query_params']
+
+      (endpoint['encrypted_query_params'] || {}).each do |query_param_key, secret_key|
+        query_params[query_param_key] = @credentials[secret_key.to_sym]
+      end
+
+      u.query = URI.encode_www_form(query_params) if query_params.any?
     end
 
     response = Net::HTTP.start(uri.hostname, uri.port, @request_options) do |http|
