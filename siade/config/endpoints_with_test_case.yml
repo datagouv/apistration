@@ -1,131 +1,179 @@
-- name: '[V3] URSSAF Attestations de vigilance'
-  http_path: '/v3/urssaf/unites_legales/418166096/attestation_vigilance'
+# API Entreprise v3+
 
-- name: '[V4] URSSAF Attestations de vigilance'
-  http_path: '/v4/urssaf/unites_legales/418166096/attestation_vigilance'
+- name: 'URSSAF Attestations de vigilance'
+  api: 'entreprise'
+  path: '/v3/urssaf/unites_legales/418166096/attestation_vigilance'
 
-- name: "[V3] DGFIP Attestation fiscale"
-  http_path: '/v3/dgfip/unites_legales/532010576/attestation_fiscale'
+- name: 'URSSAF Attestations de vigilance'
+  api: 'entreprise'
+  path: '/v4/urssaf/unites_legales/418166096/attestation_vigilance'
 
-- name: "[V4] DGFIP Attestation fiscale"
-  http_path: '/v4/dgfip/unites_legales/532010576/attestation_fiscale'
+- name: "DGFIP Attestation fiscale"
+  api: 'entreprise'
+  path: '/v3/dgfip/unites_legales/532010576/attestation_fiscale'
 
-- name: '[V3] DGFIP Liasses fiscales'
-  http_path: '/v3//dgfip/unites_legales/301028346/liasses_fiscales/2016'
+- name: "DGFIP Attestation fiscale"
+  path: '/v4/dgfip/unites_legales/532010576/attestation_fiscale'
+  api: 'entreprise'
 
-- name: "[V3] DGFIP Chiffre d'affaires"
-  http_path: '/v3/dgfip/etablissements/78951073200017/chiffres_affaires'
+- name: 'DGFIP Liasses fiscales'
+  api: 'entreprise'
+  path: '/v3/dgfip/unites_legales/301028346/liasses_fiscales/2016'
 
-- name: '[V3] ADEME Certification RGE'
-  http_path: '/v3/ademe/etablissements/50530961700023/certification_rge'
+- name: "DGFIP Chiffre d'affaires"
+  api: 'entreprise'
+  path: '/v3/dgfip/etablissements/78951073200017/chiffres_affaires'
 
-- name: '[V3] Douanes Immatriculations EORI'
-  http_path: '/v3/douanes/etablissements/FR16002307300010/immatriculations_eori'
+- name: 'ADEME Certification RGE'
+  api: 'entreprise'
+  path: '/v3/ademe/etablissements/50530961700023/certification_rge'
 
-- name: '[V3] Infogreffe Mandataires Sociaux'
-  http_path: '/v3/infogreffe/rcs/unites_legales/418166096/mandataires_sociaux'
+- name: 'Douanes Immatriculations EORI'
+  api: 'entreprise'
+  path: '/v3/douanes/etablissements/FR16002307300010/immatriculations_eori'
 
-- name: '[V3] Infogreffe Extrait KBIS'
-  http_path: '/v3/infogreffe/rcs/unites_legales/831386297/extrait_kbis'
+- name: 'Infogreffe Mandataires Sociaux'
+  api: 'entreprise'
+  path: '/v3/infogreffe/rcs/unites_legales/418166096/mandataires_sociaux'
 
-- name: '[V3] INPI Actes'
-  http_path: '/v3/inpi/unites_legales/542065479/actes'
+- name: 'Infogreffe Extrait KBIS'
+  api: 'entreprise'
+  path: '/v3/infogreffe/rcs/unites_legales/831386297/extrait_kbis'
 
-- name: '[V3] INPI Brevets'
-  http_path: '/v3/inpi/unites_legales/542065479/brevets'
+- name: 'INPI Actes'
+  api: 'entreprise'
+  path: '/v3/inpi/unites_legales/542065479/actes'
 
-- name: '[V3] INPI Marques'
-  http_path: '/v3/inpi/unites_legales/542065479/marques'
+- name: 'INPI Brevets'
+  api: 'entreprise'
+  path: '/v3/inpi/unites_legales/542065479/brevets'
 
-- name: '[V3] INPI Modeles'
-  http_path: '/v3/inpi/unites_legales/542065479/modeles'
+- name: 'INPI Marques'
+  api: 'entreprise'
+  path: '/v3/inpi/unites_legales/542065479/marques'
 
-- name: '[V3] INSEE Etablissements'
-  http_path: '/v3/insee/sirene/etablissements/30613890002979'
+- name: 'INPI Modeles'
+  api: 'entreprise'
+  path: '/v3/inpi/unites_legales/542065479/modeles'
 
-- name: '[V3] INSEE Etablissements Adresse'
-  http_path: '/v3/insee/sirene/etablissements/30613890002979/adresse'
+- name: 'INSEE Etablissements'
+  api: 'entreprise'
+  path: '/v3/insee/sirene/etablissements/30613890002979'
 
-- name: '[V3] INSEE Unites Legales'
-  http_path: '/v3/insee/sirene/unites_legales/306138900'
+- name: 'INSEE Etablissements Adresse'
+  api: 'entreprise'
+  path: '/v3/insee/sirene/etablissements/30613890002979/adresse'
 
-- name: '[V3] INSEE Unites Legales diffusibles'
-  http_path: '/v3/insee/sirene/unites_legales/diffusibles/306138900'
+- name: 'INSEE Unites Legales'
+  api: 'entreprise'
+  path: '/v3/insee/sirene/unites_legales/306138900'
 
-- name: '[V3] INSEE Unites Legales Siege social'
-  http_path: '/v3/insee/sirene/unites_legales/306138900/siege_social'
+- name: 'INSEE Unites Legales diffusibles'
+  api: 'entreprise'
+  path: '/v3/insee/sirene/unites_legales/diffusibles/306138900'
 
-- name: '[V3] INSEE Unites Legales Siege social diffusibles'
-  http_path: '/v3/insee/sirene/unites_legales/diffusibles/306138900/siege_social'
+- name: 'INSEE Unites Legales Siege social'
+  api: 'entreprise'
+  path: '/v3/insee/sirene/unites_legales/306138900/siege_social'
 
-- name: "[V3] Ministère de l'Intérieur associations"
-  http_path: '/v3/ministere_interieur/rna/associations/77571979202650'
+- name: 'INSEE Unites Legales Siege social diffusibles'
+  api: 'entreprise'
+  path: '/v3/insee/sirene/unites_legales/diffusibles/306138900/siege_social'
 
-- name: "[V3] Ministère de l'Intérieur documents associations"
-  http_path: '/v3/ministere_interieur/rna/associations/77571979202650/documents'
+- name: "Ministère de l'Intérieur associations"
+  api: 'entreprise'
+  path: '/v3/ministere_interieur/rna/associations/77571979202650'
 
-- name: '[V3] OPQIBI Certifications Ingénierie'
-  http_path: '/v3/opqibi/unites_legales/309103877/certification_ingenierie'
+- name: "Ministère de l'Intérieur documents associations"
+  api: 'entreprise'
+  path: '/v3/ministere_interieur/rna/associations/77571979202650/documents'
 
-- name: '[V3] ProBTP Attestations cotisations retraite'
-  http_path: '/v3/probtp/etablissements/45309127400036/attestation_cotisations_retraite'
+- name: 'OPQIBI Certifications Ingénierie'
+  api: 'entreprise'
+  path: '/v3/opqibi/unites_legales/309103877/certification_ingenierie'
 
-- name: '[V3] ProBTP Conformité cotisations retraite'
-  http_path: '/v3/probtp/etablissements/45309127400036/conformite_cotisations_retraite'
+- name: 'ProBTP Attestations cotisations retraite'
+  api: 'entreprise'
+  path: '/v3/probtp/etablissements/45309127400036/attestation_cotisations_retraite'
 
-- name: '[V3] FNMS Conventions collectives'
-  http_path: '/v3/fabrique_numerique_ministeres_sociaux/etablissements/89337342300019/conventions_collectives'
+- name: 'ProBTP Conformité cotisations retraite'
+  api: 'entreprise'
+  path: '/v3/probtp/etablissements/45309127400036/conformite_cotisations_retraite'
 
-- name: '[V3] RNM Entreprises'
-  http_path: '/v3/cma_france/rnm/unites_legales/301123626'
+- name: 'FNMS Conventions collectives'
+  api: 'entreprise'
+  path: '/v3/fabrique_numerique_ministeres_sociaux/etablissements/89337342300019/conventions_collectives'
 
-- name: '[V3] QUALIBAT Certifications batiment'
-  http_path: '/v3/qualibat/etablissements/78824266700020/certification_batiment'
+- name: 'RNM Entreprises'
+  api: 'entreprise'
+  path: '/v3/cma_france/rnm/unites_legales/301123626'
 
-- name: '[V3] Commission Européenne numéro de TVA'
-  http_path: '/v3/european_commission/unites_legales/552032534/numero_tva'
+- name: 'QUALIBAT Certifications batiment'
+  api: 'entreprise'
+  path: '/v3/qualibat/etablissements/78824266700020/certification_batiment'
 
-- name: '[V3] Banque de France Bilans'
-  http_path: '/v3/banque_de_france/unites_legales/418166096/bilans'
+- name: 'Commission Européenne numéro de TVA'
+  api: 'entreprise'
+  path: '/v3/european_commission/unites_legales/552032534/numero_tva'
 
-- name: '[V3] CNETP Attestations cotisations conges payes chomages intemperies'
-  http_path: '/v3/cnetp/unites_legales/418166096/attestation_cotisations_conges_payes_chomage_intemperies'
+- name: 'Banque de France Bilans'
+  api: 'entreprise'
+  path: '/v3/banque_de_france/unites_legales/418166096/bilans'
 
-- name: '[V3] Douanes Immatriculations EORI'
-  http_path: '/v3/douanes/etablissements/41816609600069/immatriculations_eori'
+- name: 'CNETP Attestations cotisations conges payes chomages intemperies'
+  api: 'entreprise'
+  path: '/v3/cnetp/unites_legales/418166096/attestation_cotisations_conges_payes_chomage_intemperies'
 
-- name: '[V3] DGFIP liasses_fiscales'
-  http_path: '/v3/dgfip/unites_legales/418166096/liasses_fiscales/2016'
+- name: 'Douanes Immatriculations EORI'
+  api: 'entreprise'
+  path: '/v3/douanes/etablissements/41816609600069/immatriculations_eori'
 
-- name: '[V3] FNTP Carte professionnelle travaux publics'
-  http_path: '/v3/fntp/unites_legales/418166096/carte_professionnelle_travaux_publics'
+- name: 'DGFIP liasses_fiscales'
+  api: 'entreprise'
+  path: '/v3/dgfip/unites_legales/418166096/liasses_fiscales/2016'
 
-- name: '[V3] INSEE Etablissements diffusibles Adresse'
-  http_path: '/v3/insee/sirene/etablissements/diffusibles/41816609600069/adresse'
+- name: 'FNTP Carte professionnelle travaux publics'
+  api: 'entreprise'
+  path: '/v3/fntp/unites_legales/418166096/carte_professionnelle_travaux_publics'
 
-- name: '[V3] MSA Conformité cotisations'
-  http_path: '/v3/msa/etablissements/41816609600069/conformite_cotisations'
+- name: 'INSEE Etablissements diffusibles Adresse'
+  api: 'entreprise'
+  path: '/v3/insee/sirene/etablissements/diffusibles/41816609600069/adresse'
 
-- name: "[V4] DJEPVA associations"
-  http_path: '/v4/djepva/api-association/associations/775719792'
+- name: 'MSA Conformité cotisations'
+  api: 'entreprise'
+  path: '/v3/msa/etablissements/41816609600069/conformite_cotisations'
 
-- name: "[V4] DJEPVA associations open data"
-  http_path: '/v4/djepva/api-association/associations/open_data/775719792'
+- name: "DJEPVA associations"
+  api: 'entreprise'
+  path: '/v4/djepva/api-association/associations/775719792'
 
-- name: "[V3] GIP-MDS effectifs annuel unité légale"
-  http_path: '/v3/gip_mds/unites_legales/552032534/effectifs_annuels/2020'
+- name: "DJEPVA associations open data"
+  api: 'entreprise'
+  path: '/v4/djepva/api-association/associations/open_data/775719792'
 
-- name: "[V3] GIP-MDS effectifs mensuels établissement"
-  http_path: '/v3/gip_mds/etablissements/84503885000010/effectifs_mensuels/12/annee/2022'
+- name: "GIP-MDS effectifs annuel unité légale"
+  api: 'entreprise'
+  path: '/v3/gip_mds/unites_legales/552032534/effectifs_annuels/2020'
 
-- name: "[V3] Qualifelec certificats"
-  http_path: '/v3/qualifelec/etablissements/78824266700020/certificats'
+- name: "GIP-MDS effectifs mensuels établissement"
+  api: 'entreprise'
+  path: '/v3/gip_mds/etablissements/84503885000010/effectifs_mensuels/12/annee/2022'
 
-- name: '[V2] Attestations agefiph'
-  http_path: '/v2/attestations_agefiph/48146131700036'
+- name: "Qualifelec certificats"
+  api: 'entreprise'
+  path: '/v3/qualifelec/etablissements/78824266700020/certificats'
 
-- name: '[V2] Effectifs mensuels (entreprise)'
-  http_path: '/v2/effectifs_mensuels_acoss_covid/2020/02/entreprise/552032534'
+# API Entreprise v2
 
-- name: '[V2] Certificats Qualibat'
-  http_path: '/v2/certificats_qualibat/78824266700020'
+- name: 'Attestations agefiph'
+  api: 'entreprise'
+  path: '/v2/attestations_agefiph/48146131700036'
+
+- name: 'Effectifs mensuels (entreprise)'
+  api: 'entreprise'
+  path: '/v2/effectifs_mensuels_acoss_covid/2020/02/entreprise/552032534'
+
+- name: 'Certificats Qualibat'
+  api: 'entreprise'
+  path: '/v2/certificats_qualibat/78824266700020'

@@ -1,3 +1,4 @@
+require 'optparse'
 require 'yaml'
 require 'json'
 require 'net/http'
@@ -5,10 +6,40 @@ require 'openssl'
 require 'colorize'
 
 # Check README for usage
+options = {}
 
-@host = ARGV[0] || "https://entreprise.api.gouv.fr"
-@endpoints = !ARGV[1].nil? ? ARGV[1].split(',').map(&:to_i) : []
-@only_v3 = ENV.fetch('ONLY_V3', false)
+valid_hosts = %w[
+  main
+  production1
+  production2
+  staging1
+  staging2
+  staging
+  sandbox
+  sandbox1
+  sandbox2
+]
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: ruby test_rate_limiting.rb [options]"
+
+  opts.on("-h", "--host host", "Host to test, default to main host") do |host|
+    if valid_hosts.include?(host)
+      options[:host] = host
+    else
+      puts "Invalid host, valid hosts are: #{valid_hosts.join(', ')}"
+      exit 1
+    end
+  end
+
+  opts.on("-i", "--indexes indexes", "Indexes of endpoints to test, default to all") do |indexes|
+    options[:indexes] = indexes.split(',').map do |index|
+      index.to_i
+    end.uniq
+  end
+end.parse!
+
+@host = options[:host] || 'main'
 
 if @host =~ /sandbox/
   token_to_read = '.token.sandbox'
@@ -19,21 +50,12 @@ else
 end
 
 begin
-  @jwt = File.read(token_to_read)
+  @jwt = File.read(token_to_read).gsub("\n", '')
 rescue Errno::ENOENT
-  begin
-    @jwt = File.read('.token')
-  rescue Errno::ENOENT
-    print ".token or #{token_to_read} should exists\n"
-    exit 1
-  end
+  print "#{token_to_read} should exists\nUse ./bin/generate_jwt_token.rb to generate one\n"
+  exit 2
 end
 
-@default_query_params = {
-  context:   'Test',
-  recipient: '13002526500013',
-  object:    'Pré mise en production',
-}
 @request_options = {
   use_ssl:     true,
   verify_mode: OpenSSL::SSL::VERIFY_PEER,
@@ -41,31 +63,63 @@ end
 
 endpoints = File.read("#{File.dirname(__FILE__)}/../config/endpoints_with_test_case.yml")
 
-def test_endpoint(endpoint, index)
-  name = endpoint['name']
-  route = endpoint['http_path']
+def make_call(endpoint)
+  api_kind = endpoint['api']
 
-  uri = URI("#{@host}#{route}").tap do |u|
-    query_params = @default_query_params.dup
+  if api_kind == 'entreprise'
+    uri = URI("#{full_host_url(api_kind)}#{endpoint['path']}").tap do |u|
+      query_params = {
+        context:   'Test',
+        recipient: '13002526500013',
+        object:    'Pré mise en production',
+      }
 
-    if endpoint['extra_http_query']
-      query_params.merge!(endpoint['extra_http_query'])
+      u.query = URI.encode_www_form(query_params)
     end
 
-    u.query = URI.encode_www_form(query_params)
+    response = Net::HTTP.start(uri.hostname, uri.port, @request_options) do |http|
+      request = Net::HTTP::Get.new(uri)
+
+      request['Authorization'] = "Bearer #{@jwt}"
+      request['Cache-Control'] = 'no-cache'
+
+      http.read_timeout = 30
+      http.open_timeout = 30
+
+      http.request request
+    end
+  elsif api_kind == 'particulier'
+    uri = URI("#{full_host_url(api_kind)}#{endpoint['path']}").tap do |u|
+      u.query = URI.encode_www_form(endpoint['query_params']) if endpoint['query_params']
+    end
+
+    response = Net::HTTP.start(uri.hostname, uri.port, @request_options) do |http|
+      request = Net::HTTP::Get.new(uri)
+
+      request['X-Api-Key'] = @jwt
+      request['Cache-Control'] = 'no-cache'
+
+      http.read_timeout = 30
+      http.open_timeout = 30
+
+      http.request request
+    end
+  else
+    raise "Unknown api kind #{api_kind}"
   end
+end
 
-  response = Net::HTTP.start(uri.hostname, uri.port, @request_options) do |http|
-    request = Net::HTTP::Get.new(uri)
-
-    request['Authorization'] = "Bearer #{@jwt}".gsub("\n", '')
-    request['Cache-Control'] = 'no-cache'
-
-    http.read_timeout = 30
-    http.open_timeout = 30
-
-    http.request request
+def full_host_url(api_kind)
+  case @host
+  when 'main'
+    "https://#{api_kind}.api.gouv.fr"
+  else
+    "https://#{@host}.#{api_kind}.api.gouv.fr"
   end
+end
+
+def test_endpoint(endpoint, index)
+  response = make_call(endpoint)
 
   if response.code == '200'
     status = "OK".green
@@ -78,7 +132,8 @@ def test_endpoint(endpoint, index)
 rescue Net::ReadTimeout
   status = "NOK ( timeout from client )".red
 ensure
-  print "[#{index}] Endpoint '#{name}' ( #{route} ): #{status}\n"
+  endpoint_name = "[API #{endpoint['api']}] #{endpoint['name']}"
+  print "[#{format("%02d",index)}] Endpoint '#{endpoint_name}' ( #{endpoint['path']} ): #{status}\n"
 
   if ENV['DEBUG']
     print "Payload:\n"
@@ -93,10 +148,8 @@ end
 print "## Test endpoints on #{@host}\n\n"
 
 YAML.load(endpoints).each_with_index do |endpoint, index|
-  next if @only_v3 && !endpoint['name'].include?('V3')
+  next if options[:indexes] && !options[:indexes].include?(index + 1)
 
-  if @endpoints.empty? || @endpoints.include?(index+1)
-    test_endpoint(endpoint, index+1)
-    sleep 1 unless @host =~ /staging/
-  end
+  test_endpoint(endpoint, index+1)
+  sleep 1 unless @host =~ /staging/
 end

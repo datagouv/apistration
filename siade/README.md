@@ -201,7 +201,7 @@ Vous pouvez utiliser le script suivant: `./bin/test_endpoints.rb` de la
 manière suivante:
 
 ```sh
-bundle exec ruby bin/test_endpoints.rb [host] [id1,id2]
+bundle exec ruby bin/test_endpoints.rb [-h host] [-i id1,id2]
 ```
 
 Avec:
