@@ -1,91 +1,3 @@
-- name: Bilans Entreprises Banque de France
-  http_path: '/v2/bilans_entreprises_bdf/784778250'
-
-- name: Liasses fiscales (complete)
-  http_path: '/v2/liasses_fiscales_dgfip/2016/complete/301028346'
-
-- name: Liasses fiscales (déclaration)
-  http_path: '/v2/liasses_fiscales_dgfip/2016/declarations/301028346'
-
-- name: Liasses fiscales (dictionnaire)
-  http_path: '/v2/liasses_fiscales_dgfip/2016/dictionnaire'
-
-- name: Cotisations MSA
-  http_path: '/v2/cotisations_msa/81104725700019'
-
-- name: Eligibilité cotisation retraite ProBTP
-  http_path: '/v2/eligibilites_cotisation_retraite_probtp/45309127400036'
-
-- name: Attestations cotisations retraite ProBTP
-  http_path: '/v2/attestations_cotisation_retraite_probtp/45309127400036'
-
-- name: Entreprise
-  http_path: '/v2/entreprises/418166096'
-
-- name: Extraits RCS (Infogreffe)
-  http_path: '/v2/extraits_rcs_infogreffe/418166096'
-
-- name: Etablissements
-  http_path: '/v2/etablissements/41816609600069'
-
-- name: Exercices
-  http_path: '/v2/exercices/53930425300013'
-
-- name: Attestations agefiph
-  http_path: '/v2/attestations_agefiph/48146131700036'
-
-- name: Attestations fiscales
-  http_path: '/v2/attestations_fiscales_dgfip/532010576'
-
-- name: Attestations sociales
-  http_path: '/v2/attestations_sociales_acoss/418166096'
-
-- name: Effectifs annuels
-  http_path: '/v2/effectifs_annuels_acoss_covid/829423052'
-
-- name: Effectifs mensuels (entreprise)
-  http_path: '/v2/effectifs_mensuels_acoss_covid/2020/02/entreprise/552032534'
-
-- name: Effectifs mensuels (établissement)
-  http_path: '/v2/effectifs_mensuels_acoss_covid/2020/02/etablissement/55203253400646'
-
-- name: Certificats Qualibat
-  http_path: '/v2/certificats_qualibat/78824266700020'
-
-- name: Certificats CNETP
-  http_path: '/v2/certificats_cnetp/542036207'
-
-- name: Certificats OPQIBI
-  http_path: '/v2/certificats_opqibi/309103877'
-
-- name: Associations
-  http_path: '/v2/associations/W604004799'
-
-- name: Documents associations
-  http_path: '/v2/documents_associations/77571979202585'
-
-- name: Extraits courts INPI
-  http_path: '/v2/extraits_courts_inpi/542065479'
-
-- name: Cartes professionnelles FNTP
-  http_path: '/v2/cartes_professionnelles_fntp/562077503'
-
-- name: Certificats RGE ADEME
-  http_path: '/v2/certificats_rge_ademe/50044188600016'
-
-- name: Etablissements (INSEE v3)
-  http_path: '/v2/etablissements/41816609600069'
-  extra_http_query:
-    with_insee_v3: true
-
-- name: Entreprise (INSEE v3)
-  http_path: '/v2/entreprises/418166096'
-  extra_http_query:
-    with_insee_v3: true
-
-- name: EORI DGDDI (Douane)
-  http_path: '/v2/eori_douanes/FR16002307300010'
-
 - name: '[V3] URSSAF Attestations de vigilance'
   http_path: '/v3/urssaf/unites_legales/418166096/attestation_vigilance'
 
@@ -208,3 +120,12 @@
 
 - name: "[V3] Qualifelec certificats"
   http_path: '/v3/qualifelec/etablissements/78824266700020/certificats'
+
+- name: '[V2] Attestations agefiph'
+  http_path: '/v2/attestations_agefiph/48146131700036'
+
+- name: '[V2] Effectifs mensuels (entreprise)'
+  http_path: '/v2/effectifs_mensuels_acoss_covid/2020/02/entreprise/552032534'
+
+- name: '[V2] Certificats Qualibat'
+  http_path: '/v2/certificats_qualibat/78824266700020'
