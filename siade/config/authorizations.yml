@@ -242,7 +242,6 @@ shared:
     - pole_emploi_contact
     - pole_emploi_inscription
   api_particulier/v2/pole_emploi/indemnites:
-    - pole_emploi_identite
     - pole_emploi_paiements
   api_particulier/v2/men/scolarites:
     - men_statut_scolarite
