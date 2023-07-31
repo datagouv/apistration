@@ -24,9 +24,9 @@ qualifelec:
         example: "https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg"
       numero:
         title: 'Numéro du certificat'
-        type: string
+        type: "number"
         description: "Le numéro d'attribution du certificat"
-        example: "05430"
+        example: 5430
       rge:
         title: "Label RGE de l'entreprise"
         type: boolean
