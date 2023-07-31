@@ -13,7 +13,7 @@
       {
         "data": {
           "document_url": "https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
-          "numero": "05430",
+          "numero": 5430,
           "rge": true,
           "date_debut": "2019-01-01",
           "date_fin": "2021-12-31",
@@ -107,7 +107,7 @@ Ce cas permet de tester :
       {
         "data": {
           "document_url": "https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
-          "numero": "02840",
+          "numero": 2840,
           "rge": false,
           "date_debut": "2023-02-01",
           "date_fin": "2024-01-31",
@@ -158,7 +158,7 @@ Ce cas permet de tester :
       {
         "data": {
           "document_url": "https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
-          "numero": "02840",
+          "numero": 2841,
           "rge": false,
           "date_debut": "2023-08-01",
           "date_fin": "2024-07-31",
@@ -264,7 +264,7 @@ Ce cas permet de tester :
       {
         "data": {
           "document_url": "https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
-          "numero": "02840",
+          "numero": 2840,
           "rge": true,
           "date_debut": "2023-02-01",
           "date_fin": "2024-01-31",
@@ -376,7 +376,7 @@ Ce cas permet de tester :
       {
         "data": {
           "document_url": "https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
-          "numero": "02840",
+          "numero": 2840,
           "rge": true,
           "date_debut": "2023-02-01",
           "date_fin": "2024-01-31",
