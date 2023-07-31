@@ -49,6 +49,11 @@ jobs:
       - name: Create database
         run: bundle exec rails db:create db:schema:load RAILS_ENV=test
 
+      - name: set timezone
+        uses: szenius/set-timezone@v1.2
+        with:
+          timezoneLinux: "Europe/Paris"
+
       - name: Check Swagger file is up-to-date
         run: ./bin/test_swagger.sh
 
