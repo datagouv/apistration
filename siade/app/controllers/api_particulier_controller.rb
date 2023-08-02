@@ -29,6 +29,7 @@ class APIParticulierController < APIController
       scopes: token_data['scopes'],
       jti: token_data['token_id'],
       iat: Time.new(2022, 1, 1).to_i,
+      siret: token_data['siret'].presence || '00000000000000',
       exp: Time.new(2042, 1, 1).to_i
     )
   end
