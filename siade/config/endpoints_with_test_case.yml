@@ -22,7 +22,7 @@
 
 - name: "DGFIP Chiffre d'affaires"
   api: 'entreprise'
-  path: '/v3/dgfip/etablissements/78951073200017/chiffres_affaires'
+  path: '/v3/dgfip/etablissements/82152473300028/chiffres_affaires'
 
 - name: 'ADEME Certification RGE'
   api: 'entreprise'
@@ -122,11 +122,11 @@
 
 - name: 'CNETP Attestations cotisations conges payes chomages intemperies'
   api: 'entreprise'
-  path: '/v3/cnetp/unites_legales/418166096/attestation_cotisations_conges_payes_chomage_intemperies'
+  path: '/v3/cnetp/unites_legales/811214428/attestation_cotisations_conges_payes_chomage_intemperies'
 
 - name: 'Douanes Immatriculations EORI'
   api: 'entreprise'
-  path: '/v3/douanes/etablissements/41816609600069/immatriculations_eori'
+  path: '/v3/douanes/etablissements/FR16002307300010/immatriculations_eori'
 
 - name: 'DGFIP liasses_fiscales'
   api: 'entreprise'
@@ -134,7 +134,7 @@
 
 - name: 'FNTP Carte professionnelle travaux publics'
   api: 'entreprise'
-  path: '/v3/fntp/unites_legales/418166096/carte_professionnelle_travaux_publics'
+  path: '/v3/fntp/unites_legales/385407184/carte_professionnelle_travaux_publics'
 
 - name: 'INSEE Etablissements diffusibles Adresse'
   api: 'entreprise'
@@ -142,7 +142,7 @@
 
 - name: 'MSA Conformité cotisations'
   api: 'entreprise'
-  path: '/v3/msa/etablissements/41816609600069/conformite_cotisations'
+  path: '/v3/msa/etablissements/95086311800010/conformite_cotisations'
 
 - name: "DJEPVA associations"
   api: 'entreprise'
