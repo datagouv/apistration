@@ -1,4 +1,6 @@
 class JwtTokenService
+  DINUM_SIRET = '13002526500013'.freeze
+
   attr_reader :jwt_token
 
   def initialize(jwt_token)
@@ -12,11 +14,11 @@ class JwtTokenService
 
     jwt_data[:scopes] ||= jwt_data.delete(:roles) if jwt_data[:roles].present?
 
-    if internal_token?
-      jwt_data[:scopes] = decoded_token[:scopes]
-    else
-      jwt_data = enhanced_jwt_data_with_token(jwt_data)
-    end
+    jwt_data = if internal_token?
+                 enhanced_jwt_data_with_token_for_internal_token(jwt_data, decoded_token)
+               else
+                 enhanced_jwt_data_with_token_from_database(jwt_data)
+               end
 
     build_and_cache_user!(jwt_data)
   rescue JWT::DecodeError, ActiveRecord::RecordNotFound
@@ -33,7 +35,14 @@ class JwtTokenService
     EncryptedCache.instance
   end
 
-  def enhanced_jwt_data_with_token(jwt_data)
+  def enhanced_jwt_data_with_token_for_internal_token(jwt_data, decoded_token)
+    jwt_data[:scopes] = decoded_token[:scopes]
+    jwt_data[:siret] = DINUM_SIRET
+
+    jwt_data
+  end
+
+  def enhanced_jwt_data_with_token_from_database(jwt_data)
     token = extract_token_from_database!
 
     jwt_data[:siret] = token.siret

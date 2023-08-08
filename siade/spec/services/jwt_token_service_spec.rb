@@ -12,6 +12,7 @@ RSpec.describe JwtTokenService do
 
         its(:id) { is_expected.to eq(JwtUser.uptime_id) }
         its(:jti) { is_expected.to be_present }
+        its(:siret) { is_expected.to eq(JwtTokenService::DINUM_SIRET) }
 
         its(:scopes) { is_expected.to eq(['whatever']) }
       end
@@ -23,6 +24,7 @@ RSpec.describe JwtTokenService do
 
         its(:id) { is_expected.to eq(JwtUser.debugger_id) }
         its(:jti) { is_expected.to be_present }
+        its(:siret) { is_expected.to eq(JwtTokenService::DINUM_SIRET) }
 
         its(:scopes) { is_expected.to eq(['whatever']) }
       end
