@@ -20,8 +20,7 @@ class INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection < BuildResource
       prenoms: personne_physique_attributes['prenoms'].map(&:upcase),
       date_naissance: {
         annee: birth_date_parts[0],
-        mois: birth_date_parts[1],
-        jour: birth_date_parts[2]
+        mois: birth_date_parts[1]
       },
       modalites: modalites_attributes.transform_keys { |key|
         key.underscore.sub('pmorales', 'personnes_morales').to_sym

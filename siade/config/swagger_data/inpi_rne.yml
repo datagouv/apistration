@@ -48,12 +48,6 @@ inpi_rne:
               - '10'
               - '11'
               - '12'
-          jour:
-            title: "Jour de la date de naissance"
-            description: "Cette valeur est très souvent vide"
-            type: 'string'
-            example: '01'
-            nullable: true
       modalites:
         title: "Liste des modalités et propriétées affectées au bénéficiaire effectif"
         type: 'object'

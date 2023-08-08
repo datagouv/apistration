@@ -17,8 +17,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
           prenoms: %w[JEAN MARC],
           date_naissance: {
             annee: '1989',
-            mois: '01',
-            jour: nil
+            mois: '01'
           },
           modalites: {
             detention_part_directe: true,
@@ -73,8 +72,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
           prenoms: %w[JULES ANDRE],
           date_naissance: {
             annee: '1990',
-            mois: '01',
-            jour: nil
+            mois: '01'
           },
           modalites: {
             detention_part_directe: true,

@@ -180,7 +180,7 @@
 
 - name: "RNE INPI bénéficiaires effectifs"
   api: 'entreprise'
-  path: '/v3/inpi/rne/unites_legales/900225095/beneficiaires_effectifs'
+  path: '/v3/inpi/rne/unites_legales/open_data/900225095/beneficiaires_effectifs'
 
 # API Particulier v2
 
