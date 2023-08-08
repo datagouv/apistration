@@ -198,7 +198,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -695,7 +695,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -1207,7 +1207,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -2442,7 +2442,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -3260,7 +3260,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -3710,7 +3710,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -4169,7 +4169,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -4523,7 +4523,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -5121,7 +5121,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -6906,7 +6906,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -8289,7 +8289,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -8653,7 +8653,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -9058,7 +9058,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -9486,7 +9486,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -9908,7 +9908,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -10333,7 +10333,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -11136,7 +11136,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -11643,7 +11643,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -12024,7 +12024,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -12524,7 +12524,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -12924,7 +12924,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -14392,7 +14392,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -14988,7 +14988,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -15614,7 +15614,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -16904,7 +16904,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -18245,7 +18245,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -19587,7 +19587,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -20879,7 +20879,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -21700,7 +21700,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -22522,7 +22522,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -22972,7 +22972,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -23454,7 +23454,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -23798,7 +23798,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -24268,7 +24268,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -24664,7 +24664,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -25028,7 +25028,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -25357,25 +25357,108 @@ paths:
       description: Certification délivrée par Qualifelec, attestant des qualifications
         d'une entreprise dans le génie électrique et énergétique.
       responses:
-        '429':
-          description: Trop de requêtes
+        '401':
+          description: Non autorisé
           content:
             application/json:
               examples:
-                too_many_requests_error:
+                invalid_token_error:
                   value:
                     errors:
-                    - code: '00429'
-                      title: Trop de requêtes
-                      detail: Vous avez effectué trop de requêtes
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
                       source:
+                        parameter: token
                       meta: {}
-                  summary: Trop de requêtes
-                  description: Vous avez effectué trop de requêtes
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '403':
+          description: Accès interdit
+          content:
+            application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges sur /v2/privileges
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
         '200':
-          description: Certificats qualifelec trouvés
+          description: Entreprise trouvée
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
           x-operationId: api_entreprise_v3_qualifelec_certificats
           content:
             application/json:
@@ -25633,26 +25716,10 @@ paths:
                           type: object
                   meta:
                     type: object
-                    properties:
-                      total:
-                        title: Total
-                        description: Nombre de résultats (certificats) totaux
-                        type: number
-                        example: 8
-                    required:
-                    - total
-                    additionalProperties: false
                   links:
                     type: object
                 required:
                 - data
-                - meta
-        '404':
-          description: Certificats entreprise inexistant.
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/Error"
         '422':
           description: Paramètre(s) invalide(s)
           content:
@@ -25702,6 +25769,29 @@ paths:
                       meta: {}
                   summary: Entité non traitable
                   description: Le paramètre recipient est obligatoire
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source: 
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '404':
+          description: Non trouvée
+          content:
+            application/json:
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -25959,7 +26049,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -26347,7 +26437,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes

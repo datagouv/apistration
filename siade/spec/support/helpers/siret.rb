@@ -19,7 +19,8 @@ def valid_siret(sample_type = nil)
     dgfip: '78951073200017',
     agefiph: '00552017600016',
     exercice: '55203253400646',
-    recipient: '91978102100010'
+    recipient: '91978102100010',
+    qualifelec: '78951073200017'
   }
 
   samples[sample_type]

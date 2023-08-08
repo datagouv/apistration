@@ -1,0 +1,85 @@
+[
+  {
+    "url": "https:\/\/pp.qualifelec.fr\/certifmoteur\/4\/32456.pdf",
+    "label": "Installations Électriques Logement Commerce Petit Tertiaire - LCPT",
+    "num": 10929,
+    "rge": false,
+    "start_date": 1666130400,
+    "end_date": 1697580000,
+    "qualification_start_date": 1666130400,
+    "qualification_end_date": 1792274400,
+    "classification": {
+      "label": "Classe 4 - de 20 à 49 exécutants",
+      "code": 4
+    },
+    "indexes": [
+      {
+        "label": "LCPT1",
+        "code": "LCPT1"
+      },
+      {
+        "label": "LCPT2",
+        "code": "LCPT2"
+      }
+    ],
+    "mentions": [
+      {
+        "label": "Colonnes Montantes 1",
+        "code": "CMO1"
+      },
+      {
+        "label": "Colonnes Montantes 2",
+        "code": "CMO2"
+      }
+    ],
+    "domains": [
+      {
+        "label": "Courants forts 1",
+        "code": "CF1"
+      },
+      {
+        "label": "Courants forts 2",
+        "code": "CF2"
+      }
+    ],
+    "assurance_decenale": "AXA",
+    "assurance_decenale_start_date": 1665612000,
+    "assurance_decenale_end_date": 1824847200,
+    "assurance_civile": "ALLIANZ IARD",
+    "assurance_civile_start_date": 1665612000,
+    "assurance_civile_end_date": 1824847200
+  },
+  {
+    "url": "https:\/\/pp.qualifelec.fr\/certifmoteur\/4\/32463.pdf",
+    "label": "Installations Électriques Moyen Gros Tertiaire Industrie - MGTI",
+    "num": 10928,
+    "rge": false,
+    "start_date": 1666130400,
+    "end_date": 1697580000,
+    "qualification_start_date": 1698620400,
+    "qualification_end_date": 1824847200,
+    "classification": {
+      "label": "Classe 4 - de 20 à 49 exécutants",
+      "code": 4
+    },
+    "indexes": [
+      {
+        "label": "MGTI",
+        "code": "MGTI"
+      }
+    ],
+    "mentions": [
+      {
+        "label": "Études",
+        "code": "ET"
+      }
+    ],
+    "domains": [],
+    "assurance_decenale": "AXE",
+    "assurance_decenale_start_date": 1665612000,
+    "assurance_decenale_end_date": 1824847200,
+    "assurance_civile": "DEODEBA",
+    "assurance_civile_start_date": 1665612000,
+    "assurance_civile_end_date": 1824847200
+  }
+]

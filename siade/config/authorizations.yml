@@ -183,7 +183,8 @@ shared:
     - effectifs_urssaf
   api_entreprise/v3_and_more/gip_mds/effectifs_mensuels_etablissement:
     - effectifs_urssaf
-  api_entreprise/v3_and_more/qualifelec/certificats: []
+  api_entreprise/v3_and_more/qualifelec/certificats: 
+    - open_data
   api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs:
     - open_data
   api_particulier/introspect: []

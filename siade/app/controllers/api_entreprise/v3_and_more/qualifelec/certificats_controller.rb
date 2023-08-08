@@ -1,27 +1,24 @@
-class APIEntreprise::V3AndMore::Qualifelec::CertificatsController < APIEntreprise::V3AndMore::MockedController
+class APIEntreprise::V3AndMore::Qualifelec::CertificatsController < APIEntreprise::V3AndMore::BaseController
   def show
     organizer = retrieve_payload_data(::Qualifelec::Certificats)
 
     if organizer.success?
-      render json: organizer[:payload], status: organizer[:status]
+      render json: serialize_data(organizer),
+        status: extract_http_code(organizer)
     else
       render_errors(organizer)
     end
   end
 
-  protected
+  private
 
   def organizer_params
     {
-      siret: params[:siret]
+      siret: params.require(:siret)
     }
   end
 
-  def verify_api_version!
-    true
-  end
-
-  def operation_id
-    'api_entreprise_v3_qualifelec_certificats'
+  def serializer_module
+    ::APIEntreprise::Qualifelec::CertificatsSerializer
   end
 end
