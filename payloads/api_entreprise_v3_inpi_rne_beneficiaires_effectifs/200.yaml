@@ -1,0 +1,195 @@
+---
+params:
+  siren: '552049447'
+status: 200
+description: 'Entreprise avec bénéficiaires effectifs'
+payload: |-
+  {
+    "data": [
+      {
+        "data": {
+          "nom": "DUPONT",
+          "nom_usage": "DUBOIS",
+          "prenoms": [
+            "JEAN",
+            "MARC"
+          ],
+          "date_naissance": {
+            "annee": "1989",
+            "mois": "01"
+          },
+          "modalites": {
+            "detention_de_capital": {
+              "parts_totale": 49.0,
+              "parts_directes": {
+                "detention": true,
+                "pleine_propriete": 49.0,
+                "nue_propriete": 0.0
+              },
+              "parts_indirectes": {
+                "detention": false,
+                "par_indivision": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0
+                },
+                "via_personnes_morales": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0
+                }
+              }
+            },
+            "vocation_a_devenir_titulaire_de_parts": {
+              "parts_directes": {
+                "pleine_propriete": 0.0,
+                "nue_propriete": 0.0
+              },
+              "parts_indirectes": {
+                "par_indivision": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0
+                },
+                "via_personnes_morales": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0
+                }
+              }
+            },
+            "droits_de_vote": {
+              "total": 0.0,
+              "directes": {
+                "detention": true,
+                "pleine_propriete": 49.0,
+                "nue_propriete": 0.0,
+                "usufruit": 0.0
+              },
+              "indirectes": {
+                "detention": false,
+                "par_indivision": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0,
+                  "usufruit": 0.0
+                },
+                "via_personnes_morales": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0,
+                  "usufruit": 0.0
+                }
+              }
+            },
+            "pouvoirs_de_controle": {
+              "decision_ag": false,
+              "nommage_membres_conseil_administratif": false,
+              "autres": false
+            },
+            "representant_legal": false,
+            "representant_legal_placement_sans_gestion_deleguee": false
+          }
+        },
+        "links": {
+        },
+        "meta": {
+        }
+      },
+      {
+        "data": {
+          "nom": "MARTIN",
+          "nom_usage": null,
+          "prenoms": [
+            "JULES",
+            "ANDRE"
+          ],
+          "date_naissance": {
+            "annee": "1990",
+            "mois": "01"
+          },
+          "modalites": {
+            "detention_de_capital": {
+              "parts_totale": 51.0,
+              "parts_directes": {
+                "detention": true,
+                "pleine_propriete": 51.0,
+                "nue_propriete": 0.0
+              },
+              "parts_indirectes": {
+                "detention": false,
+                "par_indivision": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0
+                },
+                "via_personnes_morales": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0
+                }
+              }
+            },
+            "vocation_a_devenir_titulaire_de_parts": {
+              "parts_directes": {
+                "pleine_propriete": 0.0,
+                "nue_propriete": 0.0
+              },
+              "parts_indirectes": {
+                "par_indivision": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0
+                },
+                "via_personnes_morales": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0
+                }
+              }
+            },
+            "droits_de_vote": {
+              "total": 0.0,
+              "directes": {
+                "detention": true,
+                "pleine_propriete": 51.0,
+                "nue_propriete": 0.0,
+                "usufruit": 0.0
+              },
+              "indirectes": {
+                "detention": false,
+                "par_indivision": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0,
+                  "usufruit": 0.0
+                },
+                "via_personnes_morales": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0,
+                  "usufruit": 0.0
+                }
+              }
+            },
+            "pouvoirs_de_controle": {
+              "decision_ag": false,
+              "nommage_membres_conseil_administratif": false,
+              "autres": false
+            },
+            "representant_legal": false,
+            "representant_legal_placement_sans_gestion_deleguee": false
+          }
+        },
+        "links": {
+        },
+        "meta": {
+        }
+      }
+    ],
+    "meta": {
+      "count": 2
+    },
+    "links": {
+    }
+  }
