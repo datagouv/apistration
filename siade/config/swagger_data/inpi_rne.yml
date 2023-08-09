@@ -64,7 +64,7 @@ inpi_rne:
           #   example: 51.0
           parts_directes_pleine_propriete:
             title: "Répartition des parts directes de pleine propriété"
-            description: &description_differents_droits "Plus d'infos sur les différents des droits sur un bien sur le lien suivant: [Usufruit, nue-propriété, pleine propriété : quelles différences ?](https://www.service-public.fr/particuliers/vosdroits/F33076)"
+            description: &description_differents_droits "Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
             type: 'number'
             example: 42.0
           parts_directes_nue_propriete:
@@ -83,7 +83,7 @@ inpi_rne:
           #   example: 0.0
           parts_indirectes_indivision:
             title: "Répartition des parts indirectes en indivision"
-            description: &description_indivision "Après un décès, le patrimoine du défunt est en indivision, s’il y a plusieurs héritiers. Cela signifie que les biens de la succession appartiennent indistinctement à tous les héritiers sans que leurs parts respectives ne soient matériellement individualisées. Plus d'infos sur le lien suivant: [Succession : qu'est-ce que l'indivision ?](https://www.economie.gouv.fr/particuliers/heritage-succession-indivision)"
+            description: &description_indivision "Après un décès, le patrimoine du défunt est en indivision, s’il y a plusieurs héritiers. Cela signifie que les biens de la succession appartiennent indistinctement à tous les héritiers sans que leurs parts respectives ne soient matériellement individualisées. Plus d'infos sur le lien suivant: <a href=\"https://www.economie.gouv.fr/particuliers/heritage-succession-indivision\">Succession : qu'est-ce que l'indivision ?</a>"
             type: 'number'
             example: 0.0
           parts_indirectes_indivision_pleine_propriete:

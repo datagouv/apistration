@@ -13466,17 +13466,17 @@ paths:
                                   title: Répartition des parts directes de pleine
                                     propriété
                                   description: 'Plus d''infos sur les différents des
-                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
                                     nue-propriété, pleine propriété : quelles différences
-                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
+                                    ?</a>'
                                   type: number
                                   example: 42.0
                                 parts_directes_nue_propriete:
                                   title: Répartition des parts directes en nue-propriété
                                   description: 'Plus d''infos sur les différents des
-                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
                                     nue-propriété, pleine propriété : quelles différences
-                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
+                                    ?</a>'
                                   type: number
                                   example: 9.0
                                 detention_part_indirecte:
@@ -13494,7 +13494,8 @@ paths:
                                     indistinctement à tous les héritiers sans que
                                     leurs parts respectives ne soient matériellement
                                     individualisées. Plus d''infos sur le lien suivant:
-                                    [Succession : qu''est-ce que l''indivision ?](https://www.economie.gouv.fr/particuliers/heritage-succession-indivision)'
+                                    <a href="https://www.economie.gouv.fr/particuliers/heritage-succession-indivision">Succession
+                                    : qu''est-ce que l''indivision ?</a>'
                                   type: number
                                   example: 0.0
                                 parts_indirectes_indivision_pleine_propriete:
@@ -13506,7 +13507,8 @@ paths:
                                     indistinctement à tous les héritiers sans que
                                     leurs parts respectives ne soient matériellement
                                     individualisées. Plus d''infos sur le lien suivant:
-                                    [Succession : qu''est-ce que l''indivision ?](https://www.economie.gouv.fr/particuliers/heritage-succession-indivision)'
+                                    <a href="https://www.economie.gouv.fr/particuliers/heritage-succession-indivision">Succession
+                                    : qu''est-ce que l''indivision ?</a>'
                                   type: number
                                   example: 0.0
                                 parts_indirectes_indivision_nue_propriete:
@@ -13518,7 +13520,8 @@ paths:
                                     indistinctement à tous les héritiers sans que
                                     leurs parts respectives ne soient matériellement
                                     individualisées. Plus d''infos sur le lien suivant:
-                                    [Succession : qu''est-ce que l''indivision ?](https://www.economie.gouv.fr/particuliers/heritage-succession-indivision)'
+                                    <a href="https://www.economie.gouv.fr/particuliers/heritage-succession-indivision">Succession
+                                    : qu''est-ce que l''indivision ?</a>'
                                   type: number
                                   example: 0.0
                                 parts_indirectes_personnes_morales:
@@ -13552,27 +13555,27 @@ paths:
                                   title: Répartition des droits de vote directes de
                                     pleine propriété
                                   description: 'Plus d''infos sur les différents des
-                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
                                     nue-propriété, pleine propriété : quelles différences
-                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
+                                    ?</a>'
                                   type: number
                                   example: 51.0
                                 vote_directe_nue_propriete:
                                   title: Répartition des droits de vote directes en
                                     nue-propriété
                                   description: 'Plus d''infos sur les différents des
-                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
                                     nue-propriété, pleine propriété : quelles différences
-                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
+                                    ?</a>'
                                   type: number
                                   example: 0.0
                                 vote_directe_usufruit:
                                   title: Répartition des droits de vote directes en
                                     usufruit
                                   description: 'Plus d''infos sur les différents des
-                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
                                     nue-propriété, pleine propriété : quelles différences
-                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
+                                    ?</a>'
                                   type: number
                                   example: 0.0
                                 detention_vote_indirecte:
@@ -13589,34 +13592,35 @@ paths:
                                     indistinctement à tous les héritiers sans que
                                     leurs parts respectives ne soient matériellement
                                     individualisées. Plus d''infos sur le lien suivant:
-                                    [Succession : qu''est-ce que l''indivision ?](https://www.economie.gouv.fr/particuliers/heritage-succession-indivision)'
+                                    <a href="https://www.economie.gouv.fr/particuliers/heritage-succession-indivision">Succession
+                                    : qu''est-ce que l''indivision ?</a>'
                                   type: number
                                   example: 0.0
                                 vote_indirecte_indivision_pleine_propriete:
                                   title: Répartition des droits de vote indirectes
                                     via indivision de pleine propriété
                                   description: 'Plus d''infos sur les différents des
-                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
                                     nue-propriété, pleine propriété : quelles différences
-                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
+                                    ?</a>'
                                   type: number
                                   example: 0.0
                                 vote_indirecte_indivision_nue_propriete:
                                   title: Répartition des droits de vote indirectes
                                     via indivision en nue-propriété
                                   description: 'Plus d''infos sur les différents des
-                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
                                     nue-propriété, pleine propriété : quelles différences
-                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
+                                    ?</a>'
                                   type: number
                                   example: 0.0
                                 vote_indirecte_indivision_usufruit:
                                   title: Répartition des droits de vote indirectes
                                     via indivision en usufruit
                                   description: 'Plus d''infos sur les différents des
-                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
                                     nue-propriété, pleine propriété : quelles différences
-                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
+                                    ?</a>'
                                   type: number
                                   example: 0.0
                                 vote_indirecte_personnes_morales:
