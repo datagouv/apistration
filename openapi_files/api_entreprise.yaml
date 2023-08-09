@@ -1708,7 +1708,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/banque_de_france/unites_legales/130025265/bilans?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/carif_oref/certifications_qualiopi_france_competences/{siret}":
     get:
-      summary: Certifications Qualiopi & habilitations France compétences
+      summary: Qualiopi & habilitations France compétences
       tags:
       - Prochainement
       parameters:
@@ -1860,6 +1860,23 @@ paths:
                     Listez vos privilèges sur /v2/privileges
               schema:
                 "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Entreprise trouvée
           headers:
@@ -1895,98 +1912,125 @@ paths:
                         example: 0123456A
                         type: string
                       unite_legale_avec_plusieurs_nda:
-                        title: Unité légale avec plusieurs NDA
-                        description: L'unité légale de l'établissement est liée à
-                          plusieurs NDA (Numéro de Déclaration de l'Activité).
+                        title: Indique si l'unité légale de l'établissement a plusieurs
+                          NDA
+                        description: Dans de rares cas, l'unité légale d'un établissement
+                          peut avoir plusieurs numéros de déclaration d'activité (NDA).
+                          Tous ces numéros d'activités (qui ne sont pas fournis par
+                          cette API délivrant uniquement les NDA d'un établissement)
+                          ne sont pas forcément propagés sur les établissements.
                         example: false
                         type: boolean
-                      declarations_activites:
+                      declarations_activites_etablissement:
                         type: array
-                        description: informations relatives aux certifications de
-                          l'activité
+                        description: Informations relatives au numéro de déclaration
+                          d'activité de l'établissement (NDA). Cette clé renvoie un
+                          tableau car, dans de rares cas, un établissement peut avoir
+                          plusieurs NDA (environ 30 établissements sur 120 000).
                         items:
                           type: object
                           properties:
                             nda:
-                              title: Numéro de Déclaration de l'Activité
-                              description: Numéro de Déclaration de l'Activité de
-                                l'établissement agrée
+                              title: Numéro de déclaration d'activité
+                              description: Numéro de déclaration d'activité (NDA)
+                                de l'établissement.
                               type: string
                               example: '11910843391'
-                            formation_apprentis:
-                              title: Centre de Formation d'Apprentis
-                              description: Indique si le centre est agrée CFA (Centre
-                                de Formation d'Apprentis)
-                              type: boolean
-                              example: true
-                            enregistrement_en_cours:
-                              title: Enregistrement en cours (fiche active)
-                              description: Indique si la fiche Qualiopi est active,
-                                c'est à dire si l'enregistrement de la certification
-                                est en cours. La certification reste accessible.
+                            nda_actif:
+                              title: Indique que le NDA est actif
+                              description: Ce champ indique le numéro de déclaration
+                                d'activité (NDA) de l'établissement est actif. Pour
+                                conserver un NDA valide, l'établissement doit remplir
+                                chaque année un bilan pédagogique et financier prévu
+                                à l'article L6352-11 du Code du travail. Sans cette
+                                démarche le numéro NDA devient inactif, l'établissement
+                                est retiré de la liste publique des organismes de
+                                formation.
                               type: boolean
                               example: true
                             date_derniere_declaration:
-                              title: Date de la dernière déclaration d'activité
-                              description: Date de la dernière fois où cette déclaration
-                                d'activité a été déclarée, au format AAAA-MM-DD
+                              title: Date de dernière déclaration
+                              description: Cette date indique le jour où l'établissement
+                                a transmi son bilan pédagogique et financier (BPF),
+                                indispensable pour maintenir actif le numéro de déclaration
+                                d'activité (NDA). Cette date est transmise au format
+                                AAAA-MM-DD.
                               type: string
                               format: date
                               example: '2021-01-30'
-                            debut_exercice:
-                              title: Début d'exercice
-                              description: Date de début d'exercice de l'établissement
-                                agrée, au format AAAA-MM-DD
+                            date_debut_exercice:
+                              title: Date de début d'exercice fiscal
+                              description: Cette date correspond au début du dernier
+                                exercice fiscal analysé pour le bilan pédagogique
+                                et financier. Cette date est transmise au format AAAA-MM-DD.
+                              type: string
+                              format: date
+                              example: '2021-01-30'
+                            date_fin_exercice:
+                              title: Date de fin d'exercice fiscal
+                              description: Cette date correspond à la fin du dernier
+                                exercice fiscal analysé pour le bilan pédagogique
+                                et financier. Cette date est transmise au format AAAA-MM-DD.
                               type: string
                               format: date
                               example: '2021-01-30'
                             certification_qualiopi:
                               type: object
-                              description: informations relatives à la certification
-                                qualiopi
+                              description: Informations relatives à la certification
+                                Qualiopi. Cette certification est liée à une numéro
+                                de déclaration d'activité.
                               properties:
                                 action_formation:
                                   title: Certication Action Formation
                                   description: Indique si l'établissement est certifié
-                                    Action Formation
+                                    Action Formation.
                                   type: boolean
                                   example: false
                                 bilan_competences:
                                   title: Certification Bilan Compétences
                                   description: Indique si l'établissement est certifié
-                                    Bilan Compétences
+                                    Bilan Compétences.
                                   type: boolean
                                   example: false
                                 validation_acquis_experience:
                                   title: Certification VAE
                                   description: Indique si l'établissement est certifié
-                                    VAE (Validation des Acquis de l'Experience)
+                                    VAE (Validation des Acquis de l'Experience).
                                   type: boolean
                                   example: false
                                 apprentissage:
                                   title: Certification Apprentissage
                                   description: Indique si l'établissement est certifié
-                                    Action de Formation par Apprentissage
+                                    Action de Formation par Apprentissage.
                                   type: boolean
                                   example: false
                                 origine_obtention_qualiopi:
-                                  title: Origine de l'obtention Qualiopi (propagée
-                                    ou non)
-                                  description: Décrit l'origine de l'obtention de
-                                    la certification Qualiopi, si elle est propagée
-                                    (c'est à dire si elle est liée à une autre certification)
-                                    ou non (directe).
-                                  type: string
-                                  example: Qualiopi direct sur le NDA
+                                  title: Indique si le certificat Qualiopi est propagé
+                                    depuis le SIREN de l'unité légale
+                                  description: 'Lorsqu''une unité légale a un seul
+                                    NDA et donc un seul Qualiopi, celui-ci est automatiquement
+                                    propagé à tous ses établissements, d''après les
+                                    règles de la délégation générale à l''emploi et
+                                    à la formation professionnelle (DGEFP). Ce champ
+                                    peut être à "null" si l''organisme n''a pas fait
+                                    de demande Qualiopi.
+
+                                    '
+                                  type: boolean
+                                  example: true
                             specialites:
                               type: object
-                              description: informations relatives aux spécialités
-                                relevant du certificat qualiopi. Il peut y avoir jusqu'à
-                                trois spécialités.
+                              description: 'Informations relatives aux spécialités
+                                relevant du numéro de déclaration d''activité et figurant
+                                dans le bilan pédagogique et financier. Un établissement
+                                peut ne pas avoir de spécialités, et l''API en transmet
+                                jusqu''à trois, leur ordre n''a pas d''importance.
+                                Les spécialités possibles sont détaillées dans la
+                                documentation métier de l''API : https://entreprise.api.gouv.fr/catalogue/carif_oref/certifications_qualiopi_france_competences#faq_entry_answer_1_api_entreprise_endpoint_carif_oref_certifications_qualiopi_france_competences'
                               properties:
                                 specialite_1:
                                   type: object
-                                  description: informations relatives à la première
+                                  description: Informations relatives à la première
                                     spécialité
                                   properties:
                                     code:
@@ -2005,7 +2049,7 @@ paths:
                                       nullable: true
                                 specialite_2:
                                   type: object
-                                  description: informations relatives à la seconde
+                                  description: Informations relatives à la seconde
                                     spécialité
                                   properties:
                                     code:
@@ -2025,7 +2069,7 @@ paths:
                                       nullable: true
                                 specialite_3:
                                   type: object
-                                  description: informations relatives à la troisième
+                                  description: Informations relatives à la troisième
                                     spécialité
                                   properties:
                                     code:
@@ -2044,28 +2088,30 @@ paths:
                                       example: Langues
                       habilitations_france_competence:
                         type: array
-                        description: informations relatives aux habilitations France
-                          Competence
+                        description: Informations relatives aux habilitations France
+                          Compétences obtenues par l'établissement. La liste des habilitations
+                          France Compétences n'est pas figée et est mise à jour régulièrement
+                          par les organismes certificateurs.
                         items:
                           type: object
                           properties:
                             code_france_competence:
-                              title: Code habilitation FC (France Compétence)
-                              description: Code de l'habilitation de l'établissement
-                                agrée auprès de FranceCompetence
+                              title: Code de l'habilitation
+                              description: Code de l'habilitation France Compétences.
                               type: string
                               example: RNCP10013
                             date_fin_enregistrement:
                               title: Date de fin d'enregistrement
                               description: Date de fin d'enregistrement de l'habilitation
-                                de l'établissement agrée, au format AAAA-MM-DD
+                                de l'établissement agrée. Cette date est transmise
+                                au format AAAA-MM-DD.
                               type: string
                               format: date
                               nullable: true
                             date_decision:
                               title: Date de décision
                               description: Date de décision de l'habilitation de l'établissement
-                                agrée, au format AAAA-MM-DD
+                                agrée. Cette date est transmise au format AAAA-MM-DD.
                               type: string
                               format: date
                               nullable: true
@@ -2083,10 +2129,10 @@ paths:
                             habilitation_pour_organiser_l_evaluation:
                               title: Habilitation à organiser l'évaluation
                               description: Indique que cette habilitation autorise
-                                à organiser l'évaluation des compétences des candidats
-                                visant une certification inscrite au répertoire national
-                                des compétences professionnelles (RNCP) ou au répertoire
-                                spécifique (RS).
+                                à mettre en place des épreuves pour évaluer les compétences
+                                des candidats visant une certification inscrite au
+                                répertoire national des compétences professionnelles
+                                (RNCP) ou au répertoire spécifique (RS).
                               type: boolean
                               example: true
                             sirets_organismes_certificateurs:
@@ -2100,7 +2146,7 @@ paths:
                     required:
                     - code_uai_etablissement
                     - unite_legale_avec_plusieurs_nda
-                    - declarations_activites
+                    - declarations_activites_etablissement
                     - habilitations_france_competence
                     additionalProperties: false
                   links:
@@ -13152,6 +13198,728 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/inpi/unites_legales/130025265/modeles?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/inpi/rne/unites_legales/open_data/{siren}/beneficiaires_effectifs":
+    get:
+      summary: Bénéficiaires effectifs
+      tags:
+      - Informations générales
+      parameters:
+      - name: context
+        in: query
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
+        required: true
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: true
+        schema:
+          type: string
+      - name: object
+        in: query
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
+        required: true
+        schema:
+          type: string
+      - name: siren
+        in: path
+        description: Siren de l'entreprise
+        examples:
+          siren_octo_technology:
+            value: '418166096'
+            summary: SIREN Octo Technology
+          siren_non_diffusible:
+            value: '005572466'
+            summary: SIREN entreprise non diffusible
+          siren_artisant:
+            value: '301123626'
+            summary: SIREN entreprise artisanale
+          siren_fntp:
+            value: '339379984'
+            summary: SIREN pour FNTP
+          siren_cnetp:
+            value: '542036207'
+            summary: SIREN pour CNETP
+          siren_opqibi:
+            value: '515228211'
+            summary: SIREN pour OPQIBI
+          siren_entrepreneur_individuel:
+            value: '389839937'
+            summary: SIREN d'un entrepeneur individuel (cessé)
+          siren_marques_brevets_modeles:
+            value: '542065479'
+            summary: SIREN d'une entreprise ayant des marques, brevets et modèles
+              (INPI)
+        required: true
+        schema:
+          type: string
+      security:
+      - jwt_bearer_token: []
+      description: Liste des bénéficiaires effectifs d'une unité légale délivrée par
+        l'API RNE de l'INPI
+      responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                old_token_error:
+                  value:
+                    errors:
+                    - code: '00102'
+                      title: Format de jeton plus supporté
+                      detail: Vous avez utilisé un token à l'ancien format. Ce format
+                        n'est plus supporté depuis avril 2019. Vous devez refaire
+                        une demande à API Entreprise, un guide est disponible sur
+                        https://entreprise.api.gouv.fr/demander_un_acces/
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Format de jeton plus supporté
+                  description: Vous avez utilisé un token à l'ancien format. Ce format
+                    n'est plus supporté depuis avril 2019. Vous devez refaire une
+                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '403':
+          description: Accès interdit
+          content:
+            application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges sur /v2/privileges
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '200':
+          description: Bénéficiaires effectifs trouvés
+          headers:
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
+          x-operationId: api_entreprise_v3_inpi_rne_beneficiaires_effectifs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        data:
+                          type: object
+                          properties:
+                            nom:
+                              title: Nom du bénéficiaire effectif
+                              type: string
+                              example: MARTIN
+                            nom_usage:
+                              title: Nom d'usage du bénéficiaire effectif
+                              type: string
+                              example: DUBOIS
+                              nullable: true
+                            prenoms:
+                              title: Liste des prénoms du bénéficiaire effectif
+                              type: array
+                              example:
+                              - JEAN
+                              - JACQUES
+                              items:
+                                type: string
+                            date_naissance:
+                              type: object
+                              title: Date de naissance du bénéficiaire effectif
+                              additionalProperties: false
+                              properties:
+                                annee:
+                                  title: Année de la date de naissance
+                                  type: string
+                                  example: '1990'
+                                mois:
+                                  title: Mois de la date de naissance
+                                  type: string
+                                  example: '01'
+                                  enum:
+                                  - '01'
+                                  - '02'
+                                  - '03'
+                                  - '04'
+                                  - '05'
+                                  - '06'
+                                  - '07'
+                                  - '08'
+                                  - '09'
+                                  - '10'
+                                  - '11'
+                                  - '12'
+                              required:
+                              - annee
+                              - mois
+                            modalites:
+                              title: Liste des modalités et propriétées affectées
+                                au bénéficiaire effectif
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                detention_part_directe:
+                                  title: Détention de parts directes
+                                  description: Détermine si le bénéficiaire possède
+                                    des parts en direct sur l'unité légale
+                                  type: boolean
+                                  example: true
+                                parts_directes_pleine_propriete:
+                                  title: Répartition des parts directes de pleine
+                                    propriété
+                                  description: 'Plus d''infos sur les différents des
+                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    nue-propriété, pleine propriété : quelles différences
+                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
+                                  type: number
+                                  example: 42.0
+                                parts_directes_nue_propriete:
+                                  title: Répartition des parts directes en nue-propriété
+                                  description: 'Plus d''infos sur les différents des
+                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    nue-propriété, pleine propriété : quelles différences
+                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
+                                  type: number
+                                  example: 9.0
+                                detention_part_indirecte:
+                                  title: Détention de parts indirectes
+                                  description: Détermine si le bénéficiaire possède
+                                    des parts de manière indirect sur l'unité légale
+                                    (via une autre entité)
+                                  type: boolean
+                                  example: false
+                                parts_indirectes_indivision:
+                                  title: Répartition des parts indirectes en indivision
+                                  description: 'Après un décès, le patrimoine du défunt
+                                    est en indivision, s’il y a plusieurs héritiers.
+                                    Cela signifie que les biens de la succession appartiennent
+                                    indistinctement à tous les héritiers sans que
+                                    leurs parts respectives ne soient matériellement
+                                    individualisées. Plus d''infos sur le lien suivant:
+                                    [Succession : qu''est-ce que l''indivision ?](https://www.economie.gouv.fr/particuliers/heritage-succession-indivision)'
+                                  type: number
+                                  example: 0.0
+                                parts_indirectes_indivision_pleine_propriete:
+                                  title: Répartition des parts indirectes en indivision
+                                    de pleine propriété
+                                  description: 'Après un décès, le patrimoine du défunt
+                                    est en indivision, s’il y a plusieurs héritiers.
+                                    Cela signifie que les biens de la succession appartiennent
+                                    indistinctement à tous les héritiers sans que
+                                    leurs parts respectives ne soient matériellement
+                                    individualisées. Plus d''infos sur le lien suivant:
+                                    [Succession : qu''est-ce que l''indivision ?](https://www.economie.gouv.fr/particuliers/heritage-succession-indivision)'
+                                  type: number
+                                  example: 0.0
+                                parts_indirectes_indivision_nue_propriete:
+                                  title: Répartition des parts indirectes en indivision
+                                    en nue-propriété
+                                  description: 'Après un décès, le patrimoine du défunt
+                                    est en indivision, s’il y a plusieurs héritiers.
+                                    Cela signifie que les biens de la succession appartiennent
+                                    indistinctement à tous les héritiers sans que
+                                    leurs parts respectives ne soient matériellement
+                                    individualisées. Plus d''infos sur le lien suivant:
+                                    [Succession : qu''est-ce que l''indivision ?](https://www.economie.gouv.fr/particuliers/heritage-succession-indivision)'
+                                  type: number
+                                  example: 0.0
+                                parts_indirectes_personnes_morales:
+                                  title: Répartition des parts indirectes via des
+                                    personnes morales
+                                  type: number
+                                  example: 0.0
+                                parts_indirectes_personnes_morales_pleine_propriete:
+                                  title: Répartition des parts indirectes via des
+                                    personnes morales, de pleine propriété
+                                  type: number
+                                  example: 0.0
+                                parts_indirectes_personnes_morales_nue_propriete:
+                                  title: Répartition des parts indirectes via des
+                                    personnes morales en nue-propriété
+                                  type: number
+                                  example: 0.0
+                                detention_part_totale:
+                                  title: Répartition totale des parts
+                                  description: Somme des parts en direct et indirect
+                                    associée au bénéficiaire effectif
+                                  type: number
+                                  example: 51.0
+                                detention_vote_directe:
+                                  title: Détention de droits de vote directe
+                                  description: Les droits de vote directs sont en
+                                    pleine et nue propriété
+                                  type: boolean
+                                  example: true
+                                vote_directe_pleine_propriete:
+                                  title: Répartition des droits de vote directes de
+                                    pleine propriété
+                                  description: 'Plus d''infos sur les différents des
+                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    nue-propriété, pleine propriété : quelles différences
+                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
+                                  type: number
+                                  example: 51.0
+                                vote_directe_nue_propriete:
+                                  title: Répartition des droits de vote directes en
+                                    nue-propriété
+                                  description: 'Plus d''infos sur les différents des
+                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    nue-propriété, pleine propriété : quelles différences
+                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
+                                  type: number
+                                  example: 0.0
+                                vote_directe_usufruit:
+                                  title: Répartition des droits de vote directes en
+                                    usufruit
+                                  description: 'Plus d''infos sur les différents des
+                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    nue-propriété, pleine propriété : quelles différences
+                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
+                                  type: number
+                                  example: 0.0
+                                detention_vote_indirecte:
+                                  title: Détention de droits de vote indirectes
+                                  description: Ces droits sont via des personnes morales
+                                  type: boolean
+                                  example: false
+                                vote_indirecte_indivision:
+                                  title: Répartition des droits de vote indirectes
+                                    via indivision
+                                  description: 'Après un décès, le patrimoine du défunt
+                                    est en indivision, s’il y a plusieurs héritiers.
+                                    Cela signifie que les biens de la succession appartiennent
+                                    indistinctement à tous les héritiers sans que
+                                    leurs parts respectives ne soient matériellement
+                                    individualisées. Plus d''infos sur le lien suivant:
+                                    [Succession : qu''est-ce que l''indivision ?](https://www.economie.gouv.fr/particuliers/heritage-succession-indivision)'
+                                  type: number
+                                  example: 0.0
+                                vote_indirecte_indivision_pleine_propriete:
+                                  title: Répartition des droits de vote indirectes
+                                    via indivision de pleine propriété
+                                  description: 'Plus d''infos sur les différents des
+                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    nue-propriété, pleine propriété : quelles différences
+                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
+                                  type: number
+                                  example: 0.0
+                                vote_indirecte_indivision_nue_propriete:
+                                  title: Répartition des droits de vote indirectes
+                                    via indivision en nue-propriété
+                                  description: 'Plus d''infos sur les différents des
+                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    nue-propriété, pleine propriété : quelles différences
+                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
+                                  type: number
+                                  example: 0.0
+                                vote_indirecte_indivision_usufruit:
+                                  title: Répartition des droits de vote indirectes
+                                    via indivision en usufruit
+                                  description: 'Plus d''infos sur les différents des
+                                    droits sur un bien sur le lien suivant: [Usufruit,
+                                    nue-propriété, pleine propriété : quelles différences
+                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
+                                  type: number
+                                  example: 0.0
+                                vote_indirecte_personnes_morales:
+                                  title: Répartition des droits de vote indirectes
+                                    via des personnes morales
+                                  type: number
+                                  example: 0.0
+                                vote_indirecte_personnes_morales_pleine_propriete:
+                                  title: Répartition des droits de vote indirectes
+                                    via des personnes morales de pleine propriété
+                                  type: number
+                                  example: 0.0
+                                vote_indirecte_personnes_morales_nue_propriete:
+                                  title: Répartition des droits de vote indirectes
+                                    via des personnes morales en nue-propriété
+                                  type: number
+                                  example: 0.0
+                                vote_indirecte_personnes_morales_usufruit:
+                                  title: Répartition des droits de vote indirectes
+                                    via des personnes morales en usufruit
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_directe_pleine_propriete:
+                                  title: Vocation par l'effet d’un acte juridique
+                                    à devenir titulaire de parts directes en pleine
+                                    propriété
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_directe_nue_propriete:
+                                  title: Vocation par l'effet d’un acte juridique
+                                    à devenir titulaire de parts directes en nue-propriété
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_indivision:
+                                  title: Vocation par l'effet d’un acte juridique
+                                    à devenir titulaire de parts indirectes en indivision
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_pleine_propriete:
+                                  title: Vocation par l'effet d’un acte juridique
+                                    à devenir titulaire de parts indirectes en pleine
+                                    propriété
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_nue_propriete:
+                                  title: Vocation par l'effet d’un acte juridique
+                                    à devenir titulaire de parts indirectes nue-propriété
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_personnes_morales:
+                                  title: Vocation par l'effet d’un acte juridique
+                                    à devenir titulaire de parts indirectes via des
+                                    personnes morales
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_personnes_morales_pleine_propriete:
+                                  title: Vocation par l'effet d’un acte juridique
+                                    à devenir titulaire de parts indirectes via des
+                                    personnes morales en pleine propriété
+                                  type: number
+                                  example: 0.0
+                                vocation_titulaire_indirecte_personnes_morales_nue_propriete:
+                                  title: Vocation par l'effet d’un acte juridique
+                                    à devenir titulaire de parts indirectes via des
+                                    personnes morales en nue-propriété
+                                  type: number
+                                  example: 0.0
+                                detention_vote_total:
+                                  title: Détention de droits de  vote total
+                                  type: number
+                                  example: 0.0
+                                detention_pouvoir_decision_ag:
+                                  title: Détention du pouvoir de décision en Assemblée
+                                    Générale
+                                  type: boolean
+                                  example: false
+                                detention_pouvoir_nommage_membres_conseil_admin:
+                                  title: Détention du pouvoir de nommage des membres
+                                    du conseil d'administration
+                                  type: boolean
+                                  example: false
+                                detention_autres_moyens_controle:
+                                  title: Détention d'autres moyens de contrôle
+                                  type: boolean
+                                  example: false
+                                representant_legal:
+                                  title: Est-t'il représentant légal ?
+                                  type: boolean
+                                  example: false
+                                representant_legal_placement_sans_gestion_delegue:
+                                  title: Est-t'il représentant légal en placement
+                                    sans gestion délégué ?
+                                  type: boolean
+                                  example: false
+                              required:
+                              - detention_part_directe
+                              - parts_directes_pleine_propriete
+                              - parts_directes_nue_propriete
+                              - detention_part_indirecte
+                              - parts_indirectes_indivision
+                              - parts_indirectes_indivision_pleine_propriete
+                              - parts_indirectes_indivision_nue_propriete
+                              - parts_indirectes_personnes_morales
+                              - parts_indirectes_personnes_morales_pleine_propriete
+                              - parts_indirectes_personnes_morales_nue_propriete
+                              - detention_part_totale
+                              - detention_vote_directe
+                              - vote_directe_pleine_propriete
+                              - vote_directe_nue_propriete
+                              - vote_directe_usufruit
+                              - detention_vote_indirecte
+                              - vote_indirecte_indivision
+                              - vote_indirecte_indivision_pleine_propriete
+                              - vote_indirecte_indivision_nue_propriete
+                              - vote_indirecte_indivision_usufruit
+                              - vote_indirecte_personnes_morales
+                              - vote_indirecte_personnes_morales_pleine_propriete
+                              - vote_indirecte_personnes_morales_nue_propriete
+                              - vote_indirecte_personnes_morales_usufruit
+                              - vocation_titulaire_directe_pleine_propriete
+                              - vocation_titulaire_directe_nue_propriete
+                              - vocation_titulaire_indirecte_indivision
+                              - vocation_titulaire_indirecte_pleine_propriete
+                              - vocation_titulaire_indirecte_nue_propriete
+                              - vocation_titulaire_indirecte_personnes_morales
+                              - vocation_titulaire_indirecte_personnes_morales_pleine_propriete
+                              - vocation_titulaire_indirecte_personnes_morales_nue_propriete
+                              - detention_vote_total
+                              - detention_pouvoir_decision_ag
+                              - detention_pouvoir_nommage_membres_conseil_admin
+                              - detention_autres_moyens_controle
+                              - representant_legal
+                              - representant_legal_placement_sans_gestion_delegue
+                          required:
+                          - nom
+                          - nom_usage
+                          - prenoms
+                          - date_naissance
+                          - modalites
+                        links:
+                          type: object
+                        meta:
+                          type: object
+                  meta:
+                    type: object
+                    properties:
+                      count:
+                        title: Nombre de bénéficiaires
+                        type: integer
+                        example: 1
+                    required:
+                    - count
+                    additionalProperties: false
+                  links:
+                    type: object
+                required:
+                - data
+                - meta
+        '404':
+          description: Bénéficiaires effectifs non trouvés
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '422':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                unprocessable_entity_error_siren_error:
+                  value:
+                    errors:
+                    - code: '00301'
+                      title: Entité non traitable
+                      detail: Le numéro de siren n'est pas correctement formatté
+                      source:
+                        parameter: siren
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le numéro de siren n'est pas correctement formatté
+                missing_mandatory_params_context_error:
+                  value:
+                    errors:
+                    - code: '00201'
+                      title: Entité non traitable
+                      detail: Le paramètre context est obligatoire
+                      source:
+                        parameter: context
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre context est obligatoire
+                missing_mandatory_params_object_error:
+                  value:
+                    errors:
+                    - code: '00202'
+                      title: Entité non traitable
+                      detail: Le paramètre object est obligatoire
+                      source:
+                        parameter: object
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre object est obligatoire
+                missing_mandatory_params_recipient_error:
+                  value:
+                    errors:
+                    - code: '00203'
+                      title: Entité non traitable
+                      detail: Le paramètre recipient est obligatoire
+                      source:
+                        parameter: recipient
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre recipient est obligatoire
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unknown_error:
+                  value:
+                    errors:
+                    - code: '34999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: INPI - RNE
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '34002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: INPI - RNE
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+                provider_unavailable_error:
+                  value:
+                    errors:
+                    - code: '34001'
+                      title: Service non disponible
+                      detail: Service du fournisseur de données temporairement indisponible
+                        ou en maintenance.
+                      source:
+                      meta:
+                        provider: INPI - RNE
+                  summary: Service non disponible
+                  description: Service du fournisseur de données temporairement indisponible
+                    ou en maintenance.
+                network_error:
+                  value:
+                    errors:
+                    - code: '00501'
+                      title: Erreur réseau
+                      detail: Problème de connexion au serveur distant. L'erreur peut
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
+                      source:
+                      meta:
+                        retry_in: 10
+                  summary: Erreur réseau
+                  description: Problème de connexion au serveur distant. L'erreur
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
+                dns_resolution_error:
+                  value:
+                    errors:
+                    - code: '34004'
+                      title: Erreur de résolution DNS
+                      detail: Problème de résolution DNS de l'adresse du serveur
+                      source:
+                      meta:
+                        provider: INPI - RNE
+                  summary: Erreur de résolution DNS
+                  description: Problème de résolution DNS de l'adresse du serveur
+              schema:
+                "$ref": "#/components/schemas/Error"
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/inpi/rne/unites_legales/open_data/130025265/beneficiaires_effectifs?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/etablissements/{siret}/adresse":
     get:
       summary: Adresse établissement
@@ -24324,9 +25092,9 @@ paths:
                               example: https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg
                             numero:
                               title: Numéro du certificat
-                              type: string
+                              type: number
                               description: Le numéro d'attribution du certificat
-                              example: '05430'
+                              example: 5430
                             rge:
                               title: Label RGE de l'entreprise
                               type: boolean
