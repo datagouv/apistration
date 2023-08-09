@@ -1,7 +1,7 @@
 ---
 description: |-
   ## 200 - Deux certifications Qualifelec, sans mention RGE
-  
+
   Ce cas permet de tester :
   - Réponse 200 ;
   - Deux certificats disponibles ;
@@ -18,7 +18,7 @@ payload: |-
         {
           "data":{
               "document_url":"https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
-              "numero":"02840",
+              "numero": 2840,
               "rge":false,
               "date_debut":"2023-02-01",
               "date_fin":"2024-01-31",
@@ -67,7 +67,7 @@ payload: |-
         {
           "data":{
               "document_url":"https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
-              "numero":"02840",
+              "numero": 2841,
               "rge":false,
               "date_debut":"2023-08-01",
               "date_fin":"2024-07-31",
