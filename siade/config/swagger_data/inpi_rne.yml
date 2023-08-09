@@ -227,23 +227,23 @@ inpi_rne:
             type: 'number'
             example: 0.0
           detention_pouvoir_decision_ag:
-            title: "Détention du pouvoir de décision en Assemblée Générale"
+            title: "Indique si le bénéficiaire détient du pouvoir de décision en Assemblée Générale"
             type: 'boolean'
             example: false
           detention_pouvoir_nommage_membres_conseil_admin:
-            title: "Détention du pouvoir de nommage des membres du conseil d'administration"
+            title: "Indique si le bénéficiaire détient du pouvoir de nommage des membres du conseil d'administration"
             type: 'boolean'
             example: false
           detention_autres_moyens_controle:
-            title: "Détention d'autres moyens de contrôle"
+            title: "Indique si le bénéficiaire détient d'autres moyens de contrôle"
             type: 'boolean'
             example: false
           representant_legal:
-            title: "Est-t'il représentant légal ?"
+            title: "Indique si le bénéficiaire est représentant légal"
             type: 'boolean'
             example: false
           representant_legal_placement_sans_gestion_delegue:
-            title: "Est-t'il représentant légal en placement sans gestion délégué ?"
+            title: "Indique si le bénéficiaire est représentant légal en placement sans gestion délégué"
             type: 'boolean'
             example: false
     meta:
