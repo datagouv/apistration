@@ -1,7 +1,7 @@
 inpi_rne:
   beneficiaires_effectifs:
     title: "Bénéficiaires effectifs"
-    description: "Liste des bénéficiaires effectifs d'une unité légale délivrée par l'API RNE de l'INPI"
+    description: "Liste des bénéficiaires effectifs d'une unité légale inscrite au répertoire national des entreprises (RNE)."
     tags:
       - "Informations générales"
     attributes:
