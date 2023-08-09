@@ -108,7 +108,7 @@ inpi_rne:
             title: "Répartition des parts indirectes via des personnes morales en nue-propriété"
             type: 'number'
             example: 0.0
-          detention_part_totale:
+          detention_parts_totale:
             title: "Répartition totale des parts"
             description: "Somme des parts en direct et indirect associée au bénéficiaire effectif"
             type: 'number'
