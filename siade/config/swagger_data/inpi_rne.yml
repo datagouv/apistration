@@ -53,12 +53,12 @@ inpi_rne:
         type: 'object'
         additionalProperties: false
         properties:
-          detention_part_directe:
+          detention_parts_directes:
             title: "Indique si le bénéficiaire détient des parts directes"
             description: "Détermine si le bénéficiaire possède du capital direct (parts sociales ou actions) de l'unité légale appelée. Par opposition à une détention indirecte du capital, via une personne morale."
             type: 'boolean'
             example: true
-          # detention_part_directe_rdd:
+          # detention_parts_directes_rdd:
           #   title: "FIXME Detention part directe rdd"
           #   type: 'number'
           #   example: 51.0
@@ -72,12 +72,12 @@ inpi_rne:
             description: *description_differents_droits
             type: 'number'
             example: 9.0
-          detention_part_indirecte:
+          detention_parts_indirectes:
             title: "Indique si le bénéficiaire détient des parts indirectes"
             description: "Détermine si le bénéficiaire possède du capital (parts sociales ou actions) de manière indirecte sur l'unité légale, c'est-à-dire via une personne morale."
             type: 'boolean'
             example: false
-          # detention_part_indirecte_rdd:
+          # detention_parts_indirectes_rdd:
           #   title: "FIXME Detention part indirecte rdd"
           #   type: 'number'
           #   example: 0.0
