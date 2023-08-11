@@ -22,24 +22,86 @@ class INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection < BuildResource
         annee: birth_date_parts[0],
         mois: birth_date_parts[1]
       },
-      modalites: modalites_attributes.transform_keys { |key|
-        key.underscore.sub('pmorales', 'personnes_morales').to_sym
-      }.except(*(excluded_modalites + %i[beneficiaire_representant_legal])).merge(
-        representant_legal: modalites_attributes['beneficiaireRepresentantLegal']
-      )
+      modalites: build_modalites(modalites_attributes)
     }
   end
 
   private
 
-  def excluded_modalites
-    %i[
-      detention_part_directe_rdd
-      detention_vote_directe_rdd
-      detention_part_indirecte_rdd
-      detention_vote_indirecte_rdd
-      vocation_titulaire_directe_pleine_propriete_rdd
-      vocation_titulaire_indirecte_pleine_propriete_rdd
-    ]
+  # rubocop:disable Metrics/MethodLength,Metrics/AbcSize
+  def build_modalites(modalites_attributes)
+    {
+      detention_de_capital: {
+        parts_totale: modalites_attributes['detentionPartTotale'],
+        parts_directes: {
+          detention: modalites_attributes['detentionPartDirecte'],
+          pleine_propriete: modalites_attributes['partsDirectesPleinePropriete'],
+          nue_propriete: modalites_attributes['partsDirectesNuePropriete']
+        },
+        parts_indirectes: {
+          detention: modalites_attributes['detentionPartIndirecte'],
+          par_indivision: {
+            total: modalites_attributes['partsIndirectesIndivision'],
+            pleine_propriete: modalites_attributes['partsIndirectesIndivisionPleinePropriete'],
+            nue_propriete: modalites_attributes['partsIndirectesIndivisionNuePropriete']
+          },
+          via_personnes_morales: {
+            total: modalites_attributes['partsIndirectesPersonnesMorales'],
+            pleine_propriete: modalites_attributes['partsIndirectesPmoralesPleinePropriete'],
+            nue_propriete: modalites_attributes['partsIndirectesPmoralesNuePropriete']
+          }
+        }
+      },
+      vocation_a_devenir_titulaire_de_parts: {
+        parts_directes: {
+          pleine_propriete: modalites_attributes['vocationTitulaireDirectePleinePropriete'],
+          nue_propriete: modalites_attributes['vocationTitulaireDirecteNuePropriete']
+        },
+        parts_indirectes: {
+          par_indivision: {
+            total: modalites_attributes['vocationTitulaireIndirecteIndivision'],
+            pleine_propriete: modalites_attributes['vocationTitulaireIndirectePleinePropriete'],
+            nue_propriete: modalites_attributes['vocationTitulaireIndirecteNuePropriete']
+          },
+          via_personnes_morales: {
+            total: modalites_attributes['vocationTitulaireIndirectePersonnesMorales'],
+            pleine_propriete: modalites_attributes['vocationTitulaireIndirectePmoralesPleinePropriete'],
+            nue_propriete: modalites_attributes['vocationTitulaireIndirectePmoralesNuePropriete']
+          }
+        }
+      },
+      droits_de_vote: {
+        total: modalites_attributes['detentionVoteTotal'],
+        directes: {
+          detention: modalites_attributes['detentionVoteDirecte'],
+          pleine_propriete: modalites_attributes['voteDirectePleinePropriete'],
+          nue_propriete: modalites_attributes['voteDirecteNuePropriete'],
+          usufruit: modalites_attributes['voteDirecteUsufruit']
+        },
+        indirectes: {
+          detention: modalites_attributes['detentionVoteIndirecte'],
+          par_indivision: {
+            total: modalites_attributes['voteIndirecteIndivision'],
+            pleine_propriete: modalites_attributes['voteIndirecteIndivisionPleinePropriete'],
+            nue_propriete: modalites_attributes['voteIndirecteIndivisionNuePropriete'],
+            usufruit: modalites_attributes['voteIndirecteIndivisionUsufruit']
+          },
+          via_personnes_morales: {
+            total: modalites_attributes['voteIndirectePersonnesMorales'],
+            pleine_propriete: modalites_attributes['voteIndirectePmoralesPleinePropriete'],
+            nue_propriete: modalites_attributes['voteIndirectePmoralesNuePropriete'],
+            usufruit: modalites_attributes['voteIndirectePmoralesUsufruit']
+          }
+        }
+      },
+      pouvoirs_de_controle: {
+        decision_ag: modalites_attributes['detentionPouvoirDecisionAG'],
+        nommage_membres_conseil_administratif: modalites_attributes['detentionPouvoirNommageMembresConseilAdmin'],
+        autres: modalites_attributes['detentionAutresMoyensControle']
+      },
+      representant_legal: modalites_attributes['beneficiaireRepresentantLegal'],
+      representant_legal_placement_sans_gestion_delegue: modalites_attributes['representantLegalPlacementSansGestionDelegue']
+    }
   end
+  # rubocop:enable Metrics/MethodLength,Metrics/AbcSize
 end

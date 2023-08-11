@@ -7,8 +7,6 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
       read_payload_file('inpi/rne/valid.json')
     end
 
-    let(:excluded_modalites) { described_class.new.send(:excluded_modalites) }
-
     let(:valid_collection) do
       [
         {
@@ -20,51 +18,77 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
             mois: '01'
           },
           modalites: {
-            detention_part_directe: true,
-            detention_part_directe_rdd: 49.0,
-            parts_directes_pleine_propriete: 49.0,
-            parts_directes_nue_propriete: 0.0,
-            detention_part_indirecte: false,
-            detention_part_indirecte_rdd: 0.0,
-            parts_indirectes_indivision: 0.0,
-            parts_indirectes_indivision_pleine_propriete: 0.0,
-            parts_indirectes_indivision_nue_propriete: 0.0,
-            parts_indirectes_personnes_morales: 0.0,
-            parts_indirectes_personnes_morales_pleine_propriete: 0.0,
-            parts_indirectes_personnes_morales_nue_propriete: 0.0,
-            detention_part_totale: 49.0,
-            detention_vote_directe: true,
-            detention_vote_directe_rdd: 49.0,
-            vote_directe_pleine_propriete: 49.0,
-            vote_directe_nue_propriete: 0.0,
-            vote_directe_usufruit: 0.0,
-            detention_vote_indirecte: false,
-            detention_vote_indirecte_rdd: 0.0,
-            vote_indirecte_indivision: 0.0,
-            vote_indirecte_indivision_pleine_propriete: 0.0,
-            vote_indirecte_indivision_nue_propriete: 0.0,
-            vote_indirecte_indivision_usufruit: 0.0,
-            vote_indirecte_personnes_morales: 0.0,
-            vote_indirecte_personnes_morales_pleine_propriete: 0.0,
-            vote_indirecte_personnes_morales_nue_propriete: 0.0,
-            vote_indirecte_personnes_morales_usufruit: 0.0,
-            vocation_titulaire_directe_pleine_propriete_rdd: false,
-            vocation_titulaire_directe_pleine_propriete: 0.0,
-            vocation_titulaire_directe_nue_propriete: 0.0,
-            vocation_titulaire_indirecte_indivision: 0.0,
-            vocation_titulaire_indirecte_pleine_propriete_rdd: false,
-            vocation_titulaire_indirecte_pleine_propriete: 0.0,
-            vocation_titulaire_indirecte_nue_propriete: 0.0,
-            vocation_titulaire_indirecte_personnes_morales: 0.0,
-            vocation_titulaire_indirecte_personnes_morales_pleine_propriete: 0.0,
-            vocation_titulaire_indirecte_personnes_morales_nue_propriete: 0.0,
-            detention_vote_total: 0.0,
-            detention_pouvoir_decision_ag: false,
-            detention_pouvoir_nommage_membres_conseil_admin: false,
-            detention_autres_moyens_controle: false,
+            detention_de_capital: {
+              parts_totale: 49.0,
+              parts_directes: {
+                detention: true,
+                pleine_propriete: 49.0,
+                nue_propriete: 0.0
+              },
+              parts_indirectes: {
+                detention: false,
+                par_indivision: {
+                  total: 0.0,
+                  pleine_propriete: 0.0,
+                  nue_propriete: 0.0
+                },
+                via_personnes_morales: {
+                  total: 0.0,
+                  pleine_propriete: 0.0,
+                  nue_propriete: 0.0
+                }
+              }
+            },
+            vocation_a_devenir_titulaire_de_parts: {
+              parts_directes: {
+                pleine_propriete: 0.0,
+                nue_propriete: 0.0
+              },
+              parts_indirectes: {
+                par_indivision: {
+                  total: 0.0,
+                  pleine_propriete: 0.0,
+                  nue_propriete: 0.0
+                },
+                via_personnes_morales: {
+                  total: 0.0,
+                  pleine_propriete: 0.0,
+                  nue_propriete: 0.0
+                }
+              }
+            },
+            droits_de_vote: {
+              total: 0.0,
+              directes: {
+                detention: true,
+                pleine_propriete: 49.0,
+                nue_propriete: 0.0,
+                usufruit: 0.0
+              },
+              indirectes: {
+                detention: false,
+                par_indivision: {
+                  total: 0.0,
+                  pleine_propriete: 0.0,
+                  nue_propriete: 0.0,
+                  usufruit: 0.0
+                },
+                via_personnes_morales: {
+                  total: 0.0,
+                  pleine_propriete: 0.0,
+                  nue_propriete: 0.0,
+                  usufruit: 0.0
+                }
+              }
+            },
+            pouvoirs_de_controle: {
+              decision_ag: false,
+              nommage_membres_conseil_administratif: false,
+              autres: false
+            },
             representant_legal: false,
             representant_legal_placement_sans_gestion_delegue: false
-          }.except(*excluded_modalites)
+          }
         },
         {
           nom: 'MARTIN',
@@ -75,51 +99,77 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
             mois: '01'
           },
           modalites: {
-            detention_part_directe: true,
-            detention_part_directe_rdd: 51.0,
-            parts_directes_pleine_propriete: 51.0,
-            parts_directes_nue_propriete: 0.0,
-            detention_part_indirecte: false,
-            detention_part_indirecte_rdd: 0.0,
-            parts_indirectes_indivision: 0.0,
-            parts_indirectes_indivision_pleine_propriete: 0.0,
-            parts_indirectes_indivision_nue_propriete: 0.0,
-            parts_indirectes_personnes_morales: 0.0,
-            parts_indirectes_personnes_morales_pleine_propriete: 0.0,
-            parts_indirectes_personnes_morales_nue_propriete: 0.0,
-            detention_part_totale: 51.0,
-            detention_vote_directe: true,
-            detention_vote_directe_rdd: 51.0,
-            vote_directe_pleine_propriete: 51.0,
-            vote_directe_nue_propriete: 0.0,
-            vote_directe_usufruit: 0.0,
-            detention_vote_indirecte: false,
-            detention_vote_indirecte_rdd: 0.0,
-            vote_indirecte_indivision: 0.0,
-            vote_indirecte_indivision_pleine_propriete: 0.0,
-            vote_indirecte_indivision_nue_propriete: 0.0,
-            vote_indirecte_indivision_usufruit: 0.0,
-            vote_indirecte_personnes_morales: 0.0,
-            vote_indirecte_personnes_morales_pleine_propriete: 0.0,
-            vote_indirecte_personnes_morales_nue_propriete: 0.0,
-            vote_indirecte_personnes_morales_usufruit: 0.0,
-            vocation_titulaire_directe_pleine_propriete_rdd: false,
-            vocation_titulaire_directe_pleine_propriete: 0.0,
-            vocation_titulaire_directe_nue_propriete: 0.0,
-            vocation_titulaire_indirecte_indivision: 0.0,
-            vocation_titulaire_indirecte_pleine_propriete_rdd: false,
-            vocation_titulaire_indirecte_pleine_propriete: 0.0,
-            vocation_titulaire_indirecte_nue_propriete: 0.0,
-            vocation_titulaire_indirecte_personnes_morales: 0.0,
-            vocation_titulaire_indirecte_personnes_morales_pleine_propriete: 0.0,
-            vocation_titulaire_indirecte_personnes_morales_nue_propriete: 0.0,
-            detention_vote_total: 0.0,
-            detention_pouvoir_decision_ag: false,
-            detention_pouvoir_nommage_membres_conseil_admin: false,
-            detention_autres_moyens_controle: false,
+            detention_de_capital: {
+              parts_totale: 51.0,
+              parts_directes: {
+                detention: true,
+                pleine_propriete: 51.0,
+                nue_propriete: 0.0
+              },
+              parts_indirectes: {
+                detention: false,
+                par_indivision: {
+                  total: 0.0,
+                  pleine_propriete: 0.0,
+                  nue_propriete: 0.0
+                },
+                via_personnes_morales: {
+                  total: 0.0,
+                  pleine_propriete: 0.0,
+                  nue_propriete: 0.0
+                }
+              }
+            },
+            vocation_a_devenir_titulaire_de_parts: {
+              parts_directes: {
+                pleine_propriete: 0.0,
+                nue_propriete: 0.0
+              },
+              parts_indirectes: {
+                par_indivision: {
+                  total: 0.0,
+                  pleine_propriete: 0.0,
+                  nue_propriete: 0.0
+                },
+                via_personnes_morales: {
+                  total: 0.0,
+                  pleine_propriete: 0.0,
+                  nue_propriete: 0.0
+                }
+              }
+            },
+            droits_de_vote: {
+              total: 0.0,
+              directes: {
+                detention: true,
+                pleine_propriete: 51.0,
+                nue_propriete: 0.0,
+                usufruit: 0.0
+              },
+              indirectes: {
+                detention: false,
+                par_indivision: {
+                  total: 0.0,
+                  pleine_propriete: 0.0,
+                  nue_propriete: 0.0,
+                  usufruit: 0.0
+                },
+                via_personnes_morales: {
+                  total: 0.0,
+                  pleine_propriete: 0.0,
+                  nue_propriete: 0.0,
+                  usufruit: 0.0
+                }
+              }
+            },
+            pouvoirs_de_controle: {
+              decision_ag: false,
+              nommage_membres_conseil_administratif: false,
+              autres: false
+            },
             representant_legal: false,
             representant_legal_placement_sans_gestion_delegue: false
-          }.except(*excluded_modalites)
+          }
         }
       ]
     end

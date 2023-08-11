@@ -53,191 +53,272 @@ inpi_rne:
         type: 'object'
         additionalProperties: false
         properties:
-          detention_parts_directes:
-            title: "Indique si le bénéficiaire détient des parts directes"
-            description: "Détermine si le bénéficiaire possède du capital direct (parts sociales ou actions) de l'unité légale appelée. Par opposition à une détention indirecte du capital, via une personne morale."
-            type: 'boolean'
-            example: true
-          # detention_parts_directes_rdd:
-          #   title: "FIXME Detention part directe rdd"
-          #   type: 'number'
-          #   example: 51.0
-          parts_directes_pleine_propriete:
-            title: "Répartition des parts directes de pleine propriété"
-            description: &description_differents_droits "Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-            type: 'number'
-            example: 42.0
-          parts_directes_nue_propriete:
-            title: "Répartition des parts directes en nue-propriété"
-            description: *description_differents_droits
-            type: 'number'
-            example: 9.0
-          detention_parts_indirectes:
-            title: "Indique si le bénéficiaire détient des parts indirectes"
-            description: "Détermine si le bénéficiaire possède du capital (parts sociales ou actions) de manière indirecte sur l'unité légale, c'est-à-dire via une personne morale."
-            type: 'boolean'
-            example: false
-          # detention_parts_indirectes_rdd:
-          #   title: "FIXME Detention part indirecte rdd"
-          #   type: 'number'
-          #   example: 0.0
-          parts_indirectes_indivision:
-            title: "Répartition des parts indirectes en indivision"
-            description: &description_indivision "Après un décès, le patrimoine du défunt est en indivision, s’il y a plusieurs héritiers. Cela signifie que les biens de la succession appartiennent indistinctement à tous les héritiers sans que leurs parts respectives ne soient matériellement individualisées. Plus d'infos sur le lien suivant: <a href=\"https://www.economie.gouv.fr/particuliers/heritage-succession-indivision\">Succession : qu'est-ce que l'indivision ?</a>"
-            type: 'number'
-            example: 0.0
-          parts_indirectes_indivision_pleine_propriete:
-            title: "Répartition des parts indirectes en indivision de pleine propriété"
-            description: *description_indivision
-            type: 'number'
-            example: 0.0
-          parts_indirectes_indivision_nue_propriete:
-            title: "Répartition des parts indirectes en indivision en nue-propriété"
-            description: *description_indivision
-            type: 'number'
-            example: 0.0
-          parts_indirectes_personnes_morales:
-            title: "Répartition des parts indirectes via des personnes morales"
-            type: 'number'
-            example: 0.0
-          parts_indirectes_personnes_morales_pleine_propriete:
-            title: "Répartition des parts indirectes via des personnes morales, de pleine propriété"
-            type: 'number'
-            example: 0.0
-          parts_indirectes_personnes_morales_nue_propriete:
-            title: "Répartition des parts indirectes via des personnes morales en nue-propriété"
-            type: 'number'
-            example: 0.0
-          detention_parts_totale:
-            title: "Répartition totale des parts"
-            description: "Total du capital détenu et déclaré par le bénéficiaire qui correspond à la somme des parts directes et indirectes. Ce total est soit égal à 0%, soit supérieur ou égal à 25% ; car une personne physique est considérée comme bénéficiaire effectif du fait de sa détention de capital, uniquement si celui-ci est de 25% au moins. En dessous de ce ratio, la personne ne déclare pas son capital."
-            type: 'number'
-            example: 51.0
-          detention_vote_directe:
-            title: "Détention de droits de vote directe"
-            description: "Les droits de vote directs sont en pleine et nue propriété"
-            type: 'boolean'
-            example: true
-          # detention_vote_directe_rdd:
-          #   title: "FIXME Detention vote directe rdd"
-          #   type: 'number'
-          #   example: 51.0
-          vote_directe_pleine_propriete:
-            title: "Répartition des droits de vote directes de pleine propriété"
-            description: *description_differents_droits
-            type: 'number'
-            example: 51.0
-          vote_directe_nue_propriete:
-            title: "Répartition des droits de vote directes en nue-propriété"
-            description: *description_differents_droits
-            type: 'number'
-            example: 0.0
-          vote_directe_usufruit:
-            title: "Répartition des droits de vote directes en usufruit"
-            description: *description_differents_droits
-            type: 'number'
-            example: 0.0
-          detention_vote_indirecte:
-            title: "Détention de droits de vote indirectes"
-            description: "Ces droits sont via des personnes morales"
-            type: 'boolean'
-            example: false
-          # detention_vote_indirecte_rdd:
-          #   title: "FIXME Detention vote indirecte rdd"
-          #   type: 'number'
-          #   example: 0.0
-          vote_indirecte_indivision:
-            title: "Répartition des droits de vote indirectes via indivision"
-            description: *description_indivision
-            type: 'number'
-            example: 0.0
-          vote_indirecte_indivision_pleine_propriete:
-            title: "Répartition des droits de vote indirectes via indivision de pleine propriété"
-            description: *description_differents_droits
-            type: 'number'
-            example: 0.0
-          vote_indirecte_indivision_nue_propriete:
-            title: "Répartition des droits de vote indirectes via indivision en nue-propriété"
-            description: *description_differents_droits
-            type: 'number'
-            example: 0.0
-          vote_indirecte_indivision_usufruit:
-            title: "Répartition des droits de vote indirectes via indivision en usufruit"
-            description: *description_differents_droits
-            type: 'number'
-            example: 0.0
-          vote_indirecte_personnes_morales:
-            title: "Répartition des droits de vote indirectes via des personnes morales"
-            type: 'number'
-            example: 0.0
-          vote_indirecte_personnes_morales_pleine_propriete:
-            title: "Répartition des droits de vote indirectes via des personnes morales de pleine propriété"
-            type: 'number'
-            example: 0.0
-          vote_indirecte_personnes_morales_nue_propriete:
-            title: "Répartition des droits de vote indirectes via des personnes morales en nue-propriété"
-            type: 'number'
-            example: 0.0
-          vote_indirecte_personnes_morales_usufruit:
-            title: "Répartition des droits de vote indirectes via des personnes morales en usufruit"
-            type: 'number'
-            example: 0.0
-          # vocation_titulaire_directe_pleine_propriete_rdd:
-          #   title: "Vocation par l'effet d’un acte juridique à devenir titulaire directe pleine propriété rdd"
-          #   type: 'boolean'
-          #   example: false
-          vocation_titulaire_directe_pleine_propriete:
-            title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts directes en pleine propriété"
-            type: 'number'
-            example: 0.0
-          vocation_titulaire_directe_nue_propriete:
-            title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts directes en nue-propriété"
-            type: 'number'
-            example: 0.0
-          vocation_titulaire_indirecte_indivision:
-            title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes en indivision"
-            type: 'number'
-            example: 0.0
-          # vocation_titulaire_indirecte_pleine_propriete_rdd:
-          #   title: "Vocation par l'effet d’un acte juridique à devenir titulaire indirecte pleine propriété rdd"
-          #   type: 'boolean'
-          #   example: false
-          vocation_titulaire_indirecte_pleine_propriete:
-            title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes en pleine propriété"
-            type: 'number'
-            example: 0.0
-          vocation_titulaire_indirecte_nue_propriete:
-            title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes nue-propriété"
-            type: 'number'
-            example: 0.0
-          vocation_titulaire_indirecte_personnes_morales:
-            title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes via des personnes morales"
-            type: 'number'
-            example: 0.0
-          vocation_titulaire_indirecte_personnes_morales_pleine_propriete:
-            title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes via des personnes morales en pleine propriété"
-            type: 'number'
-            example: 0.0
-          vocation_titulaire_indirecte_personnes_morales_nue_propriete:
-            title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes via des personnes morales en nue-propriété"
-            type: 'number'
-            example: 0.0
-          detention_vote_total:
-            title: "Détention de droits de  vote total"
-            type: 'number'
-            example: 0.0
-          detention_pouvoir_decision_ag:
-            title: "Indique si le bénéficiaire détient du pouvoir de décision en Assemblée Générale"
-            type: 'boolean'
-            example: false
-          detention_pouvoir_nommage_membres_conseil_admin:
-            title: "Indique si le bénéficiaire détient du pouvoir de nommage des membres du conseil d'administration"
-            type: 'boolean'
-            example: false
-          detention_autres_moyens_controle:
-            title: "Indique si le bénéficiaire détient d'autres moyens de contrôle"
-            type: 'boolean'
-            example: false
+          detention_de_capital:
+            title: "Détention de capital"
+            type: 'object'
+            additionalProperties: false
+            properties:
+              parts_totale:
+                title: "Répartition totale des parts"
+                description: "Total du capital détenu et déclaré par le bénéficiaire qui correspond à la somme des parts directes et indirectes. Ce total est soit égal à 0%, soit supérieur ou égal à 25% ; car une personne physique est considérée comme bénéficiaire effectif du fait de sa détention de capital, uniquement si celui-ci est de 25% au moins. En dessous de ce ratio, la personne ne déclare pas son capital."
+                type: 'number'
+                example: 51.0
+              parts_directes:
+                title: "Parts directes"
+                type: 'object'
+                additionalProperties: false
+                properties:
+                  detention:
+                    title: "Indique si le bénéficiaire détient des parts directes"
+                    description: "Détermine si le bénéficiaire possède du capital direct (parts sociales ou actions) de l'unité légale appelée. Par opposition à une détention indirecte du capital, via une personne morale."
+                    type: 'boolean'
+                    example: true
+                  # rdd:
+                  #   title: "FIXME Detention part directe rdd"
+                  #   type: 'number'
+                  #   example: 51.0
+                  pleine_propriete:
+                    title: "Répartition des parts directes de pleine propriété"
+                    description: &description_differents_droits "Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
+                    type: 'number'
+                    example: 42.0
+                  nue_propriete:
+                    title: "Répartition des parts directes en nue-propriété"
+                    description: *description_differents_droits
+                    type: 'number'
+                    example: 9.0
+              parts_indirectes:
+                title: "Parts indirectes"
+                type: 'object'
+                additionalProperties: false
+                properties:
+                  detention:
+                    title: "Indique si le bénéficiaire détient des parts indirectes"
+                    description: "Détermine si le bénéficiaire possède du capital (parts sociales ou actions) de manière indirecte sur l'unité légale, c'est-à-dire via une personne morale."
+                    type: 'boolean'
+                    example: false
+                  # rdd:
+                  #   title: "FIXME Detention part indirecte rdd"
+                  #   type: 'number'
+                  #   example: 0.0
+                  par_indivision:
+                    title: "Par indivision"
+                    type: 'object'
+                    additionalProperties: false
+                    properties:
+                      total:
+                        title: "Répartition des parts indirectes en indivision"
+                        description: &description_indivision "Après un décès, le patrimoine du défunt est en indivision, s’il y a plusieurs héritiers. Cela signifie que les biens de la succession appartiennent indistinctement à tous les héritiers sans que leurs parts respectives ne soient matériellement individualisées. Plus d'infos sur le lien suivant: <a href=\"https://www.economie.gouv.fr/particuliers/heritage-succession-indivision\">Succession : qu'est-ce que l'indivision ?</a>"
+                        type: 'number'
+                        example: 0.0
+                      pleine_propriete:
+                        title: "Répartition des parts indirectes en indivision de pleine propriété"
+                        description: *description_indivision
+                        type: 'number'
+                        example: 0.0
+                      nue_propriete:
+                        title: "Répartition des parts indirectes en indivision en nue-propriété"
+                        description: *description_indivision
+                        type: 'number'
+                        example: 0.0
+                  via_personnes_morales:
+                    title: "Via des personnes morales"
+                    type: 'object'
+                    additionalProperties: false
+                    properties:
+                      total:
+                        title: "Répartition des parts indirectes via des personnes morales"
+                        type: 'number'
+                        example: 0.0
+                      pleine_propriete:
+                        title: "Répartition des parts indirectes via des personnes morales, de pleine propriété"
+                        type: 'number'
+                        example: 0.0
+                      nue_propriete:
+                        title: "Répartition des parts indirectes via des personnes morales en nue-propriété"
+                        type: 'number'
+                        example: 0.0
+          vocation_a_devenir_titulaire_de_parts:
+            title: "Vocation à devenir titulaire de parts"
+            type: 'object'
+            additionalProperties: false
+            properties:
+              parts_directes:
+                title: "Parts directes"
+                type: 'object'
+                additionalProperties: false
+                properties:
+                  # rdd:
+                  #   title: "Vocation par l'effet d’un acte juridique à devenir titulaire directe pleine propriété rdd"
+                  #   type: 'boolean'
+                  #   example: false
+                  pleine_propriete:
+                    title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts directes en pleine propriété"
+                    type: 'number'
+                    example: 0.0
+                  nue_propriete:
+                    title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts directes en nue-propriété"
+                    type: 'number'
+                    example: 0.0
+              parts_indirectes:
+                title: "Parts indirectes"
+                type: 'object'
+                additionalProperties: false
+                properties:
+                  par_indivision:
+                    title: "Par indivision"
+                    type: 'object'
+                    additionalProperties: false
+                    properties:
+                      total:
+                        title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes en indivision"
+                        type: 'number'
+                        example: 0.0
+                      # rdd:
+                      #   title: "Vocation par l'effet d’un acte juridique à devenir titulaire indirecte pleine propriété rdd"
+                      #   type: 'boolean'
+                      #   example: false
+                      pleine_propriete:
+                        title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes en pleine propriété"
+                        type: 'number'
+                        example: 0.0
+                      nue_propriete:
+                        title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes nue-propriété"
+                        type: 'number'
+                        example: 0.0
+                  via_personnes_morales:
+                    title: "Via des personnes morales"
+                    type: 'object'
+                    additionalProperties: false
+                    properties:
+                      total:
+                        title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes via des personnes morales"
+                        type: 'number'
+                        example: 0.0
+                      pleine_propriete:
+                        title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes via des personnes morales en pleine propriété"
+                        type: 'number'
+                        example: 0.0
+                      nue_propriete:
+                        title: "Vocation par l'effet d’un acte juridique à devenir titulaire de parts indirectes via des personnes morales en nue-propriété"
+                        type: 'number'
+                        example: 0.0
+
+          droits_de_vote:
+            title: "Détention de droits de vote"
+            type: 'object'
+            additionalProperties: false
+            properties:
+              total:
+                title: "Détention de droits de vote total"
+                type: 'number'
+                example: 0.0
+              # detention_vote_directe_rdd:
+              #   title: "FIXME Detention vote directe rdd"
+              #   type: 'number'
+              #   example: 51.0
+              directes:
+                title: "Vote directe"
+                type: 'object'
+                additionalProperties: false
+                properties:
+                  detention:
+                    title: "Détention de droits de vote directe"
+                    description: "Les droits de vote directs sont en pleine et nue propriété"
+                    type: 'boolean'
+                    example: true
+                  pleine_propriete:
+                    title: "Répartition des droits de vote directes de pleine propriété"
+                    description: *description_differents_droits
+                    type: 'number'
+                    example: 51.0
+                  nue_propriete:
+                    title: "Répartition des droits de vote directes en nue-propriété"
+                    description: *description_differents_droits
+                    type: 'number'
+                    example: 0.0
+                  usufruit:
+                    title: "Répartition des droits de vote directes en usufruit"
+                    description: *description_differents_droits
+                    type: 'number'
+                    example: 0.0
+              # detention_vote_indirecte_rdd:
+              #   title: "FIXME Detention vote indirecte rdd"
+              #   type: 'number'
+              #   example: 0.0
+              indirectes:
+                title: "Vote indirectes"
+                type: 'object'
+                additionalProperties: false
+                properties:
+                  detention:
+                    title: "Détention de droits de vote indirectes"
+                    description: "Ces droits sont via des personnes morales"
+                    type: 'boolean'
+                    example: false
+                  par_indivision:
+                    title: "Par indivision"
+                    type: 'object'
+                    additionalProperties: false
+                    properties:
+                      total:
+                        title: "Répartition des droits de vote indirectes via indivision"
+                        description: *description_indivision
+                        type: 'number'
+                        example: 0.0
+                      pleine_propriete:
+                        title: "Répartition des droits de vote indirectes via indivision de pleine propriété"
+                        description: *description_differents_droits
+                        type: 'number'
+                        example: 0.0
+                      nue_propriete:
+                        title: "Répartition des droits de vote indirectes via indivision en nue-propriété"
+                        description: *description_differents_droits
+                        type: 'number'
+                        example: 0.0
+                      usufruit:
+                        title: "Répartition des droits de vote indirectes via indivision en usufruit"
+                        description: *description_differents_droits
+                        type: 'number'
+                        example: 0.0
+                  via_personnes_morales:
+                    title: "Via des personnes morales"
+                    type: 'object'
+                    additionalProperties: false
+                    properties:
+                      total:
+                        title: "Répartition des droits de vote indirectes via des personnes morales"
+                        type: 'number'
+                        example: 0.0
+                      pleine_propriete:
+                        title: "Répartition des droits de vote indirectes via des personnes morales de pleine propriété"
+                        type: 'number'
+                        example: 0.0
+                      nue_propriete:
+                        title: "Répartition des droits de vote indirectes via des personnes morales en nue-propriété"
+                        type: 'number'
+                        example: 0.0
+                      usufruit:
+                        title: "Répartition des droits de vote indirectes via des personnes morales en usufruit"
+                        type: 'number'
+                        example: 0.0
+          pouvoirs_de_controle:
+            title: "Pouvoirs de controle"
+            type: 'object'
+            additionalProperties: false
+            properties:
+              decision_ag:
+                title: "Indique si le bénéficiaire détient du pouvoir de décision en Assemblée Générale"
+                type: 'boolean'
+                example: false
+              nommage_membres_conseil_administratif:
+                title: "Indique si le bénéficiaire détient du pouvoir de nommage des membres du conseil d'administration"
+                type: 'boolean'
+                example: false
+              autres:
+                title: "Indique si le bénéficiaire détient d'autres moyens de contrôle"
+                type: 'boolean'
+                example: false
           representant_legal:
             title: "Indique si le bénéficiaire est représentant légal"
             type: 'boolean'
