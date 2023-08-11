@@ -11,6 +11,10 @@ class FranceConnect::DataFetcherThroughAccessToken::ValidateResponse < ValidateR
 
   private
 
+  def use_mocked_data?
+    context.mocked_data.present?
+  end
+
   def scopes_include_hub_identity?
     json_body['scope'].present? &&
       (hub_identity_scopes - scopes_flatten_without_aliases).empty?

@@ -14,5 +14,21 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken::BuildUser, type: :i
     it 'gets scopes from access token payload' do
       expect(call.user.scopes).to eq(scopes)
     end
+
+    context 'when in staging' do
+      before do
+        allow(Rails).to receive(:env).and_return('staging'.inquiry)
+      end
+
+      it 'provides all API Particulier scopes' do
+        %w[
+          openid identite_pivot
+          cnous_statut_boursier
+          mesri_identifiant
+        ].each do |scope|
+          expect(call.user.scopes).to include(scope)
+        end
+      end
+    end
   end
 end

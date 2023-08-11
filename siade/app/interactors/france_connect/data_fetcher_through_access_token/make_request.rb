@@ -1,10 +1,12 @@
 class FranceConnect::DataFetcherThroughAccessToken::MakeRequest < MakeRequest::Post
+  def call
+    super
+
+    api_call_with_error_handling if call_france_connect_in_staging?
+  end
+
   def mock_call
     context.mocked_data = MockService.new(operation_id, mocking_params).mock_from_backend
-
-    return if context.mocked_data
-
-    simulate_not_found_error
   end
 
   def operation_id
@@ -27,10 +29,8 @@ class FranceConnect::DataFetcherThroughAccessToken::MakeRequest < MakeRequest::P
     context.params[:token]
   end
 
-  def simulate_not_found_error
-    track_mock_operation
-    context.errors << InvalidFranceConnectAccessTokenError.new(:not_found_or_expired)
-    context.fail!
+  def call_france_connect_in_staging?
+    Rails.env.staging? && context.mocked_data.nil?
   end
 
   def france_connect_check_token_url

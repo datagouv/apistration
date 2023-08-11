@@ -6,6 +6,10 @@ class FranceConnect::DataFetcherThroughAccessToken::BuildServiceUserIdentity < A
   private
 
   def json_body
-    @json_body ||= use_mocked_data? ? context.mocked_data[:payload] : JSON.parse(context.response.body)
+    @json_body ||= from_france_connect? ? JSON.parse(context.response.body) : context.mocked_data[:payload]
+  end
+
+  def from_france_connect?
+    !Rails.env.staging? || context.mocked_data.nil?
   end
 end
