@@ -110,7 +110,7 @@ inpi_rne:
             example: 0.0
           detention_parts_totale:
             title: "Répartition totale des parts"
-            description: "Somme des parts en direct et indirect associée au bénéficiaire effectif"
+            description: "Total du capital détenu et déclaré par le bénéficiaire qui correspond à la somme des parts directes et indirectes. Ce total est soit égal à 0%, soit supérieur ou égal à 25% ; car une personne physique est considérée comme bénéficiaire effectif du fait de sa détention de capital, uniquement si celui-ci est de 25% au moins. En dessous de ce ratio, la personne ne déclare pas son capital."
             type: 'number'
             example: 51.0
           detention_vote_directe:
