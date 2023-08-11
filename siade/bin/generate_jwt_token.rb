@@ -7,8 +7,7 @@ end
 
 env = ARGV[0]
 
-config_to_retrieve = env == 'staging' ? 'production' : env
-ENV['RAILS_ENV'] = config_to_retrieve
+ENV['RAILS_ENV'] = env
 
 require File.expand_path('../../config/application', __FILE__)
 
