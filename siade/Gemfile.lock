@@ -343,7 +343,7 @@ GEM
       diff-lcs
       patience_diff
     thor (1.2.2)
-    timecop (0.9.6)
+    timecop (0.9.7)
     ttfunk (1.7.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
