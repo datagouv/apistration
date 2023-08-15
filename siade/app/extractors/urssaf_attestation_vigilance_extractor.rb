@@ -34,7 +34,7 @@ class URSSAFAttestationVigilanceExtractor < PDFExtractor
 
   def extract_from_page(page, to_match)
     date_matches = page.text.match(to_match)
-    return date_matches[1] if date_matches
+    date_matches[1] if date_matches
   end
 
   def raise_invalid_attestation_vigilance

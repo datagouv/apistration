@@ -5,7 +5,8 @@ class GIPMDS::Effectifs::ValidateDepth < ValidateParamInteractor
     return invalid_depth! if param(:depth) == ''
     return invalid_depth! unless valid_integer?
     return invalid_depth! if param(:depth).to_i > 13
-    return invalid_depth! if param(:depth).to_i.negative?
+
+    invalid_depth! if param(:depth).to_i.negative?
   end
 
   private
