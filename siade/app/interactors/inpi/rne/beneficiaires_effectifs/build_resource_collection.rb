@@ -100,7 +100,7 @@ class INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection < BuildResource
         autres: modalites_attributes['detentionAutresMoyensControle']
       },
       representant_legal: modalites_attributes['beneficiaireRepresentantLegal'],
-      representant_legal_placement_sans_gestion_delegue: modalites_attributes['representantLegalPlacementSansGestionDelegue']
+      representant_legal_placement_sans_gestion_deleguee: modalites_attributes['representantLegalPlacementSansGestionDelegue']
     }
   end
   # rubocop:enable Metrics/MethodLength,Metrics/AbcSize

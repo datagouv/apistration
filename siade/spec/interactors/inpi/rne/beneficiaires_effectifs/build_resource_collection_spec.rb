@@ -87,7 +87,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
               autres: false
             },
             representant_legal: false,
-            representant_legal_placement_sans_gestion_delegue: false
+            representant_legal_placement_sans_gestion_deleguee: false
           }
         },
         {
@@ -168,7 +168,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
               autres: false
             },
             representant_legal: false,
-            representant_legal_placement_sans_gestion_delegue: false
+            representant_legal_placement_sans_gestion_deleguee: false
           }
         }
       ]
