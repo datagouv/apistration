@@ -1,7 +1,7 @@
 pole_emploi:
   indemnites:
     title: "Paiements versés par Pôle Emploi"
-    description: "Ensemble des paiements versé par Pôle Emploi pour un usager"
+    description: "Ensemble des paiements versés par Pôle Emploi pour un usager"
     tags:
       - Paiements Pôle Emploi
     parameters:
