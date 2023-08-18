@@ -6,7 +6,11 @@ class CNAF::ValidateCodeINSEELieuDeNaissance < ValidateParamInteractor
   end
 
   def valid?
-    param(:code_insee_lieu_de_naissance).nil? ||
+    (param(:code_insee_lieu_de_naissance).nil? && !france?) ||
       param(:code_insee_lieu_de_naissance) =~ /^\d{5}$/
+  end
+
+  def france?
+    param(:code_pays_lieu_de_naissance) == '99100'
   end
 end

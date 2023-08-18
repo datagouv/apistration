@@ -40,7 +40,7 @@ cnaf:
         minLength: 5
         maxLength: 5
         example: '08480'
-        description: "Code Insee à 5 chiffres du lieu de naissance de la personne sur 5 chiffres. Ne pas remplir si la personne est née à l'étranger."
+        description: "Code Insee à 5 chiffres du lieu de naissance de la personne sur 5 chiffres. Ne pas remplir si la personne est née à l'étranger. Le champs est obligatoire si la personne est née en France"
       codePaysLieuDeNaissance:
         description: "Code Insee à 5 chiffres du pays de naissance (France = 99100)"
         type: string
@@ -131,7 +131,7 @@ cnaf:
         minLength: 5
         maxLength: 5
         example: '08480'
-        description: "Code Insee à 5 chiffres du lieu de naissance de la personne sur 5 chiffres. Ne pas remplir si la personne est née à l'étranger."
+        description: "Code Insee à 5 chiffres du lieu de naissance de la personne sur 5 chiffres. Ne pas remplir si la personne est née à l'étranger. Le champs est obligatoire si la personne est née en France"
       codePaysLieuDeNaissance:
         description: "Code Insee à 5 chiffres du pays de naissance (France = 99100)"
         type: string
