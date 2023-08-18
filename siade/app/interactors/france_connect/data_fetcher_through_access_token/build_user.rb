@@ -16,7 +16,7 @@ class FranceConnect::DataFetcherThroughAccessToken::BuildUser < ApplicationInter
   end
 
   def scopes
-    return all_api_particulier_scopes if use_mocked_data? && from_france_connect?
+    return all_api_particulier_scopes if called_france_connect_in_staging?
 
     json_body['scope']
   end
@@ -25,14 +25,17 @@ class FranceConnect::DataFetcherThroughAccessToken::BuildUser < ApplicationInter
     @json_body ||= from_france_connect? ? JSON.parse(context.response.body) : context.mocked_data[:payload]
   end
 
+  def called_france_connect_in_staging?
+    Rails.env.staging? && from_france_connect?
+  end
+
   def from_france_connect?
     !Rails.env.staging? || context.mocked_data.nil?
   end
 
   def all_api_particulier_scopes
     [
-      scopes_for('api_particulier/v2/cnous/student_scholarship'),
-      scopes_for('api_particulier/v2/mesri/student_status'),
+      Scope.all_for_api('api_particulier'),
       %w[openid identite_pivot]
     ].flatten
   end
