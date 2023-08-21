@@ -158,7 +158,7 @@ Ce cas permet de tester :
       {
         "data": {
           "document_url": "https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_entreprise_v3_qualifelec_certificats/exemple-certificat-qualifelec-bac-a-sable.jpg",
-          "numero": "02840",
+          "numero": 2841,
           "rge": false,
           "date_debut": "2023-08-01",
           "date_fin": "2024-07-31",
