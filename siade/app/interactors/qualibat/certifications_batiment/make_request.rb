@@ -21,12 +21,6 @@ class QUALIBAT::CertificationsBatiment::MakeRequest < MakeRequest::Get
     request['Authorization'] = "Bearer #{token}"
   end
 
-  def http_options
-    {
-      use_ssl: false
-    }
-  end
-
   def token
     context.token
   end

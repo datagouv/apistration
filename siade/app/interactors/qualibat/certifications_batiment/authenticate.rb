@@ -6,12 +6,6 @@ class QUALIBAT::CertificationsBatiment::Authenticate < AbstractGetToken
     ].join('/')
   end
 
-  def http_options
-    {
-      use_ssl: false
-    }
-  end
-
   def access_token(response)
     JSON.parse(response.body)['access_token']
   end
