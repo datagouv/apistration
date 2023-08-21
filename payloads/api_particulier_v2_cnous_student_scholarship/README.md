@@ -265,7 +265,7 @@
 
   </p>
   </details>
-* [france_connect_cnous.yml](france_connect_cnous.yml)
+* [fake_france_connect_cnous.yml](fake_france_connect_cnous.yml)
 
   Status `200`
 
@@ -326,7 +326,7 @@
 
   </p>
   </details>
-* [france_connect_cnous_with_less_scopes.yml](france_connect_cnous_with_less_scopes.yml)
+* [fake_france_connect_cnous_with_less_scopes.yml](fake_france_connect_cnous_with_less_scopes.yml)
 
   Status `200`
 
@@ -376,6 +376,66 @@
   ```bash
   curl -H "X-Api-Key: $token" \
     -G -d 'given_name=Jean' -d 'family_name=MARTIN' -d 'birthdate=2001-01-01' -d 'gender=male' -d 'birthplace=75002' -d 'birthcountry=99100' -d 'preferred_username=jmartin_cnous_with_less_scopes' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  ```
+
+  </p>
+  </details>
+* [france_connect_cnous.yml](france_connect_cnous.yml)
+
+  Status `200`
+
+  FranceConnect: Boursier échelon 5 (scope complet)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "given_name": "Angela Claire Louise",
+    "family_name": "DUBOIS",
+    "birthdate": "1962-08-24",
+    "gender": "female",
+    "birthplace": "75107",
+    "birthcountry": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "DUBOIS",
+    "prenom": "Angela",
+    "prenom2": "Claire",
+    "dateNaissance": "1962-08-24",
+    "lieuNaissance": "Paris",
+    "sexe": "F",
+    "boursier": true,
+    "echelonBourse": "5",
+    "email": "wossewodda-3728@yopmail.com ",
+    "dateDeRentree": "2020-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Bordeaux",
+    "etablissement": "Camille Jullian"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'given_name=Angela+Claire+Louise' -d 'family_name=DUBOIS' -d 'birthdate=1962-08-24' -d 'gender=female' -d 'birthplace=75107' -d 'birthcountry=99100' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
   ```
 
