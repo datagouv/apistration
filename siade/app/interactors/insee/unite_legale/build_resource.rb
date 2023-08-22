@@ -47,7 +47,7 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
 
       economie_sociale_et_solidaire: yes_no_to_boolean(unite_legale['economieSocialeSolidaireUniteLegale']),
 
-      date_creation: date_to_timestamp(unite_legale['dateCreationUniteLegale']),
+      date_creation:,
 
       etat_administratif:,
       date_cessation:,
@@ -113,6 +113,12 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
 
   def siren
     unite_legale['siren'] || etablissement['siret'].first(9)
+  end
+
+  def date_creation
+    return if unite_legale['dateCreationUniteLegale'] == '1900-01-01'
+
+    date_to_timestamp(unite_legale['dateCreationUniteLegale'])
   end
 
   def siret_siege_social

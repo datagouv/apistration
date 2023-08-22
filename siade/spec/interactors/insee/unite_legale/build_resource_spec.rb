@@ -160,6 +160,25 @@ RSpec.describe INSEE::UniteLegale::BuildResource, type: :build_resource do
       end
     end
 
+    context 'when there is a date of 1900-01-01' do
+      let(:body) do
+        json = JSON.parse(read_payload_file('insee/association.json'))
+        json['uniteLegale']['dateCreationUniteLegale'] = '1900-01-01'
+        json.to_json
+      end
+      let(:siren) { association_siren }
+
+      it { is_expected.to be_a_success }
+
+      describe 'resource' do
+        subject { organizer.bundled_data.data }
+
+        it { is_expected.to be_a(Resource) }
+
+        its(:date_creation) { is_expected.to be_nil }
+      end
+    end
+
     context 'with a ceased company', vcr: { cassette_name: 'insee/siren/ceased' } do
       let(:siren) { sirens_insee_v3[:ceased] }
 
