@@ -1,0 +1,29 @@
+---
+description: 'FranceConnect: étudiant inscrit'
+params:
+  prenom: "Angela Claire Louise"
+  nom: "DUBOIS"
+  birthdate: "1962-08-24"
+  gender: "female"
+  birthplace: "75107"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890T",
+    "nomFamille": "DUBOIS",
+    "prenom": "Angela Claire Louise",
+    "dateNaissance": "1962-08-24",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2020-07-01",
+        "dateFinInscription": "2021-08-31",
+        "statut": "inscrit",
+        "codeCommune": "33063",
+        "etablissement": {
+          "uai": "0330023W",
+          "nomEtablissement": "LYCEE GENERAL ET TECHNOLOGIQUE CAMILLE JULLIAN"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

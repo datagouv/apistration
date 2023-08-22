@@ -127,7 +127,7 @@ associés aux paramètres invalides et au jeton invalide:
 En effet, les paramètres d'entrées sont vérifiés directement par l'application,
 ce qui garantie un comportement iso avec la production.
 
-### Cas de FranceConnect
+## Cas de FranceConnect
 
 Certains endpoints d'API Particulier sont FranceConnectés : cela implique que
 l'on peut passer un jeton FranceConnect à la place des paramètres classiques
@@ -136,6 +136,17 @@ FranceConnect, l'API effectue un appel auprès de FranceConnect pour récupérer
 des données de civilité (un exemple [ici](./payloads/france_connect/default.yaml)),
 données qui sont ensuite formatées pour effectuer un appel auprès du fournisseur
 de données correspondant.
+
+### En utilisant le FranceConnect d'integration
+
+Il est possible d'utiliser directement le service d'integration de FranceConnect et d'envoyer sur nos serveur en staging un jeton FranceConnect valide.
+Dans ce cas nous allons directement appeler le fournisseur de données avec l'identité pivot renvoyée par FranceConnect. Vous pouvez accédez à l'ensemble des identifiant valide sur le [dépot de FranceConnect](https://github.com/france-connect/identity-provider-example/blob/master/database.csv).
+
+À noter que seuls certaines identités sont prises en compte dans les cas de test, le plus souvent la première de la liste (Angela DUBOIS). S'il n'y a pas de cas de test, vous recevrez la réponse générique tel que défini dans les fichiers swagger de l'api.
+
+Si vous souhaitez ajouter des cas de test, merci de vous réferrez à la section [contribution](#contribution).
+
+### En utilisant les faux jetons FranceConnect
 
 Les données de tests de FranceConnect se trouvent dans le dossier
 [payloads/france_connect/](payloads/france_connect/)
@@ -149,7 +160,7 @@ Par exemple pour `api/v2/etudiants-boursiers`:
 1. Un mapping valide pour FranceConnect: [payloads/france_connect/cnous.yaml](./payloads/france_connect/cnous.yaml) ;
 2. Un mapping pour `api/v2/etudiants-boursiers` qui prend exactement les
    paramètres d'identité renvoyés par le fichier ci-dessus:
-   [payloads/api_particulier_v2_cnous_student_scholarship/franceconnect_cnous.yml](./payloads/api_particulier_v2_cnous_student_scholarship/france_connect_cnous.yml).
+   [payloads/api_particulier_v2_cnous_student_scholarship/fake_franceconnect_cnous.yml](./payloads/api_particulier_v2_cnous_student_scholarship/fake_france_connect_cnous.yml).
 
 Ainsi, l'appel suivant renverra in-fine la réponse définie en 2. :
 
@@ -175,7 +186,7 @@ aucun filtrage.
 
 Pour contourner ce problème, il faut retirer les champs de la payload finale.
 Vous pouvez vous référer à l'exemple
-[payloads/api_particulier_v2_cnous_student_scholarship/franceconnect_cnous_with_less_scopes.yml](./payloads/api_particulier_v2_cnous_student_scholarship/franceconnect_cnous_with_less_scopes.yml),
+[payloads/api_particulier_v2_cnous_student_scholarship/fake_france_connect_cnous_with_less_scopes.yml](./payloads/api_particulier_v2_cnous_student_scholarship/fake_france_connect_cnous_with_less_scopes.yml),
 où les clés `nom`, `prenom`, `prenom2`, `dateNaissance`, `lieuNaissance`, `sexe`
 ont été omises.
 
