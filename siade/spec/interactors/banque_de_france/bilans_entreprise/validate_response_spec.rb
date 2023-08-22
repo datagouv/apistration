@@ -32,6 +32,14 @@ RSpec.describe BanqueDeFrance::BilansEntreprise::ValidateResponse, type: :valida
         its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
       end
 
+      context 'when it is a 408 error' do
+        let(:response) { instance_double(Net::HTTPRequestTimeout, code: '408', body: 'whatever') }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+      end
+
       context 'when it is a payload without data and a 500 error code' do
         let(:json_body) do
           {

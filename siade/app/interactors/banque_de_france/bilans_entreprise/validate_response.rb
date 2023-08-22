@@ -1,5 +1,7 @@
 class BanqueDeFrance::BilansEntreprise::ValidateResponse < ValidateResponse
   def call
+    internal_server_error! if http_code == 408
+
     unknown_provider_response! if !http_ok? || invalid_json?
 
     return if json_body['bilans'].present?
