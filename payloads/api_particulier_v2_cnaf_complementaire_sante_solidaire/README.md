@@ -9,9 +9,43 @@
 
   ```json
   {
-    "status": "beneficiaire_sans_participation_financiere",
-    "dateDebut": "1992-11-29",
-    "dateFin": "1993-11-29"
+    "allocataires": [
+      {
+        "nomNaissance": "JACQUES",
+        "nomUsuel": "JACQUES",
+        "prenoms": "JEAN-PIERRE THOMAS",
+        "anneeDateDeNaissance": "2000",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "31",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "JACQUES",
+        "nomUsuel": "JACQUES",
+        "prenoms": "JEAN-PIERRE THOMAS",
+        "anneeDateDeNaissance": "2000",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "31",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur JEAN JACQUES",
+      "complementInformation": "dummy",
+      "complementInformationGeographique": "dummy",
+      "numeroLibelleVoie": "1 RUE DE LA GARE",
+      "lieuDit": "dummy",
+      "codePostalVille": "75002",
+      "pays": "FRANCE"
+    },
+    "regime": "MSA",
+    "quotientFamilial": 1045,
+    "annee": 2021,
+    "mois": 6,
+    "annee_calcul": 2021,
+    "mois_calcul": 3
   }
   ```
 
@@ -229,50 +263,6 @@ Ce cas permet de tester :
   ```bash
   curl -H "X-Api-Key: $token" \
     -G -d 'codePaysLieuDeNaissance=99404' -d 'sexe=F' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
-  ```
-
-  </p>
-  </details>
-* [500.yaml](500.yaml)
-
-  Status `500`
-
-  Erreur interne du serveur
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "codePaysLieuDeNaissance": "99500",
-    "sexe": "F"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "error": "error",
-    "reason": "Internal server error",
-    "message": "Une erreur interne s'est produite, l'équipe a été prévenue."
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99500' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 
