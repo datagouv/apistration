@@ -43,6 +43,14 @@ RSpec.describe CNAF::ValidateCodeINSEELieuDeNaissance, type: :validate_param_int
 
       its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
     end
+
+    context 'when it is corse' do
+      let(:code_insee_lieu_de_naissance) { '2A004' }
+
+      it { is_expected.to be_a_success }
+
+      its(:errors) { is_expected.to be_empty }
+    end
   end
 
   describe 'non regression test' do

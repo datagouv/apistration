@@ -44,7 +44,7 @@ RSpec.describe CNAF::ValidateParams, type: :validate_params do
   end
 
   context 'with invalid code_insee_lieu_de_naissance' do
-    let(:code_insee_lieu_de_naissance) { 'INSEE' }
+    let(:code_insee_lieu_de_naissance) { 'INSEE7' }
 
     it { is_expected.to be_a_failure }
 
