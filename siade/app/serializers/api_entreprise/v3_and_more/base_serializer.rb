@@ -45,6 +45,8 @@ class APIEntreprise::V3AndMore::BaseSerializer
         action: :show,
         uuid: ProxiedFileService.set(url)
       )
+    rescue ProxiedFileService::ConnectionError
+      url
     end
   end
 

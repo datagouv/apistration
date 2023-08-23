@@ -49,7 +49,7 @@ RSpec.describe APIEntreprise::V3AndMore::BaseSerializer, type: :serializer do
         attr_1: 'attr_1',
         attr_2: 'attr_2',
         attr_3: 'attr_1attr_2',
-        inside_url: 'http://test.entreprise.api.gouv.fr/proxy/files/uuid',
+        inside_url: 'http://test.entreprise.api.gouv.fr/proxy/files/uuid'
       },
       links: {
         example_url: 'url_1'
@@ -58,5 +58,15 @@ RSpec.describe APIEntreprise::V3AndMore::BaseSerializer, type: :serializer do
         example_meta: 'meta_1'
       }
     })
+  end
+
+  context 'when ProxiedFileService raises a connection error' do
+    before do
+      allow(ProxiedFileService).to receive(:set).and_raise(ProxiedFileService::ConnectionError)
+    end
+
+    it 'fallbacks to original url' do
+      expect(subject[:data][:inside_url]).to eq('inside_url')
+    end
   end
 end
