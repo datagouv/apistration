@@ -13268,8 +13268,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Liste des bénéficiaires effectifs d'une unité légale délivrée par
-        l'API RNE de l'INPI
+      description: Liste des bénéficiaires effectifs d'une unité légale inscrite au
+        répertoire national des entreprises (RNE).
       responses:
         '401':
           description: Non autorisé
@@ -13451,305 +13451,612 @@ paths:
                               - annee
                               - mois
                             modalites:
-                              title: Liste des modalités et propriétées affectées
-                                au bénéficiaire effectif
+                              title: Liste des modalités de contrôle du bénéficiaire
+                                effectif
                               type: object
                               additionalProperties: false
                               properties:
-                                detention_part_directe:
-                                  title: Détention de parts directes
-                                  description: Détermine si le bénéficiaire possède
-                                    des parts en direct sur l'unité légale
-                                  type: boolean
-                                  example: true
-                                parts_directes_pleine_propriete:
-                                  title: Répartition des parts directes de pleine
-                                    propriété
-                                  description: 'Plus d''infos sur les différents des
-                                    droits sur un bien sur le lien suivant: [Usufruit,
-                                    nue-propriété, pleine propriété : quelles différences
-                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
-                                  type: number
-                                  example: 42.0
-                                parts_directes_nue_propriete:
-                                  title: Répartition des parts directes en nue-propriété
-                                  description: 'Plus d''infos sur les différents des
-                                    droits sur un bien sur le lien suivant: [Usufruit,
-                                    nue-propriété, pleine propriété : quelles différences
-                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
-                                  type: number
-                                  example: 9.0
-                                detention_part_indirecte:
-                                  title: Détention de parts indirectes
-                                  description: Détermine si le bénéficiaire possède
-                                    des parts de manière indirect sur l'unité légale
-                                    (via une autre entité)
-                                  type: boolean
-                                  example: false
-                                parts_indirectes_indivision:
-                                  title: Répartition des parts indirectes en indivision
-                                  description: 'Après un décès, le patrimoine du défunt
-                                    est en indivision, s’il y a plusieurs héritiers.
-                                    Cela signifie que les biens de la succession appartiennent
-                                    indistinctement à tous les héritiers sans que
-                                    leurs parts respectives ne soient matériellement
-                                    individualisées. Plus d''infos sur le lien suivant:
-                                    [Succession : qu''est-ce que l''indivision ?](https://www.economie.gouv.fr/particuliers/heritage-succession-indivision)'
-                                  type: number
-                                  example: 0.0
-                                parts_indirectes_indivision_pleine_propriete:
-                                  title: Répartition des parts indirectes en indivision
-                                    de pleine propriété
-                                  description: 'Après un décès, le patrimoine du défunt
-                                    est en indivision, s’il y a plusieurs héritiers.
-                                    Cela signifie que les biens de la succession appartiennent
-                                    indistinctement à tous les héritiers sans que
-                                    leurs parts respectives ne soient matériellement
-                                    individualisées. Plus d''infos sur le lien suivant:
-                                    [Succession : qu''est-ce que l''indivision ?](https://www.economie.gouv.fr/particuliers/heritage-succession-indivision)'
-                                  type: number
-                                  example: 0.0
-                                parts_indirectes_indivision_nue_propriete:
-                                  title: Répartition des parts indirectes en indivision
-                                    en nue-propriété
-                                  description: 'Après un décès, le patrimoine du défunt
-                                    est en indivision, s’il y a plusieurs héritiers.
-                                    Cela signifie que les biens de la succession appartiennent
-                                    indistinctement à tous les héritiers sans que
-                                    leurs parts respectives ne soient matériellement
-                                    individualisées. Plus d''infos sur le lien suivant:
-                                    [Succession : qu''est-ce que l''indivision ?](https://www.economie.gouv.fr/particuliers/heritage-succession-indivision)'
-                                  type: number
-                                  example: 0.0
-                                parts_indirectes_personnes_morales:
-                                  title: Répartition des parts indirectes via des
-                                    personnes morales
-                                  type: number
-                                  example: 0.0
-                                parts_indirectes_personnes_morales_pleine_propriete:
-                                  title: Répartition des parts indirectes via des
-                                    personnes morales, de pleine propriété
-                                  type: number
-                                  example: 0.0
-                                parts_indirectes_personnes_morales_nue_propriete:
-                                  title: Répartition des parts indirectes via des
-                                    personnes morales en nue-propriété
-                                  type: number
-                                  example: 0.0
-                                detention_part_totale:
-                                  title: Répartition totale des parts
-                                  description: Somme des parts en direct et indirect
-                                    associée au bénéficiaire effectif
-                                  type: number
-                                  example: 51.0
-                                detention_vote_directe:
-                                  title: Détention de droits de vote directe
-                                  description: Les droits de vote directs sont en
-                                    pleine et nue propriété
-                                  type: boolean
-                                  example: true
-                                vote_directe_pleine_propriete:
-                                  title: Répartition des droits de vote directes de
-                                    pleine propriété
-                                  description: 'Plus d''infos sur les différents des
-                                    droits sur un bien sur le lien suivant: [Usufruit,
-                                    nue-propriété, pleine propriété : quelles différences
-                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
-                                  type: number
-                                  example: 51.0
-                                vote_directe_nue_propriete:
-                                  title: Répartition des droits de vote directes en
-                                    nue-propriété
-                                  description: 'Plus d''infos sur les différents des
-                                    droits sur un bien sur le lien suivant: [Usufruit,
-                                    nue-propriété, pleine propriété : quelles différences
-                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
-                                  type: number
-                                  example: 0.0
-                                vote_directe_usufruit:
-                                  title: Répartition des droits de vote directes en
-                                    usufruit
-                                  description: 'Plus d''infos sur les différents des
-                                    droits sur un bien sur le lien suivant: [Usufruit,
-                                    nue-propriété, pleine propriété : quelles différences
-                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
-                                  type: number
-                                  example: 0.0
-                                detention_vote_indirecte:
-                                  title: Détention de droits de vote indirectes
-                                  description: Ces droits sont via des personnes morales
-                                  type: boolean
-                                  example: false
-                                vote_indirecte_indivision:
-                                  title: Répartition des droits de vote indirectes
-                                    via indivision
-                                  description: 'Après un décès, le patrimoine du défunt
-                                    est en indivision, s’il y a plusieurs héritiers.
-                                    Cela signifie que les biens de la succession appartiennent
-                                    indistinctement à tous les héritiers sans que
-                                    leurs parts respectives ne soient matériellement
-                                    individualisées. Plus d''infos sur le lien suivant:
-                                    [Succession : qu''est-ce que l''indivision ?](https://www.economie.gouv.fr/particuliers/heritage-succession-indivision)'
-                                  type: number
-                                  example: 0.0
-                                vote_indirecte_indivision_pleine_propriete:
-                                  title: Répartition des droits de vote indirectes
-                                    via indivision de pleine propriété
-                                  description: 'Plus d''infos sur les différents des
-                                    droits sur un bien sur le lien suivant: [Usufruit,
-                                    nue-propriété, pleine propriété : quelles différences
-                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
-                                  type: number
-                                  example: 0.0
-                                vote_indirecte_indivision_nue_propriete:
-                                  title: Répartition des droits de vote indirectes
-                                    via indivision en nue-propriété
-                                  description: 'Plus d''infos sur les différents des
-                                    droits sur un bien sur le lien suivant: [Usufruit,
-                                    nue-propriété, pleine propriété : quelles différences
-                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
-                                  type: number
-                                  example: 0.0
-                                vote_indirecte_indivision_usufruit:
-                                  title: Répartition des droits de vote indirectes
-                                    via indivision en usufruit
-                                  description: 'Plus d''infos sur les différents des
-                                    droits sur un bien sur le lien suivant: [Usufruit,
-                                    nue-propriété, pleine propriété : quelles différences
-                                    ?](https://www.service-public.fr/particuliers/vosdroits/F33076)'
-                                  type: number
-                                  example: 0.0
-                                vote_indirecte_personnes_morales:
-                                  title: Répartition des droits de vote indirectes
-                                    via des personnes morales
-                                  type: number
-                                  example: 0.0
-                                vote_indirecte_personnes_morales_pleine_propriete:
-                                  title: Répartition des droits de vote indirectes
-                                    via des personnes morales de pleine propriété
-                                  type: number
-                                  example: 0.0
-                                vote_indirecte_personnes_morales_nue_propriete:
-                                  title: Répartition des droits de vote indirectes
-                                    via des personnes morales en nue-propriété
-                                  type: number
-                                  example: 0.0
-                                vote_indirecte_personnes_morales_usufruit:
-                                  title: Répartition des droits de vote indirectes
-                                    via des personnes morales en usufruit
-                                  type: number
-                                  example: 0.0
-                                vocation_titulaire_directe_pleine_propriete:
-                                  title: Vocation par l'effet d’un acte juridique
-                                    à devenir titulaire de parts directes en pleine
-                                    propriété
-                                  type: number
-                                  example: 0.0
-                                vocation_titulaire_directe_nue_propriete:
-                                  title: Vocation par l'effet d’un acte juridique
-                                    à devenir titulaire de parts directes en nue-propriété
-                                  type: number
-                                  example: 0.0
-                                vocation_titulaire_indirecte_indivision:
-                                  title: Vocation par l'effet d’un acte juridique
-                                    à devenir titulaire de parts indirectes en indivision
-                                  type: number
-                                  example: 0.0
-                                vocation_titulaire_indirecte_pleine_propriete:
-                                  title: Vocation par l'effet d’un acte juridique
-                                    à devenir titulaire de parts indirectes en pleine
-                                    propriété
-                                  type: number
-                                  example: 0.0
-                                vocation_titulaire_indirecte_nue_propriete:
-                                  title: Vocation par l'effet d’un acte juridique
-                                    à devenir titulaire de parts indirectes nue-propriété
-                                  type: number
-                                  example: 0.0
-                                vocation_titulaire_indirecte_personnes_morales:
-                                  title: Vocation par l'effet d’un acte juridique
-                                    à devenir titulaire de parts indirectes via des
-                                    personnes morales
-                                  type: number
-                                  example: 0.0
-                                vocation_titulaire_indirecte_personnes_morales_pleine_propriete:
-                                  title: Vocation par l'effet d’un acte juridique
-                                    à devenir titulaire de parts indirectes via des
-                                    personnes morales en pleine propriété
-                                  type: number
-                                  example: 0.0
-                                vocation_titulaire_indirecte_personnes_morales_nue_propriete:
-                                  title: Vocation par l'effet d’un acte juridique
-                                    à devenir titulaire de parts indirectes via des
-                                    personnes morales en nue-propriété
-                                  type: number
-                                  example: 0.0
-                                detention_vote_total:
-                                  title: Détention de droits de  vote total
-                                  type: number
-                                  example: 0.0
-                                detention_pouvoir_decision_ag:
-                                  title: Détention du pouvoir de décision en Assemblée
-                                    Générale
-                                  type: boolean
-                                  example: false
-                                detention_pouvoir_nommage_membres_conseil_admin:
-                                  title: Détention du pouvoir de nommage des membres
-                                    du conseil d'administration
-                                  type: boolean
-                                  example: false
-                                detention_autres_moyens_controle:
-                                  title: Détention d'autres moyens de contrôle
-                                  type: boolean
-                                  example: false
+                                detention_de_capital:
+                                  title: Détention de capital
+                                  description: Une personne physique est considérée
+                                    comme bénéficiaire effectif si elle possède directement
+                                    ou indirectement plus de 25 % du capital. Dans
+                                    ce cas, ce tableau dresse le détail de cette détention
+                                    de capital.
+                                  type: object
+                                  additionalProperties: false
+                                  properties:
+                                    parts_totale:
+                                      title: Total des parts détenues dans l'unité
+                                        légale
+                                      description: Pourcentage total du capital détenu
+                                        et déclaré par le bénéficiaire qui correspond
+                                        à la somme des parts directes et indirectes.
+                                        Ce total est soit égal à 0%, soit supérieur
+                                        ou égal à 25%. En effet, en dessous de ce
+                                        ratio, la personne physique ne déclare pas
+                                        son capital.
+                                      type: number
+                                      example: 51.0
+                                    parts_directes:
+                                      title: Parts directes
+                                      type: object
+                                      additionalProperties: false
+                                      properties:
+                                        detention:
+                                          title: Indique si le bénéficiaire détient
+                                            des parts directes.
+                                          description: Détermine si le bénéficiaire
+                                            possède du capital direct (parts sociales
+                                            ou actions) de l'unité légale. Par opposition
+                                            à une détention indirecte du capital,
+                                            via une personne morale.
+                                          type: boolean
+                                          example: true
+                                        pleine_propriete:
+                                          title: Proportion détenue en pleine propriété
+                                          description: 'Pourcentage de parts directes
+                                            détenues en pleine propriété.<br/>Plus
+                                            d''infos sur les différents des droits
+                                            sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                            nue-propriété, pleine propriété : quelles
+                                            différences ?</a>'
+                                          type: number
+                                          example: 42.0
+                                        nue_propriete:
+                                          title: Proportion détenue en nue-propriété
+                                          description: 'Pourcentage de parts directes
+                                            détenues en nue-propriété.<br/>Plus d''infos
+                                            sur les différents des droits sur un bien
+                                            sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                            nue-propriété, pleine propriété : quelles
+                                            différences ?</a>'
+                                          type: number
+                                          example: 9.0
+                                      required:
+                                      - detention
+                                      - pleine_propriete
+                                      - nue_propriete
+                                    parts_indirectes:
+                                      title: Parts indirectes
+                                      type: object
+                                      additionalProperties: false
+                                      properties:
+                                        detention:
+                                          title: Indique si le bénéficiaire détient
+                                            des parts indirectes
+                                          description: Détermine si le bénéficiaire
+                                            possède du capital (parts sociales ou
+                                            actions) de manière indirecte sur l'unité
+                                            légale, c'est-à-dire via une personne
+                                            morale.
+                                          type: boolean
+                                          example: false
+                                        par_indivision:
+                                          title: Via une indivision
+                                          description: 'Les parts indirectes peuvent
+                                            être détenues par le biais d''une indivision.
+                                            Après un décès, le patrimoine du défunt
+                                            est en indivision, s’il y a plusieurs
+                                            héritiers. Cela signifie que les biens
+                                            de la succession appartiennent indistinctement
+                                            à tous les héritiers sans que leurs parts
+                                            respectives ne soient matériellement individualisées.
+                                            Plus d''infos sur le lien suivant: <a
+                                            href="https://www.economie.gouv.fr/particuliers/heritage-succession-indivision">Succession
+                                            : qu''est-ce que l''indivision ?</a>'
+                                          type: object
+                                          additionalProperties: false
+                                          properties:
+                                            total:
+                                              title: Total des parts indirectes en
+                                                indivision
+                                              description: Pourcentage total de parts
+                                                indirectes détenues par le biais d'une
+                                                indivision.
+                                              type: number
+                                              example: 0.0
+                                            pleine_propriete:
+                                              title: Proportion détenue en pleine
+                                                propriété
+                                              description: 'Pourcentage de parts indirectes
+                                                en indivision détenues en pleine propriété.<br/>Plus
+                                                d''infos sur les différents des droits
+                                                sur un bien sur le lien suivant: <a
+                                                href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                                nue-propriété, pleine propriété :
+                                                quelles différences ?</a>'
+                                              type: number
+                                              example: 0.0
+                                            nue_propriete:
+                                              title: Proportion détenue en nue-propriété
+                                              description: 'Pourcentage de parts indirectes
+                                                en indivision détenues en nue-propriété.<br/>Plus
+                                                d''infos sur les différents des droits
+                                                sur un bien sur le lien suivant: <a
+                                                href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                                nue-propriété, pleine propriété :
+                                                quelles différences ?</a>'
+                                              type: number
+                                              example: 0.0
+                                          required:
+                                          - total
+                                          - pleine_propriete
+                                          - nue_propriete
+                                        via_personnes_morales:
+                                          title: Via une ou des personnes morales
+                                          description: Les parts indirectes peuvent
+                                            être détenues par le biais d'une ou de
+                                            plusieurs personnes morales intermédiaires.
+                                            Plus d'infos sur les différents mécanismes
+                                            de détention du capital dans <a href="https://entreprise.api.gouv.fr//catalogue/inpi/rne/beneficiaires_effectifs#faq_entry_answer_0_api_entreprise_endpoint_inpi_rne_beneficiaires_effectifs">cette
+                                            FAQ</a>.
+                                          type: object
+                                          additionalProperties: false
+                                          properties:
+                                            total:
+                                              title: Total des parts indirectes via
+                                                des personnes morales
+                                              description: Pourcentage total de parts
+                                                indirectes détenues par le biais d'une
+                                                ou de plusieurs personnes morales.
+                                              type: number
+                                              example: 0.0
+                                            pleine_propriete:
+                                              title: Proportion détenue en pleine
+                                                propriété
+                                              description: 'Pourcentage de parts indirectes
+                                                via une personne morale détenues en
+                                                pleine propriété.<br/>Plus d''infos
+                                                sur les différents des droits sur
+                                                un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                                nue-propriété, pleine propriété :
+                                                quelles différences ?</a>'
+                                              type: number
+                                              example: 0.0
+                                            nue_propriete:
+                                              title: Proportion détenue en nue-propriété
+                                              description: 'Pourcentage de parts indirectes
+                                                via une personne morale détenues en
+                                                nue-propriété.<br/>Plus d''infos sur
+                                                les différents des droits sur un bien
+                                                sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                                nue-propriété, pleine propriété :
+                                                quelles différences ?</a>'
+                                              type: number
+                                              example: 0.0
+                                          required:
+                                          - total
+                                          - pleine_propriete
+                                          - nue_propriete
+                                      required:
+                                      - detention
+                                      - par_indivision
+                                      - via_personnes_morales
+                                  required:
+                                  - parts_totale
+                                  - parts_directes
+                                  - parts_indirectes
+                                vocation_a_devenir_titulaire_de_parts:
+                                  title: Vocation par l’effet d’un acte juridique
+                                    à devenir titulaire de parts
+                                  description: Dans le cas d'un GIE ou GEIE (Groupements
+                                    d'intérêt économique), une personne physique est
+                                    considérée comme bénéficiaire effectif si elle
+                                    a vocation par l’effet d’un acte juridique à devenir
+                                    titulaire de plus de 25 % du capital. Dans ce
+                                    cas, ce tableau dresse le détail de cette future
+                                    détention de capital.
+                                  type: object
+                                  additionalProperties: false
+                                  properties:
+                                    parts_directes:
+                                      title: Parts directes
+                                      type: object
+                                      additionalProperties: false
+                                      properties:
+                                        pleine_propriete:
+                                          title: Proportion future détenue en pleine
+                                            propriété
+                                          description: 'Pourcentage de parts directes
+                                            qui ont vocation à être détenues en pleine
+                                            propriété.<br/>Plus d''infos sur les différents
+                                            des droits sur un bien sur le lien suivant:
+                                            <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                            nue-propriété, pleine propriété : quelles
+                                            différences ?</a>'
+                                          type: number
+                                          example: 0.0
+                                        nue_propriete:
+                                          title: Proportion future détenue en nue-propriété
+                                          description: 'Pourcentage de parts directes
+                                            qui ont vocation à être détenues en nue-propriété.<br/>Plus
+                                            d''infos sur les différents des droits
+                                            sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                            nue-propriété, pleine propriété : quelles
+                                            différences ?</a>'
+                                          type: number
+                                          example: 0.0
+                                      required:
+                                      - pleine_propriete
+                                      - nue_propriete
+                                    parts_indirectes:
+                                      title: Parts indirectes
+                                      type: object
+                                      additionalProperties: false
+                                      properties:
+                                        par_indivision:
+                                          title: Via une indivision
+                                          description: 'Les parts indirectes peuvent
+                                            être détenues par le biais d''une indivision.
+                                            Après un décès, le patrimoine du défunt
+                                            est en indivision, s’il y a plusieurs
+                                            héritiers. Cela signifie que les biens
+                                            de la succession appartiennent indistinctement
+                                            à tous les héritiers sans que leurs parts
+                                            respectives ne soient matériellement individualisées.
+                                            Plus d''infos sur le lien suivant: <a
+                                            href="https://www.economie.gouv.fr/particuliers/heritage-succession-indivision">Succession
+                                            : qu''est-ce que l''indivision ?</a>'
+                                          type: object
+                                          additionalProperties: false
+                                          properties:
+                                            total:
+                                              title: Total futur des parts indirectes
+                                                en indivision
+                                              description: Pourcentage total de parts
+                                                indirectes qui ont vocation à être
+                                                détenues par le biais d'une indivision.
+                                              type: number
+                                              example: 0.0
+                                            pleine_propriete:
+                                              title: Proportion future détenue en
+                                                pleine propriété
+                                              description: 'Pourcentage de parts indirectes
+                                                en indivision qui ont vocation à être
+                                                détenues en pleine propriété.<br/>Plus
+                                                d''infos sur les différents des droits
+                                                sur un bien sur le lien suivant: <a
+                                                href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                                nue-propriété, pleine propriété :
+                                                quelles différences ?</a>'
+                                              type: number
+                                              example: 0.0
+                                            nue_propriete:
+                                              title: Proportion future détenue en
+                                                nue-propriété
+                                              description: 'Pourcentage de parts indirectes
+                                                en indivision qui ont vocation à être
+                                                détenues en nue-propriété.<br/>Plus
+                                                d''infos sur les différents des droits
+                                                sur un bien sur le lien suivant: <a
+                                                href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                                nue-propriété, pleine propriété :
+                                                quelles différences ?</a>'
+                                              type: number
+                                              example: 0.0
+                                          required:
+                                          - total
+                                          - pleine_propriete
+                                          - nue_propriete
+                                        via_personnes_morales:
+                                          title: Via une ou des personnes morales
+                                          description: Les parts indirectes peuvent
+                                            être détenues par le biais d'une ou de
+                                            plusieurs personnes morales intermédiaires.
+                                            Plus d'infos sur les différents mécanismes
+                                            de détention du capital dans <a href="https://entreprise.api.gouv.fr//catalogue/inpi/rne/beneficiaires_effectifs#faq_entry_answer_0_api_entreprise_endpoint_inpi_rne_beneficiaires_effectifs">cette
+                                            FAQ</a>.
+                                          type: object
+                                          additionalProperties: false
+                                          properties:
+                                            total:
+                                              title: Total futur des parts indirectes
+                                                via des personnes morales
+                                              description: Pourcentage total de parts
+                                                indirectes qui ont vocation à être
+                                                détenues par le biais d'une ou de
+                                                plusieurs personnes morales.
+                                              type: number
+                                              example: 0.0
+                                            pleine_propriete:
+                                              title: Proportion future détenue en
+                                                pleine propriété
+                                              description: 'Pourcentage de parts indirectes
+                                                via une personne morale qui ont vocation
+                                                à être détenues en pleine propriété.<br/>Plus
+                                                d''infos sur les différents des droits
+                                                sur un bien sur le lien suivant: <a
+                                                href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                                nue-propriété, pleine propriété :
+                                                quelles différences ?</a>'
+                                              type: number
+                                              example: 0.0
+                                            nue_propriete:
+                                              title: Proportion future détenue en
+                                                nue-propriété
+                                              description: 'Pourcentage de parts indirectes
+                                                via une personne morale qui ont vocation
+                                                à être détenues en nue-propriété.<br/>Plus
+                                                d''infos sur les différents des droits
+                                                sur un bien sur le lien suivant: <a
+                                                href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                                nue-propriété, pleine propriété :
+                                                quelles différences ?</a>'
+                                              type: number
+                                              example: 0.0
+                                          required:
+                                          - total
+                                          - pleine_propriete
+                                          - nue_propriete
+                                      required:
+                                      - par_indivision
+                                      - via_personnes_morales
+                                  required:
+                                  - parts_directes
+                                  - parts_indirectes
+                                droits_de_vote:
+                                  title: Détention de droits de vote
+                                  description: Une personne physique est considérée
+                                    comme bénéficiaire effectif si elle possède directement
+                                    ou indirectement plus de 25 % des droits de vote
+                                    de la société. Dans ce cas, ce tableau dresse
+                                    le détail de cette détention de droit de vote.
+                                  type: object
+                                  additionalProperties: false
+                                  properties:
+                                    total:
+                                      title: Total des droits de vote détenus dans
+                                        l'unité légale
+                                      description: Pourcentage total des droits de
+                                        vote détenus et déclarés par le bénéficiaire
+                                        qui correspond à la somme des droits de vote
+                                        directs et indirects. Ce total est soit égal
+                                        à 0%, soit supérieur ou égal à 25%. En effet,
+                                        en dessous de ce ratio, la personne physique
+                                        ne déclare pas ses droits de vote.
+                                      type: number
+                                      example: 0.0
+                                    directes:
+                                      title: Droits de vote directs
+                                      type: object
+                                      additionalProperties: false
+                                      properties:
+                                        detention:
+                                          title: Indique si le bénéficiaire détient
+                                            des droits de vote directs.
+                                          description: Détermine si le bénéficiaire
+                                            possède des droits de vote directs dans
+                                            l'unité légale. Par opposition à une détention
+                                            indirecte des droits de vote, via une
+                                            personne morale.
+                                          type: boolean
+                                          example: true
+                                        pleine_propriete:
+                                          title: Proportion détenue en pleine propriété
+                                          description: 'Pourcentage de droits de vote
+                                            directs détenus en pleine propriété.<br/>Plus
+                                            d''infos sur les différents des droits
+                                            sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                            nue-propriété, pleine propriété : quelles
+                                            différences ?</a>'
+                                          type: number
+                                          example: 51.0
+                                        nue_propriete:
+                                          title: Proportion détenue en nue-propriété
+                                          description: 'Pourcentage de droits de vote
+                                            directs détenus en nue-propriété.<br/>Plus
+                                            d''infos sur les différents des droits
+                                            sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                            nue-propriété, pleine propriété : quelles
+                                            différences ?</a>'
+                                          type: number
+                                          example: 0.0
+                                        usufruit:
+                                          title: Proportion détenue en usufruit
+                                          description: 'Pourcentage de droits de vote
+                                            directs détenus en usufruit.<br/>Plus
+                                            d''infos sur les différents des droits
+                                            sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                            nue-propriété, pleine propriété : quelles
+                                            différences ?</a>'
+                                          type: number
+                                          example: 0.0
+                                      required:
+                                      - detention
+                                      - pleine_propriete
+                                      - nue_propriete
+                                      - usufruit
+                                    indirectes:
+                                      title: Droits de vote indirects
+                                      type: object
+                                      additionalProperties: false
+                                      properties:
+                                        detention:
+                                          title: Indique si le bénéficiaire détient
+                                            des droits de vote indirects
+                                          description: Détermine si le bénéficiaire
+                                            possède des droits de vote indirects dans
+                                            l'unité légale. Par opposition à une détention
+                                            indirecte des droits de vote, via une
+                                            personne morale.
+                                          type: boolean
+                                          example: false
+                                        par_indivision:
+                                          title: Via une indivision
+                                          description: 'Les droits de vote indirects
+                                            peuvent être détenus par le biais d''une
+                                            indivision. Plus d''infos sur le lien
+                                            suivant: <a href="https://www.economie.gouv.fr/particuliers/heritage-succession-indivision">Succession
+                                            : qu''est-ce que l''indivision ?</a>'
+                                          type: object
+                                          additionalProperties: false
+                                          properties:
+                                            total:
+                                              title: Total des droits de vote indirects
+                                                en indivision
+                                              description: Pourcentage total de droits
+                                                de vote indirects détenus par le biais
+                                                d'une indivision.
+                                              type: number
+                                              example: 0.0
+                                            pleine_propriete:
+                                              title: Proportion détenue en pleine
+                                                propriété
+                                              description: 'Pourcentage de droits
+                                                de vote indirects en indivision détenus
+                                                en pleine propriété.<br/>Plus d''infos
+                                                sur les différents des droits sur
+                                                un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                                nue-propriété, pleine propriété :
+                                                quelles différences ?</a>'
+                                              type: number
+                                              example: 0.0
+                                            nue_propriete:
+                                              title: Proportion détenue en nue-propriété
+                                              description: 'Pourcentage de droits
+                                                de vote indirects en indivision détenus
+                                                en nue-propriété.<br/>Plus d''infos
+                                                sur les différents des droits sur
+                                                un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                                nue-propriété, pleine propriété :
+                                                quelles différences ?</a>'
+                                              type: number
+                                              example: 0.0
+                                            usufruit:
+                                              title: Proportion détenue en usufruit
+                                              description: 'Pourcentage de droits
+                                                de vote indirects en indivision détenus
+                                                en usufruit.<br/>Plus d''infos sur
+                                                les différents des droits sur un bien
+                                                sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                                nue-propriété, pleine propriété :
+                                                quelles différences ?</a>'
+                                              type: number
+                                              example: 0.0
+                                          required:
+                                          - total
+                                          - pleine_propriete
+                                          - nue_propriete
+                                          - usufruit
+                                        via_personnes_morales:
+                                          title: Via une ou des personnes morales
+                                          description: Les droits de vote indirects
+                                            peuvent être détenus par le biais d'une
+                                            ou de plusieurs personnes morales intermédiaires.
+                                            Plus d'infos sur les différents mécanismes
+                                            de détention des droits de vote dans <a
+                                            href="https://entreprise.api.gouv.fr//catalogue/inpi/rne/beneficiaires_effectifs#faq_entry_answer_0_api_entreprise_endpoint_inpi_rne_beneficiaires_effectifs">cette
+                                            FAQ</a>.
+                                          type: object
+                                          additionalProperties: false
+                                          properties:
+                                            total:
+                                              title: Total des droits de vote indirects
+                                                via des personnes morales
+                                              description: Pourcentage total des droits
+                                                de vote indirects détenus par le biais
+                                                d'une ou de plusieurs personnes morales.
+                                              type: number
+                                              example: 0.0
+                                            pleine_propriete:
+                                              title: Proportion détenue en pleine
+                                                propriété
+                                              description: 'Pourcentage de droits
+                                                de vote indirects via une personne
+                                                morale détenus en pleine propriété.<br/>Plus
+                                                d''infos sur les différents des droits
+                                                sur un bien sur le lien suivant: <a
+                                                href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                                nue-propriété, pleine propriété :
+                                                quelles différences ?</a>'
+                                              type: number
+                                              example: 0.0
+                                            nue_propriete:
+                                              title: Proportion détenue en nue-propriété
+                                              description: 'Pourcentage de droits
+                                                de vote indirects via une personne
+                                                morale détenus en nue-propriété.<br/>Plus
+                                                d''infos sur les différents des droits
+                                                sur un bien sur le lien suivant: <a
+                                                href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                                nue-propriété, pleine propriété :
+                                                quelles différences ?</a>'
+                                              type: number
+                                              example: 0.0
+                                            usufruit:
+                                              title: Proportion détenue en usufruit
+                                              description: 'Pourcentage de droits
+                                                de vote indirects via une personne
+                                                morale détenus en usufruit.<br/>Plus
+                                                d''infos sur les différents des droits
+                                                sur un bien sur le lien suivant: <a
+                                                href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit,
+                                                nue-propriété, pleine propriété :
+                                                quelles différences ?</a>'
+                                              type: number
+                                              example: 0.0
+                                          required:
+                                          - total
+                                          - pleine_propriete
+                                          - nue_propriete
+                                          - usufruit
+                                      required:
+                                      - detention
+                                      - par_indivision
+                                      - via_personnes_morales
+                                  required:
+                                  - total
+                                  - directes
+                                  - indirectes
+                                pouvoirs_de_controle:
+                                  title: Pouvoirs de controle
+                                  description: Une personne physique est considérée
+                                    comme bénéficiaire effectif si elle possède un
+                                    pouvoir de contrôle sur les organes de gestion,
+                                    d'administration de la société ou sur l'assemblée
+                                    générale des associés. Dans ce cas, ce tableau
+                                    dresse le détail de cette détention de pouvoir.
+                                  type: object
+                                  additionalProperties: false
+                                  properties:
+                                    decision_ag:
+                                      title: Indique si le bénéficiaire détient du
+                                        pouvoir de décision en Assemblée Générale
+                                      type: boolean
+                                      example: false
+                                    nommage_membres_conseil_administratif:
+                                      title: Indique si le bénéficiaire détient du
+                                        pouvoir de nommage des membres du conseil
+                                        d'administration
+                                      type: boolean
+                                      example: false
+                                    autres:
+                                      title: Indique si le bénéficiaire détient d'autres
+                                        moyens de contrôle
+                                      type: boolean
+                                      example: false
+                                  required:
+                                  - decision_ag
+                                  - nommage_membres_conseil_administratif
+                                  - autres
                                 representant_legal:
-                                  title: Est-t'il représentant légal ?
+                                  title: Indique si le bénéficiaire est représentant
+                                    légal
                                   type: boolean
                                   example: false
-                                representant_legal_placement_sans_gestion_delegue:
-                                  title: Est-t'il représentant légal en placement
-                                    sans gestion délégué ?
+                                representant_legal_placement_sans_gestion_deleguee:
+                                  title: Indique si le bénéficiaire est représentant
+                                    légal en placement sans gestion déléguée
                                   type: boolean
                                   example: false
                               required:
-                              - detention_part_directe
-                              - parts_directes_pleine_propriete
-                              - parts_directes_nue_propriete
-                              - detention_part_indirecte
-                              - parts_indirectes_indivision
-                              - parts_indirectes_indivision_pleine_propriete
-                              - parts_indirectes_indivision_nue_propriete
-                              - parts_indirectes_personnes_morales
-                              - parts_indirectes_personnes_morales_pleine_propriete
-                              - parts_indirectes_personnes_morales_nue_propriete
-                              - detention_part_totale
-                              - detention_vote_directe
-                              - vote_directe_pleine_propriete
-                              - vote_directe_nue_propriete
-                              - vote_directe_usufruit
-                              - detention_vote_indirecte
-                              - vote_indirecte_indivision
-                              - vote_indirecte_indivision_pleine_propriete
-                              - vote_indirecte_indivision_nue_propriete
-                              - vote_indirecte_indivision_usufruit
-                              - vote_indirecte_personnes_morales
-                              - vote_indirecte_personnes_morales_pleine_propriete
-                              - vote_indirecte_personnes_morales_nue_propriete
-                              - vote_indirecte_personnes_morales_usufruit
-                              - vocation_titulaire_directe_pleine_propriete
-                              - vocation_titulaire_directe_nue_propriete
-                              - vocation_titulaire_indirecte_indivision
-                              - vocation_titulaire_indirecte_pleine_propriete
-                              - vocation_titulaire_indirecte_nue_propriete
-                              - vocation_titulaire_indirecte_personnes_morales
-                              - vocation_titulaire_indirecte_personnes_morales_pleine_propriete
-                              - vocation_titulaire_indirecte_personnes_morales_nue_propriete
-                              - detention_vote_total
-                              - detention_pouvoir_decision_ag
-                              - detention_pouvoir_nommage_membres_conseil_admin
-                              - detention_autres_moyens_controle
+                              - detention_de_capital
+                              - vocation_a_devenir_titulaire_de_parts
+                              - droits_de_vote
+                              - pouvoirs_de_controle
                               - representant_legal
-                              - representant_legal_placement_sans_gestion_delegue
+                              - representant_legal_placement_sans_gestion_deleguee
                           required:
                           - nom
                           - nom_usage
