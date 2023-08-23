@@ -1,6 +1,8 @@
 require 'securerandom'
 
 class ProxiedFileService
+  class ConnectionError < StandardError; end
+
   def self.set(key)
     new.set(key)
   end
@@ -38,5 +40,7 @@ class ProxiedFileService
 
   def backend
     RedisService.instance
+  rescue Redis::BaseConnectionError
+    raise ConnectionError
   end
 end
