@@ -9,6 +9,10 @@ class JwtUser
     '00000000-0000-0000-0000-000000000000'
   end
 
+  def self.france_connect_id
+    '11111111-1111-1111-1111-111111111111'
+  end
+
   def initialize(uid:, scopes:, jti:, iat:, exp: nil, blacklisted: false, siret: nil)
     @id = uid
     @scopes = scopes
