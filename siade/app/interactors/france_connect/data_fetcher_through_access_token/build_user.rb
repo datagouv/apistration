@@ -7,9 +7,9 @@ class FranceConnect::DataFetcherThroughAccessToken::BuildUser < ApplicationInter
 
   def build_user
     JwtUser.new(
-      uid: '99999999-9999-9999-9999-999999999999',
+      uid: '11111111-1111-1111-1111-111111111111',
       scopes:,
-      jti: '99999999-9999-9999-9999-999999999999',
+      jti: '11111111-1111-1111-1111-111111111111',
       iat: Time.new(2022, 1, 1).to_i,
       exp: Time.new(2042, 1, 1).to_i
     )
