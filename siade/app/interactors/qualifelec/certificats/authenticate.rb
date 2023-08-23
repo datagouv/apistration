@@ -5,8 +5,16 @@ class Qualifelec::Certificats::Authenticate < AbstractGetToken
     URI(Siade.credentials[:qualifelec_auth_url])
   end
 
-  def expires_in(_response)
-    3600
+  def expires_in(response)
+    token = access_token(response)
+
+    expires_at = decoded_jwt(token).first['exp']
+
+    expires_at - Time.zone.now.to_i
+  end
+
+  def decoded_jwt(token)
+    JWT.decode(token, nil, false, { algorithm: 'RS256' })
   end
 
   def access_token(response)

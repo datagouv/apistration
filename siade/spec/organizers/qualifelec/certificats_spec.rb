@@ -7,8 +7,6 @@ RSpec.describe Qualifelec::Certificats, type: :organizer do
     }
   end
 
-  let(:token) { 'SUPER TOKEN' }
-
   before do
     stub_qualifelec_auth_success
   end
