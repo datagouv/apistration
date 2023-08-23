@@ -1,0 +1,19 @@
+---
+description: 'GIP-MDS effectifs annuels entreprise 404'
+params:
+  siren: '000000000'
+  year: '2020'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "31003",
+        "title": "Entité non trouvée",
+        "detail": "L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.",
+        "meta": {
+          "provider": "GIP-MDS"
+        }
+      }
+    ]
+  }
