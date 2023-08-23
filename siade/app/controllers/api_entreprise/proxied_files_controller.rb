@@ -5,9 +5,7 @@ class APIEntreprise::ProxiedFilesController < ApplicationController
     url = ProxiedFileService.get(params[:uuid])
 
     if url
-      file = URI.parse(url).open
-
-      send_data file.binmode.read, filename: extract_filename(file, url), type: file.content_type
+      render_file(url)
     else
       head :not_found
     end
@@ -15,9 +13,19 @@ class APIEntreprise::ProxiedFilesController < ApplicationController
     raise unless e.io.status.include?('404')
 
     head :not_found
+  rescue ProxiedFileService::ConnectionError
+    head :service_unavailable
   end
 
   private
+
+  def render_file(url)
+    file = URI.parse(url).open
+
+    send_data file.binmode.read,
+      filename: extract_filename(file, url),
+      type: file.content_type
+  end
 
   def extract_filename(file, url)
     content_disposition = file.meta['content-disposition']

@@ -8,6 +8,14 @@ RSpec.describe APIEntreprise::ProxiedFilesController do
       it { is_expected.to have_http_status(:not_found) }
     end
 
+    context 'when backend raises a connection error' do
+      before do
+        allow(ProxiedFileService).to receive(:get).and_raise(ProxiedFileService::ConnectionError)
+      end
+
+      it { is_expected.to have_http_status(:service_unavailable) }
+    end
+
     context 'when document exists in backend' do
       before do
         allow(ProxiedFileService).to receive(:get).and_return('https://example.com/url.pdf')
