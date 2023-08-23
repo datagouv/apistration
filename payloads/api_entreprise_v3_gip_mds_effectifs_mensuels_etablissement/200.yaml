@@ -1,0 +1,66 @@
+---
+description: 'GIP-MDS effectifs mensuels établissement 200, avec profondeur'
+params:
+  siret: '13002526500013'
+  year: '2022'
+  month: '12'
+  profondeur: 2
+status: 200
+payload: |-
+  {
+    "data": {
+      "siret": "55203253400646",
+      "effectifs_mensuels": [
+        {
+          "regime": "regime_agricole",
+          "annee": "2022",
+          "mois": "12",
+          "nature": "effectif_moyen_mensuel",
+          "value": null,
+          "date_derniere_mise_a_jour": null
+        },
+        {
+          "regime": "regime_general",
+          "annee": "2022",
+          "mois": "12",
+          "nature": "effectif_moyen_mensuel",
+          "value": 12.66,
+          "date_derniere_mise_a_jour": "2023-07-10"
+        },
+        {
+          "regime": "regime_agricole",
+          "annee": "2022",
+          "mois": "11",
+          "nature": "effectif_moyen_mensuel",
+          "value": null,
+          "date_derniere_mise_a_jour": null
+        },
+        {
+          "regime": "regime_general",
+          "annee": "2022",
+          "mois": "11",
+          "nature": "effectif_moyen_mensuel",
+          "value": 13.86,
+          "date_derniere_mise_a_jour": "2023-07-10"
+        },
+        {
+          "regime": "regime_general",
+          "annee": "2022",
+          "mois": "10",
+          "nature": "effectif_moyen_mensuel",
+          "value": 14.21,
+          "date_derniere_mise_a_jour": "2023-07-10"
+        },
+        {
+          "regime": "regime_agricole",
+          "annee": "2022",
+          "mois": "10",
+          "nature": "effectif_moyen_mensuel",
+          "value": null,
+          "date_derniere_mise_a_jour": null
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }
