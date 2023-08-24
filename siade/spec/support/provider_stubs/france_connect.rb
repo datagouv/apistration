@@ -70,8 +70,8 @@ module ProviderStubs::FranceConnect
 
   def france_connect_client_attributes
     {
-      client_id: '8436aea4c123456789876543234567812d76e0a24f633f8642016a44a189cdfd',
-      client_name: 'Test app'
+      client_id: 'france_connect_client_id',
+      client_name: 'france_connect_client_name'
     }
   end
 end

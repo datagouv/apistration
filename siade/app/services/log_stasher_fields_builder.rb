@@ -46,7 +46,8 @@ class LogStasherFieldsBuilder
     fields[:api] = 'particulier'
     fields[:parameters] = filtered_params
 
-    add_hashed_attributes_for_logging
+    add_hashed_params_for_logging
+    add_france_connect_attributes_for_logging
 
     fields.delete(:parameters) if fields[:parameters].blank?
   end
@@ -71,14 +72,32 @@ class LogStasherFieldsBuilder
     @filtered_params ||= request.filtered_parameters.except('controller', 'action')
   end
 
-  def add_hashed_attributes_for_logging
-    bearer_token = bearer_token_from_headers
+  def add_hashed_params_for_logging
+    return if request.params.except(:controller, :action).blank?
 
-    if bearer_token.present?
-      add_param_field(:hashed_france_connect_token, hashed_for_logs(bearer_token))
-    elsif request.params.except(:controller, :action).present?
-      add_param_field(:hashed_params, hashed_for_logs(request.params.except(:controller, :action).to_json))
-    end
+    add_param_field(:hashed_params, hashed_for_logs(request.params.except(:controller, :action).to_json))
+  end
+
+  def add_france_connect_attributes_for_logging
+    return unless france_connectable? && controller.france_connect_organizer.success?
+
+    add_param_field(:hashed_france_connect_token, hashed_for_logs(bearer_token_from_headers))
+    add_param_field(:france_connect_client, extract_france_connect_client_infos_from_organizer)
+  end
+
+  def france_connectable?
+    controller.class.included_modules.include?(APIParticulier::FranceConnectable) &&
+      bearer_token_from_headers.present?
+  end
+
+  def extract_france_connect_client_infos_from_organizer
+    france_connect_http_response = controller.france_connect_organizer.response
+    france_connect_check_token_payload = JSON.parse(france_connect_http_response.body)
+
+    {
+      id: france_connect_check_token_payload['client']['client_id'],
+      name: france_connect_check_token_payload['client']['client_name']
+    }
   end
 
   def add_param_field(key, value)

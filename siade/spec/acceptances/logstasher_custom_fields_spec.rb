@@ -159,6 +159,22 @@ RSpec.describe 'logstasher custom fields', type: :controller do
 
         make_call
       end
+
+      it 'adds france_connect_client to params' do
+        expect(LogStasher).to receive(:build_logstash_event).with(
+          hash_including(
+            parameters: hash_including(
+              france_connect_client: {
+                id: 'france_connect_client_id',
+                name: 'france_connect_client_name'
+              }
+            )
+          ),
+          anything
+        )
+
+        make_call
+      end
     end
   end
 
