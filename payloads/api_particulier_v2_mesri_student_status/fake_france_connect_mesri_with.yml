@@ -1,8 +1,8 @@
 ---
 description: 'FranceConnect: étudiant inscrit'
 params:
-  prenom: "Jean"
-  nom: "MESRI"
+  given_name: "Jean"
+  family_name: "MESRI"
   birthdate: "2002-01-01"
   gender: "male"
   birthplace: "75002"
