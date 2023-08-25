@@ -232,8 +232,8 @@
 
   ```json
   {
-    "prenom": "Jean",
-    "nom": "MESRI",
+    "given_name": "Jean",
+    "family_name": "MESRI",
     "birthdate": "2002-01-01",
     "gender": "male",
     "birthplace": "75002"
@@ -276,7 +276,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'prenom=Jean' -d 'nom=MESRI' -d 'birthdate=2002-01-01' -d 'gender=male' -d 'birthplace=75002' \
+    -G -d 'given_name=Jean' -d 'family_name=MESRI' -d 'birthdate=2002-01-01' -d 'gender=male' -d 'birthplace=75002' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
   ```
 
@@ -293,8 +293,8 @@
 
   ```json
   {
-    "prenom": "Angela Claire Louise",
-    "nom": "DUBOIS",
+    "given_name": "Angela Claire Louise",
+    "family_name": "DUBOIS",
     "birthdate": "1962-08-24",
     "gender": "female",
     "birthplace": "75107"
@@ -337,7 +337,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'prenom=Angela+Claire+Louise' -d 'nom=DUBOIS' -d 'birthdate=1962-08-24' -d 'gender=female' -d 'birthplace=75107' \
+    -G -d 'given_name=Angela+Claire+Louise' -d 'family_name=DUBOIS' -d 'birthdate=1962-08-24' -d 'gender=female' -d 'birthplace=75107' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
   ```
 

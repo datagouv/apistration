@@ -397,7 +397,9 @@
     "birthdate": "1962-08-24",
     "gender": "female",
     "birthplace": "75107",
-    "birthcountry": "99100"
+    "birthcountry": "99100",
+    "preferred_username": "",
+    "sub": "b6048e95bb134ec5b1d1e1fa69f287172e91722b9354d637a1bcf2ebb0fd2ef5v1"
   }
   ```
 
@@ -435,7 +437,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'given_name=Angela+Claire+Louise' -d 'family_name=DUBOIS' -d 'birthdate=1962-08-24' -d 'gender=female' -d 'birthplace=75107' -d 'birthcountry=99100' \
+    -G -d 'given_name=Angela+Claire+Louise' -d 'family_name=DUBOIS' -d 'birthdate=1962-08-24' -d 'gender=female' -d 'birthplace=75107' -d 'birthcountry=99100' -d 'preferred_username=' -d 'sub=b6048e95bb134ec5b1d1e1fa69f287172e91722b9354d637a1bcf2ebb0fd2ef5v1' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
   ```
 
