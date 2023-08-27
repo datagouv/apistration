@@ -2272,59 +2272,6 @@ paths:
           example: 'api/v3/entreprises_restored'
       responses: *default_responses
 
-  /v2/eori_douanes/{siret_or_eori}:
-    get:
-      tags:
-        - *tag_general
-      summary: "[Douanes] Import/export en Union Européenne: savoir si une entreprise possède un numéro EORI actif"
-      description: "<a href='https://entreprise.api.gouv.fr/catalogue/#eori_douanes'>Documentation métier</a>"
-      parameters:
-        - $ref: '#/components/parameters/SiretOrEORI'
-        - $ref: '#/components/parameters/Context'
-        - $ref: '#/components/parameters/Recipient'
-        - $ref: '#/components/parameters/Object'
-      responses:
-       '200':
-          x-operationId: 'api_entreprise_v2_eori_douanes'
-          description: 'OK'
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                    actif:
-                        description: Ce champ permet de savoir si le numéro EORI est encore actif ou non.
-                        example: true
-                        type: boolean
-                    code_pays:
-                        description: Code pays sur 2 caractères
-                        example: FR
-                        type: string
-                    code_postal:
-                        description: Code postal
-                        example: '95520'
-                        type: string
-                    numero_eori:
-                        description: Numéro EORI
-                        example: FR16002307300010
-                        type: string
-                    raison_sociale:
-                        description: Raison sociale
-                        example: CENTRE INFORMATIQUE DOUANIER
-                        type: string
-                    pays:
-                        description: Pays (en majuscule)
-                        example: FRANCE
-                        type: string
-                    rue:
-                        description: Numéro et rue
-                        example: 27 R DES BEAUX SOLEILS
-                        type: string
-                    ville:
-                        description: Ville
-                        example: OSNY
-                        type: string
-
 components:
   parameters:
     Context:

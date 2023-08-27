@@ -50,9 +50,6 @@ shared:
   api_entreprise/v2/entreprises_restored:
     - entreprises
     - unites_legales_etablissements_insee
-  api_entreprise/v2/eori_douanes:
-    - eori_douanes
-    - open_data
   api_entreprise/v2/etablissements_restored:
     - etablissements
     - unites_legales_etablissements_insee
@@ -198,7 +195,7 @@ shared:
     - cnaf_allocataires
     - cnaf_enfants
     - cnaf_adresse
-  api_particulier/v2/cnaf/complementaire_sante_solidaire: 
+  api_particulier/v2/cnaf/complementaire_sante_solidaire:
     - complementaire_sante_solidaire
   api_particulier/v2/cnous/student_scholarship:
     - cnous_statut_boursier

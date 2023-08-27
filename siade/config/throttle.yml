@@ -40,7 +40,6 @@ shared:
       - { controller: 'api_entreprise/v2/extraits_courts_inpi', action: 'show' }
       - { controller: 'api_entreprise/v2/bilans_entreprises_bdf', action: 'show' }
       - { controller: 'api_entreprise/v2/entreprises_restored', action: 'show' }
-      - { controller: 'api_entreprise/v2/eori_douanes', action: 'show' }
       - { controller: 'api_entreprise/v2/effectifs_annuels_entreprise_acoss_covid', action: 'show' }
       - { controller: 'api_entreprise/v2/effectifs_mensuels_etablissement_acoss_covid', action: 'show' }
 

@@ -41,7 +41,6 @@ RSpec.describe 'Mocking in staging for each routes' do
       /v2/bilans_entreprises_bdf/000
       /v2/entreprises/000
       /v2/etablissements/000
-      /v2/eori_douanes/:siret_or_eori
     ].each do |path|
       it "works for #{path}" do
         get path, params: { token: yes_jwt }.merge(mandatory_params)

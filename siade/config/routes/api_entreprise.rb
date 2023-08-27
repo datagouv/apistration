@@ -48,8 +48,6 @@ namespace :v2, constraints: APIEntrepriseDomainConstraint.new  do
   get 'entreprises/:siren'                                => '/api_entreprise/v2/entreprises_restored#show'
   get 'etablissements/:siret'                             => '/api_entreprise/v2/etablissements_restored#show'
 
-  get 'eori_douanes/:siret_or_eori'                       => '/api_entreprise/v2/eori_douanes#show'
-
   get 'openapi.yaml', to: ->(env) { [200, {}, [File.read(Rails.root.join('public/v2/open-api.yml'))]] }
 end
 
