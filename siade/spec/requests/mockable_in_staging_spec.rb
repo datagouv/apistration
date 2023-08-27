@@ -37,7 +37,6 @@ RSpec.describe 'Mocking in staging for each routes' do
       /v2/documents_associations/:id
       /v2/certificats_cnetp/000
       /v2/certificats_rge_ademe/000
-      /v2/extraits_courts_inpi/000
       /v2/bilans_entreprises_bdf/000
       /v2/entreprises/000
       /v2/etablissements/000

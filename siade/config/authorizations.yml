@@ -56,9 +56,6 @@ shared:
   api_entreprise/v2/exercices:
     - exercices
     - chiffre_affaires_dgfip
-  api_entreprise/v2/extraits_courts_inpi:
-    - extrait_court_inpi
-    - open_data
   api_entreprise/v2/extraits_rcs_infogreffe:
     - extraits_rcs
     - open_data
