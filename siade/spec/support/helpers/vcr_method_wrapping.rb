@@ -16,5 +16,3 @@ end
 # TODO: SHould wrap all drivers perform // call to requests
 
 wrap_with_vcr(SIADE::V2::Drivers::Infogreffe, :perform_request, proc { |siren| "infogreffe_soap_call_siren#{siren}" }, :siren)
-
-wrap_with_vcr(SIADE::V2::Drivers::CotisationsMSA, :response, proc { |siret| "msa_webservice_rest_siret_call_#{siret}" }, :siret)

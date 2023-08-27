@@ -30,7 +30,6 @@ shared:
     endpoints:
       - { controller: 'api_entreprise/v2/etablissements_restored', action: 'show' }
       - { controller: 'api_entreprise/v2/exercices', action: 'show' }
-      - { controller: 'api_entreprise/v2/cotisations_msa', action: 'show' }
       - { controller: 'api_entreprise/v2/liasses_fiscales_complete_dgfip', action: 'show' }
       - { controller: 'api_entreprise/v2/liasses_fiscales_dictionaries_dgfip', action: 'show' }
       - { controller: 'api_entreprise/v2/liasses_fiscales_dgfip', action: 'show' }

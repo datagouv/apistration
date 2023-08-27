@@ -11,8 +11,6 @@ namespace :v2, constraints: APIEntrepriseDomainConstraint.new  do
 
   get 'exercices/:siret'                                  => '/api_entreprise/v2/exercices#show'
 
-  get 'cotisations_msa/:siret'                            => '/api_entreprise/v2/cotisations_msa#show'
-
   get 'cartes_professionnelles_fntp/:siren'               => '/api_entreprise/v2/cartes_professionnelles_fntp#show'
 
   get 'certificats_opqibi/:siren'                         => '/api_entreprise/v2/certificats_opqibi#show'
