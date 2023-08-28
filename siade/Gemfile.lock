@@ -51,7 +51,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    addressable (2.8.4)
+    addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     afm (0.2.2)
     ammeter (1.1.5)
@@ -357,7 +357,7 @@ GEM
     utf8-cleaner (1.0.0)
       activesupport
     vcr (6.2.0)
-    webmock (3.18.1)
+    webmock (3.19.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -428,7 +428,7 @@ DEPENDENCIES
   unindent
   utf8-cleaner
   vcr
-  webmock (~> 3.18)
+  webmock (~> 3.19)
   xml-simple
 
 BUNDLED WITH
