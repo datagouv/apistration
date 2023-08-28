@@ -293,7 +293,7 @@
 
   ```json
   {
-    "given_name": "Angela Claire Louise",
+    "given_name": "Angela",
     "family_name": "DUBOIS",
     "birthdate": "1962-08-24",
     "gender": "female",
@@ -337,7 +337,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'given_name=Angela+Claire+Louise' -d 'family_name=DUBOIS' -d 'birthdate=1962-08-24' -d 'gender=female' -d 'birthplace=75107' \
+    -G -d 'given_name=Angela' -d 'family_name=DUBOIS' -d 'birthdate=1962-08-24' -d 'gender=female' -d 'birthplace=75107' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
   ```
 
