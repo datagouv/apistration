@@ -1,7 +1,7 @@
 ---
 description: 'FranceConnect: étudiant inscrit'
 params:
-  given_name: "Angela Claire Louise"
+  given_name: "Angela"
   family_name: "DUBOIS"
   birthdate: "1962-08-24"
   gender: "female"
