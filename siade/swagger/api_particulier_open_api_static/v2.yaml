@@ -296,7 +296,7 @@ paths:
 
   /api/v2/composition-familiale:
     get:
-      summary: Quotient familial CAF
+      summary: Quotient familial (CAF)
       description: >-
         Quotient familial et composition de la famille d'un allocataire de la Caisse nationale des allocations familiales (CNAF). Attention, le quotient familial de la CAF n'a rien à voir avec le quotient familial fiscal utilisé pour le calcul de l'impôt sur le revenu
 
@@ -323,7 +323,7 @@ paths:
             format: string
             example: 75001
       tags:
-        - Situation CAF
+        - Quotient familial
       responses:
         "200":
           x-operationId: api_particulier_v2_cnaf_quotient_familial

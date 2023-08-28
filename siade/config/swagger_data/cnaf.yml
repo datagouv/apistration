@@ -8,7 +8,7 @@ cnaf:
     **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)
     "
     tags:
-      - Cnaf
+      - Complementaire Sante Solidaire
     parameters:
       nomUsage:
         type: "string"
@@ -91,15 +91,15 @@ cnaf:
         Ce champs sera null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
         example: '1993-11-29'
   quotient-familial-v2:
-    title: Quotient familial CAF & MSA
-    description: "Quotient familial et composition de la famille d'un allocataire du régime général et du régime agricole.
+    title: Quotient familial MSA & CAF 
+    description: "Quotient familial et composition de la famille d'un allocataire du régime agricole (régime général à venir).
     \n
     Pour de plus amples informations sur cette api et y avoir accès en avant première, veuillez contacter l'équipe API Particulier.
     \n
     **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial_v2)
     "
     tags:
-      - Cnaf
+      - Quotient familial
     parameters:
       nomUsage:
         type: "string"

@@ -59,7 +59,7 @@ paths:
     get:
       summary: Complémentaire santé solidaire
       tags:
-      - Cnaf
+      - Complementaire Sante Solidaire
       parameters:
       - name: X-Api-Key
         in: header
@@ -146,7 +146,7 @@ paths:
         required: true
         example: M
       description: "Quotient familial et composition de la famille d'un allocataire
-        du régime général et du régime agricole. \n Pour de plus amples informations
+        du régime agricole (régime général à venir). \n Pour de plus amples informations
         sur cette api et y avoir accès en avant première, veuillez contacter l'équipe
         API Particulier. \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial_v2) "
       responses:
@@ -405,9 +405,9 @@ paths:
                 "$ref": "#/components/schemas/Error"
   "/api/v2/composition-familiale-v2":
     get:
-      summary: Quotient familial CAF & MSA
+      summary: Quotient familial MSA & CAF
       tags:
-      - Cnaf
+      - Quotient familial
       parameters:
       - name: X-Api-Key
         in: header
@@ -510,7 +510,7 @@ paths:
         schema:
           type: integer
       description: "Quotient familial et composition de la famille d'un allocataire
-        du régime général et du régime agricole. \n Pour de plus amples informations
+        du régime agricole (régime général à venir). \n Pour de plus amples informations
         sur cette api et y avoir accès en avant première, veuillez contacter l'équipe
         API Particulier. \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial_v2) "
       responses:
@@ -1343,7 +1343,7 @@ paths:
                       d'un trop grand nombre d'échecs antérieurs.
   "/api/v2/composition-familiale":
     get:
-      summary: Quotient familial CAF
+      summary: Quotient familial (CAF)
       description: |-
         Quotient familial et composition de la famille d'un allocataire de la Caisse nationale des allocations familiales (CNAF). Attention, le quotient familial de la CAF n'a rien à voir avec le quotient familial fiscal utilisé pour le calcul de l'impôt sur le revenu
 
@@ -1371,7 +1371,7 @@ paths:
           format: string
           example: 75001
       tags:
-      - Situation CAF
+      - Quotient familial
       responses:
         '200':
           x-operationId: api_particulier_v2_cnaf_quotient_familial
