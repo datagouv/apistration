@@ -16,7 +16,7 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
       birthplace:,
       birthcountry:,
       preferred_username:
-    }.to_json
+    }
   end
 
   def request_params
