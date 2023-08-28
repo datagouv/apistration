@@ -134,7 +134,7 @@ RSpec.describe 'logstasher custom fields', type: :controller do
 
     define_dummy_controller(APIParticulier::V2::DummyFranceConnectedController)
 
-    describe 'with FranceConnect bearer token' do
+    describe 'with valid FranceConnect bearer token' do
       subject(:make_call) do
         request.headers['Authorization'] = "Bearer #{token}"
 
@@ -169,6 +169,40 @@ RSpec.describe 'logstasher custom fields', type: :controller do
                 name: 'france_connect_client_name'
               }
             )
+          ),
+          anything
+        )
+
+        make_call
+      end
+    end
+
+    describe 'when it is in staging, with a mocked payload available' do
+      subject(:make_call) do
+        request.headers['Authorization'] = "Bearer #{token}"
+
+        get :index
+      end
+
+      let(:token) { 'token' }
+
+      before do
+        allow(Rails.env).to receive_messages(env: 'staging', staging?: true)
+
+        mock_invalid_france_connect_checktoken
+
+        allow(MockDataBackend).to receive(:get_response_for).with('france_connect', anything).and_return(
+          {
+            status: 200,
+            payload: france_connect_checktoken_payload(scopes: ['allowed_scope']).stringify_keys
+          }
+        )
+      end
+
+      it 'does not add france_connect_client to params' do
+        expect(LogStasher).to receive(:build_logstash_event).with(
+          hash_not_including(
+            parameters: anything
           ),
           anything
         )

@@ -79,10 +79,16 @@ class LogStasherFieldsBuilder
   end
 
   def add_france_connect_attributes_for_logging
-    return unless france_connectable? && controller.france_connect_organizer.success?
+    return unless from_france_connect?
 
     add_param_field(:hashed_france_connect_token, hashed_for_logs(bearer_token_from_headers))
     add_param_field(:france_connect_client, extract_france_connect_client_infos_from_organizer)
+  end
+
+  def from_france_connect?
+    france_connectable? &&
+      controller.france_connect_organizer.success? &&
+      controller.france_connect_organizer.mocked_data.blank?
   end
 
   def france_connectable?
