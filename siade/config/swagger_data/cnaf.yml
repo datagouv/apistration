@@ -8,7 +8,7 @@ cnaf:
     **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)
     "
     tags:
-      - Prochainement
+      - Cnaf
     parameters:
       nomUsage:
         type: "string"
@@ -99,7 +99,7 @@ cnaf:
     **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial_v2)
     "
     tags:
-      - Prochainement
+      - Cnaf
     parameters:
       nomUsage:
         type: "string"
