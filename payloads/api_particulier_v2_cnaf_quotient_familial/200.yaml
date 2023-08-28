@@ -39,7 +39,7 @@ payload: |-
       "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
       "numeroRue": "42 RUE DE LA PAIX",
       "lieuDit": "ILOTS DES OISEAUX",
-      "codePostalVille": "75002 PARIS",
+      "codePostalVille": "75001 PARIS",
       "pays": "FRANCE"
     }
   }
