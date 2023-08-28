@@ -4,12 +4,10 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
   protected
 
   def request_body
-    return request_body_mocking_params if Rails.env.staging?
-
     context.params.to_json
   end
 
-  def request_body_mocking_params
+  def mocking_params
     {
       given_name:,
       family_name:,
