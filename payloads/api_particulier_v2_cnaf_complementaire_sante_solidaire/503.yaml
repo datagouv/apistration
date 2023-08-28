@@ -1,7 +1,8 @@
 ---
 description: "Timeout - délai d'attente dépassé"
 params:
-  codePaysLieuDeNaissance: '99503'
+  codeInseeLieuDeNaissance: '00503'
+  codePaysLieuDeNaissance: '99100'
   sexe: F
 status: 503
 payload: |-

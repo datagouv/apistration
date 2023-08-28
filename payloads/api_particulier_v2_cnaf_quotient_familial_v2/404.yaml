@@ -1,7 +1,8 @@
 ---
 description: "Dossier non trouvé"
 params:
-  codePaysLieuDeNaissance: '99404'
+  codeInseeLieuDeNaissance: '00404'
+  codePaysLieuDeNaissance: '99100'
   sexe: 'F'
 status: 404
 payload: |-

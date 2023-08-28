@@ -75,7 +75,7 @@ Ce cas permet de tester :
   ```json
   {
     "codeInseeLieuDeNaissance": "08480",
-    "codePaysLieuDeNaissance": "99001",
+    "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
     "nomUsage": "ROUX",
     "prenoms": [
@@ -161,7 +161,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99001' -d 'sexe=F' -d 'nomUsage=ROUX' -d 'prenoms[]=JEANNE' -d 'prenoms[]=STEPHANIE' -d 'anneeDateDeNaissance=1987' -d 'moisDateDeNaissance=6' -d 'annee=2023' -d 'mois=5' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=ROUX' -d 'prenoms[]=JEANNE' -d 'prenoms[]=STEPHANIE' -d 'anneeDateDeNaissance=1987' -d 'moisDateDeNaissance=6' -d 'annee=2023' -d 'mois=5' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -185,7 +185,7 @@ Ce cas permet de tester :
   ```json
   {
     "codeInseeLieuDeNaissance": "08480",
-    "codePaysLieuDeNaissance": "99001",
+    "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
     "nomUsage": "BERNARD",
     "prenoms": [
@@ -250,7 +250,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99001' -d 'sexe=F' -d 'nomUsage=BERNARD' -d 'prenoms[]=ELODIE' -d 'anneeDateDeNaissance=1990' -d 'moisDateDeNaissance=3' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=BERNARD' -d 'prenoms[]=ELODIE' -d 'anneeDateDeNaissance=1990' -d 'moisDateDeNaissance=3' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -275,7 +275,7 @@ Ce cas permet de tester :
   ```json
   {
     "codeInseeLieuDeNaissance": "08480",
-    "codePaysLieuDeNaissance": "99001",
+    "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
     "nomUsage": "LEFEBVRE",
     "prenoms": [
@@ -332,7 +332,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99001' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -349,7 +349,8 @@ Ce cas permet de tester :
 
   ```json
   {
-    "codePaysLieuDeNaissance": "99404",
+    "codeInseeLieuDeNaissance": "00404",
+    "codePaysLieuDeNaissance": "99100",
     "sexe": "F"
   }
   ```
@@ -376,7 +377,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99404' -d 'sexe=F' \
+    -G -d 'codeInseeLieuDeNaissance=00404' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -393,7 +394,8 @@ Ce cas permet de tester :
 
   ```json
   {
-    "codePaysLieuDeNaissance": "99503",
+    "codeInseeLieuDeNaissance": "00503",
+    "codePaysLieuDeNaissance": "99100",
     "sexe": "F"
   }
   ```
@@ -420,7 +422,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99503' -d 'sexe=F' \
+    -G -d 'codeInseeLieuDeNaissance=00503' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
