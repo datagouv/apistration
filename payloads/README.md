@@ -40,7 +40,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * Brevets déposés (`/v3/inpi/unites_legales/{siren}/brevets`)
 * Marques déposées (`/v3/inpi/unites_legales/{siren}/marques`)
 * Modèles déposés (`/v3/inpi/unites_legales/{siren}/modeles`)
-* Bénéficiaires effectifs (`/v3/inpi/rne/unites_legales/open_data/{siren}/beneficiaires_effectifs`)
+* [Bénéficiaires effectifs](api_entreprise_v3_inpi_rne_beneficiaires_effectifs) (`/v3/inpi/rne/unites_legales/open_data/{siren}/beneficiaires_effectifs`)
 * [Adresse établissement](api_entreprise_v3_insee_adresses_etablissements) (`/v3/insee/sirene/etablissements/{siret}/adresse`)
 * [Adresse établissement diffusible](api_entreprise_v3_insee_adresses_etablissements_diffusables) (`/v3/insee/sirene/etablissements/diffusibles/{siret}/adresse`)
 * [Données établissement](api_entreprise_v3_insee_etablissements) (`/v3/insee/sirene/etablissements/{siret}`)
