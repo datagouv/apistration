@@ -2,7 +2,7 @@ gip_mds:
   effectifs_annuels_entreprise:
     title: "Effectifs annuels d'une unité légale"
     tags:
-      - Prochainement
+      - "Informations générales"
     description: "Effectifs annuels des régimes général et agricole d'une unité légale, issus du répertoire commun des déclarants (RCD)."
     attributes:
       siren:
@@ -51,7 +51,7 @@ gip_mds:
   effectifs_mensuels_etablissement:
     title: "Effectifs mensuels d'un établissement"
     tags:
-      - Prochainement
+      - "Informations générales"
     description: "Effectifs mensuels des régimes général et agricole d'un établissement, issus du répertoire commun des déclarants (RCD)."
     parameters:
       profondeur:
