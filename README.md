@@ -142,6 +142,17 @@ de données correspondant.
 Il est possible d'utiliser directement le service d'integration de FranceConnect et d'envoyer sur nos serveur en staging un jeton FranceConnect valide.
 Dans ce cas nous allons directement appeler le fournisseur de données avec l'identité pivot renvoyée par FranceConnect. Vous pouvez accédez à l'ensemble des identifiant valide sur le [dépot de FranceConnect](https://github.com/france-connect/identity-provider-example/blob/master/database.csv).
 
+Afin que l'environnement d'intégration fonctionne il est impératif de demander les scopes relatifs à l'identité pivot lors de votre authentification auprès de FranceConnect. Les scopes obligatoires sont : 
+- given_name 
+- family_name 
+- birthdate 
+- gender
+- birthplace 
+- birthcountry
+- preferred_username
+
+Il est possible d'utiliser les alias de scope tel que précisé dans la documentation de [FranceConnect](https://partenaires.franceconnect.gouv.fr/fcp/fournisseur-service#identite-pivot).
+
 À noter que seuls certaines identités sont prises en compte dans les cas de test, le plus souvent la première de la liste (Angela DUBOIS). S'il n'y a pas de cas de test, vous recevrez la réponse générique tel que défini dans les fichiers swagger de l'api.
 
 Si vous souhaitez ajouter des cas de test, merci de vous réferrez à la section [contribution](#contribution).
