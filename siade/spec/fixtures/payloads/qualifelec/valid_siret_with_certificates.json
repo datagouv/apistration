@@ -42,12 +42,12 @@
         "code": "CF2"
       }
     ],
-    "assurance_decenale": "AXA",
-    "assurance_decenale_start_date": 1665612000,
-    "assurance_decenale_end_date": 1824847200,
-    "assurance_civile": "ALLIANZ IARD",
-    "assurance_civile_start_date": 1665612000,
-    "assurance_civile_end_date": 1824847200
+    "decennial_insurance": "AXA",
+    "decennial_insurance_start_date": null,
+    "decennial_insurance_end_date": null,
+    "liability_insurance": "ALLIANZ IARD",
+    "liability_insurance_start_date": null,
+    "liability_insurance_end_date": null
   },
   {
     "url": "https:\/\/pp.qualifelec.fr\/certifmoteur\/4\/32463.pdf",
@@ -75,11 +75,11 @@
       }
     ],
     "domains": [],
-    "assurance_decenale": "AXE",
-    "assurance_decenale_start_date": 1665612000,
-    "assurance_decenale_end_date": 1824847200,
-    "assurance_civile": "DEODEBA",
-    "assurance_civile_start_date": 1665612000,
-    "assurance_civile_end_date": 1824847200
+    "decennial_insurance": "AXE",
+    "decennial_insurance_start_date": 1665612000,
+    "decennial_insurance_end_date": 1824847200,
+    "liability_insurance": "DEODEBA",
+    "liability_insurance_start_date": 1665612000,
+    "liability_insurance_end_date": 1824847200
   }
 ]

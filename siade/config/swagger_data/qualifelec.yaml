@@ -150,12 +150,14 @@ qualifelec:
             type: string
             format: date
             description: "Date de début de validité de l’attestation d’assurance décennale"
+            nullable: true
             example: '2024-01-31'
           date_fin:
             title: "Date de fin de validité"
             type: string
             format: date
             description: "Date de fin de validité de l’attestation d’assurance décennale"
+            nullable: true
             example: '2024-12-31'
       assurance_civile:
         title: "Assurance civile vérifiée au moment de l'édition du certificat"
@@ -172,10 +174,12 @@ qualifelec:
             type: string
             format: date
             description: "Date de début de validité de l’attestation d’assurance responsabilité civile"
+            nullable: true
             example: '2024-01-31'
           date_fin:
             title: "Date de fin de validité"
             type: string
             format: date
             description: "Date de fin de validité de l’attestation d’assurance responsabilité civile"
+            nullable: true
             example: '2024-12-31'

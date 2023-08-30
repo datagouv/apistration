@@ -51,13 +51,13 @@ RSpec.describe Qualifelec::Certificats::BuildResourceCollection, type: :build_re
         },
         assurance_decennale: {
           nom: 'AXA',
-          date_debut: '2022-10-13',
-          date_fin: '2027-10-30'
+          date_debut: nil,
+          date_fin: nil
         },
         assurance_civile: {
           nom: 'ALLIANZ IARD',
-          date_debut: '2022-10-13',
-          date_fin: '2027-10-30'
+          date_debut: nil,
+          date_fin: nil
         }
       },
       {

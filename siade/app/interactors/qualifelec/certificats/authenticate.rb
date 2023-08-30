@@ -21,7 +21,7 @@ class Qualifelec::Certificats::Authenticate < AbstractGetToken
     JSON.parse(response.body)['token']
   end
 
-  def form_data
+  def request_params
     {
       username: qualifelec_username,
       password: qualifelec_password

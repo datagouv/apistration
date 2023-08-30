@@ -27,14 +27,14 @@ class Qualifelec::Certificats::BuildResourceCollection < BuildResourceCollection
         }
       },
       assurance_decennale: {
-        nom: item['assurance_decenale'],
-        date_debut: normalized_date(timestamp_to_time(item['assurance_decenale_start_date'])),
-        date_fin: normalized_date(timestamp_to_time(item['assurance_decenale_end_date']))
+        nom: item['decennial_insurance'],
+        date_debut: normalized_date(timestamp_to_time(item['decennial_insurance_start_date'])),
+        date_fin: normalized_date(timestamp_to_time(item['decennial_insurance_end_date']))
       },
       assurance_civile: {
-        nom: item['assurance_civile'],
-        date_debut: normalized_date(timestamp_to_time(item['assurance_civile_start_date'])),
-        date_fin: normalized_date(timestamp_to_time(item['assurance_civile_end_date']))
+        nom: item['liability_insurance'],
+        date_debut: normalized_date(timestamp_to_time(item['liability_insurance_start_date'])),
+        date_fin: normalized_date(timestamp_to_time(item['liability_insurance_end_date']))
       }
     }
   end
@@ -42,6 +42,6 @@ class Qualifelec::Certificats::BuildResourceCollection < BuildResourceCollection
   private
 
   def timestamp_to_time(timestamp)
-    Time.zone.at(timestamp)
+    Time.zone.at(timestamp) if timestamp
   end
 end
