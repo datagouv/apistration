@@ -9,7 +9,7 @@ description: |-
   - [Réponse] Quotient familial de 650
 params:
   codeInseeLieuDeNaissance: '08480'
-  codePaysLieuDeNaissance: '99001'
+  codePaysLieuDeNaissance: '99100'
   sexe: 'F'
   nomUsage: 'BERNARD'
   prenoms:

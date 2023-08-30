@@ -235,7 +235,8 @@ Ce cas permet de tester :
 
   ```json
   {
-    "codePaysLieuDeNaissance": "99404",
+    "codeInseeLieuDeNaissance": "00404",
+    "codePaysLieuDeNaissance": "99100",
     "sexe": "F"
   }
   ```
@@ -262,7 +263,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99404' -d 'sexe=F' \
+    -G -d 'codeInseeLieuDeNaissance=00404' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 
@@ -279,7 +280,8 @@ Ce cas permet de tester :
 
   ```json
   {
-    "codePaysLieuDeNaissance": "99503",
+    "codeInseeLieuDeNaissance": "00503",
+    "codePaysLieuDeNaissance": "99100",
     "sexe": "F"
   }
   ```
@@ -306,7 +308,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99503' -d 'sexe=F' \
+    -G -d 'codeInseeLieuDeNaissance=00503' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 
