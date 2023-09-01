@@ -63,6 +63,9 @@ parameters:
       siret_ademe:
         value: "42878198300039"
         summary: SIRET pour ADEME RGE
+      siret_qualifelec:
+        value: "42054064300376"
+        summary: SIRET pour Qualifelec
 
   siret_or_rna:
     description: "Siret de l'association ou le numéro RNA"
