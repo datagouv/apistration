@@ -1,0 +1,28 @@
+name: Manual deployment (sandbox)
+
+on:
+  workflow_dispatch: ~
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        deploy_to: ${{ fromJson(secrets.SERVER_LIST_JSON) }}
+    env:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_DEPLOY_KEY_SANDBOX }}
+      SSH_USER: ${{ secrets.SSH_DEPLOY_USERNAME }}
+      SSH_KNOWN_HOSTS: ${{ secrets.SSH_DEPLOY_KNOWN_HOST_KEYS }}
+      SSH_HOST: ${{ matrix.deploy_to }}
+    steps:
+      - name: Setup SSH deployment private key 
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" >~/.ssh/private.key
+          chmod 600 ~/.ssh/private.key
+        shell: bash
+      - name: Setup SSH known_hosts file
+        run: echo "$SSH_KNOWN_HOSTS" >~/.ssh/known_hosts
+        shell: bash
+      - name: Deploy application
+        run: ssh -i ~/.ssh/private.key "${SSH_USER}@${SSH_HOST}"
