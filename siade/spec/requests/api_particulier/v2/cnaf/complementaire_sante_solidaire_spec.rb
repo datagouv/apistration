@@ -109,10 +109,10 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
 
       describe 'with valid token and mandatory params' do
         response '200', 'Quotient Familial trouvée' do
-          description SwaggerData.get('cnaf.quotient-familial-v2.description')
+          description SwaggerData.get('cnaf.c2s.description')
 
           schema build_rswag_response_api_particulier(
-            attributes: SwaggerData.get('cnaf.quotient-familial-v2.attributes')
+            attributes: SwaggerData.get('cnaf.c2s.attributes')
           )
 
           run_test!
