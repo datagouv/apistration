@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        deploy_to: ${{ fromJson(secrets.SERVER_LIST_JSON) }}
+        deploy_to:
+          - watchdoge1.entreprise.api.gouv.fr
+          - watchdoge2.entreprise.api.gouv.fr
     env:
       SSH_PRIVATE_KEY: ${{ secrets.SSH_DEPLOY_KEY_SANDBOX }}
       SSH_USER: ${{ secrets.SSH_DEPLOY_USERNAME }}
