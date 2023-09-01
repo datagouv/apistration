@@ -58,6 +58,8 @@ gem 'octokit', '~> 7.1'
 
 gem 'pdf-reader'
 
+gem 'gpgme'
+
 group :test do
   gem 'rswag-specs', github: 'rswag/rswag'
 

@@ -115,6 +115,8 @@ GEM
     geom2d (0.4.1)
     get_process_mem (0.2.7)
       ffi (~> 1.0)
+    gpgme (2.0.23)
+      mini_portile2 (~> 2.7)
     guard (2.18.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -379,6 +381,7 @@ DEPENDENCIES
   colorize
   derailed_benchmarks
   fog-openstack (= 1.1.0)
+  gpgme
   guard
   guard-rspec
   hexapdf

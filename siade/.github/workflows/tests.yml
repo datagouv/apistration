@@ -43,8 +43,8 @@ jobs:
           bundler-cache: true
           cache-version: 321
 
-      - name: Install libmagic-dev
-        run: sudo apt-get install libmagic-dev
+      - name: Install dependencies
+        run: sudo apt-get install libmagic-dev libgpgme11-dev
 
       - name: Create database
         run: bundle exec rails db:create db:schema:load RAILS_ENV=test
