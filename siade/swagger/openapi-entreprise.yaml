@@ -587,6 +587,9 @@ paths:
           siret_ademe:
             value: '42878198300039'
             summary: SIRET pour ADEME RGE
+          siret_qualifelec:
+            value: '42054064300376'
+            summary: SIRET pour Qualifelec
         required: true
         schema:
           type: string
@@ -1740,6 +1743,9 @@ paths:
           siret_ademe:
             value: '42878198300039'
             summary: SIRET pour ADEME RGE
+          siret_qualifelec:
+            value: '42054064300376'
+            summary: SIRET pour Qualifelec
         required: true
         schema:
           type: string
@@ -4068,6 +4074,9 @@ paths:
           siret_ademe:
             value: '42878198300039'
             summary: SIRET pour ADEME RGE
+          siret_qualifelec:
+            value: '42054064300376'
+            summary: SIRET pour Qualifelec
         required: true
         schema:
           type: string
@@ -8552,6 +8561,9 @@ paths:
           siret_ademe:
             value: '42878198300039'
             summary: SIRET pour ADEME RGE
+          siret_qualifelec:
+            value: '42054064300376'
+            summary: SIRET pour Qualifelec
         required: true
         schema:
           type: string
@@ -9787,6 +9799,9 @@ paths:
           siret_ademe:
             value: '42878198300039'
             summary: SIRET pour ADEME RGE
+          siret_qualifelec:
+            value: '42054064300376'
+            summary: SIRET pour Qualifelec
         required: true
         schema:
           type: string
@@ -14261,6 +14276,9 @@ paths:
           siret_ademe:
             value: '42878198300039'
             summary: SIRET pour ADEME RGE
+          siret_qualifelec:
+            value: '42054064300376'
+            summary: SIRET pour Qualifelec
         required: true
         schema:
           type: string
@@ -14858,6 +14876,9 @@ paths:
           siret_ademe:
             value: '42878198300039'
             summary: SIRET pour ADEME RGE
+          siret_qualifelec:
+            value: '42054064300376'
+            summary: SIRET pour Qualifelec
         required: true
         schema:
           type: string
@@ -15483,6 +15504,9 @@ paths:
           siret_ademe:
             value: '42878198300039'
             summary: SIRET pour ADEME RGE
+          siret_qualifelec:
+            value: '42054064300376'
+            summary: SIRET pour Qualifelec
         required: true
         schema:
           type: string
@@ -16773,6 +16797,9 @@ paths:
           siret_ademe:
             value: '42878198300039'
             summary: SIRET pour ADEME RGE
+          siret_qualifelec:
+            value: '42054064300376'
+            summary: SIRET pour Qualifelec
         required: true
         schema:
           type: string
@@ -23323,6 +23350,9 @@ paths:
           siret_ademe:
             value: '42878198300039'
             summary: SIRET pour ADEME RGE
+          siret_qualifelec:
+            value: '42054064300376'
+            summary: SIRET pour Qualifelec
         required: true
         schema:
           type: string
@@ -24137,6 +24167,9 @@ paths:
           siret_ademe:
             value: '42878198300039'
             summary: SIRET pour ADEME RGE
+          siret_qualifelec:
+            value: '42054064300376'
+            summary: SIRET pour Qualifelec
         required: true
         schema:
           type: string
@@ -24897,6 +24930,9 @@ paths:
           siret_ademe:
             value: '42878198300039'
             summary: SIRET pour ADEME RGE
+          siret_qualifelec:
+            value: '42054064300376'
+            summary: SIRET pour Qualifelec
         required: true
         schema:
           type: string
@@ -25319,6 +25355,9 @@ paths:
           siret_ademe:
             value: '42878198300039'
             summary: SIRET pour ADEME RGE
+          siret_qualifelec:
+            value: '42054064300376'
+            summary: SIRET pour Qualifelec
         required: true
         schema:
           type: string
