@@ -1,0 +1,4 @@
+---
+shared:
+  signer_email: 'ci@example.com'
+  signer_passphrase: 'passphrase'

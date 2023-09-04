@@ -46,8 +46,8 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install libmagic-dev libgpgme11-dev
 
-      - name: Create database
-        run: bundle exec rails db:create db:schema:load RAILS_ENV=test
+      - name: Run install.sh
+        run: ./bin/install.sh
 
       - name: set timezone
         uses: szenius/set-timezone@v1.2
