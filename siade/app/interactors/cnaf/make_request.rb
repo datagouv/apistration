@@ -4,6 +4,7 @@ class CNAF::MakeRequest < MakeRequest::Get
   # rubocop:disable Metrics/AbcSize
   def mocking_params
     {
+      codeInseeLieuDeNaissance: context.params[:code_insee_lieu_de_naissance],
       codePaysLieuDeNaissance: context.params[:code_pays_lieu_de_naissance],
       sexe: context.params[:genre],
       nomUsage: context.params[:nom_usage],
