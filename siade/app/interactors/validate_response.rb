@@ -43,10 +43,15 @@ class ValidateResponse < ApplicationInteractor
     error.add_to_monitoring_private_context({
       http_response_code: context.response.code,
       http_response_body: context.response.body,
-      http_response_headers: context.response.to_hash
+      http_response_headers: context.response.to_hash,
+      encrypted_params: encrypt_params
     })
 
     fail_with_error!(error)
+  end
+
+  def encrypt_params
+    EncryptData.new(context.params.to_json).perform
   end
 
   def provider_in_maintenance!
