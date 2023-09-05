@@ -3,5 +3,6 @@ class CNAF::ValidateParams < ValidateParamsOrganizer
     CNAF::ValidateCodePaysLieuDeNaissance,
     CNAF::ValidateCodeINSEELieuDeNaissance,
     CNAF::ValidateDateDeNaissance,
-    CNAF::ValidateRequestId
+    CNAF::ValidateRequestId,
+    CNAF::ValidatePrenoms
 end

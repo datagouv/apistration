@@ -3,6 +3,7 @@ RSpec.describe CNAF::ValidateParams, type: :validate_params do
 
   let(:params) do
     {
+      prenoms:,
       gender:,
       code_pays_lieu_de_naissance:,
       code_insee_lieu_de_naissance:,
@@ -14,6 +15,7 @@ RSpec.describe CNAF::ValidateParams, type: :validate_params do
     }
   end
 
+  let(:prenoms) { %w[jean] }
   let(:gender) { 'F' }
   let(:code_pays_lieu_de_naissance) { '99345' }
   let(:code_insee_lieu_de_naissance) { '12345' }
@@ -79,6 +81,14 @@ RSpec.describe CNAF::ValidateParams, type: :validate_params do
 
   context 'with invalid request_id' do
     let(:request_id) { 'fblblbl' }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+  end
+
+  context 'with invalid prenoms' do
+    let(:prenoms) { 'Jean' }
 
     it { is_expected.to be_a_failure }
 
