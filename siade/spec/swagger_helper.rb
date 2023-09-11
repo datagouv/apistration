@@ -222,7 +222,7 @@ Lors de votre passage en production :
         termsOfService: 'https://api.gouv.fr/resources/CGU%20API%20Particulier.pdf',
         contact: {
           name: 'Contact API Particulier',
-          email: 'contact@particulier.api.gouv.fr',
+          email: 'api-particulier@api.gouv.fr',
           url: 'https://particulier.api.gouv.fr/'
         },
         license: {

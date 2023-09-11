@@ -2,7 +2,7 @@ info:
   title: API Particulier
   version: 2.2.0
   contact:
-    email: contact@particulier.api.gouv.fr
+    email: api-particulier@api.gouv.fr
     name: Contact API Particulier
     url: https://api.gouv.fr/les-api/api-particulier
   termsOfService: https://api.gouv.fr/resources/CGU%20API%20Particulier.pdf
