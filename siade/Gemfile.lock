@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/rswag/rswag.git
-  revision: 5a8c7fc9de2f7768da8ea2ae80036c5ed2259692
+  revision: c7a6d5981a632e4d00265f9ef59273db4286f56e
   specs:
     rswag-api (0.0.0)
       railties (>= 3.1, < 7.1)
@@ -225,7 +225,7 @@ GEM
       actionpack (>= 5.0.1.rc1)
       actionview (>= 5.0.1.rc1)
       activesupport (>= 5.0.1.rc1)
-    rails-dom-testing (2.1.1)
+    rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
       nokogiri (>= 1.6)
@@ -287,7 +287,7 @@ GEM
       rspec-support (~> 3.12)
     rspec-retry (0.6.2)
       rspec-core (> 3.3)
-    rspec-support (3.12.0)
+    rspec-support (3.12.1)
     rubocop (1.56.2)
       base64 (~> 0.1.1)
       json (~> 2.3)
@@ -323,10 +323,10 @@ GEM
     sawyer (0.9.2)
       addressable (>= 2.3.5)
       faraday (>= 0.17.3, < 3)
-    sentry-rails (5.10.0)
+    sentry-rails (5.11.0)
       railties (>= 5.0)
-      sentry-ruby (~> 5.10.0)
-    sentry-ruby (5.10.0)
+      sentry-ruby (~> 5.11.0)
+    sentry-ruby (5.11.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
     shellany (0.0.1)
     shoulda-matchers (5.3.0)
@@ -363,7 +363,7 @@ GEM
       hashdiff (>= 0.4.0, < 2.0.0)
     xml-simple (1.1.9)
       rexml
-    zeitwerk (2.6.8)
+    zeitwerk (2.6.11)
 
 PLATFORMS
   ruby
