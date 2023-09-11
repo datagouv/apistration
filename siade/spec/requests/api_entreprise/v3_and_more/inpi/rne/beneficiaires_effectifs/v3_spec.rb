@@ -27,7 +27,7 @@ RSpec.describe 'INPI RNE: Bénéficiaires effectifs', api: :entreprise, type: %i
         let(:siren) { valid_siren }
       end
 
-      describe 'with valid token and mandatory params', valid: true do
+      describe 'with valid token and mandatory params', :valid do
         describe 'with valid siren' do
           before do
             stub_request(:get, "#{Siade.credentials[:inpi_rne_unites_legales_url]}/#{siren}").and_return(

@@ -17,7 +17,7 @@ RSpec.describe 'Douanes: Immatriculations EORI', api: :entreprise, type: %i[requ
         let(:siret_or_eori) { valid_eori }
       end
 
-      describe 'with valid token and mandatory params', valid: true do
+      describe 'with valid token and mandatory params', :valid do
         response '200', 'Entité trouvée', vcr: { cassette_name: 'dgddi/eori/valid_eori' } do
           description SwaggerData.get('dgddi.eori.description')
 

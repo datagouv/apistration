@@ -24,7 +24,7 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', api: :entreprise, ty
         let(:siren) { valid_siren(:liasse_fiscale) }
       end
 
-      describe 'with valid token and mandatory params', valid: true do
+      describe 'with valid token and mandatory params', :valid do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
           description SwaggerData.get('dgfip.liasses_fiscales.declarations.description')
 

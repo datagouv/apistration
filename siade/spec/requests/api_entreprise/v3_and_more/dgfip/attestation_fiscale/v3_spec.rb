@@ -25,7 +25,7 @@ RSpec.describe 'DGFIP: Attestation fiscale', api: :entreprise, type: %i[request 
         let(:siren) { valid_siren }
       end
 
-      describe 'with valid token and mandatory params', valid: true do
+      describe 'with valid token and mandatory params', :valid do
         let(:siren) { valid_siren }
 
         response '200', 'Attestation fiscale trouvée' do

@@ -25,7 +25,7 @@ RSpec.describe 'URSSAF: Attestation de vigilance', api: :entreprise, type: %i[re
         let(:siren) { valid_siren(:acoss) }
       end
 
-      describe 'with valid token and mandatory params', valid: true do
+      describe 'with valid token and mandatory params', :valid do
         response '200', 'Entreprise found', vcr: { cassette_name: 'acoss/with_valid_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body_sanitized) } do
           cacheable_response
 

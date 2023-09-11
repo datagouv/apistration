@@ -17,7 +17,7 @@ RSpec.describe 'EuropeanCommission: Vies', api: :entreprise, type: %i[request sw
         let(:siren) { danone_siren }
       end
 
-      describe 'with valid token and mandatory params', valid: true do
+      describe 'with valid token and mandatory params', :valid do
         let(:siren) { danone_siren }
 
         before do
@@ -54,7 +54,7 @@ RSpec.describe 'EuropeanCommission: Vies', api: :entreprise, type: %i[request sw
         end
       end
 
-      describe 'server errors', valid: true do
+      describe 'server errors', :valid do
         unprocessable_entity_error_request(:siren) do
           let(:siren) { danone_siren }
         end

@@ -21,7 +21,7 @@ RSpec.describe 'CarifOref: Certificationsqualiopifrancecompetences', api: :entre
         let(:siret) { valid_siret(:carif_oref) }
       end
 
-      describe 'with valid token and mandatory params', valid: true do
+      describe 'with valid token and mandatory params', :valid do
         describe 'with mocked data' do
           response '200', 'Entreprise trouvée' do
             before do

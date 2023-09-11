@@ -21,7 +21,7 @@ RSpec.describe 'Qualibat : CertificationsBatiment', api: :entreprise, type: %i[r
         let(:siret) { valid_siret(:qualibat) }
       end
 
-      describe 'with valid token and mandatory params', valid: true do
+      describe 'with valid token and mandatory params', :valid do
         response 200, 'Certification trouvée', vcr: { cassette_name: 'qualibat/certifications_batiment/valid_siret' } do
           description SwaggerData.get('qualibat.certifications_batiment.description')
 

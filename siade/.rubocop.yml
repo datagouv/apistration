@@ -228,7 +228,7 @@ RSpec/ExampleWording:
   Exclude:
     - 'spec/lib/seeds_spec.rb'
 
-RSpec/FilePath:
+RSpec/SpecFilePathFormat:
   CustomTransform:
     GIPMDS: gip_mds
   Exclude:

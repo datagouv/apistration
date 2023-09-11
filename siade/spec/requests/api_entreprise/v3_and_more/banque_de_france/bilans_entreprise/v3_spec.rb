@@ -21,7 +21,7 @@ RSpec.describe 'Banque de France: Bilans', api: :entreprise, type: %i[request sw
         let(:siren) { valid_siren(:bilan_entreprise_bdf) }
       end
 
-      describe 'with valid token and mandatory params', valid: true do
+      describe 'with valid token and mandatory params', :valid do
         describe 'with valid siren' do
           before do
             VCR.use_cassette('dgfip/dictionaries/2020_and_2021') do

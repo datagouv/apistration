@@ -21,7 +21,7 @@ RSpec.describe 'DJEPVA: Associations v4', api: :entreprise, type: %i[request swa
         let(:siren_or_rna) { valid_rna_id }
       end
 
-      describe 'with valid token and mandatory params', valid: true do
+      describe 'with valid token and mandatory params', :valid do
         response 200, 'Association trouvée' do
           description SwaggerData.get('mi.v4/unite_legale.description')
 

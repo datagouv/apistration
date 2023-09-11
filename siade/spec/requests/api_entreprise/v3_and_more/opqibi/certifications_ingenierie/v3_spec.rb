@@ -21,7 +21,7 @@ RSpec.describe 'OPQIBI: Certificationsingenierie', api: :entreprise, type: %i[re
         let(:siren) { valid_siren(:opqibi_with_probatoire) }
       end
 
-      describe 'with valid token and mandatory params', valid: true do
+      describe 'with valid token and mandatory params', :valid do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: 'opqibi/certifications_ingenierie/valid_siren' } do
           description SwaggerData.get('opqibi.certifications_ingenierie.description')
 

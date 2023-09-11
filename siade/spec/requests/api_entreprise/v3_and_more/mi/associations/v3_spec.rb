@@ -23,7 +23,7 @@ RSpec.describe 'MI : Associations', api: :entreprise, type: %i[request swagger] 
         let(:siret_or_rna) { valid_rna_id }
       end
 
-      describe 'with valid token and mandatory params', valid: true do
+      describe 'with valid token and mandatory params', :valid do
         response 200, 'Association found', vcr: { cassette_name: 'mi/associations/with_valid_rna' } do
           description SwaggerData.get('mi.v3/association.description')
 

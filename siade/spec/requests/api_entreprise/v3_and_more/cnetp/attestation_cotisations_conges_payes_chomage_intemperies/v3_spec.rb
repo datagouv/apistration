@@ -21,7 +21,7 @@ RSpec.describe 'CNETP: Attestations cotisations congés payés et aux chômage i
         let(:siren) { valid_siren(:cnetp) }
       end
 
-      describe 'with valid token and mandatory params', valid: true do
+      describe 'with valid token and mandatory params', :valid do
         response '200', 'Certificat trouvé', vcr: { cassette_name: 'cnetp/attestation_cotisations_conges_payes_chomage_intemperies/valid_siren' } do
           description SwaggerData.get('cnetp.attestation_cotisations_conges_payes_chomage_intemperies.description')
 

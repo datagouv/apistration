@@ -23,7 +23,7 @@ RSpec.describe 'Qualifelec: Certificats', api: :entreprise, type: %i[request swa
         stub_qualifelec_auth_success
       end
 
-      describe 'with valid token and mandatory params', valid: true do
+      describe 'with valid token and mandatory params', :valid do
         response '200', 'Entreprise trouvée' do
           before do
             stub_qualifelec_certificates

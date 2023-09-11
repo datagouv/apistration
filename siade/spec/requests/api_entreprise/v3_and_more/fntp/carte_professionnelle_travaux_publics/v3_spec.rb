@@ -21,7 +21,7 @@ RSpec.describe 'FNTP: Carte professionnelle Travaux Publics', api: :entreprise, 
         let(:siren) { valid_siren(:fntp) }
       end
 
-      describe 'with valid token and mandatory params', valid: true do
+      describe 'with valid token and mandatory params', :valid do
         response '200', 'Carte professionnelle trouvée', vcr: { cassette_name: 'fntp/carte_professionnelle_travaux_publics/valid_siren' } do
           description SwaggerData.get('fntp.carte_professionnelle_travaux_publics.description')
 

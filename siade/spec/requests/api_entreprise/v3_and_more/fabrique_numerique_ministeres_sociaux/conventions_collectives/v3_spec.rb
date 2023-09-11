@@ -21,7 +21,7 @@ RSpec.describe 'FabriqueNumeriqueMinisteresSociaux: Conventionscollectives', api
         let(:siret) { valid_siret(:conventions_collectives) }
       end
 
-      describe 'with valid token and mandatory params', valid: true do
+      describe 'with valid token and mandatory params', :valid do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/valid_siret' } do
           description SwaggerData.get('fabrique_numerique_ministeres_sociaux.conventions_collectives.description')
 
