@@ -194,7 +194,7 @@ Le bac à sable et l'API de production sont appelables par deux adresses distinc
 - bac à sable : [https://staging.particulier.api.gouv.fr/api](https://staging.particulier.api.gouv.fr/api)
 - production : [https://particulier.api.gouv.fr/api](https://particulier.api.gouv.fr/api)
 
-Pour récupérer le jeton de production un portail développeur est mis à votre disposition à l'adresse suivante : [https://mon.portail.api.gouv.fr](https://mon.portail.api.gouv.fr)
+Pour récupérer le jeton de production un portail développeur est mis à votre disposition à l'adresse suivante : [https://particulier.api.gouv.fr/compte](https://particulier.api.gouv.fr/compte)
 
 Pour effectuer vos tests sur le bac à sable, référez-vous à ce dépôt github: [etalab/siade_staging_data](https://github.com/etalab/siade_staging_data/) (l'ancien système basé sur Airtable n'est plus maintenu et va être remplacé par le nouveau système). Un jeton nommé default est disponible ici: [tokens](https://github.com/etalab/siade_staging_data/tree/develop/tokens)
 
@@ -217,7 +217,7 @@ En conséquence, suivant le jeton utilisé, une même requête peut retourner de
 Lors de votre passage en production :
 
 - remplacez l'URL de staging.particulier.api.gouv.fr à particulier.api.gouv.fr
-- remplacez le jeton de test par le jeton obtenu sur [le portail API Particulier](https://mon.portail.api.gouv.fr)
+- remplacez le jeton de test par le jeton obtenu sur [le portail API Particulier](https://particulier.api.gouv.fr/compte)
 ",
         termsOfService: 'https://api.gouv.fr/resources/CGU%20API%20Particulier.pdf',
         contact: {
@@ -254,7 +254,7 @@ Lors de votre passage en production :
             type: :apiKey,
             name: 'X-Api-Key',
             in: :header,
-            description: "Jeton d'authentification obtenu suite à la validation de votre <a href='https://datapass.api.gouv.fr/'>demande d'habilitation</a>, visible sur <a href='https://mon.portail.api.gouv.fr'>le portail API Particulier</a>"
+            description: "Jeton d'authentification obtenu suite à la validation de votre <a href='https://datapass.api.gouv.fr/'>demande d'habilitation</a>, visible sur <a href='https://particulier.api.gouv.fr/compte'>le portail API Particulier</a>"
           }
         }
       }
