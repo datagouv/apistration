@@ -2,7 +2,7 @@ class MI::Associations::ValidateResponse < ValidateResponse
   def call
     check_body_integrity!
 
-    resource_not_found!(id_param) if not_found_in_body? || not_valid_association?
+    resource_not_found!(id_param) if not_found_in_body? || !valid_association?
 
     return if http_ok? && payload_valid?
 
@@ -23,11 +23,12 @@ class MI::Associations::ValidateResponse < ValidateResponse
     unknown_provider_response!
   end
 
-  def not_valid_association?
-    payload_valid? && (
-      rna_id_missing? &&
-        !alsace_moselle?
-    )
+  def valid_association?
+    payload_valid? && (rna_id? || association_whitelisted?)
+  end
+
+  def association_whitelisted?
+    alsace_moselle? || juridically_an_asso?
   end
 
   def payload_valid?
@@ -35,12 +36,22 @@ class MI::Associations::ValidateResponse < ValidateResponse
       payload_has_id_correspondance?
   end
 
-  def rna_id_missing?
-    xml_body_as_hash[:asso][:identite][:id_rna].nil?
+  def rna_id?
+    return false unless xml_body_as_hash[:asso][:identite]
+
+    !xml_body_as_hash[:asso][:identite][:id_rna].nil?
   end
 
   def alsace_moselle?
+    return false unless xml_body_as_hash[:asso][:identite]
+
     xml_body_as_hash[:asso][:identite][:regime] == 'alsaceMoselle'
+  end
+
+  def juridically_an_asso?
+    return false unless xml_body_as_hash[:asso][:identite]
+
+    xml_body_as_hash[:asso][:identite][:id_forme_juridique] == '9230'
   end
 
   def not_found_in_body?
