@@ -164,6 +164,10 @@
   api: 'entreprise'
   path: '/v3/qualifelec/etablissements/78824266700020/certificats'
 
+- name: "Qualiopi certificats"
+  api: 'entreprise'
+  path: '/v3/carif_oref/certifications_qualiopi_france_competences/78824266700020'
+
 # API Entreprise v2
 
 - name: 'Attestations agefiph'

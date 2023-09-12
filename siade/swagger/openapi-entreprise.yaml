@@ -1713,7 +1713,7 @@ paths:
     get:
       summary: Qualiopi & habilitations France compétences
       tags:
-      - Prochainement
+      - Certifications professionnelles
       parameters:
       - name: siret
         in: path
