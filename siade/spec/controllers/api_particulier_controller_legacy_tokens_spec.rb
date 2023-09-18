@@ -23,6 +23,11 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
   before do
     allow(LogStasher).to receive(:build_logstash_event)
     allow(MonitoringService.instance).to receive(:track)
+    clean_logstasher_store!
+  end
+
+  let(:clean_logstasher_store!) do
+    LogStasher.store['user_access'] = {}
   end
 
   context 'without any token' do

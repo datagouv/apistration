@@ -11,7 +11,7 @@ class APIParticulierController < APIController
     @token ||= retrieve_token
 
     if @token && legacy_token_exists?(@token)
-      @current_user = build_user_from_legacy_token(@token)
+      @current_user = JwtTokenService.instance.build_user_from_legacy_token(@token)
     else
       super
     end
@@ -19,18 +19,6 @@ class APIParticulierController < APIController
 
   def legacy_token_exists?(token)
     APIParticulierLegacyTokensBackend.exists?(token)
-  end
-
-  def build_user_from_legacy_token(token)
-    token_data = APIParticulierLegacyTokensBackend.get(token)
-
-    JwtUser.new(
-      uid: token_data['token_id'],
-      scopes: token_data['scopes'],
-      jti: token_data['token_id'],
-      iat: Time.new(2022, 1, 1).to_i,
-      exp: Time.new(2042, 1, 1).to_i
-    )
   end
 
   def serialize_data(organizer)

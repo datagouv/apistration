@@ -12,21 +12,56 @@ class JwtTokenService
 
     jwt_data[:scopes] ||= jwt_data.delete(:roles) if jwt_data[:roles].present?
 
-    jwt_data = if internal_token?(decoded_token[:jti])
-                 enhanced_jwt_data_with_token_for_internal_token(jwt_data, decoded_token)
-               else
-                 enhanced_jwt_data_with_token_from_database(jwt_data, decoded_token)
-               end
+    jwt_data = enhance_jwt_data(jwt_data, decoded_token)
 
-    build_and_cache_user!(jwt_token, jwt_data)
+    jwt_user = build_and_cache_user!(jwt_token, jwt_data)
+
+    add_user_access_to_logger(jwt_user)
+
+    jwt_user
   rescue JWT::DecodeError, ActiveRecord::RecordNotFound
     nil
+  end
+
+  def build_user_from_legacy_token(token)
+    token_data = APIParticulierLegacyTokensBackend.get(token)
+
+    jwt_user = JwtUser.new(
+      uid: token_data['token_id'],
+      scopes: token_data['scopes'],
+      jti: token_data['token_id'],
+      iat: Time.new(2022, 1, 1).to_i,
+      exp: Time.new(2042, 1, 1).to_i
+    )
+
+    add_user_access_to_logger(jwt_user)
+
+    jwt_user
   end
 
   private
 
   def cache
     EncryptedCache.instance
+  end
+
+  def add_user_access_to_logger(jwt_user)
+    return if jwt_user.blank?
+
+    ActiveSupport::Notifications.instrument(
+      'user_access',
+      user: jwt_user.logstash_id,
+      jti: jwt_user.token_id,
+      iat: jwt_user.iat
+    )
+  end
+
+  def enhance_jwt_data(jwt_data, decoded_token)
+    if internal_token?(decoded_token[:jti])
+      enhanced_jwt_data_with_token_for_internal_token(jwt_data, decoded_token)
+    else
+      enhanced_jwt_data_with_token_from_database(jwt_data, decoded_token)
+    end
   end
 
   def enhanced_jwt_data_with_token_for_internal_token(jwt_data, decoded_token)
