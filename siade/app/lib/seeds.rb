@@ -5,10 +5,15 @@ class Seeds
     create_token(id: yes_jwt_id)
     create_token(id: no_scopes_jwt_id, scopes: [])
     create_token(id: blacklisted_jwt_id, blacklisted: true)
+    create_token(id: expired_jwt_id, exp: 1.day.ago.to_i)
   end
 
   def yes_jwt_id
     'f5d5cb02-185a-426f-b3f4-99a25ce6cdf4'
+  end
+
+  def expired_jwt_id
+    '4c63c9d9-18dc-46c6-a555-de87f643f2c0'
   end
 
   def blacklisted_jwt_id
