@@ -16,7 +16,7 @@ class MEN::Scolarites::ValidateResponse < ValidateResponse
   private
 
   def resource_not_found!
-    fail_with_error!(build_error(::NotFoundError, 'Aucun étudiant n\'a pu être trouvé avec les critères de recherche fournis'))
+    fail_with_error!(build_error(::NotFoundError, 'Aucun élève n\'a pu être trouvé avec les critères de recherche fournis'))
   end
 
   def no_scolarite?
