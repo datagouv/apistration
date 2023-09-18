@@ -24,11 +24,12 @@ class MI::Associations::ValidateResponse < ValidateResponse
   end
 
   def valid_association?
-    payload_valid? && (rna_id? || association_whitelisted?)
+    payload_valid? && (from_rna? ||
+      alsace_moselle?)
   end
 
-  def association_whitelisted?
-    alsace_moselle? || juridically_an_asso?
+  def from_rna?
+    rna_id? || juridically_an_asso?
   end
 
   def payload_valid?
@@ -51,7 +52,7 @@ class MI::Associations::ValidateResponse < ValidateResponse
   def juridically_an_asso?
     return false unless xml_body_as_hash[:asso][:identite]
 
-    xml_body_as_hash[:asso][:identite][:id_forme_juridique] == '9230'
+    xml_body_as_hash[:asso][:identite][:regime] == 'loi1901'
   end
 
   def not_found_in_body?

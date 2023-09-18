@@ -46,7 +46,7 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
               '1234567890' \
               '</id_correspondance>' \
               '<regime>' \
-              'loi1901' \
+              'autre' \
               '</regime>' \
               '</identite>' \
               '</asso>'
@@ -83,9 +83,9 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
               '<id_correspondance>' \
               '1234567890' \
               '</id_correspondance>' \
-              '<id_forme_juridique>' \
-              '9230' \
-              '</id_forme_juridique>' \
+              '<regime>' \
+              'loi1901' \
+              '</regime>' \
               '</identite>' \
               '</asso>'
           end
