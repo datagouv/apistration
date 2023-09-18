@@ -24,12 +24,12 @@ class MI::Associations::ValidateResponse < ValidateResponse
   end
 
   def valid_association?
-    payload_valid? && (from_rna? ||
-      alsace_moselle?)
+    payload_valid? &&
+      (from_repertoire? || juridically_an_asso?)
   end
 
-  def from_rna?
-    rna_id? || juridically_an_asso?
+  def from_repertoire?
+    rna_id? || alsace_moselle?
   end
 
   def payload_valid?
@@ -52,7 +52,12 @@ class MI::Associations::ValidateResponse < ValidateResponse
   def juridically_an_asso?
     return false unless xml_body_as_hash[:asso][:identite]
 
-    xml_body_as_hash[:asso][:identite][:regime] == 'loi1901'
+    if xml_body_as_hash[:asso][:identite][:regime] == 'loi1901'
+      monitor_association_without_rna(id_param)
+      true
+    else
+      false
+    end
   end
 
   def not_found_in_body?
@@ -69,5 +74,15 @@ class MI::Associations::ValidateResponse < ValidateResponse
     return false unless xml_body_as_hash[:asso][:identite]
 
     !xml_body_as_hash[:asso][:identite][:id_correspondance].nil?
+  end
+
+  def monitor_association_without_rna(id_param)
+    MonitoringService.instance.track(
+      'info',
+      'Association without RNA detected',
+      {
+        siret_or_rna: id_param
+      }
+    )
   end
 end
