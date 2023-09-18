@@ -30,7 +30,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
 
   RSpec.shared_examples 'throttling group of endpoints' do
     let(:token_sample) { yes_jwt }
-    let(:another_token_sample) { uptime_jwt }
+    let(:another_token_sample) { TokenFactory.new([]).valid }
 
     def call!(token)
       random_endpoint = endpoints.sample
@@ -287,7 +287,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
     end
 
     context 'with and endpoint which has no throttle config' do
-      let(:endpoint) { '/v2/uptime' }
+      let(:endpoint) { '/v2/privileges' }
 
       it 'has no rate limit headers defined' do
         rate_limit_subkeys.each do |subkey|
@@ -371,10 +371,6 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
 
     let(:non_throttled_endpoints) do
       [
-        {
-          controller: 'uptime',
-          action: 'show'
-        },
         {
           controller: 'api_entreprise/v2/privileges',
           action: 'show'

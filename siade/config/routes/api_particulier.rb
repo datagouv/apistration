@@ -1,6 +1,5 @@
 namespace '/api', constraints: APIParticulierDomainConstraint.new do
   get 'ping' => '/ping#show'
-  get 'uptime' => '/uptime#show'
   get ':provider/ping' => '/api_particulier/ping_providers#show'
 
   get 'introspect' => '/api_particulier/introspect#show'

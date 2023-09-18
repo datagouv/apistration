@@ -66,7 +66,6 @@ class JwtTokenService
 
   def internal_token?
     [
-      JwtUser.uptime_id,
       JwtUser.debugger_id
     ].include?(decoded_token[:jti])
   end

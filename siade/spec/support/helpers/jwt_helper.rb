@@ -10,8 +10,7 @@ module JwtHelper
         corrupted: 'eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiI0YzYzYzlkOS0xOGRjLTRhNjMtYTU1NSgdfgd1kZTg3ZjY0M2YyYzAiLCJyb2xlcyI6WyJyb2wzIiwicm9sNCJdfQ.28Zo8dOMOxd4G5-nR-sfmNlbqRnSvbRbVkVto6i50gI',
         no_scopes: 'eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJmNWQ1Y2IwMi0xODVhLTQyNmYtYjNmNC05OWEyNWNlNmNkZjQiLCJqdGkiOiJiMTU3OGRhMC01MmZlLTRiY2EtYmZhYy1iNWUxODNlOWU3MWMiLCJzY29wZXMiOltdLCJzdWIiOiJOTyBKV1QiLCJpYXQiOjE1ODAzMDMxMjAsInZlcnNpb24iOiIxLjAifQ.heqyFhIhMvQq8pJ6WCBfwf1LsjgCyeOyI0kFA68t_po',
         without_uuid_as_jti: 'eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJmNWQ1Y2IwMi0xODVhLTQyNmYtYjNmNC05OWEyNWNlNmNkZjQiLCJqdGkiOiJpbnZhbGlkIiwic2NvcGVzIjpbIndoYXRldmVyIl0sInN1YiI6InRlc3Qgc2lhZGUiLCJpYXQiOjE1OTY3OTE2NTksInZlcnNpb24iOiIxLjAifQ.rWjLDH1PPO5Tn_hspCHihv4v0YWKwMEbuyntFYidspE',
-        without_uuid_as_uid: 'eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJpbnZhbGlkIiwianRpIjoiM2Q0NzA2YzQtN2Y1ZS00NDQyLWE3MzQtMDBkNmM2NzVmM2M5Iiwic2NvcGVzIjpbIndoYXRldmVyIl0sInN1YiI6InRlc3Qgc2lhZGUiLCJpYXQiOjE1OTY3OTE2NTksInZlcnNpb24iOiIxLjAifQ.cPAhKr947zIv-OLSuKGNletkiQucCF9J3I-d8MvmZd0',
-        uptime: 'eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiI3M2FmYTU0ZS04YzkxLTQ2NjctYmQyYS0xMDFhOGI4NjUxMjgiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsidXB0aW1lIl0sInN1YiI6InRlc3QgZGV2ZWxvcG1lbnQiLCJpYXQiOjE2NTEyMzYxNjksInZlcnNpb24iOiIxLjAifQ.85dEGIKjRaGRNaxG-ou5_xZ9SyKoJ2W8iMTrhy4TwR8'
+        without_uuid_as_uid: 'eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiJpbnZhbGlkIiwianRpIjoiM2Q0NzA2YzQtN2Y1ZS00NDQyLWE3MzQtMDBkNmM2NzVmM2M5Iiwic2NvcGVzIjpbIndoYXRldmVyIl0sInN1YiI6InRlc3Qgc2lhZGUiLCJpYXQiOjE1OTY3OTE2NTksInZlcnNpb24iOiIxLjAifQ.cPAhKr947zIv-OLSuKGNletkiQucCF9J3I-d8MvmZd0'
       }
 
       samples[type]
@@ -47,8 +46,4 @@ end
 
 def nope_jwt
   JwtHelper.jwt(:no_scopes)
-end
-
-def uptime_jwt
-  JwtHelper.jwt(:uptime)
 end

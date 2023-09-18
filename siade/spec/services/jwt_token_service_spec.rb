@@ -5,18 +5,6 @@ RSpec.describe JwtTokenService do
     subject(:extract_user) { described_class.new(jwt).extract_user }
 
     describe 'with a valid jwt' do
-      context 'when it is the uptime uuid' do
-        let(:jwt) { TokenFactory.new(['whatever']).valid(uid: JwtUser.uptime_id) }
-
-        it { is_expected.to be_a(JwtUser) }
-
-        its(:id) { is_expected.to eq(JwtUser.uptime_id) }
-        its(:jti) { is_expected.to be_present }
-        its(:siret) { is_expected.to eq(JwtTokenService::DINUM_SIRET) }
-
-        its(:scopes) { is_expected.to eq(['whatever']) }
-      end
-
       context 'when it is the debugger uuid' do
         let(:jwt) { TokenFactory.new(['whatever']).valid(uid: JwtUser.debugger_id) }
 

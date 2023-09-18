@@ -174,27 +174,6 @@ nouveau rôle d'accès à ladie ressource.
 3.  Communiquer le code/tag à DataPass afin qu'ils mettent le formulaire de
     demande d'accès à jour
 
-## Ajouter un nouvel endpoint au monitoring Uptime Robot
-
-Il y a deux étapes pour ajouter un endpoint au monitoring Uptime Robot :
-
-1. se connecter à l'interface et ajouter le nouvel endpoint sur le modèle des
-   endpoints existant :
-   - URL `https://entreprise.api.gouv.fr/v2/uptime`
-   - avec un _query parameter_ `route` contenant le path d'accès à la donnée
-     (ex : route=/v2/ressource/siren)
-   - et un _query parameter_ `token` contenant le **token de monitoring**
-     (disponible dans l'interface depuis les endpoints déjà monitoré ou dans le
-     dashboard).
-2. mettre à jour le jeton de ping _réel_ utilisé pour réaliser les appels aux
-   différents endpoints en background depuis le serveur (voir
-   `app/controller/api/v2/uptime_controller.rb` pour la logique de monitoring
-   sous jacente). Ce jeton est renseigné dans le fichier credentials.
-
-/!\ Attention à ne renseigner qu'un JWT contenant le droit d'accès `uptime`
-**uniquement**. Ce jeton est de fait public et ne doit en aucun cas avoir le
-moindre droit d'accès aux données servies par API Entreprise !
-
 ## Test des endpoints
 
 Vous pouvez utiliser le script suivant: `./bin/test_endpoints.rb` de la

@@ -1,6 +1,3 @@
-get '/v2/uptime' => 'uptime#show', constraints: APIEntrepriseDomainConstraint.new
-get '/v:api_version/uptime' => 'uptime#show', constraints: APIEntrepriseDomainConstraint.new(v3_and_more: true)
-
 get '/v2/ping' => 'ping#show', constraints: APIEntrepriseDomainConstraint.new
 get '/v:api_version/ping' => 'ping#show', constraints: APIEntrepriseDomainConstraint.new(v3_and_more: true)
 

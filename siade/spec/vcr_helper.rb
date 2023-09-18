@@ -37,7 +37,6 @@ VCR.configure do |c|
   c.filter_sensitive_data('<INPI_PASSWORD>') { Siade.credentials[:inpi_password].to_s }
   c.filter_sensitive_data('<ACOSS_CLIENT_ID>') { Siade.credentials[:acoss_client_id].to_s }
   c.filter_sensitive_data('<ACOSS_CLIENT_SECRET>') { Siade.credentials[:acoss_client_secret].to_s }
-  c.filter_sensitive_data('<SIADE_TOKEN>') { Siade.credentials[:uptime_robot_internal_jwt].to_s }
   c.filter_sensitive_data('<DOUANES_CLIENT_ID>') { Siade.credentials[:douanes_client_id].to_s }
   c.filter_sensitive_data('<MI_API_KEY>') { Siade.credentials[:mi_gravitee_api_key].to_s }
   c.filter_sensitive_data('<POLE_EMPLOI_CLIENT_ID>') { Siade.credentials[:pole_emploi_client_id].to_s }
