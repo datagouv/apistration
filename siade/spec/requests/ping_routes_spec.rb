@@ -45,49 +45,58 @@ RSpec.describe 'Ping routes' do
     end
 
     describe 'provider specific ping' do
-      let!(:stubbed_provider_call) do
-        stub_request(:get, "https://particulier.api.gouv.fr#{path_tested}").to_return(
-          status: 200
-        )
-      end
-
-      describe '/api/caf/ping' do
-        let(:route) { '/api/caf/ping' }
-        let(:path_tested) { "/api/v2/composition-familiale?codePostal=#{code_postal}&numeroAllocataire=#{numero_allocataire}" }
-
-        let(:code_postal) { Siade.credentials[:ping_cnaf_postal_code] }
-        let(:numero_allocataire) { Siade.credentials[:ping_cnaf_numero_allocataire] }
-
-        it 'renders 200' do
-          ping
-
-          expect(response).to have_http_status(:ok)
+      describe 'with valid providers' do
+        before do
+          allow(retriever_tested).to receive(:call).and_return(
+            Interactor::Context.new
+          )
         end
 
-        it 'calls cnaf endpoint' do
-          ping
+        describe '/api/caf/ping' do
+          let(:route) { '/api/caf/ping' }
+          let(:retriever_tested) { CNAF::QuotientFamilial }
+          let(:params_tested) do
+            {
+              beneficiary_number: Siade.credentials[:ping_cnaf_numero_allocataire],
+              postal_code: Siade.credentials[:ping_cnaf_postal_code]
+            }
+          end
 
-          expect(stubbed_provider_call).to have_been_requested
+          it 'renders 200' do
+            ping
+
+            expect(response).to have_http_status(:ok)
+          end
+
+          it 'calls valid retriever with params' do
+            ping
+
+            expect(retriever_tested).to have_received(:call).with(params_tested)
+          end
         end
-      end
 
-      describe '/api/impots/ping' do
-        let(:route) { '/api/impots/ping' }
-        let(:path_tested) { "/api/v2/avis-imposition?numeroFiscal=#{numero_fiscal}&referenceAvis=#{reference_avis}" }
+        describe '/api/impots/ping' do
+          let(:route) { '/api/impots/ping' }
 
-        let(:numero_fiscal) { Siade.credentials[:ping_dgfip_svair_numero_fiscal] }
-        let(:reference_avis) { Siade.credentials[:ping_dgfip_svair_reference_avis] }
+          let(:retriever_tested) { DGFIP::SituationIR }
+          let(:params_tested) do
+            {
+              tax_number: Siade.credentials[:ping_dgfip_svair_numero_fiscal],
+              tax_notice_number: Siade.credentials[:ping_dgfip_svair_reference_avis]
+            }
+          end
 
-        it 'renders 200' do
-          ping
+          it 'renders 200' do
+            ping
 
-          expect(response).to have_http_status(:ok)
-        end
+            expect(response).to have_http_status(:ok)
+          end
 
-        it 'calls dgfip svair endpoint' do
-          ping
+          it 'calls valid retriever with params' do
+            ping
 
-          expect(stubbed_provider_call).to have_been_requested
+            expect(retriever_tested).to have_received(:call).with(params_tested)
+          end
         end
       end
     end

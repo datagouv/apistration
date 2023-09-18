@@ -1,14 +1,7 @@
 class UptimeController < APIController
-  skip_before_action :authenticate_user!, only: :show_without_token
-  skip_before_action :authorize_access_to_resource!, only: :show_without_token
-
   def show
-    render_status
-  end
-
-  def show_without_token
-    if valid_provider?
-      render_status
+    if route_recognized?
+      render status: http_code
     else
       render status: :not_found
     end
@@ -18,14 +11,6 @@ class UptimeController < APIController
 
   def mocked_response_for_staging
     render status: :ok
-  end
-
-  def render_status
-    if route_recognized?
-      render status: http_code
-    else
-      render status: :not_found
-    end
   end
 
   def route_recognized?
@@ -72,11 +57,7 @@ class UptimeController < APIController
   end
 
   def route
-    if valid_provider?
-      route_for_provider
-    else
-      route_from_params
-    end
+    route_from_params
   end
 
   def route_from_params
@@ -89,17 +70,6 @@ class UptimeController < APIController
         "/#{raw_route}"
       end
     end
-  end
-
-  def route_for_provider
-    {
-      'caf' => "/api/v2/composition-familiale?codePostal=#{Siade.credentials[:ping_cnaf_postal_code]}&numeroAllocataire=#{Siade.credentials[:ping_cnaf_numero_allocataire]}",
-      'impots' => "/api/v2/avis-imposition?numeroFiscal=#{Siade.credentials[:ping_dgfip_svair_numero_fiscal]}&referenceAvis=#{Siade.credentials[:ping_dgfip_svair_reference_avis]}"
-    }[params[:provider]]
-  end
-
-  def valid_provider?
-    route_for_provider.present?
   end
 
   def request_options

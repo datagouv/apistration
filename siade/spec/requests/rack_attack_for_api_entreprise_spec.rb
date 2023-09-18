@@ -373,10 +373,6 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
       [
         {
           controller: 'uptime',
-          action: 'show_without_token'
-        },
-        {
-          controller: 'uptime',
           action: 'show'
         },
         {
