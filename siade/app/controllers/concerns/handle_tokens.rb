@@ -11,7 +11,7 @@ module HandleTokens
     before_action :set_monitoring_context
     before_action :authorize_access_to_resource!
 
-    after_action :add_user_access_to_logstash
+    after_action :add_user_access_to_logger
 
     rescue_from NotAuthorizedError, NotValidTokenError, with: :user_not_authorized
     rescue_from ::JWT::ExpiredSignature, with: :user_no_longer_authorized
@@ -80,7 +80,7 @@ module HandleTokens
     )
   end
 
-  def add_user_access_to_logstash
+  def add_user_access_to_logger
     return if current_user.blank?
 
     ActiveSupport::Notifications.instrument(
