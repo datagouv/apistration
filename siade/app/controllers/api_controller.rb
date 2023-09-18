@@ -47,6 +47,7 @@ class APIController < ApplicationController
   end
 
   def user_no_longer_authorized(_exception)
+    add_user_access_to_logstash
     render_generic_errors_serializer(ExpiredTokenError, status: 401)
   end
 

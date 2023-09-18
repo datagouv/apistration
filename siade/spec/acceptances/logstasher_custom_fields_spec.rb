@@ -290,14 +290,9 @@ RSpec.describe 'logstasher custom fields', type: :controller do
   end
 
   describe 'with jwt token, on an authenticate controller' do
-    subject(:make_call) do
-      request.headers['Authorization'] = "Bearer #{yes_jwt}"
-
-      get :index, params: { context: 'context', recipient: valid_siret(:recipient), object: 'object' }
-    end
-
     before do
       routes.draw { get 'index' => 'api_entreprise#index' }
+      clean_logstasher_store!
     end
 
     controller(APIEntrepriseController) do
@@ -306,19 +301,53 @@ RSpec.describe 'logstasher custom fields', type: :controller do
       end
     end
 
-    it 'adds jwt info logstasher' do
-      expect(LogStasher).to receive(:build_logstash_event).with(
-        hash_including(
-          'user_access' => hash_including(
-            user: yes_jwt_user.logstash_id,
-            jti: yes_jwt_user.token_id,
-            iat: yes_jwt_user.iat
-          )
-        ),
-        anything
-      )
+    let(:clean_logstasher_store!) do
+      LogStasher.store['user_access'] = {}
+    end
 
-      make_call
+    context 'when token is valid' do
+      subject(:make_call) do
+        request.headers['Authorization'] = "Bearer #{yes_jwt}"
+        get :index, params: { context: 'context', recipient: valid_siret(:recipient), object: 'object' }
+      end
+
+      it 'adds jwt info logstasher' do
+        expect(LogStasher).to receive(:build_logstash_event).with(
+          hash_including(
+            'user_access' => hash_including(
+              user: yes_jwt_user.logstash_id,
+              jti: yes_jwt_user.token_id,
+              iat: yes_jwt_user.iat
+            )
+          ),
+          anything
+        )
+
+        make_call
+      end
+    end
+
+    context 'when token is expired' do
+      subject(:make_call) do
+        request.headers['Authorization'] = "Bearer #{expired_jwt}"
+
+        get :index, params: { context: 'context', recipient: valid_siret(:dgfip), object: 'object' }
+      end
+
+      it 'adds jwt info logstasher' do
+        expect(LogStasher).to receive(:build_logstash_event).with(
+          hash_including(
+            'user_access' => hash_including(
+              user: expired_jwt_user.logstash_id,
+              jti: expired_jwt_user.token_id,
+              iat: expired_jwt_user.iat
+            )
+          ),
+          anything
+        )
+
+        make_call
+      end
     end
   end
 end
