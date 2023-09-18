@@ -1,32 +1,26 @@
 class JwtTokenService
+  include Singleton
+
   DINUM_SIRET = '13002526500013'.freeze
 
-  attr_reader :jwt_token
+  def extract_user(jwt_token)
+    return cached_user(jwt_token) if cached_user(jwt_token).present?
 
-  def initialize(jwt_token)
-    @jwt_token = jwt_token
-  end
-
-  def extract_user
-    return cached_user if cached_user.present?
+    decoded_token = decode_token(jwt_token)
 
     jwt_data = decoded_token.slice(:uid, :roles, :scopes, :jti, :iat, :exp)
 
     jwt_data[:scopes] ||= jwt_data.delete(:roles) if jwt_data[:roles].present?
 
-    jwt_data = if internal_token?
+    jwt_data = if internal_token?(decoded_token[:jti])
                  enhanced_jwt_data_with_token_for_internal_token(jwt_data, decoded_token)
                else
-                 enhanced_jwt_data_with_token_from_database(jwt_data)
+                 enhanced_jwt_data_with_token_from_database(jwt_data, decoded_token)
                end
 
-    build_and_cache_user!(jwt_data)
+    build_and_cache_user!(jwt_token, jwt_data)
   rescue JWT::DecodeError, ActiveRecord::RecordNotFound
     nil
-  end
-
-  def jwt_id
-    decoded_token[:jti]
   end
 
   private
@@ -42,8 +36,8 @@ class JwtTokenService
     jwt_data
   end
 
-  def enhanced_jwt_data_with_token_from_database(jwt_data)
-    token = extract_token_from_database!
+  def enhanced_jwt_data_with_token_from_database(jwt_data, decoded_token)
+    token = extract_token_from_database!(decoded_token)
 
     jwt_data[:siret] = token.siret
     jwt_data[:scopes] = token.scopes
@@ -52,7 +46,7 @@ class JwtTokenService
     jwt_data
   end
 
-  def build_and_cache_user!(jwt_data)
+  def build_and_cache_user!(jwt_token, jwt_data)
     user = JwtUser.new(**jwt_data)
 
     cache.write(jwt_token, user, expires_in: 1.hour)
@@ -60,25 +54,23 @@ class JwtTokenService
     user
   end
 
-  def cached_user
+  def cached_user(jwt_token)
     cache.read(jwt_token)
   end
 
-  def internal_token?
+  def internal_token?(jti)
     [
       JwtUser.debugger_id
-    ].include?(decoded_token[:jti])
+    ].include?(jti)
   end
 
-  def extract_token_from_database!
-    Token.find(jwt_id)
+  def extract_token_from_database!(decoded_token)
+    Token.find(decoded_token[:jti])
   end
 
-  def decoded_token
-    @decoded_token ||= begin
-      decoded_tokens = JWT.decode(jwt_token, hash_secret, true, { verify_expiration: false, algorithm: hash_algo })
-      decoded_tokens.fetch(0).deep_symbolize_keys
-    end
+  def decode_token(jwt_token)
+    decoded_tokens = JWT.decode(jwt_token, hash_secret, true, { verify_expiration: false, algorithm: hash_algo })
+    decoded_tokens.fetch(0).deep_symbolize_keys
   end
 
   def hash_secret

@@ -2,7 +2,7 @@ RSpec.describe JwtTokenService do
   let(:seeds) { Seeds.new }
 
   describe '#extract_user' do
-    subject(:extract_user) { described_class.new(jwt).extract_user }
+    subject(:extract_user) { described_class.instance.extract_user(jwt) }
 
     describe 'with a valid jwt' do
       context 'when it is the debugger uuid' do
@@ -52,7 +52,7 @@ RSpec.describe JwtTokenService do
 
           context 'when user exists in cache (but not in database)' do
             let(:jwt) { TokenFactory.new(['from_cache']).valid(uid: SecureRandom.uuid) }
-            let(:user_from_valid_jwt) { described_class.new(jwt).extract_user }
+            let(:user_from_valid_jwt) { described_class.instance.extract_user(jwt) }
 
             before do
               EncryptedCache.write(jwt, user_from_valid_jwt)

@@ -34,11 +34,11 @@ def forged_jwt
 end
 
 def yes_jwt_user
-  JwtTokenService.new(yes_jwt).extract_user
+  JwtTokenService.instance.extract_user(yes_jwt)
 end
 
 def expired_jwt_user
-  JwtTokenService.new(expired_jwt).extract_user
+  JwtTokenService.instance.extract_user(expired_jwt)
 end
 
 def corrupted_jwt

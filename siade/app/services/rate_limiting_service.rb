@@ -77,7 +77,7 @@ class RateLimitingService
   end
 
   def user_from_jwt(jwt)
-    JwtTokenService.new(jwt).extract_user
+    JwtTokenService.instance.extract_user(jwt)
   end
 
   def whitelist
