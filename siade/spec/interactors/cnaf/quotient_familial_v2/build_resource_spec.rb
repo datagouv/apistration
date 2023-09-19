@@ -88,4 +88,54 @@ RSpec.describe CNAF::QuotientFamilialV2::BuildResource, type: :build_resource do
       )
     end
   end
+
+  describe 'non-regression test: resource without children' do
+    subject { instance.bundled_data.data.to_h }
+
+    let(:body) { read_payload_file('cnaf/quotient_familial_v2/make_request_valid_without_children.json') }
+
+    it do
+      expect(subject).to eq(
+        {
+          allocataires: [
+            {
+              nomNaissance: 'CHAMPION',
+              nomUsuel: 'DU MONDE',
+              prenoms: 'JEAN-PASCAL ROMAIN',
+              anneeDateDeNaissance: '1980',
+              moisDateDeNaissance: '06',
+              jourDateDeNaissance: '12',
+              sexe: 'M'
+            },
+            {
+              nomNaissance: 'NIDOUILLET',
+              nomUsuel: nil,
+              prenoms: 'JOSIANE',
+              anneeDateDeNaissance: '1981',
+              moisDateDeNaissance: '05',
+              jourDateDeNaissance: '02',
+              sexe: 'F'
+            }
+          ],
+          enfants: [],
+          adresse:
+          {
+            identite: 'DU MONDE JEAN-PASCAL',
+            complementInformation: 'APPARTEMENT 2',
+            complementInformationGeographique: nil,
+            numeroLibelleVoie: nil,
+            lieuDit: nil,
+            codePostalVille: '81700 GARREVAQUES',
+            pays: 'FRANCE'
+          },
+          regime: 'CNAF',
+          quotientFamilial: 464,
+          annee: 2023,
+          mois: 6,
+          annee_calcul: 2021,
+          mois_calcul: 3
+        }
+      )
+    end
+  end
 end

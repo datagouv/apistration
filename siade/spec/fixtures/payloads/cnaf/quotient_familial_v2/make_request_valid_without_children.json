@@ -1,0 +1,26 @@
+{
+  "allocataires": [
+    {
+      "nomNaissance": "CHAMPION",
+      "nomUsage": "DU MONDE",
+      "listePrenoms": "JEAN-PASCAL ROMAIN",
+      "dateNaissance": "1980-06-12",
+      "genre": "M"
+    },
+    {
+      "nomNaissance": "NIDOUILLET",
+      "listePrenoms": "JOSIANE",
+      "dateNaissance": "1981-05-02",
+      "genre": "F"
+    }
+  ],
+  "adresse": {
+    "identite": "DU MONDE JEAN-PASCAL",
+    "complementInformation": "APPARTEMENT 2",
+    "codePostalVille": "81700 GARREVAQUES",
+    "pays": "FRANCE"
+  },
+  "quotientFamilial": 464,
+  "annee": 2021,
+  "mois": 3
+}

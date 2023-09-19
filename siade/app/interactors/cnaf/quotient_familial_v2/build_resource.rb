@@ -33,6 +33,8 @@ class CNAF::QuotientFamilialV2::BuildResource < BuildResource
   end
 
   def build_persons_attributes(persons)
+    return [] if persons.nil?
+
     persons.map do |person|
       build_person_attributes(person)
     end
