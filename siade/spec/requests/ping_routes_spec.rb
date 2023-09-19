@@ -71,7 +71,7 @@ RSpec.describe 'Ping routes' do
           it 'calls valid retriever with params' do
             ping
 
-            expect(retriever_tested).to have_received(:call).with(params_tested)
+            expect(retriever_tested).to have_received(:call).with(hash_including(params: params_tested))
           end
         end
 
@@ -95,7 +95,7 @@ RSpec.describe 'Ping routes' do
           it 'calls valid retriever with params' do
             ping
 
-            expect(retriever_tested).to have_received(:call).with(params_tested)
+            expect(retriever_tested).to have_received(:call).with(hash_including(params: params_tested))
           end
         end
       end

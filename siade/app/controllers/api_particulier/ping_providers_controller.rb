@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 class APIParticulier::PingProvidersController < ApplicationController
+  include Cacheable
+
   def show
     if provider_exists?
-      if retriever.call(retriever_params).success?
+      if retrieve_payload_data(retriever).success?
         render status: :ok
       else
         render status: :bad_gateway
@@ -23,8 +25,12 @@ class APIParticulier::PingProvidersController < ApplicationController
     providers_to_organizer_and_params[params[:provider]][:retriever]
   end
 
-  def retriever_params
+  def organizer_params
     providers_to_organizer_and_params[params[:provider]][:params]
+  end
+
+  def operation_id
+    "ping_#{params[:provider]}"
   end
 
   # rubocop:disable Metrics/MethodLength
