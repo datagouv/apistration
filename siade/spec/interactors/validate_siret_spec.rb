@@ -14,6 +14,12 @@ RSpec.describe ValidateSiret, type: :validate_param_interactor do
       it { is_expected.to be_a_success }
     end
 
+    context 'when siret is an integer' do
+      let(:siret) { valid_siret.to_i }
+
+      it { is_expected.to be_a_success }
+    end
+
     context 'when siret is not valid' do
       let(:siret) { invalid_siret }
 

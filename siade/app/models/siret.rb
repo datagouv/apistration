@@ -6,7 +6,7 @@ class Siret
   validates :siret, siret_format: true
 
   def initialize(siret = nil)
-    @siret = siret
+    @siret = siret.try(:to_s)
   end
 
   def to_s
