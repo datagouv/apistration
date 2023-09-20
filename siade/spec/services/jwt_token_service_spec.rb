@@ -26,12 +26,14 @@ RSpec.describe JwtTokenService do
         end
 
         context 'when the uuid is in the database' do
+          let(:expiration_date) { 18.months.from_now.to_i }
+
           let!(:token) do
             seeds.create_token(
               id: uid,
               iat: 1.day.ago.to_i,
               version: '1.0',
-              exp: 18.months.from_now.to_i,
+              exp: expiration_date,
               scopes: ['valid']
             )
           end
@@ -42,6 +44,10 @@ RSpec.describe JwtTokenService do
 
           it 'takes scopes from db, not token' do
             expect(subject.scopes).to eq(['valid'])
+          end
+
+          it 'takes expiration from db, not token' do
+            expect(subject.exp).to eq(expiration_date)
           end
 
           it 'persists user in cache' do

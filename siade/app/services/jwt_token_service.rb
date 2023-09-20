@@ -77,6 +77,7 @@ class JwtTokenService
     jwt_data[:siret] = token.siret
     jwt_data[:scopes] = token.scopes
     jwt_data[:blacklisted] = token.blacklisted?
+    jwt_data[:exp] = token.exp
 
     jwt_data
   end

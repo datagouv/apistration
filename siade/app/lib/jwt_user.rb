@@ -1,5 +1,5 @@
 class JwtUser
-  attr_reader :id, :jti, :scopes, :iat, :siret
+  attr_reader :id, :jti, :scopes, :iat, :siret, :exp
 
   def self.debugger_id
     '00000000-0000-0000-0000-000000000000'
