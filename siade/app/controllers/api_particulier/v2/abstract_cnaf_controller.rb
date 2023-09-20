@@ -1,6 +1,6 @@
 class APIParticulier::V2::AbstractCNAFController < APIParticulierController
   def show
-    organizer = retrieve_payload_data(retriever)
+    organizer = retrieve_payload_data(retriever, cache: true, expires_in: 1.hour)
 
     if organizer.success?
       render json: serialize_data(organizer),
