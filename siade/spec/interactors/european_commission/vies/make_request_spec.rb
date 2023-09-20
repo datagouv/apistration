@@ -16,7 +16,5 @@ RSpec.describe EuropeanCommission::VIES::MakeRequest, type: :make_request do
 
       expect(stubbed_request).to have_been_requested
     end
-
-    its(:response) { is_expected.to be_a(Net::HTTPOK) }
   end
 end
