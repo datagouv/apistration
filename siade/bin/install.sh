@@ -2,8 +2,8 @@
 
 which brew &> /dev/null && brew ls --versions gpgme &> /dev/null || brew install gpgme
 which apt-get &> /dev/null && apt-get install libgpgme11-dev
+which pacman &> /dev/null && pacman -S gnupg gpgme
 find config/gpg_public_keys_for_data_encryption -type f -name "*.asc" -print0 | xargs -0 gpg2 --import
-
 gpg_key_email=`ruby -e 'require "yaml" ; print YAML.load_file("config/encrypt_data_signer_data.yml")["shared"]["signer_email"]'`
 gpg_key_passphrase=`ruby -e 'require "yaml" ; print YAML.load_file("config/encrypt_data_signer_data.yml")["shared"]["signer_passphrase"]'`
 
