@@ -25,6 +25,10 @@ def expired_jwt
   @expired_jwt ||= TokenFactory.new(Scope.all).expired
 end
 
+def yes_jwt_id
+  Seeds.new.yes_jwt_id
+end
+
 def unsigned_jwt
   JwtHelper.jwt(:unsigned)
 end

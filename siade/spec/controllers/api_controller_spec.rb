@@ -163,6 +163,15 @@ RSpec.describe APIController do
         end
       end
 
+      context 'with an expired jwt in request but valid in database' do
+        let(:token) { TokenFactory.new(Scope.all).expired(uid: yes_jwt_id) }
+
+        it 'returns 200' do
+          get :index
+          assert_response 200
+        end
+      end
+
       context 'with an unsigned jwt' do
         let(:token) { unsigned_jwt }
 
