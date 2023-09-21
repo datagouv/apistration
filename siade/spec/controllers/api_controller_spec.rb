@@ -153,10 +153,6 @@ RSpec.describe APIController do
       context 'with an expired jwt' do
         let(:token) { expired_jwt }
 
-        let(:jwt_user) do
-          JwtTokenService.instance.extract_user(expired_jwt)
-        end
-
         it 'returns 401' do
           get :index
           assert_response 401
