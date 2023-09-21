@@ -191,8 +191,8 @@ Le fonctionnement du bac à sable est identique à celui de la véritable API de
 
 Le bac à sable et l'API de production sont appelables par deux adresses distinctes :
 
-- bac à sable : [https://staging.particulier.api.gouv.fr/api](https://staging.particulier.api.gouv.fr/api)
-- production : [https://particulier.api.gouv.fr/api](https://particulier.api.gouv.fr/api)
+- bac à sable : [https://staging.particulier.api.gouv.fr](https://staging.particulier.api.gouv.fr)
+- production : [https://particulier.api.gouv.fr](https://particulier.api.gouv.fr)
 
 Pour récupérer le jeton de production un portail développeur est mis à votre disposition à l'adresse suivante : [https://particulier.api.gouv.fr/compte](https://particulier.api.gouv.fr/compte)
 
