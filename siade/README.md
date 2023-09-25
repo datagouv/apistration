@@ -419,3 +419,18 @@ et permet:
 
 Il y a de même un filtrage sur les status, qui exclut principalement les erreurs
 clients (401, 403, 422)
+
+## Liste des API où on est whitelité
+
+Pour accéder à certaines API nos IP ont été mises sur liste blanche / whitelist.
+
+API Entreprise :
+* Banque de France ;
+* GIP-MDS ;
+* EORI ;
+* MSA
+
+API Particulier :
+* FranceConnect ;
+
+Les contacts peuvent être trouvés dans le CRM.
