@@ -28,7 +28,8 @@ class Seeds
         iat: 1.day.ago.to_i,
         version: '1.0',
         exp: 18.months.from_now.to_i,
-        scopes: Scope.all
+        scopes: Scope.all,
+        extra_info: {}
       }.merge(params)
     )
 
