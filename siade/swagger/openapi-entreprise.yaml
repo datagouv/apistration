@@ -590,6 +590,9 @@ paths:
           siret_qualifelec:
             value: '42054064300376'
             summary: SIRET pour Qualifelec
+          siret_qualiopi:
+            value: '81841109200013'
+            summary: SIRET pour Qualiopi
         required: true
         schema:
           type: string
@@ -1746,6 +1749,9 @@ paths:
           siret_qualifelec:
             value: '42054064300376'
             summary: SIRET pour Qualifelec
+          siret_qualiopi:
+            value: '81841109200013'
+            summary: SIRET pour Qualiopi
         required: true
         schema:
           type: string
@@ -4077,6 +4083,9 @@ paths:
           siret_qualifelec:
             value: '42054064300376'
             summary: SIRET pour Qualifelec
+          siret_qualiopi:
+            value: '81841109200013'
+            summary: SIRET pour Qualiopi
         required: true
         schema:
           type: string
@@ -8564,6 +8573,9 @@ paths:
           siret_qualifelec:
             value: '42054064300376'
             summary: SIRET pour Qualifelec
+          siret_qualiopi:
+            value: '81841109200013'
+            summary: SIRET pour Qualiopi
         required: true
         schema:
           type: string
@@ -9802,6 +9814,9 @@ paths:
           siret_qualifelec:
             value: '42054064300376'
             summary: SIRET pour Qualifelec
+          siret_qualiopi:
+            value: '81841109200013'
+            summary: SIRET pour Qualiopi
         required: true
         schema:
           type: string
@@ -14279,6 +14294,9 @@ paths:
           siret_qualifelec:
             value: '42054064300376'
             summary: SIRET pour Qualifelec
+          siret_qualiopi:
+            value: '81841109200013'
+            summary: SIRET pour Qualiopi
         required: true
         schema:
           type: string
@@ -14879,6 +14897,9 @@ paths:
           siret_qualifelec:
             value: '42054064300376'
             summary: SIRET pour Qualifelec
+          siret_qualiopi:
+            value: '81841109200013'
+            summary: SIRET pour Qualiopi
         required: true
         schema:
           type: string
@@ -15507,6 +15528,9 @@ paths:
           siret_qualifelec:
             value: '42054064300376'
             summary: SIRET pour Qualifelec
+          siret_qualiopi:
+            value: '81841109200013'
+            summary: SIRET pour Qualiopi
         required: true
         schema:
           type: string
@@ -16800,6 +16824,9 @@ paths:
           siret_qualifelec:
             value: '42054064300376'
             summary: SIRET pour Qualifelec
+          siret_qualiopi:
+            value: '81841109200013'
+            summary: SIRET pour Qualiopi
         required: true
         schema:
           type: string
@@ -23353,6 +23380,9 @@ paths:
           siret_qualifelec:
             value: '42054064300376'
             summary: SIRET pour Qualifelec
+          siret_qualiopi:
+            value: '81841109200013'
+            summary: SIRET pour Qualiopi
         required: true
         schema:
           type: string
@@ -24170,6 +24200,9 @@ paths:
           siret_qualifelec:
             value: '42054064300376'
             summary: SIRET pour Qualifelec
+          siret_qualiopi:
+            value: '81841109200013'
+            summary: SIRET pour Qualiopi
         required: true
         schema:
           type: string
@@ -24933,6 +24966,9 @@ paths:
           siret_qualifelec:
             value: '42054064300376'
             summary: SIRET pour Qualifelec
+          siret_qualiopi:
+            value: '81841109200013'
+            summary: SIRET pour Qualiopi
         required: true
         schema:
           type: string
@@ -25358,6 +25394,9 @@ paths:
           siret_qualifelec:
             value: '42054064300376'
             summary: SIRET pour Qualifelec
+          siret_qualiopi:
+            value: '81841109200013'
+            summary: SIRET pour Qualiopi
         required: true
         schema:
           type: string
