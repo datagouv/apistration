@@ -44,7 +44,7 @@ jobs:
           cache-version: 321
 
       - name: Install dependencies
-        run: sudo apt-get install libmagic-dev libgpgme11-dev
+        run: sudo apt-get install libgpgme11-dev
 
       - name: Run install.sh
         run: ./bin/install.sh
