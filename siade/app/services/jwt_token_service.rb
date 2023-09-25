@@ -74,6 +74,8 @@ class JwtTokenService
   def enhanced_jwt_data_with_token_from_database(jwt_data, decoded_token)
     token = extract_token_from_database!(decoded_token)
 
+    monitor_migrated_token(token)
+
     jwt_data[:siret] = token.siret
     jwt_data[:scopes] = token.scopes
     jwt_data[:blacklisted] = token.blacklisted?
@@ -115,5 +117,17 @@ class JwtTokenService
 
   def hash_algo
     Siade.credentials[:jwt_hash_algo]
+  end
+
+  def monitor_migrated_token(token)
+    return if token.legacy_token_migrated?
+
+    MonitoringService.instance.track(
+      'info',
+      'Token migrated detected',
+      {
+        id: token.id
+      }
+    )
   end
 end

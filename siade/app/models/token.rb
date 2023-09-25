@@ -10,6 +10,6 @@ class Token < ApplicationRecord
   end
 
   def legacy_token_migrated?
-    legacy_token? && extra_info['legacy_token_migrated'].present?
+    !(legacy_token? && extra_info['legacy_token_migrated'].present?)
   end
 end

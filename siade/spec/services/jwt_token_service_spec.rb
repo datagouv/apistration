@@ -26,13 +26,16 @@ RSpec.describe JwtTokenService do
         end
 
         context 'when the uuid is in the database' do
+          let(:monitoring_service) { instance_double(MonitoringService, track: nil) }
           let(:expiration_date) { 18.months.from_now.to_i }
+          let(:extra_info) { {} }
 
           let!(:token) do
             seeds.create_token(
               id: uid,
               iat: 1.day.ago.to_i,
               version: '1.0',
+              extra_info:,
               exp: expiration_date,
               scopes: ['valid']
             )
@@ -54,6 +57,10 @@ RSpec.describe JwtTokenService do
             subject
 
             expect(EncryptedCache.read(jwt)).to be_present
+          end
+
+          it 'does not track unmigrated token' do
+            expect(monitoring_service).not_to have_received(:track)
           end
 
           context 'when user exists in cache (but not in database)' do
@@ -83,6 +90,24 @@ RSpec.describe JwtTokenService do
 
             it 'takes scopes from db, not token' do
               expect(subject.scopes).to eq(['valid'])
+            end
+          end
+
+          describe 'when token is a migrated token' do
+            context 'when it is used for the first time' do
+              let(:extra_info) { { legacy_token_id: 1234, legacy_token_migrated: false } }
+
+              it 'tracks the migrated token' do
+                expect(monitoring_service).not_to have_received(:track)
+              end
+            end
+
+            context 'when it is not used for the first time' do
+              let(:extra_info) { { legacy_token_id: 1234, legacy_token_migrated: true } }
+
+              it 'does not track the fully migrated token' do
+                expect(monitoring_service).not_to have_received(:track)
+              end
             end
           end
         end
