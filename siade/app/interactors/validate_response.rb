@@ -44,7 +44,7 @@ class ValidateResponse < ApplicationInteractor
       http_response_code: context.response.code,
       http_response_body: context.response.body,
       http_response_headers: context.response.to_hash,
-      encrypted_params: encrypt_params
+      encrypted_params: encrypt_params.to_s
     })
 
     fail_with_error!(error)
