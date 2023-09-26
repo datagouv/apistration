@@ -6,3 +6,15 @@ test:
       params:
         beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
         postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
+shared:
+  api_particulier:
+    caf:
+      retriever: 'CNAF::QuotientFamilial'
+      params:
+        beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
+        postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
+    impots:
+      retriever: 'DGFIP::SituationIR'
+      params:
+        tax_number: '<%= Siade.credentials[:ping_dgfip_svair_numero_fiscal] %>'
+        tax_notice_number: '<%= Siade.credentials[:ping_dgfip_svair_reference_avis] %>'
