@@ -420,7 +420,7 @@ et permet:
 Il y a de même un filtrage sur les status, qui exclut principalement les erreurs
 clients (401, 403, 422)
 
-## Liste des API où on est whitelité
+## Liste des API où on est whitelistés
 
 Pour accéder à certaines API nos IP ont été mises sur liste blanche / whitelist.
 
@@ -432,5 +432,7 @@ API Entreprise :
 
 API Particulier :
 * FranceConnect ;
+* Quotient Familial v2 ;
+* Complémentaire Santé Solidaire
 
 Les contacts peuvent être trouvés dans le CRM.
