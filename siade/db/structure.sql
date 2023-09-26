@@ -39,3 +39,11 @@ CREATE TABLE public.authorization_requests (
 );
 
 ALTER TABLE ONLY public.authorization_requests ADD CONSTRAINT authorization_requests_pkey PRIMARY KEY (id);
+
+CREATE TABLE public.access_logs (
+  timestamp timestamp with time zone,
+  route character varying,
+  status character varying,
+  path character varying,
+  cached boolean
+);
