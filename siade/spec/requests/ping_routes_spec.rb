@@ -74,6 +74,16 @@ RSpec.describe 'Ping routes' do
           end
         end
       end
+
+      describe 'with invalid provider' do
+        let(:route) { '/api/invalid_provider/ping' }
+
+        it 'renders 404' do
+          ping
+
+          expect(response).to have_http_status(:not_found)
+        end
+      end
     end
   end
 end
