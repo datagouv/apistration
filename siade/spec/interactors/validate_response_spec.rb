@@ -1,5 +1,5 @@
 RSpec.describe ValidateResponse do
-  subject { DummyValidateResponse.call(params:, response:) }
+  subject { DummyValidateResponse.call(params:, response:, operation_id:) }
 
   before(:all) do
     class DummyValidateResponse < ValidateResponse
@@ -24,6 +24,8 @@ RSpec.describe ValidateResponse do
     }
   end
 
+  let(:operation_id) { 'test' }
+
   context 'with a OK response' do
     let(:response) { instance_double(Net::HTTPOK, code: '200') }
 
@@ -41,25 +43,53 @@ RSpec.describe ValidateResponse do
 
     it { is_expected.to be_a_failure }
 
-    it 'adds context to monitoring, with encrypted params' do
-      subject
+    context 'when it is not an API Particulier operation_id' do
+      let(:operation_id) { 'whatever' }
 
-      error = subject.errors.first
+      it 'does not adds encrypted params to monitoring private context' do
+        subject
 
-      expect(error.monitoring_private_context).to eq(
-        {
-          http_response_code: '500',
-          http_response_body: error_body,
-          http_response_headers: { 'header' => 'value' },
-          encrypted_params: 'encrypted_data'
-        }
-      )
+        error = subject.errors.first
+
+        expect(error.monitoring_private_context).to eq(
+          {
+            http_response_code: '500',
+            http_response_body: error_body,
+            http_response_headers: { 'header' => 'value' }
+          }
+        )
+      end
+
+      it 'does not call encrypt data service with params as json' do
+        expect(EncryptData).not_to receive(:new).with(params.to_json)
+
+        subject
+      end
     end
 
-    it 'calls encrypt data service with params as json' do
-      expect(EncryptData).to receive(:new).with(params.to_json)
+    context 'when it is an API Particulier operation_id' do
+      let(:operation_id) { 'api_particulier_whatever' }
 
-      subject
+      it 'adds context to monitoring, with encrypted params' do
+        subject
+
+        error = subject.errors.first
+
+        expect(error.monitoring_private_context).to eq(
+          {
+            http_response_code: '500',
+            http_response_body: error_body,
+            http_response_headers: { 'header' => 'value' },
+            encrypted_params: 'encrypted_data'
+          }
+        )
+      end
+
+      it 'calls encrypt data service with params as json' do
+        expect(EncryptData).to receive(:new).with(params.to_json)
+
+        subject
+      end
     end
   end
 end
