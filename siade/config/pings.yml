@@ -1,0 +1,8 @@
+---
+test:
+  api_kind:
+    with_retriever:
+      retriever: 'CNAF::QuotientFamilial'
+      params:
+        beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
+        postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
