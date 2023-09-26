@@ -45,7 +45,6 @@ namespace :v2, constraints: APIEntrepriseDomainConstraint.new  do
 end
 
 scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_and_more: true) do
-
   get 'urssaf/unites_legales/:siren/attestation_vigilance', to: 'api_entreprise/v3_and_more/acoss/attestations_sociales#show'
 
   namespace :ademe do
@@ -150,5 +149,6 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
 end
 
 get 'proxy/files/:uuid', to: 'api_entreprise/proxied_files#show', constraints: APIEntrepriseDomainConstraint.new
+get 'ping/*provider_with_source' => 'api_entreprise/ping_providers#show', constraints: APIEntrepriseDomainConstraint.new
 
 mount Rswag::Api::Engine  => '/v3', constraints: APIEntrepriseDomainConstraint.new

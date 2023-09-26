@@ -18,3 +18,8 @@ shared:
       params:
         tax_number: '<%= Siade.credentials[:ping_dgfip_svair_numero_fiscal] %>'
         tax_notice_number: '<%= Siade.credentials[:ping_dgfip_svair_reference_avis] %>'
+  api_entreprise:
+    insee/sirene:
+      retriever: 'INSEE::Etablissement'
+      params:
+        siret: '30613890002979'

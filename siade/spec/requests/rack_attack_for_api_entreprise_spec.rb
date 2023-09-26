@@ -386,6 +386,10 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
         {
           controller: 'reload_mock_backend',
           action: 'create'
+        },
+        {
+          controller: 'api_entreprise/ping_providers',
+          action: 'show'
         }
       ]
     end
