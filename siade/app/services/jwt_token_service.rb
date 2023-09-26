@@ -4,7 +4,12 @@ class JwtTokenService
   DINUM_SIRET = '13002526500013'.freeze
 
   def extract_user(jwt_token)
-    return cached_user(jwt_token) if cached_user(jwt_token).present?
+    cached_token = cached_user(jwt_token)
+
+    if cached_token.present?
+      add_user_access_to_logger(cached_token)
+      return cached_user(jwt_token)
+    end
 
     decoded_token = decode_token(jwt_token)
 

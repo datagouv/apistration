@@ -325,6 +325,33 @@ RSpec.describe 'logstasher custom fields', type: :controller do
 
         make_call
       end
+
+      context 'when token is cached' do
+        before do
+          JwtTokenService.instance.extract_user(yes_jwt)
+
+          reclean_logstasher_store!
+        end
+
+        let(:reclean_logstasher_store!) do
+          LogStasher.store['user_access'] = {}
+        end
+
+        it 'adds jwt info logstasher' do
+          expect(LogStasher).to receive(:build_logstash_event).with(
+            hash_including(
+              'user_access' => hash_including(
+                user: yes_jwt_user.logstash_id,
+                jti: yes_jwt_user.token_id,
+                iat: yes_jwt_user.iat
+              )
+            ),
+            anything
+          )
+
+          make_call
+        end
+      end
     end
 
     context 'when token is expired' do
