@@ -32,25 +32,13 @@ class PingService
   end
 
   def status
-    if success?
-      :ok
-    else
-      :bad_gateway
-    end
+    @status ||= ping_driver.new(ping_config.fetch(:driver_params)).perform
   rescue KeyError
     :not_found
   end
 
-  def success?
-    @success ||= retriever.call(params: retriever_params, operation_id:).success?
-  end
-
-  def retriever
-    Kernel.const_get(ping_config.fetch(:retriever))
-  end
-
-  def retriever_params
-    ping_config.fetch(:params, {}).transform_keys(&:to_sym)
+  def ping_driver
+    Kernel.const_get("#{ping_config.fetch(:kind).classify}PingDriver")
   end
 
   def operation_id

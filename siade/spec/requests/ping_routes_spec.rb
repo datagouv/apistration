@@ -36,13 +36,15 @@ RSpec.describe 'Ping routes' do
           )
         end
 
-        Rails.application.config_for('pings')['api_entreprise'].each do |provider, _config|
+        Rails.application.config_for('pings')['api_entreprise'].each do |provider, config|
           ping_service = PingService.new('api_entreprise', provider)
 
           describe "/ping/#{provider}" do
             let(:route) { "/ping/#{provider}" }
-            let(:retriever_tested) { ping_service.send(:retriever) }
-            let(:params_tested) { ping_service.send(:retriever_params) }
+            let(:ping_driver) { ping_service.send(:ping_driver).new(config.fetch(:driver_params)) }
+
+            let(:retriever_tested) { ping_driver.send(:retriever) }
+            let(:params_tested) { ping_driver.send(:retriever_params) }
 
             it 'renders 200' do
               ping
@@ -94,13 +96,15 @@ RSpec.describe 'Ping routes' do
           )
         end
 
-        Rails.application.config_for('pings')['api_particulier'].each do |provider, _config|
+        Rails.application.config_for('pings')['api_particulier'].each do |provider, config|
           ping_service = PingService.new('api_particulier', provider)
 
           describe "/api/#{provider}/ping" do
             let(:route) { "/api/#{provider}/ping" }
-            let(:retriever_tested) { ping_service.send(:retriever) }
-            let(:params_tested) { ping_service.send(:retriever_params) }
+            let(:ping_driver) { ping_service.send(:ping_driver).new(config.fetch(:driver_params)) }
+
+            let(:retriever_tested) { ping_driver.send(:retriever) }
+            let(:params_tested) { ping_driver.send(:retriever_params) }
 
             it 'renders 200' do
               ping

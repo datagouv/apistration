@@ -33,30 +33,27 @@ RSpec.describe PingService, type: :service do
     context 'with valid identifier' do
       let(:identifier) { 'with_retriever' }
       let(:retriever) { CNAF::QuotientFamilial }
-      let(:interactor_context) { Interactor::Context.new }
+      let(:ping_driver) { instance_double(RetrieverPingDriver, perform: status) }
+      let(:status) { :whatever }
 
       before do
-        allow(retriever).to receive(:call).and_return(
-          interactor_context
-        )
+        allow(RetrieverPingDriver).to receive(:new).and_return(ping_driver)
       end
 
-      it 'calls the correct retriever with params' do
+      it 'calls the driver with driver params' do
         make_ping
 
-        expect(retriever).to have_received(:call).with(
+        expect(RetrieverPingDriver).to have_received(:new).with(
+          retriever: 'CNAF::QuotientFamilial',
           params: {
             beneficiary_number: Siade.credentials[:ping_cnaf_numero_allocataire],
             postal_code: Siade.credentials[:ping_cnaf_postal_code]
-          },
-          operation_id: "ping_#{api_kind}_#{identifier}"
+          }
         )
       end
 
-      context 'when retriever is successful' do
-        before do
-          allow(interactor_context).to receive(:success?).and_return(true)
-        end
+      context 'when driver is successful' do
+        let(:status) { :ok }
 
         it do
           expect(make_ping).to eq({
@@ -66,10 +63,8 @@ RSpec.describe PingService, type: :service do
         end
       end
 
-      context 'when retriever is not successful' do
-        before do
-          allow(interactor_context).to receive(:success?).and_return(false)
-        end
+      context 'when driver is not successful' do
+        let(:status) { :bad_gateway }
 
         it do
           expect(make_ping).to eq({
@@ -91,10 +86,10 @@ RSpec.describe PingService, type: :service do
             })
           end
 
-          it 'does not call the retriever' do
+          it 'does not call the driver' do
             make_ping
 
-            expect(retriever).not_to have_received(:call)
+            expect(ping_driver).not_to have_received(:perform)
           end
 
           it do
@@ -110,10 +105,8 @@ RSpec.describe PingService, type: :service do
             Rails.cache.delete(cache_key)
           end
 
-          context 'when retriever is successful' do
-            before do
-              allow(interactor_context).to receive(:success?).and_return(true)
-            end
+          context 'when driver is successful' do
+            let(:status) { :ok }
 
             it do
               expect(make_ping).to eq({
@@ -134,10 +127,8 @@ RSpec.describe PingService, type: :service do
             end
           end
 
-          context 'when retriever is not successful' do
-            before do
-              allow(interactor_context).to receive(:success?).and_return(false)
-            end
+          context 'when driver is not successful' do
+            let(:status) { :bad_gateway }
 
             it do
               expect(make_ping).to eq({
