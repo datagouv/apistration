@@ -6,6 +6,12 @@ test:
       params:
         beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
         postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
+    with_retriever_and_cache:
+      retriever: 'CNAF::QuotientFamilial'
+      cache: <%= 5.minutes %>
+      params:
+        beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
+        postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
 shared:
   api_particulier:
     caf:

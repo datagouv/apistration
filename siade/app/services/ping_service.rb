@@ -7,13 +7,21 @@ class PingService
   end
 
   def perform
+    return cached_response if cached_response
+
+    write_cache if cacheable?
+
+    data
+  end
+
+  private
+
+  def data
     {
       status:,
       json:
     }
   end
-
-  private
 
   def json
     return {} if status == :not_found
@@ -47,6 +55,32 @@ class PingService
 
   def operation_id
     "ping_#{api_kind}_#{identifier}"
+  end
+
+  alias :cache_key :operation_id
+
+  def cacheable?
+    status == :ok && cache_enabled?
+  end
+
+  def write_cache
+    cache.write(cache_key, data, expires_in: cache_expires_in)
+  end
+
+  def cached_response
+    cache.read(cache_key)
+  end
+
+  def cache_expires_in
+    ping_config.fetch(:cache)
+  end
+
+  def cache_enabled?
+    ping_config.fetch(:cache, nil).present?
+  end
+
+  def cache
+    Rails.cache
   end
 
   def ping_config
