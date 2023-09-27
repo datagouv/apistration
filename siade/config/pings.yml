@@ -16,6 +16,13 @@ test:
         params:
           beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
           postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
+    with_access_logs:
+      kind: 'access_logs'
+      driver_params:
+        period: <%= 5.minutes %>
+        routes:
+          - 'api_kind/api1/source1#show'
+          - 'api_kind/api2/source2#show'
 shared:
   api_particulier:
     caf:
@@ -42,3 +49,11 @@ shared:
         retriever: 'INSEE::Etablissement'
         params:
           siret: '30613890002979'
+    urssaf/attestation_sociale:
+      kind: 'access_logs'
+      cache: <%= 5.minutes %>
+      driver_params:
+        period: <%= 10.minutes %>
+        routes:
+          - 'api_entreprise/v3_and_more/acoss/attestations_sociales#show'
+
