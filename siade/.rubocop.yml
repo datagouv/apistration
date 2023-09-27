@@ -25,6 +25,7 @@ AllCops:
     - "lib/siade/v2/**/*"
     - "spec/lib/siade/v2/**/*"
     - "sandbox/**/*"
+    - "spec/requests/ping_routes_spec.rb"
 
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
