@@ -2,33 +2,43 @@
 test:
   api_kind:
     with_retriever:
-      retriever: 'CNAF::QuotientFamilial'
-      params:
-        beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
-        postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
+      kind: 'retriever'
+      driver_params:
+        retriever: 'CNAF::QuotientFamilial'
+        params:
+          beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
+          postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
     with_retriever_and_cache:
-      retriever: 'CNAF::QuotientFamilial'
+      kind: 'retriever'
       cache: <%= 5.minutes %>
-      params:
-        beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
-        postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
+      driver_params:
+        retriever: 'CNAF::QuotientFamilial'
+        params:
+          beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
+          postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
 shared:
   api_particulier:
     caf:
-      retriever: 'CNAF::QuotientFamilial'
+      kind: 'retriever'
       cache: <%= 2.minutes %>
-      params:
-        beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
-        postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
+      driver_params:
+        retriever: 'CNAF::QuotientFamilial'
+        params:
+          beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
+          postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
     impots:
-      retriever: 'DGFIP::SituationIR'
+      kind: 'retriever'
       cache: <%= 2.minutes %>
-      params:
-        tax_number: '<%= Siade.credentials[:ping_dgfip_svair_numero_fiscal] %>'
-        tax_notice_number: '<%= Siade.credentials[:ping_dgfip_svair_reference_avis] %>'
+      driver_params:
+        retriever: 'DGFIP::SituationIR'
+        params:
+          tax_number: '<%= Siade.credentials[:ping_dgfip_svair_numero_fiscal] %>'
+          tax_notice_number: '<%= Siade.credentials[:ping_dgfip_svair_reference_avis] %>'
   api_entreprise:
     insee/sirene:
-      retriever: 'INSEE::Etablissement'
+      kind: 'retriever'
       cache: <%= 2.minutes %>
-      params:
-        siret: '30613890002979'
+      driver_params:
+        retriever: 'INSEE::Etablissement'
+        params:
+          siret: '30613890002979'
