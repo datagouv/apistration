@@ -7,6 +7,23 @@ class PingService
   end
 
   def perform
+    {
+      status:,
+      json:
+    }
+  end
+
+  private
+
+  def json
+    return {} if status == :not_found
+
+    {
+      last_update: Time.zone.now
+    }
+  end
+
+  def status
     if success?
       :ok
     else
@@ -16,10 +33,8 @@ class PingService
     :not_found
   end
 
-  private
-
   def success?
-    retriever.call(params: retriever_params, operation_id:).success?
+    @success ||= retriever.call(params: retriever_params, operation_id:).success?
   end
 
   def retriever

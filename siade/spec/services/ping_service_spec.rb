@@ -1,13 +1,28 @@
 RSpec.describe PingService, type: :service do
+  before do
+    Timecop.freeze
+  end
+
+  after do
+    Timecop.return
+  end
+
   describe '#perform' do
     subject(:make_ping) { described_class.new(api_kind, identifier).perform }
 
     let(:api_kind) { 'api_kind' }
 
+    let(:now) { Time.zone.now }
+
     context 'with unknown identifier' do
       let(:identifier) { 'unknown' }
 
-      it { is_expected.to eq(:not_found) }
+      it do
+        expect(make_ping).to eq({
+          status: :not_found,
+          json: {}
+        })
+      end
     end
 
     context 'with valid identifier' do
@@ -38,7 +53,14 @@ RSpec.describe PingService, type: :service do
           allow(interactor_context).to receive(:success?).and_return(true)
         end
 
-        it { is_expected.to eq(:ok) }
+        it do
+          expect(make_ping).to eq({
+            status: :ok,
+            json: {
+              last_update: now
+            }
+          })
+        end
       end
 
       context 'when retriever is not successful' do
@@ -46,7 +68,14 @@ RSpec.describe PingService, type: :service do
           allow(interactor_context).to receive(:success?).and_return(false)
         end
 
-        it { is_expected.to eq(:bad_gateway) }
+        it do
+          expect(make_ping).to eq({
+            status: :bad_gateway,
+            json: {
+              last_update: now
+            }
+          })
+        end
       end
     end
   end
