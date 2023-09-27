@@ -15,7 +15,7 @@ RSpec.describe PingService, type: :service do
     let(:now) { Time.zone.now }
     let(:ok_payload) do
       {
-        last_update: now,
+        last_update: now
       }
     end
 

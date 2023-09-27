@@ -57,7 +57,7 @@ class PingService
     "ping_#{api_kind}_#{identifier}"
   end
 
-  alias :cache_key :operation_id
+  alias cache_key operation_id
 
   def cacheable?
     status == :ok && cache_enabled?

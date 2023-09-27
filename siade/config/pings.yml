@@ -16,16 +16,19 @@ shared:
   api_particulier:
     caf:
       retriever: 'CNAF::QuotientFamilial'
+      cache: <%= 2.minutes %>
       params:
         beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
         postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
     impots:
       retriever: 'DGFIP::SituationIR'
+      cache: <%= 2.minutes %>
       params:
         tax_number: '<%= Siade.credentials[:ping_dgfip_svair_numero_fiscal] %>'
         tax_notice_number: '<%= Siade.credentials[:ping_dgfip_svair_reference_avis] %>'
   api_entreprise:
     insee/sirene:
       retriever: 'INSEE::Etablissement'
+      cache: <%= 2.minutes %>
       params:
         siret: '30613890002979'
