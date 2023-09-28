@@ -11,11 +11,11 @@ class AccessLogPingDriver < ApplicationPingDriver
     AccessLog.where(
       route: routes,
       status: '200',
-      timestamp: (beggining_of_period..)
+      timestamp: (beginning_of_period..)
     ).limit(1)
   end
 
-  def beggining_of_period
+  def beginning_of_period
     Time.zone.now - period
   end
 
