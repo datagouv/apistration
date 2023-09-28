@@ -52,12 +52,11 @@ class MI::Associations::ValidateResponse < ValidateResponse
   def juridically_an_asso?
     return false unless xml_body_as_hash[:asso][:identite]
 
-    if xml_body_as_hash[:asso][:identite][:regime] == 'loi1901'
-      monitor_association_without_rna(id_param)
-      true
-    else
-      false
-    end
+    code_categorie_juridique = xml_body_as_hash[:asso][:identite][:id_forme_juridique]
+
+    monitor_association_without_rna(id_param) if xml_body_as_hash[:asso][:identite][:regime] == 'loi1901'
+
+    %w[9220 9230 9260].include?(code_categorie_juridique)
   end
 
   def not_found_in_body?

@@ -76,7 +76,7 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
           its(:errors) { is_expected.to be_empty }
         end
 
-        context 'when it is an asso before 2009 wihtout any updates and thus without RNA ID' do
+        context 'when it is an asso before 2009 without any updates and thus without RNA ID' do
           let(:body) do
             '<asso>' \
               '<identite>' \
@@ -86,17 +86,23 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
               '<regime>' \
               'loi1901' \
               '</regime>' \
+              '<id_forme_juridique>' \
+              "#{code_asso}" \
+              '</id_forme_juridique>' \
               '</identite>' \
               '</asso>'
           end
 
-          it { is_expected.to be_a_success }
+          %w[9220 9230 9260].each do |code_asso|
+            let(:code_asso) { code_asso }
+            it { is_expected.to be_a_success }
 
-          its(:errors) { is_expected.to be_empty }
+            its(:errors) { is_expected.to be_empty }
+          end
         end
       end
 
-      context 'with a body containing NotFound message' do
+      context 'with a body contning NotFound message' do
         let(:body) do
           '<asso>' \
             '<erreur>' \
