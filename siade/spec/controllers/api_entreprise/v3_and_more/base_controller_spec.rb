@@ -180,6 +180,10 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
           'keykey'
         end
 
+        def operation_id
+          'operation_id'
+        end
+
         def organizer_params
           {
             very: :parameters
@@ -220,12 +224,13 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
           call!
         end
 
-        it 'calls the retriever directly with parameters' do
+        it 'calls the retriever with parameters and operation id' do
           expect(DummyRetrieverOrganizer)
             .to receive(:call)
             .with(
               hash_including(
-                params: { very: :parameters }
+                params: { very: :parameters },
+                operation_id: 'operation_id'
               )
             )
 
@@ -265,7 +270,10 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
             .to receive(:call)
             .with({
               retriever_organizer: DummyRetrieverOrganizer,
-              retriever_params: { very: :parameters },
+              retriever_params: {
+                params: { very: :parameters },
+                operation_id: 'operation_id'
+              },
               cache_key: 'keykey',
               expires_in: 1.hour
             })

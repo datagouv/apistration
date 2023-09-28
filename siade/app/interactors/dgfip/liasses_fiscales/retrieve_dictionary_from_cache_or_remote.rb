@@ -25,7 +25,9 @@ class DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote < ApplicationI
 
   def retriever_params
     {
-      year:
+      params: {
+        year:
+      }
     }
   end
 

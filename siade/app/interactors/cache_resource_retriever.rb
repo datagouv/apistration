@@ -20,7 +20,7 @@ class CacheResourceRetriever < ApplicationInteractor
   end
 
   def build_cache_key
-    "#{retriever_organizer.to_s.tableize}:#{retriever_params.to_query}"
+    "#{retriever_organizer.to_s.tableize}:#{retriever_params.fetch(:params).to_query}"
   end
 
   def cache_expiration_in_seconds
@@ -51,7 +51,7 @@ class CacheResourceRetriever < ApplicationInteractor
   end
 
   def call_and_cache
-    context.retriever = retriever_organizer.call(params: context.retriever_params)
+    context.retriever = retriever_organizer.call(context.retriever_params)
 
     wrap_retriever
     cache_retriever

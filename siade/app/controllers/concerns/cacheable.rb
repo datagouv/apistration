@@ -12,7 +12,7 @@ module Cacheable
     if cache && !bypass_cache?
       @cached_retriever = CacheResourceRetriever.call(
         retriever_organizer: retriever,
-        retriever_params: organizer_params,
+        retriever_params:,
         cache_key:,
         expires_in:
       )
@@ -21,12 +21,19 @@ module Cacheable
 
       @cached_retriever
     else
-      retriever.call(params: organizer_params, operation_id:)
+      retriever.call(retriever_params)
     end
   end
 
   def cache_key
     fail NotImplementedError
+  end
+
+  def retriever_params
+    {
+      params: organizer_params,
+      operation_id:
+    }
   end
 
   def bypass_cache?

@@ -3,8 +3,10 @@ RSpec.describe CacheResourceRetriever do
 
   let(:retriever_params) do
     {
-      such: :param,
-      one: :more
+      params: {
+        such: :param,
+        one: :more
+      }
     }
   end
 
@@ -13,7 +15,7 @@ RSpec.describe CacheResourceRetriever do
   end
 
   let(:cache_key) do
-    "#{retriever_organizer.to_s.tableize}:#{retriever_params.to_query}"
+    "#{retriever_organizer.to_s.tableize}:#{retriever_params.fetch(:params).to_query}"
   end
 
   context 'when data had been cached' do
@@ -81,7 +83,7 @@ RSpec.describe CacheResourceRetriever do
     before do
       EncryptedCache.write(cache_key, nil)
 
-      allow(retriever_organizer).to receive(:call).with(params: retriever_params).and_return(organizer_result)
+      allow(retriever_organizer).to receive(:call).with(retriever_params).and_return(organizer_result)
     end
 
     context 'when the call to the provider is a success' do
