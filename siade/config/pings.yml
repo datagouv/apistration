@@ -63,5 +63,10 @@ shared:
         retriever: 'Infogreffe::ExtraitsRCS'
         params:
           siren: '831386297'
-
-
+    inpi/rne:
+      kind: 'retriever'
+      cache: <%= 10.minutes %>
+      driver_params:
+        retriever: 'INPI::RNE::BeneficiairesEffectifs'
+        params:
+          siren: '900225095'
