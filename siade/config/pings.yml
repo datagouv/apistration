@@ -70,3 +70,13 @@ shared:
         retriever: 'INPI::RNE::BeneficiairesEffectifs'
         params:
           siren: '900225095'
+
+    djepva/api-association:
+      kind: 'retriever'
+      cache: <%= 5.minutes %>
+      driver_params:
+        retriever: 'DJEPVA::UniteLegale'
+        params:
+          id: 'W131015526'
+
+
