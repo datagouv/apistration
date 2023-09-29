@@ -87,3 +87,10 @@ shared:
         params:
           siren: '418166096'
 
+    cnetp/attestation_cotisations_conges_payes_chomage_intemperies:
+      kind: 'retriever'
+      cache: <%= 5.minutes %>
+      driver_params:
+        retriever: 'CNETP::AttestationCotisationsCongesPayesChomageIntemperies'
+        params:
+          siren: '811214428'
