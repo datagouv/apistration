@@ -56,4 +56,12 @@ shared:
         period: <%= 10.minutes %>
         routes:
           - 'api_entreprise/v3_and_more/acoss/attestations_sociales#show'
+    infogreffe/rcs:
+      kind: 'retriever'
+      cache: <%= 2.minutes %>
+      driver_params:
+        retriever: 'Infogreffe::ExtraitsRCS'
+        params:
+          siren: '831386297'
+
 
