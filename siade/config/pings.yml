@@ -79,4 +79,11 @@ shared:
         params:
           id: 'W131015526'
 
+    banque_de_france/bilans:
+      kind: 'retriever'
+      cache: <%= 10.minutes %>
+      driver_params:
+        retriever: 'BanqueDeFrance::BilansEntreprise'
+        params:
+          siren: '418166096'
 
