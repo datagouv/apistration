@@ -94,3 +94,10 @@ shared:
         retriever: 'CNETP::AttestationCotisationsCongesPayesChomageIntemperies'
         params:
           siren: '811214428'
+    msa/conformite_cotisations:
+      kind: 'retriever'
+      cache: <%= 5.minutes %>
+      driver_params:
+        retriever: 'MSA::ConformitesCotisations'
+        params:
+          siret: '95086311800010'
