@@ -1,6 +1,6 @@
 class APIEntreprise::V3AndMore::BanqueDeFrance::BilansEntrepriseController < APIEntreprise::V3AndMore::BaseController
   def show
-    organizer = retrieve_payload_data(::BanqueDeFrance::BilansEntreprise)
+    organizer = retrieve_payload_data(::BanqueDeFrance::BilansEntreprise, cache: true, expires_in:)
 
     if organizer.success?
       render json: serialize_data(organizer),
@@ -20,5 +20,9 @@ class APIEntreprise::V3AndMore::BanqueDeFrance::BilansEntrepriseController < API
 
   def serializer_module
     ::APIEntreprise::BanqueDeFrance::BilansEntrepriseSerializer
+  end
+
+  def expires_in
+    (Time.zone.now.end_of_day - Time.zone.now).to_i
   end
 end
