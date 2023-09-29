@@ -101,3 +101,10 @@ shared:
         retriever: 'MSA::ConformitesCotisations'
         params:
           siret: '95086311800010'
+    opqibi/certification_ingenierie:
+      kind: 'retriever'
+      cache: <%= 5.minutes %>
+      driver_params:
+        retriever: 'OPQIBI::CertificationsIngenierie'
+        params:
+          siren: '309103877'
