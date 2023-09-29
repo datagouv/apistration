@@ -129,4 +129,12 @@ shared:
         retriever: 'EuropeanCommission::VIES'
         params:
           siren: '552032534'
+    gip_mds/effectifs:
+      kind: 'retriever'
+      cache: <%= 10.minutes %>
+      driver_params:
+        retriever: 'GIPMDS::EffectifsAnnuelsEntreprise'
+        params:
+          siren: '552032534'
+          year: '2020'
 
