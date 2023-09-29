@@ -115,3 +115,10 @@ shared:
         retriever: 'FNTP::CarteProfessionnelleTravauxPublics'
         params:
           siren: '385407184'
+    ademe/certification_rge:
+      kind: 'retriever'
+      cache: <%= 2.minutes %>
+      driver_params:
+        retriever: 'ADEME::CertificatsRGE'
+        params:
+          siret: '50530961700023'
