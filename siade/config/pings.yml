@@ -122,3 +122,11 @@ shared:
         retriever: 'ADEME::CertificatsRGE'
         params:
           siret: '50530961700023'
+    european_commission/numero_tva:
+      kind: 'retriever'
+      cache: <%= 10.minutes %>
+      driver_params:
+        retriever: 'EuropeanCommission::VIES'
+        params:
+          siren: '552032534'
+
