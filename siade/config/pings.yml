@@ -137,4 +137,11 @@ shared:
         params:
           siren: '552032534'
           year: '2020'
+    fabrique_numerique_ministeres_sociaux/conventions_collectives:
+      kind: 'retriever'
+      cache: <%= 1.minute %>
+      driver_params:
+        retriever: 'FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives'
+        params:
+          siret: '89337342300019'
 
