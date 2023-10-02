@@ -23,6 +23,15 @@ test:
         routes:
           - 'api_kind/api1/source1#show'
           - 'api_kind/api2/source2#show'
+    with_make_request:
+      kind: 'make_request'
+      driver_params:
+        make_request: 'PoleEmploi::Statut::MakeRequest'
+        status_to_check: 404
+        params:
+          token: 'whatever'
+          params:
+            identifiant_pole_emploi: 'identifiant'
 shared:
   api_particulier:
     caf:
