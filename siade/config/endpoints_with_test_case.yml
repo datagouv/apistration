@@ -162,7 +162,7 @@
 
 - name: "Qualifelec certificats"
   api: 'entreprise'
-  path: '/v3/qualifelec/etablissements/78824266700020/certificats'
+  path: '/v3/qualifelec/etablissements/42054064300376/certificats'
 
 - name: "Qualiopi certificats"
   api: 'entreprise'
