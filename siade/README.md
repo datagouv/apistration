@@ -195,6 +195,12 @@ Avec:
 Si vous obtenez une erreur de jeton invalide, vous pouvez en régénérer un avec
 le script `bin/generate_jwt_token.rb` (documenté plus haut)
 
+## Test des pings
+
+```sh
+bundle exec rails runner bin/test_pings.rb
+```
+
 ## Création d'une nouvelle API
 
 Afin de faciliter la création d'une nouvelle API dans la philosophie 'v3'
