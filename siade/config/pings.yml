@@ -144,4 +144,10 @@ shared:
         retriever: 'FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives'
         params:
           siret: '89337342300019'
-
+    douanes/immatriculations_eori:
+      kind: 'retriever'
+      cache: <%= 5.minutes %>
+      driver_params:
+        retriever: 'DGDDI::EORI'
+        params:
+          siret_or_eori: 'FR16002307300010'
