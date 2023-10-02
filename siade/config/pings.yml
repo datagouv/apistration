@@ -151,3 +151,10 @@ shared:
         retriever: 'DGDDI::EORI'
         params:
           siret_or_eori: 'FR16002307300010'
+    qualifelec/certificats:
+      kind: 'retriever'
+      cache: <%= 1.minute %>
+      driver_params:
+        retriever: 'Qualifelec::Certificats'
+        params:
+          siret: '42054064300376'
