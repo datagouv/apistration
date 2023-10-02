@@ -21,6 +21,8 @@ end
 
 gem 'pg'
 
+gem 'puma'
+
 gem 'rest-client'
 
 gem 'active_model_serializers', '~> 0.10.13', github: 'rails-api/active_model_serializers', branch: '0-10-stable'

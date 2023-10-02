@@ -176,6 +176,7 @@ GEM
     multi_xml (0.6.0)
     nenv (0.3.0)
     netrc (0.11.0)
+    nio4r (2.5.9)
     nokogiri (1.15.4)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -216,6 +217,8 @@ GEM
       byebug (~> 11.0)
       pry (>= 0.13, < 0.15)
     public_suffix (5.0.3)
+    puma (6.4.0)
+      nio4r (~> 2.0)
     racc (1.7.1)
     rack (2.2.8)
     rack-attack (6.7.0)
@@ -401,6 +404,7 @@ DEPENDENCIES
   pg
   pry
   pry-byebug
+  puma
   rack-attack
   rack-cors
   rails-controller-testing
