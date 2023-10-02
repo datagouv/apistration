@@ -58,6 +58,15 @@ shared:
         params: &pole_emploi_params
           identifiant_pole_emploi: 'azerty'
           user_id: '22222222-2222-2222-2222-222222222222'
+    pole_emploi_indemnites:
+      kind: 'make_request'
+      cache: <%= 2.minutes %>
+      driver_params:
+        make_request: 'PoleEmploi::Indemnites'
+        params:
+          params: *pole_emploi_params
+          token: '<%= PoleEmploi::Authenticate.call.token rescue nil %>'
+        status_to_check: 404
   api_entreprise:
     insee/sirene:
       kind: 'retriever'

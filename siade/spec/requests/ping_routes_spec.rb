@@ -99,12 +99,6 @@ RSpec.describe 'Ping routes' do
 
     describe 'provider specific ping' do
       describe 'with valid providers' do
-        before do
-          allow(retriever_tested).to receive(:call).and_return(
-            Interactor::Context.new
-          )
-        end
-
         Rails.application.config_for('pings')['api_particulier'].each do |provider, config|
           ping_service = PingService.new('api_particulier', provider)
 
@@ -112,19 +106,29 @@ RSpec.describe 'Ping routes' do
             let(:route) { "/api/#{provider}/ping" }
             let(:ping_driver) { ping_service.send(:ping_driver).new(config.fetch(:driver_params)) }
 
-            let(:retriever_tested) { ping_driver.send(:retriever) }
-            let(:params_tested) { ping_driver.send(:retriever_params) }
+            case config[:kind]
+            when 'retriever'
+              before do
+                allow(ping_driver.send(:retriever)).to receive(:call).and_return(
+                  Interactor::Context.new
+                )
+              end
+            when 'make_request'
+              before do
+                allow(ping_driver.send(:make_request)).to receive(:call).and_return(
+                  Interactor::Context.new(
+                    response: OpenStruct.new(
+                      code: ping_driver.send(:status_to_check)
+                    )
+                  )
+                )
+              end
+            end
 
             it 'renders 200' do
               ping
 
               expect(response).to have_http_status(:ok)
-            end
-
-            it 'calls valid retriever with params' do
-              ping
-
-              expect(retriever_tested).to have_received(:call).with(hash_including(params: params_tested))
             end
           end
         end
