@@ -13,6 +13,8 @@ RSpec.describe 'INPI RNE: Bénéficiaires effectifs', api: :entreprise, type: %i
 
       common_action_attributes
 
+      cacheable_request
+
       parameter_siren
 
       unauthorized_request do
@@ -39,6 +41,7 @@ RSpec.describe 'INPI RNE: Bénéficiaires effectifs', api: :entreprise, type: %i
           let(:siren) { valid_siren }
 
           response '200', 'Bénéficiaires effectifs trouvés' do
+            cacheable_response(extra_description: SwaggerData.get('inpi_rne.beneficiaires_effectifs.cache_duration'))
             description SwaggerData.get('inpi_rne.beneficiaires_effectifs.description')
 
             rate_limit_headers

@@ -7,6 +7,8 @@ RSpec.describe 'Banque de France: Bilans', api: :entreprise, type: %i[request sw
 
       common_action_attributes
 
+      cacheable_request
+
       parameter name: :siren, in: :path, type: :string
 
       unauthorized_request do
@@ -34,6 +36,7 @@ RSpec.describe 'Banque de France: Bilans', api: :entreprise, type: %i[request sw
           let(:siren) { valid_siren(:bilan_entreprise_bdf) }
 
           response '200', 'Entreprise trouvée', vcr: { cassette_name: 'banque_de_france/valid_siren' } do
+            cacheable_response(extra_description: SwaggerData.get('banque_de_france.bilans_entreprise.cache_duration'))
             description SwaggerData.get('banque_de_france.bilans_entreprise.description')
 
             rate_limit_headers

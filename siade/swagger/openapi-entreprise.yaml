@@ -222,7 +222,8 @@ paths:
                 nullable: true
                 example: 9001
               description: Secondes avant que le cache n'expire. Si le cache est vide,
-                ce header est vide (mais présent).
+                ce header est vide (mais présent). Le cache est valide jusqu'au lendemain
+                8h.
             RateLimit-Limit:
               schema:
                 type: integer
@@ -1110,6 +1111,13 @@ paths:
         required: true
         schema:
           type: string
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       - name: siren
         in: path
         required: true
@@ -1222,6 +1230,23 @@ paths:
         '200':
           description: Entreprise trouvée
           headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). Le cache est valide jusqu'à la
+                fin de la journée.
             RateLimit-Limit:
               schema:
                 type: integer
@@ -3296,7 +3321,8 @@ paths:
                 nullable: true
                 example: 9001
               description: Secondes avant que le cache n'expire. Si le cache est vide,
-                ce header est vide (mais présent).
+                ce header est vide (mais présent). Le cache est valide jusqu'au lendemain
+                8h.
             RateLimit-Limit:
               schema:
                 type: integer
@@ -3746,7 +3772,8 @@ paths:
                 nullable: true
                 example: 9001
               description: Secondes avant que le cache n'expire. Si le cache est vide,
-                ce header est vide (mais présent).
+                ce header est vide (mais présent). Le cache est valide jusqu'au lendemain
+                8h.
             RateLimit-Limit:
               schema:
                 type: integer
@@ -5010,6 +5037,13 @@ paths:
         required: true
         schema:
           type: string
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       - name: context
         in: query
         description: |-
@@ -5148,6 +5182,22 @@ paths:
         '200':
           description: Association trouvée
           headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
             RateLimit-Limit:
               schema:
                 type: integer
@@ -13264,6 +13314,13 @@ paths:
         required: true
         schema:
           type: string
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       - name: siren
         in: path
         description: Siren de l'entreprise
@@ -13403,6 +13460,23 @@ paths:
         '200':
           description: Bénéficiaires effectifs trouvés
           headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). Le cache est valide jusqu'à 3 heures
+                du matin.
             RateLimit-Limit:
               schema:
                 type: integer
@@ -22448,6 +22522,13 @@ paths:
         required: true
         schema:
           type: string
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       - name: context
         in: query
         description: |-
@@ -22585,6 +22666,22 @@ paths:
         '200':
           description: Document Association found
           headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
             RateLimit-Limit:
               schema:
                 type: integer
@@ -22885,6 +22982,13 @@ paths:
       tags:
       - Informations générales
       parameters:
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       - name: siret_or_rna
         in: path
         description: Siret de l'association ou le numéro RNA
@@ -23035,6 +23139,22 @@ paths:
         '200':
           description: Association found
           headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
             RateLimit-Limit:
               schema:
                 type: integer
@@ -26543,7 +26663,8 @@ paths:
                 nullable: true
                 example: 9001
               description: Secondes avant que le cache n'expire. Si le cache est vide,
-                ce header est vide (mais présent).
+                ce header est vide (mais présent). Le cache est valide jusqu'au lendemain
+                8h.
             RateLimit-Limit:
               schema:
                 type: integer

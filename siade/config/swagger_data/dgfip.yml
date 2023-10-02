@@ -13,6 +13,7 @@ dgfip:
     v4:
       title: *dgfip_attestations_fiscales_title
       description: *dgfip_attestations_fiscales_description
+      cache_duration: "Le cache est valide jusqu'au lendemain 8h."
       tags: *dgfip_attestations_fiscales_tags
       attributes:
         document_url: *document_url_properties

@@ -9,6 +9,8 @@ RSpec.describe 'MI: Documents Associations', api: :entreprise, type: %i[request 
 
       parameter_siret_or_rna
 
+      cacheable_request
+
       common_action_attributes
 
       unauthorized_request do
@@ -26,6 +28,8 @@ RSpec.describe 'MI: Documents Associations', api: :entreprise, type: %i[request 
       describe 'with valid token and mandatory params', :valid do
         response 200, 'Document Association found', vcr: { cassette_name: 'mi/associations/documents/with_documents' } do
           let(:siret_or_rna) { '77571979202585' }
+
+          cacheable_response(extra_description: SwaggerData.get('response.headers.cache_duration_1_hour'))
 
           description SwaggerData.get('mi.v3/document_association.description')
 

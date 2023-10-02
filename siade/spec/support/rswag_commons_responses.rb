@@ -35,7 +35,7 @@ module RSWagCommonsResponses
     let(:'Cache-Control') { '' }
   end
 
-  def cacheable_response
+  def cacheable_response(extra_description: '')
     header 'X-Response-Cached',
       schema: {
         type: :boolean,
@@ -51,7 +51,7 @@ module RSWagCommonsResponses
         nullable: true,
         example: 9001
       },
-      description: SwaggerData.get('response.headers.x_cache_expires_in.description')
+      description: (SwaggerData.get('response.headers.x_cache_expires_in.description') + " #{extra_description}").dup
   end
 
   def parameter_siren

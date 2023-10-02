@@ -27,7 +27,7 @@ RSpec.describe 'URSSAF: Attestation de vigilance', api: :entreprise, type: %i[re
 
       describe 'with valid token and mandatory params', :valid do
         response '200', 'Entreprise found', vcr: { cassette_name: 'acoss/with_valid_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body_sanitized) } do
-          cacheable_response
+          cacheable_response(extra_description: SwaggerData.get('urssaf.attestation_sociale.cache_duration'))
 
           description SwaggerData.get('acoss.attestation_sociale.description')
 

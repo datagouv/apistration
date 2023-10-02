@@ -2,6 +2,7 @@ banque_de_france:
   bilans_entreprise:
     title: "3 derniers bilans annuels"
     description: "Obtenir les trois derniers bilans d’une entreprise détenus par la Banque de France."
+    cache_duration: "Le cache est valide jusqu'à la fin de la journée."
     tags:
       - "Informations financières"
     attributes:

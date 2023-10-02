@@ -4,6 +4,7 @@ response:
       description: "Indique si la réponse a été caché."
     x_cache_expires_in:
       description: "Secondes avant que le cache n'expire. Si le cache est vide, ce header est vide (mais présent)."
+    cache_duration_1_hour: "La durée du cache est de 1 heure."
 parameters:
   header:
     cache_control:

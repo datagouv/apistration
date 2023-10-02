@@ -7,6 +7,8 @@ RSpec.describe 'DJEPVA: Associations v4', api: :entreprise, type: %i[request swa
 
       parameter_siren_or_rna
 
+      cacheable_request
+
       common_action_attributes
 
       unauthorized_request do
@@ -23,6 +25,7 @@ RSpec.describe 'DJEPVA: Associations v4', api: :entreprise, type: %i[request swa
 
       describe 'with valid token and mandatory params', :valid do
         response 200, 'Association trouvée' do
+          cacheable_response(extra_description: SwaggerData.get('response.headers.cache_duration_1_hour'))
           description SwaggerData.get('mi.v4/unite_legale.description')
 
           schema build_rswag_response(

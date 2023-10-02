@@ -7,6 +7,8 @@ RSpec.describe 'MI : Associations', api: :entreprise, type: %i[request swagger] 
 
       tags(*SwaggerData.get('mi.v3/association.tags'))
 
+      cacheable_request
+
       parameter_siret_or_rna
 
       common_action_attributes
@@ -25,6 +27,8 @@ RSpec.describe 'MI : Associations', api: :entreprise, type: %i[request swagger] 
 
       describe 'with valid token and mandatory params', :valid do
         response 200, 'Association found', vcr: { cassette_name: 'mi/associations/with_valid_rna' } do
+          cacheable_response(extra_description: SwaggerData.get('response.headers.cache_duration_1_hour'))
+
           description SwaggerData.get('mi.v3/association.description')
 
           schema build_rswag_response(

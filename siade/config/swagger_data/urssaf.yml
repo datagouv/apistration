@@ -2,6 +2,7 @@ urssaf:
   attestation_sociale:
     title: "Attestation de vigilance"
     description: "Attestation sociale délivrée à une entreprise acquittée de ses obligations de cotisations et contributions sociales auprès de l'URSSAF Caisse nationale."
+    cache_duration: "Le cache est valide jusqu'au lendemain 8h."
     tags:
       - "Attestations sociales et fiscales"
     attributes:

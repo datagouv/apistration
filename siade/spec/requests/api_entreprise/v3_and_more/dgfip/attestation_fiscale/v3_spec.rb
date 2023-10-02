@@ -34,7 +34,7 @@ RSpec.describe 'DGFIP: Attestation fiscale', api: :entreprise, type: %i[request 
             mock_valid_dgfip_attestation_fiscale(siren, valid_dgfip_user_id)
           end
 
-          cacheable_response
+          cacheable_response(extra_description: SwaggerData.get('dgfip.attestations_fiscales.v4.cache_duration'))
 
           description SwaggerData.get('dgfip.attestations_fiscales.v3.description')
 

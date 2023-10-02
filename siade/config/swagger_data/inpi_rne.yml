@@ -2,6 +2,7 @@ inpi_rne:
   beneficiaires_effectifs:
     title: "Bénéficiaires effectifs"
     description: "Liste des bénéficiaires effectifs d'une unité légale inscrite au répertoire national des entreprises (RNE)."
+    cache_duration: "Le cache est valide jusqu'à 3 heures du matin."
     tags:
       - "Informations générales"
     attributes:
