@@ -50,6 +50,14 @@ shared:
         params:
           tax_number: '<%= Siade.credentials[:ping_dgfip_svair_numero_fiscal] %>'
           tax_notice_number: '<%= Siade.credentials[:ping_dgfip_svair_reference_avis] %>'
+    pole_emploi_status:
+      kind: 'retriever'
+      cache: <%= 2.minutes %>
+      driver_params:
+        retriever: 'PoleEmploi::Statut'
+        params: &pole_emploi_params
+          identifiant_pole_emploi: 'azerty'
+          user_id: '22222222-2222-2222-2222-222222222222'
   api_entreprise:
     insee/sirene:
       kind: 'retriever'
