@@ -75,6 +75,9 @@ VCR.configure do |c|
   c.filter_sensitive_data('<GIP_MDS_CLIENT_ID>') { Siade.credentials[:gip_mds_client_id].to_s }
   c.filter_sensitive_data('<GIP_MDS_CLIENT_SECRET>') { Siade.credentials[:gip_mds_client_secret].to_s }
 
+  c.filter_sensitive_data('<CARIF_OREF_QUIFORME_URL>') { Siade.credentials[:carif_oref_quiforme_url].to_s }
+  c.filter_sensitive_data('<CARIF_OREF_QUIFORME_TOKEN>') { Siade.credentials[:carif_oref_quiforme_token].to_s }
+
   c.filter_sensitive_data('<INPI_RNE_LOGIN_URL>') { Siade.credentials[:inpi_rne_login_url].to_s }
   c.filter_sensitive_data('<INPI_RNE_LOGIN_USERNAME>') { Siade.credentials[:inpi_rne_login_username].to_s }
   c.filter_sensitive_data('<INPI_RNE_LOGIN_PASSWORD>') { Siade.credentials[:inpi_rne_login_password].to_s }
