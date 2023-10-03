@@ -148,12 +148,14 @@ carif_oref:
                 type: "string"
                 format: "date"
                 nullable: true
+                example: "2030-01-30"
               date_decision:
                 title: "Date de décision"
                 description: "Date de décision de l'habilitation de l'établissement agrée. Cette date est transmise au format AAAA-MM-DD."
                 type: "string"
                 format: "date"
                 nullable: true
+                example: "2020-01-30"
               habilitation_pour_former:
                 title: "Habilitation à former"
                 description: "Indique que cette habilitation autorise à former/préparer les candidats à une certification inscrite au répertoire national des compétences professionnelles (RNCP) ou au répertoire spécifique (RS). Cette habilitation vise à s'assurer que les organismes de formation proposant des offres de formation certifiantes, sont bien habilités à préparer des élèves à cette certification."

@@ -2145,6 +2145,7 @@ paths:
                               type: string
                               format: date
                               nullable: true
+                              example: '2030-01-30'
                             date_decision:
                               title: Date de décision
                               description: Date de décision de l'habilitation de l'établissement
@@ -2152,6 +2153,7 @@ paths:
                               type: string
                               format: date
                               nullable: true
+                              example: '2020-01-30'
                             habilitation_pour_former:
                               title: Habilitation à former
                               description: Indique que cette habilitation autorise
