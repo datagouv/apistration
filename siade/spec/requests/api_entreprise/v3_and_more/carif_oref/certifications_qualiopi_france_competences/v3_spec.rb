@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'CarifOref: Certificationsqualiopifrancecompetences', api: :entreprise, type: %i[request swagger] do
-  path '/v3/carif_oref/certifications_qualiopi_france_competences/{siret}' do
+  path '/v3/carif_oref/etablissements/{siret}/certifications_qualiopi_france_competences' do
     get SwaggerData.get('carif_oref.certifications_qualiopi_france_competences.title') do
       tags(*SwaggerData.get('carif_oref.certifications_qualiopi_france_competences.tags'))
 

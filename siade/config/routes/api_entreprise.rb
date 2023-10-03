@@ -52,7 +52,7 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
   end
 
   namespace :carif_oref do
-    get 'certifications_qualiopi_france_competences/:siret' => '/api_entreprise/v3_and_more/carif_oref/certifications_qualiopi_france_competences#show'
+    get 'etablissements/:siret/certifications_qualiopi_france_competences' => '/api_entreprise/v3_and_more/carif_oref/certifications_qualiopi_france_competences#show'
   end
 
   namespace :cnetp do
