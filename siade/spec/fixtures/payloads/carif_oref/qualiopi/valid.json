@@ -1,0 +1,88 @@
+{
+    "siret_actif": "12000101100010",
+    "etablissement": {
+        "siren": "120001011",
+        "denomination": "DINUM",
+        "enseigne": null,
+        "code_ape": "84.11Z",
+        "adresse_insee": "20 AVENUE DE SEGUR 75007 PARIS",
+        "uai": null,
+        "siret_siege": null,
+        "siret_successeur": null,
+        "date_creation": "2017-05-24",
+        "date_fermeture": null,
+        "etat_diffusible": "True"
+    },
+    "unite_legale": {
+        "raison_sociale": "DINUM",
+        "cat_juridique": "5710",
+        "libelle_cat_juridique": "SAS, soci\u00e9t\u00e9 par actions simplifi\u00e9e",
+        "ape": "85.59A",
+        "pseudonyme": null,
+        "sigle": null,
+        "nom_commercial": null,
+        "multinda": "False"
+    },
+    "adresse_ban": [
+        {
+            "adresse_editorialisee": "20 avenue de ségur",
+            "adresse_type": "housenumber",
+            "adresse_score": "0.2345673456723455",
+            "adresse_nom": "20 avenue de ségur",
+            "type_voie": "CRS",
+            "adresse_numero": "20",
+            "indice_repetition": null,
+            "adresse_voie": "avenue de ségur",
+            "adresse_codepostal": "75007",
+            "adresse_commune": "Paris",
+            "adresse_codecommune": "75107",
+            "adresse_num_departement": "75",
+            "adresse_departement": "Paris",
+            "adresse_region": "\u00cele-de-France",
+            "adresse_pays": "FRANCE",
+            "adresse_geoloc": "Point",
+            "adresse_latitude": "51.01010100110101",
+            "adresse_longitude": "2.1515151515151515",
+            "adresse_id_ban": "75109_xxxxxx_00001"
+        }
+    ],
+    "nda": [
+        {
+            "nda": "12345671234",
+            "cfa": "True",
+            "actif": "True",
+            "date_derniere_declaration": "2021-01-31",
+            "debut_exercice": "2022-01-01",
+            "fin_exercice": "2022-12-31",
+            "code_specialite_1": "114",
+            "libelle_specialite_1": "Math\u00e9matiques, statistiques",
+            "code_specialite_2": "128",
+            "libelle_specialite_2": "Droit, sciences politiques",
+            "code_specialite_3": "314",
+            "libelle_specialite_3": "Comptabilit\u00e9, gestion",
+            "qualiopi_action_formation": "True",
+            "qualiopi_bilan_comptence": "False",
+            "qualiopi_vae": "True",
+            "qualiopi_apprentissage": "True",
+            "obtention_qualiopi": "Qualiopi direct sur le NDA"
+        }
+    ],
+    "habilitations": [
+        {
+            "code_fc": "RNCP09001",
+            "actif": "True",
+            "etat_habilitation": "Actif",
+            "date_habilitation": null,
+            "date_fin_enregistrement": "01/01/2024",
+            "date_decision": null,
+            "a_former": "True",
+            "a_organiser": "True",
+            "certificateur": [
+                {
+                    "siret": "13002526500013"
+                }
+            ]
+        }
+    ]
+}
+

@@ -1,0 +1,87 @@
+{
+    "siret_actif": null,
+    "etablissement": {
+        "siren": null,
+        "denomination": null,
+        "enseigne": null,
+        "code_ape": null,
+        "adresse_insee": null,
+        "uai": null,
+        "siret_siege": null,
+        "siret_successeur": null,
+        "date_creation": null,
+        "date_fermeture": null,
+        "etat_diffusible": null
+    },
+    "unite_legale": {
+        "raison_sociale": null,
+        "cat_juridique": null,
+        "libelle_cat_juridique": null,
+        "ape": null,
+        "pseudonyme": null,
+        "sigle": null,
+        "nom_commercial": null,
+        "multinda": null
+    },
+    "adresse_ban": [
+        {
+            "adresse_editorialisee": null,
+            "adresse_type": null,
+            "adresse_score": null,
+            "adresse_nom": null,
+            "type_voie": null,
+            "adresse_numero": null,
+            "indice_repetition": null,
+            "adresse_voie": null,
+            "adresse_codepostal": null,
+            "adresse_commune": null,
+            "adresse_codecommune": null,
+            "adresse_num_departement": null,
+            "adresse_departement": null,
+            "adresse_region": null,
+            "adresse_pays": null,
+            "adresse_geoloc": null,
+            "adresse_latitude": null,
+            "adresse_longitude": null,
+            "adresse_id_ban": null
+        }
+    ],
+    "nda": [
+        {
+            "nda": null,
+            "cfa": null,
+            "actif": null,
+            "date_derniere_declaration": null,
+            "debut_exercice": null,
+            "fin_exercice": null,
+            "code_specialite_1": null,
+            "libelle_specialite_1": null,
+            "code_specialite_2": null,
+            "libelle_specialite_2": null,
+            "code_specialite_3": null,
+            "libelle_specialite_3": null,
+            "qualiopi_action_formation": null,
+            "qualiopi_bilan_comptence": null,
+            "qualiopi_vae": null,
+            "qualiopi_apprentissage": null,
+            "obtention_qualiopi": null
+        }
+    ],
+    "habilitations": [
+        {
+            "code_fc": null,
+            "actif": null,
+            "etat_habilitation": null,
+            "date_habilitation": null,
+            "date_fin_enregistrement": null,
+            "date_decision": null,
+            "a_former": null,
+            "a_organiser": null,
+            "certificateur": [
+                {
+                    "siret": null
+                }
+            ]
+        }
+    ]
+}
