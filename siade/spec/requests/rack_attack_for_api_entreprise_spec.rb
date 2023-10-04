@@ -89,7 +89,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
     end
 
     context 'with a blacklisted token' do
-      let(:token) { Rails.configuration.jwt_blacklist.sample }
+      let(:token) { TokenFactory.new([]).valid(uid: Seeds.new.blacklisted_jwt_id) }
       let(:headers_params) { { 'Authorization' => "Bearer #{token}" } }
 
       let(:random_endpoint) do

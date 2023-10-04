@@ -51,7 +51,6 @@ module Siade
 
     config.throttle = config_for(:throttle)
     config.jwt_whitelist = config_for(:jwt_whitelist)
-    config.jwt_blacklist = config_for(:jwt_blacklist)
     config.requests_debugging = config_for(:requests_debugging)
 
     config.cache_store = :redis_cache_store, config_for(:cache_redis)

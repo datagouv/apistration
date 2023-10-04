@@ -6,7 +6,8 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :particulier do
       get '/api/v2/etudiants', headers: headers_params
     end
 
-    let(:token) { Rails.configuration.jwt_blacklist.sample }
+    let(:token) { TokenFactory.new([]).valid(uid: Seeds.new.blacklisted_jwt_id) }
+
     let(:headers_params) { { 'X-Api-key' => token } }
 
     it 'returns 401' do

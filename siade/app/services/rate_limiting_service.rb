@@ -17,8 +17,7 @@ class RateLimitingService
   def blacklisted_access?(req)
     jwt = extract_token_from_request(req)
 
-    blacklist.include?(jwt) ||
-      token_blacklisted_from_database?(jwt)
+    token_blacklisted_from_database?(jwt)
   end
 
   def build_rate_limit_headers(data)
@@ -82,9 +81,5 @@ class RateLimitingService
 
   def whitelist
     @whitelist ||= Rails.configuration.jwt_whitelist
-  end
-
-  def blacklist
-    @blacklist ||= Rails.configuration.jwt_blacklist
   end
 end

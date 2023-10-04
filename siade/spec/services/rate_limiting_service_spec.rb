@@ -133,12 +133,6 @@ RSpec.describe RateLimitingService do
         before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return("Bearer #{token}") }
 
         context 'when the token is blacklisted' do
-          context 'when it is an hardcoded token' do
-            let(:token) { Rails.configuration.jwt_blacklist.sample }
-
-            it { is_expected.to be(true) }
-          end
-
           context 'when it is a token from the database' do
             let(:token) { TokenFactory.new([]).valid(uid: Seeds.new.blacklisted_jwt_id) }
 
