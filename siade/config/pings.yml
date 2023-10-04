@@ -67,6 +67,22 @@ shared:
           params: *pole_emploi_params
           token: '<%= PoleEmploi::Authenticate.call.token rescue nil %>'
         status_to_check: 404
+    men_scolarite:
+      kind: 'make_request'
+      cache: <%= 2.minutes %>
+      driver_params:
+        make_request: 'MEN::Scolarites::MakeRequest'
+        params:
+          params:
+            family_name: 'Dupont'
+            first_name: 'Jean'
+            gender: 'f'
+            birth_date: '2000-01-01'
+            code_etablissement: '0511474A'
+            annee_scolaire: '<%= Date.today.year - 1 %>-<%= Date.today.year - 2 %>'
+          token: '<%= MEN::Scolarites::Authenticate.call.token rescue nil %>'
+        status_to_check: 404
+
   api_entreprise:
     insee/sirene:
       kind: 'retriever'
