@@ -90,6 +90,48 @@ shared:
         status_to_check: 404
         token_interactor: 'MEN::Scolarites::Authenticate'
 
+    cnous_etudiant_boursier_ine:
+      kind: 'make_request'
+      cache: <%= 2.minutes %>
+      driver_params:
+        make_request: 'CNOUS::StudentScholarshipWithINE::MakeRequest'
+        params:
+          ine: '1234567890G'
+        status_to_check: 404
+        token_interactor: 'CNOUS::Authenticate'
+
+    cnous_etudiant_boursier_identite:
+      kind: 'make_request'
+      cache: <%= 2.minutes %>
+      driver_params:
+        make_request: 'CNOUS::StudentScholarshipWithCivility::MakeRequest'
+        params:
+          family_name: 'DUPONT'
+          first_names:
+            - 'Jean'
+            - 'Jacques'
+          birth_date: '2000-01-01'
+          birth_place: 'Paris'
+          gender: 'M'
+        status_to_check: 404
+        token_interactor: 'CNOUS::Authenticate'
+
+    cnous_etudiant_boursier_france_connect:
+      kind: 'make_request'
+      cache: <%= 2.minutes %>
+      driver_params:
+        make_request: 'CNOUS::StudentScholarshipWithFranceConnect::MakeRequest'
+        params:
+          given_name: 'Jean Martin'
+          family_name: 'DUPONT'
+          birthdate: '2000-01-01'
+          gender: 'male'
+          birthplace: '75101'
+          birthcountry: '99100'
+          preferred_username: 'jdupont'
+        status_to_check: 404
+        token_interactor: 'CNOUS::Authenticate'
+
   api_entreprise:
     insee/sirene:
       kind: 'retriever'
