@@ -1943,11 +1943,16 @@ paths:
                   data:
                     type: object
                     properties:
-                      code_uai_etablissement:
+                      siret:
+                        title: Siret de l'établissement
+                        type: string
+                        example: '12000101100010'
+                      code_uai:
                         title: Code UAI de l'établissement
                         description: Code UAI de l'établissement agrée
                         example: 0123456A
                         type: string
+                        nullable: true
                       unite_legale_avec_plusieurs_nda:
                         title: Indique si l'unité légale de l'établissement a plusieurs
                           NDA
@@ -1957,6 +1962,7 @@ paths:
                           cette API délivrant uniquement les NDA d'un établissement)
                           ne sont pas forcément propagés sur les établissements.
                         example: false
+                        nullable: false
                         type: boolean
                       declarations_activites_etablissement:
                         type: array
@@ -1967,13 +1973,13 @@ paths:
                         items:
                           type: object
                           properties:
-                            nda:
+                            numero_de_declaration:
                               title: Numéro de déclaration d'activité
                               description: Numéro de déclaration d'activité (NDA)
                                 de l'établissement.
                               type: string
                               example: '11910843391'
-                            nda_actif:
+                            actif:
                               title: Indique que le NDA est actif
                               description: Ce champ indique le numéro de déclaration
                                 d'activité (NDA) de l'établissement est actif. Pour
@@ -2053,8 +2059,8 @@ paths:
                                     de demande Qualiopi.
 
                                     '
-                                  type: boolean
-                                  example: true
+                                  type: string
+                                  example: Qualiopi direct sur le NDA
                             specialites:
                               type: object
                               description: 'Informations relatives aux spécialités
@@ -2132,11 +2138,24 @@ paths:
                         items:
                           type: object
                           properties:
-                            code_france_competence:
+                            code:
                               title: Code de l'habilitation
                               description: Code de l'habilitation France Compétences.
                               type: string
                               example: RNCP10013
+                            actif:
+                              title: Indique si l'habilitation est active
+                              description: 'Une habilitation est active lorsque l''enregistrement
+                                de la certification en en cours. '
+                              type: boolean
+                              example: true
+                            date_actif:
+                              title: Date à laquelle l'habilitation est passée en
+                                état active
+                              type: string
+                              format: date
+                              nullable: true
+                              example: '2030-01-30'
                             date_fin_enregistrement:
                               title: Date de fin d'enregistrement
                               description: Date de fin d'enregistrement de l'habilitation
@@ -2183,7 +2202,8 @@ paths:
                                 type: string
                                 example: '12345678901234'
                     required:
-                    - code_uai_etablissement
+                    - siret
+                    - code_uai
                     - unite_legale_avec_plusieurs_nda
                     - declarations_activites_etablissement
                     - habilitations_france_competence

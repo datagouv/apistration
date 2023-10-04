@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'CarifOref: Certificationsqualiopifrancecompetences', api: :entreprise, type: %i[request swagger] do
+RSpec.describe 'CARIF-OREF: Certifications Qualiopi France Compétences', api: :entreprise, type: %i[request swagger] do
   path '/v3/carif_oref/etablissements/{siret}/certifications_qualiopi_france_competences' do
     get SwaggerData.get('carif_oref.certifications_qualiopi_france_competences.title') do
       tags(*SwaggerData.get('carif_oref.certifications_qualiopi_france_competences.tags'))
@@ -22,22 +22,18 @@ RSpec.describe 'CarifOref: Certificationsqualiopifrancecompetences', api: :entre
       end
 
       describe 'with valid token and mandatory params', :valid do
-        describe 'with mocked data' do
-          response '200', 'Entreprise trouvée' do
-            before do
-              allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
-            end
+        response '200', 'Entreprise trouvée', vcr: { cassette_name: 'carif_oref/certifications_qualiopi_france_competences/valid_siret' } do
+          let(:siret) { valid_siret(:carif_oref) }
 
-            description SwaggerData.get('carif_oref.certifications_qualiopi_france_competences.description')
+          description SwaggerData.get('carif_oref.certifications_qualiopi_france_competences.description')
 
-            rate_limit_headers
+          rate_limit_headers
 
-            schema build_rswag_response(
-              attributes: SwaggerData.get('carif_oref.certifications_qualiopi_france_competences.attributes')
-            )
+          schema build_rswag_response(
+            attributes: SwaggerData.get('carif_oref.certifications_qualiopi_france_competences.attributes')
+          )
 
-            run_test!
-          end
+          run_test!
         end
 
         describe 'server errors' do
@@ -47,7 +43,7 @@ RSpec.describe 'CarifOref: Certificationsqualiopifrancecompetences', api: :entre
             let(:siret) { 'lol' }
           end
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'carif_oref/not_found_siret' }, pending: 'Implement endpoint' do
+          response '404', 'Non trouvée', vcr: { cassette_name: 'carif_oref/certifications_qualiopi_france_competences/no_data' } do
             let(:siret) { not_found_siret }
 
             schema '$ref' => '#/components/schemas/Error'

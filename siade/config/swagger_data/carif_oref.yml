@@ -5,15 +5,21 @@ carif_oref:
       tags:
         - "Prochainement"
       attributes:
-        code_uai_etablissement:
+        siret:
+          title: "Siret de l'établissement"
+          type: "string"
+          example: "12000101100010"
+        code_uai:
           title: "Code UAI de l'établissement"
           description: "Code UAI de l'établissement agrée"
           example: "0123456A"
           type: "string"
+          nullable: true
         unite_legale_avec_plusieurs_nda:
           title: "Indique si l'unité légale de l'établissement a plusieurs NDA"
           description: "Dans de rares cas, l'unité légale d'un établissement peut avoir plusieurs numéros de déclaration d'activité (NDA). Tous ces numéros d'activités (qui ne sont pas fournis par cette API délivrant uniquement les NDA d'un établissement) ne sont pas forcément propagés sur les établissements."
           example: false
+          nullable: false
           type: "boolean"
         declarations_activites_etablissement:
           type: "array"
@@ -21,12 +27,12 @@ carif_oref:
           items:
             type: "object"
             properties:
-              nda:
+              numero_de_declaration:
                 title: "Numéro de déclaration d'activité"
                 description: "Numéro de déclaration d'activité (NDA) de l'établissement."
                 type: "string"
                 example: "11910843391"
-              nda_actif:
+              actif:
                 title: "Indique que le NDA est actif"
                 description: "Ce champ indique le numéro de déclaration d'activité (NDA) de l'établissement est actif. Pour conserver un NDA valide, l'établissement doit remplir chaque année un bilan pédagogique et financier prévu à l'article L6352-11 du Code du travail. Sans cette démarche le numéro NDA devient inactif, l'établissement est retiré de la liste publique des organismes de formation."
                 type: "boolean"
@@ -77,8 +83,8 @@ carif_oref:
                     title: "Indique si le certificat Qualiopi est propagé depuis le SIREN de l'unité légale"
                     description: |
                       Lorsqu'une unité légale a un seul NDA et donc un seul Qualiopi, celui-ci est automatiquement propagé à tous ses établissements, d'après les règles de la délégation générale à l'emploi et à la formation professionnelle (DGEFP). Ce champ peut être à "null" si l'organisme n'a pas fait de demande Qualiopi.
-                    type: "boolean"
-                    example: true
+                    type: "string"
+                    example: 'Qualiopi direct sur le NDA'
               specialites:
                 type: "object"
                 description: "Informations relatives aux spécialités relevant du numéro de déclaration d'activité et figurant dans le bilan pédagogique et financier. Un établissement peut ne pas avoir de spécialités, et l'API en transmet jusqu'à trois, leur ordre n'a pas d'importance. Les spécialités possibles sont détaillées dans la documentation métier de l'API : https://entreprise.api.gouv.fr/catalogue/carif_oref/certifications_qualiopi_france_competences#faq_entry_answer_1_api_entreprise_endpoint_carif_oref_certifications_qualiopi_france_competences"
@@ -137,11 +143,22 @@ carif_oref:
           items:
             type: "object"
             properties:
-              code_france_competence:
+              code:
                 title: "Code de l'habilitation"
                 description: "Code de l'habilitation France Compétences."
                 type: "string"
                 example: "RNCP10013"
+              actif:
+                title: "Indique si l'habilitation est active"
+                description: "Une habilitation est active lorsque l'enregistrement de la certification en en cours. "
+                type: "boolean"
+                example: true
+              date_actif:
+                title: "Date à laquelle l'habilitation est passée en état active"
+                type: "string"
+                format: "date"
+                nullable: true
+                example: "2030-01-30"
               date_fin_enregistrement:
                 title: "Date de fin d'enregistrement"
                 description: "Date de fin d'enregistrement de l'habilitation de l'établissement agrée. Cette date est transmise au format AAAA-MM-DD."

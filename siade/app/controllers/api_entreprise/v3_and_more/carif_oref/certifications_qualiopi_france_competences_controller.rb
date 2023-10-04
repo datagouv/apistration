@@ -3,8 +3,8 @@ class APIEntreprise::V3AndMore::CarifOref::CertificationsQualiopiFranceCompetenc
     organizer = retrieve_payload_data(::CarifOref::CertificationsQualiopiFranceCompetences)
 
     if organizer.success?
-      render json: organizer[:payload],
-        status: organizer[:status]
+      render json: serialize_data(organizer),
+        status: extract_http_code(organizer)
     else
       render_errors(organizer)
     end
@@ -18,8 +18,8 @@ class APIEntreprise::V3AndMore::CarifOref::CertificationsQualiopiFranceCompetenc
     }
   end
 
-  def verify_api_version!
-    true
+  def serializer_module
+    ::APIEntreprise::CarifOref::CertificationsQualiopiFranceCompetencesSerializer
   end
 
   def operation_id
