@@ -6,6 +6,9 @@ production: &shared
   'DGFIP - Adélie':
     from_hour: '01:00'
     to_hour: '02:00'
+  'MEN':
+    from_hour: '01:10'
+    to_hour: '02:30'
 sandbox: *shared
 staging: *shared
 development: *shared
