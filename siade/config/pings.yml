@@ -26,12 +26,21 @@ test:
     with_make_request:
       kind: 'make_request'
       driver_params:
+        make_request: 'CNAF::QuotientFamilial'
+        status_to_check: 404
+        params:
+          postal_code: '75001'
+          beneficiary_number: '1234567'
+    with_make_request_and_token:
+      kind: 'make_request'
+      driver_params:
         make_request: 'PoleEmploi::Statut::MakeRequest'
         status_to_check: 404
         params:
-          token: 'whatever'
-          params:
-            identifiant_pole_emploi: 'identifiant'
+          identifiant_pole_emploi: 'identifiant'
+          user_id: '22222222-2222-2222-2222-222222222222'
+        token_interactor: 'PoleEmploi::Authenticate'
+
 shared:
   api_particulier:
     caf:
@@ -63,25 +72,23 @@ shared:
       cache: <%= 2.minutes %>
       driver_params:
         make_request: 'PoleEmploi::Indemnites'
-        params:
-          params: *pole_emploi_params
-          token: '<%= PoleEmploi::Authenticate.call.token rescue nil %>'
+        params: *pole_emploi_params
         status_to_check: 404
+        token_interactor: 'PoleEmploi::Authenticate'
     men_scolarite:
       kind: 'make_request'
       cache: <%= 2.minutes %>
       driver_params:
         make_request: 'MEN::Scolarites::MakeRequest'
         params:
-          params:
-            family_name: 'Dupont'
-            first_name: 'Jean'
-            gender: 'f'
-            birth_date: '2000-01-01'
-            code_etablissement: '0511474A'
-            annee_scolaire: '<%= Date.today.year - 1 %>-<%= Date.today.year - 2 %>'
-          token: '<%= MEN::Scolarites::Authenticate.call.token rescue nil %>'
+          family_name: 'Dupont'
+          first_name: 'Jean'
+          gender: 'f'
+          birth_date: '2000-01-01'
+          code_etablissement: '0511474A'
+          annee_scolaire: '<%= Date.today.year - 1 %>-<%= Date.today.year - 2 %>'
         status_to_check: 404
+        token_interactor: 'MEN::Scolarites::Authenticate'
 
   api_entreprise:
     insee/sirene:

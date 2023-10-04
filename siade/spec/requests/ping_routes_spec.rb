@@ -122,6 +122,14 @@ RSpec.describe 'Ping routes' do
                     )
                   )
                 )
+
+                if ping_driver.send(:token_interactor)
+                  allow(ping_driver.send(:token_interactor)).to receive(:call).and_return(
+                    Interactor::Context.new(
+                      token: 'token'
+                    )
+                  )
+                end
               end
             end
 

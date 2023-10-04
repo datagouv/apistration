@@ -1,11 +1,11 @@
 require_relative '../provider_stubs'
 
 module ProviderStubs::CNAFQuotientFamilial
-  def mock_valid_cnaf_quotient_familial
+  def mock_valid_cnaf_quotient_familial(status: 200)
     stub_cnaf_quotient_familial_make_request_ssl_config
 
     stub_request(:post, Siade.credentials[:cnaf_quotient_familial_url]).to_return(
-      status: 200,
+      status:,
       body: read_payload_file('cnaf/quotient_familial_valid_response.mime')
     )
   end
