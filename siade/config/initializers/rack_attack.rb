@@ -101,7 +101,7 @@ class Rack::Attack
     [
       429,
       headers,
-      ErrorsSerializer.new([TooManyRequestsError.new], format: error_format).to_json
+      [ErrorsSerializer.new([TooManyRequestsError.new], format: error_format).to_json]
     ]
   end
 end
