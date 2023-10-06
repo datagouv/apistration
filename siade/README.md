@@ -266,11 +266,23 @@ Plus d'infos dans le code de
 
 ## Documentation
 
-### Monitoring des erreurs des fournisseurs de données
+### Monitoring des erreurs des fournisseurs de données via Sentry
 
 La documentation relative à cette gestion (implémentation technique, doctrine
 et les notifications Sentry) se trouve ici: [Monitoring des
 erreurs](https://3.basecamp.com/4318089/buckets/14298426/vaults/3437220238)
+
+#### Données personnelles dans Sentry
+
+Afin d'éviter la fuite de données personnelles dans Sentry les query params
+d'API Particulier sont chiffrés à l'aide de GPG avant d'être envoyés dans Sentry.
+
+Les clefs publiques de chiffrement sont déployés par Ansible dans `config/gpg_public_keys_for_data_encryption`
+
+Pour déchiffrer les données :
+```shell
+./bin/decrypt_gpg_json_params_from_unknown_provider_tracking_error.sh <encrypted_data_from_sentry.gpg>
+```
 
 ### Gestion des erreurs
 
