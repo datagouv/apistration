@@ -21,7 +21,7 @@ RSpec.describe CarifOref::CertificationsQualiopiFranceCompetences::BuildResource
             bilan_competences: false,
             validation_acquis_experience: true,
             apprentissage: true,
-            origine_obtention_qualiopi: 'Qualiopi direct sur le NDA'
+            obtention_via_unite_legale: false
           },
           specialites: {
             specialite_1: {

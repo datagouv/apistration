@@ -26,7 +26,7 @@ class CarifOref::CertificationsQualiopiFranceCompetences::BuildResource < BuildR
           bilan_competences: string_to_bool(nda_payload['qualiopi_bilan_comptence']),
           validation_acquis_experience: string_to_bool(nda_payload['qualiopi_vae']),
           apprentissage: string_to_bool(nda_payload['qualiopi_apprentissage']),
-          origine_obtention_qualiopi: nda_payload['obtention_qualiopi']
+          obtention_via_unite_legale: obtention_via_unite_legale(nda_payload['obtention_qualiopi'])
         },
         specialites: {
           specialite_1: build_speciality(nda_payload, 1),
@@ -58,6 +58,16 @@ class CarifOref::CertificationsQualiopiFranceCompetences::BuildResource < BuildR
   def valid_habilitations
     json_body['habilitations'].reject do |habilitation_payload|
       habilitation_payload['etat_habilitation'] == 'Supprimé'
+    end
+  end
+
+  def obtention_via_unite_legale(value)
+    return if value.blank?
+
+    if value.include?('direct sur le NDA')
+      false
+    elsif value.include?('par propagation via')
+      true
     end
   end
 

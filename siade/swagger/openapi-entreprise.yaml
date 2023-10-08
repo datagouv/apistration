@@ -2047,20 +2047,29 @@ paths:
                                     Action de Formation par Apprentissage.
                                   type: boolean
                                   example: false
-                                origine_obtention_qualiopi:
+                                obtention_via_unite_legale:
                                   title: Indique si le certificat Qualiopi est propagé
                                     depuis le SIREN de l'unité légale
                                   description: 'Lorsqu''une unité légale a un seul
                                     NDA et donc un seul Qualiopi, celui-ci est automatiquement
                                     propagé à tous ses établissements, d''après les
                                     règles de la délégation générale à l''emploi et
-                                    à la formation professionnelle (DGEFP). Ce champ
-                                    peut être à "null" si l''organisme n''a pas fait
-                                    de demande Qualiopi.
+                                    à la formation professionnelle (DGEFP), ce champ
+                                    est alors à `true` et indique que le NDA associé
+                                    à l''établissement est issu de l''unité légale.
+                                    Dans le cas contraire, si le NDA ne provient pas
+                                    d''une propagation depuis le SIREN, ce champ est
+                                    à `false`. Ce second cas est bien plus rare car
+                                    il intervient lorsqu''il existe plusieurs NDA
+                                    associés à plusieurs SIRET, la propagation est
+                                    alors uniquement faite pour certains SIRET déclarés.
+                                    Enfin, ce champ peut être à "null" si l''organisme
+                                    n''a pas fait de demande Qualiopi.
 
                                     '
-                                  type: string
-                                  example: Qualiopi direct sur le NDA
+                                  type: boolean
+                                  example: true
+                                  nullable: true
                             specialites:
                               type: object
                               description: 'Informations relatives aux spécialités
