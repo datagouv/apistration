@@ -35,7 +35,7 @@ class PingService
 
   def http_status
     case status
-    when :ok
+    when :ok, :unknown
       :ok
     when :not_found
       :not_found
