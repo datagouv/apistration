@@ -7,6 +7,7 @@ class PingService
   end
 
   def perform
+    return maintenance_response if maintenance?
     return cached_response if cached_response
 
     write_cache if cacheable?
@@ -18,7 +19,7 @@ class PingService
 
   def data
     {
-      status:,
+      status: http_status,
       json:
     }
   end
@@ -27,8 +28,20 @@ class PingService
     return {} if status == :not_found
 
     {
+      status:,
       last_update: Time.zone.now
     }
+  end
+
+  def http_status
+    case status
+    when :ok
+      :ok
+    when :not_found
+      :not_found
+    else
+      :bad_gateway
+    end
   end
 
   def status
@@ -57,6 +70,27 @@ class PingService
 
   def cached_response
     cache.read(cache_key)
+  end
+
+  def maintenance
+    @maintenance ||= MaintenanceService.new(ping_config.fetch(:provider))
+  end
+
+  def maintenance?
+    maintenance.on?
+  rescue KeyError
+    false
+  end
+
+  def maintenance_response
+    {
+      status: :ok,
+      json: {
+        status: :maintenance,
+        last_update: Time.zone.now,
+        until: Time.zone.now + maintenance.remaining_seconds
+      }
+    }
   end
 
   def cache_expires_in
