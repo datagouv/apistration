@@ -3,6 +3,7 @@ test:
   api_kind:
     with_retriever:
       kind: 'retriever'
+      provider: 'whatever'
       driver_params:
         retriever: 'CNAF::QuotientFamilial'
         params:
@@ -11,6 +12,7 @@ test:
     with_retriever_and_cache:
       kind: 'retriever'
       cache: <%= 5.minutes %>
+      provider: 'whatever'
       driver_params:
         retriever: 'CNAF::QuotientFamilial'
         params:
@@ -18,6 +20,7 @@ test:
           postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
     with_access_logs:
       kind: 'access_logs'
+      provider: 'whatever'
       driver_params:
         period: <%= 5.minutes %>
         routes:
@@ -25,6 +28,7 @@ test:
           - 'api_kind/api2/source2#show'
     with_make_request:
       kind: 'make_request'
+      provider: 'whatever'
       driver_params:
         make_request: 'CNAF::QuotientFamilial'
         status_to_check: 404
@@ -33,6 +37,7 @@ test:
           beneficiary_number: '1234567'
     with_make_request_and_token:
       kind: 'make_request'
+      provider: 'whatever'
       driver_params:
         make_request: 'PoleEmploi::Statut::MakeRequest'
         status_to_check: 404
@@ -46,6 +51,7 @@ shared:
     caf:
       kind: 'retriever'
       cache: <%= 2.minutes %>
+      provider: 'CNAF'
       driver_params:
         retriever: 'CNAF::QuotientFamilial'
         params:
@@ -54,6 +60,7 @@ shared:
     impots:
       kind: 'retriever'
       cache: <%= 2.minutes %>
+      provider: 'DGFIP - SVAIR'
       driver_params:
         retriever: 'DGFIP::SituationIR'
         params:
@@ -62,6 +69,7 @@ shared:
     pole_emploi_status:
       kind: 'retriever'
       cache: <%= 2.minutes %>
+      provider: 'Pôle Emploi'
       driver_params:
         retriever: 'PoleEmploi::Statut'
         params: &pole_emploi_params
@@ -70,6 +78,7 @@ shared:
     pole_emploi_indemnites:
       kind: 'make_request'
       cache: <%= 2.minutes %>
+      provider: 'Pôle Emploi'
       driver_params:
         make_request: 'PoleEmploi::Indemnites'
         params: *pole_emploi_params
@@ -78,6 +87,7 @@ shared:
     men_scolarite:
       kind: 'make_request'
       cache: <%= 2.minutes %>
+      provider: 'MEN'
       driver_params:
         make_request: 'MEN::Scolarites::MakeRequest'
         params:
@@ -93,6 +103,7 @@ shared:
     cnous_etudiant_boursier_ine:
       kind: 'make_request'
       cache: <%= 2.minutes %>
+      provider: 'CNOUS'
       driver_params:
         make_request: 'CNOUS::StudentScholarshipWithINE::MakeRequest'
         params:
@@ -103,6 +114,7 @@ shared:
     cnous_etudiant_boursier_identite:
       kind: 'make_request'
       cache: <%= 2.minutes %>
+      provider: 'CNOUS'
       driver_params:
         make_request: 'CNOUS::StudentScholarshipWithCivility::MakeRequest'
         params:
@@ -119,6 +131,7 @@ shared:
     cnous_etudiant_boursier_france_connect:
       kind: 'make_request'
       cache: <%= 2.minutes %>
+      provider: 'CNOUS'
       driver_params:
         make_request: 'CNOUS::StudentScholarshipWithFranceConnect::MakeRequest'
         params:
@@ -135,6 +148,7 @@ shared:
     franceconnect:
       kind: 'make_request'
       cache: <%= 2.minutes %>
+      provider: 'FranceConnect'
       driver_params:
         make_request: 'FranceConnect::DataFetcherThroughAccessToken::MakeRequest'
         params:
@@ -145,12 +159,14 @@ shared:
     insee/sirene:
       kind: 'retriever'
       cache: <%= 2.minutes %>
+      provider: 'INSEE'
       driver_params:
         retriever: 'INSEE::Etablissement'
         params:
           siret: '30613890002979'
     urssaf/attestation_sociale:
       kind: 'access_logs'
+      provider: 'ACOSS'
       cache: <%= 5.minutes %>
       driver_params:
         period: <%= 10.minutes %>
@@ -159,6 +175,7 @@ shared:
     infogreffe/rcs:
       kind: 'retriever'
       cache: <%= 2.minutes %>
+      provider: 'Infogreffe'
       driver_params:
         retriever: 'Infogreffe::ExtraitsRCS'
         params:
@@ -166,6 +183,7 @@ shared:
     inpi/rne:
       kind: 'retriever'
       cache: <%= 10.minutes %>
+      provider: 'INPI - RNE'
       driver_params:
         retriever: 'INPI::RNE::BeneficiairesEffectifs'
         params:
@@ -174,6 +192,7 @@ shared:
     djepva/api-association:
       kind: 'retriever'
       cache: <%= 5.minutes %>
+      provider: 'DJEPVA'
       driver_params:
         retriever: 'DJEPVA::UniteLegale'
         params:
@@ -182,6 +201,7 @@ shared:
     banque_de_france/bilans:
       kind: 'retriever'
       cache: <%= 10.minutes %>
+      provider: 'Banque de France'
       driver_params:
         retriever: 'BanqueDeFrance::BilansEntreprise'
         params:
@@ -190,6 +210,7 @@ shared:
     cnetp/attestation_cotisations_conges_payes_chomage_intemperies:
       kind: 'retriever'
       cache: <%= 5.minutes %>
+      provider: 'CNETP'
       driver_params:
         retriever: 'CNETP::AttestationCotisationsCongesPayesChomageIntemperies'
         params:
@@ -197,6 +218,7 @@ shared:
     msa/conformite_cotisations:
       kind: 'retriever'
       cache: <%= 5.minutes %>
+      provider: 'MSA'
       driver_params:
         retriever: 'MSA::ConformitesCotisations'
         params:
@@ -204,6 +226,7 @@ shared:
     opqibi/certification_ingenierie:
       kind: 'retriever'
       cache: <%= 5.minutes %>
+      provider: 'OPQIBI'
       driver_params:
         retriever: 'OPQIBI::CertificationsIngenierie'
         params:
@@ -211,6 +234,7 @@ shared:
     fntp/carte_professionnelle_travaux_publics:
       kind: 'retriever'
       cache: <%= 10.minutes %>
+      provider: 'FNTP'
       driver_params:
         retriever: 'FNTP::CarteProfessionnelleTravauxPublics'
         params:
@@ -218,6 +242,7 @@ shared:
     ademe/certification_rge:
       kind: 'retriever'
       cache: <%= 2.minutes %>
+      provider: 'ADEME'
       driver_params:
         retriever: 'ADEME::CertificatsRGE'
         params:
@@ -225,6 +250,7 @@ shared:
     european_commission/numero_tva:
       kind: 'retriever'
       cache: <%= 10.minutes %>
+      provider: 'European Commission'
       driver_params:
         retriever: 'EuropeanCommission::VIES'
         params:
@@ -232,6 +258,7 @@ shared:
     gip_mds/effectifs:
       kind: 'retriever'
       cache: <%= 10.minutes %>
+      provider: 'GIP-MDS'
       driver_params:
         retriever: 'GIPMDS::EffectifsAnnuelsEntreprise'
         params:
@@ -240,6 +267,7 @@ shared:
     fabrique_numerique_ministeres_sociaux/conventions_collectives:
       kind: 'retriever'
       cache: <%= 1.minute %>
+      provider: 'Fabrique Numérique des Ministères Sociaux'
       driver_params:
         retriever: 'FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives'
         params:
@@ -247,6 +275,7 @@ shared:
     douanes/immatriculations_eori:
       kind: 'retriever'
       cache: <%= 5.minutes %>
+      provider: 'DGDDI'
       driver_params:
         retriever: 'DGDDI::EORI'
         params:
@@ -254,6 +283,7 @@ shared:
     qualifelec/certificats:
       kind: 'retriever'
       cache: <%= 1.minute %>
+      provider: 'Qualifelec'
       driver_params:
         retriever: 'Qualifelec::Certificats'
         params:
