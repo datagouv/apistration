@@ -2,17 +2,24 @@ class AccessLogPingDriver < ApplicationPingDriver
   attr_reader :period, :routes
 
   def perform
-    valid_access_logs.any? ? :ok : :bad_gateway
+    if relevant_access_logs_statuses.include?('200')
+      :ok
+    elsif relevant_access_logs_statuses.any?
+      :bad_gateway
+    else
+      :unknown
+    end
   end
 
   private
 
-  def valid_access_logs
-    AccessLog.where(
+  def relevant_access_logs_statuses
+    @relevant_access_logs_statuses ||= AccessLog.where(
       route: routes,
-      status: '200',
       timestamp: (beginning_of_period..)
-    ).limit(1)
+    ).where.not(
+      status: %w[401 403 422]
+    ).pluck(:status)
   end
 
   def beginning_of_period

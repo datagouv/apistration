@@ -19,7 +19,7 @@ RSpec.describe AccessLogPingDriver, type: :ping_driver do
     end
 
     context 'when there is no data' do
-      it { is_expected.to eq(:bad_gateway) }
+      it { is_expected.to eq(:unknown) }
     end
 
     context 'when there is data' do
@@ -28,7 +28,7 @@ RSpec.describe AccessLogPingDriver, type: :ping_driver do
           AccessLog.create!(route: routes.sample, timestamp: 6.minutes.ago)
         end
 
-        it { is_expected.to eq(:bad_gateway) }
+        it { is_expected.to eq(:unknown) }
       end
 
       context 'when there is data for routes in the period' do
@@ -39,11 +39,11 @@ RSpec.describe AccessLogPingDriver, type: :ping_driver do
         context 'when it is not a valid route' do
           let(:extra_data) { { route: 'invalid' } }
 
-          it { is_expected.to eq(:bad_gateway) }
+          it { is_expected.to eq(:unknown) }
         end
 
         context 'when it is not a 200 status' do
-          let(:extra_data) { { status: '404' } }
+          let(:extra_data) { { status: '502' } }
 
           it { is_expected.to eq(:bad_gateway) }
         end
