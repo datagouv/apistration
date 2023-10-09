@@ -1,11 +1,11 @@
 GIT
   remote: https://github.com/rails-api/active_model_serializers.git
-  revision: 9fa9373f949f917a8ab22e7bfdfd5829c53d0bcb
+  revision: b41229704772ae1a9a34eba062b20f464d0663c7
   branch: 0-10-stable
   specs:
-    active_model_serializers (0.10.13)
-      actionpack (>= 4.1, < 7.1)
-      activemodel (>= 4.1, < 7.1)
+    active_model_serializers (0.10.14)
+      actionpack (>= 4.1)
+      activemodel (>= 4.1)
       case_transform (>= 0.2)
       jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
 
@@ -376,7 +376,7 @@ PLATFORMS
 
 DEPENDENCIES
   actionpack (~> 7.0)
-  active_model_serializers (~> 0.10.13)!
+  active_model_serializers (~> 0.10.14)!
   activemodel (~> 7.0)
   activerecord (~> 7.0)
   activesupport (~> 7.0)

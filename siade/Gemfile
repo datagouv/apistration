@@ -25,7 +25,7 @@ gem 'puma'
 
 gem 'rest-client'
 
-gem 'active_model_serializers', '~> 0.10.13', github: 'rails-api/active_model_serializers', branch: '0-10-stable'
+gem 'active_model_serializers', '~> 0.10.14', github: 'rails-api/active_model_serializers', branch: '0-10-stable'
 gem 'logstasher'
 gem 'nokogiri'
 gem 'oauth2', '~> 1.0'
