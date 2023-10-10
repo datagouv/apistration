@@ -36,8 +36,8 @@ RSpec.describe AccessLogPingDriver, type: :ping_driver do
           AccessLog.create!(valid_access_log_data.merge(extra_data))
         end
 
-        context 'when it is not a valid route' do
-          let(:extra_data) { { route: 'invalid' } }
+        context 'when it is not the matching route' do
+          let(:extra_data) { { route: 'another/route#show' } }
 
           it { is_expected.to eq(:unknown) }
         end

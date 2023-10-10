@@ -2,9 +2,9 @@ class AccessLogPingDriver < ApplicationPingDriver
   attr_reader :period, :routes
 
   def perform
-    if relevant_access_logs_statuses.include?('200')
+    if latest_authenticated_and_valid_params_logs_statuses.include?('200')
       :ok
-    elsif relevant_access_logs_statuses.any?
+    elsif latest_authenticated_and_valid_params_logs_statuses.any?
       :bad_gateway
     else
       :unknown
@@ -13,8 +13,8 @@ class AccessLogPingDriver < ApplicationPingDriver
 
   private
 
-  def relevant_access_logs_statuses
-    @relevant_access_logs_statuses ||= AccessLog.where(
+  def latest_authenticated_and_valid_params_logs_statuses
+    @latest_authenticated_and_valid_params_logs_statuses ||= AccessLog.where(
       route: routes,
       timestamp: (beginning_of_period..)
     ).where.not(
