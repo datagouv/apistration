@@ -30,7 +30,7 @@ class GIPMDS::Effectifs::ValidateResponse < ValidateResponse
   end
 
   def temporary_credentials_error?
-    http_code == 401
+    [401, 403].include?(http_code)
   end
 
   def temporary_credentials_error!

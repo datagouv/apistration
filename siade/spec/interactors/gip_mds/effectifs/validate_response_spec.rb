@@ -91,8 +91,8 @@ RSpec.describe GIPMDS::Effectifs::ValidateResponse, type: :validate_response do
     its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
   end
 
-  context 'with a 401 status' do
-    let(:code) { '401' }
+  context 'with a 401 or 403 status' do
+    let(:code) { %w[401 403].sample }
     let(:body) { '' }
 
     it { is_expected.to be_a_failure }
