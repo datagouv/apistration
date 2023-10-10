@@ -81,7 +81,7 @@ class Rack::Attack
     [
       401,
       { 'Content-Type' => 'application/json' },
-      ErrorsSerializer.new([BlacklistedTokenError.new(api)], format: error_format).to_json
+      [ErrorsSerializer.new([BlacklistedTokenError.new(api)], format: error_format).to_json]
     ]
   end
 
