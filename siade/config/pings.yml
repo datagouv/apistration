@@ -305,4 +305,13 @@ shared:
         period: <%= 10.minutes %>
         routes:
           - 'api_entreprise/v3_and_more/qualibat/certifications_batiment#show'
+    probtp/cotisations_retraite:
+      kind: 'access_logs'
+      provider: 'ProBTP'
+      cache: <%= 10.minutes %>
+      driver_params:
+        period: <%= 10.minutes %>
+        routes:
+          - 'api_entreprise/v3_and_more/probtp/conformites_cotisations_retraite#show'
+          - 'api_entreprise/v3_and_more/probtp/attestations_cotisation_retraite#show'
 
