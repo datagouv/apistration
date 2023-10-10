@@ -297,3 +297,12 @@ shared:
         retriever: 'Qualifelec::Certificats'
         params:
           siret: '42054064300376'
+    qualibat/certifications:
+      kind: 'access_logs'
+      provider: 'Qualibat'
+      cache: <%= 10.minutes %>
+      driver_params:
+        period: <%= 10.minutes %>
+        routes:
+          - 'api_entreprise/v3_and_more/qualibat/certifications_batiment#show'
+
