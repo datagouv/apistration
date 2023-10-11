@@ -4,7 +4,7 @@ class Seeds
 
     create_token(id: yes_jwt_id)
     create_token(id: no_scopes_jwt_id, scopes: [])
-    create_token(id: blacklisted_jwt_id, blacklisted: true)
+    create_token(id: blacklisted_jwt_id, blacklisted_at: 1.month.ago)
     create_token(id: expired_jwt_id, exp: 1.day.ago.to_i)
   end
 

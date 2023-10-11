@@ -5,6 +5,11 @@ class Token < ApplicationRecord
     authorization_request.try(:siret)
   end
 
+  def blacklisted?
+    blacklisted_at.present? &&
+      blacklisted_at < Time.zone.now
+  end
+
   def legacy_token?
     extra_info? && extra_info['legacy_token_id'].present?
   end

@@ -10,7 +10,7 @@ CREATE TABLE public.tokens (
     updated_at timestamp without time zone NOT NULL,
     exp integer NOT NULL,
     version character varying,
-    blacklisted boolean DEFAULT false,
+    blacklisted_at timestamp without time zone DEFAULT NULL,
     -- days_left_notification_sent json DEFAULT '[]'::json NOT NULL,
     archived boolean DEFAULT false,
     temp_use_case character varying,
