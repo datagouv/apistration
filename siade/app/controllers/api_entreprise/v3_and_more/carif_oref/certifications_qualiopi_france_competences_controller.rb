@@ -1,4 +1,4 @@
-class APIEntreprise::V3AndMore::CarifOref::CertificationsQualiopiFranceCompetencesController < APIEntreprise::V3AndMore::MockedController
+class APIEntreprise::V3AndMore::CarifOref::CertificationsQualiopiFranceCompetencesController < APIEntreprise::V3AndMore::BaseController
   def show
     organizer = retrieve_payload_data(::CarifOref::CertificationsQualiopiFranceCompetences)
 
