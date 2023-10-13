@@ -53,7 +53,7 @@ RSpec.describe CNAF::QuotientFamilialV2, type: :retriever_organizer do
         expect(monitoring_service).to have_received(:set_provider)
         expect(monitoring_service).to have_received(:track).with(
           'warning',
-          anything
+          '[CNAF] - SNGI Error: Dossier allocataire inexistant. Le document ne peut être édité.'
         )
       end
     end

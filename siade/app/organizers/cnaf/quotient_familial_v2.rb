@@ -20,23 +20,29 @@ class CNAF::QuotientFamilialV2 < RetrieverOrganizer
   def rollback
     super
 
-    track_not_found_errors
+    track_sngi_not_found_errors
   end
 
   private
 
-  def track_not_found_errors
-    not_found_errors.each do |not_found_error|
+  def track_sngi_not_found_errors
+    sngi_not_found_errors.each do |not_found_error|
       monitoring_service.track(
         'warning',
-        "[#{provider_name}] Error: #{not_found_error.detail}"
+        "[#{provider_name}] - #{regime} Error: #{not_found_error.detail}"
       )
     end
   end
 
-  def not_found_errors
+  def sngi_not_found_errors
     context.errors.select do |error|
-      error.kind == :not_found
+      error.kind == :not_found && regime == 'SNGI'
     end
+  end
+
+  def regime
+    self::REGIME_CODE_LABEL[response['X-APISECU-FD']] if context.response['X-APISECU-FD']
+
+    'SNGI'
   end
 end
