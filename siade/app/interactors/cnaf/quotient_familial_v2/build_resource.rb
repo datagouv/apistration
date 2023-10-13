@@ -89,6 +89,6 @@ class CNAF::QuotientFamilialV2::BuildResource < BuildResource
   def regime
     raise 'Regime not found' if response['X-APISECU-FD'].nil?
 
-    CNAF::QuotientFamilialV2::REGIME_CODE_LABEL[response['X-APISECU-FD']] unless response['X-APISECU-FD'].nil?
+    CNAF::QuotientFamilialV2::REGIME_CODE_LABEL[response['X-APISECU-FD']]
   end
 end
