@@ -1,5 +1,5 @@
 RSpec.describe CNAF::QuotientFamilialV2::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response:, provider_name: 'CNAF') }
+  subject { described_class.call(response:, provider_name: 'CNAF', operation_id: 'api_particulier_whatever') }
 
   context 'with 200 response' do
     let(:response) do
@@ -24,13 +24,34 @@ RSpec.describe CNAF::QuotientFamilialV2::ValidateResponse, type: :validate_respo
   end
 
   context 'with not found response' do
+    before do
+      allow(EncryptData).to receive(:new).and_return(encrypt_data)
+    end
+
     let(:response) do
       instance_double(Net::HTTPNotFound, code: 404, body:)
     end
 
     let(:body) { read_payload_file('cnaf/quotient_familial_v2/404.json') }
+    let(:error_body) { 'FATAL ERROR' }
+    let(:encrypt_data) { instance_double(EncryptData, perform: 'encrypted_data') }
 
     it { is_expected.to be_a_failure }
+
+    it 'adds context to monitoring, with encrypted params' do
+      subject
+
+      error = subject.errors.first
+
+      expect(error.monitoring_private_context).to eq(
+        {
+          http_response_code: 404,
+          http_response_body: body,
+          http_response_headers: { 'header' => 'value' },
+          encrypted_params: 'encrypted_data'
+        }
+      )
+    end
 
     its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
   end

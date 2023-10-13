@@ -36,6 +36,28 @@ RSpec.describe CNAF::QuotientFamilialV2, type: :retriever_organizer do
       end
     end
 
+    describe 'with a 404' do
+      let(:monitoring_service) { instance_double(MonitoringService, track_provider_error: nil, set_provider: nil) }
+
+      before do
+        stub_cnaf_authenticate('quotient_familial_v2')
+        stub_cnaf_404('quotient_familial_v2')
+        allow(MonitoringService).to receive(:instance).and_return(monitoring_service)
+        allow(monitoring_service).to receive(:track)
+        allow(monitoring_service).to receive(:set_retriever_context)
+      end
+
+      it 'tracks error as a warning through monitoring service' do
+        expect(subject).to be_a_failure
+        expect(subject.errors).to include(instance_of(NotFoundError))
+        expect(monitoring_service).to have_received(:set_provider)
+        expect(monitoring_service).to have_received(:track).with(
+          'warning',
+          anything
+        )
+      end
+    end
+
     describe 'with an invalid params' do
       let(:gender) { 'nope' }
 

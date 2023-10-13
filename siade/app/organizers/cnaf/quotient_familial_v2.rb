@@ -8,4 +8,27 @@ class CNAF::QuotientFamilialV2 < RetrieverOrganizer
   def provider_name
     'CNAF'
   end
+
+  def rollback
+    super
+
+    track_not_found_errors
+  end
+
+  private
+
+  def track_not_found_errors
+    not_found_errors.each do |not_found_error|
+      monitoring_service.track(
+        'warning',
+        "[#{provider_name}] Error: #{not_found_error.detail}"
+      )
+    end
+  end
+
+  def not_found_errors
+    context.errors.select do |error|
+      error.kind == :not_found
+    end
+  end
 end

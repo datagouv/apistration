@@ -7,6 +7,10 @@ class CNAF::QuotientFamilialV2::ValidateResponse < ValidateResponse
   protected
 
   def resource_not_found!
-    fail_with_error!(build_error(::NotFoundError, 'Dossier allocataire inexistant. Le document ne peut être édité.'))
+    error = build_error(::NotFoundError, 'Dossier allocataire inexistant. Le document ne peut être édité.')
+
+    add_monitoring_private_context(error)
+
+    fail_with_error!(error)
   end
 end
