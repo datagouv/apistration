@@ -40,19 +40,23 @@ class ValidateResponse < ApplicationInteractor
   def unknown_provider_response!(message = nil)
     error = build_error(::ProviderUnknownError, message)
 
+    add_monitoring_private_context(error)
+
+    fail_with_error!(error)
+  end
+
+  def add_monitoring_private_context(error)
     error.add_to_monitoring_private_context({
       http_response_code: context.response.code,
       http_response_body: context.response.body,
       http_response_headers: context.response.to_hash
     })
 
-    if api_particulier?
-      error.add_to_monitoring_private_context({
-        encrypted_params: encrypt_params.to_s
-      })
-    end
+    return unless api_particulier?
 
-    fail_with_error!(error)
+    error.add_to_monitoring_private_context({
+      encrypted_params: encrypt_params.to_s
+    })
   end
 
   def encrypt_params
