@@ -1,11 +1,6 @@
 class CNAF::QuotientFamilialV2::BuildResource < BuildResource
   protected
 
-  REGIME_CODE_LABEL = {
-    '00171001' => 'MSA',
-    '00810011' => 'CNAF'
-  }.freeze
-
   def resource_attributes
     {
       allocataires: build_persons_attributes(json_body['allocataires']),
@@ -84,16 +79,16 @@ class CNAF::QuotientFamilialV2::BuildResource < BuildResource
   end
 
   def msa?
-    response['X-APISECU-FD'] == '00171001'
+    response['X-APISECU-FD'] == CNAF::QuotientFamilialV2::REGIME_CODE_MSA
   end
 
   def cnaf?
-    response['X-APISECU-FD'] == '00810011'
+    response['X-APISECU-FD'] == CNAF::QuotienFamilialV2::REGIME_CODE_CNAF
   end
 
   def regime
     raise 'Regime not found' if response['X-APISECU-FD'].nil?
 
-    REGIME_CODE_LABEL[response['X-APISECU-FD']] unless response['X-APISECU-FD'].nil?
+    CNAF::QuotientFamilialV2::REGIME_CODE_LABEL[response['X-APISECU-FD']] unless response['X-APISECU-FD'].nil?
   end
 end
