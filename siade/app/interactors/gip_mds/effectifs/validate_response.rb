@@ -1,15 +1,16 @@
 class GIPMDS::Effectifs::ValidateResponse < ValidateResponse
-  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize
   def call
     resource_not_found! if [204, 404].include?(http_code)
     temporary_credentials_error! if temporary_credentials_error?
+    quota_error! if quota_error?
     internal_server_error! if internal_server_error?
     unknown_provider_response! if invalid_json?
     ko_technique! if ko_technique?
     unknown_provider_response! unless all_required_regime_are_present?
     resource_not_found! unless at_least_one_effectif_transmitted?
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize
 
   private
 
@@ -35,6 +36,17 @@ class GIPMDS::Effectifs::ValidateResponse < ValidateResponse
 
   def temporary_credentials_error!
     context.errors << GIPMDSError.new(:temporary_credentials_error)
+    context.fail!
+  end
+
+  def quota_error?
+    http_code == 429
+  end
+
+  def quota_error!
+    retry_date_string = Rack::Utils.parse_nested_query(response.body)['nextAccessTime']
+
+    context.errors << GIPMDSError.new(:quota_error, DateTime.parse(retry_date_string))
     context.fail!
   end
 
