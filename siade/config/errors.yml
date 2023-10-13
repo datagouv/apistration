@@ -350,6 +350,10 @@
   title: "Erreur temporaire d'authentification au GIP-MDS"
   detail: "Les serveurs du GIP-MDS rencontrent une erreur interne impliquant une erreur momentanée d'authentification, veuillez réessayer votre appel dans quelques secondes."
 
+- code: '31503'
+  title: "Erreur de quota du GIP-MDS"
+  detail: "Les serveurs du GIP-MDS nous renvoi une erreur 429 indiquant que nous avons dépassé les quotas d'appel alloués à notre application, veuillez réessayer votre appel plus tard.""
+
 ## Infogreffe
 - code: '02501'
   title: "Erreur temporaire d'identification d'Infogreffe"
