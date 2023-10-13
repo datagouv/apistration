@@ -226,7 +226,7 @@ shared:
           siren: '811214428'
     msa/conformite_cotisations:
       kind: 'retriever'
-      cache: <%= 5.minutes %>
+      cache: <%= 2.minutes %>
       provider: 'MSA'
       driver_params:
         retriever: 'MSA::ConformitesCotisations'
