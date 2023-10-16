@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails-api/active_model_serializers.git
-  revision: b41229704772ae1a9a34eba062b20f464d0663c7
+  revision: 717ac11fd2e2e20537174cae0c506248cb711ff3
   branch: 0-10-stable
   specs:
     active_model_serializers (0.10.14)
@@ -159,7 +159,7 @@ GEM
     logstasher (2.1.5)
       activesupport (>= 5.2)
       request_store
-    loofah (2.21.3)
+    loofah (2.21.4)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     lumberjack (1.2.9)
