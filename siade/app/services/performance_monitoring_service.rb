@@ -6,7 +6,7 @@ class PerformanceMonitoringService
   attr_writer :enable
 
   def track(op:, description:)
-    transaction = Sentry&.get_current_scope&.get_transaction
+    transaction = Sentry.get_current_scope&.get_transaction
 
     if transaction && enable?
       result = nil
