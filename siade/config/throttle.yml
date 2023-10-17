@@ -79,7 +79,6 @@ shared:
   very_low_latency_json_resources:
     endpoints:
       - { controller: 'api_entreprise/v2/effectifs_mensuels_entreprise_acoss_covid', action: 'show' }
-      - { controller: 'api_entreprise/v2/attestations_agefiph', action: 'show' }
     limit: 250
     period: 60
   proxied_files:

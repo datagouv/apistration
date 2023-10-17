@@ -32,7 +32,6 @@ class ExtractProviderFromPath
       'msa' => 'MSA',
       'opqibi' => 'OPQIBI',
       'fntp' => 'FNTP',
-      'agefiph' => 'Agefiph',
       'fabrique_numerique_ministeres_sociaux' => 'Fabrique numérique des Ministères Sociaux',
       'cma' => 'CMA France',
       'douanes' => 'Douanes',

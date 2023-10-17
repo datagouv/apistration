@@ -17,7 +17,6 @@ def valid_siret(sample_type = nil)
     insee_etablissement_with_enseigne: '52909916000028',
     conventions_collectives: '82161143100015',
     dgfip: '78951073200017',
-    agefiph: '00552017600016',
     exercice: '55203253400646',
     recipient: '91978102100010',
     qualifelec: '78951073200017'

@@ -570,9 +570,6 @@ paths:
           siret_non_diffusible:
             value: '00557246600026'
             summary: SIRET établissement non diffusible
-          siret_agefiph:
-            value: '39332832300059'
-            summary: SIRET pour AGEFIPH
           siret_msa:
             value: '81104725700019'
             summary: SIRET pour MSA
@@ -1753,9 +1750,6 @@ paths:
           siret_non_diffusible:
             value: '00557246600026'
             summary: SIRET établissement non diffusible
-          siret_agefiph:
-            value: '39332832300059'
-            summary: SIRET pour AGEFIPH
           siret_msa:
             value: '81104725700019'
             summary: SIRET pour MSA
@@ -4120,9 +4114,6 @@ paths:
           siret_non_diffusible:
             value: '00557246600026'
             summary: SIRET établissement non diffusible
-          siret_agefiph:
-            value: '39332832300059'
-            summary: SIRET pour AGEFIPH
           siret_msa:
             value: '81104725700019'
             summary: SIRET pour MSA
@@ -8633,9 +8624,6 @@ paths:
           siret_non_diffusible:
             value: '00557246600026'
             summary: SIRET établissement non diffusible
-          siret_agefiph:
-            value: '39332832300059'
-            summary: SIRET pour AGEFIPH
           siret_msa:
             value: '81104725700019'
             summary: SIRET pour MSA
@@ -9874,9 +9862,6 @@ paths:
           siret_non_diffusible:
             value: '00557246600026'
             summary: SIRET établissement non diffusible
-          siret_agefiph:
-            value: '39332832300059'
-            summary: SIRET pour AGEFIPH
           siret_msa:
             value: '81104725700019'
             summary: SIRET pour MSA
@@ -14378,9 +14363,6 @@ paths:
           siret_non_diffusible:
             value: '00557246600026'
             summary: SIRET établissement non diffusible
-          siret_agefiph:
-            value: '39332832300059'
-            summary: SIRET pour AGEFIPH
           siret_msa:
             value: '81104725700019'
             summary: SIRET pour MSA
@@ -14981,9 +14963,6 @@ paths:
           siret_non_diffusible:
             value: '00557246600026'
             summary: SIRET établissement non diffusible
-          siret_agefiph:
-            value: '39332832300059'
-            summary: SIRET pour AGEFIPH
           siret_msa:
             value: '81104725700019'
             summary: SIRET pour MSA
@@ -15612,9 +15591,6 @@ paths:
           siret_non_diffusible:
             value: '00557246600026'
             summary: SIRET établissement non diffusible
-          siret_agefiph:
-            value: '39332832300059'
-            summary: SIRET pour AGEFIPH
           siret_msa:
             value: '81104725700019'
             summary: SIRET pour MSA
@@ -16908,9 +16884,6 @@ paths:
           siret_non_diffusible:
             value: '00557246600026'
             summary: SIRET établissement non diffusible
-          siret_agefiph:
-            value: '39332832300059'
-            summary: SIRET pour AGEFIPH
           siret_msa:
             value: '81104725700019'
             summary: SIRET pour MSA
@@ -23510,9 +23483,6 @@ paths:
           siret_non_diffusible:
             value: '00557246600026'
             summary: SIRET établissement non diffusible
-          siret_agefiph:
-            value: '39332832300059'
-            summary: SIRET pour AGEFIPH
           siret_msa:
             value: '81104725700019'
             summary: SIRET pour MSA
@@ -24330,9 +24300,6 @@ paths:
           siret_non_diffusible:
             value: '00557246600026'
             summary: SIRET établissement non diffusible
-          siret_agefiph:
-            value: '39332832300059'
-            summary: SIRET pour AGEFIPH
           siret_msa:
             value: '81104725700019'
             summary: SIRET pour MSA
@@ -25096,9 +25063,6 @@ paths:
           siret_non_diffusible:
             value: '00557246600026'
             summary: SIRET établissement non diffusible
-          siret_agefiph:
-            value: '39332832300059'
-            summary: SIRET pour AGEFIPH
           siret_msa:
             value: '81104725700019'
             summary: SIRET pour MSA
@@ -25524,9 +25488,6 @@ paths:
           siret_non_diffusible:
             value: '00557246600026'
             summary: SIRET établissement non diffusible
-          siret_agefiph:
-            value: '39332832300059'
-            summary: SIRET pour AGEFIPH
           siret_msa:
             value: '81104725700019'
             summary: SIRET pour MSA

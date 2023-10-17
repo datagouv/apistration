@@ -240,16 +240,6 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
               }]
             end
           end
-
-          it_behaves_like 'throttling group of endpoints' do
-            let(:endpoints) do
-              [{
-                controller: 'api_entreprise/v2/attestations_agefiph',
-                action: 'show',
-                siret: 123
-              }]
-            end
-          end
         end
       end
     end

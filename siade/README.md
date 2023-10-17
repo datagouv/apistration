@@ -289,7 +289,7 @@ Mettre une action d'envoi d'emails à l'équipe api-entreprise pour le Critical 
 
 **B. Philosophie**
 
-L'objectif est d'avoir un tracking des erreurs assez fin en fonction du type d'erreur, et de garder un backlog sur Sentry le plus minimal possible. 
+L'objectif est d'avoir un tracking des erreurs assez fin en fonction du type d'erreur, et de garder un backlog sur Sentry le plus minimal possible.
 
 Cela permet de fixer au fil de l'eau, en fonction de la doctrine ci-dessous, les erreurs. Mise à part les erreurs de connections aux webservices qui seront géré de manière générique, les fixes seront présent au sein des drivers du fournisseur afin de comprendre au mieux ce qui peut planter sans avoir à remonter jusqu'à un rescue générique et/ou global.
 
@@ -320,7 +320,7 @@ Pour chaque erreur remonté autre que 500:
 
 Nomenclature pour chaque erreur
 
-a. Erreur 500 du système (cas 1.) : 
+a. Erreur 500 du système (cas 1.) :
 * Label Erreur
 * Notifier à la première occurrence
 * Notifier si plus de X occurrences en moins de Y temps
@@ -345,7 +345,6 @@ Le nom de l'erreur inclura le fournisseur et le champ manquant  (1 event / fourn
 i. Endpoints sans alertes configurées
 * DGFIP (tous les endpoints) : rien n'a été setup, trop aléatoire et pas vraiment de "trend" détectable
 * Attestations sociales retraite ProBTP : c'est constamment le même trend, on va se faire spammer pour rien
-* Attestations Agefiph : aucune erreur dans le système, je n'ai pas pu setup de règles
 * Effectifs covid : pas d'erreurs sur sentry (fourni par nous donc à priori pas de souci)
 * Ademe: de manière récurrente à ~13h un des champs est vide
 

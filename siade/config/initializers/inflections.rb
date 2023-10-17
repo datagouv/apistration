@@ -35,7 +35,6 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
 
   inflect.acronym 'ACOSS'
   inflect.acronym 'ADEME'
-  inflect.acronym 'AGEFIPH'
   inflect.acronym 'BDF'
   inflect.acronym 'CNAF'
   inflect.acronym 'CNETP'
@@ -67,7 +66,6 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
 
   inflect.irregular 'aide_covid_effectifs', 'aides_covid_effectifs'
   inflect.irregular 'appel_offre', 'appels_offres'
-  inflect.irregular 'attestation_agefiph', 'attestations_agefiph'
   inflect.irregular 'attestation_fiscale', 'attestations_fiscales'
   inflect.irregular 'attestation_sociale', 'attestations_sociales'
   inflect.irregular 'certificat_cnetp', 'certificats_cnetp'

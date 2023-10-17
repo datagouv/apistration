@@ -170,10 +170,6 @@
 
 # API Entreprise v2
 
-- name: 'Attestations agefiph'
-  api: 'entreprise'
-  path: '/v2/attestations_agefiph/48146131700036'
-
 - name: 'Effectifs mensuels (entreprise)'
   api: 'entreprise'
   path: '/v2/effectifs_mensuels_acoss_covid/2020/02/entreprise/552032534'

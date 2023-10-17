@@ -19,8 +19,6 @@ namespace :v2, constraints: APIEntrepriseDomainConstraint.new  do
 
   get 'attestations_sociales_acoss/:siren'                => '/api_entreprise/v2/attestations_sociales_acoss#show'
 
-  get 'attestations_agefiph/:siret'                       => '/api_entreprise/v2/attestations_agefiph#show'
-
   get 'eligibilites_cotisation_retraite_probtp/:siret'    => '/api_entreprise/v2/eligibilites_cotisation_retraite_probtp#show'
   get 'attestations_cotisation_retraite_probtp/:siret'    => '/api_entreprise/v2/attestations_cotisation_retraite_probtp#show'
 

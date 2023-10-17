@@ -4,8 +4,6 @@ shared:
   api_entreprise/v2/associations:
     - associations
     - open_data
-  api_entreprise/v2/attestations_agefiph:
-    - attestations_agefiph
   api_entreprise/v2/attestations_cotisation_retraite_probtp:
     - probtp
     - cotisations_probtp
