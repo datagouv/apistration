@@ -1,5 +1,5 @@
 class AccessLogPingDriver < ApplicationPingDriver
-  attr_reader :period, :routes
+  attr_reader :period, :routes, :excluded_statuses
 
   def perform
     if latest_authenticated_and_valid_params_logs_statuses.include?('200')
@@ -18,7 +18,7 @@ class AccessLogPingDriver < ApplicationPingDriver
       route: routes,
       timestamp: (beginning_of_period..)
     ).where.not(
-      status: %w[401 403 422]
+      status: %w[401 403 422].concat(excluded_statuses)
     ).pluck(:status)
   end
 
@@ -29,5 +29,6 @@ class AccessLogPingDriver < ApplicationPingDriver
   def build_context(driver_params)
     @period = driver_params.fetch(:period)
     @routes = driver_params.fetch(:routes)
+    @excluded_statuses = driver_params.fetch(:excluded_statuses, []).map(&:to_s)
   end
 end

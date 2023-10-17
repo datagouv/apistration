@@ -43,9 +43,17 @@ RSpec.describe AccessLogPingDriver, type: :ping_driver do
         end
 
         context 'when it is not a 200 status' do
-          let(:extra_data) { { status: '502' } }
+          let(:extra_data) { { status: '404' } }
 
           it { is_expected.to eq(:bad_gateway) }
+
+          describe 'with a excluded statuses config' do
+            let(:params) do
+              Rails.application.config_for(:pings)[:api_kind][:with_access_logs_and_excluded_status][:driver_params]
+            end
+
+            it { is_expected.to eq(:unknown) }
+          end
         end
 
         context 'when everything is valid' do

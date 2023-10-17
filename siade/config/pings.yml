@@ -30,11 +30,19 @@ test:
     with_access_logs:
       kind: 'access_logs'
       provider: 'whatever'
-      driver_params:
+      driver_params: &with_access_logs_driver_params
         period: <%= 5.minutes %>
         routes:
           - 'api_kind/api1/source1#show'
           - 'api_kind/api2/source2#show'
+    with_access_logs_and_excluded_status:
+      kind: 'access_logs'
+      provider: 'whatever'
+      driver_params:
+        <<: *with_access_logs_driver_params
+        excluded_statuses:
+          - 404
+
     with_make_request:
       kind: 'make_request'
       provider: 'whatever'
