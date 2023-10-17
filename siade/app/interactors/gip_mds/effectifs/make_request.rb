@@ -19,6 +19,13 @@ class GIPMDS::Effectifs::MakeRequest < MakeRequest::Get
     request['Authorization'] = "Bearer #{token}"
   end
 
+  def extra_http_start_options
+    {
+      open_timeout: 2,
+      read_timeout: 6
+    }
+  end
+
   private
 
   def build_time_params
