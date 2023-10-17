@@ -324,4 +324,5 @@ shared:
         routes:
           - 'api_entreprise/v3_and_more/probtp/conformites_cotisations_retraite#show'
           - 'api_entreprise/v3_and_more/probtp/attestations_cotisation_retraite#show'
-
+        excluded_statuses:
+          - 404
