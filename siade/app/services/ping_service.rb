@@ -10,6 +10,7 @@ class PingService
     return maintenance_response if maintenance?
     return cached_response if cached_response
 
+    store_last_ok_status if status == :ok
     write_cache if cacheable?
 
     data
@@ -28,9 +29,8 @@ class PingService
     return {} if status == :not_found
 
     {
-      status:,
-      last_update: Time.zone.now
-    }
+      status:
+    }.merge(common_payload_attributes)
   end
 
   def http_status
@@ -87,10 +87,24 @@ class PingService
       status: :ok,
       json: {
         status: :maintenance,
-        last_update: Time.zone.now,
         until: Time.zone.now + maintenance.remaining_seconds
-      }
+      }.merge(common_payload_attributes)
     }
+  end
+
+  def common_payload_attributes
+    {
+      last_update: current_time,
+      last_ok_status:
+    }
+  end
+
+  def last_ok_status
+    redis_service.get("last_ok_status_#{operation_id}")
+  end
+
+  def store_last_ok_status
+    redis_service.set("last_ok_status_#{operation_id}", current_time)
   end
 
   def cache_expires_in
@@ -103,6 +117,14 @@ class PingService
 
   def cache
     Rails.cache
+  end
+
+  def redis_service
+    RedisService.instance
+  end
+
+  def current_time
+    @current_time ||= Time.zone.now
   end
 
   def ping_config

@@ -1,6 +1,8 @@
 RSpec.describe PingService, type: :service do
   before do
     Timecop.freeze(current_time)
+
+    RedisService.instance.set("last_ok_status_ping_#{api_kind}_#{identifier}", old_last_ok_status)
   end
 
   after do
@@ -8,16 +10,19 @@ RSpec.describe PingService, type: :service do
   end
 
   let(:current_time) { Time.zone.local(2023, 9, 10, 12, 0) }
+  let(:old_last_ok_status) { current_time - 1.hour }
+  let(:last_ok_status) { old_last_ok_status }
 
   describe '#perform' do
     subject(:make_ping) { described_class.new(api_kind, identifier).perform }
 
     let(:api_kind) { 'api_kind' }
 
-    let(:ok_payload) do
+    let(:json_payload) do
       {
         status:,
-        last_update: current_time
+        last_update: current_time,
+        last_ok_status:
       }
     end
 
@@ -58,7 +63,8 @@ RSpec.describe PingService, type: :service do
             json: {
               status: :maintenance,
               until: 30.minutes.from_now,
-              last_update: current_time
+              last_update: current_time,
+              last_ok_status:
             }
           })
         end
@@ -79,11 +85,12 @@ RSpec.describe PingService, type: :service do
 
         context 'when driver is successful' do
           let(:status) { :ok }
+          let(:last_ok_status) { current_time }
 
           it do
             expect(make_ping).to eq({
               status: :ok,
-              json: ok_payload
+              json: json_payload
             })
           end
         end
@@ -94,7 +101,7 @@ RSpec.describe PingService, type: :service do
           it do
             expect(make_ping).to eq({
               status: :bad_gateway,
-              json: ok_payload
+              json: json_payload
             })
           end
         end
@@ -107,7 +114,7 @@ RSpec.describe PingService, type: :service do
             before do
               Rails.cache.write(cache_key, {
                 status: :ok,
-                json: ok_payload
+                json: json_payload
               })
             end
 
@@ -120,7 +127,7 @@ RSpec.describe PingService, type: :service do
             it do
               expect(make_ping).to eq({
                 status: :ok,
-                json: ok_payload
+                json: json_payload
               })
             end
           end
@@ -132,11 +139,12 @@ RSpec.describe PingService, type: :service do
 
             context 'when driver is successful' do
               let(:status) { :ok }
+              let(:last_ok_status) { current_time }
 
               it do
                 expect(make_ping).to eq({
                   status: :ok,
-                  json: ok_payload
+                  json: json_payload
                 })
               end
 
@@ -145,7 +153,7 @@ RSpec.describe PingService, type: :service do
 
                 expect(Rails.cache.read(cache_key)).to eq({
                   status: :ok,
-                  json: ok_payload
+                  json: json_payload
                 })
 
                 expect(Rails.cache.redis.ttl("ping_#{api_kind}_#{identifier}")).to be_within(5).of(5.minutes)
@@ -158,7 +166,7 @@ RSpec.describe PingService, type: :service do
               it do
                 expect(make_ping).to eq({
                   status: :bad_gateway,
-                  json: ok_payload
+                  json: json_payload
                 })
               end
 
