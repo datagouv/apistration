@@ -1,3 +1,6 @@
+require 'hyperping_api'
+require 'monitoring_service'
+
 class SyncPingsWithMonitorsRemoteService
   def perform
     pings.each do |api_kind, config|
