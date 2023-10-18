@@ -12,6 +12,17 @@ RSpec.describe SyncPingsWithMonitorsRemoteService, type: :service do
       ]
     end
 
+    let(:default_params) do
+      {
+        regions: %w[
+          london
+          paris
+          frankfurt
+          amsterdam
+        ]
+      }
+    end
+
     before do
       allow(HyperpingAPI).to receive(:new).and_return(hyperping_api_service)
     end
@@ -23,8 +34,10 @@ RSpec.describe SyncPingsWithMonitorsRemoteService, type: :service do
         sync_pings_with_monitors
 
         expect(hyperping_api_service).to have_received(:create_monitor).with(
-          name: 'With Retriever',
-          url: 'https://particulier.api.gouv.fr/api/with_retriever/ping'
+          default_params.merge(
+            name: 'With Retriever',
+            url: 'https://particulier.api.gouv.fr/api/with_retriever/ping'
+          )
         )
       end
 
@@ -33,8 +46,10 @@ RSpec.describe SyncPingsWithMonitorsRemoteService, type: :service do
 
         expect(hyperping_api_service).to have_received(:update_monitor).with(
           '1',
-          name: 'With Retriever and Maintenance',
-          url: 'https://particulier.api.gouv.fr/api/with_retriever_and_maintenance/ping'
+          default_params.merge(
+            name: 'With Retriever and Maintenance',
+            url: 'https://particulier.api.gouv.fr/api/with_retriever_and_maintenance/ping'
+          )
         )
       end
     end
@@ -50,8 +65,10 @@ RSpec.describe SyncPingsWithMonitorsRemoteService, type: :service do
         sync_pings_with_monitors
 
         expect(hyperping_api_service).to have_received(:create_monitor).with(
-          name: 'With Retriever',
-          url: 'https://particulier.api.gouv.fr/api/with_retriever/ping'
+          default_params.merge(
+            name: 'With Retriever',
+            url: 'https://particulier.api.gouv.fr/api/with_retriever/ping'
+          )
         )
       end
 

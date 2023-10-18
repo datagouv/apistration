@@ -31,16 +31,20 @@ class SyncPingsWithMonitorsRemoteService
 
   def create_monitor(api_kind, ping_identifier, ping_config)
     hyperping_api_service.create_monitor(
-      name: ping_config[:status_page][:name],
-      url: url_for(api_kind, ping_identifier)
+      default_params.merge(
+        name: ping_config[:status_page][:name],
+        url: url_for(api_kind, ping_identifier)
+      )
     )
   end
 
   def update_monitor(api_kind, ping_identifier, ping_config, remote_monitor)
     hyperping_api_service.update_monitor(
       remote_monitor['uuid'],
-      name: ping_config[:status_page][:name],
-      url: url_for(api_kind, ping_identifier)
+      default_params.merge(
+        name: ping_config[:status_page][:name],
+        url: url_for(api_kind, ping_identifier)
+      )
     )
   end
 
@@ -51,6 +55,17 @@ class SyncPingsWithMonitorsRemoteService
     else
       "https://particulier.api.gouv.fr/api/#{identifier}/ping"
     end
+  end
+
+  def default_params
+    {
+      regions: %w[
+        london
+        paris
+        frankfurt
+        amsterdam
+      ]
+    }
   end
 
   def find_remote_monitor(api_kind, ping_identifier)
