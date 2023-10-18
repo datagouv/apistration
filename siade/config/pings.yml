@@ -181,6 +181,8 @@ shared:
       kind: 'retriever'
       cache: <%= 2.minutes %>
       provider: 'INSEE'
+      status_page:
+        name: 'INSEE - Sirene'
       driver_params:
         retriever: 'INSEE::Etablissement'
         params:
@@ -188,6 +190,8 @@ shared:
     urssaf/attestation_sociale:
       kind: 'access_logs'
       provider: 'ACOSS'
+      status_page:
+        name: 'URSSAF - Attestations sociales'
       cache: <%= 5.minutes %>
       driver_params:
         period: <%= 10.minutes %>
@@ -197,6 +201,8 @@ shared:
       kind: 'retriever'
       cache: <%= 2.minutes %>
       provider: 'Infogreffe'
+      status_page:
+        name: 'Infogreffe - RCS'
       driver_params:
         retriever: 'Infogreffe::ExtraitsRCS'
         params:
@@ -205,6 +211,8 @@ shared:
       kind: 'retriever'
       cache: <%= 10.minutes %>
       provider: 'INPI - RNE'
+      status_page:
+        name: 'INPI - RNE'
       driver_params:
         retriever: 'INPI::RNE::BeneficiairesEffectifs'
         params:
@@ -214,6 +222,8 @@ shared:
       kind: 'retriever'
       cache: <%= 5.minutes %>
       provider: 'DJEPVA'
+      status_page:
+        name: "DJEPVA - API Association"
       driver_params:
         retriever: 'DJEPVA::UniteLegale'
         params:
@@ -223,6 +233,8 @@ shared:
       kind: 'retriever'
       cache: <%= 10.minutes %>
       provider: 'Banque de France'
+      status_page:
+        name: "Banque de France - Bilans"
       driver_params:
         retriever: 'BanqueDeFrance::BilansEntreprise'
         params:
@@ -232,6 +244,8 @@ shared:
       kind: 'retriever'
       cache: <%= 5.minutes %>
       provider: 'CNETP'
+      status_page:
+        name: "CNETP - Attestations cotisations congés payés"
       driver_params:
         retriever: 'CNETP::AttestationCotisationsCongesPayesChomageIntemperies'
         params:
@@ -240,6 +254,8 @@ shared:
       kind: 'retriever'
       cache: <%= 2.minutes %>
       provider: 'MSA'
+      status_page:
+        name: "MSA - Conformité cotisations"
       driver_params:
         retriever: 'MSA::ConformitesCotisations'
         params:
@@ -248,6 +264,8 @@ shared:
       kind: 'retriever'
       cache: <%= 5.minutes %>
       provider: 'OPQIBI'
+      status_page:
+        name: "OPQIBI - Certification ingénierie"
       driver_params:
         retriever: 'OPQIBI::CertificationsIngenierie'
         params:
@@ -256,6 +274,8 @@ shared:
       kind: 'retriever'
       cache: <%= 10.minutes %>
       provider: 'FNTP'
+      status_page:
+        name: "FNTP - Cartes professionelles Travaux Publics"
       driver_params:
         retriever: 'FNTP::CarteProfessionnelleTravauxPublics'
         params:
@@ -264,6 +284,8 @@ shared:
       kind: 'retriever'
       cache: <%= 2.minutes %>
       provider: 'ADEME'
+      status_page:
+        name: "ADEME - Certifications RGE"
       driver_params:
         retriever: 'ADEME::CertificatsRGE'
         params:
@@ -272,6 +294,8 @@ shared:
       kind: 'retriever'
       cache: <%= 10.minutes %>
       provider: 'European Commission'
+      status_page:
+        name: "Commission Européenne - Numéro de TVA"
       driver_params:
         retriever: 'EuropeanCommission::VIES'
         params:
@@ -280,6 +304,8 @@ shared:
       kind: 'retriever'
       cache: <%= 10.minutes %>
       provider: 'GIP-MDS'
+      status_page:
+        name: "GIP-MDS - Effectifs"
       driver_params:
         retriever: 'GIPMDS::EffectifsAnnuelsEntreprise'
         params:
@@ -289,6 +315,8 @@ shared:
       kind: 'retriever'
       cache: <%= 1.minute %>
       provider: 'Fabrique Numérique des Ministères Sociaux'
+      status_page:
+        name: "Fabrique Numérique des Ministères Sociaux - Conventions collectives"
       driver_params:
         retriever: 'FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives'
         params:
