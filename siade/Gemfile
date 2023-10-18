@@ -40,9 +40,6 @@ gem 'hexapdf'
 
 gem 'fog-openstack', '1.1.0'
 
-# allow to retry a block n times if exception occurs https://github.com/nfedyashev/retryable
-gem 'retryable'
-
 gem 'interactor'
 
 gem 'jwt', '~> 2.7'
