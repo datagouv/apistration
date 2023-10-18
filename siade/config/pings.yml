@@ -4,6 +4,8 @@ test:
     with_retriever:
       kind: 'retriever'
       provider: 'whatever'
+      status_page:
+        name: "With Retriever"
       driver_params:
         retriever: 'CNAF::QuotientFamilial'
         params:
@@ -12,6 +14,8 @@ test:
     with_retriever_and_maintenance:
       kind: 'retriever'
       provider: 'provider_which_has_a_window_within_same_day'
+      status_page:
+        name: "With Retriever and Maintenance"
       driver_params:
         retriever: 'CNAF::QuotientFamilial'
         params:
