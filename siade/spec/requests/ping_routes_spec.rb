@@ -79,6 +79,32 @@ RSpec.describe 'Ping routes' do
           expect(response).to have_http_status(:not_found)
         end
       end
+
+      describe 'in staging' do
+        before do
+          allow(Rails.env).to receive(:staging?).and_return(true)
+        end
+
+        context 'with valid provider' do
+          let(:route) { '/ping/insee/sirene' }
+
+          it 'renders 200' do
+            ping
+
+            expect(response).to have_http_status(:ok)
+          end
+        end
+
+        context 'with invalid provider' do
+          let(:route) { '/api/invalid_provider/ping' }
+
+          it 'renders 404' do
+            ping
+
+            expect(response).to have_http_status(:not_found)
+          end
+        end
+      end
     end
   end
 
@@ -151,6 +177,33 @@ RSpec.describe 'Ping routes' do
           expect(response).to have_http_status(:not_found)
         end
       end
+
+      describe 'in staging' do
+        before do
+          allow(Rails.env).to receive(:staging?).and_return(true)
+        end
+
+        context 'with valid provider' do
+          let(:route) { '/api/caf/ping' }
+
+          it 'renders 200' do
+            ping
+
+            expect(response).to have_http_status(:ok)
+          end
+        end
+
+        context 'with invalid provider' do
+          let(:route) { '/invalid_provider' }
+
+          it 'renders 404' do
+            ping
+
+            expect(response).to have_http_status(:not_found)
+          end
+        end
+      end
+
     end
   end
 end

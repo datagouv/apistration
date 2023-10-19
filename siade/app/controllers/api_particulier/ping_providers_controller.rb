@@ -1,5 +1,11 @@
 class APIParticulier::PingProvidersController < ApplicationController
-  def show
-    render PingService.new('api_particulier', params[:provider]).perform
+  include HandlePingProviders
+
+  def api_kind
+    'api_particulier'
+  end
+
+  def provider_param
+    params[:provider]
   end
 end
