@@ -98,7 +98,7 @@ RSpec.configure do |config|
   end
 
   config.before do
-    allow(RedisService.instance).to receive(:redis).and_return(FakeRedis.new)
+    allow_any_instance_of(RedisService).to receive(:redis).and_return(FakeRedis.new)
     Rails.cache.clear
   end
 

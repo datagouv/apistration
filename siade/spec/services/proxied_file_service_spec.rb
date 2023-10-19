@@ -10,7 +10,7 @@ RSpec.describe ProxiedFileService, type: :service do
 
     context 'when redis fail to connect' do
       before do
-        allow(RedisService).to receive(:instance).and_raise(Redis::BaseConnectionError)
+        allow(RedisService).to receive(:new).and_raise(Redis::BaseConnectionError)
       end
 
       it 'raises an error' do
@@ -28,7 +28,7 @@ RSpec.describe ProxiedFileService, type: :service do
 
     context 'when redis fail to connect' do
       before do
-        allow(RedisService).to receive(:instance).and_raise(Redis::BaseConnectionError)
+        allow(RedisService).to receive(:new).and_raise(Redis::BaseConnectionError)
       end
 
       it 'raises an error' do

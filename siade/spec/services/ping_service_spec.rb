@@ -2,7 +2,7 @@ RSpec.describe PingService, type: :service do
   before do
     Timecop.freeze(current_time)
 
-    RedisService.instance.set("last_ok_status_ping_#{api_kind}_#{identifier}", old_last_ok_status)
+    RedisService.new.set("last_ok_status_ping_#{api_kind}_#{identifier}", old_last_ok_status)
   end
 
   after do

@@ -97,7 +97,7 @@ class MockDataBackend
   end
 
   def clean_payloads_paths!
-    redis_service.redis.del('mock_data_backend:payloads_paths')
+    redis_service.del('mock_data_backend:payloads_paths')
   end
 
   def github_files
@@ -109,6 +109,6 @@ class MockDataBackend
   end
 
   def redis_service
-    @redis_service ||= RedisService.instance
+    @redis_service ||= RedisService.new
   end
 end

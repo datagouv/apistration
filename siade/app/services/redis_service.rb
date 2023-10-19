@@ -1,17 +1,4 @@
 class RedisService
-  include Singleton
-  extend Forwardable
-
-  attr_reader :redis
-
-  def initialize
-    @redis = Redis.new(redis_options)
-  end
-
-  def redis_options
-    Rails.application.config_for(:redis)
-  end
-
   def dump(key, object)
     redis.set(key, Marshal.dump(object))
   end
@@ -24,9 +11,25 @@ class RedisService
   end
   # rubocop:enable Security/MarshalLoad
 
-  def_delegators :redis,
-    :get,
-    :exists?,
-    :set,
-    :ttl
+  %w[
+    get
+    exists?
+    set
+    ttl
+    del
+  ].each do |mth|
+    define_method(mth) do |*args|
+      redis.send(mth, *args)
+    end
+  end
+
+  private
+
+  def redis
+    @redis ||= Redis.new(redis_options)
+  end
+
+  def redis_options
+    Rails.application.config_for(:redis)
+  end
 end

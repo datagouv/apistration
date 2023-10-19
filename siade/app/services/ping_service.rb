@@ -120,7 +120,7 @@ class PingService
   end
 
   def redis_service
-    RedisService.instance
+    @redis_service ||= RedisService.new
   end
 
   def current_time
