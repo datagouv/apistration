@@ -40,7 +40,5 @@ class ProxiedFileService
 
   def backend
     @backend ||= RedisService.new
-  rescue Redis::BaseConnectionError, Errno::ECONNREFUSED
-    raise ConnectionError
   end
 end

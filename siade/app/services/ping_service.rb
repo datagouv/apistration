@@ -100,7 +100,7 @@ class PingService
   end
 
   def last_ok_status
-    redis_service.get("last_ok_status_#{operation_id}")
+    redis_service.get("last_ok_status_#{operation_id}") || current_time
   end
 
   def store_last_ok_status

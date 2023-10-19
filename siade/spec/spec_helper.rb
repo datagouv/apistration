@@ -73,12 +73,11 @@ RSpec.configure do |config|
         self[key.to_s]
       end
 
-      # rubocop:disable Naming/MethodParameterName
-      def set(key, value, ex: nil)
+      def set(key, value, options = {})
+        ex = options[:ex]
         self[key.to_s] = value
         self["expires_#{key}"] = ex if ex
       end
-      # rubocop:enable Naming/MethodParameterName
 
       def del(key)
         delete(key.to_s)
