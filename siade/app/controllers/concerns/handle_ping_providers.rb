@@ -9,10 +9,6 @@ module HandlePingProviders
 
   protected
 
-  def api_kind
-    fail NotImplementedError
-  end
-
   def provider_param
     fail NotImplementedError
   end
