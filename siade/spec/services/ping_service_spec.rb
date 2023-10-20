@@ -2,7 +2,7 @@ RSpec.describe PingService, type: :service do
   before do
     Timecop.freeze(current_time)
 
-    RedisService.new.set("last_ok_status_ping_#{api_kind}_#{identifier}", old_last_ok_status)
+    RedisService.new.dump("last_ok_status_ping_#{api_kind}_#{identifier}", old_last_ok_status)
   end
 
   after do
@@ -10,7 +10,7 @@ RSpec.describe PingService, type: :service do
   end
 
   let(:current_time) { Time.zone.local(2023, 9, 10, 12, 0) }
-  let(:old_last_ok_status) { current_time - 1.hour }
+  let(:old_last_ok_status) { Time.zone.local(2023, 9, 10, 11, 0) }
   let(:last_ok_status) { old_last_ok_status }
 
   describe '#perform' do

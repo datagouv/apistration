@@ -22,11 +22,13 @@ class RedisService
     end
   end
 
-  def set(key, value, options = {})
-    redis.set(key, value, options)
+  # rubocop:disable Naming/MethodParameterName
+  def set(key, value, ex: nil)
+    redis.set(key, value, ex:)
   rescue *redis_errors
     nil
   end
+  # rubocop:enable Naming/MethodParameterName
 
   private
 

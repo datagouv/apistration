@@ -68,36 +68,11 @@ RSpec.configure do |config|
   end
 
   config.before(:all) do
-    class FakeRedis < Hash
-      def get(key)
-        self[key.to_s]
-      end
-
-      def set(key, value, options = {})
-        ex = options[:ex]
-        self[key.to_s] = value
-        self["expires_#{key}"] = ex if ex
-      end
-
-      def del(key)
-        delete(key.to_s)
-      end
-
-      def exists?(key)
-        key?(key.to_s)
-      end
-
-      def ttl(key)
-        self["expires_#{key}"] || -1
-      end
-    end
-
     Token.delete_all
     Seeds.new.perform
   end
 
   config.before do
-    allow_any_instance_of(RedisService).to receive(:redis).and_return(FakeRedis.new)
     Rails.cache.clear
   end
 

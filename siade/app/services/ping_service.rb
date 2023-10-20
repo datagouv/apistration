@@ -100,11 +100,11 @@ class PingService
   end
 
   def last_ok_status
-    redis_service.get("last_ok_status_#{operation_id}") || current_time
+    redis_service.restore("last_ok_status_#{operation_id}") || current_time
   end
 
   def store_last_ok_status
-    redis_service.set("last_ok_status_#{operation_id}", current_time)
+    redis_service.dump("last_ok_status_#{operation_id}", current_time)
   end
 
   def cache_expires_in

@@ -92,7 +92,7 @@ class MockDataBackend
     (redis_service.restore('mock_data_backend:payloads_paths') || []).each do |file|
       next unless file[:path].starts_with?('payloads/')
 
-      redis_service.redis.del("mock_data_backend:payloads:#{file[:path].split('/')[1]}")
+      redis_service.del("mock_data_backend:payloads:#{file[:path].split('/')[1]}")
     end
   end
 
