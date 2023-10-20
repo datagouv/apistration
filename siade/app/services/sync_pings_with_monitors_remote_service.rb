@@ -16,7 +16,7 @@ class SyncPingsWithMonitorsRemoteService
 
   def create_or_update_monitor(api_kind, ping_identifier, ping_config)
     if (remote_monitor = find_remote_monitor(api_kind, ping_identifier))
-      update_monitor(api_kind, ping_identifier, ping_config, remote_monitor)
+      update_monitor(ping_config, remote_monitor)
     else
       create_monitor(api_kind, ping_identifier, ping_config)
     end
@@ -41,7 +41,7 @@ class SyncPingsWithMonitorsRemoteService
     )
   end
 
-  def update_monitor(api_kind, ping_identifier, ping_config, remote_monitor)
+  def update_monitor(ping_config, remote_monitor)
     hyperping_api_service.update_monitor(
       remote_monitor['uuid'],
       default_params.merge(
