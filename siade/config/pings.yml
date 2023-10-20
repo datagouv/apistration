@@ -384,3 +384,14 @@ shared:
           - 'api_entreprise/v3_and_more/probtp/attestations_cotisation_retraite#show'
         excluded_statuses:
           - 404
+    carif_oref/qualiopi:
+      kind: 'retriever_payload'
+      cache: <%= 5.minutes %>
+      provider: 'CARIF-OREF'
+      driver_params:
+        retriever: 'CarifOref::CertificationsQualiopiFranceCompetences'
+        params:
+          siret: '82409268800012'
+        key_to_dig: 'habilitations_france_competence'
+        method_to_test_on_payload: 'any?'
+
