@@ -47,8 +47,7 @@ RSpec.describe SyncPingsWithMonitorsRemoteService, type: :service do
         expect(hyperping_api_service).to have_received(:update_monitor).with(
           '1',
           default_params.merge(
-            name: 'With Retriever and Maintenance',
-            url: 'https://particulier.api.gouv.fr/api/with_retriever_and_maintenance/ping'
+            name: 'With Retriever and Maintenance'
           )
         )
       end

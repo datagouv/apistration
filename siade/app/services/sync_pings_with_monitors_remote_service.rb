@@ -45,8 +45,7 @@ class SyncPingsWithMonitorsRemoteService
     hyperping_api_service.update_monitor(
       remote_monitor['uuid'],
       default_params.merge(
-        name: ping_config[:status_page][:name],
-        url: url_for(api_kind, ping_identifier)
+        name: ping_config[:status_page][:name]
       )
     )
   end
