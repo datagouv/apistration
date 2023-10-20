@@ -213,6 +213,7 @@ shared:
       provider: 'INPI - RNE'
       status_page:
         name: 'INPI - RNE'
+        delay_before_alert: '5 minutes'
       driver_params:
         retriever: 'INPI::RNE::BeneficiairesEffectifs'
         params:
