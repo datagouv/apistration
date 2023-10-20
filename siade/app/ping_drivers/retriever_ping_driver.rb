@@ -12,7 +12,11 @@ class RetrieverPingDriver < ApplicationPingDriver
   private
 
   def success?
-    @success ||= retriever.call(params: retriever_params, operation_id:).success?
+    @success ||= retriever_call.success?
+  end
+
+  def retriever_call
+    @retriever_call ||= retriever.call(params: retriever_params, operation_id:)
   end
 
   def build_context(driver_params)

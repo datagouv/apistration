@@ -11,6 +11,17 @@ test:
         params:
           beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
           postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
+    with_retriever_payload:
+      kind: 'retriever_payload'
+      provider: 'whatever'
+      driver_params:
+        retriever: 'CNAF::QuotientFamilial'
+        params:
+          beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
+          postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
+        key_to_dig: 'a.b.c'
+        method_to_test_on_payload: 'any?'
+
     with_retriever_and_maintenance:
       kind: 'retriever'
       provider: 'provider_which_has_a_window_within_same_day'
