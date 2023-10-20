@@ -1,7 +1,7 @@
 infogreffe:
   mandataires_sociaux:
     title: "Mandataires sociaux"
-    description: "Liste des mandataires sociaux d'une société inscrite au RCS, délivrée par Infogreffe."
+    description: "Liste des mandataires sociaux d'une société inscrite au registre du commerce et des sociétés (RCS), délivrée par Infogreffe."
     tags:
       - "Informations générales"
     type: "array"
@@ -141,7 +141,7 @@ infogreffe:
 
   extraits_rcs:
     title: "Extrait RCS"
-    description: "Extrait d'une partie des données du registre du commerce et des sociétés (RCS) ; ainsi que les commentaires laissés par les greffiers."
+    description: "Extrait d'une partie des données du registre du commerce et des sociétés (RCS), informations générales des mandataires sociaux, ainsi que les commentaires laissés par les greffiers."
     tags:
       - "Informations générales"
     attributes:

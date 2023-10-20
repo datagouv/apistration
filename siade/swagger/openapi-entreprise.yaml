@@ -10334,7 +10334,8 @@ paths:
       security:
       - jwt_bearer_token: []
       description: Extrait d'une partie des données du registre du commerce et des
-        sociétés (RCS) ; ainsi que les commentaires laissés par les greffiers.
+        sociétés (RCS), informations générales des mandataires sociaux, ainsi que
+        les commentaires laissés par les greffiers.
       responses:
         '401':
           description: Non autorisé
@@ -11136,8 +11137,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Liste des mandataires sociaux d'une société inscrite au RCS, délivrée
-        par Infogreffe.
+      description: Liste des mandataires sociaux d'une société inscrite au registre
+        du commerce et des sociétés (RCS), délivrée par Infogreffe.
       responses:
         '401':
           description: Non autorisé
