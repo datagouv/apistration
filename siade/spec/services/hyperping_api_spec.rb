@@ -16,8 +16,10 @@ RSpec.describe HyperpingAPI, type: :service do
             'Authorization' => "Bearer #{Siade.credentials[:hyperping_api_key]}"
           }
         )
-        .to_return(status: 200, body: { monitors: [monitor_response] }.to_json, headers: {})
+        .to_return(status:, body: { monitors: [monitor_response] }.to_json, headers: {})
     end
+
+    let(:status) { 201 }
 
     it 'calls the Hyperping API' do
       subject
@@ -27,6 +29,21 @@ RSpec.describe HyperpingAPI, type: :service do
 
     it 'returns an array' do
       expect(subject).to eq({ 'monitors' => [monitor_response] })
+    end
+
+    context 'when it is not a success status' do
+      let(:status) { 422 }
+
+      it 'raises an error' do
+        expect { subject }.to raise_error(HyperpingAPI::Error)
+      end
+
+      it 'has status/body' do
+        subject
+      rescue HyperpingAPI::Error => e
+        expect(e.status).to eq(status.to_s)
+        expect(e.body).to be_present
+      end
     end
   end
 

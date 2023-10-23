@@ -1,13 +1,26 @@
 require 'json'
 
 class HyperpingAPI
+  class Error < StandardError
+    attr_reader :status, :body
+
+    def initialize(status, body)
+      @status = status
+      @body = body
+    end
+
+    def message
+      "#{status}: #{body}"
+    end
+  end
+
   # rubocop:disable Naming/AccessorMethodName
   def get_monitors
     response = http_wrapper('monitors') do |uri|
       Net::HTTP::Get.new(uri)
     end
 
-    JSON.parse(response.body)
+    handle_response(response)
   end
   # rubocop:enable Naming/AccessorMethodName
 
@@ -19,7 +32,7 @@ class HyperpingAPI
       end
     end
 
-    JSON.parse(response.body)
+    handle_response(response)
   end
 
   def update_monitor(monitor_id, monitor_params)
@@ -30,7 +43,7 @@ class HyperpingAPI
       end
     end
 
-    JSON.parse(response.body)
+    handle_response(response)
   end
 
   private
@@ -45,6 +58,12 @@ class HyperpingAPI
 
       http.request(request)
     end
+  end
+
+  def handle_response(response)
+    return JSON.parse(response.body) if response.is_a?(Net::HTTPSuccess)
+
+    raise Error.new(response.code, response.body)
   end
 
   def base_url
