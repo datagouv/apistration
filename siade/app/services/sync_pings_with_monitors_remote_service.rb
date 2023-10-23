@@ -22,7 +22,7 @@ class SyncPingsWithMonitorsRemoteService
     end
   rescue StandardError => e
     MonitoringService.instance.track(
-      'error',
+      'warning',
       'Fail to update ping properties on status page',
       {
         identifier: ping_identifier,

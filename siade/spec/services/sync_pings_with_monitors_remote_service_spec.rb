@@ -71,9 +71,9 @@ RSpec.describe SyncPingsWithMonitorsRemoteService, type: :service do
         )
       end
 
-      it 'tracks error' do
+      it 'tracks error as warning' do
         expect(MonitoringService.instance).to receive(:track).with(
-          'error',
+          'warning',
           'Fail to update ping properties on status page',
           hash_including(
             identifier: :with_retriever_and_maintenance
