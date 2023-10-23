@@ -91,6 +91,8 @@ shared:
       kind: 'retriever'
       cache: <%= 2.minutes %>
       provider: 'Pôle Emploi'
+      status_page:
+        name: "Pôle Emploi - Statut demandeur d'emploi"
       driver_params:
         retriever: 'PoleEmploi::Statut'
         params: &pole_emploi_params
@@ -100,15 +102,19 @@ shared:
       kind: 'make_request'
       cache: <%= 2.minutes %>
       provider: 'Pôle Emploi'
+      status_page:
+        name: "Pôle Emploi - Paiements versés"
       driver_params:
         make_request: 'PoleEmploi::Indemnites'
         params: *pole_emploi_params
-        status_to_check: 404
+        status_to_check: 200
         token_interactor: 'PoleEmploi::Authenticate'
     men_scolarite:
       kind: 'make_request'
       cache: <%= 2.minutes %>
       provider: 'MEN'
+      status_page:
+        name: "Ministère de l'Éducation nationale - Status élève scolarisé et boursier"
       driver_params:
         make_request: 'MEN::Scolarites::MakeRequest'
         params:
@@ -125,6 +131,8 @@ shared:
       kind: 'make_request'
       cache: <%= 2.minutes %>
       provider: 'CNOUS'
+      status_page:
+        name: "CNOUS - Statut étudiant (via le numéro INE)"
       driver_params:
         make_request: 'CNOUS::StudentScholarshipWithINE::MakeRequest'
         params:
@@ -136,6 +144,8 @@ shared:
       kind: 'make_request'
       cache: <%= 2.minutes %>
       provider: 'CNOUS'
+      status_page:
+        name: "CNOUS - Statut étudiant (via l'état civil)"
       driver_params:
         make_request: 'CNOUS::StudentScholarshipWithCivility::MakeRequest'
         params:
@@ -153,6 +163,8 @@ shared:
       kind: 'make_request'
       cache: <%= 2.minutes %>
       provider: 'CNOUS'
+      status_page:
+        name: "CNOUS - Statut étudiant (FranceConnecté)"
       driver_params:
         make_request: 'CNOUS::StudentScholarshipWithFranceConnect::MakeRequest'
         params:
@@ -170,6 +182,8 @@ shared:
       kind: 'make_request'
       cache: <%= 2.minutes %>
       provider: 'FranceConnect'
+      status_page:
+        name: "FranceConnect"
       driver_params:
         make_request: 'FranceConnect::DataFetcherThroughAccessToken::MakeRequest'
         params:
