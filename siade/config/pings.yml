@@ -282,6 +282,7 @@ shared:
       provider: 'MSA'
       status_page:
         name: "MSA - Conformité cotisations"
+        delay_before_alert: '5 minutes'
       driver_params:
         retriever: 'MSA::ConformitesCotisations'
         params:
