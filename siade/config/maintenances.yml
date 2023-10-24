@@ -9,6 +9,9 @@ production: &shared
   'MEN':
     from_hour: '01:10'
     to_hour: '02:30'
+  'MSA':
+    from_hour: '03:00'
+    to_hour: '03:30'
 sandbox: *shared
 staging: *shared
 development: *shared
