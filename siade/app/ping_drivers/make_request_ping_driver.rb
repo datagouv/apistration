@@ -4,7 +4,7 @@ class MakeRequestPingDriver < ApplicationPingDriver
   def perform
     interactor = make_request.call(make_request_arguments)
 
-    if status_to_check == interactor.response.code
+    if status_to_check == interactor.response&.code
       :ok
     else
       :bad_gateway
