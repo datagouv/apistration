@@ -58,6 +58,7 @@ RSpec.describe SyncPingsWithMonitorsRemoteService, type: :service do
 
       before do
         allow(hyperping_api_service).to receive(:update_monitor).and_raise(JSON::ParserError)
+        FileUtils.touch(Rails.root.join('log/hyperping.log').to_s)
       end
 
       it 'works for the other' do
@@ -71,16 +72,10 @@ RSpec.describe SyncPingsWithMonitorsRemoteService, type: :service do
         )
       end
 
-      it 'tracks error as warning' do
-        expect(MonitoringService.instance).to receive(:track).with(
-          'warning',
-          'Fail to update ping properties on status page',
-          hash_including(
-            identifier: :with_retriever_and_maintenance
-          )
-        )
-
-        sync_pings_with_monitors
+      it 'logs error in custom file' do
+        expect {
+          sync_pings_with_monitors
+        }.to(change { File.read(Rails.root.join('log/hyperping.log').to_s) })
       end
     end
   end

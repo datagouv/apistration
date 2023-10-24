@@ -20,16 +20,8 @@ class SyncPingsWithMonitorsRemoteService
     else
       create_monitor(api_kind, ping_identifier, ping_config)
     end
-  rescue StandardError => e
-    MonitoringService.instance.track(
-      'warning',
-      'Fail to update ping properties on status page',
-      {
-        identifier: ping_identifier,
-        error: e.message,
-        backtrace: e.backtrace
-      }
-    )
+  rescue HyperpingAPI::Error, StandardError => e
+    logger.error("Error while syncing #{api_kind} #{ping_identifier}: #{e.message}")
   end
 
   def create_monitor(api_kind, ping_identifier, ping_config)
@@ -82,6 +74,10 @@ class SyncPingsWithMonitorsRemoteService
 
   def remote_monitors
     @remote_monitors ||= hyperping_api_service.get_monitors
+  end
+
+  def logger
+    @logger ||= ActiveSupport::TaggedLogging.new(Logger.new(Rails.root.join('log/hyperping.log')))
   end
 
   def pings
