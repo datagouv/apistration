@@ -154,6 +154,7 @@ shared:
   api_entreprise/v3_and_more/opqibi/certifications_ingenierie:
     - certificat_opqibi
     - certification_opqibi
+    - open_data
   api_entreprise/v3_and_more/probtp/attestations_cotisation_retraite:
     - probtp
     - cotisations_probtp
