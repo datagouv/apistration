@@ -1,12 +1,6 @@
 require 'swagger_helper'
 
 RSpec.describe 'INPI RNE: Bénéficiaires effectifs', api: :entreprise, type: %i[request swagger] do
-  before do
-    VCR.use_cassette('inpi/rne/authenticate') do
-      INPI::RNE::Authenticate.call
-    end
-  end
-
   path '/v3/inpi/rne/unites_legales/open_data/{siren}/beneficiaires_effectifs' do
     get SwaggerData.get('inpi_rne.beneficiaires_effectifs.title') do
       tags(*SwaggerData.get('inpi_rne.beneficiaires_effectifs.tags'))
@@ -29,7 +23,7 @@ RSpec.describe 'INPI RNE: Bénéficiaires effectifs', api: :entreprise, type: %i
         let(:siren) { valid_siren }
       end
 
-      describe 'with valid token and mandatory params', :valid do
+      describe 'with valid token and mandatory params', :valid, vcr: { cassette_name: 'inpi/rne/authenticate' } do
         describe 'with valid siren' do
           before do
             stub_request(:get, "#{Siade.credentials[:inpi_rne_unites_legales_url]}/#{siren}").and_return(
