@@ -1,0 +1,25 @@
+---
+description: 'Étudiant 655888578AE inscrit (appel par INE)'
+params:
+  ine: '655888578AE'
+status: 200
+payload: |-
+  {
+    "ine": " 655888578AE",
+    "nomFamille": "The Rabbit",
+    "prenom": "Korako",
+    "dateNaissance": "2002-10-13",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2023-09-01",
+        "dateFinInscription": "2024-06-31",
+        "statut": "inscrit",
+        "codeCommune": "75020",
+        "etablissement": {
+          "uai": "0750106H",
+          "nomEtablissement": "ECOLE TECHNOLOGIQUE PRIVEE"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
