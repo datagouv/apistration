@@ -105,7 +105,15 @@ class MockDataBackend
   end
 
   def github_client
-    @github_client ||= Octokit::Client.new
+    @github_client ||= Octokit::Client.new(github_client_options)
+  end
+
+  def github_client_options
+    {
+      access_token: Siade.credentials[:github_personal_access_token]
+    }
+  rescue KeyError
+    {}
   end
 
   def redis_service
