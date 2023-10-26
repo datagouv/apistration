@@ -26,7 +26,7 @@ RSpec.describe JwtTokenService do
         end
 
         context 'when the uuid is in the database' do
-          let(:monitoring_service) { instance_double(MonitoringService, track: nil) }
+          let(:monitoring_service) { MonitoringService.instance }
           let(:expiration_date) { 18.months.from_now.to_i }
           let(:extra_info) { {} }
 
@@ -39,6 +39,10 @@ RSpec.describe JwtTokenService do
               exp: expiration_date,
               scopes: ['valid']
             )
+          end
+
+          before do
+            allow(monitoring_service).to receive(:track)
           end
 
           its(:id) { is_expected.to eq(uid) }
@@ -98,7 +102,9 @@ RSpec.describe JwtTokenService do
               let(:extra_info) { { legacy_token_id: 1234, legacy_token_migrated: false } }
 
               it 'tracks the migrated token' do
-                expect(monitoring_service).not_to have_received(:track)
+                extract_user
+
+                expect(monitoring_service).to have_received(:track)
               end
             end
 
@@ -106,6 +112,8 @@ RSpec.describe JwtTokenService do
               let(:extra_info) { { legacy_token_id: 1234, legacy_token_migrated: true } }
 
               it 'does not track the fully migrated token' do
+                extract_user
+
                 expect(monitoring_service).not_to have_received(:track)
               end
             end

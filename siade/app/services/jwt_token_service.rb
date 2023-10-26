@@ -129,7 +129,7 @@ class JwtTokenService
 
     MonitoringService.instance.track(
       'info',
-      'Token migrated detected',
+      'Token to migrate detected',
       {
         id: token.id
       }
