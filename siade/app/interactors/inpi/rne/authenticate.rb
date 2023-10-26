@@ -21,7 +21,7 @@ class INPI::RNE::Authenticate < AbstractGetToken
   def expires_in(response)
     token = access_token(response)
 
-    Time.now.to_i - JWT.decode(token, nil, false)[0]['exp']
+    JWT.decode(token, nil, false)[0]['exp'] - Time.now.to_i
   end
 
   def username
