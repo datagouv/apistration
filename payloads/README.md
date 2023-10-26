@@ -6,11 +6,11 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 ## API Particulier
 
 * [Complémentaire santé solidaire](api_particulier_v2_cnaf_complementaire_sante_solidaire) (`/api/v2/complementaire-sante-solidaire`)
-* [Quotient familial CAF & MSA](api_particulier_v2_cnaf_quotient_familial_v2) (`/api/v2/composition-familiale-v2`)
+* [Quotient familial MSA & CAF](api_particulier_v2_cnaf_quotient_familial_v2) (`/api/v2/composition-familiale-v2`)
 * [Statut élève scolarisé et boursier](api_particulier_v2_men_scolarites) (`/api/v2/scolarites`)
 * [Paiements versés par Pôle Emploi](api_particulier_v2_pole_emploi_indemnites) (`/api/v2/paiements-pole-emploi`)
 * [Service de vérification de l'avis d'impôt sur le revenu](api_particulier_v2_dgfip_situation_ir) (`/api/v2/avis-imposition`)
-* [Quotient familial CAF](api_particulier_v2_cnaf_quotient_familial) (`/api/v2/composition-familiale`)
+* [Quotient familial (CAF)](api_particulier_v2_cnaf_quotient_familial) (`/api/v2/composition-familiale`)
 * [Statut demandeur d'emploi](api_particulier_v2_pole_emploi_statut) (`/api/v2/situations-pole-emploi`)
 * [Statut étudiant](api_particulier_v2_mesri_student_status) (`/api/v2/etudiants`)
 * [Statut étudiant boursier](api_particulier_v2_cnous_student_scholarship) (`/api/v2/etudiants-boursiers`)
@@ -20,7 +20,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [Attestation de vigilance](api_entreprise_v3_acoss_attestations_sociales) (`/v3/urssaf/unites_legales/{siren}/attestation_vigilance`)
 * Certification RGE (`/v3/ademe/etablissements/{siret}/certification_rge`)
 * 3 derniers bilans annuels (`/v3/banque_de_france/unites_legales/{siren}/bilans`)
-* Qualiopi & habilitations France compétences (`/v3/carif_oref/certifications_qualiopi_france_competences/{siret}`)
+* Qualiopi & habilitations France compétences (`/v3/carif_oref/etablissements/{siret}/certifications_qualiopi_france_competences`)
 * Attestation de cotisations congés payés & chômage-intempéries (`/v3/cnetp/unites_legales/{siren}/attestation_cotisations_conges_payes_chomage_intemperies`)
 * Immatriculation EORI (`/v3/douanes/etablissements/{siret_or_eori}/immatriculations_eori`)
 * [Attestation fiscale](api_entreprise_v3_dgfip_attestations_fiscales) (`/v3/dgfip/unites_legales/{siren}/attestation_fiscale`)

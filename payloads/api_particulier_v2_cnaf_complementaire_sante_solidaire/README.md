@@ -9,43 +9,9 @@
 
   ```json
   {
-    "allocataires": [
-      {
-        "nomNaissance": "JACQUES",
-        "nomUsuel": "JACQUES",
-        "prenoms": "JEAN-PIERRE THOMAS",
-        "anneeDateDeNaissance": "2000",
-        "moisDateDeNaissance": "01",
-        "jourDateDeNaissance": "31",
-        "sexe": "M"
-      }
-    ],
-    "enfants": [
-      {
-        "nomNaissance": "JACQUES",
-        "nomUsuel": "JACQUES",
-        "prenoms": "JEAN-PIERRE THOMAS",
-        "anneeDateDeNaissance": "2000",
-        "moisDateDeNaissance": "01",
-        "jourDateDeNaissance": "31",
-        "sexe": "M"
-      }
-    ],
-    "adresse": {
-      "identite": "Monsieur JEAN JACQUES",
-      "complementInformation": "dummy",
-      "complementInformationGeographique": "dummy",
-      "numeroLibelleVoie": "1 RUE DE LA GARE",
-      "lieuDit": "dummy",
-      "codePostalVille": "75002",
-      "pays": "FRANCE"
-    },
-    "regime": "MSA",
-    "quotientFamilial": 1045,
-    "annee": 2021,
-    "mois": 6,
-    "annee_calcul": 2021,
-    "mois_calcul": 3
+    "status": "beneficiaire_sans_participation_financiere",
+    "dateDebut": "1992-11-29",
+    "dateFin": "1993-11-29"
   }
   ```
 

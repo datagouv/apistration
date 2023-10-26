@@ -343,6 +343,120 @@
 
   </p>
   </details>
+* [ine-655888578AE.yaml](ine-655888578AE.yaml)
+
+  Status `200`
+
+  Étudiant 655888578AE inscrit (appel par INE)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "655888578AE"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": " 655888578AE",
+    "nomFamille": "The Rabbit",
+    "prenom": "Korako",
+    "dateNaissance": "2002-10-13",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2023-09-01",
+        "dateFinInscription": "2024-06-31",
+        "statut": "inscrit",
+        "codeCommune": "75020",
+        "etablissement": {
+          "uai": "0750106H",
+          "nomEtablissement": "ECOLE TECHNOLOGIQUE PRIVEE"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=655888578AE' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [ine-675773666AD.yaml](ine-675773666AD.yaml)
+
+  Status `200`
+
+  Étudiant 675773666AD inscrit (appel par INE)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "675773666AD"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": " 675773666AD",
+    "nomFamille": "DUPONT",
+    "prenom": "Georges",
+    "dateNaissance": "2003-01-16",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2022-09-05",
+        "dateFinInscription": "2023-05-29",
+        "statut": "inscrit",
+        "codeCommune": "75020",
+        "etablissement": {
+          "uai": "0750106H",
+          "nomEtablissement": "ECOLE TECHNOLOGIQUE PRIVEE"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=675773666AD' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
 * [ine.yaml](ine.yaml)
 
   Status `200`

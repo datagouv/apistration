@@ -1,4 +1,4 @@
-# Quotient familial CAF & MSA
+# Quotient familial MSA & CAF
 * __Retour par défaut de l'API__
 
   Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :

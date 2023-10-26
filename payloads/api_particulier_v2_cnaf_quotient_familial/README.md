@@ -1,4 +1,4 @@
-# Quotient familial CAF
+# Quotient familial (CAF)
 * __Retour par défaut de l'API__
 
   Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
@@ -98,7 +98,7 @@
       "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
       "numeroRue": "42 RUE DE LA PAIX",
       "lieuDit": "ILOTS DES OISEAUX",
-      "codePostalVille": "75002 PARIS",
+      "codePostalVille": "75001 PARIS",
       "pays": "FRANCE"
     }
   }

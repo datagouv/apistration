@@ -22,44 +22,76 @@
             "mois": "01"
           },
           "modalites": {
-            "detention_part_directe": true,
-            "parts_directes_pleine_propriete": 42.0,
-            "parts_directes_nue_propriete": 9.0,
-            "detention_part_indirecte": true,
-            "parts_indirectes_indivision": 0.0,
-            "parts_indirectes_indivision_pleine_propriete": 0.0,
-            "parts_indirectes_indivision_nue_propriete": 0.0,
-            "parts_indirectes_personnes_morales": 0.0,
-            "parts_indirectes_personnes_morales_pleine_propriete": 0.0,
-            "parts_indirectes_personnes_morales_nue_propriete": 0.0,
-            "detention_part_totale": 51.0,
-            "detention_vote_directe": true,
-            "vote_directe_pleine_propriete": 51.0,
-            "vote_directe_nue_propriete": 0.0,
-            "vote_directe_usufruit": 0.0,
-            "detention_vote_indirecte": true,
-            "vote_indirecte_indivision": 0.0,
-            "vote_indirecte_indivision_pleine_propriete": 0.0,
-            "vote_indirecte_indivision_nue_propriete": 0.0,
-            "vote_indirecte_indivision_usufruit": 0.0,
-            "vote_indirecte_personnes_morales": 0.0,
-            "vote_indirecte_personnes_morales_pleine_propriete": 0.0,
-            "vote_indirecte_personnes_morales_nue_propriete": 0.0,
-            "vote_indirecte_personnes_morales_usufruit": 0.0,
-            "vocation_titulaire_directe_pleine_propriete": 0.0,
-            "vocation_titulaire_directe_nue_propriete": 0.0,
-            "vocation_titulaire_indirecte_indivision": 0.0,
-            "vocation_titulaire_indirecte_pleine_propriete": 0.0,
-            "vocation_titulaire_indirecte_nue_propriete": 0.0,
-            "vocation_titulaire_indirecte_personnes_morales": 0.0,
-            "vocation_titulaire_indirecte_personnes_morales_pleine_propriete": 0.0,
-            "vocation_titulaire_indirecte_personnes_morales_nue_propriete": 0.0,
-            "detention_vote_total": 0.0,
-            "detention_pouvoir_decision_ag": true,
-            "detention_pouvoir_nommage_membres_conseil_admin": true,
-            "detention_autres_moyens_controle": true,
+            "detention_de_capital": {
+              "parts_totale": 51.0,
+              "parts_directes": {
+                "detention": true,
+                "pleine_propriete": 42.0,
+                "nue_propriete": 9.0
+              },
+              "parts_indirectes": {
+                "detention": true,
+                "par_indivision": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0
+                },
+                "via_personnes_morales": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0
+                }
+              }
+            },
+            "vocation_a_devenir_titulaire_de_parts": {
+              "parts_directes": {
+                "pleine_propriete": 0.0,
+                "nue_propriete": 0.0
+              },
+              "parts_indirectes": {
+                "par_indivision": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0
+                },
+                "via_personnes_morales": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0
+                }
+              }
+            },
+            "droits_de_vote": {
+              "total": 0.0,
+              "directes": {
+                "detention": true,
+                "pleine_propriete": 51.0,
+                "nue_propriete": 0.0,
+                "usufruit": 0.0
+              },
+              "indirectes": {
+                "detention": true,
+                "par_indivision": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0,
+                  "usufruit": 0.0
+                },
+                "via_personnes_morales": {
+                  "total": 0.0,
+                  "pleine_propriete": 0.0,
+                  "nue_propriete": 0.0,
+                  "usufruit": 0.0
+                }
+              }
+            },
+            "pouvoirs_de_controle": {
+              "decision_ag": true,
+              "nommage_membres_conseil_administratif": true,
+              "autres": true
+            },
             "representant_legal": true,
-            "representant_legal_placement_sans_gestion_delegue": true
+            "representant_legal_placement_sans_gestion_deleguee": true
           }
         },
         "links": {
