@@ -234,7 +234,7 @@ shared:
           siren: '831386297'
     inpi/rne:
       kind: 'retriever'
-      cache: <%= 10.minutes %>
+      cache: <%= 2.minutes %>
       provider: 'INPI - RNE'
       status_page:
         name: 'INPI - RNE'
