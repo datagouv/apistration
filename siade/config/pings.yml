@@ -6,6 +6,7 @@ test:
       provider: 'whatever'
       status_page:
         name: "With Retriever"
+        alerts_wait: 1
       driver_params:
         retriever: 'CNAF::QuotientFamilial'
         params:
@@ -238,7 +239,7 @@ shared:
       provider: 'INPI - RNE'
       status_page:
         name: 'INPI - RNE'
-        delay_before_alert: '5 minutes'
+        alerts_wait: 5
       driver_params:
         retriever: 'INPI::RNE::BeneficiairesEffectifs'
         params:

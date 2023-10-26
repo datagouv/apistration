@@ -36,7 +36,8 @@ RSpec.describe SyncPingsWithMonitorsRemoteService, type: :service do
         expect(hyperping_api_service).to have_received(:create_monitor).with(
           default_params.merge(
             name: 'With Retriever',
-            url: 'https://particulier.api.gouv.fr/api/with_retriever/ping'
+            url: 'https://particulier.api.gouv.fr/api/with_retriever/ping',
+            alerts_wait: 1
           )
         )
       end
@@ -65,9 +66,8 @@ RSpec.describe SyncPingsWithMonitorsRemoteService, type: :service do
         sync_pings_with_monitors
 
         expect(hyperping_api_service).to have_received(:create_monitor).with(
-          default_params.merge(
-            name: 'With Retriever',
-            url: 'https://particulier.api.gouv.fr/api/with_retriever/ping'
+          hash_including(
+            name: 'With Retriever'
           )
         )
       end

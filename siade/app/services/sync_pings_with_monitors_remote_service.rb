@@ -27,8 +27,9 @@ class SyncPingsWithMonitorsRemoteService
   def create_monitor(api_kind, ping_identifier, ping_config)
     hyperping_api_service.create_monitor(
       default_params.merge(
-        name: ping_config[:status_page][:name],
         url: url_for(api_kind, ping_identifier)
+      ).merge(
+        extract_ping_config(ping_config)
       )
     )
   end
@@ -37,7 +38,7 @@ class SyncPingsWithMonitorsRemoteService
     hyperping_api_service.update_monitor(
       remote_monitor['uuid'],
       default_params.merge(
-        name: ping_config[:status_page][:name]
+        extract_ping_config(ping_config)
       )
     )
   end
@@ -60,6 +61,16 @@ class SyncPingsWithMonitorsRemoteService
         amsterdam
       ]
     }
+  end
+
+  def extract_ping_config(ping_config)
+    %i[
+      name
+      alerts_wait
+      paused
+    ].each_with_object({}) do |key, hash|
+      hash[key] = ping_config[:status_page][key] if ping_config[:status_page][key].present?
+    end
   end
 
   def find_remote_monitor(api_kind, ping_identifier)
