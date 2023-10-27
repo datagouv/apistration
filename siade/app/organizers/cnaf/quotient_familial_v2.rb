@@ -14,7 +14,7 @@ class CNAF::QuotientFamilialV2 < RetrieverOrganizer
     CNAF::QuotientFamilialV2::BuildResource
 
   def provider_name
-    'CNAF'
+    'CNAF & MSA'
   end
 
   def rollback

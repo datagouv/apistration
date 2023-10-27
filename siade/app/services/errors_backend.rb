@@ -70,6 +70,7 @@ class ErrorsBackend
       '32' => 'Qualifelec',
       '33' => 'CARIF-OREF',
       '34' => 'INPI - RNE',
+      '35' => 'CNAF & MSA',
       '50' => 'FranceConnect'
     }
   end
