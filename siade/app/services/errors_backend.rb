@@ -71,6 +71,7 @@ class ErrorsBackend
       '33' => 'CARIF-OREF',
       '34' => 'INPI - RNE',
       '35' => 'CNAF & MSA',
+      '36' => 'Sécurité sociale',
       '50' => 'FranceConnect'
     }
   end

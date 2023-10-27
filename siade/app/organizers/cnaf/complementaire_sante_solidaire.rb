@@ -6,6 +6,6 @@ class CNAF::ComplementaireSanteSolidaire < RetrieverOrganizer
     CNAF::ComplementaireSanteSolidaire::BuildResource
 
   def provider_name
-    'CNAF'
+    'Sécurité sociale'
   end
 end
