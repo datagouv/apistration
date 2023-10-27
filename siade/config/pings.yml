@@ -85,6 +85,8 @@ shared:
       kind: 'retriever'
       cache: <%= 2.minutes %>
       provider: 'CNAF'
+      status_page:
+        name: "CAF - Quotient Familial v1 (déprécié)"
       driver_params:
         retriever: 'CNAF::QuotientFamilial'
         params:
@@ -94,6 +96,8 @@ shared:
       kind: 'retriever'
       cache: <%= 2.minutes %>
       provider: 'DGFIP - SVAIR'
+      status_page:
+        name: "DGFIP - Svair (déprécié)"
       driver_params:
         retriever: 'DGFIP::SituationIR'
         params:
@@ -144,7 +148,7 @@ shared:
       cache: <%= 2.minutes %>
       provider: 'CNOUS'
       status_page:
-        name: "CNOUS - Statut étudiant (via le numéro INE)"
+        name: "CNOUS - Statut étudiant boursier (via le numéro INE)"
       driver_params:
         make_request: 'CNOUS::StudentScholarshipWithINE::MakeRequest'
         params:
@@ -157,7 +161,7 @@ shared:
       cache: <%= 2.minutes %>
       provider: 'CNOUS'
       status_page:
-        name: "CNOUS - Statut étudiant (via l'état civil)"
+        name: "CNOUS - Statut étudiant boursier (via l'état civil)"
       driver_params:
         make_request: 'CNOUS::StudentScholarshipWithCivility::MakeRequest'
         params:
@@ -176,7 +180,7 @@ shared:
       cache: <%= 2.minutes %>
       provider: 'CNOUS'
       status_page:
-        name: "CNOUS - Statut étudiant (FranceConnecté)"
+        name: "CNOUS - Statut étudiant boursier (FranceConnecté)"
       driver_params:
         make_request: 'CNOUS::StudentScholarshipWithFranceConnect::MakeRequest'
         params:
@@ -189,6 +193,70 @@ shared:
           preferred_username: 'jdupont'
         status_to_check: 404
         token_interactor: 'CNOUS::Authenticate'
+
+    mesri_statut_etudiant_ine:
+      kind: 'make_request'
+      cache: <%= 2.minutes %>
+      provider: 'MESRI'
+      status_page:
+        name: "MESRI - Statut étudiant (via le numéro INE)"
+      driver_params:
+        make_request: 'MESRI::StudentStatus::WithINE::MakeRequest'
+        params:
+          ine: '1234567890G'
+          token_id: '22222222-2222-2222-2222-222222222222'
+        status_to_check: 404
+
+    mesri_statut_etudiant_identite:
+      kind: 'make_request'
+      cache: <%= 2.minutes %>
+      provider: 'MESRI'
+      status_page:
+        name: "MESRI - Statut étudiant (via l'état civil et FranceConnect)"
+      driver_params:
+        make_request: 'MESRI::StudentStatus::WithCivility::MakeRequest'
+        params:
+          family_name: 'DUPONT'
+          first_name: 'Jean'
+          birth_date: '2000-01-01'
+          gender: 'M'
+          token_id: '22222222-2222-2222-2222-222222222222'
+        status_to_check: 404
+
+    cnaf_msa_quotient_familial:
+      kind: 'make_request'
+      cache: <%= 2.minutes %>
+      provider: 'CNAF & MSA'
+      status_page:
+        name: "MSA & CNAF - Quotient familial (v2)"
+      driver_params:
+        make_request: 'CNAF::QuotientFamilialV2::MakeRequest'
+        params: &qfv2_driver_params
+          nom_naissance: 'DUPONT'
+          prenoms:
+            - 'JEAN'
+          annee_date_de_naissance: 2000
+          mois_date_de_naissance: 1
+          jour_date_de_naissance: 1
+          gender: 'M'
+          code_pays_lieu_de_naissance: '99100'
+          code_insee_lieu_de_naissance: '17300'
+          valid_siret: '12000101100010'
+          request_id: '22222222-2222-2222-2222-222222222222'
+        status_to_check: 404
+        token_interactor: 'CNAF::QuotientFamilialV2::Authenticate'
+
+    securite_sociale_complementaire_sante_solidaire:
+      kind: 'make_request'
+      cache: <%= 2.minutes %>
+      provider: 'Sécurité sociale'
+      status_page:
+        name: "Sécurité sociale - Complémentaire santé solidaire"
+      driver_params:
+        make_request: 'CNAF::ComplementaireSanteSolidaire::MakeRequest'
+        params: *qfv2_driver_params
+        status_to_check: 404
+        token_interactor: 'CNAF::ComplementaireSanteSolidaire::Authenticate'
 
     franceconnect:
       kind: 'make_request'
