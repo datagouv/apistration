@@ -67,7 +67,7 @@ class HyperpingAPI
   end
 
   def base_url
-    'https://api.hyperping.io/api/v1'
+    'https://api.hyperping.io/v1'
   end
 
   def api_key

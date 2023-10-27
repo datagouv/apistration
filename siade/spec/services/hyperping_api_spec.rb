@@ -10,7 +10,7 @@ RSpec.describe HyperpingAPI, type: :service do
     subject { described_class.new.get_monitors }
 
     let!(:stubbed_request) do
-      stub_request(:get, 'https://api.hyperping.io/api/v1/monitors')
+      stub_request(:get, 'https://api.hyperping.io/v1/monitors')
         .with(
           headers: {
             'Authorization' => "Bearer #{Siade.credentials[:hyperping_api_key]}"
@@ -58,7 +58,7 @@ RSpec.describe HyperpingAPI, type: :service do
     end
 
     let!(:stubbed_request) do
-      stub_request(:post, 'https://api.hyperping.io/api/v1/monitors')
+      stub_request(:post, 'https://api.hyperping.io/v1/monitors')
         .with(
           body: monitor_params.to_json,
           headers: {
@@ -92,7 +92,7 @@ RSpec.describe HyperpingAPI, type: :service do
     end
 
     let!(:stubbed_request) do
-      stub_request(:put, "https://api.hyperping.io/api/v1/monitors/#{monitor_id}")
+      stub_request(:put, "https://api.hyperping.io/v1/monitors/#{monitor_id}")
         .with(
           body: monitor_params.to_json,
           headers: {
