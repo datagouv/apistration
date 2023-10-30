@@ -421,6 +421,8 @@ shared:
       kind: 'retriever'
       cache: <%= 5.minutes %>
       provider: 'DGDDI'
+      status_page:
+        name: "Douanes - Immatriculations EORI"
       driver_params:
         retriever: 'DGDDI::EORI'
         params:
@@ -429,6 +431,8 @@ shared:
       kind: 'retriever'
       cache: <%= 1.minute %>
       provider: 'Qualifelec'
+      status_page:
+        name: "Qualifelec - Certificats"
       driver_params:
         retriever: 'Qualifelec::Certificats'
         params:
@@ -437,6 +441,8 @@ shared:
       kind: 'access_logs'
       provider: 'Qualibat'
       cache: <%= 10.minutes %>
+      status_page:
+        name: "Qualibat - Certificats"
       driver_params:
         period: <%= 10.minutes %>
         routes:
@@ -447,6 +453,9 @@ shared:
       kind: 'access_logs'
       provider: 'ProBTP'
       cache: <%= 10.minutes %>
+      # status_page:
+      #   name: "PROBTP - Cotisations retraite"
+      #   paused: true
       driver_params:
         period: <%= 10.minutes %>
         routes:
@@ -458,6 +467,9 @@ shared:
       kind: 'retriever_payload'
       cache: <%= 5.minutes %>
       provider: 'CARIF-OREF'
+      status_page:
+        name: "Carif Oref - Certifications Qualiopi France Competences"
+        paused: true
       driver_params:
         retriever: 'CarifOref::CertificationsQualiopiFranceCompetences'
         params:
