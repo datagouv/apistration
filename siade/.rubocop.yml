@@ -229,15 +229,18 @@ RSpec/ExampleWording:
   Exclude:
     - 'spec/lib/seeds_spec.rb'
 
-RSpec/SpecFilePathFormat:
+RSpec/FilePath: &rspec_file_path
   CustomTransform:
     GIPMDS: gip_mds
+    OAuth2: oauth2
   Exclude:
     - "spec/policies/certificat_rge_ademe_policy_spec.rb"
     - "spec/requests/rack_attack_spec.rb"
     - "spec/interactors/get_oauth2_token_spec.rb"
     - "spec/errors/dgfip_svair_access_denied_error_spec.rb"
     - "spec/errors/gip_mds_error_spec.rb"
+
+RSpec/SpecFilePathFormat: *rspec_file_path
 
 # Sometimes useful in tests
 RSpec/LeakyConstantDeclaration:
