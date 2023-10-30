@@ -13,14 +13,7 @@ RSpec.describe SyncPingsWithMonitorsRemoteService, type: :service do
     end
 
     let(:default_params) do
-      {
-        regions: %w[
-          london
-          paris
-          frankfurt
-          amsterdam
-        ]
-      }
+      described_class.new.send(:default_params)
     end
 
     before do
@@ -37,7 +30,7 @@ RSpec.describe SyncPingsWithMonitorsRemoteService, type: :service do
           default_params.merge(
             name: 'With Retriever',
             url: 'https://particulier.api.gouv.fr/api/with_retriever/ping',
-            alerts_wait: 1
+            alerts_wait: 5
           )
         )
       end

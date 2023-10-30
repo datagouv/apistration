@@ -63,7 +63,8 @@ class SyncPingsWithMonitorsRemoteService
         paris
         frankfurt
         amsterdam
-      ]
+      ],
+      alerts_wait: 1
     }
   end
 
