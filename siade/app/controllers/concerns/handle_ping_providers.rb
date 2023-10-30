@@ -1,4 +1,8 @@
 module HandlePingProviders
+  def index
+    render json: valid_pings, status: :ok
+  end
+
   def show
     if staging?
       render faked_ping_response
@@ -40,7 +44,22 @@ module HandlePingProviders
     end
   end
 
+  def valid_pings
+    Rails.application.config_for(:pings)[api_kind].each_with_object([]) do |(provider, config), result|
+      next unless config[:status_page].present? && config[:status_page][:name].present?
+
+      result << {
+        name: config[:status_page][:name],
+        url: ping_url(provider)
+      }
+    end
+  end
+
   def provider_exists?
     Rails.application.config_for(:pings)[api_kind].key?(provider_param.to_sym)
+  end
+
+  def ping_url(provider)
+    public_send("#{api_kind}_ping_provider_url", provider)
   end
 end

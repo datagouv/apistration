@@ -28,6 +28,21 @@ RSpec.describe 'Ping routes' do
       end
     end
 
+    describe 'pings index' do
+      subject(:get_pings) { get '/pings' }
+
+      it 'renders 200 with an array of ping name/url' do
+        get_pings
+
+        expect(response).to have_http_status(:ok)
+
+        data = JSON.parse(response.body)
+
+        expect(data).to be_an(Array)
+        expect(data.first.keys).to include('name', 'url')
+      end
+    end
+
     describe 'provider specific ping' do
       describe 'with valid providers' do
         Rails.application.config_for('pings')['api_entreprise'].each do |provider, config|
@@ -108,6 +123,21 @@ RSpec.describe 'Ping routes' do
         ping
 
         expect(response).to have_http_status(:ok)
+      end
+    end
+
+    describe 'pings index' do
+      subject(:get_pings) { get '/api/pings' }
+
+      it 'renders 200 with an array of ping name/url' do
+        get_pings
+
+        expect(response).to have_http_status(:ok)
+
+        data = JSON.parse(response.body)
+
+        expect(data).to be_an(Array)
+        expect(data.first.keys).to include('name', 'url')
       end
     end
 

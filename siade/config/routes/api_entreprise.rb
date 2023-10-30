@@ -147,6 +147,7 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
 end
 
 get 'proxy/files/:uuid', to: 'api_entreprise/proxied_files#show', constraints: APIEntrepriseDomainConstraint.new
-get 'ping/*provider_with_source' => 'api_entreprise/ping_providers#show', constraints: APIEntrepriseDomainConstraint.new
+get 'ping/*provider_with_source', to: 'api_entreprise/ping_providers#show', as: 'api_entreprise_ping_provider', constraints: APIEntrepriseDomainConstraint.new
+get 'pings', to: 'api_entreprise/ping_providers#index', as: 'api_entreprise_ping_providers', constraints: APIEntrepriseDomainConstraint.new
 
 mount Rswag::Api::Engine  => '/v3', constraints: APIEntrepriseDomainConstraint.new

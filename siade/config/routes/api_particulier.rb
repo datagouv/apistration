@@ -1,6 +1,5 @@
 namespace '/api', constraints: APIParticulierDomainConstraint.new do
   get 'ping' => '/ping#show'
-  get ':provider/ping' => '/api_particulier/ping_providers#show'
 
   get 'introspect' => '/api_particulier/introspect#show'
 
@@ -24,3 +23,6 @@ namespace '/api', constraints: APIParticulierDomainConstraint.new do
     get 'avis-imposition' => '/api_particulier/v2/dgfip/situation_ir#show'
   end
 end
+
+get 'api/:provider/ping', to: 'api_particulier/ping_providers#show', as: 'api_particulier_ping_provider', constraints: APIParticulierDomainConstraint.new
+get 'api/pings', to: 'api_particulier/ping_providers#index', as: 'api_particulier_ping_providers', constraints: APIParticulierDomainConstraint.new
