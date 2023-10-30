@@ -380,6 +380,10 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
         {
           controller: 'api_entreprise/ping_providers',
           action: 'show'
+        },
+        {
+          controller: 'api_entreprise/ping_providers',
+          action: 'index'
         }
       ]
     end
