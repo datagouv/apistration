@@ -3,6 +3,8 @@ require 'monitoring_service'
 
 class SyncPingsWithMonitorsRemoteService
   def perform
+    logger.info("Start syncing pings with monitors")
+
     pings.each do |api_kind, config|
       config.each do |ping_identifier, ping_config|
         next if ping_config[:status_page].blank?
@@ -10,6 +12,8 @@ class SyncPingsWithMonitorsRemoteService
         create_or_update_monitor(api_kind, ping_identifier, ping_config)
       end
     end
+
+    logger.info("End syncing pings with monitors")
   end
 
   private
