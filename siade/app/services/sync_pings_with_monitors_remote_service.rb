@@ -3,7 +3,7 @@ require 'monitoring_service'
 
 class SyncPingsWithMonitorsRemoteService
   def perform
-    logger.info("Start syncing pings with monitors")
+    logger.info('Start syncing pings with monitors')
 
     pings.each do |api_kind, config|
       config.each do |ping_identifier, ping_config|
@@ -13,7 +13,7 @@ class SyncPingsWithMonitorsRemoteService
       end
     end
 
-    logger.info("End syncing pings with monitors")
+    logger.info('End syncing pings with monitors')
   end
 
   private
