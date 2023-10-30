@@ -291,6 +291,39 @@ shared:
         period: <%= 10.minutes %>
         routes:
           - 'api_entreprise/v3_and_more/acoss/attestations_sociales#show'
+    dgfip/attestation_fiscale:
+      kind: 'access_logs'
+      provider: 'DGFIP - Adélie'
+      status_page:
+        name: 'DGFIP - Attestations fiscales'
+      cache: <%= 5.minutes %>
+      driver_params:
+        period: <%= 10.minutes %>
+        routes:
+          - 'api_entreprise/v3_and_more/dgfip/attestations_fiscales#show'
+    dgfip/chiffre_affaires:
+      kind: 'access_logs'
+      provider: 'DGFIP - Adélie'
+      status_page:
+        name: 'DGFIP - Chiffre affaires'
+      cache: <%= 5.minutes %>
+      driver_params:
+        period: <%= 10.minutes %>
+        routes:
+          - 'api_entreprise/v3_and_more/dgfip/chiffres_affaires#show'
+    dgfip/liasses_fiscales:
+      kind: 'retriever'
+      provider: 'DGFIP - Adélie'
+      status_page:
+        name: 'DGFIP - Liasses fiscales'
+      cache: <%= 10.minutes %>
+      driver_params:
+        retriever: 'DGFIP::LiassesFiscales'
+        params:
+          siren: '775670417'
+          year: '2022'
+          user_id: '22222222-2222-2222-2222-222222222222'
+
     infogreffe/rcs:
       kind: 'retriever'
       cache: <%= 2.minutes %>
