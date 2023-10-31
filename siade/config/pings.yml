@@ -502,11 +502,10 @@ shared:
       provider: 'CARIF-OREF'
       status_page:
         name: "Carif Oref - Certifications Qualiopi France Competences"
-        paused: true
       driver_params:
         retriever: 'CarifOref::CertificationsQualiopiFranceCompetences'
         params:
-          siret: '82409268800012'
+          siret: '40144581200035'
         key_to_dig: 'habilitations_france_competence'
         method_to_test_on_payload: 'any?'
 
