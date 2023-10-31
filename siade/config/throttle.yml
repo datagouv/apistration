@@ -8,7 +8,6 @@ shared:
       - { controller: 'api_entreprise/v2/certificats_qualibat', action: 'show' }
       - { controller: 'api_entreprise/v2/documents_associations', action: 'show' }
       - { controller: 'api_entreprise/v2/certificats_cnetp', action: 'show' }
-      - { controller: 'api_entreprise/v2/certificats_rge_ademe', action: 'show' }
 
       - { controller: 'api_entreprise/v3_and_more/probtp/attestations_cotisation_retraite', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/acoss/attestations_sociales', action: 'show' }
