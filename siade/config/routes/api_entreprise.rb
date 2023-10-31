@@ -30,8 +30,6 @@ namespace :v2, constraints: APIEntrepriseDomainConstraint.new  do
 
   get 'certificats_cnetp/:siren'                          => '/api_entreprise/v2/certificats_cnetp#show'
 
-  get 'certificats_rge_ademe/:siret'                      => '/api_entreprise/v2/certificats_rge_ademe#show'
-
   get 'bilans_entreprises_bdf/:siren'                     => '/api_entreprise/v2/bilans_entreprises_bdf#show'
 
   get 'privileges'                                        => '/api_entreprise/v2/privileges#show'
