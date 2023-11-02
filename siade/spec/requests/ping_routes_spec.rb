@@ -221,7 +221,6 @@ RSpec.describe 'Ping routes' do
           end
         end
       end
-
     end
   end
 end
