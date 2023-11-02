@@ -1,7 +1,7 @@
 ---
 description: "Étudiant 697720085AP (appel par INE) : Étudiant non trouvé"
 params:
-  ine: '1234567404G'
+  ine: '697720085AP'
 status: 504
 payload: |-
   {
