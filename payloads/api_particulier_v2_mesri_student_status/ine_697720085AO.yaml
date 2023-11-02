@@ -1,0 +1,11 @@
+---
+description: "Étudiant 697720085AL (appel par INE) : Étudiant non trouvé"
+params:
+  ine: '1234567404G'
+status: 404
+payload: |-
+  {
+    "error": "not_found",
+    "reason": "Student not found",
+    "message": "Aucun étudiant n'a pu être trouvé avec les critères de recherche fournis"
+  }
