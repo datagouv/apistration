@@ -384,6 +384,10 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
         {
           controller: 'api_entreprise/ping_providers',
           action: 'index'
+        },
+        {
+          controller: 'api_entreprise/privileges',
+          action: 'index'
         }
       ]
     end

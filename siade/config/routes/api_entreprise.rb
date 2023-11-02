@@ -147,5 +147,6 @@ end
 get 'proxy/files/:uuid', to: 'api_entreprise/proxied_files#show', constraints: APIEntrepriseDomainConstraint.new
 get 'ping/*provider_with_source', to: 'api_entreprise/ping_providers#show', as: 'api_entreprise_ping_provider', constraints: APIEntrepriseDomainConstraint.new
 get 'pings', to: 'api_entreprise/ping_providers#index', as: 'api_entreprise_ping_providers', constraints: APIEntrepriseDomainConstraint.new
+get 'privileges', to: 'api_entreprise/privileges#index', as: 'api_entreprise_privileges', constraints: APIEntrepriseDomainConstraint.new
 
 mount Rswag::Api::Engine  => '/v3', constraints: APIEntrepriseDomainConstraint.new

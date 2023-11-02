@@ -1,6 +1,7 @@
 shared:
   api_entreprise/proxied_files: []
   api_entreprise/v2/privileges: []
+  api_entreprise/privileges: []
   api_entreprise/v2/associations:
     - associations
     - open_data

@@ -55,6 +55,8 @@ RSpec.describe 'OpenAPI file', type: :acceptance do
 
     it 'has all required keys for each endpoint' do
       YAML.load_file(definition_path)['paths'].each do |path, data|
+        next if path == '/privileges'
+
         required_keys = %w[
           tags
           description

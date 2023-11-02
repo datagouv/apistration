@@ -90,6 +90,8 @@ RSpec.describe OpenAPISchemaToExample do
 
   describe 'API Entreprise v3 and more endpoints' do
     YAML.load_file(Rails.root.join('swagger/openapi-entreprise.yaml'), aliases: true)['paths'].each do |path, definition|
+      next if path == '/privileges'
+
       it "works for path '#{path}'" do
         expect {
           described_class.new(definition['get']['responses']['200']['content']['application/json']['schema']).perform

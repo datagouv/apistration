@@ -7,7 +7,7 @@ class GenerateCodeSampleFromPath
   def perform
     "curl -X GET \\\n" \
       "  -H \"Authorization: Bearer $token\" \\\n" \
-      "  --url \"https://entreprise.api.gouv.fr#{interpolated_path}?#{query_params}\""
+      "  --url \"https://entreprise.api.gouv.fr#{interpolated_path}#{query_params}\""
   end
   # rubocop:enable Layout/LineContinuationLeadingSpace
 
@@ -33,11 +33,15 @@ class GenerateCodeSampleFromPath
   end
 
   def query_params
-    {
+    return '' if path == '/privileges'
+
+    query_params = {
       recipient: recipient_siret,
       context: "Test de l'API",
       object: "Test de l'API"
     }.to_query
+
+    "?#{query_params}"
   end
 
   def example_siret
