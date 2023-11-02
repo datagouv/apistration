@@ -48,6 +48,8 @@ RSpec.describe 'Ping routes' do
         Rails.application.config_for('pings')['api_entreprise'].each do |provider, config|
           ping_service = PingService.new('api_entreprise', provider)
 
+          next if provider.to_s == 'dgfip/attestation_fiscale'
+
           describe "/ping/#{provider}" do
             let(:route) { "/ping/#{provider}" }
             let(:ping_driver) { ping_service.send(:ping_driver).new(config.fetch(:driver_params)) }

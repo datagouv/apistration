@@ -292,15 +292,12 @@ shared:
         routes:
           - 'api_entreprise/v3_and_more/acoss/attestations_sociales#show'
     dgfip/attestation_fiscale:
-      kind: 'access_logs'
+      kind: 'dgfip_attestation_fiscale'
       provider: 'DGFIP - Adélie'
       status_page:
         name: 'DGFIP - Attestations fiscales'
-      cache: <%= 5.minutes %>
-      driver_params:
-        period: <%= 10.minutes %>
-        routes:
-          - 'api_entreprise/v3_and_more/dgfip/attestations_fiscales#show'
+      cache: <%= 15.minutes %>
+      driver_params: {}
     dgfip/chiffre_affaires:
       kind: 'access_logs'
       provider: 'DGFIP - Adélie'
