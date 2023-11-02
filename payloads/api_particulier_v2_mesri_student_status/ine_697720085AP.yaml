@@ -1,0 +1,11 @@
+---
+description: "Étudiant 697720085AP (appel par INE) : Étudiant non trouvé"
+params:
+  ine: '697720085AP'
+status: 504
+payload: |-
+  {
+    "error": "Gateway Timeout",
+    "reason": "Gateway Timeout",
+    "message": "Le serveur n'a pas obtenu de réponse à temps."
+  }

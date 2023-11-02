@@ -5,7 +5,7 @@ params:
 status: 200
 payload: |-
   {
-    "ine": " 655888578AE",
+    "ine": "655888578AE",
     "nomFamille": "The Rabbit",
     "prenom": "Korako",
     "dateNaissance": "2002-10-13",

@@ -1,0 +1,11 @@
+---
+description: 'Étudiant 697720085AL inscrit (appel par INE) : erreur interne serveur'
+params:
+  ine: '697720085AL'
+status: 500
+payload: |-
+  {
+    "error": "error",
+    "reason": "Internal server error",
+    "message": "Une erreur interne s'est produite, l'équipe a été prévenue."
+  }

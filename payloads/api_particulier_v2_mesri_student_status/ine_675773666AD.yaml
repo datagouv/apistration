@@ -5,7 +5,7 @@ params:
 status: 200
 payload: |-
   {
-    "ine": " 675773666AD",
+    "ine": "675773666AD",
     "nomFamille": "DUPONT",
     "prenom": "Georges",
     "dateNaissance": "2003-01-16",
