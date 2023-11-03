@@ -30,8 +30,8 @@ pole_emploi:
               type: string
               example: '2021-01-01'
             montant:
-              title: Montant
-              description: Montant total du paiement
+              title: Montant total
+              description: Montant total du paiement. Il s'agit de la somme des allocations, aides et autres paiements, moins le prélèvement de l'impôt à la source.
               type: number
               example: 123.4
             allocations:
