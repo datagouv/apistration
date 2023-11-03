@@ -299,15 +299,16 @@ shared:
       cache: <%= 15.minutes %>
       driver_params: {}
     dgfip/chiffre_affaires:
-      kind: 'access_logs'
+      kind: 'retriever'
       provider: 'DGFIP - Adélie'
       status_page:
         name: 'DGFIP - Chiffre affaires'
       cache: <%= 5.minutes %>
       driver_params:
-        period: <%= 10.minutes %>
-        routes:
-          - 'api_entreprise/v3_and_more/dgfip/chiffres_affaires#show'
+        retriever: 'DGFIP::ChiffresAffaires'
+        params:
+          siret: '82152473300028'
+          user_id: '22222222-2222-2222-2222-222222222222'
     dgfip/liasses_fiscales:
       kind: 'retriever'
       provider: 'DGFIP - Adélie'
