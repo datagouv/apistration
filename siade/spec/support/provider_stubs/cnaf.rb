@@ -43,6 +43,9 @@ module ProviderStubs::CNAF
       query: hash_including({})
     ).to_return(
       status: 404,
+      headers: {
+        'X-APISECU-FD' => '00171001'
+      },
       body: Rails.root.join("spec/fixtures/payloads/cnaf/#{api}/404.json").read
     )
   end

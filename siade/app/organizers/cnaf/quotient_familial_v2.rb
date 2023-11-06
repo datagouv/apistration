@@ -41,7 +41,7 @@ class CNAF::QuotientFamilialV2 < RetrieverOrganizer
   end
 
   def regime
-    self::REGIME_CODE_LABEL[response['X-APISECU-FD']] if context.response['X-APISECU-FD']
+    REGIME_CODE_LABEL[context.response['X-APISECU-FD']] if context.response['X-APISECU-FD']
 
     'SNGI'
   end
