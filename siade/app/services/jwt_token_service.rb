@@ -131,7 +131,7 @@ class JwtTokenService
       'info',
       'Token to migrate detected',
       {
-        id: token.id
+        token_id_to_migrate: token.id
       }
     )
   end
