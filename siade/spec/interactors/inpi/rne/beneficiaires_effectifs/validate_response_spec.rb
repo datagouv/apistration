@@ -30,6 +30,14 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::ValidateResponse, type: :valid
 
         its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
       end
+
+      context 'when response is nor a personne morale neither a personne physique' do
+        let(:json_body) { read_payload_file('inpi/rne/nor_personne_morale_nor_personne_physique.json') }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+      end
     end
   end
 

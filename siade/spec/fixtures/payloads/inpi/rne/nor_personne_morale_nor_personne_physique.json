@@ -1,0 +1,113 @@
+{
+  "updatedAt": "2023-10-27T14:35:19+02:00",
+  "id": "63a4899b15593bb53903408f",
+  "formality": {
+    "siren": "302666227",
+    "content": {
+      "natureCreation": {
+        "dateCreation": "1900-01-01",
+        "formeJuridique": "2210",
+        "typeExploitation": "2210",
+        "microEntreprise": false,
+        "relieeEntrepriseAgricole": false,
+        "entrepriseAgricole": false,
+        "eirl": false
+      },
+      "exploitation": {
+        "adresseEntreprise": {
+          "adresse": {
+            "roleAdressePresent": false,
+            "codePostalPresent": true,
+            "communePresent": true,
+            "codeInseeCommunePresent": true,
+            "typeVoiePresent": true,
+            "voiePresent": true,
+            "voieCodifieePresent": false,
+            "numVoiePresent": true,
+            "indiceRepetitionPresent": false,
+            "distributionSpecialePresent": false,
+            "communeAnciennePresent": false,
+            "rgpdPresent": false,
+            "datePriseEffetAdressePresent": false,
+            "complementLocalisationPresent": false,
+            "communeDeRattachementPresent": false,
+            "caracteristiquesPresent": false,
+            "indicateurValidationBANPresent": true,
+            "pays": "FRANCE",
+            "codePays": "FRA",
+            "codePostal": "33000",
+            "commune": "BORDEAUX",
+            "codeInseeCommune": "33063",
+            "typeVoie": "RUE",
+            "voie": "NOTRE DAME",
+            "numVoie": "51"
+          }
+        },
+        "etablissementPrincipal": {
+          "descriptionEtablissement": {
+            "rolePourEntreprise": "2",
+            "siret": "30266622700012",
+            "indicateurEtablissementPrincipal": true,
+            "codeApe": "4669C",
+            "etablissementValidated": false,
+            "etablissementRdd": true
+          },
+          "adresse": {
+            "roleAdressePresent": false,
+            "codePostalPresent": true,
+            "communePresent": true,
+            "codeInseeCommunePresent": true,
+            "typeVoiePresent": true,
+            "voiePresent": true,
+            "voieCodifieePresent": false,
+            "numVoiePresent": true,
+            "indiceRepetitionPresent": false,
+            "distributionSpecialePresent": false,
+            "communeAnciennePresent": false,
+            "rgpdPresent": false,
+            "datePriseEffetAdressePresent": false,
+            "complementLocalisationPresent": false,
+            "communeDeRattachementPresent": false,
+            "caracteristiquesPresent": false,
+            "indicateurValidationBANPresent": true,
+            "pays": "FRANCE",
+            "codePays": "FRA",
+            "codePostal": "33000",
+            "commune": "BORDEAUX",
+            "codeInseeCommune": "33063",
+            "typeVoie": "PAS",
+            "voie": "NOTRE DAME",
+            "numVoie": "10"
+          },
+          "activites": [
+            {
+              "indicateurPrincipal": true,
+              "indicateurProlongement": false,
+              "dateDebut": "1900-01-01",
+              "descriptionDetaillee": "Commerce de gros (commerce interentreprises) de fournitures et équipements divers pour le commerce et les services",
+              "indicateurActiviteeApe": true,
+              "rolePrincipalPourEntreprise": true,
+              "codeApe": "4669C",
+              "activiteRattacheeEirl": false
+            }
+          ]
+        },
+        "identite": {
+          "entreprise": {
+            "siren": "302666227",
+            "denomination": "UMAD CORP",
+            "formeJuridique": "2210",
+            "nicSiege": "00012",
+            "codeApe": "4669C",
+            "entrepriseValidated": false,
+            "entrepriseRdd": true
+          }
+        }
+      }
+    },
+    "typePersonne": "E",
+    "diffusionCommerciale": true,
+    "formeJuridique": "2210"
+  },
+  "siren": "302666227"
+}
