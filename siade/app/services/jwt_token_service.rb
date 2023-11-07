@@ -125,6 +125,7 @@ class JwtTokenService
   end
 
   def monitor_migrated_token(token)
+    return unless token.legacy_token?
     return if token.legacy_token_migrated?
 
     MonitoringService.instance.track(

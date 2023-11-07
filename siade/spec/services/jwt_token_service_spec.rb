@@ -64,6 +64,8 @@ RSpec.describe JwtTokenService do
           end
 
           it 'does not track unmigrated token' do
+            extract_user
+
             expect(monitoring_service).not_to have_received(:track)
           end
 
