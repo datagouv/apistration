@@ -296,6 +296,7 @@ shared:
       provider: 'DGFIP - Adélie'
       status_page:
         name: 'DGFIP - Attestations fiscales'
+        alerts_wait: 5
       cache: <%= 15.minutes %>
       driver_params: {}
     dgfip/chiffre_affaires:
@@ -303,6 +304,7 @@ shared:
       provider: 'DGFIP - Adélie'
       status_page:
         name: 'DGFIP - Chiffre affaires'
+        alerts_wait: 5
       cache: <%= 5.minutes %>
       driver_params:
         retriever: 'DGFIP::ChiffresAffaires'
@@ -314,6 +316,7 @@ shared:
       provider: 'DGFIP - Adélie'
       status_page:
         name: 'DGFIP - Liasses fiscales'
+        alerts_wait: 5
       cache: <%= 10.minutes %>
       driver_params:
         retriever: 'DGFIP::LiassesFiscales'
