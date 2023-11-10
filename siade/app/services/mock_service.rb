@@ -2,6 +2,7 @@ class MockService
   attr_reader :operation_id, :params
 
   class NoOperationId < StandardError; end
+  class NoNotFoundPayload < StandardError; end
 
   def initialize(operation_id, params)
     @operation_id = operation_id
@@ -9,8 +10,13 @@ class MockService
   end
 
   def mock
-    mock_from_backend ||
-      mock_from_open_api
+    if api_entreprise?
+      mock_from_backend ||
+        mock_from_open_api
+    else
+      mock_from_backend ||
+        mock_404
+    end
   end
 
   def mock_from_backend
@@ -25,6 +31,10 @@ class MockService
   end
 
   private
+
+  def mock_404
+    MockDataBackend.get_not_found_response_for(operation_id) || (raise NoNotFoundPayload)
+  end
 
   def response_schema_associated_to_operation_id
     path_schema_associated_to_operation_id[1]['get']['responses']['200']['content']['application/json']['schema']

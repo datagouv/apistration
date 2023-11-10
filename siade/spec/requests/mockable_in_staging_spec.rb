@@ -46,6 +46,17 @@ RSpec.describe 'Mocking in staging for each routes' do
   end
 
   describe 'API Particulier', api: :particulier do
+    before do
+      allow(MockDataBackend).to receive(:get_not_found_response_for).and_return(
+        {
+          status: 404,
+          payload: {
+            error: 'Not found'
+          }
+        }
+      )
+    end
+
     {
       '/api/v2/composition-familiale' => {
         'numeroAllocataire' => '1234567',
@@ -71,13 +82,17 @@ RSpec.describe 'Mocking in staging for each routes' do
       '/api/v2/avis-imposition' => {
         'numeroFiscal' => '1234567890ABC',
         'referenceAvis' => '2134567890ABC'
-      },
-      '/api/ping' => {}
+      }
     }.each do |path, params|
-      it "works for #{path}" do
+      it "works for #{path} by rendering 404 by default" do
         get path, params: { token: yes_jwt }.merge(params)
-        assert_response 200
+        assert_response 404
       end
+    end
+
+    it 'works for /api/ping by rendering a 200' do
+      get '/api/ping'
+      assert_response 200
     end
   end
 end

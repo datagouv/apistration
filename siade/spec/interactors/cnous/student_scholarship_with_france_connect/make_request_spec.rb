@@ -1,5 +1,5 @@
 RSpec.describe CNOUS::StudentScholarshipWithFranceConnect::MakeRequest, type: :make_request do
-  subject(:make_call) { described_class.call(params:, token:) }
+  subject(:make_call) { described_class.call(params:, token:, operation_id: 'whatever') }
 
   let(:params) { default_france_connect_identity_attributes }
   let(:body) { default_france_connect_identity_attributes.to_json }
@@ -32,7 +32,7 @@ RSpec.describe CNOUS::StudentScholarshipWithFranceConnect::MakeRequest, type: :m
     before do
       allow(Rails.env).to receive(:staging?).and_return(true)
       allow(MockDataBackend).to receive(:get_response_for).with(
-        nil,
+        'whatever',
         hash_including(
           {
             given_name: 'Jean Martin',

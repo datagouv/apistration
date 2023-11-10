@@ -46,6 +46,44 @@ RSpec.describe MockService, type: :service do
           })
         end
       end
+
+      context 'when it is an API Particulier call' do
+        let(:controller_id) { 'api_particulier_whatever' }
+
+        before do
+          allow(MockDataBackend).to receive(:get_not_found_response_for).with('api_particulier_whatever').and_return(
+            mocked_data
+          )
+        end
+
+        context 'when there is a not found payload' do
+          let(:mocked_data) do
+            {
+              status: 404,
+              payload: {
+                'status' => 'not_found'
+              }
+            }
+          end
+
+          it 'generates a 404 response' do
+            expect(subject).to eq({
+              status: 404,
+              payload: {
+                'status' => 'not_found'
+              }
+            })
+          end
+        end
+
+        context 'when there is no a not found payload' do
+          let(:mocked_data) { nil }
+
+          it 'raises error' do
+            expect { subject }.to raise_error(MockService::NoNotFoundPayload)
+          end
+        end
+      end
     end
   end
 end
