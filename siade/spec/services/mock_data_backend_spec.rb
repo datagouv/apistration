@@ -39,11 +39,16 @@ RSpec.describe MockDataBackend, type: :service do
           sha: '21',
           path: 'payloads/whatever_endpoint2/1.yaml',
           type: 'blob'
+        },
+        {
+          sha: '404',
+          path: 'payloads/whatever_endpoint2/404.yaml',
+          type: 'blob'
         }
       ]
     )
 
-    %w[11 12 21].each do |sha|
+    %w[11 12 21 404].each do |sha|
       mock_sha_github(sha)
     end
   end
@@ -118,6 +123,37 @@ RSpec.describe MockDataBackend, type: :service do
             status: 200,
             payload: {
               'status' => 'ok'
+            }
+          )
+        end
+      end
+    end
+  end
+
+  describe '.get_not_found_response_for' do
+    subject { described_class.get_not_found_response_for(operation_id) }
+
+    context 'when the operation_id does not exist' do
+      let(:operation_id) { 'unknown' }
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'when the operation_id exists' do
+      context 'with endpoint1 example' do
+        let(:operation_id) { 'whatever_endpoint1' }
+
+        it { is_expected.to be_nil }
+      end
+
+      context 'with endpoint2 example' do
+        let(:operation_id) { 'whatever_endpoint2' }
+
+        it 'returns hash with status and payload' do
+          expect(subject).to eq(
+            status: 404,
+            payload: {
+              'status' => 'nok'
             }
           )
         end

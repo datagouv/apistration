@@ -1,0 +1,9 @@
+---
+params:
+  what: 'ever'
+status: 404
+payload: '
+  {
+    "status": "nok"
+  }
+'

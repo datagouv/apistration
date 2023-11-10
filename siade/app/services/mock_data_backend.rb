@@ -6,6 +6,10 @@ class MockDataBackend
     new.get_response_for(operation_id, params)
   end
 
+  def self.get_not_found_response_for(operation_id)
+    new.get_not_found_response_for(operation_id)
+  end
+
   def self.reset!
     new.reset!
   end
@@ -19,13 +23,31 @@ class MockDataBackend
     fetch_all_payloads_for(operation_id)[params.to_query]
   end
 
+  def get_not_found_response_for(operation_id)
+    fetch_all_payloads_for(operation_id)['not_found']
+  end
+
   private
 
   def fetch_all_payloads_for(operation_id)
     with_cache("mock_data_backend:payloads:#{operation_id}") do
-      extract_payloads_files_for(operation_id).to_h do |file|
+      all_payloads = extract_payloads_files_for(operation_id).to_h do |file|
         build_final_payload(file)
       end
+
+      if not_found_file(operation_id).present?
+        all_payloads.merge!({
+          'not_found' => build_final_payload(not_found_file(operation_id))[1]
+        })
+      end
+
+      all_payloads
+    end
+  end
+
+  def not_found_file(operation_id)
+    extract_payloads_files_for(operation_id).find do |file|
+      file[:path].ends_with?('404.yaml')
     end
   end
 
