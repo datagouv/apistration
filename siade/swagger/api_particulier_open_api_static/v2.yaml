@@ -877,7 +877,7 @@ paths:
             pattern: ^\d{4}-\d{2}-\d{2}$
             example: '1992-11-29'
         - name: lieuDeNaissance
-          description: Lieu de naissance de l'étudiant. 
+          description: Lieu de naissance de l'étudiant 
           in: query
           required: false
           schema:
