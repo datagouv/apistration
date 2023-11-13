@@ -11,11 +11,11 @@ RSpec.describe RateLimitingService do
     let(:endpoints) do
       [
         {
-          controller: 'api_entreprise/v2/entreprises_restored',
+          controller: 'api_entreprise/v3_and_more/insee/etablissements',
           action: 'show'
         },
         {
-          controller: 'api_entreprise/v2/etablissements_restored',
+          controller: 'api_entreprise/v3_and_more/insee/unites_legales',
           action: 'show'
         },
         {
@@ -51,7 +51,7 @@ RSpec.describe RateLimitingService do
         before { allow(req).to receive(:get_header).with('HTTP_AUTHORIZATION').and_return("Bearer #{token_value}") }
 
         context 'when the request path matches one of the endpoint\'s URL in the list' do
-          before { allow(req).to receive(:url).and_return("#{base_path}/v2/etablissements/yoparam") }
+          before { allow(req).to receive(:url).and_return("#{base_path}/v3/insee/sirene/etablissements/0001") }
 
           it { is_expected.to eq(Digest::SHA256.hexdigest(token_value)) }
         end
