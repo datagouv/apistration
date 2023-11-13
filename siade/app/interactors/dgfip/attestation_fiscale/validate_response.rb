@@ -9,9 +9,7 @@ class DGFIP::AttestationFiscale::ValidateResponse < ValidateResponse
   def pdf_not_delivered?
     extract = DGFIPAttestationFiscaleExtractor.new(context.response.body).perform
 
-    return true if !extract[:valid] && extract[:error] == :not_delivered
-
-    false
+    !extract[:valid] && extract[:error] == :not_delivered
   rescue PDFExtractor::InvalidFile
     false
   end
