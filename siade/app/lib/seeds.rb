@@ -55,7 +55,7 @@ class Seeds
   private
 
   def development_or_test?
-    Rails.env.development? || Rails.env.test?
+    Rails.env.local?
   end
 
   def generate_siret
