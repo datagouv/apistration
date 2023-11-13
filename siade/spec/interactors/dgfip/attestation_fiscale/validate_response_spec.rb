@@ -23,6 +23,16 @@ RSpec.describe DGFIP::AttestationFiscale::ValidateResponse, type: :validate_resp
 
       its(:cacheable) { is_expected.to be(false) }
     end
+
+    context 'when body is a pdf which specifies it is impossible to deliver the document' do
+      let(:body) { Rails.root.join('spec/support/dgfip_attestations_fiscales/not_delivered.pdf').read }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+
+      its(:cacheable) { is_expected.to be(false) }
+    end
   end
 
   context 'with a not found response' do
