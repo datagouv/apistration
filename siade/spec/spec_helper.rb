@@ -2,6 +2,8 @@ if ENV['COVERAGE']
   require 'simplecov'
   SimpleCov.start 'rails' do
     add_filter 'vendor'
+    add_filter 'lib/siade'
+    add_filter 'app/controllers/api_entreprise/v2'
   end
 
   if ENV['CI']

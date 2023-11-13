@@ -1,44 +1,7 @@
 get '/v2/ping' => 'ping#show', constraints: APIEntrepriseDomainConstraint.new
 get '/v:api_version/ping' => 'ping#show', constraints: APIEntrepriseDomainConstraint.new(v3_and_more: true)
 
-namespace :v2, constraints: APIEntrepriseDomainConstraint.new  do
-  get 'effectifs_annuels_acoss_covid/:siren'                              => '/api_entreprise/v2/effectifs_annuels_entreprise_acoss_covid#show'
-  get 'effectifs_mensuels_acoss_covid/:annee/:mois/etablissement/:siret'  => '/api_entreprise/v2/effectifs_mensuels_etablissement_acoss_covid#show'
-  get 'effectifs_mensuels_acoss_covid/:annee/:mois/entreprise/:siren'     => '/api_entreprise/v2/effectifs_mensuels_entreprise_acoss_covid#show'
-
-  get 'exercices/:siret'                                  => '/api_entreprise/v2/exercices#show'
-
-  get 'cartes_professionnelles_fntp/:siren'               => '/api_entreprise/v2/cartes_professionnelles_fntp#show'
-
-  get 'certificats_opqibi/:siren'                         => '/api_entreprise/v2/certificats_opqibi#show'
-
-  get 'liasses_fiscales_dgfip/:annee/complete/:siren'     => '/api_entreprise/v2/liasses_fiscales_complete_dgfip#show'
-  get 'liasses_fiscales_dgfip/:annee/declarations/:siren' => '/api_entreprise/v2/liasses_fiscales_dgfip#show'
-  get 'liasses_fiscales_dgfip/:annee/dictionnaire'        => '/api_entreprise/v2/liasses_fiscales_dictionaries_dgfip#show'
-  get 'attestations_fiscales_dgfip/:siren'                => '/api_entreprise/v2/attestations_fiscales_dgfip#show'
-
-  get 'attestations_sociales_acoss/:siren'                => '/api_entreprise/v2/attestations_sociales_acoss#show'
-
-  get 'eligibilites_cotisation_retraite_probtp/:siret'    => '/api_entreprise/v2/eligibilites_cotisation_retraite_probtp#show'
-  get 'attestations_cotisation_retraite_probtp/:siret'    => '/api_entreprise/v2/attestations_cotisation_retraite_probtp#show'
-
-  get 'certificats_qualibat/:siret'                       => '/api_entreprise/v2/certificats_qualibat#show'
-  get 'extraits_rcs_infogreffe/:siren'                    => '/api_entreprise/v2/extraits_rcs_infogreffe#show'
-
-  get 'associations/:id'                                  => '/api_entreprise/v2/associations#show'
-  get 'documents_associations/:id'                        => '/api_entreprise/v2/documents_associations#show'
-
-  get 'certificats_cnetp/:siren'                          => '/api_entreprise/v2/certificats_cnetp#show'
-
-  get 'bilans_entreprises_bdf/:siren'                     => '/api_entreprise/v2/bilans_entreprises_bdf#show'
-
-  get 'privileges'                                        => '/api_entreprise/v2/privileges#show'
-
-  get 'entreprises/:siren'                                => '/api_entreprise/v2/entreprises_restored#show'
-  get 'etablissements/:siret'                             => '/api_entreprise/v2/etablissements_restored#show'
-
-  get 'openapi.yaml', to: ->(env) { [200, {}, [File.read(Rails.root.join('public/v2/open-api.yml'))]] }
-end
+get '/v2/privileges' => 'api_entreprise/privileges#index', constraints: APIEntrepriseDomainConstraint.new
 
 scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_and_more: true) do
   get 'urssaf/unites_legales/:siren/attestation_vigilance', to: 'api_entreprise/v3_and_more/acoss/attestations_sociales#show'

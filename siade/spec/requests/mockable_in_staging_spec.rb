@@ -14,35 +14,6 @@ RSpec.describe 'Mocking in staging for each routes' do
         assert_response 200
       end
     end
-
-    %w[
-      /v2/effectifs_annuels_acoss_covid/000
-      /v2/effectifs_mensuels_acoss_covid/2019/01/etablissement/000
-      /v2/effectifs_mensuels_acoss_covid/:annee/:mois/entreprise/000
-      /v2/exercices/000
-      /v2/cartes_professionnelles_fntp/000
-      /v2/certificats_opqibi/000
-      /v2/liasses_fiscales_dgfip/:annee/complete/000
-      /v2/liasses_fiscales_dgfip/:annee/declarations/000
-      /v2/liasses_fiscales_dgfip/:annee/dictionnaire
-      /v2/attestations_fiscales_dgfip/000
-      /v2/attestations_sociales_acoss/000
-      /v2/eligibilites_cotisation_retraite_probtp/000
-      /v2/attestations_cotisation_retraite_probtp/000
-      /v2/certificats_qualibat/000
-      /v2/extraits_rcs_infogreffe/000
-      /v2/associations/:id
-      /v2/documents_associations/:id
-      /v2/certificats_cnetp/000
-      /v2/bilans_entreprises_bdf/000
-      /v2/entreprises/000
-      /v2/etablissements/000
-    ].each do |path|
-      it "works for #{path}" do
-        get path, params: { token: yes_jwt }.merge(mandatory_params)
-        assert_response 200
-      end
-    end
   end
 
   describe 'API Particulier', api: :particulier do

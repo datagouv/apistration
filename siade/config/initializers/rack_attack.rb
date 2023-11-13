@@ -35,10 +35,6 @@ class Rack::Attack
       throttle_config.fetch(:json_resources)
     end
 
-    def very_low_latency_json_resources_config
-      throttle_config.fetch(:very_low_latency_json_resources)
-    end
-
     def proxied_files_config
       throttle_config.fetch(:proxied_files)
     end
@@ -70,7 +66,6 @@ class Rack::Attack
   throttle_zone(zone_name: 'json_resources', **json_resources_config)
 
   throttle_exceptions(zone_name_prefix: 'high_latency_docs', **high_latency_documents_config)
-  throttle_exceptions(zone_name_prefix: 'very_low_latency_json_resources', **very_low_latency_json_resources_config)
   throttle_exceptions(zone_name_prefix: 'proxied_files', **proxied_files_config)
 
   self.blocklisted_responder = lambda do |req|
