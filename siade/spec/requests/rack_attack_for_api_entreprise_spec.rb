@@ -8,9 +8,10 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
   RSpec.shared_examples 'returns a 401 error' do
     let(:random_endpoint) do
       {
-        controller: 'api_entreprise/v2/certificats_opqibi',
+        controller: 'api_entreprise/v3_and_more/opqibi/certifications_ingenierie',
+        api_version: 3,
         action: 'show',
-        siren: 123
+        siren: '123'
       }
     end
     let(:url) { extract_without_context_url_for(**random_endpoint, only_path: true) }
@@ -94,7 +95,8 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
 
       let(:random_endpoint) do
         {
-          controller: 'api_entreprise/v2/certificats_opqibi',
+          controller: 'api_entreprise/v3_and_more/opqibi/certifications_ingenierie',
+          api_version: 3,
           action: 'show',
           siren: 123
         }
@@ -154,8 +156,9 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
 
           let(:endpoints) do
             [{
-              controller: 'api_entreprise/v2/entreprises_restored',
+              controller: 'api_entreprise/v3_and_more/acoss/attestations_sociales',
               action: 'show',
+              api_version: 3,
               siren: '123'
             }]
           end
@@ -170,6 +173,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
             [{
               controller: 'api_entreprise/proxied_files',
               action: 'show',
+              api_version: 3,
               uuid: '123'
             }]
           end
@@ -181,9 +185,10 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
           let(:limit) { throttle_config.dig(:json_resources, :limit) }
           let(:endpoints) do
             [{
-              controller: 'api_entreprise/v2/cartes_professionnelles_fntp',
+              controller: 'api_entreprise/v3_and_more/insee/etablissements',
               action: 'show',
-              siren: '123'
+              api_version: 3,
+              siret: '123'
             }]
           end
         end
@@ -196,47 +201,10 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
           it_behaves_like 'throttling group of endpoints' do
             let(:endpoints) do
               [{
-                controller: 'api_entreprise/v2/attestations_fiscales_dgfip',
+                controller: 'api_entreprise/v3_and_more/dgfip/attestations_fiscales',
                 action: 'show',
+                api_version: 3,
                 siren: 123
-              }]
-            end
-          end
-        end
-
-        describe 'self hosted endpoints' do
-          let(:limit) { throttle_config.dig(:very_low_latency_json_resources, :limit) }
-
-          it_behaves_like 'throttling group of endpoints' do
-            let(:endpoints) do
-              [{
-                controller: 'api_entreprise/v2/effectifs_annuels_entreprise_acoss_covid',
-                action: 'show',
-                siren: 123
-              }]
-            end
-          end
-
-          it_behaves_like 'throttling group of endpoints' do
-            let(:endpoints) do
-              [{
-                controller: 'api_entreprise/v2/effectifs_mensuels_etablissement_acoss_covid',
-                action: 'show',
-                siret: 123,
-                annee: 2020,
-                mois: 1
-              }]
-            end
-          end
-
-          it_behaves_like 'throttling group of endpoints' do
-            let(:endpoints) do
-              [{
-                controller: 'api_entreprise/v2/effectifs_mensuels_entreprise_acoss_covid',
-                action: 'show',
-                siren: 123,
-                annee: 2020,
-                mois: 1
               }]
             end
           end
@@ -266,7 +234,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
         response.headers
       end
 
-      let(:endpoint) { '/v2/certificats_opqibi/siren' }
+      let(:endpoint) { '/v3/opqibi/unites_legales/0/certification_ingenierie' }
       let(:throttle_config) { Rails.configuration.throttle[:low_latency_documents] }
 
       it 'has rate limit headers defined' do
@@ -277,7 +245,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
     end
 
     context 'with and endpoint which has no throttle config' do
-      let(:endpoint) { '/v2/privileges' }
+      let(:endpoint) { '/privileges' }
 
       it 'has no rate limit headers defined' do
         rate_limit_subkeys.each do |subkey|
@@ -287,7 +255,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
     end
 
     context 'with and endpoint which has a throttle config' do
-      let(:endpoint) { '/v2/certificats_opqibi/siren' }
+      let(:endpoint) { '/v3/opqibi/unites_legales/0/certification_ingenierie' }
       let(:throttle_config) { Rails.configuration.throttle[:low_latency_documents] }
 
       context 'when the limit has not been reached' do
@@ -362,7 +330,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
     let(:non_throttled_endpoints) do
       [
         {
-          controller: 'api_entreprise/v2/privileges',
+          controller: 'api_entreprise/privileges',
           action: 'show'
         },
         {
