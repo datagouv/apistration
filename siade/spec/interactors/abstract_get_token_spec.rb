@@ -73,6 +73,16 @@ RSpec.describe AbstractGetToken, type: :interactor do
           make_call
         }.to change { EncryptedCache.read(:dummy_token_authentication) }.to(access_token)
       end
+
+      it 'stores the new token with expiration' do
+        expect(EncryptedCache.instance).to receive(:write).with(
+          anything,
+          access_token,
+          expires_in: expires_in.to_i
+        )
+
+        make_call
+      end
     end
 
     context 'when the token is already in cache' do

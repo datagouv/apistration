@@ -74,7 +74,7 @@ class Rack::Attack
   throttle_exceptions(zone_name_prefix: 'proxied_files', **proxied_files_config)
 
   self.blocklisted_responder = lambda do |req|
-    query_params = Rack::Utils.parse_nested_query(req['QUERY_STRING'])
+    query_params = Rack::Utils.parse_nested_query(req.params['QUERY_STRING'])
     error_format = query_params['error_format'] || 'flat'
     api = req.host.split('.').first
 

@@ -68,8 +68,7 @@ jobs:
 
       - name: Check Zeitwerk
         run: |
-          echo "production: *test" >> config/database.yml
-          bundle exec rails runner "print 'Test that production is loading for Zeitwerk'" -e production
+          bundle exec rails runner 'Zeitwerk::Loader.eager_load_all'
         env:
           ZEITWERK_CHECK: true
 

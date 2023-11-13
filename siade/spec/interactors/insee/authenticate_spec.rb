@@ -21,12 +21,6 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
         retrieve_token
       }.to change { EncryptedCache.read('insee/authenticate') }.to(token)
     end
-
-    it 'sets a expires_in value as ttl for this redis key' do
-      expect {
-        retrieve_token
-      }.to change { EncryptedCache.expires_in('insee/authenticate') }.to be_within(10).of(expires_in)
-    end
   end
 
   context 'when the token is stored in cache' do

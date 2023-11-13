@@ -156,7 +156,9 @@ RSpec.describe PingService, type: :service do
                   json: json_payload
                 })
 
-                expect(Rails.cache.redis.ttl("ping_#{api_kind}_#{identifier}")).to be_within(5).of(5.minutes)
+                Rails.cache.redis.with do |conn|
+                  expect(conn.ttl("ping_#{api_kind}_#{identifier}")).to be_within(5).of(5.minutes)
+                end
               end
             end
 

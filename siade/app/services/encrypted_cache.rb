@@ -30,11 +30,15 @@ class EncryptedCache
   end
 
   def expires_in(key)
-    ttl = cache.redis.ttl(hashed_key(key))
+    @ttl = nil
 
-    return if ttl.negative?
+    cache.redis.with do |r|
+      @ttl = r.ttl(hashed_key(key))
+    end
 
-    ttl
+    return if @ttl.negative?
+
+    @ttl
   end
 
   def write(key, value, options = {})
