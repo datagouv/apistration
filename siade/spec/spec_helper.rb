@@ -4,6 +4,11 @@ if ENV['COVERAGE']
     add_filter 'vendor'
     add_filter 'lib/siade'
     add_filter 'app/controllers/api_entreprise/v2'
+    add_filter do |source_file|
+      File.basename(source_file.filename).include?('v2')
+    end
+    add_filter 'app/serializers/api_entreprise/certificat_rge_ademe_serializer.rb'
+    add_filter 'app/serializers/api_entreprise/bilans_entreprise_bdf_serializer.rb'
   end
 
   if ENV['CI']
