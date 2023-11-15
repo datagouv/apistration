@@ -1,4 +1,4 @@
-class APIParticulier::DGFIP::SVAIR::V2 < APIParticulier::V2BaseSerializer
+class APIParticulier::DGFIP::SituationIR::V2 < APIParticulier::V2BaseSerializer
   %w[
     date_recouvrement
     date_etablissement

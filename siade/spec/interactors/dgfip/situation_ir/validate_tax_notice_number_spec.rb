@@ -1,4 +1,4 @@
-RSpec.describe DGFIP::SVAIR::ValidateTaxNoticeNumber, type: :validate_param do
+RSpec.describe DGFIP::SituationIR::ValidateTaxNoticeNumber, type: :validate_param do
   subject { described_class.call(params: { tax_notice_number: }) }
 
   context 'when it is 13 alpha numeric string' do

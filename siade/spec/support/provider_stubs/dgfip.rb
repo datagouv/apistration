@@ -30,42 +30,6 @@ module ProviderStubs::DGFIP
     )
   end
 
-  def mock_valid_dgfip_svair
-    mock_dgfip_svair_view_state
-
-    stub_request(:post, 'https://cfsmsp.impots.gouv.fr/secavis/faces/commun/index.jsf').to_return(
-      status: 200,
-      body: read_payload_file('dgfip/svair/valid_response_one_declarant.html')
-    )
-  end
-
-  def mock_not_found_dgfip_svair
-    mock_dgfip_svair_view_state
-
-    stub_request(:post, 'https://cfsmsp.impots.gouv.fr/secavis/faces/commun/index.jsf').to_return(
-      status: 200,
-      body: read_payload_file('dgfip/svair/not_found.html')
-    )
-  end
-
-  def mock_access_denied_dgfip_svair
-    mock_dgfip_svair_view_state
-
-    stub_request(:post, 'https://cfsmsp.impots.gouv.fr/secavis/faces/commun/index.jsf').to_return(
-      status: 200,
-      body: read_payload_file('dgfip/svair/access_denied.html')
-    )
-  end
-
-  def mock_dgfip_svair_view_state(payload: nil)
-    payload ||= '<input type="hidden" name="javax.faces.ViewState" value="view_state_value" />'
-
-    stub_request(:get, 'https://cfsmsp.impots.gouv.fr/secavis/').to_return(
-      status: 200,
-      body: payload
-    )
-  end
-
   def extract_dgfip_liasses_fiscales_payload(name)
     JSON.parse(
       Rails.root.join(

@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-class DGFIP::SVAIR::ValidateTaxNumber < ValidateParamInteractor
+class DGFIP::SituationIR::ValidateTaxNumber < ValidateParamInteractor
   def call
     return if tax_number_valid?
 

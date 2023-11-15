@@ -1,5 +1,5 @@
 class DGFIP::SituationIR::ValidateParams < ValidateParamsOrganizer
-  organize DGFIP::SVAIR::ValidateTaxNumber,
-    DGFIP::SVAIR::ValidateTaxNoticeNumber,
+  organize DGFIP::SituationIR::ValidateTaxNumber,
+    DGFIP::SituationIR::ValidateTaxNoticeNumber,
     DGFIP::SituationIR::ValidateYearOnTaxNoticeNumber
 end

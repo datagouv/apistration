@@ -16,10 +16,6 @@ class APIParticulier::V2::DGFIP::SituationIRController < APIParticulierControlle
 
   private
 
-  def serializer_class
-    APIParticulier::DGFIP::SVAIR::V2
-  end
-
   def organizer_params
     {
       tax_number: params[:numeroFiscal],
