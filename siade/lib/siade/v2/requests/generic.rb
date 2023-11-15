@@ -116,15 +116,13 @@ class SIADE::V2::Requests::Generic
   end
 
   def net_http_get_call
-    PerformanceMonitoringService.instance.track(op: :net_http_all, description: 'whole get call + TLS stuff') do
-      @raw_response = Net::HTTP.start(request_uri.host, request_uri.port, net_http_options.merge(timeout_http_options)) do |http|
-        request = Net::HTTP::Get.new(build_request)
-        set_headers(request)
-        http.request(request)
-      end
-
-      @response = build_response
+    @raw_response = Net::HTTP.start(request_uri.host, request_uri.port, net_http_options.merge(timeout_http_options)) do |http|
+      request = Net::HTTP::Get.new(build_request)
+      set_headers(request)
+      http.request(request)
     end
+
+    @response = build_response
   end
 
   def net_http_post_call
