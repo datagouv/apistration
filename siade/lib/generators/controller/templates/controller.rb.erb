@@ -1,4 +1,4 @@
-class API<%= api.classify %>::V3AndMore::<%= name %>Controller < APIEntreprise::V3AndMore::<%= prochainement? ? 'Mocked' : 'Base' %>Controller
+class API<%= api.classify %>::V3AndMore::<%= name %>Controller < APIEntreprise::V3AndMore::BaseController
   def show
     organizer = retrieve_payload_data(::<%= name %>)
 

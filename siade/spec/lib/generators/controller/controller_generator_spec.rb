@@ -21,7 +21,6 @@ RSpec.describe ControllerGenerator, type: :generator do
       before { run_generator [resource_name, '--prochainement', 'true'] }
 
       it_behaves_like 'a valid Controller'
-      it { is_expected.to contain(/class APIEntreprise::V3AndMore::#{resource_name}Controller < APIEntreprise::V3AndMore::MockedController/) }
     end
   end
 end

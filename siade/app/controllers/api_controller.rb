@@ -3,6 +3,7 @@ class APIController < ApplicationController
   include CanLogRequestsInfoForDebugging
 
   rescue_from ActionController::ParameterMissing, with: :bad_request
+  rescue_from MockedInteractor::EndpointNotYetImplemented, with: :not_implemented_error
 
   def process_action(*args)
     super
@@ -65,6 +66,10 @@ class APIController < ApplicationController
 
   def bad_request
     render_generic_errors_serializer(BadRequestError, status: 400)
+  end
+
+  def not_implemented_error
+    error_json(NotImplementedYetError.new, status: :not_implemented)
   end
 
   def error_format
