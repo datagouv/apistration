@@ -1,0 +1,279 @@
+---
+- :name: 'one page (simple case)'
+  :filename: 'one_page'
+  :data:
+    :date_emission: <%= Date.new(2023, 3, 17) %>
+    :date_fin_validite: <%= Date.new(2024, 4, 2) %>
+    :entity:
+      :assurance_responsabilite_travaux:
+        :nom: 'GROUPAMA'
+        :identifiant: '701835390022'
+      :assurance_responsabilite_civile:
+        :nom: 'GROUPAMA'
+        :identifiant: '701835390022'
+      :certifications:
+        - :code: "5111"
+          :nom: "Installation de plomberie sanitaire en habitat individuel, collectif et tertiaire inférieur à 1000 m²"
+          :rge: false
+          :date_attribution: <%= Date.new(2020, 4, 3) %>
+        - :code: "5211"
+          :nom: "Remplacement de chaudière gaz/fuel en logement individuel"
+          :rge: false
+          :date_attribution: <%= Date.new(2020, 4, 3) %>
+- :name: 'with RGE only (2 pages, first page with nothing and second page with RGE certifications)'
+  :filename: 'with_rge_only'
+  :data:
+    :date_emission: <%= Date.new(2023, 3, 20) %>
+    :date_fin_validite: <%= Date.new(2024, 2, 5) %>
+    :entity:
+      :assurance_responsabilite_travaux:
+        :nom: 'AVIVA'
+        :identifiant: '78959636'
+      :assurance_responsabilite_civile:
+        :nom: 'AVIVA'
+        :identifiant: '78959636'
+      :certifications:
+        - :code: "8611"
+          :nom: "Efficacité énergétique - \"ECO Artisan®\""
+          :rge: true
+          :date_attribution: <%= Date.new(2023, 1, 18) %>
+- :name: 'with and without RGE (2 pages, first page with basic certifications and second page with RGE certifications)'
+  :filename: 'with_and_without_rge'
+  :data:
+    :date_emission: <%= Date.new(2023, 6, 16) %>
+    :date_fin_validite: <%= Date.new(2023, 7, 3) %>
+    :entity:
+      :assurance_responsabilite_travaux:
+        :nom: 'AXA FRANCE IARD'
+        :identifiant: '0000010556911104'
+      :assurance_responsabilite_civile:
+        :nom: 'AXA FRANCE IARD'
+        :identifiant: '0000010556911104'
+      :certifications:
+        - :code: "2312"
+          :nom: "Fabrication et pose de charpente traditionnelle et structure en bois"
+          :rge: false
+          :date_attribution: <%= Date.new(2023, 6, 13) %>
+        - :code: "2351"
+          :nom: "Fourniture et pose de bâtiments à ossature bois"
+          :rge: false
+          :date_attribution: <%= Date.new(2019, 7, 4) %>
+        - :code: "3101"
+          :nom: "Tuiles à emboîtement ou à glissement"
+          :rge: false
+          :date_attribution: <%= Date.new(2023, 6, 13) %>
+        - :code: "3121"
+          :nom: "Tuiles plates"
+          :rge: false
+          :date_attribution: <%= Date.new(2023, 6, 13) %>
+        - :code: "3132"
+          :nom: "Ardoises"
+          :rge: false
+          :date_attribution: <%= Date.new(2023, 6, 13) %>
+        - :code: "3152"
+          :nom: "Couverture en métaux sauf plomb"
+          :rge: false
+          :date_attribution: <%= Date.new(2023, 6, 13) %>
+        - :code: "3181"
+          :nom: "Couverture en plaques nervurées ou ondulées"
+          :rge: false
+          :date_attribution: <%= Date.new(2023, 6, 13) %>
+        - :code: "3511"
+          :nom: "Fourniture et pose de menuiseries extérieures en maison individuelle, petit collectif et petit tertiaire"
+          :rge: false
+          :date_attribution: <%= Date.new(2023, 6, 13) %>
+        - :code: "3811"
+          :nom: "Parois en bardages simples"
+          :rge: false
+          :date_attribution: <%= Date.new(2023, 6, 13) %>
+        - :code: "3193"
+          :nom: "Couverture du patrimoine"
+          :rge: false
+          :date_attribution: <%= Date.new(2023, 6, 13) %>
+        - :code: "2302"
+          :nom: "Fourniture et pose de charpente traditionnelle, en bois lamellé collé et structure en bois"
+          :rge: true
+          :date_attribution: <%= Date.new(2023, 6, 13) %>
+- :name: 'with and without RGE (3 pages, first 2 pages with certifications and third page with RGE certifications)'
+  :filename: 'with_and_without_rge_on_page_3'
+  :data:
+    :date_emission: <%= Date.new(2022, 12, 2) %>
+    :date_fin_validite: <%= Date.new(2023, 11, 29) %>
+    :entity:
+      :assurance_responsabilite_travaux:
+        :nom: 'CAMBTP'
+        :identifiant: '1/248 999'
+      :assurance_responsabilite_civile:
+        :nom: 'CAMBTP'
+        :identifiant: '1/248 999'
+      :certifications:
+        - :code: "2301"
+          :nom: "Fourniture et pose de charpente traditionnelle, en bois lamellé collé et structure en bois"
+          :rge: false
+          :date_attribution: <%= Date.new(2020, 10, 8) %>
+        - :code: "3113"
+          :nom: "Tuiles canal"
+          :rge: false
+          :date_attribution: <%= Date.new(2022, 11, 29) %>
+        - :code: "3123"
+          :nom: "Tuiles plates"
+          :rge: false
+          :date_attribution: <%= Date.new(2022, 11, 29) %>
+        - :code: "3133"
+          :nom: "Ardoises"
+          :rge: false
+          :date_attribution: <%= Date.new(2022, 11, 29) %>
+        - :code: "3153"
+          :nom: "Couverture en métaux sauf plomb"
+          :rge: false
+          :date_attribution: <%= Date.new(2022, 11, 29) %>
+        - :code: "3163"
+          :nom: "Couverture en plomb"
+          :rge: false
+          :date_attribution: <%= Date.new(2022, 11, 29) %>
+        - :code: "3211"
+          :nom: "Étanchéité en matériaux bitumineux en feuilles"
+          :rge: false
+          :date_attribution: <%= Date.new(2019, 10, 2) %>
+        - :code: "4413"
+          :nom: "Métallerie"
+          :rge: false
+          :date_attribution: <%= Date.new(2019, 10, 2) %>
+        - :code: "3194"
+          :nom: "Couverture des monuments historiques"
+          :rge: false
+          :date_attribution: <%= Date.new(2021, 9, 16) %>
+        - :code: "3101"
+          :nom: "Tuiles à emboîtement ou à glissement"
+          :rge: true
+          :date_attribution: <%= Date.new(2022, 11, 29) %>
+        - :code: "3181"
+          :nom: "Couverture en plaques nervurées ou ondulées"
+          :rge: true
+          :date_attribution: <%= Date.new(2022, 11, 29) %>
+        - :code: "3811"
+          :nom: "Parois en bardages simples"
+          :rge: true
+          :date_attribution: <%= Date.new(2020, 10, 8) %>
+- :name: "without RGE, differents insurances and system annexes (page 2+)"
+  :filename: "with_annexes_systems_and_differents_insurances"
+  :data:
+    :date_emission: <%= Date.new(2023, 6, 22) %>
+    :date_fin_validite: <%= Date.new(2024, 6, 30) %>
+    :entity:
+      :assurance_responsabilite_travaux:
+        :nom: 'SMABTP'
+        :identifiant: '506692E 76 1209.000/1 329800'
+      :assurance_responsabilite_civile:
+        :nom: 'SMABTP'
+        :identifiant: '506692E 76 4820.000/1325340'
+      :certifications:
+        - :code: "2113"
+          :nom: "Maçonnerie et ouvrages en béton armé"
+          :rge: false
+          :date_attribution: <%= Date.new(2020, 7, 1) %>
+        - :code: "2212"
+          :nom: "Béton armé et béton précontraint"
+          :rge: false
+          :date_attribution: <%= Date.new(2021, 9, 15) %>
+- :name: "without RGE, differents insurances and agences annexes (page 2+)"
+  :filename: "with_annexes_agences_and_differents_insurances"
+  :data:
+    :date_emission: <%= Date.new(2022, 10, 12) %>
+    :date_fin_validite: <%= Date.new(2023, 9, 29) %>
+    :entity:
+      :assurance_responsabilite_travaux:
+        :nom: 'ALLIANZ IARD'
+        :identifiant: '61.624.941'
+      :assurance_responsabilite_civile:
+        :nom: 'HDI GLOBAL'
+        :identifiant: '01008345-30011'
+      :certifications:
+        - :code: "1413"
+          :nom: "Echafaudages"
+          :rge: false
+          :date_attribution: <%= Date.new(2021, 3, 10) %>
+        - :code: "7113"
+          :nom: "Calorifugeage"
+          :rge: false
+          :date_attribution: <%= Date.new(2019, 6, 25) %>
+
+- :name: "with and without RGE, 2 pages for RGE (and some annexes not relevant for parsing)"
+  :filename: "with_and_without_rge_2_pages_for_rge"
+  :data:
+    :date_emission: <%= Date.new(2023, 6, 19) %>
+    :date_fin_validite: <%= Date.new(2024, 6, 11) %>
+    :entity:
+      :assurance_responsabilite_travaux:
+        :nom: 'SMABTP'
+        :identifiant: '475 471 Q 1247.000 / 402817'
+      :assurance_responsabilite_civile:
+        :nom: 'SMA SA'
+        :identifiant: '475 471 Q 1247.000 / 402817'
+      :certifications:
+        - :code: "5113"
+          :nom: "Installation de plomberie sanitaire dans tout type de bâtiment avec surpresseur ou dans l'industrie"
+          :rge: false
+          :date_attribution: <%= Date.new(2020, 3, 3) %>
+        - :code: "5264"
+          :nom: "Maintenance d'installation de pompe à chaleur et groupe froid dans tout type de bâtiment supérieur à 1000 m2"
+          :rge: false
+          :date_attribution: <%= Date.new(2022, 2, 2) %>
+        - :code: "3101"
+          :nom: "Tuiles à emboîtement ou à glissement"
+          :rge: true
+          :date_attribution: <%= Date.new(2022, 6, 2) %>
+        - :code: "3153"
+          :nom: "Couverture en métaux sauf plomb"
+          :rge: true
+          :date_attribution: <%= Date.new(2022, 6, 2) %>
+        - :code: "3181"
+          :nom: "Couverture en plaques nervurées ou ondulées"
+          :rge: true
+          :date_attribution: <%= Date.new(2022, 6, 2) %>
+        - :code: "3213"
+          :nom: "Étanchéité en matériaux bitumineux en feuilles"
+          :rge: true
+          :date_attribution: <%= Date.new(2023, 3, 15) %>
+        - :code: "3271"
+          :nom: "Tôle d'acier nervurée (tan) avec étanchéité en membrane en feuilles"
+          :rge: true
+          :date_attribution: <%= Date.new(2020, 2, 5) %>
+        - :code: "5213"
+          :nom: "Installation de chauffage avec chaudière gaz/fuel en habitat individuel, collectif et tertiaire supérieur à 1000 m2"
+          :rge: true
+          :date_attribution: <%= Date.new(2022, 6, 2) %>
+        - :code: "5232"
+          :nom: "Installation de pompe à chaleur et groupe froid en habitat individuel, collectif et tertiaire supérieur à 1000 m²"
+          :rge: true
+          :date_attribution: <%= Date.new(2022, 2, 2) %>
+        - :code: "5312"
+          :nom: "Installation de vmc en habitat individuel, collectif et tertiaire supérieur à 1000 m2"
+          :rge: true
+          :date_attribution: <%= Date.new(2022, 6, 2) %>
+        - :code: "7133"
+          :nom: "Isolation thermique par l'extérieur"
+          :rge: true
+          :date_attribution: <%= Date.new(2023, 3, 14) %>
+
+- :name: "with and without RGE and one annexe (3 pages)"
+  :filename: "with_and_without_rge_and_agences_annexe_3_pages"
+  :data:
+    :date_emission: <%= Date.new(2022, 5, 25) %>
+    :date_fin_validite: <%= Date.new(2023, 9, 13) %>
+    :entity:
+      :assurance_responsabilite_travaux:
+        :nom: 'SMABTP'
+        :identifiant: '1244000/001 537441'
+      :assurance_responsabilite_civile:
+        :nom: 'SMABTP'
+        :identifiant: '1244000/001 537441'
+      :certifications:
+        - :code: "5312"
+          :nom: "Installation de vmc en habitat individuel, collectif et tertiaire supérieur à 1000 m2"
+          :rge: false
+          :date_attribution: <%= Date.new(2021, 7, 20) %>
+        - :code: "5231"
+          :nom: "Installation de pompe à chaleur et groupe froid en habitat individuel, collectif et tertiaire inférieur à 1000 m2"
+          :rge: true
+          :date_attribution: <%= Date.new(2021, 7, 20) %>
