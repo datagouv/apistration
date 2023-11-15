@@ -5,27 +5,31 @@ RSpec.describe DGFIPAttestationFiscaleExtractor, type: :extractor do
     let(:pdf_content) { Rails.root.join(pdf_path).read }
 
     context 'with valid files' do
-      let(:pdf_path) { 'spec/support/dgfip_attestations_fiscales/basic.pdf' }
+      let(:pdf_path) { "spec/support/dgfip_attestation_fiscale/#{kind}.pdf" }
 
-      it do
-        expect(subject).to eq(
-          {
-            valid: true
-          }
-        )
+      context 'with basic file' do
+        let(:kind) { 'basic' }
+
+        it do
+          expect(subject).to eq(
+            {
+              valid: true
+            }
+          )
+        end
       end
-    end
 
-    context 'with not delivered file' do
-      let(:pdf_path) { 'spec/support/dgfip_attestations_fiscales/not_delivered.pdf' }
+      context 'with not delivered file' do
+        let(:kind) { 'not_delivered' }
 
-      it do
-        expect(subject).to eq(
-          {
-            valid: false,
-            error: :not_delivered
-          }
-        )
+        it do
+          expect(subject).to eq(
+            {
+              valid: false,
+              error: :not_delivered
+            }
+          )
+        end
       end
     end
   end
