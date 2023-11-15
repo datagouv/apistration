@@ -5,7 +5,7 @@ RSpec.describe DGFIPAttestationFiscaleExtractor, type: :extractor do
     let(:pdf_content) { Rails.root.join(pdf_path).read }
 
     context 'with valid files' do
-      let(:pdf_path) { "spec/support/dgfip_attestation_fiscale/#{kind}.pdf" }
+      let(:pdf_path) { "spec/fixtures/pdfs/dgfip_attestations_fiscales/#{kind}.pdf" }
 
       context 'with basic file' do
         let(:kind) { 'basic' }

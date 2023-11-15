@@ -5,7 +5,7 @@ RSpec.describe URSSAFAttestationVigilanceExtractor, type: :extractor do
     let(:pdf_content) { Rails.root.join(pdf_path).read }
 
     context 'with valid files' do
-      let(:pdf_path) { "spec/support/urssaf_attestations_sociales/#{kind}.pdf" }
+      let(:pdf_path) { "spec/fixtures/pdfs/urssaf_attestations_sociales/#{kind}.pdf" }
 
       describe 'with basic pdf' do
         let(:kind) { :basic }

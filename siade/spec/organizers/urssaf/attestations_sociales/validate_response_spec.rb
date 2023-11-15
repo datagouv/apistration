@@ -8,7 +8,7 @@ RSpec.describe URSSAF::AttestationsSociales::ValidateResponse, type: :validate_r
       end
 
       let(:body) { Base64.strict_encode64(valid_pdf) }
-      let(:valid_pdf) { Rails.root.join('spec/support/urssaf_attestations_sociales/basic.pdf').read }
+      let(:valid_pdf) { Rails.root.join('spec/fixtures/pdfs/urssaf_attestations_sociales/basic.pdf').read }
 
       it { is_expected.to be_a_success }
 

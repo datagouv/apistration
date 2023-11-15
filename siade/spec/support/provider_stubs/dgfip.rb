@@ -42,7 +42,7 @@ module ProviderStubs::DGFIP
 
   def extract_valid_dgfip_attestation_fiscale_pdf(siren_is, siren_tva)
     Rails.root.join(
-      'spec/support/dgfip_attestations_fiscales',
+      'spec/fixtures/pdfs/dgfip_attestations_fiscales',
       extract_valid_dgfip_attestation_fiscale_pdf_name(siren_is, siren_tva)
     ).read
   end

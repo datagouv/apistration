@@ -5,7 +5,7 @@ RSpec.describe DGFIP::AttestationFiscale::ValidateResponse, type: :validate_resp
     let(:response) { instance_double(Net::HTTPOK, code: '200', body:) }
 
     context 'when body is a valid pdf' do
-      let(:body) { Rails.root.join('spec/support/dgfip_attestations_fiscales/basic.pdf').read }
+      let(:body) { Rails.root.join('spec/fixtures/pdfs/dgfip_attestations_fiscales/basic.pdf').read }
 
       it { is_expected.to be_a_success }
 
@@ -25,7 +25,7 @@ RSpec.describe DGFIP::AttestationFiscale::ValidateResponse, type: :validate_resp
     end
 
     context 'when body is a pdf which specifies it is impossible to deliver the document' do
-      let(:body) { Rails.root.join('spec/support/dgfip_attestations_fiscales/not_delivered.pdf').read }
+      let(:body) { Rails.root.join('spec/fixtures/pdfs/dgfip_attestations_fiscales/not_delivered.pdf').read }
 
       it { is_expected.to be_a_failure }
 
