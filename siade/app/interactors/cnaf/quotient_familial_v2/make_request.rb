@@ -5,6 +5,13 @@ class CNAF::QuotientFamilialV2::MakeRequest < CNAF::MakeRequest
     URI(Siade.credentials[:cnaf_quotient_familial_v2_url])
   end
 
+  def mocking_params
+    super.merge(
+      annee: context.params[:annee],
+      mois: context.params[:mois]
+    ).compact
+  end
+
   # rubocop:disable Metrics/AbcSize
   def request_params
     {
