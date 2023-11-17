@@ -1,0 +1,25 @@
+---
+description: 'Étudiant 0100008010J inscrit (appel par INE)'
+params:
+  ine: '0100008010J'
+status: 200
+payload: |-
+  {
+    "ine": "0100008010J",
+    "nomFamille": "Petit",
+    "prenom": "Thomas",
+    "dateNaissance": "2000-02-12",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2019-02-16",
+        "dateFinInscription": "2021-05-30",
+        "statut": "inscrit",
+        "codeCommune": "75020",
+        "etablissement": {
+          "uai": "0750106H",
+          "nomEtablissement": "ECOLE TECHNOLOGIQUE PRIVEE"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
