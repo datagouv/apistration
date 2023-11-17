@@ -1,0 +1,25 @@
+---
+description: 'Étudiant 0100007108D inscrit (appel par INE)'
+params:
+  ine: '0100007108D'
+status: 200
+payload: |-
+  {
+    "ine": "0100007108D",
+    "nomFamille": "MARTIN",
+    "prenom": "Jeanne",
+    "dateNaissance": "2001-11-10",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2022-08-01",
+        "dateFinInscription": "2023-07-30",
+        "statut": "inscrit",
+        "codeCommune": "75020",
+        "etablissement": {
+          "uai": "0750106H",
+          "nomEtablissement": "ECOLE TECHNOLOGIQUE PRIVEE"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

@@ -1,0 +1,25 @@
+---
+description: 'Étudiant 012345678AA inscrit (appel par INE)'
+params:
+  ine: '012345678AA'
+status: 200
+payload: |-
+  {
+    "ine": "012345678AA",
+    "nomFamille": "DUBOIS",
+    "prenom": "Jean",
+    "dateNaissance": "2003-01-10",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2020-09-11",
+        "dateFinInscription": "2022-06-30",
+        "statut": "inscrit",
+        "codeCommune": "75020",
+        "etablissement": {
+          "uai": "0750106H",
+          "nomEtablissement": "ECOLE TECHNOLOGIQUE PRIVEE"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
