@@ -68,8 +68,17 @@ class QUALIBATCertificationsBatimentExtractor < PDFExtractor
   end
 
   def check_pdf_type!
-    raise PDFNotSupported, :amiante if pages.first.text.include?('TRAITEMENT DE L\'AMIANTE')
-    raise PDFNotSupported, :permeabilite_air if pages.first.text.include?('MESURES DE LA PERMÉABILITE A L\'AIR')
+    {
+      amiante: 'TRAITEMENT DE L\'AMIANTE',
+      permeabilite_air: 'MESURES DE LA PERMÉABILITE A L\'AIR',
+      metallerie_feu: 'MÉTALLERIE FEU',
+      reseaux_aerauliques: 'RÉSEAUX AÉRAULIQUES',
+      traitement_bois: 'TRAITEMENT DES BOIS',
+      cordistes: 'CORDISTES',
+      verification_mesures_systemes_ventilation: 'VÉRIFICATIONS ET MESURES DES SYSTÈMES DE VENTILATION'
+    }.each do |kind, identifier|
+      raise PDFNotSupported, kind if pages.first.text.include?(identifier)
+    end
   end
 
   def first_page_chunks

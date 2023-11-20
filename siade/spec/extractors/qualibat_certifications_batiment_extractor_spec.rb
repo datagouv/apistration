@@ -16,35 +16,29 @@ RSpec.describe QUALIBATCertificationsBatimentExtractor, type: :extractor do
     end
 
     context 'with invalid files' do
-      context 'when it is an amiante certificate, which does not have the same format and not all certifications' do
-        let(:filename) { 'amiante' }
+      %i[
+        amiante
+        permeabilite_air
+        metallerie_feu
+        reseaux_aerauliques
+        traitement_bois
+        cordistes
+        verification_mesures_systemes_ventilation
+      ].each do |kind|
+        context "when it is a '#{kind.to_s.humanize}' certificate, which does not have the same format and not all certifications" do
+          let(:filename) { kind }
 
-        it do
-          expect {
+          it do
+            expect {
+              extract
+            }.to raise_error(QUALIBATCertificationsBatimentExtractor::PDFNotSupported)
+          end
+
+          it 'specifies the error' do
             extract
-          }.to raise_error(QUALIBATCertificationsBatimentExtractor::PDFNotSupported)
-        end
-
-        it 'specifies the error' do
-          extract
-        rescue QUALIBATCertificationsBatimentExtractor::PDFNotSupported => e
-          expect(e.kind).to eq(:amiante)
-        end
-      end
-
-      context 'when it is permeabilite air certificate, which does not have the same format and not all certifications' do
-        let(:filename) { 'permeabilite_air' }
-
-        it do
-          expect {
-            extract
-          }.to raise_error(QUALIBATCertificationsBatimentExtractor::PDFNotSupported)
-        end
-
-        it 'specifies the error' do
-          extract
-        rescue QUALIBATCertificationsBatimentExtractor::PDFNotSupported => e
-          expect(e.kind).to eq(:permeabilite_air)
+          rescue QUALIBATCertificationsBatimentExtractor::PDFNotSupported => e
+            expect(e.kind).to eq(kind)
+          end
         end
       end
     end
