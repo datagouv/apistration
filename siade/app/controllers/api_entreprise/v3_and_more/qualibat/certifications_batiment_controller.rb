@@ -14,7 +14,8 @@ class APIEntreprise::V3AndMore::QUALIBAT::CertificationsBatimentController < API
 
   def organizer_params
     {
-      siret: params.require(:siret)
+      siret: params.require(:siret),
+      api_version: params.require(:api_version)
     }
   end
 

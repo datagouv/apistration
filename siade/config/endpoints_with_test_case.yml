@@ -112,6 +112,10 @@
   api: 'entreprise'
   path: '/v3/qualibat/etablissements/78824266700020/certification_batiment'
 
+- name: '[v4] QUALIBAT Certifications batiment'
+  api: 'entreprise'
+  path: '/v4/qualibat/etablissements/78824266700020/certification_batiment'
+
 - name: 'Commission Européenne numéro de TVA'
   api: 'entreprise'
   path: '/v3/european_commission/unites_legales/552032534/numero_tva'
