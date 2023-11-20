@@ -108,6 +108,8 @@ class QUALIBATCertificationsBatiment::CertificationsExtractor < PDFExtractor
   end
 
   def extract_certification_code(chunk)
+    return unless chunk.strip =~ %r{(\d{2}/\d{2}/\d{4})}
+
     chunk.strip.match(/^\d{2,4}/).try(:[], 0)
   end
 

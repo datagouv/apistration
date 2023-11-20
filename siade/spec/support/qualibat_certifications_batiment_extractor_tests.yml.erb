@@ -277,3 +277,48 @@
           :nom: "Installation de pompe à chaleur et groupe froid en habitat individuel, collectif et tertiaire inférieur à 1000 m2"
           :rge: true
           :date_attribution: <%= Date.new(2021, 7, 20) %>
+- :name: 'with and without RGE, with a line which has a "1000 m2", which was interpret as a certification code'
+  :filename: 'line_with_1000_which_can_be_a_code'
+  :data:
+    :date_emission: <%= Date.new(2023, 7, 18) %>
+    :date_fin_validite: <%= Date.new(2024, 10, 30) %>
+    :entity:
+      :assurance_responsabilite_travaux:
+        :nom: 'AUXILIAIRE'
+        :identifiant: '020-150681'
+      :assurance_responsabilite_civile:
+        :nom: 'AUXILIAIRE'
+        :identifiant: '020-150681'
+      :certifications:
+        - :code: "5113"
+          :nom: "Installation de plomberie sanitaire dans tout type de bâtiment avec surpresseur ou dans l'industrie"
+          :rge: false
+          :date_attribution: <%= Date.new(2022, 10, 4) %>
+        - :code: "5121"
+          :nom: "Installation de réseaux de fluides spéciaux"
+          :rge: false
+          :date_attribution: <%= Date.new(2022, 6, 29) %>
+        - :code: "5231"
+          :nom: "Installation de pompe à chaleur et groupe froid en habitat individuel, collectif et tertiaire inférieur à 1000 m2"
+          :rge: false
+          :date_attribution: <%= Date.new(2022, 10, 4) %>
+        - :code: "5263"
+          :nom: "Maintenance d'installation de pompe à chaleur et groupe froid en habitat individuel, collectif et tertiaire inférieur à 1000 m2"
+          :rge: false
+          :date_attribution: <%= Date.new(2022, 10, 4) %>
+        - :code: "5264"
+          :nom: "Maintenance d'installation de pompe à chaleur et groupe froid dans tout type de bâtiment supérieur à 1000 m2"
+          :rge: false
+          :date_attribution: <%= Date.new(2022, 6, 29) %>
+        - :code: "5312"
+          :nom: "Installation de vmc en habitat individuel, collectif et tertiaire supérieur à 1000 m2"
+          :rge: false
+          :date_attribution: <%= Date.new(2022, 10, 4) %>
+        - :code: "5213"
+          :nom: "Installation de chauffage avec chaudière gaz/fuel en habitat individuel, collectif et tertiaire supérieur à 1000 m2"
+          :rge: true
+          :date_attribution: <%= Date.new(2022, 10, 4) %>
+        - :code: "5262"
+          :nom: "Maintenance d'installation de chauffage avec chaudière dans tout type de bâtiment supérieur à 1000 m2"
+          :rge: true
+          :date_attribution: <%= Date.new(2022, 10, 4) %>
