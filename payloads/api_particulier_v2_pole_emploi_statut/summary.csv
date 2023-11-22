@@ -1,0 +1,43 @@
+Titre,Description,Paramètres,Status,Réponse
+,Personne insrite,"{""identifiant"":""default""}",200,"{
+  ""identifiant"": ""default"",
+  ""civilite"": ""M."",
+  ""nom"": ""DUPONT"",
+  ""nomUsage"": null,
+  ""prenom"": ""JEAN"",
+  ""sexe"": ""Masculin"",
+  ""codeCertificationCNAV"": ""VC"",
+  ""libelleCategorieInscription"": ""PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS"",
+  ""email"": ""jean.dupont@france.fr"",
+  ""telephone"": ""0636656565"",
+  ""telephone2"": null,
+  ""adresse"": {
+    ""INSEECommune"": ""75107"",
+    ""codePostal"": ""75007"",
+    ""ligneComplementAdresse"": null,
+    ""ligneComplementDestinataire"": ""APPARTEMENT 42"",
+    ""ligneComplementDistribution"": null,
+    ""ligneNom"": ""DUPONT"",
+    ""ligneVoie"": ""42 RUE DE LA PAIX"",
+    ""localite"": ""75001 PARIS""
+  },
+  ""dateNaissance"": ""1990-01-01"",
+  ""dateInscription"": ""2020-01-01"",
+  ""dateCessationInscription"": null,
+  ""codeCategorieInscription"": 1
+}"
+,Personne non trouvée,"{""identifiant"":""not_found""}",404,"{
+  ""error"": ""not_found"",
+  ""reason"": ""Situation not found"",
+  ""message"": ""Aucune situation Pôle Emploi n'a pu être trouvée avec les critères de recherche fournis""
+}"
+,Erreur interne du serveur,"{""identifiant"":""internal_error""}",500,"{
+  ""error"": ""error"",
+  ""reason"": ""Internal server error"",
+  ""message"": ""Une erreur interne s'est produite, l'équipe a été prévenue.""
+}"
+,Timeout - délai d'attente dépassé,"{""identifiant"":""timeout""}",503,"{
+  ""error"": ""network_error"",
+  ""reason"": ""timeout of 10000 ms exceeded"",
+  ""message"": ""Une erreur est survenue lors de l'appel au fournisseur de donnée""
+}"

@@ -1,0 +1,58 @@
+Titre,Description,Paramètres,Status,Réponse
+,API Dépréciée - ne plus intégrer,"{""numeroFiscal"":""1111111111111"",""referenceAvis"":""1111111111111""}",200,"{
+  ""dateRecouvrement"": ""31/07/2022"",
+  ""dateEtablissement"": ""08/07/2022"",
+  ""nombreParts"": 1.0,
+  ""revenuBrutGlobal"": 9001,
+  ""revenuImposable"": 9001,
+  ""impotRevenuNetAvantCorrections"": null,
+  ""montantImpot"": 100,
+  ""revenuFiscalReference"": 9001,
+  ""anneeRevenus"": ""2021"",
+  ""erreurCorrectif"": """",
+  ""situationPartielle"": """",
+  ""declarant1"": {
+    ""nom"": ""DUPONT"",
+    ""nomNaissance"": ""DUPONT"",
+    ""prenoms"": ""JEAN MARTIN"",
+    ""dateNaissance"": ""19/01/1980""
+  },
+  ""declarant2"": {
+    ""nom"": """",
+    ""nomNaissance"": """",
+    ""prenoms"": """",
+    ""dateNaissance"": """"
+  },
+  ""foyerFiscal"": {
+    ""adresse"": ""42 RUE DE LA PAIX 75002 PARIS"",
+    ""annee"": 2022
+  },
+  ""situationFamille"": ""Célibataire"",
+  ""nombrePersonnesCharge"": 1,
+  ""anneeImpots"": ""2022""
+}"
+,API Dépréciée - ne plus intégrer,"{""numeroFiscal"":""1111111111404"",""referenceAvis"":""1111111111404""}",404,"{
+  ""error"": ""not_found"",
+  ""reason"": ""Les paramètres fournis sont incorrects ou ne correspondent pas à un avis"",
+  ""message"": ""Les paramètres fournis sont incorrects ou ne correspondent pas à un avis""
+}"
+,API Dépréciée - ne plus intégrer,"{""numeroFiscal"":""1111111111500"",""referenceAvis"":""1111111111500""}",500,"{
+  ""error"": ""error"",
+  ""reason"": ""Internal server error"",
+  ""message"": ""Une erreur interne s'est produite, l'équipe a été prévenue.""
+}"
+,API Dépréciée - ne plus intégrer,"{""numeroFiscal"":""1111111111502"",""referenceAvis"":""1111111111502""}",502,"{
+  ""error"": ""invalid_response"",
+  ""reason"": ""Data provider returned an invalid data format."",
+  ""message"": ""La réponse du fournisseur de donnée est inexploitable""
+}"
+,API Dépréciée - ne plus intégrer,"{""numeroFiscal"":""1111111111503"",""referenceAvis"":""1111111111503""}",503,"{
+  ""error"": ""network_error"",
+  ""reason"": ""timeout of 10000 ms exceeded"",
+  ""message"": ""Une erreur est survenue lors de l'appel au fournisseur de donnée""
+}"
+,API Dépréciée - ne plus intégrer,"{""numeroFiscal"":""1111111111509"",""referenceAvis"":""1111111111509""}",509,"{
+  ""error"": ""rate_limited"",
+  ""reason"": ""DGFIP error rate limit exceeded"",
+  ""message"": ""Le fournisseur de donnée a rejeté la demande en raison d'un trop grand nombre d'échecs antérieurs.""
+}"

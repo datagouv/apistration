@@ -1,0 +1,77 @@
+Titre,Description,Paramètres,Status,Réponse
+CNOUS,Réponse FranceConnect permettant de déclencher la réponse de [`/v2/etudiants-boursiers` suivante](../api_particulier_v2_cnous_student_scholarship/france_connect_cnous.yml),"{""token"":""cnous""}",200,"{
+  ""scope"": [
+    ""openid"",
+    ""identite_pivot"",
+    ""cnous_statut_boursier"",
+    ""cnous_echelon_bourse"",
+    ""cnous_email"",
+    ""cnous_periode_versement"",
+    ""cnous_statut_bourse"",
+    ""cnous_ville_etudes"",
+    ""cnous_identite""
+  ],
+  ""client"": {
+    ""client_id"": ""client_id"",
+    ""client_name"": ""client_name""
+  },
+  ""identity"": {
+    ""given_name"": ""Jean"",
+    ""family_name"": ""MARTIN"",
+    ""birthdate"": ""2001-01-01"",
+    ""gender"": ""male"",
+    ""birthplace"": ""75002"",
+    ""birthcountry"": ""99100"",
+    ""preferred_username"": ""jmartin_cnous""
+  }
+}"
+CNOUS (réduit),Réponse FranceConnect permettant de déclencher la réponse de [`/v2/etudiants-boursiers` suivante](../api_particulier_v2_cnous_student_scholarship/france_connect_cnous_with_less_scopes.yml),"{""token"":""cnous_with_less_scopes""}",200,"{
+  ""scope"": [
+    ""openid"",
+    ""identite_pivot"",
+    ""cnous_statut_boursier"",
+    ""cnous_echelon_bourse"",
+    ""cnous_email"",
+    ""cnous_periode_versement"",
+    ""cnous_statut_bourse"",
+    ""cnous_ville_etudes""
+  ],
+  ""client"": {
+    ""client_id"": ""client_id"",
+    ""client_name"": ""client_name""
+  },
+  ""identity"": {
+    ""given_name"": ""Jean"",
+    ""family_name"": ""MARTIN"",
+    ""birthdate"": ""2001-01-01"",
+    ""gender"": ""male"",
+    ""birthplace"": ""75002"",
+    ""birthcountry"": ""99100"",
+    ""preferred_username"": ""jmartin_cnous_with_less_scopes""
+  }
+}"
+MESRI,Réponse FranceConnect permettant de déclencher la réponse de [`/v2/etudiants` suivante](../api_particulier_v2_mesri_student_status/france_connect.yml),"{""token"":""mesri""}",200,"{
+  ""scope"": [
+    ""openid"",
+    ""identite_pivot"",
+    ""mesri_identifiant"",
+    ""mesri_identite"",
+    ""mesri_inscription_etudiant"",
+    ""mesri_inscription_autre"",
+    ""mesri_admission"",
+    ""mesri_etablissements""
+  ],
+  ""client"": {
+    ""client_id"": ""client_id"",
+    ""client_name"": ""client_name""
+  },
+  ""identity"": {
+    ""given_name"": ""Jean"",
+    ""family_name"": ""MESRI"",
+    ""birthdate"": ""2002-01-01"",
+    ""gender"": ""male"",
+    ""birthplace"": ""75002"",
+    ""birthcountry"": ""99100"",
+    ""preferred_username"": ""jean_mesri""
+  }
+}"

@@ -1,0 +1,100 @@
+Titre,Description,Paramètres,Status,Réponse
+,Dossier non trouvé,"{""ine"":""1234567404G""}",404,"{
+  ""error"":""not_found"",
+  ""reason"":""Scholarship not found"",
+  ""message"":""Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis""
+}"
+,Plusieurs identités ont été trouvé avec ces paramètres d'appels,"{""nom"":""Homonyme"",""prenoms"":""Stéphanie"",""dateDeNaissance"":""1995-01-01"",""lieuDeNaissance"":""75001"",""sexe"":""F""}",409,"{
+  ""error"": ""conflict"",
+  ""reason"": ""Plusieurs ressources correspondent aux critères"",
+  ""message"": ""Plusieurs ressources correspondent aux critères""
+}"
+,Erreur interne du serveur,"{""ine"":""1234567500G""}",500,"{
+  ""error"": ""error"",
+  ""reason"": ""Internal server error"",
+  ""message"": ""Une erreur interne s'est produite, l'équipe a été prévenue.""
+}"
+,Timeout - délai d'attente dépassé,"{""ine"":""1234567503G""}",503,"{
+  ""error"": ""network_error"",
+  ""reason"": ""timeout of 10000 ms exceeded"",
+  ""message"": ""Une erreur est survenue lors de l'appel au fournisseur de donnée""
+}"
+,Boursier échelon 5,"{""nom"":""Pagnol"",""prenoms"":""Marcel"",""dateDeNaissance"":""1998-07-12"",""lieuDeNaissance"":""75000"",""sexe"":""M""}",200,"{
+  ""nom"": ""Pagnol"",
+  ""prenom"": ""Marcel"",
+  ""prenom2"": """",
+  ""dateNaissance"": ""1998-07-12"",
+  ""lieuNaissance"": ""Paris"",
+  ""sexe"": ""M"",
+  ""boursier"": true,
+  ""echelonBourse"": ""5"",
+  ""email"": ""marcel@pagnol.fr"",
+  ""dateDeRentree"": ""2020-09-01"",
+  ""dureeVersement"": 12,
+  ""statut"": 0,
+  ""statutLibelle"": ""définitif"",
+  ""villeEtudes"": ""Evry"",
+  ""etablissement"": ""ENSIIE""
+}"
+,FranceConnect: Boursier échelon 5 (scope complet),"{""given_name"":""Jean"",""family_name"":""MARTIN"",""birthdate"":""2001-01-01"",""gender"":""male"",""birthplace"":""75002"",""birthcountry"":""99100"",""preferred_username"":""jmartin_cnous""}",200,"{
+  ""nom"": ""DUPONT"",
+  ""prenom"": ""Jean"",
+  ""prenom2"": ""Martin"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""lieuNaissance"": ""Paris"",
+  ""sexe"": ""M"",
+  ""boursier"": true,
+  ""echelonBourse"": ""5"",
+  ""email"": ""jean@dupont.fr"",
+  ""dateDeRentree"": ""2020-09-01"",
+  ""dureeVersement"": 12,
+  ""statut"": 0,
+  ""statutLibelle"": ""définitif"",
+  ""villeEtudes"": ""Bordeaux"",
+  ""etablissement"": ""Camille Jullian""
+}"
+,FranceConnect: Boursier échelon 5 (scope partiel),"{""given_name"":""Jean"",""family_name"":""MARTIN"",""birthdate"":""2001-01-01"",""gender"":""male"",""birthplace"":""75002"",""birthcountry"":""99100"",""preferred_username"":""jmartin_cnous_with_less_scopes""}",200,"{
+  ""boursier"": true,
+  ""echelonBourse"": ""5"",
+  ""email"": ""jean@dupont.fr"",
+  ""dateDeRentree"": ""2020-09-01"",
+  ""dureeVersement"": 12,
+  ""statut"": 0,
+  ""statutLibelle"": ""définitif"",
+  ""villeEtudes"": ""Bordeaux"",
+  ""etablissement"": ""Camille Jullian""
+}"
+,FranceConnect: Boursier échelon 5 (scope complet),"{""given_name"":""Angela Claire Louise"",""family_name"":""DUBOIS"",""birthdate"":""1962-08-24"",""gender"":""female"",""birthplace"":""75107"",""birthcountry"":""99100"",""preferred_username"":""""}",200,"{
+  ""nom"": ""DUBOIS"",
+  ""prenom"": ""Angela"",
+  ""prenom2"": ""Claire"",
+  ""dateNaissance"": ""1962-08-24"",
+  ""lieuNaissance"": ""Paris"",
+  ""sexe"": ""F"",
+  ""boursier"": true,
+  ""echelonBourse"": ""5"",
+  ""email"": ""wossewodda-3728@yopmail.com "",
+  ""dateDeRentree"": ""2020-09-01"",
+  ""dureeVersement"": 12,
+  ""statut"": 0,
+  ""statutLibelle"": ""définitif"",
+  ""villeEtudes"": ""Bordeaux"",
+  ""etablissement"": ""Camille Jullian""
+}"
+,Boursier échelon 6 (appel par INE),"{""ine"":""1234567890A""}",200,"{
+  ""nom"": ""Durand"",
+  ""prenom"": ""Géraldine"",
+  ""prenom2"": """",
+  ""dateNaissance"": ""1990-01-01"",
+  ""lieuNaissance"": ""Paris"",
+  ""sexe"": ""F"",
+  ""boursier"": true,
+  ""echelonBourse"": ""6"",
+  ""email"": ""geraldine@@durand.fr"",
+  ""dateDeRentree"": ""2018-09-01"",
+  ""dureeVersement"": 12,
+  ""statut"": 0,
+  ""statutLibelle"": ""définitif"",
+  ""villeEtudes"": ""Marseille"",
+  ""etablissement"": ""Pagnol""
+}"

@@ -1,0 +1,37 @@
+Titre,Description,Paramètres,Status,Réponse
+,GIP-MDS effectifs annuels entreprise 200,"{""siren"":""130025265"",""year"":""2017""}",200,"{
+  ""data"": {
+    ""siren"": ""130025265"",
+    ""annee"": ""2017"",
+    ""effectifs_annuel"": [
+      {
+        ""regime"": ""regime_general"",
+        ""value"": 12.34,
+        ""nature"": ""effectif_moyen_annuel"",
+        ""date_derniere_mise_a_jour"": ""2018-01-01""
+      },
+      {
+        ""regime"": ""regime_agricole"",
+        ""nature"": ""effectif_moyen_annuel"",
+        ""value"": null,
+        ""date_derniere_mise_a_jour"": null
+      }
+    ]
+  },
+  ""links"": {
+  },
+  ""meta"": {
+  }
+}"
+,GIP-MDS effectifs annuels entreprise 404,"{""siren"":""000000000"",""year"":""2020""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""31003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel."",
+      ""meta"": {
+        ""provider"": ""GIP-MDS""
+      }
+    }
+  ]
+}"

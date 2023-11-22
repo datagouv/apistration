@@ -1,0 +1,28 @@
+Titre,Description,Paramètres,Status,Réponse
+Attestation délivrée,Payload ACOSS Attestations sociales - succès 200,"{""siren"":""418166096""}",200,"{
+  ""data"": {
+    ""document_url"": ""https://entreprise.api.gouv.fr/files/attestation-sociale-urssaf-exemple.pdf"",
+    ""expires_in"": 7889238
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+Entité hors périmètre,Payload ACOSS Attestations sociales - not found 404,"{""siren"":""000000000""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""04003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Le siret ou siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel"",
+      ""meta"": {
+        ""provider"": ""ACOSS"",
+        ""provider_errors"": [
+          {
+            ""code"": ""FUNC517"",
+            ""message"": ""Le Siren est inconnu"",
+            ""description"": ""Le siren est inconnu du SI Attestations, radié ou hors périmètre""
+          }
+        ]
+      }
+    }
+  ]
+}"
