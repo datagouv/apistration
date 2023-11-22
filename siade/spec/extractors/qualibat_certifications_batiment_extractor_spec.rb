@@ -18,6 +18,7 @@ RSpec.describe QUALIBATCertificationsBatimentExtractor, type: :extractor do
         certifications_2_pages_rge_4e_page
         certifications_2_pages_with_annexes
         certifications_and_special_page
+        certifications_2_pages_rge_2_pages
       ].each do |kind|
         describe "#{kind} validity" do
           let(:filename) { kind }

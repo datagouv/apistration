@@ -5,10 +5,13 @@ class QUALIBATCertificationsBatiment::CertificationsExtractor < PDFExtractor
 
   private
 
+  # rubocop:disable Metrics/MethodLength
   def certifications
     certifications_pages.each_with_object([]) do |page, certifications|
       chunks = extract_chunks(page)
       last_line_before_certifications = chunks.find_index { |chunk| chunk.include?('d\'attribution') }
+
+      next unless last_line_before_certifications
 
       chunks[last_line_before_certifications..].each_with_index do |chunk, index|
         code = extract_certification_code(chunk)
@@ -25,6 +28,7 @@ class QUALIBATCertificationsBatiment::CertificationsExtractor < PDFExtractor
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def extract_certification_information(certifications, code, page, chunks, chunks_offset)
     certification = find_certification_data_from_nomenclature(code)
