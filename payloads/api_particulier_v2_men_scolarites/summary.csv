@@ -1,0 +1,37 @@
+Titre,Description,Paramètres,Status,Réponse
+,Élève boursier,"{""nom"":""Martin"",""prenom"":""Justine"",""sexe"":""f"",""dateNaissance"":""2000-01-20"",""codeEtablissement"":""0890003V"",""anneeScolaire"":""2022""}",200,"{
+  ""eleve"": {
+    ""nom"": ""Martin"",
+    ""prenom"": ""Justine"",
+    ""sexe"": ""F"",
+    ""date_naissance"": ""2000-01-20""
+  },
+  ""code_etablissement"": ""0890003V"",
+  ""annee_scolaire"": ""2022-2023"",
+  ""est_scolarise"": true,
+  ""est_boursier"": true,
+  ""status_eleve"": {
+    ""code"": ""ST"",
+    ""libelle"": ""Scolaire""
+  }
+}"
+,Erreur de paramètre (sexe invalide),"{""nom"":""Martin"",""prenom"":""Justine"",""sexe"":""not_valid"",""dateNaissance"":""2000-01-20"",""codeEtablissement"":""0890003V"",""anneeScolaire"":""2022""}",400,"{
+  ""error"": ""unprocessable_entity_error_gender_error"",
+  ""reason"": ""Entité non traitable"",
+  ""message"": ""Le sexe n'est pas correctement formaté (m ou f)""
+}"
+,Élève non trouvé,"{""nom"":""Martin"",""prenom"":""Jerome"",""sexe"":""f"",""dateNaissance"":""2000-01-20"",""codeEtablissement"":""0890003V"",""anneeScolaire"":""2022""}",404,"{
+  ""error"": ""not_found"",
+  ""reason"": ""Student not found"",
+  ""message"": ""Aucun étudiant n'a pu être trouvé avec les critères de recherche fournis""
+}"
+,Timeout - délai d'attente dépassé,"{""nom"":""Depardieu"",""prenom"":""Francis"",""sexe"":""m"",""dateNaissance"":""2000-01-20"",""codeEtablissement"":""0890003V"",""anneeScolaire"":""2022""}",503,"{
+  ""error"": ""network_error"",
+  ""reason"": ""timeout of 10000 ms exceeded"",
+  ""message"": ""Une erreur est survenue lors de l'appel au fournisseur de donnée""
+}"
+,Erreur serveur,"{""nom"":""Faure"",""prenom"":""Felix"",""sexe"":""m"",""dateNaissance"":""2000-01-20"",""codeEtablissement"":""0890003V"",""anneeScolaire"":""2022""}",504,"{
+  ""error"": ""dummy"",
+  ""reason"": ""dummy"",
+  ""message"": ""dummy""
+}"

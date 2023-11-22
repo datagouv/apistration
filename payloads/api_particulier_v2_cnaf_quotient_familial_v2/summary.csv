@@ -1,0 +1,154 @@
+Titre,Description,Paramètres,Status,Réponse
+,"## Couple avec deux enfants - allocataire féminin - QF MSA de 150 en mai 2023
+
+Ce cas permet de tester :
+- [Param. appel] Mois et année du QF recherché 
+- [Param. appel] Lieu de naissance en France
+- [Param. appel] Sexe feminin
+- [Param. appel] Deux prénoms
+- [Réponse] Tableau d'informations car couple
+- [Réponse] Tableau d'informations car deux enfants
+- [Réponse] Régime MSA
+- [Réponse] Quotient familial de 150
+- [Réponse] Quotient familial ancien de mai 2023","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""ROUX"",""prenoms"":[""JEANNE"",""STEPHANIE""],""anneeDateDeNaissance"":1987,""moisDateDeNaissance"":6,""annee"":2023,""mois"":5}",200,"{
+  ""regime"": ""MSA"",
+  ""allocataires"": [
+    {
+      ""nomNaissance"": ""ROUX"",
+      ""nomUsage"": ""ROUX"",
+      ""prenoms"": ""JEANNE STEPHANIE"",
+      ""anneeDateDeNaissance"": ""1987"",
+      ""moisDateDeNaissance"": ""06"",
+      ""jourDateDeNaissance"": ""27"",
+      ""sexe"": ""F""
+    },
+    {
+      ""nomNaissance"": ""ROUX"",
+      ""nomUsage"": ""ROUX"",
+      ""prenoms"": ""LOIC NATHAN"",
+      ""anneeDateDeNaissance"": ""1979"",
+      ""moisDateDeNaissance"": ""05"",
+      ""jourDateDeNaissance"": ""19"",
+      ""sexe"": ""M""
+    }
+  ],
+  ""enfants"": [
+    {
+      ""nomNaissance"": ""ROUX"",
+      ""nomUsage"": ""ROUX"",
+      ""prenoms"": ""ALEXIS VINCENT"",
+      ""anneeDateDeNaissance"": ""2006"",
+      ""moisDateDeNaissance"": ""04"",
+      ""jourDateDeNaissance"": ""20"",
+      ""sexe"": ""M""
+    },
+    {
+      ""nomNaissance"": ""ROUX"",
+      ""nomUsage"": ""ROUX"",
+      ""prenoms"": ""FLEUR EDITH"",
+      ""anneeDateDeNaissance"": ""2004"",
+      ""moisDateDeNaissance"": ""04"",
+      ""jourDateDeNaissance"": ""20"",
+      ""sexe"": ""M""
+    }
+  ],
+  ""adresse"": {
+    ""identite"": ""Madame ROUX JEANNE"",
+    ""complementInformation"": null,
+    ""complementInformationGeographique"": null,
+    ""numeroLibelleVoie"": ""1 RUE MONTORGUEIL"",
+    ""lieuDit"": null,
+    ""codePostalVille"": ""75002"",
+    ""pays"": ""FRANCE""
+  },
+  ""quotientFamilial"": 150,
+  ""annee"": 2023,
+  ""mois"": 5
+}"
+,"## Famille monoparentale avec un enfant - allocataire féminin - QF CAF en cours de 650
+
+Ce cas permet de tester :
+- [Param. appel] Lieu de naissance en France
+- [Param. appel] Sexe feminin
+- [Réponse] Régime CAF
+- [Réponse] Quotient familial de 650","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""BERNARD"",""prenoms"":[""ELODIE""],""anneeDateDeNaissance"":1990,""moisDateDeNaissance"":3}",200,"{
+  ""regime"": ""CNAF"",
+  ""allocataires"": [
+    {
+      ""nomNaissance"": ""BERNARD"",
+      ""nomUsage"": ""BERNARD"",
+      ""prenoms"": ""ELODIE JUDITH GERTRUDE"",
+      ""anneeDateDeNaissance"": ""1990"",
+      ""moisDateDeNaissance"": ""03"",
+      ""jourDateDeNaissance"": ""18"",
+      ""sexe"": ""F""
+    }
+  ],
+  ""enfants"": [
+    {
+      ""nomNaissance"": ""BERNARD"",
+      ""nomUsage"": ""BERNARD"",
+      ""prenoms"": ""LEO"",
+      ""anneeDateDeNaissance"": ""1990"",
+      ""moisDateDeNaissance"": ""04"",
+      ""jourDateDeNaissance"": ""20"",
+      ""sexe"": ""M""
+    }
+  ],
+  ""adresse"": {
+    ""identite"": ""Madame BERNARD ELODIE"",
+    ""complementInformation"": null,
+    ""complementInformationGeographique"": null,
+    ""numeroLibelleVoie"": ""1 RUE MONTORGUEIL"",
+    ""lieuDit"": null,
+    ""codePostalVille"": ""75002"",
+    ""pays"": ""FRANCE""
+  },
+  ""quotientFamilial"": 650,
+  ""annee"": 2023,
+  ""mois"": 6
+}"
+,"## Allocataire seul - masculin - QF CAF de 2550 du mois en cours
+
+Ce cas permet de tester :
+- [Param. appel] lieu de naissance en France
+- [Param. appel] sexe masculin
+- [Réponse] Régime CAF
+- [Réponse] Quotient familial de 2550
+- [Réponse] Quotient familial du mois en cours","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEXIS""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12}",200,"{
+  ""regime"": ""CNAF"",
+  ""allocataires"": [
+    {
+      ""nomNaissance"": ""LEFEBVRE"",
+      ""nomUsage"": ""LEFEBVRE"",
+      ""prenoms"": ""ALEXIS"",
+      ""anneeDateDeNaissance"": ""1982"",
+      ""moisDateDeNaissance"": ""12"",
+      ""jourDateDeNaissance"": ""27"",
+      ""sexe"": ""F""
+    }
+  ],
+  ""enfants"": [],
+  ""adresse"": {
+    ""identite"": ""Monsieur LEFEBVRE ALEXIS"",
+    ""complementInformation"": null,
+    ""complementInformationGeographique"": null,
+    ""numeroLibelleVoie"": ""1 RUE MONTORGUEIL"",
+    ""lieuDit"": null,
+    ""codePostalVille"": ""75002"",
+    ""pays"": ""FRANCE""
+  },
+  ""quotientFamilial"": 2550,
+  ""annee"": 2023,
+  ""mois"": 6
+}"
+,Dossier non trouvé,"{""codeInseeLieuDeNaissance"":""00404"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",404,"{
+  ""error"": ""not_found"",
+  ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
+  ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
+}"
+,Timeout - délai d'attente dépassé,"{""codeInseeLieuDeNaissance"":""00503"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",503,"{
+  ""error"": ""network_error"",
+  ""reason"": ""timeout of 10000 ms exceeded"",
+  ""message"": ""Une erreur est survenue lors de l'appel au fournisseur de donnée""
+}"

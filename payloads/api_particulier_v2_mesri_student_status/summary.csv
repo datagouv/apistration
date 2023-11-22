@@ -1,0 +1,197 @@
+Titre,Description,Paramètres,Status,Réponse
+,Étudiant 0100008010J inscrit (appel par INE),"{""ine"":""0100008010J""}",200,"{
+  ""ine"": ""0100008010J"",
+  ""nomFamille"": ""Petit"",
+  ""prenom"": ""Thomas"",
+  ""dateNaissance"": ""2000-02-12"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2019-02-16"",
+      ""dateFinInscription"": ""2021-05-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75020"",
+      ""etablissement"": {
+        ""uai"": ""0750106H"",
+        ""nomEtablissement"": ""ECOLE TECHNOLOGIQUE PRIVEE""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant 012345678AA inscrit (appel par INE),"{""ine"":""012345678AA""}",200,"{
+  ""ine"": ""012345678AA"",
+  ""nomFamille"": ""DUBOIS"",
+  ""prenom"": ""Jean"",
+  ""dateNaissance"": ""2003-01-10"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2020-09-11"",
+      ""dateFinInscription"": ""2022-06-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75020"",
+      ""etablissement"": {
+        ""uai"": ""0750106H"",
+        ""nomEtablissement"": ""ECOLE TECHNOLOGIQUE PRIVEE""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant non trouvé,"{""ine"":""1234567404G""}",404,"{
+  ""error"": ""not_found"",
+  ""reason"": ""Student not found"",
+  ""message"": ""Aucun étudiant n'a pu être trouvé avec les critères de recherche fournis""
+}"
+,Erreur interne du serveur,"{""ine"":""1234567500G""}",500,"{
+  ""error"": ""error"",
+  ""reason"": ""Internal server error"",
+  ""message"": ""Une erreur interne s'est produite, l'équipe a été prévenue.""
+}"
+,Timeout - délai d'attente dépassé,"{""ine"":""1234567503G""}",503,"{
+  ""error"": ""network_error"",
+  ""reason"": ""timeout of 10000 ms exceeded"",
+  ""message"": ""Une erreur est survenue lors de l'appel au fournisseur de donnée""
+}"
+,Étudiant inscrit,"{""nom"":""MARTIN"",""prenom"":""Jacques"",""dateDeNaissance"":""2004-01-01"",""sexe"":""m"",""birth_place"":""75002""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Martin"",
+  ""prenom"": ""Jacques"",
+  ""dateNaissance"": ""2004-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2020-07-01"",
+      ""dateFinInscription"": ""2021-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""33063"",
+      ""etablissement"": {
+        ""uai"": ""0330023W"",
+        ""nomEtablissement"": ""LYCEE GENERAL ET TECHNOLOGIQUE CAMILLE JULLIAN""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,FranceConnect: étudiant inscrit,"{""given_name"":""Jean"",""family_name"":""MESRI"",""birthdate"":""2002-01-01"",""gender"":""male"",""birthplace"":""75002""}",200,"{
+  ""ine"": ""1234567890T"",
+  ""nomFamille"": ""Mesri"",
+  ""prenom"": ""Jean"",
+  ""dateNaissance"": ""2002-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2020-07-01"",
+      ""dateFinInscription"": ""2021-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""33063"",
+      ""etablissement"": {
+        ""uai"": ""0330023W"",
+        ""nomEtablissement"": ""LYCEE GENERAL ET TECHNOLOGIQUE CAMILLE JULLIAN""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,FranceConnect: étudiant inscrit,"{""given_name"":""Angela"",""family_name"":""DUBOIS"",""birthdate"":""1962-08-24"",""gender"":""female"",""birthplace"":""75107""}",200,"{
+  ""ine"": ""1234567890T"",
+  ""nomFamille"": ""DUBOIS"",
+  ""prenom"": ""Angela Claire Louise"",
+  ""dateNaissance"": ""1962-08-24"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2020-07-01"",
+      ""dateFinInscription"": ""2021-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""33063"",
+      ""etablissement"": {
+        ""uai"": ""0330023W"",
+        ""nomEtablissement"": ""LYCEE GENERAL ET TECHNOLOGIQUE CAMILLE JULLIAN""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit (appel par INE),"{""ine"":""1234567890A""}",200,"{
+  ""ine"": ""1234567890A"",
+  ""nomFamille"": ""Dupont"",
+  ""prenom"": ""Jean"",
+  ""dateNaissance"": ""2002-02-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2020-09-01"",
+      ""dateFinInscription"": ""2021-06-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""33199"",
+      ""etablissement"": {
+        ""uai"": ""0332870R"",
+        ""nomEtablissement"": ""LPO LYCEE DES METIERS DE LA MER""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant 0100007108D inscrit (appel par INE),"{""ine"":""0100007108D""}",200,"{
+  ""ine"": ""0100007108D"",
+  ""nomFamille"": ""MARTIN"",
+  ""prenom"": ""Jeanne"",
+  ""dateNaissance"": ""2001-11-10"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2022-08-01"",
+      ""dateFinInscription"": ""2023-07-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75020"",
+      ""etablissement"": {
+        ""uai"": ""0750106H"",
+        ""nomEtablissement"": ""ECOLE TECHNOLOGIQUE PRIVEE""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant 655888578AE inscrit (appel par INE),"{""ine"":""655888578AE""}",200,"{
+  ""ine"": ""655888578AE"",
+  ""nomFamille"": ""The Rabbit"",
+  ""prenom"": ""Korako"",
+  ""dateNaissance"": ""2002-10-13"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2023-09-01"",
+      ""dateFinInscription"": ""2024-06-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75020"",
+      ""etablissement"": {
+        ""uai"": ""0750106H"",
+        ""nomEtablissement"": ""ECOLE TECHNOLOGIQUE PRIVEE""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant 675773666AD inscrit (appel par INE),"{""ine"":""675773666AD""}",200,"{
+  ""ine"": ""675773666AD"",
+  ""nomFamille"": ""DUPONT"",
+  ""prenom"": ""Georges"",
+  ""dateNaissance"": ""2003-01-16"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2022-09-05"",
+      ""dateFinInscription"": ""2023-05-29"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75020"",
+      ""etablissement"": {
+        ""uai"": ""0750106H"",
+        ""nomEtablissement"": ""ECOLE TECHNOLOGIQUE PRIVEE""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant 697720085AL inscrit (appel par INE) : erreur interne serveur,"{""ine"":""697720085AL""}",500,"{
+  ""error"": ""error"",
+  ""reason"": ""Internal server error"",
+  ""message"": ""Une erreur interne s'est produite, l'équipe a été prévenue.""
+}"
+,Étudiant 697720085AO (appel par INE) : Étudiant non trouvé,"{""ine"":""697720085AO""}",404,"{
+  ""error"": ""not_found"",
+  ""reason"": ""Student not found"",
+  ""message"": ""Aucun étudiant n'a pu être trouvé avec les critères de recherche fournis""
+}"

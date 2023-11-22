@@ -5,6 +5,7 @@ $LOAD_PATH.unshift(lib_folder) unless $LOAD_PATH.include?(lib_folder)
 
 require 'open_api_helpers'
 require 'generate_payload_readme'
+require 'generate_summary_csv'
 
 include OpenAPIHelpers
 
@@ -36,6 +37,7 @@ main_readme_stream.puts 'génère une payload par défaut basée sur la spécifi
       main_readme_stream.puts("* [#{title}](#{operation_id}) (`#{api_path}`)")
 
       GeneratePayloadReadme.new(operation_id, api_path_spec['get']['summary'], api_path).perform
+      GenerateSummaryCSV.new(operation_id).perform
     else
       main_readme_stream.puts("* #{title} (`#{api_path}`)")
     end
@@ -43,3 +45,4 @@ main_readme_stream.puts 'génère une payload par défaut basée sur la spécifi
 end
 
 GeneratePayloadReadme.new('france_connect', 'France Connect').perform
+GenerateSummaryCSV.new('france_connect').perform

@@ -1,4 +1,118 @@
 # Statut étudiant
+* [0100008010J.yaml](0100008010J.yaml)
+
+  Status `200`
+
+  Étudiant 0100008010J inscrit (appel par INE)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "0100008010J"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "0100008010J",
+    "nomFamille": "Petit",
+    "prenom": "Thomas",
+    "dateNaissance": "2000-02-12",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2019-02-16",
+        "dateFinInscription": "2021-05-30",
+        "statut": "inscrit",
+        "codeCommune": "75020",
+        "etablissement": {
+          "uai": "0750106H",
+          "nomEtablissement": "ECOLE TECHNOLOGIQUE PRIVEE"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=0100008010J' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [012345678AA.yaml](012345678AA.yaml)
+
+  Status `200`
+
+  Étudiant 012345678AA inscrit (appel par INE)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "012345678AA"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "012345678AA",
+    "nomFamille": "DUBOIS",
+    "prenom": "Jean",
+    "dateNaissance": "2003-01-10",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2020-09-11",
+        "dateFinInscription": "2022-06-30",
+        "statut": "inscrit",
+        "codeCommune": "75020",
+        "etablissement": {
+          "uai": "0750106H",
+          "nomEtablissement": "ECOLE TECHNOLOGIQUE PRIVEE"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=012345678AA' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
 * [404.yaml](404.yaml)
 
   Status `404`
@@ -363,6 +477,63 @@
   ```bash
   curl -H "X-Api-Key: $token" \
     -G -d 'ine=1234567890A' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [ine_0100007108D.yaml](ine_0100007108D.yaml)
+
+  Status `200`
+
+  Étudiant 0100007108D inscrit (appel par INE)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "0100007108D"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "0100007108D",
+    "nomFamille": "MARTIN",
+    "prenom": "Jeanne",
+    "dateNaissance": "2001-11-10",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2022-08-01",
+        "dateFinInscription": "2023-07-30",
+        "statut": "inscrit",
+        "codeCommune": "75020",
+        "etablissement": {
+          "uai": "0750106H",
+          "nomEtablissement": "ECOLE TECHNOLOGIQUE PRIVEE"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=0100007108D' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
   ```
 

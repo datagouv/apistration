@@ -1,0 +1,54 @@
+Titre,Description,Paramètres,Status,Réponse
+,Couple avec deux enfants (2022),"{""numeroAllocataire"":2345678,""codePostal"":75001}",200,"{
+  ""quotientFamilial"": 1234,
+  ""mois"": 7,
+  ""annee"": 2022,
+  ""allocataires"": [
+    {
+      ""nomPrenom"": ""MARIE DUPONT"",
+      ""dateDeNaissance"": ""01031988"",
+      ""sexe"": ""F""
+    },
+    {
+      ""nomPrenom"": ""JEAN DUPONT"",
+      ""dateDeNaissance"": ""01041990"",
+      ""sexe"": ""M""
+    }
+  ],
+  ""enfants"": [
+    {
+      ""nomPrenom"": ""JACQUES DUPONT"",
+      ""dateDeNaissance"": ""01012010"",
+      ""sexe"": ""M""
+    },
+    {
+      ""nomPrenom"": ""JEANNE DUPONT"",
+      ""dateDeNaissance"": ""01022012"",
+      ""sexe"": ""F""
+    }
+  ],
+  ""adresse"": {
+    ""identite"": ""Monsieur JEAN DUPONT"",
+    ""complementIdentite"": ""APPARTEMENT 51"",
+    ""complementIdentiteGeo"": ""RESIDENCE DES COLOMBES"",
+    ""numeroRue"": ""42 RUE DE LA PAIX"",
+    ""lieuDit"": ""ILOTS DES OISEAUX"",
+    ""codePostalVille"": ""75001 PARIS"",
+    ""pays"": ""FRANCE""
+  }
+}"
+,Dossier non trouvé,"{""numeroAllocataire"":1234567,""codePostal"":33404}",404,"{
+  ""error"": ""not_found"",
+  ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
+  ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
+}"
+,Erreur interne du serveur,"{""numeroAllocataire"":1234567,""codePostal"":33500}",500,"{
+  ""error"": ""error"",
+  ""reason"": ""Internal server error"",
+  ""message"": ""Une erreur interne s'est produite, l'équipe a été prévenue.""
+}"
+,Erreur inconnue du fournisseur de données,"{""numeroAllocataire"":1234567,""codePostal"":33503}",503,"{
+  ""error"": ""data_provider_error"",
+  ""reason"": ""Unknown error code 134"",
+  ""message"": ""Erreur inconnue du fournisseur de donnée CAF""
+}"

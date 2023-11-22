@@ -1,9 +1,11 @@
 require 'open_api_helpers'
+require 'payloads_helpers'
 require 'generate_code_sample_from_path'
 require 'openapi3_parser'
 require 'open_api_schema_to_example'
 
 class GeneratePayloadReadme
+  include PayloadsHelpers
   include OpenAPIHelpers
 
   attr_reader :operation_id, :title, :api_path
@@ -18,16 +20,12 @@ class GeneratePayloadReadme
     add_title
     add_description
 
-    payload_entries.each do |payload_path|
+    payload_entries(operation_id).each do |payload_path|
       add_payload_entry(payload_path, api_path)
     end
   end
 
   private
-
-  def payload_entries
-    Dir[File.expand_path("payloads/#{operation_id}/*.y*ml", root_path)]
-  end
 
   def add_payload_entry(payload_path, api_path)
     payload = YAML.load_file(payload_path)
