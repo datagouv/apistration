@@ -42,43 +42,16 @@ class QUALIBATCertificationsBatiment::CertificationsExtractor < PDFExtractor
     end
   end
 
-  # rubocop:disable Metrics/AbcSize
   def certifications_pages
-    if simple_certificate? || certificates_with_annexes?
-      [pages[0]]
-    elsif with_rge_only?
-      [pages[1]]
-    elsif with_and_without_rge_on_second_page?
-      [pages[0], pages[1]]
-    elsif with_and_without_rge_on_third_page?
-      [pages[0], pages[2]]
-    else
-      raise InvalidFile
+    valid_pages = pages.select do |page|
+      extract_chunks(page)[0..5].any? do |chunk|
+        chunk =~ /CERTIFICAT\s+QUALIBAT/i
+      end
     end
-  end
-  # rubocop:enable Metrics/AbcSize
 
-  def with_rge_only?
-    pages[0].text.include?('Cette entreprise est qualifiée, consultez le certificat RGE')
-  end
+    raise InvalidFile unless valid_pages.any?
 
-  def with_and_without_rge_on_second_page?
-    pages.count > 1 && pages[1].text.match?(/CERTIFICAT\s+QUALIBAT.*RGE/)
-  end
-
-  def with_and_without_rge_on_third_page?
-    pages.count > 2 && pages[2].text.match?(/CERTIFICAT\s+QUALIBAT.*RGE/)
-  end
-
-  def simple_certificate?
-    pages.count == 1
-  end
-
-  def certificates_with_annexes?
-    pages.count > 1 && (
-      pages[1].text.include?('ANNEXE CERTIFICAT') ||
-        pages[1].text.include?('ANNEXE AU CERTIFICAT')
-    )
+    valid_pages
   end
 
   def find_certification_data_from_nomenclature(code)
