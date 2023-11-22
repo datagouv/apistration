@@ -1,35 +1,4 @@
 # Statut élève scolarisé et boursier
-* __Retour par défaut de l'API__
-
-  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
-
-
-  <details><summary>Réponse par défault de l'API</summary>
-  <p>
-
-  ```json
-  {
-    "eleve": {
-      "nom": "Martin",
-      "prenom": "Justine",
-      "sexe": "F",
-      "date_naissance": "2000-01-20"
-    },
-    "code_etablissement": "0210015C",
-    "annee_scolaire": "2022-2023",
-    "est_scolarise": true,
-    "est_boursier": true,
-    "niveau_bourse": 1,
-    "status_eleve": {
-      "code": "ST",
-      "libelle": "SCOLAIRE"
-    }
-  }
-  ```
-
-  </p>
-  </details>
-
 * [200.yaml](200.yaml)
 
   Status `200`

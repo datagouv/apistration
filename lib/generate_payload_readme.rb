@@ -17,7 +17,6 @@ class GeneratePayloadReadme
   def perform
     add_title
     add_description
-    add_default_payload_infos
 
     payload_entries.each do |payload_path|
       add_payload_entry(payload_path, api_path)
@@ -83,22 +82,6 @@ class GeneratePayloadReadme
       readme_stream.puts File.read(extra_description_path)
       readme_stream.puts
     end
-  end
-
-  def add_default_payload_infos
-    return if operation_id == 'france_connect'
-
-    readme_stream.puts "* __Retour par défaut de l'API__"
-    readme_stream.puts
-    readme_stream.puts "  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :"
-    readme_stream.puts
-    add_collapse_section(
-      "Réponse par défault de l'API",
-      "```json\n" \
-      "#{JSON.pretty_generate(generate_default_json)}\n" \
-      "```"
-    )
-    readme_stream.puts
   end
 
   def load_operation_id_schema

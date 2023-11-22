@@ -1,36 +1,4 @@
 # Effectifs annuels d'une unité légale
-* __Retour par défaut de l'API__
-
-  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
-
-
-  <details><summary>Réponse par défault de l'API</summary>
-  <p>
-
-  ```json
-  {
-    "data": {
-      "siren": "130025265",
-      "annee": "2017",
-      "effectifs_annuel": [
-        {
-          "regime": "regime_general",
-          "value": 12.34,
-          "nature": "effectif_moyen_annuel",
-          "date_derniere_mise_a_jour": "2018-01-01"
-        }
-      ]
-    },
-    "links": {
-    },
-    "meta": {
-    }
-  }
-  ```
-
-  </p>
-  </details>
-
 * [200.yaml](200.yaml)
 
   Status `200`

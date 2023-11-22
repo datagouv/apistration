@@ -1,37 +1,4 @@
 # Effectifs mensuels d'un établissement
-* __Retour par défaut de l'API__
-
-  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
-
-
-  <details><summary>Réponse par défault de l'API</summary>
-  <p>
-
-  ```json
-  {
-    "data": {
-      "siret": "13002526500013",
-      "effectifs_mensuels": [
-        {
-          "regime": "regime_general",
-          "value": 12.34,
-          "nature": "effectif_moyen_mensuel",
-          "annee": "2021",
-          "mois": "01",
-          "date_derniere_mise_a_jour": "2018-01-01"
-        }
-      ]
-    },
-    "links": {
-    },
-    "meta": {
-    }
-  }
-  ```
-
-  </p>
-  </details>
-
 * [200.yaml](200.yaml)
 
   Status `200`

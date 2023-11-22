@@ -1,46 +1,4 @@
 # Quotient familial (CAF)
-* __Retour par défaut de l'API__
-
-  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
-
-
-  <details><summary>Réponse par défault de l'API</summary>
-  <p>
-
-  ```json
-  {
-    "allocataires": [
-      {
-        "nomPrenom": "JEAN JACQUES",
-        "dateDeNaissance": "01021970",
-        "sexe": "M"
-      }
-    ],
-    "enfants": [
-      {
-        "nomPrenom": "JESSICA JACQUES",
-        "dateDeNaissance": "01031995",
-        "sexe": "F"
-      }
-    ],
-    "adresse": {
-      "identite": "Monsieur JEAN JACQUES",
-      "complementIdentite": "dummy",
-      "complementIdentiteGeo": "dummy",
-      "numeroRue": "1 RUE DE LA GARE",
-      "lieuDit": "dummy",
-      "codePostalVille": "75002",
-      "pays": "FRANCE"
-    },
-    "quotientFamilial": 1045,
-    "annee": 2021,
-    "mois": 6
-  }
-  ```
-
-  </p>
-  </details>
-
 * [200.yaml](200.yaml)
 
   Status `200`

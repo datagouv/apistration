@@ -1,23 +1,4 @@
 # Complémentaire santé solidaire
-* __Retour par défaut de l'API__
-
-  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
-
-
-  <details><summary>Réponse par défault de l'API</summary>
-  <p>
-
-  ```json
-  {
-    "status": "beneficiaire_sans_participation_financiere",
-    "dateDebut": "1992-11-29",
-    "dateFin": "1993-11-29"
-  }
-  ```
-
-  </p>
-  </details>
-
 * [200-beneficiaire_avec_participation-feminin.yaml](200-beneficiaire_avec_participation-feminin.yaml)
 
   Status `200`

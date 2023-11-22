@@ -1,36 +1,5 @@
 # Statut étudiant boursier
-* __Retour par défaut de l'API__
-
-  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
-
-
-  <details><summary>Réponse par défault de l'API</summary>
-  <p>
-
-  ```json
-  {
-    "nom": "Moustaki",
-    "prenom": "Georges",
-    "prenom2": "Claude",
-    "dateNaissance": "1992-11-29",
-    "lieuNaissance": "Poitiers",
-    "sexe": "M",
-    "boursier": true,
-    "echelonBourse": "6",
-    "email": "georges@moustaki.fr",
-    "dateDeRentree": "2019-09-01",
-    "dureeVersement": 12,
-    "statut": 0,
-    "statutLibelle": "définitif",
-    "villeEtudes": "Brest",
-    "etablissement": "Carnot"
-  }
-  ```
-
-  </p>
-  </details>
-
-* [404.yml](404.yml)
+* [404.yaml](404.yaml)
 
   Status `404`
 

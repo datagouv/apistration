@@ -1,48 +1,4 @@
 # Service de vérification de l'avis d'impôt sur le revenu
-* __Retour par défaut de l'API__
-
-  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
-
-
-  <details><summary>Réponse par défault de l'API</summary>
-  <p>
-
-  ```json
-  {
-    "declarant1": {
-      "nom": "MARTIN",
-      "nomNaissance": "MARTIN",
-      "prenoms": "JEAN"
-    },
-    "declarant2": {
-      "nom": "MARTIN",
-      "nomNaissance": "MARTIN",
-      "prenoms": "JEAN"
-    },
-    "foyerFiscal": {
-      "adresse": "21 RUE DES MARMOTS 75001 PARIS",
-      "annee": 2022
-    },
-    "dateRecouvrement": "31/07/2021",
-    "dateEtablissement": "06/07/2021",
-    "nombreParts": 1.0,
-    "situationFamille": "Marié(e)s",
-    "revenuBrutGlobal": 30000,
-    "revenuImposable": 29000,
-    "impotRevenuNetAvantCorrections": 1,
-    "montantImpot": 3,
-    "revenuFiscalReference": 29000,
-    "nombrePersonnesCharge": 3,
-    "anneeImpots": "2021",
-    "anneeRevenus": "2020",
-    "erreurCorrectif": "",
-    "situationPartielle": ""
-  }
-  ```
-
-  </p>
-  </details>
-
 * [200.yaml](200.yaml)
 
   Status `200`

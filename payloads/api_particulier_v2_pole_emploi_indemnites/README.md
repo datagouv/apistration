@@ -1,30 +1,4 @@
 # Paiements versés par Pôle Emploi
-* __Retour par défaut de l'API__
-
-  Lors d'un appel avec des paramètres valides ne correspondant à aucun des examples dans ce dossier, l'API renvoie systématiquement cette réponse :
-
-
-  <details><summary>Réponse par défault de l'API</summary>
-  <p>
-
-  ```json
-  {
-    "identifiant": "jean.dupont33",
-    "paiements": [
-      {
-        "date": "2021-01-01",
-        "montant": 123.4,
-        "allocations": 45.1,
-        "aides": 12.21,
-        "autres": 2.34
-      }
-    ]
-  }
-  ```
-
-  </p>
-  </details>
-
 * [200.yaml](200.yaml)
 
   Status `200`
