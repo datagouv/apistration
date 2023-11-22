@@ -57,6 +57,16 @@ RSpec.describe QUALIBATCertificationsBatimentExtractor, type: :extractor do
           end
         end
       end
+
+      context 'with attestation which does not look like a QUALIBAT certification' do
+        let(:filename) { 'strange_attestation' }
+
+        it 'raises an InvalidFile error' do
+          expect {
+            extract
+          }.to raise_error(QUALIBATCertificationsBatimentExtractor::InvalidFile)
+        end
+      end
     end
   end
 end

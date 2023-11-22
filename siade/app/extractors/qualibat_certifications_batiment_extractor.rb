@@ -79,6 +79,12 @@ class QUALIBATCertificationsBatimentExtractor < PDFExtractor
     }.each do |kind, identifier|
       raise PDFNotSupported, kind if pages.first.text.include?(identifier)
     end
+
+    extract_certifications!
+  end
+
+  def extract_certifications!
+    certifications
   end
 
   def first_page_chunks
