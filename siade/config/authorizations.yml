@@ -251,3 +251,4 @@ test:
   api_entreprise/v2/base: *default_test_scopes
   api_particulier: *default_test_scopes
   api_particulier/v2/dummy_france_connected: *default_test_scopes
+  api_particulier/v2/dummy: *default_test_scopes

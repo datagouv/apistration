@@ -28,6 +28,10 @@ module HandleTokens
     matchs[1] if matchs
   end
 
+  def token
+    @token ||= retrieve_token
+  end
+
   private
 
   def authorize_access_to_resource!
