@@ -25130,7 +25130,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/probtp/etablissements/13002526500013/conformite_cotisations_retraite?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/qualibat/etablissements/{siret}/certification_batiment":
     get:
-      summary: Certification Qualibat
+      summary: Certification Qualibat (PDF seulement)
       tags:
       - Certifications professionnelles
       parameters:
@@ -25198,6 +25198,7 @@ paths:
         required: true
         schema:
           type: string
+      deprecated: true
       security:
       - jwt_bearer_token: []
       description: Certification délivrée par l'association Qualibat, attestant de
@@ -25555,7 +25556,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/qualibat/etablissements/13002526500013/certification_batiment?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v4/qualibat/etablissements/{siret}/certification_batiment":
     get:
-      summary: Certification Qualibat
+      summary: Certification Qualibat (PDF + meta-données)
       tags:
       - Certifications professionnelles
       parameters:

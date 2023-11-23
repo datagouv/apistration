@@ -2,10 +2,11 @@ require 'swagger_helper'
 
 RSpec.describe 'Qualibat : CertificationsBatiment', api: :entreprise, type: %i[request swagger] do
   path '/v3/qualibat/etablissements/{siret}/certification_batiment' do
-    get SwaggerData.get('qualibat.certifications_batiment.title') do
+    get SwaggerData.get('qualibat.certifications_batiment.title.v3') do
       tags(*SwaggerData.get('qualibat.certifications_batiment.tags'))
 
       parameter_siret
+      deprecated true
 
       common_action_attributes
 
