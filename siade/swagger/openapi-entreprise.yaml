@@ -25788,6 +25788,9 @@ paths:
                           assurance_responsabilite_travaux:
                             title: Informations relatives à l'assurance responsabilité
                               travaux
+                            description: Les attributs peuvent être nul si les informations
+                              sont absentes du PDF ou si l'assurance est inconnue
+                              de notre service.
                             type: object
                             properties:
                               nom:
@@ -25808,6 +25811,9 @@ paths:
                             title: Informations relatives à l'assurance responsabilité
                               civile
                             type: object
+                            description: Les attributs peuvent être nul si les informations
+                              sont absentes du PDF ou si l'assurance est inconnue
+                              de notre service.
                             properties:
                               nom:
                                 title: Nom de l'assurance

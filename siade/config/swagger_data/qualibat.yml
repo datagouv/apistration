@@ -38,6 +38,7 @@ qualibat:
         properties:
           assurance_responsabilite_travaux:
             title: "Informations relatives à l'assurance responsabilité travaux"
+            description: &qualibat_assurance_description "Les attributs peuvent être nul si les informations sont absentes du PDF ou si l'assurance est inconnue de notre service."
             type: "object"
             properties: &assurance_properties
               nom:
@@ -53,6 +54,7 @@ qualibat:
           assurance_responsabilite_civile:
             title: "Informations relatives à l'assurance responsabilité civile"
             type: "object"
+            description: *qualibat_assurance_description
             properties: *assurance_properties
           certifications:
             type: "array"
