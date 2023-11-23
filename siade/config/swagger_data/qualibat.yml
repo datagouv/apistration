@@ -2,7 +2,7 @@ qualibat:
   certifications_batiment:
     title:
       v3: "Certification Qualibat (PDF seulement)"
-      v4: "Certification Qualibat (PDF + meta-données)"
+      v4: "Certification Qualibat"
     description: "Certification délivrée par l'association Qualibat, attestant de la qualification d’une entreprise dans le bâtiment."
     tags:
       - "Certifications professionnelles"
