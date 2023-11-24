@@ -98,28 +98,6 @@ RSpec.describe JwtTokenService do
               expect(subject.scopes).to eq(['valid'])
             end
           end
-
-          describe 'when token is a migrated token' do
-            context 'when it is used for the first time' do
-              let(:extra_info) { { legacy_token_id: 1234, legacy_token_migrated: false } }
-
-              it 'tracks the migrated token' do
-                extract_user
-
-                expect(monitoring_service).to have_received(:track)
-              end
-            end
-
-            context 'when it is not used for the first time' do
-              let(:extra_info) { { legacy_token_id: 1234, legacy_token_migrated: true } }
-
-              it 'does not track the fully migrated token' do
-                extract_user
-
-                expect(monitoring_service).not_to have_received(:track)
-              end
-            end
-          end
         end
       end
     end
