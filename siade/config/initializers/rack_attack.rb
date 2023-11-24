@@ -24,26 +24,6 @@ class Rack::Attack
 
     private
 
-    def low_latency_documents_config
-      throttle_config.fetch(:low_latency_documents)
-    end
-
-    def high_latency_documents_config
-      throttle_config.fetch(:high_latency_documents)
-    end
-
-    def json_resources_config
-      throttle_config.fetch(:json_resources)
-    end
-
-    def proxied_files_config
-      throttle_config.fetch(:proxied_files)
-    end
-
-    def throttle_config
-      Rails.configuration.throttle
-    end
-
     def rate_limiting_service
       @rate_limiting_service ||= RateLimitingService.new
     end
@@ -63,11 +43,12 @@ class Rack::Attack
     Digest::SHA512.hexdigest(request.get_header('HTTP_X_API_KEY')) if request.host =~ /particulier/
   end
 
-  throttle_by_group_of_endpoints(group_name: 'low_latency_docs', **low_latency_documents_config)
-  throttle_by_group_of_endpoints(group_name: 'json_resources', **json_resources_config)
+  Rails.configuration.throttle.each do |name, config|
+    params = config.slice(:limit, :period, :endpoints)
+    params[:group_name] = name if config[:throttle_type] == 'by_group_of_endpoints'
 
-  throttle_by_single_endpoint(**high_latency_documents_config)
-  throttle_by_single_endpoint(**proxied_files_config)
+    public_send("throttle_#{config[:throttle_type]}", **params)
+  end
 
   self.blocklisted_responder = lambda do |req|
     query_params = Rack::Utils.parse_nested_query(req.params['QUERY_STRING'])

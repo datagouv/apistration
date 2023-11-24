@@ -1,5 +1,6 @@
 shared:
   low_latency_documents:
+    throttle_type: 'by_group_of_endpoints'
     endpoints:
       - { controller: 'api_entreprise/v3_and_more/probtp/attestations_cotisation_retraite', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/acoss/attestations_sociales', action: 'show' }
@@ -10,12 +11,14 @@ shared:
     limit: 50
     period: 60
   high_latency_documents:
+    throttle_type: 'by_single_endpoint'
     endpoints:
       - { controller: 'api_entreprise/v3_and_more/dgfip/attestations_fiscales', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/inpi/actes', action: 'show' }
     limit: 5
     period: 60
   json_resources:
+    throttle_type: 'by_group_of_endpoints'
     endpoints:
       - { controller: 'api_entreprise/v3_and_more/ademe/certificats_rge', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/carif_oref/certifications_qualiopi_france_competences', action: 'show' }
@@ -53,6 +56,7 @@ shared:
     limit: 250
     period: 60
   proxied_files:
+    throttle_type: 'by_single_endpoint'
     endpoints:
       - { controller: 'api_entreprise/proxied_files', action: 'show' }
     limit: 50
