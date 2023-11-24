@@ -48,8 +48,6 @@ shared:
       - { controller: 'api_entreprise/v3_and_more/fabrique_numerique_ministeres_sociaux/conventions_collectives', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/european_commission/vies', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/banque_de_france/bilans_entreprise', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/gip_mds/effectifs_annuels_entreprise', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/gip_mds/effectifs_mensuels_etablissement', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/qualifelec/certificats', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs', action: 'show' }
 
@@ -61,6 +59,13 @@ shared:
       - { controller: 'api_entreprise/proxied_files', action: 'show' }
     limit: 50
     period: 60
+  gip_mds:
+    throttle_type: 'by_group_of_endpoints'
+    limit: 100
+    period: 60
+    endpoints:
+      - { controller: 'api_entreprise/v3_and_more/gip_mds/effectifs_annuels_entreprise', action: 'show' }
+      - { controller: 'api_entreprise/v3_and_more/gip_mds/effectifs_mensuels_etablissement', action: 'show' }
 
 test:
   low_latency_documents:
