@@ -6,16 +6,17 @@ require 'rate_limit_headers_middleware'
 
 class Rack::Attack
   class << self
-    def throttle_zone(zone_name:, limit:, endpoints:, period:)
-      throttle(zone_name, limit: limit, period: period) do |req|
+    def throttle_by_group_of_endpoints(group_name:, limit:, endpoints:, period:)
+      throttle(group_name, limit: limit, period: period) do |req|
         rate_limiting_service.discriminate_by_jwt_for_endpoints(req, endpoints)
       end
     end
 
-    def throttle_exceptions(zone_name_prefix:, limit:, endpoints:, period:)
+    def throttle_by_single_endpoint(limit:, endpoints:, period:)
       endpoints.each do |endpoint|
-        zone_name = [zone_name_prefix, endpoint[:controller], endpoint[:action]].join('_')
-        throttle(zone_name, limit: limit, period: period) do |req|
+        identifier = [endpoint[:controller], endpoint[:action]].join('_')
+
+        throttle(identifier, limit: limit, period: period) do |req|
           rate_limiting_service.discriminate_by_jwt_for_endpoints(req, [endpoint])
         end
       end
@@ -62,11 +63,11 @@ class Rack::Attack
     Digest::SHA512.hexdigest(request.get_header('HTTP_X_API_KEY')) if request.host =~ /particulier/
   end
 
-  throttle_zone(zone_name: 'low_latency_docs', **low_latency_documents_config)
-  throttle_zone(zone_name: 'json_resources', **json_resources_config)
+  throttle_by_group_of_endpoints(group_name: 'low_latency_docs', **low_latency_documents_config)
+  throttle_by_group_of_endpoints(group_name: 'json_resources', **json_resources_config)
 
-  throttle_exceptions(zone_name_prefix: 'high_latency_docs', **high_latency_documents_config)
-  throttle_exceptions(zone_name_prefix: 'proxied_files', **proxied_files_config)
+  throttle_by_single_endpoint(**high_latency_documents_config)
+  throttle_by_single_endpoint(**proxied_files_config)
 
   self.blocklisted_responder = lambda do |req|
     query_params = Rack::Utils.parse_nested_query(req.params['QUERY_STRING'])
