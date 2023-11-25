@@ -2020,7 +2020,8 @@ paths:
                         example: '12000101100010'
                       code_uai:
                         title: Code UAI de l'établissement
-                        description: Code UAI de l'établissement agrée
+                        description: Code UAI de l'établissement agrée. Cet identifiant
+                          unique est affecté aux établissements de l'éducation nationale.
                         example: 0123456A
                         type: string
                         nullable: true
@@ -2038,9 +2039,10 @@ paths:
                       declarations_activites_etablissement:
                         type: array
                         description: Informations relatives au numéro de déclaration
-                          d'activité de l'établissement (NDA). Cette clé renvoie un
-                          tableau car, dans de rares cas, un établissement peut avoir
-                          plusieurs NDA (environ 30 établissements sur 120 000).
+                          d'activité de l'établissement (NDA) si celui-ci en possède
+                          un. Cette clé renvoie un tableau car, dans de rares cas,
+                          un établissement peut avoir plusieurs NDA (environ 30 établissements
+                          sur 120 000).
                         items:
                           type: object
                           properties:
@@ -2212,8 +2214,9 @@ paths:
                       habilitations_france_competence:
                         type: array
                         description: Informations relatives aux habilitations France
-                          Compétences obtenues par l'établissement. La liste des habilitations
-                          France Compétences n'est pas figée et est mise à jour régulièrement
+                          Compétences obtenues par l'établissement lorsque celui-ci
+                          a demandé à être certifié. La liste des habilitations France
+                          Compétences n'est pas figée et est mise à jour régulièrement
                           par les organismes certificateurs.
                         items:
                           type: object
