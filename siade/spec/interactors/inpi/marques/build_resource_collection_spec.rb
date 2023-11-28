@@ -65,5 +65,47 @@ RSpec.describe INPI::Marques::BuildResourceCollection, type: :build_resource do
     it 'has valid resource_collection' do
       expect(resource_collection.map(&:to_h)).to eq(valid_collection_sample)
     end
+
+    describe 'non-regression test: when no mark value in element' do
+      let(:body) do
+        {
+          metadata: {
+            count: 100
+          },
+          results: [
+            {
+              documentId: '999999',
+              fields: [
+                {
+                  name: 'ApplicationNumber',
+                  value: '9999999'
+                },
+                {
+                  name: 'MarkCurrentStatusCode',
+                  value: 'Demande publiée'
+                },
+                {
+                  name: 'DEPOSANT',
+                  value: 'LEDEPOSANT'
+                },
+                {
+                  name: 'ukey',
+                  value: 'FMARK|999999'
+                }
+              ],
+
+              image: {
+                href: 'image-url'
+              },
+              xml: {
+                href: 'xml-url'
+              }
+            }
+          ]
+        }.to_json
+      end
+
+      it { is_expected.to be_a_success }
+    end
   end
 end

@@ -35,7 +35,7 @@ class INPI::Marques::BuildResourceCollection < BuildResourceCollection
   end
 
   def nom(item)
-    find_field_from_key(item, 'Mark')['value']
+    find_field_from_key(item, 'Mark').try(:[], 'value')
   end
 
   def status(item)
