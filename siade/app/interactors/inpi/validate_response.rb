@@ -17,8 +17,6 @@ class INPI::ValidateResponse < ValidateResponse
 
   def payload_has_valid_results?
     payload_has_results? &&
-      json_body['results'].first.present? &&
-      json_body['results'].first['fields'].present? &&
-      json_body['results'].first['fields'].any?
+      json_body['results'].first.try(:[], 'fields').any?
   end
 end
