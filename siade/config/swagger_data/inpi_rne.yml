@@ -53,6 +53,11 @@ inpi_rne:
         type: 'string'
         title: "Nationalité du bénéficiaire effectif"
         example: "France"
+      pays_residence:
+        type: 'string'
+        title: "Pays de résidence du bénéficiaire effectif"
+        example: "FRANCE"
+        nullable: true
       modalites:
         title: "Liste des modalités de contrôle du bénéficiaire effectif"
         type: 'object'

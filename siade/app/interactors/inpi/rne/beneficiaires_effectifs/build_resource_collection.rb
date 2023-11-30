@@ -23,6 +23,7 @@ class INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection < BuildResource
         mois: birth_date_parts[1]
       },
       nationalite: personne_physique_attributes['nationalite'],
+      pays_residence: raw_beneficiaire_effectif['beneficiaire']['adresseDomicile'].try(:[], 'pays'),
       modalites: build_modalites(modalites_attributes)
     }
   end

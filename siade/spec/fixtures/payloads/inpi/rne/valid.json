@@ -29,6 +29,9 @@
                   "MARC"
                 ],
                 "nationalite": "Française"
+              },
+              "adresseDomicile": {
+                "pays": "FRANCE"
               }
             },
             "modalite": {
@@ -88,6 +91,9 @@
                   "ANDRE"
                 ],
                 "nationalite": "Belge"
+              },
+              "adresseDomicile": {
+                "pays": "SUISSE"
               }
             },
             "modalite": {
