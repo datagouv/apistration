@@ -34,11 +34,11 @@ qualibat:
         example: "2024-02-02"
       entity:
         type: "object"
-        title: "Information sur l'entité référencée dans le document"
+        title: "Informations sur l'entité référencée dans le document"
         properties:
           assurance_responsabilite_travaux:
             title: "Informations relatives à l'assurance responsabilité travaux"
-            description: &qualibat_assurance_description "Les attributs peuvent être nul si les informations sont absentes du PDF ou si l'assurance est inconnue de notre service."
+            description: &qualibat_assurance_description "Les attributs peuvent être nuls si les informations sont absentes du PDF ou si l'assurance est inconnue de notre service."
             type: "object"
             properties: &assurance_properties
               nom:
@@ -69,11 +69,12 @@ qualibat:
                   title: "Code associé à la certification"
                   example: "4322"
                 libelle:
-                  title: "Fabrication et pose de menuiserie intérieure en bois"
+                  title: "Libellé de la certification"
                   type: "string"
                   example: "Fabrication et pose de menuiserie intérieure en bois"
                 rge:
-                  title: "Est-ce une certification RGE ?"
+                  title: "Indique si la certification est RGE"
+                  description: "Ce champ indique si la certification est labellisée RGE (reconnu garant de l'environnement)"
                   type: "boolean"
                   example: false
                   enum:
