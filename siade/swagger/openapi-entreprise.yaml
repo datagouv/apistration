@@ -13648,6 +13648,10 @@ paths:
                               required:
                               - annee
                               - mois
+                            nationalite:
+                              type: string
+                              title: Nationalité du bénéficiaire effectif
+                              example: France
                             modalites:
                               title: Liste des modalités de contrôle du bénéficiaire
                                 effectif
@@ -14260,6 +14264,7 @@ paths:
                           - nom_usage
                           - prenoms
                           - date_naissance
+                          - nationalite
                           - modalites
                         links:
                           type: object

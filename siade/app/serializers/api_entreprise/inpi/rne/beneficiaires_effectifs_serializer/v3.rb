@@ -4,6 +4,7 @@ class APIEntreprise::INPI::RNE::BeneficiairesEffectifsSerializer::V3 < APIEntrep
       :nom_usage,
       :prenoms,
       :date_naissance,
+      :nationalite,
       :modalites
   end
 

@@ -17,6 +17,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
             annee: '1989',
             mois: '01'
           },
+          nationalite: 'Française',
           modalites: {
             detention_de_capital: {
               parts_totale: 49.0,
@@ -98,6 +99,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
             annee: '1990',
             mois: '01'
           },
+          nationalite: 'Belge',
           modalites: {
             detention_de_capital: {
               parts_totale: 51.0,

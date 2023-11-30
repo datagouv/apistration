@@ -49,6 +49,10 @@ inpi_rne:
               - '10'
               - '11'
               - '12'
+      nationalite:
+        type: 'string'
+        title: "Nationalité du bénéficiaire effectif"
+        example: "France"
       modalites:
         title: "Liste des modalités de contrôle du bénéficiaire effectif"
         type: 'object'
