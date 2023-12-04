@@ -225,7 +225,7 @@ shared:
 
     cnaf_msa_quotient_familial:
       kind: 'make_request'
-      cache: <%= 2.minutes %>
+      cache: <%= 15.minutes %>
       provider: 'CNAF & MSA'
       status_page:
         name: "MSA & CNAF - Quotient familial (v2)"
@@ -241,14 +241,14 @@ shared:
           gender: 'M'
           code_pays_lieu_de_naissance: '99100'
           code_insee_lieu_de_naissance: '17300'
-          valid_siret: '12000101100010'
+          user_siret: 'PING_DINUM'
           request_id: '22222222-2222-2222-2222-222222222222'
         status_to_check: 404
         token_interactor: 'CNAF::QuotientFamilialV2::Authenticate'
 
     securite_sociale_complementaire_sante_solidaire:
       kind: 'make_request'
-      cache: <%= 2.minutes %>
+      cache: <%= 15.minutes %>
       provider: 'Sécurité sociale'
       status_page:
         name: "Sécurité sociale - Complémentaire santé solidaire"
