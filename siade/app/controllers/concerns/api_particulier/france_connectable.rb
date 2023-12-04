@@ -28,12 +28,12 @@ module APIParticulier::FranceConnectable
   end
 
   def render_errors(organizer)
-    track_invalid_paramaters_error_for_france_connect(organizer, organizer.errors) if france_connect? && at_least_one_error_kind_of?(:wrong_parameter, organizer)
+    track_invalid_parameters_error_for_france_connect(organizer, organizer.errors) if france_connect? && at_least_one_error_kind_of?(:wrong_parameter, organizer)
 
     super(organizer)
   end
 
-  def track_invalid_paramaters_error_for_france_connect(organizer, errors)
+  def track_invalid_parameters_error_for_france_connect(organizer, errors)
     MonitoringService.instance.track(
       'error',
       'Invalid params with FranceConnect',

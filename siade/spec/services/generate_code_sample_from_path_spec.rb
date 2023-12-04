@@ -12,7 +12,7 @@ RSpec.describe GenerateCodeSampleFromPath, type: :service do
     expect(curl_example).to include('object=Test+de')
   end
 
-  it 'interpolates paramaters with valid value' do
+  it 'interpolates parameters with valid value' do
     expect(curl_example).to include('/v3/insee/sirene/unites_legales/130025265')
   end
 end
