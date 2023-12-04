@@ -63,7 +63,7 @@ GEM
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     afm (0.2.2)
-    ammeter (1.1.5)
+    ammeter (1.1.6)
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec-rails (>= 2.2)
