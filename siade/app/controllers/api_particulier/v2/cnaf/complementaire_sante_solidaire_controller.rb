@@ -1,4 +1,4 @@
-class APIParticulier::V2::CNAF::ComplementaireSanteSolidaireController < APIParticulier::V2::AbstractCNAFController
+class APIParticulier::V2::CNAF::ComplementaireSanteSolidaireController < APIParticulier::V2::CNAF::AbstractController
   protected
 
   def operation_id

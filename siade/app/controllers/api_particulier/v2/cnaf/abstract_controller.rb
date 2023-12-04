@@ -1,4 +1,4 @@
-class APIParticulier::V2::AbstractCNAFController < APIParticulierController
+class APIParticulier::V2::CNAF::AbstractController < APIParticulierController
   def show
     organizer = retrieve_payload_data(retriever, cache: true, expires_in: 1.hour)
 
