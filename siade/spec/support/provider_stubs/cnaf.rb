@@ -51,14 +51,14 @@ module ProviderStubs::CNAF
   end
 
   def cnaf_client_id(api)
-    Siade.credentials["cnaf_#{api}_client_id".to_sym]
+    Siade.credentials[:"cnaf_#{api}_client_id"]
   end
 
   def cnaf_secret_id(api)
-    Siade.credentials["cnaf_#{api}_client_secret".to_sym]
+    Siade.credentials[:"cnaf_#{api}_client_secret"]
   end
 
   def cnaf_url(api)
-    Siade.credentials["cnaf_#{api}_url".to_sym]
+    Siade.credentials[:"cnaf_#{api}_url"]
   end
 end

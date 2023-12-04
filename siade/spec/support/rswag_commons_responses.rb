@@ -205,7 +205,7 @@ module RSWagCommonsResponses
       Array(params).each do |param|
         let(param) { 'invalid' }
 
-        build_rswag_example(UnprocessableEntityError.new(param), "unprocessable_entity_error_#{param}_error".to_sym)
+        build_rswag_example(UnprocessableEntityError.new(param), :"unprocessable_entity_error_#{param}_error")
       end
 
       %i[
@@ -213,7 +213,7 @@ module RSWagCommonsResponses
         object
         recipient
       ].each do |field|
-        build_rswag_example(MissingMandatoryParamError.new(field), "missing_mandatory_params_#{field}_error".to_sym)
+        build_rswag_example(MissingMandatoryParamError.new(field), :"missing_mandatory_params_#{field}_error")
       end
 
       run_test!
@@ -259,7 +259,7 @@ module RSWagCommonsResponses
   # rubocop:enable RSpec/VerifiedDoubles
 
   def build_rswag_example(error, key = nil)
-    example 'application/json', key || "#{error.title.parameterize.underscore}_#{error.code}".to_sym, {
+    example 'application/json', key || :"#{error.title.parameterize.underscore}_#{error.code}", {
       errors: [
         error.to_h
       ]

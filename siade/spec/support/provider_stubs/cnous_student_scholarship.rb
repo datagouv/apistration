@@ -17,7 +17,7 @@ module ProviderStubs::CNOUSStudentScholarship
   end
 
   def cnous_url_for(kind)
-    Siade.credentials["cnous_student_scholarship_#{kind}_url".to_sym]
+    Siade.credentials[:"cnous_student_scholarship_#{kind}_url"]
   end
 
   def mock_cnous_authenticate

@@ -61,7 +61,7 @@ class INSEE::UniteLegale::BuildResource < INSEE::BuildResource
   private
 
   def unite_legale
-    @unite_legale ||= (context.unite_legale || build_unite_legale_info_with_latest_info_from_periodes)
+    @unite_legale ||= context.unite_legale || build_unite_legale_info_with_latest_info_from_periodes
   end
 
   def build_unite_legale_info_with_latest_info_from_periodes

@@ -25,7 +25,7 @@ class INSEE::EtablissementDiffusable::FilterResource < INSEE::FilterPartiallyDif
   end
 
   def etablissement
-    @etablissement ||= (json_body['etablissement'] || json_body['etablissements'][0])
+    @etablissement ||= json_body['etablissement'] || json_body['etablissements'][0]
   end
 
   def json_body

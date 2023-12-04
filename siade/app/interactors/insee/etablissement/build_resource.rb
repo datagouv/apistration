@@ -40,7 +40,7 @@ class INSEE::Etablissement::BuildResource < INSEE::BuildResource
   end
 
   def etablissement
-    @etablissement ||= (json_body['etablissement'] || json_body['etablissements'][0])
+    @etablissement ||= json_body['etablissement'] || json_body['etablissements'][0]
   end
 
   private
