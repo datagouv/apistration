@@ -114,6 +114,433 @@ Ce cas permet de tester :
 
   </p>
   </details>
+* [200-identite-cas-limite-erreur-phonetique.yaml](200-identite-cas-limite-erreur-phonetique.yaml)
+
+  Status `200`
+
+  ## IDENTITÉ CAS NOMINAL
+
+Ce cas est un cas limite de l'ensemble des cas de test d'identité/limite.
+
+Il comporte des erreurs dans les prenoms qui ne changent pas la phonétique. Ici, il y a suffisament
+de donnée de naissance pour compenser les erreurs et retrouver l'identité.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeInseeLieuDeNaissance": "08480",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "F",
+    "nomUsage": "LEFEBVRE",
+    "prenoms": [
+      "ALEXI",
+      "GEROME",
+      "JEN-PHILIPE"
+    ],
+    "anneeDateDeNaissance": 1982,
+    "moisDateDeNaissance": 12,
+    "jourDateDeNaissance": 27
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "LEFEBVRE",
+        "nomUsage": "LEFEBVRE",
+        "prenoms": "ALEXIS GÉRÔME JEAN-PHILIPPE",
+        "anneeDateDeNaissance": "1982",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "27",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+  
+    ],
+    "adresse": {
+      "identite": "Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE MONTORGUEIL",
+      "lieuDit": null,
+      "codePostalVille": "75002",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2023,
+    "mois": 6
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXI' -d 'prenoms[]=GEROME' -d 'prenoms[]=JEN-PHILIPE' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
+* [200-identite-cas-limite-faute-de-frappe.yaml](200-identite-cas-limite-faute-de-frappe.yaml)
+
+  Status `200`
+
+  ## IDENTITÉ CAS NOMINAL
+
+Ce cas est un cas limite de l'ensemble des cas de test d'identité/limite.
+
+Il comporte des erreurs dans les prenoms qui changent la phonétique. Ici, il y a suffisament
+de donnée de naissance pour compenser les erreurs et retrouver l'identité.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeInseeLieuDeNaissance": "08480",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "F",
+    "nomUsage": "LEFEBVRE",
+    "prenoms": [
+      "ALEIXS",
+      "GRÉÔME",
+      "JEAN-PHILIPPE"
+    ],
+    "anneeDateDeNaissance": 1982,
+    "moisDateDeNaissance": 12,
+    "jourDateDeNaissance": 27
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "LEFEBVRE",
+        "nomUsage": "LEFEBVRE",
+        "prenoms": "ALEXIS GÉRÔME JEAN-PHILIPPE",
+        "anneeDateDeNaissance": "1982",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "27",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+  
+    ],
+    "adresse": {
+      "identite": "Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE MONTORGUEIL",
+      "lieuDit": null,
+      "codePostalVille": "75002",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2023,
+    "mois": 6
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEIXS' -d 'prenoms[]=GR%C3%89%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
+* [200-identite-cas-nominal-peu-de-donnee-naissance.yaml](200-identite-cas-nominal-peu-de-donnee-naissance.yaml)
+
+  Status `200`
+
+  ## IDENTITÉ CAS NOMINAL
+
+Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+Les données de jour et de mois de naissance ont été retiré.
+
+Il y a suffisament de données de nom/prénoms dans les paramètres pour compenser
+l'absence des données de naissance.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeInseeLieuDeNaissance": "08480",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "F",
+    "nomUsage": "LEFEBVRE",
+    "prenoms": [
+      "ALEXIS",
+      "GÉRÔME",
+      "JEAN-PHILIPPE"
+    ],
+    "anneeDateDeNaissance": 1982
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "LEFEBVRE",
+        "nomUsage": "LEFEBVRE",
+        "prenoms": "ALEXIS GÉRÔME JEAN-PHILIPPE",
+        "anneeDateDeNaissance": "1982",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "27",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+  
+    ],
+    "adresse": {
+      "identite": "Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE MONTORGUEIL",
+      "lieuDit": null,
+      "codePostalVille": "75002",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2023,
+    "mois": 6
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
+* [200-identite-cas-nominal-peu-de-donnée-prenom.yaml](200-identite-cas-nominal-peu-de-donnée-prenom.yaml)
+
+  Status `200`
+
+  ## IDENTITÉ CAS NOMINAL
+
+Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+Les deuxième et troisième prenoms ont été retiré des données
+
+Il y suffisament de donnée de naissance dans cet ensemble de paramètre pour permettre
+de compenser les données manquantes
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeInseeLieuDeNaissance": "08480",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "F",
+    "nomUsage": "LEFEBVRE",
+    "prenoms": [
+      "ALEXIS"
+    ],
+    "anneeDateDeNaissance": 1982,
+    "moisDateDeNaissance": 12,
+    "jourDateDeNaissance": 27
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "LEFEBVRE",
+        "nomUsage": "LEFEBVRE",
+        "prenoms": "ALEXIS GÉRÔME JEAN-PHILIPPE",
+        "anneeDateDeNaissance": "1982",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "27",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+  
+    ],
+    "adresse": {
+      "identite": "Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE MONTORGUEIL",
+      "lieuDit": null,
+      "codePostalVille": "75002",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2023,
+    "mois": 6
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
+* [200-identite-cas-nominal.yaml](200-identite-cas-nominal.yaml)
+
+  Status `200`
+
+  ## IDENTITÉ CAS NOMINAL
+
+Ce cas est le cas nominal de l'ensemble des cas de test d'identité/limite.
+Il a pour but de décrire une personne fictive avec l'ensemble de ses paramètres
+et la réponse lorsque celui ci est trouvé.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeInseeLieuDeNaissance": "08480",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "F",
+    "nomUsage": "LEFEBVRE",
+    "prenoms": [
+      "ALEXIS",
+      "GÉRÔME",
+      "JEAN-PHILIPPE"
+    ],
+    "anneeDateDeNaissance": 1982,
+    "moisDateDeNaissance": 12,
+    "jourDateDeNaissance": 27
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "LEFEBVRE",
+        "nomUsage": "LEFEBVRE",
+        "prenoms": "ALEXIS GÉRÔME JEAN-PHILIPPE",
+        "anneeDateDeNaissance": "1982",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "27",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+  
+    ],
+    "adresse": {
+      "identite": "Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE MONTORGUEIL",
+      "lieuDit": null,
+      "codePostalVille": "75002",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2023,
+    "mois": 6
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
 * [200-seul-1_enfant-qf_caf_650.yaml](200-seul-1_enfant-qf_caf_650.yaml)
 
   Status `200`
@@ -280,6 +707,234 @@ Ce cas permet de tester :
   ```bash
   curl -H "X-Api-Key: $token" \
     -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
+* [404-identite-cas-limite-erreur-phonetique.yaml](404-identite-cas-limite-erreur-phonetique.yaml)
+
+  Status `404`
+
+  ## IDENTITÉ CAS NOMINAL
+
+Ce cas est un cas limite de l'ensemble des cas de test d'identité/limite.
+
+Il comporte des erreurs dans les prenoms qui changent ne change pas ou peu la phonétique. Ici, il n'y a pas suffisament
+de donnée de naissance pour compenser les erreurs et retrouver l'identité.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeInseeLieuDeNaissance": "08480",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "F",
+    "nomUsage": "LEFEBVRE",
+    "prenoms": [
+      "ALEXI",
+      "GEROME",
+      "JEN-PHILIPE"
+    ],
+    "anneeDateDeNaissance": 1982
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "not_found",
+    "reason": "Dossier allocataire inexistant. Le document ne peut être édité.",
+    "message": "Dossier allocataire inexistant. Le document ne peut être édité."
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXI' -d 'prenoms[]=GEROME' -d 'prenoms[]=JEN-PHILIPE' -d 'anneeDateDeNaissance=1982' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
+* [404-identite-cas-limite-faute-de-frappe.yaml](404-identite-cas-limite-faute-de-frappe.yaml)
+
+  Status `404`
+
+  ## IDENTITÉ CAS NOMINAL
+
+Ce cas est un cas limite de l'ensemble des cas de test d'identité/limite.
+
+Il comporte des erreurs dans les prenoms qui changent la phonétique. Ici, il n'y a pas suffisament
+de donnée de naissance pour compenser les erreurs et retrouver l'identité.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeInseeLieuDeNaissance": "08480",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "F",
+    "nomUsage": "LEFEBVRE",
+    "prenoms": [
+      "ALEIXS",
+      "GRÉÔME",
+      "JEAN-PHILIPPE"
+    ],
+    "anneeDateDeNaissance": 1982
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "not_found",
+    "reason": "Dossier allocataire inexistant. Le document ne peut être édité.",
+    "message": "Dossier allocataire inexistant. Le document ne peut être édité."
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEIXS' -d 'prenoms[]=GR%C3%89%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
+* [404-identite-cas-nominal-trop-peu-de-donnee-naissance.yaml](404-identite-cas-nominal-trop-peu-de-donnee-naissance.yaml)
+
+  Status `404`
+
+  ## IDENTITÉ CAS NOMINAL
+
+Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+Les données concernant la date de naissance ont été retirée
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeInseeLieuDeNaissance": "08480",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "F",
+    "nomUsage": "LEFEBVRE",
+    "prenoms": [
+      "ALEXIS",
+      "GÉRÔME",
+      "JEAN-PHILIPPE"
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "not_found",
+    "reason": "Dossier allocataire inexistant. Le document ne peut être édité.",
+    "message": "Dossier allocataire inexistant. Le document ne peut être édité."
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
+* [404-identite-cas-nominal-trop-peu-de-donnee-prenom.yaml](404-identite-cas-nominal-trop-peu-de-donnee-prenom.yaml)
+
+  Status `404`
+
+  ## IDENTITÉ CAS NOMINAL
+
+Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+Le nom ainsi que les deuxième et troisième prenoms ont été retiré des données
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeInseeLieuDeNaissance": "08480",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "F",
+    "prenoms": [
+      "ALEXIS"
+    ],
+    "anneeDateDeNaissance": 1982,
+    "moisDateDeNaissance": 12,
+    "jourDateDeNaissance": 27
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "not_found",
+    "reason": "Dossier allocataire inexistant. Le document ne peut être édité.",
+    "message": "Dossier allocataire inexistant. Le document ne peut être édité."
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'prenoms[]=ALEXIS' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 

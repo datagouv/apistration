@@ -35,6 +35,8 @@
             "annee": "1989",
             "mois": "01"
           },
+          "nationalite": "FRANCE",
+          "pays_residence": "FRANCE",
           "modalites": {
             "detention_de_capital": {
               "parts_totale": 49.0,
@@ -125,6 +127,8 @@
             "annee": "1990",
             "mois": "01"
           },
+          "nationalite": "FRANCE",
+          "pays_residence": "FRANCE",
           "modalites": {
             "detention_de_capital": {
               "parts_totale": 51.0,
