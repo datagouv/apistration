@@ -67,14 +67,14 @@ paths:
           type: string
       - name: nomUsage
         in: query
-        description: Nom d'usage
+        description: Nom d'usage. Ne pas renseigner si présence de jeton FranceConnect.
         example: DUPONT
         required: false
         schema:
           type: string
       - name: nomNaissance
         in: query
-        description: Nom de naissance
+        description: Nom de naissance. Ne pas renseigner si présence de jeton FranceConnect.
         example: JEAN
         required: false
         schema:
@@ -89,28 +89,30 @@ paths:
           example:
           - PIERRE
           - RICHARD
-        description: Liste des prénoms
+        description: Liste des prénoms. Ne pas renseigner si présence de jeton FranceConnect.
         required: false
       - name: anneeDateDeNaissance
         in: query
         description: Année de naissance. Ne pas la renseigner si celle-ci est inconnue
+          ou en cas de présence de jeton FranceConnect.
         example: 1990
         required: false
         schema:
           type: integer
       - name: moisDateDeNaissance
         in: query
-        description: Mois de naissance. Ne pas le renseigner si celui-ci est inconnu.
-          Cette valeur est ignorée si anneeDateDeNaissance est vide.
+        description: Mois de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          anneeDateDeNaissance est vide.
         example: 1
         required: false
         schema:
           type: integer
       - name: jourDateDeNaissance
         in: query
-        description: Jour de naissance. Ne pas le renseigner si celui-ci est inconnu.
-          Cette valeur est ignorée si moisDateDeNaissance ou anneeDateDeNaissance
-          est vide.
+        description: Jour de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          moisDateDeNaissance ou anneeDateDeNaissance est vide.
         example: 1
         required: false
         schema:
@@ -123,8 +125,9 @@ paths:
           maxLength: 5
           example: '08480'
         description: Code Insee à 5 chiffres du lieu de naissance de la personne sur
-          5 chiffres. Ne pas remplir si la personne est née à l'étranger. Le champs
-          est obligatoire si la personne est née en France
+          5 chiffres. Ne pas remplir si la personne est née à l'étranger ou si présence
+          de jeton FranceConnect. En l'absence de jeton FranceConnect, le champs est
+          obligatoire si la personne est née en France
         required: false
       - name: codePaysLieuDeNaissance
         in: query
@@ -133,8 +136,9 @@ paths:
           minLength: 5
           maxLength: 5
           example: '99100'
-        description: Code Insee à 5 chiffres du pays de naissance (France = 99100)
-        required: true
+        description: Code Insee à 5 chiffres du pays de naissance (France = 99100).
+          Obligatoire si absence de jeton FranceConnect.
+        required: false
       - name: sexe
         in: query
         schema:
@@ -142,13 +146,18 @@ paths:
           enum:
           - M
           - F
-        description: Sexe de la personne, masculin ou féminin
-        required: true
+        description: Sexe de la personne, masculin ou féminin. Obligatoire si absence
+          de jeton FranceConnect.
         example: M
+        required: false
+      security:
+      - franceConnectToken: []
       description: "Savoir si un particulier est bénéficiaire de la complémentaire
         santé solidaire (C2S). \n\n Pour de plus amples informations sur cette api
         et y avoir accès en avant première, veuillez contacter l'équipe API Particulier.
-        \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire) "
+        \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)
+        \n L'API peut être appellée avec les données identité pivot ou avec un jeton
+        FranceConnect. "
       responses:
         '200':
           description: Quotient Familial trouvée
@@ -247,6 +256,23 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              examples:
+                acces_non_autorise_50002:
+                  value:
+                    errors:
+                    - code: '50002'
+                      title: Accès non autorisé
+                      detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                      source:
+                      meta: {}
+                  summary: Accès non autorisé
+                  description: Le jeton d'accès n'a pas été trouvé ou est expiré.
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/api/v2/composition-familiale-v2":
     get:
       summary: Quotient familial MSA & CAF
@@ -259,14 +285,14 @@ paths:
           type: string
       - name: nomUsage
         in: query
-        description: Nom d'usage
+        description: Nom d'usage. Ne pas renseigner si présence de jeton FranceConnect.
         example: DUPONT
         required: false
         schema:
           type: string
       - name: nomNaissance
         in: query
-        description: Nom de naissance
+        description: Nom de naissance. Ne pas renseigner si présence de jeton FranceConnect.
         example: JEAN
         required: false
         schema:
@@ -281,28 +307,30 @@ paths:
           example:
           - PIERRE
           - RICHARD
-        description: Liste des prénoms
+        description: Liste des prénoms. Ne pas renseigner si présence de jeton FranceConnect.
         required: false
       - name: anneeDateDeNaissance
         in: query
         description: Année de naissance. Ne pas la renseigner si celle-ci est inconnue
+          ou si présence de jeton FranceConnect.
         example: 1990
         required: false
         schema:
           type: integer
       - name: moisDateDeNaissance
         in: query
-        description: Mois de naissance. Ne pas le renseigner si celui-ci est inconnu.
-          Cette valeur est ignorée si anneeDateDeNaissance est vide.
+        description: Mois de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou si présence de jeton FranceConnect. Cette valeur est ignorée si anneeDateDeNaissance
+          est vide.
         example: 1
         required: false
         schema:
           type: integer
       - name: jourDateDeNaissance
         in: query
-        description: Jour de naissance. Ne pas le renseigner si celui-ci est inconnu.
-          Cette valeur est ignorée si moisDateDeNaissance ou anneeDateDeNaissance
-          est vide.
+        description: Jour de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou si présence de jeton FranceConnect. Cette valeur est ignorée si moisDateDeNaissance
+          ou anneeDateDeNaissance est vide.
         example: 1
         required: false
         schema:
@@ -315,8 +343,9 @@ paths:
           maxLength: 5
           example: '08480'
         description: Code Insee à 5 chiffres du lieu de naissance de la personne sur
-          5 chiffres. Ne pas remplir si la personne est née à l'étranger. Le champs
-          est obligatoire si la personne est née en France
+          5 chiffres. Ne pas remplir si la personne est née à l'étranger. Ne pas renseigner
+          si présence de jeton FranceConnect. En l'absence de jeton FranceConnect,
+          ce champs est obligatoire si la personne est née en France.
         required: false
       - name: codePaysLieuDeNaissance
         in: query
@@ -325,8 +354,9 @@ paths:
           minLength: 5
           maxLength: 5
           example: '99100'
-        description: Code Insee à 5 chiffres du pays de naissance (France = 99100)
-        required: true
+        description: Code Insee à 5 chiffres du pays de naissance (France = 99100).
+          Obligatoire si absence de jeton FranceConnect.
+        required: false
       - name: sexe
         in: query
         schema:
@@ -334,9 +364,10 @@ paths:
           enum:
           - M
           - F
-        description: Sexe de la personne, masculin ou féminin
-        required: true
+        description: Sexe de la personne, masculin ou féminin. Obligatoire si absence
+          de jeton FranceConnect.
         example: M
+        required: false
       - name: annee
         in: query
         description: Année du quotient familial recherché. Si l'année n'est pas renseignée,
@@ -353,13 +384,17 @@ paths:
         required: false
         schema:
           type: integer
+      security:
+      - franceConnectToken: []
       description: "Quotient familial et composition de la famille d'un allocataire
         du régime agricole (régime général à venir). \n Pour de plus amples informations
         sur cette api et y avoir accès en avant première, veuillez contacter l'équipe
-        API Particulier. \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial_v2) "
+        API Particulier. \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial_v2)
+        \n L'API peut être appellée avec les données identité pivot ou avec un jeton
+        FranceConnect. "
       responses:
         '200':
-          description: Quotient Familial trouvée
+          description: Quotient Familial trouvé
           x-operationId: api_particulier_v2_cnaf_quotient_familial_v2
           content:
             application/json:
@@ -608,6 +643,23 @@ paths:
           description: Erreur d'intermédiaire
           content:
             application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              examples:
+                acces_non_autorise_50002:
+                  value:
+                    errors:
+                    - code: '50002'
+                      title: Accès non autorisé
+                      detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                      source:
+                      meta: {}
+                  summary: Accès non autorisé
+                  description: Le jeton d'accès n'a pas été trouvé ou est expiré.
               schema:
                 "$ref": "#/components/schemas/Error"
   "/api/v2/scolarites":

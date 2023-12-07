@@ -9,6 +9,8 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
 
       parameter name: 'X-Api-Key', in: :header, type: :string
 
+      security [franceConnectToken: []]
+
       parameter name: :nomUsage,
         in: :query,
         type: SwaggerData.get('cnaf.quotient-familial-v2.parameters.nomUsage.type'),
@@ -75,7 +77,7 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
           example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codePaysLieuDeNaissance.example')
         },
         description: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codePaysLieuDeNaissance.description'),
-        required: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codePaysLieuDeNaissance.required')
+        required: false
 
       parameter name: :sexe,
         in: :query,
@@ -84,8 +86,8 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
           enum: SwaggerData.get('cnaf.quotient-familial-v2.parameters.sexe.enum')
         },
         description: SwaggerData.get('cnaf.quotient-familial-v2.parameters.sexe.description'),
-        required: SwaggerData.get('cnaf.quotient-familial-v2.parameters.sexe.required'),
-        example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.sexe.example')
+        example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.sexe.example'),
+        required: false
 
       parameter name: :annee,
         in: :query,
@@ -101,89 +103,152 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
         example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.mois.example'),
         required: false
 
-      let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
-      let(:request_token) { 'super_valid_token' }
-      let(:uid) { SecureRandom.uuid }
-
       let(:scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse] }
-
-      let(:nomNaissance) { 'CHAMPION' }
-      let(:'prenoms[]') { %w[JEAN-PASCAL] }
-      let(:sexe) { 'M' }
-      let(:anneeDateDeNaissance) { 1980 }
-      let(:moisDateDeNaissance) { 6 }
-      let(:jourDateDeNaissance) { 12 }
-      let(:codePaysLieuDeNaissance) { '99100' }
-      let(:codeInseeLieuDeNaissance) { '17300' }
-      let(:mois) { 12 }
-      let(:annee) { 2023 }
 
       before do
         stub_cnaf_authenticate('quotient_familial_v2')
         stub_cnaf_valid('quotient_familial_v2', siret: '100000009')
       end
 
-      describe 'with valid token and mandatory params' do
-        response '200', 'Quotient Familial trouvée' do
-          description SwaggerData.get('cnaf.quotient-familial-v2.description')
+      describe 'without a FranceConnect token' do
+        let(:Authorization) { nil }
+        let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
 
-          schema build_rswag_response_api_particulier(
-            attributes: SwaggerData.get('cnaf.quotient-familial-v2.attributes')
-          )
+        let(:nomNaissance) { 'CHAMPION' }
+        let(:'prenoms[]') { %w[JEAN-PASCAL] }
+        let(:sexe) { 'M' }
+        let(:anneeDateDeNaissance) { 1980 }
+        let(:moisDateDeNaissance) { 6 }
+        let(:jourDateDeNaissance) { 12 }
+        let(:codePaysLieuDeNaissance) { '99100' }
+        let(:codeInseeLieuDeNaissance) { '17300' }
+        let(:mois) { 12 }
+        let(:annee) { 2023 }
 
-          run_test!
+        describe 'with valid token and mandatory params' do
+          response '200', 'Quotient Familial trouvée' do
+            description SwaggerData.get('cnaf.quotient-familial-v2.description')
+
+            schema build_rswag_response_api_particulier(
+              attributes: SwaggerData.get('cnaf.quotient-familial-v2.attributes')
+            )
+
+            run_test!
+          end
+        end
+
+        describe 'server errors' do
+          response '400', 'Mauvais paramètres d\'appels' do
+            let(:sexe) { 'nope' }
+
+            build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_entity_error_gender_error)
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
+          end
+
+          response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
+            before do
+              stub_cnaf_404('quotient_familial_v2')
+            end
+
+            let(:codePaysLieuDeNaissance) { '99623' }
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
+          end
+
+          response '503', 'Erreur du fournisseur' do
+            provider_unknown_error = ProviderUnknownError.new('CNAF')
+
+            stubbed_organizer_error(
+              CNAF::QuotientFamilialV2,
+              provider_unknown_error
+            )
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            build_rswag_example(provider_unknown_error, :unknown_error)
+
+            run_test!
+          end
+
+          response '504', 'Erreur d\'intermédiaire' do
+            schema '$ref' => '#/components/schemas/Error'
+
+            provider_timeout_error = ProviderTimeoutError.new('CNAF')
+
+            stubbed_organizer_error(
+              CNAF::QuotientFamilialV2,
+              provider_timeout_error
+            )
+
+            run_test!
+          end
         end
       end
 
-      describe 'server errors' do
-        response '400', 'Mauvais paramètres d\'appels' do
-          let(:sexe) { 'nope' }
+      describe 'with a FranceConnect token' do
+        let(:Authorization) { 'Bearer super_valid_token' }
+        let(:'X-Api-Key') { nil }
+        let(:scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse openid identite_pivot] }
 
-          build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_entity_error_gender_error)
-
-          schema '$ref' => '#/components/schemas/Error'
-
-          run_test!
-        end
-
-        response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
+        describe 'with valid token and valid FranceConnect token' do
           before do
-            stub_cnaf_404('quotient_familial_v2')
+            mock_valid_france_connect_checktoken(scopes:)
+
+            allow(SecureRandom).to receive(:uuid).and_return('request_id')
+            stub_request(:get, Siade.credentials[:cnaf_quotient_familial_v2_url]).with(
+              query: {
+                codeLieuNaissance: '75101',
+                codePaysNaissance: '99100',
+                dateNaissance: '2000-01-01',
+                genre: 'M',
+                listePrenoms: 'Jean Martin',
+                nomNaissance: 'DUPONT',
+                nomUsage: 'jdupont',
+                moisDemande: 12,
+                anneeDemandee: 2023
+              },
+              headers: {
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Bearer super_valid_token',
+                'X-Correlation-ID' => 'request_id'
+              }
+            ).to_return(
+              status: 200,
+              body: read_payload_file('cnaf/quotient_familial_v2/make_request_valid.json'),
+              headers: {
+                'X-APISECU-FD' => '00810011'
+              }
+            )
           end
 
-          let(:codePaysLieuDeNaissance) { '99623' }
+          response '200', 'Quotient Familial trouvé' do
+            description SwaggerData.get('cnaf.quotient-familial-v2.description')
 
-          schema '$ref' => '#/components/schemas/Error'
+            schema build_rswag_response_api_particulier(
+              attributes: SwaggerData.get('cnaf.quotient-familial-v2.attributes')
+            )
 
-          run_test!
+            run_test!
+          end
         end
 
-        response '503', 'Erreur du fournisseur' do
-          provider_unknown_error = ProviderUnknownError.new('CNAF')
+        describe 'with valid token and invalid FranceConnect token' do
+          before do
+            mock_invalid_france_connect_checktoken
+          end
 
-          stubbed_organizer_error(
-            CNAF::QuotientFamilialV2,
-            provider_unknown_error
-          )
+          response '401', 'Unauthorized' do
+            build_rswag_example(InvalidFranceConnectAccessTokenError.new(:not_found_or_expired))
 
-          schema '$ref' => '#/components/schemas/Error'
+            schema '$ref' => '#/components/schemas/Error'
 
-          build_rswag_example(provider_unknown_error, :unknown_error)
-
-          run_test!
-        end
-
-        response '504', 'Erreur d\'intermédiaire' do
-          schema '$ref' => '#/components/schemas/Error'
-
-          provider_timeout_error = ProviderTimeoutError.new('CNAF')
-
-          stubbed_organizer_error(
-            CNAF::QuotientFamilialV2,
-            provider_timeout_error
-          )
-
-          run_test!
+            run_test!
+          end
         end
       end
     end

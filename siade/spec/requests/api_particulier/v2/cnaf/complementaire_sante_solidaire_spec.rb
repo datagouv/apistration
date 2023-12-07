@@ -9,6 +9,8 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
 
       parameter name: 'X-Api-Key', in: :header, type: :string
 
+      security [franceConnectToken: []]
+
       parameter name: :nomUsage,
         in: :query,
         type: SwaggerData.get('cnaf.c2s.parameters.nomUsage.type'),
@@ -75,7 +77,7 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
           example: SwaggerData.get('cnaf.c2s.parameters.codePaysLieuDeNaissance.example')
         },
         description: SwaggerData.get('cnaf.c2s.parameters.codePaysLieuDeNaissance.description'),
-        required: SwaggerData.get('cnaf.c2s.parameters.codePaysLieuDeNaissance.required')
+        required: false
 
       parameter name: :sexe,
         in: :query,
@@ -84,88 +86,129 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
           enum: SwaggerData.get('cnaf.c2s.parameters.sexe.enum')
         },
         description: SwaggerData.get('cnaf.c2s.parameters.sexe.description'),
-        required: SwaggerData.get('cnaf.c2s.parameters.sexe.required'),
-        example: SwaggerData.get('cnaf.c2s.parameters.sexe.example')
-
-      let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
-      let(:request_token) { 'super_valid_token' }
-      let(:uid) { SecureRandom.uuid }
+        example: SwaggerData.get('cnaf.c2s.parameters.sexe.example'),
+        required: false
 
       let(:scopes) { %i[complementaire_sante_solidaire] }
-
-      let(:nomNaissance) { 'CHAMPION' }
-      let(:'prenoms[]') { %w[JEAN-PASCAL] }
-      let(:sexe) { 'M' }
-      let(:anneeDateDeNaissance) { 1980 }
-      let(:moisDateDeNaissance) { 6 }
-      let(:jourDateDeNaissance) { 12 }
-      let(:codePaysLieuDeNaissance) { '99100' }
-      let(:codeInseeLieuDeNaissance) { '17300' }
 
       before do
         stub_cnaf_authenticate('complementaire_sante_solidaire')
         stub_cnaf_valid('complementaire_sante_solidaire', siret: '100000009')
       end
 
-      describe 'with valid token and mandatory params' do
-        response '200', 'Quotient Familial trouvée' do
-          description SwaggerData.get('cnaf.c2s.description')
+      describe 'without a FranceConnect token' do
+        let(:Authorization) { nil }
+        let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
 
-          schema build_rswag_response_api_particulier(
-            attributes: SwaggerData.get('cnaf.c2s.attributes')
-          )
+        let(:nomNaissance) { 'CHAMPION' }
+        let(:'prenoms[]') { %w[JEAN-PASCAL] }
+        let(:sexe) { 'M' }
+        let(:anneeDateDeNaissance) { 1980 }
+        let(:moisDateDeNaissance) { 6 }
+        let(:jourDateDeNaissance) { 12 }
+        let(:codePaysLieuDeNaissance) { '99100' }
+        let(:codeInseeLieuDeNaissance) { '17300' }
 
-          run_test!
+        describe 'with valid token and mandatory params' do
+          response '200', 'Quotient Familial trouvée' do
+            description SwaggerData.get('cnaf.c2s.description')
+
+            schema build_rswag_response_api_particulier(
+              attributes: SwaggerData.get('cnaf.c2s.attributes')
+            )
+
+            run_test!
+          end
+        end
+
+        describe 'server errors' do
+          response '400', 'Mauvais paramètres d\'appels' do
+            let(:sexe) { 'nope' }
+
+            build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_entity_error_gender_error)
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
+          end
+
+          response '404', 'Dossier complémentaire inexistant. Le document ne peut être édité.' do
+            before do
+              stub_cnaf_404('complementaire_sante_solidaire')
+            end
+
+            let(:codePaysLieuDeNaissance) { '99623' }
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
+          end
+
+          response '503', 'Erreur du fournisseur' do
+            provider_unknown_error = ProviderUnknownError.new('CNAF')
+
+            stubbed_organizer_error(
+              CNAF::ComplementaireSanteSolidaire,
+              provider_unknown_error
+            )
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            build_rswag_example(provider_unknown_error, :unknown_error)
+
+            run_test!
+          end
+
+          response '504', 'Erreur d\'intermédiaire' do
+            schema '$ref' => '#/components/schemas/Error'
+
+            provider_timeout_error = ProviderTimeoutError.new('CNAF')
+
+            stubbed_organizer_error(
+              CNAF::ComplementaireSanteSolidaire,
+              provider_timeout_error
+            )
+
+            run_test!
+          end
         end
       end
 
-      describe 'server errors' do
-        response '400', 'Mauvais paramètres d\'appels' do
-          let(:sexe) { 'nope' }
+      describe 'with a FranceConnect token' do
+        let(:Authorization) { 'Bearer super_valid_token' }
+        let(:'X-Api-Key') { nil }
+        let(:scopes) { %i[complementaire_sante_solidaire openid identite_pivot] }
 
-          build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_entity_error_gender_error)
-
-          schema '$ref' => '#/components/schemas/Error'
-
-          run_test!
-        end
-
-        response '404', 'Dossier complémentaire inexistant. Le document ne peut être édité.' do
+        describe 'with valid token and valid FranceConnect token' do
           before do
-            stub_cnaf_404('complementaire_sante_solidaire')
+            mock_valid_france_connect_checktoken(scopes:)
+            stub_cnaf_valid_with_franceconnect_data('complementaire_sante_solidaire')
           end
 
-          let(:codePaysLieuDeNaissance) { '99623' }
+          response '200', 'Quotient Familial trouvée' do
+            description SwaggerData.get('cnaf.c2s.description')
 
-          schema '$ref' => '#/components/schemas/Error'
+            schema build_rswag_response_api_particulier(
+              attributes: SwaggerData.get('cnaf.c2s.attributes')
+            )
 
-          run_test!
+            run_test!
+          end
+        end
+      end
+
+      describe 'with valid token and invalid FranceConnect token' do
+        let(:Authorization) { 'Bearer InvalidFranceConnectToken' }
+        let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
+
+        before do
+          mock_invalid_france_connect_checktoken
         end
 
-        response '503', 'Erreur du fournisseur' do
-          provider_unknown_error = ProviderUnknownError.new('CNAF')
-
-          stubbed_organizer_error(
-            CNAF::ComplementaireSanteSolidaire,
-            provider_unknown_error
-          )
+        response '401', 'Unauthorized' do
+          build_rswag_example(InvalidFranceConnectAccessTokenError.new(:not_found_or_expired))
 
           schema '$ref' => '#/components/schemas/Error'
-
-          build_rswag_example(provider_unknown_error, :unknown_error)
-
-          run_test!
-        end
-
-        response '504', 'Erreur d\'intermédiaire' do
-          schema '$ref' => '#/components/schemas/Error'
-
-          provider_timeout_error = ProviderTimeoutError.new('CNAF')
-
-          stubbed_organizer_error(
-            CNAF::ComplementaireSanteSolidaire,
-            provider_timeout_error
-          )
 
           run_test!
         end
