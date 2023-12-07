@@ -65,6 +65,182 @@ Ce cas permet de tester :
   ""annee"": 2023,
   ""mois"": 5
 }"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas est un cas limite de l'ensemble des cas de test d'identité/limite.
+
+Il comporte des erreurs dans les prenoms qui ne changent pas la phonétique. Ici, il y a suffisament
+de donnée de naissance pour compenser les erreurs et retrouver l'identité.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEXI"",""GEROME"",""JEN-PHILIPE""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12,""jourDateDeNaissance"":27}",200,"{
+  ""regime"": ""CNAF"",
+  ""allocataires"": [
+    {
+      ""nomNaissance"": ""LEFEBVRE"",
+      ""nomUsage"": ""LEFEBVRE"",
+      ""prenoms"": ""ALEXIS GÉRÔME JEAN-PHILIPPE"",
+      ""anneeDateDeNaissance"": ""1982"",
+      ""moisDateDeNaissance"": ""12"",
+      ""jourDateDeNaissance"": ""27"",
+      ""sexe"": ""F""
+    }
+  ],
+  ""enfants"": [],
+  ""adresse"": {
+    ""identite"": ""Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE"",
+    ""complementInformation"": null,
+    ""complementInformationGeographique"": null,
+    ""numeroLibelleVoie"": ""1 RUE MONTORGUEIL"",
+    ""lieuDit"": null,
+    ""codePostalVille"": ""75002"",
+    ""pays"": ""FRANCE""
+  },
+  ""quotientFamilial"": 2550,
+  ""annee"": 2023,
+  ""mois"": 6
+}"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas est un cas limite de l'ensemble des cas de test d'identité/limite.
+
+Il comporte des erreurs dans les prenoms qui changent la phonétique. Ici, il y a suffisament
+de donnée de naissance pour compenser les erreurs et retrouver l'identité.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEIXS"",""GRÉÔME"",""JEAN-PHILIPPE""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12,""jourDateDeNaissance"":27}",200,"{
+  ""regime"": ""CNAF"",
+  ""allocataires"": [
+    {
+      ""nomNaissance"": ""LEFEBVRE"",
+      ""nomUsage"": ""LEFEBVRE"",
+      ""prenoms"": ""ALEXIS GÉRÔME JEAN-PHILIPPE"",
+      ""anneeDateDeNaissance"": ""1982"",
+      ""moisDateDeNaissance"": ""12"",
+      ""jourDateDeNaissance"": ""27"",
+      ""sexe"": ""F""
+    }
+  ],
+  ""enfants"": [],
+  ""adresse"": {
+    ""identite"": ""Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE"",
+    ""complementInformation"": null,
+    ""complementInformationGeographique"": null,
+    ""numeroLibelleVoie"": ""1 RUE MONTORGUEIL"",
+    ""lieuDit"": null,
+    ""codePostalVille"": ""75002"",
+    ""pays"": ""FRANCE""
+  },
+  ""quotientFamilial"": 2550,
+  ""annee"": 2023,
+  ""mois"": 6
+}"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+Les données de jour et de mois de naissance ont été retiré.
+
+Il y a suffisament de données de nom/prénoms dans les paramètres pour compenser
+l'absence des données de naissance.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEXIS"",""GÉRÔME"",""JEAN-PHILIPPE""],""anneeDateDeNaissance"":1982}",200,"{
+  ""regime"": ""CNAF"",
+  ""allocataires"": [
+    {
+      ""nomNaissance"": ""LEFEBVRE"",
+      ""nomUsage"": ""LEFEBVRE"",
+      ""prenoms"": ""ALEXIS GÉRÔME JEAN-PHILIPPE"",
+      ""anneeDateDeNaissance"": ""1982"",
+      ""moisDateDeNaissance"": ""12"",
+      ""jourDateDeNaissance"": ""27"",
+      ""sexe"": ""F""
+    }
+  ],
+  ""enfants"": [],
+  ""adresse"": {
+    ""identite"": ""Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE"",
+    ""complementInformation"": null,
+    ""complementInformationGeographique"": null,
+    ""numeroLibelleVoie"": ""1 RUE MONTORGUEIL"",
+    ""lieuDit"": null,
+    ""codePostalVille"": ""75002"",
+    ""pays"": ""FRANCE""
+  },
+  ""quotientFamilial"": 2550,
+  ""annee"": 2023,
+  ""mois"": 6
+}"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+Les deuxième et troisième prenoms ont été retiré des données
+
+Il y suffisament de donnée de naissance dans cet ensemble de paramètre pour permettre
+de compenser les données manquantes
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEXIS""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12,""jourDateDeNaissance"":27}",200,"{
+  ""regime"": ""CNAF"",
+  ""allocataires"": [
+    {
+      ""nomNaissance"": ""LEFEBVRE"",
+      ""nomUsage"": ""LEFEBVRE"",
+      ""prenoms"": ""ALEXIS GÉRÔME JEAN-PHILIPPE"",
+      ""anneeDateDeNaissance"": ""1982"",
+      ""moisDateDeNaissance"": ""12"",
+      ""jourDateDeNaissance"": ""27"",
+      ""sexe"": ""F""
+    }
+  ],
+  ""enfants"": [],
+  ""adresse"": {
+    ""identite"": ""Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE"",
+    ""complementInformation"": null,
+    ""complementInformationGeographique"": null,
+    ""numeroLibelleVoie"": ""1 RUE MONTORGUEIL"",
+    ""lieuDit"": null,
+    ""codePostalVille"": ""75002"",
+    ""pays"": ""FRANCE""
+  },
+  ""quotientFamilial"": 2550,
+  ""annee"": 2023,
+  ""mois"": 6
+}"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas est le cas nominal de l'ensemble des cas de test d'identité/limite.
+Il a pour but de décrire une personne fictive avec l'ensemble de ses paramètres
+et la réponse lorsque celui ci est trouvé.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEXIS"",""GÉRÔME"",""JEAN-PHILIPPE""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12,""jourDateDeNaissance"":27}",200,"{
+  ""regime"": ""CNAF"",
+  ""allocataires"": [
+    {
+      ""nomNaissance"": ""LEFEBVRE"",
+      ""nomUsage"": ""LEFEBVRE"",
+      ""prenoms"": ""ALEXIS GÉRÔME JEAN-PHILIPPE"",
+      ""anneeDateDeNaissance"": ""1982"",
+      ""moisDateDeNaissance"": ""12"",
+      ""jourDateDeNaissance"": ""27"",
+      ""sexe"": ""F""
+    }
+  ],
+  ""enfants"": [],
+  ""adresse"": {
+    ""identite"": ""Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE"",
+    ""complementInformation"": null,
+    ""complementInformationGeographique"": null,
+    ""numeroLibelleVoie"": ""1 RUE MONTORGUEIL"",
+    ""lieuDit"": null,
+    ""codePostalVille"": ""75002"",
+    ""pays"": ""FRANCE""
+  },
+  ""quotientFamilial"": 2550,
+  ""annee"": 2023,
+  ""mois"": 6
+}"
 ,"## Famille monoparentale avec un enfant - allocataire féminin - QF CAF en cours de 650
 
 Ce cas permet de tester :
@@ -141,6 +317,48 @@ Ce cas permet de tester :
   ""quotientFamilial"": 2550,
   ""annee"": 2023,
   ""mois"": 6
+}"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas est un cas limite de l'ensemble des cas de test d'identité/limite.
+
+Il comporte des erreurs dans les prenoms qui changent ne change pas ou peu la phonétique. Ici, il n'y a pas suffisament
+de donnée de naissance pour compenser les erreurs et retrouver l'identité.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEXI"",""GEROME"",""JEN-PHILIPE""],""anneeDateDeNaissance"":1982}",404,"{
+  ""error"": ""not_found"",
+  ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
+  ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
+}"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas est un cas limite de l'ensemble des cas de test d'identité/limite.
+
+Il comporte des erreurs dans les prenoms qui changent la phonétique. Ici, il n'y a pas suffisament
+de donnée de naissance pour compenser les erreurs et retrouver l'identité.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEIXS"",""GRÉÔME"",""JEAN-PHILIPPE""],""anneeDateDeNaissance"":1982}",404,"{
+  ""error"": ""not_found"",
+  ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
+  ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
+}"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+Les données concernant la date de naissance ont été retirée","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEXIS"",""GÉRÔME"",""JEAN-PHILIPPE""]}",404,"{
+  ""error"": ""not_found"",
+  ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
+  ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
+}"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+Le nom ainsi que les deuxième et troisième prenoms ont été retiré des données","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""prenoms"":[""ALEXIS""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12,""jourDateDeNaissance"":27}",404,"{
+  ""error"": ""not_found"",
+  ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
+  ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
 }"
 ,Dossier non trouvé,"{""codeInseeLieuDeNaissance"":""00404"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",404,"{
   ""error"": ""not_found"",

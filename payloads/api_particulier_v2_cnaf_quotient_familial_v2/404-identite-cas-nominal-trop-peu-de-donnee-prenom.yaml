@@ -1,0 +1,23 @@
+
+description: |-
+  ## IDENTITÉ CAS NOMINAL
+
+  Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+  Le nom ainsi que les deuxième et troisième prenoms ont été retiré des données
+
+params:
+  codeInseeLieuDeNaissance: '08480'
+  codePaysLieuDeNaissance: '99100'
+  sexe: 'F'
+  prenoms:
+    - 'ALEXIS'
+  anneeDateDeNaissance: 1982
+  moisDateDeNaissance: 12
+  jourDateDeNaissance: 27
+status: 404
+payload: |-
+  {
+    "error": "not_found",
+    "reason": "Dossier allocataire inexistant. Le document ne peut être édité.",
+    "message": "Dossier allocataire inexistant. Le document ne peut être édité."
+  }

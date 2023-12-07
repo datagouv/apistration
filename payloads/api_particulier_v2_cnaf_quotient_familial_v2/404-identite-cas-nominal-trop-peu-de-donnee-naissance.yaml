@@ -1,0 +1,23 @@
+
+description: |-
+  ## IDENTITÉ CAS NOMINAL
+
+  Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+  Les données concernant la date de naissance ont été retirée
+
+params:
+  codeInseeLieuDeNaissance: '08480'
+  codePaysLieuDeNaissance: '99100'
+  sexe: 'F'
+  nomUsage: 'LEFEBVRE'
+  prenoms:
+    - 'ALEXIS'
+    - 'GÉRÔME'
+    - 'JEAN-PHILIPPE'
+status: 404
+payload: |-
+  {
+    "error": "not_found",
+    "reason": "Dossier allocataire inexistant. Le document ne peut être édité.",
+    "message": "Dossier allocataire inexistant. Le document ne peut être édité."
+  }
