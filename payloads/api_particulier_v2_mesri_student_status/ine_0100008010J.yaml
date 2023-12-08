@@ -1,18 +1,18 @@
 ---
-description: 'Étudiant 012345678AA inscrit (appel par INE)'
+description: 'Étudiant 0100008010J inscrit (appel par INE)'
 params:
-  ine: '012345678AA'
+  ine: '0100008010J'
 status: 200
 payload: |-
   {
-    "ine": "012345678AA",
-    "nomFamille": "DUBOIS",
-    "prenom": "Jean",
-    "dateNaissance": "2003-01-10",
+    "ine": "0100008010J",
+    "nom": "Petit",
+    "prenom": "Thomas",
+    "dateNaissance": "2000-02-12",
     "inscriptions": [
       {
-        "dateDebutInscription": "2020-09-11",
-        "dateFinInscription": "2022-06-30",
+        "dateDebutInscription": "2019-02-16",
+        "dateFinInscription": "2021-05-30",
         "statut": "inscrit",
         "codeCommune": "75020",
         "etablissement": {

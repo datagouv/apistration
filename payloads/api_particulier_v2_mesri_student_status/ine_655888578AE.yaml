@@ -6,7 +6,7 @@ status: 200
 payload: |-
   {
     "ine": "655888578AE",
-    "nomFamille": "The Rabbit",
+    "nom": "The Rabbit",
     "prenom": "Korako",
     "dateNaissance": "2002-10-13",
     "inscriptions": [

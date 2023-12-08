@@ -6,7 +6,7 @@ status: 200
 payload: |-
   {
     "ine": "0100007108D",
-    "nomFamille": "MARTIN",
+    "nom": "MARTIN",
     "prenom": "Jeanne",
     "dateNaissance": "2001-11-10",
     "inscriptions": [
