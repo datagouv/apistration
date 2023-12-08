@@ -25,6 +25,26 @@ module ProviderStubs::CNAF
       }
     )
   end
+
+  def stub_cnaf_valid_with_franceconnect_data(api)
+    stub_request(:get, cnaf_url(api)).with(
+      query: hash_including({
+        codeLieuNaissance: '75101',
+        codePaysNaissance: '99100',
+        dateNaissance: '2000-01-01',
+        genre: 'M',
+        listePrenoms: 'Jean Martin',
+        nomNaissance: 'DUPONT',
+        nomUsage: 'jdupont'
+      })
+    ).to_return(
+      status: 200,
+      body: read_payload_file("cnaf/#{api}/make_request_valid.json"),
+      headers: {
+        'X-APISECU-FD' => '00810011'
+      }
+    )
+  end
   # rubocop:enable Metrics/MethodLength
 
   def stub_cnaf_authenticate(api)

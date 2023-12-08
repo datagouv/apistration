@@ -198,32 +198,7 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
         describe 'with valid token and valid FranceConnect token' do
           before do
             mock_valid_france_connect_checktoken(scopes:)
-
-            allow(SecureRandom).to receive(:uuid).and_return('request_id')
-            stub_request(:get, Siade.credentials[:cnaf_quotient_familial_v2_url]).with(
-              query: {
-                codeLieuNaissance: '75101',
-                codePaysNaissance: '99100',
-                dateNaissance: '2000-01-01',
-                genre: 'M',
-                listePrenoms: 'Jean Martin',
-                nomNaissance: 'DUPONT',
-                nomUsage: 'jdupont',
-                moisDemande: 12,
-                anneeDemandee: 2023
-              },
-              headers: {
-                'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer super_valid_token',
-                'X-Correlation-ID' => 'request_id'
-              }
-            ).to_return(
-              status: 200,
-              body: read_payload_file('cnaf/quotient_familial_v2/make_request_valid.json'),
-              headers: {
-                'X-APISECU-FD' => '00810011'
-              }
-            )
+            stub_cnaf_valid_with_franceconnect_data('quotient_familial_v2')
           end
 
           response '200', 'Quotient Familial trouvé' do

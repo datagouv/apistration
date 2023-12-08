@@ -35,7 +35,7 @@ class CNAF::MakeRequest < MakeRequest::Get
   end
 
   def date_naissance
-    CNAF::FormatDateDeNaissance.new(
+    context.params[:date_naissance] || CNAF::FormatDateDeNaissance.new(
       context.params[:annee_date_de_naissance],
       context.params[:mois_date_de_naissance],
       context.params[:jour_date_de_naissance]

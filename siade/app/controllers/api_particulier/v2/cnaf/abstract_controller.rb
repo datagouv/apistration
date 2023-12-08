@@ -1,4 +1,6 @@
 class APIParticulier::V2::CNAF::AbstractController < APIParticulierController
+  include APIParticulier::FranceConnectable
+
   def show
     organizer = retrieve_payload_data(retriever, cache: true, expires_in: 1.hour)
 
@@ -20,8 +22,39 @@ class APIParticulier::V2::CNAF::AbstractController < APIParticulierController
     raise NotImplementedError
   end
 
-  # rubocop:disable Metrics/AbcSize
   def organizer_params
+    user_identity_params.merge(
+      {
+        annee: params[:annee],
+        mois: params[:mois],
+        user_siret: current_user.siret,
+        request_id:
+      }
+    )
+  end
+
+  def user_identity_params
+    if france_connect?
+      france_connect_service_user_identity_params
+    else
+      civility_params
+    end
+  end
+
+  # rubocop:disable Metrics/AbcSize
+  def france_connect_service_user_identity_params
+    {
+      nom_usage: france_connect_service_user_identity.preferred_username,
+      nom_naissance: france_connect_service_user_identity.family_name,
+      prenoms: france_connect_service_user_identity.given_name.split,
+      date_naissance: france_connect_service_user_identity.birthdate,
+      code_insee_lieu_de_naissance: france_connect_service_user_identity.birthplace,
+      code_pays_lieu_de_naissance: france_connect_service_user_identity.birthcountry,
+      gender: france_connect_service_user_identity.gender == 'male' ? 'M' : 'F'
+    }
+  end
+
+  def civility_params
     {
       nom_usage: params[:nomUsage],
       nom_naissance: params[:nomNaissance],
@@ -31,11 +64,7 @@ class APIParticulier::V2::CNAF::AbstractController < APIParticulierController
       jour_date_de_naissance: params[:jourDateDeNaissance],
       code_insee_lieu_de_naissance: params[:codeInseeLieuDeNaissance],
       code_pays_lieu_de_naissance: params.require(:codePaysLieuDeNaissance),
-      gender: params.require(:sexe),
-      annee: params[:annee],
-      mois: params[:mois],
-      user_siret: current_user.siret,
-      request_id:
+      gender: params.require(:sexe)
     }
   end
   # rubocop:enable Metrics/AbcSize
