@@ -1,18 +1,17 @@
 ---
-description: 'Étudiant 655888578AE inscrit (appel par INE)'
+description: 'Étudiant 660309901AG inscrit (appel par INE), ne renvoie pas d''INE'
 params:
-  ine: '655888578AE'
+  ine: '660309901AG'
 status: 200
 payload: |-
   {
-    "ine": "655888578AE",
-    "nom": "KOSAKAMI",
-    "prenom": "Korako",
-    "dateNaissance": "2002-10-13",
+    "nom": "LEBRETON",
+    "prenom": "Arnaud",
+    "dateNaissance": "1988-09-10",
     "inscriptions": [
       {
-        "dateDebutInscription": "2023-09-01",
-        "dateFinInscription": "2024-06-31",
+        "dateDebutInscription": "2021-09-16",
+        "dateFinInscription": "2023-07-25",
         "statut": "inscrit",
         "codeCommune": "75020",
         "etablissement": {
