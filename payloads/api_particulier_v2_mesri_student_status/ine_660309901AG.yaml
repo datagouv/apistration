@@ -1,18 +1,17 @@
 ---
-description: 'Étudiant 0100007108D inscrit (appel par INE)'
+description: 'Étudiant 660309901AG inscrit (appel par INE), ne renvoie pas d''INE'
 params:
-  ine: '0100007108D'
+  ine: '660309901AG'
 status: 200
 payload: |-
   {
-    "ine": "0100007108D",
-    "nom": "MARTIN",
-    "prenom": "Jeanne",
-    "dateNaissance": "2001-11-10",
+    "nom": "LEBRETON",
+    "prenom": "Arnaud",
+    "dateNaissance": "1988-09-10",
     "inscriptions": [
       {
-        "dateDebutInscription": "2022-08-01",
-        "dateFinInscription": "2023-07-30",
+        "dateDebutInscription": "2021-09-16",
+        "dateFinInscription": "2023-07-25",
         "statut": "inscrit",
         "codeCommune": "75020",
         "etablissement": {
