@@ -41,20 +41,41 @@ RSpec.describe CNAF::QuotientFamilialV2, type: :retriever_organizer do
 
       before do
         stub_cnaf_authenticate('quotient_familial_v2')
-        stub_cnaf_404('quotient_familial_v2')
         allow(MonitoringService).to receive(:instance).and_return(monitoring_service)
         allow(monitoring_service).to receive(:track)
         allow(monitoring_service).to receive(:set_retriever_context)
       end
 
-      it 'tracks error as a warning through monitoring service' do
-        expect(subject).to be_a_failure
-        expect(subject.errors).to include(instance_of(NotFoundError))
-        expect(monitoring_service).to have_received(:set_provider)
-        expect(monitoring_service).to have_received(:track).with(
-          'warning',
-          '[CNAF & MSA] - SNGI Error: Dossier allocataire inexistant. Le document ne peut être édité.'
-        )
+      describe 'when the error comes from MSA' do
+        before do
+          stub_cnaf_404('quotient_familial_v2')
+        end
+
+        it 'does not track error as a warning through monitoring service' do
+          expect(subject).to be_a_failure
+          expect(subject.errors).to include(instance_of(NotFoundError))
+          expect(monitoring_service).to have_received(:set_provider)
+          expect(monitoring_service).not_to have_received(:track).with(
+            'warning',
+            '[CNAF & MSA] - SNGI Error: Dossier allocataire inexistant. Le document ne peut être édité.'
+          )
+        end
+      end
+
+      describe 'when the error comes from SNGI' do
+        before do
+          stub_sngi_404('quotient_familial_v2')
+        end
+
+        it 'tracks error as a warning through monitoring service' do
+          expect(subject).to be_a_failure
+          expect(subject.errors).to include(instance_of(NotFoundError))
+          expect(monitoring_service).to have_received(:set_provider)
+          expect(monitoring_service).to have_received(:track).with(
+            'warning',
+            '[CNAF & MSA] - SNGI Error: Dossier allocataire inexistant. Le document ne peut être édité.'
+          )
+        end
       end
     end
 

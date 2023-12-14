@@ -50,6 +50,16 @@ module ProviderStubs::CNAF
     )
   end
 
+  def stub_sngi_404(api)
+    stub_request(:get, cnaf_url(api)).with(
+      query: hash_including({})
+    ).to_return(
+      status: 404,
+      headers: {},
+      body: Rails.root.join("spec/fixtures/payloads/cnaf/#{api}/404.json").read
+    )
+  end
+
   def cnaf_client_id(api)
     Siade.credentials[:"cnaf_#{api}_client_id"]
   end
