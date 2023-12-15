@@ -1,5 +1,5 @@
 module APIParticulier::FranceConnectable
-  attr_reader :france_connect_service_user_identity
+  attr_reader :france_connect_service_user_identity, :france_connect_client_attributes
 
   def france_connect_organizer
     @france_connect_organizer ||= FranceConnect::DataFetcherThroughAccessToken.call(params: { token: bearer_token_from_headers })
@@ -20,6 +20,7 @@ module APIParticulier::FranceConnectable
   def handle_france_connect_flow
     if france_connect_organizer.success?
       @france_connect_service_user_identity = france_connect_organizer.service_user_identity
+      @france_connect_client_attributes = france_connect_organizer.client_attributes
       @current_user = france_connect_organizer.user
     else
       render_errors(france_connect_organizer)

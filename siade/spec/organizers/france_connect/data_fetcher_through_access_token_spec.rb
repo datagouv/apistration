@@ -21,6 +21,7 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken, type: :retriever_or
       it { is_expected.to be_a_success }
 
       its(:service_user_identity) { is_expected.to be_a(Resource) }
+      its(:client_attributes) { is_expected.to be_a(Resource) }
       its(:user) { is_expected.to be_a(JwtUser) }
     end
 
@@ -37,6 +38,7 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken, type: :retriever_or
         it { is_expected.to be_a_success }
 
         its(:service_user_identity) { is_expected.to be_a(Resource) }
+        its(:client_attributes) { is_expected.to be_a(Resource) }
         its(:user) { is_expected.to be_a(JwtUser) }
       end
 
@@ -60,6 +62,7 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken, type: :retriever_or
     it { is_expected.to be_a_success }
 
     its(:service_user_identity) { is_expected.to be_a(Resource) }
+    its(:client_attributes) { is_expected.to be_a(Resource) }
     its(:user) { is_expected.to be_a(JwtUser) }
   end
 

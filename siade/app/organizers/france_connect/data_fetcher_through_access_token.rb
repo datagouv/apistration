@@ -2,7 +2,8 @@ class FranceConnect::DataFetcherThroughAccessToken < RetrieverOrganizer
   organize FranceConnect::DataFetcherThroughAccessToken::MakeRequest,
     FranceConnect::DataFetcherThroughAccessToken::ValidateResponse,
     FranceConnect::DataFetcherThroughAccessToken::BuildUser,
-    FranceConnect::DataFetcherThroughAccessToken::BuildServiceUserIdentity
+    FranceConnect::DataFetcherThroughAccessToken::BuildServiceUserIdentity,
+    FranceConnect::DataFetcherThroughAccessToken::BuildClientAttributes
 
   def provider_name
     'FranceConnect'

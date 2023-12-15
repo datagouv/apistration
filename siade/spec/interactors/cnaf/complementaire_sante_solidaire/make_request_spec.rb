@@ -65,7 +65,7 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire::MakeRequest, type: :make_requ
         code_insee_lieu_de_naissance: '75101',
         code_pays_lieu_de_naissance: '99100',
         gender: 'M',
-        user_siret: valid_siret,
+        user_siret: 'france_connect_client_id',
         request_id:
       }
     end
