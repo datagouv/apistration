@@ -1,4 +1,4 @@
-class FranceConnect::DataFetcherThroughAccessToken::BuildUser < ApplicationInteractor
+class FranceConnect::DataFetcherThroughAccessToken::BuildUser < FranceConnect::BuildDataFromAccessTokenInteractor
   def call
     context.user = build_user
   end
@@ -21,16 +21,8 @@ class FranceConnect::DataFetcherThroughAccessToken::BuildUser < ApplicationInter
     json_body['scope']
   end
 
-  def json_body
-    @json_body ||= from_france_connect? ? JSON.parse(context.response.body) : context.mocked_data[:payload]
-  end
-
   def called_france_connect_in_staging?
     Rails.env.staging? && from_france_connect?
-  end
-
-  def from_france_connect?
-    !Rails.env.staging? || context.mocked_data.nil?
   end
 
   def all_api_particulier_scopes
