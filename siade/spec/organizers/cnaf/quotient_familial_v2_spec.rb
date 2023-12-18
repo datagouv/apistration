@@ -15,7 +15,7 @@ RSpec.describe CNAF::QuotientFamilialV2, type: :retriever_organizer do
         code_pays_lieu_de_naissance: '99100',
         code_insee_lieu_de_naissance: '17300',
         request_id:,
-        user_siret: valid_siret,
+        user_id: valid_siret,
         annee: 2023,
         mois: 12
       }
@@ -102,7 +102,7 @@ RSpec.describe CNAF::QuotientFamilialV2, type: :retriever_organizer do
         code_insee_lieu_de_naissance: '75101',
         code_pays_lieu_de_naissance: '99100',
         gender: 'M',
-        user_siret: 'france_connect_client_id',
+        user_id: 'france_connect_client_name',
         request_id:
       }
     end

@@ -21,7 +21,7 @@ class CNAF::MakeRequest < MakeRequest::Get
     request['Content-Type'] = 'application/json'
     request['Authorization'] = "Bearer #{token}"
     request['X-Correlation-ID'] = context.params[:request_id]
-    request['X-APIPART-FSFINAL'] = context.params[:user_siret]
+    request['X-APIPART-FSFINAL'] = context.params[:user_id]
   end
 
   private

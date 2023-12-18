@@ -241,7 +241,7 @@ shared:
           gender: 'M'
           code_pays_lieu_de_naissance: '99100'
           code_insee_lieu_de_naissance: '17300'
-          user_siret: 'PING_DINUM'
+          user_id: 'PING_DINUM'
           request_id: '22222222-2222-2222-2222-222222222222'
         status_to_check: 404
         token_interactor: 'CNAF::QuotientFamilialV2::Authenticate'

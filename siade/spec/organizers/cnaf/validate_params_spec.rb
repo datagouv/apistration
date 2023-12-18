@@ -10,7 +10,7 @@ RSpec.describe CNAF::ValidateParams, type: :validate_params do
       annee_date_de_naissance:,
       mois_date_de_naissance:,
       jour_date_de_naissance:,
-      user_siret:,
+      user_id:,
       request_id:
     }
   end
@@ -22,7 +22,7 @@ RSpec.describe CNAF::ValidateParams, type: :validate_params do
   let(:annee_date_de_naissance) { 1988 }
   let(:mois_date_de_naissance) { 2 }
   let(:jour_date_de_naissance) { 6 }
-  let(:user_siret) { valid_siret(:msa) }
+  let(:user_id) { valid_siret(:msa) }
   let(:request_id) { SecureRandom.uuid }
 
   context 'with valid attributes' do
