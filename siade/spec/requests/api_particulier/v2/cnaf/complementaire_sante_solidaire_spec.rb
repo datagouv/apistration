@@ -9,7 +9,7 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
 
       parameter name: 'X-Api-Key', in: :header, type: :string
 
-      security [franceConnectToken: []]
+      security [franceConnectToken: [], apiKey: []]
 
       parameter name: :nomUsage,
         in: :query,
@@ -175,11 +175,12 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
       end
 
       describe 'with a FranceConnect token' do
-        let(:Authorization) { 'Bearer super_valid_token' }
-        let(:'X-Api-Key') { nil }
         let(:scopes) { %i[complementaire_sante_solidaire openid identite_pivot] }
 
-        describe 'with valid token and valid FranceConnect token' do
+        describe 'with no token and valid FranceConnect token' do
+          let(:'X-Api-Key') { nil }
+          let(:Authorization) { 'Bearer super_valid_token' }
+
           before do
             mock_valid_france_connect_checktoken(scopes:)
             stub_cnaf_valid_with_franceconnect_data('complementaire_sante_solidaire')
@@ -195,22 +196,42 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
             run_test!
           end
         end
-      end
 
-      describe 'with valid token and invalid FranceConnect token' do
-        let(:Authorization) { 'Bearer InvalidFranceConnectToken' }
-        let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
+        describe 'with valid token and invalid FranceConnect token' do
+          let(:Authorization) { 'Bearer InvalidFranceConnectToken' }
+          let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
 
-        before do
-          mock_invalid_france_connect_checktoken
+          before do
+            mock_invalid_france_connect_checktoken
+          end
+
+          response '401', 'Unauthorized' do
+            build_rswag_example(InvalidFranceConnectAccessTokenError.new(:not_found_or_expired))
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
+          end
         end
 
-        response '401', 'Unauthorized' do
-          build_rswag_example(InvalidFranceConnectAccessTokenError.new(:not_found_or_expired))
+        describe 'with valid token and valid FranceConnect token' do
+          let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
+          let(:Authorization) { 'Bearer super_valid_token' }
 
-          schema '$ref' => '#/components/schemas/Error'
+          before do
+            mock_valid_france_connect_checktoken(scopes:)
+            stub_cnaf_valid_with_franceconnect_data('complementaire_sante_solidaire')
+          end
 
-          run_test!
+          response '200', 'Quotient Familial trouvée' do
+            description SwaggerData.get('cnaf.c2s.description')
+
+            schema build_rswag_response_api_particulier(
+              attributes: SwaggerData.get('cnaf.c2s.attributes')
+            )
+
+            run_test!
+          end
         end
       end
     end

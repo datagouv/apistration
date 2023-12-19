@@ -152,6 +152,7 @@ paths:
         required: false
       security:
       - franceConnectToken: []
+        apiKey: []
       description: "Savoir si un particulier est bénéficiaire de la complémentaire
         santé solidaire (C2S). \n\n Pour de plus amples informations sur cette api
         et y avoir accès en avant première, veuillez contacter l'équipe API Particulier.
@@ -386,6 +387,7 @@ paths:
           type: integer
       security:
       - franceConnectToken: []
+        apiKey: []
       description: "Quotient familial et composition de la famille d'un allocataire
         du régime agricole (régime général à venir). \n Pour de plus amples informations
         sur cette api et y avoir accès en avant première, veuillez contacter l'équipe
@@ -2136,11 +2138,13 @@ components:
       in: header
       description: Jeton d'authentification obtenu suite à la validation de votre
         <a href='https://datapass.api.gouv.fr/'>demande d'habilitation</a>, visible
-        sur <a href='https://particulier.api.gouv.fr/compte'>le portail API Particulier</a>
+        sur <a href='https://particulier.api.gouv.fr/compte'>le portail API Particulier</a>.
+        Obligatoire en l'absence d'un jeton FranceConnect.
     franceConnectToken:
       type: http
       scheme: bearer
       in: header
       bearerFormat: Jeton FranceConnect
       description: Jeton FranceConnect obtenu suite à une cinématique de connexion
-        FranceConnect. Non obligatoire. Ne fonctionne que sur les APIs FranceConnectées.
+        FranceConnect. Ne fonctionne que sur les APIs FranceConnectées. Remplace l'authentification
+        par X-Api-Key sur les APIs FranceConnectées.

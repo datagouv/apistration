@@ -9,7 +9,7 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
 
       parameter name: 'X-Api-Key', in: :header, type: :string
 
-      security [franceConnectToken: []]
+      security [franceConnectToken: [], apiKey: []]
 
       parameter name: :nomUsage,
         in: :query,
@@ -191,11 +191,31 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
       end
 
       describe 'with a FranceConnect token' do
-        let(:Authorization) { 'Bearer super_valid_token' }
-        let(:'X-Api-Key') { nil }
+        let(:Authorization) { 'Bearer france_connect_token' }
         let(:scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse openid identite_pivot] }
 
         describe 'with valid token and valid FranceConnect token' do
+          let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
+
+          before do
+            mock_valid_france_connect_checktoken(scopes:)
+            stub_cnaf_valid_with_franceconnect_data('quotient_familial_v2')
+          end
+
+          response '200', 'Quotient Familial trouvé' do
+            description SwaggerData.get('cnaf.quotient-familial-v2.description')
+
+            schema build_rswag_response_api_particulier(
+              attributes: SwaggerData.get('cnaf.quotient-familial-v2.attributes')
+            )
+
+            run_test!
+          end
+        end
+
+        describe 'with invalid token and valid FranceConnect token' do
+          let(:'X-Api-Key') { nil }
+
           before do
             mock_valid_france_connect_checktoken(scopes:)
             stub_cnaf_valid_with_franceconnect_data('quotient_familial_v2')
@@ -213,6 +233,8 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
         end
 
         describe 'with valid token and invalid FranceConnect token' do
+          let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
+
           before do
             mock_invalid_france_connect_checktoken
           end

@@ -254,14 +254,14 @@ Lors de votre passage en production :
             type: :apiKey,
             name: 'X-Api-Key',
             in: :header,
-            description: "Jeton d'authentification obtenu suite à la validation de votre <a href='https://datapass.api.gouv.fr/'>demande d'habilitation</a>, visible sur <a href='https://particulier.api.gouv.fr/compte'>le portail API Particulier</a>"
+            description: "Jeton d'authentification obtenu suite à la validation de votre <a href='https://datapass.api.gouv.fr/'>demande d'habilitation</a>, visible sur <a href='https://particulier.api.gouv.fr/compte'>le portail API Particulier</a>. Obligatoire en l'absence d'un jeton FranceConnect."
           },
           franceConnectToken: {
             type: :http,
             scheme: :bearer,
             in: :header,
             bearerFormat: 'Jeton FranceConnect',
-            description: 'Jeton FranceConnect obtenu suite à une cinématique de connexion FranceConnect. Non obligatoire. Ne fonctionne que sur les APIs FranceConnectées.'
+            description: "Jeton FranceConnect obtenu suite à une cinématique de connexion FranceConnect. Ne fonctionne que sur les APIs FranceConnectées. Remplace l'authentification par X-Api-Key sur les APIs FranceConnectées."
           }
         }
       }
