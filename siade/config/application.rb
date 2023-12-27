@@ -21,7 +21,7 @@ Bundler.require(*Rails.groups)
 
 module Siade
   class Application < Rails::Application
-    config.load_defaults 6.1
+    config.load_defaults 7.0
 
     # Time.parse / ma_date.to_time
     #   use the system timezone
