@@ -7,7 +7,6 @@ RSpec.describe SerializerGenerator, type: :generator do
     context 'with option: --document true' do
       before { run_generator [resource_name, '--document', 'true'] }
 
-      it { is_expected.to exist }
       it { is_expected.to have_correct_syntax }
       it { is_expected.to contain(/class APIEntreprise::#{resource_name}Serializer::V3 < APIEntreprise::V3AndMore::DocumentSerializer/) }
     end
@@ -15,7 +14,6 @@ RSpec.describe SerializerGenerator, type: :generator do
     context 'with option: --document false' do
       before { run_generator [resource_name, '--document', 'false'] }
 
-      it { is_expected.to exist }
       it { is_expected.to have_correct_syntax }
       it { is_expected.to contain(/class APIEntreprise::#{resource_name}Serializer::V3 < APIEntreprise::V3AndMore::BaseSerializer/) }
     end

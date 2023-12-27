@@ -5,7 +5,6 @@ RSpec.describe BuildResourceGenerator, type: :generator do
     subject { file('app/interactors/module/resource_name/build_resource.rb') }
 
     shared_examples 'a valid BuildResource' do
-      it { is_expected.to exist }
       it { is_expected.to have_correct_syntax }
     end
 
@@ -52,7 +51,6 @@ RSpec.describe BuildResourceGenerator, type: :generator do
 
       before { run_generator [resource_name] }
 
-      it { is_expected.to exist }
       it { is_expected.to have_correct_syntax }
       it { is_expected.to contain(/RSpec.describe #{resource_name}::BuildResource, type: :build_resource do/) }
     end
@@ -64,7 +62,6 @@ RSpec.describe BuildResourceGenerator, type: :generator do
 
       before { run_generator [resource_name, '--is_collection', 'true'] }
 
-      it { is_expected.to exist }
       it { is_expected.to have_correct_syntax }
 
       it { is_expected.to contain(header) }

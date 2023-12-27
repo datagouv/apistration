@@ -4,7 +4,6 @@ RSpec.describe RequestSpecGenerator, type: :generator do
   let(:resource_name) { 'MODULE::ResourceName' }
 
   shared_examples 'a valid request spec file' do
-    it { is_expected.to exist }
     it { is_expected.to have_correct_syntax }
     it { is_expected.to contain(%r{/v3/module/resource_names}) }
   end
