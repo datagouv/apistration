@@ -11,6 +11,7 @@ cnaf:
     "
     tags:
       - Complementaire Sante Solidaire
+      - Prochainement
     parameters:
       nomUsage:
         type: "string"
@@ -102,6 +103,7 @@ cnaf:
     "
     tags:
       - Quotient familial
+      - Prochainement
     parameters:
       nomUsage:
         type: "string"

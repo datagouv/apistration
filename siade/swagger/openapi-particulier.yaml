@@ -60,6 +60,7 @@ paths:
       summary: Complémentaire santé solidaire
       tags:
       - Complementaire Sante Solidaire
+      - Prochainement
       parameters:
       - name: X-Api-Key
         in: header
@@ -279,6 +280,7 @@ paths:
       summary: Quotient familial MSA & CAF
       tags:
       - Quotient familial
+      - Prochainement
       parameters:
       - name: X-Api-Key
         in: header
