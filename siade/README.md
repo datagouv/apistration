@@ -2,7 +2,7 @@
 
 ## Requirements
 
-* ruby 3.2.1
+* ruby 3.3.0
 * postgresql >= 9
 * redis-server >= 5
 * gnugpg and gpgme (installed with script below)

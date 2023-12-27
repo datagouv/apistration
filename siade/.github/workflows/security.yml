@@ -13,8 +13,6 @@ jobs:
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.2.1
 
       - name: Brakeman
         uses: reviewdog/action-brakeman@v2
