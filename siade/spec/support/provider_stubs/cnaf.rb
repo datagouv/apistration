@@ -35,7 +35,7 @@ module ProviderStubs::CNAF
         genre: 'M',
         listePrenoms: 'Jean Martin',
         nomNaissance: 'DUPONT',
-        nomUsage: 'jdupont'
+        nomUsage: 'MARTIN'
       })
     ).to_return(
       status: 200,

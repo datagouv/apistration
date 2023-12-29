@@ -190,7 +190,7 @@ shared:
           gender: 'male'
           birthplace: '75101'
           birthcountry: '99100'
-          preferred_username: 'jdupont'
+          preferred_username: 'MARTIN'
         status_to_check: 404
         token_interactor: 'CNOUS::Authenticate'
 

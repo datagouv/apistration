@@ -58,7 +58,7 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire::MakeRequest, type: :make_requ
   describe 'with FranceConnect params' do
     let(:params) do
       {
-        nom_usage: 'jdupont',
+        nom_usage: 'MARTIN',
         nom_naissance: 'DUPONT',
         prenoms: %w[Jean Martin],
         date_naissance: '2000-01-01',
@@ -79,7 +79,7 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire::MakeRequest, type: :make_requ
           genre: 'M',
           listePrenoms: 'Jean Martin',
           nomNaissance: 'DUPONT',
-          nomUsage: 'jdupont'
+          nomUsage: 'MARTIN'
         }),
         headers: {
           'Content-Type' => 'application/json',

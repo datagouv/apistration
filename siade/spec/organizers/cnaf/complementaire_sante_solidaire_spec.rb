@@ -50,7 +50,7 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire, type: :retriever_organizer do
 
     let(:params) do
       {
-        nom_usage: 'jdupont',
+        nom_usage: 'MARTIN',
         nom_naissance: 'DUPONT',
         prenoms: ['Jean Martin'],
         date_naissance: '2000-01-01',

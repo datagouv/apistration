@@ -55,7 +55,7 @@ module ProviderStubs::FranceConnect
       gender: 'male',
       birthplace: '75101',
       birthcountry: '99100',
-      preferred_username: 'jdupont'
+      preferred_username: 'MARTIN'
     }
   end
 
