@@ -84,4 +84,18 @@ RSpec.describe APIParticulierController, 'errors rendering' do
       }.to_json)
     end
   end
+
+  context 'with an InvalidRecipientError' do
+    let(:error) { InvalidRecipientError.new }
+
+    its(:status) { is_expected.to eq(400) }
+
+    its(:body) do
+      is_expected.to eq({
+        error: 'bad_request',
+        reason: error.detail,
+        message: error.detail
+      }.to_json)
+    end
+  end
 end
