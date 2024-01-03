@@ -97,6 +97,16 @@ paths:
           schema:
             type: integer
             example: 12
+        - name: recipient
+          in: query
+          description: |-
+            "**Bénéficiaire de l’appel**
+
+            SIRET de l’administration destinatrice des données."
+          example: '13002526500013'
+          required: false
+          schema:
+            type: string
       responses:
         "200":
           x-operationId: 'api_particulier_v2_cnaf_quotient_familial_v2'

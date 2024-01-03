@@ -59,6 +59,16 @@ paths:
           required: true
           schema:
             type: string
+        - name: recipient
+          in: query
+          description: |-
+            "**Bénéficiaire de l’appel**
+
+            SIRET de l’administration destinatrice des données."
+          example: '13002526500013'
+          required: false
+          schema:
+            type: string
       tags:
         &a5
         - Avis d'imposition
@@ -323,6 +333,16 @@ paths:
             type: number
             format: string
             example: 75001
+        - name: recipient
+          in: query
+          description: |-
+            "**Bénéficiaire de l’appel**
+
+            SIRET de l’administration destinatrice des données."
+          example: '13002526500013'
+          required: false
+          schema:
+            type: string
       tags:
         - Quotient familial
       responses:
@@ -496,6 +516,16 @@ paths:
           required: true
           in: query
           description: Identifiant Pôle emploi choisi par le particulier lors de la création de son espace personnel en ligne.
+          schema:
+            type: string
+        - name: recipient
+          in: query
+          description: |-
+            "**Bénéficiaire de l’appel**
+
+            SIRET de l’administration destinatrice des données."
+          example: '13002526500013'
+          required: false
           schema:
             type: string
       tags:
@@ -729,6 +759,16 @@ paths:
           in: query
           schema:
             type: string
+        - name: recipient
+          in: query
+          description: |-
+            "**Bénéficiaire de l’appel**
+
+            SIRET de l’administration destinatrice des données."
+          example: '13002526500013'
+          required: false
+          schema:
+            type: string
       summary: Statut étudiant
       description: >-
         Admissions et inscriptions d'un étudiant aux établissements d'enseignement supérieur.
@@ -891,6 +931,16 @@ paths:
             enum:
               - M
               - F
+        - name: recipient
+          in: query
+          description: |-
+            "**Bénéficiaire de l’appel**
+
+            SIRET de l’administration destinatrice des données."
+          example: '13002526500013'
+          required: false
+          schema:
+            type: string
       summary: Statut étudiant boursier
       description: >-
         Statut et échelon boursier d'un étudiant, délivrés par le Cnous.

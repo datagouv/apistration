@@ -93,6 +93,16 @@ paths:
             enum:
               - M
               - F
+        - name: recipient
+          in: query
+          description: |-
+            "**Bénéficiaire de l’appel**
+
+            SIRET de l’administration destinatrice des données."
+          example: '13002526500013'
+          required: false
+          schema:
+            type: string
       responses:
         "200":
           x-operationId: 'api_particulier_v2_cnaf_complementaire_sante_solidaire'

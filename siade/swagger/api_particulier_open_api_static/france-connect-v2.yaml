@@ -79,6 +79,17 @@ paths:
 
 
         **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_mesri_student_status)
+      parameters:
+        - name: recipient
+          in: query
+          description: |-
+            "**Bénéficiaire de l’appel**
+
+            SIRET de l’administration destinatrice des données."
+          example: '13002526500013'
+          required: false
+          schema:
+            type: string
       responses:
         "200":
           description: La situation d'un étudiant et ses inscriptions
@@ -228,6 +239,17 @@ paths:
 
 
         **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnous_student_scholarship)
+      parameters:
+        - name: recipient
+          in: query
+          description: |-
+            "**Bénéficiaire de l’appel**
+
+            SIRET de l’administration destinatrice des données."
+          example: '13002526500013'
+          required: false
+          schema:
+            type: string
       responses:
         "200":
           description: La situation d'un étudiant boursier
