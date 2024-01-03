@@ -9,6 +9,13 @@ RSpec.describe 'MEN: Scolarites', api: :particulier, type: %i[request swagger] d
 
       parameter name: 'X-Api-Key', in: :header, type: :string
 
+      parameter name: :recipient,
+        in: :query,
+        type: :string,
+        description: SwaggerData.get('parameters.recipient.description'),
+        example: SwaggerData.get('parameters.recipient.example'),
+        required: false
+
       parameter name: :nom,
         in: :query,
         type: SwaggerData.get('men.scolarite.parameters.nom.type'),

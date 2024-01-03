@@ -9,6 +9,13 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
 
       parameter name: 'X-Api-Key', in: :header, type: :string
 
+      parameter name: :recipient,
+        in: :query,
+        type: :string,
+        description: SwaggerData.get('parameters.recipient.description'),
+        example: SwaggerData.get('parameters.recipient.example'),
+        required: true
+
       security [franceConnectToken: [], apiKey: []]
 
       parameter name: :nomUsage,
@@ -104,6 +111,7 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
         required: false
 
       let(:scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse] }
+      let(:recipient) { valid_siret }
 
       before do
         stub_cnaf_authenticate('quotient_familial_v2')

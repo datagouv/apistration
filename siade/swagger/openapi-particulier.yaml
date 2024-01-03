@@ -66,6 +66,16 @@ paths:
         in: header
         schema:
           type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: true
+        schema:
+          type: string
       - name: nomUsage
         in: query
         description: Nom d'usage. Ne pas renseigner si présence de jeton FranceConnect.
@@ -284,6 +294,16 @@ paths:
       parameters:
       - name: X-Api-Key
         in: header
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: true
         schema:
           type: string
       - name: nomUsage
@@ -676,6 +696,16 @@ paths:
         in: header
         schema:
           type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: false
+        schema:
+          type: string
       - name: nom
         in: query
         description: Nom de l'élève
@@ -888,6 +918,16 @@ paths:
       parameters:
       - name: X-Api-Key
         in: header
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: false
         schema:
           type: string
       - name: identifiant

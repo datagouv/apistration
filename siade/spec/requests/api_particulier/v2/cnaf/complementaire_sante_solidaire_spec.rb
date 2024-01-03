@@ -9,6 +9,13 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
 
       parameter name: 'X-Api-Key', in: :header, type: :string
 
+      parameter name: :recipient,
+        in: :query,
+        type: :string,
+        description: SwaggerData.get('parameters.recipient.description'),
+        example: SwaggerData.get('parameters.recipient.example'),
+        required: true
+
       security [franceConnectToken: [], apiKey: []]
 
       parameter name: :nomUsage,
@@ -90,6 +97,7 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
         required: false
 
       let(:scopes) { %i[complementaire_sante_solidaire] }
+      let(:recipient) { valid_siret }
 
       before do
         stub_cnaf_authenticate('complementaire_sante_solidaire')
