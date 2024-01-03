@@ -11,7 +11,8 @@ RSpec.describe CNAF::ValidateParams, type: :validate_params do
       mois_date_de_naissance:,
       jour_date_de_naissance:,
       user_id:,
-      request_id:
+      request_id:,
+      recipient:
     }
   end
 
@@ -24,6 +25,7 @@ RSpec.describe CNAF::ValidateParams, type: :validate_params do
   let(:jour_date_de_naissance) { 6 }
   let(:user_id) { valid_siret(:msa) }
   let(:request_id) { SecureRandom.uuid }
+  let(:recipient) { valid_siret }
 
   context 'with valid attributes' do
     it { is_expected.to be_a_success }
@@ -93,5 +95,13 @@ RSpec.describe CNAF::ValidateParams, type: :validate_params do
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+  end
+
+  context 'with invalid recipient' do
+    let(:recipient) { 'not a siret' }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(InvalidRecipientError)) }
   end
 end

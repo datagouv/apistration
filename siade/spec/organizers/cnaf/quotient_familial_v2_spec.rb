@@ -1,5 +1,6 @@
 RSpec.describe CNAF::QuotientFamilialV2, type: :retriever_organizer do
   let(:request_id) { SecureRandom.uuid }
+  let(:recipient) { valid_siret }
 
   describe '.call with civility params' do
     subject { described_class.call(params:) }
@@ -17,7 +18,8 @@ RSpec.describe CNAF::QuotientFamilialV2, type: :retriever_organizer do
         request_id:,
         user_id: valid_siret,
         annee: 2023,
-        mois: 12
+        mois: 12,
+        recipient:
       }
     end
 
@@ -103,7 +105,8 @@ RSpec.describe CNAF::QuotientFamilialV2, type: :retriever_organizer do
         code_pays_lieu_de_naissance: '99100',
         gender: 'M',
         user_id: 'france_connect_client_name',
-        request_id:
+        request_id:,
+        recipient:
       }
     end
 

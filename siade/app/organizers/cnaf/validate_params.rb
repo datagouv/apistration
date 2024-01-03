@@ -1,5 +1,6 @@
 class CNAF::ValidateParams < ValidateParamsOrganizer
-  organize ServiceUser::ValidateGender,
+  organize CNAF::ValidateRecipient,
+    ServiceUser::ValidateGender,
     CNAF::ValidateCodePaysLieuDeNaissance,
     CNAF::ValidateCodeINSEELieuDeNaissance,
     CNAF::ValidateDateDeNaissance,

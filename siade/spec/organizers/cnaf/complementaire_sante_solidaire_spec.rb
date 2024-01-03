@@ -1,5 +1,6 @@
 RSpec.describe CNAF::ComplementaireSanteSolidaire, type: :retriever_organizer do
   let(:request_id) { SecureRandom.uuid }
+  let(:recipient) { valid_siret }
 
   describe '.call with civility params' do
     subject { described_class.call(params:) }
@@ -15,7 +16,8 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire, type: :retriever_organizer do
         code_pays_lieu_de_naissance: '99100',
         code_insee_lieu_de_naissance: '17300',
         request_id:,
-        user_id: valid_siret
+        user_id: valid_siret,
+        recipient:
       }
     end
 
@@ -58,7 +60,8 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire, type: :retriever_organizer do
         code_pays_lieu_de_naissance: '99100',
         gender: 'M',
         user_id: 'france_connect_client_name',
-        request_id:
+        request_id:,
+        recipient:
       }
     end
 

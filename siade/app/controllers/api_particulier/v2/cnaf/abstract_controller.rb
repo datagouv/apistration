@@ -27,6 +27,7 @@ class APIParticulier::V2::CNAF::AbstractController < APIParticulierController
       {
         annee: params[:annee],
         mois: params[:mois],
+        recipient: params[:recipient],
         request_id:
       }
     )
