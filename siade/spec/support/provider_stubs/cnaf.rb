@@ -26,7 +26,7 @@ module ProviderStubs::CNAF
     )
   end
 
-  def stub_cnaf_valid_with_franceconnect_data(api)
+  def stub_cnaf_valid_with_franceconnect_data(api, siret: valid_siret)
     stub_request(:get, cnaf_url(api)).with(
       query: hash_including({
         codeLieuNaissance: '75101',
@@ -36,7 +36,11 @@ module ProviderStubs::CNAF
         listePrenoms: 'Jean Martin',
         nomNaissance: 'DUPONT',
         nomUsage: 'MARTIN'
-      })
+      }),
+      headers: {
+        'Content-Type' => 'application/json',
+        'X-APIPART-FSFINAL' => siret
+      }
     ).to_return(
       status: 200,
       body: read_payload_file("cnaf/#{api}/make_request_valid.json"),

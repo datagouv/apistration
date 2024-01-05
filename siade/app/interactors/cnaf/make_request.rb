@@ -12,7 +12,8 @@ class CNAF::MakeRequest < MakeRequest::Get
       jourDateDeNaissance: context.params[:jour_date_de_naissance],
       codeInseeLieuDeNaissance: context.params[:code_insee_lieu_de_naissance],
       codePaysLieuDeNaissance: context.params[:code_pays_lieu_de_naissance],
-      sexe: context.params[:gender]
+      sexe: context.params[:gender],
+      recipient: context.params[:recipient]
     }.compact
   end
   # rubocop:enable Metrics/AbcSize
@@ -21,7 +22,7 @@ class CNAF::MakeRequest < MakeRequest::Get
     request['Content-Type'] = 'application/json'
     request['Authorization'] = "Bearer #{token}"
     request['X-Correlation-ID'] = context.params[:request_id]
-    request['X-APIPART-FSFINAL'] = context.params[:user_id]
+    request['X-APIPART-FSFINAL'] = context.params[:recipient]
   end
 
   private

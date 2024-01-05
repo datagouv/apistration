@@ -97,11 +97,11 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
         required: false
 
       let(:scopes) { %i[complementaire_sante_solidaire] }
-      let(:recipient) { valid_siret }
+      let(:recipient) { valid_siret(:recipient) }
 
       before do
         stub_cnaf_authenticate('complementaire_sante_solidaire')
-        stub_cnaf_valid('complementaire_sante_solidaire', siret: '100000009')
+        stub_cnaf_valid('complementaire_sante_solidaire', siret: recipient)
       end
 
       describe 'without a FranceConnect token' do
@@ -191,7 +191,7 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
 
           before do
             mock_valid_france_connect_checktoken(scopes:)
-            stub_cnaf_valid_with_franceconnect_data('complementaire_sante_solidaire')
+            stub_cnaf_valid_with_franceconnect_data('complementaire_sante_solidaire', siret: recipient)
           end
 
           response '200', 'Quotient Familial trouvée' do
@@ -228,7 +228,7 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
 
           before do
             mock_valid_france_connect_checktoken(scopes:)
-            stub_cnaf_valid_with_franceconnect_data('complementaire_sante_solidaire')
+            stub_cnaf_valid_with_franceconnect_data('complementaire_sante_solidaire', siret: recipient)
           end
 
           response '200', 'Quotient Familial trouvée' do

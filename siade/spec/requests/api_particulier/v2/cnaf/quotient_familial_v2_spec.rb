@@ -111,11 +111,11 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
         required: false
 
       let(:scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse] }
-      let(:recipient) { valid_siret }
+      let(:recipient) { valid_siret(:recipient) }
 
       before do
         stub_cnaf_authenticate('quotient_familial_v2')
-        stub_cnaf_valid('quotient_familial_v2', siret: '100000009')
+        stub_cnaf_valid('quotient_familial_v2', siret: recipient)
       end
 
       describe 'without a FranceConnect token' do
@@ -207,7 +207,7 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
 
           before do
             mock_valid_france_connect_checktoken(scopes:)
-            stub_cnaf_valid_with_franceconnect_data('quotient_familial_v2')
+            stub_cnaf_valid_with_franceconnect_data('quotient_familial_v2', siret: recipient)
           end
 
           response '200', 'Quotient Familial trouvé' do
@@ -226,7 +226,7 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
 
           before do
             mock_valid_france_connect_checktoken(scopes:)
-            stub_cnaf_valid_with_franceconnect_data('quotient_familial_v2')
+            stub_cnaf_valid_with_franceconnect_data('quotient_familial_v2', siret: recipient)
           end
 
           response '200', 'Quotient Familial trouvé' do

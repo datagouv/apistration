@@ -50,8 +50,7 @@ class APIParticulier::V2::CNAF::AbstractController < APIParticulierController
       date_naissance: france_connect_service_user_identity.birthdate,
       code_insee_lieu_de_naissance: france_connect_service_user_identity.birthplace,
       code_pays_lieu_de_naissance: france_connect_service_user_identity.birthcountry,
-      gender: france_connect_service_user_identity.gender == 'male' ? 'M' : 'F',
-      user_id: france_connect_client_attributes.client_name
+      gender: france_connect_service_user_identity.gender == 'male' ? 'M' : 'F'
     }
   end
 
@@ -65,8 +64,7 @@ class APIParticulier::V2::CNAF::AbstractController < APIParticulierController
       jour_date_de_naissance: params[:jourDateDeNaissance],
       code_insee_lieu_de_naissance: params[:codeInseeLieuDeNaissance],
       code_pays_lieu_de_naissance: params.require(:codePaysLieuDeNaissance),
-      gender: params.require(:sexe),
-      user_id: current_user.siret
+      gender: params.require(:sexe)
     }
   end
   # rubocop:enable Metrics/AbcSize

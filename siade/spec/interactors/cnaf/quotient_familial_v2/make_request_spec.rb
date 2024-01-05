@@ -15,7 +15,7 @@ RSpec.describe CNAF::QuotientFamilialV2::MakeRequest, type: :make_request do
         gender: 'M',
         code_pays_lieu_de_naissance: '99100',
         code_insee_lieu_de_naissance: '17300',
-        user_id: valid_siret,
+        recipient: valid_siret,
         request_id:
       }
     end
@@ -65,7 +65,7 @@ RSpec.describe CNAF::QuotientFamilialV2::MakeRequest, type: :make_request do
         code_insee_lieu_de_naissance: '75101',
         code_pays_lieu_de_naissance: '99100',
         gender: 'M',
-        user_id: 'france_connect_client_name',
+        recipient: valid_siret,
         request_id:
       }
     end
@@ -85,7 +85,7 @@ RSpec.describe CNAF::QuotientFamilialV2::MakeRequest, type: :make_request do
           'Content-Type' => 'application/json',
           'Authorization' => 'Bearer super_valid_token',
           'X-Correlation-ID' => request_id,
-          'X-APIPART-FSFINAL' => 'france_connect_client_name'
+          'X-APIPART-FSFINAL' => valid_siret
         }
       ).to_return(
         status: 200,
