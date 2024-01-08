@@ -149,7 +149,7 @@ GEM
     hashery (2.1.2)
     heapy (0.2.0)
       thor
-    hexapdf (0.34.1)
+    hexapdf (0.35.0)
       cmdparse (~> 3.0, >= 3.0.3)
       geom2d (~> 0.4, >= 0.4.1)
       openssl (>= 2.2.1)
