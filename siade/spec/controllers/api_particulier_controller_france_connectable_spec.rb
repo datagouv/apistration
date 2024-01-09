@@ -12,11 +12,15 @@ RSpec.describe APIParticulierController, 'france connectable' do
       # rubocop:disable Style/OpenStructUse
       organizer = OpenStruct.new(
         provider_name: 'dummy',
-        errors: [UnprocessableEntityError.new(:gender)]
+        errors: []
       )
       # rubocop:enable Style/OpenStructUse
 
-      if params[:test_invalid_params]
+      if params[:test_invalid_franceconnect_params]
+        organizer.errors = [UnprocessableEntityError.new(:gender)]
+        render_errors(organizer)
+      elsif params[:test_invalid_recipient]
+        organizer.errors = [InvalidRecipientError.new]
         render_errors(organizer)
       else
         render json: france_connect_service_user_identity.to_h,
@@ -70,8 +74,8 @@ RSpec.describe APIParticulierController, 'france connectable' do
           expect(make_call.body).to eq(default_france_connect_identity_attributes.to_json)
         end
 
-        context 'when organizer has errors' do
-          let(:params) { { test_invalid_params: true } }
+        context 'when organizer has invalid FranceConnect params error' do
+          let(:params) { { test_invalid_franceconnect_params: true } }
 
           its(:status) { is_expected.to eq(400) }
 
@@ -81,6 +85,18 @@ RSpec.describe APIParticulierController, 'france connectable' do
               /Invalid params with FranceConnect/,
               anything
             )
+
+            make_call
+          end
+        end
+
+        context 'when organizer has invalid non-FranceConnect params error' do
+          let(:params) { { test_invalid_recipient: true } }
+
+          its(:status) { is_expected.to eq(400) }
+
+          it 'does not tracks errors' do
+            expect(MonitoringService.instance).not_to receive(:track)
 
             make_call
           end
