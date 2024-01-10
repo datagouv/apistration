@@ -236,20 +236,14 @@ bundle exec ruby bin/reload_mock_backend.rb
 
 **Si vous êtes développeur**, référez-vous à la section [Développement](#developpement) ci-dessous.
 
-**Si vous êtes un fournisseur de données** et que vous voulez ajouter des données
-d'une API qui n'a pas encore de payload de test, veuillez vous réferer au dossier
-[future_payloads](./future_payloads).
+**Si vous êtes un fournisseur de données** : 
 
-Si ce n'est pas le cas, il y a deux cas de figures:
-
-1. Le dossier associé au endpoint que vous voulez n'existe pas : ouvrez un
-   ticket pour que l'on vous accompagne sur l'implémentation : [Ajout d'un
-   endpoint manquant](https://github.com/etalab/siade_staging_data/issues/new?template=proposer-une-am-lioration.md)
-2. Le dossier existe :
-   1. Soit vous pouvez tenter d'ajouter vous-même les fichiers que vous voulez à
-      l'aide d'une pull request ;
-   2. Soit vous ouvrez un ticket pour que l'on vous accompagne sur
-      l'implémentation : [Ajout de nouvelles données](https://github.com/etalab/siade_staging_data/issues/new?template=ajout-payloads.md).
+- Pour un endpoint ayant déjà un dossier dans [`payloads/`](./payloads) :
+   - Si vous êtes à l'aise avec Github, vous pouvez ajouter vous-même les fichiers des cas de tests que vous souhaitez, au travers d'une Pull Request ;
+   - Autrement, vous pouvez ouvrir un ticket pour que l'on vous accompagne sur l'implémentation : [Ajout de nouvelles données](https://github.com/etalab/siade_staging_data/issues/new?template=ajout-payloads.md)
+- Pour un endpoint n'ayant pas encore de dossier dans [`payloads/`](./payloads) :
+   - Si vous êtes à l'aise avec Github, vous pouvez créer un dossier dans [`future_payloads/`](./future_payloads) à l'aide d'une Pull Request ;
+   - Autrement, vous pouvez ouvrir un ticket pour que l'on vous accompagne sur l'implémentation : [Ajout d'un endpoint manquant](https://github.com/etalab/siade_staging_data/issues/new?template=proposer-une-am-lioration.md).
 
 ## <a name="developpement"></a> Développement
 
