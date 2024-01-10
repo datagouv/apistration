@@ -1,11 +1,19 @@
-# Dépôt de données de tests pour API Entreprise v3+ & API Particulier
+# Données de tests API Entreprise v3+ & API Particulier / Utilisation de l'environnement de test
 
 [![Tests](https://github.com/etalab/siade_staging_data/actions/workflows/tests.yml/badge.svg)](https://github.com/etalab/siade_staging_data/actions/workflows/tests.yml)
 
+Ce dépôt contient l'ensemble des données de tests pour les environnements de bac
+à sable d'API Entreprise (seulement pour la v3+)
+( https://staging.entreprise.api.gouv.fr ) et d'API
+Particulier ( https://staging.particulier.api.gouv.fr ).
+
 * [Quick start](#quick-start)
 * [Fonctionnement](#fonctionnement)
-  * [Cas de FranceConnect](#cas-de-franceconnect)
-* [Contribution](#contribution)
+  * [Un dossier de cas de tests pour chaque endpoint](#1endpoint-1dossier)
+  * [Format des cas de test](#format-cas-test)
+  * [Exemples d'appel d'un cas de test](#exemple-appel-cas-de-test)
+  * [Appels avec FranceConnect - _Uniquement API Particulier_](#apiparticulier-france-connect)
+* [Contribution : Ajouter des données de test](#ajouter-donnees-de-test)
 * [Développement](#developpement)
   * [Installation en local](#installation-en-local)
   * [Lancer la suite de tests pour vérifier les payloads](#lancer-la-suite-de-tests-pour-vérifier-les-payloads)
@@ -14,16 +22,11 @@
   * [Déploiement des données](#déploiement-des-données)
 * [Limitations](#limitations)
 
-Ce dépôt contient l'ensemble des données de tests pour les environnements de bac
-à sable d'API Entreprise (seulement pour la v3+)
-( https://staging.entreprise.api.gouv.fr ) et d'API
-Particulier ( https://staging.particulier.api.gouv.fr )
 
-## Quick start
 
-tl;dr:
+## <a name="quick-start"></a> Quick start
 
-En console:
+**tl;dr: Trois commandes en console pour faire fonctionner l'environnement de test :**
 
 Récupération d'un jeton:
 ```sh
@@ -47,29 +50,36 @@ curl -H "X-Api-Key: $token" \
 Les exemples sont dans les accordéons "Commande cURL" dans les dossiers de
 [payloads](./payloads)
 
-## Fonctionnement
+## <a name="fonctionnement"></a> Fonctionnement
 
-Les payloads de réponses se trouvent dans le dossier `payloads/`.
-Chaque endpoint possède son propre dossier sous l'une de ces formes :
+### <a name="1endpoint-1dossier"></a> Un dossier de cas de tests pour chaque endpoint :
 
-```
-api_entreprise_version_path_to_payload
-api_particulier_version_path_to_payload
-```
+Chaque endpoint de l'API Entreprise ou de l'API Particulier, pour lesquels des cas de tests ont été proposés, possède un dossier dans [`payloads/`](https://github.com/etalab/siade_staging_data/tree/develop/payloads), où sont regroupés ses cas de tests.
 
-Par exemple:
+Le nom de ce dossier a la forme suivante : `bouquetapi_version_endpointname`.
 
-```
-api_entreprise_v3_insee_unite_legale
-api_particulier_v2_dgfip_svair
-```
-
-Une table de correspondance url <-> nom du dossier est disponible à la
-racine du dossier payload : [README.md](./payloads/README.md) (généré
+Une table de correspondance _url de l'endpoint_ <-> _nom du dossier_ est disponible à la
+racine du dossier [`payloads/`](https://github.com/etalab/siade_staging_data/tree/develop/payloads) : [README.md](./payloads/README.md) (généré
 automatiquement par `bin/generate_payload_readme.rb`)
 
-Chaque dossier possède un README.md ainsi que des fichiers YAML ayant le format
-suivant :
+
+**Pour API Entreprise :**
+
+Nom type du dossier d'un endpoint : `api_entreprise_version_endpointname`
+> Par exemple : `api_entreprise_v3_insee_unite_legale`
+
+➡️ [Liens des dossiers d'endpoints de l'API Entreprise](https://github.com/etalab/siade_staging_data/blob/develop/payloads/README.md#api-entreprise-v3)
+
+**Pour API Particulier :**
+
+Nom type du sous-dossier d'une payload : `api_particulier_version_endpointname`
+> Par exemple : `api_particulier_v2_dgfip_svair`
+
+➡️ [Liens des dossiers d'endpoints de l'API Particulier](https://github.com/etalab/siade_staging_data/blob/develop/payloads/README.md#api-particulier)
+
+### <a name="format-cas-test"></a> Format des cas de test :
+
+Chaque dossier possède un README.md ainsi que des fichiers YAML des différents cas de tests ayant un format du type suivant :
 
 ```yaml
 ---
@@ -92,15 +102,18 @@ Avec:
 
 Toutes les autres clé potentiellements présentes dans la payload sont
 facultatives ou servent pour tout autre chose (affichage d'exemples sur les
-sites vitrines par exemple). Une liste (non-exhaustive) :
+fiches métiers par exemple). Une liste (non-exhaustive) :
 
 * `title`, titre de la payload, utilisé pour l'exemple ;
 * `description`, une description de la payload, utilisé pour l'exemple ;
-* `example`, booléen, précise si la payload sera affichée en example sur le site vitrine ;
+* `example`, booléen, précise si la payload sera affichée sur dans les fiches métiers du catalogue ;
 
-Pour déclencher la réponse ci-dessous, avec comme application API Particulier
-et comme chemin `v1/dgfip/impots`, il faut effectuer l'appel suivant:
 
+### <a name="exemple-appel-cas-de-test"></a> Exemples d'appel d'un cas de test :
+
+Pour déclencher l'[exemple de payload de réponse précédent](#format-cas-test), exemple créé de toute pièce pour ce tutoriel, avec comme chemin tout aussi fictif `v1/dgfip/impots`, il faut effectuer l'appel suivant:
+
+Pour API particulier : 
 ```sh
 curl -X GET \
   -H 'X-Api-Key: TOKEN' \
@@ -108,7 +121,7 @@ curl -X GET \
   https://staging.particulier.api.gouv.fr/v1/dgfip/impots
 ```
 
-Pour le cas d'API Entreprise:
+Pour API Entreprise :
 
 ```sh
 curl -X GET \
@@ -117,7 +130,7 @@ curl -X GET \
   https://staging.entreprise.api.gouv.fr/v1/dgfip/impots
 ```
 
-Les routes sont listées à la racine du dossier [payloads](./payloads)
+Les routes sont listées à la racine du dossier [`payloads/`](./payloads)
 
 À noter qu'il est possible de mettre n'importe quel status (valide), hormis ceux
 associés aux paramètres invalides et au jeton invalide:
@@ -127,7 +140,7 @@ associés aux paramètres invalides et au jeton invalide:
 En effet, les paramètres d'entrées sont vérifiés directement par l'application,
 ce qui garantie un comportement iso avec la production.
 
-## Cas de FranceConnect
+### <a name="apiparticulier-france-connect"></a> Appels avec FranceConnect - Uniquement pour API Particulier
 
 Certains endpoints d'API Particulier sont FranceConnectés : cela implique que
 l'on peut passer un jeton FranceConnect à la place des paramètres classiques
@@ -137,10 +150,10 @@ des données de civilité (un exemple [ici](./payloads/france_connect/default.ya
 données qui sont ensuite formatées pour effectuer un appel auprès du fournisseur
 de données correspondant.
 
-### En utilisant le FranceConnect d'integration
+#### En utilisant le FranceConnect d'integration
 
-Il est possible d'utiliser directement le service d'integration de FranceConnect et d'envoyer sur nos serveur en staging un jeton FranceConnect valide.
-Dans ce cas nous allons directement appeler le fournisseur de données avec l'identité pivot renvoyée par FranceConnect. Vous pouvez accédez à l'ensemble des identifiant valide sur le [dépot de FranceConnect](https://github.com/france-connect/identity-provider-example/blob/master/database.csv).
+Il est possible d'utiliser directement le service d'integration de FranceConnect et d'envoyer sur nos serveurs en staging un jeton FranceConnect valide.
+Dans ce cas nous allons directement appeler le fournisseur de données avec l'identité pivot renvoyée par FranceConnect. Vous pouvez accédez à l'ensemble des identifiants valides sur le [dépot de FranceConnect](https://github.com/france-connect/identity-provider-example/blob/master/database.csv).
 
 Afin que l'environnement d'intégration fonctionne il est impératif de demander les scopes relatifs à l'identité pivot lors de votre authentification auprès de FranceConnect. Les scopes obligatoires sont : 
 - given_name 
@@ -153,18 +166,18 @@ Afin que l'environnement d'intégration fonctionne il est impératif de demander
 
 Il est possible d'utiliser les alias de scope tel que précisé dans la documentation de [FranceConnect](https://partenaires.franceconnect.gouv.fr/fcp/fournisseur-service#identite-pivot).
 
-À noter que seuls certaines identités sont prises en compte dans les cas de test, le plus souvent la première de la liste (Angela DUBOIS). S'il n'y a pas de cas de test, vous recevrez la réponse générique tel que défini dans les fichiers swagger de l'api.
+À noter que seules certaines identités sont prises en compte dans les cas de test, le plus souvent la première de la liste (Angela DUBOIS). S'il n'y a pas de cas de test, vous recevrez la réponse générique tel que défini dans les fichiers swagger de l'api.
 
-Si vous souhaitez ajouter des cas de test, merci de vous réferrez à la section [contribution](#contribution).
+Si vous souhaitez ajouter des cas de test, merci de vous réferrez à la section [Ajouter des données de test](#ajouter-donnees-de-test).
 
-### En utilisant les faux jetons FranceConnect
+#### En utilisant les faux jetons FranceConnect
 
 Les données de tests de FranceConnect se trouvent dans le dossier
 [payloads/france_connect/](payloads/france_connect/)
 
-Il est possible dans ce dépôt de faire un mapping jeton <-> données
-FranceConnect, et derrière faire un mapping Données FranceConnect <-> réponse de
-l'API.
+Il est possible dans ce dépôt de faire un mapping _jeton_ <-> _données
+FranceConnect_, et derrière faire un mapping _Données FranceConnect_ <-> _réponse de
+l'API_.
 
 Par exemple pour `api/v2/etudiants-boursiers`:
 
@@ -219,26 +232,20 @@ lançant la commande suivante :
 bundle exec ruby bin/reload_mock_backend.rb
 ```
 
-## Contribution
+## <a name="ajouter-donnees-de-test"></a> Contribution : Ajouter des données de test 
 
-Si vous êtes développeur, référez-vous à la section [Développement](#developpement) ci-dessous.
+**Si vous êtes développeur**, référez-vous à la section [Développement](#developpement) ci-dessous.
 
-Si vous êtes un fournisseur de données et que vous voulez ajouter des données
-d'une API non existante encore, veuillez vous réferer au dossier
-[future_payloads](./future_payloads).
+**Si vous êtes un fournisseur de données** : 
 
-Si ce n'est pas le cas, il y a deux cas de figures:
+- Pour un endpoint ayant déjà un dossier dans [`payloads/`](./payloads) :
+   - Si vous êtes à l'aise avec Github, vous pouvez ajouter vous-même les fichiers des cas de tests que vous souhaitez, au travers d'une Pull Request ;
+   - Autrement, vous pouvez ouvrir un ticket pour que l'on vous accompagne sur l'implémentation : [Ajout de nouvelles données](https://github.com/etalab/siade_staging_data/issues/new?template=ajout-payloads.md)
+- Pour un endpoint n'ayant pas encore de dossier dans [`payloads/`](./payloads) :
+   - Si vous êtes à l'aise avec Github, vous pouvez créer un dossier dans [`future_payloads/`](./future_payloads) à l'aide d'une Pull Request ;
+   - Autrement, vous pouvez ouvrir un ticket pour que l'on vous accompagne sur l'implémentation : [Ajout d'un endpoint manquant](https://github.com/etalab/siade_staging_data/issues/new?template=proposer-une-am-lioration.md).
 
-1. Le dossier associé au endpoint que vous voulez n'existe pas : ouvrez un
-   ticket pour que l'on vous accompagne sur l'implémentation : [Ajout d'un
-   endpoint manquant](https://github.com/etalab/siade_staging_data/issues/new?template=proposer-une-am-lioration.md)
-2. Le dossier existe :
-   1. Soit vous pouvez tenter d'ajouter vous-même les fichiers que vous voulez à
-      l'aide d'une pull request ;
-   2. Soit vous ouvrez un ticket pour que l'on vous accompagne sur
-      l'implémentation : [Ajout de nouvelles données](https://github.com/etalab/siade_staging_data/issues/new?template=ajout-payloads.md).
-
-## Développement
+## <a name="developpement"></a> Développement
 
 ### Installation en local
 
