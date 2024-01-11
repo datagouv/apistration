@@ -1,10 +1,14 @@
+svair_gone = ->(env) do
+  [410, {}, ["Cette URL n'existe plus sur API Particulier depuis le 8 janvier 2024. Veuillez mettre à jour votre application."]]
+end
+
 namespace '/api', constraints: APIParticulierDomainConstraint.new do
   get 'ping' => '/ping#show'
 
   get 'introspect' => '/api_particulier/introspect#show'
 
   get 'caf/famille' => '/api_particulier/v2/cnaf/quotient_familial#show'
-  get 'impots/svair' => '/api_particulier/v2/dgfip/situation_ir#show'
+  get 'impots/svair', to: svair_gone
 
   get 'open-api.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/openapi-particulier.yaml'))]] }
   get 'france-connect/open-api.yml', to: ->(env) do
@@ -20,7 +24,7 @@ namespace '/api', constraints: APIParticulierDomainConstraint.new do
     get 'etudiants' => '/api_particulier/v2/mesri/student_status#show'
     get 'scolarites' => '/api_particulier/v2/men/scolarites#show'
     get 'etudiants-boursiers' => '/api_particulier/v2/cnous/student_scholarship#show'
-    get 'avis-imposition' => '/api_particulier/v2/dgfip/situation_ir#show'
+    get 'avis-imposition', to: svair_gone
   end
 end
 

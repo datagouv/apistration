@@ -49,10 +49,6 @@ RSpec.describe 'Mocking in staging for each routes' do
         'dateNaissance' => '1980-01-01',
         'codeEtablissement' => '1234567A',
         'anneeScolaire' => '2019-2020'
-      },
-      '/api/v2/avis-imposition' => {
-        'numeroFiscal' => '1234567890ABC',
-        'referenceAvis' => '2134567890ABC'
       }
     }.each do |path, params|
       it "works for #{path} by rendering 404 by default" do

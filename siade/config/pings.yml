@@ -92,17 +92,6 @@ shared:
         params:
           beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
           postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
-    impots:
-      kind: 'retriever'
-      cache: <%= 2.minutes %>
-      provider: 'DGFIP - SVAIR'
-      status_page:
-        name: "DGFIP - Svair (déprécié)"
-      driver_params:
-        retriever: 'DGFIP::SituationIR'
-        params:
-          tax_number: '<%= Siade.credentials[:ping_dgfip_svair_numero_fiscal] %>'
-          tax_notice_number: '<%= Siade.credentials[:ping_dgfip_svair_reference_avis] %>'
     pole_emploi_status:
       kind: 'retriever'
       cache: <%= 2.minutes %>

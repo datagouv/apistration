@@ -28,7 +28,6 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'ZIP'
   inflect.acronym 'TVA'
   inflect.acronym 'INE'
-  inflect.acronym 'SVAIR'
   inflect.acronym 'SSL'
   inflect.acronym 'VIES'
   inflect.acronym 'IR'
