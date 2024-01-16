@@ -65,16 +65,26 @@ paths:
         in: header
         schema:
           type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: true
+        schema:
+          type: string
       - name: nomUsage
         in: query
-        description: Nom d'usage
+        description: Nom d'usage. Ne pas renseigner si présence de jeton FranceConnect.
         example: DUPONT
         required: false
         schema:
           type: string
       - name: nomNaissance
         in: query
-        description: Nom de naissance
+        description: Nom de naissance. Ne pas renseigner si présence de jeton FranceConnect.
         example: JEAN
         required: false
         schema:
@@ -89,28 +99,30 @@ paths:
           example:
           - PIERRE
           - RICHARD
-        description: Liste des prénoms
+        description: Liste des prénoms. Ne pas renseigner si présence de jeton FranceConnect.
         required: false
       - name: anneeDateDeNaissance
         in: query
         description: Année de naissance. Ne pas la renseigner si celle-ci est inconnue
+          ou en cas de présence de jeton FranceConnect.
         example: 1990
         required: false
         schema:
           type: integer
       - name: moisDateDeNaissance
         in: query
-        description: Mois de naissance. Ne pas le renseigner si celui-ci est inconnu.
-          Cette valeur est ignorée si anneeDateDeNaissance est vide.
+        description: Mois de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          anneeDateDeNaissance est vide.
         example: 1
         required: false
         schema:
           type: integer
       - name: jourDateDeNaissance
         in: query
-        description: Jour de naissance. Ne pas le renseigner si celui-ci est inconnu.
-          Cette valeur est ignorée si moisDateDeNaissance ou anneeDateDeNaissance
-          est vide.
+        description: Jour de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          moisDateDeNaissance ou anneeDateDeNaissance est vide.
         example: 1
         required: false
         schema:
@@ -123,8 +135,9 @@ paths:
           maxLength: 5
           example: '08480'
         description: Code Insee à 5 chiffres du lieu de naissance de la personne sur
-          5 chiffres. Ne pas remplir si la personne est née à l'étranger. Le champs
-          est obligatoire si la personne est née en France
+          5 chiffres. Ne pas remplir si la personne est née à l'étranger ou si présence
+          de jeton FranceConnect. En l'absence de jeton FranceConnect, le champs est
+          obligatoire si la personne est née en France
         required: false
       - name: codePaysLieuDeNaissance
         in: query
@@ -133,8 +146,9 @@ paths:
           minLength: 5
           maxLength: 5
           example: '99100'
-        description: Code Insee à 5 chiffres du pays de naissance (France = 99100)
-        required: true
+        description: Code Insee à 5 chiffres du pays de naissance (France = 99100).
+          Obligatoire si absence de jeton FranceConnect.
+        required: false
       - name: sexe
         in: query
         schema:
@@ -142,13 +156,19 @@ paths:
           enum:
           - M
           - F
-        description: Sexe de la personne, masculin ou féminin
-        required: true
+        description: Sexe de la personne, masculin ou féminin. Obligatoire si absence
+          de jeton FranceConnect.
         example: M
+        required: false
+      security:
+      - franceConnectToken: []
+        apiKey: []
       description: "Savoir si un particulier est bénéficiaire de la complémentaire
         santé solidaire (C2S). \n\n Pour de plus amples informations sur cette api
         et y avoir accès en avant première, veuillez contacter l'équipe API Particulier.
-        \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire) "
+        \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)
+        \n L'API peut être appellée avec les données identité pivot ou avec un jeton
+        FranceConnect. "
       responses:
         '200':
           description: Quotient Familial trouvée
@@ -247,6 +267,23 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              examples:
+                acces_non_autorise_50002:
+                  value:
+                    errors:
+                    - code: '50002'
+                      title: Accès non autorisé
+                      detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                      source:
+                      meta: {}
+                  summary: Accès non autorisé
+                  description: Le jeton d'accès n'a pas été trouvé ou est expiré.
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/api/v2/composition-familiale-v2":
     get:
       summary: Quotient familial MSA & CAF
@@ -257,16 +294,26 @@ paths:
         in: header
         schema:
           type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: true
+        schema:
+          type: string
       - name: nomUsage
         in: query
-        description: Nom d'usage
+        description: Nom d'usage. Ne pas renseigner si présence de jeton FranceConnect.
         example: DUPONT
         required: false
         schema:
           type: string
       - name: nomNaissance
         in: query
-        description: Nom de naissance
+        description: Nom de naissance. Ne pas renseigner si présence de jeton FranceConnect.
         example: JEAN
         required: false
         schema:
@@ -281,28 +328,30 @@ paths:
           example:
           - PIERRE
           - RICHARD
-        description: Liste des prénoms
+        description: Liste des prénoms. Ne pas renseigner si présence de jeton FranceConnect.
         required: false
       - name: anneeDateDeNaissance
         in: query
         description: Année de naissance. Ne pas la renseigner si celle-ci est inconnue
+          ou si présence de jeton FranceConnect.
         example: 1990
         required: false
         schema:
           type: integer
       - name: moisDateDeNaissance
         in: query
-        description: Mois de naissance. Ne pas le renseigner si celui-ci est inconnu.
-          Cette valeur est ignorée si anneeDateDeNaissance est vide.
+        description: Mois de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou si présence de jeton FranceConnect. Cette valeur est ignorée si anneeDateDeNaissance
+          est vide.
         example: 1
         required: false
         schema:
           type: integer
       - name: jourDateDeNaissance
         in: query
-        description: Jour de naissance. Ne pas le renseigner si celui-ci est inconnu.
-          Cette valeur est ignorée si moisDateDeNaissance ou anneeDateDeNaissance
-          est vide.
+        description: Jour de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou si présence de jeton FranceConnect. Cette valeur est ignorée si moisDateDeNaissance
+          ou anneeDateDeNaissance est vide.
         example: 1
         required: false
         schema:
@@ -315,8 +364,9 @@ paths:
           maxLength: 5
           example: '08480'
         description: Code Insee à 5 chiffres du lieu de naissance de la personne sur
-          5 chiffres. Ne pas remplir si la personne est née à l'étranger. Le champs
-          est obligatoire si la personne est née en France
+          5 chiffres. Ne pas remplir si la personne est née à l'étranger. Ne pas renseigner
+          si présence de jeton FranceConnect. En l'absence de jeton FranceConnect,
+          ce champs est obligatoire si la personne est née en France.
         required: false
       - name: codePaysLieuDeNaissance
         in: query
@@ -325,8 +375,9 @@ paths:
           minLength: 5
           maxLength: 5
           example: '99100'
-        description: Code Insee à 5 chiffres du pays de naissance (France = 99100)
-        required: true
+        description: Code Insee à 5 chiffres du pays de naissance (France = 99100).
+          Obligatoire si absence de jeton FranceConnect.
+        required: false
       - name: sexe
         in: query
         schema:
@@ -334,9 +385,10 @@ paths:
           enum:
           - M
           - F
-        description: Sexe de la personne, masculin ou féminin
-        required: true
+        description: Sexe de la personne, masculin ou féminin. Obligatoire si absence
+          de jeton FranceConnect.
         example: M
+        required: false
       - name: annee
         in: query
         description: Année du quotient familial recherché. Si l'année n'est pas renseignée,
@@ -353,13 +405,18 @@ paths:
         required: false
         schema:
           type: integer
+      security:
+      - franceConnectToken: []
+        apiKey: []
       description: "Quotient familial et composition de la famille d'un allocataire
         du régime agricole (régime général à venir). \n Pour de plus amples informations
         sur cette api et y avoir accès en avant première, veuillez contacter l'équipe
-        API Particulier. \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial_v2) "
+        API Particulier. \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial_v2)
+        \n L'API peut être appellée avec les données identité pivot ou avec un jeton
+        FranceConnect. "
       responses:
         '200':
-          description: Quotient Familial trouvée
+          description: Quotient Familial trouvé
           x-operationId: api_particulier_v2_cnaf_quotient_familial_v2
           content:
             application/json:
@@ -610,6 +667,23 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              examples:
+                acces_non_autorise_50002:
+                  value:
+                    errors:
+                    - code: '50002'
+                      title: Accès non autorisé
+                      detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                      source:
+                      meta: {}
+                  summary: Accès non autorisé
+                  description: Le jeton d'accès n'a pas été trouvé ou est expiré.
+              schema:
+                "$ref": "#/components/schemas/Error"
   "/api/v2/scolarites":
     get:
       summary: Statut élève scolarisé et boursier
@@ -618,6 +692,16 @@ paths:
       parameters:
       - name: X-Api-Key
         in: header
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: false
         schema:
           type: string
       - name: nom
@@ -852,6 +936,16 @@ paths:
         in: header
         schema:
           type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: false
+        schema:
+          type: string
       - name: identifiant
         in: query
         description: Identifiant Pôle emploi choisi par le particulier lors de la
@@ -892,8 +986,10 @@ paths:
                           type: string
                           example: '2021-01-01'
                         montant:
-                          title: Montant
-                          description: Montant total du paiement
+                          title: Montant total
+                          description: Montant total du paiement. Il s'agit de la
+                            somme des allocations, aides et autres paiements, moins
+                            le prélèvement de l'impôt à la source.
                           type: number
                           example: 123.4
                         allocations:
@@ -979,258 +1075,6 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/Error"
-  "/api/v2/avis-imposition":
-    get:
-      description: |-
-        Le service permet de vérifier l'authenticité du justificatif d'impôt sur le revenu ou de l'avis d'impôt sur le revenu présenté par un usager.
-
-        **Paramètres d'appel :** numéro fiscal et numéro d'avis d'imposition
-        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/tree/develop/payloads/api_particulier_v2_dgfip_situation_ir)
-      summary: Service de vérification de l'avis d'impôt sur le revenu
-      parameters:
-      - name: numeroFiscal
-        in: query
-        description: Numéro fiscal propre à chaque citoyen (identifiant numérique
-          de 13 chiffres)
-        required: true
-        schema:
-          type: string
-      - name: referenceAvis
-        in: query
-        description: Référence de l'avis fiscal (identifiant alphanumérique de 13
-          caractères). Si l'avis est un avis de dégrèvement, l'identifiant est alors
-          composé de 14 caractères.
-        required: true
-        schema:
-          type: string
-      tags:
-      - Avis d'imposition
-      responses:
-        '200':
-          x-operationId: api_particulier_v2_dgfip_situation_ir
-          description: Avis d'imposition
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  declarant1: &1
-                    type: object
-                    properties:
-                      nom:
-                        type: string
-                        description: Nom du déclarant
-                        example: MARTIN
-                      nomNaissance:
-                        type: string
-                        description: Nom de naissance du déclarant
-                        example: MARTIN
-                      prenoms:
-                        type: string
-                        description: Prénoms du déclarant
-                        example: JEAN
-                  declarant2: *1
-                  foyerFiscal:
-                    type: object
-                    description: Adresse déclarée au 1e janvier
-                    properties:
-                      adresse:
-                        type: string
-                        example: 21 RUE DES MARMOTS 75001 PARIS
-                      annee:
-                        type: number
-                        example: 2022
-                  dateRecouvrement:
-                    type: string
-                    description: Date de mise en recouvrement de l'avis d'impôt
-                    pattern: "^\\d{2}/\\d{2}/\\d{4}$"
-                    example: 31/07/2021
-                  dateEtablissement:
-                    type: string
-                    description: Date d'établissement
-                    pattern: "^\\d{2}/\\d{2}/\\d{4}$"
-                    example: 06/07/2021
-                  nombreParts:
-                    type: number
-                    description: Nombre de part(s)
-                    example: 1.0
-                  situationFamille:
-                    type: string
-                    description: Situation de famille
-                    example: Marié(e)s
-                  revenuBrutGlobal:
-                    type: number
-                    description: Revenu brut global
-                    example: 30000
-                  revenuImposable:
-                    type: number
-                    description: Revenu imposable
-                    example: 29000
-                  impotRevenuNetAvantCorrections:
-                    type: number
-                    nullable: true
-                    description: Impôt sur le revenu net avant corrections. Est nul
-                      si Non imposable
-                  montantImpot:
-                    type: number
-                    nullable: true
-                    description: Montant de l'impôt. Est nul si Non imposable
-                  revenuFiscalReference:
-                    type: number
-                    description: Revenu fiscal de référence
-                    example: 29000
-                  nombrePersonnesCharge:
-                    type: integer
-                    description: Nombre de personne(s) à charge
-                    example: 3
-                  anneeImpots:
-                    type: string
-                    pattern: "^\\d{4}$"
-                    description: Année de l'impôt
-                    example: '2021'
-                  anneeRevenus:
-                    type: string
-                    pattern: "^\\d{4}$"
-                    description: Année des revenus
-                    example: '2020'
-                  erreurCorrectif:
-                    type: string
-                    example: ''
-                    description: |
-                      S'il existe un correctif plus récent que l'avis contrôlé, ce champ
-                      prend la valeur "Ce document ne correspond pas à la
-                      situation la plus récente pour cet usager". Sinon, le
-                      champ est vide. La présence de ce champ
-                      indique qu'il existe un avis d'imposition avec un numéro
-                      d'avis distinct qui contient les informations plus
-                      récentes. La mise à jour de l'avis initial est en général
-                      à l'initiative de l'administré auprès des impôts (par
-                      exemple : changement de revenus ou du nombre de part).
-                      L'API Particulier peut fournir cet avis à condition de
-                      connaître le numéro de l'avis le plus récent. L'API
-                      Particulier ne peut pas fournir le numéro de l'avis le
-                      plus récent en réponse de l'appel initial. Pour trouver le
-                      numéro de cet avis, il faut le demander au particulier
-                      auquel l'avis est adressé ou le demander manuellement
-                      auprès du centre des impôts de votre région. Vous
-                      trouverez de plus amples informations sur <a
-                      href="https://www.impots.gouv.fr/portail/precisions-sur-\
-                      le-service-de-verification-des-avis-dimpot-sur-le-revenu-\
-                      svair">le site des impôts</a>."
-                  situationPartielle:
-                    type: string
-                    example: ''
-                    description: |
-                      Le champ "situationPartielle" indique, dans un foyer marié ou
-                      pacsé, le décès d'un des contribuables. Cela signifie
-                      qu'il y aura 2 avis de taxations pour une même année : une
-                      taxation pour le couple du 01/01/AAAA à la date du décès
-                      d'un déclarant, et une autre taxation, pour le conjoint
-                      survivant, de la date de décès du conjoint au 31/12/AAAA.
-                      Ce champ prend la valeur "(*) Situation  {anneeRevenus}
-                      partielle". Sinon, le champ est vide."
-        '401': &2
-          description: Votre jeton d'API n'a pas été trouvé ou n'est pas actif
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: access_denied
-                  reason:
-                    type: string
-                    example: Token not found or inactive
-                  message:
-                    type: string
-                    example: Votre jeton d'API n'a pas été trouvé ou n'est pas actif
-        '404':
-          description: Les paramètres fournis sont incorrects ou ne correspondent
-            pas à un avis
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: not_found
-                  reason:
-                    type: string
-                    example: Les paramètres fournis sont incorrects ou ne correspondent
-                      pas à un avis
-                  message:
-                    type: string
-                    example: Les paramètres fournis sont incorrects ou ne correspondent
-                      pas à un avis
-        '500': &3
-          description: Une erreur interne s'est produite, l'équipe a été prévenue.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: error
-                  reason:
-                    type: string
-                    example: Internal server error
-                  message:
-                    type: string
-                    example: Une erreur interne s'est produite, l'équipe a été prévenue.
-        '502':
-          description: La réponse du fournisseur de donnée est inexploitable
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: invalid_response
-                  reason:
-                    type: string
-                    example: Data provider returned an invalid data format.
-                  message:
-                    type: string
-                    example: La réponse du fournisseur de donnée est inexploitable
-        '503': &4
-          description: Une erreur est survenue lors de l'appel au fournisseur de donnée
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: network_error
-                  reason:
-                    type: string
-                    example: timeout of 10000 ms exceeded
-                  message:
-                    type: string
-                    example: Une erreur est survenue lors de l'appel au fournisseur
-                      de donnée
-        '509':
-          description: Le fournisseur de donnée a rejeté la demande en raison d'un
-            trop grand nombre d'échecs antérieurs.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: rate_limited
-                  reason:
-                    type: string
-                    example: DGFIP error rate limit exceeded
-                  message:
-                    type: string
-                    example: Le fournisseur de donnée a rejeté la demande en raison
-                      d'un trop grand nombre d'échecs antérieurs.
   "/api/v2/composition-familiale":
     get:
       summary: Quotient familial (CAF)
@@ -1261,6 +1105,16 @@ paths:
           type: number
           format: string
           example: 75001
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: false
+        schema:
+          type: string
       tags:
       - Quotient familial
       responses:
@@ -1389,7 +1243,22 @@ paths:
                     description: Le quotient familial transmis correspond au QF du
                       mois M-1 (M étant le mois de l'appel).
                     example: 6
-        '401': *2
+        '401': &1
+          description: Votre jeton d'API n'a pas été trouvé ou n'est pas actif
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: access_denied
+                  reason:
+                    type: string
+                    example: Token not found or inactive
+                  message:
+                    type: string
+                    example: Votre jeton d'API n'a pas été trouvé ou n'est pas actif
         '404':
           description: Dossier allocataire inexistant. Le document ne peut être édité.
           content:
@@ -1408,7 +1277,22 @@ paths:
                     type: string
                     example: Dossier allocataire inexistant. Le document ne peut être
                       édité.
-        '500': *3
+        '500': &2
+          description: Une erreur interne s'est produite, l'équipe a été prévenue.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: error
+                  reason:
+                    type: string
+                    example: Internal server error
+                  message:
+                    type: string
+                    example: Une erreur interne s'est produite, l'équipe a été prévenue.
         '503':
           description: Erreur inconnue du fournisseur de donnée (CNAF)
           content:
@@ -1438,6 +1322,16 @@ paths:
         in: query
         description: Identifiant Pôle emploi choisi par le particulier lors de la
           création de son espace personnel en ligne.
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: false
         schema:
           type: string
       tags:
@@ -1610,7 +1504,7 @@ paths:
                     - PERSONNE SANS EMPLOI DISPONIBLE DUREE DETERMINEE OU SAISON
                     - PERSONNE SANS EMPLOI NON DISPONIBLE IMMEDIATEMENT
                     - PERSONNE POURVUE D'UN EMPLOI A LA RECHERCHE D'UN AUTRE
-        '401': *2
+        '401': *1
         '404':
           description: Aucune situation Pôle emploi n'a pu être trouvée avec les critères
             de recherche fournis
@@ -1629,8 +1523,39 @@ paths:
                     type: string
                     example: Aucune situation Pôle emploi n'a pu être trouvée avec
                       les critères de recherche fournis
-        '500': *3
-        '503': *4
+        '500':
+          description: La réponse du fournisseur de donnée est inexploitable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: invalid_response
+                  reason:
+                    type: string
+                    example: Data provider returned an invalid data format.
+                  message:
+                    type: string
+                    example: La réponse du fournisseur de donnée est inexploitable
+        '503': &3
+          description: Une erreur est survenue lors de l'appel au fournisseur de donnée
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: network_error
+                  reason:
+                    type: string
+                    example: timeout of 10000 ms exceeded
+                  message:
+                    type: string
+                    example: Une erreur est survenue lors de l'appel au fournisseur
+                      de donnée
   "/api/v2/etudiants":
     get:
       tags:
@@ -1678,6 +1603,16 @@ paths:
       - name: sexe
         description: Sexe de l'étudiant
         in: query
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: false
         schema:
           type: string
       summary: Statut étudiant
@@ -1783,8 +1718,8 @@ paths:
                                 associée au code UAI
                               example: EGC AIN BOURG EN BRESSE EC GESTION ET COMMERCE
                                 (01000)
-        '401': *2
-        '404': &5
+        '401': *1
+        '404': &4
           description: Aucun étudiant n'a pu être trouvé avec les critères de recherche
             fournis
           content:
@@ -1802,8 +1737,8 @@ paths:
                     type: string
                     example: Aucun étudiant n'a pu être trouvé avec les critères de
                       recherche fournis
-        '500': *3
-        '503': *4
+        '500': *2
+        '503': *3
   "/api/v2/etudiants-boursiers":
     get:
       tags:
@@ -1844,6 +1779,7 @@ paths:
         required: false
         schema:
           type: string
+          example: Angers
       - name: sexe
         description: Sexe de l'étudiant
         in: query
@@ -1852,6 +1788,16 @@ paths:
           enum:
           - M
           - F
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: false
+        schema:
+          type: string
       summary: Statut étudiant boursier
       description: |-
         Statut et échelon boursier d'un étudiant, délivrés par le Cnous.
@@ -1979,8 +1925,8 @@ paths:
                   message:
                     type: string
                     example: Le sexe est manquant
-        '401': *2
-        '404': *5
+        '401': *1
+        '404': *4
         '409':
           description: Des doublons ont été trouvé, merci d'affiner vos critères.
           content:
@@ -1997,8 +1943,8 @@ paths:
                   message:
                     type: string
                     example: Plusieurs ressources correspondent aux critères
-        '500': *3
-        '503': *4
+        '500': *2
+        '503': *3
   "/api/ping":
     get:
       summary: Statut des serveurs applicatifs API Particulier
@@ -2009,7 +1955,7 @@ paths:
       tags:
       - Ping
       security: []
-      responses: &6
+      responses: &5
         '200':
           description: pong
           content:
@@ -2018,7 +1964,7 @@ paths:
                 type: string
                 example: pong
                 pattern: "^pong$"
-        '500': *3
+        '500': *2
   "/api/impots/ping":
     get:
       summary: Statut des serveurs de la DGFIP
@@ -2030,7 +1976,7 @@ paths:
       - Ping
       security: []
       deprecated: true
-      responses: *6
+      responses: *5
   "/api/caf/ping":
     get:
       summary: Statut des serveurs de la CAF
@@ -2042,7 +1988,7 @@ paths:
       - Ping
       deprecated: true
       security: []
-      responses: *6
+      responses: *5
   "/api/introspect":
     get:
       summary: Introspection du jeton donné en paramètre
@@ -2070,8 +2016,8 @@ paths:
                     description: Scopes techniques associés au jeton
                     items:
                       type: string
-        '401': *2
-        '500': *3
+        '401': *1
+        '500': *2
 security:
 - apiKey: []
 servers:
@@ -2100,4 +2046,14 @@ components:
       in: header
       description: Jeton d'authentification obtenu suite à la validation de votre
         <a href='https://datapass.api.gouv.fr/'>demande d'habilitation</a>, visible
-        sur <a href='https://particulier.api.gouv.fr/compte'>le portail API Particulier</a>
+        sur <a href='https://particulier.api.gouv.fr/compte'>le portail API Particulier</a>.
+        Obligatoire, sauf sur une API FranceConnectée lorsqu'un jeton FranceConnect
+        est présent.
+    franceConnectToken:
+      type: http
+      scheme: bearer
+      in: header
+      bearerFormat: Jeton FranceConnect
+      description: Jeton FranceConnect obtenu suite à une cinématique de connexion
+        FranceConnect. Ne fonctionne que sur les APIs FranceConnectées. Remplace l'authentification
+        par X-Api-Key sur les APIs FranceConnectées.

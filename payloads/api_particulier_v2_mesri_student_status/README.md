@@ -1,118 +1,4 @@
 # Statut étudiant
-* [0100008010J.yaml](0100008010J.yaml)
-
-  Status `200`
-
-  Étudiant 0100008010J inscrit (appel par INE)
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "ine": "0100008010J"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "ine": "0100008010J",
-    "nomFamille": "Petit",
-    "prenom": "Thomas",
-    "dateNaissance": "2000-02-12",
-    "inscriptions": [
-      {
-        "dateDebutInscription": "2019-02-16",
-        "dateFinInscription": "2021-05-30",
-        "statut": "inscrit",
-        "codeCommune": "75020",
-        "etablissement": {
-          "uai": "0750106H",
-          "nomEtablissement": "ECOLE TECHNOLOGIQUE PRIVEE"
-        },
-        "regime": "formation initiale"
-      }
-    ]
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=0100008010J' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
-  ```
-
-  </p>
-  </details>
-* [012345678AA.yaml](012345678AA.yaml)
-
-  Status `200`
-
-  Étudiant 012345678AA inscrit (appel par INE)
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "ine": "012345678AA"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "ine": "012345678AA",
-    "nomFamille": "DUBOIS",
-    "prenom": "Jean",
-    "dateNaissance": "2003-01-10",
-    "inscriptions": [
-      {
-        "dateDebutInscription": "2020-09-11",
-        "dateFinInscription": "2022-06-30",
-        "statut": "inscrit",
-        "codeCommune": "75020",
-        "etablissement": {
-          "uai": "0750106H",
-          "nomEtablissement": "ECOLE TECHNOLOGIQUE PRIVEE"
-        },
-        "regime": "formation initiale"
-      }
-    ]
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=012345678AA' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
-  ```
-
-  </p>
-  </details>
 * [404.yaml](404.yaml)
 
   Status `404`
@@ -506,7 +392,7 @@
   ```json
   {
     "ine": "0100007108D",
-    "nomFamille": "MARTIN",
+    "nom": "MARTIN",
     "prenom": "Jeanne",
     "dateNaissance": "2001-11-10",
     "inscriptions": [
@@ -539,6 +425,120 @@
 
   </p>
   </details>
+* [ine_0100008010J.yaml](ine_0100008010J.yaml)
+
+  Status `200`
+
+  Étudiant 0100008010J inscrit (appel par INE)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "0100008010J"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "0100008010J",
+    "nom": "Petit",
+    "prenom": "Thomas",
+    "dateNaissance": "2000-02-12",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2019-02-16",
+        "dateFinInscription": "2021-05-30",
+        "statut": "inscrit",
+        "codeCommune": "75020",
+        "etablissement": {
+          "uai": "0750106H",
+          "nomEtablissement": "ECOLE TECHNOLOGIQUE PRIVEE"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=0100008010J' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [ine_012345678AA.yaml](ine_012345678AA.yaml)
+
+  Status `200`
+
+  Étudiant 012345678AA inscrit (appel par INE)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "012345678AA"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "012345678AA",
+    "nom": "DUBOIS",
+    "prenom": "Jean",
+    "dateNaissance": "2003-01-10",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2020-09-11",
+        "dateFinInscription": "2022-06-30",
+        "statut": "inscrit",
+        "codeCommune": "75020",
+        "etablissement": {
+          "uai": "0750106H",
+          "nomEtablissement": "ECOLE TECHNOLOGIQUE PRIVEE"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=012345678AA' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
 * [ine_655888578AE.yaml](ine_655888578AE.yaml)
 
   Status `200`
@@ -563,7 +563,7 @@
   ```json
   {
     "ine": "655888578AE",
-    "nomFamille": "The Rabbit",
+    "nom": "KOSAKAMI",
     "prenom": "Korako",
     "dateNaissance": "2002-10-13",
     "inscriptions": [
@@ -596,6 +596,62 @@
 
   </p>
   </details>
+* [ine_660309901AG.yaml](ine_660309901AG.yaml)
+
+  Status `200`
+
+  Étudiant 660309901AG inscrit (appel par INE), ne renvoie pas d'INE
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "660309901AG"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "LEBRETON",
+    "prenom": "Arnaud",
+    "dateNaissance": "1988-09-10",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2021-09-16",
+        "dateFinInscription": "2023-07-25",
+        "statut": "inscrit",
+        "codeCommune": "75020",
+        "etablissement": {
+          "uai": "0750106H",
+          "nomEtablissement": "ECOLE TECHNOLOGIQUE PRIVEE"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=660309901AG' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
 * [ine_675773666AD.yaml](ine_675773666AD.yaml)
 
   Status `200`
@@ -620,9 +676,9 @@
   ```json
   {
     "ine": "675773666AD",
-    "nomFamille": "DUPONT",
-    "prenom": "Georges",
-    "dateNaissance": "2003-01-16",
+    "nom": "Moreau",
+    "prenom": "Aurélie",
+    "dateNaissance": "2002-01-02",
     "inscriptions": [
       {
         "dateDebutInscription": "2022-09-05",
