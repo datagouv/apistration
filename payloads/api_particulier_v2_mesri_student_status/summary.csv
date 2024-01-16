@@ -1,42 +1,4 @@
 Titre,Description,Paramètres,Status,Réponse
-,Étudiant 0100008010J inscrit (appel par INE),"{""ine"":""0100008010J""}",200,"{
-  ""ine"": ""0100008010J"",
-  ""nomFamille"": ""Petit"",
-  ""prenom"": ""Thomas"",
-  ""dateNaissance"": ""2000-02-12"",
-  ""inscriptions"": [
-    {
-      ""dateDebutInscription"": ""2019-02-16"",
-      ""dateFinInscription"": ""2021-05-30"",
-      ""statut"": ""inscrit"",
-      ""codeCommune"": ""75020"",
-      ""etablissement"": {
-        ""uai"": ""0750106H"",
-        ""nomEtablissement"": ""ECOLE TECHNOLOGIQUE PRIVEE""
-      },
-      ""regime"": ""formation initiale""
-    }
-  ]
-}"
-,Étudiant 012345678AA inscrit (appel par INE),"{""ine"":""012345678AA""}",200,"{
-  ""ine"": ""012345678AA"",
-  ""nomFamille"": ""DUBOIS"",
-  ""prenom"": ""Jean"",
-  ""dateNaissance"": ""2003-01-10"",
-  ""inscriptions"": [
-    {
-      ""dateDebutInscription"": ""2020-09-11"",
-      ""dateFinInscription"": ""2022-06-30"",
-      ""statut"": ""inscrit"",
-      ""codeCommune"": ""75020"",
-      ""etablissement"": {
-        ""uai"": ""0750106H"",
-        ""nomEtablissement"": ""ECOLE TECHNOLOGIQUE PRIVEE""
-      },
-      ""regime"": ""formation initiale""
-    }
-  ]
-}"
 ,Étudiant non trouvé,"{""ine"":""1234567404G""}",404,"{
   ""error"": ""not_found"",
   ""reason"": ""Student not found"",
@@ -130,7 +92,7 @@ Titre,Description,Paramètres,Status,Réponse
 }"
 ,Étudiant 0100007108D inscrit (appel par INE),"{""ine"":""0100007108D""}",200,"{
   ""ine"": ""0100007108D"",
-  ""nomFamille"": ""MARTIN"",
+  ""nom"": ""MARTIN"",
   ""prenom"": ""Jeanne"",
   ""dateNaissance"": ""2001-11-10"",
   ""inscriptions"": [
@@ -147,9 +109,47 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
+,Étudiant 0100008010J inscrit (appel par INE),"{""ine"":""0100008010J""}",200,"{
+  ""ine"": ""0100008010J"",
+  ""nom"": ""Petit"",
+  ""prenom"": ""Thomas"",
+  ""dateNaissance"": ""2000-02-12"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2019-02-16"",
+      ""dateFinInscription"": ""2021-05-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75020"",
+      ""etablissement"": {
+        ""uai"": ""0750106H"",
+        ""nomEtablissement"": ""ECOLE TECHNOLOGIQUE PRIVEE""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant 012345678AA inscrit (appel par INE),"{""ine"":""012345678AA""}",200,"{
+  ""ine"": ""012345678AA"",
+  ""nom"": ""DUBOIS"",
+  ""prenom"": ""Jean"",
+  ""dateNaissance"": ""2003-01-10"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2020-09-11"",
+      ""dateFinInscription"": ""2022-06-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75020"",
+      ""etablissement"": {
+        ""uai"": ""0750106H"",
+        ""nomEtablissement"": ""ECOLE TECHNOLOGIQUE PRIVEE""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
 ,Étudiant 655888578AE inscrit (appel par INE),"{""ine"":""655888578AE""}",200,"{
   ""ine"": ""655888578AE"",
-  ""nomFamille"": ""The Rabbit"",
+  ""nom"": ""KOSAKAMI"",
   ""prenom"": ""Korako"",
   ""dateNaissance"": ""2002-10-13"",
   ""inscriptions"": [
@@ -166,11 +166,29 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
+,"Étudiant 660309901AG inscrit (appel par INE), ne renvoie pas d'INE","{""ine"":""660309901AG""}",200,"{
+  ""nom"": ""LEBRETON"",
+  ""prenom"": ""Arnaud"",
+  ""dateNaissance"": ""1988-09-10"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2021-09-16"",
+      ""dateFinInscription"": ""2023-07-25"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75020"",
+      ""etablissement"": {
+        ""uai"": ""0750106H"",
+        ""nomEtablissement"": ""ECOLE TECHNOLOGIQUE PRIVEE""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
 ,Étudiant 675773666AD inscrit (appel par INE),"{""ine"":""675773666AD""}",200,"{
   ""ine"": ""675773666AD"",
-  ""nomFamille"": ""DUPONT"",
-  ""prenom"": ""Georges"",
-  ""dateNaissance"": ""2003-01-16"",
+  ""nom"": ""Moreau"",
+  ""prenom"": ""Aurélie"",
+  ""dateNaissance"": ""2002-01-02"",
   ""inscriptions"": [
     {
       ""dateDebutInscription"": ""2022-09-05"",
