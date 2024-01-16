@@ -8,6 +8,7 @@ description: |-
   - [Param. appel] Deux prénoms
   - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière
 params:
+  recipient: '13002526500013'
   codeInseeLieuDeNaissance: '08481'
   codePaysLieuDeNaissance: '99127'
   sexe: 'M'

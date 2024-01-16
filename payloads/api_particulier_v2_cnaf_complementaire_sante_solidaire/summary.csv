@@ -5,7 +5,7 @@ Ce cas permet de tester :
 - [Param. appel] lieu de naissance en France
 - [Param. appel] sexe féminin
 - [Param. appel] Deux prénoms
-- [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""DUPONT"",""prenoms"":[""JEANNE"",""LAURE""],""anneeDateDeNaissance"":1993,""moisDateDeNaissance"":8}",200,"{
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière","{""recipient"":""13002526500013"",""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""DUPONT"",""prenoms"":[""JEANNE"",""LAURE""],""anneeDateDeNaissance"":1993,""moisDateDeNaissance"":8}",200,"{
   ""status"": ""beneficiaire_avec_participation_financiere"",
   ""dateDebut"": ""2023-06-01"",
   ""dateFin"": ""2024-06-01""
@@ -16,7 +16,7 @@ Ce cas permet de tester :
 - [Param. appel] Pays de naissance autre que la France
 - [Param. appel] sexe masculin
 - [Param. appel] Deux prénoms
-- [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""codeInseeLieuDeNaissance"":""08481"",""codePaysLieuDeNaissance"":""99127"",""sexe"":""M"",""nomUsage"":""DUPONT"",""prenoms"":[""PIERRE"",""PAUL""],""anneeDateDeNaissance"":1984,""moisDateDeNaissance"":12}",200,"{
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""recipient"":""13002526500013"",""codeInseeLieuDeNaissance"":""08481"",""codePaysLieuDeNaissance"":""99127"",""sexe"":""M"",""nomUsage"":""DUPONT"",""prenoms"":[""PIERRE"",""PAUL""],""anneeDateDeNaissance"":1984,""moisDateDeNaissance"":12}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2023-02-01"",
   ""dateFin"": ""2024-02-01""
@@ -26,17 +26,17 @@ Ce cas permet de tester :
 Ce cas permet de tester :
 - [Param. appel] lieu de naissance en France
 - [Param. appel] sexe masculin
-- [Réponse] statut non-bénéficiaire de la complémentaire santé solidaire","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M"",""nomUsage"":""DUPONT"",""prenoms"":[""PIERRE""],""anneeDateDeNaissance"":1966,""moisDateDeNaissance"":6}",200,"{
+- [Réponse] statut non-bénéficiaire de la complémentaire santé solidaire","{""recipient"":""13002526500013"",""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M"",""nomUsage"":""DUPONT"",""prenoms"":[""PIERRE""],""anneeDateDeNaissance"":1966,""moisDateDeNaissance"":6}",200,"{
   ""status"": ""non_beneficiaire_css"",
   ""dateDebut"": ""null"",
   ""dateFin"": ""null""
 }"
-,Dossier non trouvé,"{""codeInseeLieuDeNaissance"":""00404"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",404,"{
+,Dossier non trouvé,"{""recipient"":""13002526500013"",""codeInseeLieuDeNaissance"":""00404"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",404,"{
   ""error"": ""not_found"",
   ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
   ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
 }"
-,Timeout - délai d'attente dépassé,"{""codeInseeLieuDeNaissance"":""00503"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",503,"{
+,Timeout - délai d'attente dépassé,"{""recipient"":""13002526500013"",""codeInseeLieuDeNaissance"":""00503"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",503,"{
   ""error"": ""network_error"",
   ""reason"": ""timeout of 10000 ms exceeded"",
   ""message"": ""Une erreur est survenue lors de l'appel au fournisseur de donnée""

@@ -7,6 +7,7 @@ description: |-
   - [Param. appel] sexe masculin
   - [Réponse] statut non-bénéficiaire de la complémentaire santé solidaire
 params:
+  recipient: '13002526500013'
   codeInseeLieuDeNaissance: '08480'
   codePaysLieuDeNaissance: '99100' #Code 99100 pour la France
   sexe: 'M'
