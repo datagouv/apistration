@@ -88,6 +88,7 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
+    csv (3.2.8)
     dead_end (4.0.0)
     derailed_benchmarks (2.1.2)
       benchmark-ips (~> 2)
@@ -430,6 +431,7 @@ DEPENDENCIES
   ammeter
   brakeman
   colorize
+  csv
   derailed_benchmarks
   fog-openstack (= 1.1.0)
   gpgme
