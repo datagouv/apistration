@@ -1,0 +1,21 @@
+{
+  "isValid" : false,
+  "requestDate" : "2022-10-17T12:56:37.837Z",
+  "userError" : "MS_UNAVAILABLE",
+  "name" : "",
+  "address" : "",
+  "requestIdentifier" : "",
+  "vatNumber" : "07130025265",
+  "viesApproximate" : {
+    "name" : "---",
+    "street" : "---",
+    "postalCode" : "---",
+    "city" : "---",
+    "companyType" : "---",
+    "matchName" : 3,
+    "matchStreet" : 3,
+    "matchPostalCode" : 3,
+    "matchCity" : 3,
+    "matchCompanyType" : 3
+  }
+}

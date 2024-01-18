@@ -2,6 +2,7 @@ class EuropeanCommission::VIES::ValidateResponse < ValidateResponse
   def call
     unknown_provider_response! unless http_ok?
     unknown_provider_response! if invalid_json? || valid_tva_number_boolean.nil?
+    provider_unavailable! if country_provider_error == 'MS_UNAVAILABLE'
 
     case valid_tva_number_boolean
     when FalseClass
@@ -15,6 +16,10 @@ class EuropeanCommission::VIES::ValidateResponse < ValidateResponse
   end
 
   private
+
+  def country_provider_error
+    json_body['userError']
+  end
 
   def valid_tva_number_boolean
     json_body['isValid']
