@@ -15,6 +15,10 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
     def serializer_module
       APIEntreprise::DummyResourceSerializer
     end
+
+    def api_kind
+      'api_entreprise'
+    end
   end
 
   describe 'version management' do

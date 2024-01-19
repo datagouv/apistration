@@ -1,17 +1,12 @@
 module APIParticulier::FranceConnectable
   extend ActiveSupport::Concern
 
+  include RecipientManagement
+
   attr_reader :france_connect_service_user_identity, :france_connect_client_attributes
 
   included do
     before_action :verify_recipient_is_a_siret!, if: :france_connect?
-  end
-
-  def verify_recipient_is_a_siret!
-    return if recipient_is_a_siret?
-
-    render json: { error: "Le paramètre recipient n'est pas un siret valide" },
-      status: :bad_request
   end
 
   def france_connect_organizer
@@ -29,10 +24,6 @@ module APIParticulier::FranceConnectable
   end
 
   private
-
-  def recipient_is_a_siret?
-    ValidateSiret.call(params: { siret: params[:recipient] }).success?
-  end
 
   def handle_france_connect_flow
     if france_connect_organizer.success?

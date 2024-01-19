@@ -204,7 +204,9 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
 
       its(:body) do
         is_expected.to eq({
-          error: "Le paramètre recipient n'est pas un siret valide"
+          error: 'bad_request',
+          reason: "Le paramètre recipient n'est pas un siret valide",
+          message: "Le paramètre recipient n'est pas un siret valide"
         }.to_json)
       end
     end

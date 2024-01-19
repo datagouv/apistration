@@ -1,5 +1,6 @@
 class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
   include UseRetrievers
+  include RecipientManagement
 
   class UnsupportedVersionError < ::ActionController::RoutingError; end
 
@@ -26,47 +27,6 @@ class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
 
   def verify_api_version!
     raise_unsupported_version_error! unless supported_version?
-  end
-
-  def verify_recipient_is_a_siret!
-    return if recipient_is_a_siret?
-
-    render json: ErrorsSerializer.new([InvalidRecipientError.new], format: error_format).as_json,
-      status: :unprocessable_entity
-  end
-
-  def verify_recipient_is_not_resource_id_nor_whitelist!
-    return unless recipient_is_resource_siren_or_siret?
-    return if recipient_whitelisted?
-
-    render json: ErrorsSerializer.new([RecipientAndResourceIdIdenticalError.new], format: error_format).as_json,
-      status: :unprocessable_entity
-  end
-
-  def recipient_is_a_siret?
-    ValidateSiret.call(params: { siret: params[:recipient] }).success?
-  end
-
-  def recipient_whitelisted?
-    Rails.application.config_for('recipient_sirets_whitelist').any? do |recipient_siret_data|
-      recipient_siret_data[:siret].first(9) == params[:recipient].strip.first(9)
-    end
-  end
-
-  def recipient_is_resource_siren_or_siret?
-    recipient_is_resource_siren? || recipient_is_resource_siret?
-  end
-
-  def recipient_is_resource_siren?
-    return false unless params[:siren]
-
-    params[:recipient].strip.first(9) == params[:siren].strip
-  end
-
-  def recipient_is_resource_siret?
-    return false unless params[:siret]
-
-    params[:recipient].strip == params[:siret].strip
   end
 
   def api_version

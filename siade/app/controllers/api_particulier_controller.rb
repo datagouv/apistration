@@ -1,14 +1,8 @@
 class APIParticulierController < APIController
   before_action :verify_recipient_is_a_siret_or_nil!
 
+  include RecipientManagement
   include UseRetrievers
-
-  def verify_recipient_is_a_siret_or_nil!
-    return if recipient_is_a_siret? || params[:recipient].blank?
-
-    render json: { error: "Le paramètre recipient n'est pas un siret valide" },
-      status: :bad_request
-  end
 
   protected
 
@@ -59,10 +53,6 @@ class APIParticulierController < APIController
   end
 
   private
-
-  def recipient_is_a_siret?
-    ValidateSiret.call(params: { siret: params[:recipient] }).success?
-  end
 
   def user_not_authorized(exception)
     case exception
