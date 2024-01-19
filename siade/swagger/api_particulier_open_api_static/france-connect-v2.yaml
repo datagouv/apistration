@@ -87,7 +87,7 @@ paths:
 
             SIRET de l’administration destinatrice des données."
           example: '13002526500013'
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -247,7 +247,7 @@ paths:
 
             SIRET de l’administration destinatrice des données."
           example: '13002526500013'
-          required: false
+          required: true
           schema:
             type: string
       responses:

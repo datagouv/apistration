@@ -136,10 +136,11 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
     subject(:make_call) do
       request.headers['Authorization'] = 'Bearer france_connect_token'
 
-      get :show
+      get :show, params:
     end
 
-    let(:params) { default_france_connect_identity_attributes }
+    let(:recipient) { valid_siret(:recipient) }
+    let(:params) { default_france_connect_identity_attributes.merge(recipient:) }
 
     before do
       allow(CNOUS::StudentScholarshipWithFranceConnect).to receive(:call).and_call_original
@@ -164,9 +165,21 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
 
       expect(CNOUS::StudentScholarshipWithFranceConnect).to have_received(:call).with(
         hash_including(
-          params:
+          params: default_france_connect_identity_attributes
         )
       )
+    end
+
+    describe 'when recipient is missing' do
+      let(:params) { default_france_connect_identity_attributes.merge(recipient: nil) }
+
+      its(:status) { is_expected.to eq(400) }
+
+      its(:body) do
+        is_expected.to eq({
+          errors: ["Le paramètre recipient n'est pas un siret valide"]
+        }.to_json)
+      end
     end
   end
 end

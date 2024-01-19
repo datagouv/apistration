@@ -40,7 +40,8 @@ RSpec.describe APIParticulierController, 'france connectable' do
       get :show, params:
     end
 
-    let(:params) { {} }
+    let(:recipient) { valid_siret(:recipient) }
+    let(:params) { { recipient: } }
 
     context 'when it is not a valid france connect token' do
       before do
@@ -75,7 +76,7 @@ RSpec.describe APIParticulierController, 'france connectable' do
         end
 
         context 'when organizer has invalid FranceConnect params error' do
-          let(:params) { { test_invalid_franceconnect_params: true } }
+          let(:params) { { test_invalid_franceconnect_params: true, recipient: } }
 
           its(:status) { is_expected.to eq(400) }
 

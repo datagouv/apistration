@@ -1,8 +1,25 @@
 module APIParticulier::FranceConnectable
+  extend ActiveSupport::Concern
+
   attr_reader :france_connect_service_user_identity, :france_connect_client_attributes
+
+  included do
+    before_action :verify_recipient_is_a_siret!, if: :france_connect?
+  end
+
+  def verify_recipient_is_a_siret!
+    return if recipient_is_a_siret?
+
+    render json: ErrorsSerializer.new([InvalidRecipientError.new], format: error_format).as_json,
+      status: :bad_request
+  end
 
   def france_connect_organizer
     @france_connect_organizer ||= FranceConnect::DataFetcherThroughAccessToken.call(params: { token: bearer_token_from_headers })
+  end
+
+  def france_connect?
+    france_connect_service_user_identity.present?
   end
 
   protected
@@ -16,6 +33,10 @@ module APIParticulier::FranceConnectable
   end
 
   private
+
+  def recipient_is_a_siret?
+    ValidateSiret.call(params: { siret: params[:recipient] }).success?
+  end
 
   def handle_france_connect_flow
     if france_connect_organizer.success?
@@ -56,9 +77,5 @@ module APIParticulier::FranceConnectable
         errors: errors.map(&:to_h)
       }
     )
-  end
-
-  def france_connect?
-    france_connect_service_user_identity.present?
   end
 end

@@ -129,9 +129,8 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
       get :show, params:
     end
 
-    let(:params) { {} }
-
-    let(:france_connect_person_identity_attributes) { default_france_connect_identity_attributes }
+    let(:recipient) { valid_siret(:recipient) }
+    let(:params) { default_france_connect_identity_attributes.merge(recipient:) }
 
     before do
       allow(MESRI::StudentStatus::WithCivility).to receive(:call).and_call_original
@@ -167,10 +166,10 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
         hash_including(
           params: hash_including(
             token_id: anything,
-            family_name: france_connect_person_identity_attributes[:family_name],
-            first_name: france_connect_person_identity_attributes[:given_name].split[0],
-            birth_date: france_connect_person_identity_attributes[:birthdate],
-            birth_place: france_connect_person_identity_attributes[:birthplace],
+            family_name: params[:family_name],
+            first_name: params[:given_name].split[0],
+            birth_date: params[:birthdate],
+            birth_place: params[:birthplace],
             gender: 'm'
           )
         )
@@ -178,7 +177,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
     end
 
     context 'when there is an ine param' do
-      let(:params) { { ine: 'whatever' } }
+      let(:params) { default_france_connect_identity_attributes.merge(recipient:, ine: 'whatever') }
 
       it 'calls MESRI::StudentStatus::WithCivility with france connect person identity attributes, only first first name (ignore INE param)' do
         make_call
@@ -187,14 +186,26 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
           hash_including(
             params: hash_including(
               token_id: anything,
-              family_name: france_connect_person_identity_attributes[:family_name],
-              first_name: france_connect_person_identity_attributes[:given_name].split[0],
-              birth_date: france_connect_person_identity_attributes[:birthdate],
-              birth_place: france_connect_person_identity_attributes[:birthplace],
+              family_name: params[:family_name],
+              first_name: params[:given_name].split[0],
+              birth_date: params[:birthdate],
+              birth_place: params[:birthplace],
               gender: 'm'
             )
           )
         )
+      end
+    end
+
+    describe 'when recipient is missing' do
+      let(:params) { { recipient: nil } }
+
+      its(:status) { is_expected.to eq(400) }
+
+      its(:body) do
+        is_expected.to eq({
+          errors: ["Le paramètre recipient n'est pas un siret valide"]
+        }.to_json)
       end
     end
   end
