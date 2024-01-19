@@ -6,7 +6,7 @@ class APIParticulierController < APIController
   def verify_recipient_is_a_siret_or_nil!
     return if recipient_is_a_siret? || params[:recipient].blank?
 
-    render json: ErrorsSerializer.new([InvalidRecipientError.new], format: error_format).as_json,
+    render json: { error: "Le paramètre recipient n'est pas un siret valide" },
       status: :bad_request
   end
 

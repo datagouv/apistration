@@ -10,16 +10,12 @@ module APIParticulier::FranceConnectable
   def verify_recipient_is_a_siret!
     return if recipient_is_a_siret?
 
-    render json: ErrorsSerializer.new([InvalidRecipientError.new], format: error_format).as_json,
+    render json: { error: "Le paramètre recipient n'est pas un siret valide" },
       status: :bad_request
   end
 
   def france_connect_organizer
     @france_connect_organizer ||= FranceConnect::DataFetcherThroughAccessToken.call(params: { token: bearer_token_from_headers })
-  end
-
-  def france_connect?
-    france_connect_service_user_identity.present?
   end
 
   protected
@@ -77,5 +73,9 @@ module APIParticulier::FranceConnectable
         errors: errors.map(&:to_h)
       }
     )
+  end
+
+  def france_connect?
+    france_connect_service_user_identity.present?
   end
 end

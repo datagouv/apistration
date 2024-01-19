@@ -30,7 +30,7 @@ RSpec.describe APIParticulierController, 'recipient' do
     its(:status) { is_expected.to be(400) }
 
     it 'serializes an error' do
-      expect(response_json).to have_key(:errors)
+      expect(response_json).to have_key(:error)
     end
   end
 end
