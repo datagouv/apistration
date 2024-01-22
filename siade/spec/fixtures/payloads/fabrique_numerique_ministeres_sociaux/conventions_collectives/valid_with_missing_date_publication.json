@@ -1,0 +1,44 @@
+[
+  {
+    "conventions": [
+      {
+        "active": true,
+        "id": "KALICONT000005635842-878",
+        "nature": "IDCC",
+        "num": 878,
+        "shortTitle": "Convention collective départementale des mensuels des industries métallurgiques du Rhône",
+        "title": "Convention collective départementale des mensuels des industries métallurgiques du Rhône",
+        "url": "https://www.legifrance.gouv.fr/affichIDCC.do?idConvention=KALICONT000005635842-878"
+      },
+      {
+        "active": true,
+        "date_publi": "1963-03-25T00:00:00.000Z",
+        "effectif": 234610,
+        "etat": "VIGUEUR_ETEN",
+        "id": "KALICONT000005635149",
+        "mtime": 1561406517,
+        "nature": "IDCC",
+        "num": 54,
+        "shortTitle": "Industries métallurgiques, mécaniques et connexes de la région parisienne",
+        "texte_de_base": "KALITEXT000005672601",
+        "title": "Convention collective régionale des industries métallurgiques, mécaniques et connexes de la région parisienne du 16 juillet 1954. Etendue par arrêté du 11 août 1965 (JO du 25 août 1965). \nRectificatif du 10 septembre 1965. \nMise à jour par accord du 13 juillet 1973, étendu par arrêté du 10 décembre 1979 (JO du 17 janvier 1980)",
+        "url": "https://www.legifrance.gouv.fr/affichIDCC.do?idConvention=KALICONT000005635149"
+      },
+      {
+        "active": true,
+        "date_publi": "1972-03-13T00:00:00.000Z",
+        "effectif": 453740,
+        "etat": "VIGUEUR_ETEN",
+        "id": "KALICONT000005635842",
+        "mtime": 1561406517,
+        "nature": "IDCC",
+        "num": 650,
+        "shortTitle": "Métallurgie : ingénieurs et cadres",
+        "texte_de_base": "KALITEXT000005673470",
+        "title": "Convention collective nationale des ingénieurs et cadres de la métallurgie du 13 mars 1972. Etendue par arrêté du 27 avril 1973 (JO du 29 mai 1973)",
+        "url": "https://www.legifrance.gouv.fr/affichIDCC.do?idConvention=KALICONT000005635842"
+      }
+    ],
+    "siret": "12000101100010"
+  }
+]

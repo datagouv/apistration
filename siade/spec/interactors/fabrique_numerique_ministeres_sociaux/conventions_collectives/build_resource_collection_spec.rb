@@ -13,10 +13,10 @@ RSpec.describe FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::Build
     }
   end
 
-  let(:resource_collection) { call.bundled_data.data }
+  let(:siret) { valid_siret(:conventions_collectives) }
 
   context 'when siret is valid', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/valid_siret' } do
-    let(:siret) { valid_siret(:conventions_collectives) }
+    let(:resource_collection) { call.bundled_data.data }
 
     it { is_expected.to be_a_success }
 
@@ -39,5 +39,13 @@ RSpec.describe FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::Build
         }
       )
     end
+  end
+
+  context 'with one missing publication date' do
+    let(:body) do
+      read_payload_file('fabrique_numerique_ministeres_sociaux/conventions_collectives/valid_with_missing_date_publication.json')
+    end
+
+    it { is_expected.to be_a_success }
   end
 end

@@ -21,7 +21,7 @@ class FabriqueNumeriqueMinisteresSociaux::ConventionsCollectives::BuildResourceC
       etat: humanized_etat(convention['etat']),
       url: convention['url'],
       synonymes: convention['synonymes'] || [],
-      date_publication: Date.parse(convention['date_publi']).to_s
+      date_publication: convention['date_publi'].present? ? Date.parse(convention['date_publi']).to_s : nil
     }
   end
 
