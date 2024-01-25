@@ -22,49 +22,45 @@ RSpec.describe DGFIP::LiassesFiscales::EnrichResourceWithDictionary, type: :inte
       {
         date_declaration: '2017-07-10',
         date_fin_exercice: '2017-03-31',
-        donnees:
-          [
-            {
-              code: 'XX',
-              code_EDI: 'XX:X123:4567:0:XXX',
-              code_absolu: '1234567',
-              code_nref: '123456',
-              code_type_donnee: 'XXX',
-              intitule: 'Intitulé 1',
-              valeurs: ['1111']
-            },
-            {
-              code_nref: '304331',
-              valeurs: ['2222']
-            }
-          ],
+        donnees: [
+          {
+            code: 'XX',
+            code_EDI: 'XX:X123:4567:0:XXX',
+            code_absolu: '1234567',
+            code_nref: '123456',
+            code_type_donnee: 'XXX',
+            intitule: 'Intitulé 1',
+            valeurs: ['1111']
+          },
+          {
+            code_nref: '304331',
+            valeurs: ['2222']
+          }
+        ],
         duree_exercice: 365,
         millesime: '201701',
         numero_imprime: '2033A',
-        regime:
-          {
-            code: 'RS',
-            libelle: 'Régime simplifié'
-          }
+        regime: {
+          code: 'RS',
+          libelle: 'Régime simplifié'
+        }
       },
       {
         date_declaration: '2017-07-10',
         date_fin_exercice: '2017-03-31',
-        donnees:
-          [
-            {
-              code_nref: '304331',
-              valeurs: ['3333']
-            }
-          ],
+        donnees: [
+          {
+            code_nref: '304331',
+            valeurs: ['3333']
+          }
+        ],
         duree_exercice: 365,
         millesime: '201701',
         numero_imprime: '2033B',
-        regime:
-          {
-            code: 'RS',
-            libelle: 'Régime simplifié'
-          }
+        regime: {
+          code: 'RS',
+          libelle: 'Régime simplifié'
+        }
       }
     ]
   end
