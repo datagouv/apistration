@@ -52,6 +52,13 @@ RSpec.describe DGFIP::LiassesFiscales::EnrichResourceWithDictionary, type: :inte
           {
             code_nref: '304331',
             valeurs: ['3333']
+          },
+          {
+            code_nref: '304814',
+            valeurs: [
+              'JEAN DUPONT',
+              'JACQUES DUPOND'
+            ]
           }
         ],
         duree_exercice: 365,

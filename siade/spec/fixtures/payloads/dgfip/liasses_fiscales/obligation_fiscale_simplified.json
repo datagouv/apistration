@@ -32,6 +32,20 @@
           {
             "code_nref": "304331",
             "valeur": "3333"
+          },
+          {
+            "code_nref": "304814",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "JEAN DUPONT"
+            }
+          },
+          {
+            "code_nref": "304814",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "JACQUES DUPOND"
+            }
           }
         ]
       }

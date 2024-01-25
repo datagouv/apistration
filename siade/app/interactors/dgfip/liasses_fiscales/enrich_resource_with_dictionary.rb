@@ -22,9 +22,9 @@ class DGFIP::LiassesFiscales::EnrichResourceWithDictionary < ApplicationInteract
   end
 
   def donnees_with_enriched_code_nref(declaration)
-    declaration[:donnees].map do |donnee|
+    declaration[:donnees].map { |donnee|
       donnee_with_enriched_code_nref(donnee, declaration)
-    end
+    }.uniq
   end
 
   def donnee_with_enriched_code_nref(donnee, declaration)
