@@ -27,7 +27,6 @@ class APIParticulier::V2::CNAF::AbstractController < APIParticulierController
       {
         annee: params[:annee],
         mois: params[:mois],
-        recipient: params[:recipient],
         request_id:
       }
     )
@@ -50,7 +49,8 @@ class APIParticulier::V2::CNAF::AbstractController < APIParticulierController
       date_naissance: france_connect_service_user_identity.birthdate,
       code_insee_lieu_de_naissance: france_connect_service_user_identity.birthplace,
       code_pays_lieu_de_naissance: france_connect_service_user_identity.birthcountry,
-      gender: france_connect_service_user_identity.gender == 'male' ? 'M' : 'F'
+      gender: france_connect_service_user_identity.gender == 'male' ? 'M' : 'F',
+      recipient: params[:recipient]
     }
   end
 
@@ -64,7 +64,8 @@ class APIParticulier::V2::CNAF::AbstractController < APIParticulierController
       jour_date_de_naissance: params[:jourDateDeNaissance],
       code_insee_lieu_de_naissance: params[:codeInseeLieuDeNaissance],
       code_pays_lieu_de_naissance: params.require(:codePaysLieuDeNaissance),
-      gender: params.require(:sexe)
+      gender: params.require(:sexe),
+      recipient: current_user.siret
     }
   end
   # rubocop:enable Metrics/AbcSize

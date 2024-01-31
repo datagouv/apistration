@@ -56,6 +56,7 @@ cnaf:
         enum:
           - M
           - F
+    example: "13002526500013"
     attributes:
       status:
         title: "Statut bénéficiaire de la complémentaire santé solidaire (C2S)"

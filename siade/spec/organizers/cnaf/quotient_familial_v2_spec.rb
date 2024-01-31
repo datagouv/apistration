@@ -16,7 +16,6 @@ RSpec.describe CNAF::QuotientFamilialV2, type: :retriever_organizer do
         code_pays_lieu_de_naissance: '99100',
         code_insee_lieu_de_naissance: '17300',
         request_id:,
-        user_id: valid_siret,
         annee: 2023,
         mois: 12,
         recipient:

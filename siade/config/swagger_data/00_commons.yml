@@ -113,6 +113,16 @@ parameters:
 
       SIRET de l’administration destinatrice des données."
     example: "13002526500013"
+
+  recipient_FC:
+    description: >-
+      "**Bénéficiaire de l’appel**
+
+
+      SIRET de l’administration destinatrice des données.
+
+      Ce paramètre est obligatoire dans le cadre des appels via FranceConnect"
+    example: "13002526500013"
   object:
     description: >-
       "**La raison de l’appel ou l’identifiant de la procédure.**

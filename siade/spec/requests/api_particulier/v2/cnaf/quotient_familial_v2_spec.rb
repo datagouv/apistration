@@ -12,9 +12,9 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
       parameter name: :recipient,
         in: :query,
         type: :string,
-        description: SwaggerData.get('parameters.recipient.description'),
-        example: SwaggerData.get('parameters.recipient.example'),
-        required: true
+        description: SwaggerData.get('parameters.recipient_FC.description'),
+        example: SwaggerData.get('parameters.recipient_FC.example'),
+        required: false
 
       security [franceConnectToken: [], apiKey: []]
 
@@ -111,14 +111,16 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
         required: false
 
       let(:scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse] }
-      let(:recipient) { valid_siret(:recipient) }
 
       before do
         stub_cnaf_authenticate('quotient_familial_v2')
-        stub_cnaf_valid('quotient_familial_v2', siret: recipient)
       end
 
       describe 'without a FranceConnect token' do
+        before do
+          stub_cnaf_valid('quotient_familial_v2', siret: '10000000000008')
+        end
+
         let(:Authorization) { nil }
         let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
 
@@ -201,6 +203,7 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
       describe 'with a FranceConnect token' do
         let(:Authorization) { 'Bearer france_connect_token' }
         let(:scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse openid identite_pivot] }
+        let(:recipient) { valid_siret(:recipient) }
 
         describe 'with valid token and valid FranceConnect token' do
           let(:'X-Api-Key') { TokenFactory.new(scopes).valid }

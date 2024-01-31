@@ -12,9 +12,9 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
       parameter name: :recipient,
         in: :query,
         type: :string,
-        description: SwaggerData.get('parameters.recipient.description'),
-        example: SwaggerData.get('parameters.recipient.example'),
-        required: true
+        description: SwaggerData.get('parameters.recipient_FC.description'),
+        example: SwaggerData.get('parameters.recipient_FC.example'),
+        required: false
 
       security [franceConnectToken: [], apiKey: []]
 
@@ -97,14 +97,16 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
         required: false
 
       let(:scopes) { %i[complementaire_sante_solidaire] }
-      let(:recipient) { valid_siret(:recipient) }
 
       before do
         stub_cnaf_authenticate('complementaire_sante_solidaire')
-        stub_cnaf_valid('complementaire_sante_solidaire', siret: recipient)
       end
 
       describe 'without a FranceConnect token' do
+        before do
+          stub_cnaf_valid('complementaire_sante_solidaire', siret: '10000000000008')
+        end
+
         let(:Authorization) { nil }
         let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
 
@@ -184,6 +186,7 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
 
       describe 'with a FranceConnect token' do
         let(:scopes) { %i[complementaire_sante_solidaire openid identite_pivot] }
+        let(:recipient) { valid_siret(:recipient) }
 
         describe 'with no token and valid FranceConnect token' do
           let(:'X-Api-Key') { nil }
