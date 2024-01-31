@@ -59,7 +59,7 @@ class Seeds
   end
 
   def generate_siret
-    random_number = 10_000_000
+    random_number = 1_000_000_000_000
 
     # rubocop:disable Style/MultilineBlockChain
     sum = random_number.digits.each_with_index.map { |digit, index|
