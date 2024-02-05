@@ -131,7 +131,7 @@ GEM
     geom2d (0.4.1)
     get_process_mem (0.2.7)
       ffi (~> 1.0)
-    gpgme (2.0.23)
+    gpgme (2.0.24)
       mini_portile2 (~> 2.7)
     guard (2.18.1)
       formatador (>= 0.2.4)
