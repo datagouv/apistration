@@ -476,9 +476,9 @@ shared:
       kind: 'access_logs'
       provider: 'ProBTP'
       cache: <%= 10.minutes %>
-      # status_page:
-      #   name: "PROBTP - Cotisations retraite"
-      #   paused: true
+      status_page:
+        alerts_wait: 5
+        name: "PROBTP - Cotisations retraite"
       driver_params:
         period: <%= 10.minutes %>
         routes:
