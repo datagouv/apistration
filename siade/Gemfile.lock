@@ -85,7 +85,8 @@ GEM
     commonmarker (0.23.10)
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
-    crack (0.4.5)
+    crack (1.0.0)
+      bigdecimal
       rexml
     crass (1.0.6)
     csv (3.2.8)
@@ -409,7 +410,7 @@ GEM
     utf8-cleaner (1.0.0)
       activesupport
     vcr (6.2.0)
-    webmock (3.19.1)
+    webmock (3.20.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -490,7 +491,7 @@ DEPENDENCIES
   unindent
   utf8-cleaner
   vcr
-  webmock (~> 3.19)
+  webmock (~> 3.20)
   xml-simple
 
 BUNDLED WITH
