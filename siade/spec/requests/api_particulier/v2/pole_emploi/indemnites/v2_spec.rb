@@ -81,7 +81,7 @@ RSpec.describe 'MEN: Scolarites', api: :particulier, type: %i[request swagger] d
           end
 
           response '503', 'Erreur du fournisseur' do
-            provider_unknown_error = ProviderUnknownError.new('Pôle Emploi')
+            provider_unknown_error = ProviderUnknownError.new('France Travail')
 
             stubbed_organizer_error(
               PoleEmploi::Indemnites,
@@ -98,7 +98,7 @@ RSpec.describe 'MEN: Scolarites', api: :particulier, type: %i[request swagger] d
           response '504', 'Erreur d\'intermédiaire' do
             schema '$ref' => '#/components/schemas/Error'
 
-            provider_timeout_error = ProviderTimeoutError.new('Pôle Emploi')
+            provider_timeout_error = ProviderTimeoutError.new('France Travail')
 
             stubbed_organizer_error(
               PoleEmploi::Indemnites,

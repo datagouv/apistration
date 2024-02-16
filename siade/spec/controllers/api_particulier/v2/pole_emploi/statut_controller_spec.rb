@@ -72,7 +72,7 @@ RSpec.describe APIParticulier::V2::PoleEmploi::StatutController do
       is_expected.to eq({
         error: 'not_found',
         reason: 'Situation not found',
-        message: 'Aucune situation Pôle Emploi n\'a pu être trouvée avec les critères de recherche fournis'
+        message: 'Aucune situation France Travail n\'a pu être trouvée avec les critères de recherche fournis'
       }.to_json)
     end
   end

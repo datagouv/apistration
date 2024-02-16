@@ -1,20 +1,20 @@
 pole_emploi:
   indemnites:
-    title: "Paiements versés par Pôle Emploi"
-    description: "Ensemble des paiements versés par Pôle Emploi au particulier"
+    title: "Paiements versés par France Travail"
+    description: "Ensemble des paiements versés par France Travail au particulier"
     tags:
-      - Paiements Pôle Emploi
+      - Paiements France Travail
     parameters:
       identifiant:
         required: true
-        description: Identifiant Pôle emploi choisi par le particulier lors de la création de son espace personnel en ligne.
+        description: Identifiant France Travail choisi par le particulier lors de la création de son espace personnel en ligne.
         type: string
         example: 'jean.dupont33'
     attributes:
       identifiant:
-        title: Nom d'utilisateur Pôle emploi
+        title: Nom d'utilisateur France Travail
         type: string
-        description: Identifiant Pôle emploi, tel qu'il a été renseigné en paramètre d'appel. Cet identifiant est le nom d'utilisateur tel que choisi par le particulier lors de la création de son espace personnel en ligne.
+        description: Identifiant France Travail, tel qu'il a été renseigné en paramètre d'appel. Cet identifiant est le nom d'utilisateur tel que choisi par le particulier lors de la création de son espace personnel en ligne.
         example: 'jean.dupont33'
       paiements:
         title: "Paiements"

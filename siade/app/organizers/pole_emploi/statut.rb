@@ -6,6 +6,6 @@ class PoleEmploi::Statut < RetrieverOrganizer
     PoleEmploi::Statut::BuildResource
 
   def provider_name
-    'Pôle Emploi'
+    'France Travail'
   end
 end

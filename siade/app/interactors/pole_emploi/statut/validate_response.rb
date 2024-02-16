@@ -11,6 +11,6 @@ class PoleEmploi::Statut::ValidateResponse < ValidateResponse
   end
 
   def resource_not_found!
-    fail_with_error!(build_error(::NotFoundError, 'Aucune situation Pôle Emploi n\'a pu être trouvée avec les critères de recherche fournis'))
+    fail_with_error!(build_error(::NotFoundError, 'Aucune situation France Travail n\'a pu être trouvée avec les critères de recherche fournis'))
   end
 end

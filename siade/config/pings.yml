@@ -95,9 +95,9 @@ shared:
     pole_emploi_status:
       kind: 'retriever'
       cache: <%= 2.minutes %>
-      provider: 'Pôle Emploi'
+      provider: 'France Travail'
       status_page:
-        name: "Pôle Emploi - Statut demandeur d'emploi"
+        name: "France Travail - Statut demandeur d'emploi"
       driver_params:
         retriever: 'PoleEmploi::Statut'
         params: &pole_emploi_params
@@ -106,9 +106,9 @@ shared:
     pole_emploi_indemnites:
       kind: 'make_request'
       cache: <%= 2.minutes %>
-      provider: 'Pôle Emploi'
+      provider: 'France Travail'
       status_page:
-        name: "Pôle Emploi - Paiements versés"
+        name: "France Travail - Paiements versés"
       driver_params:
         make_request: 'PoleEmploi::Indemnites'
         params: *pole_emploi_params

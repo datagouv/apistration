@@ -269,14 +269,14 @@ paths:
       description: >-
         Données d'identité, de contact et de statut du demandeur d'emploi.
 
-        **Paramètres d'appel :** Nom d’utilisateur Pôle emploi choisi par le particulier lors de la création de son espace personnel en ligne
+        **Paramètres d'appel :** Nom d’utilisateur France Travail choisi par le particulier lors de la création de son espace personnel en ligne
 
         **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_pole_emploi_statut)
       parameters:
         - name: identifiant
           required: true
           in: query
-          description: Identifiant Pôle emploi choisi par le particulier lors de la création de son espace personnel en ligne.
+          description: Identifiant France Travail choisi par le particulier lors de la création de son espace personnel en ligne.
           schema:
             type: string
         - name: recipient
@@ -290,20 +290,20 @@ paths:
           schema:
             type: string
       tags:
-        - Situation Pôle emploi
+        - Situation France Travail
       responses:
         "200":
           x-operationId: api_particulier_v2_pole_emploi_statut
-          description: La situation Pôle emploi d'un individu
+          description: La situation France Travail d'un individu
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   identifiant:
-                    title: Nom d'utilisateur Pôle emploi
+                    title: Nom d'utilisateur France Travail
                     type: string
-                    description: Identifiant Pôle emploi, tel qu'il a été renseigné en paramètre d'appel. Cet identifiant est le nom d'utilisateur tel que choisi par le particulier lors de la création de son espace personnel en ligne.
+                    description: Identifiant France Travail, tel qu'il a été renseigné en paramètre d'appel. Cet identifiant est le nom d'utilisateur tel que choisi par le particulier lors de la création de son espace personnel en ligne.
                     example: 'martin.jacques'
                   civilite:
                     title: Civilité
@@ -343,7 +343,7 @@ paths:
                   codeCertificationCNAV:
                     title: Code du statut de certification d'identité CNAV
                     type: string
-                    description: "Pôle emploi dépend d'un flux de certification d'identité émis par la CNAV, un particulier peut avoir été certifié ou non.
+                    description: "France Travail dépend d'un flux de certification d'identité émis par la CNAV, un particulier peut avoir été certifié ou non.
                     Sont considérés comme certifés, les statuts suivants :
                     - VC IDENTITE CERTIFIEE
                     - IC : IDENTITE ASSIMILEE CERTIFIEE
@@ -383,7 +383,7 @@ paths:
                   adresse:
                     title: Adresse
                     type: object
-                    description: Adresse du demandeur d'emploi, déclarée par le particulier lors de son inscription à Pôle emploi ou suite à une déclaration de changement d’adresse.
+                    description: Adresse du demandeur d'emploi, déclarée par le particulier lors de son inscription à France Travail ou suite à une déclaration de changement d’adresse.
                     properties:
                       codePostal:
                         type: string
@@ -417,11 +417,11 @@ paths:
                     title: Date d'inscription
                     format: date
                     type: string
-                    description: Date d'inscription à Pôle emploi au format YYYY-MM-DD
+                    description: Date d'inscription à France Travail au format YYYY-MM-DD
                     example: 2021-01-07
                   dateCessationInscription:
                     title: Date de cessation d'inscription au format YYYY-MM-DD
-                    description: Date de cessation d'inscription à Pôle emploi
+                    description: Date de cessation d'inscription à France Travail
                     type: string
                     format: date
                     nullable: true
@@ -429,7 +429,7 @@ paths:
                   codeCategorieInscription:
                     title: Code de la catégorie d'inscription
                     description: |
-                      Code de la catégorie d'inscription du particulier à Pôle emploi.
+                      Code de la catégorie d'inscription du particulier à France Travail.
                         - 1 : PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS
                         - 2 : PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PARTIEL
                         - 3 : PERSONNE SANS EMPLOI DISPONIBLE DUREE DETERMINEE OU SAISON
@@ -445,7 +445,7 @@ paths:
                     - 5
                   libelleCategorieInscription:
                     title: Libellé de la catégorie d'inscription
-                    description: Libellé de la catégorie d'inscription du particulier à Pôle emploi, associé au cod précédent.
+                    description: Libellé de la catégorie d'inscription du particulier à France Travail, associé au cod précédent.
                     type: string
                     example: PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS
                     enum:
@@ -456,7 +456,7 @@ paths:
                     - PERSONNE POURVUE D'UN EMPLOI A LA RECHERCHE D'UN AUTRE
         "401": *a6
         "404":
-          description: Aucune situation Pôle emploi n'a pu être trouvée avec les critères
+          description: Aucune situation France Travail n'a pu être trouvée avec les critères
             de recherche fournis
           content:
             application/json:
@@ -471,7 +471,7 @@ paths:
                     example: Situation not found
                   message:
                     type: string
-                    example: Aucune situation Pôle emploi n'a pu être trouvée avec les critères de
+                    example: Aucune situation France Travail n'a pu être trouvée avec les critères de
                       recherche fournis
         "500":
           &a9

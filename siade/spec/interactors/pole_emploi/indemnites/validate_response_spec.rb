@@ -1,5 +1,5 @@
 RSpec.describe PoleEmploi::Indemnites::ValidateResponse, type: :validate_response do
-  subject { described_class.call(response:, provider_name: 'Pôle Emploi') }
+  subject { described_class.call(response:, provider_name: 'France Travail') }
 
   context 'with a http ok' do
     let(:response) { instance_double(Net::HTTPOK, code: '200', body:) }

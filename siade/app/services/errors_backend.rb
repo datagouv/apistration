@@ -59,7 +59,7 @@ class ErrorsBackend
       '21' => 'MI',
       '22' => 'RNM',
       '23' => 'CNAF',
-      '24' => 'Pôle Emploi',
+      '24' => 'France Travail',
       '25' => 'MESRI',
       '26' => 'CNOUS',
       '27' => 'DGFIP - SVAIR',
