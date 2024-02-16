@@ -36,7 +36,7 @@ pole_emploi:
               example: 123.4
             allocations:
               title: Allocations
-              description: Part du montant correspondant aux paiements d’allocations (Allocation d'aide au retour à l'emploi, Allocation de sécurisation professionnelle, Allocation de solidarité spécifique, Allocation pour les travailleurs indépendants, Rémunération de formation pole emploi, Rémunération de fin de formation, Allocation de fin de droit, Allocation d'accompagnement personnalisé, Allocation de professionnalisation et de solidarité, Allocation décès, Allocation contrat engagement jeune).
+              description: Part du montant correspondant aux paiements d’allocations (Allocation d'aide au retour à l'emploi, Allocation de sécurisation professionnelle, Allocation de solidarité spécifique, Allocation pour les travailleurs indépendants, Rémunération de formation France Travail, Rémunération de fin de formation, Allocation de fin de droit, Allocation d'accompagnement personnalisé, Allocation de professionnalisation et de solidarité, Allocation décès, Allocation contrat engagement jeune).
               type: number
               example: 45.1
             aides:

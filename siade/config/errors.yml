@@ -230,7 +230,7 @@
 
 - code: '00380'
   title: 'Entité non traitable'
-  detail: "L'identifiant Pole Emploi est manquant"
+  detail: "L'identifiant France Travail est manquant"
 
 - code: '00390'
   title: 'Entité non traitable'
