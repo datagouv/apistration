@@ -44,7 +44,7 @@ gem 'fog-openstack', '1.1.0'
 
 gem 'interactor'
 
-gem 'jwt', '~> 2.7'
+gem 'jwt', '~> 2.8'
 
 gem 'sentry-ruby'
 gem 'sentry-rails'

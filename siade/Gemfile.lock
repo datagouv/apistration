@@ -170,7 +170,8 @@ GEM
     json-schema (4.1.1)
       addressable (>= 2.8)
     jsonapi-renderer (0.2.2)
-    jwt (2.7.1)
+    jwt (2.8.0)
+      base64
     language_server-protocol (3.17.0.3)
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -447,7 +448,7 @@ DEPENDENCIES
   hexapdf
   interactor
   json-schema
-  jwt (~> 2.7)
+  jwt (~> 2.8)
   lockbox
   logstasher
   marcel
