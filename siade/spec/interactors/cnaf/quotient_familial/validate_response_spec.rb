@@ -59,6 +59,14 @@ RSpec.describe CNAF::QuotientFamilial::ValidateResponse, type: :validate_respons
             expect(call.errors.first.detail).to eq('Dossier radié. Le document ne peut être édité.')
           end
         end
+
+        context 'when no QF in response' do
+          let(:body) { read_payload_file('cnaf/quotient_familial_no_qf_response.mime') }
+
+          it { is_expected.to be_a_failure }
+
+          its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+        end
       end
     end
   end

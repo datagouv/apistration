@@ -7,6 +7,8 @@ class CNAF::QuotientFamilial::ValidateResponse < ValidateResponse
 
     resource_not_found! if not_found?
 
+    unknown_provider_response! if qf_unavailable?
+
     return if http_ok? && data_present?
 
     unknown_provider_response!
@@ -47,5 +49,9 @@ class CNAF::QuotientFamilial::ValidateResponse < ValidateResponse
 
   def libelle_retour
     xml_without_mime.css('libelleRetour').text
+  end
+
+  def qf_unavailable?
+    data.css('quotients').css('QFMOIS').empty?
   end
 end
