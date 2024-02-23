@@ -14,7 +14,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""reason"": ""timeout of 10000 ms exceeded"",
   ""message"": ""Une erreur est survenue lors de l'appel au fournisseur de donnée""
 }"
-,Étudiant inscrit,"{""nom"":""MARTIN"",""prenom"":""Jacques"",""dateDeNaissance"":""2004-01-01"",""sexe"":""m"",""birth_place"":""75002""}",200,"{
+,Étudiant inscrit,"{""nom"":""MARTIN"",""prenom"":""Jacques"",""dateDeNaissance"":""2004-01-01"",""sexe"":""m"",""lieuDeNaissance"":""75002""}",200,"{
   ""ine"": ""1234567890Y"",
   ""nomFamille"": ""Martin"",
   ""prenom"": ""Jacques"",
