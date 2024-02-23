@@ -259,7 +259,6 @@ Lors de votre passage en production :
           franceConnectToken: {
             type: :http,
             scheme: :bearer,
-            in: :header,
             bearerFormat: 'Jeton FranceConnect',
             description: "Jeton FranceConnect obtenu suite à une cinématique de connexion FranceConnect. Ne fonctionne que sur les APIs FranceConnectées. Remplace l'authentification par X-Api-Key sur les APIs FranceConnectées."
           }
