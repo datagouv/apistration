@@ -5,7 +5,7 @@ params:
   prenom: "Jacques"
   dateDeNaissance: "2004-01-01"
   sexe: "m"
-  birth_place: "75002"
+  lieuDeNaissance: "75002"
 status: 200
 payload: |-
   {
