@@ -28,19 +28,6 @@ RSpec.describe 'OpenAPI file', type: :acceptance do
     end
   end
 
-  context 'API Particulier France connect definition' do
-    let(:definition_path) { 'swagger/api_particulier_open_api_static/france-connect-v2.yaml' }
-
-    it 'is a valid YAML' do
-      expect(YAML.unsafe_load_file(definition_path)).to be_truthy
-    end
-
-    it 'is a valid configuration' do
-      document = Openapi3Parser.load_file(definition_path)
-      expect(document).to be_valid, "Errors: #{document.errors.to_h}"
-    end
-  end
-
   context 'API Entreprise v3 (and more) definition' do
     let(:definition_path) { 'swagger/openapi-entreprise.yaml' }
 
