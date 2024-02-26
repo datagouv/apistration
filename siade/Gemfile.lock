@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails-api/active_model_serializers.git
-  revision: 717ac11fd2e2e20537174cae0c506248cb711ff3
+  revision: bda195020e77f9fd4850d4beeb3d3e51bfa086e6
   branch: 0-10-stable
   specs:
     active_model_serializers (0.10.14)
