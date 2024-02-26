@@ -1,0 +1,29 @@
+---
+title: 'CNAF Complémentaire Santé Solidaire'
+example: true
+params:
+  token: 'cnaf_css'
+api_path: '/v2/complementaire-sante-solidaire'
+description: 'Réponse FranceConnect permettant de déclencher la réponse de [`/v2/complementaire-sante-solidaire` suivante](../api_particulier_v2_cnaf_complementaire_sante_solidaire/fake_france_connect_cnaf.yml)'
+status: 200
+payload: |-
+  {
+    "scope": [
+      "openid",
+      "identite_pivot",
+      "complementaire_sante_solidaire"
+    ],
+    "client": {
+      "client_id": "client_id",
+      "client_name": "client_name"
+    },
+    "identity": {
+      "given_name": "Georges",
+      "family_name": "CNAF",
+      "birthdate": "2002-01-01",
+      "gender": "male",
+      "birthplace": "75002",
+      "birthcountry": "99100",
+      "preferred_username": "MARTIN"
+    }
+  }

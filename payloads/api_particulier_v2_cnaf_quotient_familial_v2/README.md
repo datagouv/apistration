@@ -1044,3 +1044,154 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
 
   </p>
   </details>
+* [fake_france_connect_cnaf.yml](fake_france_connect_cnaf.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_qfv2.yml).
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "recipient": "13002526500013",
+    "given_name": "Georges",
+    "family_name": "CNAF",
+    "birthdate": "2002-01-01",
+    "gender": "male",
+    "birthplace": "75002",
+    "birthcountry": "99100",
+    "preferred_username": "MARTIN"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "CNAF",
+        "nomUsage": "MARTIN",
+        "prenoms": "GEORGES",
+        "anneeDateDeNaissance": "2002",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+  
+    ],
+    "adresse": {
+      "identite": "Monsieur CNAF MARTIN",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE MONTORGUEIL",
+      "lieuDit": null,
+      "codePostalVille": "75002",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'recipient=13002526500013' -d 'given_name=Georges' -d 'family_name=CNAF' -d 'birthdate=2002-01-01' -d 'gender=male' -d 'birthplace=75002' -d 'birthcountry=99100' -d 'preferred_username=MARTIN' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
+* [france_connect_cnaf.yml](france_connect_cnaf.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "recipient": "13002526500013",
+    "given_name": "Angela",
+    "family_name": "DUBOIS",
+    "birthdate": "1962-08-24",
+    "gender": "female",
+    "birthplace": "75107",
+    "birthcountry": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "DUBOIS",
+        "nomUsage": "DUBOIS",
+        "prenoms": "ANGELA",
+        "anneeDateDeNaissance": "1962",
+        "moisDateDeNaissance": "08",
+        "jourDateDeNaissance": "24",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+  
+    ],
+    "adresse": {
+      "identite": "Madame DUBOIS ANGELA",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE MONTORGUEIL",
+      "lieuDit": null,
+      "codePostalVille": "75002",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'recipient=13002526500013' -d 'given_name=Angela' -d 'family_name=DUBOIS' -d 'birthdate=1962-08-24' -d 'gender=female' -d 'birthplace=75107' -d 'birthcountry=99100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>

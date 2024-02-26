@@ -6,6 +6,123 @@ fournisseurs de données dans le cadre des API FranceConnectés.
 
 Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
+* [cnaf_css.yml](cnaf_css.yml)
+
+  Status `200`
+
+  Réponse FranceConnect permettant de déclencher la réponse de [`/v2/complementaire-sante-solidaire` suivante](../api_particulier_v2_cnaf_complementaire_sante_solidaire/fake_france_connect_cnaf.yml)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "token": "cnaf_css"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "scope": [
+      "openid",
+      "identite_pivot",
+      "complementaire_sante_solidaire"
+    ],
+    "client": {
+      "client_id": "client_id",
+      "client_name": "client_name"
+    },
+    "identity": {
+      "given_name": "Georges",
+      "family_name": "CNAF",
+      "birthdate": "2002-01-01",
+      "gender": "male",
+      "birthplace": "75002",
+      "birthcountry": "99100",
+      "preferred_username": "MARTIN"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer cnaf_css" \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
+  ```
+
+  </p>
+  </details>
+* [cnaf_qfv2.yml](cnaf_qfv2.yml)
+
+  Status `200`
+
+  Réponse FranceConnect permettant de déclencher la réponse de [`/v2/composition-familiale-v2` suivante](../api_particulier_v2_cnaf_quotient_familial_v2/fake_france_connect_cnaf.yaml)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "token": "cnaf_qfv2"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "scope": [
+      "openid",
+      "identite_pivot",
+      "cnaf_quotient_familial",
+      "cnaf_allocataires",
+      "cnaf_enfants",
+      "cnaf_adresse"
+    ],
+    "client": {
+      "client_id": "client_id",
+      "client_name": "client_name"
+    },
+    "identity": {
+      "given_name": "Georges",
+      "family_name": "CNAF",
+      "birthdate": "2002-01-01",
+      "gender": "male",
+      "birthplace": "75002",
+      "birthcountry": "99100",
+      "preferred_username": "MARTIN"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer cnaf_qfv2" \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
 * [cnous.yaml](cnous.yaml)
 
   Status `200`
