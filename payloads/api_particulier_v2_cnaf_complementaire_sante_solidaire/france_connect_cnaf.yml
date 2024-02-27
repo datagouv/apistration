@@ -1,0 +1,21 @@
+
+description: |-
+  Cas de test pour CSS avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  recipient: '13002526500013'
+  given_name: "Angela"
+  family_name: "DUBOIS"
+  birthdate: "1962-08-24"
+  gender: "female"
+  birthplace: "75107"
+  birthcountry: "99100"
+status: 200
+payload: |-
+  {
+    "status": "beneficiaire_sans_participation_financiere",
+    "dateDebut": "2023-02-01",
+    "dateFin": "2024-02-01"
+  }

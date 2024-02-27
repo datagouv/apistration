@@ -1,0 +1,22 @@
+
+description: |-
+  Cas de test pour CSS avec jeton FranceConnect.
+  Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_css.yml).
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  recipient: '13002526500013'
+  given_name: "Georges"
+  family_name: "CNAF"
+  birthdate: "2002-01-01"
+  gender: "male"
+  birthplace: "75002"
+  birthcountry: "99100"
+  preferred_username: "MARTIN"
+status: 200
+payload: |-
+  {
+    "status": "beneficiaire_sans_participation_financiere",
+    "dateDebut": "2021-05-05",
+    "dateFin": "2023-03-03"
+  }

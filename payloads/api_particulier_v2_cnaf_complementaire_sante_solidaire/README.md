@@ -266,3 +266,106 @@ Ce cas permet de tester :
 
   </p>
   </details>
+* [fake_france_connect_cnaf.yml](fake_france_connect_cnaf.yml)
+
+  Status `200`
+
+  Cas de test pour CSS avec jeton FranceConnect.
+Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_css.yml).
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "recipient": "13002526500013",
+    "given_name": "Georges",
+    "family_name": "CNAF",
+    "birthdate": "2002-01-01",
+    "gender": "male",
+    "birthplace": "75002",
+    "birthcountry": "99100",
+    "preferred_username": "MARTIN"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "status": "beneficiaire_sans_participation_financiere",
+    "dateDebut": "2021-05-05",
+    "dateFin": "2023-03-03"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'recipient=13002526500013' -d 'given_name=Georges' -d 'family_name=CNAF' -d 'birthdate=2002-01-01' -d 'gender=male' -d 'birthplace=75002' -d 'birthcountry=99100' -d 'preferred_username=MARTIN' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
+  ```
+
+  </p>
+  </details>
+* [france_connect_cnaf.yml](france_connect_cnaf.yml)
+
+  Status `200`
+
+  Cas de test pour CSS avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "recipient": "13002526500013",
+    "given_name": "Angela",
+    "family_name": "DUBOIS",
+    "birthdate": "1962-08-24",
+    "gender": "female",
+    "birthplace": "75107",
+    "birthcountry": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "status": "beneficiaire_sans_participation_financiere",
+    "dateDebut": "2023-02-01",
+    "dateFin": "2024-02-01"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'recipient=13002526500013' -d 'given_name=Angela' -d 'family_name=DUBOIS' -d 'birthdate=1962-08-24' -d 'gender=female' -d 'birthplace=75107' -d 'birthcountry=99100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
+  ```
+
+  </p>
+  </details>
