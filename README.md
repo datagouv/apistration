@@ -191,7 +191,7 @@ Ainsi, l'appel suivant renverra in-fine la réponse définie en 2. :
 ```sh
 curl -X GET \
   -H "Authorization: Bearer cnous" \
-  https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers
+  https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers?recipient=13002526500013
 ```
 
 Le jeton `cnous` correspond à la valeur du paramètre `token` dans le fichier de

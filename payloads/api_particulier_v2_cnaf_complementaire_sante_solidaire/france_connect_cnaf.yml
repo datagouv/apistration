@@ -5,7 +5,6 @@ description: |-
   L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
 params:
-  recipient: '13002526500013'
   given_name: "Angela"
   family_name: "DUBOIS"
   birthdate: "1962-08-24"

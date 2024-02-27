@@ -372,7 +372,7 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
 }"
 ,"Cas de test pour QFv2 avec jeton FranceConnect.
 Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_qfv2.yml).
-L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""recipient"":""13002526500013"",""given_name"":""Georges"",""family_name"":""CNAF"",""birthdate"":""2002-01-01"",""gender"":""male"",""birthplace"":""75002"",""birthcountry"":""99100"",""preferred_username"":""MARTIN""}",200,"{
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""given_name"":""Georges"",""family_name"":""CNAF"",""birthdate"":""2002-01-01"",""gender"":""male"",""birthplace"":""75002"",""birthcountry"":""99100"",""preferred_username"":""MARTIN""}",200,"{
   ""regime"": ""CNAF"",
   ""allocataires"": [
     {
@@ -401,7 +401,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""recipie
 }"
 ,"Cas de test pour QFv2 avec jeton FranceConnect.
 Les données proviennent des jetons de l'environnement de test FranceConnect.
-L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""recipient"":""13002526500013"",""given_name"":""Angela"",""family_name"":""DUBOIS"",""birthdate"":""1962-08-24"",""gender"":""female"",""birthplace"":""75107"",""birthcountry"":""99100""}",200,"{
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""given_name"":""Angela"",""family_name"":""DUBOIS"",""birthdate"":""1962-08-24"",""gender"":""female"",""birthplace"":""75107"",""birthcountry"":""99100""}",200,"{
   ""regime"": ""CNAF"",
   ""allocataires"": [
     {

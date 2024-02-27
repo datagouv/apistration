@@ -279,7 +279,6 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "recipient": "13002526500013",
     "given_name": "Georges",
     "family_name": "CNAF",
     "birthdate": "2002-01-01",
@@ -311,9 +310,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'given_name=Georges' -d 'family_name=CNAF' -d 'birthdate=2002-01-01' -d 'gender=male' -d 'birthplace=75002' -d 'birthcountry=99100' -d 'preferred_username=MARTIN' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire?recipient=13002526500013"
   ```
 
   </p>
@@ -331,7 +328,6 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "recipient": "13002526500013",
     "given_name": "Angela",
     "family_name": "DUBOIS",
     "birthdate": "1962-08-24",
@@ -362,9 +358,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'given_name=Angela' -d 'family_name=DUBOIS' -d 'birthdate=1962-08-24' -d 'gender=female' -d 'birthplace=75107' -d 'birthcountry=99100' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire?recipient=13002526500013"
   ```
 
   </p>

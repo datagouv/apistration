@@ -43,14 +43,14 @@ Ce cas permet de tester :
 }"
 ,"Cas de test pour CSS avec jeton FranceConnect.
 Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_css.yml).
-L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""recipient"":""13002526500013"",""given_name"":""Georges"",""family_name"":""CNAF"",""birthdate"":""2002-01-01"",""gender"":""male"",""birthplace"":""75002"",""birthcountry"":""99100"",""preferred_username"":""MARTIN""}",200,"{
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""given_name"":""Georges"",""family_name"":""CNAF"",""birthdate"":""2002-01-01"",""gender"":""male"",""birthplace"":""75002"",""birthcountry"":""99100"",""preferred_username"":""MARTIN""}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2021-05-05"",
   ""dateFin"": ""2023-03-03""
 }"
 ,"Cas de test pour CSS avec jeton FranceConnect.
 Les données proviennent des jetons de l'environnement de test FranceConnect.
-L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""recipient"":""13002526500013"",""given_name"":""Angela"",""family_name"":""DUBOIS"",""birthdate"":""1962-08-24"",""gender"":""female"",""birthplace"":""75107"",""birthcountry"":""99100""}",200,"{
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""given_name"":""Angela"",""family_name"":""DUBOIS"",""birthdate"":""1962-08-24"",""gender"":""female"",""birthplace"":""75107"",""birthcountry"":""99100""}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2023-02-01"",
   ""dateFin"": ""2024-02-01""

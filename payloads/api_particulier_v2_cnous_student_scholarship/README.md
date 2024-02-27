@@ -288,9 +288,7 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'given_name=Jean' -d 'family_name=MARTIN' -d 'birthdate=2001-01-01' -d 'gender=male' -d 'birthplace=75002' -d 'birthcountry=99100' -d 'preferred_username=jmartin_cnous' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers?recipient=13002526500013"
   ```
 
   </p>
@@ -343,9 +341,7 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'given_name=Jean' -d 'family_name=MARTIN' -d 'birthdate=2001-01-01' -d 'gender=male' -d 'birthplace=75002' -d 'birthcountry=99100' -d 'preferred_username=jmartin_cnous_with_less_scopes' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers?recipient=13002526500013"
   ```
 
   </p>
@@ -404,9 +400,7 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'given_name=Angela+Claire+Louise' -d 'family_name=DUBOIS' -d 'birthdate=1962-08-24' -d 'gender=female' -d 'birthplace=75107' -d 'birthcountry=99100' -d 'preferred_username=' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers?recipient=13002526500013"
   ```
 
   </p>

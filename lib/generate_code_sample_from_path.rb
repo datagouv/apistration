@@ -36,8 +36,7 @@ class GenerateCodeSampleFromPath
   end
 
   def france_connect_curl
-    "curl -H \"Authorization: Bearer #{params['token']}\" \\\n" \
-      "  --url \"https://staging.particulier.api.gouv.fr/api#{interpolated_path}\""
+    "curl -H \"Authorization: Bearer #{params['token'] || '$token_france_connect' }\" --url \"https://staging.particulier.api.gouv.fr#{interpolated_path}?recipient=13002526500013\""
   end
 
   def interpolated_path
