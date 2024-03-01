@@ -550,7 +550,7 @@ paths:
       - name: anneeDateDeNaissance
         in: query
         description: Année de naissance. Ne pas la renseigner si celle-ci est inconnue
-          ou si présence de jeton FranceConnect.
+          ou en cas de présence de jeton FranceConnect.
         example: 1990
         required: false
         schema:
@@ -558,8 +558,8 @@ paths:
       - name: moisDateDeNaissance
         in: query
         description: Mois de naissance. Ne pas le renseigner si celui-ci est inconnu
-          ou si présence de jeton FranceConnect. Cette valeur est ignorée si anneeDateDeNaissance
-          est vide.
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          anneeDateDeNaissance est vide.
         example: 1
         required: false
         schema:
@@ -567,8 +567,8 @@ paths:
       - name: jourDateDeNaissance
         in: query
         description: Jour de naissance. Ne pas le renseigner si celui-ci est inconnu
-          ou si présence de jeton FranceConnect. Cette valeur est ignorée si moisDateDeNaissance
-          ou anneeDateDeNaissance est vide.
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          moisDateDeNaissance ou anneeDateDeNaissance est vide.
         example: 1
         required: false
         schema:
@@ -581,9 +581,10 @@ paths:
           maxLength: 5
           example: '08480'
         description: Code Insee à 5 chiffres du lieu de naissance de la personne sur
-          5 chiffres. Ne pas remplir si la personne est née à l'étranger. Ne pas renseigner
-          si présence de jeton FranceConnect. En l'absence de jeton FranceConnect,
-          ce champs est obligatoire si la personne est née en France.
+          5 chiffres. Ne pas remplir si la personne est née à l'étranger ou si présence
+          de jeton FranceConnect. En l'absence de jeton FranceConnect et du triplet
+          (nomCommuneNaissance, anneeDateDeNaissance, codeInseeDepartementNaissance),
+          le champs est obligatoire si la personne est née en France
         required: false
       - name: nomCommuneNaissance
         in: query
