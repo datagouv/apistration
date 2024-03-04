@@ -23,8 +23,14 @@ class CNAF::QuotientFamilialV2::MakeRequest < CNAF::MakeRequest
       codePaysNaissance: context.params[:code_pays_lieu_de_naissance],
       genre: context.params[:gender],
       anneeDemandee: context.params[:annee].presence || Time.zone.today.year,
-      moisDemande: context.params[:mois].presence || Time.zone.today.month
+      moisDemande: mois_demande
     }.compact
   end
   # rubocop:enable Metrics/AbcSize
+
+  private
+
+  def mois_demande
+    Kernel.format('%<month>02d', month: context.params[:mois].presence || Time.zone.today.month)
+  end
 end

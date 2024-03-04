@@ -2,7 +2,7 @@ require_relative '../provider_stubs'
 
 module ProviderStubs::CNAF
   # rubocop:disable Metrics/MethodLength
-  def stub_cnaf_valid(api, siret: valid_siret)
+  def stub_cnaf_valid(api, siret: valid_siret, extra_params: {})
     stub_request(:get, cnaf_url(api)).with(
       query: hash_including({
         codeLieuNaissance: '17300',
@@ -11,7 +11,7 @@ module ProviderStubs::CNAF
         genre: 'M',
         listePrenoms: 'JEAN-PASCAL',
         nomNaissance: 'CHAMPION'
-      }),
+      }.merge(extra_params)),
       headers: {
         'Content-Type' => 'application/json',
         'Authorization' => 'Bearer super_valid_token',

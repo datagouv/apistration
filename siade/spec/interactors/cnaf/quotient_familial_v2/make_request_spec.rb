@@ -16,6 +16,8 @@ RSpec.describe CNAF::QuotientFamilialV2::MakeRequest, type: :make_request do
         code_pays_lieu_de_naissance: '99100',
         code_insee_lieu_de_naissance: '17300',
         recipient: valid_siret,
+        annee: 2024,
+        mois: 1,
         request_id:
       }
     end
@@ -29,8 +31,8 @@ RSpec.describe CNAF::QuotientFamilialV2::MakeRequest, type: :make_request do
           genre: 'M',
           listePrenoms: 'JEAN-PASCAL',
           nomNaissance: 'CHAMPION',
-          anneeDemandee: Time.zone.today.year,
-          moisDemande: Time.zone.today.month
+          anneeDemandee: 2024,
+          moisDemande: '01'
         },
         headers: {
           'Content-Type' => 'application/json',

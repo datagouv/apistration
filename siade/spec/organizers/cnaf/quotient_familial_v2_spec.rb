@@ -17,17 +17,18 @@ RSpec.describe CNAF::QuotientFamilialV2, type: :retriever_organizer do
         code_insee_lieu_de_naissance: '17300',
         request_id:,
         annee: 2023,
-        mois: 12,
+        mois:,
         recipient:
       }
     end
 
     let(:gender) { 'M' }
+    let(:mois) { 5 }
 
     describe 'happy path' do
       before do
         stub_cnaf_authenticate('quotient_familial_v2')
-        stub_cnaf_valid('quotient_familial_v2')
+        stub_cnaf_valid('quotient_familial_v2', extra_params: { anneeDemandee: '2023', moisDemande: '05' })
       end
 
       it { is_expected.to be_a_success }
