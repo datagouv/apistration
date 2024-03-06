@@ -23,7 +23,7 @@ insee:
     <<: *personne_morale_properties
     sigle:
       <<: *personne_morale_property_sigle
-      description: "Cette valeur est masquée à [ND] si l'unité légale correspond à une personne morale non-diffusible."
+      description: "Si la personne morale est en diffusion partielle, le sigle n'est pas renvoyé, et la valeur est remplacée par \"[ND]\"."
   personne_morale_attributes_diffusible: &personne_morale_attributes_diffusible
     <<: *personne_morale_attributes
     properties: *personne_morale_properties_diffusible
@@ -105,27 +105,27 @@ insee:
         physique. Cette valeur peut ne pas être renseignée
         pour une personne physique.
         \n
-        Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
+        Si la personne physique est en diffusion partielle, la valeur est remplacée par \"[ND]\"."
     nom_naissance :
       <<: *personne_physique_property_nom_naissance
-      description: "Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
+      description: "Si la personne physique est en diffusion partielle, le nom de naissance n'est pas renvoyé et la valeur est remplacée par \"[ND]\"."
     nom_usage:
       <<: *personne_physique_property_nom_usage
       description: "Nom que la personne physique a choisi d'utiliser.
       \n
-      Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
+      Si la personne physique est en diffusion partielle, le nom d'usage n'est pas renvoyé et la valeur est remplacée par \"[ND]\"."
     prenom_1:
       <<: *personne_physique_property_prenom_1
-      description: "Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
+      description: "Si la personne physique est en diffusion partielle, le prénom n'est pas renvoyé et la valeur est remplacée par \"[ND]\"."
     prenom_2:
       <<: *personne_physique_property_prenom_2
-      description: "Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
+      description: "Si la personne physique est en diffusion partielle, le prénom n'est pas renvoyé et la valeur est remplacée par \"[ND]\"."
     prenom_3:
       <<: *personne_physique_property_prenom_3
-      description: "Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
+      description: "Si la personne physique est en diffusion partielle, le prénom n'est pas renvoyé et la valeur est remplacée par \"[ND]\"."
     prenom_4:
       <<: *personne_physique_property_prenom_4
-      description: "Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
+      description: "Si la personne physique est en diffusion partielle, le prénom n'est pas renvoyé et la valeur est remplacée par \"[ND]\"."
     prenom_usuel:
       <<: *personne_physique_property_prenom_usuel
       description: "Le prénom usuel est le prénom par lequel
@@ -134,14 +134,14 @@ insee:
         été donnés à sa naissance et qui sont inscrits à
         l'état civil.
         \n
-        Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
+        Si la personne physique est en diffusion partielle, le prénom usuel n'est pas renvoyé et la valeur est remplacée par \"[ND]\"."
     pseudonyme:
       <<: *personne_physique_property_pseudonyme
       description: "Le pseudonyme correspond au nom qu'une
         personne utilise pour se désigner dans l'exercice
         de son activité, généralement littéraire ou artistique.
         \n
-        Cette valeur est masquée à [ND] si l'unité légale correspond à une personne physique non-diffusible."
+        Si la personne physique est en diffusion partielle, le pseudonyme n'est pas renvoyé et la valeur est remplacée par \"[ND]\"."
   personne_physique_attributes_diffusible: &personne_physique_attributes_diffusible
     <<: *personne_physique_attributes
     properties: *personne_physique_properties_diffusible
@@ -210,25 +210,28 @@ insee:
         - "diffusible"
         - "partiellement_diffusible"
         - "non_diffusible"
-      description: "Indique si l'unite légale est diffusable, partiellement diffusable ou non diffusable"
-    diffusable_commercialement:
-      title: "Diffusable commercialement"
+      description: "Indique le statut de diffusion de l'unité légale : 
+        \n
+        \n 
+        - Diffusible : Toutes les données de l'unité légale sont diffusibles, donc publiques.
+        \n 
+        - Partiellement diffusible : Seule une partie des données est diffusible, suite à une demande de l'entité qui a exercé sont droit d'opposition à la diffusion de données personnelles.
+        \n 
+        - Non-diffusible (obsolète) : Ce statut correspond à l'ancien statut, toutes les entités ayant exercé leur droit d'opposition sont normalement désormais en statut \"partiellement diffusible\"."
+    diffusable_commercialement: &diffusable_commercialement
+      title: "Indique si les données renvoyées sont entièrement publiques et donc diffusables"
       type: "boolean"
       example: true
-      description: "Indique si l'unité légale est :
+      description: "Ce champ permet de savoir s'il est possible de diffuser les données sans restriction ou bien si des données protégées sont présentes dans la payload (ce qui est le cas lorsque l'unité légale est en statut de diffusion partielle). Pour une unité légale :
         \n
         \n
-        - une unité légale diffusible : 'true'
+        - diffusible : 'true', car toutes les données sont publiques ;
         \n
-        - partiellement-diffusible : 'false'. Dans ce cas, les
-        informations obtenues ne doivent en aucun cas être accessibles
-        au grand public.
+        - partiellement-diffusible : 'false', une partie des données est protégée et ne doit pas être diffusée, pour du pré-remplissage de formulaire public, préférer l'API en open data qui masque automatiquement les données protégées ;
         \n
-        - une unité légale non-diffusible : 'false'. Dans ce cas, les
-        informations obtenues ne doivent en aucun cas être accessibles
-        au grand public.
+        - non-diffusible (obsolète) : 'false', dans ce cas, les informations obtenues ne doivent en aucun cas être accessibles au grand public. Ce cas n'étant plus censé exister, préférer l'API en open data qui masque automatiquement les données protégées.
         \n
-        Plus d'informations sur les conditions de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionUniteLegale"
+        Plus d'informations sur les conditions de diffusion : https://sirene.fr/static-resources/htm/v_sommaire.htm#26"
     forme_juridique:
       type: "object"
       additionalProperties: false
@@ -475,22 +478,18 @@ insee:
     <<: *shared_insee_unite_legale_attributes
     personne_morale_attributs: *personne_morale_attributes_diffusible
     personne_physique_attributs: *personne_physique_attributes_diffusible
-    diffusable_commercialement:
-      title: "Diffusable commercialement"
+    diffusable_commercialement: &diffusable_commercialement_diffusible
+      title: "Indique si les données renvoyées sont entièrement publiques et donc diffusables"
       type: "boolean"
       example: true
-      description: "Indique si l'unité légale est :
+      description: "Ce champ est a priori toujours à 'true' car cette API ne renvoie que de l'open data. Pour une unité légale :
         \n
         \n
-        - une unité légale diffusible : 'true'
+        - diffusible : 'true', car toutes les données sont publiques ;
         \n
-        - partiellement-diffusible : 'true'. Dans ce cas, les informations obtenues peuvent être masquées par la chaîne de caractère '[ND]'
+        - partiellement-diffusible : 'true'. Dans ce cas, les informations protégées suite au droit d'opposition sont masquées par la chaîne de caractère '[ND]' ;
         \n
-        - une unité légale non-diffusible : 'false'. Dans ce cas, les
-        informations obtenues ne doivent en aucun cas être accessibles
-        au grand public.
-        \n
-        Plus d'informations sur les conditions de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionEtablissement"
+        Plus d'informations sur les conditions de diffusion : https://sirene.fr/static-resources/htm/v_sommaire.htm#26"
 
   insee_unite_legale_attributes: &insee_unite_legale_attributes
     <<: *shared_insee_unite_legale_attributes
@@ -617,7 +616,14 @@ insee:
         - "diffusible"
         - "partiellement_diffusible"
         - "non_diffusible"
-      description: "Indique si l'établissement rattaché est diffusable, partiellement diffusable ou non diffusable"
+      description: "Indique le statut de diffusion de l'établissement : 
+        \n
+        \n 
+        - Diffusible : Toutes les données de l'établissement sont diffusibles, donc publiques.
+        \n 
+        - Partiellement diffusible : Seule une partie des données est diffusible, suite à une demande de l'entité qui a exercé sont droit d'opposition à la diffusion de données personnelles.
+        \n 
+        - Non-diffusible (obsolète) : Ce statut correspond à l'ancien statut, toutes les entités ayant exercé leur droit d'opposition sont normalement désormais en statut \"partiellement diffusible\"."
     acheminement_postal: &adresse_etablissement_acheminement_postal_property
       type: "object"
       additionalProperties: false
@@ -666,15 +672,15 @@ insee:
       <<: *insee_adresse_etablissement_complement_adresse_property
       description: "Le complément d'adresse correspond à des éléments situés à l'extérieur du bâtiment qui permettent de compléter l'adresse (résidence, bâtiment, entrée, etc..)
       \n
-      Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
+      Si la personne morale est en diffusion partielle, le complément d'adresse n'est pas renvoyé, et la valeur est remplacée par \"[ND]\"."
     numero_voie:
       <<: *insee_adresse_etablissement_numero_voie_property
-      description: "Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
+      description: "Si la personne morale est en diffusion partielle, la valeur est remplacée par \"[ND]\"."
     indice_repetition_voie:
       <<: *insee_adresse_etablissement_indice_repetition_voie_property
       description: "Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/indrep
       \n
-      Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
+      Si la personne morale est en diffusion partielle, la valeur est remplacée par \"[ND]\"."
     type_voie:
       <<: *insee_adresse_etablissement_type_voie_property
       description:
@@ -685,13 +691,13 @@ insee:
         \n
         Plus d'informations dans la documentation Insee de l'API Sirene : https://www.sirene.fr/sirene/public/variable/typvoie
         \n
-        Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
+        Si la personne morale est en diffusion partielle, la valeur est remplacée par \"[ND]\"."
     libelle_voie:
       <<: *insee_adresse_etablissement_libelle_voie_property
-      description: "Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
+      description: "Si la personne morale est en diffusion partielle, la valeur est remplacée par \"[ND]\"."
     code_postal:
       <<: *insee_adresse_etablissement_code_postal_property
-      description: "Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
+      description: "Si la personne morale est en diffusion partielle, la valeur est remplacée par \"[ND]\"."
     distribution_speciale:
       <<: *insee_adresse_etablissement_distribution_speciale_property
       description: "La distribution spéciale reprend les éléments particuliers qui accompagnent une adresse de distribution   spéciale, la modalité la plus connue étant les adresses en 'CEDEX'.
@@ -701,17 +707,17 @@ insee:
         * https://www.sirene.fr/sirene/public/variable/distributionSpecialeEtablissement
         * https://www.sirene.fr/sirene/public/variable/l5-disp
         \n
-        Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
+        Si la personne morale est en diffusion partielle, la valeur est remplacée par \"[ND]\"."
     code_cedex:
       <<: *insee_adresse_etablissement_code_cedex_property
       description: "Plus d'informations : https://fr.wikipedia.org/wiki/Courrier_d%27entreprise_%C3%A0_distribution_exceptionnelle
       \n
-      Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
+      Si la personne morale est en diffusion partielle, la valeur est remplacée par \"[ND]\"."
     libelle_cedex:
       <<: *insee_adresse_etablissement_libelle_cedex_property
       description: "Ce champ indique le libellé correspondant au code cedex de l'établissement. Si le code cedex est à 'null', ce champ est également à 'null'.
       \n
-      Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
+      Si la personne morale est en diffusion partielle, la valeur est remplacée par \"[ND]\"."
     acheminement_postal:
       <<: *adresse_etablissement_acheminement_postal_property
       properties:
@@ -719,32 +725,32 @@ insee:
           <<: *adresse_etablissement_acheminement_postal_l1_property
           description: "Si l'établissement correspond à une personne morale : la dénomination sociale de la personne morale. Le cas contraire: cette variable est vide.
           \n
-          Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
+          Si la personne morale est en diffusion partielle, la valeur est remplacée par \"[ND]\"."
         l2:
           <<: *adresse_etablissement_acheminement_postal_l2_property
           description: "Si l'établissement correspond à une personne physique : concaténation du nom et prénom
           \n
-          Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
+          Si la personne morale est en diffusion partielle, la valeur est remplacée par \"[ND]\"."
         l3:
           <<: *adresse_etablissement_acheminement_postal_l3_property
           description: "Si l'établissement correspond à une personne physique : concaténation du nom et prénom
           \n
-          Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
+          Si la personne morale est en diffusion partielle, la valeur est remplacée par \"[ND]\"."
         l4:
           <<: *adresse_etablissement_acheminement_postal_l4_property
           description: "Concaténation du numéro de voie, d'indice de répétition, du type de voie et du libellé de la voie
           \n
-          Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
+          Si la personne morale est en diffusion partielle, la valeur est remplacée par \"[ND]\"."
         l5:
           <<: *adresse_etablissement_acheminement_postal_l5_property
           description: "Distribution spéciale comme décrit dans la clé `distribution_speciale`
           \n
-          Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
+          Si la personne morale est en diffusion partielle, la valeur est remplacée par \"[ND]\"."
         l6:
           <<: *adresse_etablissement_acheminement_postal_l6_property
           description: "Si le code cedex est existant : code cedex accompagné de son libellé ; sinon, si le pays est en France : code postal accompagné de son libellé, sinon : libellé de la commune de l'établissement situé à l'étranger
           \n
-          Cette valeur est masquée à [ND] si l'etablissement correspond à une personne morale non-diffusible."
+          Si la personne morale est en diffusion partielle, la valeur est remplacée par \"[ND]\"."
         l7:
           <<: *adresse_etablissement_acheminement_postal_l7_property
 
@@ -916,28 +922,15 @@ insee:
         - "diffusible"
         - "partiellement_diffusible"
         - "non_diffusible"
-      description: "Indique si l'établissement est diffusable, partiellement diffusable ou non diffusable"
-    diffusable_commercialement:
-      title: "Diffusable commercialement"
-      type: "boolean"
-      example: true
-      enum:
-        - true
-        - false
-      description: "Indique si l'établissement est :
+      description: "Indique le statut de diffusion de l'établissement : 
         \n
-        \n
-        - diffusible : 'true'
-        \n
-        - partiellement-diffusible : 'false'. Dans ce cas, les
-        informations obtenues ne doivent en aucun cas être accessibles
-        au grand public.
-        \n
-        - non-diffusible : 'false'. Dans ce cas, les
-        informations obtenues ne doivent en aucun cas être accessibles
-        au grand public.
-        \n
-        Plus d'informations sur les conditions de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionEtablissement"
+        \n 
+        - Diffusible : Toutes les données de l'établissement sont diffusibles, donc publiques.
+        \n 
+        - Partiellement diffusible : Seule une partie des données est diffusible, suite à une demande de l'entité qui a exercé sont droit d'opposition à la diffusion de données personnelles.
+        \n 
+        - Non-diffusible (obsolète) : Ce statut correspond à l'ancien statut, toutes les entités ayant exercé leur droit d'opposition sont normalement désormais en statut \"partiellement diffusible\"."
+    diffusable_commercialement: *diffusable_commercialement
     enseigne: &insee_etabliseement_enseigne_property
       title: "Enseigne de l'établissement"
       type: "string"
@@ -978,26 +971,9 @@ insee:
         \n
         Cette variable est la concaténation séparée par des virgules des 3 champs \"renvoyés\" par l'Insee. Plus d'informations ici: https://www.sirene.fr/sirene/public/variable/enseigne1Etablissement
         \n
-        Cette valeur est masquée à [ND] si l'unité légale correspond à une personne morale non-diffusible."
+        Si la personne morale est en diffusion partielle, l'enseigne n'est pas renvoyée, et la valeur est remplacée par \"[ND]\"."
     diffusable_commercialement:
-      title: "Diffusable commercialement"
-      type: "boolean"
-      example: true
-      enum:
-        - true
-        - false
-      description: "Indique si l'établissement est :
-        \n
-        \n
-        - diffusible : 'true'
-        \n
-        - partiellement-diffusible : 'true'. Dans ce cas, les informations obtenues peuvent être masquées par la chaîne de caractère '[ND]'
-        \n
-        - non-diffusible : 'false'. Dans ce cas, les
-        informations obtenues ne doivent en aucun cas être accessibles
-        au grand public.
-        \n
-        Plus d'informations sur les conditions de diffusion : https://www.sirene.fr/sirene/public/variable/statutDiffusionEtablissement"
+      *diffusable_commercialement
 
 insee:
   adresse_etablissement:
