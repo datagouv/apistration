@@ -1002,7 +1002,7 @@ insee:
 insee:
   adresse_etablissement:
     title: "Adresse établissement"
-    description: "Adresse d'un établissement inscrit au répertoire Sirene. Tous les établissements sont appelables, y compris les non-diffusibles."
+    description: "Adresse d'un établissement inscrit au répertoire Sirene, y compris celle des établissements en diffusion partielle."
     tags:
       - "Informations générales"
     attributes: *insee_adresse_etablissement_attributes
@@ -1022,15 +1022,15 @@ insee:
         description: "Lien vers la ressource 'Donnée Sirene d'un établissement' correspondant à cette adresse d'établissement pour obtenir les données de référence de l'établissement."
 
   adresse_etablissement_diffusable:
-    title: "Adresse établissement diffusible"
-    description: "Adresse d'un établissement diffusible inscrit au répertoire Sirene."
+    title: "Adresse établissement en open data"
+    description: "Adresse d'un établissement inscrit au répertoire Sirene, si celui-ci n'a pas choisi la diffusion partielle."
     tags:
       - "Informations générales"
     attributes: *insee_adresse_etablissement_attributes_diffusible
 
   unite_legale:
     title: "Données unité légale"
-    description: "Informations de référence d'une unité légale (entreprise, association ou administration) inscrite au répertoire Sirene. Toutes les unités légales sont appelables, y compris les non-diffusibles."
+    description: "Informations de référence d'une unité légale (entreprise, association ou administration) inscrite au répertoire Sirene. Avec les données protégées des unités légales en diffusion partielle."
     tags:
       - "Informations générales"
     attributes: *insee_unite_legale_attributes
@@ -1055,15 +1055,15 @@ insee:
         nullable: true
 
   unite_legale_diffusable:
-    title: "Données unité légale diffusible"
-    description: "Informations de référence d'une unité légale (entreprise, association ou administration) diffusible, inscrite au répertoire Sirene."
+    title: "Données unité légale en open data"
+    description: "Informations de référence publiques d'une unité légale (entreprise, association ou administration) inscrite au répertoire Sirene."
     tags:
       - "Informations générales"
     attributes: *insee_unite_legale_attributes_diffusible
 
   etablissement:
     title: "Données établissement"
-    description: "Informations générales concernant un établissement inscrit au répertoire Sirene. Tous les établissements sont appelables, y compris les non-diffusibles."
+    description: "Informations générales concernant un établissement inscrit au répertoire Sirene. Avec les données protégées des établissements en diffusion partielle."
     tags:
       - "Informations générales"
     attributes: *insee_etablissement_attributes
@@ -1085,20 +1085,20 @@ insee:
         nullable: true
 
   etablissement_diffusable:
-    title: "Données établissement diffusible"
-    description: "Informations générales concernant un établissement diffusible inscrit au répertoire Sirene."
+    title: "Données établissement en open data"
+    description: "Informations générales publiques concernant un établissement inscrit au répertoire Sirene."
     tags:
       - "Informations générales"
     attributes: *insee_etablissement_attributes_diffusible
 
   siege_unite_legale:
     title: "Données siège social"
-    description: "Informations générales concernant le siège social d'une unité légale inscrite au répertoire Sirene. Tous les sièges sociaux sont appelables, y compris les non-diffusibles."
+    description: "Informations générales concernant le siège social d'une unité légale inscrite au répertoire Sirene. Avec les données protégées des sièges sociaux en diffusion partielle."
     tags:
       - "Informations générales"
 
   siege_diffusable_unite_legale:
-    title: "Données siège social diffusible"
-    description: "Informations générales concernant le siège d'une unité légale diffusible inscrite au répertoire Sirene."
+    title: "Données siège social en open data"
+    description: "Informations générales publiques concernant le siège d'une unité légale inscrite au répertoire Sirene."
     tags:
       - "Informations générales"
