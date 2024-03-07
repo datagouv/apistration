@@ -43,6 +43,9 @@ jobs:
           bundler-cache: true
           cache-version: 321
 
+      - name: Update repository
+        run: sudo apt-get update
+
       - name: Install dependencies
         run: sudo apt-get install libgpgme11-dev
 
