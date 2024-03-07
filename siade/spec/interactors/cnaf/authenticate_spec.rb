@@ -1,5 +1,5 @@
-RSpec.describe CNAF::ComplementaireSanteSolidaire::Authenticate, type: :interactor do
-  subject { described_class.call }
+RSpec.describe CNAF::Authenticate, type: :interactor do
+  subject { described_class.call(prestation_name: 'complementaire_sante_solidaire') }
 
   before do
     stub_cnaf_authenticate('complementaire_sante_solidaire')

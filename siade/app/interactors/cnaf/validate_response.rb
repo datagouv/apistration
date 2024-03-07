@@ -1,4 +1,4 @@
-class CNAF::ComplementaireSanteSolidaire::ValidateResponse < ValidateResponse
+class CNAF::ValidateResponse < ValidateResponse
   def call
     resource_not_found! if http_not_found?
     unknown_provider_response! if !http_ok? || invalid_json?
