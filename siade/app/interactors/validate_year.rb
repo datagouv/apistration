@@ -2,10 +2,14 @@ class ValidateYear < ValidateParamInteractor
   def call
     return if valid?
 
-    invalid_param!(:year)
+    invalid_param!(year_param_name)
   end
 
   protected
+
+  def year_param_name
+    :year
+  end
 
   def start_year
     1900
@@ -18,9 +22,9 @@ class ValidateYear < ValidateParamInteractor
   private
 
   def valid?
-    param(:year).present? &&
-      param(:year).to_s =~ /\A\d{4}\z/ &&
-      valid_year_range.include?(param(:year).to_i)
+    param(year_param_name).present? &&
+      param(year_param_name).to_s =~ /\A\d{4}\z/ &&
+      valid_year_range.include?(param(year_param_name).to_i)
   end
 
   def valid_year_range
