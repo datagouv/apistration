@@ -8,6 +8,7 @@ class CNAF::QuotientFamilialV2 < RetrieverOrganizer
   }.freeze
 
   organize CNAF::ValidateParams,
+    CNAF::ExtractCodeCommuneFromTranscogage,
     CNAF::QuotientFamilialV2::Authenticate,
     CNAF::QuotientFamilialV2::MakeRequest,
     CNAF::QuotientFamilialV2::ValidateResponse,
