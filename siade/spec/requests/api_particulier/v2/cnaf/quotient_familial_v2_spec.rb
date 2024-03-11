@@ -75,6 +75,27 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
         description: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codeInseeLieuDeNaissance.description'),
         required: false
 
+      parameter name: :nomCommuneNaissance,
+        in: :query,
+        schema: {
+          type: SwaggerData.get('cnaf.quotient-familial-v2.parameters.nomCommuneNaissance.type'),
+          minLength: SwaggerData.get('cnaf.quotient-familial-v2.parameters.nomCommuneNaissance.minLength'),
+          example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.nomCommuneNaissance.example')
+        },
+        description: SwaggerData.get('cnaf.quotient-familial-v2.parameters.nomCommuneNaissance.description'),
+        required: false
+
+      parameter name: :codeInseeDepartementNaissance,
+        in: :query,
+        schema: {
+          type: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codeInseeDepartementNaissance.type'),
+          minLength: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codeInseeDepartementNaissance.minLength'),
+          maxLength: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codeInseeDepartementNaissance.maxLength'),
+          example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codeInseeDepartementNaissance.example')
+        },
+        description: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codeInseeDepartementNaissance.description'),
+        required: false
+
       parameter name: :codePaysLieuDeNaissance,
         in: :query,
         schema: {
@@ -117,10 +138,6 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
       end
 
       describe 'without a FranceConnect token' do
-        before do
-          stub_cnaf_valid('quotient_familial_v2', siret: '10000000000008')
-        end
-
         let(:Authorization) { nil }
         let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
 
@@ -131,71 +148,101 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
         let(:moisDateDeNaissance) { 6 }
         let(:jourDateDeNaissance) { 12 }
         let(:codePaysLieuDeNaissance) { '99100' }
-        let(:codeInseeLieuDeNaissance) { '17300' }
         let(:mois) { 12 }
         let(:annee) { 2023 }
 
-        describe 'with valid token and mandatory params' do
-          response '200', 'Quotient Familial trouvée' do
-            description SwaggerData.get('cnaf.quotient-familial-v2.description')
+        describe 'with transcogage params', vcr: { cassette_name: 'insee/metadonnees/one_result' } do
+          let(:codeInseeLieuDeNaissance) { nil }
+          let(:nomCommuneNaissance) { 'Gennevilliers' }
+          let(:codeInseeDepartementNaissance) { '92' }
+          let(:anneeDateDeNaissance) { 2000 }
 
-            schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('cnaf.quotient-familial-v2.attributes')
-            )
+          before do
+            stub_cnaf_valid('quotient_familial_v2', siret: '10000000000008', extra_params: { codeLieuNaissance: '92036', dateNaissance: '2000-06-12' })
+          end
 
-            run_test!
+          describe 'with valid token and mandatory params' do
+            response '200', 'Quotient Familial trouvée' do
+              description SwaggerData.get('cnaf.quotient-familial-v2.description')
+
+              schema build_rswag_response_api_particulier(
+                attributes: SwaggerData.get('cnaf.quotient-familial-v2.attributes')
+              )
+
+              run_test!
+            end
           end
         end
 
-        describe 'server errors' do
-          response '400', 'Mauvais paramètres d\'appels' do
-            let(:sexe) { 'nope' }
+        context 'with code insee lieu de naissance' do
+          let(:codeInseeLieuDeNaissance) { '17300' }
 
-            build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_entity_error_gender_error)
-
-            schema '$ref' => '#/components/schemas/Error'
-
-            run_test!
+          before do
+            stub_cnaf_valid('quotient_familial_v2', siret: '10000000000008')
           end
 
-          response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
-            before do
-              stub_cnaf_404('quotient_familial_v2')
+          describe 'with valid token and mandatory params' do
+            response '200', 'Quotient Familial trouvée' do
+              description SwaggerData.get('cnaf.quotient-familial-v2.description')
+
+              schema build_rswag_response_api_particulier(
+                attributes: SwaggerData.get('cnaf.quotient-familial-v2.attributes')
+              )
+
+              run_test!
+            end
+          end
+
+          describe 'server errors' do
+            response '400', 'Mauvais paramètres d\'appels' do
+              let(:sexe) { 'nope' }
+
+              build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_entity_error_gender_error)
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
             end
 
-            let(:codePaysLieuDeNaissance) { '99623' }
+            response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
+              before do
+                stub_cnaf_404('quotient_familial_v2')
+              end
 
-            schema '$ref' => '#/components/schemas/Error'
+              let(:codePaysLieuDeNaissance) { '99623' }
 
-            run_test!
-          end
+              schema '$ref' => '#/components/schemas/Error'
 
-          response '503', 'Erreur du fournisseur' do
-            provider_unknown_error = ProviderUnknownError.new('CNAF')
+              run_test!
+            end
 
-            stubbed_organizer_error(
-              CNAF::QuotientFamilialV2,
-              provider_unknown_error
-            )
+            response '503', 'Erreur du fournisseur' do
+              provider_unknown_error = ProviderUnknownError.new('CNAF')
 
-            schema '$ref' => '#/components/schemas/Error'
+              stubbed_organizer_error(
+                CNAF::QuotientFamilialV2,
+                provider_unknown_error
+              )
 
-            build_rswag_example(provider_unknown_error, :unknown_error)
+              schema '$ref' => '#/components/schemas/Error'
 
-            run_test!
-          end
+              build_rswag_example(provider_unknown_error, :unknown_error)
 
-          response '504', 'Erreur d\'intermédiaire' do
-            schema '$ref' => '#/components/schemas/Error'
+              run_test!
+            end
 
-            provider_timeout_error = ProviderTimeoutError.new('CNAF')
+            response '504', 'Erreur d\'intermédiaire' do
+              schema '$ref' => '#/components/schemas/Error'
 
-            stubbed_organizer_error(
-              CNAF::QuotientFamilialV2,
-              provider_timeout_error
-            )
+              provider_timeout_error = ProviderTimeoutError.new('CNAF')
 
-            run_test!
+              stubbed_organizer_error(
+                CNAF::QuotientFamilialV2,
+                provider_timeout_error
+              )
+
+              run_test!
+            end
           end
         end
       end

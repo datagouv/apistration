@@ -62,13 +62,20 @@ class APIParticulier::V2::CNAF::AbstractController < APIParticulierController
       annee_date_de_naissance: params[:anneeDateDeNaissance],
       mois_date_de_naissance: params[:moisDateDeNaissance],
       jour_date_de_naissance: params[:jourDateDeNaissance],
-      code_insee_lieu_de_naissance: params[:codeInseeLieuDeNaissance],
       code_pays_lieu_de_naissance: params.require(:codePaysLieuDeNaissance),
       gender: params.require(:sexe),
       recipient: current_user.siret
-    }
+    }.merge(code_insee_lieu_de_naissance_or_transcogage_params)
   end
   # rubocop:enable Metrics/AbcSize
+
+  def code_insee_lieu_de_naissance_or_transcogage_params
+    {
+      code_insee_lieu_de_naissance: params[:codeInseeLieuDeNaissance],
+      code_insee_departement_de_naissance: params[:codeInseeDepartementNaissance],
+      nom_commune_naissance: params[:nomCommuneNaissance]
+    }
+  end
 
   def request_id
     request.request_id
