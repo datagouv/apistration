@@ -6,8 +6,12 @@ RSpec.describe CNAF::ValidateParams, type: :validate_params do
       prenoms:,
       gender:,
       code_pays_lieu_de_naissance:,
+
       code_insee_lieu_de_naissance:,
+      nom_commune_naissance:,
       annee_date_de_naissance:,
+      code_insee_departement_de_naissance:,
+
       mois_date_de_naissance:,
       jour_date_de_naissance:,
       user_id:,
@@ -19,13 +23,37 @@ RSpec.describe CNAF::ValidateParams, type: :validate_params do
   let(:prenoms) { %w[jean] }
   let(:gender) { 'F' }
   let(:code_pays_lieu_de_naissance) { '99345' }
+
   let(:code_insee_lieu_de_naissance) { '12345' }
+  let(:nom_commune_naissance) { nil }
+  let(:code_insee_departement_de_naissance) { nil }
+
   let(:annee_date_de_naissance) { 1988 }
   let(:mois_date_de_naissance) { 2 }
   let(:jour_date_de_naissance) { 6 }
   let(:user_id) { valid_siret(:msa) }
   let(:request_id) { SecureRandom.uuid }
   let(:recipient) { valid_siret }
+
+  describe 'with transcogage params' do
+    let(:nom_commune_naissance) { 'Gennevilliers' }
+    let(:code_insee_lieu_de_naissance) { nil }
+    let(:code_pays_lieu_de_naissance) { '99100' }
+
+    context 'when it is valid' do
+      let(:code_insee_departement_de_naissance) { '92' }
+
+      it { is_expected.to be_a_success }
+    end
+
+    context 'when it is not valid' do
+      let(:code_insee_departement_de_naissance) { 'invalid' }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+    end
+  end
 
   context 'with valid attributes' do
     it { is_expected.to be_a_success }
