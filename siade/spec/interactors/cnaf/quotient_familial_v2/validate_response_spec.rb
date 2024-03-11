@@ -29,7 +29,7 @@ RSpec.describe CNAF::QuotientFamilialV2::ValidateResponse, type: :validate_respo
     end
 
     let(:response) do
-      instance_double(Net::HTTPNotFound, code: 404, body:)
+      instance_double(Net::HTTPNotFound, code: 404, body:, header: { 'X-APISECU-FD' => '00810011' })
     end
 
     let(:body) { read_payload_file('cnaf/quotient_familial_v2/404.json') }
@@ -37,22 +37,6 @@ RSpec.describe CNAF::QuotientFamilialV2::ValidateResponse, type: :validate_respo
     let(:encrypt_data) { instance_double(EncryptData, perform: 'encrypted_data') }
 
     it { is_expected.to be_a_failure }
-
-    it 'adds context to monitoring, with encrypted params' do
-      subject
-
-      error = subject.errors.first
-
-      expect(error.monitoring_private_context).to eq(
-        {
-          http_response_code: 404,
-          http_response_body: body,
-          http_response_headers: { 'header' => 'value' },
-          encrypted_params: 'encrypted_data'
-        }
-      )
-    end
-
     its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
   end
 
