@@ -9,8 +9,14 @@ git stash && \
   bundle install && \
   ssh -A watchdoge1 -- /usr/local/bin/rails_deploy_siade_production.sh &&
   ssh -A watchdoge2 -- /usr/local/bin/rails_deploy_siade_production.sh &&
+  ssh -A watchdoge3 -- /usr/local/bin/rails_deploy_siade_production.sh &&
+  ssh -A watchdoge4 -- /usr/local/bin/rails_deploy_siade_production.sh &&
+  ssh -A watchdoge5 -- /usr/local/bin/rails_deploy_siade_production.sh &&
   ssh -A watchdoge1 -- /usr/local/bin/rails_deploy_siade_staging.sh &&
   ssh -A watchdoge2 -- /usr/local/bin/rails_deploy_siade_staging.sh &&
+  ssh -A watchdoge3 -- /usr/local/bin/rails_deploy_siade_staging.sh &&
+  ssh -A watchdoge4 -- /usr/local/bin/rails_deploy_siade_staging.sh &&
+  ssh -A watchdoge5 -- /usr/local/bin/rails_deploy_siade_staging.sh &&
   git tag releases/$(date +"%Y-%m-%d--%H-%M") master && \
   git push --tags && \
   git checkout $current_branch && \

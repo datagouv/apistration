@@ -10,15 +10,15 @@ options = {}
 
 valid_hosts = %w[
   main
-  production1
-  production2
-  staging1
-  staging2
   staging
   sandbox
-  sandbox1
-  sandbox2
 ]
+
+(1..5).each do |i|
+  %w[production staging sandbox].each do |host|
+    valid_hosts << "#{host}#{i}"
+  end
+end
 
 OptionParser.new do |opts|
   opts.banner = "Usage: ruby test_rate_limiting.rb [options]"
@@ -47,11 +47,11 @@ end.parse!
 
 def rails_env
   case @host
-  when 'main', 'production1', 'production2'
+  when 'main', 'production1', 'production2', 'production3', 'production4', 'production5'
     'production'
-  when 'staging1', 'staging2', 'staging'
+  when 'staging', 'staging1', 'staging2', 'staging3', 'staging4', 'staging5'
     'staging'
-  when 'sandbox1', 'sandbox2', 'sandbox'
+  when 'sandbox', 'sandbox1', 'sandbox2', 'sandbox3', 'sandbox4', 'sandbox5'
     'sandbox'
   else
     raise "Unknown host #{@host}"
