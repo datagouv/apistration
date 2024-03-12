@@ -5,7 +5,7 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire, type: :retriever_organizer do
   describe '.call with civility params' do
     subject { described_class.call(params:) }
 
-    let(:params) do
+    let(:common_params) do
       {
         nom_naissance: 'CHAMPION',
         prenoms: ['JEAN-PASCAL'],
@@ -14,7 +14,6 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire, type: :retriever_organizer do
         jour_date_de_naissance: 12,
         gender:,
         code_pays_lieu_de_naissance: '99100',
-        code_insee_lieu_de_naissance: '17300',
         request_id:,
         user_id: valid_siret,
         recipient:
@@ -23,27 +22,79 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire, type: :retriever_organizer do
 
     let(:gender) { 'M' }
 
-    describe 'happy path' do
+    context 'when it is with transcogage params' do
       before do
-        stub_cnaf_authenticate('complementaire_sante_solidaire')
-        stub_cnaf_valid('complementaire_sante_solidaire')
+        stub_cnaf_authenticate('quotient_familial_v2')
       end
 
-      it { is_expected.to be_a_success }
+      let(:params) do
+        common_params.merge(
+          nom_commune_naissance:,
+          annee_date_de_naissance: '2000',
+          code_insee_departement_de_naissance: '92'
+        )
+      end
 
-      it 'retrieves the resource' do
-        resource = subject.bundled_data.data
+      context 'with valid params for transcogage', vcr: { cassette_name: 'insee/metadonnees/one_result' } do
+        let!(:stubbed_cnaf_request) do
+          stub_cnaf_valid('complementaire_sante_solidaire', extra_params: { codeLieuNaissance: '92036', dateNaissance: '2000-06-12' })
+        end
 
-        expect(resource).to be_present
+        let(:nom_commune_naissance) { 'Gennevilliers' }
+
+        it 'calls with the retrieved code insee lieu de naissance from INSEE::CommuneINSEECode' do
+          subject
+
+          expect(stubbed_cnaf_request).to have_been_requested
+        end
+
+        it { is_expected.to be_a_success }
+
+        it 'retrieves the resource' do
+          resource = subject.bundled_data.data
+
+          expect(resource).to be_present
+        end
+      end
+
+      context 'with invalid transcogage params', vcr: { cassette_name: 'insee/metadonnees/no_result' } do
+        let(:nom_commune_naissance) { 'invalid' }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
       end
     end
 
-    describe 'with an invalid params' do
-      let(:gender) { 'nope' }
+    context 'when it is with code insee lieu de naissance' do
+      let(:params) do
+        common_params.merge(
+          code_insee_lieu_de_naissance: '17300'
+        )
+      end
 
-      it { is_expected.to be_a_failure }
+      describe 'happy path' do
+        before do
+          stub_cnaf_authenticate('complementaire_sante_solidaire')
+          stub_cnaf_valid('complementaire_sante_solidaire')
+        end
 
-      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+        it { is_expected.to be_a_success }
+
+        it 'retrieves the resource' do
+          resource = subject.bundled_data.data
+
+          expect(resource).to be_present
+        end
+      end
+
+      describe 'with an invalid params' do
+        let(:gender) { 'nope' }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+      end
     end
   end
 
