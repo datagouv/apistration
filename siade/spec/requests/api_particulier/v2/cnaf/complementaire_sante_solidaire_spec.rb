@@ -86,6 +86,27 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
         description: SwaggerData.get('cnaf.c2s.parameters.codePaysLieuDeNaissance.description'),
         required: false
 
+      parameter name: :nomCommuneNaissance,
+        in: :query,
+        schema: {
+          type: SwaggerData.get('cnaf.c2s.parameters.nomCommuneNaissance.type'),
+          minLength: SwaggerData.get('cnaf.c2s.parameters.nomCommuneNaissance.minLength'),
+          example: SwaggerData.get('cnaf.c2s.parameters.nomCommuneNaissance.example')
+        },
+        description: SwaggerData.get('cnaf.c2s.parameters.nomCommuneNaissance.description'),
+        required: false
+
+      parameter name: :codeInseeDepartementNaissance,
+        in: :query,
+        schema: {
+          type: SwaggerData.get('cnaf.c2s.parameters.codeInseeDepartementNaissance.type'),
+          minLength: SwaggerData.get('cnaf.c2s.parameters.codeInseeDepartementNaissance.minLength'),
+          maxLength: SwaggerData.get('cnaf.c2s.parameters.codeInseeDepartementNaissance.maxLength'),
+          example: SwaggerData.get('cnaf.c2s.parameters.codeInseeDepartementNaissance.example')
+        },
+        description: SwaggerData.get('cnaf.c2s.parameters.codeInseeDepartementNaissance.description'),
+        required: false
+
       parameter name: :sexe,
         in: :query,
         schema: {
@@ -103,10 +124,6 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
       end
 
       describe 'without a FranceConnect token' do
-        before do
-          stub_cnaf_valid('complementaire_sante_solidaire', siret: '10000000000008')
-        end
-
         let(:Authorization) { nil }
         let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
 
@@ -117,69 +134,99 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
         let(:moisDateDeNaissance) { 6 }
         let(:jourDateDeNaissance) { 12 }
         let(:codePaysLieuDeNaissance) { '99100' }
-        let(:codeInseeLieuDeNaissance) { '17300' }
 
-        describe 'with valid token and mandatory params' do
-          response '200', 'Quotient Familial trouvée' do
-            description SwaggerData.get('cnaf.c2s.description')
+        describe 'with transcogage params', vcr: { cassette_name: 'insee/metadonnees/one_result' } do
+          let(:codeInseeLieuDeNaissance) { nil }
+          let(:nomCommuneNaissance) { 'Gennevilliers' }
+          let(:codeInseeDepartementNaissance) { '92' }
+          let(:anneeDateDeNaissance) { 2000 }
 
-            schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('cnaf.c2s.attributes')
-            )
+          before do
+            stub_cnaf_valid('complementaire_sante_solidaire', siret: '10000000000008', extra_params: { codeLieuNaissance: '92036', dateNaissance: '2000-06-12' })
+          end
 
-            run_test!
+          describe 'with valid token and mandatory params' do
+            response '200', 'Complémentaire Santé trouvée' do
+              description SwaggerData.get('cnaf.quotient-familial-v2.description')
+
+              schema build_rswag_response_api_particulier(
+                attributes: SwaggerData.get('cnaf.quotient-familial-v2.attributes')
+              )
+
+              run_test!
+            end
           end
         end
 
-        describe 'server errors' do
-          response '400', 'Mauvais paramètres d\'appels' do
-            let(:sexe) { 'nope' }
+        context 'with code insee lieu de naissance' do
+          let(:codeInseeLieuDeNaissance) { '17300' }
 
-            build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_entity_error_gender_error)
-
-            schema '$ref' => '#/components/schemas/Error'
-
-            run_test!
+          before do
+            stub_cnaf_valid('complementaire_sante_solidaire', siret: '10000000000008')
           end
 
-          response '404', 'Dossier complémentaire inexistant. Le document ne peut être édité.' do
-            before do
-              stub_cnaf_404('complementaire_sante_solidaire')
+          describe 'with valid token and mandatory params' do
+            response '200', 'Complémentaire Santé trouvée' do
+              description SwaggerData.get('cnaf.c2s.description')
+
+              schema build_rswag_response_api_particulier(
+                attributes: SwaggerData.get('cnaf.c2s.attributes')
+              )
+
+              run_test!
+            end
+          end
+
+          describe 'server errors' do
+            response '400', 'Mauvais paramètres d\'appels' do
+              let(:sexe) { 'nope' }
+
+              build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_entity_error_gender_error)
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
             end
 
-            let(:codePaysLieuDeNaissance) { '99623' }
+            response '404', 'Dossier complémentaire inexistant. Le document ne peut être édité.' do
+              before do
+                stub_cnaf_404('complementaire_sante_solidaire')
+              end
 
-            schema '$ref' => '#/components/schemas/Error'
+              let(:codePaysLieuDeNaissance) { '99623' }
 
-            run_test!
-          end
+              schema '$ref' => '#/components/schemas/Error'
 
-          response '503', 'Erreur du fournisseur' do
-            provider_unknown_error = ProviderUnknownError.new('CNAF')
+              run_test!
+            end
 
-            stubbed_organizer_error(
-              CNAF::ComplementaireSanteSolidaire,
-              provider_unknown_error
-            )
+            response '503', 'Erreur du fournisseur' do
+              provider_unknown_error = ProviderUnknownError.new('CNAF')
 
-            schema '$ref' => '#/components/schemas/Error'
+              stubbed_organizer_error(
+                CNAF::ComplementaireSanteSolidaire,
+                provider_unknown_error
+              )
 
-            build_rswag_example(provider_unknown_error, :unknown_error)
+              schema '$ref' => '#/components/schemas/Error'
 
-            run_test!
-          end
+              build_rswag_example(provider_unknown_error, :unknown_error)
 
-          response '504', 'Erreur d\'intermédiaire' do
-            schema '$ref' => '#/components/schemas/Error'
+              run_test!
+            end
 
-            provider_timeout_error = ProviderTimeoutError.new('CNAF')
+            response '504', 'Erreur d\'intermédiaire' do
+              schema '$ref' => '#/components/schemas/Error'
 
-            stubbed_organizer_error(
-              CNAF::ComplementaireSanteSolidaire,
-              provider_timeout_error
-            )
+              provider_timeout_error = ProviderTimeoutError.new('CNAF')
 
-            run_test!
+              stubbed_organizer_error(
+                CNAF::ComplementaireSanteSolidaire,
+                provider_timeout_error
+              )
+
+              run_test!
+            end
           end
         end
       end
