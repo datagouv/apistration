@@ -34,12 +34,6 @@ class CNAF::ComplementaireSanteSolidaire::BuildResource < BuildResource
     json_body['prestations']
   end
 
-  def string_value_or_nil(datum)
-    return if datum.blank?
-
-    datum
-  end
-
   def beneficiary_with_participation_code
     %w[MMN1001 MMN1510 MMN1515 MMN1517]
   end
