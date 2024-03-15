@@ -75,6 +75,14 @@ RSpec.describe CNAF::ValidateParams, type: :validate_params do
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
+  describe 'non-regression test: with empty params for lieu de naissance' do
+    let(:code_insee_lieu_de_naissance) { nil }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+  end
+
   context 'with invalid code_insee_lieu_de_naissance' do
     let(:code_insee_lieu_de_naissance) { 'INSEE7' }
 

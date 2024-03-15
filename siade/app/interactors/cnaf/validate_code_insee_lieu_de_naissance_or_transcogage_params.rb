@@ -2,10 +2,10 @@ class CNAF::ValidateCodeINSEELieuDeNaissanceOrTranscogageParams < ValidateParamI
   def call
     validator = call_validator
 
-    return if validator.success?
+    return if validator.nil? || validator.success?
 
     context.errors = validator.errors
-    context.fail!
+    mark_as_error!
   end
 
   private
