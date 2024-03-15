@@ -24,7 +24,7 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire, type: :retriever_organizer do
 
     context 'when it is with transcogage params' do
       before do
-        stub_cnaf_authenticate('quotient_familial_v2')
+        stub_cnaf_authenticate('complementaire_sante_solidaire')
       end
 
       let(:params) do
