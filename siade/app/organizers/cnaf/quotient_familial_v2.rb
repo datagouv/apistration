@@ -1,4 +1,4 @@
-class CNAF::QuotientFamilialV2 < RetrieverOrganizer
+class CNAF::QuotientFamilialV2 < CNAF::RetrieverOrganizer
   REGIME_CODE_MSA = '00171001'.freeze
   REGIME_CODE_CNAF = '00810011'.freeze
 

@@ -5,7 +5,6 @@ class RetrieverOrganizer < ApplicationOrganizer
     klass.class_eval do
       before do
         handles_provider
-        handles_prestation_name if prestation_name.present?
         context.resource  = nil
         context.errors    = []
         context.cacheable = false
@@ -33,8 +32,6 @@ class RetrieverOrganizer < ApplicationOrganizer
   end
 
   private
-
-  def prestation_name; end
 
   def track_providers_errors
     provider_errors.each do |provider_error|
@@ -64,10 +61,6 @@ class RetrieverOrganizer < ApplicationOrganizer
     context.provider_name = provider_name
     invalid_provider_name! unless provider_name_valid?
     monitoring_service.set_provider(provider_name)
-  end
-
-  def handles_prestation_name
-    context.prestation_name = prestation_name
   end
 
   def provider_in_maintenance!

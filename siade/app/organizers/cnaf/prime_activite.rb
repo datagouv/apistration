@@ -1,16 +1,16 @@
-class CNAF::ComplementaireSanteSolidaire < CNAF::RetrieverOrganizer
+class CNAF::PrimeActivite < CNAF::RetrieverOrganizer
   organize CNAF::ValidateParams,
     CNAF::ExtractCodeCommuneFromTranscogage,
     CNAF::Authenticate,
     CNAF::MakeRequest,
     CNAF::ValidateResponse,
-    CNAF::ComplementaireSanteSolidaire::BuildResource
+    CNAF::PrimeActivite::BuildResource
 
   def provider_name
     'Sécurité sociale'
   end
 
   def prestation_name
-    'complementaire_sante_solidaire'
+    'prime_activite'
   end
 end
