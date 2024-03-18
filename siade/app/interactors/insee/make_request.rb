@@ -17,6 +17,10 @@ class INSEE::MakeRequest < MakeRequest::Get
     context.token
   end
 
+  def sirene_version
+    'sirene/V3.11'
+  end
+
   def base_uri
     Siade.credentials[:insee_v3_domain]
   end
