@@ -9,6 +9,8 @@ RSpec.describe 'CNAF: Allocation Adulte Handicapé', api: :particulier, type: %i
 
       parameter name: 'X-Api-Key', in: :header, type: :string
 
+      parameters_cnaf_identite_pivot
+
       parameter name: :recipient,
         in: :query,
         type: :string,
@@ -17,84 +19,6 @@ RSpec.describe 'CNAF: Allocation Adulte Handicapé', api: :particulier, type: %i
         required: false
 
       security [franceConnectToken: [], apiKey: []]
-
-      parameter name: :nomUsage,
-        in: :query,
-        type: SwaggerData.get('cnaf.aah.parameters.nomUsage.type'),
-        description: SwaggerData.get('cnaf.aah.parameters.nomUsage.description'),
-        example: SwaggerData.get('cnaf.aah.parameters.nomUsage.example'),
-        required: false
-
-      parameter name: :nomNaissance,
-        in: :query,
-        type: SwaggerData.get('cnaf.aah.parameters.nomNaissance.type'),
-        description: SwaggerData.get('cnaf.aah.parameters.nomNaissance.description'),
-        example: SwaggerData.get('cnaf.aah.parameters.nomNaissance.example'),
-        required: false
-
-      parameter name: :'prenoms[]',
-        in: :query,
-        schema: {
-          type: SwaggerData.get('cnaf.aah.parameters.prenoms.type'),
-          minItems: SwaggerData.get('cnaf.aah.parameters.prenoms.minItems'),
-          items: { type: :string },
-          example: SwaggerData.get('cnaf.aah.parameters.prenoms.example')
-        },
-        description: SwaggerData.get('cnaf.aah.parameters.prenoms.description'),
-        required: false
-
-      parameter name: :anneeDateDeNaissance,
-        in: :query,
-        type: SwaggerData.get('cnaf.aah.parameters.anneeDateDeNaissance.type'),
-        description: SwaggerData.get('cnaf.aah.parameters.anneeDateDeNaissance.description'),
-        example: SwaggerData.get('cnaf.aah.parameters.anneeDateDeNaissance.example'),
-        required: false
-
-      parameter name: :moisDateDeNaissance,
-        in: :query,
-        type: SwaggerData.get('cnaf.aah.parameters.moisDateDeNaissance.type'),
-        description: SwaggerData.get('cnaf.aah.parameters.moisDateDeNaissance.description'),
-        example: SwaggerData.get('cnaf.aah.parameters.moisDateDeNaissance.example'),
-        required: false
-
-      parameter name: :jourDateDeNaissance,
-        in: :query,
-        type: SwaggerData.get('cnaf.aah.parameters.jourDateDeNaissance.type'),
-        description: SwaggerData.get('cnaf.aah.parameters.jourDateDeNaissance.description'),
-        example: SwaggerData.get('cnaf.aah.parameters.jourDateDeNaissance.example'),
-        required: false
-
-      parameter name: :codeInseeLieuDeNaissance,
-        in: :query,
-        schema: {
-          type: SwaggerData.get('cnaf.aah.parameters.codeInseeLieuDeNaissance.type'),
-          minLength: SwaggerData.get('cnaf.aah.parameters.codeInseeLieuDeNaissance.minLength'),
-          maxLength: SwaggerData.get('cnaf.aah.parameters.codeInseeLieuDeNaissance.maxLength'),
-          example: SwaggerData.get('cnaf.aah.parameters.codeInseeLieuDeNaissance.example')
-        },
-        description: SwaggerData.get('cnaf.aah.parameters.codeInseeLieuDeNaissance.description'),
-        required: false
-
-      parameter name: :codePaysLieuDeNaissance,
-        in: :query,
-        schema: {
-          type: SwaggerData.get('cnaf.aah.parameters.codePaysLieuDeNaissance.type'),
-          minLength: SwaggerData.get('cnaf.aah.parameters.codePaysLieuDeNaissance.minLength'),
-          maxLength: SwaggerData.get('cnaf.aah.parameters.codePaysLieuDeNaissance.maxLength'),
-          example: SwaggerData.get('cnaf.aah.parameters.codePaysLieuDeNaissance.example')
-        },
-        description: SwaggerData.get('cnaf.aah.parameters.codePaysLieuDeNaissance.description'),
-        required: false
-
-      parameter name: :sexe,
-        in: :query,
-        schema: {
-          type: SwaggerData.get('cnaf.aah.parameters.sexe.type'),
-          enum: SwaggerData.get('cnaf.aah.parameters.sexe.enum')
-        },
-        description: SwaggerData.get('cnaf.aah.parameters.sexe.description'),
-        example: SwaggerData.get('cnaf.aah.parameters.sexe.example'),
-        required: false
 
       let(:scopes) { %i[allocation_adulte_handicape] }
 

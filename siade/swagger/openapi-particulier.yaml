@@ -65,17 +65,6 @@ paths:
         in: header
         schema:
           type: string
-      - name: recipient
-        in: query
-        description: |-
-          "**Bénéficiaire de l’appel**
-
-          SIRET de l’administration destinatrice des données.
-          Ce paramètre est obligatoire dans le cadre des appels via FranceConnect"
-        example: '13002526500013'
-        required: false
-        schema:
-          type: string
       - name: nomUsage
         in: query
         description: Nom d'usage. Ne pas renseigner si présence de jeton FranceConnect.
@@ -162,6 +151,17 @@ paths:
           de jeton FranceConnect.
         example: M
         required: false
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données.
+          Ce paramètre est obligatoire dans le cadre des appels via FranceConnect"
+        example: '13002526500013'
+        required: false
+        schema:
+          type: string
       security:
       - franceConnectToken: []
         apiKey: []
@@ -576,6 +576,17 @@ paths:
         description: Code Insee à 5 chiffres du pays de naissance (France = 99100).
           Obligatoire si absence de jeton FranceConnect.
         required: false
+      - name: sexe
+        in: query
+        schema:
+          type: string
+          enum:
+          - M
+          - F
+        description: Sexe de la personne, masculin ou féminin. Obligatoire si absence
+          de jeton FranceConnect.
+        example: M
+        required: false
       - name: nomCommuneNaissance
         in: query
         schema:
@@ -596,17 +607,6 @@ paths:
         description: Code INSEE du département de naissance. En l'absence de jeton
           FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire
           si la personne est née en France
-        required: false
-      - name: sexe
-        in: query
-        schema:
-          type: string
-          enum:
-          - M
-          - F
-        description: Sexe de la personne, masculin ou féminin. Obligatoire si absence
-          de jeton FranceConnect.
-        example: M
         required: false
       security:
       - franceConnectToken: []
@@ -1238,27 +1238,6 @@ paths:
           (nomCommuneNaissance, anneeDateDeNaissance, codeInseeDepartementNaissance),
           le champs est obligatoire si la personne est née en France
         required: false
-      - name: nomCommuneNaissance
-        in: query
-        schema:
-          type: string
-          minLength: 1
-          example: Gennevilliers
-        description: Nom de la commune de naissance. En l'absence de jeton FranceConnect
-          et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne
-          est née en France
-        required: false
-      - name: codeInseeDepartementNaissance
-        in: query
-        schema:
-          type: string
-          minLength: 2
-          maxLength: 3
-          example: '92'
-        description: Code INSEE du département de naissance. En l'absence de jeton
-          FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire
-          si la personne est née en France
-        required: false
       - name: codePaysLieuDeNaissance
         in: query
         schema:
@@ -1279,6 +1258,27 @@ paths:
         description: Sexe de la personne, masculin ou féminin. Obligatoire si absence
           de jeton FranceConnect.
         example: M
+        required: false
+      - name: nomCommuneNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 1
+          example: Gennevilliers
+        description: Nom de la commune de naissance. En l'absence de jeton FranceConnect
+          et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne
+          est née en France
+        required: false
+      - name: codeInseeDepartementNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 2
+          maxLength: 3
+          example: '92'
+        description: Code INSEE du département de naissance. En l'absence de jeton
+          FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire
+          si la personne est née en France
         required: false
       - name: annee
         in: query
@@ -1304,7 +1304,7 @@ paths:
         sur cette api et y avoir accès en avant première, veuillez contacter l'équipe
         API Particulier. \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial_v2)
         \n L'API peut être appellée avec les données identité pivot ou avec un jeton
-        FranceConnect. "
+        FranceConnect."
       responses:
         '200':
           description: Quotient Familial trouvé

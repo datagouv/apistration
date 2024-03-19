@@ -1,17 +1,6 @@
 cnaf:
-  c2s:
-    title: Complémentaire santé solidaire
-    description: "Savoir si un particulier est bénéficiaire de la complémentaire santé solidaire (C2S).
-    \n\n
-    Pour de plus amples informations sur cette api et y avoir accès en avant première, veuillez contacter l'équipe API Particulier.
-    \n
-    **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)
-    \n
-    L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect.
-    "
-    tags:
-      - Complementaire Sante Solidaire
-    parameters: &identite_pivot
+  commons:
+    cnaf_identite_pivot: &cnaf_identite_pivot
       nomUsage:
         type: "string"
         description: "Nom d'usage. Ne pas renseigner si présence de jeton FranceConnect."
@@ -56,6 +45,21 @@ cnaf:
         enum:
           - M
           - F
+
+  c2s:
+    title: Complémentaire santé solidaire
+    description: "Savoir si un particulier est bénéficiaire de la complémentaire santé solidaire (C2S).
+    \n\n
+    Pour de plus amples informations sur cette api et y avoir accès en avant première, veuillez contacter l'équipe API Particulier.
+    \n
+    **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)
+    \n
+    L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect.
+    "
+    tags:
+      - Complementaire Sante Solidaire
+    parameters:
+      <<: *cnaf_identite_pivot
       nomCommuneNaissance:
         type: string
         minLength: 1
@@ -109,12 +113,11 @@ cnaf:
     \n
     **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial_v2)
     \n
-    L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect.
-    "
+    L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
     tags:
       - Quotient familial
     parameters:
-      <<: *identite_pivot
+      <<: *cnaf_identite_pivot
       nomCommuneNaissance:
         type: string
         minLength: 1
@@ -318,7 +321,7 @@ cnaf:
       L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
     tags:
       - RSA
-    parameters: *identite_pivot
+    parameters: *cnaf_identite_pivot
     attributes:
       status:
         title: "Statut bénéficiaire du Revenu de solidarité active (RSA)"
@@ -360,7 +363,7 @@ cnaf:
       L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
     tags:
       - AAH
-    parameters: *identite_pivot
+    parameters: *cnaf_identite_pivot
     attributes:
       status:
         title: "Statut bénéficiaire de l'Allocation Adulte Handicapé (AAH)"
@@ -384,7 +387,7 @@ cnaf:
       L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
     tags:
       - ASF
-    parameters: *identite_pivot
+    parameters: *cnaf_identite_pivot
     attributes:
       status:
         title: "Statut bénéficiaire de l'Allocation de Soutien Familial (ASF)"
@@ -418,7 +421,7 @@ cnaf:
       L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
     tags:
       - Prime d'activité
-    parameters: *identite_pivot
+    parameters: *cnaf_identite_pivot
     attributes:
       status:
         title: "Statut bénéficiaire de la Prime d'activité"

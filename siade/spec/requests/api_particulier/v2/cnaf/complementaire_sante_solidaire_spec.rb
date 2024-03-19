@@ -18,73 +18,7 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
 
       security [franceConnectToken: [], apiKey: []]
 
-      parameter name: :nomUsage,
-        in: :query,
-        type: SwaggerData.get('cnaf.c2s.parameters.nomUsage.type'),
-        description: SwaggerData.get('cnaf.c2s.parameters.nomUsage.description'),
-        example: SwaggerData.get('cnaf.c2s.parameters.nomUsage.example'),
-        required: false
-
-      parameter name: :nomNaissance,
-        in: :query,
-        type: SwaggerData.get('cnaf.c2s.parameters.nomNaissance.type'),
-        description: SwaggerData.get('cnaf.c2s.parameters.nomNaissance.description'),
-        example: SwaggerData.get('cnaf.c2s.parameters.nomNaissance.example'),
-        required: false
-
-      parameter name: :'prenoms[]',
-        in: :query,
-        schema: {
-          type: SwaggerData.get('cnaf.c2s.parameters.prenoms.type'),
-          minItems: SwaggerData.get('cnaf.c2s.parameters.prenoms.minItems'),
-          items: { type: :string },
-          example: SwaggerData.get('cnaf.c2s.parameters.prenoms.example')
-        },
-        description: SwaggerData.get('cnaf.c2s.parameters.prenoms.description'),
-        required: false
-
-      parameter name: :anneeDateDeNaissance,
-        in: :query,
-        type: SwaggerData.get('cnaf.c2s.parameters.anneeDateDeNaissance.type'),
-        description: SwaggerData.get('cnaf.c2s.parameters.anneeDateDeNaissance.description'),
-        example: SwaggerData.get('cnaf.c2s.parameters.anneeDateDeNaissance.example'),
-        required: false
-
-      parameter name: :moisDateDeNaissance,
-        in: :query,
-        type: SwaggerData.get('cnaf.c2s.parameters.moisDateDeNaissance.type'),
-        description: SwaggerData.get('cnaf.c2s.parameters.moisDateDeNaissance.description'),
-        example: SwaggerData.get('cnaf.c2s.parameters.moisDateDeNaissance.example'),
-        required: false
-
-      parameter name: :jourDateDeNaissance,
-        in: :query,
-        type: SwaggerData.get('cnaf.c2s.parameters.jourDateDeNaissance.type'),
-        description: SwaggerData.get('cnaf.c2s.parameters.jourDateDeNaissance.description'),
-        example: SwaggerData.get('cnaf.c2s.parameters.jourDateDeNaissance.example'),
-        required: false
-
-      parameter name: :codeInseeLieuDeNaissance,
-        in: :query,
-        schema: {
-          type: SwaggerData.get('cnaf.c2s.parameters.codeInseeLieuDeNaissance.type'),
-          minLength: SwaggerData.get('cnaf.c2s.parameters.codeInseeLieuDeNaissance.minLength'),
-          maxLength: SwaggerData.get('cnaf.c2s.parameters.codeInseeLieuDeNaissance.maxLength'),
-          example: SwaggerData.get('cnaf.c2s.parameters.codeInseeLieuDeNaissance.example')
-        },
-        description: SwaggerData.get('cnaf.c2s.parameters.codeInseeLieuDeNaissance.description'),
-        required: false
-
-      parameter name: :codePaysLieuDeNaissance,
-        in: :query,
-        schema: {
-          type: SwaggerData.get('cnaf.c2s.parameters.codePaysLieuDeNaissance.type'),
-          minLength: SwaggerData.get('cnaf.c2s.parameters.codePaysLieuDeNaissance.minLength'),
-          maxLength: SwaggerData.get('cnaf.c2s.parameters.codePaysLieuDeNaissance.maxLength'),
-          example: SwaggerData.get('cnaf.c2s.parameters.codePaysLieuDeNaissance.example')
-        },
-        description: SwaggerData.get('cnaf.c2s.parameters.codePaysLieuDeNaissance.description'),
-        required: false
+      parameters_cnaf_identite_pivot
 
       parameter name: :nomCommuneNaissance,
         in: :query,
@@ -105,16 +39,6 @@ RSpec.describe 'CNAF: Complementaire Santé Solidaire', api: :particulier, type:
           example: SwaggerData.get('cnaf.c2s.parameters.codeInseeDepartementNaissance.example')
         },
         description: SwaggerData.get('cnaf.c2s.parameters.codeInseeDepartementNaissance.description'),
-        required: false
-
-      parameter name: :sexe,
-        in: :query,
-        schema: {
-          type: SwaggerData.get('cnaf.c2s.parameters.sexe.type'),
-          enum: SwaggerData.get('cnaf.c2s.parameters.sexe.enum')
-        },
-        description: SwaggerData.get('cnaf.c2s.parameters.sexe.description'),
-        example: SwaggerData.get('cnaf.c2s.parameters.sexe.example'),
         required: false
 
       let(:scopes) { %i[complementaire_sante_solidaire] }
