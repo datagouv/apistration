@@ -113,12 +113,12 @@ class GeneratePayloadReadme
 
   def extract_api_kind_from_payload_path(payload_path)
     case
+    when payload_path.include?('france_connect')
+      'france_connect'
     when payload_path.include?('api_entreprise')
       'api_entreprise'
     when payload_path.include?('api_particulier')
       'api_particulier'
-    when payload_path.include?('france_connect')
-      'france_connect'
     else
       raise 'Unknown API kind'
     end

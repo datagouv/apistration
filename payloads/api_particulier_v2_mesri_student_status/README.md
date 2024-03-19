@@ -243,9 +243,7 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'given_name=Jean' -d 'family_name=MESRI' -d 'birthdate=2002-01-01' -d 'gender=male' -d 'birthplace=75002' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants?recipient=13002526500013"
   ```
 
   </p>
@@ -304,9 +302,7 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'given_name=Angela' -d 'family_name=DUBOIS' -d 'birthdate=1962-08-24' -d 'gender=female' -d 'birthplace=75107' \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants?recipient=13002526500013"
   ```
 
   </p>

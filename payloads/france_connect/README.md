@@ -57,8 +57,7 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer cnaf_css" \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
+  curl -H "Authorization: Bearer cnaf_css" --url "https://staging.particulier.api.gouv.fr/v2/complementaire-sante-solidaire?recipient=13002526500013"
   ```
 
   </p>
@@ -117,8 +116,7 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer cnaf_qfv2" \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  curl -H "Authorization: Bearer cnaf_qfv2" --url "https://staging.particulier.api.gouv.fr/v2/composition-familiale-v2?recipient=13002526500013"
   ```
 
   </p>
@@ -180,8 +178,7 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer cnous" \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  curl -H "Authorization: Bearer cnous" --url "https://staging.particulier.api.gouv.fr/v2/etudiants-boursiers?recipient=13002526500013"
   ```
 
   </p>
@@ -242,8 +239,7 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer cnous_with_less_scopes" \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers"
+  curl -H "Authorization: Bearer cnous_with_less_scopes" --url "https://staging.particulier.api.gouv.fr/v2/etudiants-boursiers?recipient=13002526500013"
   ```
 
   </p>
@@ -304,8 +300,7 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer mesri" \
-    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  curl -H "Authorization: Bearer mesri" --url "https://staging.particulier.api.gouv.fr/v2/etudiants?recipient=13002526500013"
   ```
 
   </p>
