@@ -1,4 +1,4 @@
-# Données unité légale diffusible
+# Données unité légale en open data
 * [association.yaml](association.yaml)
 
   Status `200`

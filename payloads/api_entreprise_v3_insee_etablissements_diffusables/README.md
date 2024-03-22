@@ -1,4 +1,4 @@
-# Données établissement diffusible
+# Données établissement en open data
 * [association.yaml](association.yaml)
 
   Status `200`

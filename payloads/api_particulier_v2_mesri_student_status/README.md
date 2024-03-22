@@ -128,7 +128,129 @@
 
   </p>
   </details>
-* [civility.yml](civility.yml)
+* [cicility_etudiant_formation_continue.yml](cicility_etudiant_formation_continue.yml)
+
+  Status `200`
+
+  Étudiant inscrit formation continue
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "SOULI",
+    "prenom": "Walid",
+    "dateDeNaissance": "1998-01-01",
+    "sexe": "m",
+    "lieuDeNaissance": "78000"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567890Y",
+    "nomFamille": " SOULI ",
+    "prenom": "Walid",
+    "dateNaissance": "1998-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2023-07-01",
+        "dateFinInscription": "2024-08-31",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Saclay"
+        },
+        "regime": "formation continue"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=SOULI' -d 'prenom=Walid' -d 'dateDeNaissance=1998-01-01' -d 'sexe=m' -d 'lieuDeNaissance=78000' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_etudiant_admis.yml](civility_etudiant_admis.yml)
+
+  Status `200`
+
+  Étudiant ADMIS
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "MELINARD",
+    "prenom": "PATRICK",
+    "dateDeNaissance": "1990-01-01",
+    "sexe": "m",
+    "lieuDeNaissance": "78000"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567890Y",
+    "nomFamille": " MELINARD ",
+    "prenom": " PATRICK ",
+    "dateNaissance": "1990-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2023-07-01",
+        "dateFinInscription": "2024-08-31",
+        "statut": "ADMIS",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Saclay"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=MELINARD' -d 'prenom=PATRICK' -d 'dateDeNaissance=1990-01-01' -d 'sexe=m' -d 'lieuDeNaissance=78000' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_etudiant_inscrit.yml](civility_etudiant_inscrit.yml)
 
   Status `200`
 
@@ -161,13 +283,13 @@
     "dateNaissance": "2004-01-01",
     "inscriptions": [
       {
-        "dateDebutInscription": "2020-07-01",
-        "dateFinInscription": "2021-08-31",
+        "dateDebutInscription": "2023-07-01",
+        "dateFinInscription": "2024-08-31",
         "statut": "inscrit",
-        "codeCommune": "33063",
+        "codeCommune": "92000",
         "etablissement": {
           "uai": "0330023W",
-          "nomEtablissement": "LYCEE GENERAL ET TECHNOLOGIQUE CAMILLE JULLIAN"
+          "nomEtablissement": "Université Paris Nanterre"
         },
         "regime": "formation initiale"
       }
@@ -184,6 +306,67 @@
   ```bash
   curl -H "X-Api-Key: $token" \
     -G -d 'nom=MARTIN' -d 'prenom=Jacques' -d 'dateDeNaissance=2004-01-01' -d 'sexe=m' -d 'lieuDeNaissance=75002' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_etudiant_inscrit_2022.yml](civility_etudiant_inscrit_2022.yml)
+
+  Status `200`
+
+  Étudiant inscrit 2022
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "SOULI",
+    "prenom": "Asma",
+    "dateDeNaissance": "2002-01-01",
+    "sexe": "m",
+    "lieuDeNaissance": "75002"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567890Y",
+    "nomFamille": " SOULI ",
+    "prenom": "Asma",
+    "dateNaissance": "2002-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2022-07-01",
+        "dateFinInscription": "2023-08-31",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Paris Saclay"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=SOULI' -d 'prenom=Asma' -d 'dateDeNaissance=2002-01-01' -d 'sexe=m' -d 'lieuDeNaissance=75002' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
   ```
 

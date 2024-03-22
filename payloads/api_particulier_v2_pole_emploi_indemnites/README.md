@@ -1,4 +1,4 @@
-# Paiements versés par Pôle Emploi
+# Paiements versés par France Travail
 * [200.yaml](200.yaml)
 
   Status `200`
