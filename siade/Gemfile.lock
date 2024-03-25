@@ -89,7 +89,7 @@ GEM
       bigdecimal
       rexml
     crass (1.0.6)
-    csv (3.2.8)
+    csv (3.3.0)
     dead_end (4.0.0)
     derailed_benchmarks (2.1.2)
       benchmark-ips (~> 2)
@@ -151,7 +151,7 @@ GEM
     hashery (2.1.2)
     heapy (0.2.0)
       thor
-    hexapdf (0.38.0)
+    hexapdf (0.40.0)
       cmdparse (~> 3.0, >= 3.0.3)
       geom2d (~> 0.4, >= 0.4.1)
       openssl (>= 2.2.1)
@@ -232,7 +232,7 @@ GEM
       commonmarker (~> 0.17)
     openssl (3.2.0)
     optimist (3.1.0)
-    ox (2.14.17)
+    ox (2.14.18)
     parallel (1.24.0)
     parser (3.3.0.5)
       ast (~> 2.4.1)
