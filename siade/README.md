@@ -13,6 +13,12 @@
 ./bin/install.sh
 ```
 
+Pour seed la base:
+
+```sh
+./bin/seeds.sh
+```
+
 ## Tests
 
 Par défaut:
