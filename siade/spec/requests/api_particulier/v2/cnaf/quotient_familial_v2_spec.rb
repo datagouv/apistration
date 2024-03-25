@@ -151,6 +151,18 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
         let(:mois) { 12 }
         let(:annee) { 2023 }
 
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              examples: {
+                example.metadata[:example_group][:description] => {
+                  value: JSON.parse(response.body, symbolize_names: true)
+                }
+              }
+            }
+          }
+        end
+
         describe 'with transcogage params', vcr: { cassette_name: 'insee/metadonnees/one_result' } do
           let(:codeInseeLieuDeNaissance) { nil }
           let(:nomCommuneNaissance) { 'Gennevilliers' }
@@ -205,15 +217,44 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
             end
 
             response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
-              before do
-                stub_cnaf_404('quotient_familial_v2')
+              let(:codePaysLieuDeNaissance) { '99623' }
+              # rubocop:disable RSpec/ContextWording
+              context 'Allocataire non identifié' do
+                before do
+                  stub_cnaf_404('quotient_familial_v2', nil)
+                end
+
+                build_rswag_example(NotFoundError.new('CNAF & MSA'))
+
+                schema '$ref' => '#/components/schemas/Error'
+
+                run_test!
               end
 
-              let(:codePaysLieuDeNaissance) { '99623' }
+              context 'Dossier non trouvé MSA' do
+                before do
+                  stub_cnaf_404('quotient_familial_v2', '00171001')
+                end
 
-              schema '$ref' => '#/components/schemas/Error'
+                build_rswag_example(NotFoundError.new('CNAF & MSA'))
 
-              run_test!
+                schema '$ref' => '#/components/schemas/Error'
+
+                run_test!
+              end
+
+              context 'Dossier non trouvé CNAF' do
+                before do
+                  stub_cnaf_404('quotient_familial_v2', '00810011')
+                end
+
+                build_rswag_example(NotFoundError.new('CNAF & MSA'))
+
+                schema '$ref' => '#/components/schemas/Error'
+
+                run_test!
+              end
+              # rubocop:enable RSpec/ContextWording
             end
 
             response '503', 'Erreur du fournisseur' do

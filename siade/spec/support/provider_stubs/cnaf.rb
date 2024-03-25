@@ -62,13 +62,13 @@ module ProviderStubs::CNAF
     )
   end
 
-  def stub_cnaf_404(api)
+  def stub_cnaf_404(api, provider_code = '00171001')
     stub_request(:get, cnaf_url(api)).with(
       query: hash_including({})
     ).to_return(
       status: 404,
       headers: {
-        'X-APISECU-FD' => '00171001'
+        'X-APISECU-FD' => provider_code
       },
       body: Rails.root.join("spec/fixtures/payloads/cnaf/#{api}/404.json").read
     )
