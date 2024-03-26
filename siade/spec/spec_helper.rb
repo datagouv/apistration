@@ -50,7 +50,7 @@ RSpec.configure do |config|
   # config.mock_with :flexmock
   # config.mock_with :rr
   #
-  config.use_transactional_fixtures = false
+  config.use_transactional_fixtures = true
 
   config.mock_with :rspec do |c|
     c.syntax = %i[should expect]

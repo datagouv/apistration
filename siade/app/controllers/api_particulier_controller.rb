@@ -14,7 +14,7 @@ class APIParticulierController < APIController
     @token ||= retrieve_token
 
     if @token && legacy_token_exists?(@token)
-      @current_user = JwtTokenService.instance.build_user_from_legacy_token(@token)
+      @current_user = JwtTokenService.instance.extract_user_from_legacy_token(@token)
     else
       super
     end

@@ -95,9 +95,7 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
       get :show, params: { token: }
     end
 
-    context 'with jwt token' do
-      let(:token) { TokenFactory.new(scopes).valid }
-
+    shared_examples 'a classic JWT' do
       before do
         affect_scopes_to_yes_jwt_token(scopes)
       end
@@ -142,63 +140,64 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
       end
     end
 
+    context 'with jwt token' do
+      let(:token) { TokenFactory.new(scopes).valid }
+
+      it_behaves_like 'a classic JWT'
+    end
+
     context 'with legacy token' do
-      describe 'with at least one valid scope' do
-        let(:token) { '1_scope' }
+      let(:token) { 'legacy_token_in_config_file' }
 
-        its(:status) { is_expected.to eq(200) }
-
-        its(:body) do
-          is_expected.to eq({
-            scope1: 'scope1'
-          }.to_json)
+      describe 'when linked to a new token which is valid' do
+        before do
+          Token.create!(
+            id: '55555555-5555-5555-5555-555555555550',
+            scopes:,
+            iat: 1.day.ago,
+            exp: 1.day.from_now,
+            authorization_request: AuthorizationRequest.last
+          )
         end
 
-        it 'adds jwt info to logstasher: user and jti is legacy_token_id from backend file' do
-          expect(LogStasher).to receive(:build_logstash_event).with(
-            hash_including(
-              'user_access' => hash_including(
-                user: '11111111-1111-1111-1111-111111111110',
-                jti: '11111111-1111-1111-1111-111111111110'
-              )
-            ),
-            anything
-          )
+        it_behaves_like 'a classic JWT'
 
-          make_call
+        describe 'logging' do
+          let(:scopes) { %w[scope1 scope2] }
+
+          it 'adds jwt info to logstasher: user and jti is legacy_token_id from backend file' do
+            expect(LogStasher).to receive(:build_logstash_event).with(
+              hash_including(
+                'user_access' => hash_including(
+                  user: '55555555-5555-5555-5555-555555555550',
+                  jti: '55555555-5555-5555-5555-555555555550'
+                )
+              ),
+              anything
+            )
+
+            make_call
+          end
         end
       end
 
-      describe 'without valid scope' do
-        let(:token) { '1_another_scope' }
+      describe 'when linked to a new token which is expired' do
+        let(:token) { 'legacy_token_expired' }
+
+        before do
+          Token.create!(
+            id: '55555555-5555-5555-5555-555555555550',
+            scopes: %w[scope1 scope2],
+            iat: 1.year.ago.to_time,
+            exp: 1.day.ago.to_time,
+            authorization_request: AuthorizationRequest.last
+          )
+        end
 
         its(:status) { is_expected.to eq(401) }
 
         its(:body) do
           is_expected.to include('access_denied')
-        end
-
-        it 'does not track invalid token (because it is a valid one)' do
-          make_call
-
-          expect(MonitoringService.instance).not_to have_received(:track).with(
-            'error',
-            'Invalid token but legit format for legacy token',
-            anything
-          )
-        end
-      end
-
-      describe 'with multiple valid scopes' do
-        let(:token) { '2_scopes' }
-
-        its(:status) { is_expected.to eq(200) }
-
-        its(:body) do
-          is_expected.to eq({
-            scope1: 'scope1',
-            scope2: 'scope2'
-          }.to_json)
         end
       end
     end
@@ -236,6 +235,14 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
     context 'when it is in X-Api-key header' do
       before do
         request.headers['X-Api-Key'] = token
+
+        Token.create!(
+          id: '11111111-1111-1111-1111-111111111110',
+          scopes: %w[scope1 scope2],
+          iat: 1.day.ago,
+          exp: 1.day.from_now,
+          authorization_request: AuthorizationRequest.last
+        )
       end
 
       context 'when it is a legacy token' do
