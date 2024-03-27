@@ -321,6 +321,7 @@ cnaf:
       L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
     tags:
       - RSA
+      - Prochainement
     parameters: *cnaf_identite_pivot
     attributes:
       status:
@@ -363,6 +364,7 @@ cnaf:
       L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
     tags:
       - AAH
+      - Prochainement
     parameters: *cnaf_identite_pivot
     attributes:
       status:
@@ -387,6 +389,7 @@ cnaf:
       L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
     tags:
       - ASF
+      - Prochainement
     parameters: *cnaf_identite_pivot
     attributes:
       status:
@@ -421,6 +424,7 @@ cnaf:
       L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
     tags:
       - Prime d'activité
+      - Prochainement
     parameters: *cnaf_identite_pivot
     attributes:
       status:

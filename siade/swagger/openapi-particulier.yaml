@@ -60,6 +60,7 @@ paths:
       summary: Allocation Adulte Handicapé
       tags:
       - AAH
+      - Prochainement
       parameters:
       - name: X-Api-Key
         in: header
@@ -267,6 +268,7 @@ paths:
       summary: Allocation de Soutien Familial
       tags:
       - ASF
+      - Prochainement
       parameters:
       - name: X-Api-Key
         in: header
@@ -930,6 +932,7 @@ paths:
       summary: Prime d'activité
       tags:
       - Prime d'activité
+      - Prochainement
       parameters:
       - name: X-Api-Key
         in: header
@@ -1580,6 +1583,7 @@ paths:
       summary: Revenu de solidarité active
       tags:
       - RSA
+      - Prochainement
       parameters:
       - name: X-Api-Key
         in: header
