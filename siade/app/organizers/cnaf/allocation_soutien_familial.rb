@@ -10,7 +10,7 @@ class CNAF::AllocationSoutienFamilial < CNAF::RetrieverOrganizer
     'Sécurité sociale'
   end
 
-  def prestation_name
+  def dss_prestation_name
     'allocation_soutien_familial'
   end
 end

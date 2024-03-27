@@ -3,14 +3,14 @@ class CNAF::RetrieverOrganizer < RetrieverOrganizer
     super
     klass.class_eval do
       before do
-        handles_prestation_name
+        handles_dss_prestation_name
       end
     end
   end
 
   private
 
-  def handles_prestation_name
-    context.prestation_name = prestation_name
+  def handles_dss_prestation_name
+    context.dss_prestation_name = dss_prestation_name
   end
 end

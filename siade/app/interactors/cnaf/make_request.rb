@@ -2,7 +2,7 @@ class CNAF::MakeRequest < MakeRequest::Get
   protected
 
   def request_uri
-    URI(Siade.credentials[:"cnaf_#{context.prestation_name}_url"])
+    URI(Siade.credentials[:"cnaf_#{context.dss_prestation_name}_url"])
   end
 
   def mocking_params

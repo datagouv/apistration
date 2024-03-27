@@ -10,7 +10,7 @@ class CNAF::ComplementaireSanteSolidaire < CNAF::RetrieverOrganizer
     'Sécurité sociale'
   end
 
-  def prestation_name
+  def dss_prestation_name
     'complementaire_sante_solidaire'
   end
 end

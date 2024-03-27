@@ -10,7 +10,7 @@ class CNAF::PrimeActivite < CNAF::RetrieverOrganizer
     'Sécurité sociale'
   end
 
-  def prestation_name
+  def dss_prestation_name
     'prime_activite'
   end
 end

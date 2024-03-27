@@ -10,7 +10,7 @@ class CNAF::Authenticate < GetOAuth2Token
   private
 
   def prestation
-    context.prestation_name
+    context.dss_prestation_name
   end
 
   def scope

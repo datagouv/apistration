@@ -10,7 +10,7 @@ class CNAF::AllocationAdulteHandicape < CNAF::RetrieverOrganizer
     'Sécurité sociale'
   end
 
-  def prestation_name
+  def dss_prestation_name
     'allocation_adulte_handicape'
   end
 end

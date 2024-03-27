@@ -240,7 +240,7 @@ shared:
       kind: 'make_request'
       cache: <%= 15.minutes %>
       provider: 'Sécurité sociale'
-      prestation_name: 'complementaire_sante_solidaire'
+      dss_prestation_name: 'complementaire_sante_solidaire'
       status_page:
         name: "Sécurité sociale - Complémentaire santé solidaire"
       driver_params:

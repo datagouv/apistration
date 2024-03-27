@@ -18,7 +18,7 @@ class CNAF::QuotientFamilialV2 < CNAF::RetrieverOrganizer
     'CNAF & MSA'
   end
 
-  def prestation_name
+  def dss_prestation_name
     'quotient_familial_v2'
   end
 end
