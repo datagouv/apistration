@@ -222,7 +222,6 @@ shared:
       driver_params:
         make_request: 'CNAF::QuotientFamilialV2::MakeRequest'
         params: &qfv2_driver_params
-          dss_prestation_name: 'quotient_familial_v2'
           nom_naissance: 'DUPONT'
           prenoms:
             - 'JEAN'
@@ -241,13 +240,12 @@ shared:
       kind: 'make_request'
       cache: <%= 15.minutes %>
       provider: 'Sécurité sociale'
+      dss_prestation_name: 'complementaire_sante_solidaire'
       status_page:
         name: "Sécurité sociale - Complémentaire santé solidaire"
       driver_params:
         make_request: 'CNAF::MakeRequest'
-        params:
-          <<: *qfv2_driver_params
-          dss_prestation_name: 'complementaire_sante_solidaire'
+        params: *qfv2_driver_params
         status_to_check: 404
         token_interactor: 'CNAF::Authenticate'
 
