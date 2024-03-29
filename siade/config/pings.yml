@@ -120,6 +120,7 @@ shared:
       provider: 'MEN'
       status_page:
         name: "Ministère de l'Éducation nationale - Status élève scolarisé et boursier"
+        alerts_wait: 10
       driver_params:
         make_request: 'MEN::Scolarites::MakeRequest'
         params:
