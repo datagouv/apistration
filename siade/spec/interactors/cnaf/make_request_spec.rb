@@ -53,29 +53,6 @@ RSpec.describe CNAF::MakeRequest, type: :make_request do
         expect(stubbed_request).to have_been_requested
       end
     end
-
-    context 'when passing downcase gender m instead of M (non-regression test)' do
-      let(:params) do
-        {
-          nom_naissance: 'CHAMPION',
-          prenoms: ['JEAN-PASCAL'],
-          annee_date_de_naissance: 1980,
-          mois_date_de_naissance: 6,
-          jour_date_de_naissance: 12,
-          gender: 'm',
-          code_pays_lieu_de_naissance: '99100',
-          code_insee_lieu_de_naissance: '17300',
-          recipient: valid_siret,
-          request_id:
-        }
-      end
-
-      it 'calls url with upcase gender' do
-        make_call
-
-        expect(stubbed_request).to have_been_requested
-      end
-    end
   end
 
   describe 'with FranceConnect params' do

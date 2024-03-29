@@ -31,7 +31,7 @@ class CNAF::MakeRequest < MakeRequest::Get
       dateNaissance: date_naissance,
       codeLieuNaissance: context.params[:code_insee_lieu_de_naissance],
       codePaysNaissance: context.params[:code_pays_lieu_de_naissance],
-      genre: context.params[:gender].upcase
+      genre: context.params[:gender]
     }.compact
   end
   # rubocop:enable Metrics/AbcSize
