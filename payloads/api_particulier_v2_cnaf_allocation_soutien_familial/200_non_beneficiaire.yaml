@@ -1,0 +1,21 @@
+---
+description: |-
+  ## Non bénéficiaire
+params:
+  nomUsage: 'DEPARDIEU'
+  nomNaissance: 'BERGERAC'
+  prenoms[]:
+  - 'CYRANO'
+  anneeDateDeNaissance: 2002
+  moisDateDeNaissance: 11
+  jourDateDeNaissance: 1
+  codeInseeLieuDeNaissance: '08480'
+  codePaysLieuDeNaissance: '99100'
+  sexe: 'M'
+status: 200
+payload: |-
+  {
+    "status": "non_beneficiaire",
+    "dateDebut": null,
+    "dateFin": null
+  }

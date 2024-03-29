@@ -1,0 +1,22 @@
+---
+description: |-
+  ## Bénéficiaire
+params:
+  nomUsage: 'DUPONT'
+  nomNaissance: 'MARTIN'
+  prenoms[]:
+  - 'PIERRE'
+  - 'RICHARD'
+  anneeDateDeNaissance: 1987
+  moisDateDeNaissance: 12
+  jourDateDeNaissance: 1
+  codeInseeLieuDeNaissance: '08480'
+  codePaysLieuDeNaissance: '99100'
+  sexe: 'M'
+  recipient: '13002526500013'
+status: 200
+payload: |-
+  {
+    "status": "beneficiaire",
+    "dateDebut": "2022-11-29"
+  }

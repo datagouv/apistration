@@ -1,0 +1,21 @@
+---
+description: |-
+  ## Bénéficiaire sans majoration
+params:
+  nomNaissance: 'GONTRAND'
+  prenoms[]:
+  - 'YVES'
+  anneeDateDeNaissance: 1980
+  moisDateDeNaissance: 9
+  jourDateDeNaissance: 20
+  codeInseeLieuDeNaissance: '08480'
+  codePaysLieuDeNaissance: '99100'
+  sexe: 'M'
+status: 200
+payload: |-
+  {
+    "status": "beneficiaire",
+    "majoration": false,
+    "dateDebut": "1992-11-20",
+    "dateFin": "1993-02-20"
+  }

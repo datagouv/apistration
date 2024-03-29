@@ -1,0 +1,21 @@
+---
+description: |-
+  ## Bénéficiaire
+params:
+  nomNaissance: 'LALANNE'
+  prenoms[]:
+  - 'FRANCIS'
+  - 'GERARD'
+  anneeDateDeNaissance: 2002
+  moisDateDeNaissance: 11
+  jourDateDeNaissance: 1
+  codeInseeLieuDeNaissance: '08480'
+  codePaysLieuDeNaissance: '99100'
+  sexe: 'M'
+status: 200
+payload: |-
+  {
+    "status": "beneficiaire",
+    "dateDebut": "1992-11-29",
+    "dateFin": "1993-11-29"
+  }
