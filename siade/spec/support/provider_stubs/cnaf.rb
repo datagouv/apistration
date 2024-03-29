@@ -58,7 +58,7 @@ module ProviderStubs::CNAF
       }
     ).to_return(
       status: 200,
-      body: read_payload_file('cnaf/valid_authentication.json')
+      body: Rails.root.join("spec/fixtures/payloads/cnaf/#{api}/valid_authentication.json").read
     )
   end
 

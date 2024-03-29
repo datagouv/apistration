@@ -1,4 +1,4 @@
-class CNAF::QuotientFamilialV2 < CNAF::RetrieverOrganizer
+class CNAF::QuotientFamilialV2 < RetrieverOrganizer
   REGIME_CODE_MSA = '00171001'.freeze
   REGIME_CODE_CNAF = '00810011'.freeze
 
@@ -9,16 +9,12 @@ class CNAF::QuotientFamilialV2 < CNAF::RetrieverOrganizer
 
   organize CNAF::ValidateParams,
     CNAF::ExtractCodeCommuneFromTranscogage,
-    CNAF::Authenticate,
+    CNAF::QuotientFamilialV2::Authenticate,
     CNAF::QuotientFamilialV2::MakeRequest,
     CNAF::QuotientFamilialV2::ValidateResponse,
     CNAF::QuotientFamilialV2::BuildResource
 
   def provider_name
     'CNAF & MSA'
-  end
-
-  def dss_prestation_name
-    'quotient_familial_v2'
   end
 end

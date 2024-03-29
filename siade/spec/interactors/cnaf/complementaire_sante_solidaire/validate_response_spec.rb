@@ -1,4 +1,4 @@
-RSpec.describe CNAF::ValidateResponse, type: :validate_response do
+RSpec.describe CNAF::ComplementaireSanteSolidaire::ValidateResponse, type: :validate_response do
   subject { described_class.call(response:, provider_name: 'CNAF') }
 
   context 'with 200 response' do

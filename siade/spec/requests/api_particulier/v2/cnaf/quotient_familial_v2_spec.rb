@@ -18,7 +18,62 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
 
       security [franceConnectToken: [], apiKey: []]
 
-      parameters_cnaf_identite_pivot
+      parameter name: :nomUsage,
+        in: :query,
+        type: SwaggerData.get('cnaf.quotient-familial-v2.parameters.nomUsage.type'),
+        description: SwaggerData.get('cnaf.quotient-familial-v2.parameters.nomUsage.description'),
+        example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.nomUsage.example'),
+        required: false
+
+      parameter name: :nomNaissance,
+        in: :query,
+        type: SwaggerData.get('cnaf.quotient-familial-v2.parameters.nomNaissance.type'),
+        description: SwaggerData.get('cnaf.quotient-familial-v2.parameters.nomNaissance.description'),
+        example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.nomNaissance.example'),
+        required: false
+
+      parameter name: :'prenoms[]',
+        in: :query,
+        schema: {
+          type: SwaggerData.get('cnaf.quotient-familial-v2.parameters.prenoms.type'),
+          minItems: SwaggerData.get('cnaf.quotient-familial-v2.parameters.prenoms.minItems'),
+          items: { type: :string },
+          example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.prenoms.example')
+        },
+        description: SwaggerData.get('cnaf.quotient-familial-v2.parameters.prenoms.description'),
+        required: false
+
+      parameter name: :anneeDateDeNaissance,
+        in: :query,
+        type: SwaggerData.get('cnaf.quotient-familial-v2.parameters.anneeDateDeNaissance.type'),
+        description: SwaggerData.get('cnaf.quotient-familial-v2.parameters.anneeDateDeNaissance.description'),
+        example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.anneeDateDeNaissance.example'),
+        required: false
+
+      parameter name: :moisDateDeNaissance,
+        in: :query,
+        type: SwaggerData.get('cnaf.quotient-familial-v2.parameters.moisDateDeNaissance.type'),
+        description: SwaggerData.get('cnaf.quotient-familial-v2.parameters.moisDateDeNaissance.description'),
+        example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.moisDateDeNaissance.example'),
+        required: false
+
+      parameter name: :jourDateDeNaissance,
+        in: :query,
+        type: SwaggerData.get('cnaf.quotient-familial-v2.parameters.jourDateDeNaissance.type'),
+        description: SwaggerData.get('cnaf.quotient-familial-v2.parameters.jourDateDeNaissance.description'),
+        example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.jourDateDeNaissance.example'),
+        required: false
+
+      parameter name: :codeInseeLieuDeNaissance,
+        in: :query,
+        schema: {
+          type: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codeInseeLieuDeNaissance.type'),
+          minLength: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codeInseeLieuDeNaissance.minLength'),
+          maxLength: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codeInseeLieuDeNaissance.maxLength'),
+          example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codeInseeLieuDeNaissance.example')
+        },
+        description: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codeInseeLieuDeNaissance.description'),
+        required: false
 
       parameter name: :nomCommuneNaissance,
         in: :query,
@@ -39,6 +94,27 @@ RSpec.describe 'CNAF: Quotient Familial V2', api: :particulier, type: %i[request
           example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codeInseeDepartementNaissance.example')
         },
         description: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codeInseeDepartementNaissance.description'),
+        required: false
+
+      parameter name: :codePaysLieuDeNaissance,
+        in: :query,
+        schema: {
+          type: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codePaysLieuDeNaissance.type'),
+          minLength: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codePaysLieuDeNaissance.minLength'),
+          maxLength: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codePaysLieuDeNaissance.maxLength'),
+          example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codePaysLieuDeNaissance.example')
+        },
+        description: SwaggerData.get('cnaf.quotient-familial-v2.parameters.codePaysLieuDeNaissance.description'),
+        required: false
+
+      parameter name: :sexe,
+        in: :query,
+        schema: {
+          type: SwaggerData.get('cnaf.quotient-familial-v2.parameters.sexe.type'),
+          enum: SwaggerData.get('cnaf.quotient-familial-v2.parameters.sexe.enum')
+        },
+        description: SwaggerData.get('cnaf.quotient-familial-v2.parameters.sexe.description'),
+        example: SwaggerData.get('cnaf.quotient-familial-v2.parameters.sexe.example'),
         required: false
 
       parameter name: :annee,

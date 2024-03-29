@@ -189,14 +189,6 @@ shared:
     - cnaf_adresse
   api_particulier/v2/cnaf/complementaire_sante_solidaire:
     - complementaire_sante_solidaire
-  api_particulier/v2/cnaf/allocation_adulte_handicape:
-    - allocation_adulte_handicape
-  api_particulier/v2/cnaf/revenu_solidarite_active:
-    - revenu_solidarite_active
-  api_particulier/v2/cnaf/allocation_soutien_familial:
-    - allocation_soutien_familial
-  api_particulier/v2/cnaf/prime_activite:
-    - prime_activite
   api_particulier/v2/cnous/student_scholarship:
     - cnous_statut_boursier
     - cnous_echelon_bourse
