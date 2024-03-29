@@ -416,6 +416,7 @@ shared:
       provider: 'European Commission'
       status_page:
         name: "Commission Européenne - Numéro de TVA"
+        alerts_wait: 15
       driver_params:
         retriever: 'EuropeanCommission::VIES'
         params:
