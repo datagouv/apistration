@@ -1,5 +1,5 @@
 RSpec.describe CNAF::QuotientFamilialV2::MakeRequest, type: :make_request do
-  subject(:make_call) { described_class.call(token:, params:) }
+  subject(:make_call) { described_class.call(token:, params:, dss_prestation_name: 'quotient_familial_v2') }
 
   let(:token) { 'super_valid_token' }
   let(:request_id) { SecureRandom.uuid }

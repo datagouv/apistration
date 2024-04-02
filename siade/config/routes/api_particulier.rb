@@ -17,6 +17,11 @@ namespace '/api', constraints: APIParticulierDomainConstraint.new do
     get 'complementaire-sante-solidaire' => '/api_particulier/v2/cnaf/complementaire_sante_solidaire#show'
     get 'composition-familiale-v2' => '/api_particulier/v2/cnaf/quotient_familial_v2#show'
     get 'composition-familiale' => '/api_particulier/v2/cnaf/quotient_familial#show'
+    get 'allocation-adulte-handicape' => '/api_particulier/v2/cnaf/allocation_adulte_handicape#show'
+    get 'allocation-soutien-familial' => '/api_particulier/v2/cnaf/allocation_soutien_familial#show'
+    get 'prime-activite' => '/api_particulier/v2/cnaf/prime_activite#show'
+    get 'revenu-solidarite-active' => '/api_particulier/v2/cnaf/revenu_solidarite_active#show'
+
     get 'situations-pole-emploi' => '/api_particulier/v2/pole_emploi/statut#show'
     get 'paiements-pole-emploi' => '/api_particulier/v2/pole_emploi/indemnites#show'
     get 'etudiants' => '/api_particulier/v2/mesri/student_status#show'

@@ -1,43 +1,16 @@
-class CNAF::ComplementaireSanteSolidaire::BuildResource < BuildResource
+class CNAF::ComplementaireSanteSolidaire::BuildResource < CNAF::BuildResource
   protected
-
-  DATE_FORMAT = '%Y-%m-%d'.freeze
 
   def resource_attributes
     {
-      status: json_body['indicateur'].downcase,
+      status:,
       dateDebut: date_debut,
       dateFin: date_fin
     }
   end
 
   def date_fin
-    return nil if non_beneficiary?
-
-    Date.parse(date_debut).next_year(1).strftime(DATE_FORMAT)
-  end
-
-  def date_debut
-    return nil if non_beneficiary?
-
-    @date_debut ||= Date.parse(latest_prestation['dtOuvertureDroit']).strftime(DATE_FORMAT)
-  end
-
-  def latest_prestation
-    @latest_prestation ||= prestations
-      .select { |prestation| prestation['etat']['cd'] == 10 }
-      .select { |prestation| matching_prestations.include?(prestation['cd']) }
-      .min { |prestation1, prestation2| Date.parse(prestation2['dtOuvertureDroit']) <=> Date.parse(prestation1['dtOuvertureDroit']) }
-  end
-
-  def prestations
-    json_body['prestations']
-  end
-
-  def string_value_or_nil(datum)
-    return if datum.blank?
-
-    datum
+    add_to_date_debut(years: 1)
   end
 
   def beneficiary_with_participation_code

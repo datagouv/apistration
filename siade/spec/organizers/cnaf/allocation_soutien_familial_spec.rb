@@ -1,4 +1,4 @@
-RSpec.describe CNAF::ComplementaireSanteSolidaire, type: :retriever_organizer do
+RSpec.describe CNAF::AllocationSoutienFamilial, type: :retriever_organizer do
   let(:request_id) { SecureRandom.uuid }
   let(:recipient) { valid_siret }
 
@@ -24,7 +24,7 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire, type: :retriever_organizer do
 
     context 'when it is with transcogage params' do
       before do
-        stub_cnaf_authenticate('complementaire_sante_solidaire')
+        stub_cnaf_authenticate('allocation_soutien_familial')
       end
 
       let(:params) do
@@ -37,7 +37,7 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire, type: :retriever_organizer do
 
       context 'with valid params for transcogage', vcr: { cassette_name: 'insee/metadonnees/one_result' } do
         let!(:stubbed_cnaf_request) do
-          stub_cnaf_valid('complementaire_sante_solidaire', extra_params: { codeLieuNaissance: '92036', dateNaissance: '2000-06-12' })
+          stub_cnaf_valid('allocation_soutien_familial', extra_params: { codeLieuNaissance: '92036', dateNaissance: '2000-06-12' })
         end
 
         let(:nom_commune_naissance) { 'Gennevilliers' }
@@ -75,8 +75,8 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire, type: :retriever_organizer do
 
       describe 'happy path' do
         before do
-          stub_cnaf_authenticate('complementaire_sante_solidaire')
-          stub_cnaf_valid('complementaire_sante_solidaire')
+          stub_cnaf_authenticate('allocation_soutien_familial')
+          stub_cnaf_valid('allocation_soutien_familial')
         end
 
         it { is_expected.to be_a_success }
@@ -118,8 +118,8 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire, type: :retriever_organizer do
 
     describe 'happy path' do
       before do
-        stub_cnaf_authenticate('complementaire_sante_solidaire')
-        stub_cnaf_valid_with_franceconnect_data('complementaire_sante_solidaire')
+        stub_cnaf_authenticate('allocation_soutien_familial')
+        stub_cnaf_valid_with_franceconnect_data('allocation_soutien_familial')
       end
 
       it { is_expected.to be_a_success }
