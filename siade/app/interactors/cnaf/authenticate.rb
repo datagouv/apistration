@@ -35,4 +35,8 @@ class CNAF::Authenticate < GetOAuth2Token
       scope:
     }.compact
   end
+
+  def cache_key
+    :"#{self.class.name.underscore}_#{prestation}"
+  end
 end
