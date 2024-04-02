@@ -7,7 +7,7 @@ class CNAF::QuotientFamilialV2 < CNAF::RetrieverOrganizer
     REGIME_CODE_CNAF => 'CNAF'
   }.freeze
 
-  organize CNAF::ValidateParams,
+  organize CNAF::QuotientFamilialV2::ValidateParams,
     CNAF::ExtractCodeCommuneFromTranscogage,
     CNAF::Authenticate,
     CNAF::QuotientFamilialV2::MakeRequest,
