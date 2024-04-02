@@ -1,0 +1,51 @@
+RSpec.describe CNAF::QuotientFamilialV2::ValidateYear, type: :validate_param_interactor do
+  describe '#call' do
+    subject { described_class.call(params:) }
+
+    let(:params) do
+      {
+        annee:
+      }.compact
+    end
+
+    shared_examples 'year valid' do
+      it { is_expected.to be_a_success }
+    end
+
+    context 'when it is nil' do
+      include_examples 'year valid' do
+        let(:annee) { nil }
+      end
+    end
+
+    context 'when year is a valid integer' do
+      include_examples 'year valid' do
+        let(:annee) { Time.zone.today.year }
+      end
+    end
+
+    shared_examples 'year not valid' do
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+    end
+
+    context 'when it is not an integer' do
+      include_examples 'year not valid' do
+        let(:annee) { 'lol' }
+      end
+    end
+
+    context 'when it is in the future' do
+      include_examples 'year not valid' do
+        let(:annee) { Time.zone.today.year + 1 }
+      end
+    end
+
+    context 'when it is too far in the past' do
+      include_examples 'year not valid' do
+        let(:annee) { 2021 }
+      end
+    end
+  end
+end
