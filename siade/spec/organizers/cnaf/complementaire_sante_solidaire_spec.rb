@@ -15,7 +15,6 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire, type: :retriever_organizer do
         gender:,
         code_pays_lieu_de_naissance: '99100',
         request_id:,
-        user_id: valid_siret,
         recipient:
       }
     end
@@ -110,7 +109,6 @@ RSpec.describe CNAF::ComplementaireSanteSolidaire, type: :retriever_organizer do
         code_insee_lieu_de_naissance: '75101',
         code_pays_lieu_de_naissance: '99100',
         gender: 'M',
-        user_id: 'france_connect_client_name',
         request_id:,
         recipient:
       }
