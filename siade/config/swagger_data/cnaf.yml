@@ -130,9 +130,9 @@ cnaf:
         example: '92'
         description: "Code INSEE du département de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
       annee:
-        description: "Année du quotient familial recherché. Si l'année n'est pas renseignée, le dernier QF est transmis."
+        description: "Année du quotient familial recherché. Si l'année n'est pas renseignée, le dernier QF est transmis. Remonte au maximum à 2 ans."
         type: integer
-        example: 2021
+        example: 2023
       mois:
         description: "Mois pour le quotient, si non renseigné renvoie le dernier QF calculé"
         type: integer
@@ -298,7 +298,7 @@ cnaf:
         title: "Année du quotient familial"
         type: integer
         description: Année de calcul du quotient familial
-        example: 2021
+        example: 2023
       mois:
         title: "Mois du quotient familial"
         type: integer
@@ -308,7 +308,7 @@ cnaf:
         title: "Année du calcul du quotient familial"
         type: integer
         description: Année à laquelle le quotient familial a été calculé
-        example: 2021
+        example: 2023
       mois_calcul:
         title: "Mois du calcul du quotient familial"
         type: integer
