@@ -65,6 +65,40 @@ RSpec.describe MakeRequestPingDriver, type: :ping_driver do
           expect(stubbed_request).to have_been_requested
         end
       end
+
+      context 'with organizer params' do
+        let(:token_interactor) { Interactor::Context.new(token: 'token') }
+        let(:params) do
+          Rails.application.config_for(:pings)[:api_kind][:with_make_request_and_organizer_params][:driver_params]
+        end
+
+        let!(:stubbed_request) do
+          stub_request(:get, /#{Siade.credentials[:cnaf_complementaire_sante_solidaire_url]}/).to_return(status:)
+        end
+
+        let(:organizer_params) do
+          {
+            dss_prestation_name: 'complementaire_sante_solidaire'
+          }
+        end
+
+        before do
+          allow(CNAF::Authenticate).to receive(:call).with(organizer_params).and_return(token_interactor)
+          stub_cnaf_authenticate('complementaire_sante_solidaire')
+        end
+
+        it 'calls the authenticator with params' do
+          expect(CNAF::Authenticate).to receive(:call).with(organizer_params).at_least(:once)
+
+          make_ping
+        end
+
+        it 'calls make request interactor with this token' do
+          make_ping
+
+          expect(stubbed_request).to have_been_requested
+        end
+      end
     end
 
     context 'when there is no response from organizer' do

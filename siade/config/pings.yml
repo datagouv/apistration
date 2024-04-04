@@ -78,6 +78,27 @@ test:
           identifiant_pole_emploi: 'identifiant'
           user_id: '22222222-2222-2222-2222-222222222222'
         token_interactor: 'PoleEmploi::Authenticate'
+    with_make_request_and_organizer_params:
+      kind: 'make_request'
+      provider: 'whatever'
+      driver_params:
+        make_request: 'CNAF::MakeRequest'
+        status_to_check: 404
+        organizer_params:
+          dss_prestation_name: 'complementaire_sante_solidaire'
+        params:
+          nom_naissance: 'DUPONT'
+          prenoms:
+            - 'JEAN'
+          annee_date_de_naissance: 2000
+          mois_date_de_naissance: 1
+          jour_date_de_naissance: 1
+          gender: 'M'
+          code_pays_lieu_de_naissance: '99100'
+          code_insee_lieu_de_naissance: '17300'
+          user_id: 'PING_DINUM'
+          request_id: '22222222-2222-2222-2222-222222222222'
+        token_interactor: 'CNAF::Authenticate'
 
 shared:
   api_particulier:
@@ -221,6 +242,8 @@ shared:
         name: "MSA & CNAF - Quotient familial (v2)"
       driver_params:
         make_request: 'CNAF::QuotientFamilialV2::MakeRequest'
+        organizer_params:
+          dss_prestation_name: 'quotient_familial_v2'
         params: &qfv2_driver_params
           nom_naissance: 'DUPONT'
           prenoms:
@@ -240,14 +263,15 @@ shared:
       kind: 'make_request'
       cache: <%= 15.minutes %>
       provider: 'Sécurité sociale'
-      dss_prestation_name: 'complementaire_sante_solidaire'
       status_page:
         name: "Sécurité sociale - Complémentaire santé solidaire"
       driver_params:
         make_request: 'CNAF::MakeRequest'
+        organizer_params:
+          dss_prestation_name: 'complementaire_sante_solidaire'
         params: *qfv2_driver_params
         status_to_check: 404
-        token_interactor: 'CNAF::Authenticate'
+      token_interactor: 'CNAF::Authenticate'
 
     franceconnect:
       kind: 'make_request'
