@@ -271,7 +271,7 @@ shared:
           dss_prestation_name: 'complementaire_sante_solidaire'
         params: *qfv2_driver_params
         status_to_check: 404
-      token_interactor: 'CNAF::Authenticate'
+        token_interactor: 'CNAF::Authenticate'
 
     franceconnect:
       kind: 'make_request'
