@@ -1,0 +1,21 @@
+---
+description: |-
+  ## Bénéficiaire avec majoration
+params:
+  nomUsage: 'MARTIN'
+  prenoms[]:
+  - 'SAMUEL'
+  anneeDateDeNaissance: 1980
+  moisDateDeNaissance: 9
+  jourDateDeNaissance: 20
+  codeInseeLieuDeNaissance: '08480'
+  codePaysLieuDeNaissance: '99100'
+  sexe: 'M'
+status: 200
+payload: |-
+  {
+    "status": "beneficiaire",
+    "majoration": true,
+    "dateDebut": "1992-11-20",
+    "dateFin": "1993-02-20"
+  }

@@ -1,0 +1,19 @@
+description: |-
+  Cas de test avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  given_name: "Angela"
+  family_name: "DUBOIS"
+  birthdate: "1962-08-24"
+  gender: "female"
+  birthplace: "75107"
+  birthcountry: "99100"
+status: 200
+payload: |-
+  {
+    "status": "beneficiaire",
+    "dateDebut": "2023-02-01",
+    "dateFin": "2023-02-01"
+  }

@@ -1,0 +1,45 @@
+Titre,Description,Paramètres,Status,Réponse
+,## Bénéficiaire avec majoration,"{""nomNaissance"":""MARTIN"",""prenoms[]"":[""SAMUEL""],""anneeDateDeNaissance"":1980,""moisDateDeNaissance"":9,""jourDateDeNaissance"":20,""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",200,"{
+  ""status"": ""beneficiaire"",
+  ""majoration"": true,
+  ""dateDebut"": ""1992-11-20"",
+  ""dateFin"": ""1993-02-20""
+}"
+,## Bénéficiaire sans majoration,"{""nomNaissance"":""GONTRAND"",""prenoms[]"":[""YVES""],""anneeDateDeNaissance"":1980,""moisDateDeNaissance"":9,""jourDateDeNaissance"":20,""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",200,"{
+  ""status"": ""beneficiaire"",
+  ""majoration"": false,
+  ""dateDebut"": ""1992-11-20"",
+  ""dateFin"": ""1993-02-20""
+}"
+,## Non bénéficiaire,"{""nomNaissance"":""LAGAFFE"",""prenoms[]"":[""GASTON""],""anneeDateDeNaissance"":1980,""moisDateDeNaissance"":9,""jourDateDeNaissance"":20,""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",200,"{
+  ""status"": ""non_beneficiaire"",
+  ""majoration"": null,
+  ""dateDebut"": null,
+  ""dateFin"": null
+}"
+,## Allocataire non trouvé,"{""recipient"":""13002526500013"",""nomNaissance"":""DUBOCHE"",""prenoms[]"":[""JEROME""],""anneeDateDeNaissance"":2002,""moisDateDeNaissance"":12,""jourDateDeNaissance"":5,""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",404,"{
+  ""error"": ""not_found"",
+  ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
+  ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
+}"
+,Timeout - délai d'attente dépassé,"{""recipient"":""13002526500013"",""codeInseeLieuDeNaissance"":""00503"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",503,"{
+  ""error"": ""network_error"",
+  ""reason"": ""timeout of 10000 ms exceeded"",
+  ""message"": ""Une erreur est survenue lors de l'appel au fournisseur de donnée""
+}"
+,"Cas de test avec jeton FranceConnect.
+Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_css.yml).
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""given_name"":""Georges"",""family_name"":""CNAF"",""birthdate"":""2002-01-01"",""gender"":""male"",""birthplace"":""75002"",""birthcountry"":""99100"",""preferred_username"":""MARTIN""}",200,"{
+  ""status"": ""beneficiaire"",
+  ""majoration"": true,
+  ""dateDebut"": ""2021-05-05"",
+  ""dateFin"": ""2021-08-05""
+}"
+,"Cas de test avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""given_name"":""Angela"",""family_name"":""DUBOIS"",""birthdate"":""1962-08-24"",""gender"":""female"",""birthplace"":""75107"",""birthcountry"":""99100""}",200,"{
+  ""status"": ""beneficiaire"",
+  ""majoration"": false,
+  ""dateDebut"": ""2023-02-01"",
+  ""dateFin"": ""2023-05-01""
+}"
