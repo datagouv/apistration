@@ -10,8 +10,16 @@ RSpec.describe ValidatePostalCode, type: :validate_param_interactor do
   end
 
   context 'when attribute is present' do
-    context 'when it is 5 digits' do
+    context 'when it is 5 digits (string)' do
       let(:postal_code) { '75001' }
+
+      it { is_expected.to be_a_success }
+
+      its(:errors) { is_expected.to be_empty }
+    end
+
+    context 'when it is 5 digits (integer)' do
+      let(:postal_code) { 75_001 }
 
       it { is_expected.to be_a_success }
 

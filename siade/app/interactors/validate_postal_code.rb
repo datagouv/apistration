@@ -9,6 +9,6 @@ class ValidatePostalCode < ValidateParamInteractor
 
   def valid?
     param(:postal_code).present? &&
-      param(:postal_code) =~ /\A\d{5}\z/
+      param(:postal_code).to_s =~ /\A\d{5}\z/
   end
 end
