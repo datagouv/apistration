@@ -172,16 +172,6 @@
   api: 'entreprise'
   path: '/v3/carif_oref/etablissements/78824266700020/certifications_qualiopi_france_competences/'
 
-# API Entreprise v2
-
-- name: 'Effectifs mensuels (entreprise)'
-  api: 'entreprise'
-  path: '/v2/effectifs_mensuels_acoss_covid/2020/02/entreprise/552032534'
-
-- name: 'Certificats Qualibat'
-  api: 'entreprise'
-  path: '/v2/certificats_qualibat/78824266700020'
-
 - name: "RNE INPI bénéficiaires effectifs"
   api: 'entreprise'
   path: '/v3/inpi/rne/unites_legales/open_data/900225095/beneficiaires_effectifs'
