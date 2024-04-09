@@ -10,7 +10,7 @@ class INSEE::AdresseEtablissement::BuildResource < INSEE::Etablissement::BuildRe
       complement_adresse: etablissement_address['complementAdresseEtablissement'],
       numero_voie: etablissement_address['numeroVoieEtablissement'],
       indice_repetition_voie: indices_repetition_de_voie[etablissement_address['indiceRepetitionEtablissement']],
-      type_voie: types_de_voie[etablissement_address['typeVoieEtablissement']].try(:upcase),
+      type_voie: etablissement_address_type_de_voie.try(:upcase),
       libelle_voie: etablissement_address['libelleVoieEtablissement'],
       code_postal: etablissement_address['codePostalEtablissement'],
       libelle_commune: etablissement_address['libelleCommuneEtablissement'],
@@ -59,7 +59,7 @@ class INSEE::AdresseEtablissement::BuildResource < INSEE::Etablissement::BuildRe
     [
       etablissement_address['numeroVoieEtablissement'],
       indices_repetition_de_voie[etablissement_address['indiceRepetitionEtablissement']],
-      types_de_voie[etablissement_address['typeVoieEtablissement']],
+      etablissement_address_type_de_voie,
       etablissement_address['libelleVoieEtablissement']
     ].compact.join(' ').upcase
   end
@@ -84,6 +84,10 @@ class INSEE::AdresseEtablissement::BuildResource < INSEE::Etablissement::BuildRe
 
   def unite_legale
     @unite_legale ||= etablissement['uniteLegale']
+  end
+
+  def etablissement_address_type_de_voie
+    types_de_voie[etablissement_address['typeVoieEtablissement']] || etablissement_address['typeVoieEtablissement']
   end
 
   def types_de_voie
