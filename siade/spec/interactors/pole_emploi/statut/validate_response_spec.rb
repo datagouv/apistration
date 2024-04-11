@@ -1,6 +1,6 @@
 RSpec.describe PoleEmploi::Statut::ValidateResponse, type: :validate_response do
   describe '.call' do
-    subject(:call) { described_class.call(response:, provider_name: 'CNAF') }
+    subject(:call) { described_class.call(response:, provider_name: 'CNAV') }
 
     context 'with 200 response' do
       let(:response) do

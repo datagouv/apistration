@@ -36,13 +36,13 @@ paths:
       summary: Quotient familial (CAF)
       deprecated: true
       description: >-
-        Quotient familial et composition de la famille d'un allocataire de la Caisse nationale des allocations familiales (CNAF). Attention, le quotient familial de la CAF n'a rien à voir avec le quotient familial fiscal utilisé pour le calcul de l'impôt sur le revenu
+        Quotient familial et composition de la famille d'un allocataire de la Caisse nationale des allocations familiales (CNAV). Attention, le quotient familial de la CAF n'a rien à voir avec le quotient familial fiscal utilisé pour le calcul de l'impôt sur le revenu
 
 
         **Paramètres d'appel :** numéro d'allocataire et code postal
 
 
-        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial)
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnav_quotient_familial)
       parameters:
         - name: numeroAllocataire
           in: query
@@ -74,7 +74,7 @@ paths:
         - Quotient familial
       responses:
         "200":
-          x-operationId: api_particulier_v2_cnaf_quotient_familial
+          x-operationId: api_particulier_v2_cnav_quotient_familial
           description: Foyer tel qu'il est déclaré à la CAF
           content:
             application/json:
@@ -108,7 +108,7 @@ paths:
                             - M
                   enfants:
                     title: Informations sur les enfants composant la famille
-                    description: "La liste des enfants correspond à la notion d'enfant à charge au sens de la législation familiale. Il n'y a notamment pas d'obligation de lien de parenté avec l’enfant. Pour en savoir plus, consultez la FAQ https://particulier.api.gouv.fr/catalogue/cnaf/quotient_familial#faq_entry_2_api_particulier_endpoint_cnaf_quotient_familial:"
+                    description: "La liste des enfants correspond à la notion d'enfant à charge au sens de la législation familiale. Il n'y a notamment pas d'obligation de lien de parenté avec l’enfant. Pour en savoir plus, consultez la FAQ https://particulier.api.gouv.fr/catalogue/cnav/quotient_familial#faq_entry_2_api_particulier_endpoint_cnav_quotient_familial:"
                     type: array
                     items:
                       type: object
@@ -135,7 +135,7 @@ paths:
                   adresse:
                     title: Adresse de la famille
                     type: object
-                    description: Adresse structurée au format de la poste. C'est l'adresse connue de la CNAF, il s'agit d'une information déclarative.
+                    description: Adresse structurée au format de la poste. C'est l'adresse connue de la CNAV, il s'agit d'une information déclarative.
                     properties:
                       identite:
                         title: Identité du destinataire
@@ -247,7 +247,7 @@ paths:
 
         "503":
           &a14
-          description: Erreur inconnue du fournisseur de donnée (CNAF)
+          description: Erreur inconnue du fournisseur de donnée (CNAV)
           content:
             application/json:
               schema:
@@ -261,7 +261,7 @@ paths:
                     example: Unknown error code 134
                   message:
                     type: string
-                    example: Erreur inconnue du fournisseur de donnée (CNAF)
+                    example: Erreur inconnue du fournisseur de donnée (CNAV)
 
   /api/v2/situations-pole-emploi:
     get:

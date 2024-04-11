@@ -6,7 +6,7 @@ paths:
         \n
         Pour de plus amples informations sur cette api et y avoir accès en avant première, veuillez contacter l'équipe API Particulier.
         \n
-        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial_v2)
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnav_quotient_familial_v2)
         "
       tags:
         - Prochainement
@@ -109,7 +109,7 @@ paths:
             type: string
       responses:
         "200":
-          x-operationId: 'api_particulier_v2_cnaf_quotient_familial_v2'
+          x-operationId: 'api_particulier_v2_cnav_quotient_familial_v2'
           description: ""
           content:
             application/json:

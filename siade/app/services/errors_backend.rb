@@ -70,8 +70,9 @@ class ErrorsBackend
       '32' => 'Qualifelec',
       '33' => 'CARIF-OREF',
       '34' => 'INPI - RNE',
-      '35' => 'CNAF & MSA',
+      '35' => 'CNAV & MSA',
       '36' => 'Sécurité sociale',
+      '37' => 'CNAV',
       '50' => 'FranceConnect'
     }
   end

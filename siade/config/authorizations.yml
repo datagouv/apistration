@@ -182,20 +182,20 @@ shared:
     - cnaf_allocataires
     - cnaf_enfants
     - cnaf_adresse
-  api_particulier/v2/cnaf/quotient_familial_v2:
+  api_particulier/v2/cnav/quotient_familial_v2:
     - cnaf_quotient_familial
     - cnaf_allocataires
     - cnaf_enfants
     - cnaf_adresse
-  api_particulier/v2/cnaf/complementaire_sante_solidaire:
+  api_particulier/v2/cnav/complementaire_sante_solidaire:
     - complementaire_sante_solidaire
-  api_particulier/v2/cnaf/allocation_adulte_handicape:
+  api_particulier/v2/cnav/allocation_adulte_handicape:
     - allocation_adulte_handicape
-  api_particulier/v2/cnaf/revenu_solidarite_active:
+  api_particulier/v2/cnav/revenu_solidarite_active:
     - revenu_solidarite_active
-  api_particulier/v2/cnaf/allocation_soutien_familial:
+  api_particulier/v2/cnav/allocation_soutien_familial:
     - allocation_soutien_familial
-  api_particulier/v2/cnaf/prime_activite:
+  api_particulier/v2/cnav/prime_activite:
     - prime_activite
   api_particulier/v2/cnous/student_scholarship:
     - cnous_statut_boursier

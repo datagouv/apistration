@@ -1,9 +1,9 @@
 require_relative '../provider_stubs'
 
-module ProviderStubs::CNAF
+module ProviderStubs::CNAV
   # rubocop:disable Metrics/MethodLength
-  def stub_cnaf_valid(api, siret: valid_siret, extra_params: {})
-    stub_request(:get, cnaf_url(api)).with(
+  def stub_cnav_valid(api, siret: valid_siret, extra_params: {})
+    stub_request(:get, cnav_url(api)).with(
       query: hash_including({
         codeLieuNaissance: '17300',
         codePaysNaissance: '99100',
@@ -19,15 +19,15 @@ module ProviderStubs::CNAF
       }
     ).to_return(
       status: 200,
-      body: Rails.root.join("spec/fixtures/payloads/cnaf/#{api}/make_request_valid.json").read,
+      body: Rails.root.join("spec/fixtures/payloads/cnav/#{api}/make_request_valid.json").read,
       headers: {
         'X-APISECU-FD' => '00810011'
       }
     )
   end
 
-  def stub_cnaf_valid_with_franceconnect_data(api, siret: valid_siret)
-    stub_request(:get, cnaf_url(api)).with(
+  def stub_cnav_valid_with_franceconnect_data(api, siret: valid_siret)
+    stub_request(:get, cnav_url(api)).with(
       query: hash_including({
         codeLieuNaissance: '75101',
         codePaysNaissance: '99100',
@@ -43,7 +43,7 @@ module ProviderStubs::CNAF
       }
     ).to_return(
       status: 200,
-      body: read_payload_file("cnaf/#{api}/make_request_valid.json"),
+      body: read_payload_file("cnav/#{api}/make_request_valid.json"),
       headers: {
         'X-APISECU-FD' => '00810011'
       }
@@ -51,48 +51,48 @@ module ProviderStubs::CNAF
   end
   # rubocop:enable Metrics/MethodLength
 
-  def stub_cnaf_authenticate(api)
-    stub_request(:post, Siade.credentials[:cnaf_authenticate_url]).with(
+  def stub_cnav_authenticate(api)
+    stub_request(:post, Siade.credentials[:cnav_authenticate_url]).with(
       headers: {
-        'Authorization' => "Basic #{Base64.urlsafe_encode64("#{cnaf_client_id(api)}:#{cnaf_secret_id(api)}")}"
+        'Authorization' => "Basic #{Base64.urlsafe_encode64("#{cnav_client_id(api)}:#{cnav_secret_id(api)}")}"
       }
     ).to_return(
       status: 200,
-      body: read_payload_file('cnaf/valid_authentication.json')
+      body: read_payload_file('cnav/valid_authentication.json')
     )
   end
 
-  def stub_cnaf_404(api, provider_code = '00171001')
-    stub_request(:get, cnaf_url(api)).with(
+  def stub_cnav_404(api, provider_code = '00171001')
+    stub_request(:get, cnav_url(api)).with(
       query: hash_including({})
     ).to_return(
       status: 404,
       headers: {
         'X-APISECU-FD' => provider_code
       },
-      body: Rails.root.join("spec/fixtures/payloads/cnaf/#{api}/404.json").read
+      body: Rails.root.join("spec/fixtures/payloads/cnav/#{api}/404.json").read
     )
   end
 
   def stub_sngi_404(api)
-    stub_request(:get, cnaf_url(api)).with(
+    stub_request(:get, cnav_url(api)).with(
       query: hash_including({})
     ).to_return(
       status: 404,
       headers: {},
-      body: Rails.root.join("spec/fixtures/payloads/cnaf/#{api}/404.json").read
+      body: Rails.root.join("spec/fixtures/payloads/cnav/#{api}/404.json").read
     )
   end
 
-  def cnaf_client_id(api)
-    Siade.credentials[:"cnaf_#{api}_client_id"]
+  def cnav_client_id(api)
+    Siade.credentials[:"cnav_#{api}_client_id"]
   end
 
-  def cnaf_secret_id(api)
-    Siade.credentials[:"cnaf_#{api}_client_secret"]
+  def cnav_secret_id(api)
+    Siade.credentials[:"cnav_#{api}_client_secret"]
   end
 
-  def cnaf_url(api)
-    Siade.credentials[:"cnaf_#{api}_url"]
+  def cnav_url(api)
+    Siade.credentials[:"cnav_#{api}_url"]
   end
 end

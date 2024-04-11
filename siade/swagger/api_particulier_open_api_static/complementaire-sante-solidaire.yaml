@@ -105,7 +105,7 @@ paths:
             type: string
       responses:
         "200":
-          x-operationId: 'api_particulier_v2_cnaf_complementaire_sante_solidaire'
+          x-operationId: 'api_particulier_v2_cnav_complementaire_sante_solidaire'
           description: ""
           content:
             application/json:

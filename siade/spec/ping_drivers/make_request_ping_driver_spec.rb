@@ -73,7 +73,7 @@ RSpec.describe MakeRequestPingDriver, type: :ping_driver do
         end
 
         let!(:stubbed_request) do
-          stub_request(:get, /#{Siade.credentials[:cnaf_complementaire_sante_solidaire_url]}/).to_return(status:)
+          stub_request(:get, /#{Siade.credentials[:cnav_complementaire_sante_solidaire_url]}/).to_return(status:)
         end
 
         let(:organizer_params) do
@@ -83,12 +83,12 @@ RSpec.describe MakeRequestPingDriver, type: :ping_driver do
         end
 
         before do
-          allow(CNAF::Authenticate).to receive(:call).with(organizer_params).and_return(token_interactor)
-          stub_cnaf_authenticate('complementaire_sante_solidaire')
+          allow(CNAV::Authenticate).to receive(:call).with(organizer_params).and_return(token_interactor)
+          stub_cnav_authenticate('complementaire_sante_solidaire')
         end
 
         it 'calls the authenticator with params' do
-          expect(CNAF::Authenticate).to receive(:call).with(organizer_params).at_least(:once)
+          expect(CNAV::Authenticate).to receive(:call).with(organizer_params).at_least(:once)
 
           make_ping
         end

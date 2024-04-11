@@ -36,6 +36,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'ADEME'
   inflect.acronym 'BDF'
   inflect.acronym 'CNAF'
+  inflect.acronym 'CNAV'
   inflect.acronym 'CNETP'
   inflect.acronym 'CNOUS'
   inflect.acronym 'DGDDI'

@@ -1,0 +1,53 @@
+RSpec.describe CNAV::ValidateCodeINSEELieuDeNaissanceOrTranscogageParams, type: :validate_param_interactor do
+  subject { described_class.call(params:) }
+
+  describe 'with code insee lieu de naissance' do
+    let(:params) { { code_insee_lieu_de_naissance:, code_pays_lieu_de_naissance: '99100' } }
+
+    context 'when it is not valid' do
+      let(:code_insee_lieu_de_naissance) { nil }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+    end
+
+    context 'when it is valid' do
+      let(:code_insee_lieu_de_naissance) { '12345' }
+
+      it { is_expected.to be_a_success }
+    end
+  end
+
+  describe 'with transcogage params' do
+    let(:params) do
+      {
+        nom_commune_naissance: 'Gennevilliers',
+        annee_date_de_naissance:,
+        code_insee_departement_de_naissance: '92'
+      }
+    end
+
+    context 'when it is valid' do
+      let(:annee_date_de_naissance) { '2000' }
+
+      it { is_expected.to be_a_success }
+    end
+
+    context 'when it is not valid' do
+      let(:annee_date_de_naissance) { 'invalid' }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+    end
+  end
+
+  describe 'with nor code insee lieu de naissance nor transcogage params' do
+    let(:params) { { code_pays_lieu_de_naissance: '99100' } }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+  end
+end

@@ -3,7 +3,7 @@ Content-Type: application/xop+xml; charset=utf-8; type="text/xml"
 Content-Transfer-Encoding: binary
 Content-ID: <0.23bc970d0f975df4a525e43567654fa4b117eeb41d7834e1@apache.org>
 
-<?xml version="1.0" encoding="utf-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><ns2:demanderDocumentWebResponse xmlns:ns2="http://v1.ws.wsdemandedocumentcafweb.cnaf/"><return><beanRetourDemandeDocumentWeb><codeRetour>0</codeRetour><fluxRetour>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+<?xml version="1.0" encoding="utf-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><ns2:demanderDocumentWebResponse xmlns:ns2="http://v1.ws.wsdemandedocumentcafweb.cnav/"><return><beanRetourDemandeDocumentWeb><codeRetour>0</codeRetour><fluxRetour>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
 &lt;drtData&gt;
     &lt;adresse&gt;
         &lt;LIBLIG1ADR&gt;Monsieur JEAN DUPONT&lt;/LIBLIG1ADR&gt;
