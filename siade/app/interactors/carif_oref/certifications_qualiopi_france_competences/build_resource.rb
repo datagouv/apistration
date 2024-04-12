@@ -88,8 +88,8 @@ class CarifOref::CertificationsQualiopiFranceCompetences::BuildResource < BuildR
 
   def string_to_bool(string)
     case string
-    when 'True' then true
-    when 'False' then false
+    when 'True', 'true' then true
+    when 'False', 'false' then false
     end
   end
 
