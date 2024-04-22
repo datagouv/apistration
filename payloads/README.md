@@ -5,15 +5,15 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 
 ## API Particulier
 
-* [Allocation Adulte Handicapé](api_particulier_v2_cnaf_allocation_adulte_handicape) (`/api/v2/allocation-adulte-handicape`)
-* [Allocation de Soutien Familial](api_particulier_v2_cnaf_allocation_soutien_familial) (`/api/v2/allocation-soutien-familial`)
-* [Complémentaire santé solidaire](api_particulier_v2_cnaf_complementaire_sante_solidaire) (`/api/v2/complementaire-sante-solidaire`)
-* [Prime d'activité](api_particulier_v2_cnaf_prime_activite) (`/api/v2/prime-activite`)
-* [Quotient familial MSA & CAF](api_particulier_v2_cnaf_quotient_familial_v2) (`/api/v2/composition-familiale-v2`)
-* [Revenu de solidarité active](api_particulier_v2_cnaf_revenu_solidarite_active) (`/api/v2/revenu-solidarite-active`)
+* [Allocation Adulte Handicapé](api_particulier_v2_cnav_allocation_adulte_handicape) (`/api/v2/allocation-adulte-handicape`)
+* [Allocation de Soutien Familial](api_particulier_v2_cnav_allocation_soutien_familial) (`/api/v2/allocation-soutien-familial`)
+* [Complémentaire santé solidaire](api_particulier_v2_cnav_complementaire_sante_solidaire) (`/api/v2/complementaire-sante-solidaire`)
+* [Prime d'activité](api_particulier_v2_cnav_prime_activite) (`/api/v2/prime-activite`)
+* [Quotient familial MSA & CAF](api_particulier_v2_cnav_quotient_familial_v2) (`/api/v2/composition-familiale-v2`)
+* [Revenu de solidarité active](api_particulier_v2_cnav_revenu_solidarite_active) (`/api/v2/revenu-solidarite-active`)
 * [Statut élève scolarisé et boursier](api_particulier_v2_men_scolarites) (`/api/v2/scolarites`)
 * [Paiements versés par France Travail](api_particulier_v2_pole_emploi_indemnites) (`/api/v2/paiements-pole-emploi`)
-* [Quotient familial (CAF)](api_particulier_v2_cnaf_quotient_familial) (`/api/v2/composition-familiale`)
+* [Quotient familial (CAF)](api_particulier_v2_cnav_quotient_familial) (`/api/v2/composition-familiale`)
 * [Statut demandeur d'emploi](api_particulier_v2_pole_emploi_statut) (`/api/v2/situations-pole-emploi`)
 * [Statut étudiant](api_particulier_v2_mesri_student_status) (`/api/v2/etudiants`)
 * [Statut étudiant boursier](api_particulier_v2_cnous_student_scholarship) (`/api/v2/etudiants-boursiers`)
