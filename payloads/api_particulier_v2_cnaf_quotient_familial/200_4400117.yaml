@@ -1,0 +1,45 @@
+---
+description: "Couple avec deux enfants (2023)"
+params:
+  numeroAllocataire: 4400117
+  codePostal: 44100
+status: 200
+payload: |-
+  {
+    "quotientFamilial": 2000,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "ROBIN HÉLÈNE",
+        "dateDeNaissance": "25021969",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "ROBIN MARC",
+        "dateDeNaissance": "26021969",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "ROBIN MARGAUX",
+        "dateDeNaissance": "05052005",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "ROBIN MARIE",
+        "dateDeNaissance": "05052005",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "ROBIN MARC & HÉLÈNE",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }

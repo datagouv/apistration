@@ -1,0 +1,45 @@
+---
+description: "Couple avec deux enfants (2023)"
+params:
+  numeroAllocataire: 4400110
+  codePostal: 44100
+status: 200
+payload: |-
+  {
+    "quotientFamilial": 1448,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "GIRARD JACQUES",
+        "dateDeNaissance": "25021969",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "GIRARD JACQUELINE",
+        "dateDeNaissance": "26021969",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "GIRARD LOUIS",
+        "dateDeNaissance": "05072005",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "GIRARD JULES",
+        "dateDeNaissance": "05072005",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "GIRARD JACQUELINE & JACQUES",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
