@@ -1,0 +1,45 @@
+---
+description: "Couple avec deux enfants (2023)"
+params:
+  numeroAllocataire: 4400113
+  codePostal: 44100
+status: 200
+payload: |-
+  {
+    "quotientFamilial": 1700,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "ROUSSEL CAMILLE",
+        "dateDeNaissance": "25021969",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "ROUSSEL CAMILLE",
+        "dateDeNaissance": "26021969",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "ROUSSEL ALICE",
+        "dateDeNaissance": "05102005",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "ROUSSEL VICTOR",
+        "dateDeNaissance": "05102005",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "ROUSSEL CAMILLE & CAMILLE",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
