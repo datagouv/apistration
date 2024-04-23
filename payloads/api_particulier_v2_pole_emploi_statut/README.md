@@ -193,3 +193,68 @@
 
   </p>
   </details>
+* [id_123456A_inscrit_toulouse.yaml](id_123456A_inscrit_toulouse.yaml)
+
+  Status `200`
+
+  Identifiant 123456A, inscrite, toulouse
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "identifiant": "123456A"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "identifiant": "123456A",
+    "civilite": "MME",
+    "nom": "Courtet",
+    "nomUsage": null,
+    "prenom": "Martine",
+    "sexe": "Féminin",
+    "codeCertificationCNAV": "VC",
+    "libelleCategorieInscription": "PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS",
+    "email": "martine.courtet@fake.fr",
+    "telephone": "0601020304",
+    "telephone2": null,
+    "adresse": {
+      "INSEECommune": "31555",
+      "codePostal": "31400",
+      "ligneComplementAdresse": null,
+      "ligneComplementDestinataire": "APPARTEMENT 42",
+      "ligneComplementDistribution": null,
+      "ligneNom": "Courtet",
+      "ligneVoie": "11 Rue Capus",
+      "localite": "31400 TOULOUSE"
+    },
+    "dateNaissance": "1990-01-06",
+    "dateInscription": "2024-01-01",
+    "dateCessationInscription": null,
+    "codeCategorieInscription": 1
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'identifiant=123456A' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/situations-pole-emploi"
+  ```
+
+  </p>
+  </details>
