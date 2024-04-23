@@ -22,7 +22,7 @@ jobs:
 
       - name: Force push develop to main
         run: |
-          if [ `git branch --show-current` = "develop" ] ; then
+          if [ "$(git branch --show-current)" = "develop" ] ; then
             git reset --hard && \
               git push --force origin develop:main && \
               git fetch && \
@@ -33,6 +33,6 @@ jobs:
 
       - name: Reload mock backend on staging
         run: |
-          if [ `git branch --show-current` = "develop" ] ; then
+          if [ "$(git branch --show-current)" = "develop" ] ; then
             bundle exec ruby bin/reload_mock_backend.rb
           fi
