@@ -66,7 +66,7 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
   Status `200`
 
-  Réponse FranceConnect permettant de déclencher la réponse de [`/v2/composition-familiale-v2` suivante](../api_particulier_v2_cnaf_quotient_familial_v2/fake_france_connect_cnaf.yaml)
+  Réponse FranceConnect permettant de déclencher la réponse de [`/v2/composition-familiale-v2` suivante](../api_particulier_v2_cnav_quotient_familial_v2/fake_france_connect_cnaf.yaml)
 
   <details><summary>Paramètres</summary>
   <p>

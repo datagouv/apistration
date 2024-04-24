@@ -13,7 +13,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [Revenu de solidarité active](api_particulier_v2_cnav_revenu_solidarite_active) (`/api/v2/revenu-solidarite-active`)
 * [Statut élève scolarisé et boursier](api_particulier_v2_men_scolarites) (`/api/v2/scolarites`)
 * [Paiements versés par France Travail](api_particulier_v2_pole_emploi_indemnites) (`/api/v2/paiements-pole-emploi`)
-* [Quotient familial (CAF)](api_particulier_v2_cnav_quotient_familial) (`/api/v2/composition-familiale`)
+* [Quotient familial (CAF)](api_particulier_v2_cnaf_quotient_familial) (`/api/v2/composition-familiale`)
 * [Statut demandeur d'emploi](api_particulier_v2_pole_emploi_statut) (`/api/v2/situations-pole-emploi`)
 * [Statut étudiant](api_particulier_v2_mesri_student_status) (`/api/v2/etudiants`)
 * [Statut étudiant boursier](api_particulier_v2_cnous_student_scholarship) (`/api/v2/etudiants-boursiers`)

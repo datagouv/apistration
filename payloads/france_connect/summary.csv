@@ -19,7 +19,7 @@ CNAF Complémentaire Santé Solidaire,Réponse FranceConnect permettant de décl
     ""preferred_username"": ""MARTIN""
   }
 }"
-CNAF Quotient Familial V2,Réponse FranceConnect permettant de déclencher la réponse de [`/v2/composition-familiale-v2` suivante](../api_particulier_v2_cnaf_quotient_familial_v2/fake_france_connect_cnaf.yaml),"{""token"":""cnaf_qfv2""}",200,"{
+CNAF Quotient Familial V2,Réponse FranceConnect permettant de déclencher la réponse de [`/v2/composition-familiale-v2` suivante](../api_particulier_v2_cnav_quotient_familial_v2/fake_france_connect_cnaf.yaml),"{""token"":""cnaf_qfv2""}",200,"{
   ""scope"": [
     ""openid"",
     ""identite_pivot"",

@@ -2268,7 +2268,7 @@ paths:
 
         **Paramètres d'appel :** numéro d'allocataire et code postal
 
-        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnav_quotient_familial)
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial)
       parameters:
       - name: numeroAllocataire
         in: query
@@ -2303,7 +2303,7 @@ paths:
       - Quotient familial
       responses:
         '200':
-          x-operationId: api_particulier_v2_cnav_quotient_familial
+          x-operationId: api_particulier_v2_cnaf_quotient_familial
           description: Foyer tel qu'il est déclaré à la CAF
           content:
             application/json:
