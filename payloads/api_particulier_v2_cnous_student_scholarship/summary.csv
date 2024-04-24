@@ -98,3 +98,54 @@ Titre,Description,Paramètres,Status,Réponse
   ""villeEtudes"": ""Marseille"",
   ""etablissement"": ""Pagnol""
 }"
+,"Boursier échelon 6, année scolaire antérieure (appel par INE)","{""ine"":""1234567890B""}",200,"{
+  ""nom"": ""Longchambon"",
+  ""prenom"": ""Thomas"",
+  ""prenom2"": """",
+  ""dateNaissance"": ""2001-01-01"",
+  ""lieuNaissance"": ""Paris"",
+  ""sexe"": ""M"",
+  ""boursier"": true,
+  ""echelonBourse"": ""6"",
+  ""email"": ""thomas.longchambon@fake.fr"",
+  ""dateDeRentree"": ""2022-09-01"",
+  ""dureeVersement"": 12,
+  ""statut"": 0,
+  ""statutLibelle"": ""définitif"",
+  ""villeEtudes"": ""Toulouse"",
+  ""etablissement"": ""Jean Jaurès""
+}"
+,"Boursier échelon 6, année scolaire en cours (appel par INE)","{""ine"":""1234567890C""}",200,"{
+  ""nom"": ""Charbonneau"",
+  ""prenom"": ""Axelle"",
+  ""prenom2"": """",
+  ""dateNaissance"": ""2001-01-02"",
+  ""lieuNaissance"": ""Paris"",
+  ""sexe"": ""F"",
+  ""boursier"": true,
+  ""echelonBourse"": ""6"",
+  ""email"": ""axelle.charbonneau@fake.fr"",
+  ""dateDeRentree"": ""2023-09-01"",
+  ""dureeVersement"": 12,
+  ""statut"": 0,
+  ""statutLibelle"": ""définitif"",
+  ""villeEtudes"": ""Toulouse"",
+  ""etablissement"": ""Jean Jaurès""
+}"
+,"Boursier échelon 7, année scolaire en cours (appel par INE)","{""ine"":""1234567890D""}",200,"{
+  ""nom"": ""Montgomery"",
+  ""prenom"": ""Marie"",
+  ""prenom2"": """",
+  ""dateNaissance"": ""2001-01-03"",
+  ""lieuNaissance"": ""Paris"",
+  ""sexe"": ""F"",
+  ""boursier"": true,
+  ""echelonBourse"": ""7"",
+  ""email"": ""marie.montgomery@fake.fr"",
+  ""dateDeRentree"": ""2023-09-01"",
+  ""dureeVersement"": 12,
+  ""statut"": 0,
+  ""statutLibelle"": ""définitif"",
+  ""villeEtudes"": ""Toulouse"",
+  ""etablissement"": ""Jean Jaurès""
+}"
