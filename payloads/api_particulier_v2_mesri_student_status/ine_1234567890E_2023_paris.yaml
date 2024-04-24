@@ -1,0 +1,25 @@
+---
+description: 'Étudiant 1234567890E inscrit (appel par INE), année scolaire 2023 à Paris'
+params:
+  ine: '1234567890E'
+status: 200
+payload: |-
+  {
+    "ine": "1234567890E",
+    "nom": "Granet",
+    "prenom": "Cyril",
+    "dateNaissance": "2001-01-04",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2023-09-01",
+        "dateFinInscription": "2024-08-31",
+        "statut": "inscrit",
+        "codeCommune": "75020",
+        "etablissement": {
+          "uai": "0750106H",
+          "nomEtablissement": "ECOLE TECHNOLOGIQUE PRIVEE"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

@@ -42,7 +42,7 @@ Titre,Description,Paramètres,Status,Réponse
     {
       ""dateDebutInscription"": ""2023-07-01"",
       ""dateFinInscription"": ""2024-08-31"",
-      ""statut"": ""ADMIS"",
+      ""statut"": ""admis"",
       ""codeCommune"": ""75009"",
       ""etablissement"": {
         ""uai"": ""0331023W"",
