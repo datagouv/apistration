@@ -27,7 +27,7 @@ class UnprocessableEntityError < ApplicationError
       limit: '00313',
       # CNAF
       postal_code: '00351',
-      cnav_beneficiary_number: '00352',
+      cnaf_beneficiary_number: '00352',
       # MESRI / MEN / CNOUS
       ine: '00360',
       family_name: '00361',
