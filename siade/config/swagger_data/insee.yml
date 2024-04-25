@@ -922,13 +922,13 @@ insee:
         - "diffusible"
         - "partiellement_diffusible"
         - "non_diffusible"
-      description: "Indique le statut de diffusion de l'établissement : 
+      description: "Indique le statut de diffusion de l'établissement :
         \n
-        \n 
+        \n
         - Diffusible : Toutes les données de l'établissement sont diffusibles, donc publiques.
-        \n 
+        \n
         - Partiellement diffusible : Seule une partie des données est diffusible, suite à une demande de l'entité qui a exercé sont droit d'opposition à la diffusion de données personnelles.
-        \n 
+        \n
         - Non-diffusible (obsolète) : Ce statut correspond à l'ancien statut, toutes les entités ayant exercé leur droit d'opposition sont normalement désormais en statut \"partiellement diffusible\"."
     diffusable_commercialement: *diffusable_commercialement
     enseigne: &insee_etabliseement_enseigne_property
@@ -975,7 +975,6 @@ insee:
     diffusable_commercialement:
       *diffusable_commercialement
 
-insee:
   adresse_etablissement:
     title: "Adresse établissement"
     description: "Adresse d'un établissement inscrit au répertoire Sirene, y compris celle des établissements en diffusion partielle."
@@ -1078,3 +1077,42 @@ insee:
     description: "Informations générales publiques concernant le siège d'une unité légale inscrite au répertoire Sirene."
     tags:
       - "Informations générales"
+
+  successions:
+    title: "Liens de succession"
+    description: "Informations sur les liens de succession entre les établissements."
+    tags:
+      - "Informations générales"
+    attributes:
+      predecesseurs:
+        title: "Établissements prédécesseurs"
+        type: "array"
+        items:
+          type: "object"
+          properties: &lien_succession_properties
+            siret:
+              title: "Siret de l'établissement prédécesseur/successeur"
+              type: "string"
+              example: "30613890001294"
+              description: "Siret de l'établissement prédécesseur ou successeur"
+            date_succession:
+              title: "Date de succession"
+              type: "date"
+              example: "2021-10-15"
+              description: "Date de succession entre les établissements"
+            transfert_siege:
+              title: "Transfert de siège"
+              type: "boolean"
+              example: true
+              description: "Indique si la succession est un transfert de siège."
+            continuite_economique:
+              title: "Continuité économique"
+              type: "boolean"
+              example: true
+              description: "Indique si la succession est une continuité économique."
+      successeurs:
+        title: "Établissements successeurs"
+        type: "array"
+        items:
+          type: "object"
+          properties: *lien_succession_properties
