@@ -11,12 +11,7 @@ RSpec.describe INSEE::Successions::MakeRequest, type: :make_request do
     let(:query_params) { "q=siretEtablissementSuccesseur:#{siret} OR siretEtablissementPredecesseur:#{siret}" }
     let(:query_url) { "#{Siade.credentials[:insee_v3_domain]}/entreprises/sirene/V3.11/siret/liensSuccession?#{query_params}" }
 
-    before do
-      stub_request(:get, query_url).to_return(
-        status: 200,
-        body: open_payload_file('insee/succession_valid.json')
-      )
-    end
+    before { stub_insee_succession_make_request(siret:) }
 
     context 'with a valid siret' do
       let(:siret) { valid_siret }
