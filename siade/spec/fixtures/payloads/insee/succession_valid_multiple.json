@@ -1,0 +1,35 @@
+{
+	"header": {
+		"statut": 200,
+		"message": "OK",
+		"total": 3,
+		"debut": 0,
+		"nombre": 3
+	},
+	"liensSuccession": [
+		{
+			"siretEtablissementPredecesseur": "30006240940008",
+			"siretEtablissementSuccesseur": "30006240940040",
+			"dateLienSuccession": "2011-04-01",
+			"transfertSiege": false,
+			"continuiteEconomique": false,
+			"dateDernierTraitementLienSuccession": "2024-03-22T11:12:05.000"
+		},
+		{
+			"siretEtablissementPredecesseur": "30006240940040",
+			"siretEtablissementSuccesseur": "30006240940057",
+			"dateLienSuccession": "2012-10-31",
+			"transfertSiege": false,
+			"continuiteEconomique": true,
+			"dateDernierTraitementLienSuccession": "2024-03-22T11:12:05.000"
+		},
+		{
+			"siretEtablissementPredecesseur": "30006240940024",
+			"siretEtablissementSuccesseur": "30006240940040",
+			"dateLienSuccession": "2011-04-01",
+			"transfertSiege": false,
+			"continuiteEconomique": true,
+			"dateDernierTraitementLienSuccession": "2024-03-22T11:12:05.000"
+		}
+	]
+}

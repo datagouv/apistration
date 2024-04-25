@@ -1,0 +1,19 @@
+{
+	"header": {
+		"statut": 200,
+		"message": "OK",
+		"total": 1,
+		"debut": 0,
+		"nombre": 1
+	},
+	"liensSuccession": [
+		{
+			"siretEtablissementPredecesseur": "12345678900015",
+			"siretEtablissementSuccesseur": "12345678900031",
+			"dateLienSuccession": "2015-01-09",
+			"transfertSiege": true,
+			"continuiteEconomique": true,
+			"dateDernierTraitementLienSuccession": "2024-03-22T11:12:05.000"
+		}
+	]
+}

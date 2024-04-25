@@ -1,0 +1,6 @@
+{
+	"header": {
+		"statut": 404,
+		"message": "Aucun lien de succession n'a été trouvé pour le paramètre q=siretEtablissementPredecesseur:12345678900023"
+	}
+}
