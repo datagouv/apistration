@@ -137,6 +137,9 @@ shared:
   api_entreprise/v3_and_more/insee/unites_legales_diffusables:
     - entreprises
     - open_data
+  api_entreprise/v3_and_more/insee/successions:
+    - etablissements
+    - open_data
   api_entreprise/v3_and_more/mi/associations:
     - associations
     - open_data
