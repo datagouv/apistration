@@ -60,6 +60,8 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
 
     get 'sirene/etablissements/:siret/adresse' => '/api_entreprise/v3_and_more/insee/adresses_etablissements#show'
     get 'sirene/etablissements/diffusibles/:siret/adresse' => '/api_entreprise/v3_and_more/insee/adresses_etablissements_diffusables#show'
+
+    get 'sirene/etablissements/:siret/successions' => '/api_entreprise/v3_and_more/insee/successions#show'
   end
 
   namespace :infogreffe do
