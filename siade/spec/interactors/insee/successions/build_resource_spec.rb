@@ -63,7 +63,7 @@ RSpec.describe INSEE::Successions::BuildResource, type: :build_resource do
 
   describe 'with a response containing multiple successions' do
     let(:body) { read_payload_file('insee/succession_valid_multiple.json') }
-    let(:siret) { '30006240940040' }
+    let(:siret) { sirets_insee_v3[:successions] }
 
     it { is_expected.to be_a_success }
 

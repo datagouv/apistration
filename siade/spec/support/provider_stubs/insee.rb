@@ -1,10 +1,17 @@
 require_relative '../provider_stubs'
 
 module ProviderStubs::INSEE
-  def stub_insee_succession_make_request(siret:)
+  def stub_insee_successions_make_request(siret:)
     stub_request(:get, query_url_succession(siret)).to_return(
       status: 200,
       body: open_payload_file('insee/succession_valid.json')
+    )
+  end
+
+  def stub_insee_successions_not_found(siret:)
+    stub_request(:get, query_url_succession(siret)).to_return(
+      status: 404,
+      body: open_payload_file('insee/succession_not_found.json')
     )
   end
 

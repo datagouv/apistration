@@ -80,6 +80,10 @@
   api: 'entreprise'
   path: '/v3/insee/sirene/unites_legales/diffusibles/306138900/siege_social'
 
+- name: 'INSEE Successions'
+  api: 'entreprise'
+  path: '/v3/insee/sirene/etablissements/41054521400034/successions'
+
 - name: "Ministère de l'Intérieur associations"
   api: 'entreprise'
   path: '/v3/ministere_interieur/rna/associations/77571979202650'

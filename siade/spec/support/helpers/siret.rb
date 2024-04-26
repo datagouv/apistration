@@ -40,7 +40,8 @@ def sirets_insee_v3
     etranger_2: '48758547300019',
     etranger_3: '48759660300018',
     etranger_4: '48760118900011',
-    closed: closed_siret
+    closed: closed_siret,
+    successions: '30006240940040'
   }
 end
 
