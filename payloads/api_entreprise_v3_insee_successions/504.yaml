@@ -1,0 +1,16 @@
+---
+title: 'Réponse 504'
+params:
+  siret: '39197770100914'
+description: 'INSEE Liens de successions - Exemple 504'
+status: 504
+payload: |-
+  {
+    "errors": [
+      {
+        "title": "Service non disponible",
+        "detail": "Service du fournisseur de données temporairement indisponible ou en maintenance.",
+        "code": "01001"
+      }
+    ]
+  }

@@ -1,0 +1,20 @@
+---
+title: 'Réponse 404'
+description: 'Payload INSEE Successions - not found 404'
+example: true
+params:
+  siret: '37449707591810'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "04003",
+        "title": "Entité non trouvée",
+        "detail": "Le siret indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel",
+        "meta": {
+          "provider": "INSEE"
+        }
+      }
+    ]
+  }

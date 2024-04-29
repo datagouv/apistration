@@ -76,6 +76,1392 @@
 
   </p>
   </details>
+* [200_4400100.yaml](200_4400100.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400100,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 600,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "DUPONT JEAN",
+        "dateDeNaissance": "25021969",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "DUPONT JEANNE",
+        "dateDeNaissance": "25021969",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "DUPONT THOMAS",
+        "dateDeNaissance": "05052005",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "DUPONT HUGO",
+        "dateDeNaissance": "05052005",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur JEAN DUPONT",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400100' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
+* [200_4400101.yaml](200_4400101.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400101,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 600,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "MARTIN MARIE",
+        "dateDeNaissance": "25021969",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "MARTIN PIERRE",
+        "dateDeNaissance": "25021969",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "MARTIN Léa",
+        "dateDeNaissance": "05062005",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "MARTIN ÉLISE",
+        "dateDeNaissance": "05062005",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "MARTIN MARIE & PIERRE",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400101' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
+* [200_4400102.yaml](200_4400102.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400102,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 740,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "LEROY PIERRE",
+        "dateDeNaissance": "25021969",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "LEROY PIERRETTE",
+        "dateDeNaissance": "25021969",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "LEROY MAXIME",
+        "dateDeNaissance": "05072005",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "LEROY LUCAS",
+        "dateDeNaissance": "05072005",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "LEROY PIERRE & PIERRETTE",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400102' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
+* [200_4400103.yaml](200_4400103.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400103,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 740,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "BERNARD SOPHIE",
+        "dateDeNaissance": "25021969",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "BERNARD THIERRY",
+        "dateDeNaissance": "25021969",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "BERNARD AMÉLIE",
+        "dateDeNaissance": "05082005",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "BERNARD NATHAN",
+        "dateDeNaissance": "05082005",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "BERNARD THIERRY & SOPHIE",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400103' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
+* [200_4400104.yaml](200_4400104.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400104,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 1000,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "DUBOIS MICHEL",
+        "dateDeNaissance": "25021969",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "DUBOIS MICHELLE",
+        "dateDeNaissance": "25021969",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "DUBOIS LUCAS",
+        "dateDeNaissance": "05092005",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "DUBOIS EMMA",
+        "dateDeNaissance": "05092005",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "DUBOIS MICHELLE & MICHEL",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400104' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
+* [200_4400105.yaml](200_4400105.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400105,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 1000,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "LEFEBVRE CLAIRE",
+        "dateDeNaissance": "25021969",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "LEFEBVRE CLAUDE",
+        "dateDeNaissance": "26021969",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "LEFEBVRE MANON",
+        "dateDeNaissance": "05102005",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "LEFEBVRE CHLOÉ",
+        "dateDeNaissance": "05102005",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "LEFEBVRE CLAIRE & CLAUDE",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400105' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
+* [200_4400106.yaml](200_4400106.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400106,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 1080,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "MOREAU ANDRÉ",
+        "dateDeNaissance": "25021969",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "MOREAU ANGEL",
+        "dateDeNaissance": "26021969",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "MOREAU ADRIEN",
+        "dateDeNaissance": "05112005",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "MOREAU VALENTIN",
+        "dateDeNaissance": "05112005",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "MOREAU ANDRÉ & ANGEL",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400106' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
+* [200_4400107.yaml](200_4400107.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400107,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 1080,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "LAMBERT JULIETTE",
+        "dateDeNaissance": "25021969",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "LAMBERT JULIEN",
+        "dateDeNaissance": "26021969",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "LAMBERT MATHILDE",
+        "dateDeNaissance": "05122005",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "LAMBERT ZOÉ",
+        "dateDeNaissance": "05122005",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "LAMBERT JULIEN & JULIETTE",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400107' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
+* [200_4400108.yaml](200_4400108.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400108,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 1400,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "PETIT LAURENT",
+        "dateDeNaissance": "25021969",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "PETIT LAURINE",
+        "dateDeNaissance": "26021969",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "PETIT CLÉMENT",
+        "dateDeNaissance": "05052005",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "PETIT THÉO",
+        "dateDeNaissance": "05052005",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "PETIT LAURENT & LAURINE",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400108' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
+* [200_4400109.yaml](200_4400109.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400109,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 1400,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "SIMON NATHALIE",
+        "dateDeNaissance": "25021969",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "SIMON NATHAN",
+        "dateDeNaissance": "26021969",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "SIMON LÉA",
+        "dateDeNaissance": "05062005",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "SIMON CAMILLE",
+        "dateDeNaissance": "05062005",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "SIMON NATHAN & NATHALIE",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400109' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
+* [200_4400110.yaml](200_4400110.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400110,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 1448,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "GIRARD JACQUES",
+        "dateDeNaissance": "25021969",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "GIRARD JACQUELINE",
+        "dateDeNaissance": "26021969",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "GIRARD LOUIS",
+        "dateDeNaissance": "05072005",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "GIRARD JULES",
+        "dateDeNaissance": "05072005",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "GIRARD JACQUELINE & JACQUES",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400110' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
+* [200_4400111.yaml](200_4400111.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400111,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 1448,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "BOUCHER CHLOÉ",
+        "dateDeNaissance": "25021969",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "BOUCHER CORENTIN",
+        "dateDeNaissance": "26021969",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "BOUCHER ZOÉ",
+        "dateDeNaissance": "05082005",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "BOUCHER ANAÏS",
+        "dateDeNaissance": "05082005",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "BOUCHER CORENTIN & CHLOÉ",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400111' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
+* [200_4400112.yaml](200_4400112.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400112,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 1700,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "MOULIN ANTOINE",
+        "dateDeNaissance": "25021969",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "MOULIN ANTOINETTE",
+        "dateDeNaissance": "26021969",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "MOULIN HUGO",
+        "dateDeNaissance": "05092005",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "MOULIN ÉMILIE",
+        "dateDeNaissance": "05092005",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "MOULIN ANTOINETTE & ANTOINE",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400112' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
+* [200_4400113.yaml](200_4400113.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400113,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 1700,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "ROUSSEL CAMILLE",
+        "dateDeNaissance": "25021969",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "ROUSSEL CAMILLE",
+        "dateDeNaissance": "26021969",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "ROUSSEL ALICE",
+        "dateDeNaissance": "05102005",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "ROUSSEL VICTOR",
+        "dateDeNaissance": "05102005",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "ROUSSEL CAMILLE & CAMILLE",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400113' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
+* [200_4400114.yaml](200_4400114.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400114,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 1717,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "BLANC PHILIPPE",
+        "dateDeNaissance": "25021969",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "BLANC SARAH",
+        "dateDeNaissance": "26021969",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "BLANC RAPHAËL",
+        "dateDeNaissance": "05112005",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "BLANC LÉONARD",
+        "dateDeNaissance": "05112005",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "BLANC SARAH & PHILIPPE",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400114' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
+* [200_4400115.yaml](200_4400115.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400115,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 1717,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "GAUTIER ÉMILIE",
+        "dateDeNaissance": "25021969",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "GAUTIER SOAZIG",
+        "dateDeNaissance": "26021969",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "GAUTIER OCÉANE",
+        "dateDeNaissance": "05122005",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "GAUTIER NOÉMIE",
+        "dateDeNaissance": "05122005",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "GAUTIER SOAZIG & ÉMILIE",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400115' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
+* [200_4400116.yaml](200_4400116.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400116,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 2000,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "MERCIER VICTOR",
+        "dateDeNaissance": "25021969",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "MERCIER MATHILDE",
+        "dateDeNaissance": "26021969",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "MERCIER ARTHUR",
+        "dateDeNaissance": "05052005",
+        "sexe": "M"
+      },
+      {
+        "nomPrenom": "MERCIER THIBAULT",
+        "dateDeNaissance": "05052005",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "MERCIER MATHILDE & VICTOR",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400116' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
+* [200_4400117.yaml](200_4400117.yaml)
+
+  Status `200`
+
+  Couple avec deux enfants (2023)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "numeroAllocataire": 4400117,
+    "codePostal": 44100
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "quotientFamilial": 2000,
+    "mois": 7,
+    "annee": 2023,
+    "allocataires": [
+      {
+        "nomPrenom": "ROBIN HÉLÈNE",
+        "dateDeNaissance": "25021969",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "ROBIN MARC",
+        "dateDeNaissance": "26021969",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomPrenom": "ROBIN MARGAUX",
+        "dateDeNaissance": "05052005",
+        "sexe": "F"
+      },
+      {
+        "nomPrenom": "ROBIN MARIE",
+        "dateDeNaissance": "05052005",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "ROBIN MARC & HÉLÈNE",
+      "complementIdentite": "APPARTEMENT 51",
+      "complementIdentiteGeo": "RESIDENCE DES COLOMBES",
+      "numeroRue": "42 RUE DE LA PAIX",
+      "lieuDit": "ILOTS DES OISEAUX",
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'numeroAllocataire=4400117' -d 'codePostal=44100' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale"
+  ```
+
+  </p>
+  </details>
 * [404.yaml](404.yaml)
 
   Status `404`
