@@ -11,7 +11,7 @@
         "siret_successeur": null,
         "date_creation": "2017-05-24",
         "date_fermeture": null,
-        "etat_diffusible": "True"
+        "etat_diffusible": true
     },
     "unite_legale": {
         "raison_sociale": "DINUM",
@@ -21,17 +21,29 @@
         "pseudonyme": null,
         "sigle": null,
         "nom_commercial": null,
-        "multinda": "False"
+        "multinda": false
     },
+   "adresse_insee":[
+      {
+         "adresse_insee":"20 avenue de ségur",
+         "numero_voie":"20",
+         "indice_repetition":null,
+         "type_voie":"CRS",
+         "libelle_voie":"avenue de ségur",
+         "complement_adresse":null,
+         "code_postal":"75007",
+         "libelle_commune":"Paris",
+         "code_commune":"75107",
+         "code_cedex":null
+      }
+   ],
     "adresse_ban": [
         {
             "adresse_editorialisee": "20 avenue de ségur",
             "adresse_type": "housenumber",
             "adresse_score": "0.2345673456723455",
             "adresse_nom": "20 avenue de ségur",
-            "type_voie": "CRS",
             "adresse_numero": "20",
-            "indice_repetition": null,
             "adresse_voie": "avenue de ségur",
             "adresse_codepostal": "75007",
             "adresse_commune": "Paris",
@@ -49,8 +61,8 @@
     "nda": [
         {
             "nda": "12345671234",
-            "cfa": "True",
-            "actif": "True",
+            "cfa": true,
+            "actif": true,
             "date_derniere_declaration": "2021-01-31",
             "debut_exercice": "2022-01-01",
             "fin_exercice": "2022-12-31",
@@ -60,28 +72,44 @@
             "libelle_specialite_2": "Droit, sciences politiques",
             "code_specialite_3": "314",
             "libelle_specialite_3": "Comptabilit\u00e9, gestion",
-            "qualiopi_action_formation": "true",
-            "qualiopi_bilan_comptence": "False",
-            "qualiopi_vae": "True",
-            "qualiopi_apprentissage": "true",
+            "qualiopi_action_formation": true,
+            "qualiopi_bilan_comptence": false,
+            "qualiopi_vae": true,
+            "qualiopi_apprentissage": true,
             "obtention_qualiopi": "Qualiopi direct sur le NDA"
         }
     ],
     "habilitations": [
         {
             "code_fc": "RNCP09001",
-            "actif": "True",
+            "actif": true,
+            "existence_partenaire": true,
+            "est_partenaire":true,
+            "est_certificateur":false,
             "etat_habilitation": "Actif",
+            "remplace_par":[
+                {
+                  "code_fc":null
+                }
+            ],
+            "libelle":"TRE- EXAMINATEURS DE QUALIFICATION DE TYPE",
             "date_habilitation": null,
             "date_fin_enregistrement": "01/01/2024",
             "date_decision": null,
-            "a_former": "True",
-            "a_organiser": "True",
+            "a_former": true,
+            "a_organiser": true,
             "certificateur": [
                 {
                     "siret": "13002526500013"
                 }
-            ]
+            ],
+            "niveau":null,
+            "accessibilite_fi":false,
+            "accessibilite_fc":false,
+            "accessibilite_cq":false,
+            "accessibilite_cl":false,
+            "accessibilite_vae":false,
+            "accessibilite_ca":false
         }
     ]
 }
