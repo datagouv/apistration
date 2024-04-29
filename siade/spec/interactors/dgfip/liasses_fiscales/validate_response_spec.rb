@@ -33,6 +33,16 @@ RSpec.describe DGFIP::LiassesFiscales::ValidateResponse, type: :validate_respons
         end
       end
 
+      context 'when body is an HTML error page' do
+        let(:body) { read_payload_file('dgfip/liasses_fiscales/server_error.html') }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+
+        its(:cacheable) { is_expected.to be(false) }
+      end
+
       context 'when body is not a valid json' do
         let(:body) { 'whatever' }
 
