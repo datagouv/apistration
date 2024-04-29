@@ -402,7 +402,7 @@ GEM
       hashie
       version_gem (~> 1.1, >= 1.1.1)
     stringio (3.1.0)
-    super_diff (0.11.0)
+    super_diff (0.12.1)
       attr_extras (>= 6.2.4)
       diff-lcs
       patience_diff
