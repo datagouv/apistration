@@ -3,7 +3,7 @@ pole_emploi:
     title: "Paiements versés par France Travail"
     description: "Ensemble des paiements versés par France Travail au particulier"
     tags:
-      - Paiements France Travail
+      - Demandeurs d'emploi
     parameters:
       identifiant:
         required: true

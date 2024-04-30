@@ -314,7 +314,7 @@ paths:
           schema:
             type: string
       tags:
-        - Situation France Travail
+        - Demandeurs d'emploi
       responses:
         "200":
           x-operationId: api_particulier_v2_pole_emploi_statut
@@ -535,7 +535,7 @@ paths:
   /api/v2/etudiants:
     get:
       tags:
-        - Statut étudiant
+        - Éducation et études
       parameters:
         - name: ine
           description: Identifiant National Étudiant (INE). Cet identifiant est unique à chaque étudiant sur le territoire français. Il est composé de 11 caractères, 10 chiffres et 1 lettre, et depuis la rentrée 2018, 9 chiffres et 2 lettres. Les étudiants peuvent retrouver leur numéro INE sur leur carte étudiant et leur certificat de scolarité.
@@ -709,7 +709,7 @@ paths:
   /api/v2/etudiants-boursiers:
     get:
       tags:
-        - Statut étudiant boursier
+        - Éducation et études
       parameters:
         - name: ine
           description: Identifiant National Étudiant (INE). Cet identifiant est unique à chaque étudiant sur le territoire français. Il est composé de 11 caractères, 10 chiffres et 1 lettre, et depuis la rentrée 2018, 9 chiffres et 2 lettres. Les étudiants peuvent retrouver leur numéro INE sur leur carte étudiant et leur certificat de scolarité.

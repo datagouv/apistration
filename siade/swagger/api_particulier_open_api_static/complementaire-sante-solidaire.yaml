@@ -134,7 +134,7 @@ paths:
                     nullable: true
                     description: "Date de début de droit à la complémentaire santé solidaire (C2S) si le particulier est bénéficiaire.
                     \n
-                    Ce champs est null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
+                    Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
                     example: 1992-11-29
                   dateFin:
                     title: "Date de fermeture du droit à la C2S"
@@ -143,9 +143,9 @@ paths:
                     nullable: true
                     description: "Date de fin de droit à la complémentaire santé solidaire (C2S) du particulier bénéficiaire.
                     \n
-                    Ce champs est calculé en ajoutant 12 mois à la date de début de droit à la C2S.
+                    Ce champ est calculé en ajoutant 12 mois à la date de début de droit à la C2S.
                     \n
-                    Ce champs sera null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
+                    Ce champ sera null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
                     example: '1993-11-29'
         "400":
           description: Mauvais paramètres d'appels
