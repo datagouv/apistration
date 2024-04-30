@@ -52,15 +52,15 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
-,Étudiant inscrit,"{""nom"":""MARTIN"",""prenom"":""Jacques"",""dateDeNaissance"":""2004-01-01"",""sexe"":""m"",""lieuDeNaissance"":""75002""}",200,"{
+,Étudiant inscrit,"{""nom"":""MARTIN"",""prenom"":""Jacques"",""dateDeNaissance"":""2024-01-01"",""sexe"":""m"",""lieuDeNaissance"":""75102""}",200,"{
   ""ine"": ""1234567890Y"",
   ""nomFamille"": ""Martin"",
   ""prenom"": ""Jacques"",
   ""dateNaissance"": ""2004-01-01"",
   ""inscriptions"": [
     {
-      ""dateDebutInscription"": ""2023-07-01"",
-      ""dateFinInscription"": ""2024-08-31"",
+      ""dateDebutInscription"": ""2024-10-01"",
+      ""dateFinInscription"": ""2025-08-31"",
       ""statut"": ""inscrit"",
       ""codeCommune"": ""92000"",
       ""etablissement"": {
