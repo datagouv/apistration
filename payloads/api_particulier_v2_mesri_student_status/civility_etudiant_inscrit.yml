@@ -3,7 +3,7 @@ description: 'Étudiant inscrit'
 params:
   nom: "MARTIN"
   prenom: "Jacques"
-  dateDeNaissance: "2024-01-01"
+  dateDeNaissance: "2004-01-01"
   sexe: "m"
   lieuDeNaissance: "75102"
 status: 200
