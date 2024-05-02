@@ -53,4 +53,5 @@ Rails.application.configure do
   config.logstasher.enabled = true
   config.logstasher.suppress_app_log = false
   config.logstasher.job_enabled = false
+  config.hosts << ".localtest.me"
 end

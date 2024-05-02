@@ -30,7 +30,7 @@ class FranceConnect::DataFetcherThroughAccessToken::MakeRequest < MakeRequest::P
   end
 
   def call_france_connect_in_staging?
-    Rails.env.staging? && context.mocked_data.nil?
+    (Rails.env.staging? || Rails.env.development?) && context.mocked_data.nil?
   end
 
   def france_connect_check_token_url

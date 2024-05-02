@@ -38,7 +38,7 @@ module Cacheable
 
   def bypass_cache?
     request.headers['Cache-Control'] == 'no-cache' ||
-      Rails.env.staging?
+      Rails.env.staging? || Rails.env.development?
   end
 
   def mark_response_as_cached_in_response!
