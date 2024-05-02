@@ -263,9 +263,9 @@
   {
     "nom": "MARTIN",
     "prenom": "Jacques",
-    "dateDeNaissance": "2004-01-01",
+    "dateDeNaissance": "2024-01-01",
     "sexe": "m",
-    "lieuDeNaissance": "75002"
+    "lieuDeNaissance": "75102"
   }
   ```
 
@@ -283,8 +283,8 @@
     "dateNaissance": "2004-01-01",
     "inscriptions": [
       {
-        "dateDebutInscription": "2023-07-01",
-        "dateFinInscription": "2024-08-31",
+        "dateDebutInscription": "2024-10-01",
+        "dateFinInscription": "2025-08-31",
         "statut": "inscrit",
         "codeCommune": "92000",
         "etablissement": {
@@ -305,7 +305,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nom=MARTIN' -d 'prenom=Jacques' -d 'dateDeNaissance=2004-01-01' -d 'sexe=m' -d 'lieuDeNaissance=75002' \
+    -G -d 'nom=MARTIN' -d 'prenom=Jacques' -d 'dateDeNaissance=2024-01-01' -d 'sexe=m' -d 'lieuDeNaissance=75102' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
   ```
 
