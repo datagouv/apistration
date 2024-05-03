@@ -8,4 +8,8 @@ class APIParticulier::V2::CNAV::QuotientFamilialV2Controller < APIParticulier::V
   def retriever
     ::CNAV::QuotientFamilialV2
   end
+
+  def expires_in
+    24.hours
+  end
 end

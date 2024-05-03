@@ -1,6 +1,6 @@
 class APIParticulier::V2::CNAF::QuotientFamilialController < APIParticulierController
   def show
-    organizer = retrieve_payload_data(::CNAF::QuotientFamilial)
+    organizer = retrieve_payload_data(::CNAF::QuotientFamilial, cache: true, expires_in: 24.hours)
 
     if organizer.success?
       render json: serialize_data(organizer),
