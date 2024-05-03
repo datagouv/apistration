@@ -263,7 +263,7 @@
   {
     "nom": "MARTIN",
     "prenom": "Jacques",
-    "dateDeNaissance": "2024-01-01",
+    "dateDeNaissance": "2004-01-01",
     "sexe": "m",
     "lieuDeNaissance": "75102"
   }
@@ -305,7 +305,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nom=MARTIN' -d 'prenom=Jacques' -d 'dateDeNaissance=2024-01-01' -d 'sexe=m' -d 'lieuDeNaissance=75102' \
+    -G -d 'nom=MARTIN' -d 'prenom=Jacques' -d 'dateDeNaissance=2004-01-01' -d 'sexe=m' -d 'lieuDeNaissance=75102' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
   ```
 
