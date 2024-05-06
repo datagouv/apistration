@@ -10,7 +10,10 @@ RSpec.describe INSEE::Successions, type: :retriever_organizer do
   context 'with a valid siret' do
     let(:siret) { sirets_insee_v3[:successions] }
 
-    before { stub_insee_successions_make_request(siret:) }
+    before do
+      stub_insee_authenticate
+      stub_insee_successions_make_request(siret:)
+    end
 
     it { is_expected.to be_a_success }
 

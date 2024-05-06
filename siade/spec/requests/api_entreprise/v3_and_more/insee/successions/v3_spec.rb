@@ -25,7 +25,10 @@ RSpec.describe 'INSEE: Successions', api: :entreprise, type: %i[request swagger]
 
       describe 'with valid token and mandatory params', :valid do
         response '200', 'Successions trouvées' do
-          before { stub_insee_successions_make_request(siret:) }
+          before do
+            stub_insee_authenticate
+            stub_insee_successions_make_request(siret:)
+          end
 
           description SwaggerData.get('insee.successions.description')
 
@@ -42,7 +45,10 @@ RSpec.describe 'INSEE: Successions', api: :entreprise, type: %i[request swagger]
           response '404', 'Non trouvée' do
             let(:siret) { sirets_insee_v3[:successions] }
 
-            before { stub_insee_successions_not_found(siret:) }
+            before do
+              stub_insee_authenticate
+              stub_insee_successions_not_found(siret:)
+            end
 
             schema '$ref' => '#/components/schemas/Error'
 
