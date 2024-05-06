@@ -16927,6 +16927,12 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/Error"
+        '451':
+          description: Indisponible pour des raisons légales
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '502':
           description: Erreur du fournisseur
           content:

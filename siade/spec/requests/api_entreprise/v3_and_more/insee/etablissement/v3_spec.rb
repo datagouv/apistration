@@ -49,6 +49,19 @@ RSpec.describe 'INSEE: Etablissement', api: :entreprise, type: %i[request swagge
             run_test!
           end
 
+          response '451', 'Indisponible pour des raisons légales' do
+            let(:siren) { sirens_insee_v3[:active_GE] }
+
+            stubbed_organizer_error(
+              INSEE::Etablissement,
+              UnavailableForLegalReasonsError.new('INSEE', 'whatever')
+            )
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
+          end
+
           common_provider_errors_request('INSEE', INSEE::Etablissement)
           common_network_error_request('INSEE', INSEE::Etablissement)
         end
