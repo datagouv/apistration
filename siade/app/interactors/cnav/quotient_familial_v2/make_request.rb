@@ -18,6 +18,6 @@ class CNAV::QuotientFamilialV2::MakeRequest < CNAV::MakeRequest
   private
 
   def mois_demande
-    Kernel.format('%<month>02d', month: context.params[:mois].presence || Time.zone.today.month)
+    Kernel.format('%<month>02d', month: context.params[:mois].presence&.to_i || Time.zone.today.month)
   end
 end

@@ -17,7 +17,7 @@ RSpec.describe CNAV::QuotientFamilialV2::MakeRequest, type: :make_request do
         code_insee_lieu_de_naissance: '17300',
         recipient: valid_siret,
         annee: 2024,
-        mois: 1,
+        mois:,
         request_id:
       }
     end
@@ -32,7 +32,7 @@ RSpec.describe CNAV::QuotientFamilialV2::MakeRequest, type: :make_request do
           listePrenoms: 'JEAN-PASCAL',
           nomNaissance: 'CHAMPION',
           anneeDemandee: 2024,
-          moisDemande: '01'
+          moisDemande: '08'
         },
         headers: {
           'Content-Type' => 'application/json',
@@ -47,6 +47,20 @@ RSpec.describe CNAV::QuotientFamilialV2::MakeRequest, type: :make_request do
     end
 
     context 'when performing a request' do
+      let(:mois) { 8 }
+
+      it { is_expected.to be_a_success }
+      its(:response) { is_expected.to be_a(Net::HTTPOK) }
+
+      it 'calls url with valid body, which interpolates params' do
+        make_call
+        expect(stubbed_request).to have_been_requested
+      end
+    end
+
+    context 'when month is prefixed by 0' do
+      let(:mois) { '08' }
+
       it { is_expected.to be_a_success }
       its(:response) { is_expected.to be_a(Net::HTTPOK) }
 
