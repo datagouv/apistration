@@ -33,7 +33,7 @@ class APIParticulier::MESRI::StudentStatus::V2 < APIParticulier::V2BaseSerialize
   private
 
   def handle_inscription_etudiant_scope!(initial_inscription, final_inscription)
-    return unless scope?(:mesri_inscription_etudiant) && initial_inscription[:statut] == 'inscrit' && initial_inscription[:regime] == 'formation initiale'
+    return unless scope?(:mesri_inscription_etudiant) && initial_inscription[:statut] == 'inscrit' && formation_initiale_regime.include?(initial_inscription[:regime])
 
     final_inscription.merge!(
       statut: 'inscrit',
@@ -44,7 +44,7 @@ class APIParticulier::MESRI::StudentStatus::V2 < APIParticulier::V2BaseSerialize
   end
 
   def handle_inscription_autre_scope!(initial_inscription, final_inscription)
-    return unless scope?(:mesri_inscription_autre) && initial_inscription[:statut] == 'inscrit' && initial_inscription[:regime] == 'formation continue'
+    return unless scope?(:mesri_inscription_autre) && initial_inscription[:statut] == 'inscrit' && formation_continue_regime.include?(initial_inscription[:regime])
 
     final_inscription.merge!(
       statut: 'inscrit',
@@ -71,5 +71,22 @@ class APIParticulier::MESRI::StudentStatus::V2 < APIParticulier::V2BaseSerialize
     else
       Date.parse(date).to_s
     end
+  end
+
+  def formation_initiale_regime
+    [
+      'formation initiale',
+      'formation initiale hors apprentissage',
+      'reprise d\'études non financée sans convention',
+      'contrat d\'apprentissage'
+    ]
+  end
+
+  def formation_continue_regime
+    [
+      'formation continue',
+      'formation continue hors contrat professionnel',
+      'contrat de professionnalisation'
+    ]
   end
 end

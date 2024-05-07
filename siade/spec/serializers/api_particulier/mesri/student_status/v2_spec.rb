@@ -8,10 +8,8 @@ RSpec.describe APIParticulier::MESRI::StudentStatus::V2, type: :serializer do
   let(:response) { OpenStruct.new(body:) }
   # rubocop:enable Style/OpenStructUse
 
-  let(:all_mesri_scopes) { %w[mesri_identifiant mesri_identite mesri_inscription_etudiant mesri_inscription_autre mesri_admission mesri_etablissements] }
-
   context 'with all mesri scopes' do
-    let(:scopes) { all_mesri_scopes }
+    let(:scopes) { %w[mesri_identifiant mesri_identite mesri_inscription_etudiant mesri_inscription_autre mesri_admission mesri_etablissements] }
 
     context 'when resource has inscrit status' do
       let(:body) { read_payload_file('mesri/student_status/with_ine_valid_response.json') }
@@ -37,6 +35,30 @@ RSpec.describe APIParticulier::MESRI::StudentStatus::V2, type: :serializer do
         end
       end
       # rubocop:enable RSpec/IteratedExpectation
+    end
+  end
+
+  context 'with mesri_inscription_etudiant scope' do
+    let(:scopes) { %w[mesri_identifiant mesri_identite mesri_inscription_etudiant mesri_etablissements] }
+
+    context 'when resource has inscrit status' do
+      let(:body) { read_payload_file('mesri/student_status/with_ine_valid_and_new_regime.json') }
+
+      it 'has formation initiale regime' do
+        expect(serialized_resource[:inscriptions][0][:regime]).to eq('formation initiale')
+      end
+    end
+  end
+
+  context 'with mesri_inscription_autre scope' do
+    let(:scopes) { %w[mesri_identifiant mesri_identite mesri_inscription_autre mesri_etablissements] }
+
+    context 'when resource has inscrit status' do
+      let(:body) { read_payload_file('mesri/student_status/with_ine_valid_and_new_regime.json') }
+
+      it 'filters out inscriptions when scope is not correct' do
+        expect(serialized_resource[:inscriptions][0]).to be_empty
+      end
     end
   end
 end
