@@ -1080,39 +1080,50 @@ insee:
 
   successions:
     title: "Liens de succession"
-    description: "Informations sur les liens de succession entre les établissements."
+    description: "Liste des prédécesseurs et successeurs d'un établissement."
     tags:
       - "Informations générales"
     attributes:
       predecesseurs:
         title: "Établissements prédécesseurs"
+        description: "Liste des établissements prédécesseurs de l'établissement appelé."
         type: "array"
         items:
           type: "object"
-          properties: &lien_succession_properties
+          properties:
             siret:
-              title: "Siret de l'établissement prédécesseur/successeur"
+              title: "SIRET"
               type: "string"
               example: "30613890001294"
-              description: "Siret de l'établissement prédécesseur ou successeur"
-            date_succession:
-              title: "Date de succession"
+              description: "SIRET de l'établissement prédécesseur."
+            date_succession: &date_succession_properties
+              title: "Date d'effet du lien de succession"
               type: "date"
               example: "2021-10-15"
-              description: "Date de succession entre les établissements"
-            transfert_siege:
+              description: "Date à laquelle la succession a eu lieu."
+            transfert_siege: &transfert_siege_properties
               title: "Transfert de siège"
               type: "boolean"
               example: true
-              description: "Indique si la succession est un transfert de siège."
-            continuite_economique:
+              description: "Indique si la succession est un transfert de siège. Pour en savoir plus, consulter cette rubrique : http://entreprise.api.gouv.fr/catalogue/insee/successions#definition-transfert-siege."
+            continuite_economique: &continuite_economique_properties
               title: "Continuité économique"
               type: "boolean"
               example: true
-              description: "Indique si la succession est une continuité économique."
+              description: "Indique si la succession est une continuité économique. Pour en savoir plus, consulter cette rubrique : http://entreprise.api.gouv.fr/catalogue/insee/successions#definition-continuite-economique."
       successeurs:
         title: "Établissements successeurs"
+        description: "Liste des établissements successeurs de l'établissement appelé."
         type: "array"
         items:
           type: "object"
-          properties: *lien_succession_properties
+          properties:
+            siret:
+              title: "SIRET"
+              type: "string"
+              example: "30613890001294"
+              description: "SIRET de l'établissement successeur."
+            date_succession: *date_succession_properties
+            transfert_siege: *transfert_siege_properties
+            continuite_economique: *continuite_economique_properties
+
