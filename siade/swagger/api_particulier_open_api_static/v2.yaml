@@ -635,10 +635,8 @@ paths:
                           type: string
                           description: |
                             Régime de formation de l'étudiant. Il existe deux modalités différentes :
-
-                              - formation initiale : Ce champ indique que l'étudiant est en formation initiale sous statut étudiant (y compris dans le cadre de reprise d’études) ou en en apprentissage ;
-
-                              - formation continue : Ce champ indique que l'étudiant est en formation continue ou en contrat de professionalisation."
+                            - formation initiale : Ce champ indique que l'étudiant est en formation initiale, soit dans une des situations suivantes : formation initiale classique, reprise d'études non financée sans convention et contrat d'apprentissage ;
+                            - formation continue : Ce champ indique que l'étudiant est en formation continue ou en contrat de professionalisation."
                           example: formation initiale
                           enum:
                             - formation initiale
