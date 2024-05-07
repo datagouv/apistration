@@ -21182,7 +21182,7 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Informations sur les liens de succession entre les établissements.
+      description: Liste des prédécesseurs et successeurs d'un établissement.
       responses:
         '401':
           description: Non autorisé
@@ -21314,62 +21314,68 @@ paths:
                     properties:
                       predecesseurs:
                         title: Établissements prédécesseurs
+                        description: Liste des établissements prédécesseurs de l'établissement
+                          appelé.
                         type: array
                         items:
                           type: object
                           properties:
                             siret:
-                              title: Siret de l'établissement prédécesseur/successeur
+                              title: SIRET
                               type: string
                               example: '30613890001294'
-                              description: Siret de l'établissement prédécesseur ou
-                                successeur
+                              description: SIRET de l'établissement prédécesseur.
                             date_succession:
-                              title: Date de succession
+                              title: Date d'effet du lien de succession
                               type: date
                               example: '2021-10-15'
-                              description: Date de succession entre les établissements
+                              description: Date à laquelle la succession a eu lieu.
                             transfert_siege:
                               title: Transfert de siège
                               type: boolean
                               example: true
-                              description: Indique si la succession est un transfert
-                                de siège.
+                              description: 'Indique si la succession est un transfert
+                                de siège. Pour en savoir plus, consulter cette rubrique
+                                : http://entreprise.api.gouv.fr/catalogue/insee/successions#definition-transfert-siege.'
                             continuite_economique:
                               title: Continuité économique
                               type: boolean
                               example: true
-                              description: Indique si la succession est une continuité
-                                économique.
+                              description: 'Indique si la succession est une continuité
+                                économique. Pour en savoir plus, consulter cette rubrique
+                                : http://entreprise.api.gouv.fr/catalogue/insee/successions#definition-continuite-economique.'
                       successeurs:
                         title: Établissements successeurs
+                        description: Liste des établissements successeurs de l'établissement
+                          appelé.
                         type: array
                         items:
                           type: object
                           properties:
                             siret:
-                              title: Siret de l'établissement prédécesseur/successeur
+                              title: SIRET
                               type: string
                               example: '30613890001294'
-                              description: Siret de l'établissement prédécesseur ou
-                                successeur
+                              description: SIRET de l'établissement successeur.
                             date_succession:
-                              title: Date de succession
+                              title: Date d'effet du lien de succession
                               type: date
                               example: '2021-10-15'
-                              description: Date de succession entre les établissements
+                              description: Date à laquelle la succession a eu lieu.
                             transfert_siege:
                               title: Transfert de siège
                               type: boolean
                               example: true
-                              description: Indique si la succession est un transfert
-                                de siège.
+                              description: 'Indique si la succession est un transfert
+                                de siège. Pour en savoir plus, consulter cette rubrique
+                                : http://entreprise.api.gouv.fr/catalogue/insee/successions#definition-transfert-siege.'
                             continuite_economique:
                               title: Continuité économique
                               type: boolean
                               example: true
-                              description: Indique si la succession est une continuité
-                                économique.
+                              description: 'Indique si la succession est une continuité
+                                économique. Pour en savoir plus, consulter cette rubrique
+                                : http://entreprise.api.gouv.fr/catalogue/insee/successions#definition-continuite-economique.'
                     required:
                     - predecesseurs
                     - successeurs
