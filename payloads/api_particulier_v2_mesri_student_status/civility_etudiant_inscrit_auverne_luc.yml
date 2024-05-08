@@ -1,0 +1,29 @@
+---
+description: 'Étudiant inscrit'
+params:
+  nom: "AUVERNE"
+  prenom: "Luc"
+  dateDeNaissance: "2006-02-01"
+  sexe: "m"
+  lieuDeNaissance: "95018"
+status: 200
+payload: |-
+  {
+    "ine": "1234227890Y",
+    "nomFamille": " AUVERNE",
+    "prenom": "Luc",
+    "dateNaissance": "2006-02-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-01-01",
+        "dateFinInscription": "2025-08-31",
+        "statut": "inscrit",
+        "codeCommune": "78000",
+        "etablissement": {
+          "uai": "0331034W",
+          "nomEtablissement": " Université de Versailles"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

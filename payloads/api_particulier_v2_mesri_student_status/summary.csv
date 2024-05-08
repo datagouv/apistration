@@ -52,6 +52,44 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
+,Étudiant admis,"{""nom"":""Avérone"",""prenom"":""Denis"",""dateDeNaissance"":""2005-08-01"",""sexe"":""m"",""lieuDeNaissance"":""78646""}",200,"{
+  ""ine"": ""1234522890Y"",
+  ""nomFamille"": ""Avérone"",
+  ""prenom"": ""Denis"",
+  ""dateNaissance"": ""2005-08-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-07-31"",
+      ""statut"": ""admis"",
+      ""codeCommune"": ""93430"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": ""Université Sorbonne Paris Nord""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""CALIDONE"",""prenom"":""Lola"",""dateDeNaissance"":""2005-01-01"",""sexe"":""f"",""lieuDeNaissance"":""75109""}",200,"{
+  ""ine"": ""1234567811Y"",
+  ""nomFamille"": ""CALIDONE"",
+  ""prenom"": ""Lola"",
+  ""dateNaissance"": ""2005-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-07-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""92000"",
+      ""etablissement"": {
+        ""uai"": ""0334523W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
 ,Étudiant inscrit,"{""nom"":""MARTIN"",""prenom"":""Jacques"",""dateDeNaissance"":""2004-01-01"",""sexe"":""m"",""lieuDeNaissance"":""75102""}",200,"{
   ""ine"": ""1234567890Y"",
   ""nomFamille"": ""Martin"",
@@ -87,6 +125,253 @@ Titre,Description,Paramètres,Status,Réponse
         ""nomEtablissement"": ""Université Paris Saclay""
       },
       ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""BRETAGNE"",""prenom"":""Lisa"",""dateDeNaissance"":""2005-06-01"",""sexe"":""f"",""lieuDeNaissance"":""93008""}",200,"{
+  ""ine"": ""1296522890Y"",
+  ""nomFamille"": ""BRETAGNE"",
+  ""prenom"": ""Lisa"",
+  ""dateNaissance"": ""2005-06-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2023-09-01"",
+      ""dateFinInscription"": ""2024-07-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""93430"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": "" Université Sorbonne Paris Nord""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""AUVERNE"",""prenom"":""Luc"",""dateDeNaissance"":""2006-02-01"",""sexe"":""m"",""lieuDeNaissance"":""95018""}",200,"{
+  ""ine"": ""1234227890Y"",
+  ""nomFamille"": "" AUVERNE"",
+  ""prenom"": ""Luc"",
+  ""dateNaissance"": ""2006-02-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-01-01"",
+      ""dateFinInscription"": ""2025-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""78000"",
+      ""etablissement"": {
+        ""uai"": ""0331034W"",
+        ""nomEtablissement"": "" Université de Versailles""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""BECKER"",""prenom"":""VALIRIANNE"",""dateDeNaissance"":""2000-01-01"",""sexe"":""f"",""lieuDeNaissance"":""75109""}",200,"{
+  ""ine"": ""1274451233Y"",
+  ""nomFamille"": ""BECKER"",
+  ""prenom"": ""VALIRIANNE"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-01-01"",
+      ""dateFinInscription"": ""2025-11-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75006"",
+      ""etablissement"": {
+        ""uai"": ""0292973W"",
+        ""nomEtablissement"": ""Université Paris Cité""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""CLERMONT"",""prenom"":""Louis"",""dateDeNaissance"":""2000-01-01"",""sexe"":""m"",""lieuDeNaissance"":""78646""}",200,"{
+  ""ine"": ""1884567890Y"",
+  ""nomFamille"": ""CLERMONT"",
+  ""prenom"": ""Louis"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-10-01"",
+      ""dateFinInscription"": ""2025-09-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""78100"",
+      ""etablissement"": {
+        ""uai"": ""0309023W"",
+        ""nomEtablissement"": "" Sciences Po""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""IBARRA"",""prenom"":""JENNYFER"",""dateDeNaissance"":""2004-01-01"",""sexe"":""f"",""lieuDeNaissance"":""75109""}",200,"{
+  ""ine"": ""1279955890Y"",
+  ""nomFamille"": ""IBARRA"",
+  ""prenom"": ""JENNYFER"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2025-01-01"",
+      ""dateFinInscription"": ""2025-12-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0361113W"",
+        ""nomEtablissement"": ""ESCG""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""IZAK"",""prenom"":""John"",""dateDeNaissance"":""2000-01-01"",""sexe"":""m"",""lieuDeNaissance"":""75109""}",200,"{
+  ""ine"": ""1277533890Y"",
+  ""nomFamille"": ""IZAK"",
+  ""prenom"": ""John"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-07-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0331313W"",
+        ""nomEtablissement"": ""ESCG""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""LETERIEN"",""prenom"":""Clémentine"",""dateDeNaissance"":""2000-01-01"",""sexe"":""f"",""lieuDeNaissance"":"" 99404""}",200,"{
+  ""ine"": ""1274451233Y"",
+  ""nomFamille"": ""LETERIEN"",
+  ""prenom"": ""Clémentine"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-01-01"",
+      ""dateFinInscription"": ""2025-11-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75006"",
+      ""etablissement"": {
+        ""uai"": ""0292973W"",
+        ""nomEtablissement"": ""Université Paris Cité""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""DE JEAN"",""prenom"":""LUC"",""dateDeNaissance"":""2000-01-01"",""sexe"":""m"",""lieuDeNaissance"":""99352""}",200,"{
+  ""ine"": ""1274451233Y"",
+  ""nomFamille"": ""DE JEAN"",
+  ""prenom"": ""LUC"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-01-01"",
+      ""dateFinInscription"": ""2025-11-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75006"",
+      ""etablissement"": {
+        ""uai"": ""0292973W"",
+        ""nomEtablissement"": ""Université Paris Cité""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""MAYVILLE"",""prenom"":""TINA"",""dateDeNaissance"":""2000-01-01"",""sexe"":""f"",""lieuDeNaissance"":""75109""}",200,"{
+  ""ine"": ""1277555890Y"",
+  ""nomFamille"": ""MAYVILLE"",
+  ""prenom"": ""Tina"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-07-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0366313W"",
+        ""nomEtablissement"": ""ESCG""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""MEDIZ"",""prenom"":""Louis"",""dateDeNaissance"":""2000-01-01"",""sexe"":""m"",""lieuDeNaissance"":""75109""}",200,"{
+  ""ine"": ""1274451290Y"",
+  ""nomFamille"": ""MEDIZ"",
+  ""prenom"": ""Louis"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-07-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75006"",
+      ""etablissement"": {
+        ""uai"": ""0292613W"",
+        ""nomEtablissement"": ""Université Paris Cité""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Etudiant inscrit,"{""nom"":""MONT-PARRAIN"",""prenom"":""Lisa"",""dateDeNaissance"":""2000-01-01"",""sexe"":""f"",""lieuDeNaissance"":"" 99109""}",200,"{
+  ""ine"": ""1274451233Y"",
+  ""nomFamille"": ""MONT-PARRAIN"",
+  ""prenom"": ""Lisa"",
+  ""dateNaissance"": ""2000-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-01-01"",
+      ""dateFinInscription"": ""2025-11-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75006"",
+      ""etablissement"": {
+        ""uai"": ""0292973W"",
+        ""nomEtablissement"": ""Université Paris Cité""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""YOLAN"",""prenom"":""JOHN"",""dateDeNaissance"":""2007-01-01"",""sexe"":""f"",""lieuDeNaissance"":""75109""}",200,"{
+  ""ine"": ""1274455891Y"",
+  ""nomFamille"": ""YOLAN"",
+  ""prenom"": ""JOHN"",
+  ""dateNaissance"": ""2007-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-10-01"",
+      ""dateFinInscription"": ""2025-09-30"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""75009"",
+      ""etablissement"": {
+        ""uai"": ""0320613W"",
+        ""nomEtablissement"": ""ESCG""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""COLONEL"",""prenom"":""Jean"",""dateDeNaissance"":""2005-08-01"",""sexe"":""m"",""lieuDeNaissance"":""78646""}",200,"{
+  ""ine"": ""1296522890Y"",
+  ""nomFamille"": ""COLONEL"",
+  ""prenom"": ""Jean"",
+  ""dateNaissance"": ""2005-08-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-07-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""93430"",
+      ""etablissement"": {
+        ""uai"": ""0331023W"",
+        ""nomEtablissement"": "" Université Sorbonne Paris Nord""
+      },
+      ""regime"": ""formation continue""
     }
   ]
 }"

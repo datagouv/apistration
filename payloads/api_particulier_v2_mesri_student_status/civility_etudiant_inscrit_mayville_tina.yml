@@ -1,0 +1,29 @@
+---
+description: 'Étudiant inscrit'
+params:
+  nom: "MAYVILLE"
+  prenom: "TINA"
+  dateDeNaissance: "2000-01-01"
+  sexe: "f"
+  lieuDeNaissance: "75109"
+status: 200
+payload: |-
+  {
+    "ine": "1277555890Y",
+    "nomFamille": "MAYVILLE",
+    "prenom": "Tina",
+    "dateNaissance": "2000-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-09-01",
+        "dateFinInscription": "2025-07-31",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0366313W",
+          "nomEtablissement": "ESCG"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

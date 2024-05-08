@@ -1,0 +1,29 @@
+---
+description: 'Étudiant inscrit'
+params:
+  nom: "COLONEL"
+  prenom: "Jean"
+  dateDeNaissance: "2005-08-01"
+  sexe: "m"
+  lieuDeNaissance: "78646"
+status: 200
+payload: |-
+  {
+    "ine": "1296522890Y",
+    "nomFamille": "COLONEL",
+    "prenom": "Jean",
+    "dateNaissance": "2005-08-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-09-01",
+        "dateFinInscription": "2025-07-31",
+        "statut": "inscrit",
+        "codeCommune": "93430",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": " Université Sorbonne Paris Nord"
+        },
+        "regime": "formation continue"
+      }
+    ]
+  }

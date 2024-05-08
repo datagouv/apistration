@@ -1,0 +1,29 @@
+---
+description: 'Étudiant inscrit'
+params:
+  nom: "DE JEAN"
+  prenom: "LUC"
+  dateDeNaissance: "2000-01-01"
+  sexe: "m"
+  lieuDeNaissance: "99352"
+status: 200
+payload: |-
+  {
+    "ine": "1274451233Y",
+    "nomFamille": "DE JEAN",
+    "prenom": "LUC",
+    "dateNaissance": "2000-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-01-01",
+        "dateFinInscription": "2025-11-30",
+        "statut": "inscrit",
+        "codeCommune": "75006",
+        "etablissement": {
+          "uai": "0292973W",
+          "nomEtablissement": "Université Paris Cité"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
