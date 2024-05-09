@@ -51,6 +51,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [Données établissement en open data](api_entreprise_v3_insee_etablissements_diffusables) (`/v3/insee/sirene/etablissements/diffusibles/{siret}`)
 * [Données siège social en open data](api_entreprise_v3_insee_sieges_diffusables_unites_legales) (`/v3/insee/sirene/unites_legales/diffusibles/{siren}/siege_social`)
 * [Données siège social](api_entreprise_v3_insee_sieges_unites_legales) (`/v3/insee/sirene/unites_legales/{siren}/siege_social`)
+* Liens de succession (`/v3/insee/sirene/etablissements/{siret}/successions`)
 * [Données unité légale](api_entreprise_v3_insee_unites_legales) (`/v3/insee/sirene/unites_legales/{siren}`)
 * [Données unité légale en open data](api_entreprise_v3_insee_unites_legales_diffusables) (`/v3/insee/sirene/unites_legales/diffusibles/{siren}`)
 * Divers documents d'une association (`/v3/ministere_interieur/rna/associations/{siret_or_rna}/documents`)

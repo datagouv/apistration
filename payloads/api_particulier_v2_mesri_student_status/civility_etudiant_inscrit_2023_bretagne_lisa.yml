@@ -1,0 +1,29 @@
+---
+description: 'Étudiant inscrit'
+params:
+  nom: "BRETAGNE"
+  prenom: "Lisa"
+  dateDeNaissance: "2005-06-01"
+  sexe: "f"
+  lieuDeNaissance: "93008"
+status: 200
+payload: |-
+  {
+    "ine": "1296522890Y",
+    "nomFamille": "BRETAGNE",
+    "prenom": "Lisa",
+    "dateNaissance": "2005-06-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2023-09-01",
+        "dateFinInscription": "2024-07-31",
+        "statut": "inscrit",
+        "codeCommune": "93430",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": " Université Sorbonne Paris Nord"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

@@ -250,6 +250,128 @@
 
   </p>
   </details>
+* [civility_etudiant_admis_averone_denis.yml](civility_etudiant_admis_averone_denis.yml)
+
+  Status `200`
+
+  Étudiant admis
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "Avérone",
+    "prenom": "Denis",
+    "dateDeNaissance": "2005-08-01",
+    "sexe": "m",
+    "lieuDeNaissance": "78646"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234522890Y",
+    "nomFamille": "Avérone",
+    "prenom": "Denis",
+    "dateNaissance": "2005-08-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-09-01",
+        "dateFinInscription": "2025-07-31",
+        "statut": "admis",
+        "codeCommune": "93430",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": "Université Sorbonne Paris Nord"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=Av%C3%A9rone' -d 'prenom=Denis' -d 'dateDeNaissance=2005-08-01' -d 'sexe=m' -d 'lieuDeNaissance=78646' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_etudiant_inscrit-calidone-lola.yml](civility_etudiant_inscrit-calidone-lola.yml)
+
+  Status `200`
+
+  Étudiant inscrit
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "CALIDONE",
+    "prenom": "Lola",
+    "dateDeNaissance": "2005-01-01",
+    "sexe": "f",
+    "lieuDeNaissance": "75109"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567811Y",
+    "nomFamille": "CALIDONE",
+    "prenom": "Lola",
+    "dateNaissance": "2005-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-09-01",
+        "dateFinInscription": "2025-07-31",
+        "statut": "inscrit",
+        "codeCommune": "92000",
+        "etablissement": {
+          "uai": "0334523W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=CALIDONE' -d 'prenom=Lola' -d 'dateDeNaissance=2005-01-01' -d 'sexe=f' -d 'lieuDeNaissance=75109' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
 * [civility_etudiant_inscrit.yml](civility_etudiant_inscrit.yml)
 
   Status `200`
@@ -367,6 +489,799 @@
   ```bash
   curl -H "X-Api-Key: $token" \
     -G -d 'nom=SOULI' -d 'prenom=Asma' -d 'dateDeNaissance=2002-01-01' -d 'sexe=m' -d 'lieuDeNaissance=75002' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_etudiant_inscrit_2023_bretagne_lisa.yml](civility_etudiant_inscrit_2023_bretagne_lisa.yml)
+
+  Status `200`
+
+  Étudiant inscrit
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "BRETAGNE",
+    "prenom": "Lisa",
+    "dateDeNaissance": "2005-06-01",
+    "sexe": "f",
+    "lieuDeNaissance": "93008"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1296522890Y",
+    "nomFamille": "BRETAGNE",
+    "prenom": "Lisa",
+    "dateNaissance": "2005-06-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2023-09-01",
+        "dateFinInscription": "2024-07-31",
+        "statut": "inscrit",
+        "codeCommune": "93430",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": " Université Sorbonne Paris Nord"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=BRETAGNE' -d 'prenom=Lisa' -d 'dateDeNaissance=2005-06-01' -d 'sexe=f' -d 'lieuDeNaissance=93008' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_etudiant_inscrit_auverne_luc.yml](civility_etudiant_inscrit_auverne_luc.yml)
+
+  Status `200`
+
+  Étudiant inscrit
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "AUVERNE",
+    "prenom": "Luc",
+    "dateDeNaissance": "2006-02-01",
+    "sexe": "m",
+    "lieuDeNaissance": "95018"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234227890Y",
+    "nomFamille": " AUVERNE",
+    "prenom": "Luc",
+    "dateNaissance": "2006-02-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-01-01",
+        "dateFinInscription": "2025-08-31",
+        "statut": "inscrit",
+        "codeCommune": "78000",
+        "etablissement": {
+          "uai": "0331034W",
+          "nomEtablissement": " Université de Versailles"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=AUVERNE' -d 'prenom=Luc' -d 'dateDeNaissance=2006-02-01' -d 'sexe=m' -d 'lieuDeNaissance=95018' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_etudiant_inscrit_becker_valirianne.yml](civility_etudiant_inscrit_becker_valirianne.yml)
+
+  Status `200`
+
+  Étudiant inscrit
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "BECKER",
+    "prenom": "VALIRIANNE",
+    "dateDeNaissance": "2000-01-01",
+    "sexe": "f",
+    "lieuDeNaissance": "75109"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1274451233Y",
+    "nomFamille": "BECKER",
+    "prenom": "VALIRIANNE",
+    "dateNaissance": "2000-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-01-01",
+        "dateFinInscription": "2025-11-30",
+        "statut": "inscrit",
+        "codeCommune": "75006",
+        "etablissement": {
+          "uai": "0292973W",
+          "nomEtablissement": "Université Paris Cité"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=BECKER' -d 'prenom=VALIRIANNE' -d 'dateDeNaissance=2000-01-01' -d 'sexe=f' -d 'lieuDeNaissance=75109' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_etudiant_inscrit_clermont_louis.yml](civility_etudiant_inscrit_clermont_louis.yml)
+
+  Status `200`
+
+  Étudiant inscrit
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "CLERMONT",
+    "prenom": "Louis",
+    "dateDeNaissance": "2000-01-01",
+    "sexe": "m",
+    "lieuDeNaissance": "78646"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1884567890Y",
+    "nomFamille": "CLERMONT",
+    "prenom": "Louis",
+    "dateNaissance": "2000-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-10-01",
+        "dateFinInscription": "2025-09-30",
+        "statut": "inscrit",
+        "codeCommune": "78100",
+        "etablissement": {
+          "uai": "0309023W",
+          "nomEtablissement": " Sciences Po"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=CLERMONT' -d 'prenom=Louis' -d 'dateDeNaissance=2000-01-01' -d 'sexe=m' -d 'lieuDeNaissance=78646' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_etudiant_inscrit_ibarra_jennyfer.yml](civility_etudiant_inscrit_ibarra_jennyfer.yml)
+
+  Status `200`
+
+  Étudiant inscrit
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "IBARRA",
+    "prenom": "JENNYFER",
+    "dateDeNaissance": "2004-01-01",
+    "sexe": "f",
+    "lieuDeNaissance": "75109"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1279955890Y",
+    "nomFamille": "IBARRA",
+    "prenom": "JENNYFER",
+    "dateNaissance": "2000-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-01-01",
+        "dateFinInscription": "2025-12-31",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0361113W",
+          "nomEtablissement": "ESCG"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=IBARRA' -d 'prenom=JENNYFER' -d 'dateDeNaissance=2004-01-01' -d 'sexe=f' -d 'lieuDeNaissance=75109' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_etudiant_inscrit_izak_john.yml](civility_etudiant_inscrit_izak_john.yml)
+
+  Status `200`
+
+  Étudiant inscrit
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "IZAK",
+    "prenom": "John",
+    "dateDeNaissance": "2000-01-01",
+    "sexe": "m",
+    "lieuDeNaissance": "75109"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1277533890Y",
+    "nomFamille": "IZAK",
+    "prenom": "John",
+    "dateNaissance": "2000-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-09-01",
+        "dateFinInscription": "2025-07-31",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0331313W",
+          "nomEtablissement": "ESCG"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=IZAK' -d 'prenom=John' -d 'dateDeNaissance=2000-01-01' -d 'sexe=m' -d 'lieuDeNaissance=75109' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_etudiant_inscrit_leterien_clementine.yml](civility_etudiant_inscrit_leterien_clementine.yml)
+
+  Status `200`
+
+  Étudiant inscrit
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "LETERIEN",
+    "prenom": "Clémentine",
+    "dateDeNaissance": "2000-01-01",
+    "sexe": "f",
+    "lieuDeNaissance": " 99404"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1274451233Y",
+    "nomFamille": "LETERIEN",
+    "prenom": "Clémentine",
+    "dateNaissance": "2000-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-01-01",
+        "dateFinInscription": "2025-11-30",
+        "statut": "inscrit",
+        "codeCommune": "75006",
+        "etablissement": {
+          "uai": "0292973W",
+          "nomEtablissement": "Université Paris Cité"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=LETERIEN' -d 'prenom=Cl%C3%A9mentine' -d 'dateDeNaissance=2000-01-01' -d 'sexe=f' -d 'lieuDeNaissance=+99404' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_etudiant_inscrit_luc_de_jean.yml](civility_etudiant_inscrit_luc_de_jean.yml)
+
+  Status `200`
+
+  Étudiant inscrit
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "DE JEAN",
+    "prenom": "LUC",
+    "dateDeNaissance": "2000-01-01",
+    "sexe": "m",
+    "lieuDeNaissance": "99352"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1274451233Y",
+    "nomFamille": "DE JEAN",
+    "prenom": "LUC",
+    "dateNaissance": "2000-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-01-01",
+        "dateFinInscription": "2025-11-30",
+        "statut": "inscrit",
+        "codeCommune": "75006",
+        "etablissement": {
+          "uai": "0292973W",
+          "nomEtablissement": "Université Paris Cité"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=DE+JEAN' -d 'prenom=LUC' -d 'dateDeNaissance=2000-01-01' -d 'sexe=m' -d 'lieuDeNaissance=99352' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_etudiant_inscrit_mayville_tina.yml](civility_etudiant_inscrit_mayville_tina.yml)
+
+  Status `200`
+
+  Étudiant inscrit
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "MAYVILLE",
+    "prenom": "TINA",
+    "dateDeNaissance": "2000-01-01",
+    "sexe": "f",
+    "lieuDeNaissance": "75109"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1277555890Y",
+    "nomFamille": "MAYVILLE",
+    "prenom": "Tina",
+    "dateNaissance": "2000-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-09-01",
+        "dateFinInscription": "2025-07-31",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0366313W",
+          "nomEtablissement": "ESCG"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=MAYVILLE' -d 'prenom=TINA' -d 'dateDeNaissance=2000-01-01' -d 'sexe=f' -d 'lieuDeNaissance=75109' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_etudiant_inscrit_mediz_louis.yml](civility_etudiant_inscrit_mediz_louis.yml)
+
+  Status `200`
+
+  Étudiant inscrit
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "MEDIZ",
+    "prenom": "Louis",
+    "dateDeNaissance": "2000-01-01",
+    "sexe": "m",
+    "lieuDeNaissance": "75109"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1274451290Y",
+    "nomFamille": "MEDIZ",
+    "prenom": "Louis",
+    "dateNaissance": "2000-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-09-01",
+        "dateFinInscription": "2025-07-31",
+        "statut": "inscrit",
+        "codeCommune": "75006",
+        "etablissement": {
+          "uai": "0292613W",
+          "nomEtablissement": "Université Paris Cité"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=MEDIZ' -d 'prenom=Louis' -d 'dateDeNaissance=2000-01-01' -d 'sexe=m' -d 'lieuDeNaissance=75109' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_etudiant_inscrit_mont-parrain-lisa.yml](civility_etudiant_inscrit_mont-parrain-lisa.yml)
+
+  Status `200`
+
+  Etudiant inscrit
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "MONT-PARRAIN",
+    "prenom": "Lisa",
+    "dateDeNaissance": "2000-01-01",
+    "sexe": "f",
+    "lieuDeNaissance": " 99109"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1274451233Y",
+    "nomFamille": "MONT-PARRAIN",
+    "prenom": "Lisa",
+    "dateNaissance": "2000-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-01-01",
+        "dateFinInscription": "2025-11-30",
+        "statut": "inscrit",
+        "codeCommune": "75006",
+        "etablissement": {
+          "uai": "0292973W",
+          "nomEtablissement": "Université Paris Cité"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=MONT-PARRAIN' -d 'prenom=Lisa' -d 'dateDeNaissance=2000-01-01' -d 'sexe=f' -d 'lieuDeNaissance=+99109' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_etudiant_inscrit_yolan_john.yml](civility_etudiant_inscrit_yolan_john.yml)
+
+  Status `200`
+
+  Étudiant inscrit
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "YOLAN",
+    "prenom": "JOHN",
+    "dateDeNaissance": "2007-01-01",
+    "sexe": "f",
+    "lieuDeNaissance": "75109"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1274455891Y",
+    "nomFamille": "YOLAN",
+    "prenom": "JOHN",
+    "dateNaissance": "2007-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-10-01",
+        "dateFinInscription": "2025-09-30",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0320613W",
+          "nomEtablissement": "ESCG"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=YOLAN' -d 'prenom=JOHN' -d 'dateDeNaissance=2007-01-01' -d 'sexe=f' -d 'lieuDeNaissance=75109' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_formation_continue_colonel_jean.yml](civility_formation_continue_colonel_jean.yml)
+
+  Status `200`
+
+  Étudiant inscrit
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "COLONEL",
+    "prenom": "Jean",
+    "dateDeNaissance": "2005-08-01",
+    "sexe": "m",
+    "lieuDeNaissance": "78646"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1296522890Y",
+    "nomFamille": "COLONEL",
+    "prenom": "Jean",
+    "dateNaissance": "2005-08-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-09-01",
+        "dateFinInscription": "2025-07-31",
+        "statut": "inscrit",
+        "codeCommune": "93430",
+        "etablissement": {
+          "uai": "0331023W",
+          "nomEtablissement": " Université Sorbonne Paris Nord"
+        },
+        "regime": "formation continue"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=COLONEL' -d 'prenom=Jean' -d 'dateDeNaissance=2005-08-01' -d 'sexe=m' -d 'lieuDeNaissance=78646' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
   ```
 

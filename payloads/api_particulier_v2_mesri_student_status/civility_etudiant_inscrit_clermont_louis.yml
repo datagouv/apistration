@@ -1,0 +1,30 @@
+---
+description: 'Étudiant inscrit'
+params:
+  nom: "CLERMONT"
+  prenom: "Louis"
+  dateDeNaissance: "2000-01-01"
+  sexe: "m"
+  lieuDeNaissance: "78646"
+status: 200
+payload: |-
+  {
+    "ine": "1884567890Y",
+    "nomFamille": "CLERMONT",
+    "prenom": "Louis",
+    "dateNaissance": "2000-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-10-01",
+        "dateFinInscription": "2025-09-30",
+        "statut": "inscrit",
+        "codeCommune": "78100",
+        "etablissement": {
+          "uai": "0309023W",
+          "nomEtablissement": " Sciences Po"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+

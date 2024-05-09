@@ -1,0 +1,29 @@
+---
+description: 'Étudiant inscrit'
+params:
+  nom: "IBARRA"
+  prenom: "JENNYFER"
+  dateDeNaissance: "2004-01-01"
+  sexe: "f"
+  lieuDeNaissance: "75109"
+status: 200
+payload: |-
+  {
+    "ine": "1279955890Y",
+    "nomFamille": "IBARRA",
+    "prenom": "JENNYFER",
+    "dateNaissance": "2000-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2025-01-01",
+        "dateFinInscription": "2025-12-31",
+        "statut": "inscrit",
+        "codeCommune": "75009",
+        "etablissement": {
+          "uai": "0361113W",
+          "nomEtablissement": "ESCG"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }

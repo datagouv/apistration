@@ -1,0 +1,29 @@
+---
+description: 'Étudiant inscrit'
+params:
+  nom: "CALIDONE"
+  prenom: "Lola"
+  dateDeNaissance: "2005-01-01"
+  sexe: "f"
+  lieuDeNaissance: "75109"
+status: 200
+payload: |-
+  {
+    "ine": "1234567811Y",
+    "nomFamille": "CALIDONE",
+    "prenom": "Lola",
+    "dateNaissance": "2005-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-09-01",
+        "dateFinInscription": "2025-07-31",
+        "statut": "inscrit",
+        "codeCommune": "92000",
+        "etablissement": {
+          "uai": "0334523W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
