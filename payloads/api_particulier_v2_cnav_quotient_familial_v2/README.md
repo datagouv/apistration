@@ -92,7 +92,7 @@ Ce cas permet de tester :
       "complementInformationGeographique": null,
       "numeroLibelleVoie": "1 RUE MONTORGUEIL",
       "lieuDit": null,
-      "codePostalVille": "75002",
+      "codePostalVille": "75002 PARIS",
       "pays": "FRANCE"
     },
     "quotientFamilial": 150,
@@ -179,7 +179,7 @@ d'erreur selon les informations que vous fournirez.
       "complementInformationGeographique": null,
       "numeroLibelleVoie": "1 RUE MONTORGUEIL",
       "lieuDit": null,
-      "codePostalVille": "75002",
+      "codePostalVille": "75002 PARIS",
       "pays": "FRANCE"
     },
     "quotientFamilial": 2550,
@@ -266,7 +266,7 @@ d'erreur selon les informations que vous fournirez.
       "complementInformationGeographique": null,
       "numeroLibelleVoie": "1 RUE MONTORGUEIL",
       "lieuDit": null,
-      "codePostalVille": "75002",
+      "codePostalVille": "75002 PARIS",
       "pays": "FRANCE"
     },
     "quotientFamilial": 2550,
@@ -352,7 +352,7 @@ d'erreur selon les informations que vous fournirez.
       "complementInformationGeographique": null,
       "numeroLibelleVoie": "1 RUE MONTORGUEIL",
       "lieuDit": null,
-      "codePostalVille": "75002",
+      "codePostalVille": "75002 PARIS",
       "pays": "FRANCE"
     },
     "quotientFamilial": 2550,
@@ -438,7 +438,7 @@ d'erreur selon les informations que vous fournirez.
       "complementInformationGeographique": null,
       "numeroLibelleVoie": "1 RUE MONTORGUEIL",
       "lieuDit": null,
-      "codePostalVille": "75002",
+      "codePostalVille": "75002 PARIS",
       "pays": "FRANCE"
     },
     "quotientFamilial": 2550,
@@ -524,7 +524,7 @@ d'erreur selon les informations que vous fournirez.
       "complementInformationGeographique": null,
       "numeroLibelleVoie": "1 RUE MONTORGUEIL",
       "lieuDit": null,
-      "codePostalVille": "75002",
+      "codePostalVille": "75002 PARIS",
       "pays": "FRANCE"
     },
     "quotientFamilial": 2550,
@@ -614,7 +614,7 @@ Ce cas permet de tester :
       "complementInformationGeographique": null,
       "numeroLibelleVoie": "1 RUE MONTORGUEIL",
       "lieuDit": null,
-      "codePostalVille": "75002",
+      "codePostalVille": "75002 PARIS",
       "pays": "FRANCE"
     },
     "quotientFamilial": 650,
@@ -697,7 +697,7 @@ Ce cas permet de tester :
       "complementInformationGeographique": null,
       "numeroLibelleVoie": "1 RUE MONTORGUEIL",
       "lieuDit": null,
-      "codePostalVille": "75002",
+      "codePostalVille": "75002 PARIS",
       "pays": "FRANCE"
     },
     "quotientFamilial": 2550,
@@ -1096,7 +1096,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "complementInformationGeographique": null,
       "numeroLibelleVoie": "1 RUE MONTORGUEIL",
       "lieuDit": null,
-      "codePostalVille": "75002",
+      "codePostalVille": "75002 PARIS",
       "pays": "FRANCE"
     },
     "quotientFamilial": 2550,
@@ -1168,7 +1168,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "complementInformationGeographique": null,
       "numeroLibelleVoie": "1 RUE MONTORGUEIL",
       "lieuDit": null,
-      "codePostalVille": "75002",
+      "codePostalVille": "75002 PARIS",
       "pays": "FRANCE"
     },
     "quotientFamilial": 2550,
