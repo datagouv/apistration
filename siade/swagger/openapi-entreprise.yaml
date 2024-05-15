@@ -275,7 +275,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -418,7 +418,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Erreur inconnue du fournisseur de données
@@ -432,7 +432,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -443,7 +443,7 @@ paths:
                     - code: '04052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -453,7 +453,7 @@ paths:
                     - code: '04053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -464,7 +464,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -475,7 +475,7 @@ paths:
                     - code: '04055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -486,7 +486,7 @@ paths:
                       title: Demande de traitement logiciel en cours
                       detail: Une erreur informatique a eu lieu, une demande de traitement
                         par le logiciel est en cours.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Demande de traitement logiciel en cours
@@ -501,7 +501,7 @@ paths:
                         Le temps de traitement est très variable selon de la complexité
                         de situation, la demande de pièces justificatives complémentaires
                         ou la charge de travail des agents.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                         retry_in: 172800
@@ -519,7 +519,7 @@ paths:
                       detail: Il n'est pas possible de renvoyer l'attestation. Cela
                         peut être dû au fait qu'un des établissements d'une entreprise
                         n'a pas retourné les informations.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: La situation du compte ne permet pas de délivrer l'attestation
@@ -547,7 +547,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Intermédiaire hors-délai
@@ -560,7 +560,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Service non disponible
@@ -574,7 +574,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -587,7 +587,7 @@ paths:
                     - code: '04004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Erreur de résolution DNS
@@ -776,7 +776,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -1074,7 +1074,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: ADEME
                   summary: Erreur inconnue du fournisseur de données
@@ -1095,7 +1095,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: ADEME
                   summary: Intermédiaire hors-délai
@@ -1108,7 +1108,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: ADEME
                   summary: Service non disponible
@@ -1122,7 +1122,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -1135,7 +1135,7 @@ paths:
                     - code: '19004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: ADEME
                   summary: Erreur de résolution DNS
@@ -1295,7 +1295,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -1736,7 +1736,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: Banque de France
                   summary: Erreur inconnue du fournisseur de données
@@ -1757,7 +1757,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: Banque de France
                   summary: Intermédiaire hors-délai
@@ -1770,7 +1770,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: Banque de France
                   summary: Service non disponible
@@ -1784,7 +1784,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -1797,7 +1797,7 @@ paths:
                     - code: '17004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: Banque de France
                   summary: Erreur de résolution DNS
@@ -1979,7 +1979,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -2369,7 +2369,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: CARIF-OREF
                   summary: Erreur inconnue du fournisseur de données
@@ -2390,7 +2390,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: CARIF-OREF
                   summary: Intermédiaire hors-délai
@@ -2403,7 +2403,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: CARIF-OREF
                   summary: Service non disponible
@@ -2417,7 +2417,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -2430,7 +2430,7 @@ paths:
                     - code: '33004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: CARIF-OREF
                   summary: Erreur de résolution DNS
@@ -2584,7 +2584,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -2706,7 +2706,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: CNETP
                   summary: Erreur inconnue du fournisseur de données
@@ -2720,7 +2720,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -2731,7 +2731,7 @@ paths:
                     - code: '08052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -2741,7 +2741,7 @@ paths:
                     - code: '08053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -2752,7 +2752,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -2763,7 +2763,7 @@ paths:
                     - code: '08055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -2787,7 +2787,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: CNETP
                   summary: Intermédiaire hors-délai
@@ -2800,7 +2800,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: CNETP
                   summary: Service non disponible
@@ -2814,7 +2814,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -2827,7 +2827,7 @@ paths:
                     - code: '08004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: CNETP
                   summary: Erreur de résolution DNS
@@ -3152,7 +3152,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: DGDDI
                   summary: Erreur inconnue du fournisseur de données
@@ -3173,7 +3173,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: DGDDI
                   summary: Intermédiaire hors-délai
@@ -3186,7 +3186,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: DGDDI
                   summary: Service non disponible
@@ -3200,7 +3200,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -3213,7 +3213,7 @@ paths:
                     - code: '16004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: DGDDI
                   summary: Erreur de résolution DNS
@@ -3402,7 +3402,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -3547,7 +3547,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Erreur inconnue du fournisseur de données
@@ -3561,7 +3561,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -3572,7 +3572,7 @@ paths:
                     - code: '03052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -3582,7 +3582,7 @@ paths:
                     - code: '03053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -3593,7 +3593,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -3604,7 +3604,7 @@ paths:
                     - code: '03055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -3622,7 +3622,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Intermédiaire hors-délai
@@ -3635,7 +3635,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Service non disponible
@@ -3649,7 +3649,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -3662,7 +3662,7 @@ paths:
                     - code: '03004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Erreur de résolution DNS
@@ -3853,7 +3853,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -4016,7 +4016,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Erreur inconnue du fournisseur de données
@@ -4030,7 +4030,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -4041,7 +4041,7 @@ paths:
                     - code: '03052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -4051,7 +4051,7 @@ paths:
                     - code: '03053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -4062,7 +4062,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -4073,7 +4073,7 @@ paths:
                     - code: '03055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -4091,7 +4091,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Intermédiaire hors-délai
@@ -4104,7 +4104,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Service non disponible
@@ -4118,7 +4118,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -4131,7 +4131,7 @@ paths:
                     - code: '03004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Erreur de résolution DNS
@@ -4154,6 +4154,13 @@ paths:
       tags:
       - Informations financières
       parameters:
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       - name: context
         in: query
         description: |-
@@ -4316,7 +4323,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -4325,6 +4332,22 @@ paths:
         '200':
           description: Exercices trouvés
           headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
             RateLimit-Limit:
               schema:
                 type: integer
@@ -4447,7 +4470,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Erreur inconnue du fournisseur de données
@@ -4468,7 +4491,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Intermédiaire hors-délai
@@ -4481,7 +4504,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Service non disponible
@@ -4495,7 +4518,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -4508,7 +4531,7 @@ paths:
                     - code: '03004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Erreur de résolution DNS
@@ -4531,6 +4554,13 @@ paths:
       tags:
       - Informations financières
       parameters:
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       - name: context
         in: query
         description: |-
@@ -4670,7 +4700,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -4679,6 +4709,22 @@ paths:
         '200':
           description: Entreprise trouvée
           headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
             RateLimit-Limit:
               schema:
                 type: integer
@@ -5025,7 +5071,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Erreur inconnue du fournisseur de données
@@ -5041,7 +5087,7 @@ paths:
                         aussi indiquer que le siret ou siren renseigné n'existe pas,
                         n'est pas connu, n'est pas en règle de ses obligations fiscales
                         ou ne comporte aucune information pour cet appel.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP
                   summary: Potentielle ressource non trouvée
@@ -5063,7 +5109,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Intermédiaire hors-délai
@@ -5076,7 +5122,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Service non disponible
@@ -5090,7 +5136,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -5103,7 +5149,7 @@ paths:
                     - code: '03004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: DGFIP - Adélie
                   summary: Erreur de résolution DNS
@@ -5275,7 +5321,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -6852,7 +6898,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: DJEPVA
                   summary: Intermédiaire hors-délai
@@ -6865,7 +6911,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: DJEPVA
                   summary: Service non disponible
@@ -6879,7 +6925,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -6892,7 +6938,7 @@ paths:
                     - code: '29004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: DJEPVA
                   summary: Erreur de résolution DNS
@@ -6912,7 +6958,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: DJEPVA
                   summary: Erreur inconnue du fournisseur de données
@@ -7076,7 +7122,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -8264,7 +8310,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: DJEPVA
                   summary: Intermédiaire hors-délai
@@ -8277,7 +8323,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: DJEPVA
                   summary: Service non disponible
@@ -8291,7 +8337,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -8304,7 +8350,7 @@ paths:
                     - code: '29004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: DJEPVA
                   summary: Erreur de résolution DNS
@@ -8324,7 +8370,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: DJEPVA
                   summary: Erreur inconnue du fournisseur de données
@@ -8459,7 +8505,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -8583,7 +8629,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: Commission Européenne
                   summary: Erreur inconnue du fournisseur de données
@@ -8604,7 +8650,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: Commission Européenne
                   summary: Intermédiaire hors-délai
@@ -8617,7 +8663,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: Commission Européenne
                   summary: Service non disponible
@@ -8631,7 +8677,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -8644,7 +8690,7 @@ paths:
                     - code: '28004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: Commission Européenne
                   summary: Erreur de résolution DNS
@@ -8826,7 +8872,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -9016,7 +9062,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: Fabrique numérique des Ministères Sociaux
                   summary: Erreur inconnue du fournisseur de données
@@ -9037,7 +9083,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: Fabrique numérique des Ministères Sociaux
                   summary: Intermédiaire hors-délai
@@ -9050,7 +9096,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: Fabrique numérique des Ministères Sociaux
                   summary: Service non disponible
@@ -9064,7 +9110,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -9077,7 +9123,7 @@ paths:
                     - code: '14004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: Fabrique numérique des Ministères Sociaux
                   summary: Erreur de résolution DNS
@@ -9231,7 +9277,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -9353,7 +9399,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: FNTP
                   summary: Erreur inconnue du fournisseur de données
@@ -9367,7 +9413,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -9378,7 +9424,7 @@ paths:
                     - code: '12052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -9388,7 +9434,7 @@ paths:
                     - code: '12053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -9399,7 +9445,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -9410,7 +9456,7 @@ paths:
                     - code: '12055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -9434,7 +9480,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: FNTP
                   summary: Intermédiaire hors-délai
@@ -9447,7 +9493,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: FNTP
                   summary: Service non disponible
@@ -9461,7 +9507,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -9474,7 +9520,7 @@ paths:
                     - code: '12004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: FNTP
                   summary: Erreur de résolution DNS
@@ -9659,7 +9705,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -9821,7 +9867,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: GIP-MDS
                   summary: Erreur inconnue du fournisseur de données
@@ -9842,7 +9888,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: GIP-MDS
                   summary: Intermédiaire hors-délai
@@ -9855,7 +9901,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: GIP-MDS
                   summary: Service non disponible
@@ -9869,7 +9915,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -9882,7 +9928,7 @@ paths:
                     - code: '31004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: GIP-MDS
                   summary: Erreur de résolution DNS
@@ -10084,7 +10130,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -10268,7 +10314,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: GIP-MDS
                   summary: Erreur inconnue du fournisseur de données
@@ -10289,7 +10335,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: GIP-MDS
                   summary: Intermédiaire hors-délai
@@ -10302,7 +10348,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: GIP-MDS
                   summary: Service non disponible
@@ -10316,7 +10362,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -10329,7 +10375,7 @@ paths:
                     - code: '31004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: GIP-MDS
                   summary: Erreur de résolution DNS
@@ -10510,7 +10556,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -11072,7 +11118,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: Infogreffe
                   summary: Erreur inconnue du fournisseur de données
@@ -11093,7 +11139,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: Infogreffe
                   summary: Intermédiaire hors-délai
@@ -11106,7 +11152,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: Infogreffe
                   summary: Service non disponible
@@ -11120,7 +11166,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -11133,7 +11179,7 @@ paths:
                     - code: '02004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: Infogreffe
                   summary: Erreur de résolution DNS
@@ -11313,7 +11359,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -11604,7 +11650,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: Infogreffe
                   summary: Erreur inconnue du fournisseur de données
@@ -11625,7 +11671,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: Infogreffe
                   summary: Intermédiaire hors-délai
@@ -11638,7 +11684,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: Infogreffe
                   summary: Service non disponible
@@ -11652,7 +11698,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -11665,7 +11711,7 @@ paths:
                     - code: '02004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: Infogreffe
                   summary: Erreur de résolution DNS
@@ -11820,7 +11866,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -11978,7 +12024,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Erreur inconnue du fournisseur de données
@@ -11999,7 +12045,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Intermédiaire hors-délai
@@ -12012,7 +12058,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Service non disponible
@@ -12026,7 +12072,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -12039,7 +12085,7 @@ paths:
                     - code: '05004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Erreur de résolution DNS
@@ -12201,7 +12247,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -12374,7 +12420,7 @@ paths:
                               - ZA
                               - ZM
                               - ZW
-                              -
+                              - 
                             numero_brevet:
                               title: Numéro du brevet
                               description: 'Numéro du brevet dans l''organisation
@@ -12478,7 +12524,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Erreur inconnue du fournisseur de données
@@ -12499,7 +12545,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Intermédiaire hors-délai
@@ -12512,7 +12558,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Service non disponible
@@ -12526,7 +12572,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -12539,7 +12585,7 @@ paths:
                     - code: '05004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Erreur de résolution DNS
@@ -12701,7 +12747,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -12878,7 +12924,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Erreur inconnue du fournisseur de données
@@ -12899,7 +12945,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Intermédiaire hors-délai
@@ -12912,7 +12958,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Service non disponible
@@ -12926,7 +12972,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -12939,7 +12985,7 @@ paths:
                     - code: '05004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Erreur de résolution DNS
@@ -13101,7 +13147,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -13300,7 +13346,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Erreur inconnue du fournisseur de données
@@ -13321,7 +13367,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Intermédiaire hors-délai
@@ -13334,7 +13380,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Service non disponible
@@ -13348,7 +13394,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -13361,7 +13407,7 @@ paths:
                     - code: '05004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INPI
                   summary: Erreur de résolution DNS
@@ -13548,7 +13594,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -14364,7 +14410,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INPI - RNE
                   summary: Erreur inconnue du fournisseur de données
@@ -14385,7 +14431,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INPI - RNE
                   summary: Intermédiaire hors-délai
@@ -14398,7 +14444,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INPI - RNE
                   summary: Service non disponible
@@ -14412,7 +14458,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -14425,7 +14471,7 @@ paths:
                     - code: '34004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INPI - RNE
                   summary: Erreur de résolution DNS
@@ -14607,7 +14653,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -14639,7 +14685,7 @@ paths:
                         - ter
                         - quarter
                         - quinquies
-                        -
+                        - 
                       type_voie:
                         title: Type de la voie de localisation
                         example: RUE
@@ -14693,7 +14739,7 @@ paths:
                         - TRAVERSE
                         - VILLA
                         - VILLAGE
-                        -
+                        - 
                       libelle_voie:
                         title: Libellé de la voie
                         type: string
@@ -14971,7 +15017,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur inconnue du fournisseur de données
@@ -14992,7 +15038,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Intermédiaire hors-délai
@@ -15005,7 +15051,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Service non disponible
@@ -15019,7 +15065,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -15032,7 +15078,7 @@ paths:
                     - code: '01004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur de résolution DNS
@@ -15214,7 +15260,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -15250,7 +15296,7 @@ paths:
                         - ter
                         - quarter
                         - quinquies
-                        -
+                        - 
                       type_voie:
                         title: Type de la voie de localisation
                         example: RUE
@@ -15306,7 +15352,7 @@ paths:
                         - TRAVERSE
                         - VILLA
                         - VILLAGE
-                        -
+                        - 
                       libelle_voie:
                         title: Libellé de la voie
                         type: string
@@ -15608,7 +15654,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur inconnue du fournisseur de données
@@ -15629,7 +15675,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Intermédiaire hors-délai
@@ -15642,7 +15688,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Service non disponible
@@ -15656,7 +15702,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -15669,7 +15715,7 @@ paths:
                     - code: '01004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur de résolution DNS
@@ -15851,7 +15897,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -16564,7 +16610,7 @@ paths:
                             - ter
                             - quarter
                             - quinquies
-                            -
+                            - 
                           type_voie:
                             title: Type de la voie de localisation
                             example: RUE
@@ -16618,7 +16664,7 @@ paths:
                             - TRAVERSE
                             - VILLA
                             - VILLAGE
-                            -
+                            - 
                           libelle_voie:
                             title: Libellé de la voie
                             type: string
@@ -16946,7 +16992,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur inconnue du fournisseur de données
@@ -16967,7 +17013,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Intermédiaire hors-délai
@@ -16980,7 +17026,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Service non disponible
@@ -16994,7 +17040,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -17007,7 +17053,7 @@ paths:
                     - code: '01004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur de résolution DNS
@@ -17189,7 +17235,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -17926,7 +17972,7 @@ paths:
                             - ter
                             - quarter
                             - quinquies
-                            -
+                            - 
                           type_voie:
                             title: Type de la voie de localisation
                             example: RUE
@@ -17982,7 +18028,7 @@ paths:
                             - TRAVERSE
                             - VILLA
                             - VILLAGE
-                            -
+                            - 
                           libelle_voie:
                             title: Libellé de la voie
                             type: string
@@ -18326,7 +18372,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur inconnue du fournisseur de données
@@ -18347,7 +18393,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Intermédiaire hors-délai
@@ -18360,7 +18406,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Service non disponible
@@ -18374,7 +18420,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -18387,7 +18433,7 @@ paths:
                     - code: '01004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur de résolution DNS
@@ -18567,7 +18613,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -19304,7 +19350,7 @@ paths:
                             - ter
                             - quarter
                             - quinquies
-                            -
+                            - 
                           type_voie:
                             title: Type de la voie de localisation
                             example: RUE
@@ -19360,7 +19406,7 @@ paths:
                             - TRAVERSE
                             - VILLA
                             - VILLAGE
-                            -
+                            - 
                           libelle_voie:
                             title: Libellé de la voie
                             type: string
@@ -19704,7 +19750,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur inconnue du fournisseur de données
@@ -19725,7 +19771,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Intermédiaire hors-délai
@@ -19738,7 +19784,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Service non disponible
@@ -19752,7 +19798,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -19765,7 +19811,7 @@ paths:
                     - code: '01004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur de résolution DNS
@@ -19946,7 +19992,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -20659,7 +20705,7 @@ paths:
                             - ter
                             - quarter
                             - quinquies
-                            -
+                            - 
                           type_voie:
                             title: Type de la voie de localisation
                             example: RUE
@@ -20713,7 +20759,7 @@ paths:
                             - TRAVERSE
                             - VILLA
                             - VILLAGE
-                            -
+                            - 
                           libelle_voie:
                             title: Libellé de la voie
                             type: string
@@ -21035,7 +21081,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur inconnue du fournisseur de données
@@ -21056,7 +21102,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Intermédiaire hors-délai
@@ -21069,7 +21115,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Service non disponible
@@ -21083,7 +21129,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -21096,7 +21142,7 @@ paths:
                     - code: '01004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur de résolution DNS
@@ -21277,7 +21323,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -21458,7 +21504,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur inconnue du fournisseur de données
@@ -21479,7 +21525,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Intermédiaire hors-délai
@@ -21492,7 +21538,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Service non disponible
@@ -21506,7 +21552,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -21519,7 +21565,7 @@ paths:
                     - code: '01004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur de résolution DNS
@@ -21700,7 +21746,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -22289,7 +22335,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur inconnue du fournisseur de données
@@ -22310,7 +22356,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Intermédiaire hors-délai
@@ -22323,7 +22369,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Service non disponible
@@ -22337,7 +22383,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -22350,7 +22396,7 @@ paths:
                     - code: '01004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur de résolution DNS
@@ -22536,7 +22582,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -23144,7 +23190,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur inconnue du fournisseur de données
@@ -23165,7 +23211,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Intermédiaire hors-délai
@@ -23178,7 +23224,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Service non disponible
@@ -23192,7 +23238,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -23205,7 +23251,7 @@ paths:
                     - code: '01004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: INSEE
                   summary: Erreur de résolution DNS
@@ -23380,7 +23426,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -23563,7 +23609,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: MI
                   summary: Erreur inconnue du fournisseur de données
@@ -23577,7 +23623,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -23588,7 +23634,7 @@ paths:
                     - code: '21052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -23598,7 +23644,7 @@ paths:
                     - code: '21053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -23609,7 +23655,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -23620,7 +23666,7 @@ paths:
                     - code: '21055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -23644,7 +23690,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: MI
                   summary: Intermédiaire hors-délai
@@ -23657,7 +23703,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: MI
                   summary: Service non disponible
@@ -23671,7 +23717,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -23684,7 +23730,7 @@ paths:
                     - code: '21004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: MI
                   summary: Erreur de résolution DNS
@@ -23853,7 +23899,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -23919,7 +23965,7 @@ paths:
                       siret:
                         type: string
                         nullable: true
-                        example:
+                        example: 
                       siret_siege_social:
                         type: string
                         example: '77571979202650'
@@ -23936,7 +23982,7 @@ paths:
                       date_publication:
                         type: string
                         nullable: true
-                        example:
+                        example: 
                         description: Jour de la publication au journal officiel de
                           l'avis de création de l'association. Toutes les assoiations
                           ne sont pas forcément 'déclarées'. La publication au Journal
@@ -23946,7 +23992,7 @@ paths:
                       date_dissolution:
                         type: string
                         nullable: true
-                        example:
+                        example: 
                         description: Si l'association est dissolue, ce champ indique
                           la date de dissolution, autrement, il est indiqué 'null'.
                       adresse_siege:
@@ -24008,7 +24054,7 @@ paths:
                       groupement:
                         type: string
                         nullable: true
-                        example:
+                        example: 
                         description: 'Trois modalités possibles : si l''association
                           n''est pas un groupement, il est indiqué ''Simple'' ; si
                           l''association est un groupement, la valeur est ''Union''
@@ -24110,7 +24156,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: MI
                   summary: Intermédiaire hors-délai
@@ -24123,7 +24169,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: MI
                   summary: Service non disponible
@@ -24137,7 +24183,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -24150,7 +24196,7 @@ paths:
                     - code: '21004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: MI
                   summary: Erreur de résolution DNS
@@ -24170,7 +24216,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: MI
                   summary: Erreur inconnue du fournisseur de données
@@ -24354,7 +24400,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -24482,7 +24528,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: MSA
                   summary: Erreur inconnue du fournisseur de données
@@ -24503,7 +24549,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: MSA
                   summary: Intermédiaire hors-délai
@@ -24516,7 +24562,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: MSA
                   summary: Service non disponible
@@ -24530,7 +24576,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -24543,7 +24589,7 @@ paths:
                     - code: '10004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: MSA
                   summary: Erreur de résolution DNS
@@ -24701,7 +24747,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -24931,7 +24977,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: OPQIBI
                   summary: Erreur inconnue du fournisseur de données
@@ -24952,7 +24998,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: OPQIBI
                   summary: Intermédiaire hors-délai
@@ -24965,7 +25011,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: OPQIBI
                   summary: Service non disponible
@@ -24979,7 +25025,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -24992,7 +25038,7 @@ paths:
                     - code: '11004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: OPQIBI
                   summary: Erreur de résolution DNS
@@ -25174,7 +25220,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -25296,7 +25342,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: ProBTP
                   summary: Erreur inconnue du fournisseur de données
@@ -25310,7 +25356,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -25321,7 +25367,7 @@ paths:
                     - code: '09052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -25331,7 +25377,7 @@ paths:
                     - code: '09053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -25342,7 +25388,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -25353,7 +25399,7 @@ paths:
                     - code: '09055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -25377,7 +25423,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: ProBTP
                   summary: Intermédiaire hors-délai
@@ -25390,7 +25436,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: ProBTP
                   summary: Service non disponible
@@ -25404,7 +25450,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -25417,7 +25463,7 @@ paths:
                     - code: '09004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: ProBTP
                   summary: Erreur de résolution DNS
@@ -25570,7 +25616,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -25694,7 +25740,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: ProBTP
                   summary: Erreur inconnue du fournisseur de données
@@ -25715,7 +25761,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: ProBTP
                   summary: Intermédiaire hors-délai
@@ -25728,7 +25774,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: ProBTP
                   summary: Service non disponible
@@ -25742,7 +25788,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -25755,7 +25801,7 @@ paths:
                     - code: '09004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: ProBTP
                   summary: Erreur de résolution DNS
@@ -25938,7 +25984,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -26060,7 +26106,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: Qualibat
                   summary: Erreur inconnue du fournisseur de données
@@ -26074,7 +26120,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -26085,7 +26131,7 @@ paths:
                     - code: '06052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -26095,7 +26141,7 @@ paths:
                     - code: '06053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -26106,7 +26152,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -26117,7 +26163,7 @@ paths:
                     - code: '06055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -26141,7 +26187,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: Qualibat
                   summary: Intermédiaire hors-délai
@@ -26154,7 +26200,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: Qualibat
                   summary: Service non disponible
@@ -26168,7 +26214,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -26181,7 +26227,7 @@ paths:
                     - code: '06004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: Qualibat
                   summary: Erreur de résolution DNS
@@ -26201,6 +26247,13 @@ paths:
       tags:
       - Certifications professionnelles
       parameters:
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       - name: siret
         in: path
         description: Siret de l'établissement
@@ -26363,7 +26416,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -26372,6 +26425,23 @@ paths:
         '200':
           description: Certification trouvée
           headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). Le cache est valide jusqu'à la
+                fin de la journée
             RateLimit-Limit:
               schema:
                 type: integer
@@ -26583,7 +26653,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: Qualibat
                   summary: Erreur inconnue du fournisseur de données
@@ -26597,7 +26667,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -26608,7 +26678,7 @@ paths:
                     - code: '06052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -26618,7 +26688,7 @@ paths:
                     - code: '06053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -26629,7 +26699,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -26640,7 +26710,7 @@ paths:
                     - code: '06055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -26664,7 +26734,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: Qualibat
                   summary: Intermédiaire hors-délai
@@ -26677,7 +26747,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: Qualibat
                   summary: Service non disponible
@@ -26691,7 +26761,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -26704,7 +26774,7 @@ paths:
                     - code: '06004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: Qualibat
                   summary: Erreur de résolution DNS
@@ -27222,7 +27292,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -27247,7 +27317,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: Qualifelec
                   summary: Erreur inconnue du fournisseur de données
@@ -27268,7 +27338,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: Qualifelec
                   summary: Intermédiaire hors-délai
@@ -27281,7 +27351,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: Qualifelec
                   summary: Service non disponible
@@ -27295,7 +27365,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -27308,7 +27378,7 @@ paths:
                     - code: '32004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: Qualifelec
                   summary: Erreur de résolution DNS
@@ -27489,7 +27559,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -27628,7 +27698,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: RNM
                   summary: Erreur inconnue du fournisseur de données
@@ -27649,7 +27719,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: RNM
                   summary: Intermédiaire hors-délai
@@ -27662,7 +27732,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: RNM
                   summary: Service non disponible
@@ -27676,7 +27746,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -27689,7 +27759,7 @@ paths:
                     - code: '22004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: RNM
                   summary: Erreur de résolution DNS
@@ -27877,7 +27947,7 @@ paths:
                     - code: '00429'
                       title: Trop de requêtes
                       detail: Vous avez effectué trop de requêtes
-                      source:
+                      source: 
                       meta: {}
                   summary: Trop de requêtes
                   description: Vous avez effectué trop de requêtes
@@ -28085,7 +28155,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Erreur inconnue du fournisseur de données
@@ -28099,7 +28169,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: 'Erreur lors du décodage : la chaîne de caractères en
                         base64 est invalide'
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: 'Erreur lors du décodage : la chaîne de caractères
@@ -28110,7 +28180,7 @@ paths:
                     - code: '04052'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Temps d'attente de téléchargement du document écoulé
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Temps d'attente de téléchargement du document écoulé
@@ -28120,7 +28190,7 @@ paths:
                     - code: '04053'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Erreur de connexion sur le server distant
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Erreur de connexion sur le server distant
@@ -28131,7 +28201,7 @@ paths:
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: L'URL vers le document renvoyée par le fournisseur de
                         données est invalide
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: L'URL vers le document renvoyée par le fournisseur
@@ -28142,7 +28212,7 @@ paths:
                     - code: '04055'
                       title: Fichier renvoyé par le fournisseur de données non valide
                       detail: Le fichier n'est pas au format attendu
-                      source:
+                      source: 
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
@@ -28153,7 +28223,7 @@ paths:
                       title: Demande de traitement logiciel en cours
                       detail: Une erreur informatique a eu lieu, une demande de traitement
                         par le logiciel est en cours.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Demande de traitement logiciel en cours
@@ -28168,7 +28238,7 @@ paths:
                         Le temps de traitement est très variable selon de la complexité
                         de situation, la demande de pièces justificatives complémentaires
                         ou la charge de travail des agents.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                         retry_in: 172800
@@ -28197,7 +28267,7 @@ paths:
                       title: Intermédiaire hors-délai
                       detail: Temps d’attente d’une réponse du fournisseur de données
                         écoulé.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Intermédiaire hors-délai
@@ -28210,7 +28280,7 @@ paths:
                       title: Service non disponible
                       detail: Service du fournisseur de données temporairement indisponible
                         ou en maintenance.
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Service non disponible
@@ -28224,7 +28294,7 @@ paths:
                       detail: Problème de connexion au serveur distant. L'erreur peut
                         venir soit du fournisseur, soit de API Entreprise. Il s'agit
                         souvent d'une erreur temporaire.
-                      source:
+                      source: 
                       meta:
                         retry_in: 10
                   summary: Erreur réseau
@@ -28237,7 +28307,7 @@ paths:
                     - code: '04004'
                       title: Erreur de résolution DNS
                       detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
+                      source: 
                       meta:
                         provider: ACOSS
                   summary: Erreur de résolution DNS

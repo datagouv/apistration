@@ -5,6 +5,8 @@ RSpec.describe 'Qualibat : Certifications Batiment', api: :entreprise, type: %i[
     get SwaggerData.get('qualibat.certifications_batiment.title.v4') do
       tags(*SwaggerData.get('qualibat.certifications_batiment.tags'))
 
+      cacheable_request
+
       parameter_siret
 
       common_action_attributes
@@ -24,6 +26,8 @@ RSpec.describe 'Qualibat : Certifications Batiment', api: :entreprise, type: %i[
       describe 'with valid token and mandatory params', :valid do
         response 200, 'Certification trouvée', vcr: { cassette_name: 'qualibat/certifications_batiment/valid_siret_2' } do
           description SwaggerData.get('qualibat.certifications_batiment.description')
+
+          cacheable_response(extra_description: SwaggerData.get('qualibat.certifications_batiment.cache_duration'))
 
           schema build_rswag_response(
             attributes: SwaggerData.get('qualibat.certifications_batiment.properties')

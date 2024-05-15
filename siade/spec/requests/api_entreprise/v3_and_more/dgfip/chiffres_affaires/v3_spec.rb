@@ -5,6 +5,8 @@ RSpec.describe 'DGFIP: chiffres d\'affaires', api: :entreprise, type: %i[request
     get SwaggerData.get('dgfip.chiffres_affaires.title') do
       tags(*SwaggerData.get('dgfip.chiffres_affaires.tags'))
 
+      cacheable_request
+
       common_action_attributes
 
       parameter_siret
@@ -24,6 +26,8 @@ RSpec.describe 'DGFIP: chiffres d\'affaires', api: :entreprise, type: %i[request
       describe 'with valid token and mandatory params', :valid do
         response '200', 'Exercices trouvés', vcr: { cassette_name: 'dgfip/chiffres_affaires/valid' } do
           description SwaggerData.get('dgfip.chiffres_affaires.description')
+
+          cacheable_response(extra_description: SwaggerData.get('response.headers.cache_duration_1_hour'))
 
           rate_limit_headers
 

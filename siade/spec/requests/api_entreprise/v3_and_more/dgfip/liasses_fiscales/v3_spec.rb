@@ -5,6 +5,8 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', api: :entreprise, ty
     get SwaggerData.get('dgfip.liasses_fiscales.declarations.title') do
       tags(*SwaggerData.get('dgfip.liasses_fiscales.declarations.tags'))
 
+      cacheable_request
+
       common_action_attributes
 
       parameter name: :siren, in: :path, type: :string
@@ -27,6 +29,8 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', api: :entreprise, ty
       describe 'with valid token and mandatory params', :valid do
         response '200', 'Entreprise trouvée', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
           description SwaggerData.get('dgfip.liasses_fiscales.declarations.description')
+
+          cacheable_response(extra_description: SwaggerData.get('response.headers.cache_duration_1_hour'))
 
           rate_limit_headers
 

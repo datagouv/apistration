@@ -4,6 +4,7 @@ qualibat:
       v3: "Certification Qualibat (PDF seulement)"
       v4: "Certification Qualibat"
     description: "Certification délivrée par l'association Qualibat, attestant de la qualification d’une entreprise dans le bâtiment."
+    cache_duration: "Le cache est valide jusqu'à la fin de la journée"
     tags:
       - "Certifications professionnelles"
     document_url_properties:
