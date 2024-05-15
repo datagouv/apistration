@@ -7,6 +7,8 @@ RSpec.describe 'CNAV: Allocation Adulte Handicapé', api: :particulier, type: %i
 
       produces 'application/json'
 
+      cacheable_request
+
       parameter name: 'X-Api-Key', in: :header, type: :string
 
       parameters_cnav_identite_pivot
@@ -46,6 +48,8 @@ RSpec.describe 'CNAV: Allocation Adulte Handicapé', api: :particulier, type: %i
         describe 'with valid token and mandatory params' do
           response '200', 'Dossier trouvé' do
             description SwaggerData.get('cnav.aah.description')
+
+            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
 
             schema build_rswag_response_api_particulier(
               attributes: SwaggerData.get('cnav.aah.attributes')
@@ -124,6 +128,8 @@ RSpec.describe 'CNAV: Allocation Adulte Handicapé', api: :particulier, type: %i
           response '200', 'Particulier trouvé' do
             description SwaggerData.get('cnav.aah.description')
 
+            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+
             schema build_rswag_response_api_particulier(
               attributes: SwaggerData.get('cnav.aah.attributes')
             )
@@ -160,6 +166,8 @@ RSpec.describe 'CNAV: Allocation Adulte Handicapé', api: :particulier, type: %i
 
           response '200', 'Particulier trouvé' do
             description SwaggerData.get('cnav.aah.description')
+
+            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
 
             schema build_rswag_response_api_particulier(
               attributes: SwaggerData.get('cnav.aah.attributes')

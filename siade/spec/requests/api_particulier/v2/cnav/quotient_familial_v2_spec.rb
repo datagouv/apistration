@@ -5,6 +5,8 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulier, type: %i[request
     get SwaggerData.get('cnav.quotient-familial-v2.title') do
       tags(*SwaggerData.get('cnav.quotient-familial-v2.tags'))
 
+      cacheable_request
+
       produces 'application/json'
 
       parameter name: 'X-Api-Key', in: :header, type: :string
@@ -100,6 +102,8 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulier, type: %i[request
           describe 'with valid token and mandatory params' do
             response '200', 'Quotient Familial trouvée' do
               description SwaggerData.get('cnav.quotient-familial-v2.description')
+
+              cacheable_response(extra_description: SwaggerData.get('cnav.quotient-familial-v2.cache_duration'))
 
               schema build_rswag_response_api_particulier(
                 attributes: SwaggerData.get('cnav.quotient-familial-v2.attributes')

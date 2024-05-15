@@ -7,6 +7,8 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulier, type:
 
       produces 'application/json'
 
+      cacheable_request
+
       parameter name: 'X-Api-Key', in: :header, type: :string
 
       parameter name: :recipient,
@@ -73,6 +75,8 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulier, type:
             response '200', 'Complémentaire Santé trouvée' do
               description SwaggerData.get('cnav.c2s.description')
 
+              cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+
               schema build_rswag_response_api_particulier(
                 attributes: SwaggerData.get('cnav.c2s.attributes')
               )
@@ -92,6 +96,8 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulier, type:
           describe 'with valid token and mandatory params' do
             response '200', 'Complémentaire Santé trouvée' do
               description SwaggerData.get('cnav.c2s.description')
+
+              cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
 
               schema build_rswag_response_api_particulier(
                 attributes: SwaggerData.get('cnav.c2s.attributes')
@@ -171,6 +177,8 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulier, type:
           response '200', 'Complementaire Santé Solidaire trouvée' do
             description SwaggerData.get('cnav.c2s.description')
 
+            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+
             schema build_rswag_response_api_particulier(
               attributes: SwaggerData.get('cnav.c2s.attributes')
             )
@@ -207,6 +215,8 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulier, type:
 
           response '200', 'Complementaire Santé Solidaire trouvée' do
             description SwaggerData.get('cnav.c2s.description')
+
+            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
 
             schema build_rswag_response_api_particulier(
               attributes: SwaggerData.get('cnav.c2s.attributes')

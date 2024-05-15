@@ -1,5 +1,6 @@
 cnav:
   commons:
+    cache_duration: "La durée du cache est de 1 heure."
     cnav_identite_pivot: &cnav_identite_pivot
       nomUsage:
         type: "string"
@@ -48,14 +49,15 @@ cnav:
 
   c2s:
     title: Complémentaire santé solidaire
-    description: "Savoir si un particulier est bénéficiaire de la complémentaire santé solidaire (C2S).
-    \n\n
-    Pour de plus amples informations sur cette api et y avoir accès en avant première, veuillez contacter l'équipe API Particulier.
-    \n
-    **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)
-    \n
-    L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect.
-    "
+    description: |+
+      "Savoir si un particulier est bénéficiaire de la complémentaire santé solidaire (C2S).
+      \n\n
+      Pour de plus amples informations sur cette api et y avoir accès en avant première, veuillez contacter l'équipe API Particulier.
+      \n
+      **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)
+      \n
+      L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect.
+      "
     tags:
       - Complementaire Sante Solidaire
     parameters:
@@ -75,14 +77,15 @@ cnav:
       status:
         title: "Statut bénéficiaire de la complémentaire santé solidaire (C2S)"
         type: string
-        description: "Indique si le particulier est bénéficiaire de la complémentaire de santé solidaire au moment de l'appel. Cet indicateur précise sous quelle forme la C2S est attribuée (avec ou sans participation financière).
-        \n
-        \n
-        - Si le statut est 'beneficiaire_sans_participation_financiere', cela signifie que le particulier est bénéficiaire d'une C2S sans participation financière.
-        \n
-        - Si le statut est 'beneficiaire_avec_participation_financiere', cela signifie que le particulier est d'une bénéficiaire de C2S avec participation financière.
-        \n
-        - Si le statut est 'non_beneficiaire_css', cela signifie que le particulier n'est pas concerné par la C2S."
+        description: |+
+          "Indique si le particulier est bénéficiaire de la complémentaire de santé solidaire au moment de l'appel. Cet indicateur précise sous quelle forme la C2S est attribuée (avec ou sans participation financière).
+          \n
+          \n
+          - Si le statut est 'beneficiaire_sans_participation_financiere', cela signifie que le particulier est bénéficiaire d'une C2S sans participation financière.
+          \n
+          - Si le statut est 'beneficiaire_avec_participation_financiere', cela signifie que le particulier est d'une bénéficiaire de C2S avec participation financière.
+          \n
+          - Si le statut est 'non_beneficiaire_css', cela signifie que le particulier n'est pas concerné par la C2S."
         enum:
           - "beneficiaire_sans_participation_financiere"
           - "beneficiaire_avec_participation_financiere"
@@ -91,29 +94,33 @@ cnav:
         title: "Date d'ouverture du droit à la C2S"
         type: string
         nullable: true
-        description: "Date de début de droit à la complémentaire santé solidaire (C2S) si le particulier est bénéficiaire.
-        \n
-        Ce champs est null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
+        description: |+
+          "Date de début de droit à la complémentaire santé solidaire (C2S) si le particulier est bénéficiaire.
+          \n
+          Ce champs est null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
         example: '1992-11-29'
       dateFin:
         title: "Date de fermeture du droit à la C2S"
         type: string
         nullable: true
-        description: "Date de fin de droit à la complémentaire santé solidaire (C2S) du particulier bénéficiaire.
-        \n
-        Ce champs est calculé en ajoutant 12 mois à la date de début de droit à la C2S.
-        \n
-        Ce champs sera null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
+        description: |+
+          "Date de fin de droit à la complémentaire santé solidaire (C2S) du particulier bénéficiaire.
+          \n
+          Ce champs est calculé en ajoutant 12 mois à la date de début de droit à la C2S.
+          \n
+          Ce champs sera null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
         example: '1993-11-29'
   quotient-familial-v2:
     title: Quotient familial MSA & CAF
-    description: "Quotient familial et composition de la famille d'un allocataire du régime agricole (régime général à venir).
-    \n
-    Pour de plus amples informations sur cette api et y avoir accès en avant première, veuillez contacter l'équipe API Particulier.
-    \n
-    **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnav_quotient_familial_v2)
-    \n
-    L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
+    description: |+
+      "Quotient familial et composition de la famille d'un allocataire du régime agricole (régime général à venir).
+      \n
+      Pour de plus amples informations sur cette api et y avoir accès en avant première, veuillez contacter l'équipe API Particulier.
+      \n
+      **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnav_quotient_familial_v2)
+      \n
+      L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
+    cache_duration: "La durée du cache est de 24 heure."
     tags:
       - Quotient familial
     parameters:
@@ -343,19 +350,21 @@ cnav:
         title: "Date d'ouverture du droit au RSA"
         type: string
         nullable: true
-        description: "Date de début de droit au RSA si le particulier est bénéficiaire.
-        \n
-        Ce champs est null dans le cas où le particulier n'est pas bénéficiaire du RSA."
+        description: |+
+          "Date de début de droit au RSA si le particulier est bénéficiaire.
+          \n
+          Ce champs est null dans le cas où le particulier n'est pas bénéficiaire du RSA."
         example: '1992-11-29'
       dateFin:
         title: "Date de fermeture du droit au Revenue de solidarité active"
         type: string
         nullable: true
-        description: "Date de fin de droit au Revenue de solidarité active du particulier bénéficiaire.
-        \n
-        Ce champs est calculé en ajoutant 3 mois à la date de début de droit du RSA.
-        \n
-        Ce champs sera null dans le cas où le particulier n'est pas bénéficiaire du RSA."
+        description: |+
+          "Date de fin de droit au Revenue de solidarité active du particulier bénéficiaire.
+          \n
+          Ce champs est calculé en ajoutant 3 mois à la date de début de droit du RSA.
+          \n
+          Ce champs sera null dans le cas où le particulier n'est pas bénéficiaire du RSA."
         example: '1993-02-20'
 
   aah:
@@ -378,9 +387,10 @@ cnav:
         title: "Date d'ouverture du droit à l'AAH"
         type: string
         nullable: true
-        description: "Date de début de droit à l'AAH si le particulier est bénéficiaire.
-        \n
-        Ce champs est null dans le cas où le particulier n'est pas bénéficiaire de l'AAH."
+        description: |+
+          "Date de début de droit à l'AAH si le particulier est bénéficiaire.
+          \n
+          Ce champs est null dans le cas où le particulier n'est pas bénéficiaire de l'AAH."
         example: '1992-11-29'
 
   asf:
@@ -403,19 +413,21 @@ cnav:
         title: "Date d'ouverture du droit à l'ASF"
         type: string
         nullable: true
-        description: "Date de début de droit à l'ASF si le particulier est bénéficiaire.
-        \n
-        Ce champs est null dans le cas où le particulier n'est pas bénéficiaire de l'ASF."
+        description: |+
+          "Date de début de droit à l'ASF si le particulier est bénéficiaire.
+          \n
+          Ce champs est null dans le cas où le particulier n'est pas bénéficiaire de l'ASF."
         example: '1992-11-29'
       dateFin:
         title: "Date de fermeture du droit à l'ASF"
         type: string
         nullable: true
-        description: "Date de fin de droit à l'Allocation de Soutien Familial du particulier bénéficiaire.
-        \n
-        Ce champs est calculé en ajoutant 12 mois à la date de début de droit à l'ASF.
-        \n
-        Ce champs sera null dans le cas où le particulier n'est pas bénéficiaire de l'ASF."
+        description: |+
+          "Date de fin de droit à l'Allocation de Soutien Familial du particulier bénéficiaire.
+          \n
+          Ce champs est calculé en ajoutant 12 mois à la date de début de droit à l'ASF.
+          \n
+          Ce champs sera null dans le cas où le particulier n'est pas bénéficiaire de l'ASF."
         example: '1993-11-29'
 
   prime_activite:
@@ -446,17 +458,19 @@ cnav:
         title: "Date d'ouverture du droit à la prime d'activité"
         type: string
         nullable: true
-        description: "Date de début de droit à la prime d'activité si le particulier est bénéficiaire.
-        \n
-        Ce champs est null dans le cas où le particulier n'est pas bénéficiaire de la prime d'activité."
+        description: |+
+          "Date de début de droit à la prime d'activité si le particulier est bénéficiaire.
+          \n
+          Ce champs est null dans le cas où le particulier n'est pas bénéficiaire de la prime d'activité."
         example: '1992-11-20'
       dateFin:
         title: "Date de fermeture du droit à la prime d'activité"
         type: string
         nullable: true
-        description: "Date de fin de droit à la prime d'activité du particulier bénéficiaire.
-        \n
-        Ce champs est calculé en ajoutant 3 mois à la date de début de droit de la prime d'activité.
-        \n
-        Ce champs sera null dans le cas où le particulier n'est pas bénéficiaire de la prime d'activité."
+        description: |+
+          "Date de fin de droit à la prime d'activité du particulier bénéficiaire.
+          \n
+          Ce champs est calculé en ajoutant 3 mois à la date de début de droit de la prime d'activité.
+          \n
+          Ce champs sera null dans le cas où le particulier n'est pas bénéficiaire de la prime d'activité."
         example: '1993-02-20'

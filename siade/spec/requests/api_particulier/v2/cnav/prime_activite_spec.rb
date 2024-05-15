@@ -7,6 +7,8 @@ RSpec.describe "CNAV: Prime d'activité", api: :particulier, type: %i[request sw
 
       produces 'application/json'
 
+      cacheable_request
+
       parameter name: 'X-Api-Key', in: :header, type: :string
 
       parameter name: :recipient,
@@ -46,6 +48,8 @@ RSpec.describe "CNAV: Prime d'activité", api: :particulier, type: %i[request sw
         describe 'with valid token and mandatory params' do
           response '200', 'Dossier trouvé' do
             description SwaggerData.get('cnav.prime_activite.description')
+
+            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
 
             schema build_rswag_response_api_particulier(
               attributes: SwaggerData.get('cnav.prime_activite.attributes')
@@ -124,6 +128,8 @@ RSpec.describe "CNAV: Prime d'activité", api: :particulier, type: %i[request sw
           response '200', 'Dossier trouvé' do
             description SwaggerData.get('cnav.prime_activite.description')
 
+            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+
             schema build_rswag_response_api_particulier(
               attributes: SwaggerData.get('cnav.prime_activite.attributes')
             )
@@ -160,6 +166,8 @@ RSpec.describe "CNAV: Prime d'activité", api: :particulier, type: %i[request sw
 
           response '200', 'Dossier trouvé' do
             description SwaggerData.get('cnav.prime_activite.description')
+
+            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
 
             schema build_rswag_response_api_particulier(
               attributes: SwaggerData.get('cnav.prime_activite.attributes')

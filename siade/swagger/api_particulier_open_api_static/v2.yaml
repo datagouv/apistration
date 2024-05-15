@@ -44,6 +44,13 @@ paths:
 
         **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnaf_quotient_familial)
       parameters:
+        - name: Cache-Control
+          in: header
+          description: Si cette valeur est fixée à "no-cache", le système de cache est
+            alors ignoré et la donnée est directement récupérée depuis le fournisseur
+            de données.
+          schema:
+            type: string
         - name: numeroAllocataire
           in: query
           description: Numéro d'allocataire. Numéro de 1 à 7 chiffres. Le numéro d'allocataire n'est pas un numéro unique. Pour être identifiant, il doit être accompagné d'un code postal.
@@ -76,6 +83,23 @@ paths:
         "200":
           x-operationId: api_particulier_v2_cnaf_quotient_familial
           description: Foyer tel qu'il est déclaré à la CAF
+          headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
           content:
             application/json:
               schema:
