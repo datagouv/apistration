@@ -1,7 +1,9 @@
 name: Deployment via HTTPS (sandbox)
 
 on:
-  workflow_dispatch: ~
+  workflow_dispatch:
+    branches:
+      - '*'
 
 jobs:
   deployment:
