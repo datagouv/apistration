@@ -1,10 +1,10 @@
 class CNAV::QuotientFamilialV2 < CNAV::RetrieverOrganizer
   REGIME_CODE_MSA = '00171001'.freeze
-  REGIME_CODE_CNAV = '00810011'.freeze
+  REGIME_CODE_CNAF = '00810011'.freeze
 
   REGIME_CODE_LABEL = {
     REGIME_CODE_MSA => 'MSA',
-    REGIME_CODE_CNAV => 'CNAV'
+    REGIME_CODE_CNAF => 'CNAF'
   }.freeze
 
   organize CNAV::QuotientFamilialV2::ValidateParams,

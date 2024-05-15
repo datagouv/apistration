@@ -1,10 +1,10 @@
 class CNAV::QuotientFamilialV2::ValidateResponse < ValidateResponse
   REGIME_CODE_MSA = '00171001'.freeze
-  REGIME_CODE_CNAV = '00810011'.freeze
+  REGIME_CODE_CNAF = '00810011'.freeze
 
   REGIME_CODE_LABEL = {
     REGIME_CODE_MSA => 'MSA',
-    REGIME_CODE_CNAV => 'CNAV'
+    REGIME_CODE_CNAF => 'CNAF'
   }.freeze
 
   def call
@@ -21,7 +21,7 @@ class CNAV::QuotientFamilialV2::ValidateResponse < ValidateResponse
   end
 
   def not_found_message
-    return "Le dossier allocataire n'a pas été trouvé auprès de la CNAV." if regime == 'CNAV'
+    return "Le dossier allocataire n'a pas été trouvé auprès de la CNAF." if regime == 'CNAF'
     return "Le dossier allocataire n'a pas été trouvé auprès de la MSA." if regime == 'MSA'
     return "L'allocataire que vous cherchez n'a pas été reconnu" if regime == 'SNGI'
 

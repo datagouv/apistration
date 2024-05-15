@@ -13,7 +13,7 @@ RSpec.describe APIParticulier::CNAV::QuotientFamilialV2::V2, type: :serializer d
   let(:all_scopes) { %w[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse openid identite_pivot] }
 
   before do
-    response['X-APISECU-FD'] = CNAV::QuotientFamilialV2::REGIME_CODE_CNAV
+    response['X-APISECU-FD'] = CNAV::QuotientFamilialV2::REGIME_CODE_CNAF
   end
 
   context 'with all scopes' do

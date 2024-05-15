@@ -83,7 +83,7 @@ class CNAV::QuotientFamilialV2::BuildResource < BuildResource
   end
 
   def cnav?
-    response['X-APISECU-FD'] == CNAV::QuotientFamilialV2::REGIME_CODE_CNAV
+    response['X-APISECU-FD'] == CNAV::QuotientFamilialV2::REGIME_CODE_CNAF
   end
 
   def regime

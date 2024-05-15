@@ -78,7 +78,7 @@ RSpec.describe CNAV::QuotientFamilialV2::BuildResource, type: :build_resource do
             codePostalVille: '81700 GARREVAQUES',
             pays: 'FRANCE'
           },
-          regime: 'CNAV',
+          regime: 'CNAF',
           quotientFamilial: 464,
           annee: 2023,
           mois: 6,
@@ -128,7 +128,7 @@ RSpec.describe CNAV::QuotientFamilialV2::BuildResource, type: :build_resource do
             codePostalVille: '81700 GARREVAQUES',
             pays: 'FRANCE'
           },
-          regime: 'CNAV',
+          regime: 'CNAF',
           quotientFamilial: 464,
           annee: 2023,
           mois: 6,
