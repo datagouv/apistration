@@ -14,6 +14,10 @@ class APIParticulier::V2::CNAV::AbstractController < APIParticulierController
 
   protected
 
+  def cache_key
+    "#{request.path}:#{user_identity_params.to_query}"
+  end
+
   def operation_id
     raise NotImplementedError
   end
@@ -23,13 +27,7 @@ class APIParticulier::V2::CNAV::AbstractController < APIParticulierController
   end
 
   def organizer_params
-    user_identity_params.merge(
-      {
-        annee: params[:annee],
-        mois: params[:mois],
-        request_id:
-      }
-    )
+    user_identity_params.merge({ request_id: })
   end
 
   def user_identity_params
@@ -50,6 +48,8 @@ class APIParticulier::V2::CNAV::AbstractController < APIParticulierController
       code_insee_lieu_de_naissance: france_connect_service_user_identity.birthplace,
       code_pays_lieu_de_naissance: france_connect_service_user_identity.birthcountry,
       gender: france_connect_service_user_identity.gender == 'male' ? 'M' : 'F',
+      annee: params[:annee],
+      mois: params[:mois],
       recipient: params[:recipient]
     }
   end
@@ -64,6 +64,8 @@ class APIParticulier::V2::CNAV::AbstractController < APIParticulierController
       jour_date_de_naissance: params[:jourDateDeNaissance],
       code_pays_lieu_de_naissance: params.require(:codePaysLieuDeNaissance),
       gender: params.require(:sexe),
+      annee: params[:annee],
+      mois: params[:mois],
       recipient: current_user.siret
     }.merge(code_insee_lieu_de_naissance_or_transcogage_params)
   end
