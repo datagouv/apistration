@@ -140,6 +140,18 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulier, type: %i[request
               run_test!
             end
 
+            describe 'with invalid time period asked' do
+              response '400', 'Mauvais paramètres d\'appels' do
+                let(:annee) { Time.zone.now.year + 1 }
+
+                build_rswag_example(UnprocessableEntityError.new(:annee))
+
+                schema '$ref' => '#/components/schemas/Error'
+
+                run_test!
+              end
+            end
+
             response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
               let(:codePaysLieuDeNaissance) { '99623' }
               # rubocop:disable RSpec/ContextWording

@@ -312,6 +312,16 @@
   title: 'Limitation de débit'
   detail: "Le fournisseur de données a rejeté la demande en raison d'un trop grand nombre d'échecs antérieurs."
 
+## CNAV
+
+- code: '00353'
+  title: 'Entité non traitable'
+  detail: "L'année demandée n'est pas correctement formatée ou est dans le futur."
+
+- code: '00354'
+  title: 'Entité non traitable'
+  detail: "Le mois demandé est incorrect ou est dans le futur."
+
 ## BDF
 
 - code: '17501'
