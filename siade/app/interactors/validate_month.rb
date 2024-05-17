@@ -2,13 +2,17 @@ class ValidateMonth < ValidateParamInteractor
   def call
     return if valid?
 
-    invalid_param!(:month)
+    invalid_param!(month_param_name)
   end
 
   private
 
+  def month_param_name
+    :month
+  end
+
   def valid?
-    valid_months.include?(param(:month))
+    valid_months.include?(param(month_param_name))
   end
 
   def valid_months
