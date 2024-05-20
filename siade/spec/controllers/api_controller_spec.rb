@@ -88,7 +88,7 @@ RSpec.describe APIController do
 
       get :show, params: { siret: }
 
-      assert_response 400
+      assert_response :bad_request
     end
   end
 
@@ -102,20 +102,20 @@ RSpec.describe APIController do
 
       get :index
 
-      assert_response 400
+      assert_response :bad_request
     end
   end
 
   describe 'malformatted requests' do
     it 'returns 401 when token is missing' do
       get :index
-      assert_response 401
+      assert_response :unauthorized
     end
 
     it 'returns 401 with bad header naming' do
       request.headers['Authorization'] = "FuBearer #{yes_jwt}"
       get :index
-      assert_response 401
+      assert_response :unauthorized
     end
   end
 
@@ -128,7 +128,7 @@ RSpec.describe APIController do
 
         it 'returns 200' do
           get :index, params: mandatory_params
-          assert_response 200
+          assert_response :ok
         end
       end
 
@@ -137,7 +137,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index, params: mandatory_params
-          assert_response 401
+          assert_response :unauthorized
         end
       end
 
@@ -146,7 +146,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index, params: mandatory_params
-          assert_response 401
+          assert_response :unauthorized
         end
       end
 
@@ -155,7 +155,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index
-          assert_response 401
+          assert_response :unauthorized
         end
       end
 
@@ -164,7 +164,7 @@ RSpec.describe APIController do
 
         it 'returns 200' do
           get :index
-          assert_response 200
+          assert_response :ok
         end
       end
 
@@ -173,7 +173,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index
-          assert_response 401
+          assert_response :unauthorized
         end
       end
 
@@ -182,7 +182,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index
-          assert_response 401
+          assert_response :unauthorized
         end
       end
 
@@ -191,7 +191,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index
-          assert_response 401
+          assert_response :unauthorized
         end
       end
     end
@@ -202,7 +202,7 @@ RSpec.describe APIController do
 
         it 'returns 200' do
           get :index, params: { token: }.merge(mandatory_params)
-          assert_response 200
+          assert_response :ok
         end
       end
 
@@ -211,7 +211,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index
-          assert_response 401
+          assert_response :unauthorized
         end
       end
 
@@ -220,7 +220,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index
-          assert_response 401
+          assert_response :unauthorized
         end
       end
 
@@ -229,7 +229,7 @@ RSpec.describe APIController do
 
         it 'returns 401' do
           get :index
-          assert_response 401
+          assert_response :unauthorized
         end
       end
     end

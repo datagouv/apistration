@@ -11,7 +11,7 @@ RSpec.describe 'Mocking in staging for each routes' do
       it 'renders a 200' do
         get "/v3/ministere_interieur/rna/associations/#{valid_siret}", params: { token: yes_jwt }.merge(mandatory_params)
 
-        assert_response 200
+        assert_response :ok
       end
     end
   end
@@ -53,13 +53,13 @@ RSpec.describe 'Mocking in staging for each routes' do
     }.each do |path, params|
       it "works for #{path} by rendering 404 by default" do
         get path, params: { token: yes_jwt }.merge(params)
-        assert_response 404
+        assert_response :not_found
       end
     end
 
     it 'works for /api/ping by rendering a 200' do
       get '/api/ping'
-      assert_response 200
+      assert_response :ok
     end
   end
 end
