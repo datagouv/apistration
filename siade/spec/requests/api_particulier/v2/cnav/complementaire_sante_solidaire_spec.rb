@@ -71,10 +71,10 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulier, type:
 
           describe 'with valid token and mandatory params' do
             response '200', 'Complémentaire Santé trouvée' do
-              description SwaggerData.get('cnav.quotient-familial-v2.description')
+              description SwaggerData.get('cnav.c2s.description')
 
               schema build_rswag_response_api_particulier(
-                attributes: SwaggerData.get('cnav.quotient-familial-v2.attributes')
+                attributes: SwaggerData.get('cnav.c2s.attributes')
               )
 
               run_test!
@@ -168,7 +168,7 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulier, type:
             stub_cnav_valid_with_franceconnect_data('complementaire_sante_solidaire', siret: recipient)
           end
 
-          response '200', 'Quotient Familial trouvée' do
+          response '200', 'Complementaire Santé Solidaire trouvée' do
             description SwaggerData.get('cnav.c2s.description')
 
             schema build_rswag_response_api_particulier(
@@ -205,7 +205,7 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulier, type:
             stub_cnav_valid_with_franceconnect_data('complementaire_sante_solidaire', siret: recipient)
           end
 
-          response '200', 'Quotient Familial trouvée' do
+          response '200', 'Complementaire Santé Solidaire trouvée' do
             description SwaggerData.get('cnav.c2s.description')
 
             schema build_rswag_response_api_particulier(
