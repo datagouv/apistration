@@ -1,0 +1,16 @@
+---
+title: 'Reponse 502'
+params:
+  siret: '61229628734734'
+description: 'INSEE Liens de successions - Exemple 502'
+status: 502
+payload: |-
+  {
+    "errors": [
+      {
+        "title": "Erreur inconnue du fournisseur de données",
+        "detail": "La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation.",
+        "code": "01999"
+      }
+    ]
+  }

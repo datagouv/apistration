@@ -1,0 +1,16 @@
+---
+title: 'Reponse 403'
+params:
+  siret: "32682221625251"
+description: 'INSEE Liens de successions - Exemple 403'
+status: 403
+payload: |-
+  {
+    "errors": [
+      {
+        "title": "Privilèges insuffisants",
+        "detail": "Votre token est valide mais vos privilèges sont insuffisants. Listez vos privilèges sur /v2/privileges",
+        "code": "0100"
+      }
+    ]
+  }
