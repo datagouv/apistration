@@ -1,6 +1,6 @@
 class DGFIP::LiassesFiscales::BuildResource < ApplicationOrganizer
   around do |interactor|
-    interactor.call unless staging?
+    interactor.call unless clogged_env?
   end
 
   organize DGFIP::LiassesFiscales::BuildResourceWithoutDictionary,

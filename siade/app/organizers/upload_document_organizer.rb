@@ -10,7 +10,7 @@ class UploadDocumentOrganizer < ApplicationOrganizer
       end
 
       around do |interactor|
-        interactor.call unless staging?
+        interactor.call unless clogged_env?
       end
     end
   end

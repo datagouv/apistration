@@ -6,6 +6,6 @@ class FranceConnect::BuildDataFromAccessTokenInteractor < ApplicationInteractor
   end
 
   def from_france_connect?
-    !(Rails.env.staging? || Rails.env.development?) || context.mocked_data.nil?
+    !use_mocked_data? || context.mocked_data.nil?
   end
 end

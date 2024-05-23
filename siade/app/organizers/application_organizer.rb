@@ -1,7 +1,7 @@
 class ApplicationOrganizer
   include Interactor::Organizer
 
-  def staging?
-    Rails.env.staging? || Rails.env.development?
+  def clogged_env?
+    Rails.env.development? || Rails.env.staging?
   end
 end
