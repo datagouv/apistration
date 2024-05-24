@@ -1,4 +1,4 @@
-class FranceConnect::DataFetcherThroughAccessToken::BuildServiceUserIdentity < FranceConnect::BuildDataFromAccessTokenInteractor
+class FranceConnect::V1::DataFetcherThroughAccessToken::BuildServiceUserIdentity < FranceConnect::V1::BuildDataFromAccessTokenInteractor
   def call
     context.service_user_identity = Resource.new(normalized_identity)
   end

@@ -1,4 +1,4 @@
-RSpec.describe FranceConnect::DataFetcherThroughAccessToken::MakeRequest, type: :make_request do
+RSpec.describe FranceConnect::V1::DataFetcherThroughAccessToken::MakeRequest, type: :make_request do
   subject(:make_call) { described_class.call(params:) }
 
   let(:params) do

@@ -1,4 +1,4 @@
-class FranceConnect::DataFetcherThroughAccessToken::ValidateResponse < ValidateResponse
+class FranceConnect::V1::DataFetcherThroughAccessToken::ValidateResponse < ValidateResponse
   def call
     handle_invalid_token_error if [400, 401].include?(http_code)
     unknown_provider_response! if invalid_json?

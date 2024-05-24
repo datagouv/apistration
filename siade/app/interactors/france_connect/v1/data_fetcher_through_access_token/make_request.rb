@@ -1,4 +1,4 @@
-class FranceConnect::DataFetcherThroughAccessToken::MakeRequest < MakeRequest::Post
+class FranceConnect::V1::DataFetcherThroughAccessToken::MakeRequest < MakeRequest::Post
   def call
     super
 

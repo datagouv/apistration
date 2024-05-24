@@ -1,4 +1,4 @@
-RSpec.describe FranceConnect::DataFetcherThroughAccessToken::BuildServiceUserIdentity, type: :interactor do
+RSpec.describe FranceConnect::V1::DataFetcherThroughAccessToken::BuildServiceUserIdentity, type: :interactor do
   describe '.call' do
     subject(:call) { described_class.call(response:) }
 

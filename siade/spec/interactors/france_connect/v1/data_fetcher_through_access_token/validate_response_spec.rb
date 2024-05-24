@@ -1,4 +1,4 @@
-RSpec.describe FranceConnect::DataFetcherThroughAccessToken::ValidateResponse, type: :validate_response do
+RSpec.describe FranceConnect::V1::DataFetcherThroughAccessToken::ValidateResponse, type: :validate_response do
   describe '.call' do
     subject(:call) { described_class.call(response:, provider_name: 'FranceConnect') }
 
