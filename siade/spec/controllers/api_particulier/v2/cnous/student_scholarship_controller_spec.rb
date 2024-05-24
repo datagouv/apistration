@@ -140,7 +140,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
     end
 
     let(:recipient) { valid_siret(:recipient) }
-    let(:params) { default_france_connect_identity_attributes.merge(recipient:) }
+    let(:params) { default_france_connect_v1_identity_attributes.merge(recipient:) }
 
     before do
       allow(CNOUS::StudentScholarshipWithFranceConnect).to receive(:call).and_call_original
@@ -165,13 +165,13 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
 
       expect(CNOUS::StudentScholarshipWithFranceConnect).to have_received(:call).with(
         hash_including(
-          params: default_france_connect_identity_attributes
+          params: default_france_connect_v1_identity_attributes
         )
       )
     end
 
     describe 'when recipient is missing' do
-      let(:params) { default_france_connect_identity_attributes.merge(recipient: nil) }
+      let(:params) { default_france_connect_v1_identity_attributes.merge(recipient: nil) }
 
       its(:status) { is_expected.to eq(400) }
 

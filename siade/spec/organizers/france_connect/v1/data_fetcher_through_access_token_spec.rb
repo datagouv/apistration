@@ -1,4 +1,4 @@
-RSpec.describe FranceConnect::DataFetcherThroughAccessToken, type: :retriever_organizer do
+RSpec.describe FranceConnect::V1::DataFetcherThroughAccessToken, type: :retriever_organizer do
   subject { described_class.call(params: { token: }) }
 
   let(:token) { 'token' }
@@ -13,7 +13,7 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken, type: :retriever_or
         allow(MockDataBackend).to receive(:get_response_for).and_return(
           {
             status: '200',
-            payload: france_connect_checktoken_payload(scopes: minimal_france_connect_scopes).stringify_keys
+            payload: france_connect_v1_checktoken_payload(scopes: minimal_france_connect_v1_scopes).stringify_keys
           }
         )
       end
@@ -32,7 +32,7 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken, type: :retriever_or
 
       context 'when token is valid' do
         before do
-          mock_valid_france_connect_checktoken
+          mock_valid_france_connect_v1_checktoken
         end
 
         it { is_expected.to be_a_success }
@@ -44,7 +44,7 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken, type: :retriever_or
 
       context 'when token is invalid' do
         before do
-          mock_invalid_france_connect_checktoken
+          mock_invalid_france_connect_v1_checktoken
         end
 
         it { is_expected.to be_a_failure }
@@ -56,7 +56,7 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken, type: :retriever_or
 
   context 'with valid token' do
     before do
-      mock_valid_france_connect_checktoken
+      mock_valid_france_connect_v1_checktoken
     end
 
     it { is_expected.to be_a_success }
@@ -68,7 +68,7 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken, type: :retriever_or
 
   context 'with invalid token' do
     before do
-      mock_invalid_france_connect_checktoken(kind)
+      mock_invalid_france_connect_v1_checktoken(kind)
     end
 
     context 'when it is expired or not found' do

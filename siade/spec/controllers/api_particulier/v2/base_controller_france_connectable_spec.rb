@@ -72,7 +72,7 @@ RSpec.describe APIParticulier::V2::BaseController, 'france connectable' do
         its(:status) { is_expected.to eq(200) }
 
         it 'affects person attributes in controller context' do
-          expect(make_call.body).to eq(default_france_connect_identity_attributes.to_json)
+          expect(make_call.body).to eq(default_france_connect_v1_identity_attributes.to_json)
         end
 
         context 'when organizer has invalid FranceConnect params error' do

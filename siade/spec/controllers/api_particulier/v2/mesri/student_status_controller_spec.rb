@@ -130,7 +130,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
     end
 
     let(:recipient) { valid_siret(:recipient) }
-    let(:params) { default_france_connect_identity_attributes.merge(recipient:) }
+    let(:params) { default_france_connect_v1_identity_attributes.merge(recipient:) }
 
     before do
       allow(MESRI::StudentStatus::WithCivility).to receive(:call).and_call_original
@@ -177,7 +177,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
     end
 
     context 'when there is an ine param' do
-      let(:params) { default_france_connect_identity_attributes.merge(recipient:, ine: 'whatever') }
+      let(:params) { default_france_connect_v1_identity_attributes.merge(recipient:, ine: 'whatever') }
 
       it 'calls MESRI::StudentStatus::WithCivility with france connect person identity attributes, only first first name (ignore INE param)' do
         make_call

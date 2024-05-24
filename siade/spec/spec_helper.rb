@@ -141,6 +141,7 @@ RSpec.configure do |config|
   config.include ProviderStubs::CNAFQuotientFamilial
   config.include ProviderStubs::CNAV
   config.include ProviderStubs::FranceConnect
+  config.include ProviderStubs::FranceConnectV1
   config.include ProviderStubs::CNOUSStudentScholarship
   config.include ProviderStubs::BanqueDeFrance
   config.include ProviderStubs::MEN

@@ -21,8 +21,8 @@ RSpec.describe FranceConnect::DataFetcherThroughAccessToken::BuildServiceUserIde
       let(:payload) do
         {
           scope: nil,
-          identity: default_france_connect_identity_attributes.except(:preferred_username),
-          client: france_connect_client_attributes
+          identity: default_france_connect_v1_identity_attributes.except(:preferred_username),
+          client: france_connect_v1_client_attributes
         }
       end
 

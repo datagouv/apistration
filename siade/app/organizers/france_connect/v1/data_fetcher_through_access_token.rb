@@ -1,4 +1,4 @@
-class FranceConnect::DataFetcherThroughAccessToken < RetrieverOrganizer
+class FranceConnect::V1::DataFetcherThroughAccessToken < RetrieverOrganizer
   organize FranceConnect::DataFetcherThroughAccessToken::MakeRequest,
     FranceConnect::DataFetcherThroughAccessToken::ValidateResponse,
     FranceConnect::DataFetcherThroughAccessToken::BuildUser,
