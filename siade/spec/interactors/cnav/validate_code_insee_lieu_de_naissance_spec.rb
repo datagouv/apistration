@@ -20,6 +20,14 @@ RSpec.describe CNAV::ValidateCodeINSEELieuDeNaissance, type: :validate_param_int
       its(:errors) { is_expected.to be_empty }
     end
 
+    context 'when it is 5 valid digits as integer' do
+      let(:code_insee_lieu_de_naissance) { 12_345 }
+
+      it { is_expected.to be_a_success }
+
+      its(:errors) { is_expected.to be_empty }
+    end
+
     context 'when it is 6 digits' do
       let(:code_insee_lieu_de_naissance) { '123456' }
 
