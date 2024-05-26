@@ -147,6 +147,8 @@ RSpec.configure do |config|
   config.include ProviderStubs::GIPMDS
   config.include ProviderStubs::Qualifelec
   config.include ProviderStubs::INSEE
+  config.include ProviderStubs::INPI
+  config.include ProviderStubs::INPI::RNE
 
   config.include ActivateStrictVcrRequestMatchingForV3
   config.extend ActivateStrictVcrRequestMatchingForV3
