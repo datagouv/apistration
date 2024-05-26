@@ -1,5 +1,5 @@
 RSpec.describe INPI::RNE::MakeRequest, type: :make_request do
-  subject(:make_call) { described_class.call(token:, params:) }
+  subject(:make_call) { DummyRNEMakeRequest.call(token:, params:) }
 
   let(:token) { 'token' }
   let(:siren) { valid_siren }
@@ -8,9 +8,8 @@ RSpec.describe INPI::RNE::MakeRequest, type: :make_request do
       siren:
     }
   end
-
   let!(:stubbed_request) do
-    stub_request(:get, "#{Siade.credentials[:inpi_rne_unites_legales_url]}/#{siren}").with(
+    stub_request(:get, 'https://rne_stubbed_url').with(
       headers: {
         'Content-Type' => 'application/json',
         'Authorization' => "Bearer #{token}"
@@ -18,6 +17,14 @@ RSpec.describe INPI::RNE::MakeRequest, type: :make_request do
     ).to_return(
       status: 200
     )
+  end
+
+  before(:all) do
+    class DummyRNEMakeRequest < INPI::RNE::MakeRequest
+      def request_uri
+        URI('https://rne_stubbed_url')
+      end
+    end
   end
 
   context 'when performing a request' do

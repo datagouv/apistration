@@ -11,7 +11,7 @@ class INPI::RNE::MakeRequest < MakeRequest::Get
   end
 
   def request_uri
-    URI("#{Siade.credentials[:inpi_rne_unites_legales_url]}/#{siren}")
+    raise NotImplementedError
   end
 
   def siren
