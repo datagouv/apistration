@@ -33,6 +33,10 @@ module ResourceHelpers
     http_code == 502
   end
 
+  def http_too_many_requests?
+    http_code == 429
+  end
+
   def http_unavailable?
     http_code == 503
   end
