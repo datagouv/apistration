@@ -9,80 +9,80 @@ inpi_rne:
       nom:
         title: "Nom du bénéficiaire effectif"
         type: "string"
-        example: 'MARTIN'
+        example: "MARTIN"
       nom_usage:
         title: "Nom d'usage du bénéficiaire effectif"
         type: "string"
-        example: 'DUBOIS'
+        example: "DUBOIS"
         nullable: true
       prenoms:
         title: "Liste des prénoms du bénéficiaire effectif"
-        type: 'array'
+        type: "array"
         example:
-          - 'JEAN'
-          - 'JACQUES'
+          - "JEAN"
+          - "JACQUES"
         items:
-          type: 'string'
+          type: "string"
       date_naissance:
-        type: 'object'
+        type: "object"
         title: "Date de naissance du bénéficiaire effectif"
         additionalProperties: false
         properties:
           annee:
             title: "Année de la date de naissance"
-            type: 'string'
-            example: '1990'
+            type: "string"
+            example: "1990"
           mois:
             title: "Mois de la date de naissance"
-            type: 'string'
-            example: '01'
+            type: "string"
+            example: "01"
             enum:
-              - '01'
-              - '02'
-              - '03'
-              - '04'
-              - '05'
-              - '06'
-              - '07'
-              - '08'
-              - '09'
-              - '10'
-              - '11'
-              - '12'
+              - "01"
+              - "02"
+              - "03"
+              - "04"
+              - "05"
+              - "06"
+              - "07"
+              - "08"
+              - "09"
+              - "10"
+              - "11"
+              - "12"
       nationalite:
-        type: 'string'
+        type: "string"
         title: "Nationalité du bénéficiaire effectif"
         example: "France"
       pays_residence:
-        type: 'string'
+        type: "string"
         title: "Pays de résidence du bénéficiaire effectif"
         example: "FRANCE"
         nullable: true
       modalites:
         title: "Liste des modalités de contrôle du bénéficiaire effectif"
-        type: 'object'
+        type: "object"
         additionalProperties: false
         properties:
           detention_de_capital:
             title: "Détention de capital"
             description: "Une personne physique est considérée comme bénéficiaire effectif si elle possède directement ou indirectement plus de 25 % du capital. Dans ce cas, ce tableau dresse le détail de cette détention de capital."
-            type: 'object'
+            type: "object"
             additionalProperties: false
             properties:
               parts_totale:
                 title: "Total des parts détenues dans l'unité légale"
                 description: "Pourcentage total du capital détenu et déclaré par le bénéficiaire qui correspond à la somme des parts directes et indirectes. Ce total est soit égal à 0%, soit supérieur ou égal à 25%. En effet, en dessous de ce ratio, la personne physique ne déclare pas son capital."
-                type: 'number'
+                type: "number"
                 example: 51.0
               parts_directes:
                 title: "Parts directes"
-                type: 'object'
+                type: "object"
                 additionalProperties: false
                 properties:
                   detention:
                     title: "Indique si le bénéficiaire détient des parts directes."
                     description: "Détermine si le bénéficiaire possède du capital direct (parts sociales ou actions) de l'unité légale. Par opposition à une détention indirecte du capital, via une personne morale."
-                    type: 'boolean'
+                    type: "boolean"
                     example: true
                   # rdd:
                   #   title: "FIXME Detention part directe rdd"
@@ -90,23 +90,23 @@ inpi_rne:
                   #   example: 51.0
                   pleine_propriete:
                     title: "Proportion détenue en pleine propriété"
-                    description: "Pourcentage de parts directes détenues en pleine propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                    type: 'number'
+                    description: 'Pourcentage de parts directes détenues en pleine propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                    type: "number"
                     example: 42.0
                   nue_propriete:
                     title: "Proportion détenue en nue-propriété"
-                    description: "Pourcentage de parts directes détenues en nue-propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                    type: 'number'
+                    description: 'Pourcentage de parts directes détenues en nue-propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                    type: "number"
                     example: 9.0
               parts_indirectes:
                 title: "Parts indirectes"
-                type: 'object'
+                type: "object"
                 additionalProperties: false
                 properties:
                   detention:
                     title: "Indique si le bénéficiaire détient des parts indirectes"
                     description: "Détermine si le bénéficiaire possède du capital (parts sociales ou actions) de manière indirecte sur l'unité légale, c'est-à-dire via une personne morale."
-                    type: 'boolean'
+                    type: "boolean"
                     example: false
                   # rdd:
                   #   title: "FIXME Detention part indirecte rdd"
@@ -114,55 +114,55 @@ inpi_rne:
                   #   example: 0.0
                   par_indivision:
                     title: "Via une indivision"
-                    description: "Les parts indirectes peuvent être détenues par le biais d'une indivision. Après un décès, le patrimoine du défunt est en indivision, s’il y a plusieurs héritiers. Cela signifie que les biens de la succession appartiennent indistinctement à tous les héritiers sans que leurs parts respectives ne soient matériellement individualisées. Plus d'infos sur le lien suivant: <a href=\"https://www.economie.gouv.fr/particuliers/heritage-succession-indivision\">Succession : qu'est-ce que l'indivision ?</a>"
-                    type: 'object'
+                    description: 'Les parts indirectes peuvent être détenues par le biais d''une indivision. Après un décès, le patrimoine du défunt est en indivision, s’il y a plusieurs héritiers. Cela signifie que les biens de la succession appartiennent indistinctement à tous les héritiers sans que leurs parts respectives ne soient matériellement individualisées. Plus d''infos sur le lien suivant: <a href="https://www.economie.gouv.fr/particuliers/heritage-succession-indivision">Succession : qu''est-ce que l''indivision ?</a>'
+                    type: "object"
                     additionalProperties: false
                     properties:
                       total:
                         title: "Total des parts indirectes en indivision"
                         description: "Pourcentage total de parts indirectes détenues par le biais d'une indivision."
-                        type: 'number'
+                        type: "number"
                         example: 0.0
                       pleine_propriete:
                         title: "Proportion détenue en pleine propriété"
-                        description: "Pourcentage de parts indirectes en indivision détenues en pleine propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                        type: 'number'
+                        description: 'Pourcentage de parts indirectes en indivision détenues en pleine propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                        type: "number"
                         example: 0.0
                       nue_propriete:
                         title: "Proportion détenue en nue-propriété"
-                        description: "Pourcentage de parts indirectes en indivision détenues en nue-propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                        type: 'number'
+                        description: 'Pourcentage de parts indirectes en indivision détenues en nue-propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                        type: "number"
                         example: 0.0
                   via_personnes_morales:
                     title: "Via une ou des personnes morales"
-                    description: "Les parts indirectes peuvent être détenues par le biais d'une ou de plusieurs personnes morales intermédiaires. Plus d'infos sur les différents mécanismes de détention du capital dans <a href=\"https://entreprise.api.gouv.fr//catalogue/inpi/rne/beneficiaires_effectifs#faq_entry_answer_0_api_entreprise_endpoint_inpi_rne_beneficiaires_effectifs\">cette FAQ</a>."
-                    type: 'object'
+                    description: 'Les parts indirectes peuvent être détenues par le biais d''une ou de plusieurs personnes morales intermédiaires. Plus d''infos sur les différents mécanismes de détention du capital dans <a href="https://entreprise.api.gouv.fr//catalogue/inpi/rne/beneficiaires_effectifs#faq_entry_answer_0_api_entreprise_endpoint_inpi_rne_beneficiaires_effectifs">cette FAQ</a>.'
+                    type: "object"
                     additionalProperties: false
                     properties:
                       total:
                         title: "Total des parts indirectes via des personnes morales"
                         description: "Pourcentage total de parts indirectes détenues par le biais d'une ou de plusieurs personnes morales."
-                        type: 'number'
+                        type: "number"
                         example: 0.0
                       pleine_propriete:
                         title: "Proportion détenue en pleine propriété"
-                        description: "Pourcentage de parts indirectes via une personne morale détenues en pleine propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                        type: 'number'
+                        description: 'Pourcentage de parts indirectes via une personne morale détenues en pleine propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                        type: "number"
                         example: 0.0
                       nue_propriete:
                         title: "Proportion détenue en nue-propriété"
-                        description: "Pourcentage de parts indirectes via une personne morale détenues en nue-propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                        type: 'number'
+                        description: 'Pourcentage de parts indirectes via une personne morale détenues en nue-propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                        type: "number"
                         example: 0.0
           vocation_a_devenir_titulaire_de_parts:
             title: "Vocation par l’effet d’un acte juridique à devenir titulaire de parts"
             description: "Dans le cas d'un GIE ou GEIE (Groupements d'intérêt économique), une personne physique est considérée comme bénéficiaire effectif si elle a vocation par l’effet d’un acte juridique à devenir titulaire de plus de 25 % du capital. Dans ce cas, ce tableau dresse le détail de cette future détention de capital."
-            type: 'object'
+            type: "object"
             additionalProperties: false
             properties:
               parts_directes:
                 title: "Parts directes"
-                type: 'object'
+                type: "object"
                 additionalProperties: false
                 properties:
                   # rdd:
@@ -171,29 +171,29 @@ inpi_rne:
                   #   example: false
                   pleine_propriete:
                     title: "Proportion future détenue en pleine propriété"
-                    description: "Pourcentage de parts directes qui ont vocation à être détenues en pleine propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                    type: 'number'
+                    description: 'Pourcentage de parts directes qui ont vocation à être détenues en pleine propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                    type: "number"
                     example: 0.0
                   nue_propriete:
                     title: "Proportion future détenue en nue-propriété"
-                    description: "Pourcentage de parts directes qui ont vocation à être détenues en nue-propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                    type: 'number'
+                    description: 'Pourcentage de parts directes qui ont vocation à être détenues en nue-propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                    type: "number"
                     example: 0.0
               parts_indirectes:
                 title: "Parts indirectes"
-                type: 'object'
+                type: "object"
                 additionalProperties: false
                 properties:
                   par_indivision:
                     title: "Via une indivision"
-                    description: "Les parts indirectes peuvent être détenues par le biais d'une indivision. Après un décès, le patrimoine du défunt est en indivision, s’il y a plusieurs héritiers. Cela signifie que les biens de la succession appartiennent indistinctement à tous les héritiers sans que leurs parts respectives ne soient matériellement individualisées. Plus d'infos sur le lien suivant: <a href=\"https://www.economie.gouv.fr/particuliers/heritage-succession-indivision\">Succession : qu'est-ce que l'indivision ?</a>"
-                    type: 'object'
+                    description: 'Les parts indirectes peuvent être détenues par le biais d''une indivision. Après un décès, le patrimoine du défunt est en indivision, s’il y a plusieurs héritiers. Cela signifie que les biens de la succession appartiennent indistinctement à tous les héritiers sans que leurs parts respectives ne soient matériellement individualisées. Plus d''infos sur le lien suivant: <a href="https://www.economie.gouv.fr/particuliers/heritage-succession-indivision">Succession : qu''est-ce que l''indivision ?</a>'
+                    type: "object"
                     additionalProperties: false
                     properties:
                       total:
                         title: "Total futur des parts indirectes en indivision"
                         description: "Pourcentage total de parts indirectes qui ont vocation à être détenues par le biais d'une indivision."
-                        type: 'number'
+                        type: "number"
                         example: 0.0
                       # rdd:
                       #   title: "Vocation par l'effet d’un acte juridique à devenir titulaire indirecte pleine propriété rdd"
@@ -201,46 +201,46 @@ inpi_rne:
                       #   example: false
                       pleine_propriete:
                         title: "Proportion future détenue en pleine propriété"
-                        description: "Pourcentage de parts indirectes en indivision qui ont vocation à être détenues en pleine propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                        type: 'number'
+                        description: 'Pourcentage de parts indirectes en indivision qui ont vocation à être détenues en pleine propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                        type: "number"
                         example: 0.0
                       nue_propriete:
                         title: "Proportion future détenue en nue-propriété"
-                        description: "Pourcentage de parts indirectes en indivision qui ont vocation à être détenues en nue-propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                        type: 'number'
+                        description: 'Pourcentage de parts indirectes en indivision qui ont vocation à être détenues en nue-propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                        type: "number"
                         example: 0.0
                   via_personnes_morales:
                     title: "Via une ou des personnes morales"
-                    description: "Les parts indirectes peuvent être détenues par le biais d'une ou de plusieurs personnes morales intermédiaires. Plus d'infos sur les différents mécanismes de détention du capital dans <a href=\"https://entreprise.api.gouv.fr//catalogue/inpi/rne/beneficiaires_effectifs#faq_entry_answer_0_api_entreprise_endpoint_inpi_rne_beneficiaires_effectifs\">cette FAQ</a>."
-                    type: 'object'
+                    description: 'Les parts indirectes peuvent être détenues par le biais d''une ou de plusieurs personnes morales intermédiaires. Plus d''infos sur les différents mécanismes de détention du capital dans <a href="https://entreprise.api.gouv.fr//catalogue/inpi/rne/beneficiaires_effectifs#faq_entry_answer_0_api_entreprise_endpoint_inpi_rne_beneficiaires_effectifs">cette FAQ</a>.'
+                    type: "object"
                     additionalProperties: false
                     properties:
                       total:
                         title: "Total futur des parts indirectes via des personnes morales"
                         description: "Pourcentage total de parts indirectes qui ont vocation à être détenues par le biais d'une ou de plusieurs personnes morales."
-                        type: 'number'
+                        type: "number"
                         example: 0.0
                       pleine_propriete:
                         title: "Proportion future détenue en pleine propriété"
-                        description: "Pourcentage de parts indirectes via une personne morale qui ont vocation à être détenues en pleine propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                        type: 'number'
+                        description: 'Pourcentage de parts indirectes via une personne morale qui ont vocation à être détenues en pleine propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                        type: "number"
                         example: 0.0
                       nue_propriete:
                         title: "Proportion future détenue en nue-propriété"
-                        description: "Pourcentage de parts indirectes via une personne morale qui ont vocation à être détenues en nue-propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                        type: 'number'
+                        description: 'Pourcentage de parts indirectes via une personne morale qui ont vocation à être détenues en nue-propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                        type: "number"
                         example: 0.0
 
           droits_de_vote:
             title: "Détention de droits de vote"
             description: "Une personne physique est considérée comme bénéficiaire effectif si elle possède directement ou indirectement plus de 25 % des droits de vote de la société. Dans ce cas, ce tableau dresse le détail de cette détention de droit de vote."
-            type: 'object'
+            type: "object"
             additionalProperties: false
             properties:
               total:
                 title: "Total des droits de vote détenus dans l'unité légale"
                 description: "Pourcentage total des droits de vote détenus et déclarés par le bénéficiaire qui correspond à la somme des droits de vote directs et indirects. Ce total est soit égal à 0%, soit supérieur ou égal à 25%. En effet, en dessous de ce ratio, la personne physique ne déclare pas ses droits de vote."
-                type: 'number'
+                type: "number"
                 example: 0.0
               # detention_vote_directe_rdd:
               #   title: "FIXME Detention vote directe rdd"
@@ -248,28 +248,28 @@ inpi_rne:
               #   example: 51.0
               directes:
                 title: "Droits de vote directs"
-                type: 'object'
+                type: "object"
                 additionalProperties: false
                 properties:
                   detention:
                     title: "Indique si le bénéficiaire détient des droits de vote directs."
                     description: "Détermine si le bénéficiaire possède des droits de vote directs dans l'unité légale. Par opposition à une détention indirecte des droits de vote, via une personne morale."
-                    type: 'boolean'
+                    type: "boolean"
                     example: true
                   pleine_propriete:
                     title: "Proportion détenue en pleine propriété"
-                    description: "Pourcentage de droits de vote directs détenus en pleine propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                    type: 'number'
+                    description: 'Pourcentage de droits de vote directs détenus en pleine propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                    type: "number"
                     example: 51.0
                   nue_propriete:
                     title: "Proportion détenue en nue-propriété"
-                    description: "Pourcentage de droits de vote directs détenus en nue-propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                    type: 'number'
+                    description: 'Pourcentage de droits de vote directs détenus en nue-propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                    type: "number"
                     example: 0.0
                   usufruit:
                     title: "Proportion détenue en usufruit"
-                    description: "Pourcentage de droits de vote directs détenus en usufruit.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                    type: 'number'
+                    description: 'Pourcentage de droits de vote directs détenus en usufruit.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                    type: "number"
                     example: 0.0
               # detention_vote_indirecte_rdd:
               #   title: "FIXME Detention vote indirecte rdd"
@@ -277,94 +277,196 @@ inpi_rne:
               #   example: 0.0
               indirectes:
                 title: "Droits de vote indirects"
-                type: 'object'
+                type: "object"
                 additionalProperties: false
                 properties:
                   detention:
                     title: "Indique si le bénéficiaire détient des droits de vote indirects"
                     description: "Détermine si le bénéficiaire possède des droits de vote indirects dans l'unité légale. Par opposition à une détention indirecte des droits de vote, via une personne morale."
-                    type: 'boolean'
+                    type: "boolean"
                     example: false
                   par_indivision:
                     title: "Via une indivision"
-                    description: "Les droits de vote indirects peuvent être détenus par le biais d'une indivision. Plus d'infos sur le lien suivant: <a href=\"https://www.economie.gouv.fr/particuliers/heritage-succession-indivision\">Succession : qu'est-ce que l'indivision ?</a>"
-                    type: 'object'
+                    description: 'Les droits de vote indirects peuvent être détenus par le biais d''une indivision. Plus d''infos sur le lien suivant: <a href="https://www.economie.gouv.fr/particuliers/heritage-succession-indivision">Succession : qu''est-ce que l''indivision ?</a>'
+                    type: "object"
                     additionalProperties: false
                     properties:
                       total:
                         title: "Total des droits de vote indirects en indivision"
                         description: Pourcentage total de droits de vote indirects détenus par le biais d'une indivision.
-                        type: 'number'
+                        type: "number"
                         example: 0.0
                       pleine_propriete:
                         title: "Proportion détenue en pleine propriété"
-                        description: "Pourcentage de droits de vote indirects en indivision détenus en pleine propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                        type: 'number'
+                        description: 'Pourcentage de droits de vote indirects en indivision détenus en pleine propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                        type: "number"
                         example: 0.0
                       nue_propriete:
                         title: "Proportion détenue en nue-propriété"
-                        description: "Pourcentage de droits de vote indirects en indivision détenus en nue-propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                        type: 'number'
+                        description: 'Pourcentage de droits de vote indirects en indivision détenus en nue-propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                        type: "number"
                         example: 0.0
                       usufruit:
                         title: "Proportion détenue en usufruit"
-                        description: "Pourcentage de droits de vote indirects en indivision détenus en usufruit.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                        type: 'number'
+                        description: 'Pourcentage de droits de vote indirects en indivision détenus en usufruit.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                        type: "number"
                         example: 0.0
                   via_personnes_morales:
                     title: "Via une ou des personnes morales"
-                    description: "Les droits de vote indirects peuvent être détenus par le biais d'une ou de plusieurs personnes morales intermédiaires. Plus d'infos sur les différents mécanismes de détention des droits de vote dans <a href=\"https://entreprise.api.gouv.fr//catalogue/inpi/rne/beneficiaires_effectifs#faq_entry_answer_0_api_entreprise_endpoint_inpi_rne_beneficiaires_effectifs\">cette FAQ</a>."
-                    type: 'object'
+                    description: 'Les droits de vote indirects peuvent être détenus par le biais d''une ou de plusieurs personnes morales intermédiaires. Plus d''infos sur les différents mécanismes de détention des droits de vote dans <a href="https://entreprise.api.gouv.fr//catalogue/inpi/rne/beneficiaires_effectifs#faq_entry_answer_0_api_entreprise_endpoint_inpi_rne_beneficiaires_effectifs">cette FAQ</a>.'
+                    type: "object"
                     additionalProperties: false
                     properties:
                       total:
                         title: "Total des droits de vote indirects via des personnes morales"
                         description: "Pourcentage total des droits de vote indirects détenus par le biais d'une ou de plusieurs personnes morales."
-                        type: 'number'
+                        type: "number"
                         example: 0.0
                       pleine_propriete:
                         title: "Proportion détenue en pleine propriété"
-                        description: "Pourcentage de droits de vote indirects via une personne morale détenus en pleine propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                        type: 'number'
+                        description: 'Pourcentage de droits de vote indirects via une personne morale détenus en pleine propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                        type: "number"
                         example: 0.0
                       nue_propriete:
                         title: "Proportion détenue en nue-propriété"
-                        description: "Pourcentage de droits de vote indirects via une personne morale détenus en nue-propriété.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                        type: 'number'
+                        description: 'Pourcentage de droits de vote indirects via une personne morale détenus en nue-propriété.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                        type: "number"
                         example: 0.0
                       usufruit:
                         title: "Proportion détenue en usufruit"
-                        description: "Pourcentage de droits de vote indirects via une personne morale détenus en usufruit.<br/>Plus d'infos sur les différents des droits sur un bien sur le lien suivant: <a href=\"https://www.service-public.fr/particuliers/vosdroits/F33076\">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>"
-                        type: 'number'
+                        description: 'Pourcentage de droits de vote indirects via une personne morale détenus en usufruit.<br/>Plus d''infos sur les différents des droits sur un bien sur le lien suivant: <a href="https://www.service-public.fr/particuliers/vosdroits/F33076">Usufruit, nue-propriété, pleine propriété : quelles différences ?</a>'
+                        type: "number"
                         example: 0.0
           pouvoirs_de_controle:
             title: "Pouvoirs de controle"
             description: "Une personne physique est considérée comme bénéficiaire effectif si elle possède un pouvoir de contrôle sur les organes de gestion, d'administration de la société ou sur l'assemblée générale des associés. Dans ce cas, ce tableau dresse le détail de cette détention de pouvoir."
-            type: 'object'
+            type: "object"
             additionalProperties: false
             properties:
               decision_ag:
                 title: "Indique si le bénéficiaire détient du pouvoir de décision en Assemblée Générale"
-                type: 'boolean'
+                type: "boolean"
                 example: false
               nommage_membres_conseil_administratif:
                 title: "Indique si le bénéficiaire détient du pouvoir de nommage des membres du conseil d'administration"
-                type: 'boolean'
+                type: "boolean"
                 example: false
               autres:
                 title: "Indique si le bénéficiaire détient d'autres moyens de contrôle"
-                type: 'boolean'
+                type: "boolean"
                 example: false
           representant_legal:
             title: "Indique si le bénéficiaire est représentant légal"
-            type: 'boolean'
+            type: "boolean"
             example: false
           representant_legal_placement_sans_gestion_deleguee:
             title: "Indique si le bénéficiaire est représentant légal en placement sans gestion déléguée"
-            type: 'boolean'
+            type: "boolean"
             example: false
     meta:
       count:
         title: "Nombre de bénéficiaires"
-        type: 'integer'
+        type: "integer"
         example: 1
+
+  actes_bilans:
+    title: "Actes et bilans"
+    description: |
+      Liste des actes et bilans d'une unité légale inscrite au répertoire national des entreprises (RNE).
+      Seuls les actes et bilans publiques sont distribués. L'INPI peut potentiellement posséder des actes et bilans "partiellement confidentiels".
+    tags:
+      - "Informations générales"
+    attributes:
+      actes:
+        title: "Actes"
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            updated_at:
+              title: "Date de mise à jour de l'acte"
+              type: "string"
+              format: "date"
+              example: "2023-11-01"
+            date_depot:
+              title: "Date de dépôt de l'acte"
+              type: "string"
+              format: "date"
+              example: "2023-08-08"
+            nom_document:
+              title: "Nom du document"
+              description: "Nom du document déposé."
+              type: "string"
+              example: "X9wvz5eKvKQv_C0022A1001L257081D20230902H180411TPIJTES003PDBOR"
+            id:
+              title: "Identifiant de l'acte"
+              type: "string"
+              example: "65419234a1f7d1f2ba09bd8c"
+            types:
+              title: "Types reprise de données"
+              type: "array"
+              description: "décrit les actes incluts dans l'acte retourné. Suite à la reprise des données pré-RNE, un acte pré-RNE peut être constitué de plusieurs actes distincts (exemple: le même acte peut contenir une modification de l'adresse du siège social et une modification du capital social)."
+              nullable: true
+              items:
+                type: "object"
+                properties:
+                  acte:
+                    title: "Type d'acte"
+                    type: "string"
+                    example: "Acte"
+
+                  decision:
+                    title: "Décision"
+                    type: "string"
+                    example: "Augmentation du capital social"
+                    nullable: true
+      bilans:
+        title: "Bilans"
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            updated_at:
+              title: "Date de mise à jour du bilan"
+              type: "string"
+              format: "date"
+              example: "2023-11-01"
+            date_depot:
+              title: "Date de dépôt du bilan"
+              type: "string"
+              format: "date"
+              example: "2023-08-08"
+            nom_document:
+              title: "Nom du document"
+              description: "Nom du document déposé."
+              type: "string"
+              example: "X9wvz5eKvKQv_C0022A1001L257081D20230902H180411TPIJTES003PDBOR"
+            id:
+              title: "Identifiant du bilan"
+              type: "string"
+              example: "65419234a1f7d1f2ba09bd8c"
+            date_cloture:
+              title: "Date de clôture du bilan"
+              type: "string"
+              format: "date"
+              example: "2023-08-08"
+            type:
+              title: "Type de bilan"
+              description: |
+                Type du bilan déposé. Les différents types de bilans sont les suivants:
+                C : bilan complet
+                S : bilan simplifié
+                K : bilan consolidé
+                B : bilan de type banque
+                A : bilan de type assurance
+                AS : bilan de type agricole simplifié
+              type: "string"
+              example: "K"
+              enum:
+                - C
+                - S
+                - K
+                - B
+                - A
+                - AS
+                - AC
