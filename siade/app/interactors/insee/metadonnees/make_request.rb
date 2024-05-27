@@ -1,7 +1,7 @@
 class INSEE::Metadonnees::MakeRequest < INSEE::MakeRequest
   def extra_headers(request)
     request['Accept'] = 'application/json'
-    super(request)
+    super
   end
 
   def request_uri

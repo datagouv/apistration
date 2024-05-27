@@ -1,9 +1,9 @@
 class SIADE::SelfHostedDocument::File::PDF < SIADE::SelfHostedDocument::File::Generic
   attr_reader :decrypt
 
-  def initialize(*args, decrypt: false)
+  def initialize(*, decrypt: false)
     @decrypt = decrypt
-    super(*args)
+    super(*)
   end
 
   def perform

@@ -3,7 +3,7 @@ class INPI::RNE::MakeRequest < MakeRequest::Get
 
   def extra_headers(request)
     request['Authorization'] = "Bearer #{token}"
-    super(request)
+    super
   end
 
   def request_params

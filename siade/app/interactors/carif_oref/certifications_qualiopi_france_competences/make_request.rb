@@ -14,7 +14,7 @@ class CarifOref::CertificationsQualiopiFranceCompetences::MakeRequest < MakeRequ
   end
 
   def extra_headers(request)
-    super(request)
+    super
 
     request['Accept'] = 'application/json'
     request['token-connexion'] = Siade.credentials[:carif_oref_quiforme_token]

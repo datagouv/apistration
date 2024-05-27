@@ -38,7 +38,7 @@ module APIParticulier::FranceConnectable
 
   def render_errors(organizer)
     track_invalid_parameters_error_for_france_connect(organizer, organizer.errors) if invalid_france_connect_parameters_error?(organizer)
-    super(organizer)
+    super
   end
 
   def invalid_france_connect_parameters_error?(organizer)

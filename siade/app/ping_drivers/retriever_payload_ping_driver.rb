@@ -12,7 +12,7 @@ class RetrieverPayloadPingDriver < RetrieverPingDriver
   private
 
   def payload_passes_test?
-    resource_hash.public_send(:dig, *key_to_dig.split('.')).public_send(method_to_test_on_payload)
+    resource_hash.dig(*key_to_dig.split('.')).public_send(method_to_test_on_payload)
   rescue NoMethodError, TypeError
     false
   end

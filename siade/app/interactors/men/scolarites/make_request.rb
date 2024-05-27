@@ -18,7 +18,7 @@ class MEN::Scolarites::MakeRequest < MakeRequest::Get
 
   def extra_headers(request)
     request['Authorization'] = "Bearer #{context.token}"
-    super(request)
+    super
   end
 
   def mocking_params # rubocop:disable Metrics/AbcSize

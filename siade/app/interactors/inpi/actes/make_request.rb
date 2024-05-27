@@ -13,7 +13,7 @@ class INPI::Actes::MakeRequest < MakeRequest::Get
 
   def extra_headers(request)
     request['Cookie'] = context.cookie
-    super(request)
+    super
   end
 
   private

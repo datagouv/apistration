@@ -11,7 +11,7 @@ class APIEntreprise::EntrepriseSerializer::V2 < APIEntreprise::V2BaseSerializer
 
   def initialize(object, options = {})
     @options = options
-    super(object, options)
+    super
   end
 
   def with_non_diffusable?

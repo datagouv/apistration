@@ -7,7 +7,7 @@ class FNTP::CarteProfessionnelleTravauxPublics::MakeRequest < MakeRequest::Get
 
   def extra_headers(request)
     request['Content-Type'] = 'application/pdf'
-    super(request)
+    super
   end
 
   def request_params

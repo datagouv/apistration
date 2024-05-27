@@ -2,7 +2,7 @@ class Infogreffe::MandatairesSociaux::BuildResourceCollection < BuildResourceCol
   include Infogreffe::Concerns::MandatairesSociaux
 
   def initialize(params)
-    super(params)
+    super
 
     @personnes_physiques_count = @personnes_morales_count = 0
   end
