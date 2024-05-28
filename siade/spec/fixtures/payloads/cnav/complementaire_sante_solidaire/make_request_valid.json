@@ -1,6 +1,6 @@
 {
   "indicateur": "BENEFICIAIRE_AVEC_PARTICIPATION_FINANCIERE",
-  "prestations": [
+  "listePrestation": [
     {
       "cd": "MMN1001",
       "libelle": "PUMA Résidence",
