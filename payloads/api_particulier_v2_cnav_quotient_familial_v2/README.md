@@ -115,6 +115,87 @@ Ce cas permet de tester :
 
   </p>
   </details>
+* [200-identite-cas-etranger.yaml](200-identite-cas-etranger.yaml)
+
+  Status `200`
+
+  ## IDENTITÉ CAS ETRANGER
+
+Ce cas est le cas personne étrangère de l'ensemble des cas de test d'identité/limite.
+Il a pour but de décrire une personne fictive avec l'ensemble de ses paramètres
+et la réponse lorsque celui ci est trouvé.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "recipient": "13002526500013",
+    "codePaysLieuDeNaissance": "99350",
+    "sexe": "M",
+    "nomNaissange": "FAKIR",
+    "prenoms": [
+      "EYMEN",
+      "MOHAMED"
+    ],
+    "anneeDateDeNaissance": 1992,
+    "moisDateDeNaissance": 11,
+    "jourDateDeNaissance": 14
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "FAKIR",
+        "nomUsage": null,
+        "prenoms": "EYMEN MOHAMED",
+        "anneeDateDeNaissance": "1992",
+        "moisDateDeNaissance": "11",
+        "jourDateDeNaissance": "14",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+  
+    ],
+    "adresse": {
+      "identite": "Monsieur FAKOR EYMEN MOHAMED",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "19 RUE ARISTIDE BRIAND",
+      "lieuDit": null,
+      "codePostalVille": "92330 SCEAUX",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 4270,
+    "annee": 2023,
+    "mois": 6
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'recipient=13002526500013' -d 'codePaysLieuDeNaissance=99350' -d 'sexe=M' -d 'nomNaissange=FAKIR' -d 'prenoms[]=EYMEN' -d 'prenoms[]=MOHAMED' -d 'anneeDateDeNaissance=1992' -d 'moisDateDeNaissance=11' -d 'jourDateDeNaissance=14' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
 * [200-identite-cas-limite-erreur-phonetique.yaml](200-identite-cas-limite-erreur-phonetique.yaml)
 
   Status `200`
