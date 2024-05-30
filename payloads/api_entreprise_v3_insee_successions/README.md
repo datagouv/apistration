@@ -56,7 +56,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/successions/30613890001286"
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/30613890001286/successions"
   ```
 
   </p>
@@ -103,7 +103,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/successions/32682221625251"
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/32682221625251/successions"
   ```
 
   </p>
@@ -153,7 +153,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/successions/37449707591810"
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/37449707591810/successions"
   ```
 
   </p>
@@ -200,7 +200,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/successions/61229628734734"
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/61229628734734/successions"
   ```
 
   </p>
@@ -247,7 +247,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/successions/39197770100914"
+    --url "https://staging.entreprise.api.gouv.fr/v3/insee/sirene/etablissements/39197770100914/successions"
   ```
 
   </p>
