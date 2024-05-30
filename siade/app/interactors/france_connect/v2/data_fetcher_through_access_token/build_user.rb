@@ -1,4 +1,4 @@
-class FranceConnect::V1::DataFetcherThroughAccessToken::BuildUser < FranceConnect::BuildDataFromAccessTokenInteractor
+class FranceConnect::V2::DataFetcherThroughAccessToken::BuildUser < FranceConnect::BuildDataFromAccessTokenInteractor
   def call
     context.user = build_user
   end
@@ -16,16 +16,16 @@ class FranceConnect::V1::DataFetcherThroughAccessToken::BuildUser < FranceConnec
   end
 
   def scopes
-    return all_api_particulier_scopes if called_france_connect_in_staging?
+    return all_france_connect_scopes if called_france_connect_in_staging?
 
-    json_body['scope']
+    json_body['token_introspection']['scope'].split
   end
 
   def called_france_connect_in_staging?
     Rails.env.staging? && from_france_connect?
   end
 
-  def all_api_particulier_scopes
+  def all_france_connect_scopes
     [
       Scope.all_for_api('api_particulier'),
       %w[openid identite_pivot]
