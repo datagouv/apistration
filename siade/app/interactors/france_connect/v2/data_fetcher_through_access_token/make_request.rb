@@ -1,0 +1,49 @@
+class FranceConnect::V2::DataFetcherThroughAccessToken::MakeRequest < MakeRequest::Post
+  def call
+    super
+
+    api_call_with_error_handling if call_france_connect_in_staging?
+  end
+
+  def mock_call
+    context.mocked_data = MockService.new(operation_id, mocking_params).mock_from_backend
+  end
+
+  def operation_id
+    'france_connect_v2'
+  end
+
+  def request_uri
+    URI(france_connect_check_token_url)
+  end
+
+  def request_params
+    {
+      client_id:,
+      client_secret:,
+      token:
+    }
+  end
+
+  private
+
+  def token
+    context.params[:token]
+  end
+
+  def call_france_connect_in_staging?
+    Rails.env.staging? && context.mocked_data.nil?
+  end
+
+  def client_id
+    Siade.credentials[:france_connect_v2_client_id]
+  end
+
+  def client_secret
+    Siade.credentials[:france_connect_v2_client_secret]
+  end
+
+  def france_connect_check_token_url
+    Siade.credentials[:france_connect_v2_check_token_url]
+  end
+end
