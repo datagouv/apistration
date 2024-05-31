@@ -1,4 +1,4 @@
-
+---
 description: |-
   ## IDENTITÉ CAS NOMINAL
   
@@ -12,7 +12,6 @@ description: |-
   d'erreur selon les informations que vous fournirez.
 
 params:
-  recipient: '13002526500013'
   codeInseeLieuDeNaissance: '08480'
   codePaysLieuDeNaissance: '99100'
   sexe: 'F'

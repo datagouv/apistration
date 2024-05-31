@@ -169,7 +169,6 @@
 
   ```json
   {
-    "recipient": "13002526500013",
     "nomNaissance": "DUBOCHE",
     "prenoms[]": [
       "JEROME"
@@ -205,7 +204,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=DUBOCHE' -d 'prenoms[][]=JEROME' -d 'anneeDateDeNaissance=2002' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=5' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomNaissance=DUBOCHE' -d 'prenoms[][]=JEROME' -d 'anneeDateDeNaissance=2002' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=5' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/prime-activite"
   ```
 
@@ -222,7 +221,6 @@
 
   ```json
   {
-    "recipient": "13002526500013",
     "codeInseeLieuDeNaissance": "00503",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F"
@@ -251,7 +249,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codeInseeLieuDeNaissance=00503' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
+    -G -d 'codeInseeLieuDeNaissance=00503' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/prime-activite"
   ```
 

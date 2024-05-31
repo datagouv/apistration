@@ -2,7 +2,6 @@
 description: |-
   ## Allocataire non trouvé
 params:
-  recipient: '13002526500013'
   nomNaissance: 'DUBOCHE'
   prenoms[]:
   - 'JEROME'

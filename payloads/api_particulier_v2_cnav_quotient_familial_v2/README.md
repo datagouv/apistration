@@ -21,7 +21,6 @@ Ce cas permet de tester :
 
   ```json
   {
-    "recipient": "13002526500013",
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
@@ -109,7 +108,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=ROUX' -d 'prenoms[]=JEANNE' -d 'prenoms[]=STEPHANIE' -d 'anneeDateDeNaissance=1987' -d 'moisDateDeNaissance=6' -d 'annee=2023' -d 'mois=5' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=ROUX' -d 'prenoms[]=JEANNE' -d 'prenoms[]=STEPHANIE' -d 'anneeDateDeNaissance=1987' -d 'moisDateDeNaissance=6' -d 'annee=2023' -d 'mois=5' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -130,7 +129,6 @@ et la réponse lorsque celui ci est trouvé.
 
   ```json
   {
-    "recipient": "13002526500013",
     "codePaysLieuDeNaissance": "99350",
     "sexe": "M",
     "nomNaissange": "FAKIR",
@@ -190,7 +188,7 @@ et la réponse lorsque celui ci est trouvé.
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codePaysLieuDeNaissance=99350' -d 'sexe=M' -d 'nomNaissange=FAKIR' -d 'prenoms[]=EYMEN' -d 'prenoms[]=MOHAMED' -d 'anneeDateDeNaissance=1992' -d 'moisDateDeNaissance=11' -d 'jourDateDeNaissance=14' \
+    -G -d 'codePaysLieuDeNaissance=99350' -d 'sexe=M' -d 'nomNaissange=FAKIR' -d 'prenoms[]=EYMEN' -d 'prenoms[]=MOHAMED' -d 'anneeDateDeNaissance=1992' -d 'moisDateDeNaissance=11' -d 'jourDateDeNaissance=14' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -215,7 +213,6 @@ d'erreur selon les informations que vous fournirez.
 
   ```json
   {
-    "recipient": "13002526500013",
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
@@ -277,7 +274,7 @@ d'erreur selon les informations que vous fournirez.
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXI' -d 'prenoms[]=GEROME' -d 'prenoms[]=JEN-PHILIPE' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXI' -d 'prenoms[]=GEROME' -d 'prenoms[]=JEN-PHILIPE' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -302,7 +299,6 @@ d'erreur selon les informations que vous fournirez.
 
   ```json
   {
-    "recipient": "13002526500013",
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
@@ -364,7 +360,7 @@ d'erreur selon les informations que vous fournirez.
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEIXS' -d 'prenoms[]=GR%C3%89%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEIXS' -d 'prenoms[]=GR%C3%89%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -390,7 +386,6 @@ d'erreur selon les informations que vous fournirez.
 
   ```json
   {
-    "recipient": "13002526500013",
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
@@ -450,7 +445,7 @@ d'erreur selon les informations que vous fournirez.
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -476,7 +471,6 @@ d'erreur selon les informations que vous fournirez.
 
   ```json
   {
-    "recipient": "13002526500013",
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
@@ -536,7 +530,7 @@ d'erreur selon les informations que vous fournirez.
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -560,7 +554,6 @@ d'erreur selon les informations que vous fournirez.
 
   ```json
   {
-    "recipient": "13002526500013",
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
@@ -622,7 +615,7 @@ d'erreur selon les informations que vous fournirez.
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -645,7 +638,6 @@ Ce cas permet de tester :
 
   ```json
   {
-    "recipient": "13002526500013",
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
@@ -712,7 +704,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=BERNARD' -d 'prenoms[]=ELODIE' -d 'anneeDateDeNaissance=1990' -d 'moisDateDeNaissance=3' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=BERNARD' -d 'prenoms[]=ELODIE' -d 'anneeDateDeNaissance=1990' -d 'moisDateDeNaissance=3' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -736,7 +728,6 @@ Ce cas permet de tester :
 
   ```json
   {
-    "recipient": "13002526500013",
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
@@ -795,7 +786,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -820,7 +811,6 @@ d'erreur selon les informations que vous fournirez.
 
   ```json
   {
-    "recipient": "13002526500013",
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
@@ -856,7 +846,7 @@ d'erreur selon les informations que vous fournirez.
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXI' -d 'prenoms[]=GEROME' -d 'prenoms[]=JEN-PHILIPE' -d 'anneeDateDeNaissance=1982' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXI' -d 'prenoms[]=GEROME' -d 'prenoms[]=JEN-PHILIPE' -d 'anneeDateDeNaissance=1982' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -881,7 +871,6 @@ d'erreur selon les informations que vous fournirez.
 
   ```json
   {
-    "recipient": "13002526500013",
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
@@ -917,7 +906,7 @@ d'erreur selon les informations que vous fournirez.
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEIXS' -d 'prenoms[]=GR%C3%89%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEIXS' -d 'prenoms[]=GR%C3%89%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -937,7 +926,6 @@ Les données concernant la date de naissance ont été retirée
 
   ```json
   {
-    "recipient": "13002526500013",
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
@@ -972,7 +960,7 @@ Les données concernant la date de naissance ont été retirée
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -992,7 +980,6 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
 
   ```json
   {
-    "recipient": "13002526500013",
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
@@ -1027,7 +1014,7 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'prenoms[]=ALEXIS' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'prenoms[]=ALEXIS' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -1044,7 +1031,6 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
 
   ```json
   {
-    "recipient": "13002526500013",
     "codeInseeLieuDeNaissance": "00404",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F"
@@ -1073,7 +1059,7 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codeInseeLieuDeNaissance=00404' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
+    -G -d 'codeInseeLieuDeNaissance=00404' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -1090,7 +1076,6 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
 
   ```json
   {
-    "recipient": "13002526500013",
     "codeInseeLieuDeNaissance": "00503",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F"
@@ -1119,7 +1104,7 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'recipient=13002526500013' -d 'codeInseeLieuDeNaissance=00503' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
+    -G -d 'codeInseeLieuDeNaissance=00503' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
