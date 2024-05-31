@@ -13,7 +13,6 @@ params:
   codeInseeLieuDeNaissance: '08480'
   codePaysLieuDeNaissance: '99100'
   sexe: 'M'
-  recipient: '13002526500013'
 status: 200
 payload: |-
   {

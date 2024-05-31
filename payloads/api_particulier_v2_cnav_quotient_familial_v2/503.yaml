@@ -1,7 +1,6 @@
 ---
 description: "Timeout - délai d'attente dépassé"
 params:
-  recipient: '13002526500013'
   codeInseeLieuDeNaissance: '00503'
   codePaysLieuDeNaissance: '99100'
   sexe: 'F'

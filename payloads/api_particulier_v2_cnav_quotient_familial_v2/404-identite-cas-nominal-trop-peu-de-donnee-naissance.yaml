@@ -1,4 +1,4 @@
-
+---
 description: |-
   ## IDENTITÉ CAS NOMINAL
 
@@ -6,7 +6,6 @@ description: |-
   Les données concernant la date de naissance ont été retirée
 
 params:
-  recipient: '13002526500013'
   codeInseeLieuDeNaissance: '08480'
   codePaysLieuDeNaissance: '99100'
   sexe: 'F'
