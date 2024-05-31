@@ -6,13 +6,11 @@ class CNAV::MakeRequest < MakeRequest::Get
   end
 
   def mocking_params
-    mocking_params = if context.params[:france_connect]
-                       france_connect_mocking_params
-                     else
-                       civility_mocking_params
-                     end
-
-    mocking_params.merge!(common_mocking_params).compact
+    if context.params[:france_connect]
+      france_connect_mocking_params
+    else
+      civility_mocking_params
+    end
   end
 
   def extra_headers(request)
@@ -37,12 +35,6 @@ class CNAV::MakeRequest < MakeRequest::Get
   # rubocop:enable Metrics/AbcSize
 
   private
-
-  def common_mocking_params
-    {
-      recipient: context.params[:recipient]
-    }
-  end
 
   # rubocop:disable Metrics/AbcSize
   def civility_mocking_params
