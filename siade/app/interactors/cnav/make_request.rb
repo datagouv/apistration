@@ -41,7 +41,7 @@ class CNAV::MakeRequest < MakeRequest::Get
     {
       nomUsage: context.params[:nom_usage],
       nomNaissance: context.params[:nom_naissance],
-      prenoms: context.params[:prenoms],
+      prenoms: liste_prenoms,
       anneeDateDeNaissance: context.params[:annee_date_de_naissance],
       moisDateDeNaissance: context.params[:mois_date_de_naissance],
       jourDateDeNaissance: context.params[:jour_date_de_naissance],
@@ -55,7 +55,7 @@ class CNAV::MakeRequest < MakeRequest::Get
     {
       nomUsage: context.params[:nom_usage],
       nomNaissance: context.params[:nom_naissance],
-      prenoms: context.params[:prenoms],
+      prenoms: liste_prenoms,
       dateNaissance: date_naissance,
       codeInseeLieuDeNaissance: context.params[:code_insee_lieu_de_naissance],
       codePaysLieuDeNaissance: context.params[:code_pays_lieu_de_naissance],
