@@ -4,12 +4,12 @@ description: |-
   L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
 params:
-  given_name: "Angela"
-  family_name: "DUBOIS"
-  birthdate: "1962-08-24"
-  gender: "female"
-  birthplace: "75107"
-  birthcountry: "99100"
+  prenoms: "Angela Claire Louise"
+  nomNaissance: "DUBOIS"
+  dateNaissance: "1962-08-24"
+  sexe: "F"
+  codeInseeLieuDeNaissance: "75107"
+  codePaysLieuDeNaissance: "99100"
 status: 200
 payload: |-
   {

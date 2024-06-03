@@ -7,7 +7,7 @@ params:
   given_name: "Angela"
   family_name: "DUBOIS"
   birthdate: "1962-08-24"
-  gender: "female"
+  sexe: "F"
   birthplace: "75107"
   birthcountry: "99100"
 status: 200
