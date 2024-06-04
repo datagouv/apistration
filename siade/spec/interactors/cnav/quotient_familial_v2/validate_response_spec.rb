@@ -40,6 +40,16 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateResponse, type: :validate_respo
     its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
   end
 
+  context 'with 500 response' do
+    let(:response) do
+      instance_double(Net::HTTPInternalServerError, code: 500)
+    end
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+  end
+
   context 'with random http code response' do
     let(:response) do
       instance_double(Net::HTTPOK, code: 401)

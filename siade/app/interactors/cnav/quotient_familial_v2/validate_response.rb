@@ -9,6 +9,7 @@ class CNAV::QuotientFamilialV2::ValidateResponse < ValidateResponse
 
   def call
     resource_not_found! if http_not_found?
+    internal_server_error! if http_internal_error?
     unknown_provider_response! if !http_ok? || invalid_json?
   end
 
