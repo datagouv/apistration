@@ -348,11 +348,11 @@ cnav:
           Ce champs est null dans le cas où le particulier n'est pas bénéficiaire du RSA."
         example: '1992-11-29'
       dateFin:
-        title: "Date de fermeture du droit au Revenu de solidarité active"
+        title: "Date de fermeture du droit au revenu de solidarité active"
         type: string
         nullable: true
         description: |+
-          "Date de fin de droit au Revenu de solidarité active du particulier bénéficiaire.
+          "Date de fin de droit au revenu de solidarité active du particulier bénéficiaire.
           Ce champs est calculé en ajoutant 3 mois à la date de début de droit du RSA.
           Ce champs sera null dans le cas où le particulier n'est pas bénéficiaire du RSA."
         example: '1993-02-20'
