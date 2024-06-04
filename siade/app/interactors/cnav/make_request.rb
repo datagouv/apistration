@@ -5,13 +5,21 @@ class CNAV::MakeRequest < MakeRequest::Get
     URI(Siade.credentials[:"cnav_#{context.dss_prestation_name}_url"])
   end
 
+  # rubocop:disable Metrics/AbcSize
   def mocking_params
-    if context.params[:france_connect]
-      france_connect_mocking_params
-    else
-      civility_mocking_params
-    end
+    {
+      nomUsage: context.params[:nom_usage],
+      nomNaissance: context.params[:nom_naissance],
+      prenoms: context.params[:prenoms],
+      anneeDateDeNaissance: date_naissance.split('-').first,
+      moisDateDeNaissance: date_naissance.split('-').second,
+      jourDateDeNaissance: date_naissance.split('-').last,
+      codeInseeLieuDeNaissance: context.params[:code_insee_lieu_de_naissance],
+      codePaysLieuDeNaissance: context.params[:code_pays_lieu_de_naissance],
+      sexe: context.params[:gender]
+    }
   end
+  # rubocop:enable Metrics/AbcSize
 
   def extra_headers(request)
     request['Content-Type'] = 'application/json'
@@ -35,34 +43,6 @@ class CNAV::MakeRequest < MakeRequest::Get
   # rubocop:enable Metrics/AbcSize
 
   private
-
-  # rubocop:disable Metrics/AbcSize
-  def civility_mocking_params
-    {
-      nomUsage: context.params[:nom_usage],
-      nomNaissance: context.params[:nom_naissance],
-      prenoms: liste_prenoms,
-      anneeDateDeNaissance: context.params[:annee_date_de_naissance],
-      moisDateDeNaissance: context.params[:mois_date_de_naissance],
-      jourDateDeNaissance: context.params[:jour_date_de_naissance],
-      codeInseeLieuDeNaissance: context.params[:code_insee_lieu_de_naissance],
-      codePaysLieuDeNaissance: context.params[:code_pays_lieu_de_naissance],
-      sexe: context.params[:gender]
-    }
-  end
-
-  def france_connect_mocking_params
-    {
-      nomUsage: context.params[:nom_usage],
-      nomNaissance: context.params[:nom_naissance],
-      prenoms: liste_prenoms,
-      dateNaissance: date_naissance,
-      codeInseeLieuDeNaissance: context.params[:code_insee_lieu_de_naissance],
-      codePaysLieuDeNaissance: context.params[:code_pays_lieu_de_naissance],
-      sexe: context.params[:gender]
-    }
-  end
-  # rubocop:enable Metrics/AbcSize
 
   def token
     context.token
