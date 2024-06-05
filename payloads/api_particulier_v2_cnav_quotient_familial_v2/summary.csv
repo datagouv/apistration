@@ -403,7 +403,7 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
 }"
 ,"Cas de test pour QFv2 avec jeton FranceConnect.
 Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_qfv2.yml).
-L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms[]"":[""Georges""],""nomNaissance"":""CNAF"",""dateNaissance"":""2002-01-01"",""sexe"":""M"",""codeInseeLieuDeNaissance"":""75002"",""codePaysLieuDeNaissance"":""99100""}",200,"{
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms[]"":[""Georges""],""nomNaissance"":""CNAF"",""anneeDateDeNaissance"":2002,""moisDateDeNaissance"":1,""jourDateDeNaissance"":1,""sexe"":""M"",""codeInseeLieuDeNaissance"":""75002"",""codePaysLieuDeNaissance"":""99100""}",200,"{
   ""regime"": ""CNAF"",
   ""allocataires"": [
     {
@@ -432,7 +432,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms
 }"
 ,"Cas de test pour QFv2 avec jeton FranceConnect.
 Les données proviennent des jetons de l'environnement de test FranceConnect.
-L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms[]"":[""Angela"",""Claire"",""Louise""],""nomNaissance"":""DUBOIS"",""dateNaissance"":""1962-08-24"",""sexe"":""F"",""codeInseeLieuDeNaissance"":""75107"",""codePaysLieuDeNaissance"":""99100""}",200,"{
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms[]"":[""Angela"",""Claire"",""Louise""],""nomNaissance"":""DUBOIS"",""anneeDateDeNaissance"":1962,""moisDateDeNaissance"":8,""jourDateDeNaissance"":24,""sexe"":""F"",""codeInseeLieuDeNaissance"":""75107"",""codePaysLieuDeNaissance"":""99100""}",200,"{
   ""regime"": ""CNAF"",
   ""allocataires"": [
     {
