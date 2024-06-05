@@ -11,9 +11,9 @@ class CNAV::MakeRequest < MakeRequest::Get
       nomUsage: context.params[:nom_usage],
       nomNaissance: context.params[:nom_naissance],
       prenoms: context.params[:prenoms],
-      anneeDateDeNaissance: date_naissance.split('-').first,
-      moisDateDeNaissance: date_naissance.split('-').second,
-      jourDateDeNaissance: date_naissance.split('-').last,
+      anneeDateDeNaissance: date_naissance.split('-').first.to_i,
+      moisDateDeNaissance: date_naissance.split('-').second.to_i,
+      jourDateDeNaissance: date_naissance.split('-').last.to_i,
       codeInseeLieuDeNaissance: context.params[:code_insee_lieu_de_naissance],
       codePaysLieuDeNaissance: context.params[:code_pays_lieu_de_naissance],
       sexe: context.params[:gender]
