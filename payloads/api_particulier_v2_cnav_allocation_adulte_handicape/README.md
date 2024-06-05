@@ -63,7 +63,6 @@
 
   ```json
   {
-    "nomUsage": "CHIRAC",
     "nomNaissance": "MARTIN",
     "prenoms[]": [
       "JACQUES"
@@ -98,7 +97,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=CHIRAC' -d 'nomNaissance=MARTIN' -d 'prenoms[][]=JACQUES' -d 'anneeDateDeNaissance=1987' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=1' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomNaissance=MARTIN' -d 'prenoms[][]=JACQUES' -d 'anneeDateDeNaissance=1987' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=1' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/allocation-adulte-handicape"
   ```
 
@@ -214,9 +213,13 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "prenoms": "Georges",
+    "prenoms[]": [
+      "Georges"
+    ],
     "nomNaissance": "CNAF",
-    "dateNaissance": "2002-01-01",
+    "anneeDateDeNaissance": 2002,
+    "moisDateDeNaissance": 1,
+    "jourDateDeNaissance": 1,
     "sexe": "M",
     "codeInseeLieuDeNaissance": "75002",
     "codePaysLieuDeNaissance": "99100"
@@ -261,9 +264,15 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "prenoms": "Angela Claire Louise",
+    "prenoms[]": [
+      "Angela",
+      "Claire",
+      "Louise"
+    ],
     "nomNaissance": "DUBOIS",
-    "dateNaissance": "1962-08-24",
+    "anneeDateDeNaissance": 1962,
+    "moisDateDeNaissance": 8,
+    "jourDateDeNaissance": 24,
     "sexe": "F",
     "codeInseeLieuDeNaissance": "75107",
     "codePaysLieuDeNaissance": "99100"

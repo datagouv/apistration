@@ -11,7 +11,7 @@ params:
   codeInseeLieuDeNaissance: '08480'
   codePaysLieuDeNaissance: '99100'
   sexe: 'F'
-  nomUsage: 'BERNARD'
+  nomNaissance: 'BERNARD'
   prenoms:
     - 'ELODIE'
   anneeDateDeNaissance: 1990
@@ -23,7 +23,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "BERNARD",
-        "nomUsage": "BERNARD",
+        "nomUsage": null,
         "prenoms": "ELODIE JUDITH GERTRUDE",
         "anneeDateDeNaissance": "1990",
         "moisDateDeNaissance": "03",
@@ -34,7 +34,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "BERNARD",
-        "nomUsage": "BERNARD",
+        "nomUsage": null,
         "prenoms": "LEO",
         "anneeDateDeNaissance": "1990",
         "moisDateDeNaissance": "04",

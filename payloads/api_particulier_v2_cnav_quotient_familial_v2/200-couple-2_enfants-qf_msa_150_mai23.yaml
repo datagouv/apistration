@@ -16,7 +16,7 @@ params:
   codeInseeLieuDeNaissance: '08480'
   codePaysLieuDeNaissance: '99100'
   sexe: 'F'
-  nomUsage: 'ROUX'
+  nomNaissance: 'ROUX'
   prenoms:
     - 'JEANNE'
     - 'STEPHANIE'
@@ -31,7 +31,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "ROUX",
-        "nomUsage": "ROUX",
+        "nomUsage": null,
         "prenoms": "JEANNE STEPHANIE",
         "anneeDateDeNaissance": "1987",
         "moisDateDeNaissance": "06",
@@ -40,7 +40,7 @@ payload: |-
       },
       {
         "nomNaissance": "ROUX",
-        "nomUsage": "ROUX",
+        "nomUsage": null,
         "prenoms": "LOIC NATHAN",
         "anneeDateDeNaissance": "1979",
         "moisDateDeNaissance": "05",
@@ -51,7 +51,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "ROUX",
-        "nomUsage": "ROUX",
+        "nomUsage": null,
         "prenoms": "ALEXIS VINCENT",
         "anneeDateDeNaissance": "2006",
         "moisDateDeNaissance": "04",
@@ -60,7 +60,7 @@ payload: |-
       },
       {
         "nomNaissance": "ROUX",
-        "nomUsage": "ROUX",
+        "nomUsage": null,
         "prenoms": "FLEUR EDITH",
         "anneeDateDeNaissance": "2004",
         "moisDateDeNaissance": "04",

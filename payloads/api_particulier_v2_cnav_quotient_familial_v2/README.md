@@ -24,7 +24,7 @@ Ce cas permet de tester :
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
-    "nomUsage": "ROUX",
+    "nomNaissance": "ROUX",
     "prenoms": [
       "JEANNE",
       "STEPHANIE"
@@ -48,7 +48,7 @@ Ce cas permet de tester :
     "allocataires": [
       {
         "nomNaissance": "ROUX",
-        "nomUsage": "ROUX",
+        "nomUsage": null,
         "prenoms": "JEANNE STEPHANIE",
         "anneeDateDeNaissance": "1987",
         "moisDateDeNaissance": "06",
@@ -57,7 +57,7 @@ Ce cas permet de tester :
       },
       {
         "nomNaissance": "ROUX",
-        "nomUsage": "ROUX",
+        "nomUsage": null,
         "prenoms": "LOIC NATHAN",
         "anneeDateDeNaissance": "1979",
         "moisDateDeNaissance": "05",
@@ -68,7 +68,7 @@ Ce cas permet de tester :
     "enfants": [
       {
         "nomNaissance": "ROUX",
-        "nomUsage": "ROUX",
+        "nomUsage": null,
         "prenoms": "ALEXIS VINCENT",
         "anneeDateDeNaissance": "2006",
         "moisDateDeNaissance": "04",
@@ -77,7 +77,7 @@ Ce cas permet de tester :
       },
       {
         "nomNaissance": "ROUX",
-        "nomUsage": "ROUX",
+        "nomUsage": null,
         "prenoms": "FLEUR EDITH",
         "anneeDateDeNaissance": "2004",
         "moisDateDeNaissance": "04",
@@ -108,7 +108,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=ROUX' -d 'prenoms[]=JEANNE' -d 'prenoms[]=STEPHANIE' -d 'anneeDateDeNaissance=1987' -d 'moisDateDeNaissance=6' -d 'annee=2023' -d 'mois=5' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomNaissance=ROUX' -d 'prenoms[]=JEANNE' -d 'prenoms[]=STEPHANIE' -d 'anneeDateDeNaissance=1987' -d 'moisDateDeNaissance=6' -d 'annee=2023' -d 'mois=5' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -216,7 +216,7 @@ d'erreur selon les informations que vous fournirez.
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
-    "nomUsage": "LEFEBVRE",
+    "nomNaissance": "LEFEBVRE",
     "prenoms": [
       "ALEXI",
       "GEROME",
@@ -240,7 +240,7 @@ d'erreur selon les informations que vous fournirez.
     "allocataires": [
       {
         "nomNaissance": "LEFEBVRE",
-        "nomUsage": "LEFEBVRE",
+        "nomUsage": null,
         "prenoms": "ALEXIS GÉRÔME JEAN-PHILIPPE",
         "anneeDateDeNaissance": "1982",
         "moisDateDeNaissance": "12",
@@ -274,7 +274,7 @@ d'erreur selon les informations que vous fournirez.
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXI' -d 'prenoms[]=GEROME' -d 'prenoms[]=JEN-PHILIPE' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomNaissance=LEFEBVRE' -d 'prenoms[]=ALEXI' -d 'prenoms[]=GEROME' -d 'prenoms[]=JEN-PHILIPE' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -302,7 +302,7 @@ d'erreur selon les informations que vous fournirez.
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
-    "nomUsage": "LEFEBVRE",
+    "nomNaissance": "LEFEBVRE",
     "prenoms": [
       "ALEIXS",
       "GRÉÔME",
@@ -326,7 +326,7 @@ d'erreur selon les informations que vous fournirez.
     "allocataires": [
       {
         "nomNaissance": "LEFEBVRE",
-        "nomUsage": "LEFEBVRE",
+        "nomUsage": null,
         "prenoms": "ALEXIS GÉRÔME JEAN-PHILIPPE",
         "anneeDateDeNaissance": "1982",
         "moisDateDeNaissance": "12",
@@ -360,7 +360,7 @@ d'erreur selon les informations que vous fournirez.
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEIXS' -d 'prenoms[]=GR%C3%89%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomNaissance=LEFEBVRE' -d 'prenoms[]=ALEIXS' -d 'prenoms[]=GR%C3%89%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -389,7 +389,7 @@ d'erreur selon les informations que vous fournirez.
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
-    "nomUsage": "LEFEBVRE",
+    "nomNaissance": "LEFEBVRE",
     "prenoms": [
       "ALEXIS",
       "GÉRÔME",
@@ -411,7 +411,7 @@ d'erreur selon les informations que vous fournirez.
     "allocataires": [
       {
         "nomNaissance": "LEFEBVRE",
-        "nomUsage": "LEFEBVRE",
+        "nomUsage": null,
         "prenoms": "ALEXIS GÉRÔME JEAN-PHILIPPE",
         "anneeDateDeNaissance": "1982",
         "moisDateDeNaissance": "12",
@@ -445,13 +445,13 @@ d'erreur selon les informations que vous fournirez.
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomNaissance=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
   </p>
   </details>
-* [200-identite-cas-nominal-peu-de-donnée-prenom.yaml](200-identite-cas-nominal-peu-de-donnée-prenom.yaml)
+* [200-identite-cas-nominal-peu-de-donnee-prenom.yaml](200-identite-cas-nominal-peu-de-donnee-prenom.yaml)
 
   Status `200`
 
@@ -474,7 +474,7 @@ d'erreur selon les informations que vous fournirez.
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
-    "nomUsage": "LEFEBVRE",
+    "nomNaissance": "LEFEBVRE",
     "prenoms": [
       "ALEXIS"
     ],
@@ -496,7 +496,7 @@ d'erreur selon les informations que vous fournirez.
     "allocataires": [
       {
         "nomNaissance": "LEFEBVRE",
-        "nomUsage": "LEFEBVRE",
+        "nomUsage": null,
         "prenoms": "ALEXIS GÉRÔME JEAN-PHILIPPE",
         "anneeDateDeNaissance": "1982",
         "moisDateDeNaissance": "12",
@@ -530,7 +530,7 @@ d'erreur selon les informations que vous fournirez.
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomNaissance=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -557,7 +557,7 @@ d'erreur selon les informations que vous fournirez.
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
-    "nomUsage": "LEFEBVRE",
+    "nomNaissance": "LEFEBVRE",
     "prenoms": [
       "ALEXIS",
       "GÉRÔME",
@@ -581,7 +581,7 @@ d'erreur selon les informations que vous fournirez.
     "allocataires": [
       {
         "nomNaissance": "LEFEBVRE",
-        "nomUsage": "LEFEBVRE",
+        "nomUsage": null,
         "prenoms": "ALEXIS GÉRÔME JEAN-PHILIPPE",
         "anneeDateDeNaissance": "1982",
         "moisDateDeNaissance": "12",
@@ -615,7 +615,7 @@ d'erreur selon les informations que vous fournirez.
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomNaissance=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -641,7 +641,7 @@ Ce cas permet de tester :
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
-    "nomUsage": "BERNARD",
+    "nomNaissance": "BERNARD",
     "prenoms": [
       "ELODIE"
     ],
@@ -662,7 +662,7 @@ Ce cas permet de tester :
     "allocataires": [
       {
         "nomNaissance": "BERNARD",
-        "nomUsage": "BERNARD",
+        "nomUsage": null,
         "prenoms": "ELODIE JUDITH GERTRUDE",
         "anneeDateDeNaissance": "1990",
         "moisDateDeNaissance": "03",
@@ -673,7 +673,7 @@ Ce cas permet de tester :
     "enfants": [
       {
         "nomNaissance": "BERNARD",
-        "nomUsage": "BERNARD",
+        "nomUsage": null,
         "prenoms": "LEO",
         "anneeDateDeNaissance": "1990",
         "moisDateDeNaissance": "04",
@@ -704,7 +704,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=BERNARD' -d 'prenoms[]=ELODIE' -d 'anneeDateDeNaissance=1990' -d 'moisDateDeNaissance=3' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomNaissance=BERNARD' -d 'prenoms[]=ELODIE' -d 'anneeDateDeNaissance=1990' -d 'moisDateDeNaissance=3' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -731,7 +731,7 @@ Ce cas permet de tester :
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
-    "nomUsage": "LEFEBVRE",
+    "nomNaissance": "LEFEBVRE",
     "prenoms": [
       "ALEXIS"
     ],
@@ -752,7 +752,7 @@ Ce cas permet de tester :
     "allocataires": [
       {
         "nomNaissance": "LEFEBVRE",
-        "nomUsage": "LEFEBVRE",
+        "nomUsage": null,
         "prenoms": "ALEXIS",
         "anneeDateDeNaissance": "1982",
         "moisDateDeNaissance": "12",
@@ -786,7 +786,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomNaissance=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -814,7 +814,7 @@ d'erreur selon les informations que vous fournirez.
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
-    "nomUsage": "LEFEBVRE",
+    "nomNaissance": "LEFEBVRE",
     "prenoms": [
       "ALEXI",
       "GEROME",
@@ -846,7 +846,7 @@ d'erreur selon les informations que vous fournirez.
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXI' -d 'prenoms[]=GEROME' -d 'prenoms[]=JEN-PHILIPE' -d 'anneeDateDeNaissance=1982' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomNaissance=LEFEBVRE' -d 'prenoms[]=ALEXI' -d 'prenoms[]=GEROME' -d 'prenoms[]=JEN-PHILIPE' -d 'anneeDateDeNaissance=1982' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -874,7 +874,7 @@ d'erreur selon les informations que vous fournirez.
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
-    "nomUsage": "LEFEBVRE",
+    "nomNaissance": "LEFEBVRE",
     "prenoms": [
       "ALEIXS",
       "GRÉÔME",
@@ -906,7 +906,7 @@ d'erreur selon les informations que vous fournirez.
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEIXS' -d 'prenoms[]=GR%C3%89%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomNaissance=LEFEBVRE' -d 'prenoms[]=ALEIXS' -d 'prenoms[]=GR%C3%89%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateDeNaissance=1982' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -929,7 +929,7 @@ Les données concernant la date de naissance ont été retirée
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
-    "nomUsage": "LEFEBVRE",
+    "nomNaissance": "LEFEBVRE",
     "prenoms": [
       "ALEXIS",
       "GÉRÔME",
@@ -960,7 +960,7 @@ Les données concernant la date de naissance ont été retirée
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomNaissance=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -1123,9 +1123,13 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "prenoms": "Georges",
+    "prenoms[]": [
+      "Georges"
+    ],
     "nomNaissance": "CNAF",
-    "dateNaissance": "2002-01-01",
+    "anneeDateDeNaissance": 2002,
+    "moisDateDeNaissance": 1,
+    "jourDateDeNaissance": 1,
     "sexe": "M",
     "codeInseeLieuDeNaissance": "75002",
     "codePaysLieuDeNaissance": "99100"
@@ -1195,9 +1199,15 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "prenoms": "Angela Claire Louise",
+    "prenoms[]": [
+      "Angela",
+      "Claire",
+      "Louise"
+    ],
     "nomNaissance": "DUBOIS",
-    "dateNaissance": "1962-08-24",
+    "anneeDateDeNaissance": 1962,
+    "moisDateDeNaissance": 8,
+    "jourDateDeNaissance": 24,
     "sexe": "F",
     "codeInseeLieuDeNaissance": "75107",
     "codePaysLieuDeNaissance": "99100"

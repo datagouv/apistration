@@ -10,12 +10,12 @@ Ce cas permet de tester :
 - [Réponse] Tableau d'informations car deux enfants
 - [Réponse] Régime MSA
 - [Réponse] Quotient familial de 150
-- [Réponse] Quotient familial ancien de mai 2023","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""ROUX"",""prenoms"":[""JEANNE"",""STEPHANIE""],""anneeDateDeNaissance"":1987,""moisDateDeNaissance"":6,""annee"":2023,""mois"":5}",200,"{
+- [Réponse] Quotient familial ancien de mai 2023","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomNaissance"":""ROUX"",""prenoms"":[""JEANNE"",""STEPHANIE""],""anneeDateDeNaissance"":1987,""moisDateDeNaissance"":6,""annee"":2023,""mois"":5}",200,"{
   ""regime"": ""MSA"",
   ""allocataires"": [
     {
       ""nomNaissance"": ""ROUX"",
-      ""nomUsage"": ""ROUX"",
+      ""nomUsage"": null,
       ""prenoms"": ""JEANNE STEPHANIE"",
       ""anneeDateDeNaissance"": ""1987"",
       ""moisDateDeNaissance"": ""06"",
@@ -24,7 +24,7 @@ Ce cas permet de tester :
     },
     {
       ""nomNaissance"": ""ROUX"",
-      ""nomUsage"": ""ROUX"",
+      ""nomUsage"": null,
       ""prenoms"": ""LOIC NATHAN"",
       ""anneeDateDeNaissance"": ""1979"",
       ""moisDateDeNaissance"": ""05"",
@@ -35,7 +35,7 @@ Ce cas permet de tester :
   ""enfants"": [
     {
       ""nomNaissance"": ""ROUX"",
-      ""nomUsage"": ""ROUX"",
+      ""nomUsage"": null,
       ""prenoms"": ""ALEXIS VINCENT"",
       ""anneeDateDeNaissance"": ""2006"",
       ""moisDateDeNaissance"": ""04"",
@@ -44,7 +44,7 @@ Ce cas permet de tester :
     },
     {
       ""nomNaissance"": ""ROUX"",
-      ""nomUsage"": ""ROUX"",
+      ""nomUsage"": null,
       ""prenoms"": ""FLEUR EDITH"",
       ""anneeDateDeNaissance"": ""2004"",
       ""moisDateDeNaissance"": ""04"",
@@ -104,12 +104,12 @@ Il comporte des erreurs dans les prenoms qui ne changent pas la phonétique. Ici
 de donnée de naissance pour compenser les erreurs et retrouver l'identité.
 
 Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
-d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEXI"",""GEROME"",""JEN-PHILIPE""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12,""jourDateDeNaissance"":27}",200,"{
+d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEXI"",""GEROME"",""JEN-PHILIPE""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12,""jourDateDeNaissance"":27}",200,"{
   ""regime"": ""CNAF"",
   ""allocataires"": [
     {
       ""nomNaissance"": ""LEFEBVRE"",
-      ""nomUsage"": ""LEFEBVRE"",
+      ""nomUsage"": null,
       ""prenoms"": ""ALEXIS GÉRÔME JEAN-PHILIPPE"",
       ""anneeDateDeNaissance"": ""1982"",
       ""moisDateDeNaissance"": ""12"",
@@ -139,12 +139,12 @@ Il comporte des erreurs dans les prenoms qui changent la phonétique. Ici, il y 
 de donnée de naissance pour compenser les erreurs et retrouver l'identité.
 
 Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
-d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEIXS"",""GRÉÔME"",""JEAN-PHILIPPE""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12,""jourDateDeNaissance"":27}",200,"{
+d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEIXS"",""GRÉÔME"",""JEAN-PHILIPPE""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12,""jourDateDeNaissance"":27}",200,"{
   ""regime"": ""CNAF"",
   ""allocataires"": [
     {
       ""nomNaissance"": ""LEFEBVRE"",
-      ""nomUsage"": ""LEFEBVRE"",
+      ""nomUsage"": null,
       ""prenoms"": ""ALEXIS GÉRÔME JEAN-PHILIPPE"",
       ""anneeDateDeNaissance"": ""1982"",
       ""moisDateDeNaissance"": ""12"",
@@ -175,12 +175,12 @@ Il y a suffisament de données de nom/prénoms dans les paramètres pour compens
 l'absence des données de naissance.
 
 Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
-d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEXIS"",""GÉRÔME"",""JEAN-PHILIPPE""],""anneeDateDeNaissance"":1982}",200,"{
+d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEXIS"",""GÉRÔME"",""JEAN-PHILIPPE""],""anneeDateDeNaissance"":1982}",200,"{
   ""regime"": ""CNAF"",
   ""allocataires"": [
     {
       ""nomNaissance"": ""LEFEBVRE"",
-      ""nomUsage"": ""LEFEBVRE"",
+      ""nomUsage"": null,
       ""prenoms"": ""ALEXIS GÉRÔME JEAN-PHILIPPE"",
       ""anneeDateDeNaissance"": ""1982"",
       ""moisDateDeNaissance"": ""12"",
@@ -211,12 +211,12 @@ Il y suffisament de donnée de naissance dans cet ensemble de paramètre pour pe
 de compenser les données manquantes
 
 Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
-d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEXIS""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12,""jourDateDeNaissance"":27}",200,"{
+d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEXIS""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12,""jourDateDeNaissance"":27}",200,"{
   ""regime"": ""CNAF"",
   ""allocataires"": [
     {
       ""nomNaissance"": ""LEFEBVRE"",
-      ""nomUsage"": ""LEFEBVRE"",
+      ""nomUsage"": null,
       ""prenoms"": ""ALEXIS GÉRÔME JEAN-PHILIPPE"",
       ""anneeDateDeNaissance"": ""1982"",
       ""moisDateDeNaissance"": ""12"",
@@ -245,12 +245,12 @@ Il a pour but de décrire une personne fictive avec l'ensemble de ses paramètre
 et la réponse lorsque celui ci est trouvé.
 
 Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
-d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEXIS"",""GÉRÔME"",""JEAN-PHILIPPE""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12,""jourDateDeNaissance"":27}",200,"{
+d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEXIS"",""GÉRÔME"",""JEAN-PHILIPPE""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12,""jourDateDeNaissance"":27}",200,"{
   ""regime"": ""CNAF"",
   ""allocataires"": [
     {
       ""nomNaissance"": ""LEFEBVRE"",
-      ""nomUsage"": ""LEFEBVRE"",
+      ""nomUsage"": null,
       ""prenoms"": ""ALEXIS GÉRÔME JEAN-PHILIPPE"",
       ""anneeDateDeNaissance"": ""1982"",
       ""moisDateDeNaissance"": ""12"",
@@ -278,12 +278,12 @@ Ce cas permet de tester :
 - [Param. appel] Lieu de naissance en France
 - [Param. appel] Sexe feminin
 - [Réponse] Régime CAF
-- [Réponse] Quotient familial de 650","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""BERNARD"",""prenoms"":[""ELODIE""],""anneeDateDeNaissance"":1990,""moisDateDeNaissance"":3}",200,"{
+- [Réponse] Quotient familial de 650","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomNaissance"":""BERNARD"",""prenoms"":[""ELODIE""],""anneeDateDeNaissance"":1990,""moisDateDeNaissance"":3}",200,"{
   ""regime"": ""CNAF"",
   ""allocataires"": [
     {
       ""nomNaissance"": ""BERNARD"",
-      ""nomUsage"": ""BERNARD"",
+      ""nomUsage"": null,
       ""prenoms"": ""ELODIE JUDITH GERTRUDE"",
       ""anneeDateDeNaissance"": ""1990"",
       ""moisDateDeNaissance"": ""03"",
@@ -294,7 +294,7 @@ Ce cas permet de tester :
   ""enfants"": [
     {
       ""nomNaissance"": ""BERNARD"",
-      ""nomUsage"": ""BERNARD"",
+      ""nomUsage"": null,
       ""prenoms"": ""LEO"",
       ""anneeDateDeNaissance"": ""1990"",
       ""moisDateDeNaissance"": ""04"",
@@ -322,12 +322,12 @@ Ce cas permet de tester :
 - [Param. appel] sexe masculin
 - [Réponse] Régime CAF
 - [Réponse] Quotient familial de 2550
-- [Réponse] Quotient familial du mois en cours","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEXIS""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12}",200,"{
+- [Réponse] Quotient familial du mois en cours","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEXIS""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12}",200,"{
   ""regime"": ""CNAF"",
   ""allocataires"": [
     {
       ""nomNaissance"": ""LEFEBVRE"",
-      ""nomUsage"": ""LEFEBVRE"",
+      ""nomUsage"": null,
       ""prenoms"": ""ALEXIS"",
       ""anneeDateDeNaissance"": ""1982"",
       ""moisDateDeNaissance"": ""12"",
@@ -357,7 +357,7 @@ Il comporte des erreurs dans les prenoms qui changent ne change pas ou peu la ph
 de donnée de naissance pour compenser les erreurs et retrouver l'identité.
 
 Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
-d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEXI"",""GEROME"",""JEN-PHILIPE""],""anneeDateDeNaissance"":1982}",404,"{
+d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEXI"",""GEROME"",""JEN-PHILIPE""],""anneeDateDeNaissance"":1982}",404,"{
   ""error"": ""not_found"",
   ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
   ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
@@ -370,7 +370,7 @@ Il comporte des erreurs dans les prenoms qui changent la phonétique. Ici, il n'
 de donnée de naissance pour compenser les erreurs et retrouver l'identité.
 
 Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
-d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEIXS"",""GRÉÔME"",""JEAN-PHILIPPE""],""anneeDateDeNaissance"":1982}",404,"{
+d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEIXS"",""GRÉÔME"",""JEAN-PHILIPPE""],""anneeDateDeNaissance"":1982}",404,"{
   ""error"": ""not_found"",
   ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
   ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
@@ -378,7 +378,7 @@ d'erreur selon les informations que vous fournirez.","{""codeInseeLieuDeNaissanc
 ,"## IDENTITÉ CAS NOMINAL
 
 Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
-Les données concernant la date de naissance ont été retirée","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomUsage"":""LEFEBVRE"",""prenoms"":[""ALEXIS"",""GÉRÔME"",""JEAN-PHILIPPE""]}",404,"{
+Les données concernant la date de naissance ont été retirée","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEXIS"",""GÉRÔME"",""JEAN-PHILIPPE""]}",404,"{
   ""error"": ""not_found"",
   ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
   ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
@@ -403,7 +403,7 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
 }"
 ,"Cas de test pour QFv2 avec jeton FranceConnect.
 Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_qfv2.yml).
-L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":""Georges"",""nomNaissance"":""CNAF"",""dateNaissance"":""2002-01-01"",""sexe"":""M"",""codeInseeLieuDeNaissance"":""75002"",""codePaysLieuDeNaissance"":""99100""}",200,"{
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms[]"":[""Georges""],""nomNaissance"":""CNAF"",""anneeDateDeNaissance"":2002,""moisDateDeNaissance"":1,""jourDateDeNaissance"":1,""sexe"":""M"",""codeInseeLieuDeNaissance"":""75002"",""codePaysLieuDeNaissance"":""99100""}",200,"{
   ""regime"": ""CNAF"",
   ""allocataires"": [
     {
@@ -432,7 +432,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms
 }"
 ,"Cas de test pour QFv2 avec jeton FranceConnect.
 Les données proviennent des jetons de l'environnement de test FranceConnect.
-L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":""Angela Claire Louise"",""nomNaissance"":""DUBOIS"",""dateNaissance"":""1962-08-24"",""sexe"":""F"",""codeInseeLieuDeNaissance"":""75107"",""codePaysLieuDeNaissance"":""99100""}",200,"{
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms[]"":[""Angela"",""Claire"",""Louise""],""nomNaissance"":""DUBOIS"",""anneeDateDeNaissance"":1962,""moisDateDeNaissance"":8,""jourDateDeNaissance"":24,""sexe"":""F"",""codeInseeLieuDeNaissance"":""75107"",""codePaysLieuDeNaissance"":""99100""}",200,"{
   ""regime"": ""CNAF"",
   ""allocataires"": [
     {

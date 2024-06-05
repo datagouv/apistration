@@ -15,7 +15,7 @@ params:
   codeInseeLieuDeNaissance: '08480'
   codePaysLieuDeNaissance: '99100'
   sexe: 'F'
-  nomUsage: 'LEFEBVRE'
+  nomNaissance: 'LEFEBVRE'
   prenoms:
     - 'ALEXIS'
     - 'GÉRÔME'
@@ -28,7 +28,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "LEFEBVRE",
-        "nomUsage": "LEFEBVRE",
+        "nomUsage": null,
         "prenoms": "ALEXIS GÉRÔME JEAN-PHILIPPE",
         "anneeDateDeNaissance": "1982",
         "moisDateDeNaissance": "12",
