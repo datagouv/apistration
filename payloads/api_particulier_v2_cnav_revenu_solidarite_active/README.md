@@ -268,13 +268,14 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "given_name": "Georges",
-    "family_name": "CNAF",
-    "birthdate": "2002-01-01",
+    "prenoms[]": [
+      "Georges"
+    ],
+    "nomNaissance": "CNAF",
+    "dateNaissance": "2002-01-01",
     "sexe": "M",
-    "birthplace": "75002",
-    "birthcountry": "99100",
-    "preferred_username": "MARTIN"
+    "codeInseeLieuDeNaissance": "75002",
+    "codePaysLieuDeNaissance": "99100"
   }
   ```
 
@@ -318,12 +319,16 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "given_name": "Angela",
-    "family_name": "DUBOIS",
-    "birthdate": "1962-08-24",
+    "prenoms[]": [
+      "Angela",
+      "Claire",
+      "Louise"
+    ],
+    "nomNaissance": "DUBOIS",
+    "dateNaissance": "1962-08-24",
     "sexe": "F",
-    "birthplace": "75107",
-    "birthcountry": "99100"
+    "codeInseeLieuDeNaissance": "75107",
+    "codePaysLieuDeNaissance": "99100"
   }
   ```
 
