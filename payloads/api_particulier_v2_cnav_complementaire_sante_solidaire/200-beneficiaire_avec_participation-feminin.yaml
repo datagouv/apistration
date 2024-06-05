@@ -11,7 +11,7 @@ params:
   codeInseeLieuDeNaissance: '08480'
   codePaysLieuDeNaissance: '99100' #Bénéficiaire né en France
   sexe: 'F'
-  nomUsage: 'DUPONT'
+  nomNaissance: 'DUPONT'
   prenoms:
     - 'JEANNE'
     - 'LAURE'

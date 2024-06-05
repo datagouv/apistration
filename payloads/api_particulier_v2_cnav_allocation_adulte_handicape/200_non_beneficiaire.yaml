@@ -2,7 +2,7 @@
 description: |-
   ## Non bénéficiaire
 params:
-  nomUsage: 'CHIRAC'
+  nomNaissance: 'CHIRAC'
   nomNaissance: 'MARTIN'
   prenoms[]:
   - 'JACQUES'

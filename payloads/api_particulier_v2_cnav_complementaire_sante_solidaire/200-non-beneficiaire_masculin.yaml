@@ -10,7 +10,7 @@ params:
   codeInseeLieuDeNaissance: '08480'
   codePaysLieuDeNaissance: '99100' #Code 99100 pour la France
   sexe: 'M'
-  nomUsage: 'DUPONT'
+  nomNaissance: 'DUPONT'
   prenoms:
     - 'PIERRE'
   anneeDateDeNaissance: 1966

@@ -11,7 +11,7 @@ params:
   codeInseeLieuDeNaissance: '08481'
   codePaysLieuDeNaissance: '99127'
   sexe: 'M'
-  nomUsage: 'DUPONT'
+  nomNaissance: 'DUPONT'
   prenoms:
     - 'PIERRE'
     - 'PAUL'
