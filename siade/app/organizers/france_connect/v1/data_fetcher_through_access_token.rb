@@ -6,6 +6,6 @@ class FranceConnect::V1::DataFetcherThroughAccessToken < RetrieverOrganizer
     FranceConnect::V1::DataFetcherThroughAccessToken::BuildClientAttributes
 
   def provider_name
-    'FranceConnect'
+    'FranceConnect v1'
   end
 end

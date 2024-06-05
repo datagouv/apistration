@@ -74,7 +74,8 @@ class ErrorsBackend
       '36' => 'Sécurité sociale',
       '37' => 'CNAV',
       '38' => 'CIBTP',
-      '50' => 'FranceConnect'
+      '50' => 'FranceConnect v1',
+      '51' => 'FranceConnect v2'
     }
   end
   # rubocop:enable Metrics/MethodLength
