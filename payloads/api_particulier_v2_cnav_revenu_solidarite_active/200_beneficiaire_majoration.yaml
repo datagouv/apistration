@@ -3,7 +3,7 @@ description: |-
   ## Bénéficiaire avec majoration
 params:
   nomUsage: 'MARTIN'
-  prenoms[]:
+  prenoms:
   - 'SAMUEL'
   anneeDateDeNaissance: 1980
   moisDateDeNaissance: 9

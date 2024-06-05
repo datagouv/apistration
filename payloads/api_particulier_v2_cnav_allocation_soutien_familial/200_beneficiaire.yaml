@@ -3,7 +3,7 @@ description: |-
   ## Bénéficiaire
 params:
   nomNaissance: 'LALANNE'
-  prenoms[]:
+  prenoms:
   - 'FRANCIS'
   - 'GERARD'
   anneeDateDeNaissance: 2002

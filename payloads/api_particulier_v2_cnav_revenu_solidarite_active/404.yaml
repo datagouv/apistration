@@ -3,7 +3,7 @@ description: |-
   ## Allocataire non trouvé
 params:
   nomNaissance: 'DUBOCHE'
-  prenoms[]:
+  prenoms:
   - 'JEROME'
   anneeDateDeNaissance: 2002
   moisDateDeNaissance: 12

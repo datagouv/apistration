@@ -3,7 +3,7 @@ description: |-
   ## Non bénéficiaire
 params:
   nomUsage: 'LAGAFFE'
-  prenoms[]:
+  prenoms:
   - 'GASTON'
   anneeDateDeNaissance: 1980
   moisDateDeNaissance: 9

@@ -1,4 +1,4 @@
-# Allocation de Soutien Familial
+# Statut allocation de soutien familial (ASF)
 * [200_beneficiaire.yaml](200_beneficiaire.yaml)
 
   Status `200`
@@ -11,7 +11,7 @@
   ```json
   {
     "nomNaissance": "LALANNE",
-    "prenoms[]": [
+    "prenoms": [
       "FRANCIS",
       "GERARD"
     ],
@@ -46,7 +46,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=LALANNE' -d 'prenoms[][]=FRANCIS' -d 'prenoms[][]=GERARD' -d 'anneeDateDeNaissance=2002' -d 'moisDateDeNaissance=11' -d 'jourDateDeNaissance=1' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomNaissance=LALANNE' -d 'prenoms[]=FRANCIS' -d 'prenoms[]=GERARD' -d 'anneeDateDeNaissance=2002' -d 'moisDateDeNaissance=11' -d 'jourDateDeNaissance=1' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/allocation-soutien-familial"
   ```
 
@@ -65,7 +65,7 @@
   {
     "nomUsage": "DEPARDIEU",
     "nomNaissance": "BERGERAC",
-    "prenoms[]": [
+    "prenoms": [
       "CYRANO"
     ],
     "anneeDateDeNaissance": 2002,
@@ -99,7 +99,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=DEPARDIEU' -d 'nomNaissance=BERGERAC' -d 'prenoms[][]=CYRANO' -d 'anneeDateDeNaissance=2002' -d 'moisDateDeNaissance=11' -d 'jourDateDeNaissance=1' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomUsage=DEPARDIEU' -d 'nomNaissance=BERGERAC' -d 'prenoms[]=CYRANO' -d 'anneeDateDeNaissance=2002' -d 'moisDateDeNaissance=11' -d 'jourDateDeNaissance=1' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/allocation-soutien-familial"
   ```
 
@@ -117,7 +117,7 @@
   ```json
   {
     "nomNaissance": "DUBOCHE",
-    "prenoms[]": [
+    "prenoms": [
       "JEROME"
     ],
     "anneeDateDeNaissance": 2002,
@@ -151,7 +151,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=DUBOCHE' -d 'prenoms[][]=JEROME' -d 'anneeDateDeNaissance=2002' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=5' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomNaissance=DUBOCHE' -d 'prenoms[]=JEROME' -d 'anneeDateDeNaissance=2002' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=5' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/allocation-soutien-familial"
   ```
 
@@ -215,7 +215,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "prenoms[]": [
+    "prenoms": [
       "Georges"
     ],
     "nomNaissance": "CNAF",
@@ -267,7 +267,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "prenoms[]": [
+    "prenoms": [
       "Angela",
       "Claire",
       "Louise"
