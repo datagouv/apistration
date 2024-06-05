@@ -196,8 +196,8 @@ RSpec.describe 'logstasher custom fields', type: :controller do
           hash_including(
             parameters: hash_including(
               france_connect_client: {
-                id: 'france_connect_client_id',
-                name: 'france_connect_client_name'
+                id: '6925fb8143c76eded44d32b40c0cb1006065f7f003de52712b78985704f39950',
+                name: 'no_data_from_fc_v2'
               }
             )
           ),
@@ -222,10 +222,11 @@ RSpec.describe 'logstasher custom fields', type: :controller do
 
         mock_invalid_france_connect_checktoken
 
-        allow(MockDataBackend).to receive(:get_response_for).with('france_connect', anything).and_return(
+        allow(MockDataBackend).to receive(:get_response_for).with('france_connect', anything).and_return(nil)
+        allow(MockDataBackend).to receive(:get_response_for).with('france_connect_v2', anything).and_return(
           {
             status: 200,
-            payload: france_connect_checktoken_payload(scopes: ['allowed_scope']).stringify_keys
+            payload: france_connect_checktoken_payload(scopes: ['allowed_scope']).deep_stringify_keys
           }
         )
       end

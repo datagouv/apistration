@@ -18,30 +18,7 @@ module ProviderStubs::FranceConnectV2
     )
   end
 
-  # rubocop:disable Metrics/MethodLength
-  def extract_france_connect_v2_checktoken_error(kind)
-    case kind
-    when :expired_or_not_found
-      {
-        status: 401,
-        body: {
-          status: 'fail',
-          message: 'token_not_found_or_expired'
-        }.to_json
-      }
-    when :malformed
-      {
-        status: 400,
-        body: {
-          status: 'fail',
-          message: 'Malformed access token.'
-        }.to_json
-      }
-    end
-  end
-  # rubocop:enable Metrics/MethodLength
-
-  def france_connect_v2_checktoken_payload(scopes: nil)
+  def france_connect_v2_checktoken_payload(scopes: minimal_france_connect_scopes)
     {
       aud: '423dcbdc5a15ece61ed00ff5989d72379c26d9ed4c8e4e05a87cffae019586e0',
       iat: 1_704_965_332,
@@ -71,9 +48,21 @@ module ProviderStubs::FranceConnectV2
       }
     end
   end
+
+  def default_france_connect_v2_identity_attributes
+    {
+      given_name: 'Jean Martin',
+      given_name_array: %w[Jean Martin],
+      family_name: 'DUPONT',
+      birthdate: '2000-01-01',
+      gender: 'male',
+      birthplace: '75101',
+      birthcountry: '99100',
+      preferred_username: nil
+    }
+  end
   # rubocop:enable Metrics/MethodLength
 
-  # rubocop:disable Metrics/MethodLength
   def token_introspection(scopes)
     {
       active: true,
@@ -83,15 +72,7 @@ module ProviderStubs::FranceConnectV2
       exp: 1_704_965_388,
       acr: 'eidas2',
       jti: 'Wn5igB6_frAVBXQgShzI0znLE3fid2cWZHR9TWtqxZM',
-      scope: scopes,
-      gender: 'male',
-      family_name: 'DUPONT',
-      given_name: 'Jean Martin',
-      given_name_array: %w[Jean Martin],
-      birthdate: '2000-01-01',
-      birthplace: '75101',
-      birthcountry: '99100'
-    }
+      scope: scopes
+    }.merge(default_france_connect_v2_identity_attributes)
   end
-  # rubocop:enable Metrics/MethodLength
 end

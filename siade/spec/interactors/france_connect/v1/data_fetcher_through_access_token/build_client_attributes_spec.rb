@@ -6,7 +6,7 @@ RSpec.describe FranceConnect::V1::DataFetcherThroughAccessToken::BuildClientAttr
       instance_double(Net::HTTPOK, body:)
     end
 
-    let(:payload) { france_connect_checktoken_payload }
+    let(:payload) { france_connect_v1_checktoken_payload }
     let(:body) { payload.to_json }
 
     its(:client_attributes) { is_expected.to be_a(Resource) }

@@ -2,7 +2,7 @@ RSpec.describe CNOUS::StudentScholarshipWithFranceConnect, type: :retriever_orga
   describe '.call' do
     subject { described_class.call(params:) }
 
-    let(:params) { default_france_connect_v1_identity_attributes }
+    let(:params) { default_france_connect_identity_attributes }
 
     describe 'happy path' do
       before do

@@ -6,7 +6,7 @@ RSpec.describe FranceConnect::V1::DataFetcherThroughAccessToken::BuildUser, type
       instance_double(Net::HTTPOK, body:)
     end
 
-    let(:body) { france_connect_checktoken_payload(scopes:).to_json }
+    let(:body) { france_connect_v1_checktoken_payload(scopes:).to_json }
     let(:scopes) { %w[mesri_identifiant openid identite_pivot] }
 
     its(:user) { is_expected.to be_a(JwtUser) }

@@ -34,8 +34,7 @@ module ProviderStubs::CNAV
         dateNaissance: '2000-01-01',
         genre: 'M',
         listePrenoms: 'Jean Martin',
-        nomNaissance: 'DUPONT',
-        nomUsage: 'MARTIN'
+        nomNaissance: 'DUPONT'
       }),
       headers: {
         'Content-Type' => 'application/json',

@@ -103,12 +103,11 @@ class LogStasherFieldsBuilder
   end
 
   def extract_france_connect_client_infos_from_organizer
-    france_connect_http_response = controller.france_connect_organizer.response
-    france_connect_check_token_payload = JSON.parse(france_connect_http_response.body)
+    france_connect_organizer = controller.france_connect_organizer
 
     {
-      id: france_connect_check_token_payload['client']['client_id'],
-      name: france_connect_check_token_payload['client']['client_name']
+      id: france_connect_organizer.client_attributes.client_id,
+      name: france_connect_organizer.client_attributes.client_name
     }
   end
 
