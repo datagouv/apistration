@@ -4,7 +4,7 @@ description: |-
 params:
   nomUsage: 'DUPONT'
   nomNaissance: 'MARTIN'
-  prenoms[]:
+  prenoms:
   - 'PIERRE'
   - 'RICHARD'
   anneeDateDeNaissance: 1987

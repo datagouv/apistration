@@ -5,7 +5,7 @@ description: |-
   L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
 params:
-  prenoms[]: 
+  prenoms: 
   - 'Angela' 
   - 'Claire' 
   - 'Louise'

@@ -1123,7 +1123,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "prenoms[]": [
+    "prenoms": [
       "Georges"
     ],
     "nomNaissance": "CNAF",
@@ -1199,7 +1199,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "prenoms[]": [
+    "prenoms": [
       "Angela",
       "Claire",
       "Louise"

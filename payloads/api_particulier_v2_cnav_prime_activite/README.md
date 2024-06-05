@@ -1,4 +1,4 @@
-# Prime d'activité
+# Statut prime d'activité (PA)
 * [200_beneficiaire_majoration.yaml](200_beneficiaire_majoration.yaml)
 
   Status `200`
@@ -11,7 +11,7 @@
   ```json
   {
     "nomNaissance": "MARTIN",
-    "prenoms[]": [
+    "prenoms": [
       "SAMUEL"
     ],
     "anneeDateDeNaissance": 1980,
@@ -46,7 +46,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=MARTIN' -d 'prenoms[][]=SAMUEL' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=9' -d 'jourDateDeNaissance=20' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomNaissance=MARTIN' -d 'prenoms[]=SAMUEL' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=9' -d 'jourDateDeNaissance=20' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/prime-activite"
   ```
 
@@ -64,7 +64,7 @@
   ```json
   {
     "nomNaissance": "GONTRAND",
-    "prenoms[]": [
+    "prenoms": [
       "YVES"
     ],
     "anneeDateDeNaissance": 1980,
@@ -99,7 +99,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=GONTRAND' -d 'prenoms[][]=YVES' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=9' -d 'jourDateDeNaissance=20' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomNaissance=GONTRAND' -d 'prenoms[]=YVES' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=9' -d 'jourDateDeNaissance=20' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/prime-activite"
   ```
 
@@ -117,7 +117,7 @@
   ```json
   {
     "nomNaissance": "LAGAFFE",
-    "prenoms[]": [
+    "prenoms": [
       "GASTON"
     ],
     "anneeDateDeNaissance": 1980,
@@ -152,7 +152,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=LAGAFFE' -d 'prenoms[][]=GASTON' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=9' -d 'jourDateDeNaissance=20' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomNaissance=LAGAFFE' -d 'prenoms[]=GASTON' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=9' -d 'jourDateDeNaissance=20' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/prime-activite"
   ```
 
@@ -170,7 +170,7 @@
   ```json
   {
     "nomNaissance": "DUBOCHE",
-    "prenoms[]": [
+    "prenoms": [
       "JEROME"
     ],
     "anneeDateDeNaissance": 2002,
@@ -204,7 +204,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=DUBOCHE' -d 'prenoms[][]=JEROME' -d 'anneeDateDeNaissance=2002' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=5' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomNaissance=DUBOCHE' -d 'prenoms[]=JEROME' -d 'anneeDateDeNaissance=2002' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=5' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/prime-activite"
   ```
 
@@ -268,7 +268,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "prenoms[]": [
+    "prenoms": [
       "Georges"
     ],
     "nomNaissance": "CNAF",
@@ -321,7 +321,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "prenoms[]": [
+    "prenoms": [
       "Angela",
       "Claire",
       "Louise"

@@ -4,7 +4,7 @@ description: |-
 params:
   nomNaissance: 'CHIRAC'
   nomNaissance: 'MARTIN'
-  prenoms[]:
+  prenoms:
   - 'JACQUES'
   anneeDateDeNaissance: 1987
   moisDateDeNaissance: 12

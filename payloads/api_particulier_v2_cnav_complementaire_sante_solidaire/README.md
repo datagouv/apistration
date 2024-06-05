@@ -1,4 +1,4 @@
-# Complémentaire santé solidaire
+# Statut complémentaire santé solidaire (C2S)
 * [200-beneficiaire_avec_participation-feminin.yaml](200-beneficiaire_avec_participation-feminin.yaml)
 
   Status `200`
@@ -274,7 +274,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "prenoms[]": [
+    "prenoms": [
       "Georges"
     ],
     "nomNaissance": "CNAF",
@@ -326,7 +326,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "prenoms[]": [
+    "prenoms": [
       "Angela",
       "Claire",
       "Louise"

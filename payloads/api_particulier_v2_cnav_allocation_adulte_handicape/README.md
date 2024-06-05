@@ -1,4 +1,4 @@
-# Allocation Adulte Handicapé
+# Statut allocation adulte handicapé (AAH)
 * [200_beneficiaire.yaml](200_beneficiaire.yaml)
 
   Status `200`
@@ -12,7 +12,7 @@
   {
     "nomUsage": "DUPONT",
     "nomNaissance": "MARTIN",
-    "prenoms[]": [
+    "prenoms": [
       "PIERRE",
       "RICHARD"
     ],
@@ -46,7 +46,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=DUPONT' -d 'nomNaissance=MARTIN' -d 'prenoms[][]=PIERRE' -d 'prenoms[][]=RICHARD' -d 'anneeDateDeNaissance=1987' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=1' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomUsage=DUPONT' -d 'nomNaissance=MARTIN' -d 'prenoms[]=PIERRE' -d 'prenoms[]=RICHARD' -d 'anneeDateDeNaissance=1987' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=1' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/allocation-adulte-handicape"
   ```
 
@@ -64,7 +64,7 @@
   ```json
   {
     "nomNaissance": "MARTIN",
-    "prenoms[]": [
+    "prenoms": [
       "JACQUES"
     ],
     "anneeDateDeNaissance": 1987,
@@ -97,7 +97,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=MARTIN' -d 'prenoms[][]=JACQUES' -d 'anneeDateDeNaissance=1987' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=1' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomNaissance=MARTIN' -d 'prenoms[]=JACQUES' -d 'anneeDateDeNaissance=1987' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=1' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/allocation-adulte-handicape"
   ```
 
@@ -115,7 +115,7 @@
   ```json
   {
     "nomNaissance": "DUBOCHE",
-    "prenoms[]": [
+    "prenoms": [
       "JEROME"
     ],
     "anneeDateDeNaissance": 2002,
@@ -149,7 +149,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=DUBOCHE' -d 'prenoms[][]=JEROME' -d 'anneeDateDeNaissance=2002' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=5' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomNaissance=DUBOCHE' -d 'prenoms[]=JEROME' -d 'anneeDateDeNaissance=2002' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=5' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/allocation-adulte-handicape"
   ```
 
@@ -213,7 +213,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "prenoms[]": [
+    "prenoms": [
       "Georges"
     ],
     "nomNaissance": "CNAF",
@@ -264,7 +264,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   ```json
   {
-    "prenoms[]": [
+    "prenoms": [
       "Angela",
       "Claire",
       "Louise"
