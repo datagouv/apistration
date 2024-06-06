@@ -11,9 +11,9 @@ class CNAV::MakeRequest < MakeRequest::Get
       nomUsage: context.params[:nom_usage],
       nomNaissance: context.params[:nom_naissance],
       prenoms: context.params[:prenoms],
-      anneeDateDeNaissance: date_naissance.split('-').first.to_i,
-      moisDateDeNaissance: date_naissance.split('-').second.to_i,
-      jourDateDeNaissance: date_naissance.split('-').last.to_i,
+      anneeDateDeNaissance: int_or_nil(date_naissance.split('-').first.to_i),
+      moisDateDeNaissance: int_or_nil(date_naissance.split('-').second.to_i),
+      jourDateDeNaissance: int_or_nil(date_naissance.split('-').last.to_i),
       codeInseeLieuDeNaissance: context.params[:code_insee_lieu_de_naissance],
       codePaysLieuDeNaissance: context.params[:code_pays_lieu_de_naissance],
       sexe: context.params[:gender]
@@ -58,5 +58,9 @@ class CNAV::MakeRequest < MakeRequest::Get
       context.params[:mois_date_de_naissance],
       context.params[:jour_date_de_naissance]
     ).format
+  end
+
+  def int_or_nil(value)
+    value.to_i.zero? ? nil : value.to_i
   end
 end
