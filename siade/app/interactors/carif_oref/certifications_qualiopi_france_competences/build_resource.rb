@@ -22,7 +22,7 @@ class CarifOref::CertificationsQualiopiFranceCompetences::BuildResource < BuildR
         date_fin_exercice: nda_payload['fin_exercice'],
         certification_qualiopi: {
           action_formation: nda_payload['qualiopi_action_formation'],
-          bilan_competences: nda_payload['qualiopi_bilan_comptence'],
+          bilan_competences: nda_payload['qualiopi_bilan_competence'],
           validation_acquis_experience: nda_payload['qualiopi_vae'],
           apprentissage: nda_payload['qualiopi_apprentissage'],
           obtention_via_unite_legale: obtention_via_unite_legale(nda_payload['obtention_qualiopi'])

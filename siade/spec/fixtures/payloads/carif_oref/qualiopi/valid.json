@@ -73,7 +73,7 @@
             "code_specialite_3": "314",
             "libelle_specialite_3": "Comptabilit\u00e9, gestion",
             "qualiopi_action_formation": true,
-            "qualiopi_bilan_comptence": false,
+            "qualiopi_bilan_competence": false,
             "qualiopi_vae": true,
             "qualiopi_apprentissage": true,
             "obtention_qualiopi": "Qualiopi direct sur le NDA"
