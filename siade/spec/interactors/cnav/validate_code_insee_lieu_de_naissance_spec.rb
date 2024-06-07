@@ -70,5 +70,14 @@ RSpec.describe CNAV::ValidateCodeINSEELieuDeNaissance, type: :validate_param_int
 
       its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
     end
+
+    context 'when it is empty and code_pays_lieu_de_naissance is not France' do
+      let(:code_pays_lieu_de_naissance) { '11111' }
+      let(:code_insee_lieu_de_naissance) { nil }
+
+      it { is_expected.to be_a_success }
+
+      its(:errors) { is_expected.to be_empty }
+    end
   end
 end

@@ -11,7 +11,7 @@ class CNAV::ValidateCodeINSEELieuDeNaissanceOrTranscogageParams < ValidateParamI
   private
 
   def call_validator
-    if code_insee_lieu_de_naissance?
+    if code_insee_lieu_de_naissance? || !france?
       CNAV::ValidateCodeINSEELieuDeNaissance.call(params: context.params)
     elsif transcogage_params?
       INSEE::CommuneINSEECode::ValidateParams.call(params: context.params)
@@ -26,5 +26,13 @@ class CNAV::ValidateCodeINSEELieuDeNaissanceOrTranscogageParams < ValidateParamI
 
   def transcogage_params?
     %i[nom_commune_naissance annee_date_de_naissance code_insee_departement_de_naissance].all? { |key| context.params[key].present? }
+  end
+
+  def france?
+    code_pays_lieu_de_naissance == '99100'
+  end
+
+  def code_pays_lieu_de_naissance
+    param(:code_pays_lieu_de_naissance).to_s
   end
 end

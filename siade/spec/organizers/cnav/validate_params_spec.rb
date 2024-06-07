@@ -77,12 +77,24 @@ RSpec.describe CNAV::ValidateParams, type: :validate_params do
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
-  describe 'non-regression test: with empty params for lieu de naissance' do
-    let(:code_insee_lieu_de_naissance) { nil }
+  describe 'non regression test' do
+    describe 'with empty params for lieu de naissance and in france' do
+      let(:code_insee_lieu_de_naissance) { nil }
+      let(:code_pays_lieu_de_naissance) { '99100' }
 
-    it { is_expected.to be_a_failure }
+      it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+    end
+
+    describe 'with empty params for lieu de naissance and not in france' do
+      let(:code_insee_lieu_de_naissance) { nil }
+      let(:code_pays_lieu_de_naissance) { '99111' }
+
+      it { is_expected.to be_a_success }
+
+      its(:errors) { is_expected.to be_empty }
+    end
   end
 
   context 'with invalid code_insee_lieu_de_naissance' do

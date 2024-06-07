@@ -24,7 +24,8 @@ RSpec.describe CNAV::ValidateCodeINSEELieuDeNaissanceOrTranscogageParams, type: 
       {
         nom_commune_naissance: 'Gennevilliers',
         annee_date_de_naissance:,
-        code_insee_departement_de_naissance: '92'
+        code_insee_departement_de_naissance: '92',
+        code_pays_lieu_de_naissance: '99100'
       }
     end
 
@@ -44,10 +45,20 @@ RSpec.describe CNAV::ValidateCodeINSEELieuDeNaissanceOrTranscogageParams, type: 
   end
 
   describe 'with nor code insee lieu de naissance nor transcogage params' do
-    let(:params) { { code_pays_lieu_de_naissance: '99100' } }
+    describe 'when in france' do
+      let(:params) { { code_pays_lieu_de_naissance: '99100' } }
 
-    it { is_expected.to be_a_failure }
+      it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+    end
+
+    describe 'when not in france' do
+      let(:params) { { code_pays_lieu_de_naissance: '99345' } }
+
+      it { is_expected.to be_a_success }
+
+      its(:errors) { is_expected.to be_empty }
+    end
   end
 end
