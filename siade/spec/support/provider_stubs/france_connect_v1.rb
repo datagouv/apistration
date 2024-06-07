@@ -1,6 +1,6 @@
 require_relative '../provider_stubs'
 
-module ProviderStubs::FranceConnectV1
+module ProviderStubs::FranceConnect::V1
   def mock_valid_france_connect_v1_checktoken(scopes: nil)
     scopes ||= minimal_france_connect_v1_scopes
 
