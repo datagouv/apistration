@@ -5,6 +5,7 @@ RSpec.describe CNAV::ValidateParams, type: :validate_params do
     {
       prenoms:,
       gender:,
+      nom_naissance:,
       code_pays_lieu_de_naissance:,
 
       code_insee_lieu_de_naissance:,
@@ -34,6 +35,7 @@ RSpec.describe CNAV::ValidateParams, type: :validate_params do
   let(:user_id) { valid_siret(:msa) }
   let(:request_id) { SecureRandom.uuid }
   let(:recipient) { valid_siret }
+  let(:nom_naissance) { 'Bulbizare' }
 
   describe 'with transcogage params' do
     let(:nom_commune_naissance) { 'Gennevilliers' }
@@ -139,5 +141,13 @@ RSpec.describe CNAV::ValidateParams, type: :validate_params do
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(InvalidRecipientError)) }
+  end
+
+  context 'with invalid nom_naissance' do
+    let(:nom_naissance) { nil }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 end
