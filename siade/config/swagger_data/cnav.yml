@@ -8,7 +8,7 @@ cnav:
         example: "DUPONT"
       nomNaissance:
         type: "string"
-        description: "Nom de naissance. Ne pas renseigner si présence de jeton FranceConnect."
+        description: "Nom de naissance. Ne pas renseigner si présence de jeton FranceConnect. Le champ est obligatoire pour les appels non FranceConnecté"
         example: "JEAN"
       prenoms:
         description: "Liste des prénoms. Ne pas renseigner si présence de jeton FranceConnect."
