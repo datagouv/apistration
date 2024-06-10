@@ -94,3 +94,4 @@ swagger/versionned/openapi-particulier.yaml
 config/credentials/staging.yml.enc
 
 sandbox/
+.deploy_token
