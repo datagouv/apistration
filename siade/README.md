@@ -113,14 +113,12 @@ si besoin faire une récupération de mot de passe.
 ## Déploiement sur les serveurs
 
 ```sh
-./bin/deploy
+./bin/deploy [env] [branch]
 ```
 
-Dans le cas d'un test sur sandbox de watchdoge1 avec la branche `features/whatever`
-
-```sh
-ssh -A watchdoge1 -- /usr/local/bin/rails_deploy_siade_sandbox.sh features/whatever
-```
+`env` est par défaut à `production`, et accepte uniquement `sandbox`, `staging`
+et `production`
+`branch` est pris en compte uniquement si `env` est `sandbox`
 
 ## Code Coverage
 
