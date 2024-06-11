@@ -1,6 +1,6 @@
 {
   "indicateur": "BENEFICIAIRE",
-  "prestations": [
+  "listePrestation": [
     {
       "cd": "FA3101",
       "libelle": "RSA non majoré",

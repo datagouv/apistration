@@ -1,6 +1,6 @@
 {
   "indicateur": "BENEFICIAIRE",
-  "prestations": [
+  "listePrestation": [
     {
       "cd": "FA1001",
       "libelle": "Allocation adultes handicapés",

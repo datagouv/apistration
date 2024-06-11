@@ -36,10 +36,6 @@ class CNAV::ComplementaireSanteSolidaire::BuildResource < CNAV::BuildResource
     []
   end
 
-  def prestations
-    json_body['listePrestation']
-  end
-
   def non_beneficiary?
     json_body['indicateur'] == 'NON_BENEFICIAIRE_CSS'
   end

@@ -1,6 +1,6 @@
 {
   "indicateur": "BENEFICIAIRE",
-  "prestations": [
+  "listePrestation": [
     {
       "cd": "FA0115",
       "libelle": "Allocation de soutien familial",

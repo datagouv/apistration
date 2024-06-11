@@ -47,6 +47,6 @@ class CNAV::BuildResource < BuildResource
   end
 
   def prestations
-    json_body['prestations']
+    json_body['listePrestation']
   end
 end

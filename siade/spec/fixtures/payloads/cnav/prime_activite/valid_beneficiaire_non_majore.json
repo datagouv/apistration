@@ -1,6 +1,6 @@
 {
   "indicateur": "BENEFICIAIRE",
-  "prestations": [
+  "listePrestation": [
     {
       "cd": "FA3105",
       "libelle": "Prime Activité",
