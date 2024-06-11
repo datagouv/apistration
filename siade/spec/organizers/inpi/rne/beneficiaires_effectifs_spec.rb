@@ -25,7 +25,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs, type: :retriever_organizer do
         before do
           stub_request(:get, "#{Siade.credentials[:inpi_rne_unites_legales_url]}/#{siren}").and_return(
             status: 200,
-            body: read_payload_file('inpi/rne/valid.json')
+            body: read_payload_file('inpi/rne/beneficiaires_effectifs/valid.json')
           )
         end
 

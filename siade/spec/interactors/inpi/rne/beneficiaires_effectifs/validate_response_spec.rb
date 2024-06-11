@@ -8,7 +8,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::ValidateResponse, type: :valid
       let(:body) { json_body }
 
       context 'when body is valid' do
-        let(:json_body) { read_payload_file('inpi/rne/valid.json') }
+        let(:json_body) { read_payload_file('inpi/rne/beneficiaires_effectifs/valid.json') }
 
         it { is_expected.to be_a_success }
 
@@ -16,7 +16,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::ValidateResponse, type: :valid
       end
 
       context 'when body has no beneficiairesEffectifs within formality->content->personneMorale' do
-        let(:json_body) { read_payload_file('inpi/rne/without-beneficiaires-effectifs.json') }
+        let(:json_body) { read_payload_file('inpi/rne/beneficiaires_effectifs/without-beneficiaires-effectifs.json') }
 
         it { is_expected.to be_a_failure }
 
@@ -24,7 +24,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::ValidateResponse, type: :valid
       end
 
       context 'when response is an entrepreneur individuel' do
-        let(:json_body) { read_payload_file('inpi/rne/entrepreneur-individuel.json') }
+        let(:json_body) { read_payload_file('inpi/rne/beneficiaires_effectifs/entrepreneur-individuel.json') }
 
         it { is_expected.to be_a_failure }
 
@@ -32,7 +32,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::ValidateResponse, type: :valid
       end
 
       context 'when response is nor a personne morale neither a personne physique' do
-        let(:json_body) { read_payload_file('inpi/rne/nor_personne_morale_nor_personne_physique.json') }
+        let(:json_body) { read_payload_file('inpi/rne/beneficiaires_effectifs/nor_personne_morale_nor_personne_physique.json') }
 
         it { is_expected.to be_a_failure }
 

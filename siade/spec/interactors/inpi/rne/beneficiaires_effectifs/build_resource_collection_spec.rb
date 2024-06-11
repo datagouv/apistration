@@ -4,7 +4,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
 
     let(:response) { instance_double(Net::HTTPOK, body:) }
     let(:body) do
-      read_payload_file('inpi/rne/valid.json')
+      read_payload_file('inpi/rne/beneficiaires_effectifs/valid.json')
     end
 
     let(:valid_collection) do
