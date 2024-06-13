@@ -45,6 +45,8 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
 
     namespace :rne do
       get 'unites_legales/open_data/:siren/beneficiaires_effectifs' => '/api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs#show'
+
+      get 'unites_legales/open_data/:siren/actes_bilans' => '/api_entreprise/v3_and_more/inpi/rne/actes_bilans#show'
     end
   end
 
