@@ -183,7 +183,7 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulier, type: %i[request
                 run_test!
               end
 
-              context 'Dossier non trouvé CNAV' do
+              context 'Dossier non trouvé CNAF' do
                 before do
                   stub_cnav_404('quotient_familial_v2', '00810011')
                 end
