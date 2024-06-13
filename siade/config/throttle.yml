@@ -51,6 +51,7 @@ shared:
       - { controller: 'api_entreprise/v3_and_more/banque_de_france/bilans_entreprise', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/qualifelec/certificats', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs', action: 'show' }
+      - { controller: 'api_entreprise/v3_and_more/inpi/rne/actes_bilans', action: 'show' }
 
     limit: 250
     period: 60
