@@ -180,6 +180,10 @@
   api: 'entreprise'
   path: '/v3/inpi/rne/unites_legales/open_data/900225095/beneficiaires_effectifs'
 
+- name: "RNE INPI Actes Bilans"
+  api: 'entreprise'
+  path: '/v3/inpi/rne/unites_legales/open_data/542065479/actes_bilans'
+
 # API Particulier v2
 
 - name: 'CAF Quotient familial'
