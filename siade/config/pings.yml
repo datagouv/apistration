@@ -361,6 +361,8 @@ shared:
         retriever: 'INPI::RNE::BeneficiairesEffectifs'
         params:
           siren: '900225095'
+          inpi_rne_login_username: "<%= Siade.credentials[:inpi_rne_login_ping_username] %>"
+          inpi_rne_login_password: "<%= Siade.credentials[:inpi_rne_login_ping_password] %>"
 
     djepva/api-association:
       kind: 'retriever'
