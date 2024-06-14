@@ -182,7 +182,7 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
       end
 
       describe 'when linked to a new token which is expired' do
-        let(:token) { 'legacy_token_expired' }
+        let(:token) { 'legacy_token_in_config_file' }
 
         before do
           Token.create!(
@@ -197,7 +197,7 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
         its(:status) { is_expected.to eq(401) }
 
         its(:body) do
-          is_expected.to include('access_denied')
+          is_expected.to include('Votre token est expiré')
         end
       end
     end

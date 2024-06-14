@@ -41,17 +41,19 @@ module HandleTokens
   end
 
   def authenticate_user!
-    @token ||= retrieve_token
+    raise NotValidTokenError unless token
 
-    raise NotValidTokenError unless @token
-
-    @current_user = jwt_token_service.extract_user(@token)
+    extract_user
 
     raise NotValidTokenError if current_user.blank? || current_user.invalid?
 
     current_user.not_expired!
 
     true
+  end
+
+  def extract_user
+    @current_user = jwt_token_service.extract_user(token)
   end
 
   def retrieve_token

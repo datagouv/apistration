@@ -10,11 +10,9 @@ class APIParticulierController < APIController
     "#{request.path}:#{organizer_params.to_query}"
   end
 
-  def authenticate_user!
-    @token ||= retrieve_token
-
-    if @token && legacy_token_exists?(@token)
-      @current_user = JwtTokenService.instance.extract_user_from_legacy_token(@token)
+  def extract_user
+    if token && legacy_token_exists?(token)
+      @current_user = JwtTokenService.instance.extract_user_from_legacy_token(token)
     else
       super
     end
