@@ -40,7 +40,7 @@ gem 'hexapdf'
 
 gem 'csv'
 
-gem 'fog-openstack', '1.1.1'
+gem 'fog-openstack', '1.1.3'
 
 gem 'interactor'
 
@@ -54,7 +54,7 @@ gem 'rswag-ui', github: 'rswag/rswag'
 
 gem 'lockbox'
 
-gem 'octokit', '~> 8.1'
+gem 'octokit', '~> 9.1'
 gem 'faraday-retry'
 
 gem 'pdf-reader'
