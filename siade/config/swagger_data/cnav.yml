@@ -328,7 +328,7 @@ cnav:
         example: 9
 
   rsa:
-    title: Revenu de solidarité active (RSA)
+    title: Statut revenu de solidarité active (RSA)
     description: "Statut bénéficiaire du revenu de solidarité active (RSA), majoré ou non.
       \n\n
       Retourne également des informations sur les dates d'ouverture des droits.
@@ -373,7 +373,7 @@ cnav:
         example: '1993-02-20'
 
   aah:
-    title: Allocation adulte handicapé (AAH)
+    title: Statut allocation adulte handicapé (AAH)
     description: "Statut bénéficiaire de l'allocation adulte handicapé (AAH).      
       \n\n
       Retourne également des informations sur les dates d'ouverture des droits.
@@ -434,7 +434,7 @@ cnav:
         example: '1993-11-29'
 
   prime_activite:
-    title: Prime d'activité
+    title: Statut prime d'activité
     description: "Statut bénéficiaire de la prime d'activité, majorée ou non.
       \n\n
       Retourne également des informations sur les dates d'ouverture des droits.
