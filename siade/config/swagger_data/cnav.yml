@@ -335,8 +335,7 @@ cnav:
       \n
       L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
     tags:
-      #- Prestations sociales
-      - Prochainement
+      - Prestations sociales
     parameters: *cnav_identite_pivot
     attributes:
       status:
@@ -381,8 +380,7 @@ cnav:
       \n
       L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
     tags:
-      #- Prestations sociales
-      - Prochainement
+      - Prestations sociales
     parameters: *cnav_identite_pivot
     attributes:
       status:
@@ -406,8 +404,7 @@ cnav:
     description: "Savoir si un particulier est bénéficiaire de l'allocation de soutien familial (ASF). Retourne également des informations sur les dates d'ouverture et de fermeture des droits.
       L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
     tags:
-      #- Prestations sociales
-      - Prochainement
+      - Prestations sociales
     parameters: *cnav_identite_pivot
     attributes:
       status:
@@ -444,8 +441,7 @@ cnav:
       \n
       L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
     tags:
-      #- Prestations sociales
-      - Prochainement
+      - Prestations sociales
     parameters: *cnav_identite_pivot
     attributes:
       status:
