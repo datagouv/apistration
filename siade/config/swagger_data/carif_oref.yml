@@ -34,7 +34,7 @@ carif_oref:
                 example: "11910843391"
               actif:
                 title: "Indique que le NDA est actif"
-                description: "Ce champ indique le numéro de déclaration d'activité (NDA) de l'établissement est actif. Pour conserver un NDA valide, l'établissement doit remplir chaque année un bilan pédagogique et financier prévu à l'article L6352-11 du Code du travail. Sans cette démarche le numéro NDA devient inactif, l'établissement est retiré de la liste publique des organismes de formation."
+                description: "Ce champ indique le numéro de déclaration d'activité (NDA) de l'établissement est actif. Cette valeur est tout le temps vrai."
                 type: "boolean"
                 example: true
               date_derniere_declaration:

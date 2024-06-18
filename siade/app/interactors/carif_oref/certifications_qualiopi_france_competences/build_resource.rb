@@ -17,7 +17,7 @@ class CarifOref::CertificationsQualiopiFranceCompetences::BuildResource < BuildR
     json_body['nda'].map do |nda_payload|
       {
         numero_de_declaration: nda_payload['nda'],
-        actif: nda_payload['actif'],
+        actif: true,
         date_derniere_declaration: nda_payload['date_derniere_declaration'],
         date_fin_exercice: nda_payload['fin_exercice'],
         certification_qualiopi: {
