@@ -34,7 +34,7 @@ carif_oref:
                 example: "11910843391"
               actif:
                 title: "Indique que le NDA est actif"
-                description: "Ce champ indique le numéro de déclaration d'activité (NDA) de l'établissement est actif. Cette valeur est tout le temps vrai."
+                description: "Ce champ indique le numéro de déclaration d'activité (NDA) de l'établissement est actif. Cette valeur est toujours égale à 'true' et est conservée pour des raisons de retrocompatibilité"
                 type: "boolean"
                 example: true
               date_derniere_declaration:
