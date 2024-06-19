@@ -26,7 +26,7 @@ RSpec.describe 'INPI RNE: Bénéficiaires effectifs', api: :entreprise, type: %i
       describe 'with valid token and mandatory params', :valid, vcr: { cassette_name: 'inpi/rne/authenticate' } do
         describe 'with valid siren' do
           before do
-            stub_request(:get, "#{Siade.credentials[:inpi_rne_unites_legales_url]}/#{siren}").and_return(
+            stub_request(:get, "#{Siade.credentials[:inpi_rne_url]}/api/companies/#{siren}").and_return(
               status: 200,
               body: read_payload_file('inpi/rne/beneficiaires_effectifs/valid.json')
             )
@@ -51,7 +51,7 @@ RSpec.describe 'INPI RNE: Bénéficiaires effectifs', api: :entreprise, type: %i
 
         describe 'not found' do
           before do
-            stub_request(:get, "#{Siade.credentials[:inpi_rne_unites_legales_url]}/#{siren}").and_return(
+            stub_request(:get, "#{Siade.credentials[:inpi_rne_url]}/api/companies/#{siren}").and_return(
               status: 404
             )
           end

@@ -23,7 +23,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs, type: :retriever_organizer do
 
       context 'when RNE renders a valid response' do
         before do
-          stub_request(:get, "#{Siade.credentials[:inpi_rne_unites_legales_url]}/#{siren}").and_return(
+          stub_request(:get, "#{Siade.credentials[:inpi_rne_url]}/api/companies/#{siren}").and_return(
             status: 200,
             body: read_payload_file('inpi/rne/beneficiaires_effectifs/valid.json')
           )
@@ -43,7 +43,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs, type: :retriever_organizer do
 
       context 'when RNE renders a not found response' do
         before do
-          stub_request(:get, "#{Siade.credentials[:inpi_rne_unites_legales_url]}/#{siren}").and_return(
+          stub_request(:get, "#{Siade.credentials[:inpi_rne_url]}/api/companies/#{siren}").and_return(
             status: 404
           )
         end
