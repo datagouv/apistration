@@ -25,10 +25,14 @@ class INPI::RNE::Authenticate < AbstractGetToken
   end
 
   def username
-    context.inpi_rne_login_username.presence || Siade.credentials[:inpi_rne_login_username]
+    params[:inpi_rne_login_username].presence || Siade.credentials[:inpi_rne_login_username]
   end
 
   def password
-    context.inpi_rne_login_password.presence || Siade.credentials[:inpi_rne_login_password]
+    params[:inpi_rne_login_password].presence || Siade.credentials[:inpi_rne_login_password]
+  end
+
+  def params
+    context.params || {}
   end
 end
