@@ -1,0 +1,29 @@
+---
+description: 'Étudiant inscrit'
+params:
+  nom: "JUIN"
+  prenom: "Romuald"
+  dateDeNaissance: "2005-06-15"
+  sexe: "m"
+  lieuDeNaissance: "75115"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "Juin",
+    "prenom": "Romuald",
+    "dateNaissance": "2005-06-15",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-09-01",
+        "dateFinInscription": "2025-08-31",
+        "statut": "inscrit",
+        "codeCommune": "92000",
+        "etablissement": {
+          "uai": "0330023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
