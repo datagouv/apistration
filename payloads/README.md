@@ -5,12 +5,12 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 
 ## API Particulier
 
-* [Statut allocation adulte handicapé (AAH)](api_particulier_v2_cnav_allocation_adulte_handicape) (`/api/v2/allocation-adulte-handicape`)
+* [Allocation adulte handicapé (AAH)](api_particulier_v2_cnav_allocation_adulte_handicape) (`/api/v2/allocation-adulte-handicape`)
 * [Statut allocation de soutien familial (ASF)](api_particulier_v2_cnav_allocation_soutien_familial) (`/api/v2/allocation-soutien-familial`)
 * [Statut complémentaire santé solidaire (C2S)](api_particulier_v2_cnav_complementaire_sante_solidaire) (`/api/v2/complementaire-sante-solidaire`)
-* [Statut prime d'activité (PA)](api_particulier_v2_cnav_prime_activite) (`/api/v2/prime-activite`)
+* [Prime d'activité](api_particulier_v2_cnav_prime_activite) (`/api/v2/prime-activite`)
 * [Quotient familial MSA & CAF](api_particulier_v2_cnav_quotient_familial_v2) (`/api/v2/composition-familiale-v2`)
-* [Statut revenu de solidarité active (RSA)](api_particulier_v2_cnav_revenu_solidarite_active) (`/api/v2/revenu-solidarite-active`)
+* [Revenu de solidarité active (RSA)](api_particulier_v2_cnav_revenu_solidarite_active) (`/api/v2/revenu-solidarite-active`)
 * [Statut élève scolarisé et boursier](api_particulier_v2_men_scolarites) (`/api/v2/scolarites`)
 * [Paiements versés par France Travail](api_particulier_v2_pole_emploi_indemnites) (`/api/v2/paiements-pole-emploi`)
 * [Quotient familial (CAF)](api_particulier_v2_cnaf_quotient_familial) (`/api/v2/composition-familiale`)

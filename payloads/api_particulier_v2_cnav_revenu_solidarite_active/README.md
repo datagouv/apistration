@@ -1,4 +1,4 @@
-# Statut revenu de solidarité active (RSA)
+# Revenu de solidarité active (RSA)
 * [200_beneficiaire_majoration.yaml](200_beneficiaire_majoration.yaml)
 
   Status `200`
