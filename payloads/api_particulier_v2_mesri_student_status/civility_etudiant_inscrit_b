@@ -1,0 +1,29 @@
+---
+description: 'Étudiant inscrit'
+params:
+  nom: "JUIN"
+  prenom: "Esmeralda"
+  dateDeNaissance: "2000-12-24"
+  sexe: "f"
+  lieuDeNaissance: "75113"
+status: 200
+payload: |-
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "Juin",
+    "prenom": "Esmeralda",
+    "dateNaissance": "2000-12-24",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-10-01",
+        "dateFinInscription": "2025-08-31",
+        "statut": "inscrit",
+        "codeCommune": "92000",
+        "etablissement": {
+          "uai": "0330023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
