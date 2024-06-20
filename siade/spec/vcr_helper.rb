@@ -1,4 +1,5 @@
 require 'xmlsimple'
+require 'jwt'
 
 VCR.configure do |c|
   c.before_record do |interaction|
@@ -79,6 +80,10 @@ VCR.configure do |c|
   c.filter_sensitive_data('<INPI_RNE_LOGIN_USERNAME>') { Siade.credentials[:inpi_rne_login_username].to_s }
   c.filter_sensitive_data('<INPI_RNE_LOGIN_PASSWORD>') { Siade.credentials[:inpi_rne_login_password].to_s }
   c.filter_sensitive_data('<INPI_RNE_UNITES_LEGALES_URL>') { Siade.credentials[:inpi_rne_unites_legales_url].to_s }
+
+  jwt_regex = /\b(?:[A-Za-z0-9_-]+\.){2}[A-Za-z0-9_-]+\b/
+  placeholder_jwt = JWT.encode({ 'exp' => 1234 }, 'super secret')
+  c.filter_sensitive_data(placeholder_jwt) { jwt_regex }
 
   c.register_request_matcher :body_sanitized do |r_1, r_2|
     body_1 = r_1.body || ''
