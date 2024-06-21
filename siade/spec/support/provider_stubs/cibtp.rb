@@ -13,4 +13,14 @@ module ProviderStubs::CIBTP
         }.to_json
       )
   end
+
+  def stub_cibtp_attestations_marche_public_valid(siret:)
+    stub_request(:get, "#{Siade.credentials[:cibtp_domain]}/apiEntreprise/attestationMarche")
+      .with(query: { siret: })
+      .to_return(
+        status: 200,
+        body: 'pdf_content',
+        headers: { 'Content-Type' => 'application/pdf' }
+      )
+  end
 end
