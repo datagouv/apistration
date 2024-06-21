@@ -19,7 +19,7 @@ module ProviderStubs::CIBTP
       .with(query: { siret: })
       .to_return(
         status: 200,
-        body: 'pdf_content',
+        body: read_payload_file('pdf/dummy.pdf'),
         headers: { 'Content-Type' => 'application/pdf' }
       )
   end
