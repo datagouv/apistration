@@ -1,0 +1,19 @@
+cibtp:
+  attestations_marche_public:
+    title: "Attestations Marché Public"
+    description: "Retourne l'attestation de marché public pour cet établissement."
+    tags:
+      - "Certifications professionelles"
+    attributes:
+      document_url:
+        title: "URL de téléchargement de l'attestation de marché public"
+        type: 'string'
+        nullable: true
+        description: "Ce lien délivre l'attestation de marché public au format PDF."
+        example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_marche_public_cibtp.pdf"
+      expires_in:
+        title: "Nombre de secondes avant expiration du document référencé dans 'document_url'"
+        description: "Il s'agit d'une expiration technique: cette valeur n'a aucun lien avec les dates de debut ou de fin de validité."
+        type: 'integer'
+        nullable: true
+        example: 3600
