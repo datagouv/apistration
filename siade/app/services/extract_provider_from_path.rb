@@ -44,7 +44,8 @@ class ExtractProviderFromPath
       'djepva' => 'DJEPVA',
       'gip_mds' => 'GIP-MDS',
       'qualifelec' => 'Qualifelec',
-      'carif_oref' => 'CARIF-OREF'
+      'carif_oref' => 'CARIF-OREF',
+      'cibtp' => 'CIBTP'
     }
   end
   # rubocop:enable Metrics/MethodLength

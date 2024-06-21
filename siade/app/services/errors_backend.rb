@@ -73,6 +73,7 @@ class ErrorsBackend
       '35' => 'CNAV & MSA',
       '36' => 'Sécurité sociale',
       '37' => 'CNAV',
+      '38' => 'CIBTP',
       '50' => 'FranceConnect'
     }
   end
