@@ -88,6 +88,10 @@ class ValidateResponse < ApplicationInteractor
     fail_with_error!(build_error(::NotFoundError, message))
   end
 
+  def conflict_error!(message = nil)
+    fail_with_error!(build_error(::ConflictError, message))
+  end
+
   def make_payload_cacheable!
     context.cacheable = true
   end

@@ -25,6 +25,14 @@ module ResourceHelpers
     http_code == 404
   end
 
+  def http_conflict?
+    http_code == 409
+  end
+
+  def http_unprocessable_entity?
+    http_code == 422
+  end
+
   def http_internal_error?
     http_code == 500
   end
