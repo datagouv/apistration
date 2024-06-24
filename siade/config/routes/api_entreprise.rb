@@ -16,6 +16,10 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
     get 'etablissements/:siret/certifications_qualiopi_france_competences' => '/api_entreprise/v3_and_more/carif_oref/certifications_qualiopi_france_competences#show'
   end
 
+  namespace :cibtp do
+    get 'etablissements/:siret/attestations_marche_public' => '/api_entreprise/v3_and_more/cibtp/attestations_marche_public#show'
+  end
+
   namespace :cnetp do
     get 'unites_legales/:siren/attestation_cotisations_conges_payes_chomage_intemperies' => '/api_entreprise/v3_and_more/cnetp/attestation_cotisations_conges_payes_chomage_intemperies#show'
   end
