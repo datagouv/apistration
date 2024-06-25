@@ -147,6 +147,25 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
+,Étudiant inscrit,"{""nom"":""JUIN"",""prenom"":""Romuald"",""dateDeNaissance"":""2005-06-15"",""sexe"":""m"",""lieuDeNaissance"":""75115""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Juin"",
+  ""prenom"": ""Romuald"",
+  ""dateNaissance"": ""2005-06-15"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-09-01"",
+      ""dateFinInscription"": ""2025-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""92000"",
+      ""etablissement"": {
+        ""uai"": ""0330023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
 ,Étudiant inscrit,"{""nom"":""AUVERNE"",""prenom"":""Luc"",""dateDeNaissance"":""2006-02-01"",""sexe"":""m"",""lieuDeNaissance"":""95018""}",200,"{
   ""ine"": ""1234227890Y"",
   ""nomFamille"": "" AUVERNE"",
@@ -161,6 +180,25 @@ Titre,Description,Paramètres,Status,Réponse
       ""etablissement"": {
         ""uai"": ""0331034W"",
         ""nomEtablissement"": "" Université de Versailles""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
+,Étudiant inscrit,"{""nom"":""JUIN"",""prenom"":""Esmeralda"",""dateDeNaissance"":""2000-12-24"",""sexe"":""f"",""lieuDeNaissance"":""75113""}",200,"{
+  ""ine"": ""1234567890Y"",
+  ""nomFamille"": ""Juin"",
+  ""prenom"": ""Esmeralda"",
+  ""dateNaissance"": ""2000-12-24"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2024-10-01"",
+      ""dateFinInscription"": ""2025-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""92000"",
+      ""etablissement"": {
+        ""uai"": ""0330023W"",
+        ""nomEtablissement"": ""Université Paris Nanterre""
       },
       ""regime"": ""formation initiale""
     }

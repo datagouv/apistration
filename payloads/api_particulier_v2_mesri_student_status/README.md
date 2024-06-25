@@ -555,6 +555,67 @@
 
   </p>
   </details>
+* [civility_etudiant_inscrit_a.yml](civility_etudiant_inscrit_a.yml)
+
+  Status `200`
+
+  Étudiant inscrit
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "JUIN",
+    "prenom": "Romuald",
+    "dateDeNaissance": "2005-06-15",
+    "sexe": "m",
+    "lieuDeNaissance": "75115"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "Juin",
+    "prenom": "Romuald",
+    "dateNaissance": "2005-06-15",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-09-01",
+        "dateFinInscription": "2025-08-31",
+        "statut": "inscrit",
+        "codeCommune": "92000",
+        "etablissement": {
+          "uai": "0330023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=JUIN' -d 'prenom=Romuald' -d 'dateDeNaissance=2005-06-15' -d 'sexe=m' -d 'lieuDeNaissance=75115' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
 * [civility_etudiant_inscrit_auverne_luc.yml](civility_etudiant_inscrit_auverne_luc.yml)
 
   Status `200`
@@ -611,6 +672,67 @@
   ```bash
   curl -H "X-Api-Key: $token" \
     -G -d 'nom=AUVERNE' -d 'prenom=Luc' -d 'dateDeNaissance=2006-02-01' -d 'sexe=m' -d 'lieuDeNaissance=95018' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
+  ```
+
+  </p>
+  </details>
+* [civility_etudiant_inscrit_b.yml](civility_etudiant_inscrit_b.yml)
+
+  Status `200`
+
+  Étudiant inscrit
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "JUIN",
+    "prenom": "Esmeralda",
+    "dateDeNaissance": "2000-12-24",
+    "sexe": "f",
+    "lieuDeNaissance": "75113"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567890Y",
+    "nomFamille": "Juin",
+    "prenom": "Esmeralda",
+    "dateNaissance": "2000-12-24",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2024-10-01",
+        "dateFinInscription": "2025-08-31",
+        "statut": "inscrit",
+        "codeCommune": "92000",
+        "etablissement": {
+          "uai": "0330023W",
+          "nomEtablissement": "Université Paris Nanterre"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nom=JUIN' -d 'prenom=Esmeralda' -d 'dateDeNaissance=2000-12-24' -d 'sexe=f' -d 'lieuDeNaissance=75113' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants"
   ```
 
