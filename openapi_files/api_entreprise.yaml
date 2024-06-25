@@ -2055,13 +2055,9 @@ paths:
                             actif:
                               title: Indique que le NDA est actif
                               description: Ce champ indique le numéro de déclaration
-                                d'activité (NDA) de l'établissement est actif. Pour
-                                conserver un NDA valide, l'établissement doit remplir
-                                chaque année un bilan pédagogique et financier prévu
-                                à l'article L6352-11 du Code du travail. Sans cette
-                                démarche le numéro NDA devient inactif, l'établissement
-                                est retiré de la liste publique des organismes de
-                                formation.
+                                d'activité (NDA) de l'établissement est actif. Cette
+                                valeur est toujours égale à 'true' et est conservée
+                                pour des raisons de retrocompatibilité
                               type: boolean
                               example: true
                             date_derniere_declaration:
@@ -4154,6 +4150,13 @@ paths:
       tags:
       - Informations financières
       parameters:
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       - name: context
         in: query
         description: |-
@@ -4325,6 +4328,22 @@ paths:
         '200':
           description: Exercices trouvés
           headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
             RateLimit-Limit:
               schema:
                 type: integer
@@ -4531,6 +4550,13 @@ paths:
       tags:
       - Informations financières
       parameters:
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       - name: context
         in: query
         description: |-
@@ -4679,6 +4705,22 @@ paths:
         '200':
           description: Entreprise trouvée
           headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
             RateLimit-Limit:
               schema:
                 type: integer
@@ -16927,6 +16969,12 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/Error"
+        '451':
+          description: Indisponible pour des raisons légales
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
         '502':
           description: Erreur du fournisseur
           content:
@@ -21104,7 +21152,7 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/insee/sirene/unites_legales/130025265/siege_social?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/insee/sirene/successions/{siret}":
+  "/v3/insee/sirene/etablissements/{siret}/successions":
     get:
       summary: Liens de succession
       tags:
@@ -21176,7 +21224,7 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Informations sur les liens de succession entre les établissements.
+      description: Liste des prédécesseurs et successeurs d'un établissement.
       responses:
         '401':
           description: Non autorisé
@@ -21308,62 +21356,68 @@ paths:
                     properties:
                       predecesseurs:
                         title: Établissements prédécesseurs
+                        description: Liste des établissements prédécesseurs de l'établissement
+                          appelé.
                         type: array
                         items:
                           type: object
                           properties:
                             siret:
-                              title: Siret de l'établissement prédécesseur/successeur
+                              title: SIRET
                               type: string
                               example: '30613890001294'
-                              description: Siret de l'établissement prédécesseur ou
-                                successeur
+                              description: SIRET de l'établissement prédécesseur.
                             date_succession:
-                              title: Date de succession
+                              title: Date d'effet du lien de succession
                               type: date
                               example: '2021-10-15'
-                              description: Date de succession entre les établissements
+                              description: Date à laquelle la succession a eu lieu.
                             transfert_siege:
                               title: Transfert de siège
                               type: boolean
                               example: true
-                              description: Indique si la succession est un transfert
-                                de siège.
+                              description: 'Indique si la succession est un transfert
+                                de siège. Pour en savoir plus, consulter cette rubrique
+                                : http://entreprise.api.gouv.fr/catalogue/insee/successions#definition-transfert-siege.'
                             continuite_economique:
                               title: Continuité économique
                               type: boolean
                               example: true
-                              description: Indique si la succession est une continuité
-                                économique.
+                              description: 'Indique si la succession est une continuité
+                                économique. Pour en savoir plus, consulter cette rubrique
+                                : http://entreprise.api.gouv.fr/catalogue/insee/successions#definition-continuite-economique.'
                       successeurs:
                         title: Établissements successeurs
+                        description: Liste des établissements successeurs de l'établissement
+                          appelé.
                         type: array
                         items:
                           type: object
                           properties:
                             siret:
-                              title: Siret de l'établissement prédécesseur/successeur
+                              title: SIRET
                               type: string
                               example: '30613890001294'
-                              description: Siret de l'établissement prédécesseur ou
-                                successeur
+                              description: SIRET de l'établissement successeur.
                             date_succession:
-                              title: Date de succession
+                              title: Date d'effet du lien de succession
                               type: date
                               example: '2021-10-15'
-                              description: Date de succession entre les établissements
+                              description: Date à laquelle la succession a eu lieu.
                             transfert_siege:
                               title: Transfert de siège
                               type: boolean
                               example: true
-                              description: Indique si la succession est un transfert
-                                de siège.
+                              description: 'Indique si la succession est un transfert
+                                de siège. Pour en savoir plus, consulter cette rubrique
+                                : http://entreprise.api.gouv.fr/catalogue/insee/successions#definition-transfert-siege.'
                             continuite_economique:
                               title: Continuité économique
                               type: boolean
                               example: true
-                              description: Indique si la succession est une continuité
-                                économique.
+                              description: 'Indique si la succession est une continuité
+                                économique. Pour en savoir plus, consulter cette rubrique
+                                : http://entreprise.api.gouv.fr/catalogue/insee/successions#definition-continuite-economique.'
                     required:
                     - predecesseurs
                     - successeurs
@@ -21520,7 +21574,7 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/insee/sirene/successions/13002526500013?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+            --url "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/13002526500013/successions?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/unites_legales/{siren}":
     get:
       summary: Données unité légale
@@ -26189,6 +26243,13 @@ paths:
       tags:
       - Certifications professionnelles
       parameters:
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       - name: siret
         in: path
         description: Siret de l'établissement
@@ -26360,6 +26421,23 @@ paths:
         '200':
           description: Certification trouvée
           headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). Le cache est valide jusqu'à la
+                fin de la journée
             RateLimit-Limit:
               schema:
                 type: integer
