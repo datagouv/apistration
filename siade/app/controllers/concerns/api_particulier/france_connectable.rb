@@ -8,7 +8,7 @@ module APIParticulier::FranceConnectable
   end
 
   def france_connect_organizer
-    @france_connect_organizer ||= FranceConnectOrganizerService.new(bearer_token_from_headers).fetch
+    @france_connect_organizer ||= FranceConnectOrganizerService.new(bearer_token_from_headers, api_name).fetch
   end
 
   protected
@@ -66,5 +66,9 @@ module APIParticulier::FranceConnectable
 
   def france_connect?
     france_connect_service_user_identity.present?
+  end
+
+  def api_name
+    self.class.name.split('::').last.gsub('Controller', '').underscore
   end
 end

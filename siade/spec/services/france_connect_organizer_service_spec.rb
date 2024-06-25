@@ -1,10 +1,15 @@
 RSpec.describe FranceConnectOrganizerService do
-  subject { described_class.new(token).fetch }
+  subject { described_class.new(token, api_name).fetch }
 
   let(:token) { 'token' }
+  let(:api_name) { 'whatever' }
 
   before do
     allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
+    allow(Siade.credentials).to receive(:[]).and_call_original
+    allow(Siade.credentials).to receive(:[]).with(:france_connect_v2_whatever_client_id).and_return('345')
+    allow(Siade.credentials).to receive(:[]).with(:france_connect_v2_whatever_client_secret).and_return('345')
+    allow(Siade.credentials).to receive(:[]).with(:france_connect_v2_enabled).and_return(true)
   end
 
   describe 'when using france connect v2' do
@@ -20,7 +25,7 @@ RSpec.describe FranceConnectOrganizerService do
       context 'when token renders a payload in MockDataBackend' do
         before do
           allow(MockDataBackend).to receive(:get_response_for)
-            .with('france_connect_v2', { token: })
+            .with('france_connect_v2', { token:, api_name: })
             .and_return(
               {
                 status: '200',
