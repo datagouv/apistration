@@ -9,6 +9,7 @@ namespace '/api', constraints: APIParticulierV2DomainConstraint.new do
   get 'ping' => '/ping#show'
 
   get 'introspect' => '/api_particulier/v2/introspect#show'
+  get 'france_connect_jwks' => '/api_particulier/france_connect_jwks#show'
 
   get 'caf/famille' => '/api_particulier/v2/cnaf/quotient_familial#show'
   get 'impots/svair', to: svair_gone
