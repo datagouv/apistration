@@ -36,14 +36,18 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::MakeRequest < MakeReques
   end
 
   def client_id
-    Siade.credentials[:france_connect_v2_client_id]
+    Siade.credentials[:"france_connect_v2_#{api_name}_client_id"]
   end
 
   def client_secret
-    Siade.credentials[:france_connect_v2_client_secret]
+    Siade.credentials[:"france_connect_v2_#{api_name}_client_secret"]
   end
 
   def france_connect_check_token_url
     Siade.credentials[:france_connect_v2_check_token_url]
+  end
+
+  def api_name
+    context.params[:api_name]
   end
 end

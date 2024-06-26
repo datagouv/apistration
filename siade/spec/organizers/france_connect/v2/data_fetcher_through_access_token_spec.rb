@@ -1,7 +1,8 @@
 RSpec.describe FranceConnect::V2::DataFetcherThroughAccessToken, type: :retriever_organizer do
-  subject { described_class.call(params: { token: }) }
+  subject { described_class.call(params: { token:, api_name: }) }
 
   let(:token) { 'token' }
+  let(:api_name) { 'quotient_familial_v2' }
 
   describe 'in staging' do
     before do

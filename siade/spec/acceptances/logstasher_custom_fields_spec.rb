@@ -161,6 +161,9 @@ RSpec.describe 'logstasher custom fields', type: :controller do
   describe 'on api particulier franceconnectable request' do
     before do
       routes.draw { get 'index' => 'api/v2/dummy#index' }
+      allow(Siade.credentials).to receive(:[]).and_call_original
+      allow(Siade.credentials).to receive(:[]).with(:france_connect_v2_dummy_france_connected_client_id).and_return('dummy')
+      allow(Siade.credentials).to receive(:[]).with(:france_connect_v2_dummy_france_connected_client_secret).and_return('dummy')
     end
 
     define_dummy_controller(APIParticulier::V2::DummyFranceConnectedController)

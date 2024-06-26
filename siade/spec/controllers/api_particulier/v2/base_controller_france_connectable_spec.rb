@@ -31,6 +31,12 @@ RSpec.describe APIParticulier::V2::BaseController, 'france connectable' do
 
   let(:token) { 'token' }
 
+  before do
+    allow(Siade.credentials).to receive(:[]).and_call_original
+    allow(Siade.credentials).to receive(:[]).with(:france_connect_v2_api_particulier_client_id).and_return('345')
+    allow(Siade.credentials).to receive(:[]).with(:france_connect_v2_api_particulier_client_secret).and_return('345')
+  end
+
   describe 'with a bearer token' do
     subject(:make_call) do
       routes.draw { get 'show' => 'api_particulier/v2/base#show' }
