@@ -364,6 +364,20 @@ shared:
           inpi_rne_login_username: "<%= Siade.credentials[:inpi_rne_login_ping_username] %>"
           inpi_rne_login_password: "<%= Siade.credentials[:inpi_rne_login_ping_password] %>"
 
+    inpi/rne/actes_bilans:
+      kind: 'retriever'
+      cache: <%= 2.minutes %>
+      provider: 'INPI - RNE'
+      status_page:
+        name: 'INPI - RNE'
+        alerts_wait: 5
+      driver_params:
+        retriever: 'INPI::RNE::ActesBilans'
+        params:
+          siren: '542065479'
+          inpi_rne_login_username: "<%= Siade.credentials[:inpi_rne_login_ping_username] %>"
+          inpi_rne_login_password: "<%= Siade.credentials[:inpi_rne_login_ping_password] %>"
+
     djepva/api-association:
       kind: 'retriever'
       cache: <%= 5.minutes %>
