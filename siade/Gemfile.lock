@@ -175,6 +175,7 @@ GEM
     json-schema (4.3.1)
       addressable (>= 2.8)
     jsonapi-renderer (0.2.2)
+    jwe (0.4.0)
     jwt (2.8.2)
       base64
     language_server-protocol (3.17.0.3)
@@ -457,6 +458,7 @@ DEPENDENCIES
   hexapdf
   interactor
   json-schema
+  jwe
   jwt (~> 2.8)
   lockbox
   logstasher
