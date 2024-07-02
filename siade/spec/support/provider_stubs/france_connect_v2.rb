@@ -19,8 +19,13 @@ module ProviderStubs::FranceConnect::V2
   end
 
   def france_connect_v2_checktoken_payload(scopes: minimal_france_connect_scopes)
+    stub_request(:get, Siade.credentials[:france_connect_v2_jwks_url]).to_return(
+      status: 200,
+      body: ecdsa_key.public_to_pem
+    )
+
     JWE.encrypt(
-      france_connect_v2_decrypted_payload(scopes:).to_json,
+      JWT.encode(france_connect_v2_decrypted_payload(scopes:).to_json, ecdsa_key, Siade.credentials[:france_connect_v2_decipher_algorithm]),
       OpenSSL::PKey::RSA.new(Siade.credentials[:france_connect_v2_rsa_public]),
       alg: 'RSA-OAEP',
       enc: 'A256GCM'
@@ -83,5 +88,9 @@ module ProviderStubs::FranceConnect::V2
       jti: 'wn5igb6_fravbxqgshzi0znle3fid2cwzhr9twtqxzm',
       scope: scopes
     }.merge(default_france_connect_v2_identity_attributes)
+  end
+
+  def ecdsa_key
+    @ecdsa_key ||= OpenSSL::PKey::EC.generate(Siade.credentials[:france_connect_v2_signing_algorithm])
   end
 end

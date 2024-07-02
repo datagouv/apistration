@@ -1,4 +1,7 @@
 require 'jwe'
+require 'jwt'
+require 'net/http'
+require 'uri'
 
 class FranceConnect::V2::DataFetcherThroughAccessToken::ValidateResponse < FranceConnect::ValidateResponse
   def call
@@ -16,12 +19,25 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::ValidateResponse < Franc
 
   protected
 
+  def error?
+    context.json_body.present? && context.json_body['error'].present?
+  end
+
   def json_body
-    context.json_body ||= decipher_response
+    unless error?
+      context.jws = decipher_response
+      context.json_body = verify_jws
+    end
+
+    context.json_body
+  end
+
+  def verify_jws
+    JSON.parse(JWT.decode(context.jws, ecdsa_key, true, algorithm: decipher_algorithm).first)
   end
 
   def decipher_response
-    JSON.parse(JWE.decrypt(context.response.body, rsa_private_key))
+    JWE.decrypt(context.response.body, rsa_private_key)
   end
 
   def scopes
@@ -47,5 +63,19 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::ValidateResponse < Franc
 
   def rsa_private_key
     OpenSSL::PKey::RSA.new(Siade.credentials[:france_connect_v2_rsa_private])
+  end
+
+  def decipher_algorithm
+    Siade.credentials[:france_connect_v2_decipher_algorithm]
+  end
+
+  def ecdsa_key
+    uri = URI(Siade.credentials[:france_connect_v2_jwks_url])
+
+    response = Net::HTTP.get_response(uri)
+
+    return OpenSSL::PKey::EC.new(response.body) if response.code == '200'
+
+    raise unknown_provider_response!
   end
 end
