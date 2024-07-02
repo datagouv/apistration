@@ -1,13 +1,8 @@
 RSpec.describe FranceConnect::V2::DataFetcherThroughAccessToken::BuildClientAttributes, type: :interactor do
   describe '.call' do
-    subject(:call) { described_class.call(response:) }
+    subject(:call) { described_class.call(json_body:) }
 
-    let(:response) do
-      instance_double(Net::HTTPOK, body:)
-    end
-
-    let(:payload) { france_connect_v2_checktoken_payload }
-    let(:body) { payload.to_json }
+    let(:json_body) { france_connect_v2_decrypted_payload.deep_stringify_keys }
 
     its(:client_attributes) { is_expected.to be_a(Resource) }
 

@@ -19,9 +19,6 @@ module ProviderStubs::FranceConnect
   end
 
   def minimal_france_connect_scopes
-    %w[
-      openid
-      identite_pivot
-    ]
+    'openid identite_pivot'
   end
 end

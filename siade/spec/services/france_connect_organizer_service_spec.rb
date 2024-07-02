@@ -29,7 +29,7 @@ RSpec.describe FranceConnectOrganizerService do
             .and_return(
               {
                 status: '200',
-                payload: france_connect_v2_checktoken_payload.deep_stringify_keys
+                payload: france_connect_v2_decrypted_payload.deep_stringify_keys
               }
             )
         end

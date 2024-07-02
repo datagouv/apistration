@@ -1,5 +1,28 @@
+require 'jwe'
+
 class FranceConnect::V2::DataFetcherThroughAccessToken::ValidateResponse < FranceConnect::ValidateResponse
+  def call
+    handle_invalid_token_error if [400, 401].include?(http_code)
+    unknown_provider_response! if [500].include?(http_code)
+
+    if http_ok?
+      fail_for_insufficient_privileges! unless scopes_include_hub_identity?
+
+      return if scopes_include_hub_identity?
+    end
+
+    unknown_provider_response!
+  end
+
   protected
+
+  def json_body
+    context.json_body ||= decipher_response
+  end
+
+  def decipher_response
+    JSON.parse(JWE.decrypt(context.response.body, rsa_private_key))
+  end
 
   def scopes
     json_body['token_introspection']['scope'].split
@@ -17,6 +40,12 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::ValidateResponse < Franc
   end
 
   def error_type
-    json_body['error']
+    JSON.parse(context.response.body)['error']
+  end
+
+  private
+
+  def rsa_private_key
+    OpenSSL::PKey::RSA.new(Siade.credentials[:france_connect_v2_rsa_private])
   end
 end

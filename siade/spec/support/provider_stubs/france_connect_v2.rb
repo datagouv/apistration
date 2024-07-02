@@ -8,7 +8,7 @@ module ProviderStubs::FranceConnect::V2
 
     stub_request(:post, Siade.credentials[:france_connect_v2_check_token_url]).to_return(
       status: 200,
-      body: france_connect_v2_checktoken_payload(scopes:).to_json
+      body: france_connect_v2_checktoken_payload(scopes:)
     )
   end
 
@@ -19,6 +19,15 @@ module ProviderStubs::FranceConnect::V2
   end
 
   def france_connect_v2_checktoken_payload(scopes: minimal_france_connect_scopes)
+    JWE.encrypt(
+      france_connect_v2_decrypted_payload(scopes:).to_json,
+      OpenSSL::PKey::RSA.new(Siade.credentials[:france_connect_v2_rsa_public]),
+      alg: 'RSA-OAEP',
+      enc: 'A256GCM'
+    )
+  end
+
+  def france_connect_v2_decrypted_payload(scopes: minimal_france_connect_scopes)
     {
       aud: '423dcbdc5a15ece61ed00ff5989d72379c26d9ed4c8e4e05a87cffae019586e0',
       iat: 1_704_965_332,
@@ -71,7 +80,7 @@ module ProviderStubs::FranceConnect::V2
       iat: 1_704_965_328,
       exp: 1_704_965_388,
       acr: 'eidas2',
-      jti: 'Wn5igB6_frAVBXQgShzI0znLE3fid2cWZHR9TWtqxZM',
+      jti: 'wn5igb6_fravbxqgshzi0znle3fid2cwzhr9twtqxzm',
       scope: scopes
     }.merge(default_france_connect_v2_identity_attributes)
   end

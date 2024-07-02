@@ -147,7 +147,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
 
       mock_cnous_valid_call('france_connect')
 
-      mock_valid_france_connect_checktoken(scopes: minimal_france_connect_scopes.concat(all_cnous_scopes))
+      mock_valid_france_connect_checktoken(scopes: minimal_france_connect_scopes.split.concat(all_cnous_scopes).join(' '))
     end
 
     its(:status) { is_expected.to eq(200) }

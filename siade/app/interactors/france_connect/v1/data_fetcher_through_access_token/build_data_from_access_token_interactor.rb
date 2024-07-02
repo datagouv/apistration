@@ -1,4 +1,4 @@
-class FranceConnect::BuildDataFromAccessTokenInteractor < ApplicationInteractor
+class FranceConnect::V1::DataFetcherThroughAccessToken::BuildDataFromAccessTokenInteractor < ApplicationInteractor
   protected
 
   def json_body
