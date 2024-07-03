@@ -51,7 +51,9 @@ class UnprocessableEntityError < ApplicationError
       request_id: '00401',
       # MEN
       code_etablissement: '00410',
-      annee_scolaire: '00411'
+      annee_scolaire: '00411',
+      # INPI - RNE
+      document_id: '00501'
     }.fetch(field) do
       raise KeyError, "#{field} is not a valid field name"
     end
