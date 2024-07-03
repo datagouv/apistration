@@ -22,27 +22,6 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulier, type:
 
       parameters_cnav_identite_pivot
 
-      parameter name: :nomCommuneNaissance,
-        in: :query,
-        schema: {
-          type: SwaggerData.get('cnav.c2s.parameters.nomCommuneNaissance.type'),
-          minLength: SwaggerData.get('cnav.c2s.parameters.nomCommuneNaissance.minLength'),
-          example: SwaggerData.get('cnav.c2s.parameters.nomCommuneNaissance.example')
-        },
-        description: SwaggerData.get('cnav.c2s.parameters.nomCommuneNaissance.description'),
-        required: false
-
-      parameter name: :codeInseeDepartementNaissance,
-        in: :query,
-        schema: {
-          type: SwaggerData.get('cnav.c2s.parameters.codeInseeDepartementNaissance.type'),
-          minLength: SwaggerData.get('cnav.c2s.parameters.codeInseeDepartementNaissance.minLength'),
-          maxLength: SwaggerData.get('cnav.c2s.parameters.codeInseeDepartementNaissance.maxLength'),
-          example: SwaggerData.get('cnav.c2s.parameters.codeInseeDepartementNaissance.example')
-        },
-        description: SwaggerData.get('cnav.c2s.parameters.codeInseeDepartementNaissance.description'),
-        required: false
-
       let(:scopes) { %i[complementaire_sante_solidaire] }
 
       before do

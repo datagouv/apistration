@@ -105,6 +105,27 @@ module RSWagCommonsResponses
       description: SwaggerData.get('cnav.commons.cnav_identite_pivot.sexe.description'),
       example: SwaggerData.get('cnav.commons.cnav_identite_pivot.sexe.example'),
       required: false
+
+    parameter name: :nomCommuneNaissance,
+      in: :query,
+      schema: {
+        type: SwaggerData.get('cnav.commons.cnav_identite_pivot.nomCommuneNaissance.type'),
+        minLength: SwaggerData.get('cnav.commons.cnav_identite_pivot.nomCommuneNaissance.minLength'),
+        example: SwaggerData.get('cnav.commons.cnav_identite_pivot.nomCommuneNaissance.example')
+      },
+      description: SwaggerData.get('cnav.commons.cnav_identite_pivot.nomCommuneNaissance.description'),
+      required: false
+
+    parameter name: :codeInseeDepartementNaissance,
+      in: :query,
+      schema: {
+        type: SwaggerData.get('cnav.commons.cnav_identite_pivot.codeInseeDepartementNaissance.type'),
+        minLength: SwaggerData.get('cnav.commons.cnav_identite_pivot.codeInseeDepartementNaissance.minLength'),
+        maxLength: SwaggerData.get('cnav.commons.cnav_identite_pivot.codeInseeDepartementNaissance.maxLength'),
+        example: SwaggerData.get('cnav.commons.cnav_identite_pivot.codeInseeDepartementNaissance.example')
+      },
+      description: SwaggerData.get('cnav.commons.cnav_identite_pivot.codeInseeDepartementNaissance.description'),
+      required: false
   end
   # rubocop:enable Metrics/AbcSize
 

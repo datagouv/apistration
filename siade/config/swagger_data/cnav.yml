@@ -46,6 +46,17 @@ cnav:
         enum:
           - M
           - F
+      nomCommuneNaissance:
+        type: string
+        minLength: 1
+        example: 'Gennevilliers'
+        description: "Nom de la commune de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
+      codeInseeDepartementNaissance:
+        type: string
+        minLength: 2
+        maxLength: 3
+        example: '92'
+        description: "Code INSEE du département de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
 
   c2s:
     title: Statut complémentaire santé solidaire (C2S)
@@ -62,17 +73,6 @@ cnav:
       - Prestations sociales
     parameters:
       <<: *cnav_identite_pivot
-      nomCommuneNaissance:
-        type: string
-        minLength: 1
-        example: 'Gennevilliers'
-        description: "Nom de la commune de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
-      codeInseeDepartementNaissance:
-        type: string
-        minLength: 2
-        maxLength: 3
-        example: '92'
-        description: "Code INSEE du département de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
     attributes:
       status:
         title: "Statut bénéficiaire de la C2S"
@@ -121,17 +121,6 @@ cnav:
       - Quotient familial
     parameters:
       <<: *cnav_identite_pivot
-      nomCommuneNaissance:
-        type: string
-        minLength: 1
-        example: 'Gennevilliers'
-        description: "Nom de la commune de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
-      codeInseeDepartementNaissance:
-        type: string
-        minLength: 2
-        maxLength: 3
-        example: '92'
-        description: "Code INSEE du département de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
       annee:
         description: "Année du quotient familial recherché. Si l'année n'est pas renseignée, l'année utilisée par défaut est celle en cours. L'API permet d'accéder à un historique de maximum 2 ans."
         type: integer

@@ -22,27 +22,6 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulier, type: %i[request
 
       parameters_cnav_identite_pivot
 
-      parameter name: :nomCommuneNaissance,
-        in: :query,
-        schema: {
-          type: SwaggerData.get('cnav.quotient-familial-v2.parameters.nomCommuneNaissance.type'),
-          minLength: SwaggerData.get('cnav.quotient-familial-v2.parameters.nomCommuneNaissance.minLength'),
-          example: SwaggerData.get('cnav.quotient-familial-v2.parameters.nomCommuneNaissance.example')
-        },
-        description: SwaggerData.get('cnav.quotient-familial-v2.parameters.nomCommuneNaissance.description'),
-        required: false
-
-      parameter name: :codeInseeDepartementNaissance,
-        in: :query,
-        schema: {
-          type: SwaggerData.get('cnav.quotient-familial-v2.parameters.codeInseeDepartementNaissance.type'),
-          minLength: SwaggerData.get('cnav.quotient-familial-v2.parameters.codeInseeDepartementNaissance.minLength'),
-          maxLength: SwaggerData.get('cnav.quotient-familial-v2.parameters.codeInseeDepartementNaissance.maxLength'),
-          example: SwaggerData.get('cnav.quotient-familial-v2.parameters.codeInseeDepartementNaissance.example')
-        },
-        description: SwaggerData.get('cnav.quotient-familial-v2.parameters.codeInseeDepartementNaissance.description'),
-        required: false
-
       parameter name: :annee,
         in: :query,
         type: SwaggerData.get('cnav.quotient-familial-v2.parameters.annee.type'),

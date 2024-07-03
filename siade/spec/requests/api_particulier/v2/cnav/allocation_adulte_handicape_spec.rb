@@ -59,6 +59,31 @@ RSpec.describe 'CNAV: Allocation Adulte Handicapé', api: :particulier, type: %i
           end
         end
 
+        describe 'with transcogage params', vcr: { cassette_name: 'insee/metadonnees/one_result' } do
+          let(:codeInseeLieuDeNaissance) { nil }
+          let(:nomCommuneNaissance) { 'Gennevilliers' }
+          let(:codeInseeDepartementNaissance) { '92' }
+          let(:anneeDateDeNaissance) { 2000 }
+
+          before do
+            stub_cnav_valid('allocation_adulte_handicape', siret: '10000000000008', extra_params: { codeLieuNaissance: '92036', dateNaissance: '2000-06-12' })
+          end
+
+          describe 'with valid token and mandatory params' do
+            response '200', 'Allocation adulte handicape trouvée' do
+              description SwaggerData.get('cnav.aah.description')
+
+              cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+
+              schema build_rswag_response_api_particulier(
+                attributes: SwaggerData.get('cnav.aah.attributes')
+              )
+
+              run_test!
+            end
+          end
+        end
+
         describe 'server errors' do
           response '400', 'Mauvais paramètres d\'appels' do
             let(:sexe) { 'nope' }
