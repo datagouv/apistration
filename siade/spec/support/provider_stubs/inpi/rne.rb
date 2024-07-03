@@ -9,4 +9,13 @@ module ProviderStubs::INPI::RNE
         body: read_payload_file('inpi/rne/actes_bilans/valid.json')
       )
   end
+
+  def stub_inpi_rne_download_valid(target:, document_id:)
+    stub_request(:get, "#{Siade.credentials[:inpi_rne_url]}/api/#{target}/#{document_id}/download")
+      .to_return(
+        status: 200,
+        body: read_payload_file('pdf/dummy.pdf'),
+        headers: { 'Content-Type' => 'application/pdf' }
+      )
+  end
 end
