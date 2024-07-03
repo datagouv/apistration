@@ -17,7 +17,7 @@ class CNAV::MakeRequest < MakeRequest::Get
       codeInseeLieuDeNaissance: context.params[:code_insee_lieu_de_naissance],
       codePaysLieuDeNaissance: context.params[:code_pays_lieu_de_naissance],
       sexe: context.params[:gender]
-    }
+    }.compact
   end
   # rubocop:enable Metrics/AbcSize
 
