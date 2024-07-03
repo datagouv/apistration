@@ -483,3 +483,37 @@ inpi_rne:
                 - A
                 - AS
                 - AC
+
+  actes_download:
+    title: "Téléchargement des actes"
+    description: |
+      Permet de télécharger les actes de l'INPI. Il est conseillé d'utiliser la route Actes et Bilans pour indexer les actes et bilans disponibles. Le lien vers la requête de téléchargement de cet endpoint y est également renvoyé.
+    tags:
+      - "Informations générales"
+    attributes:
+      document_url:
+        title: "URL de téléchargement de l'acte"
+        type: "string"
+        example: "https://entreprise.api.gouv.fr/api/v3/inpi/rne/unites_legales/open_data/actes/63e7e2e3998acaecf81b485e"
+      expires_in:
+        title: "Expiration du lien de téléchargement"
+        description: "Temps en seconde avant l'expiration du lien de téléchargement."
+        type: "integer"
+        example: 86400
+
+  bilans_download:
+    title: "Téléchargement des bilans"
+    description: |
+      Permet de télécharger les bilans de l'INPI. Il est conseillé d'utiliser la route Actes et Bilans pour indexer les actes et bilans disponibles. Le lien vers la requête de téléchargement de cet endpoint y est également renvoyé.
+    tags:
+      - "Informations générales"
+    attributes:
+      document_url:
+        title: "URL de téléchargement du bilan"
+        type: "string"
+        example: "https://entreprise.api.gouv.fr/api/v3/inpi/rne/unites_legales/open_data/bilans/63e7e2e7998acaecf81b486f"
+      expires_in:
+        title: "Expiration du lien de téléchargement"
+        description: "Temps en seconde avant l'expiration du lien de téléchargement."
+        type: "integer"
+        example: 86400
