@@ -6,4 +6,8 @@ class ProviderUnknownError < AbstractGenericProviderError
   def tracking_level
     'error'
   end
+
+  def kind
+    :provider_unknown_error
+  end
 end

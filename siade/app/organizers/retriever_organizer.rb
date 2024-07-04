@@ -41,7 +41,7 @@ class RetrieverOrganizer < ApplicationOrganizer
 
   def provider_errors
     context.errors.select do |error|
-      error.kind == :provider_error
+      error.kind == :provider_unknown_error
     end
   end
 

@@ -7,6 +7,9 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
           context.errors << NotFoundError.new(context.provider_name)
           context.fail!
         when :provider_error
+          context.errors << ProviderUnavailable.new(context.provider_name, 'whatever')
+          context.fail!
+        when :provider_unknown_error
           context.errors << ProviderUnknownError.new(context.provider_name, 'whatever')
           context.fail!
         when :exception
@@ -94,6 +97,18 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
 
       context 'when it is a provider error' do
         let(:error_kind) { :provider_error }
+
+        it { is_expected.to be_a_failure }
+
+        it 'does not track error' do
+          subject
+
+          expect(monitoring_service).not_to have_received(:track_provider_error)
+        end
+      end
+
+      context 'when it is a provider unknown_error' do
+        let(:error_kind) { :provider_unknown_error }
 
         it { is_expected.to be_a_failure }
 

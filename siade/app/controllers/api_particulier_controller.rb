@@ -68,7 +68,7 @@ class APIParticulierController < APIController
   def extract_http_code(organizer)
     if at_least_one_error_kind_of?(:wrong_parameter, organizer)
       :bad_request
-    elsif at_least_one_error_kind_of?(:provider_error, organizer)
+    elsif at_least_one_error_kind_of?(%i[provider_error provider_unknown_error], organizer)
       :service_unavailable
     else
       super

@@ -287,7 +287,7 @@ module RSWagCommonsResponses
 
       schema '$ref' => '#/components/schemas/Error'
 
-      build_rswag_example(provider_unknown_error, :unknown_error)
+      build_rswag_example(provider_unknown_error, :provider_unknown_error)
 
       Array(extra_errors).each do |error|
         build_rswag_example(error)
