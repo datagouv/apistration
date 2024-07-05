@@ -1,4 +1,4 @@
-class INPI::BilansDownload::UploadDocument < UploadDocumentOrganizer
+class INPI::RNE::BilansDownload::UploadDocument < UploadDocumentOrganizer
   organize Documents::StoreFromBinary
 
   def source_file_content
