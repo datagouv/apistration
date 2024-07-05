@@ -15,6 +15,8 @@ shared:
     endpoints:
       - { controller: 'api_entreprise/v3_and_more/dgfip/attestations_fiscales', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/cibtp/attestation_cotisations_conges_payes_chomage_intemperies', action: 'show' }
+      - { controller: 'api_entreprise/v3_and_more/inpi/rne/actes_download', action: 'show' }
+      - { controller: 'api_entreprise/v3_and_more/inpi/rne/bilans_download', action: 'show' }
     limit: 5
     period: 60
   json_resources:
