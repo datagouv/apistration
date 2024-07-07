@@ -4,6 +4,7 @@ require:
   - rubocop-rspec
   - rubocop-rails
   - ./spec/support/custom_cops/open_payload_file.rb
+  - rubocop-rspec_rails
 
 RSpec:
   Language:
@@ -229,10 +230,7 @@ RSpec/ExampleWording:
   Exclude:
     - 'spec/lib/seeds_spec.rb'
 
-RSpec/FilePath: &rspec_file_path
-  CustomTransform:
-    GIPMDS: gip_mds
-    OAuth2: oauth2
+Rails/FilePath: &rails_file_path
   Exclude:
     - "spec/policies/certificat_rge_ademe_policy_spec.rb"
     - "spec/requests/rack_attack_spec.rb"
@@ -240,7 +238,11 @@ RSpec/FilePath: &rspec_file_path
     - "spec/errors/dgfip_svair_access_denied_error_spec.rb"
     - "spec/errors/gip_mds_error_spec.rb"
 
-RSpec/SpecFilePathFormat: *rspec_file_path
+RSpec/SpecFilePathFormat:
+  CustomTransform:
+    GIPMDS: gip_mds
+    OAuth2: oauth2
+  <<: *rails_file_path
 
 # Sometimes useful in tests
 RSpec/LeakyConstantDeclaration:

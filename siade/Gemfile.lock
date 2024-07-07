@@ -371,6 +371,9 @@ GEM
       rubocop-ast (>= 1.31.1, < 2.0)
     rubocop-rspec (3.0.2)
       rubocop (~> 1.61)
+    rubocop-rspec_rails (2.30.0)
+      rubocop (~> 1.61)
+      rubocop-rspec (~> 3, >= 3.0.1)
     ruby-progressbar (1.13.0)
     ruby-rc4 (0.1.5)
     ruby-statistics (3.0.2)
@@ -488,6 +491,7 @@ DEPENDENCIES
   rubocop-checkstyle_formatter
   rubocop-rails
   rubocop-rspec
+  rubocop-rspec_rails
   sentry-rails
   sentry-ruby
   shoulda-matchers
