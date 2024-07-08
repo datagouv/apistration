@@ -15,6 +15,7 @@ shared:
     endpoints:
       - { controller: 'api_entreprise/v3_and_more/dgfip/attestations_fiscales', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/inpi/actes', action: 'show' }
+      - { controller: 'api_entreprise/v3_and_more/cibtp/attestations_marche_public', action: 'show' }
     limit: 5
     period: 60
   json_resources:
