@@ -205,5 +205,25 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
     it 'has valid resource_collection' do
       expect(resource_collection.map(&:to_h)).to eq(valid_collection)
     end
+
+    describe 'without description personne' do
+      let(:body) do
+        read_payload_file('inpi/rne/beneficiaires_effectifs/without_description_personne.json')
+      end
+
+      it { is_expected.to be_a_success }
+    end
+
+    describe 'without modalite' do
+      let(:body) do
+        read_payload_file('inpi/rne/beneficiaires_effectifs/without_modalite.json')
+      end
+
+      it { is_expected.to be_a_success }
+
+      it 'skips beneficiaire effectif without modalite' do
+        expect(resource_collection.count).to eq(1)
+      end
+    end
   end
 end

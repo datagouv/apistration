@@ -1,5 +1,9 @@
 class INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection < BuildResourceCollection
   def items
+    items_including_empty_modalite.reject { |item| item['modalite'].nil? }
+  end
+
+  def items_including_empty_modalite
     json_body['formality']['content']['personneMorale']['beneficiairesEffectifs']
   end
 
@@ -11,18 +15,19 @@ class INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection < BuildResource
 
   def resource_attributes(raw_beneficiaire_effectif)
     personne_physique_attributes = raw_beneficiaire_effectif['beneficiaire']['descriptionPersonne']
-    birth_date_parts = personne_physique_attributes['dateDeNaissance'].split('-')
+
+    birth_date_parts = personne_physique_attributes.try(:[], 'dateDeNaissance').split('-')
     modalites_attributes = raw_beneficiaire_effectif['modalite']
 
     {
-      nom: personne_physique_attributes['nom'].upcase,
-      nom_usage: personne_physique_attributes['nomUsage'].try(:upcase),
-      prenoms: personne_physique_attributes['prenoms'].map(&:upcase),
+      nom: personne_physique_attributes.try(:[], 'nom').upcase,
+      nom_usage: personne_physique_attributes.try(:[], 'nomUsage').try(:upcase),
+      prenoms: personne_physique_attributes.try(:[], 'prenoms').map(&:upcase),
       date_naissance: {
-        annee: birth_date_parts[0],
-        mois: birth_date_parts[1]
+        annee: birth_date_parts&.first,
+        mois: birth_date_parts&.second
       },
-      nationalite: personne_physique_attributes['nationalite'],
+      nationalite: personne_physique_attributes.try(:[], 'nationalite'),
       pays_residence: raw_beneficiaire_effectif['beneficiaire']['adresseDomicile'].try(:[], 'pays'),
       modalites: build_modalites(modalites_attributes)
     }
