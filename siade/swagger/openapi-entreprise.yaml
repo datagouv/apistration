@@ -14934,6 +14934,7 @@ paths:
                                             via une personne morale.
                                           type: boolean
                                           example: true
+                                          nullable: true
                                         pleine_propriete:
                                           title: Proportion détenue en pleine propriété
                                           description: 'Pourcentage de parts directes
@@ -14944,6 +14945,7 @@ paths:
                                             différences ?</a>'
                                           type: number
                                           example: 42.0
+                                          nullable: true
                                         nue_propriete:
                                           title: Proportion détenue en nue-propriété
                                           description: 'Pourcentage de parts directes
@@ -14954,6 +14956,7 @@ paths:
                                             différences ?</a>'
                                           type: number
                                           example: 9.0
+                                          nullable: true
                                       required:
                                       - detention
                                       - pleine_propriete
@@ -14973,6 +14976,7 @@ paths:
                                             morale.
                                           type: boolean
                                           example: false
+                                          nullable: true
                                         par_indivision:
                                           title: Via une indivision
                                           description: 'Les parts indirectes peuvent
@@ -14997,6 +15001,7 @@ paths:
                                                 indivision.
                                               type: number
                                               example: 0.0
+                                              nullable: true
                                             pleine_propriete:
                                               title: Proportion détenue en pleine
                                                 propriété
@@ -15009,6 +15014,7 @@ paths:
                                                 quelles différences ?</a>'
                                               type: number
                                               example: 0.0
+                                              nullable: true
                                             nue_propriete:
                                               title: Proportion détenue en nue-propriété
                                               description: 'Pourcentage de parts indirectes
@@ -15020,6 +15026,7 @@ paths:
                                                 quelles différences ?</a>'
                                               type: number
                                               example: 0.0
+                                              nullable: true
                                           required:
                                           - total
                                           - pleine_propriete
@@ -15043,6 +15050,7 @@ paths:
                                                 ou de plusieurs personnes morales.
                                               type: number
                                               example: 0.0
+                                              nullable: true
                                             pleine_propriete:
                                               title: Proportion détenue en pleine
                                                 propriété
@@ -15055,6 +15063,7 @@ paths:
                                                 quelles différences ?</a>'
                                               type: number
                                               example: 0.0
+                                              nullable: true
                                             nue_propriete:
                                               title: Proportion détenue en nue-propriété
                                               description: 'Pourcentage de parts indirectes
@@ -15066,6 +15075,7 @@ paths:
                                                 quelles différences ?</a>'
                                               type: number
                                               example: 0.0
+                                              nullable: true
                                           required:
                                           - total
                                           - pleine_propriete
