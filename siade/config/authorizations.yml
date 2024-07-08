@@ -189,6 +189,11 @@ shared:
     - beneficiaires_effectifs_inpi
   api_entreprise/v3_and_more/inpi/rne/actes_bilans:
     - open_data
+  api_entreprise/v3_and_more/inpi/rne/actes_download:
+    - open_data
+  api_entreprise/v3_and_more/inpi/rne/bilans_download:
+    - open_data
+  api_particulier/introspect: []
   api_particulier/v2/introspect: []
   api_particulier/v2/cnaf/quotient_familial:
     - cnaf_quotient_familial
