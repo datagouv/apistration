@@ -73,6 +73,8 @@ shared:
     - bilans_bdf
   api_entreprise/v3_and_more/carif_oref/certifications_qualiopi_france_competences:
     - certifications_qualiopi_france_competences
+  api_entreprise/v3_and_more/cibtp/attestations_marche_public:
+    - attestation_marche_public_cibtp
   api_entreprise/v3_and_more/cnetp/attestation_cotisations_conges_payes_chomage_intemperies:
     - certificat_cnetp
     - certification_cnetp

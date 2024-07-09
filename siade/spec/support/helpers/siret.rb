@@ -5,6 +5,7 @@ def valid_siret(sample_type = nil)
   samples = {
     default: '78951073200017',
     carif_oref: '81841109200013',
+    cibtp: '81125785600021',
     rna: '42135938100033',
     octo: '41816609600069',
     rge_ademe: '50530961700023',
@@ -50,6 +51,7 @@ def not_found_siret(sample_type = nil)
 
   samples = {
     default: non_existent_siret,
+    cibtp: '77566487304147',
     qualibat: danone_siret,
     probtp: '41816609600069',
     rge_ademe: '82525962500028',

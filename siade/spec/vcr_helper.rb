@@ -5,7 +5,9 @@ VCR.configure do |c|
   c.before_record do |interaction|
     interaction.response.body.force_encoding('UTF-8')
   end
-
+  c.preserve_exact_body_bytes do |http_message|
+    !http_message.body.valid_encoding?
+  end
   c.allow_http_connections_when_no_cassette = false
   c.ignore_localhost = true
   c.hook_into :webmock
@@ -21,6 +23,8 @@ VCR.configure do |c|
                                end
 
   # VCR client's filters
+  c.filter_sensitive_data('<CIBTP_CLIENT_ID>') { Siade.credentials[:cibtp_client_id].to_s }
+  c.filter_sensitive_data('<CIBTP_CLIENT_SECRET>') { Siade.credentials[:cibtp_client_secret].to_s }
   c.filter_sensitive_data('<INFOGREFFE_CODE_ABONNE>') { Siade.credentials[:infogreffe_code_abonne].to_s }
   c.filter_sensitive_data('<INFOGREFFE_MOT_PASSE>') { Siade.credentials[:infogreffe_mot_passe].to_s }
   c.filter_sensitive_data('<QUALIBAT_TOKEN>') { Siade.credentials[:qualibat_token].to_s }
@@ -48,6 +52,8 @@ VCR.configure do |c|
   c.filter_sensitive_data('<QUALIBAT_BASIC_AUTH>') { Base64.strict_encode64("#{Siade.credentials[:qualibat_api_username]}:#{Siade.credentials[:qualibat_api_password]}") }
 
   # VCR url filters
+  c.filter_sensitive_data('<URL_CIBTP>') { Siade.credentials[:cibtp_domain].to_s }
+
   c.filter_sensitive_data('<URL_INSEE_V3>') { Siade.credentials[:insee_v3_domain].to_s }
   c.filter_sensitive_data('<URL_GEO_API>') { Siade.credentials[:geo_api_domain].to_s }
   c.filter_sensitive_data('<URL_INPI>') { Siade.credentials[:inpi_url].to_s }

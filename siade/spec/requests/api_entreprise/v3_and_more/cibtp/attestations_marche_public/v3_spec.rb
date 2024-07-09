@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'CIBTP: Attestationsmarchepublic', api: :entreprise, type: %i[request swagger] do
-  path '/v3/cibtp/attestations_marche_public/{siret}' do
+  path '/v3/cibtp/etablissements/{siret}/attestations_marche_public' do
     get SwaggerData.get('cibtp.attestations_marche_public.title') do
       tags(*SwaggerData.get('cibtp.attestations_marche_public.tags'))
 
@@ -49,7 +49,7 @@ RSpec.describe 'CIBTP: Attestationsmarchepublic', api: :entreprise, type: %i[req
             run_test!
           end
 
-          response '409', 'Conflict' do
+          response '502', 'Conflict' do
             let(:siret) { valid_siret }
 
             before do
@@ -62,7 +62,7 @@ RSpec.describe 'CIBTP: Attestationsmarchepublic', api: :entreprise, type: %i[req
             run_test!
           end
 
-          response '422', 'Missing payments', vcr: { cassette_name: 'cibtp/attestations_marche_public/missing_payments' } do
+          response '404', 'Missing payments', vcr: { cassette_name: 'cibtp/attestations_marche_public/missing_payments' } do
             let(:siret) { '81112965900025' }
 
             schema '$ref' => '#/components/schemas/Error'

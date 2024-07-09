@@ -23,4 +23,16 @@ module ProviderStubs::CIBTP
         headers: { 'Content-Type' => 'application/pdf' }
       )
   end
+
+  def stub_cibtp_attestations_marche_public_conflict(siret:)
+    stub_request(:get, "#{Siade.credentials[:cibtp_domain]}/apiEntreprise/attestationMarche")
+      .with(query: { siret: })
+      .to_return(
+        status: 409,
+        body: {
+          type: 'Fonctionnelle',
+          message: "Conflict - L'entreprise est connue du réseau mais nous sommes dans l'impossibilité de fournir une attestation (exemple:changement de caisse)"
+        }.to_json
+      )
+  end
 end
