@@ -221,6 +221,10 @@
 
   ```json
   {
+    "nomNaissance": "DUBOCHE",
+    "prenoms": [
+      "JEROME"
+    ],
     "codeInseeLieuDeNaissance": "00503",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F"
@@ -249,7 +253,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=00503' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
+    -G -d 'nomNaissance=DUBOCHE' -d 'prenoms[]=JEROME' -d 'codeInseeLieuDeNaissance=00503' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/prime-activite"
   ```
 
