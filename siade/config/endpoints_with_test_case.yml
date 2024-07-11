@@ -184,6 +184,10 @@
   api: 'entreprise'
   path: '/v3/inpi/rne/unites_legales/open_data/542065479/actes_bilans'
 
+- name: "CIBTP Attestations Marché Public"
+  api: 'entreprise'
+  path: '/v3/cibtp/etablissements/81125785600021/attestations_marche_public'
+
 # API Particulier v2
 
 - name: 'CAF Quotient familial'
