@@ -14076,6 +14076,10 @@ paths:
                         data:
                           type: object
                           properties:
+                            beneficiaire_uuid:
+                              title: UUID du bénéficiaire effectif
+                              type: string
+                              example: 21120ee0-d42b-44f6-a462-d3724cf6aeaf
                             nom:
                               title: Nom du bénéficiaire effectif
                               type: string
@@ -14102,10 +14106,12 @@ paths:
                                   title: Année de la date de naissance
                                   type: string
                                   example: '1990'
+                                  nullable: true
                                 mois:
                                   title: Mois de la date de naissance
                                   type: string
                                   example: '01'
+                                  nullable: true
                                   enum:
                                   - '01'
                                   - '02'
@@ -14126,11 +14132,11 @@ paths:
                               type: string
                               title: Nationalité du bénéficiaire effectif
                               example: France
+                              nullable: true
                             pays_residence:
                               type: string
                               title: Pays de résidence du bénéficiaire effectif
                               example: FRANCE
-                              nullable: true
                             modalites:
                               title: Liste des modalités de contrôle du bénéficiaire
                                 effectif
@@ -14174,7 +14180,6 @@ paths:
                                             via une personne morale.
                                           type: boolean
                                           example: true
-                                          nullable: true
                                         pleine_propriete:
                                           title: Proportion détenue en pleine propriété
                                           description: 'Pourcentage de parts directes
@@ -14185,7 +14190,6 @@ paths:
                                             différences ?</a>'
                                           type: number
                                           example: 42.0
-                                          nullable: true
                                         nue_propriete:
                                           title: Proportion détenue en nue-propriété
                                           description: 'Pourcentage de parts directes
@@ -14196,7 +14200,6 @@ paths:
                                             différences ?</a>'
                                           type: number
                                           example: 9.0
-                                          nullable: true
                                       required:
                                       - detention
                                       - pleine_propriete
@@ -14216,7 +14219,6 @@ paths:
                                             morale.
                                           type: boolean
                                           example: false
-                                          nullable: true
                                         par_indivision:
                                           title: Via une indivision
                                           description: 'Les parts indirectes peuvent
@@ -14241,7 +14243,6 @@ paths:
                                                 indivision.
                                               type: number
                                               example: 0.0
-                                              nullable: true
                                             pleine_propriete:
                                               title: Proportion détenue en pleine
                                                 propriété
@@ -14254,7 +14255,6 @@ paths:
                                                 quelles différences ?</a>'
                                               type: number
                                               example: 0.0
-                                              nullable: true
                                             nue_propriete:
                                               title: Proportion détenue en nue-propriété
                                               description: 'Pourcentage de parts indirectes
@@ -14266,7 +14266,6 @@ paths:
                                                 quelles différences ?</a>'
                                               type: number
                                               example: 0.0
-                                              nullable: true
                                           required:
                                           - total
                                           - pleine_propriete
@@ -14290,7 +14289,6 @@ paths:
                                                 ou de plusieurs personnes morales.
                                               type: number
                                               example: 0.0
-                                              nullable: true
                                             pleine_propriete:
                                               title: Proportion détenue en pleine
                                                 propriété
@@ -14303,7 +14301,6 @@ paths:
                                                 quelles différences ?</a>'
                                               type: number
                                               example: 0.0
-                                              nullable: true
                                             nue_propriete:
                                               title: Proportion détenue en nue-propriété
                                               description: 'Pourcentage de parts indirectes
@@ -14315,7 +14312,6 @@ paths:
                                                 quelles différences ?</a>'
                                               type: number
                                               example: 0.0
-                                              nullable: true
                                           required:
                                           - total
                                           - pleine_propriete
@@ -14749,6 +14745,7 @@ paths:
                               - representant_legal
                               - representant_legal_placement_sans_gestion_deleguee
                           required:
+                          - beneficiaire_uuid
                           - nom
                           - nom_usage
                           - prenoms
@@ -14767,8 +14764,17 @@ paths:
                         title: Nombre de bénéficiaires
                         type: integer
                         example: 1
+                      beneficiaires_sans_modalites_uuids:
+                        title: UUIDs des bénéficiaires sans modalités
+                        type: array
+                        description: UUIDs des bénéficiaires qui ne sont pas affichés
+                          car sans modalité (il s'agit de représentants légaux)
+                        items:
+                          type: string
+                          example: 21120ee0-d42b-44f6-a462-d3724cf6aeaf
                     required:
                     - count
+                    - beneficiaires_sans_modalites_uuids
                     additionalProperties: false
                   links:
                     type: object

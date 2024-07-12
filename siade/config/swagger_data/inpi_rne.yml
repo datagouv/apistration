@@ -6,6 +6,10 @@ inpi_rne:
     tags:
       - "Informations générales"
     attributes:
+      beneficiaire_uuid:
+        title: "UUID du bénéficiaire effectif"
+        type: "string"
+        example: "21120ee0-d42b-44f6-a462-d3724cf6aeaf"
       nom:
         title: "Nom du bénéficiaire effectif"
         type: "string"
@@ -32,10 +36,12 @@ inpi_rne:
             title: "Année de la date de naissance"
             type: "string"
             example: "1990"
+            nullable: true
           mois:
             title: "Mois de la date de naissance"
             type: "string"
             example: "01"
+            nullable: true
             enum:
               - "01"
               - "02"
@@ -53,11 +59,11 @@ inpi_rne:
         type: "string"
         title: "Nationalité du bénéficiaire effectif"
         example: "France"
+        nullable: true
       pays_residence:
         type: "string"
         title: "Pays de résidence du bénéficiaire effectif"
         example: "FRANCE"
-        nullable: true
       modalites:
         title: "Liste des modalités de contrôle du bénéficiaire effectif"
         type: "object"
@@ -368,6 +374,13 @@ inpi_rne:
         title: "Nombre de bénéficiaires"
         type: "integer"
         example: 1
+      beneficiaires_sans_modalites_uuids:
+        title: "UUIDs des bénéficiaires sans modalités"
+        type: "array"
+        description: "UUIDs des bénéficiaires qui ne sont pas affichés car sans modalité (il s'agit de représentants légaux)"
+        items:
+          type: "string"
+          example: "21120ee0-d42b-44f6-a462-d3724cf6aeaf"
 
   actes_bilans:
     title: "Actes et bilans"

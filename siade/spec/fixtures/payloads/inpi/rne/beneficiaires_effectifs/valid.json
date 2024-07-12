@@ -19,6 +19,7 @@
       "personneMorale": {
         "beneficiairesEffectifs": [
           {
+            "beneficiaireId": "21120ee0-d42b-44f6-a462-d3724cf6aeaf",
             "beneficiaire": {
               "descriptionPersonne": {
                 "dateDeNaissance": "1989-01",
@@ -82,6 +83,7 @@
             }
           },
           {
+            "beneficiaireId": "21120ee0-d42b-44f6-a462-d3724cf6aead",
             "beneficiaire": {
               "descriptionPersonne": {
                 "dateDeNaissance": "1990-01",

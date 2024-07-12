@@ -10,6 +10,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
     let(:valid_collection) do
       [
         {
+          beneficiaire_uuid: '21120ee0-d42b-44f6-a462-d3724cf6aeaf',
           nom: 'DUPONT',
           nom_usage: 'DUBOIS',
           prenoms: %w[JEAN MARC],
@@ -93,6 +94,7 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
           }
         },
         {
+          beneficiaire_uuid: '21120ee0-d42b-44f6-a462-d3724cf6aead',
           nom: 'MARTIN',
           nom_usage: nil,
           prenoms: %w[JULES ANDRE],
@@ -180,7 +182,8 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
 
     let(:valid_meta) do
       {
-        count: 2
+        count: 2,
+        beneficiaires_sans_modalites_uuids: []
       }
     end
 
@@ -223,6 +226,16 @@ RSpec.describe INPI::RNE::BeneficiairesEffectifs::BuildResourceCollection, type:
 
       it 'skips beneficiaire effectif without modalite' do
         expect(resource_collection.count).to eq(1)
+      end
+
+      it 'places beneficiaries without modalite in meta' do
+        meta = call.bundled_data.context
+
+        expect(meta.count).to eq(2)
+        expect(meta[:beneficiaires_sans_modalites_uuids]).to eq(%w[
+          0060d057-a55a-4224-adfa-80151879b833
+          cf9642b0-2f99-4941-a142-246d9eb7235a
+        ])
       end
     end
   end

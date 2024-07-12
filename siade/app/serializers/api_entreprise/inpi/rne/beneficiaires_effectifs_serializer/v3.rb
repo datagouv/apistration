@@ -1,6 +1,7 @@
 class APIEntreprise::INPI::RNE::BeneficiairesEffectifsSerializer::V3 < APIEntreprise::V3AndMore::BaseCollectionSerializer
   class ItemSerializer < APIEntreprise::V3AndMore::BaseSerializer
-    attributes :nom,
+    attributes :beneficiaire_uuid,
+      :nom,
       :nom_usage,
       :prenoms,
       :date_naissance,
@@ -13,7 +14,8 @@ class APIEntreprise::INPI::RNE::BeneficiairesEffectifsSerializer::V3 < APIEntrep
 
   meta do |ctx|
     {
-      count: ctx[:count]
+      count: ctx[:count],
+      beneficiaires_sans_modalites_uuids: ctx[:beneficiaires_sans_modalites_uuids]
     }
   end
 end
