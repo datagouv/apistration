@@ -293,7 +293,7 @@ module RSWagCommonsResponses
         build_rswag_example(error)
       end
 
-      block if block_given?
+      block.call if block_given?
 
       run_test!
     end

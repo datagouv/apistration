@@ -49,7 +49,7 @@ class CNAV::QuotientFamilialV2::BuildResource < BuildResource
   end
 
   def date_naissance_or_default(datum)
-    '0000-00-00' if datum.blank?
+    return '0000-00-00' if datum.blank?
 
     datum
   end
