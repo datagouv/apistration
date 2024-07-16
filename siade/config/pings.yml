@@ -369,7 +369,7 @@ shared:
       cache: <%= 2.minutes %>
       provider: 'INPI - RNE'
       status_page:
-        name: 'INPI - RNE'
+        name: 'INPI - RNE - Actes Bilans'
         alerts_wait: 5
       driver_params:
         retriever: 'INPI::RNE::ActesBilans'
