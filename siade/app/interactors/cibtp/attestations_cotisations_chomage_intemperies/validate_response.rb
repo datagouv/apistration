@@ -1,4 +1,4 @@
-class CIBTP::AttestationsMarchePublic::ValidateResponse < ValidateResponse
+class CIBTP::AttestationsCotisationsChomageIntemperies::ValidateResponse < ValidateResponse
   def call
     return if http_ok?
 

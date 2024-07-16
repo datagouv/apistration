@@ -184,9 +184,9 @@
   api: 'entreprise'
   path: '/v3/inpi/rne/unites_legales/open_data/542065479/actes_bilans'
 
-- name: "CIBTP Attestations Marché Public"
+- name: "CIBTP Attestations Cotisations Chomage Intemperies"
   api: 'entreprise'
-  path: '/v3/cibtp/etablissements/81125785600021/attestations_marche_public'
+  path: '/v3/cibtp/etablissements/81125785600021/attestations_cotisations_chomage_intemperies'
 
 # API Particulier v2
 

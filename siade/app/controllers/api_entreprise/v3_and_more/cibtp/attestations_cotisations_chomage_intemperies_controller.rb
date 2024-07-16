@@ -1,6 +1,6 @@
-class APIEntreprise::V3AndMore::CIBTP::AttestationsMarchePublicController < APIEntreprise::V3AndMore::BaseController
+class APIEntreprise::V3AndMore::CIBTP::AttestationsCotisationsChomageIntemperiesController < APIEntreprise::V3AndMore::BaseController
   def show
-    organizer = retrieve_payload_data(::CIBTP::AttestationsMarchePublic)
+    organizer = retrieve_payload_data(::CIBTP::AttestationsCotisationsChomageIntemperies)
 
     if organizer.success?
       render json: serialize_data(organizer),
@@ -19,6 +19,6 @@ class APIEntreprise::V3AndMore::CIBTP::AttestationsMarchePublicController < APIE
   end
 
   def serializer_module
-    ::APIEntreprise::CIBTP::AttestationsMarchePublicSerializer
+    ::APIEntreprise::CIBTP::AttestationsCotisationsChomageIntemperiesSerializer
   end
 end

@@ -1,16 +1,16 @@
 cibtp:
-  attestations_marche_public:
-    title: "Attestations Marché Public"
-    description: "Retourne l'attestation de marché public pour cet établissement."
+  attestations_cotisations_chomage_intemperies:
+    title: "Attestations Cotisations Chomage Intemperies"
+    description: "Retourne le certificat attestant le respect des obligations relatives aux conges payes et chomage-intemperies pour cet établissement."
     tags:
       - "Certifications professionelles"
     attributes:
       document_url:
-        title: "URL de téléchargement de l'attestation de marché public"
+        title: "URL de téléchargement"
         type: 'string'
         nullable: true
-        description: "Ce lien délivre l'attestation de marché public au format PDF."
-        example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_marche_public_cibtp.pdf"
+        description: "Ce lien délivre l'attestation au format PDF."
+        example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestations_cotisations_chomage_intemperies_cibtp.pdf"
       expires_in:
         title: "Nombre de secondes avant expiration du document référencé dans 'document_url'"
         description: "Il s'agit d'une expiration technique: cette valeur n'a aucun lien avec les dates de debut ou de fin de validité."

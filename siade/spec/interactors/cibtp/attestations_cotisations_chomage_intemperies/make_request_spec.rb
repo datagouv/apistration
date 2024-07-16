@@ -1,4 +1,4 @@
-RSpec.describe CIBTP::AttestationsMarchePublic::MakeRequest, type: :make_request do
+RSpec.describe CIBTP::AttestationsCotisationsChomageIntemperies::MakeRequest, type: :make_request do
   describe '.call' do
     subject { described_class.call(params:) }
 
@@ -9,7 +9,7 @@ RSpec.describe CIBTP::AttestationsMarchePublic::MakeRequest, type: :make_request
     end
 
     context 'with a valid siret' do
-      before { stub_cibtp_attestations_marche_public_valid(siret:) }
+      before { stub_cibtp_attestations_cotisations_chomage_intemperies_valid(siret:) }
 
       let(:siret) { valid_siret }
 

@@ -1,4 +1,4 @@
-class CIBTP::AttestationsMarchePublic::MakeRequest < MakeRequest::Get
+class CIBTP::AttestationsCotisationsChomageIntemperies::MakeRequest < MakeRequest::Get
   protected
 
   def request_uri
