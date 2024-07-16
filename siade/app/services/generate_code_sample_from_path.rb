@@ -15,6 +15,7 @@ class GenerateCodeSampleFromPath
 
   attr_reader :path
 
+  # rubocop:disable Metrics/MethodLength
   def interpolated_path
     path.gsub(/\{[^}]+\}/) do |parameter|
       case parameter[1..-2]
@@ -26,11 +27,14 @@ class GenerateCodeSampleFromPath
         2019
       when 'month'
         11
+      when 'document_id'
+        '65419234a1f7d1f2ba09bd8c'
       else
         raise "#{parameter} is not supported"
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def query_params
     return '' if path == '/privileges'
