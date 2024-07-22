@@ -2,7 +2,10 @@ svair_gone = ->(env) do
   [410, {}, ["Cette URL n'existe plus sur API Particulier depuis le 8 janvier 2024. Veuillez mettre à jour votre application."]]
 end
 
-namespace '/api', constraints: APIParticulierDomainConstraint.new do
+scope path: 'v:api_version', constraints: APIParticulierDomainConstraint.new(v3_and_more: true) do
+end
+
+namespace '/api', constraints: APIParticulierV2DomainConstraint.new do
   get 'ping' => '/ping#show'
 
   get 'introspect' => '/api_particulier/v2/introspect#show'

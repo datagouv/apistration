@@ -243,3 +243,4 @@ test:
   api_particulier/v2/dummy_france_connected: *default_test_scopes
   api_particulier/v2/dummy: *default_test_scopes
   api_particulier/v2/cnav/abstract: *default_test_scopes
+  api_particulier/v3_and_more/base: *default_test_scopes
