@@ -1,0 +1,30 @@
+---
+description: |-
+  ## Bénéficiaire avec participation financière femme - 200
+  
+  Ce cas permet de tester :
+  - [Param. appel] Nom d'usage
+  - [Param. appel] Nom de naissance
+  - [Param. appel] Deux prénoms
+  - [Param. appel] Date de naissance (jour,mois,année)
+  - [Param. appel] sexe féminin
+  - [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière
+params:
+  nomUsage: 'CARTIER'
+  nomNaissance: 'CARTIER'
+  prenoms:
+    - 'CELINE'
+    - 'MARIE'
+  anneeDateDeNaissance: 1980
+  moisDateDeNaissance: 10
+  jourDateDeNaissance: 10
+  codeInseeLieuDeNaissance: '75056'
+  codePaysLieuDeNaissance: '99100' #Bénéficiaire né en France
+  sexe: 'F'
+status: 200
+payload: |-
+  {
+    "status": "beneficiaire_avec_participation_financiere",
+    "dateDebut": "2024-06-01",
+    "dateFin": "2025-06-01"
+  }
