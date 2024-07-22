@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe APIParticulierController, 'recipient' do
+RSpec.describe APIParticulier::V2::BaseController, 'recipient' do
   controller(described_class) do
     def index
       render json: { data: true }, status: :ok

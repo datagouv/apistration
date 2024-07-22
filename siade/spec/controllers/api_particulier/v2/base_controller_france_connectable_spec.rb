@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe APIParticulierController, 'france connectable' do
+RSpec.describe APIParticulier::V2::BaseController, 'france connectable' do
   # rubocop:enable RSpec/DescribeMethod
 
   controller(described_class) do
@@ -33,7 +33,7 @@ RSpec.describe APIParticulierController, 'france connectable' do
 
   describe 'with a bearer token' do
     subject(:make_call) do
-      routes.draw { get 'show' => 'api_particulier#show' }
+      routes.draw { get 'show' => 'api_particulier/v2/base#show' }
 
       request.headers['Authorization'] = "Bearer #{token}"
 

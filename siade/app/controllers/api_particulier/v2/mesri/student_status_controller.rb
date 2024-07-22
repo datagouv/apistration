@@ -1,4 +1,4 @@
-class APIParticulier::V2::MESRI::StudentStatusController < APIParticulierController
+class APIParticulier::V2::MESRI::StudentStatusController < APIParticulier::V2::BaseController
   include APIParticulier::FranceConnectable
 
   def show

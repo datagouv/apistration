@@ -1,4 +1,4 @@
-RSpec.describe APIParticulierController, 'legacy tokens' do
+RSpec.describe APIParticulier::V2::BaseController, 'legacy tokens' do
   # rubocop:enable RSpec/DescribeMethod
   controller(described_class) do
     def show
@@ -32,7 +32,7 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
 
   context 'without any token' do
     subject(:make_call) do
-      routes.draw { get 'show' => 'api_particulier#show' }
+      routes.draw { get 'show' => 'api_particulier/v2/base#show' }
 
       get :show
     end
@@ -59,7 +59,7 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
 
     context 'when it is in query params' do
       subject(:make_call) do
-        routes.draw { get 'show' => 'api_particulier#show' }
+        routes.draw { get 'show' => 'api_particulier/v2/base#show' }
 
         get :show, params: { token: }
       end
@@ -73,7 +73,7 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
 
     context 'when it is in header' do
       subject(:make_call) do
-        routes.draw { get 'show' => 'api_particulier#show' }
+        routes.draw { get 'show' => 'api_particulier/v2/base#show' }
 
         request.headers['X-Api-Key'] = token
 
@@ -90,7 +90,7 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
 
   context 'when token is in params' do
     subject(:make_call) do
-      routes.draw { get 'show' => 'api_particulier#show' }
+      routes.draw { get 'show' => 'api_particulier/v2/base#show' }
 
       get :show, params: { token: }
     end
@@ -205,7 +205,7 @@ RSpec.describe APIParticulierController, 'legacy tokens' do
 
   context 'when token is in header' do
     subject(:make_call) do
-      routes.draw { get 'show' => 'api_particulier#show' }
+      routes.draw { get 'show' => 'api_particulier/v2/base#show' }
 
       get :show
     end

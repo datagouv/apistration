@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class APIParticulier::IntrospectController < APIParticulierController
+class APIParticulier::V2::IntrospectController < APIParticulier::V2::BaseController
   def show
     render json: introspect_payload, status: :ok
   end

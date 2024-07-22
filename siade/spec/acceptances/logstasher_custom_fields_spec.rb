@@ -1,6 +1,6 @@
-class APIParticulier::V2::DummyController < APIParticulierController; end
+class APIParticulier::V2::DummyController < APIParticulier::V2::BaseController; end
 
-class APIParticulier::V2::DummyFranceConnectedController < APIParticulierController
+class APIParticulier::V2::DummyFranceConnectedController < APIParticulier::V2::BaseController
   include APIParticulier::FranceConnectable
 end
 

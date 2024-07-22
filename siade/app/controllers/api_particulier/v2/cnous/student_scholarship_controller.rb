@@ -1,4 +1,4 @@
-class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulierController
+class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulier::V2::BaseController
   include APIParticulier::FranceConnectable
 
   def show

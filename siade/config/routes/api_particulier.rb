@@ -5,7 +5,7 @@ end
 namespace '/api', constraints: APIParticulierDomainConstraint.new do
   get 'ping' => '/ping#show'
 
-  get 'introspect' => '/api_particulier/introspect#show'
+  get 'introspect' => '/api_particulier/v2/introspect#show'
 
   get 'caf/famille' => '/api_particulier/v2/cnaf/quotient_familial#show'
   get 'impots/svair', to: svair_gone

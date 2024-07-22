@@ -1,4 +1,4 @@
-class APIParticulier::V2::CNAV::AbstractController < APIParticulierController
+class APIParticulier::V2::CNAV::AbstractController < APIParticulier::V2::BaseController
   include APIParticulier::FranceConnectable
 
   def show

@@ -1,4 +1,4 @@
-class APIParticulier::V2::PoleEmploi::StatutController < APIParticulierController
+class APIParticulier::V2::PoleEmploi::StatutController < APIParticulier::V2::BaseController
   def show
     organizer = retrieve_payload_data(::PoleEmploi::Statut)
 

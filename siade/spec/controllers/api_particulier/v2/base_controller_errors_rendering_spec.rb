@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe APIParticulierController, 'errors rendering' do
+RSpec.describe APIParticulier::V2::BaseController, 'errors rendering' do
   # rubocop:enable RSpec/DescribeMethod
   controller(described_class) do
     def show
@@ -12,7 +12,7 @@ RSpec.describe APIParticulierController, 'errors rendering' do
 
   # rubocop:disable RSpec/VerifiedDoubles
   subject do
-    routes.draw { get 'show' => 'api_particulier#show' }
+    routes.draw { get 'show' => 'api_particulier/v2/base#show' }
 
     get :show, params: { token: }
   end

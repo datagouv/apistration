@@ -1,4 +1,4 @@
-class APIParticulier::V2::CNAF::QuotientFamilialController < APIParticulierController
+class APIParticulier::V2::CNAF::QuotientFamilialController < APIParticulier::V2::BaseController
   def show
     organizer = retrieve_payload_data(::CNAF::QuotientFamilial, cache: true, expires_in: 24.hours)
 

@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe APIParticulierController, 'cache_management' do
+RSpec.describe APIParticulier::V2::BaseController, 'cache_management' do
   describe 'cache management' do
     class DummyRetrieverOrganizer < RetrieverOrganizer; end
 
     subject(:call!) do
-      routes.draw { get 'show' => 'api_particulier#show' }
+      routes.draw { get 'show' => 'api_particulier/v2/base#show' }
 
       get :show, params: { token: yes_jwt }
     end

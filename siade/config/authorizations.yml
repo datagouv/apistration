@@ -181,7 +181,7 @@ shared:
     - open_data
   api_entreprise/v3_and_more/inpi/rne/actes_bilans:
     - open_data
-  api_particulier/introspect: []
+  api_particulier/v2/introspect: []
   api_particulier/v2/cnaf/quotient_familial:
     - cnaf_quotient_familial
     - cnaf_allocataires
@@ -239,7 +239,7 @@ test:
   api_entreprise: *default_test_scopes
   api_entreprise/v3_and_more/base: *default_test_scopes
   api_entreprise/v2/base: *default_test_scopes
-  api_particulier: *default_test_scopes
+  api_particulier/v2/base: *default_test_scopes
   api_particulier/v2/dummy_france_connected: *default_test_scopes
   api_particulier/v2/dummy: *default_test_scopes
   api_particulier/v2/cnav/abstract: *default_test_scopes

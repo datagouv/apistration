@@ -1,4 +1,4 @@
-class APIParticulier::V2::MEN::ScolaritesController < APIParticulierController
+class APIParticulier::V2::MEN::ScolaritesController < APIParticulier::V2::BaseController
   def show
     organizer = retrieve_payload_data(::MEN::Scolarites)
 
