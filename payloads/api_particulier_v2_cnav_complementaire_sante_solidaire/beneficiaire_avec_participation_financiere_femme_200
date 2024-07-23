@@ -10,7 +10,7 @@ description: |-
   - [Param. appel] sexe féminin
   - [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière
 params:
-  nomUsage: 'CARTIER'
+  nomUsage: 'DUPUIS'
   nomNaissance: 'CARTIER'
   prenoms:
     - 'CELINE'
