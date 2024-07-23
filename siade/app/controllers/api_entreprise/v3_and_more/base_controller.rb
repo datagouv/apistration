@@ -1,8 +1,7 @@
 class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
+  include VersionAware
   include UseRetrievers
   include RecipientManagement
-
-  class UnsupportedVersionError < ::ActionController::RoutingError; end
 
   before_action :verify_api_version!
   before_action :verify_recipient_is_a_siret!
@@ -23,41 +22,6 @@ class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
     else
       serializer_class.new(organizer.bundled_data).serializable_hash
     end
-  end
-
-  def verify_api_version!
-    raise_unsupported_version_error! unless supported_version?
-  end
-
-  def api_version
-    params.fetch('api_version').to_i
-  end
-
-  def serializer_module
-    raise ::NotImplementedError
-  end
-
-  def serializer_class
-    serializer_module.const_get("V#{api_version}")
-  end
-
-  def supported_version?
-    serializer_class
-    true
-  rescue ::NameError => _e
-    false
-  end
-
-  def raise_unsupported_version_error!
-    raise UnsupportedVersionError, "v#{api_version}"
-  end
-
-  def unsupported_version_response(exception)
-    error = UnsupportedAPIVersionError.new(exception.message)
-
-    render content_type: content_type_header,
-      json:         ::ErrorsSerializer.new([error], format: error_format).as_json,
-      status:       error.kind
   end
 
   def render_errors(organizer)
