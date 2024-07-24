@@ -23,7 +23,7 @@ RSpec.describe APIParticulier::V3AndMore::BaseController do
 
   describe 'version management' do
     before do
-      get :index, params: { api_version:, token: yes_jwt }
+      get :index, params: { api_version:, token: yes_jwt }.merge(**api_particulier_mandatory_params)
     end
 
     context 'with a valid version' do
@@ -52,6 +52,40 @@ RSpec.describe APIParticulier::V3AndMore::BaseController do
               detail: 'La version v4 n\'est pas supportée pour cet endpoint'
             )
           )
+        end
+      end
+    end
+  end
+
+  describe 'recipient param' do
+    let(:siret) { valid_siret }
+
+    before do
+      get :index, params: { api_version: 42, token: yes_jwt }
+        .merge(**api_particulier_mandatory_params)
+        .merge(recipient:, siret:)
+    end
+
+    context 'with valid siret as recipient' do
+      let(:recipient) { valid_siret(:recipient) }
+
+      its(:status) { is_expected.to be(200) }
+    end
+
+    context 'with invalid value as recipient' do
+      let(:recipient) { 'invalid' }
+
+      its(:status) { is_expected.to be(422) }
+
+      it 'serializes an error' do
+        expect(response_json).to have_key(:errors)
+      end
+
+      describe '#body' do
+        let(:errors) { response_json[:errors] }
+
+        it do
+          expect(errors.pluck(:code)).to include('00210')
         end
       end
     end
