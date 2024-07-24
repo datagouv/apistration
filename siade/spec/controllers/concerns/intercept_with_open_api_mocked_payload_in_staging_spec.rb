@@ -17,7 +17,7 @@ RSpec.describe InterceptWithOpenAPIMockedPayloadInStaging do
 
   context 'when requesting any env but staging' do
     it 'renders default paylad' do
-      get :index, params: { token: yes_jwt }.merge(mandatory_params)
+      get :index, params: { token: yes_jwt }.merge(api_entreprise_mandatory_params)
       expect(response_json).to eq({ dummy: 'response' })
     end
   end
@@ -69,7 +69,7 @@ RSpec.describe InterceptWithOpenAPIMockedPayloadInStaging do
       let(:operation_id) { 'dummy_name' }
 
       it 'renders an example instead of normal payload' do
-        get :index, params: { token: yes_jwt }.merge(mandatory_params)
+        get :index, params: { token: yes_jwt }.merge(api_entreprise_mandatory_params)
         expect(response_json).to eq({ dummy: example_value })
       end
     end
@@ -79,7 +79,7 @@ RSpec.describe InterceptWithOpenAPIMockedPayloadInStaging do
       let(:operation_id) { 'dummy_name' }
 
       it 'renders an error' do
-        get :index, params: { token: yes_jwt }.merge(mandatory_params)
+        get :index, params: { token: yes_jwt }.merge(api_entreprise_mandatory_params)
 
         assert_response :internal_server_error
         expect(response_json).to include(errors: ["Une erreur dans la configuration de notre environnement de staging ne permet pas la génération de l'exemple de test. Une alerte a été remontée."])
@@ -87,7 +87,7 @@ RSpec.describe InterceptWithOpenAPIMockedPayloadInStaging do
 
       it 'tracks OpenAPI error in monitoring service' do
         allow(MonitoringService.instance).to receive(:capture_message)
-        get :index, params: { token: yes_jwt }.merge(mandatory_params)
+        get :index, params: { token: yes_jwt }.merge(api_entreprise_mandatory_params)
 
         expect(MonitoringService.instance)
           .to have_received(:capture_message)
@@ -100,7 +100,7 @@ RSpec.describe InterceptWithOpenAPIMockedPayloadInStaging do
       let(:operation_id) { 'wrong_id' }
 
       it 'renders an error' do
-        get :index, params: { token: yes_jwt }.merge(mandatory_params)
+        get :index, params: { token: yes_jwt }.merge(api_entreprise_mandatory_params)
 
         assert_response :internal_server_error
         expect(response_json).to include(errors: ["Une erreur dans la configuration de notre environnement de staging ne permet pas la génération de l'exemple de test. Une alerte a été remontée."])
@@ -108,7 +108,7 @@ RSpec.describe InterceptWithOpenAPIMockedPayloadInStaging do
 
       it 'tracks OpenAPI error in monitoring service' do
         allow(MonitoringService.instance).to receive(:capture_message)
-        get :index, params: { token: yes_jwt }.merge(mandatory_params)
+        get :index, params: { token: yes_jwt }.merge(api_entreprise_mandatory_params)
 
         expect(MonitoringService.instance)
           .to have_received(:capture_message)

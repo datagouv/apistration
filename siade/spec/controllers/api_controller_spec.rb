@@ -25,7 +25,7 @@ RSpec.describe APIController do
     subject do
       routes.draw { get 'show/:siret' => 'api#show' }
 
-      get :show, params: { siret: ' ', error_format:, token: yes_jwt }.merge(mandatory_params)
+      get :show, params: { siret: ' ', error_format:, token: yes_jwt }.merge(api_entreprise_mandatory_params)
     end
 
     context 'when error_format is nil' do
@@ -127,7 +127,7 @@ RSpec.describe APIController do
         let(:token) { yes_jwt }
 
         it 'returns 200' do
-          get :index, params: mandatory_params
+          get :index, params: api_entreprise_mandatory_params
           assert_response :ok
         end
       end
@@ -136,7 +136,7 @@ RSpec.describe APIController do
         let(:token) { JwtHelper.jwt(:without_uuid_as_jti) }
 
         it 'returns 401' do
-          get :index, params: mandatory_params
+          get :index, params: api_entreprise_mandatory_params
           assert_response :unauthorized
         end
       end
@@ -145,7 +145,7 @@ RSpec.describe APIController do
         let(:token) { JwtHelper.jwt(:without_uuid_as_uid) }
 
         it 'returns 401' do
-          get :index, params: mandatory_params
+          get :index, params: api_entreprise_mandatory_params
           assert_response :unauthorized
         end
       end
@@ -201,7 +201,7 @@ RSpec.describe APIController do
         let(:token) { yes_jwt }
 
         it 'returns 200' do
-          get :index, params: { token: }.merge(mandatory_params)
+          get :index, params: { token: }.merge(api_entreprise_mandatory_params)
           assert_response :ok
         end
       end
@@ -255,14 +255,14 @@ RSpec.describe APIController do
 
     it 'sets expected params in context' do
       expect(MonitoringService.instance).to receive(:set_controller_params).with(
-        mandatory_params.merge(
+        api_entreprise_mandatory_params.merge(
           controller: 'api',
           action: 'index',
           token: an_instance_of(String)
         )
       )
 
-      get :index, params: { token: yes_jwt }.merge(mandatory_params)
+      get :index, params: { token: yes_jwt }.merge(api_entreprise_mandatory_params)
     end
   end
 end

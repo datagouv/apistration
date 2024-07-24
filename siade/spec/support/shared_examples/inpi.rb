@@ -4,7 +4,7 @@ RSpec.shared_examples 'inpi authentication failure' do
     allow_any_instance_of(SIADE::V2::Requests::INPI::Authenticate)
       .to receive(:cookie).and_return(nil)
 
-    get :show, params: { siren:, token: yes_jwt }.merge(mandatory_params)
+    get :show, params: { siren:, token: yes_jwt }.merge(api_entreprise_mandatory_params)
   end
   # rubocop:enable RSpec/AnyInstance
 

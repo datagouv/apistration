@@ -2,7 +2,7 @@ RSpec.shared_examples 'unauthorized' do |action = :show, extra_get_params = {}|
   subject { response }
 
   before do
-    params = { token: 'bad_token', siren: valid_siren, siret: valid_siret }.merge(mandatory_params).merge(extra_get_params)
+    params = { token: 'bad_token', siren: valid_siren, siret: valid_siret }.merge(api_entreprise_mandatory_params).merge(extra_get_params)
     get action, params:
   end
 
@@ -23,7 +23,7 @@ RSpec.shared_examples 'forbidden' do |action = :show, extra_get_params = {}|
   let(:siren) { valid_siren }
 
   before do
-    params = { token:, siret:, siren: }.merge(mandatory_params).merge(extra_get_params)
+    params = { token:, siret:, siren: }.merge(api_entreprise_mandatory_params).merge(extra_get_params)
     get action, params:
   end
 
@@ -38,7 +38,7 @@ RSpec.shared_examples 'not_found' do |siret: nil, siren: nil, action: :show, **e
   let(:valid_siren) { siren || non_existent_siren }
 
   before do
-    get action, params: { token:, siret: valid_siret, siren: valid_siren }.merge(mandatory_params).merge(extra_get_params)
+    get action, params: { token:, siret: valid_siret, siren: valid_siren }.merge(api_entreprise_mandatory_params).merge(extra_get_params)
   end
 
   its(:status) { is_expected.to eq(404) }
@@ -58,7 +58,7 @@ RSpec.shared_examples 'unprocessable_entity' do |action = :show, kind = :siren, 
   let(:siren) { invalid_siren }
 
   before do
-    get action, params: { token:, siret:, siren: }.merge(mandatory_params).merge(extra_get_params)
+    get action, params: { token:, siret:, siren: }.merge(api_entreprise_mandatory_params).merge(extra_get_params)
   end
 
   its(:status) { is_expected.to eq(422) }
@@ -81,7 +81,7 @@ RSpec.shared_examples 'happy_pdf_endpoint_siren' do |arg_siren, pdf_suffix|
   let(:siren) { arg_siren }
 
   before do
-    get :show, params: { token:, siren: }.merge(mandatory_params)
+    get :show, params: { token:, siren: }.merge(api_entreprise_mandatory_params)
   end
 
   it 'response has 200 status' do
@@ -104,7 +104,7 @@ RSpec.shared_examples 'happy_pdf_endpoint_siret' do |arg_siret, pdf_suffix|
   let(:siret) { arg_siret }
 
   before do
-    get :show, params: { token:, siret: }.merge(mandatory_params)
+    get :show, params: { token:, siret: }.merge(api_entreprise_mandatory_params)
   end
 
   it 'response has 200 status' do

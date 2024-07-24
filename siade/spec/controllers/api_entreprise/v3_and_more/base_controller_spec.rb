@@ -23,7 +23,7 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
 
   describe 'version management' do
     before do
-      get :index, params: { api_version:, token: yes_jwt }.merge(**mandatory_params)
+      get :index, params: { api_version:, token: yes_jwt }.merge(**api_entreprise_mandatory_params)
     end
 
     context 'with valid version' do
@@ -66,7 +66,7 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
 
     before do
       get :index, params: { api_version: 42, token: yes_jwt }
-        .merge(**mandatory_params)
+        .merge(**api_entreprise_mandatory_params)
         .merge(recipient:, siret:)
     end
 
@@ -124,7 +124,7 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
   describe 'recipient param with a siren resource ID' do
     before do
       get :index, params: { api_version: 42, token: yes_jwt }
-        .merge(**mandatory_params)
+        .merge(**api_entreprise_mandatory_params)
         .merge(recipient:, siren:)
     end
 
@@ -161,7 +161,7 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
     subject(:call!) do
       routes.draw { get 'show' => 'api_entreprise/v3_and_more/base#show' }
 
-      get :show, params: { api_version: 42, token: yes_jwt }.merge(**mandatory_params)
+      get :show, params: { api_version: 42, token: yes_jwt }.merge(**api_entreprise_mandatory_params)
     end
 
     before do

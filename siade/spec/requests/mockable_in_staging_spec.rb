@@ -9,7 +9,7 @@ RSpec.describe 'Mocking in staging for each routes' do
   describe 'API Entreprise', api: :entreprise do
     describe 'v3 and more endpoint' do
       it 'renders a 200' do
-        get "/v3/ministere_interieur/rna/associations/#{valid_siret}", params: { token: yes_jwt }.merge(mandatory_params)
+        get "/v3/ministere_interieur/rna/associations/#{valid_siret}", params: { token: yes_jwt }.merge(api_entreprise_mandatory_params)
 
         assert_response :ok
       end

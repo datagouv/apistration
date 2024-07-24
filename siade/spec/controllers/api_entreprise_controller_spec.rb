@@ -43,7 +43,7 @@ RSpec.describe APIEntrepriseController do
     subject(:make_request) do
       routes.draw { get 'show' => 'api_entreprise#show' }
 
-      get :show, params: mandatory_params
+      get :show, params: api_entreprise_mandatory_params
     end
 
     before { request.headers['Authorization'] = "Bearer #{token}" }
