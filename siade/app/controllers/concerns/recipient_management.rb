@@ -1,27 +1,22 @@
 module RecipientManagement
   protected
 
-  def verify_recipient_is_a_siret_or_nil!
-    return if params[:recipient].blank?
-
-    verify_recipient_is_a_siret!
-  end
-
   def verify_recipient_is_a_siret!
     return if recipient_is_a_siret?
 
-    if api_kind == 'api_entreprise'
-      raise_invalid_recipient_api_entreprise!(InvalidRecipientError)
-    else
-      raise_invalid_recipient_api_particulier!
-    end
+    raise_invalid_recipient!(InvalidRecipientError)
   end
 
   def verify_recipient_is_not_resource_id_nor_whitelist!
     return unless recipient_is_resource_siren_or_siret?
     return if recipient_whitelisted?
 
-    raise_invalid_recipient_api_entreprise!(RecipientAndResourceIdIdenticalError)
+    raise_invalid_recipient!(RecipientAndResourceIdIdenticalError)
+  end
+
+  def raise_invalid_recipient!(error_klass)
+    render json: ErrorsSerializer.new([error_klass.new], format: error_format).as_json,
+      status: :unprocessable_entity
   end
 
   private
@@ -50,15 +45,5 @@ module RecipientManagement
 
   def recipient_is_a_siret?
     ValidateSiret.call(params: { siret: params[:recipient] }).success?
-  end
-
-  def raise_invalid_recipient_api_entreprise!(error_klass)
-    render json: ErrorsSerializer.new([error_klass.new], format: error_format).as_json,
-      status: :unprocessable_entity
-  end
-
-  def raise_invalid_recipient_api_particulier!
-    render json: format_error(InvalidRecipientError.new),
-      status: :bad_request
   end
 end

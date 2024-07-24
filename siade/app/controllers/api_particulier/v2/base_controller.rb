@@ -50,6 +50,23 @@ class APIParticulier::V2::BaseController < APIController
       status: extract_http_code(organizer)
   end
 
+  def verify_recipient_is_a_siret_or_nil!
+    return if params[:recipient].blank?
+
+    verify_recipient_is_a_siret!
+  end
+
+  def verify_recipient_is_a_siret!
+    return if recipient_is_a_siret?
+
+    raise_invalid_recipient!
+  end
+
+  def raise_invalid_recipient!
+    render json: format_error(InvalidRecipientError.new),
+      status: :bad_request
+  end
+
   private
 
   def user_not_authorized(exception)

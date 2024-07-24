@@ -1,8 +1,6 @@
 module APIParticulier::FranceConnectable
   extend ActiveSupport::Concern
 
-  include RecipientManagement
-
   attr_reader :france_connect_service_user_identity, :france_connect_client_attributes
 
   included do
