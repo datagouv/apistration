@@ -25,6 +25,7 @@
     "data": [
       {
         "data": {
+          "beneficiaire_uuid": "c5c28655-4dd1-4246-a23b-bcb6cccc628b",
           "nom": "DUPONT",
           "nom_usage": "DUBOIS",
           "prenoms": [
@@ -117,6 +118,7 @@
       },
       {
         "data": {
+          "beneficiaire_uuid": "fce4cefc-ff15-43f9-824f-7f782d65f8d5",
           "nom": "MARTIN",
           "nom_usage": null,
           "prenoms": [
@@ -209,7 +211,10 @@
       }
     ],
     "meta": {
-      "count": 2
+      "count": 2,
+      "beneficiaires_sans_modalites_uuids": [
+  
+      ]
     },
     "links": {
     }
