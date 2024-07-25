@@ -1,0 +1,31 @@
+ 
+ ---
+description: |-
+  ## Bénéficiaire né à l'étranger sans participation financière femme - 200
+  
+  Ce cas permet de tester :
+  - [Param. appel] Nom d'usage
+  - [Param. appel] Nom de naissance
+  - [Param. appel] Deux prénoms
+  - [Param. appel] Date de naissance (jour,mois,année)
+  - [Param. appel] sexe féminin
+  - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière
+params:
+  nomUsage: 'PLUSSE'
+  nomNaissance: 'GERVINAT'
+  prenoms:
+    - 'MADELEINE'
+    - 'LEA'
+  anneeDateDeNaissance: 1976
+  moisDateDeNaissance: 8
+  jourDateDeNaissance: 24
+  codePaysLieuDeNaissance: '99131' #Bénéficiaire né à l'étranger
+  sexe: 'F'
+status: 200
+payload: |-
+  {
+    "status": "beneficiaire_sans_participation_financiere",
+    "dateDebut": "2024-10-01",
+    "dateFin": "2025-10-01"
+  }
+  
