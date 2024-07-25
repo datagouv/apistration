@@ -19,6 +19,7 @@ params:
   anneeDateDeNaissance: 1976
   moisDateDeNaissance: 8
   jourDateDeNaissance: 24
+  codeInseeLieuDeNaissance: null
   codePaysLieuDeNaissance: '99131' #Bénéficiaire né à l'étranger
   sexe: 'F'
 status: 200
