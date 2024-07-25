@@ -1,5 +1,6 @@
 class APIParticulier::V3AndMore::BaseController < APIController
   include VersionAware
+  include UseRetrievers
   include RecipientManagement
 
   before_action :verify_api_version!
@@ -10,6 +11,24 @@ class APIParticulier::V3AndMore::BaseController < APIController
   rescue_from UnsupportedVersionError, with: :unsupported_version_response
 
   protected
+
+  def cache_key
+    request.path
+  end
+
+  def serialize_data(organizer)
+    if organizer.mocked_data.present?
+      organizer.mocked_data[:payload]
+    else
+      serializer_class.new(organizer.bundled_data).serializable_hash
+    end
+  end
+
+  def render_errors(organizer)
+    render content_type: content_type_header,
+      json:         ::ErrorsSerializer.new(organizer.errors, format: error_format).as_json,
+      status:       extract_http_code(organizer)
+  end
 
   def error_format
     :json_api
