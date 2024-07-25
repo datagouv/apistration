@@ -11,14 +11,14 @@ description: |-
   - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière
 params:
   nomUsage: 'LEDIEU'
-  nomNaissance: 'CARTIER'
+  nomNaissance: 'FALLENDE'
   prenoms:
     - 'PIERRE'
     - 'GAUTIER'
     - 'HARRY'
   anneeDateDeNaissance: 1950
-  moisDateDeNaissance: 01
-  jourDateDeNaissance: 01
+  moisDateDeNaissance: 1
+  jourDateDeNaissance: 1
   codeInseeLieuDeNaissance: '44109'
   codePaysLieuDeNaissance: '99100' #Bénéficiaire né en France
   sexe: 'M'
