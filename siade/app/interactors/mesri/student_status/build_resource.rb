@@ -26,8 +26,16 @@ class MESRI::StudentStatus::BuildResource < BuildResource
         uai: inscription_payload['etablissement']['uai'],
         nomEtablissement: inscription_payload['etablissement']['nomEtablissement']
       },
-      dateDebutInscription: inscription_payload['dateDebutInscription'],
-      dateFinInscription: inscription_payload['dateFinInscription']
+      dateDebutInscription: format_date(inscription_payload['dateDebutInscription']),
+      dateFinInscription: format_date(inscription_payload['dateFinInscription'])
     }
+  end
+
+  def format_date(date)
+    if date.blank?
+      date
+    else
+      Date.parse(date).to_s
+    end
   end
 end
