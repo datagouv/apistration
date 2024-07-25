@@ -41,6 +41,19 @@ Ce cas permet de tester :
   ""reason"": ""timeout of 10000 ms exceeded"",
   ""message"": ""Une erreur est survenue lors de l'appel au fournisseur de donnée""
 }"
+,"## Bénéficiaire avec participation financière femme - 200
+
+Ce cas permet de tester :
+- [Param. appel] Nom d'usage
+- [Param. appel] Nom de naissance
+- [Param. appel] Deux prénoms
+- [Param. appel] Date de naissance (jour,mois,année)
+- [Param. appel] sexe féminin
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière","{""nomUsage"":""DUPUIS"",""nomNaissance"":""CARTIER"",""prenoms"":[""CELINE"",""MARIE""],""anneeDateDeNaissance"":1980,""moisDateDeNaissance"":10,""jourDateDeNaissance"":10,""codeInseeLieuDeNaissance"":""75056"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",200,"{
+  ""status"": ""beneficiaire_avec_participation_financiere"",
+  ""dateDebut"": ""2024-06-01"",
+  ""dateFin"": ""2025-06-01""
+}"
 ,"Cas de test pour CSS avec jeton FranceConnect.
 Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_css.yml).
 L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":[""Georges""],""nomNaissance"":""CNAF"",""anneeDateDeNaissance"":2002,""moisDateDeNaissance"":1,""jourDateDeNaissance"":1,""sexe"":""M"",""codeInseeLieuDeNaissance"":""75002"",""codePaysLieuDeNaissance"":""99100""}",200,"{
