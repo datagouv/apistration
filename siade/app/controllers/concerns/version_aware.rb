@@ -31,7 +31,7 @@ module VersionAware
   end
 
   def error_format
-    :json_api
+    NotImplementedError
   end
 
   def api_version

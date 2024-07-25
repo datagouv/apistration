@@ -11,6 +11,10 @@ class APIParticulier::V3AndMore::BaseController < APIController
 
   protected
 
+  def error_format
+    :json_api
+  end
+
   def content_type_header
     'application/vnd.api+json'
   end
