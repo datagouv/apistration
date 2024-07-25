@@ -26,8 +26,8 @@ status: 200
 payload: |-
   {
     "status": "non_beneficiaire_css",
-    "dateDebut": null,
-    "dateFin": null
+    "dateDebut": "null",
+    "dateFin": "null"
   }
   
   
