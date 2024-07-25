@@ -1,0 +1,29 @@
+ ---
+description: |-
+  ## Dossier complémentaire inexistant - 404
+  
+  Ce cas permet de tester :
+  - [Param. appel] Nom d'usage
+  - [Param. appel] Nom de naissance
+  - [Param. appel] Un prénom
+  - [Param. appel] Date de naissance (jour,mois,année)
+  - [Param. appel] sexe masculin
+  - [Réponse] Dossier complémentaire inexistant
+params:
+  nomUsage: 'LEGRAND'
+  nomNaissance: 'LEROI'
+  prenoms:
+    - 'ARTHUR'
+  anneeDateDeNaissance: 1995
+  moisDateDeNaissance: 12
+  jourDateDeNaissance: 22
+  codeInseeLieuDeNaissance: '75056'
+  codePaysLieuDeNaissance: '99100' #Bénéficiaire né en France
+  sexe: 'M'
+status: 404
+payload: |-
+  { 
+    "error": "not_found",
+    "reason": "Dossier allocataire inexistant. Le document ne peut être édité.",
+    "message": "Dossier allocataire inexistant. Le document ne peut être édité."
+  }
