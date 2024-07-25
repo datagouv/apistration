@@ -1,0 +1,29 @@
+ ---
+description: |-
+  ## Erreur du fournisseur - 503
+  
+  Ce cas permet de tester :
+  - [Param. appel] Nom d'usage
+  - [Param. appel] Nom de naissance
+  - [Param. appel] Un prénom
+  - [Param. appel] Date de naissance (jour,mois,année)
+  - [Param. appel] sexe masculin
+  - [Réponse] 
+params:
+  nomUsage: 'LAGRANDE'
+  nomNaissance: 'LAREINE'
+  prenoms:
+    - 'ELIZABETH'
+  anneeDateDeNaissance: 1988
+  moisDateDeNaissance: 4
+  jourDateDeNaissance: 2
+  codeInseeLieuDeNaissance: '75056'
+  codePaysLieuDeNaissance: '99100' #Bénéficiaire né en France
+  sexe: 'F'
+status: 503
+payload: |-
+  { 
+    "error": "network_error",
+    "reason": "timeout of 10000 ms exceeded",
+    "message": "Une erreur est survenue lors de l'appel au fournisseur de donnée"
+  }
