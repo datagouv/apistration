@@ -57,9 +57,15 @@ class MockService
       Rails.public_path.join('v2/open-api.yml')
     elsif api_entreprise?
       Rails.root.join('swagger/openapi-entreprise.yaml')
+    elsif v2_api_particulier?
+      Rails.root.join('swagger/openapi-particulierv2.yaml')
     else
       Rails.root.join('swagger/openapi-particulier.yaml')
     end
+  end
+
+  def v2_api_particulier?
+    operation_id.include?('api_particulier_v2')
   end
 
   def api_entreprise?

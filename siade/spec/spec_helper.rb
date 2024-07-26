@@ -166,6 +166,10 @@ RSpec.configure do |config|
     host! 'particulier.api.localtest.me'
   end
 
+  config.before(type: :request, api: :particulierv2) do
+    host! 'particulier.api.localtest.me'
+  end
+
   config.define_derived_metadata(type: :swagger) do |metadata|
     metadata[:swagger_doc] = "openapi-#{metadata[:api]}.yaml"
   end

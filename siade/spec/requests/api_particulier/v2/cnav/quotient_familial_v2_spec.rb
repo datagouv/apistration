@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'CNAV: Quotient Familial V2', api: :particulier, type: %i[request swagger] do
+RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[request swagger] do
   path '/api/v2/composition-familiale-v2' do
     get SwaggerData.get('cnav.quotient-familial-v2.title') do
       tags(*SwaggerData.get('cnav.quotient-familial-v2.tags'))

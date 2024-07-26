@@ -16,7 +16,7 @@ RSpec.describe 'Mocking in staging for each routes' do
     end
   end
 
-  describe 'API Particulier', api: :particulier do
+  describe 'API Particulier', api: :particulierv2 do
     before do
       allow(MockDataBackend).to receive(:get_not_found_response_for).and_return(
         {

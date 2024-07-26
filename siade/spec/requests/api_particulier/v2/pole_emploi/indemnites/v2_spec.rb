@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'MEN: Scolarites', api: :particulier, type: %i[request swagger] do
+RSpec.describe 'MEN: Scolarites', api: :particulierv2, type: %i[request swagger] do
   path '/api/v2/paiements-pole-emploi' do
     get SwaggerData.get('pole_emploi.indemnites.title') do
       tags(*SwaggerData.get('pole_emploi.indemnites.tags'))

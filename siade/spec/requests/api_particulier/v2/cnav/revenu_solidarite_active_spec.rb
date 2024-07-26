@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'CNAV: Revenu de solidarité active', api: :particulier, type: %i[request swagger] do
+RSpec.describe 'CNAV: Revenu de solidarité active', api: :particulierv2, type: %i[request swagger] do
   path '/api/v2/revenu-solidarite-active' do
     get SwaggerData.get('cnav.rsa.title') do
       tags(*SwaggerData.get('cnav.rsa.tags'))

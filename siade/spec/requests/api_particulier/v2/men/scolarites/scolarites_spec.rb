@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'MEN: Scolarites', api: :particulier, type: %i[request swagger] do
+RSpec.describe 'MEN: Scolarites', api: :particulierv2, type: %i[request swagger] do
   path '/api/v2/scolarites' do
     get SwaggerData.get('men.scolarite.title') do
       tags(*SwaggerData.get('men.scolarite.tags'))

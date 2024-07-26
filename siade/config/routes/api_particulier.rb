@@ -13,8 +13,9 @@ namespace '/api', constraints: APIParticulierV2DomainConstraint.new do
   get 'caf/famille' => '/api_particulier/v2/cnaf/quotient_familial#show'
   get 'impots/svair', to: svair_gone
 
-  get 'open-api.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/openapi-particulier.yaml'))]] }
-  get 'france-connect/open-api.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/openapi-particulier.yaml'))]] }
+  get 'open-api.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/api_particulier_open_api_static/v2.yaml'))]] }
+  get 'open-api-v3.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/openapi-particulier.yaml'))]] }
+  get 'france-connect/open-api.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/api_particulier_open_api_static/v2.yaml'))]] }
 
   namespace '/v2' do
     get 'composition-familiale' => '/api_particulier/v2/cnaf/quotient_familial#show'
