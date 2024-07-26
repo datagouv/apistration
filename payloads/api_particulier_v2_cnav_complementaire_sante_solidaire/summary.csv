@@ -28,8 +28,8 @@ Ce cas permet de tester :
 - [Param. appel] sexe masculin
 - [Réponse] statut non-bénéficiaire de la complémentaire santé solidaire","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M"",""nomNaissance"":""DUPONT"",""prenoms"":[""PIERRE""],""anneeDateDeNaissance"":1966,""moisDateDeNaissance"":6}",200,"{
   ""status"": ""non_beneficiaire_css"",
-  ""dateDebut"": ""null"",
-  ""dateFin"": ""null""
+  ""dateDebut"": null,
+  ""dateFin"": null
 }"
 ,Dossier non trouvé,"{""nomNaissance"":""DUBOCHE"",""codeInseeLieuDeNaissance"":""00404"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",404,"{
   ""error"": ""not_found"",
@@ -40,6 +40,32 @@ Ce cas permet de tester :
   ""error"": ""network_error"",
   ""reason"": ""timeout of 10000 ms exceeded"",
   ""message"": ""Une erreur est survenue lors de l'appel au fournisseur de donnée""
+}"
+,"## Bénéficiaire né à l'étranger sans participation financière femme - 200
+
+Ce cas permet de tester :
+- [Param. appel] Nom d'usage
+- [Param. appel] Nom de naissance
+- [Param. appel] Deux prénoms
+- [Param. appel] Date de naissance (jour,mois,année)
+- [Param. appel] sexe féminin
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomUsage"":""PLUSSE"",""nomNaissance"":""GERVINAT"",""prenoms"":[""MADELEINE"",""LEA""],""anneeDateDeNaissance"":1976,""moisDateDeNaissance"":8,""jourDateDeNaissance"":24,""codeInseeLieuDeNaissance"":null,""codePaysLieuDeNaissance"":""99131"",""sexe"":""F""}",200,"{
+  ""status"": ""beneficiaire_sans_participation_financiere"",
+  ""dateDebut"": ""2024-10-01"",
+  ""dateFin"": ""2025-10-01""
+}"
+,"## Bénéficiaire né à l'étranger sans participation financière femme - 200
+
+Ce cas permet de tester :
+- [Param. appel] Nom d'usage
+- [Param. appel] Nom de naissance
+- [Param. appel] Un prénom
+- [Param. appel] Date de naissance (jour,mois,année)
+- [Param. appel] sexe féminin
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomUsage"":""MIREL"",""nomNaissance"":""VAUBAN"",""prenoms"":[""VICTOIRE""],""anneeDateDeNaissance"":1966,""moisDateDeNaissance"":3,""jourDateDeNaissance"":5,""codeInseeLieuDeNaissance"":null,""codePaysLieuDeNaissance"":""99216"",""sexe"":""F""}",200,"{
+  ""status"": ""beneficiaire_sans_participation_financiere"",
+  ""dateDebut"": ""2023-08-25"",
+  ""dateFin"": ""2024-08-25""
 }"
 ,"## Bénéficiaire avec participation financière femme - 200
 
@@ -80,4 +106,17 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2023-02-01"",
   ""dateFin"": ""2024-02-01""
+}"
+,"## Non-bénéficiaire homme - 200
+
+Ce cas permet de tester :
+- [Param. appel] Nom d'usage
+- [Param. appel] Nom de naissance
+- [Param. appel] 2 prénoms
+- [Param. appel] Date de naissance (jour,mois,année)
+- [Param. appel] sexe masculin
+- [Réponse] Non bénéficiaire de la complémentaire santé solidaire","{""nomUsage"":""VERTIN"",""nomNaissance"":""HUBOT"",""prenoms"":[""PIERRE-MARIE"",""JEREMY""],""anneeDateDeNaissance"":1968,""moisDateDeNaissance"":11,""jourDateDeNaissance"":15,""codeInseeLieuDeNaissance"":""33063"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",200,"{
+  ""status"": ""non_beneficiaire_css"",
+  ""dateDebut"": null,
+  ""dateFin"": null
 }"
