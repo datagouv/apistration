@@ -514,6 +514,67 @@ Ce cas permet de tester :
 
   </p>
   </details>
+* [dossier_allocataire_inexistant_404.yml](dossier_allocataire_inexistant_404.yml)
+
+  Status `404`
+
+  ## Dossier complémentaire inexistant - 404
+
+Ce cas permet de tester :
+- [Param. appel] Nom d'usage
+- [Param. appel] Nom de naissance
+- [Param. appel] Un prénom
+- [Param. appel] Date de naissance (jour,mois,année)
+- [Param. appel] sexe masculin
+- [Réponse] Dossier complémentaire inexistant
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomUsage": "LEGRAND",
+    "nomNaissance": "LEROI",
+    "prenoms": [
+      "ARTHUR"
+    ],
+    "anneeDateDeNaissance": 1995,
+    "moisDateDeNaissance": 12,
+    "jourDateDeNaissance": 22,
+    "codeInseeLieuDeNaissance": "75056",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "M"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "error": "not_found",
+    "reason": "Dossier allocataire inexistant. Le document ne peut être édité.",
+    "message": "Dossier allocataire inexistant. Le document ne peut être édité."
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nomUsage=LEGRAND' -d 'nomNaissance=LEROI' -d 'prenoms[]=ARTHUR' -d 'anneeDateDeNaissance=1995' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=22' -d 'codeInseeLieuDeNaissance=75056' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
+  ```
+
+  </p>
+  </details>
 * [fake_france_connect_cnaf.yml](fake_france_connect_cnaf.yml)
 
   Status `200`

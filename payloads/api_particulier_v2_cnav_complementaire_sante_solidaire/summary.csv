@@ -93,6 +93,19 @@ Ce cas permet de tester :
   ""dateDebut"": ""2024-08-25"",
   ""dateFin"": ""2025-08-25""
 }"
+,"## Dossier complémentaire inexistant - 404
+
+Ce cas permet de tester :
+- [Param. appel] Nom d'usage
+- [Param. appel] Nom de naissance
+- [Param. appel] Un prénom
+- [Param. appel] Date de naissance (jour,mois,année)
+- [Param. appel] sexe masculin
+- [Réponse] Dossier complémentaire inexistant","{""nomUsage"":""LEGRAND"",""nomNaissance"":""LEROI"",""prenoms"":[""ARTHUR""],""anneeDateDeNaissance"":1995,""moisDateDeNaissance"":12,""jourDateDeNaissance"":22,""codeInseeLieuDeNaissance"":""75056"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",404,"{ 
+  ""error"": ""not_found"",
+  ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
+  ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
+}"
 ,"Cas de test pour CSS avec jeton FranceConnect.
 Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_css.yml).
 L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":[""Georges""],""nomNaissance"":""CNAF"",""anneeDateDeNaissance"":2002,""moisDateDeNaissance"":1,""jourDateDeNaissance"":1,""sexe"":""M"",""codeInseeLieuDeNaissance"":""75002"",""codePaysLieuDeNaissance"":""99100""}",200,"{
