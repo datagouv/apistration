@@ -1,4 +1,4 @@
- ---
+---
 description: |-
   ## Erreur du fournisseur - 503
   
@@ -23,7 +23,12 @@ params:
 status: 503
 payload: |-
   { 
-    "error": "network_error",
-    "reason": "timeout of 10000 ms exceeded",
-    "message": "Une erreur est survenue lors de l'appel au fournisseur de donnée"
+    "code": "37999",
+    "title": "Erreur inconnue du fournisseur de données",
+    "detail": "La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation.",
+    "source": null,
+    "meta": 
+    {
+      "provider": "CNAV"
+    }
   }

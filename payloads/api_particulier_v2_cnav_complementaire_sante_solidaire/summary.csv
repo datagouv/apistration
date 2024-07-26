@@ -106,6 +106,24 @@ Ce cas permet de tester :
   ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
   ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
 }"
+,"## Erreur du fournisseur - 503
+
+Ce cas permet de tester :
+- [Param. appel] Nom d'usage
+- [Param. appel] Nom de naissance
+- [Param. appel] Un prénom
+- [Param. appel] Date de naissance (jour,mois,année)
+- [Param. appel] sexe masculin
+- [Réponse] ","{""nomUsage"":""LAGRANDE"",""nomNaissance"":""LAREINE"",""prenoms"":[""ELIZABETH""],""anneeDateDeNaissance"":1988,""moisDateDeNaissance"":4,""jourDateDeNaissance"":2,""codeInseeLieuDeNaissance"":""75056"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",503,"{ 
+  ""code"": ""37999"",
+  ""title"": ""Erreur inconnue du fournisseur de données"",
+  ""detail"": ""La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation."",
+  ""source"": null,
+  ""meta"": 
+  {
+    ""provider"": ""CNAV""
+  }
+}"
 ,"Cas de test pour CSS avec jeton FranceConnect.
 Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_css.yml).
 L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":[""Georges""],""nomNaissance"":""CNAF"",""anneeDateDeNaissance"":2002,""moisDateDeNaissance"":1,""jourDateDeNaissance"":1,""sexe"":""M"",""codeInseeLieuDeNaissance"":""75002"",""codePaysLieuDeNaissance"":""99100""}",200,"{

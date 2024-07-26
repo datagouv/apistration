@@ -575,6 +575,71 @@ Ce cas permet de tester :
 
   </p>
   </details>
+* [erreur_fournisseur_503.yml](erreur_fournisseur_503.yml)
+
+  Status `503`
+
+  ## Erreur du fournisseur - 503
+
+Ce cas permet de tester :
+- [Param. appel] Nom d'usage
+- [Param. appel] Nom de naissance
+- [Param. appel] Un prénom
+- [Param. appel] Date de naissance (jour,mois,année)
+- [Param. appel] sexe masculin
+- [Réponse] 
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomUsage": "LAGRANDE",
+    "nomNaissance": "LAREINE",
+    "prenoms": [
+      "ELIZABETH"
+    ],
+    "anneeDateDeNaissance": 1988,
+    "moisDateDeNaissance": 4,
+    "jourDateDeNaissance": 2,
+    "codeInseeLieuDeNaissance": "75056",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "F"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "code": "37999",
+    "title": "Erreur inconnue du fournisseur de données",
+    "detail": "La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation.",
+    "source": null,
+    "meta": {
+      "provider": "CNAV"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nomUsage=LAGRANDE' -d 'nomNaissance=LAREINE' -d 'prenoms[]=ELIZABETH' -d 'anneeDateDeNaissance=1988' -d 'moisDateDeNaissance=4' -d 'jourDateDeNaissance=2' -d 'codeInseeLieuDeNaissance=75056' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
+  ```
+
+  </p>
+  </details>
 * [fake_france_connect_cnaf.yml](fake_france_connect_cnaf.yml)
 
   Status `200`
