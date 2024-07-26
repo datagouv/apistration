@@ -17,7 +17,6 @@ params:
   anneeDateDeNaissance: 1966
   moisDateDeNaissance: 3
   jourDateDeNaissance: 5
-  codeInseeLieuDeNaissance: null
   codePaysLieuDeNaissance: '99216' #Bénéficiaire né à l'étranger
   sexe: 'F'
 status: 200

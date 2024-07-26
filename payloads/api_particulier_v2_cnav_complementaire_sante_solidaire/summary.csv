@@ -49,7 +49,7 @@ Ce cas permet de tester :
 - [Param. appel] Deux prénoms
 - [Param. appel] Date de naissance (jour,mois,année)
 - [Param. appel] sexe féminin
-- [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomUsage"":""PLUSSE"",""nomNaissance"":""GERVINAT"",""prenoms"":[""MADELEINE"",""LEA""],""anneeDateDeNaissance"":1976,""moisDateDeNaissance"":8,""jourDateDeNaissance"":24,""codeInseeLieuDeNaissance"":null,""codePaysLieuDeNaissance"":""99131"",""sexe"":""F""}",200,"{
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomUsage"":""PLUSSE"",""nomNaissance"":""GERVINAT"",""prenoms"":[""MADELEINE"",""LEA""],""anneeDateDeNaissance"":1976,""moisDateDeNaissance"":8,""jourDateDeNaissance"":24,""codePaysLieuDeNaissance"":""99131"",""sexe"":""F""}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2024-10-01"",
   ""dateFin"": ""2025-10-01""
@@ -62,7 +62,7 @@ Ce cas permet de tester :
 - [Param. appel] Un prénom
 - [Param. appel] Date de naissance (jour,mois,année)
 - [Param. appel] sexe féminin
-- [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomUsage"":""MIREL"",""nomNaissance"":""VAUBAN"",""prenoms"":[""VICTOIRE""],""anneeDateDeNaissance"":1966,""moisDateDeNaissance"":3,""jourDateDeNaissance"":5,""codeInseeLieuDeNaissance"":null,""codePaysLieuDeNaissance"":""99216"",""sexe"":""F""}",200,"{
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomUsage"":""MIREL"",""nomNaissance"":""VAUBAN"",""prenoms"":[""VICTOIRE""],""anneeDateDeNaissance"":1966,""moisDateDeNaissance"":3,""jourDateDeNaissance"":5,""codePaysLieuDeNaissance"":""99216"",""sexe"":""F""}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2023-08-25"",
   ""dateFin"": ""2024-08-25""
