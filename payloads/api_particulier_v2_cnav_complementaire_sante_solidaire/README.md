@@ -294,7 +294,6 @@ Ce cas permet de tester :
     "anneeDateDeNaissance": 1976,
     "moisDateDeNaissance": 8,
     "jourDateDeNaissance": 24,
-    "codeInseeLieuDeNaissance": null,
     "codePaysLieuDeNaissance": "99131",
     "sexe": "F"
   }
@@ -322,7 +321,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=PLUSSE' -d 'nomNaissance=GERVINAT' -d 'prenoms[]=MADELEINE' -d 'prenoms[]=LEA' -d 'anneeDateDeNaissance=1976' -d 'moisDateDeNaissance=8' -d 'jourDateDeNaissance=24' -d 'codeInseeLieuDeNaissance=' -d 'codePaysLieuDeNaissance=99131' -d 'sexe=F' \
+    -G -d 'nomUsage=PLUSSE' -d 'nomNaissance=GERVINAT' -d 'prenoms[]=MADELEINE' -d 'prenoms[]=LEA' -d 'anneeDateDeNaissance=1976' -d 'moisDateDeNaissance=8' -d 'jourDateDeNaissance=24' -d 'codePaysLieuDeNaissance=99131' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 
@@ -355,7 +354,6 @@ Ce cas permet de tester :
     "anneeDateDeNaissance": 1966,
     "moisDateDeNaissance": 3,
     "jourDateDeNaissance": 5,
-    "codeInseeLieuDeNaissance": null,
     "codePaysLieuDeNaissance": "99216",
     "sexe": "F"
   }
@@ -383,7 +381,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=MIREL' -d 'nomNaissance=VAUBAN' -d 'prenoms[]=VICTOIRE' -d 'anneeDateDeNaissance=1966' -d 'moisDateDeNaissance=3' -d 'jourDateDeNaissance=5' -d 'codeInseeLieuDeNaissance=' -d 'codePaysLieuDeNaissance=99216' -d 'sexe=F' \
+    -G -d 'nomUsage=MIREL' -d 'nomNaissance=VAUBAN' -d 'prenoms[]=VICTOIRE' -d 'anneeDateDeNaissance=1966' -d 'moisDateDeNaissance=3' -d 'jourDateDeNaissance=5' -d 'codePaysLieuDeNaissance=99216' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 
