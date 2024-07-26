@@ -1,0 +1,33 @@
+ 
+ ---
+description: |-
+  ## Non-bénéficiaire homme - 200
+  
+  Ce cas permet de tester :
+  - [Param. appel] Nom d'usage
+  - [Param. appel] Nom de naissance
+  - [Param. appel] 2 prénoms
+  - [Param. appel] Date de naissance (jour,mois,année)
+  - [Param. appel] sexe masculin
+  - [Réponse] Non bénéficiaire de la complémentaire santé solidaire
+params:
+  nomUsage: 'VERTIN'
+  nomNaissance: 'HUBOT'
+  prenoms:
+    - 'PIERRE-MARIE'
+    - 'JEREMY'
+  anneeDateDeNaissance: 1968
+  moisDateDeNaissance: 11
+  jourDateDeNaissance: 15
+  codeInseeLieuDeNaissance: '33063'
+  codePaysLieuDeNaissance: '99100' #Bénéficiaire né en France
+  sexe: 'M'
+status: 200
+payload: |-
+  {
+    "status": "non_beneficiaire_css",
+    "dateDebut": "null",
+    "dateFin": "null"
+  }
+  
+  
