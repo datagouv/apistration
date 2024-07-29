@@ -93,6 +93,19 @@ Ce cas permet de tester :
   ""dateDebut"": ""2024-08-25"",
   ""dateFin"": ""2025-08-25""
 }"
+,"## Bénéficiaire sans participation financière homme - 200
+
+Ce cas permet de tester :
+- [Param. appel] Nom d'usage
+- [Param. appel] Nom de naissance
+- [Param. appel] 1 prénom
+- [Param. appel] Date de naissance (jour,mois,année)
+- [Param. appel] sexe masculin
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomUsage"":""HUSTER"",""nomNaissance"":""BOISSON"",""prenoms"":[""FRANCIS""],""anneeDateDeNaissance"":1978,""moisDateDeNaissance"":4,""jourDateDeNaissance"":4,""codeInseeLieuDeNaissance"":""44109"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",200,"{
+  ""status"": ""beneficiaire_sans_participation_financiere"",
+  ""dateDebut"": ""2024-08-25"",
+  ""dateFin"": ""2025-08-25""
+}"
 ,"## Dossier complémentaire inexistant - 404
 
 Ce cas permet de tester :
