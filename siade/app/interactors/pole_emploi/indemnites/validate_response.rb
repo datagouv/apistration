@@ -12,4 +12,8 @@ class PoleEmploi::Indemnites::ValidateResponse < ValidateResponse
   def no_paiements?
     json_body['listePaiement'].blank?
   end
+
+  def resource_not_found!
+    fail_with_error!(build_error(::NotFoundError, 'Aucune situation France Travail n\'a pu être trouvée avec les critères de recherche fournis'))
+  end
 end
