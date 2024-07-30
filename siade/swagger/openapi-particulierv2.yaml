@@ -261,6 +261,22 @@ paths:
           description: Dossier non trouvé
           content:
             application/json:
+              examples:
+                entite_non_trouvee_37003:
+                  value:
+                    errors:
+                    - code: '37003'
+                      title: Entité non trouvée
+                      detail: Dossier allocataire inexistant. Le document ne peut
+                        être édité. Veuillez vérifier que l'identifiant correspond
+                        au périmètre couvert par l'API.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Entité non trouvée
+                  description: Dossier allocataire inexistant. Le document ne peut
+                    être édité. Veuillez vérifier que l'identifiant correspond au
+                    périmètre couvert par l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -525,6 +541,22 @@ paths:
           description: Dossier non trouvé
           content:
             application/json:
+              examples:
+                entite_non_trouvee_37003:
+                  value:
+                    errors:
+                    - code: '37003'
+                      title: Entité non trouvée
+                      detail: Dossier allocataire inexistant. Le document ne peut
+                        être édité. Veuillez vérifier que l'identifiant correspond
+                        au périmètre couvert par l'API.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Entité non trouvée
+                  description: Dossier allocataire inexistant. Le document ne peut
+                    être édité. Veuillez vérifier que l'identifiant correspond au
+                    périmètre couvert par l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -802,6 +834,22 @@ paths:
             édité.
           content:
             application/json:
+              examples:
+                entite_non_trouvee_37003:
+                  value:
+                    errors:
+                    - code: '37003'
+                      title: Entité non trouvée
+                      detail: Dossier allocataire inexistant. Le document ne peut
+                        être édité. Veuillez vérifier que l'identifiant correspond
+                        au périmètre couvert par l'API.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Entité non trouvée
+                  description: Dossier allocataire inexistant. Le document ne peut
+                    être édité. Veuillez vérifier que l'identifiant correspond au
+                    périmètre couvert par l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -1075,6 +1123,22 @@ paths:
           description: Dossier non trouvé
           content:
             application/json:
+              examples:
+                entite_non_trouvee_37003:
+                  value:
+                    errors:
+                    - code: '37003'
+                      title: Entité non trouvée
+                      detail: Dossier allocataire inexistant. Le document ne peut
+                        être édité. Veuillez vérifier que l'identifiant correspond
+                        au périmètre couvert par l'API.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Entité non trouvée
+                  description: Dossier allocataire inexistant. Le document ne peut
+                    être édité. Veuillez vérifier que l'identifiant correspond au
+                    périmètre couvert par l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -1885,6 +1949,22 @@ paths:
           description: Dossier non trouvé
           content:
             application/json:
+              examples:
+                entite_non_trouvee_37003:
+                  value:
+                    errors:
+                    - code: '37003'
+                      title: Entité non trouvée
+                      detail: Dossier allocataire inexistant. Le document ne peut
+                        être édité. Veuillez vérifier que l'identifiant correspond
+                        au périmètre couvert par l'API.
+                      source:
+                      meta:
+                        provider: CNAV
+                  summary: Entité non trouvée
+                  description: Dossier allocataire inexistant. Le document ne peut
+                    être édité. Veuillez vérifier que l'identifiant correspond au
+                    périmètre couvert par l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -2144,6 +2224,22 @@ paths:
           description: Non trouvée
           content:
             application/json:
+              examples:
+                entite_non_trouvee_30003:
+                  value:
+                    errors:
+                    - code: '30003'
+                      title: Entité non trouvée
+                      detail: Aucun élève n'a pu être trouvé avec les critères de
+                        recherche fournis Veuillez vérifier que l'identifiant correspond
+                        au périmètre couvert par l'API.
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: Entité non trouvée
+                  description: Aucun élève n'a pu être trouvé avec les critères de
+                    recherche fournis Veuillez vérifier que l'identifiant correspond
+                    au périmètre couvert par l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -2293,6 +2389,22 @@ paths:
           description: Non trouvée
           content:
             application/json:
+              examples:
+                entite_non_trouvee_24003:
+                  value:
+                    errors:
+                    - code: '24003'
+                      title: Entité non trouvée
+                      detail: Aucune situation France Travail n'a pu être trouvée
+                        avec les critères de recherche fournis Veuillez vérifier que
+                        l'identifiant correspond au périmètre couvert par l'API.
+                      source:
+                      meta:
+                        provider: France Travail
+                  summary: Entité non trouvée
+                  description: Aucune situation France Travail n'a pu être trouvée
+                    avec les critères de recherche fournis Veuillez vérifier que l'identifiant
+                    correspond au périmètre couvert par l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':

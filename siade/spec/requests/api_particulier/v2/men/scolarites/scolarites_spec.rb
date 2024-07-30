@@ -100,6 +100,8 @@ RSpec.describe 'MEN: Scolarites', api: :particulierv2, type: %i[request swagger]
           response '404', 'Non trouvée', vcr: { cassette_name: 'men/scolarites/not_found' } do
             let(:sexe) { 'f' }
 
+            build_rswag_example(NotFoundError.new('MEN', 'Aucun élève n\'a pu être trouvé avec les critères de recherche fournis'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

@@ -75,6 +75,8 @@ RSpec.describe 'MEN: Scolarites', api: :particulierv2, type: %i[request swagger]
           response '404', 'Non trouvée' do
             let(:sexe) { 'f' }
 
+            build_rswag_example(NotFoundError.new('France Travail', 'Aucune situation France Travail n\'a pu être trouvée avec les critères de recherche fournis'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

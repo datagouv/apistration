@@ -102,6 +102,8 @@ RSpec.describe "CNAV: Prime d'activité", api: :particulierv2, type: %i[request 
 
             let(:codePaysLieuDeNaissance) { '99623' }
 
+            build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

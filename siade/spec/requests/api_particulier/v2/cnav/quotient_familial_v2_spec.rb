@@ -143,7 +143,7 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
                   stub_cnav_404('quotient_familial_v2', nil)
                 end
 
-                build_rswag_example(NotFoundError.new('CNAV & MSA'))
+                build_rswag_example(NotFoundError.new('CNAV & MSA', "L'allocataire que vous cherchez n'a pas été reconnu"))
 
                 schema '$ref' => '#/components/schemas/Error'
 
@@ -155,7 +155,7 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
                   stub_cnav_404('quotient_familial_v2', '00171001')
                 end
 
-                build_rswag_example(NotFoundError.new('CNAV & MSA'))
+                build_rswag_example(NotFoundError.new('CNAV & MSA', "Le dossier allocataire n'a pas été trouvé auprès de la MSA."))
 
                 schema '$ref' => '#/components/schemas/Error'
 
@@ -167,7 +167,7 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
                   stub_cnav_404('quotient_familial_v2', '00810011')
                 end
 
-                build_rswag_example(NotFoundError.new('CNAV & MSA'))
+                build_rswag_example(NotFoundError.new('CNAV & MSA', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF."))
 
                 schema '$ref' => '#/components/schemas/Error'
 

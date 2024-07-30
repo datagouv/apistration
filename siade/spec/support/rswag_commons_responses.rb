@@ -362,10 +362,23 @@ module RSWagCommonsResponses
   # rubocop:enable RSpec/VerifiedDoubles
 
   def build_rswag_example(error, key = nil)
-    example 'application/json', key || :"#{error.title.parameterize.underscore}_#{error.code}", {
-      errors: [
-        error.to_h
-      ]
-    }, error.title, error.detail
+    payload = if metadata[:api] == :particulier
+                {
+                  error: error.kind,
+                  reason: error.detail,
+                  message: error.detail
+                }
+              else
+                {
+                  errors: [
+                    error.to_h
+                  ]
+                }
+              end
+
+    example 'application/json', key || :"#{error.title.parameterize.underscore}_#{error.code}",
+      payload,
+      error.title,
+      error.detail
   end
 end
