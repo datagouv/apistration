@@ -44,6 +44,8 @@ RSpec.describe 'INSEE: Unités légales', api: :entreprise, type: %i[request swa
           response '404', 'Non trouvée', vcr: { cassette_name: 'insee/siren/non_existent_with_token' } do
             let(:siren) { non_existent_siren }
 
+            build_rswag_example(NotFoundError.new('INSEE'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

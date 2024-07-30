@@ -51,6 +51,8 @@ RSpec.describe 'INPI: Modeles', api: :entreprise, type: %i[request swagger] do
           response '404', 'Modèles non trouvés', vcr: { cassette_name: 'inpi/modeles/not_found_siren' } do
             let(:siren) { not_found_siren(:inpi) }
 
+            build_rswag_example(NotFoundError.new('INPI'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

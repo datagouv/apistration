@@ -47,6 +47,8 @@ RSpec.describe 'EuropeanCommission: Vies', api: :entreprise, type: %i[request sw
           let(:body) { read_payload_file('vies/invalid.json') }
 
           response '404', 'Non trouvée' do
+            build_rswag_example(NotFoundError.new('Commission Européenne'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

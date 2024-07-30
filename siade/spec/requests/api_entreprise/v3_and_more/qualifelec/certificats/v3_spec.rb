@@ -58,6 +58,8 @@ RSpec.describe 'Qualifelec: Certificats', api: :entreprise, type: %i[request swa
 
             let(:siret) { not_found_siret }
 
+            build_rswag_example(NotFoundError.new('Qualifelec'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

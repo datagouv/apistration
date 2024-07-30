@@ -48,6 +48,8 @@ RSpec.describe 'FNTP: Carte professionnelle Travaux Publics', api: :entreprise, 
           response '404', 'Non trouvée', vcr: { cassette_name: 'fntp/carte_professionnelle_travaux_publics/not_found_siren' } do
             let(:siren) { not_found_siren }
 
+            build_rswag_example(NotFoundError.new('FNTP'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

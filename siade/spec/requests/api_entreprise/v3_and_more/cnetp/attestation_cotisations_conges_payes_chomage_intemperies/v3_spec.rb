@@ -48,6 +48,8 @@ RSpec.describe 'CNETP: Attestations cotisations congés payés et aux chômage i
           response '404', 'Non trouvé', vcr: { cassette_name: 'cnetp/attestation_cotisations_conges_payes_chomage_intemperies/not_found_siren' } do
             let(:siren) { not_found_siren }
 
+            build_rswag_example(NotFoundError.new('CNETP'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

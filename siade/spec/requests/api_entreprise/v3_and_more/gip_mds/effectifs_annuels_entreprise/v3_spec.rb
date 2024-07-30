@@ -69,6 +69,8 @@ RSpec.describe 'GIP-MDS: effectifs annuel unité légale', api: :entreprise, typ
               mock_gip_mds_not_found
             end
 
+            build_rswag_example(NotFoundError.new('GIP-MDS'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

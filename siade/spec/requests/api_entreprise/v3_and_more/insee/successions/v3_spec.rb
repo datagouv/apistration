@@ -50,6 +50,8 @@ RSpec.describe 'INSEE: Successions', api: :entreprise, type: %i[request swagger]
               stub_insee_successions_not_found(siret:)
             end
 
+            build_rswag_example(NotFoundError.new('INSEE'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

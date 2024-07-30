@@ -42,6 +42,8 @@ RSpec.describe 'INPI: Actes', api: :entreprise, type: %i[request swagger] do
           response '404', 'Actes non trouvés', vcr: { cassette_name: 'inpi/actes/with_siren_not_found' } do
             let(:siren) { not_found_siren(:inpi) }
 
+            build_rswag_example(NotFoundError.new('INPI'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

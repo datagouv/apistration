@@ -49,6 +49,8 @@ RSpec.describe 'Qualibat : CertificationsBatiment', api: :entreprise, type: %i[r
           response '404', 'Certification non trouvée', vcr: { cassette_name: 'qualibat/certifications_batiment/not_found_siret_2' } do
             let(:siret) { not_found_siret(:qualibat) }
 
+            build_rswag_example(NotFoundError.new('Qualibat'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

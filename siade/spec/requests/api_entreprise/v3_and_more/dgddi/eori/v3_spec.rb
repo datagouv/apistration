@@ -38,6 +38,8 @@ RSpec.describe 'Douanes: Immatriculations EORI', api: :entreprise, type: %i[requ
           response '404', 'Non trouvée', vcr: { cassette_name: 'dgddi/eori/non_existing_eori' } do
             let(:siret_or_eori) { non_existing_eori }
 
+            build_rswag_example(NotFoundError.new('DGDDI'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

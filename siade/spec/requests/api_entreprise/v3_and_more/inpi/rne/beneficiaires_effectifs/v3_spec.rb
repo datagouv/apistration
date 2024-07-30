@@ -59,6 +59,8 @@ RSpec.describe 'INPI RNE: Bénéficiaires effectifs', api: :entreprise, type: %i
           response '404', 'Bénéficiaires effectifs non trouvés' do
             let(:siren) { non_existent_siren }
 
+            build_rswag_example(NotFoundError.new('INPI - RNE'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

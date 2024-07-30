@@ -43,6 +43,8 @@ RSpec.describe 'FabriqueNumeriqueMinisteresSociaux: Conventionscollectives', api
           response '404', 'Non trouvée', vcr: { cassette_name: 'fabrique_numerique_ministeres_sociaux/conventions_collectives/not_found_siret' } do
             let(:siret) { not_found_siret(:conventions_collectives) }
 
+            build_rswag_example(NotFoundError.new('Fabrique numérique des Ministères Sociaux'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

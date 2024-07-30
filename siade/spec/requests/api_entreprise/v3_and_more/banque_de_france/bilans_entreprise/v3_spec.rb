@@ -60,6 +60,8 @@ RSpec.describe 'Banque de France: Bilans', api: :entreprise, type: %i[request sw
           response '404', 'Non trouvée', vcr: { cassette_name: 'banque_de_france/bilans_entreprises/not_found_siren' } do
             let(:siren) { non_existent_siren }
 
+            build_rswag_example(NotFoundError.new('Banque de France'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

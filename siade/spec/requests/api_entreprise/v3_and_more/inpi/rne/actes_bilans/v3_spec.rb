@@ -46,6 +46,8 @@ RSpec.describe 'INPI::RNE: Actesbilans', api: :entreprise, type: %i[request swag
           response '404', 'Non trouvée', vcr: { cassette_name: 'inpi/rne/actes_bilans/not_found_siren' } do
             let(:siren) { non_existent_siren }
 
+            build_rswag_example(NotFoundError.new('INPI - RNE'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

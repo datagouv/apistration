@@ -46,6 +46,8 @@ RSpec.describe 'CARIF-OREF: Certifications Qualiopi France Compétences', api: :
           response '404', 'Non trouvée', vcr: { cassette_name: 'carif_oref/certifications_qualiopi_france_competences/no_data' } do
             let(:siret) { not_found_siret }
 
+            build_rswag_example(NotFoundError.new('CARIF-OREF'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

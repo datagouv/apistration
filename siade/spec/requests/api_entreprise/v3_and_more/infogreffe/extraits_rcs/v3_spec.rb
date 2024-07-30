@@ -56,6 +56,8 @@ RSpec.describe 'Infogreffe: Extraitsrcs', api: :entreprise, type: %i[request swa
           response '404', 'Non trouvée', vcr: { cassette_name: 'infogreffe/with_siren_not_found' } do
             let(:siren) { not_found_siren(:extrait_rcs) }
 
+            build_rswag_example(NotFoundError.new('Infogreffe'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

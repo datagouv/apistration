@@ -49,6 +49,8 @@ RSpec.describe 'MSA: Conformitescotisations', api: :entreprise, type: %i[request
 
             let(:siret) { not_found_siret(:msa) }
 
+            build_rswag_example(NotFoundError.new('MSA'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

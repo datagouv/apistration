@@ -42,6 +42,8 @@ RSpec.describe 'PROBTP: Conformites Cotisations Retraite', api: :entreprise, typ
           response '404', 'Non trouvée', vcr: { cassette_name: 'probtp/conformites_cotisations_retraite/with_not_found_siret' } do
             let(:siret) { not_found_siret(:probtp) }
 
+            build_rswag_example(NotFoundError.new('ProBTP'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

@@ -71,6 +71,8 @@ RSpec.describe 'GIP-MDS: effectifs mensuels établissement', api: :entreprise, t
               mock_gip_mds_not_found
             end
 
+            build_rswag_example(NotFoundError.new('GIP-MDS'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

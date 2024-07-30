@@ -55,6 +55,8 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', api: :entreprise, ty
             )
           end
 
+          build_rswag_example(NotFoundError.new('DGFIP - Adélie'))
+
           schema '$ref' => '#/components/schemas/Error'
 
           run_test!

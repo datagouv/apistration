@@ -55,6 +55,8 @@ RSpec.describe 'MI: Documents Associations', api: :entreprise, type: %i[request 
           response '404', 'Association not found', vcr: { cassette_name: 'mi/associations/with_rna_not_found' } do
             let(:siret_or_rna) { non_existing_rna_id }
 
+            build_rswag_example(NotFoundError.new('MI'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

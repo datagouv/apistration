@@ -50,6 +50,8 @@ RSpec.describe 'INPI: Latest Brevets', api: :entreprise, type: %i[request swagge
           response '404', 'Brevets non trouvés', vcr: { cassette_name: 'inpi/brevets/with_siren_not_found' } do
             let(:siren) { not_found_siren(:inpi) }
 
+            build_rswag_example(NotFoundError.new('INPI'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

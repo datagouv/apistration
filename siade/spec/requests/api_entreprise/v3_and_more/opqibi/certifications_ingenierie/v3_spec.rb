@@ -42,6 +42,8 @@ RSpec.describe 'OPQIBI: Certificationsingenierie', api: :entreprise, type: %i[re
           response '404', 'Non trouvée', vcr: { cassette_name: 'opqibi/certifications_ingenierie/not_found_siren' } do
             let(:siren) { not_found_siren }
 
+            build_rswag_example(NotFoundError.new('OPQIBI'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

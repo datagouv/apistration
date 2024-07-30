@@ -44,6 +44,8 @@ RSpec.describe 'RNM: Entreprises artisanales', api: :entreprise, type: %i[reques
           response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'rnm_cma/not_found_siren' } do
             let(:siren) { not_found_siren(:rnm_cma) }
 
+            build_rswag_example(NotFoundError.new('RNM'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

@@ -58,6 +58,8 @@ RSpec.describe 'ADEME: Certification RGE', api: :entreprise, type: %i[request sw
           response '404', 'Non trouvée', vcr: { cassette_name: 'ademe/certificats_rge/not_found_siret' } do
             let(:siret) { not_found_siret(:rge_ademe) }
 
+            build_rswag_example(NotFoundError.new('ADEME'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

@@ -42,9 +42,10 @@ RSpec.describe 'Infogreffe: Mandataires sociaux', api: :entreprise, type: %i[req
 
           unprocessable_entity_error_request(:siren)
 
-          response '404', 'Entreprise non trouvée',
-            vcr: { cassette_name: 'infogreffe/with_siren_not_found' } do
+          response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'infogreffe/with_siren_not_found' } do
             let(:siren) { not_found_siren(:extrait_rcs) }
+
+            build_rswag_example(NotFoundError.new('Infogreffe'))
 
             schema '$ref' => '#/components/schemas/Error'
 

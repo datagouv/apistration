@@ -56,6 +56,8 @@ RSpec.describe 'URSSAF: Attestation de vigilance', api: :entreprise, type: %i[re
           response '404', 'Entreprise non trouvée', vcr: { cassette_name: 'acoss/with_non_existent_siren', match_requests_on: strict_match_vcr_requests_on_attributes.excluding(:body_sanitized) } do
             let(:siren) { not_found_siren }
 
+            build_rswag_example(NotFoundError.new('ACOSS'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!

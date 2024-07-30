@@ -42,6 +42,8 @@ RSpec.describe 'DGFIP: chiffres d\'affaires', api: :entreprise, type: %i[request
           response '404', 'Non trouvée', vcr: { cassette_name: 'dgfip/chiffres_affaires/not_found' } do
             let(:siret) { not_found_siret }
 
+            build_rswag_example(NotFoundError.new('DGFIP - Adélie'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!
