@@ -2510,9 +2510,9 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/carif_oref/etablissements/13002526500013/certifications_qualiopi_france_competences?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/cibtp/etablissements/{siret}/attestations_cotisations_chomage_intemperies":
     get:
-      summary: Attestations Cotisations Chomage Intemperies
+      summary: Certificat cotisations CIBTP
       tags:
-      - Certifications professionelles
+      - Attestations sociales et fiscales
       parameters:
       - name: context
         in: query
@@ -2551,8 +2551,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Retourne le certificat attestant le respect des obligations relatives
-        aux conges payes et chomage-intemperies pour cet établissement.
+      description: Certificat indiquant qu'une entreprise du BTP affiliée à la caisse
+        CIBTP est en règle de ses cotisations congés payés et au chômage-intempéries.
       responses:
         '401':
           description: Non autorisé
@@ -2683,17 +2683,18 @@ paths:
                     type: object
                     properties:
                       document_url:
-                        title: URL de téléchargement
+                        title: Lien vers le certificat CIBTP
                         type: string
                         nullable: true
                         description: Ce lien délivre l'attestation au format PDF.
+                          Ce document est automatiquement supprimé après 24h.
                         example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestations_cotisations_chomage_intemperies_cibtp.pdf
                       expires_in:
-                        title: Nombre de secondes avant expiration du document référencé
-                          dans 'document_url'
-                        description: 'Il s''agit d''une expiration technique: cette
-                          valeur n''a aucun lien avec les dates de debut ou de fin
-                          de validité.'
+                        title: Expiration du lien
+                        description: Nombre de secondes avant expiration du document
+                          référencé dans 'document_url'. Il s'agit d'une expiration
+                          technique. Ce champ n'est pas une date de fin de validité
+                          de l'attestation
                         type: integer
                         nullable: true
                         example: 3600
@@ -2856,7 +2857,7 @@ paths:
             --url "https://entreprise.api.gouv.fr/v3/cibtp/etablissements/13002526500013/attestations_cotisations_chomage_intemperies?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/cnetp/unites_legales/{siren}/attestation_cotisations_conges_payes_chomage_intemperies":
     get:
-      summary: Attestation de cotisations congés payés & chômage-intempéries
+      summary: Certificat cotisations CNETP
       tags:
       - Attestations sociales et fiscales
       parameters:
@@ -2897,9 +2898,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Attestation de cotisations, délivrée par la Caisse nationale des
-        entrepreneurs de travaux publics (CNETP), attestant le respect des obligations
-        relatives aux congés payés et au chômage-intempéries.
+      description: Certificat indiquant qu'une entreprise du BTP affiliée à la caisse
+        CNETP est en règle de ses cotisations congés payés et au chômage-intempéries.
       responses:
         '401':
           description: Non autorisé
@@ -3031,10 +3031,10 @@ paths:
                     properties:
                       document_url:
                         type: string
-                        title: Lien vers l'attestation de cotisation retraite ProBTP
-                        description: Ce document est automatiquement supprimé au bout
-                          de 3 mois.
-                        example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_cotisation_retraite_probtp.pdf
+                        title: Lien vers l'attestation de cotisations
+                        description: Ce lien délivre l'attestation au format PDF.
+                          Ce document est automatiquement supprimé au bout de 24h.
+                        example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-certificat_cnetp.pdf
                       expires_in:
                         type: integer
                         example: 7889238

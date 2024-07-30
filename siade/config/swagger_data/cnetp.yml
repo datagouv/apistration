@@ -1,10 +1,10 @@
 cnetp:
   attestation_cotisations_conges_payes_chomage_intemperies:
-    title: "Attestation de cotisations congés payés & chômage-intempéries"
-    description: "Attestation de cotisations, délivrée par la Caisse nationale des entrepreneurs de travaux publics (CNETP), attestant le respect des obligations relatives aux congés payés et au chômage-intempéries."
+    title: "Certificat cotisations CNETP"
+    description: "Certificat indiquant qu'une entreprise du BTP affiliée à la caisse CNETP est en règle de ses cotisations congés payés et au chômage-intempéries."
     tags:
       - "Attestations sociales et fiscales"
     document_url_properties:
       title: "Lien vers l'attestation de cotisations"
-      description: "Ce document est automatiquement supprimé au bout de 3 mois."
+      description: "Ce lien délivre l'attestation au format PDF. Ce document est automatiquement supprimé au bout de 24h."
       example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-certificat_cnetp.pdf"

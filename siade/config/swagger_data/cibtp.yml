@@ -1,19 +1,19 @@
 cibtp:
   attestations_cotisations_chomage_intemperies:
-    title: "Attestations Cotisations Chomage Intemperies"
-    description: "Retourne le certificat attestant le respect des obligations relatives aux conges payes et chomage-intemperies pour cet établissement."
+    title: "Certificat cotisations CIBTP"
+    description: "Certificat indiquant qu'une entreprise du BTP affiliée à la caisse CIBTP est en règle de ses cotisations congés payés et au chômage-intempéries."
     tags:
-      - "Certifications professionelles"
+      - "Attestations sociales et fiscales"
     attributes:
       document_url:
-        title: "URL de téléchargement"
+        title: "Lien vers le certificat CIBTP"
         type: 'string'
         nullable: true
-        description: "Ce lien délivre l'attestation au format PDF."
+        description: "Ce lien délivre l'attestation au format PDF. Ce document est automatiquement supprimé après 24h."
         example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestations_cotisations_chomage_intemperies_cibtp.pdf"
       expires_in:
-        title: "Nombre de secondes avant expiration du document référencé dans 'document_url'"
-        description: "Il s'agit d'une expiration technique: cette valeur n'a aucun lien avec les dates de debut ou de fin de validité."
+        title: "Expiration du lien"
+        description: "Nombre de secondes avant expiration du document référencé dans 'document_url'. Il s'agit d'une expiration technique. Ce champ n'est pas une date de fin de validité de l'attestation"
         type: 'integer'
         nullable: true
         example: 3600

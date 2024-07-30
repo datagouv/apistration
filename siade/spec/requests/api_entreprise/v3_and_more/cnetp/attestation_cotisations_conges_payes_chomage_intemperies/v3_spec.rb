@@ -25,9 +25,7 @@ RSpec.describe 'CNETP: Attestations cotisations congés payés et aux chômage i
         response '200', 'Certificat trouvé', vcr: { cassette_name: 'cnetp/attestation_cotisations_conges_payes_chomage_intemperies/valid_siren' } do
           description SwaggerData.get('cnetp.attestation_cotisations_conges_payes_chomage_intemperies.description')
 
-          schema build_rswag_document_response(
-            document_url_properties: SwaggerData.get('probtp.attestation_cotisation_retraite.document_url_properties')
-          )
+          schema build_rswag_document_response(document_url_properties: SwaggerData.get('cnetp.attestation_cotisations_conges_payes_chomage_intemperies.document_url_properties'))
 
           rate_limit_headers
 
