@@ -24,7 +24,7 @@ class CNAV::QuotientFamilialV2::ValidateResponse < ValidateResponse
   def not_found_message
     return "Le dossier allocataire n'a pas été trouvé auprès de la CNAF." if regime == 'CNAF'
     return "Le dossier allocataire n'a pas été trouvé auprès de la MSA." if regime == 'MSA'
-    return "L'allocataire que vous cherchez n'a pas été reconnu" if regime == 'SNGI'
+    return "L'allocataire que vous cherchez n'a pas été reconnu." if regime == 'SNGI'
 
     'Dossier allocataire inexistant. Le document ne peut être édité.'
   end

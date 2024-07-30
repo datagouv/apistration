@@ -3341,13 +3341,13 @@ components:
       properties:
         error:
           type: string
-          example: 
+          example:
         reason:
           type: string
-          example: 
+          example:
         message:
           type: string
-          example: 
+          example:
   securitySchemes:
     apiKey:
       type: apiKey

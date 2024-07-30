@@ -142,13 +142,13 @@ RSpec.describe MI::Associations::ValidateResponse, type: :validate_response do
       end
 
       context 'when param is siret_or_rna' do
-        its(:errors) { is_expected.to have_error("Le siret ou l'identifiant RNA indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.") }
+        its(:errors) { is_expected.to have_error("Le siret ou l'identifiant RNA indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel. Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API.") }
       end
 
       context 'when param is siren_or_rna' do
         let(:params) { { siren_or_rna: 'super siren' } }
 
-        its(:errors) { is_expected.to have_error("Le siren ou l'identifiant RNA indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel.") }
+        its(:errors) { is_expected.to have_error("Le siren ou l'identifiant RNA indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel. Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API.") }
       end
     end
   end

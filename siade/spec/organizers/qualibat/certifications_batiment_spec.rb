@@ -57,7 +57,7 @@ RSpec.describe QUALIBAT::CertificationsBatiment, :retriever do
         call_retriever
       end
 
-      its(:errors) { is_expected.to have_error('L\'identifiant indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel.') }
+      its(:errors) { is_expected.to have_error('L\'identifiant indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel. Veuillez vérifier que l\'identifiant correspond au périmètre couvert par l\'API.') }
     end
   end
 
@@ -103,7 +103,7 @@ RSpec.describe QUALIBAT::CertificationsBatiment, :retriever do
         call_retriever
       end
 
-      its(:errors) { is_expected.to have_error('L\'identifiant indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel.') }
+      its(:errors) { is_expected.to have_error('L\'identifiant indiqué n\'existe pas, n\'est pas connu ou ne comporte aucune information pour cet appel. Veuillez vérifier que l\'identifiant correspond au périmètre couvert par l\'API.') }
     end
   end
 end
