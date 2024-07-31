@@ -186,7 +186,7 @@
 
 - name: "CIBTP Attestations Cotisations Chomage Intemperies"
   api: 'entreprise'
-  path: '/v3/cibtp/etablissements/81125785600021/attestations_cotisations_chomage_intemperies'
+  path: '/v3/cibtp/etablissements/81125785600021/attestation_cotisations_conges_payes_chomage_intemperies'
 
 # API Particulier v2
 

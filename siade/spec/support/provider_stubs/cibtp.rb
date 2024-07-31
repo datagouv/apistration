@@ -14,7 +14,7 @@ module ProviderStubs::CIBTP
       )
   end
 
-  def stub_cibtp_attestations_cotisations_chomage_intemperies_valid(siret:)
+  def stub_cibtp_attestation_cotisations_conges_payes_chomage_intemperies_valid(siret:)
     stub_request(:get, "#{Siade.credentials[:cibtp_domain]}/apiEntreprise/attestationMarche")
       .with(query: { siret: })
       .to_return(
@@ -24,7 +24,7 @@ module ProviderStubs::CIBTP
       )
   end
 
-  def stub_cibtp_attestations_cotisations_chomage_intemperies_conflict(siret:)
+  def stub_cibtp_attestation_cotisations_conges_payes_chomage_intemperies_conflict(siret:)
     stub_request(:get, "#{Siade.credentials[:cibtp_domain]}/apiEntreprise/attestationMarche")
       .with(query: { siret: })
       .to_return(

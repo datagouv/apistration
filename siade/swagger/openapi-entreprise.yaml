@@ -2508,7 +2508,7 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/carif_oref/etablissements/13002526500013/certifications_qualiopi_france_competences?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/cibtp/etablissements/{siret}/attestations_cotisations_chomage_intemperies":
+  "/v3/cibtp/etablissements/{siret}/attestation_cotisations_conges_payes_chomage_intemperies":
     get:
       summary: Certificat cotisations CIBTP
       tags:
@@ -2673,7 +2673,7 @@ paths:
                 type: integer
               description: La fin de la période courante (en format timestamp)
               example: 1637223155
-          x-operationId: api_entreprise_v3_cibtp_attestations_cotisations_chomage_intemperies
+          x-operationId: api_entreprise_v3_cibtp_attestation_cotisations_conges_payes_chomage_intemperies
           content:
             application/json:
               schema:
@@ -2688,7 +2688,7 @@ paths:
                         nullable: true
                         description: Ce lien délivre l'attestation au format PDF.
                           Ce document est automatiquement supprimé après 24h.
-                        example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestations_cotisations_chomage_intemperies_cibtp.pdf
+                        example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_cotisations_conges_payes_chomage_intemperies_cibtp.pdf
                       expires_in:
                         title: Expiration du lien
                         description: Nombre de secondes avant expiration du document
@@ -2854,7 +2854,7 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/cibtp/etablissements/13002526500013/attestations_cotisations_chomage_intemperies?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+            --url "https://entreprise.api.gouv.fr/v3/cibtp/etablissements/13002526500013/attestation_cotisations_conges_payes_chomage_intemperies?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/cnetp/unites_legales/{siren}/attestation_cotisations_conges_payes_chomage_intemperies":
     get:
       summary: Certificat cotisations CNETP
@@ -14934,7 +14934,6 @@ paths:
                                             via une personne morale.
                                           type: boolean
                                           example: true
-                                          nullable: true
                                         pleine_propriete:
                                           title: Proportion détenue en pleine propriété
                                           description: 'Pourcentage de parts directes
@@ -14945,7 +14944,6 @@ paths:
                                             différences ?</a>'
                                           type: number
                                           example: 42.0
-                                          nullable: true
                                         nue_propriete:
                                           title: Proportion détenue en nue-propriété
                                           description: 'Pourcentage de parts directes
@@ -14956,7 +14954,6 @@ paths:
                                             différences ?</a>'
                                           type: number
                                           example: 9.0
-                                          nullable: true
                                       required:
                                       - detention
                                       - pleine_propriete
@@ -14976,7 +14973,6 @@ paths:
                                             morale.
                                           type: boolean
                                           example: false
-                                          nullable: true
                                         par_indivision:
                                           title: Via une indivision
                                           description: 'Les parts indirectes peuvent
@@ -15001,7 +14997,6 @@ paths:
                                                 indivision.
                                               type: number
                                               example: 0.0
-                                              nullable: true
                                             pleine_propriete:
                                               title: Proportion détenue en pleine
                                                 propriété
@@ -15014,7 +15009,6 @@ paths:
                                                 quelles différences ?</a>'
                                               type: number
                                               example: 0.0
-                                              nullable: true
                                             nue_propriete:
                                               title: Proportion détenue en nue-propriété
                                               description: 'Pourcentage de parts indirectes
@@ -15026,7 +15020,6 @@ paths:
                                                 quelles différences ?</a>'
                                               type: number
                                               example: 0.0
-                                              nullable: true
                                           required:
                                           - total
                                           - pleine_propriete
@@ -15050,7 +15043,6 @@ paths:
                                                 ou de plusieurs personnes morales.
                                               type: number
                                               example: 0.0
-                                              nullable: true
                                             pleine_propriete:
                                               title: Proportion détenue en pleine
                                                 propriété
@@ -15063,7 +15055,6 @@ paths:
                                                 quelles différences ?</a>'
                                               type: number
                                               example: 0.0
-                                              nullable: true
                                             nue_propriete:
                                               title: Proportion détenue en nue-propriété
                                               description: 'Pourcentage de parts indirectes
@@ -15075,7 +15066,6 @@ paths:
                                                 quelles différences ?</a>'
                                               type: number
                                               example: 0.0
-                                              nullable: true
                                           required:
                                           - total
                                           - pleine_propriete

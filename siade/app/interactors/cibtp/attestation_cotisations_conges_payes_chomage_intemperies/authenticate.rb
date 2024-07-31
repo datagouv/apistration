@@ -1,4 +1,4 @@
-class CIBTP::AttestationsCotisationsChomageIntemperies::Authenticate < GetOAuth2Token
+class CIBTP::AttestationCotisationsCongesPayesChomageIntemperies::Authenticate < GetOAuth2Token
   def client_url
     "#{Siade.credentials[:cibtp_domain]}/apiEntreprise/token"
   end

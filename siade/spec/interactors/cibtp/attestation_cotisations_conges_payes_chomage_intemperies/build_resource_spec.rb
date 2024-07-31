@@ -1,4 +1,4 @@
-RSpec.describe CIBTP::AttestationsCotisationsChomageIntemperies::BuildResource, type: :build_resource do
+RSpec.describe CIBTP::AttestationCotisationsCongesPayesChomageIntemperies::BuildResource, type: :build_resource do
   subject { described_class.call(url: 'not.a.real/file/upload', params:) }
 
   let(:params) do

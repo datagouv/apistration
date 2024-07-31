@@ -17,7 +17,7 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
   end
 
   namespace :cibtp do
-    get 'etablissements/:siret/attestations_cotisations_chomage_intemperies' => '/api_entreprise/v3_and_more/cibtp/attestations_cotisations_chomage_intemperies#show'
+    get 'etablissements/:siret/attestation_cotisations_conges_payes_chomage_intemperies' => '/api_entreprise/v3_and_more/cibtp/attestation_cotisations_conges_payes_chomage_intemperies#show'
   end
 
   namespace :cnetp do

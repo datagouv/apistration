@@ -1,4 +1,4 @@
-class CIBTP::AttestationsCotisationsChomageIntemperies::ValidateResponse < ValidateResponse
+class CIBTP::AttestationCotisationsCongesPayesChomageIntemperies::ValidateResponse < ValidateResponse
   def call
     return if http_ok?
 

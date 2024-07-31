@@ -1,4 +1,4 @@
-RSpec.describe CIBTP::AttestationsCotisationsChomageIntemperies::Authenticate do
+RSpec.describe CIBTP::AttestationCotisationsCongesPayesChomageIntemperies::Authenticate do
   subject(:interactor) { described_class.call }
 
   context 'when authentication succeed' do

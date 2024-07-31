@@ -1,4 +1,4 @@
-RSpec.describe CIBTP::AttestationsCotisationsChomageIntemperies::ValidateResponse, type: :validate_response do
+RSpec.describe CIBTP::AttestationCotisationsCongesPayesChomageIntemperies::ValidateResponse, type: :validate_response do
   subject { described_class.call(response:, provider_name: 'CIBTP') }
 
   context 'with a http ok' do

@@ -1,4 +1,4 @@
-RSpec.describe CIBTP::AttestationsCotisationsChomageIntemperies, type: :retriever_organizer do
+RSpec.describe CIBTP::AttestationCotisationsCongesPayesChomageIntemperies, type: :retriever_organizer do
   subject { described_class.call(params:) }
 
   let(:params) do
@@ -12,7 +12,7 @@ RSpec.describe CIBTP::AttestationsCotisationsChomageIntemperies, type: :retrieve
 
     before do
       stub_cibtp_authenticate
-      stub_cibtp_attestations_cotisations_chomage_intemperies_valid(siret:)
+      stub_cibtp_attestation_cotisations_conges_payes_chomage_intemperies_valid(siret:)
     end
 
     it { is_expected.to be_a_success }
