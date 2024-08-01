@@ -410,6 +410,20 @@ shared:
         retriever: 'CNETP::AttestationCotisationsCongesPayesChomageIntemperies'
         params:
           siren: '811214428'
+    cibtp/attestation_cotisations_conges_payes_chomage_intemperies:
+      kind: 'access_logs'
+      provider: 'CIBTP'
+      cache: <%= 10.minutes %>
+      status_page:
+        alerts_wait: 20
+        name: "CIBTP - Attestations cotisations congés payés"
+      driver_params:
+        period: <%= 10.minutes %>
+        routes:
+          - 'api_entreprise/v3_and_more/cibtp/attestation_cotisations_conges_payes_chomage_intemperies#show'
+        excluded_statuses:
+          - 404
+
     msa/conformite_cotisations:
       kind: 'retriever'
       cache: <%= 2.minutes %>
