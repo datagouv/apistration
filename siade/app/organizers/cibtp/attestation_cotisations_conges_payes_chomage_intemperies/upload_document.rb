@@ -12,4 +12,8 @@ class CIBTP::AttestationCotisationsCongesPayesChomageIntemperies::UploadDocument
   def filename
     'certificat_cibtp'
   end
+
+  def expires_in
+    10.minutes.to_i
+  end
 end

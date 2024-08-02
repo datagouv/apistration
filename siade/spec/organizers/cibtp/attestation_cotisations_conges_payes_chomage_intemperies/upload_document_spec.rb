@@ -11,4 +11,5 @@ RSpec.describe CIBTP::AttestationCotisationsCongesPayesChomageIntemperies::Uploa
   its(:filename) { is_expected.to eq('certificat_cibtp') }
   its(:content) { is_expected.to eq(body) }
   its(:url) { is_expected.to be_a_valid_self_hosted_pdf_url('certificat_cibtp') }
+  its(:url_expires_in) { is_expected.to eq(10.minutes.to_i) }
 end

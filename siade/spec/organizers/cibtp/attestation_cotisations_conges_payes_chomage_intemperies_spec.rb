@@ -23,6 +23,8 @@ RSpec.describe CIBTP::AttestationCotisationsCongesPayesChomageIntemperies, type:
       expect(resource).to be_present
 
       expect(resource).to be_a(Resource)
+
+      expect(resource.expires_in).to eq(10.minutes.to_i)
     end
   end
 end
