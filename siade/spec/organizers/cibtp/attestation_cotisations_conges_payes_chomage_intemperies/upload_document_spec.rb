@@ -8,7 +8,7 @@ RSpec.describe CIBTP::AttestationCotisationsCongesPayesChomageIntemperies::Uploa
   it { is_expected.to be_success }
 
   its(:file_type) { is_expected.to eq('pdf') }
-  its(:filename) { is_expected.to eq('attestation_cotisations_conges_payes_chomage_intemperies_cibtp') }
+  its(:filename) { is_expected.to eq('certificat_cibtp') }
   its(:content) { is_expected.to eq(body) }
-  its(:url) { is_expected.to be_a_valid_self_hosted_pdf_url('attestation_cotisations_conges_payes_chomage_intemperies_cibtp') }
+  its(:url) { is_expected.to be_a_valid_self_hosted_pdf_url('certificat_cibtp') }
 end

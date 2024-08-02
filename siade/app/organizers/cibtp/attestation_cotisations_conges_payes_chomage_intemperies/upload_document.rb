@@ -10,6 +10,6 @@ class CIBTP::AttestationCotisationsCongesPayesChomageIntemperies::UploadDocument
   end
 
   def filename
-    'attestation_cotisations_conges_payes_chomage_intemperies_cibtp'
+    'certificat_cibtp'
   end
 end

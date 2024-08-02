@@ -5,6 +5,6 @@ cnetp:
     tags:
       - "Attestations sociales et fiscales"
     document_url_properties:
-      title: "Lien vers l'attestation de cotisations"
-      description: "Ce lien délivre l'attestation au format PDF. Ce document est automatiquement supprimé au bout de 24h."
+      title: "Lien vers le certificat CNETP"
+      description: "Ce lien délivre l'attestation au format PDF. Ce document est automatiquement supprimé après 24h."
       example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-certificat_cnetp.pdf"

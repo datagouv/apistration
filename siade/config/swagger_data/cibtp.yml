@@ -10,10 +10,10 @@ cibtp:
         type: 'string'
         nullable: true
         description: "Ce lien délivre l'attestation au format PDF. Ce document est automatiquement supprimé après 24h."
-        example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_cotisations_conges_payes_chomage_intemperies_cibtp.pdf"
+        example: "https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-certificat_cibtp.pdf"
       expires_in:
         title: "Expiration du lien"
         description: "Nombre de secondes avant expiration du document référencé dans 'document_url'. Il s'agit d'une expiration technique. Ce champ n'est pas une date de fin de validité de l'attestation"
         type: 'integer'
         nullable: true
-        example: 3600
+        example: 84600

@@ -70,7 +70,7 @@ module RSWagResourcesPayloads
             expires_in: {
               type: :integer,
               example: 7889238,
-              description: "Nombre de secondes avant l'expiration de l'url associée à l'attribut document_url : cette durée correspond généralement à 3 mois."
+              description: "Nombre de secondes avant l'expiration de l'url associée à l'attribut document_url : cette durée correspond généralement à 24h."
             }
           },
           required: %w[document_url expires_in]

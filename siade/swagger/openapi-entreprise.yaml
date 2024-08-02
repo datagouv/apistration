@@ -342,7 +342,7 @@ paths:
                         example: 7889238
                         description: 'Nombre de secondes avant l''expiration de l''url
                           associée à l''attribut document_url : cette durée correspond
-                          généralement à 3 mois.'
+                          généralement à 24h.'
                     required:
                     - document_url
                     - expires_in
@@ -2688,7 +2688,7 @@ paths:
                         nullable: true
                         description: Ce lien délivre l'attestation au format PDF.
                           Ce document est automatiquement supprimé après 24h.
-                        example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-attestation_cotisations_conges_payes_chomage_intemperies_cibtp.pdf
+                        example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-certificat_cibtp.pdf
                       expires_in:
                         title: Expiration du lien
                         description: Nombre de secondes avant expiration du document
@@ -2697,7 +2697,7 @@ paths:
                           de l'attestation
                         type: integer
                         nullable: true
-                        example: 3600
+                        example: 84600
                     required:
                     - document_url
                     - expires_in
@@ -3031,16 +3031,16 @@ paths:
                     properties:
                       document_url:
                         type: string
-                        title: Lien vers l'attestation de cotisations
+                        title: Lien vers le certificat CNETP
                         description: Ce lien délivre l'attestation au format PDF.
-                          Ce document est automatiquement supprimé au bout de 24h.
+                          Ce document est automatiquement supprimé après 24h.
                         example: https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-certificat_cnetp.pdf
                       expires_in:
                         type: integer
                         example: 7889238
                         description: 'Nombre de secondes avant l''expiration de l''url
                           associée à l''attribut document_url : cette durée correspond
-                          généralement à 3 mois.'
+                          généralement à 24h.'
                     required:
                     - document_url
                     - expires_in
@@ -3909,7 +3909,7 @@ paths:
                         example: 7889238
                         description: 'Nombre de secondes avant l''expiration de l''url
                           associée à l''attribut document_url : cette durée correspond
-                          généralement à 3 mois.'
+                          généralement à 24h.'
                     required:
                     - document_url
                     - expires_in
@@ -9903,7 +9903,7 @@ paths:
                         example: 7889238
                         description: 'Nombre de secondes avant l''expiration de l''url
                           associée à l''attribut document_url : cette durée correspond
-                          généralement à 3 mois.'
+                          généralement à 24h.'
                     required:
                     - document_url
                     - expires_in
@@ -26747,7 +26747,7 @@ paths:
                         example: 7889238
                         description: 'Nombre de secondes avant l''expiration de l''url
                           associée à l''attribut document_url : cette durée correspond
-                          généralement à 3 mois.'
+                          généralement à 24h.'
                     required:
                     - document_url
                     - expires_in
@@ -27545,7 +27545,7 @@ paths:
                         example: 7889238
                         description: 'Nombre de secondes avant l''expiration de l''url
                           associée à l''attribut document_url : cette durée correspond
-                          généralement à 3 mois.'
+                          généralement à 24h.'
                     required:
                     - document_url
                     - expires_in
