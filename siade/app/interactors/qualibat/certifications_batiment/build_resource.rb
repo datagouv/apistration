@@ -2,7 +2,7 @@ class QUALIBAT::CertificationsBatiment::BuildResource < BuildResource
   def resource_attributes
     {
       document_url: context.url,
-      document_url_expires_in: Documents::Upload::EXPIRES_IN
+      document_url_expires_in: context.expires_in
     }.merge(extracted_data_from_pdf)
   end
 

@@ -1,12 +1,14 @@
 class UploadDocumentOrganizer < ApplicationOrganizer
   include ResourceHelpers
 
+  # rubocop:disable Metrics/AbcSize
   def self.inherited(klass)
     klass.class_eval do
       before do
         context.content = source_file_content
         context.file_type = file_type
         context.filename = filename
+        context.expires_in = expires_in
       end
 
       around do |interactor|
@@ -14,6 +16,7 @@ class UploadDocumentOrganizer < ApplicationOrganizer
       end
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   protected
 
@@ -27,5 +30,9 @@ class UploadDocumentOrganizer < ApplicationOrganizer
 
   def filename
     fail NotImplementedError
+  end
+
+  def expires_in
+    1.day.to_i
   end
 end

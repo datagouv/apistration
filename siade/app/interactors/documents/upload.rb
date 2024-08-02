@@ -1,6 +1,4 @@
 class Documents::Upload < ApplicationInteractor
-  EXPIRES_IN = 1.day.to_i
-
   before do
     context.errors ||= []
   end
@@ -15,7 +13,7 @@ class Documents::Upload < ApplicationInteractor
   def call
     store!
     context.url = document_public_url
-    context.url_expires_in = EXPIRES_IN
+    context.url_expires_in = file_expired_in
   rescue *uploader_hosting_errors
     context.errors << HostingServiceError.new
     context.fail!
@@ -68,7 +66,7 @@ class Documents::Upload < ApplicationInteractor
   end
 
   def file_expired_in
-    EXPIRES_IN
+    context.expires_in
   end
 
   def public_storage_url

@@ -4,7 +4,7 @@ class BuildResource::Document < BuildResource
   def resource_attributes
     {
       document_url: context.url,
-      expires_in: Documents::Upload::EXPIRES_IN
+      expires_in: context.expires_in
     }
   end
 end
