@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'INPI RNE: Bénéficiaires effectifs', api: :entreprise, type: %i[request swagger] do
-  path '/v3/inpi/rne/unites_legales/open_data/{siren}/beneficiaires_effectifs' do
+  path '/v3/inpi/rne/unites_legales/{siren}/beneficiaires_effectifs' do
     get SwaggerData.get('inpi_rne.beneficiaires_effectifs.title') do
       tags(*SwaggerData.get('inpi_rne.beneficiaires_effectifs.tags'))
 

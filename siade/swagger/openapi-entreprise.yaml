@@ -14604,7 +14604,7 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/inpi/rne/unites_legales/open_data/130025265/actes_bilans?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/inpi/rne/unites_legales/open_data/{siren}/beneficiaires_effectifs":
+  "/v3/inpi/rne/unites_legales/{siren}/beneficiaires_effectifs":
     get:
       summary: Bénéficiaires effectifs
       tags:
@@ -15700,7 +15700,7 @@ paths:
         source: |-
           curl -X GET \
             -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/inpi/rne/unites_legales/open_data/130025265/beneficiaires_effectifs?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+            --url "https://entreprise.api.gouv.fr/v3/inpi/rne/unites_legales/130025265/beneficiaires_effectifs?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/insee/sirene/etablissements/{siret}/adresse":
     get:
       summary: Adresse établissement

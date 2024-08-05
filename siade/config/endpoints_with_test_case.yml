@@ -176,9 +176,13 @@
   api: 'entreprise'
   path: '/v3/carif_oref/etablissements/78824266700020/certifications_qualiopi_france_competences/'
 
-- name: "RNE INPI bénéficiaires effectifs"
+- name: "RNE INPI bénéficiaires effectifs Open Data (deprecated)"
   api: 'entreprise'
   path: '/v3/inpi/rne/unites_legales/open_data/900225095/beneficiaires_effectifs'
+
+- name: "RNE INPI bénéficiaires effectifs"
+  api: 'entreprise'
+  path: '/v3/inpi/rne/unites_legales/900225095/beneficiaires_effectifs'
 
 - name: "RNE INPI Actes Bilans"
   api: 'entreprise'
