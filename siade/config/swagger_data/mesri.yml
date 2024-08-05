@@ -1,18 +1,9 @@
 mesri:
   commons:
-    title: Statut complémentaire santé solidaire (C2S)
-    description: "Statut bénéficiaire de la complémentaire santé solidaire (C2S).
-      \n\n
-      Retourne également des informations sur les dates d'ouverture des droits.
-      \n
-      Pour plus d'informations sur cette API et obtenir un accès en avant-première, veuillez contacter l'équipe API Particulier.
-      \n
-      **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)
-      \n
-      L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
+    title: Statut étudiant
+    description: Admissions et inscriptions d'un étudiant aux établissements d'enseignement supérieur.
     tags:
       - Statut Étudiant
-
     attributes:
       nom:
         title: Nom de naissance
@@ -98,7 +89,6 @@ mesri:
                     associée au code UAI
                   example: EGC AIN BOURG EN BRESSE EC GESTION ET COMMERCE
                     (01000)
-
   statut_etudiant:
     parameters:
       ine: 
