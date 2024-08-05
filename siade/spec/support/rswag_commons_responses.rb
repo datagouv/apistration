@@ -44,7 +44,7 @@ module RSWagCommonsResponses
   end
 
   # rubocop:disable Metrics/AbcSize
-  def parameters_cnav_identite_pivot
+  def parameters_cnav_identite_pivot_v2
     parameter name: :nomUsage,
       in: :query,
       type: SwaggerData.get('cnav.commons.cnav_identite_pivot.nomUsage.type'),

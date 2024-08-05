@@ -20,7 +20,7 @@ RSpec.describe 'CNAV: Allocation Soutien Familial', api: :particulierv2, type: %
 
       security [franceConnectToken: [], apiKey: []]
 
-      parameters_cnav_identite_pivot
+      parameters_cnav_identite_pivot_v2
 
       let(:scopes) { %i[allocation_soutien_familial] }
 

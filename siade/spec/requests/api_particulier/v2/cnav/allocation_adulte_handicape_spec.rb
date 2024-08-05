@@ -11,7 +11,7 @@ RSpec.describe 'CNAV: Allocation Adulte Handicapé', api: :particulierv2, type: 
 
       parameter name: 'X-Api-Key', in: :header, type: :string
 
-      parameters_cnav_identite_pivot
+      parameters_cnav_identite_pivot_v2
 
       parameter name: :recipient,
         in: :query,

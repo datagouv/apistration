@@ -20,7 +20,7 @@ RSpec.describe "CNAV: Prime d'activité", api: :particulierv2, type: %i[request 
 
       security [franceConnectToken: [], apiKey: []]
 
-      parameters_cnav_identite_pivot
+      parameters_cnav_identite_pivot_v2
 
       let(:scopes) { %i[prime_activite] }
 

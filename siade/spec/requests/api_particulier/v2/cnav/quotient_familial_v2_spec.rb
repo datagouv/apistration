@@ -20,7 +20,7 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
 
       security [franceConnectToken: [], apiKey: []]
 
-      parameters_cnav_identite_pivot
+      parameters_cnav_identite_pivot_v2
 
       parameter name: :annee,
         in: :query,

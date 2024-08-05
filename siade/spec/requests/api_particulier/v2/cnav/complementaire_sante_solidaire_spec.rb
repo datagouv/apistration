@@ -20,7 +20,7 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulierv2, typ
 
       security [franceConnectToken: [], apiKey: []]
 
-      parameters_cnav_identite_pivot
+      parameters_cnav_identite_pivot_v2
 
       let(:scopes) { %i[complementaire_sante_solidaire] }
 
