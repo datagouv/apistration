@@ -146,6 +146,7 @@ RSpec.configure do |config|
   config.include ProviderStubs::INSEE
   config.include ProviderStubs::INPI
   config.include ProviderStubs::INPI::RNE
+  config.include ProviderStubs::MESRI
 
   config.include ActivateStrictVcrRequestMatchingForV3
   config.extend ActivateStrictVcrRequestMatchingForV3
@@ -187,10 +188,10 @@ RSpec.configure do |config|
     controller = request.controller_class.new
 
     split_path_item = example.metadata[:path_item][:template].split('/')
-    api_version = if example.metadata[:api] == :entreprise
-                    split_path_item[1][1..]
-                  elsif example.metadata[:api] == :particulier
+    api_version = if example.metadata[:api] == :particulierv2
                     split_path_item[2][1..]
+                  else
+                    split_path_item[1][1..]
                   end
 
     controller.params = { api_version: }
