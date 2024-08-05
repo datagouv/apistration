@@ -3,6 +3,7 @@ svair_gone = ->(env) do
 end
 
 scope path: 'v:api_version', constraints: APIParticulierDomainConstraint.new(v3_and_more: true) do
+  get 'mesri/statut_etudiant/ine', to: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_ine#show'
 end
 
 namespace '/api', constraints: APIParticulierV2DomainConstraint.new do

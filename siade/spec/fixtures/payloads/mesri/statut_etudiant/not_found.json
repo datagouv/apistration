@@ -1,0 +1,9 @@
+{
+  "message": "la valeur du paramètre n'est pas valide",
+  "uid": "62ee74625e1ec_0000",
+  "details": {
+    "method": "GET",
+    "endpoint": "etudiant",
+    "parameter": "le format de l'INE n'est valide"
+  }
+}

@@ -1,0 +1,113 @@
+mesri:
+  commons:
+    title: Statut complémentaire santé solidaire (C2S)
+    description: "Statut bénéficiaire de la complémentaire santé solidaire (C2S).
+      \n\n
+      Retourne également des informations sur les dates d'ouverture des droits.
+      \n
+      Pour plus d'informations sur cette API et obtenir un accès en avant-première, veuillez contacter l'équipe API Particulier.
+      \n
+      **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)
+      \n
+      L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
+    tags:
+      - Statut Étudiant
+
+    attributes:
+      nom:
+        title: Nom de naissance
+        type: string
+        description: Nom de naissance de l'étudiant
+        example: Moustaki
+      prenom:
+        title: Prénom
+        type: string
+        description: Prénom de l'étudiant
+        example: Georges
+      dateNaissance:
+        title: Date de naissance
+        type: string
+        format: date
+        description: Date de naissance de l'étudiant
+        example: 1992-11-29
+      inscriptions:
+        title: Liste des admissions et inscriptions de l'étudiant pour
+          l'année en cours
+        type: array
+        items:
+          type: object
+          properties:
+            dateDebutInscription:
+              title: Date de début d'inscription
+              type: string
+              format: date
+              description: Date de début de la période d'études dans l'établissement
+              example: 2022-09-01
+            dateFinInscription:
+              title: Date de fin d'inscription
+              type: string
+              format: date
+              description: Date de fin de la période d'étude dans l'établissement
+              example: 2023-08-31
+            statut:
+              title: Statut de l'inscription
+              type: string
+              description: |
+                Statut de l'inscription de l'étudiant. Il existe deux modalités différentes :
+                - admis : l'étudiant est pré-inscrit dans l'établissement mais la procédure complète d'inscription et le règlement des droits d'inscription ne sont pas terminés. Les étudiants "admis" passent au statut "inscrit" une fois leurs droits d'inscription régularisés (paiement des droits, premier versement des droits ou acquittement des droits selon la situation de l'étudiant et les règles de l'établissement.) Tous les étudiants "admis" ne sont donc pas forcément de futurs étudiants "inscrits".
+
+                - inscrit : l'étudiant est inscrit dans l'établissement car il est en règle de ses droits d'inscription. L'étudiant peut être inscrit dans plusieurs établissements."
+              example: admis
+              enum:
+              - admis
+              - inscrit
+            regime:
+              title: Régime de formation
+              type: string
+              description: |
+                Régime de formation de l'étudiant. Il existe deux modalités différentes :
+                - formation initiale : Ce champ indique que l'étudiant est en formation initiale, soit dans une des situations suivantes : formation initiale classique, reprise d'études non financée sans convention et contrat d'apprentissage ;
+                - formation continue : Ce champ indique que l'étudiant est en formation continue ou en contrat de professionalisation."
+              example: formation initiale
+              enum:
+              - formation initiale
+              - formation continue
+            codeCommune:
+              title: Lieu d'études
+              type: string
+              description: Code officiel géographique (code COG de l'Insee)
+                de la commune du lieu d'études.
+              example: '29085'
+            etablissement:
+              title: Établissement de l'inscription
+              type: object
+              properties:
+                uai:
+                  title: Identifiant de l'établissement UAI
+                  type: string
+                  description: Code UAI (Unité administrative immatriculée)
+                    de l'établissement. Cet identifiant unique de l'établissement
+                    scolaire est composé de 7 chiffres et d’une lettre,
+                    les trois premiers chiffres correspondant au numéro
+                    de département de l’établissement.
+                  example: 0011402U
+                nom:
+                  title: Nom de l'établissement
+                  type: string
+                  description: Appelation officielle de l'établissement
+                    associée au code UAI
+                  example: EGC AIN BOURG EN BRESSE EC GESTION ET COMMERCE
+                    (01000)
+
+  statut_etudiant:
+    parameters:
+      ine: 
+        title: INE
+        description: Identifiant National Étudiant (INE). Cet identifiant est unique
+          à chaque étudiant sur le territoire français. Il est composé de 11 caractères,
+          10 chiffres et 1 lettre, et depuis la rentrée 2018, 9 chiffres et 2 lettres.
+          Les étudiants peuvent retrouver leur numéro INE sur leur carte étudiant
+          et leur certificat de scolarité.
+        pattern: "^[0-9a-zA-Z]{11}$"
+        example: 1234567890G
+

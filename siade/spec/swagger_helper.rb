@@ -325,9 +325,6 @@ Lors de votre passage en production :
       },
       tags: [],
       paths: {},
-      security: [
-        apiKey: []
-      ],
       servers: [
         {
           url: 'https://particulier.api.gouv.fr',
@@ -340,20 +337,22 @@ Lors de votre passage en production :
       ],
       components: {
         schemas: {
-          Error: build_rswag_error_particulier_v2
+          Error: build_rswag_error_entreprise
         },
         securitySchemes: {
-          apiKey: {
-            type: :apiKey,
-            name: 'X-Api-Key',
-            in: :header,
-            description: "Jeton d'authentification obtenu suite à la validation de votre <a href='https://datapass.api.gouv.fr/'>demande d'habilitation</a>, visible sur <a href='https://particulier.api.gouv.fr/compte'>le portail API Particulier</a>. Obligatoire, sauf sur une API FranceConnectée lorsqu'un jeton FranceConnect est présent."
-          },
-          franceConnectToken: {
+          jwt_bearer_token: {
             type: :http,
+            description: "Votre jeton d'authentification doit être placé dans le header 'Authorization: Bearer VOTRE_JWT', sa validité est de 18 mois. Dans le cas où vous utilisez une API FranceConnectée, vous devez utiliser le jeton FranceConnect à la place du jeton d'authentification.
+
+    Exemple cURL :
+
+        curl -X GET \\
+        -H \"Authorization: Bearer $token\" \\
+        --url \"https://entreprise.api.gouv.fr/v3/...\"",
+            name: 'Authorization',
+            in: :header,
             scheme: :bearer,
-            bearerFormat: 'Jeton FranceConnect',
-            description: "Jeton FranceConnect obtenu suite à une cinématique de connexion FranceConnect. Ne fonctionne que sur les APIs FranceConnectées. Remplace l'authentification par X-Api-Key sur les APIs FranceConnectées."
+            bearerFormat: 'JWT'
           }
         }
       }

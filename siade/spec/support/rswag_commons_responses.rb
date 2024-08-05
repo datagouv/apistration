@@ -2,13 +2,6 @@ module RSWagCommonsResponses
   def common_action_attributes
     produces 'application/json'
 
-    parameter name: :context,
-      in: :query,
-      type: :string,
-      description: SwaggerData.get('parameters.context.description'),
-      example: SwaggerData.get('parameters.context.example'),
-      required: true
-
     parameter name: :recipient,
       in: :query,
       type: :string,
@@ -16,11 +9,35 @@ module RSWagCommonsResponses
       example: SwaggerData.get('parameters.recipient.example'),
       required: true
 
+    specific_api_entreprise_action_attributes if describe.metadata[:api] == :entreprise
+
+    security [jwt_bearer_token: []]
+  end
+
+  def specific_api_entreprise_action_attributes
+    parameter name: :context,
+      in: :query,
+      type: :string,
+      description: SwaggerData.get('parameters.context.description'),
+      example: SwaggerData.get('parameters.context.example'),
+      required: true
+
     parameter name: :object,
       in: :query,
       type: :string,
       description: SwaggerData.get('parameters.object.description'),
       example: SwaggerData.get('parameters.object.example'),
+      required: true
+  end
+
+  def common_api_particulier_action_attributes
+    produces 'application/json'
+
+    parameter name: :recipient,
+      in: :query,
+      type: :string,
+      description: SwaggerData.get('parameters.recipient.description'),
+      example: SwaggerData.get('parameters.recipient.example'),
       required: true
 
     security [jwt_bearer_token: []]
@@ -310,15 +327,19 @@ module RSWagCommonsResponses
         build_rswag_example(UnprocessableEntityError.new(param), :"unprocessable_entity_error_#{param}_error")
       end
 
-      %i[
-        context
-        object
-        recipient
-      ].each do |field|
+      mandatory_params.each do |field|
         build_rswag_example(MissingMandatoryParamError.new(field), :"missing_mandatory_params_#{field}_error")
       end
 
       run_test!
+    end
+  end
+
+  def mandatory_params
+    if describe.metadata[:api] == :entreprise
+      %i[context object recipient]
+    elsif describe.metadata[:api] == :particulier
+      %i[recipient]
     end
   end
 
