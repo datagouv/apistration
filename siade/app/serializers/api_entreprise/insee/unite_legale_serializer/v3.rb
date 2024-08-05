@@ -16,28 +16,28 @@ class APIEntreprise::INSEE::UniteLegaleSerializer::V3 < APIEntreprise::V3AndMore
     :date_cessation,
     :date_creation
 
-  link :siege_social do |object|
+  link :siege_social do
     url_for(
       controller: 'api_entreprise/v3_and_more/insee/etablissements',
       action: :show,
       api_version: '3',
-      siret: object.siret_siege_social
+      siret: data.siret_siege_social
     )
   end
 
-  link :siege_social_adresse do |object|
+  link :siege_social_adresse do
     url_for(
       controller: 'api_entreprise/v3_and_more/insee/adresses_etablissements',
       action: :show,
       api_version: '3',
-      siret: object.siret_siege_social
+      siret: data.siret_siege_social
     )
   end
 
-  meta do |object|
+  meta do |ctx|
     {
-      date_derniere_mise_a_jour: object.date_derniere_mise_a_jour,
-      redirect_from_siren: object.redirect_from_siren
+      date_derniere_mise_a_jour: ctx.date_derniere_mise_a_jour,
+      redirect_from_siren: ctx.redirect_from_siren
     }
   end
 end

@@ -1,8 +1,8 @@
 class APIEntreprise::MI::UniteLegaleSerializer::V4 < APIEntreprise::MI::UniteLegaleSerializer::SharedV4
   attributes :reseaux_affiliation
 
-  attribute :etablissements do |object|
-    object.etablissements.map do |etablissement|
+  attribute :etablissements do
+    data.etablissements.map do |etablissement|
       etablissement[:documents_dac] = etablissement[:documents_dac].map do |document|
         document.merge(
           url: url_for_proxied_file(document[:url])
@@ -13,8 +13,8 @@ class APIEntreprise::MI::UniteLegaleSerializer::V4 < APIEntreprise::MI::UniteLeg
     end
   end
 
-  attribute :documents_rna do |object|
-    object.documents_rna.map do |document|
+  attribute :documents_rna do
+    data.documents_rna.map do |document|
       document.merge(
         url: url_for_proxied_file(document[:url])
       )

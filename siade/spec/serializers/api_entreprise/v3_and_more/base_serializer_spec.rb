@@ -3,18 +3,19 @@
 require 'rails_helper'
 
 RSpec.describe APIEntreprise::V3AndMore::BaseSerializer, type: :serializer do
-  subject { serializer.new(dummy_object).serializable_hash }
+  subject { serializer.new(dummy_object, current_user).serializable_hash }
 
+  let(:current_user) { JwtUser.new(uid: SecureRandom.uuid, scopes: [], jti: SecureRandom.uuid, iat: 1.year.ago.to_i, exp: 1.year.from_now.to_i) }
   let(:serializer) do
     Class.new(described_class) do
       attributes :attr_1, :attr_2
 
-      attribute :attr_3 do |object|
-        object.attr_1 + object.attr_2
+      attribute :attr_3 do
+        data.attr_1 + data.attr_2
       end
 
-      attribute :inside_url do |object|
-        url_for_proxied_file(object.inside_url)
+      attribute :inside_url do
+        url_for_proxied_file(data.inside_url)
       end
 
       meta do |object|
@@ -23,7 +24,9 @@ RSpec.describe APIEntreprise::V3AndMore::BaseSerializer, type: :serializer do
         }
       end
 
-      link :example_url, &:url_1
+      link :example_url do
+        data.url_1
+      end
     end
   end
 

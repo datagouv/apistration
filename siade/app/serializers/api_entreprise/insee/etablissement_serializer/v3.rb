@@ -10,8 +10,8 @@ class APIEntreprise::INSEE::EtablissementSerializer::V3 < APIEntreprise::V3AndMo
     :status_diffusion,
     :date_creation
 
-  attribute :unite_legale do |object|
-    object.unite_legale.to_h.except(
+  attribute :unite_legale do
+    data.unite_legale.to_h.except(
       :id,
       :date_cessation,
       :date_derniere_mise_a_jour,
@@ -19,8 +19,8 @@ class APIEntreprise::INSEE::EtablissementSerializer::V3 < APIEntreprise::V3AndMo
     )
   end
 
-  attribute :adresse do |object|
-    object.adresse.to_h.except(
+  attribute :adresse do
+    data.adresse.to_h.except(
       :id,
       :siren,
       :siret,
@@ -30,19 +30,19 @@ class APIEntreprise::INSEE::EtablissementSerializer::V3 < APIEntreprise::V3AndMo
     )
   end
 
-  link :unite_legale do |object|
+  link :unite_legale do
     url_for(
       controller: 'api_entreprise/v3_and_more/insee/unites_legales',
       action: :show,
       api_version: '3',
-      siren: object.siren
+      siren: data.siren
     )
   end
 
-  meta do |object|
+  meta do |ctx|
     {
-      date_derniere_mise_a_jour: object.date_derniere_mise_a_jour,
-      redirect_from_siret: object.redirect_from_siret
+      date_derniere_mise_a_jour: ctx.date_derniere_mise_a_jour,
+      redirect_from_siret: ctx.redirect_from_siret
     }
   end
 end

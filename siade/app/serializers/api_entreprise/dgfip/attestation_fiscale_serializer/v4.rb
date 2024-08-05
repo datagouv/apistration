@@ -1,7 +1,9 @@
 class APIEntreprise::DGFIP::AttestationFiscaleSerializer::V4 < APIEntreprise::V3AndMore::BaseSerializer
   attributes :document_url
 
-  attribute :document_url_expires_in, &:expires_in
+  attribute :document_url_expires_in do
+    data.expires_in
+  end
 
   attribute :date_delivrance_attestation do
     Time.zone.today

@@ -4,7 +4,9 @@ class APIEntreprise::INPI::ModeleSerializer::V3 < APIEntreprise::V3AndMore::Base
       'modele'
     end
 
-    link :notice, &:notice_url
+    link :notice do
+      data.notice_url
+    end
 
     attributes :document_id,
       :numero_depot,

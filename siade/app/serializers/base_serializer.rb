@@ -1,9 +1,10 @@
 class BaseSerializer
-  attr_reader :data, :context
+  attr_reader :data, :context, :current_user
 
-  def initialize(payload_data)
+  def initialize(payload_data, current_user)
     @data = payload_data.data
     @context = payload_data.context
+    @current_user = current_user
   end
 
   class << self
@@ -13,39 +14,46 @@ class BaseSerializer
       self.__attributes ||= {}
 
       attrs.each do |attr|
-        self.__attributes[attr] = lambda { |resource|
-          resource.public_send(attr)
+        self.__attributes[attr] = {
+          block: -> { data.public_send(attr) },
+          if: nil
         }
       end
     end
 
-    def attribute(attr, &block)
+    def attribute(attr, options = {}, &block)
       self.__attributes ||= {}
-      self.__attributes[attr] = block
+      self.__attributes[attr] = {
+        block: block || -> { data.public_send(attr) },
+        if: options[:if]
+      }
     end
 
-    def link(attr, &block)
+    def link(attr, options = {}, &block)
       self.__links ||= {}
-      self.__links[attr] = block
+      self.__links[attr] = {
+        block: block || -> { data.public_send(attr) },
+        if: options[:if]
+      }
     end
 
     def meta(&block)
       self.__meta = block
     end
-
-    def url_for(params = {})
-      host = Rails.env.production? ? url_domain : "#{Rails.env}.#{url_domain}"
-
-      Rails.application.routes.url_helpers.url_for(params.merge(host:))
-    end
-
-    def url_domain
-      raise NotImplementedError
-    end
   end
 
   def serializable_hash
     serialize_single_resource
+  end
+
+  protected
+
+  def scope?(scope_name)
+    current_user.scope?(scope_name.to_s)
+  end
+
+  def one_of_scopes?(scopes)
+    scopes.any? { |scope| scope?(scope) }
   end
 
   private
@@ -63,8 +71,14 @@ class BaseSerializer
   end
 
   def compute_attributes(kind, model)
-    (self.class.public_send(kind) || {}).transform_values do |block|
-      block.call(model)
+    (filtered_attributes(kind, model) || {}).transform_values do |blocks|
+      instance_exec(&blocks[:block])
+    end
+  end
+
+  def filtered_attributes(kind, _model)
+    (self.class.public_send(kind) || {}).select do |_attr, blocks|
+      blocks[:if].nil? || instance_exec(&blocks[:if])
     end
   end
 end

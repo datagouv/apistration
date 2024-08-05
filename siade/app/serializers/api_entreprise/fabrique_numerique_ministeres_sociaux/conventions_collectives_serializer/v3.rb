@@ -13,9 +13,9 @@ class APIEntreprise::FabriqueNumeriqueMinisteresSociaux::ConventionsCollectivesS
       :synonymes,
       :date_publication
 
-    meta do |object|
+    meta do |ctx|
       {
-        internal_id: object.id
+        internal_id: ctx.id
       }
     end
   end

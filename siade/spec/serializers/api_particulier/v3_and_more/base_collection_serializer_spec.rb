@@ -3,8 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe APIParticulier::V3AndMore::BaseCollectionSerializer, type: :serializer do
-  subject { serializer.new(dummy_collection).serializable_hash }
+  subject { serializer.new(dummy_collection, current_user).serializable_hash }
 
+  let(:current_user) { JwtUser.new(uid: SecureRandom.uuid, scopes: [], jti: SecureRandom.uuid, iat: 1.year.ago.to_i, exp: 1.year.from_now.to_i) }
   let(:dummy_collection) do
     resource_a = Resource.new({
       attr_1: 'attr_1_a',
@@ -43,8 +44,8 @@ RSpec.describe APIParticulier::V3AndMore::BaseCollectionSerializer, type: :seria
       item_serializer = Class.new(APIParticulier::V3AndMore::BaseSerializer) do
         attributes :attr_1, :attr_2
 
-        attribute :attr_3 do |object|
-          object.attr_1 + object.attr_2
+        attribute :attr_3 do
+          data.attr_1 + data.attr_2
         end
       end
 

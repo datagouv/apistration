@@ -20,7 +20,7 @@ class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
     if organizer.mocked_data.present?
       organizer.mocked_data[:payload]
     else
-      serializer_class.new(organizer.bundled_data).serializable_hash
+      serializer_class.new(organizer.bundled_data, current_user).serializable_hash
     end
   end
 

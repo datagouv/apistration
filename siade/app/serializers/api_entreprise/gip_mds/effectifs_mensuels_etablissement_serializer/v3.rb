@@ -1,8 +1,8 @@
 class APIEntreprise::GIPMDS::EffectifsMensuelsEtablissementSerializer::V3 < APIEntreprise::V3AndMore::BaseSerializer
   attributes :siret
 
-  attribute :effectifs_mensuels do |object|
-    object.effectifs_mensuels.map do |effectif|
+  attribute :effectifs_mensuels do
+    data.effectifs_mensuels.map do |effectif|
       {
         regime: effectif[:regime],
         annee: effectif[:year],

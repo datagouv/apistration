@@ -5,9 +5,9 @@ class APIEntreprise::QUALIBAT::CertificationBatimentSerializer::V4 < APIEntrepri
     :date_fin_validite,
     :entity
 
-  meta do |object|
+  meta do |ctx|
     {
-      extractor_error: object.try(:extractor_error)
+      extractor_error: ctx.try(:extractor_error)
     }
   end
 end

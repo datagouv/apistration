@@ -50,6 +50,14 @@ class JwtUser
     !valid?
   end
 
+  def scope?(scope_name)
+    @scopes.include?(scope_name.to_s)
+  end
+
+  def one_of_scopes?(scopes)
+    scopes.any? { |scope| scope?(scope) }
+  end
+
   def expired?
     if @exp.nil?
       ::MonitoringService.instance.track('info', "JWT #{logstash_id.inspect} without Expiration Time")

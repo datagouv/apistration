@@ -16,27 +16,27 @@ class APIEntreprise::INSEE::AdresseEtablissementSerializer::V3 < APIEntreprise::
     :code_pays_etranger,
     :libelle_pays_etranger
 
-  link :unite_legale do |object|
+  link :unite_legale do
     url_for(
       controller: 'api_entreprise/v3_and_more/insee/unites_legales',
       action: :show,
       api_version: '3',
-      siren: object.siren
+      siren: data.siren
     )
   end
 
-  link :etablissement do |object|
+  link :etablissement do
     url_for(
       controller: 'api_entreprise/v3_and_more/insee/etablissements',
       action: :show,
       api_version: '3',
-      siret: object.siret
+      siret: data.siret
     )
   end
 
-  meta do |object|
+  meta do |ctx|
     {
-      date_derniere_mise_a_jour: object.date_derniere_mise_a_jour
+      date_derniere_mise_a_jour: ctx.date_derniere_mise_a_jour
     }
   end
 end

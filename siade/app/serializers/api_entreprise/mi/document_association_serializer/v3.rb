@@ -5,8 +5,8 @@ class APIEntreprise::MI::DocumentAssociationSerializer::V3 < APIEntreprise::V3An
       :expires_in,
       :errors
 
-    attribute :url do |object|
-      url_for_proxied_file(object.url)
+    attribute :url do
+      url_for_proxied_file(data.url)
     end
   end
 

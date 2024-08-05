@@ -1,6 +1,8 @@
 class APIEntreprise::INPI::MarqueSerializer::V3 < APIEntreprise::V3AndMore::BaseCollectionSerializer
   class ItemSerializer < APIEntreprise::V3AndMore::BaseSerializer
-    link :notice, &:notice_url
+    link :notice do
+      data.notice_url
+    end
 
     attribute :type do
       'marque'

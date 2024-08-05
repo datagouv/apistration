@@ -5,15 +5,15 @@ class APIEntreprise::ACOSS::AttestationSocialeSerializer::V4 < APIEntreprise::V3
     :date_fin_validite,
     :code_securite
 
-  attribute :entity_status do |object|
+  attribute :entity_status do
     {
-      code: object.entity_status_code
+      code: data.entity_status_code
     }.merge(
-      extract_entity_status_humanized_info(object.entity_status_code)
+      extract_entity_status_humanized_info(data.entity_status_code)
     )
   end
 
-  def self.extract_entity_status_humanized_info(code)
+  def extract_entity_status_humanized_info(code)
     case code
     when 'ok'
       {

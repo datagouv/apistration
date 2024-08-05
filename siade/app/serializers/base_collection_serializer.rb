@@ -32,7 +32,7 @@ class BaseCollectionSerializer < BaseSerializer
   def serialize_item(item)
     bundled_data = BundledData.new(data: item)
 
-    single_item_serializer(item).new(bundled_data).serializable_hash
+    single_item_serializer(item).new(bundled_data, current_user).serializable_hash
   end
 
   def single_item_serializer(item)
