@@ -74,10 +74,13 @@ shared:
   api_entreprise/v3_and_more/carif_oref/certifications_qualiopi_france_competences:
     - certifications_qualiopi_france_competences
   api_entreprise/v3_and_more/cibtp/attestation_cotisations_conges_payes_chomage_intemperies:
-    - attestation_cotisations_conges_payes_chomage_intemperies_cibtp
+    - certificat_cnetp
+    - certification_cnetp
+    - attestation_cotisations_conges_payes_chomage_intemperies_cibtp_cnetp
   api_entreprise/v3_and_more/cnetp/attestation_cotisations_conges_payes_chomage_intemperies:
     - certificat_cnetp
     - certification_cnetp
+    - attestation_cotisations_conges_payes_chomage_intemperies_cibtp_cnetp
   api_entreprise/v3_and_more/dgddi/eori:
     - eori_douanes
     - open_data
