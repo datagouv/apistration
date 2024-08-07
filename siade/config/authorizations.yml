@@ -249,6 +249,11 @@ shared:
     - mesri_statut
     - mesri_regime
     - mesri_etablissements
+  api_particulier/v3_and_more/mesri/statut_etudiant_with_france_connect:
+    - mesri_identite
+    - mesri_statut
+    - mesri_regime
+    - mesri_etablissements
 test:
   api_whatever/whatever_resource: &default_test_scopes
     - allowed_scope

@@ -72,4 +72,8 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulier::V2::B
   def extract_first_first_name_from_france_connect_given_name(given_name)
     given_name.split.first
   end
+
+  def api_name
+    'statut_etudiant'
+  end
 end
