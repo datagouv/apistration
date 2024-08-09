@@ -69,6 +69,6 @@ module APIParticulier::FranceConnectable
   end
 
   def api_name
-    self.class.name.split('::').last.gsub('Controller', '').underscore
+    self.class.name.split('::').last.gsub('Controller', '').underscore.gsub('_with_france_connect', '')
   end
 end
