@@ -2551,8 +2551,9 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Certificat indiquant qu'une entreprise du BTP affiliée à la caisse
-        CIBTP est en règle de ses cotisations congés payés et au chômage-intempéries.
+      description: Certificat indiquant qu'une entreprise du bâtiment, affiliée à
+        la majorité des caisses du réseau CIBTP France, est en règle de ses cotisations
+        congés payés et chômage-intempéries.
       responses:
         '401':
           description: Non autorisé
@@ -2898,8 +2899,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Certificat indiquant qu'une entreprise du BTP affiliée à la caisse
-        CNETP est en règle de ses cotisations congés payés et au chômage-intempéries.
+      description: Certificat indiquant qu'une entreprise de travaux publics affiliée
+        à la caisse CNETP est en règle de ses cotisations congés payés et chômage-intempéries.
       responses:
         '401':
           description: Non autorisé

@@ -1,7 +1,7 @@
 cnetp:
   attestation_cotisations_conges_payes_chomage_intemperies:
     title: "Certificat cotisations CNETP"
-    description: "Certificat indiquant qu'une entreprise du BTP affiliée à la caisse CNETP est en règle de ses cotisations congés payés et au chômage-intempéries."
+    description: "Certificat indiquant qu'une entreprise de travaux publics affiliée à la caisse CNETP est en règle de ses cotisations congés payés et chômage-intempéries."
     tags:
       - "Attestations sociales et fiscales"
     document_url_properties:
