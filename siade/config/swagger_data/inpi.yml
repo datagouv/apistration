@@ -1,43 +1,4 @@
 inpi:
-  actes:
-    title: "Actes"
-    description: |
-      Actes issus des greffes et archivés à l’Institut national de propriété industrielle (Inpi).
-    tags:
-      - "Informations générales"
-    attributes:
-      type:
-        title: "Type de la ressource"
-        type: "string"
-        example: "acte"
-        enum:
-          - 'acte'
-      siren:
-        title: "Numéro Siren"
-        description: "Numéro SIREN de l'entreprise concernée par l'acte"
-        type: "string"
-        example: "788242667"
-      code_greffe:
-        title: "Code greffe"
-        description: "Code identifiant du greffe ayant traité l'acte"
-        type: "number"
-        example: 5752
-      date_depot:
-        title: "Date dépot"
-        description: "Date à laquelle a été déposé l'acte"
-        type: "string"
-        example: "2017-06-16"
-      nature_archive:
-        title: "Nature de l'archive de l'acte"
-        description: "Chaîne de caractères contenant une ou plusieurs lettres séparées par un tiret, explicitant de quelle(s) catégories d'archives l'acte provient: A (actes de sociétés) R (ordonnances) et P (actes de personnes physiques)"
-        type: "string"
-        example: "A-R"
-    links:
-      greffe:
-        type: "string"
-        example: "https://opendata.datainfogreffe.fr/api/records/1.0/search/?dataset=liste-des-greffes&q=code_greffe%3D5752&facet=greffe&rows=1"
-        description: "Données sur le bureau des greffes ayant traité l'acte"
-
   brevets:
     title: "Brevets déposés"
     description: |

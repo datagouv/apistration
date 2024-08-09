@@ -1,24 +1,8 @@
 class APIEntreprise::V3AndMore::INPI::ActesController < APIEntreprise::V3AndMore::BaseController
   def show
-    organizer = retrieve_payload_data(::INPI::Actes)
-
-    if organizer.success?
-      render json: serialize_data(organizer),
-        status: extract_http_code(organizer)
-    else
-      render_errors(organizer)
-    end
-  end
-
-  private
-
-  def organizer_params
-    {
-      siren: params.require(:siren)
-    }
-  end
-
-  def serializer_module
-    ::APIEntreprise::INPI::ActeSerializer
+    render json: {
+             message: 'Cette route a été déplacée. Merci de mettre à jour votre application vers la nouvelle route. Vous pouvez consulter la documentation à l\'adresse suivante: https://entreprise.api.gouv.fr/catalogue/inpi/rne/actes_bilans'
+           },
+      status: :gone
   end
 end

@@ -40,10 +40,6 @@
   api: 'entreprise'
   path: '/v3/infogreffe/rcs/unites_legales/831386297/extrait_kbis'
 
-- name: 'INPI Actes'
-  api: 'entreprise'
-  path: '/v3/inpi/unites_legales/542065479/actes'
-
 - name: 'INPI Brevets'
   api: 'entreprise'
   path: '/v3/inpi/unites_legales/542065479/brevets'
