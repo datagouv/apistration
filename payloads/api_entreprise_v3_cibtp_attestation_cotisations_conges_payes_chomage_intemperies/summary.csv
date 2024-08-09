@@ -1,0 +1,35 @@
+Titre,Description,Paramètres,Status,Réponse
+,Appel réussi,"{""siret"":""13002526500013""}",200,"{
+  ""data"": {
+    ""document_url"": ""https://storage.entreprise.api.gouv.fr/siade/1569139162-b99824d9c764aae19a862a0af-certificat_cibtp.pdf"",
+    ""expires_in"": 600
+  },
+  ""links"": {
+  },
+  ""meta"": {
+  }
+}"
+,Établissement non trouvé,"{""siret"":""84445156452589""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""38003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel. Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API."",
+      ""meta"": {
+        ""provider"": ""CIBTP""
+      }
+    }
+  ]
+}"
+,Intermédiaire hors-délai,"{""siret"":""20459446201414""}",504,"{
+  ""errors"": [
+    {
+      ""code"": ""38002"",
+      ""title"": ""Intermédiaire hors-délai"",
+      ""detail"": ""Temps d’attente d’une réponse du fournisseur de données écoulé."",
+      ""meta"": {
+        ""provider"": ""CIBTP""
+      }
+    }
+  ]
+}"
