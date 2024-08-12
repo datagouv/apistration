@@ -43,7 +43,134 @@ module RSWagCommonsResponses
     security [jwt_bearer_token: []]
   end
 
+  def parameters_cnav_identite_pivot_nom_usage(required)
+    parameter name: :nomUsage,
+      in: :query,
+      type: SwaggerData.get('parameters.civility.nomUsage.type'),
+      description: SwaggerData.get('parameters.civility.nomUsage.description'),
+      example: SwaggerData.get('parameters.civility.nomUsage.example'),
+      required:
+  end
+
+  def parameters_cnav_identite_pivot_nom_naissance(required)
+    parameter name: :nomNaissance,
+      in: :query,
+      type: SwaggerData.get('parameters.civility.nomNaissance.type'),
+      description: SwaggerData.get('parameters.civility.nomNaissance.description'),
+      example: SwaggerData.get('parameters.civility.nomNaissance.example'),
+      required:
+  end
+
+  def parameters_cnav_identite_pivot_prenoms(required)
+    parameter name: :'prenoms[]',
+      in: :query,
+      schema: {
+        type: SwaggerData.get('parameters.civility.prenoms.type'),
+        minItems: SwaggerData.get('parameters.civility.prenoms.minItems'),
+        items: { type: :string },
+        example: SwaggerData.get('parameters.civility.prenoms.example')
+      },
+      description: SwaggerData.get('parameters.civility.prenoms.description'),
+      required:
+  end
+
+  def parameters_cnav_identite_pivot_annee_date_de_naissance(required)
+    parameter name: :anneeDateDeNaissance,
+      in: :query,
+      type: SwaggerData.get('parameters.civility.anneeDateDeNaissance.type'),
+      description: SwaggerData.get('parameters.civility.anneeDateDeNaissance.description'),
+      example: SwaggerData.get('parameters.civility.anneeDateDeNaissance.example'),
+      required:
+  end
+
+  def parameters_cnav_identite_pivot_mois_date_de_naissance(required)
+    parameter name: :moisDateDeNaissance,
+      in: :query,
+      type: SwaggerData.get('parameters.civility.moisDateDeNaissance.type'),
+      description: SwaggerData.get('parameters.civility.moisDateDeNaissance.description'),
+      example: SwaggerData.get('parameters.civility.moisDateDeNaissance.example'),
+      required:
+  end
+
+  def parameters_cnav_identite_pivot_jour_date_de_naissance(required)
+    parameter name: :jourDateDeNaissance,
+      in: :query,
+      type: SwaggerData.get('parameters.civility.jourDateDeNaissance.type'),
+      description: SwaggerData.get('parameters.civility.jourDateDeNaissance.description'),
+      example: SwaggerData.get('parameters.civility.jourDateDeNaissance.example'),
+      required:
+  end
+
+  def parameters_cnav_identite_pivot_code_cog_insee_commune_de_naissance(required)
+    parameter name: :code_cog_insee_commune_de_naissance,
+      in: :query,
+      schema: {
+        type: SwaggerData.get('parameters.civility.codeCogInseeCommuneDeNaissance.type'),
+        minLength: SwaggerData.get('parameters.civility.codeCogInseeCommuneDeNaissance.minLength'),
+        maxLength: SwaggerData.get('parameters.civility.codeCogInseeCommuneDeNaissance.maxLength'),
+        example: SwaggerData.get('parameters.civility.codeCogInseeCommuneDeNaissance.example')
+      },
+      description: SwaggerData.get('parameters.civility.codeCogInseeCommuneDeNaissance.description'),
+      required:
+  end
+
+  def parameters_cnav_identite_pivot_code_pays_lieu_de_naissance(required)
+    parameter name: :codePaysLieuDeNaissance,
+      in: :query,
+      schema: {
+        type: SwaggerData.get('parameters.civility.codePaysLieuDeNaissance.type'),
+        minLength: SwaggerData.get('parameters.civility.codePaysLieuDeNaissance.minLength'),
+        maxLength: SwaggerData.get('parameters.civility.codePaysLieuDeNaissance.maxLength'),
+        example: SwaggerData.get('parameters.civility.codePaysLieuDeNaissance.example')
+      },
+      description: SwaggerData.get('parameters.civility.codePaysLieuDeNaissance.description'),
+      required:
+  end
+
+  def parameters_cnav_identite_pivot_sexe_etat_civil(required)
+    parameter name: :sexeEtatCivil,
+      in: :query,
+      schema: {
+        type: SwaggerData.get('parameters.civility.sexeEtatCivil.type'),
+        enum: SwaggerData.get('parameters.civility.sexeEtatCivil.enum')
+      },
+      description: SwaggerData.get('parameters.civility.sexeEtatCivil.description'),
+      example: SwaggerData.get('parameters.civility.sexeEtatCivil.example'),
+      required:
+  end
+
+  def parameters_cnav_identite_pivot_nom_commune_naissance(required)
+    parameter name: :nomCommuneNaissance,
+      in: :query,
+      schema: {
+        type: SwaggerData.get('parameters.civility.nomCommuneNaissance.type'),
+        minLength: SwaggerData.get('parameters.civility.nomCommuneNaissance.minLength'),
+        example: SwaggerData.get('parameters.civility.nomCommuneNaissance.example')
+      },
+      description: SwaggerData.get('parameters.civility.nomCommuneNaissance.description'),
+      required:
+  end
+
+  def parameters_cnav_identite_pivot_code_insee_departement_naissance(required)
+    parameter name: :codeInseeDepartementNaissance,
+      in: :query,
+      schema: {
+        type: SwaggerData.get('parameters.civility.codeInseeDepartementNaissance.type'),
+        minLength: SwaggerData.get('parameters.civility.codeInseeDepartementNaissance.minLength'),
+        maxLength: SwaggerData.get('parameters.civility.codeInseeDepartementNaissance.maxLength'),
+        example: SwaggerData.get('parameters.civility.codeInseeDepartementNaissance.example')
+      },
+      description: SwaggerData.get('parameters.civility.codeInseeDepartementNaissance.description'),
+      required:
+  end
+
   # rubocop:disable Metrics/AbcSize
+  def parameters_cnav_identite_pivot(params: [], required: [])
+    params.each do |param|
+      public_send("parameters_cnav_identite_pivot_#{param.underscore}", required.include?(param))
+    end
+  end
+
   def parameters_cnav_identite_pivot_v2
     parameter name: :nomUsage,
       in: :query,
