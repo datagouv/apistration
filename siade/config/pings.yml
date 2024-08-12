@@ -284,17 +284,6 @@ shared:
         params:
           token: 'token'
         status_to_check: 400
-    franceconnect_v2:
-      kind: 'make_request'
-      cache: <%= 2.minutes %>
-      provider: 'FranceConnectV2'
-      status_page:
-        name: "FranceConnect v2"
-      driver_params:
-        make_request: 'FranceConnect::V2::DataFetcherThroughAccessToken::MakeRequest'
-        params:
-          token: 'token'
-        status_to_check: 400
 
   api_entreprise:
     insee/sirene:
