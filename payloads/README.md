@@ -41,7 +41,6 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [Effectifs mensuels d'un établissement](api_entreprise_v3_gip_mds_effectifs_mensuels_etablissement) (`/v3/gip_mds/etablissements/{siret}/effectifs_mensuels/{month}/annee/{year}`)
 * Extrait RCS (`/v3/infogreffe/rcs/unites_legales/{siren}/extrait_kbis`)
 * Mandataires sociaux (`/v3/infogreffe/rcs/unites_legales/{siren}/mandataires_sociaux`)
-* Actes (`/v3/inpi/unites_legales/{siren}/actes`)
 * Brevets déposés (`/v3/inpi/unites_legales/{siren}/brevets`)
 * Marques déposées (`/v3/inpi/unites_legales/{siren}/marques`)
 * Modèles déposés (`/v3/inpi/unites_legales/{siren}/modeles`)
