@@ -230,7 +230,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/inpi/rne/unites_legales/open_data/552049447/beneficiaires_effectifs"
+    --url "https://staging.entreprise.api.gouv.fr/v3/inpi/rne/unites_legales/552049447/beneficiaires_effectifs"
   ```
 
   </p>
@@ -280,7 +280,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/inpi/rne/unites_legales/open_data/813914819/beneficiaires_effectifs"
+    --url "https://staging.entreprise.api.gouv.fr/v3/inpi/rne/unites_legales/813914819/beneficiaires_effectifs"
   ```
 
   </p>
