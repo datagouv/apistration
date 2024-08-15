@@ -1,4 +1,6 @@
 class INPI::RNE::ActesBilans::BuildResource < BuildResource
+  include Rails.application.routes.url_helpers
+
   protected
 
   def resource_attributes
@@ -24,7 +26,8 @@ class INPI::RNE::ActesBilans::BuildResource < BuildResource
       date_depot: acte['dateDepot'],
       nom_document: acte['nomDocument'],
       id: acte['id'],
-      types: format_types(acte['typeRdd'])
+      types: format_types(acte['typeRdd']),
+      link: link(target: 'actes', id: acte['id'])
     }
   end
 
@@ -54,7 +57,37 @@ class INPI::RNE::ActesBilans::BuildResource < BuildResource
       nom_document: bilan['nomDocument'],
       id: bilan['id'],
       date_cloture: bilan['dateCloture'],
-      type: bilan['typeBilan']
+      type: bilan['typeBilan'],
+      link: link(target: 'bilans', id: bilan['id'])
     }
+  end
+
+  def link(target:, id:)
+    url_for(
+      controller: 'api_entreprise/inpi_proxy',
+      action: 'show',
+      uuid: encrypted_uuid(target:, id:),
+      host:
+    )
+  end
+
+  def encrypted_uuid(target:, id:)
+    StringEncryptorService.instance.encrypt_url_safe(raw_uuid(target:, id:))
+  end
+
+  def raw_uuid(target:, id:)
+    "#{target}-#{id}-#{timestamp}-#{token_id}"
+  end
+
+  def host
+    Rails.env.production? ? 'entreprise.api.gouv.fr' : "#{Rails.env}.entreprise.api.gouv.fr"
+  end
+
+  def timestamp
+    Time.zone.now.to_i
+  end
+
+  def token_id
+    context.params[:token_id]
   end
 end

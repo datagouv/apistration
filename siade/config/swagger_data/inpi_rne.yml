@@ -415,6 +415,10 @@ inpi_rne:
               title: "Identifiant de l'acte"
               type: "string"
               example: "65419234a1f7d1f2ba09bd8c"
+            link:
+              title: "Lien vers l'acte"
+              type: "string"
+              example: "https://test.entreprise.api.gouv.fr/inpi_proxy/download/%2FV+svyVVJGVCJroamyqjOrECaXHorkxJ39vZH1IMHz4N+6gvit9zgoQ=--rJ1ss+Brc7oVhloH--huyvWA83YgMFqOnjyKDmXQ=="
             types:
               title: "Types reprise de données"
               type: "array"
@@ -458,6 +462,10 @@ inpi_rne:
               title: "Identifiant du bilan"
               type: "string"
               example: "65419234a1f7d1f2ba09bd8c"
+            link:
+              title: "Lien vers le bilan"
+              type: "string"
+              example: "https://entreprise.api.gouv.fr/inpi_proxy/download/%2FV+svyVVJGVCJroamyqjOrECaXHorkxJ39vZH1IMHz4N+6gvit9zgoQ=--rJ1ss+Brc7oVhloH--huyvWA83YgMFqOnjyKDmXQ=="
             date_cloture:
               title: "Date de clôture du bilan"
               type: "string"

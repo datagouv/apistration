@@ -3,7 +3,8 @@ RSpec.describe INPI::RNE::ActesBilans, type: :retriever_organizer do
 
   let(:params) do
     {
-      siren:
+      siren:,
+      token_id: 'token_id'
     }
   end
 
