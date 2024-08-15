@@ -4,7 +4,6 @@ class APIParticulier::V2::DummyFranceConnectedController < APIParticulier::V2::B
   include APIParticulier::FranceConnectable
 end
 
-class APIEntreprise::V2::DummyController < APIController; end
 class APIEntreprise::V3AndMore::DummyController < APIController; end
 
 # rubocop:disable Lint/NestedMethodDefinition
@@ -248,49 +247,6 @@ RSpec.describe 'logstasher custom fields', type: :controller do
   end
 
   describe 'on api entreprise request' do
-    context 'when it is a v2' do
-      let(:api_controller_name) { 'api/v2/dummy' }
-
-      before do
-        routes.draw { get 'index' => 'api/v2/dummy#index' }
-      end
-
-      define_dummy_controller(APIEntreprise::V2::DummyController)
-
-      it 'adds api: entreprise to logstasher' do
-        expect(LogStasher).to receive(:build_logstash_event).with(
-          hash_including(
-            api: 'entreprise'
-          ),
-          anything
-        )
-
-        make_call
-      end
-
-      it 'adds retrieved_cached to logstasher' do
-        expect(LogStasher).to receive(:build_logstash_event).with(
-          hash_including(
-            retriever_cached: false
-          ),
-          anything
-        )
-
-        make_call
-      end
-
-      it 'adds api_version v2 to logstasher' do
-        expect(LogStasher).to receive(:build_logstash_event).with(
-          hash_including(
-            api_version: 'v2'
-          ),
-          anything
-        )
-
-        make_call
-      end
-    end
-
     context 'when it is a v3 and more' do
       let(:api_controller_name) { 'api/v3_and_more/dummy' }
 

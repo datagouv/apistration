@@ -25,23 +25,6 @@ class MonitoringService
     )
   end
 
-  def track_provider_error_from_response(response, context = {})
-    set_extras(
-      (context || {}).merge(
-        errors: response.errors.map(&:to_h)
-      ).compact
-    )
-
-    set_tags(
-      provider_error_code: response.provider_error_custom_code
-    )
-
-    track(
-      'warning',
-      "[#{current_provider}] Error: #{humanized_response_for_tracking(response)}"
-    )
-  end
-
   def track_missing_data(field, exception)
     set_extras(
       exception: exception.message,

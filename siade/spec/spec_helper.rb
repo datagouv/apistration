@@ -65,12 +65,6 @@ RSpec.configure do |config|
       allow_any_instance_of(BanqueDeFrance::BilansEntreprise::MakeRequest).to receive(:http_options).and_return({ use_ssl: true, verify_ssl: OpenSSL::SSL::VERIFY_NONE, cert: nil, key: nil })
       allow_any_instance_of(PROBTP::AttestationsCotisationsRetraite::MakeRequest).to receive(:http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
       allow_any_instance_of(PROBTP::ConformitesCotisationsRetraite::MakeRequest).to receive(:http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
-
-      allow_any_instance_of(SIADE::V2::Drivers::EligibilitesCotisationRetraitePROBTP).to receive(:net_http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
-      allow_any_instance_of(SIADE::V2::Drivers::AttestationsCotisationRetraitePROBTP).to receive(:net_http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
-      allow_any_instance_of(SIADE::V2::Requests::EligibilitesCotisationRetraitePROBTP).to receive(:net_http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
-      allow_any_instance_of(SIADE::V2::Requests::AttestationsCotisationRetraitePROBTP).to receive(:net_http_options).and_return({ use_ssl: true, ca_path: nil, ca_file: nil, cert: nil, key: nil })
-      allow_any_instance_of(SIADE::V2::Requests::BilansEntreprisesBDF).to receive(:rest_client_options).and_return({ ssl_client_cert: nil, ssl_client_key: nil, verify_ssl: OpenSSL::SSL::VERIFY_NONE })
     end
   end
 
