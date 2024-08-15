@@ -2,8 +2,9 @@ RSpec.describe APIEntreprise::INPIProxyController do
   describe '#show', vcr: { cassette_name: 'inpi/rne/actes_download/valid' } do
     subject { response }
 
-    let(:uuid) { StringEncryptorService.instance.encrypt(raw_params) }
-    let(:raw_params) { "#{target}-#{document_id}-#{token_id}" }
+    let(:uuid) { StringEncryptorService.instance.encrypt_url_safe(raw_params) }
+    let(:raw_params) { "#{target}-#{document_id}-#{timestamp}-#{token_id}" }
+    let(:timestamp) { Time.zone.now.to_i }
     let(:target) { 'actes' }
     let(:document_id) { valid_rne_document_id }
     let(:token_id) { 'token_id' }
@@ -25,7 +26,14 @@ RSpec.describe APIEntreprise::INPIProxyController do
 
       it { is_expected.to have_http_status(:unprocessable_entity) }
 
-      its(:parsed_body) { is_expected.to include({ error: 'Invalid UUID' }) }
+      its(:parsed_body) { is_expected.to include({ error: 'UUID Invalide' }) }
+    end
+
+    describe 'with an expired link' do
+      let(:timestamp) { 2.hours.ago.to_i }
+
+      it { is_expected.to have_http_status(:gone) }
+      its(:parsed_body) { is_expected.to include({ error: 'Le lien a expiré. La durée de validité est de 1 heure.' }) }
     end
   end
 end
