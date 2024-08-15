@@ -1,7 +1,7 @@
 require 'csv'
 
-class SIADE::V2::Referentials::CategorieJuridique
-  include SIADE::V2::Referentials::DeprecatedDataTrackable
+class Referentials::CategorieJuridique
+  include Referentials::DeprecatedDataTrackable
 
   attr_reader :code
 
@@ -18,7 +18,7 @@ class SIADE::V2::Referentials::CategorieJuridique
   def found?
     return false unless valid?
 
-    found = !!result
+    found = !result.nil?
     track_deprecated_data('Categorie Juridique', code) unless found
     found
   end
@@ -33,8 +33,8 @@ class SIADE::V2::Referentials::CategorieJuridique
 
   def as_json
     {
-      code: code,
-      libelle: libelle
+      code:,
+      libelle:
     }
   end
 
@@ -50,6 +50,6 @@ class SIADE::V2::Referentials::CategorieJuridique
   end
 
   def file_name
-    Rails.root.join('lib', 'siade', 'v2', 'referentials', 'files', 'categorie_juridique.csv')
+    Rails.root.join('lib/referentials/files/categorie_juridique.csv')
   end
 end

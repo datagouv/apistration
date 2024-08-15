@@ -1,4 +1,4 @@
-module SIADE::V2::Referentials::DeprecatedDataTrackable
+module Referentials::DeprecatedDataTrackable
   protected
 
   def track_deprecated_data(field, deprecated_data)

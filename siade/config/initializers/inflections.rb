@@ -17,8 +17,6 @@
 #
 
 ActiveSupport::Inflector.inflections(:en) do |inflect|
-  inflect.acronym 'SIADE'
-
   inflect.acronym 'API'
   inflect.acronym 'ELK'
   inflect.acronym 'HTTP'

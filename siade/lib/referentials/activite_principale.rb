@@ -1,7 +1,7 @@
 require 'csv'
 
-class SIADE::V2::Referentials::ActivitePrincipale
-  include SIADE::V2::Referentials::DeprecatedDataTrackable
+class Referentials::ActivitePrincipale
+  include Referentials::DeprecatedDataTrackable
 
   attr_reader :code, :nomenclature
 
@@ -22,7 +22,7 @@ class SIADE::V2::Referentials::ActivitePrincipale
   def found?
     return false unless valid?
 
-    found = !!result
+    found = !result.nil?
     track_deprecated_data(nomenclature, code) unless found
     found
   end
@@ -41,9 +41,9 @@ class SIADE::V2::Referentials::ActivitePrincipale
 
   def as_json
     {
-      code: code,
-      nomenclature: nomenclature,
-      libelle: libelle
+      code:,
+      nomenclature:,
+      libelle:
     }
   end
 
@@ -71,10 +71,10 @@ class SIADE::V2::Referentials::ActivitePrincipale
   end
 
   def find_in_exceptions
-    return 'En instance de chiffrement' if @code == '00.00Z'
+    'En instance de chiffrement' if @code == '00.00Z'
   end
 
   def file_name
-    Rails.root.join('lib', 'siade', 'v2', 'referentials', 'files', 'NAFRev2.csv')
+    Rails.root.join('lib/referentials/files/NAFRev2.csv')
   end
 end

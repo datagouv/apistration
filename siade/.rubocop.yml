@@ -21,10 +21,6 @@ AllCops:
     - "db/**/*"
     - "config/**/*"
     - "vendor/**/*"
-    - "app/controllers/api_entreprise/v2/**/*"
-    - "spec/controllers/api_entreprise/v2/**/*"
-    - "lib/siade/v2/**/*"
-    - "spec/lib/siade/v2/**/*"
     - "sandbox/**/*"
     - "spec/requests/ping_routes_spec.rb"
 

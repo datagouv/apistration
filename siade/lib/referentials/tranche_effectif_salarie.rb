@@ -1,7 +1,7 @@
 require 'csv'
 
-class SIADE::V2::Referentials::TrancheEffectifSalarie
-  include SIADE::V2::Referentials::DeprecatedDataTrackable
+class Referentials::TrancheEffectifSalarie
+  include Referentials::DeprecatedDataTrackable
 
   attr_reader :code, :date_reference
 
@@ -21,25 +21,23 @@ class SIADE::V2::Referentials::TrancheEffectifSalarie
   def found?
     return false unless valid?
 
-    found = !!result
+    found = !result.nil?
     track_deprecated_data('Tranche effectif salarie', code) unless found
     found
   end
 
   def de
-    if found?
-      return nil if result[:de] == 'null'
+    return unless found?
+    return nil if result[:de] == 'null'
 
-      result[:de].to_i
-    end
+    result[:de].to_i
   end
 
   def a
-    if found?
-      return nil if result[:a] == 'null'
+    return unless found?
+    return nil if result[:a] == 'null'
 
-      result[:a].to_i
-    end
+    result[:a].to_i
   end
 
   def intitule
@@ -52,11 +50,11 @@ class SIADE::V2::Referentials::TrancheEffectifSalarie
 
   def as_json
     {
-      de: de,
-      a: a,
-      code: code,
-      date_reference: date_reference,
-      intitule: intitule
+      de:,
+      a:,
+      code:,
+      date_reference:,
+      intitule:
     }
   end
 
@@ -72,6 +70,6 @@ class SIADE::V2::Referentials::TrancheEffectifSalarie
   end
 
   def file_name
-    Rails.root.join('lib', 'siade', 'v2', 'referentials', 'files', 'tranche_effectif_salarie.csv')
+    Rails.root.join('lib/referentials/files/tranche_effectif_salarie.csv')
   end
 end
