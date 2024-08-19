@@ -3,13 +3,30 @@ RSpec.describe APIEntreprise::INPIProxyController do
     subject { response }
 
     let(:uuid) { StringEncryptorService.instance.encrypt_url_safe(raw_params) }
-    let(:raw_params) { "#{target}-#{document_id}-#{timestamp}-#{token_id}" }
+    let(:raw_params) do
+      {
+        target:,
+        document_id:,
+        timestamp:,
+        token_id:
+      }.to_json
+    end
     let(:timestamp) { Time.zone.now.to_i }
     let(:target) { 'actes' }
     let(:document_id) { valid_rne_document_id }
-    let(:token_id) { 'token_id' }
+    let(:token_id) { 'c1a72399-2fdd-427e-a9f7-dc480f158603' }
 
     let(:document_url_regexp) { %r{http://test\.entreprise\.api\.gouv\.fr/proxy/files/[a-f0-9\-]{36}} }
+
+    before(:all) do
+      Token.create!(
+        id: 'c1a72399-2fdd-427e-a9f7-dc480f158603',
+        iat: 2.hours.ago.to_i,
+        exp: 3.hours.from_now.to_i,
+        authorization_request_model_id: AuthorizationRequest.create.id,
+        scopes: %w[open_data]
+      )
+    end
 
     before do
       get :show, params: { uuid: }

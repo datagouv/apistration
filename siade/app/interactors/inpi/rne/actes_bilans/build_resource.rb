@@ -27,7 +27,7 @@ class INPI::RNE::ActesBilans::BuildResource < BuildResource
       nom_document: acte['nomDocument'],
       id: acte['id'],
       types: format_types(acte['typeRdd']),
-      link: link(target: 'actes', id: acte['id'])
+      link: link(target: 'actes', document_id: acte['id'])
     }
   end
 
@@ -58,25 +58,30 @@ class INPI::RNE::ActesBilans::BuildResource < BuildResource
       id: bilan['id'],
       date_cloture: bilan['dateCloture'],
       type: bilan['typeBilan'],
-      link: link(target: 'bilans', id: bilan['id'])
+      link: link(target: 'bilans', document_id: bilan['id'])
     }
   end
 
-  def link(target:, id:)
+  def link(target:, document_id:)
     url_for(
       controller: 'api_entreprise/inpi_proxy',
       action: 'show',
-      uuid: encrypted_uuid(target:, id:),
+      uuid: encrypted_uuid(target:, document_id:),
       host:
     )
   end
 
-  def encrypted_uuid(target:, id:)
-    StringEncryptorService.instance.encrypt_url_safe(raw_uuid(target:, id:))
+  def encrypted_uuid(target:, document_id:)
+    StringEncryptorService.instance.encrypt_url_safe(raw_uuid(target:, document_id:))
   end
 
-  def raw_uuid(target:, id:)
-    "#{target}-#{id}-#{timestamp}-#{token_id}"
+  def raw_uuid(target:, document_id:)
+    {
+      target:,
+      document_id:,
+      timestamp:,
+      token_id:
+    }.to_json
   end
 
   def host

@@ -7,7 +7,7 @@ RSpec.describe INPI::RNE::ActesBilans::BuildResource, type: :build_resource do
   let(:params) do
     {
       siren: valid_siren(:inpi),
-      token_id: 'token_id'
+      token_id: 'token-id'
     }
   end
 
@@ -72,13 +72,13 @@ RSpec.describe INPI::RNE::ActesBilans::BuildResource, type: :build_resource do
     describe 'link uuid' do
       let(:link) { described_class.call(response:, params:).bundled_data.data.actes.first[:link] }
       let(:uuid) { link.split('/').last }
-      let!(:decrypted_params) { StringEncryptorService.instance.decrypt_url_safe(uuid).split('-') }
+      let!(:decrypted_params) { JSON.parse(StringEncryptorService.instance.decrypt_url_safe(uuid)) }
 
       it 'has the right params' do
-        expect(decrypted_params.first).to eq('actes')
-        expect(decrypted_params.second).to eq('63e7e2e3998acaecf81b485e')
-        expect(decrypted_params.third).to eq(Time.zone.now.to_i.to_s)
-        expect(decrypted_params.fourth).to eq('token_id')
+        expect(decrypted_params['target']).to eq('actes')
+        expect(decrypted_params['document_id']).to eq('63e7e2e3998acaecf81b485e')
+        expect(decrypted_params['timestamp']).to eq(Time.zone.now.to_i)
+        expect(decrypted_params['token_id']).to eq('token-id')
       end
     end
 
