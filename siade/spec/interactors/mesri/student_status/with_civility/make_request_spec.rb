@@ -1,31 +1,36 @@
 RSpec.describe MESRI::StudentStatus::WithCivility::MakeRequest, type: :make_request do
   subject(:make_call) { described_class.call(params:) }
 
+  let(:nom_naissance) { 'Dupont' }
+  let(:prenoms) { ['Jean'] }
+  let(:annee_date_de_naissance) { 2000 }
+  let(:mois_date_de_naissance) { 1 }
+  let(:jour_date_de_naissance) { 1 }
+  let(:sexe_etat_civil) { 'M' }
+  let(:token_id) { SecureRandom.uuid }
+
   context 'with a birth place empty' do
     let(:params) do
       {
-        family_name:,
-        first_name:,
-        birth_date:,
-        birth_place:,
-        gender:,
+        nom_naissance:,
+        prenoms:,
+        annee_date_de_naissance:,
+        mois_date_de_naissance:,
+        jour_date_de_naissance:,
+        code_cog_insee_commune_de_naissance:,
+        sexe_etat_civil:,
         token_id:
       }
     end
 
-    let(:family_name) { 'Dupont' }
-    let(:first_name) { 'Jean' }
-    let(:birth_date) { '2000-01-01' }
-    let(:birth_place) { '' }
-    let(:gender) { 'M' }
-    let(:token_id) { SecureRandom.uuid }
+    let(:code_cog_insee_commune_de_naissance) { '' }
 
     let!(:stubbed_request) do
       stub_request(:post, Siade.credentials[:mesri_student_status_url]).with(
         body: {
-          nomFamille: family_name,
-          prenom1: first_name,
-          dateNaissance: birth_date,
+          nomFamille: nom_naissance,
+          prenom1: prenoms.first,
+          dateNaissance: '2000-01-01',
           sexe: '1'
         }.to_json,
         headers: {
@@ -42,7 +47,7 @@ RSpec.describe MESRI::StudentStatus::WithCivility::MakeRequest, type: :make_requ
 
     its(:response) { is_expected.to be_a(Net::HTTPOK) }
 
-    it 'calls url with valid params, by removing empty birth place and headers' do
+    it 'calls url with valid params, by removing empty code_cog_insee_commune_de_naissance place and headers' do
       make_call
 
       expect(stubbed_request).to have_been_requested
@@ -52,26 +57,22 @@ RSpec.describe MESRI::StudentStatus::WithCivility::MakeRequest, type: :make_requ
   context 'without birth place' do
     let(:params) do
       {
-        family_name:,
-        first_name:,
-        birth_date:,
-        gender:,
+        nom_naissance:,
+        prenoms:,
+        annee_date_de_naissance:,
+        mois_date_de_naissance:,
+        jour_date_de_naissance:,
+        sexe_etat_civil:,
         token_id:
       }
     end
 
-    let(:family_name) { 'Dupont' }
-    let(:first_name) { 'Jean' }
-    let(:birth_date) { '2000-01-01' }
-    let(:gender) { 'm' }
-    let(:token_id) { SecureRandom.uuid }
-
     let!(:stubbed_request) do
       stub_request(:post, Siade.credentials[:mesri_student_status_url]).with(
         body: {
-          nomFamille: family_name,
-          prenom1: first_name,
-          dateNaissance: birth_date,
+          nomFamille: nom_naissance,
+          prenom1: prenoms.first,
+          dateNaissance: '2000-01-01',
           sexe: '1'
         }.to_json,
         headers: {

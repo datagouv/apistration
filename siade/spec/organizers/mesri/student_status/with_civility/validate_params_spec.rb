@@ -3,20 +3,24 @@ RSpec.describe MESRI::StudentStatus::WithCivility::ValidateParams, type: :valida
 
   let(:params) do
     {
-      family_name:,
-      first_name:,
-      birth_date:,
-      birth_place:,
-      gender:,
+      nom_naissance:,
+      prenoms:,
+      annee_date_de_naissance:,
+      mois_date_de_naissance:,
+      jour_date_de_naissance:,
+      code_cog_insee_commune_de_naissance:,
+      sexe_etat_civil:,
       token_id:
     }
   end
 
-  let(:family_name) { 'Dupont' }
-  let(:first_name) { 'Jean' }
-  let(:birth_date) { '2000-01-01' }
-  let(:birth_place) { 'Paris' }
-  let(:gender) { 'm' }
+  let(:nom_naissance) { 'Dupont' }
+  let(:prenoms) { ['Jean'] }
+  let(:annee_date_de_naissance) { 2000 }
+  let(:mois_date_de_naissance) { 1 }
+  let(:jour_date_de_naissance) { 1 }
+  let(:code_cog_insee_commune_de_naissance) { 'Paris' }
+  let(:sexe_etat_civil) { 'M' }
 
   let(:token_id) { SecureRandom.uuid }
 
@@ -25,45 +29,47 @@ RSpec.describe MESRI::StudentStatus::WithCivility::ValidateParams, type: :valida
   end
 
   context 'without birthday place' do
-    let(:birth_place) { '' }
+    let(:code_cog_insee_commune_de_naissance) { '' }
 
     it { is_expected.to be_a_success }
   end
 
-  context 'without first name' do
-    let(:first_name) { '' }
+  context 'without prenoms' do
+    let(:prenoms) { [] }
 
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
-  context 'without family name' do
-    let(:family_name) { '' }
+  context 'without nom naissance' do
+    let(:nom_naissance) { '' }
 
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
-  context 'with invalid gender' do
-    let(:gender) { 'lol' }
+  context 'with invalid sexe etat civil' do
+    let(:sexe_etat_civil) { 'lol' }
 
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
-  context 'without gender' do
-    let(:gender) { nil }
+  context 'without sexe etat civil' do
+    let(:sexe_etat_civil) { nil }
 
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
-  context 'with invalid birthday date' do
-    let(:birth_date) { 'lol' }
+  context 'with invalid date de naissance' do
+    let(:annee_date_de_naissance) { -2000 }
+    let(:mois_date_de_naissance) { 14 }
+    let(:jour_date_de_naissance) { 1 }
 
     it { is_expected.to be_a_failure }
 

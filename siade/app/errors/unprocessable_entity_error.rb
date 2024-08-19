@@ -54,7 +54,16 @@ class UnprocessableEntityError < ApplicationError
       code_etablissement: '00410',
       annee_scolaire: '00411',
       # INPI - RNE
-      document_id: '00501'
+      document_id: '00501',
+      # CIVILITY API PART v3
+      nom_naissance: '00420',
+      prenoms: '00421',
+      annee_date_de_naissance: '00422',
+      mois_date_de_naissance: '00423',
+      jour_date_de_naissance: '00424',
+      date_de_naissance: '00425',
+      code_cog_insee_commune_de_naissance: '00426',
+      sexe_etat_civil: '00427'
     }.fetch(field) do
       raise KeyError, "#{field} is not a valid field name"
     end

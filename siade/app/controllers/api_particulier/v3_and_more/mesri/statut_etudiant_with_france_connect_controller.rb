@@ -14,17 +14,21 @@ class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithFranceConnectControlle
 
   private
 
+  # rubocop:disable Metrics/AbcSize
   def organizer_params
     {
-      family_name: france_connect_service_user_identity.family_name,
-      first_name: france_connect_service_user_identity.given_name.split.first,
-      birth_date: france_connect_service_user_identity.birthdate,
-      birth_place: france_connect_service_user_identity.birthplace,
-      gender: france_connect_service_user_identity.gender == 'male' ? 'm' : 'f',
+      nom_naissance: france_connect_service_user_identity.family_name,
+      prenoms: france_connect_service_user_identity.given_name.split.first,
+      annee_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').first,
+      mois_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').second,
+      jour_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').third,
+      code_cog_insee_commune_de_naissance: france_connect_service_user_identity.birthplace,
+      sexe_etat_civil: france_connect_service_user_identity.gender == 'male' ? 'M' : 'F',
       france_connect: true,
       token_id: current_user.token_id
     }
   end
+  # rubocop:enable Metrics/AbcSize
 
   def serializer_module
     ::APIParticulier::MESRI::StatutEtudiantSerializer

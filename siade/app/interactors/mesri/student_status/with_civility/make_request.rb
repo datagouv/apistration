@@ -13,31 +13,31 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
 
   def france_connect_mocking_params
     {
-      given_name: first_name,
-      family_name:,
-      birthdate: birth_date,
-      birthplace: birth_place,
+      given_name: prenom,
+      family_name: nom_naissance,
+      birthdate: date_de_naissance,
+      birthplace: code_cog_insee_commune_de_naissance,
       gender: gender.downcase == 'm' ? 'male' : 'female'
     }
   end
 
   def civility_mocking_params
     {
-      nom: family_name,
-      prenom: first_name,
-      dateDeNaissance: birth_date,
-      lieuDeNaissance: birth_place,
-      sexe: gender
+      nom: nom_naissancnom_naissance,
+      prenom:,
+      dateDeNaissance: date_de_naissance,
+      lieuDeNaissance: code_cog_insee_commune_de_naissance,
+      sexe: sexe_etat_civil
     }
   end
 
   def request_params
     {
-      nomFamille: family_name,
-      prenom1: first_name,
-      dateNaissance: birth_date,
-      sexe: gender.downcase == 'm' ? '1' : '2',
-      lieuNaissance: birth_place.presence
+      nomFamille: nom_naissance,
+      prenom1: prenom,
+      dateNaissance: date_de_naissance,
+      sexe: sexe_etat_civil.downcase == 'm' ? '1' : '2',
+      lieuNaissance: code_cog_insee_commune_de_naissance.presence
     }.compact
   end
 
@@ -47,23 +47,27 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
 
   private
 
-  def family_name
-    context.params[:family_name]
+  def nom_naissance
+    context.params[:nom_naissance]
   end
 
-  def first_name
-    context.params[:first_name]
+  def prenom
+    context.params[:prenoms].first
   end
 
-  def birth_date
-    context.params[:birth_date]
+  def date_de_naissance
+    Civility::FormatDateDeNaissance.new(
+      context.params[:annee_date_de_naissance],
+      context.params[:mois_date_de_naissance],
+      context.params[:jour_date_de_naissance]
+    ).format
   end
 
-  def birth_place
-    context.params[:birth_place]
+  def code_cog_insee_commune_de_naissance
+    context.params[:code_cog_insee_commune_de_naissance]
   end
 
-  def gender
-    context.params[:gender]
+  def sexe_etat_civil
+    context.params[:sexe_etat_civil]
   end
 end

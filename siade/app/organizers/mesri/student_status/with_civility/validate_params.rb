@@ -1,7 +1,7 @@
 class MESRI::StudentStatus::WithCivility::ValidateParams < ValidateParamsOrganizer
-  organize ServiceUser::ValidateFamilyName,
-    ServiceUser::ValidateFirstName,
-    ServiceUser::ValidateBirthDate,
-    ServiceUser::ValidateGender,
+  organize Civility::ValidateNomNaissance,
+    Civility::ValidatePrenoms,
+    Civility::ValidateDateDeNaissance,
+    Civility::ValidateSexeEtatCivil,
     ServiceUser::ValidateTokenId
 end

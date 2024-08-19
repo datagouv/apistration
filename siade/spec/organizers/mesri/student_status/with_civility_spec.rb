@@ -4,28 +4,29 @@ RSpec.describe MESRI::StudentStatus::WithCivility, type: :retriever_organizer do
 
     let(:params) do
       {
-        family_name:,
-        first_name:,
-        birth_date:,
-        birth_place:,
-        gender:,
+        nom_naissance:,
+        prenoms:,
+        annee_date_de_naissance:,
+        mois_date_de_naissance:,
+        jour_date_de_naissance:,
+        code_cog_insee_commune_de_naissance:,
+        sexe_etat_civil:,
 
         token_id: SecureRandom.uuid
       }
     end
 
-    let(:family_name) { 'Dupont' }
-    let(:first_name) { 'Jean' }
-    let(:birth_date) { '2000-01-01' }
-    let(:birth_place) { 'Paris' }
-    let(:gender) { 'm' }
+    let(:nom_naissance) { 'Dupont' }
+    let(:prenoms) { ['Jean'] }
+    let(:annee_date_de_naissance) { 2000 }
+    let(:mois_date_de_naissance) { 1 }
+    let(:jour_date_de_naissance) { 1 }
+    let(:code_cog_insee_commune_de_naissance) { 'Paris' }
+    let(:sexe_etat_civil) { 'M' }
 
     describe 'happy path' do
       before do
-        stub_request(:post, /#{Siade.credentials[:mesri_student_status_url]}/).to_return(
-          status: 200,
-          body: read_payload_file('mesri/student_status/with_civility_valid_response.json')
-        )
+        stub_mesri_with_civility_valid
       end
 
       it { is_expected.to be_a_success }

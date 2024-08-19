@@ -12,15 +12,16 @@ class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithCivilityController < A
 
   private
 
-  # rubocop:disable Metrics/AbcSize
   def organizer_params
 <<<<<<< Updated upstream
     {
-      family_name: params.require(:nomNaissance),
-      first_name: params.require(:prenoms).first,
-      birth_date: "#{params.require(:anneeDateDeNaissance)}-#{params.require(:moisDateDeNaissance)}-#{params.require(:jourDateDeNaissance)}",
-      birth_place: params[:codeCogInseeCommuneDeNaissance],
-      gender: params.require(:sexeEtatCivil).upcase,
+      nom_naissance: params.require(:nomNaissance),
+      prenoms: params.require(:prenoms),
+      annee_date_de_naissance: params.require(:anneeDateDeNaissance),
+      mois_date_de_naissance: params.require(:moisDateDeNaissance),
+      jour_date_de_naissance: params.require(:jourDateDeNaissance),
+      code_cog_insee_commune_de_naissance: params[:codeCogInseeCommuneDeNaissance],
+      sexe_etat_civil: params.require(:sexeEtatCivil).upcase,
       france_connect: true,
       token_id: current_user.token_id
     }
@@ -36,7 +37,6 @@ class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithCivilityController < A
       .merge({ token_id: current_user.token_id })
 >>>>>>> Stashed changes
   end
-  # rubocop:enable Metrics/AbcSize
 
   def serializer_module
     ::APIParticulier::MESRI::StatutEtudiantSerializer

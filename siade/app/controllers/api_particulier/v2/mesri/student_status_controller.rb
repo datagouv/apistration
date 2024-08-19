@@ -36,26 +36,37 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulier::V2::B
         ine: params[:ine]
       }
     else
-      {
-        family_name: params[:nom],
-        first_name: params[:prenom],
-        birth_date: params[:dateDeNaissance],
-        birth_place: params[:lieuDeNaissance],
-        gender: params[:sexe]
-      }
+      mesri_student_civility_params
     end
+  end
+
+  # rubocop:disable Metrics/AbcSize
+  def mesri_student_civility_params
+    {
+      nom_naissance: params[:nom],
+      prenoms: [params[:prenom]],
+      birth_date: params[:dateDeNaissance],
+      annee_date_de_naissance: params[:dateDeNaissance].split('-').first,
+      mois_date_de_naissance: params[:dateDeNaissance].split('-').second,
+      jour_date_de_naissance: params[:dateDeNaissance].split('-').third,
+      code_cog_insee_commune_de_naissance: params[:lieuDeNaissance],
+      sexe_etat_civil: params[:sexe]
+    }
   end
 
   def mesri_student_civility_params_from_france_connect_service_user_identity
     {
-      family_name: france_connect_service_user_identity.family_name,
-      first_name: extract_first_first_name_from_france_connect_given_name(france_connect_service_user_identity.given_name),
-      birth_date: france_connect_service_user_identity.birthdate,
-      birth_place: france_connect_service_user_identity.birthplace,
-      gender: france_connect_service_user_identity.gender == 'male' ? 'm' : 'f',
+      nom_naissance: france_connect_service_user_identity.family_name,
+      prenoms: france_connect_service_user_identity.given_name.split,
+      annee_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').first,
+      mois_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').second,
+      jour_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').third,
+      code_cog_insee_commune_de_naissance: france_connect_service_user_identity.birthplace,
+      sexe_etat_civil: france_connect_service_user_identity.gender == 'male' ? 'M' : 'F',
       france_connect: true
     }
   end
+  # rubocop:enable Metrics/AbcSize
 
   def call_with_ine?
     params[:ine].present?

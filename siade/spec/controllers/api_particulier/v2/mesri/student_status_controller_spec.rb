@@ -176,11 +176,13 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
         hash_including(
           params: hash_including(
             token_id: anything,
-            family_name: params[:family_name],
-            first_name: params[:given_name].split[0],
-            birth_date: params[:birthdate],
-            birth_place: params[:birthplace],
-            gender: 'm'
+            nom_naissance: params[:family_name],
+            prenoms: params[:given_name].split,
+            annee_date_de_naissance: params[:birthdate].split('-').first,
+            mois_date_de_naissance: params[:birthdate].split('-').second,
+            jour_date_de_naissance: params[:birthdate].split('-').third,
+            code_cog_insee_commune_de_naissance: params[:birthplace],
+            sexe_etat_civil: 'M'
           )
         )
       )
@@ -196,11 +198,13 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
           hash_including(
             params: hash_including(
               token_id: anything,
-              family_name: params[:family_name],
-              first_name: params[:given_name].split[0],
-              birth_date: params[:birthdate],
-              birth_place: params[:birthplace],
-              gender: 'm'
+              nom_naissance: params[:family_name],
+              prenoms: params[:given_name].split,
+              annee_date_de_naissance: params[:birthdate].split('-').first,
+              mois_date_de_naissance: params[:birthdate].split('-').second,
+              jour_date_de_naissance: params[:birthdate].split('-').third,
+              code_cog_insee_commune_de_naissance: params[:birthplace],
+              sexe_etat_civil: 'M'
             )
           )
         )
