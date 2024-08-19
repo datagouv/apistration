@@ -1,4 +1,6 @@
 class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithCivilityController < APIParticulier::V3AndMore::BaseController
+  include APIParticulier::CivilityParameters
+
   def show
     organizer = retrieve_payload_data(MESRI::StudentStatus::WithCivility)
 
@@ -13,19 +15,6 @@ class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithCivilityController < A
   private
 
   def organizer_params
-<<<<<<< Updated upstream
-    {
-      nom_naissance: params.require(:nomNaissance),
-      prenoms: params.require(:prenoms),
-      annee_date_de_naissance: params.require(:anneeDateDeNaissance),
-      mois_date_de_naissance: params.require(:moisDateDeNaissance),
-      jour_date_de_naissance: params.require(:jourDateDeNaissance),
-      code_cog_insee_commune_de_naissance: params[:codeCogInseeCommuneDeNaissance],
-      sexe_etat_civil: params.require(:sexeEtatCivil).upcase,
-      france_connect: true,
-      token_id: current_user.token_id
-    }
-=======
     civility_parameters(required: %i[
       nomNaissance
       prenoms
@@ -35,7 +24,6 @@ class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithCivilityController < A
       sexeEtatCivil
     ])
       .merge({ token_id: current_user.token_id })
->>>>>>> Stashed changes
   end
 
   def serializer_module
