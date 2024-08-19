@@ -2762,12 +2762,6 @@ paths:
                   description: Le paramètre recipient est obligatoire
               schema:
                 "$ref": "#/components/schemas/Error"
-        '404':
-          description: Missing payments
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/Error"
         '502':
           description: Erreur du fournisseur
           content:
@@ -2790,6 +2784,26 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+        '404':
+          description: Non trouvée
+          content:
+            application/json:
+              examples:
+                attestation_non_disponible_38422:
+                  value:
+                    errors:
+                    - code: '38422'
+                      title: Attestation non disponible
+                      detail: L'attestation ne peut être délivrée car l'entreprise
+                        n'est pas à jour de ses cotisations.
+                      source:
+                      meta:
+                        provider: CIBTP
+                  summary: Attestation non disponible
+                  description: L'attestation ne peut être délivrée car l'entreprise
+                    n'est pas à jour de ses cotisations.
+              schema:
+                "$ref": "#/components/schemas/Error"
         '504':
           description: Erreur d'intermédiaire
           content:

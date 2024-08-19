@@ -22,7 +22,7 @@ RSpec.describe CIBTP::AttestationCotisationsCongesPayesChomageIntemperies::Valid
 
     it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+    its(:errors) { is_expected.to include(instance_of(CIBTPMissingPaymentsError)) }
   end
 
   context 'with a 409 Conflict response' do

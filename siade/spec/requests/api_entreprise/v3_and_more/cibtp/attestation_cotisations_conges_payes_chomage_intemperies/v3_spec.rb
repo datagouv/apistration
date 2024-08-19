@@ -41,14 +41,6 @@ RSpec.describe 'CIBTP: AttestationCotisationsCongesPayesChomageIntemperies', api
             let(:siret) { 'lol' }
           end
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'cibtp/attestation_cotisations_conges_payes_chomage_intemperies/not_found' } do
-            let(:siret) { not_found_siret(:cibtp) }
-
-            schema '$ref' => '#/components/schemas/Error'
-
-            run_test!
-          end
-
           response '502', 'Conflict' do
             let(:siret) { valid_siret }
 
@@ -64,6 +56,14 @@ RSpec.describe 'CIBTP: AttestationCotisationsCongesPayesChomageIntemperies', api
 
           response '404', 'Missing payments', vcr: { cassette_name: 'cibtp/attestation_cotisations_conges_payes_chomage_intemperies/missing_payments' } do
             let(:siret) { '81112965900025' }
+
+            build_rswag_example(CIBTPMissingPaymentsError.new)
+
+            run_test!
+          end
+
+          response '404', 'Non trouvée', vcr: { cassette_name: 'cibtp/attestation_cotisations_conges_payes_chomage_intemperies/not_found' } do
+            let(:siret) { not_found_siret(:cibtp) }
 
             schema '$ref' => '#/components/schemas/Error'
 
