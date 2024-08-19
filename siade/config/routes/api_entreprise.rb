@@ -52,9 +52,6 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
       get 'unites_legales/:siren/beneficiaires_effectifs' => '/api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs#show'
 
       get 'unites_legales/open_data/:siren/actes_bilans' => '/api_entreprise/v3_and_more/inpi/rne/actes_bilans#show'
-
-      get 'unites_legales/open_data/actes/:document_id' => '/api_entreprise/v3_and_more/inpi/rne/actes_download#show'
-      get 'unites_legales/open_data/bilans/:document_id' => '/api_entreprise/v3_and_more/inpi/rne/bilans_download#show'
     end
   end
 

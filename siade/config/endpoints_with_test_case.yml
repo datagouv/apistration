@@ -188,14 +188,6 @@
   api: 'entreprise'
   path: '/v3/cibtp/etablissements/81125785600021/attestation_cotisations_conges_payes_chomage_intemperies'
 
-- name: "RNE INPI Actes Download"
-  api: 'entreprise'
-  path: '/v3/inpi/rne/unites_legales/open_data/actes/63e7e2e3998acaecf81b485e'
-
-- name: "RNE INPI Bilans Download"
-  api: 'entreprise'
-  path: '/v3/inpi/rne/unites_legales/open_data/bilans/63e7e2e7998acaecf81b486f'
-
 # API Particulier v2
 
 - name: 'CAF Quotient familial'
