@@ -30,7 +30,7 @@ RSpec.describe INPI::RNE::ActesBilans::BuildResource, type: :build_resource do
               updated_at: '2024-06-07',
               date_depot: '2024-01-29',
               nom_document: '000000000000_C0022A1001L167004D20240604H170356TPIJTES00111111',
-              id: '777276ab77779828c40677eb',
+              id: '63e7e2e3998acaecf81b485e',
               types: [
                 {
                   acte: 'Statuts mis à jour'
@@ -76,7 +76,7 @@ RSpec.describe INPI::RNE::ActesBilans::BuildResource, type: :build_resource do
 
       it 'has the right params' do
         expect(decrypted_params.first).to eq('actes')
-        expect(decrypted_params.second).to eq('777276ab77779828c40677eb')
+        expect(decrypted_params.second).to eq('63e7e2e3998acaecf81b485e')
         expect(decrypted_params.third).to eq(Time.zone.now.to_i.to_s)
         expect(decrypted_params.fourth).to eq('token_id')
       end
