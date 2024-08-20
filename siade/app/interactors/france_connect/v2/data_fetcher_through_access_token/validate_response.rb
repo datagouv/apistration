@@ -74,7 +74,13 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::ValidateResponse < Franc
 
     response = Net::HTTP.get_response(uri)
 
-    return OpenSSL::PKey::EC.new(response.body) if response.code == '200'
+    if response.code == '200'
+      JSON.parse(response.body)['keys'].each do |key|
+        next unless key['use'] == 'sig' && key['kty'] == 'EC'
+
+        return JWT::JWK.import(key).public_key
+      end
+    end
 
     raise unknown_provider_response!
   end

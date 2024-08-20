@@ -21,7 +21,7 @@ module ProviderStubs::FranceConnect::V2
   def france_connect_v2_checktoken_payload(scopes: minimal_france_connect_scopes)
     stub_request(:get, Siade.credentials[:france_connect_v2_jwks_url]).to_return(
       status: 200,
-      body: ecdsa_key.public_to_pem
+      body: jwks.to_json
     )
 
     JWE.encrypt(
@@ -92,5 +92,15 @@ module ProviderStubs::FranceConnect::V2
 
   def ecdsa_key
     @ecdsa_key ||= OpenSSL::PKey::EC.generate(Siade.credentials[:france_connect_v2_signing_algorithm])
+  end
+
+  def jwks
+    jwk = JWT::JWK.new(ecdsa_key)
+    # Build JWKS
+    {
+      keys: [
+        jwk.export.merge({ use: 'sig', alg: 'ES256' })
+      ]
+    }
   end
 end
