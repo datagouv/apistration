@@ -17,7 +17,11 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::MakeRequest < MakeReques
     URI(france_connect_check_token_url)
   end
 
-  def request_params
+  def extra_headers(request)
+    request['Content-Type'] = 'application/x-www-form-urlencoded'
+  end
+
+  def form_data
     {
       client_id:,
       client_secret:,
