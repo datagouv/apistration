@@ -12,10 +12,16 @@ class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithCivilityController < A
     end
   end
 
+  protected
+
+  def transcogage?
+    true
+  end
+
   private
 
   def organizer_params
-    civility_parameters(required: %i[
+    civility_parameters(requireds: %i[
       nomNaissance
       prenoms
       anneeDateDeNaissance

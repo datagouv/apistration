@@ -151,16 +151,16 @@ module RSWagCommonsResponses
       required:
   end
 
-  def parameters_cnav_identite_pivot_code_insee_departement_naissance(required)
+  def parameters_cnav_identite_pivot_code_cog_insee_departement_de_naissance(required)
     parameter name: :codeInseeDepartementNaissance,
       in: :query,
       schema: {
-        type: SwaggerData.get('parameters.civility.codeInseeDepartementNaissance.type'),
-        minLength: SwaggerData.get('parameters.civility.codeInseeDepartementNaissance.minLength'),
-        maxLength: SwaggerData.get('parameters.civility.codeInseeDepartementNaissance.maxLength'),
-        example: SwaggerData.get('parameters.civility.codeInseeDepartementNaissance.example')
+        type: SwaggerData.get('parameters.civility.codeCogInseeDepartementDeNaissance.type'),
+        minLength: SwaggerData.get('parameters.civility.codeCogInseeDepartementDeNaissance.minLength'),
+        maxLength: SwaggerData.get('parameters.civility.codeCogInseeDepartementDeNaissance.maxLength'),
+        example: SwaggerData.get('parameters.civility.codeCogInseeDepartementDeNaissance.example')
       },
-      description: SwaggerData.get('parameters.civility.codeInseeDepartementNaissance.description'),
+      description: SwaggerData.get('parameters.civility.codeCogInseeDepartementDeNaissance.description'),
       required:
   end
 

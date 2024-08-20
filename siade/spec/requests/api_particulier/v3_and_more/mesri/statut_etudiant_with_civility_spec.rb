@@ -8,8 +8,25 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with Civility', api: :pa
       common_action_attributes
 
       parameters_cnav_identite_pivot(
-        params: %w[nomNaissance prenoms anneeDateDeNaissance moisDateDeNaissance jourDateDeNaissance codeCogInseeCommuneDeNaissance sexeEtatCivil],
-        required: %w[nomNaissance prenoms anneeDateDeNaissance moisDateDeNaissance jourDateDeNaissance sexeEtatCivil]
+        params: %w[
+          nomNaissance
+          prenoms
+          anneeDateDeNaissance
+          moisDateDeNaissance
+          jourDateDeNaissance
+          codeCogInseeCommuneDeNaissance
+          sexeEtatCivil
+          nomCommuneNaissance
+          codeCogInseeDepartementDeNaissance
+        ],
+        required: %w[
+          nomNaissance
+          prenoms
+          anneeDateDeNaissance
+          moisDateDeNaissance
+          jourDateDeNaissance
+          sexeEtatCivil
+        ]
       )
 
       let(:nomNaissance) { 'Dupont' }
@@ -19,6 +36,8 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with Civility', api: :pa
       let(:jourDateDeNaissance) { '01' }
       let(:codeCogInseeCommuneDeNaissance) { '75113' }
       let(:sexeEtatCivil) { 'm' }
+      let(:code_cog_insee_departement_de_naissance) { nil }
+      let(:nom_commune_naissance) { nil }
 
       unauthorized_request
 

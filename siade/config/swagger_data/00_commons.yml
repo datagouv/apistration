@@ -181,7 +181,7 @@ parameters:
       minLength: 1
       example: 'Gennevilliers'
       description: "Nom de la commune de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
-    codeInseeDepartementNaissance:
+    codeCogInseeDepartementDeNaissance:
       type: string
       minLength: 2
       maxLength: 3
