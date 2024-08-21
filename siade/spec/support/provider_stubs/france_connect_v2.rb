@@ -25,7 +25,7 @@ module ProviderStubs::FranceConnect::V2
     )
 
     JWE.encrypt(
-      JWT.encode(france_connect_v2_decrypted_payload(scopes:).to_json, ecdsa_key, Siade.credentials[:france_connect_v2_decipher_algorithm]),
+      JWT.encode(france_connect_v2_decrypted_payload(scopes:), ecdsa_key, Siade.credentials[:france_connect_v2_decipher_algorithm]),
       OpenSSL::PKey::RSA.new(Siade.credentials[:france_connect_v2_rsa_public]),
       alg: 'RSA-OAEP',
       enc: 'A256GCM'

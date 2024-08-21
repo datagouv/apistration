@@ -33,7 +33,7 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::ValidateResponse < Franc
   end
 
   def verify_jws
-    JSON.parse(JWT.decode(context.jws, ecdsa_key, true, algorithm: decipher_algorithm).first)
+    JWT.decode(context.jws, ecdsa_key, true, algorithm: decipher_algorithm).first
   end
 
   def decipher_response
