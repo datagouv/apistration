@@ -16,8 +16,6 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::BuildUser < FranceConnec
   end
 
   def scopes
-    return all_france_connect_scopes if called_france_connect_in_staging?
-
     json_body['token_introspection']['scope'].split
   end
 
