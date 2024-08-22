@@ -2,7 +2,7 @@ RSpec.describe INPI::RNE::ActesBilans::BuildResource, type: :build_resource do
   let(:response) { instance_double(Net::HTTPOK, body:) }
 
   let(:body) { read_payload_file('inpi/rne/actes_bilans/valid.json') }
-  let(:link_regexp) { %r{^http://test\.entreprise\.api\.gouv\.fr/inpi_proxy/download/\S*$} }
+  let(:link_regexp) { %r{^http://test\.entreprise\.api\.gouv\.fr/proxy/inpi/download/\S*$} }
 
   let(:params) do
     {
