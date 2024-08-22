@@ -9,9 +9,7 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::ValidateResponse < Franc
     unknown_provider_response! if [500].include?(http_code)
 
     if http_ok?
-      fail_for_insufficient_privileges! unless scopes_include_hub_identity?
-
-      return if scopes_include_hub_identity?
+      return
     end
 
     unknown_provider_response!

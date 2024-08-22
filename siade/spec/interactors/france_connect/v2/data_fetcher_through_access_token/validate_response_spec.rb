@@ -67,38 +67,12 @@ RSpec.describe FranceConnect::V2::DataFetcherThroughAccessToken::ValidateRespons
 
       let(:body) { france_connect_v2_checktoken_payload(scopes:) }
 
-      context 'when scope includes identite_pivot nor profile or birth' do
-        let(:scopes) { 'openid identite_pivot' }
+      context 'when token is valid' do
+        let(:scopes) { 'openid' }
 
         it { is_expected.to be_a_success }
 
         its(:errors) { is_expected.to be_empty }
-      end
-
-      context 'when scope includes profile and birth (which is the same as identite_pivot)' do
-        let(:scopes) { 'openid birth profile' }
-
-        it { is_expected.to be_a_success }
-
-        its(:errors) { is_expected.to be_empty }
-      end
-
-      context 'when scope includes combinaisons of scopes which build the pivot identity' do
-        let(:scopes) do
-          'openid profile birthplace birthcountry'
-        end
-
-        it { is_expected.to be_a_success }
-
-        its(:errors) { is_expected.to be_empty }
-      end
-
-      context 'when scope does not include valid scope to build pivot identity' do
-        let(:scopes) { %w[openid profile] }
-
-        it { is_expected.to be_a_failure }
-
-        its(:errors) { is_expected.to include(instance_of(InvalidFranceConnectAccessTokenError)) }
       end
     end
   end
