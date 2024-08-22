@@ -12,41 +12,52 @@ RSpec.describe INPI::RNE::ActesBilans, type: :retriever_organizer do
 
   before(:all) do
     Timecop.freeze
-
-    Token.create!(
-      id: 'c1a72399-2fdd-427e-a9f7-dc480f158603',
-      iat: 2.hours.ago.to_i,
-      exp: 3.hours.from_now.to_i,
-      authorization_request_model_id: AuthorizationRequest.create.id,
-      scopes: %w[open_data]
-    )
   end
 
   after(:all) do
     Timecop.return
   end
 
-  context 'with valid siren', vcr: { cassette_name: 'inpi/rne/authenticate' } do
+  describe 'resource', vcr: { cassette_name: 'inpi/rne/authenticate' } do
+    subject { described_class.call(params:).bundled_data.data }
+
     before { stub_inpi_rne_actes_bilans_valid(siren:) }
 
-    it { is_expected.to be_a_success }
+    it { is_expected.to be_present }
 
-    describe 'resource' do
-      subject { described_class.call(params:).bundled_data.data }
+    it { is_expected.to be_a(Resource) }
+
+    describe 'links in resources' do
+      subject(:link) { described_class.call(params:).bundled_data.data.actes.first[:link] }
 
       it { is_expected.to be_present }
 
-      it { is_expected.to be_a(Resource) }
+      describe 'following link', type: :request, vcr: { cassette_name: 'inpi/rne/actes_download/valid' } do
+        subject { response }
 
-      describe 'links in resources' do
-        subject(:link) { described_class.call(params:).bundled_data.data.actes.first[:link] }
+        let(:document_url_regexp) { %r{http://test\.entreprise\.api\.gouv\.fr/proxy/files/[a-f0-9\-]{36}} }
 
-        it { is_expected.to be_present }
+        context 'with token not in database' do
+          before { Token.destroy_by(id: token_id) }
 
-        describe 'following link', type: :request, vcr: { cassette_name: 'inpi/rne/actes_download/valid' } do
-          subject { response }
+          it 'fails' do
+            get link
 
-          let(:document_url_regexp) { %r{http://test\.entreprise\.api\.gouv\.fr/proxy/files/[a-f0-9\-]{36}} }
+            expect(response).to have_http_status(:unauthorized)
+            expect(response.parsed_body[:errors].first).to include("Votre jeton n'a pas été trouvé dans la base de données")
+          end
+        end
+
+        context 'with valid token' do
+          before(:all) do
+            Token.create!(
+              id: 'c1a72399-2fdd-427e-a9f7-dc480f158603',
+              iat: 2.hours.ago.to_i,
+              exp: 3.hours.from_now.to_i,
+              authorization_request_model_id: AuthorizationRequest.create.id,
+              scopes: %w[open_data]
+            )
+          end
 
           it 'returns a proxy link to download the document' do
             get link

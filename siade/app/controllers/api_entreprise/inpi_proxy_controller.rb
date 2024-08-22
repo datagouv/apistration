@@ -1,19 +1,40 @@
 class APIEntreprise::INPIProxyController < APIController
   attr_reader :decrypted_params
 
-  prepend_before_action :decrypt_params!
+  prepend_before_action :decrypt_params
+  before_action :check_uuid_timestamp
 
   def show
-    render json: { error: 'Le lien a expiré. La durée de validité est de 1 heure.' }, status: :gone and return if expired_uuid?
-
     if organizer.success?
       render json: serializer.new(organizer.bundled_data).serializable_hash, status: :ok
     else
-      render json: ::ErrorsSerializer.new(organizer.errors).as_json, status: :unprocessable_entity
+      handle_errors!(organizer.errors)
     end
   end
 
   private
+
+  def handle_errors!(errors, status)
+    render(json: ::ErrorsSerializer.new(errors).as_json, status:)
+
+    false
+  end
+
+  def decrypt_params
+    @decrypted_params ||= JSON.parse(StringEncryptorService.instance.decrypt_url_safe(uuid))
+  rescue ActiveSupport::MessageEncryptor::InvalidMessage, ArgumentError
+    handle_errors!([UnprocessableEntityError.new(:uuid)], :unprocessable_entity)
+  end
+
+  def check_uuid_timestamp
+    handle_errors!([ExpiredLinkError.new('Ce lien expire après 1 heure.')], :gone) if expired_uuid?
+  end
+
+  def authenticate_user!
+    @current_user = JwtUser.new(**Token.find(token_id).to_jwt_user_attributes)
+  rescue ActiveRecord::RecordNotFound
+    handle_errors!([TokenNotFoundError.new], :unauthorized)
+  end
 
   def organizer
     retriever.call(params: organizer_params)
@@ -51,20 +72,6 @@ class APIEntreprise::INPIProxyController < APIController
 
   def expired_uuid?
     Time.zone.now.to_i - timestamp.to_i > 1.hour
-  end
-
-  def decrypt_params!
-    decrypted_json = StringEncryptorService.instance.decrypt_url_safe(uuid)
-
-    @decrypted_params ||= JSON.parse(decrypted_json)
-  rescue ActiveSupport::MessageEncryptor::InvalidMessage, ArgumentError
-    render json: { error: 'UUID Invalide' }, status: :unprocessable_entity
-
-    false
-  end
-
-  def authenticate_user!
-    @current_user = JwtUser.new(**Token.find(token_id).to_jwt_user_attributes)
   end
 
   def uuid

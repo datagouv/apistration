@@ -42,15 +42,14 @@ RSpec.describe APIEntreprise::INPIProxyController do
       let(:uuid) { 'invalid_stuff' }
 
       it { is_expected.to have_http_status(:unprocessable_entity) }
-
-      its(:parsed_body) { is_expected.to include({ error: 'UUID Invalide' }) }
+      its(:parsed_body) { is_expected.to include({ errors: ["Le paramètre uuid n'est pas correctement formatté"] }) }
     end
 
     describe 'with an expired link' do
       let(:timestamp) { 2.hours.ago.to_i }
 
       it { is_expected.to have_http_status(:gone) }
-      its(:parsed_body) { is_expected.to include({ error: 'Le lien a expiré. La durée de validité est de 1 heure.' }) }
+      its(:parsed_body) { is_expected.to include({ errors: ['Le lien de téléchargement est expiré.'] }) }
     end
   end
 end

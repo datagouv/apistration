@@ -71,6 +71,11 @@
   detail: "Votre jeton est sur liste noire, celui-ci a certainement été divulgué sur un canal non-sécurisé. Vous pouvez trouver un jeton valide sur votre espace personnel: %{dashboard_url}"
   source: *source_token
 
+- code: '00106'
+  title: 'Jeton non trouvé'
+  detail: "Votre jeton n'a pas été trouvé dans la base de données. Il s'agit probablement d'un jeton sans habilitation. Vous devez effectuer une demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/"
+  source: *source_token
+
 - code: '00201'
   title: 'Entité non traitable'
   detail: "Le paramètre context est obligatoire"
@@ -175,6 +180,12 @@
   source:
     parameter: 'limit'
 
+- code: '00314'
+  title: 'Entité non traitable'
+  detail: "Le paramètre uuid n'est pas correctement formatté"
+  source:
+    parameter: 'uuid'
+
 - code: '00351'
   title: 'Entité non traitable'
   detail: "Le code postal n'est pas correctement formatté"
@@ -249,6 +260,10 @@
 
 - code: '00402'
   title: Version d'API non prise en charge
+
+- code: '00403'
+  title: 'Lien expiré'
+  detail: 'Le lien de téléchargement est expiré.'
 
 - code: '00500'
   title: "Erreur interne"
