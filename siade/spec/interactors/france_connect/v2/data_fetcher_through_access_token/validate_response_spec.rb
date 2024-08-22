@@ -65,14 +65,22 @@ RSpec.describe FranceConnect::V2::DataFetcherThroughAccessToken::ValidateRespons
     context 'with a 200 code and payload' do
       let(:code) { '200' }
 
-      let(:body) { france_connect_v2_checktoken_payload(scopes:) }
-
-      context 'when token is valid' do
+      context 'when the token is valid' do
+        let(:body) { france_connect_v2_checktoken_payload(scopes:) }
         let(:scopes) { 'openid' }
 
         it { is_expected.to be_a_success }
 
         its(:errors) { is_expected.to be_empty }
+      end
+
+      context 'when the token is expired' do
+        let(:body) { france_connect_v2_checktoken_invalid_payload }
+        let(:scopes) { 'openid' }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(InvalidFranceConnectAccessTokenError)) }
       end
     end
   end

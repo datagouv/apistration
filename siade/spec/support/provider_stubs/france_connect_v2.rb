@@ -1,3 +1,5 @@
+# rubocop:disable Metrics/ModuleLength
+
 require_relative '../provider_stubs'
 
 module ProviderStubs::FranceConnect::V2
@@ -19,17 +21,26 @@ module ProviderStubs::FranceConnect::V2
   end
 
   def france_connect_v2_checktoken_payload(scopes: minimal_france_connect_scopes)
-    stub_request(:get, Siade.credentials[:france_connect_v2_jwks_url]).to_return(
-      status: 200,
-      body: jwks.to_json
-    )
+    stub_france_connect_v2_jwks
 
-    JWE.encrypt(
-      JWT.encode(france_connect_v2_decrypted_payload(scopes:), ecdsa_key, Siade.credentials[:france_connect_v2_decipher_algorithm]),
-      OpenSSL::PKey::RSA.new(Siade.credentials[:france_connect_v2_rsa_public]),
-      alg: 'RSA-OAEP',
-      enc: 'A256GCM'
-    )
+    encrypt_payload(france_connect_v2_decrypted_payload(scopes:))
+  end
+
+  def france_connect_v2_checktoken_invalid_payload
+    stub_france_connect_v2_jwks
+
+    encrypt_payload(france_connect_v2_decrypted_invalid_payload)
+  end
+
+  def france_connect_v2_decrypted_invalid_payload
+    {
+      aud: '423dcbdc5a15ece61ed00ff5989d72379c26d9ed4c8e4e05a87cffae019586e0',
+      iat: 1_704_965_332,
+      iss: 'https://auth.integ01.dev-franceconnect.fr/api/v2',
+      token_introspection: {
+        active: false
+      }
+    }
   end
 
   def france_connect_v2_decrypted_payload(scopes: minimal_france_connect_scopes)
@@ -94,6 +105,13 @@ module ProviderStubs::FranceConnect::V2
     @ecdsa_key ||= OpenSSL::PKey::EC.generate(Siade.credentials[:france_connect_v2_signing_algorithm])
   end
 
+  def stub_france_connect_v2_jwks
+    stub_request(:get, Siade.credentials[:france_connect_v2_jwks_url]).to_return(
+      status: 200,
+      body: jwks.to_json
+    )
+  end
+
   def jwks
     jwk = JWT::JWK.new(ecdsa_key)
     # Build JWKS
@@ -103,4 +121,14 @@ module ProviderStubs::FranceConnect::V2
       ]
     }
   end
+
+  def encrypt_payload(payload)
+    JWE.encrypt(
+      JWT.encode(payload, ecdsa_key, Siade.credentials[:france_connect_v2_decipher_algorithm]),
+      OpenSSL::PKey::RSA.new(Siade.credentials[:france_connect_v2_rsa_public]),
+      alg: 'RSA-OAEP',
+      enc: 'A256GCM'
+    )
+  end
 end
+# rubocop:enable Metrics/ModuleLength

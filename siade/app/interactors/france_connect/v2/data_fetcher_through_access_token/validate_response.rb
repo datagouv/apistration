@@ -9,7 +9,9 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::ValidateResponse < Franc
     unknown_provider_response! if [500].include?(http_code)
 
     if http_ok?
-      return
+      fail_for_token_expired! unless token_valid?
+
+      return if token_valid?
     end
 
     unknown_provider_response!
@@ -81,5 +83,13 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::ValidateResponse < Franc
     end
 
     raise unknown_provider_response!
+  end
+
+  def fail_for_token_expired!
+    fail_with_error!(InvalidFranceConnectAccessTokenError.new(:not_found_or_expired))
+  end
+
+  def token_valid?
+    json_body['token_introspection']['active']
   end
 end
