@@ -57,11 +57,6 @@
   detail: "Votre token n'est pas valide ou n'est pas renseigné"
   source: *source_token
 
-- code: '00102'
-  title: 'Format de jeton plus supporté'
-  detail: "Vous avez utilisé un token à l'ancien format. Ce format n'est plus supporté depuis avril 2019. Vous devez refaire une demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/"
-  source: *source_token
-
 - code: '00103'
   title: 'Jeton expiré'
   detail: "Votre token est expiré. Vous devez refaire une demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration"
