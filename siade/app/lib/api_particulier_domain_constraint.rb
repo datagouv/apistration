@@ -6,13 +6,13 @@ class APIParticulierDomainConstraint
   end
 
   def matches?(request)
-    request.host =~ /particulier\.api/ && api_version_valid?(request)
+    !!(request.host =~ /particulier\.api/) && api_version_valid?(request)
   end
 
   private
 
   def api_version_valid?(request)
     !v3_and_more ||
-      request.path_parameters[:api_version] =~ /\d+/
+      !!(request.path_parameters[:api_version] =~ /\d+/)
   end
 end
