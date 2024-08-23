@@ -6,7 +6,7 @@ class APIEntreprise::INPIProxyController < APIController
 
   def show
     if organizer.success?
-      render json: serializer.new(organizer.bundled_data).serializable_hash, status: :ok
+      render json: serializer.new(organizer.bundled_data, current_user).serializable_hash, status: :ok
     else
       handle_errors!(organizer.errors)
     end
