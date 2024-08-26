@@ -1,4 +1,4 @@
-Dir[Rails.root.join('spec/support/rswag_*.rb')].each { |f| require f }
+Rails.root.glob('spec/support/rswag_*.rb').each { |f| require f }
 
 RSpec.shared_context 'Mandatory params' do
   let(:context) { 'Dev' }

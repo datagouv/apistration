@@ -31,9 +31,9 @@ require 'vcr_helper'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
-Dir[Rails.root.join('spec/factories/**/*.rb')].each { |f| require f }
-Dir[Rails.root.join('lib/generators/**/*.rb')].each { |f| require f }
+Rails.root.glob('spec/support/**/*.rb').each { |f| require f }
+Rails.root.glob('spec/factories/**/*.rb').each { |f| require f }
+Rails.root.glob('lib/generators/**/*.rb').each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.

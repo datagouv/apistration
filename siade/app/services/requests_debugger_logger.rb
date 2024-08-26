@@ -21,7 +21,7 @@ class RequestsDebuggerLogger
   end
 
   def logger
-    @logger ||= Logger.new(logger_path, 0, 1.gigabytes)
+    @logger ||= Logger.new(logger_path, 0, 1.gigabyte)
   end
 
   def logger_path
