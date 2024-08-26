@@ -1,26 +1,3 @@
-if ENV['COVERAGE']
-  require 'simplecov'
-  SimpleCov.start 'rails' do
-    add_filter 'vendor'
-    add_filter 'lib/siade'
-    add_filter 'app/controllers/api_entreprise/v2'
-    add_filter do |source_file|
-      File.basename(source_file.filename).include?('v2')
-    end
-    add_filter 'app/serializers/api_entreprise/certificat_rge_ademe_serializer.rb'
-    add_filter 'app/serializers/api_entreprise/bilans_entreprise_bdf_serializer.rb'
-  end
-
-  if ENV['CI']
-    require 'simplecov-cobertura'
-
-    SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([
-      SimpleCov::Formatter::HTMLFormatter,
-      SimpleCov::Formatter::CoberturaFormatter
-    ])
-  end
-end
-
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
