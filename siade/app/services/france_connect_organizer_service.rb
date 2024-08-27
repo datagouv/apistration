@@ -18,7 +18,7 @@ class FranceConnectOrganizerService
 
   def call_v1?
     !france_connect_v2_enabled? || @organizer.errors.any? do |error|
-      error.kind == :unauthorized
+      error.kind == :unauthorized || Rails.env.staging?
     end
   end
 
