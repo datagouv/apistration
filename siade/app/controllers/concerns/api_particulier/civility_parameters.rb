@@ -63,12 +63,12 @@ module APIParticulier::CivilityParameters
     @transcogage_params ||= {
       nom_commune_naissance: params[:nomCommuneNaissance],
       annee_date_de_naissance: params[:anneeDateDeNaissance],
-      code_insee_departement_de_naissance: params[:codeCogInseeDepartementDeNaissance]
+      code_cog_insee_departement_de_naissance: params[:codeCogInseeDepartementDeNaissance]
     }
   end
 
   def transcogage_params?
-    %i[nom_commune_naissance annee_date_de_naissance code_insee_departement_de_naissance].all? { |key| transcogage_params[key].present? }
+    %i[nom_commune_naissance annee_date_de_naissance code_cog_insee_departement_de_naissance].all? { |key| transcogage_params[key].present? }
   end
 
   def civility_param(param, required)

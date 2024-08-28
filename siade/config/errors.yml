@@ -258,6 +258,38 @@
   title: 'Entité non traitable'
   detail: "L'année scolaire n'est pas correctement formatée: doit être sur le format YYYY ou YYYY-YYYY)"
 
+- code: '00420'
+  title: 'Entité non traitable'
+  detail: "Le nom de naissance est manquant"
+
+- code: '00421'
+  title: 'Entité non traitable'
+  detail: "Le(s) prenom(s) est manquant"
+
+- code: '00422'
+  title: 'Entité non traitable'
+  detail: "L'annee de naissance est manquante"
+
+- code: '00423'
+  title: 'Entité non traitable'
+  detail: "Le mois de naissance est manquant"
+
+- code: '00424'
+  title: 'Entité non traitable'
+  detail: "Le jour de naissance est manquant"
+
+- code: '00425'
+  title: 'Entité non traitable'
+  detail: "La date de naissance n'est pas valide"
+
+- code: '00426'
+  title: 'Entité non traitable'
+  detail: "Le code cog de la commune de naissance est manquant"
+
+- code: '00427'
+  title: 'Entité non traitable'
+  detail: "Le sexe de l'état civil est manquant"
+
 - code: '00402'
   title: Version d'API non prise en charge
 

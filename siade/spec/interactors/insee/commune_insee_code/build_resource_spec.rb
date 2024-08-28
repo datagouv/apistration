@@ -9,12 +9,12 @@ RSpec.describe INSEE::CommuneINSEECode::BuildResource, type: :build_resource do
       {
         nom_commune_naissance:,
         annee_date_de_naissance:,
-        code_insee_departement_de_naissance:
+        code_cog_insee_departement_de_naissance:
       }
     end
 
     let(:annee_date_de_naissance) { '2000' }
-    let(:code_insee_departement_de_naissance) { '75' }
+    let(:code_cog_insee_departement_de_naissance) { '75' }
 
     context 'with a response which has 1 result', vcr: { cassette_name: 'insee/metadonnees/one_result' } do
       let(:nom_commune_naissance) { 'Gennevilliers' }
@@ -33,8 +33,8 @@ RSpec.describe INSEE::CommuneINSEECode::BuildResource, type: :build_resource do
     context 'with a response which has more than 2 results', vcr: { cassette_name: 'insee/metadonnees/multiple_results' } do
       let(:nom_commune_naissance) { 'La Rochette' }
 
-      context 'with 05 as code_insee_departement_de_naissance' do
-        let(:code_insee_departement_de_naissance) { '05' }
+      context 'with 05 as code_cog_insee_departement_de_naissance' do
+        let(:code_cog_insee_departement_de_naissance) { '05' }
 
         describe 'resource' do
           subject { organizer.bundled_data.data }
@@ -45,8 +45,8 @@ RSpec.describe INSEE::CommuneINSEECode::BuildResource, type: :build_resource do
         end
       end
 
-      context 'with 04 as code_insee_departement_de_naissance' do
-        let(:code_insee_departement_de_naissance) { '04' }
+      context 'with 04 as code_cog_insee_departement_de_naissance' do
+        let(:code_cog_insee_departement_de_naissance) { '04' }
 
         describe 'resource' do
           subject { organizer.bundled_data.data }

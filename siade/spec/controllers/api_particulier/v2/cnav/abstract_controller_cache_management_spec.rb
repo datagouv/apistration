@@ -62,10 +62,10 @@ RSpec.describe APIParticulier::V2::CNAV::AbstractController, 'cache management' 
         mois_date_de_naissance: '6',
         jour_date_de_naissance: '12',
         code_pays_lieu_de_naissance: '99100',
-        gender: 'M',
+        sexe_etat_civil: 'M',
         recipient:,
-        code_insee_lieu_de_naissance: '17300',
-        code_insee_departement_de_naissance: nil,
+        code_cog_insee_commune_de_naissance: '17300',
+        code_cog_insee_departement_de_naissance: nil,
         nom_commune_naissance: nil,
         annee: '2024',
         mois: '12'

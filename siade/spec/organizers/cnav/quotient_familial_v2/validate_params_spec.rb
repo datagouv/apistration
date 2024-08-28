@@ -4,13 +4,13 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params 
   let(:params) do
     {
       prenoms:,
-      gender:,
+      sexe_etat_civil:,
       code_pays_lieu_de_naissance:,
 
-      code_insee_lieu_de_naissance:,
+      code_cog_insee_commune_de_naissance:,
       nom_commune_naissance:,
       annee_date_de_naissance:,
-      code_insee_departement_de_naissance:,
+      code_cog_insee_departement_de_naissance:,
 
       mois_date_de_naissance:,
       jour_date_de_naissance:,
@@ -24,12 +24,12 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params 
   end
 
   let(:prenoms) { %w[jean] }
-  let(:gender) { 'F' }
+  let(:sexe_etat_civil) { 'F' }
   let(:code_pays_lieu_de_naissance) { '99345' }
 
-  let(:code_insee_lieu_de_naissance) { '12345' }
+  let(:code_cog_insee_commune_de_naissance) { '12345' }
   let(:nom_commune_naissance) { nil }
-  let(:code_insee_departement_de_naissance) { nil }
+  let(:code_cog_insee_departement_de_naissance) { nil }
 
   let(:annee_date_de_naissance) { 1988 }
   let(:mois_date_de_naissance) { 2 }
@@ -43,17 +43,17 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params 
 
   describe 'with transcogage params' do
     let(:nom_commune_naissance) { 'Gennevilliers' }
-    let(:code_insee_lieu_de_naissance) { nil }
+    let(:code_cog_insee_commune_de_naissance) { nil }
     let(:code_pays_lieu_de_naissance) { '99100' }
 
     context 'when it is valid' do
-      let(:code_insee_departement_de_naissance) { '92' }
+      let(:code_cog_insee_departement_de_naissance) { '92' }
 
       it { is_expected.to be_a_success }
     end
 
     context 'when it is not valid' do
-      let(:code_insee_departement_de_naissance) { 'invalid' }
+      let(:code_cog_insee_departement_de_naissance) { 'invalid' }
 
       it { is_expected.to be_a_failure }
 
@@ -65,8 +65,8 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params 
     it { is_expected.to be_a_success }
   end
 
-  context 'with invalid gender' do
-    let(:gender) { 'nope' }
+  context 'with invalid sexe_etat_civil' do
+    let(:sexe_etat_civil) { 'nope' }
 
     it { is_expected.to be_a_failure }
 
@@ -85,7 +85,7 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params 
 
   describe 'non regression test' do
     describe 'with empty params for lieu de naissance and in france' do
-      let(:code_insee_lieu_de_naissance) { nil }
+      let(:code_cog_insee_commune_de_naissance) { nil }
       let(:code_pays_lieu_de_naissance) { '99100' }
 
       it { is_expected.to be_a_failure }
@@ -94,7 +94,7 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params 
     end
 
     describe 'with empty params for lieu de naissance and not in france' do
-      let(:code_insee_lieu_de_naissance) { nil }
+      let(:code_cog_insee_commune_de_naissance) { nil }
       let(:code_pays_lieu_de_naissance) { '99111' }
 
       it { is_expected.to be_a_success }
@@ -103,8 +103,8 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params 
     end
   end
 
-  context 'with invalid code_insee_lieu_de_naissance' do
-    let(:code_insee_lieu_de_naissance) { 'INSEE7' }
+  context 'with invalid code_cog_insee_commune_de_naissance' do
+    let(:code_cog_insee_commune_de_naissance) { 'INSEE7' }
 
     it { is_expected.to be_a_failure }
 

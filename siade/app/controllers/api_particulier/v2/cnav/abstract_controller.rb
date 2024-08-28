@@ -44,11 +44,14 @@ class APIParticulier::V2::CNAV::AbstractController < APIParticulier::V2::BaseCon
       nom_usage: france_connect_service_user_identity.preferred_username,
       nom_naissance: france_connect_service_user_identity.family_name,
       prenoms: france_connect_service_user_identity.given_name.split,
-      date_naissance: france_connect_service_user_identity.birthdate,
-      code_insee_lieu_de_naissance: france_connect_service_user_identity.birthplace,
+      annee_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').first,
+      mois_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').second,
+      jour_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').third,
+      code_cog_insee_commune_de_naissance: france_connect_service_user_identity.birthplace,
       code_pays_lieu_de_naissance: france_connect_service_user_identity.birthcountry,
-      gender: france_connect_service_user_identity.gender == 'male' ? 'M' : 'F',
-      recipient: params[:recipient]
+      sexe_etat_civil: france_connect_service_user_identity.gender == 'male' ? 'M' : 'F',
+      recipient: params[:recipient],
+      france_connect: true
     }
   end
 
@@ -61,16 +64,16 @@ class APIParticulier::V2::CNAV::AbstractController < APIParticulier::V2::BaseCon
       mois_date_de_naissance: params[:moisDateDeNaissance],
       jour_date_de_naissance: params[:jourDateDeNaissance],
       code_pays_lieu_de_naissance: params.require(:codePaysLieuDeNaissance),
-      gender: params.require(:sexe),
+      sexe_etat_civil: params.require(:sexe),
       recipient: current_user.siret
-    }.merge(code_insee_lieu_de_naissance_or_transcogage_params)
+    }.merge(code_cog_insee_commune_de_naissance_or_transcogage_params)
   end
   # rubocop:enable Metrics/AbcSize
 
-  def code_insee_lieu_de_naissance_or_transcogage_params
+  def code_cog_insee_commune_de_naissance_or_transcogage_params
     {
-      code_insee_lieu_de_naissance: params[:codeInseeLieuDeNaissance],
-      code_insee_departement_de_naissance: params[:codeInseeDepartementNaissance],
+      code_cog_insee_commune_de_naissance: params[:codeInseeLieuDeNaissance],
+      code_cog_insee_departement_de_naissance: params[:codeInseeDepartementNaissance],
       nom_commune_naissance: params[:nomCommuneNaissance]
     }
   end

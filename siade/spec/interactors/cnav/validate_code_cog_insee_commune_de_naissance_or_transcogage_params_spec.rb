@@ -1,11 +1,11 @@
-RSpec.describe CNAV::ValidateCodeINSEELieuDeNaissanceOrTranscogageParams, type: :validate_param_interactor do
+RSpec.describe CNAV::ValidateCodeCogINSEECommuneDeNaissanceOrTranscogageParams, type: :validate_param_interactor do
   subject { described_class.call(params:) }
 
   describe 'with code insee lieu de naissance' do
-    let(:params) { { code_insee_lieu_de_naissance:, code_pays_lieu_de_naissance: '99100' } }
+    let(:params) { { code_cog_insee_commune_de_naissance:, code_pays_lieu_de_naissance: '99100' } }
 
     context 'when it is not valid' do
-      let(:code_insee_lieu_de_naissance) { nil }
+      let(:code_cog_insee_commune_de_naissance) { nil }
 
       it { is_expected.to be_a_failure }
 
@@ -13,7 +13,7 @@ RSpec.describe CNAV::ValidateCodeINSEELieuDeNaissanceOrTranscogageParams, type: 
     end
 
     context 'when it is valid' do
-      let(:code_insee_lieu_de_naissance) { '12345' }
+      let(:code_cog_insee_commune_de_naissance) { '12345' }
 
       it { is_expected.to be_a_success }
     end
@@ -24,7 +24,7 @@ RSpec.describe CNAV::ValidateCodeINSEELieuDeNaissanceOrTranscogageParams, type: 
       {
         nom_commune_naissance: 'Gennevilliers',
         annee_date_de_naissance:,
-        code_insee_departement_de_naissance: '92',
+        code_cog_insee_departement_de_naissance: '92',
         code_pays_lieu_de_naissance: '99100'
       }
     end

@@ -14,9 +14,9 @@ class CNAV::MakeRequest < MakeRequest::Get
       anneeDateDeNaissance: int_or_nil(date_naissance.split('-').first.to_i),
       moisDateDeNaissance: int_or_nil(date_naissance.split('-').second.to_i),
       jourDateDeNaissance: int_or_nil(date_naissance.split('-').last.to_i),
-      codeInseeLieuDeNaissance: context.params[:code_insee_lieu_de_naissance],
+      codeInseeLieuDeNaissance: context.params[:code_cog_insee_commune_de_naissance],
       codePaysLieuDeNaissance: context.params[:code_pays_lieu_de_naissance],
-      sexe: context.params[:gender]
+      sexe: context.params[:sexe_etat_civil]
     }.compact
   end
   # rubocop:enable Metrics/AbcSize
@@ -35,9 +35,9 @@ class CNAV::MakeRequest < MakeRequest::Get
       nomNaissance: context.params[:nom_naissance],
       listePrenoms: liste_prenoms,
       dateNaissance: date_naissance,
-      codeLieuNaissance: context.params[:code_insee_lieu_de_naissance],
+      codeLieuNaissance: context.params[:code_cog_insee_commune_de_naissance],
       codePaysNaissance: context.params[:code_pays_lieu_de_naissance],
-      genre: context.params[:gender].upcase
+      genre: context.params[:sexe_etat_civil].upcase
     }.compact
   end
   # rubocop:enable Metrics/AbcSize
@@ -53,7 +53,7 @@ class CNAV::MakeRequest < MakeRequest::Get
   end
 
   def date_naissance
-    context.params[:date_naissance] || CNAV::FormatDateDeNaissance.new(
+    CNAV::FormatDateDeNaissance.new(
       context.params[:annee_date_de_naissance],
       context.params[:mois_date_de_naissance],
       context.params[:jour_date_de_naissance]

@@ -1,10 +1,10 @@
 class CNAV::ValidateParams < ValidateParamsOrganizer
   organize CNAV::ValidateRecipient,
-    ServiceUser::ValidateGender,
-    CNAV::ValidateCodeINSEELieuDeNaissanceOrTranscogageParams,
+    Civility::ValidateSexeEtatCivil,
+    CNAV::ValidateCodeCogINSEECommuneDeNaissanceOrTranscogageParams,
     CNAV::ValidateCodePaysLieuDeNaissance,
     CNAV::ValidateDateDeNaissance,
     CNAV::ValidateRequestId,
-    CNAV::ValidatePrenoms,
-    CNAV::ValidateNomNaissance
+    Civility::ValidatePrenoms,
+    Civility::ValidateNomNaissance
 end

@@ -93,9 +93,9 @@ test:
           annee_date_de_naissance: 2000
           mois_date_de_naissance: 1
           jour_date_de_naissance: 1
-          gender: 'M'
+          sexe_etat_civil: 'M'
           code_pays_lieu_de_naissance: '99100'
-          code_insee_lieu_de_naissance: '17300'
+          code_cog_insee_commune_de_naissance: '17300'
           user_id: 'PING_DINUM'
           request_id: '22222222-2222-2222-2222-222222222222'
         token_interactor: 'CNAV::Authenticate'
@@ -251,9 +251,9 @@ shared:
           annee_date_de_naissance: 2000
           mois_date_de_naissance: 1
           jour_date_de_naissance: 1
-          gender: 'M'
+          sexe_etat_civil: 'M'
           code_pays_lieu_de_naissance: '99100'
-          code_insee_lieu_de_naissance: '17300'
+          code_cog_insee_commune_de_naissance: '17300'
           user_id: 'PING_DINUM'
           request_id: '22222222-2222-2222-2222-222222222222'
         status_to_check: 404

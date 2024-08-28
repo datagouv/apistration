@@ -12,7 +12,7 @@ RSpec.describe CNAV::AllocationSoutienFamilial, type: :retriever_organizer do
         annee_date_de_naissance: 1980,
         mois_date_de_naissance: 6,
         jour_date_de_naissance: 12,
-        gender:,
+        sexe_etat_civil:,
         code_pays_lieu_de_naissance: '99100',
         request_id:,
         user_id: valid_siret,
@@ -20,7 +20,7 @@ RSpec.describe CNAV::AllocationSoutienFamilial, type: :retriever_organizer do
       }
     end
 
-    let(:gender) { 'M' }
+    let(:sexe_etat_civil) { 'M' }
 
     context 'when it is with transcogage params' do
       before do
@@ -31,7 +31,7 @@ RSpec.describe CNAV::AllocationSoutienFamilial, type: :retriever_organizer do
         common_params.merge(
           nom_commune_naissance:,
           annee_date_de_naissance: '2000',
-          code_insee_departement_de_naissance: '92'
+          code_cog_insee_departement_de_naissance: '92'
         )
       end
 
@@ -69,7 +69,7 @@ RSpec.describe CNAV::AllocationSoutienFamilial, type: :retriever_organizer do
     context 'when it is with code insee lieu de naissance' do
       let(:params) do
         common_params.merge(
-          code_insee_lieu_de_naissance: '17300'
+          code_cog_insee_commune_de_naissance: '17300'
         )
       end
 
@@ -89,7 +89,7 @@ RSpec.describe CNAV::AllocationSoutienFamilial, type: :retriever_organizer do
       end
 
       describe 'with an invalid params' do
-        let(:gender) { 'nope' }
+        let(:sexe_etat_civil) { 'nope' }
 
         it { is_expected.to be_a_failure }
 
@@ -106,10 +106,12 @@ RSpec.describe CNAV::AllocationSoutienFamilial, type: :retriever_organizer do
         nom_usage: 'MARTIN',
         nom_naissance: 'DUPONT',
         prenoms: ['Jean Martin'],
-        date_naissance: '2000-01-01',
-        code_insee_lieu_de_naissance: '75101',
+        annee_date_de_naissance: 2000,
+        mois_date_de_naissance: 1,
+        jour_date_de_naissance: 1,
+        code_cog_insee_commune_de_naissance: '75101',
         code_pays_lieu_de_naissance: '99100',
-        gender: 'M',
+        sexe_etat_civil: 'M',
         user_id: 'france_connect_client_name',
         request_id:,
         recipient:

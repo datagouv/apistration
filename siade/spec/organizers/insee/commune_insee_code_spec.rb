@@ -5,13 +5,13 @@ RSpec.describe INSEE::CommuneINSEECode, type: :retriever_organizer do
     {
       nom_commune_naissance:,
       annee_date_de_naissance:,
-      code_insee_departement_de_naissance:
+      code_cog_insee_departement_de_naissance:
     }
   end
 
   let(:nom_commune_naissance) { 'Gennevilliers' }
   let(:annee_date_de_naissance) { '2000' }
-  let(:code_insee_departement_de_naissance) { '92' }
+  let(:code_cog_insee_departement_de_naissance) { '92' }
 
   describe 'with valid attributes', vcr: { cassette_name: 'insee/metadonnees/one_result' } do
     it { is_expected.to be_a_success }

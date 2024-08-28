@@ -12,9 +12,9 @@ RSpec.describe CNAV::MakeRequest, type: :make_request do
         annee_date_de_naissance: 1980,
         mois_date_de_naissance: 6,
         jour_date_de_naissance: 12,
-        gender: 'M',
+        sexe_etat_civil: 'M',
         code_pays_lieu_de_naissance: '99100',
-        code_insee_lieu_de_naissance: '17300',
+        code_cog_insee_commune_de_naissance: '17300',
         recipient: valid_siret,
         request_id:
       }
@@ -54,7 +54,7 @@ RSpec.describe CNAV::MakeRequest, type: :make_request do
       end
     end
 
-    context 'when passing downcase gender m instead of M (non-regression test)' do
+    context 'when passing downcase sexe_etat_civil m instead of M (non-regression test)' do
       let(:params) do
         {
           nom_naissance: 'CHAMPION',
@@ -62,15 +62,15 @@ RSpec.describe CNAV::MakeRequest, type: :make_request do
           annee_date_de_naissance: 1980,
           mois_date_de_naissance: 6,
           jour_date_de_naissance: 12,
-          gender: 'm',
+          sexe_etat_civil: 'm',
           code_pays_lieu_de_naissance: '99100',
-          code_insee_lieu_de_naissance: '17300',
+          code_cog_insee_commune_de_naissance: '17300',
           recipient: valid_siret,
           request_id:
         }
       end
 
-      it 'calls url with upcase gender' do
+      it 'calls url with upcase sexe_etat_civil' do
         make_call
 
         expect(stubbed_request).to have_been_requested
@@ -84,10 +84,12 @@ RSpec.describe CNAV::MakeRequest, type: :make_request do
         nom_usage: 'MARTIN',
         nom_naissance: 'DUPONT',
         prenoms: %w[Jean Martin],
-        date_naissance: '2000-01-01',
-        code_insee_lieu_de_naissance: '75101',
+        annee_date_de_naissance: 2000,
+        mois_date_de_naissance: 0o1,
+        jour_date_de_naissance: 0o1,
+        code_cog_insee_commune_de_naissance: '75101',
         code_pays_lieu_de_naissance: '99100',
-        gender: 'M',
+        sexe_etat_civil: 'M',
         recipient: valid_siret,
         request_id:
       }

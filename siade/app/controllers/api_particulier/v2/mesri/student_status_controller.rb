@@ -45,7 +45,6 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulier::V2::B
     {
       nom_naissance: params[:nom],
       prenoms: [params[:prenom]],
-      birth_date: params[:dateDeNaissance],
       annee_date_de_naissance: params[:dateDeNaissance].split('-').first,
       mois_date_de_naissance: params[:dateDeNaissance].split('-').second,
       jour_date_de_naissance: params[:dateDeNaissance].split('-').third,
