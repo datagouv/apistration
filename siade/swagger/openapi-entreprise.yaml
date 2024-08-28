@@ -13585,7 +13585,7 @@ paths:
                             link:
                               title: Lien vers l'acte
                               type: string
-                              example: https://test.entreprise.api.gouv.fr/inpi_proxy/download/%2FV+svyVVJGVCJroamyqjOrECaXHorkxJ39vZH1IMHz4N+6gvit9zgoQ=--rJ1ss+Brc7oVhloH--huyvWA83YgMFqOnjyKDmXQ==
+                              example: https://entreprise.api.gouv.fr/proxy/inpi/download/%2FV+svyVVJGVCJroamyqjOrECaXHorkxJ39vZH1IMHz4N+6gvit9zgoQ=--rJ1ss+Brc7oVhloH--huyvWA83YgMFqOnjyKDmXQ==
                             types:
                               title: Types reprise de données
                               type: array
@@ -13636,7 +13636,7 @@ paths:
                             link:
                               title: Lien vers le bilan
                               type: string
-                              example: https://entreprise.api.gouv.fr/inpi_proxy/download/%2FV+svyVVJGVCJroamyqjOrECaXHorkxJ39vZH1IMHz4N+6gvit9zgoQ=--rJ1ss+Brc7oVhloH--huyvWA83YgMFqOnjyKDmXQ==
+                              example: https://entreprise.api.gouv.fr/proxy/inpi/download/%2FV+svyVVJGVCJroamyqjOrECaXHorkxJ39vZH1IMHz4N+6gvit9zgoQ=--rJ1ss+Brc7oVhloH--huyvWA83YgMFqOnjyKDmXQ==
                             date_cloture:
                               title: Date de clôture du bilan
                               type: string
