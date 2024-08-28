@@ -102,7 +102,7 @@ module RSWagCommonsResponses
   end
 
   def parameters_cnav_identite_pivot_code_cog_insee_commune_de_naissance(required)
-    parameter name: :code_cog_insee_commune_de_naissance,
+    parameter name: :codeCogInseeCommuneDeNaissance,
       in: :query,
       schema: {
         type: SwaggerData.get('parameters.civility.codeCogInseeCommuneDeNaissance.type'),

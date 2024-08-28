@@ -58,7 +58,7 @@ class APIParticulier::V2::CNAV::AbstractController < APIParticulier::V2::BaseCon
   def civility_params
     {
       nom_usage: params[:nomUsage],
-      nom_naissance: params[:nomNaissance],
+      nom_naissance: params.require(:nomNaissance),
       prenoms: params[:prenoms],
       annee_date_de_naissance: params[:anneeDateDeNaissance],
       mois_date_de_naissance: params[:moisDateDeNaissance],

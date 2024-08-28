@@ -1,4 +1,5 @@
 module APIParticulier::CivilityParameters
+  # rubocop:disable Metrics/MethodLength
   def civility_parameters(requireds: [])
     civility = {}
     %i[
@@ -10,7 +11,7 @@ module APIParticulier::CivilityParameters
       jourDateDeNaissance
       sexeEtatCivil
       nomCommuneNaissance
-      code_pays_lieu_de_naissance
+      codePaysLieuDeNaissance
     ].each do |param|
       civility[to_snake_case_sym(param)] = civility_param(param, required?(param, requireds))
     end
@@ -19,6 +20,7 @@ module APIParticulier::CivilityParameters
 
     civility
   end
+  # rubocop:enable Metrics/MethodLength
 
   # rubocop:disable Metrics/AbcSize
   def civility_parameters_from_france_connect
@@ -52,7 +54,7 @@ module APIParticulier::CivilityParameters
       code_cog ||= extract_code_commune_organizer.bundled_data.data.code_insee if extract_code_commune_organizer.success?
     end
 
-    return unless required && code_cog.blank?
+    return code_cog unless required && code_cog.blank?
 
     raise ActionController::ParameterMissing, 'codeCogInseeCommuneDeNaissance'
   end

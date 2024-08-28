@@ -8,6 +8,7 @@ scope path: 'v:api_version', constraints: APIParticulierDomainConstraint.new(v3_
   get 'mesri/statut_etudiant/civility', to: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_civility#show'
 
   get 'cnav/revenu_solidarite_active/france_connect', to: 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_france_connect#show'
+  get 'cnav/revenu_solidarite_active/civility', to: 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_civility#show'
 end
 
 namespace '/api', constraints: APIParticulierV2DomainConstraint.new do
