@@ -1,0 +1,47 @@
+Titre,Description,Paramètres,Status,Réponse
+,Unité légale trouvée,"{""siren"":""130025265""}",200,"{
+  ""data"": {
+    ""actes"": [
+      {
+        ""updated_at"": ""2023-11-01"",
+        ""date_depot"": ""2023-08-08"",
+        ""nom_document"": ""X9wvz5eKvKQv_C0022A1001L257081D20230902H180411TPIJTES003PDBOR"",
+        ""id"": ""65419234a1f7d1f2ba09bd8c"",
+        ""link"": ""https://entreprise.api.gouv.fr/proxy/inpi/download/%2FV+svyVVJGVCJroamyqjOrECaXHorkxJ39vZH1IMHz4N+6gvit9zgoQ=--rJ1ss+Brc7oVhloH--huyvWA83YgMFqOnjyKDmXQ=="",
+        ""types"": [
+          {
+            ""acte"": ""Acte"",
+            ""decision"": ""Augmentation du capital social""
+          }
+        ]
+      }
+    ],
+    ""bilans"": [
+      {
+        ""updated_at"": ""2023-11-01"",
+        ""date_depot"": ""2023-08-08"",
+        ""nom_document"": ""X9wvz5eKvKQv_C0022A1001L257081D20230902H180411TPIJTES003PDBOR"",
+        ""id"": ""65419234a1f7d1f2ba09bd8c"",
+        ""link"": ""https://entreprise.api.gouv.fr/proxy/inpi/download/%2FV+svyVVJGVCJroamyqjOrECaXHorkxJ39vZH1IMHz4N+6gvit9zgoQ=--rJ1ss+Brc7oVhloH--huyvWA83YgMFqOnjyKDmXQ=="",
+        ""date_cloture"": ""2023-08-08"",
+        ""type"": ""K""
+      }
+    ]
+  },
+  ""links"": {
+  },
+  ""meta"": {
+  }
+}"
+,Unité légale non trouvée,"{""siren"":""754508695""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""34003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""L'identifiant indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel. Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API."",
+      ""meta"": {
+        ""provider"": ""INPI - RNE""
+      }
+    }
+  ]
+}"
