@@ -49,22 +49,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -198,22 +182,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -716,22 +684,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -1252,22 +1204,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -1953,22 +1889,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -2551,8 +2471,9 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Certificat indiquant qu'une entreprise du BTP affiliée à la caisse
-        CIBTP est en règle de ses cotisations congés payés et au chômage-intempéries.
+      description: Certificat indiquant qu'une entreprise du bâtiment, affiliée à
+        la majorité des caisses du réseau CIBTP France, est en règle de ses cotisations
+        congés payés et chômage-intempéries.
       responses:
         '401':
           description: Non autorisé
@@ -2570,22 +2491,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -2761,12 +2666,6 @@ paths:
                   description: Le paramètre recipient est obligatoire
               schema:
                 "$ref": "#/components/schemas/Error"
-        '404':
-          description: Missing payments
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/Error"
         '502':
           description: Erreur du fournisseur
           content:
@@ -2789,6 +2688,26 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+        '404':
+          description: Non trouvée
+          content:
+            application/json:
+              examples:
+                attestation_non_disponible_38422:
+                  value:
+                    errors:
+                    - code: '38422'
+                      title: Attestation non disponible
+                      detail: L'attestation ne peut être délivrée car l'entreprise
+                        n'est pas à jour de ses cotisations.
+                      source:
+                      meta:
+                        provider: CIBTP
+                  summary: Attestation non disponible
+                  description: L'attestation ne peut être délivrée car l'entreprise
+                    n'est pas à jour de ses cotisations.
+              schema:
+                "$ref": "#/components/schemas/Error"
         '504':
           description: Erreur d'intermédiaire
           content:
@@ -2898,8 +2817,8 @@ paths:
           type: string
       security:
       - jwt_bearer_token: []
-      description: Certificat indiquant qu'une entreprise du BTP affiliée à la caisse
-        CNETP est en règle de ses cotisations congés payés et au chômage-intempéries.
+      description: Certificat indiquant qu'une entreprise de travaux publics affiliée
+        à la caisse CNETP est en règle de ses cotisations congés payés et chômage-intempéries.
       responses:
         '401':
           description: Non autorisé
@@ -2917,22 +2836,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -3347,22 +3250,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -3769,22 +3656,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -4237,22 +4108,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -4724,22 +4579,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -5118,22 +4957,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -5756,22 +5579,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -7574,22 +7381,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -8994,22 +8785,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -9358,22 +9133,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -9780,22 +9539,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -10225,22 +9968,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -10667,22 +10394,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -11110,22 +10821,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -11934,22 +11629,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -12394,397 +12073,6 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/infogreffe/rcs/unites_legales/130025265/mandataires_sociaux?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/inpi/unites_legales/{siren}/actes":
-    get:
-      summary: Actes
-      tags:
-      - Informations générales
-      parameters:
-      - name: context
-        in: query
-        description: |-
-          "**Cadre de la requête**
-
-          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
-        example: Context de test
-        required: true
-        schema:
-          type: string
-      - name: recipient
-        in: query
-        description: |-
-          "**Bénéficiaire de l’appel**
-
-          SIRET de l’administration destinatrice des données."
-        example: '13002526500013'
-        required: true
-        schema:
-          type: string
-      - name: object
-        in: query
-        description: |-
-          "**La raison de l’appel ou l’identifiant de la procédure.**
-
-          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
-        example: marché numéro 127
-        required: true
-        schema:
-          type: string
-      - name: siren
-        in: path
-        required: true
-        schema:
-          type: string
-      security:
-      - jwt_bearer_token: []
-      description: 'Actes issus des greffes et archivés à l’Institut national de propriété
-        industrielle (Inpi).
-
-        '
-      responses:
-        '401':
-          description: Non autorisé
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '403':
-          description: Accès interdit
-          content:
-            application/json:
-              examples:
-                insufficient_privileges_error:
-                  value:
-                    errors:
-                    - code: '00100'
-                      title: Privilèges insuffisants
-                      detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges sur /v2/privileges
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Privilèges insuffisants
-                  description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges sur /v2/privileges
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '429':
-          description: Trop de requêtes
-          content:
-            application/json:
-              examples:
-                too_many_requests_error:
-                  value:
-                    errors:
-                    - code: '00429'
-                      title: Trop de requêtes
-                      detail: Vous avez effectué trop de requêtes
-                      source:
-                      meta: {}
-                  summary: Trop de requêtes
-                  description: Vous avez effectué trop de requêtes
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '200':
-          description: Actes trouvés
-          headers:
-            RateLimit-Limit:
-              schema:
-                type: integer
-              description: La limite concernant l’endpoint appelé, soit le nombre
-                de requête/minute.
-              example: 50
-            RateLimit-Remaining:
-              schema:
-                type: integer
-              description: Le nombre d’appels restants durant la période courante
-                d’une minute.
-              example: 47
-            RateLimit-Reset:
-              schema:
-                type: integer
-              description: La fin de la période courante (en format timestamp)
-              example: 1637223155
-          x-operationId: api_entreprise_v3_inpi_actes
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        data:
-                          type: object
-                          properties:
-                            type:
-                              title: Type de la ressource
-                              type: string
-                              example: acte
-                              enum:
-                              - acte
-                            siren:
-                              title: Numéro Siren
-                              description: Numéro SIREN de l'entreprise concernée
-                                par l'acte
-                              type: string
-                              example: '788242667'
-                            code_greffe:
-                              title: Code greffe
-                              description: Code identifiant du greffe ayant traité
-                                l'acte
-                              type: number
-                              example: 5752
-                            date_depot:
-                              title: Date dépot
-                              description: Date à laquelle a été déposé l'acte
-                              type: string
-                              example: '2017-06-16'
-                            nature_archive:
-                              title: Nature de l'archive de l'acte
-                              description: 'Chaîne de caractères contenant une ou
-                                plusieurs lettres séparées par un tiret, explicitant
-                                de quelle(s) catégories d''archives l''acte provient:
-                                A (actes de sociétés) R (ordonnances) et P (actes
-                                de personnes physiques)'
-                              type: string
-                              example: A-R
-                          required:
-                          - type
-                          - siren
-                          - code_greffe
-                          - date_depot
-                          - nature_archive
-                        links:
-                          type: object
-                        meta:
-                          type: object
-                  meta:
-                    type: object
-                  links:
-                    type: object
-                required:
-                - data
-        '422':
-          description: Paramètre(s) invalide(s)
-          content:
-            application/json:
-              examples:
-                unprocessable_entity_error_siren_error:
-                  value:
-                    errors:
-                    - code: '00301'
-                      title: Entité non traitable
-                      detail: Le numéro de siren n'est pas correctement formatté
-                      source:
-                        parameter: siren
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le numéro de siren n'est pas correctement formatté
-                missing_mandatory_params_context_error:
-                  value:
-                    errors:
-                    - code: '00201'
-                      title: Entité non traitable
-                      detail: Le paramètre context est obligatoire
-                      source:
-                        parameter: context
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le paramètre context est obligatoire
-                missing_mandatory_params_object_error:
-                  value:
-                    errors:
-                    - code: '00202'
-                      title: Entité non traitable
-                      detail: Le paramètre object est obligatoire
-                      source:
-                        parameter: object
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le paramètre object est obligatoire
-                missing_mandatory_params_recipient_error:
-                  value:
-                    errors:
-                    - code: '00203'
-                      title: Entité non traitable
-                      detail: Le paramètre recipient est obligatoire
-                      source:
-                        parameter: recipient
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le paramètre recipient est obligatoire
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '404':
-          description: Actes non trouvés
-          content:
-            application/json:
-              examples:
-                entite_non_trouvee_05003:
-                  value:
-                    errors:
-                    - code: '05003'
-                      title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
-                        ou ne comporte aucune information pour cet appel. Veuillez
-                        vérifier que l'identifiant correspond au périmètre couvert
-                        par l'API.
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
-                    ou ne comporte aucune information pour cet appel. Veuillez vérifier
-                    que l'identifiant correspond au périmètre couvert par l'API.
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '502':
-          description: Erreur du fournisseur
-          content:
-            application/json:
-              examples:
-                provider_unknown_error:
-                  value:
-                    errors:
-                    - code: '05999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: La réponse retournée par le fournisseur de données est
-                        invalide et inconnue de notre service. L'équipe technique
-                        a été notifiée de cette erreur pour investigation.
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Erreur inconnue du fournisseur de données
-                  description: La réponse retournée par le fournisseur de données
-                    est invalide et inconnue de notre service. L'équipe technique
-                    a été notifiée de cette erreur pour investigation.
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '504':
-          description: Erreur d'intermédiaire
-          content:
-            application/json:
-              examples:
-                timeout_error:
-                  value:
-                    errors:
-                    - code: '05002'
-                      title: Intermédiaire hors-délai
-                      detail: Temps d’attente d’une réponse du fournisseur de données
-                        écoulé.
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Intermédiaire hors-délai
-                  description: Temps d’attente d’une réponse du fournisseur de données
-                    écoulé.
-                provider_unavailable_error:
-                  value:
-                    errors:
-                    - code: '05001'
-                      title: Service non disponible
-                      detail: Service du fournisseur de données temporairement indisponible
-                        ou en maintenance.
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Service non disponible
-                  description: Service du fournisseur de données temporairement indisponible
-                    ou en maintenance.
-                network_error:
-                  value:
-                    errors:
-                    - code: '00501'
-                      title: Erreur réseau
-                      detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
-                        souvent d'une erreur temporaire.
-                      source:
-                      meta:
-                        retry_in: 10
-                  summary: Erreur réseau
-                  description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
-                    souvent d'une erreur temporaire.
-                dns_resolution_error:
-                  value:
-                    errors:
-                    - code: '05004'
-                      title: Erreur de résolution DNS
-                      detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Erreur de résolution DNS
-                  description: Problème de résolution DNS de l'adresse du serveur
-              schema:
-                "$ref": "#/components/schemas/Error"
-      x-codeSamples:
-      - lang: cURL
-        label: Ligne de commande
-        source: |-
-          curl -X GET \
-            -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/inpi/unites_legales/130025265/actes?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/inpi/unites_legales/{siren}/brevets":
     get:
       summary: Brevets déposés
@@ -12856,22 +12144,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -13373,22 +12645,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -13790,22 +13046,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -14221,22 +13461,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -14358,6 +13582,10 @@ paths:
                               title: Identifiant de l'acte
                               type: string
                               example: 65419234a1f7d1f2ba09bd8c
+                            link:
+                              title: Lien vers l'acte
+                              type: string
+                              example: https://entreprise.api.gouv.fr/proxy/inpi/download/%2FV+svyVVJGVCJroamyqjOrECaXHorkxJ39vZH1IMHz4N+6gvit9zgoQ=--rJ1ss+Brc7oVhloH--huyvWA83YgMFqOnjyKDmXQ==
                             types:
                               title: Types reprise de données
                               type: array
@@ -14405,6 +13633,10 @@ paths:
                               title: Identifiant du bilan
                               type: string
                               example: 65419234a1f7d1f2ba09bd8c
+                            link:
+                              title: Lien vers le bilan
+                              type: string
+                              example: https://entreprise.api.gouv.fr/proxy/inpi/download/%2FV+svyVVJGVCJroamyqjOrECaXHorkxJ39vZH1IMHz4N+6gvit9zgoQ=--rJ1ss+Brc7oVhloH--huyvWA83YgMFqOnjyKDmXQ==
                             date_cloture:
                               title: Date de clôture du bilan
                               type: string
@@ -14700,22 +13932,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -15792,22 +15008,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -16416,22 +15616,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -17070,22 +16254,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -18434,22 +17602,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -19838,22 +18990,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -21243,22 +20379,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -22600,22 +21720,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -23040,22 +22144,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -23897,22 +22985,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -24762,22 +23834,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -25252,22 +24308,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -25770,22 +24810,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -26134,22 +25158,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -26624,22 +25632,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -27037,22 +26029,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -27422,22 +26398,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -27871,22 +26831,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -28428,22 +27372,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -29048,22 +27976,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:
@@ -29453,22 +28365,6 @@ paths:
                       meta: {}
                   summary: Interdit
                   description: Votre token n'est pas valide ou n'est pas renseigné
-                old_token_error:
-                  value:
-                    errors:
-                    - code: '00102'
-                      title: Format de jeton plus supporté
-                      detail: Vous avez utilisé un token à l'ancien format. Ce format
-                        n'est plus supporté depuis avril 2019. Vous devez refaire
-                        une demande à API Entreprise, un guide est disponible sur
-                        https://entreprise.api.gouv.fr/demander_un_acces/
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Format de jeton plus supporté
-                  description: Vous avez utilisé un token à l'ancien format. Ce format
-                    n'est plus supporté depuis avril 2019. Vous devez refaire une
-                    demande à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/demander_un_acces/
                 expired_token_error:
                   value:
                     errors:

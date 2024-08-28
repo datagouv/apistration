@@ -44,7 +44,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * Brevets déposés (`/v3/inpi/unites_legales/{siren}/brevets`)
 * Marques déposées (`/v3/inpi/unites_legales/{siren}/marques`)
 * Modèles déposés (`/v3/inpi/unites_legales/{siren}/modeles`)
-* Actes et bilans (`/v3/inpi/rne/unites_legales/open_data/{siren}/actes_bilans`)
+* [Actes et bilans](api_entreprise_v3_inpi_rne_actes_bilans) (`/v3/inpi/rne/unites_legales/open_data/{siren}/actes_bilans`)
 * [Bénéficiaires effectifs](api_entreprise_v3_inpi_rne_beneficiaires_effectifs) (`/v3/inpi/rne/unites_legales/{siren}/beneficiaires_effectifs`)
 * [Adresse établissement](api_entreprise_v3_insee_adresses_etablissements) (`/v3/insee/sirene/etablissements/{siret}/adresse`)
 * [Adresse établissement en open data](api_entreprise_v3_insee_adresses_etablissements_diffusables) (`/v3/insee/sirene/etablissements/diffusibles/{siret}/adresse`)
