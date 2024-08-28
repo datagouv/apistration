@@ -19,7 +19,7 @@ module ProviderStubs::CNAV
       }
     ).to_return(
       status: 200,
-      body: Rails.root.join("spec/fixtures/payloads/cnav/#{api}/make_request_valid.json").read,
+      body: read_payload_file("cnav/#{api}/make_request_valid.json"),
       headers: {
         'X-APISECU-FD' => '00810011'
       }
@@ -69,7 +69,7 @@ module ProviderStubs::CNAV
       headers: {
         'X-APISECU-FD' => provider_code
       },
-      body: Rails.root.join("spec/fixtures/payloads/cnav/#{api}/404.json").read
+      body: read_payload_file("cnav/#{api}/404.json")
     )
   end
 
@@ -79,7 +79,7 @@ module ProviderStubs::CNAV
     ).to_return(
       status: 404,
       headers: {},
-      body: Rails.root.join("spec/fixtures/payloads/cnav/#{api}/404.json").read
+      body: read_payload_file("cnav/#{api}/404.json")
     )
   end
 

@@ -259,6 +259,9 @@ shared:
     - mesri_statut
     - mesri_regime
     - mesri_etablissements
+  api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_france_connect:
+    - revenu_solidarite_active
+    - revenu_solidarite_active_majoration
 test:
   api_whatever/whatever_resource: &default_test_scopes
     - allowed_scope

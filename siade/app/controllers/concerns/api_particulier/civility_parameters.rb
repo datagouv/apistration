@@ -2,6 +2,7 @@ module APIParticulier::CivilityParameters
   def civility_parameters(requireds: [])
     civility = {}
     %i[
+      nomUsage
       nomNaissance
       prenoms
       anneeDateDeNaissance
@@ -9,6 +10,7 @@ module APIParticulier::CivilityParameters
       jourDateDeNaissance
       sexeEtatCivil
       nomCommuneNaissance
+      code_pays_lieu_de_naissance
     ].each do |param|
       civility[to_snake_case_sym(param)] = civility_param(param, required?(param, requireds))
     end
@@ -21,12 +23,14 @@ module APIParticulier::CivilityParameters
   # rubocop:disable Metrics/AbcSize
   def civility_parameters_from_france_connect
     {
+      nom_usage: france_connect_service_user_identity.preferred_username,
       nom_naissance: france_connect_service_user_identity.family_name,
       prenoms: france_connect_service_user_identity.given_name.split,
       annee_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').first,
       mois_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').second,
       jour_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').third,
       code_cog_insee_commune_de_naissance: france_connect_service_user_identity.birthplace,
+      code_pays_lieu_de_naissance: france_connect_service_user_identity.birthcountry,
       sexe_etat_civil: france_connect_service_user_identity.gender == 'male' ? 'M' : 'F',
       france_connect: true
     }
