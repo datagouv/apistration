@@ -19,6 +19,13 @@ RSpec.describe APIParticulier::V2::CNAV::AbstractController, 'cache management' 
         CNAV::QuotientFamilialV2
       end
 
+      def user_identity_params
+        super.merge({
+          annee: params[:annee],
+          mois: params[:mois]
+        })
+      end
+
       def expires_in
         24.hours
       end

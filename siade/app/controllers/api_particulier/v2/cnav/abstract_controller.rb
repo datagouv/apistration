@@ -48,8 +48,6 @@ class APIParticulier::V2::CNAV::AbstractController < APIParticulier::V2::BaseCon
       code_insee_lieu_de_naissance: france_connect_service_user_identity.birthplace,
       code_pays_lieu_de_naissance: france_connect_service_user_identity.birthcountry,
       gender: france_connect_service_user_identity.gender == 'male' ? 'M' : 'F',
-      annee: params[:annee],
-      mois: params[:mois],
       recipient: params[:recipient]
     }
   end
@@ -64,8 +62,6 @@ class APIParticulier::V2::CNAV::AbstractController < APIParticulier::V2::BaseCon
       jour_date_de_naissance: params[:jourDateDeNaissance],
       code_pays_lieu_de_naissance: params.require(:codePaysLieuDeNaissance),
       gender: params.require(:sexe),
-      annee: params[:annee],
-      mois: params[:mois],
       recipient: current_user.siret
     }.merge(code_insee_lieu_de_naissance_or_transcogage_params)
   end
