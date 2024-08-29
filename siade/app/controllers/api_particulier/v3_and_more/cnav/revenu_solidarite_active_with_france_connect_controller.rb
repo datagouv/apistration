@@ -1,22 +1,8 @@
-class APIParticulier::V3AndMore::CNAV::RevenuSolidariteActiveWithFranceConnectController < APIParticulier::V3AndMore::BaseController
-  include APIParticulier::FranceConnectable
-  include APIParticulier::CivilityParameters
-
-  def show
-    organizer = retrieve_payload_data(CNAV::RevenuSolidariteActive)
-
-    if organizer.success?
-      render json: serialize_data(organizer),
-        status: extract_http_code(organizer)
-    else
-      render_errors(organizer)
-    end
-  end
-
+class APIParticulier::V3AndMore::CNAV::RevenuSolidariteActiveWithFranceConnectController < APIParticulier::V3AndMore::CNAV::AbstractFranceConnectController
   private
 
-  def organizer_params
-    civility_parameters_from_france_connect.merge({ recipient: params[:recipient], request_id: request.request_id })
+  def organizer_class
+    CNAV::RevenuSolidariteActive
   end
 
   def serializer_module
