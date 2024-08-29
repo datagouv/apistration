@@ -265,6 +265,9 @@ shared:
   api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_civility:
     - revenu_solidarite_active
     - revenu_solidarite_active_majoration
+  api_particulier/v3_and_more/cnav/prime_activite_with_france_connect:
+    - prime_activite
+    - prime_activite_majoration
   api_particulier/v3_and_more/cnav/prime_activite_with_civility:
     - prime_activite
     - prime_activite_majoration

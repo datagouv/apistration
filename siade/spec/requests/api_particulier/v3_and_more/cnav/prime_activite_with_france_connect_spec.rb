@@ -1,13 +1,13 @@
 require 'swagger_helper'
 
-RSpec.describe 'API Particulier: CNAV: Revenu Solidarite Active with FranceConnect', api: :particulier, type: %i[request swagger] do
-  path '/v3/cnav/revenu_solidarite_active/france_connect' do
-    get SwaggerData.get('cnav.rsa.title') do
-      tags(*SwaggerData.get('cnav.rsa.tags'))
+RSpec.describe 'API Particulier: CNAV: Prime Activite with FranceConnect', api: :particulier, type: %i[request swagger] do
+  path '/v3/cnav/prime_activite/france_connect' do
+    get SwaggerData.get('cnav.prime_activite.title') do
+      tags(*SwaggerData.get('cnav.prime_activite.tags'))
 
       common_action_attributes
 
-      let(:scopes) { %i[revenu_solidarite_active] }
+      let(:scopes) { %i[prime_activite] }
 
       describe 'with a FranceConnect token' do
         let(:recipient) { valid_siret(:recipient) }
@@ -15,30 +15,30 @@ RSpec.describe 'API Particulier: CNAV: Revenu Solidarite Active with FranceConne
 
         before do
           mock_valid_france_connect_checktoken(scopes:)
-          stub_cnav_authenticate('revenu_solidarite_active')
+          stub_cnav_authenticate('prime_activite')
         end
 
-        context 'when the rsa is found' do
+        context 'when the prime acitive is found' do
           before do
-            stub_cnav_valid_with_franceconnect_data('revenu_solidarite_active', siret: recipient)
+            stub_cnav_valid_with_franceconnect_data('prime_activite', siret: recipient)
           end
 
           response '200', 'Dossier trouvé' do
-            description SwaggerData.get('cnav.rsa.description')
+            description SwaggerData.get('cnav.prime_activite.description')
 
             cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
 
             schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('cnav.rsa.attributes')
+              attributes: SwaggerData.get('cnav.prime_activite.attributes')
             )
 
             run_test!
           end
         end
 
-        context 'when the rsa is not found' do
+        context 'when the prime activite is not found' do
           before do
-            stub_cnav_404('revenu_solidarite_active')
+            stub_cnav_404('prime_activite')
           end
 
           response '404', 'Dossier non trouvé' do
