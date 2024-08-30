@@ -372,6 +372,9 @@ Lors de votre passage en production :
     Rack::Attack.reset!
   end
 
-  config.extend RSWagCommonsResponses
-  config.extend RSWagResourcesPayloads
+  config.extend RSwagCommonResponses
+  config.extend RSwagCommonErrors
+  config.extend RSwagResourcesPayloads
+  config.extend RSwagParametersAPIEntreprise
+  config.extend RSwagParametersAPIParticulier
 end

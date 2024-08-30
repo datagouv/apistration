@@ -1,4 +1,4 @@
-module RSWagResourcesPayloads
+module RSwagResourcesPayloads
   def build_rswag_response(attributes:, links: nil, meta: nil)
     {
       type: :object,
