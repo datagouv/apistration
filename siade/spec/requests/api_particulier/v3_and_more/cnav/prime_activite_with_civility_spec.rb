@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'API Particulier CNAV: prime acitivte with civility', api: :particulier, type: %i[request swagger] do
+RSpec.describe 'API Particulier CNAV: prime activite with civility', api: :particulier, type: %i[request swagger] do
   path '/v3/cnav/prime_activite/civility' do
     get SwaggerData.get('cnav.prime_activite.title') do
       tags(*SwaggerData.get('cnav.prime_activite.tags'))
