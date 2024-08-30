@@ -277,6 +277,8 @@ shared:
     - allocation_soutien_familial
   api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_civility:
     - allocation_adulte_handicape
+  api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_france_connect:
+    - allocation_adulte_handicape
 test:
   api_whatever/whatever_resource: &default_test_scopes
     - allowed_scope
