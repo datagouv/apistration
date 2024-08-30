@@ -283,6 +283,11 @@ shared:
     - complementaire_sante_solidaire
   api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_france_connect:
     - complementaire_sante_solidaire
+  api_particulier/v3_and_more/cnav/quotient_familial_with_civility:
+    - cnaf_quotient_familial
+    - cnaf_allocataires
+    - cnaf_enfants
+    - cnaf_adresse
 test:
   api_whatever/whatever_resource: &default_test_scopes
     - allowed_scope
