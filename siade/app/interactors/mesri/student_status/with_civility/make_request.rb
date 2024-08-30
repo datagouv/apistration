@@ -23,7 +23,7 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
 
   def civility_mocking_params
     {
-      nom: nom_naissancnom_naissance,
+      nom: nom_naissance,
       prenom:,
       dateDeNaissance: date_de_naissance,
       lieuDeNaissance: code_cog_insee_commune_de_naissance,
