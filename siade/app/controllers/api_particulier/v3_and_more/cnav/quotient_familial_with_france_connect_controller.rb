@@ -12,4 +12,8 @@ class APIParticulier::V3AndMore::CNAV::QuotientFamilialWithFranceConnectControll
   def organizer_params
     super.merge({ mois: params[:mois], annee: params[:annee] })
   end
+
+  def expires_in
+    24.hours
+  end
 end

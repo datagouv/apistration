@@ -65,7 +65,7 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
           response '200', 'Quotient Familial active trouvée' do
             description SwaggerData.get('cnav.quotient-familial-v2.description')
 
-            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+            cacheable_response(extra_description: SwaggerData.get('cnav.quotient-familial-v2.cache_duration'))
 
             schema build_rswag_response_api_particulier(
               attributes: SwaggerData.get('cnav.quotient-familial-v2.attributes')

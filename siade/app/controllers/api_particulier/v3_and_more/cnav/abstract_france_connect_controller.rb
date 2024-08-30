@@ -3,7 +3,7 @@ class APIParticulier::V3AndMore::CNAV::AbstractFranceConnectController < APIPart
   include APIParticulier::CivilityParameters
 
   def show
-    organizer = retrieve_payload_data(organizer_class)
+    organizer = retrieve_payload_data(organizer_class, cache: true, expires_in:)
 
     if organizer.success?
       render json: serialize_data(organizer),
@@ -11,6 +11,12 @@ class APIParticulier::V3AndMore::CNAV::AbstractFranceConnectController < APIPart
     else
       render_errors(organizer)
     end
+  end
+
+  protected
+
+  def cache_key
+    "#{request.path}:#{civility_parameters_from_france_connect.to_query}"
   end
 
   private
@@ -21,5 +27,9 @@ class APIParticulier::V3AndMore::CNAV::AbstractFranceConnectController < APIPart
 
   def organizer_class
     raise NotImplementedError
+  end
+
+  def expires_in
+    1.hour
   end
 end
