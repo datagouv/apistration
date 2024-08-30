@@ -7,10 +7,10 @@ class MEN::Scolarites::MakeRequest < MakeRequest::Get
 
   def request_params
     {
-      nom: context.params[:family_name],
-      prenom: context.params[:first_name],
+      nom: context.params[:nom_naissance],
+      prenom:,
       sexe:,
-      'date-naissance': context.params[:birth_date],
+      'date-naissance': date_de_naissance,
       'code-uai': context.params[:code_etablissement],
       'annee-scolaire': context.params[:annee_scolaire]
     }
@@ -21,12 +21,12 @@ class MEN::Scolarites::MakeRequest < MakeRequest::Get
     super
   end
 
-  def mocking_params # rubocop:disable Metrics/AbcSize
+  def mocking_params
     {
-      nom: context.params[:family_name],
-      prenom: context.params[:first_name],
-      sexe: context.params[:gender].downcase,
-      dateNaissance: context.params[:birth_date],
+      nom: context.params[:nom_naissance],
+      prenom:,
+      sexe: context.params[:sexe_etat_civil].downcase,
+      dateNaissance: date_de_naissance,
       codeEtablissement: context.params[:code_etablissement],
       anneeScolaire: context.params[:annee_scolaire]
     }
@@ -35,13 +35,25 @@ class MEN::Scolarites::MakeRequest < MakeRequest::Get
   private
 
   def sexe
-    case context.params[:gender].downcase
+    case context.params[:sexe_etat_civil].downcase
     when 'm'
       1
     when 'f'
       2
     else
-      raise 'Invalid gender sent to MakeRequest'
+      raise 'Invalid sexe_etat_civil sent to MakeRequest'
     end
+  end
+
+  def prenom
+    context.params[:prenoms].first
+  end
+
+  def date_de_naissance
+    Civility::FormatDateDeNaissance.new(
+      context.params[:annee_date_de_naissance],
+      context.params[:mois_date_de_naissance],
+      context.params[:jour_date_de_naissance]
+    ).format
   end
 end

@@ -3,38 +3,40 @@ RSpec.describe MEN::Scolarites::ValidateParams, type: :validate_params do
 
   let(:params) do
     {
-      family_name:,
-      first_name:,
-      gender:,
-      birth_date:,
+      nom_naissance:,
+      prenoms:,
+      sexe_etat_civil:,
+      annee_date_de_naissance:,
+      mois_date_de_naissance:,
+      jour_date_de_naissance:,
       code_etablissement:,
       annee_scolaire:
     }
   end
 
-  let(:family_name) { 'Dupont' }
-  let(:first_name) { 'Jean' }
-  let(:gender) { 'm' }
-  let(:birth_date) { '2000-01-01' }
+  let(:nom_naissance) { 'Dupont' }
+  let(:prenoms) { ['Jean'] }
+  let(:sexe_etat_civil) { 'm' }
+  let(:annee_date_de_naissance) { '2000' }
+  let(:mois_date_de_naissance) { '01' }
+  let(:jour_date_de_naissance) { '01' }
   let(:code_etablissement) { '1234567w' }
   let(:annee_scolaire) { '2022' }
-
-  let(:token_id) { SecureRandom.uuid }
 
   context 'with valid attributes' do
     it { is_expected.to be_a_success }
   end
 
-  context 'with missing family name' do
-    let(:family_name) { '' }
+  context 'with missing nom_naissance' do
+    let(:nom_naissance) { '' }
 
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
-  context 'without first name' do
-    let(:first_name) { '' }
+  context 'without prenoms' do
+    let(:prenoms) { [] }
 
     it { is_expected.to be_a_failure }
 
@@ -57,16 +59,16 @@ RSpec.describe MEN::Scolarites::ValidateParams, type: :validate_params do
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
-  context 'with invalid gender' do
-    let(:gender) { 'lol' }
+  context 'with invalid sexe_etat_civil' do
+    let(:sexe_etat_civil) { 'lol' }
 
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
-  context 'with invalid birthday date' do
-    let(:birth_date) { 'lol' }
+  context 'with invalid jour_date_de_naissance' do
+    let(:jour_date_de_naissance) { 'lol' }
 
     it { is_expected.to be_a_failure }
 

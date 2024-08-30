@@ -12,16 +12,20 @@ class APIParticulier::V2::MEN::ScolaritesController < APIParticulier::V2::BaseCo
 
   private
 
+  # rubocop:disable Metrics/AbcSize
   def organizer_params
     {
-      family_name: params[:nom],
-      first_name: params[:prenom],
-      gender: params[:sexe],
-      birth_date: params[:dateNaissance],
+      nom_naissance: params[:nom],
+      prenoms: [params[:prenom]],
+      annee_date_de_naissance: params[:dateNaissance].split('-').first,
+      mois_date_de_naissance: params[:dateNaissance].split('-').second,
+      jour_date_de_naissance: params[:dateNaissance].split('-').third,
+      sexe_etat_civil: params[:sexe],
       code_etablissement: params[:codeEtablissement],
       annee_scolaire: params[:anneeScolaire]
     }
   end
+  # rubocop:enable Metrics/AbcSize
 
   def format_not_found_error(error)
     {
