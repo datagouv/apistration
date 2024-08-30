@@ -279,6 +279,8 @@ shared:
     - allocation_adulte_handicape
   api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_france_connect:
     - allocation_adulte_handicape
+  api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_civility:
+    - complementaire_sante_solidaire
 test:
   api_whatever/whatever_resource: &default_test_scopes
     - allowed_scope
