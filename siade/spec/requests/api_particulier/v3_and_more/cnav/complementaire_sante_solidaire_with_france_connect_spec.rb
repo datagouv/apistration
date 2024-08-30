@@ -1,0 +1,55 @@
+require 'swagger_helper'
+
+RSpec.describe 'API Particulier: CNAV: Complementaire Sante Solidaire with FranceConnect', api: :particulier, type: %i[request swagger] do
+  path '/v3/cnav/complementaire_sante_solidaire/france_connect' do
+    get SwaggerData.get('cnav.c2s.title') do
+      tags(*SwaggerData.get('cnav.c2s.tags'))
+
+      common_action_attributes
+
+      let(:scopes) { %i[complementaire_sante_solidaire] }
+
+      describe 'with a FranceConnect token' do
+        let(:recipient) { valid_siret(:recipient) }
+        let(:Authorization) { 'Bearer super_valid_token' }
+
+        before do
+          mock_valid_france_connect_checktoken(scopes:)
+          stub_cnav_authenticate('complementaire_sante_solidaire')
+        end
+
+        context 'when the complementaire sante solidaire is found' do
+          before do
+            stub_cnav_valid_with_franceconnect_data('complementaire_sante_solidaire', siret: recipient)
+          end
+
+          response '200', 'Dossier trouvé' do
+            description SwaggerData.get('cnav.c2s.description')
+
+            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+
+            schema build_rswag_response_api_particulier(
+              attributes: SwaggerData.get('cnav.c2s.attributes')
+            )
+
+            run_test!
+          end
+        end
+
+        context 'when the complementaire sante solidaire is not found' do
+          before do
+            stub_cnav_404('complementaire_sante_solidaire')
+          end
+
+          response '404', 'Dossier non trouvé' do
+            schema '$ref' => '#/components/schemas/Error'
+
+            build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.'))
+
+            run_test!
+          end
+        end
+      end
+    end
+  end
+end

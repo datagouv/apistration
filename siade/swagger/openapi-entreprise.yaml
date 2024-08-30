@@ -2700,7 +2700,7 @@ paths:
                       title: Attestation non disponible
                       detail: L'attestation ne peut être délivrée car l'entreprise
                         n'est pas à jour de ses cotisations.
-                      source:
+                      source: 
                       meta:
                         provider: CIBTP
                   summary: Attestation non disponible
