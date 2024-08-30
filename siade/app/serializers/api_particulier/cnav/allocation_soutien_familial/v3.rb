@@ -1,0 +1,9 @@
+class APIParticulier::CNAV::AllocationSoutienFamilial::V3 < APIParticulier::V3AndMore::BaseSerializer
+  %i[
+    status
+    dateDebut
+    dateFin
+  ].each do |resource_attribute|
+    attribute resource_attribute, if: -> { scope?(:allocation_soutien_familial) }
+  end
+end

@@ -12,6 +12,8 @@ scope path: 'v:api_version', constraints: APIParticulierDomainConstraint.new(v3_
 
   get 'cnav/prime_activite/civility', to: 'api_particulier/v3_and_more/cnav/prime_activite_with_civility#show'
   get 'cnav/prime_activite/france_connect', to: 'api_particulier/v3_and_more/cnav/prime_activite_with_france_connect#show'
+
+  get 'cnav/allocation_soutien_familial/civility', to: 'api_particulier/v3_and_more/cnav/allocation_soutien_familial_with_civility#show'
 end
 
 namespace '/api', constraints: APIParticulierV2DomainConstraint.new do

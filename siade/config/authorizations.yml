@@ -271,6 +271,8 @@ shared:
   api_particulier/v3_and_more/cnav/prime_activite_with_civility:
     - prime_activite
     - prime_activite_majoration
+  api_particulier/v3_and_more/cnav/allocation_soutien_familial_with_civility:
+    - allocation_soutien_familial
 test:
   api_whatever/whatever_resource: &default_test_scopes
     - allowed_scope
