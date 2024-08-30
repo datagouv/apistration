@@ -30,19 +30,6 @@ module RSWagCommonsResponses
       required: true
   end
 
-  def common_api_particulier_action_attributes
-    produces 'application/json'
-
-    parameter name: :recipient,
-      in: :query,
-      type: :string,
-      description: SwaggerData.get('parameters.recipient.description'),
-      example: SwaggerData.get('parameters.recipient.example'),
-      required: true
-
-    security [jwt_bearer_token: []]
-  end
-
   def parameters_cnav_identite_pivot_nom_usage(required)
     parameter name: :nomUsage,
       in: :query,
