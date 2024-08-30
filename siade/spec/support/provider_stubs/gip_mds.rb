@@ -1,5 +1,6 @@
 require_relative '../provider_stubs'
 
+# rubocop:disable Metrics/ModuleLength
 module ProviderStubs::GIPMDS
   def mock_gip_mds_authenticate
     stub_request(:post, "#{Siade.credentials[:gip_mds_domain]}/token").and_return(
@@ -116,3 +117,4 @@ module ProviderStubs::GIPMDS
     end
   end
 end
+# rubocop:enable Metrics/ModuleLength

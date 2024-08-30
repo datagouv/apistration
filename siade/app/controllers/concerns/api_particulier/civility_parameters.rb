@@ -22,6 +22,7 @@ module APIParticulier::CivilityParameters
   end
   # rubocop:enable Metrics/MethodLength
 
+  # rubocop:disable Metrics/AbcSize
   def civility_parameters_from_france_connect
     {
       nom_usage: france_connect_service_user_identity.preferred_username,
@@ -36,6 +37,7 @@ module APIParticulier::CivilityParameters
       france_connect: true
     }
   end
+  # rubocop:enable Metrics/AbcSize
 
   protected
 

@@ -21,7 +21,7 @@ class MEN::Scolarites::MakeRequest < MakeRequest::Get
     super
   end
 
-  def mocking_params
+  def mocking_params # rubocop:disable Metrics/AbcSize
     {
       nom: context.params[:family_name],
       prenom: context.params[:first_name],

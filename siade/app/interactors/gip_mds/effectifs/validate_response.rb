@@ -1,5 +1,5 @@
 class GIPMDS::Effectifs::ValidateResponse < ValidateResponse
-  # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize
   def call
     resource_not_found! if [204, 404].include?(http_code)
     temporary_credentials_error! if temporary_credentials_error?
@@ -10,7 +10,7 @@ class GIPMDS::Effectifs::ValidateResponse < ValidateResponse
     unknown_provider_response! unless all_required_regime_are_present?
     resource_not_found! unless at_least_one_effectif_transmitted?
   end
-  # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize
 
   private
 
