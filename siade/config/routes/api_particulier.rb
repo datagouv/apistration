@@ -23,6 +23,7 @@ scope path: 'v:api_version', constraints: APIParticulierDomainConstraint.new(v3_
   get 'cnav/complementaire_sante_solidaire/france_connect', to: 'api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_france_connect#show'
 
   get 'cnav/quotient_familial/civility', to: 'api_particulier/v3_and_more/cnav/quotient_familial_with_civility#show'
+  get 'cnav/quotient_familial/france_connect', to: 'api_particulier/v3_and_more/cnav/quotient_familial_with_france_connect#show'
 end
 
 namespace '/api', constraints: APIParticulierV2DomainConstraint.new do
