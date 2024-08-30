@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ModuleLength
 module RSwagParametersAPIParticulier
   def parameters_cnav_identite_pivot_nom_usage(required)
     parameter name: :nomUsage,
@@ -231,3 +232,4 @@ module RSwagParametersAPIParticulier
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
 end
+# rubocop:enable Metrics/ModuleLength
