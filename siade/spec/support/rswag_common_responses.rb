@@ -1,4 +1,3 @@
-# rubocop:disable Metrics/ModuleLength
 module RSwagCommonResponses
   def common_action_attributes
     produces 'application/json'
@@ -128,4 +127,3 @@ module RSwagCommonResponses
   end
 end
 # rubocop:enable Metrics/MethodLength
-# rubocop:enable Metrics/ModuleLength

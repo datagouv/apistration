@@ -122,7 +122,7 @@ end
 
 RSpec.shared_examples 'ask_for_mandatory_parameters' do |action = :show, extra_get_params = {}|
   subject do
-    json = JSON.parse(response.body)
+    JSON.parse(response.body)
   end
 
   let(:token) { yes_jwt }

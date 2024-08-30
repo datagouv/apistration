@@ -1,7 +1,6 @@
 class UploadDocumentOrganizer < ApplicationOrganizer
   include ResourceHelpers
 
-  # rubocop:disable Metrics/AbcSize
   def self.inherited(klass)
     klass.class_eval do
       before do
@@ -16,7 +15,6 @@ class UploadDocumentOrganizer < ApplicationOrganizer
       end
     end
   end
-  # rubocop:enable Metrics/AbcSize
 
   protected
 

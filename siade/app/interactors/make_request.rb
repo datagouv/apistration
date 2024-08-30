@@ -34,7 +34,7 @@ class MakeRequest < ApplicationInteractor
     context.params
   end
 
-  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
   def api_call_with_error_handling
     response = api_call
 
@@ -60,7 +60,7 @@ class MakeRequest < ApplicationInteractor
 
     fail_to_request_provider!(DnsResolutionError)
   end
-  # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
 
   def api_call
     fail NotImplementedError

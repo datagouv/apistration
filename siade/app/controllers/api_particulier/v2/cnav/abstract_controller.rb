@@ -38,7 +38,6 @@ class APIParticulier::V2::CNAV::AbstractController < APIParticulier::V2::BaseCon
     end
   end
 
-  # rubocop:disable Metrics/AbcSize
   def france_connect_service_user_identity_params
     {
       nom_usage: france_connect_service_user_identity.preferred_username,
@@ -68,7 +67,6 @@ class APIParticulier::V2::CNAV::AbstractController < APIParticulier::V2::BaseCon
       recipient: current_user.siret
     }.merge(code_cog_insee_commune_de_naissance_or_transcogage_params)
   end
-  # rubocop:enable Metrics/AbcSize
 
   def code_cog_insee_commune_de_naissance_or_transcogage_params
     {

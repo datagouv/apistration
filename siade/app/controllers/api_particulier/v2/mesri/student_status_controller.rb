@@ -40,7 +40,6 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulier::V2::B
     end
   end
 
-  # rubocop:disable Metrics/AbcSize
   def mesri_student_civility_params
     {
       nom_naissance: params[:nom],
@@ -65,7 +64,6 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulier::V2::B
       france_connect: true
     }
   end
-  # rubocop:enable Metrics/AbcSize
 
   def call_with_ine?
     params[:ine].present?

@@ -1,5 +1,3 @@
-# rubocop:disable Metrics/ModuleLength
-
 require_relative '../provider_stubs'
 
 module ProviderStubs::FranceConnect::V2
@@ -131,4 +129,3 @@ module ProviderStubs::FranceConnect::V2
     )
   end
 end
-# rubocop:enable Metrics/ModuleLength

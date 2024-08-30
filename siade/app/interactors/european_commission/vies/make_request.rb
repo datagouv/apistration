@@ -1,7 +1,7 @@
 class EuropeanCommission::VIES::MakeRequest < MakeRequest::Get
   protected
 
-  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  # rubocop:disable Metrics/MethodLength
   def api_call
     Net::HTTP.start(request_uri.host, request_uri.port, http_options.merge(extra_http_start_options)) do |http|
       request = Net::HTTP::Get.new(build_request)
@@ -25,7 +25,7 @@ class EuropeanCommission::VIES::MakeRequest < MakeRequest::Get
       end
     end
   end
-  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
+  # rubocop:enable Metrics/MethodLength
 
   def request_uri
     URI(european_commission_url)
