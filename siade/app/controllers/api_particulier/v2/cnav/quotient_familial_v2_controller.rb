@@ -19,4 +19,8 @@ class APIParticulier::V2::CNAV::QuotientFamilialV2Controller < APIParticulier::V
   def expires_in
     24.hours
   end
+
+  def api_name
+    'quotient_familial'
+  end
 end

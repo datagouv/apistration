@@ -4,7 +4,7 @@ RSpec.describe FranceConnect::V2::DataFetcherThroughAccessToken::MakeRequest, ty
   let(:params) do
     {
       token:,
-      api_name: 'quotient_familial_v2'
+      api_name: 'quotient_familial'
     }
   end
 
