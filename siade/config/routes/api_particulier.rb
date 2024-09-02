@@ -9,6 +9,8 @@ scope path: 'v:api_version', constraints: APIParticulierDomainConstraint.new(v3_
 
   get 'men/scolarites/civility', to: 'api_particulier/v3_and_more/men/scolarites_with_civility#show'
 
+  get 'cnous/etudiant_boursier/ine', to: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_ine#show'
+
   get 'cnav/revenu_solidarite_active/france_connect', to: 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_france_connect#show'
   get 'cnav/revenu_solidarite_active/civility', to: 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_civility#show'
 

@@ -10,6 +10,21 @@ module ProviderStubs::CNOUSStudentScholarship
     )
   end
 
+  def mock_cnous_not_found_call(endpoint)
+    method = endpoint == 'civility' ? :post : :get
+
+    stub_request(method, /#{cnous_url_for(endpoint)}/).to_return(
+      status: 404,
+      body: cnous_not_found_payload(endpoint).to_json
+    )
+  end
+
+  def cnous_not_found_payload(endpoint)
+    valid_json_entry = JSON.parse(read_payload_file('cnous/student_scholarship_not_found.json'))
+
+    endpoint == 'civility' ? [valid_json_entry] : valid_json_entry
+  end
+
   def cnous_valid_payload(endpoint)
     valid_json_entry = JSON.parse(read_payload_file('cnous/student_scholarship_valid_response.json'))
 

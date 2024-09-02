@@ -249,7 +249,7 @@ paths:
                     - code: '00364'
                       title: Entité non traitable
                       detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source:
+                      source: 
                       meta: {}
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
@@ -268,7 +268,7 @@ paths:
                       detail: Dossier allocataire inexistant. Le document ne peut
                         être édité. Veuillez vérifier que l'identifiant correspond
                         au périmètre couvert par l'API.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Entité non trouvée
@@ -290,7 +290,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Erreur inconnue du fournisseur de données
@@ -316,7 +316,7 @@ paths:
                     - code: '50002'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source:
+                      source: 
                       meta: {}
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
@@ -528,7 +528,7 @@ paths:
                     - code: '00364'
                       title: Entité non traitable
                       detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source:
+                      source: 
                       meta: {}
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
@@ -547,7 +547,7 @@ paths:
                       detail: Dossier allocataire inexistant. Le document ne peut
                         être édité. Veuillez vérifier que l'identifiant correspond
                         au périmètre couvert par l'API.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Entité non trouvée
@@ -569,7 +569,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Erreur inconnue du fournisseur de données
@@ -595,7 +595,7 @@ paths:
                     - code: '50002'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source:
+                      source: 
                       meta: {}
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
@@ -818,7 +818,7 @@ paths:
                     - code: '00364'
                       title: Entité non traitable
                       detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source:
+                      source: 
                       meta: {}
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
@@ -838,7 +838,7 @@ paths:
                       detail: Dossier allocataire inexistant. Le document ne peut
                         être édité. Veuillez vérifier que l'identifiant correspond
                         au périmètre couvert par l'API.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Entité non trouvée
@@ -860,7 +860,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Erreur inconnue du fournisseur de données
@@ -886,7 +886,7 @@ paths:
                     - code: '50002'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source:
+                      source: 
                       meta: {}
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
@@ -1106,7 +1106,7 @@ paths:
                     - code: '00364'
                       title: Entité non traitable
                       detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source:
+                      source: 
                       meta: {}
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
@@ -1125,7 +1125,7 @@ paths:
                       detail: Dossier allocataire inexistant. Le document ne peut
                         être édité. Veuillez vérifier que l'identifiant correspond
                         au périmètre couvert par l'API.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Entité non trouvée
@@ -1147,7 +1147,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Erreur inconnue du fournisseur de données
@@ -1173,7 +1173,7 @@ paths:
                     - code: '50002'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source:
+                      source: 
                       meta: {}
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
@@ -1376,7 +1376,7 @@ paths:
                       jourDateDeNaissance: '12'
                       sexe: M
                     - nomNaissance: NIDOUILLET
-                      nomUsuel:
+                      nomUsuel: 
                       prenoms: JOSIANE
                       anneeDateDeNaissance: '1981'
                       moisDateDeNaissance: '05'
@@ -1384,25 +1384,25 @@ paths:
                       sexe: F
                     enfants:
                     - nomNaissance: CHAMPION
-                      nomUsuel:
+                      nomUsuel: 
                       prenoms: AURELIE
                       anneeDateDeNaissance: '2014'
                       moisDateDeNaissance: '05'
                       jourDateDeNaissance: '02'
                       sexe: F
                     - nomNaissance: CHAMPION
-                      nomUsuel:
+                      nomUsuel: 
                       prenoms: AURELIEN
                       anneeDateDeNaissance: '2012'
                       moisDateDeNaissance: '04'
-                      jourDateDeNaissance:
+                      jourDateDeNaissance: 
                       sexe: M
                     adresse:
                       identite: DU MONDE JEAN-PASCAL
                       complementInformation: APPARTEMENT 2
-                      complementInformationGeographique:
-                      numeroLibelleVoie:
-                      lieuDit:
+                      complementInformationGeographique: 
+                      numeroLibelleVoie: 
+                      lieuDit: 
                       codePostalVille: 81700 GARREVAQUES
                       pays: FRANCE
               schema:
@@ -1527,12 +1527,12 @@ paths:
                           remise
                         type: string
                         nullable: true
-                        example:
+                        example: 
                       complementInformationGeographique:
                         title: Complément d'information du point géographique
                         type: string
                         nullable: true
-                        example:
+                        example: 
                         description: Complément d'information du point géographique.
                       numeroLibelleVoie:
                         title: Voie
@@ -1544,7 +1544,7 @@ paths:
                         title: Lieu-dit
                         type: string
                         nullable: true
-                        example:
+                        example: 
                         description: 'Lieu-dit ou service particulier de distribution
                           : poste restante, boîte postale'
                       codePostalVille:
@@ -1709,7 +1709,7 @@ paths:
                     - code: '50002'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source:
+                      source: 
                       meta: {}
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
@@ -1929,7 +1929,7 @@ paths:
                     - code: '00364'
                       title: Entité non traitable
                       detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source:
+                      source: 
                       meta: {}
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
@@ -1948,7 +1948,7 @@ paths:
                       detail: Dossier allocataire inexistant. Le document ne peut
                         être édité. Veuillez vérifier que l'identifiant correspond
                         au périmètre couvert par l'API.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Entité non trouvée
@@ -1970,7 +1970,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Erreur inconnue du fournisseur de données
@@ -1996,7 +1996,7 @@ paths:
                     - code: '50002'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source:
+                      source: 
                       meta: {}
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
@@ -2154,7 +2154,7 @@ paths:
                     example: 1
                     nullable: true
                     enum:
-                    -
+                    - 
                     - 1
                     - 2
                     - 3
@@ -2204,7 +2204,7 @@ paths:
                     - code: '00364'
                       title: Entité non traitable
                       detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source:
+                      source: 
                       meta: {}
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
@@ -2223,7 +2223,7 @@ paths:
                       detail: Aucun élève n'a pu être trouvé avec les critères de
                         recherche fournis Veuillez vérifier que l'identifiant correspond
                         au périmètre couvert par l'API.
-                      source:
+                      source: 
                       meta:
                         provider: MEN
                   summary: Entité non trouvée
@@ -2245,7 +2245,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: MEN
                   summary: Erreur inconnue du fournisseur de données
@@ -2369,7 +2369,7 @@ paths:
                     - code: '00380'
                       title: Entité non traitable
                       detail: L'identifiant France Travail est manquant
-                      source:
+                      source: 
                       meta: {}
                   summary: Entité non traitable
                   description: L'identifiant France Travail est manquant
@@ -2388,7 +2388,7 @@ paths:
                       detail: Aucune situation France Travail n'a pu être trouvée
                         avec les critères de recherche fournis Veuillez vérifier que
                         l'identifiant correspond au périmètre couvert par l'API.
-                      source:
+                      source: 
                       meta:
                         provider: France Travail
                   summary: Entité non trouvée
@@ -2410,7 +2410,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: France Travail
                   summary: Erreur inconnue du fournisseur de données
@@ -2439,13 +2439,13 @@ components:
       properties:
         error:
           type: string
-          example:
+          example: 
         reason:
           type: string
-          example:
+          example: 
         message:
           type: string
-          example:
+          example: 
   securitySchemes:
     apiKey:
       type: apiKey

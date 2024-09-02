@@ -304,6 +304,14 @@ shared:
     - cnaf_allocataires
     - cnaf_enfants
     - cnaf_adresse
+  api_particulier/v3_and_more/cnous/etudiant_boursier_with_ine:
+    - cnous_statut_boursier
+    - cnous_echelon_bourse
+    - cnous_email
+    - cnous_periode_versement
+    - cnous_statut_bourse
+    - cnous_ville_etudes
+    - cnous_identite
 test:
   api_whatever/whatever_resource: &default_test_scopes
     - allowed_scope
