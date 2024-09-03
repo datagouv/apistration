@@ -65,6 +65,8 @@ RSpec.describe 'CIBTP: AttestationCotisationsCongesPayesChomageIntemperies', api
           response '404', 'Non trouvée', vcr: { cassette_name: 'cibtp/attestation_cotisations_conges_payes_chomage_intemperies/not_found' } do
             let(:siret) { not_found_siret(:cibtp) }
 
+            build_rswag_example(NotFoundError.new('CIBTP'))
+
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!
