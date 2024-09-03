@@ -227,10 +227,12 @@ shared:
       driver_params:
         make_request: 'MESRI::StudentStatus::WithCivility::MakeRequest'
         params:
-          family_name: 'DUPONT'
-          first_name: 'Jean'
-          birth_date: '2000-01-01'
-          gender: 'M'
+          nom_naissance: 'DUPONT'
+          prenoms: ['Jean']
+          annee_date_de_naissance: 2000
+          mois_date_de_naissance: 1
+          jour_date_de_naissance: 1
+          sexe_etat_civil: 'M'
           token_id: '22222222-2222-2222-2222-222222222222'
         status_to_check: 404
 
