@@ -23,7 +23,7 @@ module APIParticulier::CivilityParameters
   # rubocop:enable Metrics/MethodLength
 
   # rubocop:disable Metrics/AbcSize
-  def civility_parameters_from_france_connect
+  def civility_parameters_from_france_connect(except: [])
     {
       nom_usage: france_connect_service_user_identity.preferred_username,
       nom_naissance: france_connect_service_user_identity.family_name,
@@ -35,7 +35,7 @@ module APIParticulier::CivilityParameters
       code_pays_lieu_de_naissance: france_connect_service_user_identity.birthcountry,
       sexe_etat_civil: france_connect_service_user_identity.gender == 'male' ? 'M' : 'F',
       france_connect: true
-    }
+    }.except(*except)
   end
   # rubocop:enable Metrics/AbcSize
 

@@ -248,6 +248,10 @@ shared:
     - men_statut_scolarite
     - men_statut_boursier
     - men_echelon_bourse
+  api_particulier/v3_and_more/men/scolarites_with_france_connect:
+    - men_statut_scolarite
+    - men_statut_boursier
+    - men_echelon_bourse
   api_particulier/v3_and_more/mesri/statut_etudiant_with_ine:
     - mesri_identite
     - mesri_statut

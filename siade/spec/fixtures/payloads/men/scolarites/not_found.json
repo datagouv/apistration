@@ -1,0 +1,8 @@
+{
+  "type": "Erreur backend",
+  "title": "Un service web répond avec une erreur",
+  "detail": "ramsese mock ne trouve pas l''etablissement",
+  "instance": "/anges/v1/mock/ramsese/ramsese/0511474A",
+  "status": "NOT_FOUND",
+  "date-time": "2023-04-27"
+}

@@ -16,8 +16,8 @@ RSpec.describe MEN::Scolarites, type: :retriever_organizer do
     end
 
     before do
-      mock_men_scolarites_auth
-      mock_men_scolarite
+      stub_men_scolarites_auth
+      stub_men_scolarites_valid
     end
 
     describe 'happy path' do
