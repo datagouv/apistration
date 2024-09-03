@@ -2699,13 +2699,13 @@ paths:
                     - code: '38422'
                       title: Attestation non disponible
                       detail: L'attestation ne peut être délivrée car l'entreprise
-                        n'est pas à jour de ses cotisations.
+                        n'est pas en règle de ses cotisations CIBTP.
                       source:
                       meta:
                         provider: CIBTP
                   summary: Attestation non disponible
                   description: L'attestation ne peut être délivrée car l'entreprise
-                    n'est pas à jour de ses cotisations.
+                    n'est pas en règle de ses cotisations CIBTP.
                 entite_non_trouvee_38003:
                   value:
                     errors:

@@ -16,6 +16,6 @@ class CIBTPMissingPaymentsError < NotFoundError
   end
 
   def detail
-    "L'attestation ne peut être délivrée car l'entreprise n'est pas à jour de ses cotisations."
+    "L'attestation ne peut être délivrée car l'entreprise n'est pas en règle de ses cotisations CIBTP."
   end
 end
