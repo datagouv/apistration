@@ -7,15 +7,15 @@ class TokenFactory
     @scopes = Array(scopes).map(&:to_s) || []
   end
 
-  def valid(uid: valid_uid)
+  def valid(uid: default_uid)
     encode(payload(uid:))
   end
 
-  def expired(uid: expired_uid)
+  def expired(uid: default_uid)
     encode(payload(uid:, exp: 1.year.ago.to_i))
   end
 
-  def payload(uid:, exp: 1.year.from_now.to_i)
+  def payload(uid: default_uid, exp: 1.year.from_now.to_i)
     {
       uid:,
       jti: uid,
@@ -29,16 +29,12 @@ class TokenFactory
 
   private
 
+  def default_uid
+    JwtUser.debugger_id
+  end
+
   def encode(payload)
     JWT.encode(payload, hash_secret, hash_algo)
-  end
-
-  def valid_uid
-    Seeds.new.yes_jwt_id
-  end
-
-  def expired_uid
-    Seeds.new.expired_jwt_id
   end
 
   def hash_secret
