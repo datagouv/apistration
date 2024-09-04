@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'FranceTravail: Statut', api: :particulierv2, type: %i[request swagger] do
+RSpec.describe 'Pole Emploi: Indemnites', api: :particulierv2, type: %i[request swagger] do
   path '/api/v2/paiements-pole-emploi' do
     get SwaggerData.get('france_travail.indemnites.title') do
       tags(*SwaggerData.get('france_travail.indemnites.tags'))
