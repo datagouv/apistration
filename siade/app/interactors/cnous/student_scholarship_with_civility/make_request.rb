@@ -5,10 +5,10 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
 
   def request_params
     {
-      lastName: family_name,
-      firstNames: first_names,
-      birthDate: birth_date,
-      birthPlace: birth_place,
+      lastName: nom_naissance,
+      firstNames: prenoms,
+      birthDate: date_naissance,
+      birthPlace: code_cog_insee_commune_de_naissance,
       civility: gender
     }.compact
   end
@@ -19,23 +19,35 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
 
   private
 
-  def family_name
-    context.params[:family_name]
+  def nom_naissance
+    context.params[:nom_naissance]
   end
 
-  def first_names
-    context.params[:first_names].join(', ')
+  def prenoms
+    context.params[:prenoms].join(', ')
   end
 
-  def birth_date
-    Date.parse(context.params[:birth_date]).strftime('%d/%m/%Y')
-  end
-
-  def birth_place
-    context.params[:birth_place]
+  def code_cog_insee_commune_de_naissance
+    context.params[:code_cog_insee_commune_de_naissance]
   end
 
   def gender
-    context.params[:gender].try(:upcase)
+    context.params[:sexe_etat_civil].try(:upcase)
+  end
+
+  def date_naissance
+    Kernel.format('%<day>02d/%<month>02d/%<year>04d', year:, month:, day:)
+  end
+
+  def year
+    context.params[:annee_date_de_naissance]
+  end
+
+  def month
+    context.params[:mois_date_de_naissance]
+  end
+
+  def day
+    context.params[:jour_date_de_naissance]
   end
 end

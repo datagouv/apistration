@@ -30,7 +30,7 @@ class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulier::
 
   def cnous_student_scholarship_params
     if france_connect?
-      france_connect_service_user_identity.to_h
+      france_connect_service_user_identity_params
     elsif call_with_ine?
       ine_params
     else
@@ -48,15 +48,32 @@ class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulier::
     }
   end
 
+  # rubocop:disable Metrics/AbcSize
   def civility_params
     {
-      family_name: params[:nom],
-      first_names: (params[:prenoms] || '').split,
-      birth_date: params[:dateDeNaissance],
-      birth_place: params[:lieuDeNaissance],
-      gender: params[:sexe]
+      nom_naissance: params[:nom],
+      prenoms: (params[:prenoms] || '').split,
+      annee_date_de_naissance: params[:dateDeNaissance].split('-').first,
+      mois_date_de_naissance: params[:dateDeNaissance].split('-').second,
+      jour_date_de_naissance: params[:dateDeNaissance].split('-').third,
+      code_cog_insee_commune_de_naissance: params[:lieuDeNaissance],
+      sexe_etat_civil: params[:sexe]
     }
   end
+
+  def france_connect_service_user_identity_params
+    {
+      nom_naissance: france_connect_service_user_identity.family_name,
+      prenoms: france_connect_service_user_identity.given_name.split,
+      annee_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').first,
+      mois_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').second,
+      jour_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').third,
+      code_cog_insee_commune_de_naissance: france_connect_service_user_identity.birthplace,
+      sexe_etat_civil: france_connect_service_user_identity.gender == 'male' ? 'M' : 'F',
+      france_connect: true
+    }
+  end
+  # rubocop:enable Metrics/AbcSize
 
   def format_not_found_error(error)
     {

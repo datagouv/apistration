@@ -3,19 +3,23 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
 
   let(:params) do
     {
-      family_name:,
-      first_names:,
-      birth_date:,
-      birth_place:,
-      gender:
+      nom_naissance:,
+      prenoms:,
+      annee_date_de_naissance:,
+      mois_date_de_naissance:,
+      jour_date_de_naissance:,
+      code_cog_insee_commune_de_naissance:,
+      sexe_etat_civil:
     }
   end
 
-  let(:family_name) { 'Dupont' }
-  let(:first_names) { %w[Jean Charlie] }
-  let(:birth_date) { '2000-01-02' }
-  let(:birth_place) { 'Angers' }
-  let(:gender) { 'm' }
+  let(:nom_naissance) { 'Dupont' }
+  let(:prenoms) { %w[Jean Charlie] }
+  let(:annee_date_de_naissance) { 2000 }
+  let(:mois_date_de_naissance) { 1 }
+  let(:jour_date_de_naissance) { 2 }
+  let(:code_cog_insee_commune_de_naissance) { 'Angers' }
+  let(:sexe_etat_civil) { 'm' }
 
   let(:token) { 'dummy_oauth_token' }
 
@@ -23,10 +27,10 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
     let!(:stubbed_request) do
       stub_request(:post, /#{Siade.credentials[:cnous_student_scholarship_civility_url]}/).with(
         body: {
-          lastName: family_name,
+          lastName: 'Dupont',
           firstNames: 'Jean, Charlie',
           birthDate: '02/01/2000',
-          birthPlace: birth_place,
+          birthPlace: 'Angers',
           civility: 'M'
         }.to_json,
         headers: {
@@ -49,13 +53,13 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
     end
   end
 
-  context 'without birth place' do
-    let(:birth_place) { nil }
+  context 'without code cog insee commune de naissance' do
+    let(:code_cog_insee_commune_de_naissance) { nil }
 
     before do
       stub_request(:post, /#{Siade.credentials[:cnous_student_scholarship_civility_url]}/).with(
         body: {
-          lastName: family_name,
+          lastName: 'Dupont',
           firstNames: 'Jean, Charlie',
           birthDate: '02/01/2000',
           civility: 'M'

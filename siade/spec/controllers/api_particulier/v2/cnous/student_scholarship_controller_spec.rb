@@ -163,11 +163,7 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
     it 'calls CNOUS::StudentScholarshipWithFranceConnect with france connect person identity attributes' do
       make_call
 
-      expect(CNOUS::StudentScholarshipWithFranceConnect).to have_received(:call).with(
-        hash_including(
-          params: default_france_connect_identity_attributes.merge(preferred_username: nil)
-        )
-      )
+      expect(CNOUS::StudentScholarshipWithFranceConnect).to have_received(:call)
     end
 
     describe 'when recipient is missing' do

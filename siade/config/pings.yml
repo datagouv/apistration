@@ -178,13 +178,15 @@ shared:
       driver_params:
         make_request: 'CNOUS::StudentScholarshipWithCivility::MakeRequest'
         params:
-          family_name: 'DUPONT'
-          first_names:
+          nom_naissance: 'DUPONT'
+          prenoms:
             - 'Jean'
             - 'Jacques'
-          birth_date: '2000-01-01'
-          birth_place: 'Paris'
-          gender: 'M'
+          annee_date_de_naissance: 2000
+          mois_date_de_naissance: 1
+          jour_date_de_naissance: 1
+          code_cog_commune_de_naissance: 'Paris'
+          sexe_etat_civil: 'M'
         status_to_check: 404
         token_interactor: 'CNOUS::Authenticate'
 
