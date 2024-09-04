@@ -1,4 +1,4 @@
-RSpec.describe PoleEmploi::Statut::ValidateResponse, type: :validate_response do
+RSpec.describe FranceTravail::Statut::ValidateResponse, type: :validate_response do
   describe '.call' do
     subject(:call) { described_class.call(response:, provider_name: 'CNAV') }
 

@@ -1,4 +1,4 @@
-class PoleEmploi::Authenticate < GetOAuth2Token
+class FranceTravail::Authenticate < GetOAuth2Token
   private
 
   def client_url

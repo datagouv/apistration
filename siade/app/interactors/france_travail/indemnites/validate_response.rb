@@ -1,4 +1,4 @@
-class PoleEmploi::Indemnites::ValidateResponse < ValidateResponse
+class FranceTravail::Indemnites::ValidateResponse < ValidateResponse
   def call
     resource_not_found! if http_not_found? || http_code == 204
 

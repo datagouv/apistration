@@ -1,5 +1,5 @@
-class PoleEmploi::Indemnites::MakeRequest < MakeRequest::Get
-  include PoleEmploi::MakeRequest
+class FranceTravail::Indemnites::MakeRequest < MakeRequest::Get
+  include FranceTravail::MakeRequest
 
   protected
 

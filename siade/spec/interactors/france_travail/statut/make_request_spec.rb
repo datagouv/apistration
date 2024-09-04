@@ -1,4 +1,4 @@
-RSpec.describe PoleEmploi::Statut::MakeRequest, type: :make_request do
+RSpec.describe FranceTravail::Statut::MakeRequest, type: :make_request do
   subject(:make_call) { described_class.call(token:, params:) }
 
   let(:token) { 'token' }

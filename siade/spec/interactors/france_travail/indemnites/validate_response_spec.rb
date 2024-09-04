@@ -1,4 +1,4 @@
-RSpec.describe PoleEmploi::Indemnites::ValidateResponse, type: :validate_response do
+RSpec.describe FranceTravail::Indemnites::ValidateResponse, type: :validate_response do
   subject { described_class.call(response:, provider_name: 'France Travail') }
 
   context 'with a http ok' do

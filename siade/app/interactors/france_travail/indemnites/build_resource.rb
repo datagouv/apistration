@@ -1,4 +1,4 @@
-class PoleEmploi::Indemnites::BuildResource < BuildResource
+class FranceTravail::Indemnites::BuildResource < BuildResource
   protected
 
   def resource_attributes

@@ -1,5 +1,5 @@
-class PoleEmploi::Statut::MakeRequest < MakeRequest::Post
-  include PoleEmploi::MakeRequest
+class FranceTravail::Statut::MakeRequest < MakeRequest::Post
+  include FranceTravail::MakeRequest
 
   protected
 

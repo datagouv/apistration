@@ -1,4 +1,4 @@
-RSpec.describe PoleEmploi::Authenticate, type: :interactor do
+RSpec.describe FranceTravail::Authenticate, type: :interactor do
   subject { described_class.call }
 
   context 'when pole emploi authentication succeed', vcr: { cassette_name: 'pole_emploi/oauth2' } do

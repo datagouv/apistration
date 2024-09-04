@@ -86,7 +86,7 @@ RSpec.describe 'MEN: Scolarites', api: :particulierv2, type: %i[request swagger]
             provider_unknown_error = ProviderUnknownError.new('France Travail')
 
             stubbed_organizer_error(
-              PoleEmploi::Indemnites,
+              FranceTravail::Indemnites,
               provider_unknown_error
             )
 
@@ -103,7 +103,7 @@ RSpec.describe 'MEN: Scolarites', api: :particulierv2, type: %i[request swagger]
             provider_timeout_error = ProviderTimeoutError.new('France Travail')
 
             stubbed_organizer_error(
-              PoleEmploi::Indemnites,
+              FranceTravail::Indemnites,
               provider_timeout_error
             )
 

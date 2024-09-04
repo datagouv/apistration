@@ -1,4 +1,4 @@
-class PoleEmploi::Statut::BuildResource < BuildResource
+class FranceTravail::Statut::BuildResource < BuildResource
   def resource_attributes
     {
       identifiant:,

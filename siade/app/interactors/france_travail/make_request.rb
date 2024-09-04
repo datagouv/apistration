@@ -1,4 +1,4 @@
-module PoleEmploi::MakeRequest
+module FranceTravail::MakeRequest
   def mocking_params
     {
       identifiant:

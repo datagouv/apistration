@@ -1,6 +1,6 @@
 class APIParticulier::V2::PoleEmploi::IndemnitesController < APIParticulier::V2::BaseController
   def show
-    organizer = retrieve_payload_data(::PoleEmploi::Indemnites)
+    organizer = retrieve_payload_data(::FranceTravail::Indemnites)
 
     if organizer.success?
       render json: serialize_data(organizer),

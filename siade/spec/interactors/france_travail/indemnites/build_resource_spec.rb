@@ -1,4 +1,4 @@
-RSpec.describe PoleEmploi::Indemnites::BuildResource, type: :build_resource do
+RSpec.describe FranceTravail::Indemnites::BuildResource, type: :build_resource do
   subject { instance }
 
   let(:instance) { described_class.call(params: { identifiant_pole_emploi: }, response:) }

@@ -72,12 +72,12 @@ test:
       kind: 'make_request'
       provider: 'whatever'
       driver_params:
-        make_request: 'PoleEmploi::Statut::MakeRequest'
+        make_request: 'FranceTravail::Statut::MakeRequest'
         status_to_check: 404
         params:
           identifiant_pole_emploi: 'identifiant'
           user_id: '22222222-2222-2222-2222-222222222222'
-        token_interactor: 'PoleEmploi::Authenticate'
+        token_interactor: 'FranceTravail::Authenticate'
     with_make_request_and_organizer_params:
       kind: 'make_request'
       provider: 'whatever'
@@ -120,8 +120,8 @@ shared:
       status_page:
         name: "France Travail - Statut demandeur d'emploi"
       driver_params:
-        retriever: 'PoleEmploi::Statut'
-        params: &pole_emploi_params
+        retriever: 'FranceTravail::Statut'
+        params: &france_travail_params
           identifiant_pole_emploi: 'azerty'
           user_id: '22222222-2222-2222-2222-222222222222'
     pole_emploi_indemnites:
@@ -131,10 +131,10 @@ shared:
       status_page:
         name: "France Travail - Paiements versés"
       driver_params:
-        make_request: 'PoleEmploi::Indemnites'
-        params: *pole_emploi_params
+        make_request: 'FranceTravail::Indemnites'
+        params: *france_travail_params
         status_to_check: 200
-        token_interactor: 'PoleEmploi::Authenticate'
+        token_interactor: 'FranceTravail::Authenticate'
     men_scolarite:
       kind: 'make_request'
       cache: <%= 2.minutes %>

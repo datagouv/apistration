@@ -50,13 +50,13 @@ RSpec.describe MakeRequestPingDriver, type: :ping_driver do
         end
 
         before do
-          allow(PoleEmploi::Authenticate).to receive(:call).and_return(token_interactor)
+          allow(FranceTravail::Authenticate).to receive(:call).and_return(token_interactor)
         end
 
         it 'calls this class' do
           make_ping
 
-          expect(PoleEmploi::Authenticate).to have_received(:call).at_least(:once)
+          expect(FranceTravail::Authenticate).to have_received(:call).at_least(:once)
         end
 
         it 'calls make request interactor with this token' do
