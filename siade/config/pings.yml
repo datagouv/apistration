@@ -145,10 +145,12 @@ shared:
       driver_params:
         make_request: 'MEN::Scolarites::MakeRequest'
         params:
-          family_name: 'Dupont'
-          first_name: 'Jean'
-          gender: 'f'
-          birth_date: '2000-01-01'
+          nom_naissance: 'Dupont'
+          prenoms: ['Jean']
+          sexe_etat_civil: 'f'
+          annee_date_de_naissance: 2000
+          mois_date_de_naissance: 1
+          jour_date_de_naissance: 1
           code_etablissement: '0511474A'
           annee_scolaire: '<%= Date.today.year - 1 %>-<%= Date.today.year - 2 %>'
         status_to_check: 404
