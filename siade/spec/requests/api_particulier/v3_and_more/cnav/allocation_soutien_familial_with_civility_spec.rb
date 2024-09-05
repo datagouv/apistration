@@ -56,7 +56,7 @@ RSpec.describe 'API Particulier CNAV: allocation soutien familial with civility'
 
       describe 'with valid token and mandatory params', :valid do
         before do
-          stub_cnav_valid('allocation_soutien_familial', siret: '10000000000008')
+          stub_cnav_valid('allocation_soutien_familial', siret: '13002526500013')
         end
 
         describe 'when the pa is found' do

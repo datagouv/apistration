@@ -56,7 +56,7 @@ RSpec.describe 'API Particulier CNAV: Revenu de solidarité active with civility
 
       describe 'with valid token and mandatory params', :valid do
         before do
-          stub_cnav_valid('revenu_solidarite_active', siret: '10000000000008')
+          stub_cnav_valid('revenu_solidarite_active', siret: '13002526500013')
         end
 
         describe 'when the rsa is found' do

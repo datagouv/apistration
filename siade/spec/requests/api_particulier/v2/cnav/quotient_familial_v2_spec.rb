@@ -75,7 +75,7 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
           let(:anneeDateDeNaissance) { 2000 }
 
           before do
-            stub_cnav_valid('quotient_familial_v2', siret: '10000000000008', extra_params: { codeLieuNaissance: '92036', dateNaissance: '2000-06-12' })
+            stub_cnav_valid('quotient_familial_v2', siret: '13002526500013', extra_params: { codeLieuNaissance: '92036', dateNaissance: '2000-06-12' })
           end
 
           describe 'with valid token and mandatory params' do
@@ -97,7 +97,7 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
           let(:codeInseeLieuDeNaissance) { '17300' }
 
           before do
-            stub_cnav_valid('quotient_familial_v2', siret: '10000000000008')
+            stub_cnav_valid('quotient_familial_v2', siret: '13002526500013')
           end
 
           describe 'with valid token and mandatory params' do

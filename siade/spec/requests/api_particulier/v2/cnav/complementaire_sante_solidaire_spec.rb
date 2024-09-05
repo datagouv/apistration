@@ -47,7 +47,7 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulierv2, typ
           let(:anneeDateDeNaissance) { 2000 }
 
           before do
-            stub_cnav_valid('complementaire_sante_solidaire', siret: '10000000000008', extra_params: { codeLieuNaissance: '92036', dateNaissance: '2000-06-12' })
+            stub_cnav_valid('complementaire_sante_solidaire', siret: '13002526500013', extra_params: { codeLieuNaissance: '92036', dateNaissance: '2000-06-12' })
           end
 
           describe 'with valid token and mandatory params' do
@@ -69,7 +69,7 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulierv2, typ
           let(:codeInseeLieuDeNaissance) { '17300' }
 
           before do
-            stub_cnav_valid('complementaire_sante_solidaire', siret: '10000000000008')
+            stub_cnav_valid('complementaire_sante_solidaire', siret: '13002526500013')
           end
 
           describe 'with valid token and mandatory params' do

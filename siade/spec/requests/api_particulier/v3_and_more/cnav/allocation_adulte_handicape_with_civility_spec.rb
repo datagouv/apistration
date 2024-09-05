@@ -56,7 +56,7 @@ RSpec.describe 'API Particulier CNAV: allocation adulte handicape with civility'
 
       describe 'with valid token and mandatory params', :valid do
         before do
-          stub_cnav_valid('allocation_adulte_handicape', siret: '10000000000008')
+          stub_cnav_valid('allocation_adulte_handicape', siret: '13002526500013')
         end
 
         describe 'when the pa is found' do

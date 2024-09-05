@@ -35,7 +35,7 @@ RSpec.describe APIParticulier::V2::CNAV::AbstractController, 'cache management' 
       end
     end
 
-    let(:recipient) { '10000000000008' }
+    let(:recipient) { '13002526500013' }
     let(:params) do
       {
         nomNaissance: 'CHAMPION',

@@ -4,9 +4,10 @@ require 'rails_helper'
 
 RSpec.describe 'API Particulier: tracking encrypted params' do
   subject(:make_request) do
-    get '/api/v2/situations-pole-emploi', params:, headers: { 'X-Api-Key' => TokenFactory.new.valid }
+    get '/api/v2/situations-pole-emploi', params:, headers: { 'X-Api-Key' => TokenFactory.new(scopes).valid }
   end
 
+  let(:scopes) { %w[pole_emploi_identite pole_emploi_adresse pole_emploi_contact pole_emploi_inscription] }
   let(:params) do
     {
       identifiant: 'identifiant'

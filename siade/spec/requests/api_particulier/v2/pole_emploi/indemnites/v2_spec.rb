@@ -34,7 +34,7 @@ RSpec.describe 'Pole Emploi: Indemnites', api: :particulierv2, type: %i[request 
 
       describe 'with valid token and mandatory params', vcr: { cassette_name: 'pole_emploi/oauth2' } do
         let(:x_api_key) { TokenFactory.new(scopes).valid }
-        let(:scopes) { %w[men_statut_scolarite men_statut_boursier men_echelon_bourse] }
+        let(:scopes) { %w[pole_emploi_paiements] }
 
         before do
           stub_france_travail_indemnites_valid(identifiant:)

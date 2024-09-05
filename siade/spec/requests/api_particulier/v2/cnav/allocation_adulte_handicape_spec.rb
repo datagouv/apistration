@@ -30,7 +30,7 @@ RSpec.describe 'CNAV: Allocation Adulte Handicapé', api: :particulierv2, type: 
 
       describe 'without a FranceConnect token' do
         before do
-          stub_cnav_valid('allocation_adulte_handicape', siret: '10000000000008')
+          stub_cnav_valid('allocation_adulte_handicape', siret: '13002526500013')
         end
 
         let(:Authorization) { nil }
@@ -66,7 +66,7 @@ RSpec.describe 'CNAV: Allocation Adulte Handicapé', api: :particulierv2, type: 
           let(:anneeDateDeNaissance) { 2000 }
 
           before do
-            stub_cnav_valid('allocation_adulte_handicape', siret: '10000000000008', extra_params: { codeLieuNaissance: '92036', dateNaissance: '2000-06-12' })
+            stub_cnav_valid('allocation_adulte_handicape', siret: '13002526500013', extra_params: { codeLieuNaissance: '92036', dateNaissance: '2000-06-12' })
           end
 
           describe 'with valid token and mandatory params' do

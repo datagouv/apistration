@@ -56,7 +56,7 @@ RSpec.describe 'API Particulier CNAV: complementaire sante solidaire with civili
 
       describe 'with valid token and mandatory params', :valid do
         before do
-          stub_cnav_valid('complementaire_sante_solidaire', siret: '10000000000008')
+          stub_cnav_valid('complementaire_sante_solidaire', siret: '13002526500013')
         end
 
         describe 'when the pa is found' do

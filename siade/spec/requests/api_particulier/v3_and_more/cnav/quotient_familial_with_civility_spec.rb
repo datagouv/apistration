@@ -56,7 +56,7 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
 
       describe 'with valid token and mandatory params', :valid do
         before do
-          stub_cnav_valid('quotient_familial_v2', siret: '10000000000008')
+          stub_cnav_valid('quotient_familial_v2', siret: '13002526500013')
         end
 
         describe 'when the quotient familial is found' do
