@@ -244,6 +244,8 @@ shared:
     - men_statut_scolarite
     - men_statut_boursier
     - men_echelon_bourse
+  api_particulier/v3_and_more/france_travail/indemnites:
+    - pole_emploi_paiements
   api_particulier/v3_and_more/france_travail/statut:
     - pole_emploi_identite
     - pole_emploi_adresse

@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'FranceTravail: Statut', api: :particulierv2, type: %i[request swagger] do
   path '/api/v2/paiements-pole-emploi' do
-    get SwaggerData.get('pole_emploi.indemnites.title') do
-      tags(*SwaggerData.get('pole_emploi.indemnites.tags'))
+    get SwaggerData.get('france_travail.indemnites.title') do
+      tags(*SwaggerData.get('france_travail.indemnites.tags'))
 
       produces 'application/json'
 
@@ -18,10 +18,10 @@ RSpec.describe 'FranceTravail: Statut', api: :particulierv2, type: %i[request sw
 
       parameter name: :identifiant,
         in: :query,
-        type: SwaggerData.get('pole_emploi.indemnites.parameters.identifiant.type'),
-        description: SwaggerData.get('pole_emploi.indemnites.parameters.identifiant.description'),
-        example: SwaggerData.get('pole_emploi.indemnites.parameters.identifiant.example'),
-        required: SwaggerData.get('pole_emploi.indemnites.parameters.identifiant.required')
+        type: SwaggerData.get('france_travail.commons.parameters.identifiant.type'),
+        description: SwaggerData.get('france_travail.commons.parameters.identifiant.description'),
+        example: SwaggerData.get('france_travail.commons.parameters.identifiant.example'),
+        required: SwaggerData.get('france_travail.commons.parameters.identifiant.required')
 
       # rubocop:disable RSpec/VariableName
       let(:'X-Api-Key') { x_api_key }
@@ -41,10 +41,10 @@ RSpec.describe 'FranceTravail: Statut', api: :particulierv2, type: %i[request sw
         end
 
         response '200', 'Paiements trouvées' do
-          description SwaggerData.get('pole_emploi.indemnites.description')
+          description SwaggerData.get('france_travail.indemnites.description')
 
           schema build_rswag_response_api_particulier(
-            attributes: SwaggerData.get('pole_emploi.indemnites.attributes')
+            attributes: SwaggerData.get('france_travail.indemnites.attributes')
           )
 
           run_test!
@@ -52,7 +52,7 @@ RSpec.describe 'FranceTravail: Statut', api: :particulierv2, type: %i[request sw
 
         describe 'server errors' do
           before do
-            stub_france_travail_indemnites_no_content(identifiant:)
+            stub_france_travail_indemnites_not_found(identifiant:)
           end
 
           response '400', 'Paramètre(s) invalide(s)' do

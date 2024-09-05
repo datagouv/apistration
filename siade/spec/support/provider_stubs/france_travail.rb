@@ -9,10 +9,10 @@ module ProviderStubs::FranceTravail
       )
   end
 
-  def stub_france_travail_indemnites_no_content(identifiant:)
+  def stub_france_travail_indemnites_not_found(identifiant:)
     stub_request(:get, "#{Siade.credentials[:pole_emploi_indemnites_url]}?loginMnemotechnique=#{identifiant}")
       .to_return(
-        status: 204
+        status: 404
       )
   end
 
