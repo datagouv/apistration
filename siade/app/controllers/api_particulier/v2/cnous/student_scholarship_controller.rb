@@ -82,4 +82,8 @@ class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulier::
       message: error.detail
     }
   end
+
+  def api_name
+    'etudiant_boursier'
+  end
 end
