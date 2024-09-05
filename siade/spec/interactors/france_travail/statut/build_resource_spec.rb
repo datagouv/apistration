@@ -1,13 +1,13 @@
 RSpec.describe FranceTravail::Statut::BuildResource, type: :build_resource do
   subject { instance }
 
-  let(:instance) { described_class.call(params: { identifiant_pole_emploi: }, response:) }
+  let(:instance) { described_class.call(params: { identifiant: }, response:) }
 
   let(:response) do
     instance_double(Net::HTTPOK, body:)
   end
 
-  let(:identifiant_pole_emploi) { 'whatever' }
+  let(:identifiant) { 'whatever' }
   let(:body) { read_payload_file('pole_emploi/statut/valid.json') }
 
   it { is_expected.to be_a_success }
@@ -18,7 +18,7 @@ RSpec.describe FranceTravail::Statut::BuildResource, type: :build_resource do
     it do
       expect(subject).to eq(
         {
-          identifiant: identifiant_pole_emploi,
+          identifiant:,
           civilite: 'M.',
           nom: 'DUPONT',
           nomUsage: nil,

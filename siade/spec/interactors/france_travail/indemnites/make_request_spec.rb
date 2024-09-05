@@ -6,14 +6,14 @@ RSpec.describe FranceTravail::Indemnites::MakeRequest, type: :make_request do
 
   let(:params) do
     {
-      identifiant_pole_emploi:,
+      identifiant:,
       user_id:
     }
   end
-  let(:identifiant_pole_emploi) { 'whatever' }
+  let(:identifiant) { 'whatever' }
 
   let!(:stubbed_request) do
-    stub_request(:get, "#{Siade.credentials[:pole_emploi_indemnites_url]}?loginMnemotechnique=#{identifiant_pole_emploi}").with(
+    stub_request(:get, "#{Siade.credentials[:pole_emploi_indemnites_url]}?loginMnemotechnique=#{identifiant}").with(
       headers: {
         'Content-Type' => 'application/json',
         'Authorization' => "Bearer #{token}",

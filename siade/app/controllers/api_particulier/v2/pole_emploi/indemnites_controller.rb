@@ -14,7 +14,7 @@ class APIParticulier::V2::PoleEmploi::IndemnitesController < APIParticulier::V2:
 
   def organizer_params
     {
-      identifiant_pole_emploi: params[:identifiant],
+      identifiant: params[:identifiant],
       user_id: current_user.id
     }
   end

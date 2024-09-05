@@ -1,5 +1,5 @@
 class FranceTravail::ValidateIdentifiantPresence < ValidateAttributePresence
   def attribute
-    :identifiant_pole_emploi
+    :identifiant
   end
 end

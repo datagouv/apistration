@@ -4,27 +4,27 @@ RSpec.describe FranceTravail::ValidateParams, type: :validate_params do
   let(:params) do
     {
       user_id:,
-      identifiant_pole_emploi:
+      identifiant:
     }
   end
 
   let(:user_id) { SecureRandom.uuid }
-  let(:identifiant_pole_emploi) { 'whatever' }
+  let(:identifiant) { 'whatever' }
 
   context 'with valid params' do
     it { is_expected.to be_a_success }
   end
 
-  context 'without identifiant_pole_emploi' do
-    let(:identifiant_pole_emploi) { nil }
+  context 'without identifiant' do
+    let(:identifiant) { nil }
 
     it { is_expected.to be_a_failure }
 
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
-  context 'with a blank identifiant_pole_emploi' do
-    let(:identifiant_pole_emploi) { '' }
+  context 'with a blank identifiant' do
+    let(:identifiant) { '' }
 
     it { is_expected.to be_a_failure }
 

@@ -75,7 +75,7 @@ test:
         make_request: 'FranceTravail::Statut::MakeRequest'
         status_to_check: 404
         params:
-          identifiant_pole_emploi: 'identifiant'
+          identifiant: 'identifiant'
           user_id: '22222222-2222-2222-2222-222222222222'
         token_interactor: 'FranceTravail::Authenticate'
     with_make_request_and_organizer_params:
@@ -122,7 +122,7 @@ shared:
       driver_params:
         retriever: 'FranceTravail::Statut'
         params: &france_travail_params
-          identifiant_pole_emploi: 'azerty'
+          identifiant: 'azerty'
           user_id: '22222222-2222-2222-2222-222222222222'
     pole_emploi_indemnites:
       kind: 'make_request'

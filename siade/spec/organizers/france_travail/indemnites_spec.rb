@@ -6,7 +6,7 @@ RSpec.describe FranceTravail::Indemnites, type: :retriever_organizer do
 
     let(:params) do
       {
-        identifiant_pole_emploi: identifiant,
+        identifiant:,
         user_id:
       }
     end

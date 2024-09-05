@@ -13,7 +13,7 @@ class APIParticulier::V3AndMore::FranceTravail::StatutController < APIParticulie
 
   def organizer_params
     {
-      identifiant_pole_emploi: params[:identifiant],
+      identifiant: params[:identifiant],
       user_id: current_user.id
     }
   end

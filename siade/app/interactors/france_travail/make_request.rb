@@ -14,7 +14,7 @@ module FranceTravail::MakeRequest
   private
 
   def identifiant
-    context.params[:identifiant_pole_emploi]
+    context.params[:identifiant]
   end
 
   def user_id

@@ -11,7 +11,7 @@ class FranceTravail::Indemnites::BuildResource < BuildResource
   private
 
   def identifiant
-    context.params[:identifiant_pole_emploi]
+    context.params[:identifiant]
   end
 
   def payments

@@ -4,12 +4,12 @@ RSpec.describe FranceTravail::Statut, type: :retriever_organizer do
 
     let(:params) do
       {
-        identifiant_pole_emploi:,
+        identifiant:,
         user_id:
       }
     end
 
-    let(:identifiant_pole_emploi) { 'whatever' }
+    let(:identifiant) { 'whatever' }
     let(:user_id) { SecureRandom.uuid }
 
     describe 'happy path', vcr: { cassette_name: 'pole_emploi/oauth2' } do

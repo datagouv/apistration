@@ -45,7 +45,7 @@ class UnprocessableEntityError < ApplicationError
       tax_number: '00370',
       tax_notice_number: '00371',
       # Pole Emploi
-      identifiant_pole_emploi: '00380',
+      identifiant: '00380',
       # GIP-MDS
       gip_mds_depth: '00390',
       insee_country_code: '00400',

@@ -58,7 +58,7 @@ RSpec.describe 'FranceTravail: Statut', api: :particulierv2, type: %i[request sw
           response '400', 'Paramètre(s) invalide(s)' do
             let(:identifiant) { nil }
 
-            build_rswag_example(UnprocessableEntityError.new(:identifiant_pole_emploi))
+            build_rswag_example(UnprocessableEntityError.new(:identifiant))
 
             schema '$ref' => '#/components/schemas/Error'
 
