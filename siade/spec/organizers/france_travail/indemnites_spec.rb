@@ -6,21 +6,17 @@ RSpec.describe FranceTravail::Indemnites, type: :retriever_organizer do
 
     let(:params) do
       {
-        identifiant_pole_emploi:,
+        identifiant_pole_emploi: identifiant,
         user_id:
       }
     end
 
-    let(:identifiant_pole_emploi) { 'whatever' }
+    let(:identifiant) { 'whatever' }
     let(:user_id) { SecureRandom.uuid }
 
     describe 'happy path', vcr: { cassette_name: 'pole_emploi/oauth2' } do
       before do
-        stub_request(:get, "#{Siade.credentials[:pole_emploi_indemnites_url]}?loginMnemotechnique=#{identifiant_pole_emploi}")
-          .to_return(
-            status: 200,
-            body: read_payload_file('pole_emploi/indemnites/valid.json')
-          )
+        stub_france_travail_indemnites_valid(identifiant:)
       end
 
       it { is_expected.to be_a_success }

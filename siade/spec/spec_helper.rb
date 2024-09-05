@@ -124,6 +124,7 @@ RSpec.configure do |config|
   config.include ProviderStubs::INPI
   config.include ProviderStubs::INPI::RNE
   config.include ProviderStubs::MESRI
+  config.include ProviderStubs::FranceTravail
 
   config.include ActivateStrictVcrRequestMatchingForV3
   config.extend ActivateStrictVcrRequestMatchingForV3

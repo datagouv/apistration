@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'MEN: Scolarites', api: :particulierv2, type: %i[request swagger] do
+RSpec.describe 'FranceTravail: Statut', api: :particulierv2, type: %i[request swagger] do
   path '/api/v2/paiements-pole-emploi' do
     get SwaggerData.get('pole_emploi.indemnites.title') do
       tags(*SwaggerData.get('pole_emploi.indemnites.tags'))
@@ -37,11 +37,7 @@ RSpec.describe 'MEN: Scolarites', api: :particulierv2, type: %i[request swagger]
         let(:scopes) { %w[men_statut_scolarite men_statut_boursier men_echelon_bourse] }
 
         before do
-          stub_request(:get, "#{Siade.credentials[:pole_emploi_indemnites_url]}?loginMnemotechnique=#{identifiant}")
-            .to_return(
-              status: 200,
-              body: read_payload_file('pole_emploi/indemnites/valid.json')
-            )
+          stub_france_travail_indemnites_valid(identifiant:)
         end
 
         response '200', 'Paiements trouvées' do
@@ -56,10 +52,7 @@ RSpec.describe 'MEN: Scolarites', api: :particulierv2, type: %i[request swagger]
 
         describe 'server errors' do
           before do
-            stub_request(:get, "#{Siade.credentials[:pole_emploi_indemnites_url]}?loginMnemotechnique=#{identifiant}")
-              .to_return(
-                status: 204
-              )
+            stub_france_travail_indemnites_no_content(identifiant:)
           end
 
           response '400', 'Paramètre(s) invalide(s)' do

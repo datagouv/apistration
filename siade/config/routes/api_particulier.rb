@@ -27,6 +27,10 @@ scope path: 'v:api_version', constraints: APIParticulierDomainConstraint.new(v3_
 
   get 'cnav/quotient_familial/civility', to: 'api_particulier/v3_and_more/cnav/quotient_familial_with_civility#show'
   get 'cnav/quotient_familial/france_connect', to: 'api_particulier/v3_and_more/cnav/quotient_familial_with_france_connect#show'
+
+  get 'france_travail/statut', to: 'api_particulier/v3_and_more/france_travail/statut#show'
+
+  get 'france_travail/indemnites', to: 'api_particulier/v3_and_more/france_travail/indemnites#show'
 end
 
 namespace '/api', constraints: APIParticulierV2DomainConstraint.new do
