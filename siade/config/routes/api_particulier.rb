@@ -7,8 +7,7 @@ scope path: 'v:api_version', constraints: APIParticulierDomainConstraint.new(v3_
   get 'mesri/statut_etudiant/france_connect', to: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_france_connect#show'
   get 'mesri/statut_etudiant/civility', to: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_civility#show'
 
-  get 'men/scolarites/civility', to: 'api_particulier/v3_and_more/men/scolarites_with_civility#show'
-  get 'men/scolarites/france_connect', to: 'api_particulier/v3_and_more/men/scolarites_with_france_connect#show'
+  get 'men/scolarites', to: 'api_particulier/v3_and_more/men/scolarites#show'
 
   get 'cnav/revenu_solidarite_active/france_connect', to: 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_france_connect#show'
   get 'cnav/revenu_solidarite_active/civility', to: 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_civility#show'

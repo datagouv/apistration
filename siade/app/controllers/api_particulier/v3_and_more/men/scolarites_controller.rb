@@ -1,5 +1,4 @@
-class APIParticulier::V3AndMore::MEN::ScolaritesWithFranceConnectController < APIParticulier::V3AndMore::BaseController
-  include APIParticulier::FranceConnectable
+class APIParticulier::V3AndMore::MEN::ScolaritesController < APIParticulier::V3AndMore::BaseController
   include APIParticulier::CivilityParameters
 
   def show
@@ -15,11 +14,18 @@ class APIParticulier::V3AndMore::MEN::ScolaritesWithFranceConnectController < AP
 
   private
 
+  def transcogage?
+    false
+  end
+
   def organizer_params
-    civility_parameters_from_france_connect(except: %i[
-      nom_usage
-      code_cog_insee_commune_de_naissance
-      code_pays_lieu_de_naissance
+    civility_parameters(requireds: %i[
+      nomNaissance
+      prenoms
+      anneeDateDeNaissance
+      moisDateDeNaissance
+      jourDateDeNaissance
+      sexeEtatCivil
     ])
       .merge({
         annee_scolaire: params[:anneeScolaire],

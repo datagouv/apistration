@@ -251,11 +251,7 @@ shared:
     - pole_emploi_adresse
     - pole_emploi_contact
     - pole_emploi_inscription
-  api_particulier/v3_and_more/men/scolarites_with_civility:
-    - men_statut_scolarite
-    - men_statut_boursier
-    - men_echelon_bourse
-  api_particulier/v3_and_more/men/scolarites_with_france_connect:
+  api_particulier/v3_and_more/men/scolarites:
     - men_statut_scolarite
     - men_statut_boursier
     - men_echelon_bourse
