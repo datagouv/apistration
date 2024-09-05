@@ -53,7 +53,7 @@ class CNAV::MakeRequest < MakeRequest::Get
   end
 
   def date_naissance
-    CNAV::FormatDateDeNaissance.new(
+    Civility::FormatDateDeNaissance.new(
       context.params[:annee_date_de_naissance],
       context.params[:mois_date_de_naissance],
       context.params[:jour_date_de_naissance]
