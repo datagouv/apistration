@@ -1,0 +1,87 @@
+require 'swagger_helper'
+
+RSpec.describe 'API Particulier: CNOUS: Etudiant Boursier with Civility', api: :particulier, type: %i[request swagger] do
+  path '/v3/cnous/etudiant_boursier/civility' do
+    get SwaggerData.get('cnous.commons.title') do
+      tags(*SwaggerData.get('cnous.commons.tags'))
+
+      common_action_attributes
+
+      parameters_cnav_identite_pivot(
+        params: %w[
+          nomNaissance
+          prenoms
+          anneeDateDeNaissance
+          moisDateDeNaissance
+          jourDateDeNaissance
+          codeCogInseeCommuneDeNaissance
+          sexeEtatCivil
+          nomCommuneNaissance
+          codeCogInseeDepartementDeNaissance
+        ],
+        required: %w[
+          nomNaissance
+          prenoms
+          anneeDateDeNaissance
+          moisDateDeNaissance
+          jourDateDeNaissance
+        ]
+      )
+
+      let(:nomNaissance) { 'Dupont' }
+      let(:'prenoms[]') { %w[Jean Charlie] }
+      let(:anneeDateDeNaissance) { 2000 }
+      let(:moisDateDeNaissance) { 1 }
+      let(:jourDateDeNaissance) { 1 }
+      let(:codeCogInseeCommuneDeNaissance) { 'Paris' }
+      let(:sexeEtatCivil) { 'M' }
+
+      before do
+        mock_cnous_authenticate
+      end
+
+      unauthorized_request
+
+      forbidden_request
+
+      too_many_requests(CNOUS::StudentScholarshipWithCivility)
+
+      let(:scopes) { %i[cnous_identite cnous_email cnous_statut_boursier cnous_echelon_bourse cnous_statut_bourse cnous_periode_versement cnous_ville_etudes] }
+
+      describe 'with valid token and mandatory params', :valid do
+        context 'when the student is found' do
+          before do
+            mock_cnous_valid_call('civility')
+          end
+
+          response '200', 'Étudiant identifié' do
+            description SwaggerData.get('cnous.commons.description')
+
+            schema build_rswag_response_api_particulier(
+              attributes: SwaggerData.get('cnous.commons.attributes')
+            )
+
+            run_test!
+          end
+        end
+
+        context 'when the student is not found' do
+          before do
+            mock_cnous_not_found_call('civility')
+          end
+
+          response '404', 'Étudiant non identifié' do
+            schema '$ref' => '#/components/schemas/Error'
+
+            build_rswag_example(NotFoundError.new('CNOUS', "Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API."))
+
+            run_test!
+          end
+        end
+
+        common_provider_errors_request('CNOUS', CNOUS::StudentScholarshipWithCivility)
+        common_network_error_request('CNOUS', CNOUS::StudentScholarshipWithCivility)
+      end
+    end
+  end
+end
