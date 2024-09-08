@@ -1,4 +1,4 @@
-class APIParticulier::V3AndMore::FranceTravail::IndemnitesController < APIParticulier::V3AndMore::BaseController
+class APIParticulier::V3AndMore::FranceTravail::IndemnitesWithIdentifiantController < APIParticulier::V3AndMore::BaseController
   def show
     organizer = retrieve_payload_data(::FranceTravail::Indemnites)
 

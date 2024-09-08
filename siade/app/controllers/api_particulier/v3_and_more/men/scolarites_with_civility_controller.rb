@@ -1,4 +1,4 @@
-class APIParticulier::V3AndMore::MEN::ScolaritesController < APIParticulier::V3AndMore::BaseController
+class APIParticulier::V3AndMore::MEN::ScolaritesWithCivilityController < APIParticulier::V3AndMore::BaseController
   include APIParticulier::CivilityParameters
 
   def show

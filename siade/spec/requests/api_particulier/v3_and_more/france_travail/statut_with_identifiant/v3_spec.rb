@@ -1,9 +1,9 @@
 require 'swagger_helper'
 
-RSpec.describe 'FranceTravail: Indemnites', api: :particulier, type: %i[request swagger] do
-  path '/v3/france_travail/indemnites/' do
-    get SwaggerData.get('france_travail.indemnites.title') do
-      tags(*SwaggerData.get('france_travail.indemnites.tags'))
+RSpec.describe 'FranceTravail: Statut with identifiant', api: :particulier, type: %i[request swagger] do
+  path '/v3/france_travail/statut/identifiant' do
+    get SwaggerData.get('france_travail.statut.title') do
+      tags(*SwaggerData.get('france_travail.statut.tags'))
 
       common_action_attributes
 
@@ -15,25 +15,25 @@ RSpec.describe 'FranceTravail: Indemnites', api: :particulier, type: %i[request 
         required: SwaggerData.get('france_travail.commons.parameters.identifiant.required')
 
       let(:identifiant) { 'identifiant_france_travail' }
-      let(:scopes) { %i[pole_emploi_indemnites] }
+      let(:scopes) { %i[pole_emploi_identite pole_emploi_adresse pole_emploi_contact pole_emploi_inscription] }
 
       unauthorized_request
 
       forbidden_request
 
-      too_many_requests(FranceTravail::Indemnites)
+      too_many_requests(FranceTravail::Statut)
 
       describe 'with valid token and mandatory params', :valid, vcr: { cassette_name: 'pole_emploi/oauth2' } do
         describe 'when it is found' do
           before do
-            stub_france_travail_indemnites_valid(identifiant:)
+            stub_france_travail_statut_valid
           end
 
-          response '200', 'Indemnites trouvées' do
-            description SwaggerData.get('france_travail.indemnites.description')
+          response '200', 'Statut trouvé' do
+            description SwaggerData.get('france_travail.statut.description')
 
             schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('france_travail.indemnites.attributes')
+              attributes: SwaggerData.get('france_travail.statut.attributes')
             )
 
             run_test!
@@ -42,7 +42,7 @@ RSpec.describe 'FranceTravail: Indemnites', api: :particulier, type: %i[request 
 
         describe 'when it is not found' do
           before do
-            stub_france_travail_indemnites_not_found(identifiant:)
+            stub_france_travail_statut_not_found
           end
 
           response '404', 'Non trouvée' do
@@ -54,8 +54,8 @@ RSpec.describe 'FranceTravail: Indemnites', api: :particulier, type: %i[request 
           end
         end
 
-        common_provider_errors_request('France Travail', FranceTravail::Indemnites)
-        common_network_error_request('France Travail', FranceTravail::Indemnites)
+        common_provider_errors_request('France Travail', FranceTravail::Statut)
+        common_network_error_request('France Travail', FranceTravail::Statut)
       end
     end
   end
