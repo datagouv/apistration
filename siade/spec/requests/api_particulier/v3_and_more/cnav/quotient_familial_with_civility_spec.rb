@@ -59,7 +59,7 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
           stub_cnav_valid('quotient_familial_v2', siret: '10000000000008')
         end
 
-        describe 'when the pa is found' do
+        describe 'when the quotient familial is found' do
           response '200', 'Quotient Familial active trouvée' do
             description SwaggerData.get('cnav.quotient-familial-v2.description')
 
@@ -73,19 +73,46 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
           end
         end
 
-        describe 'when the pa is not found' do
-          response '404', 'Dossier non trouvé' do
-            before do
-              stub_cnav_404('quotient_familial_v2')
+        describe 'when the quotient familial is not found' do
+          response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
+            let(:codePaysLieuDeNaissance) { '99623' }
+            # rubocop:disable RSpec/ContextWording
+            context 'Allocataire non identifié' do
+              before do
+                stub_cnav_404('quotient_familial_v2', nil)
+              end
+
+              build_rswag_example(NotFoundError.new('CNAV & MSA', "L'allocataire que vous cherchez n'a pas été reconnu"))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
             end
 
-            let(:codePaysLieuDeNaissance) { '99623' }
+            context 'Dossier non trouvé MSA' do
+              before do
+                stub_cnav_404('quotient_familial_v2', '00171001')
+              end
 
-            schema '$ref' => '#/components/schemas/Error'
+              build_rswag_example(NotFoundError.new('CNAV & MSA', "Le dossier allocataire n'a pas été trouvé auprès de la MSA."))
 
-            build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.'))
+              schema '$ref' => '#/components/schemas/Error'
 
-            run_test!
+              run_test!
+            end
+
+            context 'Dossier non trouvé CNAF' do
+              before do
+                stub_cnav_404('quotient_familial_v2', '00810011')
+              end
+
+              build_rswag_example(NotFoundError.new('CNAV & MSA', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF."))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+            # rubocop:enable RSpec/ContextWording
           end
         end
 
