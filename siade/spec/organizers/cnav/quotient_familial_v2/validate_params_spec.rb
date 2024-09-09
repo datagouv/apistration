@@ -3,6 +3,7 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params 
 
   let(:params) do
     {
+      nom_naissance:,
       prenoms:,
       sexe_etat_civil:,
       code_pays_lieu_de_naissance:,
@@ -23,6 +24,7 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params 
     }
   end
 
+  let(:nom_naissance) { 'Bulbizare' }
   let(:prenoms) { %w[jean] }
   let(:sexe_etat_civil) { 'F' }
   let(:code_pays_lieu_de_naissance) { '99345' }
@@ -169,6 +171,14 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params 
 
   context 'with too ancient year' do
     let(:annee) { 2021 }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+  end
+
+  context 'with invalid nom_naissance' do
+    let(:nom_naissance) { nil }
 
     it { is_expected.to be_a_failure }
 
