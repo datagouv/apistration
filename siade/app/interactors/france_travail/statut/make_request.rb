@@ -4,7 +4,7 @@ class FranceTravail::Statut::MakeRequest < MakeRequest::Post
   protected
 
   def request_uri
-    URI(Siade.credentials[:pole_emploi_status_url])
+    URI(Siade.credentials[:france_travail_status_url])
   end
 
   def build_request_body

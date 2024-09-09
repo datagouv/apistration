@@ -17,13 +17,13 @@ RSpec.describe 'API Particulier: tracking encrypted params' do
   before do
     host! 'particulier.api.localtest.me'
 
-    stub_request(:post, Siade.credentials[:pole_emploi_status_url]).to_return(
+    stub_request(:post, Siade.credentials[:france_travail_status_url]).to_return(
       status: 200,
       body: 'invalid'
     )
   end
 
-  it 'calls encrypt data service', vcr: { cassette_name: 'pole_emploi/oauth2' } do
+  it 'calls encrypt data service', vcr: { cassette_name: 'france_travail/oauth2' } do
     expect(EncryptData).to receive(:new).and_call_original
 
     subject

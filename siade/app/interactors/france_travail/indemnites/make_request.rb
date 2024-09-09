@@ -4,7 +4,7 @@ class FranceTravail::Indemnites::MakeRequest < MakeRequest::Get
   protected
 
   def request_uri
-    URI(Siade.credentials[:pole_emploi_indemnites_url])
+    URI(Siade.credentials[:france_travail_indemnites_url])
   end
 
   def request_params

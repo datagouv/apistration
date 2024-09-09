@@ -44,9 +44,9 @@ VCR.configure do |c|
   c.filter_sensitive_data('<ACOSS_CLIENT_SECRET>') { Siade.credentials[:acoss_client_secret].to_s }
   c.filter_sensitive_data('<DOUANES_CLIENT_ID>') { Siade.credentials[:douanes_client_id].to_s }
   c.filter_sensitive_data('<MI_API_KEY>') { Siade.credentials[:mi_gravitee_api_key].to_s }
-  c.filter_sensitive_data('<POLE_EMPLOI_CLIENT_ID>') { Siade.credentials[:pole_emploi_client_id].to_s }
-  c.filter_sensitive_data('<POLE_EMPLOI_CLIENT_SECRET>') { Siade.credentials[:pole_emploi_client_secret].to_s }
-  c.filter_sensitive_data('<POLE_EMPLOI_AUTHENTICATE_URL>') { Siade.credentials[:pole_emploi_authenticate_url].to_s }
+  c.filter_sensitive_data('<FRANCE_TRAVAIL_CLIENT_ID>') { Siade.credentials[:france_travail_client_id].to_s }
+  c.filter_sensitive_data('<FRANCE_TRAVAIL_CLIENT_SECRET>') { Siade.credentials[:france_travail_client_secret].to_s }
+  c.filter_sensitive_data('<FRANCE_TRAVAIL_AUTHENTICATE_URL>') { Siade.credentials[:france_travail_authenticate_url].to_s }
   c.filter_sensitive_data('<BANQUE_DE_FRANCE_BILANS_URL>') { Siade.credentials[:banque_de_france_bilans_url].to_s }
   c.filter_sensitive_data('<QUALIBAT_URL>') { URI(Siade.credentials[:qualibat_api_url]).to_s }
   c.filter_sensitive_data('<QUALIBAT_BASIC_AUTH>') { Base64.strict_encode64("#{Siade.credentials[:qualibat_api_username]}:#{Siade.credentials[:qualibat_api_password]}") }

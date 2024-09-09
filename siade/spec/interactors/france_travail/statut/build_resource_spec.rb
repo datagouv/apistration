@@ -8,7 +8,7 @@ RSpec.describe FranceTravail::Statut::BuildResource, type: :build_resource do
   end
 
   let(:identifiant) { 'whatever' }
-  let(:body) { read_payload_file('pole_emploi/statut/valid.json') }
+  let(:body) { read_payload_file('france_travail/statut/valid.json') }
 
   it { is_expected.to be_a_success }
 

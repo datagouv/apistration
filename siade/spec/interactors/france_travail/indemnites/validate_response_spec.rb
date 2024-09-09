@@ -6,7 +6,7 @@ RSpec.describe FranceTravail::Indemnites::ValidateResponse, type: :validate_resp
 
     context 'with a valid json' do
       context 'when there is payments' do
-        let(:body) { read_payload_file('pole_emploi/indemnites/valid.json') }
+        let(:body) { read_payload_file('france_travail/indemnites/valid.json') }
 
         it { is_expected.to be_a_success }
 
@@ -15,7 +15,7 @@ RSpec.describe FranceTravail::Indemnites::ValidateResponse, type: :validate_resp
 
       context 'when there is no paiements' do
         context 'when service user is enrolled' do
-          let(:body) { read_payload_file('pole_emploi/indemnites/enrolled_without_payments.json') }
+          let(:body) { read_payload_file('france_travail/indemnites/enrolled_without_payments.json') }
 
           it { is_expected.to be_a_failure }
 
@@ -23,7 +23,7 @@ RSpec.describe FranceTravail::Indemnites::ValidateResponse, type: :validate_resp
         end
 
         context 'when service user is not enrolled' do
-          let(:body) { read_payload_file('pole_emploi/indemnites/not_enrolled.json') }
+          let(:body) { read_payload_file('france_travail/indemnites/not_enrolled.json') }
 
           it { is_expected.to be_a_failure }
 

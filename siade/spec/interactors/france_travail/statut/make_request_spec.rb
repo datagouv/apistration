@@ -13,7 +13,7 @@ RSpec.describe FranceTravail::Statut::MakeRequest, type: :make_request do
   let(:identifiant) { 'whatever' }
 
   let!(:stubbed_request) do
-    stub_request(:post, Siade.credentials[:pole_emploi_status_url]).with(
+    stub_request(:post, Siade.credentials[:france_travail_status_url]).with(
       body: identifiant,
       headers: {
         'Content-Type' => 'application/json',
@@ -22,7 +22,7 @@ RSpec.describe FranceTravail::Statut::MakeRequest, type: :make_request do
       }
     ).to_return(
       status: 200,
-      body: read_payload_file('pole_emploi/statut/valid.json')
+      body: read_payload_file('france_travail/statut/valid.json')
     )
   end
 

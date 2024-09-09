@@ -23,7 +23,7 @@ RSpec.describe 'FranceTravail: Indemnites with identifiant', api: :particulier, 
 
       too_many_requests(FranceTravail::Indemnites)
 
-      describe 'with valid token and mandatory params', :valid, vcr: { cassette_name: 'pole_emploi/oauth2' } do
+      describe 'with valid token and mandatory params', :valid, vcr: { cassette_name: 'france_travail/oauth2' } do
         describe 'when it is found' do
           before do
             stub_france_travail_indemnites_valid(identifiant:)

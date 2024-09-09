@@ -14,7 +14,7 @@ RSpec.describe FranceTravail::Indemnites, type: :retriever_organizer do
     let(:identifiant) { 'whatever' }
     let(:user_id) { SecureRandom.uuid }
 
-    describe 'happy path', vcr: { cassette_name: 'pole_emploi/oauth2' } do
+    describe 'happy path', vcr: { cassette_name: 'france_travail/oauth2' } do
       before do
         stub_france_travail_indemnites_valid(identifiant:)
       end

@@ -6,7 +6,7 @@ RSpec.describe FranceTravail::Indemnites::BuildResource, type: :build_resource d
   let(:response) { instance_double(Net::HTTPOK, body:) }
 
   let(:identifiant) { 'whatever' }
-  let(:body) { read_payload_file('pole_emploi/indemnites/valid.json') }
+  let(:body) { read_payload_file('france_travail/indemnites/valid.json') }
 
   describe 'resource' do
     subject { instance.bundled_data.data.to_h }

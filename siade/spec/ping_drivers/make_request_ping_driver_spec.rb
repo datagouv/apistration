@@ -33,7 +33,7 @@ RSpec.describe MakeRequestPingDriver, type: :ping_driver do
       context 'when there is a token_interactor key in config' do
         let(:token_interactor) { Interactor::Context.new(token: 'token') }
         let!(:stubbed_request) do
-          stub_request(:post, Siade.credentials[:pole_emploi_status_url]).with(
+          stub_request(:post, Siade.credentials[:france_travail_status_url]).with(
             body: 'identifiant',
             headers: {
               'Content-Type' => 'application/json',

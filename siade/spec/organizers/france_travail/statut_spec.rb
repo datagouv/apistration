@@ -12,11 +12,11 @@ RSpec.describe FranceTravail::Statut, type: :retriever_organizer do
     let(:identifiant) { 'whatever' }
     let(:user_id) { SecureRandom.uuid }
 
-    describe 'happy path', vcr: { cassette_name: 'pole_emploi/oauth2' } do
+    describe 'happy path', vcr: { cassette_name: 'france_travail/oauth2' } do
       before do
-        stub_request(:post, Siade.credentials[:pole_emploi_status_url]).and_return(
+        stub_request(:post, Siade.credentials[:france_travail_status_url]).and_return(
           status: 200,
-          body: read_payload_file('pole_emploi/statut/valid.json')
+          body: read_payload_file('france_travail/statut/valid.json')
         )
       end
 

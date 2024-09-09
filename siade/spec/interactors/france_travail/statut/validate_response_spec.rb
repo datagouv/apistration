@@ -8,7 +8,7 @@ RSpec.describe FranceTravail::Statut::ValidateResponse, type: :validate_response
       end
 
       context 'with valid body' do
-        let(:body) { read_payload_file('pole_emploi/statut/valid.json') }
+        let(:body) { read_payload_file('france_travail/statut/valid.json') }
 
         it { is_expected.to be_a_success }
 
@@ -29,7 +29,7 @@ RSpec.describe FranceTravail::Statut::ValidateResponse, type: :validate_response
         instance_double(Net::HTTPNotFound, code: 404, body:)
       end
 
-      let(:body) { read_payload_file('pole_emploi/statut/not_found.json') }
+      let(:body) { read_payload_file('france_travail/statut/not_found.json') }
 
       it { is_expected.to be_a_failure }
 
@@ -41,7 +41,7 @@ RSpec.describe FranceTravail::Statut::ValidateResponse, type: :validate_response
         instance_double(Net::HTTPNotFound, code: 206, body:)
       end
 
-      let(:body) { read_payload_file('pole_emploi/partial_content.json') }
+      let(:body) { read_payload_file('france_travail/partial_content.json') }
 
       it { is_expected.to be_a_failure }
 

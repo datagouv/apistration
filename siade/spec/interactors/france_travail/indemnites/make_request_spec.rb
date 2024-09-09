@@ -13,7 +13,7 @@ RSpec.describe FranceTravail::Indemnites::MakeRequest, type: :make_request do
   let(:identifiant) { 'whatever' }
 
   let!(:stubbed_request) do
-    stub_request(:get, "#{Siade.credentials[:pole_emploi_indemnites_url]}?loginMnemotechnique=#{identifiant}").with(
+    stub_request(:get, "#{Siade.credentials[:france_travail_indemnites_url]}?loginMnemotechnique=#{identifiant}").with(
       headers: {
         'Content-Type' => 'application/json',
         'Authorization' => "Bearer #{token}",
@@ -21,7 +21,7 @@ RSpec.describe FranceTravail::Indemnites::MakeRequest, type: :make_request do
       }
     ).to_return(
       status: 200,
-      body: read_payload_file('pole_emploi/indemnites/valid.json')
+      body: read_payload_file('france_travail/indemnites/valid.json')
     )
   end
 
