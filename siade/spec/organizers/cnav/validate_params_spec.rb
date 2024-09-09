@@ -78,6 +78,12 @@ RSpec.describe CNAV::ValidateParams, type: :validate_params do
   end
 
   describe 'non regression test' do
+    describe 'with no prenoms' do
+      let(:prenoms) { nil }
+
+      it { is_expected.to be_a_success }
+    end
+
     describe 'with empty params for lieu de naissance and in france' do
       let(:code_cog_insee_commune_de_naissance) { nil }
       let(:code_pays_lieu_de_naissance) { '99100' }

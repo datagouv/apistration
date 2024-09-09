@@ -5,6 +5,6 @@ class CNAV::ValidateParams < ValidateParamsOrganizer
     CNAV::ValidateCodePaysLieuDeNaissance,
     CNAV::ValidateDateDeNaissance,
     CNAV::ValidateRequestId,
-    Civility::ValidatePrenoms,
+    CNAV::ValidatePrenoms,
     Civility::ValidateNomNaissance
 end
