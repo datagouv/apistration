@@ -134,27 +134,27 @@ parameters:
   civility: &civility
     nomUsage: 
       type: "string"
-      description: "Nom d'usage. Ne pas renseigner si présence de jeton FranceConnect."
+      description: "Nom d'usage."
       example: "DUPONT"
     nomNaissance: 
       type: "string"
-      description: "Nom de naissance. Ne pas renseigner si présence de jeton FranceConnect. Le champ est obligatoire pour les appels non FranceConnecté"
+      description: "Nom de naissance."
       example: "JEAN"
     prenoms: 
-      description: "Liste des prénoms. Ne pas renseigner si présence de jeton FranceConnect."
+      description: "Liste des prénoms."
       type: "array"
       minItems: 1
       example: ['PIERRE', 'RICHARD']
     anneeDateDeNaissance:
-      description: "Année de naissance. Ne pas la renseigner si celle-ci est inconnue ou en cas de présence de jeton FranceConnect."
+      description: "Année de naissance."
       type: integer
       example: 1990
     moisDateDeNaissance:
-      description: "Mois de naissance. Ne pas le renseigner si celui-ci est inconnu ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si anneeDateDeNaissance est vide."
+      description: "Mois de naissance. Cette valeur est ignorée si anneeDateDeNaissance est vide."
       type: integer
       example: 1
     jourDateDeNaissance:
-      description: "Jour de naissance. Ne pas le renseigner si celui-ci est inconnu ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si moisDateDeNaissance ou anneeDateDeNaissance est vide."
+      description: "Jour de naissance. Cette valeur est ignorée si moisDateDeNaissance ou anneeDateDeNaissance est vide."
       type: integer
       example: 1
     codeCogInseeCommuneDeNaissance:
@@ -162,15 +162,15 @@ parameters:
       minLength: 5
       maxLength: 5
       example: '08480'
-      description: "Code Insee à 5 chiffres du lieu de naissance de la personne sur 5 chiffres. Ne pas remplir si la personne est née à l'étranger ou si présence de jeton FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance, anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire si la personne est née en France"
+      description: "Code Insee à 5 chiffres du lieu de naissance de la personne sur 5 chiffres. Ne pas remplir si la personne est née à l'étranger. En l'absence du triplet (nomCommuneNaissance, anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire si la personne est née en France"
     codePaysLieuDeNaissance:
-      description: "Code Insee à 5 chiffres du pays de naissance (France = 99100). Obligatoire si absence de jeton FranceConnect."
+      description: "Code Insee à 5 chiffres du pays de naissance (France = 99100)."
       type: string
       minLength: 5
       maxLength: 5
       example: '99100'
     sexeEtatCivil:
-      description: "Sexe de la personne, masculin ou féminin. Obligatoire si absence de jeton FranceConnect."
+      description: "Sexe de la personne présent sur la pièce d'identité, masculin ou féminin."
       type: string
       example: M
       enum:
@@ -180,10 +180,10 @@ parameters:
       type: string
       minLength: 1
       example: 'Gennevilliers'
-      description: "Nom de la commune de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
+      description: "Nom de la commune de naissance. En l'absence du codeCogInseeCommuneDeNaissance ce paramètre est obligatoire si la personne est née en France"
     codeCogInseeDepartementDeNaissance:
       type: string
       minLength: 2
       maxLength: 3
       example: '92'
-      description: "Code INSEE du département de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
+      description: "Code INSEE du département de naissance. En l'absence de jeton FranceConnect et du codeCogInseeCommuneDeNaissance, ce paramètre est obligatoire si la personne est née en France"

@@ -59,7 +59,7 @@ paths:
     get:
       summary: Statut allocation adulte handicapé (AAH)
       tags:
-      - Prestations sociales
+      - Allocation Adulte Handicapé
       parameters:
       - name: Cache-Control
         in: header
@@ -195,9 +195,7 @@ paths:
       - franceConnectToken: []
         apiKey: []
       description: "Statut bénéficiaire de l'allocation adulte handicapé (AAH). \n\n
-        Retourne également des informations sur les dates d'ouverture des droits.
-        \n L'API peut être appellée avec les données identité pivot ou avec un jeton
-        FranceConnect."
+        Retourne également des informations sur les dates d'ouverture des droits."
       responses:
         '200':
           description: Particulier trouvé
@@ -251,7 +249,7 @@ paths:
                     - code: '00364'
                       title: Entité non traitable
                       detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source:
+                      source: 
                       meta: {}
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
@@ -270,7 +268,7 @@ paths:
                       detail: Dossier allocataire inexistant. Le document ne peut
                         être édité. Veuillez vérifier que l'identifiant correspond
                         au périmètre couvert par l'API.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Entité non trouvée
@@ -292,7 +290,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Erreur inconnue du fournisseur de données
@@ -318,7 +316,7 @@ paths:
                     - code: '50002'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source:
+                      source: 
                       meta: {}
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
@@ -328,7 +326,7 @@ paths:
     get:
       summary: Statut allocation de soutien familial (ASF)
       tags:
-      - Prestations sociales
+      - Allocation Soutien Familial
       parameters:
       - name: Cache-Control
         in: header
@@ -465,8 +463,7 @@ paths:
         apiKey: []
       description: Savoir si un particulier est bénéficiaire de l'allocation de soutien
         familial (ASF). Retourne également des informations sur les dates d'ouverture
-        et de fermeture des droits. L'API peut être appellée avec les données identité
-        pivot ou avec un jeton FranceConnect.
+        et de fermeture des droits.
       responses:
         '200':
           description: Dossier trouvé
@@ -531,7 +528,7 @@ paths:
                     - code: '00364'
                       title: Entité non traitable
                       detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source:
+                      source: 
                       meta: {}
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
@@ -550,7 +547,7 @@ paths:
                       detail: Dossier allocataire inexistant. Le document ne peut
                         être édité. Veuillez vérifier que l'identifiant correspond
                         au périmètre couvert par l'API.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Entité non trouvée
@@ -572,7 +569,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Erreur inconnue du fournisseur de données
@@ -598,7 +595,7 @@ paths:
                     - code: '50002'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source:
+                      source: 
                       meta: {}
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
@@ -608,7 +605,7 @@ paths:
     get:
       summary: Statut complémentaire santé solidaire (C2S)
       tags:
-      - Prestations sociales
+      - Complémentaire Santé Solidaire
       parameters:
       - name: Cache-Control
         in: header
@@ -747,9 +744,7 @@ paths:
         \n\n Retourne également des informations sur les dates d'ouverture des droits.
         \n Pour plus d'informations sur cette API et obtenir un accès en avant-première,
         veuillez contacter l'équipe API Particulier. \n **Données disponibles en bac
-        à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)
-        \n L'API peut être appellée avec les données identité pivot ou avec un jeton
-        FranceConnect."
+        à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)"
       responses:
         '200':
           description: Complementaire Santé Solidaire trouvée
@@ -823,7 +818,7 @@ paths:
                     - code: '00364'
                       title: Entité non traitable
                       detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source:
+                      source: 
                       meta: {}
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
@@ -843,7 +838,7 @@ paths:
                       detail: Dossier allocataire inexistant. Le document ne peut
                         être édité. Veuillez vérifier que l'identifiant correspond
                         au périmètre couvert par l'API.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Entité non trouvée
@@ -865,7 +860,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Erreur inconnue du fournisseur de données
@@ -891,7 +886,7 @@ paths:
                     - code: '50002'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source:
+                      source: 
                       meta: {}
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
@@ -901,7 +896,7 @@ paths:
     get:
       summary: Statut prime d'activité
       tags:
-      - Prestations sociales
+      - Prime Activité
       parameters:
       - name: Cache-Control
         in: header
@@ -1037,9 +1032,7 @@ paths:
       - franceConnectToken: []
         apiKey: []
       description: "Statut bénéficiaire de la prime d'activité, majorée ou non. \n\n
-        Retourne également des informations sur les dates d'ouverture des droits.
-        \n L'API peut être appellée avec les données identité pivot ou avec un jeton
-        FranceConnect."
+        Retourne également des informations sur les dates d'ouverture des droits."
       responses:
         '200':
           description: Dossier trouvé
@@ -1113,7 +1106,7 @@ paths:
                     - code: '00364'
                       title: Entité non traitable
                       detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source:
+                      source: 
                       meta: {}
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
@@ -1132,7 +1125,7 @@ paths:
                       detail: Dossier allocataire inexistant. Le document ne peut
                         être édité. Veuillez vérifier que l'identifiant correspond
                         au périmètre couvert par l'API.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Entité non trouvée
@@ -1154,7 +1147,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Erreur inconnue du fournisseur de données
@@ -1180,7 +1173,7 @@ paths:
                     - code: '50002'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source:
+                      source: 
                       meta: {}
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
@@ -1345,9 +1338,7 @@ paths:
       description: "Quotient familial et composition de la famille d'un allocataire
         du régime agricole (régime général à venir). \n Pour plus d'informations sur
         cette API et obtenir un accès en avant-première, veuillez contacter l'équipe
-        API Particulier. \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnav_quotient_familial_v2)
-        \n L'API peut être appellée avec les données identité pivot ou avec un jeton
-        FranceConnect."
+        API Particulier. \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnav_quotient_familial_v2)"
       responses:
         '200':
           description: Quotient Familial trouvé
@@ -1385,7 +1376,7 @@ paths:
                       jourDateDeNaissance: '12'
                       sexe: M
                     - nomNaissance: NIDOUILLET
-                      nomUsuel:
+                      nomUsuel: 
                       prenoms: JOSIANE
                       anneeDateDeNaissance: '1981'
                       moisDateDeNaissance: '05'
@@ -1393,25 +1384,25 @@ paths:
                       sexe: F
                     enfants:
                     - nomNaissance: CHAMPION
-                      nomUsuel:
+                      nomUsuel: 
                       prenoms: AURELIE
                       anneeDateDeNaissance: '2014'
                       moisDateDeNaissance: '05'
                       jourDateDeNaissance: '02'
                       sexe: F
                     - nomNaissance: CHAMPION
-                      nomUsuel:
+                      nomUsuel: 
                       prenoms: AURELIEN
                       anneeDateDeNaissance: '2012'
                       moisDateDeNaissance: '04'
-                      jourDateDeNaissance:
+                      jourDateDeNaissance: 
                       sexe: M
                     adresse:
                       identite: DU MONDE JEAN-PASCAL
                       complementInformation: APPARTEMENT 2
-                      complementInformationGeographique:
-                      numeroLibelleVoie:
-                      lieuDit:
+                      complementInformationGeographique: 
+                      numeroLibelleVoie: 
+                      lieuDit: 
                       codePostalVille: 81700 GARREVAQUES
                       pays: FRANCE
               schema:
@@ -1536,12 +1527,12 @@ paths:
                           remise
                         type: string
                         nullable: true
-                        example:
+                        example: 
                       complementInformationGeographique:
                         title: Complément d'information du point géographique
                         type: string
                         nullable: true
-                        example:
+                        example: 
                         description: Complément d'information du point géographique.
                       numeroLibelleVoie:
                         title: Voie
@@ -1553,7 +1544,7 @@ paths:
                         title: Lieu-dit
                         type: string
                         nullable: true
-                        example:
+                        example: 
                         description: 'Lieu-dit ou service particulier de distribution
                           : poste restante, boîte postale'
                       codePostalVille:
@@ -1718,7 +1709,7 @@ paths:
                     - code: '50002'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source:
+                      source: 
                       meta: {}
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
@@ -1728,7 +1719,7 @@ paths:
     get:
       summary: Statut revenu de solidarité active (RSA)
       tags:
-      - Prestations sociales
+      - Revenu Solidarité Active
       parameters:
       - name: Cache-Control
         in: header
@@ -1865,8 +1856,7 @@ paths:
         apiKey: []
       description: "Statut bénéficiaire du revenu de solidarité active (RSA), majoré
         ou non. \n\n Retourne également des informations sur les dates d'ouverture
-        des droits. \n L'API peut être appellée avec les données identité pivot ou
-        avec un jeton FranceConnect."
+        des droits."
       responses:
         '200':
           description: Dossier trouvé
@@ -1939,7 +1929,7 @@ paths:
                     - code: '00364'
                       title: Entité non traitable
                       detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source:
+                      source: 
                       meta: {}
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
@@ -1958,7 +1948,7 @@ paths:
                       detail: Dossier allocataire inexistant. Le document ne peut
                         être édité. Veuillez vérifier que l'identifiant correspond
                         au périmètre couvert par l'API.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Entité non trouvée
@@ -1980,7 +1970,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: CNAV
                   summary: Erreur inconnue du fournisseur de données
@@ -2006,7 +1996,7 @@ paths:
                     - code: '50002'
                       title: Accès non autorisé
                       detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source:
+                      source: 
                       meta: {}
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
@@ -2164,7 +2154,7 @@ paths:
                     example: 1
                     nullable: true
                     enum:
-                    -
+                    - 
                     - 1
                     - 2
                     - 3
@@ -2214,7 +2204,7 @@ paths:
                     - code: '00364'
                       title: Entité non traitable
                       detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source:
+                      source: 
                       meta: {}
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
@@ -2233,7 +2223,7 @@ paths:
                       detail: Aucun élève n'a pu être trouvé avec les critères de
                         recherche fournis Veuillez vérifier que l'identifiant correspond
                         au périmètre couvert par l'API.
-                      source:
+                      source: 
                       meta:
                         provider: MEN
                   summary: Entité non trouvée
@@ -2255,7 +2245,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: MEN
                   summary: Erreur inconnue du fournisseur de données
@@ -2379,7 +2369,7 @@ paths:
                     - code: '00380'
                       title: Entité non traitable
                       detail: L'identifiant France Travail est manquant
-                      source:
+                      source: 
                       meta: {}
                   summary: Entité non traitable
                   description: L'identifiant France Travail est manquant
@@ -2398,7 +2388,7 @@ paths:
                       detail: Aucune situation France Travail n'a pu être trouvée
                         avec les critères de recherche fournis Veuillez vérifier que
                         l'identifiant correspond au périmètre couvert par l'API.
-                      source:
+                      source: 
                       meta:
                         provider: France Travail
                   summary: Entité non trouvée
@@ -2420,7 +2410,7 @@ paths:
                       detail: La réponse retournée par le fournisseur de données est
                         invalide et inconnue de notre service. L'équipe technique
                         a été notifiée de cette erreur pour investigation.
-                      source:
+                      source: 
                       meta:
                         provider: France Travail
                   summary: Erreur inconnue du fournisseur de données
@@ -2449,13 +2439,13 @@ components:
       properties:
         error:
           type: string
-          example:
+          example: 
         reason:
           type: string
-          example:
+          example: 
         message:
           type: string
-          example:
+          example: 
   securitySchemes:
     apiKey:
       type: apiKey

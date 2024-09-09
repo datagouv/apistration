@@ -30,6 +30,7 @@ class APIParticulier::V3AndMore::CNAV::AbstractCivilityController < APIParticuli
       codePaysLieuDeNaissance
       sexeEtatCivil
       codeCogInseeCommuneDeNaissance
+      codePaysLieuDeNaissance
     ])
   end
 

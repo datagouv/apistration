@@ -278,9 +278,8 @@ API Particulier est une API en accès restreint, ce qui signifie qu'il vous faut
 
 Afin de tester l'API avant la validation de votre demande d'habilitation, nous avons mis en place un bac à sable de l'API qui reproduit les comportements de l'API en production.
 
-Dans le bac à sable, pour chaque type de donnée disponible, un jeu de donnée libre en édition est mis à votre disposition, afin que vous puissiez faire vos tests en toute autonomie.
-
-Le fonctionnement du bac à sable est identique à celui de la véritable API de production, à la différence près que les données sont fictives, éditables par tout le monde, et que les jetons d'accès sont en libre service.
+Dans cet environnement, les données sont fictives et éditables par tout le monde. Cet environnement essaye de simuler au mieux les compotements en production en fournissant des réponses à un ensemble de paramètre fixe.
+Pour accéder à l'environnement de staging, référez-vous à la [documentation](https://particulier.api.gouv.fr/developpeurs#tester-api-preproduction).
 
 Le bac à sable et l'API de production sont appelables par deux adresses distinctes :
 

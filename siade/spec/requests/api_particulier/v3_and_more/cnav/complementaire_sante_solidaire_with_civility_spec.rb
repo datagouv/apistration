@@ -26,10 +26,8 @@ RSpec.describe 'API Particulier CNAV: complementaire sante solidaire with civili
         required: %w[
           nomNaissance
           prenoms
-          anneeDateDeNaissance
-          moisDateDeNaissance
-          jourDateDeNaissance
           sexeEtatCivil
+          codePaysLieuDeNaissance
         ]
       )
 

@@ -109,7 +109,7 @@ module RSwagParametersAPIParticulier
   end
 
   def parameters_cnav_identite_pivot_code_cog_insee_departement_de_naissance(required)
-    parameter name: :codeInseeDepartementNaissance,
+    parameter name: :codeCogInseeDepartementNaissance,
       in: :query,
       schema: {
         type: SwaggerData.get('parameters.civility.codeCogInseeDepartementDeNaissance.type'),

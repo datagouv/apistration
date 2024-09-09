@@ -26,10 +26,8 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
         required: %w[
           nomNaissance
           prenoms
-          anneeDateDeNaissance
-          moisDateDeNaissance
-          jourDateDeNaissance
           sexeEtatCivil
+          codePaysLieuDeNaissance
         ]
       )
 

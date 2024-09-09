@@ -66,11 +66,9 @@ cnav:
       \n
       Pour plus d'informations sur cette API et obtenir un accès en avant-première, veuillez contacter l'équipe API Particulier.
       \n
-      **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)
-      \n
-      L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
+      **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)"
     tags:
-      - Prestations sociales
+      - Complémentaire Santé Solidaire
     parameters:
       <<: *cnav_identite_pivot
     attributes:
@@ -113,9 +111,7 @@ cnav:
       \n
       Pour plus d'informations sur cette API et obtenir un accès en avant-première, veuillez contacter l'équipe API Particulier.
       \n
-      **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnav_quotient_familial_v2)
-      \n
-      L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
+      **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnav_quotient_familial_v2)"
     cache_duration: "La durée du cache est de 24 heure."
     tags:
       - Quotient familial
@@ -320,11 +316,9 @@ cnav:
     title: Statut revenu de solidarité active (RSA)
     description: "Statut bénéficiaire du revenu de solidarité active (RSA), majoré ou non.
       \n\n
-      Retourne également des informations sur les dates d'ouverture des droits.
-      \n
-      L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
+      Retourne également des informations sur les dates d'ouverture des droits."
     tags:
-      - Prestations sociales
+      - Revenu Solidarité Active
     parameters: *cnav_identite_pivot
     attributes:
       status:
@@ -365,11 +359,9 @@ cnav:
     title: Statut allocation adulte handicapé (AAH)
     description: "Statut bénéficiaire de l'allocation adulte handicapé (AAH).      
       \n\n
-      Retourne également des informations sur les dates d'ouverture des droits.
-      \n
-      L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
+      Retourne également des informations sur les dates d'ouverture des droits."
     tags:
-      - Prestations sociales
+      - Allocation Adulte Handicapé
     parameters: *cnav_identite_pivot
     attributes:
       status:
@@ -390,10 +382,9 @@ cnav:
 
   asf:
     title: Statut allocation de soutien familial (ASF)
-    description: "Savoir si un particulier est bénéficiaire de l'allocation de soutien familial (ASF). Retourne également des informations sur les dates d'ouverture et de fermeture des droits.
-      L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
+    description: "Savoir si un particulier est bénéficiaire de l'allocation de soutien familial (ASF). Retourne également des informations sur les dates d'ouverture et de fermeture des droits."
     tags:
-      - Prestations sociales
+      - Allocation Soutien Familial
     parameters: *cnav_identite_pivot
     attributes:
       status:
@@ -426,11 +417,9 @@ cnav:
     title: Statut prime d'activité
     description: "Statut bénéficiaire de la prime d'activité, majorée ou non.
       \n\n
-      Retourne également des informations sur les dates d'ouverture des droits.
-      \n
-      L'API peut être appellée avec les données identité pivot ou avec un jeton FranceConnect."
+      Retourne également des informations sur les dates d'ouverture des droits."
     tags:
-      - Prestations sociales
+      - Prime Activité
     parameters: *cnav_identite_pivot
     attributes:
       status:
