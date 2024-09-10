@@ -91,7 +91,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
         dateDeNaissance:,
         lieuDeNaissance:,
         sexe:,
-        token:,
+        token:
       }.compact
     end
 
@@ -134,7 +134,10 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
 
     describe 'with dateDeNaissance missing' do
       let(:scopes) { all_mesri_scopes }
+
+      # rubocop:disable RSpec/VariableName
       let(:dateDeNaissance) { nil }
+      # rubocop:enable RSpec/VariableName
 
       its(:status) { is_expected.to eq(400) }
     end
