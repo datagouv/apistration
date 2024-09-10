@@ -45,9 +45,9 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulier::V2::B
     {
       nom_naissance: params[:nom],
       prenoms: [params[:prenom]],
-      annee_date_de_naissance: params[:dateDeNaissance].split('-').first,
-      mois_date_de_naissance: params[:dateDeNaissance].split('-').second,
-      jour_date_de_naissance: params[:dateDeNaissance].split('-').third,
+      annee_date_de_naissance: date_of_birth_param.split('-').first,
+      mois_date_de_naissance: date_of_birth_param.split('-').second,
+      jour_date_de_naissance: date_of_birth_param.split('-').third,
       code_cog_insee_commune_de_naissance: params[:lieuDeNaissance],
       sexe_etat_civil: params[:sexe]
     }
@@ -77,6 +77,10 @@ class APIParticulier::V2::MESRI::StudentStatusController < APIParticulier::V2::B
       reason: 'Student not found',
       message: error.detail
     }
+  end
+
+  def date_of_birth_param
+    params[:dateDeNaissance] || ''
   end
 
   def extract_first_first_name_from_france_connect_given_name(given_name)

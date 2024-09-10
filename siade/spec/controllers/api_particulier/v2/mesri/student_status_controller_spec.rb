@@ -82,7 +82,18 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
   end
 
   describe 'with civility params' do
-    subject { get :show, params: { nom:, prenom:, dateDeNaissance:, lieuDeNaissance:, sexe:, token: } }
+    subject { get :show, params: }
+
+    let(:params) do
+      {
+        nom:,
+        prenom:,
+        dateDeNaissance:,
+        lieuDeNaissance:,
+        sexe:,
+        token:,
+      }.compact
+    end
 
     # rubocop:disable RSpec/VariableName
     let(:nom) { 'Dupont' }
@@ -119,6 +130,13 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
           expect(json['ine']).to be_nil
         end
       end
+    end
+
+    describe 'with dateDeNaissance missing' do
+      let(:scopes) { all_mesri_scopes }
+      let(:dateDeNaissance) { nil }
+
+      its(:status) { is_expected.to eq(400) }
     end
   end
 
