@@ -176,13 +176,13 @@ GEM
       addressable (>= 2.8)
     jsonapi-renderer (0.2.2)
     jwe (0.4.0)
-    jwt (2.8.2)
+    jwt (2.9.0)
       base64
     language_server-protocol (3.17.0.3)
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    lockbox (1.4.0)
+    lockbox (1.4.1)
     logstasher (2.1.5)
       activesupport (>= 5.2)
       request_store
@@ -457,7 +457,7 @@ DEPENDENCIES
   interactor
   json-schema
   jwe
-  jwt (~> 2.8)
+  jwt (~> 2.9)
   lockbox
   logstasher
   marcel
