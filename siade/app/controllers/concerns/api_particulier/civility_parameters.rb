@@ -1,6 +1,6 @@
 module APIParticulier::CivilityParameters
   # rubocop:disable Metrics/MethodLength
-  def civility_parameters(requireds: [])
+  def civility_parameters
     civility = {}
     %i[
       nomUsage
@@ -13,10 +13,10 @@ module APIParticulier::CivilityParameters
       nomCommuneNaissance
       codePaysLieuDeNaissance
     ].each do |param|
-      civility[to_snake_case_sym(param)] = civility_param(param, required?(param, requireds))
+      civility[to_snake_case_sym(param)] = civility_param(param)
     end
 
-    civility[:code_cog_insee_commune_de_naissance] = extract_code_cog_insee_commune_de_naissance(required?(:codeCogInseeCommuneDeNaissance, requireds))
+    civility[:code_cog_insee_commune_de_naissance] = extract_code_cog_insee_commune_de_naissance
 
     civility
   end
@@ -41,11 +41,7 @@ module APIParticulier::CivilityParameters
 
   protected
 
-  def required?(param, required)
-    required.include?(param)
-  end
-
-  def extract_code_cog_insee_commune_de_naissance(required)
+  def extract_code_cog_insee_commune_de_naissance
     code_cog = params[:codeCogInseeCommuneDeNaissance].presence
 
     if transcogage? && transcogage_params?
@@ -54,9 +50,7 @@ module APIParticulier::CivilityParameters
       code_cog ||= extract_code_commune_organizer.bundled_data.data.code_insee if extract_code_commune_organizer.success?
     end
 
-    return code_cog unless required && code_cog.blank?
-
-    raise ActionController::ParameterMissing, 'codeCogInseeCommuneDeNaissance'
+    code_cog
   end
 
   def transcogage?
@@ -77,12 +71,8 @@ module APIParticulier::CivilityParameters
     %i[nom_commune_naissance annee_date_de_naissance code_cog_insee_departement_de_naissance].all? { |key| transcogage_params[key].present? }
   end
 
-  def civility_param(param, required)
-    if required
-      params.require(param)
-    else
-      params[param]
-    end
+  def civility_param(param)
+    params[param]
   end
 
   def to_snake_case_sym(param)

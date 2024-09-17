@@ -8,12 +8,7 @@ class APIParticulier::V3AndMore::CNAV::QuotientFamilialWithCivilityController < 
   end
 
   def api_params
-    civility_parameters(requireds: %i[
-      nomNaissance
-      codePaysLieuDeNaissance
-      sexeEtatCivil
-      codeCogInseeCommuneDeNaissance
-    ]).merge({ mois: params[:mois], annee: params[:annee] })
+    civility_parameters.merge({ mois: params[:mois], annee: params[:annee] })
   end
 
   def expires_in

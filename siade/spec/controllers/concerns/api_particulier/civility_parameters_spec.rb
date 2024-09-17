@@ -17,7 +17,7 @@ RSpec.describe APIParticulier::CivilityParameters do
     include APIParticulier::CivilityParameters
 
     def index
-      civility_parameters(requireds: %i[nomNaissance codeCogInseeCommuneDeNaissance])
+      civility_parameters
       render json: { data: true }, status: :ok
     end
 
@@ -40,42 +40,22 @@ RSpec.describe APIParticulier::CivilityParameters do
   let(:nomNaissance) { 'Doe' }
   let(:codeCogInseeCommuneDeNaissance) { '12345' }
   let(:codeCogInseeDepartementDeNaissance) { nil }
-  let(:anneeDateDeNaissance) { nil }
+  let(:anneeDateDeNaissance) { 1988 }
   let(:nomCommuneNaissance) { nil }
 
   describe 'GET #index' do
-    context 'with all mandatory parameters' do
+    context 'with parameters' do
       it 'returns 200' do
         expect(subject).to have_http_status(:ok)
       end
     end
 
-    context 'with missing mandatory parameters' do
+    context 'with missing parameters' do
       let(:nomNaissance) { nil }
-
-      it 'returns 400' do
-        expect(subject).to have_http_status(:bad_request)
-      end
-    end
-
-    context 'with missing codeCogInseeCommuneDeNaissance but with transcogage_params', vcr: { cassette_name: 'insee/metadonnees/one_result' } do
       let(:codeCogInseeCommuneDeNaissance) { nil }
-      let(:nomCommuneNaissance) { 'Gennevilliers' }
-      let(:codeCogInseeDepartementDeNaissance) { '92' }
-      let(:anneeDateDeNaissance) { 2000 }
 
       it 'returns 200' do
         expect(subject).to have_http_status(:ok)
-      end
-    end
-
-    context 'with missing codeCogInseeCommuneDeNaissance and without transcogage_params', vcr: { cassette_name: 'insee/metadonnees/one_result' } do
-      let(:codeCogInseeCommuneDeNaissance) { nil }
-      let(:codeCogInseeDepartementDeNaissance) { '92' }
-      let(:anneeDateDeNaissance) { 2000 }
-
-      it 'returns 422' do
-        expect(subject).to have_http_status(:bad_request)
       end
     end
     # rubocop:enable RSpec/VariableName

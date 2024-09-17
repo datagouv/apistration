@@ -58,13 +58,13 @@ class APIParticulier::V2::CNAV::AbstractController < APIParticulier::V2::BaseCon
   def civility_params
     {
       nom_usage: params[:nomUsage],
-      nom_naissance: params.require(:nomNaissance),
+      nom_naissance: params[:nomNaissance],
       prenoms: params[:prenoms],
       annee_date_de_naissance: params[:anneeDateDeNaissance],
       mois_date_de_naissance: params[:moisDateDeNaissance],
       jour_date_de_naissance: params[:jourDateDeNaissance],
-      code_pays_lieu_de_naissance: params.require(:codePaysLieuDeNaissance),
-      sexe_etat_civil: params.require(:sexe),
+      code_pays_lieu_de_naissance: params[:codePaysLieuDeNaissance],
+      sexe_etat_civil: params[:sexe],
       recipient: current_user.siret
     }.merge(code_cog_insee_commune_de_naissance_or_transcogage_params)
   end

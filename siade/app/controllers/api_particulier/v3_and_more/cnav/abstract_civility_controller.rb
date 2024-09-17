@@ -25,13 +25,7 @@ class APIParticulier::V3AndMore::CNAV::AbstractCivilityController < APIParticuli
   private
 
   def api_params
-    civility_parameters(requireds: %i[
-      nomNaissance
-      codePaysLieuDeNaissance
-      sexeEtatCivil
-      codeCogInseeCommuneDeNaissance
-      codePaysLieuDeNaissance
-    ])
+    civility_parameters
   end
 
   def organizer_params

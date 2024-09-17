@@ -19,14 +19,7 @@ class APIParticulier::V3AndMore::MEN::ScolaritesWithCivilityController < APIPart
   end
 
   def organizer_params
-    civility_parameters(requireds: %i[
-      nomNaissance
-      prenoms
-      anneeDateDeNaissance
-      moisDateDeNaissance
-      jourDateDeNaissance
-      sexeEtatCivil
-    ])
+    civility_parameters
       .merge({
         annee_scolaire: params[:anneeScolaire],
         code_etablissement: params[:codeEtablissement]

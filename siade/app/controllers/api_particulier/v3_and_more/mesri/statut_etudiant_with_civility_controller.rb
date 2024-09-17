@@ -21,14 +21,7 @@ class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithCivilityController < A
   private
 
   def organizer_params
-    civility_parameters(requireds: %i[
-      nomNaissance
-      prenoms
-      anneeDateDeNaissance
-      moisDateDeNaissance
-      jourDateDeNaissance
-      sexeEtatCivil
-    ])
+    civility_parameters
       .merge({ token_id: current_user.token_id })
   end
 
