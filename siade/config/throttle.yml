@@ -51,13 +51,19 @@ shared:
       - { controller: 'api_entreprise/v3_and_more/european_commission/vies', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/banque_de_france/bilans_entreprise', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/qualifelec/certificats', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs_open_data', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/inpi/actes', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/inpi/rne/actes_bilans', action: 'show' }
 
     limit: 250
     period: 60
+  inpi_rne:
+    throttle_type: 'by_single_endpoint'
+    limit: 100
+    period: 60
+    endpoints:
+      - { controller: 'api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs', action: 'show' }
+      - { controller: 'api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs_open_data', action: 'show' }
+      - { controller: 'api_entreprise/v3_and_more/inpi/rne/actes_bilans', action: 'show' }
+
   proxied_files:
     throttle_type: 'by_single_endpoint'
     endpoints:
