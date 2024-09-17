@@ -21,13 +21,7 @@ class APIParticulier::V3AndMore::CNOUS::EtudiantBoursierWithCivilityController <
   private
 
   def organizer_params
-    civility_parameters(requireds: %i[
-      nomNaissance
-      prenoms
-      anneeDateDeNaissance
-      moisDateDeNaissance
-      jourDateDeNaissance
-    ])
+    civility_parameters
   end
 
   def serializer_module
