@@ -131,15 +131,15 @@ parameters:
       L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
     example: "marché numéro 127"
 
-  civility: &civility
+  civility:
     nomUsage: 
       type: "string"
-      description: "Nom d'usage."
-      example: "DUPONT"
+      description: "Nom d'usage. Le nom d'usage n'est jamais identique au nom de naissance. Il n'est utile que si la personne a changé de nom (suite à un marriage par exemple)."
+      example: "CHARRON"
     nomNaissance: 
       type: "string"
       description: "Nom de naissance."
-      example: "JEAN"
+      example: "DUPONT"
     prenoms: 
       description: "Liste des prénoms."
       type: "array"
@@ -152,19 +152,19 @@ parameters:
     moisDateDeNaissance:
       description: "Mois de naissance. Cette valeur est ignorée si anneeDateDeNaissance est vide."
       type: integer
-      example: 1
+      example: 6
     jourDateDeNaissance:
       description: "Jour de naissance. Cette valeur est ignorée si moisDateDeNaissance ou anneeDateDeNaissance est vide."
       type: integer
-      example: 1
+      example: 18
     codeCogInseeCommuneDeNaissance:
       type: string
       minLength: 5
       maxLength: 5
       example: '08480'
-      description: "Code Insee à 5 chiffres du lieu de naissance de la personne sur 5 chiffres. Ne pas remplir si la personne est née à l'étranger. En l'absence du triplet (nomCommuneNaissance, anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire si la personne est née en France"
+      description: "Code Insee à 5 chiffres du lieu de naissance de la personne sur 5 chiffres. Peut être remplacé par le triplet (nomCommuneNaissance, anneeDateDeNaissance, codeInseeDepartementNaissance)"
     codePaysLieuDeNaissance:
-      description: "Code Insee à 5 chiffres du pays de naissance (France = 99100)."
+      description: "Code Insee à 5 chiffres du pays de naissance (France = 99100 et liste complète disponible sur https://www.insee.fr/fr/information/6800675)."
       type: string
       minLength: 5
       maxLength: 5
