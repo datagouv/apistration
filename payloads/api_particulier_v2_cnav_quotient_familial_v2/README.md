@@ -131,7 +131,7 @@ et la réponse lorsque celui ci est trouvé.
   {
     "codePaysLieuDeNaissance": "99350",
     "sexe": "M",
-    "nomNaissange": "FAKIR",
+    "nomNaissance": "FAKIR",
     "prenoms": [
       "EYMEN",
       "MOHAMED"
@@ -188,7 +188,7 @@ et la réponse lorsque celui ci est trouvé.
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codePaysLieuDeNaissance=99350' -d 'sexe=M' -d 'nomNaissange=FAKIR' -d 'prenoms[]=EYMEN' -d 'prenoms[]=MOHAMED' -d 'anneeDateDeNaissance=1992' -d 'moisDateDeNaissance=11' -d 'jourDateDeNaissance=14' \
+    -G -d 'codePaysLieuDeNaissance=99350' -d 'sexe=M' -d 'nomNaissance=FAKIR' -d 'prenoms[]=EYMEN' -d 'prenoms[]=MOHAMED' -d 'anneeDateDeNaissance=1992' -d 'moisDateDeNaissance=11' -d 'jourDateDeNaissance=14' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -983,6 +983,7 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
     "codeInseeLieuDeNaissance": "08480",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F",
+    "nomNaissance": "DUPONT",
     "prenoms": [
       "ALEXIS"
     ],
@@ -1014,7 +1015,7 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'prenoms[]=ALEXIS' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
+    -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomNaissance=DUPONT' -d 'prenoms[]=ALEXIS' -d 'anneeDateDeNaissance=1982' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=27' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -1031,6 +1032,7 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
 
   ```json
   {
+    "nomNaissance": "LEFEBVRE",
     "codeInseeLieuDeNaissance": "00404",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F"
@@ -1059,7 +1061,7 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=00404' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
+    -G -d 'nomNaissance=LEFEBVRE' -d 'codeInseeLieuDeNaissance=00404' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -1076,6 +1078,7 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
 
   ```json
   {
+    "nomNaissance": "LEFEBVRE",
     "codeInseeLieuDeNaissance": "00503",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F"
@@ -1104,7 +1107,7 @@ Le nom ainsi que les deuxième et troisième prenoms ont été retiré des donn�
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=00503' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
+    -G -d 'nomNaissance=LEFEBVRE' -d 'codeInseeLieuDeNaissance=00503' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 

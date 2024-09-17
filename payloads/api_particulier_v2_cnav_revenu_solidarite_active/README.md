@@ -10,7 +10,7 @@
 
   ```json
   {
-    "nomUsage": "MARTIN",
+    "nomNaissance": "MARTIN",
     "prenoms": [
       "SAMUEL"
     ],
@@ -46,7 +46,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=MARTIN' -d 'prenoms[]=SAMUEL' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=9' -d 'jourDateDeNaissance=20' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomNaissance=MARTIN' -d 'prenoms[]=SAMUEL' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=9' -d 'jourDateDeNaissance=20' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/revenu-solidarite-active"
   ```
 
@@ -63,7 +63,7 @@
 
   ```json
   {
-    "nomUsage": "GONTRAND",
+    "nomNaissance": "GONTRAND",
     "prenoms": [
       "YVES"
     ],
@@ -99,7 +99,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=GONTRAND' -d 'prenoms[]=YVES' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=9' -d 'jourDateDeNaissance=20' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomNaissance=GONTRAND' -d 'prenoms[]=YVES' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=9' -d 'jourDateDeNaissance=20' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/revenu-solidarite-active"
   ```
 
@@ -116,7 +116,7 @@
 
   ```json
   {
-    "nomUsage": "LAGAFFE",
+    "nomNaissance": "LAGAFFE",
     "prenoms": [
       "GASTON"
     ],
@@ -152,7 +152,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=LAGAFFE' -d 'prenoms[]=GASTON' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=9' -d 'jourDateDeNaissance=20' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomNaissance=LAGAFFE' -d 'prenoms[]=GASTON' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=9' -d 'jourDateDeNaissance=20' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/revenu-solidarite-active"
   ```
 
@@ -221,6 +221,7 @@
 
   ```json
   {
+    "nomNaissance": "DUBOCHE",
     "codeInseeLieuDeNaissance": "00503",
     "codePaysLieuDeNaissance": "99100",
     "sexe": "F"
@@ -249,7 +250,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=00503' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
+    -G -d 'nomNaissance=DUBOCHE' -d 'codeInseeLieuDeNaissance=00503' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/revenu-solidarite-active"
   ```
 

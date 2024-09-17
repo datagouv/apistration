@@ -9,6 +9,7 @@ params:
   codeInseeLieuDeNaissance: '08480'
   codePaysLieuDeNaissance: '99100'
   sexe: 'F'
+  nomNaissance: 'DUPONT'
   prenoms:
     - 'ALEXIS'
   anneeDateDeNaissance: 1982

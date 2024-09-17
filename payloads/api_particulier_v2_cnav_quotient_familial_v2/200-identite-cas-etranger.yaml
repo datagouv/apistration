@@ -9,7 +9,7 @@ description: |-
 params:
   codePaysLieuDeNaissance: '99350'
   sexe: 'M'
-  nomNaissange: 'FAKIR'
+  nomNaissance: 'FAKIR'
   prenoms:
     - 'EYMEN'
     - 'MOHAMED'

@@ -3,7 +3,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""status"": ""beneficiaire"",
   ""dateDebut"": ""2022-11-29""
 }"
-,## Non bénéficiaire,"{""nomNaissance"":""MARTIN"",""prenoms"":[""JACQUES""],""anneeDateDeNaissance"":1987,""moisDateDeNaissance"":12,""jourDateDeNaissance"":1,""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",200,"{
+,## Non bénéficiaire,"{""nomUsage"":""CHIRAC"",""nomNaissance"":""MARTIN"",""prenoms"":[""JACQUES""],""anneeDateDeNaissance"":1987,""moisDateDeNaissance"":12,""jourDateDeNaissance"":1,""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",200,"{
   ""status"": ""non_beneficiaire"",
   ""dateDebut"": null
 }"

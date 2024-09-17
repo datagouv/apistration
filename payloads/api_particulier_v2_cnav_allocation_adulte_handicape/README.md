@@ -63,6 +63,7 @@
 
   ```json
   {
+    "nomUsage": "CHIRAC",
     "nomNaissance": "MARTIN",
     "prenoms": [
       "JACQUES"
@@ -97,7 +98,7 @@
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=MARTIN' -d 'prenoms[]=JACQUES' -d 'anneeDateDeNaissance=1987' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=1' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomUsage=CHIRAC' -d 'nomNaissance=MARTIN' -d 'prenoms[]=JACQUES' -d 'anneeDateDeNaissance=1987' -d 'moisDateDeNaissance=12' -d 'jourDateDeNaissance=1' -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/allocation-adulte-handicape"
   ```
 

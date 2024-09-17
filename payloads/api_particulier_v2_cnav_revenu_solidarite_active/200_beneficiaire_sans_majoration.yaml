@@ -2,7 +2,7 @@
 description: |-
   ## Bénéficiaire sans majoration
 params:
-  nomUsage: 'GONTRAND'
+  nomNaissance: 'GONTRAND'
   prenoms:
   - 'YVES'
   anneeDateDeNaissance: 1980
