@@ -59,7 +59,7 @@ paths:
     get:
       summary: Statut allocation adulte handicapé (AAH)
       tags:
-      - Allocation Adulte Handicapé
+      - Statut Allocation Adulte Handicapé (AAH)
       parameters:
       - name: Cache-Control
         in: header
@@ -326,7 +326,7 @@ paths:
     get:
       summary: Statut allocation de soutien familial (ASF)
       tags:
-      - Allocation Soutien Familial
+      - Statut Allocation Soutien Familial (ASF)
       parameters:
       - name: Cache-Control
         in: header
@@ -605,7 +605,7 @@ paths:
     get:
       summary: Statut complémentaire santé solidaire (C2S)
       tags:
-      - Complémentaire Santé Solidaire
+      - Statut Complémentaire Santé Solidaire (C2S)
       parameters:
       - name: Cache-Control
         in: header
@@ -896,7 +896,7 @@ paths:
     get:
       summary: Statut prime d'activité
       tags:
-      - Prime Activité
+      - Statut Prime Activité
       parameters:
       - name: Cache-Control
         in: header
@@ -1183,7 +1183,7 @@ paths:
     get:
       summary: Quotient familial MSA & CAF
       tags:
-      - Quotient familial
+      - Quotient familial MSA & CAF
       parameters:
       - name: Cache-Control
         in: header
@@ -1719,7 +1719,7 @@ paths:
     get:
       summary: Statut revenu de solidarité active (RSA)
       tags:
-      - Revenu Solidarité Active
+      - Statut Revenu Solidarité Active (RSA)
       parameters:
       - name: Cache-Control
         in: header
@@ -2006,7 +2006,7 @@ paths:
     get:
       summary: Statut élève scolarisé et boursier
       tags:
-      - Scolarité
+      - Statut élève scolarisé et boursier
       parameters:
       - name: X-Api-Key
         in: header
@@ -2257,7 +2257,7 @@ paths:
     get:
       summary: Paiements versés par France Travail
       tags:
-      - Demandeurs d'emploi
+      - Paiements versés par France Travail
       parameters:
       - name: X-Api-Key
         in: header

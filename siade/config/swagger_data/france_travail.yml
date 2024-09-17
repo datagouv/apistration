@@ -16,7 +16,7 @@ france_travail:
         **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_pole_emploi_statut)
 
     tags:
-      - Demandeurs d'emploi
+      - Statut demandeurs d'emploi
     attributes:
       identifiant:
         title: Nom d'utilisateur France Travail
@@ -187,7 +187,7 @@ france_travail:
     title: "Paiements versés par France Travail"
     description: "Ensemble des paiements versés par France Travail au particulier"
     tags:
-      - Demandeurs d'emploi
+      - Paiements versés par France Travail
     parameters:
       identifiant:
         required: true

@@ -68,7 +68,7 @@ cnav:
       \n
       **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)"
     tags:
-      - Complémentaire Santé Solidaire
+      - Statut Complémentaire Santé Solidaire (C2S)
     parameters:
       <<: *cnav_identite_pivot
     attributes:
@@ -114,7 +114,7 @@ cnav:
       **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnav_quotient_familial_v2)"
     cache_duration: "La durée du cache est de 24 heure."
     tags:
-      - Quotient familial
+      - Quotient familial MSA & CAF
     parameters:
       <<: *cnav_identite_pivot
       annee:
@@ -318,7 +318,7 @@ cnav:
       \n\n
       Retourne également des informations sur les dates d'ouverture des droits."
     tags:
-      - Revenu Solidarité Active
+      - Statut Revenu Solidarité Active (RSA)
     parameters: *cnav_identite_pivot
     attributes:
       status:
@@ -361,7 +361,7 @@ cnav:
       \n\n
       Retourne également des informations sur les dates d'ouverture des droits."
     tags:
-      - Allocation Adulte Handicapé
+      - Statut Allocation Adulte Handicapé (AAH)
     parameters: *cnav_identite_pivot
     attributes:
       status:
@@ -384,7 +384,7 @@ cnav:
     title: Statut allocation de soutien familial (ASF)
     description: "Savoir si un particulier est bénéficiaire de l'allocation de soutien familial (ASF). Retourne également des informations sur les dates d'ouverture et de fermeture des droits."
     tags:
-      - Allocation Soutien Familial
+      - Statut Allocation Soutien Familial (ASF)
     parameters: *cnav_identite_pivot
     attributes:
       status:
@@ -419,7 +419,7 @@ cnav:
       \n\n
       Retourne également des informations sur les dates d'ouverture des droits."
     tags:
-      - Prime Activité
+      - Statut Prime Activité
     parameters: *cnav_identite_pivot
     attributes:
       status:

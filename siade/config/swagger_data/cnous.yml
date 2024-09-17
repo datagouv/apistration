@@ -1,9 +1,9 @@
 cnous:
   commons:
-    title: Status élève scolarisé et bouriser
-    description: Statut scolarisé et statut boursier d'un élève du primaire, collège ou lycée.
+    title: Status étudiant boursier
+    description: Statut et échelon boursier d'un étudiant, délivrés par le Cnous
     tags:
-      - Statut élève scolarisé et bouriser
+      - Statut étudiant boursier
     attributes:
       nom:
         title: Nom de naissance
