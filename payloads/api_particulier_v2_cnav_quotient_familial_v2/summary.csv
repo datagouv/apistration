@@ -69,7 +69,7 @@ Ce cas permet de tester :
 
 Ce cas est le cas personne étrangère de l'ensemble des cas de test d'identité/limite.
 Il a pour but de décrire une personne fictive avec l'ensemble de ses paramètres
-et la réponse lorsque celui ci est trouvé.","{""codePaysLieuDeNaissance"":""99350"",""sexe"":""M"",""nomNaissange"":""FAKIR"",""prenoms"":[""EYMEN"",""MOHAMED""],""anneeDateDeNaissance"":1992,""moisDateDeNaissance"":11,""jourDateDeNaissance"":14}",200,"{
+et la réponse lorsque celui ci est trouvé.","{""codePaysLieuDeNaissance"":""99350"",""sexe"":""M"",""nomNaissance"":""FAKIR"",""prenoms"":[""EYMEN"",""MOHAMED""],""anneeDateDeNaissance"":1992,""moisDateDeNaissance"":11,""jourDateDeNaissance"":14}",200,"{
   ""regime"": ""CNAF"",
   ""allocataires"": [
     {
@@ -386,17 +386,17 @@ Les données concernant la date de naissance ont été retirée","{""codeInseeLi
 ,"## IDENTITÉ CAS NOMINAL
 
 Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
-Le nom ainsi que les deuxième et troisième prenoms ont été retiré des données","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""prenoms"":[""ALEXIS""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12,""jourDateDeNaissance"":27}",404,"{
+Le nom ainsi que les deuxième et troisième prenoms ont été retiré des données","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomNaissance"":""DUPONT"",""prenoms"":[""ALEXIS""],""anneeDateDeNaissance"":1982,""moisDateDeNaissance"":12,""jourDateDeNaissance"":27}",404,"{
   ""error"": ""not_found"",
   ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
   ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
 }"
-,Dossier non trouvé,"{""codeInseeLieuDeNaissance"":""00404"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",404,"{
+,Dossier non trouvé,"{""nomNaissance"":""LEFEBVRE"",""codeInseeLieuDeNaissance"":""00404"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",404,"{
   ""error"": ""not_found"",
   ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
   ""message"": ""Dossier allocataire inexistant. Le document ne peut être édité.""
 }"
-,Timeout - délai d'attente dépassé,"{""codeInseeLieuDeNaissance"":""00503"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",503,"{
+,Timeout - délai d'attente dépassé,"{""nomNaissance"":""LEFEBVRE"",""codeInseeLieuDeNaissance"":""00503"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",503,"{
   ""error"": ""network_error"",
   ""reason"": ""timeout of 10000 ms exceeded"",
   ""message"": ""Une erreur est survenue lors de l'appel au fournisseur de donnée""
