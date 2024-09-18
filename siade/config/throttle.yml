@@ -3,7 +3,6 @@ shared:
     throttle_type: 'by_group_of_endpoints'
     endpoints:
       - { controller: 'api_entreprise/v3_and_more/probtp/attestations_cotisation_retraite', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/acoss/attestations_sociales', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/fntp/carte_professionnelle_travaux_publics', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/cnetp/attestation_cotisations_conges_payes_chomage_intemperies', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/qualibat/certifications_batiment', action: 'show' }
@@ -63,7 +62,12 @@ shared:
       - { controller: 'api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs_open_data', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/inpi/rne/actes_bilans', action: 'show' }
-
+  urssaf_attestation_sociales:
+    throttle_type: 'by_single_endpoint'
+    limit: 50
+    period: 60
+    endpoints:
+      - { controller: 'api_entreprise/v3_and_more/acoss/attestations_sociales', action: 'show' }
   proxied_files:
     throttle_type: 'by_single_endpoint'
     endpoints:

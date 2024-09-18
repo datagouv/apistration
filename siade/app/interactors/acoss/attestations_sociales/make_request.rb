@@ -20,6 +20,13 @@ class ACOSS::AttestationsSociales::MakeRequest < MakeRequest::Post
     }
   end
 
+  def extra_http_start_options
+    {
+      open_timeout: 20,
+      read_timeout: 20
+    }
+  end
+
   def siren
     context.params[:siren]
   end

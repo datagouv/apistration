@@ -156,10 +156,10 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
 
           let(:endpoints) do
             [{
-              controller: 'api_entreprise/v3_and_more/acoss/attestations_sociales',
+              controller: 'api_entreprise/v3_and_more/probtp/attestations_cotisation_retraite',
               action: 'show',
               api_version: 3,
-              siren: '123'
+              siret: '123'
             }]
           end
         end
