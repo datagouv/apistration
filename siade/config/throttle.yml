@@ -56,7 +56,7 @@ shared:
     period: 60
   inpi_rne:
     throttle_type: 'by_single_endpoint'
-    limit: 100
+    limit: 30
     period: 60
     endpoints:
       - { controller: 'api_entreprise/v3_and_more/inpi/rne/beneficiaires_effectifs', action: 'show' }
