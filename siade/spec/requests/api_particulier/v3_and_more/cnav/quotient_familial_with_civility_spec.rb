@@ -48,7 +48,7 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
 
       too_many_requests(CNAV::QuotientFamilialV2)
 
-      let(:scopes) { %i[cnaf_quotient_familial] }
+      let(:scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse] }
 
       before do
         stub_cnav_authenticate('quotient_familial_v2')
@@ -65,7 +65,7 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
 
             cacheable_response(extra_description: SwaggerData.get('cnav.quotient-familial-v2.cache_duration'))
 
-            schema build_rswag_response_api_particulier(
+            schema build_rswag_response(
               attributes: SwaggerData.get('cnav.quotient-familial-v2.attributes')
             )
 

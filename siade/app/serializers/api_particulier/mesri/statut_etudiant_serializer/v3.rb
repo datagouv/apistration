@@ -15,7 +15,7 @@ class APIParticulier::MESRI::StatutEtudiantSerializer::V3 < APIParticulier::V3An
       }
 
       final_inscription[:statut] = initial_inscription[:statut] if scope?(:mesri_statut)
-      final_inscription[:regime] = initial_inscription[:statut] if scope?(:mesri_regime)
+      final_inscription[:regime] = initial_inscription[:regime] if scope?(:mesri_regime)
 
       if scope?(:mesri_etablissements)
         final_inscription.merge!(

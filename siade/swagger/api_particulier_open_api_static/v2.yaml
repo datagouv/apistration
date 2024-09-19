@@ -2706,7 +2706,7 @@ paths:
                       ligneVoie:
                         type: string
                         example: 21 RUE DES MARMOTS
-                      ligneComplementDestinaire:
+                      ligneComplementDestinataire:
                         type: string
                         nullable: true
                         example:

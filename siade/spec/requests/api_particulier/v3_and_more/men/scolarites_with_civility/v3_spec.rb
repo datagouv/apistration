@@ -60,7 +60,7 @@ RSpec.describe 'MEN: Scolarites with civility', api: :particulier, type: %i[requ
         response '200', 'Scolarité trouvée', vcr: { cassette_name: 'men/scolarites/valid' } do
           description SwaggerData.get('men.scolarite.description')
 
-          schema build_rswag_response_api_particulier(
+          schema build_rswag_response(
             attributes: SwaggerData.get('men.scolarite.attributes')
           )
 

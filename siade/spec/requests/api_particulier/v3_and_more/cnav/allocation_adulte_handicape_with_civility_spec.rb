@@ -65,7 +65,7 @@ RSpec.describe 'API Particulier CNAV: allocation adulte handicape with civility'
 
             cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
 
-            schema build_rswag_response_api_particulier(
+            schema build_rswag_response(
               attributes: SwaggerData.get('cnav.aah.attributes')
             )
 
@@ -81,9 +81,9 @@ RSpec.describe 'API Particulier CNAV: allocation adulte handicape with civility'
 
             let(:codePaysLieuDeNaissance) { '99623' }
 
-            schema '$ref' => '#/components/schemas/Error'
-
             build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.'))
+
+            schema '$ref' => '#/components/schemas/Error'
 
             run_test!
           end

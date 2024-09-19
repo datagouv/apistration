@@ -25,7 +25,7 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with FranceConnect', api
           response '200', 'Étudiant identifié' do
             description SwaggerData.get('mesri.commons.description')
 
-            schema build_rswag_response_api_particulier(
+            schema build_rswag_response(
               attributes: SwaggerData.get('mesri.commons.attributes')
             )
 

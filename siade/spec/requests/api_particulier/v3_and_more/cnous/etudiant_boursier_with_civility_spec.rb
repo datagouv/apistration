@@ -57,7 +57,7 @@ RSpec.describe 'API Particulier: CNOUS: Etudiant Boursier with Civility', api: :
           response '200', 'Étudiant identifié' do
             description SwaggerData.get('cnous.commons.description')
 
-            schema build_rswag_response_api_particulier(
+            schema build_rswag_response(
               attributes: SwaggerData.get('cnous.commons.attributes')
             )
 

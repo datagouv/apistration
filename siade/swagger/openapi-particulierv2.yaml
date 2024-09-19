@@ -245,12 +245,9 @@ paths:
               examples:
                 unprocessable_entity_error_gender_error:
                   value:
-                    errors:
-                    - code: '00364'
-                      title: Entité non traitable
-                      detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source: 
-                      meta: {}
+                    error: wrong_parameter
+                    reason: Le sexe n'est pas correctement formaté (m ou f)
+                    message: Le sexe n'est pas correctement formaté (m ou f)
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
               schema:
@@ -262,15 +259,13 @@ paths:
               examples:
                 entite_non_trouvee_37003:
                   value:
-                    errors:
-                    - code: '37003'
-                      title: Entité non trouvée
-                      detail: Dossier allocataire inexistant. Le document ne peut
-                        être édité. Veuillez vérifier que l'identifiant correspond
-                        au périmètre couvert par l'API.
-                      source: 
-                      meta:
-                        provider: CNAV
+                    error: not_found
+                    reason: Dossier allocataire inexistant. Le document ne peut être
+                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
+                      couvert par l'API.
+                    message: Dossier allocataire inexistant. Le document ne peut être
+                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
+                      couvert par l'API.
                   summary: Entité non trouvée
                   description: Dossier allocataire inexistant. Le document ne peut
                     être édité. Veuillez vérifier que l'identifiant correspond au
@@ -284,15 +279,13 @@ paths:
               examples:
                 unknown_error:
                   value:
-                    errors:
-                    - code: '37999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: La réponse retournée par le fournisseur de données est
-                        invalide et inconnue de notre service. L'équipe technique
-                        a été notifiée de cette erreur pour investigation.
-                      source: 
-                      meta:
-                        provider: CNAV
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
@@ -312,12 +305,9 @@ paths:
               examples:
                 acces_non_autorise_50002:
                   value:
-                    errors:
-                    - code: '50002'
-                      title: Accès non autorisé
-                      detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source: 
-                      meta: {}
+                    error: unauthorized
+                    reason: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                    message: Le jeton d'accès n'a pas été trouvé ou est expiré.
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
               schema:
@@ -524,12 +514,9 @@ paths:
               examples:
                 unprocessable_entity_error_gender_error:
                   value:
-                    errors:
-                    - code: '00364'
-                      title: Entité non traitable
-                      detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source: 
-                      meta: {}
+                    error: wrong_parameter
+                    reason: Le sexe n'est pas correctement formaté (m ou f)
+                    message: Le sexe n'est pas correctement formaté (m ou f)
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
               schema:
@@ -541,15 +528,13 @@ paths:
               examples:
                 entite_non_trouvee_37003:
                   value:
-                    errors:
-                    - code: '37003'
-                      title: Entité non trouvée
-                      detail: Dossier allocataire inexistant. Le document ne peut
-                        être édité. Veuillez vérifier que l'identifiant correspond
-                        au périmètre couvert par l'API.
-                      source: 
-                      meta:
-                        provider: CNAV
+                    error: not_found
+                    reason: Dossier allocataire inexistant. Le document ne peut être
+                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
+                      couvert par l'API.
+                    message: Dossier allocataire inexistant. Le document ne peut être
+                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
+                      couvert par l'API.
                   summary: Entité non trouvée
                   description: Dossier allocataire inexistant. Le document ne peut
                     être édité. Veuillez vérifier que l'identifiant correspond au
@@ -563,15 +548,13 @@ paths:
               examples:
                 unknown_error:
                   value:
-                    errors:
-                    - code: '37999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: La réponse retournée par le fournisseur de données est
-                        invalide et inconnue de notre service. L'équipe technique
-                        a été notifiée de cette erreur pour investigation.
-                      source: 
-                      meta:
-                        provider: CNAV
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
@@ -591,12 +574,9 @@ paths:
               examples:
                 acces_non_autorise_50002:
                   value:
-                    errors:
-                    - code: '50002'
-                      title: Accès non autorisé
-                      detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source: 
-                      meta: {}
+                    error: unauthorized
+                    reason: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                    message: Le jeton d'accès n'a pas été trouvé ou est expiré.
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
               schema:
@@ -814,12 +794,9 @@ paths:
               examples:
                 unprocessable_entity_error_gender_error:
                   value:
-                    errors:
-                    - code: '00364'
-                      title: Entité non traitable
-                      detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source: 
-                      meta: {}
+                    error: wrong_parameter
+                    reason: Le sexe n'est pas correctement formaté (m ou f)
+                    message: Le sexe n'est pas correctement formaté (m ou f)
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
               schema:
@@ -832,15 +809,13 @@ paths:
               examples:
                 entite_non_trouvee_37003:
                   value:
-                    errors:
-                    - code: '37003'
-                      title: Entité non trouvée
-                      detail: Dossier allocataire inexistant. Le document ne peut
-                        être édité. Veuillez vérifier que l'identifiant correspond
-                        au périmètre couvert par l'API.
-                      source: 
-                      meta:
-                        provider: CNAV
+                    error: not_found
+                    reason: Dossier allocataire inexistant. Le document ne peut être
+                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
+                      couvert par l'API.
+                    message: Dossier allocataire inexistant. Le document ne peut être
+                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
+                      couvert par l'API.
                   summary: Entité non trouvée
                   description: Dossier allocataire inexistant. Le document ne peut
                     être édité. Veuillez vérifier que l'identifiant correspond au
@@ -854,15 +829,13 @@ paths:
               examples:
                 unknown_error:
                   value:
-                    errors:
-                    - code: '37999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: La réponse retournée par le fournisseur de données est
-                        invalide et inconnue de notre service. L'équipe technique
-                        a été notifiée de cette erreur pour investigation.
-                      source: 
-                      meta:
-                        provider: CNAV
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
@@ -882,12 +855,9 @@ paths:
               examples:
                 acces_non_autorise_50002:
                   value:
-                    errors:
-                    - code: '50002'
-                      title: Accès non autorisé
-                      detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source: 
-                      meta: {}
+                    error: unauthorized
+                    reason: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                    message: Le jeton d'accès n'a pas été trouvé ou est expiré.
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
               schema:
@@ -1102,12 +1072,9 @@ paths:
               examples:
                 unprocessable_entity_error_gender_error:
                   value:
-                    errors:
-                    - code: '00364'
-                      title: Entité non traitable
-                      detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source: 
-                      meta: {}
+                    error: wrong_parameter
+                    reason: Le sexe n'est pas correctement formaté (m ou f)
+                    message: Le sexe n'est pas correctement formaté (m ou f)
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
               schema:
@@ -1119,15 +1086,13 @@ paths:
               examples:
                 entite_non_trouvee_37003:
                   value:
-                    errors:
-                    - code: '37003'
-                      title: Entité non trouvée
-                      detail: Dossier allocataire inexistant. Le document ne peut
-                        être édité. Veuillez vérifier que l'identifiant correspond
-                        au périmètre couvert par l'API.
-                      source: 
-                      meta:
-                        provider: CNAV
+                    error: not_found
+                    reason: Dossier allocataire inexistant. Le document ne peut être
+                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
+                      couvert par l'API.
+                    message: Dossier allocataire inexistant. Le document ne peut être
+                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
+                      couvert par l'API.
                   summary: Entité non trouvée
                   description: Dossier allocataire inexistant. Le document ne peut
                     être édité. Veuillez vérifier que l'identifiant correspond au
@@ -1141,15 +1106,13 @@ paths:
               examples:
                 unknown_error:
                   value:
-                    errors:
-                    - code: '37999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: La réponse retournée par le fournisseur de données est
-                        invalide et inconnue de notre service. L'équipe technique
-                        a été notifiée de cette erreur pour investigation.
-                      source: 
-                      meta:
-                        provider: CNAV
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
@@ -1169,12 +1132,9 @@ paths:
               examples:
                 acces_non_autorise_50002:
                   value:
-                    errors:
-                    - code: '50002'
-                      title: Accès non autorisé
-                      detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source: 
-                      meta: {}
+                    error: unauthorized
+                    reason: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                    message: Le jeton d'accès n'a pas été trouvé ou est expiré.
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
               schema:
@@ -1705,12 +1665,9 @@ paths:
               examples:
                 acces_non_autorise_50002:
                   value:
-                    errors:
-                    - code: '50002'
-                      title: Accès non autorisé
-                      detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source: 
-                      meta: {}
+                    error: unauthorized
+                    reason: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                    message: Le jeton d'accès n'a pas été trouvé ou est expiré.
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
               schema:
@@ -1925,12 +1882,9 @@ paths:
               examples:
                 unprocessable_entity_error_gender_error:
                   value:
-                    errors:
-                    - code: '00364'
-                      title: Entité non traitable
-                      detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source: 
-                      meta: {}
+                    error: wrong_parameter
+                    reason: Le sexe n'est pas correctement formaté (m ou f)
+                    message: Le sexe n'est pas correctement formaté (m ou f)
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
               schema:
@@ -1942,15 +1896,13 @@ paths:
               examples:
                 entite_non_trouvee_37003:
                   value:
-                    errors:
-                    - code: '37003'
-                      title: Entité non trouvée
-                      detail: Dossier allocataire inexistant. Le document ne peut
-                        être édité. Veuillez vérifier que l'identifiant correspond
-                        au périmètre couvert par l'API.
-                      source: 
-                      meta:
-                        provider: CNAV
+                    error: not_found
+                    reason: Dossier allocataire inexistant. Le document ne peut être
+                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
+                      couvert par l'API.
+                    message: Dossier allocataire inexistant. Le document ne peut être
+                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
+                      couvert par l'API.
                   summary: Entité non trouvée
                   description: Dossier allocataire inexistant. Le document ne peut
                     être édité. Veuillez vérifier que l'identifiant correspond au
@@ -1964,15 +1916,13 @@ paths:
               examples:
                 unknown_error:
                   value:
-                    errors:
-                    - code: '37999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: La réponse retournée par le fournisseur de données est
-                        invalide et inconnue de notre service. L'équipe technique
-                        a été notifiée de cette erreur pour investigation.
-                      source: 
-                      meta:
-                        provider: CNAV
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
@@ -1992,12 +1942,9 @@ paths:
               examples:
                 acces_non_autorise_50002:
                   value:
-                    errors:
-                    - code: '50002'
-                      title: Accès non autorisé
-                      detail: Le jeton d'accès n'a pas été trouvé ou est expiré.
-                      source: 
-                      meta: {}
+                    error: unauthorized
+                    reason: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                    message: Le jeton d'accès n'a pas été trouvé ou est expiré.
                   summary: Accès non autorisé
                   description: Le jeton d'accès n'a pas été trouvé ou est expiré.
               schema:
@@ -2193,12 +2140,9 @@ paths:
               examples:
                 unprocessable_entity_error_gender_error:
                   value:
-                    errors:
-                    - code: '00364'
-                      title: Entité non traitable
-                      detail: Le sexe n'est pas correctement formaté (m ou f)
-                      source: 
-                      meta: {}
+                    error: wrong_parameter
+                    reason: Le sexe n'est pas correctement formaté (m ou f)
+                    message: Le sexe n'est pas correctement formaté (m ou f)
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
               schema:
@@ -2210,15 +2154,13 @@ paths:
               examples:
                 entite_non_trouvee_30003:
                   value:
-                    errors:
-                    - code: '30003'
-                      title: Entité non trouvée
-                      detail: Aucun élève n'a pu être trouvé avec les critères de
-                        recherche fournis Veuillez vérifier que l'identifiant correspond
-                        au périmètre couvert par l'API.
-                      source: 
-                      meta:
-                        provider: MEN
+                    error: not_found
+                    reason: Aucun élève n'a pu être trouvé avec les critères de recherche
+                      fournis Veuillez vérifier que l'identifiant correspond au périmètre
+                      couvert par l'API.
+                    message: Aucun élève n'a pu être trouvé avec les critères de recherche
+                      fournis Veuillez vérifier que l'identifiant correspond au périmètre
+                      couvert par l'API.
                   summary: Entité non trouvée
                   description: Aucun élève n'a pu être trouvé avec les critères de
                     recherche fournis Veuillez vérifier que l'identifiant correspond
@@ -2232,15 +2174,13 @@ paths:
               examples:
                 unknown_error:
                   value:
-                    errors:
-                    - code: '30999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: La réponse retournée par le fournisseur de données est
-                        invalide et inconnue de notre service. L'équipe technique
-                        a été notifiée de cette erreur pour investigation.
-                      source: 
-                      meta:
-                        provider: MEN
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
@@ -2358,12 +2298,9 @@ paths:
               examples:
                 entite_non_traitable_00380:
                   value:
-                    errors:
-                    - code: '00380'
-                      title: Entité non traitable
-                      detail: L'identifiant France Travail est manquant
-                      source: 
-                      meta: {}
+                    error: wrong_parameter
+                    reason: L'identifiant France Travail est manquant
+                    message: L'identifiant France Travail est manquant
                   summary: Entité non traitable
                   description: L'identifiant France Travail est manquant
               schema:
@@ -2375,15 +2312,13 @@ paths:
               examples:
                 entite_non_trouvee_24003:
                   value:
-                    errors:
-                    - code: '24003'
-                      title: Entité non trouvée
-                      detail: Aucune situation France Travail n'a pu être trouvée
-                        avec les critères de recherche fournis Veuillez vérifier que
-                        l'identifiant correspond au périmètre couvert par l'API.
-                      source: 
-                      meta:
-                        provider: France Travail
+                    error: not_found
+                    reason: Aucune situation France Travail n'a pu être trouvée avec
+                      les critères de recherche fournis Veuillez vérifier que l'identifiant
+                      correspond au périmètre couvert par l'API.
+                    message: Aucune situation France Travail n'a pu être trouvée avec
+                      les critères de recherche fournis Veuillez vérifier que l'identifiant
+                      correspond au périmètre couvert par l'API.
                   summary: Entité non trouvée
                   description: Aucune situation France Travail n'a pu être trouvée
                     avec les critères de recherche fournis Veuillez vérifier que l'identifiant
@@ -2397,15 +2332,13 @@ paths:
               examples:
                 unknown_error:
                   value:
-                    errors:
-                    - code: '24999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: La réponse retournée par le fournisseur de données est
-                        invalide et inconnue de notre service. L'équipe technique
-                        a été notifiée de cette erreur pour investigation.
-                      source: 
-                      meta:
-                        provider: France Travail
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
                   summary: Erreur inconnue du fournisseur de données
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique

@@ -28,7 +28,7 @@ RSpec.describe 'API Particulier: CNAV: Allocation Adulte Handicape with FranceCo
 
             cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
 
-            schema build_rswag_response_api_particulier(
+            schema build_rswag_response(
               attributes: SwaggerData.get('cnav.aah.attributes')
             )
 

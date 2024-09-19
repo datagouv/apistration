@@ -107,7 +107,7 @@ module RSwagCommonResponses
 
   # rubocop:disable Metrics/MethodLength
   def build_rswag_example(error, key = nil)
-    payload = if metadata[:api] == :particulier
+    payload = if metadata[:api] == :particulierv2
                 {
                   error: error.kind,
                   reason: error.detail,

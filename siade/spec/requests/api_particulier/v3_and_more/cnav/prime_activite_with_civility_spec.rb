@@ -65,7 +65,7 @@ RSpec.describe 'API Particulier CNAV: prime activite with civility', api: :parti
 
             cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
 
-            schema build_rswag_response_api_particulier(
+            schema build_rswag_response(
               attributes: SwaggerData.get('cnav.prime_activite.attributes')
             )
 

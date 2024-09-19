@@ -7,7 +7,7 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
 
       common_action_attributes
 
-      let(:scopes) { %i[cnaf_quotient_familial] }
+      let(:scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse] }
 
       describe 'with a FranceConnect token' do
         let(:recipient) { valid_siret(:recipient) }
@@ -28,7 +28,7 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
 
             cacheable_response(extra_description: SwaggerData.get('cnav.quotient-familial-v2.cache_duration'))
 
-            schema build_rswag_response_api_particulier(
+            schema build_rswag_response(
               attributes: SwaggerData.get('cnav.quotient-familial-v2.attributes')
             )
 

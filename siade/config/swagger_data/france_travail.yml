@@ -124,10 +124,10 @@ france_travail:
           ligneVoie:
             type: string
             example: 21 RUE DES MARMOTS
-          ligneComplementDestinaire:
+          ligneComplementDestinataire:
             type: string
             nullable: true
-            example:
+            example: Appartement 42
           ligneComplementAdresse:
             type: string
             nullable: true

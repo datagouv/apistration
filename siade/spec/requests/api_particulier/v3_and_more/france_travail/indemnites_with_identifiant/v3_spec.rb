@@ -32,7 +32,7 @@ RSpec.describe 'FranceTravail: Indemnites with identifiant', api: :particulier, 
           response '200', 'Indemnites trouvées' do
             description SwaggerData.get('france_travail.indemnites.description')
 
-            schema build_rswag_response_api_particulier(
+            schema build_rswag_response(
               attributes: SwaggerData.get('france_travail.indemnites.attributes')
             )
 

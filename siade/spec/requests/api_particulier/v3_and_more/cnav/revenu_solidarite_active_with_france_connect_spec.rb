@@ -7,7 +7,7 @@ RSpec.describe 'API Particulier: CNAV: Revenu Solidarite Active with FranceConne
 
       common_action_attributes
 
-      let(:scopes) { %i[revenu_solidarite_active] }
+      let(:scopes) { %i[revenu_solidarite_active revenu_solidarite_active_majoration] }
 
       describe 'with a FranceConnect token' do
         let(:recipient) { valid_siret(:recipient) }
@@ -28,7 +28,7 @@ RSpec.describe 'API Particulier: CNAV: Revenu Solidarite Active with FranceConne
 
             cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
 
-            schema build_rswag_response_api_particulier(
+            schema build_rswag_response(
               attributes: SwaggerData.get('cnav.rsa.attributes')
             )
 

@@ -32,7 +32,7 @@ RSpec.describe 'FranceTravail: Statut with identifiant', api: :particulier, type
           response '200', 'Statut trouvé' do
             description SwaggerData.get('france_travail.statut.description')
 
-            schema build_rswag_response_api_particulier(
+            schema build_rswag_response(
               attributes: SwaggerData.get('france_travail.statut.attributes')
             )
 

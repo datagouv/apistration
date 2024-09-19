@@ -7,7 +7,7 @@ RSpec.describe 'API Particulier: CNAV: Prime Activite with FranceConnect', api: 
 
       common_action_attributes
 
-      let(:scopes) { %i[prime_activite] }
+      let(:scopes) { %i[prime_activite prime_activite_majoration] }
 
       describe 'with a FranceConnect token' do
         let(:recipient) { valid_siret(:recipient) }
@@ -18,7 +18,7 @@ RSpec.describe 'API Particulier: CNAV: Prime Activite with FranceConnect', api: 
           stub_cnav_authenticate('prime_activite')
         end
 
-        context 'when the prime acitive is found' do
+        context 'when the prime activite is found' do
           before do
             stub_cnav_valid_with_franceconnect_data('prime_activite', siret: recipient)
           end
@@ -28,7 +28,7 @@ RSpec.describe 'API Particulier: CNAV: Prime Activite with FranceConnect', api: 
 
             cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
 
-            schema build_rswag_response_api_particulier(
+            schema build_rswag_response(
               attributes: SwaggerData.get('cnav.prime_activite.attributes')
             )
 
