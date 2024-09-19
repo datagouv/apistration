@@ -3,7 +3,13 @@ env:
   COVERAGE: true
 
 name: CI - CD
-on: [push]
+on:
+  pull_request:
+    types: [review_requested, opened, reopened]
+  push:
+    branches:
+      - develop
+      - master
 jobs:
   security:
     name: Brakeman
