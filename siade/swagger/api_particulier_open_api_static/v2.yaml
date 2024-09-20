@@ -1510,15 +1510,6 @@ paths:
                     - lieuDit
                     - codePostalVille
                     - pays
-                  regime:
-                    title: Régime de l'allocataire
-                    type: string
-                    description: Précise le régime de l'allocataire, régime général
-                      (CNAF) ou agricole (MSA).
-                    example: MSA
-                    enum:
-                    - CNAF
-                    - MSA
                   quotientFamilial:
                     title: Quotient familial CAF ou MSA
                     type: integer
@@ -1550,20 +1541,6 @@ paths:
                       l'année a été spécifiée en paramètres d'appel, le quotient familial
                       retourné sera celui du mois en cours pour l'année spécifiée."
                     example: 6
-                  annee_calcul:
-                    title: Année du calcul du QF
-                    type: integer
-                    description: Année lors de laquelle le calcul du quotient familial
-                      demandé a été effectué. Cette année peut différer de l'année
-                      effective du quotient familial.
-                    example: 2023
-                  mois_calcul:
-                    title: Mois du calcul du QF
-                    type: integer
-                    description: Mois lors duquel le calcul du quotient familial demandé
-                      a été effectué. Ce mois peut différer du mois effectif du quotient
-                      familial.
-                    example: 9
           x-operationId: api_particulier_v2_cnav_quotient_familial_v2
         '400':
           description: Mauvais paramètres d'appels
