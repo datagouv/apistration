@@ -135,26 +135,34 @@ parameters:
     nomUsage: 
       type: "string"
       description: "Nom d'usage. Le nom d'usage n'est jamais identique au nom de naissance. Il n'est utile que si la personne a changé de nom (suite à un marriage par exemple)."
-      example: "CHARRON"
+      example: "DUPONT DURANT"
     nomNaissance: 
       type: "string"
-      description: "Nom de naissance."
-      example: "DUPONT"
+      description: |-
+        **Nom de naissance, également appelé nom de famille**. Le nom de naissance est indiqué sur l'acte de naissance, de mariage, sur le livret de famille, etc. Le nom de famille/naissance figure toujours sur la pièce d'identité en premier, avant le nom d'usage si le particulier en a un. 
+        En cas de changement de nom de naissance, une mention avec le nouveau nom de famille est inscrite sur l'acte de naissance. Pour appeler l'API, le nom de naissance/famille nécessaire est bien le nom de famille modifié.
+      example: "DURANT"
     prenoms: 
-      description: "Liste des prénoms."
+      description: |-
+        **Liste des prénoms**. Dans certains cas, fournir plusieurs prénoms maximise les chances que l'API retrouve le particulier car cela permet de limiter le risque d’homonymie.      
       type: "array"
       minItems: 1
       example: ['PIERRE', 'RICHARD']
     anneeDateDeNaissance:
-      description: "Année de naissance."
+      description: |-
+        **Année de naissance**. 
+        
+        Pour un particulier né en France, dans le cadre d'un appel à l'API avec l'utilisation du paramètre 'nomCommuneNaissance', ce paramètre est obligatoire (ainsi que le paramètre 'codeCogInseeDepartementNaissance') afin de retrouver le code COG de la commune de naissance.
       type: integer
       example: 1990
     moisDateDeNaissance:
-      description: "Mois de naissance. Cette valeur est ignorée si anneeDateDeNaissance est vide."
+      description: |-
+        **Mois de naissance**. Cette valeur est ignorée si le paramètre 'anneeDateNaissance' est vide.
       type: integer
       example: 6
     jourDateDeNaissance:
-      description: "Jour de naissance. Cette valeur est ignorée si moisDateDeNaissance ou anneeDateDeNaissance est vide."
+      description: |-
+        **Jour de naissance**. Cette valeur est ignorée si le paramètre 'moisDateNaissance' ou le paramètre 'anneeDateNaissance' est vide."
       type: integer
       example: 18
     codeCogInseeCommuneDeNaissance:
