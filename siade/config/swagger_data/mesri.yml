@@ -3,7 +3,7 @@ mesri:
     title: Statut étudiant
     description: Admissions et inscriptions d'un étudiant aux établissements d'enseignement supérieur.
     tags:
-      - Statut Étudiant
+      - Statut étudiant
     attributes:
       nom:
         title: Nom de naissance
