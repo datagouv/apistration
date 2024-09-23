@@ -36,17 +36,47 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
           end
         end
 
-        context 'when the quotient_familial is not found' do
-          before do
-            stub_cnav_404('quotient_familial_v2')
-          end
 
-          response '404', 'Dossier non trouvé' do
-            schema '$ref' => '#/components/schemas/Error'
+        describe 'when the quotient familial is not found' do
+          response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
+            let(:codePaysLieuDeNaissance) { '99623' }
+            # rubocop:disable RSpec/ContextWording
+            context 'Allocataire non identifié' do
+              before do
+                stub_cnav_404('quotient_familial_v2', nil)
+              end
 
-            build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.'), false)
+              build_rswag_example(NotFoundError.new('CNAV & MSA', "L'allocataire que vous cherchez n'a pas été reconnu"), false)
 
-            run_test!
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+
+            context 'Dossier non trouvé MSA' do
+              before do
+                stub_cnav_404('quotient_familial_v2', '00171001')
+              end
+
+              build_rswag_example(NotFoundError.new('CNAV & MSA', "Le dossier allocataire n'a pas été trouvé auprès de la MSA."), false)
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+
+            context 'Dossier non trouvé CNAF' do
+              before do
+                stub_cnav_404('quotient_familial_v2', '00810011')
+              end
+
+              build_rswag_example(NotFoundError.new('CNAV & MSA', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF."), false)
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+            # rubocop:enable RSpec/ContextWording
           end
         end
       end
