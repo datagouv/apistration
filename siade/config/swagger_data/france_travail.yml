@@ -40,7 +40,7 @@ france_travail:
         type: string
         description: Nom de naissance du demandeur d'emploi
         example: MARTIN
-      nomUsage:
+      nom_usage:
         title: Nom d'usage
         type: string
         description: Nom d'usage du demandeur d'emploi
@@ -56,13 +56,13 @@ france_travail:
         type: string
         description: Sexe du demandeur d'emploi
         example: Masculin
-      dateNaissance:
+      date_naissance:
         title: Date de naissance
         format: date
         type: string
         description: Date de naissance du demandeur d'emploi au format YYYY-MM-DD
         example: 1995-02-02
-      codeCertificationCNAV:
+      code_certification_cnav:
         title: Code du statut de certification d'identité CNAV
         type: string
         description: |
@@ -111,48 +111,48 @@ france_travail:
           lors de son inscription à France Travail ou suite à une déclaration
           de changement d’adresse.
         properties:
-          codePostal:
+          code_postal:
             type: string
             description: Code postal
             example: '75001'
-          INSEECommune:
+          insee_commune:
             type: string
             example: '75101'
           localite:
             type: string
             example: 75001 Paris
-          ligneVoie:
+          ligne_voie:
             type: string
             example: 21 RUE DES MARMOTS
-          ligneComplementDestinataire:
+          ligne_complement_destinataire:
             type: string
             nullable: true
             example: Appartement 42
-          ligneComplementAdresse:
+          ligne_complement_adresse:
             type: string
             nullable: true
             example:
-          ligneComplementDistribution:
+          ligne_complement_distribution:
             type: string
             nullable: true
             example:
-          ligneNom:
+          ligne_nom:
             type: string
             example: MARTIN
-      dateInscription:
+      date_inscription:
         title: Date d'inscription
         format: date
         type: string
         description: Date d'inscription à France Travail au format YYYY-MM-DD
         example: 2021-01-07
-      dateCessationInscription:
+      date_cessation_inscription:
         title: Date de cessation d'inscription au format YYYY-MM-DD
         description: Date de cessation d'inscription à France Travail
         type: string
         format: date
         nullable: true
         example: 2023-03-12
-      codeCategorieInscription:
+      code_categorie_inscription:
         title: Code de la catégorie d'inscription
         description: |
           Code de la catégorie d'inscription du particulier à France Travail.
@@ -169,7 +169,7 @@ france_travail:
         - 3
         - 4
         - 5
-      libelleCategorieInscription:
+      libelle_categorie_inscription:
         title: Libellé de la catégorie d'inscription
         description: Libellé de la catégorie d'inscription du particulier
           à France Travail, associé au cod précédent.

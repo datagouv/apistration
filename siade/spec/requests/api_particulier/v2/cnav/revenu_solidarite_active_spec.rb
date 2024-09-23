@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'CNAV: Revenu de solidarité active', api: :particulierv2, type: %i[request swagger] do
   path '/api/v2/revenu-solidarite-active' do
-    get SwaggerData.get('cnav.rsa.title') do
-      tags(*SwaggerData.get('cnav.rsa.tags'))
+    get SwaggerData.get('cnav.v2.rsa.title') do
+      tags(*SwaggerData.get('cnav.v2.rsa.tags'))
 
       produces 'application/json'
 
@@ -47,12 +47,12 @@ RSpec.describe 'CNAV: Revenu de solidarité active', api: :particulierv2, type: 
 
         describe 'with valid token and mandatory params' do
           response '200', 'Dossier trouvé' do
-            description SwaggerData.get('cnav.rsa.description')
+            description SwaggerData.get('cnav.v2.rsa.description')
 
-            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+            cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
             schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('cnav.rsa.attributes')
+              attributes: SwaggerData.get('cnav.v2.rsa.attributes')
             )
 
             run_test!
@@ -71,12 +71,12 @@ RSpec.describe 'CNAV: Revenu de solidarité active', api: :particulierv2, type: 
 
           describe 'with valid token and mandatory params' do
             response '200', 'Revenu solidarité active trouvée' do
-              description SwaggerData.get('cnav.rsa.description')
+              description SwaggerData.get('cnav.v2.rsa.description')
 
-              cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+              cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
               schema build_rswag_response_api_particulier(
-                attributes: SwaggerData.get('cnav.rsa.attributes')
+                attributes: SwaggerData.get('cnav.v2.rsa.attributes')
               )
 
               run_test!
@@ -153,12 +153,12 @@ RSpec.describe 'CNAV: Revenu de solidarité active', api: :particulierv2, type: 
           end
 
           response '200', 'Dossier trouvé' do
-            description SwaggerData.get('cnav.rsa.description')
+            description SwaggerData.get('cnav.v2.rsa.description')
 
-            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+            cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
             schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('cnav.rsa.attributes')
+              attributes: SwaggerData.get('cnav.v2.rsa.attributes')
             )
 
             run_test!
@@ -192,12 +192,12 @@ RSpec.describe 'CNAV: Revenu de solidarité active', api: :particulierv2, type: 
           end
 
           response '200', 'Dossier trouvé' do
-            description SwaggerData.get('cnav.rsa.description')
+            description SwaggerData.get('cnav.v2.rsa.description')
 
-            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+            cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
             schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('cnav.rsa.attributes')
+              attributes: SwaggerData.get('cnav.v2.rsa.attributes')
             )
 
             run_test!

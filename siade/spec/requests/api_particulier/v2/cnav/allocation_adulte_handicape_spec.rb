@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'CNAV: Allocation Adulte Handicapé', api: :particulierv2, type: %i[request swagger] do
   path '/api/v2/allocation-adulte-handicape' do
-    get SwaggerData.get('cnav.aah.title') do
-      tags(*SwaggerData.get('cnav.aah.tags'))
+    get SwaggerData.get('cnav.v2.aah.title') do
+      tags(*SwaggerData.get('cnav.v2.aah.tags'))
 
       produces 'application/json'
 
@@ -47,12 +47,12 @@ RSpec.describe 'CNAV: Allocation Adulte Handicapé', api: :particulierv2, type: 
 
         describe 'with valid token and mandatory params' do
           response '200', 'Dossier trouvé' do
-            description SwaggerData.get('cnav.aah.description')
+            description SwaggerData.get('cnav.v2.aah.description')
 
-            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+            cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
             schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('cnav.aah.attributes')
+              attributes: SwaggerData.get('cnav.v2.aah.attributes')
             )
 
             run_test!
@@ -71,12 +71,12 @@ RSpec.describe 'CNAV: Allocation Adulte Handicapé', api: :particulierv2, type: 
 
           describe 'with valid token and mandatory params' do
             response '200', 'Allocation adulte handicape trouvée' do
-              description SwaggerData.get('cnav.aah.description')
+              description SwaggerData.get('cnav.v2.aah.description')
 
-              cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+              cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
               schema build_rswag_response_api_particulier(
-                attributes: SwaggerData.get('cnav.aah.attributes')
+                attributes: SwaggerData.get('cnav.v2.aah.attributes')
               )
 
               run_test!
@@ -153,12 +153,12 @@ RSpec.describe 'CNAV: Allocation Adulte Handicapé', api: :particulierv2, type: 
           end
 
           response '200', 'Particulier trouvé' do
-            description SwaggerData.get('cnav.aah.description')
+            description SwaggerData.get('cnav.v2.aah.description')
 
-            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+            cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
             schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('cnav.aah.attributes')
+              attributes: SwaggerData.get('cnav.v2.aah.attributes')
             )
 
             run_test!
@@ -192,12 +192,12 @@ RSpec.describe 'CNAV: Allocation Adulte Handicapé', api: :particulierv2, type: 
           end
 
           response '200', 'Particulier trouvé' do
-            description SwaggerData.get('cnav.aah.description')
+            description SwaggerData.get('cnav.v2.aah.description')
 
-            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+            cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
             schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('cnav.aah.attributes')
+              attributes: SwaggerData.get('cnav.v2.aah.attributes')
             )
 
             run_test!

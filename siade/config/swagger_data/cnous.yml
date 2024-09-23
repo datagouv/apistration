@@ -20,13 +20,13 @@ cnous:
         type: string
         description: Deuxième prénom de l'étudiant
         example: Claude
-      dateNaissance:
+      date_naissance:
         title: Date de naissance
         type: string
         format: date
         description: Date de naissance de l'étudiant
         example: 1992-11-29
-      lieuNaissance:
+      lieu_naissance:
         title: Lieu de naissance
         type: string
         description: Libellé de la commune de naissance de l'étudiant
@@ -44,7 +44,7 @@ cnous:
         type: boolean
         description: Indique si l'étudiant est boursier
         example: true
-      echelonBourse:
+      echelon_bourse:
         title: Échelon de la bourse
         type: string
         description: '"Il existe 8 échelons de bourse, de 0bis à 7, correspondant
@@ -67,13 +67,13 @@ cnous:
         type: string
         description: Adresse email de l'étudiant
         example: georges@moustaki.fr
-      dateDeRentree:
+      date_de_rentree:
         title: Date de rentrée
         type: string
         format: date
         description: Date de début de rentrée scolaire ou universitaire
         example: 2019-09-01
-      dureeVersement:
+      duree_versement:
         title: Durée de versement de la bourse
         type: number
         description: Nombre de mois de versement de la bourse
@@ -84,12 +84,12 @@ cnous:
         description: Code du statut de la bourse, 0 si définitif, >0 si
           provisoire (conditionnel)
         example: 0
-      statutLibelle:
+      statut_libelle:
         title: Libellé du statut de la bourse
         type: string
         description: Le libellé associé au code de statut de la bourse
         example: définitif
-      villeEtudes:
+      ville_etudes:
         title: Ville d'études
         type: string
         description: Libellé de la ville d'études de l'étudiant

@@ -26,8 +26,8 @@ RSpec.describe APIParticulier::CNOUS::EtudiantBoursier::V3, type: :serializer do
       expect(subject[:data]).to have_key(:email)
     end
 
-    it 'doesnt have key lastName' do
-      expect(subject[:data]).not_to have_key(:lastName)
+    it 'doesnt have key last_name' do
+      expect(subject[:data]).not_to have_key(:last_name)
     end
   end
 end

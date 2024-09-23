@@ -15,7 +15,7 @@ mesri:
         type: string
         description: Prénom de l'étudiant
         example: Georges
-      dateNaissance:
+      date_naissance:
         title: Date de naissance
         type: string
         format: date
@@ -28,13 +28,13 @@ mesri:
         items:
           type: object
           properties:
-            dateDebutInscription:
+            date_debut_inscription:
               title: Date de début d'inscription
               type: string
               format: date
               description: Date de début de la période d'études dans l'établissement
               example: 2022-09-01
-            dateFinInscription:
+            date_fin_inscription:
               title: Date de fin d'inscription
               type: string
               format: date
@@ -63,7 +63,7 @@ mesri:
               enum:
               - formation initiale
               - formation continue
-            codeCommune:
+            code_commune:
               title: Lieu d'études
               type: string
               description: Code officiel géographique (code COG de l'Insee)

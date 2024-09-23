@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulierv2, type: %i[request swagger] do
   path '/api/v2/complementaire-sante-solidaire' do
-    get SwaggerData.get('cnav.c2s.title') do
-      tags(*SwaggerData.get('cnav.c2s.tags'))
+    get SwaggerData.get('cnav.v2.c2s.title') do
+      tags(*SwaggerData.get('cnav.v2.c2s.tags'))
 
       produces 'application/json'
 
@@ -52,12 +52,12 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulierv2, typ
 
           describe 'with valid token and mandatory params' do
             response '200', 'Complémentaire Santé trouvée' do
-              description SwaggerData.get('cnav.c2s.description')
+              description SwaggerData.get('cnav.v2.c2s.description')
 
-              cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+              cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
               schema build_rswag_response_api_particulier(
-                attributes: SwaggerData.get('cnav.c2s.attributes')
+                attributes: SwaggerData.get('cnav.v2.c2s.attributes')
               )
 
               run_test!
@@ -74,12 +74,12 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulierv2, typ
 
           describe 'with valid token and mandatory params' do
             response '200', 'Complémentaire Santé trouvée' do
-              description SwaggerData.get('cnav.c2s.description')
+              description SwaggerData.get('cnav.v2.c2s.description')
 
-              cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+              cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
               schema build_rswag_response_api_particulier(
-                attributes: SwaggerData.get('cnav.c2s.attributes')
+                attributes: SwaggerData.get('cnav.v2.c2s.attributes')
               )
 
               run_test!
@@ -156,12 +156,12 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulierv2, typ
           end
 
           response '200', 'Complementaire Santé Solidaire trouvée' do
-            description SwaggerData.get('cnav.c2s.description')
+            description SwaggerData.get('cnav.v2.c2s.description')
 
-            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+            cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
             schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('cnav.c2s.attributes')
+              attributes: SwaggerData.get('cnav.v2.c2s.attributes')
             )
 
             run_test!
@@ -195,12 +195,12 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulierv2, typ
           end
 
           response '200', 'Complementaire Santé Solidaire trouvée' do
-            description SwaggerData.get('cnav.c2s.description')
+            description SwaggerData.get('cnav.v2.c2s.description')
 
-            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+            cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
             schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('cnav.c2s.attributes')
+              attributes: SwaggerData.get('cnav.v2.c2s.attributes')
             )
 
             run_test!

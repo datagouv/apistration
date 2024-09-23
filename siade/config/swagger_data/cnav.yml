@@ -1,63 +1,6 @@
 cnav:
   commons:
     cache_duration: "La durée du cache est de 1 heure."
-    cnav_identite_pivot: &cnav_identite_pivot
-      nomUsage:
-        type: "string"
-        description: "Nom d'usage. Ne pas renseigner si présence de jeton FranceConnect."
-        example: "DUPONT"
-      nomNaissance:
-        type: "string"
-        description: "Nom de naissance. Ne pas renseigner si présence de jeton FranceConnect. Le champ est obligatoire pour les appels non FranceConnecté"
-        example: "JEAN"
-      prenoms:
-        description: "Liste des prénoms. Ne pas renseigner si présence de jeton FranceConnect."
-        type: "array"
-        minItems: 1
-        example: ['PIERRE', 'RICHARD']
-      anneeDateDeNaissance:
-        description: "Année de naissance. Ne pas la renseigner si celle-ci est inconnue ou en cas de présence de jeton FranceConnect."
-        type: integer
-        example: 1990
-      moisDateDeNaissance:
-        description: "Mois de naissance. Ne pas le renseigner si celui-ci est inconnu ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si anneeDateDeNaissance est vide."
-        type: integer
-        example: 1
-      jourDateDeNaissance:
-        description: "Jour de naissance. Ne pas le renseigner si celui-ci est inconnu ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si moisDateDeNaissance ou anneeDateDeNaissance est vide."
-        type: integer
-        example: 1
-      codeInseeLieuDeNaissance:
-        type: string
-        minLength: 5
-        maxLength: 5
-        example: '08480'
-        description: "Code Insee à 5 chiffres du lieu de naissance de la personne sur 5 chiffres. Ne pas remplir si la personne est née à l'étranger ou si présence de jeton FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance, anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire si la personne est née en France"
-      codePaysLieuDeNaissance:
-        description: "Code Insee à 5 chiffres du pays de naissance (France = 99100). Obligatoire si absence de jeton FranceConnect."
-        type: string
-        minLength: 5
-        maxLength: 5
-        example: '99100'
-      sexe:
-        description: "Sexe de la personne, masculin ou féminin. Obligatoire si absence de jeton FranceConnect."
-        type: string
-        example: M
-        enum:
-          - M
-          - F
-      nomCommuneNaissance:
-        type: string
-        minLength: 1
-        example: 'Gennevilliers'
-        description: "Nom de la commune de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
-      codeInseeDepartementNaissance:
-        type: string
-        minLength: 2
-        maxLength: 3
-        example: '92'
-        description: "Code INSEE du département de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
-
   c2s:
     title: Statut complémentaire santé solidaire (C2S)
     description: "Statut bénéficiaire de la complémentaire santé solidaire (C2S).
@@ -69,8 +12,6 @@ cnav:
       **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)"
     tags:
       - Statut Complémentaire Santé Solidaire (C2S)
-    parameters:
-      <<: *cnav_identite_pivot
     attributes:
       status:
         title: "Statut bénéficiaire de la C2S"
@@ -87,7 +28,7 @@ cnav:
           - "beneficiaire_sans_participation_financiere"
           - "beneficiaire_avec_participation_financiere"
           - "non_beneficiaire_css"
-      dateDebut:
+      date_debut:
         title: "Date d'ouverture du droit à la C2S"
         type: string
         nullable: true
@@ -95,7 +36,7 @@ cnav:
           \n
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
         example: '1992-11-29'
-      dateFin:
+      date_fin:
         title: "Date de fermeture du droit à la C2S"
         type: string
         nullable: true
@@ -115,16 +56,6 @@ cnav:
     cache_duration: "La durée du cache est de 24 heure."
     tags:
       - Quotient familial MSA & CAF
-    parameters:
-      <<: *cnav_identite_pivot
-      annee:
-        description: "Année du quotient familial recherché. Si l'année n'est pas renseignée, l'année utilisée par défaut est celle en cours. L'API permet d'accéder à un historique de maximum 2 ans."
-        type: integer
-        example: 2023
-      mois:
-        description: "Mois du quotient familial recherché. Si le mois n'est pas renseigné, le mois utilisé par défaut est celui en cours."
-        type: integer
-        example: 12
     attributes:
       allocataires:
         title: "Informations sur les parents composant la famille"
@@ -133,12 +64,12 @@ cnav:
         items:
           type: object
           properties:
-            nomNaissance:
+            nom_naissance:
               title: Nom
               type: string
               description: Nom de naissance de l'allocataire
               example: "JACQUES"
-            nomUsuel:
+            nom_usuel:
               title: Nom d'usage
               type: string
               description: Nom d'usage de l'allocataire
@@ -149,19 +80,19 @@ cnav:
               type: string
               description: Prénoms de l'allocataire
               example: "JEAN-PIERRE THOMAS"
-            anneeDateDeNaissance:
+            annee_date_de_naissance:
               title: Année de naissance
               type: string
               example: '2000'
               description: "Année de la date de naissance de l'allocataire. Peut-être vide si inconnue."
               nullable: true
-            moisDateDeNaissance:
+            mois_date_de_naissance:
               title: "Mois de naissance"
               type: string
               example: '01'
               description: "Mois de la date de naissance de l'allocataire. Peut-être vide si inconnu."
               nullable: true
-            jourDateDeNaissance:
+            jour_date_de_naissance:
               title: "Jour de naissance"
               type: string
               example: '31'
@@ -181,12 +112,12 @@ cnav:
         items:
           type: object
           properties:
-            nomNaissance:
+            nom_nNaissance:
               title: "Nom de naissance"
               type: string
               description: Nom de naissance de l'enfant
               example: "JACQUES"
-            nomUsuel:
+            nom_usuel:
               title: "Nom d'usage"
               type: string
               description: Nom d'usage de l'enfant
@@ -197,19 +128,19 @@ cnav:
               type: string
               description: Prénoms de l'enfant
               example: "JEAN-PIERRE THOMAS"
-            anneeDateDeNaissance:
+            annee_date_de_naissance:
               title: "Année de naissance"
               type: string
               example: '2000'
               description: "Année de la date de naissance de l'enfant. Peut-être vide si inconnue."
               nullable: true
-            moisDateDeNaissance:
+            mois_date_de_naissance:
               title: "Mois de naissance"
               type: string
               example: '01'
               description: "Mois de la date de naissance de l'enfant. Peut-être vide si inconnu."
               nullable: true
-            jourDateDeNaissance:
+            jour_date_de_naissance:
               title: "Jour de naissance"
               type: string
               example: '31'
@@ -234,31 +165,31 @@ cnav:
             example: "Monsieur JEAN JACQUES"
             description: "Identité du destinataire : Civilité, titre ou qualité + nom et
               prénom"
-          complementInformation:
+          complement_information:
             title: "Complément d'information du destinataire ou point de remise"
             type: string
             nullable: true
             example: null
-          complementInformationGeographique:
+          complement_information_geographique:
             title: "Complément d'information du point géographique"
             type: string
             nullable: true
             example: null
             description: "Complément d'information du point géographique."
-          numeroLibelleVoie:
+          numero_libelle_voie:
             title: "Voie"
             type: string
             description: Numéro et libellé de la voie
             example: "1 RUE DE LA GARE"
             nullable: true
-          lieuDit:
+          lieu_dit:
             title: "Lieu-dit"
             type: string
             nullable: true
             example: null
             description: "Lieu-dit ou service particulier de distribution : poste restante,
               boîte postale"
-          codePostalVille:
+          code_postal_ville:
             title: "Code postal"
             type: string
             description: Code postal et localité de destination
@@ -276,7 +207,7 @@ cnav:
         enum:
           - CNAF
           - MSA
-      quotientFamilial:
+      quotient_familial:
         title: "Quotient familial CAF ou MSA"
         type: integer
         description: Valeur du quotient familial calculé par la CAF ou la MSA
@@ -319,7 +250,6 @@ cnav:
       Retourne également des informations sur les dates d'ouverture des droits."
     tags:
       - Statut Revenu Solidarité Active (RSA)
-    parameters: *cnav_identite_pivot
     attributes:
       status:
         title: "Statut bénéficiaire du revenu de solidarité active (RSA)"
@@ -336,7 +266,7 @@ cnav:
           Nécessite un scope spécifique pour être envoyé.
           Sera null si le particulier n'est pas bénéficiaire du RSA."
         example: false
-      dateDebut:
+      date_debut:
         title: "Date d'ouverture du droit au RSA"
         type: string
         nullable: true
@@ -344,7 +274,7 @@ cnav:
           \n
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire du RSA."
         example: '1992-11-29'
-      dateFin:
+      date_fin:
         title: "Date de fermeture du droit au revenu de solidarité active"
         type: string
         nullable: true
@@ -362,7 +292,6 @@ cnav:
       Retourne également des informations sur les dates d'ouverture des droits."
     tags:
       - Statut Allocation Adulte Handicapé (AAH)
-    parameters: *cnav_identite_pivot
     attributes:
       status:
         title: "Statut bénéficiaire de l'allocation adulte handicapé (AAH)"
@@ -371,7 +300,7 @@ cnav:
         enum:
           - "beneficiaire"
           - "non_beneficiaire"
-      dateDebut:
+      date_debut:
         title: "Date d'ouverture du droit à l'AAH"
         type: string
         nullable: true
@@ -385,7 +314,6 @@ cnav:
     description: "Savoir si un particulier est bénéficiaire de l'allocation de soutien familial (ASF). Retourne également des informations sur les dates d'ouverture et de fermeture des droits."
     tags:
       - Statut Allocation Soutien Familial (ASF)
-    parameters: *cnav_identite_pivot
     attributes:
       status:
         title: "Statut bénéficiaire de l'allocation de soution familial (ASF)"
@@ -394,7 +322,7 @@ cnav:
         enum:
           - "beneficiaire"
           - "non_beneficiaire"
-      dateDebut:
+      date_debut:
         title: "Date d'ouverture du droit à l'ASF"
         type: string
         nullable: true
@@ -402,7 +330,7 @@ cnav:
           \n
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de l'ASF."
         example: '1992-11-29'
-      dateFin:
+      date_fin:
         title: "Date de fermeture du droit à l'ASF"
         type: string
         nullable: true
@@ -420,7 +348,6 @@ cnav:
       Retourne également des informations sur les dates d'ouverture des droits."
     tags:
       - Statut Prime Activité
-    parameters: *cnav_identite_pivot
     attributes:
       status:
         title: "Statut bénéficiaire de la prime d'activité"
@@ -437,7 +364,7 @@ cnav:
           Ce champ est renvoyé si les droits du jeton (obtenus par habilitation) le permettent.
           Ce champ sera null si le particulier n'est pas bénéficiaire de la prime d'activité."
         example: false
-      dateDebut:
+      date_debut:
         title: "Date d'ouverture du droit à la prime d'activité"
         type: string
         nullable: true
@@ -445,7 +372,7 @@ cnav:
           \n
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de la prime d'activité."
         example: '1992-11-20'
-      dateFin:
+      date_fin:
         title: "Date de fermeture du droit à la prime d'activité"
         type: string
         nullable: true
@@ -455,3 +382,460 @@ cnav:
           \n
           Ce champ sera null dans le cas où le particulier n'est pas bénéficiaire de la prime d'activité."
         example: '1993-02-20'
+  v2:
+    commons:
+      cache_duration: "La durée du cache est de 1 heure."
+      cnav_identite_pivot: &cnav_identite_pivot
+        nomUsage:
+          type: "string"
+          description: "Nom d'usage. Ne pas renseigner si présence de jeton FranceConnect."
+          example: "DUPONT"
+        nomNaissance:
+          type: "string"
+          description: "Nom de naissance. Ne pas renseigner si présence de jeton FranceConnect. Le champ est obligatoire pour les appels non FranceConnecté"
+          example: "JEAN"
+        prenoms:
+          description: "Liste des prénoms. Ne pas renseigner si présence de jeton FranceConnect."
+          type: "array"
+          minItems: 1
+          example: ['PIERRE', 'RICHARD']
+        anneeDateDeNaissance:
+          description: "Année de naissance. Ne pas la renseigner si celle-ci est inconnue ou en cas de présence de jeton FranceConnect."
+          type: integer
+          example: 1990
+        moisDateDeNaissance:
+          description: "Mois de naissance. Ne pas le renseigner si celui-ci est inconnu ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si anneeDateDeNaissance est vide."
+          type: integer
+          example: 1
+        jourDateDeNaissance:
+          description: "Jour de naissance. Ne pas le renseigner si celui-ci est inconnu ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si moisDateDeNaissance ou anneeDateDeNaissance est vide."
+          type: integer
+          example: 1
+        codeInseeLieuDeNaissance:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '08480'
+          description: "Code Insee à 5 chiffres du lieu de naissance de la personne sur 5 chiffres. Ne pas remplir si la personne est née à l'étranger ou si présence de jeton FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance, anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire si la personne est née en France"
+        codePaysLieuDeNaissance:
+          description: "Code Insee à 5 chiffres du pays de naissance (France = 99100). Obligatoire si absence de jeton FranceConnect."
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '99100'
+        sexe:
+          description: "Sexe de la personne, masculin ou féminin. Obligatoire si absence de jeton FranceConnect."
+          type: string
+          example: M
+          enum:
+            - M
+            - F
+        nomCommuneNaissance:
+          type: string
+          minLength: 1
+          example: 'Gennevilliers'
+          description: "Nom de la commune de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
+        codeInseeDepartementNaissance:
+          type: string
+          minLength: 2
+          maxLength: 3
+          example: '92'
+          description: "Code INSEE du département de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
+
+    c2s:
+      title: Statut complémentaire santé solidaire (C2S)
+      description: "Statut bénéficiaire de la complémentaire santé solidaire (C2S).
+        \n\n
+        Retourne également des informations sur les dates d'ouverture des droits.
+        \n
+        Pour plus d'informations sur cette API et obtenir un accès en avant-première, veuillez contacter l'équipe API Particulier.
+        \n
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)"
+      tags:
+        - Statut Complémentaire Santé Solidaire (C2S)
+      parameters:
+        <<: *cnav_identite_pivot
+      attributes:
+        status:
+          title: "Statut bénéficiaire de la C2S"
+          type: string
+          description: "Indique si le particulier est bénéficiaire de la complémentaire de santé solidaire au moment de l'appel. Cet indicateur précise sous quelle forme la C2S est attribuée (avec ou sans participation financière).
+            \n
+            \n
+            - Si le statut est 'beneficiaire_sans_participation_financiere', cela signifie que le particulier est bénéficiaire d'une C2S sans participation financière.
+            \n
+            - Si le statut est 'beneficiaire_avec_participation_financiere', cela signifie que le particulier est d'une bénéficiaire de C2S avec participation financière.
+            \n
+            - Si le statut est 'non_beneficiaire_css', cela signifie que le particulier n'est pas concerné par la C2S."
+          enum:
+            - "beneficiaire_sans_participation_financiere"
+            - "beneficiaire_avec_participation_financiere"
+            - "non_beneficiaire_css"
+        dateDebut:
+          title: "Date d'ouverture du droit à la C2S"
+          type: string
+          nullable: true
+          description: "Date de début de droit à la complémentaire santé solidaire (C2S) si le particulier est bénéficiaire.
+            \n
+            Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
+          example: '1992-11-29'
+        dateFin:
+          title: "Date de fermeture du droit à la C2S"
+          type: string
+          nullable: true
+          description: "Date de fin de droit à la complémentaire santé solidaire (C2S) du particulier bénéficiaire.
+            \n
+            Ce champ est calculé en ajoutant 12 mois à la date de début de droit à la C2S.
+            \n
+            Ce champ sera null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
+          example: '1993-11-29'
+    quotient-familial-v2:
+      title: Quotient familial MSA & CAF
+      description: "Quotient familial et composition de la famille d'un allocataire du régime agricole (régime général à venir).
+        \n
+        Pour plus d'informations sur cette API et obtenir un accès en avant-première, veuillez contacter l'équipe API Particulier.
+        \n
+        **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnav_quotient_familial_v2)"
+      cache_duration: "La durée du cache est de 24 heure."
+      tags:
+        - Quotient familial MSA & CAF
+      parameters:
+        <<: *cnav_identite_pivot
+        annee:
+          description: "Année du quotient familial recherché. Si l'année n'est pas renseignée, l'année utilisée par défaut est celle en cours. L'API permet d'accéder à un historique de maximum 2 ans."
+          type: integer
+          example: 2023
+        mois:
+          description: "Mois du quotient familial recherché. Si le mois n'est pas renseigné, le mois utilisé par défaut est celui en cours."
+          type: integer
+          example: 12
+      attributes:
+        allocataires:
+          title: "Informations sur les parents composant la famille"
+          type: array
+          minItems: 1
+          items:
+            type: object
+            properties:
+              nomNaissance:
+                title: Nom
+                type: string
+                description: Nom de naissance de l'allocataire
+                example: "JACQUES"
+              nomUsuel:
+                title: Nom d'usage
+                type: string
+                description: Nom d'usage de l'allocataire
+                example: "JACQUES"
+                nullable: true
+              prenoms:
+                title: Prénoms
+                type: string
+                description: Prénoms de l'allocataire
+                example: "JEAN-PIERRE THOMAS"
+              anneeDateDeNaissance:
+                title: Année de naissance
+                type: string
+                example: '2000'
+                description: "Année de la date de naissance de l'allocataire. Peut-être vide si inconnue."
+                nullable: true
+              moisDateDeNaissance:
+                title: "Mois de naissance"
+                type: string
+                example: '01'
+                description: "Mois de la date de naissance de l'allocataire. Peut-être vide si inconnu."
+                nullable: true
+              jourDateDeNaissance:
+                title: "Jour de naissance"
+                type: string
+                example: '31'
+                description: "Jour de la date de naissance de l'allocataire. Peut-être vide si inconnu."
+                nullable: true
+              sexe:
+                title: "Sexe"
+                type: string
+                description: "Sexe de l'allocataire"
+                example: "M"
+                enum:
+                  - F
+                  - M
+        enfants:
+          type: array
+          title: "Informations sur les enfants composant la famille"
+          items:
+            type: object
+            properties:
+              nomNaissance:
+                title: "Nom de naissance"
+                type: string
+                description: Nom de naissance de l'enfant
+                example: "JACQUES"
+              nomUsuel:
+                title: "Nom d'usage"
+                type: string
+                description: Nom d'usage de l'enfant
+                example: "JACQUES"
+                nullable: true
+              prenoms:
+                title: "Prénoms"
+                type: string
+                description: Prénoms de l'enfant
+                example: "JEAN-PIERRE THOMAS"
+              anneeDateDeNaissance:
+                title: "Année de naissance"
+                type: string
+                example: '2000'
+                description: "Année de la date de naissance de l'enfant. Peut-être vide si inconnue."
+                nullable: true
+              moisDateDeNaissance:
+                title: "Mois de naissance"
+                type: string
+                example: '01'
+                description: "Mois de la date de naissance de l'enfant. Peut-être vide si inconnu."
+                nullable: true
+              jourDateDeNaissance:
+                title: "Jour de naissance"
+                type: string
+                example: '31'
+                description: "Jour de la date de naissance de l'enfant. Peut-être vide si inconnu."
+                nullable: true
+              sexe:
+                title: "Sexe"
+                type: string
+                description: "Sexe de l'enfant"
+                example: "M"
+                enum:
+                  - F
+                  - M
+        adresse:
+          title: "Adresse de la famille"
+          type: object
+          description: Adresse au format de la poste
+          properties:
+            identite:
+              title: "Identité du destinataire"
+              type: string
+              example: "Monsieur JEAN JACQUES"
+              description: "Identité du destinataire : Civilité, titre ou qualité + nom et
+                prénom"
+            complementInformation:
+              title: "Complément d'information du destinataire ou point de remise"
+              type: string
+              nullable: true
+              example: null
+            complementInformationGeographique:
+              title: "Complément d'information du point géographique"
+              type: string
+              nullable: true
+              example: null
+              description: "Complément d'information du point géographique."
+            numeroLibelleVoie:
+              title: "Voie"
+              type: string
+              description: Numéro et libellé de la voie
+              example: "1 RUE DE LA GARE"
+              nullable: true
+            lieuDit:
+              title: "Lieu-dit"
+              type: string
+              nullable: true
+              example: null
+              description: "Lieu-dit ou service particulier de distribution : poste restante,
+                boîte postale"
+            codePostalVille:
+              title: "Code postal"
+              type: string
+              description: Code postal et localité de destination
+              example: '75002'
+            pays:
+              title: "Pays"
+              type: string
+              description: Pays
+              example: 'FRANCE'
+        regime:
+          title: "Régime de l'allocataire"
+          type: string
+          description: Précise le régime de l'allocataire, régime général (CNAF) ou agricole (MSA).
+          example: MSA
+          enum:
+            - CNAF
+            - MSA
+        quotientFamilial:
+          title: "Quotient familial CAF ou MSA"
+          type: integer
+          description: Valeur du quotient familial calculé par la CAF ou la MSA
+          example: 1045
+        annee:
+          title: "Année effective du QF"
+          type: integer
+          description: "Année effective du quotient familial appelé. 
+            \n\n
+            - Si aucune année et aucun mois n'ont été renseignés en paramètres d'appel, le quotient familial retourné sera celui du mois de l'année en cours.
+            - Si aucune année, ni aucun mois sont renseignés, l'appel est effectué par défaut avec l'année et le mois en cours.
+            - Si aucune année n'a été renseignée, et que le mois est renseigné, le quotient familial retourné sera celui du mois spécifié pour l'année en cours. En revanche, si la date finalement composée avec cette règle s'avère dans le futur (mois postérieur au moins en cours), l'API renvoie un erreur 400.
+            "
+          example: 2023
+        mois:
+          title: "Mois effectif du QF"
+          type: integer
+          description: "Mois effectif du quotient familial. 
+            \n\n
+            - Si aucun mois n'est renseigné, le mois en cours est utilisé par défaut.
+            - Si le mois renseigné est postérieur au mois en cours, et qu'il compose une date dans le futur avec l'année appelée, l'API renvoie une erreur 400.
+            \n
+            - Si aucun mois n'a été renseigné mais que l'année a été spécifiée en paramètres d'appel, le quotient familial retourné sera celui du mois en cours pour l'année spécifiée."
+          example: 6
+        annee_calcul:
+          title: "Année du calcul du QF"
+          type: integer
+          description: Année lors de laquelle le calcul du quotient familial demandé a été effectué. Cette année peut différer de l'année effective du quotient familial.
+          example: 2023
+        mois_calcul:
+          title: "Mois du calcul du QF"
+          type: integer
+          description: Mois lors duquel le calcul du quotient familial demandé a été effectué. Ce mois peut différer du mois effectif du quotient familial.
+          example: 9
+
+    rsa:
+      title: Statut revenu de solidarité active (RSA)
+      description: "Statut bénéficiaire du revenu de solidarité active (RSA), majoré ou non.
+        \n\n
+        Retourne également des informations sur les dates d'ouverture des droits."
+      tags:
+        - Statut Revenu Solidarité Active (RSA)
+      parameters: *cnav_identite_pivot
+      attributes:
+        status:
+          title: "Statut bénéficiaire du revenu de solidarité active (RSA)"
+          type: string
+          description: "Indique si le particulier est bénéficiaire du revenu de solidarité active au moment de l'appel."
+          enum:
+            - "beneficiaire"
+            - "non_beneficiaire"
+        majoration:
+          title: "Statut bénéficiaire de la majoration du RSA"
+          type: boolean
+          nullable: true
+          description: "Indique si le particulier est bénéficiaire du RSA majoré au moment de l'appel.
+            Nécessite un scope spécifique pour être envoyé.
+            Sera null si le particulier n'est pas bénéficiaire du RSA."
+          example: false
+        dateDebut:
+          title: "Date d'ouverture du droit au RSA"
+          type: string
+          nullable: true
+          description: "Date de début de droit au RSA si le particulier est bénéficiaire.
+            \n
+            Ce champ est null dans le cas où le particulier n'est pas bénéficiaire du RSA."
+          example: '1992-11-29'
+        dateFin:
+          title: "Date de fermeture du droit au revenu de solidarité active"
+          type: string
+          nullable: true
+          description: "Date de fin de droit au revenu de solidarité active du particulier bénéficiaire.
+            \n
+            Ce champ est calculé en ajoutant 3 mois à la date de début de droit du RSA.
+            \n
+            Ce champ sera null dans le cas où le particulier n'est pas bénéficiaire du RSA."
+          example: '1993-02-20'
+
+    aah:
+      title: Statut allocation adulte handicapé (AAH)
+      description: "Statut bénéficiaire de l'allocation adulte handicapé (AAH).      
+        \n\n
+        Retourne également des informations sur les dates d'ouverture des droits."
+      tags:
+        - Statut Allocation Adulte Handicapé (AAH)
+      parameters: *cnav_identite_pivot
+      attributes:
+        status:
+          title: "Statut bénéficiaire de l'allocation adulte handicapé (AAH)"
+          type: string
+          description: "Indique si le particulier est bénéficiaire de la complémentaire de santé solidaire au moment de l'appel."
+          enum:
+            - "beneficiaire"
+            - "non_beneficiaire"
+        dateDebut:
+          title: "Date d'ouverture du droit à l'AAH"
+          type: string
+          nullable: true
+          description: |+
+            "Date de début de droit à l'AAH si le particulier est bénéficiaire.
+            Ce champs est null dans le cas où le particulier n'est pas bénéficiaire de l'AAH."
+          example: '1992-11-29'
+
+    asf:
+      title: Statut allocation de soutien familial (ASF)
+      description: "Savoir si un particulier est bénéficiaire de l'allocation de soutien familial (ASF). Retourne également des informations sur les dates d'ouverture et de fermeture des droits."
+      tags:
+        - Statut Allocation Soutien Familial (ASF)
+      parameters: *cnav_identite_pivot
+      attributes:
+        status:
+          title: "Statut bénéficiaire de l'allocation de soution familial (ASF)"
+          type: string
+          description: "Indique si le particulier est bénéficiaire de l'allocation de soution familial au moment de l'appel."
+          enum:
+            - "beneficiaire"
+            - "non_beneficiaire"
+        dateDebut:
+          title: "Date d'ouverture du droit à l'ASF"
+          type: string
+          nullable: true
+          description: "Date de début de droit à l'ASF si le particulier est bénéficiaire.
+            \n
+            Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de l'ASF."
+          example: '1992-11-29'
+        dateFin:
+          title: "Date de fermeture du droit à l'ASF"
+          type: string
+          nullable: true
+          description: "Date de fin de droit à l'allocation de soution familial du particulier bénéficiaire.
+            \n
+            Ce champ est calculé en ajoutant 12 mois à la date de début de droit à l'ASF.
+            \n
+            Ce champ sera null dans le cas où le particulier n'est pas bénéficiaire de l'ASF."
+          example: '1993-11-29'
+
+    prime_activite:
+      title: Statut prime d'activité
+      description: "Statut bénéficiaire de la prime d'activité, majorée ou non.
+        \n\n
+        Retourne également des informations sur les dates d'ouverture des droits."
+      tags:
+        - Statut Prime Activité
+      parameters: *cnav_identite_pivot
+      attributes:
+        status:
+          title: "Statut bénéficiaire de la prime d'activité"
+          type: string
+          description: "Indique si le particulier est bénéficiaire de la prime d'activité au moment de l'appel."
+          enum:
+            - "beneficiaire"
+            - "non_beneficiaire"
+        majoration:
+          title: "Statut bénéficiaire de la majoration de la prime d'activité"
+          type: boolean
+          nullable: true
+          description: "Indique si le particulier est bénéficiaire de la prime d'activité majorée au moment de l'appel.
+            Ce champ est renvoyé si les droits du jeton (obtenus par habilitation) le permettent.
+            Ce champ sera null si le particulier n'est pas bénéficiaire de la prime d'activité."
+          example: false
+        dateDebut:
+          title: "Date d'ouverture du droit à la prime d'activité"
+          type: string
+          nullable: true
+          description: "Date de début de droit à la prime d'activité si le particulier est bénéficiaire.
+            \n
+            Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de la prime d'activité."
+          example: '1992-11-20'
+        dateFin:
+          title: "Date de fermeture du droit à la prime d'activité"
+          type: string
+          nullable: true
+          description: "Date de fin de droit à la prime d'activité du particulier bénéficiaire.
+            \n
+            Ce champ est calculé en ajoutant 3 mois à la date de début de droit de la prime d'activité.
+            \n
+            Ce champ sera null dans le cas où le particulier n'est pas bénéficiaire de la prime d'activité."
+          example: '1993-02-20'

@@ -17,9 +17,9 @@ RSpec.describe APIParticulier::CNAV::AllocationAdulteHandicape::V3, type: :seria
     context 'with allocation_adulte_handicape scope' do
       let(:scopes) { %w[allocation_adulte_handicape] }
 
-      it 'has status, dateDebut and dateFin items' do
+      it 'has status, date_debut items' do
         expect(subject[:data]).to have_key(:status)
-        expect(subject[:data]).to have_key(:dateDebut)
+        expect(subject[:data]).to have_key(:date_debut)
       end
     end
   end

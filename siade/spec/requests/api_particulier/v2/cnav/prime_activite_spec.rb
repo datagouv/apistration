@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe "CNAV: Prime d'activité", api: :particulierv2, type: %i[request swagger] do
   path '/api/v2/prime-activite' do
-    get SwaggerData.get('cnav.prime_activite.title') do
-      tags(*SwaggerData.get('cnav.prime_activite.tags'))
+    get SwaggerData.get('cnav.v2.prime_activite.title') do
+      tags(*SwaggerData.get('cnav.v2.prime_activite.tags'))
 
       produces 'application/json'
 
@@ -47,12 +47,12 @@ RSpec.describe "CNAV: Prime d'activité", api: :particulierv2, type: %i[request 
 
         describe 'with valid token and mandatory params' do
           response '200', 'Dossier trouvé' do
-            description SwaggerData.get('cnav.prime_activite.description')
+            description SwaggerData.get('cnav.v2.prime_activite.description')
 
-            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+            cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
             schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('cnav.prime_activite.attributes')
+              attributes: SwaggerData.get('cnav.v2.prime_activite.attributes')
             )
 
             run_test!
@@ -71,12 +71,12 @@ RSpec.describe "CNAV: Prime d'activité", api: :particulierv2, type: %i[request 
 
           describe 'with valid token and mandatory params' do
             response '200', 'Prime activité trouvée' do
-              description SwaggerData.get('cnav.prime_activite.description')
+              description SwaggerData.get('cnav.v2.prime_activite.description')
 
-              cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+              cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
               schema build_rswag_response_api_particulier(
-                attributes: SwaggerData.get('cnav.prime_activite.attributes')
+                attributes: SwaggerData.get('cnav.v2.prime_activite.attributes')
               )
 
               run_test!
@@ -153,12 +153,12 @@ RSpec.describe "CNAV: Prime d'activité", api: :particulierv2, type: %i[request 
           end
 
           response '200', 'Dossier trouvé' do
-            description SwaggerData.get('cnav.prime_activite.description')
+            description SwaggerData.get('cnav.v2.prime_activite.description')
 
-            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+            cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
             schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('cnav.prime_activite.attributes')
+              attributes: SwaggerData.get('cnav.v2.prime_activite.attributes')
             )
 
             run_test!
@@ -192,12 +192,12 @@ RSpec.describe "CNAV: Prime d'activité", api: :particulierv2, type: %i[request 
           end
 
           response '200', 'Dossier trouvé' do
-            description SwaggerData.get('cnav.prime_activite.description')
+            description SwaggerData.get('cnav.v2.prime_activite.description')
 
-            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
+            cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
             schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('cnav.prime_activite.attributes')
+              attributes: SwaggerData.get('cnav.v2.prime_activite.attributes')
             )
 
             run_test!

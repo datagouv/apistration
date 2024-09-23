@@ -17,10 +17,10 @@ RSpec.describe APIParticulier::MESRI::StatutEtudiantSerializer::V3, type: :seria
     context 'with mesri_identite scope' do
       let(:scopes) { %w[mesri_identite] }
 
-      it 'has nom, prenom and dateNaissance items' do
+      it 'has nom, prenom and date_naissance items' do
         expect(subject[:data]).to have_key(:nom)
         expect(subject[:data]).to have_key(:prenom)
-        expect(subject[:data]).to have_key(:dateNaissance)
+        expect(subject[:data]).to have_key(:date_naissance)
       end
     end
 
@@ -30,12 +30,12 @@ RSpec.describe APIParticulier::MESRI::StatutEtudiantSerializer::V3, type: :seria
       it 'has regime item' do
         subject[:data][:inscriptions].each do |inscription_payload|
           expect(inscription_payload).to have_key(:regime)
-          expect(inscription_payload).to have_key(:dateDebutInscription)
-          expect(inscription_payload).to have_key(:dateFinInscription)
+          expect(inscription_payload).to have_key(:date_debut_inscription)
+          expect(inscription_payload).to have_key(:date_fin_inscription)
 
           expect(inscription_payload).not_to have_key(:statut)
           expect(inscription_payload).not_to have_key(:etablissement)
-          expect(inscription_payload).not_to have_key(:codeCommune)
+          expect(inscription_payload).not_to have_key(:code_commune)
         end
       end
     end
@@ -46,12 +46,12 @@ RSpec.describe APIParticulier::MESRI::StatutEtudiantSerializer::V3, type: :seria
       it 'has statut item' do
         subject[:data][:inscriptions].each do |inscription_payload|
           expect(inscription_payload).to have_key(:statut)
-          expect(inscription_payload).to have_key(:dateDebutInscription)
-          expect(inscription_payload).to have_key(:dateFinInscription)
+          expect(inscription_payload).to have_key(:date_debut_inscription)
+          expect(inscription_payload).to have_key(:date_fin_inscription)
 
           expect(inscription_payload).not_to have_key(:regime)
           expect(inscription_payload).not_to have_key(:etablissement)
-          expect(inscription_payload).not_to have_key(:codeCommune)
+          expect(inscription_payload).not_to have_key(:code_commune)
         end
       end
     end
@@ -62,9 +62,9 @@ RSpec.describe APIParticulier::MESRI::StatutEtudiantSerializer::V3, type: :seria
       it 'has etablissements items' do
         subject[:data][:inscriptions].each do |inscription_payload|
           expect(inscription_payload).to have_key(:etablissement)
-          expect(inscription_payload).to have_key(:codeCommune)
-          expect(inscription_payload).to have_key(:dateDebutInscription)
-          expect(inscription_payload).to have_key(:dateFinInscription)
+          expect(inscription_payload).to have_key(:code_commune)
+          expect(inscription_payload).to have_key(:date_debut_inscription)
+          expect(inscription_payload).to have_key(:date_fin_inscription)
 
           expect(inscription_payload).not_to have_key(:statut)
           expect(inscription_payload).not_to have_key(:regime)

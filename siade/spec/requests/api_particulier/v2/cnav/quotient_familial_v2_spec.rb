@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[request swagger] do
   path '/api/v2/composition-familiale-v2' do
-    get SwaggerData.get('cnav.quotient-familial-v2.title') do
-      tags(*SwaggerData.get('cnav.quotient-familial-v2.tags'))
+    get SwaggerData.get('cnav.v2.quotient-familial-v2.title') do
+      tags(*SwaggerData.get('cnav.v2.quotient-familial-v2.tags'))
 
       cacheable_request
 
@@ -24,16 +24,16 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
 
       parameter name: :annee,
         in: :query,
-        type: SwaggerData.get('cnav.quotient-familial-v2.parameters.annee.type'),
-        description: SwaggerData.get('cnav.quotient-familial-v2.parameters.annee.description'),
-        example: SwaggerData.get('cnav.quotient-familial-v2.parameters.annee.example'),
+        type: SwaggerData.get('cnav.v2.quotient-familial-v2.parameters.annee.type'),
+        description: SwaggerData.get('cnav.v2.quotient-familial-v2.parameters.annee.description'),
+        example: SwaggerData.get('cnav.v2.quotient-familial-v2.parameters.annee.example'),
         required: false
 
       parameter name: :mois,
         in: :query,
-        type: SwaggerData.get('cnav.quotient-familial-v2.parameters.mois.type'),
-        description: SwaggerData.get('cnav.quotient-familial-v2.parameters.mois.description'),
-        example: SwaggerData.get('cnav.quotient-familial-v2.parameters.mois.example'),
+        type: SwaggerData.get('cnav.v2.quotient-familial-v2.parameters.mois.type'),
+        description: SwaggerData.get('cnav.v2.quotient-familial-v2.parameters.mois.description'),
+        example: SwaggerData.get('cnav.v2.quotient-familial-v2.parameters.mois.example'),
         required: false
 
       let(:scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse] }
@@ -80,12 +80,12 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
 
           describe 'with valid token and mandatory params' do
             response '200', 'Quotient Familial trouvée' do
-              description SwaggerData.get('cnav.quotient-familial-v2.description')
+              description SwaggerData.get('cnav.v2.quotient-familial-v2.description')
 
-              cacheable_response(extra_description: SwaggerData.get('cnav.quotient-familial-v2.cache_duration'))
+              cacheable_response(extra_description: SwaggerData.get('cnav.v2.quotient-familial-v2.cache_duration'))
 
               schema build_rswag_response_api_particulier(
-                attributes: SwaggerData.get('cnav.quotient-familial-v2.attributes')
+                attributes: SwaggerData.get('cnav.v2.quotient-familial-v2.attributes')
               )
 
               run_test!
@@ -102,10 +102,10 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
 
           describe 'with valid token and mandatory params' do
             response '200', 'Quotient Familial trouvée' do
-              description SwaggerData.get('cnav.quotient-familial-v2.description')
+              description SwaggerData.get('cnav.v2.quotient-familial-v2.description')
 
               schema build_rswag_response_api_particulier(
-                attributes: SwaggerData.get('cnav.quotient-familial-v2.attributes')
+                attributes: SwaggerData.get('cnav.v2.quotient-familial-v2.attributes')
               )
 
               run_test!
@@ -221,10 +221,10 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
           end
 
           response '200', 'Quotient Familial trouvé' do
-            description SwaggerData.get('cnav.quotient-familial-v2.description')
+            description SwaggerData.get('cnav.v2.quotient-familial-v2.description')
 
             schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('cnav.quotient-familial-v2.attributes')
+              attributes: SwaggerData.get('cnav.v2.quotient-familial-v2.attributes')
             )
 
             run_test!
@@ -240,10 +240,10 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
           end
 
           response '200', 'Quotient Familial trouvé' do
-            description SwaggerData.get('cnav.quotient-familial-v2.description')
+            description SwaggerData.get('cnav.v2.quotient-familial-v2.description')
 
             schema build_rswag_response_api_particulier(
-              attributes: SwaggerData.get('cnav.quotient-familial-v2.attributes')
+              attributes: SwaggerData.get('cnav.v2.quotient-familial-v2.attributes')
             )
 
             run_test!

@@ -26,7 +26,7 @@ RSpec.describe APIParticulier::CNAV::QuotientFamilial::V3, type: :serializer do
       let(:scopes) { %w[cnaf_quotient_familial] }
 
       it 'has status, dateDebut and dateFin items' do
-        expect(subject[:data]).to have_key(:quotientFamilial)
+        expect(subject[:data]).to have_key(:quotient_familial)
         expect(subject[:data]).to have_key(:mois)
         expect(subject[:data]).to have_key(:annee)
         expect(subject[:data]).not_to have_key(:allocataires)
@@ -40,7 +40,7 @@ RSpec.describe APIParticulier::CNAV::QuotientFamilial::V3, type: :serializer do
     let(:scopes) { %w[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse] }
 
     it 'has all items' do
-      expect(subject[:data]).to have_key(:quotientFamilial)
+      expect(subject[:data]).to have_key(:quotient_familial)
       expect(subject[:data]).to have_key(:mois)
       expect(subject[:data]).to have_key(:annee)
       expect(subject[:data]).to have_key(:allocataires)

@@ -19,7 +19,7 @@ RSpec.describe APIParticulier::V3AndMore::BaseSerializer, type: :serializer do
       attribute :attr_array do
         data.attr_array.map do |attr|
           {
-            hash_value: attr[:attr_array_hash_key]
+            hash_value: attr[:attrArrayHashKey]
           }
         end
       end
@@ -42,8 +42,8 @@ RSpec.describe APIParticulier::V3AndMore::BaseSerializer, type: :serializer do
       attr_2: 'attr_2',
       attr_4: 'attr_4',
       attr_array: [
-        { attr_array_hash_key: 'attr_array_1' },
-        { attr_array_hash_key: 'attr_array_2' }
+        { attrArrayHashKey: 'attr_array_1' },
+        { attrArrayHashKey: 'attr_array_2' }
       ],
       meta_1: 'meta_1',
       url_1: 'url_1'
