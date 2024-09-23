@@ -81,7 +81,7 @@ RSpec.describe 'API Particulier CNAV: allocation adulte handicape with civility'
 
             let(:codePaysLieuDeNaissance) { '99623' }
 
-            build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.'))
+            build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.'), false)
 
             schema '$ref' => '#/components/schemas/Error'
 

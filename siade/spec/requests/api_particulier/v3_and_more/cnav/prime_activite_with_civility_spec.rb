@@ -83,7 +83,7 @@ RSpec.describe 'API Particulier CNAV: prime activite with civility', api: :parti
 
             schema '$ref' => '#/components/schemas/Error'
 
-            build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.'))
+            build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.'), false)
 
             run_test!
           end
