@@ -41,7 +41,7 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with FranceConnect', api
           response '404', 'Étudiant non identifié' do
             schema '$ref' => '#/components/schemas/Error'
 
-            build_rswag_example(NotFoundError.new('MESRI'), "Aucun étudiant n'a pu être trouvé avec les critères de recherche fournis")
+            build_rswag_example(NotFoundError.new('MESRI', "Aucun étudiant n'a pu être trouvé.", with_identifiant_message: false))
 
             run_test!
           end

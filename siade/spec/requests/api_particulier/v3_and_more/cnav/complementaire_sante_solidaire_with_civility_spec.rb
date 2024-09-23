@@ -83,7 +83,7 @@ RSpec.describe 'API Particulier CNAV: complementaire sante solidaire with civili
 
             schema '$ref' => '#/components/schemas/Error'
 
-            build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.'), false)
+            build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.', with_identifiant_message: false))
 
             run_test!
           end

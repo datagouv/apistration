@@ -44,7 +44,7 @@ RSpec.describe 'API Particulier: CNAV: Revenu Solidarite Active with FranceConne
           response '404', 'Dossier non trouvé' do
             schema '$ref' => '#/components/schemas/Error'
 
-            build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.'), false)
+            build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.', with_identifiant_message: false))
 
             run_test!
           end

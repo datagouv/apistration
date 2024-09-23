@@ -46,7 +46,7 @@ RSpec.describe 'FranceTravail: Indemnites with identifiant', api: :particulier, 
           end
 
           response '404', 'Non trouvée' do
-            build_rswag_example(NotFoundError.new('France Travail', 'Aucune situation France Travail n\'a pu être trouvée avec les critères de recherche fournis'))
+            build_rswag_example(NotFoundError.new('France Travail', 'Aucune situation France Travail n\'a pu être trouvée avec les critères de recherche fournis.', with_identifiant_message: false))
 
             schema '$ref' => '#/components/schemas/Error'
 
