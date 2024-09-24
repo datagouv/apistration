@@ -423,7 +423,7 @@ GEM
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
-    webrick (1.8.1)
+    webrick (1.8.2)
     xml-simple (1.1.9)
       rexml
     zeitwerk (2.6.18)
@@ -506,4 +506,4 @@ DEPENDENCIES
   xml-simple
 
 BUNDLED WITH
-   2.5.4
+   2.5.9
