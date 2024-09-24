@@ -51,7 +51,7 @@ RSpec.describe 'MEN: Scolarites with civility', api: :particulier, type: %i[requ
 
       unauthorized_request
 
-      forbidden_request
+      forbidden_request('api_particulier')
 
       too_many_requests(MEN::Scolarites)
 

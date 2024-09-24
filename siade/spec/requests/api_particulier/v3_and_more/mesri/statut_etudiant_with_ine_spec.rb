@@ -11,7 +11,7 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with INE', api: :particu
         let(:ine) { '1234567890A' }
       end
 
-      forbidden_request do
+      forbidden_request('api_particulier') do
         let(:ine) { '1234567890A' }
       end
 

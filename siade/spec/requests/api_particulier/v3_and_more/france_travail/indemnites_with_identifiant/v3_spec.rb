@@ -19,7 +19,7 @@ RSpec.describe 'FranceTravail: Indemnites with identifiant', api: :particulier, 
 
       unauthorized_request
 
-      forbidden_request
+      forbidden_request('api_particulier')
 
       too_many_requests(FranceTravail::Indemnites)
 

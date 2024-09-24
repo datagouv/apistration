@@ -44,7 +44,7 @@ RSpec.describe 'API Particulier CNAV: prime activite with civility', api: :parti
 
       unauthorized_request
 
-      forbidden_request
+      forbidden_request('api_particulier')
 
       too_many_requests(CNAV::PrimeActivite)
 

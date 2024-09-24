@@ -44,7 +44,7 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
 
       unauthorized_request
 
-      forbidden_request
+      forbidden_request('api_particulier')
 
       too_many_requests(CNAV::QuotientFamilialV2)
 

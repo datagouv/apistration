@@ -17,14 +17,14 @@ module RSwagCommonErrors
     end
   end
 
-  def forbidden_request(&block)
+  def forbidden_request(api_kind = 'api_entreprise', &block)
     describe 'with valid mandatory params but insufficient privileges on token' do
       include_context 'Valid mandatory params and unauthorized token'
 
       response '403', 'Accès interdit' do
         block.call if block_given?
 
-        build_rswag_example(InsufficientPrivilegesError.new('api_entreprise'), :insufficient_privileges_error)
+        build_rswag_example(InsufficientPrivilegesError.new(api_kind), :insufficient_privileges_error)
 
         schema '$ref' => '#/components/schemas/Error'
 

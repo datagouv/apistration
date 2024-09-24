@@ -44,7 +44,7 @@ RSpec.describe 'API Particulier CNAV: allocation soutien familial with civility'
 
       unauthorized_request
 
-      forbidden_request
+      forbidden_request('api_particulier')
 
       too_many_requests(CNAV::AllocationSoutienFamilial)
 

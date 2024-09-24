@@ -41,7 +41,7 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with Civility', api: :pa
 
       unauthorized_request
 
-      forbidden_request
+      forbidden_request('api_particulier')
 
       too_many_requests(MESRI::StudentStatus::WithCivility)
 

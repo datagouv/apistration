@@ -19,7 +19,7 @@ RSpec.describe 'FranceTravail: Statut with identifiant', api: :particulier, type
 
       unauthorized_request
 
-      forbidden_request
+      forbidden_request('api_particulier')
 
       too_many_requests(FranceTravail::Statut)
 

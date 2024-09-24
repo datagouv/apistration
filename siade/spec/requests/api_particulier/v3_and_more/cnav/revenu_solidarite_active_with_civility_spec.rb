@@ -44,7 +44,7 @@ RSpec.describe 'API Particulier CNAV: Revenu de solidarité active with civility
 
       unauthorized_request
 
-      forbidden_request
+      forbidden_request('api_particulier')
 
       too_many_requests(CNAV::RevenuSolidariteActive)
 

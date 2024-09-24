@@ -42,7 +42,7 @@ RSpec.describe 'API Particulier: CNOUS: Etudiant Boursier with Civility', api: :
 
       unauthorized_request
 
-      forbidden_request
+      forbidden_request('api_particulier')
 
       too_many_requests(CNOUS::StudentScholarshipWithCivility)
 
