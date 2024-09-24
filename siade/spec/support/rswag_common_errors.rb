@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ModuleLength
 module RSwagCommonErrors
   def unauthorized_request(&block)
     describe 'with valid mandatory params but invalid token' do
@@ -9,6 +10,24 @@ module RSwagCommonErrors
         build_rswag_example(InvalidTokenError.new, :invalid_token_error)
         build_rswag_example(ExpiredTokenError.new, :expired_token_error)
         build_rswag_example(BlacklistedTokenError.new('entreprise'), :blacklisted_token_error)
+
+        schema '$ref' => '#/components/schemas/Error'
+
+        run_test!
+      end
+    end
+  end
+
+  def forbidden_france_connect_request(&block)
+    describe 'with valid mandatory params but insufficient privileges on token' do
+      response '403', 'Accès interdit' do
+        before do
+          mock_valid_france_connect_v2_checktoken
+        end
+
+        block.call if block_given?
+
+        build_rswag_example(InsufficientPrivilegesError.new('api_particulier'), :insufficient_privileges_error)
 
         schema '$ref' => '#/components/schemas/Error'
 
@@ -135,3 +154,4 @@ module RSwagCommonErrors
   end
   # rubocop:enable RSpec/VerifiedDoubles
 end
+# rubocop:enable Metrics/ModuleLength

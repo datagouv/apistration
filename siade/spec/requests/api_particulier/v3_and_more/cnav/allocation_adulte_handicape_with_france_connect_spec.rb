@@ -9,10 +9,12 @@ RSpec.describe 'API Particulier: CNAV: Allocation Adulte Handicape with FranceCo
 
       let(:scopes) { %i[allocation_adulte_handicape] }
 
-      describe 'with a FranceConnect token' do
-        let(:recipient) { valid_siret(:recipient) }
-        let(:Authorization) { 'Bearer super_valid_token' }
+      let(:recipient) { valid_siret(:recipient) }
+      let(:Authorization) { 'Bearer super_valid_token' }
 
+      forbidden_france_connect_request
+
+      describe 'with a FranceConnect token' do
         before do
           mock_valid_france_connect_checktoken(scopes:)
           stub_cnav_authenticate('allocation_adulte_handicape')

@@ -7,12 +7,14 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
 
       common_action_attributes
 
+      let(:recipient) { valid_siret(:recipient) }
+      let(:Authorization) { 'Bearer super_valid_token' }
+
+      forbidden_france_connect_request
+
       let(:scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse] }
 
       describe 'with a FranceConnect token' do
-        let(:recipient) { valid_siret(:recipient) }
-        let(:Authorization) { 'Bearer super_valid_token' }
-
         before do
           mock_valid_france_connect_checktoken(scopes:)
           stub_cnav_authenticate('quotient_familial_v2')
@@ -38,7 +40,6 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
 
         describe 'when the quotient familial is not found' do
           response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
-            let(:codePaysLieuDeNaissance) { '99623' }
             # rubocop:disable RSpec/ContextWording
             context 'Allocataire non identifié' do
               before do
@@ -57,7 +58,7 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
                 stub_cnav_404('quotient_familial_v2', '00171001')
               end
 
-              build_rswag_example(NotFoundError.new('CNAV & MSA', "Le dossier allocataire n'a pas été trouvé auprès de la MSA.", title:'Dossier allocataire absent MSA', with_identifiant_message: false, subcode: '004'))
+              build_rswag_example(NotFoundError.new('CNAV & MSA', "Le dossier allocataire n'a pas été trouvé auprès de la MSA.", title: 'Dossier allocataire absent MSA', with_identifiant_message: false, subcode: '004'))
 
               schema '$ref' => '#/components/schemas/Error'
 

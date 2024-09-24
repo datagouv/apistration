@@ -94,7 +94,7 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
                 stub_cnav_404('quotient_familial_v2', '00171001')
               end
 
-              build_rswag_example(NotFoundError.new('CNAV & MSA', "Le dossier allocataire n'a pas été trouvé auprès de la MSA.", title:'Dossier allocataire absent MSA', with_identifiant_message: false, subcode: '004'))
+              build_rswag_example(NotFoundError.new('CNAV & MSA', "Le dossier allocataire n'a pas été trouvé auprès de la MSA.", title: 'Dossier allocataire absent MSA', with_identifiant_message: false, subcode: '004'))
 
               schema '$ref' => '#/components/schemas/Error'
 

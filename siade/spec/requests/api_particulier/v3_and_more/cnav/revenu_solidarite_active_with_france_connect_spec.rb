@@ -7,12 +7,14 @@ RSpec.describe 'API Particulier: CNAV: Revenu Solidarite Active with FranceConne
 
       common_action_attributes
 
+      let(:recipient) { valid_siret(:recipient) }
+      let(:Authorization) { 'Bearer super_valid_token' }
+
+      forbidden_france_connect_request
+
       let(:scopes) { %i[revenu_solidarite_active revenu_solidarite_active_majoration] }
 
       describe 'with a FranceConnect token' do
-        let(:recipient) { valid_siret(:recipient) }
-        let(:Authorization) { 'Bearer super_valid_token' }
-
         before do
           mock_valid_france_connect_checktoken(scopes:)
           stub_cnav_authenticate('revenu_solidarite_active')
