@@ -19,6 +19,14 @@ class AbstractGetToken < MakeRequest::Post
     fail NotImplementedError
   end
 
+  def cache_key
+    self
+      .class
+      .name
+      .underscore
+      .to_sym
+  end
+
   private
 
   def response_not_defined?
@@ -27,14 +35,6 @@ class AbstractGetToken < MakeRequest::Post
 
   def request_uri
     URI(client_url)
-  end
-
-  def cache_key
-    self
-      .class
-      .name
-      .underscore
-      .to_sym
   end
 
   def retrieve_and_save_token

@@ -32,6 +32,10 @@ class INPI::RNE::Authenticate < AbstractGetToken
     params[:inpi_rne_login_password].presence || Siade.credentials[:inpi_rne_login_password]
   end
 
+  def cache_key
+    :"#{super}_#{username}"
+  end
+
   def params
     context.params || {}
   end
