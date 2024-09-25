@@ -27607,8 +27607,11 @@ paths:
                                     humains possédés par l'entreprise pour réaliser
                                     les travaux liées à la qualification. Elle précise
                                     l'effectif du personnel d'exécution et d'encadrement
-                                    permanent de l'entreprise.
+                                    permanent de l'entreprise. Ce champ peut être
+                                    nul dans le cas où la qualification est une qualification
+                                    probatoire.
                                   type: object
+                                  nullable: true
                                   properties:
                                     code:
                                       title: Code de la classification

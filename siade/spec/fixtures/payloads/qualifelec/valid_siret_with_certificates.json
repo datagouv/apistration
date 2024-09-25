@@ -58,10 +58,7 @@
     "end_date": 1697580000,
     "qualification_start_date": 1698620400,
     "qualification_end_date": 1824847200,
-    "classification": {
-      "label": "Classe 4 - de 20 à 49 exécutants",
-      "code": 4
-    },
+    "classification": [],
     "indexes": [
       {
         "label": "MGTI",

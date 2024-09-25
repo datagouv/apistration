@@ -84,8 +84,8 @@ RSpec.describe Qualifelec::Certificats::BuildResourceCollection, type: :build_re
           ],
           domaines: [],
           classification: {
-            code: 4,
-            label: 'Classe 4 - de 20 à 49 exécutants'
+            code: nil,
+            label: nil
           }
         },
         assurance_decennale: {
@@ -119,13 +119,15 @@ RSpec.describe Qualifelec::Certificats::BuildResourceCollection, type: :build_re
     stub_qualifelec_certificates
   end
 
-  it { is_expected.to be_a_success }
+  context 'when the request is successful' do
+    it { is_expected.to be_a_success }
 
-  it 'builds valid resources' do
-    expect(subject.bundled_data.data).to all be_a(Resource)
-  end
+    it 'builds valid resources' do
+      expect(subject.bundled_data.data).to all be_a(Resource)
+    end
 
-  it 'has valid resource_collection' do
-    expect(subject.bundled_data.data.map(&:to_h)).to eq(valid_collection)
+    it 'has valid resource_collection' do
+      expect(subject.bundled_data.data.map(&:to_h)).to eq(valid_collection)
+    end
   end
 end

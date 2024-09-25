@@ -123,7 +123,7 @@ qualifelec:
                   example: "Sûreté"
           classification: 
             title: "Classification de la qualification"
-            description: "La classification indique les moyens humains possédés par l'entreprise pour réaliser les travaux liées à la qualification. Elle précise l'effectif du personnel d'exécution et d'encadrement permanent de l'entreprise."
+            description: "La classification indique les moyens humains possédés par l'entreprise pour réaliser les travaux liées à la qualification. Elle précise l'effectif du personnel d'exécution et d'encadrement permanent de l'entreprise. Ce champ peut être nul dans le cas où la qualification est une qualification probatoire."
             type: object
             properties: 
               code: 
@@ -131,11 +131,13 @@ qualifelec:
                 type: integer
                 description: "Code de la classification associé à la qualification."
                 example: "1"
+                nullable: true
               label: 
                 title: "Libellé de la classification"
                 type: string
                 description: "Libellé de la classification de la qualification."
                 example: "Classe 1 - de 1 à 3 exécutants"
+                nullable: true
       assurance_decennale: 
         title: "Assurance décennale vérifiée au moment de l'édition du certificat"
         type: object
