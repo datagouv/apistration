@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'API Particulier: CNOUS: Etudiant Boursier with Civility', api: :particulier, type: %i[request swagger] do
-  path '/v3/cnous/etudiant_boursier/civility' do
+  path '/v3/cnous/etudiant_boursier/identite' do
     get SwaggerData.get('cnous.commons.title') do
       tags(*SwaggerData.get('cnous.commons.tags'))
 

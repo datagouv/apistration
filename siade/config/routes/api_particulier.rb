@@ -5,30 +5,30 @@ end
 scope path: 'v:api_version', constraints: APIParticulierDomainConstraint.new(v3_and_more: true) do
   get 'mesri/statut_etudiant/ine', to: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_ine#show'
   get 'mesri/statut_etudiant/france_connect', to: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_france_connect#show'
-  get 'mesri/statut_etudiant/civility', to: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_civility#show'
+  get 'mesri/statut_etudiant/identite', to: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_civility#show'
 
-  get 'men/scolarites/civility', to: 'api_particulier/v3_and_more/men/scolarites_with_civility#show'
+  get 'men/scolarites/identite', to: 'api_particulier/v3_and_more/men/scolarites_with_civility#show'
 
   get 'cnous/etudiant_boursier/ine', to: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_ine#show'
-  get 'cnous/etudiant_boursier/civility', to: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_civility#show'
+  get 'cnous/etudiant_boursier/identite', to: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_civility#show'
   get 'cnous/etudiant_boursier/france_connect', to: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_france_connect#show'
 
   get 'cnav/revenu_solidarite_active/france_connect', to: 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_france_connect#show'
-  get 'cnav/revenu_solidarite_active/civility', to: 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_civility#show'
+  get 'cnav/revenu_solidarite_active/identite', to: 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_civility#show'
 
-  get 'cnav/prime_activite/civility', to: 'api_particulier/v3_and_more/cnav/prime_activite_with_civility#show'
+  get 'cnav/prime_activite/identite', to: 'api_particulier/v3_and_more/cnav/prime_activite_with_civility#show'
   get 'cnav/prime_activite/france_connect', to: 'api_particulier/v3_and_more/cnav/prime_activite_with_france_connect#show'
 
-  get 'cnav/allocation_soutien_familial/civility', to: 'api_particulier/v3_and_more/cnav/allocation_soutien_familial_with_civility#show'
+  get 'cnav/allocation_soutien_familial/identite', to: 'api_particulier/v3_and_more/cnav/allocation_soutien_familial_with_civility#show'
   get 'cnav/allocation_soutien_familial/france_connect', to: 'api_particulier/v3_and_more/cnav/allocation_soutien_familial_with_france_connect#show'
 
-  get 'cnav/allocation_adulte_handicape/civility', to: 'api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_civility#show'
+  get 'cnav/allocation_adulte_handicape/identite', to: 'api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_civility#show'
   get 'cnav/allocation_adulte_handicape/france_connect', to: 'api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_france_connect#show'
 
-  get 'cnav/complementaire_sante_solidaire/civility', to: 'api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_civility#show'
+  get 'cnav/complementaire_sante_solidaire/identite', to: 'api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_civility#show'
   get 'cnav/complementaire_sante_solidaire/france_connect', to: 'api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_france_connect#show'
 
-  get 'cnav/quotient_familial/civility', to: 'api_particulier/v3_and_more/cnav/quotient_familial_with_civility#show'
+  get 'cnav/quotient_familial/identite', to: 'api_particulier/v3_and_more/cnav/quotient_familial_with_civility#show'
   get 'cnav/quotient_familial/france_connect', to: 'api_particulier/v3_and_more/cnav/quotient_familial_with_france_connect#show'
 
   get 'france_travail/statut/identifiant', to: 'api_particulier/v3_and_more/france_travail/statut_with_identifiant#show'

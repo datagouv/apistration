@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :particulier, type: %i[request swagger] do
-  path '/v3/cnav/quotient_familial/civility' do
+  path '/v3/cnav/quotient_familial/identite' do
     get SwaggerData.get('cnav.quotient-familial-v2.title') do
       tags(*SwaggerData.get('cnav.quotient-familial-v2.tags'))
 

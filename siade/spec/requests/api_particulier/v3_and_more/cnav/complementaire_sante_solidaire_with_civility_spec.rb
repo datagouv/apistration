@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'API Particulier CNAV: complementaire sante solidaire with civility', api: :particulier, type: %i[request swagger] do
-  path '/v3/cnav/complementaire_sante_solidaire/civility' do
+  path '/v3/cnav/complementaire_sante_solidaire/identite' do
     get SwaggerData.get('cnav.c2s.title') do
       tags(*SwaggerData.get('cnav.c2s.tags'))
 
