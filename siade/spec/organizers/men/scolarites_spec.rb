@@ -7,9 +7,9 @@ RSpec.describe MEN::Scolarites, type: :retriever_organizer do
         nom_naissance: 'NOMFAMILLE',
         prenoms: ['prenom'],
         sexe_etat_civil: 'f',
-        annee_date_de_naissance: '2000',
-        mois_date_de_naissance: '06',
-        jour_date_de_naissance: '10',
+        annee_date_naissance: '2000',
+        mois_date_naissance: '06',
+        jour_date_naissance: '10',
         code_etablissement: '0511474A',
         annee_scolaire: '2021'
       }

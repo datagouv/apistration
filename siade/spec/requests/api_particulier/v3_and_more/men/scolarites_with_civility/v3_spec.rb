@@ -12,17 +12,17 @@ RSpec.describe 'MEN: Scolarites with civility', api: :particulier, type: %i[requ
           nomNaissance
           prenoms
           sexeEtatCivil
-          anneeDateDeNaissance
-          moisDateDeNaissance
-          jourDateDeNaissance
+          anneeDateNaissance
+          moisDateNaissance
+          jourDateNaissance
         ],
         required: %w[
           nomNaissance
           prenoms
           sexeEtatCivil
-          anneeDateDeNaissance
-          moisDateDeNaissance
-          jourDateDeNaissance
+          anneeDateNaissance
+          moisDateNaissance
+          jourDateNaissance
         ]
       )
 
@@ -42,9 +42,9 @@ RSpec.describe 'MEN: Scolarites with civility', api: :particulier, type: %i[requ
 
       let(:nomNaissance) { 'NOMFAMILLE' }
       let(:'prenoms[]') { %w[prenom] }
-      let(:anneeDateDeNaissance) { '2000' }
-      let(:moisDateDeNaissance) { '06' }
-      let(:jourDateDeNaissance) { '10' }
+      let(:anneeDateNaissance) { '2000' }
+      let(:moisDateNaissance) { '06' }
+      let(:jourDateNaissance) { '10' }
       let(:sexeEtatCivil) { 'f' }
       let(:codeEtablissement) { '0511474A' }
       let(:anneeScolaire) { '2021' }

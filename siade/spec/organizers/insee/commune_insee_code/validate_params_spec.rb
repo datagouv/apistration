@@ -4,14 +4,14 @@ RSpec.describe INSEE::CommuneINSEECode::ValidateParams, type: :validate_params d
   let(:params) do
     {
       nom_commune_naissance:,
-      annee_date_de_naissance:,
-      code_cog_insee_departement_de_naissance:
+      annee_date_naissance:,
+      code_cog_insee_departement_naissance:
     }
   end
 
   let(:nom_commune_naissance) { 'Gennevilliers' }
-  let(:annee_date_de_naissance) { '2000' }
-  let(:code_cog_insee_departement_de_naissance) { '92' }
+  let(:annee_date_naissance) { '2000' }
+  let(:code_cog_insee_departement_naissance) { '92' }
 
   context 'with valid params' do
     it { is_expected.to be_success }
@@ -24,13 +24,13 @@ RSpec.describe INSEE::CommuneINSEECode::ValidateParams, type: :validate_params d
   end
 
   context 'with invalid annee date de naissance' do
-    let(:annee_date_de_naissance) { '2100' }
+    let(:annee_date_naissance) { '2100' }
 
     it { is_expected.to be_failure }
   end
 
   context 'with invalid departement code' do
-    let(:code_cog_insee_departement_de_naissance) { '999' }
+    let(:code_cog_insee_departement_naissance) { '999' }
 
     it { is_expected.to be_failure }
   end

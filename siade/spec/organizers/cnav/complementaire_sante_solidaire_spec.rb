@@ -9,11 +9,11 @@ RSpec.describe CNAV::ComplementaireSanteSolidaire, type: :retriever_organizer do
       {
         nom_naissance: 'CHAMPION',
         prenoms: ['JEAN-PASCAL'],
-        annee_date_de_naissance: 1980,
-        mois_date_de_naissance: 6,
-        jour_date_de_naissance: 12,
+        annee_date_naissance: 1980,
+        mois_date_naissance: 6,
+        jour_date_naissance: 12,
         sexe_etat_civil:,
-        code_pays_lieu_de_naissance: '99100',
+        code_cog_insee_pays_naissance: '99100',
         request_id:,
         recipient:
       }
@@ -29,8 +29,8 @@ RSpec.describe CNAV::ComplementaireSanteSolidaire, type: :retriever_organizer do
       let(:params) do
         common_params.merge(
           nom_commune_naissance:,
-          annee_date_de_naissance: '2000',
-          code_cog_insee_departement_de_naissance: '92'
+          annee_date_naissance: '2000',
+          code_cog_insee_departement_naissance: '92'
         )
       end
 
@@ -68,7 +68,7 @@ RSpec.describe CNAV::ComplementaireSanteSolidaire, type: :retriever_organizer do
     context 'when it is with code insee lieu de naissance' do
       let(:params) do
         common_params.merge(
-          code_cog_insee_commune_de_naissance: '17300'
+          code_cog_insee_commune_naissance: '17300'
         )
       end
 
@@ -105,11 +105,11 @@ RSpec.describe CNAV::ComplementaireSanteSolidaire, type: :retriever_organizer do
         nom_usage: 'MARTIN',
         nom_naissance: 'DUPONT',
         prenoms: ['Jean Martin'],
-        annee_date_de_naissance: 2000,
-        mois_date_de_naissance: 1,
-        jour_date_de_naissance: 1,
-        code_cog_insee_commune_de_naissance: '75101',
-        code_pays_lieu_de_naissance: '99100',
+        annee_date_naissance: 2000,
+        mois_date_naissance: 1,
+        jour_date_naissance: 1,
+        code_cog_insee_commune_naissance: '75101',
+        code_cog_insee_pays_naissance: '99100',
         sexe_etat_civil: 'M',
         request_id:,
         recipient:

@@ -10,9 +10,9 @@ RSpec.describe MEN::Scolarites::MakeRequest, type: :make_request do
           nom_naissance: 'NOMFAMILLE',
           prenoms: ['prenom'],
           sexe_etat_civil: 'f',
-          jour_date_de_naissance: '10',
-          mois_date_de_naissance: '06',
-          annee_date_de_naissance: '2000',
+          jour_date_naissance: '10',
+          mois_date_naissance: '06',
+          annee_date_naissance: '2000',
           code_etablissement: '0511474A',
           annee_scolaire: '2021'
         }
@@ -29,9 +29,9 @@ RSpec.describe MEN::Scolarites::MakeRequest, type: :make_request do
           nom_naissance: 'NOMFAMILLE',
           prenoms: ['prenom'],
           sexe_etat_civil: 'F',
-          jour_date_de_naissance: '10',
-          mois_date_de_naissance: '06',
-          annee_date_de_naissance: '2000',
+          jour_date_naissance: '10',
+          mois_date_naissance: '06',
+          annee_date_naissance: '2000',
           code_etablissement: '0511474A',
           annee_scolaire: '2021'
         }

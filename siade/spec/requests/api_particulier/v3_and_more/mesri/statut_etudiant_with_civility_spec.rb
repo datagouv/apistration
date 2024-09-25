@@ -11,32 +11,32 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with Civility', api: :pa
         params: %w[
           nomNaissance
           prenoms
-          anneeDateDeNaissance
-          moisDateDeNaissance
-          jourDateDeNaissance
-          codeCogInseeCommuneDeNaissance
+          anneeDateNaissance
+          moisDateNaissance
+          jourDateNaissance
+          codeCogInseeCommuneNaissance
           sexeEtatCivil
           nomCommuneNaissance
-          codeCogInseeDepartementDeNaissance
+          codeCogInseeDepartementNaissance
         ],
         required: %w[
           nomNaissance
           prenoms
-          anneeDateDeNaissance
-          moisDateDeNaissance
-          jourDateDeNaissance
+          anneeDateNaissance
+          moisDateNaissance
+          jourDateNaissance
           sexeEtatCivil
         ]
       )
 
       let(:nomNaissance) { 'Dupont' }
       let(:'prenoms[]') { %w[Jean] }
-      let(:anneeDateDeNaissance) { '2000' }
-      let(:moisDateDeNaissance) { '01' }
-      let(:jourDateDeNaissance) { '01' }
-      let(:codeCogInseeCommuneDeNaissance) { '75113' }
+      let(:anneeDateNaissance) { '2000' }
+      let(:moisDateNaissance) { '01' }
+      let(:jourDateNaissance) { '01' }
+      let(:codeCogInseeCommuneNaissance) { '75113' }
       let(:sexeEtatCivil) { 'm' }
-      let(:codeCogInseeDepartementDeNaissance) { nil }
+      let(:codeCogInseeDepartementNaissance) { nil }
       let(:nomCommuneNaissance) { nil }
 
       unauthorized_request

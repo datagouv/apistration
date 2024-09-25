@@ -14,32 +14,32 @@ RSpec.describe 'API Particulier CNAV: complementaire sante solidaire with civili
           nomUsage
           nomNaissance
           prenoms
-          anneeDateDeNaissance
-          moisDateDeNaissance
-          jourDateDeNaissance
-          codeCogInseeCommuneDeNaissance
-          codePaysLieuDeNaissance
+          anneeDateNaissance
+          moisDateNaissance
+          jourDateNaissance
+          codeCogInseeCommuneNaissance
+          codeCogInseePaysNaissance
           sexeEtatCivil
           nomCommuneNaissance
-          codeCogInseeDepartementDeNaissance
+          codeCogInseeDepartementNaissance
         ],
         required: %w[
           nomNaissance
           prenoms
           sexeEtatCivil
-          codePaysLieuDeNaissance
+          codeCogInseePaysNaissance
         ]
       )
 
       let(:nomNaissance) { 'CHAMPION' }
       let(:'prenoms[]') { %w[JEAN-PASCAL] }
       let(:sexeEtatCivil) { 'M' }
-      let(:anneeDateDeNaissance) { 1980 }
-      let(:moisDateDeNaissance) { 6 }
-      let(:jourDateDeNaissance) { 12 }
-      let(:codePaysLieuDeNaissance) { '99100' }
-      let(:codeCogInseeCommuneDeNaissance) { '17300' }
-      let(:codeCogInseeDepartementDeNaissance) { nil }
+      let(:anneeDateNaissance) { 1980 }
+      let(:moisDateNaissance) { 6 }
+      let(:jourDateNaissance) { 12 }
+      let(:codeCogInseePaysNaissance) { '99100' }
+      let(:codeCogInseeCommuneNaissance) { '17300' }
+      let(:codeCogInseeDepartementNaissance) { nil }
       let(:nomCommuneNaissance) { nil }
 
       unauthorized_request
@@ -79,7 +79,7 @@ RSpec.describe 'API Particulier CNAV: complementaire sante solidaire with civili
               stub_cnav_404('complementaire_sante_solidaire')
             end
 
-            let(:codePaysLieuDeNaissance) { '99623' }
+            let(:codePaysLieuNaissance) { '99623' }
 
             schema '$ref' => '#/components/schemas/Error'
 

@@ -1,35 +1,35 @@
-RSpec.describe Civility::ValidateDateDeNaissance, type: :validate_param_interactor do
+RSpec.describe Civility::ValidateDateNaissance, type: :validate_param_interactor do
   subject do
     described_class.call(params: {
-      annee_date_de_naissance:,
-      mois_date_de_naissance:,
-      jour_date_de_naissance:
+      annee_date_naissance:,
+      mois_date_naissance:,
+      jour_date_naissance:
     })
   end
 
-  let(:annee_date_de_naissance) { 1980 }
-  let(:mois_date_de_naissance) { 8 }
-  let(:jour_date_de_naissance) { 16 }
+  let(:annee_date_naissance) { 1980 }
+  let(:mois_date_naissance) { 8 }
+  let(:jour_date_naissance) { 16 }
 
   context 'when at least one attribute are missing' do
-    context 'when annee_date_de_naissance is missing' do
-      let(:annee_date_de_naissance) { nil }
+    context 'when annee_date_naissance is missing' do
+      let(:annee_date_naissance) { nil }
 
       it { is_expected.to be_a_failure }
 
       its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
     end
 
-    context 'when mois_date_de_naissance is missing' do
-      let(:mois_date_de_naissance) { nil }
+    context 'when mois_date_naissance is missing' do
+      let(:mois_date_naissance) { nil }
 
       it { is_expected.to be_a_failure }
 
       its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
     end
 
-    context 'when jour_date_de_naissance is missing' do
-      let(:jour_date_de_naissance) { nil }
+    context 'when jour_date_naissance is missing' do
+      let(:jour_date_naissance) { nil }
 
       it { is_expected.to be_a_failure }
 
@@ -45,24 +45,24 @@ RSpec.describe Civility::ValidateDateDeNaissance, type: :validate_param_interact
     end
 
     context 'when one attribute is not valid' do
-      context 'when annee_date_de_naissance is not valid' do
-        let(:annee_date_de_naissance) { -1980 }
+      context 'when annee_date_naissance is not valid' do
+        let(:annee_date_naissance) { -1980 }
 
         it { is_expected.to be_a_failure }
 
         its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
       end
 
-      context 'when mois_date_de_naissance is not valid' do
-        let(:mois_date_de_naissance) { 13 }
+      context 'when mois_date_naissance is not valid' do
+        let(:mois_date_naissance) { 13 }
 
         it { is_expected.to be_a_failure }
 
         its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
       end
 
-      context 'when jour_date_de_naissance is not valid' do
-        let(:jour_date_de_naissance) { 32 }
+      context 'when jour_date_naissance is not valid' do
+        let(:jour_date_naissance) { 32 }
 
         it { is_expected.to be_a_failure }
 

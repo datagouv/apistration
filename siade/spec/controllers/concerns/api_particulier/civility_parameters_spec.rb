@@ -2,7 +2,7 @@ RSpec.describe APIParticulier::CivilityParameters do
   subject do
     routes.draw { get 'show' => 'api_particulier/v3_and_more/base#index' }
 
-    get :index, params: { nomNaissance:, codeCogInseeCommuneDeNaissance:, codeCogInseeDepartementDeNaissance:, anneeDateDeNaissance:, nomCommuneNaissance:, token: yes_jwt, api_version: 42 }.merge(api_particulier_mandatory_params)
+    get :index, params: { nomNaissance:, codeCogInseeCommuneNaissance:, codeCogInseeDepartementNaissance:, anneeDateNaissance:, nomCommuneNaissance:, token: yes_jwt, api_version: 42 }.merge(api_particulier_mandatory_params)
   end
 
   before(:all) do
@@ -38,9 +38,9 @@ RSpec.describe APIParticulier::CivilityParameters do
 
   # rubocop:disable RSpec/VariableName
   let(:nomNaissance) { 'Doe' }
-  let(:codeCogInseeCommuneDeNaissance) { '12345' }
-  let(:codeCogInseeDepartementDeNaissance) { nil }
-  let(:anneeDateDeNaissance) { 1988 }
+  let(:codeCogInseeCommuneNaissance) { '12345' }
+  let(:codeCogInseeDepartementNaissance) { nil }
+  let(:anneeDateNaissance) { 1988 }
   let(:nomCommuneNaissance) { nil }
 
   describe 'GET #index' do
@@ -52,7 +52,7 @@ RSpec.describe APIParticulier::CivilityParameters do
 
     context 'with missing parameters' do
       let(:nomNaissance) { nil }
-      let(:codeCogInseeCommuneDeNaissance) { nil }
+      let(:codeCogInseeCommuneNaissance) { nil }
 
       it 'returns 200' do
         expect(subject).to have_http_status(:ok)

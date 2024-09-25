@@ -53,10 +53,10 @@ class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulier::
     {
       nom_naissance: params[:nom],
       prenoms: (params[:prenoms] || '').split,
-      annee_date_de_naissance: params[:dateDeNaissance].split('-').first,
-      mois_date_de_naissance: params[:dateDeNaissance].split('-').second,
-      jour_date_de_naissance: params[:dateDeNaissance].split('-').third,
-      code_cog_insee_commune_de_naissance: params[:lieuDeNaissance],
+      annee_date_naissance: params[:dateDeNaissance].split('-').first,
+      mois_date_naissance: params[:dateDeNaissance].split('-').second,
+      jour_date_naissance: params[:dateDeNaissance].split('-').third,
+      code_cog_insee_commune_naissance: params[:lieuDeNaissance],
       sexe_etat_civil: params[:sexe]
     }
   end
@@ -65,10 +65,10 @@ class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulier::
     {
       nom_naissance: france_connect_service_user_identity.family_name,
       prenoms: france_connect_service_user_identity.given_name.split,
-      annee_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').first,
-      mois_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').second,
-      jour_date_de_naissance: france_connect_service_user_identity.birthdate.split('-').third,
-      code_cog_insee_commune_de_naissance: france_connect_service_user_identity.birthplace,
+      annee_date_naissance: france_connect_service_user_identity.birthdate.split('-').first,
+      mois_date_naissance: france_connect_service_user_identity.birthdate.split('-').second,
+      jour_date_naissance: france_connect_service_user_identity.birthdate.split('-').third,
+      code_cog_insee_commune_naissance: france_connect_service_user_identity.birthplace,
       sexe_etat_civil: france_connect_service_user_identity.gender == 'male' ? 'M' : 'F',
       france_connect: true
     }

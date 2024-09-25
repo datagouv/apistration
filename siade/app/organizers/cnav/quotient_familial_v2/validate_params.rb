@@ -3,9 +3,9 @@ class CNAV::QuotientFamilialV2::ValidateParams < ValidateParamsOrganizer
     CNAV::QuotientFamilialV2::ValidateYear,
     CNAV::QuotientFamilialV2::ValidateMonth,
     Civility::ValidateSexeEtatCivil,
-    CNAV::ValidateCodeCogINSEECommuneDeNaissanceOrTranscogageParams,
-    CNAV::ValidateCodePaysLieuDeNaissance,
-    CNAV::ValidateDateDeNaissance,
+    CNAV::ValidateCodeCogINSEECommuneNaissanceOrTranscogageParams,
+    CNAV::ValidateCodeCogINSEEPaysNaissance,
+    CNAV::ValidateDateNaissance,
     CNAV::ValidateRequestId,
     CNAV::ValidatePrenoms,
     Civility::ValidateNomNaissance

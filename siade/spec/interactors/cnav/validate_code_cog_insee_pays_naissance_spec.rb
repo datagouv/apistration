@@ -1,8 +1,8 @@
-RSpec.describe CNAV::ValidateCodePaysLieuDeNaissance, type: :validate_param_interactor do
-  subject { described_class.call(params: { code_pays_lieu_de_naissance: }) }
+RSpec.describe CNAV::ValidateCodeCogINSEEPaysNaissance, type: :validate_param_interactor do
+  subject { described_class.call(params: { code_cog_insee_pays_naissance: }) }
 
   context 'when attribute is missing' do
-    let(:code_pays_lieu_de_naissance) { nil }
+    let(:code_cog_insee_pays_naissance) { nil }
 
     it { is_expected.to be_a_failure }
 
@@ -11,7 +11,7 @@ RSpec.describe CNAV::ValidateCodePaysLieuDeNaissance, type: :validate_param_inte
 
   context 'when attribute is present' do
     context 'when it is 5 valid digits' do
-      let(:code_pays_lieu_de_naissance) { '99345' }
+      let(:code_cog_insee_pays_naissance) { '99345' }
 
       it { is_expected.to be_a_success }
 
@@ -19,7 +19,7 @@ RSpec.describe CNAV::ValidateCodePaysLieuDeNaissance, type: :validate_param_inte
     end
 
     context 'when it is 5 invalid digits' do
-      let(:code_pays_lieu_de_naissance) { '12345' }
+      let(:code_cog_insee_pays_naissance) { '12345' }
 
       it { is_expected.to be_a_failure }
 
@@ -27,7 +27,7 @@ RSpec.describe CNAV::ValidateCodePaysLieuDeNaissance, type: :validate_param_inte
     end
 
     context 'when it is 6 digits' do
-      let(:code_pays_lieu_de_naissance) { '123456' }
+      let(:code_cog_insee_pays_naissance) { '123456' }
 
       it { is_expected.to be_a_failure }
 
@@ -35,7 +35,7 @@ RSpec.describe CNAV::ValidateCodePaysLieuDeNaissance, type: :validate_param_inte
     end
 
     context 'when it is 4 digits' do
-      let(:code_pays_lieu_de_naissance) { '1234' }
+      let(:code_cog_insee_pays_naissance) { '1234' }
 
       it { is_expected.to be_a_failure }
 
@@ -43,7 +43,7 @@ RSpec.describe CNAV::ValidateCodePaysLieuDeNaissance, type: :validate_param_inte
     end
 
     context 'when it is 5 chars non digits' do
-      let(:code_pays_lieu_de_naissance) { '9953A' }
+      let(:code_cog_insee_pays_naissance) { '9953A' }
 
       it { is_expected.to be_a_failure }
 

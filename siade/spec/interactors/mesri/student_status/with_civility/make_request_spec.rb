@@ -3,9 +3,9 @@ RSpec.describe MESRI::StudentStatus::WithCivility::MakeRequest, type: :make_requ
 
   let(:nom_naissance) { 'Dupont' }
   let(:prenoms) { ['Jean'] }
-  let(:annee_date_de_naissance) { 2000 }
-  let(:mois_date_de_naissance) { 1 }
-  let(:jour_date_de_naissance) { 1 }
+  let(:annee_date_naissance) { 2000 }
+  let(:mois_date_naissance) { 1 }
+  let(:jour_date_naissance) { 1 }
   let(:sexe_etat_civil) { 'M' }
   let(:token_id) { SecureRandom.uuid }
 
@@ -14,16 +14,16 @@ RSpec.describe MESRI::StudentStatus::WithCivility::MakeRequest, type: :make_requ
       {
         nom_naissance:,
         prenoms:,
-        annee_date_de_naissance:,
-        mois_date_de_naissance:,
-        jour_date_de_naissance:,
-        code_cog_insee_commune_de_naissance:,
+        annee_date_naissance:,
+        mois_date_naissance:,
+        jour_date_naissance:,
+        code_cog_insee_commune_naissance:,
         sexe_etat_civil:,
         token_id:
       }
     end
 
-    let(:code_cog_insee_commune_de_naissance) { '' }
+    let(:code_cog_insee_commune_naissance) { '' }
 
     let!(:stubbed_request) do
       stub_request(:post, Siade.credentials[:mesri_student_status_url]).with(
@@ -47,7 +47,7 @@ RSpec.describe MESRI::StudentStatus::WithCivility::MakeRequest, type: :make_requ
 
     its(:response) { is_expected.to be_a(Net::HTTPOK) }
 
-    it 'calls url with valid params, by removing empty code_cog_insee_commune_de_naissance place and headers' do
+    it 'calls url with valid params, by removing empty code_cog_insee_commune_naissance place and headers' do
       make_call
 
       expect(stubbed_request).to have_been_requested
@@ -59,9 +59,9 @@ RSpec.describe MESRI::StudentStatus::WithCivility::MakeRequest, type: :make_requ
       {
         nom_naissance:,
         prenoms:,
-        annee_date_de_naissance:,
-        mois_date_de_naissance:,
-        jour_date_de_naissance:,
+        annee_date_naissance:,
+        mois_date_naissance:,
+        jour_date_naissance:,
         sexe_etat_civil:,
         token_id:
       }

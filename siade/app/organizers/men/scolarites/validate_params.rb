@@ -1,7 +1,7 @@
 class MEN::Scolarites::ValidateParams < ValidateParamsOrganizer
   organize Civility::ValidateNomNaissance,
     Civility::ValidatePrenoms,
-    Civility::ValidateDateDeNaissance,
+    Civility::ValidateDateNaissance,
     Civility::ValidateSexeEtatCivil,
     MEN::Scolarites::ValidateCodeEtablissement,
     MEN::Scolarites::ValidateAnneeScolaire

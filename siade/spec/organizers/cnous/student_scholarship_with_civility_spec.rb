@@ -6,10 +6,10 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility, type: :retriever_organizer
       {
         nom_naissance:,
         prenoms:,
-        annee_date_de_naissance:,
-        mois_date_de_naissance:,
-        jour_date_de_naissance:,
-        code_cog_commune_de_naissance:,
+        annee_date_naissance:,
+        mois_date_naissance:,
+        jour_date_naissance:,
+        code_cog_commune_naissance:,
         sexe_etat_civil:
       }
     end
@@ -17,10 +17,10 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility, type: :retriever_organizer
     let(:nom_naissance) { 'Dupont' }
     let(:prenoms) { %w[Jean Charlie] }
     let(:birth_date) { '2000-01-01' }
-    let(:annee_date_de_naissance) { 2000 }
-    let(:mois_date_de_naissance) { 1 }
-    let(:jour_date_de_naissance) { 1 }
-    let(:code_cog_commune_de_naissance) { 'Paris' }
+    let(:annee_date_naissance) { 2000 }
+    let(:mois_date_naissance) { 1 }
+    let(:jour_date_naissance) { 1 }
+    let(:code_cog_commune_naissance) { 'Paris' }
     let(:sexe_etat_civil) { 'M' }
 
     describe 'happy path' do

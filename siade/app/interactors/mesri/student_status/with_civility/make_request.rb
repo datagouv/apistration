@@ -15,8 +15,8 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
     {
       given_name: prenom,
       family_name: nom_naissance,
-      birthdate: date_de_naissance,
-      birthplace: code_cog_insee_commune_de_naissance,
+      birthdate: date_naissance,
+      birthplace: code_cog_insee_commune_naissance,
       gender: gender.downcase == 'm' ? 'male' : 'female'
     }
   end
@@ -25,8 +25,8 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
     {
       nom: nom_naissance,
       prenom:,
-      dateDeNaissance: date_de_naissance,
-      lieuDeNaissance: code_cog_insee_commune_de_naissance,
+      dateDeNaissance: date_naissance,
+      lieuDeNaissance: code_cog_insee_commune_naissance,
       sexe: sexe_etat_civil
     }
   end
@@ -35,9 +35,9 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
     {
       nomFamille: nom_naissance,
       prenom1: prenom,
-      dateNaissance: date_de_naissance,
+      dateNaissance: date_naissance,
       sexe: sexe_etat_civil.downcase == 'm' ? '1' : '2',
-      lieuNaissance: code_cog_insee_commune_de_naissance.presence
+      lieuNaissance: code_cog_insee_commune_naissance.presence
     }.compact
   end
 
@@ -55,16 +55,16 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
     context.params[:prenoms].first
   end
 
-  def date_de_naissance
-    Civility::FormatDateDeNaissance.new(
-      context.params[:annee_date_de_naissance],
-      context.params[:mois_date_de_naissance],
-      context.params[:jour_date_de_naissance]
+  def date_naissance
+    Civility::FormatDateNaissance.new(
+      context.params[:annee_date_naissance],
+      context.params[:mois_date_naissance],
+      context.params[:jour_date_naissance]
     ).format
   end
 
-  def code_cog_insee_commune_de_naissance
-    context.params[:code_cog_insee_commune_de_naissance]
+  def code_cog_insee_commune_naissance
+    context.params[:code_cog_insee_commune_naissance]
   end
 
   def sexe_etat_civil

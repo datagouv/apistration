@@ -11,29 +11,29 @@ RSpec.describe 'API Particulier: CNOUS: Etudiant Boursier with Civility', api: :
         params: %w[
           nomNaissance
           prenoms
-          anneeDateDeNaissance
-          moisDateDeNaissance
-          jourDateDeNaissance
-          codeCogInseeCommuneDeNaissance
+          anneeDateNaissance
+          moisDateNaissance
+          jourDateNaissance
+          codeCogInseeCommuneNaissance
           sexeEtatCivil
           nomCommuneNaissance
-          codeCogInseeDepartementDeNaissance
+          codeCogInseeDepartementNaissance
         ],
         required: %w[
           nomNaissance
           prenoms
-          anneeDateDeNaissance
-          moisDateDeNaissance
-          jourDateDeNaissance
+          anneeDateNaissance
+          moisDateNaissance
+          jourDateNaissance
         ]
       )
 
       let(:nomNaissance) { 'Dupont' }
       let(:'prenoms[]') { %w[Jean Charlie] }
-      let(:anneeDateDeNaissance) { 2000 }
-      let(:moisDateDeNaissance) { 1 }
-      let(:jourDateDeNaissance) { 1 }
-      let(:codeCogInseeCommuneDeNaissance) { 'Paris' }
+      let(:anneeDateNaissance) { 2000 }
+      let(:moisDateNaissance) { 1 }
+      let(:jourDateNaissance) { 1 }
+      let(:codeCogInseeCommuneNaissance) { 'Paris' }
       let(:sexeEtatCivil) { 'M' }
 
       before do

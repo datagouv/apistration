@@ -1,7 +1,7 @@
 class MESRI::StudentStatus::WithCivility::ValidateParams < ValidateParamsOrganizer
   organize Civility::ValidateNomNaissance,
     Civility::ValidatePrenoms,
-    Civility::ValidateDateDeNaissance,
+    Civility::ValidateDateNaissance,
     Civility::ValidateSexeEtatCivil,
     ServiceUser::ValidateTokenId
 end

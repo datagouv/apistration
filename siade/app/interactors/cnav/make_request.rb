@@ -14,8 +14,8 @@ class CNAV::MakeRequest < MakeRequest::Get
       anneeDateDeNaissance: int_or_nil(date_naissance.split('-').first.to_i),
       moisDateDeNaissance: int_or_nil(date_naissance.split('-').second.to_i),
       jourDateDeNaissance: int_or_nil(date_naissance.split('-').last.to_i),
-      codeInseeLieuDeNaissance: context.params[:code_cog_insee_commune_de_naissance],
-      codePaysLieuDeNaissance: context.params[:code_pays_lieu_de_naissance],
+      codeInseeLieuDeNaissance: context.params[:code_cog_insee_commune_naissance],
+      codePaysLieuDeNaissance: context.params[:code_cog_insee_pays_naissance],
       sexe: context.params[:sexe_etat_civil]
     }.compact
   end
@@ -35,8 +35,8 @@ class CNAV::MakeRequest < MakeRequest::Get
       nomNaissance: context.params[:nom_naissance],
       listePrenoms: liste_prenoms,
       dateNaissance: date_naissance,
-      codeLieuNaissance: context.params[:code_cog_insee_commune_de_naissance],
-      codePaysNaissance: context.params[:code_pays_lieu_de_naissance],
+      codeLieuNaissance: context.params[:code_cog_insee_commune_naissance],
+      codePaysNaissance: context.params[:code_cog_insee_pays_naissance],
       genre: context.params[:sexe_etat_civil].upcase
     }.compact
   end
@@ -53,10 +53,10 @@ class CNAV::MakeRequest < MakeRequest::Get
   end
 
   def date_naissance
-    Civility::FormatDateDeNaissance.new(
-      context.params[:annee_date_de_naissance],
-      context.params[:mois_date_de_naissance],
-      context.params[:jour_date_de_naissance]
+    Civility::FormatDateNaissance.new(
+      context.params[:annee_date_naissance],
+      context.params[:mois_date_naissance],
+      context.params[:jour_date_naissance]
     ).format
   end
 

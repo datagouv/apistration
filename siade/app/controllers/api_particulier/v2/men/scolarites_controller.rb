@@ -17,9 +17,9 @@ class APIParticulier::V2::MEN::ScolaritesController < APIParticulier::V2::BaseCo
     {
       nom_naissance: params[:nom],
       prenoms: [params[:prenom]],
-      annee_date_de_naissance: params[:dateNaissance].split('-').first,
-      mois_date_de_naissance: params[:dateNaissance].split('-').second,
-      jour_date_de_naissance: params[:dateNaissance].split('-').third,
+      annee_date_naissance: params[:dateNaissance].split('-').first,
+      mois_date_naissance: params[:dateNaissance].split('-').second,
+      jour_date_naissance: params[:dateNaissance].split('-').third,
       sexe_etat_civil: params[:sexe],
       code_etablissement: params[:codeEtablissement],
       annee_scolaire: params[:anneeScolaire]

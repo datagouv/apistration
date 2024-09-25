@@ -1,4 +1,4 @@
-class Civility::FormatDateDeNaissance < ApplicationFormatter
+class Civility::FormatDateNaissance < ApplicationFormatter
   def initialize(year, month, day)
     @year = year.to_i
     @month = month.to_i

@@ -5,20 +5,20 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
     {
       nom_naissance:,
       prenoms:,
-      annee_date_de_naissance:,
-      mois_date_de_naissance:,
-      jour_date_de_naissance:,
-      code_cog_insee_commune_de_naissance:,
+      annee_date_naissance:,
+      mois_date_naissance:,
+      jour_date_naissance:,
+      code_cog_insee_commune_naissance:,
       sexe_etat_civil:
     }
   end
 
   let(:nom_naissance) { 'Dupont' }
   let(:prenoms) { %w[Jean Charlie] }
-  let(:annee_date_de_naissance) { 2000 }
-  let(:mois_date_de_naissance) { 1 }
-  let(:jour_date_de_naissance) { 2 }
-  let(:code_cog_insee_commune_de_naissance) { 'Angers' }
+  let(:annee_date_naissance) { 2000 }
+  let(:mois_date_naissance) { 1 }
+  let(:jour_date_naissance) { 2 }
+  let(:code_cog_insee_commune_naissance) { 'Angers' }
   let(:sexe_etat_civil) { 'm' }
 
   let(:token) { 'dummy_oauth_token' }
@@ -54,7 +54,7 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
   end
 
   context 'without code cog insee commune de naissance' do
-    let(:code_cog_insee_commune_de_naissance) { nil }
+    let(:code_cog_insee_commune_naissance) { nil }
 
     before do
       stub_request(:post, /#{Siade.credentials[:cnous_student_scholarship_civility_url]}/).with(

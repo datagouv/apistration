@@ -1,4 +1,4 @@
-RSpec.describe Civility::FormatDateDeNaissance do
+RSpec.describe Civility::FormatDateNaissance do
   subject { described_class.new(year, month, day).format }
 
   describe '#format' do

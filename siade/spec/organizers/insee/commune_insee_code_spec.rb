@@ -4,14 +4,14 @@ RSpec.describe INSEE::CommuneINSEECode, type: :retriever_organizer do
   let(:params) do
     {
       nom_commune_naissance:,
-      annee_date_de_naissance:,
-      code_cog_insee_departement_de_naissance:
+      annee_date_naissance:,
+      code_cog_insee_departement_naissance:
     }
   end
 
   let(:nom_commune_naissance) { 'Gennevilliers' }
-  let(:annee_date_de_naissance) { '2000' }
-  let(:code_cog_insee_departement_de_naissance) { '92' }
+  let(:annee_date_naissance) { '2000' }
+  let(:code_cog_insee_departement_naissance) { '92' }
 
   describe 'with valid attributes', vcr: { cassette_name: 'insee/metadonnees/one_result' } do
     it { is_expected.to be_a_success }
@@ -25,7 +25,7 @@ RSpec.describe INSEE::CommuneINSEECode, type: :retriever_organizer do
   end
 
   describe 'with an invalid params' do
-    let(:annee_date_de_naissance) { 'invalid' }
+    let(:annee_date_naissance) { 'invalid' }
 
     it { is_expected.to be_a_failure }
 

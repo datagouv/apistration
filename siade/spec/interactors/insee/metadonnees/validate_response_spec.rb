@@ -8,11 +8,11 @@ RSpec.describe INSEE::Metadonnees::ValidateResponse, type: :validate_response do
     let(:params) do
       {
         nom_commune_naissance:,
-        annee_date_de_naissance:
+        annee_date_naissance:
       }
     end
 
-    let(:annee_date_de_naissance) { '2000' }
+    let(:annee_date_naissance) { '2000' }
 
     context 'with a response which has 1 result', vcr: { cassette_name: 'insee/metadonnees/one_result' } do
       let(:nom_commune_naissance) { 'Gennevilliers' }

@@ -28,7 +28,7 @@ class INSEE::CommuneINSEECode::BuildResource < BuildResource
   end
 
   def find_commune_with_departement_code!
-    valid_commune = communes.detect { |commune| commune['code'].start_with?(code_cog_insee_departement_de_naissance) }
+    valid_commune = communes.detect { |commune| commune['code'].start_with?(code_cog_insee_departement_naissance) }
 
     resource_not_found! if valid_commune.blank?
 
@@ -40,7 +40,7 @@ class INSEE::CommuneINSEECode::BuildResource < BuildResource
     context.fail!
   end
 
-  def code_cog_insee_departement_de_naissance
-    context.params[:code_cog_insee_departement_de_naissance]
+  def code_cog_insee_departement_naissance
+    context.params[:code_cog_insee_departement_naissance]
   end
 end

@@ -10,7 +10,7 @@ class INSEE::Metadonnees::MakeRequest < INSEE::MakeRequest
 
   def request_params
     {
-      date: "#{annee_date_de_naissance}-01-01",
+      date: "#{annee_date_naissance}-01-01",
       filtreNom: nom_commune_naissance,
       com: false
     }
@@ -18,8 +18,8 @@ class INSEE::Metadonnees::MakeRequest < INSEE::MakeRequest
 
   private
 
-  def annee_date_de_naissance
-    context.params[:annee_date_de_naissance]
+  def annee_date_naissance
+    context.params[:annee_date_naissance]
   end
 
   def nom_commune_naissance

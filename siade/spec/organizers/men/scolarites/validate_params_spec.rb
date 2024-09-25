@@ -6,9 +6,9 @@ RSpec.describe MEN::Scolarites::ValidateParams, type: :validate_params do
       nom_naissance:,
       prenoms:,
       sexe_etat_civil:,
-      annee_date_de_naissance:,
-      mois_date_de_naissance:,
-      jour_date_de_naissance:,
+      annee_date_naissance:,
+      mois_date_naissance:,
+      jour_date_naissance:,
       code_etablissement:,
       annee_scolaire:
     }
@@ -17,9 +17,9 @@ RSpec.describe MEN::Scolarites::ValidateParams, type: :validate_params do
   let(:nom_naissance) { 'Dupont' }
   let(:prenoms) { ['Jean'] }
   let(:sexe_etat_civil) { 'm' }
-  let(:annee_date_de_naissance) { '2000' }
-  let(:mois_date_de_naissance) { '01' }
-  let(:jour_date_de_naissance) { '01' }
+  let(:annee_date_naissance) { '2000' }
+  let(:mois_date_naissance) { '01' }
+  let(:jour_date_naissance) { '01' }
   let(:code_etablissement) { '1234567w' }
   let(:annee_scolaire) { '2022' }
 
@@ -67,8 +67,8 @@ RSpec.describe MEN::Scolarites::ValidateParams, type: :validate_params do
     its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
   end
 
-  context 'with invalid jour_date_de_naissance' do
-    let(:jour_date_de_naissance) { 'lol' }
+  context 'with invalid jour_date_naissance' do
+    let(:jour_date_naissance) { 'lol' }
 
     it { is_expected.to be_a_failure }
 

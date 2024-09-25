@@ -31,56 +31,56 @@ module RSwagParametersAPIParticulier
       required:
   end
 
-  def parameters_cnav_identite_pivot_annee_date_de_naissance(required)
-    parameter name: :anneeDateDeNaissance,
+  def parameters_cnav_identite_pivot_annee_date_naissance(required)
+    parameter name: :anneeDateNaissance,
       in: :query,
-      type: SwaggerData.get('parameters.civility.anneeDateDeNaissance.type'),
-      description: SwaggerData.get('parameters.civility.anneeDateDeNaissance.description'),
-      example: SwaggerData.get('parameters.civility.anneeDateDeNaissance.example'),
+      type: SwaggerData.get('parameters.civility.anneeDateNaissance.type'),
+      description: SwaggerData.get('parameters.civility.anneeDateNaissance.description'),
+      example: SwaggerData.get('parameters.civility.anneeDateNaissance.example'),
       required:
   end
 
-  def parameters_cnav_identite_pivot_mois_date_de_naissance(required)
-    parameter name: :moisDateDeNaissance,
+  def parameters_cnav_identite_pivot_mois_date_naissance(required)
+    parameter name: :moisDateNaissance,
       in: :query,
-      type: SwaggerData.get('parameters.civility.moisDateDeNaissance.type'),
-      description: SwaggerData.get('parameters.civility.moisDateDeNaissance.description'),
-      example: SwaggerData.get('parameters.civility.moisDateDeNaissance.example'),
+      type: SwaggerData.get('parameters.civility.moisDateNaissance.type'),
+      description: SwaggerData.get('parameters.civility.moisDateNaissance.description'),
+      example: SwaggerData.get('parameters.civility.moisDateNaissance.example'),
       required:
   end
 
-  def parameters_cnav_identite_pivot_jour_date_de_naissance(required)
-    parameter name: :jourDateDeNaissance,
+  def parameters_cnav_identite_pivot_jour_date_naissance(required)
+    parameter name: :jourDateNaissance,
       in: :query,
-      type: SwaggerData.get('parameters.civility.jourDateDeNaissance.type'),
-      description: SwaggerData.get('parameters.civility.jourDateDeNaissance.description'),
-      example: SwaggerData.get('parameters.civility.jourDateDeNaissance.example'),
+      type: SwaggerData.get('parameters.civility.jourDateNaissance.type'),
+      description: SwaggerData.get('parameters.civility.jourDateNaissance.description'),
+      example: SwaggerData.get('parameters.civility.jourDateNaissance.example'),
       required:
   end
 
-  def parameters_cnav_identite_pivot_code_cog_insee_commune_de_naissance(required)
-    parameter name: :codeCogInseeCommuneDeNaissance,
+  def parameters_cnav_identite_pivot_code_cog_insee_commune_naissance(required)
+    parameter name: :codeCogInseeCommuneNaissance,
       in: :query,
       schema: {
-        type: SwaggerData.get('parameters.civility.codeCogInseeCommuneDeNaissance.type'),
-        minLength: SwaggerData.get('parameters.civility.codeCogInseeCommuneDeNaissance.minLength'),
-        maxLength: SwaggerData.get('parameters.civility.codeCogInseeCommuneDeNaissance.maxLength'),
-        example: SwaggerData.get('parameters.civility.codeCogInseeCommuneDeNaissance.example')
+        type: SwaggerData.get('parameters.civility.codeCogInseeCommuneNaissance.type'),
+        minLength: SwaggerData.get('parameters.civility.codeCogInseeCommuneNaissance.minLength'),
+        maxLength: SwaggerData.get('parameters.civility.codeCogInseeCommuneNaissance.maxLength'),
+        example: SwaggerData.get('parameters.civility.codeCogInseeCommuneNaissance.example')
       },
-      description: SwaggerData.get('parameters.civility.codeCogInseeCommuneDeNaissance.description'),
+      description: SwaggerData.get('parameters.civility.codeCogInseeCommuneNaissance.description'),
       required:
   end
 
-  def parameters_cnav_identite_pivot_code_pays_lieu_de_naissance(required)
-    parameter name: :codePaysLieuDeNaissance,
+  def parameters_cnav_identite_pivot_code_cog_insee_pays_naissance(required)
+    parameter name: :codeCogInseePaysNaissance,
       in: :query,
       schema: {
-        type: SwaggerData.get('parameters.civility.codePaysLieuDeNaissance.type'),
-        minLength: SwaggerData.get('parameters.civility.codePaysLieuDeNaissance.minLength'),
-        maxLength: SwaggerData.get('parameters.civility.codePaysLieuDeNaissance.maxLength'),
-        example: SwaggerData.get('parameters.civility.codePaysLieuDeNaissance.example')
+        type: SwaggerData.get('parameters.civility.codeCogInseePaysNaissance.type'),
+        minLength: SwaggerData.get('parameters.civility.codeCogInseePaysNaissance.minLength'),
+        maxLength: SwaggerData.get('parameters.civility.codeCogInseePaysNaissance.maxLength'),
+        example: SwaggerData.get('parameters.civility.codeCogInseePaysNaissance.example')
       },
-      description: SwaggerData.get('parameters.civility.codePaysLieuDeNaissance.description'),
+      description: SwaggerData.get('parameters.civility.codeCogInseePaysNaissance.description'),
       required:
   end
 
@@ -108,16 +108,16 @@ module RSwagParametersAPIParticulier
       required:
   end
 
-  def parameters_cnav_identite_pivot_code_cog_insee_departement_de_naissance(required)
+  def parameters_cnav_identite_pivot_code_cog_insee_departement_naissance(required)
     parameter name: :codeCogInseeDepartementNaissance,
       in: :query,
       schema: {
-        type: SwaggerData.get('parameters.civility.codeCogInseeDepartementDeNaissance.type'),
-        minLength: SwaggerData.get('parameters.civility.codeCogInseeDepartementDeNaissance.minLength'),
-        maxLength: SwaggerData.get('parameters.civility.codeCogInseeDepartementDeNaissance.maxLength'),
-        example: SwaggerData.get('parameters.civility.codeCogInseeDepartementDeNaissance.example')
+        type: SwaggerData.get('parameters.civility.codeCogInseeDepartementNaissance.type'),
+        minLength: SwaggerData.get('parameters.civility.codeCogInseeDepartementNaissance.minLength'),
+        maxLength: SwaggerData.get('parameters.civility.codeCogInseeDepartementNaissance.maxLength'),
+        example: SwaggerData.get('parameters.civility.codeCogInseeDepartementNaissance.example')
       },
-      description: SwaggerData.get('parameters.civility.codeCogInseeDepartementDeNaissance.description'),
+      description: SwaggerData.get('parameters.civility.codeCogInseeDepartementNaissance.description'),
       required:
   end
 

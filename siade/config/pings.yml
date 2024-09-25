@@ -90,12 +90,12 @@ test:
           nom_naissance: 'DUPONT'
           prenoms:
             - 'JEAN'
-          annee_date_de_naissance: 2000
-          mois_date_de_naissance: 1
-          jour_date_de_naissance: 1
+          annee_date_naissance: 2000
+          mois_date_naissance: 1
+          jour_date_naissance: 1
           sexe_etat_civil: 'M'
-          code_pays_lieu_de_naissance: '99100'
-          code_cog_insee_commune_de_naissance: '17300'
+          code_cog_insee_pays_naissance: '99100'
+          code_cog_insee_commune_naissance: '17300'
           user_id: 'PING_DINUM'
           request_id: '22222222-2222-2222-2222-222222222222'
         token_interactor: 'CNAV::Authenticate'
@@ -148,9 +148,9 @@ shared:
           nom_naissance: 'Dupont'
           prenoms: ['Jean']
           sexe_etat_civil: 'f'
-          annee_date_de_naissance: 2000
-          mois_date_de_naissance: 1
-          jour_date_de_naissance: 1
+          annee_date_naissance: 2000
+          mois_date_naissance: 1
+          jour_date_naissance: 1
           code_etablissement: '0511474A'
           annee_scolaire: '<%= Date.today.year - 1 %>-<%= Date.today.year - 2 %>'
         status_to_check: 404
@@ -182,10 +182,10 @@ shared:
           prenoms:
             - 'Jean'
             - 'Jacques'
-          annee_date_de_naissance: 2000
-          mois_date_de_naissance: 1
-          jour_date_de_naissance: 1
-          code_cog_commune_de_naissance: 'Paris'
+          annee_date_naissance: 2000
+          mois_date_naissance: 1
+          jour_date_naissance: 1
+          code_cog_commune_naissance: 'Paris'
           sexe_etat_civil: 'M'
         status_to_check: 404
         token_interactor: 'CNOUS::Authenticate'
@@ -235,9 +235,9 @@ shared:
         params:
           nom_naissance: 'DUPONT'
           prenoms: ['Jean']
-          annee_date_de_naissance: 2000
-          mois_date_de_naissance: 1
-          jour_date_de_naissance: 1
+          annee_date_naissance: 2000
+          mois_date_naissance: 1
+          jour_date_naissance: 1
           sexe_etat_civil: 'M'
           token_id: '22222222-2222-2222-2222-222222222222'
         status_to_check: 404
@@ -256,12 +256,12 @@ shared:
           nom_naissance: 'DUPONT'
           prenoms:
             - 'JEAN'
-          annee_date_de_naissance: 2000
-          mois_date_de_naissance: 1
-          jour_date_de_naissance: 1
+          annee_date_naissance: 2000
+          mois_date_naissance: 1
+          jour_date_naissance: 1
           sexe_etat_civil: 'M'
-          code_pays_lieu_de_naissance: '99100'
-          code_cog_insee_commune_de_naissance: '17300'
+          code_cog_insee_pays_naissance: '99100'
+          code_cog_insee_commune_naissance: '17300'
           user_id: 'PING_DINUM'
           request_id: '22222222-2222-2222-2222-222222222222'
         status_to_check: 404
@@ -397,7 +397,7 @@ shared:
         params:
           id: 'W131015526'
 
-    banque_de_france/bilans:
+    banque_france/bilans:
       kind: 'retriever'
       cache: <%= 10.minutes %>
       provider: 'Banque de France'

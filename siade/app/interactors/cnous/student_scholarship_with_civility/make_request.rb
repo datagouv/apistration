@@ -8,7 +8,7 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
       lastName: nom_naissance,
       firstNames: prenoms,
       birthDate: date_naissance,
-      birthPlace: code_cog_insee_commune_de_naissance,
+      birthPlace: code_cog_insee_commune_naissance,
       civility: gender
     }.compact
   end
@@ -27,8 +27,8 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
     context.params[:prenoms].join(', ')
   end
 
-  def code_cog_insee_commune_de_naissance
-    context.params[:code_cog_insee_commune_de_naissance]
+  def code_cog_insee_commune_naissance
+    context.params[:code_cog_insee_commune_naissance]
   end
 
   def gender
@@ -40,14 +40,14 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
   end
 
   def year
-    context.params[:annee_date_de_naissance]
+    context.params[:annee_date_naissance]
   end
 
   def month
-    context.params[:mois_date_de_naissance]
+    context.params[:mois_date_naissance]
   end
 
   def day
-    context.params[:jour_date_de_naissance]
+    context.params[:jour_date_naissance]
   end
 end
