@@ -14,8 +14,8 @@ RSpec.describe 'API Particulier: CNOUS: Etudiant Boursier with Civility', api: :
           anneeDateNaissance
           moisDateNaissance
           jourDateNaissance
-          codeCogInseeCommuneNaissance
           sexeEtatCivil
+          codeCogInseeCommuneNaissance
           nomCommuneNaissance
           codeCogInseeDepartementNaissance
         ],

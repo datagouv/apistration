@@ -14,8 +14,8 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with Civility', api: :pa
           anneeDateNaissance
           moisDateNaissance
           jourDateNaissance
-          codeCogInseeCommuneNaissance
           sexeEtatCivil
+          codeCogInseeCommuneNaissance
           nomCommuneNaissance
           codeCogInseeDepartementNaissance
         ],

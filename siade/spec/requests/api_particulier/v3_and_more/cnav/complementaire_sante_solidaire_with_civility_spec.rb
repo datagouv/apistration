@@ -11,15 +11,15 @@ RSpec.describe 'API Particulier CNAV: complementaire sante solidaire with civili
 
       parameters_cnav_identite_pivot(
         params: %w[
-          nomUsage
           nomNaissance
+          nomUsage
           prenoms
           anneeDateNaissance
           moisDateNaissance
           jourDateNaissance
-          codeCogInseeCommuneNaissance
-          codeCogInseePaysNaissance
           sexeEtatCivil
+          codeCogInseePaysNaissance
+          codeCogInseeCommuneNaissance
           nomCommuneNaissance
           codeCogInseeDepartementNaissance
         ],
