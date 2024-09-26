@@ -1,129 +1,130 @@
 # rubocop:disable Metrics/ModuleLength
 module RSwagParametersAPIParticulier
-  def parameters_cnav_identite_pivot_nom_usage(required)
+  def parameters_identite_pivot_nom_usage(required, api)
     parameter name: :nomUsage,
       in: :query,
-      type: SwaggerData.get('parameters.civility.nomUsage.type'),
-      description: SwaggerData.get('parameters.civility.nomUsage.description'),
-      example: SwaggerData.get('parameters.civility.nomUsage.example'),
+      type: SwaggerData.get("civility.#{api}.nomUsage.type"),
+      description: SwaggerData.get("civility.#{api}.nomUsage.description"),
+      example: SwaggerData.get("civility.#{api}.nomUsage.example"),
       required:
   end
 
-  def parameters_cnav_identite_pivot_nom_naissance(required)
+  def parameters_identite_pivot_nom_naissance(required, api)
     parameter name: :nomNaissance,
       in: :query,
-      type: SwaggerData.get('parameters.civility.nomNaissance.type'),
-      description: SwaggerData.get('parameters.civility.nomNaissance.description'),
-      example: SwaggerData.get('parameters.civility.nomNaissance.example'),
+      type: SwaggerData.get("civility.#{api}.nomNaissance.type"),
+      description: SwaggerData.get("civility.#{api}.nomNaissance.description"),
+      example: SwaggerData.get("civility.#{api}.nomNaissance.example"),
       required:
   end
 
-  def parameters_cnav_identite_pivot_prenoms(required)
+  def parameters_identite_pivot_prenoms(required, api)
     parameter name: :'prenoms[]',
       in: :query,
       schema: {
-        type: SwaggerData.get('parameters.civility.prenoms.type'),
-        minItems: SwaggerData.get('parameters.civility.prenoms.minItems'),
+        type: SwaggerData.get("civility.#{api}.prenoms.type"),
+        minItems: SwaggerData.get("civility.#{api}.prenoms.minItems"),
+        maxItems: SwaggerData.get("civility.#{api}.prenoms.maxItems"),
         items: { type: :string },
-        example: SwaggerData.get('parameters.civility.prenoms.example')
+        example: SwaggerData.get("civility.#{api}.prenoms.example")
       },
-      description: SwaggerData.get('parameters.civility.prenoms.description'),
+      description: SwaggerData.get("civility.#{api}.prenoms.description"),
       required:
   end
 
-  def parameters_cnav_identite_pivot_annee_date_naissance(required)
+  def parameters_identite_pivot_annee_date_naissance(required, api)
     parameter name: :anneeDateNaissance,
       in: :query,
-      type: SwaggerData.get('parameters.civility.anneeDateNaissance.type'),
-      description: SwaggerData.get('parameters.civility.anneeDateNaissance.description'),
-      example: SwaggerData.get('parameters.civility.anneeDateNaissance.example'),
+      type: SwaggerData.get("civility.#{api}.anneeDateNaissance.type"),
+      description: SwaggerData.get("civility.#{api}.anneeDateNaissance.description"),
+      example: SwaggerData.get("civility.#{api}.anneeDateNaissance.example"),
       required:
   end
 
-  def parameters_cnav_identite_pivot_mois_date_naissance(required)
+  def parameters_identite_pivot_mois_date_naissance(required, api)
     parameter name: :moisDateNaissance,
       in: :query,
-      type: SwaggerData.get('parameters.civility.moisDateNaissance.type'),
-      description: SwaggerData.get('parameters.civility.moisDateNaissance.description'),
-      example: SwaggerData.get('parameters.civility.moisDateNaissance.example'),
+      type: SwaggerData.get("civility.#{api}.moisDateNaissance.type"),
+      description: SwaggerData.get("civility.#{api}.moisDateNaissance.description"),
+      example: SwaggerData.get("civility.#{api}.moisDateNaissance.example"),
       required:
   end
 
-  def parameters_cnav_identite_pivot_jour_date_naissance(required)
+  def parameters_identite_pivot_jour_date_naissance(required, api)
     parameter name: :jourDateNaissance,
       in: :query,
-      type: SwaggerData.get('parameters.civility.jourDateNaissance.type'),
-      description: SwaggerData.get('parameters.civility.jourDateNaissance.description'),
-      example: SwaggerData.get('parameters.civility.jourDateNaissance.example'),
+      type: SwaggerData.get("civility.#{api}.jourDateNaissance.type"),
+      description: SwaggerData.get("civility.#{api}.jourDateNaissance.description"),
+      example: SwaggerData.get("civility.#{api}.jourDateNaissance.example"),
       required:
   end
 
-  def parameters_cnav_identite_pivot_code_cog_insee_commune_naissance(required)
+  def parameters_identite_pivot_code_cog_insee_commune_naissance(required, api)
     parameter name: :codeCogInseeCommuneNaissance,
       in: :query,
       schema: {
-        type: SwaggerData.get('parameters.civility.codeCogInseeCommuneNaissance.type'),
-        minLength: SwaggerData.get('parameters.civility.codeCogInseeCommuneNaissance.minLength'),
-        maxLength: SwaggerData.get('parameters.civility.codeCogInseeCommuneNaissance.maxLength'),
-        example: SwaggerData.get('parameters.civility.codeCogInseeCommuneNaissance.example')
+        type: SwaggerData.get("civility.#{api}.codeCogInseeCommuneNaissance.type"),
+        minLength: SwaggerData.get("civility.#{api}.codeCogInseeCommuneNaissance.minLength"),
+        maxLength: SwaggerData.get("civility.#{api}.codeCogInseeCommuneNaissance.maxLength"),
+        example: SwaggerData.get("civility.#{api}.codeCogInseeCommuneNaissance.example")
       },
-      description: SwaggerData.get('parameters.civility.codeCogInseeCommuneNaissance.description'),
+      description: SwaggerData.get("civility.#{api}.codeCogInseeCommuneNaissance.description"),
       required:
   end
 
-  def parameters_cnav_identite_pivot_code_cog_insee_pays_naissance(required)
+  def parameters_identite_pivot_code_cog_insee_pays_naissance(required, api)
     parameter name: :codeCogInseePaysNaissance,
       in: :query,
       schema: {
-        type: SwaggerData.get('parameters.civility.codeCogInseePaysNaissance.type'),
-        minLength: SwaggerData.get('parameters.civility.codeCogInseePaysNaissance.minLength'),
-        maxLength: SwaggerData.get('parameters.civility.codeCogInseePaysNaissance.maxLength'),
-        example: SwaggerData.get('parameters.civility.codeCogInseePaysNaissance.example')
+        type: SwaggerData.get("civility.#{api}.codeCogInseePaysNaissance.type"),
+        minLength: SwaggerData.get("civility.#{api}.codeCogInseePaysNaissance.minLength"),
+        maxLength: SwaggerData.get("civility.#{api}.codeCogInseePaysNaissance.maxLength"),
+        example: SwaggerData.get("civility.#{api}.codeCogInseePaysNaissance.example")
       },
-      description: SwaggerData.get('parameters.civility.codeCogInseePaysNaissance.description'),
+      description: SwaggerData.get("civility.#{api}.codeCogInseePaysNaissance.description"),
       required:
   end
 
-  def parameters_cnav_identite_pivot_sexe_etat_civil(required)
+  def parameters_identite_pivot_sexe_etat_civil(required, api)
     parameter name: :sexeEtatCivil,
       in: :query,
       schema: {
-        type: SwaggerData.get('parameters.civility.sexeEtatCivil.type'),
-        enum: SwaggerData.get('parameters.civility.sexeEtatCivil.enum')
+        type: SwaggerData.get("civility.#{api}.sexeEtatCivil.type"),
+        enum: SwaggerData.get("civility.#{api}.sexeEtatCivil.enum")
       },
-      description: SwaggerData.get('parameters.civility.sexeEtatCivil.description'),
-      example: SwaggerData.get('parameters.civility.sexeEtatCivil.example'),
+      description: SwaggerData.get("civility.#{api}.sexeEtatCivil.description"),
+      example: SwaggerData.get("civility.#{api}.sexeEtatCivil.example"),
       required:
   end
 
-  def parameters_cnav_identite_pivot_nom_commune_naissance(required)
+  def parameters_identite_pivot_nom_commune_naissance(required, api)
     parameter name: :nomCommuneNaissance,
       in: :query,
       schema: {
-        type: SwaggerData.get('parameters.civility.nomCommuneNaissance.type'),
-        minLength: SwaggerData.get('parameters.civility.nomCommuneNaissance.minLength'),
-        example: SwaggerData.get('parameters.civility.nomCommuneNaissance.example')
+        type: SwaggerData.get("civility.#{api}.nomCommuneNaissance.type"),
+        minLength: SwaggerData.get("civility.#{api}.nomCommuneNaissance.minLength"),
+        example: SwaggerData.get("civility.#{api}.nomCommuneNaissance.example")
       },
-      description: SwaggerData.get('parameters.civility.nomCommuneNaissance.description'),
+      description: SwaggerData.get("civility.#{api}.nomCommuneNaissance.description"),
       required:
   end
 
-  def parameters_cnav_identite_pivot_code_cog_insee_departement_naissance(required)
+  def parameters_identite_pivot_code_cog_insee_departement_naissance(required, api)
     parameter name: :codeCogInseeDepartementNaissance,
       in: :query,
       schema: {
-        type: SwaggerData.get('parameters.civility.codeCogInseeDepartementNaissance.type'),
-        minLength: SwaggerData.get('parameters.civility.codeCogInseeDepartementNaissance.minLength'),
-        maxLength: SwaggerData.get('parameters.civility.codeCogInseeDepartementNaissance.maxLength'),
-        example: SwaggerData.get('parameters.civility.codeCogInseeDepartementNaissance.example')
+        type: SwaggerData.get("civility.#{api}.codeCogInseeDepartementNaissance.type"),
+        minLength: SwaggerData.get("civility.#{api}.codeCogInseeDepartementNaissance.minLength"),
+        maxLength: SwaggerData.get("civility.#{api}.codeCogInseeDepartementNaissance.maxLength"),
+        example: SwaggerData.get("civility.#{api}.codeCogInseeDepartementNaissance.example")
       },
-      description: SwaggerData.get('parameters.civility.codeCogInseeDepartementNaissance.description'),
+      description: SwaggerData.get("civility.#{api}.codeCogInseeDepartementNaissance.description"),
       required:
   end
 
-  def parameters_cnav_identite_pivot(params: [], required: [])
+  def parameters_identite_pivot(params: [], required: [], api: 'commons')
     params.each do |param|
-      public_send("parameters_cnav_identite_pivot_#{param.underscore}", required.include?(param))
+      public_send("parameters_identite_pivot_#{param.underscore}", required.include?(param), api)
     end
   end
 

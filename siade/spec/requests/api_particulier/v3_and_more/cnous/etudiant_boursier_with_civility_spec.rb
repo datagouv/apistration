@@ -7,7 +7,7 @@ RSpec.describe 'API Particulier: CNOUS: Etudiant Boursier with Civility', api: :
 
       common_action_attributes
 
-      parameters_cnav_identite_pivot(
+      parameters_identite_pivot(
         params: %w[
           nomNaissance
           prenoms

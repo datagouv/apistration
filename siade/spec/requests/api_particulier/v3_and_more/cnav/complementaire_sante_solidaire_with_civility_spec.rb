@@ -9,7 +9,7 @@ RSpec.describe 'API Particulier CNAV: complementaire sante solidaire with civili
 
       cacheable_request
 
-      parameters_cnav_identite_pivot(
+      parameters_identite_pivot(
         params: %w[
           nomNaissance
           nomUsage
@@ -28,7 +28,8 @@ RSpec.describe 'API Particulier CNAV: complementaire sante solidaire with civili
           prenoms
           sexeEtatCivil
           codeCogInseePaysNaissance
-        ]
+        ],
+        api: 'cnav'
       )
 
       let(:nomNaissance) { 'CHAMPION' }

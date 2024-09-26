@@ -9,7 +9,7 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
 
       cacheable_request
 
-      parameters_cnav_identite_pivot(
+      parameters_identite_pivot(
         params: %w[
           nomNaissance
           nomUsage
@@ -28,7 +28,8 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
           prenoms
           sexeEtatCivil
           codeCogInseePaysNaissance
-        ]
+        ],
+        api: 'cnav'
       )
 
       let(:nomNaissance) { 'CHAMPION' }

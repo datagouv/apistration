@@ -7,7 +7,7 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with Civility', api: :pa
 
       common_action_attributes
 
-      parameters_cnav_identite_pivot(
+      parameters_identite_pivot(
         params: %w[
           nomNaissance
           prenoms
@@ -26,7 +26,8 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with Civility', api: :pa
           moisDateNaissance
           jourDateNaissance
           sexeEtatCivil
-        ]
+        ],
+        api: 'statut_etudiant'
       )
 
       let(:nomNaissance) { 'Dupont' }

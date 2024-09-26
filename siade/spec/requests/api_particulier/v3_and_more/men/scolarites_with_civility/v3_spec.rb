@@ -7,7 +7,7 @@ RSpec.describe 'MEN: Scolarites with civility', api: :particulier, type: %i[requ
 
       common_action_attributes
 
-      parameters_cnav_identite_pivot(
+      parameters_identite_pivot(
         params: %w[
           nomNaissance
           prenoms
