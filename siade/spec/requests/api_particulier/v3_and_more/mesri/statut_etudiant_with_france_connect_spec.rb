@@ -12,7 +12,7 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with FranceConnect', api
 
       forbidden_france_connect_request
 
-      let(:scopes) { %i[identite_pivot mesri_identite mesri_statut mesri_regime mesri_etablissements] }
+      let(:scopes) { %i[identite_pivot mesri_identite mesri_inscription mesri_regime mesri_etablissements] }
 
       describe 'with a FranceConnect token' do
         before do
