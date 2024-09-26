@@ -18,7 +18,7 @@ module RSwagResourcesPayloads
     }
   end
 
-  def build_rswag_response_api_particulier(attributes:)
+  def build_rswag_response_api_particulier_v2(attributes:)
     {
       type: :object,
       properties: add_required_keys_to_all_type_object(attributes)

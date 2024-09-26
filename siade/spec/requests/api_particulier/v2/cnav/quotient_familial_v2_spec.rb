@@ -84,7 +84,7 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
 
               cacheable_response(extra_description: SwaggerData.get('cnav.v2.quotient-familial-v2.cache_duration'))
 
-              schema build_rswag_response_api_particulier(
+              schema build_rswag_response_api_particulier_v2(
                 attributes: SwaggerData.get('cnav.v2.quotient-familial-v2.attributes')
               )
 
@@ -104,7 +104,7 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
             response '200', 'Quotient Familial trouvée' do
               description SwaggerData.get('cnav.v2.quotient-familial-v2.description')
 
-              schema build_rswag_response_api_particulier(
+              schema build_rswag_response_api_particulier_v2(
                 attributes: SwaggerData.get('cnav.v2.quotient-familial-v2.attributes')
               )
 
@@ -223,7 +223,7 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
           response '200', 'Quotient Familial trouvé' do
             description SwaggerData.get('cnav.v2.quotient-familial-v2.description')
 
-            schema build_rswag_response_api_particulier(
+            schema build_rswag_response_api_particulier_v2(
               attributes: SwaggerData.get('cnav.v2.quotient-familial-v2.attributes')
             )
 
@@ -242,7 +242,7 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
           response '200', 'Quotient Familial trouvé' do
             description SwaggerData.get('cnav.v2.quotient-familial-v2.description')
 
-            schema build_rswag_response_api_particulier(
+            schema build_rswag_response_api_particulier_v2(
               attributes: SwaggerData.get('cnav.v2.quotient-familial-v2.attributes')
             )
 

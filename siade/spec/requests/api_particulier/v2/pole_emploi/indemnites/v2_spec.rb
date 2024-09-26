@@ -43,7 +43,7 @@ RSpec.describe 'Pole Emploi: Indemnites', api: :particulierv2, type: %i[request 
         response '200', 'Paiements trouvées' do
           description SwaggerData.get('france_travail.indemnites.description')
 
-          schema build_rswag_response_api_particulier(
+          schema build_rswag_response_api_particulier_v2(
             attributes: SwaggerData.get('france_travail.indemnites.attributes')
           )
 

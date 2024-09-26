@@ -51,7 +51,7 @@ RSpec.describe "CNAV: Prime d'activité", api: :particulierv2, type: %i[request 
 
             cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
-            schema build_rswag_response_api_particulier(
+            schema build_rswag_response_api_particulier_v2(
               attributes: SwaggerData.get('cnav.v2.prime_activite.attributes')
             )
 
@@ -75,7 +75,7 @@ RSpec.describe "CNAV: Prime d'activité", api: :particulierv2, type: %i[request 
 
               cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
-              schema build_rswag_response_api_particulier(
+              schema build_rswag_response_api_particulier_v2(
                 attributes: SwaggerData.get('cnav.v2.prime_activite.attributes')
               )
 
@@ -157,7 +157,7 @@ RSpec.describe "CNAV: Prime d'activité", api: :particulierv2, type: %i[request 
 
             cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
-            schema build_rswag_response_api_particulier(
+            schema build_rswag_response_api_particulier_v2(
               attributes: SwaggerData.get('cnav.v2.prime_activite.attributes')
             )
 
@@ -196,7 +196,7 @@ RSpec.describe "CNAV: Prime d'activité", api: :particulierv2, type: %i[request 
 
             cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
 
-            schema build_rswag_response_api_particulier(
+            schema build_rswag_response_api_particulier_v2(
               attributes: SwaggerData.get('cnav.v2.prime_activite.attributes')
             )
 
