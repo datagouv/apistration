@@ -73,7 +73,7 @@ cnav:
               title: Nom d'usage
               type: string
               description: Nom d'usage de l'allocataire
-              example: "JACQUES"
+              example: "DUPONT"
               nullable: true
             prenoms:
               title: Prénoms
@@ -83,7 +83,7 @@ cnav:
             annee_date_de_naissance:
               title: Année de naissance
               type: string
-              example: '2000'
+              example: '1966'
               description: "Année de la date de naissance de l'allocataire. Peut-être vide si inconnue."
               nullable: true
             mois_date_de_naissance:
@@ -112,22 +112,22 @@ cnav:
         items:
           type: object
           properties:
-            nom_nNaissance:
+            nom_naissance:
               title: "Nom de naissance"
               type: string
               description: Nom de naissance de l'enfant
-              example: "JACQUES"
+              example: "DUPONT"
             nom_usuel:
               title: "Nom d'usage"
               type: string
               description: Nom d'usage de l'enfant
-              example: "JACQUES"
+              example: null
               nullable: true
             prenoms:
               title: "Prénoms"
               type: string
               description: Prénoms de l'enfant
-              example: "JEAN-PIERRE THOMAS"
+              example: "JEAN-PIERRE THOMAS JUNIOR"
             annee_date_de_naissance:
               title: "Année de naissance"
               type: string
@@ -137,13 +137,13 @@ cnav:
             mois_date_de_naissance:
               title: "Mois de naissance"
               type: string
-              example: '01'
+              example: '06'
               description: "Mois de la date de naissance de l'enfant. Peut-être vide si inconnu."
               nullable: true
             jour_date_de_naissance:
               title: "Jour de naissance"
               type: string
-              example: '31'
+              example: '30'
               description: "Jour de la date de naissance de l'enfant. Peut-être vide si inconnu."
               nullable: true
             sexe:
@@ -653,9 +653,9 @@ cnav:
               description: Pays
               example: 'FRANCE'
         regime:
-          title: "Régime de l'allocataire"
+          title: "Caisse d'où provient le quotient familial transmis"
           type: string
-          description: Précise le régime de l'allocataire, régime général (CNAF) ou agricole (MSA).
+          description: Précise si le quotient familial provient de la caisse nationale des allocations familiales (CNAF) ou de la mutualité sociale agricole (MSA).
           example: MSA
           enum:
             - CNAF

@@ -1526,10 +1526,11 @@ paths:
                     - codePostalVille
                     - pays
                   regime:
-                    title: Régime de l'allocataire
+                    title: Caisse d'où provient le quotient familial transmis
                     type: string
-                    description: Précise le régime de l'allocataire, régime général
-                      (CNAF) ou agricole (MSA).
+                    description: Précise si le quotient familial provient de la caisse
+                      nationale des allocations familiales (CNAF) ou de la mutualité
+                      sociale agricole (MSA).
                     example: MSA
                     enum:
                     - CNAF
