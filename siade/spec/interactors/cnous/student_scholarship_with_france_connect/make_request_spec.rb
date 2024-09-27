@@ -1,14 +1,37 @@
 RSpec.describe CNOUS::StudentScholarshipWithFranceConnect::MakeRequest, type: :make_request do
   subject(:make_call) { described_class.call(params:, token:, operation_id: 'whatever') }
 
-  let(:params) { default_france_connect_identity_attributes }
-  let(:body) { default_france_connect_identity_attributes.to_json }
+  let(:params) do
+    {
+      nom_naissance:,
+      prenoms:,
+      annee_date_de_naissance:,
+      mois_date_de_naissance:,
+      jour_date_de_naissance:,
+      code_cog_insee_commune_de_naissance:,
+      sexe_etat_civil:
+    }
+  end
+
+  let(:nom_naissance) { 'Dupont' }
+  let(:prenoms) { %w[Jean Martin] }
+  let(:annee_date_de_naissance) { 2000 }
+  let(:mois_date_de_naissance) { 1 }
+  let(:jour_date_de_naissance) { 2 }
+  let(:code_cog_insee_commune_de_naissance) { 'Angers' }
+  let(:sexe_etat_civil) { 'm' }
 
   let(:token) { 'dummy_oauth_token' }
 
   let!(:stubbed_request) do
     stub_request(:get, Siade.credentials[:cnous_student_scholarship_france_connect_url]).with(
-      body:,
+      body: {
+        lastName: 'Dupont',
+        firstNames: 'Jean, Martin',
+        birthDate: '02/01/2000',
+        birthPlace: 'Angers',
+        civility: 'M'
+      }.to_json,
       headers: {
         'Authorization' => "Bearer #{token}"
       }
@@ -35,8 +58,7 @@ RSpec.describe CNOUS::StudentScholarshipWithFranceConnect::MakeRequest, type: :m
         'whatever',
         hash_including(
           {
-            given_name: 'Jean Martin',
-            birthcountry: '99100'
+            given_name: 'Jean, Martin'
           }
         )
       ).and_return(cnous_valid_payload('france_connect'))
