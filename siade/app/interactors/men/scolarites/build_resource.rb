@@ -12,8 +12,8 @@ class MEN::Scolarites::BuildResource < BuildResource
       code_etablissement: json_body['identification']['etablissement']['code-uai'],
       annee_scolaire: json_body['identification']['annee-scolaire'],
       est_scolarise: json_body['info-scolarite']['est-scolarise'],
-      est_boursier: json_body['info-bourse']['est-boursier'],
-      niveau_bourse: json_body['info-bourse']['niveau-bourse'],
+      est_boursier: nil,
+      niveau_bourse: nil,
       status_eleve: {
         code: json_body['info-scolarite']['statut-eleve']['code'],
         libelle: json_body['info-scolarite']['statut-eleve']['libelle']

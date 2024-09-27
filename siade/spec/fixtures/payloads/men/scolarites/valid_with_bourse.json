@@ -15,9 +15,5 @@
       "code": "ST",
       "libelle": "SCOLAIRE"
     }
-  },
-  "info-bourse": {
-    "est-boursier": true,
-    "niveau-bourse": 1
   }
 }

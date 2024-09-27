@@ -24,7 +24,7 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
           code_etablissement: '0511474A',
           annee_scolaire: '2021',
           est_scolarise: true,
-          est_boursier: false,
+          est_boursier: nil,
           niveau_bourse: nil,
           status_eleve: {
             code: 'ST',
@@ -49,8 +49,8 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
           code_etablissement: '0511474A',
           annee_scolaire: '2021',
           est_scolarise: true,
-          est_boursier: true,
-          niveau_bourse: 1,
+          est_boursier: nil,
+          niveau_bourse: nil,
           status_eleve: {
             code: 'ST',
             libelle: 'SCOLAIRE'
