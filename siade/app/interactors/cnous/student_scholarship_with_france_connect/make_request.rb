@@ -5,11 +5,11 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
 
   def request_body
     {
-      lastName: nom_naissance,
-      firstNames: prenoms,
-      birthDate: date_naissance,
-      birthPlace: code_cog_insee_commune_de_naissance,
-      civility: gender
+      given_name: prenoms,
+      family_name: nom_naissance,
+      birthdate: date_naissance,
+      gender:,
+      birthplace: code_cog_insee_commune_de_naissance
     }.to_json
   end
 

@@ -26,11 +26,11 @@ RSpec.describe CNOUS::StudentScholarshipWithFranceConnect::MakeRequest, type: :m
   let!(:stubbed_request) do
     stub_request(:get, Siade.credentials[:cnous_student_scholarship_france_connect_url]).with(
       body: {
-        lastName: 'Dupont',
-        firstNames: 'Jean, Martin',
-        birthDate: '02/01/2000',
-        birthPlace: 'Angers',
-        civility: 'M'
+        given_name: 'Jean, Martin',
+        family_name: 'Dupont',
+        birthdate: '02/01/2000',
+        gender: 'M',
+        birthplace: 'Angers'
       }.to_json,
       headers: {
         'Authorization' => "Bearer #{token}"
