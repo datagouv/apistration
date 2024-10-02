@@ -5,7 +5,7 @@ env:
 name: CI - CD
 on:
   pull_request:
-    types: [review_requested, opened, reopened]
+    types: [opened, reopened]
   push:
     branches:
       - develop
