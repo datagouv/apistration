@@ -15,9 +15,9 @@ RSpec.describe CNOUS::StudentScholarshipWithCivility::MakeRequest, type: :make_r
 
   let(:nom_naissance) { 'Dupont' }
   let(:prenoms) { %w[Jean Charlie] }
-  let(:annee_date_naissance) { 2000 }
-  let(:mois_date_naissance) { 1 }
-  let(:jour_date_naissance) { 2 }
+  let(:annee_date_naissance) { '2000' }
+  let(:mois_date_naissance) { '01' }
+  let(:jour_date_naissance) { '02' }
   let(:code_cog_insee_commune_naissance) { 'Angers' }
   let(:sexe_etat_civil) { 'm' }
 

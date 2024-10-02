@@ -50,7 +50,7 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
   end
 
   def date_naissance
-    Kernel.format('%<day>02d/%<month>02d/%<year>04d', year:, month:, day:)
+    Kernel.format('%<day>02d/%<month>02d/%<year>04d', year: year.to_i, month: month.to_i, day: day.to_i)
   end
 
   def year

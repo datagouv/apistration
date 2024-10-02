@@ -15,9 +15,9 @@ RSpec.describe CNOUS::StudentScholarshipWithFranceConnect::MakeRequest, type: :m
 
   let(:nom_naissance) { 'Dupont' }
   let(:prenoms) { %w[Jean Martin] }
-  let(:annee_date_de_naissance) { 2000 }
-  let(:mois_date_de_naissance) { 1 }
-  let(:jour_date_de_naissance) { 2 }
+  let(:annee_date_de_naissance) { '2000' }
+  let(:mois_date_de_naissance) { '01' }
+  let(:jour_date_de_naissance) { '02' }
   let(:code_cog_insee_commune_de_naissance) { 'Angers' }
   let(:sexe_etat_civil) { 'm' }
 
