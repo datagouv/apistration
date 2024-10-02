@@ -397,7 +397,7 @@ shared:
         params:
           id: 'W131015526'
 
-    banque_france/bilans:
+    banque_de_france/bilans:
       kind: 'retriever'
       cache: <%= 10.minutes %>
       provider: 'Banque de France'
