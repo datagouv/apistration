@@ -9,7 +9,7 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
       family_name: nom_naissance,
       birthdate: date_naissance,
       gender:,
-      birthplace: code_cog_insee_commune_de_naissance
+      birthplace: code_cog_insee_commune_naissance
     }.to_json
   end
 
@@ -19,7 +19,7 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
       family_name: nom_naissance,
       birthdate: date_naissance,
       gender:,
-      birthplace: code_cog_insee_commune_de_naissance
+      birthplace: code_cog_insee_commune_naissance
     }
   end
 
@@ -41,8 +41,8 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
     context.params[:prenoms]&.join(', ')
   end
 
-  def code_cog_insee_commune_de_naissance
-    context.params[:code_cog_insee_commune_de_naissance].to_s
+  def code_cog_insee_commune_naissance
+    context.params[:code_cog_insee_commune_naissance].to_s
   end
 
   def gender
@@ -54,14 +54,14 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
   end
 
   def year
-    context.params[:annee_date_de_naissance]
+    context.params[:annee_date_naissance]
   end
 
   def month
-    context.params[:mois_date_de_naissance]
+    context.params[:mois_date_naissance]
   end
 
   def day
-    context.params[:jour_date_de_naissance]
+    context.params[:jour_date_naissance]
   end
 end

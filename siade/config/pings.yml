@@ -185,7 +185,7 @@ shared:
           annee_date_naissance: 2000
           mois_date_naissance: 1
           jour_date_naissance: 1
-          code_cog_commune_naissance: 'Paris'
+          code_cog_insee_commune_naissance: 'Paris'
           sexe_etat_civil: 'M'
         status_to_check: 404
         token_interactor: 'CNOUS::Authenticate'
@@ -203,10 +203,10 @@ shared:
           prenoms:
             - 'Jean'
             - 'Martin'
-          annee_date_de_naissance: 2000
-          mois_date_de_naissance: 01
-          jour_date_de_naissance: 01
-          code_cog_insee_commune_de_naissance: '75101'
+          annee_date_naissance: 2000
+          mois_date_naissance: 01
+          jour_date_naissance: 01
+          code_cog_insee_commune_naissance: '75101'
           sexe_etat_civil: 'm'
         status_to_check: 404
         token_interactor: 'CNOUS::Authenticate'
