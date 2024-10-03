@@ -42,7 +42,7 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
   end
 
   def code_cog_insee_commune_de_naissance
-    context.params[:code_cog_insee_commune_de_naissance]
+    context.params[:code_cog_insee_commune_de_naissance].to_s
   end
 
   def gender

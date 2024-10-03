@@ -206,7 +206,7 @@ shared:
           annee_date_de_naissance: 2000
           mois_date_de_naissance: 01
           jour_date_de_naissance: 01
-          code_cog_insee_commune_de_naissance: 75101
+          code_cog_insee_commune_de_naissance: '75101'
           sexe_etat_civil: 'm'
         status_to_check: 404
         token_interactor: 'CNOUS::Authenticate'
