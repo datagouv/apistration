@@ -152,7 +152,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
-    hashdiff (1.1.0)
+    hashdiff (1.1.1)
     hashery (2.1.2)
     hashie (5.0.0)
     heapy (0.2.0)
@@ -261,7 +261,7 @@ GEM
       pry (>= 0.13, < 0.15)
     psych (5.1.2)
       stringio
-    public_suffix (6.0.0)
+    public_suffix (6.0.1)
     puma (6.4.3)
       nio4r (~> 2.0)
     racc (1.8.1)
@@ -419,7 +419,7 @@ GEM
     vcr (6.3.1)
       base64
     version_gem (1.1.4)
-    webmock (3.23.1)
+    webmock (3.24.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -502,7 +502,7 @@ DEPENDENCIES
   unindent
   utf8-cleaner
   vcr
-  webmock (~> 3.23)
+  webmock (~> 3.24)
   xml-simple
 
 BUNDLED WITH
