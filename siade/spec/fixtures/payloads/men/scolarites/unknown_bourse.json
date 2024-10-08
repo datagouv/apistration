@@ -17,7 +17,7 @@
     }
   },
   "info-bourse": {
-    "est-boursier": true,
-    "niveau-bourse": 1
+    "est-boursier": null,
+    "niveau-bourse": null
   }
 }

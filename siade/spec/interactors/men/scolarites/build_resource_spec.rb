@@ -24,7 +24,7 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
           code_etablissement: '0511474A',
           annee_scolaire: '2021',
           est_scolarise: true,
-          est_boursier: nil,
+          est_boursier: false,
           niveau_bourse: nil,
           status_eleve: {
             code: 'ST',
@@ -38,6 +38,31 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
 
     context 'with bourse' do
       let(:body) { open_payload_file('men/scolarites/valid_with_bourse.json').read }
+      let(:valid_resource) do
+        {
+          eleve: {
+            nom: 'NOMFAMILLE',
+            prenom: 'prenom',
+            sexe: 'F',
+            date_naissance: '2000-06-10'
+          },
+          code_etablissement: '0511474A',
+          annee_scolaire: '2021',
+          est_scolarise: true,
+          est_boursier: true,
+          niveau_bourse: 1,
+          status_eleve: {
+            code: 'ST',
+            libelle: 'SCOLAIRE'
+          }
+        }
+      end
+
+      it { expect(subject).to eq(valid_resource) }
+    end
+
+    context 'with bourse unknown' do
+      let(:body) { open_payload_file('men/scolarites/unknown_bourse.json').read }
       let(:valid_resource) do
         {
           eleve: {
