@@ -20,7 +20,8 @@ RSpec.describe CNAV::AllocationAdulteHandicape::BuildResource, type: :build_reso
       expect(subject).to eq(
         {
           status: 'beneficiaire',
-          date_debut: '2024-04-01'
+          est_beneficiaire: true,
+          date_debut_droit: '2024-04-01'
         }
       )
     end

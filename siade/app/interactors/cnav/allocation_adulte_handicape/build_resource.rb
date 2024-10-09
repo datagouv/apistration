@@ -4,7 +4,8 @@ class CNAV::AllocationAdulteHandicape::BuildResource < CNAV::BuildResource
   def resource_attributes
     {
       status:,
-      date_debut:
+      est_beneficiaire: !non_beneficiary?,
+      date_debut_droit: date_debut
     }
   end
 

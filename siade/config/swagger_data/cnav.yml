@@ -293,14 +293,15 @@ cnav:
     tags:
       - Statut Allocation Adulte Handicapé (AAH)
     attributes:
-      status:
+      est_beneficiaire:
         title: "Statut bénéficiaire de l'allocation adulte handicapé (AAH)"
-        type: string
-        description: "Indique si le particulier est bénéficiaire de la complémentaire de santé solidaire au moment de l'appel."
+        type: boolean
+        example: true
         enum:
-          - "beneficiaire"
-          - "non_beneficiaire"
-      date_debut:
+        - true
+        - false
+        description: "Indique si le particulier est bénéficiaire de la complémentaire de santé solidaire au moment de l'appel."
+      date_debut_droit:
         title: "Date d'ouverture du droit à l'AAH"
         type: string
         nullable: true
