@@ -20,8 +20,9 @@ RSpec.describe CNAV::AllocationSoutienFamilial::BuildResource, type: :build_reso
       expect(subject).to eq(
         {
           status: 'beneficiaire',
-          dateDebut: '2024-04-01',
-          dateFin: '2025-04-01'
+          est_beneficiaire: true,
+          date_debut_droit: '2024-04-01',
+          date_fin_droit: '2025-04-01'
         }
       )
     end

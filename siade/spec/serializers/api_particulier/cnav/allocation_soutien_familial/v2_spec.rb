@@ -16,6 +16,7 @@ RSpec.describe APIParticulier::CNAV::AllocationSoutienFamilial::V2, type: :seria
       it 'has status, date_debut items' do
         expect(subject).to have_key(:status)
         expect(subject).to have_key(:dateDebut)
+        expect(subject).to have_key(:dateFin)
       end
     end
   end

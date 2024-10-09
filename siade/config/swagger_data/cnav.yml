@@ -316,14 +316,15 @@ cnav:
     tags:
       - Statut Allocation Soutien Familial (ASF)
     attributes:
-      status:
+      est_beneficiaire:
         title: "Statut bénéficiaire de l'allocation de soution familial (ASF)"
-        type: string
-        description: "Indique si le particulier est bénéficiaire de l'allocation de soution familial au moment de l'appel."
+        type: boolean
+        example: true
         enum:
-          - "beneficiaire"
-          - "non_beneficiaire"
-      date_debut:
+        - true
+        - false
+        description: "Indique si le particulier est bénéficiaire de l'allocation de soution familial au moment de l'appel."
+      date_debut_droit:
         title: "Date d'ouverture du droit à l'ASF"
         type: string
         nullable: true
@@ -331,7 +332,7 @@ cnav:
           \n
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de l'ASF."
         example: '1992-11-29'
-      date_fin:
+      date_fin_droit:
         title: "Date de fermeture du droit à l'ASF"
         type: string
         nullable: true

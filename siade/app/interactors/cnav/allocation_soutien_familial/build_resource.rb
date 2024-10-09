@@ -4,8 +4,9 @@ class CNAV::AllocationSoutienFamilial::BuildResource < CNAV::BuildResource
   def resource_attributes
     {
       status:,
-      dateDebut: date_debut,
-      dateFin: date_fin
+      est_beneficiaire: !non_beneficiary?,
+      date_debut_droit: date_debut,
+      date_fin_droit: date_fin
     }
   end
 
