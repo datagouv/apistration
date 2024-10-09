@@ -4,7 +4,7 @@ class CNAV::AllocationAdulteHandicape::BuildResource < CNAV::BuildResource
   def resource_attributes
     {
       status:,
-      dateDebut: date_debut
+      date_debut:
     }
   end
 

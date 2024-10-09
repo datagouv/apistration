@@ -1,8 +1,7 @@
 class APIParticulier::CNAV::AllocationAdulteHandicape::V2 < APIParticulier::V2BaseSerializer
-  %i[
-    status
-    dateDebut
-  ].each do |resource_attribute|
-    attribute resource_attribute, if: -> { scope?(:allocation_adulte_handicape) }
+  attribute :status, if: -> { scope?(:allocation_adulte_handicape) }
+
+  attribute :dateDebut, if: -> { scope?(:allocation_adulte_handicape) } do
+    object.date_debut
   end
 end
