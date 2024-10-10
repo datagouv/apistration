@@ -1331,14 +1331,14 @@ paths:
                     - nomNaissance: CHAMPION
                       nomUsuel: DU MONDE
                       prenoms: JEAN-PASCAL ROMAIN
-                      anneeDateDeNaissance: '1980'
+                      anneDateDeNaissance: '1980'
                       moisDateDeNaissance: '06'
                       jourDateDeNaissance: '12'
                       sexe: M
                     - nomNaissance: NIDOUILLET
                       nomUsuel: 
                       prenoms: JOSIANE
-                      anneeDateDeNaissance: '1981'
+                      anneDateDeNaissance: '1981'
                       moisDateDeNaissance: '05'
                       jourDateDeNaissance: '02'
                       sexe: F
@@ -1346,14 +1346,14 @@ paths:
                     - nomNaissance: CHAMPION
                       nomUsuel: 
                       prenoms: AURELIE
-                      anneeDateDeNaissance: '2014'
+                      anneDateDeNaissance: '2014'
                       moisDateDeNaissance: '05'
                       jourDateDeNaissance: '02'
                       sexe: F
                     - nomNaissance: CHAMPION
                       nomUsuel: 
                       prenoms: AURELIEN
-                      anneeDateDeNaissance: '2012'
+                      anneDateDeNaissance: '2012'
                       moisDateDeNaissance: '04'
                       jourDateDeNaissance: 
                       sexe: M

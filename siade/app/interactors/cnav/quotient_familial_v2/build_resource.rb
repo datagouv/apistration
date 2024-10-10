@@ -3,13 +3,19 @@ class CNAV::QuotientFamilialV2::BuildResource < BuildResource
 
   def resource_attributes
     {
+      quotient_familial:,
       allocataires: build_persons_attributes(json_body['allocataires']),
       enfants: build_persons_attributes(json_body['enfants']),
-      adresse: build_address_attributes(json_body['adresse']),
-      quotientFamilial: string_value_or_nil(json_body['quotientFamilial']),
+      adresse: build_address_attributes(json_body['adresse'])
+    }
+  end
+
+  def quotient_familial
+    {
+      fournisseur:,
+      valeur: string_value_or_nil(json_body['quotientFamilial']),
       annee: context['params'][:annee].to_i,
       mois: context['params'][:mois].to_i,
-      regime:,
       annee_calcul:,
       mois_calcul:
     }
@@ -17,12 +23,12 @@ class CNAV::QuotientFamilialV2::BuildResource < BuildResource
 
   def build_address_attributes(attributes)
     {
-      identite: string_value_or_nil(attributes['identite']),
-      complementInformation: string_value_or_nil(attributes['complementInformation']),
-      complementInformationGeographique: string_value_or_nil(attributes['complementInformationGeo']),
-      numeroLibelleVoie: string_value_or_nil(attributes['numeroLibelleVoie']),
-      lieuDit: string_value_or_nil(attributes['lieuDit']),
-      codePostalVille: string_value_or_nil(attributes['codePostalVille']),
+      destinataire: string_value_or_nil(attributes['identite']),
+      complement_information: string_value_or_nil(attributes['complementInformation']),
+      complement_information_geographique: string_value_or_nil(attributes['complementInformationGeo']),
+      numero_libelle_voie: string_value_or_nil(attributes['numeroLibelleVoie']),
+      lieu_dit: string_value_or_nil(attributes['lieuDit']),
+      code_postal_ville: string_value_or_nil(attributes['codePostalVille']),
       pays: string_value_or_nil(attributes['pays'])
     }
   end
@@ -38,12 +44,13 @@ class CNAV::QuotientFamilialV2::BuildResource < BuildResource
   def build_person_attributes(attributes)
     year, month, day = date_naissance_or_default(attributes['dateNaissance']).split('-')
     {
-      nomNaissance: string_value_or_nil(attributes['nomNaissance']),
-      nomUsuel: string_value_or_nil(attributes['nomUsage']),
+      nom_naissance: string_value_or_nil(attributes['nomNaissance']),
+      nom_usage: string_value_or_nil(attributes['nomUsage']),
       prenoms: string_value_or_nil(attributes['listePrenoms']),
-      anneeDateDeNaissance: format_date_part(year),
-      moisDateDeNaissance: format_date_part(month),
-      jourDateDeNaissance: format_date_part(day),
+      annee_date_de_naissance: format_date_part(year),
+      mois_date_de_naissance: format_date_part(month),
+      jour_date_de_naissance: format_date_part(day),
+      date_naissance: date_naissance_or_default(attributes['dateNaissance']),
       sexe: string_value_or_nil(attributes['genre'])
     }
   end
@@ -86,8 +93,8 @@ class CNAV::QuotientFamilialV2::BuildResource < BuildResource
     response['X-APISECU-FD'] == CNAV::QuotientFamilialV2::REGIME_CODE_CNAF
   end
 
-  def regime
-    raise 'Regime not found' if response['X-APISECU-FD'].nil?
+  def fournisseur
+    raise 'Fournisseur not found' if response['X-APISECU-FD'].nil?
 
     CNAV::QuotientFamilialV2::REGIME_CODE_LABEL[response['X-APISECU-FD']]
   end

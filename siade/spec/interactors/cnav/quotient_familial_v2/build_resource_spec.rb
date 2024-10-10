@@ -30,60 +30,66 @@ RSpec.describe CNAV::QuotientFamilialV2::BuildResource, type: :build_resource do
         {
           allocataires: [
             {
-              nomNaissance: 'CHAMPION',
-              nomUsuel: 'DU MONDE',
+              nom_naissance: 'CHAMPION',
+              nom_usage: 'DU MONDE',
               prenoms: 'JEAN-PASCAL ROMAIN',
-              anneeDateDeNaissance: '1980',
-              moisDateDeNaissance: '06',
-              jourDateDeNaissance: '12',
+              annee_date_de_naissance: '1980',
+              mois_date_de_naissance: '06',
+              jour_date_de_naissance: '12',
+              date_naissance: '1980-06-12',
               sexe: 'M'
             },
             {
-              nomNaissance: 'NIDOUILLET',
-              nomUsuel: nil,
+              nom_naissance: 'NIDOUILLET',
+              nom_usage: nil,
               prenoms: 'JOSIANE',
-              anneeDateDeNaissance: '1981',
-              moisDateDeNaissance: '05',
-              jourDateDeNaissance: '02',
+              annee_date_de_naissance: '1981',
+              mois_date_de_naissance: '05',
+              jour_date_de_naissance: '02',
+              date_naissance: '1981-05-02',
               sexe: 'F'
             }
           ],
           enfants: [
             {
-              nomNaissance: 'CHAMPION',
-              nomUsuel: nil,
+              nom_naissance: 'CHAMPION',
+              nom_usage: nil,
               prenoms: 'AURELIE',
-              anneeDateDeNaissance: '2014',
-              moisDateDeNaissance: '05',
-              jourDateDeNaissance: '02',
+              annee_date_de_naissance: '2014',
+              mois_date_de_naissance: '05',
+              jour_date_de_naissance: '02',
+              date_naissance: '2014-05-02',
               sexe: 'F'
             },
             {
-              nomNaissance: 'CHAMPION',
-              nomUsuel: nil,
+              nom_naissance: 'CHAMPION',
+              nom_usage: nil,
               prenoms: 'AURELIEN',
-              anneeDateDeNaissance: '2012',
-              moisDateDeNaissance: '04',
-              jourDateDeNaissance: nil,
+              annee_date_de_naissance: '2012',
+              mois_date_de_naissance: '04',
+              jour_date_de_naissance: nil,
+              date_naissance: '2012-04-00',
               sexe: 'M'
             }
           ],
           adresse:
           {
-            identite: 'DU MONDE JEAN-PASCAL',
-            complementInformation: 'APPARTEMENT 2',
-            complementInformationGeographique: nil,
-            numeroLibelleVoie: nil,
-            lieuDit: nil,
-            codePostalVille: '81700 GARREVAQUES',
+            destinataire: 'DU MONDE JEAN-PASCAL',
+            complement_information: 'APPARTEMENT 2',
+            complement_information_geographique: nil,
+            numero_libelle_voie: nil,
+            lieu_dit: nil,
+            code_postal_ville: '81700 GARREVAQUES',
             pays: 'FRANCE'
           },
-          regime: 'CNAF',
-          quotientFamilial: 464,
-          annee: 2023,
-          mois: 6,
-          annee_calcul: 2021,
-          mois_calcul: 3
+          quotient_familial: {
+            fournisseur: 'CNAF',
+            valeur: 464,
+            annee: 2023,
+            mois: 6,
+            annee_calcul: 2021,
+            mois_calcul: 3
+          }
         }
       )
     end
@@ -99,41 +105,45 @@ RSpec.describe CNAV::QuotientFamilialV2::BuildResource, type: :build_resource do
         {
           allocataires: [
             {
-              nomNaissance: 'CHAMPION',
-              nomUsuel: 'DU MONDE',
+              nom_naissance: 'CHAMPION',
+              nom_usage: 'DU MONDE',
               prenoms: 'JEAN-PASCAL ROMAIN',
-              anneeDateDeNaissance: '1980',
-              moisDateDeNaissance: '06',
-              jourDateDeNaissance: '12',
+              annee_date_de_naissance: '1980',
+              mois_date_de_naissance: '06',
+              jour_date_de_naissance: '12',
+              date_naissance: '1980-06-12',
               sexe: 'M'
             },
             {
-              nomNaissance: 'NIDOUILLET',
-              nomUsuel: nil,
+              nom_naissance: 'NIDOUILLET',
+              nom_usage: nil,
               prenoms: 'JOSIANE',
-              anneeDateDeNaissance: '1981',
-              moisDateDeNaissance: '05',
-              jourDateDeNaissance: '02',
+              annee_date_de_naissance: '1981',
+              mois_date_de_naissance: '05',
+              jour_date_de_naissance: '02',
+              date_naissance: '1981-05-02',
               sexe: 'F'
             }
           ],
           enfants: [],
           adresse:
           {
-            identite: 'DU MONDE JEAN-PASCAL',
-            complementInformation: 'APPARTEMENT 2',
-            complementInformationGeographique: nil,
-            numeroLibelleVoie: nil,
-            lieuDit: nil,
-            codePostalVille: '81700 GARREVAQUES',
+            destinataire: 'DU MONDE JEAN-PASCAL',
+            complement_information: 'APPARTEMENT 2',
+            complement_information_geographique: nil,
+            numero_libelle_voie: nil,
+            lieu_dit: nil,
+            code_postal_ville: '81700 GARREVAQUES',
             pays: 'FRANCE'
           },
-          regime: 'CNAF',
-          quotientFamilial: 464,
-          annee: 2023,
-          mois: 6,
-          annee_calcul: 2021,
-          mois_calcul: 3
+          quotient_familial: {
+            fournisseur: 'CNAF',
+            valeur: 464,
+            annee: 2023,
+            mois: 6,
+            annee_calcul: 2021,
+            mois_calcul: 3
+          }
         }
       )
     end

@@ -70,7 +70,7 @@ cnav:
               type: string
               description: Nom de naissance de l'allocataire
               example: "JACQUES"
-            nom_usuel:
+            nom_usage:
               title: Nom d'usage
               type: string
               description: Nom d'usage de l'allocataire
@@ -81,24 +81,11 @@ cnav:
               type: string
               description: Prénoms de l'allocataire
               example: "JEAN-PIERRE THOMAS"
-            annee_date_de_naissance:
-              title: Année de naissance
+            date_naissance:
+              title: Date de naissance
+              description: Date de naissance de l'allocataire au format AAAA-MM-JJ
               type: string
-              example: '1966'
-              description: "Année de la date de naissance de l'allocataire. Peut-être vide si inconnue."
-              nullable: true
-            mois_date_de_naissance:
-              title: "Mois de naissance"
-              type: string
-              example: '01'
-              description: "Mois de la date de naissance de l'allocataire. Peut-être vide si inconnu."
-              nullable: true
-            jour_date_de_naissance:
-              title: "Jour de naissance"
-              type: string
-              example: '31'
-              description: "Jour de la date de naissance de l'allocataire. Peut-être vide si inconnu."
-              nullable: true
+              example: '2000-01-20'
             sexe:
               title: "Sexe"
               type: string
@@ -118,7 +105,7 @@ cnav:
               type: string
               description: Nom de naissance de l'enfant
               example: "DUPONT"
-            nom_usuel:
+            nom_usage:
               title: "Nom d'usage"
               type: string
               description: Nom d'usage de l'enfant
@@ -129,24 +116,11 @@ cnav:
               type: string
               description: Prénoms de l'enfant
               example: "JEAN-PIERRE THOMAS JUNIOR"
-            annee_date_de_naissance:
-              title: "Année de naissance"
+            date_naissance:
+              title: Date de naissance
+              description: Date de naissance de l'enfant au format AAAA-MM-JJ
               type: string
-              example: '2000'
-              description: "Année de la date de naissance de l'enfant. Peut-être vide si inconnue."
-              nullable: true
-            mois_date_de_naissance:
-              title: "Mois de naissance"
-              type: string
-              example: '06'
-              description: "Mois de la date de naissance de l'enfant. Peut-être vide si inconnu."
-              nullable: true
-            jour_date_de_naissance:
-              title: "Jour de naissance"
-              type: string
-              example: '30'
-              description: "Jour de la date de naissance de l'enfant. Peut-être vide si inconnu."
-              nullable: true
+              example: '2000-01-20'
             sexe:
               title: "Sexe"
               type: string
@@ -160,7 +134,7 @@ cnav:
         type: object
         description: Adresse au format de la poste
         properties:
-          identite:
+          destinataire:
             title: "Identité du destinataire"
             type: string
             example: "Monsieur JEAN JACQUES"
@@ -200,49 +174,54 @@ cnav:
             type: string
             description: Pays
             example: 'FRANCE'
-      regime:
-        title: "Régime de l'allocataire"
-        type: string
-        description: Précise le régime de l'allocataire, régime général (CNAF) ou agricole (MSA).
-        example: MSA
-        enum:
-          - CNAF
-          - MSA
       quotient_familial:
-        title: "Quotient familial CAF ou MSA"
-        type: integer
-        description: Valeur du quotient familial calculé par la CAF ou la MSA
-        example: 1045
-      annee:
-        title: "Année effective du QF"
-        type: integer
-        description: "Année effective du quotient familial appelé. 
-          \n\n
-          - Si aucune année et aucun mois n'ont été renseignés en paramètres d'appel, le quotient familial retourné sera celui du mois de l'année en cours.
-          - Si aucune année, ni aucun mois sont renseignés, l'appel est effectué par défaut avec l'année et le mois en cours.
-          - Si aucune année n'a été renseignée, et que le mois est renseigné, le quotient familial retourné sera celui du mois spécifié pour l'année en cours. En revanche, si la date finalement composée avec cette règle s'avère dans le futur (mois postérieur au moins en cours), l'API renvoie un erreur 400.
-          "
-        example: 2023
-      mois:
-        title: "Mois effectif du QF"
-        type: integer
-        description: "Mois effectif du quotient familial. 
-          \n\n
-          - Si aucun mois n'est renseigné, le mois en cours est utilisé par défaut.
-          - Si le mois renseigné est postérieur au mois en cours, et qu'il compose une date dans le futur avec l'année appelée, l'API renvoie une erreur 400.
-          \n
-          - Si aucun mois n'a été renseigné mais que l'année a été spécifiée en paramètres d'appel, le quotient familial retourné sera celui du mois en cours pour l'année spécifiée."
-        example: 6
-      annee_calcul:
-        title: "Année du calcul du QF"
-        type: integer
-        description: Année lors de laquelle le calcul du quotient familial demandé a été effectué. Cette année peut différer de l'année effective du quotient familial.
-        example: 2023
-      mois_calcul:
-        title: "Mois du calcul du QF"
-        type: integer
-        description: Mois lors duquel le calcul du quotient familial demandé a été effectué. Ce mois peut différer du mois effectif du quotient familial.
-        example: 9
+        title: "Quotient familial de la famille"
+        type: Object
+        description: "Données rattachée à l'attribution du quotient familial"
+        properties:
+          fournisseur:
+            title: "Fournisseur de l'allocataire"
+            type: string
+            description: Précise le fournisseur du quotient familial de l'allocataire, régime général (CNAF) ou agricole (MSA).
+            example: MSA
+            enum:
+              - CNAF
+              - MSA
+          valeur:
+            title: "Valeur du quotient familial CAF ou MSA"
+            type: integer
+            description: Valeur du quotient familial calculé par la CAF ou la MSA
+            example: 1045
+          annee:
+            title: "Année effective du QF"
+            type: integer
+            description: "Année effective du quotient familial appelé. 
+              \n\n
+              - Si aucune année et aucun mois n'ont été renseignés en paramètres d'appel, le quotient familial retourné sera celui du mois de l'année en cours.
+              - Si aucune année, ni aucun mois sont renseignés, l'appel est effectué par défaut avec l'année et le mois en cours.
+              - Si aucune année n'a été renseignée, et que le mois est renseigné, le quotient familial retourné sera celui du mois spécifié pour l'année en cours. En revanche, si la date finalement composée avec cette règle s'avère dans le futur (mois postérieur au moins en cours), l'API renvoie un erreur 400.
+              "
+            example: 2023
+          mois:
+            title: "Mois effectif du QF"
+            type: integer
+            description: "Mois effectif du quotient familial. 
+              \n\n
+              - Si aucun mois n'est renseigné, le mois en cours est utilisé par défaut.
+              - Si le mois renseigné est postérieur au mois en cours, et qu'il compose une date dans le futur avec l'année appelée, l'API renvoie une erreur 400.
+              \n
+              - Si aucun mois n'a été renseigné mais que l'année a été spécifiée en paramètres d'appel, le quotient familial retourné sera celui du mois en cours pour l'année spécifiée."
+            example: 6
+          annee_calcul:
+            title: "Année du calcul du QF"
+            type: integer
+            description: Année lors de laquelle le calcul du quotient familial demandé a été effectué. Cette année peut différer de l'année effective du quotient familial.
+            example: 2023
+          mois_calcul:
+            title: "Mois du calcul du QF"
+            type: integer
+            description: Mois lors duquel le calcul du quotient familial demandé a été effectué. Ce mois peut différer du mois effectif du quotient familial.
+            example: 9
 
   rsa:
     title: Statut revenu de solidarité active (RSA)
