@@ -252,14 +252,15 @@ cnav:
     tags:
       - Statut Revenu Solidarité Active (RSA)
     attributes:
-      status:
+      est_beneficiaire:
         title: "Statut bénéficiaire du revenu de solidarité active (RSA)"
-        type: string
-        description: "Indique si le particulier est bénéficiaire du revenu de solidarité active au moment de l'appel."
+        type: boolean
+        example: true
         enum:
-          - "beneficiaire"
-          - "non_beneficiaire"
-      majoration:
+        - true
+        - false
+        description: "Indique si le particulier est bénéficiaire du revenu de solidarité active au moment de l'appel."
+      avec_majoration:
         title: "Statut bénéficiaire de la majoration du RSA"
         type: boolean
         nullable: true
@@ -267,7 +268,7 @@ cnav:
           Nécessite un scope spécifique pour être envoyé.
           Sera null si le particulier n'est pas bénéficiaire du RSA."
         example: false
-      date_debut:
+      date_debut_droit:
         title: "Date d'ouverture du droit au RSA"
         type: string
         nullable: true
@@ -275,7 +276,7 @@ cnav:
           \n
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire du RSA."
         example: '1992-11-29'
-      date_fin:
+      date_fin_droit:
         title: "Date de fermeture du droit au revenu de solidarité active"
         type: string
         nullable: true

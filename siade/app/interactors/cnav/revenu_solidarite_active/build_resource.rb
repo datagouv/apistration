@@ -4,9 +4,10 @@ class CNAV::RevenuSolidariteActive::BuildResource < CNAV::BuildResource
   def resource_attributes
     {
       status:,
-      majoration:,
-      dateDebut: date_debut,
-      dateFin: date_fin
+      est_beneficiaire: !non_beneficiary?,
+      avec_majoration:,
+      date_debut_droit: date_debut,
+      date_fin_droit: date_fin
     }
   end
 
@@ -16,7 +17,7 @@ class CNAV::RevenuSolidariteActive::BuildResource < CNAV::BuildResource
     json_body['indicateur'] == 'NON_BENEFICIAIRE'
   end
 
-  def majoration
+  def avec_majoration
     return nil if non_beneficiary?
 
     case latest_open_prestation['cd']
