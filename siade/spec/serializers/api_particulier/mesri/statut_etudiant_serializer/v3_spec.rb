@@ -6,9 +6,9 @@ RSpec.describe APIParticulier::MESRI::StatutEtudiantSerializer::V3, type: :seria
   subject { described_class.new(bundled_data, current_user).serializable_hash }
 
   let(:bundled_data) { MESRI::StudentStatus::BuildResource.call(response:).bundled_data }
-  # rubocop:disable Style/OpenStructUse
+
   let(:response) { OpenStruct.new(body:) }
-  # rubocop:enable Style/OpenStructUse
+
   let(:body) { read_payload_file('mesri/student_status/with_ine_valid_response.json') }
 
   let(:current_user) { JwtUser.new(uid: SecureRandom.uuid, scopes:, jti: SecureRandom.uuid, iat: 1.year.ago.to_i, exp: 1.year.from_now.to_i) }

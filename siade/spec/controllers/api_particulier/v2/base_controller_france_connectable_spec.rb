@@ -9,12 +9,10 @@ RSpec.describe APIParticulier::V2::BaseController, 'france connectable' do
     include APIParticulier::FranceConnectable
 
     def show
-      # rubocop:disable Style/OpenStructUse
       organizer = OpenStruct.new(
         provider_name: 'dummy',
         errors: []
       )
-      # rubocop:enable Style/OpenStructUse
 
       if params[:test_invalid_franceconnect_params]
         organizer.errors = [UnprocessableEntityError.new(:gender)]

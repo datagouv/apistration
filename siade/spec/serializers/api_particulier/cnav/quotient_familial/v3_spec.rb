@@ -10,9 +10,8 @@ RSpec.describe APIParticulier::CNAV::QuotientFamilial::V3, type: :serializer do
   let(:annee) { Time.zone.today.year }
   let(:mois) { Time.zone.today.month }
 
-  # rubocop:disable Style/OpenStructUse
   let(:response) { OpenStruct.new(body:) }
-  # rubocop:enable Style/OpenStructUse
+
   let(:body) { read_payload_file('cnav/quotient_familial_v2/make_request_valid.json') }
 
   let(:current_user) { JwtUser.new(uid: SecureRandom.uuid, scopes:, jti: SecureRandom.uuid, iat: 1.year.ago.to_i, exp: 1.year.from_now.to_i) }

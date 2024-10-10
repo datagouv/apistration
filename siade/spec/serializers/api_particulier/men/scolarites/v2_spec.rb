@@ -4,7 +4,7 @@ RSpec.describe APIParticulier::MEN::Scolarites::V2, type: :serializer do
   let(:current_user) { JwtUser.new(uid: SecureRandom.uuid, scopes:, jti: SecureRandom.uuid, iat: 1.year.ago.to_i, exp: 1.year.from_now.to_i) }
 
   let(:resource) { MEN::Scolarites::BuildResource.call(response:).bundled_data.data }
-  let(:response) { OpenStruct.new(body:) } # rubocop:disable Style/OpenStructUse
+  let(:response) { OpenStruct.new(body:) }
   let(:body) { open_payload_file('men/scolarites/valid.json').read }
 
   let(:all_men_scopes) { %w[men_statut_scolarite men_statut_boursier men_echelon_bourse] }

@@ -176,6 +176,10 @@ Style/NumericLiterals:
     - "spec/requests/api/**/*_spec.rb"
     - "spec/support/rswag_*.rb"
 
+Style/OpenStructUse:
+  Exclude:
+    - "spec/**/*_spec.rb"
+
 # Do not force use of fail or raise only both have their use
 Style/SignalException:
   Enabled: false

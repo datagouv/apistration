@@ -4,7 +4,7 @@ RSpec.describe APIParticulier::CNOUS::StudentScholarship::V2, type: :serializer 
   let(:current_user) { JwtUser.new(uid: SecureRandom.uuid, scopes:, jti: SecureRandom.uuid, iat: 1.year.ago.to_i, exp: 1.year.from_now.to_i) }
 
   let(:resource) { CNOUS::BuildResource.call(response:).bundled_data.data }
-  let(:response) { OpenStruct.new(body:) } # rubocop:disable Style/OpenStructUse
+  let(:response) { OpenStruct.new(body:) }
   let(:body) { cnous_valid_payload('ine').to_json }
 
   let(:all_cnous_scopes) { %w[cnous_identite cnous_email cnous_statut_boursier cnous_echelon_bourse cnous_statut_bourse cnous_periode_versement cnous_ville_etudes] }

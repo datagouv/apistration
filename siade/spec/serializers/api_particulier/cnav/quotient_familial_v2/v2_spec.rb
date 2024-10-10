@@ -7,7 +7,7 @@ RSpec.describe APIParticulier::CNAV::QuotientFamilialV2::V2, type: :serializer d
   let(:mois) { Time.zone.today.month }
 
   let(:resource) { CNAV::QuotientFamilialV2::BuildResource.call(response:, params:).bundled_data.data }
-  let(:response) { OpenStruct.new(body:) } # rubocop:disable Style/OpenStructUse
+  let(:response) { OpenStruct.new(body:) }
   let(:body) { read_payload_file('cnav/quotient_familial_v2/make_request_valid.json') }
 
   let(:all_scopes) { %w[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse openid identite_pivot] }
