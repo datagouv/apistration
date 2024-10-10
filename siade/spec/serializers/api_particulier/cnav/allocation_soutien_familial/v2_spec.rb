@@ -2,9 +2,7 @@ RSpec.describe APIParticulier::CNAV::AllocationSoutienFamilial::V2, type: :seria
   subject(:serialized_resource) { described_class.new(bundled_data.data, { scope: current_user, scope_name: :current_user }).serializable_hash }
 
   let(:bundled_data) { CNAV::AllocationSoutienFamilial::BuildResource.call(response:).bundled_data }
-  # rubocop:disable Style/OpenStructUse
   let(:response) { OpenStruct.new(body:) }
-  # rubocop:enable Style/OpenStructUse
   let(:body) { read_payload_file('cnav/allocation_soutien_familial/make_request_valid.json') }
 
   let(:current_user) { JwtUser.new(uid: SecureRandom.uuid, scopes:, jti: SecureRandom.uuid, iat: 1.year.ago.to_i, exp: 1.year.from_now.to_i) }
