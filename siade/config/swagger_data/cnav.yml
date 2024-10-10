@@ -352,14 +352,15 @@ cnav:
     tags:
       - Statut Prime Activité
     attributes:
-      status:
+      est_beneficiaire:
         title: "Statut bénéficiaire de la prime d'activité"
-        type: string
-        description: "Indique si le particulier est bénéficiaire de la prime d'activité au moment de l'appel."
+        type: boolean
+        example: true
         enum:
-          - "beneficiaire"
-          - "non_beneficiaire"
-      majoration:
+        - true
+        - false
+        description: "Indique si le particulier est bénéficiaire de la prime d'activité au moment de l'appel."
+      avec_majoration:
         title: "Statut bénéficiaire de la majoration de la prime d'activité"
         type: boolean
         nullable: true
@@ -367,7 +368,7 @@ cnav:
           Ce champ est renvoyé si les droits du jeton (obtenus par habilitation) le permettent.
           Ce champ sera null si le particulier n'est pas bénéficiaire de la prime d'activité."
         example: false
-      date_debut:
+      date_debut_droit:
         title: "Date d'ouverture du droit à la prime d'activité"
         type: string
         nullable: true
@@ -375,7 +376,7 @@ cnav:
           \n
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de la prime d'activité."
         example: '1992-11-20'
-      date_fin:
+      date_fin_droit:
         title: "Date de fermeture du droit à la prime d'activité"
         type: string
         nullable: true

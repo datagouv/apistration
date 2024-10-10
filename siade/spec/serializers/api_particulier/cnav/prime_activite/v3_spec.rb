@@ -18,9 +18,9 @@ RSpec.describe APIParticulier::CNAV::PrimeActivite::V3, type: :serializer do
       let(:scopes) { %w[prime_activite] }
 
       it 'has status, date_debut and date_fin items' do
-        expect(subject[:data]).to have_key(:status)
-        expect(subject[:data]).to have_key(:date_debut)
-        expect(subject[:data]).to have_key(:date_fin)
+        expect(subject[:data]).to have_key(:est_beneficiaire)
+        expect(subject[:data]).to have_key(:date_debut_droit)
+        expect(subject[:data]).to have_key(:date_fin_droit)
       end
     end
   end
@@ -29,10 +29,10 @@ RSpec.describe APIParticulier::CNAV::PrimeActivite::V3, type: :serializer do
     let(:scopes) { %w[prime_activite prime_activite_majoration] }
 
     it 'has all items' do
-      expect(subject[:data]).to have_key(:status)
-      expect(subject[:data]).to have_key(:date_debut)
-      expect(subject[:data]).to have_key(:date_fin)
-      expect(subject[:data]).to have_key(:majoration)
+      expect(subject[:data]).to have_key(:est_beneficiaire)
+      expect(subject[:data]).to have_key(:date_debut_droit)
+      expect(subject[:data]).to have_key(:date_fin_droit)
+      expect(subject[:data]).to have_key(:avec_majoration)
     end
   end
 end

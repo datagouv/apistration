@@ -25,9 +25,10 @@ RSpec.describe CNAV::PrimeActivite::BuildResource, type: :build_resource do
         expect(subject).to eq(
           {
             status: 'beneficiaire',
-            majoration: false,
-            dateDebut: '2024-04-01',
-            dateFin: '2024-07-01'
+            est_beneficiaire: true,
+            avec_majoration: false,
+            date_debut_droit: '2024-04-01',
+            date_fin_droit: '2024-07-01'
           }
         )
       end
@@ -42,9 +43,10 @@ RSpec.describe CNAV::PrimeActivite::BuildResource, type: :build_resource do
         expect(subject).to eq(
           {
             status: 'beneficiaire',
-            majoration: true,
-            dateDebut: '2024-04-01',
-            dateFin: '2024-07-01'
+            est_beneficiaire: true,
+            avec_majoration: true,
+            date_debut_droit: '2024-04-01',
+            date_fin_droit: '2024-07-01'
           }
         )
       end
