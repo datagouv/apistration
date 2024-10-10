@@ -27,8 +27,10 @@ RSpec.describe CNAV::ComplementaireSanteSolidaire::BuildResource, type: :build_r
       expect(subject).to eq(
         {
           status: 'beneficiaire_avec_participation_financiere',
-          dateDebut: '2021-01-01',
-          dateFin: '2022-01-01'
+          est_beneficiaire: true,
+          avec_participation: true,
+          date_debut_droit: '2021-01-01',
+          date_fin_droit: '2022-01-01'
         }
       )
     end

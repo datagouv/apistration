@@ -4,8 +4,10 @@ class CNAV::ComplementaireSanteSolidaire::BuildResource < CNAV::BuildResource
   def resource_attributes
     {
       status:,
-      dateDebut: date_debut,
-      dateFin: date_fin
+      est_beneficiaire: !non_beneficiary?,
+      avec_participation: !non_beneficiary? && beneficiary_with_participation?,
+      date_debut_droit: date_debut,
+      date_fin_droit: date_fin
     }
   end
 
