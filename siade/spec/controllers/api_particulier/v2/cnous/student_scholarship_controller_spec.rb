@@ -130,6 +130,19 @@ RSpec.describe APIParticulier::V2::CNOUS::StudentScholarshipController do
 
       its(:status) { is_expected.to eq(409) }
     end
+
+    describe 'without dateDeNaissance (non regression test)' do
+      before do
+        mock_cnous_valid_call('civility')
+      end
+
+      let(:scopes) { all_cnous_scopes }
+      # rubocop:disable RSpec/VariableName
+      let(:dateDeNaissance) { nil }
+      # rubocop:enable RSpec/VariableName
+
+      its(:status) { is_expected.to eq(400) }
+    end
   end
 
   describe 'with france connect token' do

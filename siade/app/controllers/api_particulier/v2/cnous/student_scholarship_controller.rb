@@ -53,11 +53,16 @@ class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulier::
     {
       nom_naissance: params[:nom],
       prenoms: (params[:prenoms] || '').split,
-      annee_date_naissance: params[:dateDeNaissance].split('-').first,
-      mois_date_naissance: params[:dateDeNaissance].split('-').second,
-      jour_date_naissance: params[:dateDeNaissance].split('-').third,
       code_cog_insee_commune_naissance: params[:lieuDeNaissance],
       sexe_etat_civil: params[:sexe]
+    }.merge(date_naissance)
+  end
+
+  def date_naissance
+    {
+      annee_date_naissance: params[:dateDeNaissance]&.split('-')&.first,
+      mois_date_naissance: params[:dateDeNaissance]&.split('-')&.second,
+      jour_date_naissance: params[:dateDeNaissance]&.split('-')&.third
     }
   end
 
