@@ -71,7 +71,7 @@ GEM
     ast (2.4.2)
     attr_extras (7.1.0)
     base64 (0.2.0)
-    benchmark-ips (2.13.0)
+    benchmark-ips (2.14.0)
     bigdecimal (3.1.8)
     brakeman (6.2.1)
       racc
@@ -95,18 +95,23 @@ GEM
       rexml
     crass (1.0.6)
     csv (3.3.0)
-    dead_end (4.0.0)
-    derailed_benchmarks (2.1.2)
+    derailed_benchmarks (2.2.0)
+      base64
       benchmark-ips (~> 2)
-      dead_end
+      bigdecimal
+      drb
       get_process_mem (~> 0)
       heapy (~> 0)
+      logger
       memory_profiler (>= 0, < 2)
       mini_histogram (>= 0.3.0)
+      mutex_m
+      ostruct
       rack (>= 1)
       rack-test
       rake (> 10, < 14)
-      ruby-statistics (>= 2.1)
+      ruby-statistics (>= 4.0.1)
+      ruby2_keywords
       thor (>= 0.19, < 2)
     diff-lcs (1.5.1)
     docile (1.4.0)
@@ -120,7 +125,13 @@ GEM
       net-http
     faraday-retry (2.2.1)
       faraday (~> 2.0)
-    ffi (1.16.3)
+    ffi (1.17.0)
+    ffi (1.17.0-aarch64-linux-gnu)
+    ffi (1.17.0-arm-linux-gnu)
+    ffi (1.17.0-arm64-darwin)
+    ffi (1.17.0-x86-linux-gnu)
+    ffi (1.17.0-x86_64-darwin)
+    ffi (1.17.0-x86_64-linux-gnu)
     fog-core (2.4.0)
       builder
       excon (~> 0.71)
@@ -183,6 +194,7 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     lockbox (1.4.1)
+    logger (1.6.1)
     logstasher (2.1.5)
       activesupport (>= 5.2)
       request_store
@@ -191,7 +203,7 @@ GEM
       nokogiri (>= 1.12.0)
     lumberjack (1.2.10)
     marcel (1.0.4)
-    memory_profiler (1.0.1)
+    memory_profiler (1.1.0)
     method_source (1.0.0)
     mime-types (3.5.2)
       mime-types-data (~> 3.2015)
@@ -239,6 +251,7 @@ GEM
       commonmarker (>= 1.0)
     openssl (3.2.0)
     optimist (3.1.0)
+    ostruct (0.6.0)
     ox (2.14.18)
     parallel (1.26.3)
     parser (3.3.5.0)
@@ -265,7 +278,7 @@ GEM
     puma (6.4.3)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.1.7)
+    rack (3.1.8)
     rack-attack (6.7.0)
       rack (>= 1.0, < 4)
     rack-cors (2.0.2)
@@ -375,7 +388,8 @@ GEM
       rubocop-rspec (~> 3, >= 3.0.1)
     ruby-progressbar (1.13.0)
     ruby-rc4 (0.1.5)
-    ruby-statistics (3.0.2)
+    ruby-statistics (4.0.1)
+    ruby2_keywords (0.0.5)
     sawyer (0.9.2)
       addressable (>= 2.3.5)
       faraday (>= 0.17.3, < 3)
