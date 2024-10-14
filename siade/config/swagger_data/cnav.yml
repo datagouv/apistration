@@ -176,7 +176,7 @@ cnav:
             example: 'FRANCE'
       quotient_familial:
         title: "Quotient familial de la famille"
-        type: Object
+        type: object
         description: "Données rattachée à l'attribution du quotient familial"
         properties:
           fournisseur:
