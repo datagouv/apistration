@@ -17,11 +17,11 @@ RSpec.describe FranceTravail::Indemnites::BuildResource, type: :build_resource d
           identifiant:,
           paiements: [
             {
-              date: Date.new(2023, 7, 3),
-              montant: 123.4,
-              allocations: 123.4,
-              aides: 0.0,
-              autres: 0.0
+              date_versement: Date.new(2023, 7, 3),
+              montant_total: 123.4,
+              montant_allocations: 123.4,
+              montant_aides: 0.0,
+              montant_autres: 0.0
             }
           ]
         }

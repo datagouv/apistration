@@ -17,11 +17,11 @@ class FranceTravail::Indemnites::BuildResource < BuildResource
   def payments
     json_body['listePaiement'].map do |payment|
       {
-        date: Date.parse(payment['datePaiement']),
-        montant: payment['montantPaiement'],
-        allocations: payment['allocations'],
-        aides: payment['aides'],
-        autres: payment['autresPaiements']
+        date_versement: Date.parse(payment['datePaiement']),
+        montant_total: payment['montantPaiement'],
+        montant_allocations: payment['allocations'],
+        montant_aides: payment['aides'],
+        montant_autres: payment['autresPaiements']
       }
     end
   end
