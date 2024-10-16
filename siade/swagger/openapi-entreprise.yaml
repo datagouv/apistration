@@ -665,8 +665,8 @@ paths:
           type: number
       security:
       - jwt_bearer_token: []
-      description: Certifications RGE (Reconnu Garant de l'Environnement), d'un établissement,
-        délivrée par l'Ademe.
+      description: Certifications RGE (Reconnu Garant de l'Environnement) d'un établissement,
+        délivrées par l'Ademe.
       responses:
         '401':
           description: Non autorisé

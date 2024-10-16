@@ -27,83 +27,146 @@ france_travail:
           tel que choisi par le particulier lors de la création de son
           espace personnel en ligne.
         example: martin.jacques
-      civilite:
-        title: Civilité
-        description: Civilité du demandeur d'emploi, Madame ou Monsieur
-        type: string
-        example: M.
-        enum:
-        - MME
-        - M.
-      nom:
-        title: Nom de naissance
-        type: string
-        description: Nom de naissance du demandeur d'emploi
-        example: MARTIN
-      nom_usage:
-        title: Nom d'usage
-        type: string
-        description: Nom d'usage du demandeur d'emploi
-        nullable: true
-        example:
-      prenom:
-        title: Prénom
-        type: string
-        example: JACQUES
-        description: Prénom ddu demandeur d'emploi, limité à 13 caractères
-      sexe:
-        title: Sexe
-        type: string
-        description: Sexe du demandeur d'emploi
-        example: Masculin
-      date_naissance:
-        title: Date de naissance
-        format: date
-        type: string
-        description: Date de naissance du demandeur d'emploi au format YYYY-MM-DD
-        example: 1995-02-02
-      code_certification_cnav:
-        title: Code du statut de certification d'identité CNAV
-        type: string
-        description: |
-          France Travail dépend d'un flux de certification
-          d'identité émis par la CNAV, un particulier peut avoir été
-          certifié ou non. Sont considérés comme certifiés, les statuts suivants :
-            - VC IDENTITE CERTIFIEE
-            - IC : IDENTITE ASSIMILEE CERTIFIEE
-            - PC : IDENTITE CERTIFIEE PARTIELLEMENT
-          Sont considérés comme non-certifiés :
-            - AC : ATTENTE TRAITEMENT RETOUR CNAV
-            - DC : DEMANDE CERTIF. ENVOYEE
-            - EC : ECHEC DE CERTIFICATION CNAV
-            - RC : REFUS PROPOSITION DE CERTIFICATION
-            - null : IDENTITE NON CERTIFIEE
-        example: VC
-        enum:
-        - VC
-        - IC
-        - PC
-        - AC
-        - DC
-        - RC
-        - null
-      telephone:
-        title: Téléphone principal
-        type: string
-        description: Numéro de téléphone principal du demandeur d'emploi
-        example: '0636676767'
-      telephone2:
-        title: Téléphone secondaire
-        type: string
-        description: Numéro de téléphone secondaire du demandeur d'emploi
-        nullable: true
-        example: '1122334455'
-      email:
-        title: E-mail
-        type: string
-        nullable: true
-        description: Adresse e-mail du demandeur d'emploi
-        example: martin.jacques@france.fr
+      identite:
+        title: Identité
+        description : Donnée d'identité de l'utilisateur France Travail
+        type: object
+        properties:
+          civilite:
+            title: Civilité
+            description: Civilité du demandeur d'emploi, Madame ou Monsieur
+            type: string
+            example: M.
+            enum:
+            - MME
+            - M.
+          nom_naissance:
+            title: Nom de naissance
+            type: string
+            description: Nom de naissance du demandeur d'emploi
+            example: MARTIN
+          nom_usage:
+            title: Nom d'usage
+            type: string
+            description: Nom d'usage du demandeur d'emploi
+            nullable: true
+            example:
+          prenom:
+            title: Prénom
+            type: string
+            example: JACQUES
+            description: Prénom ddu demandeur d'emploi, limité à 13 caractères
+          sexe:
+            title: Sexe
+            type: string
+            description: Sexe du demandeur d'emploi
+            example: Masculin
+          date_naissance:
+            title: Date de naissance
+            format: date
+            type: string
+            description: Date de naissance du demandeur d'emploi au format YYYY-MM-DD
+            example: 1995-02-02
+      contact:
+        title: Contact
+        description: Donnée de contact de l'utilisateur France Travail
+        type: object
+        properties: 
+          telephone:
+            title: Téléphone principal
+            type: string
+            description: Numéro de téléphone principal du demandeur d'emploi
+            example: '0636676767'
+          telephone2:
+            title: Téléphone secondaire
+            type: string
+            description: Numéro de téléphone secondaire du demandeur d'emploi
+            nullable: true
+            example: '1122334455'
+          email:
+            title: E-mail
+            type: string
+            nullable: true
+            description: Adresse e-mail du demandeur d'emploi
+            example: martin.jacques@france.fr
+      inscription:
+        title: Inscription
+        description: Donnée relative à l'inscription de l'utilisateur France Travail
+        type: object
+        properties:
+          date_debut:
+            title: Date d'inscription
+            format: date
+            type: string
+            description: Date d'inscription à France Travail au format YYYY-MM-DD
+            example: 2021-01-07
+          date_fin:
+            title: Date de cessation d'inscription au format YYYY-MM-DD
+            description: Date de cessation d'inscription à France Travail
+            type: string
+            format: date
+            nullable: true
+            example: 2023-03-12
+          categorie:
+            title: Categorie
+            description: Donnée relative à la catégorie de l'inscription de l'utilisateur France Travail
+            type: object
+            properties:
+              code:
+                title: Code de la catégorie d'inscription
+                description: |
+                  Code de la catégorie d'inscription du particulier à France Travail.
+                    - 1 : PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS
+                    - 2 : PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PARTIEL
+                    - 3 : PERSONNE SANS EMPLOI DISPONIBLE DUREE DETERMINEE OU SAISON
+                    - 4 : PERSONNE SANS EMPLOI NON DISPONIBLE IMMEDIATEMENT
+                    - 5 : PERSONNE POURVUE D'UN EMPLOI A LA RECHERCHE D'UN AUTRE"
+                type: integer
+                example: 1
+                enum:
+                - 1
+                - 2
+                - 3
+                - 4
+                - 5
+              libelle:
+                title: Libellé de la catégorie d'inscription
+                description: Libellé de la catégorie d'inscription du particulier
+                  à France Travail, associé au cod précédent.
+                type: string
+                example: PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN
+                  TPS
+                enum:
+                - PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS
+                - PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PARTIEL
+                - PERSONNE SANS EMPLOI DISPONIBLE DUREE DETERMINEE OU SAISON
+                - PERSONNE SANS EMPLOI NON DISPONIBLE IMMEDIATEMENT
+                - PERSONNE POURVUE D'UN EMPLOI A LA RECHERCHE D'UN AUTRE
+          code_certification_cnav:
+            title: Code du statut de certification d'identité CNAV
+            type: string
+            description: |
+              France Travail dépend d'un flux de certification
+              d'identité émis par la CNAV, un particulier peut avoir été
+              certifié ou non. Sont considérés comme certifiés, les statuts suivants :
+                - VC IDENTITE CERTIFIEE
+                - IC : IDENTITE ASSIMILEE CERTIFIEE
+                - PC : IDENTITE CERTIFIEE PARTIELLEMENT
+              Sont considérés comme non-certifiés :
+                - AC : ATTENTE TRAITEMENT RETOUR CNAV
+                - DC : DEMANDE CERTIF. ENVOYEE
+                - EC : ECHEC DE CERTIFICATION CNAV
+                - RC : REFUS PROPOSITION DE CERTIFICATION
+                - null : IDENTITE NON CERTIFIEE
+            example: VC
+            enum:
+            - VC
+            - IC
+            - PC
+            - AC
+            - DC
+            - RC
+            - null
       adresse:
         title: Adresse
         type: object
@@ -115,7 +178,7 @@ france_travail:
             type: string
             description: Code postal
             example: '75001'
-          insee_commune:
+          code_cog_insee_commune:
             type: string
             example: '75101'
           localite:
@@ -139,49 +202,6 @@ france_travail:
           ligne_nom:
             type: string
             example: MARTIN
-      date_inscription:
-        title: Date d'inscription
-        format: date
-        type: string
-        description: Date d'inscription à France Travail au format YYYY-MM-DD
-        example: 2021-01-07
-      date_cessation_inscription:
-        title: Date de cessation d'inscription au format YYYY-MM-DD
-        description: Date de cessation d'inscription à France Travail
-        type: string
-        format: date
-        nullable: true
-        example: 2023-03-12
-      code_categorie_inscription:
-        title: Code de la catégorie d'inscription
-        description: |
-          Code de la catégorie d'inscription du particulier à France Travail.
-            - 1 : PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS
-            - 2 : PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PARTIEL
-            - 3 : PERSONNE SANS EMPLOI DISPONIBLE DUREE DETERMINEE OU SAISON
-            - 4 : PERSONNE SANS EMPLOI NON DISPONIBLE IMMEDIATEMENT
-            - 5 : PERSONNE POURVUE D'UN EMPLOI A LA RECHERCHE D'UN AUTRE"
-        type: integer
-        example: 1
-        enum:
-        - 1
-        - 2
-        - 3
-        - 4
-        - 5
-      libelle_categorie_inscription:
-        title: Libellé de la catégorie d'inscription
-        description: Libellé de la catégorie d'inscription du particulier
-          à France Travail, associé au cod précédent.
-        type: string
-        example: PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN
-          TPS
-        enum:
-        - PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS
-        - PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PARTIEL
-        - PERSONNE SANS EMPLOI DISPONIBLE DUREE DETERMINEE OU SAISON
-        - PERSONNE SANS EMPLOI NON DISPONIBLE IMMEDIATEMENT
-        - PERSONNE POURVUE D'UN EMPLOI A LA RECHERCHE D'UN AUTRE
 
   indemnites:
     title: "Paiements versés par France Travail"

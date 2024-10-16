@@ -2,10 +2,11 @@ class FranceTravail::Statut::BuildResource < BuildResource
   def resource_attributes
     {
       identifiant:,
-      adresse: address_attributes
-    }.merge(identity_attributes)
-      .merge(contact_attributes)
-      .merge(inscription_attributes)
+      adresse:,
+      identite:,
+      contact:,
+      inscription:
+    }
   end
 
   private
@@ -14,70 +15,66 @@ class FranceTravail::Statut::BuildResource < BuildResource
     context.params[:identifiant]
   end
 
-  def identity_attributes
-    build_hash_from_attributes(
-      json_body,
-      %i[
-        civilite
-        nom
-        nomUsage
-        prenom
-        sexe
-        dateNaissance
-      ]
-    )
+  # rubocop:disable Metrics/AbcSize
+  def identite
+    {
+      nom_naissance: string_value_or_nil(json_body['nom']),
+      civilite: string_value_or_nil(json_body['civilite']),
+      nom_usage: string_value_or_nil(json_body['nomUsage']),
+      prenom: string_value_or_nil(json_body['prenom']),
+      sexe: string_value_or_nil(json_body['sexe']),
+      date_naissance: format_date(json_body['dateNaissance'])
+    }
+  end
+  # rubocop:enable Metrics/AbcSize
+
+  def contact
+    {
+      email: string_value_or_nil(json_body['email']),
+      telephone: string_value_or_nil(json_body['telephone']),
+      telephone2: string_value_or_nil(json_body['telephone2'])
+    }
   end
 
-  def contact_attributes
-    build_hash_from_attributes(
-      json_body,
-      %i[
-        email
-        telephone
-        telephone2
-      ]
-    )
+  def inscription
+    {
+      code_certification_cnav: string_value_or_nil(json_body['codeCertificationCNAV']),
+      date_debut: format_date(json_body['dateInscription']),
+      date_fin: format_date(json_body['dateCessationInscription']),
+      categorie: {
+        code: string_value_or_nil(json_body['categorieInscription']).to_i,
+        libelle: string_value_or_nil(json_body['libellecategorieInscription'])
+      }
+    }
   end
 
-  def inscription_attributes
-    build_hash_from_attributes(
-      json_body,
-      %i[
-        dateInscription
-        dateCessationInscription
-        codeCertificationCNAV
-      ]
-    ).merge(
-      codeCategorieInscription: string_value_or_nil(json_body['categorieInscription']),
-      libelleCategorieInscription: string_value_or_nil(json_body['libellecategorieInscription'])
-    )
+  # rubocop:disable Metrics/AbcSize
+  def adresse
+    {
+      code_postal: string_value_or_nil(json_body['adresse']['codePostal']),
+      code_cog_insee_commune: string_value_or_nil(json_body['adresse']['INSEECommune']),
+      localite: string_value_or_nil(json_body['adresse']['localite']),
+      ligne_voie: string_value_or_nil(json_body['adresse']['ligneVoie']),
+      ligne_complement_adresse: string_value_or_nil(json_body['adresse']['ligneComplementAdresse']),
+      ligne_complement_destinataire: string_value_or_nil(json_body['adresse']['ligneComplementDestinataire']),
+      ligne_complement_distribution: string_value_or_nil(json_body['adresse']['ligneComplementDistribution']),
+      ligne_nom: string_value_or_nil(json_body['adresse']['ligneNom'])
+    }
   end
-
-  def address_attributes
-    build_hash_from_attributes(
-      json_body['adresse'],
-      %i[
-        INSEECommune
-        codePostal
-        ligneComplementAdresse
-        ligneComplementDestinataire
-        ligneComplementDistribution
-        ligneNom
-        ligneVoie
-        localite
-      ]
-    )
-  end
-
-  def build_hash_from_attributes(data, attributes)
-    attributes.index_with do |attribute|
-      string_value_or_nil(data[attribute.to_s])
-    end
-  end
+  # rubocop:enable Metrics/AbcSize
 
   def string_value_or_nil(datum)
     return if datum.blank?
 
     datum
+  end
+
+  def format_date(date)
+    parsed_date = string_value_or_nil(date)
+    if parsed_date.blank?
+      parsed_date
+    else
+      Date.parse(parsed_date).to_s
+    end
   end
 end

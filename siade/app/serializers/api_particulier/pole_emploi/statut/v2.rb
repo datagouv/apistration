@@ -1,55 +1,64 @@
 class APIParticulier::PoleEmploi::Statut::V2 < APIParticulier::V2BaseSerializer
-  %i[
-    identifiant
-    civilite
-    nom
-    nomUsage
-    prenom
-    sexe
-  ].each do |resource_attribute|
-    attribute resource_attribute, if: -> { scope?(:pole_emploi_identite) }
+  attribute :identifiant, if: -> { scope?(:pole_emploi_identite) } do
+    object.identifiant
   end
 
-  %i[
-    codeCertificationCNAV
-    libelleCategorieInscription
-  ].each do |resource_attribute|
-    attribute resource_attribute, if: -> { scope?(:pole_emploi_inscription) }
+  attribute :civilite, if: -> { scope?(:pole_emploi_identite) } do
+    binding
+    object.identite[:civilite]
   end
 
-  %i[
-    email
-    telephone
-    telephone2
-  ].each do |resource_attribute|
-    attribute resource_attribute, if: -> { scope?(:pole_emploi_contact) }
+  attribute :nom, if: -> { scope?(:pole_emploi_identite) } do
+    object.identite[:nom_naissance]
+  end
+
+  attribute :nomUsage, if: -> { scope?(:pole_emploi_identite) } do
+    object.identite[:nom_usage]
+  end
+
+  attribute :prenom, if: -> { scope?(:pole_emploi_identite) } do
+    object.identite[:prenom]
+  end
+
+  attribute :sexe, if: -> { scope?(:pole_emploi_identite) } do
+    object.identite[:sexe]
+  end
+
+  attribute :dateNaissance, if: -> { scope?(:pole_emploi_identite) } do
+    object.identite[:date_naissance]
+  end
+
+  attribute :codeCertificationCNAV, if: -> { scope?(:pole_emploi_inscription) } do
+    object.inscription[:code_certification_cnav]
+  end
+
+  attribute :codeCategorieInscription, if: -> { scope?(:pole_emploi_inscription) } do
+    object.inscription[:categorie][:code]
+  end
+
+  attribute :libelleCategorieInscription, if: -> { scope?(:pole_emploi_inscription) } do
+    object.inscription[:categorie][:libelle]
+  end
+
+  attribute :dateInscription, if: -> { scope?(:pole_emploi_inscription) } do
+    object.inscription[:date_debut]
+  end
+
+  attribute :dateCessationInscription, if: -> { scope?(:pole_emploi_inscription) } do
+    object.inscription[:date_fin]
   end
 
   attribute :adresse, if: -> { scope?(:pole_emploi_adresse) }
 
-  attribute :dateNaissance, if: -> { scope?(:pole_emploi_identite) } do
-    format_date(object.dateNaissance)
+  attribute :email, if: -> { scope?(:pole_emploi_contact) } do
+    object.contact[:email]
   end
 
-  attribute :dateInscription, if: -> { scope?(:pole_emploi_inscription) } do
-    format_date(object.dateInscription)
+  attribute :telephone, if: -> { scope?(:pole_emploi_contact) } do
+    object.contact[:telephone]
   end
 
-  attribute :dateCessationInscription, if: -> { scope?(:pole_emploi_inscription) } do
-    format_date(object.dateCessationInscription)
-  end
-
-  attribute :codeCategorieInscription, if: -> { scope?(:pole_emploi_inscription) } do
-    object.codeCategorieInscription.to_i
-  end
-
-  private
-
-  def format_date(date)
-    if date.blank?
-      date
-    else
-      Date.parse(date).to_s
-    end
+  attribute :telephone2, if: -> { scope?(:pole_emploi_contact) } do
+    object.contact[:telephone2]
   end
 end

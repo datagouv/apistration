@@ -247,6 +247,7 @@ shared:
   api_particulier/v3_and_more/france_travail/indemnites_with_identifiant:
     - pole_emploi_paiements
   api_particulier/v3_and_more/france_travail/statut_with_identifiant:
+    - pole_emploi_identifiant
     - pole_emploi_identite
     - pole_emploi_adresse
     - pole_emploi_contact

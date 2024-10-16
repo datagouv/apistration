@@ -19,29 +19,37 @@ RSpec.describe FranceTravail::Statut::BuildResource, type: :build_resource do
       expect(subject).to eq(
         {
           identifiant:,
-          civilite: 'M.',
-          nom: 'DUPONT',
-          nomUsage: nil,
-          prenom: 'JEAN',
-          sexe: 'Masculin',
-          dateNaissance: '1990-01-01T00:00:00+01:00',
-          email: 'jean.dupont@france.fr',
-          telephone: '0636656565',
-          telephone2: nil,
-          dateInscription: '2020-01-01T00:00:00+01:00',
-          dateCessationInscription: nil,
-          codeCertificationCNAV: 'VC',
-          codeCategorieInscription: '1',
-          libelleCategorieInscription: 'PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS',
+          identite: {
+            civilite: 'M.',
+            nom_naissance: 'DUPONT',
+            nom_usage: nil,
+            prenom: 'JEAN',
+            sexe: 'Masculin',
+            date_naissance: '1990-01-01'
+          },
+          contact: {
+            email: 'jean.dupont@france.fr',
+            telephone: '0636656565',
+            telephone2: nil
+          },
+          inscription: {
+            date_debut: '2020-01-01',
+            date_fin: nil,
+            categorie: {
+              code: 1,
+              libelle: 'PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS'
+            },
+            code_certification_cnav: 'VC'
+          },
           adresse: {
-            INSEECommune: '75107',
-            codePostal: '75007',
-            ligneComplementAdresse: nil,
-            ligneComplementDestinataire: 'APPARTEMENT 42',
-            ligneComplementDistribution: nil,
-            ligneNom: 'DUPONT',
-            ligneVoie: '42 RUE DE LA PAIX',
-            localite: '75001 PARIS'
+            code_postal: '75007',
+            code_cog_insee_commune: '75107',
+            localite: '75001 PARIS',
+            ligne_voie: '42 RUE DE LA PAIX',
+            ligne_complement_adresse: nil,
+            ligne_complement_destinataire: 'APPARTEMENT 42',
+            ligne_complement_distribution: nil,
+            ligne_nom: 'DUPONT'
           }
         }
       )
