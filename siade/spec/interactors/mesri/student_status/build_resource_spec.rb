@@ -19,19 +19,22 @@ RSpec.describe MESRI::StudentStatus::BuildResource, type: :build_resource do
         expect(subject).to eq(
           {
             ine: '1234567890G',
-            nom: 'Dupont',
-            prenom: 'Jean',
-            dateNaissance: '2000-01-01',
-            inscriptions: [
+            identite: {
+              nom_naissance: 'Dupont',
+              prenom: 'Jean',
+              date_naissance: '2000-01-01'
+            },
+            admissions: [
               {
-                statut: 'inscrit',
-                regime: 'formation initiale',
-                dateDebutInscription: '2020-07-01',
-                dateFinInscription: '2021-08-31',
-                codeCommune: '75113',
-                etablissement: {
+                date_debut: '2020-07-01',
+                date_fin: '2021-08-31',
+                est_inscrit: true,
+                regime_formation: 'formation initiale',
+                code_formation: 'RF1',
+                code_cog_insee_commune: '75113',
+                etablissement_etudes: {
                   uai: '0751967F',
-                  nomEtablissement: 'UFR ECONOMIE UNIVERSITE PARIS 1 (75634)'
+                  nom: 'UFR ECONOMIE UNIVERSITE PARIS 1 (75634)'
                 }
               }
             ]
@@ -53,19 +56,22 @@ RSpec.describe MESRI::StudentStatus::BuildResource, type: :build_resource do
         expect(subject).to eq(
           {
             ine: nil,
-            nom: 'Dupont',
-            prenom: 'Jean',
-            dateNaissance: '2000-01-01',
-            inscriptions: [
+            identite: {
+              nom_naissance: 'Dupont',
+              prenom: 'Jean',
+              date_naissance: '2000-01-01'
+            },
+            admissions: [
               {
-                statut: 'inscrit',
-                regime: 'formation initiale',
-                dateDebutInscription: '2020-07-01',
-                dateFinInscription: '2021-08-31',
-                codeCommune: '75113',
-                etablissement: {
+                date_debut: '2020-07-01',
+                date_fin: '2021-08-31',
+                est_inscrit: true,
+                regime_formation: 'formation initiale',
+                code_formation: 'RF1',
+                code_cog_insee_commune: '75113',
+                etablissement_etudes: {
                   uai: '0751967F',
-                  nomEtablissement: 'UFR ECONOMIE UNIVERSITE PARIS 1 (75634)'
+                  nom: 'UFR ECONOMIE UNIVERSITE PARIS 1 (75634)'
                 }
               }
             ]

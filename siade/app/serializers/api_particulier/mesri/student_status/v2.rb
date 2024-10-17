@@ -9,10 +9,22 @@ class APIParticulier::MESRI::StudentStatus::V2 < APIParticulier::V2BaseSerialize
     attribute resource_attribute, if: -> { scope?(:mesri_identite) }
   end
 
+  attribute :nom, if: -> { scope?(:mesri_identite) } do
+    object.identite[:nom_naissance]
+  end
+
+  attribute :prenom, if: -> { scope?(:mesri_identite) } do
+    object.identite[:prenom]
+  end
+
+  attribute :dateNaissance, if: -> { scope?(:mesri_identite) } do
+    object.identite[:date_naissance]
+  end
+
   attribute :inscriptions, if: -> { one_of_scopes?(%i[mesri_inscription_etudiant mesri_inscription_autre mesri_admission mesri_etablissements]) }
 
   def inscriptions
-    object.inscriptions.map do |initial_inscription|
+    object.admissions.map do |initial_inscription|
       final_inscription = {}
 
       handle_inscription_etudiant_scope!(initial_inscription, final_inscription)
@@ -33,35 +45,35 @@ class APIParticulier::MESRI::StudentStatus::V2 < APIParticulier::V2BaseSerialize
   private
 
   def handle_inscription_etudiant_scope!(initial_inscription, final_inscription)
-    return unless scope?(:mesri_inscription_etudiant) && initial_inscription[:statut] == 'inscrit' && formation_initiale_regime.include?(initial_inscription[:regime])
+    return unless scope?(:mesri_inscription_etudiant) && initial_inscription[:est_inscrit] == true && formation_initiale_regime.include?(initial_inscription[:regime_formation])
 
     final_inscription.merge!(
       statut: 'inscrit',
       regime: 'formation initiale',
-      dateDebutInscription: initial_inscription[:dateDebutInscription],
-      dateFinInscription: initial_inscription[:dateFinInscription]
+      dateDebutInscription: initial_inscription[:date_debut],
+      dateFinInscription: initial_inscription[:date_fin]
     )
   end
 
   def handle_inscription_autre_scope!(initial_inscription, final_inscription)
-    return unless scope?(:mesri_inscription_autre) && initial_inscription[:statut] == 'inscrit' && formation_continue_regime.include?(initial_inscription[:regime])
+    return unless scope?(:mesri_inscription_autre) && initial_inscription[:est_inscrit] == true && formation_continue_regime.include?(initial_inscription[:regime_formation])
 
     final_inscription.merge!(
       statut: 'inscrit',
       regime: 'formation continue',
-      dateDebutInscription: initial_inscription[:dateDebutInscription],
-      dateFinInscription: initial_inscription[:dateFinInscription]
+      dateDebutInscription: initial_inscription[:date_debut],
+      dateFinInscription: initial_inscription[:date_fin]
     )
   end
 
   def handle_admission_scope!(initial_inscription, final_inscription)
-    return unless scope?(:mesri_admission) && initial_inscription[:statut] == 'admis'
+    return unless scope?(:mesri_admission) && initial_inscription[:est_inscrit] == false
 
     final_inscription.merge!(
       statut: 'admis',
-      regime: initial_inscription[:regime],
-      dateDebutAdmission: initial_inscription[:dateDebutInscription],
-      dateFinAdmission: initial_inscription[:dateFinInscription]
+      regime: initial_inscription[:regime_formation],
+      dateDebutAdmission: initial_inscription[:date_debut],
+      dateFinAdmission: initial_inscription[:date_fin]
     )
   end
 

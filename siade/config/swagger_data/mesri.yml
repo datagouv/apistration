@@ -5,71 +5,90 @@ mesri:
     tags:
       - Statut étudiant
     attributes:
-      nom:
-        title: Nom de naissance
-        type: string
-        description: Nom de naissance de l'étudiant
-        example: Moustaki
-      prenom:
-        title: Prénom
-        type: string
-        description: Prénom de l'étudiant
-        example: Georges
-      date_naissance:
-        title: Date de naissance
-        type: string
-        format: date
-        description: Date de naissance de l'étudiant
-        example: 1992-11-29
-      inscriptions:
+      identite:
+        title: Identité
+        description: Donnée d'identité de l'étudiant
+        type: object
+        properties: 
+          nom_naissance:
+            title: Nom de naissance
+            type: string
+            description: Nom de naissance de l'étudiant
+            example: Moustaki
+          prenom:
+            title: Prénom
+            type: string
+            description: Prénom de l'étudiant
+            example: Georges
+          date_naissance:
+            title: Date de naissance
+            type: string
+            format: date
+            description: Date de naissance de l'étudiant
+            example: 1992-11-29
+      admissions:
         title: Liste des admissions et inscriptions de l'étudiant pour
           l'année en cours
         type: array
         items:
           type: object
           properties:
-            date_debut_inscription:
+            date_debut:
               title: Date de début d'inscription
               type: string
               format: date
               description: Date de début de la période d'études dans l'établissement
               example: 2022-09-01
-            date_fin_inscription:
+            date_fin:
               title: Date de fin d'inscription
               type: string
               format: date
               description: Date de fin de la période d'étude dans l'établissement
               example: 2023-08-31
-            statut:
+            est_inscrit:
               title: Statut de l'inscription
-              type: string
-              description: |
-                Statut de l'inscription de l'étudiant. Il existe deux modalités différentes :
-                - admis : l'étudiant est pré-inscrit dans l'établissement mais la procédure complète d'inscription et le règlement des droits d'inscription ne sont pas terminés. Les étudiants "admis" passent au statut "inscrit" une fois leurs droits d'inscription régularisés (paiement des droits, premier versement des droits ou acquittement des droits selon la situation de l'étudiant et les règles de l'établissement.) Tous les étudiants "admis" ne sont donc pas forcément de futurs étudiants "inscrits".
-
-                - inscrit : l'étudiant est inscrit dans l'établissement car il est en règle de ses droits d'inscription. L'étudiant peut être inscrit dans plusieurs établissements."
-              example: admis
+              type: boolean
+              example: true
               enum:
-              - admis
-              - inscrit
-            regime:
+              - true
+              - false
+              description: |
+                Statut de l'inscription de l'étudiant. Si l'étudiant n'est pas inscrit, c'est qu'il est admis dans l'établissement
+            regime_formation:
               title: Régime de formation
               type: string
               description: |
-                Régime de formation de l'étudiant. Il existe deux modalités différentes :
-                - formation initiale : Ce champ indique que l'étudiant est en formation initiale, soit dans une des situations suivantes : formation initiale classique, reprise d'études non financée sans convention et contrat d'apprentissage ;
-                - formation continue : Ce champ indique que l'étudiant est en formation continue ou en contrat de professionalisation."
+                Régime de formation de l'étudiant.
               example: formation initiale
               enum:
-              - formation initiale
-              - formation continue
-            code_commune:
+                - formation initiale
+                - formation initiale hors apprentissage
+                - reprise d'études non financée sans convention
+                - contrat d'apprentissage
+                - formation continue
+                - formation continue hors contrat professionnel
+                - contrat de professionnalisation
+            code_formation:
+              title: Code de la formation
+              type: string
+              description: |
+                Code de la formation correspondant au regime. C'est un code technique pour exploiter différent méchanisme indépendament du label du regime
+              example: RF1
+              enum:
+                - RF1
+                - RF2
+                - RF3
+                - RF4
+                - RF5
+                - RF6
+                - RF7
+            code_cog_insee_commune:
               title: Lieu d'études
               type: string
               description: Code officiel géographique (code COG de l'Insee)
                 de la commune du lieu d'études.
               example: '29085'
-            etablissement:
+            etablissement_etudes:
               title: Établissement de l'inscription
               type: object
               properties:

@@ -1,23 +1,18 @@
 class APIParticulier::MESRI::StatutEtudiantSerializer::V3 < APIParticulier::V3AndMore::BaseSerializer
-  %i[
-    nom
-    prenom
-    dateNaissance
-  ].each do |resource_attribute|
-    attribute resource_attribute, if: -> { scope?(:mesri_identite) }
-  end
+  attribute :identite, if: -> { one_of_scopes?(%i[mesri_identite]) }
 
-  attribute :inscriptions, if: -> { one_of_scopes?(%i[mesri_inscription mesri_regime mesri_etablissements]) } do
-    data.inscriptions.map do |initial_inscription|
+  attribute :admissions, if: -> { one_of_scopes?(%i[mesri_inscription mesri_regime mesri_etablissements]) } do
+    data.admissions.map do |initial_inscription|
       final_inscription = {
-        dateDebutInscription: initial_inscription[:dateDebutInscription],
-        dateFinInscription: initial_inscription[:dateFinInscription],
-        statut: initial_inscription[:statut],
-        codeCommune: initial_inscription[:codeCommune]
+        date_debut: initial_inscription[:date_debut],
+        date_fin: initial_inscription[:date_fin],
+        est_inscrit: initial_inscription[:est_inscrit],
+        code_cog_insee_commune: initial_inscription[:code_cog_insee_commune]
       }
 
-      final_inscription[:regime] = initial_inscription[:regime] if scope?(:mesri_regime)
-      final_inscription[:etablissement] = initial_inscription[:etablissement] if scope?(:mesri_etablissements)
+      final_inscription[:code_formation] = initial_inscription[:code_formation] if scope?(:mesri_regime)
+      final_inscription[:regime_formation] = initial_inscription[:regime_formation] if scope?(:mesri_regime)
+      final_inscription[:etablissement_etudes] = initial_inscription[:etablissement_etudes] if scope?(:mesri_etablissements)
 
       final_inscription
     end
