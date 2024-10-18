@@ -15,7 +15,7 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
     context 'without bourse' do
       let(:valid_resource) do
         {
-          eleve: {
+          identite: {
             nom: 'NOMFAMILLE',
             prenom: 'prenom',
             sexe: 'F',
@@ -25,7 +25,7 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
           annee_scolaire: '2021',
           est_scolarise: true,
           est_boursier: false,
-          niveau_bourse: nil,
+          echelon_bourse: nil,
           status_eleve: {
             code: 'ST',
             libelle: 'SCOLAIRE'
@@ -40,7 +40,7 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
       let(:body) { open_payload_file('men/scolarites/valid_with_bourse.json').read }
       let(:valid_resource) do
         {
-          eleve: {
+          identite: {
             nom: 'NOMFAMILLE',
             prenom: 'prenom',
             sexe: 'F',
@@ -50,7 +50,7 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
           annee_scolaire: '2021',
           est_scolarise: true,
           est_boursier: true,
-          niveau_bourse: 1,
+          echelon_bourse: 1,
           status_eleve: {
             code: 'ST',
             libelle: 'SCOLAIRE'
@@ -65,7 +65,7 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
       let(:body) { open_payload_file('men/scolarites/unknown_bourse.json').read }
       let(:valid_resource) do
         {
-          eleve: {
+          identite: {
             nom: 'NOMFAMILLE',
             prenom: 'prenom',
             sexe: 'F',
@@ -75,7 +75,7 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
           annee_scolaire: '2021',
           est_scolarise: true,
           est_boursier: nil,
-          niveau_bourse: nil,
+          echelon_bourse: nil,
           status_eleve: {
             code: 'ST',
             libelle: 'SCOLAIRE'

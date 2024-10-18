@@ -1,12 +1,19 @@
 class APIParticulier::MEN::Scolarites::V2 < APIParticulier::V2BaseSerializer
-  %i[eleve
-     code_etablissement
-     annee_scolaire
-     est_scolarise
-     status_eleve].each do |resource_attribute|
+  attribute :eleve, if: -> { scope?(:men_statut_scolarite) } do
+    object.identite
+  end
+
+  %i[
+    code_etablissement
+    annee_scolaire
+    est_scolarise
+    status_eleve
+  ].each do |resource_attribute|
     attribute resource_attribute, if: -> { scope?(:men_statut_scolarite) }
   end
 
   attribute :est_boursier, if: -> { scope?(:men_statut_boursier) }
-  attribute :niveau_bourse, if: -> { scope?(:men_statut_boursier) && scope?(:men_echelon_bourse) }
+  attribute :niveau_bourse, if: -> { scope?(:men_statut_boursier) && scope?(:men_echelon_bourse) } do
+    object.echelon_bourse
+  end
 end
