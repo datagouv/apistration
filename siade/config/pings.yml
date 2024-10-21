@@ -423,7 +423,7 @@ shared:
       provider: 'CIBTP'
       cache: <%= 10.minutes %>
       status_page:
-        alerts_wait: 20
+        alerts_wait: 30
         name: "CIBTP - Attestations cotisations congés payés"
       driver_params:
         period: <%= 10.minutes %>
@@ -479,7 +479,7 @@ shared:
       provider: 'European Commission'
       status_page:
         name: "Commission Européenne - Numéro de TVA"
-        alerts_wait: 15
+        alerts_wait: 30
       driver_params:
         retriever: 'EuropeanCommission::VIES'
         params:
@@ -530,7 +530,7 @@ shared:
       provider: 'Qualibat'
       cache: <%= 10.minutes %>
       status_page:
-        alerts_wait: 20
+        alerts_wait: 30
         name: "Qualibat - Certificats"
       driver_params:
         period: <%= 10.minutes %>
@@ -543,7 +543,7 @@ shared:
       provider: 'ProBTP'
       cache: <%= 10.minutes %>
       status_page:
-        alerts_wait: 20
+        alerts_wait: 30
         name: "PROBTP - Cotisations retraite"
       driver_params:
         period: <%= 10.minutes %>
