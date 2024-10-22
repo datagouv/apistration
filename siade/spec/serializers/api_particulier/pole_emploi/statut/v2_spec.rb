@@ -137,6 +137,15 @@ RSpec.describe APIParticulier::PoleEmploi::Statut::V2, type: :serializer do
         expect(subject).not_to have_key(:telephone2)
 
         expect(subject).to have_key(:adresse)
+
+        expect(subject[:adresse]).to have_key(:INSEECommune)
+        expect(subject[:adresse]).to have_key(:codePostal)
+        expect(subject[:adresse]).to have_key(:ligneComplementAdresse)
+        expect(subject[:adresse]).to have_key(:ligneComplementDestinataire)
+        expect(subject[:adresse]).to have_key(:ligneComplementDistribution)
+        expect(subject[:adresse]).to have_key(:ligneNom)
+        expect(subject[:adresse]).to have_key(:ligneVoie)
+        expect(subject[:adresse]).to have_key(:localite)
       end
     end
   end

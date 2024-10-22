@@ -48,7 +48,19 @@ class APIParticulier::PoleEmploi::Statut::V2 < APIParticulier::V2BaseSerializer
     object.inscription[:date_fin]
   end
 
-  attribute :adresse, if: -> { scope?(:pole_emploi_adresse) }
+  attribute :adresse, if: -> { scope?(:pole_emploi_adresse) } do
+    {
+
+      INSEECommune: object.adresse[:code_cog_insee_commune],
+      codePostal: object.adresse[:code_postal],
+      ligneComplementAdresse: object.adresse[:ligne_complement_adresse],
+      ligneComplementDestinataire: object.adresse[:ligne_complement_destinataire],
+      ligneComplementDistribution: object.adresse[:ligne_complement_distribution],
+      ligneNom: object.adresse[:ligne_nom],
+      ligneVoie: object.adresse[:ligne_voie],
+      localite: object.adresse[:localite]
+    }
+  end
 
   attribute :email, if: -> { scope?(:pole_emploi_contact) } do
     object.contact[:email]
