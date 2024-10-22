@@ -304,13 +304,12 @@ shared:
         params:
           siret: '30613890002979'
     urssaf/attestation_sociale:
-      kind: 'dummy'
+      kind: 'access_logs'
       provider: 'ACOSS'
       status_page:
         name: 'URSSAF - Attestations sociales'
       cache: <%= 5.minutes %>
       driver_params:
-        period: <%= 10.minutes %>
         routes:
           - 'api_entreprise/v3_and_more/acoss/attestations_sociales#show'
     dgfip/attestation_fiscale:
@@ -418,14 +417,13 @@ shared:
         params:
           siren: '811214428'
     cibtp/attestation_cotisations_conges_payes_chomage_intemperies:
-      kind: 'dummy'
+      kind: 'access_logs'
       provider: 'CIBTP'
       cache: <%= 10.minutes %>
       status_page:
         alerts_wait: 30
         name: "CIBTP - Attestations cotisations congés payés"
       driver_params:
-        period: <%= 10.minutes %>
         routes:
           - 'api_entreprise/v3_and_more/cibtp/attestation_cotisations_conges_payes_chomage_intemperies#show'
         excluded_statuses:
@@ -525,27 +523,25 @@ shared:
         params:
           siret: '42054064300376'
     qualibat/certifications:
-      kind: 'dummy'
+      kind: 'access_logs'
       provider: 'Qualibat'
       cache: <%= 10.minutes %>
       status_page:
         alerts_wait: 30
         name: "Qualibat - Certificats"
       driver_params:
-        period: <%= 10.minutes %>
         routes:
           - 'api_entreprise/v3_and_more/qualibat/certifications_batiment#show'
         excluded_statuses:
           - 404
     probtp/cotisations_retraite:
-      kind: 'dummy'
+      kind: 'access_logs'
       provider: 'ProBTP'
       cache: <%= 10.minutes %>
       status_page:
         alerts_wait: 30
         name: "PROBTP - Cotisations retraite"
       driver_params:
-        period: <%= 10.minutes %>
         routes:
           - 'api_entreprise/v3_and_more/probtp/conformites_cotisations_retraite#show'
           - 'api_entreprise/v3_and_more/probtp/attestations_cotisation_retraite#show'
