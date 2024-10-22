@@ -64,7 +64,7 @@ shared:
       - { controller: 'api_entreprise/v3_and_more/inpi/rne/actes_bilans', action: 'show' }
   urssaf_attestation_sociales:
     throttle_type: 'by_single_endpoint'
-    limit: 50
+    limit: 100
     period: 60
     endpoints:
       - { controller: 'api_entreprise/v3_and_more/acoss/attestations_sociales', action: 'show' }
