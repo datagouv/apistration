@@ -1,5 +1,7 @@
 DROP TABLE IF EXISTS public.tokens;
 DROP TABLE IF EXISTS public.authorization_requests;
+DROP MATERIALIZED VIEW IF EXISTS public.admin_apientreprise_production_access_logs_last_10_minutes;
+DROP TABLE IF EXISTS public.access_logs;
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
@@ -47,3 +49,13 @@ CREATE TABLE public.access_logs (
   path character varying,
   cached boolean
 );
+
+CREATE MATERIALIZED VIEW public.admin_apientreprise_production_access_logs_last_10_minutes AS
+  SELECT "timestamp",
+    route,
+    status
+  FROM
+    public.access_logs
+  WHERE
+    ("timestamp" >= (now() + '-00:10:00'::interval))
+;

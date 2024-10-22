@@ -26,6 +26,7 @@ RSpec.describe AccessLogPingDriver, type: :ping_driver do
       context 'when there is no data for routes in the period' do
         before do
           AccessLog.create!(route: routes.sample, timestamp: 6.minutes.ago)
+          AccessLogPingView.refresh!
         end
 
         it { is_expected.to eq(:unknown) }
@@ -34,6 +35,7 @@ RSpec.describe AccessLogPingDriver, type: :ping_driver do
       context 'when there is data for routes in the period' do
         before do
           AccessLog.create!(valid_access_log_data.merge(extra_data))
+          AccessLogPingView.refresh!
         end
 
         context 'when it is not the matching route' do
