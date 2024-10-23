@@ -1,5 +1,6 @@
 class DGFIP::ChiffresAffaires::ValidateResponse < ValidateResponse
   def call
+    resource_not_found! if http_not_found?
     unknown_provider_response! unless http_ok?
 
     if null_body? || empty_liste_ca?
