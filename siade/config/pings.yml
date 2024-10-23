@@ -304,7 +304,7 @@ shared:
         params:
           siret: '30613890002979'
     urssaf/attestation_sociale:
-      kind: 'access_logs'
+      kind: 'dummy'
       provider: 'ACOSS'
       status_page:
         name: 'URSSAF - Attestations sociales'
@@ -417,7 +417,7 @@ shared:
         params:
           siren: '811214428'
     cibtp/attestation_cotisations_conges_payes_chomage_intemperies:
-      kind: 'access_logs'
+      kind: 'dummy'
       provider: 'CIBTP'
       cache: <%= 10.minutes %>
       status_page:
@@ -523,7 +523,7 @@ shared:
         params:
           siret: '42054064300376'
     qualibat/certifications:
-      kind: 'access_logs'
+      kind: 'dummy'
       provider: 'Qualibat'
       cache: <%= 10.minutes %>
       status_page:
@@ -535,7 +535,7 @@ shared:
         excluded_statuses:
           - 404
     probtp/cotisations_retraite:
-      kind: 'access_logs'
+      kind: 'dummy'
       provider: 'ProBTP'
       cache: <%= 10.minutes %>
       status_page:
