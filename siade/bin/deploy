@@ -22,7 +22,7 @@ if ! [[ "${valid_environments[@]}" =~ $env ]]; then
   exit 3
 fi
 
-if [ $# -gt 2 ] && [ $env = "sandbox" ] ; then
+if [ $# -gt 1 ] && [ $env = "sandbox" ] ; then
   ref=$2
 else
   ref="master"
