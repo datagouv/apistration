@@ -27,12 +27,12 @@ RSpec.describe INPI::RNE::ActesBilans, type: :retriever_organizer do
 
     it { is_expected.to be_a(Resource) }
 
-    describe 'links in resources' do
-      subject(:link) { described_class.call(params:).bundled_data.data.actes.first[:link] }
+    describe 'url in resources' do
+      subject(:url) { described_class.call(params:).bundled_data.data.actes.first[:url] }
 
       it { is_expected.to be_present }
 
-      describe 'following link', type: :request, vcr: { cassette_name: 'inpi/rne/actes_download/valid' } do
+      describe 'following url', type: :request, vcr: { cassette_name: 'inpi/rne/actes_download/valid' } do
         subject { response }
 
         let(:document_url_regexp) { %r{http://test\.entreprise\.api\.gouv\.fr/proxy/files/[a-f0-9\-]{36}} }
@@ -41,7 +41,7 @@ RSpec.describe INPI::RNE::ActesBilans, type: :retriever_organizer do
           before { Token.destroy_by(id: token_id) }
 
           it 'fails' do
-            get link
+            get url
 
             expect(response).to have_http_status(:unauthorized)
             expect(response.parsed_body[:errors].first).to include("Votre jeton n'a pas été trouvé dans la base de données")
@@ -59,13 +59,13 @@ RSpec.describe INPI::RNE::ActesBilans, type: :retriever_organizer do
             )
           end
 
-          it 'returns a proxy link to download the document' do
-            get link
+          it 'returns a proxy url to download the document' do
+            get url
 
             expect(response.parsed_body[:data][:document_url]).to match(document_url_regexp)
           end
 
-          describe 'tracking link' do
+          describe 'tracking url' do
             let(:dummy_user_context) do
               {
                 blacklisted: false,
@@ -90,7 +90,7 @@ RSpec.describe INPI::RNE::ActesBilans, type: :retriever_organizer do
               expect(MonitoringService.instance).to receive(:set_user_context).with(dummy_user_context)
               expect(MonitoringService.instance).to receive(:set_controller_params).with(tracked_params)
 
-              get link
+              get url
             end
           end
         end

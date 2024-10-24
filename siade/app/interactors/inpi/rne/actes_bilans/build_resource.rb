@@ -22,23 +22,23 @@ class INPI::RNE::ActesBilans::BuildResource < BuildResource
 
   def format_acte(acte)
     {
-      updated_at: normalized_date(acte['updatedAt']),
-      date_depot: acte['dateDepot'],
-      nom_document: acte['nomDocument'],
       id: acte['id'],
-      types: format_types(acte['typeRdd']),
-      link: link(target: 'actes', document_id: acte['id'])
+      nom_document: acte['nomDocument'],
+      date_depot: acte['dateDepot'],
+      date_mise_a_jour: normalized_date(acte['updatedAt']),
+      types_actes: format_types_actes(acte['typeRdd']),
+      url: link(target: 'actes', document_id: acte['id'])
     }
   end
 
-  def format_types(types)
-    types&.map { |type| format_type(type) }
+  def format_types_actes(types)
+    types&.map { |type| format_type_acte(type) }
   end
 
-  def format_type(type)
+  def format_type_acte(type)
     {
-      acte: type['typeActe'],
-      decision: type['decision']
+      type_acte: type['typeActe'],
+      type_decision: type['decision']
     }.compact
   end
 
@@ -52,13 +52,13 @@ class INPI::RNE::ActesBilans::BuildResource < BuildResource
 
   def format_bilan(bilan)
     {
-      updated_at: normalized_date(bilan['updatedAt']),
-      date_depot: bilan['dateDepot'],
-      nom_document: bilan['nomDocument'],
       id: bilan['id'],
+      nom_document: bilan['nomDocument'],
+      date_depot: bilan['dateDepot'],
       date_cloture: bilan['dateCloture'],
-      type: bilan['typeBilan'],
-      link: link(target: 'bilans', document_id: bilan['id'])
+      date_mise_a_jour: normalized_date(bilan['updatedAt']),
+      type: code_to_label_bilan[bilan['typeBilan']],
+      url: link(target: 'bilans', document_id: bilan['id'])
     }
   end
 
@@ -69,6 +69,17 @@ class INPI::RNE::ActesBilans::BuildResource < BuildResource
       uuid: encrypted_uuid(target:, document_id:),
       host:
     )
+  end
+
+  def code_to_label_bilan
+    {
+      'C' => 'bilan complet',
+      'S' => 'bilan simplifié',
+      'K' => 'bilan consolidé',
+      'B' => 'bilan de type banque',
+      'A' => 'bilan de type assurance',
+      'AS' => 'bilan de type agricole simplifié'
+    }
   end
 
   def encrypted_uuid(target:, document_id:)
