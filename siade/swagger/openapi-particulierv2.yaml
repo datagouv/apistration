@@ -290,6 +290,19 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard.':
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -547,6 +560,19 @@ paths:
             application/json:
               examples:
                 unknown_error:
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+                'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard.':
                   value:
                     error: provider_unknown_error
                     reason: La réponse retournée par le fournisseur de données est
@@ -840,6 +866,19 @@ paths:
                   description: La réponse retournée par le fournisseur de données
                     est invalide et inconnue de notre service. L'équipe technique
                     a été notifiée de cette erreur pour investigation.
+                'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard.':
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -1105,6 +1144,19 @@ paths:
             application/json:
               examples:
                 unknown_error:
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+                'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard.':
                   value:
                     error: provider_unknown_error
                     reason: La réponse retournée par le fournisseur de données est
@@ -1634,7 +1686,16 @@ paths:
           content:
             application/json:
               examples:
-                Erreur du fournisseur:
+                Erreur inconnue du fournisseur de donnéé:
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard.':
                   value:
                     error: provider_unknown_error
                     reason: La réponse retournée par le fournisseur de données est
@@ -1916,6 +1977,19 @@ paths:
             application/json:
               examples:
                 unknown_error:
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+                'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard.':
                   value:
                     error: provider_unknown_error
                     reason: La réponse retournée par le fournisseur de données est

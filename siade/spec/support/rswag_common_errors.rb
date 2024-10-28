@@ -132,10 +132,16 @@ module RSwagCommonErrors
       build_rswag_example(NetworkError.new, :network_error)
       build_rswag_example(DnsResolutionError.new(provider_name), :dns_resolution_error)
 
+      build_cnav_network_error_rswag_example if provider_name == 'CNAV'
+
       block.call if block_given?
 
       run_test!
     end
+  end
+
+  def build_cnav_network_error_rswag_example
+    build_rswag_example(ProviderRateLimitingError.new('CNAV'), :provider_error)
   end
 
   def documents_errors(provider_name)

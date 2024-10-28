@@ -44,4 +44,14 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
 
     its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
   end
+
+  context 'with 429 http code response' do
+    let(:response) do
+      instance_double(Net::HTTPTooManyRequests, code: 429)
+    end
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderRateLimitingError)) }
+  end
 end

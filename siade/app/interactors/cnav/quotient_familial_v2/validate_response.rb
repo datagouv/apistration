@@ -1,4 +1,4 @@
-class CNAV::QuotientFamilialV2::ValidateResponse < ValidateResponse
+class CNAV::QuotientFamilialV2::ValidateResponse < CNAV::ValidateResponse
   REGIME_CODE_MSA = '00171001'.freeze
   REGIME_CODE_CNAF = '00810011'.freeze
 
@@ -9,17 +9,11 @@ class CNAV::QuotientFamilialV2::ValidateResponse < ValidateResponse
 
   def call
     resource_not_found! if http_not_found?
-    internal_server_error! if http_internal_error?
+    handle_http_too_many_requests! if http_too_many_requests?
     unknown_provider_response! if !http_ok? || invalid_json?
   end
 
   protected
-
-  def resource_not_found!
-    error = build_error(::NotFoundError, not_found_message)
-
-    fail_with_error!(error)
-  end
 
   def not_found_message
     return "Le dossier allocataire n'a pas été trouvé auprès de la CNAF." if regime == 'CNAF'

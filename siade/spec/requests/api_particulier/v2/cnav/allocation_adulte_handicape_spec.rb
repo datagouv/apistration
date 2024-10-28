@@ -110,18 +110,37 @@ RSpec.describe 'CNAV: Allocation Adulte Handicapé', api: :particulierv2, type: 
           end
 
           response '503', 'Erreur du fournisseur' do
-            provider_unknown_error = ProviderUnknownError.new('CNAV')
+            # rubocop:disable RSpec/ContextWording
+            context 'Erreur inconnue du fournisseur de donnéé' do
+              provider_unknown_error = ProviderUnknownError.new('CNAV')
 
-            stubbed_organizer_error(
-              CNAV::AllocationAdulteHandicape,
-              provider_unknown_error
-            )
+              stubbed_organizer_error(
+                CNAV::AllocationAdulteHandicape,
+                provider_unknown_error
+              )
 
-            schema '$ref' => '#/components/schemas/Error'
+              schema '$ref' => '#/components/schemas/Error'
 
-            build_rswag_example(provider_unknown_error, :unknown_error)
+              build_rswag_example(provider_unknown_error, :unknown_error)
 
-            run_test!
+              run_test!
+            end
+
+            context 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard.' do
+              provider_unknown_error = ProviderUnknownError.new('CNAV')
+
+              stubbed_organizer_error(
+                CNAV::AllocationAdulteHandicape,
+                provider_unknown_error
+              )
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              build_rswag_example(provider_unknown_error, 'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard.')
+
+              run_test!
+            end
+            # rubocop:enable RSpec/ContextWording
           end
 
           response '504', 'Erreur d\'intermédiaire' do
