@@ -171,7 +171,7 @@ GEM
     hashie (5.0.0)
     heapy (0.2.0)
       thor
-    hexapdf (0.47.0)
+    hexapdf (1.0.0)
       cmdparse (~> 3.0, >= 3.0.3)
       geom2d (~> 0.4, >= 0.4.1)
       openssl (>= 2.2.1)
@@ -196,7 +196,7 @@ GEM
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    lockbox (1.4.1)
+    lockbox (2.0.0)
     logger (1.6.1)
     logstasher (2.1.5)
       activesupport (>= 5.2)
@@ -268,7 +268,7 @@ GEM
       hashery (~> 2.0)
       ruby-rc4
       ttfunk
-    pg (1.5.8)
+    pg (1.5.9)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -335,7 +335,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    rexml (3.3.8)
+    rexml (3.3.9)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
