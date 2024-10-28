@@ -1,25 +1,49 @@
 class CNOUS::BuildResource < BuildResource
   def resource_attributes
     {
-      nom: valid_payload['lastName'],
-      prenom: valid_payload['firstName'],
-      prenom2: valid_payload['firstName2'],
-      dateNaissance: format_date(valid_payload['birthDate']),
-      lieuNaissance: extract_birth_place,
-      sexe: valid_payload['civility'],
-      boursier: valid_payload['boursier'],
-      echelonBourse: valid_payload['grantEchelon'],
+      identite:,
+      est_boursier: valid_payload['boursier'],
+      echelon_bourse: valid_payload['grantEchelon'],
       email: valid_payload['email'],
-      dateDeRentree: format_date(valid_payload['backToSchoolDate']),
-      dureeVersement: valid_payload['paymentDuration'],
-      statut: valid_payload['grantStatus'],
-      statutLibelle: statut_libelle,
-      villeEtudes: valid_payload['studyTown'],
-      etablissement: valid_payload['schoolName']
+      periode_versement_bourse:,
+      etablissement_etudes:,
+      statut_bourse:
     }
   end
 
   private
+
+  def identite
+    {
+      nom: valid_payload['lastName'],
+      prenom: valid_payload['firstName'],
+      prenom2: valid_payload['firstName2'],
+      date_naissance: format_date(valid_payload['birthDate']),
+      lieu_naissance: extract_birth_place,
+      sexe: valid_payload['civility']
+    }
+  end
+
+  def periode_versement_bourse
+    {
+      date_rentree: format_date(valid_payload['backToSchoolDate']),
+      duree: valid_payload['paymentDuration']
+    }
+  end
+
+  def etablissement_etudes
+    {
+      nom_commune: valid_payload['studyTown'],
+      nom_etablissement: valid_payload['schoolName']
+    }
+  end
+
+  def statut_bourse
+    {
+      code: valid_payload['grantStatus'],
+      libelle: statut_libelle
+    }
+  end
 
   def valid_payload
     @valid_payload ||= Array.wrap(json_body)[0]

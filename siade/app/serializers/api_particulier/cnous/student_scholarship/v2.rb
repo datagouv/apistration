@@ -1,38 +1,59 @@
 class APIParticulier::CNOUS::StudentScholarship::V2 < APIParticulier::V2BaseSerializer
-  %i[
-    nom
-    prenom
-    prenom2
-    dateNaissance
-    lieuNaissance
-    sexe
-  ].each do |resource_attribute|
-    attribute resource_attribute, if: -> { scope?(:cnous_identite) }
+  attribute :nom, if: -> { scope?(:cnous_identite) } do
+    object.identite[:nom]
   end
+
+  attribute :prenom, if: -> { scope?(:cnous_identite) } do
+    object.identite[:prenom]
+  end
+
+  attribute :prenom2, if: -> { scope?(:cnous_identite) } do
+    object.identite[:prenom2]
+  end
+
+  attribute :dateNaissance, if: -> { scope?(:cnous_identite) } do
+    object.identite[:date_naissance]
+  end
+
+  attribute :lieuNaissance, if: -> { scope?(:cnous_identite) } do
+    object.identite[:lieu_naissance]
+  end
+
+  attribute :sexe, if: -> { scope?(:cnous_identite) } do
+    object.identite[:sexe]
+  end
+
   attribute :email, if: -> { scope?(:cnous_email) }
 
-  attribute :boursier, if: -> { scope?(:cnous_statut_boursier) }
-
-  attribute :echelonBourse, if: -> { scope?(:cnous_echelon_bourse) }
-
-  %i[
-    statut
-    statutLibelle
-  ].each do |resource_attribute|
-    attribute resource_attribute, if: -> { scope?(:cnous_statut_bourse) }
+  attribute :boursier, if: -> { scope?(:cnous_statut_boursier) } do
+    object.est_boursier
   end
 
-  %i[
-    dateDeRentree
-    dureeVersement
-  ].each do |resource_attribute|
-    attribute resource_attribute, if: -> { scope?(:cnous_periode_versement) }
+  attribute :echelonBourse, if: -> { scope?(:cnous_echelon_bourse) } do
+    object.echelon_bourse
   end
 
-  %i[
-    villeEtudes
-    etablissement
-  ].each do |resource_attribute|
-    attribute resource_attribute, if: -> { scope?(:cnous_ville_etudes) }
+  attribute :statut, if: -> { scope?(:cnous_statut_bourse) } do
+    object.statut_bourse[:statut]
+  end
+
+  attribute :statutLibelle, if: -> { scope?(:cnous_statut_bourse) } do
+    object.statut_bourse[:statut_libelle]
+  end
+
+  attribute :dateDeRentree, if: -> { scope?(:cnous_periode_versement) } do
+    object.periode_versement_bourse[:date_de_rentree]
+  end
+
+  attribute :dureeVersement, if: -> { scope?(:cnous_periode_versement) } do
+    object.periode_versement_bourse[:duree_versement]
+  end
+
+  attribute :villeEtudes, if: -> { scope?(:cnous_ville_etudes) } do
+    object.etablissement_etudes[:nom_commune]
+  end
+
+  attribute :etablissement, if: -> { scope?(:cnous_ville_etudes) } do
+    object.etablissement_etudes[:nom_etablissement]
   end
 end

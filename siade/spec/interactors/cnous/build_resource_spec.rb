@@ -18,21 +18,29 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
       it do
         expect(subject).to eq(
           {
-            nom: 'Martin',
-            prenom: 'Jerome',
-            prenom2: 'Francis',
-            dateNaissance: '1980-11-14',
-            lieuNaissance: 'La Crèche',
-            sexe: 'M',
-            boursier: true,
-            echelonBourse: '5',
+            identite: {
+              nom: 'Martin',
+              prenom: 'Jerome',
+              prenom2: 'Francis',
+              date_naissance: '1980-11-14',
+              lieu_naissance: 'La Crèche',
+              sexe: 'M'
+            },
+            est_boursier: true,
+            echelon_bourse: '5',
             email: 'francislalanne@gmail.com',
-            dateDeRentree: '2020-09-01',
-            dureeVersement: 12,
-            statut: 0,
-            statutLibelle: 'définitif',
-            villeEtudes: 'MONTPELLIER',
-            etablissement: 'UFR SCIENCES TECHNOLOG SANTE'
+            periode_versement_bourse: {
+              date_rentree: '2020-09-01',
+              duree: 12
+            },
+            statut_bourse: {
+              code: 0,
+              libelle: 'définitif'
+            },
+            etablissement_etudes: {
+              nom_commune: 'MONTPELLIER',
+              nom_etablissement: 'UFR SCIENCES TECHNOLOG SANTE'
+            }
           }
         )
       end
@@ -50,21 +58,29 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
       it do
         expect(subject).to eq(
           {
-            nom: 'Martin',
-            prenom: 'Jerome',
-            prenom2: 'Francis',
-            dateNaissance: '1980-11-14',
-            lieuNaissance: 'La Crèche',
-            sexe: 'M',
-            boursier: true,
-            echelonBourse: '5',
+            identite: {
+              nom: 'Martin',
+              prenom: 'Jerome',
+              prenom2: 'Francis',
+              date_naissance: '1980-11-14',
+              lieu_naissance: 'La Crèche',
+              sexe: 'M'
+            },
+            est_boursier: true,
+            echelon_bourse: '5',
             email: 'francislalanne@gmail.com',
-            dateDeRentree: '2020-09-01',
-            dureeVersement: 12,
-            statut: 0,
-            statutLibelle: 'définitif',
-            villeEtudes: 'MONTPELLIER',
-            etablissement: 'UFR SCIENCES TECHNOLOG SANTE'
+            periode_versement_bourse: {
+              date_rentree: '2020-09-01',
+              duree: 12
+            },
+            statut_bourse: {
+              code: 0,
+              libelle: 'définitif'
+            },
+            etablissement_etudes: {
+              nom_commune: 'MONTPELLIER',
+              nom_etablissement: 'UFR SCIENCES TECHNOLOG SANTE'
+            }
           }
         )
       end

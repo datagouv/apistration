@@ -5,41 +5,46 @@ cnous:
     tags:
       - Statut étudiant boursier
     attributes:
-      nom:
-        title: Nom de naissance
-        type: string
-        description: Nom de naissance de l'étudiant
-        example: Moustaki
-      prenom:
-        title: Prénom 1
-        type: string
-        description: Premier prénom de l'étudiant
-        example: Georges
-      prenom2:
-        title: Prénom 2
-        type: string
-        description: Deuxième prénom de l'étudiant
-        example: Claude
-      date_naissance:
-        title: Date de naissance
-        type: string
-        format: date
-        description: Date de naissance de l'étudiant
-        example: 1992-11-29
-      lieu_naissance:
-        title: Lieu de naissance
-        type: string
-        description: Libellé de la commune de naissance de l'étudiant
-        example: Poitiers
-      sexe:
-        title: Sexe
-        type: string
-        description: Sexe de l'étudiant
-        example: M
-        enum:
-        - M
-        - F
-      boursier:
+      identite:
+        title: Identité de l'étudiant
+        description: Contient les données d'identité de l'étudiant
+        type: object
+        properties:
+          nom:
+            title: Nom de naissance
+            type: string
+            description: Nom de naissance de l'étudiant
+            example: Moustaki
+          prenom:
+            title: Prénom 1
+            type: string
+            description: Premier prénom de l'étudiant
+            example: Georges
+          prenom2:
+            title: Prénom 2
+            type: string
+            description: Deuxième prénom de l'étudiant
+            example: Claude
+          date_naissance:
+            title: Date de naissance
+            type: string
+            format: date
+            description: Date de naissance de l'étudiant
+            example: 1992-11-29
+          lieu_naissance:
+            title: Lieu de naissance
+            type: string
+            description: Libellé de la commune de naissance de l'étudiant
+            example: Poitiers
+          sexe:
+            title: Sexe
+            type: string
+            description: Sexe de l'étudiant
+            example: M
+            enum:
+            - M
+            - F
+      est_boursier:
         title: Statut boursier
         type: boolean
         description: Indique si l'étudiant est boursier
@@ -67,38 +72,53 @@ cnous:
         type: string
         description: Adresse email de l'étudiant
         example: georges@moustaki.fr
-      date_de_rentree:
-        title: Date de rentrée
-        type: string
-        format: date
-        description: Date de début de rentrée scolaire ou universitaire
-        example: 2019-09-01
-      duree_versement:
-        title: Durée de versement de la bourse
-        type: number
-        description: Nombre de mois de versement de la bourse
-        example: 12
-      statut:
-        title: Code de statut de la bourse
-        type: number
-        description: Code du statut de la bourse, 0 si définitif, >0 si
-          provisoire (conditionnel)
-        example: 0
-      statut_libelle:
-        title: Libellé du statut de la bourse
-        type: string
-        description: Le libellé associé au code de statut de la bourse
-        example: définitif
-      ville_etudes:
-        title: Ville d'études
-        type: string
-        description: Libellé de la ville d'études de l'étudiant
-        example: Brest
-      etablissement:
-        title: Établissement d'études
-        type: string
-        description: L'établissement d'études de l'étudiant
-        example: Carnot
+      periode_versement_bourse:
+        title: Période de validité de la bourse
+        description: Contient les données de la période de validité de la bourse de l'étudiant
+        type: object
+        properties: 
+          date_rentree:
+            title: Date de rentrée
+            type: string
+            format: date
+            description: Date de début de rentrée scolaire ou universitaire
+            example: 2019-09-01
+          duree:
+            title: Durée de versement de la bourse
+            type: number
+            description: Nombre de mois de versement de la bourse
+            example: 12
+      statut_bourse:
+        title: Statut boursier
+        description: Contient le détail de l'attribution du statut boursier
+        type: object
+        properties:
+          code:
+            title: Code de statut de la bourse
+            type: number
+            description: Code du statut de la bourse, 0 si définitif, >0 si
+              provisoire (conditionnel)
+            example: 0
+          libelle:
+            title: Libellé du statut de la bourse
+            type: string
+            description: Le libellé associé au code de statut de la bourse
+            example: définitif
+      etablissement_etudes:
+        title: Établissement d'études de l'étudiant
+        description: Contient le détail des informations concernant l'établissement dans lequel l'étudiant fait ses études
+        type: object
+        properties:
+          nom_commune:
+            title: Ville d'études
+            type: string
+            description: Libellé de la ville d'études de l'étudiant
+            example: Brest
+          nom_etablissement:
+            title: Établissement d'études
+            type: string
+            description: L'établissement d'études de l'étudiant
+            example: Carnot
 
   etudiant_boursier:
     parameters:
@@ -111,4 +131,118 @@ cnous:
           et leur certificat de scolarité.
         pattern: "^[0-9a-zA-Z]{11}$"
         example: 1234567890G
+
+  v2: 
+    commons:
+      title: Status étudiant boursier
+      description: Statut et échelon boursier d'un étudiant, délivrés par le Cnous
+      tags:
+        - Statut étudiant boursier
+      attributes:
+        nom:
+          title: Nom de naissance
+          type: string
+          description: Nom de naissance de l'étudiant
+          example: Moustaki
+        prenom:
+          title: Prénom 1
+          type: string
+          description: Premier prénom de l'étudiant
+          example: Georges
+        prenom2:
+          title: Prénom 2
+          type: string
+          description: Deuxième prénom de l'étudiant
+          example: Claude
+        date_naissance:
+          title: Date de naissance
+          type: string
+          format: date
+          description: Date de naissance de l'étudiant
+          example: 1992-11-29
+        lieu_naissance:
+          title: Lieu de naissance
+          type: string
+          description: Libellé de la commune de naissance de l'étudiant
+          example: Poitiers
+        sexe:
+          title: Sexe
+          type: string
+          description: Sexe de l'étudiant
+          example: M
+          enum:
+          - M
+          - F
+        boursier:
+          title: Statut boursier
+          type: boolean
+          description: Indique si l'étudiant est boursier
+          example: true
+        echelon_bourse:
+          title: Échelon de la bourse
+          type: string
+          description: '"Il existe 8 échelons de bourse, de 0bis à 7, correspondant
+            aux montants reçus par l''étudiant pour l''année scolaire. Pour
+            en savoir plus, consulter la FAQ : https://particulier.api.gouv.fr/catalogue/cnous/statut_etudiant_boursier#faq_entry_answer_0_api_particulier_endpoint_cnous_statut_etudiant_boursier."
+
+            '
+          example: '6'
+          enum:
+          - 0bis
+          - '1'
+          - '2'
+          - '3'
+          - '4'
+          - '5'
+          - '6'
+          - '7'
+        email:
+          title: E-mail
+          type: string
+          description: Adresse email de l'étudiant
+          example: georges@moustaki.fr
+        date_de_rentree:
+          title: Date de rentrée
+          type: string
+          format: date
+          description: Date de début de rentrée scolaire ou universitaire
+          example: 2019-09-01
+        duree_versement:
+          title: Durée de versement de la bourse
+          type: number
+          description: Nombre de mois de versement de la bourse
+          example: 12
+        statut:
+          title: Code de statut de la bourse
+          type: number
+          description: Code du statut de la bourse, 0 si définitif, >0 si
+            provisoire (conditionnel)
+          example: 0
+        statut_libelle:
+          title: Libellé du statut de la bourse
+          type: string
+          description: Le libellé associé au code de statut de la bourse
+          example: définitif
+        ville_etudes:
+          title: Ville d'études
+          type: string
+          description: Libellé de la ville d'études de l'étudiant
+          example: Brest
+        etablissement:
+          title: Établissement d'études
+          type: string
+          description: L'établissement d'études de l'étudiant
+          example: Carnot
+
+    etudiant_boursier:
+      parameters:
+        ine: 
+          title: INE
+          description: Identifiant National Étudiant (INE). Cet identifiant est unique
+            à chaque étudiant sur le territoire français. Il est composé de 11 caractères,
+            10 chiffres et 1 lettre, et depuis la rentrée 2018, 9 chiffres et 2 lettres.
+            Les étudiants peuvent retrouver leur numéro INE sur leur carte étudiant
+            et leur certificat de scolarité.
+          pattern: "^[0-9a-zA-Z]{11}$"
+          example: 1234567890G
 

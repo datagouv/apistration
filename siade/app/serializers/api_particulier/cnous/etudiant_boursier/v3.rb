@@ -1,38 +1,15 @@
 class APIParticulier::CNOUS::EtudiantBoursier::V3 < APIParticulier::V3AndMore::BaseSerializer
-  %i[
-    nom
-    prenom
-    prenom2
-    dateNaissance
-    lieuNaissance
-    sexe
-  ].each do |resource_attribute|
-    attribute resource_attribute, if: -> { scope?(:cnous_identite) }
-  end
+  attribute :identite, if: -> { scope?(:cnous_identite) }
+
   attribute :email, if: -> { scope?(:cnous_email) }
 
-  attribute :boursier, if: -> { scope?(:cnous_statut_boursier) }
+  attribute :est_boursier, if: -> { scope?(:cnous_statut_boursier) }
 
-  attribute :echelonBourse, if: -> { scope?(:cnous_echelon_bourse) }
+  attribute :echelon_bourse, if: -> { scope?(:cnous_echelon_bourse) }
 
-  %i[
-    statut
-    statutLibelle
-  ].each do |resource_attribute|
-    attribute resource_attribute, if: -> { scope?(:cnous_statut_bourse) }
-  end
+  attribute :statut_bourse, if: -> { scope?(:cnous_statut_bourse) }
 
-  %i[
-    dateDeRentree
-    dureeVersement
-  ].each do |resource_attribute|
-    attribute resource_attribute, if: -> { scope?(:cnous_periode_versement) }
-  end
+  attribute :periode_versement_bourse, if: -> { scope?(:cnous_periode_versement) }
 
-  %i[
-    villeEtudes
-    etablissement
-  ].each do |resource_attribute|
-    attribute resource_attribute, if: -> { scope?(:cnous_ville_etudes) }
-  end
+  attribute :etablissement_etudes, if: -> { scope?(:cnous_ville_etudes) }
 end
