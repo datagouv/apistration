@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'API Particulier: CNAV: Allocation Adulte Handicape with FranceConnect', api: :particulier, type: %i[request swagger] do
-  path '/v3/cnav/allocation_adulte_handicape/france_connect' do
+  path '/v3/dss/allocation_adulte_handicape/france_connect' do
     get SwaggerData.get('cnav.aah.title') do
       tags(*SwaggerData.get('cnav.aah.tags'))
 
