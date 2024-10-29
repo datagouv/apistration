@@ -13419,7 +13419,7 @@ paths:
     get:
       summary: Actes et bilans
       tags:
-      - Informations générales
+      - Prochainement
       parameters:
       - name: recipient
         in: query
