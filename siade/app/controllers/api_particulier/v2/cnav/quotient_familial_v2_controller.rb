@@ -23,4 +23,26 @@ class APIParticulier::V2::CNAV::QuotientFamilialV2Controller < APIParticulier::V
   def api_name
     'quotient_familial'
   end
+
+  private
+
+  def extract_http_code(organizer)
+    if at_least_one_error_kind_of?(:wrong_parameter, organizer)
+      return :not_found if organizer.errors.first.field == :sngi
+
+      :bad_request
+    elsif at_least_one_error_kind_of?(%i[provider_error provider_unknown_error], organizer)
+      :service_unavailable
+    else
+      super
+    end
+  end
+
+  def format_wrong_parameter_error(error)
+    {
+      error: error.field == :sngi ? 'not_found' : 'bad_request',
+      reason: error.detail,
+      message: error.detail
+    }
+  end
 end

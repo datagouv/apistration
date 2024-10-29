@@ -102,7 +102,7 @@ RSpec.describe CNAV::QuotientFamilialV2, type: :retriever_organizer do
           it 'returns 404 message for MSA' do
             expect(subject).to be_a_failure
             expect(subject.errors).to include(instance_of(NotFoundError))
-            expect(subject.errors.first.detail).to eq("Le dossier allocataire n'a pas été trouvé auprès de la MSA. Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API.")
+            expect(subject.errors.first.detail).to eq("Le dossier allocataire n'a pas été trouvé auprès de la MSA.")
           end
         end
 
@@ -111,10 +111,10 @@ RSpec.describe CNAV::QuotientFamilialV2, type: :retriever_organizer do
             stub_sngi_404('quotient_familial_v2')
           end
 
-          it 'returns 404 message for SNGI' do
+          it 'returns 422 message for SNGI' do
             expect(subject).to be_a_failure
-            expect(subject.errors).to include(instance_of(NotFoundError))
-            expect(subject.errors.first.detail).to eq("L'allocataire que vous cherchez n'a pas été reconnu. Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API.")
+            expect(subject.errors).to include(instance_of(UnprocessableEntityError))
+            expect(subject.errors.first.detail).to eq("Les paramètres fournis ne permettent pas d'identifier un allocataire.")
           end
         end
       end

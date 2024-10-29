@@ -367,6 +367,10 @@
   title: 'Entité non traitable'
   detail: "Le mois demandé est incorrect ou est dans le futur."
 
+- code: '00355'
+  title: Impossible d'identifier l'allocataire
+  detail: "Les paramètres fournis ne permettent pas d'identifier un allocataire."
+
 ## BDF
 
 - code: '17501'

@@ -12,12 +12,8 @@ class CNAV::ValidateResponse < ValidateResponse
   end
 
   def resource_not_found!
-    error = build_error(::NotFoundError, not_found_message)
+    error = build_error(::NotFoundError, 'Dossier allocataire inexistant. Le document ne peut être édité.')
 
     fail_with_error!(error)
-  end
-
-  def not_found_message
-    'Dossier allocataire inexistant. Le document ne peut être édité.'
   end
 end

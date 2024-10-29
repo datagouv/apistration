@@ -32,6 +32,7 @@ class UnprocessableEntityError < ApplicationError
       # CNAV
       annee: '00353',
       mois: '00354',
+      sngi: '00355',
       # MESRI / MEN / CNOUS
       ine: '00360',
       family_name: '00361',

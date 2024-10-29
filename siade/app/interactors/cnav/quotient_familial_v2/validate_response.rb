@@ -15,17 +15,22 @@ class CNAV::QuotientFamilialV2::ValidateResponse < CNAV::ValidateResponse
 
   protected
 
-  def not_found_message
-    return "Le dossier allocataire n'a pas été trouvé auprès de la CNAF." if regime == 'CNAF'
-    return "Le dossier allocataire n'a pas été trouvé auprès de la MSA." if regime == 'MSA'
-    return "L'allocataire que vous cherchez n'a pas été reconnu." if regime == 'SNGI'
+  def resource_not_found!
+    return fail_with_error!(build_qfv2_error(::NotFoundError, 'CNAF', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", 'Dossier allocataire absent CNAF')) if regime == 'CNAF'
+    return fail_with_error!(build_qfv2_error(::NotFoundError, 'MSA', "Le dossier allocataire n'a pas été trouvé auprès de la MSA.", 'Dossier allocataire absent MSA')) if regime == 'MSA'
 
-    'Dossier allocataire inexistant. Le document ne peut être édité.'
+    fail_with_error!(UnprocessableEntityError.new(:sngi))
   end
 
   def regime
-    return REGIME_CODE_LABEL[response.header['X-APISECU-FD']] if response.header['X-APISECU-FD']
+    return REGIME_CODE_LABEL[response.header['X-APISECU-FD']] if response.header['X-APISECU-FD'].present?
 
     'SNGI'
+  end
+
+  private
+
+  def build_qfv2_error(error_klass, provider, message = nil, title = nil)
+    error_klass.new(provider, message, title:, with_identifiant_message: false)
   end
 end

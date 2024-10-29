@@ -1655,30 +1655,24 @@ paths:
                 Allocataire non identifié:
                   value:
                     error: not_found
-                    reason: Dossier allocataire inexistant. Le document ne peut être
-                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
-                    message: Dossier allocataire inexistant. Le document ne peut être
-                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
+                    reason: Les paramètres fournis ne permettent pas d'identifier
+                      un allocataire.
+                    message: Les paramètres fournis ne permettent pas d'identifier
+                      un allocataire.
                 Dossier non trouvé MSA:
                   value:
                     error: not_found
                     reason: Le dossier allocataire n'a pas été trouvé auprès de la
-                      MSA. Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
+                      MSA.
                     message: Le dossier allocataire n'a pas été trouvé auprès de la
-                      MSA. Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
+                      MSA.
                 Dossier non trouvé CNAF:
                   value:
                     error: not_found
                     reason: Le dossier allocataire n'a pas été trouvé auprès de la
-                      CNAF. Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
+                      CNAF.
                     message: Le dossier allocataire n'a pas été trouvé auprès de la
-                      CNAF. Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
+                      CNAF.
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
