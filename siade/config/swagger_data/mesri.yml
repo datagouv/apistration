@@ -6,29 +6,35 @@ mesri:
       - Statut étudiant
     attributes:
       identite:
-        title: Identité
-        description: Donnée d'identité de l'étudiant
+        title: Données d'identité de l'étudiant
+        description: "Données d'identité de l'étudiant corrigées et certifiées via l'API Ines qui croise l'état civil et le numéro INE."
         type: object
         properties: 
           nom_naissance:
             title: Nom de naissance
             type: string
-            description: Nom de naissance de l'étudiant
+            description: |+
+              Ce champ délivre le nom de naissance de l'étudiant. Il s'agit du nom de famille tel qu'indiqué sur l'acte de naissance, de mariage, sur le livret de famille, etc. Ce nom figure toujours sur la pièce d'identité en premier, avant le nom d'usage si le particulier en a un. 
+        
+              En cas de changement de nom de naissance, une mention avec le nouveau nom de famille est inscrite sur l'acte de naissance.
             example: Moustaki
           prenom:
             title: Prénom
             type: string
-            description: Prénom de l'étudiant
+            description: Prénom de l'étudiant.
             example: Georges
           date_naissance:
             title: Date de naissance
             type: string
             format: date
-            description: Date de naissance de l'étudiant
+            description: Date de naissance de l'étudiant.
             example: 1992-11-29
       admissions:
-        title: Liste des admissions et inscriptions de l'étudiant pour
-          l'année en cours
+        title: Admissions et inscriptions de l'étudiant
+        description: |+
+          Liste des admissions et inscriptions de l'étudiant dans des établissements d'enseignement supérieur pour l'année en cours.
+
+          Si aucun objet n'est listé, cela signifie que le particulier n'a aucune admission ni inscription d'un établissement.
         type: array
         items:
           type: object
@@ -37,7 +43,7 @@ mesri:
               title: Date de début d'inscription
               type: string
               format: date
-              description: Date de début de la période d'études dans l'établissement
+              description: Date de début de la période d'études dans l'établissement.
               example: 2022-09-01
             date_fin:
               title: Date de fin d'inscription
@@ -46,14 +52,16 @@ mesri:
               description: Date de fin de la période d'étude dans l'établissement
               example: 2023-08-31
             est_inscrit:
-              title: Statut de l'inscription
+              title: Statut étudiant inscrit
               type: boolean
               example: true
               enum:
               - true
               - false
               description: |
-                Statut de l'inscription de l'étudiant. Si l'étudiant n'est pas inscrit, c'est qu'il est admis dans l'établissement
+                Lorsque le champ est à true, cela indique que l'étudiant est inscrit dans l'établissement.
+                
+                Si le champ est à false, c'est que l'étudiant n'est pas inscrit, mais seulement admis dans l'établissement. C'est-à-dire que l'étudiant est pré-inscrit dans l'établissement mais que la procédure complète d'inscription et le règlement des droits d'inscription ne sont pas terminés. Les étudiants admis deviennent inscrits, une fois leurs droits d'inscription régularisés (paiement des droits, premier versement des droits ou acquittement des droits selon la situation de l'étudiant et les règles de l'établissement.). Tous les étudiants admis ne seront pas forcément de futurs étudiants inscrits dans l'établissement.
             regime_formation:
               title: Régime de formation
               type: string
@@ -72,7 +80,7 @@ mesri:
               title: Code de la formation
               type: string
               description: |
-                Code de la formation correspondant au regime. C'est un code technique pour exploiter différent méchanisme indépendament du label du regime
+                Code de la formation correspondant au regime. C'est un code technique pour exploiter différents mécanismes indépendament du label du regime.
               example: RF1
               enum:
                 - RF1
@@ -83,31 +91,30 @@ mesri:
                 - RF6
                 - RF7
             code_cog_insee_commune:
-              title: Lieu d'études
+              title: Commune de l'établissement d'études
               type: string
-              description: Code officiel géographique (code COG de l'Insee)
-                de la commune du lieu d'études.
+              description: Code Insee à 5 chiffres de la commune de l'établissement d'études de l'étudiant.
               example: '29085'
             etablissement_etudes:
               title: Établissement de l'inscription
+              description: |+
+                Code UAI et libellé de l'établissement d'enseignement supérieur dans lequel l'étudiant est admis ou inscrit. 
+              
+                Pour retrouver d'autres information sur l'établissement, vous pouvez utiliser l'[API "Annuaire de l'éducation nationale"](https://api.gouv.fr/les-api/api-annuaire-education) ou le site https://annuaire-education.fr.
               type: object
               properties:
                 uai:
-                  title: Identifiant de l'établissement UAI
+                  title: Code UAI de l'établissement
                   type: string
-                  description: Code UAI (Unité administrative immatriculée)
-                    de l'établissement. Cet identifiant unique de l'établissement
-                    scolaire est composé de 7 chiffres et d’une lettre,
-                    les trois premiers chiffres correspondant au numéro
-                    de département de l’établissement.
+                  description: |+
+                    Code d'unité administrative immatriculée (code UAI) de l'établissement où est scolarisé l'élève. Ce code unique inscrit au répertoire national des établissements est composé de 7 chiffres et d'une lettre ; les trois premiers chiffres correspondent au numéro de département de l'établissement.
+                  pattern: '^\d{7}\w$'
                   example: 0011402U
                 nom:
                   title: Nom de l'établissement
                   type: string
-                  description: Appelation officielle de l'établissement
-                    associée au code UAI
-                  example: EGC AIN BOURG EN BRESSE EC GESTION ET COMMERCE
-                    (01000)
+                  description: Appelation officielle de l'établissement associée au code UAI.
+                  example: EGC AIN BOURG EN BRESSE EC GESTION ET COMMERCE (01000)
   statut_etudiant:
     parameters:
       ine: 
