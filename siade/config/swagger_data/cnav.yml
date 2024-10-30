@@ -377,61 +377,97 @@ cnav:
     commons:
       cache_duration: "La durée du cache est de 1 heure."
       cnav_identite_pivot: &cnav_identite_pivot
-        nomUsage:
-          type: "string"
-          description: "Nom d'usage. Ne pas renseigner si présence de jeton FranceConnect."
-          example: "DUPONT"
         nomNaissance:
           type: "string"
-          description: "Nom de naissance. Ne pas renseigner si présence de jeton FranceConnect. Le champ est obligatoire pour les appels non FranceConnecté"
+          description: "**Nom de naissance, également appelé nom de famille**. 
+            \n\n
+            Le nom de naissance est indiqué sur l'acte de naissance, de mariage, sur le livret de famille, etc. Le nom de famille/naissance figure toujours sur la pièce d'identité en premier, avant le nom d'usage si le particulier en a un.
+            \n\n
+            En cas de changement de nom de naissance, une mention avec le nouveau nom de famille est inscrite sur l'acte de naissance. Pour appeler l'API, le nom de naissance/famille nécessaire est bien le nom de famille modifié."
           example: "JEAN"
+        nomUsage:
+          type: "string"
+          description: "**Nom d'usage**. 
+            \n\n 
+            Si le particulier a un nom d'usage, c'est le nom qu'il utilise généralement au quotidien. Le nom d'usage est facultatif et peut changer au cours de la vie. Il correspond au nom de famille/naissance d'un parent, d'un époux ou d'une épouse, seul ou accolé au nom de famille/naissance. Par exemple, le nom d'usage ne peut pas être le nom de famille/naissance d'un concubin ou d'un partenaire de pacs. 
+            \n\n
+            Si le particulier en a fait la demande, le nom d'usage peut être inscrit derrière le nom de naissance sur la carte d'identité ou le passeport ; il peut également être celui utilisé par l'administration sur les courriers. Le nom d'usage ne remplace par le nom de famille/naissance qui reste le seul mentionné sur les actes d'état civil. 
+            \n\n
+            Pour en savoir plus : https://www.service-public.fr/particuliers/vosdroits/F868."
+          example: "DUPONT"
         prenoms:
-          description: "Liste des prénoms. Ne pas renseigner si présence de jeton FranceConnect."
+          description: "**Liste des prénoms**. Dans certains cas, fournir plusieurs prénoms maximise les chances que l'API retrouve le particulier car cela permet de limiter le risque d’homonymie."
           type: "array"
           minItems: 1
           example: ['PIERRE', 'RICHARD']
         anneeDateDeNaissance:
-          description: "Année de naissance. Ne pas la renseigner si celle-ci est inconnue ou en cas de présence de jeton FranceConnect."
+          description: "**Année de naissance**. 
+            \n\n
+            Pour un particulier né en France, dans le cadre d'un appel à l'API avec l'utilisation du paramètre 'nomCommuneNaissance', ce paramètre est obligatoire (ainsi que le paramètre 'codeCogInseeDepartementNaissance') afin de retrouver le code COG de la commune de naissance."
           type: integer
           example: 1990
         moisDateDeNaissance:
-          description: "Mois de naissance. Ne pas le renseigner si celui-ci est inconnu ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si anneeDateDeNaissance est vide."
+          description: "**Mois de naissance**.
+            \n\n
+            Cette valeur est ignorée si le paramètre 'anneeDateNaissance' est vide."
           type: integer
           example: 1
         jourDateDeNaissance:
-          description: "Jour de naissance. Ne pas le renseigner si celui-ci est inconnu ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si moisDateDeNaissance ou anneeDateDeNaissance est vide."
+          description: "**Jour de naissance**. 
+            \n\n 
+            Cette valeur est ignorée si le paramètre 'moisDateNaissance' ou le paramètre 'anneeDateNaissance' est vide."
           type: integer
           example: 1
-        codeInseeLieuDeNaissance:
-          type: string
-          minLength: 5
-          maxLength: 5
-          example: '08480'
-          description: "Code Insee à 5 chiffres du lieu de naissance de la personne sur 5 chiffres. Ne pas remplir si la personne est née à l'étranger ou si présence de jeton FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance, anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire si la personne est née en France"
-        codePaysLieuDeNaissance:
-          description: "Code Insee à 5 chiffres du pays de naissance (France = 99100). Obligatoire si absence de jeton FranceConnect."
-          type: string
-          minLength: 5
-          maxLength: 5
-          example: '99100'
         sexe:
-          description: "Sexe de la personne, masculin ou féminin. Obligatoire si absence de jeton FranceConnect."
+          description: "**Sexe de la personne tel qu'indiqué sur les actes d'état civil**, comme par exemple l'acte de naissance ou de mariage.``
+            \n\n
+            Dans la majorité des cas, il s'agit également de la mention indiquée sur la pièce d'identité et le passeport. Cette mention peut être masculin ('M') ou féminin ('F').
+            \n\n
+            Dans le cas d'un particulier ayant demandé une modification de sa mention de sexe à l'état civil, le changement est indiqué en marge de l'acte de naissance une fois la décision rendue. Le changement intervient sur les titres d'identité seulement si le particulier en demande le renouvellement."
           type: string
           example: M
           enum:
             - M
             - F
+        codePaysLieuDeNaissance:
+          description: "**Code Insee à 5 chiffres du pays de naissance**. 
+            \n\n
+            - Code Insee France = 99100 ; 
+            \n
+            - Liste de tous les codes Insee des pays étrangers depuis 1943 : https://explore.data.gouv.fr/fr/datasets/58c984b088ee386cdb1261f3/#/resources/150889d3-ffda-4ea5-8709-6ee67415294f."
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '99100'
+        codeInseeLieuDeNaissance:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '08480'
+          description: "Code Insee à 5 chiffres de la commune de naissance**.
+            \n\n
+            Pour retrouver un particulier né en France, il est nécessaire d'indiquer sa commune de naissance. Ce paramètre est une des deux options disponibles pour renseigner la commune de naissance. En l'absence de l'utilisation de la seconde option (triplet 'nomCommuneNaissance', 'anneeDateNaissance', 'codeInseeDepartementNaissance'), ce paramètre est obligatoire si la personne est née en France.
+            \n\n
+            Ne pas remplir si la personne est née à l'étranger."
         nomCommuneNaissance:
           type: string
           minLength: 1
           example: 'Gennevilliers'
-          description: "Nom de la commune de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
+          description: "**Nom en toute lettre de la commune de naissance**.
+            \n\n
+            Pour retrouver un particulier né en France, il est nécessaire d'indiquer sa commune de naissance. Ce paramètre est une des deux options disponibles pour renseigner la commune de naissance. En l'absence de l'utilisation du 'codeCogInseeCommuneNaissance', ce paramètre est obligatoire si la personne est née en France ; il doit être obligatoirement accompagné des paramètres 'codeCogInseeDepartementNaissance' et 'anneeDateNaissance'.
+            \n\n
+            Ne pas remplir si la personne est née à l'étranger."
         codeInseeDepartementNaissance:
           type: string
           minLength: 2
           maxLength: 3
           example: '92'
-          description: "Code INSEE du département de naissance. En l'absence de jeton FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne est née en France"
+          description: "**Code Insee du département de naissance**.
+            \n\n
+            Pour retrouver un particulier né en France, il est nécessaire d'indiquer sa commune de naissance. Ce paramètre fait partie d'une des deux options disponibles pour renseigner la commune de naissance. Lorsque le paramètre 'nomCommuneNaissance' est utilisé, ce paramètre est obligatoire si la personne est née en France et permet de retrouver le code COG avec le paramètre 'anneeDateNaissance'.
+            \n\n
+            Ne pas remplir si la personne est née à l'étranger."
 
     c2s:
       title: Statut complémentaire santé solidaire (C2S)
