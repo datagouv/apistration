@@ -352,7 +352,7 @@ cnav:
         type: boolean
         nullable: true
         description: "Indique si le particulier est bénéficiaire de la prime d'activité majorée au moment de l'appel.
-          Ce champ est renvoyé si les droits du jeton (obtenus par habilitation) le permettent.
+          \n
           Ce champ sera null si le particulier n'est pas bénéficiaire de la prime d'activité."
         example: false
       date_debut_droit:
