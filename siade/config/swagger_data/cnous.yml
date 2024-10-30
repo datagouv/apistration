@@ -1,45 +1,44 @@
 cnous:
   commons:
     title: Status étudiant boursier
-    description: Statut et échelon boursier d'un étudiant, délivrés par le Cnous
+    description: Statut et échelon boursier d'un étudiant, délivrés par le Cnous.
     tags:
       - Statut étudiant boursier
     attributes:
       identite:
-        title: Identité de l'étudiant
-        description: Contient les données d'identité de l'étudiant
+        title: Données d'identité de l'étudiant
         type: object
         properties:
           nom:
             title: Nom de naissance
             type: string
-            description: Nom de naissance de l'étudiant
+            description: Nom de naissance de l'étudiant.
             example: Moustaki
           prenom:
             title: Prénom 1
             type: string
-            description: Premier prénom de l'étudiant
+            description: Premier prénom de l'étudiant.
             example: Georges
-          prenom2:
+          prenom_2:
             title: Prénom 2
             type: string
-            description: Deuxième prénom de l'étudiant
+            description: Deuxième prénom de l'étudiant.
             example: Claude
           date_naissance:
             title: Date de naissance
             type: string
             format: date
-            description: Date de naissance de l'étudiant
+            description: Date de naissance de l'étudiant.
             example: 1992-11-29
-          lieu_naissance:
-            title: Lieu de naissance
+          nom_commune_naissance:
+            title: Commune de naissance
             type: string
-            description: Libellé de la commune de naissance de l'étudiant
+            description: Libellé de la commune de naissance de l'étudiant.
             example: Poitiers
           sexe:
             title: Sexe
             type: string
-            description: Sexe de l'étudiant
+            description: Sexe de l'étudiant.
             example: M
             enum:
             - M
