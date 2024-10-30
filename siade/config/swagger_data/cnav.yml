@@ -188,7 +188,7 @@ cnav:
               - CNAF
               - MSA
           valeur:
-            title: "Valeur du quotient familial CAF ou MSA"
+            title: "Valeur du QF"
             type: integer
             description: Valeur du quotient familial calculé par la CAF ou la MSA.
             example: 1045
