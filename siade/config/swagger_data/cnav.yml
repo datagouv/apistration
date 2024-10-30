@@ -14,7 +14,7 @@ cnav:
       - Statut Complémentaire Santé Solidaire (C2S)
     attributes:
       est_beneficiaire:
-        title: "Statut bénéficiaire de la C2S"
+        title: "Statut bénéficiaire de la complémentaire de santé solidaire (C2S)"
         type: boolean
         example: true
         enum:
@@ -287,13 +287,13 @@ cnav:
         enum:
         - true
         - false
-        description: "Indique si le particulier est bénéficiaire de la complémentaire de santé solidaire au moment de l'appel."
+        description: "Indique si le particulier est bénéficiaire de l'allocation adulte handicapé au moment de l'appel."
       date_debut_droit:
         title: "Date d'ouverture du droit à l'AAH"
         type: string
         nullable: true
-        description: |+
-          "Date de début de droit à l'AAH si le particulier est bénéficiaire.
+        description: "Date de début de droit à l'allocation adulte handicapé du particulier bénéficiaire.
+          \n
           Ce champs est null dans le cas où le particulier n'est pas bénéficiaire de l'AAH."
         example: '1992-11-29'
 
