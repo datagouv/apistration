@@ -51,11 +51,9 @@ cnous:
       echelon_bourse:
         title: Échelon de la bourse
         type: string
-        description: '"Il existe 8 échelons de bourse, de 0bis à 7, correspondant
-          aux montants reçus par l''étudiant pour l''année scolaire. Pour
-          en savoir plus, consulter la FAQ : https://particulier.api.gouv.fr/catalogue/cnous/statut_etudiant_boursier#faq_entry_answer_0_api_particulier_endpoint_cnous_statut_etudiant_boursier."
-
-          '
+        description: "Ce champ indique l'échelon de la bourse de l'étudiant. Il existe 8 échelons de bourse, de 0bis à 7, correspondant aux montants reçus par l'étudiant pour l'année scolaire.
+          \n\n
+          Pour en savoir plus, consulter la FAQ : https://particulier.api.gouv.fr/catalogue/cnous/statut_etudiant_boursier#faq_entry_answer_0_api_particulier_endpoint_cnous_statut_etudiant_boursier."
         example: '6'
         enum:
         - 0bis
@@ -69,23 +67,23 @@ cnous:
       email:
         title: E-mail
         type: string
-        description: Adresse email de l'étudiant
+        description: Adresse e-mail de l'étudiant.
         example: georges@moustaki.fr
       periode_versement_bourse:
-        title: Période de validité de la bourse
-        description: Contient les données de la période de validité de la bourse de l'étudiant
+        title: Période de versement de la bourse
+        description: Données relatives à la période de versement de la bourse de l'étudiant.
         type: object
         properties: 
           date_rentree:
             title: Date de rentrée
             type: string
             format: date
-            description: Date de début de rentrée scolaire ou universitaire
+            description: Date de rentrée scolaire ou universitaire de l'étudiant, correspondant au début de la période de versement de la bourse.
             example: 2019-09-01
           duree:
-            title: Durée de versement de la bourse
+            title: Durée de versement
             type: number
-            description: Nombre de mois de versement de la bourse
+            description: Nombre de mois de versement de la bourse à l'étudiant.
             example: 12
       statut_bourse:
         title: Statut boursier
