@@ -299,7 +299,8 @@ cnav:
 
   asf:
     title: Statut allocation de soutien familial (ASF)
-    description: "Savoir si un particulier est bénéficiaire de l'allocation de soutien familial (ASF). Retourne également des informations sur les dates d'ouverture et de fermeture des droits."
+    description: "Statut bénéficiaire de l'allocation de soutien familial (ASF). 
+      \n\n Retourne également des informations sur les dates d'ouverture et de fermeture des droits."
     tags:
       - Statut Allocation Soutien Familial (ASF)
     attributes:
@@ -310,12 +311,12 @@ cnav:
         enum:
         - true
         - false
-        description: "Indique si le particulier est bénéficiaire de l'allocation de soution familial au moment de l'appel."
+        description: "Indique si le particulier est bénéficiaire de l'allocation de soutien familial au moment de l'appel."
       date_debut_droit:
         title: "Date d'ouverture du droit à l'ASF"
         type: string
         nullable: true
-        description: "Date de début de droit à l'ASF si le particulier est bénéficiaire.
+        description: "Date de début de droit à l'allocation de soutien familial du particulier bénéficiaire.
           \n
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de l'ASF."
         example: '1992-11-29'
