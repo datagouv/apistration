@@ -22,13 +22,13 @@ cnav:
         - false
         description: "Indique si le particulier est bénéficiaire de la complémentaire de santé solidaire au moment de l'appel."
       avec_participation:
-        title: "Statut C2S sans participation"
+        title: "Statut C2S avec participation financière"
         type: boolean
         example: false
         enum:
         - true
         - false
-        description: Indique, lorsque la valeur est à true, que la complémentaire santé solidaire est sans participation financière de la part de l'allocataire. Cette valeur est toujours à false dans le cas où le particulier n'est pas bénéficiaire de la C2S.
+        description: Indique, lorsque la valeur est à true, que la complémentaire santé solidaire est avec participation financière de la part de l'allocataire. Cette valeur est toujours à false dans le cas où le particulier n'est pas bénéficiaire de la C2S.
       date_debut_droit:
         title: "Date d'ouverture du droit à la C2S"
         type: string
