@@ -5,7 +5,7 @@ class CNAV::ComplementaireSanteSolidaire::BuildResource < CNAV::BuildResource
     {
       status:,
       est_beneficiaire: !non_beneficiary?,
-      avec_participation: !non_beneficiary? && beneficiary_with_participation?,
+      avec_participation: beneficiary_with_participation?,
       date_debut_droit: date_debut,
       date_fin_droit: date_fin
     }
@@ -24,6 +24,8 @@ class CNAV::ComplementaireSanteSolidaire::BuildResource < CNAV::BuildResource
   end
 
   def beneficiary_with_participation?
+    return nil if non_beneficiary?
+
     json_body['indicateur'] == 'BENEFICIAIRE_AVEC_PARTICIPATION_FINANCIERE'
   end
 
