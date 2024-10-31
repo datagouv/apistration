@@ -132,11 +132,11 @@ paths:
           minLength: 5
           maxLength: 5
           example: '08480'
-        description: Code Insee à 5 chiffres du lieu de naissance de la personne sur
-          5 chiffres. Ne pas remplir si la personne est née à l'étranger ou si présence
-          de jeton FranceConnect. En l'absence de jeton FranceConnect et du triplet
-          (nomCommuneNaissance, anneeDateDeNaissance, codeInseeDepartementNaissance),
-          le champ est obligatoire si la personne est née en France
+        description: Code Insee à 5 chiffres du lieu de naissance de la personne.
+          Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
+          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
+          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
+          si la personne est née en France
         required: false
       - name: codePaysLieuDeNaissance
         in: query
@@ -413,11 +413,11 @@ paths:
           minLength: 5
           maxLength: 5
           example: '08480'
-        description: Code Insee à 5 chiffres du lieu de naissance de la personne sur
-          5 chiffres. Ne pas remplir si la personne est née à l'étranger ou si présence
-          de jeton FranceConnect. En l'absence de jeton FranceConnect et du triplet
-          (nomCommuneNaissance, anneeDateDeNaissance, codeInseeDepartementNaissance),
-          le champ est obligatoire si la personne est née en France
+        description: Code Insee à 5 chiffres du lieu de naissance de la personne.
+          Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
+          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
+          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
+          si la personne est née en France
         required: false
       - name: codePaysLieuDeNaissance
         in: query
@@ -695,11 +695,11 @@ paths:
           minLength: 5
           maxLength: 5
           example: '08480'
-        description: Code Insee à 5 chiffres du lieu de naissance de la personne sur
-          5 chiffres. Ne pas remplir si la personne est née à l'étranger ou si présence
-          de jeton FranceConnect. En l'absence de jeton FranceConnect et du triplet
-          (nomCommuneNaissance, anneeDateDeNaissance, codeInseeDepartementNaissance),
-          le champ est obligatoire si la personne est née en France
+        description: Code Insee à 5 chiffres du lieu de naissance de la personne.
+          Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
+          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
+          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
+          si la personne est née en France
         required: false
       - name: codePaysLieuDeNaissance
         in: query
@@ -989,11 +989,11 @@ paths:
           minLength: 5
           maxLength: 5
           example: '08480'
-        description: Code Insee à 5 chiffres du lieu de naissance de la personne sur
-          5 chiffres. Ne pas remplir si la personne est née à l'étranger ou si présence
-          de jeton FranceConnect. En l'absence de jeton FranceConnect et du triplet
-          (nomCommuneNaissance, anneeDateDeNaissance, codeInseeDepartementNaissance),
-          le champ est obligatoire si la personne est née en France
+        description: Code Insee à 5 chiffres du lieu de naissance de la personne.
+          Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
+          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
+          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
+          si la personne est née en France
         required: false
       - name: codePaysLieuDeNaissance
         in: query
@@ -1279,11 +1279,11 @@ paths:
           minLength: 5
           maxLength: 5
           example: '08480'
-        description: Code Insee à 5 chiffres du lieu de naissance de la personne sur
-          5 chiffres. Ne pas remplir si la personne est née à l'étranger ou si présence
-          de jeton FranceConnect. En l'absence de jeton FranceConnect et du triplet
-          (nomCommuneNaissance, anneeDateDeNaissance, codeInseeDepartementNaissance),
-          le champ est obligatoire si la personne est née en France
+        description: Code Insee à 5 chiffres du lieu de naissance de la personne.
+          Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
+          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
+          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
+          si la personne est née en France
         required: false
       - name: codePaysLieuDeNaissance
         in: query
@@ -1816,11 +1816,11 @@ paths:
           minLength: 5
           maxLength: 5
           example: '08480'
-        description: Code Insee à 5 chiffres du lieu de naissance de la personne sur
-          5 chiffres. Ne pas remplir si la personne est née à l'étranger ou si présence
-          de jeton FranceConnect. En l'absence de jeton FranceConnect et du triplet
-          (nomCommuneNaissance, anneeDateDeNaissance, codeInseeDepartementNaissance),
-          le champ est obligatoire si la personne est née en France
+        description: Code Insee à 5 chiffres du lieu de naissance de la personne.
+          Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
+          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
+          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
+          si la personne est née en France
         required: false
       - name: codePaysLieuDeNaissance
         in: query

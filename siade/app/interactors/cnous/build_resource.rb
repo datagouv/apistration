@@ -3,7 +3,7 @@ class CNOUS::BuildResource < BuildResource
     {
       identite:,
       est_boursier: valid_payload['boursier'],
-      echelon_bourse: valid_payload['grantEchelon'],
+      echelon_bourse: ,
       email: valid_payload['email'],
       periode_versement_bourse:,
       etablissement_etudes:,
@@ -16,10 +16,9 @@ class CNOUS::BuildResource < BuildResource
   def identite
     {
       nom: valid_payload['lastName'],
-      prenom: valid_payload['firstName'],
-      prenom2: valid_payload['firstName2'],
+      prenoms: [valid_payload['firstName'], valid_payload['firstName2']],
       date_naissance: format_date(valid_payload['birthDate']),
-      lieu_naissance: extract_birth_place,
+      nom_commune_naissance: extract_birth_place,
       sexe: valid_payload['civility']
     }
   end
@@ -42,6 +41,13 @@ class CNOUS::BuildResource < BuildResource
     {
       code: valid_payload['grantStatus'],
       libelle: statut_libelle
+    }
+  end
+
+  def echelon_bourse
+    {
+      echelon: valid_payload['grantEchelon'],
+      echelon_bourse_regionale_provisoire: valid_payload['grantEchelon'].to_i > 0
     }
   end
 

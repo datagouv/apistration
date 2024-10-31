@@ -4,11 +4,11 @@ class APIParticulier::CNOUS::StudentScholarship::V2 < APIParticulier::V2BaseSeri
   end
 
   attribute :prenom, if: -> { scope?(:cnous_identite) } do
-    object.identite[:prenom]
+    object.identite[:prenoms].first
   end
 
   attribute :prenom2, if: -> { scope?(:cnous_identite) } do
-    object.identite[:prenom2]
+    object.identite[:prenoms].second
   end
 
   attribute :dateNaissance, if: -> { scope?(:cnous_identite) } do
@@ -16,7 +16,7 @@ class APIParticulier::CNOUS::StudentScholarship::V2 < APIParticulier::V2BaseSeri
   end
 
   attribute :lieuNaissance, if: -> { scope?(:cnous_identite) } do
-    object.identite[:lieu_naissance]
+    object.identite[:nom_commune_naissance]
   end
 
   attribute :sexe, if: -> { scope?(:cnous_identite) } do
@@ -30,7 +30,7 @@ class APIParticulier::CNOUS::StudentScholarship::V2 < APIParticulier::V2BaseSeri
   end
 
   attribute :echelonBourse, if: -> { scope?(:cnous_echelon_bourse) } do
-    object.echelon_bourse
+    object.echelon_bourse[:echelon]
   end
 
   attribute :statut, if: -> { scope?(:cnous_statut_bourse) } do

@@ -14,16 +14,14 @@ cnous:
             type: string
             description: Nom de naissance de l'étudiant.
             example: Moustaki
-          prenom:
-            title: Prénom 1
-            type: string
-            description: Premier prénom de l'étudiant.
-            example: Georges
-          prenom_2:
-            title: Prénom 2
-            type: string
-            description: Deuxième prénom de l'étudiant.
-            example: Claude
+          prenoms:
+            type: array
+            minItems: 1
+            items:
+              type: string
+            example:
+            - PIERRE
+            - RICHARD
           date_naissance:
             title: Date de naissance
             type: string
@@ -50,20 +48,33 @@ cnous:
         example: true
       echelon_bourse:
         title: Échelon de la bourse
-        type: string
-        description: "Ce champ indique l'échelon de la bourse de l'étudiant. Il existe 8 échelons de bourse, de 0bis à 7, correspondant aux montants reçus par l'étudiant pour l'année scolaire.
-          \n\n
-          Pour en savoir plus, consulter la FAQ : https://particulier.api.gouv.fr/catalogue/cnous/statut_etudiant_boursier#faq_entry_answer_0_api_particulier_endpoint_cnous_statut_etudiant_boursier."
-        example: '6'
-        enum:
-        - 0bis
-        - '1'
-        - '2'
-        - '3'
-        - '4'
-        - '5'
-        - '6'
-        - '7'
+        description: Contient le détail de l'échelon de la bourse
+        type: object
+        properties:
+          echelon:
+            title: Échelon de la bourse
+            type: string
+            description: "Ce champ indique l'échelon de la bourse de l'étudiant. Il existe 8 échelons de bourse, de 0bis à 7, correspondant aux montants reçus par l'étudiant pour l'année scolaire.
+              \n\n
+              Pour en savoir plus, consulter la FAQ : https://particulier.api.gouv.fr/catalogue/cnous/statut_etudiant_boursier#faq_entry_answer_0_api_particulier_endpoint_cnous_statut_etudiant_boursier."
+            example: '6'
+            enum:
+            - 0bis
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+            - '5'
+            - '6'
+            - '7'
+          echelon_bourse_regionale_provisoire:
+            title: Statut provisoire de la bourse régionale
+            description: "Ce champs indique si l'echelon de la bourse est provisoire ou non. Valide uniquement pour les bourses régionales"
+            type: boolean
+            example: true
+            enum:
+              - true
+              - false
       email:
         title: E-mail
         type: string

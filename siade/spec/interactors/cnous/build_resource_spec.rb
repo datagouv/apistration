@@ -20,14 +20,16 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
           {
             identite: {
               nom: 'Martin',
-              prenom: 'Jerome',
-              prenom2: 'Francis',
+              prenoms: ['Jerome', 'Francis'],
               date_naissance: '1980-11-14',
-              lieu_naissance: 'La Crèche',
+              nom_commune_naissance: 'La Crèche',
               sexe: 'M'
             },
             est_boursier: true,
-            echelon_bourse: '5',
+            echelon_bourse: {
+              echelon: '5',
+              echelon_bourse_regionale_provisoire: true
+            },
             email: 'francislalanne@gmail.com',
             periode_versement_bourse: {
               date_rentree: '2020-09-01',
@@ -60,14 +62,16 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
           {
             identite: {
               nom: 'Martin',
-              prenom: 'Jerome',
-              prenom2: 'Francis',
+              prenoms: ['Jerome', 'Francis'],
               date_naissance: '1980-11-14',
-              lieu_naissance: 'La Crèche',
+              nom_commune_naissance: 'La Crèche',
               sexe: 'M'
             },
             est_boursier: true,
-            echelon_bourse: '5',
+            echelon_bourse: {
+              echelon: '5',
+              echelon_bourse_regionale_provisoire: true
+            },
             email: 'francislalanne@gmail.com',
             periode_versement_bourse: {
               date_rentree: '2020-09-01',
