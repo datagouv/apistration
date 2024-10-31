@@ -4,7 +4,7 @@ class APIParticulier::MEN::ScolaritesSerializer::V3 < APIParticulier::V3AndMore:
     code_etablissement
     annee_scolaire
     est_scolarise
-    status_eleve
+    statut_eleve
   ].each do |resource_attribute|
     attribute resource_attribute, if: -> { scope?(:men_statut_scolarite) }
   end
