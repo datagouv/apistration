@@ -17,7 +17,7 @@ class APIParticulier::CNAV::QuotientFamilialV2::V2 < APIParticulier::V2BaseSeria
         nomNaissance: allocataire[:nom_naissance],
         nomUsuel: allocataire[:nom_usage],
         prenoms: allocataire[:prenoms],
-        anneDateDeNaissance: allocataire[:annee_date_de_naissance],
+        anneeDateDeNaissance: allocataire[:annee_date_de_naissance],
         moisDateDeNaissance: allocataire[:mois_date_de_naissance],
         jourDateDeNaissance: allocataire[:jour_date_de_naissance],
         sexe: allocataire[:sexe]
@@ -31,7 +31,7 @@ class APIParticulier::CNAV::QuotientFamilialV2::V2 < APIParticulier::V2BaseSeria
         nomNaissance: enfant[:nom_naissance],
         nomUsuel: enfant[:nom_usage],
         prenoms: enfant[:prenoms],
-        anneDateDeNaissance: enfant[:annee_date_de_naissance],
+        anneeDateDeNaissance: enfant[:annee_date_de_naissance],
         moisDateDeNaissance: enfant[:mois_date_de_naissance],
         jourDateDeNaissance: enfant[:jour_date_de_naissance],
         sexe: enfant[:sexe]
