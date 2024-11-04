@@ -46,7 +46,7 @@
           "id": "65419234a1f7d1f2ba09bd8c",
           "link": "https://entreprise.api.gouv.fr/proxy/inpi/download/%2FV+svyVVJGVCJroamyqjOrECaXHorkxJ39vZH1IMHz4N+6gvit9zgoQ=--rJ1ss+Brc7oVhloH--huyvWA83YgMFqOnjyKDmXQ==",
           "date_cloture": "2023-08-08",
-          "type": "K"
+          "type": "bilan consolidé"
         }
       ]
     },
