@@ -55,13 +55,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -188,13 +186,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -690,13 +686,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -1210,13 +1204,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -1895,13 +1887,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -2497,13 +2487,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -2858,13 +2846,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -3272,13 +3258,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -3678,13 +3662,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -4130,13 +4112,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -4601,13 +4581,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -4979,13 +4957,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -5601,13 +5577,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -7403,13 +7377,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -8807,13 +8779,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -9156,13 +9126,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -9562,13 +9530,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -9991,13 +9957,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -10417,13 +10381,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -10844,13 +10806,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -11652,13 +11612,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -12167,13 +12125,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -12668,13 +12624,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -13069,13 +13023,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -13484,13 +13436,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -13967,13 +13917,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -15043,13 +14991,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -15651,13 +15597,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -16289,13 +16233,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -17637,13 +17579,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -19025,13 +18965,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -20414,13 +20352,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -21755,13 +21691,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -22179,13 +22113,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -23020,13 +22952,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -23869,13 +23799,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -24343,13 +24271,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -24845,13 +24771,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -25193,13 +25117,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -25667,13 +25589,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -26064,13 +25984,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -26433,13 +26351,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -26866,13 +26782,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -27407,13 +27321,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -28015,13 +27927,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:
@@ -28404,13 +28314,11 @@ paths:
                     - code: '00103'
                       title: Jeton expiré
                       detail: Votre token est expiré. Vous devez refaire une demande
-                        à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                       source:
                         parameter: token
                       meta: {}
                   summary: Jeton expiré
                   description: Votre token est expiré. Vous devez refaire une demande
-                    à API Entreprise, un guide est disponible sur https://entreprise.api.gouv.fr/faq#comment-renouveler-mon-jeton-arrivant-a-expiration
                 blacklisted_token_error:
                   value:
                     errors:

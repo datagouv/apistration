@@ -48,7 +48,7 @@ class APIController < ApplicationController
   end
 
   def user_no_longer_authorized(_exception)
-    render_generic_errors_serializer(ExpiredTokenError, status: 401)
+    render error_json(ExpiredTokenError.new(api_kind), status: 401)
   end
 
   def render_generic_errors_serializer(klass, status:)
