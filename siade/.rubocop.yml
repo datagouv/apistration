@@ -151,6 +151,9 @@ Style/BlockComments:
 Style/BlockDelimiters:
   EnforcedStyle: braces_for_chaining
 
+Style/SafeNavigationChainLength:
+  Enabled: false
+
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
   Exclude:
