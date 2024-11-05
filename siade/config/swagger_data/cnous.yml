@@ -97,22 +97,6 @@ cnous:
             type: number
             description: Nombre de mois de versement de la bourse à l'étudiant.
             example: 12
-      statut_bourse:
-        title: Statut boursier
-        description: Contient le détail de l'attribution du statut boursier
-        type: object
-        properties:
-          code:
-            title: Code de statut de la bourse
-            type: number
-            description: Code du statut de la bourse, 0 si définitif, >0 si
-              provisoire (conditionnel)
-            example: 0
-          libelle:
-            title: Libellé du statut de la bourse
-            type: string
-            description: Le libellé associé au code de statut de la bourse
-            example: définitif
       etablissement_etudes:
         title: Établissement d'études de l'étudiant
         description: Contient le détail des informations concernant l'établissement dans lequel l'étudiant fait ses études
