@@ -44,7 +44,7 @@ RSpec.describe INPI::RNE::ActesBilans::ValidateResponse, type: :validate_respons
 
     it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to include(instance_of(ProviderUnavailable)) }
+    its(:errors) { is_expected.to include(instance_of(ProviderRateLimitingError)) }
   end
 
   context 'with a 500 error' do

@@ -7,13 +7,17 @@ class INPI::RNE::ActesBilans::ValidateResponse < ValidateResponse
 
     provider_internal_error! if http_internal_error?
 
-    provider_unavailable! if http_too_many_requests?
+    handle_http_too_many_requests! if http_too_many_requests?
 
     unknown_provider_response!
   end
   # rubocop:enable Metrics/CyclomaticComplexity
 
   private
+
+  def handle_http_too_many_requests!
+    fail_with_error!(build_error(ProviderRateLimitingError))
+  end
 
   def actes_present?
     json_body['actes'].present?
