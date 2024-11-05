@@ -47,6 +47,37 @@ cnous:
         type: boolean
         description: Indique si l'étudiant est boursier
         example: true
+      periode_versement_bourse:
+        title: Période de versement de la bourse
+        description: Informations relatives à la période de versement de la bourse de l'étudiant.
+        type: object
+        properties: 
+          date_rentree:
+            title: Date de rentrée
+            type: string
+            format: date
+            description: Date de rentrée scolaire ou universitaire de l'étudiant, correspondant au début de la période de versement de la bourse.
+            example: 2019-09-01
+          duree:
+            title: Durée de versement
+            type: number
+            description: Nombre de mois de versement de la bourse à l'étudiant.
+            example: 12
+      etablissement_etudes:
+        title: Établissement d'études de l'étudiant
+        description: Contient le détail des informations concernant l'établissement dans lequel l'étudiant fait ses études
+        type: object
+        properties:
+          nom_commune:
+            title: Ville d'études
+            type: string
+            description: Libellé de la ville d'études de l'étudiant
+            example: Brest
+          nom_etablissement:
+            title: Établissement d'études
+            type: string
+            description: L'établissement d'études de l'étudiant
+            example: Carnot
       echelon_bourse:
         title: Échelon de la bourse
         description: Informations relatives à l'échelon de la bourse
@@ -81,37 +112,6 @@ cnous:
         type: string
         description: Adresse e-mail de l'étudiant boursier.
         example: georges@moustaki.fr
-      periode_versement_bourse:
-        title: Période de versement de la bourse
-        description: Informations relatives à la période de versement de la bourse de l'étudiant.
-        type: object
-        properties: 
-          date_rentree:
-            title: Date de rentrée
-            type: string
-            format: date
-            description: Date de rentrée scolaire ou universitaire de l'étudiant, correspondant au début de la période de versement de la bourse.
-            example: 2019-09-01
-          duree:
-            title: Durée de versement
-            type: number
-            description: Nombre de mois de versement de la bourse à l'étudiant.
-            example: 12
-      etablissement_etudes:
-        title: Établissement d'études de l'étudiant
-        description: Contient le détail des informations concernant l'établissement dans lequel l'étudiant fait ses études
-        type: object
-        properties:
-          nom_commune:
-            title: Ville d'études
-            type: string
-            description: Libellé de la ville d'études de l'étudiant
-            example: Brest
-          nom_etablissement:
-            title: Établissement d'études
-            type: string
-            description: L'établissement d'études de l'étudiant
-            example: Carnot
 
   etudiant_boursier:
     parameters:
