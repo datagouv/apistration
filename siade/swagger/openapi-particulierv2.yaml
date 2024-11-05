@@ -2180,7 +2180,7 @@ paths:
                     - 4
                     - 5
                     - 6
-                  status_eleve:
+                  statut_eleve:
                     title: Statut de l'élève
                     description: |
                       Indique le statut sous lequel l'élève est scolarisé dans l'établissement. Les valeurs sont susceptibles d'évoluer :

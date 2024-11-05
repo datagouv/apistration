@@ -26,7 +26,7 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
           est_scolarise: true,
           est_boursier: false,
           echelon_bourse: nil,
-          status_eleve: {
+          statut_eleve: {
             code: 'ST',
             libelle: 'SCOLAIRE'
           }
@@ -51,7 +51,7 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
           est_scolarise: true,
           est_boursier: true,
           echelon_bourse: 1,
-          status_eleve: {
+          statut_eleve: {
             code: 'ST',
             libelle: 'SCOLAIRE'
           }
@@ -76,7 +76,7 @@ RSpec.describe MEN::Scolarites::BuildResource, type: :build_resource do
           est_scolarise: true,
           est_boursier: nil,
           echelon_bourse: nil,
-          status_eleve: {
+          statut_eleve: {
             code: 'ST',
             libelle: 'SCOLAIRE'
           }

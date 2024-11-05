@@ -20,7 +20,7 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
           {
             identite: {
               nom: 'Martin',
-              prenoms: ['Jerome', 'Francis'],
+              prenoms: %w[Jerome Francis],
               date_naissance: '1980-11-14',
               nom_commune_naissance: 'La Crèche',
               sexe: 'M'
@@ -62,7 +62,7 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
           {
             identite: {
               nom: 'Martin',
-              prenoms: ['Jerome', 'Francis'],
+              prenoms: %w[Jerome Francis],
               date_naissance: '1980-11-14',
               nom_commune_naissance: 'La Crèche',
               sexe: 'M'

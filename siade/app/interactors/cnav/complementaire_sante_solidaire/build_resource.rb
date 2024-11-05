@@ -24,7 +24,7 @@ class CNAV::ComplementaireSanteSolidaire::BuildResource < CNAV::BuildResource
   end
 
   def beneficiary_with_participation?
-    return nil if non_beneficiary?
+    return false if non_beneficiary?
 
     json_body['indicateur'] == 'BENEFICIAIRE_AVEC_PARTICIPATION_FINANCIERE'
   end
