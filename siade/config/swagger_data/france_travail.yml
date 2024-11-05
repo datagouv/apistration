@@ -89,6 +89,45 @@ france_travail:
             nullable: true
             description: Adresse e-mail du demandeur d'emploi.
             example: martin.jacques@france.fr
+      adresse:
+        title: Adresse
+        type: object
+        description: Adresse du demandeur d'emploi, déclarée par le particulier lors de son inscription à France Travail ou suite à une déclaration de changement d’adresse.
+        properties:
+          code_postal:
+            type: string
+            title: Code postal
+            example: '75001'
+          code_cog_insee_commune:
+            title: Code COG Insee de la commune
+            type: string
+            example: '75101'
+          localite:
+            title: Localité (Code postal et nom de la commune)
+            type: string
+            example: 75001 Paris
+          ligne_voie:
+            title: Voie
+            type: string
+            example: 21 RUE DES MARMOTS
+          ligne_complement_destinataire:
+            title: Complément destinataire
+            type: string
+            nullable: true
+            example: Appartement 42
+          ligne_complement_adresse:
+            title: Complément d'adresse
+            type: string
+            nullable: true
+            example:
+          ligne_complement_distribution:
+            title: Complément distribution
+            type: string
+            nullable: true
+          ligne_nom:
+            title: Nom du destinataire
+            type: string
+            example: MARTIN
       inscription:
         title: Inscription FranceTravail
         description: Données relatives à l'inscription de l'utilisateur à France Travail.
@@ -166,45 +205,6 @@ france_travail:
             - DC
             - RC
             - null
-      adresse:
-        title: Adresse
-        type: object
-        description: Adresse du demandeur d'emploi, déclarée par le particulier lors de son inscription à France Travail ou suite à une déclaration de changement d’adresse.
-        properties:
-          code_postal:
-            type: string
-            title: Code postal
-            example: '75001'
-          code_cog_insee_commune:
-            title: Code COG Insee de la commune
-            type: string
-            example: '75101'
-          localite:
-            title: Localité (Code postal et nom de la commune)
-            type: string
-            example: 75001 Paris
-          ligne_voie:
-            title: Voie
-            type: string
-            example: 21 RUE DES MARMOTS
-          ligne_complement_destinataire:
-            title: Complément destinataire
-            type: string
-            nullable: true
-            example: Appartement 42
-          ligne_complement_adresse:
-            title: Complément d'adresse
-            type: string
-            nullable: true
-            example:
-          ligne_complement_distribution:
-            title: Complément distribution
-            type: string
-            nullable: true
-          ligne_nom:
-            title: Nom du destinataire
-            type: string
-            example: MARTIN
 
   indemnites:
     title: "Paiements versés par France Travail"
