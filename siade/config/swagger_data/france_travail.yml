@@ -221,8 +221,8 @@ france_travail:
         description: Identifiant France Travail, tel qu'il a été renseigné en paramètre d'appel. Cet identifiant est le nom d'utilisateur tel que choisi par le particulier lors de la création de son espace personnel en ligne.
         example: 'jean.dupont33'
       paiements:
-        title: "Paiements"
-        description: "Liste des paiements versés"
+        title: "Liste des paiements versés"
+        description: "Liste des paiements versés par FranceTravail au particulier."
         type: array
         minItems: 1
         items:
@@ -234,23 +234,23 @@ france_travail:
               type: string
               example: '2021-01-01'
             montant:
-              title: Montant total
+              title: Montant total versé
               description: Montant total du paiement. Il s'agit de la somme des allocations, aides et autres paiements, moins le prélèvement de l'impôt à la source.
               type: number
               example: 123.4
             allocations:
-              title: Allocations
-              description: Part du montant correspondant aux paiements d’allocations (Allocation d'aide au retour à l'emploi, Allocation de sécurisation professionnelle, Allocation de solidarité spécifique, Allocation pour les travailleurs indépendants, Rémunération de formation France Travail, Rémunération de fin de formation, Allocation de fin de droit, Allocation d'accompagnement personnalisé, Allocation de professionnalisation et de solidarité, Allocation décès, Allocation contrat engagement jeune).
+              title: Montant d'allocations
+              description: Montant du paiement, avant prélèvement de l'impôt à la source, correspondant aux allocations (allocation d'aide au retour à l'emploi, allocation de sécurisation professionnelle, allocation de solidarité spécifique, allocation pour les travailleurs indépendants, Rémunération de formation France Travail, Rémunération de fin de formation, allocation de fin de droit, allocation d'accompagnement personnalisé, allocation de professionnalisation et de solidarité, allocation décès, allocation contrat engagement jeune).
               type: number
               example: 45.1
             aides:
-              title: Aides
-              description: Part du montant correspondant aux paiements d’aides (Aide à la reprise et à la création d’entreprise, Aide à la mobilité, Aide à la garde d'enfant pour parent isolé, Aide fin de droit, Aide aux congés non payés, Aide à la valorisation des acquis par l'expérience, Aide du fond de sécurisation du secteur automobile, Aide ponctuelle jeune, Aide régionale, Aide aux demandeurs d'emploi longue durée, Aide exceptionnelle de solidarité, Prime de reclassement).
+              title: Montant d'aides
+              description: Montant du paiement, avant prélèvement de l'impôt à la source, correspondant aux aides (aide à la reprise et à la création d’entreprise, aide à la mobilité, aide à la garde d'enfant pour parent isolé, aide fin de droit, aide aux congés non payés, aide à la valorisation des acquis par l'expérience, aide du fond de sécurisation du secteur automobile, aide ponctuelle jeune, aide régionale, aide aux demandeurs d'emploi longue durée, aide exceptionnelle de solidarité, Prime de reclassement).
               type: number
               example: 12.21
             autres:
-              title: Autres paiements
-              description: Part du montant correspondant à d’autres paiements (Prime de Noel, Indemnité différentielle de reclassement, Acompte, Avance, Reversement).
+              title: Montant des autres paiements
+              description: Montant du paiement, avant prélèvement de l'impôt à la source, correspondant aux autres paiements (prime de Noël, indemnité différentielle de reclassement, acompte, avance, reversement).
               type: number
               example: 2.34
 
