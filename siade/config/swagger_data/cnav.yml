@@ -699,7 +699,7 @@ cnav:
           type: boolean
           nullable: true
           description: "Indique si le particulier est bénéficiaire du RSA majoré au moment de l'appel.
-            Nécessite un scope spécifique pour être envoyé.
+            \n
             Sera null si le particulier n'est pas bénéficiaire du RSA."
           example: false
         dateDebut:
