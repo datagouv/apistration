@@ -11,7 +11,7 @@ france_travail:
   statut:
     title: Statut demandeur d'emploi
     description: |
-        Données d'identité, de contact et de statut du demandeur d'emploi.
+        Statut demandeur d'emploi, données relatives à l'inscription FranceTravail, ainsi que données d'identité de contact.
         **Paramètres d'appel :** Nom d’utilisateur France Travail choisi par le particulier lors de la création de son espace personnel en ligne
         **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_pole_emploi_statut)
 
@@ -34,7 +34,7 @@ france_travail:
         properties:
           civilite:
             title: Civilité
-            description: Civilité du demandeur d'emploi, Madame ou Monsieur
+            description: Civilité du demandeur d'emploi, Madame ou Monsieur.
             type: string
             example: M.
             enum:
@@ -43,12 +43,12 @@ france_travail:
           nom_naissance:
             title: Nom de naissance
             type: string
-            description: Nom de naissance du demandeur d'emploi
+            description: Nom de naissance du demandeur d'emploi.
             example: MARTIN
           nom_usage:
             title: Nom d'usage
             type: string
-            description: Nom d'usage du demandeur d'emploi
+            description: Nom d'usage du demandeur d'emploi.
             nullable: true
             example:
           prenom:
@@ -59,68 +59,69 @@ france_travail:
           sexe:
             title: Sexe
             type: string
-            description: Sexe du demandeur d'emploi
+            description: Sexe du demandeur d'emploi.
             example: Masculin
           date_naissance:
             title: Date de naissance
             format: date
             type: string
-            description: Date de naissance du demandeur d'emploi au format YYYY-MM-DD
+            description: Date de naissance du demandeur d'emploi au format YYYY-MM-DD.
             example: 1995-02-02
       contact:
         title: Contact
-        description: Donnée de contact de l'utilisateur France Travail
+        description: Données de contact de l'utilisateur France Travail.
         type: object
         properties: 
           telephone:
             title: Téléphone principal
             type: string
-            description: Numéro de téléphone principal du demandeur d'emploi
+            description: Numéro de téléphone principal du demandeur d'emploi.
             example: '0636676767'
           telephone2:
             title: Téléphone secondaire
             type: string
-            description: Numéro de téléphone secondaire du demandeur d'emploi
+            description: Numéro de téléphone secondaire du demandeur d'emploi.
             nullable: true
             example: '1122334455'
           email:
             title: E-mail
             type: string
             nullable: true
-            description: Adresse e-mail du demandeur d'emploi
+            description: Adresse e-mail du demandeur d'emploi.
             example: martin.jacques@france.fr
       inscription:
-        title: Inscription
-        description: Donnée relative à l'inscription de l'utilisateur France Travail
+        title: Inscription FranceTravail
+        description: Données relatives à l'inscription de l'utilisateur à France Travail.
         type: object
         properties:
           date_debut:
             title: Date d'inscription
             format: date
             type: string
-            description: Date d'inscription à France Travail au format YYYY-MM-DD
+            description: Date d'inscription à France Travail au format YYYY-MM-DD.
             example: 2021-01-07
           date_fin:
-            title: Date de cessation d'inscription au format YYYY-MM-DD
-            description: Date de cessation d'inscription à France Travail
+            title: Date de cessation d'inscription
+            description: Date de cessation d'inscription à France Travail au format YYYY-MM-DD.
             type: string
             format: date
             nullable: true
             example: 2023-03-12
           categorie:
-            title: Categorie
-            description: Donnée relative à la catégorie de l'inscription de l'utilisateur France Travail
+            title: Catégorie d'inscription
+            description: |+
+              Catégorie de l'inscription de l'utilisateur à France Travail. La liste des catégories possibles est la suivante : 
+                - 1 : PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS
+                - 2 : PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PARTIEL
+                - 3 : PERSONNE SANS EMPLOI DISPONIBLE DUREE DETERMINEE OU SAISON
+                - 4 : PERSONNE SANS EMPLOI NON DISPONIBLE IMMEDIATEMENT
+                - 5 : PERSONNE POURVUE D'UN EMPLOI A LA RECHERCHE D'UN AUTRE
             type: object
             properties:
               code:
-                title: Code de la catégorie d'inscription
+                title: Code
                 description: |
                   Code de la catégorie d'inscription du particulier à France Travail.
-                    - 1 : PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS
-                    - 2 : PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PARTIEL
-                    - 3 : PERSONNE SANS EMPLOI DISPONIBLE DUREE DETERMINEE OU SAISON
-                    - 4 : PERSONNE SANS EMPLOI NON DISPONIBLE IMMEDIATEMENT
-                    - 5 : PERSONNE POURVUE D'UN EMPLOI A LA RECHERCHE D'UN AUTRE"
                 type: integer
                 example: 1
                 enum:
@@ -130,9 +131,8 @@ france_travail:
                 - 4
                 - 5
               libelle:
-                title: Libellé de la catégorie d'inscription
-                description: Libellé de la catégorie d'inscription du particulier
-                  à France Travail, associé au cod précédent.
+                title: Libellé
+                description: Libellé de la catégorie d'inscription du particulier à France Travail.
                 type: string
                 example: PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN
                   TPS
@@ -146,9 +146,8 @@ france_travail:
             title: Code du statut de certification d'identité CNAV
             type: string
             description: |
-              France Travail dépend d'un flux de certification
-              d'identité émis par la CNAV, un particulier peut avoir été
-              certifié ou non. Sont considérés comme certifiés, les statuts suivants :
+              France Travail dépend d'un flux de certification d'identité émis par la CNAV, un particulier peut avoir été
+              certifié ou non. La signification des codes est la suivante :
                 - VC IDENTITE CERTIFIEE
                 - IC : IDENTITE ASSIMILEE CERTIFIEE
                 - PC : IDENTITE CERTIFIEE PARTIELLEMENT
@@ -170,36 +169,40 @@ france_travail:
       adresse:
         title: Adresse
         type: object
-        description: Adresse du demandeur d'emploi, déclarée par le particulier
-          lors de son inscription à France Travail ou suite à une déclaration
-          de changement d’adresse.
+        description: Adresse du demandeur d'emploi, déclarée par le particulier lors de son inscription à France Travail ou suite à une déclaration de changement d’adresse.
         properties:
           code_postal:
             type: string
-            description: Code postal
+            title: Code postal
             example: '75001'
           code_cog_insee_commune:
+            title: Code COG Insee de la commune
             type: string
             example: '75101'
           localite:
+            title: Localité (Code postal et nom de la commune)
             type: string
             example: 75001 Paris
           ligne_voie:
+            title: Voie
             type: string
             example: 21 RUE DES MARMOTS
           ligne_complement_destinataire:
+            title: Complément destinataire
             type: string
             nullable: true
             example: Appartement 42
           ligne_complement_adresse:
+            title: Complément d'adresse
             type: string
             nullable: true
             example:
           ligne_complement_distribution:
+            title: Complément distribution
             type: string
             nullable: true
-            example:
           ligne_nom:
+            title: Nom du destinataire
             type: string
             example: MARTIN
 
