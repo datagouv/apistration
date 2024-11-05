@@ -229,26 +229,26 @@ france_travail:
           title: "Paiement"
           type: object
           properties:
-            date:
+            date_versement:
               title: Date du paiement
               type: string
               example: '2021-01-01'
-            montant:
+            montant_total:
               title: Montant total versé
               description: Montant total du paiement. Il s'agit de la somme des allocations, aides et autres paiements, moins le prélèvement de l'impôt à la source.
               type: number
               example: 123.4
-            allocations:
+            montant_allocations:
               title: Montant d'allocations
               description: Montant du paiement, avant prélèvement de l'impôt à la source, correspondant aux allocations (allocation d'aide au retour à l'emploi, allocation de sécurisation professionnelle, allocation de solidarité spécifique, allocation pour les travailleurs indépendants, Rémunération de formation France Travail, Rémunération de fin de formation, allocation de fin de droit, allocation d'accompagnement personnalisé, allocation de professionnalisation et de solidarité, allocation décès, allocation contrat engagement jeune).
               type: number
               example: 45.1
-            aides:
+            montant_aides:
               title: Montant d'aides
               description: Montant du paiement, avant prélèvement de l'impôt à la source, correspondant aux aides (aide à la reprise et à la création d’entreprise, aide à la mobilité, aide à la garde d'enfant pour parent isolé, aide fin de droit, aide aux congés non payés, aide à la valorisation des acquis par l'expérience, aide du fond de sécurisation du secteur automobile, aide ponctuelle jeune, aide régionale, aide aux demandeurs d'emploi longue durée, aide exceptionnelle de solidarité, Prime de reclassement).
               type: number
               example: 12.21
-            autres:
+            montant_autres:
               title: Montant des autres paiements
               description: Montant du paiement, avant prélèvement de l'impôt à la source, correspondant aux autres paiements (prime de Noël, indemnité différentielle de reclassement, acompte, avance, reversement).
               type: number
