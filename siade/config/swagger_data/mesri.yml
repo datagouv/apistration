@@ -30,11 +30,13 @@ mesri:
             description: Date de naissance de l'étudiant.
             example: 1992-11-29
       admissions:
-        title: Admissions et inscriptions de l'étudiant
+        title: Admissions de l'étudiant dans un ou plusieurs établissements
         description: |+
-          Liste des admissions et inscriptions de l'étudiant dans des établissements d'enseignement supérieur pour l'année en cours.
+          Liste des admissions de l'étudiant dans un ou plusieurs établissements d'enseignement supérieur pour l'année en cours. 
 
-          Si aucun objet n'est listé, cela signifie que le particulier n'a aucune admission ni inscription d'un établissement.
+          Chaque objet listé correspond à un établissement dans lequel l'étudiant est au minimum admis. C'est-à-dire que l'étudiant est au minimum pré-inscrit dans l'établissement.
+          
+          Si l'étudiant est inscrit dans l'établissement (procédure complète et règlement des droits d'inscription terminés), la clé est_inscrit sera alors à true pour l'objet concerné.
         type: array
         items:
           type: object
