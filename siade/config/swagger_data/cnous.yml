@@ -6,13 +6,14 @@ cnous:
       - Statut étudiant boursier
     attributes:
       identite:
-        title: Données d'identité de l'étudiant
+        title: Données d'identité
         type: object
+        description: Données d'identité de l'étudiant boursier.
         properties:
           nom:
             title: Nom de naissance
             type: string
-            description: Nom de naissance de l'étudiant.
+            description: Nom de naissance de l'étudiant boursier.
             example: Moustaki
           prenoms:
             type: array
@@ -26,17 +27,17 @@ cnous:
             title: Date de naissance
             type: string
             format: date
-            description: Date de naissance de l'étudiant.
+            description: Date de naissance de l'étudiant boursier.
             example: 1992-11-29
           nom_commune_naissance:
             title: Commune de naissance
             type: string
-            description: Libellé de la commune de naissance de l'étudiant.
+            description: Libellé de la commune de naissance de l'étudiant boursier.
             example: Poitiers
           sexe:
             title: Sexe
             type: string
-            description: Sexe de l'étudiant.
+            description: Sexe de l'étudiant boursier.
             example: M
             enum:
             - M
@@ -48,7 +49,7 @@ cnous:
         example: true
       echelon_bourse:
         title: Échelon de la bourse
-        description: Contient le détail de l'échelon de la bourse
+        description: Informations relatives à l'échelon de la bourse
         type: object
         properties:
           echelon:
@@ -68,8 +69,8 @@ cnous:
             - '6'
             - '7'
           echelon_bourse_regionale_provisoire:
-            title: Statut provisoire de la bourse régionale
-            description: "Ce champs indique si l'echelon de la bourse est provisoire ou non. Valide uniquement pour les bourses régionales"
+            title: Statut provisoire de l'échelon (bourses régionales uniquement)
+            description: "Ce champs indique que l'échelon de la bourse est provisoire. Ce statut provisoire de l'échelon n'est effectif que pour les boursiers bénéficiaires d'une bourse régionale."
             type: boolean
             example: true
             enum:
@@ -78,11 +79,11 @@ cnous:
       email:
         title: E-mail
         type: string
-        description: Adresse e-mail de l'étudiant.
+        description: Adresse e-mail de l'étudiant boursier.
         example: georges@moustaki.fr
       periode_versement_bourse:
         title: Période de versement de la bourse
-        description: Données relatives à la période de versement de la bourse de l'étudiant.
+        description: Informations relatives à la période de versement de la bourse de l'étudiant.
         type: object
         properties: 
           date_rentree:
