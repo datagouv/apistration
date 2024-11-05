@@ -47,7 +47,7 @@ class CNOUS::BuildResource < BuildResource
   def echelon_bourse
     {
       echelon: valid_payload['grantEchelon'],
-      echelon_bourse_regionale_provisoire: valid_payload['grantEchelon'].to_i.positive?
+      echelon_bourse_regionale_provisoire: valid_payload['grantStatus'].to_i.positive?
     }
   end
 

@@ -28,7 +28,7 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
             est_boursier: true,
             echelon_bourse: {
               echelon: '5',
-              echelon_bourse_regionale_provisoire: true
+              echelon_bourse_regionale_provisoire: false
             },
             email: 'francislalanne@gmail.com',
             periode_versement_bourse: {
@@ -70,7 +70,7 @@ RSpec.describe CNOUS::BuildResource, type: :build_resource do
             est_boursier: true,
             echelon_bourse: {
               echelon: '5',
-              echelon_bourse_regionale_provisoire: true
+              echelon_bourse_regionale_provisoire: false
             },
             email: 'francislalanne@gmail.com',
             periode_versement_bourse: {

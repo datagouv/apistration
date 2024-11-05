@@ -9,7 +9,7 @@ RSpec.describe APIParticulier::CNOUS::EtudiantBoursier::V3, type: :serializer do
 
   let(:current_user) { JwtUser.new(uid: SecureRandom.uuid, scopes:, jti: SecureRandom.uuid, iat: 1.year.ago.to_i, exp: 1.year.from_now.to_i) }
 
-  let(:all_cnous_scopes) { %w[cnous_identite cnous_email cnous_statut_boursier cnous_echelon_bourse cnous_statut_bourse cnous_periode_versement cnous_ville_etudes] }
+  let(:all_cnous_scopes) { %w[cnous_identite cnous_email cnous_statut_boursier cnous_echelon_bourse cnous_periode_versement cnous_ville_etudes] }
 
   context 'with all cnous scopes' do
     let(:scopes) { all_cnous_scopes }
@@ -19,7 +19,6 @@ RSpec.describe APIParticulier::CNOUS::EtudiantBoursier::V3, type: :serializer do
       expect(subject[:data]).to have_key(:email)
       expect(subject[:data]).to have_key(:est_boursier)
       expect(subject[:data]).to have_key(:echelon_bourse)
-      expect(subject[:data]).to have_key(:statut_bourse)
       expect(subject[:data]).to have_key(:periode_versement_bourse)
       expect(subject[:data]).to have_key(:etablissement_etudes)
     end
@@ -34,7 +33,6 @@ RSpec.describe APIParticulier::CNOUS::EtudiantBoursier::V3, type: :serializer do
         expect(subject[:data]).not_to have_key(:email)
         expect(subject[:data]).not_to have_key(:est_boursier)
         expect(subject[:data]).not_to have_key(:echelon_bourse)
-        expect(subject[:data]).not_to have_key(:statut_bourse)
         expect(subject[:data]).not_to have_key(:periode_versement_bourse)
         expect(subject[:data]).not_to have_key(:etablissement_etudes)
       end
@@ -48,7 +46,6 @@ RSpec.describe APIParticulier::CNOUS::EtudiantBoursier::V3, type: :serializer do
         expect(subject[:data]).to have_key(:email)
         expect(subject[:data]).not_to have_key(:est_boursier)
         expect(subject[:data]).not_to have_key(:echelon_bourse)
-        expect(subject[:data]).not_to have_key(:statut_bourse)
         expect(subject[:data]).not_to have_key(:periode_versement_bourse)
         expect(subject[:data]).not_to have_key(:etablissement_etudes)
       end
@@ -62,7 +59,6 @@ RSpec.describe APIParticulier::CNOUS::EtudiantBoursier::V3, type: :serializer do
         expect(subject[:data]).not_to have_key(:email)
         expect(subject[:data]).to have_key(:est_boursier)
         expect(subject[:data]).not_to have_key(:echelon_bourse)
-        expect(subject[:data]).not_to have_key(:statut_bourse)
         expect(subject[:data]).not_to have_key(:periode_versement_bourse)
         expect(subject[:data]).not_to have_key(:etablissement_etudes)
       end
@@ -76,21 +72,6 @@ RSpec.describe APIParticulier::CNOUS::EtudiantBoursier::V3, type: :serializer do
         expect(subject[:data]).not_to have_key(:email)
         expect(subject[:data]).not_to have_key(:est_boursier)
         expect(subject[:data]).to have_key(:echelon_bourse)
-        expect(subject[:data]).not_to have_key(:statut_bourse)
-        expect(subject[:data]).not_to have_key(:periode_versement_bourse)
-        expect(subject[:data]).not_to have_key(:etablissement_etudes)
-      end
-    end
-
-    context 'with cnous_statut_bourse scope' do
-      let(:scopes) { %w[cnous_statut_bourse] }
-
-      it 'has the cnous_statut_bourse keys' do
-        expect(subject[:data]).not_to have_key(:identite)
-        expect(subject[:data]).not_to have_key(:email)
-        expect(subject[:data]).not_to have_key(:est_boursier)
-        expect(subject[:data]).not_to have_key(:echelon_bourse)
-        expect(subject[:data]).to have_key(:statut_bourse)
         expect(subject[:data]).not_to have_key(:periode_versement_bourse)
         expect(subject[:data]).not_to have_key(:etablissement_etudes)
       end
@@ -104,7 +85,6 @@ RSpec.describe APIParticulier::CNOUS::EtudiantBoursier::V3, type: :serializer do
         expect(subject[:data]).not_to have_key(:email)
         expect(subject[:data]).not_to have_key(:est_boursier)
         expect(subject[:data]).not_to have_key(:echelon_bourse)
-        expect(subject[:data]).not_to have_key(:statut_bourse)
         expect(subject[:data]).to have_key(:periode_versement_bourse)
         expect(subject[:data]).not_to have_key(:etablissement_etudes)
       end
@@ -118,7 +98,6 @@ RSpec.describe APIParticulier::CNOUS::EtudiantBoursier::V3, type: :serializer do
         expect(subject[:data]).not_to have_key(:email)
         expect(subject[:data]).not_to have_key(:est_boursier)
         expect(subject[:data]).not_to have_key(:echelon_bourse)
-        expect(subject[:data]).not_to have_key(:statut_bourse)
         expect(subject[:data]).not_to have_key(:periode_versement_bourse)
         expect(subject[:data]).to have_key(:etablissement_etudes)
       end

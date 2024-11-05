@@ -7,8 +7,6 @@ class APIParticulier::CNOUS::EtudiantBoursier::V3 < APIParticulier::V3AndMore::B
 
   attribute :echelon_bourse, if: -> { scope?(:cnous_echelon_bourse) }
 
-  attribute :statut_bourse, if: -> { scope?(:cnous_statut_bourse) }
-
   attribute :periode_versement_bourse, if: -> { scope?(:cnous_periode_versement) }
 
   attribute :etablissement_etudes, if: -> { scope?(:cnous_ville_etudes) }
