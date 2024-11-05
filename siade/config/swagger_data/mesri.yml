@@ -64,32 +64,37 @@ mesri:
                 Si le champ est à false, c'est que l'étudiant n'est pas inscrit, mais seulement admis dans l'établissement. C'est-à-dire que l'étudiant est pré-inscrit dans l'établissement mais que la procédure complète d'inscription et le règlement des droits d'inscription ne sont pas terminés. Les étudiants admis deviennent inscrits, une fois leurs droits d'inscription régularisés (paiement des droits, premier versement des droits ou acquittement des droits selon la situation de l'étudiant et les règles de l'établissement.). Tous les étudiants admis ne seront pas forcément de futurs étudiants inscrits dans l'établissement.
             regime_formation:
               title: Régime de formation
-              type: string
-              description: |
-                Régime de formation de l'étudiant.
-              example: formation initiale
-              enum:
-                - formation initiale
-                - formation initiale hors apprentissage
-                - reprise d'études non financée sans convention
-                - contrat d'apprentissage
-                - formation continue
-                - formation continue hors contrat professionnel
-                - contrat de professionnalisation
-            code_formation:
-              title: Code de la formation
-              type: string
-              description: |
-                Code de la formation correspondant au regime. C'est un code technique pour exploiter différents mécanismes indépendament du label du regime.
-              example: RF1
-              enum:
-                - RF1
-                - RF2
-                - RF3
-                - RF4
-                - RF5
-                - RF6
-                - RF7
+              description: Régime de formation de l'étudiant
+              type: object
+              properties:
+                libelle:
+                  title: Libellé de la formation
+                  type: string
+                  description: |
+                    libellé de la formation de l'étudiant.
+                  example: formation initiale
+                  enum:
+                    - formation initiale
+                    - formation initiale hors apprentissage
+                    - reprise d'études non financée sans convention
+                    - contrat d'apprentissage
+                    - formation continue
+                    - formation continue hors contrat professionnel
+                    - contrat de professionnalisation
+                code_formation:
+                  title: Code de la formation
+                  type: string
+                  description: |
+                    Code de la formation correspondant au regime. C'est un code technique pour exploiter différents mécanismes indépendament du label du regime.
+                  example: RF1
+                  enum:
+                    - RF1
+                    - RF2
+                    - RF3
+                    - RF4
+                    - RF5
+                    - RF6
+                    - RF7
             code_cog_insee_commune:
               title: Commune de l'établissement d'études
               type: string

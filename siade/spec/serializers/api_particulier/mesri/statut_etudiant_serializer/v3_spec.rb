@@ -33,7 +33,6 @@ RSpec.describe APIParticulier::MESRI::StatutEtudiantSerializer::V3, type: :seria
           expect(admission_payload).to have_key(:est_inscrit)
           expect(admission_payload).to have_key(:code_cog_insee_commune)
           expect(admission_payload).not_to have_key(:regime_formation)
-          expect(admission_payload).not_to have_key(:code_formation)
           expect(admission_payload).not_to have_key(:etablissement_etudes)
         end
       end
@@ -49,7 +48,6 @@ RSpec.describe APIParticulier::MESRI::StatutEtudiantSerializer::V3, type: :seria
           expect(admission_payload).to have_key(:est_inscrit)
           expect(admission_payload).to have_key(:code_cog_insee_commune)
           expect(admission_payload).to have_key(:regime_formation)
-          expect(admission_payload).to have_key(:code_formation)
           expect(admission_payload).not_to have_key(:etablissement_etudes)
         end
       end

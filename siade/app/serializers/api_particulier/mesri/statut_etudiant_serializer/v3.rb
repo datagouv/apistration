@@ -10,7 +10,6 @@ class APIParticulier::MESRI::StatutEtudiantSerializer::V3 < APIParticulier::V3An
         code_cog_insee_commune: initial_inscription[:code_cog_insee_commune]
       }
 
-      final_inscription[:code_formation] = initial_inscription[:code_formation] if scope?(:mesri_regime)
       final_inscription[:regime_formation] = initial_inscription[:regime_formation] if scope?(:mesri_regime)
       final_inscription[:etablissement_etudes] = initial_inscription[:etablissement_etudes] if scope?(:mesri_etablissements)
 

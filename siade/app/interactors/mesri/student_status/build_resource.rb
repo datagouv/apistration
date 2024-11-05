@@ -42,8 +42,10 @@ class MESRI::StudentStatus::BuildResource < BuildResource
       date_debut: format_date(inscription_payload['dateDebutInscription']),
       date_fin: format_date(inscription_payload['dateFinInscription']),
       est_inscrit: inscription_payload['statut'] == 'inscrit',
-      regime_formation: inscription_payload['regime'],
-      code_formation: REGIME_TO_CODE_FORMATION[inscription_payload['regime']],
+      regime_formation: {
+        libelle: inscription_payload['regime'],
+        code: REGIME_TO_CODE_FORMATION[inscription_payload['regime']]
+      },
       code_cog_insee_commune: inscription_payload['codeCommune'],
       etablissement_etudes: {
         uai: inscription_payload['etablissement']['uai'],

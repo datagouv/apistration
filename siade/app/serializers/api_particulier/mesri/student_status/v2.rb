@@ -45,7 +45,7 @@ class APIParticulier::MESRI::StudentStatus::V2 < APIParticulier::V2BaseSerialize
   private
 
   def handle_inscription_etudiant_scope!(initial_inscription, final_inscription)
-    return unless scope?(:mesri_inscription_etudiant) && initial_inscription[:est_inscrit] == true && formation_initiale_regime.include?(initial_inscription[:regime_formation])
+    return unless scope?(:mesri_inscription_etudiant) && initial_inscription[:est_inscrit] == true && formation_initiale_regime.include?(initial_inscription[:regime_formation][:libelle])
 
     final_inscription.merge!(
       statut: 'inscrit',
@@ -56,7 +56,7 @@ class APIParticulier::MESRI::StudentStatus::V2 < APIParticulier::V2BaseSerialize
   end
 
   def handle_inscription_autre_scope!(initial_inscription, final_inscription)
-    return unless scope?(:mesri_inscription_autre) && initial_inscription[:est_inscrit] == true && formation_continue_regime.include?(initial_inscription[:regime_formation])
+    return unless scope?(:mesri_inscription_autre) && initial_inscription[:est_inscrit] == true && formation_continue_regime.include?(initial_inscription[:regime_formation][:libelle])
 
     final_inscription.merge!(
       statut: 'inscrit',
@@ -71,7 +71,7 @@ class APIParticulier::MESRI::StudentStatus::V2 < APIParticulier::V2BaseSerialize
 
     final_inscription.merge!(
       statut: 'admis',
-      regime: initial_inscription[:regime_formation],
+      regime: initial_inscription[:regime_formation][:libelle],
       dateDebutAdmission: initial_inscription[:date_debut],
       dateFinAdmission: initial_inscription[:date_fin]
     )
