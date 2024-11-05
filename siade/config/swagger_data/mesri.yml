@@ -7,14 +7,14 @@ mesri:
     attributes:
       identite:
         title: Données d'identité de l'étudiant
-        description: "Données d'identité de l'étudiant corrigées et certifiées via l'API Ines qui croise l'état civil et le numéro INE."
+        description: "Données d'identité de l'étudiant corrigées et certifiées via l'API Ines qui croise l'état civil et le numéro INE de l'étudiant."
         type: object
         properties: 
           nom_naissance:
             title: Nom de naissance
             type: string
             description: |+
-              Ce champ délivre le nom de naissance de l'étudiant. Il s'agit du nom de famille tel qu'indiqué sur l'acte de naissance, de mariage, sur le livret de famille, etc. Ce nom figure toujours sur la pièce d'identité en premier, avant le nom d'usage si le particulier en a un. 
+              Nom de naissance de l'étudiant. Il s'agit du nom de famille tel qu'indiqué sur l'acte de naissance, de mariage, sur le livret de famille, etc. Ce nom figure toujours sur la pièce d'identité en premier, avant le nom d'usage si le particulier en a un. 
         
               En cas de changement de nom de naissance, une mention avec le nouveau nom de famille est inscrite sur l'acte de naissance.
             example: Moustaki
@@ -42,16 +42,16 @@ mesri:
           type: object
           properties:
             date_debut:
-              title: Date de début d'inscription
+              title: Date de début de période d'études
               type: string
               format: date
               description: Date de début de la période d'études dans l'établissement.
               example: 2022-09-01
             date_fin:
-              title: Date de fin d'inscription
+              title: Date de fin de période d'études
               type: string
               format: date
-              description: Date de fin de la période d'étude dans l'établissement
+              description: Date de fin de la période d'étude dans l'établissement.
               example: 2023-08-31
             est_inscrit:
               title: Statut étudiant inscrit
@@ -61,7 +61,7 @@ mesri:
               - true
               - false
               description: |
-                Lorsque le champ est à true, cela indique que l'étudiant est inscrit dans l'établissement.
+                Indique que l'étudiant est inscrit dans l'établissement.
                 
                 Si le champ est à false, c'est que l'étudiant n'est pas inscrit, mais seulement admis dans l'établissement. C'est-à-dire que l'étudiant est pré-inscrit dans l'établissement mais que la procédure complète d'inscription et le règlement des droits d'inscription ne sont pas terminés. Les étudiants admis deviennent inscrits, une fois leurs droits d'inscription régularisés (paiement des droits, premier versement des droits ou acquittement des droits selon la situation de l'étudiant et les règles de l'établissement.). Tous les étudiants admis ne seront pas forcément de futurs étudiants inscrits dans l'établissement.
             regime_formation:
@@ -111,22 +111,22 @@ mesri:
               description: Code Insee à 5 chiffres de la commune de l'établissement d'études de l'étudiant.
               example: '29085'
             etablissement_etudes:
-              title: Établissement de l'inscription
+              title: Établissement d'études
               description: |+
-                Code UAI et libellé de l'établissement d'enseignement supérieur dans lequel l'étudiant est admis ou inscrit. 
+                Code UAI et libellé de l'établissement d'enseignement supérieur dans lequel l'étudiant est admis. 
               
-                Pour retrouver d'autres information sur l'établissement, vous pouvez utiliser l'[API "Annuaire de l'éducation nationale"](https://api.gouv.fr/les-api/api-annuaire-education) ou le site https://annuaire-education.fr.
+                Pour retrouver d'autres informations sur l'établissement, vous pouvez utiliser l'[API "Annuaire de l'éducation nationale"](https://api.gouv.fr/les-api/api-annuaire-education) ou le site https://annuaire-education.fr.
               type: object
               properties:
                 uai:
-                  title: Code UAI de l'établissement
+                  title: Code UAI
                   type: string
                   description: |+
                     Code d'unité administrative immatriculée (code UAI) de l'établissement où est scolarisé l'élève. Ce code unique inscrit au répertoire national des établissements est composé de 7 chiffres et d'une lettre ; les trois premiers chiffres correspondent au numéro de département de l'établissement.
                   pattern: '^\d{7}\w$'
                   example: 0011402U
                 nom:
-                  title: Nom de l'établissement
+                  title: Appelation officielle
                   type: string
                   description: Appelation officielle de l'établissement associée au code UAI.
                   example: EGC AIN BOURG EN BRESSE EC GESTION ET COMMERCE (01000)
