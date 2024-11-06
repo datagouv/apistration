@@ -3,7 +3,7 @@ class INPI::RNE::ActesBilans::ValidateResponse < ValidateResponse
   def call
     resource_not_found! if (http_ok? && json_body.empty?) || http_not_found?
 
-    return if http_ok? && actes_present?
+    return if http_ok? && actes_or_bilans_present?
 
     provider_internal_error! if http_internal_error?
 
@@ -19,7 +19,8 @@ class INPI::RNE::ActesBilans::ValidateResponse < ValidateResponse
     fail_with_error!(build_error(ProviderRateLimitingError))
   end
 
-  def actes_present?
-    json_body['actes'].present?
+  def actes_or_bilans_present?
+    json_body['actes'].present? ||
+      json_body['bilans'].present?
   end
 end

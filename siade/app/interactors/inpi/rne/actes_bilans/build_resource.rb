@@ -17,7 +17,7 @@ class INPI::RNE::ActesBilans::BuildResource < BuildResource
   end
 
   def raw_undeleted_actes
-    json_body['actes'].reject { |acte| acte['deleted'] }
+    (json_body['actes'] || []).reject { |acte| acte['deleted'] }
   end
 
   def format_acte(acte)
@@ -47,7 +47,7 @@ class INPI::RNE::ActesBilans::BuildResource < BuildResource
   end
 
   def raw_undeleted_bilans
-    json_body['bilans'].reject { |bilan| bilan['deleted'] }
+    (json_body['bilans'] || []).reject { |bilan| bilan['deleted'] }
   end
 
   def format_bilan(bilan)

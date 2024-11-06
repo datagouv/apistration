@@ -1,0 +1,41 @@
+{
+  "actes": [
+    {
+      "updatedAt": "2024-06-07T04:55:39+02:00",
+      "siren": "889282034",
+      "denomination": "COMPAGNIE FICTIVE",
+      "dateDepot": "2024-01-29",
+      "numChrono": "75123",
+      "nomDocument": "000000000000_C0022A1001L167004D20240604H170356TPIJTES00111111",
+      "confidentiality": "Public",
+      "deleted": false,
+      "id": "63e7e2e3998acaecf81b485e",
+      "typeRdd": [
+        {
+          "typeActe": "Statuts mis à jour"
+        },
+        {
+          "typeActe": "Décision(s) de l'associé unique",
+          "decision": "Modification(s) statutaire(s)"
+        }
+      ]
+    },
+    {
+      "updatedAt": "2023-10-26T14:45:47+02:00",
+      "siren": "889282034",
+      "denomination": "COMPAGNIE FICTIVE",
+      "dateDepot": "2023-03-20",
+      "numChrono": "31123",
+      "nomDocument": "cccccccccccc_C0022A1001L148042D20230325H170912TPIJTES00HHHHH",
+      "confidentiality": "Public",
+      "deleted": false,
+      "id": "777d907f011c33736a087261",
+      "typeRdd": [
+        {
+          "typeActe": "Décision(s) de l'associé unique",
+          "decision": "Renouvellement(s) de mandat(s) de commissaire(s) aux comptes"
+        }
+      ]
+    }
+  ]
+}

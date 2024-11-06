@@ -13,7 +13,15 @@ RSpec.describe INPI::RNE::ActesBilans::ValidateResponse, type: :validate_respons
         its(:errors) { is_expected.to be_empty }
       end
 
-      context 'without actes' do
+      context 'with bilans' do
+        let(:body) { { 'bilans' => 'whatever' }.to_json }
+
+        it { is_expected.to be_a_success }
+
+        its(:errors) { is_expected.to be_empty }
+      end
+
+      context 'without actes nor bilans' do
         let(:body) { { 'random' => 'stuff' }.to_json }
 
         it { is_expected.to be_a_failure }
