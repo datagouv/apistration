@@ -34,19 +34,19 @@ class APIParticulier::CNOUS::StudentScholarship::V2 < APIParticulier::V2BaseSeri
   end
 
   attribute :statut, if: -> { scope?(:cnous_statut_bourse) } do
-    object.statut_bourse[:statut]
+    object.statut_bourse[:code]
   end
 
   attribute :statutLibelle, if: -> { scope?(:cnous_statut_bourse) } do
-    object.statut_bourse[:statut_libelle]
+    object.statut_bourse[:libelle]
   end
 
   attribute :dateDeRentree, if: -> { scope?(:cnous_periode_versement) } do
-    object.periode_versement_bourse[:date_de_rentree]
+    object.periode_versement_bourse[:date_rentree]
   end
 
   attribute :dureeVersement, if: -> { scope?(:cnous_periode_versement) } do
-    object.periode_versement_bourse[:duree_versement]
+    object.periode_versement_bourse[:duree]
   end
 
   attribute :villeEtudes, if: -> { scope?(:cnous_ville_etudes) } do
