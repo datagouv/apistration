@@ -14,6 +14,13 @@ class INPI::RNE::MakeRequest < MakeRequest::Get
     raise NotImplementedError
   end
 
+  def extra_http_start_options
+    {
+      open_timeout: 10,
+      read_timeout: 15
+    }
+  end
+
   def siren
     context.params[:siren]
   end
