@@ -22,7 +22,7 @@ RSpec.describe CNAV::AllocationSoutienFamilial::BuildResource, type: :build_reso
           status: 'beneficiaire',
           est_beneficiaire: true,
           date_debut_droit: '2024-04-01',
-          date_fin_droit: '2025-04-01'
+          date_fin_droit: null
         }
       )
     end

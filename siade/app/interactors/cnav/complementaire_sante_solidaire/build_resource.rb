@@ -7,12 +7,8 @@ class CNAV::ComplementaireSanteSolidaire::BuildResource < CNAV::BuildResource
       est_beneficiaire: !non_beneficiary?,
       avec_participation: beneficiary_with_participation?,
       date_debut_droit: date_debut,
-      date_fin_droit: date_fin
+      date_fin_droit: nil
     }
-  end
-
-  def date_fin
-    add_to_date_debut(years: 1)
   end
 
   def beneficiary_with_participation_code

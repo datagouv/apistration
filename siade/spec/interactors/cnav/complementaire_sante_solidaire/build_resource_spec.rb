@@ -30,7 +30,7 @@ RSpec.describe CNAV::ComplementaireSanteSolidaire::BuildResource, type: :build_r
           est_beneficiaire: true,
           avec_participation: true,
           date_debut_droit: '2021-01-01',
-          date_fin_droit: '2022-01-01'
+          date_fin_droit: null
         }
       )
     end

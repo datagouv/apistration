@@ -7,7 +7,7 @@ class CNAV::PrimeActivite::BuildResource < CNAV::BuildResource
       est_beneficiaire: !non_beneficiary?,
       avec_majoration:,
       date_debut_droit: date_debut,
-      date_fin_droit: date_fin
+      date_fin_droit: nil
     }
   end
 
@@ -26,9 +26,5 @@ class CNAV::PrimeActivite::BuildResource < CNAV::BuildResource
 
   def matching_prestations
     %w[FA3105 FA3106]
-  end
-
-  def date_fin
-    add_to_date_debut(months: 3)
   end
 end

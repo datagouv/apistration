@@ -28,7 +28,7 @@ RSpec.describe CNAV::RevenuSolidariteActive::BuildResource, type: :build_resourc
             est_beneficiaire: true,
             avec_majoration: false,
             date_debut_droit: '2024-04-01',
-            date_fin_droit: '2024-07-01'
+            date_fin_droit: null
           }
         )
       end
@@ -46,7 +46,7 @@ RSpec.describe CNAV::RevenuSolidariteActive::BuildResource, type: :build_resourc
             est_beneficiaire: true,
             avec_majoration: true,
             date_debut_droit: '2024-04-01',
-            date_fin_droit: '2024-07-01'
+            date_fin_droit: null
           }
         )
       end
