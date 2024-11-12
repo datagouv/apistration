@@ -280,6 +280,62 @@ shared:
         status_to_check: 404
         token_interactor: 'CNAV::Authenticate'
 
+    cnaf_msa_revenu_solidarite_active:
+      kind: 'make_request'
+      cache: <%= 15.minutes %>
+      provider: 'CNAV & MSA'
+      status_page:
+        name: "MSA & CNAV - Revenu Solidarite Active"
+      driver_params:
+        make_request: 'CNAV::MakeRequest'
+        organizer_params:
+          dss_prestation_name: 'revenu_solidarite_active'
+        params: *qfv2_driver_params
+        status_to_check: 404
+        token_interactor: 'CNAV::Authenticate'
+
+    cnaf_msa_allocation_soutien_familial:
+      kind: 'make_request'
+      cache: <%= 15.minutes %>
+      provider: 'CNAV & MSA'
+      status_page:
+        name: "MSA & CNAV - Allocation Soutien Familial"
+      driver_params:
+        make_request: 'CNAV::MakeRequest'
+        organizer_params:
+          dss_prestation_name: 'allocation_soutien_familial'
+        params: *qfv2_driver_params
+        status_to_check: 404
+        token_interactor: 'CNAV::Authenticate'
+
+    cnaf_msa_allocation_adulte_handicape:
+      kind: 'make_request'
+      cache: <%= 15.minutes %>
+      provider: 'CNAV & MSA'
+      status_page:
+        name: "MSA & CNAV - Allocation Adulte Handicape"
+      driver_params:
+        make_request: 'CNAV::MakeRequest'
+        organizer_params:
+          dss_prestation_name: 'allocation_adulte_handicape'
+        params: *qfv2_driver_params
+        status_to_check: 404
+        token_interactor: 'CNAV::Authenticate'
+
+    cnaf_msa_prime_activite:
+      kind: 'make_request'
+      cache: <%= 15.minutes %>
+      provider: 'CNAV & MSA'
+      status_page:
+        name: "MSA & CNAV - Prime Activite"
+      driver_params:
+        make_request: 'CNAV::MakeRequest'
+        organizer_params:
+          dss_prestation_name: 'prime_activite'
+        params: *qfv2_driver_params
+        status_to_check: 404
+        token_interactor: 'CNAV::Authenticate'
+
     franceconnect:
       kind: 'make_request'
       cache: <%= 2.minutes %>
