@@ -1908,10 +1908,9 @@ paths:
                     title: Statut bénéficiaire de la majoration du RSA
                     type: boolean
                     nullable: true
-                    description: Indique si le particulier est bénéficiaire du RSA
-                      majoré au moment de l'appel. Nécessite un scope spécifique pour
-                      être envoyé. Sera null si le particulier n'est pas bénéficiaire
-                      du RSA.
+                    description: "Indique si le particulier est bénéficiaire du RSA
+                      majoré au moment de l'appel. \n Sera null si le particulier
+                      n'est pas bénéficiaire du RSA."
                     example: false
                   dateDebut:
                     title: Date d'ouverture du droit au RSA
