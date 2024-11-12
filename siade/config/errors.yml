@@ -33,6 +33,9 @@
 - subcode: '007'
   title: "Entité disparue"
 
+- subcode: '008'
+  title: 'Erreur auprès du fournisseur de données : trop de requêtes'
+
 - subcode: '010'
   title: 'Contenu partiel'
   detail: "Des données n'ont pas pu être récupérées auprès d'un ou plusieurs fournisseurs."

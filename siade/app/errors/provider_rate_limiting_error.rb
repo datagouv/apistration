@@ -1,6 +1,6 @@
 class ProviderRateLimitingError < ProviderUnavailable
   def subcode
-    '007'
+    '008'
   end
 
   def tracking_level
