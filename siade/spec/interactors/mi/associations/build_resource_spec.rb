@@ -42,6 +42,14 @@ RSpec.describe MI::Associations::BuildResource, type: :build_resource do
           expect(document_dac_id).to match(regexp_hashed_uuid)
         end
       end
+
+      describe 'documents\'s url' do
+        let(:document_url) { subject.bundled_data.data.agrements.first[:url] }
+
+        it 'substitute localhost with valid url' do
+          expect(document_url).to eq("#{Siade.credentials[:mi_domain]}/apim/api-asso/documents/00000000-0000-0000-0000-000000000001")
+        end
+      end
     end
 
     describe 'when payload has only one dac document (non-regression test)' do

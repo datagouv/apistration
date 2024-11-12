@@ -1,4 +1,6 @@
 class MI::Associations::Documents::BuildResourceCollection < BuildResourceCollection
+  include DJEPVA::DocumentUrlHelper
+
   def items
     raw_documents
   end
@@ -14,7 +16,7 @@ class MI::Associations::Documents::BuildResourceCollection < BuildResourceCollec
     {
       id: raw_document[:id],
       timestamp: raw_document[:time],
-      url: raw_document[:url],
+      url: build_valid_document_url(raw_document[:url]),
       expires_in: 1.day.to_i,
       type: raw_document[:lib_sous_type],
       errors: []

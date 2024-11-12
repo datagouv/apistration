@@ -216,7 +216,7 @@
       <attributeur>Ministère de l'éducation nationale et de la jeunesse</attributeur>
       <date_attribution>2017-10-18</date_attribution>
       <id>12345</id>
-      <url>https://associations.gouv.fr/api/documents/00000000-0000-0000-0000-000000000001</url>
+      <url>http://localhost:8181/services/documents/00000000-0000-0000-0000-000000000001</url>
     </agrement>
   </agrements>
 

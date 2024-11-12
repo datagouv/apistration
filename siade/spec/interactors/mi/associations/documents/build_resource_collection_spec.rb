@@ -26,7 +26,7 @@ RSpec.describe MI::Associations::Documents::BuildResourceCollection, type: :buil
         '<sous_type>STC</sous_type>' \
         '<even>5248133</even>' \
         '<time>1418807674</time>' \
-        '<url>https://another.url/great</url>' \
+        '<url>http://localhost:8181/services/great</url>' \
         '<lib_sous_type>Statuts</lib_sous_type>' \
         '</document_rna>' \
         '</documents>' \
@@ -55,7 +55,7 @@ RSpec.describe MI::Associations::Documents::BuildResourceCollection, type: :buil
           {
             id: 'much_id_2',
             timestamp: '1418807674',
-            url: 'https://another.url/great',
+            url: 'https://mi_domain.gouv.fr/apim/api-asso/great',
             type: 'Statuts',
             expires_in: 1.day.to_i,
             errors: []

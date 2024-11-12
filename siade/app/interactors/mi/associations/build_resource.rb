@@ -1,5 +1,7 @@
 # rubocop:disable Metrics/AbcSize
 class MI::Associations::BuildResource < BuildResource
+  include DJEPVA::DocumentUrlHelper
+
   protected
 
   def resource_attributes
@@ -145,7 +147,7 @@ class MI::Associations::BuildResource < BuildResource
         type: agrement[:type],
         niveau: agrement[:niveau],
         attributeur: agrement[:attributeur],
-        url: agrement[:url]
+        url: build_valid_document_url(agrement[:url])
       }
     end
   end
@@ -289,7 +291,7 @@ class MI::Associations::BuildResource < BuildResource
         },
         date_depot: document_rna[:time].present? ? Time.zone.at(document_rna[:time].to_i) : nil,
         annee_depot: document_rna[:annee],
-        url: document_rna[:url]
+        url: build_valid_document_url(document_rna[:url])
       }
     end
   end
@@ -307,7 +309,7 @@ class MI::Associations::BuildResource < BuildResource
         annee_validite: document[:meta][:annee_validite],
         etat: document[:meta][:etat],
         date_depot: document[:time_depot].present? ? DateTime.parse(document[:time_depot]).to_date : nil,
-        url: document[:url]
+        url: build_valid_document_url(document[:url])
       }
     end
   end
