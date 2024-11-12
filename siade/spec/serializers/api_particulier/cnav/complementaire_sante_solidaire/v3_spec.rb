@@ -17,11 +17,10 @@ RSpec.describe APIParticulier::CNAV::ComplementaireSanteSolidaire::V3, type: :se
     context 'with complementaire_sante_solidaire scope' do
       let(:scopes) { %w[complementaire_sante_solidaire] }
 
-      it 'has status, date_debut and date_fin items' do
+      it 'has status, date_debut items' do
         expect(subject[:data]).to have_key(:est_beneficiaire)
         expect(subject[:data]).to have_key(:avec_participation)
         expect(subject[:data]).to have_key(:date_debut_droit)
-        expect(subject[:data]).to have_key(:date_fin_droit)
       end
     end
   end

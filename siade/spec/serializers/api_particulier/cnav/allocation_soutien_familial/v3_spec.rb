@@ -17,10 +17,9 @@ RSpec.describe APIParticulier::CNAV::AllocationSoutienFamilial::V3, type: :seria
     context 'with allocation_soutien_familial scope' do
       let(:scopes) { %w[allocation_soutien_familial] }
 
-      it 'has status, date_debut and date_fin items' do
+      it 'has status, date_debut items' do
         expect(subject[:data]).to have_key(:est_beneficiaire)
         expect(subject[:data]).to have_key(:date_debut_droit)
-        expect(subject[:data]).to have_key(:date_fin_droit)
       end
     end
   end

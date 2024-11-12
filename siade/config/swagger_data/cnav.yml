@@ -36,16 +36,6 @@ cnav:
           \n
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
         example: '1992-11-29'
-      date_fin_droit:
-        title: "Date de fermeture du droit à la C2S"
-        type: string
-        nullable: true
-        description: "Date de fin de droit à la complémentaire santé solidaire du particulier bénéficiaire.
-          \n
-          Ce champ est calculé en ajoutant 12 mois à la date de début de droit à la C2S.
-          \n
-          Ce champ sera null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
-        example: '1993-11-29'
   quotient-familial-v2:
     title: Quotient familial CAF & MSA
     description: "Quotient familial délivré par la CAF ou la MSA et composition de la famille de l'allocataire.
@@ -259,16 +249,6 @@ cnav:
           \n
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire du RSA."
         example: '1992-11-29'
-      date_fin_droit:
-        title: "Date de fermeture du droit au RSA"
-        type: string
-        nullable: true
-        description: "Date de fin de droit au RSA du particulier bénéficiaire.
-          \n
-          Ce champ est calculé en ajoutant 3 mois à la date de début de droit du RSA.
-          \n
-          Ce champ sera null dans le cas où le particulier n'est pas bénéficiaire du RSA."
-        example: '1993-02-20'
 
   aah:
     title: Statut allocation adulte handicapé (AAH)
@@ -312,16 +292,6 @@ cnav:
           \n
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de l'ASF."
         example: '1992-11-29'
-      date_fin_droit:
-        title: "Date de fermeture du droit à l'ASF"
-        type: string
-        nullable: true
-        description: "Date de fin de droit à l'allocation de soution familial du particulier bénéficiaire.
-          \n
-          Ce champ est calculé en ajoutant 12 mois à la date de début de droit à l'ASF.
-          \n
-          Ce champ sera null dans le cas où le particulier n'est pas bénéficiaire de l'ASF."
-        example: '1993-11-29'
 
   prime_activite:
     title: Statut prime d'activité
@@ -354,16 +324,6 @@ cnav:
           \n
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de la prime d'activité."
         example: '1992-11-20'
-      date_fin_droit:
-        title: "Date de fermeture du droit à la prime d'activité"
-        type: string
-        nullable: true
-        description: "Date de fin de droit à la prime d'activité du particulier bénéficiaire.
-          \n
-          Ce champ est calculé en ajoutant 3 mois à la date de début de droit de la prime d'activité.
-          \n
-          Ce champ sera null dans le cas où le particulier n'est pas bénéficiaire de la prime d'activité."
-        example: '1993-02-20'
   v2:
     commons:
       cache_duration: "La durée du cache est de 1 heure."

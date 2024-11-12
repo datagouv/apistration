@@ -14,10 +14,9 @@ RSpec.describe APIParticulier::CNAV::RevenuSolidariteActive::V3, type: :serializ
     context 'with revenu_solidarite_active scope' do
       let(:scopes) { %w[revenu_solidarite_active] }
 
-      it 'has status, date_debut and date_fin items' do
+      it 'has status, date_debut items' do
         expect(subject[:data]).to have_key(:est_beneficiaire)
         expect(subject[:data]).to have_key(:date_debut_droit)
-        expect(subject[:data]).to have_key(:date_fin_droit)
       end
     end
   end
@@ -28,7 +27,6 @@ RSpec.describe APIParticulier::CNAV::RevenuSolidariteActive::V3, type: :serializ
     it 'has all items' do
       expect(subject[:data]).to have_key(:est_beneficiaire)
       expect(subject[:data]).to have_key(:date_debut_droit)
-      expect(subject[:data]).to have_key(:date_fin_droit)
       expect(subject[:data]).to have_key(:avec_majoration)
     end
   end
