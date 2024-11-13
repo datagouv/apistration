@@ -28,7 +28,7 @@ RSpec.describe CNAV::PrimeActivite::BuildResource, type: :build_resource do
             est_beneficiaire: true,
             avec_majoration: false,
             date_debut_droit: '2024-04-01',
-            date_fin_droit: null
+            date_fin_droit: nil
           }
         )
       end
@@ -46,7 +46,7 @@ RSpec.describe CNAV::PrimeActivite::BuildResource, type: :build_resource do
             est_beneficiaire: true,
             avec_majoration: true,
             date_debut_droit: '2024-04-01',
-            date_fin_droit: null
+            date_fin_droit: nil
           }
         )
       end
