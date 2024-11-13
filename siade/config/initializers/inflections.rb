@@ -31,6 +31,8 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'IR'
   inflect.acronym 'QF'
 
+  inflect.acronym 'ADELIE'
+
   inflect.acronym 'ACOSS'
   inflect.acronym 'ADEME'
   inflect.acronym 'BDF'
