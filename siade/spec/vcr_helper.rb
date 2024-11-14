@@ -59,7 +59,6 @@ VCR.configure do |c|
   c.filter_sensitive_data('<URL_INPI>') { Siade.credentials[:inpi_url].to_s }
   c.filter_sensitive_data('<URL_ACOSS>') { Siade.credentials[:acoss_domain].to_s }
   c.filter_sensitive_data('<URL_DOUANES>') { Siade.credentials[:douanes_domain].to_s }
-  c.filter_sensitive_data('<URL_APIM>') { Siade.credentials[:dgfip_apim_domain].to_s }
 
   c.filter_sensitive_data('<AUTH_DGFIP>') { Siade.credentials[:dgfip_authenticate_url].to_s }
   c.filter_sensitive_data('<URL_DGFIP_CA>') { Siade.credentials[:dgfip_chiffres_affaires_url].to_s }
