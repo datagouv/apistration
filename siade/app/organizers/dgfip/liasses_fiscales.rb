@@ -1,7 +1,7 @@
 class DGFIP::LiassesFiscales < RetrieverOrganizer
   organize DGFIP::LiassesFiscales::ValidateParams,
-    DGFIP::Authenticate,
-    DGFIP::LiassesFiscales::MakeRequest,
+    DGFIP::ADELIE::Authenticate,
+    DGFIP::ADELIE::LiasseFiscale::MakeRequest,
     DGFIP::LiassesFiscales::ValidateResponse,
     DGFIP::LiassesFiscales::BuildResource
 

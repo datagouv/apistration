@@ -8,7 +8,7 @@ class BanqueDeFrance::BilansEntreprise::RetrieveDictionariesFromCacheOrRemote < 
   private
 
   def retrieve_dictionaries_for_year(year)
-    retriever = DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote.call(params: { year: })
+    retriever = DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote.call(params: { year:, request_id:, user_id: })
 
     return retriever.dictionary if retriever.success?
 
@@ -18,5 +18,13 @@ class BanqueDeFrance::BilansEntreprise::RetrieveDictionariesFromCacheOrRemote < 
 
   def bilans_years
     context.bundled_data.data.map(&:annee)
+  end
+
+  def request_id
+    context.params.fetch(:request_id)
+  end
+
+  def user_id
+    context.params.fetch(:user_id)
   end
 end

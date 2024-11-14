@@ -19,10 +19,10 @@ class DGFIP::ADELIE::MakeRequest < MakeRequest::Get
   end
 
   def request_id
-    @request_id ||= context.params[:request_id] || SecureRandom.uuid
+    @request_id ||= context.params.fetch(:request_id)
   end
 
   def user_id
-    context.params[:user_id]
+    @user_id ||= context.params.fetch(:user_id)
   end
 end

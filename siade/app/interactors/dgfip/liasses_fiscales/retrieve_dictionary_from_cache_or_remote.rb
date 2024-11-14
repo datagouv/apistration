@@ -26,7 +26,9 @@ class DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote < ApplicationI
   def retriever_params
     {
       params: {
-        year:
+        year:,
+        user_id:,
+        request_id:
       }
     }
   end
@@ -37,6 +39,14 @@ class DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote < ApplicationI
 
   def year
     context.year || context.params[:year]
+  end
+
+  def user_id
+    context.params.fetch(:user_id)
+  end
+
+  def request_id
+    context.params.fetch(:request_id)
   end
 
   def expires_in

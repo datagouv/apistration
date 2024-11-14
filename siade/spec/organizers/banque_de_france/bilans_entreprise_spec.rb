@@ -4,16 +4,20 @@ RSpec.describe BanqueDeFrance::BilansEntreprise, type: :retriever_organizer do
 
     let(:params) do
       {
-        siren:
+        siren:,
+        user_id:,
+        request_id:
       }
     end
+
+    let(:user_id) { SecureRandom.uuid }
+    let(:request_id) { SecureRandom.uuid }
 
     let(:resource_collection) { subject.bundled_data.data }
 
     before do
-      VCR.use_cassette('dgfip/dictionaries/2020_and_2021') do
-        retrieve_dgfip_dictionaries(%w[2020 2021])
-      end
+      mock_valid_dgfip_dictionnaire(2020)
+      mock_valid_dgfip_dictionnaire(2021)
     end
 
     context 'with valid siren' do

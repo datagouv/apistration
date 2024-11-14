@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::DGFIP::ChiffresAffairesController < APIEntreprise::V3AndMore::BaseController
+  include APIEntreprise::CommonDGFIPOrganizerParams
+
   def show
     organizer = retrieve_payload_data(::DGFIP::ChiffresAffaires, cache: true)
 
@@ -13,10 +15,9 @@ class APIEntreprise::V3AndMore::DGFIP::ChiffresAffairesController < APIEntrepris
   private
 
   def organizer_params
-    {
-      siret: params[:siret],
-      user_id: current_user.id
-    }
+    common_dgfip_organizer_params.merge(
+      siret: params[:siret]
+    )
   end
 
   def serializer_module

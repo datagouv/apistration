@@ -8,13 +8,17 @@ RSpec.describe DGFIP::LiassesFiscales::BuildResourceWithoutDictionary, type: :bu
 
     let(:resource) { builder.bundled_data.data }
 
-    describe 'real payload', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
-      let(:body) { DGFIP::LiassesFiscales::MakeRequest.call(cookie:, params:).response.body }
-      let(:cookie) { DGFIP::Authenticate.call.cookie }
+    describe 'real payload' do
+      before do
+        mock_valid_dgfip_liasse_fiscale(valid_siren(:liasse_fiscale), 2017)
+      end
+
+      let(:body) { DGFIP::ADELIE::LiasseFiscale::MakeRequest.call(params:).response.body }
       let(:params) do
         {
           siren: valid_siren(:liasse_fiscale),
           user_id: valid_dgfip_user_id,
+          request_id: SecureRandom.uuid,
           year: 2017
         }
       end

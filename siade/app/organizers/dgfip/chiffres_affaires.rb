@@ -1,7 +1,7 @@
 class DGFIP::ChiffresAffaires < RetrieverOrganizer
   organize DGFIP::ChiffresAffaires::ValidateParams,
-    DGFIP::Authenticate,
-    DGFIP::ChiffresAffaires::MakeRequest,
+    DGFIP::ADELIE::Authenticate,
+    DGFIP::ADELIE::ChiffreAffaires::MakeRequest,
     DGFIP::ChiffresAffaires::ValidateResponse,
     DGFIP::ChiffresAffaires::BuildResource
 

@@ -4,16 +4,27 @@ RSpec.describe BanqueDeFrance::BilansEntreprise::EnrichResourceCollectionWithDic
   subject(:call) { described_class.call(bundled_data:, dictionaries:) }
 
   let(:bundled_data) { BanqueDeFrance::BilansEntreprise::BuildResourceCollectionWithoutDictionaries.call(response:).bundled_data }
+  let(:dictionaries) do
+    BanqueDeFrance::BilansEntreprise::RetrieveDictionariesFromCacheOrRemote.call(bundled_data:, params:).dictionaries
+  end
   let(:response) { instance_double(Net::HTTPOK, body:) }
   let(:body) { build_banque_de_france_response(json_body) }
   let(:json_body) do
     open_payload_file('banque_de_france/bilans_entreprise_valid_data.json').read
   end
 
-  let(:dictionaries) do
-    VCR.use_cassette('dgfip/dictionaries/2020_and_2021') do
-      BanqueDeFrance::BilansEntreprise::RetrieveDictionariesFromCacheOrRemote.call(bundled_data:).dictionaries
-    end
+  let(:params) do
+    {
+      user_id:,
+      request_id:
+    }
+  end
+  let(:user_id) { SecureRandom.uuid }
+  let(:request_id) { SecureRandom.uuid }
+
+  before do
+    mock_valid_dgfip_dictionnaire(2020)
+    mock_valid_dgfip_dictionnaire(2021)
   end
 
   describe 'happy path' do

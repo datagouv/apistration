@@ -1,4 +1,5 @@
 class DGFIP::AttestationFiscale::ValidateParams < ValidateParamsOrganizer
   organize ValidateSiren,
-    ServiceUser::ValidateUserId
+    ServiceUser::ValidateUserId,
+    DGFIP::ValidateRequestId
 end

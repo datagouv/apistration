@@ -4,12 +4,14 @@ RSpec.describe DGFIP::AttestationFiscale::ValidateParams, type: :validate_params
   let(:params) do
     {
       siren:,
+      request_id:,
       user_id:
     }
   end
 
   let(:siren) { valid_siren }
   let(:user_id) { SecureRandom.uuid }
+  let(:request_id) { SecureRandom.uuid }
 
   context 'with valid attributes' do
     it { is_expected.to be_a_success }
@@ -25,6 +27,14 @@ RSpec.describe DGFIP::AttestationFiscale::ValidateParams, type: :validate_params
 
   context 'with invalid user_id' do
     let(:user_id) { '1234567890' }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+  end
+
+  context 'with invalid request_id' do
+    let(:request_id) { '1234567890' }
 
     it { is_expected.to be_a_failure }
 

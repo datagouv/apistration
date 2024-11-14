@@ -1,12 +1,26 @@
-RSpec.describe BanqueDeFrance::BilansEntreprise::BuildResourceCollection, type: :build_resource, vcr: { cassette_name: 'dgfip/dictionaries/2020_and_2021' } do
+RSpec.describe BanqueDeFrance::BilansEntreprise::BuildResourceCollection, type: :build_resource do
   subject { organizer }
 
-  let(:organizer) { described_class.call(response:) }
+  let(:organizer) { described_class.call(response:, params:) }
 
   let(:response) { instance_double(Net::HTTPOK, code: '200', body:) }
   let(:body) { build_banque_de_france_response(json_body) }
+  let(:params) do
+    {
+      user_id:,
+      request_id:
+    }
+  end
+
+  let(:user_id) { SecureRandom.uuid }
+  let(:request_id) { SecureRandom.uuid }
 
   let(:json_body) { open_payload_file('banque_de_france/bilans_entreprise_valid_data.json').read }
+
+  before do
+    mock_valid_dgfip_dictionnaire(2020)
+    mock_valid_dgfip_dictionnaire(2021)
+  end
 
   it { is_expected.to be_a_success }
 

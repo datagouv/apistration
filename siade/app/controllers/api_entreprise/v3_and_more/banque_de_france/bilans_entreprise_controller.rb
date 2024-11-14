@@ -1,4 +1,6 @@
 class APIEntreprise::V3AndMore::BanqueDeFrance::BilansEntrepriseController < APIEntreprise::V3AndMore::BaseController
+  include APIEntreprise::CommonDGFIPOrganizerParams
+
   def show
     organizer = retrieve_payload_data(::BanqueDeFrance::BilansEntreprise, cache: true, expires_in:)
 
@@ -13,9 +15,9 @@ class APIEntreprise::V3AndMore::BanqueDeFrance::BilansEntrepriseController < API
   private
 
   def organizer_params
-    {
+    common_dgfip_organizer_params.merge(
       siren: params.require(:siren)
-    }
+    )
   end
 
   def serializer_module

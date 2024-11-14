@@ -24,7 +24,11 @@ RSpec.describe 'DGFIP: chiffres d\'affaires', api: :entreprise, type: %i[request
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Exercices trouvés', vcr: { cassette_name: 'dgfip/chiffres_affaires/valid' } do
+        response '200', 'Exercices trouvés' do
+          before do
+            mock_valid_dgfip_chiffres_affaires(siret)
+          end
+
           description SwaggerData.get('dgfip.chiffres_affaires.description')
 
           cacheable_response(extra_description: SwaggerData.get('response.headers.cache_duration_1_hour'))
@@ -39,7 +43,11 @@ RSpec.describe 'DGFIP: chiffres d\'affaires', api: :entreprise, type: %i[request
         end
 
         describe 'server errors' do
-          response '404', 'Non trouvée', vcr: { cassette_name: 'dgfip/chiffres_affaires/not_found' } do
+          response '404', 'Non trouvée' do
+            before do
+              mock_invalid_dgfip_chiffres_affaires(404)
+            end
+
             let(:siret) { not_found_siret }
 
             build_rswag_example(NotFoundError.new('DGFIP - Adélie'))

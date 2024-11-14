@@ -38,6 +38,22 @@
 						"intitule": "Déposé néant",
 						"code_type_donnee": "XXY",
 						"code_nref": "123458"
+					},
+					{
+						"code_absolu": "3456789",
+						"code_EDI": "XX:X123:3333:3:XXX",
+						"code": "TT",
+						"intitule": "Déposé géant",
+						"code_type_donnee": "FXY",
+						"code_nref": "300438"
+					},
+					{
+						"code_absolu": "9876543",
+						"code_EDI": "XX:X123:2222:2:XXX",
+						"code": "GG",
+						"intitule": "Réposé géant",
+						"code_type_donnee": "DXY",
+						"code_nref": "300476"
 					}
 				]
 			}

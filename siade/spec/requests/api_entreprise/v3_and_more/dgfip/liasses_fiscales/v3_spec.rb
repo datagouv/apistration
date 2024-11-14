@@ -27,7 +27,11 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', api: :entreprise, ty
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Entreprise trouvée', vcr: { cassette_name: 'dgfip/liasses_fiscales/valid' } do
+        response '200', 'Entreprise trouvée' do
+          before do
+            mock_valid_dgfip_liasse_fiscale(valid_siren(:liasse_fiscale), 2017)
+          end
+
           description SwaggerData.get('dgfip.liasses_fiscales.declarations.description')
 
           cacheable_response(extra_description: SwaggerData.get('response.headers.cache_duration_1_hour'))
@@ -44,15 +48,8 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', api: :entreprise, ty
 
         response '404', 'Pas de liasses fiscales pour cette unité légale' do
           before do
-            mock_dgfip_authenticate
-
-            stub_request(
-              :get,
-              /#{Siade.credentials[:dgfip_liasse_fiscale_declaration_url]}\?annee=#{year}&siren=#{siren}&userId=#{/[a-f0-9_]{36}/}/
-            ).to_return(
-              status: 200,
-              body: open_payload_file('dgfip/liasses_fiscales/no_declarations.json')
-            )
+            mock_invalid_dgfip_liasse_fiscale(404)
+            pending "Not a valid 404"
           end
 
           build_rswag_example(NotFoundError.new('DGFIP - Adélie'))

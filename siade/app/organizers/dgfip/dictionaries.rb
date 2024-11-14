@@ -1,6 +1,6 @@
 class DGFIP::Dictionaries < RetrieverOrganizer
-  organize DGFIP::Authenticate,
-    DGFIP::Dictionaries::MakeRequest,
+  organize DGFIP::ADELIE::Authenticate,
+    DGFIP::ADELIE::Dictionnaire::MakeRequest,
     DGFIP::Dictionaries::ValidateResponse,
     DGFIP::Dictionaries::BuildResource
 

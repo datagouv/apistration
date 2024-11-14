@@ -1,7 +1,7 @@
 class DGFIP::AttestationFiscale < RetrieverOrganizer
   organize DGFIP::AttestationFiscale::ValidateParams,
-    DGFIP::Authenticate,
-    DGFIP::AttestationFiscale::MakeRequest,
+    DGFIP::ADELIE::Authenticate,
+    DGFIP::ADELIE::AttestationFiscale::MakeRequest,
     DGFIP::AttestationFiscale::ValidateResponse,
     DGFIP::AttestationFiscale::UploadDocument,
     DGFIP::AttestationFiscale::BuildResource

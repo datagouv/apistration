@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe BanqueDeFrance::BilansEntreprise::RetrieveDictionariesFromCacheOrRemote, type: :interactor do
-  subject(:call) { described_class.call(bundled_data:) }
+  subject(:call) { described_class.call(bundled_data:, params:) }
 
   let(:bundled_data) { BanqueDeFrance::BilansEntreprise::BuildResourceCollectionWithoutDictionaries.call(response:).bundled_data }
   let(:response) { instance_double(Net::HTTPOK, body:) }
@@ -10,9 +10,21 @@ RSpec.describe BanqueDeFrance::BilansEntreprise::RetrieveDictionariesFromCacheOr
     open_payload_file('banque_de_france/bilans_entreprise_valid_data.json').read
   end
 
-  describe 'happy path', vcr: { cassette_name: 'dgfip/dictionaries/2020_and_2021' } do
+  let(:params) do
+    {
+      user_id:,
+      request_id:
+    }
+  end
+  let(:user_id) { SecureRandom.uuid }
+  let(:request_id) { SecureRandom.uuid }
+
+  describe 'happy path' do
     before do
       allow(DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote).to receive(:call).and_call_original
+
+      mock_valid_dgfip_dictionnaire(2020)
+      mock_valid_dgfip_dictionnaire(2021)
     end
 
     it { is_expected.to be_success }
@@ -22,8 +34,8 @@ RSpec.describe BanqueDeFrance::BilansEntreprise::RetrieveDictionariesFromCacheOr
     end
 
     it 'calls DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote for each year' do
-      expect(DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote).to receive(:call).with(params: { year: '2020' })
-      expect(DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote).to receive(:call).with(params: { year: '2021' })
+      expect(DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote).to receive(:call).with(params: { year: '2020', user_id:, request_id: })
+      expect(DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote).to receive(:call).with(params: { year: '2021', user_id:, request_id: })
 
       call
     end
