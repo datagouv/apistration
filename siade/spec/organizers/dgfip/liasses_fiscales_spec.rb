@@ -61,6 +61,6 @@ RSpec.describe DGFIP::LiassesFiscales, type: :retriever_organizer do
 
     it { is_expected.to be_a_failure }
 
-    its(:cacheable) { is_expected.to be(true) }
+    its(:cacheable) { is_expected.to be(false) }
   end
 end

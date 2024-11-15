@@ -46,17 +46,18 @@ RSpec.describe 'DGFIP: Déclarations des liasses Fiscales', api: :entreprise, ty
           run_test!
         end
 
-        response '404', 'Pas de liasses fiscales pour cette unité légale' do
+        describe 'invalid response' do
           before do
             mock_invalid_dgfip_liasse_fiscale(404)
-            pending "Not a valid 404"
           end
 
-          build_rswag_example(NotFoundError.new('DGFIP - Adélie'))
+          response '404', 'Pas de liasses fiscales pour cette unité légale' do
+            build_rswag_example(NotFoundError.new('DGFIP - Adélie'))
 
-          schema '$ref' => '#/components/schemas/Error'
+            schema '$ref' => '#/components/schemas/Error'
 
-          run_test!
+            run_test!
+          end
         end
 
         describe 'server errors' do

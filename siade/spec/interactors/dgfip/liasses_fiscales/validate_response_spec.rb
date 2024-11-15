@@ -56,13 +56,13 @@ RSpec.describe DGFIP::LiassesFiscales::ValidateResponse, type: :validate_respons
 
     context 'when http status is a 404' do
       let(:code) { 404 }
-      let(:body) { '' }
+      let(:body) { '{}' }
 
       it { is_expected.to be_a_failure }
 
-      its(:errors) { is_expected.to include(instance_of(DGFIPPotentialNotFoundError)) }
+      its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
 
-      its(:cacheable) { is_expected.to be(true) }
+      its(:cacheable) { is_expected.to be(false) }
     end
 
     context 'when http status is a 503' do
