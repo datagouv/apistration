@@ -1178,6 +1178,8 @@ Pour en savoir plus sur le CEC : https://www.associations.gouv.fr/le-compte-d-en
                     - LAS
                     - RCC
                     - RIN
+                    - NJO
+                    - CJO
                 libelle:
                   type: "string"
                   title: "Libellé du sous-type"
