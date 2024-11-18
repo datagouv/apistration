@@ -253,7 +253,7 @@ GEM
     openapi3_parser (0.10.0)
       commonmarker (>= 1.0)
     openssl (3.2.0)
-    optimist (3.1.0)
+    optimist (3.2.0)
     ostruct (0.6.0)
     ox (2.14.18)
     parallel (1.26.3)
@@ -417,7 +417,7 @@ GEM
       hashie
       version_gem (~> 1.1, >= 1.1.1)
     stringio (3.1.2)
-    super_diff (0.13.0)
+    super_diff (0.14.0)
       attr_extras (>= 6.2.4)
       diff-lcs
       patience_diff
