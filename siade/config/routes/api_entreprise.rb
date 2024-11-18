@@ -1,3 +1,7 @@
+actes_gone = ->(env) do
+  [410, {}, ['Cette route a été déplacée. Merci de mettre à jour votre application vers la nouvelle route. Vous pouvez consulter la documentation à l\'adresse suivante: https://entreprise.api.gouv.fr/catalogue/inpi/rne/actes_bilans']]
+end
+
 get '/v2/ping' => 'ping#show', constraints: APIEntrepriseDomainConstraint.new
 get '/v:api_version/ping' => 'ping#show', constraints: APIEntrepriseDomainConstraint.new(v3_and_more: true)
 
@@ -41,7 +45,7 @@ scope path: 'v:api_version', constraints: APIEntrepriseDomainConstraint.new(v3_a
   end
 
   namespace :inpi do
-    get 'unites_legales/:siren/actes' => '/api_entreprise/v3_and_more/inpi/actes#show'
+    get 'unites_legales/:siren/actes', to: actes_gone
 
     get 'unites_legales/:siren/brevets' => '/api_entreprise/v3_and_more/inpi/latest_brevets#show'
     get 'unites_legales/:siren/marques' => '/api_entreprise/v3_and_more/inpi/latest_marques#show'

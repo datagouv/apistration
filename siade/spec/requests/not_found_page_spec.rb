@@ -44,4 +44,20 @@ RSpec.describe 'Not found page' do
       end
     end
   end
+
+  describe 'deprecated Actes endpoint', api: :entreprise do
+    subject(:call) do
+      get "/v3/inpi/unites_legales/#{valid_siren(:inpi)}/actes"
+
+      response
+    end
+
+    it 'renders error text' do
+      expect(call.body).to include('Cette route a été déplacée. Merci de mettre à jour votre application vers la nouvelle route. Vous pouvez consulter la documentation à l\'adresse suivante: https://entreprise.api.gouv.fr/catalogue/inpi/rne/actes_bilans')
+    end
+
+    it 'renders 410 status' do
+      expect(call.status).to eq(410)
+    end
+  end
 end
