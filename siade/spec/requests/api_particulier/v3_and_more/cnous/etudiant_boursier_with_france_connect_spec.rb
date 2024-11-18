@@ -29,7 +29,7 @@ RSpec.describe 'API Particulier: CNOUS: Statut Etudiant with FranceConnect', api
             description SwaggerData.get('cnous.commons.description')
 
             schema build_rswag_response(
-              attributes: SwaggerData.get('cnous.commons.attributes')
+              attributes: SwaggerData.get('cnous.commons.attributes_without_identity')
             )
 
             run_test!

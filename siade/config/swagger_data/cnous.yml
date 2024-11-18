@@ -4,7 +4,7 @@ cnous:
     description: Statut et échelon boursier d'un étudiant, délivrés par le Cnous.
     tags:
       - Statut étudiant boursier
-    attributes:
+    identity_attributes: &identity_attributes
       identite:
         title: Données d'identité
         type: object
@@ -42,6 +42,7 @@ cnous:
             enum:
             - M
             - F
+    attributes_without_identity: &attributes_without_identity
       est_boursier:
         title: Statut boursier
         type: boolean
@@ -112,6 +113,8 @@ cnous:
         type: string
         description: Adresse e-mail de l'étudiant boursier.
         example: georges@moustaki.fr
+    attributes:
+      <<: [*identity_attributes, *attributes_without_identity]
 
   etudiant_boursier:
     parameters:

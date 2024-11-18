@@ -1,18 +1,29 @@
 RSpec.describe FranceConnect::V1::DataFetcherThroughAccessToken::BuildUser, type: :interactor do
   describe '.call' do
-    subject(:call) { described_class.call(response:) }
+    subject(:call) { described_class.call(response:, params: { api_version: }) }
 
     let(:response) do
       instance_double(Net::HTTPOK, body:)
     end
 
     let(:body) { france_connect_v1_checktoken_payload(scopes:).to_json }
-    let(:scopes) { %w[mesri_identifiant openid identite_pivot] }
+    let(:scopes) { %w[mesri_identifiant openid identite_pivot api_name_identite] }
+    let(:api_version) { '2' }
 
     its(:user) { is_expected.to be_a(JwtUser) }
 
-    it 'gets scopes from access token payload' do
-      expect(call.user.scopes).to eq(scopes)
+    context 'when API version is 3 or more' do
+      let(:api_version) { '42' }
+
+      it 'gets scopes from access token payload without api_name_identite' do
+        expect(call.user.scopes).to eq(%w[mesri_identifiant openid identite_pivot])
+      end
+    end
+
+    context 'when API version is 2' do
+      it 'gets scopes from access token payload' do
+        expect(call.user.scopes).to eq(scopes)
+      end
     end
 
     context 'when in staging' do

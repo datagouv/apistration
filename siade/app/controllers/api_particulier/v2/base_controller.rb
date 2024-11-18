@@ -138,4 +138,8 @@ class APIParticulier::V2::BaseController < APIController
   def legacy_token_valid_length_range
     (36..128)
   end
+
+  def api_version
+    2
+  end
 end

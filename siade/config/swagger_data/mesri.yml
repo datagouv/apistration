@@ -4,7 +4,8 @@ mesri:
     description: Admissions et inscriptions d'un étudiant aux établissements d'enseignement supérieur.
     tags:
       - Statut étudiant
-    attributes:
+
+    identity_attributes: &identity_attributes
       identite:
         title: Données d'identité de l'étudiant
         description: "Données d'identité de l'étudiant corrigées et certifiées via l'API Ines qui croise l'état civil et le numéro INE de l'étudiant."
@@ -29,6 +30,7 @@ mesri:
             format: date
             description: Date de naissance de l'étudiant.
             example: 1992-11-29
+    attributes_without_identity: &attributes_without_identity
       admissions:
         title: Admissions de l'étudiant dans un ou plusieurs établissements
         description: |+
@@ -130,6 +132,8 @@ mesri:
                   type: string
                   description: Appelation officielle de l'établissement associée au code UAI.
                   example: EGC AIN BOURG EN BRESSE EC GESTION ET COMMERCE (01000)
+    attributes: 
+      <<: [*identity_attributes, *attributes_without_identity]
   statut_etudiant:
     parameters:
       ine: 

@@ -45,7 +45,7 @@ RSpec.describe APIParticulier::V2::BaseController, 'france connectable' do
     end
 
     let(:recipient) { valid_siret(:recipient) }
-    let(:params) { { recipient: } }
+    let(:params) { { recipient:, api_version: 3 } }
 
     context 'when it is not a valid france connect token' do
       before do
@@ -82,7 +82,7 @@ RSpec.describe APIParticulier::V2::BaseController, 'france connectable' do
         end
 
         context 'when organizer has invalid FranceConnect params error' do
-          let(:params) { { test_invalid_franceconnect_params: true, recipient: } }
+          let(:params) { { test_invalid_franceconnect_params: true, recipient:, api_version: 3 } }
 
           its(:status) { is_expected.to eq(400) }
 
@@ -98,7 +98,7 @@ RSpec.describe APIParticulier::V2::BaseController, 'france connectable' do
         end
 
         context 'when organizer has invalid non-FranceConnect params error' do
-          let(:params) { { test_invalid_recipient: true } }
+          let(:params) { { test_invalid_recipient: true, api_version: 3 } }
 
           its(:status) { is_expected.to eq(400) }
 

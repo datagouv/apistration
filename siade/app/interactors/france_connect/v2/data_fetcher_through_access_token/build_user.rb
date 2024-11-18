@@ -16,7 +16,11 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::BuildUser < FranceConnec
   end
 
   def scopes
-    json_body['token_introspection']['scope'].split
+    scopes = json_body['token_introspection']['scope'].split
+
+    scopes = remove_api_identity_scopes(scopes) unless api_version.to_i == 2
+
+    scopes
   end
 
   def called_france_connect_in_staging?
@@ -32,5 +36,13 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::BuildUser < FranceConnec
 
   def scopes_for(controller_name)
     Rails.application.config_for(:authorizations)[controller_name]
+  end
+
+  def remove_api_identity_scopes(scopes)
+    scopes.reject { |scope| scope.include? '_identite' }
+  end
+
+  def api_version
+    context.params[:api_version]
   end
 end
