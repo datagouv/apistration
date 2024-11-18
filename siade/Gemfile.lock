@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails-api/active_model_serializers.git
-  revision: bda195020e77f9fd4850d4beeb3d3e51bfa086e6
+  revision: b21e78becdebfc804fd01bd0af742bcdf2f74608
   branch: 0-10-stable
   specs:
     active_model_serializers (0.10.14)
@@ -212,7 +212,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2024.0604)
     mini_histogram (0.3.1)
-    mini_portile2 (2.8.7)
+    mini_portile2 (2.8.8)
     minitest (5.25.1)
     multi_json (1.15.0)
     multi_xml (0.6.0)
