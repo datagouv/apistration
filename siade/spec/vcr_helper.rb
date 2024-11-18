@@ -124,3 +124,13 @@ VCR.configure do |c|
 
   c.debug_logger = $stdout if ENV['DEBUG_VCR']
 end
+
+RSpec.configure do |config|
+  config.around do |example|
+    if example.metadata[:disable_vcr]
+      VCR.turned_off(&example)
+    else
+      example.run
+    end
+  end
+end
