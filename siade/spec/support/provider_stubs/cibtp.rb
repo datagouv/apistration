@@ -2,7 +2,7 @@ require_relative '../provider_stubs'
 
 module ProviderStubs::CIBTP
   def stub_cibtp_authenticate
-    stub_request(:post, "#{Siade.credentials[:cibtp_domain]}/apiEntreprise/token")
+    stub_request(:post, "#{Siade.credentials[:cibtp_domain]}/apientreprise/token")
       .to_return(
         status: 200,
         body: {
@@ -15,7 +15,7 @@ module ProviderStubs::CIBTP
   end
 
   def stub_cibtp_attestation_cotisations_conges_payes_chomage_intemperies_valid(siret:)
-    stub_request(:get, "#{Siade.credentials[:cibtp_domain]}/apiEntreprise/attestationMarche")
+    stub_request(:get, "#{Siade.credentials[:cibtp_domain]}/apientreprise/attestationmarche")
       .with(query: { siret: })
       .to_return(
         status: 200,
@@ -25,7 +25,7 @@ module ProviderStubs::CIBTP
   end
 
   def stub_cibtp_attestation_cotisations_conges_payes_chomage_intemperies_conflict(siret:)
-    stub_request(:get, "#{Siade.credentials[:cibtp_domain]}/apiEntreprise/attestationMarche")
+    stub_request(:get, "#{Siade.credentials[:cibtp_domain]}/apientreprise/attestationmarche")
       .with(query: { siret: })
       .to_return(
         status: 409,

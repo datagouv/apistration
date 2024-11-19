@@ -2,7 +2,7 @@ class CIBTP::AttestationCotisationsCongesPayesChomageIntemperies::MakeRequest < 
   protected
 
   def request_uri
-    URI("#{Siade.credentials[:cibtp_domain]}/apiEntreprise/attestationMarche")
+    URI("#{Siade.credentials[:cibtp_domain]}/apientreprise/attestationmarche")
   end
 
   def request_params
