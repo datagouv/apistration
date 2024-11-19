@@ -16,14 +16,14 @@ module ProviderStubs::INSEE
   end
 
   def stub_insee_authenticate
-    stub_request(:post, "#{Siade.credentials[:insee_v3_domain]}/token")
+    stub_request(:post, Siade.credentials[:insee_oauth_url])
       .to_return(status: 200, body: { access_token: 'bearer_token' }.to_json)
   end
 
   private
 
   def query_url_succession(siret)
-    "#{Siade.credentials[:insee_v3_domain]}/entreprises/sirene/V3.11/siret/liensSuccession?#{query_params_succession(siret)}"
+    "#{Siade.credentials[:insee_sirene_url]}/api-sirene/prive/3.11/siret/liensSuccession?#{query_params_succession(siret)}"
   end
 
   def query_params_succession(siret)
