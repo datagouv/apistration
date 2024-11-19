@@ -1208,7 +1208,6 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "Claire",
       "Louise"
     ],
-    "nomUsage": "",
     "nomNaissance": "DUBOIS",
     "anneeDateDeNaissance": 1962,
     "moisDateDeNaissance": 8,

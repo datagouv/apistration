@@ -9,7 +9,6 @@ params:
   - 'Angela' 
   - 'Claire' 
   - 'Louise'
-  nomUsage: ""
   nomNaissance: "DUBOIS"
   anneeDateDeNaissance: 1962
   moisDateDeNaissance: 8
