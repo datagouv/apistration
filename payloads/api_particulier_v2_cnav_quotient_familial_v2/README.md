@@ -114,6 +114,220 @@ Ce cas permet de tester :
 
   </p>
   </details>
+* [200-couple-2_enfants-qf_msa_150_sept2024.yaml](200-couple-2_enfants-qf_msa_150_sept2024.yaml)
+
+  Status `200`
+
+  ## Couple avec deux enfants - allocataire masculin - QF MSA de 200 en septembre 2024
+
+Ce cas permet de tester : 
+- [Param. appel] Lieu de naissance en France
+- [Param. appel] Sexe masculin
+- [Param. appel] 1 prénom
+- [Réponse] Tableau d'informations car couple
+- [Réponse] Tableau d'informations car deux enfants
+- [Réponse] Régime MSA
+- [Réponse] Quotient familial de 200
+- [Réponse] Quotient familial ancien de septembre 2024
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeInseeLieuDeNaissance": "51108",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "M",
+    "nomNaissance": "Martin",
+    "prenoms": [
+      "Pierre"
+    ],
+    "anneeDateDeNaissance": 1987,
+    "moisDateDeNaissance": 6,
+    "jourDateDeNaissance": 27
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "MARTIN",
+        "nomUsage": null,
+        "prenoms": "PIERRE ALEXIS FRANÇOIS",
+        "anneeDateDeNaissance": "1978",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "27",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "LEROUGE",
+        "nomUsage": "MARTIN",
+        "prenoms": "JUSTINE ÉLISE",
+        "anneeDateDeNaissance": "1979",
+        "moisDateDeNaissance": "05",
+        "jourDateDeNaissance": "19",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "MARTIN",
+        "nomUsage": null,
+        "prenoms": "ALEXIS VINCENT",
+        "anneeDateDeNaissance": "2006",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "20",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "MARTIN",
+        "nomUsage": null,
+        "prenoms": "FLEUR EDITH",
+        "anneeDateDeNaissance": "2010",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "20",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur MARTIN Pierre",
+      "complementInformation": "Bâtiment B",
+      "complementInformationGeographique": "Résidence Alouette",
+      "numeroLibelleVoie": "12 AVENUE DU GÉNÉRAL DE GAULLE",
+      "lieuDit": null,
+      "codePostalVille": "51000 CHÂLONS-EN-CHAMPAGNE",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 200,
+    "annee": 2024,
+    "mois": 9
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codeInseeLieuDeNaissance=51108' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' -d 'nomNaissance=Martin' -d 'prenoms[]=Pierre' -d 'anneeDateDeNaissance=1987' -d 'moisDateDeNaissance=6' -d 'jourDateDeNaissance=27' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
+* [200-etranger-celibataire-2_enfants-qf_cnaf_300_sept2024.yaml](200-etranger-celibataire-2_enfants-qf_cnaf_300_sept2024.yaml)
+
+  Status `200`
+
+  ## célibataire né aux Etats Unis avec deux enfants - allocataire féminin - QF CNAF de 300 en aout 2024
+
+Ce cas permet de tester : 
+- [Param. appel] Lieu de naissance en France
+- [Param. appel] Sexe féminin
+- [Param. appel] 1 prénom
+- [Réponse] Tableau d'informations 1 seul allocataire
+- [Réponse] Tableau d'informations car deux enfants
+- [Réponse] Régime CNAF
+- [Réponse] Quotient familial de 300
+- [Réponse] Quotient familial ancien de aout 2024
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codePaysLieuDeNaissance": "99404",
+    "sexe": "F",
+    "nomNaissance": "SIMPSON",
+    "prenoms": [
+      "Marge"
+    ],
+    "anneeDateDeNaissance": 1980,
+    "moisDateDeNaissance": 11,
+    "jourDateDeNaissance": 15
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "BROWN",
+        "nomUsage": null,
+        "prenoms": "Marge",
+        "anneeDateDeNaissance": "1980",
+        "moisDateDeNaissance": "11",
+        "jourDateDeNaissance": "15",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "BROWN",
+        "nomUsage": null,
+        "prenoms": "Bart",
+        "anneeDateDeNaissance": "2012",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "28",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "SIMPSON",
+        "nomUsage": null,
+        "prenoms": "LISA",
+        "anneeDateDeNaissance": "2013",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "01",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Madame SIMPSON Marge",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 PLACE DE L'HÔTEL DE VILLE'",
+      "lieuDit": null,
+      "codePostalVille": "51000 CHÂLONS-EN-CHAMPAGNE",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 300,
+    "annee": 2024,
+    "mois": 8
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codePaysLieuDeNaissance=99404' -d 'sexe=F' -d 'nomNaissance=SIMPSON' -d 'prenoms[]=Marge' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=11' -d 'jourDateDeNaissance=15' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
 * [200-identite-cas-etranger.yaml](200-identite-cas-etranger.yaml)
 
   Status `200`
