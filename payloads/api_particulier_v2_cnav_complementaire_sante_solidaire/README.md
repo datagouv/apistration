@@ -592,7 +592,6 @@ Ce cas permet de tester :
 
   ```json
   {
-    "nomUsage": "",
     "nomNaissance": "TRIMARD",
     "prenoms": [
       "FAYCAL"
@@ -628,7 +627,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=' -d 'nomNaissance=TRIMARD' -d 'prenoms[]=FAYCAL' -d 'anneeDateDeNaissance=2000' -d 'moisDateDeNaissance=9' -d 'jourDateDeNaissance=5' -d 'codeInseeLieuDeNaissance=44109' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomNaissance=TRIMARD' -d 'prenoms[]=FAYCAL' -d 'anneeDateDeNaissance=2000' -d 'moisDateDeNaissance=9' -d 'jourDateDeNaissance=5' -d 'codeInseeLieuDeNaissance=44109' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 
@@ -653,7 +652,6 @@ Ce cas permet de tester :
 
   ```json
   {
-    "nomUsage": "",
     "nomNaissance": "DEVRED",
     "prenoms": [
       "MARC"
@@ -676,8 +674,8 @@ Ce cas permet de tester :
   ```json
   {
     "status": "beneficiaire_sans_participation_financiere",
-    "dateDebut": "2024-09-05",
-    "dateFin": "2025-09-05"
+    "dateDebut": "2024-11-05",
+    "dateFin": "2025-11-05"
   }
   ```
 
@@ -689,7 +687,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=' -d 'nomNaissance=DEVRED' -d 'prenoms[]=MARC' -d 'anneeDateDeNaissance=1988' -d 'moisDateDeNaissance=7' -d 'jourDateDeNaissance=13' -d 'codeInseeLieuDeNaissance=44109' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
+    -G -d 'nomNaissance=DEVRED' -d 'prenoms[]=MARC' -d 'anneeDateDeNaissance=1988' -d 'moisDateDeNaissance=7' -d 'jourDateDeNaissance=13' -d 'codeInseeLieuDeNaissance=44109' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/complementaire-sante-solidaire"
   ```
 
