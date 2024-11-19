@@ -10,7 +10,6 @@ description: |-
   - [Param. appel] sexe masculin
   - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière
 params:
-  nomUsage: ''
   nomNaissance: 'DEVRED'
   prenoms:
     - 'MARC'
@@ -24,6 +23,6 @@ status: 200
 payload: |-
   {
     "status": "beneficiaire_sans_participation_financiere",
-    "dateDebut": "2024-09-05",
-    "dateFin": "2025-09-05"
+    "dateDebut": "2024-11-05",
+    "dateFin": "2025-11-05"
   }

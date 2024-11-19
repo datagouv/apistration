@@ -10,7 +10,6 @@ description: |-
   - [Param. appel] sexe masculin
   - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière
 params:
-  nomUsage: ''
   nomNaissance: 'TRIMARD'
   prenoms:
     - 'FAYCAL'
