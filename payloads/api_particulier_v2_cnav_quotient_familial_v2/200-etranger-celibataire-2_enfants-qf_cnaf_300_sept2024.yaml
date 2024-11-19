@@ -1,0 +1,70 @@
+---
+description: |-
+  ## célibataire né aux Etats Unis avec deux enfants - allocataire féminin - QF CNAF de 300 en aout 2024
+
+  Ce cas permet de tester : 
+  - [Param. appel] Lieu de naissance en France
+  - [Param. appel] Sexe féminin
+  - [Param. appel] 1 prénom
+  - [Réponse] Tableau d'informations 1 seul allocataire
+  - [Réponse] Tableau d'informations car deux enfants
+  - [Réponse] Régime CNAF
+  - [Réponse] Quotient familial de 300
+  - [Réponse] Quotient familial ancien de aout 2024
+params:
+  codePaysLieuDeNaissance: '99404'
+  sexe: 'F'
+  nomNaissance: 'SIMPSON'
+  prenoms:
+    - 'Marge'
+  anneeDateDeNaissance: 1980
+  moisDateDeNaissance: 11
+  jourDateDeNaissance: 15
+status: 200
+payload: |-
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "BROWN",
+        "nomUsage": null,
+        "prenoms": "Marge",
+        "anneeDateDeNaissance": "1980",
+        "moisDateDeNaissance": "11",
+        "jourDateDeNaissance": "15",
+        "sexe": "F"
+      },
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "BROWN",
+        "nomUsage": null,
+        "prenoms": "Bart",
+        "anneeDateDeNaissance": "2012",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "28",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "SIMPSON",
+        "nomUsage": null,
+        "prenoms": "LISA",
+        "anneeDateDeNaissance": "2013",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "01",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Madame SIMPSON Marge",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 PLACE DE L'HÔTEL DE VILLE'",
+      "lieuDit": null,
+      "codePostalVille": "51000 CHÂLONS-EN-CHAMPAGNE",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 300,
+    "annee": 2024,
+    "mois": 8
+  }

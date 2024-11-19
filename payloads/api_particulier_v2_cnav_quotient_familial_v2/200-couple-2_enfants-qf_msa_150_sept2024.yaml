@@ -1,0 +1,80 @@
+---
+description: |-
+  ## Couple avec deux enfants - allocataire masculin - QF MSA de 200 en septembre 2024
+
+  Ce cas permet de tester : 
+  - [Param. appel] Lieu de naissance en France
+  - [Param. appel] Sexe masculin
+  - [Param. appel] 1 prénom
+  - [Réponse] Tableau d'informations car couple
+  - [Réponse] Tableau d'informations car deux enfants
+  - [Réponse] Régime MSA
+  - [Réponse] Quotient familial de 200
+  - [Réponse] Quotient familial ancien de septembre 2024
+params:
+  codeInseeLieuDeNaissance: '51108'
+  codePaysLieuDeNaissance: '99100'
+  sexe: 'M'
+  nomNaissance: 'Martin'
+  prenoms:
+    - 'Pierre'
+  anneeDateDeNaissance: 1987
+  moisDateDeNaissance: 6
+  jourDateDeNaissance: 27
+status: 200
+payload: |-
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "MARTIN",
+        "nomUsage": null,
+        "prenoms": "PIERRE ALEXIS FRANÇOIS",
+        "anneeDateDeNaissance": "1978",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "27",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "LEROUGE",
+        "nomUsage": "MARTIN",
+        "prenoms": "JUSTINE ÉLISE",
+        "anneeDateDeNaissance": "1979",
+        "moisDateDeNaissance": "05",
+        "jourDateDeNaissance": "19",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "MARTIN",
+        "nomUsage": null,
+        "prenoms": "ALEXIS VINCENT",
+        "anneeDateDeNaissance": "2006",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "20",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "MARTIN",
+        "nomUsage": null,
+        "prenoms": "FLEUR EDITH",
+        "anneeDateDeNaissance": "2010",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "20",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur MARTIN Pierre",
+      "complementInformation": "Bâtiment B",
+      "complementInformationGeographique": "Résidence Alouette",
+      "numeroLibelleVoie": "12 AVENUE DU GÉNÉRAL DE GAULLE",
+      "lieuDit": null,
+      "codePostalVille": "51000 CHÂLONS-EN-CHAMPAGNE",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 200,
+    "annee": 2024,
+    "mois": 9
+  }
