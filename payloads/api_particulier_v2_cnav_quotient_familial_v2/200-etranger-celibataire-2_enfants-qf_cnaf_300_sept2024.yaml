@@ -33,7 +33,7 @@ payload: |-
         "moisDateDeNaissance": "11",
         "jourDateDeNaissance": "15",
         "sexe": "F"
-      },
+      }
     ],
     "enfants": [
       {
