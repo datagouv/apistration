@@ -26,7 +26,7 @@ RSpec.describe FranceConnectOrganizerService do
       context 'when token renders a payload in MockDataBackend' do
         before do
           allow(MockDataBackend).to receive(:get_response_for)
-            .with('france_connect_v2', { token:, api_name:, api_version: })
+            .with('france_connect_v2', { token: })
             .and_return(
               {
                 status: '200',
@@ -119,7 +119,7 @@ RSpec.describe FranceConnectOrganizerService do
       context 'when token renders a payload in MockDataBackend' do
         before do
           allow(MockDataBackend).to receive(:get_response_for)
-            .with('france_connect', { token:, api_version: })
+            .with('france_connect', { token: })
             .and_return(
               {
                 status: '200',

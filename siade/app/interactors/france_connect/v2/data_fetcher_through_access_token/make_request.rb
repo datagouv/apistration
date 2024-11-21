@@ -9,6 +9,12 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::MakeRequest < MakeReques
     context.mocked_data = MockService.new(operation_id, mocking_params).mock_from_backend
   end
 
+  def mocking_params
+    {
+      token:
+    }
+  end
+
   def operation_id
     'france_connect_v2'
   end
