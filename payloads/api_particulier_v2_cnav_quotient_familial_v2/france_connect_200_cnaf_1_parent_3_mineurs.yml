@@ -1,0 +1,73 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'Pierre'
+  nomNaissance: "MERCIER"
+  anneeDateDeNaissance: 1969
+  moisDateDeNaissance: 3
+  jourDateDeNaissance: 17
+  sexe: "M"
+  codeInseeLieuDeNaissance: "95277"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "MERCIER",
+        "nomUsage": "MERCIER",
+        "prenoms": "PIERRE",
+        "anneeDateDeNaissance": "1969",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "17",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "MERCIER",
+        "nomUsage": "MERCIER",
+        "prenoms": "PIERRE",
+        "anneeDateDeNaissance": "2018",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "10",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "MERCIER",
+        "nomUsage": "MERCIER",
+        "prenoms": "ROBERT",
+        "anneeDateDeNaissance": "2020",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "15",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "MERCIER",
+        "nomUsage": "MERCIER",
+        "prenoms": "HENRY",
+        "anneeDateDeNaissance": "2022",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "20",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur MERCIER PIERRE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE MONTORGUEIL",
+      "lieuDit": null,
+      "codePostalVille": "75002 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
