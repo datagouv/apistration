@@ -348,6 +348,19 @@ shared:
           token: 'token'
         status_to_check: 400
 
+    insee_metadonnees:
+      kind: 'retriever'
+      cache: <%= 2.minutes %>
+      provider: 'INSEE'
+      status_page:
+        name: 'INSEE - Métadonnées'
+      driver_params:
+        retriever: 'INSEE::CommuneINSEECode'
+        params:
+          nom_commune_naissance: 'Gennevilliers'
+          annee_date_naissance: '2000'
+          code_cog_insee_departement_naissance: '92'
+
   api_entreprise:
     insee/sirene:
       kind: 'retriever'
@@ -359,6 +372,7 @@ shared:
         retriever: 'INSEE::Etablissement'
         params:
           siret: '30613890002979'
+
     urssaf/attestation_sociale:
       kind: 'access_logs'
       provider: 'ACOSS'
