@@ -1,5 +1,5 @@
 RSpec.describe CNOUS::StudentScholarshipWithFranceConnect::MakeRequest, type: :make_request do
-  subject(:make_call) { described_class.call(params:, token:, operation_id: 'whatever') }
+  subject(:make_call) { described_class.call(params:, token:, operation_id: 'api_particulier_v2_whatever') }
 
   let(:params) do
     {
@@ -55,7 +55,7 @@ RSpec.describe CNOUS::StudentScholarshipWithFranceConnect::MakeRequest, type: :m
     before do
       allow(Rails.env).to receive(:staging?).and_return(true)
       allow(MockDataBackend).to receive(:get_response_for).with(
-        'whatever',
+        'api_particulier_v2_whatever',
         hash_including(
           {
             given_name: 'Jean, Martin'

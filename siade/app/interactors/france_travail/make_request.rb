@@ -1,5 +1,5 @@
 module FranceTravail::MakeRequest
-  def mocking_params
+  def mocking_params_v2
     {
       identifiant:
     }

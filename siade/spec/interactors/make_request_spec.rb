@@ -11,6 +11,14 @@ RSpec.describe MakeRequest, type: :interactor do
         end
       end
 
+      def mocking_params
+        context.params.merge(what: 'not_v2')
+      end
+
+      def mocking_params_v2
+        context.params.merge(what: 'v2')
+      end
+
       def request_uri
         URI('https://entreprise.api.gouv.fr')
       end
@@ -247,14 +255,30 @@ RSpec.describe MakeRequest, type: :interactor do
         expect(stubbed_request).not_to have_been_requested
       end
 
-      it 'calls MockService' do
-        subject
+      context 'when it is a v2 mocking' do
+        let!(:operation_id) { 'api_particulier_v2_operation_id' }
 
-        expect(MockService).to have_received(:new).with(
-          operation_id,
-          params
-        )
-        expect(mock_service).to have_received(:mock)
+        it 'calls MockService with v2 mocking_params' do
+          subject
+
+          expect(MockService).to have_received(:new).with(
+            operation_id,
+            params.merge(what: 'v2')
+          )
+          expect(mock_service).to have_received(:mock)
+        end
+      end
+
+      context 'when it is not a v2 mocking' do
+        it 'calls MockService with mocking_params' do
+          subject
+
+          expect(MockService).to have_received(:new).with(
+            operation_id,
+            params.merge(what: 'not_v2')
+          )
+          expect(mock_service).to have_received(:mock)
+        end
       end
 
       it 'affects mocked data to context' do

@@ -6,7 +6,7 @@ class CNAV::MakeRequest < MakeRequest::Get
   end
 
   # rubocop:disable Metrics/AbcSize
-  def mocking_params
+  def mocking_params_v2
     {
       nomUsage: context.params[:nom_usage],
       nomNaissance: context.params[:nom_naissance],

@@ -23,15 +23,24 @@ class MakeRequest < ApplicationInteractor
   protected
 
   def mock_call
-    context.mocked_data = MockService.new(operation_id, mocking_params).mock
+    mocked_params = api_particulier_v2? ? mocking_params_v2 : mocking_params
+    context.mocked_data = MockService.new(operation_id, mocked_params).mock
   end
 
   def operation_id
     context.operation_id
   end
 
+  def mocking_params_v2
+    context.params
+  end
+
   def mocking_params
     context.params
+  end
+
+  def api_particulier_v2?
+    operation_id.include?('api_particulier_v2')
   end
 
   # rubocop:disable Metrics/MethodLength, Metrics/AbcSize

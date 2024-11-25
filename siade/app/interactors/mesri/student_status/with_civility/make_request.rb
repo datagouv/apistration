@@ -3,7 +3,7 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
 
   protected
 
-  def mocking_params
+  def mocking_params_v2
     if context.params[:france_connect]
       france_connect_mocking_params
     else

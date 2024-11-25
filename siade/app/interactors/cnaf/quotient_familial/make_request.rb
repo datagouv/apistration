@@ -9,7 +9,7 @@ class CNAF::QuotientFamilial::MakeRequest < MakeRequest::Post
     CNAFQuotientFamilialSoapBuilder.new(postal_code, beneficiary_number).render
   end
 
-  def mocking_params
+  def mocking_params_v2
     {
       codePostal: postal_code,
       numeroAllocataire: beneficiary_number

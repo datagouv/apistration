@@ -1,7 +1,7 @@
 class CNAV::QuotientFamilialV2::MakeRequest < CNAV::MakeRequest
   protected
 
-  def mocking_params
+  def mocking_params_v2
     super.merge(
       annee: context.params[:annee],
       mois: context.params[:mois]

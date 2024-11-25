@@ -1,5 +1,5 @@
 RSpec.describe INSEE::UniteLegaleDiffusable, type: :retriever_organizer do
-  subject { described_class.call(params:) }
+  subject { described_class.call(params:, operation_id: 'watever') }
 
   let(:params) do
     {

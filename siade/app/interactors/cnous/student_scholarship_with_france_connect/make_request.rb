@@ -13,7 +13,7 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
     }.to_json
   end
 
-  def mocking_params
+  def mocking_params_v2
     {
       given_name: prenoms,
       family_name: nom_naissance,

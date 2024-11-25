@@ -21,7 +21,7 @@ class MEN::Scolarites::MakeRequest < MakeRequest::Get
     super
   end
 
-  def mocking_params
+  def mocking_params_v2
     {
       nom: context.params[:nom_naissance],
       prenom:,
