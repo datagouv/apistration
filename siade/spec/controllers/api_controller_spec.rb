@@ -19,6 +19,12 @@ RSpec.describe APIController do
     def siret
       params.require(:siret)
     end
+
+    private
+
+    def clean_duplicate_param_tracking
+      Rails.logger.info 'Overridden clean_duplicate_param_tracking called'
+    end
   end
 
   describe 'error json (with bad request error)' do
@@ -263,6 +269,55 @@ RSpec.describe APIController do
       )
 
       get :index, params: { token: yes_jwt }.merge(api_entreprise_mandatory_params)
+    end
+  end
+
+  describe 'multiple calls with same parameters' do
+    subject(:double_call) do
+      request.headers['Authorization'] = "Bearer #{previous_jwt}"
+      get :index, params: previous_params
+
+      request.headers['Authorization'] = "Bearer #{yes_jwt}"
+      get :index, params:
+    end
+
+    before do
+      routes.draw { get 'index' => 'api#index' }
+    end
+
+    let(:params) { { 'what' => 'ever' } }
+    let(:previous_jwt) { yes_jwt }
+
+    context 'when previous call is different' do
+      let(:previous_params) { { 'what' => 'is love' } }
+
+      it 'renders a 200' do
+        double_call
+
+        assert_response :ok
+      end
+    end
+
+    context 'when previous call is the same' do
+      let(:previous_params) { params }
+
+      context 'when it is not the same jwt' do
+        let(:previous_jwt) { TokenFactory.new.valid }
+
+        it 'renders a 200' do
+          double_call
+
+          assert_response :ok
+        end
+      end
+
+      context 'when it is the same jwt' do
+        it 'renders a conflict' do
+          double_call
+
+          assert_response :conflict
+        end
+      end
     end
   end
 end

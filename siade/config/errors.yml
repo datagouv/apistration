@@ -40,6 +40,9 @@
   title: 'Contenu partiel'
   detail: "Des données n'ont pas pu être récupérées auprès d'un ou plusieurs fournisseurs."
 
+- code: '00015'
+  title: 'Conflit'
+
 - subcode: '015'
   title: 'Conflit'
   detail: 'Plusieurs ressources correspondent aux critères'

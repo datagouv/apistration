@@ -5,6 +5,9 @@ class APIController < ApplicationController
   rescue_from ActionController::ParameterMissing, with: :bad_request
   rescue_from MockedInteractor::EndpointNotYetImplemented, with: :not_implemented_error
 
+  before_action :verify_duplicate_params!
+  after_action :clean_duplicate_param_tracking
+
   def process_action(*args)
     super
   rescue ActionDispatch::Http::MimeNegotiation::InvalidType => e
@@ -49,6 +52,23 @@ class APIController < ApplicationController
 
   def user_no_longer_authorized(_exception)
     render error_json(ExpiredTokenError.new(api_kind), status: 401)
+  end
+
+  def verify_duplicate_params!
+    if Rails.cache.fetch(duplicate_param_backend_key).blank?
+      Rails.cache.write(duplicate_param_backend_key, '1', expires_in: 1.minute)
+    else
+      render error_json(ConflictError.new, status: 409)
+      false
+    end
+  end
+
+  def clean_duplicate_param_tracking
+    Rails.cache.delete(duplicate_param_backend_key)
+  end
+
+  def duplicate_param_backend_key
+    @duplicate_param_backend_key ||= Digest::SHA256.hexdigest("#{operation_id}_#{params.to_unsafe_h.except(:controller, :action)}_#{current_user.id}")
   end
 
   def render_generic_errors_serializer(klass, status:)
