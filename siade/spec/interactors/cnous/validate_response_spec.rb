@@ -37,7 +37,7 @@ RSpec.describe CNOUS::ValidateResponse, type: :validate_response do
 
             it { is_expected.to be_a_failure }
 
-            its(:errors) { is_expected.to include(instance_of(ConflictError)) }
+            its(:errors) { is_expected.to include(instance_of(ProviderConflictError)) }
 
             it 'captures error in monitoring' do
               expect(MonitoringService.instance).to receive(:track).with(

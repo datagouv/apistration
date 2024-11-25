@@ -1,4 +1,4 @@
-class ConflictError < AbstractGenericProviderError
+class ProviderConflictError < AbstractGenericProviderError
   def subcode
     '015'
   end

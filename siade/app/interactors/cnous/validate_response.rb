@@ -32,7 +32,7 @@ class CNOUS::ValidateResponse < ValidateResponse
 
   def conflict!
     monitoring_service.track('error', 'CNOUS Identity calls returned more than one result', context.params)
-    fail_with_error!(::ConflictError.new(context.provider))
+    fail_with_error!(::ProviderConflictError.new(context.provider))
   end
 
   def valid_payload
