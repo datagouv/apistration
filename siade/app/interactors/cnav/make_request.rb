@@ -6,6 +6,20 @@ class CNAV::MakeRequest < MakeRequest::Get
   end
 
   # rubocop:disable Metrics/AbcSize
+  def mocking_params
+    {
+      nomNaissance: context.params[:nom_naissance],
+      nomUsage: context.params[:nom_usage],
+      prenoms: context.params[:prenoms],
+      anneeDateNaissance: int_or_nil(date_naissance.split('-').first.to_i),
+      moisDateNaissance: int_or_nil(date_naissance.split('-').second.to_i),
+      jourDateNaissance: int_or_nil(date_naissance.split('-').last.to_i),
+      sexeEtatCivil: context.params[:sexe_etat_civil],
+      codeCogInseePaysNaissance: context.params[:code_cog_insee_pays_naissance],
+      codeCogInseeCommuneNaissance: context.params[:code_cog_insee_commune_naissance]
+    }.compact
+  end
+
   def mocking_params_v2
     {
       nomUsage: context.params[:nom_usage],

@@ -11,6 +11,18 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
     end
   end
 
+  def mocking_params
+    {
+      nomNaissance: nom_naissance,
+      prenoms: prenom,
+      anneeDateNaissance: context.params[:annee_date_naissance],
+      moisDateNaissance: context.params[:mois_date_naissance],
+      jourDateNaissance: context.params[:jour_date_naissance],
+      sexeEtatCivil: sexe_etat_civil.downcase,
+      codeCogInseeCommuneNaissance: code_cog_insee_commune_naissance
+    }.compact
+  end
+
   def france_connect_mocking_params
     {
       given_name: prenom,

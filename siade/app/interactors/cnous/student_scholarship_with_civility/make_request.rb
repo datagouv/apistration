@@ -13,6 +13,18 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
     }.compact
   end
 
+  def mocking_params
+    {
+      nomNaissance: nom_naissance,
+      prenoms: prenoms,
+      anneeDateNaissance: year,
+      moisDateNaissance: month,
+      jourDateNaissance: day,
+      sexeEtatCivil: gender,
+      codeCogInseeCommuneNaissance: code_cog_insee_commune_naissance
+    }.compact
+  end
+
   def request_uri
     URI(Siade.credentials[:cnous_student_scholarship_civility_url])
   end

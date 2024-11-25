@@ -9,6 +9,12 @@ class MESRI::StudentStatus::WithINE::MakeRequest < MakeRequest::Get
     }
   end
 
+  def mocking_params
+    {
+      ine: ine_number
+    }
+  end
+
   def request_params
     {
       INE: ine_number

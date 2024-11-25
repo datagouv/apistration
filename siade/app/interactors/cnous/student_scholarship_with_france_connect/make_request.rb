@@ -13,6 +13,18 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
     }.to_json
   end
 
+  def mocking_params
+    {
+      nomNaissance: nom_naissance,
+      prenoms: prenoms,
+      anneeDateNaissance: year,
+      moisDateNaissance: month,
+      jourDateNaissance: day,
+      sexeEtatCivil: gender,
+      codeCogInseeCommuneNaissance: code_cog_insee_commune_naissance
+    }.compact
+  end
+
   def mocking_params_v2
     {
       given_name: prenoms,

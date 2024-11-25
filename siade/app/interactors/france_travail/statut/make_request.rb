@@ -7,6 +7,12 @@ class FranceTravail::Statut::MakeRequest < MakeRequest::Post
     URI(Siade.credentials[:france_travail_status_url])
   end
 
+  def mocking_params
+    {
+      identifiant:
+    }
+  end
+
   def build_request_body
     identifiant
   end

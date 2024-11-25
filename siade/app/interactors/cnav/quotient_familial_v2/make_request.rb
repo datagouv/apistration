@@ -8,6 +8,13 @@ class CNAV::QuotientFamilialV2::MakeRequest < CNAV::MakeRequest
     ).compact
   end
 
+  def mocking_params
+    super.merge(
+      annee: context.params[:annee],
+      mois: context.params[:mois]
+    ).compact
+  end
+
   def request_params
     super.merge(
       anneeDemandee: context.params[:annee].presence || Time.zone.today.year,
