@@ -13,7 +13,7 @@ params:
   moisDateDeNaissance: 7
   jourDateDeNaissance: 27
   sexe: "M"
-  codeInseeLieuDeNaissance: "75107"
+  codeInseeLieuDeNaissance: "13012"
   codePaysLieuDeNaissance: "99100"
 status: 200
 payload: |-

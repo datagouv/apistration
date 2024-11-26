@@ -11,7 +11,7 @@ params:
   anneeDateDeNaissance: 1945
   moisDateDeNaissance: 9
   jourDateDeNaissance: 30
-  sexe: "M"
+  sexe: "F"
   codeInseeLieuDeNaissance: "31555"
   codePaysLieuDeNaissance: "99100"
 status: 200
