@@ -1,0 +1,28 @@
+---
+description: |-
+  ## Allocataire non trouvé
+params:
+  nomNaissance: 'DELANOUE'
+  prenoms:
+  - 'Jean-Marie'
+  anneeDateDaissance: 2002
+  moisDateDaissance: 12
+  jourDateDaissance: 5
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+status: 502
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "37999",
+        "title": "Erreur inconnue du fournisseur de données",
+        "detail": "La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation.",
+        "source": null,
+        "meta": {
+          "provider": "CNAV"
+        }
+      }
+    ]
+  }
