@@ -1,0 +1,83 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'Melissandre'
+    - 'Juliette'
+  nomNaissance: "TROIS-DUPRE"
+  anneeDateDeNaissance: 1981
+  moisDateDeNaissance: 7
+  jourDateDeNaissance: 27
+  sexe: "M"
+  codeInseeLieuDeNaissance: "75107"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "DUBOIS",
+        "nomUsage": "TROIS-DUPRE",
+        "prenoms": "MELISSANDRE JULIETTE",
+        "anneeDateDeNaissance": "1981",
+        "moisDateDeNaissance": "07",
+        "jourDateDeNaissance": "27",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "TROIS-DUPRE",
+        "nomUsage": "TROIS-DUPRE",
+        "prenoms": "PAUL",
+        "anneeDateDeNaissance": "1963",
+        "moisDateDeNaissance": "10",
+        "jourDateDeNaissance": "12",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "TROIS-DUPRE",
+        "nomUsage": "TROIS-DUPRE",
+        "prenoms": "PIERRE",
+        "anneeDateDeNaissance": "2004",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "10",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "TROIS-DUPRE",
+        "nomUsage": "TROIS-DUPRE",
+        "prenoms": "LOU",
+        "anneeDateDeNaissance": "2015",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "15",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "TROIS-DUPRE",
+        "nomUsage": "TROIS-DUPRE",
+        "prenoms": "HENRY",
+        "anneeDateDeNaissance": "2022",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "20",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur TROIS-DUPRE PAUL",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE MONTORGUEIL",
+      "lieuDit": null,
+      "codePostalVille": "75002 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
