@@ -15,8 +15,8 @@ params:
   prenoms:
     - 'PIERRE'
     - 'PAUL'
-  anneeDateDaissance: 1984
-  moisDateDaissance: 12
+  anneeDateNaissance: 1984
+  moisDateNaissance: 12
 status: 200
 payload: |-
   {

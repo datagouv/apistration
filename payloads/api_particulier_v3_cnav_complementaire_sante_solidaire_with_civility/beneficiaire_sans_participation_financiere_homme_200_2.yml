@@ -14,9 +14,9 @@ params:
   nomNaissance: 'BOISSON'
   prenoms:
     - 'FRANCIS'
-  anneeDateDaissance: 1978
-  moisDateDaissance: 4
-  jourDateDaissance: 4
+  anneeDateNaissance: 1978
+  moisDateNaissance: 4
+  jourDateNaissance: 4
   codeCogInseeCommuneNaissance: '44109'
   codeCogInseePaysNaissance: '99100' #Bénéficiaire né en France
   sexeEtatCivil: 'M'

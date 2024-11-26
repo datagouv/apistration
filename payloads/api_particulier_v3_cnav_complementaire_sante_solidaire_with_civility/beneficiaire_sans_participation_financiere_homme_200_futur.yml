@@ -15,9 +15,9 @@ params:
   prenoms:
     - 'JEAN'
     - 'BAPTISTE'
-  anneeDateDaissance: 1973
-  moisDateDaissance: 2
-  jourDateDaissance: 17
+  anneeDateNaissance: 1973
+  moisDateNaissance: 2
+  jourDateNaissance: 17
   codeCogInseeCommuneNaissance: '44109'
   codeCogInseePaysNaissance: '99100' #Bénéficiaire né en France
   sexeEtatCivil: 'M'

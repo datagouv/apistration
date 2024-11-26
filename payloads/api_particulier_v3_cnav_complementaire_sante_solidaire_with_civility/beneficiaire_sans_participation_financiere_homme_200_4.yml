@@ -13,9 +13,9 @@ params:
   nomNaissance: 'DEVRED'
   prenoms:
     - 'MARC'
-  anneeDateDaissance: 1988
-  moisDateDaissance: 07
-  jourDateDaissance: 13
+  anneeDateNaissance: 1988
+  moisDateNaissance: 07
+  jourDateNaissance: 13
   codeCogInseeCommuneNaissance: '44109'
   codeCogInseePaysNaissance: '99100' #Bénéficiaire né en France
   sexeEtatCivil: 'M'

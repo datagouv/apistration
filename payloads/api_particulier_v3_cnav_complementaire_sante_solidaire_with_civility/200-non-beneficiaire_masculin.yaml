@@ -13,8 +13,8 @@ params:
   nomNaissance: 'DUPONT'
   prenoms:
     - 'PIERRE'
-  anneeDateDaissance: 1966
-  moisDateDaissance: 6
+  anneeDateNaissance: 1966
+  moisDateNaissance: 6
 status: 200
 payload: |-
   {

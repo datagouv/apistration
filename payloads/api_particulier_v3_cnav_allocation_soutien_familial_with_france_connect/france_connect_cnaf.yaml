@@ -9,9 +9,9 @@ params:
   - 'Claire' 
   - 'Louise'
   nomNaissance: "DUBOIS"
-  anneeDateDaissance: 1962
-  moisDateDaissance: 8
-  jourDateDaissance: 24
+  anneeDateNaissance: 1962
+  moisDateNaissance: 8
+  jourDateNaissance: 24
   sexeEtatCivil: "F"
   codeCogInseeCommuneNaissance: "75107"
   codeCogInseePaysNaissance: "99100"

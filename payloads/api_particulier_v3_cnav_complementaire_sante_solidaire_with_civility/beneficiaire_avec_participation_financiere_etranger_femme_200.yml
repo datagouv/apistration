@@ -15,9 +15,9 @@ params:
   prenoms:
     - 'MADELEINE'
     - 'LEA'
-  anneeDateDaissance: 1976
-  moisDateDaissance: 8
-  jourDateDaissance: 24
+  anneeDateNaissance: 1976
+  moisDateNaissance: 8
+  jourDateNaissance: 24
   codeCogInseePaysNaissance: '99131' #Bénéficiaire né à l'étranger
   sexeEtatCivil: 'F'
 status: 200

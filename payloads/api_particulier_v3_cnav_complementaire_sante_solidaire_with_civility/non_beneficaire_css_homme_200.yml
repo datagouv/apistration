@@ -15,9 +15,9 @@ params:
   prenoms:
     - 'PIERRE-MARIE'
     - 'JEREMY'
-  anneeDateDaissance: 1968
-  moisDateDaissance: 11
-  jourDateDaissance: 15
+  anneeDateNaissance: 1968
+  moisDateNaissance: 11
+  jourDateNaissance: 15
   codeCogInseeCommuneNaissance: '33063'
   codeCogInseePaysNaissance: '99100' #Bénéficiaire né en France
   sexeEtatCivil: 'M'

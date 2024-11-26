@@ -7,9 +7,9 @@ params:
   prenoms: 
   - "Georges"
   nomNaissance: "CNAF"
-  anneeDateDaissance: 2002
-  moisDateDaissance: 1
-  jourDateDaissance: 1
+  anneeDateNaissance: 2002
+  moisDateNaissance: 1
+  jourDateNaissance: 1
   sexeEtatCivil: "M"
   codeCogInseeCommuneNaissance: "75002"
   codeCogInseePaysNaissance: "99100"

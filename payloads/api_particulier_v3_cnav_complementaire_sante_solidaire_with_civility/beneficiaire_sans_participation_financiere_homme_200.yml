@@ -16,9 +16,9 @@ params:
     - 'PIERRE'
     - 'GAUTIER'
     - 'HARRY'
-  anneeDateDaissance: 1950
-  moisDateDaissance: 1
-  jourDateDaissance: 1
+  anneeNateNaissance: 1950
+  moisDateNaissance: 1
+  jourDateNaissance: 1
   codeCogInseeCommuneNaissance: '44109'
   codeCogInseePaysNaissance: '99100' #Bénéficiaire né en France
   sexeEtatCivil: 'M'

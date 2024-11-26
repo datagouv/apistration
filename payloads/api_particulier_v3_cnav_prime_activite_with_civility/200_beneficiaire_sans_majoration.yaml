@@ -5,9 +5,9 @@ params:
   nomNaissance: 'GONTRAND'
   prenoms:
   - 'YVES'
-  anneeDateDaissance: 1980
-  moisDateDaissance: 9
-  jourDateDaissance: 20
+  anneeDateNaissance: 1980
+  moisDateNaissance: 9
+  jourDateNaissance: 20
   codeCogInseeCommuneNaissance: '08480'
   codeCogInseePaysNaissance: '99100'
   sexeEtatCivil: 'M'

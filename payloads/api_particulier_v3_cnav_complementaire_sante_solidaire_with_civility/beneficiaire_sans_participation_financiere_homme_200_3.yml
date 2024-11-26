@@ -13,9 +13,9 @@ params:
   nomNaissance: 'TRIMARD'
   prenoms:
     - 'FAYCAL'
-  anneeDateDaissance: 2000
-  moisDateDaissance: 9
-  jourDateDaissance: 5
+  anneeDateNaissance: 2000
+  moisDateNaissance: 9
+  jourDateNaissance: 5
   codeCogInseeCommuneNaissance: '44109'
   codeCogInseePaysNaissance: '99100' #Bénéficiaire né en France
   sexeEtatCivil: 'M'

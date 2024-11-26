@@ -15,8 +15,8 @@ params:
   prenoms:
     - 'JEANNE'
     - 'LAURE'
-  anneeDateDaissance: 1993
-  moisDateDaissance: 8
+  anneeDateNaissance: 1993
+  moisDateNaissance: 8
 status: 200
 payload: |-
   {

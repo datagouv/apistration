@@ -14,9 +14,9 @@ params:
   nomNaissance: 'VAUBAN'
   prenoms:
     - 'VICTOIRE'
-  anneeDateDaissance: 1966
-  moisDateDaissance: 3
-  jourDateDaissance: 5
+  anneeDateNaissance: 1966
+  moisDateNaissance: 3
+  jourDateNaissance: 5
   codeCogInseePaysNaissance: '99216' #Bénéficiaire né à l'étranger
   sexeEtatCivil: 'F'
 status: 200

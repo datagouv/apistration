@@ -15,9 +15,9 @@ params:
   prenoms:
     - 'CELINE'
     - 'MARIE'
-  anneeDateDaissance: 1980
-  moisDateDaissance: 10
-  jourDateDaissance: 10
+  anneeDateNaissance: 1980
+  moisDateNaissance: 10
+  jourDateNaissance: 10
   codeCogInseeCommuneNaissance: '75056'
   codeCogInseePaysNaissance: '99100' #Bénéficiaire né en France
   sexeEtatCivil: 'F'

@@ -12,9 +12,9 @@ params:
   nomNaissance: 'RECETTECOMMUNAUTAIRE'
   prenoms:
     - 'LEON'
-  anneeDateDaissance: 1968
-  moisDateDaissance: 04
-  jourDateDaissance: 05
+  anneeDateNaissance: 1968
+  moisDateNaissance: 04
+  jourDateNaissance: 05
   codeCogInseeCommuneNaissance: '44109'
   codeCogInseePaysNaissance: '99100' #Bénéficiaire né en France
   sexeEtatCivil: 'M'

@@ -6,9 +6,9 @@ params:
   prenoms:
   - 'FRANCIS'
   - 'GERARD'
-  anneeDateDaissance: 2002
-  moisDateDaissance: 11
-  jourDateDaissance: 1
+  anneeDateNaissance: 2002
+  moisDateNaissance: 11
+  jourDateNaissance: 1
   codeCogInseeCommuneNaissance: '08480'
   codeCogInseePaysNaissance: '99100'
   sexeEtatCivil: 'M'
