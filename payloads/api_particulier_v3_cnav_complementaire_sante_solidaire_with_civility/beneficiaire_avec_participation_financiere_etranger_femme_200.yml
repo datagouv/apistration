@@ -1,0 +1,30 @@
+---
+description: |-
+  ## Bénéficiaire né à l'étranger avec participation financière femme - 200
+  
+  Ce cas permet de tester :
+  - [Param. appel] Nom d'usage
+  - [Param. appel] Nom de naissance
+  - [Param. appel] Deux prénoms
+  - [Param. appel] Date de naissance (jour,mois,année)
+  - [Param. appel] sexe féminin
+  - [Réponse] statut bénéficiaire de la complémentaire santé solidaire participation financière
+params:
+  nomUsage: 'PLUSSE'
+  nomNaissance: 'GERVINAT'
+  prenoms:
+    - 'MADELEINE'
+    - 'LEA'
+  anneeDateDaissance: 1976
+  moisDateDaissance: 8
+  jourDateDaissance: 24
+  codeCogInseePaysNaissance: '99131' #Bénéficiaire né à l'étranger
+  sexeEtatCivil: 'F'
+status: 200
+payload: |-
+  {
+    "est_beneficiaire": true,
+    "avec_participation": true,
+    "date_debut_droit": "2024-10-01"
+  }
+  
