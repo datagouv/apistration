@@ -36,7 +36,10 @@ class MakeRequest < ApplicationInteractor
   end
 
   def mocking_params
-    context.params
+    mocked_params = context.params.dup
+    mocked_params.delete(:recipient)
+
+    mocked_params
   end
 
   def api_particulier_v2?
