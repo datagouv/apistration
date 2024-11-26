@@ -19,7 +19,7 @@ main_readme_stream.puts 'génère une payload par défaut basée sur la spécifi
 
 {
   'api_particulier' => 'API Particulier',
-  'api_entreprise' => 'API Entreprise v3+',
+  'api_entreprise' => 'API Entreprise v3+'
 }.each do |api_id, api_name|
   main_readme_stream.puts
   main_readme_stream.puts("## #{api_name}")

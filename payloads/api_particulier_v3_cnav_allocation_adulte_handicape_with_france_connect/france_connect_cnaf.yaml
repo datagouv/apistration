@@ -1,0 +1,23 @@
+description: |-
+  Cas de test avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms: 
+  - 'Angela' 
+  - 'Claire' 
+  - 'Louise'
+  nomNaissance: "DUBOIS"
+  anneeDateDaissance: 1962
+  moisDateDaissance: 8
+  jourDateDaissance: 24
+  sexeEtatCivil: "F"
+  codeInseeLieuDaissance: "75107"
+  codePaysLieuDaissance: "99100"
+status: 200
+payload: |-
+  {
+    "est_beneficiaire": true,
+    "date_debut_droit": "2023-02-01"
+  }

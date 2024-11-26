@@ -1,0 +1,21 @@
+---
+description: |-
+  ## Bénéficiaire
+params:
+  nomUsage: 'DUPONT'
+  nomNaissance: 'MARTIN'
+  prenoms:
+  - 'PIERRE'
+  - 'RICHARD'
+  anneeDateNaissance: 1987
+  moisDateNaissance: 12
+  jourDateNaissance: 1
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+status: 200
+payload: |-
+  {
+    "est_beneficiaire": true,
+    "date_debut_droit": "2022-11-29"
+  }
