@@ -193,7 +193,7 @@ jobs:
       - merge-with-master
     strategy:
       matrix:
-        host: [watchdoge1, watchdoge2, watchdoge3, watchdoge4, watchdoge5]
+        host: [watchdoge1, watchdoge2, watchdoge3, watchdoge4]
       fail-fast: false
     environment: staging
     env:
@@ -226,7 +226,7 @@ jobs:
       - continuous-deployment-staging
     strategy:
       matrix:
-        host: [watchdoge1, watchdoge2, watchdoge3, watchdoge4, watchdoge5]
+        host: [watchdoge1, watchdoge2, watchdoge3, watchdoge4]
         deploy_env: [production]
       fail-fast: false
     environment: production
