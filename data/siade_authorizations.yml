@@ -1,5 +1,6 @@
 shared:
   api_entreprise/proxied_files: []
+  api_entreprise/inpi_proxy: []
   api_entreprise/v2/privileges: []
   api_entreprise/privileges: []
   api_entreprise/v2/associations:
@@ -189,6 +190,11 @@ shared:
     - beneficiaires_effectifs_inpi
   api_entreprise/v3_and_more/inpi/rne/actes_bilans:
     - open_data
+  api_entreprise/v3_and_more/inpi/rne/actes_download:
+    - open_data
+  api_entreprise/v3_and_more/inpi/rne/bilans_download:
+    - open_data
+  api_particulier/introspect: []
   api_particulier/v2/introspect: []
   api_particulier/v2/cnaf/quotient_familial:
     - cnaf_quotient_familial
@@ -238,6 +244,92 @@ shared:
     - men_statut_scolarite
     - men_statut_boursier
     - men_echelon_bourse
+  api_particulier/v3_and_more/france_travail/indemnites_with_identifiant:
+    - pole_emploi_paiements
+  api_particulier/v3_and_more/france_travail/statut_with_identifiant:
+    - pole_emploi_identifiant
+    - pole_emploi_identite
+    - pole_emploi_adresse
+    - pole_emploi_contact
+    - pole_emploi_inscription
+  api_particulier/v3_and_more/men/scolarites_with_civility:
+    - men_statut_identite
+    - men_statut_scolarite
+    - men_statut_boursier
+    - men_echelon_bourse
+  api_particulier/v3_and_more/mesri/statut_etudiant_with_ine:
+    - mesri_identite
+    - mesri_inscription
+    - mesri_regime
+    - mesri_etablissements
+  api_particulier/v3_and_more/mesri/statut_etudiant_with_civility:
+    - mesri_identite
+    - mesri_inscription
+    - mesri_regime
+    - mesri_etablissements
+  api_particulier/v3_and_more/mesri/statut_etudiant_with_france_connect:
+    - mesri_identite
+    - mesri_inscription
+    - mesri_regime
+    - mesri_etablissements
+  api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_france_connect:
+    - revenu_solidarite_active
+    - revenu_solidarite_active_majoration
+  api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_civility:
+    - revenu_solidarite_active
+    - revenu_solidarite_active_majoration
+  api_particulier/v3_and_more/cnav/prime_activite_with_france_connect:
+    - prime_activite
+    - prime_activite_majoration
+  api_particulier/v3_and_more/cnav/prime_activite_with_civility:
+    - prime_activite
+    - prime_activite_majoration
+  api_particulier/v3_and_more/cnav/allocation_soutien_familial_with_civility:
+    - allocation_soutien_familial
+  api_particulier/v3_and_more/cnav/allocation_soutien_familial_with_france_connect:
+    - allocation_soutien_familial
+  api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_civility:
+    - allocation_adulte_handicape
+  api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_france_connect:
+    - allocation_adulte_handicape
+  api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_civility:
+    - complementaire_sante_solidaire
+  api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_france_connect:
+    - complementaire_sante_solidaire
+  api_particulier/v3_and_more/cnav/quotient_familial_with_civility:
+    - cnaf_quotient_familial
+    - cnaf_allocataires
+    - cnaf_enfants
+    - cnaf_adresse
+  api_particulier/v3_and_more/cnav/quotient_familial_with_france_connect:
+    - cnaf_quotient_familial
+    - cnaf_allocataires
+    - cnaf_enfants
+    - cnaf_adresse
+  api_particulier/v3_and_more/cnous/etudiant_boursier_with_ine:
+    - cnous_statut_boursier
+    - cnous_echelon_bourse
+    - cnous_email
+    - cnous_periode_versement
+    - cnous_statut_bourse
+    - cnous_ville_etudes
+    - cnous_identite
+  api_particulier/v3_and_more/cnous/etudiant_boursier_with_civility:
+    - cnous_statut_boursier
+    - cnous_echelon_bourse
+    - cnous_email
+    - cnous_periode_versement
+    - cnous_statut_bourse
+    - cnous_ville_etudes
+    - cnous_identite
+  api_particulier/v3_and_more/cnous/etudiant_boursier_with_france_connect:
+    - cnous_statut_boursier
+    - cnous_echelon_bourse
+    - cnous_email
+    - cnous_periode_versement
+    - cnous_statut_bourse
+    - cnous_ville_etudes
+    - cnous_identite
 test:
   api_whatever/whatever_resource: &default_test_scopes
     - allowed_scope
