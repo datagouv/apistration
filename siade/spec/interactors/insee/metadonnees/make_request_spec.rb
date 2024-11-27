@@ -1,6 +1,6 @@
 RSpec.describe INSEE::Metadonnees::MakeRequest, type: :make_request do
   describe '.call' do
-    subject { described_class.call(params:) }
+    subject { described_class.call(params:, token:) }
 
     let(:params) do
       {
@@ -8,6 +8,8 @@ RSpec.describe INSEE::Metadonnees::MakeRequest, type: :make_request do
         annee_date_naissance:
       }
     end
+
+    let(:token) { INSEE::Authenticate.call.token }
 
     let(:annee_date_naissance) { '2000' }
 

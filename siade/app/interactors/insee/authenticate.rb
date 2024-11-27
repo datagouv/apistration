@@ -6,26 +6,12 @@ class INSEE::Authenticate < GetOAuth2Token
   end
 
   def client_url
-    Siade.credentials[:insee_oauth_url]
+    "#{Siade.credentials[:insee_v3_domain]}/token"
   end
 
   private
 
-  def form_data
-    {
-      grant_type: 'client_credentials'
-    }
-  end
-
   def client_credentials_header
-    Base64.strict_encode64("#{client_id}:#{client_secret}")
-  end
-
-  def client_id
-    Siade.credentials[:insee_sirene_client_id]
-  end
-
-  def client_secret
-    Siade.credentials[:insee_sirene_client_secret]
+    Siade.credentials[:insee_credentials]
   end
 end

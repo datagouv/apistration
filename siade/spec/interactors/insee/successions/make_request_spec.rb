@@ -9,6 +9,7 @@ RSpec.describe INSEE::Successions::MakeRequest, type: :make_request do
     end
 
     let(:query_params) { "q=siretEtablissementSuccesseur:#{siret} OR siretEtablissementPredecesseur:#{siret}" }
+    let(:query_url) { "#{Siade.credentials[:insee_v3_domain]}/entreprises/sirene/V3.11/siret/liensSuccession?#{query_params}" }
 
     before { stub_insee_successions_make_request(siret:) }
 

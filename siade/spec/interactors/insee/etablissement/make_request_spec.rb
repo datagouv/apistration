@@ -58,7 +58,7 @@ RSpec.describe INSEE::Etablissement::MakeRequest, type: :make_request do
     it 'performs a get request on the new location' do
       make_request
 
-      expect(WebMock).to have_requested(:get, /#{Siade.credentials[:insee_sirene_url]}.*#{redirected_siret}/)
+      expect(WebMock).to have_requested(:get, /#{Siade.credentials[:insee_v3_domain]}.*#{redirected_siret}/)
     end
 
     its(:response) { is_expected.to be_a(Net::HTTPOK) }
