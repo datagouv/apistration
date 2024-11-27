@@ -14,15 +14,7 @@ class BanqueDeFrance::BilansEntreprise::MakeRequest < MakeRequest::Get
   end
 
   def http_options
-    http_wildcard_ssl_options.merge(
-      cert_store: custom_cert_store
-    )
-  end
-
-  def custom_cert_store
-    cert_store = OpenSSL::X509::Store.new
-    cert_store.add_file(Rails.root.join('config/certificates/certification-authority-banque-de-france.pem').to_s)
-    cert_store
+    http_wildcard_ssl_options
   end
 
   private
