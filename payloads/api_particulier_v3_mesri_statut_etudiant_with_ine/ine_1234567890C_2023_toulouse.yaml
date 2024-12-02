@@ -1,0 +1,29 @@
+---
+description: 'Étudiant 1234567890C inscrit (appel par INE), année scolaire 2023 à Toulouse'
+params:
+  ine: '1234567890C'
+status: 200
+payload: |-
+  {
+    "identite": {
+      "nom_naissance": "Charbonneau",
+      "prenom": "Axelle",
+      "date_naissance": "2001-01-02"
+    },
+    "admissions": [
+      {
+        "date_debut": "2023-09-01",
+        "date_fin": "2024-08-31",
+        "est_inscrit": true,
+        "regime_formation": {
+          "libelle": "formation initiale",
+          "code": "RF1"
+        },
+        "code_cog_insee_commune": "31555",
+        "etablissement_etudes": {
+          "uai": "0313124C",
+          "nom": "Université Toulouse Capitole"
+        }
+      }
+    ]
+  }

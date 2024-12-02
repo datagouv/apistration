@@ -1,0 +1,19 @@
+---
+description: "Étudiant non trouvé"
+params:
+  ine: '1234567404G'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "25003",
+        "title": "Entité non trouvée",
+        "detail": "Aucun étudiant n'a pu être trouvé avec les critères de recherche fournis.",
+        "source": null,
+        "meta": {
+          "provider": "MESRI"
+        }
+      }
+    ]
+  }

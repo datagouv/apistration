@@ -1,0 +1,29 @@
+---
+description: 'Étudiant inscrit (appel par INE)'
+params:
+  ine: '1234567890A'
+status: 200
+payload: |-
+  {
+    "identite": {
+      "nom_naissance": "Dupont",
+      "prenom": "Jean",
+      "date_naissance": "2002-02-01"
+    },
+    "admissions": [
+      {
+        "date_debut": "2020-09-01",
+        "date_fin": "2021-06-31",
+        "est_inscrit": true,
+        "regime_formation": {
+          "libelle": "formation initiale",
+          "code": "RF1"
+        },
+        "code_cog_insee_commune": "33199",
+        "etablissement_etudes": {
+          "uai": "0332870R",
+          "nom": "LPO LYCEE DES METIERS DE LA MER"
+        }
+      }
+    ]
+  }

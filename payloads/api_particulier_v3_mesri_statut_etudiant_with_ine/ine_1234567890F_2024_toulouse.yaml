@@ -1,0 +1,29 @@
+---
+description: 'Étudiant 1234567890F inscrit (appel par INE), année scolaire 2024 à Toulouse'
+params:
+  ine: '1234567890F'
+status: 200
+payload: |-
+  {
+    "identite": {
+      "nom_naissance": "Le Tonnelier",
+      "prenom": "Pierre-Marie",
+      "date_naissance": "2001-01-03"
+    },
+    "admissions": [
+      {
+        "date_debut": "2024-09-01",
+        "date_fin": "2025-08-31",
+        "est_inscrit": true,
+        "regime_formation": {
+          "libelle": "formation initiale",
+          "code": "RF1"
+        },
+        "code_cog_insee_commune": "31555",
+        "etablissement_etudes": {
+          "uai": "0313124C",
+          "nom": "Université Toulouse Capitole"
+        }
+      }
+    ]
+  }
