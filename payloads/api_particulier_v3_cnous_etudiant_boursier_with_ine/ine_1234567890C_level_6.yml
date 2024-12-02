@@ -1,0 +1,31 @@
+---
+description: 'Boursier échelon 6, année scolaire en cours (appel par INE)'
+params:
+  ine: '1234567890C'
+status: 200
+payload: |-
+  {
+    "est_boursier": true,
+    "periode_versement_bourse": {
+      "date_rentree": "2023-09-01",
+      "duree": 12
+    },
+    "etablissement_etudes": {
+      "nom_commune": "Toulouse",
+      "nom_etablissement": "Jean Jaurès"
+    },
+    "echelon_bourse": {
+      "echelon": "6",
+      "echelon_bourse_regionale_provisoire": false
+    },
+    "email": "axelle.charbonneau@fake.fr",
+    "identite": {
+      "nom": "Charbonneau",
+      "prenoms": [
+        "AXELLE"
+      ],
+      "date_naissance": "2001-01-01",
+      "nom_commune_naissance": "Paris",
+      "sexe": "F"
+    }
+  }

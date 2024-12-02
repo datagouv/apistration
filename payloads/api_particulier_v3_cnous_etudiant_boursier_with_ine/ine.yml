@@ -1,0 +1,31 @@
+---
+description: 'Boursier échelon 6 (appel par INE)'
+params:
+  ine: '1234567890A'
+status: 200
+payload: |-
+  {
+    "est_boursier": true,
+    "periode_versement_bourse": {
+      "date_rentree": "2018-09-01",
+      "duree": 12
+    },
+    "etablissement_etudes": {
+      "nom_commune": "Marseille",
+      "nom_etablissement": "Pagnol"
+    },
+    "echelon_bourse": {
+      "echelon": "6",
+      "echelon_bourse_regionale_provisoire": false
+    },
+    "email": "geraldine@@durand.fr",
+    "identite": {
+      "nom": "Durand",
+      "prenoms": [
+        "GERALDINE"
+      ],
+      "date_naissance": "1990-01-01",
+      "nom_commune_naissance": "Paris",
+      "sexe": "F"
+    }
+  }
