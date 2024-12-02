@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/rails-api/active_model_serializers.git
-  revision: b21e78becdebfc804fd01bd0af742bcdf2f74608
+  revision: 8e1b2239f3d66b5a9a11726aa2e1eb7d1b1eaa2b
   branch: 0-10-stable
   specs:
-    active_model_serializers (0.10.14)
+    active_model_serializers (0.10.15)
       actionpack (>= 4.1)
       activemodel (>= 4.1)
       case_transform (>= 0.2)
@@ -213,10 +213,10 @@ GEM
     mime-types-data (3.2024.0604)
     mini_histogram (0.3.1)
     mini_portile2 (2.8.8)
-    minitest (5.25.1)
+    minitest (5.25.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
-    mutex_m (0.2.0)
+    mutex_m (0.3.0)
     nenv (0.3.0)
     net-http (0.4.1)
       uri
@@ -455,7 +455,7 @@ PLATFORMS
 
 DEPENDENCIES
   actionpack (~> 7.0)
-  active_model_serializers (~> 0.10.14)!
+  active_model_serializers (~> 0.10.15)!
   activemodel (~> 7.0)
   activerecord (~> 7.0)
   activesupport (~> 7.0)
