@@ -1,0 +1,76 @@
+---
+description: |-
+  ## Couple avec deux enfants - allocataire masculin - QF MSA de 200 en septembre 2024
+
+  Ce cas permet de tester : 
+  - [Param. appel] Lieu de naissance en France
+  - [Param. appel] Sexe masculin
+  - [Param. appel] 1 prénom
+  - [Réponse] Tableau d'informations car couple
+  - [Réponse] Tableau d'informations car deux enfants
+  - [Réponse] Régime MSA
+  - [Réponse] Quotient familial de 200
+  - [Réponse] Quotient familial ancien de septembre 2024
+params:
+  codeCogInseeCommuneNaissance: '51108'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+  nomNaissance: 'Martin'
+  prenoms:
+    - 'Pierre'
+  anneeDateNaissance: 1987
+  moisDateNaissance: 6
+  jourDateNaissance: 27
+status: 200
+payload: |-
+  {
+    "allocataires": [
+      {
+        "nom_naissance": "MARTIN",
+        "nom_usage": null,
+        "prenoms": "PIERRE ALEXIS FRANÇOIS",
+        "date_naissance": "1978-06-27",
+        "sexe": "M"
+      },
+      {
+        "nom_naissance": "LEROUGE",
+        "nom_usage": "MARTIN",
+        "prenoms": "JUSTINE ÉLISE",
+        "date_naissance": "1979-05-19",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nom_naissance": "MARTIN",
+        "nom_usage": null,
+        "prenoms": "ALEXIS VINCENT",
+        "date_naissance": "2006-04-20",
+        "sexe": "M"
+      },
+      {
+        "nom_naissance": "MARTIN",
+        "nom_usage": null,
+        "prenoms": "FLEUR EDITH",
+        "date_naissance": "2010-04-20",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "destinataire": "Monsieur MARTIN Pierre",
+      "complement_information": "Bâtiment B",
+      "complement_information_geographique": "Résidence Alouette",
+      "numero_lebelle_voie": "12 AVENUE DU GÉNÉRAL DE GAULLE",
+      "lieu_dit": null,
+      "code_postal_ville": "51000 CHÂLONS-EN-CHAMPAGNE",
+      "pays": "FRANCE"
+    },
+    "quotient_familial": {
+      "fournisseur": "MSA",
+      "valeur": 200,
+      "annee": 2024,
+      "mois": 9,
+      "annee_calcul": 2024,
+      "mois_calcul": 12
+    }
+  }

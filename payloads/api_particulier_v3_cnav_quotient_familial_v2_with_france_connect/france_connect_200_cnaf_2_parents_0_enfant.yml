@@ -1,0 +1,54 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'Anne-Laure'
+  nomNaissance: "HUCHE"
+  anneeDateNaissance: 1945
+  moisDateNaissance: 9
+  jourDateNaissance: 30
+  sexeEtatCivil: "M"
+  codeCogInseeCommuneNaissance: "31555"
+  codeCogInseePaysNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "allocataires": [
+      {
+        "nom_naissance": "HUCHE",
+        "nom_usage": "MERCIER",
+        "prenoms": "ANNE-LAURE",
+        "date_naissance": "1945-09-30",
+        "sexe": "F"
+      },
+      {
+        "nom_naissance": "MERCIER",
+        "nom_usage": "MERCIER",
+        "prenoms": "JEAN LOUIS",
+        "date_naissance": "1945-10-12",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [],
+    "adresse": {
+      "destinataire": "Monsieur MERCIER JEAN",
+      "complement_information": null,
+      "complement_information_geographique": null,
+      "numero_lebelle_voie": "1 RUE MONTORGUEIL",
+      "lieu_dit": null,
+      "code_postal_ville": "75002 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotient_familial": {
+      "fournisseur": "CNAF",
+      "valeur": 2550,
+      "annee": 2024,
+      "mois": 2,
+      "annee_calcul": 2024,
+      "mois_calcul": 12
+    }
+  }

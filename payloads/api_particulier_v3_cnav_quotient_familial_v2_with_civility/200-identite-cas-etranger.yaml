@@ -1,0 +1,49 @@
+---
+description: |-
+  ## IDENTITÉ CAS ETRANGER
+
+  Ce cas est le cas personne étrangère de l'ensemble des cas de test d'identité/limite.
+  Il a pour but de décrire une personne fictive avec l'ensemble de ses paramètres
+  et la réponse lorsque celui ci est trouvé.
+
+params:
+  codeCogInseePaysNaissance: '99350'
+  sexeEtatCivil: 'M'
+  nomNaissance: 'FAKIR'
+  prenoms:
+    - 'EYMEN'
+    - 'MOHAMED'
+  anneeDateNaissance: 1992
+  moisDateNaissance: 11
+  jourDateNaissance: 14
+status: 200
+payload: |-
+  {
+    "allocataires": [
+      {
+        "nom_naissance": "FAKIR",
+        "nom_usage": null,
+        "prenoms": "EYMEN MOHAMED",
+        "date_naissance": "1992-11-14",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [],
+    "adresse": {
+      "destinataire": "Monsieur FAKOR EYMEN MOHAMED",
+      "complement_information": null,
+      "complement_information_geographique": null,
+      "numero_lebelle_voie": "19 RUE ARISTIDE BRIAND",
+      "lieu_dit": null,
+      "code_postal_ville": "92330 SCEAUX",
+      "pays": "FRANCE"
+    },
+    "quotient_familial": {
+      "fournisseur": "CNAF",
+      "valeur": 4270,
+      "annee": 2023,
+      "mois": 6,
+      "annee_calcul": 2024,
+      "mois_calcul": 12
+    }
+  }
