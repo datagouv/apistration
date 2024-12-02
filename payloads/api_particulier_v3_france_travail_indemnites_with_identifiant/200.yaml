@@ -1,0 +1,25 @@
+---
+description: 'Avec allocations'
+params:
+  identifiant: 'default'
+status: 200
+payload: |-
+  {
+    "identifiant": "default",
+    "paiements": [
+      {
+        "date_versement": "2021-01-01",
+        "montant_total": 123.4,
+        "montant_allocations": 123.4,
+        "montant_aides": 0.0,
+        "montant_autres": 0.0
+      },
+      {
+        "date_versement": "2021-02-01",
+        "montant_total": 345.1,
+        "montant_allocations": 345.1,
+        "montant_aides": 0.0,
+        "montant_autres": 0.0
+      }
+    ]
+  }
