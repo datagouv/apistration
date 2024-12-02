@@ -1,0 +1,31 @@
+---
+description: 'Élève boursier'
+params:
+  nomNaissance: "Martin"
+  prenoms: 
+    - 'Justine'
+  sexeEtatCivil: "F"
+  anneeDateNaissance: 2000
+  moisDateNaissance: 1
+  jourDateNaissance: 20
+  codeEtablissement: "0890003V"
+  anneeScolaire: "2022"
+status: 200
+payload: |-
+  {
+    "identite": {
+      "nom": "Martin",
+      "prenom": "Justine",
+      "sexe": "F",
+      "date_naissance": "2000-01-20"
+    },
+    "annee_scolaire": "2022-2023",
+    "est_scolarise": true,
+    "statut_eleve": {
+      "code": "ST",
+      "libelle": "Scolaire"
+    },
+    "est_boursier": true,
+    "echelon_bourse": 1,
+    "code_etablissement": "0890003V",
+  }

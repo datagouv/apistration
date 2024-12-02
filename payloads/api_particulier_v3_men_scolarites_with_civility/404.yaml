@@ -1,0 +1,27 @@
+---
+description: 'Élève non trouvé'
+params:
+  nomNaissance: "Martin"
+  prenoms: 
+    - "Jerome"
+  sexeEtatCivil: "F"
+  anneeDateNaissance: 2000
+  moisDateNaissance: 1
+  jourDateNaissance: 20
+  codeEtablissement: "0890003V"
+  anneeScolaire: "2022"
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "30003",
+        "title": "Entité non trouvée",
+        "detail": "Aucun élève n'a pu être trouvé avec les critères de recherche fournis.",
+        "source": null,
+        "meta": {
+          "provider": "MEN"
+        }
+      }
+    ]
+  }
