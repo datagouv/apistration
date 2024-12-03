@@ -99,7 +99,8 @@ class CacheResourceRetriever < ApplicationInteractor
 
   def cache_errors?
     retrieved_context.errors.any? &&
-      retrieved_context.cacheable
+      retrieved_context.cacheable &&
+      !excluded_errors?
   end
 
   def write_into_cache(val)
@@ -108,5 +109,15 @@ class CacheResourceRetriever < ApplicationInteractor
 
   def retrieved_context
     context.retriever
+  end
+
+  def excluded_errors?
+    [
+      ProviderUnavailable,
+      NetworkError,
+      ForbiddenError,
+      MaintenanceError,
+      NotImplementedError
+    ].any? { |error| retrieved_context.errors.any? { |e| e.is_a?(error) } }
   end
 end

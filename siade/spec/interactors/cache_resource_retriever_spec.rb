@@ -198,6 +198,16 @@ RSpec.describe CacheResourceRetriever do
           expect(subject.cached_data).not_to be_present
         end
 
+        context 'when it is an excluded error (network error for example)' do
+          let(:errors) { [NetworkError.new] }
+
+          it 'does not write errors in the cache' do
+            subject
+
+            expect(EncryptedCache.read(cache_key)).to be_nil
+          end
+        end
+
         context 'when no cache key nor expiration time are provided' do
           let(:default_key) { cache_key }
           let(:default_expiration_time) { 1.hour }
