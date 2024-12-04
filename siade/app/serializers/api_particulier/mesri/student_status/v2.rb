@@ -33,7 +33,7 @@ class APIParticulier::MESRI::StudentStatus::V2 < APIParticulier::V2BaseSerialize
 
       if final_inscription.present? && scope?(:mesri_etablissements)
         final_inscription.merge!(
-          etablissement: initial_inscription[:etablissement],
+          etablissement: initial_inscription[:etablissement_etudes],
           codeCommune: initial_inscription[:codeCommune]
         )
       end

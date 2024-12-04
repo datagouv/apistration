@@ -45,6 +45,7 @@ RSpec.describe APIParticulier::MESRI::StudentStatus::V2, type: :serializer do
 
       it 'has formation initiale regime' do
         expect(serialized_resource[:inscriptions][0][:regime]).to eq('formation initiale')
+        expect(serialized_resource[:inscriptions][0][:etablissement][:uai]).to eq('0751967F')
       end
     end
   end
