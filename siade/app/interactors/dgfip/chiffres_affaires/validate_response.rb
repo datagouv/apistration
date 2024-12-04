@@ -1,6 +1,6 @@
 class DGFIP::ChiffresAffaires::ValidateResponse < ValidateResponse
   def call
-    resource_not_found! if http_not_found?
+    resource_not_found! if not_found?
     unknown_provider_response! unless http_ok?
 
     if null_body? || empty_liste_ca?
@@ -11,6 +11,11 @@ class DGFIP::ChiffresAffaires::ValidateResponse < ValidateResponse
   end
 
   private
+
+  def not_found?
+    http_not_found? ||
+      http_code == 204
+  end
 
   def null_body?
     ['', 'null'].include?(body)

@@ -109,6 +109,14 @@ RSpec.describe DGFIP::ChiffresAffaires::ValidateResponse, type: :validate_respon
     its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
   end
 
+  context 'with a 204 error' do
+    let(:response) { instance_double(Net::HTTPNoContent, code: '204') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+  end
+
   context 'with an unknown error' do
     let(:response) { instance_double(Net::HTTPBadRequest, code: '400') }
 
