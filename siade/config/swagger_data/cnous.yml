@@ -12,7 +12,7 @@ cnous:
           \n\n
           - Dans le cas des étudiants avec bourse nationale, les informations sont vérifiées par un agent via la pièce d'identité fournie (sauf le lieu de naissance) ;
           \n\n
-          - Dans le cas des étudiants avec bourse régionale, les informations ne sont pas revérfiées avant d'être remontées au Cnous, mais si l'étudiant est déjà connu du Cnous, c'est l'identité vérifiée du Cnous qui sera retenue."
+          - Dans le cas des étudiants avec bourse régionale, les informations ne sont pas revérifiées avant d'être remontées au Cnous, mais si l'étudiant est déjà connu du Cnous, c'est l'identité vérifiée du Cnous qui sera retenue."
         properties:
           nom:
             title: Nom de naissance
