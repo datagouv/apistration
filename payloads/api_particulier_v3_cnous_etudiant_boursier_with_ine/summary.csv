@@ -1,0 +1,117 @@
+Titre,Description,Paramètres,Status,Réponse
+,Boursier échelon 6 (appel par INE),"{""ine"":""1234567890A""}",200,"{
+  ""data"": {
+    ""est_boursier"": true,
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2018-09-01"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Marseille"",
+      ""nom_etablissement"": ""Pagnol""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""6"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""geraldine@@durand.fr"",
+    ""identite"": {
+      ""nom"": ""Durand"",
+      ""prenoms"": [
+        ""GERALDINE""
+      ],
+      ""date_naissance"": ""1990-01-01"",
+      ""nom_commune_naissance"": ""Paris"",
+      ""sexe"": ""F""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"Boursier échelon 6, année scolaire antérieure (appel par INE)","{""ine"":""1234567890B""}",200,"{
+  ""data"": {
+    ""est_boursier"": true,
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2022-09-01"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Toulouse"",
+      ""nom_etablissement"": ""Jean Jaurès""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""6"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""thomas.longchambon@fake.fr"",
+    ""identite"": {
+      ""nom"": ""Longchambon"",
+      ""prenoms"": [
+        ""THOMAS""
+      ],
+      ""date_naissance"": ""2001-01-01"",
+      ""nom_commune_naissance"": ""Paris"",
+      ""sexe"": ""M""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"Boursier échelon 6, année scolaire en cours (appel par INE)","{""ine"":""1234567890C""}",200,"{
+  ""data"": {
+    ""est_boursier"": true,
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2023-09-01"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Toulouse"",
+      ""nom_etablissement"": ""Jean Jaurès""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""6"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""axelle.charbonneau@fake.fr"",
+    ""identite"": {
+      ""nom"": ""Charbonneau"",
+      ""prenoms"": [
+        ""AXELLE""
+      ],
+      ""date_naissance"": ""2001-01-01"",
+      ""nom_commune_naissance"": ""Paris"",
+      ""sexe"": ""F""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"Boursier échelon 7, année scolaire en cours (appel par INE)","{""ine"":""1234567890D""}",200,"{
+  ""data"": {
+    ""est_boursier"": true,
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2023-09-01"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Toulouse"",
+      ""nom_etablissement"": ""Jean Jaurès""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""7"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""marie.montgomery@fake.fr"",
+    ""identite"": {
+      ""nom"": ""Montgomery"",
+      ""prenoms"": [
+        ""MARIE""
+      ],
+      ""date_naissance"": ""2001-01-03"",
+      ""nom_commune_naissance"": ""Paris"",
+      ""sexe"": ""F""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"

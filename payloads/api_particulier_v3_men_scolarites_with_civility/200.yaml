@@ -28,7 +28,7 @@ payload: |-
       },
       "est_boursier": true,
       "echelon_bourse": 1,
-      "code_etablissement": "0890003V",
+      "code_etablissement": "0890003V"
     },
     "links": {},
     "meta": {}

@@ -33,10 +33,10 @@ payload: |-
       "inscription": {
         "date_debut": "2020-01-01",
         "date_fin": null,
-        "codeCategorieInscription": 1,
+        "code_certification_cnav": "VC",
         "categorie": {
-          "code": "VC",
-          "libelle": "PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS",
+          "code": 1,
+          "libelle": "PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS"
         }
       }
     },

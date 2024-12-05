@@ -6,7 +6,7 @@ params:
   anneeDateNaissance: 2005
   moisDateNaissance: 8
   jourDateNaissance: 1
-  sexeEtatCivil: "<"
+  sexeEtatCivil: "M"
   codeCogInseeCommuneNaissance: "78646"
 status: 200
 payload: |-

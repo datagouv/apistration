@@ -9,7 +9,7 @@ payload: |-
       "identite": {
         "nom_naissance": "Montgomery",
         "prenom": "Marie",
-        "date_naissance": 2001-01-03""
+        "date_naissance": "2001-01-03"
       },
       "admissions": [
         {

@@ -12,11 +12,6 @@ status: 200
 payload: |-
   {
     "data": {
-      "identite": {
-        "nom_naissance": "Mesri",
-        "prenom": "Jean",
-        "date_naissance": "2002-01-01"
-      },
       "admissions": [
         {
           "date_debut": "2020-07-01",

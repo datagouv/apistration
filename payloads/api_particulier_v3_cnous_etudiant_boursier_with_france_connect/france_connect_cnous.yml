@@ -33,17 +33,7 @@ payload: |-
         "echelon": "5",
         "echelon_bourse_regionale_provisoire": false
       },
-      "email": "wossewodda-3728@yopmail.com ",
-      "identite": {
-        "nom": "DUBOIS",
-        "prenoms": [
-          "ANGELA",
-          "CLAIRE"
-        ],
-        "date_naissance": "1962-08-24",
-        "nom_commune_naissance": "Paris",
-        "sexe": "F"
-      }
+      "email": "wossewodda-3728@yopmail.com "
     },
     "links": {},
     "meta": {}

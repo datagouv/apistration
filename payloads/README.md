@@ -3,7 +3,7 @@
 Les chemins sans lien ne possèdent pas de payload: l'environnement de test
 génère une payload par défaut basée sur la spécification OpenAPI associée.
 
-## API Particulier
+## API Particulier V2
 
 * [Statut allocation adulte handicapé (AAH)](api_particulier_v2_cnav_allocation_adulte_handicape) (`/api/v2/allocation-adulte-handicape`)
 * [Statut allocation de soutien familial (ASF)](api_particulier_v2_cnav_allocation_soutien_familial) (`/api/v2/allocation-soutien-familial`)
@@ -17,6 +17,30 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [Statut demandeur d'emploi](api_particulier_v2_pole_emploi_statut) (`/api/v2/situations-pole-emploi`)
 * [Statut étudiant](api_particulier_v2_mesri_student_status) (`/api/v2/etudiants`)
 * [Statut étudiant boursier](api_particulier_v2_cnous_student_scholarship) (`/api/v2/etudiants-boursiers`)
+
+## API Particulier V3
+
+* [Statut allocation adulte handicapé (AAH)](api_particulier_v3_cnav_allocation_adulte_handicape_with_civility) (`/v3/dss/allocation_adulte_handicape/identite`)
+* [Statut allocation adulte handicapé (AAH)](api_particulier_v3_cnav_allocation_adulte_handicape_with_france_connect) (`/v3/dss/allocation_adulte_handicape/france_connect`)
+* [Statut allocation de soutien familial (ASF)](api_particulier_v3_cnav_allocation_soutien_familial_with_civility) (`/v3/dss/allocation_soutien_familial/identite`)
+* [Statut allocation de soutien familial (ASF)](api_particulier_v3_cnav_allocation_soutien_familial_with_france_connect) (`/v3/dss/allocation_soutien_familial/france_connect`)
+* [Statut complémentaire santé solidaire (C2S)](api_particulier_v3_cnav_complementaire_sante_solidaire_with_civility) (`/v3/dss/complementaire_sante_solidaire/identite`)
+* [Statut complémentaire santé solidaire (C2S)](api_particulier_v3_cnav_complementaire_sante_solidaire_with_france_connect) (`/v3/dss/complementaire_sante_solidaire/france_connect`)
+* [Statut prime d'activité](api_particulier_v3_cnav_prime_activite_with_civility) (`/v3/dss/prime_activite/identite`)
+* [Statut prime d'activité](api_particulier_v3_cnav_prime_activite_with_france_connect) (`/v3/dss/prime_activite/france_connect`)
+* [Quotient familial CAF & MSA](api_particulier_v3_cnav_quotient_familial_with_civility) (`/v3/dss/quotient_familial/identite`)
+* [Quotient familial CAF & MSA](api_particulier_v3_cnav_quotient_familial_with_france_connect) (`/v3/dss/quotient_familial/france_connect`)
+* [Statut revenu de solidarité active (RSA)](api_particulier_v3_cnav_revenu_solidarite_active_with_civility) (`/v3/dss/revenu_solidarite_active/identite`)
+* [Statut revenu de solidarité active (RSA)](api_particulier_v3_cnav_revenu_solidarite_active_with_france_connect) (`/v3/dss/revenu_solidarite_active/france_connect`)
+* [Status étudiant boursier](api_particulier_v3_cnous_etudiant_boursier_with_civility) (`/v3/cnous/etudiant_boursier/identite`)
+* [Status étudiant boursier](api_particulier_v3_cnous_etudiant_boursier_with_france_connect) (`/v3/cnous/etudiant_boursier/france_connect`)
+* [Status étudiant boursier](api_particulier_v3_cnous_etudiant_boursier_with_ine) (`/v3/cnous/etudiant_boursier/ine`)
+* [Paiements versés par France Travail](api_particulier_v3_france_travail_indemnites_with_identifiant) (`/v3/france_travail/indemnites/identifiant`)
+* [Statut demandeur d'emploi](api_particulier_v3_france_travail_statut_with_identifiant) (`/v3/france_travail/statut/identifiant`)
+* [Statut élève scolarisé et boursier](api_particulier_v3_men_scolarites_with_civility) (`/v3/men/scolarites/identite`)
+* [Statut étudiant](api_particulier_v3_mesri_statut_etudiant_with_civility) (`/v3/mesri/statut_etudiant/identite`)
+* [Statut étudiant](api_particulier_v3_mesri_statut_etudiant_with_france_connect) (`/v3/mesri/statut_etudiant/france_connect`)
+* [Statut étudiant](api_particulier_v3_mesri_statut_etudiant_with_ine) (`/v3/mesri/statut_etudiant/ine`)
 
 ## API Entreprise v3+
 

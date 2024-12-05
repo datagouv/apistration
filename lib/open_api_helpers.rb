@@ -27,8 +27,10 @@ module OpenApiHelpers
 
   def load_schema_from_remote(operation_id)
     uri = case extract_open_api_name(operation_id)
-          when 'api_particulier'
+          when 'api_particulier_v2'
             'https://staging.particulier.api.gouv.fr/api/open-api.yml'
+          when 'api_particulier_v3'
+            'https://staging.particulier.api.gouv.fr/api/open-api-v3.yml'
           else
             'https://staging.entreprise.api.gouv.fr/open-api.yml'
           end
@@ -39,8 +41,10 @@ module OpenApiHelpers
 
   def extract_open_api_name(operation_id)
     base_name = File.basename(operation_id)
-    if base_name.start_with?('api_particulier')
-      'api_particulier'
+    if base_name.start_with?('api_particulier_v2')
+      'api_particulier_v2'
+    elsif base_name.start_with?('api_particulier_v3')
+      'api_particulier_v3'
     else
       'api_entreprise'
     end

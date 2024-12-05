@@ -1,0 +1,644 @@
+Titre,Description,Paramètres,Status,Réponse
+,"## Couple avec deux enfants - allocataire féminin - QF MSA de 150 en mai 2023
+
+Ce cas permet de tester :
+- [Param. appel] Mois et année du QF recherché 
+- [Param. appel] Lieu de naissance en France
+- [Param. appel] Sexe feminin
+- [Param. appel] Deux prénoms
+- [Réponse] Tableau d'informations car couple
+- [Réponse] Tableau d'informations car deux enfants
+- [Réponse] Régime MSA
+- [Réponse] Quotient familial de 150
+- [Réponse] Quotient familial ancien de mai 2023","{""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""ROUX"",""prenoms"":[""JEANNE"",""STEPHANIE""],""anneeDateNaissance"":1987,""moisDateNaissance"":6,""annee"":2023,""mois"":5}",200,"{
+  ""data"": {
+    ""quotient_familial"": {
+      ""fournisseur"": ""MSA"",
+      ""valeur"": 150,
+      ""annee"": 2023,
+      ""mois"": 5,
+      ""annee_calcul"": 2024,
+      ""mois_calcul"": 12
+    },
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""ROUX"",
+        ""nom_usage"": null,
+        ""prenoms"": ""JEANNE STEPHANIE"",
+        ""date_naissance"": ""1987-06-27"",
+        ""sexe"": ""F""
+      },
+      {
+        ""nom_naissance"": ""ROUX"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LOIC NATHAN"",
+        ""date_naissance"": ""1979-05-19"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""ROUX"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ALEXIS VINCENT"",
+        ""date_naissance"": ""2006-04-20"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""ROUX"",
+        ""nom_usage"": null,
+        ""prenoms"": ""FLEUR EDITH"",
+        ""date_naissance"": ""2004-04-20"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Madame ROUX JEANNE"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""1 RUE MONTORGUEIL"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""75002 PARIS"",
+      ""pays"": ""FRANCE""
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Couple avec deux enfants - allocataire masculin - QF MSA de 200 en septembre 2024
+
+Ce cas permet de tester : 
+- [Param. appel] Lieu de naissance en France
+- [Param. appel] Sexe masculin
+- [Param. appel] 1 prénom
+- [Réponse] Tableau d'informations car couple
+- [Réponse] Tableau d'informations car deux enfants
+- [Réponse] Régime MSA
+- [Réponse] Quotient familial de 200
+- [Réponse] Quotient familial ancien de septembre 2024","{""codeCogInseeCommuneNaissance"":""51108"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M"",""nomNaissance"":""Martin"",""prenoms"":[""Pierre""],""anneeDateNaissance"":1987,""moisDateNaissance"":6,""jourDateNaissance"":27}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""MARTIN"",
+        ""nom_usage"": null,
+        ""prenoms"": ""PIERRE ALEXIS FRANÇOIS"",
+        ""date_naissance"": ""1978-06-27"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""LEROUGE"",
+        ""nom_usage"": ""MARTIN"",
+        ""prenoms"": ""JUSTINE ÉLISE"",
+        ""date_naissance"": ""1979-05-19"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""MARTIN"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ALEXIS VINCENT"",
+        ""date_naissance"": ""2006-04-20"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""MARTIN"",
+        ""nom_usage"": null,
+        ""prenoms"": ""FLEUR EDITH"",
+        ""date_naissance"": ""2010-04-20"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Monsieur MARTIN Pierre"",
+      ""complement_information"": ""Bâtiment B"",
+      ""complement_information_geographique"": ""Résidence Alouette"",
+      ""numero_libelle_voie"": ""12 AVENUE DU GÉNÉRAL DE GAULLE"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""51000 CHÂLONS-EN-CHAMPAGNE"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""MSA"",
+      ""valeur"": 200,
+      ""annee"": 2024,
+      ""mois"": 9,
+      ""annee_calcul"": 2024,
+      ""mois_calcul"": 12
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## célibataire né aux Etats Unis avec deux enfants - allocataire féminin - QF CNAF de 300 en aout 2024
+
+Ce cas permet de tester : 
+- [Param. appel] Lieu de naissance en France
+- [Param. appel] Sexe féminin
+- [Param. appel] 1 prénom
+- [Réponse] Tableau d'informations 1 seul allocataire
+- [Réponse] Tableau d'informations car deux enfants
+- [Réponse] Régime CNAF
+- [Réponse] Quotient familial de 300
+- [Réponse] Quotient familial ancien de aout 2024","{""codeCogInseePaysNaissance"":""99404"",""sexeEtatCivil"":""F"",""nomNaissance"":""SIMPSON"",""prenoms"":[""Marge""],""anneeDateNaissance"":1980,""moisDateNaissance"":11,""jourDateNaissance"":15}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""BROWN"",
+        ""nom_usage"": null,
+        ""prenoms"": ""Marge"",
+        ""date_naissance"": ""1980-11-15"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""BROWN"",
+        ""nom_usage"": null,
+        ""prenoms"": ""Bart"",
+        ""date_naissance"": ""2012-02-28"",
+        ""sexe"": ""M""
+      },
+      {
+        ""nom_naissance"": ""SIMPSON"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LISA"",
+        ""date_naissance"": ""2013-03-01"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Madame SIMPSON Marge"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""1 PLACE DE L'HÔTEL DE VILLE'"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""51000 CHÂLONS-EN-CHAMPAGNE"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 300,
+      ""annee"": 2024,
+      ""mois"": 8,
+      ""annee_calcul"": 2024,
+      ""mois_calcul"": 12
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## IDENTITÉ CAS ETRANGER
+
+Ce cas est le cas personne étrangère de l'ensemble des cas de test d'identité/limite.
+Il a pour but de décrire une personne fictive avec l'ensemble de ses paramètres
+et la réponse lorsque celui ci est trouvé.","{""codeCogInseePaysNaissance"":""99350"",""sexeEtatCivil"":""M"",""nomNaissance"":""FAKIR"",""prenoms"":[""EYMEN"",""MOHAMED""],""anneeDateNaissance"":1992,""moisDateNaissance"":11,""jourDateNaissance"":14}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""FAKIR"",
+        ""nom_usage"": null,
+        ""prenoms"": ""EYMEN MOHAMED"",
+        ""date_naissance"": ""1992-11-14"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [],
+    ""adresse"": {
+      ""destinataire"": ""Monsieur FAKOR EYMEN MOHAMED"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""19 RUE ARISTIDE BRIAND"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""92330 SCEAUX"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 4270,
+      ""annee"": 2023,
+      ""mois"": 6,
+      ""annee_calcul"": 2024,
+      ""mois_calcul"": 12
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas est un cas limite de l'ensemble des cas de test d'identité/limite.
+
+Il comporte des erreurs dans les prenoms qui ne changent pas la phonétique. Ici, il y a suffisament
+de donnée de naissance pour compenser les erreurs et retrouver l'identité.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.","{""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEXI"",""GEROME"",""JEN-PHILIPE""],""anneeDateNaissance"":1982,""moisDateNaissance"":12,""jourDateNaissance"":27}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""LEFEBVRE"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ALEXIS GÉRÔME JEAN-PHILIPPE"",
+        ""date_naissance"": ""1982-12-27"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [],
+    ""adresse"": {
+      ""destinataire"": ""Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""1 RUE MONTORGUEIL"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""75002 PARIS"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 2550,
+      ""annee"": 2023,
+      ""mois"": 6,
+      ""annee_calcul"": 2024,
+      ""mois_calcul"": 12
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas est un cas limite de l'ensemble des cas de test d'identité/limite.
+
+Il comporte des erreurs dans les prenoms qui changent la phonétique. Ici, il y a suffisament
+de donnée de naissance pour compenser les erreurs et retrouver l'identité.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.","{""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEIXS"",""GRÉÔME"",""JEAN-PHILIPPE""],""anneeDateNaissance"":1982,""moisDateNaissance"":12,""jourDateNaissance"":27}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""LEFEBVRE"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ALEXIS GÉRÔME JEAN-PHILIPPE"",
+        ""date_naissance"": ""1982-12-27"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [],
+    ""adresse"": {
+      ""destinataire"": ""Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""1 RUE MONTORGUEIL"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""75002 PARIS"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 2550,
+      ""annee"": 2023,
+      ""mois"": 6,
+      ""annee_calcul"": 2024,
+      ""mois_calcul"": 12
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+Les données de jour et de mois de naissance ont été retiré.
+
+Il y a suffisament de données de nom/prénoms dans les paramètres pour compenser
+l'absence des données de naissance.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.","{""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEXIS"",""GÉRÔME"",""JEAN-PHILIPPE""],""anneeDateNaissance"":1982}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""LEFEBVRE"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ALEXIS GÉRÔME JEAN-PHILIPPE"",
+        ""date_naissance"": ""1982-12-27"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [],
+    ""adresse"": {
+      ""destinataire"": ""Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""1 RUE MONTORGUEIL"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""75002 PARIS"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 2550,
+      ""annee"": 2023,
+      ""mois"": 6,
+      ""annee_calcul"": 2024,
+      ""mois_calcul"": 12
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+Les deuxième et troisième prenoms ont été retiré des données
+
+Il y suffisament de donnée de naissance dans cet ensemble de paramètre pour permettre
+de compenser les données manquantes
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.","{""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEXIS""],""anneeDateNaissance"":1982,""moisDateNaissance"":12,""jourDateNaissance"":27}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""LEFEBVRE"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ALEXIS GÉRÔME JEAN-PHILIPPE"",
+        ""date_naissance"": ""1982-12-27"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [],
+    ""adresse"": {
+      ""destinataire"": ""Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""1 RUE MONTORGUEIL"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""75002 PARIS"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 2550,
+      ""annee"": 2023,
+      ""mois"": 6,
+      ""annee_calcul"": 2024,
+      ""mois_calcul"": 12
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas est le cas nominal de l'ensemble des cas de test d'identité/limite.
+Il a pour but de décrire une personne fictive avec l'ensemble de ses paramètres
+et la réponse lorsque celui ci est trouvé.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.","{""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEXIS"",""GÉRÔME"",""JEAN-PHILIPPE""],""anneeDateNaissance"":1982,""moisDateNaissance"":12,""jourDateNaissance"":27}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""LEFEBVRE"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ALEXIS GÉRÔME JEAN-PHILIPPE"",
+        ""date_naissance"": ""1982-12-27"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [],
+    ""adresse"": {
+      ""destinataire"": ""Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""1 RUE MONTORGUEIL"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""75002 PARIS"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 2550,
+      ""annee"": 2023,
+      ""mois"": 6,
+      ""annee_calcul"": 2024,
+      ""mois_calcul"": 12
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Famille monoparentale avec un enfant - allocataire féminin - QF CAF en cours de 650
+
+Ce cas permet de tester :
+- [Param. appel] Lieu de naissance en France
+- [Param. appel] Sexe feminin
+- [Réponse] Régime CAF
+- [Réponse] Quotient familial de 650","{""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""BERNARD"",""prenoms"":[""ELODIE""],""anneeDateNaissance"":1990,""moisDateNaissance"":3}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""BERNARD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ELODIE JUDITH GERTRUDE"",
+        ""date_naissance"": ""1990-03-18"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""BERNARD"",
+        ""nom_usage"": null,
+        ""prenoms"": ""LEO"",
+        ""date_naissance"": ""1990-04-20"",
+        ""sexe"": ""M""
+      }
+    ],
+    ""adresse"": {
+      ""destinataire"": ""Madame BERNARD ELODIE"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""1 RUE MONTORGUEIL"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""75002 PARIS"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 650,
+      ""annee"": 2023,
+      ""mois"": 6,
+      ""annee_calcul"": 2024,
+      ""mois_calcul"": 12
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## Allocataire seul - masculin - QF CAF de 2550 du mois en cours
+
+Ce cas permet de tester :
+- [Param. appel] lieu de naissance en France
+- [Param. appel] sexe masculin
+- [Réponse] Régime CAF
+- [Réponse] Quotient familial de 2550
+- [Réponse] Quotient familial du mois en cours","{""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEXIS""],""anneeDateNaissance"":1982,""moisDateNaissance"":12}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""LEFEBVRE"",
+        ""nom_usage"": null,
+        ""prenoms"": ""ALEXIS"",
+        ""date_naissance"": ""1982-12-27"",
+        ""sexe"": ""F""
+      }
+    ],
+    ""enfants"": [],
+    ""adresse"": {
+      ""destinataire"": ""Monsieur LEFEBVRE ALEXIS"",
+      ""complement_information"": null,
+      ""complement_information_geographique"": null,
+      ""numero_libelle_voie"": ""1 RUE MONTORGUEIL"",
+      ""lieu_dit"": null,
+      ""code_postal_ville"": ""75002 PARIS"",
+      ""pays"": ""FRANCE""
+    },
+    ""quotient_familial"": {
+      ""fournisseur"": ""CNAF"",
+      ""valeur"": 2550,
+      ""annee"": 2023,
+      ""mois"": 6,
+      ""annee_calcul"": 2024,
+      ""mois_calcul"": 12
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas est un cas limite de l'ensemble des cas de test d'identité/limite.
+
+Il comporte des erreurs dans les prenoms qui changent ne change pas ou peu la phonétique. Ici, il n'y a pas suffisament
+de donnée de naissance pour compenser les erreurs et retrouver l'identité.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.","{""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEXI"",""GEROME"",""JEN-PHILIPE""],""anneeDateNaissance"":1982}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""37003"",
+      ""title"": ""Dossier allocataire absent CNAV"",
+      ""detail"": ""Le dossier allocataire n'a pas été trouvé auprès de la CNAV."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas est un cas limite de l'ensemble des cas de test d'identité/limite.
+
+Il comporte des erreurs dans les prenoms qui changent la phonétique. Ici, il n'y a pas suffisament
+de donnée de naissance pour compenser les erreurs et retrouver l'identité.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.","{""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEIXS"",""GRÉÔME"",""JEAN-PHILIPPE""],""anneeDateNaissance"":1982}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""37003"",
+      ""title"": ""Dossier allocataire absent CNAV"",
+      ""detail"": ""Le dossier allocataire n'a pas été trouvé auprès de la CNAV."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+Les données concernant la date de naissance ont été retirée","{""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEXIS"",""GÉRÔME"",""JEAN-PHILIPPE""]}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""37003"",
+      ""title"": ""Dossier allocataire absent CNAV"",
+      ""detail"": ""Le dossier allocataire n'a pas été trouvé auprès de la CNAV."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+Le nom ainsi que les deuxième et troisième prenoms ont été retiré des données","{""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""DUPONT"",""prenoms"":[""ALEXIS""],""anneeDateNaissance"":1982,""moisDateNaissance"":12,""jourDateNaissance"":27}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""37003"",
+      ""title"": ""Dossier allocataire absent CNAV"",
+      ""detail"": ""Le dossier allocataire n'a pas été trouvé auprès de la CNAV."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"
+,Dossier non trouvé,"{""nomNaissance"":""LEFEBVRE"",""codeCogInseeCommuneNaissance"":""00404"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""37003"",
+      ""title"": ""Dossier allocataire absent CNAV"",
+      ""detail"": ""Le dossier allocataire n'a pas été trouvé auprès de la CNAV."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"
+,## Allocataire non trouvé,"{""nomNaissance"":""DESFOUIN"",""prenoms"":[""René""],""anneeDateNaissance"":2002,""moisDateNaissance"":12,""jourDateNaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",429,"{
+  ""errors"": [
+    {
+      ""code"": ""00429"",
+      ""title"": ""Trop de requêtes"",
+      ""detail"": ""Vous avez effectué trop de requêtes"",
+      ""source"": null,
+      ""meta"": {}
+    }
+  ]
+}"
+,## Allocataire non trouvé,"{""nomNaissance"":""DELANOUE"",""prenoms"":[""Jean-Marie""],""anneeDateNaissance"":2002,""moisDateNaissance"":12,""jourDateNaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",502,"{
+  ""errors"": [
+    {
+      ""code"": ""37999"",
+      ""title"": ""Erreur inconnue du fournisseur de données"",
+      ""detail"": ""La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"
+,## Allocataire non trouvé,"{""nomNaissance"":""SITUDI"",""prenoms"":[""Clément""],""anneeDateNaissance"":2002,""moisDateNaissance"":12,""jourDateNaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",504,"{
+  ""errors"": [
+    {
+      ""code"": ""37002"",
+      ""title"": ""Intermédiaire hors-délai"",
+      ""detail"": ""Temps d’attente d’une réponse du fournisseur de données écoulé."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"

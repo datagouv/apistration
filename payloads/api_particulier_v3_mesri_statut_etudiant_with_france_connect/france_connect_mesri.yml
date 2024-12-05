@@ -12,11 +12,6 @@ status: 200
 payload: |-
   {
     "data": {
-      "identite": {
-        "nom_naissance": "DUBOIS",
-        "prenom": "Angela Claire Louise",
-        "date_naissance": "1962-08-24"
-      },
       "admissions": [
         {
           "date_debut": "2020-07-01",

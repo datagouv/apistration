@@ -1,0 +1,568 @@
+Titre,Description,Paramètres,Status,Réponse
+,Étudiant ADMIS,"{""nomNaissance"":""MELINARD"",""prenom"":""PATRICK"",""anneeDateNaissance"":1990,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""78000""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""MELINARD"",
+      ""prenom"": ""PATRICK"",
+      ""date_naissance"": ""1990-01-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2023-07-01"",
+        ""date_fin"": ""2024-08-31"",
+        ""est_inscrit"": false,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""75009"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0331023W"",
+          ""nom"": ""Université Paris Saclay""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant admis,"{""nomNaissance"":""Avérone"",""prenom"":""Denis"",""anneeDateNaissance"":2005,""moisDateNaissance"":8,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""78646""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""Avérone"",
+      ""prenom"": ""Denis"",
+      ""date_naissance"": ""2005-08-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2024-09-01"",
+        ""date_fin"": ""2025-07-31"",
+        ""est_inscrit"": false,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""93430"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0331023W"",
+          ""nom"": ""Université Sorbonne Paris Nord""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit formation continue,"{""nomNaissance"":""SOULI"",""prenom"":""Walid"",""anneeDateNaissance"":1998,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""78000""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""SOULI"",
+      ""prenom"": ""Walid"",
+      ""date_naissance"": ""1998-01-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2023-07-01"",
+        ""date_fin"": ""2024-08-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation continue"",
+          ""code"": ""RF5""
+        },
+        ""code_cog_insee_commune"": ""75009"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0331023W"",
+          ""nom"": ""Université Paris Saclay""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit,"{""nomNaissance"":""CALIDONE"",""prenom"":""Lola"",""anneeDateNaissance"":2005,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""F"",""codeCogInseeCommuneNaissance"":""75109""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""CALIDONE"",
+      ""prenom"": ""Lola"",
+      ""date_naissance"": ""2005-01-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2024-09-01"",
+        ""date_fin"": ""2025-07-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""92000"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0334523W"",
+          ""nom"": ""Université Paris Nanterre""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit,"{""nomNaissance"":""MARTIN"",""prenom"":""Jacques"",""anneeDateNaissance"":2004,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75102""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""Martin"",
+      ""prenom"": ""Jacques"",
+      ""date_naissance"": ""2004-01-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2024-10-01"",
+        ""date_fin"": ""2025-08-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""92000"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0330023W"",
+          ""nom"": ""Université Paris Nanterre""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit 2022,"{""nomNaissance"":""SOULI"",""prenom"":""Asma"",""anneeDateNaissance"":2002,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75002""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""SOULI"",
+      ""prenom"": ""Asma"",
+      ""date_naissance"": ""2002-01-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2022-07-01"",
+        ""date_fin"": ""2023-08-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""75009"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0331023W"",
+          ""nom"": ""Université Paris Saclay""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit,"{""nomNaissance"":""BRETAGNE"",""prenom"":""Lisa"",""anneeDateNaissance"":2005,""moisDateNaissance"":6,""jourDateNaissance"":1,""sexeEtatCivil"":""F"",""codeCogInseeCommuneNaissance"":""93008""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""BRETAGNE"",
+      ""prenom"": ""Lisa"",
+      ""date_naissance"": ""2005-06-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2023-09-01"",
+        ""date_fin"": ""2024-07-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""93430"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0331023W"",
+          ""nom"": "" Université Sorbonne Paris Nord""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit,"{""nomNaissance"":""JUIN"",""prenom"":""Romuald"",""anneeDateNaissance"":2005,""moisDateNaissance"":6,""jourDateNaissance"":15,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75115""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""Juin"",
+      ""prenom"": ""Romuald"",
+      ""date_naissance"": ""2005-06-15""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2024-09-01"",
+        ""date_fin"": ""2025-08-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""92000"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0330023W"",
+          ""nom"": ""Université Paris Nanterre""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit,"{""nomNaissance"":""AUVERNE"",""prenom"":""Luc"",""anneeDateNaissance"":2006,""moisDateNaissance"":2,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""95018""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""AUVERNE"",
+      ""prenom"": ""Luc"",
+      ""date_naissance"": ""2006-02-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2025-01-01"",
+        ""date_fin"": ""2025-08-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""78000"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0331034W"",
+          ""nom"": "" Université de Versailles""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit,"{""nomNaissance"":""JUIN"",""prenom"":""Esmeralda"",""anneeDateNaissance"":2000,""moisDateNaissance"":12,""jourDateNaissance"":24,""sexeEtatCivil"":""F"",""codeCogInseeCommuneNaissance"":""75113""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""Juin"",
+      ""prenom"": ""Esmeralda"",
+      ""date_naissance"": ""2000-12-24""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2024-10-01"",
+        ""date_fin"": ""2025-08-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""92000"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0330023W"",
+          ""nom"": ""Université Paris Nanterre""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit,"{""nomNaissance"":""BECKER"",""prenom"":""VALIRIANNE"",""anneeDateNaissance"":2000,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""F"",""codeCogInseeCommuneNaissance"":""75109""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""BECKER"",
+      ""prenom"": ""VALIRIANNE"",
+      ""date_naissance"": ""2000-01-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2024-01-01"",
+        ""date_fin"": ""2025-11-30"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""75006"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0292973W"",
+          ""nom"": ""Université Paris Cité""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit,"{""nomNaissance"":""CLERMONT"",""prenom"":""Louis"",""anneeDateNaissance"":2000,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""78646""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""CLERMONT"",
+      ""prenom"": ""Louis"",
+      ""date_naissance"": ""2000-01-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2024-10-01"",
+        ""date_fin"": ""2025-09-30"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""78100"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0309023W"",
+          ""nom"": "" Sciences Po""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit,"{""nomNaissance"":""IBARRA"",""prenom"":""JENNYFER"",""anneeDateNaissance"":2004,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""F"",""codeCogInseeCommuneNaissance"":""75109""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""IBARRA"",
+      ""prenom"": ""JENNYFER"",
+      ""date_naissance"": ""2000-01-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2025-01-01"",
+        ""date_fin"": ""2025-12-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""75009"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0361113W"",
+          ""nom"": ""ESCG""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit,"{""nomNaissance"":""IZAK"",""prenom"":""John"",""anneeDateNaissance"":2000,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75109""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""IZAK"",
+      ""prenom"": ""John"",
+      ""date_naissance"": ""2000-01-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2024-09-01"",
+        ""date_fin"": ""2025-07-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""75009"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0331313W"",
+          ""nom"": ""ESCG""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit,"{""nomNaissance"":""LETERIEN"",""prenom"":""Clémentine"",""anneeDateNaissance"":2000,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""F"",""codeCogInseeCommuneNaissance"":""99404""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""LETERIEN"",
+      ""prenom"": ""Clémentine"",
+      ""date_naissance"": ""2000-01-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2024-01-01"",
+        ""date_fin"": ""2025-11-30"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""75006"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0292973W"",
+          ""nom"": ""Université Paris Cité""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit,"{""nomNaissance"":""DE JEAN"",""prenom"":""LUC"",""anneeDateNaissance"":2000,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""99352""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""DE JEAN"",
+      ""prenom"": ""LUC"",
+      ""date_naissance"": ""2000-01-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2024-01-01"",
+        ""date_fin"": ""2025-11-30"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""75006"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0292973W"",
+          ""nom"": ""Université Paris Cité""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit,"{""nomNaissance"":""MAYVILLE"",""prenom"":""TINA"",""anneeDateNaissance"":2000,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""F"",""codeCogInseeCommuneNaissance"":""75109""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""MAYVILLE"",
+      ""prenom"": ""Tina"",
+      ""date_naissance"": ""2000-01-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2024-09-01"",
+        ""date_fin"": ""2025-07-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""75009"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0366313W"",
+          ""nom"": ""ESCG""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit,"{""nomNaissance"":""MEDIZ"",""prenom"":""Louis"",""anneeDateNaissance"":2000,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75109""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""MEDIZ"",
+      ""prenom"": ""Louis"",
+      ""date_naissance"": ""2000-01-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2024-09-01"",
+        ""date_fin"": ""2025-07-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""75006"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0292613W"",
+          ""nom"": ""Université Paris Cité""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Etudiant inscrit,"{""nomNaissance"":""MONT-PARRAIN"",""prenom"":""Lisa"",""anneeDateNaissance"":2000,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""F"",""codeCogInseeCommuneNaissance"":""99109""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""MONT-PARRAIN"",
+      ""prenom"": ""Lisa"",
+      ""date_naissance"": ""2000-01-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2024-01-01"",
+        ""date_fin"": ""2025-11-30"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""75006"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0292973W"",
+          ""nom"": ""Université Paris Cité""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit,"{""nomNaissance"":""YOLAN"",""prenom"":""JOHN"",""anneeDateNaissance"":2007,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""F"",""codeCogInseeCommuneNaissance"":""75109""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""YOLAN"",
+      ""prenom"": ""JOHN"",
+      ""date_naissance"": ""2007-01-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2024-10-01"",
+        ""date_fin"": ""2025-09-30"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation initiale"",
+          ""code"": ""RF1""
+        },
+        ""code_cog_insee_commune"": ""75009"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0320613W"",
+          ""nom"": ""ESCG""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Étudiant inscrit,"{""nomNaissance"":""COLONEL"",""prenom"":""Jean"",""anneeDateNaissance"":2005,""moisDateNaissance"":8,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""78646""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom_naissance"": ""COLONEL"",
+      ""prenom"": ""Jean"",
+      ""date_naissance"": ""2005-08-01""
+    },
+    ""admissions"": [
+      {
+        ""date_debut"": ""2024-09-01"",
+        ""date_fin"": ""2025-07-31"",
+        ""est_inscrit"": true,
+        ""regime_formation"": {
+          ""libelle"": ""formation continue"",
+          ""code"": ""RF5""
+        },
+        ""code_cog_insee_commune"": ""93430"",
+        ""etablissement_etudes"": {
+          ""uai"": ""0331023W"",
+          ""nom"": "" Université Sorbonne Paris Nord""
+        }
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"

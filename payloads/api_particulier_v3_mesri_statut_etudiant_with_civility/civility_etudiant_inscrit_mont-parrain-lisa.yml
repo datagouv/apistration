@@ -7,7 +7,7 @@ params:
   moisDateNaissance: 1
   jourDateNaissance: 1
   sexeEtatCivil: "F"
-  codeCogInseeCommuneNaissance: " 99109"
+  codeCogInseeCommuneNaissance: "99109"
 status: 200
 payload: |-
   {

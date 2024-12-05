@@ -1,0 +1,21 @@
+Titre,Description,Paramètres,Status,Réponse
+,"Cas de test avec jeton FranceConnect.
+Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_css.yml).
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":[""Georges""],""nomNaissance"":""CNAF"",""anneeDateNaissance"":2002,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75002"",""codeCogInseePaysNaissance"":""99100""}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""date_debut_droit"": ""2021-05-05""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,"Cas de test avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":[""Angela"",""Claire"",""Louise""],""nomNaissance"":""DUBOIS"",""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24,""sexeEtatCivil"":""F"",""codeCogInseeCommuneNaissance"":""75107"",""codeCogInseePaysNaissance"":""99100""}",200,"{
+  ""data"": {
+    ""est_beneficiaire"": true,
+    ""date_debut_droit"": ""2023-02-01""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"

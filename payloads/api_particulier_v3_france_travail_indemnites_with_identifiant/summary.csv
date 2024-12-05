@@ -1,0 +1,37 @@
+Titre,Description,Paramètres,Status,Réponse
+,Avec allocations,"{""identifiant"":""default""}",200,"{
+  ""data"": {
+    ""identifiant"": ""default"",
+    ""paiements"": [
+      {
+        ""date_versement"": ""2021-01-01"",
+        ""montant_total"": 123.4,
+        ""montant_allocations"": 123.4,
+        ""montant_aides"": 0.0,
+        ""montant_autres"": 0.0
+      },
+      {
+        ""date_versement"": ""2021-02-01"",
+        ""montant_total"": 345.1,
+        ""montant_allocations"": 345.1,
+        ""montant_aides"": 0.0,
+        ""montant_autres"": 0.0
+      }
+    ]
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Identifiant non trouvé,"{""identifiant"":""inconnu""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""24003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Aucune situation France Travail n'a pu être trouvée avec les critères de recherche fournis."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""France Travail""
+      }
+    }
+  ]
+}"
