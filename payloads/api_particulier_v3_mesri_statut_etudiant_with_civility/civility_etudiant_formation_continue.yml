@@ -11,25 +11,29 @@ params :
 status: 200
 payload: |-
   {
-    "identite": {
-      "nom_naissance": "SOULI",
-      "prenom": "Walid",
-      "date_naissance": "1998-01-01"
-    },
-    "admissions": [
-      {
-        "date_debut": "2023-07-01",
-        "date_fin": "2024-08-31",
-        "est_inscrit": true,
-        "regime_formation": {
-          "libelle": "formation continue",
-          "code": "RF5"
-        },
-        "code_cog_insee_commune": "75009",
-        "etablissement_etudes": {
-          "uai": "0331023W",
-          "nom": "Université Paris Saclay"
+    "data": {
+      "identite": {
+        "nom_naissance": "SOULI",
+        "prenom": "Walid",
+        "date_naissance": "1998-01-01"
+      },
+      "admissions": [
+        {
+          "date_debut": "2023-07-01",
+          "date_fin": "2024-08-31",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation continue",
+            "code": "RF5"
+          },
+          "code_cog_insee_commune": "75009",
+          "etablissement_etudes": {
+            "uai": "0331023W",
+            "nom": "Université Paris Saclay"
+          }
         }
-      }
-    ]
+      ]
+    },
+    "links": {},
+    "meta": {}
   }

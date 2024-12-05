@@ -19,28 +19,32 @@ params:
 status: 200
 payload: |-
   {
-    "est_boursier": true,
-    "periode_versement_bourse": {
-      "date_rentree": "2020-09-01",
-      "duree": 12
+    "data": {
+      "est_boursier": true,
+      "periode_versement_bourse": {
+        "date_rentree": "2020-09-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Bordeaux",
+        "nom_etablissement": "Camille Jullian"
+      },
+      "echelon_bourse": {
+        "echelon": "5",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "wossewodda-3728@yopmail.com ",
+      "identite": {
+        "nom": "DUBOIS",
+        "prenoms": [
+          "ANGELA",
+          "CLAIRE"
+        ],
+        "date_naissance": "1962-08-24",
+        "nom_commune_naissance": "Paris",
+        "sexe": "F"
+      }
     },
-    "etablissement_etudes": {
-      "nom_commune": "Bordeaux",
-      "nom_etablissement": "Camille Jullian"
-    },
-    "echelon_bourse": {
-      "echelon": "5",
-      "echelon_bourse_regionale_provisoire": false
-    },
-    "email": "wossewodda-3728@yopmail.com ",
-    "identite": {
-      "nom": "DUBOIS",
-      "prenoms": [
-        "ANGELA",
-        "CLAIRE"
-      ],
-      "date_naissance": "1962-08-24",
-      "nom_commune_naissance": "Paris",
-      "sexe": "F"
-    }
+    "links": {},
+    "meta": {}
   }

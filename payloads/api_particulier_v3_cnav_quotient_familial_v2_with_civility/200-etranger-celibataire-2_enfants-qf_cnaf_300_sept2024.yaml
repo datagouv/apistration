@@ -23,46 +23,50 @@ params:
 status: 200
 payload: |-
   {
-    "allocataires": [
-      {
-        "nom_naissance": "BROWN",
-        "nom_usage": null,
-        "prenoms": "Marge",
-        "date_naissance": "1980-11-15",
-        "sexe": "F"
-      }
-    ],
-    "enfants": [
-      {
-        "nom_naissance": "BROWN",
-        "nom_usage": null,
-        "prenoms": "Bart",
-        "date_naissance": "2012-02-28",
-        "sexe": "M"
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "BROWN",
+          "nom_usage": null,
+          "prenoms": "Marge",
+          "date_naissance": "1980-11-15",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "BROWN",
+          "nom_usage": null,
+          "prenoms": "Bart",
+          "date_naissance": "2012-02-28",
+          "sexe": "M"
+        },
+        {
+          "nom_naissance": "SIMPSON",
+          "nom_usage": null,
+          "prenoms": "LISA",
+          "date_naissance": "2013-03-01",
+          "sexe": "F"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame SIMPSON Marge",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_lebelle_voie": "1 PLACE DE L'HÔTEL DE VILLE'",
+        "lieu_dit": null,
+        "code_postal_ville": "51000 CHÂLONS-EN-CHAMPAGNE",
+        "pays": "FRANCE"
       },
-      {
-        "nom_naissance": "SIMPSON",
-        "nom_usage": null,
-        "prenoms": "LISA",
-        "date_naissance": "2013-03-01",
-        "sexe": "F"
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 300,
+        "annee": 2024,
+        "mois": 8,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
       }
-    ],
-    "adresse": {
-      "destinataire": "Madame SIMPSON Marge",
-      "complement_information": null,
-      "complement_information_geographique": null,
-      "numero_lebelle_voie": "1 PLACE DE L'HÔTEL DE VILLE'",
-      "lieu_dit": null,
-      "code_postal_ville": "51000 CHÂLONS-EN-CHAMPAGNE",
-      "pays": "FRANCE"
     },
-    "quotient_familial": {
-      "fournisseur": "CNAF",
-      "valeur": 300,
-      "annee": 2024,
-      "mois": 8,
-      "annee_calcul": 2024,
-      "mois_calcul": 12
-    }
+    "links": {},
+    "meta": {}
   }

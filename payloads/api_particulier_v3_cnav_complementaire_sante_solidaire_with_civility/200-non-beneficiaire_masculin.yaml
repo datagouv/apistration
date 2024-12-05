@@ -18,7 +18,11 @@ params:
 status: 200
 payload: |-
   {
-    "est_beneficiaire": false,
-    "avec_participation": false,
-    "date_debut_droit": null
+    "data": {
+      "est_beneficiaire": false,
+      "avec_participation": false,
+      "date_debut_droit": null
+    },
+    "links": {},
+    "meta": {}
   }

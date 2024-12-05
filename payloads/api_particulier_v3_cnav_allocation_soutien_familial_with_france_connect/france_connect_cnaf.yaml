@@ -18,6 +18,10 @@ params:
 status: 200
 payload: |-
   {
-    "est_beneficiaire": true,
-    "date_debut_droit": "2023-02-01"
+    "data": {
+      "est_beneficiaire": true,
+      "date_debut_droit": "2023-02-01"
+    },
+    "links": {},
+    "meta": {}
   }

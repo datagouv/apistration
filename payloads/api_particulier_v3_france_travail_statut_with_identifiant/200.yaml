@@ -5,37 +5,41 @@ params:
 status: 200
 payload: |-
   {
-    "identifiant": "default",
-    "identite": {
-      "civilite": "M.",
-      "nom_naissance": "DUPONT",
-      "nom_usage": null,
-      "prenom": "JEAN",
-      "sexe": "Masculin",
-      "date_naissance": "1990-01-01"
-    },
-    "contact": {
-      "email": "jean.dupont@france.fr",
-      "telephone": "0636656565",
-      "telephone2": null
-    },
-    "adresse": {
-      "code_cog_insee_commune": "75107",
-      "code_postal": "75007",
-      "ligne_complement_adresse": null,
-      "ligne_complement_destinataire": "APPARTEMENT 42",
-      "ligne_complement_distribution": null,
-      "ligne_nom": "DUPONT",
-      "ligne_voie": "42 RUE DE LA PAIX",
-      "localite": "75001 PARIS"
-    },
-    "inscription": {
-      "date_debut": "2020-01-01",
-      "date_fin": null,
-      "codeCategorieInscription": 1,
-      "categorie": {
-        "code": "VC",
-        "libelle": "PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS",
+    "data": {
+      "identifiant": "default",
+      "identite": {
+        "civilite": "M.",
+        "nom_naissance": "DUPONT",
+        "nom_usage": null,
+        "prenom": "JEAN",
+        "sexe": "Masculin",
+        "date_naissance": "1990-01-01"
+      },
+      "contact": {
+        "email": "jean.dupont@france.fr",
+        "telephone": "0636656565",
+        "telephone2": null
+      },
+      "adresse": {
+        "code_cog_insee_commune": "75107",
+        "code_postal": "75007",
+        "ligne_complement_adresse": null,
+        "ligne_complement_destinataire": "APPARTEMENT 42",
+        "ligne_complement_distribution": null,
+        "ligne_nom": "DUPONT",
+        "ligne_voie": "42 RUE DE LA PAIX",
+        "localite": "75001 PARIS"
+      },
+      "inscription": {
+        "date_debut": "2020-01-01",
+        "date_fin": null,
+        "codeCategorieInscription": 1,
+        "categorie": {
+          "code": "VC",
+          "libelle": "PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS",
+        }
       }
-    }
+    },
+    "links": {},
+    "meta": {}
   }

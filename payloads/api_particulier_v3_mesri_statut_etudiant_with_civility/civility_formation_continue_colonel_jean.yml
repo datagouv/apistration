@@ -11,25 +11,29 @@ params:
 status: 200
 payload: |-
   {
-    "identite": {
-      "nom_naissance": "COLONEL",
-      "prenom": "Jean",
-      "date_naissance": "2005-08-01"
-    },
-    "admissions": [
-      {
-        "date_debut": "2024-09-01",
-        "date_fin": "2025-07-31",
-        "est_inscrit": true,
-        "regime_formation": {
-          "libelle": "formation continue",
-          "code": "RF5"
-        },
-        "code_cog_insee_commune": "93430",
-        "etablissement_etudes": {
-          "uai": "0331023W",
-          "nom": " Université Sorbonne Paris Nord"
+    "data": {
+      "identite": {
+        "nom_naissance": "COLONEL",
+        "prenom": "Jean",
+        "date_naissance": "2005-08-01"
+      },
+      "admissions": [
+        {
+          "date_debut": "2024-09-01",
+          "date_fin": "2025-07-31",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation continue",
+            "code": "RF5"
+          },
+          "code_cog_insee_commune": "93430",
+          "etablissement_etudes": {
+            "uai": "0331023W",
+            "nom": " Université Sorbonne Paris Nord"
+          }
         }
-      }
-    ]
+      ]
+    },
+    "links": {},
+    "meta": {}
   }

@@ -19,39 +19,43 @@ params:
 status: 200
 payload: |-
   {
-    "allocataires": [
-      {
-        "nom_naissance": "BERNARD",
-        "nom_usage": null,
-        "prenoms": "ELODIE JUDITH GERTRUDE",
-        "date_naissance": "1990-03-18",
-        "sexe": "F"
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "BERNARD",
+          "nom_usage": null,
+          "prenoms": "ELODIE JUDITH GERTRUDE",
+          "date_naissance": "1990-03-18",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [
+        {
+          "nom_naissance": "BERNARD",
+          "nom_usage": null,
+          "prenoms": "LEO",
+          "date_naissance": "1990-04-20",
+          "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Madame BERNARD ELODIE",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_lebelle_voie": "1 RUE MONTORGUEIL",
+        "lieu_dit": null,
+        "code_postal_ville": "75002 PARIS",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 650,
+        "annee": 2023,
+        "mois": 6,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
       }
-    ],
-    "enfants": [
-      {
-        "nom_naissance": "BERNARD",
-        "nom_usage": null,
-        "prenoms": "LEO",
-        "date_naissance": "1990-04-20",
-        "sexe": "M"
-      }
-    ],
-    "adresse": {
-      "destinataire": "Madame BERNARD ELODIE",
-      "complement_information": null,
-      "complement_information_geographique": null,
-      "numero_lebelle_voie": "1 RUE MONTORGUEIL",
-      "lieu_dit": null,
-      "code_postal_ville": "75002 PARIS",
-      "pays": "FRANCE"
     },
-    "quotient_familial": {
-      "fournisseur": "CNAF",
-      "valeur": 650,
-      "annee": 2023,
-      "mois": 6,
-      "annee_calcul": 2024,
-      "mois_calcul": 12
-    }
+    "links": {},
+    "meta": {}
   }

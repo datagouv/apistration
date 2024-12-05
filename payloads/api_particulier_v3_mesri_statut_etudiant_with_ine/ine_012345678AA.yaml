@@ -5,25 +5,29 @@ params:
 status: 200
 payload: |-
   {
-    "identite": {
-      "nom_naissance": "DUBOIS",
-      "prenom": "Jean",
-      "date_naissance": "2003-01-10"
-    },
-    "admissions": [
-      {
-        "date_debut": "2020-09-11",
-        "date_fin": "2022-06-30",
-        "est_inscrit": true,
-        "regime_formation": {
-          "libelle": "formation initiale",
-          "code": "RF1"
-        },
-        "code_cog_insee_commune": "75020",
-        "etablissement_etudes": {
-          "uai": "0750106H",
-          "nom": "ECOLE TECHNOLOGIQUE PRIVEE"
+    "data": {
+      "identite": {
+        "nom_naissance": "DUBOIS",
+        "prenom": "Jean",
+        "date_naissance": "2003-01-10"
+      },
+      "admissions": [
+        {
+          "date_debut": "2020-09-11",
+          "date_fin": "2022-06-30",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "75020",
+          "etablissement_etudes": {
+            "uai": "0750106H",
+            "nom": "ECOLE TECHNOLOGIQUE PRIVEE"
+          }
         }
-      }
-    ]
+      ]
+    },
+    "links": {},
+    "meta": {}
   }

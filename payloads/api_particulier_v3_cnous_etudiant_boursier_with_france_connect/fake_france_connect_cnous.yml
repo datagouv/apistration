@@ -11,28 +11,32 @@ params:
 status: 200
 payload: |-
   {
-    "est_boursier": true,
-    "periode_versement_bourse": {
-      "date_rentree": "2020-09-01",
-      "duree": 12
+    "data": {
+      "est_boursier": true,
+      "periode_versement_bourse": {
+        "date_rentree": "2020-09-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Bordeaux",
+        "nom_etablissement": "Camille Jullian"
+      },
+      "echelon_bourse": {
+        "echelon": "5",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "jean@dupont.fr",
+      "identite": {
+        "nom": "DUPONT",
+        "prenoms": [
+          "JEAN",
+          "MARTIN"
+        ],
+        "date_naissance": "2001-01-01",
+        "nom_commune_naissance": "Paris",
+        "sexe": "M"
+      }
     },
-    "etablissement_etudes": {
-      "nom_commune": "Bordeaux",
-      "nom_etablissement": "Camille Jullian"
-    },
-    "echelon_bourse": {
-      "echelon": "5",
-      "echelon_bourse_regionale_provisoire": false
-    },
-    "email": "jean@dupont.fr",
-    "identite": {
-      "nom": "DUPONT",
-      "prenoms": [
-        "JEAN",
-        "MARTIN"
-      ],
-      "date_naissance": "2001-01-01",
-      "nom_commune_naissance": "Paris",
-      "sexe": "M"
-    }
+    "links": {},
+    "meta": {}
   }

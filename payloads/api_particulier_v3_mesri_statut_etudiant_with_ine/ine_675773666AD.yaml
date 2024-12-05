@@ -5,25 +5,29 @@ params:
 status: 200
 payload: |-
   {
-    "identite": {
-      "nom_naissance": "Moreau",
-      "prenom": "Aurélie",
-      "date_naissance": "2002-01-02"
-    },
-    "admissions": [
-      {
-        "date_debut": "2022-09-05",
-        "date_fin": "2023-05-29",
-        "est_inscrit": true,
-        "regime_formation": {
-          "libelle": "formation initiale",
-          "code": "RF1"
-        },
-        "code_cog_insee_commune": "75020",
-        "etablissement_etudes": {
-          "uai": "0750106H",
-          "nom": "ECOLE TECHNOLOGIQUE PRIVEE"
+    "data": {
+      "identite": {
+        "nom_naissance": "Moreau",
+        "prenom": "Aurélie",
+        "date_naissance": "2002-01-02"
+      },
+      "admissions": [
+        {
+          "date_debut": "2022-09-05",
+          "date_fin": "2023-05-29",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "75020",
+          "etablissement_etudes": {
+            "uai": "0750106H",
+            "nom": "ECOLE TECHNOLOGIQUE PRIVEE"
+          }
         }
-      }
-    ]
+      ]
+    },
+    "links": {},
+    "meta": {}
   }
