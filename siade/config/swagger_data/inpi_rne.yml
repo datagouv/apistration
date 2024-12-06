@@ -460,6 +460,8 @@ inpi_rne:
               example: "https://entreprise.api.gouv.fr/proxy/inpi/download/%2FV+svyVVJGVCJroamyqjOrECaXHorkxJ39vZH1IMHz4N+6gvit9zgoQ=--rJ1ss+Brc7oVhloH--huyvWA83YgMFqOnjyKDmXQ=="
       bilans:
         title: "Liste des bilans de l'unité légale"
+        description: |
+          Ce tableau liste les documents, classés par date de mise à jour, et à défaut date de dépôt du document. Les comptes annuels sont déposés en très grande majorité directement au Guichet Unique de l'Inpi. Environ 30% (fin 2024) des dépôts de comptes se font encore auprès des greffes, ces anciennes voies de transmission ont pour objectif d'être fermées. 
         type: "array"
         items:
           type: "object"
