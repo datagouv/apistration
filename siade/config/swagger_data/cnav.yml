@@ -123,7 +123,7 @@ cnav:
       adresse:
         title: "Adresse de la famille"
         type: object
-        description: Adresse de la famille au format de la poste.
+        description: "Adresse de la famille au format de La Poste. Cette adresse est déclarative. Si l'usager a changé d'adresse et n'a pas actualisé son adresse auprès de la CAF ou de la MSA, l'information sera donc obsolète."
         properties:
           destinataire:
             title: "Identité du destinataire"
