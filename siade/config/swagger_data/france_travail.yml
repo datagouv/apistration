@@ -28,8 +28,8 @@ france_travail:
           espace personnel en ligne.
         example: martin.jacques
       identite:
-        title: Identité
-        description : Donnée d'identité de l'utilisateur France Travail
+        title: Données d'identité de l'utilisateur France Travail
+        description : "Les informations d'identité retournées ici sont issues de l'espace FranceTravail où l'utilisateur les a  saisies. Elles sont vérifiées par un agent, à l'aide de la pièce d'identité fournie, et corrigées le cas échéant. Les justificatifs d'identité qui servent à la vérification des données sont listés ici : https://www.service-public.fr/particuliers/vosdroits/F24465"
         type: object
         properties:
           civilite:
