@@ -13596,6 +13596,13 @@ paths:
                               example: https://entreprise.api.gouv.fr/proxy/inpi/download/%2FV+svyVVJGVCJroamyqjOrECaXHorkxJ39vZH1IMHz4N+6gvit9zgoQ=--rJ1ss+Brc7oVhloH--huyvWA83YgMFqOnjyKDmXQ==
                       bilans:
                         title: Liste des bilans de l'unité légale
+                        description: "Ce tableau liste les documents, classés par
+                          date de mise à jour, et à défaut date de dépôt du document.
+                          Les comptes annuels sont déposés en très grande majorité
+                          directement au Guichet Unique de l'Inpi. Environ 30% (fin
+                          2024) des dépôts de comptes se font encore auprès des greffes,
+                          ces anciennes voies de transmission ont pour objectif d'être
+                          fermées. \n"
                         type: array
                         items:
                           type: object
@@ -13611,6 +13618,13 @@ paths:
                               example: X9wvz5eKvKQv_C0022A1001L257081D20230902H180411TPIJTES003PDBOR
                             date_depot:
                               title: Date de dépôt du bilan
+                              description: Ce champ indique la date de dépôt du bilan.
+                                Si le bilan a été déposé au guichet unique, la date
+                                de dépôt correspond à la date de où le paiement a
+                                été effectué. Si le bilan provient directement d'Infogreffe
+                                (cas des bilans avant 2023 et de certains bilans à
+                                compter de cette date), la date de dépôt correspond
+                                à la date de validation par les greffes.
                               type: string
                               format: date
                               example: '2023-08-08'
