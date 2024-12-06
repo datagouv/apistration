@@ -29,12 +29,21 @@ cnav:
           \n
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
       date_debut_droit:
-        title: "Date d'ouverture du droit à la C2S"
+        title: "Date d'ouverture du droit en cours à la C2S"
         type: string
         nullable: true
-        description: "Date de début de droit à la complémentaire santé solidaire du particulier bénéficiaire.
+        description: |
+          Date de début du droit à la complémentaire santé solidaire du particulier bénéficiaire.
           \n
-          Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de la C2S."
+          \n
+          Cette date est relative à la prestation en cours. C'est-à-dire :
+          \n
+          - Dans le cas d'une attribution l'année en cours N, la date de début correspondra à la date de l'attribution ;
+          - Dans le cas d'une attribution l'année passée N-1, qui est renouvelée en année N, la date de début correspondra à la date d'attribution l'année passée N-1 ;
+          - Dans le cas où, en année N-2 un allocataire était bénéficiaire, puis ne l'était plus en année N-1, puis l'est à nouveau dans l'année en cours N, la date de début correspond à la date d'attribution de la prestation en cours (et donc de l'année N).
+          \n
+          \n
+          Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de la C2S.
         example: '1992-11-29'
   quotient-familial-v2:
     title: Quotient familial CAF & MSA
