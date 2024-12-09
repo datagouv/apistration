@@ -12,7 +12,7 @@ params:
   anneeDateDeNaissance: 1981
   moisDateDeNaissance: 7
   jourDateDeNaissance: 27
-  sexe: "M"
+  sexe: "F"
   codeInseeLieuDeNaissance: "13012"
   codePaysLieuDeNaissance: "99100"
 status: 200
