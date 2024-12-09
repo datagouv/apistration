@@ -51,5 +51,15 @@ RSpec.describe APIEntreprise::INPIProxyController do
       it { is_expected.to have_http_status(:gone) }
       its(:parsed_body) { is_expected.to include({ errors: ['Le lien de téléchargement est expiré.'] }) }
     end
+
+    describe 'when it is a bilan', vcr: { cassette_name: 'inpi/rne/bilans_download/valid' } do
+      let(:target) { 'bilans' }
+
+      it { is_expected.to have_http_status(:ok) }
+
+      it 'returns the document_url' do
+        expect(subject.parsed_body[:data][:document_url]).to match(document_url_regexp)
+      end
+    end
   end
 end
