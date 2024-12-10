@@ -1,0 +1,84 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'PIERRE-ALAIN'
+    - 'MURIEL'
+    - 'FLORIANT'
+  nomNaissance: "ECETINSI"
+  anneeDateDeNaissance: 2009
+  moisDateDeNaissance: 7
+  jourDateDeNaissance: 14
+  sexe: "M"
+  codeInseeLieuDeNaissance: "63220"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "ECETINSI",
+        "nomUsage": "ECETINSI",
+        "prenoms": "PIERRE-ALAIN MURIEL FLORIANT",
+        "anneeDateDeNaissance": "2009",
+        "moisDateDeNaissance": "07",
+        "jourDateDeNaissance": "14",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "SUVE",
+        "nomUsage": "ECETINSI",
+        "prenoms": "MELINDA",
+        "anneeDateDeNaissance": "2009",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "14",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "ECETINSI",
+        "nomUsage": "ECETINSI",
+        "prenoms": "Alberto",
+        "anneeDateDeNaissance": "2024",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "ECETINSI",
+        "nomUsage": "ECETINSI",
+        "prenoms": "Henrico",
+        "anneeDateDeNaissance": "2023",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "ECETINSI",
+        "nomUsage": "ECETINSI",
+        "prenoms": "Gustave",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "12",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur et Madame Pierre-Alain ECETINSI",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "6 Rue Firmin Gillot",
+      "lieuDit": null,
+      "codePostalVille": "75015 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }

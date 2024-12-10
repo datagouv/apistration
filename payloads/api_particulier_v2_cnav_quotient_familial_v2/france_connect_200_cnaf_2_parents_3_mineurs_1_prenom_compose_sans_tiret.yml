@@ -1,0 +1,84 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'Emmanuel'
+    - 'Alexandre'
+    - 'Nicolas'
+  nomNaissance: "DELALALALANDE         "
+  anneeDateDeNaissance: 1991
+  moisDateDeNaissance: 1
+  jourDateDeNaissance: 7
+  sexe: "M"
+  codeInseeLieuDeNaissance: "75101"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "DELALALALANDE",
+        "nomUsage": "DELALALALANDE",
+        "prenoms": "EMMANUEL ALEXANDRE",
+        "anneeDateDeNaissance": "1991",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "07",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "CARPENTIER",
+        "nomUsage": "DELALALALANDE",
+        "prenoms": "FLORENCE",
+        "anneeDateDeNaissance": "1990",
+        "moisDateDeNaissance": "05",
+        "jourDateDeNaissance": "30",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "DELALALALANDE",
+        "nomUsage": "DELALALALANDE",
+        "prenoms": "Alex",
+        "anneeDateDeNaissance": "2015",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "15",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "DELALALALANDE",
+        "nomUsage": "DELALALALANDE",
+        "prenoms": "Léo",
+        "anneeDateDeNaissance": "2017",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "02",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "DELALALALANDE",
+        "nomUsage": "DELALALALANDE",
+        "prenoms": "Laura",
+        "anneeDateDeNaissance": "2019",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "31",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur et Madame Emmanuel DELALALALANDE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "20 AVENUE DE SEGUR",
+      "lieuDit": null,
+      "codePostalVille": "75107 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }

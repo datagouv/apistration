@@ -1,0 +1,83 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'Olivier'
+    - 'Martin'
+  nomNaissance: "ANO'NYMOS-LONS"
+  anneeDateDeNaissance: 1980
+  moisDateDeNaissance: 5
+  jourDateDeNaissance: 24
+  sexe: "M"
+  codeInseeLieuDeNaissance: "95491"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "ANO'NYMOS-LONS",
+        "nomUsage": "ANO'NYMOS-LONS",
+        "prenoms": "OLIVIER",
+        "anneeDateDeNaissance": "1980",
+        "moisDateDeNaissance": "05",
+        "jourDateDeNaissance": "24",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "ANO'NYMOS-LONS",
+        "nomUsage": "ROUSSEAU",
+        "prenoms": "LAURENCE",
+        "anneeDateDeNaissance": "1981",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "01",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "ANO'NYMOS-LONS",
+        "nomUsage": "ANO'NYMOS-LONS",
+        "prenoms": "Gabriel",
+        "anneeDateDeNaissance": "2010",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "02",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "ANO'NYMOS-LONS",
+        "nomUsage": "ANO'NYMOS-LONS",
+        "prenoms": "Jules",
+        "anneeDateDeNaissance": "2013",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "03",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "ANO'NYMOS-LONS",
+        "nomUsage": "ANO'NYMOS-LONS",
+        "prenoms": "Simon",
+        "anneeDateDeNaissance": "2017",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "05",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur et Madame Olivier ANO'NYMOS-LONS",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "9 R DES MONTS DE LA MADELEINE",
+      "lieuDit": null,
+      "codePostalVille": "42300 LONS-LE-SAUNIER",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
