@@ -2,7 +2,7 @@ class INSEE::Etablissement::MakeRequest < INSEE::MakeRequest
   protected
 
   def request_uri
-    URI([base_uri, 'entreprises', sirene_version, 'siret', siret].join('/'))
+    URI([base_uri, sirene_base_path, 'siret', siret].join('/'))
   end
 
   def request_params

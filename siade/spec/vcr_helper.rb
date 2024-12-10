@@ -38,6 +38,8 @@ VCR.configure do |c|
   c.filter_sensitive_data('<USER_ID_DGFIP>') { valid_dgfip_user_id }
   c.filter_sensitive_data('<INSEE_TOKEN>') { 'valid insee token' }
   c.filter_sensitive_data('<INSEE_CREDENTIALIS>') { Siade.credentials[:insee_credentials].to_s }
+  c.filter_sensitive_data('<INPI_LOGIN>') { Siade.credentials[:inpi_login].to_s }
+  c.filter_sensitive_data('<INPI_PASSWORD>') { Siade.credentials[:inpi_password].to_s }
   c.filter_sensitive_data('<ACOSS_CLIENT_ID>') { Siade.credentials[:acoss_client_id].to_s }
   c.filter_sensitive_data('<ACOSS_CLIENT_SECRET>') { Siade.credentials[:acoss_client_secret].to_s }
   c.filter_sensitive_data('<DOUANES_CLIENT_ID>') { Siade.credentials[:douanes_client_id].to_s }
@@ -52,7 +54,9 @@ VCR.configure do |c|
   # VCR url filters
   c.filter_sensitive_data('<URL_CIBTP>') { Siade.credentials[:cibtp_domain].to_s }
 
-  c.filter_sensitive_data('<URL_INSEE_V3>') { Siade.credentials[:insee_v3_domain].to_s }
+  c.filter_sensitive_data('<URL_INSEE_V3>') { Siade.credentials[:insee_sirene_url].to_s }
+  c.filter_sensitive_data('<URL_INSEE_AUTH>') { Siade.credentials[:insee_oauth_url].to_s }
+  c.filter_sensitive_data('<URL_INSEE_METADATA_URL>') { Siade.credentials[:insee_metadata_url].to_s }
   c.filter_sensitive_data('<URL_GEO_API>') { Siade.credentials[:geo_api_domain].to_s }
   c.filter_sensitive_data('<URL_ACOSS>') { Siade.credentials[:acoss_domain].to_s }
   c.filter_sensitive_data('<URL_DOUANES>') { Siade.credentials[:douanes_domain].to_s }

@@ -13,7 +13,7 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
     it 'calls INSEE API' do
       retrieve_token
 
-      expect(WebMock).to have_requested(:post, /#{Siade.credentials[:insee_v3_domain]}/)
+      expect(WebMock).to have_requested(:post, /#{Siade.credentials[:insee_oauth_url]}/)
     end
 
     it 'stores the new token retrieved from INSEE API in cache' do
@@ -35,7 +35,7 @@ RSpec.describe INSEE::Authenticate, type: :interactor do
     it 'does not call INSEE API' do
       retrieve_token
 
-      expect(WebMock).not_to have_requested(:post, /#{Siade.credentials[:insee_v3_domain]}/)
+      expect(WebMock).not_to have_requested(:post, /#{Siade.credentials[:insee_oauth_url]}/)
     end
 
     its(:errors) { is_expected.to be_blank }

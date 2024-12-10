@@ -1,11 +1,11 @@
-class INSEE::Metadonnees::MakeRequest < INSEE::MakeRequest
+class INSEE::Metadonnees::MakeRequest < MakeRequest::Get
   def extra_headers(request)
     request['Accept'] = 'application/json'
     super
   end
 
   def request_uri
-    URI([base_uri, 'metadonnees', 'V1', 'geo', 'communes'].join('/'))
+    URI([base_url, 'geo', 'communes'].join('/'))
   end
 
   def request_params
@@ -16,7 +16,18 @@ class INSEE::Metadonnees::MakeRequest < INSEE::MakeRequest
     }
   end
 
+  def extra_http_start_options
+    {
+      open_timeout: 2,
+      read_timeout: 2
+    }
+  end
+
   private
+
+  def base_url
+    Siade.credentials[:insee_metadata_url]
+  end
 
   def annee_date_naissance
     context.params[:annee_date_naissance]

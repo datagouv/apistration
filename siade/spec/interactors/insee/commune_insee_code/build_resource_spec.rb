@@ -2,8 +2,7 @@ RSpec.describe INSEE::CommuneINSEECode::BuildResource, type: :build_resource do
   subject(:organizer) { described_class.call(response:, params:) }
 
   describe 'with real http calls' do
-    let(:response) { INSEE::Metadonnees::MakeRequest.call(params:, token:).response }
-    let(:token) { INSEE::Authenticate.call.token }
+    let(:response) { INSEE::Metadonnees::MakeRequest.call(params:).response }
 
     let(:params) do
       {
