@@ -1,0 +1,39 @@
+---
+description: 'Étudiant inscrit'
+params:
+  nomNaissance: "IBARRA"
+  prenom: "JENNYFER"
+  anneeDateNaissance: 2004
+  moisDateNaissance: 1
+  jourDateNaissance: 1
+  sexeEtatCivil: "F"
+  codeCogInseeCommuneNaissance: "75109"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "IBARRA",
+        "prenom": "JENNYFER",
+        "date_naissance": "2000-01-01"
+      },
+      "admissions": [
+        {
+          "date_debut": "2025-01-01",
+          "date_fin": "2025-12-31",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "75009",
+          "etablissement_etudes": {
+            "uai": "0361113W",
+            "nom": "ESCG"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

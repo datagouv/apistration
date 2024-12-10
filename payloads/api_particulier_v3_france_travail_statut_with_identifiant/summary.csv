@@ -1,0 +1,53 @@
+Titre,Description,Paramètres,Status,Réponse
+,Personne insrite,"{""identifiant"":""default""}",200,"{
+  ""data"": {
+    ""identifiant"": ""default"",
+    ""identite"": {
+      ""civilite"": ""M."",
+      ""nom_naissance"": ""DUPONT"",
+      ""nom_usage"": null,
+      ""prenom"": ""JEAN"",
+      ""sexe"": ""Masculin"",
+      ""date_naissance"": ""1990-01-01""
+    },
+    ""contact"": {
+      ""email"": ""jean.dupont@france.fr"",
+      ""telephone"": ""0636656565"",
+      ""telephone2"": null
+    },
+    ""adresse"": {
+      ""code_cog_insee_commune"": ""75107"",
+      ""code_postal"": ""75007"",
+      ""ligne_complement_adresse"": null,
+      ""ligne_complement_destinataire"": ""APPARTEMENT 42"",
+      ""ligne_complement_distribution"": null,
+      ""ligne_nom"": ""DUPONT"",
+      ""ligne_voie"": ""42 RUE DE LA PAIX"",
+      ""localite"": ""75001 PARIS""
+    },
+    ""inscription"": {
+      ""date_debut"": ""2020-01-01"",
+      ""date_fin"": null,
+      ""code_certification_cnav"": ""VC"",
+      ""categorie"": {
+        ""code"": 1,
+        ""libelle"": ""PERSONNE SANS EMPLOI DISPONIBLE DUREE INDETERMINEE PLEIN TPS""
+      }
+    }
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Personne non trouvée,"{""identifiant"":""not_found""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""24003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Aucune situation France Travail n'a pu être trouvée avec les critères de recherche fournis."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""France Travail""
+      }
+    }
+  ]
+}"

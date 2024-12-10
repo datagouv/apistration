@@ -1,0 +1,24 @@
+---
+description: |-
+  ## Non bénéficiaire
+params:
+  nomNaissance: 'LAGAFFE'
+  prenoms:
+  - 'GASTON'
+  anneeDateNaissance: 1980
+  moisDateNaissance: 9
+  jourDateNaissance: 20
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+status: 200
+payload: |-
+  {
+    "data": {
+      "est_beneficiaire": false,
+      "avec_majoration": null,
+      "date_debut_droit": null
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,24 @@
+---
+description: |-
+  ## Bénéficiaire
+params:
+  nomNaissance: 'LALANNE'
+  prenoms:
+  - 'FRANCIS'
+  - 'GERARD'
+  anneeDateNaissance: 2002
+  moisDateNaissance: 11
+  jourDateNaissance: 1
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'M'
+status: 200
+payload: |-
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "date_debut_droit": "1992-11-29"
+    },
+    "links": {},
+    "meta": {}
+  }

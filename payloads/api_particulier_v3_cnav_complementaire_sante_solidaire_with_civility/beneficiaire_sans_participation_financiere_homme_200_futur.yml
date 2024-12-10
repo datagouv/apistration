@@ -1,0 +1,35 @@
+---
+description: |-
+  ## Bénéficiaire sans participation financière homme dans le futur - 200
+  
+  Ce cas permet de tester :
+  - [Param. appel] Nom d'usage
+  - [Param. appel] Nom de naissance
+  - [Param. appel] 2 Prénoms
+  - [Param. appel] Date de naissance (jour,mois,année)
+  - [Param. appel] sexe masculin
+  - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière
+params:
+  nomUsage: 'MOLIERE'
+  nomNaissance: 'POQUELIN'
+  prenoms:
+    - 'JEAN'
+    - 'BAPTISTE'
+  anneeDateNaissance: 1973
+  moisDateNaissance: 2
+  jourDateNaissance: 17
+  codeCogInseeCommuneNaissance: '44109'
+  codeCogInseePaysNaissance: '99100' #Bénéficiaire né en France
+  sexeEtatCivil: 'M'
+status: 200
+payload: |-
+  {
+    "data": {
+      "est_beneficiaire": true,
+      "avec_participation": false,
+      "date_debut_droit": "2026-09-29"
+    },
+    "links": {},
+    "meta": {}
+  }
+

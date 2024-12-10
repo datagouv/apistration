@@ -1,0 +1,58 @@
+---
+description: |-
+  ## IDENTITÉ CAS NOMINAL
+  
+  Ce cas fait partie de l'ensemble des cas de test identite-cas-nominal/limite.
+  Les données de jour et de mois de naissance ont été retiré.
+
+  Il y a suffisament de données de nom/prénoms dans les paramètres pour compenser
+  l'absence des données de naissance.
+
+  Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+  d'erreur selon les informations que vous fournirez.
+
+params:
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'LEFEBVRE'
+  prenoms:
+    - 'ALEXIS'
+    - 'GÉRÔME'
+    - 'JEAN-PHILIPPE'
+  anneeDateNaissance: 1982
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "LEFEBVRE",
+          "nom_usage": null,
+          "prenoms": "ALEXIS GÉRÔME JEAN-PHILIPPE",
+          "date_naissance": "1982-12-27",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [],
+      "adresse": {
+        "destinataire": "Monsieur LEFEBVRE ALEXIS GÉRÔME JEAN-PHILIPPE",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "1 RUE MONTORGUEIL",
+        "lieu_dit": null,
+        "code_postal_ville": "75002 PARIS",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 2550,
+        "annee": 2023,
+        "mois": 6,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

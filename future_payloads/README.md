@@ -10,6 +10,3 @@ peu).
 Un exemple de fichier : [example.yml](example.yml)
 
 ## API Particulier
-
-* [API Prestations / CSS](api_particulier_v2_cnav_prestations_css)
-* [API Famille / Quotient Familial](api_particulier_v2_cnav_quotient_familial_v2)

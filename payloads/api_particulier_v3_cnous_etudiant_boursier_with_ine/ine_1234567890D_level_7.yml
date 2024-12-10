@@ -1,0 +1,35 @@
+---
+description: 'Boursier échelon 7, année scolaire en cours (appel par INE)'
+params:
+  ine: '1234567890D'
+status: 200
+payload: |-
+  {
+    "data": {
+      "est_boursier": true,
+      "periode_versement_bourse": {
+        "date_rentree": "2023-09-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Toulouse",
+        "nom_etablissement": "Jean Jaurès"
+      },
+      "echelon_bourse": {
+        "echelon": "7",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "marie.montgomery@fake.fr",
+      "identite": {
+        "nom": "Montgomery",
+        "prenoms": [
+          "MARIE"
+        ],
+        "date_naissance": "2001-01-03",
+        "nom_commune_naissance": "Paris",
+        "sexe": "F"
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

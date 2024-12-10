@@ -1,0 +1,39 @@
+---
+description: 'Étudiant inscrit'
+params:
+  nomNaissance: "CLERMONT"
+  prenom: "Louis"
+  anneeDateNaissance: 2000
+  moisDateNaissance: 1
+  jourDateNaissance: 1
+  sexeEtatCivil: "M"
+  codeCogInseeCommuneNaissance: "78646"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "CLERMONT",
+        "prenom": "Louis",
+        "date_naissance": "2000-01-01"
+      },
+      "admissions": [
+        {
+          "date_debut": "2024-10-01",
+          "date_fin": "2025-09-30",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "78100",
+          "etablissement_etudes": {
+            "uai": "0309023W",
+            "nom": " Sciences Po"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,39 @@
+---
+description: 'Étudiant inscrit'
+params:
+  nomNaissance: "AUVERNE"
+  prenom: "Luc"
+  anneeDateNaissance: 2006
+  moisDateNaissance: 2
+  jourDateNaissance: 1
+  sexeEtatCivil: "M"
+  codeCogInseeCommuneNaissance: "95018"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "AUVERNE",
+        "prenom": "Luc",
+        "date_naissance": "2006-02-01"
+      },
+      "admissions": [
+        {
+          "date_debut": "2025-01-01",
+          "date_fin": "2025-08-31",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "78000",
+          "etablissement_etudes": {
+            "uai": "0331034W",
+            "nom": " Université de Versailles"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }

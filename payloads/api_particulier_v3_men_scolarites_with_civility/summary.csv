@@ -1,0 +1,48 @@
+Titre,Description,Paramètres,Status,Réponse
+,Élève boursier,"{""nomNaissance"":""Martin"",""prenoms"":[""Justine""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2000,""moisDateNaissance"":1,""jourDateNaissance"":20,""codeEtablissement"":""0890003V"",""anneeScolaire"":""2022""}",200,"{
+  ""data"": {
+    ""identite"": {
+      ""nom"": ""Martin"",
+      ""prenom"": ""Justine"",
+      ""sexe"": ""F"",
+      ""date_naissance"": ""2000-01-20""
+    },
+    ""annee_scolaire"": ""2022-2023"",
+    ""est_scolarise"": true,
+    ""statut_eleve"": {
+      ""code"": ""ST"",
+      ""libelle"": ""Scolaire""
+    },
+    ""est_boursier"": true,
+    ""echelon_bourse"": 1,
+    ""code_etablissement"": ""0890003V""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
+,Élève non trouvé,"{""nomNaissance"":""Martin"",""prenoms"":[""Jerome""],""sexeEtatCivil"":""F"",""anneeDateNaissance"":2000,""moisDateNaissance"":1,""jourDateNaissance"":20,""codeEtablissement"":""0890003V"",""anneeScolaire"":""2022""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""30003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Aucun élève n'a pu être trouvé avec les critères de recherche fournis."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""MEN""
+      }
+    }
+  ]
+}"
+,Erreur serveur,"{""nomNaissance"":""Faure"",""prenoms"":[""Felix""],""sexe"":""M"",""anneeDateNaissance"":2000,""moisDateNaissance"":1,""jourDateNaissance"":20,""codeEtablissement"":""0890003V"",""anneeScolaire"":""2022""}",504,"{
+  ""errors"": [
+    {
+      ""code"": ""30002"",
+      ""title"": ""Intermédiaire hors-délai"",
+      ""detail"": ""Temps d’attente d’une réponse du fournisseur de données écoulé."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""MEN""
+      }
+    }
+  ]
+}"

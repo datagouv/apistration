@@ -1,0 +1,54 @@
+---
+description: |-
+  ## Allocataire seul - masculin - QF CAF de 2550 du mois en cours
+
+  Ce cas permet de tester :
+  - [Param. appel] lieu de naissance en France
+  - [Param. appel] sexe masculin
+  - [Réponse] Régime CAF
+  - [Réponse] Quotient familial de 2550
+  - [Réponse] Quotient familial du mois en cours
+params:
+  codeCogInseeCommuneNaissance: '08480'
+  codeCogInseePaysNaissance: '99100'
+  sexeEtatCivil: 'F'
+  nomNaissance: 'LEFEBVRE'
+  prenoms:
+    - 'ALEXIS'
+  anneeDateNaissance: 1982
+  moisDateNaissance: 12
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "LEFEBVRE",
+          "nom_usage": null,
+          "prenoms": "ALEXIS",
+          "date_naissance": "1982-12-27",
+          "sexe": "F"
+        }
+      ],
+      "enfants": [],
+      "adresse": {
+        "destinataire": "Monsieur LEFEBVRE ALEXIS",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "1 RUE MONTORGUEIL",
+        "lieu_dit": null,
+        "code_postal_ville": "75002 PARIS",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 2550,
+        "annee": 2023,
+        "mois": 6,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -18,8 +18,9 @@ main_readme_stream.puts 'Les chemins sans lien ne possèdent pas de payload: l\'
 main_readme_stream.puts 'génère une payload par défaut basée sur la spécification OpenAPI associée.'
 
 {
-  'api_particulier' => 'API Particulier',
-  'api_entreprise' => 'API Entreprise v3+',
+  'api_particulier_v2' => 'API Particulier V2',
+  'api_particulier_v3' => 'API Particulier V3',
+  'api_entreprise' => 'API Entreprise v3+'
 }.each do |api_id, api_name|
   main_readme_stream.puts
   main_readme_stream.puts("## #{api_name}")

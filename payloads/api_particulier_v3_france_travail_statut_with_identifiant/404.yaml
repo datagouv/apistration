@@ -1,0 +1,19 @@
+---
+description: 'Personne non trouvée'
+params:
+  identifiant: 'not_found'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "24003",
+        "title": "Entité non trouvée",
+        "detail": "Aucune situation France Travail n'a pu être trouvée avec les critères de recherche fournis.",
+        "source": null,
+        "meta": {
+          "provider": "France Travail"
+        }
+      }
+    ]
+  }

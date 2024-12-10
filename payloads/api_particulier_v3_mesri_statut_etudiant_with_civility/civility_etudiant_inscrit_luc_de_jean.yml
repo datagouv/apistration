@@ -1,0 +1,39 @@
+---
+description: 'Étudiant inscrit'
+params:
+  nomNaissance: "DE JEAN"
+  prenom: "LUC"
+  anneeDateNaissance: 2000
+  moisDateNaissance: 1
+  jourDateNaissance: 1
+  sexeEtatCivil: "M"
+  codeCogInseeCommuneNaissance: "99352"
+status: 200
+payload: |-
+  {
+    "data": {
+      "identite": {
+        "nom_naissance": "DE JEAN",
+        "prenom": "LUC",
+        "date_naissance": "2000-01-01"
+      },
+      "admissions": [
+        {
+          "date_debut": "2024-01-01",
+          "date_fin": "2025-11-30",
+          "est_inscrit": true,
+          "regime_formation": {
+            "libelle": "formation initiale",
+            "code": "RF1"
+          },
+          "code_cog_insee_commune": "75006",
+          "etablissement_etudes": {
+            "uai": "0292973W",
+            "nom": "Université Paris Cité"
+          }
+        }
+      ]
+    },
+    "links": {},
+    "meta": {}
+  }
