@@ -1,0 +1,100 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'FABIEN'
+  nomNaissance: "PENDERIE"
+  anneeDateDeNaissance: 1986
+  moisDateDeNaissance: 3
+  jourDateDeNaissance: 25
+  sexe: "M"
+  codeInseeLieuDeNaissance: "83028"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "PENDERIE",
+        "nomUsage": "PENDERIE",
+        "prenoms": "FABIEN",
+        "anneeDateDeNaissance": "1986",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "25",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "SUVE",
+        "nomUsage": "PENDERIE",
+        "prenoms": "LUCIE",
+        "anneeDateDeNaissance": "1987",
+        "moisDateDeNaissance": "08",
+        "jourDateDeNaissance": "08",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "PENDERIE",
+        "nomUsage": "PENDERIE",
+        "prenoms": "Léo",
+        "anneeDateDeNaissance": "2020",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "PENDERIE",
+        "nomUsage": "PENDERIE",
+        "prenoms": "Léa",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "07",
+        "jourDateDeNaissance": "17",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "PENDERIE",
+        "nomUsage": "PENDERIE",
+        "prenoms": "Hugo",
+        "anneeDateDeNaissance": "2022",
+        "moisDateDeNaissance": "08",
+        "jourDateDeNaissance": "08",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "PENDERIE",
+        "nomUsage": "PENDERIE",
+        "prenoms": "Bérénice",
+        "anneeDateDeNaissance": "2024",
+        "moisDateDeNaissance": "10",
+        "jourDateDeNaissance": "25",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "PENDERIE",
+        "nomUsage": "PENDERIE",
+        "prenoms": "Paul",
+        "anneeDateDeNaissance": "2004",
+        "moisDateDeNaissance": "11",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur Fabien PENDERIE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "20 AVENUE DE SEGUR",
+      "lieuDit": null,
+      "codePostalVille": "75107 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }

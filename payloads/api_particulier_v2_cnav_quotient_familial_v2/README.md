@@ -1612,7 +1612,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "anneeDateDeNaissance": 1981,
     "moisDateDeNaissance": 7,
     "jourDateDeNaissance": 27,
-    "sexe": "M",
+    "sexe": "F",
     "codeInseeLieuDeNaissance": "13012",
     "codePaysLieuDeNaissance": "99100"
   }
@@ -1683,6 +1683,109 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "numeroLibelleVoie": "1 RUE MONTORGUEIL",
       "lieuDit": null,
       "codePostalVille": "75002 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [france_connect_200_cnaf_2_parents_2_mineurs.yml](france_connect_200_cnaf_2_parents_2_mineurs.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "Joëlle",
+      "Françoise"
+    ],
+    "nomNaissance": "DUBINÔRE",
+    "anneeDateDeNaissance": 1992,
+    "moisDateDeNaissance": 8,
+    "jourDateDeNaissance": 15,
+    "sexe": "F",
+    "codeInseeLieuDeNaissance": "75117",
+    "codePaysLieuDeNaissance": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "DUBINÔRE",
+        "nomUsage": "LENOTRE",
+        "prenoms": "Joëlle Françoise",
+        "anneeDateDeNaissance": "1990",
+        "moisDateDeNaissance": "09",
+        "jourDateDeNaissance": "25",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "LENOTRE",
+        "nomUsage": "LENOTRE",
+        "prenoms": "Léon",
+        "anneeDateDeNaissance": "1990",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "LENOTRE",
+        "nomUsage": "LENOTRE",
+        "prenoms": "Gustave",
+        "anneeDateDeNaissance": "2015",
+        "moisDateDeNaissance": "08",
+        "jourDateDeNaissance": "07",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "LENOTRE",
+        "nomUsage": "LENOTRE",
+        "prenoms": "Alphonse",
+        "anneeDateDeNaissance": "2015",
+        "moisDateDeNaissance": "08",
+        "jourDateDeNaissance": "07",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur Léon LENOTRE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "20 AVENUE DE SEGUR",
+      "lieuDit": null,
+      "codePostalVille": "75107 PARIS",
       "pays": "FRANCE"
     },
     "quotientFamilial": 2550,
@@ -1815,6 +1918,1145 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   </p>
   </details>
+* [france_connect_200_cnaf_2_parents_3_mineurs_1_nom_avec_caracteres_speciaux.yml](france_connect_200_cnaf_2_parents_3_mineurs_1_nom_avec_caracteres_speciaux.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "Olivier",
+      "Martin"
+    ],
+    "nomNaissance": "ANO'NYMOS-LONS",
+    "anneeDateDeNaissance": 1980,
+    "moisDateDeNaissance": 5,
+    "jourDateDeNaissance": 24,
+    "sexe": "M",
+    "codeInseeLieuDeNaissance": "95491",
+    "codePaysLieuDeNaissance": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "ANO'NYMOS-LONS",
+        "nomUsage": "ANO'NYMOS-LONS",
+        "prenoms": "OLIVIER",
+        "anneeDateDeNaissance": "1980",
+        "moisDateDeNaissance": "05",
+        "jourDateDeNaissance": "24",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "ANO'NYMOS-LONS",
+        "nomUsage": "ROUSSEAU",
+        "prenoms": "LAURENCE",
+        "anneeDateDeNaissance": "1981",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "01",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "ANO'NYMOS-LONS",
+        "nomUsage": "ANO'NYMOS-LONS",
+        "prenoms": "Gabriel",
+        "anneeDateDeNaissance": "2010",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "02",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "ANO'NYMOS-LONS",
+        "nomUsage": "ANO'NYMOS-LONS",
+        "prenoms": "Jules",
+        "anneeDateDeNaissance": "2013",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "03",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "ANO'NYMOS-LONS",
+        "nomUsage": "ANO'NYMOS-LONS",
+        "prenoms": "Simon",
+        "anneeDateDeNaissance": "2017",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "05",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur et Madame Olivier ANO'NYMOS-LONS",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "9 R DES MONTS DE LA MADELEINE",
+      "lieuDit": null,
+      "codePostalVille": "42300 LONS-LE-SAUNIER",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [france_connect_200_cnaf_2_parents_3_mineurs_1_prenom_compose_sans_tiret.yml](france_connect_200_cnaf_2_parents_3_mineurs_1_prenom_compose_sans_tiret.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "Emmanuel",
+      "Alexandre",
+      "Nicolas"
+    ],
+    "nomNaissance": "DELALALALANDE         ",
+    "anneeDateDeNaissance": 1991,
+    "moisDateDeNaissance": 1,
+    "jourDateDeNaissance": 7,
+    "sexe": "M",
+    "codeInseeLieuDeNaissance": "75101",
+    "codePaysLieuDeNaissance": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "DELALALALANDE",
+        "nomUsage": "DELALALALANDE",
+        "prenoms": "EMMANUEL ALEXANDRE",
+        "anneeDateDeNaissance": "1991",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "07",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "CARPENTIER",
+        "nomUsage": "DELALALALANDE",
+        "prenoms": "FLORENCE",
+        "anneeDateDeNaissance": "1990",
+        "moisDateDeNaissance": "05",
+        "jourDateDeNaissance": "30",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "DELALALALANDE",
+        "nomUsage": "DELALALALANDE",
+        "prenoms": "Alex",
+        "anneeDateDeNaissance": "2015",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "15",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "DELALALALANDE",
+        "nomUsage": "DELALALALANDE",
+        "prenoms": "Léo",
+        "anneeDateDeNaissance": "2017",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "02",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "DELALALALANDE",
+        "nomUsage": "DELALALALANDE",
+        "prenoms": "Laura",
+        "anneeDateDeNaissance": "2019",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "31",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur et Madame Emmanuel DELALALALANDE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "20 AVENUE DE SEGUR",
+      "lieuDit": null,
+      "codePostalVille": "75107 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [france_connect_200_cnaf_2_parents_4_mineurs_1_majeur.yml](france_connect_200_cnaf_2_parents_4_mineurs_1_majeur.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "FABIEN"
+    ],
+    "nomNaissance": "PENDERIE",
+    "anneeDateDeNaissance": 1986,
+    "moisDateDeNaissance": 3,
+    "jourDateDeNaissance": 25,
+    "sexe": "M",
+    "codeInseeLieuDeNaissance": "83028",
+    "codePaysLieuDeNaissance": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "PENDERIE",
+        "nomUsage": "PENDERIE",
+        "prenoms": "FABIEN",
+        "anneeDateDeNaissance": "1986",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "25",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "SUVE",
+        "nomUsage": "PENDERIE",
+        "prenoms": "LUCIE",
+        "anneeDateDeNaissance": "1987",
+        "moisDateDeNaissance": "08",
+        "jourDateDeNaissance": "08",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "PENDERIE",
+        "nomUsage": "PENDERIE",
+        "prenoms": "Léo",
+        "anneeDateDeNaissance": "2020",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "PENDERIE",
+        "nomUsage": "PENDERIE",
+        "prenoms": "Léa",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "07",
+        "jourDateDeNaissance": "17",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "PENDERIE",
+        "nomUsage": "PENDERIE",
+        "prenoms": "Hugo",
+        "anneeDateDeNaissance": "2022",
+        "moisDateDeNaissance": "08",
+        "jourDateDeNaissance": "08",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "PENDERIE",
+        "nomUsage": "PENDERIE",
+        "prenoms": "Bérénice",
+        "anneeDateDeNaissance": "2024",
+        "moisDateDeNaissance": "10",
+        "jourDateDeNaissance": "25",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "PENDERIE",
+        "nomUsage": "PENDERIE",
+        "prenoms": "Paul",
+        "anneeDateDeNaissance": "2004",
+        "moisDateDeNaissance": "11",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur Fabien PENDERIE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "20 AVENUE DE SEGUR",
+      "lieuDit": null,
+      "codePostalVille": "75107 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [france_connect_200_cnaf_2_parents_dont_1_avec_jour_00_3_mineurs.yml](france_connect_200_cnaf_2_parents_dont_1_avec_jour_00_3_mineurs.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "Jean"
+    ],
+    "nomNaissance": "FLEURET",
+    "anneeDateDeNaissance": 1992,
+    "moisDateDeNaissance": 11,
+    "jourDateDeNaissance": 0,
+    "sexe": "M",
+    "codePaysLieuDeNaissance": "99217"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "FLEURET",
+        "nomUsage": "FLEURET",
+        "prenoms": "JEAN",
+        "anneeDateDeNaissance": "1992",
+        "moisDateDeNaissance": "11",
+        "jourDateDeNaissance": "00",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "MIZUKI",
+        "nomUsage": "FLEURET",
+        "prenoms": "Akari",
+        "anneeDateDeNaissance": "1995",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "12",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "FLEURET",
+        "nomUsage": "FLEURET",
+        "prenoms": "Aiko",
+        "anneeDateDeNaissance": "2017",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "03",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "FLEURET",
+        "nomUsage": "FLEURET",
+        "prenoms": "Izumi",
+        "anneeDateDeNaissance": "2019",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "15",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "FLEURET",
+        "nomUsage": "FLEURET",
+        "prenoms": "Arata",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "08",
+        "jourDateDeNaissance": "05",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur et Madame Jean FLEURET",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE DE LILLE",
+      "lieuDit": null,
+      "codePostalVille": "75001 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [france_connect_200_cnaf_2_parents_etrangers_3_mineurs_dont_1_naissance_inconnue_null.yml](france_connect_200_cnaf_2_parents_etrangers_3_mineurs_dont_1_naissance_inconnue_null.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "MOHAMED"
+    ],
+    "nomNaissance": "LALI",
+    "anneeDateDeNaissance": 1983,
+    "moisDateDeNaissance": 12,
+    "jourDateDeNaissance": 18,
+    "sexe": "M",
+    "codeInseeLieuDeNaissance": "64445",
+    "codePaysLieuDeNaissance": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "LALI",
+        "nomUsage": "LALI",
+        "prenoms": "MOHAMED",
+        "anneeDateDeNaissance": "1983",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "18",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "BERTHE",
+        "nomUsage": "BERTHE",
+        "prenoms": "Lucille",
+        "anneeDateDeNaissance": "1983",
+        "moisDateDeNaissance": "05",
+        "jourDateDeNaissance": "15",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "LALI",
+        "nomUsage": "LALI",
+        "prenoms": "Inès",
+        "anneeDateDeNaissance": "2010",
+        "moisDateDeNaissance": "07",
+        "jourDateDeNaissance": "10",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "LALI",
+        "nomUsage": "LALI",
+        "prenoms": "Amir",
+        "anneeDateDeNaissance": "2012",
+        "moisDateDeNaissance": "09",
+        "jourDateDeNaissance": "09",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "LALI",
+        "nomUsage": "LALI",
+        "prenoms": "Ibrahim",
+        "anneeDateDeNaissance": "2020",
+        "moisDateDeNaissance": null,
+        "jourDateDeNaissance": null,
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur et Madame Mohamed LALI",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "Cours des 50 Otages",
+      "lieuDit": null,
+      "codePostalVille": "44109 NANTES",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [france_connect_200_msa_1_parent_1_mineur_2_majeurs.yml](france_connect_200_msa_1_parent_1_mineur_2_majeurs.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "ELSA"
+    ],
+    "nomNaissance": "PLACARD",
+    "anneeDateDeNaissance": 1987,
+    "moisDateDeNaissance": 4,
+    "jourDateDeNaissance": 13,
+    "sexe": "F",
+    "codeInseeLieuDeNaissance": "59226",
+    "codePaysLieuDeNaissance": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "PLACARD",
+        "nomUsage": "DUBOIS",
+        "prenoms": "ELSA",
+        "anneeDateDeNaissance": "1987",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "13",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "DUBOIS",
+        "nomUsage": "DUBOIS",
+        "prenoms": "Alex",
+        "anneeDateDeNaissance": "1999",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "DUBOIS",
+        "nomUsage": "DUBOIS",
+        "prenoms": "Léo",
+        "anneeDateDeNaissance": "2000",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "DUBOIS",
+        "nomUsage": "DUBOIS",
+        "prenoms": "Alice",
+        "anneeDateDeNaissance": "2024",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "02",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur Elsa DUBOIS",
+      "complementInformation": "Batiment 2",
+      "complementInformationGeographique": "Porte 8",
+      "numeroLibelleVoie": "20 AVENUE DE SEGUR",
+      "lieuDit": "Lieu dit",
+      "codePostalVille": "75107 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [france_connect_200_msa_2_parents_3_mineurs_1_prenom_compose_tiret.yml](france_connect_200_msa_2_parents_3_mineurs_1_prenom_compose_tiret.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "PIERRE-ALAIN",
+      "MURIEL",
+      "FLORIANT"
+    ],
+    "nomNaissance": "ECETINSI",
+    "anneeDateDeNaissance": 2009,
+    "moisDateDeNaissance": 7,
+    "jourDateDeNaissance": 14,
+    "sexe": "M",
+    "codeInseeLieuDeNaissance": "63220",
+    "codePaysLieuDeNaissance": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "ECETINSI",
+        "nomUsage": "ECETINSI",
+        "prenoms": "PIERRE-ALAIN MURIEL FLORIANT",
+        "anneeDateDeNaissance": "2009",
+        "moisDateDeNaissance": "07",
+        "jourDateDeNaissance": "14",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "SUVE",
+        "nomUsage": "ECETINSI",
+        "prenoms": "MELINDA",
+        "anneeDateDeNaissance": "2009",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "14",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "ECETINSI",
+        "nomUsage": "ECETINSI",
+        "prenoms": "Alberto",
+        "anneeDateDeNaissance": "2024",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "ECETINSI",
+        "nomUsage": "ECETINSI",
+        "prenoms": "Henrico",
+        "anneeDateDeNaissance": "2023",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "ECETINSI",
+        "nomUsage": "ECETINSI",
+        "prenoms": "Gustave",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "12",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur et Madame Pierre-Alain ECETINSI",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "6 Rue Firmin Gillot",
+      "lieuDit": null,
+      "codePostalVille": "75015 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [france_connect_200_msa_2_parents_5_mineurs.yml](france_connect_200_msa_2_parents_5_mineurs.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "CINDY"
+    ],
+    "nomNaissance": "COMMODE",
+    "anneeDateDeNaissance": 1980,
+    "moisDateDeNaissance": 6,
+    "jourDateDeNaissance": 27,
+    "sexe": "F",
+    "codeInseeLieuDeNaissance": "57431",
+    "codePaysLieuDeNaissance": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "COMMODE",
+        "nomUsage": "LEMAITRE",
+        "prenoms": "CINDY",
+        "anneeDateDeNaissance": "1980",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "27",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "LEMAITRE",
+        "nomUsage": "LEMAITRE",
+        "prenoms": "FRANCK",
+        "anneeDateDeNaissance": "1990",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "30",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "LEMAITRE",
+        "nomUsage": "LEMAITRE",
+        "prenoms": "Gaston",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "05",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "LEMAITRE",
+        "nomUsage": "LEMAITRE",
+        "prenoms": "Henri",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "05",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "LEMAITRE",
+        "nomUsage": "LEMAITRE",
+        "prenoms": "Robert",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "05",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "LEMAITRE",
+        "nomUsage": "LEMAITRE",
+        "prenoms": "Hugo",
+        "anneeDateDeNaissance": "2022",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "30",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "LEMAITRE",
+        "nomUsage": "LEMAITRE",
+        "prenoms": "Lucie",
+        "anneeDateDeNaissance": "2023",
+        "moisDateDeNaissance": "10",
+        "jourDateDeNaissance": "01",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur Franck LEMAITRE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "20 AVENUE DE SEGUR",
+      "lieuDit": null,
+      "codePostalVille": "75107 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [france_connect_200_msa_2_parents_etrangers_3_mineurs_dont_1_naissance_00.yml](france_connect_200_msa_2_parents_etrangers_3_mineurs_dont_1_naissance_00.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "CHAN"
+    ],
+    "nomNaissance": "NGUYEN",
+    "anneeDateDeNaissance": 1965,
+    "moisDateDeNaissance": 9,
+    "jourDateDeNaissance": 18,
+    "sexe": "M",
+    "codePaysLieuDeNaissance": "99243"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "NGUYEN",
+        "nomUsage": "NGUYEN",
+        "prenoms": "CHAN",
+        "anneeDateDeNaissance": "1965",
+        "moisDateDeNaissance": "9",
+        "jourDateDeNaissance": "18",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "NGUYEN",
+        "nomUsage": "NGUYEN",
+        "prenoms": "LEE",
+        "anneeDateDeNaissance": "1999",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "25",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "NGUYEN",
+        "nomUsage": "NGUYEN",
+        "prenoms": "Cheng",
+        "anneeDateDeNaissance": "2020",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "03",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "NGUYEN",
+        "nomUsage": "NGUYEN",
+        "prenoms": "Bo",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "02",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "NGUYEN",
+        "nomUsage": "NGUYEN",
+        "prenoms": "Fu",
+        "anneeDateDeNaissance": "2020",
+        "moisDateDeNaissance": "00",
+        "jourDateDeNaissance": "00",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur Chan NGUYEN",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "Cours des 50 Otages",
+      "lieuDit": null,
+      "codePostalVille": "44109 NANTES",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [france_connect_200_msa_2_parents_etrangers_3_mineurs_dont_1_naissance_inconnue_chaine_vide.yml](france_connect_200_msa_2_parents_etrangers_3_mineurs_dont_1_naissance_inconnue_chaine_vide.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "EMOTO"
+    ],
+    "nomNaissance": "MASARU",
+    "anneeDateDeNaissance": 1963,
+    "moisDateDeNaissance": 11,
+    "jourDateDeNaissance": 10,
+    "sexe": "M",
+    "codePaysLieuDeNaissance": "99217"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "MASARU",
+        "nomUsage": "MASARU",
+        "prenoms": "EMOTO",
+        "anneeDateDeNaissance": "1963",
+        "moisDateDeNaissance": "11",
+        "jourDateDeNaissance": "10",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "NGUYEN",
+        "nomUsage": "MASARU",
+        "prenoms": "SAKURA",
+        "anneeDateDeNaissance": "1970",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "03",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "MASARU",
+        "nomUsage": "MASARU",
+        "prenoms": "Rina",
+        "anneeDateDeNaissance": "2016",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "01",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "MASARU",
+        "nomUsage": "MASARU",
+        "prenoms": "Akihiro",
+        "anneeDateDeNaissance": "2014",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "08",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "MASARU",
+        "nomUsage": "MASARU",
+        "prenoms": "Haru",
+        "anneeDateDeNaissance": "",
+        "moisDateDeNaissance": "",
+        "jourDateDeNaissance": "",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur Emoto MASARU",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "Cours des 50 Otages",
+      "lieuDit": null,
+      "codePostalVille": "44109 NANTES",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [france_connect_cnaf.yml](france_connect_cnaf.yml)
 
   Status `200`
@@ -1873,6 +3115,117 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "numeroLibelleVoie": "1 RUE MONTORGUEIL",
       "lieuDit": null,
       "codePostalVille": "75002 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [france_connect_error.yml](france_connect_error.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "THIBAULT"
+    ],
+    "nomNaissance": "TABLE",
+    "anneeDateDeNaissance": 1990,
+    "moisDateDeNaissance": 2,
+    "jourDateDeNaissance": 13,
+    "sexe": "M",
+    "codeInseeLieuDeNaissance": "75116",
+    "codePaysLieuDeNaissance": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "TABLE",
+        "nomUsage": "TABLE",
+        "prenoms": "THIBAULT",
+        "anneeDateDeNaissance": "1990",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "13",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "FIBRE",
+        "nomUsage": "TABLE",
+        "prenoms": "Elodie",
+        "anneeDateDeNaissance": "1989",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "02",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "TABLE",
+        "nomUsage": "TABLE",
+        "prenoms": "Emma",
+        "anneeDateDeNaissance": "2020",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "TABLE",
+        "nomUsage": "TABLE",
+        "prenoms": "Rose",
+        "anneeDateDeNaissance": "2022",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "TABLE",
+        "nomUsage": "TABLE",
+        "prenoms": "Jade",
+        "anneeDateDeNaissance": "2024",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "02",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur et Madame Thibault TABLE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "20 AVENUE DE SEGUR",
+      "lieuDit": null,
+      "codePostalVille": "75107 PARIS",
       "pays": "FRANCE"
     },
     "quotientFamilial": 2550,

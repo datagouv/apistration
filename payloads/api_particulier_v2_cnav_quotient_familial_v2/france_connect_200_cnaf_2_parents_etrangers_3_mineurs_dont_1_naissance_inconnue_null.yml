@@ -1,0 +1,82 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'MOHAMED'
+  nomNaissance: "LALI"
+  anneeDateDeNaissance: 1983
+  moisDateDeNaissance: 12
+  jourDateDeNaissance: 18
+  sexe: "M"
+  codeInseeLieuDeNaissance: "64445"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "LALI",
+        "nomUsage": "LALI",
+        "prenoms": "MOHAMED",
+        "anneeDateDeNaissance": "1983",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "18",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "BERTHE",
+        "nomUsage": "BERTHE",
+        "prenoms": "Lucille",
+        "anneeDateDeNaissance": "1983",
+        "moisDateDeNaissance": "05",
+        "jourDateDeNaissance": "15",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "LALI",
+        "nomUsage": "LALI",
+        "prenoms": "Inès",
+        "anneeDateDeNaissance": "2010",
+        "moisDateDeNaissance": "07",
+        "jourDateDeNaissance": "10",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "LALI",
+        "nomUsage": "LALI",
+        "prenoms": "Amir",
+        "anneeDateDeNaissance": "2012",
+        "moisDateDeNaissance": "09",
+        "jourDateDeNaissance": "09",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "LALI",
+        "nomUsage": "LALI",
+        "prenoms": "Ibrahim",
+        "anneeDateDeNaissance": "2020",
+        "moisDateDeNaissance": null,
+        "jourDateDeNaissance": null,
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur et Madame Mohamed LALI",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "Cours des 50 Otages",
+      "lieuDit": null,
+      "codePostalVille": "44109 NANTES",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }

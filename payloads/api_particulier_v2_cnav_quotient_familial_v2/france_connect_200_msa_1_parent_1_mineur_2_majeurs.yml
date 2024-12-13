@@ -1,0 +1,73 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'ELSA'
+  nomNaissance: "PLACARD"
+  anneeDateDeNaissance: 1987
+  moisDateDeNaissance: 4
+  jourDateDeNaissance: 13
+  sexe: "F"
+  codeInseeLieuDeNaissance: "59226"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "PLACARD",
+        "nomUsage": "DUBOIS",
+        "prenoms": "ELSA",
+        "anneeDateDeNaissance": "1987",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "13",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "DUBOIS",
+        "nomUsage": "DUBOIS",
+        "prenoms": "Alex",
+        "anneeDateDeNaissance": "1999",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "DUBOIS",
+        "nomUsage": "DUBOIS",
+        "prenoms": "Léo",
+        "anneeDateDeNaissance": "2000",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "DUBOIS",
+        "nomUsage": "DUBOIS",
+        "prenoms": "Alice",
+        "anneeDateDeNaissance": "2024",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "02",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur Elsa DUBOIS",
+      "complementInformation": "Batiment 2",
+      "complementInformationGeographique": "Porte 8",
+      "numeroLibelleVoie": "20 AVENUE DE SEGUR",
+      "lieuDit": "Lieu dit",
+      "codePostalVille": "75107 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }

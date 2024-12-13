@@ -1,0 +1,81 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'EMOTO'
+  nomNaissance: "MASARU"
+  anneeDateDeNaissance: 1963
+  moisDateDeNaissance: 11
+  jourDateDeNaissance: 10
+  sexe: "M"
+  codePaysLieuDeNaissance: "99217"
+status: 200
+payload: |-
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "MASARU",
+        "nomUsage": "MASARU",
+        "prenoms": "EMOTO",
+        "anneeDateDeNaissance": "1963",
+        "moisDateDeNaissance": "11",
+        "jourDateDeNaissance": "10",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "NGUYEN",
+        "nomUsage": "MASARU",
+        "prenoms": "SAKURA",
+        "anneeDateDeNaissance": "1970",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "03",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "MASARU",
+        "nomUsage": "MASARU",
+        "prenoms": "Rina",
+        "anneeDateDeNaissance": "2016",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "01",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "MASARU",
+        "nomUsage": "MASARU",
+        "prenoms": "Akihiro",
+        "anneeDateDeNaissance": "2014",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "08",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "MASARU",
+        "nomUsage": "MASARU",
+        "prenoms": "Haru",
+        "anneeDateDeNaissance": "",
+        "moisDateDeNaissance": "",
+        "jourDateDeNaissance": "",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur Emoto MASARU",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "Cours des 50 Otages",
+      "lieuDit": null,
+      "codePostalVille": "44109 NANTES",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }

@@ -1,0 +1,82 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'THIBAULT'
+  nomNaissance: "TABLE"
+  anneeDateDeNaissance: 1990
+  moisDateDeNaissance: 2
+  jourDateDeNaissance: 13
+  sexe: "M"
+  codeInseeLieuDeNaissance: "75116"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "TABLE",
+        "nomUsage": "TABLE",
+        "prenoms": "THIBAULT",
+        "anneeDateDeNaissance": "1990",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "13",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "FIBRE",
+        "nomUsage": "TABLE",
+        "prenoms": "Elodie",
+        "anneeDateDeNaissance": "1989",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "02",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "TABLE",
+        "nomUsage": "TABLE",
+        "prenoms": "Emma",
+        "anneeDateDeNaissance": "2020",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "TABLE",
+        "nomUsage": "TABLE",
+        "prenoms": "Rose",
+        "anneeDateDeNaissance": "2022",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "TABLE",
+        "nomUsage": "TABLE",
+        "prenoms": "Jade",
+        "anneeDateDeNaissance": "2024",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "02",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur et Madame Thibault TABLE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "20 AVENUE DE SEGUR",
+      "lieuDit": null,
+      "codePostalVille": "75107 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }

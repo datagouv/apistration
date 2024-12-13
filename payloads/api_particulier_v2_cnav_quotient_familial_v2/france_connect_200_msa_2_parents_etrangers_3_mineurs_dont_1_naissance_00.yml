@@ -1,0 +1,81 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'CHAN'
+  nomNaissance: "NGUYEN"
+  anneeDateDeNaissance: 1965
+  moisDateDeNaissance: 9
+  jourDateDeNaissance: 18
+  sexe: "M"
+  codePaysLieuDeNaissance: "99243"
+status: 200
+payload: |-
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "NGUYEN",
+        "nomUsage": "NGUYEN",
+        "prenoms": "CHAN",
+        "anneeDateDeNaissance": "1965",
+        "moisDateDeNaissance": "9",
+        "jourDateDeNaissance": "18",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "NGUYEN",
+        "nomUsage": "NGUYEN",
+        "prenoms": "LEE",
+        "anneeDateDeNaissance": "1999",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "25",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "NGUYEN",
+        "nomUsage": "NGUYEN",
+        "prenoms": "Cheng",
+        "anneeDateDeNaissance": "2020",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "03",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "NGUYEN",
+        "nomUsage": "NGUYEN",
+        "prenoms": "Bo",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "02",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "NGUYEN",
+        "nomUsage": "NGUYEN",
+        "prenoms": "Fu",
+        "anneeDateDeNaissance": "2020",
+        "moisDateDeNaissance": "00",
+        "jourDateDeNaissance": "00",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur Chan NGUYEN",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "Cours des 50 Otages",
+      "lieuDit": null,
+      "codePostalVille": "44109 NANTES",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }

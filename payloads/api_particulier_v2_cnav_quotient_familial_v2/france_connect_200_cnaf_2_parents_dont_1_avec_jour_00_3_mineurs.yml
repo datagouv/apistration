@@ -1,0 +1,81 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'Jean'
+  nomNaissance: "FLEURET"
+  anneeDateDeNaissance: 1992
+  moisDateDeNaissance: 11
+  jourDateDeNaissance: 0
+  sexe: "M"
+  codePaysLieuDeNaissance: "99217"
+status: 200
+payload: |-
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "FLEURET",
+        "nomUsage": "FLEURET",
+        "prenoms": "JEAN",
+        "anneeDateDeNaissance": "1992",
+        "moisDateDeNaissance": "11",
+        "jourDateDeNaissance": "00",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "MIZUKI",
+        "nomUsage": "FLEURET",
+        "prenoms": "Akari",
+        "anneeDateDeNaissance": "1995",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "12",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "FLEURET",
+        "nomUsage": "FLEURET",
+        "prenoms": "Aiko",
+        "anneeDateDeNaissance": "2017",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "03",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "FLEURET",
+        "nomUsage": "FLEURET",
+        "prenoms": "Izumi",
+        "anneeDateDeNaissance": "2019",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "15",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "FLEURET",
+        "nomUsage": "FLEURET",
+        "prenoms": "Arata",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "08",
+        "jourDateDeNaissance": "05",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur et Madame Jean FLEURET",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE DE LILLE",
+      "lieuDit": null,
+      "codePostalVille": "75001 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
