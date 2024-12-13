@@ -6,30 +6,31 @@ description: |-
 
 params:
   prenoms:
-    - 'CHAN'
-  nomNaissance: "NGUYEN"
-  anneeDateDeNaissance: 1965
-  moisDateDeNaissance: 9
+    - 'Titouan'
+  nomNaissance: "REVEIL"
+  anneeDateDeNaissance: 1998
+  moisDateDeNaissance: 6
   jourDateDeNaissance: 18
   sexe: "M"
-  codePaysLieuDeNaissance: "99243"
+  codeInseeLieuDeNaissance: "98729"
+  codePaysLieuDeNaissance: "99100"
 status: 200
 payload: |-
   {
     "regime": "MSA",
     "allocataires": [
       {
-        "nomNaissance": "NGUYEN",
-        "nomUsage": "NGUYEN",
-        "prenoms": "CHAN",
-        "anneeDateDeNaissance": "1965",
-        "moisDateDeNaissance": "9",
+        "nomNaissance": "REVEIL",
+        "nomUsage": "REVEIL",
+        "prenoms": "Titouan",
+        "anneeDateDeNaissance": "1998",
+        "moisDateDeNaissance": "06",
         "jourDateDeNaissance": "18",
         "sexe": "M"
       },
       {
         "nomNaissance": "NGUYEN",
-        "nomUsage": "NGUYEN",
+        "nomUsage": "REVEIL",
         "prenoms": "LEE",
         "anneeDateDeNaissance": "1999",
         "moisDateDeNaissance": "12",
@@ -39,8 +40,8 @@ payload: |-
     ],
     "enfants": [
       {
-        "nomNaissance": "NGUYEN",
-        "nomUsage": "NGUYEN",
+        "nomNaissance": "REVEIL",
+        "nomUsage": "REVEIL",
         "prenoms": "Cheng",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": "03",
@@ -48,8 +49,8 @@ payload: |-
         "sexe": "M"
       },
       {
-        "nomNaissance": "NGUYEN",
-        "nomUsage": "NGUYEN",
+        "nomNaissance": "REVEIL",
+        "nomUsage": "REVEIL",
         "prenoms": "Bo",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "02",
@@ -57,8 +58,8 @@ payload: |-
         "sexe": "M"
       },
       {
-        "nomNaissance": "NGUYEN",
-        "nomUsage": "NGUYEN",
+        "nomNaissance": "REVEIL",
+        "nomUsage": "REVEIL",
         "prenoms": "Fu",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": "00",
@@ -67,7 +68,7 @@ payload: |-
       }
     ],
     "adresse": {
-      "identite": "Monsieur Chan NGUYEN",
+      "identite": "Monsieur Titouan REVEIL",
       "complementInformation": null,
       "complementInformationGeographique": null,
       "numeroLibelleVoie": "Cours des 50 Otages",

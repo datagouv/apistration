@@ -9,7 +9,7 @@ params:
     - 'Emmanuel'
     - 'Alexandre'
     - 'Nicolas'
-  nomNaissance: "DELALALALANDE         "
+  nomNaissance: "DELALALALANDE"
   anneeDateDeNaissance: 1991
   moisDateDeNaissance: 1
   jourDateDeNaissance: 7

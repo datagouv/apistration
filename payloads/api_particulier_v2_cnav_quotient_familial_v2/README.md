@@ -2048,7 +2048,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "Alexandre",
       "Nicolas"
     ],
-    "nomNaissance": "DELALALALANDE         ",
+    "nomNaissance": "DELALALALANDE",
     "anneeDateDeNaissance": 1991,
     "moisDateDeNaissance": 1,
     "jourDateDeNaissance": 7,
@@ -2123,6 +2123,118 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "numeroLibelleVoie": "20 AVENUE DE SEGUR",
       "lieuDit": null,
       "codePostalVille": "75107 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [france_connect_200_cnaf_2_parents_3_mineurs_dont_1_naissance_inconnue_null.yml](france_connect_200_cnaf_2_parents_3_mineurs_dont_1_naissance_inconnue_null.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "Sophie",
+      "Suzanne"
+    ],
+    "nomNaissance": "YOGO",
+    "anneeDateDeNaissance": 1981,
+    "moisDateDeNaissance": 11,
+    "jourDateDeNaissance": 1,
+    "sexe": "F",
+    "codeInseeLieuDeNaissance": "50528",
+    "codePaysLieuDeNaissance": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "YOGO",
+        "nomUsage": "BOBO",
+        "prenoms": "Sophie Suzanne",
+        "anneeDateDeNaissance": "1981",
+        "moisDateDeNaissance": "11",
+        "jourDateDeNaissance": "01",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "LALI",
+        "nomUsage": "LALI",
+        "prenoms": "Mohamed",
+        "anneeDateDeNaissance": "1983",
+        "moisDateDeNaissance": "05",
+        "jourDateDeNaissance": "15",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "LALI",
+        "nomUsage": "LALI",
+        "prenoms": "Inès",
+        "anneeDateDeNaissance": "2010",
+        "moisDateDeNaissance": "07",
+        "jourDateDeNaissance": "10",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "LALI",
+        "nomUsage": "LALI",
+        "prenoms": "Amir",
+        "anneeDateDeNaissance": "2012",
+        "moisDateDeNaissance": "09",
+        "jourDateDeNaissance": "09",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "LALI",
+        "nomUsage": "LALI",
+        "prenoms": "Ibrahim",
+        "anneeDateDeNaissance": "2020",
+        "moisDateDeNaissance": null,
+        "jourDateDeNaissance": null,
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur et Madame Mohamed LALI",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "Cours des 50 Otages",
+      "lieuDit": null,
+      "codePostalVille": "44109 NANTES",
       "pays": "FRANCE"
     },
     "quotientFamilial": 2550,
@@ -2286,124 +2398,15 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
   ```json
   {
     "prenoms": [
-      "Jean"
+      "Jacob",
+      "Henri"
     ],
-    "nomNaissance": "FLEURET",
-    "anneeDateDeNaissance": 1992,
+    "nomNaissance": "BOBO",
+    "anneeDateDeNaissance": 1981,
     "moisDateDeNaissance": 11,
-    "jourDateDeNaissance": 0,
+    "jourDateDeNaissance": 2,
     "sexe": "M",
-    "codePaysLieuDeNaissance": "99217"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "regime": "CNAF",
-    "allocataires": [
-      {
-        "nomNaissance": "FLEURET",
-        "nomUsage": "FLEURET",
-        "prenoms": "JEAN",
-        "anneeDateDeNaissance": "1992",
-        "moisDateDeNaissance": "11",
-        "jourDateDeNaissance": "00",
-        "sexe": "M"
-      },
-      {
-        "nomNaissance": "MIZUKI",
-        "nomUsage": "FLEURET",
-        "prenoms": "Akari",
-        "anneeDateDeNaissance": "1995",
-        "moisDateDeNaissance": "12",
-        "jourDateDeNaissance": "12",
-        "sexe": "F"
-      }
-    ],
-    "enfants": [
-      {
-        "nomNaissance": "FLEURET",
-        "nomUsage": "FLEURET",
-        "prenoms": "Aiko",
-        "anneeDateDeNaissance": "2017",
-        "moisDateDeNaissance": "02",
-        "jourDateDeNaissance": "03",
-        "sexe": "F"
-      },
-      {
-        "nomNaissance": "FLEURET",
-        "nomUsage": "FLEURET",
-        "prenoms": "Izumi",
-        "anneeDateDeNaissance": "2019",
-        "moisDateDeNaissance": "03",
-        "jourDateDeNaissance": "15",
-        "sexe": "F"
-      },
-      {
-        "nomNaissance": "FLEURET",
-        "nomUsage": "FLEURET",
-        "prenoms": "Arata",
-        "anneeDateDeNaissance": "2021",
-        "moisDateDeNaissance": "08",
-        "jourDateDeNaissance": "05",
-        "sexe": "M"
-      }
-    ],
-    "adresse": {
-      "identite": "Monsieur et Madame Jean FLEURET",
-      "complementInformation": null,
-      "complementInformationGeographique": null,
-      "numeroLibelleVoie": "1 RUE DE LILLE",
-      "lieuDit": null,
-      "codePostalVille": "75001 PARIS",
-      "pays": "FRANCE"
-    },
-    "quotientFamilial": 2550,
-    "annee": 2024,
-    "mois": 2
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
-  ```
-
-  </p>
-  </details>
-* [france_connect_200_cnaf_2_parents_etrangers_3_mineurs_dont_1_naissance_inconnue_null.yml](france_connect_200_cnaf_2_parents_etrangers_3_mineurs_dont_1_naissance_inconnue_null.yml)
-
-  Status `200`
-
-  Cas de test pour QFv2 avec jeton FranceConnect.
-Les données proviennent des jetons de l'environnement de test FranceConnect.
-L'endpoint est appellé avec le jeton FranceConnect + le recipient.
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "prenoms": [
-      "MOHAMED"
-    ],
-    "nomNaissance": "LALI",
-    "anneeDateDeNaissance": 1983,
-    "moisDateDeNaissance": 12,
-    "jourDateDeNaissance": 18,
-    "sexe": "M",
-    "codeInseeLieuDeNaissance": "64445",
+    "codeInseeLieuDeNaissance": "21331",
     "codePaysLieuDeNaissance": "99100"
   }
   ```
@@ -2419,60 +2422,60 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "regime": "CNAF",
     "allocataires": [
       {
-        "nomNaissance": "LALI",
-        "nomUsage": "LALI",
-        "prenoms": "MOHAMED",
-        "anneeDateDeNaissance": "1983",
-        "moisDateDeNaissance": "12",
-        "jourDateDeNaissance": "18",
+        "nomNaissance": "BOBO",
+        "nomUsage": "BOBO",
+        "prenoms": "Jacob Henri",
+        "anneeDateDeNaissance": "1981",
+        "moisDateDeNaissance": "11",
+        "jourDateDeNaissance": "00",
         "sexe": "M"
       },
       {
-        "nomNaissance": "BERTHE",
-        "nomUsage": "BERTHE",
-        "prenoms": "Lucille",
-        "anneeDateDeNaissance": "1983",
-        "moisDateDeNaissance": "05",
-        "jourDateDeNaissance": "15",
+        "nomNaissance": "MIZUKI",
+        "nomUsage": "BOBO",
+        "prenoms": "Akari",
+        "anneeDateDeNaissance": "1995",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "12",
         "sexe": "F"
       }
     ],
     "enfants": [
       {
-        "nomNaissance": "LALI",
-        "nomUsage": "LALI",
-        "prenoms": "Inès",
-        "anneeDateDeNaissance": "2010",
-        "moisDateDeNaissance": "07",
-        "jourDateDeNaissance": "10",
+        "nomNaissance": "BOBO",
+        "nomUsage": "BOBO",
+        "prenoms": "Aiko",
+        "anneeDateDeNaissance": "2017",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "03",
         "sexe": "F"
       },
       {
-        "nomNaissance": "LALI",
-        "nomUsage": "LALI",
-        "prenoms": "Amir",
-        "anneeDateDeNaissance": "2012",
-        "moisDateDeNaissance": "09",
-        "jourDateDeNaissance": "09",
-        "sexe": "M"
+        "nomNaissance": "BOBO",
+        "nomUsage": "BOBO",
+        "prenoms": "Izumi",
+        "anneeDateDeNaissance": "2019",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "15",
+        "sexe": "F"
       },
       {
-        "nomNaissance": "LALI",
-        "nomUsage": "LALI",
-        "prenoms": "Ibrahim",
-        "anneeDateDeNaissance": "2020",
-        "moisDateDeNaissance": null,
-        "jourDateDeNaissance": null,
+        "nomNaissance": "BOBO",
+        "nomUsage": "BOBO",
+        "prenoms": "Arata",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "08",
+        "jourDateDeNaissance": "05",
         "sexe": "M"
       }
     ],
     "adresse": {
-      "identite": "Monsieur et Madame Mohamed LALI",
+      "identite": "Monsieur et Madame Jacob BOBO",
       "complementInformation": null,
       "complementInformationGeographique": null,
-      "numeroLibelleVoie": "Cours des 50 Otages",
+      "numeroLibelleVoie": "1 RUE DE LILLE",
       "lieuDit": null,
-      "codePostalVille": "44109 NANTES",
+      "codePostalVille": "75001 PARIS",
       "pays": "FRANCE"
     },
     "quotientFamilial": 2550,
@@ -2708,6 +2711,229 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   </p>
   </details>
+* [france_connect_200_msa_2_parents_3_mineurs_dont_1_naissance_00.yml](france_connect_200_msa_2_parents_3_mineurs_dont_1_naissance_00.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "Titouan"
+    ],
+    "nomNaissance": "REVEIL",
+    "anneeDateDeNaissance": 1998,
+    "moisDateDeNaissance": 6,
+    "jourDateDeNaissance": 18,
+    "sexe": "M",
+    "codeInseeLieuDeNaissance": "98729",
+    "codePaysLieuDeNaissance": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "REVEIL",
+        "nomUsage": "REVEIL",
+        "prenoms": "Titouan",
+        "anneeDateDeNaissance": "1998",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "18",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "NGUYEN",
+        "nomUsage": "REVEIL",
+        "prenoms": "LEE",
+        "anneeDateDeNaissance": "1999",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "25",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "REVEIL",
+        "nomUsage": "REVEIL",
+        "prenoms": "Cheng",
+        "anneeDateDeNaissance": "2020",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "03",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "REVEIL",
+        "nomUsage": "REVEIL",
+        "prenoms": "Bo",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "02",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "REVEIL",
+        "nomUsage": "REVEIL",
+        "prenoms": "Fu",
+        "anneeDateDeNaissance": "2020",
+        "moisDateDeNaissance": "00",
+        "jourDateDeNaissance": "00",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur Titouan REVEIL",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "Cours des 50 Otages",
+      "lieuDit": null,
+      "codePostalVille": "44109 NANTES",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [france_connect_200_msa_2_parents_3_mineurs_dont_1_naissance_inconnue_chaine_vide.yml](france_connect_200_msa_2_parents_3_mineurs_dont_1_naissance_inconnue_chaine_vide.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent des jetons de l'environnement de test FranceConnect.
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "Lady",
+      "Di"
+    ],
+    "nomNaissance": "NUM",
+    "anneeDateDeNaissance": 1962,
+    "moisDateDeNaissance": 8,
+    "jourDateDeNaissance": 24,
+    "sexe": "F",
+    "codeInseeLieuDeNaissance": "29200",
+    "codePaysLieuDeNaissance": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "MSA",
+    "allocataires": [
+      {
+        "nomNaissance": "NUM",
+        "nomUsage": "MASARU",
+        "prenoms": "Lady Di",
+        "anneeDateDeNaissance": "1962",
+        "moisDateDeNaissance": "08",
+        "jourDateDeNaissance": "24",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "MASARU",
+        "nomUsage": "MASARU",
+        "prenoms": "Emoto",
+        "anneeDateDeNaissance": "1970",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "03",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "MASARU",
+        "nomUsage": "MASARU",
+        "prenoms": "Rina",
+        "anneeDateDeNaissance": "2016",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "01",
+        "sexe": "F"
+      },
+      {
+        "nomNaissance": "MASARU",
+        "nomUsage": "MASARU",
+        "prenoms": "Akihiro",
+        "anneeDateDeNaissance": "2014",
+        "moisDateDeNaissance": "02",
+        "jourDateDeNaissance": "08",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "MASARU",
+        "nomUsage": "MASARU",
+        "prenoms": "Haru",
+        "anneeDateDeNaissance": "",
+        "moisDateDeNaissance": "",
+        "jourDateDeNaissance": "",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur Emoto MASARU",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "Cours des 50 Otages",
+      "lieuDit": null,
+      "codePostalVille": "44109 NANTES",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [france_connect_200_msa_2_parents_5_mineurs.yml](france_connect_200_msa_2_parents_5_mineurs.yml)
 
   Status `200`
@@ -2817,226 +3043,6 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "numeroLibelleVoie": "20 AVENUE DE SEGUR",
       "lieuDit": null,
       "codePostalVille": "75107 PARIS",
-      "pays": "FRANCE"
-    },
-    "quotientFamilial": 2550,
-    "annee": 2024,
-    "mois": 2
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
-  ```
-
-  </p>
-  </details>
-* [france_connect_200_msa_2_parents_etrangers_3_mineurs_dont_1_naissance_00.yml](france_connect_200_msa_2_parents_etrangers_3_mineurs_dont_1_naissance_00.yml)
-
-  Status `200`
-
-  Cas de test pour QFv2 avec jeton FranceConnect.
-Les données proviennent des jetons de l'environnement de test FranceConnect.
-L'endpoint est appellé avec le jeton FranceConnect + le recipient.
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "prenoms": [
-      "CHAN"
-    ],
-    "nomNaissance": "NGUYEN",
-    "anneeDateDeNaissance": 1965,
-    "moisDateDeNaissance": 9,
-    "jourDateDeNaissance": 18,
-    "sexe": "M",
-    "codePaysLieuDeNaissance": "99243"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "regime": "MSA",
-    "allocataires": [
-      {
-        "nomNaissance": "NGUYEN",
-        "nomUsage": "NGUYEN",
-        "prenoms": "CHAN",
-        "anneeDateDeNaissance": "1965",
-        "moisDateDeNaissance": "9",
-        "jourDateDeNaissance": "18",
-        "sexe": "M"
-      },
-      {
-        "nomNaissance": "NGUYEN",
-        "nomUsage": "NGUYEN",
-        "prenoms": "LEE",
-        "anneeDateDeNaissance": "1999",
-        "moisDateDeNaissance": "12",
-        "jourDateDeNaissance": "25",
-        "sexe": "F"
-      }
-    ],
-    "enfants": [
-      {
-        "nomNaissance": "NGUYEN",
-        "nomUsage": "NGUYEN",
-        "prenoms": "Cheng",
-        "anneeDateDeNaissance": "2020",
-        "moisDateDeNaissance": "03",
-        "jourDateDeNaissance": "03",
-        "sexe": "M"
-      },
-      {
-        "nomNaissance": "NGUYEN",
-        "nomUsage": "NGUYEN",
-        "prenoms": "Bo",
-        "anneeDateDeNaissance": "2021",
-        "moisDateDeNaissance": "02",
-        "jourDateDeNaissance": "02",
-        "sexe": "M"
-      },
-      {
-        "nomNaissance": "NGUYEN",
-        "nomUsage": "NGUYEN",
-        "prenoms": "Fu",
-        "anneeDateDeNaissance": "2020",
-        "moisDateDeNaissance": "00",
-        "jourDateDeNaissance": "00",
-        "sexe": "M"
-      }
-    ],
-    "adresse": {
-      "identite": "Monsieur Chan NGUYEN",
-      "complementInformation": null,
-      "complementInformationGeographique": null,
-      "numeroLibelleVoie": "Cours des 50 Otages",
-      "lieuDit": null,
-      "codePostalVille": "44109 NANTES",
-      "pays": "FRANCE"
-    },
-    "quotientFamilial": 2550,
-    "annee": 2024,
-    "mois": 2
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
-  ```
-
-  </p>
-  </details>
-* [france_connect_200_msa_2_parents_etrangers_3_mineurs_dont_1_naissance_inconnue_chaine_vide.yml](france_connect_200_msa_2_parents_etrangers_3_mineurs_dont_1_naissance_inconnue_chaine_vide.yml)
-
-  Status `200`
-
-  Cas de test pour QFv2 avec jeton FranceConnect.
-Les données proviennent des jetons de l'environnement de test FranceConnect.
-L'endpoint est appellé avec le jeton FranceConnect + le recipient.
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "prenoms": [
-      "EMOTO"
-    ],
-    "nomNaissance": "MASARU",
-    "anneeDateDeNaissance": 1963,
-    "moisDateDeNaissance": 11,
-    "jourDateDeNaissance": 10,
-    "sexe": "M",
-    "codePaysLieuDeNaissance": "99217"
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "regime": "MSA",
-    "allocataires": [
-      {
-        "nomNaissance": "MASARU",
-        "nomUsage": "MASARU",
-        "prenoms": "EMOTO",
-        "anneeDateDeNaissance": "1963",
-        "moisDateDeNaissance": "11",
-        "jourDateDeNaissance": "10",
-        "sexe": "M"
-      },
-      {
-        "nomNaissance": "NGUYEN",
-        "nomUsage": "MASARU",
-        "prenoms": "SAKURA",
-        "anneeDateDeNaissance": "1970",
-        "moisDateDeNaissance": "01",
-        "jourDateDeNaissance": "03",
-        "sexe": "F"
-      }
-    ],
-    "enfants": [
-      {
-        "nomNaissance": "MASARU",
-        "nomUsage": "MASARU",
-        "prenoms": "Rina",
-        "anneeDateDeNaissance": "2016",
-        "moisDateDeNaissance": "03",
-        "jourDateDeNaissance": "01",
-        "sexe": "F"
-      },
-      {
-        "nomNaissance": "MASARU",
-        "nomUsage": "MASARU",
-        "prenoms": "Akihiro",
-        "anneeDateDeNaissance": "2014",
-        "moisDateDeNaissance": "02",
-        "jourDateDeNaissance": "08",
-        "sexe": "M"
-      },
-      {
-        "nomNaissance": "MASARU",
-        "nomUsage": "MASARU",
-        "prenoms": "Haru",
-        "anneeDateDeNaissance": "",
-        "moisDateDeNaissance": "",
-        "jourDateDeNaissance": "",
-        "sexe": "M"
-      }
-    ],
-    "adresse": {
-      "identite": "Monsieur Emoto MASARU",
-      "complementInformation": null,
-      "complementInformationGeographique": null,
-      "numeroLibelleVoie": "Cours des 50 Otages",
-      "lieuDit": null,
-      "codePostalVille": "44109 NANTES",
       "pays": "FRANCE"
     },
     "quotientFamilial": 2550,

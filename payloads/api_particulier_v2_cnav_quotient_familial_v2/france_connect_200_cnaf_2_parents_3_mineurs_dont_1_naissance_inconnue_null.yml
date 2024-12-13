@@ -6,13 +6,14 @@ description: |-
 
 params:
   prenoms:
-    - 'MOHAMED'
-  nomNaissance: "LALI"
-  anneeDateDeNaissance: 1983
-  moisDateDeNaissance: 12
-  jourDateDeNaissance: 18
-  sexe: "M"
-  codeInseeLieuDeNaissance: "64445"
+    - 'Sophie'
+    - 'Suzanne'
+  nomNaissance: "YOGO"
+  anneeDateDeNaissance: 1981
+  moisDateDeNaissance: 11
+  jourDateDeNaissance: 1
+  sexe: "F"
+  codeInseeLieuDeNaissance: "50528"
   codePaysLieuDeNaissance: "99100"
 status: 200
 payload: |-
@@ -20,22 +21,22 @@ payload: |-
     "regime": "CNAF",
     "allocataires": [
       {
-        "nomNaissance": "LALI",
-        "nomUsage": "LALI",
-        "prenoms": "MOHAMED",
-        "anneeDateDeNaissance": "1983",
-        "moisDateDeNaissance": "12",
-        "jourDateDeNaissance": "18",
-        "sexe": "M"
+        "nomNaissance": "YOGO",
+        "nomUsage": "BOBO",
+        "prenoms": "Sophie Suzanne",
+        "anneeDateDeNaissance": "1981",
+        "moisDateDeNaissance": "11",
+        "jourDateDeNaissance": "01",
+        "sexe": "F"
       },
       {
-        "nomNaissance": "BERTHE",
-        "nomUsage": "BERTHE",
-        "prenoms": "Lucille",
+        "nomNaissance": "LALI",
+        "nomUsage": "LALI",
+        "prenoms": "Mohamed",
         "anneeDateDeNaissance": "1983",
         "moisDateDeNaissance": "05",
         "jourDateDeNaissance": "15",
-        "sexe": "F"
+        "sexe": "M"
       }
     ],
     "enfants": [

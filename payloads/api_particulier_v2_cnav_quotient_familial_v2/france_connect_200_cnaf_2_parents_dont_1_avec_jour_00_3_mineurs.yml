@@ -6,30 +6,32 @@ description: |-
 
 params:
   prenoms:
-    - 'Jean'
-  nomNaissance: "FLEURET"
-  anneeDateDeNaissance: 1992
+    - 'Jacob'
+    - 'Henri'
+  nomNaissance: "BOBO"
+  anneeDateDeNaissance: 1981
   moisDateDeNaissance: 11
-  jourDateDeNaissance: 0
+  jourDateDeNaissance: 2
   sexe: "M"
-  codePaysLieuDeNaissance: "99217"
+  codeInseeLieuDeNaissance: "21331"
+  codePaysLieuDeNaissance: "99100"
 status: 200
 payload: |-
   {
     "regime": "CNAF",
     "allocataires": [
       {
-        "nomNaissance": "FLEURET",
-        "nomUsage": "FLEURET",
-        "prenoms": "JEAN",
-        "anneeDateDeNaissance": "1992",
+        "nomNaissance": "BOBO",
+        "nomUsage": "BOBO",
+        "prenoms": "Jacob Henri",
+        "anneeDateDeNaissance": "1981",
         "moisDateDeNaissance": "11",
         "jourDateDeNaissance": "00",
         "sexe": "M"
       },
       {
         "nomNaissance": "MIZUKI",
-        "nomUsage": "FLEURET",
+        "nomUsage": "BOBO",
         "prenoms": "Akari",
         "anneeDateDeNaissance": "1995",
         "moisDateDeNaissance": "12",
@@ -39,8 +41,8 @@ payload: |-
     ],
     "enfants": [
       {
-        "nomNaissance": "FLEURET",
-        "nomUsage": "FLEURET",
+        "nomNaissance": "BOBO",
+        "nomUsage": "BOBO",
         "prenoms": "Aiko",
         "anneeDateDeNaissance": "2017",
         "moisDateDeNaissance": "02",
@@ -48,8 +50,8 @@ payload: |-
         "sexe": "F"
       },
       {
-        "nomNaissance": "FLEURET",
-        "nomUsage": "FLEURET",
+        "nomNaissance": "BOBO",
+        "nomUsage": "BOBO",
         "prenoms": "Izumi",
         "anneeDateDeNaissance": "2019",
         "moisDateDeNaissance": "03",
@@ -57,8 +59,8 @@ payload: |-
         "sexe": "F"
       },
       {
-        "nomNaissance": "FLEURET",
-        "nomUsage": "FLEURET",
+        "nomNaissance": "BOBO",
+        "nomUsage": "BOBO",
         "prenoms": "Arata",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "08",
@@ -67,7 +69,7 @@ payload: |-
       }
     ],
     "adresse": {
-      "identite": "Monsieur et Madame Jean FLEURET",
+      "identite": "Monsieur et Madame Jacob BOBO",
       "complementInformation": null,
       "complementInformationGeographique": null,
       "numeroLibelleVoie": "1 RUE DE LILLE",

@@ -6,35 +6,37 @@ description: |-
 
 params:
   prenoms:
-    - 'EMOTO'
-  nomNaissance: "MASARU"
-  anneeDateDeNaissance: 1963
-  moisDateDeNaissance: 11
-  jourDateDeNaissance: 10
-  sexe: "M"
-  codePaysLieuDeNaissance: "99217"
+    - 'Lady'
+    - 'Di'
+  nomNaissance: "NUM"
+  anneeDateDeNaissance: 1962
+  moisDateDeNaissance: 8
+  jourDateDeNaissance: 24
+  sexe: "F"
+  codeInseeLieuDeNaissance: "29200"
+  codePaysLieuDeNaissance: "99100"
 status: 200
 payload: |-
   {
     "regime": "MSA",
     "allocataires": [
       {
-        "nomNaissance": "MASARU",
+        "nomNaissance": "NUM",
         "nomUsage": "MASARU",
-        "prenoms": "EMOTO",
-        "anneeDateDeNaissance": "1963",
-        "moisDateDeNaissance": "11",
-        "jourDateDeNaissance": "10",
-        "sexe": "M"
+        "prenoms": "Lady Di",
+        "anneeDateDeNaissance": "1962",
+        "moisDateDeNaissance": "08",
+        "jourDateDeNaissance": "24",
+        "sexe": "F"
       },
       {
-        "nomNaissance": "NGUYEN",
+        "nomNaissance": "MASARU",
         "nomUsage": "MASARU",
-        "prenoms": "SAKURA",
+        "prenoms": "Emoto",
         "anneeDateDeNaissance": "1970",
         "moisDateDeNaissance": "01",
         "jourDateDeNaissance": "03",
-        "sexe": "F"
+        "sexe": "M"
       }
     ],
     "enfants": [
