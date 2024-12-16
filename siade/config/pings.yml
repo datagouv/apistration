@@ -243,7 +243,7 @@ shared:
 
     cnaf_msa_quotient_familial:
       kind: 'make_request'
-      cache: <%= 15.minutes %>
+      cache: <%= 30.minutes %>
       provider: 'CNAV & MSA'
       status_page:
         name: "MSA & CNAV - Quotient familial (v2)"
@@ -268,7 +268,7 @@ shared:
 
     securite_sociale_complementaire_sante_solidaire:
       kind: 'make_request'
-      cache: <%= 15.minutes %>
+      cache: <%= 30.minutes %>
       provider: 'Sécurité sociale'
       status_page:
         name: "Sécurité sociale - Complémentaire santé solidaire"
@@ -282,7 +282,7 @@ shared:
 
     cnaf_msa_revenu_solidarite_active:
       kind: 'make_request'
-      cache: <%= 15.minutes %>
+      cache: <%= 30.minutes %>
       provider: 'CNAV & MSA'
       status_page:
         name: "MSA & CNAV - Revenu Solidarite Active"
@@ -296,7 +296,7 @@ shared:
 
     cnaf_msa_allocation_soutien_familial:
       kind: 'make_request'
-      cache: <%= 15.minutes %>
+      cache: <%= 30.minutes %>
       provider: 'CNAV & MSA'
       status_page:
         name: "MSA & CNAV - Allocation Soutien Familial"
@@ -310,7 +310,7 @@ shared:
 
     cnaf_msa_allocation_adulte_handicape:
       kind: 'make_request'
-      cache: <%= 15.minutes %>
+      cache: <%= 30.minutes %>
       provider: 'CNAV & MSA'
       status_page:
         name: "MSA & CNAV - Allocation Adulte Handicape"
@@ -324,7 +324,7 @@ shared:
 
     cnaf_msa_prime_activite:
       kind: 'make_request'
-      cache: <%= 15.minutes %>
+      cache: <%= 30.minutes %>
       provider: 'CNAV & MSA'
       status_page:
         name: "MSA & CNAV - Prime Activite"
