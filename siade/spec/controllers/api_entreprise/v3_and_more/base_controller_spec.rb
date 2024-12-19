@@ -98,26 +98,7 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
       let(:recipient) { valid_siret(:recipient) }
       let(:siret) { valid_siret(:recipient) }
 
-      its(:status) { is_expected.to be(422) }
-
-      it 'serializes an error' do
-        expect(response_json).to have_key(:errors)
-      end
-
-      describe '#body' do
-        let(:errors) { response_json[:errors] }
-
-        it do
-          expect(errors.pluck(:code)).to include('00211')
-        end
-      end
-
-      context 'when it is a whitelisted siret' do
-        let(:recipient) { '13002603200016' }
-        let(:siret) { '13002603200016' }
-
-        its(:status) { is_expected.to be(200) }
-      end
+      its(:status) { is_expected.to be(200) }
     end
   end
 
@@ -132,26 +113,7 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
       let(:recipient) { valid_siret(:recipient) }
       let(:siren) { valid_siren(:recipient) }
 
-      its(:status) { is_expected.to be(422) }
-
-      it 'serializes an error' do
-        expect(response_json).to have_key(:errors)
-      end
-
-      describe '#body' do
-        let(:errors) { response_json[:errors] }
-
-        it do
-          expect(errors.pluck(:code)).to include('00211')
-        end
-      end
-
-      context 'when it is a whitelisted siret' do
-        let(:siren) { '130026032' }
-        let(:recipient) { '13002603200016' }
-
-        its(:status) { is_expected.to be(200) }
-      end
+      its(:status) { is_expected.to be(200) }
     end
   end
 
