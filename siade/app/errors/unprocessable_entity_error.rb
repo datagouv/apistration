@@ -64,7 +64,8 @@ class UnprocessableEntityError < ApplicationError
       jour_date_naissance: '00424',
       date_naissance: '00425',
       code_cog_insee_commune_naissance: '00426',
-      sexe_etat_civil: '00427'
+      sexe_etat_civil: '00427',
+      code_cog_insee_departement_naissance: '00428'
     }.fetch(field) do
       raise KeyError, "#{field} is not a valid field name"
     end
