@@ -3,7 +3,9 @@ class Infogreffe::ValidateResponse < ValidateResponse
     return if http_ok? && payload_has_siren?
 
     resource_not_found!(:siren) if not_found_in_body?
+
     temporary_credentials_error! if temporary_credentials_error?
+    cant_generate_command_error! if cant_generate_command_error?
 
     provider_unavailable! if provider_unavailable_in_body?
 
@@ -51,6 +53,10 @@ class Infogreffe::ValidateResponse < ValidateResponse
     ]
   end
 
+  def cant_generate_command_code
+    '014'
+  end
+
   def provider_unavailable_code
     '999'
   end
@@ -60,9 +66,22 @@ class Infogreffe::ValidateResponse < ValidateResponse
       potential_error.starts_with?(temporary_credentials_error_code)
   end
 
-  def temporary_credentials_error!
-    context.errors << InfogreffeError.new(:temporary_credentials_error)
+  def cant_generate_command_error?
+    potential_error.present? &&
+      potential_error.starts_with?(cant_generate_command_code)
+  end
+
+  def infogreffe_specific_error!(kind)
+    context.errors << InfogreffeError.new(kind)
     context.fail!
+  end
+
+  def cant_generate_command_error!
+    infogreffe_specific_error!(:cant_generate_command)
+  end
+
+  def temporary_credentials_error!
+    infogreffe_specific_error!(:temporary_credentials_error)
   end
 
   def temporary_credentials_error_code

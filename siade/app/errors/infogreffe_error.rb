@@ -5,7 +5,8 @@ class InfogreffeError < AbstractSpecificProviderError
 
   def subcode_config
     {
-      temporary_credentials_error: '501'
+      temporary_credentials_error: '501',
+      cant_generate_command: '502'
     }
   end
 

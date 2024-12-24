@@ -424,6 +424,10 @@
   title: "Erreur temporaire d'identification d'Infogreffe"
   detail: "Une erreur d'identification a été relevée par le système, il s'agit généralement d'une erreur temporaire, veuillez réessayer dans quelques secondes."
 
+- code: '02502'
+  title: "Erreur de génération de commande d'Infogreffe"
+  detail: "Une erreur du fournisseur de données empêche la délivrance des informations, il s'agit certainement d'un numéro de siren hors périmètre."
+
 ## FranceConnect
 
 - code: '50001'

@@ -111,6 +111,15 @@ RSpec.describe Infogreffe::ValidateResponse, type: :validate_response do
       its(:errors) { is_expected.to include(instance_of(ProviderUnavailable)) }
     end
 
+    context 'with a cant generate command error' do
+      let(:code) { '200' }
+      let(:body) { "#{xml_open_tags}014-IMPOSSIBILITE DE GENERER LA COMMANDE-#{xml_close_tags}" }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(InfogreffeError)) }
+    end
+
     context 'with a valid code and a body containing nonsense' do
       let(:code) { '200' }
       let(:body) { 'Nonsense' }
