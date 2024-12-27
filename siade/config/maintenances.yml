@@ -12,14 +12,6 @@ production: &shared
   'MSA':
     from_hour: '03:00'
     to_hour: '03:30'
-  'ACOSS':
-    dates:
-      - day: '2023-10-08'
-        from_hour: '17:30'
-        to_hour: '23:59'
-      - day: '2023-10-09'
-        from_hour: '00:00'
-        to_hour: '10:30'
 
 sandbox: *shared
 staging: *shared
