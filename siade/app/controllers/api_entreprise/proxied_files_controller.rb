@@ -10,9 +10,7 @@ class APIEntreprise::ProxiedFilesController < ApplicationController
       head :not_found
     end
   rescue OpenURI::HTTPError => e
-    raise unless e.io.status.include?('404')
-
-    head :not_found
+    handle_http_error(e, url)
   rescue ProxiedFileService::ConnectionError
     head :service_unavailable
   end
@@ -35,6 +33,23 @@ class APIEntreprise::ProxiedFilesController < ApplicationController
     else
       extract_filename_from_url(url)
     end
+  end
+
+  def handle_http_error(exception, url)
+    case exception.io.status[0]
+    when '404'
+      head :not_found
+    when '504'
+      track_invalid_proxied_file('504', url)
+
+      head :bad_gateway
+    else
+      raise exception
+    end
+  end
+
+  def track_invalid_proxied_file(status, url)
+    MonitoringService.instance.track('info', 'Proxied file error', { status:, url: })
   end
 
   def extract_filename_from_url(url)

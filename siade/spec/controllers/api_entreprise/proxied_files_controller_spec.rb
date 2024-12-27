@@ -71,6 +71,22 @@ RSpec.describe APIEntreprise::ProxiedFilesController do
 
         it { is_expected.to have_http_status(:not_found) }
       end
+
+      context 'when url renders a 504' do
+        before do
+          stub_request(:any, 'https://example.com/url.pdf').to_return(
+            status: 504
+          )
+        end
+
+        it { is_expected.to have_http_status(:bad_gateway) }
+
+        it 'tracks the error as info' do
+          expect(MonitoringService.instance).to receive(:track).with('info', 'Proxied file error', { status: '504', url: 'https://example.com/url.pdf' })
+
+          subject
+        end
+      end
     end
   end
 end
