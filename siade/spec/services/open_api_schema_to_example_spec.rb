@@ -84,7 +84,7 @@ RSpec.describe OpenAPISchemaToExample do
     end
 
     it 'raise an error when invalid type found' do
-      expect { stubbed_json }.to raise_error(OpenAPISchemaToExample::InvalidOpenAPIType, '{"type"=>"unknown", "example"=>"useless"}')
+      expect { stubbed_json }.to raise_error(OpenAPISchemaToExample::InvalidOpenAPIType, '{"type" => "unknown", "example" => "useless"}')
     end
   end
 

@@ -91,7 +91,7 @@ RSpec.describe InterceptWithOpenAPIMockedPayloadInStaging do
 
         expect(MonitoringService.instance)
           .to have_received(:capture_message)
-          .with('Unknown type: {"type"=>"unknown", "example"=>"the expected example value"}', level: 'warning')
+          .with('Unknown type: {"type" => "unknown", "example" => "the expected example value"}', level: 'warning')
       end
     end
 
