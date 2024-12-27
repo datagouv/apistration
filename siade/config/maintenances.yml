@@ -12,6 +12,9 @@ production: &shared
   'MSA':
     from_hour: '03:00'
     to_hour: '03:30'
+  'Banque de France':
+    from_hour: '22:04'
+    to_hour: '22:08'
 
 sandbox: *shared
 staging: *shared

@@ -1783,6 +1783,9 @@ paths:
                   description: Problème de résolution DNS de l'adresse du serveur
               schema:
                 "$ref": "#/components/schemas/Error"
+      x-maintenances:
+        from_hour: '22:04'
+        to_hour: '22:08'
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
