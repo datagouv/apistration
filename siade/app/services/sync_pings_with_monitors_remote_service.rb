@@ -1,6 +1,3 @@
-require 'hyperping_api'
-require 'monitoring_service'
-
 class SyncPingsWithMonitorsRemoteService
   def perform
     logger.info('Start syncing pings with monitors')

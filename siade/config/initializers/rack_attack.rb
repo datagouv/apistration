@@ -1,8 +1,8 @@
 require 'rack/utils'
 require 'digest/sha2'
 
-require 'rate_limiting_service'
-require 'rate_limit_headers_middleware'
+require_relative '../../app/services/rate_limiting_service.rb'
+require_relative '../../app/lib/rate_limit_headers_middleware.rb'
 
 class Rack::Attack
   class << self
