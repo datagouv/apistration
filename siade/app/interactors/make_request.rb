@@ -46,7 +46,7 @@ class MakeRequest < ApplicationInteractor
     operation_id.include?('api_particulier_v2')
   end
 
-  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def api_call_with_error_handling
     response = api_call
 
@@ -63,16 +63,24 @@ class MakeRequest < ApplicationInteractor
     context.errors << NetworkError.new
     context.fail!
   rescue OpenSSL::SSL::SSLError => e
-    raise unless open_ssl_network_error?(e)
+    context.http_retry_count ||= 0
 
-    context.errors << NetworkError.new
-    context.fail!
+    if open_ssl_network_error?(e)
+      context.errors << NetworkError.new
+      context.fail!
+    elsif open_ssl_temporary_error?(e) && context.http_retry_count < 2
+      context.http_retry_count += 1
+
+      retry
+    else
+      raise
+    end
   rescue SocketError => e
     raise unless dns_lookup_error?(e)
 
     fail_to_request_provider!(DnsResolutionError)
   end
-  # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
   def api_call
     fail NotImplementedError
@@ -156,8 +164,15 @@ class MakeRequest < ApplicationInteractor
 
   def open_ssl_network_error?(exception)
     [
-      'SSLv3/TLS write client hello',
-      'SSL_read: unexpected eof while reading'
+      'SSLv3/TLS write client hello'
+    ].any? do |error_message|
+      exception.message.include?(error_message)
+    end
+  end
+
+  def open_ssl_temporary_error?(exception)
+    [
+      'unexpected eof while reading'
     ].any? do |error_message|
       exception.message.include?(error_message)
     end

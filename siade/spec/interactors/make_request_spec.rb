@@ -122,7 +122,7 @@ RSpec.describe MakeRequest, type: :interactor do
     context 'when it is an OpenSSL error' do
       let(:openssl_error) { OpenSSL::SSL::SSLError.new(ssl_error_message) }
 
-      before do
+      let!(:stubbed_request) do
         stub_request(:get, uri.to_s).to_raise(
           openssl_error
         )
@@ -138,13 +138,15 @@ RSpec.describe MakeRequest, type: :interactor do
         end
       end
 
-      context 'when it is a "SSL_read: unexpected eof while reading" error' do
-        let(:ssl_error_message) { 'SSL_read: unexpected eof while reading' }
+      context 'when it is a "unexpected eof while reading" error' do
+        let(:ssl_error_message) { 'unexpected eof while reading' }
 
-        it { is_expected.to be_a_failure }
+        it 'raises this error after retrying' do
+          expect {
+            subject
+          }.to raise_error(OpenSSL::SSL::SSLError)
 
-        it 'adds NetworkError to errors' do
-          expect(subject.errors).to include(instance_of(NetworkError))
+          expect(stubbed_request).to have_been_requested.times(3)
         end
       end
 
