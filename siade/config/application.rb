@@ -56,5 +56,7 @@ module Siade
     config.cache_store = :redis_cache_store, config_for(:cache_redis)
 
     config.active_record.schema_format = :sql
+
+    config.active_support.to_time_preserves_timezone = :zone
   end
 end
