@@ -186,13 +186,13 @@ GEM
       bigdecimal (~> 3.1)
     jsonapi-renderer (0.2.2)
     jwe (0.4.0)
-    jwt (2.9.3)
+    jwt (2.10.1)
       base64
     language_server-protocol (3.17.0.3)
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    lockbox (2.0.0)
+    lockbox (2.0.1)
     logger (1.6.4)
     logstasher (2.1.5)
       activesupport (>= 5.2)
@@ -218,18 +218,18 @@ GEM
       uri
     netrc (0.11.0)
     nio4r (2.7.4)
-    nokogiri (1.18.0)
+    nokogiri (1.18.1)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.18.0-aarch64-linux-gnu)
+    nokogiri (1.18.1-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.0-arm-linux-gnu)
+    nokogiri (1.18.1-arm-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.18.0-arm64-darwin)
+    nokogiri (1.18.1-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.0-x86_64-darwin)
+    nokogiri (1.18.1-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.0-x86_64-linux-gnu)
+    nokogiri (1.18.1-x86_64-linux-gnu)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -249,7 +249,8 @@ GEM
     openssl (3.2.0)
     optimist (3.2.0)
     ostruct (0.6.0)
-    ox (2.14.18)
+    ox (2.14.19)
+      bigdecimal (>= 3.0)
     parallel (1.26.3)
     parser (3.3.6.0)
       ast (~> 2.4.1)
@@ -472,7 +473,7 @@ DEPENDENCIES
   interactor
   json-schema
   jwe
-  jwt (~> 2.9)
+  jwt (~> 2.10)
   lockbox
   logstasher
   marcel
