@@ -6,7 +6,7 @@ class MockService
 
   def initialize(operation_id, params)
     @operation_id = operation_id
-    @params = params
+    @params = params.deep_transform_values(&:downcase)
   end
 
   def mock

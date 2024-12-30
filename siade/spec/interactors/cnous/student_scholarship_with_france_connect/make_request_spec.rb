@@ -58,7 +58,7 @@ RSpec.describe CNOUS::StudentScholarshipWithFranceConnect::MakeRequest, type: :m
         'api_particulier_v2_whatever',
         hash_including(
           {
-            given_name: 'Jean, Martin'
+            given_name: 'jean, martin'
           }
         )
       ).and_return(cnous_valid_payload('france_connect'))
