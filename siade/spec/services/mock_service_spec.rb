@@ -6,10 +6,10 @@ RSpec.describe MockService, type: :service do
     let(:params) { { 'param' => 'value' } }
 
     describe 'case insensitivity' do
-      let(:params) { { 'param' => 'VaLuE' } }
+      let(:params) { { 'param' => 'VaLuE', 'integer' => 1 } }
 
       it 'downcases all params' do # rubocop:disable RSpec/NoExpectationExample
-        allow(MockDataBackend).to receive(:get_response_for).with('controller_id', { 'param' => 'value' }).and_return({})
+        allow(MockDataBackend).to receive(:get_response_for).with('controller_id', { 'param' => 'value', 'integer' => 1 }).and_return({})
         subject
       end
     end
