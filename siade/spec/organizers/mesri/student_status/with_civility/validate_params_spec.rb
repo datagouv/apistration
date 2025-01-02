@@ -19,7 +19,7 @@ RSpec.describe MESRI::StudentStatus::WithCivility::ValidateParams, type: :valida
   let(:annee_date_naissance) { 2000 }
   let(:mois_date_naissance) { 1 }
   let(:jour_date_naissance) { 1 }
-  let(:code_cog_insee_commune_naissance) { 'Paris' }
+  let(:code_cog_insee_commune_naissance) { '99100' }
   let(:sexe_etat_civil) { 'M' }
 
   let(:token_id) { SecureRandom.uuid }
@@ -32,6 +32,12 @@ RSpec.describe MESRI::StudentStatus::WithCivility::ValidateParams, type: :valida
     let(:code_cog_insee_commune_naissance) { '' }
 
     it { is_expected.to be_a_success }
+  end
+
+  context 'with wrong birthday place' do
+    let(:code_cog_insee_commune_naissance) { '9919A' }
+
+    it { is_expected.to be_a_failure }
   end
 
   context 'without prenoms' do

@@ -3,5 +3,6 @@ class MESRI::StudentStatus::WithCivility::ValidateParams < ValidateParamsOrganiz
     Civility::ValidatePrenoms,
     Civility::ValidateDateNaissance,
     Civility::ValidateSexeEtatCivil,
+    Civility::ValidateCodeCogINSEECommuneNaissance,
     ServiceUser::ValidateTokenId
 end

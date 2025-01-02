@@ -99,7 +99,7 @@ RSpec.describe APIParticulier::V2::MESRI::StudentStatusController do
     let(:nom) { 'Dupont' }
     let(:prenom) { 'Jean' }
     let(:dateDeNaissance) { '2000-01-01' }
-    let(:lieuDeNaissance) { 'Paris' }
+    let(:lieuDeNaissance) { '99100' }
     let(:sexe) { 'm' }
     # rubocop:enable RSpec/VariableName
 

@@ -21,7 +21,7 @@ RSpec.describe MESRI::StudentStatus::WithCivility, type: :retriever_organizer do
     let(:annee_date_naissance) { 2000 }
     let(:mois_date_naissance) { 1 }
     let(:jour_date_naissance) { 1 }
-    let(:code_cog_insee_commune_naissance) { 'Paris' }
+    let(:code_cog_insee_commune_naissance) { '99100' }
     let(:sexe_etat_civil) { 'M' }
 
     describe 'happy path' do
