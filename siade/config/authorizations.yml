@@ -259,19 +259,25 @@ shared:
     - men_echelon_bourse
   api_particulier/v3_and_more/mesri/statut_etudiant_with_ine:
     - mesri_identite
-    - mesri_inscription
-    - mesri_regime
-    - mesri_etablissements
+    - mesri_admissions
+    - mesri_admission_inscrit
+    - mesri_admission_regime_formation
+    - mesri_admission_commune_etudes
+    - mesri_admission_etablissement_etudes
   api_particulier/v3_and_more/mesri/statut_etudiant_with_civility:
     - mesri_identite
-    - mesri_inscription
-    - mesri_regime
-    - mesri_etablissements
+    - mesri_admissions
+    - mesri_admission_inscrit
+    - mesri_admission_regime_formation
+    - mesri_admission_commune_etudes
+    - mesri_admission_etablissement_etudes
   api_particulier/v3_and_more/mesri/statut_etudiant_with_france_connect:
     - mesri_identite
-    - mesri_inscription
-    - mesri_regime
-    - mesri_etablissements
+    - mesri_admissions
+    - mesri_admission_inscrit
+    - mesri_admission_regime_formation
+    - mesri_admission_commune_etudes
+    - mesri_admission_etablissement_etudes
   api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_france_connect:
     - revenu_solidarite_active
     - revenu_solidarite_active_majoration

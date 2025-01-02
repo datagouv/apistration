@@ -46,7 +46,7 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with Civility', api: :pa
 
       too_many_requests(MESRI::StudentStatus::WithCivility)
 
-      let(:scopes) { %i[mesri_identite mesri_inscription mesri_regime mesri_etablissements] }
+      let(:scopes) { %i[mesri_identite mesri_admissions mesri_admission_inscrit mesri_admission_regime_formation mesri_admission_commune_etudes mesri_admission_etablissement_etudes] }
 
       describe 'with valid token and mandatory params', :valid do
         context 'when the student is found' do

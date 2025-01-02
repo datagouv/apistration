@@ -29,7 +29,7 @@ RSpec.describe 'API Particulier: Mesri: Statut Etudiant with INE', api: :particu
         },
         required: true
 
-      let(:scopes) { %i[mesri_identite mesri_inscription mesri_regime mesri_etablissements] }
+      let(:scopes) { %i[mesri_identite mesri_admissions mesri_admission_inscrit mesri_admission_regime_formation mesri_admission_commune_etudes mesri_admission_etablissement_etudes] }
 
       let(:ine) { '1234567890A' }
 

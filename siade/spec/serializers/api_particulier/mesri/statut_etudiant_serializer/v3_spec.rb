@@ -23,14 +23,59 @@ RSpec.describe APIParticulier::MESRI::StatutEtudiantSerializer::V3, type: :seria
       end
     end
 
-    context 'with mesri_inscription scope' do
-      let(:scopes) { %w[mesri_inscription] }
+    context 'with mesri_admissions scope' do
+      let(:scopes) { %w[mesri_admissions] }
 
       it 'has statut item' do
         subject[:data][:admissions].each do |admission_payload|
           expect(admission_payload).to have_key(:date_debut)
           expect(admission_payload).to have_key(:date_fin)
+          expect(admission_payload).not_to have_key(:est_inscrit)
+          expect(admission_payload).not_to have_key(:code_cog_insee_commune)
+          expect(admission_payload).not_to have_key(:regime_formation)
+          expect(admission_payload).not_to have_key(:etablissement_etudes)
+        end
+      end
+    end
+
+    context 'with mesri_admission_inscrit scope' do
+      let(:scopes) { %w[mesri_admissions mesri_admission_inscrit] }
+
+      it 'has regime item' do
+        subject[:data][:admissions].each do |admission_payload|
+          expect(admission_payload).to have_key(:date_debut)
+          expect(admission_payload).to have_key(:date_fin)
           expect(admission_payload).to have_key(:est_inscrit)
+          expect(admission_payload).not_to have_key(:code_cog_insee_commune)
+          expect(admission_payload).not_to have_key(:regime_formation)
+          expect(admission_payload).not_to have_key(:etablissement_etudes)
+        end
+      end
+    end
+
+    context 'with mesri_admission_regime_formation scope' do
+      let(:scopes) { %w[mesri_admissions mesri_admission_regime_formation] }
+
+      it 'has regime item' do
+        subject[:data][:admissions].each do |admission_payload|
+          expect(admission_payload).to have_key(:date_debut)
+          expect(admission_payload).to have_key(:date_fin)
+          expect(admission_payload).not_to have_key(:est_inscrit)
+          expect(admission_payload).not_to have_key(:code_cog_insee_commune)
+          expect(admission_payload).to have_key(:regime_formation)
+          expect(admission_payload).not_to have_key(:etablissement_etudes)
+        end
+      end
+    end
+
+    context 'with mesri_admission_commune_etudes scope' do
+      let(:scopes) { %w[mesri_admissions mesri_admission_commune_etudes] }
+
+      it 'has regime item' do
+        subject[:data][:admissions].each do |admission_payload|
+          expect(admission_payload).to have_key(:date_debut)
+          expect(admission_payload).to have_key(:date_fin)
+          expect(admission_payload).not_to have_key(:est_inscrit)
           expect(admission_payload).to have_key(:code_cog_insee_commune)
           expect(admission_payload).not_to have_key(:regime_formation)
           expect(admission_payload).not_to have_key(:etablissement_etudes)
@@ -38,30 +83,15 @@ RSpec.describe APIParticulier::MESRI::StatutEtudiantSerializer::V3, type: :seria
       end
     end
 
-    context 'with mesri_regime scope' do
-      let(:scopes) { %w[mesri_inscription mesri_regime] }
-
-      it 'has regime item' do
-        subject[:data][:admissions].each do |admission_payload|
-          expect(admission_payload).to have_key(:date_debut)
-          expect(admission_payload).to have_key(:date_fin)
-          expect(admission_payload).to have_key(:est_inscrit)
-          expect(admission_payload).to have_key(:code_cog_insee_commune)
-          expect(admission_payload).to have_key(:regime_formation)
-          expect(admission_payload).not_to have_key(:etablissement_etudes)
-        end
-      end
-    end
-
     context 'with mesri_etablissements scope' do
-      let(:scopes) { %w[mesri_inscription mesri_etablissements] }
+      let(:scopes) { %w[mesri_admissions mesri_admission_etablissement_etudes] }
 
       it 'has etablissements items' do
         subject[:data][:admissions].each do |admission_payload|
           expect(admission_payload).to have_key(:date_debut)
           expect(admission_payload).to have_key(:date_fin)
-          expect(admission_payload).to have_key(:est_inscrit)
-          expect(admission_payload).to have_key(:code_cog_insee_commune)
+          expect(admission_payload).not_to have_key(:est_inscrit)
+          expect(admission_payload).not_to have_key(:code_cog_insee_commune)
           expect(admission_payload).to have_key(:etablissement_etudes)
           expect(admission_payload).not_to have_key(:regime_formation)
           expect(admission_payload).not_to have_key(:code_formation)
