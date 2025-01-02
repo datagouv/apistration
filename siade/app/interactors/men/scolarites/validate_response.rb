@@ -15,6 +15,10 @@ class MEN::Scolarites::ValidateResponse < ValidateResponse
 
   private
 
+  def provider_timeout_error!
+    fail_with_error!(ProviderTimeoutError.new('MEN'))
+  end
+
   def resource_not_found!
     fail_with_error!(build_error(::NotFoundError, 'Aucun élève n\'a pu être trouvé avec les critères de recherche fournis'))
   end

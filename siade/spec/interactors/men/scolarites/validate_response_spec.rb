@@ -26,6 +26,14 @@ RSpec.describe MEN::Scolarites::ValidateResponse, type: :validate_response do
     its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
   end
 
+  context 'with a provider timeout response' do
+    let(:response) { instance_double(Net::HTTPGatewayTimeOut, code: '504') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderTimeoutError)) }
+  end
+
   context 'with an unknown error' do
     let(:response) { instance_double(Net::HTTPUnknownResponse, code: '506') }
 
