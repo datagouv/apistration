@@ -1,4 +1,4 @@
-RSpec.describe CNAV::ValidateCodeCogINSEECommuneNaissance, type: :validate_param_interactor do
+RSpec.describe Civility::ValidateCodeCogINSEECommuneNaissance, type: :validate_param_interactor do
   subject { described_class.call(params: { code_cog_insee_commune_naissance:, code_cog_insee_pays_naissance: }) }
 
   let(:code_cog_insee_pays_naissance) { nil }
