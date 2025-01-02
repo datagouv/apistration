@@ -40,7 +40,7 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params 
   let(:request_id) { SecureRandom.uuid }
   let(:recipient) { valid_siret }
 
-  let(:annee) { Time.zone.now.year }
+  let(:annee) { 2024 }
   let(:mois) { 2 }
 
   describe 'with transcogage params' do
