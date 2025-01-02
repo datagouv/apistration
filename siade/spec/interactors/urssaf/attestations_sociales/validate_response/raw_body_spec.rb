@@ -27,6 +27,17 @@ RSpec.describe URSSAF::AttestationsSociales::ValidateResponse::RawBody, type: :v
       its(:cacheable) { is_expected.to be(false) }
     end
 
+    context 'with an HTML body error and a 404 response' do
+      let(:body) { read_payload_file('urssaf/server_error.html') }
+      let(:code) { 404 }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
+
+      its(:cacheable) { is_expected.to be(false) }
+    end
+
     context 'when body has an error payload' do
       let(:body) { json_errors.to_json }
 

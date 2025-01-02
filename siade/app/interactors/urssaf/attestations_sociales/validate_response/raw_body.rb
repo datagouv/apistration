@@ -2,6 +2,8 @@ class URSSAF::AttestationsSociales::ValidateResponse::RawBody < ValidateResponse
   def call
     if body.blank?
       internal_server_error!('Le corps de la réponse est vide, il s\'agit d\'une erreur interne du fournisseur')
+    elsif provider_server_error?
+      build_and_fail!(ProviderInternalServerError)
     elsif json_body_has_errors?
       handle_errors
     end
@@ -69,6 +71,10 @@ class URSSAF::AttestationsSociales::ValidateResponse::RawBody < ValidateResponse
 
   def internal_error?
     error_code_acoss_for_503.intersect?(errors_codes)
+  end
+
+  def provider_server_error?
+    body.include?('Une erreur est survenue sur le serveur') && response.code == 404
   end
 
   def manual_verification_asked?
