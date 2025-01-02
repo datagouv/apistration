@@ -65,6 +65,18 @@ RSpec.describe FranceTravail::Indemnites::ValidateResponse, type: :validate_resp
     its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
   end
 
+  context 'with 500 response and a timeout in body' do
+    let(:response) do
+      instance_double(Net::HTTPInternalServerError, code: 500, body:)
+    end
+
+    let(:body) { read_payload_file('france_travail/timeout.json') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderTimeoutError)) }
+  end
+
   context 'with an unknown error' do
     let(:response) { instance_double(Net::HTTPBadRequest, code: '400') }
 

@@ -1,0 +1,4 @@
+{
+  "codeErreur": "01",
+  "messageLog": "Erreur technique lors de l'appel REST du service : java.util.concurrent.TimeoutException"
+}
