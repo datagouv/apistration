@@ -4,7 +4,7 @@ class FranceTravail::Indemnites::ValidateResponse < ValidateResponse
 
     handle_timeout! if france_travail_timeout?
 
-    unknown_provider_response! if !http_ok? || invalid_json? || !json_body.key?('statutInscription')
+    unknown_provider_response! if invalid_code_or_payload?
 
     resource_not_found! if no_paiements?
   end
@@ -21,6 +21,10 @@ class FranceTravail::Indemnites::ValidateResponse < ValidateResponse
 
   def no_paiements?
     json_body['listePaiement'].blank?
+  end
+
+  def invalid_code_or_payload?
+    !http_ok? || invalid_json? || !json_body.key?('statutInscription')
   end
 
   def resource_not_found!
