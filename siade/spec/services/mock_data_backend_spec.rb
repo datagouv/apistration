@@ -118,7 +118,7 @@ RSpec.describe MockDataBackend, type: :service do
         let(:operation_id) { 'whatever_endpoint2' }
         let(:params) { { 'whatever' => 'whatever' } }
 
-        it 'returns hash with status and payload' do
+        it 'returns hash with status and payload, case insensitive' do
           expect(subject).to eq(
             status: 200,
             payload: {

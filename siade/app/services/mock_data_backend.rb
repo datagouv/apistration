@@ -62,12 +62,16 @@ class MockDataBackend
     content = YAML.load(extract_content_from_github(file[:sha]))
 
     [
-      content['params'].to_query,
+      deep_downcase(content['params']).to_query,
       {
         status: content['status'],
         payload: JSON.parse(content['payload'])
       }
     ]
+  end
+
+  def deep_downcase(hash)
+    hash.deep_transform_values { |v| v.is_a?(String) ? v.downcase : v }
   end
 
   def fetch_payloads_paths

@@ -1,6 +1,6 @@
 ---
 params:
-  whatever: 'whatever'
+  whatever: 'WHATEVER'
 status: 200
 payload: '
   {
