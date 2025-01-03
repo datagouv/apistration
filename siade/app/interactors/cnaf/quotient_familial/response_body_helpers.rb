@@ -6,6 +6,6 @@ module CNAF::QuotientFamilial::ResponseBodyHelpers
   end
 
   def xml_without_mime
-    @xml_without_mime ||= Nokogiri.XML(response.body.split("\n")[4..].join("\n").strip)
+    @xml_without_mime ||= Nokogiri.XML(response.body.match(%r{<\?xml.*?</soapenv:Envelope>}m)&.to_s)
   end
 end

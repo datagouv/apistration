@@ -67,6 +67,14 @@ RSpec.describe CNAF::QuotientFamilial::ValidateResponse, type: :validate_respons
 
           its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
         end
+
+        context 'when no QF in response and MIME formatting is different' do
+          let(:body) { read_payload_file('cnaf/quotient_familial_no_qf_different_mime_format.mime') }
+
+          it { is_expected.to be_a_failure }
+
+          its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+        end
       end
     end
   end
