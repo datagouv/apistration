@@ -60,7 +60,7 @@ class ValidateResponse < ApplicationInteractor
   end
 
   def encrypt_params
-    EncryptData.new(context.params.to_json).perform
+    DataEncryptor.new(context.params.to_json).encrypt
   end
 
   def api_particulier?

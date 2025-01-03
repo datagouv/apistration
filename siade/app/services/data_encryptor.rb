@@ -1,9 +1,9 @@
-class EncryptData
+class DataEncryptor
   def initialize(data)
     @data = data
   end
 
-  def perform
+  def encrypt
     crypto.encrypt(GPGME::Data.new(@data), encrypt_options)
   end
 

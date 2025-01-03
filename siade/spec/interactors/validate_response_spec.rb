@@ -35,10 +35,10 @@ RSpec.describe ValidateResponse do
   context 'with an unknown provider response' do
     let(:response) { instance_double(Net::HTTPInternalServerError, code: '500', body: error_body, to_hash: { 'header' => 'value' }) }
     let(:error_body) { 'FATAL ERROR' }
-    let(:encrypt_data) { instance_double(EncryptData, perform: 'encrypted_data') }
+    let(:encrypt_data) { instance_double(DataEncryptor, encrypt: 'encrypted_data') }
 
     before do
-      allow(EncryptData).to receive(:new).and_return(encrypt_data)
+      allow(DataEncryptor).to receive(:new).and_return(encrypt_data)
     end
 
     it { is_expected.to be_a_failure }
@@ -61,7 +61,7 @@ RSpec.describe ValidateResponse do
       end
 
       it 'does not call encrypt data service with params as json' do
-        expect(EncryptData).not_to receive(:new).with(params.to_json)
+        expect(DataEncryptor).not_to receive(:new).with(params.to_json)
 
         subject
       end
@@ -86,7 +86,7 @@ RSpec.describe ValidateResponse do
       end
 
       it 'calls encrypt data service with params as json' do
-        expect(EncryptData).to receive(:new).with(params.to_json)
+        expect(DataEncryptor).to receive(:new).with(params.to_json)
 
         subject
       end

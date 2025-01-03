@@ -1,6 +1,6 @@
-RSpec.describe EncryptData do
-  describe '#perform' do
-    subject { described_class.new(data).perform }
+RSpec.describe DataEncryptor do
+  describe '#encrypt' do
+    subject { described_class.new(data).encrypt }
 
     let(:crypto) { GPGME::Crypto.new }
     let(:data) { 'data' }

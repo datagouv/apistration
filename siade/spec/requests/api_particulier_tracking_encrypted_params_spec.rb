@@ -24,7 +24,7 @@ RSpec.describe 'API Particulier: tracking encrypted params' do
   end
 
   it 'calls encrypt data service', vcr: { cassette_name: 'france_travail/oauth2' } do
-    expect(EncryptData).to receive(:new).and_call_original
+    expect(DataEncryptor).to receive(:new).and_call_original
 
     subject
   end
