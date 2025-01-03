@@ -65,7 +65,7 @@ RSpec.describe CNAF::QuotientFamilial::ValidateResponse, type: :validate_respons
 
           it { is_expected.to be_a_failure }
 
-          its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+          its(:errors) { is_expected.to include(instance_of(CNAFMissingQFError)) }
         end
 
         context 'when no QF in response and MIME formatting is different' do
@@ -73,7 +73,7 @@ RSpec.describe CNAF::QuotientFamilial::ValidateResponse, type: :validate_respons
 
           it { is_expected.to be_a_failure }
 
-          its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+          its(:errors) { is_expected.to include(instance_of(CNAFMissingQFError)) }
         end
       end
     end

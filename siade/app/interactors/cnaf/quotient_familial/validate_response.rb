@@ -7,9 +7,9 @@ class CNAF::QuotientFamilial::ValidateResponse < ValidateResponse
 
     resource_not_found! if not_found?
 
-    unknown_provider_response! if qf_unavailable?
+    missing_qf! if qf_unavailable?
 
-    return if http_ok? && data_present?
+    return if http_ok? && !qf_unavailable?
 
     unknown_provider_response!
   end
@@ -20,18 +20,9 @@ class CNAF::QuotientFamilial::ValidateResponse < ValidateResponse
     fail_with_error!(build_error(::NotFoundError, libelle_retour))
   end
 
-  def data_present?
-    data.css('adresse').present?
-  end
-
   def not_found?
     beneficiary_not_found? ||
-      disbared_beneficiary? ||
-      data_missing?
-  end
-
-  def data_missing?
-    !data_present?
+      disbared_beneficiary?
   end
 
   def internal_server_error?
@@ -53,5 +44,9 @@ class CNAF::QuotientFamilial::ValidateResponse < ValidateResponse
 
   def qf_unavailable?
     data.css('quotients').css('QFMOIS').empty?
+  end
+
+  def missing_qf!
+    fail_with_error!(::CNAFMissingQFError.new(:missing_qf))
   end
 end

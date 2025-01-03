@@ -432,6 +432,12 @@
   title: "Erreur de génération de commande d'Infogreffe"
   detail: "Une erreur du fournisseur de données empêche la délivrance des informations, il s'agit certainement d'un numéro de siren hors périmètre."
 
+## CNAF
+
+- code: '23502'
+  title: 'Quotient familial manquant'
+  detail: 'Le bénéficiaire a bien été trouvé mais la réponse du fournisseur de données ne retourne pas de quotient familial.'
+
 ## FranceConnect
 
 - code: '50001'
