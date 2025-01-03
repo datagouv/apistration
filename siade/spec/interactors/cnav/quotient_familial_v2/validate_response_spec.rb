@@ -34,7 +34,7 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateResponse, type: :validate_respo
 
     let(:body) { read_payload_file('cnav/quotient_familial_v2/404.json') }
     let(:error_body) { 'FATAL ERROR' }
-    let(:encrypt_data) { instance_double(DataEncryptor, perform: 'encrypted_data') }
+    let(:encrypt_data) { instance_double(DataEncryptor, encrypt: 'encrypted_data') }
 
     it { is_expected.to be_a_failure }
     its(:errors) { is_expected.to include(instance_of(NotFoundError)) }

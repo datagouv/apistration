@@ -95,3 +95,4 @@ config/credentials/staging.yml.enc
 
 sandbox/
 .deploy_token
+.sentry_token
