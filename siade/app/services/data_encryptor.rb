@@ -7,6 +7,10 @@ class DataEncryptor
     crypto.encrypt(GPGME::Data.new(@data), encrypt_options)
   end
 
+  def decrypt
+    crypto.decrypt(GPGME::Data.new(@data), pinentry_mode: GPGME::PINENTRY_MODE_LOOPBACK, passphrase_callback: method(:passphrase_callback))
+  end
+
   private
 
   def crypto
