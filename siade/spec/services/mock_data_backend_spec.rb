@@ -11,6 +11,7 @@ RSpec.describe MockDataBackend, type: :service do
   end
 
   before do
+    described_class.reset!
     allow(Octokit::Client).to receive(:new).and_return(github_client)
 
     allow(github_client).to receive(:tree).and_return(
