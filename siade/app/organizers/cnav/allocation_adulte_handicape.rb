@@ -1,6 +1,5 @@
 class CNAV::AllocationAdulteHandicape < CNAV::RetrieverOrganizer
   organize CNAV::ValidateParams,
-    CNAV::ExtractCodeCommuneFromTranscogage,
     CNAV::Authenticate,
     CNAV::MakeRequest,
     CNAV::ValidateResponse,

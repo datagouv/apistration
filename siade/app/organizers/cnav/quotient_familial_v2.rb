@@ -8,7 +8,6 @@ class CNAV::QuotientFamilialV2 < CNAV::RetrieverOrganizer
   }.freeze
 
   organize CNAV::QuotientFamilialV2::ValidateParams,
-    CNAV::ExtractCodeCommuneFromTranscogage,
     CNAV::Authenticate,
     CNAV::QuotientFamilialV2::MakeRequest,
     CNAV::QuotientFamilialV2::ValidateResponse,

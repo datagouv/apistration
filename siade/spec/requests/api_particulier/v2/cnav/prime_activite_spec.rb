@@ -59,31 +59,6 @@ RSpec.describe "CNAV: Prime d'activité", api: :particulierv2, type: %i[request 
           end
         end
 
-        describe 'with transcogage params', vcr: { cassette_name: 'insee/metadonnees/one_result' } do
-          let(:codeInseeLieuDeNaissance) { nil }
-          let(:nomCommuneNaissance) { 'Gennevilliers' }
-          let(:codeInseeDepartementNaissance) { '92' }
-          let(:anneeDateDeNaissance) { 2000 }
-
-          before do
-            stub_cnav_valid('prime_activite', siret: '13002526500013', extra_params: { codeLieuNaissance: '92036', dateNaissance: '2000-06-12' })
-          end
-
-          describe 'with valid token and mandatory params' do
-            response '200', 'Prime activité trouvée' do
-              description SwaggerData.get('cnav.v2.prime_activite.description')
-
-              cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
-
-              schema build_rswag_response_api_particulier_v2(
-                attributes: SwaggerData.get('cnav.v2.prime_activite.attributes')
-              )
-
-              run_test!
-            end
-          end
-        end
-
         describe 'server errors' do
           response '400', 'Mauvais paramètres d\'appels' do
             let(:sexe) { 'nope' }

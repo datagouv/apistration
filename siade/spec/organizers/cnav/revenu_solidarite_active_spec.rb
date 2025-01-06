@@ -22,50 +22,6 @@ RSpec.describe CNAV::RevenuSolidariteActive, type: :retriever_organizer do
 
     let(:sexe_etat_civil) { 'M' }
 
-    context 'when it is with transcogage params' do
-      before do
-        stub_cnav_authenticate('revenu_solidarite_active')
-      end
-
-      let(:params) do
-        common_params.merge(
-          nom_commune_naissance:,
-          annee_date_naissance: '2000',
-          code_cog_insee_departement_naissance: '92'
-        )
-      end
-
-      context 'with valid params for transcogage', vcr: { cassette_name: 'insee/metadonnees/one_result' } do
-        let!(:stubbed_cnav_request) do
-          stub_cnav_valid('revenu_solidarite_active', extra_params: { codeLieuNaissance: '92036', dateNaissance: '2000-06-12' })
-        end
-
-        let(:nom_commune_naissance) { 'Gennevilliers' }
-
-        it 'calls with the retrieved code insee lieu de naissance from INSEE::CommuneINSEECode' do
-          subject
-
-          expect(stubbed_cnav_request).to have_been_requested
-        end
-
-        it { is_expected.to be_a_success }
-
-        it 'retrieves the resource' do
-          resource = subject.bundled_data.data
-
-          expect(resource).to be_present
-        end
-      end
-
-      context 'with invalid transcogage params', vcr: { cassette_name: 'insee/metadonnees/no_result' } do
-        let(:nom_commune_naissance) { 'invalid' }
-
-        it { is_expected.to be_a_failure }
-
-        its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
-      end
-    end
-
     context 'when it is with code insee lieu de naissance' do
       let(:params) do
         common_params.merge(

@@ -40,31 +40,6 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulierv2, typ
         let(:jourDateDeNaissance) { 12 }
         let(:codePaysLieuDeNaissance) { '99100' }
 
-        describe 'with transcogage params', vcr: { cassette_name: 'insee/metadonnees/one_result' } do
-          let(:codeInseeLieuDeNaissance) { nil }
-          let(:nomCommuneNaissance) { 'Gennevilliers' }
-          let(:codeInseeDepartementNaissance) { '92' }
-          let(:anneeDateDeNaissance) { 2000 }
-
-          before do
-            stub_cnav_valid('complementaire_sante_solidaire', siret: '13002526500013', extra_params: { codeLieuNaissance: '92036', dateNaissance: '2000-06-12' })
-          end
-
-          describe 'with valid token and mandatory params' do
-            response '200', 'Complémentaire Santé trouvée' do
-              description SwaggerData.get('cnav.v2.c2s.description')
-
-              cacheable_response(extra_description: SwaggerData.get('cnav.v2.commons.cache_duration'))
-
-              schema build_rswag_response_api_particulier_v2(
-                attributes: SwaggerData.get('cnav.v2.c2s.attributes')
-              )
-
-              run_test!
-            end
-          end
-        end
-
         context 'with code insee lieu de naissance' do
           let(:codeInseeLieuDeNaissance) { '17300' }
 

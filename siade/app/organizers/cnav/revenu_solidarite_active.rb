@@ -1,6 +1,5 @@
 class CNAV::RevenuSolidariteActive < CNAV::RetrieverOrganizer
   organize CNAV::ValidateParams,
-    CNAV::ExtractCodeCommuneFromTranscogage,
     CNAV::Authenticate,
     CNAV::MakeRequest,
     CNAV::ValidateResponse,
