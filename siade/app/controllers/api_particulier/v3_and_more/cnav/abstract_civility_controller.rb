@@ -15,7 +15,7 @@ class APIParticulier::V3AndMore::CNAV::AbstractCivilityController < APIParticuli
   protected
 
   def transcogage?
-    true
+    false
   end
 
   def cache_key
