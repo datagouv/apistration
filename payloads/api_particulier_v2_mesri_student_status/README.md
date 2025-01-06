@@ -2069,8 +2069,8 @@
     "dateNaissance": "2002-10-13",
     "inscriptions": [
       {
-        "dateDebutInscription": "2023-09-01",
-        "dateFinInscription": "2024-06-31",
+        "dateDebutInscription": "2024-09-01",
+        "dateFinInscription": "2025-06-31",
         "statut": "inscrit",
         "codeCommune": "75020",
         "etablissement": {
@@ -2125,8 +2125,8 @@
     "dateNaissance": "1988-09-10",
     "inscriptions": [
       {
-        "dateDebutInscription": "2021-09-16",
-        "dateFinInscription": "2023-07-25",
+        "dateDebutInscription": "2024-09-01",
+        "dateFinInscription": "2025-06-31",
         "statut": "inscrit",
         "codeCommune": "75020",
         "etablissement": {
@@ -2182,8 +2182,8 @@
     "dateNaissance": "2002-01-02",
     "inscriptions": [
       {
-        "dateDebutInscription": "2022-09-05",
-        "dateFinInscription": "2023-05-29",
+        "dateDebutInscription": "2024-09-01",
+        "dateFinInscription": "2025-06-31",
         "statut": "inscrit",
         "codeCommune": "75020",
         "etablissement": {
