@@ -110,15 +110,6 @@ shared:
   api_entreprise/v3_and_more/inpi/actes:
     - actes_inpi
     - open_data
-  api_entreprise/v3_and_more/inpi/latest_brevets:
-    - extrait_court_inpi
-    - open_data
-  api_entreprise/v3_and_more/inpi/latest_marques:
-    - extrait_court_inpi
-    - open_data
-  api_entreprise/v3_and_more/inpi/latest_modeles:
-    - extrait_court_inpi
-    - open_data
   api_entreprise/v3_and_more/insee/adresses_etablissements:
     - etablissements
     - unites_legales_etablissements_insee

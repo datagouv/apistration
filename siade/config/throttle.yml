@@ -29,9 +29,6 @@ shared:
       - { controller: 'api_entreprise/v3_and_more/dgddi/eori', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/infogreffe/mandataires_sociaux', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/infogreffe/extraits_rcs', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/inpi/latest_brevets', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/inpi/latest_marques', action: 'show' }
-      - { controller: 'api_entreprise/v3_and_more/inpi/latest_modeles', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/insee/unites_legales', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/insee/unites_legales_diffusables', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/insee/etablissements', action: 'show' }
