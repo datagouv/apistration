@@ -1074,7 +1074,7 @@ Ce cas permet de tester :
     "data": {
       "est_beneficiaire": true,
       "avec_participation": false,
-      "date_debut_droit": "2023-11-29"
+      "date_debut_droit": "2024-02-02"
     },
     "links": {
     },
