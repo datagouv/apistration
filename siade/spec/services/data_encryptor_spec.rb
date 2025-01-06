@@ -14,12 +14,12 @@ RSpec.describe DataEncryptor do
   end
 
   describe '#decrypt' do
-    subject { described_class.new(data).decrypt }
+    subject { described_class.new(data).decrypt.to_s }
 
-    let(:data) { described_class.new('data').encrypt }
+    let(:data) { described_class.new('data').encrypt.read }
 
     it 'can descrypt encrypted data' do
-      expect(subject.to_s).to eq('data')
+      expect(subject).to eq('data')
     end
   end
 end

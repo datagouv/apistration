@@ -8,7 +8,7 @@ class DataEncryptor
   end
 
   def decrypt
-    crypto.decrypt(GPGME::Data.new(@data), pinentry_mode: GPGME::PINENTRY_MODE_LOOPBACK, passphrase_callback: method(:passphrase_callback))
+    crypto.decrypt(GPGME::Data.new(@data), decrypt_options)
   end
 
   private
@@ -19,12 +19,19 @@ class DataEncryptor
 
   def encrypt_options
     {
-      recipients: public_key_ids,
+      recipients: public_key_ids + signer_key_id,
       signers: signer_info[:signer_email],
       pinentry_mode: GPGME::PINENTRY_MODE_LOOPBACK,
       always_trust: true,
       sign: true,
       armor: true,
+      passphrase_callback: method(:passphrase_callback)
+    }
+  end
+
+  def decrypt_options
+    {
+      pinentry_mode: GPGME::PINENTRY_MODE_LOOPBACK,
       passphrase_callback: method(:passphrase_callback)
     }
   end
@@ -39,6 +46,10 @@ class DataEncryptor
     Dir['config/gpg_public_keys_for_data_encryption/*.asc'].map do |key|
       GPGME::Key.import(File.open(key)).imports.first.fpr
     end
+  end
+
+  def signer_key_id
+    GPGME::Key.find(:public, signer_info[:signer_email])
   end
 
   def signer_info
