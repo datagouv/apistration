@@ -59,7 +59,6 @@ RSpec.describe 'MEN: Scolarites', api: :particulierv2, type: %i[request swagger]
         required: SwaggerData.get('men.scolarite.v2.parameters.annee_scolaire.required')
 
       # rubocop:disable RSpec/VariableName
-      let(:'X-Api-Key') { x_api_key }
 
       let(:dateNaissance) { '2000-06-10' }
       let(:codeEtablissement) { '0511474A' }
@@ -69,24 +68,42 @@ RSpec.describe 'MEN: Scolarites', api: :particulierv2, type: %i[request swagger]
       let(:prenom) { 'prenom' }
       let(:sexe) { 'f' }
 
-      let(:x_api_key) { nil }
-      let(:scopes) { nil }
-
       describe 'with valid token and mandatory params' do
-        let(:x_api_key) { TokenFactory.new(scopes).valid }
-        let(:scopes) { %w[men_statut_scolarite men_statut_boursier men_echelon_bourse] }
 
-        response '200', 'Scolarité trouvée', vcr: { cassette_name: 'men/scolarites/valid' } do
-          description SwaggerData.get('men.scolarite.v2.description')
+        context 'when user does not have any boursier scopes' do
+          let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
+          let!(:scopes) { %w[men_statut_identite men_statut_scolarite men_statut_etablissement men_statut_module_elementaire_formation] }
 
-          schema build_rswag_response_api_particulier_v2(
-            attributes: SwaggerData.get('men.scolarite.v2.attributes')
-          )
+          response '200', 'Scolarité trouvée v2', vcr: { cassette_name: 'men/scolarites/valid_v2' } do
+            description SwaggerData.get('men.scolarite.v2.description')
 
-          run_test!
+            schema build_rswag_response_api_particulier_v2(
+              attributes: SwaggerData.get('men.scolarite.v2.attributes')
+            )
+
+            run_test!
+          end
+        end
+
+        context 'when user has included boursier scopes' do
+          let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
+          let!(:scopes) { %w[men_statut_scolarite men_statut_boursier men_echelon_bourse] }
+
+          response '200', 'Scolarité trouvée', vcr: { cassette_name: 'men/scolarites/valid' } do
+            description SwaggerData.get('men.scolarite.v2.description')
+
+            schema build_rswag_response_api_particulier_v2(
+              attributes: SwaggerData.get('men.scolarite.v2.attributes')
+            )
+
+            run_test!
+          end
         end
 
         describe 'server errors' do
+          let(:'X-Api-Key') { TokenFactory.new(scopes).valid }
+          let!(:scopes) { %w[men_statut_scolarite men_statut_boursier men_echelon_bourse] }
+
           response '400', 'Paramètre(s) invalide(s)' do
             let(:sexe) { 'invalid' }
 

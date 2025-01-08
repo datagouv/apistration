@@ -14,7 +14,8 @@ RSpec.describe MEN::Scolarites::MakeRequest, type: :make_request do
           mois_date_naissance: '06',
           annee_date_naissance: '2000',
           code_etablissement: '0511474A',
-          annee_scolaire: '2021'
+          annee_scolaire: '2021',
+          provider_api_version: 'v1'
         }
       end
 
@@ -33,7 +34,28 @@ RSpec.describe MEN::Scolarites::MakeRequest, type: :make_request do
           mois_date_naissance: '06',
           annee_date_naissance: '2000',
           code_etablissement: '0511474A',
-          annee_scolaire: '2021'
+          annee_scolaire: '2021',
+          provider_api_version: 'v1'
+        }
+      end
+
+      it { is_expected.to be_a_success }
+
+      its(:response) { is_expected.to be_a(Net::HTTPOK) }
+    end
+
+    context 'with a sexe_etat_civil upcased (non-regression test)', vcr: { cassette_name: 'men/scolarites/valid_v2' } do
+      let(:params) do
+        {
+          nom_naissance: 'NOMFAMILLE',
+          prenoms: ['prenom'],
+          sexe_etat_civil: 'F',
+          jour_date_naissance: '10',
+          mois_date_naissance: '06',
+          annee_date_naissance: '2000',
+          code_etablissement: '0511474A',
+          annee_scolaire: '2021',
+          provider_api_version: 'v2'
         }
       end
 

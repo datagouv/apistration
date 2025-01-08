@@ -4,7 +4,6 @@ class APIParticulier::MEN::Scolarites::V2 < APIParticulier::V2BaseSerializer
   end
 
   %i[
-    code_etablissement
     annee_scolaire
     est_scolarise
   ].each do |resource_attribute|
@@ -13,6 +12,10 @@ class APIParticulier::MEN::Scolarites::V2 < APIParticulier::V2BaseSerializer
 
   attribute :status_eleve, if: -> { scope?(:men_statut_scolarite) } do
     object.statut_eleve
+  end
+
+  attribute :code_etablissement do
+    object.etablissement[:code_uai]
   end
 
   attribute :est_boursier, if: -> { scope?(:men_statut_boursier) }

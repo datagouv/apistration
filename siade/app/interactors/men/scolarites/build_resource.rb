@@ -15,9 +15,16 @@ class MEN::Scolarites::BuildResource < BuildResource
         code: json_body['info-scolarite']['statut-eleve']['code'],
         libelle: json_body['info-scolarite']['statut-eleve']['libelle']
       },
-      est_boursier: json_body['info-bourse']['est-boursier'],
-      echelon_bourse: json_body['info-bourse']['niveau-bourse'],
-      code_etablissement: json_body['identification']['etablissement']['code-uai']
+      module_elementaire_formation: {
+        code_mef_stat: json_body['info-scolarite']['code-mef-stat'],
+        libelle: json_body['info-scolarite']['libelle-long_mef']
+      },
+      est_boursier: json_body['info-bourse'].try(:[], 'est-boursier'),
+      echelon_bourse: json_body['info-bourse'].try(:[], 'niveau-bourse'),
+      etablissement: {
+        code_uai: json_body['identification']['etablissement']['code-uai'],
+        code_ministere_tutelle: json_body['identification']['etablissement']['ministere-tutelle']
+      }
     }
   end
 

@@ -2,7 +2,7 @@ class MEN::Scolarites::MakeRequest < MakeRequest::Get
   protected
 
   def request_uri
-    URI(Siade.credentials[:men_scolarites_url_v1])
+    URI(Siade.credentials[:"men_scolarites_url_#{provider_api_version}"])
   end
 
   def request_params
@@ -70,5 +70,9 @@ class MEN::Scolarites::MakeRequest < MakeRequest::Get
       context.params[:mois_date_naissance],
       context.params[:jour_date_naissance]
     ).format
+  end
+
+  def provider_api_version
+    context.params[:provider_api_version] || 'v2'
   end
 end

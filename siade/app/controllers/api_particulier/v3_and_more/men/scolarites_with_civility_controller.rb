@@ -22,7 +22,8 @@ class APIParticulier::V3AndMore::MEN::ScolaritesWithCivilityController < APIPart
     civility_parameters
       .merge({
         annee_scolaire: params[:anneeScolaire],
-        code_etablissement: params[:codeEtablissement]
+        code_etablissement: params[:codeEtablissement],
+        provider_api_version: 'v2'
       })
   end
 

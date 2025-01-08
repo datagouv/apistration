@@ -12,7 +12,7 @@ RSpec.describe APIParticulier::MEN::ScolaritesSerializer::V3, type: :serializer 
 
   let(:current_user) { JwtUser.new(uid: SecureRandom.uuid, scopes:, jti: SecureRandom.uuid, iat: 1.year.ago.to_i, exp: 1.year.from_now.to_i) }
 
-  let(:all_men_scopes) { %w[men_statut_identite men_statut_scolarite] }
+  let(:all_men_scopes) { %w[men_statut_identite men_statut_scolarite men_statut_etablissement men_statut_module_elementaire_formation] }
 
   context 'with all men scopes' do
     let(:scopes) { all_men_scopes }
@@ -20,6 +20,8 @@ RSpec.describe APIParticulier::MEN::ScolaritesSerializer::V3, type: :serializer 
     it 'has all keys' do
       expect(subject[:data]).to have_key(:identite)
       expect(subject[:data]).to have_key(:est_scolarise)
+      expect(subject[:data]).to have_key(:etablissement)
+      expect(subject[:data]).to have_key(:module_elementaire_formation)
     end
   end
 
@@ -30,6 +32,8 @@ RSpec.describe APIParticulier::MEN::ScolaritesSerializer::V3, type: :serializer 
       it 'has key identite' do
         expect(subject[:data]).to have_key(:identite)
         expect(subject[:data]).not_to have_key(:est_scolarise)
+        expect(subject[:data]).not_to have_key(:etablissement)
+        expect(subject[:data]).not_to have_key(:module_elementaire_formation)
       end
     end
 
@@ -39,6 +43,30 @@ RSpec.describe APIParticulier::MEN::ScolaritesSerializer::V3, type: :serializer 
       it 'has keys est_scolarise' do
         expect(subject[:data]).not_to have_key(:identite)
         expect(subject[:data]).to have_key(:est_scolarise)
+        expect(subject[:data]).not_to have_key(:etablissement)
+        expect(subject[:data]).not_to have_key(:module_elementaire_formation)
+      end
+    end
+
+    context 'with men_statut_etablissement scope' do
+      let(:scopes) { %w[men_statut_etablissement] }
+
+      it 'has keys est_scolarise' do
+        expect(subject[:data]).not_to have_key(:identite)
+        expect(subject[:data]).not_to have_key(:est_scolarise)
+        expect(subject[:data]).to have_key(:etablissement)
+        expect(subject[:data]).not_to have_key(:module_elementaire_formation)
+      end
+    end
+
+    context 'with men_statut_module_elementaire_formation scope' do
+      let(:scopes) { %w[men_statut_module_elementaire_formation] }
+
+      it 'has keys est_scolarise' do
+        expect(subject[:data]).not_to have_key(:identite)
+        expect(subject[:data]).not_to have_key(:est_scolarise)
+        expect(subject[:data]).not_to have_key(:etablissement)
+        expect(subject[:data]).to have_key(:module_elementaire_formation)
       end
     end
   end

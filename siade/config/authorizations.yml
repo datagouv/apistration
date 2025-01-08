@@ -246,6 +246,8 @@ shared:
   api_particulier/v3_and_more/men/scolarites_with_civility:
     - men_statut_identite
     - men_statut_scolarite
+    - men_statut_etablissement
+    - men_statut_module_elementaire_formation
   api_particulier/v3_and_more/mesri/statut_etudiant_with_ine:
     - mesri_identite
     - mesri_admissions

@@ -11,7 +11,8 @@ RSpec.describe MEN::Scolarites, type: :retriever_organizer do
         mois_date_naissance: '06',
         jour_date_naissance: '10',
         code_etablissement: '0511474A',
-        annee_scolaire: '2021'
+        annee_scolaire: '2021',
+        provider_api_version: 'v1'
       }
     end
 
