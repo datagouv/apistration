@@ -21,6 +21,10 @@ class MaintenanceError < AbstractGenericProviderError
     end
   end
 
+  def kind
+    :maintenance
+  end
+
   private
 
   def maintenance_on?

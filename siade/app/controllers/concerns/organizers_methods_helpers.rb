@@ -23,6 +23,8 @@ module OrganizersMethodsHelpers
       :internal_error
     elsif at_least_one_error_kind_of?(:too_many_requests, retriever)
       :too_many_requests
+    elsif at_least_one_error_kind_of?(:maintenance, retriever)
+      :service_unavailable
     else
       raise 'No valid HTTP status'
     end

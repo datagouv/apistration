@@ -294,4 +294,71 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
       end
     end
   end
+
+  describe 'maintenance' do
+    class DummyMaintenanceRetrieverOrganizer < RetrieverOrganizer
+      def call
+        context.bundled_data = BundledData.new(data: Resource.new(data: { dummy: 'data' }), context: {})
+
+        super
+      end
+
+      def provider_name
+        'dummy_maintenance'
+      end
+    end
+
+    controller(described_class) do
+      def show
+        organizer = DummyMaintenanceRetrieverOrganizer.call
+
+        if organizer.success?
+          render json: serialize_data(organizer),
+            status: extract_http_code(organizer)
+        else
+          render_errors(organizer)
+        end
+      end
+
+      def serializer_module
+        APIEntreprise::DummyResourceSerializer
+      end
+    end
+
+    subject(:call!) do
+      routes.draw { get 'show' => 'api_entreprise/v3_and_more/base#show' }
+
+      get :show, params: { api_version: 42, token: yes_jwt }.merge(**api_entreprise_mandatory_params)
+    end
+
+    before do
+      allow(ErrorsBackend.instance).to receive(:provider_code_from_name).and_return('dummy_maintenance')
+
+      Timecop.freeze(time)
+    end
+
+    after do
+      Timecop.return
+    end
+
+    context 'when maintenance is activated' do
+      let(:time) { Time.zone.local(2021, 1, 1, 1, 1, 0) }
+
+      it 'renders 503 code' do
+        call!
+
+        expect(response).to have_http_status(:service_unavailable)
+      end
+    end
+
+    context 'when maintenance is not activated' do
+      let(:time) { Time.zone.local(2021, 1, 1, 2, 1, 0) }
+
+      it 'renders 200 code' do
+        call!
+
+        expect(response).to have_http_status(:ok)
+      end
+    end
+  end
 end

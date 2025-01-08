@@ -34,6 +34,9 @@ test:
       - day: '2021-01-15'
         from_hour: '13:00'
         to_hour:  '16:00'
+  'dummy_maintenance':
+    from_hour: '01:00'
+    to_hour: '01:02'
   'INSEE':
     from_hour: '03:00'
     to_hour: '04:00'
