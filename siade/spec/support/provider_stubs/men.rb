@@ -9,14 +9,14 @@ module ProviderStubs::MEN
   end
 
   def stub_men_scolarites_valid
-    stub_request(:get, /#{Siade.credentials[:men_scolarites_url]}/).to_return(
+    stub_request(:get, /#{Siade.credentials[:men_scolarites_url_v1]}/).to_return(
       status: 200,
       body: open_payload_file('men/scolarites/valid.json')
     )
   end
 
   def stub_men_scolarites_not_found
-    stub_request(:get, /#{Siade.credentials[:men_scolarites_url]}/).to_return(
+    stub_request(:get, /#{Siade.credentials[:men_scolarites_url_v1]}/).to_return(
       status: 404,
       body: open_payload_file('men/scolarites/not_found.json')
     )

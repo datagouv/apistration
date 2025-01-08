@@ -2,7 +2,7 @@ class MEN::Scolarites::MakeRequest < MakeRequest::Get
   protected
 
   def request_uri
-    URI(Siade.credentials[:men_scolarites_url])
+    URI(Siade.credentials[:men_scolarites_url_v1])
   end
 
   def request_params
