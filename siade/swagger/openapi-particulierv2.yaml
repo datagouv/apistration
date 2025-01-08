@@ -2007,9 +2007,9 @@ paths:
                 "$ref": "#/components/schemas/Error"
   "/api/v2/scolarites":
     get:
-      summary: Statut élève scolarisé et boursier
+      summary: Statut élève scolarisé
       tags:
-      - Statut élève scolarisé et boursier
+      - Statut élève scolarisé
       parameters:
       - name: X-Api-Key
         in: header
@@ -2074,8 +2074,7 @@ paths:
         required: true
         schema:
           type: string
-      description: Statut scolarisé et statut boursier d'un élève du primaire, collège
-        ou lycée.
+      description: Statut scolarisé d'un élève du primaire, collège ou lycée.
       responses:
         '200':
           description: Scolarité trouvée

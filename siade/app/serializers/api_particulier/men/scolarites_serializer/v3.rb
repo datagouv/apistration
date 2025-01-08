@@ -8,7 +8,4 @@ class APIParticulier::MEN::ScolaritesSerializer::V3 < APIParticulier::V3AndMore:
   ].each do |resource_attribute|
     attribute resource_attribute, if: -> { scope?(:men_statut_scolarite) }
   end
-
-  attribute :est_boursier, if: -> { scope?(:men_statut_boursier) }
-  attribute :echelon_bourse, if: -> { scope?(:men_statut_boursier) && scope?(:men_echelon_bourse) }
 end
