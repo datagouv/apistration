@@ -23,7 +23,7 @@ class APIParticulier::V2::MEN::ScolaritesController < APIParticulier::V2::BaseCo
       sexe_etat_civil: params[:sexe],
       code_etablissement: params[:codeEtablissement],
       annee_scolaire: params[:anneeScolaire],
-      provider_api_version: 
+      provider_api_version:
     }
   end
   # rubocop:enable Metrics/AbcSize
@@ -35,8 +35,6 @@ class APIParticulier::V2::MEN::ScolaritesController < APIParticulier::V2::BaseCo
       message: error.detail
     }
   end
-
-  private
 
   def provider_api_version
     return 'v1' if user_has_bourse_scope?
