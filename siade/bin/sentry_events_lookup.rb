@@ -5,7 +5,7 @@ require 'yaml'
 require 'byebug'
 require 'csv'
 require 'gpgme'
-require_relative '../app/services/encrypt_data'
+require_relative '../app/services/data_encryptor'
 
 base_uri = 'https://errors.data.gouv.fr'
 token = File.read('.sentry_token').strip

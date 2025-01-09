@@ -387,6 +387,8 @@ d'API Particulier sont chiffrés à l'aide de GPG avant d'être envoyés dans Se
 
 Les clefs publiques de chiffrement sont déployés par Ansible dans `config/gpg_public_keys_for_data_encryption`
 
+> Dans le repo very_ansible, run `ansible-vault view roles/siade/files/private.asc | gpg --import` pour importer les credentials te permettant de déchiffrer les données. Pour obtenir la passphrase demandée par cette dernière commande, `ansible-vault view secrets/siade_gpg_infos.yml` -> clef `siade_gpg_passphrase`.
+
 Pour déchiffrer les données :
 ```shell
 ./bin/decrypt_gpg_json_params_from_unknown_provider_tracking_error.sh <encrypted_data_from_sentry.gpg>
