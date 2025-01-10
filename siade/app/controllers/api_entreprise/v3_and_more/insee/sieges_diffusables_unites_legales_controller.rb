@@ -1,4 +1,4 @@
-class APIEntreprise::V3AndMore::INSEE::SiegesDiffusablesUnitesLegalesController < APIEntreprise::V3AndMore::BaseController
+class APIEntreprise::V3AndMore::INSEE::SiegesDiffusablesUnitesLegalesController < APIEntreprise::V3AndMore::INSEE::BaseController
   def show
     organizer = retrieve_payload_data(::INSEE::SiegeDiffusableUniteLegale)
 
