@@ -1,6 +1,6 @@
 class APIEntreprise::V3AndMore::EuropeanCommission::VIESController < APIEntreprise::V3AndMore::BaseController
   def show
-    organizer = retrieve_payload_data(::EuropeanCommission::VIES)
+    organizer = retrieve_payload_data(::EuropeanCommission::VIES, cache: true, expires_in: 24.hours)
 
     if organizer.success?
       render json: serialize_data(organizer),
