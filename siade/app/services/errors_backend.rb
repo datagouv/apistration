@@ -78,7 +78,8 @@ class ErrorsBackend
       '40' => 'RNCPS',
       '41' => 'SDH',
       '50' => 'FranceConnect v1',
-      '51' => 'FranceConnect v2'
+      '51' => 'FranceConnect v2',
+      '52' => 'DataSubvention'
     }
   end
   # rubocop:enable Metrics/MethodLength

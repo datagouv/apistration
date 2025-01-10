@@ -45,7 +45,8 @@ class ExtractProviderFromPath
       'gip_mds' => 'GIP-MDS',
       'qualifelec' => 'Qualifelec',
       'carif_oref' => 'CARIF-OREF',
-      'cibtp' => 'CIBTP'
+      'cibtp' => 'CIBTP',
+      'data_subvention' => 'DataSubvention'
     }
   end
   # rubocop:enable Metrics/MethodLength
