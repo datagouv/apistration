@@ -24,20 +24,47 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateResponse, type: :validate_respo
   end
 
   context 'with not found response' do
-    before do
-      allow(DataEncryptor).to receive(:new).and_return(encrypt_data)
+    context 'with CNAF regime' do
+      before do
+        allow(DataEncryptor).to receive(:new).and_return(encrypt_data)
+      end
+
+      let(:response) do
+        instance_double(Net::HTTPNotFound, code: 404, body:, header: { 'X-APISECU-FD' => '00810011' })
+      end
+
+      let(:body) { read_payload_file('cnav/quotient_familial_v2/404.json') }
+      let(:error_body) { 'FATAL ERROR' }
+      let(:encrypt_data) { instance_double(DataEncryptor, encrypt: 'encrypted_data') }
+
+      it { is_expected.to be_a_failure }
+      its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+
+      it 'error provider should be CNAF' do
+        expect(subject.errors.first.provider_name).to eq('CNAF')
+      end
     end
 
-    let(:response) do
-      instance_double(Net::HTTPNotFound, code: 404, body:, header: { 'X-APISECU-FD' => '00810011' })
+    context 'with RNCPS regime' do
+      before do
+        allow(DataEncryptor).to receive(:new).and_return(encrypt_data)
+      end
+
+      let(:response) do
+        instance_double(Net::HTTPNotFound, code: 404, body:, header: {})
+      end
+
+      let(:body) { read_payload_file('cnav/quotient_familial_v2/404_RNCPS.json') }
+      let(:error_body) { 'FATAL ERROR' }
+      let(:encrypt_data) { instance_double(DataEncryptor, encrypt: 'encrypted_data') }
+
+      it { is_expected.to be_a_failure }
+      its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
+
+      it 'error provider should be CNAV & MSA' do
+        expect(subject.errors.first.provider_name).to eq('CNAV & MSA')
+      end
     end
-
-    let(:body) { read_payload_file('cnav/quotient_familial_v2/404.json') }
-    let(:error_body) { 'FATAL ERROR' }
-    let(:encrypt_data) { instance_double(DataEncryptor, encrypt: 'encrypted_data') }
-
-    it { is_expected.to be_a_failure }
-    its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
   end
 
   context 'with 429 response' do

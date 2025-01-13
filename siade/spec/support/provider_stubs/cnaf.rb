@@ -73,6 +73,15 @@ module ProviderStubs::CNAV
     )
   end
 
+  def stub_cnav_404_rncps(api)
+    stub_request(:get, cnav_url(api)).with(
+      query: hash_including({})
+    ).to_return(
+      status: 404,
+      body: read_payload_file("cnav/#{api}/404_RNCPS.json")
+    )
+  end
+
   def stub_sngi_404(api)
     stub_request(:get, cnav_url(api)).with(
       query: hash_including({})

@@ -1664,6 +1664,13 @@ paths:
                       CNAF.
                     message: Le dossier allocataire n'a pas été trouvé auprès de la
                       CNAF.
+                Allocataire non référencé:
+                  value:
+                    error: not_found
+                    reason: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA
+                    message: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':

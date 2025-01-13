@@ -150,6 +150,18 @@ RSpec.describe 'CNAV: Quotient Familial V2', api: :particulierv2, type: %i[reque
 
                 run_test!
               end
+
+              context 'Allocataire non référencé' do
+                before do
+                  stub_cnav_404_rncps('quotient_familial_v2')
+                end
+
+                build_rswag_example(NotFoundError.new('CNAV & MSA', "L'allocataire n'est pas référencé auprès de la CNAF ni de la MSA"))
+
+                schema '$ref' => '#/components/schemas/Error'
+
+                run_test!
+              end
               # rubocop:enable RSpec/ContextWording
             end
 
