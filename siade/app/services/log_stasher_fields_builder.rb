@@ -48,7 +48,6 @@ class LogStasherFieldsBuilder
     fields[:parameters] = filtered_params
 
     add_hashed_params_for_logging
-    add_params_for_legacy_token
     add_france_connect_attributes_for_logging
 
     fields.delete(:parameters) if fields[:parameters].blank?
@@ -78,10 +77,6 @@ class LogStasherFieldsBuilder
     return if request.params.except(:controller, :action).blank?
 
     add_param_field(:hashed_params, hashed_for_logs(request.params.except(:controller, :action).to_json))
-  end
-
-  def add_params_for_legacy_token
-    add_param_field(:legacy_token, 't') if token && APIParticulierLegacyTokensBackend.exists?(token)
   end
 
   def add_france_connect_attributes_for_logging

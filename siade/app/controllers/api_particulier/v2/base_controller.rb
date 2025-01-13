@@ -10,18 +10,6 @@ class APIParticulier::V2::BaseController < APIController
     "#{request.path}:#{organizer_params.to_query}"
   end
 
-  def extract_user
-    if token && legacy_token_exists?(token)
-      @current_user = JwtTokenService.instance.extract_user_from_legacy_token(token)
-    else
-      super
-    end
-  end
-
-  def legacy_token_exists?(token)
-    APIParticulierLegacyTokensBackend.exists?(token)
-  end
-
   def serialize_data(organizer)
     if organizer.mocked_data.present?
       organizer.mocked_data[:payload]
@@ -128,15 +116,6 @@ class APIParticulier::V2::BaseController < APIController
 
   def token_from_headers
     request.headers['X-Api-key']
-  end
-
-  def legit_format_for_legacy_token?(token)
-    token.present? &&
-      legacy_token_valid_length_range.include?(token.length)
-  end
-
-  def legacy_token_valid_length_range
-    (36..128)
   end
 
   def api_version

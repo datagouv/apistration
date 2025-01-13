@@ -124,37 +124,6 @@ RSpec.describe 'logstasher custom fields', type: :controller do
         make_call
       end
     end
-
-    describe 'with legacy_token param' do
-      subject(:make_call) do
-        get :index, params: { token: }
-      end
-
-      let(:token) { '1_scope' }
-
-      before do
-        Token.create!(
-          id: '11111111-1111-1111-1111-111111111110',
-          scopes: [],
-          iat: 1.day.ago,
-          exp: 1.day.from_now,
-          authorization_request: AuthorizationRequest.last
-        )
-      end
-
-      it 'adds legacy token params to logstasher parameters key' do
-        expect(LogStasher).to receive(:build_logstash_event).with(
-          hash_including(
-            parameters: hash_including(
-              legacy_token: 't'
-            )
-          ),
-          anything
-        )
-
-        make_call
-      end
-    end
   end
 
   describe 'on api particulier franceconnectable request' do

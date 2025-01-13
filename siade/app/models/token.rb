@@ -10,10 +10,6 @@ class Token < ApplicationRecord
       blacklisted_at < Time.zone.now
   end
 
-  def legacy_token?
-    extra_info.present? && extra_info['legacy_token_id'].present?
-  end
-
   def to_jwt_user_attributes
     {
       uid: id,

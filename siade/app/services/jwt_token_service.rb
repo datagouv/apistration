@@ -28,34 +28,7 @@ class JwtTokenService
     nil
   end
 
-  def extract_user_from_legacy_token(legacy_token)
-    jwt_token = new_token_from_legacy_token(legacy_token)
-
-    extract_user(jwt_token)
-  end
-
   private
-
-  def new_token_from_legacy_token(legacy_token)
-    token_data = APIParticulierLegacyTokensBackend.get(legacy_token)
-
-    jti_new_token = token_data['token_id']
-
-    reencode_token_for_legacy_workflow(jti_new_token)
-  end
-
-  def reencode_token_for_legacy_workflow(jti)
-    jwt = Token.find(jti)
-
-    token_payload = {
-      uid: jwt.id,
-      jti: jwt.id,
-      sub: 'Token from legacy workflow',
-      iat: jwt.iat
-    }.compact
-
-    JWT.encode(token_payload, hash_secret, hash_algo)
-  end
 
   def cache
     EncryptedCache.instance
