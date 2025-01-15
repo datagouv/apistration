@@ -78,13 +78,15 @@ class DGFIP::LiassesFiscales::BuildResourceWithoutDictionary < BuildResource
   end
 
   def extract_multiple_values_from_declaration(code_nref_data)
-    sorted_code_nref_data = code_nref_data.sort do |datum_1, datum_2|
-      datum_2['indiceRepetition'].to_i <=> datum_1['indiceRepetition'].to_i
-    end
+    (1..extract_max_indice_repetition_from_declaration(code_nref_data)).map do |indice_repetition|
+      code_nref_data_for_indice = code_nref_data.find { |datum| datum['valeurs']['indiceRepetition'].to_i == indice_repetition }
 
-    sorted_code_nref_data.map do |datum|
-      datum['valeurs']['valeur']
+      code_nref_data_for_indice['valeurs']['valeur'] if code_nref_data_for_indice
     end
+  end
+
+  def extract_max_indice_repetition_from_declaration(code_nref_data)
+    code_nref_data.max { |a, b| a['valeurs']['indiceRepetition'].to_i <=> b['valeurs']['indiceRepetition'].to_i }['valeurs']['indiceRepetition'].to_i
   end
 
   def declarations_attributes

@@ -68,6 +68,20 @@ RSpec.describe DGFIP::LiassesFiscales::BuildResourceWithoutDictionary, type: :bu
 
           expect(data[:valeurs]).to eq(%w[75001 75002])
         end
+
+        describe 'when there is non-following values in indiceRepetition' do
+          it 'adds nil in missing values' do
+            example_data_with_repeated_entries = resource.declarations.find do |declaration|
+              declaration[:numero_imprime] == '2033F'
+            end
+
+            data = example_data_with_repeated_entries[:donnees].find do |datum|
+              datum[:code_nref] == '905895'
+            end
+
+            expect(data[:valeurs]).to eq(['71', nil, '73'])
+          end
+        end
       end
     end
 
