@@ -244,7 +244,7 @@ shared:
     cnaf_msa_quotient_familial:
       kind: 'make_request'
       cache: <%= 30.minutes %>
-      provider: 'CNAV & MSA'
+      provider: 'CNAF & MSA'
       status_page:
         name: "MSA & CNAV - Quotient familial (v2)"
       driver_params:
@@ -283,7 +283,7 @@ shared:
     cnaf_msa_revenu_solidarite_active:
       kind: 'make_request'
       cache: <%= 30.minutes %>
-      provider: 'CNAV & MSA'
+      provider: 'CNAF & MSA'
       status_page:
         name: "MSA & CNAV - Revenu Solidarite Active"
       driver_params:
@@ -297,7 +297,7 @@ shared:
     cnaf_msa_allocation_soutien_familial:
       kind: 'make_request'
       cache: <%= 30.minutes %>
-      provider: 'CNAV & MSA'
+      provider: 'CNAF & MSA'
       status_page:
         name: "MSA & CNAV - Allocation Soutien Familial"
       driver_params:
@@ -311,7 +311,7 @@ shared:
     cnaf_msa_allocation_adulte_handicape:
       kind: 'make_request'
       cache: <%= 30.minutes %>
-      provider: 'CNAV & MSA'
+      provider: 'CNAF & MSA'
       status_page:
         name: "MSA & CNAV - Allocation Adulte Handicape"
       driver_params:
@@ -325,7 +325,7 @@ shared:
     cnaf_msa_prime_activite:
       kind: 'make_request'
       cache: <%= 30.minutes %>
-      provider: 'CNAV & MSA'
+      provider: 'CNAF & MSA'
       status_page:
         name: "MSA & CNAV - Prime Activite"
       driver_params:

@@ -18,7 +18,7 @@ class CNAV::QuotientFamilialV2::ValidateResponse < CNAV::ValidateResponse
   def resource_not_found!
     return fail_with_error!(build_qfv2_error(::NotFoundError, 'CNAF', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", 'Dossier allocataire absent CNAF')) if regime == 'CNAF'
     return fail_with_error!(build_qfv2_error(::NotFoundError, 'MSA', "Le dossier allocataire n'a pas été trouvé auprès de la MSA.", 'Dossier allocataire absent MSA')) if regime == 'MSA'
-    return fail_with_error!(build_qfv2_error(::NotFoundError, 'CNAV & MSA', "L'allocataire n'est pas référencé auprès de la CNAF ni de la MSA", 'Allocataire non référencé')) if regime == 'RNCPS'
+    return fail_with_error!(build_qfv2_error(::NotFoundError, 'CNAF & MSA', "L'allocataire n'est pas référencé auprès de la CNAF ni de la MSA", 'Allocataire non référencé')) if regime == 'RNCPS'
 
     fail_with_error!(UnprocessableEntityError.new(:sngi))
   end

@@ -61,8 +61,8 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateResponse, type: :validate_respo
       it { is_expected.to be_a_failure }
       its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
 
-      it 'error provider should be CNAV & MSA' do
-        expect(subject.errors.first.provider_name).to eq('CNAV & MSA')
+      it 'error provider should be CNAF & MSA' do
+        expect(subject.errors.first.provider_name).to eq('CNAF & MSA')
       end
     end
   end

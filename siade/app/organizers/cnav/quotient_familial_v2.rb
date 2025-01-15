@@ -14,7 +14,7 @@ class CNAV::QuotientFamilialV2 < CNAV::RetrieverOrganizer
     CNAV::QuotientFamilialV2::BuildResource
 
   def provider_name
-    'CNAV & MSA'
+    'CNAF & MSA'
   end
 
   def dss_prestation_name

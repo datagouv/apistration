@@ -125,7 +125,7 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
                 stub_cnav_404_rncps('quotient_familial_v2')
               end
 
-              build_rswag_example(NotFoundError.new('CNAV & MSA', "L'allocataire n'est pas référencé auprès de la CNAF ni de la MSA", title: 'Allocataire non référencé', with_identifiant_message: false))
+              build_rswag_example(NotFoundError.new('CNAF & MSA', "L'allocataire n'est pas référencé auprès de la CNAF ni de la MSA", title: 'Allocataire non référencé', with_identifiant_message: false))
 
               schema '$ref' => '#/components/schemas/Error'
 

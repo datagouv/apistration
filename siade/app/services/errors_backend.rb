@@ -70,7 +70,7 @@ class ErrorsBackend
       '32' => 'Qualifelec',
       '33' => 'CARIF-OREF',
       '34' => 'INPI - RNE',
-      '35' => 'CNAV & MSA',
+      '35' => 'CNAF & MSA',
       '36' => 'Sécurité sociale',
       '37' => 'CNAV',
       '38' => 'CIBTP',
