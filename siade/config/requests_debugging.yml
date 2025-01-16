@@ -52,7 +52,7 @@ sandbox:
   operation_ids: []
 
 production:
-  enable_until: '2024-02-07'
+  enable_until: '2025-02-28'
   operation_ids:
     - 'api_particulier_v2_cnaf_quotient_familial'
 
