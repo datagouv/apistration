@@ -1,5 +1,9 @@
 class SyncPingsWithMonitorsRemoteService
   def perform
+    return if in_progress?
+
+    mark_as_in_progress!
+
     logger.info('Start syncing pings with monitors')
 
     pings.each do |api_kind, config|
@@ -9,6 +13,8 @@ class SyncPingsWithMonitorsRemoteService
         create_or_update_monitor(api_kind, ping_identifier, ping_config)
       end
     end
+
+    clear_in_progress!
 
     logger.info('End syncing pings with monitors')
   end
@@ -92,6 +98,18 @@ class SyncPingsWithMonitorsRemoteService
 
   def logger
     @logger ||= ActiveSupport::TaggedLogging.new(Logger.new(Rails.root.join('log/hyperping.log')))
+  end
+
+  def in_progress?
+    Rails.cache.read('sync_pings_with_monitors_in_progress').present?
+  end
+
+  def mark_as_in_progress!
+    Rails.cache.write('sync_pings_with_monitors_in_progress', true, expires_in: 1.hour)
+  end
+
+  def clear_in_progress!
+    Rails.cache.delete('sync_pings_with_monitors_in_progress')
   end
 
   def pings
