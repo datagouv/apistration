@@ -48,6 +48,7 @@ RSpec.describe APIController, 'log requests info for debugging' do
           'what' => 'ever',
           'path_example_param' => 'drink'
         },
+        provided_organizer_params: nil,
         response_body: {
           'message' => 'I like tea'
         },
@@ -65,6 +66,45 @@ RSpec.describe APIController, 'log requests info for debugging' do
 
     it 'does not log request info' do
       expect(RequestsDebuggerLogger.instance).not_to receive(:log)
+
+      subject
+    end
+  end
+
+  context 'when organizer params is defined' do
+    controller(described_class) do
+      def show
+        render json: { message: 'I like tea' },
+          status: 418
+      end
+
+      def operation_id
+        'whatever'
+      end
+
+      def organizer_params
+        { 'organizer' => 'params' }
+      end
+    end
+
+    before do
+      allow(requests_debugging_service).to receive(:enable?).and_return(true)
+    end
+
+    it 'logs request info with organizer params' do
+      expect(RequestsDebuggerLogger.instance).to receive(:log).with(
+        controller_name: 'api',
+        path: '/show/drink',
+        request_params: {
+          'what' => 'ever',
+          'path_example_param' => 'drink'
+        },
+        provided_organizer_params: { 'organizer' => 'params' },
+        response_body: {
+          'message' => 'I like tea'
+        },
+        response_status: 418
+      )
 
       subject
     end
