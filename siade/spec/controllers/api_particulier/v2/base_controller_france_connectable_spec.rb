@@ -85,16 +85,6 @@ RSpec.describe APIParticulier::V2::BaseController, 'france connectable' do
           let(:params) { { test_invalid_franceconnect_params: true, recipient:, api_version: 3 } }
 
           its(:status) { is_expected.to eq(400) }
-
-          it 'tracks errors' do
-            expect(MonitoringService.instance).to receive(:track).with(
-              'error',
-              /Invalid params with FranceConnect/,
-              anything
-            )
-
-            make_call
-          end
         end
 
         context 'when organizer has invalid non-FranceConnect params error' do

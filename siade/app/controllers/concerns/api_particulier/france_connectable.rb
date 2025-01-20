@@ -34,36 +34,6 @@ module APIParticulier::FranceConnectable
     end
   end
 
-  def render_errors(organizer)
-    track_invalid_parameters_error_for_france_connect(organizer, organizer.errors) if invalid_france_connect_parameters_error?(organizer)
-    super
-  end
-
-  def invalid_france_connect_parameters_error?(organizer)
-    france_connect? && at_least_one_error_kind_of?(:wrong_parameter, organizer) && wrong_params_from_france_connect?(organizer.errors)
-  end
-
-  def wrong_params_from_france_connect?(errors)
-    errors.any? { |error| error.is_a?(UnprocessableEntityError) && whitelisted_non_france_connect_parameters.exclude?(error.field) }
-  end
-
-  def whitelisted_non_france_connect_parameters
-    %i[
-      recipient
-    ]
-  end
-
-  def track_invalid_parameters_error_for_france_connect(organizer, errors)
-    MonitoringService.instance.track(
-      'error',
-      'Invalid params with FranceConnect',
-      {
-        provider_name: organizer.provider_name,
-        errors: errors.map(&:to_h)
-      }
-    )
-  end
-
   def france_connect?
     france_connect_service_user_identity.present?
   end

@@ -105,6 +105,21 @@ RSpec.describe FranceConnect::V1::DataFetcherThroughAccessToken::ValidateRespons
 
         its(:errors) { is_expected.to include(instance_of(InvalidFranceConnectAccessTokenError)) }
       end
+
+      context 'when FranceConnect token has wrong params' do
+        let(:body) { france_connect_v1_checktoken_payload(scopes:).tap { |h| h[:identity].delete(:given_name) }.to_json }
+        let(:scopes) { %w[openid birth profile] }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+
+        it 'tracks errors' do
+          expect(MonitoringService.instance).to receive(:track)
+
+          subject
+        end
+      end
     end
   end
 end

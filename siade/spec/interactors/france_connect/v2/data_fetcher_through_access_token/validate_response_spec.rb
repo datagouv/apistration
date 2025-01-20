@@ -82,6 +82,20 @@ RSpec.describe FranceConnect::V2::DataFetcherThroughAccessToken::ValidateRespons
 
         its(:errors) { is_expected.to include(instance_of(InvalidFranceConnectAccessTokenError)) }
       end
+
+      context 'when FranceConnect token has wrong params' do
+        let(:body) { france_connect_v2_checktoken_invalid_parameter_payload }
+
+        it { is_expected.to be_a_failure }
+
+        its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+
+        it 'tracks errors' do
+          expect(MonitoringService.instance).to receive(:track)
+
+          subject
+        end
+      end
     end
   end
 end

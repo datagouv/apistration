@@ -32,6 +32,12 @@ module ProviderStubs::FranceConnect::V2
     encrypt_payload(france_connect_v2_decrypted_invalid_payload)
   end
 
+  def france_connect_v2_checktoken_invalid_parameter_payload
+    stub_france_connect_v2_jwks
+
+    encrypt_payload(france_connect_v2_decrypted_invalid_parameter_payload)
+  end
+
   def france_connect_v2_decrypted_invalid_payload
     {
       aud: '423dcbdc5a15ece61ed00ff5989d72379c26d9ed4c8e4e05a87cffae019586e0',
@@ -40,6 +46,15 @@ module ProviderStubs::FranceConnect::V2
       token_introspection: {
         active: false
       }
+    }
+  end
+
+  def france_connect_v2_decrypted_invalid_parameter_payload(scopes: minimal_france_connect_scopes)
+    {
+      aud: '423dcbdc5a15ece61ed00ff5989d72379c26d9ed4c8e4e05a87cffae019586e0',
+      iat: 1_704_965_332,
+      iss: 'https://auth.integ01.dev-franceconnect.fr/api/v2',
+      token_introspection: token_introspection(scopes).except(:family_name)
     }
   end
 

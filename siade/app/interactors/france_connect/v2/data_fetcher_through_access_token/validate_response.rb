@@ -11,6 +11,8 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::ValidateResponse < Franc
     if http_ok?
       fail_for_token_expired! unless token_valid?
 
+      fail_if_unprocessable_params_in_response!
+
       return if token_valid?
     end
 
@@ -57,6 +59,16 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::ValidateResponse < Franc
 
   def error_type
     JSON.parse(context.response.body)['error']
+  end
+
+  def params_to_verify # rubocop:disable Metrics/AbcSize
+    {
+      nom_naissance: json_body['token_introspection']['family_name'],
+      prenoms: json_body['token_introspection']['given_name_array'],
+      annee_date_naissance: json_body['token_introspection']['birthdate']&.split('-')&.first,
+      mois_date_naissance: json_body['token_introspection']['birthdate']&.split('-')&.second,
+      jour_date_naissance: json_body['token_introspection']['birthdate']&.split('-')&.third
+    }
   end
 
   private
