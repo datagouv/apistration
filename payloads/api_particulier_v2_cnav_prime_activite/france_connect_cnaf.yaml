@@ -21,5 +21,5 @@ payload: |-
     "status": "beneficiaire",
     "majoration": false,
     "dateDebut": "2023-02-01",
-    "dateFin": "2023-05-01"
+    "dateFin": null
   }

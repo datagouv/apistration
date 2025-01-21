@@ -39,7 +39,7 @@ Ce cas permet de tester :
   {
     "status": "beneficiaire_avec_participation_financiere",
     "dateDebut": "2023-06-01",
-    "dateFin": "2024-06-01"
+    "dateFin": null
   }
   ```
 
@@ -97,7 +97,7 @@ Ce cas permet de tester :
   {
     "status": "beneficiaire_sans_participation_financiere",
     "dateDebut": "2023-02-01",
-    "dateFin": "2024-02-01"
+    "dateFin": null
   }
   ```
 
@@ -309,7 +309,7 @@ Ce cas permet de tester :
   {
     "status": "beneficiaire_sans_participation_financiere",
     "dateDebut": "2024-10-01",
-    "dateFin": "2025-10-01"
+    "dateFin": null
   }
   ```
 
@@ -369,7 +369,7 @@ Ce cas permet de tester :
   {
     "status": "beneficiaire_sans_participation_financiere",
     "dateDebut": "2023-08-25",
-    "dateFin": "2024-08-25"
+    "dateFin": null
   }
   ```
 
@@ -431,7 +431,7 @@ Ce cas permet de tester :
   {
     "status": "beneficiaire_avec_participation_financiere",
     "dateDebut": "2024-06-01",
-    "dateFin": "2025-06-01"
+    "dateFin": null
   }
   ```
 
@@ -494,7 +494,7 @@ Ce cas permet de tester :
   {
     "status": "beneficiaire_sans_participation_financiere",
     "dateDebut": "2024-08-25",
-    "dateFin": "2025-08-25"
+    "dateFin": null
   }
   ```
 
@@ -555,7 +555,7 @@ Ce cas permet de tester :
   {
     "status": "beneficiaire_sans_participation_financiere",
     "dateDebut": "2024-08-25",
-    "dateFin": "2025-08-25"
+    "dateFin": null
   }
   ```
 
@@ -615,7 +615,7 @@ Ce cas permet de tester :
   {
     "status": "beneficiaire_sans_participation_financiere",
     "dateDebut": "2024-08-30",
-    "dateFin": "2025-08-30"
+    "dateFin": null
   }
   ```
 
@@ -675,7 +675,7 @@ Ce cas permet de tester :
   {
     "status": "beneficiaire_sans_participation_financiere",
     "dateDebut": "2024-11-05",
-    "dateFin": "2025-11-05"
+    "dateFin": null
   }
   ```
 
@@ -734,7 +734,7 @@ Ce cas permet de tester :
   {
     "status": "beneficiaire_sans_participation_financiere",
     "dateDebut": "2024-09-05",
-    "dateFin": "2025-09-05"
+    "dateFin": null
   }
   ```
 
@@ -796,7 +796,7 @@ Ce cas permet de tester :
   {
     "status": "beneficiaire_sans_participation_financiere",
     "dateDebut": "2026-09-29",
-    "dateFin": "2027-09-29"
+    "dateFin": null
   }
   ```
 
@@ -857,7 +857,7 @@ Ce cas permet de tester :
   {
     "status": "beneficiaire_sans_participation_financiere",
     "dateDebut": "2024-02-02",
-    "dateFin": "2025-02-02"
+    "dateFin": null
   }
   ```
 
@@ -1037,7 +1037,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
   {
     "status": "beneficiaire_sans_participation_financiere",
     "dateDebut": "2021-05-05",
-    "dateFin": "2023-03-03"
+    "dateFin": null
   }
   ```
 
@@ -1091,7 +1091,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
   {
     "status": "beneficiaire_sans_participation_financiere",
     "dateDebut": "2023-02-01",
-    "dateFin": "2024-02-01"
+    "dateFin": null
   }
   ```
 

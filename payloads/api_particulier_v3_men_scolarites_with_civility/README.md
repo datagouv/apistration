@@ -1,4 +1,4 @@
-# Statut élève scolarisé et boursier
+# Statut élève scolarisé
 * [200.yaml](200.yaml)
 
   Status `200`

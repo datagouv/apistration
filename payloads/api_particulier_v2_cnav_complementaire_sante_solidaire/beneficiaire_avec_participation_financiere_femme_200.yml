@@ -26,5 +26,5 @@ payload: |-
   {
     "status": "beneficiaire_avec_participation_financiere",
     "dateDebut": "2024-06-01",
-    "dateFin": "2025-06-01"
+    "dateFin": null
   }
