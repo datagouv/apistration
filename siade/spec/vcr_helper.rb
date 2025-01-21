@@ -37,8 +37,6 @@ VCR.configure do |c|
   c.filter_sensitive_data('<MDP_DGFIP>') { Siade.credentials[:dgfip_mdp].to_s }
   c.filter_sensitive_data('<USER_ID_DGFIP>') { valid_dgfip_user_id }
   c.filter_sensitive_data('<INSEE_TOKEN>') { 'valid insee token' }
-  c.filter_sensitive_data('<INPI_LOGIN>') { Siade.credentials[:inpi_login].to_s }
-  c.filter_sensitive_data('<INPI_PASSWORD>') { Siade.credentials[:inpi_password].to_s }
   c.filter_sensitive_data('<ACOSS_CLIENT_ID>') { Siade.credentials[:acoss_client_id].to_s }
   c.filter_sensitive_data('<ACOSS_CLIENT_SECRET>') { Siade.credentials[:acoss_client_secret].to_s }
   c.filter_sensitive_data('<DOUANES_CLIENT_ID>') { Siade.credentials[:douanes_client_id].to_s }
