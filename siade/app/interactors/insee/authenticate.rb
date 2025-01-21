@@ -1,19 +1,27 @@
-class INSEE::Authenticate < GetOAuth2Token
+class INSEE::Authenticate < AbstractGetToken
   protected
-
-  def extra_headers(request)
-    request['Authorization'] = "Basic #{client_credentials_header}"
-  end
 
   def client_url
     Siade.credentials[:insee_oauth_url]
+  end
+
+  def access_token(response)
+    JSON.parse(response.body)['access_token']
+  end
+
+  def expires_in(response)
+    JSON.parse(response.body)['expires_in']
   end
 
   private
 
   def form_data
     {
-      grant_type: 'client_credentials'
+      client_id:,
+      client_secret:,
+      grant_type: 'password',
+      username:,
+      password:
     }
   end
 
@@ -27,5 +35,13 @@ class INSEE::Authenticate < GetOAuth2Token
 
   def client_secret
     Siade.credentials[:insee_sirene_client_secret]
+  end
+
+  def username
+    Siade.credentials[:insee_apim_username]
+  end
+
+  def password
+    Siade.credentials[:insee_apim_password]
   end
 end
