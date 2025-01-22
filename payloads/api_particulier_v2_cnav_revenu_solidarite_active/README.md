@@ -34,7 +34,7 @@
     "status": "beneficiaire",
     "majoration": true,
     "dateDebut": "1992-11-20",
-    "dateFin": "1993-02-20"
+    "dateFin": null
   }
   ```
 
@@ -87,7 +87,7 @@
     "status": "beneficiaire",
     "majoration": false,
     "dateDebut": "1992-11-20",
-    "dateFin": "1993-02-20"
+    "dateFin": null
   }
   ```
 
@@ -293,7 +293,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "status": "beneficiaire",
     "majoration": false,
     "dateDebut": "2021-05-05",
-    "dateFin": "2021-05-05"
+    "dateFin": null
   }
   ```
 
@@ -348,7 +348,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "status": "beneficiaire",
     "majoration": true,
     "dateDebut": "1992-11-20",
-    "dateFin": "1993-02-20"
+    "dateFin": null
   }
   ```
 

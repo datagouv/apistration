@@ -1,4 +1,4 @@
-# Statut élève scolarisé et boursier
+# Statut élève scolarisé
 * [200.yaml](200.yaml)
 
   Status `200`
@@ -38,15 +38,20 @@
         "sexe": "F",
         "date_naissance": "2000-01-20"
       },
+      "module_elementaire_formation": {
+        "code_mef_stat": "211324099991",
+        "libelle": "1CAP1 STAFFEUR ORNEMANISTE"
+      },
       "annee_scolaire": "2022-2023",
       "est_scolarise": true,
       "statut_eleve": {
         "code": "ST",
         "libelle": "Scolaire"
       },
-      "est_boursier": true,
-      "echelon_bourse": 1,
-      "code_etablissement": "0890003V"
+      "etablissement": {
+        "code_uai": "0210015C",
+        "code_ministere_tutelle": "06"
+      }
     },
     "links": {
     },

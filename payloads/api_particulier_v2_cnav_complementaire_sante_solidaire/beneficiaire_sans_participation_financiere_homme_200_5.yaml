@@ -23,5 +23,5 @@ payload: |-
   {
     "status": "beneficiaire_sans_participation_financiere",
     "dateDebut": "2024-09-05",
-    "dateFin": "2025-09-05"
+    "dateFin": null
   }

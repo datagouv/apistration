@@ -3,13 +3,13 @@ Titre,Description,Paramètres,Status,Réponse
   ""status"": ""beneficiaire"",
   ""majoration"": true,
   ""dateDebut"": ""1992-11-20"",
-  ""dateFin"": ""1993-02-20""
+  ""dateFin"": null
 }"
 ,## Bénéficiaire sans majoration,"{""nomNaissance"":""GONTRAND"",""prenoms"":[""YVES""],""anneeDateDeNaissance"":1980,""moisDateDeNaissance"":9,""jourDateDeNaissance"":20,""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",200,"{
   ""status"": ""beneficiaire"",
   ""majoration"": false,
   ""dateDebut"": ""1992-11-20"",
-  ""dateFin"": ""1993-02-20""
+  ""dateFin"": null
 }"
 ,## Non bénéficiaire,"{""nomNaissance"":""LAGAFFE"",""prenoms"":[""GASTON""],""anneeDateDeNaissance"":1980,""moisDateDeNaissance"":9,""jourDateDeNaissance"":20,""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",200,"{
   ""status"": ""non_beneficiaire"",
@@ -33,7 +33,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms
   ""status"": ""beneficiaire"",
   ""majoration"": false,
   ""dateDebut"": ""2021-05-05"",
-  ""dateFin"": ""2021-05-05""
+  ""dateFin"": null
 }"
 ,"Cas de test avec jeton FranceConnect.
 Les données proviennent des jetons de l'environnement de test FranceConnect.
@@ -41,5 +41,5 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms
   ""status"": ""beneficiaire"",
   ""majoration"": true,
   ""dateDebut"": ""1992-11-20"",
-  ""dateFin"": ""1993-02-20""
+  ""dateFin"": null
 }"

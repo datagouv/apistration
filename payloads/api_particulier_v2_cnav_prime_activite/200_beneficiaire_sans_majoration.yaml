@@ -17,5 +17,5 @@ payload: |-
     "status": "beneficiaire",
     "majoration": false,
     "dateDebut": "1992-11-20",
-    "dateFin": "1993-02-20"
+    "dateFin": null
   }

@@ -34,7 +34,7 @@
   {
     "status": "beneficiaire",
     "dateDebut": "1992-11-29",
-    "dateFin": "1993-11-29"
+    "dateFin": null
   }
   ```
 
@@ -242,7 +242,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
   {
     "status": "beneficiaire",
     "dateDebut": "2021-05-05",
-    "dateFin": "2022-05-05"
+    "dateFin": null
   }
   ```
 
@@ -296,7 +296,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
   {
     "status": "beneficiaire",
     "dateDebut": "2023-02-01",
-    "dateFin": "2023-02-01"
+    "dateFin": null
   }
   ```
 

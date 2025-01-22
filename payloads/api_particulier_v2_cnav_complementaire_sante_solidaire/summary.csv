@@ -8,7 +8,7 @@ Ce cas permet de tester :
 - [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière","{""codeInseeLieuDeNaissance"":""08480"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F"",""nomNaissance"":""DUPONT"",""prenoms"":[""JEANNE"",""LAURE""],""anneeDateDeNaissance"":1993,""moisDateDeNaissance"":8}",200,"{
   ""status"": ""beneficiaire_avec_participation_financiere"",
   ""dateDebut"": ""2023-06-01"",
-  ""dateFin"": ""2024-06-01""
+  ""dateFin"": null
 }"
 ,"## Bénéficiaire SANS participation financière - masculin - né dans un pays étranger
 
@@ -19,7 +19,7 @@ Ce cas permet de tester :
 - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""codeInseeLieuDeNaissance"":""08481"",""codePaysLieuDeNaissance"":""99127"",""sexe"":""M"",""nomNaissance"":""DUPONT"",""prenoms"":[""PIERRE"",""PAUL""],""anneeDateDeNaissance"":1984,""moisDateDeNaissance"":12}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2023-02-01"",
-  ""dateFin"": ""2024-02-01""
+  ""dateFin"": null
 }"
 ,"## Non bénéficiaire - masculin
 
@@ -52,7 +52,7 @@ Ce cas permet de tester :
 - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomUsage"":""PLUSSE"",""nomNaissance"":""GERVINAT"",""prenoms"":[""MADELEINE"",""LEA""],""anneeDateDeNaissance"":1976,""moisDateDeNaissance"":8,""jourDateDeNaissance"":24,""codePaysLieuDeNaissance"":""99131"",""sexe"":""F""}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2024-10-01"",
-  ""dateFin"": ""2025-10-01""
+  ""dateFin"": null
 }"
 ,"## Bénéficiaire né à l'étranger sans participation financière femme - 200
 
@@ -65,7 +65,7 @@ Ce cas permet de tester :
 - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomUsage"":""MIREL"",""nomNaissance"":""VAUBAN"",""prenoms"":[""VICTOIRE""],""anneeDateDeNaissance"":1966,""moisDateDeNaissance"":3,""jourDateDeNaissance"":5,""codePaysLieuDeNaissance"":""99216"",""sexe"":""F""}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2023-08-25"",
-  ""dateFin"": ""2024-08-25""
+  ""dateFin"": null
 }"
 ,"## Bénéficiaire avec participation financière femme - 200
 
@@ -78,7 +78,7 @@ Ce cas permet de tester :
 - [Réponse] statut bénéficiaire de la complémentaire santé solidaire AVEC participation financière","{""nomUsage"":""DUPUIS"",""nomNaissance"":""CARTIER"",""prenoms"":[""CELINE"",""MARIE""],""anneeDateDeNaissance"":1980,""moisDateDeNaissance"":10,""jourDateDeNaissance"":10,""codeInseeLieuDeNaissance"":""75056"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",200,"{
   ""status"": ""beneficiaire_avec_participation_financiere"",
   ""dateDebut"": ""2024-06-01"",
-  ""dateFin"": ""2025-06-01""
+  ""dateFin"": null
 }"
 ,"## Bénéficiaire sans participation financière homme - 200
 
@@ -91,7 +91,7 @@ Ce cas permet de tester :
 - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomUsage"":""LEDIEU"",""nomNaissance"":""FALLENDE"",""prenoms"":[""PIERRE"",""GAUTIER"",""HARRY""],""anneeDateDeNaissance"":1950,""moisDateDeNaissance"":1,""jourDateDeNaissance"":1,""codeInseeLieuDeNaissance"":""44109"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2024-08-25"",
-  ""dateFin"": ""2025-08-25""
+  ""dateFin"": null
 }"
 ,"## Bénéficiaire sans participation financière homme - 200
 
@@ -104,7 +104,7 @@ Ce cas permet de tester :
 - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomUsage"":""HUSTER"",""nomNaissance"":""BOISSON"",""prenoms"":[""FRANCIS""],""anneeDateDeNaissance"":1978,""moisDateDeNaissance"":4,""jourDateDeNaissance"":4,""codeInseeLieuDeNaissance"":""44109"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2024-08-25"",
-  ""dateFin"": ""2025-08-25""
+  ""dateFin"": null
 }"
 ,"## Bénéficiaire sans participation financière homme - 200
 
@@ -117,7 +117,7 @@ Ce cas permet de tester :
 - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomNaissance"":""TRIMARD"",""prenoms"":[""FAYCAL""],""anneeDateDeNaissance"":2000,""moisDateDeNaissance"":9,""jourDateDeNaissance"":5,""codeInseeLieuDeNaissance"":""44109"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2024-08-30"",
-  ""dateFin"": ""2025-08-30""
+  ""dateFin"": null
 }"
 ,"## Bénéficiaire sans participation financière homme - 200
 
@@ -130,7 +130,7 @@ Ce cas permet de tester :
 - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomNaissance"":""DEVRED"",""prenoms"":[""MARC""],""anneeDateDeNaissance"":1988,""moisDateDeNaissance"":7,""jourDateDeNaissance"":13,""codeInseeLieuDeNaissance"":""44109"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2024-11-05"",
-  ""dateFin"": ""2025-11-05""
+  ""dateFin"": null
 }"
 ,"## Bénéficiaire sans participation financière homme - 200
 
@@ -142,7 +142,7 @@ Ce cas permet de tester :
 - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomNaissance"":""RECETTECOMMUNAUTAIRE"",""prenoms"":[""LEON""],""anneeDateDeNaissance"":1968,""moisDateDeNaissance"":4,""jourDateDeNaissance"":5,""codeInseeLieuDeNaissance"":""44109"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2024-09-05"",
-  ""dateFin"": ""2025-09-05""
+  ""dateFin"": null
 }"
 ,"## Bénéficiaire sans participation financière homme dans le futur - 200
 
@@ -155,7 +155,7 @@ Ce cas permet de tester :
 - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomUsage"":""MOLIERE"",""nomNaissance"":""POQUELIN"",""prenoms"":[""JEAN"",""BAPTISTE""],""anneeDateDeNaissance"":1973,""moisDateDeNaissance"":2,""jourDateDeNaissance"":17,""codeInseeLieuDeNaissance"":""44109"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2026-09-29"",
-  ""dateFin"": ""2027-09-29""
+  ""dateFin"": null
 }"
 ,"## Bénéficiaire sans participation financière homme dans un futur trop proche - 200
 
@@ -168,7 +168,7 @@ Ce cas permet de tester :
 - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomUsage"":""GARE"",""nomNaissance"":""GEANT"",""prenoms"":[""GARY""],""anneeDateDeNaissance"":1950,""moisDateDeNaissance"":1,""jourDateDeNaissance"":1,""codeInseeLieuDeNaissance"":""44109"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M""}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2024-02-02"",
-  ""dateFin"": ""2025-02-02""
+  ""dateFin"": null
 }"
 ,"## Dossier complémentaire inexistant - 404
 
@@ -206,14 +206,14 @@ Les données proviennent de [nos propres jetons FranceConnect de test](../france
 L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":[""Georges""],""nomNaissance"":""CNAF"",""anneeDateDeNaissance"":2002,""moisDateDeNaissance"":1,""jourDateDeNaissance"":1,""sexe"":""M"",""codeInseeLieuDeNaissance"":""75002"",""codePaysLieuDeNaissance"":""99100""}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2021-05-05"",
-  ""dateFin"": ""2023-03-03""
+  ""dateFin"": null
 }"
 ,"Cas de test pour CSS avec jeton FranceConnect.
 Les données proviennent des jetons de l'environnement de test FranceConnect.
 L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":[""Angela"",""Claire"",""Louise""],""nomNaissance"":""DUBOIS"",""anneeDateDeNaissance"":1962,""moisDateDeNaissance"":8,""jourDateDeNaissance"":24,""sexe"":""F"",""codeInseeLieuDeNaissance"":""75107"",""codePaysLieuDeNaissance"":""99100""}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2023-02-01"",
-  ""dateFin"": ""2024-02-01""
+  ""dateFin"": null
 }"
 ,"## Non-bénéficiaire homme - 200
 
