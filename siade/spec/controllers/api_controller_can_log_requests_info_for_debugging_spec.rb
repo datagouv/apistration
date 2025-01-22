@@ -11,6 +11,16 @@ RSpec.describe APIController, 'log requests info for debugging' do
     def operation_id
       'whatever'
     end
+
+    def organizer
+      @organizer ||= OpenStruct.new(
+        response: OpenStruct.new(
+          headers: { 'Content-Type' => 'application/json' },
+          body: { 'message' => 'I like providers\' tea' }.to_json,
+          status: 418
+        )
+      )
+    end
   end
 
   subject do
@@ -49,6 +59,11 @@ RSpec.describe APIController, 'log requests info for debugging' do
           'path_example_param' => 'drink'
         },
         provided_organizer_params: nil,
+        provider: {
+          header: { 'Content-Type' => 'application/json' },
+          body: 'eyJtZXNzYWdlIjoiSSBsaWtlIHByb3ZpZGVycycgdGVhIn0=',
+          status: 418
+        },
         response_body: {
           'message' => 'I like tea'
         },
@@ -85,6 +100,16 @@ RSpec.describe APIController, 'log requests info for debugging' do
       def organizer_params
         { 'organizer' => 'params' }
       end
+
+      def organizer
+        @organizer ||= OpenStruct.new(
+          response: OpenStruct.new(
+            headers: { 'Content-Type' => 'application/json' },
+            body: { 'message' => 'I like providers\' tea' }.to_json,
+            status: 418
+          )
+        )
+      end
     end
 
     before do
@@ -93,17 +118,24 @@ RSpec.describe APIController, 'log requests info for debugging' do
 
     it 'logs request info with organizer params' do
       expect(RequestsDebuggerLogger.instance).to receive(:log).with(
-        controller_name: 'api',
-        path: '/show/drink',
-        request_params: {
-          'what' => 'ever',
-          'path_example_param' => 'drink'
-        },
-        provided_organizer_params: { 'organizer' => 'params' },
-        response_body: {
-          'message' => 'I like tea'
-        },
-        response_status: 418
+        hash_including(
+          controller_name: 'api',
+          path: '/show/drink',
+          request_params: {
+            'what' => 'ever',
+            'path_example_param' => 'drink'
+          },
+          provided_organizer_params: { 'organizer' => 'params' },
+          provider: {
+            header: { 'Content-Type' => 'application/json' },
+            body: 'eyJtZXNzYWdlIjoiSSBsaWtlIHByb3ZpZGVycycgdGVhIn0=',
+            status: 418
+          },
+          response_body: {
+            'message' => 'I like tea'
+          },
+          response_status: 418
+        )
       )
 
       subject
