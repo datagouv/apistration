@@ -15,7 +15,7 @@ class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
     request.path
   end
 
-  def serialize_data(organizer)
+  def serialize_data
     if organizer.mocked_data.present?
       organizer.mocked_data[:payload]
     else
@@ -23,7 +23,7 @@ class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
     end
   end
 
-  def render_errors(organizer)
+  def render_errors
     render content_type: content_type_header,
       json:         ::ErrorsSerializer.new(organizer.errors, format: error_format).as_json,
       status:       extract_http_code(organizer)

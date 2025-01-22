@@ -1,9 +1,7 @@
 class APIParticulier::V2::PoleEmploi::StatutController < APIParticulier::V2::BaseController
   def show
-    organizer = retrieve_payload_data(::FranceTravail::Statut)
-
     if organizer.success?
-      render json: serialize_data(organizer),
+      render json: serialize_data,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)
@@ -29,5 +27,9 @@ class APIParticulier::V2::PoleEmploi::StatutController < APIParticulier::V2::Bas
       reason: 'Situation not found',
       message: error.detail
     }
+  end
+
+  def organizer
+    @organizer ||= retrieve_payload_data(::FranceTravail::Statut)
   end
 end

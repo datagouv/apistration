@@ -1,12 +1,10 @@
 class APIEntreprise::V3AndMore::FNTP::CarteProfessionnelleTravauxPublicsController < APIEntreprise::V3AndMore::BaseController
   def show
-    organizer = retrieve_payload_data(::FNTP::CarteProfessionnelleTravauxPublics)
-
     if organizer.success?
-      render json: serialize_data(organizer),
+      render json: serialize_data,
         status: extract_http_code(organizer)
     else
-      render_errors(organizer)
+      render_errors
     end
   end
 
@@ -20,5 +18,9 @@ class APIEntreprise::V3AndMore::FNTP::CarteProfessionnelleTravauxPublicsControll
 
   def serializer_module
     ::APIEntreprise::FNTP::CarteProfessionnelleTravauxPublicsSerializer
+  end
+
+  def organizer
+    @organizer ||= retrieve_payload_data(::FNTP::CarteProfessionnelleTravauxPublics)
   end
 end

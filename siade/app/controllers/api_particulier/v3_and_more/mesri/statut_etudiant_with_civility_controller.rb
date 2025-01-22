@@ -2,10 +2,8 @@ class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithCivilityController < A
   include APIParticulier::CivilityParameters
 
   def show
-    organizer = retrieve_payload_data(MESRI::StudentStatus::WithCivility)
-
     if organizer.success?
-      render json: serialize_data(organizer),
+      render json: serialize_data,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)
@@ -27,5 +25,9 @@ class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithCivilityController < A
 
   def serializer_module
     ::APIParticulier::MESRI::StatutEtudiantSerializer
+  end
+
+  def organizer
+    @organizer ||= retrieve_payload_data(MESRI::StudentStatus::WithCivility)
   end
 end

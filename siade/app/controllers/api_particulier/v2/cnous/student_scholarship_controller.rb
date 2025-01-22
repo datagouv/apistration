@@ -2,10 +2,8 @@ class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulier::
   include APIParticulier::FranceConnectable
 
   def show
-    organizer = retrieve_payload_data(extract_organizer_thanks_to_params)
-
     if organizer.success?
-      render json: serialize_data(organizer),
+      render json: serialize_data,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)
@@ -90,5 +88,9 @@ class APIParticulier::V2::CNOUS::StudentScholarshipController < APIParticulier::
 
   def api_name
     'etudiant_boursier'
+  end
+
+  def organizer
+    @organizer ||= retrieve_payload_data(extract_organizer_thanks_to_params)
   end
 end

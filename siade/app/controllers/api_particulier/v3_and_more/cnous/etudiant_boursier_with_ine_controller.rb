@@ -1,9 +1,7 @@
 class APIParticulier::V3AndMore::CNOUS::EtudiantBoursierWithINEController < APIParticulier::V3AndMore::BaseController
   def show
-    organizer = retrieve_payload_data(CNOUS::StudentScholarshipWithINE)
-
     if organizer.success?
-      render json: serialize_data(organizer),
+      render json: serialize_data,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)
@@ -20,5 +18,9 @@ class APIParticulier::V3AndMore::CNOUS::EtudiantBoursierWithINEController < APIP
 
   def serializer_module
     ::APIParticulier::CNOUS::EtudiantBoursier
+  end
+
+  def organizer
+    @organizer ||= retrieve_payload_data(CNOUS::StudentScholarshipWithINE)
   end
 end

@@ -2,13 +2,11 @@ class APIEntreprise::V3AndMore::DGFIP::LiassesFiscalesController < APIEntreprise
   include APIEntreprise::CommonDGFIPOrganizerParams
 
   def show
-    organizer = retrieve_payload_data(::DGFIP::LiassesFiscales, cache: true)
-
     if organizer.success?
-      render json: serialize_data(organizer),
+      render json: serialize_data,
         status: extract_http_code(organizer)
     else
-      render_errors(organizer)
+      render_errors
     end
   end
 
@@ -23,5 +21,9 @@ class APIEntreprise::V3AndMore::DGFIP::LiassesFiscalesController < APIEntreprise
 
   def serializer_module
     ::APIEntreprise::DGFIP::LiassesFiscalesSerializer
+  end
+
+  def organizer
+    @organizer ||= retrieve_payload_data(::DGFIP::LiassesFiscales, cache: true)
   end
 end

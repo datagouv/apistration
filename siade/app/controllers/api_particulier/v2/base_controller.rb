@@ -10,7 +10,7 @@ class APIParticulier::V2::BaseController < APIController
     "#{request.path}:#{organizer_params.to_query}"
   end
 
-  def serialize_data(organizer)
+  def serialize_data
     if organizer.mocked_data.present?
       organizer.mocked_data[:payload]
     else

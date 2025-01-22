@@ -1,9 +1,7 @@
 class APIParticulier::V3AndMore::FranceTravail::IndemnitesWithIdentifiantController < APIParticulier::V3AndMore::BaseController
   def show
-    organizer = retrieve_payload_data(::FranceTravail::Indemnites)
-
     if organizer.success?
-      render json: serialize_data(organizer), status: extract_http_code(organizer)
+      render json: serialize_data, status: extract_http_code(organizer)
     else
       render_errors(organizer)
     end
@@ -20,5 +18,9 @@ class APIParticulier::V3AndMore::FranceTravail::IndemnitesWithIdentifiantControl
 
   def serializer_module
     ::APIParticulier::FranceTravail::IndemnitesSerializer
+  end
+
+  def organizer
+    @organizer ||= retrieve_payload_data(::FranceTravail::Indemnites)
   end
 end

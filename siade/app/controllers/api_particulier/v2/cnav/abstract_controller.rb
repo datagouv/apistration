@@ -2,10 +2,8 @@ class APIParticulier::V2::CNAV::AbstractController < APIParticulier::V2::BaseCon
   include APIParticulier::FranceConnectable
 
   def show
-    organizer = retrieve_payload_data(retriever, cache: true, expires_in:)
-
     if organizer.success?
-      render json: serialize_data(organizer),
+      render json: serialize_data,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)
@@ -79,5 +77,9 @@ class APIParticulier::V2::CNAV::AbstractController < APIParticulier::V2::BaseCon
 
   def expires_in
     1.hour
+  end
+
+  def organizer
+    @organizer ||= retrieve_payload_data(retriever, cache: true, expires_in:)
   end
 end

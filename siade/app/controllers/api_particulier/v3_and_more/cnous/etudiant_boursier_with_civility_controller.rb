@@ -2,10 +2,8 @@ class APIParticulier::V3AndMore::CNOUS::EtudiantBoursierWithCivilityController <
   include APIParticulier::CivilityParameters
 
   def show
-    organizer = retrieve_payload_data(CNOUS::StudentScholarshipWithCivility)
-
     if organizer.success?
-      render json: serialize_data(organizer),
+      render json: serialize_data,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)
@@ -26,5 +24,9 @@ class APIParticulier::V3AndMore::CNOUS::EtudiantBoursierWithCivilityController <
 
   def serializer_module
     ::APIParticulier::CNOUS::EtudiantBoursier
+  end
+
+  def organizer
+    @organizer ||= retrieve_payload_data(CNOUS::StudentScholarshipWithCivility)
   end
 end

@@ -15,7 +15,7 @@ class APIParticulier::V3AndMore::BaseController < APIController
     request.path
   end
 
-  def serialize_data(organizer)
+  def serialize_data
     if organizer.mocked_data.present?
       organizer.mocked_data[:payload]
     else

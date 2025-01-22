@@ -1,9 +1,7 @@
 class APIParticulier::V2::MEN::ScolaritesController < APIParticulier::V2::BaseController
   def show
-    organizer = retrieve_payload_data(::MEN::Scolarites)
-
     if organizer.success?
-      render json: serialize_data(organizer),
+      render json: serialize_data,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)
@@ -44,5 +42,9 @@ class APIParticulier::V2::MEN::ScolaritesController < APIParticulier::V2::BaseCo
 
   def user_has_bourse_scope?
     current_user.has_access?('men_statut_boursier') || current_user.has_access?('men_echelon_bourse')
+  end
+
+  def organizer
+    @organizer ||= retrieve_payload_data(::MEN::Scolarites)
   end
 end

@@ -1,9 +1,7 @@
 class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithINEController < APIParticulier::V3AndMore::BaseController
   def show
-    organizer = retrieve_payload_data(MESRI::StudentStatus::WithINE)
-
     if organizer.success?
-      render json: serialize_data(organizer),
+      render json: serialize_data,
         status: extract_http_code(organizer)
     else
       render_errors(organizer)
@@ -21,5 +19,9 @@ class APIParticulier::V3AndMore::MESRI::StatutEtudiantWithINEController < APIPar
 
   def serializer_module
     ::APIParticulier::MESRI::StatutEtudiantSerializer
+  end
+
+  def organizer
+    @organizer ||= retrieve_payload_data(MESRI::StudentStatus::WithINE)
   end
 end

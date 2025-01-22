@@ -1,12 +1,10 @@
 class APIEntreprise::V3AndMore::INSEE::EtablissementsController < APIEntreprise::V3AndMore::INSEE::BaseController
   def show
-    organizer = retrieve_payload_data(::INSEE::Etablissement)
-
     if organizer.success?
-      render json: serialize_data(organizer),
+      render json: serialize_data,
         status: extract_http_code(organizer)
     else
-      render_errors(organizer)
+      render_errors
     end
   end
 
@@ -20,5 +18,9 @@ class APIEntreprise::V3AndMore::INSEE::EtablissementsController < APIEntreprise:
 
   def serializer_module
     ::APIEntreprise::INSEE::EtablissementSerializer
+  end
+
+  def organizer
+    @organizer ||= retrieve_payload_data(::INSEE::Etablissement)
   end
 end

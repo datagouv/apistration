@@ -1,12 +1,10 @@
 class APIEntreprise::V3AndMore::ACOSS::AttestationsSocialesController < APIEntreprise::V3AndMore::BaseController
   def show
-    organizer = retrieve_payload_data(retrieve_organizer_based_on_version, cache: true, expires_in:)
-
     if organizer.success?
-      render json: serialize_data(organizer),
+      render json: serialize_data,
         status: extract_http_code(organizer)
     else
-      render_errors(organizer)
+      render_errors
     end
   end
 
@@ -34,5 +32,9 @@ class APIEntreprise::V3AndMore::ACOSS::AttestationsSocialesController < APIEntre
 
   def expires_in
     (Time.zone.now.end_of_day + 8.hours - Time.zone.now).to_i
+  end
+
+  def organizer
+    @organizer ||= retrieve_payload_data(retrieve_organizer_based_on_version, cache: true, expires_in: expires_in)
   end
 end

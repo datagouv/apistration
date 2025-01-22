@@ -8,6 +8,8 @@ class APIController < ApplicationController
   before_action :verify_duplicate_params!
   after_action :clean_duplicate_param_tracking
 
+  attr_reader :organizer
+
   def process_action(*args)
     super
   rescue ActionDispatch::Http::MimeNegotiation::InvalidType => e
@@ -32,9 +34,9 @@ class APIController < ApplicationController
     'application/json'
   end
 
-  def render_errors(retriever, extra_payload = {})
-    render json:    ErrorsSerializer.new(retriever.errors, format: error_format).as_json.merge(extra_payload || {}),
-      status:  retriever.http_code
+  def render_errors(extra_payload = {})
+    render json:    ErrorsSerializer.new(organizer.errors, format: error_format).as_json.merge(extra_payload || {}),
+      status:  organizer.http_code
   end
 
   private

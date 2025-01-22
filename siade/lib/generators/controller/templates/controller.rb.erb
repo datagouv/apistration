@@ -1,17 +1,15 @@
 class API<%= api.classify %>::V3AndMore::<%= name %>Controller < API<%= api.classify %>::V3AndMore::BaseController
   def show
-    organizer = retrieve_payload_data(::<%= name %>)
-
     if organizer.success?
       <% if prochainement? %>
       render json: organizer[:payload],
         status: organizer[:status]
       <% else %>
-      render json: serialize_data(organizer),
+      render json: serialize_data,
         status: extract_http_code(organizer)
     <% end %>
     else
-      render_errors(organizer)
+      render_errors
     end
   end
 
@@ -23,5 +21,9 @@ class API<%= api.classify %>::V3AndMore::<%= name %>Controller < API<%= api.clas
 
   def serializer_module
     ::API<%= api.classify %>::<%= provider_namespace %>::<%= resource_class %>Serializer
+  end
+
+  def organizer
+    @organizer ||= retrieve_payload_data(::<%= name %>)
   end
 end

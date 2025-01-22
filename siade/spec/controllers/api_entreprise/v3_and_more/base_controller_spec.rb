@@ -310,18 +310,20 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
 
     controller(described_class) do
       def show
-        organizer = DummyMaintenanceRetrieverOrganizer.call
-
         if organizer.success?
-          render json: serialize_data(organizer),
+          render json: serialize_data,
             status: extract_http_code(organizer)
         else
-          render_errors(organizer)
+          render_errors
         end
       end
 
       def serializer_module
         APIEntreprise::DummyResourceSerializer
+      end
+
+      def organizer
+        @organizer = DummyMaintenanceRetrieverOrganizer.call
       end
     end
 
