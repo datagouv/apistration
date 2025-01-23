@@ -354,6 +354,7 @@ shared:
       provider: 'INSEE'
       status_page:
         name: 'INSEE - Métadonnées'
+        alerts_wait: 5
       driver_params:
         retriever: 'INSEE::CommuneINSEECode'
         params:
