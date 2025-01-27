@@ -18,8 +18,8 @@ class INSEE::Metadonnees::MakeRequest < MakeRequest::Get
 
   def extra_http_start_options
     {
-      open_timeout: 2,
-      read_timeout: 2
+      open_timeout: 5,
+      read_timeout: 5
     }
   end
 
