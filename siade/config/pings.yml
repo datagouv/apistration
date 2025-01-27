@@ -477,6 +477,8 @@ shared:
         retriever: 'BanqueDeFrance::BilansEntreprise'
         params:
           siren: '418166096'
+          user_id: '22222222-2222-2222-2222-222222222222'
+          request_id: '22222222-2222-2222-2222-222222222222'
 
     cnetp/attestation_cotisations_conges_payes_chomage_intemperies:
       kind: 'retriever'
