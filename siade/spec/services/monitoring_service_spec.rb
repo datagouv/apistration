@@ -1,16 +1,20 @@
 RSpec.describe MonitoringService, type: :service do
   let(:instance) { described_class.instance }
   let(:provider) { 'dummy' }
+  let(:scope) { instance_double(Sentry::Scope) }
+
+  before do
+    allow(Sentry).to receive(:with_scope).and_yield(scope)
+    allow(scope).to receive(:set_context)
+
+    instance.set_provider(provider)
+  end
+
+  after do
+    Sentry.get_current_scope.clear
+  end
 
   describe 'tracking methods' do
-    before do
-      instance.set_provider(provider)
-    end
-
-    after do
-      Sentry.get_current_scope.clear
-    end
-
     describe '#track_provider_error' do
       subject { instance.track_provider_error(error) }
 
@@ -26,7 +30,8 @@ RSpec.describe MonitoringService, type: :service do
       end
 
       it 'sets extra context with error payload, which returns json api error with all available informations' do
-        expect(Sentry).to receive(:set_extras).with(
+        expect(scope).to receive(:set_context).with(
+          'Provider error',
           hash_including(
             error.to_h
           )
@@ -36,7 +41,8 @@ RSpec.describe MonitoringService, type: :service do
       end
 
       it 'sets extra context with monitoring private context, which is not returned to users' do
-        expect(Sentry).to receive(:set_extras).with(
+        expect(scope).to receive(:set_context).with(
+          'Provider error',
           hash_including(
             monitoring_private_context
           )
@@ -79,9 +85,12 @@ RSpec.describe MonitoringService, type: :service do
       end
 
       it 'sets context with exception' do
-        expect(Sentry).to receive(:set_extras).with(
-          exception: exception.message,
-          backtrace: exception.backtrace
+        expect(scope).to receive(:set_context).with(
+          'Missing data',
+          {
+            exception: exception.message,
+            backtrace: exception.backtrace
+          }
         )
 
         subject
@@ -113,7 +122,10 @@ RSpec.describe MonitoringService, type: :service do
       let(:context_data) { { foo: 'bar' } }
 
       it 'sets extra context on Sentry' do
-        expect(Sentry).to receive(:set_extras).with(context_data)
+        expect(scope).to receive(:set_context).with(
+          'Retriever',
+          context_data
+        )
 
         subject
       end
@@ -151,7 +163,7 @@ RSpec.describe MonitoringService, type: :service do
         end
 
         it 'tracks this event on sentry with context' do
-          expect(Sentry).to receive(:set_extras).with(extra_context)
+          expect(scope).to receive(:set_context).with('Extra context', extra_context)
           expect(Sentry).to receive(:capture_message).with(
             message,
             {
@@ -215,9 +227,10 @@ RSpec.describe MonitoringService, type: :service do
         }
       end
 
-      it 'calls Sentry.set_extras without token' do
-        expect(Sentry).to receive(:set_extras).with(
-          params: params.except('token')
+      it 'calls scope.set_context without token' do
+        expect(scope).to receive(:set_context).with(
+          'Controller params',
+          { params: params.except('token') }
         )
 
         subject

@@ -8,33 +8,30 @@ class MonitoringService
 
   def_delegators :Sentry,
     :capture_message,
-    :set_extras,
+    :with_scope,
     :set_user,
     :set_tags
 
   def track_provider_error(error)
-    set_extras(
-      error.to_h.merge(
-        error.monitoring_private_context
-      )
-    )
+    extra_context = error.to_h.merge(error.monitoring_private_context)
 
-    track(
-      error.tracking_level,
-      "[#{current_provider}] Error: #{error.detail}"
-    )
+    set_extra_context('Provider error', extra_context) do
+      track(
+        error.tracking_level,
+        "[#{current_provider}] Error: #{error.detail}"
+      )
+    end
   end
 
   def track_missing_data(field, exception)
-    set_extras(
+    extra_context = {
       exception: exception.message,
       backtrace: exception.backtrace
-    )
+    }
 
-    track(
-      'info',
-      "[#{current_provider}] Missing following field: #{field}"
-    )
+    set_extra_context('Missing data', extra_context) do
+      track('info', "[#{current_provider}] Missing following field: #{field}")
+    end
   end
 
   def track_deprecated_data(field, deprecated_data)
@@ -53,9 +50,8 @@ class MonitoringService
   def set_controller_params(params)
     params.stringify_keys!
 
-    set_extras(
-      params: params.except('token')
-    )
+    set_extra_context('Controller params', params: params.except('token'))
+
     set_tags(
       endpoint: "#{params['controller']}##{params['action']}"
     )
@@ -68,11 +64,11 @@ class MonitoringService
   end
 
   def set_retriever_context(context)
-    set_extras(context.to_h)
+    set_extra_context('Retriever', context.to_h)
   end
 
   def track(level, message, extra_context = {})
-    set_extras(extra_context) if extra_context.present?
+    set_extra_context('Extra context', extra_context) if extra_context.present?
 
     capture_message(message, level:)
 
@@ -80,6 +76,13 @@ class MonitoringService
   end
 
   private
+
+  def set_extra_context(title, context)
+    with_scope do |scope|
+      scope.set_context(title, context)
+      yield if block_given?
+    end
+  end
 
   def extract_logger_level(level)
     if level == 'warning'
