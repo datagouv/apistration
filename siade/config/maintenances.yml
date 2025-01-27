@@ -4,6 +4,10 @@ production: &shared
     from_hour: '06:00'
     to_hour: '06:30'
   'DGFIP - Adélie':
+    dates:
+      - day: '2025-01-27'
+        from_hour: '08:00'
+        to_hour:  '18:00'
     from_hour: '01:00'
     to_hour: '02:00'
   'MEN':
