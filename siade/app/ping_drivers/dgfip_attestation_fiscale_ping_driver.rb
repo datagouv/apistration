@@ -18,7 +18,7 @@ class DGFIPAttestationFiscalePingDriver < ApplicationPingDriver
 
   private
 
-  def cookie
+  def token
     DGFIP::ADELIE::Authenticate.call.token
   end
 
