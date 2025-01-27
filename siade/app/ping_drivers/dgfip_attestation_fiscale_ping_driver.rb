@@ -1,9 +1,10 @@
 class DGFIPAttestationFiscalePingDriver < ApplicationPingDriver
   def perform
-    interactor = DGFIP::AttestationFiscale::MakeRequest.call(
+    interactor = DGFIP::ADELIE::AttestationFiscale::MakeRequest.call(
       params: {
         siren: '532010576',
-        user_id: '22222222-2222-2222-2222-222222222222'
+        user_id: '22222222-2222-2222-2222-222222222222',
+        request_id: '22222222-2222-2222-2222-222222222222'
       },
       cookie:
     )
