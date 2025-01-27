@@ -6,7 +6,7 @@ class DGFIPAttestationFiscalePingDriver < ApplicationPingDriver
         user_id: '22222222-2222-2222-2222-222222222222',
         request_id: '22222222-2222-2222-2222-222222222222'
       },
-      cookie:
+      token:
     )
 
     if interactor.success?
@@ -19,7 +19,7 @@ class DGFIPAttestationFiscalePingDriver < ApplicationPingDriver
   private
 
   def cookie
-    DGFIP::Authenticate.call.cookie
+    DGFIP::ADELIE::Authenticate.call.token
   end
 
   def build_context(_driver_params); end
