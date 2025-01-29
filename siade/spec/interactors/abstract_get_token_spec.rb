@@ -74,11 +74,11 @@ RSpec.describe AbstractGetToken, type: :interactor do
         }.to change { EncryptedCache.read(:dummy_token_authentication) }.to(access_token)
       end
 
-      it 'stores the new token with expiration' do
+      it 'stores the new token with expiration minus 10 seconds' do
         expect(EncryptedCache.instance).to receive(:write).with(
           anything,
           access_token,
-          expires_in: expires_in.to_i
+          expires_in: expires_in.to_i - 10
         )
 
         make_call

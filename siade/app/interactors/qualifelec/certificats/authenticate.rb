@@ -10,7 +10,7 @@ class Qualifelec::Certificats::Authenticate < AbstractGetToken
 
     expires_at = decoded_jwt(token).first['exp']
 
-    expires_at - Time.zone.now.to_i - 10
+    expires_at - Time.zone.now.to_i
   end
 
   def decoded_jwt(token)
