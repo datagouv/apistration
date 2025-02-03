@@ -194,6 +194,10 @@ Pour récupérer le jeton de production un portail développeur est mis à votre
 
 Pour effectuer vos tests sur le bac à sable, référez-vous à ce dépôt github: [etalab/siade_staging_data](https://github.com/etalab/siade_staging_data/) (l'ancien système basé sur Airtable n'est plus maintenu et va être remplacé par le nouveau système). Un jeton nommé default est disponible ici: [tokens](https://github.com/etalab/siade_staging_data/tree/develop/tokens)
 
+### Accéder à la version 3 de l'API
+
+L'API particulier v3 est actuellement en version beta, vous pouvez accéder à sa documentation [ici](https://particulier.api.gouv.fr/developpeurs/openapi-v3).
+
 ### Périmètre des données retournées
 
 **Important :** le contenu du jeu de données retourné dépend des _scopes_ ou _périmètres_ du jeton utilisé.
@@ -285,6 +289,10 @@ Le bac à sable et l'API de production sont appelables par deux adresses distinc
 Pour récupérer le jeton de production un portail développeur est mis à votre disposition à l'adresse suivante : [https://particulier.api.gouv.fr/compte](https://particulier.api.gouv.fr/compte)
 
 Pour effectuer vos tests sur le bac à sable, référez-vous à ce dépôt github: [etalab/siade_staging_data](https://github.com/etalab/siade_staging_data/) (l'ancien système basé sur Airtable n'est plus maintenu et va être remplacé par le nouveau système). Un jeton nommé default est disponible ici: [tokens](https://github.com/etalab/siade_staging_data/tree/develop/tokens)
+
+### Accéder à la version 2 de l'API
+
+Vous pouvez accéder à la documentation v2 [ici](https://particulier.api.gouv.fr/developpeurs/openapi).
 
 ### Périmètre des données retournées
 
