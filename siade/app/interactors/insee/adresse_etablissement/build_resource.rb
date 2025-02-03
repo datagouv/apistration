@@ -9,7 +9,7 @@ class INSEE::AdresseEtablissement::BuildResource < INSEE::Etablissement::BuildRe
       status_diffusion: STATUT_DIFFUSION[etablissement['statutDiffusionEtablissement']],
       complement_adresse: etablissement_address['complementAdresseEtablissement'],
       numero_voie: etablissement_address['numeroVoieEtablissement'],
-      indice_repetition_voie: indices_repetition_de_voie[etablissement_address['indiceRepetitionEtablissement']],
+      indice_repetition_voie: indices_repetition_de_voie[etablissement_address['indiceRepetitionEtablissement']] || etablissement_address['indiceRepetitionEtablissement'],
       type_voie: etablissement_address_type_de_voie.try(:upcase),
       libelle_voie: etablissement_address['libelleVoieEtablissement'],
       code_postal: etablissement_address['codePostalEtablissement'],
