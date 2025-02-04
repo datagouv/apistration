@@ -1,0 +1,21 @@
+{
+  "isValid" : false,
+  "requestDate" : "2022-10-18T16:27:12.648Z",
+  "userError" : "MS_MAX_CONCURRENT_REQ",
+  "name" : "SA DANONE",
+  "address" : "17 BD HAUSSMANN\n75009 PARIS",
+  "requestIdentifier" : "",
+  "vatNumber" : "27552032534",
+  "viesApproximate" : {
+    "name" : "---",
+    "street" : "---",
+    "postalCode" : "---",
+    "city" : "---",
+    "companyType" : "---",
+    "matchName" : 3,
+    "matchStreet" : 3,
+    "matchPostalCode" : 3,
+    "matchCity" : 3,
+    "matchCompanyType" : 3
+  }
+}
