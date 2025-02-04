@@ -2,10 +2,7 @@ class EuropeanCommission::VIES::ValidateResponse < ValidateResponse
   def call
     unknown_provider_response! unless http_ok?
 
-    unknown_provider_response! if invalid_json?
-    provider_rate_limiting_error! if ip_banned?
-    provider_unavailable! if country_provider_error == 'MS_UNAVAILABLE'
-    unknown_provider_response! if user_error_invalid? || valid_tva_number_boolean.nil?
+    unknown_provider_response! if invalid_json? || valid_tva_number_boolean.nil?
 
     handle_valid_json
   end
@@ -13,6 +10,9 @@ class EuropeanCommission::VIES::ValidateResponse < ValidateResponse
   private
 
   def handle_valid_json
+    provider_rate_limiting_error! if ip_banned?
+    provider_unavailable! if country_provider_error == 'MS_UNAVAILABLE'
+
     case valid_tva_number_boolean
     when FalseClass
       make_payload_cacheable!
@@ -30,10 +30,6 @@ class EuropeanCommission::VIES::ValidateResponse < ValidateResponse
 
   def ip_banned?
     json_body['userError'] == 'IP_BLOCKED'
-  end
-
-  def user_error_invalid?
-    %w[INVALID VALID].exclude?(json_body['userError'])
   end
 
   def country_provider_error

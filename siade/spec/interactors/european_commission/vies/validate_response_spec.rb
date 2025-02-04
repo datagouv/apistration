@@ -22,15 +22,6 @@ RSpec.describe EuropeanCommission::VIES::ValidateResponse, type: :validate_respo
       its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
     end
 
-    context 'when body is a max concurrent req error' do
-      let(:body) { read_payload_file('vies/max_concurrent_error.json') }
-
-      it { is_expected.to be_a_failure }
-
-      its(:cacheable) { is_expected.to be(false) }
-      its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
-    end
-
     context 'when body is an ip banned error' do
       let(:body) { read_payload_file('vies/ip_blocked.json') }
 
