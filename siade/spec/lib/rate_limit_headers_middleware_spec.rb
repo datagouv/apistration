@@ -21,7 +21,7 @@ RSpec.describe RateLimitHeadersMiddleware, type: :middleware do
   end
 
   before do
-    allow(MonitoringService.instance).to receive(:track)
+    allow(MonitoringService.instance).to receive(:track_with_added_context)
   end
 
   describe 'when there is only one throttle defined' do
@@ -44,7 +44,7 @@ RSpec.describe RateLimitHeadersMiddleware, type: :middleware do
     it 'does not log through monitoring service' do
       subject
 
-      expect(MonitoringService.instance).not_to have_received(:track)
+      expect(MonitoringService.instance).not_to have_received(:track_with_added_context)
     end
   end
 
@@ -69,7 +69,7 @@ RSpec.describe RateLimitHeadersMiddleware, type: :middleware do
     it 'logs through monitoring service' do
       subject
 
-      expect(MonitoringService.instance).to have_received(:track).with(
+      expect(MonitoringService.instance).to have_received(:track_with_added_context).with(
         'warning',
         'Multiple throttle data detected (Rack::Attack misconfiguration)',
         env['rack.attack.throttle_data']

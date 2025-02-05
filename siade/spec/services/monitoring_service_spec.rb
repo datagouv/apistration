@@ -81,6 +81,36 @@ RSpec.describe MonitoringService, type: :service do
       end
     end
 
+    describe '#track_with_added_context' do
+      subject { instance.track_with_added_context(level, message, extra_context) }
+
+      let(:level) { 'info' }
+      let(:message) { 'whatever' }
+      let(:extra_context) { { foo: 'bar' } }
+
+      it 'sets extra context' do
+        expect(scope).to receive(:set_context).with(
+          'Extra context',
+          hash_including(
+            extra_context
+          )
+        )
+
+        subject
+      end
+
+      it 'tracks event with level and message' do
+        expect(Sentry).to receive(:capture_message).with(
+          message,
+          {
+            level:
+          }
+        )
+
+        subject
+      end
+    end
+
     describe '#set_retriever_context' do
       subject { instance.set_retriever_context(retriever_context) }
 
@@ -98,11 +128,10 @@ RSpec.describe MonitoringService, type: :service do
     end
 
     describe '#track' do
-      subject { instance.track(level, message, extra_context) }
+      subject { instance.track(level, message) }
 
       let(:level) { 'warning' }
       let(:message) { 'Oops' }
-      let(:extra_context) { nil }
 
       it 'tracks event with level and message' do
         expect(Sentry).to receive(:capture_message).with(
@@ -119,26 +148,6 @@ RSpec.describe MonitoringService, type: :service do
         expect(Rails.logger).to receive(:warn).with(message)
 
         subject
-      end
-
-      context 'with extra_context set' do
-        let(:extra_context) do
-          {
-            lol: 'oki'
-          }
-        end
-
-        it 'tracks this event on sentry with context' do
-          expect(scope).to receive(:set_context).with('Extra context', extra_context)
-          expect(Sentry).to receive(:capture_message).with(
-            message,
-            {
-              level:
-            }
-          )
-
-          subject
-        end
       end
     end
   end

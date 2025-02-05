@@ -82,7 +82,7 @@ RSpec.describe APIEntreprise::ProxiedFilesController do
         it { is_expected.to have_http_status(:bad_gateway) }
 
         it 'tracks the error as info' do
-          expect(MonitoringService.instance).to receive(:track).with('info', 'Proxied file error', { status: '504', url: 'https://example.com/url.pdf' })
+          expect(MonitoringService.instance).to receive(:track_with_added_context).with('info', 'Proxied file error', { status: '504', url: 'https://example.com/url.pdf' })
 
           subject
         end

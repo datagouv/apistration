@@ -58,7 +58,7 @@ class QUALIBATCertificationsBatiment::InsurancesExtractor < PDFExtractor
   end
 
   def track_not_found(assurance_value)
-    monitoring_service.track(
+    monitoring_service.track_with_added_context(
       :info,
       '[Qualibat] No insurance name found',
       {

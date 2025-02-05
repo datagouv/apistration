@@ -83,7 +83,7 @@ RSpec.describe EncryptedCache, type: :service do
       end
 
       it 'tracks error with key and option (not value, which can be sensitive)' do
-        expect(MonitoringService.instance).to receive(:track).with(
+        expect(MonitoringService.instance).to receive(:track_with_added_context).with(
           :warn,
           'EncryptedCache redis error',
           {

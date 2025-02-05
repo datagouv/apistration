@@ -72,7 +72,7 @@ class FranceConnect::ValidateResponse < ValidateResponse
   end
 
   def track_invalid_parameters_error_for_france_connect(organizer)
-    MonitoringService.instance.track(
+    MonitoringService.instance.track_with_added_context(
       'error',
       'Invalid params with FranceConnect',
       {

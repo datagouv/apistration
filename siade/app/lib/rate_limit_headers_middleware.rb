@@ -37,7 +37,7 @@ class RateLimitHeadersMiddleware
   end
 
   def log_multiple_throttle(throttle_raw_data)
-    MonitoringService.instance.track(
+    MonitoringService.instance.track_with_added_context(
       'warning',
       'Multiple throttle data detected (Rack::Attack misconfiguration)',
       throttle_raw_data

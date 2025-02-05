@@ -76,7 +76,7 @@ class EncryptedCache
   # rubocop:enable Security/MarshalLoad
 
   def track_redis_error(redis_error, key, options)
-    MonitoringService.instance.track(
+    MonitoringService.instance.track_with_added_context(
       :warn,
       'EncryptedCache redis error',
       {

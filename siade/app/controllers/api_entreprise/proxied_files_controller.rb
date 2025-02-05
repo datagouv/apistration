@@ -49,7 +49,7 @@ class APIEntreprise::ProxiedFilesController < ApplicationController
   end
 
   def track_invalid_proxied_file(status, url)
-    MonitoringService.instance.track('info', 'Proxied file error', { status:, url: })
+    MonitoringService.instance.track_with_added_context('info', 'Proxied file error', { status:, url: })
   end
 
   def extract_filename_from_url(url)

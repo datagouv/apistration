@@ -76,7 +76,7 @@ class MI::Associations::ValidateResponse < ValidateResponse
   end
 
   def monitor_association_without_rna(id_param)
-    MonitoringService.instance.track(
+    MonitoringService.instance.track_with_added_context(
       'info',
       'Association without RNA detected',
       {

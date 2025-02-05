@@ -23,6 +23,12 @@ class MonitoringService
     end
   end
 
+  def track_with_added_context(level, message, extra_context)
+    set_extra_context('Extra context', extra_context) do
+      track(level, message)
+    end
+  end
+
   def track_deprecated_data(field, deprecated_data)
     track(
       'info',
@@ -56,9 +62,7 @@ class MonitoringService
     set_extra_context('Retriever', context.to_h)
   end
 
-  def track(level, message, extra_context = {})
-    set_extra_context('Extra context', extra_context) if extra_context.present?
-
+  def track(level, message)
     capture_message(message, level:)
 
     Rails.logger.public_send(extract_logger_level(level), message)
