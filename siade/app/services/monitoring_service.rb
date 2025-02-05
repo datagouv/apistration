@@ -23,17 +23,6 @@ class MonitoringService
     end
   end
 
-  def track_missing_data(field, exception)
-    extra_context = {
-      exception: exception.message,
-      backtrace: exception.backtrace
-    }
-
-    set_extra_context('Missing data', extra_context) do
-      track('info', "[#{current_provider}] Missing following field: #{field}")
-    end
-  end
-
   def track_deprecated_data(field, deprecated_data)
     track(
       'info',

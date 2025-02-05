@@ -63,40 +63,6 @@ RSpec.describe MonitoringService, type: :service do
       end
     end
 
-    describe '#track_missing_data' do
-      subject { instance.track_missing_data(field, exception) }
-
-      let(:field) { 'adresse' }
-      let(:exception) do
-        nil.lol?
-      rescue StandardError => e
-        e
-      end
-
-      it 'tracks event as info, with provider name and field missing' do
-        expect(Sentry).to receive(:capture_message).with(
-          /#{provider}.*#{field}/,
-          hash_including(
-            level: 'info'
-          )
-        )
-
-        subject
-      end
-
-      it 'sets context with exception' do
-        expect(scope).to receive(:set_context).with(
-          'Missing data',
-          {
-            exception: exception.message,
-            backtrace: exception.backtrace
-          }
-        )
-
-        subject
-      end
-    end
-
     describe '#track_deprecated_data' do
       subject { instance.track_deprecated_data(field, deprecated_data) }
 
