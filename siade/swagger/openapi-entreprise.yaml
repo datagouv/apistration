@@ -443,6 +443,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_04056:
+                  value:
+                    errors:
+                    - code: '04056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
                 demande_de_traitement_logiciel_en_cours_04502:
                   value:
                     errors:
@@ -3085,6 +3097,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_08056:
+                  value:
+                    errors:
+                    - code: '08056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -3941,6 +3965,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_03056:
+                  value:
+                    errors:
+                    - code: '03056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -4409,6 +4445,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_03056:
+                  value:
+                    errors:
+                    - code: '03056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -9777,6 +9825,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_12056:
+                  value:
+                    errors:
+                    - code: '12056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -22802,6 +22862,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_21056:
+                  value:
+                    errors:
+                    - code: '21056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -24531,6 +24603,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_09056:
+                  value:
+                    errors:
+                    - code: '09056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -25293,6 +25377,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_06056:
+                  value:
+                    errors:
+                    - code: '06056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -25839,6 +25935,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_06056:
+                  value:
+                    errors:
+                    - code: '06056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -27342,6 +27450,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_04056:
+                  value:
+                    errors:
+                    - code: '04056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
                 demande_de_traitement_logiciel_en_cours_04502:
                   value:
                     errors:

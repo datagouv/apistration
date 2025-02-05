@@ -19,7 +19,10 @@ class BadFileFromProviderError < ApplicationError
     invalid_extension: {
       subcode: '055',
       default_detail: 'Le fichier n\'est pas au format attendu'
-
+    },
+    empty_file: {
+      subcode: '056',
+      default_detail: 'Le fichier renvoyé par le fournisseur de données est vide'
     }
   }.freeze
 

@@ -25,6 +25,23 @@ RSpec.describe QUALIBAT::CertificationsBatiment::ValidateResponse, type: :valida
 
     it { is_expected.to be_a_failure }
 
+    its(:errors) { is_expected.to include(instance_of(BadFileFromProviderError)) }
+
+    it 'tracks error on MonitoringService' do
+      expect(MonitoringService.instance).to receive(:track).with(
+        'info',
+        'Qualibat: empty file'
+      )
+
+      subject
+    end
+  end
+
+  context 'with another http code' do
+    let(:response) { instance_double(Net::HTTPBadRequest, code: '400') }
+
+    it { is_expected.to be_a_failure }
+
     its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
   end
 
