@@ -18,4 +18,11 @@ module ProviderStubs::INPI::RNE
         headers: { 'Content-Type' => 'application/pdf' }
       )
   end
+
+  def stub_inpi_rne_download_not_found(target:, document_id:)
+    stub_request(:get, "#{Siade.credentials[:inpi_rne_url]}/api/#{target}/#{document_id}/download")
+      .to_return(
+        status: 404
+      )
+  end
 end
