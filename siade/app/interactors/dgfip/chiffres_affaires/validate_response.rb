@@ -1,4 +1,4 @@
-class DGFIP::ChiffresAffaires::ValidateResponse < ValidateResponse
+class DGFIP::ChiffresAffaires::ValidateResponse < DGFIP::ValidateResponse
   def call
     handle_errors
 
@@ -15,12 +15,6 @@ class DGFIP::ChiffresAffaires::ValidateResponse < ValidateResponse
     resource_not_found! if not_found?
     temporary_error! if runtime_error?
     unknown_provider_response! unless http_ok?
-  end
-
-  def runtime_error?
-    http_internal_error? &&
-      valid_json? &&
-      json_body.dig('erreur', 'code')
   end
 
   def not_found?

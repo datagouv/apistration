@@ -1,6 +1,7 @@
-class DGFIP::AttestationFiscale::ValidateResponse < ValidateResponse
+class DGFIP::AttestationFiscale::ValidateResponse < DGFIP::ValidateResponse
   def call
     resource_not_found! if http_not_found? || pdf_not_delivered?
+    temporary_error! if runtime_error?
     unknown_provider_response! if !http_ok? || !body_is_a_pdf?
   end
 
