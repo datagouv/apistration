@@ -117,6 +117,15 @@ RSpec.describe DGFIP::ChiffresAffaires::ValidateResponse, type: :validate_respon
     its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
   end
 
+  context 'with a 500 runtime error' do
+    let(:response) { instance_double(Net::HTTPInternalServerError, code: '500', body:) }
+    let(:body) { '{"erreur":{"code":303001,"message":"Runtime Error","horodatage":"2025-02-05T09:39:22+01:00"}}' }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderTemporaryError)) }
+  end
+
   context 'with an unknown error' do
     let(:response) { instance_double(Net::HTTPBadRequest, code: '400') }
 

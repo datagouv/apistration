@@ -37,6 +37,10 @@ class ValidateResponse < ApplicationInteractor
     fail_with_error!(build_error(::ProviderInternalServerError, message))
   end
 
+  def temporary_error!(message = nil)
+    fail_with_error!(build_error(::ProviderTemporaryError, message))
+  end
+
   def unknown_provider_response!(message = nil)
     error = build_error(::ProviderUnknownError, message)
 
