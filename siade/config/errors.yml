@@ -40,6 +40,10 @@
   title: 'Contenu partiel'
   detail: "Des données n'ont pas pu être récupérées auprès d'un ou plusieurs fournisseurs."
 
+- subcode: '011'
+  title: 'Erreur temporaire du fournisseur de données'
+  detail: 'Merci de réessayer dans quelques instants'
+
 - code: '00015'
   title: 'Conflit'
 
@@ -49,6 +53,7 @@
 
 - subcode: '020'
   title: 'Maintenance du fournisseur de données'
+
 
 - code: '00100'
   title: 'Privilèges insuffisants'
