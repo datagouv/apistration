@@ -46,8 +46,7 @@ RSpec.describe QUALIBAT::CertificationsBatiment::BuildResource do
       it 'tracks as an info this error' do
         expect(MonitoringService.instance).to receive(:track).with(
           :info,
-          anything,
-          anything
+          "[Qualibat] PDF 'whatever' not supported"
         )
 
         build_resource
@@ -68,8 +67,7 @@ RSpec.describe QUALIBAT::CertificationsBatiment::BuildResource do
       it 'tracks as an error this error' do
         expect(MonitoringService.instance).to receive(:track).with(
           :error,
-          anything,
-          anything
+          '[Qualibat] PDF is not valid'
         )
 
         build_resource

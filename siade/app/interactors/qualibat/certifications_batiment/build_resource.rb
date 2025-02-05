@@ -29,20 +29,14 @@ class QUALIBAT::CertificationsBatiment::BuildResource < BuildResource
   def track_not_supported_pdf(exception)
     monitoring_service.track(
       :info,
-      "[Qualibat] PDF '#{exception.kind}' not supported",
-      {
-        siret: context.params[:siret]
-      }
+      "[Qualibat] PDF '#{exception.kind}' not supported"
     )
   end
 
   def track_invalid_file(_exception)
     monitoring_service.track(
       :error,
-      '[Qualibat] PDF is not valid',
-      {
-        siret: context.params[:siret]
-      }
+      '[Qualibat] PDF is not valid'
     )
   end
 
