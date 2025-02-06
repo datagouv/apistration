@@ -1,12 +1,8 @@
 RSpec.describe MonitoringService, type: :service do
   let(:instance) { described_class.instance }
   let(:provider) { 'dummy' }
-  let(:scope) { instance_double(Sentry::Scope) }
 
   before do
-    allow(Sentry).to receive(:with_scope).and_yield(scope)
-    allow(scope).to receive(:set_context)
-
     instance.set_provider(provider)
   end
 
@@ -30,7 +26,7 @@ RSpec.describe MonitoringService, type: :service do
       end
 
       it 'sets extra context with error payload, which returns json api error with all available informations' do
-        expect(scope).to receive(:set_context).with(
+        expect(Sentry).to receive(:set_context).with(
           'Provider error',
           hash_including(
             error.to_h
@@ -41,7 +37,7 @@ RSpec.describe MonitoringService, type: :service do
       end
 
       it 'sets extra context with monitoring private context, which is not returned to users' do
-        expect(scope).to receive(:set_context).with(
+        expect(Sentry).to receive(:set_context).with(
           'Provider error',
           hash_including(
             monitoring_private_context
@@ -89,7 +85,7 @@ RSpec.describe MonitoringService, type: :service do
       let(:extra_context) { { foo: 'bar' } }
 
       it 'sets extra context' do
-        expect(scope).to receive(:set_context).with(
+        expect(Sentry).to receive(:set_context).with(
           'Extra context',
           hash_including(
             extra_context
@@ -118,7 +114,7 @@ RSpec.describe MonitoringService, type: :service do
       let(:context_data) { { foo: 'bar' } }
 
       it 'sets extra context on Sentry' do
-        expect(scope).to receive(:set_context).with(
+        expect(Sentry).to receive(:set_context).with(
           'Retriever',
           context_data
         )
@@ -202,8 +198,8 @@ RSpec.describe MonitoringService, type: :service do
         }
       end
 
-      it 'calls scope.set_context without token' do
-        expect(scope).to receive(:set_context).with(
+      it 'calls set_context without token' do
+        expect(Sentry).to receive(:set_context).with(
           'Controller params',
           { params: params.except('token') }
         )

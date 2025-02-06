@@ -8,25 +8,25 @@ class MonitoringService
 
   def_delegators :Sentry,
     :capture_message,
-    :with_scope,
+    :set_context,
     :set_user,
     :set_tags
 
   def track_provider_error(error)
     extra_context = error.to_h.merge(error.monitoring_private_context)
 
-    set_extra_context('Provider error', extra_context) do
-      track(
-        error.tracking_level,
-        "[#{current_provider}] Error: #{error.detail}"
-      )
-    end
+    set_context('Provider error', extra_context)
+
+    track(
+      error.tracking_level,
+      "[#{current_provider}] Error: #{error.detail}"
+    )
   end
 
   def track_with_added_context(level, message, extra_context)
-    set_extra_context('Extra context', extra_context) do
-      track(level, message)
-    end
+    set_context('Extra context', extra_context)
+
+    track(level, message)
   end
 
   def track_deprecated_data(field, deprecated_data)
@@ -37,15 +37,13 @@ class MonitoringService
   end
 
   def set_user_context(context)
-    set_user(
-      context
-    )
+    set_user(context)
   end
 
   def set_controller_params(params)
     params.stringify_keys!
 
-    set_extra_context('Controller params', params: params.except('token'))
+    set_context('Controller params', params: params.except('token'))
 
     set_tags(
       endpoint: "#{params['controller']}##{params['action']}"
@@ -53,13 +51,11 @@ class MonitoringService
   end
 
   def set_provider(provider_name)
-    set_tags(
-      provider: provider_name
-    )
+    set_tags(provider: provider_name)
   end
 
   def set_retriever_context(context)
-    set_extra_context('Retriever', context.to_h)
+    set_context('Retriever', context.to_h)
   end
 
   def track(level, message)
