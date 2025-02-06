@@ -31,6 +31,33 @@ Ce cas permet de tester :
   ""dateDebut"": null,
   ""dateFin"": null
 }"
+,"## Bénéficiaire sans participation financière femme - 200
+
+
+Ce cas permet de tester :
+- [Param. appel] Nom de naissance
+- [Param. appel] Prénom
+- [Param. appel] Date de naissance (jour,mois,année)
+- [Param. appel] sexe féminin
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomNaissance"":""TOUR"",""prenoms"":[""LIDIA""],""anneeDateDeNaissance"":1970,""moisDateDeNaissance"":1,""jourDateDeNaissance"":1,""codeInseeLieuDeNaissance"":""44109"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",200,"{
+  ""status"": ""beneficiaire_sans_participation_financiere"",
+  ""dateDebut"": ""2025-01-01"",
+  ""dateFin"": null
+}"
+,"## Bénéficiaire sans participation financière femme - 200
+
+
+Ce cas permet de tester :
+- [Param. appel] Nom d'usage
+- [Param. appel] Nom de naissance
+- [Param. appel] Prénom
+- [Param. appel] Date de naissance (jour,mois,année)
+- [Param. appel] sexe féminin
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomNaissance"":""LILLE"",""prenoms"":[""SARA""],""anneeDateDeNaissance"":1958,""moisDateDeNaissance"":1,""jourDateDeNaissance"":1,""codeInseeLieuDeNaissance"":""44109"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",200,"{
+  ""status"": ""beneficiaire_sans_participation_financiere"",
+  ""dateDebut"": ""2021-03-12"",
+  ""dateFin"": null
+}"
 ,Dossier non trouvé,"{""nomNaissance"":""DUBOCHE"",""codeInseeLieuDeNaissance"":""00404"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",404,"{
   ""error"": ""not_found"",
   ""reason"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
