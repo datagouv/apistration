@@ -977,7 +977,7 @@ Ce cas permet de tester :
   ```json
   {
     "status": "beneficiaire_sans_participation_financiere",
-    "dateDebut": "2024-02-02",
+    "dateDebut": "2024-03-02",
     "dateFin": null
   }
   ```
