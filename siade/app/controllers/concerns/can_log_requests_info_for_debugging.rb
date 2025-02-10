@@ -21,9 +21,9 @@ module CanLogRequestsInfoForDebugging
     return {} unless organizer.response
 
     {
-      header: organizer.response.headers,
-      body: Base64.strict_encode64(organizer.response.body),
-      status: organizer.response.status
+      header: organizer.response.try(:headers) || {},
+      body: Base64.strict_encode64(organizer.response.try(:body) || ''),
+      status: organizer.response.try(:status) || ''
     }
   end
 
