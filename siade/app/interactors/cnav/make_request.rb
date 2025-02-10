@@ -16,7 +16,7 @@ class CNAV::MakeRequest < MakeRequest::Get
       jourDateNaissance: int_or_nil(date_naissance.split('-').last.to_i),
       sexeEtatCivil: context.params[:sexe_etat_civil],
       codeCogInseePaysNaissance: context.params[:code_cog_insee_pays_naissance],
-      codeCogInseeCommuneNaissance: context.params[:code_cog_insee_commune_naissance],
+      codeCogInseeCommuneNaissance: code_cog_insee_commune_de_naissance,
       nomCommuneNaissance: context.params[:nom_commune_naissance],
       codeCogInseeDepartementNaissance: context.params[:code_cog_insee_departement_naissance]
     }.compact
@@ -30,7 +30,7 @@ class CNAV::MakeRequest < MakeRequest::Get
       anneeDateDeNaissance: int_or_nil(date_naissance.split('-').first.to_i),
       moisDateDeNaissance: int_or_nil(date_naissance.split('-').second.to_i),
       jourDateDeNaissance: int_or_nil(date_naissance.split('-').last.to_i),
-      codeInseeLieuDeNaissance: context.params[:code_cog_insee_commune_naissance],
+      codeInseeLieuDeNaissance: code_cog_insee_commune_de_naissance,
       codePaysLieuDeNaissance: context.params[:code_cog_insee_pays_naissance],
       sexe: context.params[:sexe_etat_civil],
       nomCommuneNaissance: context.params[:nom_commune_naissance],
@@ -53,7 +53,7 @@ class CNAV::MakeRequest < MakeRequest::Get
       nomNaissance: context.params[:nom_naissance],
       listePrenoms: liste_prenoms,
       dateNaissance: date_naissance,
-      codeLieuNaissance: context.params[:code_cog_insee_commune_naissance],
+      codeLieuNaissance: code_cog_insee_commune_de_naissance,
       codePaysNaissance: context.params[:code_cog_insee_pays_naissance],
       villeNaissance: context.params[:nom_commune_naissance],
       depNaissance: context.params[:code_cog_insee_departement_naissance],
@@ -82,5 +82,15 @@ class CNAV::MakeRequest < MakeRequest::Get
 
   def int_or_nil(value)
     value.to_i.zero? ? nil : value.to_i
+  end
+
+  def code_cog_insee_commune_de_naissance
+    return nil unless country_is_france?
+
+    context.params[:code_cog_insee_commune_naissance]
+  end
+
+  def country_is_france?
+    context.params[:code_cog_insee_pays_naissance] == '99100'
   end
 end

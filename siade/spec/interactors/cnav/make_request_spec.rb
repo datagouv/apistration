@@ -183,4 +183,54 @@ RSpec.describe CNAV::MakeRequest, type: :make_request do
       end
     end
   end
+
+  describe 'when not from france' do
+    let(:params) do
+      {
+        nom_naissance: 'CHAMPION',
+        prenoms: ['JEAN-PASCAL'],
+        annee_date_naissance: 1980,
+        mois_date_naissance: 6,
+        jour_date_naissance: 12,
+        sexe_etat_civil: 'M',
+        code_cog_insee_pays_naissance: '00123',
+        code_cog_insee_commune_naissance: '17300',
+        recipient: valid_siret,
+        request_id:
+      }
+    end
+
+    let!(:stubbed_request) do
+      stub_request(:get, Siade.credentials[:cnav_complementaire_sante_solidaire_url]).with(
+        query: {
+          codePaysNaissance: '00123',
+          dateNaissance: '1980-06-12',
+          genre: 'M',
+          listePrenoms: 'JEAN-PASCAL',
+          nomNaissance: 'CHAMPION'
+        },
+        headers: {
+          'Content-Type' => 'application/json',
+          'Authorization' => 'Bearer super_valid_token',
+          'X-APIPART-FSFINAL' => valid_siret,
+          'X-Correlation-ID' => request_id
+        }
+      ).to_return(
+        status: 200,
+        body: read_payload_file('cnav/complementaire_sante_solidaire/make_request_valid.json')
+      )
+    end
+
+    context 'when performing a request' do
+      it { is_expected.to be_a_success }
+
+      its(:response) { is_expected.to be_a(Net::HTTPOK) }
+
+      it 'calls url with valid body, which interpolates params' do
+        make_call
+
+        expect(stubbed_request).to have_been_requested
+      end
+    end
+  end
 end
