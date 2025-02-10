@@ -96,5 +96,36 @@ RSpec.describe CNAV::ValidateDateNaissance, type: :validate_param_interactor do
 
       its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
     end
+
+    context 'when date is in the future' do
+      let(:annee_date_naissance) { 2120 }
+      let(:mois_date_naissance) { 2 }
+      let(:jour_date_naissance) { 30 }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+    end
+
+    context 'when date is today' do
+      let(:today) { Time.zone.today }
+      let(:annee_date_naissance) { today.year }
+      let(:mois_date_naissance) { today.month }
+      let(:jour_date_naissance) { today.day }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+    end
+
+    context 'when date is before 1900/01/01' do
+      let(:annee_date_naissance) { 1899 }
+      let(:mois_date_naissance) { 12 }
+      let(:jour_date_naissance) { 31 }
+
+      it { is_expected.to be_a_failure }
+
+      its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
+    end
   end
 end

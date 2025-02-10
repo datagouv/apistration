@@ -28,6 +28,23 @@ class CNAV::ValidateDateNaissance < ValidateParamInteractor
     param(:annee_date_naissance).nil? ||
       param(:mois_date_naissance).nil? ||
       param(:jour_date_naissance).nil? ||
-      Date.valid_date?(param(:annee_date_naissance).to_i, param(:mois_date_naissance).to_i, param(:jour_date_naissance).to_i)
+      (Date.valid_date?(param(:annee_date_naissance).to_i, param(:mois_date_naissance).to_i, param(:jour_date_naissance).to_i) &&
+        birthday_date_within_reasonable_range?)
+  end
+
+  def birthday_date_within_reasonable_range?
+    (beginning_of_20_century..yesterday).include?(birthday_date)
+  end
+
+  def yesterday
+    Time.zone.yesterday
+  end
+
+  def beginning_of_20_century
+    Date.new(1900, 1, 1)
+  end
+
+  def birthday_date
+    @birthday_date ||= Date.new(param(:annee_date_naissance).to_i, param(:mois_date_naissance).to_i, param(:jour_date_naissance).to_i)
   end
 end
