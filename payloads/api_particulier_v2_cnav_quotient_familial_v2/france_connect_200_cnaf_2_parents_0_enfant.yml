@@ -21,7 +21,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "HUCHE",
-        "nomUsage": "MERCIER",
+        "nomUsuel": "MERCIER",
         "prenoms": "ANNE-LAURE",
         "anneeDateDeNaissance": "1945",
         "moisDateDeNaissance": "09",
@@ -30,7 +30,7 @@ payload: |-
       },
       {
         "nomNaissance": "MERCIER",
-        "nomUsage": "MERCIER",
+        "nomUsuel": "MERCIER",
         "prenoms": "JEAN LOUIS",
         "anneeDateDeNaissance": "1945",
         "moisDateDeNaissance": "10",

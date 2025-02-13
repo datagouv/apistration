@@ -31,7 +31,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "ROUX",
-        "nomUsage": null,
+        "nomUsuel": null,
         "prenoms": "JEANNE STEPHANIE",
         "anneeDateDeNaissance": "1987",
         "moisDateDeNaissance": "06",
@@ -40,7 +40,7 @@ payload: |-
       },
       {
         "nomNaissance": "ROUX",
-        "nomUsage": null,
+        "nomUsuel": null,
         "prenoms": "LOIC NATHAN",
         "anneeDateDeNaissance": "1979",
         "moisDateDeNaissance": "05",
@@ -51,7 +51,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "ROUX",
-        "nomUsage": null,
+        "nomUsuel": null,
         "prenoms": "ALEXIS VINCENT",
         "anneeDateDeNaissance": "2006",
         "moisDateDeNaissance": "04",
@@ -60,7 +60,7 @@ payload: |-
       },
       {
         "nomNaissance": "ROUX",
-        "nomUsage": null,
+        "nomUsuel": null,
         "prenoms": "FLEUR EDITH",
         "anneeDateDeNaissance": "2004",
         "moisDateDeNaissance": "04",

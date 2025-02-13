@@ -22,7 +22,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "DUBINÔRE",
-        "nomUsage": "LENOTRE",
+        "nomUsuel": "LENOTRE",
         "prenoms": "Joëlle Françoise",
         "anneeDateDeNaissance": "1990",
         "moisDateDeNaissance": "09",
@@ -31,7 +31,7 @@ payload: |-
       },
       {
         "nomNaissance": "LENOTRE",
-        "nomUsage": "LENOTRE",
+        "nomUsuel": "LENOTRE",
         "prenoms": "Léon",
         "anneeDateDeNaissance": "1990",
         "moisDateDeNaissance": "01",
@@ -42,7 +42,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "LENOTRE",
-        "nomUsage": "LENOTRE",
+        "nomUsuel": "LENOTRE",
         "prenoms": "Gustave",
         "anneeDateDeNaissance": "2015",
         "moisDateDeNaissance": "08",
@@ -51,7 +51,7 @@ payload: |-
       },
       {
         "nomNaissance": "LENOTRE",
-        "nomUsage": "LENOTRE",
+        "nomUsuel": "LENOTRE",
         "prenoms": "Alphonse",
         "anneeDateDeNaissance": "2015",
         "moisDateDeNaissance": "08",

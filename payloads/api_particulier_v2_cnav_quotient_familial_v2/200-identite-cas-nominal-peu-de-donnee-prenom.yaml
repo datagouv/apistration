@@ -28,7 +28,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "LEFEBVRE",
-        "nomUsage": null,
+        "nomUsuel": null,
         "prenoms": "ALEXIS GÉRÔME JEAN-PHILIPPE",
         "anneeDateDeNaissance": "1982",
         "moisDateDeNaissance": "12",

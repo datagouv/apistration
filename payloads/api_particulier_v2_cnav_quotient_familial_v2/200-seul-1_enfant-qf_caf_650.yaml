@@ -23,7 +23,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "BERNARD",
-        "nomUsage": null,
+        "nomUsuel": null,
         "prenoms": "ELODIE JUDITH GERTRUDE",
         "anneeDateDeNaissance": "1990",
         "moisDateDeNaissance": "03",
@@ -34,7 +34,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "BERNARD",
-        "nomUsage": null,
+        "nomUsuel": null,
         "prenoms": "LEO",
         "anneeDateDeNaissance": "1990",
         "moisDateDeNaissance": "04",

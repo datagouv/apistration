@@ -22,7 +22,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "NUM",
-        "nomUsage": "MASARU",
+        "nomUsuel": "MASARU",
         "prenoms": "Lady Di",
         "anneeDateDeNaissance": "1962",
         "moisDateDeNaissance": "08",
@@ -31,7 +31,7 @@ payload: |-
       },
       {
         "nomNaissance": "MASARU",
-        "nomUsage": "MASARU",
+        "nomUsuel": "MASARU",
         "prenoms": "Emoto",
         "anneeDateDeNaissance": "1970",
         "moisDateDeNaissance": "01",
@@ -42,7 +42,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "MASARU",
-        "nomUsage": "MASARU",
+        "nomUsuel": "MASARU",
         "prenoms": "Rina",
         "anneeDateDeNaissance": "2016",
         "moisDateDeNaissance": "03",
@@ -51,7 +51,7 @@ payload: |-
       },
       {
         "nomNaissance": "MASARU",
-        "nomUsage": "MASARU",
+        "nomUsuel": "MASARU",
         "prenoms": "Akihiro",
         "anneeDateDeNaissance": "2014",
         "moisDateDeNaissance": "02",
@@ -60,7 +60,7 @@ payload: |-
       },
       {
         "nomNaissance": "MASARU",
-        "nomUsage": "MASARU",
+        "nomUsuel": "MASARU",
         "prenoms": "Haru",
         "anneeDateDeNaissance": "",
         "moisDateDeNaissance": "",

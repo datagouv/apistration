@@ -8,7 +8,7 @@ params:
   prenoms: 
   - "Georges"
   nomNaissance: "CNAF"
-  nomUsage: "MARTIN"
+  nomUsuel: "MARTIN"
   anneeDateDeNaissance: 2002
   moisDateDeNaissance: 1
   jourDateDeNaissance: 1
@@ -22,7 +22,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "CNAF",
-        "nomUsage": "MARTIN",
+        "nomUsuel": "MARTIN",
         "prenoms": "GEORGES",
         "anneeDateDeNaissance": "2002",
         "moisDateDeNaissance": "01",
