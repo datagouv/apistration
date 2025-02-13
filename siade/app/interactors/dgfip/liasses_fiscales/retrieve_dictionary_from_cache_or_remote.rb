@@ -1,14 +1,30 @@
 class DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote < ApplicationInteractor
   def call
     if retriever.success?
-      context.dictionary = retriever.bundled_data.data.dictionnaire
+      affect_dictionary_from_retriever
+    elsif local_file_exists?
+      affect_dictionary_from_local
     else
-      context.errors = retriever.errors
-      context.fail!
+      handle_errors
     end
   end
 
   private
+
+  def affect_dictionary_from_retriever
+    context.dictionary = retriever.bundled_data.data.dictionnaire
+  end
+
+  def affect_dictionary_from_local
+    context.dictionary = JSON.parse(File.read(local_file_path))
+
+    track_local_load
+  end
+
+  def handle_errors
+    context.errors = retriever.errors
+    context.fail!
+  end
 
   def retriever
     @retriever ||= CacheResourceRetriever.call(
@@ -17,6 +33,14 @@ class DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote < ApplicationI
       cache_key:,
       expires_in:
     )
+  end
+
+  def local_file_exists?
+    File.exist?(local_file_path)
+  end
+
+  def local_file_path
+    Rails.root.join('config', 'dgfip', 'dictionnaires', "#{year}.json")
   end
 
   def retriever_organizer
@@ -35,6 +59,16 @@ class DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote < ApplicationI
 
   def cache_key
     "dgfip:dictionnaires:#{year}"
+  end
+
+  def track_local_load
+    MonitoringService.instance.track_with_added_context(
+      'info',
+      'Fail to fetch DGFIP dictionnary',
+      {
+        year:
+      }
+    )
   end
 
   def year

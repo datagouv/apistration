@@ -3,12 +3,13 @@ RSpec.describe DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote, type
 
   let(:params) do
     {
-      year: 2019,
+      year:,
       user_id:,
       request_id:
     }
   end
 
+  let(:year) { 2019 }
   let(:key) { 'dgfip:dictionnaires:2019' }
   let(:user_id) { SecureRandom.uuid }
   let(:request_id) { SecureRandom.uuid }
@@ -63,9 +64,33 @@ RSpec.describe DGFIP::LiassesFiscales::RetrieveDictionaryFromCacheOrRemote, type
       # rubocop:enable RSpec/VerifiedDoubles
     end
 
-    it { is_expected.to be_a_failure }
-    its(:dictionary) { is_expected.to be_nil }
+    it { is_expected.to be_a_success }
 
-    its(:errors) { is_expected.to include(instance_of(DnsResolutionError)) }
+    context 'when year exists in local' do
+      let(:year) { 2019 }
+
+      it 'renders valid dictionary' do
+        expect(subject.dictionary['dictionnaire']).to be_present
+      end
+
+      it 'tracks the fetch from local data' do
+        expect(MonitoringService.instance).to receive(:track_with_added_context).with(
+          'info',
+          'Fail to fetch DGFIP dictionnary',
+          {
+            year: 2019
+          }
+        )
+
+        subject
+      end
+    end
+
+    context 'when year does not exist in local' do
+      let(:year) { 1990 }
+
+      it { is_expected.to be_a_failure }
+      its(:dictionary) { is_expected.to be_nil }
+    end
   end
 end
