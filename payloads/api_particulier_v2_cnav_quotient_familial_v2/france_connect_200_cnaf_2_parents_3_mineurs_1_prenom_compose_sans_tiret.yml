@@ -23,7 +23,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "DELALALALANDE",
-        "nomUsage": "DELALALALANDE",
+        "nomUsuel": "DELALALALANDE",
         "prenoms": "EMMANUEL ALEXANDRE",
         "anneeDateDeNaissance": "1991",
         "moisDateDeNaissance": "01",
@@ -32,7 +32,7 @@ payload: |-
       },
       {
         "nomNaissance": "CARPENTIER",
-        "nomUsage": "DELALALALANDE",
+        "nomUsuel": "DELALALALANDE",
         "prenoms": "FLORENCE",
         "anneeDateDeNaissance": "1990",
         "moisDateDeNaissance": "05",
@@ -43,7 +43,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "DELALALALANDE",
-        "nomUsage": "DELALALALANDE",
+        "nomUsuel": "DELALALALANDE",
         "prenoms": "Alex",
         "anneeDateDeNaissance": "2015",
         "moisDateDeNaissance": "02",
@@ -52,7 +52,7 @@ payload: |-
       },
       {
         "nomNaissance": "DELALALALANDE",
-        "nomUsage": "DELALALALANDE",
+        "nomUsuel": "DELALALALANDE",
         "prenoms": "Léo",
         "anneeDateDeNaissance": "2017",
         "moisDateDeNaissance": "02",
@@ -61,7 +61,7 @@ payload: |-
       },
       {
         "nomNaissance": "DELALALALANDE",
-        "nomUsage": "DELALALALANDE",
+        "nomUsuel": "DELALALALANDE",
         "prenoms": "Laura",
         "anneeDateDeNaissance": "2019",
         "moisDateDeNaissance": "12",

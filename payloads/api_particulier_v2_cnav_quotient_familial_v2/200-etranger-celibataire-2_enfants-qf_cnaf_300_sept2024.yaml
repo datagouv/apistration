@@ -27,7 +27,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "BROWN",
-        "nomUsage": null,
+        "nomUsuel": null,
         "prenoms": "Marge",
         "anneeDateDeNaissance": "1980",
         "moisDateDeNaissance": "11",
@@ -38,7 +38,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "BROWN",
-        "nomUsage": null,
+        "nomUsuel": null,
         "prenoms": "Bart",
         "anneeDateDeNaissance": "2012",
         "moisDateDeNaissance": "02",
@@ -47,7 +47,7 @@ payload: |-
       },
       {
         "nomNaissance": "SIMPSON",
-        "nomUsage": null,
+        "nomUsuel": null,
         "prenoms": "LISA",
         "anneeDateDeNaissance": "2013",
         "moisDateDeNaissance": "03",

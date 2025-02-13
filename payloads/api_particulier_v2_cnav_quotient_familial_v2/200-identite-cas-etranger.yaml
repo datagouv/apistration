@@ -23,7 +23,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "FAKIR",
-        "nomUsage": null,
+        "nomUsuel": null,
         "prenoms": "EYMEN MOHAMED",
         "anneeDateDeNaissance": "1992",
         "moisDateDeNaissance": "11",

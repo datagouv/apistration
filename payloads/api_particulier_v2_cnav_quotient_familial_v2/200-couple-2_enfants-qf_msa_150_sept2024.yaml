@@ -28,7 +28,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "MARTIN",
-        "nomUsage": null,
+        "nomUsuel": null,
         "prenoms": "PIERRE ALEXIS FRANÇOIS",
         "anneeDateDeNaissance": "1978",
         "moisDateDeNaissance": "06",
@@ -37,7 +37,7 @@ payload: |-
       },
       {
         "nomNaissance": "LEROUGE",
-        "nomUsage": "MARTIN",
+        "nomUsuel": "MARTIN",
         "prenoms": "JUSTINE ÉLISE",
         "anneeDateDeNaissance": "1979",
         "moisDateDeNaissance": "05",
@@ -48,7 +48,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "MARTIN",
-        "nomUsage": null,
+        "nomUsuel": null,
         "prenoms": "ALEXIS VINCENT",
         "anneeDateDeNaissance": "2006",
         "moisDateDeNaissance": "04",
@@ -57,7 +57,7 @@ payload: |-
       },
       {
         "nomNaissance": "MARTIN",
-        "nomUsage": null,
+        "nomUsuel": null,
         "prenoms": "FLEUR EDITH",
         "anneeDateDeNaissance": "2010",
         "moisDateDeNaissance": "04",

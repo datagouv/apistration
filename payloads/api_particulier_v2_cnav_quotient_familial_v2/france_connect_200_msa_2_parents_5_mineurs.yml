@@ -21,7 +21,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "COMMODE",
-        "nomUsage": "LEMAITRE",
+        "nomUsuel": "LEMAITRE",
         "prenoms": "CINDY",
         "anneeDateDeNaissance": "1980",
         "moisDateDeNaissance": "06",
@@ -30,7 +30,7 @@ payload: |-
       },
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsage": "LEMAITRE",
+        "nomUsuel": "LEMAITRE",
         "prenoms": "FRANCK",
         "anneeDateDeNaissance": "1990",
         "moisDateDeNaissance": "12",
@@ -41,7 +41,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsage": "LEMAITRE",
+        "nomUsuel": "LEMAITRE",
         "prenoms": "Gaston",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "05",
@@ -50,7 +50,7 @@ payload: |-
       },
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsage": "LEMAITRE",
+        "nomUsuel": "LEMAITRE",
         "prenoms": "Henri",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "05",
@@ -59,7 +59,7 @@ payload: |-
       },
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsage": "LEMAITRE",
+        "nomUsuel": "LEMAITRE",
         "prenoms": "Robert",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "05",
@@ -68,7 +68,7 @@ payload: |-
       },
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsage": "LEMAITRE",
+        "nomUsuel": "LEMAITRE",
         "prenoms": "Hugo",
         "anneeDateDeNaissance": "2022",
         "moisDateDeNaissance": "04",
@@ -77,7 +77,7 @@ payload: |-
       },
       {
         "nomNaissance": "LEMAITRE",
-        "nomUsage": "LEMAITRE",
+        "nomUsuel": "LEMAITRE",
         "prenoms": "Lucie",
         "anneeDateDeNaissance": "2023",
         "moisDateDeNaissance": "10",

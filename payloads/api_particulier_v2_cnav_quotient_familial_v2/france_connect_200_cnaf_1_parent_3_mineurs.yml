@@ -21,7 +21,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "MERCIER",
-        "nomUsage": "MERCIER",
+        "nomUsuel": "MERCIER",
         "prenoms": "PIERRE",
         "anneeDateDeNaissance": "1969",
         "moisDateDeNaissance": "03",
@@ -32,7 +32,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "MERCIER",
-        "nomUsage": "MERCIER",
+        "nomUsuel": "MERCIER",
         "prenoms": "PIERRE",
         "anneeDateDeNaissance": "2018",
         "moisDateDeNaissance": "01",
@@ -41,7 +41,7 @@ payload: |-
       },
       {
         "nomNaissance": "MERCIER",
-        "nomUsage": "MERCIER",
+        "nomUsuel": "MERCIER",
         "prenoms": "ROBERT",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": "03",
@@ -50,7 +50,7 @@ payload: |-
       },
       {
         "nomNaissance": "MERCIER",
-        "nomUsage": "MERCIER",
+        "nomUsuel": "MERCIER",
         "prenoms": "HENRY",
         "anneeDateDeNaissance": "2022",
         "moisDateDeNaissance": "06",

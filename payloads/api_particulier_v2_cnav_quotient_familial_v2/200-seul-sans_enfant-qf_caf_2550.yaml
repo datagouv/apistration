@@ -24,7 +24,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "LEFEBVRE",
-        "nomUsage": null,
+        "nomUsuel": null,
         "prenoms": "ALEXIS",
         "anneeDateDeNaissance": "1982",
         "moisDateDeNaissance": "12",

@@ -22,7 +22,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "YOGO",
-        "nomUsage": "BOBO",
+        "nomUsuel": "BOBO",
         "prenoms": "Sophie Suzanne",
         "anneeDateDeNaissance": "1981",
         "moisDateDeNaissance": "11",
@@ -31,7 +31,7 @@ payload: |-
       },
       {
         "nomNaissance": "LALI",
-        "nomUsage": "LALI",
+        "nomUsuel": "LALI",
         "prenoms": "Mohamed",
         "anneeDateDeNaissance": "1983",
         "moisDateDeNaissance": "05",
@@ -42,7 +42,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "LALI",
-        "nomUsage": "LALI",
+        "nomUsuel": "LALI",
         "prenoms": "Inès",
         "anneeDateDeNaissance": "2010",
         "moisDateDeNaissance": "07",
@@ -51,7 +51,7 @@ payload: |-
       },
       {
         "nomNaissance": "LALI",
-        "nomUsage": "LALI",
+        "nomUsuel": "LALI",
         "prenoms": "Amir",
         "anneeDateDeNaissance": "2012",
         "moisDateDeNaissance": "09",
@@ -60,7 +60,7 @@ payload: |-
       },
       {
         "nomNaissance": "LALI",
-        "nomUsage": "LALI",
+        "nomUsuel": "LALI",
         "prenoms": "Ibrahim",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": null,

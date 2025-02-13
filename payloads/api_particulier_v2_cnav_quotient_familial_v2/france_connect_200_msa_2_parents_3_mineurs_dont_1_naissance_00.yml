@@ -21,7 +21,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "REVEIL",
-        "nomUsage": "REVEIL",
+        "nomUsuel": "REVEIL",
         "prenoms": "Titouan",
         "anneeDateDeNaissance": "1998",
         "moisDateDeNaissance": "06",
@@ -30,7 +30,7 @@ payload: |-
       },
       {
         "nomNaissance": "NGUYEN",
-        "nomUsage": "REVEIL",
+        "nomUsuel": "REVEIL",
         "prenoms": "LEE",
         "anneeDateDeNaissance": "1999",
         "moisDateDeNaissance": "12",
@@ -41,7 +41,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "REVEIL",
-        "nomUsage": "REVEIL",
+        "nomUsuel": "REVEIL",
         "prenoms": "Cheng",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": "03",
@@ -50,7 +50,7 @@ payload: |-
       },
       {
         "nomNaissance": "REVEIL",
-        "nomUsage": "REVEIL",
+        "nomUsuel": "REVEIL",
         "prenoms": "Bo",
         "anneeDateDeNaissance": "2021",
         "moisDateDeNaissance": "02",
@@ -59,7 +59,7 @@ payload: |-
       },
       {
         "nomNaissance": "REVEIL",
-        "nomUsage": "REVEIL",
+        "nomUsuel": "REVEIL",
         "prenoms": "Fu",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": "00",

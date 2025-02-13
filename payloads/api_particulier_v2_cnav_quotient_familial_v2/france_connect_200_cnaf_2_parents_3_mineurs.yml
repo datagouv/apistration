@@ -22,7 +22,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "DUBOIS",
-        "nomUsage": "DUBOIS",
+        "nomUsuel": "DUBOIS",
         "prenoms": "PAUL LOUIS",
         "anneeDateDeNaissance": "1962",
         "moisDateDeNaissance": "08",
@@ -31,7 +31,7 @@ payload: |-
       },
       {
         "nomNaissance": "DURAND",
-        "nomUsage": "DUBOIS",
+        "nomUsuel": "DUBOIS",
         "prenoms": "ANGELA LOUISE",
         "anneeDateDeNaissance": "1963",
         "moisDateDeNaissance": "10",
@@ -42,7 +42,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "DUBOIS",
-        "nomUsage": "DUBOIS",
+        "nomUsuel": "DUBOIS",
         "prenoms": "PIERRE",
         "anneeDateDeNaissance": "2018",
         "moisDateDeNaissance": "01",
@@ -51,7 +51,7 @@ payload: |-
       },
       {
         "nomNaissance": "DUBOIS",
-        "nomUsage": "DUBOIS",
+        "nomUsuel": "DUBOIS",
         "prenoms": "ROBERT",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": "03",
@@ -60,7 +60,7 @@ payload: |-
       },
       {
         "nomNaissance": "DUBOIS",
-        "nomUsage": "DUBOIS",
+        "nomUsuel": "DUBOIS",
         "prenoms": "HENRY",
         "anneeDateDeNaissance": "2022",
         "moisDateDeNaissance": "06",

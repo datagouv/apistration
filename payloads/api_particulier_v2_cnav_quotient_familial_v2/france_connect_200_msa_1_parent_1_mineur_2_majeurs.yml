@@ -21,7 +21,7 @@ payload: |-
     "allocataires": [
       {
         "nomNaissance": "PLACARD",
-        "nomUsage": "DUBOIS",
+        "nomUsuel": "DUBOIS",
         "prenoms": "ELSA",
         "anneeDateDeNaissance": "1987",
         "moisDateDeNaissance": "04",
@@ -32,7 +32,7 @@ payload: |-
     "enfants": [
       {
         "nomNaissance": "DUBOIS",
-        "nomUsage": "DUBOIS",
+        "nomUsuel": "DUBOIS",
         "prenoms": "Alex",
         "anneeDateDeNaissance": "1999",
         "moisDateDeNaissance": "01",
@@ -41,7 +41,7 @@ payload: |-
       },
       {
         "nomNaissance": "DUBOIS",
-        "nomUsage": "DUBOIS",
+        "nomUsuel": "DUBOIS",
         "prenoms": "Léo",
         "anneeDateDeNaissance": "2000",
         "moisDateDeNaissance": "01",
@@ -50,7 +50,7 @@ payload: |-
       },
       {
         "nomNaissance": "DUBOIS",
-        "nomUsage": "DUBOIS",
+        "nomUsuel": "DUBOIS",
         "prenoms": "Alice",
         "anneeDateDeNaissance": "2024",
         "moisDateDeNaissance": "02",
