@@ -161,6 +161,7 @@ shared:
       provider: 'CNOUS'
       status_page:
         name: "CNOUS - Statut étudiant boursier (via le numéro INE)"
+        alerts_wait: 5
       driver_params:
         make_request: 'CNOUS::StudentScholarshipWithINE::MakeRequest'
         params:
@@ -174,6 +175,7 @@ shared:
       provider: 'CNOUS'
       status_page:
         name: "CNOUS - Statut étudiant boursier (via l'état civil)"
+        alerts_wait: 5
       driver_params:
         make_request: 'CNOUS::StudentScholarshipWithCivility::MakeRequest'
         params:
@@ -195,6 +197,7 @@ shared:
       provider: 'CNOUS'
       status_page:
         name: "CNOUS - Statut étudiant boursier (FranceConnecté)"
+        alerts_wait: 5
       driver_params:
         make_request: 'CNOUS::StudentScholarshipWithFranceConnect::MakeRequest'
         params:
