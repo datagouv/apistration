@@ -1,4 +1,4 @@
-class CNAV::ValidateCodeCogINSEEPaysNaissance < ValidateParamInteractor
+class Civility::ValidateCodeCogINSEEPaysNaissance < ValidateParamInteractor
   def call
     return if valid?
 

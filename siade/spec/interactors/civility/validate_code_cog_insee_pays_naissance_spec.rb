@@ -1,4 +1,4 @@
-RSpec.describe CNAV::ValidateCodeCogINSEEPaysNaissance, type: :validate_param_interactor do
+RSpec.describe Civility::ValidateCodeCogINSEEPaysNaissance, type: :validate_param_interactor do
   subject { described_class.call(params: { code_cog_insee_pays_naissance: }) }
 
   context 'when attribute is missing' do
