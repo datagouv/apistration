@@ -178,7 +178,7 @@ GEM
     hashie (5.0.0)
     heapy (0.2.0)
       thor
-    hexapdf (1.1.1)
+    hexapdf (1.2.0)
       cmdparse (~> 3.0, >= 3.0.3)
       geom2d (~> 0.4, >= 0.4.1)
       openssl (>= 2.2.1)
@@ -199,7 +199,8 @@ GEM
       addressable (~> 2.8)
       bigdecimal (~> 3.1)
     jsonapi-renderer (0.2.2)
-    jwe (0.4.0)
+    jwe (1.0.0)
+      base64
     jwt (2.10.1)
       base64
     language_server-protocol (3.17.0.4)
@@ -265,7 +266,7 @@ GEM
     openssl (3.3.0)
     optimist (3.2.0)
     ostruct (0.6.1)
-    ox (2.14.21)
+    ox (2.14.22)
       bigdecimal (>= 3.0)
     parallel (1.26.3)
     parser (3.3.7.1)
@@ -350,7 +351,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    rexml (3.4.0)
+    rexml (3.4.1)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
