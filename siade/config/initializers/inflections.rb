@@ -44,6 +44,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'DGDDI'
   inflect.acronym 'DGFIP'
   inflect.acronym 'DJEPVA'
+  inflect.acronym 'DSNJ'
   inflect.acronym 'EORI'
   inflect.acronym 'FNTP'
   inflect.acronym 'GIP'
