@@ -7,7 +7,7 @@ RSpec.describe QUALIBATCertificationsBatimentExtractor, type: :extractor do
 
     context 'with valid files' do
       YAML.load(ERB.new(Rails.root.join('spec/support/qualibat_certifications_batiment_extractor_tests.yml.erb').read).result(binding), permitted_classes: [Date, Symbol]).each do |test|
-        context (test[:name]).to_s do
+        context test[:name].to_s do
           let(:filename) { test[:filename] }
 
           it { is_expected.to eq(test[:data]) }

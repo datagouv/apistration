@@ -34,9 +34,7 @@ class Resource
     @data.key?(name.to_sym)
   end
 
-  def deep_merge!(hash)
-    @data.deep_merge!(hash)
-  end
+  delegate :deep_merge!, to: :@data
 
   private
 
