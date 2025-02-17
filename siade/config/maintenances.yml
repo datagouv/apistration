@@ -23,6 +23,10 @@ test:
   'provider_which_has_a_window_within_same_day':
     from_hour: '01:00'
     to_hour: '02:00'
+  'provider_which_has_a_window_every_week':
+    from_hour: '01:00'
+    to_hour: '04:00'
+    day: 'monday'
   'provider_which_has_a_window_across_two_day':
     from_hour: '23:00'
     to_hour:  '08:00'

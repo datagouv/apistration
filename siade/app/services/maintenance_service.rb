@@ -41,11 +41,17 @@ class MaintenanceService
 
   def valid_date?
     everyday? ||
+      this_day? ||
       dates.any? { |date| date == today }
   end
 
   def everyday?
-    !specific_dates?
+    !specific_dates? &&
+      provider_config[:day].blank?
+  end
+
+  def this_day?
+    provider_config[:day] == today.strftime('%A').downcase
   end
 
   def specific_dates?

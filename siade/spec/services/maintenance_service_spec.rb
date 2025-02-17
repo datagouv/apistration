@@ -35,6 +35,35 @@ RSpec.describe MaintenanceService, type: :service do
       end
     end
 
+    context 'with valid provider which has a maintenance window once a week' do
+      let(:provider) { 'provider_which_has_a_window_every_week' }
+      let(:beginning_of_week) { Time.zone.now.beginning_of_week }
+
+      context 'when it is not a maintenance window, the same day' do
+        before do
+          Timecop.freeze(beginning_of_week + 12.hours)
+        end
+
+        it { is_expected.to be false }
+      end
+
+      context 'when it is not a maintenance window, another day and valid hour' do
+        before do
+          Timecop.freeze(beginning_of_week + 1.day + 1.hour + 10.minutes)
+        end
+
+        it { is_expected.to be false }
+      end
+
+      context 'when it is a maintenance window' do
+        before do
+          Timecop.freeze(beginning_of_week + 1.hour + 10.minutes)
+        end
+
+        it { is_expected.to be true }
+      end
+    end
+
     context 'with valid provider which has a maintenance across two day (start hour before end hour)' do
       let(:provider) { 'provider_which_has_a_window_across_two_day' }
 
