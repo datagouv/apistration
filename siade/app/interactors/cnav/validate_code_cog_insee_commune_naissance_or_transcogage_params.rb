@@ -12,7 +12,7 @@ class CNAV::ValidateCodeCogINSEECommuneNaissanceOrTranscogageParams < ValidatePa
 
   def call_validator
     if code_cog_insee_commune_naissance? || !france?
-      Civility::ValidateCodeCogINSEECommuneNaissance.call(params: context.params)
+      CNAV::ValidateCodeCogINSEECommuneNaissance.call(params: context.params)
     elsif transcogage_params?
       INSEE::CommuneINSEECode::ValidateParams.call(params: context.params)
     else
