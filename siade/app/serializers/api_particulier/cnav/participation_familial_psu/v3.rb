@@ -5,5 +5,5 @@ class APIParticulier::CNAV::ParticipationFamilialPSU::V3 < APIParticulier::V3And
 
   attribute :adresse, if: -> { scope?(:psu_adresse) }
 
-  attribute :parametres_calcul_tarif, if: -> { scope?(:psu_parametres_calcul_tarif) }
+  attribute :parametres_calcul_psu, if: -> { scope?(:psu_parametres_calcul_psu) }
 end

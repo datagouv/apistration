@@ -1,6 +1,172 @@
 cnav:
   commons:
     cache_duration: "La durée du cache est de 1 heure."
+  psu:
+    title: API Prestation de service unique (PSU)
+    description: "API Prestation de service unique (PSU)"
+    tags:
+      - Prochainement
+    attributes:
+      allocataires:
+        title: "Données d'identité de l'allocataire et du conjoint"
+        type: array
+        minItems: 1
+        description: "Liste des données d'identité de l'allocataire appelé et de celles du conjoint le cas échéant. La provenance de ces données n'est pas sourcée précisément et diffère selon la CAF ou la MSA."
+        items:
+          type: object
+          properties:
+            nom_naissance:
+              title: Nom
+              type: string
+              description: Nom de naissance de l'allocataire ou du conjoint.
+              example: "JACQUES"
+            nom_usage:
+              title: Nom d'usage
+              type: string
+              description: Nom d'usage de l'allocataire ou du conjoint.
+              example: "DUPONT"
+              nullable: true
+            prenoms:
+              title: Prénoms
+              type: string
+              description: Prénoms de l'allocataire ou du conjoint.
+              example: "JEAN-PIERRE THOMAS"
+            date_naissance:
+              title: Date de naissance
+              description: Date de naissance de l'allocataire ou du conjoint au format AAAA-MM-JJ.
+              type: string
+              example: '2000-01-20'
+            sexe:
+              title: "Sexe"
+              type: string
+              description: Sexe de l'allocataire ou du conjoint.
+              example: "M"
+              enum:
+                - F
+                - M
+            code_cog_insee_commune_naissance:
+              title: Code Cog de la ville de naissance
+              type: string
+              description: Code Cog de la ville de naissance
+              example: '75113'
+      enfants:
+        type: array
+        title: "Données d'identité des enfants composant la famille"
+        description: "Liste des données d'identité des enfants composant la famille, le cas échéant. La provenance de ces données n'est pas sourcée précisément et diffère selon la CAF ou la MSA."
+        items:
+          type: object
+          properties:
+            nom_naissance:
+              title: "Nom de naissance"
+              type: string
+              description: Nom de naissance de l'enfant.
+              example: "DUPONT"
+            nom_usage:
+              title: "Nom d'usage"
+              type: string
+              description: Nom d'usage de l'enfant.
+              example: null
+              nullable: true
+            prenoms:
+              title: "Prénoms"
+              type: string
+              description: Prénoms de l'enfant.
+              example: "JEAN-PIERRE THOMAS JUNIOR"
+            date_naissance:
+              title: Date de naissance
+              description: Date de naissance de l'enfant au format AAAA-MM-JJ.
+              type: string
+              example: '2000-01-20'
+            sexe:
+              title: "Sexe"
+              type: string
+              description: Sexe de l'enfant.
+              example: "M"
+              enum:
+                - F
+                - M
+            code_cog_insee_commune_naissance:
+              title: Code Cog de la ville de naissance
+              type: string
+              description: Code Cog de la ville de naissance
+              example: '75113'
+      adresse:
+        title: "Adresse de la famille"
+        type: object
+        description: "Adresse de la famille au format de La Poste. Cette adresse est déclarative. Si l'usager a changé d'adresse et n'a pas actualisé son adresse auprès de la CAF ou de la MSA, l'information sera donc obsolète."
+        properties:
+          destinataire:
+            title: "Identité du destinataire"
+            type: string
+            example: "Monsieur JEAN JACQUES"
+            description: "Identité du destinataire : Civilité, titre ou qualité + nom et
+              prénom"
+          complement_information:
+            title: "Complément d'information du destinataire ou point de remise"
+            type: string
+            nullable: true
+            example: null
+          complement_information_geographique:
+            title: "Complément d'information du point géographique"
+            type: string
+            nullable: true
+            example: null
+          numero_libelle_voie:
+            title: "Voie"
+            type: string
+            description: Numéro et libellé de la voie.
+            example: "1 RUE DE LA GARE"
+            nullable: true
+          lieu_dit:
+            title: "Lieu-dit"
+            type: string
+            nullable: true
+            example: null
+            description: "Lieu-dit ou service particulier de distribution : poste restante,
+              boîte postale."
+          code_postal_ville:
+            title: "Code postal"
+            type: string
+            description: Code postal et localité de destination.
+            example: '75002'
+          pays:
+            title: "Pays"
+            type: string
+            example: 'FRANCE'
+      parametres_calcul_psu:
+        title: "Paramètre pris en compte pour le calcul du tarif"
+        description: "Liste des paramètres pris en compte lors du calcul tarifaire de l'allocation"
+        type: object
+        properties:
+          nombre_enfants_a_charge:
+            title: "Nombre d'enfants à charge"
+            description: "Nombre d'enfants à charge des allocataires"
+            type: integer
+            example: 2
+          nombre_enfants_beneficiaire_AEEH:
+            title: Nombre d'enfants beneficiaire de l'AEEH
+            description: Nombre d'enfants beneficiaire de l'AEEH
+            type: integer
+            example: 3
+          base_ressources_annuelles:
+            title: "Ressource annuelles"
+            description: "Ressource annuelles déclarée par les allocataires"
+            type: object
+            properties:
+              valeur:
+                title: "Valeur"
+                description: "Montant des ressources annuelles"
+                type: integer
+                example: 40923
+              annee_calcul:
+                title: "Année du calcul des ressources"
+                type: integer
+                description: "Année lors de laquelle le calcul du quotient familial demandé a été effectué. Cette année peut différer de l'année effective du quotient familial.
+                  \n\n
+                  Pour la CAF, le quotient familial est recalculé uniquement si de nouvelles informations sont venues rectifier la situation de l'allocataire. 
+                  \n
+                  Pour la MSA, le quotient familial est systématiquement recalculé ; l'année correspond donc toujours à l'année courante."
+                example: 2023
   c2s:
     title: Statut complémentaire santé solidaire (C2S)
     description: "Statut bénéficiaire de la complémentaire santé solidaire (C2S).
