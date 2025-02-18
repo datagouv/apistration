@@ -14,6 +14,7 @@ scope path: 'v:api_version', constraints: APIParticulierDomainConstraint.new(v3_
   get 'cnous/etudiant_boursier/france_connect', to: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_france_connect#show'
 
   get 'dsnj/service_national/identite', to: 'api_particulier/v3_and_more/dsnj/service_national_with_civility#show'
+  get 'dsnj/service_national/france_connect', to: 'api_particulier/v3_and_more/dsnj/service_national_with_france_connect#show'
 
   get 'dss/revenu_solidarite_active/france_connect', to: 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_france_connect#show'
   get 'dss/revenu_solidarite_active/identite', to: 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_civility#show'
