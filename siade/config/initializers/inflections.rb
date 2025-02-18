@@ -81,4 +81,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'extrait_rcs', 'extraits_rcs'
   inflect.irregular 'mandataire_social', 'mandataires_sociaux'
   inflect.irregular 'ninja', 'ninja'
+  inflect.irregular 'service_national', 'services_nationaux'
 end
