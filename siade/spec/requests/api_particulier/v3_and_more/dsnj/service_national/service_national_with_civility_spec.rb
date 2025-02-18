@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe 'DSNJ: Service National', api: :particulier, type: %i[request swagger] do
+RSpec.describe 'DSNJ: Service National With Civility', api: :particulier, type: %i[request swagger] do
   path '/v3/dsnj/service_national/identite' do
     get SwaggerData.get('dsnj.service_national.title') do
       tags(*SwaggerData.get('dsnj.service_national.tags'))

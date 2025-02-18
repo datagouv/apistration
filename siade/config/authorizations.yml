@@ -327,7 +327,7 @@ shared:
     - cnous_statut_bourse
     - cnous_ville_etudes
     - cnous_identite
-  api_particulier/v3_and_more/dsnj/service_national:
+  api_particulier/v3_and_more/dsnj/service_national_with_civility:
     - dsnj_service_national
 test:
   api_whatever/whatever_resource: &default_test_scopes

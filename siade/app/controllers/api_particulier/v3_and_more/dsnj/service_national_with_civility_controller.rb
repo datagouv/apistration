@@ -1,4 +1,4 @@
-class APIParticulier::V3AndMore::DSNJ::ServiceNationalController < APIParticulier::V3AndMore::BaseController
+class APIParticulier::V3AndMore::DSNJ::ServiceNationalWithCivilityController < APIParticulier::V3AndMore::BaseController
   include APIParticulier::CivilityParameters
 
   def show
