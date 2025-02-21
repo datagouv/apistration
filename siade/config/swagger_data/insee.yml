@@ -638,36 +638,43 @@ insee:
           title: "Ligne 1"
           type: "string"
           description: "Si l'établissement correspond à une personne morale : la dénomination sociale de la personne morale. Le cas contraire: cette variable est vide."
+          nullable: true
           example: 'DIRECTION INTERMINISTERIELLE DU NUMERIQUE'
         l2: &adresse_etablissement_acheminement_postal_l2_property
           title: "Ligne 2"
           type: "string"
           description: "Si l'établissement correspond à une personne physique : concaténation du nom et prénom"
+          nullable: true
           example: 'JEAN MARIE DURAND'
         l3: &adresse_etablissement_acheminement_postal_l3_property
           title: "Ligne 3"
           type: "string"
           description: "Complément d'adresse comme décrit dans la clé `complement_adresse`"
+          nullable: true
           example: "ZAE SAINT GUENAULT"
         l4: &adresse_etablissement_acheminement_postal_l4_property
           title: "Ligne 4"
           type: "string"
           description: "Concaténation du numéro de voie, d'indice de répétition, du type de voie et du libellé de la voie"
+          nullable: true
           example: "51 BIS RUE DE LA PAIX"
         l5: &adresse_etablissement_acheminement_postal_l5_property
           title: "Ligne 5"
           type: "string"
           description: "Distribution spéciale comme décrit dans la clé `distribution_speciale`"
+          nullable: true
           example: "CS 72809"
         l6: &adresse_etablissement_acheminement_postal_l6_property
           title: "Ligne 6"
           type: "string"
           description: "Si le code cedex est existant : code cedex accompagné de son libellé ; sinon, si le pays est en France : code postal accompagné de son libellé, sinon : libellé de la commune de l'établissement situé à l'étranger"
+          nullable: true
           example: "75256 PARIX CEDEX 12"
         l7: &adresse_etablissement_acheminement_postal_l7_property
           title: "Ligne 7"
           type: "string"
           description: "Pays de l'établissement"
+          nullable: true
           example: 'FRANCE'
 
   insee_adresse_etablissement_attributes_diffusible: &insee_adresse_etablissement_attributes_diffusible
