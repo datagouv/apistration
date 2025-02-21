@@ -41,9 +41,3 @@ Le comportement reste inchangé pour:
 ## Uptime / pings
 
 On renvoi une réponse vide avec le status 200
-
-## API Entreprise v2 (ancien comportement)
-
-Les payloads renvoyées sont générées à l'aide du fichier swagger.
-Plus d'infos dans le code de
-[`InterceptWithOpenAPIMockedPayloadInStaging`](app/controllers/concerns/intercept_with_open_api_mocked_payload_in_staging.rb)
