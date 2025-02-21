@@ -566,6 +566,7 @@ insee:
       title: "Code postal"
       example: "75016"
       type: "string"
+      nullable: true
     distribution_speciale: &insee_adresse_etablissement_distribution_speciale_property
       title: "Distribution spéciale"
       type: "string"
