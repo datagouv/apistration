@@ -1,4 +1,4 @@
-RSpec.describe 'Rack::Attack config for API Entreprise', api: :particulier do
+RSpec.describe 'Rack::Attack config for API Particulier V2', api: :particulier do
   after { Rack::Attack.reset! }
 
   context 'with a blacklisted token' do
