@@ -211,7 +211,7 @@ cnav:
           \n
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de la C2S.
         example: '1992-11-29'
-  quotient-familial-v2:
+  quotient_familial_v2:
     title: Quotient familial CAF & MSA
     description: "Quotient familial délivré par la CAF ou la MSA et composition de la famille de l'allocataire.
       \n

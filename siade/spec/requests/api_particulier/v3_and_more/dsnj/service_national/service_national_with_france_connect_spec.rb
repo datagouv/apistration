@@ -2,7 +2,7 @@ require 'swagger_helper'
 
 RSpec.describe 'DSNJ: Service National With FranceConnect', api: :particulier, type: %i[request swagger] do
   path '/v3/dsnj/service_national/france_connect' do
-    get SwaggerData.get('dsnj.service_national.title') do
+    get "[FranceConnect] #{SwaggerData.get('dsnj.service_national.title')}" do
       tags(*SwaggerData.get('dsnj.service_national.tags'))
 
       common_action_attributes

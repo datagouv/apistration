@@ -2,7 +2,7 @@ require 'swagger_helper'
 
 RSpec.describe 'API Particulier CNAV: Participation familial PSU with civility', api: :particulier, type: %i[request swagger] do
   path '/v3/dss/participation_familial_psu/identite' do
-    get SwaggerData.get('cnav.psu.title') do
+    get "[Identité] #{SwaggerData.get('cnav.psu.title')}" do
       tags(*SwaggerData.get('cnav.psu.tags'))
 
       common_action_attributes

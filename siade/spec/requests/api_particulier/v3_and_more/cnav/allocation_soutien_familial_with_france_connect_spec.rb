@@ -2,7 +2,7 @@ require 'swagger_helper'
 
 RSpec.describe 'API Particulier: CNAV: Allocation Soutien Familial with FranceConnect', api: :particulier, type: %i[request swagger] do
   path '/v3/dss/allocation_soutien_familial/france_connect' do
-    get SwaggerData.get('cnav.asf.title') do
+    get "[FranceConnect] #{SwaggerData.get('cnav.asf.title')}" do
       tags(*SwaggerData.get('cnav.asf.tags'))
 
       common_action_attributes

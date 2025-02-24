@@ -2,7 +2,7 @@ require 'swagger_helper'
 
 RSpec.describe 'API Particulier: Mesri: Statut Etudiant with FranceConnect', api: :particulier, type: %i[request swagger] do
   path '/v3/mesri/statut_etudiant/france_connect' do
-    get SwaggerData.get('mesri.commons.title') do
+    get "[FranceConnect] #{SwaggerData.get('mesri.commons.title')}" do
       tags(*SwaggerData.get('mesri.commons.tags'))
 
       common_action_attributes

@@ -2,7 +2,7 @@ require 'swagger_helper'
 
 RSpec.describe 'API Particulier: CNAV: Prime Activite with FranceConnect', api: :particulier, type: %i[request swagger] do
   path '/v3/dss/prime_activite/france_connect' do
-    get SwaggerData.get('cnav.prime_activite.title') do
+    get "[FranceConnect] #{SwaggerData.get('cnav.prime_activite.title')}" do
       tags(*SwaggerData.get('cnav.prime_activite.tags'))
 
       common_action_attributes

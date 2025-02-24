@@ -2,8 +2,8 @@ require 'swagger_helper'
 
 RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :particulier, type: %i[request swagger] do
   path '/v3/dss/quotient_familial/identite' do
-    get SwaggerData.get('cnav.quotient-familial-v2.title') do
-      tags(*SwaggerData.get('cnav.quotient-familial-v2.tags'))
+    get "[Identité] #{SwaggerData.get('cnav.quotient_familial_v2.title')}" do
+      tags(*SwaggerData.get('cnav.quotient_familial_v2.tags'))
 
       common_action_attributes
 
@@ -62,12 +62,12 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
 
         describe 'when the quotient familial is found' do
           response '200', 'Quotient Familial active trouvée' do
-            description SwaggerData.get('cnav.quotient-familial-v2.description')
+            description SwaggerData.get('cnav.quotient_familial_v2.description')
 
-            cacheable_response(extra_description: SwaggerData.get('cnav.quotient-familial-v2.cache_duration'))
+            cacheable_response(extra_description: SwaggerData.get('cnav.quotient_familial_v2.cache_duration'))
 
             schema build_rswag_response(
-              attributes: SwaggerData.get('cnav.quotient-familial-v2.attributes')
+              attributes: SwaggerData.get('cnav.quotient_familial_v2.attributes')
             )
 
             run_test!

@@ -2,7 +2,7 @@ require 'swagger_helper'
 
 RSpec.describe 'API Particulier: Mesri: Statut Etudiant with INE', api: :particulier, type: %i[request swagger] do
   path '/v3/mesri/statut_etudiant/ine' do
-    get SwaggerData.get('mesri.commons.title') do
+    get "[INE] #{SwaggerData.get('mesri.commons.title')}" do
       tags(*SwaggerData.get('mesri.commons.tags'))
 
       common_action_attributes
