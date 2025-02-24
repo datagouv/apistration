@@ -6,7 +6,7 @@ RSpec.describe 'Rack::Attack config', api: :entreprise do
   end
 
   RSpec.shared_examples 'returns a 401 error' do
-    let(:random_endpoint) do
+    let(:endpoint) do
       {
         controller: 'api_entreprise/v3_and_more/opqibi/certifications_ingenierie',
         api_version: 3,
@@ -14,7 +14,7 @@ RSpec.describe 'Rack::Attack config', api: :entreprise do
         siren: '123'
       }
     end
-    let(:url) { extract_without_context_url_for(**random_endpoint, only_path: true) }
+    let(:url) { extract_without_context_url_for(**endpoint, only_path: true) }
 
     it 'returns 401' do
       get url, headers: headers_params
@@ -34,8 +34,7 @@ RSpec.describe 'Rack::Attack config', api: :entreprise do
     let(:another_token_sample) { TokenFactory.new([]).valid }
 
     def call!(token)
-      random_endpoint = endpoints.sample
-      url = extract_without_context_url_for(**random_endpoint, only_path: true)
+      url = extract_without_context_url_for(**endpoint, only_path: true)
 
       get(url, headers: { 'Authorization' => "Bearer #{token}" })
     end
@@ -96,7 +95,7 @@ RSpec.describe 'Rack::Attack config', api: :entreprise do
       let(:token) { TokenFactory.new([]).valid(uid: Seeds.new.blacklisted_jwt_id) }
       let(:headers_params) { { 'Authorization' => "Bearer #{token}" } }
 
-      let(:random_endpoint) do
+      let(:endpoint) do
         {
           controller: 'api_entreprise/v3_and_more/opqibi/certifications_ingenierie',
           api_version: 3,
@@ -104,7 +103,7 @@ RSpec.describe 'Rack::Attack config', api: :entreprise do
           siren: 123
         }
       end
-      let(:url) { extract_without_context_url_for(**random_endpoint, only_path: true) }
+      let(:url) { extract_without_context_url_for(**endpoint, only_path: true) }
 
       it 'returns 401' do
         get url, headers: headers_params
@@ -160,13 +159,13 @@ RSpec.describe 'Rack::Attack config', api: :entreprise do
           let(:limit) { throttle_config.dig(:low_latency_documents, :limit) }
           let(:period) { throttle_config.dig(:low_latency_documents, :period) }
 
-          let(:endpoints) do
-            [{
+          let(:endpoint) do
+            {
               controller: 'api_entreprise/v3_and_more/probtp/attestations_cotisation_retraite',
               action: 'show',
               api_version: 3,
               siret: '123'
-            }]
+            }
           end
         end
       end
@@ -176,13 +175,13 @@ RSpec.describe 'Rack::Attack config', api: :entreprise do
           let(:limit) { throttle_config.dig(:proxied_files, :limit) }
           let(:period) { throttle_config.dig(:proxied_files, :period) }
 
-          let(:endpoints) do
-            [{
+          let(:endpoint) do
+            {
               controller: 'api_entreprise/proxied_files',
               action: 'show',
               api_version: 3,
               uuid: '123'
-            }]
+            }
           end
         end
       end
@@ -223,13 +222,13 @@ RSpec.describe 'Rack::Attack config', api: :entreprise do
           let(:period) { throttle_config.dig(:high_latency_documents, :period) }
 
           it_behaves_like 'throttling group of endpoints' do
-            let(:endpoints) do
-              [{
+            let(:endpoint) do
+              {
                 controller: 'api_entreprise/v3_and_more/dgfip/attestations_fiscales',
                 action: 'show',
                 api_version: 3,
                 siren: 123
-              }]
+              }
             end
           end
         end
