@@ -6,7 +6,7 @@ require 'byebug'
 host = ARGV[0] || "https://entreprise.api.gouv.fr"
 
 endpoints = {
-  json_resources: {
+  json_resources_entreprise: {
     url: '/v4/djepva/api-association/associations/775719792',
     limit: 250,
   },

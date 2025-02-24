@@ -1,4 +1,4 @@
-RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
+RSpec.describe 'Rack::Attack config', api: :entreprise do
   after { Rack::Attack.reset! }
 
   def extract_without_context_url_for(options)
@@ -57,14 +57,6 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
         expect(response).to have_http_status(:too_many_requests)
       end
 
-      it 'resets the counter after 60 seconds' do
-        Timecop.freeze(60.seconds.from_now) do
-          call!(token_sample)
-
-          expect(response).not_to have_http_status(:too_many_requests)
-        end
-      end
-
       it 'limits requests on a per token basis' do
         call!(another_token_sample)
 
@@ -75,6 +67,17 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
         call!(token_sample)
 
         expect(response.headers).to include('Retry-After')
+      end
+
+      describe 'after period duration (seconds)' do
+        before { Timecop.freeze(period.seconds.from_now) }
+        after { Timecop.return }
+
+        it 'resets the counter' do
+          call!(token_sample)
+
+          expect(response).not_to have_http_status(:too_many_requests)
+        end
       end
     end
 
@@ -112,7 +115,9 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
       it 'returns an error message associated to blacklisted token' do
         get url, headers: headers_params
 
-        expect(response_json).to have_json_error(detail: 'Votre jeton est sur liste noire, celui-ci a certainement été divulgué sur un canal non-sécurisé. Vous pouvez trouver un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte')
+        expect(response_json).to have_json_error(detail: match(
+          %r{Votre jeton est sur liste noire, celui-ci a certainement été divulgué sur un canal non-sécurisé\. Vous pouvez trouver un jeton valide sur votre espace personnel: https://(entreprise|particulier)\.api\.gouv\.fr/compte}
+        ))
       end
     end
   end
@@ -153,6 +158,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
       describe 'low latency document resources throttling' do
         it_behaves_like 'throttling group of endpoints' do
           let(:limit) { throttle_config.dig(:low_latency_documents, :limit) }
+          let(:period) { throttle_config.dig(:low_latency_documents, :period) }
 
           let(:endpoints) do
             [{
@@ -168,6 +174,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
       describe 'proxied files resources throttling' do
         it_behaves_like 'throttling group of endpoints' do
           let(:limit) { throttle_config.dig(:proxied_files, :limit) }
+          let(:period) { throttle_config.dig(:proxied_files, :period) }
 
           let(:endpoints) do
             [{
@@ -180,16 +187,32 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
         end
       end
 
-      describe 'JSON resources throttling' do
+      describe 'JSON resources throttling Entreprise' do
         it_behaves_like 'throttling group of endpoints' do
-          let(:limit) { throttle_config.dig(:json_resources, :limit) }
-          let(:endpoints) do
-            [{
+          let(:limit) { throttle_config.dig(:json_resources_entreprise, :limit) }
+          let(:period) { throttle_config.dig(:json_resources_entreprise, :period) }
+          let(:endpoint) do
+            {
               controller: 'api_entreprise/v3_and_more/insee/etablissements',
               action: 'show',
               api_version: 3,
               siret: '123'
-            }]
+            }
+          end
+        end
+      end
+
+      describe 'JSON resources throttling Particulier', api: :particulier do
+        it_behaves_like 'throttling group of endpoints' do
+          let(:limit) { throttle_config.dig(:json_resources_particulier, :limit) }
+          let(:period) { throttle_config.dig(:json_resources_particulier, :period) }
+          let(:endpoint) do
+            {
+              controller: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_ine',
+              action: 'show',
+              api_version: 3,
+              ine: '1234567890G'
+            }
           end
         end
       end
@@ -197,6 +220,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
       describe 'endpoints exceptions' do
         describe 'very high latency endpoints' do
           let(:limit) { throttle_config.dig(:high_latency_documents, :limit) }
+          let(:period) { throttle_config.dig(:high_latency_documents, :period) }
 
           it_behaves_like 'throttling group of endpoints' do
             let(:endpoints) do
@@ -317,7 +341,7 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
     let(:all_routes) do
       Rails.application.routes.routes.each_with_object([]) do |route, res|
         next if route.defaults == {}
-        next if route.defaults[:controller] =~ /api_particulier/
+        next if route.defaults[:controller] =~ %r{api_particulier/v2/}
 
         route_conf = {
           controller: route.defaults[:controller],
@@ -359,6 +383,18 @@ RSpec.describe 'Rack::Attack config for API Entreprise', api: :entreprise do
         },
         {
           controller: 'api_entreprise/privileges',
+          action: 'index'
+        },
+        {
+          controller: 'api_particulier/france_connect_jwks',
+          action: 'show'
+        },
+        {
+          controller: 'api_particulier/ping_providers',
+          action: 'show'
+        },
+        {
+          controller: 'api_particulier/ping_providers',
           action: 'index'
         }
       ]

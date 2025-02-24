@@ -17,7 +17,7 @@ shared:
       - { controller: 'api_entreprise/v3_and_more/cibtp/attestation_cotisations_conges_payes_chomage_intemperies', action: 'show' }
     limit: 5
     period: 60
-  json_resources:
+  json_resources_entreprise:
     throttle_type: 'by_group_of_endpoints'
     endpoints:
       - { controller: 'api_entreprise/v3_and_more/ademe/certificats_rge', action: 'show' }
@@ -48,9 +48,39 @@ shared:
       - { controller: 'api_entreprise/v3_and_more/european_commission/vies', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/banque_de_france/bilans_entreprise', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/qualifelec/certificats', action: 'show' }
-
     limit: 250
     period: 60
+  json_resources_particulier:
+    throttle_type: 'by_group_of_endpoints'
+    endpoints:
+      - { controller: 'api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_civility', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnav/allocation_adulte_handicape_with_france_connect', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnav/allocation_soutien_familial_with_civility', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnav/allocation_soutien_familial_with_france_connect', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_civility', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnav/complementaire_sante_solidaire_with_france_connect', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnav/participation_familial_psu_with_civility', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnav/participation_familial_psu_with_france_connect', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnav/prime_activite_with_civility', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnav/prime_activite_with_france_connect', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnav/quotient_familial_with_civility', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnav/quotient_familial_with_france_connect', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_civility', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnav/revenu_solidarite_active_with_france_connect', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_civility', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_france_connect', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/cnous/etudiant_boursier_with_ine', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/dsnj/service_national_with_civility', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/dsnj/service_national_with_france_connect', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/france_travail/indemnites_with_identifiant', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/france_travail/statut_with_identifiant', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/men/scolarites_with_civility', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_civility', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_france_connect', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_ine', action: 'show' }
+    limit: 20
+    period: 1
+
   inpi_rne:
     throttle_type: 'by_single_endpoint'
     limit: 30
@@ -84,7 +114,9 @@ test:
     limit: 2
   high_latency_documents:
     limit: 2
-  json_resources:
+  json_resources_entreprise:
+    limit: 2
+  json_resources_particulier:
     limit: 2
   proxied_files:
     limit: 2
