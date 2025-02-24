@@ -1,0 +1,28 @@
+---
+description: |-
+  ## Bénéficiaire sans participation financière homme - 200
+
+  
+  Ce cas permet de tester :
+  - [Param. appel] Nom de naissance
+  - [Param. appel] Prénom
+  - [Param. appel] Date de naissance (jour,mois,année)
+  - [Param. appel] sexe féminin
+  - [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière
+params:
+  nomNaissance: 'VAMAL'
+  prenoms:
+    - 'YVES'
+  anneeDateDeNaissance: 1987
+  moisDateDeNaissance: 07
+  jourDateDeNaissance: 13
+  codeInseeLieuDeNaissance: '44109'
+  codePaysLieuDeNaissance: '99100' #Bénéficiaire né en France
+  sexe: 'M'
+status: 200
+payload: |-
+  {
+    "status": "beneficiaire_sans_participation_financiere",
+    "dateDebut": "2025-06-01",
+    "dateFin": null
+  }
