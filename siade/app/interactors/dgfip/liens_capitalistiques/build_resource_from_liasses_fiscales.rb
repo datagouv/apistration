@@ -186,17 +186,6 @@ class DGFIP::LiensCapitalistiques::BuildResourceFromLiassesFiscales < Applicatio
     end
   end
 
-  def empty_address
-    {
-      numero_voie: nil,
-      voie: nil,
-      lieu_dit_hameau: nil,
-      code_postal: nil,
-      ville: nil,
-      pays: nil
-    }
-  end
-
   def values(imprime, code_nref)
     @values ||= {}
     @values["#{imprime}_#{code_nref}"] ||= find_nref_within_declaration(imprime, code_nref)
@@ -209,11 +198,11 @@ class DGFIP::LiensCapitalistiques::BuildResourceFromLiassesFiscales < Applicatio
 
   def declaration(imprime)
     @declarations ||= {}
-    @declarations[imprime] ||= declarations.find { |declaration| declaration[:numero_imprime] == imprime }
+    @declarations[imprime] ||= all_declarations.find { |declaration| declaration[:numero_imprime] == imprime }
     @declarations[imprime] || {}
   end
 
-  def declarations
+  def all_declarations
     context.bundled_data.data.declarations
   end
 end
