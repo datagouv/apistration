@@ -1,0 +1,380 @@
+{
+  "entreprise": {
+    "siren": "130025265",
+    "denomination": "DINUM",
+    "itip": "100001103362",
+    "setOcfis": {
+      "numOcfi": "100209447560",
+      "dateDebut": "1998-07-01T00:00:00+02:00",
+      "regime": "RNMEMBRE",
+      "codeNace": "7010Z",
+      "libelleObf": "Impôt sur les sociétés",
+      "nbRof": 0,
+      "codeObf": "IS",
+      "rof": "IS1"
+    }
+  },
+  "declarations": [
+    {
+      "millesime": 201601,
+      "numero_imprime": "2059F",
+      "code_regime": "RN",
+      "date_declaration": "2024-10-16",
+      "fin_exercice": "2023-12-31",
+      "duree_exercice": "365 jours",
+      "imprime": {
+        "donnees": [
+          {
+            "code_nref": "309326",
+            "valeur": "49000"
+          },
+          {
+            "code_nref": "309324",
+            "valeur": "51000"
+          },
+          {
+            "code_nref": "304857",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "GOUVERNEMENT PREMIER MINISTRE"
+            }
+          },
+          {
+            "code_nref": "304859",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "110001013"
+            }
+          },
+          {
+            "code_nref": "304860",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "51000"
+            }
+          },
+          {
+            "code_nref": "304861",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "5100"
+            }
+          },
+          {
+            "code_nref": "304862",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "0057"
+            }
+          },
+          {
+            "code_nref": "304863",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "RUE DE VARENNE"
+            }
+          },
+          {
+            "code_nref": "304865",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "75007"
+            }
+          },
+          {
+            "code_nref": "304866",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "PARIS"
+            }
+          },
+          {
+            "code_nref": "304867",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "FRANCE"
+            }
+          },
+          {
+            "code_nref": "304868",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "CHIRAC Jacques"
+            }
+          },
+          {
+            "code_nref": "304868",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "MITTERRAND Francois"
+            }
+          },
+          {
+            "code_nref": "304869",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "NS"
+            }
+          },
+          {
+            "code_nref": "304869",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "NS"
+            }
+          },
+          {
+            "code_nref": "304870",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "24000"
+            }
+          },
+          {
+            "code_nref": "304870",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "25000"
+            }
+          },
+          {
+            "code_nref": "304871",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "2400"
+            }
+          },
+          {
+            "code_nref": "304871",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "2500"
+            }
+          },
+          {
+            "code_nref": "304872",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "0055"
+            }
+          },
+          {
+            "code_nref": "304872",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "0126"
+            }
+          },
+          {
+            "code_nref": "304873",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "RUE DU FAUBOURG-SAINT-HONORE"
+            }
+          },
+          {
+            "code_nref": "304873",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "RUE DE L'UNIVERSITE"
+            }
+          },
+          {
+            "code_nref": "304875",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "75008"
+            }
+          },
+          {
+            "code_nref": "304875",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "75007"
+            }
+          },
+          {
+            "code_nref": "304876",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "PARIS"
+            }
+          },
+          {
+            "code_nref": "304876",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "PARIS"
+            }
+          },
+          {
+            "code_nref": "304877",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "FRANCE"
+            }
+          },
+
+          {
+            "code_nref": "304878",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "19321129"
+            }
+          },
+          {
+            "code_nref": "304878",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "19161026"
+            }
+          },
+          {
+            "code_nref": "905900",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "PARIS"
+            }
+          },
+          {
+            "code_nref": "905900",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "JARNAC"
+            }
+          },
+          {
+            "code_nref": "905901",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "75005"
+            }
+          },
+          {
+            "code_nref": "905901",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "16200"
+            }
+          },
+          {
+            "code_nref": "905902",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "FRANCE"
+            }
+          },
+          {
+            "code_nref": "905902",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "FRANCE"
+            }
+          },
+          {
+            "code_nref": "306874",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "M"
+            }
+          },
+          {
+            "code_nref": "306874",
+            "valeurs": {
+              "indiceRepetition": "2",
+              "valeur": "M"
+            }
+          },
+          {
+            "code_nref": "306875",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "NS"
+            }
+          },
+          {
+            "valeur": "100",
+            "code_nref": "309323"
+          },
+          {
+            "valeur": "2080000",
+            "code_nref": "51000"
+          },
+          {
+            "valeur": "200",
+            "code_nref": "309325"
+          },
+          {
+            "valeur": "1920000",
+            "code_nref": "490"
+          }
+        ]
+      }
+    },
+    {
+      "millesime": 201501,
+      "numero_imprime": "2059G",
+      "code_regime": "RN",
+      "date_declaration": "2024-10-16",
+      "fin_exercice": "2023-12-31",
+      "duree_exercice": "365 jours",
+      "imprime": {
+        "donnees": [
+          {
+            "code_nref": "309327",
+            "valeur": "100"
+          },
+          {
+            "code_nref": "304958",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "ANSII"
+            }
+          },
+          {
+            "code_nref": "304960",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "130007669"
+            }
+          },
+          {
+            "code_nref": "304961",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "0051 BOULEVARD DE LA TOUR-MAUBOURG"
+            }
+          },
+          {
+            "code_nref": "304964",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "75007"
+            }
+          },
+          {
+            "code_nref": "304965",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "PARIS"
+            }
+          },
+          {
+            "code_nref": "304967",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "4200"
+            }
+          },
+          {
+            "code_nref": "306876",
+            "valeurs": {
+              "indiceRepetition": "1",
+              "valeur": "SA"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
