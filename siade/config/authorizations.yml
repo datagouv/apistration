@@ -94,6 +94,10 @@ shared:
   api_entreprise/v3_and_more/dgfip/liasses_fiscales:
     - liasse_fiscale
     - liasses_fiscales_dgfip
+  api_entreprise/v3_and_more/dgfip/liens_capitalistiques:
+    - liasse_fiscale
+    - liasses_fiscales_dgfip
+    - liens_capitalistiques_dgfip
   api_entreprise/v3_and_more/european_commission/vies: []
   api_entreprise/v3_and_more/fabrique_numerique_ministeres_sociaux/conventions_collectives:
     - conventions_collectives

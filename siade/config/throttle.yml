@@ -41,6 +41,7 @@ shared:
       - { controller: 'api_entreprise/v3_and_more/opqibi/certifications_ingenierie', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/probtp/conformites_cotisations_retraite', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/dgfip/liasses_fiscales', action: 'show' }
+      - { controller: 'api_entreprise/v3_and_more/dgfip/liens_capitalistiques', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/dgfip/chiffres_affaires', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/msa/conformites_cotisations', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/fabrique_numerique_ministeres_sociaux/conventions_collectives', action: 'show' }

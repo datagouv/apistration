@@ -5550,6 +5550,754 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/dgfip/unites_legales/130025265/liasses_fiscales/2019?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/dgfip/unites_legales/{siren}/liens_capitalistiques/{year}":
+    get:
+      summary: Liens capitalistiques
+      tags:
+      - Informations financières
+      parameters:
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
+        required: true
+        schema:
+          type: string
+      - name: object
+        in: query
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
+        required: true
+        schema:
+          type: string
+      - name: siren
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: year
+        in: path
+        required: true
+        schema:
+          type: integer
+      security:
+      - jwt_bearer_token: []
+      description: Actionnaires et filiales de l'entreprise, extraits des liasses
+        fiscales de la DGFIP. Ces informations sont extraites des CERFA 2059F et 2059G.
+      responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '403':
+          description: Accès interdit
+          content:
+            application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges sur /v2/privileges
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '200':
+          description: Liens capitalistiques trouvées
+          headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
+          x-operationId: api_entreprise_v3_dgfip_liens_capitalistiques
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      capital:
+                        title: Composition du capital social
+                        description: 'Informations extraites du CERFA 2059F (nref:
+                          2059F)'
+                        type: object
+                        additionalProperties: false
+                        required:
+                        - actionnaires
+                        - repartition
+                        - depose_neant
+                        properties:
+                          actionnaires:
+                            title: Liste des actionnaires
+                            description: 'Liste des actionnaires avec une structure
+                              normalisée (nref: structure standardisée issue du serializer)'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              required:
+                              - type
+                              - pourcentage
+                              - nombre_parts
+                              - personne_physique_attributes
+                              - personne_morale_attributes
+                              - adresse
+                              properties:
+                                type:
+                                  title: Type d'actionnaire
+                                  description: 'Type de l''actionnaire, ''personne_morale''
+                                    ou ''personne_physique'' (nref: valeur fixe)'
+                                  type: string
+                                  enum:
+                                  - personne_morale
+                                  - personne_physique
+                                pourcentage:
+                                  title: Pourcentage de détention
+                                  description: 'Pourcentage de détention de l''actionnaire
+                                    (nref: 304861 pour personne morale, 304871 pour
+                                    personne physique)'
+                                  type: number
+                                  example: 51.0
+                                nombre_parts:
+                                  title: Nombre de parts
+                                  description: 'Nombre de parts détenues par l''actionnaire
+                                    (nref: 304860 pour personne morale, 304870 pour
+                                    personne physique)'
+                                  type: number
+                                  example: 510
+                                personne_physique_attributes:
+                                  title: Attributs de la personne physique
+                                  description: 'Attributs spécifiques pour une personne
+                                    physique. Si l''actionnaire n''est pas de type
+                                    ''personne_physique'', tous les champs seront
+                                    null (nref: 306874, 304868, 304869, 304878, 905900,
+                                    905901, 905902)'
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - civilite
+                                  - nom_patronymique_et_prenoms
+                                  - nom_marital
+                                  - date_naissance
+                                  - ville_naissance
+                                  - departement_naissance
+                                  - pays_naissance
+                                  properties:
+                                    civilite:
+                                      title: Civilité
+                                      description: 'Civilité de la personne physique
+                                        (nref: 306874)'
+                                      type: string
+                                      example: M
+                                      nullable: true
+                                    nom_patronymique_et_prenoms:
+                                      title: Nom patronymique et prénoms
+                                      description: 'Nom patronymique et prénoms (nref:
+                                        304868)'
+                                      type: string
+                                      example: CHIRAC Jacques
+                                      nullable: true
+                                    nom_marital:
+                                      title: Nom marital
+                                      description: 'Nom marital (nref: 304869)'
+                                      type: string
+                                      example: NS
+                                      nullable: true
+                                    date_naissance:
+                                      title: Date de naissance
+                                      description: 'Date de naissance (nref: 304878)'
+                                      type: string
+                                      example: '19321129'
+                                      nullable: true
+                                    ville_naissance:
+                                      title: Ville de naissance
+                                      description: 'Ville de naissance (nref: 905900)'
+                                      type: string
+                                      example: PARIS
+                                      nullable: true
+                                    departement_naissance:
+                                      title: Département de naissance
+                                      description: 'Département de naissance (nref:
+                                        905901)'
+                                      type: string
+                                      example: '75005'
+                                      nullable: true
+                                    pays_naissance:
+                                      title: Pays de naissance
+                                      description: 'Pays de naissance (nref: 905902)'
+                                      type: string
+                                      example: FRANCE
+                                      nullable: true
+                                personne_morale_attributes:
+                                  title: Attributs de la personne morale
+                                  description: 'Attributs spécifiques pour une personne
+                                    morale. Si l''actionnaire n''est pas de type ''personne_morale'',
+                                    tous les champs seront null ou ''NS'' (nref: 304859,
+                                    304857, 304858, 306875)'
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - siret
+                                  - denomination
+                                  - complement_denomination
+                                  - forme_juridique
+                                  properties:
+                                    siret:
+                                      title: SIRET
+                                      description: 'Identifiant SIRET de la personne
+                                        morale (nref: 304859)'
+                                      type: string
+                                      example: '110001013'
+                                      nullable: true
+                                    denomination:
+                                      title: Dénomination
+                                      description: 'Dénomination de la personne morale
+                                        (nref: 304857)'
+                                      type: string
+                                      example: GOUVERNEMENT PREMIER MINISTRE
+                                      nullable: true
+                                    complement_denomination:
+                                      title: Complément de dénomination
+                                      description: 'Complément de dénomination de
+                                        la personne morale (nref: 304858)'
+                                      type: string
+                                      nullable: true
+                                    forme_juridique:
+                                      title: Forme juridique
+                                      description: 'Forme juridique (nref: 306875)'
+                                      type: string
+                                      example: NS
+                                      nullable: true
+                                adresse:
+                                  title: Adresse de l'actionnaire
+                                  description: 'Adresse de l''actionnaire (nref: pour
+                                    personne morale [304862-304867] et pour personne
+                                    physique [304872-304877])'
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - numero
+                                  - voie
+                                  - lieu_dit_hameau
+                                  - code_postal
+                                  - ville
+                                  - pays
+                                  properties:
+                                    numero:
+                                      title: Numéro
+                                      description: 'Numéro de l''adresse (nref personne
+                                        morale: 304862 | 304872)'
+                                      type: string
+                                      example: '0057'
+                                      nullable: true
+                                    voie:
+                                      title: Voie
+                                      description: 'Voie de l''adresse (nref personne
+                                        morale: 304863 | personne physique: 304873)'
+                                      type: string
+                                      example: RUE DE VARENNE
+                                      nullable: true
+                                    lieu_dit_hameau:
+                                      title: Lieu-dit / Hameau
+                                      description: 'Lieu-dit ou hameau (nref personne
+                                        morale: 304864 | personne physique: 304874)'
+                                      type: string
+                                      nullable: true
+                                    code_postal:
+                                      title: Code postal
+                                      description: 'Code postal (nref personne morale:
+                                        304865 | personne physique: 304875)'
+                                      type: string
+                                      example: '75007'
+                                      nullable: true
+                                    ville:
+                                      title: Ville
+                                      description: 'Ville (nref personne morale: 304866
+                                        | personne physique: 304876)'
+                                      type: string
+                                      example: PARIS
+                                      nullable: true
+                                    pays:
+                                      title: Pays
+                                      description: 'Pays (nref personne morale: 304867
+                                        | personne physique: 304877)'
+                                      type: string
+                                      example: FRANCE
+                                      nullable: true
+                          repartition:
+                            title: Répartition des actions
+                            description: 'Répartition des actions entre personnes
+                              physiques et personnes morales (nref: 309326 et 309325
+                              pour personnes physiques, 309324 et 309323 pour personnes
+                              morales)'
+                            type: object
+                            additionalProperties: false
+                            required:
+                            - personnes_physiques
+                            - personnes_morales
+                            properties:
+                              personnes_physiques:
+                                title: Personnes physiques
+                                description: 'Détail des actions détenues par les
+                                  personnes physiques (nref: total_actions 309326,
+                                  nombre 309325)'
+                                type: object
+                                additionalProperties: false
+                                required:
+                                - total_actions
+                                - nombre
+                                properties:
+                                  total_actions:
+                                    title: Total des actions
+                                    description: 'Total des actions des personnes
+                                      physiques (nref: 309326)'
+                                    type: number
+                                    example: 490
+                                  nombre:
+                                    title: Nombre d'actions
+                                    description: 'Nombre d''actions répertoriées pour
+                                      les personnes physiques (nref: 309325)'
+                                    type: number
+                                    example: 2
+                              personnes_morales:
+                                title: Personnes morales
+                                description: 'Détail des actions détenues par les
+                                  personnes morales (nref: total_actions 309324, nombre
+                                  309323)'
+                                type: object
+                                additionalProperties: false
+                                required:
+                                - total_actions
+                                - nombre
+                                properties:
+                                  total_actions:
+                                    title: Total des actions
+                                    description: 'Total des actions des personnes
+                                      morales (nref: 309324)'
+                                    type: number
+                                    example: 510
+                                  nombre:
+                                    title: Nombre d'actions
+                                    description: 'Nombre d''actions répertoriées pour
+                                      les personnes morales (nref: 309323)'
+                                    type: number
+                                    example: 1
+                          depose_neant:
+                            title: Dépôt néant - Capital
+                            description: 'Indique si le formulaire 2059F a été déposé
+                              en néant (nref: 305767)'
+                            type: boolean
+                            example: false
+                      participations:
+                        title: Participations
+                        description: 'Informations sur les participations de l''entreprise
+                          (nref: 2059G)'
+                        type: object
+                        additionalProperties: false
+                        required:
+                        - filiales
+                        - nombre_filiales
+                        - depose_neant
+                        properties:
+                          filiales:
+                            title: Liste des filiales
+                            description: 'Liste des filiales de l''entreprise (nref:
+                              siret 304960, denomination 304958, complement_denomination
+                              304959, forme_juridique 306876, pourcentage_detention
+                              304967, adresse [304961 à 304966])'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              required:
+                              - siret
+                              - denomination
+                              - complement_denomination
+                              - forme_juridique
+                              - pourcentage_detention
+                              - adresse
+                              properties:
+                                siret:
+                                  title: SIRET de la filiale
+                                  description: 'Identifiant SIRET de la filiale (nref:
+                                    304960)'
+                                  type: string
+                                  example: '130007669'
+                                denomination:
+                                  title: Dénomination
+                                  description: 'Dénomination de la filiale (nref:
+                                    304958)'
+                                  type: string
+                                  example: ANSII
+                                complement_denomination:
+                                  title: Complément de dénomination
+                                  description: 'Complément de dénomination de la filiale
+                                    (nref: 304959)'
+                                  type: string
+                                  nullable: true
+                                forme_juridique:
+                                  title: Forme juridique
+                                  description: 'Forme juridique de la filiale (nref:
+                                    306876)'
+                                  type: string
+                                  example: SA
+                                pourcentage_detention:
+                                  title: Pourcentage de détention
+                                  description: 'Pourcentage de détention dans la filiale
+                                    (nref: 304967)'
+                                  type: number
+                                  example: 42.0
+                                adresse:
+                                  title: Adresse de la filiale
+                                  description: 'Adresse de la filiale (nref: numéro
+                                    304961, voie 304962, lieu_dit_hameau 304963, code_postal
+                                    304964, ville 304965, pays 304966)'
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - numero
+                                  - voie
+                                  - lieu_dit_hameau
+                                  - code_postal
+                                  - ville
+                                  - pays
+                                  properties:
+                                    numero:
+                                      title: Numéro
+                                      description: 'Numéro de l''adresse (nref: 304961)'
+                                      type: string
+                                      example: 0051 BOULEVARD DE LA TOUR-MAUBOURG
+                                    voie:
+                                      title: Voie
+                                      description: 'Voie de l''adresse (nref: 304962)'
+                                      type: string
+                                      nullable: true
+                                    lieu_dit_hameau:
+                                      title: Lieu-dit / Hameau
+                                      description: 'Lieu-dit ou hameau (nref: 304963)'
+                                      type: string
+                                      nullable: true
+                                    code_postal:
+                                      title: Code postal
+                                      description: 'Code postal (nref: 304964)'
+                                      type: string
+                                      example: '75007'
+                                    ville:
+                                      title: Ville
+                                      description: 'Ville (nref: 304965)'
+                                      type: string
+                                      example: PARIS
+                                    pays:
+                                      title: Pays
+                                      description: 'Pays (nref: 304966)'
+                                      type: string
+                                      nullable: true
+                          nombre_filiales:
+                            title: Nombre de filiales
+                            description: 'Nombre de filiales déclarées (nref: 309327)'
+                            type: number
+                            example: 1
+                          depose_neant:
+                            title: Dépôt néant - Participations
+                            description: 'Indique si le formulaire 2059G a été déposé
+                              en néant (nref: 305768)'
+                            type: boolean
+                            example: false
+                    required:
+                    - capital
+                    - participations
+                    additionalProperties: false
+                  links:
+                    type: object
+                  meta:
+                    type: object
+                required:
+                - data
+                - links
+                - meta
+        '404':
+          description: Non trouvé
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_03003:
+                  value:
+                    errors:
+                    - code: '03003'
+                      title: Entité non trouvée
+                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                        ou ne comporte aucune information pour cet appel. Veuillez
+                        vérifier que l'identifiant correspond au périmètre couvert
+                        par l'API.
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Entité non trouvée
+                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                    ou ne comporte aucune information pour cet appel. Veuillez vérifier
+                    que l'identifiant correspond au périmètre couvert par l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '422':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                unprocessable_entity_error_siren_error:
+                  value:
+                    errors:
+                    - code: '00301'
+                      title: Entité non traitable
+                      detail: Le numéro de siren n'est pas correctement formatté
+                      source:
+                        parameter: siren
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le numéro de siren n'est pas correctement formatté
+                missing_mandatory_params_context_error:
+                  value:
+                    errors:
+                    - code: '00201'
+                      title: Entité non traitable
+                      detail: Le paramètre context est obligatoire
+                      source:
+                        parameter: context
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre context est obligatoire
+                missing_mandatory_params_object_error:
+                  value:
+                    errors:
+                    - code: '00202'
+                      title: Entité non traitable
+                      detail: Le paramètre object est obligatoire
+                      source:
+                        parameter: object
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre object est obligatoire
+                missing_mandatory_params_recipient_error:
+                  value:
+                    errors:
+                    - code: '00203'
+                      title: Entité non traitable
+                      detail: Le paramètre recipient est obligatoire
+                      source:
+                        parameter: recipient
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre recipient est obligatoire
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                provider_unknown_error:
+                  value:
+                    errors:
+                    - code: '03999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '03002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+                provider_unavailable_error:
+                  value:
+                    errors:
+                    - code: '03001'
+                      title: Service non disponible
+                      detail: Service du fournisseur de données temporairement indisponible
+                        ou en maintenance.
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Service non disponible
+                  description: Service du fournisseur de données temporairement indisponible
+                    ou en maintenance.
+                network_error:
+                  value:
+                    errors:
+                    - code: '00501'
+                      title: Erreur réseau
+                      detail: Problème de connexion au serveur distant. L'erreur peut
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
+                      source:
+                      meta:
+                        retry_in: 10
+                  summary: Erreur réseau
+                  description: Problème de connexion au serveur distant. L'erreur
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
+                dns_resolution_error:
+                  value:
+                    errors:
+                    - code: '03004'
+                      title: Erreur de résolution DNS
+                      detail: Problème de résolution DNS de l'adresse du serveur
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Erreur de résolution DNS
+                  description: Problème de résolution DNS de l'adresse du serveur
+              schema:
+                "$ref": "#/components/schemas/Error"
+      x-maintenances:
+        from_hour: '01:00'
+        to_hour: '02:00'
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/dgfip/unites_legales/130025265/liens_capitalistiques/2019?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v4/djepva/api-association/associations/{siren_or_rna}":
     get:
       summary: Données association
