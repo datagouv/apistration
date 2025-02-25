@@ -5737,7 +5737,8 @@ paths:
                       capital:
                         title: Composition du capital social
                         description: 'Informations extraites du CERFA 2059F (nref:
-                          2059F)'
+                          2059F). Si la liasse est absente, l''ensemble des valeurs
+                          sont à null'
                         type: object
                         additionalProperties: false
                         required:
@@ -5947,7 +5948,8 @@ paths:
                             description: 'Répartition des actions entre personnes
                               physiques et personnes morales (nref: 309326 et 309325
                               pour personnes physiques, 309324 et 309323 pour personnes
-                              morales)'
+                              morales). Si la liasse est absente, l''ensemble des
+                              valeurs sont à null'
                             type: object
                             additionalProperties: false
                             required:
@@ -5971,12 +5973,14 @@ paths:
                                       physiques (nref: 309326)'
                                     type: number
                                     example: 490
+                                    nullable: true
                                   nombre:
                                     title: Nombre d'actions
                                     description: 'Nombre d''actions répertoriées pour
                                       les personnes physiques (nref: 309325)'
                                     type: number
                                     example: 2
+                                    nullable: true
                               personnes_morales:
                                 title: Personnes morales
                                 description: 'Détail des actions détenues par les
@@ -5994,18 +5998,21 @@ paths:
                                       morales (nref: 309324)'
                                     type: number
                                     example: 510
+                                    nullable: true
                                   nombre:
                                     title: Nombre d'actions
                                     description: 'Nombre d''actions répertoriées pour
                                       les personnes morales (nref: 309323)'
                                     type: number
                                     example: 1
+                                    nullable: true
                           depose_neant:
                             title: Dépôt néant - Capital
                             description: 'Indique si le formulaire 2059F a été déposé
                               en néant (nref: 305767)'
                             type: boolean
                             example: false
+                            nullable: true
                       participations:
                         title: Participations
                         description: 'Informations sur les participations de l''entreprise

@@ -37,6 +37,8 @@ class DGFIP::LiensCapitalistiques::BuildResourceFromLiassesFiscales < Applicatio
   end
 
   def build_actionnaires
+    return [] if declaration('2059F').nil?
+
     actionnaires = []
 
     sirets = values('2059F', '304859')
@@ -55,16 +57,22 @@ class DGFIP::LiensCapitalistiques::BuildResourceFromLiassesFiscales < Applicatio
   end
 
   def build_filiales
+    return [] if declaration('2059G').nil?
+
     values('2059G', '304960').map.with_index do |_, index|
-      {
-        siret: values('2059G', '304960')[index],
-        denomination: values('2059G', '304958')[index],
-        complement_denomination: values('2059G', '304959')[index],
-        forme_juridique: values('2059G', '306876')[index],
-        pourcentage_detention: build_pourcentage(values('2059G', '304967')[index]),
-        adresse: build_filiale_adresse(index)
-      }
+      build_filiale(index)
     end
+  end
+
+  def build_filiale(index)
+    {
+      siret: values('2059G', '304960')[index],
+      denomination: values('2059G', '304958')[index],
+      complement_denomination: values('2059G', '304959')[index],
+      forme_juridique: values('2059G', '306876')[index],
+      pourcentage_detention: build_pourcentage(values('2059G', '304967')[index]),
+      adresse: build_filiale_adresse(index)
+    }
   end
 
   def build_filiale_adresse(index)
@@ -175,14 +183,18 @@ class DGFIP::LiensCapitalistiques::BuildResourceFromLiassesFiscales < Applicatio
 
   def values(imprime, code_nref)
     @values ||= {}
-    @values["#{imprime}_#{code_nref}"] ||= declaration(imprime)[:donnees].find { |entry| entry[:code_nref] == code_nref }&.dig(:valeurs) || []
-    @values["#{imprime}_#{code_nref}"]
+    @values["#{imprime}_#{code_nref}"] ||= find_nref_within_declaration(imprime, code_nref)
+    @values["#{imprime}_#{code_nref}"] || []
+  end
+
+  def find_nref_within_declaration(imprime, code_nref)
+    (declaration(imprime)[:donnees] || []).find { |entry| entry[:code_nref] == code_nref }&.dig(:valeurs) || []
   end
 
   def declaration(imprime)
     @declarations ||= {}
     @declarations[imprime] ||= declarations.find { |declaration| declaration[:numero_imprime] == imprime }
-    @declarations[imprime]
+    @declarations[imprime] || {}
   end
 
   def declarations
