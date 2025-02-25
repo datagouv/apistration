@@ -5930,10 +5930,10 @@ paths:
                                       nullable: true
                                     pays:
                                       title: Pays
-                                      description: 'Pays (nref personne morale: 304867
-                                        | personne physique: 304877)'
+                                      description: 'Pays, code iso 3166 (nref personne
+                                        morale: 304867 | personne physique: 304877)'
                                       type: string
-                                      example: FRANCE
+                                      example: FR
                                       nullable: true
                           repartition:
                             title: Répartition des actions
@@ -6106,8 +6106,9 @@ paths:
                                       example: PARIS
                                     pays:
                                       title: Pays
-                                      description: 'Pays (nref: 304966)'
+                                      description: 'Pays, code iso 3166 (nref: 304966)'
                                       type: string
+                                      example: FR
                                       nullable: true
                           nombre_filiales:
                             title: Nombre de filiales

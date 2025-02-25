@@ -32,7 +32,7 @@ RSpec.describe DGFIP::LiensCapitalistiques::BuildResource, type: :build_resource
                   lieu_dit_hameau: nil,
                   code_postal: '75007',
                   ville: 'PARIS',
-                  pays: 'FRANCE'
+                  pays: 'FR'
                 }
               },
               {
@@ -50,7 +50,7 @@ RSpec.describe DGFIP::LiensCapitalistiques::BuildResource, type: :build_resource
                   },
                   ville_naissance: 'PARIS',
                   departement_naissance: '75005',
-                  pays_naissance: 'FRANCE'
+                  pays_naissance: 'FR'
                 },
                 adresse: {
                   numero: '0055',
@@ -58,7 +58,7 @@ RSpec.describe DGFIP::LiensCapitalistiques::BuildResource, type: :build_resource
                   lieu_dit_hameau: nil,
                   code_postal: '75008',
                   ville: 'PARIS',
-                  pays: 'FRANCE'
+                  pays: 'FR'
                 }
               },
               {
@@ -76,7 +76,7 @@ RSpec.describe DGFIP::LiensCapitalistiques::BuildResource, type: :build_resource
                   },
                   ville_naissance: 'JARNAC',
                   departement_naissance: '16200',
-                  pays_naissance: 'FRANCE'
+                  pays_naissance: 'FR'
                 },
                 adresse: {
                   numero: '0126',
