@@ -27,7 +27,7 @@ class APIEntreprise::DGFIP::LiensCapitalistiquesSerializer::V3 < APIEntreprise::
   def build_personne_physique(type, attributs)
     if type == 'personne_physique'
       attributs[:date_naissance] = attributs[:date_naissance].except(:jour)
-      attributs
+      attributs.except(:ville_naissance, :departement_naissance, :pays_naissance)
     else
       empty_personne_physique
     end
@@ -49,10 +49,7 @@ class APIEntreprise::DGFIP::LiensCapitalistiquesSerializer::V3 < APIEntreprise::
       date_naissance: {
         annee: nil,
         mois: nil
-      },
-      ville_naissance: nil,
-      departement_naissance: nil,
-      pays_naissance: nil
+      }
     }
   end
 

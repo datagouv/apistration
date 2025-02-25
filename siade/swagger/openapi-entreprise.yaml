@@ -5798,9 +5798,6 @@ paths:
                                   - nom_patronymique_et_prenoms
                                   - nom_marital
                                   - date_naissance
-                                  - ville_naissance
-                                  - departement_naissance
-                                  - pays_naissance
                                   properties:
                                     civilite:
                                       title: Civilité
@@ -5842,25 +5839,6 @@ paths:
                                           type: string
                                           example: '11'
                                           nullable: true
-                                    ville_naissance:
-                                      title: Ville de naissance
-                                      description: 'Ville de naissance (nref: 905900)'
-                                      type: string
-                                      example: PARIS
-                                      nullable: true
-                                    departement_naissance:
-                                      title: Département de naissance
-                                      description: 'Département de naissance (nref:
-                                        905901)'
-                                      type: string
-                                      example: '75005'
-                                      nullable: true
-                                    pays_naissance:
-                                      title: Pays de naissance
-                                      description: 'Pays de naissance (nref: 905902)'
-                                      type: string
-                                      example: FRANCE
-                                      nullable: true
                                 personne_morale_attributes:
                                   title: Attributs de la personne morale
                                   description: 'Attributs spécifiques pour une personne
