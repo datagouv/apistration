@@ -5824,10 +5824,24 @@ paths:
                                       nullable: true
                                     date_naissance:
                                       title: Date de naissance
-                                      description: 'Date de naissance (nref: 304878)'
-                                      type: string
-                                      example: '19321129'
-                                      nullable: true
+                                      description: 'Date de naissance (nref: 304878),
+                                        le jour n''est pas renvoyé'
+                                      additionalProperties: false
+                                      type: object
+                                      required:
+                                      - annee
+                                      - mois
+                                      properties:
+                                        annee:
+                                          title: Année de la date de naissance
+                                          type: string
+                                          example: '1932'
+                                          nullable: true
+                                        mois:
+                                          title: Mois de la date de naissance
+                                          type: string
+                                          example: '11'
+                                          nullable: true
                                     ville_naissance:
                                       title: Ville de naissance
                                       description: 'Ville de naissance (nref: 905900)'

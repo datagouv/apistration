@@ -43,7 +43,11 @@ RSpec.describe DGFIP::LiensCapitalistiques::BuildResource, type: :build_resource
                   civilite: 'M',
                   nom_patronymique_et_prenoms: 'CHIRAC Jacques',
                   nom_marital: 'NS',
-                  date_naissance: '19321129',
+                  date_naissance: {
+                    annee: '1932',
+                    mois: '11',
+                    jour: '29'
+                  },
                   ville_naissance: 'PARIS',
                   departement_naissance: '75005',
                   pays_naissance: 'FRANCE'
@@ -65,7 +69,11 @@ RSpec.describe DGFIP::LiensCapitalistiques::BuildResource, type: :build_resource
                   civilite: 'M',
                   nom_patronymique_et_prenoms: 'MITTERRAND Francois',
                   nom_marital: 'NS',
-                  date_naissance: '19161026',
+                  date_naissance: {
+                    annee: '1916',
+                    mois: '10',
+                    jour: '26'
+                  },
                   ville_naissance: 'JARNAC',
                   departement_naissance: '16200',
                   pays_naissance: 'FRANCE'

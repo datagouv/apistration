@@ -127,7 +127,7 @@ class DGFIP::LiensCapitalistiques::BuildResourceFromLiassesFiscales < Applicatio
       civilite: values('2059F', '306874')[index],
       nom_patronymique_et_prenoms: values('2059F', '304868')[index],
       nom_marital: values('2059F', '304869')[index],
-      date_naissance: values('2059F', '304878')[index],
+      date_naissance: build_date_naissance(values('2059F', '304878')[index]),
       ville_naissance: values('2059F', '905900')[index],
       departement_naissance: values('2059F', '905901')[index],
       pays_naissance: values('2059F', '905902')[index]
@@ -143,6 +143,22 @@ class DGFIP::LiensCapitalistiques::BuildResourceFromLiassesFiscales < Applicatio
       ville: values('2059F', '304876')[index],
       pays: values('2059F', '304877')[index]
     }
+  end
+
+  def build_date_naissance(date)
+    if date.blank?
+      {
+        annee: nil,
+        mois: nil,
+        jour: nil
+      }
+    else
+      {
+        annee: date[0..3],
+        mois: date[4..5],
+        jour: date[6..7]
+      }
+    end
   end
 
   def build_pourcentage(value)
