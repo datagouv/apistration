@@ -62,6 +62,20 @@ Ce cas permet de tester :
 
 
 Ce cas permet de tester :
+- [Param. appel] Nom d'usage
+- [Param. appel] Nom de naissance
+- [Param. appel] Prénom
+- [Param. appel] Date de naissance (jour,mois,année)
+- [Param. appel] sexe féminin
+- [Réponse] statut bénéficiaire de la complémentaire santé solidaire SANS participation financière","{""nomUsage"":""SABRI"",""nomNaissance"":""CHANI"",""prenoms"":[""LOLA""],""anneeDateDeNaissance"":1970,""moisDateDeNaissance"":1,""jourDateDeNaissance"":1,""codeInseeLieuDeNaissance"":""44109"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""F""}",200,"{
+  ""status"": ""beneficiaire_sans_participation_financiere"",
+  ""dateDebut"": ""2023-05-31"",
+  ""dateFin"": null
+}"
+,"## Bénéficiaire sans participation financière femme - 200
+
+
+Ce cas permet de tester :
 - [Param. appel] Nom de naissance
 - [Param. appel] Prénom
 - [Param. appel] Date de naissance (jour,mois,année)
