@@ -21,7 +21,7 @@ RSpec.describe DGFIP::LiensCapitalistiques::BuildResource, type: :build_resource
                 pourcentage: 51.0,
                 nombre_parts: 510,
                 attributs: {
-                  siret: '110001013',
+                  siren: '110001013',
                   denomination: 'GOUVERNEMENT PREMIER MINISTRE',
                   complement_denomination: nil,
                   forme_juridique: 'NS'
@@ -103,7 +103,7 @@ RSpec.describe DGFIP::LiensCapitalistiques::BuildResource, type: :build_resource
           participations: {
             filiales: [
               {
-                siret: '130007669',
+                siren: '130007669',
                 denomination: 'ANSII',
                 complement_denomination: nil,
                 forme_juridique: 'SA',

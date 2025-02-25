@@ -55,7 +55,7 @@ class APIEntreprise::DGFIP::LiensCapitalistiquesSerializer::V3 < APIEntreprise::
 
   def empty_personne_morale
     {
-      siret: nil,
+      siren: nil,
       denomination: nil,
       complement_denomination: nil,
       forme_juridique: nil

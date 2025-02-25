@@ -5848,14 +5848,14 @@ paths:
                                   type: object
                                   additionalProperties: false
                                   required:
-                                  - siret
+                                  - siren
                                   - denomination
                                   - complement_denomination
                                   - forme_juridique
                                   properties:
-                                    siret:
-                                      title: SIRET
-                                      description: 'Identifiant SIRET de la personne
+                                    siren:
+                                      title: SIREN
+                                      description: 'Identifiant SIREN de la personne
                                         morale (nref: 304859)'
                                       type: string
                                       example: '110001013'
@@ -6019,7 +6019,7 @@ paths:
                           filiales:
                             title: Liste des filiales
                             description: 'Liste des filiales de l''entreprise (nref:
-                              siret 304960, denomination 304958, complement_denomination
+                              siren 304960, denomination 304958, complement_denomination
                               304959, forme_juridique 306876, pourcentage_detention
                               304967, adresse [304961 à 304966])'
                             type: array
@@ -6027,16 +6027,16 @@ paths:
                               type: object
                               additionalProperties: false
                               required:
-                              - siret
+                              - siren
                               - denomination
                               - complement_denomination
                               - forme_juridique
                               - pourcentage_detention
                               - adresse
                               properties:
-                                siret:
-                                  title: SIRET de la filiale
-                                  description: 'Identifiant SIRET de la filiale (nref:
+                                siren:
+                                  title: SIREN de la filiale
+                                  description: 'Identifiant SIREN de la filiale (nref:
                                     304960)'
                                   type: string
                                   example: '130007669'

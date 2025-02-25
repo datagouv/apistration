@@ -41,9 +41,9 @@ class DGFIP::LiensCapitalistiques::BuildResourceFromLiassesFiscales < Applicatio
 
     actionnaires = []
 
-    sirets = values('2059F', '304859')
+    sirens = values('2059F', '304859')
 
-    sirets.count.times do |index|
+    sirens.count.times do |index|
       actionnaires << build_personne_morale_actionnaire(index)
     end
 
@@ -66,7 +66,7 @@ class DGFIP::LiensCapitalistiques::BuildResourceFromLiassesFiscales < Applicatio
 
   def build_filiale(index)
     {
-      siret: values('2059G', '304960')[index],
+      siren: values('2059G', '304960')[index],
       denomination: values('2059G', '304958')[index],
       complement_denomination: values('2059G', '304959')[index],
       forme_juridique: values('2059G', '306876')[index],
@@ -92,7 +92,7 @@ class DGFIP::LiensCapitalistiques::BuildResourceFromLiassesFiscales < Applicatio
       pourcentage: build_pourcentage(values('2059F', '304861')[index]),
       nombre_parts: build_entier(values('2059F', '304860')[index]),
       attributs: {
-        siret: values('2059F', '304859')[index],
+        siren: values('2059F', '304859')[index],
         denomination: values('2059F', '304857')[index],
         complement_denomination: values('2059F', '304858')[index],
         forme_juridique: values('2059F', '306875')[index]
