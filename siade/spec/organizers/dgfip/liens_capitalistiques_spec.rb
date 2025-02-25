@@ -36,7 +36,7 @@ RSpec.describe DGFIP::LiensCapitalistiques, type: :retriever_organizer do
       )
     end
 
-    context 'when there is at least one cerfa between 2059F and 2059G' do
+    context 'when there is at least one cerfa, either 2059F or 2059G' do
       let(:payload_file) { 'dgfip/liasses_fiscales/liens_capitalistiques.json' }
 
       it { is_expected.to be_a_success }
