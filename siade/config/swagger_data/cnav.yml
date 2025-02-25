@@ -860,7 +860,7 @@ cnav:
         status:
           title: "Statut bénéficiaire de l'allocation adulte handicapé (AAH)"
           type: string
-          description: "Indique si le particulier est bénéficiaire de la complémentaire de santé solidaire au moment de l'appel."
+          description: "Indique si le particulier est bénéficiaire de l'allocation adulte handicapé au moment de l'appel."
           enum:
             - "beneficiaire"
             - "non_beneficiaire"
