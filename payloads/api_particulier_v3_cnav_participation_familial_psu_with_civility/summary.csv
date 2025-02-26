@@ -1,0 +1,101 @@
+Titre,Description,Paramètres,Status,Réponse
+,"## IDENTITÉ CAS NOMINAL
+
+Ce cas est le cas nominal de l'ensemble des cas de test d'identité/limite.
+Il a pour but de décrire une personne fictive avec l'ensemble de ses paramètres
+et la réponse lorsque celui ci est trouvé.
+
+Vous trouverez des variations des paramètres d'entré ainsi que les différents cas
+d'erreur selon les informations que vous fournirez.","{""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""ALEXIS"",""GÉRÔME"",""JEAN-PHILIPPE""],""anneeDateNaissance"":1982,""moisDateNaissance"":12,""jourDateNaissance"":27}",200,"{
+  ""data"": {
+    ""allocataires"": [
+      {
+        ""nom_naissance"": ""LEFEBVRE"",
+        ""nom_usage"": null,
+        ""prenoms"": ""JEAN-PIERRE THOMAS"",
+        ""date_naissance"": ""2000-01-20"",
+        ""sexe"": ""M"",
+        ""code_cog_insee_commune_naissance"": ""75113""
+      }
+    ],
+    ""enfants"": [
+      {
+        ""nom_naissance"": ""LEFEBVRE"",
+        ""nom_usage"": null,
+        ""prenoms"": ""JEAN-PIERRE THOMAS JUNIOR"",
+        ""date_naissance"": ""2000-01-20"",
+        ""sexe"": ""M"",
+        ""code_cog_insee_commune_naissance"": ""75113""
+      }
+    ],
+    ""adresse"": {
+        ""destinataire"": ""Monsieur JEAN JACQUES LEFEBVRE"",
+        ""complement_information"": null,
+        ""complement_information_geographique"": null,
+        ""numero_libelle_voie"": ""1 RUE DE LA GARE"",
+        ""lieu_dit"": null,
+        ""code_postal_ville"": ""75002"",
+        ""pays"": ""FRANCE""
+    },
+    ""parametres_calcul_psu"": {
+      ""nombre_enfants_a_charge"": 1,
+      ""nombre_enfants_beneficiaire_AEEH"": 1,
+      ""base_ressources_annuelles"": {
+        ""valeur"": 40923,
+        ""annee_calcul"": 2023
+      }
+    }
+  },
+  ""links"": { },
+  ""meta"": { }
+}"
+,Dossier non trouvé,"{""nomNaissance"":""LEFEBVRE"",""codeCogInseeCommuneNaissance"":""00404"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""37003"",
+      ""title"": ""Dossier allocataire absent CNAV"",
+      ""detail"": ""Le dossier allocataire n'a pas été trouvé auprès de la CNAV."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"
+,## Allocataire non trouvé,"{""nomNaissance"":""DESFOUIN"",""prenoms"":[""René""],""anneeDateNaissance"":2002,""moisDateNaissance"":12,""jourDateNaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",429,"{
+  ""errors"": [
+    {
+      ""code"": ""00429"",
+      ""title"": ""Trop de requêtes"",
+      ""detail"": ""Vous avez effectué trop de requêtes"",
+      ""source"": null,
+      ""meta"": {}
+    }
+  ]
+}"
+,## Allocataire non trouvé,"{""nomNaissance"":""DELANOUE"",""prenoms"":[""Jean-Marie""],""anneeDateNaissance"":2002,""moisDateNaissance"":12,""jourDateNaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",502,"{
+  ""errors"": [
+    {
+      ""code"": ""37999"",
+      ""title"": ""Erreur inconnue du fournisseur de données"",
+      ""detail"": ""La réponse retournée par le fournisseur de données est invalide et inconnue de notre service. L'équipe technique a été notifiée de cette erreur pour investigation."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"
+,## Allocataire non trouvé,"{""nomNaissance"":""SITUDI"",""prenoms"":[""Clément""],""anneeDateNaissance"":2002,""moisDateNaissance"":12,""jourDateNaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",504,"{
+  ""errors"": [
+    {
+      ""code"": ""37002"",
+      ""title"": ""Intermédiaire hors-délai"",
+      ""detail"": ""Temps d’attente d’une réponse du fournisseur de données écoulé."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"
