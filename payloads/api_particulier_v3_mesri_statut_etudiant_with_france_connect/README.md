@@ -1,4 +1,4 @@
-# Statut étudiant
+# [FranceConnect] Statut étudiant
 * [fake_france_connect_mesri_with.yml](fake_france_connect_mesri_with.yml)
 
   Status `200`

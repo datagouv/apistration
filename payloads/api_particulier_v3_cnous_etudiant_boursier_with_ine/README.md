@@ -1,4 +1,4 @@
-# Status étudiant boursier
+# [INE] Status étudiant boursier
 * [ine.yml](ine.yml)
 
   Status `200`

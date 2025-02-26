@@ -1,4 +1,4 @@
-# Statut complémentaire santé solidaire (C2S)
+# [FranceConnect] Statut complémentaire santé solidaire (C2S)
 * [fake_france_connect_cnaf.yml](fake_france_connect_cnaf.yml)
 
   Status `200`

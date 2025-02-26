@@ -1,4 +1,4 @@
-# Statut étudiant
+# [INE] Statut étudiant
 * [404.yaml](404.yaml)
 
   Status `404`

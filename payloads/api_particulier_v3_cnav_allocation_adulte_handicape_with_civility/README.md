@@ -1,4 +1,4 @@
-# Statut allocation adulte handicapé (AAH)
+# [Identité] Statut allocation adulte handicapé (AAH)
 * [200_beneficiaire.yaml](200_beneficiaire.yaml)
 
   Status `200`

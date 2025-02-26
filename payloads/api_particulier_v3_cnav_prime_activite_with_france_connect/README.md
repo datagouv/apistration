@@ -1,4 +1,4 @@
-# Statut prime d'activité
+# [FranceConnect] Statut prime d'activité
 * [fake_france_connect_cnaf.yml](fake_france_connect_cnaf.yml)
 
   Status `200`

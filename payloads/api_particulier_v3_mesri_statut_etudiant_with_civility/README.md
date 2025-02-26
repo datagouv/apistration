@@ -1,4 +1,4 @@
-# Statut étudiant
+# [Identité] Statut étudiant
 * [civility_etudiant_admis.yml](civility_etudiant_admis.yml)
 
   Status `200`

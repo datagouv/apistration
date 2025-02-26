@@ -1,4 +1,4 @@
-# Statut prime d'activité
+# [Identité] Statut prime d'activité
 * [200_beneficiaire_majoration.yaml](200_beneficiaire_majoration.yaml)
 
   Status `200`
