@@ -37,7 +37,7 @@ class Rack::Attack
     rate_limiting_service.blacklisted_access?(req)
   end
 
-  throttle('API Particulier global limit', limit: 20, period: 1) do |request|
+  throttle('API Particulier V2 global limit', limit: 20, period: 1) do |request|
     next if request.get_header('HTTP_X_API_KEY').blank?
 
     Digest::SHA512.hexdigest(request.get_header('HTTP_X_API_KEY')) if request.host =~ /particulier/
