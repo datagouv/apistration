@@ -62,6 +62,65 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
   </p>
   </details>
+* [cnaf_psu.yml](cnaf_psu.yml)
+
+  Status `200`
+
+  Réponse FranceConnect permettant de déclencher la réponse de [`/v3/dss/participation_familial_psu/france_connect` suivante](../api_particulier_v3_cnav_participation_familial_psu_with_france_connect/fake_france_connect_cnaf.yaml)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "token": "cnaf_psu"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "scope": [
+      "openid",
+      "identite_pivot",
+      "cnaf_quotient_familial",
+      "cnaf_allocataires",
+      "cnaf_enfants",
+      "cnaf_adresse"
+    ],
+    "client": {
+      "client_id": "client_id",
+      "client_name": "client_name"
+    },
+    "identity": {
+      "given_name": "Georges",
+      "family_name": "CNAF",
+      "birthdate": "2002-01-01",
+      "gender": "male",
+      "birthplace": "75002",
+      "birthcountry": "99100",
+      "preferred_username": "MARTIN"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer cnaf_psu" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familial_psu/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [cnaf_qfv2.yml](cnaf_qfv2.yml)
 
   Status `200`

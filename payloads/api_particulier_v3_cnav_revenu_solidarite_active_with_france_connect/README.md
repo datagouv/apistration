@@ -1,4 +1,4 @@
-# Statut revenu de solidarité active (RSA)
+# [FranceConnect] Statut revenu de solidarité active (RSA)
 * [fake_france_connect_cnaf.yml](fake_france_connect_cnaf.yml)
 
   Status `200`

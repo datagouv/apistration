@@ -1,4 +1,4 @@
-# Status étudiant boursier
+# [FranceConnect] Status étudiant boursier
 * [fake_france_connect_cnous.yml](fake_france_connect_cnous.yml)
 
   Status `200`

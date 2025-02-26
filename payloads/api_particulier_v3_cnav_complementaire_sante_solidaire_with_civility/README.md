@@ -1,4 +1,4 @@
-# Statut complémentaire santé solidaire (C2S)
+# [Identité] Statut complémentaire santé solidaire (C2S)
 * [200-beneficiaire_avec_participation-feminin.yaml](200-beneficiaire_avec_participation-feminin.yaml)
 
   Status `200`
