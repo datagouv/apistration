@@ -7,6 +7,7 @@ shared:
       - { controller: 'api_entreprise/v3_and_more/cnetp/attestation_cotisations_conges_payes_chomage_intemperies', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/qualibat/certifications_batiment', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/mi/documents_associations', action: 'show' }
+      - { controller: 'api_entreprise/inpi_proxy', action: 'show' }
     limit: 50
     period: 60
   high_latency_documents:
@@ -14,7 +15,6 @@ shared:
     endpoints:
       - { controller: 'api_entreprise/v3_and_more/dgfip/attestations_fiscales', action: 'show' }
       - { controller: 'api_entreprise/v3_and_more/cibtp/attestation_cotisations_conges_payes_chomage_intemperies', action: 'show' }
-      - { controller: 'api_entreprise/inpi_proxy', action: 'show' }
     limit: 5
     period: 60
   json_resources:
