@@ -286,7 +286,7 @@ tableaux de la liasse fiscale'
         example: "2015-12-01"
   liens_capitalistiques:
     title: "Liens capitalistiques"
-    description: "Actionnaires et filiales de l'entreprise, extraits des liasses fiscales de la DGFIP. Ces informations sont extraites des CERFA 2059F et 2059G."
+    description: "Actionnaires et filiales de l'entreprise déclarés dans les CERFA 2059F et 2059G des liasses fiscales de la DGFIP."
     tags:
       - "Informations financières"
     attributes:
