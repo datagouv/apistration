@@ -5605,8 +5605,8 @@ paths:
           type: integer
       security:
       - jwt_bearer_token: []
-      description: Actionnaires et filiales de l'entreprise, extraits des liasses
-        fiscales de la DGFIP. Ces informations sont extraites des CERFA 2059F et 2059G.
+      description: Actionnaires et filiales de l'entreprise déclarés dans les CERFA
+        2059F et 2059G des liasses fiscales de la DGFIP.
       responses:
         '401':
           description: Non autorisé
@@ -5999,9 +5999,13 @@ paths:
                                     example: 1
                                     nullable: true
                           depose_neant:
-                            title: Dépôt néant - Capital
-                            description: 'Indique si le formulaire 2059F a été déposé
-                              en néant (nref: 305767)'
+                            title: État du dépôt du formulaire 2059F
+                            description: "Indique l'état du dépôt du formulaire 2059F
+                              concernant la composition du capital social : \n \n
+                              - false : l’imprimé est bien déposé et contient des
+                              données. \n - true : l’imprimé est déposé à néant (vide).
+                              \n - null : l’imprimé est complètement absent. \n \n
+                              (nref: 305767)"
                             type: boolean
                             example: false
                             nullable: true
@@ -6116,9 +6120,13 @@ paths:
                             type: number
                             example: 1
                           depose_neant:
-                            title: Dépôt néant - Participations
-                            description: 'Indique si le formulaire 2059G a été déposé
-                              en néant (nref: 305768)'
+                            title: État du dépôt du formulaire 2059G
+                            description: "Indique l'état du dépôt du formulaire 2059G
+                              concernant les filiales et participations : \n \n -
+                              false : l’imprimé est bien déposé et contient des données.
+                              \n - true : l’imprimé est déposé à néant (vide). \n
+                              - null : l’imprimé est complètement absent. \n \n (nref:
+                              305768)"
                             type: boolean
                             example: false
                     required:
