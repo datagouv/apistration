@@ -23,12 +23,15 @@ class MakeRequest < ApplicationInteractor
   protected
 
   def mock_call
-    mocked_params = api_particulier_v2? ? mocking_params_v2 : mocking_params
     context.mocked_data = MockService.new(operation_id, mocked_params).mock
   end
 
   def operation_id
     context.operation_id
+  end
+
+  def mocked_params
+    api_particulier_v2? ? mocking_params_v2 : mocking_params
   end
 
   def mocking_params_v2
@@ -123,7 +126,7 @@ class MakeRequest < ApplicationInteractor
   def track_mock_operation
     mocked_operation_ok = context.mocked_data.present? ? 'OK' : 'NOK'
 
-    Rails.logger.debug { "## Mocking operation #{operation_id} with params #{mocking_params} : #{mocked_operation_ok}" }
+    MonitoringService.instance.track('debug', "## Mocking operation #{operation_id} with params #{mocked_params} : #{mocked_operation_ok}")
   end
 
   def fail_to_request_provider!(provider_klass_error)
