@@ -1,4 +1,17 @@
 Titre,Description,Paramètres,Status,Réponse
+,Étudiant non trouvé,"{""ine"":""1234567404G""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""25003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Aucun étudiant n'a pu être trouvé avec les critères de recherche fournis."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""MESRI""
+      }
+    }
+  ]
+}"
 ,Étudiant ADMIS,"{""nomNaissance"":""MELINARD"",""prenom"":""PATRICK"",""anneeDateNaissance"":1990,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""78000""}",200,"{
   ""data"": {
     ""identite"": {

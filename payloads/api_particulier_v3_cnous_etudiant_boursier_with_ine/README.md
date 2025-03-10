@@ -1,4 +1,55 @@
 # [INE] Status étudiant boursier
+* [404.yaml](404.yaml)
+
+  Status `404`
+
+  Dossier non trouvé
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "NOEL"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "26003",
+        "title": "Entité non trouvée",
+        "detail": "Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis.",
+        "source": null,
+        "meta": {
+          "provider": "CNOUS"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'nomNaissance=NOEL' \
+    --url "https://staging.particulier.api.gouv.fr/v3/cnous/etudiant_boursier/ine"
+  ```
+
+  </p>
+  </details>
 * [ine.yml](ine.yml)
 
   Status `200`

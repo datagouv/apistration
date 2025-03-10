@@ -1,4 +1,17 @@
 Titre,Description,Paramètres,Status,Réponse
+,Dossier non trouvé,"{""nomNaissance"":""NOEL""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""26003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Aucun étudiant boursier n'a pu être trouvé avec les critères de recherche fournis."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNOUS""
+      }
+    }
+  ]
+}"
 ,Boursier échelon 5,"{""nomNaissance"":""Pagnol"",""prenoms"":""Marcel"",""anneeDateNaissance"":1998,""moisDateNaissance"":7,""jourDateNaissance"":12,""codeCogInseeCommuneNaissance"":""75000"",""sexeEtatCivil"":""M""}",200,"{
   ""data"": {
     ""est_boursier"": true,

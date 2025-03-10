@@ -1,4 +1,17 @@
 Titre,Description,Paramètres,Status,Réponse
+,Étudiant non trouvé,"{""nomNaissance"":""NOEL""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""25003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Aucun étudiant n'a pu être trouvé avec les critères de recherche fournis."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""MESRI""
+      }
+    }
+  ]
+}"
 ,FranceConnect: étudiant inscrit,"{""prenom"":""Jean"",""nomNaissance"":""MESRI"",""anneeDateNaissance"":2002,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75002""}",200,"{
   ""data"": {
     ""admissions"": [
