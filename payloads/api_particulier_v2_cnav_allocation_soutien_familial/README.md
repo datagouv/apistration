@@ -222,6 +222,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
     "prenoms": [
       "Georges"
     ],
+    "nomUsage": "MARTIN",
     "nomNaissance": "CNAF",
     "anneeDateDeNaissance": 2002,
     "moisDateDeNaissance": 1,
