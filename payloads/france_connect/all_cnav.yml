@@ -1,0 +1,43 @@
+---
+title: 'CNAF Quotient Familial V2'
+example: true
+params:
+  token: 'all_cnav'
+api_path: '/v2/composition-familiale-v2'
+description: 'Réponse FranceConnect permettant de déclencher l''ensemble des réponses aux api de la cnav'
+status: 200
+payload: |-
+  {
+    "scope": [
+      "openid",
+      "identite_pivot",
+      "revenu_solidarite_active",
+      "revenu_solidarite_active_majoration",
+      "prime_activite",
+      "prime_activite_majoration",
+      "allocation_soutien_familial",
+      "allocation_adulte_handicape",
+      "complementaire_sante_solidaire",
+      "cnaf_quotient_familial",
+      "cnaf_allocataires",
+      "cnaf_enfants",
+      "cnaf_adresse",
+      "psu_allocataires",
+      "psu_enfants",
+      "psu_adresse",
+      "psu_parametres_calcul_psu"
+    ],
+    "client": {
+      "client_id": "client_id",
+      "client_name": "client_name"
+    },
+    "identity": {
+      "given_name": "Georges",
+      "family_name": "CNAF",
+      "birthdate": "2002-01-01",
+      "gender": "male",
+      "birthplace": "75002",
+      "birthcountry": "99100",
+      "preferred_username": "MARTIN"
+    }
+  }
