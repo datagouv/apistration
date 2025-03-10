@@ -29,7 +29,7 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
       family_name: nom_naissance,
       birthdate: date_naissance,
       birthplace: code_cog_insee_commune_naissance,
-      gender: gender.downcase == 'm' ? 'male' : 'female'
+      gender: sexe_etat_civil.downcase == 'm' ? 'male' : 'female'
     }
   end
 
