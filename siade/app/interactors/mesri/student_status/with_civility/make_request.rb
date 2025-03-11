@@ -11,17 +11,19 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
     end
   end
 
+  # rubocop:disable Metrics/AbcSize
   def mocking_params
     {
       nomNaissance: nom_naissance,
-      prenoms: prenom,
-      anneeDateNaissance: context.params[:annee_date_naissance],
-      moisDateNaissance: context.params[:mois_date_naissance],
-      jourDateNaissance: context.params[:jour_date_naissance],
+      prenom:,
+      anneeDateNaissance: context.params[:annee_date_naissance].to_i,
+      moisDateNaissance: context.params[:mois_date_naissance].to_i,
+      jourDateNaissance: context.params[:jour_date_naissance].to_i,
       sexeEtatCivil: sexe_etat_civil.downcase,
       codeCogInseeCommuneNaissance: code_cog_insee_commune_naissance
     }.compact
   end
+  # rubocop:enable Metrics/AbcSize
 
   def france_connect_mocking_params
     {
