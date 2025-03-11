@@ -404,7 +404,12 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
       "mesri_inscription_etudiant",
       "mesri_inscription_autre",
       "mesri_admission",
-      "mesri_etablissements"
+      "mesri_etablissements",
+      "mesri_admissions",
+      "mesri_admission_inscrit",
+      "mesri_admission_regime_formation",
+      "mesri_admission_commune_etudes",
+      "mesri_admission_etablissement_etudes"
     ],
     "client": {
       "client_id": "client_id",
