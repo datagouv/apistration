@@ -62,18 +62,18 @@ class CNOUS::StudentScholarshipWithFranceConnect::MakeRequest < MakeRequest::Get
   end
 
   def date_naissance
-    Kernel.format('%<day>02d/%<month>02d/%<year>04d', year: year.to_i, month: month.to_i, day: day.to_i)
+    Kernel.format('%<day>02d/%<month>02d/%<year>04d', year: year, month: month, day: day)
   end
 
   def year
-    context.params[:annee_date_naissance]
+    context.params[:annee_date_naissance].to_i
   end
 
   def month
-    context.params[:mois_date_naissance]
+    context.params[:mois_date_naissance].to_i
   end
 
   def day
-    context.params[:jour_date_naissance]
+    context.params[:jour_date_naissance].to_i
   end
 end
