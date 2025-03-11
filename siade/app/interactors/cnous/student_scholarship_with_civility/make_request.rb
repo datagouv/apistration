@@ -16,7 +16,7 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
   def mocking_params
     {
       nomNaissance: nom_naissance,
-      prenoms: prenoms,
+      prenoms:,
       anneeDateNaissance: year,
       moisDateNaissance: month,
       jourDateNaissance: day,
@@ -48,18 +48,18 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
   end
 
   def date_naissance
-    Kernel.format('%<day>02d/%<month>02d/%<year>04d', year: year.to_i, month: month.to_i, day: day.to_i)
+    Kernel.format('%<day>02d/%<month>02d/%<year>04d', year:, month:, day:)
   end
 
   def year
-    context.params[:annee_date_naissance]
+    context.params[:annee_date_naissance].to_i
   end
 
   def month
-    context.params[:mois_date_naissance]
+    context.params[:mois_date_naissance].to_i
   end
 
   def day
-    context.params[:jour_date_naissance]
+    context.params[:jour_date_naissance].to_i
   end
 end
