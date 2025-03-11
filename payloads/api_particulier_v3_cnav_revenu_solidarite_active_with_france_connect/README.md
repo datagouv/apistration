@@ -1,4 +1,62 @@
 # [FranceConnect] Statut revenu de solidarité active (RSA)
+* [404.yaml](404.yaml)
+
+  Status `404`
+
+  ## Allocataire non trouvé
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "DUBOCHE",
+    "prenoms": [
+      "JEROME"
+    ],
+    "anneeDateDaissance": 2002,
+    "moisDateDaissance": 12,
+    "jourDateDaissance": 5,
+    "codeCogInseeCommuneNaissance": "08480",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "M"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "37003",
+        "title": "Entité non trouvée",
+        "detail": "Dossier allocataire inexistant. Le document ne peut être édité.",
+        "source": null,
+        "meta": {
+          "provider": "CNAV"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/revenu_solidarite_active/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [fake_france_connect_cnaf.yml](fake_france_connect_cnaf.yml)
 
   Status `200`
@@ -16,6 +74,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
       "Georges"
     ],
     "nomNaissance": "CNAF",
+    "nomUsage": "MARTIN",
     "anneeDateNaissance": 2002,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,

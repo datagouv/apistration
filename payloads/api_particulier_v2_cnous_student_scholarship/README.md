@@ -247,11 +247,9 @@
   {
     "given_name": "Jean",
     "family_name": "MARTIN",
-    "birthdate": "2001-01-01",
-    "gender": "male",
-    "birthplace": "75002",
-    "birthcountry": "99100",
-    "preferred_username": "jmartin_cnous"
+    "birthdate": "01/01/2001",
+    "gender": "M",
+    "birthplace": "75002"
   }
   ```
 

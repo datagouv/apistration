@@ -1,4 +1,53 @@
 # [FranceConnect] Statut étudiant
+* [404.yaml](404.yaml)
+
+  Status `404`
+
+  Étudiant non trouvé
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "NOEL"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "25003",
+        "title": "Entité non trouvée",
+        "detail": "Aucun étudiant n'a pu être trouvé avec les critères de recherche fournis.",
+        "source": null,
+        "meta": {
+          "provider": "MESRI"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [fake_france_connect_mesri_with.yml](fake_france_connect_mesri_with.yml)
 
   Status `200`

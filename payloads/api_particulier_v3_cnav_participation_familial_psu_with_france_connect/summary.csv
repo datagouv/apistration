@@ -1,4 +1,17 @@
 Titre,Description,Paramètres,Status,Réponse
+,Dossier non trouvé,"{""nomNaissance"":""LEFEBVRE"",""codeCogInseeCommuneNaissance"":""00404"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""F""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""37003"",
+      ""title"": ""Dossier allocataire absent CNAV"",
+      ""detail"": ""Le dossier allocataire n'a pas été trouvé auprès de la CNAV."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"
 ,"Cas de test pour QFv2 avec jeton FranceConnect.
 Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_qfv2.yml).
 L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":[""Georges""],""nomNaissance"":""CNAF"",""nomUsage"":""MARTIN"",""anneeDateNaissance"":2002,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75002"",""codeCogInseePaysNaissance"":""99100""}",200,"{

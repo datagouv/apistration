@@ -1,4 +1,55 @@
 # [Identité] Statut étudiant
+* [404.yaml](404.yaml)
+
+  Status `404`
+
+  Étudiant non trouvé
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567404G"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "25003",
+        "title": "Entité non trouvée",
+        "detail": "Aucun étudiant n'a pu être trouvé avec les critères de recherche fournis.",
+        "source": null,
+        "meta": {
+          "provider": "MESRI"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'ine=1234567404G' \
+    --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
+  ```
+
+  </p>
+  </details>
 * [civility_etudiant_admis.yml](civility_etudiant_admis.yml)
 
   Status `200`

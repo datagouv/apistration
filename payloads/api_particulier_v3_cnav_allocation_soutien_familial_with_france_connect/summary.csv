@@ -1,7 +1,20 @@
 Titre,Description,Paramètres,Status,Réponse
+,## Allocataire non trouvé,"{""nomNaissance"":""DUBOCHE"",""prenoms"":[""JEROME""],""anneeDateNaissance"":2002,""moisDateNaissance"":12,""jourDateNaissance"":5,""codeCogInseeCommuneNaissance"":""08480"",""codeCogInseePaysNaissance"":""99100"",""sexeEtatCivil"":""M""}",404,"{
+  ""errors"": [
+    {
+      ""code"": ""37003"",
+      ""title"": ""Entité non trouvée"",
+      ""detail"": ""Dossier allocataire inexistant. Le document ne peut être édité."",
+      ""source"": null,
+      ""meta"": {
+        ""provider"": ""CNAV""
+      }
+    }
+  ]
+}"
 ,"Cas de test avec jeton FranceConnect.
 Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_css.yml).
-L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":[""Georges""],""nomNaissance"":""CNAF"",""anneeDateNaissance"":2002,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75002"",""codeCogInseePaysNaissance"":""99100""}",200,"{
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":[""Georges""],""nomNaissance"":""CNAF"",""nomUsage"":""MARTIN"",""anneeDateNaissance"":2002,""moisDateNaissance"":1,""jourDateNaissance"":1,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75002"",""codeCogInseePaysNaissance"":""99100""}",200,"{
   ""data"": {
     ""est_beneficiaire"": true,
     ""date_debut_droit"": ""2021-05-05""

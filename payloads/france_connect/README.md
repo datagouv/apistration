@@ -6,6 +6,76 @@ fournisseurs de données dans le cadre des API FranceConnectés.
 
 Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
+* [all_cnav.yml](all_cnav.yml)
+
+  Status `200`
+
+  Réponse FranceConnect permettant de déclencher l'ensemble des réponses aux api de la cnav
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "token": "all_cnav"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "scope": [
+      "openid",
+      "identite_pivot",
+      "revenu_solidarite_active",
+      "revenu_solidarite_active_majoration",
+      "prime_activite",
+      "prime_activite_majoration",
+      "allocation_soutien_familial",
+      "allocation_adulte_handicape",
+      "complementaire_sante_solidaire",
+      "cnaf_quotient_familial",
+      "cnaf_allocataires",
+      "cnaf_enfants",
+      "cnaf_adresse",
+      "psu_allocataires",
+      "psu_enfants",
+      "psu_adresse",
+      "psu_parametres_calcul_psu"
+    ],
+    "client": {
+      "client_id": "client_id",
+      "client_name": "client_name"
+    },
+    "identity": {
+      "given_name": "Georges",
+      "family_name": "CNAF",
+      "birthdate": "2002-01-01",
+      "gender": "male",
+      "birthplace": "75002",
+      "birthcountry": "99100",
+      "preferred_username": "MARTIN"
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer all_cnav" --url "https://staging.particulier.api.gouv.fr/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [cnaf_css.yml](cnaf_css.yml)
 
   Status `200`

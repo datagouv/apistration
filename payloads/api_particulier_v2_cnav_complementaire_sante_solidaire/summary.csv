@@ -387,7 +387,7 @@ Ce cas permet de tester :
 }"
 ,"Cas de test pour CSS avec jeton FranceConnect.
 Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_css.yml).
-L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":[""Georges""],""nomNaissance"":""CNAF"",""anneeDateDeNaissance"":2002,""moisDateDeNaissance"":1,""jourDateDeNaissance"":1,""sexe"":""M"",""codeInseeLieuDeNaissance"":""75002"",""codePaysLieuDeNaissance"":""99100""}",200,"{
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms"":[""Georges""],""nomUsage"":""MARTIN"",""nomNaissance"":""CNAF"",""anneeDateDeNaissance"":2002,""moisDateDeNaissance"":1,""jourDateDeNaissance"":1,""sexe"":""M"",""codeInseeLieuDeNaissance"":""75002"",""codePaysLieuDeNaissance"":""99100""}",200,"{
   ""status"": ""beneficiaire_sans_participation_financiere"",
   ""dateDebut"": ""2021-05-05"",
   ""dateFin"": null

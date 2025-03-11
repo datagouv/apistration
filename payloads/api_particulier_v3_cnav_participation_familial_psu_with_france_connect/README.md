@@ -1,4 +1,56 @@
 # [FranceConnect] API Prestation de service unique (PSU)
+* [404.yaml](404.yaml)
+
+  Status `404`
+
+  Dossier non trouvé
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "LEFEBVRE",
+    "codeCogInseeCommuneNaissance": "00404",
+    "codeCogInseePaysNaissance": "99100",
+    "sexeEtatCivil": "F"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "37003",
+        "title": "Dossier allocataire absent CNAV",
+        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAV.",
+        "source": null,
+        "meta": {
+          "provider": "CNAV"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familial_psu/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [fake_france_connect_cnaf.yml](fake_france_connect_cnaf.yml)
 
   Status `200`
