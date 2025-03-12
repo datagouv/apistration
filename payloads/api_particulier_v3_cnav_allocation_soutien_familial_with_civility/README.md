@@ -50,8 +50,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=LALANNE' -d 'prenoms[]=FRANCIS' -d 'prenoms[]=GERARD' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=11' -d 'jourDateNaissance=1' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=LALANNE' -d 'prenoms[]=FRANCIS' -d 'prenoms[]=GERARD' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=11' -d 'jourDateNaissance=1' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_soutien_familial/identite"
   ```
 
@@ -108,8 +108,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=DEPARDIEU' -d 'nomNaissance=BERGERAC' -d 'prenoms[]=CYRANO' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=11' -d 'jourDateNaissance=1' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomUsage=DEPARDIEU' -d 'nomNaissance=BERGERAC' -d 'prenoms[]=CYRANO' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=11' -d 'jourDateNaissance=1' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_soutien_familial/identite"
   ```
 
@@ -168,8 +168,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=DUBOCHE' -d 'prenoms[]=JEROME' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DUBOCHE' -d 'prenoms[]=JEROME' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_soutien_familial/identite"
   ```
 
@@ -227,8 +227,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=DESFOUIN' -d 'prenoms[]=Ren%C3%A9' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DESFOUIN' -d 'prenoms[]=Ren%C3%A9' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_soutien_familial/identite"
   ```
 
@@ -287,8 +287,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=DELANOUE' -d 'prenoms[]=Jean-Marie' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DELANOUE' -d 'prenoms[]=Jean-Marie' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_soutien_familial/identite"
   ```
 
@@ -347,8 +347,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=SITUDI' -d 'prenoms[]=Cl%C3%A9ment' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=SITUDI' -d 'prenoms[]=Cl%C3%A9ment' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/allocation_soutien_familial/identite"
   ```
 

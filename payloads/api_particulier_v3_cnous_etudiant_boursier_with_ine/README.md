@@ -43,8 +43,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=NOEL' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=NOEL' \
     --url "https://staging.particulier.api.gouv.fr/v3/cnous/etudiant_boursier/ine"
   ```
 
@@ -112,8 +112,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=1234567890A' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567890A' \
     --url "https://staging.particulier.api.gouv.fr/v3/cnous/etudiant_boursier/ine"
   ```
 
@@ -181,8 +181,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=1234567890B' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567890B' \
     --url "https://staging.particulier.api.gouv.fr/v3/cnous/etudiant_boursier/ine"
   ```
 
@@ -250,8 +250,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=1234567890C' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567890C' \
     --url "https://staging.particulier.api.gouv.fr/v3/cnous/etudiant_boursier/ine"
   ```
 
@@ -319,8 +319,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=1234567890D' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567890D' \
     --url "https://staging.particulier.api.gouv.fr/v3/cnous/etudiant_boursier/ine"
   ```
 

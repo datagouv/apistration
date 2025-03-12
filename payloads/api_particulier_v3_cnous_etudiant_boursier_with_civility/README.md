@@ -43,8 +43,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=NOEL' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=NOEL' \
     --url "https://staging.particulier.api.gouv.fr/v3/cnous/etudiant_boursier/identite"
   ```
 
@@ -118,8 +118,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=Pagnol' -d 'prenoms=Marcel' -d 'anneeDateNaissance=1998' -d 'moisDateNaissance=7' -d 'jourDateNaissance=12' -d 'codeCogInseeCommuneNaissance=75000' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Pagnol' -d 'prenoms=Marcel' -d 'anneeDateNaissance=1998' -d 'moisDateNaissance=7' -d 'jourDateNaissance=12' -d 'codeCogInseeCommuneNaissance=75000' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/cnous/etudiant_boursier/identite"
   ```
 

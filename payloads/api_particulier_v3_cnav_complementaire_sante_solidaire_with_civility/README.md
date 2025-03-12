@@ -56,8 +56,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' -d 'nomNaissance=DUPONT' -d 'prenoms[]=JEANNE' -d 'prenoms[]=LAURE' -d 'anneeDateNaissance=1993' -d 'moisDateNaissance=8' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' -d 'nomNaissance=DUPONT' -d 'prenoms[]=JEANNE' -d 'prenoms[]=LAURE' -d 'anneeDateNaissance=1993' -d 'moisDateNaissance=8' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
@@ -120,8 +120,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'codeCogInseeCommuneNaissance=08481' -d 'codeCogInseePaysNaissance=99127' -d 'sexeEtatCivil=M' -d 'nomNaissance=DUPONT' -d 'prenoms[]=PIERRE' -d 'prenoms[]=PAUL' -d 'anneeDateNaissance=1984' -d 'moisDateNaissance=12' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=08481' -d 'codeCogInseePaysNaissance=99127' -d 'sexeEtatCivil=M' -d 'nomNaissance=DUPONT' -d 'prenoms[]=PIERRE' -d 'prenoms[]=PAUL' -d 'anneeDateNaissance=1984' -d 'moisDateNaissance=12' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
@@ -182,8 +182,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=DUPONT' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=1966' -d 'moisDateNaissance=6' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' -d 'nomNaissance=DUPONT' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=1966' -d 'moisDateNaissance=6' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
@@ -242,8 +242,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=DUBOCHE' -d 'prenoms[]=JEROME' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DUBOCHE' -d 'prenoms[]=JEROME' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
@@ -301,8 +301,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=DESFOUIN' -d 'prenoms[]=Ren%C3%A9' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DESFOUIN' -d 'prenoms[]=Ren%C3%A9' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
@@ -361,8 +361,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=DELANOUE' -d 'prenoms[]=Jean-Marie' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DELANOUE' -d 'prenoms[]=Jean-Marie' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
@@ -421,8 +421,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=SITUDI' -d 'prenoms[]=Cl%C3%A9ment' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=SITUDI' -d 'prenoms[]=Cl%C3%A9ment' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
@@ -488,8 +488,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=PLUSSE' -d 'nomNaissance=GERVINAT' -d 'prenoms[]=MADELEINE' -d 'prenoms[]=LEA' -d 'anneeDateNaissance=1976' -d 'moisDateNaissance=8' -d 'jourDateNaissance=24' -d 'codeCogInseePaysNaissance=99131' -d 'sexeEtatCivil=F' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomUsage=PLUSSE' -d 'nomNaissance=GERVINAT' -d 'prenoms[]=MADELEINE' -d 'prenoms[]=LEA' -d 'anneeDateNaissance=1976' -d 'moisDateNaissance=8' -d 'jourDateNaissance=24' -d 'codeCogInseePaysNaissance=99131' -d 'sexeEtatCivil=F' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
@@ -554,8 +554,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=MIREL' -d 'nomNaissance=VAUBAN' -d 'prenoms[]=VICTOIRE' -d 'anneeDateNaissance=1966' -d 'moisDateNaissance=3' -d 'jourDateNaissance=5' -d 'codeCogInseePaysNaissance=99216' -d 'sexeEtatCivil=F' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomUsage=MIREL' -d 'nomNaissance=VAUBAN' -d 'prenoms[]=VICTOIRE' -d 'anneeDateNaissance=1966' -d 'moisDateNaissance=3' -d 'jourDateNaissance=5' -d 'codeCogInseePaysNaissance=99216' -d 'sexeEtatCivil=F' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
@@ -622,8 +622,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=DUPUIS' -d 'nomNaissance=CARTIER' -d 'prenoms[]=CELINE' -d 'prenoms[]=MARIE' -d 'anneeDateNaissance=1980' -d 'moisDateNaissance=10' -d 'jourDateNaissance=10' -d 'codeCogInseeCommuneNaissance=75056' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomUsage=DUPUIS' -d 'nomNaissance=CARTIER' -d 'prenoms[]=CELINE' -d 'prenoms[]=MARIE' -d 'anneeDateNaissance=1980' -d 'moisDateNaissance=10' -d 'jourDateNaissance=10' -d 'codeCogInseeCommuneNaissance=75056' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
@@ -691,8 +691,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=LEDIEU' -d 'nomNaissance=FALLENDE' -d 'prenoms[]=PIERRE' -d 'prenoms[]=GAUTIER' -d 'prenoms[]=HARRY' -d 'anneeNateNaissance=1950' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'codeCogInseeCommuneNaissance=44109' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomUsage=LEDIEU' -d 'nomNaissance=FALLENDE' -d 'prenoms[]=PIERRE' -d 'prenoms[]=GAUTIER' -d 'prenoms[]=HARRY' -d 'anneeNateNaissance=1950' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'codeCogInseeCommuneNaissance=44109' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
@@ -758,8 +758,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=HUSTER' -d 'nomNaissance=BOISSON' -d 'prenoms[]=FRANCIS' -d 'anneeDateNaissance=1978' -d 'moisDateNaissance=4' -d 'jourDateNaissance=4' -d 'codeCogInseeCommuneNaissance=44109' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomUsage=HUSTER' -d 'nomNaissance=BOISSON' -d 'prenoms[]=FRANCIS' -d 'anneeDateNaissance=1978' -d 'moisDateNaissance=4' -d 'jourDateNaissance=4' -d 'codeCogInseeCommuneNaissance=44109' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
@@ -824,8 +824,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=TRIMARD' -d 'prenoms[]=FAYCAL' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=9' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=44109' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=TRIMARD' -d 'prenoms[]=FAYCAL' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=9' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=44109' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
@@ -890,8 +890,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=DEVRED' -d 'prenoms[]=MARC' -d 'anneeDateNaissance=1988' -d 'moisDateNaissance=7' -d 'jourDateNaissance=13' -d 'codeCogInseeCommuneNaissance=44109' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DEVRED' -d 'prenoms[]=MARC' -d 'anneeDateNaissance=1988' -d 'moisDateNaissance=7' -d 'jourDateNaissance=13' -d 'codeCogInseeCommuneNaissance=44109' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
@@ -955,8 +955,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=RECETTECOMMUNAUTAIRE' -d 'prenoms[]=LEON' -d 'anneeDateNaissance=1968' -d 'moisDateNaissance=4' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=44109' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=RECETTECOMMUNAUTAIRE' -d 'prenoms[]=LEON' -d 'anneeDateNaissance=1968' -d 'moisDateNaissance=4' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=44109' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
@@ -1023,8 +1023,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=MOLIERE' -d 'nomNaissance=POQUELIN' -d 'prenoms[]=JEAN' -d 'prenoms[]=BAPTISTE' -d 'anneeDateNaissance=1973' -d 'moisDateNaissance=2' -d 'jourDateNaissance=17' -d 'codeCogInseeCommuneNaissance=44109' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomUsage=MOLIERE' -d 'nomNaissance=POQUELIN' -d 'prenoms[]=JEAN' -d 'prenoms[]=BAPTISTE' -d 'anneeDateNaissance=1973' -d 'moisDateNaissance=2' -d 'jourDateNaissance=17' -d 'codeCogInseeCommuneNaissance=44109' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
@@ -1090,8 +1090,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=GARE' -d 'nomNaissance=GEANT' -d 'prenoms[]=GARY' -d 'anneeDateNaissance=1950' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'codeCogInseeCommuneNaissance=44109' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomUsage=GARE' -d 'nomNaissance=GEANT' -d 'prenoms[]=GARY' -d 'anneeDateNaissance=1950' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'codeCogInseeCommuneNaissance=44109' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
@@ -1158,8 +1158,8 @@ Ce cas permet de tester :
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomUsage=VERTIN' -d 'nomNaissance=HUBOT' -d 'prenoms[]=PIERRE-MARIE' -d 'prenoms[]=JEREMY' -d 'anneeDateNaissance=1968' -d 'moisDateNaissance=11' -d 'jourDateNaissance=15' -d 'codeCogInseeCommuneNaissance=33063' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomUsage=VERTIN' -d 'nomNaissance=HUBOT' -d 'prenoms[]=PIERRE-MARIE' -d 'prenoms[]=JEREMY' -d 'anneeDateNaissance=1968' -d 'moisDateNaissance=11' -d 'jourDateNaissance=15' -d 'codeCogInseeCommuneNaissance=33063' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/dss/complementaire_sante_solidaire/identite"
   ```
 
