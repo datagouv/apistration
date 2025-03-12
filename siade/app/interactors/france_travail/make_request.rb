@@ -1,8 +1,12 @@
 module FranceTravail::MakeRequest
-  def mocking_params_v2
+  def mocking_params
     {
       identifiant:
     }
+  end
+
+  def mocking_params_v2
+    mocking_params
   end
 
   def extra_headers(request)
