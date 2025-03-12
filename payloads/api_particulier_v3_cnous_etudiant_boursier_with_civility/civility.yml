@@ -2,7 +2,8 @@
 description: 'Boursier échelon 5'
 params:
   nomNaissance: 'Pagnol'
-  prenoms: 'Marcel'
+  prenoms: 
+    - 'Marcel'
   anneeDateNaissance: 1998
   moisDateNaissance: 7
   jourDateNaissance: 12

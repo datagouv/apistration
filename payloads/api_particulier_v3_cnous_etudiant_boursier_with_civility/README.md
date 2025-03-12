@@ -62,7 +62,9 @@
   ```json
   {
     "nomNaissance": "Pagnol",
-    "prenoms": "Marcel",
+    "prenoms": [
+      "Marcel"
+    ],
     "anneeDateNaissance": 1998,
     "moisDateNaissance": 7,
     "jourDateNaissance": 12,
@@ -119,7 +121,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Pagnol' -d 'prenoms=Marcel' -d 'anneeDateNaissance=1998' -d 'moisDateNaissance=7' -d 'jourDateNaissance=12' -d 'codeCogInseeCommuneNaissance=75000' -d 'sexeEtatCivil=M' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Pagnol' -d 'prenoms[]=Marcel' -d 'anneeDateNaissance=1998' -d 'moisDateNaissance=7' -d 'jourDateNaissance=12' -d 'codeCogInseeCommuneNaissance=75000' -d 'sexeEtatCivil=M' \
     --url "https://staging.particulier.api.gouv.fr/v3/cnous/etudiant_boursier/identite"
   ```
 
