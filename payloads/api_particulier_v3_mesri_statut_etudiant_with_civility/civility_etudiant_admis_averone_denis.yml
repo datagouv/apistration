@@ -2,7 +2,8 @@
 description: 'Étudiant admis'
 params:
   nomNaissance: "Avérone"
-  prenom: "Denis"
+  prenoms: 
+  - "Denis"
   anneeDateNaissance: 2005
   moisDateNaissance: 8
   jourDateNaissance: 1

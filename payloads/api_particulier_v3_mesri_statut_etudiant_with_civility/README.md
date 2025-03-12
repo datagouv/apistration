@@ -62,7 +62,9 @@
   ```json
   {
     "nomNaissance": "MELINARD",
-    "prenom": "PATRICK",
+    "prenoms": [
+      "PATRICK"
+    ],
     "anneeDateNaissance": 1990,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
@@ -117,7 +119,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=MELINARD' -d 'prenom=PATRICK' -d 'anneeDateNaissance=1990' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78000' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MELINARD' -d 'prenoms[]=PATRICK' -d 'anneeDateNaissance=1990' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78000' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -135,7 +137,9 @@
   ```json
   {
     "nomNaissance": "Avérone",
-    "prenom": "Denis",
+    "prenoms": [
+      "Denis"
+    ],
     "anneeDateNaissance": 2005,
     "moisDateNaissance": 8,
     "jourDateNaissance": 1,
@@ -190,7 +194,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=Av%C3%A9rone' -d 'prenom=Denis' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=8' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78646' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Av%C3%A9rone' -d 'prenoms[]=Denis' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=8' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78646' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -208,7 +212,9 @@
   ```json
   {
     "nomNaissance": "SOULI",
-    "prenom": "Walid",
+    "prenoms": [
+      "Walid"
+    ],
     "anneeDateNaissance": 1998,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
@@ -263,7 +269,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=SOULI' -d 'prenom=Walid' -d 'anneeDateNaissance=1998' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78000' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=SOULI' -d 'prenoms[]=Walid' -d 'anneeDateNaissance=1998' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78000' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -281,7 +287,9 @@
   ```json
   {
     "nomNaissance": "CALIDONE",
-    "prenom": "Lola",
+    "prenoms": [
+      "Lola"
+    ],
     "anneeDateNaissance": 2005,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
@@ -336,7 +344,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=CALIDONE' -d 'prenom=Lola' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=CALIDONE' -d 'prenoms[]=Lola' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -354,7 +362,9 @@
   ```json
   {
     "nomNaissance": "MARTIN",
-    "prenom": "Jacques",
+    "prenoms": [
+      "Jacques"
+    ],
     "anneeDateNaissance": 2004,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
@@ -409,7 +419,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=MARTIN' -d 'prenom=Jacques' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75102' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MARTIN' -d 'prenoms[]=Jacques' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75102' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -427,7 +437,9 @@
   ```json
   {
     "nomNaissance": "SOULI",
-    "prenom": "Asma",
+    "prenoms": [
+      "Asma"
+    ],
     "anneeDateNaissance": 2002,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
@@ -482,7 +494,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=SOULI' -d 'prenom=Asma' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75002' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=SOULI' -d 'prenoms[]=Asma' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75002' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -500,7 +512,9 @@
   ```json
   {
     "nomNaissance": "BRETAGNE",
-    "prenom": "Lisa",
+    "prenoms": [
+      "Lisa"
+    ],
     "anneeDateNaissance": 2005,
     "moisDateNaissance": 6,
     "jourDateNaissance": 1,
@@ -555,7 +569,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=BRETAGNE' -d 'prenom=Lisa' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=6' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=93008' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=BRETAGNE' -d 'prenoms[]=Lisa' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=6' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=93008' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -573,7 +587,9 @@
   ```json
   {
     "nomNaissance": "JUIN",
-    "prenom": "Romuald",
+    "prenoms": [
+      "Romuald"
+    ],
     "anneeDateNaissance": 2005,
     "moisDateNaissance": 6,
     "jourDateNaissance": 15,
@@ -628,7 +644,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=JUIN' -d 'prenom=Romuald' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=6' -d 'jourDateNaissance=15' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75115' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=JUIN' -d 'prenoms[]=Romuald' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=6' -d 'jourDateNaissance=15' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75115' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -646,7 +662,9 @@
   ```json
   {
     "nomNaissance": "AUVERNE",
-    "prenom": "Luc",
+    "prenoms": [
+      "Luc"
+    ],
     "anneeDateNaissance": 2006,
     "moisDateNaissance": 2,
     "jourDateNaissance": 1,
@@ -701,7 +719,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=AUVERNE' -d 'prenom=Luc' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=2' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=95018' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=AUVERNE' -d 'prenoms[]=Luc' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=2' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=95018' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -719,7 +737,9 @@
   ```json
   {
     "nomNaissance": "JUIN",
-    "prenom": "Esmeralda",
+    "prenoms": [
+      "Esmeralda"
+    ],
     "anneeDateNaissance": 2000,
     "moisDateNaissance": 12,
     "jourDateNaissance": 24,
@@ -774,7 +794,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=JUIN' -d 'prenom=Esmeralda' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=24' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75113' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=JUIN' -d 'prenoms[]=Esmeralda' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=24' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75113' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -792,7 +812,9 @@
   ```json
   {
     "nomNaissance": "BECKER",
-    "prenom": "VALIRIANNE",
+    "prenoms": [
+      "VALIRIANNE"
+    ],
     "anneeDateNaissance": 2000,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
@@ -847,7 +869,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=BECKER' -d 'prenom=VALIRIANNE' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=BECKER' -d 'prenoms[]=VALIRIANNE' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -865,7 +887,9 @@
   ```json
   {
     "nomNaissance": "CLERMONT",
-    "prenom": "Louis",
+    "prenoms": [
+      "Louis"
+    ],
     "anneeDateNaissance": 2000,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
@@ -920,7 +944,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=CLERMONT' -d 'prenom=Louis' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78646' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=CLERMONT' -d 'prenoms[]=Louis' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78646' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -938,7 +962,9 @@
   ```json
   {
     "nomNaissance": "IBARRA",
-    "prenom": "JENNYFER",
+    "prenoms": [
+      "JENNYFER"
+    ],
     "anneeDateNaissance": 2004,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
@@ -993,7 +1019,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=IBARRA' -d 'prenom=JENNYFER' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=IBARRA' -d 'prenoms[]=JENNYFER' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -1011,7 +1037,9 @@
   ```json
   {
     "nomNaissance": "IZAK",
-    "prenom": "John",
+    "prenoms": [
+      "John"
+    ],
     "anneeDateNaissance": 2000,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
@@ -1066,7 +1094,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=IZAK' -d 'prenom=John' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75109' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=IZAK' -d 'prenoms[]=John' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75109' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -1084,7 +1112,9 @@
   ```json
   {
     "nomNaissance": "LETERIEN",
-    "prenom": "Clémentine",
+    "prenoms": [
+      "Clémentine"
+    ],
     "anneeDateNaissance": 2000,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
@@ -1139,7 +1169,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=LETERIEN' -d 'prenom=Cl%C3%A9mentine' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=99404' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=LETERIEN' -d 'prenoms[]=Cl%C3%A9mentine' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=99404' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -1157,7 +1187,9 @@
   ```json
   {
     "nomNaissance": "DE JEAN",
-    "prenom": "LUC",
+    "prenoms": [
+      "LUC"
+    ],
     "anneeDateNaissance": 2000,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
@@ -1212,7 +1244,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=DE+JEAN' -d 'prenom=LUC' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=99352' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DE+JEAN' -d 'prenoms[]=LUC' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=99352' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -1230,7 +1262,9 @@
   ```json
   {
     "nomNaissance": "MAYVILLE",
-    "prenom": "TINA",
+    "prenoms": [
+      "TINA"
+    ],
     "anneeDateNaissance": 2000,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
@@ -1285,7 +1319,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=MAYVILLE' -d 'prenom=TINA' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MAYVILLE' -d 'prenoms[]=TINA' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -1303,7 +1337,9 @@
   ```json
   {
     "nomNaissance": "MEDIZ",
-    "prenom": "Louis",
+    "prenoms": [
+      "Louis"
+    ],
     "anneeDateNaissance": 2000,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
@@ -1358,7 +1394,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=MEDIZ' -d 'prenom=Louis' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75109' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MEDIZ' -d 'prenoms[]=Louis' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75109' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -1376,7 +1412,9 @@
   ```json
   {
     "nomNaissance": "MONT-PARRAIN",
-    "prenom": "Lisa",
+    "prenoms": [
+      "Lisa"
+    ],
     "anneeDateNaissance": 2000,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
@@ -1431,7 +1469,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=MONT-PARRAIN' -d 'prenom=Lisa' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=99109' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MONT-PARRAIN' -d 'prenoms[]=Lisa' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=99109' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -1449,7 +1487,9 @@
   ```json
   {
     "nomNaissance": "YOLAN",
-    "prenom": "JOHN",
+    "prenoms": [
+      "JOHN"
+    ],
     "anneeDateNaissance": 2007,
     "moisDateNaissance": 1,
     "jourDateNaissance": 1,
@@ -1504,7 +1544,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=YOLAN' -d 'prenom=JOHN' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=YOLAN' -d 'prenoms[]=JOHN' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -1522,7 +1562,9 @@
   ```json
   {
     "nomNaissance": "COLONEL",
-    "prenom": "Jean",
+    "prenoms": [
+      "Jean"
+    ],
     "anneeDateNaissance": 2005,
     "moisDateNaissance": 8,
     "jourDateNaissance": 1,
@@ -1577,7 +1619,7 @@
 
   ```bash
   curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=COLONEL' -d 'prenom=Jean' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=8' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78646' \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=COLONEL' -d 'prenoms[]=Jean' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=8' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78646' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 

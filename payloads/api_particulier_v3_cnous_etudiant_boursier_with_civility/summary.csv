@@ -12,7 +12,7 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
-,Boursier échelon 5,"{""nomNaissance"":""Pagnol"",""prenoms"":""Marcel"",""anneeDateNaissance"":1998,""moisDateNaissance"":7,""jourDateNaissance"":12,""codeCogInseeCommuneNaissance"":""75000"",""sexeEtatCivil"":""M""}",200,"{
+,Boursier échelon 5,"{""nomNaissance"":""Pagnol"",""prenoms"":[""Marcel""],""anneeDateNaissance"":1998,""moisDateNaissance"":7,""jourDateNaissance"":12,""codeCogInseeCommuneNaissance"":""75000"",""sexeEtatCivil"":""M""}",200,"{
   ""data"": {
     ""est_boursier"": true,
     ""periode_versement_bourse"": {

@@ -2,7 +2,8 @@
 description : Étudiant inscrit 2022
 params :
   nomNaissance: "SOULI"
-  prenom: "Asma"
+  prenoms: 
+  - "Asma"
   anneeDateNaissance: 2002
   moisDateNaissance: 1
   jourDateNaissance: 1
