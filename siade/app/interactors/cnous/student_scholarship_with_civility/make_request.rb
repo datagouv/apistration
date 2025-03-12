@@ -16,7 +16,7 @@ class CNOUS::StudentScholarshipWithCivility::MakeRequest < MakeRequest::Post
   def mocking_params
     {
       nomNaissance: nom_naissance,
-      prenoms:,
+      prenoms: context.params[:prenoms],
       anneeDateNaissance: year,
       moisDateNaissance: month,
       jourDateNaissance: day,
