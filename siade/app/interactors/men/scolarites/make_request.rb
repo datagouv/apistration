@@ -25,7 +25,7 @@ class MEN::Scolarites::MakeRequest < MakeRequest::Get
   def mocking_params
     {
       nomNaissance: context.params[:nom_naissance],
-      prenoms: prenom,
+      prenoms: context.params[:prenoms],
       sexeEtatCivil: context.params[:sexe_etat_civil].downcase,
       anneeDateNaissance: context.params[:annee_date_naissance],
       moisDateNaissance: context.params[:mois_date_naissance],
