@@ -2,7 +2,8 @@
 description: 'Étudiant inscrit'
 params:
   nomNaissance: "JUIN"
-  prenom: "Romuald"
+  prenoms: 
+  - "Romuald"
   anneeDateNaissance: 2005
   moisDateNaissance: 6
   jourDateNaissance: 15

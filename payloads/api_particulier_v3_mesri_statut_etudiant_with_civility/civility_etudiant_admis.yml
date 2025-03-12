@@ -2,7 +2,8 @@
 description : Étudiant ADMIS 
 params :
   nomNaissance: "MELINARD"
-  prenom: "PATRICK"
+  prenoms: 
+  - "PATRICK"
   anneeDateNaissance: 1990
   moisDateNaissance: 1
   jourDateNaissance: 1
