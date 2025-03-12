@@ -15,7 +15,7 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
   def mocking_params
     {
       nomNaissance: nom_naissance,
-      prenom:,
+      prenoms: context.params[:prenoms],
       anneeDateNaissance: context.params[:annee_date_naissance].to_i,
       moisDateNaissance: context.params[:mois_date_naissance].to_i,
       jourDateNaissance: context.params[:jour_date_naissance].to_i,
@@ -38,7 +38,7 @@ class MESRI::StudentStatus::WithCivility::MakeRequest < MakeRequest::Post
   def civility_mocking_params
     {
       nom: nom_naissance,
-      prenoms: context.params[:prenoms],
+      prenom:,
       dateDeNaissance: date_naissance,
       lieuDeNaissance: code_cog_insee_commune_naissance,
       sexe: sexe_etat_civil
