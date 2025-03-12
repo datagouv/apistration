@@ -19,6 +19,11 @@ production: &shared
     from_hour: '23:00'
     to_hour: '23h45'
     day: 'sunday'
+  'GIP-MDS':
+    dates:
+      - day: '2025-03-20'
+        from_hour: '13:00'
+        to_hour: '17:00'
 
 sandbox: *shared
 staging: *shared
