@@ -117,6 +117,8 @@ class GeneratePayloadReadme
       'france_connect'
     when payload_path.include?('api_entreprise')
       'api_entreprise'
+    when payload_path.include?('api_particulier_v2')
+      'api_particulier_v2'
     when payload_path.include?('api_particulier')
       'api_particulier'
     else

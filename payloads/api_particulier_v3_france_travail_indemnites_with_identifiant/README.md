@@ -55,8 +55,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'identifiant=default' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'identifiant=default' \
     --url "https://staging.particulier.api.gouv.fr/v3/france_travail/indemnites/identifiant"
   ```
 
@@ -106,8 +106,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'identifiant=inconnu' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'identifiant=inconnu' \
     --url "https://staging.particulier.api.gouv.fr/v3/france_travail/indemnites/identifiant"
   ```
 

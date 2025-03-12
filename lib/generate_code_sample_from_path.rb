@@ -10,6 +10,8 @@ class GenerateCodeSampleFromPath
   def perform
     if api_kind == 'api_entreprise'
       api_entreprise_curl
+    elsif api_kind == 'api_particulier_v2'
+      api_particulier_v2_curl
     elsif api_kind == 'api_particulier'
       api_particulier_curl
     elsif api_kind == 'france_connect'
@@ -30,6 +32,12 @@ class GenerateCodeSampleFromPath
   end
 
   def api_particulier_curl
+    "curl -H \"Authorization: Bearer $token\" \\\n" \
+      "  -G #{build_curl_query_params(api_particulier_default_query_params.merge(params))} \\\n" \
+      "  --url \"https://staging.particulier.api.gouv.fr#{interpolated_path}\""
+  end
+
+  def api_particulier_v2_curl
     "curl -H \"X-Api-Key: $token\" \\\n" \
       "  -G #{build_curl_query_params(params)} \\\n" \
       "  --url \"https://staging.particulier.api.gouv.fr#{interpolated_path}\""
@@ -62,6 +70,12 @@ class GenerateCodeSampleFromPath
       recipient: '10000001700010',
       context: 'Contexte de la requête',
       object: 'Objet de la requête',
+    }
+  end
+
+  def api_particulier_default_query_params
+    {
+      recipient: '13002526500013'
     }
   end
 end

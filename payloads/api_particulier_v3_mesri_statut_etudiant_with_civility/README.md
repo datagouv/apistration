@@ -43,8 +43,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=1234567404G' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567404G' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -116,8 +116,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=MELINARD' -d 'prenom=PATRICK' -d 'anneeDateNaissance=1990' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78000' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MELINARD' -d 'prenom=PATRICK' -d 'anneeDateNaissance=1990' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78000' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -189,8 +189,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=Av%C3%A9rone' -d 'prenom=Denis' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=8' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78646' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Av%C3%A9rone' -d 'prenom=Denis' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=8' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78646' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -262,8 +262,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=SOULI' -d 'prenom=Walid' -d 'anneeDateNaissance=1998' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78000' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=SOULI' -d 'prenom=Walid' -d 'anneeDateNaissance=1998' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78000' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -335,8 +335,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=CALIDONE' -d 'prenom=Lola' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=CALIDONE' -d 'prenom=Lola' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -408,8 +408,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=MARTIN' -d 'prenom=Jacques' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75102' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MARTIN' -d 'prenom=Jacques' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75102' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -481,8 +481,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=SOULI' -d 'prenom=Asma' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75002' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=SOULI' -d 'prenom=Asma' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75002' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -554,8 +554,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=BRETAGNE' -d 'prenom=Lisa' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=6' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=93008' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=BRETAGNE' -d 'prenom=Lisa' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=6' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=93008' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -627,8 +627,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=JUIN' -d 'prenom=Romuald' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=6' -d 'jourDateNaissance=15' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75115' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=JUIN' -d 'prenom=Romuald' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=6' -d 'jourDateNaissance=15' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75115' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -700,8 +700,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=AUVERNE' -d 'prenom=Luc' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=2' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=95018' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=AUVERNE' -d 'prenom=Luc' -d 'anneeDateNaissance=2006' -d 'moisDateNaissance=2' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=95018' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -773,8 +773,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=JUIN' -d 'prenom=Esmeralda' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=24' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75113' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=JUIN' -d 'prenom=Esmeralda' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=12' -d 'jourDateNaissance=24' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75113' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -846,8 +846,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=BECKER' -d 'prenom=VALIRIANNE' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=BECKER' -d 'prenom=VALIRIANNE' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -919,8 +919,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=CLERMONT' -d 'prenom=Louis' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78646' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=CLERMONT' -d 'prenom=Louis' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78646' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -992,8 +992,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=IBARRA' -d 'prenom=JENNYFER' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=IBARRA' -d 'prenom=JENNYFER' -d 'anneeDateNaissance=2004' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -1065,8 +1065,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=IZAK' -d 'prenom=John' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75109' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=IZAK' -d 'prenom=John' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75109' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -1138,8 +1138,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=LETERIEN' -d 'prenom=Cl%C3%A9mentine' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=99404' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=LETERIEN' -d 'prenom=Cl%C3%A9mentine' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=99404' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -1211,8 +1211,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=DE+JEAN' -d 'prenom=LUC' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=99352' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=DE+JEAN' -d 'prenom=LUC' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=99352' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -1284,8 +1284,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=MAYVILLE' -d 'prenom=TINA' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MAYVILLE' -d 'prenom=TINA' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -1357,8 +1357,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=MEDIZ' -d 'prenom=Louis' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75109' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MEDIZ' -d 'prenom=Louis' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=75109' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -1430,8 +1430,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=MONT-PARRAIN' -d 'prenom=Lisa' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=99109' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=MONT-PARRAIN' -d 'prenom=Lisa' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=99109' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -1503,8 +1503,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=YOLAN' -d 'prenom=JOHN' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=YOLAN' -d 'prenom=JOHN' -d 'anneeDateNaissance=2007' -d 'moisDateNaissance=1' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=F' -d 'codeCogInseeCommuneNaissance=75109' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 
@@ -1576,8 +1576,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'nomNaissance=COLONEL' -d 'prenom=Jean' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=8' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78646' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=COLONEL' -d 'prenom=Jean' -d 'anneeDateNaissance=2005' -d 'moisDateNaissance=8' -d 'jourDateNaissance=1' -d 'sexeEtatCivil=M' -d 'codeCogInseeCommuneNaissance=78646' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/identite"
   ```
 

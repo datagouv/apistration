@@ -43,8 +43,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=1234567404G' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567404G' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
   ```
 
@@ -110,8 +110,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=1234567890A' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567890A' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
   ```
 
@@ -177,8 +177,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=0100007108D' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=0100007108D' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
   ```
 
@@ -244,8 +244,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=0100008010J' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=0100008010J' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
   ```
 
@@ -311,8 +311,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=012345678AA' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=012345678AA' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
   ```
 
@@ -378,8 +378,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=1234567890B' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567890B' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
   ```
 
@@ -445,8 +445,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=1234567890C' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567890C' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
   ```
 
@@ -512,8 +512,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=1234567890D' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567890D' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
   ```
 
@@ -579,8 +579,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=1234567890E' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567890E' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
   ```
 
@@ -646,8 +646,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=1234567890F' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=1234567890F' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
   ```
 
@@ -713,8 +713,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=655888578AE' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=655888578AE' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
   ```
 
@@ -780,8 +780,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=660309901AG' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=660309901AG' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
   ```
 
@@ -847,8 +847,8 @@
   <p>
 
   ```bash
-  curl -H "X-Api-Key: $token" \
-    -G -d 'ine=675773666AD' \
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'ine=675773666AD' \
     --url "https://staging.particulier.api.gouv.fr/v3/mesri/statut_etudiant/ine"
   ```
 
