@@ -14,4 +14,10 @@ class DGFIP::ADELIE::Authenticate < GetOAuth2Token
   def scope
     nil
   end
+
+  def http_options
+    super.merge(
+      verify_mode: OpenSSL::SSL::VERIFY_NONE
+    )
+  end
 end
