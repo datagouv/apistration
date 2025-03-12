@@ -3,10 +3,14 @@ class MESRI::StudentStatus::WithINE::MakeRequest < MakeRequest::Get
 
   protected
 
-  def mocking_params_v2
+  def mocking_params
     {
       ine: ine_number
     }
+  end
+
+  def mocking_params_v2
+    mocking_params
   end
 
   def request_params
