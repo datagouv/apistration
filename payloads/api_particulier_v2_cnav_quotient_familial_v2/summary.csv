@@ -261,7 +261,7 @@ Ce cas permet de tester :
 - [Réponse] Tableau d'informations car couple
 - [Réponse] Tableau d'informations car deux enfants 
 - [Réponse] Quotient familial de 954
-- [Réponse] Quotient familial ancien de mai 2023","{""codeInseeLieuDeNaissance"":""44109"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M"",""nomNaissance"":""MARTIN"",""prenoms"":[""PIERRE"",""OLIVIER""],""anneeDateDeNaissance"":1985,""moisDateDeNaissance"":3}",200,"{
+- [Réponse] Quotient familial ancien de mai 2023","{""codeInseeLieuDeNaissance"":""44109"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M"",""nomNaissance"":""MARTIN"",""prenoms"":[""PIERRE"",""OLIVIER""],""anneeDateDeNaissance"":1985,""moisDateDeNaissance"":3,""jourDateDeNaissance"":15}",200,"{
   ""regime"": ""CAF"",
   ""allocataires"": [
     {
@@ -661,7 +661,7 @@ Ce cas permet de tester :
 - [Param. appel] Deux prénoms
 - [Réponse] Un seul allocataire
 - [Réponse] Absence d’enfants
-- [Réponse] Quotient familial de 846  ","{""codeInseeLieuDeNaissance"":""75056"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""NICOLAS"",""ANTOINE""],""anneeDateDeNaissance"":1992,""moisDateDeNaissance"":4}",200,"{
+- [Réponse] Quotient familial de 846  ","{""codeInseeLieuDeNaissance"":""75056"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""NICOLAS"",""ANTOINE""],""anneeDateDeNaissance"":1992,""moisDateDeNaissance"":4,""jourDateDeNaissance"":10}",200,"{
   ""regime"": ""CAF"",
   ""allocataires"": [
     {

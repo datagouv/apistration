@@ -469,7 +469,8 @@ Ce cas permet de tester :
       "OLIVIER"
     ],
     "anneeDateDeNaissance": 1985,
-    "moisDateDeNaissance": 3
+    "moisDateDeNaissance": 3,
+    "jourDateDeNaissance": 15
   }
   ```
 
@@ -545,7 +546,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=44109' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' -d 'nomNaissance=MARTIN' -d 'prenoms[]=PIERRE' -d 'prenoms[]=OLIVIER' -d 'anneeDateDeNaissance=1985' -d 'moisDateDeNaissance=3' \
+    -G -d 'codeInseeLieuDeNaissance=44109' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' -d 'nomNaissance=MARTIN' -d 'prenoms[]=PIERRE' -d 'prenoms[]=OLIVIER' -d 'anneeDateDeNaissance=1985' -d 'moisDateDeNaissance=3' -d 'jourDateDeNaissance=15' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -1357,7 +1358,8 @@ Ce cas permet de tester :
       "ANTOINE"
     ],
     "anneeDateDeNaissance": 1992,
-    "moisDateDeNaissance": 4
+    "moisDateDeNaissance": 4,
+    "jourDateDeNaissance": 10
   }
   ```
 
@@ -1407,7 +1409,7 @@ Ce cas permet de tester :
 
   ```bash
   curl -H "X-Api-Key: $token" \
-    -G -d 'codeInseeLieuDeNaissance=75056' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' -d 'nomNaissance=LEFEBVRE' -d 'prenoms[]=NICOLAS' -d 'prenoms[]=ANTOINE' -d 'anneeDateDeNaissance=1992' -d 'moisDateDeNaissance=4' \
+    -G -d 'codeInseeLieuDeNaissance=75056' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' -d 'nomNaissance=LEFEBVRE' -d 'prenoms[]=NICOLAS' -d 'prenoms[]=ANTOINE' -d 'anneeDateDeNaissance=1992' -d 'moisDateDeNaissance=4' -d 'jourDateDeNaissance=10' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 

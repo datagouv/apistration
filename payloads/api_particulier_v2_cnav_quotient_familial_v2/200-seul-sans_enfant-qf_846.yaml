@@ -20,6 +20,7 @@ params:
     - 'ANTOINE'
   anneeDateDeNaissance: 1992
   moisDateDeNaissance: 4
+  jourDateDeNaissance: 10
 status: 200
 payload: |-
   {

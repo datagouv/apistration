@@ -20,6 +20,7 @@ params:
     - 'OLIVIER'
   anneeDateDeNaissance: 1985
   moisDateDeNaissance: 3
+  jourDateDeNaissance: 15
 status: 200
 payload: |-
   {
