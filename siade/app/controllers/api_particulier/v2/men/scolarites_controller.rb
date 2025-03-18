@@ -10,21 +10,16 @@ class APIParticulier::V2::MEN::ScolaritesController < APIParticulier::V2::BaseCo
 
   private
 
-  # rubocop:disable Metrics/AbcSize
   def organizer_params
     {
       nom_naissance: params[:nom],
       prenoms: [params[:prenom]],
-      annee_date_naissance: params[:dateNaissance].split('-').first,
-      mois_date_naissance: params[:dateNaissance].split('-').second,
-      jour_date_naissance: params[:dateNaissance].split('-').third,
       sexe_etat_civil: params[:sexe],
       code_etablissement: params[:codeEtablissement],
       annee_scolaire: params[:anneeScolaire],
       provider_api_version:
-    }
+    }.merge(date_naissance_params)
   end
-  # rubocop:enable Metrics/AbcSize
 
   def format_not_found_error(error)
     {
@@ -46,5 +41,21 @@ class APIParticulier::V2::MEN::ScolaritesController < APIParticulier::V2::BaseCo
 
   def organizer
     @organizer ||= retrieve_payload_data(::MEN::Scolarites)
+  end
+
+  def date_naissance_params
+    if params[:dateNaissance].present?
+      return {
+        annee_date_naissance: params[:dateNaissance].split('-').first,
+        mois_date_naissance: params[:dateNaissance].split('-').second,
+        jour_date_naissance: params[:dateNaissance].split('-').third
+      }
+    end
+
+    {
+      annee_date_naissance: nil,
+      mois_date_naissance: nil,
+      jour_date_naissance: nil
+    }
   end
 end
