@@ -14,7 +14,7 @@ payload: |-
     "boursier": true,
     "echelonBourse": "6",
     "email": "axelle.charbonneau@fake.fr",
-    "dateDeRentree": "2023-09-01",
+    "dateDeRentree": "2024-09-01",
     "dureeVersement": 12,
     "statut": 0,
     "statutLibelle": "définitif",

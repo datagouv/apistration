@@ -14,7 +14,7 @@ payload: |-
     "boursier": true,
     "echelonBourse": "7",
     "email": "marie.montgomery@fake.fr",
-    "dateDeRentree": "2023-09-01",
+    "dateDeRentree": "2024-09-01",
     "dureeVersement": 12,
     "statut": 0,
     "statutLibelle": "définitif",
