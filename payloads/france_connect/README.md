@@ -6,11 +6,11 @@ fournisseurs de données dans le cadre des API FranceConnectés.
 
 Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
-* [all_cnav.yml](all_cnav.yml)
+* [all_fc.yml](all_fc.yml)
 
   Status `200`
 
-  Réponse FranceConnect permettant de déclencher l'ensemble des réponses aux api de la cnav
+  Réponse FranceConnect permettant de déclencher l'ensemble des réponses aux apis france connectée
 
   <details><summary>Paramètres</summary>
   <p>
@@ -46,20 +46,38 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
       "psu_allocataires",
       "psu_enfants",
       "psu_adresse",
-      "psu_parametres_calcul_psu"
+      "psu_parametres_calcul_psu",
+      "cnous_statut_boursier",
+      "cnous_echelon_bourse",
+      "cnous_email",
+      "cnous_periode_versement",
+      "cnous_statut_bourse",
+      "cnous_ville_etudes",
+      "cnous_identite",
+      "mesri_identifiant",
+      "mesri_identite",
+      "mesri_inscription_etudiant",
+      "mesri_inscription_autre",
+      "mesri_admission",
+      "mesri_etablissements",
+      "mesri_admissions",
+      "mesri_admission_inscrit",
+      "mesri_admission_regime_formation",
+      "mesri_admission_commune_etudes",
+      "mesri_admission_etablissement_etudes"
     ],
     "client": {
       "client_id": "client_id",
       "client_name": "client_name"
     },
     "identity": {
-      "given_name": "Georges",
-      "family_name": "CNAF",
-      "birthdate": "2002-01-01",
+      "given_name": "Thomas",
+      "family_name": "Delatour",
+      "birthdate": "1994-04-16",
       "gender": "male",
-      "birthplace": "75002",
+      "birthplace": "75111",
       "birthcountry": "99100",
-      "preferred_username": "MARTIN"
+      "preferred_username": "Delamouette"
     }
   }
   ```

@@ -1,0 +1,23 @@
+description: |-
+  Cas de test avec jeton FranceConnect.
+  Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_css.yml).
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms: 
+  - "Thomas"
+  nomNaissance: "Delatour"
+  nomUsage: "Delamouette"
+  anneeDateDeNaissance: 1994
+  moisDateDeNaissance: 4
+  jourDateDeNaissance: 16
+  sexe: "M"
+  codeInseeLieuDeNaissance: "75111"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "status": "beneficiaire",
+    "dateDebut": "2021-05-05",
+    "dateFin": null
+  }

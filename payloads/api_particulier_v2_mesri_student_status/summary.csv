@@ -432,6 +432,25 @@ Titre,Description,Paramètres,Status,Réponse
     }
   ]
 }"
+,FranceConnect: étudiant inscrit,"{""given_name"":""Thomas"",""family_name"":""Delatour"",""birthdate"":""1994-04-16"",""gender"":""male"",""birthplace"":""75111"",""prenoms"":[""Thomas""],""nomNaissance"":""Delatour"",""nomUsage"":""Delamouette"",""anneeDateDeNaissance"":1994,""moisDateDeNaissance"":4,""jourDateDeNaissance"":16,""sexe"":""M"",""codeInseeLieuDeNaissance"":""75111"",""codePaysLieuDeNaissance"":""99100""}",200,"{
+  ""ine"": ""1234567890T"",
+  ""nomFamille"": ""Mesri"",
+  ""prenom"": ""Jean"",
+  ""dateNaissance"": ""2002-01-01"",
+  ""inscriptions"": [
+    {
+      ""dateDebutInscription"": ""2020-07-01"",
+      ""dateFinInscription"": ""2021-08-31"",
+      ""statut"": ""inscrit"",
+      ""codeCommune"": ""33063"",
+      ""etablissement"": {
+        ""uai"": ""0330023W"",
+        ""nomEtablissement"": ""LYCEE GENERAL ET TECHNOLOGIQUE CAMILLE JULLIAN""
+      },
+      ""regime"": ""formation initiale""
+    }
+  ]
+}"
 ,FranceConnect: étudiant inscrit,"{""given_name"":""Angela"",""family_name"":""DUBOIS"",""birthdate"":""1962-08-24"",""gender"":""female"",""birthplace"":""75107""}",200,"{
   ""ine"": ""1234567890T"",
   ""nomFamille"": ""DUBOIS"",

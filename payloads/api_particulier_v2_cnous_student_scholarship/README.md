@@ -291,6 +291,63 @@
 
   </p>
   </details>
+* [fake_france_connect_cnous_2.yml](fake_france_connect_cnous_2.yml)
+
+  Status `200`
+
+  FranceConnect: Boursier échelon 5 (scope complet)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "given_name": "Thomas",
+    "family_name": "Delatour",
+    "birthdate": "16/04/1994",
+    "gender": "M",
+    "birthplace": "75111"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "nom": "DUPONT",
+    "prenom": "Jean",
+    "prenom2": "Martin",
+    "dateNaissance": "2000-01-01",
+    "lieuNaissance": "Paris",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "5",
+    "email": "jean@dupont.fr",
+    "dateDeRentree": "2024-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Bordeaux",
+    "etablissement": "Camille Jullian"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants-boursiers?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [fake_france_connect_cnous_with_less_scopes.yml](fake_france_connect_cnous_with_less_scopes.yml)
 
   Status `200`

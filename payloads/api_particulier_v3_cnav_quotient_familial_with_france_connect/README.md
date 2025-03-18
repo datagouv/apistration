@@ -136,6 +136,91 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   </p>
   </details>
+* [fake_france_connect_cnaf_2.yml](fake_france_connect_cnaf_2.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_qfv2.yml).
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "Thomas"
+    ],
+    "nomNaissance": "Delatour",
+    "nomUsage": "Delamouette",
+    "anneeDateNaissance": 1994,
+    "moisDateNaissance": 4,
+    "jourDateNaissance": 16,
+    "sexeEtatCivil": "M",
+    "codeCogInseeCommuneNaissance": "75111",
+    "codeCogInseePaysNaissance": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "allocataires": [
+        {
+          "nom_naissance": "CNAF",
+          "nom_usage": "MARTIN",
+          "prenoms": "GEORGES",
+          "date_naissance": "2002-01-01",
+          "sexe": "M"
+        }
+      ],
+      "enfants": [
+  
+      ],
+      "adresse": {
+        "destinataire": "Monsieur CNAF MARTIN",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "1 RUE MONTORGUEIL",
+        "lieu_dit": null,
+        "code_postal_ville": "75002 PARIS",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 2550,
+        "annee": 2024,
+        "mois": 2,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/quotient_familial/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [france_connect_200_cnaf_1_parent_3_mineurs.yml](france_connect_200_cnaf_1_parent_3_mineurs.yml)
 
   Status `200`
