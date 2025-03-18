@@ -2,7 +2,7 @@
 title: 'CNAF Quotient Familial V2'
 example: true
 params:
-  token: 'all_cnav'
+  token: 'all_fc'
 api_path: '/v2/composition-familiale-v2'
 description: 'Réponse FranceConnect permettant de déclencher l''ensemble des réponses aux apis france connectée'
 status: 200
