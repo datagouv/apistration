@@ -17,7 +17,7 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
   ```json
   {
-    "token": "all_cnav"
+    "token": "all_fc"
   }
   ```
 
@@ -89,7 +89,7 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer all_cnav" --url "https://staging.particulier.api.gouv.fr/v2/composition-familiale-v2?recipient=13002526500013"
+  curl -H "Authorization: Bearer all_fc" --url "https://staging.particulier.api.gouv.fr/v2/composition-familiale-v2?recipient=13002526500013"
   ```
 
   </p>

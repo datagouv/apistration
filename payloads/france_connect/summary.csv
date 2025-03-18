@@ -1,5 +1,5 @@
 Titre,Description,Paramètres,Status,Réponse
-CNAF Quotient Familial V2,Réponse FranceConnect permettant de déclencher l'ensemble des réponses aux apis france connectée,"{""token"":""all_cnav""}",200,"{
+CNAF Quotient Familial V2,Réponse FranceConnect permettant de déclencher l'ensemble des réponses aux apis france connectée,"{""token"":""all_fc""}",200,"{
   ""scope"": [
     ""openid"",
     ""identite_pivot"",
