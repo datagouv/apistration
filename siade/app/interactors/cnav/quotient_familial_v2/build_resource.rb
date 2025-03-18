@@ -14,8 +14,8 @@ class CNAV::QuotientFamilialV2::BuildResource < BuildResource
     {
       fournisseur:,
       valeur: string_value_or_nil(json_body['quotientFamilial']),
-      annee: context['params'][:annee].to_i,
-      mois: context['params'][:mois].to_i,
+      annee: annee_demande.to_i,
+      mois: mois_demande.to_i,
       annee_calcul:,
       mois_calcul:
     }
@@ -97,5 +97,13 @@ class CNAV::QuotientFamilialV2::BuildResource < BuildResource
     raise 'Fournisseur not found' if response['X-APISECU-FD'].nil?
 
     CNAV::QuotientFamilialV2::REGIME_CODE_LABEL[response['X-APISECU-FD']]
+  end
+
+  def mois_demande
+    Kernel.format('%<month>02d', month: context.params[:mois].presence&.to_i || Time.zone.today.month)
+  end
+
+  def annee_demande
+    context.params[:annee].presence || Time.zone.today.year
   end
 end
