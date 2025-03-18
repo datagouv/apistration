@@ -1,0 +1,32 @@
+---
+description: 'FranceConnect: Boursier échelon 5 (scope complet)'
+params:
+  prenom: "Thomas"
+  nomNaissance: "Delatour"
+  anneeDateNaissance: 1994
+  moisDateNaissance: 4
+  jourDateNaissance: 16
+  sexeEtatCivil: "M"
+  codeCogInseeCommuneNaissance: "75111"
+status: 200
+payload: |-
+  {
+    "data": {
+      "est_boursier": true,
+      "periode_versement_bourse": {
+        "date_rentree": "2020-09-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Bordeaux",
+        "nom_etablissement": "Camille Jullian"
+      },
+      "echelon_bourse": {
+        "echelon": "5",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "jean@dupont.fr"
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -32,6 +32,26 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
+,FranceConnect: Boursier échelon 5 (scope complet),"{""prenom"":""Thomas"",""nomNaissance"":""Delatour"",""anneeDateNaissance"":1994,""moisDateNaissance"":4,""jourDateNaissance"":16,""sexeEtatCivil"":""M"",""codeCogInseeCommuneNaissance"":""75111""}",200,"{
+  ""data"": {
+    ""est_boursier"": true,
+    ""periode_versement_bourse"": {
+      ""date_rentree"": ""2020-09-01"",
+      ""duree"": 12
+    },
+    ""etablissement_etudes"": {
+      ""nom_commune"": ""Bordeaux"",
+      ""nom_etablissement"": ""Camille Jullian""
+    },
+    ""echelon_bourse"": {
+      ""echelon"": ""5"",
+      ""echelon_bourse_regionale_provisoire"": false
+    },
+    ""email"": ""jean@dupont.fr""
+  },
+  ""links"": {},
+  ""meta"": {}
+}"
 ,FranceConnect: Boursier échelon 5 (scope complet),"{""nomNaissance"":""DUBOIS"",""prenoms"":""Angela Claire Louise"",""anneeDateNaissance"":1962,""moisDateNaissance"":8,""jourDateNaissance"":24,""sexeEtatCivil"":""F"",""codeCogInseeCommuneNaissance"":""75007""}",200,"{
   ""data"": {
     ""est_boursier"": true,

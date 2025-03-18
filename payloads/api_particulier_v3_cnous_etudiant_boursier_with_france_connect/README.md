@@ -112,6 +112,70 @@
 
   </p>
   </details>
+* [fake_france_connect_cnous_2.yml](fake_france_connect_cnous_2.yml)
+
+  Status `200`
+
+  FranceConnect: Boursier échelon 5 (scope complet)
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenom": "Thomas",
+    "nomNaissance": "Delatour",
+    "anneeDateNaissance": 1994,
+    "moisDateNaissance": 4,
+    "jourDateNaissance": 16,
+    "sexeEtatCivil": "M",
+    "codeCogInseeCommuneNaissance": "75111"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "data": {
+      "est_boursier": true,
+      "periode_versement_bourse": {
+        "date_rentree": "2020-09-01",
+        "duree": 12
+      },
+      "etablissement_etudes": {
+        "nom_commune": "Bordeaux",
+        "nom_etablissement": "Camille Jullian"
+      },
+      "echelon_bourse": {
+        "echelon": "5",
+        "echelon_bourse_regionale_provisoire": false
+      },
+      "email": "jean@dupont.fr"
+    },
+    "links": {
+    },
+    "meta": {
+    }
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/cnous/etudiant_boursier/france_connect?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [france_connect_cnous.yml](france_connect_cnous.yml)
 
   Status `200`

@@ -1404,6 +1404,83 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
 
   </p>
   </details>
+* [fake_france_connect_cnaf_2.yml](fake_france_connect_cnaf_2.yml)
+
+  Status `200`
+
+  Cas de test pour QFv2 avec jeton FranceConnect.
+Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_qfv2.yml).
+L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "prenoms": [
+      "Thomas"
+    ],
+    "nomNaissance": "Delatour",
+    "nomUsage": "Delamouette",
+    "anneeDateDeNaissance": 1994,
+    "moisDateDeNaissance": 4,
+    "jourDateDeNaissance": 16,
+    "sexe": "M",
+    "codeInseeLieuDeNaissance": "75111",
+    "codePaysLieuDeNaissance": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "CNAF",
+        "nomUsuel": "MARTIN",
+        "prenoms": "GEORGES",
+        "anneeDateDeNaissance": "2002",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+  
+    ],
+    "adresse": {
+      "identite": "Monsieur CNAF MARTIN",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE MONTORGUEIL",
+      "lieuDit": null,
+      "codePostalVille": "75002 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
 * [france_connect_200_cnaf_1_parent_3_mineurs.yml](france_connect_200_cnaf_1_parent_3_mineurs.yml)
 
   Status `200`

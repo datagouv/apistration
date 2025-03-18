@@ -1,0 +1,27 @@
+---
+description: 'FranceConnect: Boursier échelon 5 (scope complet)'
+params:
+  given_name: "Thomas"
+  family_name: "Delatour"
+  birthdate: "16/04/1994"
+  gender: "M"
+  birthplace: "75111"
+status: 200
+payload: |-
+  {
+    "nom": "DUPONT",
+    "prenom": "Jean",
+    "prenom2": "Martin",
+    "dateNaissance": "2000-01-01",
+    "lieuNaissance": "Paris",
+    "sexe": "M",
+    "boursier": true,
+    "echelonBourse": "5",
+    "email": "jean@dupont.fr",
+    "dateDeRentree": "2024-09-01",
+    "dureeVersement": 12,
+    "statut": 0,
+    "statutLibelle": "définitif",
+    "villeEtudes": "Bordeaux",
+    "etablissement": "Camille Jullian"
+  }

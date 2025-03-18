@@ -1409,7 +1409,7 @@
 
   </p>
   </details>
-* [fake_france_connect_mesri_with.yml](fake_france_connect_mesri_with.yml)
+* [fake_france_connect_mesri.yml](fake_france_connect_mesri.yml)
 
   Status `200`
 
@@ -1425,6 +1425,76 @@
     "birthdate": "2002-01-01",
     "gender": "male",
     "birthplace": "75002"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "ine": "1234567890T",
+    "nomFamille": "Mesri",
+    "prenom": "Jean",
+    "dateNaissance": "2002-01-01",
+    "inscriptions": [
+      {
+        "dateDebutInscription": "2020-07-01",
+        "dateFinInscription": "2021-08-31",
+        "statut": "inscrit",
+        "codeCommune": "33063",
+        "etablissement": {
+          "uai": "0330023W",
+          "nomEtablissement": "LYCEE GENERAL ET TECHNOLOGIQUE CAMILLE JULLIAN"
+        },
+        "regime": "formation initiale"
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/api/v2/etudiants?recipient=13002526500013"
+  ```
+
+  </p>
+  </details>
+* [fake_france_connect_mesri_2.yml](fake_france_connect_mesri_2.yml)
+
+  Status `200`
+
+  FranceConnect: étudiant inscrit
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "given_name": "Thomas",
+    "family_name": "Delatour",
+    "birthdate": "1994-04-16",
+    "gender": "male",
+    "birthplace": "75111",
+    "prenoms": [
+      "Thomas"
+    ],
+    "nomNaissance": "Delatour",
+    "nomUsage": "Delamouette",
+    "anneeDateDeNaissance": 1994,
+    "moisDateDeNaissance": 4,
+    "jourDateDeNaissance": 16,
+    "sexe": "M",
+    "codeInseeLieuDeNaissance": "75111",
+    "codePaysLieuDeNaissance": "99100"
   }
   ```
 

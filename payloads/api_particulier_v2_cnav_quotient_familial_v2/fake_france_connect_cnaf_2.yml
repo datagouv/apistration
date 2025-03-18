@@ -1,0 +1,46 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent de [nos propres jetons FranceConnect de test](../france_connect/cnaf_qfv2.yml).
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms: 
+  - "Thomas"
+  nomNaissance: "Delatour"
+  nomUsage: "Delamouette"
+  anneeDateDeNaissance: 1994
+  moisDateDeNaissance: 4
+  jourDateDeNaissance: 16
+  sexe: "M"
+  codeInseeLieuDeNaissance: "75111"
+  codePaysLieuDeNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "CNAF",
+        "nomUsuel": "MARTIN",
+        "prenoms": "GEORGES",
+        "anneeDateDeNaissance": "2002",
+        "moisDateDeNaissance": "01",
+        "jourDateDeNaissance": "01",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [],
+    "adresse": {
+      "identite": "Monsieur CNAF MARTIN",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "1 RUE MONTORGUEIL",
+      "lieuDit": null,
+      "codePostalVille": "75002 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 2550,
+    "annee": 2024,
+    "mois": 2
+  }
