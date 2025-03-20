@@ -9,7 +9,7 @@ dsnj:
         title: Statut service national
         type: string
         description: Indique si la personne est en règle de ses obligations de service national. "en_regle" si la personne est en règle, "pas_en_regle" si la personne n'est pas en règle, "indetermine" si l'information n'est pas connue, "non_concerne" si la personne n'est pas concernée par les obligations de service national.
-        example: Oui
+        example: en_regle
         enum:
           - en_regle
           - pas_en_regle
@@ -19,4 +19,4 @@ dsnj:
         title: Commentaires
         type: string
         description: Commentaires sur la situation de la personne
-        example: TODO
+        example: Commentaire sur la situation
