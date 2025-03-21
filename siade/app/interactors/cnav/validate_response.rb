@@ -13,7 +13,7 @@ class CNAV::ValidateResponse < ValidateResponse
 
     return regime_not_found_error(regime) if regime.present?
 
-    fail_with_error!(build_qfv2_error(::NotFoundError, context.provider_name, 'Une erreur inatendue est survenue lors de la collecte des données', 'Erreur inatendue'))
+    fail_with_error!(build_qfv2_error(::NotFoundError, context.provider_name, 'Une erreur inattendue est survenue lors de la collecte des données', 'Erreur inatendue'))
   end
 
   def sub_provider_error?
@@ -23,7 +23,7 @@ class CNAV::ValidateResponse < ValidateResponse
   def sub_provider_error!
     return fail_with_error!(UnprocessableEntityError.new(:sngi)) if sub_provider_error_from_sngi?
 
-    fail_with_error!(build_qfv2_error(::NotFoundError, 'CNAF & MSA', "L'allocataire n'est pas référencé auprès d'aucune des caisses elligible", 'Allocataire non référencé')) if sub_provider_error_from_rncps?
+    fail_with_error!(build_qfv2_error(::NotFoundError, 'CNAF & MSA', "L'allocataire n'est pas référencé auprès des caisses éligibles", 'Allocataire non référencé')) if sub_provider_error_from_rncps?
   end
 
   def regime_not_found_error(regime)

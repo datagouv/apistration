@@ -132,12 +132,12 @@ RSpec.describe 'API Particulier CNAV: allocation adulte handicape with civility'
               run_test!
             end
 
-            context 'Erreur inatendue' do
+            context 'Erreur inattendue' do
               before do
                 stub_cnav_404('allocation_adulte_handicape')
               end
 
-              build_rswag_example(NotFoundError.new('CNAF & MSA', 'Une erreur inatendue est survenue lors de la collecte des données', title: 'Erreur inatendue', with_identifiant_message: false))
+              build_rswag_example(NotFoundError.new('CNAF & MSA', 'Une erreur inattendue est survenue lors de la collecte des données', title: 'Erreur inattendue', with_identifiant_message: false))
 
               schema '$ref' => '#/components/schemas/Error'
 

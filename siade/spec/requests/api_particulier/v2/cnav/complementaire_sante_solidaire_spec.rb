@@ -63,27 +63,70 @@ RSpec.describe 'CNAV: Complementaire Santé Solidaire', api: :particulierv2, typ
 
           describe 'server errors' do
             response '400', 'Mauvais paramètres d\'appels' do
-              let(:sexe) { 'nope' }
+              # rubocop:disable RSpec/ContextWording
+              context 'sexe invalide' do
+                let(:sexe) { 'nope' }
 
-              build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_entity_error_gender_error)
+                build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_entity_error_gender_error)
 
-              schema '$ref' => '#/components/schemas/Error'
+                schema '$ref' => '#/components/schemas/Error'
 
-              run_test!
-            end
-
-            response '404', 'Dossier complémentaire inexistant. Le document ne peut être édité.' do
-              before do
-                stub_cnav_404('complementaire_sante_solidaire')
+                run_test!
               end
 
+              context 'Allocataire non identifié' do
+                before do
+                  stub_sngi_404('complementaire_sante_solidaire')
+                end
+
+                build_rswag_example(NotFoundError.new('RNCPS', "L'allocataire que vous cherchez n'a pas été reconnu"))
+
+                schema '$ref' => '#/components/schemas/Error'
+
+                run_test!
+              end
+              # rubocop:enable RSpec/ContextWording
+            end
+
+            response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
               let(:codePaysLieuDeNaissance) { '99623' }
+              # rubocop:disable RSpec/ContextWording
+              context 'Dossier non trouvé RNCPS' do
+                before do
+                  stub_cnav_404('complementaire_sante_solidaire', 'RNCPS')
+                end
 
-              build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.'))
+                build_rswag_example(NotFoundError.new('RNCPS', "Le dossier allocataire n'a pas été trouvé auprès de la RNCPS."))
 
-              schema '$ref' => '#/components/schemas/Error'
+                schema '$ref' => '#/components/schemas/Error'
 
-              run_test!
+                run_test!
+              end
+
+              context 'Allocataire non référencé' do
+                before do
+                  stub_rncps_404('complementaire_sante_solidaire')
+                end
+
+                build_rswag_example(NotFoundError.new('RNCPS', "L'allocataire n'est pas référencé auprès de la CNAF ni de la MSA"))
+
+                schema '$ref' => '#/components/schemas/Error'
+
+                run_test!
+              end
+
+              context 'Erreur inattendue' do
+                before do
+                  stub_cnav_404('complementaire_sante_solidaire')
+                end
+
+                build_rswag_example(NotFoundError.new('RNCPS', 'Une erreur inattendue est survenue lors de la collecte des données', title: 'Erreur inattendue', with_identifiant_message: false))
+
+                schema '$ref' => '#/components/schemas/Error'
+
+                run_test!
+              end
+              # rubocop:enable RSpec/ContextWording
             end
 
             response '503', 'Erreur du fournisseur' do

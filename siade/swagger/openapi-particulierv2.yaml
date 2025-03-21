@@ -254,26 +254,49 @@ paths:
                     message: Le sexe n'est pas correctement formaté (m ou f)
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
+                entite_non_trouvee_35003:
+                  value:
+                    error: not_found
+                    reason: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                    message: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                  summary: Entité non trouvée
+                  description: L'allocataire que vous cherchez n'a pas été reconnu
+                    Veuillez vérifier que l'identifiant correspond au périmètre couvert
+                    par l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Dossier non trouvé
+          description: Dossier allocataire inexistant. Le document ne peut être édité.
           content:
             application/json:
               examples:
-                entite_non_trouvee_37003:
+                entite_non_trouvee_35003:
                   value:
                     error: not_found
-                    reason: Dossier allocataire inexistant. Le document ne peut être
-                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
-                    message: Dossier allocataire inexistant. Le document ne peut être
-                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
+                    reason: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
+                    message: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
                   summary: Entité non trouvée
-                  description: Dossier allocataire inexistant. Le document ne peut
-                    être édité. Veuillez vérifier que l'identifiant correspond au
+                  description: L'allocataire n'est pas référencé auprès de la CNAF
+                    ni de la MSA Veuillez vérifier que l'identifiant correspond au
                     périmètre couvert par l'API.
+                erreur_inattendue_35003:
+                  value:
+                    error: not_found
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                  summary: Erreur inattendue
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -533,26 +556,49 @@ paths:
                     message: Le sexe n'est pas correctement formaté (m ou f)
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
+                entite_non_trouvee_35003:
+                  value:
+                    error: not_found
+                    reason: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                    message: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                  summary: Entité non trouvée
+                  description: L'allocataire que vous cherchez n'a pas été reconnu
+                    Veuillez vérifier que l'identifiant correspond au périmètre couvert
+                    par l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Dossier non trouvé
+          description: Dossier allocataire inexistant. Le document ne peut être édité.
           content:
             application/json:
               examples:
-                entite_non_trouvee_37003:
+                entite_non_trouvee_35003:
                   value:
                     error: not_found
-                    reason: Dossier allocataire inexistant. Le document ne peut être
-                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
-                    message: Dossier allocataire inexistant. Le document ne peut être
-                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
+                    reason: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
+                    message: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
                   summary: Entité non trouvée
-                  description: Dossier allocataire inexistant. Le document ne peut
-                    être édité. Veuillez vérifier que l'identifiant correspond au
+                  description: L'allocataire n'est pas référencé auprès de la CNAF
+                    ni de la MSA Veuillez vérifier que l'identifiant correspond au
                     périmètre couvert par l'API.
+                erreur_inattendue_35003:
+                  value:
+                    error: not_found
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                  summary: Erreur inattendue
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -823,27 +869,49 @@ paths:
                     message: Le sexe n'est pas correctement formaté (m ou f)
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
+                entite_non_trouvee_40003:
+                  value:
+                    error: not_found
+                    reason: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                    message: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                  summary: Entité non trouvée
+                  description: L'allocataire que vous cherchez n'a pas été reconnu
+                    Veuillez vérifier que l'identifiant correspond au périmètre couvert
+                    par l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Dossier complémentaire inexistant. Le document ne peut être
-            édité.
+          description: Dossier allocataire inexistant. Le document ne peut être édité.
           content:
             application/json:
               examples:
-                entite_non_trouvee_37003:
+                entite_non_trouvee_40003:
                   value:
                     error: not_found
-                    reason: Dossier allocataire inexistant. Le document ne peut être
-                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
-                    message: Dossier allocataire inexistant. Le document ne peut être
-                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
+                    reason: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
+                    message: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
                   summary: Entité non trouvée
-                  description: Dossier allocataire inexistant. Le document ne peut
-                    être édité. Veuillez vérifier que l'identifiant correspond au
+                  description: L'allocataire n'est pas référencé auprès de la CNAF
+                    ni de la MSA Veuillez vérifier que l'identifiant correspond au
                     périmètre couvert par l'API.
+                erreur_inattendue_40003:
+                  value:
+                    error: not_found
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                  summary: Erreur inattendue
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -1111,26 +1179,49 @@ paths:
                     message: Le sexe n'est pas correctement formaté (m ou f)
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
+                entite_non_trouvee_35003:
+                  value:
+                    error: not_found
+                    reason: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                    message: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                  summary: Entité non trouvée
+                  description: L'allocataire que vous cherchez n'a pas été reconnu
+                    Veuillez vérifier que l'identifiant correspond au périmètre couvert
+                    par l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Dossier non trouvé
+          description: Dossier allocataire inexistant. Le document ne peut être édité.
           content:
             application/json:
               examples:
-                entite_non_trouvee_37003:
+                entite_non_trouvee_35003:
                   value:
                     error: not_found
-                    reason: Dossier allocataire inexistant. Le document ne peut être
-                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
-                    message: Dossier allocataire inexistant. Le document ne peut être
-                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
+                    reason: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
+                    message: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
                   summary: Entité non trouvée
-                  description: Dossier allocataire inexistant. Le document ne peut
-                    être édité. Veuillez vérifier que l'identifiant correspond au
+                  description: L'allocataire n'est pas référencé auprès de la CNAF
+                    ni de la MSA Veuillez vérifier que l'identifiant correspond au
                     périmètre couvert par l'API.
+                erreur_inattendue_35003:
+                  value:
+                    error: not_found
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                  summary: Erreur inattendue
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -1636,10 +1727,22 @@ paths:
                 Mauvais paramètres d'appels:
                   value:
                     error: bad_request
+                    reason: Le sexe de l'état civil est manquant
+                    message: Le sexe de l'état civil est manquant
+                Mois invalide:
+                  value:
+                    error: bad_request
                     reason: L'année demandée n'est pas correctement formatée ou est
                       dans le futur.
                     message: L'année demandée n'est pas correctement formatée ou est
                       dans le futur.
+                Allocataire non identifié:
+                  value:
+                    error: not_found
+                    reason: Les paramètres fournis ne permettent pas d'identifier
+                      un allocataire.
+                    message: Les paramètres fournis ne permettent pas d'identifier
+                      un allocataire.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -1647,34 +1750,33 @@ paths:
           content:
             application/json:
               examples:
-                Allocataire non identifié:
-                  value:
-                    error: not_found
-                    reason: Une erreur inatendue est survenue lors de la collecte
-                      des données
-                    message: Une erreur inatendue est survenue lors de la collecte
-                      des données
                 Dossier non trouvé MSA:
                   value:
                     error: not_found
-                    reason: Une erreur inatendue est survenue lors de la collecte
-                      des données
-                    message: Une erreur inatendue est survenue lors de la collecte
-                      des données
+                    reason: Le dossier allocataire n'a pas été trouvé auprès de la
+                      MSA.
+                    message: Le dossier allocataire n'a pas été trouvé auprès de la
+                      MSA.
                 Dossier non trouvé CNAF:
                   value:
                     error: not_found
-                    reason: Une erreur inatendue est survenue lors de la collecte
-                      des données
-                    message: Une erreur inatendue est survenue lors de la collecte
-                      des données
+                    reason: Le dossier allocataire n'a pas été trouvé auprès de la
+                      CNAF.
+                    message: Le dossier allocataire n'a pas été trouvé auprès de la
+                      CNAF.
                 Allocataire non référencé:
                   value:
                     error: not_found
-                    reason: L'allocataire n'est pas référencé auprès d'aucune des
-                      caisses elligible
-                    message: L'allocataire n'est pas référencé auprès d'aucune des
-                      caisses elligible
+                    reason: L'allocataire n'est pas référencé auprès des caisses éligibles
+                    message: L'allocataire n'est pas référencé auprès des caisses
+                      éligibles
+                Erreur inattendue:
+                  value:
+                    error: not_found
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':
@@ -1941,26 +2043,49 @@ paths:
                     message: Le sexe n'est pas correctement formaté (m ou f)
                   summary: Entité non traitable
                   description: Le sexe n'est pas correctement formaté (m ou f)
+                entite_non_trouvee_35003:
+                  value:
+                    error: not_found
+                    reason: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                    message: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                  summary: Entité non trouvée
+                  description: L'allocataire que vous cherchez n'a pas été reconnu
+                    Veuillez vérifier que l'identifiant correspond au périmètre couvert
+                    par l'API.
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
-          description: Dossier non trouvé
+          description: Dossier allocataire inexistant. Le document ne peut être édité.
           content:
             application/json:
               examples:
-                entite_non_trouvee_37003:
+                entite_non_trouvee_35003:
                   value:
                     error: not_found
-                    reason: Dossier allocataire inexistant. Le document ne peut être
-                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
-                    message: Dossier allocataire inexistant. Le document ne peut être
-                      édité. Veuillez vérifier que l'identifiant correspond au périmètre
-                      couvert par l'API.
+                    reason: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
+                    message: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
                   summary: Entité non trouvée
-                  description: Dossier allocataire inexistant. Le document ne peut
-                    être édité. Veuillez vérifier que l'identifiant correspond au
+                  description: L'allocataire n'est pas référencé auprès de la CNAF
+                    ni de la MSA Veuillez vérifier que l'identifiant correspond au
                     périmètre couvert par l'API.
+                erreur_inattendue_35003:
+                  value:
+                    error: not_found
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                  summary: Erreur inattendue
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':

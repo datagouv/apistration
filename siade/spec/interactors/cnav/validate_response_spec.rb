@@ -120,7 +120,7 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
       its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
 
       it 'returns a RNCPS error' do
-        expect(subject.errors.first.detail).to include('Une erreur inatendue est survenue lors de la collecte des données')
+        expect(subject.errors.first.detail).to include('Une erreur inattendue est survenue lors de la collecte des données')
       end
     end
   end

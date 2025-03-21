@@ -61,27 +61,82 @@ RSpec.describe 'CNAV: Allocation Adulte Handicapé', api: :particulierv2, type: 
 
         describe 'server errors' do
           response '400', 'Mauvais paramètres d\'appels' do
-            let(:sexe) { 'nope' }
+            # rubocop:disable RSpec/ContextWording
+            context 'sexe invalide' do
+              let(:sexe) { 'nope' }
 
-            build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_entity_error_gender_error)
+              build_rswag_example(UnprocessableEntityError.new(:gender), :unprocessable_entity_error_gender_error)
 
-            schema '$ref' => '#/components/schemas/Error'
+              schema '$ref' => '#/components/schemas/Error'
 
-            run_test!
-          end
-
-          response '404', 'Dossier non trouvé' do
-            before do
-              stub_cnav_404('allocation_adulte_handicape')
+              run_test!
             end
 
+            context 'Allocataire non identifié' do
+              before do
+                stub_sngi_404('allocation_adulte_handicape')
+              end
+
+              build_rswag_example(NotFoundError.new('CNAF & MSA', "L'allocataire que vous cherchez n'a pas été reconnu"))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+            # rubocop:enable RSpec/ContextWording
+          end
+
+          response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
             let(:codePaysLieuDeNaissance) { '99623' }
+            # rubocop:disable RSpec/ContextWording
+            context 'Dossier non trouvé MSA' do
+              before do
+                stub_cnav_404('allocation_adulte_handicape', 'MSA')
+              end
 
-            build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.'))
+              build_rswag_example(NotFoundError.new('CNAF & MSA', "Le dossier allocataire n'a pas été trouvé auprès de la MSA."))
 
-            schema '$ref' => '#/components/schemas/Error'
+              schema '$ref' => '#/components/schemas/Error'
 
-            run_test!
+              run_test!
+            end
+
+            context 'Dossier non trouvé CNAF' do
+              before do
+                stub_cnav_404('allocation_adulte_handicape', 'CNAF')
+              end
+
+              build_rswag_example(NotFoundError.new('CNAF & MSA', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF."))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+
+            context 'Allocataire non référencé' do
+              before do
+                stub_rncps_404('allocation_adulte_handicape')
+              end
+
+              build_rswag_example(NotFoundError.new('CNAF & MSA', "L'allocataire n'est pas référencé auprès de la CNAF ni de la MSA"))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+
+            context 'Erreur inattendue' do
+              before do
+                stub_cnav_404('allocation_adulte_handicape')
+              end
+
+              build_rswag_example(NotFoundError.new('CNAF & MSA', 'Une erreur inattendue est survenue lors de la collecte des données', title: 'Erreur inattendue', with_identifiant_message: false))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+            # rubocop:enable RSpec/ContextWording
           end
 
           response '503', 'Erreur du fournisseur' do

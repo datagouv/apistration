@@ -94,7 +94,7 @@ RSpec.describe CNAV::QuotientFamilialV2, type: :retriever_organizer do
           it 'returns 404 message for RNCPS' do
             expect(subject).to be_a_failure
             expect(subject.errors).to include(instance_of(NotFoundError))
-            expect(subject.errors.first.detail).to eq("L'allocataire n'est pas référencé auprès d'aucune des caisses elligible")
+            expect(subject.errors.first.detail).to eq("L'allocataire n'est pas référencé auprès des caisses éligibles")
           end
         end
 
