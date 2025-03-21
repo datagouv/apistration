@@ -1,16 +1,8 @@
 class CNAV::QuotientFamilialV2 < CNAV::RetrieverOrganizer
-  REGIME_CODE_MSA = '00171001'.freeze
-  REGIME_CODE_CNAF = '00810011'.freeze
-
-  REGIME_CODE_LABEL = {
-    REGIME_CODE_MSA => 'MSA',
-    REGIME_CODE_CNAF => 'CNAF'
-  }.freeze
-
   organize CNAV::QuotientFamilialV2::ValidateParams,
     CNAV::Authenticate,
     CNAV::QuotientFamilialV2::MakeRequest,
-    CNAV::QuotientFamilialV2::ValidateResponse,
+    CNAV::ValidateResponse,
     CNAV::QuotientFamilialV2::BuildResource
 
   def provider_name

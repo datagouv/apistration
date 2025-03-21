@@ -75,6 +75,8 @@ class ErrorsBackend
       '37' => 'CNAV',
       '38' => 'CIBTP',
       '39' => 'DSNJ',
+      '40' => 'RNCPS',
+      '41' => 'Sécurité sociale',
       '50' => 'FranceConnect v1',
       '51' => 'FranceConnect v2'
     }

@@ -61,24 +61,15 @@ module ProviderStubs::CNAV
     )
   end
 
-  def stub_cnav_404(api, provider_code = '00171001')
+  def stub_cnav_404(api, provider_label = nil)
     stub_request(:get, cnav_url(api)).with(
       query: hash_including({})
     ).to_return(
       status: 404,
       headers: {
-        'X-APISECU-FD' => provider_code
+        'X-APISECU-FD' => CNAV::RetrieverOrganizer::REGIME_CODE_FROM_LABEL[provider_label] || nil
       },
       body: read_payload_file("cnav/#{api}/404.json")
-    )
-  end
-
-  def stub_cnav_404_rncps(api)
-    stub_request(:get, cnav_url(api)).with(
-      query: hash_including({})
-    ).to_return(
-      status: 404,
-      body: read_payload_file("cnav/#{api}/404_RNCPS.json")
     )
   end
 
@@ -88,7 +79,17 @@ module ProviderStubs::CNAV
     ).to_return(
       status: 404,
       headers: {},
-      body: read_payload_file("cnav/#{api}/404.json")
+      body: read_payload_file('cnav/40409.json')
+    )
+  end
+
+  def stub_rncps_404(api)
+    stub_request(:get, cnav_url(api)).with(
+      query: hash_including({})
+    ).to_return(
+      status: 404,
+      headers: {},
+      body: read_payload_file('cnav/40406.json')
     )
   end
 

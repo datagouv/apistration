@@ -50,6 +50,60 @@ RSpec.describe CNAV::ComplementaireSanteSolidaire, type: :retriever_organizer do
 
         its(:errors) { is_expected.to include(instance_of(UnprocessableEntityError)) }
       end
+
+      describe 'with a 404' do
+        before do
+          stub_cnav_authenticate('complementaire_sante_solidaire')
+        end
+
+        describe 'when the error comes from RNCPS as a regime' do
+          before do
+            stub_cnav_404('complementaire_sante_solidaire', 'RNCPS')
+          end
+
+          it 'returns 404 message for RNCPS' do
+            expect(subject).to be_a_failure
+            expect(subject.errors).to include(instance_of(NotFoundError))
+            expect(subject.errors.first.detail).to eq("Le dossier allocataire n'a pas été trouvé auprès du RNCPS.")
+          end
+        end
+
+        describe 'when the error comes from sub provider' do
+          before do
+            stub_sngi_404('complementaire_sante_solidaire')
+          end
+
+          it 'returns 422 message for SNGI' do
+            expect(subject).to be_a_failure
+            expect(subject.errors).to include(instance_of(UnprocessableEntityError))
+            expect(subject.errors.first.detail).to eq("Les paramètres fournis ne permettent pas d'identifier un allocataire.")
+          end
+        end
+
+        describe 'when the error comes from RNCPS as a sub_provider' do
+          before do
+            stub_rncps_404('complementaire_sante_solidaire')
+          end
+
+          it 'returns 404 message for RNCPS' do
+            expect(subject).to be_a_failure
+            expect(subject.errors).to include(instance_of(NotFoundError))
+            expect(subject.errors.first.detail).to eq("L'allocataire n'est pas référencé auprès d'aucune des caisses elligible")
+          end
+        end
+
+        describe 'when the error comes from anything else' do
+          before do
+            stub_cnav_404('complementaire_sante_solidaire')
+          end
+
+          it 'returns 404 unexpected message' do
+            expect(subject).to be_a_failure
+            expect(subject.errors).to include(instance_of(NotFoundError))
+            expect(subject.errors.first.detail).to eq('Une erreur inatendue est survenue lors de la collecte des données')
+          end
+        end
+      end
     end
   end
 

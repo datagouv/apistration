@@ -44,7 +44,7 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
             # rubocop:disable RSpec/ContextWording
             context 'Allocataire non identifié' do
               before do
-                stub_cnav_404('quotient_familial_v2', nil)
+                stub_sngi_404('quotient_familial_v2')
               end
 
               build_rswag_example(UnprocessableEntityError.new(:civility))
@@ -86,7 +86,7 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
 
             context 'Allocataire non référencé' do
               before do
-                stub_cnav_404_rncps('quotient_familial_v2')
+                stub_rncps_404('quotient_familial_v2')
               end
 
               build_rswag_example(NotFoundError.new('CNAF & MSA', "L'allocataire n'est pas référencé auprès de la CNAF ni de la MSA", title: 'Allocataire non référencé', with_identifiant_message: false))

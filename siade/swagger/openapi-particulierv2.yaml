@@ -1650,31 +1650,31 @@ paths:
                 Allocataire non identifié:
                   value:
                     error: not_found
-                    reason: Les paramètres fournis ne permettent pas d'identifier
-                      un allocataire.
-                    message: Les paramètres fournis ne permettent pas d'identifier
-                      un allocataire.
+                    reason: Une erreur inatendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inatendue est survenue lors de la collecte
+                      des données
                 Dossier non trouvé MSA:
                   value:
                     error: not_found
-                    reason: Le dossier allocataire n'a pas été trouvé auprès de la
-                      MSA.
-                    message: Le dossier allocataire n'a pas été trouvé auprès de la
-                      MSA.
+                    reason: Une erreur inatendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inatendue est survenue lors de la collecte
+                      des données
                 Dossier non trouvé CNAF:
                   value:
                     error: not_found
-                    reason: Le dossier allocataire n'a pas été trouvé auprès de la
-                      CNAF.
-                    message: Le dossier allocataire n'a pas été trouvé auprès de la
-                      CNAF.
+                    reason: Une erreur inatendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inatendue est survenue lors de la collecte
+                      des données
                 Allocataire non référencé:
                   value:
                     error: not_found
-                    reason: L'allocataire n'est pas référencé auprès de la CNAF ni
-                      de la MSA
-                    message: L'allocataire n'est pas référencé auprès de la CNAF ni
-                      de la MSA
+                    reason: L'allocataire n'est pas référencé auprès d'aucune des
+                      caisses elligible
+                    message: L'allocataire n'est pas référencé auprès d'aucune des
+                      caisses elligible
               schema:
                 "$ref": "#/components/schemas/Error"
         '503':

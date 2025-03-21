@@ -80,7 +80,7 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
             # rubocop:disable RSpec/ContextWording
             context 'Allocataire non identifié' do
               before do
-                stub_cnav_404('quotient_familial_v2', nil)
+                stub_sngi_404('quotient_familial_v2')
               end
 
               build_rswag_example(UnprocessableEntityError.new(:civility))
@@ -98,7 +98,7 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
           response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
             context 'Dossier non trouvé MSA' do
               before do
-                stub_cnav_404('quotient_familial_v2', '00171001')
+                stub_cnav_404('quotient_familial_v2', 'MSA')
               end
 
               build_rswag_example(NotFoundError.new('MSA', "Le dossier allocataire n'a pas été trouvé auprès de la MSA.", title: 'Dossier allocataire absent MSA', with_identifiant_message: false))
@@ -110,7 +110,7 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
 
             context 'Dossier non trouvé CNAF' do
               before do
-                stub_cnav_404('quotient_familial_v2', '00810011')
+                stub_cnav_404('quotient_familial_v2', 'CNAF')
               end
 
               build_rswag_example(NotFoundError.new('CNAF', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", title: 'Dossier allocataire absent CNAF', with_identifiant_message: false))
@@ -122,7 +122,7 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
 
             context 'Allocataire non référencé' do
               before do
-                stub_cnav_404_rncps('quotient_familial_v2')
+                stub_rncps_404('quotient_familial_v2')
               end
 
               build_rswag_example(NotFoundError.new('CNAF & MSA', "L'allocataire n'est pas référencé auprès de la CNAF ni de la MSA", title: 'Allocataire non référencé', with_identifiant_message: false))

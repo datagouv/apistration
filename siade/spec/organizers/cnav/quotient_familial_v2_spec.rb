@@ -50,9 +50,21 @@ RSpec.describe CNAV::QuotientFamilialV2, type: :retriever_organizer do
           stub_cnav_authenticate('quotient_familial_v2')
         end
 
+        describe 'when the error comes from CNAF' do
+          before do
+            stub_cnav_404('quotient_familial_v2', 'CNAF')
+          end
+
+          it 'returns 404 message for CNAF' do
+            expect(subject).to be_a_failure
+            expect(subject.errors).to include(instance_of(NotFoundError))
+            expect(subject.errors.first.detail).to eq("Le dossier allocataire n'a pas été trouvé auprès de la CNAF.")
+          end
+        end
+
         describe 'when the error comes from MSA' do
           before do
-            stub_cnav_404('quotient_familial_v2')
+            stub_cnav_404('quotient_familial_v2', 'MSA')
           end
 
           it 'returns 404 message for MSA' do
@@ -62,7 +74,7 @@ RSpec.describe CNAV::QuotientFamilialV2, type: :retriever_organizer do
           end
         end
 
-        describe 'when the error comes from SNGI' do
+        describe 'when the error comes from sub provider' do
           before do
             stub_sngi_404('quotient_familial_v2')
           end
@@ -71,6 +83,30 @@ RSpec.describe CNAV::QuotientFamilialV2, type: :retriever_organizer do
             expect(subject).to be_a_failure
             expect(subject.errors).to include(instance_of(UnprocessableEntityError))
             expect(subject.errors.first.detail).to eq("Les paramètres fournis ne permettent pas d'identifier un allocataire.")
+          end
+        end
+
+        describe 'when the error comes from RNCPS' do
+          before do
+            stub_rncps_404('quotient_familial_v2')
+          end
+
+          it 'returns 404 message for RNCPS' do
+            expect(subject).to be_a_failure
+            expect(subject.errors).to include(instance_of(NotFoundError))
+            expect(subject.errors.first.detail).to eq("L'allocataire n'est pas référencé auprès d'aucune des caisses elligible")
+          end
+        end
+
+        describe 'when the error comes from anything else' do
+          before do
+            stub_cnav_404('quotient_familial_v2')
+          end
+
+          it 'returns 404 unexpected message' do
+            expect(subject).to be_a_failure
+            expect(subject.errors).to include(instance_of(NotFoundError))
+            expect(subject.errors.first.detail).to eq('Une erreur inatendue est survenue lors de la collecte des données')
           end
         end
       end
