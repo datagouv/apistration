@@ -38,18 +38,65 @@ RSpec.describe 'API Particulier: CNAV: Complementaire Sante Solidaire with Franc
           end
         end
 
-        context 'when the complementaire sante solidaire is not found' do
-          before do
-            stub_cnav_404('complementaire_sante_solidaire')
+        describe 'when the user is not found' do
+          response '422', "Impossible d'identifier l'allocataire" do
+            let(:codeCogInseePaysNaissance) { '99623' }
+            # rubocop:disable RSpec/ContextWording
+            context 'Allocataire non identifié' do
+              before do
+                stub_sngi_404('complementaire_sante_solidaire')
+              end
+
+              build_rswag_example(UnprocessableEntityError.new(:civility))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
           end
+          # rubocop:enable RSpec/ContextWording
+        end
 
-          response '404', 'Dossier non trouvé' do
-            schema '$ref' => '#/components/schemas/Error'
+        describe 'when the css is not found' do
+          # rubocop:disable RSpec/ContextWording
+          response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
+            context 'Dossier non trouvé RNCPS' do
+              before do
+                stub_cnav_404('complementaire_sante_solidaire', 'RNCPS')
+              end
 
-            build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.', with_identifiant_message: false))
+              build_rswag_example(NotFoundError.new('RNCPS', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", title: 'Dossier allocataire absent RNCPS', with_identifiant_message: false))
 
-            run_test!
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+
+            context 'Allocataire non référencé' do
+              before do
+                stub_rncps_404('complementaire_sante_solidaire')
+              end
+
+              build_rswag_example(NotFoundError.new('CNAF & MSA', "L'allocataire n'est pas référencé auprès de la CNAF ni de la MSA", title: 'Allocataire non référencé', with_identifiant_message: false))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+
+            context 'Erreur inatendue' do
+              before do
+                stub_cnav_404('complementaire_sante_solidaire')
+              end
+
+              build_rswag_example(NotFoundError.new('CNAF & MSA', 'Une erreur inatendue est survenue lors de la collecte des données', title: 'Erreur inatendue', with_identifiant_message: false))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
           end
+          # rubocop:enable RSpec/ContextWording
         end
       end
     end

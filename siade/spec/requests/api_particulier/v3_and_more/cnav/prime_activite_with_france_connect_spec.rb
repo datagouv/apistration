@@ -38,19 +38,81 @@ RSpec.describe 'API Particulier: CNAV: Prime Activite with FranceConnect', api: 
           end
         end
 
-        context 'when the prime activite is not found' do
-          before do
-            stub_cnav_404('prime_activite')
+        describe 'when the user is not found' do
+          response '422', "Impossible d'identifier l'allocataire" do
+            let(:codeCogInseePaysNaissance) { '99623' }
+            # rubocop:disable RSpec/ContextWording
+            context 'Allocataire non identifié' do
+              before do
+                stub_sngi_404('prime_activite')
+              end
+
+              build_rswag_example(UnprocessableEntityError.new(:civility))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
           end
-
-          response '404', 'Dossier non trouvé' do
-            schema '$ref' => '#/components/schemas/Error'
-
-            build_rswag_example(NotFoundError.new('CNAV', 'Dossier allocataire inexistant. Le document ne peut être édité.', with_identifiant_message: false))
-
-            run_test!
-          end
+          # rubocop:enable RSpec/ContextWording
         end
+
+        describe 'when the pa is not found' do
+          # rubocop:disable RSpec/ContextWording
+          response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
+            context 'Dossier non trouvé MSA' do
+              before do
+                stub_cnav_404('prime_activite', 'MSA')
+              end
+
+              build_rswag_example(NotFoundError.new('MSA', "Le dossier allocataire n'a pas été trouvé auprès de la MSA.", title: 'Dossier allocataire absent MSA', with_identifiant_message: false))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+
+            context 'Dossier non trouvé CNAF' do
+              before do
+                stub_cnav_404('prime_activite', 'CNAF')
+              end
+
+              build_rswag_example(NotFoundError.new('CNAF', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", title: 'Dossier allocataire absent CNAF', with_identifiant_message: false))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+
+            context 'Allocataire non référencé' do
+              before do
+                stub_rncps_404('prime_activite')
+              end
+
+              build_rswag_example(NotFoundError.new('CNAF & MSA', "L'allocataire n'est pas référencé auprès de la CNAF ni de la MSA", title: 'Allocataire non référencé', with_identifiant_message: false))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+
+            context 'Erreur inatendue' do
+              before do
+                stub_cnav_404('prime_activite')
+              end
+
+              build_rswag_example(NotFoundError.new('CNAF & MSA', 'Une erreur inatendue est survenue lors de la collecte des données', title: 'Erreur inatendue', with_identifiant_message: false))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+          end
+          # rubocop:enable RSpec/ContextWording
+        end
+
+        common_provider_errors_request('CNAV', CNAV::PrimeActivite)
+        common_network_error_request('CNAV', CNAV::PrimeActivite)
       end
     end
   end

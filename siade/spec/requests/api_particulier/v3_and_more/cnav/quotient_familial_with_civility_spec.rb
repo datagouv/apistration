@@ -131,6 +131,18 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
 
               run_test!
             end
+
+            context 'Erreur inatendue' do
+              before do
+                stub_cnav_404('quotient_familial_v2')
+              end
+
+              build_rswag_example(NotFoundError.new('CNAF & MSA', 'Une erreur inatendue est survenue lors de la collecte des données', title: 'Erreur inatendue', with_identifiant_message: false))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
           end
           # rubocop:enable RSpec/ContextWording
         end

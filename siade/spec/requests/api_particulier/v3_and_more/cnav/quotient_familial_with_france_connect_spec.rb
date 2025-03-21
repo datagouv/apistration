@@ -62,7 +62,7 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
           response '404', 'Dossier allocataire inexistant. Le document ne peut être édité.' do
             context 'Dossier non trouvé MSA' do
               before do
-                stub_cnav_404('quotient_familial_v2', '00171001')
+                stub_cnav_404('quotient_familial_v2', 'MSA')
               end
 
               build_rswag_example(NotFoundError.new('MSA', "Le dossier allocataire n'a pas été trouvé auprès de la MSA.", title: 'Dossier allocataire absent MSA', with_identifiant_message: false))
@@ -74,7 +74,7 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
 
             context 'Dossier non trouvé CNAF' do
               before do
-                stub_cnav_404('quotient_familial_v2', '00810011')
+                stub_cnav_404('quotient_familial_v2', 'CNAF')
               end
 
               build_rswag_example(NotFoundError.new('CNAF', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", title: 'Dossier allocataire absent CNAF', with_identifiant_message: false))
@@ -90,6 +90,18 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
               end
 
               build_rswag_example(NotFoundError.new('CNAF & MSA', "L'allocataire n'est pas référencé auprès de la CNAF ni de la MSA", title: 'Allocataire non référencé', with_identifiant_message: false))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+
+            context 'Erreur inatendue' do
+              before do
+                stub_cnav_404('quotient_familial_v2')
+              end
+
+              build_rswag_example(NotFoundError.new('CNAF & MSA', 'Une erreur inatendue est survenue lors de la collecte des données', title: 'Erreur inatendue', with_identifiant_message: false))
 
               schema '$ref' => '#/components/schemas/Error'
 
