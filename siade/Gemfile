@@ -40,7 +40,7 @@ gem 'hexapdf'
 
 gem 'csv'
 
-gem 'fog-openstack', '1.1.4'
+gem 'fog-openstack', '1.1.5'
 
 gem 'interactor'
 
