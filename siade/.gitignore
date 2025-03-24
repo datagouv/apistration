@@ -96,3 +96,9 @@ config/credentials/staging.yml.enc
 sandbox/
 .deploy_token
 .sentry_token
+
+# Possible commit mistakes
+
+nodes_modules/
+package-lock.json
+package.json
