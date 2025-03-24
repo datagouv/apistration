@@ -1,0 +1,72 @@
+
+---
+description: |-
+  ## IDENTITÉ CAS ETRANGER - Date de naissance inconnue - QF CAF en cours de 600
+                           - avec un second allocataire et deux enfants
+
+  Ce cas est le cas personne étrangère de l'ensemble des cas de test d'identité/limite.
+  Il a pour but de décrire une personne fictive avec l'ensemble de ses paramètres
+  et la réponse lorsque celui ci est trouvé.
+
+params:
+  codePaysLieuDeNaissance: '99351'
+  sexe: 'M'
+  nomNaissange: 'TOUNSI'
+  prenoms:
+    - 'HOUSSEM'  
+status: 200
+payload: |-
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "TOUNSI",
+        "nomUsage": null,
+        "prenoms": "HOUSSEM",
+        "anneeDateDeNaissance": "1992",
+        "moisDateDeNaissance": "07",
+        "jourDateDeNaissance": "04",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "TOUNSI",
+        "nomUsage": null,
+        "prenoms": "FATMA",
+        "anneeDateDeNaissance": "1995",
+        "moisDateDeNaissance": "11",
+        "jourDateDeNaissance": "24",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [ {
+        "nomNaissance": "TOUNSI",
+        "nomUsage": null,
+        "prenoms": "AZZEM",
+        "anneeDateDeNaissance": "2006",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "25",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "TOUNSI",
+        "nomUsage": null,
+        "prenoms": "HALIMA",
+        "anneeDateDeNaissance": "2004",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "20",
+        "sexe": "F"
+      }
+      ],
+    "adresse": {
+      "identite": "Monsieur TOUNSI HOUSSEM",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "13 RUE PASTEUR",
+      "lieuDit": null,
+      "codePostalVille": "7250 MANOUBA",
+      "pays": "TUNIS"
+    },
+    "quotientFamilial": 600,
+    "annee": 2025,
+    "mois": 1
+  }

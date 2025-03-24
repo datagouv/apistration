@@ -1,4 +1,63 @@
 Titre,Description,Paramètres,Status,Réponse
+,"## IDENTITÉ CAS ETRANGER - Date de naissance inconnue - QF CAF en cours de 600
+                         - avec un second allocataire et deux enfants
+
+Ce cas est le cas personne étrangère de l'ensemble des cas de test d'identité/limite.
+Il a pour but de décrire une personne fictive avec l'ensemble de ses paramètres
+et la réponse lorsque celui ci est trouvé.","{""codePaysLieuDeNaissance"":""99351"",""sexe"":""M"",""nomNaissange"":""TOUNSI"",""prenoms"":[""HOUSSEM""]}",200,"{
+  ""regime"": ""CNAF"",
+  ""allocataires"": [
+    {
+      ""nomNaissance"": ""TOUNSI"",
+      ""nomUsage"": null,
+      ""prenoms"": ""HOUSSEM"",
+      ""anneeDateDeNaissance"": ""1992"",
+      ""moisDateDeNaissance"": ""07"",
+      ""jourDateDeNaissance"": ""04"",
+      ""sexe"": ""M""
+    },
+    {
+      ""nomNaissance"": ""TOUNSI"",
+      ""nomUsage"": null,
+      ""prenoms"": ""FATMA"",
+      ""anneeDateDeNaissance"": ""1995"",
+      ""moisDateDeNaissance"": ""11"",
+      ""jourDateDeNaissance"": ""24"",
+      ""sexe"": ""F""
+    }
+  ],
+  ""enfants"": [ {
+      ""nomNaissance"": ""TOUNSI"",
+      ""nomUsage"": null,
+      ""prenoms"": ""AZZEM"",
+      ""anneeDateDeNaissance"": ""2006"",
+      ""moisDateDeNaissance"": ""04"",
+      ""jourDateDeNaissance"": ""25"",
+      ""sexe"": ""M""
+    },
+    {
+      ""nomNaissance"": ""TOUNSI"",
+      ""nomUsage"": null,
+      ""prenoms"": ""HALIMA"",
+      ""anneeDateDeNaissance"": ""2004"",
+      ""moisDateDeNaissance"": ""04"",
+      ""jourDateDeNaissance"": ""20"",
+      ""sexe"": ""F""
+    }
+    ],
+  ""adresse"": {
+    ""identite"": ""Monsieur TOUNSI HOUSSEM"",
+    ""complementInformation"": null,
+    ""complementInformationGeographique"": null,
+    ""numeroLibelleVoie"": ""13 RUE PASTEUR"",
+    ""lieuDit"": null,
+    ""codePostalVille"": ""7250 MANOUBA"",
+    ""pays"": ""TUNIS""
+  },
+  ""quotientFamilial"": 600,
+  ""annee"": 2025,
+  ""mois"": 1
+}"
 ,"## Couple avec deux enfants - allocataire féminin - QF MSA de 150 en mai 2023
 
 Ce cas permet de tester :
@@ -130,6 +189,133 @@ Ce cas permet de tester :
   ""annee"": 2024,
   ""mois"": 9
 }"
+,"## Couple avec deux enfants - second allocataire - QF CAF de 300
+
+Ce cas permet de tester : 
+- [Param. appel] Lieu de naissance en France
+- [Param. appel] Sexe masculin
+- [Param. appel] Deux prénoms
+- [Réponse] Tableau d'informations car couple
+- [Réponse] Tableau d'informations car deux enfants  
+- [Réponse] Quotient familial de 300  ","{""codeInseeLieuDeNaissance"":""59350"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M"",""nomNaissance"":""BERTRAND"",""prenoms"":[""ANTOINE"",""LOUIS""],""anneeDateDeNaissance"":1990,""moisDateDeNaissance"":11,""jourDateDeNaissance"":23}",200,"{
+  ""regime"": ""CAF"",
+  ""allocataires"": [
+    {
+      ""nomNaissance"": ""BERTRAND"",
+      ""nomUsage"": null,
+      ""prenoms"": ""ANTOINE LOUIS"",
+      ""anneeDateDeNaissance"": ""1990"",
+      ""moisDateDeNaissance"": ""11"",
+      ""jourDateDeNaissance"": ""23"",
+      ""sexe"": ""M""
+    },
+    {
+      ""nomNaissance"": ""DUMONT"",
+      ""nomUsage"": ""BERTRAND"",
+      ""prenoms"": ""CELINE MARIE"",
+      ""anneeDateDeNaissance"": ""1992"",
+      ""moisDateDeNaissance"": ""07"",
+      ""jourDateDeNaissance"": ""14"",
+      ""sexe"": ""F""
+    }
+  ],
+  ""enfants"": [
+    {
+      ""nomNaissance"": ""BERTRAND"",
+      ""nomUsage"": null,
+      ""prenoms"": ""MATHIS NOAH"",
+      ""anneeDateDeNaissance"": ""2018"",
+      ""moisDateDeNaissance"": ""06"",
+      ""jourDateDeNaissance"": ""30"",
+      ""sexe"": ""M""
+    },
+    {
+      ""nomNaissance"": ""BERTRAND"",
+      ""nomUsage"": null,
+      ""prenoms"": ""EMMA LUCIE"",
+      ""anneeDateDeNaissance"": ""2021"",
+      ""moisDateDeNaissance"": ""04"",
+      ""jourDateDeNaissance"": ""10"",
+      ""sexe"": ""F""
+    }
+  ],
+  ""adresse"": {
+    ""identite"": ""Monsieur BERTRAND ANTOINE"",
+    ""complementInformation"": null,
+    ""complementInformationGeographique"": null,
+    ""numeroLibelleVoie"": ""8 RUE DES LILAS"",
+    ""lieuDit"": null,
+    ""codePostalVille"": ""59000 LILLE"",
+    ""pays"": ""FRANCE""
+  },
+  ""quotientFamilial"": 300,
+  ""annee"": 2024,
+  ""mois"": 12
+}"
+,"## Couple avec deux enfants - second allocataire - QF MSACAF de 954
+
+Ce cas permet de tester :  
+- [Param. appel] Lieu de naissance en France
+- [Param. appel] Sexe masculin
+- [Param. appel] Deux prénoms
+- [Réponse] Tableau d'informations car couple
+- [Réponse] Tableau d'informations car deux enfants 
+- [Réponse] Quotient familial de 954
+- [Réponse] Quotient familial ancien de mai 2023","{""codeInseeLieuDeNaissance"":""44109"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M"",""nomNaissance"":""MARTIN"",""prenoms"":[""PIERRE"",""OLIVIER""],""anneeDateDeNaissance"":1985,""moisDateDeNaissance"":3}",200,"{
+  ""regime"": ""CAF"",
+  ""allocataires"": [
+    {
+      ""nomNaissance"": ""MARTIN"",
+      ""nomUsage"": null,
+      ""prenoms"": ""PIERRE OLIVIER"",
+      ""anneeDateDeNaissance"": ""1985"",
+      ""moisDateDeNaissance"": ""03"",
+      ""jourDateDeNaissance"": ""15"",
+      ""sexe"": ""M""
+    },
+    {
+      ""nomNaissance"": ""LEGRAND"",
+      ""nomUsage"": ""MARTIN"",
+      ""prenoms"": ""EMILIE MARIE"",
+      ""anneeDateDeNaissance"": ""1987"",
+      ""moisDateDeNaissance"": ""06"",
+      ""jourDateDeNaissance"": ""27"",
+      ""sexe"": ""F""
+    }
+  ],
+  ""enfants"": [
+    {
+      ""nomNaissance"": ""MARTIN"",
+      ""nomUsage"": null,
+      ""prenoms"": ""JULIEN LUC"",
+      ""anneeDateDeNaissance"": ""2012"",
+      ""moisDateDeNaissance"": ""09"",
+      ""jourDateDeNaissance"": ""05"",
+      ""sexe"": ""M""
+    },
+    {
+      ""nomNaissance"": ""MARTIN"",
+      ""nomUsage"": null,
+      ""prenoms"": ""LISA ANNE"",
+      ""anneeDateDeNaissance"": ""2015"",
+      ""moisDateDeNaissance"": ""12"",
+      ""jourDateDeNaissance"": ""18"",
+      ""sexe"": ""F""
+    }
+  ],
+  ""adresse"": {
+    ""identite"": ""Monsieur MARTIN PIERRE"",
+    ""complementInformation"": null,
+    ""complementInformationGeographique"": null,
+    ""numeroLibelleVoie"": ""25 RUE DU GENERAL DE GAULLE"",
+    ""lieuDit"": null,
+    ""codePostalVille"": ""44000 NANTES"",
+    ""pays"": ""FRANCE""
+  },
+  ""quotientFamilial"": 954,
+  ""annee"": 2024,
+  ""mois"": 12
+}"
 ,"## célibataire né aux Etats Unis avec deux enfants - allocataire féminin - QF CNAF de 300 en aout 2024
 
 Ce cas permet de tester : 
@@ -185,6 +371,37 @@ Ce cas permet de tester :
   ""quotientFamilial"": 300,
   ""annee"": 2024,
   ""mois"": 8
+}"
+,"## IDENTITÉ CAS ETRANGER - avec QF de 424
+
+Ce cas est le cas personne étrangère de l'ensemble des cas de test d'identité/limite.
+Il a pour but de décrire une personne fictive avec l'ensemble de ses paramètres
+et la réponse lorsque celui ci est trouvé.","{""codePaysLieuDeNaissance"":""99351"",""sexe"":""M"",""nomNaissange"":""TEMIMI"",""prenoms"":[""AZIZ"",""MOHAMED""],""anneeDateDeNaissance"":1992,""moisDateDeNaissance"":6,""jourDateDeNaissance"":16}",200,"{
+  ""regime"": ""CNAF"",
+  ""allocataires"": [
+    {
+      ""nomNaissance"": ""TEMIMI"",
+      ""nomUsage"": null,
+      ""prenoms"": ""AZIZ MOHAMED"",
+      ""anneeDateDeNaissance"": ""1992"",
+      ""moisDateDeNaissance"": ""06"",
+      ""jourDateDeNaissance"": ""16"",
+      ""sexe"": ""M""
+    }
+  ],
+  ""enfants"": [],
+  ""adresse"": {
+    ""identite"": ""Monsieur TEMIMI MOHAMED AZIZ"",
+    ""complementInformation"": null,
+    ""complementInformationGeographique"": null,
+    ""numeroLibelleVoie"": ""19 RUE EL NACER KODIA"",
+    ""lieuDit"": null,
+    ""codePostalVille"": ""7000 BIZERTE"",
+    ""pays"": ""TUNIS""
+  },
+  ""quotientFamilial"": 424,
+  ""annee"": 2025,
+  ""mois"": 2
 }"
 ,"## IDENTITÉ CAS ETRANGER
 
@@ -435,6 +652,41 @@ Ce cas permet de tester :
   ""quotientFamilial"": 650,
   ""annee"": 2023,
   ""mois"": 6
+}"
+,"## seul - sans enfant - QF CAF de 846
+
+Ce cas permet de tester : 
+- [Param. appel] Lieu de naissance en France
+- [Param. appel] Sexe feminin
+- [Param. appel] Deux prénoms
+- [Réponse] Un seul allocataire
+- [Réponse] Absence d’enfants
+- [Réponse] Quotient familial de 846  ","{""codeInseeLieuDeNaissance"":""75056"",""codePaysLieuDeNaissance"":""99100"",""sexe"":""M"",""nomNaissance"":""LEFEBVRE"",""prenoms"":[""NICOLAS"",""ANTOINE""],""anneeDateDeNaissance"":1992,""moisDateDeNaissance"":4}",200,"{
+  ""regime"": ""CAF"",
+  ""allocataires"": [
+    {
+      ""nomNaissance"": ""LEFEBVRE"",
+      ""nomUsage"": null,
+      ""prenoms"": ""NICOLAS ANTOINE"",
+      ""anneeDateDeNaissance"": ""1992"",
+      ""moisDateDeNaissance"": ""04"",
+      ""jourDateDeNaissance"": ""10"",
+      ""sexe"": ""M""
+    }
+  ],
+  ""enfants"": [],
+  ""adresse"": {
+    ""identite"": ""Monsieur LEFEBVRE NICOLAS"",
+    ""complementInformation"": null,
+    ""complementInformationGeographique"": null,
+    ""numeroLibelleVoie"": ""15 BOULEVARD HAUSSMANN"",
+    ""lieuDit"": null,
+    ""codePostalVille"": ""75008 PARIS"",
+    ""pays"": ""FRANCE""
+  },
+  ""quotientFamilial"": 846,
+  ""annee"": 2024,
+  ""mois"": 12
 }"
 ,"## Allocataire seul - masculin - QF CAF de 2550 du mois en cours
 

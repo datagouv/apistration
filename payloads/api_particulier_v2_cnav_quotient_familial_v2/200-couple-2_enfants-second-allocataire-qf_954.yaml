@@ -1,0 +1,79 @@
+---
+description: |-
+  ## Couple avec deux enfants - second allocataire - QF MSACAF de 954
+
+  Ce cas permet de tester :  
+  - [Param. appel] Lieu de naissance en France
+  - [Param. appel] Sexe masculin
+  - [Param. appel] Deux prénoms
+  - [Réponse] Tableau d'informations car couple
+  - [Réponse] Tableau d'informations car deux enfants 
+  - [Réponse] Quotient familial de 954
+  - [Réponse] Quotient familial ancien de mai 2023
+params:
+  codeInseeLieuDeNaissance: '44109'
+  codePaysLieuDeNaissance: '99100'
+  sexe: 'M'
+  nomNaissance: 'MARTIN'
+  prenoms:
+    - 'PIERRE'
+    - 'OLIVIER'
+  anneeDateDeNaissance: 1985
+  moisDateDeNaissance: 3
+status: 200
+payload: |-
+  {
+    "regime": "CAF",
+    "allocataires": [
+      {
+        "nomNaissance": "MARTIN",
+        "nomUsage": null,
+        "prenoms": "PIERRE OLIVIER",
+        "anneeDateDeNaissance": "1985",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "15",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "LEGRAND",
+        "nomUsage": "MARTIN",
+        "prenoms": "EMILIE MARIE",
+        "anneeDateDeNaissance": "1987",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "27",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "MARTIN",
+        "nomUsage": null,
+        "prenoms": "JULIEN LUC",
+        "anneeDateDeNaissance": "2012",
+        "moisDateDeNaissance": "09",
+        "jourDateDeNaissance": "05",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "MARTIN",
+        "nomUsage": null,
+        "prenoms": "LISA ANNE",
+        "anneeDateDeNaissance": "2015",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "18",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur MARTIN PIERRE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "25 RUE DU GENERAL DE GAULLE",
+      "lieuDit": null,
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 954,
+    "annee": 2024,
+    "mois": 12
+  }

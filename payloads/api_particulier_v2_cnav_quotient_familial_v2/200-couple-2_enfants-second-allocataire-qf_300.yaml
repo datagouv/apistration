@@ -1,0 +1,80 @@
+
+---
+description: |-
+  ## Couple avec deux enfants - second allocataire - QF CAF de 300
+
+  Ce cas permet de tester : 
+  - [Param. appel] Lieu de naissance en France
+  - [Param. appel] Sexe masculin
+  - [Param. appel] Deux prénoms
+  - [Réponse] Tableau d'informations car couple
+  - [Réponse] Tableau d'informations car deux enfants  
+  - [Réponse] Quotient familial de 300  
+params:
+  codeInseeLieuDeNaissance: '59350'
+  codePaysLieuDeNaissance: '99100'
+  sexe: 'M'
+  nomNaissance: 'BERTRAND'
+  prenoms:
+    - 'ANTOINE'
+    - 'LOUIS'
+  anneeDateDeNaissance: 1990
+  moisDateDeNaissance: 11
+  jourDateDeNaissance: 23
+status: 200
+payload: |-
+  {
+    "regime": "CAF",
+    "allocataires": [
+      {
+        "nomNaissance": "BERTRAND",
+        "nomUsage": null,
+        "prenoms": "ANTOINE LOUIS",
+        "anneeDateDeNaissance": "1990",
+        "moisDateDeNaissance": "11",
+        "jourDateDeNaissance": "23",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "DUMONT",
+        "nomUsage": "BERTRAND",
+        "prenoms": "CELINE MARIE",
+        "anneeDateDeNaissance": "1992",
+        "moisDateDeNaissance": "07",
+        "jourDateDeNaissance": "14",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "BERTRAND",
+        "nomUsage": null,
+        "prenoms": "MATHIS NOAH",
+        "anneeDateDeNaissance": "2018",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "30",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "BERTRAND",
+        "nomUsage": null,
+        "prenoms": "EMMA LUCIE",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "10",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur BERTRAND ANTOINE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "8 RUE DES LILAS",
+      "lieuDit": null,
+      "codePostalVille": "59000 LILLE",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 300,
+    "annee": 2024,
+    "mois": 12
+  }

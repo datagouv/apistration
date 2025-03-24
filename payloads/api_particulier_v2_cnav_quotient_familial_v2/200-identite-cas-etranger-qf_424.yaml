@@ -1,0 +1,47 @@
+---
+description: |-
+  ## IDENTITÉ CAS ETRANGER - avec QF de 424
+
+  Ce cas est le cas personne étrangère de l'ensemble des cas de test d'identité/limite.
+  Il a pour but de décrire une personne fictive avec l'ensemble de ses paramètres
+  et la réponse lorsque celui ci est trouvé.
+
+params:
+  codePaysLieuDeNaissance: '99351'
+  sexe: 'M'
+  nomNaissange: 'TEMIMI'
+  prenoms:
+    - 'AZIZ'
+    - 'MOHAMED'
+  anneeDateDeNaissance: 1992
+  moisDateDeNaissance: 06
+  jourDateDeNaissance: 16
+status: 200
+payload: |-
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "TEMIMI",
+        "nomUsage": null,
+        "prenoms": "AZIZ MOHAMED",
+        "anneeDateDeNaissance": "1992",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "16",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [],
+    "adresse": {
+      "identite": "Monsieur TEMIMI MOHAMED AZIZ",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "19 RUE EL NACER KODIA",
+      "lieuDit": null,
+      "codePostalVille": "7000 BIZERTE",
+      "pays": "TUNIS"
+    },
+    "quotientFamilial": 424,
+    "annee": 2025,
+    "mois": 2
+  }
