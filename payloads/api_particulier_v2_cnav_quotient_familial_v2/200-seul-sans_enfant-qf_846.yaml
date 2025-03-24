@@ -1,0 +1,51 @@
+---
+description: |-
+  ## seul - sans enfant - QF CAF de 846
+
+  Ce cas permet de tester : 
+  - [Param. appel] Lieu de naissance en France
+  - [Param. appel] Sexe feminin
+  - [Param. appel] Deux prénoms
+  - [Réponse] Un seul allocataire
+  - [Réponse] Absence d’enfants
+  - [Réponse] Quotient familial de 846  
+params:
+  codeInseeLieuDeNaissance: '75056'
+  codePaysLieuDeNaissance: '99100'
+  sexe: 'M'
+  nomNaissance: 'LEFEBVRE'
+  prenoms:
+    - 'NICOLAS'
+    - 'ANTOINE'
+  anneeDateDeNaissance: 1992
+  moisDateDeNaissance: 4
+  jourDateDeNaissance: 10
+status: 200
+payload: |-
+  {
+    "regime": "CAF",
+    "allocataires": [
+      {
+        "nomNaissance": "LEFEBVRE",
+        "nomUsage": null,
+        "prenoms": "NICOLAS ANTOINE",
+        "anneeDateDeNaissance": "1992",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "10",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [],
+    "adresse": {
+      "identite": "Monsieur LEFEBVRE NICOLAS",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "15 BOULEVARD HAUSSMANN",
+      "lieuDit": null,
+      "codePostalVille": "75008 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 846,
+    "annee": 2024,
+    "mois": 12
+  }

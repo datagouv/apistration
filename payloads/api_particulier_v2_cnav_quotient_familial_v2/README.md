@@ -1,4 +1,107 @@
 # Quotient familial MSA & CAF
+* [200-couple-2_enfants-cas-etranger-qf_msa_600.yaml](200-couple-2_enfants-cas-etranger-qf_msa_600.yaml)
+
+  Status `200`
+
+  ## IDENTITÉ CAS ETRANGER - Date de naissance inconnue - QF CAF en cours de 600
+                         - avec un second allocataire et deux enfants
+
+Ce cas est le cas personne étrangère de l'ensemble des cas de test d'identité/limite.
+Il a pour but de décrire une personne fictive avec l'ensemble de ses paramètres
+et la réponse lorsque celui ci est trouvé.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codePaysLieuDeNaissance": "99351",
+    "sexe": "M",
+    "nomNaissange": "TOUNSI",
+    "prenoms": [
+      "HOUSSEM"
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "TOUNSI",
+        "nomUsage": null,
+        "prenoms": "HOUSSEM",
+        "anneeDateDeNaissance": "1992",
+        "moisDateDeNaissance": "07",
+        "jourDateDeNaissance": "04",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "TOUNSI",
+        "nomUsage": null,
+        "prenoms": "FATMA",
+        "anneeDateDeNaissance": "1995",
+        "moisDateDeNaissance": "11",
+        "jourDateDeNaissance": "24",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "TOUNSI",
+        "nomUsage": null,
+        "prenoms": "AZZEM",
+        "anneeDateDeNaissance": "2006",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "25",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "TOUNSI",
+        "nomUsage": null,
+        "prenoms": "HALIMA",
+        "anneeDateDeNaissance": "2004",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "20",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur TOUNSI HOUSSEM",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "13 RUE PASTEUR",
+      "lieuDit": null,
+      "codePostalVille": "7250 MANOUBA",
+      "pays": "TUNIS"
+    },
+    "quotientFamilial": 600,
+    "annee": 2025,
+    "mois": 1
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codePaysLieuDeNaissance=99351' -d 'sexe=M' -d 'nomNaissange=TOUNSI' -d 'prenoms[]=HOUSSEM' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
 * [200-couple-2_enfants-qf_msa_150_mai23.yaml](200-couple-2_enfants-qf_msa_150_mai23.yaml)
 
   Status `200`
@@ -226,6 +329,229 @@ Ce cas permet de tester :
 
   </p>
   </details>
+* [200-couple-2_enfants-second-allocataire-qf_300.yaml](200-couple-2_enfants-second-allocataire-qf_300.yaml)
+
+  Status `200`
+
+  ## Couple avec deux enfants - second allocataire - QF CAF de 300
+
+Ce cas permet de tester : 
+- [Param. appel] Lieu de naissance en France
+- [Param. appel] Sexe masculin
+- [Param. appel] Deux prénoms
+- [Réponse] Tableau d'informations car couple
+- [Réponse] Tableau d'informations car deux enfants  
+- [Réponse] Quotient familial de 300  
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeInseeLieuDeNaissance": "59350",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "M",
+    "nomNaissance": "BERTRAND",
+    "prenoms": [
+      "ANTOINE",
+      "LOUIS"
+    ],
+    "anneeDateDeNaissance": 1990,
+    "moisDateDeNaissance": 11,
+    "jourDateDeNaissance": 23
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CAF",
+    "allocataires": [
+      {
+        "nomNaissance": "BERTRAND",
+        "nomUsage": null,
+        "prenoms": "ANTOINE LOUIS",
+        "anneeDateDeNaissance": "1990",
+        "moisDateDeNaissance": "11",
+        "jourDateDeNaissance": "23",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "DUMONT",
+        "nomUsage": "BERTRAND",
+        "prenoms": "CELINE MARIE",
+        "anneeDateDeNaissance": "1992",
+        "moisDateDeNaissance": "07",
+        "jourDateDeNaissance": "14",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "BERTRAND",
+        "nomUsage": null,
+        "prenoms": "MATHIS NOAH",
+        "anneeDateDeNaissance": "2018",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "30",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "BERTRAND",
+        "nomUsage": null,
+        "prenoms": "EMMA LUCIE",
+        "anneeDateDeNaissance": "2021",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "10",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur BERTRAND ANTOINE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "8 RUE DES LILAS",
+      "lieuDit": null,
+      "codePostalVille": "59000 LILLE",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 300,
+    "annee": 2024,
+    "mois": 12
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codeInseeLieuDeNaissance=59350' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' -d 'nomNaissance=BERTRAND' -d 'prenoms[]=ANTOINE' -d 'prenoms[]=LOUIS' -d 'anneeDateDeNaissance=1990' -d 'moisDateDeNaissance=11' -d 'jourDateDeNaissance=23' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
+* [200-couple-2_enfants-second-allocataire-qf_954.yaml](200-couple-2_enfants-second-allocataire-qf_954.yaml)
+
+  Status `200`
+
+  ## Couple avec deux enfants - second allocataire - QF MSACAF de 954
+
+Ce cas permet de tester :  
+- [Param. appel] Lieu de naissance en France
+- [Param. appel] Sexe masculin
+- [Param. appel] Deux prénoms
+- [Réponse] Tableau d'informations car couple
+- [Réponse] Tableau d'informations car deux enfants 
+- [Réponse] Quotient familial de 954
+- [Réponse] Quotient familial ancien de mai 2023
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeInseeLieuDeNaissance": "44109",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "M",
+    "nomNaissance": "MARTIN",
+    "prenoms": [
+      "PIERRE",
+      "OLIVIER"
+    ],
+    "anneeDateDeNaissance": 1985,
+    "moisDateDeNaissance": 3,
+    "jourDateDeNaissance": 15
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CAF",
+    "allocataires": [
+      {
+        "nomNaissance": "MARTIN",
+        "nomUsage": null,
+        "prenoms": "PIERRE OLIVIER",
+        "anneeDateDeNaissance": "1985",
+        "moisDateDeNaissance": "03",
+        "jourDateDeNaissance": "15",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "LEGRAND",
+        "nomUsage": "MARTIN",
+        "prenoms": "EMILIE MARIE",
+        "anneeDateDeNaissance": "1987",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "27",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nomNaissance": "MARTIN",
+        "nomUsage": null,
+        "prenoms": "JULIEN LUC",
+        "anneeDateDeNaissance": "2012",
+        "moisDateDeNaissance": "09",
+        "jourDateDeNaissance": "05",
+        "sexe": "M"
+      },
+      {
+        "nomNaissance": "MARTIN",
+        "nomUsage": null,
+        "prenoms": "LISA ANNE",
+        "anneeDateDeNaissance": "2015",
+        "moisDateDeNaissance": "12",
+        "jourDateDeNaissance": "18",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "identite": "Monsieur MARTIN PIERRE",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "25 RUE DU GENERAL DE GAULLE",
+      "lieuDit": null,
+      "codePostalVille": "44000 NANTES",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 954,
+    "annee": 2024,
+    "mois": 12
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codeInseeLieuDeNaissance=44109' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' -d 'nomNaissance=MARTIN' -d 'prenoms[]=PIERRE' -d 'prenoms[]=OLIVIER' -d 'anneeDateDeNaissance=1985' -d 'moisDateDeNaissance=3' -d 'jourDateDeNaissance=15' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
 * [200-etranger-celibataire-2_enfants-qf_cnaf_300_sept2024.yaml](200-etranger-celibataire-2_enfants-qf_cnaf_300_sept2024.yaml)
 
   Status `200`
@@ -323,6 +649,86 @@ Ce cas permet de tester :
   ```bash
   curl -H "X-Api-Key: $token" \
     -G -d 'codePaysLieuDeNaissance=99404' -d 'sexe=F' -d 'nomNaissance=SIMPSON' -d 'prenoms[]=Marge' -d 'anneeDateDeNaissance=1980' -d 'moisDateDeNaissance=11' -d 'jourDateDeNaissance=15' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
+* [200-identite-cas-etranger-qf_424.yaml](200-identite-cas-etranger-qf_424.yaml)
+
+  Status `200`
+
+  ## IDENTITÉ CAS ETRANGER - avec QF de 424
+
+Ce cas est le cas personne étrangère de l'ensemble des cas de test d'identité/limite.
+Il a pour but de décrire une personne fictive avec l'ensemble de ses paramètres
+et la réponse lorsque celui ci est trouvé.
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codePaysLieuDeNaissance": "99351",
+    "sexe": "M",
+    "nomNaissange": "TEMIMI",
+    "prenoms": [
+      "AZIZ",
+      "MOHAMED"
+    ],
+    "anneeDateDeNaissance": 1992,
+    "moisDateDeNaissance": 6,
+    "jourDateDeNaissance": 16
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CNAF",
+    "allocataires": [
+      {
+        "nomNaissance": "TEMIMI",
+        "nomUsage": null,
+        "prenoms": "AZIZ MOHAMED",
+        "anneeDateDeNaissance": "1992",
+        "moisDateDeNaissance": "06",
+        "jourDateDeNaissance": "16",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+  
+    ],
+    "adresse": {
+      "identite": "Monsieur TEMIMI MOHAMED AZIZ",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "19 RUE EL NACER KODIA",
+      "lieuDit": null,
+      "codePostalVille": "7000 BIZERTE",
+      "pays": "TUNIS"
+    },
+    "quotientFamilial": 424,
+    "annee": 2025,
+    "mois": 2
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codePaysLieuDeNaissance=99351' -d 'sexe=M' -d 'nomNaissange=TEMIMI' -d 'prenoms[]=AZIZ' -d 'prenoms[]=MOHAMED' -d 'anneeDateDeNaissance=1992' -d 'moisDateDeNaissance=6' -d 'jourDateDeNaissance=16' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
@@ -919,6 +1325,91 @@ Ce cas permet de tester :
   ```bash
   curl -H "X-Api-Key: $token" \
     -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomNaissance=BERNARD' -d 'prenoms[]=ELODIE' -d 'anneeDateDeNaissance=1990' -d 'moisDateDeNaissance=3' \
+    --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
+  ```
+
+  </p>
+  </details>
+* [200-seul-sans_enfant-qf_846.yaml](200-seul-sans_enfant-qf_846.yaml)
+
+  Status `200`
+
+  ## seul - sans enfant - QF CAF de 846
+
+Ce cas permet de tester : 
+- [Param. appel] Lieu de naissance en France
+- [Param. appel] Sexe feminin
+- [Param. appel] Deux prénoms
+- [Réponse] Un seul allocataire
+- [Réponse] Absence d’enfants
+- [Réponse] Quotient familial de 846  
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "codeInseeLieuDeNaissance": "75056",
+    "codePaysLieuDeNaissance": "99100",
+    "sexe": "M",
+    "nomNaissance": "LEFEBVRE",
+    "prenoms": [
+      "NICOLAS",
+      "ANTOINE"
+    ],
+    "anneeDateDeNaissance": 1992,
+    "moisDateDeNaissance": 4,
+    "jourDateDeNaissance": 10
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "regime": "CAF",
+    "allocataires": [
+      {
+        "nomNaissance": "LEFEBVRE",
+        "nomUsage": null,
+        "prenoms": "NICOLAS ANTOINE",
+        "anneeDateDeNaissance": "1992",
+        "moisDateDeNaissance": "04",
+        "jourDateDeNaissance": "10",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+  
+    ],
+    "adresse": {
+      "identite": "Monsieur LEFEBVRE NICOLAS",
+      "complementInformation": null,
+      "complementInformationGeographique": null,
+      "numeroLibelleVoie": "15 BOULEVARD HAUSSMANN",
+      "lieuDit": null,
+      "codePostalVille": "75008 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotientFamilial": 846,
+    "annee": 2024,
+    "mois": 12
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "X-Api-Key: $token" \
+    -G -d 'codeInseeLieuDeNaissance=75056' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=M' -d 'nomNaissance=LEFEBVRE' -d 'prenoms[]=NICOLAS' -d 'prenoms[]=ANTOINE' -d 'anneeDateDeNaissance=1992' -d 'moisDateDeNaissance=4' -d 'jourDateDeNaissance=10' \
     --url "https://staging.particulier.api.gouv.fr/api/v2/composition-familiale-v2"
   ```
 
