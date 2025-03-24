@@ -493,7 +493,7 @@ shared:
       driver_params:
         retriever: 'CNETP::AttestationCotisationsCongesPayesChomageIntemperies'
         params:
-          siren: '811214428'
+          siren: '977942408'
     cibtp/attestation_cotisations_conges_payes_chomage_intemperies:
       kind: 'access_logs'
       provider: 'CIBTP'
