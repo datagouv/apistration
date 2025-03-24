@@ -5,6 +5,15 @@ class GIPMDS::Effectifs::MakeRequest < MakeRequest::Get
     URI("#{mds_domain}#{mds_path}")
   end
 
+  def mocking_params
+    {
+      siren: context.params[:siren],
+      year: context.params[:year],
+      siret: context.params[:siret],
+      month: context.params[:month]
+    }.compact
+  end
+
   def request_params
     {
       codeOPSDemandeur: code_demandeur_dinum,
