@@ -53,7 +53,7 @@ class MockDataBackend
 
   def extract_payloads_files_for(operation_id)
     fetch_payloads_paths.select do |file|
-      file[:path].starts_with?("payloads/#{operation_id}") &&
+      file[:path].starts_with?("payloads/#{operation_id}/") &&
         yaml_file?(file[:path])
     end
   end

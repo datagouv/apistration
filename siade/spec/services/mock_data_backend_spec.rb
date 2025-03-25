@@ -17,6 +17,11 @@ RSpec.describe MockDataBackend, type: :service do
     allow(github_client).to receive(:tree).and_return(
       tree: [
         {
+          sha: '00',
+          path: 'payloads/whatever_endpoint/1.yaml',
+          type: 'blob'
+        },
+        {
           sha: '01',
           path: 'payloads/whatever_endpoint1',
           type: 'tree'
@@ -49,7 +54,7 @@ RSpec.describe MockDataBackend, type: :service do
       ]
     )
 
-    %w[11 12 21 404].each do |sha|
+    %w[11 12 21 00 404].each do |sha|
       mock_sha_github(sha)
     end
   end
@@ -67,19 +72,31 @@ RSpec.describe MockDataBackend, type: :service do
     context 'when the operation_id exists' do
       context 'with endpoint1 example' do
         let(:operation_id) { 'whatever_endpoint1' }
+        let(:params) do
+          %w[arg1 arg2 arg3].shuffle.each_with_object({}) do |arg, hash|
+            hash[arg] = arg
+          end
+        end
 
         context 'when 3 params match (in whatever order)' do
-          let(:params) do
-            %w[arg1 arg2 arg3].shuffle.each_with_object({}) do |arg, hash|
-              hash[arg] = arg
-            end
-          end
-
           it 'returns hash with status and payload' do
             expect(subject).to eq(
               status: 200,
               payload: {
                 'status' => 'ok'
+              }
+            )
+          end
+        end
+
+        context 'with endpoint example' do
+          let(:operation_id) { 'whatever_endpoint' }
+
+          it 'does not collide with another operation id' do
+            expect(subject).to eq(
+              status: 404,
+              payload: {
+                'status' => 'nok'
               }
             )
           end
