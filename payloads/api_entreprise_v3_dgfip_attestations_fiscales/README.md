@@ -58,7 +58,7 @@
 
   ```json
   {
-    "siren": "000000003"
+    "siren": "000000000"
   }
   ```
 
@@ -92,7 +92,7 @@
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
-    --url "https://staging.entreprise.api.gouv.fr/v3/dgfip/unites_legales/000000003/attestation_fiscale"
+    --url "https://staging.entreprise.api.gouv.fr/v3/dgfip/unites_legales/000000000/attestation_fiscale"
   ```
 
   </p>

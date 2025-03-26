@@ -7,7 +7,7 @@ Titre,Description,Paramètres,Status,Réponse
   ""links"": {},
   ""meta"": {}
 }"
-,Entreprise non trouvée ou non à jour,"{""siren"":""000000003""}",404,"{
+,Entreprise non trouvée ou non à jour,"{""siren"":""000000000""}",404,"{
   ""errors"": [
     {
       ""code"": ""03003"",
