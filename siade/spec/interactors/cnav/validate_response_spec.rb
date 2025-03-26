@@ -53,7 +53,7 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
         its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
 
         it 'returns a SNGI error' do
-          expect(subject.errors.first.detail).to include('elligible')
+          expect(subject.errors.first.detail).to include('éligibles')
         end
       end
     end

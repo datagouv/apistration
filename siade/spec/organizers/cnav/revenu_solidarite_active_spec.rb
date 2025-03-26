@@ -113,7 +113,7 @@ RSpec.describe CNAV::RevenuSolidariteActive, type: :retriever_organizer do
           it 'returns 404 unexpected message' do
             expect(subject).to be_a_failure
             expect(subject.errors).to include(instance_of(NotFoundError))
-            expect(subject.errors.first.detail).to eq('Une erreur inatendue est survenue lors de la collecte des données')
+            expect(subject.errors.first.detail).to eq('Une erreur inattendue est survenue lors de la collecte des données')
           end
         end
       end
