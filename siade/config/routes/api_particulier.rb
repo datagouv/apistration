@@ -52,6 +52,7 @@ namespace '/api', constraints: APIParticulierV2DomainConstraint.new do
   get 'impots/svair', to: svair_gone
 
   get 'open-api.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/api_particulier_open_api_static/v2.yaml'))]] }
+  get 'open-api-v2.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/api_particulier_open_api_static/v2.yaml'))]] }
   get 'open-api-v3.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/openapi-particulier.yaml'))]] }
   get 'france-connect/open-api.yml', to: ->(env) { [200, {}, [File.read(Rails.root.join('swagger/api_particulier_open_api_static/v2.yaml'))]] }
 

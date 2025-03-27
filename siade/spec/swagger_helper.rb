@@ -196,7 +196,7 @@ Pour effectuer vos tests sur le bac à sable, référez-vous à ce dépôt githu
 
 ### Accéder à la version 3 de l'API
 
-L'API particulier v3 est actuellement en version beta, vous pouvez accéder à sa documentation [ici](https://particulier.api.gouv.fr/developpeurs/openapi-v3).
+L'API particulier v3 est actuellement en version beta, vous pouvez accéder à sa documentation [ici](https://particulier.api.gouv.fr/developpeurs/openapi).
 
 ### Périmètre des données retournées
 
@@ -292,7 +292,7 @@ Pour effectuer vos tests sur le bac à sable, référez-vous à ce dépôt githu
 
 ### Accéder à la version 2 de l'API
 
-Vous pouvez accéder à la documentation v2 [ici](https://particulier.api.gouv.fr/developpeurs/openapi).
+Vous pouvez accéder à la documentation v2 [ici](https://particulier.api.gouv.fr/developpeurs/openapi-v2).
 
 ### Périmètre des données retournées
 
