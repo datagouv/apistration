@@ -125,7 +125,7 @@ RSpec.describe 'API Particulier CNAV: Revenu de solidarité active with civility
                 stub_rncps_404('revenu_solidarite_active')
               end
 
-              build_rswag_example(NotFoundError.new('CNAF & MSA', "L'allocataire n'est pas référencé auprès de la CNAF ni de la MSA", title: 'Allocataire non référencé', with_identifiant_message: false))
+              build_rswag_example(NotFoundError.new('CNAF & MSA', "L'allocataire n'est pas référencé auprès des caisses éligibles", title: 'Allocataire non référencé', with_identifiant_message: false))
 
               schema '$ref' => '#/components/schemas/Error'
 

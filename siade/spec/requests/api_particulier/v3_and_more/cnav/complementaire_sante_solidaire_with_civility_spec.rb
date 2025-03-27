@@ -101,7 +101,7 @@ RSpec.describe 'API Particulier CNAV: complementaire sante solidaire with civili
                 stub_cnav_404('complementaire_sante_solidaire', 'RNCPS')
               end
 
-              build_rswag_example(NotFoundError.new('RNCPS', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", title: 'Dossier allocataire absent RNCPS', with_identifiant_message: false))
+              build_rswag_example(NotFoundError.new('RNCPS', "Le dossier allocataire n'a pas été trouvé auprès du RNCPS.", title: 'Dossier allocataire absent RNCPS', with_identifiant_message: false))
 
               schema '$ref' => '#/components/schemas/Error'
 
@@ -113,7 +113,7 @@ RSpec.describe 'API Particulier CNAV: complementaire sante solidaire with civili
                 stub_rncps_404('complementaire_sante_solidaire')
               end
 
-              build_rswag_example(NotFoundError.new('RNCPS', "L'allocataire n'est pas référencé auprès de la CNAF ni de la MSA", title: 'Allocataire non référencé', with_identifiant_message: false))
+              build_rswag_example(NotFoundError.new('RNCPS', "L'allocataire n'est pas référencé auprès des caisses éligibles", title: 'Allocataire non référencé', with_identifiant_message: false))
 
               schema '$ref' => '#/components/schemas/Error'
 
