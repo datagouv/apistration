@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type: %i[request swagger], api: :entreprise do
+RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type: %i[request swagger], api: :<%= api %> do
   path '/v3/<%= provider_namespace.underscore %>/<%= resource_class.underscore.pluralize %>/{<%= id_path_param %>}' do
     get SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.title') do
       tags(*SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.tags'))
@@ -33,7 +33,7 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
 
           schema build_rswag_response(
             id: valid_<%= id_path_param %>(:<%= provider_namespace.underscore %>),
-            type: 'entreprise',
+            type: '<%= api == "entreprise" ? "entreprise" : "resource" %>',
             attributes: SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.attributes')
           )
 

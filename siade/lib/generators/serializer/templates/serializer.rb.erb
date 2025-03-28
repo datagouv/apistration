@@ -1,2 +1,2 @@
-class APIEntreprise::<%= name %>Serializer::V3 < APIEntreprise::V3AndMore::<%= document_resource? ? 'DocumentSerializer' : 'BaseSerializer' %>
+class API<%= api.classify %>::<%= name %>Serializer::V3 < API<%= api.classify %>::V3AndMore::<%= document_resource? ? 'DocumentSerializer' : 'BaseSerializer' %>
 end
