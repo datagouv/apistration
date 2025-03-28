@@ -22,7 +22,7 @@ module OpenApiHelpers
 
   def load_local_schema(operation_id)
     file_path = File.join(root_path, 'openapi_files', "#{extract_open_api_name(operation_id)}.yaml")
-    file_content = File.read(file_path)
+    File.read(file_path)
   end
 
   def load_schema_from_remote(operation_id)
