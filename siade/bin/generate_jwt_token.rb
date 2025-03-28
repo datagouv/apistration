@@ -30,9 +30,7 @@ end
 jwt_hash_secret = credentials[:jwt_hash_secret]
 jwt_hash_algo = credentials[:jwt_hash_algo]
 
-scopes = %i[men_statut_scolarite men_statut_boursier]
-
-    
+scopes = Rails.application.config_for(:authorizations).values.flatten.uniq
 
 exp = case env
   when 'staging'
