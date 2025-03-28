@@ -1,0 +1,14 @@
+---
+description: 'Personne pas en règle avec ses obligations via FranceConnect'
+params:
+  recipient: '26459558916367'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_service_national": "pas_en_regle",
+      "commmentaires": "Journée Défense et Citoyenneté non effectuée. Convocation prévue le 12/09/2023"
+    },
+    "links": {},
+    "meta": {}
+  }

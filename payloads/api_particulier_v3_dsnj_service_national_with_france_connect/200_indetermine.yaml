@@ -1,0 +1,14 @@
+---
+description: 'Statut indéterminé via FranceConnect'
+params:
+  recipient: '30380471503682'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_service_national": "indetermine",
+      "commmentaires": "Situation en cours de traitement"
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,14 @@
+---
+description: 'Personne non concernée par les obligations via FranceConnect'
+params:
+  recipient: '86074581130865'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_service_national": "non_concerne",
+      "commmentaires": "Personne née avant 1978, non concernée par les obligations de service national"
+    },
+    "links": {},
+    "meta": {}
+  }

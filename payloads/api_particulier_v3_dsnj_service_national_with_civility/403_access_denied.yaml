@@ -1,0 +1,28 @@
+---
+description: "Accès refusé - problème d'autorisation"
+params:
+  recipient: '26459558916365'
+  nomNaissance: 'LEROY'
+  prenoms[]:
+  - 'ANTOINE'
+  anneeDateNaissance: 1982
+  moisDateNaissance: 4
+  jourDateNaissance: 5
+  sexeEtatCivil: 'M'
+  codeCogInseePaysNaissance: '99100'
+  codeCogInseeCommuneNaissance: '69123'
+status: 403
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "39001",
+        "title": "Accès refusé",
+        "detail": "Le SIRET n'est pas autorisé à accéder à l'API",
+        "source": null,
+        "meta": {
+          "provider": "DSNJ"
+        }
+      }
+    ]
+  }

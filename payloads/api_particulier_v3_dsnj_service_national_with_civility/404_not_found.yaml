@@ -1,0 +1,28 @@
+---
+description: 'Personne non trouvée'
+params:
+  recipient: '78516753564212'
+  nomNaissance: 'INCONNU'
+  prenoms[]:
+  - 'PERSONNAGE'
+  anneeDateNaissance: 2000
+  moisDateNaissance: 1
+  jourDateNaissance: 1
+  sexeEtatCivil: 'M'
+  codeCogInseePaysNaissance: '99100'
+  codeCogInseeCommuneNaissance: '75056'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "39003",
+        "title": "Entité non trouvée",
+        "detail": "Le siret ou siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel. Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API.",
+        "source": null,
+        "meta": {
+          "provider": "DSNJ"
+        }
+      }
+    ]
+  }

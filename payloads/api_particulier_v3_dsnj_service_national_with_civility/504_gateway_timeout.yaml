@@ -1,0 +1,28 @@
+---
+description: "Temps d'attente dépassé - gateway timeout"
+params:
+  recipient: '26459558916365'
+  nomNaissance: 'BERNARD'
+  prenoms[]:
+  - 'JULIEN'
+  anneeDateNaissance: 1988
+  moisDateNaissance: 5
+  jourDateNaissance: 20
+  sexeEtatCivil: 'M'
+  codeCogInseePaysNaissance: '99100'
+  codeCogInseeCommuneNaissance: '92012'
+status: 504
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "39005",
+        "title": "Temps d'attente dépassé",
+        "detail": "Le service distant n'a pas répondu dans le temps imparti.",
+        "source": null,
+        "meta": {
+          "provider": "DSNJ"
+        }
+      }
+    ]
+  }

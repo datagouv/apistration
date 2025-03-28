@@ -1,0 +1,23 @@
+---
+description: 'Personne non concernée par les obligations'
+params:
+  recipient: '86074581130864'
+  nomNaissance: 'RICHARD'
+  prenoms[]:
+  - 'SOPHIE'
+  anneeDateNaissance: 1971
+  moisDateNaissance: 3
+  jourDateNaissance: 29
+  sexeEtatCivil: 'F'
+  codeCogInseePaysNaissance: '99100'
+  codeCogInseeCommuneNaissance: '33063'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_service_national": "non_concerne",
+      "commmentaires": "Personne née avant 1978, non concernée par les obligations de service national"
+    },
+    "links": {},
+    "meta": {}
+  }

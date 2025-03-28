@@ -1,0 +1,19 @@
+---
+description: 'Personne non trouvée via FranceConnect'
+params:
+  recipient: '30380471503680'
+status: 404
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "39003",
+        "title": "Entité non trouvée",
+        "detail": "Le siret ou siren indiqué n'existe pas, n'est pas connu ou ne comporte aucune information pour cet appel. Veuillez vérifier que l'identifiant correspond au périmètre couvert par l'API.",
+        "source": null,
+        "meta": {
+          "provider": "DSNJ"
+        }
+      }
+    ]
+  }
