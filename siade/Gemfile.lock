@@ -546,6 +546,7 @@ DEPENDENCIES
   super_diff
   timecop
   unindent
+  uri (= 1.0.3)
   utf8-cleaner
   vcr
   webmock (~> 3.25)
