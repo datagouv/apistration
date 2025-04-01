@@ -3,7 +3,7 @@ dsnj:
     title: 'API Service National'
     tags:
       - "Prochainement"
-    description: "API Service National"
+    description: Statut de conformité au service national des jeunes entre 16 et 25 ans
     attributes:
       statut_service_national:
         title: Statut service national
