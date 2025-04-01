@@ -4,13 +4,11 @@ class BanqueDeFrance::BilansEntreprise::MakeRequest < MakeRequest::Get
   protected
 
   def request_uri
-    URI(Siade.credentials[:banque_de_france_bilans_url])
+    URI("#{bdf_url}/#{siren}")
   end
 
   def request_params
-    {
-      siren:
-    }
+    {}
   end
 
   def http_options
@@ -18,6 +16,10 @@ class BanqueDeFrance::BilansEntreprise::MakeRequest < MakeRequest::Get
   end
 
   private
+
+  def bdf_url
+    Siade.credentials[:banque_de_france_bilans_url]
+  end
 
   def siren
     context.params[:siren]
