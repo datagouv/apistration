@@ -146,6 +146,9 @@ RSpec.describe 'API Particulier CNAV: prime activite with civility', api: :parti
           end
           # rubocop:enable RSpec/ContextWording
         end
+
+        common_provider_errors_request('CNAV', CNAV::PrimeActivite)
+        common_network_error_request('CNAV', CNAV::PrimeActivite)
       end
     end
   end
