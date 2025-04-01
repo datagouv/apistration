@@ -1,6 +1,6 @@
 cnous:
   commons:
-    title: Status étudiant boursier
+    title: Statut étudiant boursier
     description: Statut et échelon boursier d'un étudiant, délivrés par le Cnous.
     tags:
       - Statut étudiant boursier
