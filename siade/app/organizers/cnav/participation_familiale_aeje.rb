@@ -1,4 +1,4 @@
-class CNAV::ParticipationFamilialPSU < CNAV::RetrieverOrganizer
+class CNAV::ParticipationFamilialeAEJE < CNAV::RetrieverOrganizer
   organize CNAV::ValidateParams,
     MockedInteractor
 
@@ -7,6 +7,6 @@ class CNAV::ParticipationFamilialPSU < CNAV::RetrieverOrganizer
   end
 
   def dss_prestation_name
-    'participation_familial_psu'
+    'participation_familiale_aeje'
   end
 end

@@ -1,9 +1,9 @@
 cnav:
   commons:
     cache_duration: "La durée du cache est de 1 heure."
-  psu:
-    title: API Prestation de service unique (PSU)
-    description: "API Prestation de service unique (PSU)"
+  aeje:
+    title: Participation familiale EAJE
+    description: "Participation familiale EAJE"
     tags:
       - Prochainement
     attributes:
@@ -133,7 +133,7 @@ cnav:
             title: "Pays"
             type: string
             example: 'FRANCE'
-      parametres_calcul_psu:
+      parametres_calcul_participation_familiale:
         title: "Paramètre pris en compte pour le calcul du tarif"
         description: "Liste des paramètres pris en compte lors du calcul tarifaire de l'allocation"
         type: object

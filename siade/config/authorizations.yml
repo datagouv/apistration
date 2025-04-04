@@ -335,16 +335,16 @@ shared:
     - dsnj_service_national
   api_particulier/v3_and_more/dsnj/service_national_with_france_connect:
     - dsnj_service_national
-  api_particulier/v3_and_more/cnav/participation_familial_psu_with_civility:
-    - psu_allocataires
-    - psu_enfants
-    - psu_adresse
-    - psu_parametres_calcul_psu
-  api_particulier/v3_and_more/cnav/participation_familial_psu_with_france_connect:
-    - psu_allocataires
-    - psu_enfants
-    - psu_adresse
-    - psu_parametres_calcul_psu
+  api_particulier/v3_and_more/cnav/participation_familiale_aeje_with_civility:
+    - aeje_allocataires
+    - aeje_enfants
+    - aeje_adresse
+    - aeje_parametres_calcul_participation_familiale
+  api_particulier/v3_and_more/cnav/participation_familiale_aeje_with_france_connect:
+    - aeje_allocataires
+    - aeje_enfants
+    - aeje_adresse
+    - aeje_parametres_calcul_participation_familiale
 test:
   api_whatever/whatever_resource: &default_test_scopes
     - allowed_scope

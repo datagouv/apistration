@@ -34,8 +34,8 @@ scope path: 'v:api_version', constraints: APIParticulierDomainConstraint.new(v3_
   get 'dss/quotient_familial/identite', to: 'api_particulier/v3_and_more/cnav/quotient_familial_with_civility#show'
   get 'dss/quotient_familial/france_connect', to: 'api_particulier/v3_and_more/cnav/quotient_familial_with_france_connect#show'
 
-  get 'dss/participation_familial_psu/identite', to: 'api_particulier/v3_and_more/cnav/participation_familial_psu_with_civility#show'
-  get 'dss/participation_familial_psu/france_connect', to: 'api_particulier/v3_and_more/cnav/participation_familial_psu_with_france_connect#show'
+  get 'dss/participation_familiale_aeje/identite', to: 'api_particulier/v3_and_more/cnav/participation_familiale_aeje_with_civility#show'
+  get 'dss/participation_familiale_aeje/france_connect', to: 'api_particulier/v3_and_more/cnav/participation_familiale_aeje_with_france_connect#show'
 
   get 'france_travail/statut/identifiant', to: 'api_particulier/v3_and_more/france_travail/statut_with_identifiant#show'
 
