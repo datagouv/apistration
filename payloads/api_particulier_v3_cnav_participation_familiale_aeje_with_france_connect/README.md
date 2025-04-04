@@ -1,4 +1,4 @@
-# [FranceConnect] API Prestation de service unique (PSU)
+# [FranceConnect] Participation familiale EAJE
 * [404.yaml](404.yaml)
 
   Status `404`
@@ -46,7 +46,7 @@
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familial_psu/france_connect?recipient=13002526500013"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_aeje/france_connect?recipient=13002526500013"
   ```
 
   </p>
@@ -124,7 +124,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "code_postal_ville": "75002",
         "pays": "FRANCE"
       },
-      "parametres_calcul_psu": {
+      "parametres_calcul_participation_familiale": {
         "nombre_enfants_a_charge": 2,
         "nombre_enfants_beneficiaire_AEEH": 1,
         "base_ressources_annuelles": {
@@ -147,7 +147,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familial_psu/france_connect?recipient=13002526500013"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_aeje/france_connect?recipient=13002526500013"
   ```
 
   </p>
@@ -225,7 +225,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "code_postal_ville": "75002",
         "pays": "FRANCE"
       },
-      "parametres_calcul_psu": {
+      "parametres_calcul_participation_familiale": {
         "nombre_enfants_a_charge": 2,
         "nombre_enfants_beneficiaire_AEEH": 1,
         "base_ressources_annuelles": {
@@ -248,7 +248,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familial_psu/france_connect?recipient=13002526500013"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_aeje/france_connect?recipient=13002526500013"
   ```
 
   </p>
@@ -319,7 +319,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         "code_postal_ville": "75002",
         "pays": "FRANCE"
       },
-      "parametres_calcul_psu": {
+      "parametres_calcul_participation_familiale": {
         "nombre_enfants_a_charge": 1,
         "nombre_enfants_beneficiaire_AEEH": 1,
         "base_ressources_annuelles": {
@@ -342,7 +342,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familial_psu/france_connect?recipient=13002526500013"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_aeje/france_connect?recipient=13002526500013"
   ```
 
   </p>

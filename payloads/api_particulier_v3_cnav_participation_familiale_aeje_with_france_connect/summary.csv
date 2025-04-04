@@ -53,7 +53,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms
         ""code_postal_ville"": ""75002"",
         ""pays"": ""FRANCE""
     },
-    ""parametres_calcul_psu"": {
+    ""parametres_calcul_participation_familiale"": {
       ""nombre_enfants_a_charge"": 2,
       ""nombre_enfants_beneficiaire_AEEH"": 1,
       ""base_ressources_annuelles"": {
@@ -106,7 +106,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms
         ""code_postal_ville"": ""75002"",
         ""pays"": ""FRANCE""
     },
-    ""parametres_calcul_psu"": {
+    ""parametres_calcul_participation_familiale"": {
       ""nombre_enfants_a_charge"": 2,
       ""nombre_enfants_beneficiaire_AEEH"": 1,
       ""base_ressources_annuelles"": {
@@ -151,7 +151,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.","{""prenoms
         ""code_postal_ville"": ""75002"",
         ""pays"": ""FRANCE""
     },
-    ""parametres_calcul_psu"": {
+    ""parametres_calcul_participation_familiale"": {
       ""nombre_enfants_a_charge"": 1,
       ""nombre_enfants_beneficiaire_AEEH"": 1,
       ""base_ressources_annuelles"": {

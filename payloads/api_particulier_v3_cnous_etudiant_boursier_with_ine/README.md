@@ -1,4 +1,4 @@
-# [INE] Status étudiant boursier
+# [INE] Statut étudiant boursier
 * [404.yaml](404.yaml)
 
   Status `404`

@@ -14,10 +14,10 @@ CNAF Quotient Familial V2,Réponse FranceConnect permettant de déclencher l'ens
     ""cnaf_allocataires"",
     ""cnaf_enfants"",
     ""cnaf_adresse"",
-    ""psu_allocataires"",
-    ""psu_enfants"",
-    ""psu_adresse"",
-    ""psu_parametres_calcul_psu"",
+    ""aeje_allocataires"",
+    ""aeje_enfants"",
+    ""aeje_adresse"",
+    ""aeje_parametres_calcul_participation_familial"",
     ""cnous_statut_boursier"",
     ""cnous_echelon_bourse"",
     ""cnous_email"",
@@ -71,7 +71,7 @@ CNAF Complémentaire Santé Solidaire,Réponse FranceConnect permettant de décl
     ""preferred_username"": ""MARTIN""
   }
 }"
-CNAF Quotient Familial V2,Réponse FranceConnect permettant de déclencher la réponse de [`/v3/dss/participation_familial_psu/france_connect` suivante](../api_particulier_v3_cnav_participation_familial_psu_with_france_connect/fake_france_connect_cnaf.yaml),"{""token"":""cnaf_psu""}",200,"{
+CNAF Quotient Familial V2,Réponse FranceConnect permettant de déclencher la réponse de [`/v3/dss/participation_familiale_aeje/france_connect` suivante](../api_particulier_v3_cnav_participation_familiale_aeje_with_france_connect/fake_france_connect_cnaf.yaml),"{""token"":""cnaf_aeje""}",200,"{
   ""scope"": [
     ""openid"",
     ""identite_pivot"",

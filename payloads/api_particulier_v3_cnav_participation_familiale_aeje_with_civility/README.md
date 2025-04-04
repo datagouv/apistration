@@ -1,4 +1,4 @@
-# [Identité] API Prestation de service unique (PSU)
+# [Identité] Participation familiale EAJE
 * [200-identite-cas-nominal.yaml](200-identite-cas-nominal.yaml)
 
   Status `200`
@@ -70,7 +70,7 @@ d'erreur selon les informations que vous fournirez.
         "code_postal_ville": "75002",
         "pays": "FRANCE"
       },
-      "parametres_calcul_psu": {
+      "parametres_calcul_participation_familiale": {
         "nombre_enfants_a_charge": 1,
         "nombre_enfants_beneficiaire_AEEH": 1,
         "base_ressources_annuelles": {
@@ -95,7 +95,7 @@ d'erreur selon les informations que vous fournirez.
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' -d 'nomNaissance=LEFEBVRE' -d 'prenoms[]=ALEXIS' -d 'prenoms[]=G%C3%89R%C3%94ME' -d 'prenoms[]=JEAN-PHILIPPE' -d 'anneeDateNaissance=1982' -d 'moisDateNaissance=12' -d 'jourDateNaissance=27' \
-    --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familial_psu/identite"
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_aeje/identite"
   ```
 
   </p>
@@ -149,7 +149,7 @@ d'erreur selon les informations que vous fournirez.
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'nomNaissance=LEFEBVRE' -d 'codeCogInseeCommuneNaissance=00404' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=F' \
-    --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familial_psu/identite"
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_aeje/identite"
   ```
 
   </p>
@@ -208,7 +208,7 @@ d'erreur selon les informations que vous fournirez.
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'nomNaissance=DESFOUIN' -d 'prenoms[]=Ren%C3%A9' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
-    --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familial_psu/identite"
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_aeje/identite"
   ```
 
   </p>
@@ -268,7 +268,7 @@ d'erreur selon les informations que vous fournirez.
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'nomNaissance=DELANOUE' -d 'prenoms[]=Jean-Marie' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
-    --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familial_psu/identite"
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_aeje/identite"
   ```
 
   </p>
@@ -328,7 +328,7 @@ d'erreur selon les informations que vous fournirez.
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'nomNaissance=SITUDI' -d 'prenoms[]=Cl%C3%A9ment' -d 'anneeDateNaissance=2002' -d 'moisDateNaissance=12' -d 'jourDateNaissance=5' -d 'codeCogInseeCommuneNaissance=08480' -d 'codeCogInseePaysNaissance=99100' -d 'sexeEtatCivil=M' \
-    --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familial_psu/identite"
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_aeje/identite"
   ```
 
   </p>

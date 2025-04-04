@@ -2,9 +2,9 @@
 title: 'CNAF Quotient Familial V2'
 example: true
 params:
-  token: 'cnaf_psu'
-api_path: '/v3/dss/participation_familial_psu/france_connect'
-description: 'Réponse FranceConnect permettant de déclencher la réponse de [`/v3/dss/participation_familial_psu/france_connect` suivante](../api_particulier_v3_cnav_participation_familial_psu_with_france_connect/fake_france_connect_cnaf.yaml)'
+  token: 'cnaf_aeje'
+api_path: '/v3/dss/participation_familiale_aeje/france_connect'
+description: 'Réponse FranceConnect permettant de déclencher la réponse de [`/v3/dss/participation_familiale_aeje/france_connect` suivante](../api_particulier_v3_cnav_participation_familiale_aeje_with_france_connect/fake_france_connect_cnaf.yaml)'
 status: 200
 payload: |-
   {
