@@ -3,6 +3,8 @@ require 'swagger_helper'
 RSpec.describe 'CNAV: Allocation Soutien Familial', api: :particulierv2, type: %i[request swagger] do
   path '/api/v2/allocation-soutien-familial' do
     get SwaggerData.get('cnav.v2.asf.title') do
+      deprecated true
+
       tags(*SwaggerData.get('cnav.v2.asf.tags'))
 
       produces 'application/json'

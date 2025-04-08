@@ -62,6 +62,7 @@ paths:
   "/api/v2/allocation-adulte-handicape":
     get:
       summary: Statut allocation adulte handicapé (AAH)
+      deprecated: true
       tags:
       - Statut Allocation Adulte Handicapé (AAH)
       parameters:
@@ -355,6 +356,7 @@ paths:
   "/api/v2/allocation-soutien-familial":
     get:
       summary: Statut allocation de soutien familial (ASF)
+      deprecated: true
       tags:
       - Statut Allocation Soutien Familial (ASF)
       parameters:
@@ -657,6 +659,7 @@ paths:
   "/api/v2/complementaire-sante-solidaire":
     get:
       summary: Statut complémentaire santé solidaire (C2S)
+      deprecated: true
       tags:
       - Statut Complémentaire Santé Solidaire (C2S)
       parameters:
@@ -970,6 +973,7 @@ paths:
   "/api/v2/prime-activite":
     get:
       summary: Statut prime d'activité
+      deprecated: true
       tags:
       - Statut Prime Activité
       parameters:
@@ -1280,6 +1284,7 @@ paths:
   "/api/v2/composition-familiale-v2":
     get:
       summary: Quotient familial MSA & CAF
+      deprecated: true
       tags:
       - Quotient familial MSA & CAF
       parameters:
@@ -1835,6 +1840,7 @@ paths:
   "/api/v2/revenu-solidarite-active":
     get:
       summary: Statut revenu de solidarité active (RSA)
+      deprecated: true
       tags:
       - Statut Revenu Solidarité Active (RSA)
       parameters:
@@ -2144,6 +2150,7 @@ paths:
   "/api/v2/scolarites":
     get:
       summary: Statut élève scolarisé
+      deprecated: true
       tags:
       - Statut élève scolarisé
       parameters:
@@ -2397,6 +2404,7 @@ paths:
   "/api/v2/paiements-pole-emploi":
     get:
       summary: Paiements versés par France Travail
+      deprecated: true
       tags:
       - Paiements versés par France Travail
       parameters:

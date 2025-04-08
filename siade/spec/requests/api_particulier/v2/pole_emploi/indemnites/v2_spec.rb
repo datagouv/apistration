@@ -3,6 +3,8 @@ require 'swagger_helper'
 RSpec.describe 'Pole Emploi: Indemnites', api: :particulierv2, type: %i[request swagger] do
   path '/api/v2/paiements-pole-emploi' do
     get SwaggerData.get('france_travail.indemnites.title') do
+      deprecated true
+
       tags(*SwaggerData.get('france_travail.indemnites.tags'))
 
       produces 'application/json'

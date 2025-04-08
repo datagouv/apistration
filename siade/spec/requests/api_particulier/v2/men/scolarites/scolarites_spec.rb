@@ -3,6 +3,8 @@ require 'swagger_helper'
 RSpec.describe 'MEN: Scolarites', api: :particulierv2, type: %i[request swagger] do
   path '/api/v2/scolarites' do
     get SwaggerData.get('men.scolarite.v2.title') do
+      deprecated true
+
       tags(*SwaggerData.get('men.scolarite.v2.tags'))
 
       produces 'application/json'
