@@ -153,7 +153,7 @@ RSpec.describe 'logstasher custom fields', type: :controller do
         expect(LogStasher).to receive(:build_logstash_event).with(
           hash_including(
             parameters: hash_including(
-              hashed_france_connect_token: Digest::SHA512.hexdigest("#{Siade.credentials[:api_particulier_log_salt_key]}:#{token}")
+              hashed_params: 'aa9022aec702705816119e95d76bbb46041394c43460499fe0fc7dad55ce8866cd0a57514e1659db4d9b91c9026c7ea36bda53f254ad1471858cd0bd31a750fc'
             )
           ),
           anything

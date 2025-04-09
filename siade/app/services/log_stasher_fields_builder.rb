@@ -82,7 +82,7 @@ class LogStasherFieldsBuilder
   def add_france_connect_attributes_for_logging
     return unless from_france_connect?
 
-    add_param_field(:hashed_france_connect_token, hashed_for_logs(bearer_token_from_headers))
+    add_param_field(:hashed_params, hashed_for_logs(extract_france_connect_params))
     add_param_field(:france_connect_client, extract_france_connect_client_infos_from_organizer)
   end
 
@@ -104,6 +104,16 @@ class LogStasherFieldsBuilder
       id: france_connect_organizer.client_attributes.client_id,
       name: france_connect_organizer.client_attributes.client_name,
       sub: france_connect_organizer.client_attributes.sub
+    }
+  end
+
+  def extract_france_connect_params
+    france_connect_organizer = controller.france_connect_organizer
+
+    {
+      id: france_connect_organizer.client_attributes.client_id,
+      name: france_connect_organizer.client_attributes.client_name,
+      identity: france_connect_organizer.service_user_identity.to_h
     }
   end
 
