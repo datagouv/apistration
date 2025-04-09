@@ -12,7 +12,9 @@ RSpec.describe FranceConnect::V1::DataFetcherThroughAccessToken::BuildClientAttr
     its(:client_attributes) { is_expected.to be_a(Resource) }
 
     it 'associates client attributes to resource' do
-      expect(call.client_attributes.to_h).to eq(payload[:client])
+      expect(call.client_attributes.to_h[:client_id]).to eq('france_connect_client_id')
+      expect(call.client_attributes.to_h[:client_name]).to eq('france_connect_client_name')
+      expect(call.client_attributes.to_h[:sub]).to be_nil
     end
   end
 end

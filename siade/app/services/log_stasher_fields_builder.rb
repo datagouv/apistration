@@ -102,7 +102,8 @@ class LogStasherFieldsBuilder
 
     {
       id: france_connect_organizer.client_attributes.client_id,
-      name: france_connect_organizer.client_attributes.client_name
+      name: france_connect_organizer.client_attributes.client_name,
+      sub: france_connect_organizer.client_attributes.sub
     }
   end
 

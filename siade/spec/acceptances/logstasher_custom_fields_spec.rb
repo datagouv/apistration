@@ -168,7 +168,8 @@ RSpec.describe 'logstasher custom fields', type: :controller do
             parameters: hash_including(
               france_connect_client: {
                 id: '6925fb8143c76eded44d32b40c0cb1006065f7f003de52712b78985704f39950',
-                name: 'no_data_from_fc_v2'
+                name: 'no_data_from_fc_v2',
+                sub: '2fa48e3542c8645567f983efc96305808ae7d3f0d9cc4016ef40c3cde44844cfv1'
               }
             )
           ),

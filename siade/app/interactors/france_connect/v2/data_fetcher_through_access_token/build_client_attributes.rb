@@ -8,8 +8,13 @@ class FranceConnect::V2::DataFetcherThroughAccessToken::BuildClientAttributes < 
   def client_attributes
     {
       client_id:,
+      sub:,
       client_name: 'no_data_from_fc_v2'
     }
+  end
+
+  def sub
+    json_body['token_introspection']['sub']
   end
 
   def client_id
