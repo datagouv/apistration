@@ -2443,10 +2443,10 @@ paths:
                   identifiant:
                     title: Nom d'utilisateur France Travail
                     type: string
-                    description: Identifiant France Travail, tel qu'il a été renseigné
-                      en paramètre d'appel. Cet identifiant est le nom d'utilisateur
-                      tel que choisi par le particulier lors de la création de son
-                      espace personnel en ligne.
+                    description: Identifiant du compte utilisateur France Travail,
+                      tel qu'il a été renseigné en paramètre d'appel. Cet identifiant
+                      est le nom d'utilisateur tel que choisi par le particulier lors
+                      de la création de son espace personnel en ligne.
                     example: jean.dupont33
                   paiements:
                     title: Liste des paiements versés
