@@ -48,9 +48,9 @@ cnous:
             - F
     attributes_without_identity: &attributes_without_identity
       est_boursier:
-        title: Statut boursier
+        title: Est boursier
         type: boolean
-        description: Indique si l'étudiant est boursier
+        description: Indique que l'étudiant est boursier.
         example: true
       periode_versement_bourse:
         title: Période de versement de la bourse
@@ -70,22 +70,22 @@ cnous:
             example: 12
       etablissement_etudes:
         title: Établissement d'études de l'étudiant
-        description: Contient le détail des informations concernant l'établissement dans lequel l'étudiant fait ses études
+        description: Contient le détail des informations concernant l'établissement dans lequel l'étudiant fait ses études.
         type: object
         properties:
           nom_commune:
-            title: Ville d'études
+            title: Commune d'études
             type: string
-            description: Libellé de la ville d'études de l'étudiant
+            description: Libellé de la commune d'études de l'étudiant
             example: Brest
           nom_etablissement:
             title: Établissement d'études
             type: string
-            description: L'établissement d'études de l'étudiant
+            description: Nom de l'établissement d'études de l'étudiant.
             example: Carnot
       echelon_bourse:
-        title: Échelon de la bourse
-        description: Informations relatives à l'échelon de la bourse
+        title: Informations concernant l'échelon de la bourse
+        description: Informations relatives à l'échelon de la bourse.
         type: object
         properties:
           echelon:
@@ -105,8 +105,8 @@ cnous:
             - '6'
             - '7'
           echelon_bourse_regionale_provisoire:
-            title: Statut provisoire de l'échelon (bourses régionales uniquement)
-            description: "Ce champs indique que l'échelon de la bourse est provisoire. Ce statut provisoire de l'échelon n'est effectif que pour les boursiers bénéficiaires d'une bourse régionale."
+            title: Statut provisoire (bourses régionales uniquement)
+            description: "Ce champ indique que l'échelon de la bourse indiqué est provisoire. Ce statut provisoire n'est indiqué que pour les boursiers bénéficiaires d'une bourse régionale."
             type: boolean
             example: true
             enum:
