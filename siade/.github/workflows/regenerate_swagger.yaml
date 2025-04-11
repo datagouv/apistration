@@ -1,5 +1,4 @@
 name: Regenerate and commit Swagger
-
 on:
   workflow_dispatch:
     inputs:
@@ -29,11 +28,14 @@ jobs:
         ports: ["6379:6379"]
         options: --entrypoint redis-server
     steps:
-      - name: Checkout PR branch
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref: refs/pull/${{ github.event.inputs.pr_number }}/head
-          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout PR branch
+        run: |
+          gh pr checkout ${{ github.event.inputs.pr_number }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
