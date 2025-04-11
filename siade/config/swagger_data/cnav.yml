@@ -16,7 +16,7 @@ cnav:
           type: object
           properties:
             nom_naissance:
-              title: Nom
+              title: "Nom de naissance"
               type: string
               description: Nom de naissance de l'allocataire ou du conjoint.
               example: "JACQUES"
@@ -45,13 +45,13 @@ cnav:
                 - F
                 - M
             code_cog_insee_commune_naissance:
-              title: Code Cog de la ville de naissance
+              title: COG de la commune de naissance
               type: string
-              description: Code Cog de la ville de naissance
+              description: Code officiel géographique (COG) de la commune de naissance
               example: '75113'
       enfants:
         type: array
-        title: "Données d'identité des enfants composant la famille"
+        title: "Données d'identité des enfants"
         description: "Liste des données d'identité des enfants composant la famille, le cas échéant. La provenance de ces données n'est pas sourcée précisément et diffère selon la CAF ou la MSA."
         items:
           type: object
@@ -86,9 +86,9 @@ cnav:
                 - F
                 - M
             code_cog_insee_commune_naissance:
-              title: Code Cog de la ville de naissance
+              title: COG de la commune de naissance
               type: string
-              description: Code Cog de la ville de naissance
+              description: Code officiel géographique (COG) de la commune de naissance
               example: '75113'
       adresse:
         title: "Adresse de la famille"
@@ -96,11 +96,11 @@ cnav:
         description: "Adresse de la famille au format de La Poste. Cette adresse est déclarative. Si l'usager a changé d'adresse et n'a pas actualisé son adresse auprès de la CAF ou de la MSA, l'information sera donc obsolète."
         properties:
           destinataire:
-            title: "Identité du destinataire"
+            title: "Destinataire"
             type: string
             example: "Monsieur JEAN JACQUES"
-            description: "Identité du destinataire : Civilité, titre ou qualité + nom et
-              prénom"
+            description: "Civilité, titre ou qualité, nom et
+              prénom du destinataire."
           complement_information:
             title: "Complément d'information du destinataire ou point de remise"
             type: string
@@ -180,7 +180,7 @@ cnav:
       - Statut Complémentaire Santé Solidaire (C2S)
     attributes:
       est_beneficiaire:
-        title: "Statut bénéficiaire de la complémentaire de santé solidaire (C2S)"
+        title: "Est bénéficiaire de la complémentaire de santé solidaire (C2S)"
         type: boolean
         example: true
         description: "Indique que le particulier est bénéficiaire de la complémentaire de santé solidaire au moment de l'appel."
@@ -231,12 +231,12 @@ cnav:
           type: object
           properties:
             nom_naissance:
-              title: Nom
+              title: "Nom de naissance"
               type: string
               description: Nom de naissance de l'allocataire ou du conjoint.
               example: "JACQUES"
             nom_usage:
-              title: Nom d'usage
+              title: "Nom d'usage"
               type: string
               description: Nom d'usage de l'allocataire ou du conjoint.
               example: "DUPONT"
@@ -261,7 +261,7 @@ cnav:
                 - M
       enfants:
         type: array
-        title: "Données d'identité des enfants composant la famille"
+        title: "Données d'identité des enfants"
         description: "Liste des données d'identité des enfants composant la famille, le cas échéant. La provenance de ces données n'est pas sourcée précisément et diffère selon la CAF ou la MSA."
         items:
           type: object
@@ -301,11 +301,11 @@ cnav:
         description: "Adresse de la famille au format de La Poste. Cette adresse est déclarative. Si l'usager a changé d'adresse et n'a pas actualisé son adresse auprès de la CAF ou de la MSA, l'information sera donc obsolète."
         properties:
           destinataire:
-            title: "Identité du destinataire"
+            title: "Destinataire"
             type: string
             example: "Monsieur JEAN JACQUES"
-            description: "Identité du destinataire : Civilité, titre ou qualité + nom et
-              prénom"
+            description: "Civilité, titre ou qualité, nom et
+              prénom du destinataire."
           complement_information:
             title: "Complément d'information du destinataire ou point de remise"
             type: string
@@ -354,7 +354,7 @@ cnav:
           valeur:
             title: "Valeur du QF"
             type: integer
-            description: Valeur du quotient familial calculé par la CAF ou la MSA.
+            description: Valeur du quotient familial calculée par la CAF ou la MSA.
             example: 1045
           annee:
             title: "Année effective du QF"
@@ -402,12 +402,12 @@ cnav:
       - Statut Revenu Solidarité Active (RSA)
     attributes:
       est_beneficiaire:
-        title: "Statut bénéficiaire du revenu de solidarité active (RSA)"
+        title: "Est bénéficiaire du revenu de solidarité active (RSA)"
         type: boolean
         example: true
         description: "Indique que le particulier est bénéficiaire du revenu de solidarité active au moment de l'appel."
       avec_majoration:
-        title: "RSA majoré"
+        title: "RSA avec majoration"
         type: boolean
         nullable: true
         description: "Indique que le RSA du particulier bénéficiaire est majoré au moment de l'appel.
@@ -434,7 +434,7 @@ cnav:
       - Statut Allocation Adulte Handicapé (AAH)
     attributes:
       est_beneficiaire:
-        title: "Statut bénéficiaire de l'allocation adulte handicapé (AAH)"
+        title: "Est bénéficiaire de l'allocation adulte handicapé (AAH)"
         type: boolean
         example: true
         description: "Indique que le particulier est bénéficiaire de l'allocation adulte handicapé au moment de l'appel."
@@ -455,7 +455,7 @@ cnav:
       - Statut Allocation Soutien Familial (ASF)
     attributes:
       est_beneficiaire:
-        title: "Statut bénéficiaire de l'allocation de soutien familial (ASF)"
+        title: "Est bénéficiaire de l'allocation de soutien familial (ASF)"
         type: boolean
         example: true
         description: "Indique que le particulier est bénéficiaire de l'allocation de soutien familial au moment de l'appel."
@@ -477,12 +477,12 @@ cnav:
       - Statut Prime Activité
     attributes:
       est_beneficiaire:
-        title: "Statut bénéficiaire de la prime d'activité"
+        title: "Est bénéficiaire de la prime d'activité"
         type: boolean
         example: true
         description: "Indique que le particulier est bénéficiaire de la prime d'activité au moment de l'appel."
       avec_majoration:
-        title: "Prime d'activité majorée"
+        title: "Prime d'activité avec majoration"
         type: boolean
         nullable: true
         description: "Indique que la prime d'activité du particulier bénéficiaire est majorée au moment de l'appel.
