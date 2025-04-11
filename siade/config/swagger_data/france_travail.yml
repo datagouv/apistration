@@ -19,22 +19,22 @@ france_travail:
       - Statut demandeurs d'emploi
     attributes:
       identifiant:
-        title: Nom d'utilisateur France Travail
+        title: Identifiant France Travail
         type: string
         description: |
-          Identifiant France Travail, tel qu'il a été renseigné
+          Identifiant du compte utilisateur France Travail, tel qu'il a été renseigné
           en paramètre d'appel. Cet identifiant est le nom d'utilisateur
           tel que choisi par le particulier lors de la création de son
           espace personnel en ligne.
         example: martin.jacques
       identite:
         title: Données d'identité de l'utilisateur France Travail
-        description : "Les informations d'identité retournées ici sont issues de l'espace FranceTravail où l'utilisateur les a  saisies. Elles sont vérifiées par un agent, à l'aide de la pièce d'identité fournie, et corrigées le cas échéant. Les justificatifs d'identité qui servent à la vérification des données sont listés ici : https://www.service-public.fr/particuliers/vosdroits/F24465"
+        description : "Les informations d'identité retournées ici sont issues de l'espace FranceTravail où l'utilisateur les a saisies. Elles sont vérifiées par un agent, à l'aide de la pièce d'identité fournie, et corrigées le cas échéant. Les justificatifs d'identité qui servent à la vérification des données sont listés ici : https://www.service-public.fr/particuliers/vosdroits/F24465"
         type: object
         properties:
           civilite:
             title: Civilité
-            description: Civilité du demandeur d'emploi, Madame ou Monsieur.
+            description: Civilité, Madame ou Monsieur.
             type: string
             example: M.
             enum:
@@ -43,63 +43,64 @@ france_travail:
           nom_naissance:
             title: Nom de naissance
             type: string
-            description: Nom de naissance du demandeur d'emploi.
+            description: Nom de naissance.
             example: MARTIN
           nom_usage:
             title: Nom d'usage
             type: string
-            description: Nom d'usage du demandeur d'emploi.
+            description: Nom d'usage.
             nullable: true
             example:
           prenom:
             title: Prénom
             type: string
             example: JACQUES
-            description: Prénom ddu demandeur d'emploi, limité à 13 caractères
+            description: Prénom, limité à 13 caractères.
           sexe:
             title: Sexe
             type: string
-            description: Sexe du demandeur d'emploi.
+            description: Sexe.
             example: Masculin
           date_naissance:
             title: Date de naissance
             format: date
             type: string
-            description: Date de naissance du demandeur d'emploi au format YYYY-MM-DD.
+            description: Date de naissance au format YYYY-MM-DD.
             example: 1995-02-02
       contact:
-        title: Contact
-        description: Données de contact de l'utilisateur France Travail.
+        title: Données de contact
+        description: Données de contact de l'utilisateur France Travail
         type: object
         properties: 
           telephone:
             title: Téléphone principal
             type: string
-            description: Numéro de téléphone principal du demandeur d'emploi.
+            description: Numéro de téléphone principal.
             example: '0636676767'
           telephone2:
             title: Téléphone secondaire
             type: string
-            description: Numéro de téléphone secondaire du demandeur d'emploi.
+            description: Numéro de téléphone secondaire.
             nullable: true
             example: '1122334455'
           email:
             title: E-mail
             type: string
             nullable: true
-            description: Adresse e-mail du demandeur d'emploi.
+            description: Adresse e-mail.
             example: martin.jacques@france.fr
       adresse:
         title: Adresse
         type: object
-        description: Adresse du demandeur d'emploi, déclarée par le particulier lors de son inscription à France Travail ou suite à une déclaration de changement d’adresse.
+        description: Adresse déclarée par le particulier lors de son inscription à France Travail ou suite à une déclaration de changement d’adresse.
         properties:
           code_postal:
             type: string
             title: Code postal
             example: '75001'
           code_cog_insee_commune:
-            title: Code COG Insee de la commune
+            title: COG de la commune
+            description: "Code officiel géographique (COG) de la commune"
             type: string
             example: '75101'
           localite:
@@ -221,7 +222,9 @@ france_travail:
       identifiant:
         title: Nom d'utilisateur France Travail
         type: string
-        description: Identifiant France Travail, tel qu'il a été renseigné en paramètre d'appel. Cet identifiant est le nom d'utilisateur tel que choisi par le particulier lors de la création de son espace personnel en ligne.
+        description: Identifiant du compte utilisateur France Travail, tel qu'il a été renseigné en paramètre d'appel. Cet identifiant est le nom d'utilisateur
+          tel que choisi par le particulier lors de la création de son
+          espace personnel en ligne.
         example: 'jean.dupont33'
       paiements:
         title: "Liste des paiements versés"
