@@ -32,7 +32,7 @@ mesri:
             example: 1992-11-29
     attributes_without_identity: &attributes_without_identity
       admissions:
-        title: Admissions de l'étudiant dans un ou plusieurs établissements
+        title: Liste des admissions de l'étudiant dans les établissements
         description: |+
           Liste des admissions de l'étudiant dans un ou plusieurs établissements d'enseignement supérieur pour l'année en cours. 
 
@@ -56,7 +56,7 @@ mesri:
               description: Date de fin de la période d'étude dans l'établissement.
               example: 2023-08-31
             est_inscrit:
-              title: Statut étudiant inscrit
+              title: Est inscrit
               type: boolean
               example: true
               enum:
@@ -108,9 +108,9 @@ mesri:
                     - RF6
                     - RF7
             code_cog_insee_commune:
-              title: Commune de l'établissement d'études
+              title: COG de la commune de l'établissement d'études
               type: string
-              description: Code Insee à 5 chiffres de la commune de l'établissement d'études de l'étudiant.
+              description: Code officiel géographique (COG) de la commune de l'établissement d'études de l'étudiant.
               example: '29085'
             etablissement_etudes:
               title: Établissement d'études
