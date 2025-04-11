@@ -139,3 +139,19 @@ Si le fichier OpenAPI n'est pas à jour, il peut être régénéré avec la comm
 
 Si le fichier OpenAPI est invalide, vous pouvez tester votre fichier Swagger à l'aide de l'éditeur disponible en
 ligne à l'adresse suivante: [Swagger Editor](https://editor.swagger.io/)
+
+## Génération du fichier OpenAPI par action Github
+
+Si vous ne pouvez/voulez pas lancer la commande `bin/generate_swagger.sh` en local, vous pouvez le faire via une action Github. Suivre les étapes suivantes:
+
+1. Ouvrez votre Pull-Request avec vos changements
+
+2. Relevez le numéro de la PR. Il se trouve notamment dans l'URL de la PR: https://github.com/etalab/siade/pull/6666 => Le numéro est 6666
+
+3. Ouvrez la Github Action [regenerate swagger](https://github.com/etalab/siade/actions/workflows/regenerate_swagger.yaml)
+
+4. Cliquez sur le bouton "Run workflow" en haut à droite
+
+5. Pas la peine de changer la branche, renseignez juste le numéro de la PR dans le champ correspondant et cliquez sur "Run workflow"
+
+6. La PR devrait être mise à jour automatiquement.

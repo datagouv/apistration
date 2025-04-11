@@ -58,3 +58,8 @@ Pour générer un code coverage en local:
 ```sh
 COVERAGE=true bundle exec rspec
 ```
+
+## Documentation
+
+La documentation se trouve dans le fichier docs/
+Notamment pour l'édition du swagger, voir le fichier [docs/development/edition_swagger.md](docs/development/edition_swagger.md)
