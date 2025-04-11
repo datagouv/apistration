@@ -1,4 +1,4 @@
-name: Regenerate and commit Swagger/OpenAPI
+name: Regenerate and commit Swagger
 
 on:
   workflow_dispatch:
@@ -40,17 +40,11 @@ jobs:
           bundler-cache: true
           cache-version: 322
 
-      - name: Setup ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-          cache-version: 322
-
       - name: Run install.sh
         run: ./bin/install.sh
 
-      - name: Regenerate Swagger/OpenAPI
-        run: ruby ./bin/regenerate_swagger.rb
+      - name: Regenerate Swagger
+        run: ./bin/generate_swagger.sh
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
