@@ -61,5 +61,6 @@ COVERAGE=true bundle exec rspec
 
 ## Documentation
 
-La documentation se trouve dans le fichier docs/
+La documentation se trouve dans le dossier [docs/](docs/).
+
 Notamment pour l'édition du swagger, voir le fichier [docs/development/edition_swagger.md](docs/development/edition_swagger.md)
