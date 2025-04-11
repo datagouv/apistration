@@ -14,6 +14,7 @@ Exemple simple avec le fichier dsnj.yml :
 # Nom du provider
 dsnj:
   # Nom de l'endpoint tel que dans le code (en snake_case)
+  # Correspond aux valeurs `SwaggerData` dans le fichier de spec `spec/requests/api_particulier/v3_and_more/<provider>/<resource>_spec.rb`
   service_national:
     # Nom de l'endpoint
     title: "API Service National"
@@ -23,7 +24,7 @@ dsnj:
       - "Prochainement"
     # Description de l'endpoint
     description: "Cet endpoint renseigne le statut de la personne vis à vis de ses obligations de service national."
-    # Description de la payload de retour. Si la payload de retour est un unique record, on utilise 'attributes'. Dans le cas d'une liste de record, on utilise 'items' puisqu'on renvoie un tableau (cf examples suivants, ou l'endpoint v3/document_association dans mi.yml).
+    # Description de la payload de retour. Si la payload de retour est un élément unique (un seul record), on utilise 'attributes'. Si on renvoie une liste, on utilise 'items' puisqu'on renvoie un tableau (cf examples suivants, ou l'endpoint v3/document_association dans mi.yml).
     attributes:
       # Premier champ de la payload
       # Toujours donner un title, type, description et example.
@@ -32,6 +33,7 @@ dsnj:
       statut_service_national:
         title: Statut service national
         # Les types possibles sont : string, integer, boolean, array, object
+        # En général, on ne renvoie pas d'integer, mais des strings contenant des nombres
         # Pour les objets, il faut ajouter un `properties` avec la liste des champs de l'objet (voir exemples suivants)
         # Pour les tableaux (array), il faut ajouter un `items` avec le type de l'élément du tableau (voir exemples suivants)
         # Le champs le plus souvent utilisé est `string`
@@ -53,71 +55,89 @@ dsnj:
 Exemple pour un attribute de type "object":
 
 ```yaml
-date_naissance:
-  type: "object"
-  title: "Date de naissance du bénéficiaire effectif"
-  # toujours ajouter additionalProperties: false pour bien préciser que nous ne renverrons pas d'autres champs
-  additionalProperties: false
-  properties:
-    annee:
-      title: "Année de la date de naissance"
-      type: "string"
-      example: "1990"
-      nullable: true
-    mois:
-      title: "Mois de la date de naissance"
-      type: "string"
-      example: "01"
-      nullable: true
-      enum:
-        - "01"
-        - "02"
-        - "03"
-        - "04"
-        - "05"
-        - "06"
-        - "07"
-        - "08"
-        - "09"
-        - "10"
-        - "11"
-        - "12"
+sportif:
+   title: "whatever API"
+   tags:
+    - "Whatever"
+    description: "Whatever"
+    attributes:
+        date_naissance:
+          type: "object"
+          title: "Date de naissance du bénéficiaire effectif"
+          # toujours ajouter additionalProperties: false pour bien préciser que nous ne renverrons pas d'autres champs (on ne rajoutera jamais de nouvelles clefs à la payload)
+          additionalProperties: false
+          properties:
+            annee:
+              title: "Année de la date de naissance"
+              type: "string"
+              example: "1990"
+              nullable: true
+            mois:
+              title: "Mois de la date de naissance"
+              type: "string"
+              example: "01"
+              nullable: true
+              enum:
+                - "01"
+                - "02"
+                - "03"
+                - "04"
+                - "05"
+                - "06"
+                - "07"
+                - "08"
+                - "09"
+                - "10"
+                - "11"
+                - "12"
 ```
 
 Exemple pour un attribute de type "array" :
 
 ```yaml
-synonymes:
-  type: "array"
-  description: "Liste de synonymes connus de la convention"
-  items:
-    type: "string"
-  example:
-    - "syntec"
+conventions:
+   title: "whatever API"
+   tags:
+    - "Whatever"
+    description: "Whatever"
+    attributes:
+        synonymes:
+          type: "array"
+          description: "Liste de synonymes connus de la convention"
+          items:
+            type: "string"
+          example:
+            - "syntec"
 ```
 
 Le plus souvent, les arrays contiennent cependant des objects :
 
 ```yaml
-paiements:
-  title: "Liste des paiements versés"
-  description: "Liste des paiements versés par FranceTravail au particulier."
-  type: array
-  # Si on connait le nombe minimum d'items, il faut le préciser
-  minItems: 1
-  items:
-    title: "Paiement"
-    type: object
-    properties:
-      date_versement:
-        title: Date du paiement
-        type: string
-        example: "2021-01-01"
-      montant_total:
-        title: Montant total versé
-        description: Montant total du paiement. Il s'agit de la somme des allocations, aides et autres paiements, moins le prélèvement de l'impôt à la source.
-        type: number
-        example: 123.4
+subventions:
+   title: "whatever API"
+   tags:
+    - "Whatever"
+    description: "Whatever"
+    attributes:
+        paiements:
+          title: "Liste des paiements versés"
+          description: "Liste des paiements versés par FranceTravail au particulier."
+          type: array
+          # Si on connait le nombe minimum d'items, il faut le préciser
+          minItems: 1
+          items:
+            title: "Paiement"
+            type: object
+            properties:
+              date_versement:
+                title: Date du paiement
+                type: string
+                example: "2021-01-01"
+              montant_total:
+                title: Montant total versé
+                description: Montant total du paiement. Il s'agit de la somme des allocations, aides et autres paiements, moins le prélèvement de l'impôt à la source.
+                type: number
+                example: 123.4
 ```
 
 2. Les données du fichier `config/swagger_data/provider.yml` sont utilisées dans le fichier de spec `spec/requests/api_particulier/v3_and_more/provider/endpoint_spec.rb`
