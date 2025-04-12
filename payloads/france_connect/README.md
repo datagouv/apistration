@@ -43,10 +43,10 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
       "cnaf_allocataires",
       "cnaf_enfants",
       "cnaf_adresse",
-      "psu_allocataires",
-      "psu_enfants",
-      "psu_adresse",
-      "psu_parametres_calcul_psu",
+      "aeje_allocataires",
+      "aeje_enfants",
+      "aeje_adresse",
+      "aeje_parametres_calcul_participation_familial",
       "cnous_statut_boursier",
       "cnous_echelon_bourse",
       "cnous_email",
@@ -154,14 +154,14 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
 
   Status `200`
 
-  Réponse FranceConnect permettant de déclencher la réponse de [`/v3/dss/participation_familial_psu/france_connect` suivante](../api_particulier_v3_cnav_participation_familial_psu_with_france_connect/fake_france_connect_cnaf.yaml)
+  Réponse FranceConnect permettant de déclencher la réponse de [`/v3/dss/participation_familiale_aeje/france_connect` suivante](../api_particulier_v3_cnav_participation_familiale_aeje_with_france_connect/fake_france_connect_cnaf.yaml)
 
   <details><summary>Paramètres</summary>
   <p>
 
   ```json
   {
-    "token": "cnaf_psu"
+    "token": "cnaf_aeje"
   }
   ```
 
@@ -204,7 +204,7 @@ Plus d'infos dans le [README du projet](../../#cas-de-franceconnect)
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer cnaf_psu" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familial_psu/france_connect?recipient=13002526500013"
+  curl -H "Authorization: Bearer cnaf_aeje" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_aeje/france_connect?recipient=13002526500013"
   ```
 
   </p>

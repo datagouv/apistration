@@ -1,4 +1,4 @@
-# [Identité] Status étudiant boursier
+# [Identité] Statut étudiant boursier
 * [404.yaml](404.yaml)
 
   Status `404`
