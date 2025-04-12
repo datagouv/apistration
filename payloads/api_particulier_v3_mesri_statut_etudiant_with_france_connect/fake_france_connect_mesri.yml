@@ -1,7 +1,8 @@
 ---
 description: 'FranceConnect: étudiant inscrit'
 params:
-  prenom: "Thomas"
+  prenoms: 
+  - "Thomas"
   nomNaissance: "Delatour"
   anneeDateNaissance: 1994
   moisDateNaissance: 4

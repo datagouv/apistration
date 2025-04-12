@@ -59,7 +59,9 @@
 
   ```json
   {
-    "prenom": "Thomas",
+    "prenoms": [
+      "Thomas"
+    ],
     "nomNaissance": "Delatour",
     "anneeDateNaissance": 1994,
     "moisDateNaissance": 4,
@@ -125,7 +127,9 @@
 
   ```json
   {
-    "prenom": "Jean",
+    "prenoms": [
+      "Jean"
+    ],
     "nomNaissance": "MESRI",
     "anneeDateNaissance": 2002,
     "moisDateNaissance": 1,
@@ -191,7 +195,9 @@
 
   ```json
   {
-    "prenom": "Angela",
+    "prenoms": [
+      "Angela"
+    ],
     "nomNaissance": "DUBOIS",
     "anneeDateNaissance": 1962,
     "moisDateNaissance": 8,
