@@ -1,7 +1,8 @@
 ---
 description: 'FranceConnect: étudiant inscrit'
 params:
-  prenom: "Angela"
+  prenoms: 
+  - "Angela"
   nomNaissance: "DUBOIS"
   anneeDateNaissance: 1962
   moisDateNaissance: 8

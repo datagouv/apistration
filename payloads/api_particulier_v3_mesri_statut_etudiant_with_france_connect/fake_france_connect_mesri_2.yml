@@ -1,7 +1,8 @@
 ---
 description: 'FranceConnect: étudiant inscrit'
 params:
-  prenom: "Jean"
+  prenoms: 
+  - "Jean"
   nomNaissance: "MESRI"
   anneeDateNaissance: 2002
   moisDateNaissance: 1
