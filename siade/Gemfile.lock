@@ -98,7 +98,7 @@ GEM
       bigdecimal
       rexml
     crass (1.0.6)
-    csv (3.3.3)
+    csv (3.3.4)
     date (3.4.1)
     derailed_benchmarks (2.2.1)
       base64
