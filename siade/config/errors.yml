@@ -443,6 +443,12 @@
   title: 'Quotient familial manquant'
   detail: 'Le bénéficiaire a bien été trouvé mais la réponse du fournisseur de données ne retourne pas de quotient familial.'
 
+## DSNJ
+
+- code: '39400'
+  title: "Age non pertinent pour le Service National"
+  detail: "L'age renseigné n'est pas compris entre 16 et 25 ans incluts, et n'est donc pas concerné par le Service National."
+
 ## FranceConnect
 
 - code: '50001'
