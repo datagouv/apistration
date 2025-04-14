@@ -16,7 +16,7 @@ RSpec.describe DSNJ::ServiceNational::ValidateParams, type: :validate_params do
 
   let(:nom_naissance) { 'SEKIRO' }
   let(:prenoms) { %w[Shinobi Wolf] }
-  let(:annee_date_naissance) { 1988 }
+  let(:annee_date_naissance) { 2008 }
   let(:mois_date_naissance) { 3 }
   let(:jour_date_naissance) { 22 }
   let(:code_cog_insee_commune_naissance) { '92036' }
