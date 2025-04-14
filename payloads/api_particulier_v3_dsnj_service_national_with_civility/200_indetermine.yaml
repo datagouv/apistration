@@ -1,0 +1,24 @@
+---
+description: 'Statut indéterminé'
+params:
+  recipient: '30380471503681'
+  nomNaissance: 'PETIT'
+  prenoms[]:
+  - 'MARIE'
+  - 'CLARA'
+  anneeDateNaissance: 1992
+  moisDateNaissance: 11
+  jourDateNaissance: 8
+  sexeEtatCivil: 'F'
+  codeCogInseePaysNaissance: '99100'
+  codeCogInseeCommuneNaissance: '13055'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_service_national": "indetermine",
+      "commmentaires": "Situation en cours de traitement"
+    },
+    "links": {},
+    "meta": {}
+  }

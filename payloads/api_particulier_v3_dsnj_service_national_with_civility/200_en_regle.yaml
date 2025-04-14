@@ -1,0 +1,24 @@
+---
+description: 'Personne en règle avec ses obligations'
+params:
+  recipient: '78516753564212'
+  nomNaissance: 'MARTIN'
+  prenoms[]:
+  - 'JEAN'
+  - 'MICHEL'
+  anneeDateNaissance: 1990
+  moisDateNaissance: 1
+  jourDateNaissance: 15
+  sexeEtatCivil: 'M'
+  codeCogInseePaysNaissance: '99100'
+  codeCogInseeCommuneNaissance: '75056'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_service_national": "en_regle",
+      "commmentaires": "Journée Défense et Citoyenneté effectuée le 15/06/2008"
+    },
+    "links": {},
+    "meta": {}
+  }

@@ -1,0 +1,28 @@
+---
+description: 'Erreur serveur - mauvaise passerelle'
+params:
+  recipient: '78516753564212'
+  nomNaissance: 'DURAND'
+  prenoms[]:
+  - 'PAUL'
+  anneeDateNaissance: 1985
+  moisDateNaissance: 8
+  jourDateNaissance: 10
+  sexeEtatCivil: 'M'
+  codeCogInseePaysNaissance: '99100'
+  codeCogInseeCommuneNaissance: '75056'
+status: 502
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "39002",
+        "title": "Erreur serveur",
+        "detail": "Une erreur est survenue lors de la connexion au service distant.",
+        "source": null,
+        "meta": {
+          "provider": "DSNJ"
+        }
+      }
+    ]
+  }

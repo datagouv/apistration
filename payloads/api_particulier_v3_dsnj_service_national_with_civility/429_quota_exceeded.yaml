@@ -1,0 +1,28 @@
+---
+description: 'Trop de requêtes - quota dépassé'
+params:
+  recipient: '86074581130863'
+  nomNaissance: 'DUPONT'
+  prenoms[]:
+  - 'PIERRE'
+  anneeDateNaissance: 1992
+  moisDateNaissance: 7
+  jourDateNaissance: 14
+  sexeEtatCivil: 'M'
+  codeCogInseePaysNaissance: '99100'
+  codeCogInseeCommuneNaissance: '35238'
+status: 429
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "39004",
+        "title": "Quota dépassé",
+        "detail": "Le quota de requêtes autorisées a été dépassé. Veuillez réessayer plus tard.",
+        "source": null,
+        "meta": {
+          "provider": "DSNJ"
+        }
+      }
+    ]
+  }

@@ -1,0 +1,23 @@
+---
+description: 'Personne pas en règle avec ses obligations'
+params:
+  recipient: '26459558916366'
+  nomNaissance: 'DUBOIS'
+  prenoms[]:
+  - 'THOMAS'
+  anneeDateNaissance: 1995
+  moisDateNaissance: 6
+  jourDateNaissance: 22
+  sexeEtatCivil: 'M'
+  codeCogInseePaysNaissance: '99100'
+  codeCogInseeCommuneNaissance: '69123'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_service_national": "pas_en_regle",
+      "commmentaires": "Journée Défense et Citoyenneté non effectuée. Convocation prévue le 12/09/2023"
+    },
+    "links": {},
+    "meta": {}
+  }

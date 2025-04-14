@@ -1,0 +1,14 @@
+---
+description: 'Personne en règle avec ses obligations via FranceConnect'
+params:
+  recipient: '78516753564212'
+status: 200
+payload: |-
+  {
+    "data": {
+      "statut_service_national": "en_regle",
+      "commmentaires": "Journée Défense et Citoyenneté effectuée le 15/06/2008"
+    },
+    "links": {},
+    "meta": {}
+  }

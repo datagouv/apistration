@@ -1,0 +1,19 @@
+---
+description: "Accès refusé - problème d'autorisation via FranceConnect"
+params:
+  recipient: '86074581130863'
+status: 403
+payload: |-
+  {
+    "errors": [
+      {
+        "code": "39001",
+        "title": "Accès refusé",
+        "detail": "Le SIRET n'est pas autorisé à accéder à l'API",
+        "source": null,
+        "meta": {
+          "provider": "DSNJ"
+        }
+      }
+    ]
+  }

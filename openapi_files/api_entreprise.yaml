@@ -9,7 +9,7 @@ info:
     d'une clé d'accès (jeton).\n\n### Comment tester l'API ?\n\nIl est possible de
     tester les API via notre environnement de **staging** qui vous retournera systématiquement
     des données fictives. Référez vous à la [documentation](https://entreprise.api.gouv.fr/developpeurs#tester-api-preproduction).\n\nIl
-    est nécessaire d'utiliser le jeton de staging indiqué ci-dessous.\n\n---\n\n*eyJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJqdGkiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJzY29wZXMiOlsiYXNzb2NpYXRpb25zIiwib3Blbl9kYXRhIiwicHJvYnRwIiwiY290aXNhdGlvbnNfcHJvYnRwIiwiYXR0ZXN0YXRpb25zX2Zpc2NhbGVzIiwiYXR0ZXN0YXRpb25fZmlzY2FsZV9kZ2ZpcCIsImF0dGVzdGF0aW9uc19zb2NpYWxlcyIsImF0dGVzdGF0aW9uX3NvY2lhbGVfdXJzc2FmIiwiYmlsYW5zX2VudHJlcHJpc2VfYmRmIiwiYmlsYW5zX2JkZiIsImZudHBfY2FydGVfcHJvIiwiY2VydGlmaWNhdF9jbmV0cCIsImNlcnRpZmljYXRpb25fY25ldHAiLCJjZXJ0aWZpY2F0X29wcWliaSIsInF1YWxpYmF0IiwiY2VydGlmaWNhdF9yZ2VfYWRlbWUiLCJkb2N1bWVudHNfYXNzb2NpYXRpb24iLCJlbnRyZXByaXNlcyIsInVuaXRlc19sZWdhbGVzX2V0YWJsaXNzZW1lbnRzX2luc2VlIiwiZXRhYmxpc3NlbWVudHMiLCJleGVyY2ljZXMiLCJjaGlmZnJlX2FmZmFpcmVzX2RnZmlwIiwiZXh0cmFpdHNfcmNzIiwibGlhc3NlX2Zpc2NhbGUiLCJsaWFzc2VzX2Zpc2NhbGVzX2RnZmlwIiwiY2VydGlmaWNhdGlvbnNfcXVhbGlvcGlfZnJhbmNlX2NvbXBldGVuY2VzIiwiZW9yaV9kb3VhbmVzIiwiY29udmVudGlvbnNfY29sbGVjdGl2ZXMiLCJtYW5kYXRhaXJlc19zb2NpYXV4X2luZm9ncmVmZmUiLCJhY3Rlc19pbnBpIiwiZXh0cmFpdF9jb3VydF9pbnBpIiwiYXNzb2NpYXRpb25zX2Rvbm5lZXNfcHJvdGVnZWVzIiwiYXNzb2NpYXRpb25zX2RqZXB2YSIsIm1zYV9jb3Rpc2F0aW9ucyIsImNvdGlzYXRpb25zX21zYSIsImNlcnRpZmljYXRpb25fb3BxaWJpIiwiZW50cmVwcmlzZXNfYXJ0aXNhbmFsZXMiLCJlZmZlY3RpZnNfdXJzc2FmIiwiY25hZl9xdW90aWVudF9mYW1pbGlhbCIsImNuYWZfYWxsb2NhdGFpcmVzIiwiY25hZl9lbmZhbnRzIiwiY25hZl9hZHJlc3NlIiwiY29tcGxlbWVudGFpcmVfc2FudGVfc29saWRhaXJlIiwiYWxsb2NhdGlvbl9hZHVsdGVfaGFuZGljYXBlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlIiwicmV2ZW51X3NvbGlkYXJpdGVfYWN0aXZlX21ham9yYXRpb24iLCJhbGxvY2F0aW9uX3NvdXRpZW5fZmFtaWxpYWwiLCJwcmltZV9hY3Rpdml0ZSIsInByaW1lX2FjdGl2aXRlX21ham9yYXRpb24iLCJjbm91c19zdGF0dXRfYm91cnNpZXIiLCJjbm91c19lY2hlbG9uX2JvdXJzZSIsImNub3VzX2VtYWlsIiwiY25vdXNfcGVyaW9kZV92ZXJzZW1lbnQiLCJjbm91c19zdGF0dXRfYm91cnNlIiwiY25vdXNfdmlsbGVfZXR1ZGVzIiwiY25vdXNfaWRlbnRpdGUiLCJtZXNyaV9pZGVudGlmaWFudCIsIm1lc3JpX2lkZW50aXRlIiwibWVzcmlfaW5zY3JpcHRpb25fZXR1ZGlhbnQiLCJtZXNyaV9pbnNjcmlwdGlvbl9hdXRyZSIsIm1lc3JpX2FkbWlzc2lvbiIsIm1lc3JpX2V0YWJsaXNzZW1lbnRzIiwicG9sZV9lbXBsb2lfaWRlbnRpdGUiLCJwb2xlX2VtcGxvaV9hZHJlc3NlIiwicG9sZV9lbXBsb2lfY29udGFjdCIsInBvbGVfZW1wbG9pX2luc2NyaXB0aW9uIiwicG9sZV9lbXBsb2lfcGFpZW1lbnRzIiwibWVuX3N0YXR1dF9zY29sYXJpdGUiLCJtZW5fc3RhdHV0X2JvdXJzaWVyIiwibWVuX2VjaGVsb25fYm91cnNlIl0sInN1YiI6InN0YWdpbmcgZGV2ZWxvcG1lbnQiLCJpYXQiOjE3MTk0ODAzNDIsInZlcnNpb24iOiIxLjAiLCJleHAiOjIwMzUwMTMxNDJ9.3amltSm0dQ_1mvhAvS5E2Qv6Q6HaF_oEHhNck1MLDSk*\n
+    est nécessaire d'utiliser un jeton de staging. Plus d'infos ici: https://github.com/etalab/siade_staging_data/tree/develop/tokens\n
     \     "
   termsOfService: https://entreprise.api.gouv.fr/cgu/
   contact:
@@ -443,6 +443,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_04056:
+                  value:
+                    errors:
+                    - code: '04056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
                 demande_de_traitement_logiciel_en_cours_04502:
                   value:
                     errors:
@@ -1783,6 +1795,9 @@ paths:
                   description: Problème de résolution DNS de l'adresse du serveur
               schema:
                 "$ref": "#/components/schemas/Error"
+      x-maintenances:
+        from_hour: '22:04'
+        to_hour: '22:08'
       x-codeSamples:
       - lang: cURL
         label: Ligne de commande
@@ -3082,6 +3097,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_08056:
+                  value:
+                    errors:
+                    - code: '08056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -3938,6 +3965,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_03056:
+                  value:
+                    errors:
+                    - code: '03056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -4406,6 +4445,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_03056:
+                  value:
+                    errors:
+                    - code: '03056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
               schema:
                 "$ref": "#/components/schemas/Error"
         '504':
@@ -5283,12 +5334,18 @@ paths:
                                     description: Si une entrée de l'imprimé est répétable,
                                       le tableau contient plusieurs entrées et sont
                                       ordonnées en fonction de l'indice de répétition.
+                                      Les indices ne sont pas forcément continue,
+                                      il peut y avoir des valeurs manquantes. Lors
+                                      que c'est le cas, celle-ci est remplacée par
+                                      la valeur `null`
                                     type: array
                                     minItems: 1
                                     items:
                                       type: string
                                     example:
                                     - '4245'
+                                    -
+                                    - '5672'
                     required:
                     - obligations_fiscales
                     - declarations
@@ -5493,6 +5550,762 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/dgfip/unites_legales/130025265/liasses_fiscales/2019?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
+  "/v3/dgfip/unites_legales/{siren}/liens_capitalistiques/{year}":
+    get:
+      summary: Liens capitalistiques
+      tags:
+      - Informations financières
+      parameters:
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        description: |-
+          "**Cadre de la requête**
+
+          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
+        example: Context de test
+        required: true
+        schema:
+          type: string
+      - name: object
+        in: query
+        description: |-
+          "**La raison de l’appel ou l’identifiant de la procédure.**
+
+          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
+        example: marché numéro 127
+        required: true
+        schema:
+          type: string
+      - name: siren
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: year
+        in: path
+        required: true
+        schema:
+          type: integer
+      security:
+      - jwt_bearer_token: []
+      description: Actionnaires et filiales de l'entreprise déclarés dans les CERFA
+        2059F et 2059G des liasses fiscales de la DGFIP.
+      responses:
+        '401':
+          description: Non autorisé
+          content:
+            application/json:
+              examples:
+                invalid_token_error:
+                  value:
+                    errors:
+                    - code: '00101'
+                      title: Interdit
+                      detail: Votre token n'est pas valide ou n'est pas renseigné
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Interdit
+                  description: Votre token n'est pas valide ou n'est pas renseigné
+                expired_token_error:
+                  value:
+                    errors:
+                    - code: '00103'
+                      title: Jeton expiré
+                      detail: Votre token est expiré. Vous devez refaire une demande
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton expiré
+                  description: Votre token est expiré. Vous devez refaire une demande
+                blacklisted_token_error:
+                  value:
+                    errors:
+                    - code: '00105'
+                      title: Jeton sur liste noire
+                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
+                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
+                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Jeton sur liste noire
+                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
+                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
+                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '403':
+          description: Accès interdit
+          content:
+            application/json:
+              examples:
+                insufficient_privileges_error:
+                  value:
+                    errors:
+                    - code: '00100'
+                      title: Privilèges insuffisants
+                      detail: Votre token est valide mais vos privilèges sont insuffisants.
+                        Listez vos privilèges sur /v2/privileges
+                      source:
+                        parameter: token
+                      meta: {}
+                  summary: Privilèges insuffisants
+                  description: Votre token est valide mais vos privilèges sont insuffisants.
+                    Listez vos privilèges sur /v2/privileges
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '429':
+          description: Trop de requêtes
+          content:
+            application/json:
+              examples:
+                too_many_requests_error:
+                  value:
+                    errors:
+                    - code: '00429'
+                      title: Trop de requêtes
+                      detail: Vous avez effectué trop de requêtes
+                      source:
+                      meta: {}
+                  summary: Trop de requêtes
+                  description: Vous avez effectué trop de requêtes
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '200':
+          description: Liens capitalistiques trouvées
+          headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
+            RateLimit-Limit:
+              schema:
+                type: integer
+              description: La limite concernant l’endpoint appelé, soit le nombre
+                de requête/minute.
+              example: 50
+            RateLimit-Remaining:
+              schema:
+                type: integer
+              description: Le nombre d’appels restants durant la période courante
+                d’une minute.
+              example: 47
+            RateLimit-Reset:
+              schema:
+                type: integer
+              description: La fin de la période courante (en format timestamp)
+              example: 1637223155
+          x-operationId: api_entreprise_v3_dgfip_liens_capitalistiques
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      capital:
+                        title: Composition du capital social
+                        description: 'Informations extraites du CERFA 2059F (nref:
+                          2059F). Si la liasse est absente, l''ensemble des valeurs
+                          sont à null'
+                        type: object
+                        additionalProperties: false
+                        required:
+                        - actionnaires
+                        - repartition
+                        - depose_neant
+                        properties:
+                          actionnaires:
+                            title: Liste des actionnaires
+                            description: 'Liste des actionnaires avec une structure
+                              normalisée (nref: structure standardisée issue du serializer)'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              required:
+                              - type
+                              - pourcentage
+                              - nombre_parts
+                              - personne_physique_attributes
+                              - personne_morale_attributes
+                              - adresse
+                              properties:
+                                type:
+                                  title: Type d'actionnaire
+                                  description: 'Type de l''actionnaire, ''personne_morale''
+                                    ou ''personne_physique'' (nref: valeur fixe)'
+                                  type: string
+                                  enum:
+                                  - personne_morale
+                                  - personne_physique
+                                pourcentage:
+                                  title: Pourcentage de détention
+                                  description: 'Pourcentage de détention de l''actionnaire
+                                    (nref: 304861 pour personne morale, 304871 pour
+                                    personne physique)'
+                                  type: number
+                                  example: 51.0
+                                nombre_parts:
+                                  title: Nombre de parts
+                                  description: 'Nombre de parts détenues par l''actionnaire
+                                    (nref: 304860 pour personne morale, 304870 pour
+                                    personne physique)'
+                                  type: number
+                                  example: 510
+                                personne_physique_attributes:
+                                  title: Attributs de la personne physique
+                                  description: 'Attributs spécifiques pour une personne
+                                    physique. Si l''actionnaire n''est pas de type
+                                    ''personne_physique'', tous les champs seront
+                                    null (nref: 306874, 304868, 304869, 304878, 905900,
+                                    905901, 905902)'
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - civilite
+                                  - nom_patronymique_et_prenoms
+                                  - nom_marital
+                                  - date_naissance
+                                  properties:
+                                    civilite:
+                                      title: Civilité
+                                      description: 'Civilité de la personne physique
+                                        (nref: 306874)'
+                                      type: string
+                                      example: M
+                                      nullable: true
+                                    nom_patronymique_et_prenoms:
+                                      title: Nom patronymique et prénoms
+                                      description: 'Nom patronymique et prénoms (nref:
+                                        304868)'
+                                      type: string
+                                      example: CHIRAC Jacques
+                                      nullable: true
+                                    nom_marital:
+                                      title: Nom marital
+                                      description: 'Nom marital (nref: 304869)'
+                                      type: string
+                                      example: NS
+                                      nullable: true
+                                    date_naissance:
+                                      title: Date de naissance
+                                      description: 'Date de naissance (nref: 304878),
+                                        le jour n''est pas renvoyé'
+                                      additionalProperties: false
+                                      type: object
+                                      required:
+                                      - annee
+                                      - mois
+                                      properties:
+                                        annee:
+                                          title: Année de la date de naissance
+                                          type: string
+                                          example: '1932'
+                                          nullable: true
+                                        mois:
+                                          title: Mois de la date de naissance
+                                          type: string
+                                          example: '11'
+                                          nullable: true
+                                personne_morale_attributes:
+                                  title: Attributs de la personne morale
+                                  description: 'Attributs spécifiques pour une personne
+                                    morale. Si l''actionnaire n''est pas de type ''personne_morale'',
+                                    tous les champs seront null ou ''NS'' (nref: 304859,
+                                    304857, 304858, 306875)'
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - siren
+                                  - denomination
+                                  - complement_denomination
+                                  - forme_juridique
+                                  properties:
+                                    siren:
+                                      title: SIREN
+                                      description: 'Identifiant SIREN de la personne
+                                        morale (nref: 304859)'
+                                      type: string
+                                      example: '110001013'
+                                      nullable: true
+                                    denomination:
+                                      title: Dénomination
+                                      description: 'Dénomination de la personne morale
+                                        (nref: 304857)'
+                                      type: string
+                                      example: GOUVERNEMENT PREMIER MINISTRE
+                                      nullable: true
+                                    complement_denomination:
+                                      title: Complément de dénomination
+                                      description: 'Complément de dénomination de
+                                        la personne morale (nref: 304858)'
+                                      type: string
+                                      nullable: true
+                                    forme_juridique:
+                                      title: Forme juridique
+                                      description: 'Forme juridique (nref: 306875)'
+                                      type: string
+                                      example: NS
+                                      nullable: true
+                                adresse:
+                                  title: Adresse de l'actionnaire
+                                  description: 'Adresse de l''actionnaire (nref: pour
+                                    personne morale [304862-304867] et pour personne
+                                    physique [304872-304877])'
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - numero
+                                  - voie
+                                  - lieu_dit_hameau
+                                  - code_postal
+                                  - ville
+                                  - pays
+                                  properties:
+                                    numero:
+                                      title: Numéro
+                                      description: 'Numéro de l''adresse (nref personne
+                                        morale: 304862 | 304872)'
+                                      type: string
+                                      example: '0057'
+                                      nullable: true
+                                    voie:
+                                      title: Voie
+                                      description: 'Voie de l''adresse (nref personne
+                                        morale: 304863 | personne physique: 304873)'
+                                      type: string
+                                      example: RUE DE VARENNE
+                                      nullable: true
+                                    lieu_dit_hameau:
+                                      title: Lieu-dit / Hameau
+                                      description: 'Lieu-dit ou hameau (nref personne
+                                        morale: 304864 | personne physique: 304874)'
+                                      type: string
+                                      nullable: true
+                                    code_postal:
+                                      title: Code postal
+                                      description: 'Code postal (nref personne morale:
+                                        304865 | personne physique: 304875)'
+                                      type: string
+                                      example: '75007'
+                                      nullable: true
+                                    ville:
+                                      title: Ville
+                                      description: 'Ville (nref personne morale: 304866
+                                        | personne physique: 304876)'
+                                      type: string
+                                      example: PARIS
+                                      nullable: true
+                                    pays:
+                                      title: Pays
+                                      description: 'Pays, code iso 3166 (nref personne
+                                        morale: 304867 | personne physique: 304877)'
+                                      type: string
+                                      example: FR
+                                      nullable: true
+                          repartition:
+                            title: Répartition des actions
+                            description: 'Répartition des actions entre personnes
+                              physiques et personnes morales (nref: 309326 et 309325
+                              pour personnes physiques, 309324 et 309323 pour personnes
+                              morales). Si la liasse est absente, l''ensemble des
+                              valeurs sont à null'
+                            type: object
+                            additionalProperties: false
+                            required:
+                            - personnes_physiques
+                            - personnes_morales
+                            properties:
+                              personnes_physiques:
+                                title: Personnes physiques
+                                description: 'Détail des actions détenues par les
+                                  personnes physiques (nref: total_actions 309326,
+                                  nombre 309325)'
+                                type: object
+                                additionalProperties: false
+                                required:
+                                - total_actions
+                                - nombre
+                                properties:
+                                  total_actions:
+                                    title: Total des actions
+                                    description: 'Total des actions des personnes
+                                      physiques (nref: 309326)'
+                                    type: number
+                                    example: 490
+                                    nullable: true
+                                  nombre:
+                                    title: Nombre d'actions
+                                    description: 'Nombre d''actions répertoriées pour
+                                      les personnes physiques (nref: 309325)'
+                                    type: number
+                                    example: 2
+                                    nullable: true
+                              personnes_morales:
+                                title: Personnes morales
+                                description: 'Détail des actions détenues par les
+                                  personnes morales (nref: total_actions 309324, nombre
+                                  309323)'
+                                type: object
+                                additionalProperties: false
+                                required:
+                                - total_actions
+                                - nombre
+                                properties:
+                                  total_actions:
+                                    title: Total des actions
+                                    description: 'Total des actions des personnes
+                                      morales (nref: 309324)'
+                                    type: number
+                                    example: 510
+                                    nullable: true
+                                  nombre:
+                                    title: Nombre d'actions
+                                    description: 'Nombre d''actions répertoriées pour
+                                      les personnes morales (nref: 309323)'
+                                    type: number
+                                    example: 1
+                                    nullable: true
+                          depose_neant:
+                            title: État du dépôt du formulaire 2059F
+                            description: "Indique l'état du dépôt du formulaire 2059F
+                              concernant la composition du capital social : \n \n
+                              - false : l’imprimé est bien déposé et contient des
+                              données. \n - true : l’imprimé est déposé à néant (vide).
+                              \n - null : l’imprimé est complètement absent. \n \n
+                              (nref: 305767)"
+                            type: boolean
+                            example: false
+                            nullable: true
+                      participations:
+                        title: Participations
+                        description: 'Informations sur les participations de l''entreprise
+                          (nref: 2059G)'
+                        type: object
+                        additionalProperties: false
+                        required:
+                        - filiales
+                        - nombre_filiales
+                        - depose_neant
+                        properties:
+                          filiales:
+                            title: Liste des filiales
+                            description: 'Liste des filiales de l''entreprise (nref:
+                              siren 304960, denomination 304958, complement_denomination
+                              304959, forme_juridique 306876, pourcentage_detention
+                              304967, adresse [304961 à 304966])'
+                            type: array
+                            items:
+                              type: object
+                              additionalProperties: false
+                              required:
+                              - siren
+                              - denomination
+                              - complement_denomination
+                              - forme_juridique
+                              - pourcentage_detention
+                              - adresse
+                              properties:
+                                siren:
+                                  title: SIREN de la filiale
+                                  description: 'Identifiant SIREN de la filiale (nref:
+                                    304960)'
+                                  type: string
+                                  example: '130007669'
+                                denomination:
+                                  title: Dénomination
+                                  description: 'Dénomination de la filiale (nref:
+                                    304958)'
+                                  type: string
+                                  example: ANSII
+                                complement_denomination:
+                                  title: Complément de dénomination
+                                  description: 'Complément de dénomination de la filiale
+                                    (nref: 304959)'
+                                  type: string
+                                  nullable: true
+                                forme_juridique:
+                                  title: Forme juridique
+                                  description: 'Forme juridique de la filiale (nref:
+                                    306876)'
+                                  type: string
+                                  example: SA
+                                pourcentage_detention:
+                                  title: Pourcentage de détention
+                                  description: 'Pourcentage de détention dans la filiale
+                                    (nref: 304967)'
+                                  type: number
+                                  example: 42.0
+                                adresse:
+                                  title: Adresse de la filiale
+                                  description: 'Adresse de la filiale (nref: numéro
+                                    304961, voie 304962, lieu_dit_hameau 304963, code_postal
+                                    304964, ville 304965, pays 304966)'
+                                  type: object
+                                  additionalProperties: false
+                                  required:
+                                  - numero
+                                  - voie
+                                  - lieu_dit_hameau
+                                  - code_postal
+                                  - ville
+                                  - pays
+                                  properties:
+                                    numero:
+                                      title: Numéro
+                                      description: 'Numéro de l''adresse (nref: 304961)'
+                                      type: string
+                                      example: 0051 BOULEVARD DE LA TOUR-MAUBOURG
+                                    voie:
+                                      title: Voie
+                                      description: 'Voie de l''adresse (nref: 304962)'
+                                      type: string
+                                      nullable: true
+                                    lieu_dit_hameau:
+                                      title: Lieu-dit / Hameau
+                                      description: 'Lieu-dit ou hameau (nref: 304963)'
+                                      type: string
+                                      nullable: true
+                                    code_postal:
+                                      title: Code postal
+                                      description: 'Code postal (nref: 304964)'
+                                      type: string
+                                      example: '75007'
+                                    ville:
+                                      title: Ville
+                                      description: 'Ville (nref: 304965)'
+                                      type: string
+                                      example: PARIS
+                                    pays:
+                                      title: Pays
+                                      description: 'Pays, code iso 3166 (nref: 304966)'
+                                      type: string
+                                      example: FR
+                                      nullable: true
+                          nombre_filiales:
+                            title: Nombre de filiales
+                            description: 'Nombre de filiales déclarées (nref: 309327)'
+                            type: number
+                            example: 1
+                          depose_neant:
+                            title: État du dépôt du formulaire 2059G
+                            description: "Indique l'état du dépôt du formulaire 2059G
+                              concernant les filiales et participations : \n \n -
+                              false : l’imprimé est bien déposé et contient des données.
+                              \n - true : l’imprimé est déposé à néant (vide). \n
+                              - null : l’imprimé est complètement absent. \n \n (nref:
+                              305768)"
+                            type: boolean
+                            example: false
+                    required:
+                    - capital
+                    - participations
+                    additionalProperties: false
+                  links:
+                    type: object
+                  meta:
+                    type: object
+                required:
+                - data
+                - links
+                - meta
+        '404':
+          description: Non trouvé
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_03003:
+                  value:
+                    errors:
+                    - code: '03003'
+                      title: Entité non trouvée
+                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                        ou ne comporte aucune information pour cet appel. Veuillez
+                        vérifier que l'identifiant correspond au périmètre couvert
+                        par l'API.
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Entité non trouvée
+                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
+                    ou ne comporte aucune information pour cet appel. Veuillez vérifier
+                    que l'identifiant correspond au périmètre couvert par l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '422':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                unprocessable_entity_error_siren_error:
+                  value:
+                    errors:
+                    - code: '00301'
+                      title: Entité non traitable
+                      detail: Le numéro de siren n'est pas correctement formatté
+                      source:
+                        parameter: siren
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le numéro de siren n'est pas correctement formatté
+                missing_mandatory_params_context_error:
+                  value:
+                    errors:
+                    - code: '00201'
+                      title: Entité non traitable
+                      detail: Le paramètre context est obligatoire
+                      source:
+                        parameter: context
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre context est obligatoire
+                missing_mandatory_params_object_error:
+                  value:
+                    errors:
+                    - code: '00202'
+                      title: Entité non traitable
+                      detail: Le paramètre object est obligatoire
+                      source:
+                        parameter: object
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre object est obligatoire
+                missing_mandatory_params_recipient_error:
+                  value:
+                    errors:
+                    - code: '00203'
+                      title: Entité non traitable
+                      detail: Le paramètre recipient est obligatoire
+                      source:
+                        parameter: recipient
+                      meta: {}
+                  summary: Entité non traitable
+                  description: Le paramètre recipient est obligatoire
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '502':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                provider_unknown_error:
+                  value:
+                    errors:
+                    - code: '03999'
+                      title: Erreur inconnue du fournisseur de données
+                      detail: La réponse retournée par le fournisseur de données est
+                        invalide et inconnue de notre service. L'équipe technique
+                        a été notifiée de cette erreur pour investigation.
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              examples:
+                timeout_error:
+                  value:
+                    errors:
+                    - code: '03002'
+                      title: Intermédiaire hors-délai
+                      detail: Temps d’attente d’une réponse du fournisseur de données
+                        écoulé.
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Intermédiaire hors-délai
+                  description: Temps d’attente d’une réponse du fournisseur de données
+                    écoulé.
+                provider_unavailable_error:
+                  value:
+                    errors:
+                    - code: '03001'
+                      title: Service non disponible
+                      detail: Service du fournisseur de données temporairement indisponible
+                        ou en maintenance.
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Service non disponible
+                  description: Service du fournisseur de données temporairement indisponible
+                    ou en maintenance.
+                network_error:
+                  value:
+                    errors:
+                    - code: '00501'
+                      title: Erreur réseau
+                      detail: Problème de connexion au serveur distant. L'erreur peut
+                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                        souvent d'une erreur temporaire.
+                      source:
+                      meta:
+                        retry_in: 10
+                  summary: Erreur réseau
+                  description: Problème de connexion au serveur distant. L'erreur
+                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
+                    souvent d'une erreur temporaire.
+                dns_resolution_error:
+                  value:
+                    errors:
+                    - code: '03004'
+                      title: Erreur de résolution DNS
+                      detail: Problème de résolution DNS de l'adresse du serveur
+                      source:
+                      meta:
+                        provider: DGFIP - Adélie
+                  summary: Erreur de résolution DNS
+                  description: Problème de résolution DNS de l'adresse du serveur
+              schema:
+                "$ref": "#/components/schemas/Error"
+      x-maintenances:
+        from_hour: '01:00'
+        to_hour: '02:00'
+      x-codeSamples:
+      - lang: cURL
+        label: Ligne de commande
+        source: |-
+          curl -X GET \
+            -H "Authorization: Bearer $token" \
+            --url "https://entreprise.api.gouv.fr/v3/dgfip/unites_legales/130025265/liens_capitalistiques/2019?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v4/djepva/api-association/associations/{siren_or_rna}":
     get:
       summary: Données association
@@ -9768,6 +10581,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_12056:
+                  value:
+                    errors:
+                    - code: '12056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -12050,1330 +12875,11 @@ paths:
           curl -X GET \
             -H "Authorization: Bearer $token" \
             --url "https://entreprise.api.gouv.fr/v3/infogreffe/rcs/unites_legales/130025265/mandataires_sociaux?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/inpi/unites_legales/{siren}/brevets":
-    get:
-      summary: Brevets déposés
-      tags:
-      - Propriété intellectuelle
-      parameters:
-      - name: recipient
-        in: query
-        description: |-
-          "**Bénéficiaire de l’appel**
-
-          SIRET de l’administration destinatrice des données."
-        example: '13002526500013'
-        required: true
-        schema:
-          type: string
-      - name: context
-        in: query
-        description: |-
-          "**Cadre de la requête**
-
-          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
-        example: Context de test
-        required: true
-        schema:
-          type: string
-      - name: object
-        in: query
-        description: |-
-          "**La raison de l’appel ou l’identifiant de la procédure.**
-
-          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
-        example: marché numéro 127
-        required: true
-        schema:
-          type: string
-      - name: siren
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: limit
-        in: query
-        description: Limite le nombre de résultats retournés. Valeur entre 1 et 20
-          (Défaut 5)
-        example: 10
-        schema:
-          type: number
-      security:
-      - jwt_bearer_token: []
-      description: 'Nombre de brevets déposés par l''entreprise (lorsque le SIREN
-        a été spécifié) et informations sur les brevets les plus récents.
-
-        '
-      responses:
-        '401':
-          description: Non autorisé
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '403':
-          description: Accès interdit
-          content:
-            application/json:
-              examples:
-                insufficient_privileges_error:
-                  value:
-                    errors:
-                    - code: '00100'
-                      title: Privilèges insuffisants
-                      detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges sur /v2/privileges
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Privilèges insuffisants
-                  description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges sur /v2/privileges
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '429':
-          description: Trop de requêtes
-          content:
-            application/json:
-              examples:
-                too_many_requests_error:
-                  value:
-                    errors:
-                    - code: '00429'
-                      title: Trop de requêtes
-                      detail: Vous avez effectué trop de requêtes
-                      source:
-                      meta: {}
-                  summary: Trop de requêtes
-                  description: Vous avez effectué trop de requêtes
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '200':
-          description: Brevets trouvés
-          headers:
-            RateLimit-Limit:
-              schema:
-                type: integer
-              description: La limite concernant l’endpoint appelé, soit le nombre
-                de requête/minute.
-              example: 50
-            RateLimit-Remaining:
-              schema:
-                type: integer
-              description: Le nombre d’appels restants durant la période courante
-                d’une minute.
-              example: 47
-            RateLimit-Reset:
-              schema:
-                type: integer
-              description: La fin de la période courante (en format timestamp)
-              example: 1637223155
-          x-operationId: api_entreprise_v3_inpi_latest_brevets
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        data:
-                          type: object
-                          properties:
-                            numero_publication:
-                              title: Numéro de publication
-                              description: Numéro de publication du brevet, constitué
-                                du code zone + numéro du brevet + catégorie de publication
-                              type: string
-                              example: FR3110115A1
-                            type:
-                              title: Type de la ressource
-                              type: string
-                              example: brevet
-                              enum:
-                              - brevet
-                            titre:
-                              title: Titre
-                              description: Titre du brevet
-                              type: string
-                              example: DETERMINATION DE PARAMETRES D&apos;UN MODELE
-                                DYNAMIQUE POUR UNE CELLULE ELECTROCHIMIQUE DE BATTERIE
-                            date_publication:
-                              title: Date de publication
-                              description: Date de publication du brevet
-                              type: string
-                              format: date
-                              example: '2017-06-16'
-                            date_depot:
-                              title: Date de dépot
-                              description: Date de dépot du brevet
-                              type: string
-                              format: date
-                              example: '2015-12-14'
-                            code_zone:
-                              description: |
-                                Code de deux lettres représentant la zone géographique où le brevet a été déposé, en fonction
-                                de l'organisation qui a enregistré le brevet.
-                              type: string
-                              example: FR
-                              enum:
-                              - AL
-                              - AP
-                              - AR
-                              - AT
-                              - AU
-                              - BA
-                              - BE
-                              - BG
-                              - BR
-                              - CA
-                              - CH
-                              - CL
-                              - CN
-                              - CO
-                              - CR
-                              - CS
-                              - CU
-                              - CY
-                              - CZ
-                              - DD
-                              - DE
-                              - DK
-                              - DZ
-                              - EA
-                              - EC
-                              - EE
-                              - EG
-                              - EP
-                              - ES
-                              - FI
-                              - FR
-                              - GB
-                              - GC
-                              - GE
-                              - GR
-                              - GT
-                              - HK
-                              - HR
-                              - HU
-                              - ID
-                              - IE
-                              - IL
-                              - IN
-                              - IS
-                              - IT
-                              - JP
-                              - KE
-                              - KR
-                              - LI
-                              - LT
-                              - LU
-                              - LV
-                              - MA
-                              - MC
-                              - MD
-                              - ME
-                              - MK
-                              - MN
-                              - MT
-                              - MW
-                              - MX
-                              - MY
-                              - NC
-                              - NI
-                              - NL
-                              - false
-                              - NZ
-                              - OA
-                              - PA
-                              - PE
-                              - PH
-                              - PL
-                              - PT
-                              - RO
-                              - RS
-                              - RU
-                              - SE
-                              - SG
-                              - SI
-                              - SK
-                              - SM
-                              - SU
-                              - SV
-                              - TJ
-                              - TR
-                              - TT
-                              - TW
-                              - UA
-                              - US
-                              - UY
-                              - VN
-                              - WO
-                              - YU
-                              - ZA
-                              - ZM
-                              - ZW
-                              -
-                            numero_brevet:
-                              title: Numéro du brevet
-                              description: 'Numéro du brevet dans l''organisation
-                                ou il a été déposé (déterminée par le code de zone)
-
-                                '
-                              type: string
-                              example: '3110115'
-                            categorie_publication:
-                              title: Catégorie
-                              description: 'Code représentant la catégorie du brevet
-                                (ex: A1 pour une demande de brevet,'
-                              type: string
-                              example: A1
-                          required:
-                          - numero_publication
-                          - type
-                          - titre
-                          - date_publication
-                          - date_depot
-                          - code_zone
-                          - numero_brevet
-                          - categorie_publication
-                        links:
-                          type: object
-                        meta:
-                          type: object
-                  meta:
-                    type: object
-                  links:
-                    type: object
-                required:
-                - data
-        '422':
-          description: Paramètre(s) invalide(s)
-          content:
-            application/json:
-              examples:
-                unprocessable_entity_error_siren_error:
-                  value:
-                    errors:
-                    - code: '00301'
-                      title: Entité non traitable
-                      detail: Le numéro de siren n'est pas correctement formatté
-                      source:
-                        parameter: siren
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le numéro de siren n'est pas correctement formatté
-                missing_mandatory_params_context_error:
-                  value:
-                    errors:
-                    - code: '00201'
-                      title: Entité non traitable
-                      detail: Le paramètre context est obligatoire
-                      source:
-                        parameter: context
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le paramètre context est obligatoire
-                missing_mandatory_params_object_error:
-                  value:
-                    errors:
-                    - code: '00202'
-                      title: Entité non traitable
-                      detail: Le paramètre object est obligatoire
-                      source:
-                        parameter: object
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le paramètre object est obligatoire
-                missing_mandatory_params_recipient_error:
-                  value:
-                    errors:
-                    - code: '00203'
-                      title: Entité non traitable
-                      detail: Le paramètre recipient est obligatoire
-                      source:
-                        parameter: recipient
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le paramètre recipient est obligatoire
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '404':
-          description: Brevets non trouvés
-          content:
-            application/json:
-              examples:
-                entite_non_trouvee_05003:
-                  value:
-                    errors:
-                    - code: '05003'
-                      title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
-                        ou ne comporte aucune information pour cet appel. Veuillez
-                        vérifier que l'identifiant correspond au périmètre couvert
-                        par l'API.
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
-                    ou ne comporte aucune information pour cet appel. Veuillez vérifier
-                    que l'identifiant correspond au périmètre couvert par l'API.
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '502':
-          description: Erreur du fournisseur
-          content:
-            application/json:
-              examples:
-                provider_unknown_error:
-                  value:
-                    errors:
-                    - code: '05999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: La réponse retournée par le fournisseur de données est
-                        invalide et inconnue de notre service. L'équipe technique
-                        a été notifiée de cette erreur pour investigation.
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Erreur inconnue du fournisseur de données
-                  description: La réponse retournée par le fournisseur de données
-                    est invalide et inconnue de notre service. L'équipe technique
-                    a été notifiée de cette erreur pour investigation.
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '504':
-          description: Erreur d'intermédiaire
-          content:
-            application/json:
-              examples:
-                timeout_error:
-                  value:
-                    errors:
-                    - code: '05002'
-                      title: Intermédiaire hors-délai
-                      detail: Temps d’attente d’une réponse du fournisseur de données
-                        écoulé.
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Intermédiaire hors-délai
-                  description: Temps d’attente d’une réponse du fournisseur de données
-                    écoulé.
-                provider_unavailable_error:
-                  value:
-                    errors:
-                    - code: '05001'
-                      title: Service non disponible
-                      detail: Service du fournisseur de données temporairement indisponible
-                        ou en maintenance.
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Service non disponible
-                  description: Service du fournisseur de données temporairement indisponible
-                    ou en maintenance.
-                network_error:
-                  value:
-                    errors:
-                    - code: '00501'
-                      title: Erreur réseau
-                      detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
-                        souvent d'une erreur temporaire.
-                      source:
-                      meta:
-                        retry_in: 10
-                  summary: Erreur réseau
-                  description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
-                    souvent d'une erreur temporaire.
-                dns_resolution_error:
-                  value:
-                    errors:
-                    - code: '05004'
-                      title: Erreur de résolution DNS
-                      detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Erreur de résolution DNS
-                  description: Problème de résolution DNS de l'adresse du serveur
-              schema:
-                "$ref": "#/components/schemas/Error"
-      x-codeSamples:
-      - lang: cURL
-        label: Ligne de commande
-        source: |-
-          curl -X GET \
-            -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/inpi/unites_legales/130025265/brevets?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/inpi/unites_legales/{siren}/marques":
-    get:
-      summary: Marques déposées
-      tags:
-      - Propriété intellectuelle
-      parameters:
-      - name: recipient
-        in: query
-        description: |-
-          "**Bénéficiaire de l’appel**
-
-          SIRET de l’administration destinatrice des données."
-        example: '13002526500013'
-        required: true
-        schema:
-          type: string
-      - name: context
-        in: query
-        description: |-
-          "**Cadre de la requête**
-
-          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
-        example: Context de test
-        required: true
-        schema:
-          type: string
-      - name: object
-        in: query
-        description: |-
-          "**La raison de l’appel ou l’identifiant de la procédure.**
-
-          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
-        example: marché numéro 127
-        required: true
-        schema:
-          type: string
-      - name: siren
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: limit
-        in: query
-        description: Limite le nombre de résultats retournés. Valeur entre 1 et 20
-          (Défaut 5)
-        example: 10
-        schema:
-          type: number
-      security:
-      - jwt_bearer_token: []
-      description: 'Nombre de marques déposées par l''entreprise (lorsque le SIREN
-        a été spécifié) et informations sur les marques les plus récentes.
-
-        '
-      responses:
-        '401':
-          description: Non autorisé
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '403':
-          description: Accès interdit
-          content:
-            application/json:
-              examples:
-                insufficient_privileges_error:
-                  value:
-                    errors:
-                    - code: '00100'
-                      title: Privilèges insuffisants
-                      detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges sur /v2/privileges
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Privilèges insuffisants
-                  description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges sur /v2/privileges
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '429':
-          description: Trop de requêtes
-          content:
-            application/json:
-              examples:
-                too_many_requests_error:
-                  value:
-                    errors:
-                    - code: '00429'
-                      title: Trop de requêtes
-                      detail: Vous avez effectué trop de requêtes
-                      source:
-                      meta: {}
-                  summary: Trop de requêtes
-                  description: Vous avez effectué trop de requêtes
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '200':
-          description: Marques trouvées
-          headers:
-            RateLimit-Limit:
-              schema:
-                type: integer
-              description: La limite concernant l’endpoint appelé, soit le nombre
-                de requête/minute.
-              example: 50
-            RateLimit-Remaining:
-              schema:
-                type: integer
-              description: Le nombre d’appels restants durant la période courante
-                d’une minute.
-              example: 47
-            RateLimit-Reset:
-              schema:
-                type: integer
-              description: La fin de la période courante (en format timestamp)
-              example: 1637223155
-          x-operationId: api_entreprise_v3_inpi_latest_marques
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        data:
-                          type: object
-                          properties:
-                            numero_application:
-                              title: Numéro d'identification
-                              type: string
-                              example: '4313464'
-                            type:
-                              title: Type de la ressource
-                              type: string
-                              example: marque
-                              enum:
-                              - marque
-                            nom:
-                              title: Nom
-                              type: string
-                              example: DISTRIGO PARTS DISTRIBUTION
-                              nullable: true
-                            status:
-                              title: Statut
-                              type: string
-                              example: Marque enregistrée
-                              enum:
-                              - Demande déposée
-                              - Demande publiée
-                              - Demande non publiée
-                              - Demande irrecevable après publication
-                              - Marque enregistrée
-                              - Renouvellement demandé
-                              - Marque renouvelée
-                              - Demande totalement rejetée
-                              - Marque ayant fait l'objet d'une renonciation totale
-                              - Marque ayant fait l'objet d'un retrait total
-                              - Marque annulée
-                              - Marque expirée
-                            depositaire:
-                              title: Dépositaire
-                              description: Nom de déposant ou titulaire
-                              type: string
-                              example: PEUGEOT CITROËN AUTOMOBILES SA, Société anonyme
-                            clef:
-                              title: Clef
-                              type: string
-                              example: FMARK|4313464
-                          required:
-                          - numero_application
-                          - type
-                          - nom
-                          - status
-                          - depositaire
-                          - clef
-                        links:
-                          type: object
-                          properties:
-                            notice:
-                              type: string
-                              example: https://opendata-pi.inpi.fr/inpi/marques/notice/FR4313464
-                              description: Lien vers la notice concernant ce dépôt
-                                de marque, au format XML.
-                          required:
-                          - notice
-                          additionalProperties: false
-                        meta:
-                          type: object
-                  meta:
-                    type: object
-                  links:
-                    type: object
-                required:
-                - data
-        '422':
-          description: Paramètre(s) invalide(s)
-          content:
-            application/json:
-              examples:
-                unprocessable_entity_error_siren_error:
-                  value:
-                    errors:
-                    - code: '00301'
-                      title: Entité non traitable
-                      detail: Le numéro de siren n'est pas correctement formatté
-                      source:
-                        parameter: siren
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le numéro de siren n'est pas correctement formatté
-                missing_mandatory_params_context_error:
-                  value:
-                    errors:
-                    - code: '00201'
-                      title: Entité non traitable
-                      detail: Le paramètre context est obligatoire
-                      source:
-                        parameter: context
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le paramètre context est obligatoire
-                missing_mandatory_params_object_error:
-                  value:
-                    errors:
-                    - code: '00202'
-                      title: Entité non traitable
-                      detail: Le paramètre object est obligatoire
-                      source:
-                        parameter: object
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le paramètre object est obligatoire
-                missing_mandatory_params_recipient_error:
-                  value:
-                    errors:
-                    - code: '00203'
-                      title: Entité non traitable
-                      detail: Le paramètre recipient est obligatoire
-                      source:
-                        parameter: recipient
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le paramètre recipient est obligatoire
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '404':
-          description: Marques non trouvées
-          content:
-            application/json:
-              examples:
-                entite_non_trouvee_05003:
-                  value:
-                    errors:
-                    - code: '05003'
-                      title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
-                        ou ne comporte aucune information pour cet appel. Veuillez
-                        vérifier que l'identifiant correspond au périmètre couvert
-                        par l'API.
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
-                    ou ne comporte aucune information pour cet appel. Veuillez vérifier
-                    que l'identifiant correspond au périmètre couvert par l'API.
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '502':
-          description: Erreur du fournisseur
-          content:
-            application/json:
-              examples:
-                provider_unknown_error:
-                  value:
-                    errors:
-                    - code: '05999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: La réponse retournée par le fournisseur de données est
-                        invalide et inconnue de notre service. L'équipe technique
-                        a été notifiée de cette erreur pour investigation.
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Erreur inconnue du fournisseur de données
-                  description: La réponse retournée par le fournisseur de données
-                    est invalide et inconnue de notre service. L'équipe technique
-                    a été notifiée de cette erreur pour investigation.
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '504':
-          description: Erreur d'intermédiaire
-          content:
-            application/json:
-              examples:
-                timeout_error:
-                  value:
-                    errors:
-                    - code: '05002'
-                      title: Intermédiaire hors-délai
-                      detail: Temps d’attente d’une réponse du fournisseur de données
-                        écoulé.
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Intermédiaire hors-délai
-                  description: Temps d’attente d’une réponse du fournisseur de données
-                    écoulé.
-                provider_unavailable_error:
-                  value:
-                    errors:
-                    - code: '05001'
-                      title: Service non disponible
-                      detail: Service du fournisseur de données temporairement indisponible
-                        ou en maintenance.
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Service non disponible
-                  description: Service du fournisseur de données temporairement indisponible
-                    ou en maintenance.
-                network_error:
-                  value:
-                    errors:
-                    - code: '00501'
-                      title: Erreur réseau
-                      detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
-                        souvent d'une erreur temporaire.
-                      source:
-                      meta:
-                        retry_in: 10
-                  summary: Erreur réseau
-                  description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
-                    souvent d'une erreur temporaire.
-                dns_resolution_error:
-                  value:
-                    errors:
-                    - code: '05004'
-                      title: Erreur de résolution DNS
-                      detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Erreur de résolution DNS
-                  description: Problème de résolution DNS de l'adresse du serveur
-              schema:
-                "$ref": "#/components/schemas/Error"
-      x-codeSamples:
-      - lang: cURL
-        label: Ligne de commande
-        source: |-
-          curl -X GET \
-            -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/inpi/unites_legales/130025265/marques?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
-  "/v3/inpi/unites_legales/{siren}/modeles":
-    get:
-      summary: Modèles déposés
-      tags:
-      - Propriété intellectuelle
-      parameters:
-      - name: recipient
-        in: query
-        description: |-
-          "**Bénéficiaire de l’appel**
-
-          SIRET de l’administration destinatrice des données."
-        example: '13002526500013'
-        required: true
-        schema:
-          type: string
-      - name: context
-        in: query
-        description: |-
-          "**Cadre de la requête**
-
-          Par exemple : aides publiques, marchés publics ou gestion d’un référentiel tiers utilisé pour tel type d’application."
-        example: Context de test
-        required: true
-        schema:
-          type: string
-      - name: object
-        in: query
-        description: |-
-          "**La raison de l’appel ou l’identifiant de la procédure.**
-
-          L’identifiant peut être interne à votre organisation ou bien un numéro de marché publique, un nom de procédure ; l’essentiel est que celui-ci vous permette de tracer et de retrouver les informations relatives à l’appel. En effet, vous devez pouvoir justifier de la raison d’un appel auprès du fournisseur de données. Description courte ( < 50 caractères )."
-        example: marché numéro 127
-        required: true
-        schema:
-          type: string
-      - name: siren
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: limit
-        in: query
-        description: Limite le nombre de résultats retournés. Valeur entre 1 et 20
-          (Défaut 5)
-        example: 10
-        schema:
-          type: number
-      security:
-      - jwt_bearer_token: []
-      description: 'Nombre de modèles déposés par l''entreprise (lorsque le SIREN
-        a été spécifié) et informations sur les modèles les plus récents.
-
-        '
-      responses:
-        '401':
-          description: Non autorisé
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide ou n'est pas renseigné
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide ou n'est pas renseigné
-                expired_token_error:
-                  value:
-                    errors:
-                    - code: '00103'
-                      title: Jeton expiré
-                      detail: Votre token est expiré. Vous devez refaire une demande
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton expiré
-                  description: Votre token est expiré. Vous devez refaire une demande
-                blacklisted_token_error:
-                  value:
-                    errors:
-                    - code: '00105'
-                      title: Jeton sur liste noire
-                      detail: 'Votre jeton est sur liste noire, celui-ci a certainement
-                        été divulgué sur un canal non-sécurisé. Vous pouvez trouver
-                        un jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Jeton sur liste noire
-                  description: 'Votre jeton est sur liste noire, celui-ci a certainement
-                    été divulgué sur un canal non-sécurisé. Vous pouvez trouver un
-                    jeton valide sur votre espace personnel: https://entreprise.api.gouv.fr/compte'
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '403':
-          description: Accès interdit
-          content:
-            application/json:
-              examples:
-                insufficient_privileges_error:
-                  value:
-                    errors:
-                    - code: '00100'
-                      title: Privilèges insuffisants
-                      detail: Votre token est valide mais vos privilèges sont insuffisants.
-                        Listez vos privilèges sur /v2/privileges
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Privilèges insuffisants
-                  description: Votre token est valide mais vos privilèges sont insuffisants.
-                    Listez vos privilèges sur /v2/privileges
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '429':
-          description: Trop de requêtes
-          content:
-            application/json:
-              examples:
-                too_many_requests_error:
-                  value:
-                    errors:
-                    - code: '00429'
-                      title: Trop de requêtes
-                      detail: Vous avez effectué trop de requêtes
-                      source:
-                      meta: {}
-                  summary: Trop de requêtes
-                  description: Vous avez effectué trop de requêtes
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '200':
-          description: Modèles trouvés
-          headers:
-            RateLimit-Limit:
-              schema:
-                type: integer
-              description: La limite concernant l’endpoint appelé, soit le nombre
-                de requête/minute.
-              example: 50
-            RateLimit-Remaining:
-              schema:
-                type: integer
-              description: Le nombre d’appels restants durant la période courante
-                d’une minute.
-              example: 47
-            RateLimit-Reset:
-              schema:
-                type: integer
-              description: La fin de la période courante (en format timestamp)
-              example: 1637223155
-          x-operationId: api_entreprise_v3_inpi_latest_modeles
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        data:
-                          type: object
-                          properties:
-                            document_id:
-                              title: Identifiant
-                              description: 'Identifiant du modèle dans la base de
-                                l''INPI, constitué du code de l''office de dépôt (ex:
-                                FR), du numéro national de dépôt (ex: 20203928) et
-                                du numéro de référence (ex: 001) '
-                              type: string
-                              example: FR20203928-001
-                            type:
-                              title: Type de la ressource
-                              type: string
-                              example: modele
-                              enum:
-                              - modele
-                            numero_depot:
-                              title: Numéro national de dépôt
-                              description: Numéro national sous lequel le modèle est
-                                enregistré.
-                              type: string
-                              example: '20203928'
-                            titre:
-                              title: Titre
-                              description: Titre du modèle.
-                              type: string
-                              example: Véhicule automobile, vues de détails
-                            total_representations:
-                              title: Représentations totales
-                              description: Nombre de représentations (vues) du modèle
-                              type: number
-                              example: 7
-                            deposant:
-                              title: Déposant
-                              description: Nom de l'entité ayant déposé le modèle.
-                              type: string
-                              example: PSA AUTOMOBILES, SA
-                            date_depot:
-                              title: Date de dépôt
-                              description: Date à laquelle le modèle a été déposé
-                                pour publication
-                              type: string
-                              example: '2015-12-14'
-                            date_publication:
-                              title: Date de publication
-                              description: Date de publication du modèle
-                              type: string
-                              example: '2015-12-14'
-                            classe:
-                              title: Code de classification
-                              description: Code de classification du modèle, sur 4
-                                chiffres
-                              type: string
-                              example: '2606'
-                            reference:
-                              title: Numéro de réference
-                              description: Numéro de référence du modèle par entité,
-                                sur trois chiffres. Le premier modèle d'une entité
-                                est numéroté 001, le second 002, etc.
-                              type: string
-                              example: '001'
-                          required:
-                          - document_id
-                          - type
-                          - numero_depot
-                          - titre
-                          - total_representations
-                          - deposant
-                          - date_depot
-                          - date_publication
-                          - classe
-                          - reference
-                        links:
-                          type: object
-                          properties:
-                            notice:
-                              type: string
-                              example: https://opendata-pi.inpi.fr/inpi/modeles/notice/FR20203928?ref=006
-                              description: Lien vers la notice concernant ce dépôt
-                                de modèle, au format XML
-                          required:
-                          - notice
-                          additionalProperties: false
-                        meta:
-                          type: object
-                  meta:
-                    type: object
-                  links:
-                    type: object
-                required:
-                - data
-        '422':
-          description: Paramètre(s) invalide(s)
-          content:
-            application/json:
-              examples:
-                unprocessable_entity_error_siren_error:
-                  value:
-                    errors:
-                    - code: '00301'
-                      title: Entité non traitable
-                      detail: Le numéro de siren n'est pas correctement formatté
-                      source:
-                        parameter: siren
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le numéro de siren n'est pas correctement formatté
-                missing_mandatory_params_context_error:
-                  value:
-                    errors:
-                    - code: '00201'
-                      title: Entité non traitable
-                      detail: Le paramètre context est obligatoire
-                      source:
-                        parameter: context
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le paramètre context est obligatoire
-                missing_mandatory_params_object_error:
-                  value:
-                    errors:
-                    - code: '00202'
-                      title: Entité non traitable
-                      detail: Le paramètre object est obligatoire
-                      source:
-                        parameter: object
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le paramètre object est obligatoire
-                missing_mandatory_params_recipient_error:
-                  value:
-                    errors:
-                    - code: '00203'
-                      title: Entité non traitable
-                      detail: Le paramètre recipient est obligatoire
-                      source:
-                        parameter: recipient
-                      meta: {}
-                  summary: Entité non traitable
-                  description: Le paramètre recipient est obligatoire
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '404':
-          description: Modèles non trouvés
-          content:
-            application/json:
-              examples:
-                entite_non_trouvee_05003:
-                  value:
-                    errors:
-                    - code: '05003'
-                      title: Entité non trouvée
-                      detail: Le siret ou siren indiqué n'existe pas, n'est pas connu
-                        ou ne comporte aucune information pour cet appel. Veuillez
-                        vérifier que l'identifiant correspond au périmètre couvert
-                        par l'API.
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Entité non trouvée
-                  description: Le siret ou siren indiqué n'existe pas, n'est pas connu
-                    ou ne comporte aucune information pour cet appel. Veuillez vérifier
-                    que l'identifiant correspond au périmètre couvert par l'API.
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '502':
-          description: Erreur du fournisseur
-          content:
-            application/json:
-              examples:
-                provider_unknown_error:
-                  value:
-                    errors:
-                    - code: '05999'
-                      title: Erreur inconnue du fournisseur de données
-                      detail: La réponse retournée par le fournisseur de données est
-                        invalide et inconnue de notre service. L'équipe technique
-                        a été notifiée de cette erreur pour investigation.
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Erreur inconnue du fournisseur de données
-                  description: La réponse retournée par le fournisseur de données
-                    est invalide et inconnue de notre service. L'équipe technique
-                    a été notifiée de cette erreur pour investigation.
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '504':
-          description: Erreur d'intermédiaire
-          content:
-            application/json:
-              examples:
-                timeout_error:
-                  value:
-                    errors:
-                    - code: '05002'
-                      title: Intermédiaire hors-délai
-                      detail: Temps d’attente d’une réponse du fournisseur de données
-                        écoulé.
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Intermédiaire hors-délai
-                  description: Temps d’attente d’une réponse du fournisseur de données
-                    écoulé.
-                provider_unavailable_error:
-                  value:
-                    errors:
-                    - code: '05001'
-                      title: Service non disponible
-                      detail: Service du fournisseur de données temporairement indisponible
-                        ou en maintenance.
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Service non disponible
-                  description: Service du fournisseur de données temporairement indisponible
-                    ou en maintenance.
-                network_error:
-                  value:
-                    errors:
-                    - code: '00501'
-                      title: Erreur réseau
-                      detail: Problème de connexion au serveur distant. L'erreur peut
-                        venir soit du fournisseur, soit de API Entreprise. Il s'agit
-                        souvent d'une erreur temporaire.
-                      source:
-                      meta:
-                        retry_in: 10
-                  summary: Erreur réseau
-                  description: Problème de connexion au serveur distant. L'erreur
-                    peut venir soit du fournisseur, soit de API Entreprise. Il s'agit
-                    souvent d'une erreur temporaire.
-                dns_resolution_error:
-                  value:
-                    errors:
-                    - code: '05004'
-                      title: Erreur de résolution DNS
-                      detail: Problème de résolution DNS de l'adresse du serveur
-                      source:
-                      meta:
-                        provider: INPI
-                  summary: Erreur de résolution DNS
-                  description: Problème de résolution DNS de l'adresse du serveur
-              schema:
-                "$ref": "#/components/schemas/Error"
-      x-codeSamples:
-      - lang: cURL
-        label: Ligne de commande
-        source: |-
-          curl -X GET \
-            -H "Authorization: Bearer $token" \
-            --url "https://entreprise.api.gouv.fr/v3/inpi/unites_legales/130025265/modeles?context=Test+de+l%27API&object=Test+de+l%27API&recipient=10000001700010"
   "/v3/inpi/rne/unites_legales/open_data/{siren}/actes_bilans":
     get:
       summary: Actes et bilans
       tags:
-      - Prochainement
+      - Informations générales
       parameters:
       - name: recipient
         in: query
@@ -13596,6 +13102,13 @@ paths:
                               example: https://entreprise.api.gouv.fr/proxy/inpi/download/%2FV+svyVVJGVCJroamyqjOrECaXHorkxJ39vZH1IMHz4N+6gvit9zgoQ=--rJ1ss+Brc7oVhloH--huyvWA83YgMFqOnjyKDmXQ==
                       bilans:
                         title: Liste des bilans de l'unité légale
+                        description: "Ce tableau liste les documents, classés par
+                          date de mise à jour, et à défaut date de dépôt du document.
+                          Les comptes annuels sont déposés en très grande majorité
+                          directement au Guichet Unique de l'Inpi. Environ 30% (fin
+                          2024) des dépôts de comptes se font encore auprès des greffes,
+                          ces anciennes voies de transmission ont pour objectif d'être
+                          fermées. \n"
                         type: array
                         items:
                           type: object
@@ -13611,6 +13124,13 @@ paths:
                               example: X9wvz5eKvKQv_C0022A1001L257081D20230902H180411TPIJTES003PDBOR
                             date_depot:
                               title: Date de dépôt du bilan
+                              description: Ce champ indique la date de dépôt du bilan.
+                                Si le bilan a été déposé au guichet unique, la date
+                                de dépôt correspond à la date de où le paiement a
+                                été effectué. Si le bilan provient directement d'Infogreffe
+                                (cas des bilans avant 2023 et de certains bilans à
+                                compter de cette date), la date de dépôt correspond
+                                à la date de validation par les greffes.
                               type: string
                               format: date
                               example: '2023-08-08'
@@ -15162,6 +14682,7 @@ paths:
                         title: Code postal
                         example: '75016'
                         type: string
+                        nullable: true
                       distribution_speciale:
                         title: Distribution spéciale
                         type: string
@@ -15242,30 +14763,35 @@ paths:
                             description: 'Si l''établissement correspond à une personne
                               morale : la dénomination sociale de la personne morale.
                               Le cas contraire: cette variable est vide.'
+                            nullable: true
                             example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                           l2:
                             title: Ligne 2
                             type: string
                             description: 'Si l''établissement correspond à une personne
                               physique : concaténation du nom et prénom'
+                            nullable: true
                             example: JEAN MARIE DURAND
                           l3:
                             title: Ligne 3
                             type: string
                             description: Complément d'adresse comme décrit dans la
                               clé `complement_adresse`
+                            nullable: true
                             example: ZAE SAINT GUENAULT
                           l4:
                             title: Ligne 4
                             type: string
                             description: Concaténation du numéro de voie, d'indice
                               de répétition, du type de voie et du libellé de la voie
+                            nullable: true
                             example: 51 BIS RUE DE LA PAIX
                           l5:
                             title: Ligne 5
                             type: string
                             description: Distribution spéciale comme décrit dans la
                               clé `distribution_speciale`
+                            nullable: true
                             example: CS 72809
                           l6:
                             title: Ligne 6
@@ -15275,11 +14801,13 @@ paths:
                               France : code postal accompagné de son libellé, sinon
                               : libellé de la commune de l''établissement situé à
                               l''étranger'
+                            nullable: true
                             example: 75256 PARIX CEDEX 12
                           l7:
                             title: Ligne 7
                             type: string
                             description: Pays de l'établissement
+                            nullable: true
                             example: FRANCE
                         required:
                         - l1
@@ -15779,6 +15307,7 @@ paths:
                         title: Code postal
                         example: '75016'
                         type: string
+                        nullable: true
                         description: Si la personne morale est en diffusion partielle,
                           la valeur est remplacée par "[ND]".
                       distribution_speciale:
@@ -15869,6 +15398,7 @@ paths:
                               Le cas contraire: cette variable est vide. \n Si la
                               personne morale est en diffusion partielle, la valeur
                               est remplacée par \"[ND]\"."
+                            nullable: true
                             example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                           l2:
                             title: Ligne 2
@@ -15877,6 +15407,7 @@ paths:
                               physique : concaténation du nom et prénom \n Si la personne
                               morale est en diffusion partielle, la valeur est remplacée
                               par \"[ND]\"."
+                            nullable: true
                             example: JEAN MARIE DURAND
                           l3:
                             title: Ligne 3
@@ -15885,6 +15416,7 @@ paths:
                               physique : concaténation du nom et prénom \n Si la personne
                               morale est en diffusion partielle, la valeur est remplacée
                               par \"[ND]\"."
+                            nullable: true
                             example: ZAE SAINT GUENAULT
                           l4:
                             title: Ligne 4
@@ -15893,6 +15425,7 @@ paths:
                               de répétition, du type de voie et du libellé de la voie
                               \n Si la personne morale est en diffusion partielle,
                               la valeur est remplacée par \"[ND]\"."
+                            nullable: true
                             example: 51 BIS RUE DE LA PAIX
                           l5:
                             title: Ligne 5
@@ -15901,6 +15434,7 @@ paths:
                               la clé `distribution_speciale` \n Si la personne morale
                               est en diffusion partielle, la valeur est remplacée
                               par \"[ND]\"."
+                            nullable: true
                             example: CS 72809
                           l6:
                             title: Ligne 6
@@ -15911,11 +15445,13 @@ paths:
                               : libellé de la commune de l'établissement situé à l'étranger
                               \n Si la personne morale est en diffusion partielle,
                               la valeur est remplacée par \"[ND]\"."
+                            nullable: true
                             example: 75256 PARIX CEDEX 12
                           l7:
                             title: Ligne 7
                             type: string
                             description: Pays de l'établissement
+                            nullable: true
                             example: FRANCE
                         required:
                         - l1
@@ -17096,6 +16632,7 @@ paths:
                             title: Code postal
                             example: '75016'
                             type: string
+                            nullable: true
                           distribution_speciale:
                             title: Distribution spéciale
                             type: string
@@ -17179,18 +16716,21 @@ paths:
                                   personne morale : la dénomination sociale de la
                                   personne morale. Le cas contraire: cette variable
                                   est vide.'
+                                nullable: true
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                               l2:
                                 title: Ligne 2
                                 type: string
                                 description: 'Si l''établissement correspond à une
                                   personne physique : concaténation du nom et prénom'
+                                nullable: true
                                 example: JEAN MARIE DURAND
                               l3:
                                 title: Ligne 3
                                 type: string
                                 description: Complément d'adresse comme décrit dans
                                   la clé `complement_adresse`
+                                nullable: true
                                 example: ZAE SAINT GUENAULT
                               l4:
                                 title: Ligne 4
@@ -17198,12 +16738,14 @@ paths:
                                 description: Concaténation du numéro de voie, d'indice
                                   de répétition, du type de voie et du libellé de
                                   la voie
+                                nullable: true
                                 example: 51 BIS RUE DE LA PAIX
                               l5:
                                 title: Ligne 5
                                 type: string
                                 description: Distribution spéciale comme décrit dans
                                   la clé `distribution_speciale`
+                                nullable: true
                                 example: CS 72809
                               l6:
                                 title: Ligne 6
@@ -17213,11 +16755,13 @@ paths:
                                   est en France : code postal accompagné de son libellé,
                                   sinon : libellé de la commune de l''établissement
                                   situé à l''étranger'
+                                nullable: true
                                 example: 75256 PARIX CEDEX 12
                               l7:
                                 title: Ligne 7
                                 type: string
                                 description: Pays de l'établissement
+                                nullable: true
                                 example: FRANCE
                             required:
                             - l1
@@ -18472,6 +18016,7 @@ paths:
                             title: Code postal
                             example: '75016'
                             type: string
+                            nullable: true
                             description: Si la personne morale est en diffusion partielle,
                               la valeur est remplacée par "[ND]".
                           distribution_speciale:
@@ -18564,6 +18109,7 @@ paths:
                                   personne morale. Le cas contraire: cette variable
                                   est vide. \n Si la personne morale est en diffusion
                                   partielle, la valeur est remplacée par \"[ND]\"."
+                                nullable: true
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                               l2:
                                 title: Ligne 2
@@ -18572,6 +18118,7 @@ paths:
                                   personne physique : concaténation du nom et prénom
                                   \n Si la personne morale est en diffusion partielle,
                                   la valeur est remplacée par \"[ND]\"."
+                                nullable: true
                                 example: JEAN MARIE DURAND
                               l3:
                                 title: Ligne 3
@@ -18580,6 +18127,7 @@ paths:
                                   personne physique : concaténation du nom et prénom
                                   \n Si la personne morale est en diffusion partielle,
                                   la valeur est remplacée par \"[ND]\"."
+                                nullable: true
                                 example: ZAE SAINT GUENAULT
                               l4:
                                 title: Ligne 4
@@ -18588,6 +18136,7 @@ paths:
                                   de répétition, du type de voie et du libellé de
                                   la voie \n Si la personne morale est en diffusion
                                   partielle, la valeur est remplacée par \"[ND]\"."
+                                nullable: true
                                 example: 51 BIS RUE DE LA PAIX
                               l5:
                                 title: Ligne 5
@@ -18596,6 +18145,7 @@ paths:
                                   la clé `distribution_speciale` \n Si la personne
                                   morale est en diffusion partielle, la valeur est
                                   remplacée par \"[ND]\"."
+                                nullable: true
                                 example: CS 72809
                               l6:
                                 title: Ligne 6
@@ -18607,11 +18157,13 @@ paths:
                                   situé à l'étranger \n Si la personne morale est
                                   en diffusion partielle, la valeur est remplacée
                                   par \"[ND]\"."
+                                nullable: true
                                 example: 75256 PARIX CEDEX 12
                               l7:
                                 title: Ligne 7
                                 type: string
                                 description: Pays de l'établissement
+                                nullable: true
                                 example: FRANCE
                             required:
                             - l1
@@ -19858,6 +19410,7 @@ paths:
                             title: Code postal
                             example: '75016'
                             type: string
+                            nullable: true
                             description: Si la personne morale est en diffusion partielle,
                               la valeur est remplacée par "[ND]".
                           distribution_speciale:
@@ -19950,6 +19503,7 @@ paths:
                                   personne morale. Le cas contraire: cette variable
                                   est vide. \n Si la personne morale est en diffusion
                                   partielle, la valeur est remplacée par \"[ND]\"."
+                                nullable: true
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                               l2:
                                 title: Ligne 2
@@ -19958,6 +19512,7 @@ paths:
                                   personne physique : concaténation du nom et prénom
                                   \n Si la personne morale est en diffusion partielle,
                                   la valeur est remplacée par \"[ND]\"."
+                                nullable: true
                                 example: JEAN MARIE DURAND
                               l3:
                                 title: Ligne 3
@@ -19966,6 +19521,7 @@ paths:
                                   personne physique : concaténation du nom et prénom
                                   \n Si la personne morale est en diffusion partielle,
                                   la valeur est remplacée par \"[ND]\"."
+                                nullable: true
                                 example: ZAE SAINT GUENAULT
                               l4:
                                 title: Ligne 4
@@ -19974,6 +19530,7 @@ paths:
                                   de répétition, du type de voie et du libellé de
                                   la voie \n Si la personne morale est en diffusion
                                   partielle, la valeur est remplacée par \"[ND]\"."
+                                nullable: true
                                 example: 51 BIS RUE DE LA PAIX
                               l5:
                                 title: Ligne 5
@@ -19982,6 +19539,7 @@ paths:
                                   la clé `distribution_speciale` \n Si la personne
                                   morale est en diffusion partielle, la valeur est
                                   remplacée par \"[ND]\"."
+                                nullable: true
                                 example: CS 72809
                               l6:
                                 title: Ligne 6
@@ -19993,11 +19551,13 @@ paths:
                                   situé à l'étranger \n Si la personne morale est
                                   en diffusion partielle, la valeur est remplacée
                                   par \"[ND]\"."
+                                nullable: true
                                 example: 75256 PARIX CEDEX 12
                               l7:
                                 title: Ligne 7
                                 type: string
                                 description: Pays de l'établissement
+                                nullable: true
                                 example: FRANCE
                             required:
                             - l1
@@ -21215,6 +20775,7 @@ paths:
                             title: Code postal
                             example: '75016'
                             type: string
+                            nullable: true
                           distribution_speciale:
                             title: Distribution spéciale
                             type: string
@@ -21298,18 +20859,21 @@ paths:
                                   personne morale : la dénomination sociale de la
                                   personne morale. Le cas contraire: cette variable
                                   est vide.'
+                                nullable: true
                                 example: DIRECTION INTERMINISTERIELLE DU NUMERIQUE
                               l2:
                                 title: Ligne 2
                                 type: string
                                 description: 'Si l''établissement correspond à une
                                   personne physique : concaténation du nom et prénom'
+                                nullable: true
                                 example: JEAN MARIE DURAND
                               l3:
                                 title: Ligne 3
                                 type: string
                                 description: Complément d'adresse comme décrit dans
                                   la clé `complement_adresse`
+                                nullable: true
                                 example: ZAE SAINT GUENAULT
                               l4:
                                 title: Ligne 4
@@ -21317,12 +20881,14 @@ paths:
                                 description: Concaténation du numéro de voie, d'indice
                                   de répétition, du type de voie et du libellé de
                                   la voie
+                                nullable: true
                                 example: 51 BIS RUE DE LA PAIX
                               l5:
                                 title: Ligne 5
                                 type: string
                                 description: Distribution spéciale comme décrit dans
                                   la clé `distribution_speciale`
+                                nullable: true
                                 example: CS 72809
                               l6:
                                 title: Ligne 6
@@ -21332,11 +20898,13 @@ paths:
                                   est en France : code postal accompagné de son libellé,
                                   sinon : libellé de la commune de l''établissement
                                   situé à l''étranger'
+                                nullable: true
                                 example: 75256 PARIX CEDEX 12
                               l7:
                                 title: Ligne 7
                                 type: string
                                 description: Pays de l'établissement
+                                nullable: true
                                 example: FRANCE
                             required:
                             - l1
@@ -24098,6 +23666,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_21056:
+                  value:
+                    errors:
+                    - code: '21056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -25827,6 +25407,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_09056:
+                  value:
+                    errors:
+                    - code: '09056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -26589,6 +26181,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_06056:
+                  value:
+                    errors:
+                    - code: '06056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -27135,6 +26739,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_06056:
+                  value:
+                    errors:
+                    - code: '06056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
@@ -28638,6 +28254,18 @@ paths:
                       meta: {}
                   summary: Fichier renvoyé par le fournisseur de données non valide
                   description: Le fichier n'est pas au format attendu
+                fichier_renvoye_par_le_fournisseur_de_donnees_non_valide_04056:
+                  value:
+                    errors:
+                    - code: '04056'
+                      title: Fichier renvoyé par le fournisseur de données non valide
+                      detail: Le fichier renvoyé par le fournisseur de données est
+                        vide
+                      source:
+                      meta: {}
+                  summary: Fichier renvoyé par le fournisseur de données non valide
+                  description: Le fichier renvoyé par le fournisseur de données est
+                    vide
                 demande_de_traitement_logiciel_en_cours_04502:
                   value:
                     errors:
