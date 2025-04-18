@@ -1,0 +1,16 @@
+{
+  "return_code": "OK",
+  "results": [
+    {
+      "code": "NON_TROUVE",
+      "identite_pivot": {
+        "given_name": "Jean",
+        "family_name": "DUPONT",
+        "birthdate": "2000-01-01",
+        "gender": "male",
+        "birthplace": "99100",
+        "birthcountry": "99100"
+      }
+    }
+  ]
+}

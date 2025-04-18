@@ -1,0 +1,18 @@
+{
+  "return_code": "OK",
+  "results": [
+    {
+      "code": "OK",
+      "identite_pivot": {
+        "given_name": "Jonna",
+        "family_name": "CASH",
+        "birthdate": "2007-07-30",
+        "gender": "female",
+        "birthplace": "91000",
+        "birthcountry": "99100"
+      },
+      "en_regle": "En règle",
+      "complement": "Complément"
+    }
+  ]
+}
