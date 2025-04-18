@@ -133,8 +133,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         }
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -232,8 +234,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         }
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
@@ -324,8 +328,10 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
         }
       }
     },
-    "links": {},
-    "meta": {}
+    "links": {
+    },
+    "meta": {
+    }
   }
   ```
 
