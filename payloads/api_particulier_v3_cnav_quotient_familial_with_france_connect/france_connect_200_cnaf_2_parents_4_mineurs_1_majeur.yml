@@ -1,0 +1,95 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'FABIEN'
+  nomNaissance: "PENDERIE"
+  anneeDateNaissance: 1986
+  moisDateNaissance: 3
+  jourDateNaissance: 25
+  sexeEtatCivil: "M"
+  codeCogInseeCommuneNaissance: "83028"
+  codeCogInseePaysNaissance: "99100"
+status: 200
+payload: |-
+  {
+  "data": {
+  "allocataires": [
+      {
+        "nom_naissance": "PENDERIE",
+        "nom_usage": "PENDERIE",
+        "prenoms": "FABIEN",
+        "date_naissance": "1986-03-25",
+        "sexe": "M"
+      },
+      {
+        "nom_naissance": "SUVE",
+        "nom_usage": "PENDERIE",
+        "prenoms": "LUCIE",
+        "date_naissance": "1987-08-08",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nom_naissance": "PENDERIE",
+        "nom_usage": "PENDERIE",
+        "prenoms": "Léo",
+        "date_naissance": "2020-01-01",
+        "sexe": "M"
+      },
+      {
+        "nom_naissance": "PENDERIE",
+        "nom_usage": "PENDERIE",
+        "prenoms": "Léa",
+        "date_naissance": "2021-07-17",
+        "sexe": "F"
+      },
+      {
+        "nom_naissance": "PENDERIE",
+        "nom_usage": "PENDERIE",
+        "prenoms": "Hugo",
+        "date_naissance": "2022-08-08",
+        "sexe": "M"
+      },
+      {
+        "nom_naissance": "PENDERIE",
+        "nom_usage": "PENDERIE",
+        "prenoms": "Bérénice",
+        "date_naissance": "2024-10-25",
+        "sexe": "F"
+      },
+      {
+        "nom_naissance": "PENDERIE",
+        "nom_usage": "PENDERIE",
+        "prenoms": "Paul",
+        "date_naissance": "2004-11-01",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "destinataire": "Monsieur Fabien PENDERIE",
+      "complement_information": null,
+      "complement_information_geographique": null,
+      "numero_libelle_voie": "20 AVENUE DE SEGUR",
+      "lieu_dit": null,
+      "code_postal_ville": "75107 PARIS",
+      "pays": "FRANCE"
+    },
+  "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 2550,
+        "annee": 2024,
+        "mois": 2,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+  },
+  "links": {},
+    "meta": {}
+    
+  }

@@ -1,0 +1,73 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'ELSA'
+  nomNaissance: "PLACARD"
+  anneeDateNaissance: 1987
+  moisDateNaissance: 4
+  jourDateNaissance: 13
+  sexeEtatCivil: "F"
+  codeCogInseeCommuneNaissance: "59226"
+  codeCogInseePaysNaissance: "99100"
+status: 200
+payload: |-
+  {
+  "data": {
+  "allocataires": [
+      {
+        "nom_naissance": "PLACARD",
+        "nom_usage": "DUBOIS",
+        "prenoms": "ELSA",
+        "date_naissance": "1987-04-13",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nom_naissance": "DUBOIS",
+        "nom_usage": "DUBOIS",
+        "prenoms": "Alex",
+        "date_naissance": "1999-01-01",
+        "sexe": "M"
+      },
+      {
+        "nom_naissance": "DUBOIS",
+        "nom_usage": "DUBOIS",
+        "prenoms": "Léo",
+        "date_naissance": "2000-01-01",
+        "sexe": "M"
+      },
+      {
+        "nom_naissance": "DUBOIS",
+        "nom_usage": "DUBOIS",
+        "prenoms": "Alice",
+        "date_naissance": "2024-02-02",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "destinataire": "Monsieur Elsa DUBOIS",
+      "complement_information": "Batiment 2",
+      "complement_information_geographique": "Porte 8",
+      "numero_libelle_voie": "20 AVENUE DE SEGUR",
+      "lieu_dit": "Lieu dit",
+      "code_postal_ville": "75107 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotient_familial": {
+        "fournisseur": "MSA",
+        "valeur": 2550,
+        "annee": 2024,
+        "mois": 2,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+  },
+  "links": {},
+    "meta": {}
+  }

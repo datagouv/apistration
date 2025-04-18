@@ -21,8 +21,8 @@ payload: |-
     "regime": "CNAF",
     "allocataires": [
       {
-        "nomNaissance": "DUBOIS",
-        "nomUsuel": "DUBOIS",
+        "nomNaissance": "DUPONT",
+        "nomUsuel": "DUPONT",
         "prenoms": "PAUL LOUIS",
         "anneeDateDeNaissance": "1962",
         "moisDateDeNaissance": "08",
@@ -31,7 +31,7 @@ payload: |-
       },
       {
         "nomNaissance": "DURAND",
-        "nomUsuel": "DUBOIS",
+        "nomUsuel": "DUPONT",
         "prenoms": "ANGELA LOUISE",
         "anneeDateDeNaissance": "1963",
         "moisDateDeNaissance": "10",
@@ -41,8 +41,8 @@ payload: |-
     ],
     "enfants": [
       {
-        "nomNaissance": "DUBOIS",
-        "nomUsuel": "DUBOIS",
+        "nomNaissance": "DUPONT",
+        "nomUsuel": "DUPONT",
         "prenoms": "PIERRE",
         "anneeDateDeNaissance": "2018",
         "moisDateDeNaissance": "01",
@@ -50,8 +50,8 @@ payload: |-
         "sexe": "M"
       },
       {
-        "nomNaissance": "DUBOIS",
-        "nomUsuel": "DUBOIS",
+        "nomNaissance": "DUPONT",
+        "nomUsuel": "DUPONT",
         "prenoms": "ROBERT",
         "anneeDateDeNaissance": "2020",
         "moisDateDeNaissance": "03",
@@ -59,8 +59,8 @@ payload: |-
         "sexe": "M"
       },
       {
-        "nomNaissance": "DUBOIS",
-        "nomUsuel": "DUBOIS",
+        "nomNaissance": "DUPONT",
+        "nomUsuel": "DUPONT",
         "prenoms": "HENRY",
         "anneeDateDeNaissance": "2022",
         "moisDateDeNaissance": "06",

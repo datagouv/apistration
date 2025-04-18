@@ -1,0 +1,81 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'Sophie'
+    - 'Suzanne'
+  nomNaissance: "YOGO"
+  anneeDateNaissance: 1981
+  moisDateNaissance: 11
+  jourDateNaissance: 1
+  sexeEtatCivil: "F"
+  codeCogInseeCommuneNaissance: "50528"
+  codeCogInseePaysNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "data": {
+      "allocataires": [
+        {
+            "nom_naissance": "YOGO",
+            "nom_usage": "BOBO",
+            "prenoms": "Sophie Suzanne",
+            "date_naissance": "1981-11-01",
+            "sexe": "F"
+        },
+        {
+            "nom_naissance": "LALI",
+            "nom_usage": "LALI",
+            "prenoms": "Mohamed",
+            "date_naissance": "1983-05-15",
+            "sexe": "M"
+        }
+      ],
+      "enfants": [
+        {
+            "nom_naissance": "LALI",
+            "nom_usage": "LALI",
+            "prenoms": "Inès",
+            "date_naissance": "2010-07-10",
+            "sexe": "F"
+        },
+        {
+            "nom_naissance": "LALI",
+            "nom_usage": "LALI",
+            "prenoms": "Amir",
+            "date_naissance": "2012-09-09",
+            "sexe": "M"
+        },
+        {
+            "nom_naissance": "LALI",
+            "nom_usage": "LALI",
+            "prenoms": "Ibrahim",
+            "date_naissance": "2020-00-00",
+            "sexe": "M"
+        }
+      ],
+      "adresse": {
+        "destinataire": "Monsieur et Madame Mohamed LALI",
+        "complement_information": null,
+        "complement_information_geographique": null,
+        "numero_libelle_voie": "Cours des 50 Otages",
+        "lieu_dit": null,
+        "code_postal_ville": "44109 NANTES",
+        "pays": "FRANCE"
+      },
+      "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 2550,
+        "annee": 2024,
+        "mois": 2,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+      },
+      "links": {},
+      "meta": {}
+  }

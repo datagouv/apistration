@@ -11,7 +11,7 @@ params:
   anneeDateNaissance: 1945
   moisDateNaissance: 9
   jourDateNaissance: 30
-  sexeEtatCivil: "M"
+  sexeEtatCivil: "F"
   codeCogInseeCommuneNaissance: "31555"
   codeCogInseePaysNaissance: "99100"
 status: 200
