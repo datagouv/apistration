@@ -334,9 +334,9 @@ shared:
     - cnous_ville_etudes
     - cnous_identite
   api_particulier/v3_and_more/dsnj/service_national_with_civility:
-    - dsnj_service_national
+    - dsnj_statut_service_national
   api_particulier/v3_and_more/dsnj/service_national_with_france_connect:
-    - dsnj_service_national
+    - dsnj_statut_service_national
   api_particulier/v3_and_more/cnav/participation_familiale_eaje_with_civility:
     - eaje_allocataires
     - eaje_enfants
