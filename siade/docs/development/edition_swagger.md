@@ -45,7 +45,7 @@ dsnj:
           - pas_en_regle
           - indetermine
           - non_concerne
-      commmentaires:
+      commentaires:
         title: Commentaires
         type: string
         description: Commentaires sur la situation de la personne
