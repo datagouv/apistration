@@ -30,8 +30,8 @@ RSpec.describe 'DSNJ: Service National With Civility', api: :particulier, type: 
       )
 
       let(:nomNaissance) { 'Dupont' }
-      let(:'prenoms[]') { %w[Jean Charlie] }
-      let(:anneeDateNaissance) { 2000 }
+      let(:'prenoms[]') { %w[jean charlie] }
+      let(:anneeDateNaissance) { 2008 }
       let(:moisDateNaissance) { 1 }
       let(:jourDateNaissance) { 1 }
       let(:codeCogInseePaysNaissance) { '99100' }
@@ -43,34 +43,40 @@ RSpec.describe 'DSNJ: Service National With Civility', api: :particulier, type: 
 
       too_many_requests(DSNJ::ServiceNational)
 
-      let(:scopes) { %i[dsnj_service_national] }
+      let(:scopes) { %i[dsnj_statut_service_national] }
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Identité trouvée', vcr: { cassette_name: 'dsnj/valid' }, pending: 'Implement endpoint' do
-          description SwaggerData.get('dsnj.service_national.description')
+        describe 'when found' do
+          before { stub_dsnj_service_national_valid }
 
-          rate_limit_headers
+          response '200', 'Identité trouvée' do
+            description SwaggerData.get('dsnj.service_national.description')
 
-          schema build_rswag_response(
-            attributes: SwaggerData.get('dsnj.service_national.attributes')
-          )
+            rate_limit_headers
 
-          run_test!
+            schema build_rswag_response(
+              attributes: SwaggerData.get('dsnj.service_national.attributes')
+            )
+
+            run_test!
+          end
         end
 
-        describe 'server errors' do
-          unprocessable_entity_error_request(:sexe_etat_civil) do
-            let(:sexeEtatCivil) { 'lol' }
-          end
+        describe 'when not found' do
+          before { stub_dsnj_service_national_not_found }
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'dsnj/not_found' }, pending: 'Implement endpoint' do
-            let(:nom_naissance) { 'UNKNOWN' }
-
+          response '404', 'Non trouvée' do
             build_rswag_example(NotFoundError.new('DSNJ'))
 
             schema '$ref' => '#/components/schemas/Error'
 
             run_test!
+          end
+        end
+
+        describe 'server errors' do
+          unprocessable_entity_error_request(:sexe_etat_civil) do
+            let(:sexeEtatCivil) { 'lol' }
           end
 
           common_provider_errors_request('DSNJ', DSNJ::ServiceNational)
