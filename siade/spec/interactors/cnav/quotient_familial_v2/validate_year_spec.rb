@@ -13,13 +13,13 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateYear, type: :validate_param_int
     end
 
     context 'when it is nil' do
-      include_examples 'year valid' do
+      it_behaves_like 'year valid' do
         let(:annee) { nil }
       end
     end
 
     context 'when year is a valid integer' do
-      include_examples 'year valid' do
+      it_behaves_like 'year valid' do
         let(:annee) { Time.zone.today.year }
       end
     end
@@ -35,19 +35,19 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateYear, type: :validate_param_int
     end
 
     context 'when it is not an integer' do
-      include_examples 'year not valid' do
+      it_behaves_like 'year not valid' do
         let(:annee) { 'lol' }
       end
     end
 
     context 'when it is in the future' do
-      include_examples 'year not valid' do
+      it_behaves_like 'year not valid' do
         let(:annee) { Time.zone.today.year + 1 }
       end
     end
 
     context 'when it is too far in the past' do
-      include_examples 'year not valid' do
+      it_behaves_like 'year not valid' do
         let(:annee) { 2021 }
       end
     end
