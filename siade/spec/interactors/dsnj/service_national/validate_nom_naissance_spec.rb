@@ -1,7 +1,7 @@
 RSpec.describe DSNJ::ServiceNational::ValidateNomNaissance, type: :validate_params do
   subject { described_class.call(params: { nom_naissance: }) }
 
-  let(:nom_naissance) { 'ELDENRING' }
+  let(:nom_naissance) { 'Eldenring' }
 
 
   context 'with valid nom_naissance' do

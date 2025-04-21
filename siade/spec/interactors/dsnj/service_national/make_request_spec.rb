@@ -4,7 +4,7 @@ RSpec.describe DSNJ::ServiceNational::MakeRequest, type: :make_request do
   let(:params) do
     {
       prenoms: %w[Jean Paul],
-      nom_naissance: 'DUPONT',
+      nom_naissance: 'Dupont',
       jour_date_naissance: '01',
       mois_date_naissance: '10',
       annee_date_naissance: '2000',
