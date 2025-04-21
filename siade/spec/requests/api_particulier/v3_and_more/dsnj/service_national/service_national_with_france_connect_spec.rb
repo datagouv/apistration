@@ -12,7 +12,7 @@ RSpec.describe 'DSNJ: Service National With FranceConnect', api: :particulier, t
 
       forbidden_france_connect_request
 
-      let(:scopes) { %i[dsnj_service_national] }
+      let(:scopes) { %i[dsnj_statut_service_national] }
 
       describe 'with a FranceConnect token' do
         before do
@@ -20,11 +20,11 @@ RSpec.describe 'DSNJ: Service National With FranceConnect', api: :particulier, t
         end
 
         describe 'when identite is found' do
-          # before do
-          #    stub_dsnj_service_national_valid
-          # end
+          before do
+            stub_dsnj_service_national_valid
+          end
 
-          response '200', 'Identité trouvée', pending: 'Implement endpoint' do
+          response '200', 'Identité trouvée' do
             description SwaggerData.get('dsnj.service_national.description')
 
             rate_limit_headers
@@ -38,11 +38,11 @@ RSpec.describe 'DSNJ: Service National With FranceConnect', api: :particulier, t
         end
 
         describe 'when identite is not found' do
-          # before do
-          #    stub_dsnj_service_national_not_found
-          # end
+          before do
+            stub_dsnj_service_national_not_found
+          end
 
-          response '404', 'Non trouvée', pending: 'Implement endpoint' do
+          response '404', 'Non trouvée' do
             build_rswag_example(NotFoundError.new('DSNJ'))
 
             schema '$ref' => '#/components/schemas/Error'
