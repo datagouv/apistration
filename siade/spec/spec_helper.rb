@@ -107,6 +107,7 @@ RSpec.configure do |config|
 
   config.include ProviderStubs::MSACotisations
   config.include ProviderStubs::DGFIP
+  config.include ProviderStubs::DSNJ
   config.include ProviderStubs::Infogreffe
   config.include ProviderStubs::CIBTP
   config.include ProviderStubs::CNAFQuotientFamilial
