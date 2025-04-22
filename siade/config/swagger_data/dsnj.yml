@@ -19,5 +19,4 @@ dsnj:
         title: Commentaires de la DSNJ
         type: string
         description: Commentaire indiqué par la direction du Service national et de la jeunesse (DSNJ), notamment pour les cas particuliers.
-        example: Commentaire indiqué par la direction du Service national et de la jeunesse (DSNJ), notamment pour les cas particuliers.
         nullable: true
