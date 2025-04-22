@@ -13,7 +13,7 @@ class MEN::Scolarites::MakeRequest < MakeRequest::Get
       'date-naissance': date_naissance,
       'code-uai': context.params[:code_etablissement],
       'annee-scolaire': context.params[:annee_scolaire]
-    }
+    }.merge(scope_param)
   end
 
   def extra_headers(request)
@@ -76,5 +76,11 @@ class MEN::Scolarites::MakeRequest < MakeRequest::Get
 
   def provider_api_version
     context.params[:provider_api_version] || 'v2'
+  end
+
+  def scope_param
+    return { scope: 'men_statut_scolarite' } if provider_api_version == 'v2'
+
+    {}
   end
 end
