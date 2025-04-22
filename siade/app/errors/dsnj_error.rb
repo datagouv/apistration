@@ -1,4 +1,4 @@
-class DSNJAgeIrrelevantError < AbstractSpecificProviderError
+class DSNJError < AbstractSpecificProviderError
   def provider_name
     'DSNJ'
   end

@@ -4,7 +4,7 @@ class DSNJ::ServiceNational::ValidateDateNaissance < Civility::ValidateDateNaiss
 
     return if age_relevant?
 
-    context.errors << ::DSNJAgeIrrelevantError.new(:irrelevant_age)
+    context.errors << ::DSNJError.new(:irrelevant_age)
     mark_as_error!
   end
 

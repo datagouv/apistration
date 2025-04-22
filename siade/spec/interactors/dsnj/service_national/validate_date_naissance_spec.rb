@@ -17,7 +17,7 @@ RSpec.describe DSNJ::ServiceNational::ValidateDateNaissance, type: :validate_par
         }
       end
 
-      its(:errors) { is_expected.not_to include(instance_of(DSNJAgeIrrelevantError)) }
+      its(:errors) { is_expected.not_to include(instance_of(DSNJError)) }
     end
 
     context 'with a person turning 16 tomorrow' do
@@ -31,7 +31,7 @@ RSpec.describe DSNJ::ServiceNational::ValidateDateNaissance, type: :validate_par
         }
       end
 
-      its(:errors) { is_expected.to include(instance_of(DSNJAgeIrrelevantError)) }
+      its(:errors) { is_expected.to include(instance_of(DSNJError)) }
     end
 
     context 'with a person turning 26 tomorrow' do
@@ -45,7 +45,7 @@ RSpec.describe DSNJ::ServiceNational::ValidateDateNaissance, type: :validate_par
         }
       end
 
-      its(:errors) { is_expected.not_to include(instance_of(DSNJAgeIrrelevantError)) }
+      its(:errors) { is_expected.not_to include(instance_of(DSNJError)) }
     end
 
     context 'with a person who is 26 years old' do
@@ -59,7 +59,7 @@ RSpec.describe DSNJ::ServiceNational::ValidateDateNaissance, type: :validate_par
         }
       end
 
-      its(:errors) { is_expected.to include(instance_of(DSNJAgeIrrelevantError)) }
+      its(:errors) { is_expected.to include(instance_of(DSNJError)) }
     end
   end
 end
