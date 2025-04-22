@@ -1,0 +1,81 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'Olivier'
+    - 'Martin'
+  nomNaissance: "ANO'NYMOS-LONS"
+  anneeDateNaissance: 1980
+  moisDateNaissance: 5
+  jourDateNaissance: 24
+  sexeEtatCivil: "M"
+  codeCogInseeCommuneNaissance: "95491"
+  codeCogInseePaysNaissance: "99100"
+status: 200
+payload: |-
+  {
+    "data": {
+   "allocataires": [
+      {
+        "nom_naissance": "ANO'NYMOS-LONS",
+        "nom_usage": "ANO'NYMOS-LONS",
+        "prenoms": "OLIVIER",
+        "date_naissance": "1980-05-24",
+        "sexe": "M"
+      },
+      {
+        "nom_naissance": "ANO'NYMOS-LONS",
+        "nom_usage": "ROUSSEAU",
+        "prenoms": "LAURENCE",
+        "date_naissance": "1981-06-01",
+        "sexe": "F"
+      }
+    ],
+    "enfants": [
+      {
+        "nom_naissance": "ANO'NYMOS-LONS",
+        "nom_usage": "ANO'NYMOS-LONS",
+        "prenoms": "Gabriel",
+        "date_naissance": "2010-02-02",
+        "sexe": "M"
+      },
+      {
+        "nom_naissance": "ANO'NYMOS-LONS",
+        "nom_usage": "ANO'NYMOS-LONS",
+        "prenoms": "Jules",
+        "date_naissance": "2013-03-03",
+        "sexe": "M"
+      },
+      {
+        "nom_naissance": "ANO'NYMOS-LONS",
+        "nom_usage": "ANO'NYMOS-LONS",
+        "prenoms": "Simon",
+        "date_naissance": "2017-12-05",
+        "sexe": "M"
+      }
+    ],
+    "adresse": {
+      "destinataire": "Monsieur et Madame Olivier ANO'NYMOS-LONS",
+      "complement_information": null,
+      "complement_information_geographique": null,
+      "numero_libelle_voie": "9 R DES MONTS DE LA MADELEINE",
+      "lieu_dit": null,
+      "code_postal_ville": "42300 LONS-LE-SAUNIER",
+      "pays": "FRANCE"
+    },
+    "quotient_familial": {
+        "fournisseur": "CNAF",
+        "valeur": 2550,
+        "annee": 2024,
+        "mois": 2,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+    },
+  "links": {},
+    "meta": {}
+  }

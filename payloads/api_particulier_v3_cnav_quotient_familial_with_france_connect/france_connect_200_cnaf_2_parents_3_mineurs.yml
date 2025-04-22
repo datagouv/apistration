@@ -21,17 +21,15 @@ payload: |-
     "data": {
       "allocataires": [
         {
-          "nom_naissance": "DUBOIS",
-          "nom_usage": "DUBOIS",
+          "nom_naissance": "DUPONT",
+          "nom_usage": "DUPONT",
           "prenoms": "PAUL LOUIS",
-          "anneeDateNaissance": "1962",
-          "moisDateNaissance": "08",
-          "jourDateNaissance": "24",
+          "date_naissance": "1962-08-24",
           "sexe": "M"
         },
         {
           "nom_naissance": "DURAND",
-          "nom_usage": "DUBOIS",
+          "nom_usage": "DUPONT",
           "prenoms": "ANGELA LOUISE",
           "date_naissance": "1963-10-12",
           "sexe": "F"
@@ -39,22 +37,22 @@ payload: |-
       ],
       "enfants": [
         {
-          "nom_naissance": "DUBOIS",
-          "nom_usage": "DUBOIS",
+          "nom_naissance": "DUPONT",
+          "nom_usage": "DUPONT",
           "prenoms": "PIERRE",
           "date_naissance": "2018-01-10",
           "sexe": "M"
         },
         {
-          "nom_naissance": "DUBOIS",
-          "nom_usage": "DUBOIS",
+          "nom_naissance": "DUPONT",
+          "nom_usage": "DUPONT",
           "prenoms": "ROBERT",
           "date_naissance": "2020-03-15",
           "sexe": "M"
         },
         {
-          "nom_naissance": "DUBOIS",
-          "nom_usage": "DUBOIS",
+          "nom_naissance": "DUPONT",
+          "nom_usage": "DUPONT",
           "prenoms": "HENRY",
           "date_naissance": "2022-06-20",
           "sexe": "M"

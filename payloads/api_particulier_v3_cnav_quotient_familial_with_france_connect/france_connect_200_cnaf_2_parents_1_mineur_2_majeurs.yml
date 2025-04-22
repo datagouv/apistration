@@ -12,8 +12,8 @@ params:
   anneeDateNaissance: 1981
   moisDateNaissance: 7
   jourDateNaissance: 27
-  sexeEtatCivil: "M"
-  codeCogInseeCommuneNaissance: "75107"
+  sexeEtatCivil: "F"
+  codeCogInseeCommuneNaissance: "13012"
   codeCogInseePaysNaissance: "99100"
 status: 200
 payload: |-
@@ -24,9 +24,7 @@ payload: |-
           "nom_naissance": "DUBOIS",
           "nom_usage": "TROIS-DUPRE",
           "prenoms": "MELISSANDRE JULIETTE",
-          "anneeDateNaissance": "1981",
-          "moisDateNaissance": "07",
-          "jourDateNaissance": "27",
+          "date_naissance": "1981-07-27",
           "sexe": "F"
         },
         {

@@ -1,0 +1,95 @@
+
+description: |-
+  Cas de test pour QFv2 avec jeton FranceConnect.
+  Les données proviennent des jetons de l'environnement de test FranceConnect.
+  L'endpoint est appellé avec le jeton FranceConnect + le recipient.
+
+params:
+  prenoms:
+    - 'CINDY'
+  nomNaissance: "COMMODE"
+  anneeDateNaissance: 1980
+  moisDateNaissance: 6
+  jourDateNaissance: 27
+  sexeEtatCivil: "F"
+  codeCogInseeCommuneNaissance: "57431"
+  codeCogInseePaysNaissance: "99100"
+status: 200
+payload: |-
+  {
+   "data": {
+  
+  "allocataires": [
+      {
+        "nom_naissance": "COMMODE",
+        "nom_usage": "LEMAITRE",
+        "prenoms": "CINDY",
+        "date_naissance": "1980-06-27",
+        "sexe": "F"
+      },
+      {
+        "nom_naissance": "LEMAITRE",
+        "nom_usage": "LEMAITRE",
+        "prenoms": "FRANCK",
+        "date_naissance": "1990-12-30",
+        "sexe": "M"
+      }
+    ],
+    "enfants": [
+      {
+        "nom_naissance": "LEMAITRE",
+        "nom_usage": "LEMAITRE",
+        "prenoms": "Gaston",
+        "date_naissance": "2021-05-01",
+        "sexe": "M"
+      },
+      {
+        "nom_naissance": "LEMAITRE",
+        "nom_usage": "LEMAITRE",
+        "prenoms": "Henri",
+        "date_naissance": "2021-05-01",
+        "sexe": "M"
+      },
+      {
+        "nom_naissance": "LEMAITRE",
+        "nom_usage": "LEMAITRE",
+        "prenoms": "Robert",
+        "date_naissance": "2021-05-01",
+        "sexe": "M"
+      },
+      {
+        "nom_naissance": "LEMAITRE",
+        "nom_usage": "LEMAITRE",
+        "prenoms": "Hugo",
+        "date_naissance": "2022-04-30",
+        "sexe": "M"
+      },
+      {
+        "nom_naissance": "LEMAITRE",
+        "nom_usage": "LEMAITRE",
+        "prenoms": "Lucie",
+        "date_naissance": "2023-10-01",
+        "sexe": "F"
+      }
+    ],
+    "adresse": {
+      "destinataire": "Monsieur Franck LEMAITRE",
+      "complement_information": null,
+      "complement_information_geographique": null,
+      "numero_libelle_voie": "20 AVENUE DE SEGUR",
+      "lieu_dit": null,
+      "code_postal_ville": "75107 PARIS",
+      "pays": "FRANCE"
+    },
+    "quotient_familial": {
+        "fournisseur": "MSA",
+        "valeur": 2550,
+        "annee": 2024,
+        "mois": 2,
+        "annee_calcul": 2024,
+        "mois_calcul": 12
+      }
+  },
+  "links": {},
+    "meta": {}
+  }
