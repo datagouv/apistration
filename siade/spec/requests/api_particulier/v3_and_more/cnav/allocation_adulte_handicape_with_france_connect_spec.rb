@@ -7,6 +7,8 @@ RSpec.describe 'API Particulier: CNAV: Allocation Adulte Handicape with FranceCo
 
       common_action_attributes
 
+      cacheable_request
+
       let(:scopes) { %i[allocation_adulte_handicape] }
 
       let(:recipient) { valid_siret(:recipient) }

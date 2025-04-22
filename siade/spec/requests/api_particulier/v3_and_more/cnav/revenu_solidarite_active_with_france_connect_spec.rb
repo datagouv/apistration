@@ -7,6 +7,8 @@ RSpec.describe 'API Particulier: CNAV: Revenu Solidarite Active with FranceConne
 
       common_action_attributes
 
+      cacheable_request
+
       let(:recipient) { valid_siret(:recipient) }
       let(:Authorization) { 'Bearer super_valid_token' }
 

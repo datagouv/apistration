@@ -7,6 +7,8 @@ RSpec.describe 'API Particulier: CNAV: Participation familial EAJE with FranceCo
 
       common_action_attributes
 
+      cacheable_request
+
       let(:scopes) { %i[eaje_allocataires eaje_enfants eaje_adresse eaje_parametres_calcul_participation_familiale] }
 
       let(:recipient) { valid_siret(:recipient) }
