@@ -1,8 +1,10 @@
 class DSNJ::ServiceNational::ValidateResponse < ValidateResponse
   def call
-    resource_not_found! if not_found_in_body? && return_code_ok?
+    unknown_provider_response! if !return_code_ok? || json_body['results'].many?
 
-    return if found_in_body? && return_code_ok?
+    resource_not_found! if not_found_in_body?
+
+    return if found_in_body?
 
     unknown_provider_response!
   end

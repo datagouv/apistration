@@ -38,4 +38,13 @@ RSpec.describe DSNJ::ServiceNational::ValidateResponse, type: :validate_response
 
     its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
   end
+
+  context 'with more than one result' do
+    let(:response) { instance_double(Net::HTTPOK, code: 200, body:) }
+    let(:body) { read_payload_file('dsnj/service_national/found_multiple.json') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+  end
 end
