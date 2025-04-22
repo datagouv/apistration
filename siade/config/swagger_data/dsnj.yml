@@ -1,9 +1,9 @@
 dsnj:
   service_national:
-    title: 'API Service National'
+    title: 'API Service national'
     tags:
-      - "Statut Service National"
-    description: Statut de conformité au service national des jeunes entre 16 et 25 ans
+      - "Statut Service national"
+    description: Statut de conformité au Service national des jeunes entre 16 et 25 ans.
     attributes:
       statut_service_national:
         title: Statut service national
@@ -16,8 +16,8 @@ dsnj:
           - indetermine
           - non_concerne
       commentaires:
-        title: Commentaires
+        title: Commentaires de la DSNJ
         type: string
-        description: Commentaires sur la situation de la personne
-        example: Commentaire sur la situation
+        description: Commentaire indiqué par la direction du Service national et de la jeunesse (DSNJ), notamment pour les cas particuliers.
+        example: Commentaire indiqué par la direction du Service national et de la jeunesse (DSNJ), notamment pour les cas particuliers.
         nullable: true
