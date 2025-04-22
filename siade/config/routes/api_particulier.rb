@@ -1,4 +1,4 @@
-svair_gone = ->(env) do
+svair_gone = lambda do |env|
   [410, {}, ["Cette URL n'existe plus sur API Particulier depuis le 8 janvier 2024. Veuillez mettre à jour votre application."]]
 end
 
@@ -34,8 +34,8 @@ scope path: 'v:api_version', constraints: APIParticulierDomainConstraint.new(v3_
   get 'dss/quotient_familial/identite', to: 'api_particulier/v3_and_more/cnav/quotient_familial_with_civility#show'
   get 'dss/quotient_familial/france_connect', to: 'api_particulier/v3_and_more/cnav/quotient_familial_with_france_connect#show'
 
-  get 'dss/participation_familiale_aeje/identite', to: 'api_particulier/v3_and_more/cnav/participation_familiale_aeje_with_civility#show'
-  get 'dss/participation_familiale_aeje/france_connect', to: 'api_particulier/v3_and_more/cnav/participation_familiale_aeje_with_france_connect#show'
+  get 'dss/participation_familiale_eaje/identite', to: 'api_particulier/v3_and_more/cnav/participation_familiale_eaje_with_civility#show'
+  get 'dss/participation_familiale_eaje/france_connect', to: 'api_particulier/v3_and_more/cnav/participation_familiale_eaje_with_france_connect#show'
 
   get 'france_travail/statut/identifiant', to: 'api_particulier/v3_and_more/france_travail/statut_with_identifiant#show'
 

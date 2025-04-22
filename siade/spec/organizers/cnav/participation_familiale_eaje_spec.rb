@@ -1,4 +1,4 @@
-RSpec.describe CNAV::ParticipationFamilialeAEJE, type: :retriever_organizer do
+RSpec.describe CNAV::ParticipationFamilialeEAJE, type: :retriever_organizer do
   subject { described_class.call(params:) }
 
   let(:common_params) do

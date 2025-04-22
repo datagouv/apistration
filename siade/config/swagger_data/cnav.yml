@@ -1,7 +1,7 @@
 cnav:
   commons:
     cache_duration: "La durée du cache est de 1 heure."
-  aeje:
+  eaje:
     title: Participation familiale EAJE
     description: "Participation familiale EAJE"
     tags:

@@ -1,9 +1,9 @@
 require 'swagger_helper'
 
-RSpec.describe 'API Particulier CNAV: Participation familiale AEJE with civility', api: :particulier, type: %i[request swagger] do
-  path '/v3/dss/participation_familiale_aeje/identite' do
-    get "[Identité] #{SwaggerData.get('cnav.aeje.title')}" do
-      tags(*SwaggerData.get('cnav.aeje.tags'))
+RSpec.describe 'API Particulier CNAV: Participation familiale EAJE with civility', api: :particulier, type: %i[request swagger] do
+  path '/v3/dss/participation_familiale_eaje/identite' do
+    get "[Identité] #{SwaggerData.get('cnav.eaje.title')}" do
+      tags(*SwaggerData.get('cnav.eaje.tags'))
 
       common_action_attributes
 
@@ -47,20 +47,20 @@ RSpec.describe 'API Particulier CNAV: Participation familiale AEJE with civility
 
       forbidden_request('api_particulier')
 
-      too_many_requests(CNAV::ParticipationFamilialeAEJE)
+      too_many_requests(CNAV::ParticipationFamilialeEAJE)
 
-      let(:scopes) { %i[aeje_allocataires aeje_enfants aeje_adresse aeje_parametres_calcul_participation_familiale] }
+      let(:scopes) { %i[eaje_allocataires eaje_enfants eaje_adresse eaje_parametres_calcul_participation_familiale] }
 
       describe 'with valid token and mandatory params', :valid do
         response '200', 'Dossier trouvé', pending: 'Implement Endpoint' do
-          description SwaggerData.get('cnav.aeje.description')
+          description SwaggerData.get('cnav.eaje.description')
 
           cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
 
           rate_limit_headers
 
           schema build_rswag_response(
-            attributes: SwaggerData.get('cnav.aeje.attributes')
+            attributes: SwaggerData.get('cnav.eaje.attributes')
           )
 
           run_test!
@@ -74,8 +74,8 @@ RSpec.describe 'API Particulier CNAV: Participation familiale AEJE with civility
           run_test!
         end
 
-        common_provider_errors_request('CNAV', CNAV::ParticipationFamilialeAEJE)
-        common_network_error_request('CNAV', CNAV::ParticipationFamilialeAEJE)
+        common_provider_errors_request('CNAV', CNAV::ParticipationFamilialeEAJE)
+        common_network_error_request('CNAV', CNAV::ParticipationFamilialeEAJE)
       end
     end
   end

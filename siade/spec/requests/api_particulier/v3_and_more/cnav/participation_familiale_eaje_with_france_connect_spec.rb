@@ -1,13 +1,13 @@
 require 'swagger_helper'
 
-RSpec.describe 'API Particulier: CNAV: Participation familial AEJE with FranceConnect', api: :particulier, type: %i[request swagger] do
-  path '/v3/dss/participation_familiale_aeje/france_connect' do
-    get "[FranceConnect] #{SwaggerData.get('cnav.aeje.title')}" do
-      tags(*SwaggerData.get('cnav.aeje.tags'))
+RSpec.describe 'API Particulier: CNAV: Participation familial EAJE with FranceConnect', api: :particulier, type: %i[request swagger] do
+  path '/v3/dss/participation_familiale_eaje/france_connect' do
+    get "[FranceConnect] #{SwaggerData.get('cnav.eaje.title')}" do
+      tags(*SwaggerData.get('cnav.eaje.tags'))
 
       common_action_attributes
 
-      let(:scopes) { %i[aeje_allocataires aeje_enfants aeje_adresse aeje_parametres_calcul_participation_familiale] }
+      let(:scopes) { %i[eaje_allocataires eaje_enfants eaje_adresse eaje_parametres_calcul_participation_familiale] }
 
       let(:recipient) { valid_siret(:recipient) }
       let(:Authorization) { 'Bearer super_valid_token' }
@@ -25,12 +25,12 @@ RSpec.describe 'API Particulier: CNAV: Participation familial AEJE with FranceCo
 
       describe 'with a FranceConnect token' do
         response '200', 'Dossier trouvé', pending: 'Implement Endpoint' do
-          description SwaggerData.get('cnav.aeje.description')
+          description SwaggerData.get('cnav.eaje.description')
 
           cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
 
           schema build_rswag_response(
-            attributes: SwaggerData.get('cnav.aeje.attributes')
+            attributes: SwaggerData.get('cnav.eaje.attributes')
           )
 
           run_test!
