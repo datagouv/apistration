@@ -112,6 +112,27 @@ shared:
         params:
           beneficiary_number: '<%= Siade.credentials[:ping_cnaf_numero_allocataire] %>'
           postal_code: '<%= Siade.credentials[:ping_cnaf_postal_code] %>'
+    dsnj_service_national:
+      kind: 'make_request'
+      cache: <%= 2.minutes %>
+      provider: 'DSNJ'
+      status_page:
+        name: "DSNJ - Service National"
+        alerts_wait: 5
+      driver_params:
+        make_request: 'DSNJ::ServiceNational::MakeRequest'
+        params:
+          nom_naissance: 'DUPONT'
+          prenoms:
+            - 'Jean'
+            - 'Jacques'
+          annee_date_naissance: 2008
+          mois_date_naissance: 10
+          jour_date_naissance: 1
+          sexe_etat_civil: 'M'
+          code_cog_insee_commune_naissance: '75101'
+          code_cog_insee_pays_naissance: '99100'
+        status_to_check: 404
     pole_emploi_status:
       kind: 'retriever'
       cache: <%= 2.minutes %>
@@ -638,4 +659,3 @@ shared:
           siret: '19753471200017'
         key_to_dig: 'habilitations_france_competence'
         method_to_test_on_payload: 'any?'
-
