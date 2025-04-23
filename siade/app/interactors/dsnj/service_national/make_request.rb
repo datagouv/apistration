@@ -9,7 +9,7 @@ class DSNJ::ServiceNational::MakeRequest < MakeRequest::Post
     {
       identites_pivot: [
         {
-          given_name: context.params[:prenoms].first,
+          given_name: context.params[:prenoms].first&.capitalize,
           family_name: context.params[:nom_naissance].upcase,
           birthdate:,
           gender:,

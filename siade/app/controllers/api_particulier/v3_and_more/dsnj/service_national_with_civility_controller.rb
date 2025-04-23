@@ -17,10 +17,7 @@ class APIParticulier::V3AndMore::DSNJ::ServiceNationalWithCivilityController < A
   end
 
   def organizer_params
-    civility_parameters.merge(
-      prenoms: civility_parameters[:prenoms]&.map(&:capitalize),
-      nom_naissance: civility_parameters[:nom_naissance]&.upcase
-    )
+    civility_parameters
   end
 
   def serializer_module
