@@ -13,7 +13,7 @@ class DSNJ::ServiceNational::MakeRequest < MakeRequest::Post
           family_name: context.params[:nom_naissance].upcase,
           birthdate:,
           gender:,
-          birthplace: context.params[:code_cog_insee_commune_naissance],
+          birthplace: birthplace_only_if_france,
           birthcountry: context.params[:code_cog_insee_pays_naissance]
         }
       ]
@@ -33,6 +33,10 @@ class DSNJ::ServiceNational::MakeRequest < MakeRequest::Post
     day = context.params[:jour_date_naissance].to_s
 
     "#{year}-#{month}-#{day}"
+  end
+
+  def birthplace_only_if_france
+    context.params[:code_cog_insee_pays_naissance] == '99100' ? context.params[:code_cog_insee_commune_naissance] : nil
   end
 
   def gender

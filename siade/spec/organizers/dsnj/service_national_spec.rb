@@ -36,20 +36,4 @@ RSpec.describe DSNJ::ServiceNational, type: :retriever_organizer do
       expect(resource).to be_present
     end
   end
-
-  describe 'when code_cog_insee_pays_naissance is not France' do
-    let(:code_cog_insee_pays_naissance) { '11111' }
-
-    it 'removes code_cog_insee_commune_naissance' do
-      expect(subject.params[:code_cog_insee_commune_naissance]).to be_nil
-    end
-  end
-
-  describe 'when code_cog_insee_pays_naissance is France' do
-    let(:code_cog_insee_pays_naissance) { '99100' }
-
-    it 'does not remove code_cog_insee_commune_naissance' do
-      expect(subject.params[:code_cog_insee_commune_naissance]).to eq(code_cog_insee_commune_naissance)
-    end
-  end
 end

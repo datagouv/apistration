@@ -10,18 +10,7 @@ RSpec.describe DSNJ::ServiceNational::MakeRequest, type: :make_request do
       annee_date_naissance: '2000',
       sexe_etat_civil: 'M',
       code_cog_insee_commune_naissance: '90000',
-      code_cog_insee_pays_naissance: '99100'
-    }
-  end
-
-  let(:request_params) do
-    {
-      given_name: 'Jean',
-      family_name: 'DUPONT',
-      birthdate: '2000-10-01',
-      gender: 'male',
-      birthplace: '90000',
-      birthcountry: '99100'
+      code_cog_insee_pays_naissance:
     }
   end
 
@@ -42,11 +31,49 @@ RSpec.describe DSNJ::ServiceNational::MakeRequest, type: :make_request do
     )
   end
 
-  it { is_expected.to be_a_success }
+  context 'when not in france' do
+    let(:code_cog_insee_pays_naissance) { '12345' }
 
-  it 'calls url with valid body and headers' do
-    subject
+    let(:request_params) do
+      {
+        given_name: 'Jean',
+        family_name: 'DUPONT',
+        birthdate: '2000-10-01',
+        gender: 'male',
+        birthplace: nil,
+        birthcountry: '12345'
+      }
+    end
 
-    expect(stubbed_request).to have_been_requested
+    it { is_expected.to be_a_success }
+
+    it 'calls url with valid body and headers, without birthplace' do
+      subject
+
+      expect(stubbed_request).to have_been_requested
+    end
+  end
+
+  context 'when in france' do
+    let(:code_cog_insee_pays_naissance) { '99100' }
+
+    let(:request_params) do
+      {
+        given_name: 'Jean',
+        family_name: 'DUPONT',
+        birthdate: '2000-10-01',
+        gender: 'male',
+        birthplace: '90000',
+        birthcountry: '99100'
+      }
+    end
+
+    it { is_expected.to be_a_success }
+
+    it 'calls url with valid body and headers, with birthplace' do
+      subject
+
+      expect(stubbed_request).to have_been_requested
+    end
   end
 end
