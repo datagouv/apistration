@@ -18,6 +18,14 @@ RSpec.describe Civility::ValidateCodeCogINSEEPaysNaissance, type: :validate_para
       its(:errors) { is_expected.to be_empty }
     end
 
+    context 'when it is an integer' do
+      let(:code_cog_insee_pays_naissance) { 99_345 }
+
+      it { is_expected.to be_a_success }
+
+      its(:errors) { is_expected.to be_empty }
+    end
+
     context 'when it is 5 invalid digits' do
       let(:code_cog_insee_pays_naissance) { '12345' }
 

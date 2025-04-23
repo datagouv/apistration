@@ -9,7 +9,7 @@ class Civility::ValidateCodeCogINSEEPaysNaissance < ValidateParamInteractor
 
   def valid?
     param(:code_cog_insee_pays_naissance).present? &&
-      param(:code_cog_insee_pays_naissance) =~ /^\d{5}$/ &&
-      param(:code_cog_insee_pays_naissance).first(2) == '99'
+      param(:code_cog_insee_pays_naissance).to_s =~ /^\d{5}$/ &&
+      param(:code_cog_insee_pays_naissance).to_s.first(2) == '99'
   end
 end
