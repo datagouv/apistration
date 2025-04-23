@@ -46,7 +46,7 @@
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_aeje/france_connect?recipient=13002526500013"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_eaje/france_connect?recipient=13002526500013"
   ```
 
   </p>
@@ -147,7 +147,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_aeje/france_connect?recipient=13002526500013"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_eaje/france_connect?recipient=13002526500013"
   ```
 
   </p>
@@ -248,7 +248,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_aeje/france_connect?recipient=13002526500013"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_eaje/france_connect?recipient=13002526500013"
   ```
 
   </p>
@@ -342,7 +342,7 @@ L'endpoint est appellé avec le jeton FranceConnect + le recipient.
   <p>
 
   ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_aeje/france_connect?recipient=13002526500013"
+  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/dss/participation_familiale_eaje/france_connect?recipient=13002526500013"
   ```
 
   </p>
