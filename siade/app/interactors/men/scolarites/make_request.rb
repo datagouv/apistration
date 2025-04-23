@@ -18,6 +18,8 @@ class MEN::Scolarites::MakeRequest < MakeRequest::Get
 
   def extra_headers(request)
     request['Authorization'] = "Bearer #{context.token}"
+    request['X-Siret-Partenaire'] = (context.params.fetch(:recipient) || JwtTokenService::DINUM_SIRET) if provider_api_version == 'v2'
+
     super
   end
 

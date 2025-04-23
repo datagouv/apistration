@@ -55,7 +55,8 @@ RSpec.describe MEN::Scolarites::MakeRequest, type: :make_request do
           annee_date_naissance: '2000',
           code_etablissement: '0511474A',
           annee_scolaire: '2021',
-          provider_api_version: 'v2'
+          provider_api_version: 'v2',
+          recipient: '13002526500013'
         }
       end
 
