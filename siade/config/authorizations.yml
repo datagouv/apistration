@@ -252,6 +252,8 @@ shared:
     - men_statut_scolarite
     - men_statut_etablissement
     - men_statut_module_elementaire_formation
+    - men_statut_boursier
+    - men_echelon_bourse
   api_particulier/v3_and_more/mesri/statut_etudiant_with_ine:
     - mesri_identite
     - mesri_admissions

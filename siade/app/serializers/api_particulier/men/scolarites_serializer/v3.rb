@@ -11,4 +11,6 @@ class APIParticulier::MEN::ScolaritesSerializer::V3 < APIParticulier::V3AndMore:
 
   attribute :etablissement, if: -> { scope?(:men_statut_etablissement) }
   attribute :module_elementaire_formation, if: -> { scope?(:men_statut_module_elementaire_formation) }
+  attribute :est_boursier, if: -> { scope?(:men_statut_boursier) }
+  attribute :echelon_bourse, if: -> { scope?(:men_echelon_bourse) }
 end
