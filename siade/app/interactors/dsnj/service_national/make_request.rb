@@ -29,8 +29,8 @@ class DSNJ::ServiceNational::MakeRequest < MakeRequest::Post
 
   def birthdate
     year = context.params[:annee_date_naissance].to_s
-    month = context.params[:mois_date_naissance].to_s
-    day = context.params[:jour_date_naissance].to_s
+    month = context.params[:mois_date_naissance].to_s.rjust(2, '0')
+    day = context.params[:jour_date_naissance].to_s.rjust(2, '0')
 
     "#{year}-#{month}-#{day}"
   end

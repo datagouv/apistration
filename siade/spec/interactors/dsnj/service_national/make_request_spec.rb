@@ -5,8 +5,8 @@ RSpec.describe DSNJ::ServiceNational::MakeRequest, type: :make_request do
     {
       prenoms: %w[Jean Paul],
       nom_naissance: 'Dupont',
-      jour_date_naissance: '01',
-      mois_date_naissance: '10',
+      jour_date_naissance: 1,
+      mois_date_naissance: 10,
       annee_date_naissance: '2000',
       sexe_etat_civil: 'M',
       code_cog_insee_commune_naissance: '90000',
