@@ -132,7 +132,7 @@ shared:
           sexe_etat_civil: 'M'
           code_cog_insee_commune_naissance: '75101'
           code_cog_insee_pays_naissance: '99100'
-        status_to_check: 404
+        status_to_check: 200
     pole_emploi_status:
       kind: 'retriever'
       cache: <%= 2.minutes %>
