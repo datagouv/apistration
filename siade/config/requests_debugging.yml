@@ -52,9 +52,9 @@ sandbox:
   operation_ids: []
 
 production:
-  enable_until: '2025-03-31'
+  enable_until: '2025-05-03'
   operation_ids:
-    - 'api_particulier_v2_cnav_quotient_familial_v2'
+    - 'api_particulier_v2_cnaf_complementaire_sante_solidaire'
 
 test:
   enable_until: '2051-01-01'
