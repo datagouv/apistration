@@ -9,7 +9,7 @@ staging:
     - 'api_particulier_v2_dgfip_svair'
     - 'api_particulier_v2_cnaf_quotient_familial'
     - 'api_particulier_v2_cnav_quotient_familial_v2'
-    - 'api_particulier_v2_cnaf_complementaire_sante_solidaire'
+    - 'api_particulier_v2_cnav_complementaire_sante_solidaire'
     - 'api_particulier_v2_pole_emploi_statut'
     - 'api_particulier_v2_mesri_student_status'
     - 'api_particulier_v2_cnous_student_scholarship'
@@ -54,7 +54,7 @@ sandbox:
 production:
   enable_until: '2025-05-03'
   operation_ids:
-    - 'api_particulier_v2_cnaf_complementaire_sante_solidaire'
+    - 'api_particulier_v2_cnav_complementaire_sante_solidaire'
 
 test:
   enable_until: '2051-01-01'
