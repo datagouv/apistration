@@ -52,7 +52,7 @@ class Rack::Attack
 
   self.blocklisted_responder = lambda do |req|
     query_params = Rack::Utils.parse_nested_query(req.params['QUERY_STRING'])
-    error_format = query_params['error_format'] || 'flat'
+    error_format = query_params['error_format'] || :json_api
     api = req.host.split('.').first
 
     [
@@ -73,7 +73,7 @@ class Rack::Attack
     )
 
     query_params = Rack::Utils.parse_nested_query(env['QUERY_STRING'])
-    error_format = query_params['error_format'] || :flat
+    error_format = query_params['error_format'] || :json_api
 
     [
       429,

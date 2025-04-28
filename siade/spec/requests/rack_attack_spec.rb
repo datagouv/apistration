@@ -56,6 +56,16 @@ RSpec.describe 'Rack::Attack config', api: :entreprise do
         expect(response).to have_http_status(:too_many_requests)
       end
 
+      it 'replies with the correct error message format' do
+        call!(token_sample)
+
+        expect(response_json).to have_json_error(
+          code: '00429',
+          title: 'Trop de requêtes',
+          detail: 'Vous avez effectué trop de requêtes'
+        )
+      end
+
       it 'limits requests on a per token basis' do
         call!(another_token_sample)
 
