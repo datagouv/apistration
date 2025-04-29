@@ -67,6 +67,8 @@ Lint/ConstantDefinitionInBlock:
     - "spec/**/*"
 
 Metrics/AbcSize:
+  Exclude:
+    - "lib/generators/**/*"
   AllowedMethods:
     - resource_attributes
 
@@ -90,12 +92,17 @@ Metrics/ClassLength:
   Exclude:
     - "app/interactors/**/build_resource.rb"
 
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - "lib/generators/**/*"
+
 Metrics/MethodLength:
   Max: 15
   Exclude:
     - "app/interactors/**/build_resource.rb"
     - "spec/support/rswag_resources_payloads.rb"
     - "spec/support/rswag_commons_responses.rb"
+    - "lib/generators/**/*"
   AllowedMethods:
     - resource_attributes
 
@@ -103,6 +110,10 @@ Metrics/ModuleLength:
   Exclude:
     - "spec/support/rswag_resources_payloads.rb"
     - "spec/support/rswag_commons_responses.rb"
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - "lib/generators/**/*"
 
 Naming/AccessorMethodName:
   Exclude:
