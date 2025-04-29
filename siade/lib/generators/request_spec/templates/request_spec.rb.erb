@@ -47,9 +47,9 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
       end
 <% end %>
 
-      describe 'with valid token and mandatory params', valid: true do
+      describe 'with valid token and mandatory params' do
 <% if civility_validation? %>
-        response '200', 'Données trouvées'<% unless prochainement? %>, vcr: { cassette_name: '<%= provider_namespace.underscore %>/valid_civility' }<% end %> do
+        response '200', 'Données trouvées'<%= prochainement? ? ", pending: 'Implement endpoint'" : nil %> do
           <% if prochainement? %>before do
               allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
           end
@@ -71,7 +71,7 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
             let(:nom_naissance) { '' }
           end
 
-          response '404', 'Non trouvée', vcr: { cassette_name: '<%= provider_namespace.underscore %>/not_found_civility' }<%= prochainement? ? ", pending: 'Implement endpoint'" : nil %> do
+          response '404', 'Non trouvée'<%= prochainement? ? ", pending: 'Implement endpoint'" : nil %> do
             let(:nom_naissance) { 'UNKNOWN' }
 
             build_rswag_example(NotFoundError.new('<%= provider_namespace %>'))
@@ -81,7 +81,7 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
             run_test!
           end
 <% else %>
-        response '200', 'Entreprise trouvée'<% unless prochainement? %>, vcr: { cassette_name: '<%= provider_namespace.underscore %>/valid_<%= params %>' }<% end %> do
+        response '200', 'Entreprise trouvée'<%= prochainement? ? ", pending: 'Implement endpoint'" : nil %> do
           <% if prochainement? %>before do
               allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
           end
@@ -106,7 +106,7 @@ RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %>', type
             let(:<%= params %>) { 'lol' }
           end
 
-          response '404', 'Non trouvée', vcr: { cassette_name: '<%= provider_namespace.underscore %>/not_found_<%= params %>' }<%= prochainement? ? ", pending: 'Implement endpoint'" : nil %> do
+          response '404', 'Non trouvée'<%= prochainement? ? ", pending: 'Implement endpoint'" : nil %> do
             let(:<%= params %>) { not_found_<%= params %>(:<%= provider_namespace.underscore %>) }
 
             build_rswag_example(NotFoundError.new('<%= provider_namespace %>'))

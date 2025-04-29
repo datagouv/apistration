@@ -5,19 +5,20 @@ Example:
     bin/rails generate scaffold_resource MDS::Effectifs
     bin/rails generate scaffold_resource [provider]::[resource_name] [options]
 
-    This will create:
-        app/controllers/api_entreprise/v3_and_more/mds/effectifs_controller.rb
-        app/serializers/mds/effectifs_serializer/v3.rb
-        app/organizers/mds/effectifs.rb
-        app/organizers/mds/effectifs/validate_params.rb
-        app/organizers/mds/effectifs/upload_document.rb
-        app/interactors/mds/effectifs/make_request.rb
-        app/interactors/mds/effectifs/validate_response.rb
-        app/interactors/mds/effectifs/build_resource.rb
-        spec/organizers/mds/effectifs_spec.rb
-        spec/organizers/mds/effectifs/validate_params_spec.rb
-        spec/organizers/mds/effectifs/upload_document_spec.rb
-        spec/interactors/mds/effectifs/make_request_spec.rb
-        spec/interactors/mds/effectifs/validate_response_spec.rb
-        spec/interactors/mds/effectifs/build_resource_spec.rb
-        spec/requests/api_entreprise/v3_and_more/mds/effectifs_spec.rb
+Options:
+    --api-kind=particulier       # Create resources for APIParticulier instead of APIEntreprise (default is APIEntreprise)
+    --document=true              # Add support for document uploader (default is false)
+    --validation-type=siren      # Params for validation: siren, siret, civility, custom (default is siren)
+    --with-france-connect=true   # Add an additional controller with France Connect support (only for APIParticulier)
+    --verb=POST                  # Use POST instead of GET for the HTTP request (default is GET)
+    --prochainement=true         # Prepare the documentation and staging without a working API (default is false)
+    --is-collection=true         # Return a collection instead of a single resource (default is false)
+
+Examples:
+
+API Entreprise, validation with SIRET in Prochainement mode:
+      bin/rails generate scaffold_resource CNAV::PrimeActivite --prochainement=true --validation-type=siret
+
+API Particulier with France Connect and civility:
+      bin/rails generate scaffold_resource CNOUS::StudentScholarship --api-kind=particulier --with-france-connect=true --validation-type=civility
+

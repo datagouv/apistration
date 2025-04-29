@@ -1,13 +1,11 @@
-class API<%= api.classify %>::V3AndMore::<%= provider_namespace %>::<%= resource_class %>Controller < API<%= api.classify %>::V3AndMore::BaseController
+class API<%= api.classify %>::V3AndMore::<%= provider_namespace %>::<%= resource_class %>WithFranceConnectController < API<%= api.classify %>::V3AndMore::BaseController
+  include API<%= api.classify %>::FranceConnectable
+  include API<%= api.classify %>::CivilityParameters
+
   def show
     if organizer.success?
-      <% if prochainement? %>
-      render json: organizer[:payload],
-        status: organizer[:status]
-      <% else %>
       render json: serialize_data,
         status: extract_http_code(organizer)
-    <% end %>
     else
       render_errors(organizer)
     end
@@ -16,7 +14,7 @@ class API<%= api.classify %>::V3AndMore::<%= provider_namespace %>::<%= resource
   private
 
   def organizer_params
-    fail NotImplementedError
+    civility_parameters_from_france_connect
   end
 
   def serializer_module

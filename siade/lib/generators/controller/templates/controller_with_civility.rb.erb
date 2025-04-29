@@ -1,13 +1,10 @@
-class API<%= api.classify %>::V3AndMore::<%= provider_namespace %>::<%= resource_class %>Controller < API<%= api.classify %>::V3AndMore::BaseController
+class API<%= api.classify %>::V3AndMore::<%= provider_namespace %>::<%= resource_class %>WithCivilityController < API<%= api.classify %>::V3AndMore::BaseController
+  include API<%= api.classify %>::CivilityParameters
+
   def show
     if organizer.success?
-      <% if prochainement? %>
-      render json: organizer[:payload],
-        status: organizer[:status]
-      <% else %>
       render json: serialize_data,
         status: extract_http_code(organizer)
-    <% end %>
     else
       render_errors(organizer)
     end
@@ -15,8 +12,12 @@ class API<%= api.classify %>::V3AndMore::<%= provider_namespace %>::<%= resource
 
   private
 
+  def transcogage?
+    false
+  end
+
   def organizer_params
-    fail NotImplementedError
+    civility_parameters
   end
 
   def serializer_module

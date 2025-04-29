@@ -15,12 +15,14 @@ class ScaffoldResourceGenerator < Rails::Generators::NamedBase
   class_option :validation_type,
     type: :string,
     default: 'siren',
-    desc: 'Does the API needs to validate: siren, siret or custom ?'
+    desc: 'Which params will be used for the endpoint and need validation',
+    enum: %w[siren siret custom civility]
 
   class_option :verb,
     type: :string,
     default: 'GET',
-    desc: 'HTTP request verb (GET or POST)'
+    desc: 'HTTP request verb',
+    enum: %w[GET POST]
 
   class_option :is_collection,
     type: :boolean,
@@ -32,11 +34,28 @@ class ScaffoldResourceGenerator < Rails::Generators::NamedBase
     default: false,
     desc: 'Prepare the documentation and staging without a working API'
 
+  class_option :with_france_connect,
+    type: :boolean,
+    default: false,
+    desc: 'Add additional controller with France Connect support'
+
   def create_scaffold_resource
-    generate 'controller', name, string_options
+    if options[:validation_type]&.downcase == 'civility'
+      generate 'controller', name, string_options.gsub('--validation_type=civility', '--controller_type=civility')
+      generate 'request_spec', name, string_options.gsub('--validation_type=civility', '--controller_type=civility')
+    else
+      generate 'controller', name, string_options
+      generate 'request_spec', name, string_options
+    end
+
+    # Generate an additional FranceConnect controller if requested
+    if options[:with_france_connect] && options[:api_kind] == 'particulier'
+      generate 'controller', name, string_options.gsub('--with_france_connect=true', '--controller_type=france_connect')
+      generate 'request_spec', name, string_options.gsub('--with_france_connect=true', '--controller_type=france_connect')
+    end
+
     generate 'retriever', name, string_options
     generate 'validate_params', name, string_options if custom_validation?
-    generate 'request_spec', name, string_options
     generate 'serializer', name, string_options
 
     return if prochainement?

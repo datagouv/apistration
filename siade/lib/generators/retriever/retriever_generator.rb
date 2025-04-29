@@ -29,6 +29,10 @@ class RetrieverGenerator < BaseGenerator
 
   private
 
+  def civility_validation?
+    options[:validation_type]&.downcase == 'civility'
+  end
+
   def document_resource?
     options[:document]
   end

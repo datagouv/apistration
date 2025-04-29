@@ -49,7 +49,7 @@ class RNM::EntreprisesArtisanales::BuildResource < BuildResource
     }
   end
 
-  def adresse_payload
+  def adresse_payload # rubocop:disable Metrics/AbcSize
     {
       # FIXME: JSONAPI use this field to retrieve the relationship
       adresse_id: json_body['ent_id_siren'],
@@ -72,7 +72,7 @@ class RNM::EntreprisesArtisanales::BuildResource < BuildResource
     }
   end
 
-  def dirigeant_payload
+  def dirigeant_payload # rubocop:disable Metrics/AbcSize
     {
       dirigeant_qualification: json_body['dir_qa_qualification'],
       dirigeant_nom_de_naissance: json_body['dir_id_nom_naissance'],

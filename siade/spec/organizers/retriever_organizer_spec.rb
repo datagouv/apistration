@@ -1,7 +1,7 @@
 RSpec.describe RetrieverOrganizer, type: :organizer do
   before(:all) do
     class DummyRetrieverInteractor < ApplicationInteractor
-      def call
+      def call # rubocop:disable Metrics/AbcSize
         case context.error_kind
         when :not_found
           context.errors << NotFoundError.new(context.provider_name)

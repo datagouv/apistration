@@ -1,0 +1,107 @@
+require 'swagger_helper'
+
+RSpec.describe '<%= provider_namespace %>: <%= resource_class.humanize %> With Civility', api: :<%= api %>, type: %i[request swagger] do
+  path '/v3/<%= provider_namespace.underscore %>/<%= resource_class.underscore.pluralize %>/identite' do
+    get "[Identité] #{SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.title')}" do
+      tags(*SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.tags'))
+
+      common_action_attributes
+
+      parameters_identite_pivot(
+        params: %w[
+          nomNaissance
+          prenoms
+          anneeDateNaissance
+          moisDateNaissance
+          jourDateNaissance
+          sexeEtatCivil
+          codeCogInseeCommuneNaissance
+          codeCogInseePaysNaissance
+        ],
+        required: %w[
+          nomNaissance
+          prenoms
+          anneeDateNaissance
+          moisDateNaissance
+          jourDateNaissance
+          sexeEtatCivil
+          codeCogInseePaysNaissance
+        ]
+      )
+
+      let(:nomNaissance) { 'Dupont' }
+      let(:'prenoms[]') { %w[jean charlie] }
+      let(:anneeDateNaissance) { 2008 }
+      let(:moisDateNaissance) { 1 }
+      let(:jourDateNaissance) { 1 }
+      let(:codeCogInseePaysNaissance) { '99100' }
+      let(:sexeEtatCivil) { 'M' }
+
+      unauthorized_request
+
+      forbidden_request('api_particulier')
+
+      too_many_requests(::<%= name %>)
+
+      let(:scopes) { %i[<%= provider_namespace.underscore.gsub('/', '_') %>_<%= resource_class.underscore %>] }
+
+      describe 'with valid token and mandatory params', :valid do
+        <% unless prochainement? %>
+        describe 'when found' do
+          before { stub_<%= provider_namespace.underscore.gsub('/', '_') %>_<%= resource_class.underscore %>_valid }
+
+          response '200', 'Identité trouvée' do
+            description SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.description')
+
+            rate_limit_headers
+
+            schema build_rswag_response(
+              attributes: SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.attributes')
+            )
+
+            run_test!
+          end
+        end
+
+        describe 'when not found' do
+          before { stub_<%= provider_namespace.underscore.gsub('/', '_') %>_<%= resource_class.underscore %>_not_found }
+
+          response '404', 'Non trouvée' do
+            build_rswag_example(NotFoundError.new('<%= provider_namespace %>'))
+
+            schema '$ref' => '#/components/schemas/Error'
+
+            run_test!
+          end
+        end
+        <% else %>
+        response '200', 'Identité trouvée', pending: 'Implement endpoint' do
+          before do
+            allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
+          end
+          
+          description SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.description')
+
+          rate_limit_headers
+
+          schema build_rswag_response(
+            attributes: SwaggerData.get('<%= provider_namespace.underscore %>.<%= resource_class.underscore %>.attributes')
+          )
+
+          run_test!
+        end
+        <% end %>
+
+        describe 'server errors' do
+          unprocessable_entity_error_request(:sexe_etat_civil) do
+            let(:sexeEtatCivil) { 'lol' }
+          end
+
+          common_provider_errors_request('<%= provider_namespace %>', ::<%= name %>)
+
+          common_network_error_request('<%= provider_namespace %>', ::<%= name %>)
+        end
+      end
+    end
+  end
+end

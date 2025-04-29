@@ -26,7 +26,7 @@ RSpec.describe <%= name %>::MakeRequest, type: :make_request do
     let(:params) { {} }
 <% end %>
     let!(:stubbed_request) do
-      stub_request(options[:verb].downcase.to_sym, Siade.credentials[:PLACEHOLDER_URL]).with(body:)
+      stub_request(<%= options[:verb].downcase.to_sym %>, Siade.credentials[:provider_url]).with(body:)
     end
 
     let(:body) do
@@ -34,6 +34,7 @@ RSpec.describe <%= name %>::MakeRequest, type: :make_request do
     end
 
     let(:request_params) do
+    <% if civility_validation? %>
       {
         given_name: 'Jean',
         family_name: 'DUPONT',
@@ -42,6 +43,11 @@ RSpec.describe <%= name %>::MakeRequest, type: :make_request do
         birthplace: nil,
         birthcountry: '12345'
       }
+    <% else %>
+      {
+        <%= id_name %>: 'value'
+      }
+    <% end %>
     end
 
     it { is_expected.to be_a_success }

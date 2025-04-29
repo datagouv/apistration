@@ -5,7 +5,7 @@ class SerializerGenerator < BaseGenerator
     type: :boolean,
     default: false,
     desc: 'Add support of documents uploader'
-    
+
   class_option :api_kind,
     type: :string,
     default: 'entreprise',
