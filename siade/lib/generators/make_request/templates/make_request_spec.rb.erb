@@ -1,20 +1,55 @@
 RSpec.describe <%= name %>::MakeRequest, type: :make_request do
   describe '.call' do
-    subject { described_class.call(params:) }<% if id_name %>
-
+    subject { described_class.call(params:) }
+<% if id_name %>
+    <% if civility_validation? %>
     let(:params) do
       {
-        <%= id_name %>:
+        prenoms: %w[Jean Paul],
+        nom_naissance: 'Dupont',
+        jour_date_naissance: 1,
+        mois_date_naissance: 10,
+        annee_date_naissance: 2000,
+        sexe_etat_civil: 'M',
+        code_cog_insee_commune_naissance: '90000',
+        code_cog_insee_pays_naissance: '99100'
+      }
+    end
+    <% else %>
+    let(:params) do
+      {
+        <%= id_name %>: 'value'
+      }
+    end
+    <% end %>
+<% else %>
+    let(:params) { {} }
+<% end %>
+    let!(:stubbed_request) do
+      stub_request(options[:verb].downcase.to_sym, Siade.credentials[:PLACEHOLDER_URL]).with(body:)
+    end
+
+    let(:body) do
+      request_params.to_json
+    end
+
+    let(:request_params) do
+      {
+        given_name: 'Jean',
+        family_name: 'DUPONT',
+        birthdate: '2000-10-01',
+        gender: 'male',
+        birthplace: nil,
+        birthcountry: '12345'
       }
     end
 
-    context 'with a valid <%= id_name %>', vcr: { cassette_name: '<%= provider_namespace.underscore %>/<%= resource_class.underscore %>/valid_<%= id_name %>' } do
-      let(:<%= id_name %>) { valid_<%= id_name %>(:<%= provider_namespace.underscore %>) }
+    it { is_expected.to be_a_success }
 
-      it { is_expected.to be_a_success }
+    it 'calls url with correct params' do
+      subject
 
-      its(:response) { is_expected.to be_a(Net::HTTPOK) }
+      expect(stubbed_request).to have_been_requested
     end
-  end<% else %>
-    it { is_expected.to raise 'implement specs here' }<%end%>
+  end
 end

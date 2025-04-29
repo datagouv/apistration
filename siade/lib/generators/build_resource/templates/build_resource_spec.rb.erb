@@ -1,17 +1,20 @@
 RSpec.describe <%= name %>::BuildResource, type: :build_resource do
-  subject { described_class.call(response:) }
+  subject(:instance) { described_class.call(response:) }
 
   let(:response) { instance_double(Net::HTTPOK, body:) }
+  let(:body) { read_payload_file('<%= provider_namespace.underscore %>/<%= name.underscore %>/found.json') }
 
-  let(:body) do
-    <%= name %>::MakeRequest.call(params:).response.body
-  end<% if id_name %>
+  it { is_expected.to be_a_success }
 
-  let(:params) do
-    {
-      <%= id_name %>: <%= id_name %>
-    }
+  describe 'resource' do
+    subject { instance.bundled_data.data.to_h }
+
+    it do
+      expect(subject).to eq(
+        {
+          id: 1
+        }
+      )
+    end
   end
-
-  let(:<%= id_name %>) { valid_<%= id_name %>(:<%= provider_namespace.underscore %>) }<% end %>
 end

@@ -1,5 +1,10 @@
 class <%= name %>::ValidateResponse < ValidateResponse
   def call
+    #resource_not_found! if not_found?
+
+    #return if valid?
+
+    #unknown_provider_response!
     fail NotImplementedError
   end
 end

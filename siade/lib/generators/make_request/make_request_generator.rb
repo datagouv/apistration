@@ -23,6 +23,10 @@ class MakeRequestGenerator < BaseGenerator
     options[:verb].upcase == 'GET'
   end
 
+  def civility_validation?
+    options[:validation_type]&.downcase == 'civility'
+  end
+
   def id_name
     return if options[:validation_type].nil?
 

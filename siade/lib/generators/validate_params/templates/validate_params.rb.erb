@@ -1,5 +1,5 @@
 class <%= name %>::ValidateParams < ValidateParamsOrganizer
-<% if options[:validation_type].downcase == 'civility' %>
+<% if options[:validation_type]&.downcase == 'civility' %>
   organize Civility::ValidateNomNaissance,
            Civility::ValidatePrenoms,
            Civility::ValidateSexeEtatCivil,

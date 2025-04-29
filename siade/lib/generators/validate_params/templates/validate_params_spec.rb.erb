@@ -1,5 +1,5 @@
 RSpec.describe <%= name %>::ValidateParams, type: :validate_params do
-<% if options[:validation_type].downcase == 'civility' %>
+<% if options[:validation_type]&.downcase == 'civility' %>
   subject { described_class.call(params: civility_params) }
 
   let(:nom_naissance) { 'Dupont' }
