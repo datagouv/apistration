@@ -1,3 +1,32 @@
 RSpec.describe <%= name %>::ValidateParams, type: :validate_params do
+<% if options[:validation_type].downcase == 'civility' %>
+  subject { described_class.call(params: civility_params) }
+
+  let(:nom_naissance) { 'Dupont' }
+  let(:prenoms) { 'Jean Marie' }
+  let(:sexe) { 'M' }
+  let(:date_naissance) { '1990-01-01' }
+  let(:code_cog_insee_commune_naissance) { '75056' }
+  let(:code_cog_insee_pays_naissance) { '99100' }
+  
+  let(:civility_params) do
+    {
+      nom_naissance: nom_naissance,
+      prenoms: prenoms,
+      sexe: sexe,
+      date_naissance: date_naissance,
+      code_cog_insee_commune_naissance: code_cog_insee_commune_naissance,
+      code_cog_insee_pays_naissance: code_cog_insee_pays_naissance
+    }
+  end
+
+  it { is_expected.to be_a_success }
+
+  context 'with invalid nom_naissance' do
+    let(:nom_naissance) { '' }
+    it { is_expected.to be_a_failure }
+  end
+<% else %>
   it { is_expected.to raise 'implement specs here' }
+<% end %>
 end

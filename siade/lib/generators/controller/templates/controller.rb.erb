@@ -16,7 +16,18 @@ class API<%= api.classify %>::V3AndMore::<%= name %>Controller < API<%= api.clas
   private
 
   def organizer_params
+<% if options[:validation_type]&.downcase == 'civility' %>
+    params.permit(
+      :nom_naissance,
+      :prenoms,
+      :sexe,
+      :date_naissance,
+      :code_cog_insee_commune_naissance,
+      :code_cog_insee_pays_naissance
+    )
+<% else %>
     fail NotImplementedError
+<% end %>
   end
 
   def serializer_module

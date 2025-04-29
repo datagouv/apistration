@@ -23,8 +23,12 @@ class RequestSpecGenerator < BaseGenerator
 
   private
 
-  def id_path_param
+  def params
     options[:validation_type].downcase
+  end
+  
+  def civility_validation?
+    options[:validation_type].downcase == 'civility'
   end
 
   def document_resource?
