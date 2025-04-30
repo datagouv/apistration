@@ -50,7 +50,7 @@ module InterceptWithOpenAPIMockedPayloadInStaging
   def render_open_api_errors
     errors << OpenAPIExampleError.new
 
-    render json: ErrorsSerializer.new(errors, format: error_format).as_json,
+    render json: ErrorsSerializer.new(errors).as_json,
       status: :internal_server_error
   end
 

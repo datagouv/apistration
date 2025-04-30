@@ -27,60 +27,17 @@ RSpec.describe APIController do
     end
   end
 
-  describe 'error json (with bad request error)' do
+  describe 'error format (with bad request error)' do
     subject do
       routes.draw { get 'show/:siret' => 'api#show' }
 
-      get :show, params: { siret: ' ', error_format:, token: yes_jwt }.merge(api_entreprise_mandatory_params)
+      get :show, params: { siret: ' ', token: yes_jwt }.merge(api_entreprise_mandatory_params)
     end
 
-    context 'when error_format is nil' do
-      let(:error_format) { nil }
+    it 'renders json_api format errors' do
+      subject
 
-      after do
-        expect(response.content_type).to start_with('application/json')
-      end
-
-      it 'renders flatten errors' do
-        subject
-
-        json = response.parsed_body
-        expect(json['errors']).to be_an(Array)
-        expect(json['errors'].first).to be_a(String)
-      end
-    end
-
-    context 'when error_format is flat' do
-      let(:error_format) { 'flat' }
-
-      it 'renders flatten errors' do
-        subject
-
-        json = response.parsed_body
-        expect(json['errors']).to be_an(Array)
-        expect(json['errors'].first).to be_a(String)
-      end
-    end
-
-    context 'when error format is json_api' do
-      let(:error_format) { 'json_api' }
-
-      it 'renders json API errors' do
-        subject
-
-        json = response.parsed_body
-
-        expect(json['errors']).to be_an(Array)
-        expect(json['errors'].first).to be_a(Hash)
-
-        %w[
-          code
-          title
-          detail
-        ].each do |key|
-          expect(json['errors'].first[key]).to be_present
-        end
-      end
+      expect(response_json).to have_json_api_format_errors
     end
   end
 

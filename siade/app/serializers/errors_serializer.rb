@@ -28,6 +28,6 @@ class ErrorsSerializer < ActiveModel::Serializer
   end
 
   def default_format
-    :flat
+    :json_api
   end
 end

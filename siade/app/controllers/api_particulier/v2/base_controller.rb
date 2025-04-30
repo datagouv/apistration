@@ -118,6 +118,10 @@ class APIParticulier::V2::BaseController < APIController
     request.headers['X-Api-key']
   end
 
+  def error_format
+    'flat'
+  end
+
   def api_version
     2
   end

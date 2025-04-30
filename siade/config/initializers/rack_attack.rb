@@ -51,14 +51,12 @@ class Rack::Attack
   end
 
   self.blocklisted_responder = lambda do |req|
-    query_params = Rack::Utils.parse_nested_query(req.params['QUERY_STRING'])
-    error_format = query_params['error_format'] || :json_api
     api = req.host.split('.').first
 
     [
       401,
       { 'Content-Type' => 'application/json' },
-      [ErrorsSerializer.new([BlacklistedTokenError.new(api)], format: error_format).to_json]
+      [ErrorsSerializer.new([BlacklistedTokenError.new(api)]).to_json]
     ]
   end
 
@@ -72,13 +70,10 @@ class Rack::Attack
       'Retry-After' => (headers['RateLimit-Reset'].to_i - Time.now.to_i).to_s,
     )
 
-    query_params = Rack::Utils.parse_nested_query(env['QUERY_STRING'])
-    error_format = query_params['error_format'] || :json_api
-
     [
       429,
       headers,
-      [ErrorsSerializer.new([TooManyRequestsError.new], format: error_format).to_json]
+      [ErrorsSerializer.new([TooManyRequestsError.new]).to_json]
     ]
   end
 end

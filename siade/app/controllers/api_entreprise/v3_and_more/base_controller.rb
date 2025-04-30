@@ -25,12 +25,8 @@ class APIEntreprise::V3AndMore::BaseController < APIEntrepriseController
 
   def render_errors
     render content_type: content_type_header,
-      json:         ::ErrorsSerializer.new(organizer.errors, format: error_format).as_json,
+      json:         ::ErrorsSerializer.new(organizer.errors).as_json,
       status:       extract_http_code(organizer)
-  end
-
-  def error_format
-    :json_api
   end
 
   def content_type_header

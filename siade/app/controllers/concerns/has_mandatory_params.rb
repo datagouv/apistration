@@ -10,7 +10,7 @@ module HasMandatoryParams
   end
 
   def not_acceptable
-    render json:   ErrorsSerializer.new(errors, format: error_format).as_json,
+    render json:   ErrorsSerializer.new(errors).as_json,
       status: :unprocessable_entity
   end
 
@@ -34,10 +34,6 @@ module HasMandatoryParams
       recipient
       object
     ]
-  end
-
-  def error_format
-    :flat
   end
 
   def errors

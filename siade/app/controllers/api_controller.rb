@@ -95,11 +95,7 @@ class APIController < ApplicationController
   end
 
   def error_format
-    json_api_format_error_activated? ? :json_api : :flat
-  end
-
-  def json_api_format_error_activated?
-    params[:error_format] == 'json_api'
+    'json_api'
   end
 
   def operation_id

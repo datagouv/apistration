@@ -3,10 +3,7 @@
 L'ensemble des erreurs renvoyées via l'API se situent dans le dossier
 `app/errors`.
 
-Dans l'optique de faire vivre les erreurs dans la v2 et la v3, chaque erreur
-possède 2 implémentations : une flat et une sous la forme d'un [JSON API
-Error](https://jsonapi.org/format/#errors), actionnable dans la v2 avec le
-paramètre en query `error_format=json_api`.
+Les erreurs sont renvoyées au format 'flat' dans la v2 de API Particulier et au format [JSON API Error](https://jsonapi.org/format/#errors) dans la v3 de Particulier et Entreprise.
 
 Chaque erreur doit hériter de la classe
 [`ApplicationError`](./app/errors/application_error.rb), qui permet d'aller

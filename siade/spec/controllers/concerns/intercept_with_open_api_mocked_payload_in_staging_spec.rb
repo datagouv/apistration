@@ -82,7 +82,7 @@ RSpec.describe InterceptWithOpenAPIMockedPayloadInStaging do
         get :index, params: { token: yes_jwt }.merge(api_entreprise_mandatory_params)
 
         assert_response :internal_server_error
-        expect(response_json).to include(errors: ["Une erreur dans la configuration de notre environnement de staging ne permet pas la génération de l'exemple de test. Une alerte a été remontée."])
+        expect(response_json).to have_json_error(detail: "Une erreur dans la configuration de notre environnement de staging ne permet pas la génération de l'exemple de test. Une alerte a été remontée.")
       end
 
       it 'tracks OpenAPI error in monitoring service' do
@@ -103,7 +103,7 @@ RSpec.describe InterceptWithOpenAPIMockedPayloadInStaging do
         get :index, params: { token: yes_jwt }.merge(api_entreprise_mandatory_params)
 
         assert_response :internal_server_error
-        expect(response_json).to include(errors: ["Une erreur dans la configuration de notre environnement de staging ne permet pas la génération de l'exemple de test. Une alerte a été remontée."])
+        expect(response_json).to have_json_error(detail: "Une erreur dans la configuration de notre environnement de staging ne permet pas la génération de l'exemple de test. Une alerte a été remontée.")
       end
 
       it 'tracks OpenAPI error in monitoring service' do

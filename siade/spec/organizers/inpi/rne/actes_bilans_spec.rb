@@ -33,8 +33,6 @@ RSpec.describe INPI::RNE::ActesBilans, type: :retriever_organizer do
       it { is_expected.to be_present }
 
       describe 'following url', type: :request, vcr: { cassette_name: 'inpi/rne/actes_download/valid' } do
-        subject { response }
-
         let(:document_url_regexp) { %r{http://test\.entreprise\.api\.gouv\.fr/proxy/files/[a-f0-9\-]{36}} }
 
         context 'with token not in database' do
@@ -44,7 +42,13 @@ RSpec.describe INPI::RNE::ActesBilans, type: :retriever_organizer do
             get url
 
             expect(response).to have_http_status(:unauthorized)
-            expect(response.parsed_body[:errors].first).to include("Votre jeton n'a pas été trouvé dans la base de données")
+            expect(response_json).to have_json_error(
+              detail: "Votre jeton n'a pas été trouvé dans la base de données. " \
+                      "Il s'agit probablement d'un jeton sans habilitation. " \
+                      'Vous devez effectuer une demande à API Entreprise, un guide est ' \
+                      'disponible sur https://entreprise.api.gouv.fr/demander_un_acces/'
+            )
+            expect(response_json).to have_json_api_format_errors
           end
         end
 

@@ -28,19 +28,29 @@ end
 
 RSpec::Matchers.define :have_json_error do |expected|
   match do |actual|
+    expect(actual).to have_json_api_format_errors
+
+    json = actual.stringify_keys
+
+    expect(json['errors'].map { |error| error.stringify_keys['detail'] }).to include(expected.stringify_keys['detail'])
+  end
+end
+
+RSpec::Matchers.define :have_json_api_format_errors do
+  match do |actual|
     json = actual.stringify_keys
 
     expect(json['errors']).to be_present
     expect(json['errors']).to be_an(Array)
+    expect(json['errors'].first.stringify_keys.keys).to include('detail', 'code', 'title')
+  end
+end
 
-    fail 'errors key is empty' if json['errors'].blank?
+RSpec::Matchers.define :have_flat_format_error do
+  match do |actual|
+    json = actual.stringify_keys
 
-    flat_error_format = json['errors'][0].is_a?(String)
-
-    if flat_error_format
-      expect(json['errors']).to include(expected.stringify_keys['detail'])
-    else
-      expect(json['errors'].map { |error| error.stringify_keys['detail'] }).to include(expected.stringify_keys['detail'])
-    end
+    expect(json['errors'].first).to be_present
+    expect(json['errors'].first).to be_a(String)
   end
 end

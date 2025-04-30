@@ -21,6 +21,20 @@ RSpec.describe APIParticulier::V3AndMore::BaseController do
     end
   end
 
+  describe 'error format (with missing recipient error)' do
+    before do
+      get :index, params: { api_version: 42, token: yes_jwt }
+        .merge(**api_particulier_mandatory_params)
+        .merge(recipient: 'wrong')
+    end
+
+    it 'renders json_api format errors' do
+      subject
+
+      expect(response_json).to have_json_api_format_errors
+    end
+  end
+
   describe 'version management' do
     before do
       get :index, params: { api_version:, token: yes_jwt }.merge(**api_particulier_mandatory_params)

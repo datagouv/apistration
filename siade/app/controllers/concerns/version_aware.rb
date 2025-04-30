@@ -26,12 +26,8 @@ module VersionAware
     error = UnsupportedAPIVersionError.new(exception.message)
 
     render content_type: content_type_header,
-      json:         ::ErrorsSerializer.new([error], format: error_format).as_json,
+      json:         ::ErrorsSerializer.new([error]).as_json,
       status:       error.kind
-  end
-
-  def error_format
-    NotImplementedError
   end
 
   def api_version
