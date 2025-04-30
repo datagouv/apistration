@@ -42,6 +42,7 @@ RSpec::Matchers.define :have_json_api_format_errors do
 
     expect(json['errors']).to be_present
     expect(json['errors']).to be_an(Array)
+    expect(json['errors'].first).to be_an(Hash)
     expect(json['errors'].first.stringify_keys.keys).to include('detail', 'code', 'title')
   end
 end
