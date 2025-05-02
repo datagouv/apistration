@@ -1,6 +1,5 @@
 class APIParticulier::V3AndMore::DSNJ::ServiceNationalWithFranceConnectController < APIParticulier::V3AndMore::BaseController
   include APIParticulier::FranceConnectable
-  include APIParticulier::CivilityParameters
 
   def show
     if organizer.success?

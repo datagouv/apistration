@@ -22,23 +22,6 @@ module APIParticulier::CivilityParameters
   end
   # rubocop:enable Metrics/MethodLength
 
-  # rubocop:disable Metrics/AbcSize
-  def civility_parameters_from_france_connect(except: [])
-    {
-      nom_usage: france_connect_service_user_identity.preferred_username,
-      nom_naissance: france_connect_service_user_identity.family_name,
-      prenoms: france_connect_service_user_identity.given_name.split,
-      annee_date_naissance: france_connect_service_user_identity.birthdate.split('-').first,
-      mois_date_naissance: france_connect_service_user_identity.birthdate.split('-').second,
-      jour_date_naissance: france_connect_service_user_identity.birthdate.split('-').third,
-      code_cog_insee_commune_naissance: france_connect_service_user_identity.birthplace,
-      code_cog_insee_pays_naissance: france_connect_service_user_identity.birthcountry,
-      sexe_etat_civil: france_connect_service_user_identity.gender == 'male' ? 'M' : 'F',
-      france_connect: true
-    }.except(*except)
-  end
-  # rubocop:enable Metrics/AbcSize
-
   protected
 
   def extract_code_cog_insee_commune_naissance
