@@ -1,4 +1,4 @@
-module HasMandatoryParams
+module APIEntreprise::HasMandatoryParams
   extend ActiveSupport::Concern
 
   class NotAcceptable < StandardError

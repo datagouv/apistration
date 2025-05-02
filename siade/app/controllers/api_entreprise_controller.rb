@@ -1,3 +1,3 @@
 class APIEntrepriseController < APIController
-  include HasMandatoryParams
+  include APIEntreprise::HasMandatoryParams
 end

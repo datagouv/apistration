@@ -1,6 +1,6 @@
-RSpec.describe HasMandatoryParams do
+RSpec.describe APIEntreprise::HasMandatoryParams do
   controller(ApplicationController) do
-    include HasMandatoryParams
+    include APIEntreprise::HasMandatoryParams
 
     def index
       render json: {}, status: :ok
