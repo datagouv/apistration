@@ -1,6 +1,7 @@
 # CLAUDE.md - SIADE Project Guide
 
 ## Build/Test/Lint Commands
+
 - Install dependencies: `./bin/install.sh`
 - Seed database: `./bin/seeds.sh`
 - Run all tests: `rspec`
@@ -13,6 +14,7 @@
 - Test ping endpoints: `bundle exec rails runner bin/test_pings.rb`
 
 ## Code Style Guidelines
+
 - Style: Follow the Ruby style guide as configured in .rubocop.yml
 - Strings: Use single quotes unless interpolation is needed
 - Naming: Snake_case for methods/variables, CamelCase for classes
@@ -23,3 +25,5 @@
 - APIs: Use the scaffold_resource generator for new APIs
 - Scopes: Define API access scopes in config/authorizations.yml
 - Maintenance: Configure provider maintenance in config/maintenances.yml
+- File Endings: Every file should end with a newline
+
