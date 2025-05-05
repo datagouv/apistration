@@ -118,7 +118,8 @@ RSpec.describe APIParticulier::V2::BaseController, 'cache_management' do
               retriever_organizer: DummyRetrieverOrganizer,
               retriever_params: {
                 params: { very: :parameters },
-                operation_id: 'operation_id'
+                operation_id: 'operation_id',
+                recipient: '13002526500013'
               },
               cache_key: '/show:very=parameters',
               expires_in: 1.hour

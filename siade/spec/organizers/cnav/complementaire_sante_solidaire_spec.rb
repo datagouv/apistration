@@ -1,10 +1,10 @@
 RSpec.describe CNAV::ComplementaireSanteSolidaire, type: :retriever_organizer do
+  subject { described_class.call(params:, recipient:) }
+
   let(:request_id) { SecureRandom.uuid }
   let(:recipient) { valid_siret }
 
   describe '.call with civility params' do
-    subject { described_class.call(params:) }
-
     let(:common_params) do
       {
         nom_naissance: 'CHAMPION',
@@ -14,8 +14,7 @@ RSpec.describe CNAV::ComplementaireSanteSolidaire, type: :retriever_organizer do
         jour_date_naissance: 12,
         sexe_etat_civil:,
         code_cog_insee_pays_naissance: '99100',
-        request_id:,
-        recipient:
+        request_id:
       }
     end
 
@@ -108,8 +107,6 @@ RSpec.describe CNAV::ComplementaireSanteSolidaire, type: :retriever_organizer do
   end
 
   describe '.call with FranceConnect params' do
-    subject { described_class.call(params:) }
-
     let(:params) do
       {
         nom_usage: 'MARTIN',
@@ -121,8 +118,7 @@ RSpec.describe CNAV::ComplementaireSanteSolidaire, type: :retriever_organizer do
         code_cog_insee_commune_naissance: '75101',
         code_cog_insee_pays_naissance: '99100',
         sexe_etat_civil: 'M',
-        request_id:,
-        recipient:
+        request_id:
       }
     end
 

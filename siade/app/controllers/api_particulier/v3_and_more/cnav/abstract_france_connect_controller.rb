@@ -19,7 +19,7 @@ class APIParticulier::V3AndMore::CNAV::AbstractFranceConnectController < APIPart
   private
 
   def organizer_params
-    civility_parameters_from_france_connect.merge({ recipient: params[:recipient], request_id: request.request_id })
+    civility_parameters_from_france_connect.merge({ request_id: request.request_id })
   end
 
   def organizer_class

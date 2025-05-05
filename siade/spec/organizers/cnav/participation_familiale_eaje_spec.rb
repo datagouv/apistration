@@ -1,5 +1,5 @@
 RSpec.describe CNAV::ParticipationFamilialeEAJE, type: :retriever_organizer do
-  subject { described_class.call(params:, operation_id: 'api_particulier_v3_cnav_participation_familiale_eaje_with_civility') }
+  subject { described_class.call(params:, operation_id: 'api_particulier_v3_cnav_participation_familiale_eaje_with_civility', recipient:) }
 
   let(:request_id) { SecureRandom.uuid }
   let(:recipient) { valid_siret }
@@ -14,8 +14,7 @@ RSpec.describe CNAV::ParticipationFamilialeEAJE, type: :retriever_organizer do
       sexe_etat_civil: 'M',
       code_cog_insee_commune_naissance: '75101',
       code_cog_insee_pays_naissance: '99100',
-      request_id:,
-      recipient:
+      request_id:
     }
   end
 

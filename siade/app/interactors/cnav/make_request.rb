@@ -43,7 +43,7 @@ class CNAV::MakeRequest < MakeRequest::Get
     request['Content-Type'] = 'application/json'
     request['Authorization'] = "Bearer #{token}"
     request['X-Correlation-ID'] = context.params[:request_id]
-    request['X-APIPART-FSFINAL'] = context.params[:recipient]
+    request['X-APIPART-FSFINAL'] = context.recipient
   end
 
   # rubocop:disable Metrics/AbcSize

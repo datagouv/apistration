@@ -112,7 +112,8 @@ RSpec.describe APIParticulier::V2::CNAV::AbstractController, 'cache management' 
             .to receive(:call)
             .with({
               params: hash_including(organizer_params),
-              operation_id: 'api_particulier_v2_cnav_quotient_familial_v2'
+              operation_id: 'api_particulier_v2_cnav_quotient_familial_v2',
+              recipient: '13002526500013'
             }).and_call_original
 
           subject
@@ -203,7 +204,8 @@ RSpec.describe APIParticulier::V2::CNAV::AbstractController, 'cache management' 
               retriever_organizer: CNAV::QuotientFamilialV2,
               retriever_params: {
                 params: hash_including(organizer_params),
-                operation_id: 'api_particulier_v2_cnav_quotient_familial_v2'
+                operation_id: 'api_particulier_v2_cnav_quotient_familial_v2',
+                recipient: '13002526500013'
               },
               cache_key: "/show:#{organizer_params.to_query}",
               expires_in: 24.hours

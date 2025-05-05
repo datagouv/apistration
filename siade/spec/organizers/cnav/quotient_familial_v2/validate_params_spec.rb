@@ -1,5 +1,5 @@
 RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params do
-  subject { described_class.call(params:) }
+  subject { described_class.call(params:, recipient:) }
 
   let(:params) do
     {
@@ -17,7 +17,6 @@ RSpec.describe CNAV::QuotientFamilialV2::ValidateParams, type: :validate_params 
       jour_date_naissance:,
       user_id:,
       request_id:,
-      recipient:,
 
       annee:,
       mois:

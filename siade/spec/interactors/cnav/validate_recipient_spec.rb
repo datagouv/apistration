@@ -1,5 +1,5 @@
 RSpec.describe CNAV::ValidateRecipient, type: :validate_param_interactor do
-  subject { described_class.call(params: { recipient: }) }
+  subject { described_class.call(recipient:) }
 
   context 'when attribute is missing' do
     let(:recipient) { nil }

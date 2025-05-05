@@ -1,8 +1,9 @@
 RSpec.describe CNAV::MakeRequest, type: :make_request do
-  subject(:make_call) { described_class.call(token:, params:, dss_prestation_name: 'complementaire_sante_solidaire') }
+  subject(:make_call) { described_class.call(token:, params:, dss_prestation_name: 'complementaire_sante_solidaire', recipient:) }
 
   let(:token) { 'super_valid_token' }
   let(:request_id) { SecureRandom.uuid }
+  let(:recipient) { valid_siret }
 
   describe 'with civility params' do
     let(:params) do
@@ -15,7 +16,6 @@ RSpec.describe CNAV::MakeRequest, type: :make_request do
         sexe_etat_civil: 'M',
         code_cog_insee_pays_naissance: '99100',
         code_cog_insee_commune_naissance: '17300',
-        recipient: valid_siret,
         request_id:
       }
     end
@@ -65,7 +65,6 @@ RSpec.describe CNAV::MakeRequest, type: :make_request do
           sexe_etat_civil: 'M',
           code_cog_insee_pays_naissance: '99100',
           code_cog_insee_commune_naissance: '17300',
-          recipient: valid_siret,
           nom_commune_naissance: 'Paris',
           code_cog_insee_departement_naissance: '75',
           request_id:
@@ -118,7 +117,6 @@ RSpec.describe CNAV::MakeRequest, type: :make_request do
           sexe_etat_civil: 'm',
           code_cog_insee_pays_naissance: '99100',
           code_cog_insee_commune_naissance: '17300',
-          recipient: valid_siret,
           request_id:
         }
       end
@@ -143,7 +141,6 @@ RSpec.describe CNAV::MakeRequest, type: :make_request do
         code_cog_insee_commune_naissance: '75101',
         code_cog_insee_pays_naissance: '99100',
         sexe_etat_civil: 'M',
-        recipient: valid_siret,
         request_id:
       }
     end
@@ -195,7 +192,6 @@ RSpec.describe CNAV::MakeRequest, type: :make_request do
         sexe_etat_civil: 'M',
         code_cog_insee_pays_naissance: '00123',
         code_cog_insee_commune_naissance: '17300',
-        recipient: valid_siret,
         request_id:
       }
     end

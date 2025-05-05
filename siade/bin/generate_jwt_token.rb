@@ -9,7 +9,7 @@ env = ARGV[0]
 
 ENV['RAILS_ENV'] = env
 
-require File.expand_path('../../config/application', __FILE__)
+require File.expand_path('../config/application', __dir__)
 
 require_relative '../app/lib/jwt_user'
 
@@ -33,13 +33,13 @@ jwt_hash_algo = credentials[:jwt_hash_algo]
 scopes = Rails.application.config_for(:authorizations).values.flatten.uniq
 
 exp = case env
-  when 'staging'
-    DateTime.now.next_year(10).to_i
-  when 'test'
-    nil
-  else
-    DateTime.now.next_month.to_i
-  end
+      when 'staging'
+        DateTime.now.next_year(10).to_i
+      when 'test'
+        nil
+      else
+        DateTime.now.next_month.to_i
+      end
 
 token_payload = {
   uid: uid,
@@ -48,7 +48,7 @@ token_payload = {
   sub: "#{env} development",
   iat: Time.now.to_i,
   version: '1.0',
-  exp: exp,
+  exp: exp
 }.compact
 
 token = JWT.encode(token_payload, jwt_hash_secret, jwt_hash_algo)

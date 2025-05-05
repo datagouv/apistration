@@ -1,8 +1,9 @@
 RSpec.describe MEN::Scolarites::MakeRequest, type: :make_request do
   describe '.call' do
-    subject { described_class.call(params:, token:) }
+    subject { described_class.call(params:, token:, recipient:) }
 
     let(:token) { 'jwt-access-token' }
+    let(:recipient) { nil }
 
     context 'with valid params', vcr: { cassette_name: 'men/scolarites/valid' } do
       let(:params) do
@@ -45,6 +46,7 @@ RSpec.describe MEN::Scolarites::MakeRequest, type: :make_request do
     end
 
     context 'with a sexe_etat_civil upcased (non-regression test)', vcr: { cassette_name: 'men/scolarites/valid_v2' } do
+      let(:recipient) { '13002526500013' }
       let(:params) do
         {
           nom_naissance: 'NOMFAMILLE',
@@ -55,8 +57,7 @@ RSpec.describe MEN::Scolarites::MakeRequest, type: :make_request do
           annee_date_naissance: '2000',
           code_etablissement: '0511474A',
           annee_scolaire: '2021',
-          provider_api_version: 'v2',
-          recipient: '13002526500013'
+          provider_api_version: 'v2'
         }
       end
 

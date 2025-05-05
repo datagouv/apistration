@@ -238,7 +238,8 @@ RSpec.describe APIEntreprise::V3AndMore::BaseController do
               retriever_organizer: DummyRetrieverOrganizer,
               retriever_params: {
                 params: { very: :parameters },
-                operation_id: 'operation_id'
+                operation_id: 'operation_id',
+                recipient: '13002526500013'
               },
               cache_key: 'keykey',
               expires_in: 1.hour

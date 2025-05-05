@@ -1,8 +1,9 @@
 RSpec.describe CNAV::QuotientFamilialV2::MakeRequest, type: :make_request do
-  subject(:make_call) { described_class.call(token:, params:, dss_prestation_name: 'quotient_familial_v2') }
+  subject(:make_call) { described_class.call(token:, params:, dss_prestation_name: 'quotient_familial_v2', recipient:) }
 
   let(:token) { 'super_valid_token' }
   let(:request_id) { SecureRandom.uuid }
+  let(:recipient) { valid_siret }
 
   describe 'with civility params' do
     let(:params) do
@@ -15,7 +16,6 @@ RSpec.describe CNAV::QuotientFamilialV2::MakeRequest, type: :make_request do
         sexe_etat_civil: 'M',
         code_cog_insee_pays_naissance: '99100',
         code_cog_insee_commune_naissance: '17300',
-        recipient: valid_siret,
         annee: 2024,
         mois:,
         request_id:
@@ -83,7 +83,6 @@ RSpec.describe CNAV::QuotientFamilialV2::MakeRequest, type: :make_request do
         code_cog_insee_commune_naissance: '75101',
         code_cog_insee_pays_naissance: '99100',
         sexe_etat_civil: 'M',
-        recipient: valid_siret,
         request_id:
       }
     end

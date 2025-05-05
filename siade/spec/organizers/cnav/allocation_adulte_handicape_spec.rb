@@ -1,10 +1,10 @@
 RSpec.describe CNAV::AllocationAdulteHandicape, type: :retriever_organizer do
+  subject { described_class.call(params:, recipient:) }
+
   let(:request_id) { SecureRandom.uuid }
   let(:recipient) { valid_siret }
 
   describe '.call with civility params' do
-    subject { described_class.call(params:) }
-
     let(:common_params) do
       {
         nom_naissance: 'CHAMPION',
@@ -15,8 +15,7 @@ RSpec.describe CNAV::AllocationAdulteHandicape, type: :retriever_organizer do
         sexe_etat_civil:,
         code_cog_insee_pays_naissance: '99100',
         request_id:,
-        user_id: valid_siret,
-        recipient:
+        user_id: valid_siret
       }
     end
 
@@ -121,8 +120,6 @@ RSpec.describe CNAV::AllocationAdulteHandicape, type: :retriever_organizer do
   end
 
   describe '.call with FranceConnect params' do
-    subject { described_class.call(params:) }
-
     let(:params) do
       {
         nom_usage: 'MARTIN',
@@ -135,8 +132,7 @@ RSpec.describe CNAV::AllocationAdulteHandicape, type: :retriever_organizer do
         code_cog_insee_pays_naissance: '99100',
         sexe_etat_civil: 'M',
         user_id: 'france_connect_client_name',
-        request_id:,
-        recipient:
+        request_id:
       }
     end
 

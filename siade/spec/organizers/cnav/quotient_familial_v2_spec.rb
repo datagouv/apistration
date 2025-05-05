@@ -1,10 +1,10 @@
 RSpec.describe CNAV::QuotientFamilialV2, type: :retriever_organizer do
+  subject { described_class.call(params:, recipient:) }
+
   let(:request_id) { SecureRandom.uuid }
   let(:recipient) { valid_siret }
 
   describe '.call with civility params' do
-    subject { described_class.call(params:) }
-
     let(:common_params) do
       {
         nom_naissance: 'CHAMPION',
@@ -16,8 +16,7 @@ RSpec.describe CNAV::QuotientFamilialV2, type: :retriever_organizer do
         code_cog_insee_pays_naissance: '99100',
         request_id:,
         annee: 2023,
-        mois: 5,
-        recipient:
+        mois: 5
       }
     end
 
@@ -122,8 +121,6 @@ RSpec.describe CNAV::QuotientFamilialV2, type: :retriever_organizer do
   end
 
   describe '.call with FranceConnect params' do
-    subject { described_class.call(params:) }
-
     let(:params) do
       {
         nom_usage: 'MARTIN',
@@ -136,8 +133,7 @@ RSpec.describe CNAV::QuotientFamilialV2, type: :retriever_organizer do
         code_cog_insee_pays_naissance: '99100',
         sexe_etat_civil: 'M',
         user_id: 'france_connect_client_name',
-        request_id:,
-        recipient:
+        request_id:
       }
     end
 

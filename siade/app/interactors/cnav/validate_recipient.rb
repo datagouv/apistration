@@ -1,6 +1,6 @@
 class CNAV::ValidateRecipient < ValidateParamInteractor
   def call
-    invalid_recipient! unless ValidateSiret.call(params: { siret: params[:recipient] }).success?
+    invalid_recipient! unless ValidateSiret.call(params: { siret: context.recipient }).success?
   end
 
   private

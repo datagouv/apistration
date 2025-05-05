@@ -32,7 +32,8 @@ module Cacheable
   def retriever_params
     {
       params: organizer_params,
-      operation_id:
+      operation_id:,
+      recipient:
     }
   end
 
@@ -56,5 +57,11 @@ module Cacheable
 
   def logs_cache_status_to_logstash
     LogStasher.store[:retriever_cached] = response.headers['X-Response-Cached']
+  end
+
+  def recipient
+    recipient = params.fetch(:recipient, current_user.siret)
+
+    recipient || JwtTokenService::DINUM_SIRET
   end
 end

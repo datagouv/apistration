@@ -1,5 +1,7 @@
 RSpec.describe CNAV::ValidateParams, type: :validate_params do
-  subject { described_class.call(params:) }
+  subject { described_class.call(params:, recipient:) }
+
+  let(:recipient) { valid_siret }
 
   let(:params) do
     {
@@ -16,8 +18,7 @@ RSpec.describe CNAV::ValidateParams, type: :validate_params do
       mois_date_naissance:,
       jour_date_naissance:,
       user_id:,
-      request_id:,
-      recipient:
+      request_id:
     }
   end
 
@@ -34,7 +35,6 @@ RSpec.describe CNAV::ValidateParams, type: :validate_params do
   let(:jour_date_naissance) { 6 }
   let(:user_id) { valid_siret(:msa) }
   let(:request_id) { SecureRandom.uuid }
-  let(:recipient) { valid_siret }
   let(:nom_naissance) { 'Bulbizare' }
 
   describe 'with transcogage params' do
