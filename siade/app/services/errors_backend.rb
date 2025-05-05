@@ -76,6 +76,7 @@ class ErrorsBackend
       '38' => 'CIBTP',
       '39' => 'DSNJ',
       '40' => 'RNCPS',
+      '41' => 'SDH',
       '50' => 'FranceConnect v1',
       '51' => 'FranceConnect v2'
     }

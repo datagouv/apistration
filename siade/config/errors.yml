@@ -250,7 +250,7 @@
 
 - code: '00380'
   title: 'Entité non traitable'
-  detail: "L'identifiant France Travail est manquant"
+  detail: "L'identifiant est manquant"
 
 - code: '00390'
   title: 'Entité non traitable'

@@ -45,7 +45,7 @@ class UnprocessableEntityError < ApplicationError
       # DGFIP usager
       tax_number: '00370',
       tax_notice_number: '00371',
-      # France Travail
+      # France Travail / SDH
       identifiant: '00380',
       # GIP-MDS
       gip_mds_depth: '00390',
