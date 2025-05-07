@@ -2511,10 +2511,10 @@ paths:
                 entite_non_traitable_00380:
                   value:
                     error: wrong_parameter
-                    reason: L'identifiant France Travail est manquant
-                    message: L'identifiant France Travail est manquant
+                    reason: L'identifiant est manquant
+                    message: L'identifiant est manquant
                   summary: Entité non traitable
-                  description: L'identifiant France Travail est manquant
+                  description: L'identifiant est manquant
               schema:
                 "$ref": "#/components/schemas/Error"
         '404':
