@@ -24,7 +24,8 @@ class MakeRequestPingDriver < ApplicationPingDriver
   def make_request_arguments
     arguments = {
       params: make_request_params,
-      token:
+      token:,
+      recipient: JwtTokenService::DINUM_SIRET
     }
 
     arguments.merge!(organizer_params) if organizer_params

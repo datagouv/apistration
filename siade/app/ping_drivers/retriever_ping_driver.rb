@@ -16,7 +16,7 @@ class RetrieverPingDriver < ApplicationPingDriver
   end
 
   def retriever_call
-    @retriever_call ||= retriever.call(params: retriever_params, operation_id:)
+    @retriever_call ||= retriever.call(params: retriever_params, operation_id:, recipient: JwtTokenService::DINUM_SIRET)
   end
 
   def build_context(driver_params)

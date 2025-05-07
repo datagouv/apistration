@@ -23,6 +23,7 @@ RSpec.describe RetrieverPayloadPingDriver, type: :ping_driver do
           beneficiary_number: Siade.credentials[:ping_cnaf_numero_allocataire],
           postal_code: Siade.credentials[:ping_cnaf_postal_code]
         },
+        recipient: JwtTokenService::DINUM_SIRET,
         operation_id: 'ping_cnaf_quotient_familial'
       )
     end
