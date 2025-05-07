@@ -78,6 +78,7 @@ shared:
       - { controller: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_civility', action: 'show' }
       - { controller: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_france_connect', action: 'show' }
       - { controller: 'api_particulier/v3_and_more/mesri/statut_etudiant_with_ine', action: 'show' }
+      - { controller: 'api_particulier/v3_and_more/sdh/statut_sportif_with_identifiant', action: 'show' }
     limit: 20
     period: 1
 
