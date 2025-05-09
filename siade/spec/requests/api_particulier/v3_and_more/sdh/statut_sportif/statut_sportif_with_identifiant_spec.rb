@@ -24,8 +24,8 @@ RSpec.describe 'SDH: Statut Sportif with identifiant SDH', api: :particulier, ty
           sdh_statut_sportif_identite
           sdh_statut_sportif_est_sportif_de_haut_niveau
           sdh_statut_sportif_a_ete_sportif_de_haut_niveau
-          sdh_statut_sportif_informations
-          sdh_statut_sportif_informations_historique
+          sdh_statut_sportif_informations_statut
+          sdh_statut_sportif_informations_statuts_precedents
         ]
       end
 
