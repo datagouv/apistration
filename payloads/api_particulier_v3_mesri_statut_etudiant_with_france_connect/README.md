@@ -196,7 +196,9 @@
   ```json
   {
     "prenoms": [
-      "Angela"
+      "Angela",
+      "Claire",
+      "Louise"
     ],
     "nomNaissance": "DUBOIS",
     "anneeDateNaissance": 1962,

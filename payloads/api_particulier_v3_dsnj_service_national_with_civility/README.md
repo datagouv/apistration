@@ -1,4 +1,4 @@
-# [Identité] API Service National
+# [Identité] API Service national
 * [200_en_regle.yaml](200_en_regle.yaml)
 
   Status `200`

@@ -1,4 +1,4 @@
-# [FranceConnect] API Service National
+# [FranceConnect] API Service national
 * [200_en_regle.yaml](200_en_regle.yaml)
 
   Status `200`
