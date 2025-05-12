@@ -51,7 +51,9 @@
       "etablissement": {
         "code_uai": "0210015C",
         "code_ministere_tutelle": "06"
-      }
+      },
+      "est_boursier": true,
+      "echelon_bourse": 1
     },
     "links": {
     },
