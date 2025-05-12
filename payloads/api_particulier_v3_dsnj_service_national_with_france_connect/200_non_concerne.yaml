@@ -7,7 +7,7 @@ payload: |-
   {
     "data": {
       "statut_service_national": "non_concerne",
-      "commmentaires": "Personne née avant 1978, non concernée par les obligations de service national"
+      "commentaires": "Personne née avant 1978, non concernée par les obligations de service national"
     },
     "links": {},
     "meta": {}

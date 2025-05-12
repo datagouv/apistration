@@ -7,7 +7,7 @@ payload: |-
   {
     "data": {
       "statut_service_national": "indetermine",
-      "commmentaires": "Situation en cours de traitement"
+      "commentaires": "Situation en cours de traitement"
     },
     "links": {},
     "meta": {}
