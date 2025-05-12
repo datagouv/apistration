@@ -17,7 +17,7 @@ payload: |-
   {
     "data": {
       "statut_service_national": "en_regle",
-      "commmentaires": "Journée Défense et Citoyenneté effectuée le 15/06/2008"
+      "commentaires": "Journée Défense et Citoyenneté effectuée le 15/06/2008"
     },
     "links": {},
     "meta": {}

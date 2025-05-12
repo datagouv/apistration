@@ -16,7 +16,7 @@ payload: |-
   {
     "data": {
       "statut_service_national": "pas_en_regle",
-      "commmentaires": "Journée Défense et Citoyenneté non effectuée. Convocation prévue le 12/09/2023"
+      "commentaires": "Journée Défense et Citoyenneté non effectuée. Convocation prévue le 12/09/2023"
     },
     "links": {},
     "meta": {}

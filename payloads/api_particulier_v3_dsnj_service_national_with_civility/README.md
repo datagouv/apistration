@@ -35,7 +35,7 @@
   {
     "data": {
       "statut_service_national": "en_regle",
-      "commmentaires": "Journée Défense et Citoyenneté effectuée le 15/06/2008"
+      "commentaires": "Journée Défense et Citoyenneté effectuée le 15/06/2008"
     },
     "links": {
     },
@@ -94,7 +94,7 @@
   {
     "data": {
       "statut_service_national": "indetermine",
-      "commmentaires": "Situation en cours de traitement"
+      "commentaires": "Situation en cours de traitement"
     },
     "links": {
     },
@@ -152,7 +152,7 @@
   {
     "data": {
       "statut_service_national": "non_concerne",
-      "commmentaires": "Personne née avant 1978, non concernée par les obligations de service national"
+      "commentaires": "Personne née avant 1978, non concernée par les obligations de service national"
     },
     "links": {
     },
@@ -210,7 +210,7 @@
   {
     "data": {
       "statut_service_national": "pas_en_regle",
-      "commmentaires": "Journée Défense et Citoyenneté non effectuée. Convocation prévue le 12/09/2023"
+      "commentaires": "Journée Défense et Citoyenneté non effectuée. Convocation prévue le 12/09/2023"
     },
     "links": {
     },
