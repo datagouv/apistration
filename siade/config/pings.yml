@@ -157,7 +157,7 @@ shared:
         token_interactor: 'FranceTravail::Authenticate'
     men_scolarite:
       kind: 'make_request'
-      cache: <%= 2.minutes %>
+      cache: <%= 15.minutes %>
       provider: 'MEN'
       status_page:
         name: "Ministère de l'Éducation nationale - Status élève scolarisé et boursier"
