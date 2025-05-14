@@ -12,6 +12,20 @@ RSpec.describe 'API Particulier: CNAV: Quotient Familial with FranceConnect', ap
       let(:recipient) { valid_siret(:recipient) }
       let(:Authorization) { 'Bearer super_valid_token' }
 
+      parameter name: :annee,
+        in: :query,
+        type: SwaggerData.get('cnav.quotient_familial_v2.parameters.annee.type'),
+        description: SwaggerData.get('cnav.quotient_familial_v2.parameters.annee.description'),
+        example: SwaggerData.get('cnav.quotient_familial_v2.parameters.annee.example'),
+        required: false
+
+      parameter name: :mois,
+        in: :query,
+        type: SwaggerData.get('cnav.quotient_familial_v2.parameters.mois.type'),
+        description: SwaggerData.get('cnav.quotient_familial_v2.parameters.mois.description'),
+        example: SwaggerData.get('cnav.quotient_familial_v2.parameters.mois.example'),
+        required: false
+
       forbidden_france_connect_request
 
       let(:scopes) { %i[cnaf_quotient_familial cnaf_allocataires cnaf_enfants cnaf_adresse] }

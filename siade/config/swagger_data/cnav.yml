@@ -212,6 +212,15 @@ cnav:
           Ce champ est null dans le cas où le particulier n'est pas bénéficiaire de la C2S.
         example: '1992-11-29'
   quotient_familial_v2:
+    parameters:
+      annee:
+        description: "Année du quotient familial recherché. Si l'année n'est pas renseignée, l'année utilisée par défaut est celle en cours. L'API permet d'accéder à un historique de maximum 2 ans."
+        type: integer
+        example: 2023
+      mois:
+        description: "Mois du quotient familial recherché. Si le mois n'est pas renseigné, le mois utilisé par défaut est celui en cours."
+        type: integer
+        example: 12
     title: Quotient familial CAF & MSA
     description: "Quotient familial délivré par la CAF ou la MSA et composition de la famille de l'allocataire.
       \n

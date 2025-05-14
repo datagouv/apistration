@@ -32,6 +32,20 @@ RSpec.describe 'API Particulier CNAV: Quotient Familial with civility', api: :pa
         api: 'cnav'
       )
 
+      parameter name: :annee,
+        in: :query,
+        type: SwaggerData.get('cnav.quotient_familial_v2.parameters.annee.type'),
+        description: SwaggerData.get('cnav.quotient_familial_v2.parameters.annee.description'),
+        example: SwaggerData.get('cnav.quotient_familial_v2.parameters.annee.example'),
+        required: false
+
+      parameter name: :mois,
+        in: :query,
+        type: SwaggerData.get('cnav.quotient_familial_v2.parameters.mois.type'),
+        description: SwaggerData.get('cnav.quotient_familial_v2.parameters.mois.description'),
+        example: SwaggerData.get('cnav.quotient_familial_v2.parameters.mois.example'),
+        required: false
+
       let(:nomNaissance) { 'CHAMPION' }
       let(:'prenoms[]') { %w[JEAN-PASCAL] }
       let(:sexeEtatCivil) { 'M' }
