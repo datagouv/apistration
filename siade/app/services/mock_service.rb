@@ -53,9 +53,7 @@ class MockService
   end
 
   def schema_path
-    if v2_api_entreprise?
-      Rails.public_path.join('v2/open-api.yml')
-    elsif api_entreprise?
+    if api_entreprise?
       Rails.root.join('swagger/openapi-entreprise.yaml')
     elsif v2_api_particulier?
       Rails.root.join('swagger/openapi-particulierv2.yaml')
@@ -70,9 +68,5 @@ class MockService
 
   def api_entreprise?
     operation_id.include?('api_entreprise')
-  end
-
-  def v2_api_entreprise?
-    operation_id.starts_with?('v2_api_entreprise')
   end
 end
