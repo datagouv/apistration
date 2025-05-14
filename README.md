@@ -7,33 +7,33 @@ Ce dépôt contient l'ensemble des données de tests pour les environnements de 
 ( https://staging.entreprise.api.gouv.fr ) et d'API
 Particulier ( https://staging.particulier.api.gouv.fr ).
 
-* [Quick start](#quick-start)
-* [Fonctionnement](#fonctionnement)
-  * [Un dossier de cas de tests pour chaque endpoint](#1endpoint-1dossier)
-  * [Format des cas de test](#format-cas-test)
-  * [Exemples d'appel d'un cas de test](#exemple-appel-cas-de-test)
-  * [Appels avec FranceConnect - _Uniquement API Particulier_](#apiparticulier-france-connect)
-* [Contribution : Ajouter des données de test](#ajouter-donnees-de-test)
-* [Développement](#developpement)
-  * [Installation en local](#installation-en-local)
-  * [Lancer la suite de tests pour vérifier les payloads](#lancer-la-suite-de-tests-pour-vérifier-les-payloads)
-  * [Génerer un jeton](#générer-un-jeton)
-  * [Ajout d'un nouvel endpoint](#ajout-dun-nouvel-endpoint)
-  * [Déploiement des données](#déploiement-des-données)
-* [Limitations](#limitations)
-
-
+- [Quick start](#quick-start)
+- [Fonctionnement](#fonctionnement)
+  - [Un dossier de cas de tests pour chaque endpoint](#1endpoint-1dossier)
+  - [Format des cas de test](#format-cas-test)
+  - [Exemples d'appel d'un cas de test](#exemple-appel-cas-de-test)
+  - [Appels avec FranceConnect - _Uniquement API Particulier_](#apiparticulier-france-connect)
+- [Contribution : Ajouter des données de test](#ajouter-donnees-de-test)
+- [Développement](#developpement)
+  - [Installation en local](#installation-en-local)
+  - [Lancer la suite de tests pour vérifier les payloads](#lancer-la-suite-de-tests-pour-vérifier-les-payloads)
+  - [Génerer un jeton](#générer-un-jeton)
+  - [Ajout d'un nouvel endpoint](#ajout-dun-nouvel-endpoint)
+  - [Déploiement des données](#déploiement-des-données)
+- [Limitations](#limitations)
 
 ## <a name="quick-start"></a> Quick start
 
 **tl;dr: Trois commandes en console pour faire fonctionner l'environnement de test :**
 
 Récupération d'un jeton:
+
 ```sh
 token=`curl https://raw.githubusercontent.com/etalab/siade_staging_data/develop/tokens/default`
 ```
 
 Test d'API Entreprise:
+
 ```sh
 curl -H "Authorization: Bearer $token" \
   -G -d 'recipient=10000001700010' -d 'context=Contexte+de+la+requ%C3%AAte' -d 'object=Objet+de+la+requ%C3%AAte' \
@@ -41,6 +41,7 @@ curl -H "Authorization: Bearer $token" \
 ```
 
 Test d'API Particulier
+
 ```sh
 curl -H "X-Api-Key: $token" \
   -G -d 'codeInseeLieuDeNaissance=08480' -d 'codePaysLieuDeNaissance=99100' -d 'sexe=F' -d 'nomUsage=DUPONT' -d 'prenoms[]=JEANNE' -d 'prenoms[]=LAURE' -d 'anneeDateDeNaissance=1993' -d 'moisDateDeNaissance=8' \
@@ -62,10 +63,10 @@ Une table de correspondance _url de l'endpoint_ <-> _nom du dossier_ est disponi
 racine du dossier [`payloads/`](https://github.com/etalab/siade_staging_data/tree/develop/payloads) : [README.md](./payloads/README.md) (généré
 automatiquement par `bin/generate_payload_readme.rb`)
 
-
 **Pour API Entreprise :**
 
 Nom type du dossier d'un endpoint : `api_entreprise_version_endpointname`
+
 > Par exemple : `api_entreprise_v3_insee_unite_legale`
 
 ➡️ [Liens des dossiers d'endpoints de l'API Entreprise](https://github.com/etalab/siade_staging_data/blob/develop/payloads/README.md#api-entreprise-v3)
@@ -73,6 +74,7 @@ Nom type du dossier d'un endpoint : `api_entreprise_version_endpointname`
 **Pour API Particulier :**
 
 Nom type du sous-dossier d'une payload : `api_particulier_version_endpointname`
+
 > Par exemple : `api_particulier_v2_dgfip_svair`
 
 ➡️ [Liens des dossiers d'endpoints de l'API Particulier](https://github.com/etalab/siade_staging_data/blob/develop/payloads/README.md#api-particulier)
@@ -84,8 +86,8 @@ Chaque dossier possède un README.md ainsi que des fichiers YAML des différents
 ```yaml
 ---
 params:
-  first_name: 'John'
-  last_name: 'Doe'
+  first_name: "John"
+  last_name: "Doe"
 status: 200
 payload: |-
   {
@@ -95,25 +97,25 @@ payload: |-
 
 Avec:
 
-* `params`, ensemble de clé valeur traduisant les paramètres qui déclenchent la
-    réponse associée ;
-* `status`, le status de la réponse HTTP associé ;
-* `payload`, la payload renvoyée.
+- `params`, ensemble de clé valeur traduisant les paramètres qui déclenchent la
+  réponse associée ;
+- `status`, le status de la réponse HTTP associé ;
+- `payload`, la payload renvoyée.
 
 Toutes les autres clé potentiellements présentes dans la payload sont
 facultatives ou servent pour tout autre chose (affichage d'exemples sur les
 fiches métiers par exemple). Une liste (non-exhaustive) :
 
-* `title`, titre de la payload, utilisé pour l'exemple ;
-* `description`, une description de la payload, utilisé pour l'exemple ;
-* `example`, booléen, précise si la payload sera affichée sur dans les fiches métiers du catalogue ;
-
+- `title`, titre de la payload, utilisé pour l'exemple ;
+- `description`, une description de la payload, utilisé pour l'exemple ;
+- `example`, booléen, précise si la payload sera affichée sur dans les fiches métiers du catalogue ;
 
 ### <a name="exemple-appel-cas-de-test"></a> Exemples d'appel d'un cas de test :
 
 Pour déclencher l'[exemple de payload de réponse précédent](#format-cas-test), exemple créé de toute pièce pour ce tutoriel, avec comme chemin tout aussi fictif `v1/dgfip/impots`, il faut effectuer l'appel suivant:
 
-Pour API particulier : 
+Pour API particulier :
+
 ```sh
 curl -X GET \
   -H 'X-Api-Key: TOKEN' \
@@ -134,8 +136,9 @@ Les routes sont listées à la racine du dossier [`payloads/`](./payloads)
 
 À noter qu'il est possible de mettre n'importe quel status (valide), hormis ceux
 associés aux paramètres invalides et au jeton invalide:
-* Pour API Entreprise: `422` et `403` ;
-* Pour API Particulier: `400` et `401`.
+
+- Pour API Entreprise: `422` et `403` ;
+- Pour API Particulier: `400` et `401`.
 
 En effet, les paramètres d'entrées sont vérifiés directement par l'application,
 ce qui garantie un comportement iso avec la production.
@@ -155,12 +158,13 @@ de données correspondant.
 Il est possible d'utiliser directement le service d'integration de FranceConnect et d'envoyer sur nos serveurs en staging un jeton FranceConnect valide.
 Dans ce cas nous allons directement appeler le fournisseur de données avec l'identité pivot renvoyée par FranceConnect. Vous pouvez accédez à l'ensemble des identifiants valides sur le [dépot de FranceConnect](https://github.com/france-connect/identity-provider-example/blob/master/database.csv).
 
-Afin que l'environnement d'intégration fonctionne il est impératif de demander les scopes relatifs à l'identité pivot lors de votre authentification auprès de FranceConnect. Les scopes obligatoires sont : 
-- given_name 
-- family_name 
-- birthdate 
+Afin que l'environnement d'intégration fonctionne il est impératif de demander les scopes relatifs à l'identité pivot lors de votre authentification auprès de FranceConnect. Les scopes obligatoires sont :
+
+- given_name
+- family_name
+- birthdate
 - gender
-- birthplace 
+- birthplace
 - birthcountry
 - preferred_username
 
@@ -232,18 +236,18 @@ lançant la commande suivante :
 bundle exec ruby bin/reload_mock_backend.rb
 ```
 
-## <a name="ajouter-donnees-de-test"></a> Contribution : Ajouter des données de test 
+## <a name="ajouter-donnees-de-test"></a> Contribution : Ajouter des données de test
 
 **Si vous êtes développeur**, référez-vous à la section [Développement](#developpement) ci-dessous.
 
-**Si vous êtes un fournisseur de données** : 
+**Si vous êtes un fournisseur de données** :
 
 - Pour un endpoint ayant déjà un dossier dans [`payloads/`](./payloads) :
-   - Si vous êtes à l'aise avec Github, vous pouvez ajouter vous-même les fichiers des cas de tests que vous souhaitez, au travers d'une Pull Request ;
-   - Autrement, vous pouvez ouvrir un ticket pour que l'on vous accompagne sur l'implémentation : [Ajout de nouvelles données](https://github.com/etalab/siade_staging_data/issues/new?template=ajout-payloads.md)
+  - Si vous êtes à l'aise avec Github, vous pouvez ajouter vous-même les fichiers des cas de tests que vous souhaitez, au travers d'une Pull Request ;
+  - Autrement, vous pouvez ouvrir un ticket pour que l'on vous accompagne sur l'implémentation : [Ajout de nouvelles données](https://github.com/etalab/siade_staging_data/issues/new?template=ajout-payloads.md)
 - Pour un endpoint n'ayant pas encore de dossier dans [`payloads/`](./payloads) :
-   - Si vous êtes à l'aise avec Github, vous pouvez créer un dossier dans [`future_payloads/`](./future_payloads) à l'aide d'une Pull Request ;
-   - Autrement, vous pouvez ouvrir un ticket pour que l'on vous accompagne sur l'implémentation : [Ajout d'un endpoint manquant](https://github.com/etalab/siade_staging_data/issues/new?template=proposer-une-am-lioration.md).
+  - Si vous êtes à l'aise avec Github, vous pouvez créer un dossier dans [`future_payloads/`](./future_payloads) à l'aide d'une Pull Request ;
+  - Autrement, vous pouvez ouvrir un ticket pour que l'on vous accompagne sur l'implémentation : [Ajout d'un endpoint manquant](https://github.com/etalab/siade_staging_data/issues/new?template=proposer-une-am-lioration.md).
 
 ## <a name="developpement"></a> Développement
 
@@ -251,7 +255,7 @@ bundle exec ruby bin/reload_mock_backend.rb
 
 #### Dépendances
 
-* ruby 3.2.0
+- ruby 3.2.0
 
 ```sh
 bundle install
@@ -271,7 +275,7 @@ Référez-vous à [tokens/](./tokens)
 
 1. Identifier l'operation_id (dans les fichiers swaggers: `x-operationId`) ;
 2. Executer la commande : `bundle exec ruby bin/bootstrap_payload.rb
-   operation_id` ;
+operation_id` ;
 3. La commande crée un dossier avec un `default.yaml` que vous devez adapter pour
    que la suite de tests passe (cf plus bas).
 
@@ -280,7 +284,7 @@ Pour utiliser les fichiers openapi locaux (dossier `openapi_files`), utilisez la
 
 ## Limitations
 
-* Pour API Particulier, si un jeton ne possède pas l'ensemble des scopes pour
+- Pour API Particulier, si un jeton ne possède pas l'ensemble des scopes pour
   un fournisseur de données, l'environnement de test ignore le filtrage sur ces
   scopes (contrairement à la production qui filtre en fonction des scopes).
 
@@ -291,7 +295,8 @@ Pour utiliser les fichiers openapi locaux (dossier `openapi_files`), utilisez la
 
   Pour palier ce problème, le plus simple reste de créer une réponse spécifique
   avec moins de champ.
-* Pour les endpoints qui ne sont pas encore présents dans ce dépôt, des
+
+- Pour les endpoints qui ne sont pas encore présents dans ce dépôt, des
   ajustements techniques vis-à-vis des paramètres à prendre en compte peuvent
   être nécessaires.
 
