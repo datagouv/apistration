@@ -10094,7 +10094,7 @@ components:
 
                 curl -X GET \
                 -H "Authorization: Bearer $token" \
-                --url "https://entreprise.api.gouv.fr/v3/..."
+                --url "https://particulier.api.gouv.fr/v3/..."
       name: Authorization
       in: header
       scheme: bearer

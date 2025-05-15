@@ -1,0 +1,2603 @@
+---
+openapi: 3.0.0
+info:
+  title: API Particulier
+  version: 2.2.0
+  description: |
+    ## Bienvenue sur la documentation interactive d'API Particulier.
+
+    ### Commencer à utiliser l'API
+
+    API Particulier est une API en accès restreint, ce qui signifie qu'il vous faut remplir une [demande d'habilitation](https://datapass.api.gouv.fr) avant de pouvoir l'utiliser avec des vraies données.
+
+    Afin de tester l'API avant la validation de votre demande d'habilitation, nous avons mis en place un bac à sable de l'API qui reproduit les comportements de l'API en production.
+
+    Dans le bac à sable, pour chaque type de donnée disponible, un jeu de donnée libre en édition est mis à votre disposition, afin que vous puissiez faire vos tests en toute autonomie.
+
+    Le fonctionnement du bac à sable est identique à celui de la véritable API de production, à la différence près que les données sont fictives, éditables par tout le monde, et que les jetons d'accès sont en libre service.
+
+    Le bac à sable et l'API de production sont appelables par deux adresses distinctes :
+
+    - bac à sable : [https://staging.particulier.api.gouv.fr](https://staging.particulier.api.gouv.fr)
+    - production : [https://particulier.api.gouv.fr](https://particulier.api.gouv.fr)
+
+    Pour récupérer le jeton de production un portail développeur est mis à votre disposition à l'adresse suivante : [https://particulier.api.gouv.fr/compte](https://particulier.api.gouv.fr/compte)
+
+    Pour effectuer vos tests sur le bac à sable, référez-vous à ce dépôt github: [etalab/siade_staging_data](https://github.com/etalab/siade_staging_data/) (l'ancien système basé sur Airtable n'est plus maintenu et va être remplacé par le nouveau système). Un jeton nommé default est disponible ici: [tokens](https://github.com/etalab/siade_staging_data/tree/develop/tokens)
+
+    ### Accéder à la version 3 de l'API
+
+    L'API particulier v3 est actuellement en version beta, vous pouvez accéder à sa documentation [ici](https://particulier.api.gouv.fr/developpeurs/openapi).
+
+    ### Périmètre des données retournées
+
+    **Important :** le contenu du jeu de données retourné dépend des _scopes_ ou _périmètres_ du jeton utilisé.
+
+    En effet, les disposition de l'article [L144-8](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045213315) n'autorisent que l'échange des informations **strictement nécessaires** pour traiter une démarche.
+
+    Afin de respecter ce devoir de minimisation de la donnée, chaque jeton est associé, par la demande d'habilitation, à des _scopes_ agissant comme des masques sur la donnée.
+
+    Ainsi, pour pouvoir lire de la donnée, il est nécessaire de cocher lors de votre [demande d'habilitation](https://datapass.api.gouv.fr) une ou plusieurs cases correspondant aux données du même fournisseur, votre jeton possèdera alors les _scopes_ associés aux données cochées.
+
+    En conséquence, suivant le jeton utilisé, une même requête peut retourner des résultats différents.
+
+    **Attention :** La documentation ci-dessous ne prend pas en compte les _scopes_, qui agissent comme masques de la donnée retournée par l'API. Cette documentation suppose donc que votre jeton permet d'accéder à la donnée décrite.
+
+    ### Passer son service en production
+
+    Lors de votre passage en production :
+
+    - remplacez l'URL de staging.particulier.api.gouv.fr à particulier.api.gouv.fr
+    - remplacez le jeton de test par le jeton obtenu sur [le portail API Particulier](https://particulier.api.gouv.fr/compte)
+  termsOfService: https://api.gouv.fr/resources/CGU%20API%20Particulier.pdf
+  contact:
+    name: Contact API Particulier
+    email: api-particulier@api.gouv.fr
+    url: https://particulier.api.gouv.fr/
+  license:
+    name: GNU Affero General Public License v3.0
+    url: https://github.com/betagouv/api-particulier/blob/master/LICENSE
+tags: []
+paths:
+  "/api/v2/allocation-adulte-handicape":
+    get:
+      summary: Statut allocation adulte handicapé (AAH)
+      deprecated: true
+      tags:
+      - Statut Allocation Adulte Handicapé (AAH)
+      parameters:
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
+      - name: X-Api-Key
+        in: header
+        schema:
+          type: string
+      - name: nomUsage
+        in: query
+        description: Nom d'usage. Ne pas renseigner si présence de jeton FranceConnect.
+        example: DUPONT
+        required: false
+        schema:
+          type: string
+      - name: nomNaissance
+        in: query
+        description: Nom de naissance. Ne pas renseigner si présence de jeton FranceConnect.
+          Le champ est obligatoire pour les appels non FranceConnecté
+        example: JEAN
+        required: false
+        schema:
+          type: string
+      - name: prenoms[]
+        in: query
+        schema:
+          type: array
+          minItems: 1
+          items:
+            type: string
+          example:
+          - PIERRE
+          - RICHARD
+        description: Liste des prénoms. Ne pas renseigner si présence de jeton FranceConnect.
+        required: false
+      - name: anneeDateDeNaissance
+        in: query
+        description: Année de naissance. Ne pas la renseigner si celle-ci est inconnue
+          ou en cas de présence de jeton FranceConnect.
+        example: 1990
+        required: false
+        schema:
+          type: integer
+      - name: moisDateDeNaissance
+        in: query
+        description: Mois de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          anneeDateDeNaissance est vide.
+        example: 1
+        required: false
+        schema:
+          type: integer
+      - name: jourDateDeNaissance
+        in: query
+        description: Jour de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          moisDateDeNaissance ou anneeDateDeNaissance est vide.
+        example: 1
+        required: false
+        schema:
+          type: integer
+      - name: codeInseeLieuDeNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '08480'
+        description: Code Insee à 5 chiffres du lieu de naissance de la personne.
+          Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
+          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
+          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
+          si la personne est née en France
+        required: false
+      - name: codePaysLieuDeNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '99100'
+        description: Code Insee à 5 chiffres du pays de naissance (France = 99100).
+          Obligatoire si absence de jeton FranceConnect.
+        required: false
+      - name: sexe
+        in: query
+        schema:
+          type: string
+          enum:
+          - M
+          - F
+        description: Sexe de la personne, masculin ou féminin. Obligatoire si absence
+          de jeton FranceConnect.
+        example: M
+        required: false
+      - name: nomCommuneNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 1
+          example: Gennevilliers
+        description: Nom de la commune de naissance. En l'absence de jeton FranceConnect
+          et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne
+          est née en France
+        required: false
+      - name: codeInseeDepartementNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 2
+          maxLength: 3
+          example: '92'
+        description: Code INSEE du département de naissance. En l'absence de jeton
+          FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire
+          si la personne est née en France
+        required: false
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données.
+          Ce paramètre est obligatoire dans le cadre des appels via FranceConnect"
+        example: '13002526500013'
+        required: false
+        schema:
+          type: string
+      security:
+      - franceConnectToken: []
+        apiKey: []
+      description: "Statut bénéficiaire de l'allocation adulte handicapé (AAH). \n\n
+        Retourne également des informations sur les dates d'ouverture des droits."
+      responses:
+        '200':
+          description: Particulier trouvé
+          headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
+          x-operationId: api_particulier_v2_cnav_allocation_adulte_handicape
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    title: Statut bénéficiaire de l'allocation adulte handicapé (AAH)
+                    type: string
+                    description: Indique si le particulier est bénéficiaire de l'allocation
+                      adulte handicapé au moment de l'appel.
+                    enum:
+                    - beneficiaire
+                    - non_beneficiaire
+                  dateDebut:
+                    title: Date d'ouverture du droit à l'AAH
+                    type: string
+                    nullable: true
+                    description: |
+                      "Date de début de droit à l'AAH si le particulier est bénéficiaire.
+                      Ce champs est null dans le cas où le particulier n'est pas bénéficiaire de l'AAH."
+                    example: '1992-11-29'
+        '400':
+          description: Mauvais paramètres d'appels
+          content:
+            application/json:
+              examples:
+                unprocessable_entity_error_gender_error:
+                  value:
+                    error: wrong_parameter
+                    reason: Le sexe n'est pas correctement formaté (m ou f)
+                    message: Le sexe n'est pas correctement formaté (m ou f)
+                  summary: Entité non traitable
+                  description: Le sexe n'est pas correctement formaté (m ou f)
+                entite_non_trouvee_35003:
+                  value:
+                    error: not_found
+                    reason: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                    message: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                  summary: Entité non trouvée
+                  description: L'allocataire que vous cherchez n'a pas été reconnu
+                    Veuillez vérifier que l'identifiant correspond au périmètre couvert
+                    par l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '404':
+          description: Dossier allocataire inexistant. Le document ne peut être édité.
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_35003:
+                  value:
+                    error: not_found
+                    reason: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
+                    message: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
+                  summary: Entité non trouvée
+                  description: L'allocataire n'est pas référencé auprès de la CNAF
+                    ni de la MSA Veuillez vérifier que l'identifiant correspond au
+                    périmètre couvert par l'API.
+                erreur_inattendue_35003:
+                  value:
+                    error: not_found
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                  summary: Erreur inattendue
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unknown_error:
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+                'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard.':
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              examples:
+                acces_non_autorise_50002:
+                  value:
+                    error: unauthorized
+                    reason: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                    message: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                  summary: Accès non autorisé
+                  description: Le jeton d'accès n'a pas été trouvé ou est expiré.
+              schema:
+                "$ref": "#/components/schemas/Error"
+  "/api/v2/allocation-soutien-familial":
+    get:
+      summary: Statut allocation de soutien familial (ASF)
+      deprecated: true
+      tags:
+      - Statut Allocation Soutien Familial (ASF)
+      parameters:
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
+      - name: X-Api-Key
+        in: header
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données.
+          Ce paramètre est obligatoire dans le cadre des appels via FranceConnect"
+        example: '13002526500013'
+        required: false
+        schema:
+          type: string
+      - name: nomUsage
+        in: query
+        description: Nom d'usage. Ne pas renseigner si présence de jeton FranceConnect.
+        example: DUPONT
+        required: false
+        schema:
+          type: string
+      - name: nomNaissance
+        in: query
+        description: Nom de naissance. Ne pas renseigner si présence de jeton FranceConnect.
+          Le champ est obligatoire pour les appels non FranceConnecté
+        example: JEAN
+        required: false
+        schema:
+          type: string
+      - name: prenoms[]
+        in: query
+        schema:
+          type: array
+          minItems: 1
+          items:
+            type: string
+          example:
+          - PIERRE
+          - RICHARD
+        description: Liste des prénoms. Ne pas renseigner si présence de jeton FranceConnect.
+        required: false
+      - name: anneeDateDeNaissance
+        in: query
+        description: Année de naissance. Ne pas la renseigner si celle-ci est inconnue
+          ou en cas de présence de jeton FranceConnect.
+        example: 1990
+        required: false
+        schema:
+          type: integer
+      - name: moisDateDeNaissance
+        in: query
+        description: Mois de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          anneeDateDeNaissance est vide.
+        example: 1
+        required: false
+        schema:
+          type: integer
+      - name: jourDateDeNaissance
+        in: query
+        description: Jour de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          moisDateDeNaissance ou anneeDateDeNaissance est vide.
+        example: 1
+        required: false
+        schema:
+          type: integer
+      - name: codeInseeLieuDeNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '08480'
+        description: Code Insee à 5 chiffres du lieu de naissance de la personne.
+          Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
+          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
+          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
+          si la personne est née en France
+        required: false
+      - name: codePaysLieuDeNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '99100'
+        description: Code Insee à 5 chiffres du pays de naissance (France = 99100).
+          Obligatoire si absence de jeton FranceConnect.
+        required: false
+      - name: sexe
+        in: query
+        schema:
+          type: string
+          enum:
+          - M
+          - F
+        description: Sexe de la personne, masculin ou féminin. Obligatoire si absence
+          de jeton FranceConnect.
+        example: M
+        required: false
+      - name: nomCommuneNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 1
+          example: Gennevilliers
+        description: Nom de la commune de naissance. En l'absence de jeton FranceConnect
+          et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne
+          est née en France
+        required: false
+      - name: codeInseeDepartementNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 2
+          maxLength: 3
+          example: '92'
+        description: Code INSEE du département de naissance. En l'absence de jeton
+          FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire
+          si la personne est née en France
+        required: false
+      security:
+      - franceConnectToken: []
+        apiKey: []
+      description: Savoir si un particulier est bénéficiaire de l'allocation de soutien
+        familial (ASF). Retourne également des informations sur les dates d'ouverture
+        et de fermeture des droits.
+      responses:
+        '200':
+          description: Dossier trouvé
+          headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
+          x-operationId: api_particulier_v2_cnav_allocation_soutien_familial
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    title: Statut bénéficiaire de l'allocation de soution familial
+                      (ASF)
+                    type: string
+                    description: Indique si le particulier est bénéficiaire de l'allocation
+                      de soution familial au moment de l'appel.
+                    enum:
+                    - beneficiaire
+                    - non_beneficiaire
+                  dateDebut:
+                    title: Date d'ouverture du droit à l'ASF
+                    type: string
+                    nullable: true
+                    description: "Date de début de droit à l'ASF si le particulier
+                      est bénéficiaire. \n Ce champ est null dans le cas où le particulier
+                      n'est pas bénéficiaire de l'ASF."
+                    example: '1992-11-29'
+                  dateFin:
+                    title: Date de fermeture du droit à l'ASF
+                    type: string
+                    nullable: true
+                    description: Ce champs ne délivrant pas l'information souhaitée
+                      à la base il est toujours à null désormais
+                    example:
+        '400':
+          description: Mauvais paramètres d'appels
+          content:
+            application/json:
+              examples:
+                unprocessable_entity_error_gender_error:
+                  value:
+                    error: wrong_parameter
+                    reason: Le sexe n'est pas correctement formaté (m ou f)
+                    message: Le sexe n'est pas correctement formaté (m ou f)
+                  summary: Entité non traitable
+                  description: Le sexe n'est pas correctement formaté (m ou f)
+                entite_non_trouvee_35003:
+                  value:
+                    error: not_found
+                    reason: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                    message: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                  summary: Entité non trouvée
+                  description: L'allocataire que vous cherchez n'a pas été reconnu
+                    Veuillez vérifier que l'identifiant correspond au périmètre couvert
+                    par l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '404':
+          description: Dossier allocataire inexistant. Le document ne peut être édité.
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_35003:
+                  value:
+                    error: not_found
+                    reason: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
+                    message: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
+                  summary: Entité non trouvée
+                  description: L'allocataire n'est pas référencé auprès de la CNAF
+                    ni de la MSA Veuillez vérifier que l'identifiant correspond au
+                    périmètre couvert par l'API.
+                erreur_inattendue_35003:
+                  value:
+                    error: not_found
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                  summary: Erreur inattendue
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unknown_error:
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+                'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard.':
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              examples:
+                acces_non_autorise_50002:
+                  value:
+                    error: unauthorized
+                    reason: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                    message: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                  summary: Accès non autorisé
+                  description: Le jeton d'accès n'a pas été trouvé ou est expiré.
+              schema:
+                "$ref": "#/components/schemas/Error"
+  "/api/v2/complementaire-sante-solidaire":
+    get:
+      summary: Statut complémentaire santé solidaire (C2S)
+      deprecated: true
+      tags:
+      - Statut Complémentaire Santé Solidaire (C2S)
+      parameters:
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
+      - name: X-Api-Key
+        in: header
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données.
+          Ce paramètre est obligatoire dans le cadre des appels via FranceConnect"
+        example: '13002526500013'
+        required: false
+        schema:
+          type: string
+      - name: nomUsage
+        in: query
+        description: Nom d'usage. Ne pas renseigner si présence de jeton FranceConnect.
+        example: DUPONT
+        required: false
+        schema:
+          type: string
+      - name: nomNaissance
+        in: query
+        description: Nom de naissance. Ne pas renseigner si présence de jeton FranceConnect.
+          Le champ est obligatoire pour les appels non FranceConnecté
+        example: JEAN
+        required: false
+        schema:
+          type: string
+      - name: prenoms[]
+        in: query
+        schema:
+          type: array
+          minItems: 1
+          items:
+            type: string
+          example:
+          - PIERRE
+          - RICHARD
+        description: Liste des prénoms. Ne pas renseigner si présence de jeton FranceConnect.
+        required: false
+      - name: anneeDateDeNaissance
+        in: query
+        description: Année de naissance. Ne pas la renseigner si celle-ci est inconnue
+          ou en cas de présence de jeton FranceConnect.
+        example: 1990
+        required: false
+        schema:
+          type: integer
+      - name: moisDateDeNaissance
+        in: query
+        description: Mois de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          anneeDateDeNaissance est vide.
+        example: 1
+        required: false
+        schema:
+          type: integer
+      - name: jourDateDeNaissance
+        in: query
+        description: Jour de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          moisDateDeNaissance ou anneeDateDeNaissance est vide.
+        example: 1
+        required: false
+        schema:
+          type: integer
+      - name: codeInseeLieuDeNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '08480'
+        description: Code Insee à 5 chiffres du lieu de naissance de la personne.
+          Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
+          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
+          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
+          si la personne est née en France
+        required: false
+      - name: codePaysLieuDeNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '99100'
+        description: Code Insee à 5 chiffres du pays de naissance (France = 99100).
+          Obligatoire si absence de jeton FranceConnect.
+        required: false
+      - name: sexe
+        in: query
+        schema:
+          type: string
+          enum:
+          - M
+          - F
+        description: Sexe de la personne, masculin ou féminin. Obligatoire si absence
+          de jeton FranceConnect.
+        example: M
+        required: false
+      - name: nomCommuneNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 1
+          example: Gennevilliers
+        description: Nom de la commune de naissance. En l'absence de jeton FranceConnect
+          et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne
+          est née en France
+        required: false
+      - name: codeInseeDepartementNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 2
+          maxLength: 3
+          example: '92'
+        description: Code INSEE du département de naissance. En l'absence de jeton
+          FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire
+          si la personne est née en France
+        required: false
+      security:
+      - franceConnectToken: []
+        apiKey: []
+      description: "Statut bénéficiaire de la complémentaire santé solidaire (C2S).
+        \n\n Retourne également des informations sur les dates d'ouverture des droits.
+        \n Pour plus d'informations sur cette API et obtenir un accès en avant-première,
+        veuillez contacter l'équipe API Particulier. \n **Données disponibles en bac
+        à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/complementaire_sante_solidaire)"
+      responses:
+        '200':
+          description: Complementaire Santé Solidaire trouvée
+          headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
+          x-operationId: api_particulier_v2_cnav_complementaire_sante_solidaire
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    title: Statut bénéficiaire de la C2S
+                    type: string
+                    description: "Indique si le particulier est bénéficiaire de la
+                      complémentaire de santé solidaire au moment de l'appel. Cet
+                      indicateur précise sous quelle forme la C2S est attribuée (avec
+                      ou sans participation financière). \n \n - Si le statut est
+                      'beneficiaire_sans_participation_financiere', cela signifie
+                      que le particulier est bénéficiaire d'une C2S sans participation
+                      financière. \n - Si le statut est 'beneficiaire_avec_participation_financiere',
+                      cela signifie que le particulier est d'une bénéficiaire de C2S
+                      avec participation financière. \n - Si le statut est 'non_beneficiaire_css',
+                      cela signifie que le particulier n'est pas concerné par la C2S."
+                    enum:
+                    - beneficiaire_sans_participation_financiere
+                    - beneficiaire_avec_participation_financiere
+                    - non_beneficiaire_css
+                  dateDebut:
+                    title: Date d'ouverture du droit à la C2S
+                    type: string
+                    nullable: true
+                    description: "Date de début de droit à la complémentaire santé
+                      solidaire (C2S) si le particulier est bénéficiaire. \n Ce champ
+                      est null dans le cas où le particulier n'est pas bénéficiaire
+                      de la C2S."
+                    example: '1992-11-29'
+                  dateFin:
+                    title: Date de fermeture du droit à la C2S
+                    type: string
+                    nullable: true
+                    description: Ce champs ne délivrant pas l'information souhaitée
+                      à la base il est toujours à null désormais
+                    example:
+        '400':
+          description: Mauvais paramètres d'appels
+          content:
+            application/json:
+              examples:
+                unprocessable_entity_error_gender_error:
+                  value:
+                    error: wrong_parameter
+                    reason: Le sexe n'est pas correctement formaté (m ou f)
+                    message: Le sexe n'est pas correctement formaté (m ou f)
+                  summary: Entité non traitable
+                  description: Le sexe n'est pas correctement formaté (m ou f)
+                entite_non_trouvee_40003:
+                  value:
+                    error: not_found
+                    reason: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                    message: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                  summary: Entité non trouvée
+                  description: L'allocataire que vous cherchez n'a pas été reconnu
+                    Veuillez vérifier que l'identifiant correspond au périmètre couvert
+                    par l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '404':
+          description: Dossier allocataire inexistant. Le document ne peut être édité.
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_40003:
+                  value:
+                    error: not_found
+                    reason: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
+                    message: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
+                  summary: Entité non trouvée
+                  description: L'allocataire n'est pas référencé auprès de la CNAF
+                    ni de la MSA Veuillez vérifier que l'identifiant correspond au
+                    périmètre couvert par l'API.
+                erreur_inattendue_40003:
+                  value:
+                    error: not_found
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                  summary: Erreur inattendue
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unknown_error:
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+                'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard.':
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              examples:
+                acces_non_autorise_50002:
+                  value:
+                    error: unauthorized
+                    reason: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                    message: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                  summary: Accès non autorisé
+                  description: Le jeton d'accès n'a pas été trouvé ou est expiré.
+              schema:
+                "$ref": "#/components/schemas/Error"
+  "/api/v2/prime-activite":
+    get:
+      summary: Statut prime d'activité
+      deprecated: true
+      tags:
+      - Statut Prime Activité
+      parameters:
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
+      - name: X-Api-Key
+        in: header
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données.
+          Ce paramètre est obligatoire dans le cadre des appels via FranceConnect"
+        example: '13002526500013'
+        required: false
+        schema:
+          type: string
+      - name: nomUsage
+        in: query
+        description: Nom d'usage. Ne pas renseigner si présence de jeton FranceConnect.
+        example: DUPONT
+        required: false
+        schema:
+          type: string
+      - name: nomNaissance
+        in: query
+        description: Nom de naissance. Ne pas renseigner si présence de jeton FranceConnect.
+          Le champ est obligatoire pour les appels non FranceConnecté
+        example: JEAN
+        required: false
+        schema:
+          type: string
+      - name: prenoms[]
+        in: query
+        schema:
+          type: array
+          minItems: 1
+          items:
+            type: string
+          example:
+          - PIERRE
+          - RICHARD
+        description: Liste des prénoms. Ne pas renseigner si présence de jeton FranceConnect.
+        required: false
+      - name: anneeDateDeNaissance
+        in: query
+        description: Année de naissance. Ne pas la renseigner si celle-ci est inconnue
+          ou en cas de présence de jeton FranceConnect.
+        example: 1990
+        required: false
+        schema:
+          type: integer
+      - name: moisDateDeNaissance
+        in: query
+        description: Mois de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          anneeDateDeNaissance est vide.
+        example: 1
+        required: false
+        schema:
+          type: integer
+      - name: jourDateDeNaissance
+        in: query
+        description: Jour de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          moisDateDeNaissance ou anneeDateDeNaissance est vide.
+        example: 1
+        required: false
+        schema:
+          type: integer
+      - name: codeInseeLieuDeNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '08480'
+        description: Code Insee à 5 chiffres du lieu de naissance de la personne.
+          Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
+          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
+          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
+          si la personne est née en France
+        required: false
+      - name: codePaysLieuDeNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '99100'
+        description: Code Insee à 5 chiffres du pays de naissance (France = 99100).
+          Obligatoire si absence de jeton FranceConnect.
+        required: false
+      - name: sexe
+        in: query
+        schema:
+          type: string
+          enum:
+          - M
+          - F
+        description: Sexe de la personne, masculin ou féminin. Obligatoire si absence
+          de jeton FranceConnect.
+        example: M
+        required: false
+      - name: nomCommuneNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 1
+          example: Gennevilliers
+        description: Nom de la commune de naissance. En l'absence de jeton FranceConnect
+          et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne
+          est née en France
+        required: false
+      - name: codeInseeDepartementNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 2
+          maxLength: 3
+          example: '92'
+        description: Code INSEE du département de naissance. En l'absence de jeton
+          FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire
+          si la personne est née en France
+        required: false
+      security:
+      - franceConnectToken: []
+        apiKey: []
+      description: "Statut bénéficiaire de la prime d'activité, majorée ou non. \n\n
+        Retourne également des informations sur les dates d'ouverture des droits."
+      responses:
+        '200':
+          description: Dossier trouvé
+          headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
+          x-operationId: api_particulier_v2_cnav_prime_activite
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    title: Statut bénéficiaire de la prime d'activité
+                    type: string
+                    description: Indique si le particulier est bénéficiaire de la
+                      prime d'activité au moment de l'appel.
+                    enum:
+                    - beneficiaire
+                    - non_beneficiaire
+                  majoration:
+                    title: Statut bénéficiaire de la majoration de la prime d'activité
+                    type: boolean
+                    nullable: true
+                    description: Indique si le particulier est bénéficiaire de la
+                      prime d'activité majorée au moment de l'appel. Ce champ est
+                      renvoyé si les droits du jeton (obtenus par habilitation) le
+                      permettent. Ce champ sera null si le particulier n'est pas bénéficiaire
+                      de la prime d'activité.
+                    example: false
+                  dateDebut:
+                    title: Date d'ouverture du droit à la prime d'activité
+                    type: string
+                    nullable: true
+                    description: "Date de début de droit à la prime d'activité si
+                      le particulier est bénéficiaire. \n Ce champ est null dans le
+                      cas où le particulier n'est pas bénéficiaire de la prime d'activité."
+                    example: '1992-11-20'
+                  dateFin:
+                    title: Date de fermeture du droit à la prime d'activité
+                    type: string
+                    nullable: true
+                    description: Ce champs ne délivrant pas l'information souhaitée
+                      à la base il est toujours à null désormais
+                    example:
+        '400':
+          description: Mauvais paramètres d'appels
+          content:
+            application/json:
+              examples:
+                unprocessable_entity_error_gender_error:
+                  value:
+                    error: wrong_parameter
+                    reason: Le sexe n'est pas correctement formaté (m ou f)
+                    message: Le sexe n'est pas correctement formaté (m ou f)
+                  summary: Entité non traitable
+                  description: Le sexe n'est pas correctement formaté (m ou f)
+                entite_non_trouvee_35003:
+                  value:
+                    error: not_found
+                    reason: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                    message: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                  summary: Entité non trouvée
+                  description: L'allocataire que vous cherchez n'a pas été reconnu
+                    Veuillez vérifier que l'identifiant correspond au périmètre couvert
+                    par l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '404':
+          description: Dossier allocataire inexistant. Le document ne peut être édité.
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_35003:
+                  value:
+                    error: not_found
+                    reason: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
+                    message: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
+                  summary: Entité non trouvée
+                  description: L'allocataire n'est pas référencé auprès de la CNAF
+                    ni de la MSA Veuillez vérifier que l'identifiant correspond au
+                    périmètre couvert par l'API.
+                erreur_inattendue_35003:
+                  value:
+                    error: not_found
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                  summary: Erreur inattendue
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unknown_error:
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+                'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard.':
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              examples:
+                acces_non_autorise_50002:
+                  value:
+                    error: unauthorized
+                    reason: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                    message: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                  summary: Accès non autorisé
+                  description: Le jeton d'accès n'a pas été trouvé ou est expiré.
+              schema:
+                "$ref": "#/components/schemas/Error"
+  "/api/v2/composition-familiale-v2":
+    get:
+      summary: Quotient familial MSA & CAF
+      deprecated: true
+      tags:
+      - Quotient familial MSA & CAF
+      parameters:
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
+      - name: X-Api-Key
+        in: header
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données.
+          Ce paramètre est obligatoire dans le cadre des appels via FranceConnect"
+        example: '13002526500013'
+        required: false
+        schema:
+          type: string
+      - name: nomUsage
+        in: query
+        description: Nom d'usage. Ne pas renseigner si présence de jeton FranceConnect.
+        example: DUPONT
+        required: false
+        schema:
+          type: string
+      - name: nomNaissance
+        in: query
+        description: Nom de naissance. Ne pas renseigner si présence de jeton FranceConnect.
+          Le champ est obligatoire pour les appels non FranceConnecté
+        example: JEAN
+        required: false
+        schema:
+          type: string
+      - name: prenoms[]
+        in: query
+        schema:
+          type: array
+          minItems: 1
+          items:
+            type: string
+          example:
+          - PIERRE
+          - RICHARD
+        description: Liste des prénoms. Ne pas renseigner si présence de jeton FranceConnect.
+        required: false
+      - name: anneeDateDeNaissance
+        in: query
+        description: Année de naissance. Ne pas la renseigner si celle-ci est inconnue
+          ou en cas de présence de jeton FranceConnect.
+        example: 1990
+        required: false
+        schema:
+          type: integer
+      - name: moisDateDeNaissance
+        in: query
+        description: Mois de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          anneeDateDeNaissance est vide.
+        example: 1
+        required: false
+        schema:
+          type: integer
+      - name: jourDateDeNaissance
+        in: query
+        description: Jour de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          moisDateDeNaissance ou anneeDateDeNaissance est vide.
+        example: 1
+        required: false
+        schema:
+          type: integer
+      - name: codeInseeLieuDeNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '08480'
+        description: Code Insee à 5 chiffres du lieu de naissance de la personne.
+          Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
+          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
+          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
+          si la personne est née en France
+        required: false
+      - name: codePaysLieuDeNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '99100'
+        description: Code Insee à 5 chiffres du pays de naissance (France = 99100).
+          Obligatoire si absence de jeton FranceConnect.
+        required: false
+      - name: sexe
+        in: query
+        schema:
+          type: string
+          enum:
+          - M
+          - F
+        description: Sexe de la personne, masculin ou féminin. Obligatoire si absence
+          de jeton FranceConnect.
+        example: M
+        required: false
+      - name: nomCommuneNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 1
+          example: Gennevilliers
+        description: Nom de la commune de naissance. En l'absence de jeton FranceConnect
+          et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne
+          est née en France
+        required: false
+      - name: codeInseeDepartementNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 2
+          maxLength: 3
+          example: '92'
+        description: Code INSEE du département de naissance. En l'absence de jeton
+          FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire
+          si la personne est née en France
+        required: false
+      - name: annee
+        in: query
+        description: Année du quotient familial recherché. Si l'année n'est pas renseignée,
+          l'année utilisée par défaut est celle en cours. L'API permet d'accéder à
+          un historique de maximum 2 ans.
+        example: 2023
+        required: false
+        schema:
+          type: integer
+      - name: mois
+        in: query
+        description: Mois du quotient familial recherché. Si le mois n'est pas renseigné,
+          le mois utilisé par défaut est celui en cours.
+        example: 12
+        required: false
+        schema:
+          type: integer
+      security:
+      - franceConnectToken: []
+        apiKey: []
+      description: "Quotient familial et composition de la famille d'un allocataire
+        du régime agricole (régime général à venir). \n Pour plus d'informations sur
+        cette API et obtenir un accès en avant-première, veuillez contacter l'équipe
+        API Particulier. \n **Données disponibles en bac à sable :** [liste](https://github.com/etalab/siade_staging_data/blob/develop/payloads/api_particulier_v2_cnav_quotient_familial_v2)"
+      responses:
+        '200':
+          description: Quotient Familial trouvé
+          headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 24 heure.
+          content:
+            application/json:
+              examples:
+                Quotient Familial trouvée:
+                  value:
+                    quotientFamilial: 464
+                    mois: 12
+                    annee: 2023
+                    allocataires:
+                    - nomNaissance: CHAMPION
+                      nomUsuel: DU MONDE
+                      prenoms: JEAN-PASCAL ROMAIN
+                      anneeDateDeNaissance: '1980'
+                      moisDateDeNaissance: '06'
+                      jourDateDeNaissance: '12'
+                      sexe: M
+                    - nomNaissance: NIDOUILLET
+                      nomUsuel:
+                      prenoms: JOSIANE
+                      anneeDateDeNaissance: '1981'
+                      moisDateDeNaissance: '05'
+                      jourDateDeNaissance: '02'
+                      sexe: F
+                    enfants:
+                    - nomNaissance: CHAMPION
+                      nomUsuel:
+                      prenoms: AURELIE
+                      anneeDateDeNaissance: '2014'
+                      moisDateDeNaissance: '05'
+                      jourDateDeNaissance: '02'
+                      sexe: F
+                    - nomNaissance: CHAMPION
+                      nomUsuel:
+                      prenoms: AURELIEN
+                      anneeDateDeNaissance: '2012'
+                      moisDateDeNaissance: '04'
+                      jourDateDeNaissance:
+                      sexe: M
+                    adresse:
+                      identite: DU MONDE JEAN-PASCAL
+                      complementInformation: APPARTEMENT 2
+                      complementInformationGeographique:
+                      numeroLibelleVoie:
+                      lieuDit:
+                      codePostalVille: 81700 GARREVAQUES
+                      pays: FRANCE
+              schema:
+                type: object
+                properties:
+                  allocataires:
+                    title: Informations sur les parents composant la famille
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        nomNaissance:
+                          title: Nom
+                          type: string
+                          description: Nom de naissance de l'allocataire
+                          example: JACQUES
+                        nomUsuel:
+                          title: Nom d'usage
+                          type: string
+                          description: Nom d'usage de l'allocataire
+                          example: JACQUES
+                          nullable: true
+                        prenoms:
+                          title: Prénoms
+                          type: string
+                          description: Prénoms de l'allocataire
+                          example: JEAN-PIERRE THOMAS
+                        anneeDateDeNaissance:
+                          title: Année de naissance
+                          type: string
+                          example: '2000'
+                          description: Année de la date de naissance de l'allocataire.
+                            Peut-être vide si inconnue.
+                          nullable: true
+                        moisDateDeNaissance:
+                          title: Mois de naissance
+                          type: string
+                          example: '01'
+                          description: Mois de la date de naissance de l'allocataire.
+                            Peut-être vide si inconnu.
+                          nullable: true
+                        jourDateDeNaissance:
+                          title: Jour de naissance
+                          type: string
+                          example: '31'
+                          description: Jour de la date de naissance de l'allocataire.
+                            Peut-être vide si inconnu.
+                          nullable: true
+                        sexe:
+                          title: Sexe
+                          type: string
+                          description: Sexe de l'allocataire
+                          example: M
+                          enum:
+                          - F
+                          - M
+                  enfants:
+                    type: array
+                    title: Informations sur les enfants composant la famille
+                    items:
+                      type: object
+                      properties:
+                        nomNaissance:
+                          title: Nom de naissance
+                          type: string
+                          description: Nom de naissance de l'enfant
+                          example: JACQUES
+                        nomUsuel:
+                          title: Nom d'usage
+                          type: string
+                          description: Nom d'usage de l'enfant
+                          example: JACQUES
+                          nullable: true
+                        prenoms:
+                          title: Prénoms
+                          type: string
+                          description: Prénoms de l'enfant
+                          example: JEAN-PIERRE THOMAS
+                        anneeDateDeNaissance:
+                          title: Année de naissance
+                          type: string
+                          example: '2000'
+                          description: Année de la date de naissance de l'enfant.
+                            Peut-être vide si inconnue.
+                          nullable: true
+                        moisDateDeNaissance:
+                          title: Mois de naissance
+                          type: string
+                          example: '01'
+                          description: Mois de la date de naissance de l'enfant. Peut-être
+                            vide si inconnu.
+                          nullable: true
+                        jourDateDeNaissance:
+                          title: Jour de naissance
+                          type: string
+                          example: '31'
+                          description: Jour de la date de naissance de l'enfant. Peut-être
+                            vide si inconnu.
+                          nullable: true
+                        sexe:
+                          title: Sexe
+                          type: string
+                          description: Sexe de l'enfant
+                          example: M
+                          enum:
+                          - F
+                          - M
+                  adresse:
+                    title: Adresse de la famille
+                    type: object
+                    description: Adresse au format de la poste
+                    properties:
+                      identite:
+                        title: Identité du destinataire
+                        type: string
+                        example: Monsieur JEAN JACQUES
+                        description: 'Identité du destinataire : Civilité, titre ou
+                          qualité + nom et prénom'
+                      complementInformation:
+                        title: Complément d'information du destinataire ou point de
+                          remise
+                        type: string
+                        nullable: true
+                        example:
+                      complementInformationGeographique:
+                        title: Complément d'information du point géographique
+                        type: string
+                        nullable: true
+                        example:
+                        description: Complément d'information du point géographique.
+                      numeroLibelleVoie:
+                        title: Voie
+                        type: string
+                        description: Numéro et libellé de la voie
+                        example: 1 RUE DE LA GARE
+                        nullable: true
+                      lieuDit:
+                        title: Lieu-dit
+                        type: string
+                        nullable: true
+                        example:
+                        description: 'Lieu-dit ou service particulier de distribution
+                          : poste restante, boîte postale'
+                      codePostalVille:
+                        title: Code postal
+                        type: string
+                        description: Code postal et localité de destination
+                        example: '75002'
+                      pays:
+                        title: Pays
+                        type: string
+                        description: Pays
+                        example: FRANCE
+                    required:
+                    - identite
+                    - complementInformation
+                    - complementInformationGeographique
+                    - numeroLibelleVoie
+                    - lieuDit
+                    - codePostalVille
+                    - pays
+                  regime:
+                    title: Caisse d'où provient le quotient familial transmis
+                    type: string
+                    description: Précise si le quotient familial provient de la caisse
+                      nationale des allocations familiales (CNAF) ou de la mutualité
+                      sociale agricole (MSA).
+                    example: MSA
+                    enum:
+                    - CNAF
+                    - MSA
+                  quotientFamilial:
+                    title: Quotient familial CAF ou MSA
+                    type: integer
+                    description: Valeur du quotient familial calculé par la CAF ou
+                      la MSA
+                    example: 1045
+                  annee:
+                    title: Année effective du QF
+                    type: integer
+                    description: "Année effective du quotient familial appelé. \n\n
+                      - Si aucune année et aucun mois n'ont été renseignés en paramètres
+                      d'appel, le quotient familial retourné sera celui du mois de
+                      l'année en cours. - Si aucune année, ni aucun mois sont renseignés,
+                      l'appel est effectué par défaut avec l'année et le mois en cours.
+                      - Si aucune année n'a été renseignée, et que le mois est renseigné,
+                      le quotient familial retourné sera celui du mois spécifié pour
+                      l'année en cours. En revanche, si la date finalement composée
+                      avec cette règle s'avère dans le futur (mois postérieur au moins
+                      en cours), l'API renvoie un erreur 400. "
+                    example: 2023
+                  mois:
+                    title: Mois effectif du QF
+                    type: integer
+                    description: "Mois effectif du quotient familial. \n\n - Si aucun
+                      mois n'est renseigné, le mois en cours est utilisé par défaut.
+                      - Si le mois renseigné est postérieur au mois en cours, et qu'il
+                      compose une date dans le futur avec l'année appelée, l'API renvoie
+                      une erreur 400. \n - Si aucun mois n'a été renseigné mais que
+                      l'année a été spécifiée en paramètres d'appel, le quotient familial
+                      retourné sera celui du mois en cours pour l'année spécifiée."
+                    example: 6
+                  annee_calcul:
+                    title: Année du calcul du QF
+                    type: integer
+                    description: Année lors de laquelle le calcul du quotient familial
+                      demandé a été effectué. Cette année peut différer de l'année
+                      effective du quotient familial.
+                    example: 2023
+                  mois_calcul:
+                    title: Mois du calcul du QF
+                    type: integer
+                    description: Mois lors duquel le calcul du quotient familial demandé
+                      a été effectué. Ce mois peut différer du mois effectif du quotient
+                      familial.
+                    example: 9
+          x-operationId: api_particulier_v2_cnav_quotient_familial_v2
+        '400':
+          description: Mauvais paramètres d'appels
+          content:
+            application/json:
+              examples:
+                Mauvais paramètres d'appels:
+                  value:
+                    error: bad_request
+                    reason: Le sexe de l'état civil est manquant
+                    message: Le sexe de l'état civil est manquant
+                Mois invalide:
+                  value:
+                    error: bad_request
+                    reason: L'année demandée n'est pas correctement formatée ou est
+                      dans le futur.
+                    message: L'année demandée n'est pas correctement formatée ou est
+                      dans le futur.
+                Allocataire non identifié:
+                  value:
+                    error: not_found
+                    reason: Les paramètres fournis ne permettent pas d'identifier
+                      un allocataire.
+                    message: Les paramètres fournis ne permettent pas d'identifier
+                      un allocataire.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '404':
+          description: Dossier allocataire inexistant. Le document ne peut être édité.
+          content:
+            application/json:
+              examples:
+                Dossier non trouvé MSA:
+                  value:
+                    error: not_found
+                    reason: Le dossier allocataire n'a pas été trouvé auprès de la
+                      MSA.
+                    message: Le dossier allocataire n'a pas été trouvé auprès de la
+                      MSA.
+                Dossier non trouvé CNAF:
+                  value:
+                    error: not_found
+                    reason: Le dossier allocataire n'a pas été trouvé auprès de la
+                      CNAF.
+                    message: Le dossier allocataire n'a pas été trouvé auprès de la
+                      CNAF.
+                Allocataire non référencé:
+                  value:
+                    error: not_found
+                    reason: L'allocataire n'est pas référencé auprès des caisses éligibles
+                    message: L'allocataire n'est pas référencé auprès des caisses
+                      éligibles
+                Erreur inattendue:
+                  value:
+                    error: not_found
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                Erreur inconnue du fournisseur de donnéé:
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard.':
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              examples:
+                Erreur d'intermédiaire:
+                  value:
+                    error: timeout_error
+                    reason: Temps d’attente d’une réponse du fournisseur de données
+                      écoulé.
+                    message: Temps d’attente d’une réponse du fournisseur de données
+                      écoulé.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              examples:
+                acces_non_autorise_50002:
+                  value:
+                    error: unauthorized
+                    reason: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                    message: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                  summary: Accès non autorisé
+                  description: Le jeton d'accès n'a pas été trouvé ou est expiré.
+              schema:
+                "$ref": "#/components/schemas/Error"
+  "/api/v2/revenu-solidarite-active":
+    get:
+      summary: Statut revenu de solidarité active (RSA)
+      deprecated: true
+      tags:
+      - Statut Revenu Solidarité Active (RSA)
+      parameters:
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
+      - name: X-Api-Key
+        in: header
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données.
+          Ce paramètre est obligatoire dans le cadre des appels via FranceConnect"
+        example: '13002526500013'
+        required: false
+        schema:
+          type: string
+      - name: nomUsage
+        in: query
+        description: Nom d'usage. Ne pas renseigner si présence de jeton FranceConnect.
+        example: DUPONT
+        required: false
+        schema:
+          type: string
+      - name: nomNaissance
+        in: query
+        description: Nom de naissance. Ne pas renseigner si présence de jeton FranceConnect.
+          Le champ est obligatoire pour les appels non FranceConnecté
+        example: JEAN
+        required: false
+        schema:
+          type: string
+      - name: prenoms[]
+        in: query
+        schema:
+          type: array
+          minItems: 1
+          items:
+            type: string
+          example:
+          - PIERRE
+          - RICHARD
+        description: Liste des prénoms. Ne pas renseigner si présence de jeton FranceConnect.
+        required: false
+      - name: anneeDateDeNaissance
+        in: query
+        description: Année de naissance. Ne pas la renseigner si celle-ci est inconnue
+          ou en cas de présence de jeton FranceConnect.
+        example: 1990
+        required: false
+        schema:
+          type: integer
+      - name: moisDateDeNaissance
+        in: query
+        description: Mois de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          anneeDateDeNaissance est vide.
+        example: 1
+        required: false
+        schema:
+          type: integer
+      - name: jourDateDeNaissance
+        in: query
+        description: Jour de naissance. Ne pas le renseigner si celui-ci est inconnu
+          ou en cas de présence de jeton FranceConnect. Cette valeur est ignorée si
+          moisDateDeNaissance ou anneeDateDeNaissance est vide.
+        example: 1
+        required: false
+        schema:
+          type: integer
+      - name: codeInseeLieuDeNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '08480'
+        description: Code Insee à 5 chiffres du lieu de naissance de la personne.
+          Ne pas remplir si la personne est née à l'étranger ou si présence de jeton
+          FranceConnect. En l'absence de jeton FranceConnect et du triplet (nomCommuneNaissance,
+          anneeDateDeNaissance, codeInseeDepartementNaissance), le champ est obligatoire
+          si la personne est née en France
+        required: false
+      - name: codePaysLieuDeNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 5
+          example: '99100'
+        description: Code Insee à 5 chiffres du pays de naissance (France = 99100).
+          Obligatoire si absence de jeton FranceConnect.
+        required: false
+      - name: sexe
+        in: query
+        schema:
+          type: string
+          enum:
+          - M
+          - F
+        description: Sexe de la personne, masculin ou féminin. Obligatoire si absence
+          de jeton FranceConnect.
+        example: M
+        required: false
+      - name: nomCommuneNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 1
+          example: Gennevilliers
+        description: Nom de la commune de naissance. En l'absence de jeton FranceConnect
+          et du codeInseeLieuDeNaissance, ce paramètre est obligatoire si la personne
+          est née en France
+        required: false
+      - name: codeInseeDepartementNaissance
+        in: query
+        schema:
+          type: string
+          minLength: 2
+          maxLength: 3
+          example: '92'
+        description: Code INSEE du département de naissance. En l'absence de jeton
+          FranceConnect et du codeInseeLieuDeNaissance, ce paramètre est obligatoire
+          si la personne est née en France
+        required: false
+      security:
+      - franceConnectToken: []
+        apiKey: []
+      description: "Statut bénéficiaire du revenu de solidarité active (RSA), majoré
+        ou non. \n\n Retourne également des informations sur les dates d'ouverture
+        des droits."
+      responses:
+        '200':
+          description: Dossier trouvé
+          headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
+          x-operationId: api_particulier_v2_cnav_revenu_solidarite_active
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    title: Statut bénéficiaire du revenu de solidarité active (RSA)
+                    type: string
+                    description: Indique si le particulier est bénéficiaire du revenu
+                      de solidarité active au moment de l'appel.
+                    enum:
+                    - beneficiaire
+                    - non_beneficiaire
+                  majoration:
+                    title: Statut bénéficiaire de la majoration du RSA
+                    type: boolean
+                    nullable: true
+                    description: "Indique si le particulier est bénéficiaire du RSA
+                      majoré au moment de l'appel. \n Sera null si le particulier
+                      n'est pas bénéficiaire du RSA."
+                    example: false
+                  dateDebut:
+                    title: Date d'ouverture du droit au RSA
+                    type: string
+                    nullable: true
+                    description: "Date de début de droit au RSA si le particulier
+                      est bénéficiaire. \n Ce champ est null dans le cas où le particulier
+                      n'est pas bénéficiaire du RSA."
+                    example: '1992-11-29'
+                  dateFin:
+                    title: Date de fermeture du droit au revenu de solidarité active
+                    type: string
+                    nullable: true
+                    description: Ce champs ne délivrant pas l'information souhaitée
+                      à la base il est toujours à null désormais
+                    example:
+        '400':
+          description: Mauvais paramètres d'appels
+          content:
+            application/json:
+              examples:
+                unprocessable_entity_error_gender_error:
+                  value:
+                    error: wrong_parameter
+                    reason: Le sexe n'est pas correctement formaté (m ou f)
+                    message: Le sexe n'est pas correctement formaté (m ou f)
+                  summary: Entité non traitable
+                  description: Le sexe n'est pas correctement formaté (m ou f)
+                entite_non_trouvee_35003:
+                  value:
+                    error: not_found
+                    reason: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                    message: L'allocataire que vous cherchez n'a pas été reconnu Veuillez
+                      vérifier que l'identifiant correspond au périmètre couvert par
+                      l'API.
+                  summary: Entité non trouvée
+                  description: L'allocataire que vous cherchez n'a pas été reconnu
+                    Veuillez vérifier que l'identifiant correspond au périmètre couvert
+                    par l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '404':
+          description: Dossier allocataire inexistant. Le document ne peut être édité.
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_35003:
+                  value:
+                    error: not_found
+                    reason: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
+                    message: L'allocataire n'est pas référencé auprès de la CNAF ni
+                      de la MSA Veuillez vérifier que l'identifiant correspond au
+                      périmètre couvert par l'API.
+                  summary: Entité non trouvée
+                  description: L'allocataire n'est pas référencé auprès de la CNAF
+                    ni de la MSA Veuillez vérifier que l'identifiant correspond au
+                    périmètre couvert par l'API.
+                erreur_inattendue_35003:
+                  value:
+                    error: not_found
+                    reason: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                    message: Une erreur inattendue est survenue lors de la collecte
+                      des données
+                  summary: Erreur inattendue
+                  description: Une erreur inattendue est survenue lors de la collecte
+                    des données
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unknown_error:
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+                'Erreur de fournisseur de donnée : Trop de requêtes effectuées, veuillez réessayer plus tard.':
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              examples:
+                acces_non_autorise_50002:
+                  value:
+                    error: unauthorized
+                    reason: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                    message: Le jeton d'accès n'a pas été trouvé ou est expiré.
+                  summary: Accès non autorisé
+                  description: Le jeton d'accès n'a pas été trouvé ou est expiré.
+              schema:
+                "$ref": "#/components/schemas/Error"
+  "/api/v2/scolarites":
+    get:
+      summary: Statut élève scolarisé
+      deprecated: true
+      tags:
+      - Statut élève scolarisé
+      parameters:
+      - name: X-Api-Key
+        in: header
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: false
+        schema:
+          type: string
+      - name: nom
+        in: query
+        description: Nom de l'élève
+        example: Martin
+        required: true
+        schema:
+          type: string
+      - name: prenom
+        in: query
+        description: Prénom de l'élève
+        example: Justine
+        required: true
+        schema:
+          type: string
+      - name: sexe
+        in: query
+        description: Sexe de l'élève, masculin ou féminin
+        example: m
+        required: true
+        schema:
+          type: string
+      - name: dateNaissance
+        in: query
+        description: Date de naissance de l'élève au format AAAA-MM-JJ
+        example: '2000-01-20'
+        required: true
+        schema:
+          type: string
+      - name: codeEtablissement
+        in: query
+        description: |
+          Code d'unité administrative immatriculée (code UAI) de l'établissement où est scolarisé l'élève. Ce code unique inscrit au répertoire national des établissements est composé de 7 chiffres et d'une lettre ; les trois premiers chiffres correspondent au numéro de département de l'établissement.
+
+          Pour retrouver facilement le code UAI d'un établissement à partir d' informations plus facilement connues des usagers (commune, code postal, etc.), vous pouvez utiliser l'[API "Annuaire de l'éducation nationale"](https://api.gouv.fr/les-api/api-annuaire-education).
+
+          ⚠️ L'établissement 0861288H (CNED Direction générale) n'existe pas dans l'API annuaire de l'éducation nationale, il faudra donc compléter la liste des établissements avec une ligne CNED à laquelle sera associée le code UAI qui sera en passé en entrée.
+        example: 0210015C
+        required: true
+        schema:
+          type: string
+      - name: anneeScolaire
+        in: query
+        description: 'Année scolaire recherchée au format AAAA-AAAA ou AAAA. Les informations
+          connues par l''API concerne surtout l''année en cours et parfois l''année
+          scolaire à venir. Pour en savoir plus consulter la fiche métier : https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise#faq_entry_answer_0_api_particulier_endpoint_education_nationale_statut_eleve_scolarise.'
+        example: 2022-2023
+        required: true
+        schema:
+          type: string
+      description: Statut scolarisé d'un élève du primaire, collège ou lycée.
+      responses:
+        '200':
+          description: Scolarité trouvée
+          x-operationId: api_particulier_v2_men_scolarites
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  eleve:
+                    title: Informations sur l'élève
+                    description: Les informations retournées ici sont celles transmises
+                      en paramètre d'appel. S'il y a eu des erreurs de frappe à la
+                      saisie, elles seront renvoyées.
+                    type: object
+                    properties:
+                      nom:
+                        title: Nom
+                        description: Nom de l'élève
+                        type: string
+                        example: Martin
+                      prenom:
+                        title: Prénom
+                        description: Prénom de l'élève
+                        type: string
+                        example: Justine
+                      sexe:
+                        title: Sexe
+                        description: Sexe de l'élève, masculin ou féminin
+                        type: string
+                        example: F
+                        enum:
+                        - M
+                        - F
+                      date_naissance:
+                        title: Date de naissance
+                        description: Date de naissance de l'élève au format AAAA-MM-JJ
+                        type: string
+                        example: '2000-01-20'
+                    required:
+                    - nom
+                    - prenom
+                    - sexe
+                    - date_naissance
+                  code_etablissement:
+                    title: Code UAI de l'établissement
+                    description: |
+                      Code d'unité administrative immatriculée (code UAI) de l'établissement où est scolarisé l'élève. Ce code unique inscrit au répertoire national des établissements est composé de 7 chiffres et d'une lettre ; les trois premiers chiffres correspondent au numéro de département de l'établissement.
+
+                      Pour retrouver facilement le code UAI d'un établissement à partir d' informations plus facilement connues des usagers (commune, code postal, etc.), vous pouvez utiliser l'[API "Annuaire de l'éducation nationale"](https://api.gouv.fr/les-api/api-annuaire-education).
+
+                      ⚠️ L'établissement 0861288H (CNED Direction générale) n'existe pas dans l'API annuaire de l'éducation nationale, il faudra donc compléter la liste des établissements avec une ligne CNED à laquelle sera associée le code UAI qui sera en passé en entrée.
+                    type: string
+                    pattern: "^\\d{7}\\w$"
+                    example: 0210015C
+                  annee_scolaire:
+                    title: Année scolaire
+                    description: Année scolaire de l'élève au format AAAA-AAAA
+                    type: string
+                    pattern: "^\\d{4}$|^\\d{4}-\\d{4}$"
+                    example: 2022-2023
+                  est_scolarise:
+                    description: Indique si l'élève est scolarisé dans l'établissement.
+                    type: boolean
+                    example: true
+                  est_boursier:
+                    description: |
+                      Indique si l'élève est boursier dans l'établissement. Les bourses concernent uniquement les élèves des collèges et lycées.
+
+                      ⚠️ Si le statut boursier est à "false" avant mi-octobre, cela ne signifie pas forcément que l'élève n'est pas boursier. Il peut s'agir d'un faux négatif lié à une absence de l'information en base. Pour en savoir plus consulter la fiche métier : https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise#faq_entry_answer_1_api_particulier_endpoint_education_nationale_statut_eleve_scolarise.
+
+                      Ce champs prend la valeur null lorsque l'on ne sait pas si l'élève est boursier ou non
+                    type: boolean
+                    example: true
+                    nullable: true
+                  niveau_bourse:
+                    description: |
+                      Indique l'échelon de la bourse de l'élève. Est à "null" quand "est_boursier" est "false". Les bourses concernent uniquement les élèves des collèges et lycées.
+
+                      Il existe trois échelons de bourses pour les collégiens (1 à 3) et six échelons pour les lycéens (1 à 6), correspondant aux montants reçus par l'élève pour l'année scolaire. Pour en savoir plus, consulter la FAQ : https://particulier.api.gouv.fr/catalogue/education_nationale/statut_eleve_scolarise#faq_entry_answer_2_api_particulier_endpoint_education_nationale_statut_eleve_scolarise"
+                    type: integer
+                    example: 1
+                    nullable: true
+                    enum:
+                    -
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+                    - 5
+                    - 6
+                  statut_eleve:
+                    title: Statut de l'élève
+                    description: |
+                      Indique le statut sous lequel l'élève est scolarisé dans l'établissement. Les valeurs sont susceptibles d'évoluer :
+
+                      - ST : Scolaire, il s'agit du statut de base renvoyé pour près de 95% des élèves.
+                      - AP : Apprenti
+                      - CQ : Contrat de qualification
+                      - FC : Formation continue
+                      - ED : Enseignement à distance
+                      - IN : Candidat individuel
+                      - FQ : Stagiaire de la formation Professionnelle
+                      - SC : Scolaire ou formation initiale
+                      - CP : Contrat de professionnalisation.
+                      - NC : Non connu ou non communiqué.
+                    type: object
+                    properties:
+                      code:
+                        title: Code statut de l'élève
+                        description: Code du statut sous lequel l'élève est scolarisé
+                          dans l'établissement.
+                        type: string
+                        example: ST
+                      libelle:
+                        title: Libellé du statut de l'élève
+                        description: Libellé du statut sous lequel l'élève est scolarisé
+                          dans l'établissement.
+                        type: string
+                        example: SCOLAIRE
+                    required:
+                    - code
+                    - libelle
+        '400':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                unprocessable_entity_error_gender_error:
+                  value:
+                    error: wrong_parameter
+                    reason: Le sexe n'est pas correctement formaté (m ou f)
+                    message: Le sexe n'est pas correctement formaté (m ou f)
+                  summary: Entité non traitable
+                  description: Le sexe n'est pas correctement formaté (m ou f)
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '404':
+          description: Non trouvée
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_30003:
+                  value:
+                    error: not_found
+                    reason: Aucun élève n'a pu être trouvé avec les critères de recherche
+                      fournis Veuillez vérifier que l'identifiant correspond au périmètre
+                      couvert par l'API.
+                    message: Aucun élève n'a pu être trouvé avec les critères de recherche
+                      fournis Veuillez vérifier que l'identifiant correspond au périmètre
+                      couvert par l'API.
+                  summary: Entité non trouvée
+                  description: Aucun élève n'a pu être trouvé avec les critères de
+                    recherche fournis Veuillez vérifier que l'identifiant correspond
+                    au périmètre couvert par l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unknown_error:
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+  "/api/v2/paiements-pole-emploi":
+    get:
+      summary: Paiements versés par France Travail
+      deprecated: true
+      tags:
+      - Paiements versés par France Travail
+      parameters:
+      - name: X-Api-Key
+        in: header
+        schema:
+          type: string
+      - name: recipient
+        in: query
+        description: |-
+          "**Bénéficiaire de l’appel**
+
+          SIRET de l’administration destinatrice des données."
+        example: '13002526500013'
+        required: false
+        schema:
+          type: string
+      - name: identifiant
+        in: query
+        description: Identifiant France Travail choisi par le particulier lors de
+          la création de son espace personnel en ligne.
+        example: jean.dupont33
+        required: true
+        schema:
+          type: string
+      description: Ensemble des paiements versés par France Travail au particulier
+      responses:
+        '200':
+          description: Paiements trouvées
+          x-operationId: api_particulier_v2_pole_emploi_indemnites
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  identifiant:
+                    title: Nom d'utilisateur France Travail
+                    type: string
+                    description: Identifiant du compte utilisateur France Travail,
+                      tel qu'il a été renseigné en paramètre d'appel. Cet identifiant
+                      est le nom d'utilisateur tel que choisi par le particulier lors
+                      de la création de son espace personnel en ligne.
+                    example: jean.dupont33
+                  paiements:
+                    title: Liste des paiements versés
+                    description: Liste des paiements versés par FranceTravail au particulier.
+                    type: array
+                    minItems: 1
+                    items:
+                      title: Paiement
+                      type: object
+                      properties:
+                        date_versement:
+                          title: Date du paiement
+                          type: string
+                          example: '2021-01-01'
+                        montant_total:
+                          title: Montant total versé
+                          description: Montant total du paiement. Il s'agit de la
+                            somme des allocations, aides et autres paiements, moins
+                            le prélèvement de l'impôt à la source.
+                          type: number
+                          example: 123.4
+                        montant_allocations:
+                          title: Montant d'allocations
+                          description: Montant du paiement, avant prélèvement de l'impôt
+                            à la source, correspondant aux allocations (allocation
+                            d'aide au retour à l'emploi, allocation de sécurisation
+                            professionnelle, allocation de solidarité spécifique,
+                            allocation pour les travailleurs indépendants, Rémunération
+                            de formation France Travail, Rémunération de fin de formation,
+                            allocation de fin de droit, allocation d'accompagnement
+                            personnalisé, allocation de professionnalisation et de
+                            solidarité, allocation décès, allocation contrat engagement
+                            jeune).
+                          type: number
+                          example: 45.1
+                        montant_aides:
+                          title: Montant d'aides
+                          description: Montant du paiement, avant prélèvement de l'impôt
+                            à la source, correspondant aux aides (aide à la reprise
+                            et à la création d’entreprise, aide à la mobilité, aide
+                            à la garde d'enfant pour parent isolé, aide fin de droit,
+                            aide aux congés non payés, aide à la valorisation des
+                            acquis par l'expérience, aide du fond de sécurisation
+                            du secteur automobile, aide ponctuelle jeune, aide régionale,
+                            aide aux demandeurs d'emploi longue durée, aide exceptionnelle
+                            de solidarité, Prime de reclassement).
+                          type: number
+                          example: 12.21
+                        montant_autres:
+                          title: Montant des autres paiements
+                          description: Montant du paiement, avant prélèvement de l'impôt
+                            à la source, correspondant aux autres paiements (prime
+                            de Noël, indemnité différentielle de reclassement, acompte,
+                            avance, reversement).
+                          type: number
+                          example: 2.34
+        '400':
+          description: Paramètre(s) invalide(s)
+          content:
+            application/json:
+              examples:
+                entite_non_traitable_00380:
+                  value:
+                    error: wrong_parameter
+                    reason: L'identifiant est manquant
+                    message: L'identifiant est manquant
+                  summary: Entité non traitable
+                  description: L'identifiant est manquant
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '404':
+          description: Non trouvée
+          content:
+            application/json:
+              examples:
+                entite_non_trouvee_24003:
+                  value:
+                    error: not_found
+                    reason: Aucune situation France Travail n'a pu être trouvée avec
+                      les critères de recherche fournis Veuillez vérifier que l'identifiant
+                      correspond au périmètre couvert par l'API.
+                    message: Aucune situation France Travail n'a pu être trouvée avec
+                      les critères de recherche fournis Veuillez vérifier que l'identifiant
+                      correspond au périmètre couvert par l'API.
+                  summary: Entité non trouvée
+                  description: Aucune situation France Travail n'a pu être trouvée
+                    avec les critères de recherche fournis Veuillez vérifier que l'identifiant
+                    correspond au périmètre couvert par l'API.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '503':
+          description: Erreur du fournisseur
+          content:
+            application/json:
+              examples:
+                unknown_error:
+                  value:
+                    error: provider_unknown_error
+                    reason: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                    message: La réponse retournée par le fournisseur de données est
+                      invalide et inconnue de notre service. L'équipe technique a
+                      été notifiée de cette erreur pour investigation.
+                  summary: Erreur inconnue du fournisseur de données
+                  description: La réponse retournée par le fournisseur de données
+                    est invalide et inconnue de notre service. L'équipe technique
+                    a été notifiée de cette erreur pour investigation.
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '504':
+          description: Erreur d'intermédiaire
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+security:
+- apiKey: []
+servers:
+- url: https://particulier.api.gouv.fr
+  description: Environnement de production
+- url: https://staging.particulier.api.gouv.fr
+  description: Environnement de staging
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          example:
+        reason:
+          type: string
+          example:
+        message:
+          type: string
+          example:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+      description: Jeton d'authentification obtenu suite à la validation de votre
+        <a href='https://datapass.api.gouv.fr/'>demande d'habilitation</a>, visible
+        sur <a href='https://particulier.api.gouv.fr/compte'>le portail API Particulier</a>.
+        Obligatoire, sauf sur une API FranceConnectée lorsqu'un jeton FranceConnect
+        est présent.
+    franceConnectToken:
+      type: http
+      scheme: bearer
+      bearerFormat: Jeton FranceConnect
+      description: Jeton FranceConnect obtenu suite à une cinématique de connexion
+        FranceConnect. Ne fonctionne que sur les APIs FranceConnectées. Remplace l'authentification
+        par X-Api-Key sur les APIs FranceConnectées.
