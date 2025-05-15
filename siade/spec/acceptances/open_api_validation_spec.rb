@@ -61,6 +61,12 @@ RSpec.describe 'OpenAPI file', type: :acceptance do
         expect(data['get']['description']).not_to eq(description_inherited_by_latest_response_definition), "#{path} has an invalid description"
       end
     end
+
+    it 'has a 200 response with an x-operationId' do
+      YAML.load_file(definition_path)['paths'].each do |path, data|
+        expect(data['get']['responses']['200']['x-operationId']).not_to be_nil, "#{path} has no 200 response with an x-operationId"
+      end
+    end
   end
 
   context 'API Entreprise v3 (and more) definition' do
@@ -86,6 +92,12 @@ RSpec.describe 'OpenAPI file', type: :acceptance do
         actual_keys = data['get'].keys
 
         expect(actual_keys).to include(*required_keys), "#{path} has missing keys: #{required_keys - actual_keys}"
+      end
+    end
+
+    it 'has a 200 response with an x-operationId' do
+      YAML.load_file(definition_path)['paths'].each do |path, data|
+        expect(data['get']['responses']['200']['x-operationId']).not_to be_nil, "#{path} has no 200 response with an x-operationId"
       end
     end
 
