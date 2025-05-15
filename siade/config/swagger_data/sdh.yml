@@ -7,8 +7,10 @@ sdh:
     parameters:
       identifiant:
         title: "Identifiant SDH"
+        type: "string"
         description: "Identifiant du sportif dans le système d'information du Ministère des Sports."
         example: "123456789"
+        required: true
 
     attributes:
       identite:
