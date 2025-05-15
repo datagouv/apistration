@@ -44,7 +44,7 @@ module OpenApiHelpers
     if base_name.start_with?('api_particulier_v2')
       'api_particulier_v2'
     elsif base_name.start_with?('api_particulier_v3')
-      'api_particulier_v3'
+      'api_particulier'
     else
       'api_entreprise'
     end
